@@ -3,6 +3,9 @@ An Android app for filtering spamming Call/Sms.
 
 ![logo](https://github.com/aj3423/SpamBlocker/assets/4710875/20930282-db38-4c21-a0db-4720ad666151)
 
+| Call        | Sms         | Setting     | Notification |
+| ----        | ----        | ----        | ----         |
+| ![logo](11) | ![logo](11) | ![logo](11) | ![logo](11)  |
 
 |                                                    | For Call                                                                                                                                               | For Sms                                                                                                        |
 | ----                                               | ----                                                                                                                                               | ----                                                                                                       |
