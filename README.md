@@ -1,5 +1,5 @@
 # SpamBlocker
-Block and silence the notification of spamming Call/Sms
+An Android app for filtering spamming Call/Sms.
 
 ![logo](https://github.com/aj3423/SpamBlocker/assets/4710875/20930282-db38-4c21-a0db-4720ad666151)
 
