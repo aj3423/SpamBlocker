@@ -2,4 +2,3 @@
 .idea/
 *.db
 build/
-app/release/
