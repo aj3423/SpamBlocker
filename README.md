@@ -1,12 +1,14 @@
 # SpamBlocker
 An Android app for filtering spamming Call/Sms.
 
-![logo](https://github.com/aj3423/SpamBlocker/assets/4710875/20930282-db38-4c21-a0db-4720ad666151)
+<img src="https://github.com/aj3423/SpamBlocker/assets/4710875/20930282-db38-4c21-a0db-4720ad666151" height="100">
 
+# Screenshot
 | Call        | Sms         | Setting     | Notification |
 | ----        | ----        | ----        | ----         |
-| ![logo](11) | ![logo](11) | ![logo](11) | ![logo](11)  |
+| <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/193db71d-84b0-4441-8225-cfcb6827f40e" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/f9e3c6f3-5045-479e-99ab-e0edee701b5c" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/4857ad5d-96b4-47c1-9627-f33770ab399e" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/99b62b58-8689-41b9-bd4b-7171af316ab5" width="200">  |
 
+# Features
 |                                                    | For Call                                                                                                                                               | For Sms                                                                                                        |
 | ----                                               | ----                                                                                                                                               | ----                                                                                                       |
 | What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaion                                                                               |
@@ -17,7 +19,7 @@ An Android app for filtering spamming Call/Sms.
 
 
 # Filters:
-## 1. Phone number and Sms content
+#### 1. Phone number and Sms content
 
 Regex is used, ask AI if you don't know how to write one, eg: 
 "Show me regex for checking if a string starts with 400 and has a length of 10", which results in `^400.{7}$`
@@ -28,13 +30,13 @@ Some typical patterns:
 - Longer than 10: `.{11,}`
 - Content contain "verification": `.*verification.*`
 
-## 2. In Contacts
+#### 2. In Contacts
 Checks whether the phone number belongs to a contact.
 
-## 3. Repeated Call
+#### 3. Repeated Call
 It will be allowed if the number has been calling you multiple times whin 5 minutes.
 
-## 4. Recent Apps
+#### 4. Recent Apps
 Any call would be permitted if any of these apps has been used within 5 minutes.
 
 - A typical use case: 
