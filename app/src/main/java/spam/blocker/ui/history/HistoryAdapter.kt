@@ -56,6 +56,8 @@ class HistoryAdapter(
             Db.RESULT_ALLOWED_WHITELIST ->  ctx.resources.getString(R.string.whitelist) + ": " + _filterReasonStr(NumberFilterTable(), rec.reason)
             Db.RESULT_BLOCKED_BLACKLIST ->  ctx.resources.getString(R.string.blacklist) + ": " + _filterReasonStr(NumberFilterTable(), rec.reason)
             Db.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + _filterReasonStr(ContentFilterTable(), rec.reason)
+            Db.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + _filterReasonStr(ContentFilterTable(), rec.reason)
+
 
             else -> ctx.resources.getString(R.string.pass)
         }

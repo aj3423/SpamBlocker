@@ -16,11 +16,13 @@ import android.graphics.Paint
 import android.graphics.Shader
 import android.net.Uri
 import android.provider.ContactsContract
+import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
 import spam.blocker.R
+import spam.blocker.def.Def
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -109,6 +111,8 @@ class Util {
                         val ci = ContactInfo()
                         ci.name = name
                         ci.phone = clearNumber(number)
+                        Log.d(Def.TAG, "read contact ${ci.phone}")
+
                         if (iconUri != null) {
                             val source = ImageDecoder.createSource(ctx.contentResolver, Uri.parse(iconUri))
                             ci.icon = ImageDecoder.decodeBitmap(source)
@@ -143,7 +147,11 @@ class Util {
         }
 
         fun clearNumber(number: String): String {
-            return number.replace("-", "").replace("+", "").replace(" ", "")
+            return number.replace("-", "")
+                .replace("+", "")
+                .replace(" ", "")
+                .replace("(", "")
+                .replace(")", "")
         }
 
         fun isRegexValid(regex: String): Boolean {
