@@ -49,8 +49,8 @@
     <string name="confirm_del_all_filters">Delete all filters?</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="select_apps">Select Apps</string>
-    <string name="spam_sms_blocked">Spam Sms Blocked</string>
-    <string name="spam_call_blocked">Spam Call Blocked</string>
+    <string name="spam_sms_blocked">Sms Blocked</string>
+    <string name="spam_call_blocked">Call Blocked</string>
     <string name="new_sms_received">New Sms received</string>
     <string name="mark_all_as_read">Mark all as read</string>
     <string name="delete_all">Delete all</string>

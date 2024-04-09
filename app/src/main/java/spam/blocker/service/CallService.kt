@@ -56,7 +56,7 @@ class CallService : CallScreeningService() {
 
                 // click the notification to launch this app
                 val intent = Intent(this, MainActivity::class.java)
-                Util.showNotification(this, 0, resources.getString(R.string.spam_call_blocked), "", true, intent)
+                Util.showNotification(this, 0, resources.getString(R.string.spam_call_blocked), phone, true, intent)
             }
             broadcastNewCall(block, id)
 
