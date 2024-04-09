@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:id="@+id/settings_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/globally_enabled" />
+
+            <ImageView
+                android:id="@+id/setting_help_globally_enabled"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_globally_enabled"
+                tools:ignore="ContentDescription" />
+
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_globally_enabled"
+                style="@style/setting_switch" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/dark_theme" />
+
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_theme"
+                style="@style/setting_switch" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/allow_contact" />
+
+            <ImageView
+                android:id="@+id/setting_help_permit_contacts"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_permit_contact"
+                tools:ignore="ContentDescription" />
+
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_permit_contacts"
+                style="@style/setting_switch" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/allow_repeated_call" />
+
+            <ImageView
+                android:id="@+id/setting_help_repeated_call"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_repeated_call"
+                tools:ignore="ContentDescription" />
+
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_allow_repeated_call"
+                style="@style/setting_switch" />
+        </LinearLayout>
+
+
+        <!--    recent app-->
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/allow_recent_apps" />
+
+            <ImageView
+                android:id="@+id/setting_help_recent_apps"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_recent_apps"
+                tools:ignore="ContentDescription" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_app_icons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded" />
+
+            <ImageButton
+                android:id="@+id/btn_select_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/right_arrow"
+                app:tint="@color/dodger_blue" />
+        </LinearLayout>
+        <!--    recent app end-->
+
+        <!--    number filters-->
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                android:id="@+id/label_number_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/label_number_filter"
+                android:textColor="#2196F3"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/setting_help_number_filter"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_number_filter"
+                tools:ignore="ContentDescription" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_number_filter"
+                style="@style/stroke_blue_button"
+                android:layout_width="60dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/add" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_clear_number_filters"
+                style="@style/stroke_red_button"
+                android:layout_width="60dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="8dp"
+                android:minHeight="0dip"
+                android:text="@string/clear" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_number_filters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
+        </androidx.core.widget.NestedScrollView>
+        <!--    number filters end-->
+
+        <!--    sms content filters-->
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                android:id="@+id/label_content_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/label_content_filter"
+                android:textColor="#2196F3"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/setting_help_sms_content_filter"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_sms_content_filter"
+                tools:ignore="ContentDescription" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_content_filter"
+                style="@style/stroke_blue_button"
+                android:layout_width="60dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/add" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_clear_content_filters"
+                style="@style/stroke_red_button"
+                android:layout_width="60dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="8dp"
+                android:minHeight="0dip"
+                android:text="@string/clear" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_content_filters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
+
+        </androidx.core.widget.NestedScrollView>
+        <!--    sms content filters end-->
+
+
+    </LinearLayout>
+</ScrollView>
