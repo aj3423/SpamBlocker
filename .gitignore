@@ -3,3 +3,4 @@
 *.db
 build/
 app/release/
+app/debug/

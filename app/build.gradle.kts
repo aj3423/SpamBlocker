@@ -1,10 +1,27 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+}
 
+// load signing key for release build
+val keystoreProperties = Properties()
+var keystorePropertiesFile = rootProject.file("/e/android/release_keys/SpamBlocker.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file(keystoreProperties["storeFile"].toString())
+            storePassword = keystoreProperties["storePassword"].toString()
+            keyPassword = keystoreProperties["keyPassword"].toString()
+            keyAlias = keystoreProperties["keyAlias"].toString()
+        }
+    }
     namespace = "spam.blocker"
     compileSdk = 34
 
@@ -25,6 +42,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
