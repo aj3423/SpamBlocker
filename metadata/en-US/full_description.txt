@@ -1,0 +1,10 @@
+It silences unwanted calls & SMS messages without replacing your default Call/SMS app. 
+
+Features:
+
+1. Regex filter for number & SMS content.
+2. From a contact?
+3. Repeated call?
+4. Any specific app has been used recently?
+
+detail: https://github.com/aj3423/SpamBlocker
