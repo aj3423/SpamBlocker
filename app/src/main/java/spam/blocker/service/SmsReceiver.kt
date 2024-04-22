@@ -127,7 +127,15 @@ class SmsReceiver : BroadcastReceiver() {
             for (wrapper in all) {
                 val f = wrapper.filter
 
-                val matches = f.pattern.toRegex().matches(if (wrapper.isNumberFilter) phone else messageBody)
+                val matches = if (wrapper.isNumberFilter) {
+                    f.pattern.toRegex().matches(phone)
+                } else { // sms content filter
+                    if (f.patternExtra != "") {
+                        f.pattern.toRegex().matches(messageBody) && f.patternExtra.toRegex().matches(phone)
+                    } else {
+                        f.pattern.toRegex().matches(messageBody)
+                    }
+                }
 
                 if (matches) {
                     Log.i(Def.TAG, "filter matches: $f")

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
@@ -21,6 +22,7 @@
             app:boxBackgroundColor="@android:color/transparent"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
+            android:hint="@string/filter_pattern"
             app:helperTextTextColor="@color/salmon"
             app:startIconDrawable="@drawable/ic_filter">
 
@@ -28,7 +30,41 @@
                 android:id="@+id/popup_edit_pattern"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/filter_pattern"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- for sms only -->
+        <LinearLayout style="@style/setting_row" android:id="@+id/row_sms_particular_number">
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/for_particular_number" />
+            <ImageView
+                android:id="@+id/popup_help_particular_number"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_for_particular_number"
+                tools:ignore="ContentDescription" />
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_particular_number"
+                style="@style/setting_switch" />
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/container_pattern_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            android:hint="@string/particular_number_pattern"
+            app:helperTextTextColor="@color/salmon"
+            app:startIconDrawable="@drawable/ic_filter">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/popup_edit_pattern_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 

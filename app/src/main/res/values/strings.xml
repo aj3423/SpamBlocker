@@ -5,6 +5,9 @@
     <string name="sms">Sms</string>
     <string name="globally_enabled">Enabled</string>
     <string name="filter_pattern">Regex Pattern</string>
+    <string name="number_pattern">Number Regex Pattern</string>
+    <string name="particular_number_pattern">Particular Number Pattern</string>
+    <string name="sms_content_pattern">Content Regex Pattern</string>
     <string name="invalid_regex_pattern">Invalid regex pattern</string>
     <string name="invalid_integer">Invalid integer</string>
     <string name="filter_desc">Description</string>
@@ -39,6 +42,8 @@
     <string name="allow_recent_apps">Allow Recent Apps</string>
     <string name="allow_contact">Allow Contacts</string>
     <string name="repeated_call">Repeated Call</string>
+    <string name="for_particular_number">For particular number</string>
+    <string name="help_for_particular_number">If enabled, the filter only applies when both number and content match</string>
     <string name="help_globally_enabled">The global switch, this app only works when this is turned on, a quick way to \"disable\" all the filters, turn this off when you temporarily want to receive some call/sms.</string>
     <string name="help_repeated_call">Permit if the call is repeated within 5 minutes. Prior to the filters below.</string>
     <string name="help_permit_contact">Permit if the call is from a contact. Prior to the filters below.</string>

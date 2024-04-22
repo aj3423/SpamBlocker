@@ -11,8 +11,7 @@ object Def {
     const val SETTING_REQUIRE_PERMISSION_ONCE = "require_permission_once"
     const val SETTING_ENABLED = "globally_enable"
 
-
-
+    const val DUNDER_NUM = "__num__"
 
     const val ON_NEW_CALL = "on_new_call"
     const val ON_CALL_READ = "on_call_read"

@@ -37,7 +37,7 @@ class PatternAdapter(
         val green = ctx.resources.getColor(R.color.dark_sea_green, null)
         val red = ctx.resources.getColor(R.color.salmon, null)
 
-        holder.labelPattern.text = f.pattern
+        holder.labelPattern.text = f.patternStr()
         holder.labelPattern.setTextColor(if (f.isWhitelist()) green else red)
         holder.labelDesc.text = f.description
         holder.chkApplyToCall.isChecked = f.isForCall()

@@ -42,7 +42,7 @@ class HistoryAdapter(
         val f = filterTable.findPatternFilterById(ctx, reason.toLong())
 
         val reasonStr = if (f != null) {
-            if (f.description != "") f.description else f.pattern
+            if (f.description != "") f.description else f.patternStr()
         } else {
             ctx.resources.getString(R.string.deleted_filter)
         }

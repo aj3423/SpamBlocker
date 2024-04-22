@@ -9,7 +9,7 @@ import spam.blocker.def.Def
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 20
+        const val DB_VERSION = 21
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter tables ----
@@ -18,6 +18,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
 
         const val COLUMN_ID = "id"
         const val COLUMN_PATTERN = "pattern"
+        const val COLUMN_PATTERN_EXTRA = "pattern_extra"
         const val COLUMN_DESC = "description"
         const val COLUMN_FLAG_CALL_SMS = "flag_call_sms"
         const val COLUMN_PRIORITY = "priority"
@@ -78,6 +79,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                 "CREATE TABLE IF NOT EXISTS $tableName (" +
                         "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "$COLUMN_PATTERN TEXT, " +
+                        "$COLUMN_PATTERN_EXTRA TEXT, " +
                         "$COLUMN_DESC TEXT, " +
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
@@ -116,14 +118,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         Log.i(Def.TAG, "upgrading db $oldVersion -> $newVersion")
 
-//        if ((newVersion >= 14) and (oldVersion < 13)) {
-//            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_READ INTEGER")
-//            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_READ INTEGER")
-//        }
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_NUMBER_FILTER")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_CALL")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_SMS")
-
-        onCreate(db)
+        if ((newVersion >= 21) && (oldVersion < 21)) {
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
+        }
     }
 }

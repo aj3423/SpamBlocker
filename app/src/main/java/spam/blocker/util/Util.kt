@@ -21,6 +21,11 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.LifecycleOwner
+import com.skydoves.balloon.ArrowPositionRules
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAnimation
+import com.skydoves.balloon.BalloonSizeSpec
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
@@ -234,5 +239,26 @@ class Util {
             }
         }
 
+
+        // setup the hint from the imgView.tooltipText
+        fun setupImgHint(ctx: Context, viewLifecycleOwner: LifecycleOwner, imgView: ImageView) {
+            imgView.setOnClickListener {
+                Balloon.Builder(ctx)
+                    .setWidthRatio(0.8f)
+                    .setHeight(BalloonSizeSpec.WRAP)
+                    .setText(imgView.tooltipText.toString())
+                    .setTextColorResource(R.color.white)
+                    .setTextSize(15f)
+                    .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
+                    .setArrowSize(10)
+                    .setArrowPosition(0.5f)
+                    .setPadding(12)
+                    .setCornerRadius(8f)
+                    .setBackgroundColorResource(R.color.dodger_blue)
+                    .setBalloonAnimation(BalloonAnimation.ELASTIC)
+                    .setLifecycleOwner(viewLifecycleOwner)
+                    .build().showAlignBottom(imgView)
+            }
+        }
     }
 }

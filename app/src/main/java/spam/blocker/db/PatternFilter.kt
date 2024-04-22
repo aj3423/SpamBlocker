@@ -27,17 +27,26 @@ class PatternFilter {
 
     var id: Long = 0
     var pattern: String = ""
+    var patternExtra: String = ""
     var description: String = ""
     var priority: Int = 1
     var isBlacklist = true
     var flagCallSms = Flag(Db.FLAG_FOR_BOTH_SMS_CALL)
 
     override fun toString(): String {
-        return "id: $id, pattern: $pattern, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist"
+        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist"
     }
 
     fun isForCall(): Boolean {
         return flagCallSms.Has(Db.FLAG_FOR_CALL)
+    }
+
+    fun patternStr(): String {
+        return if (patternExtra != "")
+            "$pattern   <-   $patternExtra"
+        else
+            pattern
+
     }
 
     fun isForSms(): Boolean {
@@ -75,6 +84,7 @@ abstract class PatternTable {
 
                     f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                     f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
+                    f.patternExtra = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA))
                     f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                     f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                     f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
@@ -98,6 +108,7 @@ abstract class PatternTable {
                 val f = PatternFilter()
                 f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                 f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
+                f.patternExtra = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA))
                 f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                 f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                 f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
@@ -110,13 +121,14 @@ abstract class PatternTable {
         }
     }
 
-    fun listAll(ctx: Context) : List<PatternFilter> {
+    fun listAll(ctx: Context): List<PatternFilter> {
         return listFilters(
             ctx,
             Db.FLAG_FOR_BOTH_SMS_CALL,
             Db.FLAG_BOTH_WHITE_BLACKLIST
         )
     }
+
     fun listFilters(
         ctx: Context,
         flagCallSms: Int,
@@ -160,10 +172,11 @@ abstract class PatternTable {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
+        cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
-        cv.put(Db.COLUMN_IS_BLACK, if(f.isBlacklist) 1 else 0)
+        cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         return db.insert(tableName(), null, cv)
     }
 
@@ -172,10 +185,11 @@ abstract class PatternTable {
         val cv = ContentValues()
         cv.put(Db.COLUMN_ID, f.id)
         cv.put(Db.COLUMN_PATTERN, f.pattern)
+        cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
-        cv.put(Db.COLUMN_IS_BLACK, if(f.isBlacklist) 1 else 0)
+        cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
 
         db.insert(tableName(), null, cv)
     }
@@ -184,10 +198,11 @@ abstract class PatternTable {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
+        cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
-        cv.put(Db.COLUMN_IS_BLACK, if(f.isBlacklist) 1 else 0)
+        cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
 
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }
@@ -214,6 +229,7 @@ open class NumberFilterTable : PatternTable() {
         return Db.TABLE_NUMBER_FILTER
     }
 }
+
 open class ContentFilterTable : PatternTable() {
     override fun tableName(): String {
         return Db.TABLE_CONTENT_FILTER

@@ -97,11 +97,17 @@ class SettingFragment : Fragment() {
         setupFilter(
             root,
             R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_clear_number_filters,
-            numberFilters, NumberFilterTable(), false)
+            numberFilters, NumberFilterTable(), false
+        )
         setupFilter(
             root,
-            R.id.recycler_content_filters, R.id.btn_add_content_filter, R.id.btn_clear_content_filters,
-            contentFilters, ContentFilterTable(), true)
+            R.id.recycler_content_filters,
+            R.id.btn_add_content_filter,
+            R.id.btn_clear_content_filters,
+            contentFilters,
+            ContentFilterTable(),
+            true
+        )
 
         // tooltips
         setupTooltips(root)
@@ -117,6 +123,7 @@ class SettingFragment : Fragment() {
             spf.setAllowRepeated(!spf.isRepeatedAllowed())
         }
     }
+
     private fun setupAllowContacts(root: View) {
         val ctx = requireContext()
         val spf = SharedPref(ctx)
@@ -151,6 +158,7 @@ class SettingFragment : Fragment() {
             }
         }
     }
+
     @SuppressLint("NotifyDataSetChanged", "ClickableViewAccessibility")
     private fun setupRecentApps(root: View) {
         val ctx = requireContext()
@@ -211,6 +219,7 @@ class SettingFragment : Fragment() {
             popupRecentApps()
         }
     }
+
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("NotifyDataSetChanged")
     private fun setupFilter(
@@ -241,21 +250,21 @@ class SettingFragment : Fragment() {
             val i = filters.indexOf(clickedF)
 
             val dialog = PopupEditFilterFragment(
-                filters[i]
-            , { newF -> // on save button clicked
-                // 1. update this filter in memory
-                val existing = filters[i]
-                existing.pattern = newF.pattern
-                existing.description = newF.description
-                existing.flagCallSms = newF.flagCallSms
-                existing.isBlacklist = newF.isBlacklist
+                filters[i], { newF -> // on save button clicked
+                    // 1. update this filter in memory
+                    val existing = filters[i]
+                    existing.pattern = newF.pattern
+                    existing.patternExtra = newF.patternExtra
+                    existing.description = newF.description
+                    existing.flagCallSms = newF.flagCallSms
+                    existing.isBlacklist = newF.isBlacklist
 
-                // 2. update in db
-                dbTable.updatePatternFilter(ctx, existing.id, existing)
+                    // 2. update in db
+                    dbTable.updatePatternFilter(ctx, existing.id, existing)
 
-                // 3. gui update
-                asyncReloadFromDb()
-            } , smsOnly)
+                    // 3. gui update
+                    asyncReloadFromDb()
+                }, smsOnly)
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }, filters, smsOnly)
@@ -277,14 +286,14 @@ class SettingFragment : Fragment() {
         val btnAdd = root.findViewById<MaterialButton>(addBtnId)
         btnAdd.setOnClickListener {
             val dialog = PopupEditFilterFragment(
-                PatternFilter()
-            , { newF -> // callback
-                // 1. add to db
-                dbTable.addNewPatternFilter(ctx, newF)
+                PatternFilter(), { newF -> // callback
+                    // 1. add to db
+                    dbTable.addNewPatternFilter(ctx, newF)
 
-                // 2. refresh gui
-                asyncReloadFromDb()
-            }, smsOnly)
+                    // 2. refresh gui
+                    asyncReloadFromDb()
+                }, smsOnly
+            )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }
@@ -341,30 +350,32 @@ class SettingFragment : Fragment() {
     }
 
     private fun setupTooltips(root: View) {
-        fun setup(imgView: ImageView) {
-            imgView.setOnClickListener {
-                Balloon.Builder(requireContext())
-                    .setWidthRatio(1.0f)
-                    .setHeight(BalloonSizeSpec.WRAP)
-                    .setText(imgView.tooltipText.toString())
-                    .setTextColorResource(R.color.white)
-                    .setTextSize(15f)
-                    .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-                    .setArrowSize(10)
-                    .setArrowPosition(0.5f)
-                    .setPadding(12)
-                    .setCornerRadius(8f)
-                    .setBackgroundColorResource(R.color.dodger_blue)
-                    .setBalloonAnimation(BalloonAnimation.ELASTIC)
-                    .setLifecycleOwner(viewLifecycleOwner)
-                    .build().showAlignBottom(imgView)
-            }
-        }
-        setup(root.findViewById(R.id.setting_help_globally_enabled))
-        setup(root.findViewById(R.id.setting_help_permit_contacts))
-        setup(root.findViewById(R.id.setting_help_repeated_call))
-        setup(root.findViewById(R.id.setting_help_recent_apps))
-        setup(root.findViewById(R.id.setting_help_number_filter))
-        setup(root.findViewById(R.id.setting_help_sms_content_filter))
+        val ctx = requireContext()
+        Util.setupImgHint(
+            ctx,
+            viewLifecycleOwner,
+            root.findViewById(R.id.setting_help_globally_enabled)
+        )
+        Util.setupImgHint(
+            ctx,
+            viewLifecycleOwner,
+            root.findViewById(R.id.setting_help_permit_contacts)
+        )
+        Util.setupImgHint(
+            ctx,
+            viewLifecycleOwner,
+            root.findViewById(R.id.setting_help_repeated_call)
+        )
+        Util.setupImgHint(ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps))
+        Util.setupImgHint(
+            ctx,
+            viewLifecycleOwner,
+            root.findViewById(R.id.setting_help_number_filter)
+        )
+        Util.setupImgHint(
+            ctx,
+            viewLifecycleOwner,
+            root.findViewById(R.id.setting_help_sms_content_filter)
+        )
     }
 }
