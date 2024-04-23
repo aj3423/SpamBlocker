@@ -31,7 +31,7 @@ Some typical patterns:
 - Content contain "verification": `.*verification.*`
 
 #### 2. In Contacts
-Checks whether the phone number belongs to a contact.
+Permit if the number belongs to a contact.
 
 #### 3. Repeated Call
 Calls repeated within 5 minutes will be permitted.
