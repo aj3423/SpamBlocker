@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
 }
 
-// load signing key for release build
+// load signing key for release
 val keystoreProperties = Properties()
 var keystorePropertiesFile = rootProject.file("/e/android/release_keys/SpamBlocker.properties")
 if (keystorePropertiesFile.exists()) {
@@ -36,13 +36,19 @@ android {
     }
 
     buildTypes {
+
+        // for github action only
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName(
+                // the keystore file doesn't exist on github action,
+                // use "debug" instead and it will be signed by signing action later.
+                if (keystorePropertiesFile.exists()) "release" else "debug"
+            )
         }
     }
     compileOptions {
