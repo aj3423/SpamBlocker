@@ -17,6 +17,8 @@ import android.graphics.Shader
 import android.net.Uri
 import android.provider.ContactsContract
 import android.util.Log
+import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -259,6 +261,19 @@ class Util {
                     .setLifecycleOwner(viewLifecycleOwner)
                     .build().showAlignBottom(imgView)
             }
+        }
+        fun preventMenuClosingWhenItemClicked(ctx: Context, item: MenuItem) {
+            item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
+            item.actionView = View(ctx)
+            item.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+                override fun onMenuItemActionExpand(item: MenuItem): Boolean {
+                    return false
+                }
+
+                override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
+                    return false
+                }
+            })
         }
     }
 }

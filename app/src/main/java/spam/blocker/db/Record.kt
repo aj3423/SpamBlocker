@@ -20,6 +20,9 @@ class Record {
     override fun toString(): String {
         return "record: $id, $peer, $time, $result, $reason, $read"
     }
+    fun isBlocked(): Boolean {
+        return !isNotBlocked()
+    }
     fun isNotBlocked(): Boolean {
         return (result == Db.RESULT_ALLOWED_WHITELIST) or
                 (result == Db.RESULT_ALLOWED_BY_DEFAULT) or

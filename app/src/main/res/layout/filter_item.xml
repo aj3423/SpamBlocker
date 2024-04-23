@@ -17,9 +17,10 @@
 
         <TextView
             android:id="@+id/text_filter_pattern"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:maxLines="2"
             android:text="@string/filter_pattern"
             android:textColor="@color/salmon"
             android:textSize="18sp"
@@ -27,19 +28,22 @@
             app:layout_constraintBottom_toTopOf="@+id/text_filter_desc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_percent="0.6" />
 
         <TextView
             android:id="@+id/text_filter_desc"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:maxLines="1"
             android:text="@string/filter_desc"
             android:textColor="@color/mid_grey"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_filter_pattern" />
+            app:layout_constraintTop_toBottomOf="@+id/text_filter_pattern"
+            app:layout_constraintWidth_percent="0.6" />
 
         <CheckedTextView
             android:id="@+id/chk_applied_to_call"

@@ -71,12 +71,18 @@ class MainActivity : AppCompatActivity() {
             val navController = findNavController(R.id.nav_host_fragment_activity_main)
             navView.setupWithNavController(navController)
 
+            val showPassed = spf.getShowPassed()
+            val showBlocked = spf.getShowBlocked()
 
             // update number indicator
             callViewModel.records.clear()
-            callViewModel.records.addAll(callTable.listRecords(this))
+            callViewModel.records.addAll(callTable.listRecords(this).filter {
+                (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
+            })
             smsViewModel.records.clear()
-            smsViewModel.records.addAll(smsTable.listRecords(this))
+            smsViewModel.records.addAll(smsTable.listRecords(this).filter {
+                (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
+            })
 
             // go to last tab
             when (spf.getActiveTab()) {
@@ -86,8 +92,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
-
-
                 when (destination.id) {
                     R.id.navigation_call -> {
                         promptIfScreeningServiceNotEnabled()
@@ -110,13 +114,8 @@ class MainActivity : AppCompatActivity() {
             navView.setOnItemReselectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.navigation_call -> {
-//                        val callIntent = Intent(Intent.ACTION_VIEW)
-//                        callIntent.type = CallLog.Calls.CONTENT_TYPE
-//                        startActivity(callIntent)
-
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("content://call_log/calls"))
                         startActivity(intent)
-
                     }
                     R.id.navigation_sms -> {
                         val defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(this)

@@ -59,5 +59,8 @@
     <string name="new_sms_received">New Sms received</string>
     <string name="mark_all_as_read">Mark all as read</string>
     <string name="delete_all">Delete all</string>
+    <string name="show_passed">Show Passed</string>
+    <string name="show_blocked">Show Blocked</string>
+
 
 </resources>

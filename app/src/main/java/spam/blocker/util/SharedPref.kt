@@ -90,10 +90,20 @@ class SharedPref(context: Context) {
     fun isGloballyEnabled(): Boolean {
         return readBoolean(Def.SETTING_ENABLED, false)
     }
-    fun setGloballyEnabled(enabled: Boolean) {
-        writeBoolean(Def.SETTING_ENABLED, enabled)
-    }
     fun toggleGloballyEnabled() {
         writeBoolean(Def.SETTING_ENABLED, !isGloballyEnabled())
+    }
+
+    fun getShowPassed(): Boolean {
+        return readBoolean(Def.SETTING_SHOW_PASSED, true)
+    }
+    fun setShowPassed(enabled: Boolean) {
+        writeBoolean(Def.SETTING_SHOW_PASSED, enabled)
+    }
+    fun getShowBlocked(): Boolean {
+        return readBoolean(Def.SETTING_SHOW_BLOCKED, true)
+    }
+    fun setShowBlocked(enabled: Boolean) {
+        writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled)
     }
 }

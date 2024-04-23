@@ -10,6 +10,9 @@ object Def {
     const val SETTING_ACTIVE_TAB = "active_tab"
     const val SETTING_REQUIRE_PERMISSION_ONCE = "require_permission_once"
     const val SETTING_ENABLED = "globally_enable"
+    const val SETTING_SHOW_PASSED = "show_passed"
+    const val SETTING_SHOW_BLOCKED = "show_blocked"
+
 
     const val DUNDER_NUM = "__num__"
 

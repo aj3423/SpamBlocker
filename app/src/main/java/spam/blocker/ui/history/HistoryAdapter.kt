@@ -24,13 +24,12 @@ import spam.blocker.util.Util.Companion.getAppsMap
 
 
 class HistoryAdapter(
-    context: Context,
+    private val ctx: Context,
     private var table: RecordTable,
     private var records: ObservableArrayList<Record>
 ) :
     RecyclerView.Adapter<HistoryAdapter.Holder>()
 {
-    private var ctx: Context = context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.record, parent, false);

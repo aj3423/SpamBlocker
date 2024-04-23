@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import spam.blocker.R
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -31,6 +34,8 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.RecordTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.util.SharedPref
+import spam.blocker.util.Util
 
 open class HistoryFragment<bindingT : ViewBinding>(
     private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> bindingT,
@@ -55,10 +60,10 @@ open class HistoryFragment<bindingT : ViewBinding>(
         savedInstanceState: Bundle?
     ): View {
         val ctx = requireContext()
+        val spf = SharedPref(ctx)
 
         _binding = inflateMethod.invoke(inflater, container, false)
         val root: View = binding!!.root
-
 
         recycler = root.findViewById(R.id.recycler_history)
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -112,15 +117,55 @@ open class HistoryFragment<bindingT : ViewBinding>(
         }
         ItemTouchHelper(swipeLeftCallback).attachToRecyclerView(recycler)
 
+        val fab_display_filter = root.findViewById<FloatingActionButton>(R.id.fab_display_filter)
+        fab_display_filter.setOnClickListener {
+            val popup = PopupMenu(ctx, fab_display_filter)
+            popup.menuInflater.inflate(R.menu.display_filter_menu, popup.menu)
+            
+            val chk_show_passed = popup.menu.findItem(R.id.chk_show_passed)
+            val chk_show_blocked = popup.menu.findItem(R.id.chk_show_blocked)
+            chk_show_passed.isChecked = spf.getShowPassed()
+            chk_show_blocked.isChecked = spf.getShowBlocked()
 
-        val fab = root.findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener {
+            popup.setOnMenuItemClickListener {
+
+                it.setChecked(!it.isChecked)
+
+                Util.preventMenuClosingWhenItemClicked(ctx, it)
+
+                when (it.itemId) {
+                    R.id.chk_show_passed -> {
+                        spf.setShowPassed(it.isChecked)
+                        asyncReloadFromDb()
+                    }
+
+                    R.id.chk_show_blocked -> {
+                        spf.setShowBlocked(it.isChecked)
+                        asyncReloadFromDb()
+                    }
+
+                    else -> {}
+                }
+                false
+            }
+
+            popup.show()
+        }
+
+        val fab_clear = root.findViewById<FloatingActionButton>(R.id.fab_clear)
+        fab_clear.setOnClickListener {
             table.deleteAll(ctx)
             asyncReloadFromDb()
         }
         // hide the fab when scrolling
         recycler.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
-            if (oldScrollY < 0) fab.hide() else fab.show()
+            if (oldScrollY < 0) {
+                fab_display_filter.hide()
+                fab_clear.hide()
+            } else {
+                fab_display_filter.show()
+                fab_clear.show()
+            }
         }
 
         return root
@@ -142,7 +187,13 @@ open class HistoryFragment<bindingT : ViewBinding>(
     @OptIn(DelicateCoroutinesApi::class)
     private fun asyncReloadFromDb() {
         GlobalScope.launch(Dispatchers.IO) {
-            val records = table.listRecords(requireContext())
+            val spf = SharedPref(requireContext())
+            val showPassed = spf.getShowPassed()
+            val showBlocked = spf.getShowBlocked()
+
+            val records = table.listRecords(requireContext()).filter {
+                (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
+            }
             withContext(Dispatchers.Main) {
                 viewModel.records.clear()
                 viewModel.records.addAll(records)

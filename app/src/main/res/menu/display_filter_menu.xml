@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/chk_show_passed"
+    android:title="@string/show_passed"
+    android:checkable="true"/>
+<item
+    android:id="@+id/chk_show_blocked"
+    android:title="@string/show_blocked"
+    android:checkable="true"/>
+</menu>
