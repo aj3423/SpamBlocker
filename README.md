@@ -13,7 +13,7 @@ An Android Call/SMS blocker.
 | ----                                               | ----                                                                                                                                               | ----                                                                                                       |
 | What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaion                                                                               |
 | What it doesn't                                    | Replace the default call app                                                                                                                       | Replace the default sms app                                                                                |
-| How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | Turn off the notification of the default sms app(note: you need to turn it off manually in settings), this app takes over the notification of incoming message |
+| How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | Turn off the notification of the default sms app<br>(Note: you need to turn it off manually in system settings).<br>This app takes over the notification of incoming message. |
 | Filters supported<br>([explained below](#Filters)) | 1. Phone number (regex)<br>2. In Contacts<br>3. Repeated call<br>4. Recent apps                                                                     | 1. Phone number (regex)<br>2. In Contacts<br>3. Sms content (regex)                                        |
 
 
@@ -34,7 +34,7 @@ Some typical patterns:
 Checks whether the phone number belongs to a contact.
 
 #### 3. Repeated Call
-It will be allowed if the number has been calling you multiple times whin 5 minutes.
+Calls repeated within 5 minutes will be permitted.
 
 #### 4. Recent Apps
 Any call would be permitted if any of these apps has been used within 5 minutes.
