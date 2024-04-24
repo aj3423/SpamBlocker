@@ -1,11 +1,13 @@
 package spam.blocker.ui.setting
 
 import android.annotation.SuppressLint
+import android.app.NotificationManager
 import android.content.Context
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckedTextView
+import android.widget.ImageView
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,6 +49,12 @@ class PatternAdapter(
         }
 
         holder.labelPriority.text = ctx.resources.getString(R.string.priority) + ": ${f.priority}"
+
+        holder.imgBellRinging.visibility = if(f.importance >= NotificationManager.IMPORTANCE_DEFAULT) View.VISIBLE else View.GONE
+        holder.imgHeadsUp.visibility = if(f.importance == NotificationManager.IMPORTANCE_HIGH) View.VISIBLE else View.GONE
+        holder.imgShade.visibility = if(f.importance == NotificationManager.IMPORTANCE_MIN) View.VISIBLE else View.GONE
+        holder.imgStatusbarShadde.visibility = if(f.importance >= NotificationManager.IMPORTANCE_LOW) View.VISIBLE else View.GONE
+
     }
 
     override fun getItemCount() = filters.size
@@ -58,6 +66,10 @@ class PatternAdapter(
         var chkApplyToCall: CheckedTextView
         var chkApplyToSms: CheckedTextView
         var labelPriority: TextView
+        var imgBellRinging: ImageView
+        var imgHeadsUp: ImageView
+        var imgShade: ImageView
+        var imgStatusbarShadde: ImageView
 
         init {
             labelPattern = itemView.findViewById(R.id.text_filter_pattern)
@@ -65,6 +77,10 @@ class PatternAdapter(
             chkApplyToCall = itemView.findViewById(R.id.chk_applied_to_call)
             chkApplyToSms = itemView.findViewById(R.id.chk_applied_to_sms)
             labelPriority = itemView.findViewById(R.id.label_priority)
+            imgBellRinging = itemView.findViewById(R.id.img_bell_ringing)
+            imgHeadsUp = itemView.findViewById(R.id.img_heads_up)
+            imgShade = itemView.findViewById(R.id.img_shade)
+            imgStatusbarShadde = itemView.findViewById(R.id.img_statusbar_shade)
         }
     }
 }

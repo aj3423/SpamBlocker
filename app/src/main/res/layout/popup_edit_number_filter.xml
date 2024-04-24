@@ -106,17 +106,16 @@
                 android:textColorHint="@color/hint_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+        <LinearLayout style="@style/setting_row">
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
-                android:text="@string/apply_to" />
+                style="@style/setting_label"
+                android:text="@string/apply_to"
+                android:textColor="@color/hint_grey" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <CheckBox
                 android:id="@+id/popup_chk_call"
@@ -134,29 +133,69 @@
 
         </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/popup_radio_blackwhitelist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <LinearLayout style="@style/setting_row">
+            <TextView
+                style="@style/setting_label"
+                android:text="@string/type"
+                android:textColor="@color/hint_grey" />
 
-            <RadioButton
-                android:id="@+id/popup_radio_whitelist"
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:id="@+id/popup_radio_blackwhitelist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/whitelist" />
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/popup_radio_blacklist"
+                <RadioButton
+                    android:id="@+id/popup_radio_whitelist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/whitelist" />
+
+                <RadioButton
+                    android:id="@+id/popup_radio_blacklist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/blacklist" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/setting_row" android:id="@+id/row_importance">
+            <TextView
+                android:id="@+id/label_importance"
+                style="@style/setting_label"
+                android:text="@string/notification"
+                android:textColor="@color/hint_grey" />
+
+            <ImageView
+                android:id="@+id/popup_help_importance"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_importance"
+                tools:ignore="ContentDescription" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/spin_importance"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/blacklist" />
-        </RadioGroup>
+                android:layout_height="match_parent"
+                android:entries="@array/importance_list"/>
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/popup_btn_save"
             style="@style/stroke_blue_button"
+            android:layout_marginTop="10dp"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:layout_gravity="end"

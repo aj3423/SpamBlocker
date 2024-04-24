@@ -1,5 +1,6 @@
 package spam.blocker.service
 
+import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -15,13 +16,15 @@ import spam.blocker.db.Record
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.main.MainActivity
+import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
 
 class SmsReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context?, intent: Intent?) {
+
+    override fun onReceive(ctx: Context?, intent: Intent?) {
         Log.d(Def.TAG, "onReceive in SmsReceiver")
-        if (!SharedPref(context!!).isGloballyEnabled()) {
+        if (!SharedPref(ctx!!).isGloballyEnabled()) {
             return
         }
         val action = intent?.action
@@ -32,29 +35,31 @@ class SmsReceiver : BroadcastReceiver() {
             val messageBody = msg.messageBody;
             Log.d(Def.TAG, "onReceive sms from $peer: $messageBody")
 
-            val r = shouldBlock(context, peer, messageBody)
-            val block = r.first
-            val result = r.second
-            val reason = r.third
+            val r = shouldBlock(ctx, peer, messageBody)
 
             // 1. log to db
             val rec = Record()
             rec.peer = peer
             rec.time = System.currentTimeMillis()
-            rec.result = result
-            rec.reason = reason
-            val id = SmsTable().addNewRecord(context, rec)
+            rec.result = r.result
+            rec.reason = r.reason()
+            val id = SmsTable().addNewRecord(ctx, rec)
 
+            if (r.shouldBlock) {
+                var importance = NotificationManager.IMPORTANCE_LOW // default: LOW
 
-            if (block) {
+                if (r.result == Db.RESULT_BLOCKED_BLACKLIST || r.result == Db.RESULT_BLOCKED_BY_CONTENT) {
+                    importance = r.byFilter!!.importance
+                }
+
                 // click the notification to launch this app
-                val callbackIntent = Intent(context, MainActivity::class.java)
-                Util.showNotification(
-                    context,
+                val callbackIntent = Intent(ctx, MainActivity::class.java)
+                Notification.show(
+                    ctx,
                     1,
-                    context.resources.getString(R.string.spam_sms_blocked),
+                    ctx.resources.getString(R.string.spam_sms_blocked),
                     peer,
-                    true,
+                    importance,
                     callbackIntent
                 )
             } else {
@@ -64,18 +69,18 @@ class SmsReceiver : BroadcastReceiver() {
                 val smsUri = Uri.parse("smsto:$peer")
                 val callbackIntent = Intent(Intent.ACTION_SENDTO, smsUri)
 
-                val contact = Util.findContact(context, peer)
+                val contact = Util.findContact(ctx, peer)
 
-                Util.showNotification(
-                    context,
+                Notification.show(
+                    ctx,
                     notificationId,
-                    context.resources.getString(R.string.new_sms_received),
+                    ctx.resources.getString(R.string.new_sms_received),
                     "${contact?.name ?: peer}: $messageBody",
-                    false,
+                    NotificationManager.IMPORTANCE_HIGH,
                     callbackIntent
                 )
             }
-            broadcastNewSms(context, block, id)
+            broadcastNewSms(ctx, r.shouldBlock, id)
         }
     }
 
@@ -94,7 +99,7 @@ class SmsReceiver : BroadcastReceiver() {
         ctx: Context,
         phone: String,
         messageBody: String
-    ): Triple<Boolean, Int, String> {
+    ): CheckResult {
 
         val spf = SharedPref(ctx)
 
@@ -103,7 +108,8 @@ class SmsReceiver : BroadcastReceiver() {
             val contact = Util.findContact(ctx, phone)
             if (contact != null) {
                 Log.i(Def.TAG, "is contact")
-                return Triple(false, Db.RESULT_ALLOWED_AS_CONTACT, contact.name)
+                return CheckResult(false, Db.RESULT_ALLOWED_AS_CONTACT)
+                    .setContactName(contact.name)
             }
         }
 
@@ -147,13 +153,13 @@ class SmsReceiver : BroadcastReceiver() {
                         if (block) Db.RESULT_BLOCKED_BY_CONTENT else Db.RESULT_ALLOWED_BY_CONTENT
                     }
 
-                    return Triple(block, result, f.id.toString())
+                    return CheckResult(block, result).setFilter(f)
                 }
             }
         }
 
 
         // 4. pass by default
-        return Triple(false, Db.RESULT_ALLOWED_BY_DEFAULT, "")
+        return CheckResult(false, Db.RESULT_ALLOWED_BY_DEFAULT)
     }
 }

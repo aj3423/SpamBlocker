@@ -1,11 +1,7 @@
 package spam.blocker.util
 
 import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -20,9 +16,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleOwner
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
@@ -170,31 +164,7 @@ class Util {
             }
         }
 
-        fun showNotification(ctx: Context, notificationId: Int, title: String, body: String, silent: Boolean, callbackIntent: Intent) {
-            val builder = NotificationCompat.Builder(ctx, "spam.blocker")
-            if (silent) {
-                builder.setSilent(true) // disable the notification sound
-            }
-            val channel = NotificationChannel("spam.blocker", "spam.blocker", NotificationManager.IMPORTANCE_DEFAULT)
-            val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
 
-            manager.createNotificationChannel(channel)
-            builder.setChannelId("spam.blocker").
-            setContentTitle(title).
-            setSmallIcon(R.drawable.bell_filter).
-            setContentText(body)
-
-
-            val pendingIntent = PendingIntent.getActivity(ctx, 0, callbackIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-            builder.setContentIntent(pendingIntent)
-
-            val notification = builder.build()
-            manager.notify(notificationId, notification)
-        }
-        fun cancelNotification(ctx: Context) {
-            val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
-            manager.cancelAll()
-        }
 
         private var cacheAppList : List<AppInfo>? = null
         @SuppressLint("UseCompatLoadingForDrawables")
@@ -243,9 +213,9 @@ class Util {
 
 
         // setup the hint from the imgView.tooltipText
-        fun setupImgHint(ctx: Context, viewLifecycleOwner: LifecycleOwner, imgView: ImageView) {
+        fun setupImgHint(ctx: Context, viewLifecycleOwner: LifecycleOwner, imgView: ImageView, alignBottom: Boolean = true) {
             imgView.setOnClickListener {
-                Balloon.Builder(ctx)
+                val balloon = Balloon.Builder(ctx)
                     .setWidthRatio(0.8f)
                     .setHeight(BalloonSizeSpec.WRAP)
                     .setText(imgView.tooltipText.toString())
@@ -259,7 +229,13 @@ class Util {
                     .setBackgroundColorResource(R.color.dodger_blue)
                     .setBalloonAnimation(BalloonAnimation.ELASTIC)
                     .setLifecycleOwner(viewLifecycleOwner)
-                    .build().showAlignBottom(imgView)
+                    .build()
+
+                if (alignBottom) {
+                    balloon.showAlignBottom(imgView)
+                } else {
+                    balloon.showAlignTop(imgView)
+                }
             }
         }
         fun preventMenuClosingWhenItemClicked(ctx: Context, item: MenuItem) {

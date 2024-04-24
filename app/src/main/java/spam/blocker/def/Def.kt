@@ -1,5 +1,7 @@
 package spam.blocker.def
 
+import android.app.NotificationManager
+
 object Def {
     const val TAG = "1111111111111111"
 
@@ -13,14 +15,9 @@ object Def {
     const val SETTING_SHOW_PASSED = "show_passed"
     const val SETTING_SHOW_BLOCKED = "show_blocked"
 
-
-    const val DUNDER_NUM = "__num__"
-
     const val ON_NEW_CALL = "on_new_call"
-    const val ON_CALL_READ = "on_call_read"
-
     const val ON_NEW_SMS = "on_new_sms"
-    const val ON_SMS_READ = "on_sms_read"
 
+    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
 
 }

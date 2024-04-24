@@ -1,6 +1,7 @@
 package spam.blocker.db
 
 import android.annotation.SuppressLint
+import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
@@ -32,9 +33,10 @@ class PatternFilter {
     var priority: Int = 1
     var isBlacklist = true
     var flagCallSms = Flag(Db.FLAG_FOR_BOTH_SMS_CALL)
+    var importance = Def.DEF_SPAM_IMPORTANCE
 
     override fun toString(): String {
-        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist"
+        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance"
     }
 
     fun isForCall(): Boolean {
@@ -46,7 +48,6 @@ class PatternFilter {
             "$pattern   <-   $patternExtra"
         else
             pattern
-
     }
 
     fun isForSms(): Boolean {
@@ -84,11 +85,15 @@ abstract class PatternTable {
 
                     f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                     f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
-                    f.patternExtra = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA))
+                    val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
+                    f.patternExtra = if(it.isNull(columnExtra)) "" else it.getString(columnExtra) // for historical compatibility
                     f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                     f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                     f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
                     f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
+                    val columnImportance = it.getColumnIndex(Db.COLUMN_IMPORTANCE)
+                    f.importance = if(it.isNull(columnImportance)) Def.DEF_SPAM_IMPORTANCE else it.getInt(columnImportance) // for historical compatibility
+
                     ret += f
                 } while (it.moveToNext())
             }
@@ -108,11 +113,14 @@ abstract class PatternTable {
                 val f = PatternFilter()
                 f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                 f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
-                f.patternExtra = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA))
+                val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
+                f.patternExtra = if(it.isNull(columnExtra)) "" else it.getString(columnExtra) // for historical compatibility
                 f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                 f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
-                f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
                 f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
+                f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
+                val columnImportance = it.getColumnIndex(Db.COLUMN_IMPORTANCE)
+                f.importance = if(it.isNull(columnImportance)) Def.DEF_SPAM_IMPORTANCE else it.getInt(columnImportance) // for historical compatibility
 
                 return f
             } else {
@@ -177,6 +185,8 @@ abstract class PatternTable {
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
+        cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+
         return db.insert(tableName(), null, cv)
     }
 
@@ -190,6 +200,7 @@ abstract class PatternTable {
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
+        cv.put(Db.COLUMN_IMPORTANCE, f.importance)
 
         db.insert(tableName(), null, cv)
     }
@@ -203,6 +214,7 @@ abstract class PatternTable {
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
+        cv.put(Db.COLUMN_IMPORTANCE, f.importance)
 
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }

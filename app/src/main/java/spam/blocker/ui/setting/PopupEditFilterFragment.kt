@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Spinner
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
@@ -56,6 +59,9 @@ class PopupEditFilterFragment(
         val radio_whitelist = view.findViewById<RadioButton>(R.id.popup_radio_whitelist)
         val radio_blacklist = view.findViewById<RadioButton>(R.id.popup_radio_blacklist)
         val edit_priority = view.findViewById<TextInputEditText>(R.id.edit_priority)
+        val row_importance = view.findViewById<LinearLayout>(R.id.row_importance)
+        val help_importance = view.findViewById<ImageView>(R.id.popup_help_importance)
+        val spin_importance = view.findViewById<Spinner>(R.id.spin_importance)
 
         val btn_save = view.findViewById<MaterialButton>(R.id.popup_btn_save)
 
@@ -84,18 +90,30 @@ class PopupEditFilterFragment(
             row_particular.visibility = View.GONE
             container_pattern_phone.visibility = View.GONE
         }
+
+        // description
         edit_desc.setText(init.description)
+        // priority
+        edit_priority.setText(init.priority.toString())
+        // call / sms
         chk_for_call.isChecked = init.isForCall()
         if (forSms) {
             chk_for_call.visibility = View.INVISIBLE
         }
         chk_for_sms.isChecked = init.isForSms()
+        // whitelist / blacklist
         if (init.isWhitelist()) {
             radio_blackwhitelist.check(R.id.popup_radio_whitelist)
         } else if (init.isBlacklist) {
             radio_blackwhitelist.check(R.id.popup_radio_blacklist)
         }
-        edit_priority.setText(init.priority.toString())
+        row_importance.visibility = if(init.isBlacklist) View.VISIBLE else View.GONE
+        radio_blackwhitelist.setOnCheckedChangeListener { _, checkedId ->
+            row_importance.visibility = if (checkedId == R.id.popup_radio_blacklist) View.VISIBLE else View.GONE
+        }
+        // importance
+        Util.setupImgHint(ctx, viewLifecycleOwner, help_importance, false)
+        spin_importance.setSelection(init.importance)
 
         btn_save.setOnClickListener {
             init.pattern = edit_pattern.text.toString()
@@ -105,6 +123,7 @@ class PopupEditFilterFragment(
                 init.patternExtra = ""
             }
             init.description = edit_desc.text.toString()
+            init.priority = Integer.parseInt(edit_priority.text.toString())
             init.setForCall(chk_for_call.isChecked)
             init.setForSms(chk_for_sms.isChecked)
             if (radio_blacklist.isChecked) {
@@ -113,7 +132,7 @@ class PopupEditFilterFragment(
             if (radio_whitelist.isChecked) {
                 init.isBlacklist = false
             }
-            init.priority = Integer.parseInt(edit_priority.text.toString())
+            init.importance = spin_importance.selectedItemPosition
             if (Util.isPatternValid(init.pattern) && Util.isPatternValid(init.patternExtra)) {
                 close()
                 handleSave(init)

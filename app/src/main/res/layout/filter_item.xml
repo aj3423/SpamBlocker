@@ -11,8 +11,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="2dp">
+        android:paddingStart="10dp"
+        android:paddingEnd="6dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp">
 
 
         <TextView
@@ -35,7 +37,7 @@
             android:id="@+id/text_filter_desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:maxLines="1"
             android:text="@string/filter_desc"
             android:textColor="@color/mid_grey"
@@ -43,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_filter_pattern"
-            app:layout_constraintWidth_percent="0.6" />
+            app:layout_constraintWidth_percent="0.58" />
 
         <CheckedTextView
             android:id="@+id/chk_applied_to_call"
@@ -57,13 +59,14 @@
             android:textColor="@color/mid_grey"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/chk_applied_to_sms"
-            app:layout_constraintTop_toTopOf="@+id/text_filter_pattern" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlCompat" />
 
         <CheckedTextView
             android:id="@+id/chk_applied_to_sms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="2dp"
             android:checkMark="?android:attr/listChoiceIndicatorMultiple"
             android:gravity="center_vertical"
             android:text="@string/sms"
@@ -71,7 +74,53 @@
             android:textColor="@color/mid_grey"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/chk_applied_to_call" />
+            app:layout_constraintTop_toTopOf="@+id/chk_applied_to_call"
+            tools:ignore="RtlCompat" />
+
+        <ImageView
+            android:id="@+id/img_bell_ringing"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/ic_bell_ringing"
+            app:layout_constraintTop_toTopOf="@+id/label_priority"
+            app:layout_constraintEnd_toStartOf="@id/img_heads_up"
+            app:layout_constraintBottom_toBottomOf="@+id/label_priority"
+            tools:ignore="ContentDescription"
+            app:tint="@color/orange" />
+        <ImageView
+            android:id="@+id/img_heads_up"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/ic_heads_up"
+            app:layout_constraintTop_toTopOf="@+id/label_priority"
+            app:layout_constraintEnd_toStartOf="@id/img_shade"
+            app:layout_constraintBottom_toBottomOf="@+id/label_priority"
+            tools:ignore="ContentDescription"
+            app:tint="@color/dark_orange"/>
+        <ImageView
+            android:id="@+id/img_shade"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="2dp"
+            android:src="@drawable/ic_shade"
+            app:layout_constraintTop_toTopOf="@+id/label_priority"
+            app:layout_constraintEnd_toStartOf="@id/img_statusbar_shade"
+            app:layout_constraintBottom_toBottomOf="@+id/label_priority"
+            tools:ignore="ContentDescription"
+            app:tint="@color/white"/>
+        <ImageView
+            android:id="@+id/img_statusbar_shade"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_statusbar_shade"
+            app:layout_constraintTop_toTopOf="@+id/label_priority"
+            app:layout_constraintEnd_toStartOf="@id/label_priority"
+            app:layout_constraintBottom_toBottomOf="@+id/label_priority"
+            tools:ignore="ContentDescription"
+            app:tint="@color/white"/>
 
         <TextView
             android:id="@+id/label_priority"
@@ -82,9 +131,8 @@
             android:text="@string/priority"
             android:textColor="@color/purple_200"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/text_filter_desc"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/text_filter_desc" />
+            app:layout_constraintTop_toBottomOf="@id/chk_applied_to_sms" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

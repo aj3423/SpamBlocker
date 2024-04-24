@@ -13,9 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 style="@style/setting_label"
                 android:text="@string/globally_enabled" />
@@ -35,7 +33,6 @@
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 style="@style/setting_label"
                 android:text="@string/dark_theme" />
@@ -48,7 +45,6 @@
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 style="@style/setting_label"
                 android:text="@string/allow_contact" />
@@ -68,7 +64,6 @@
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 style="@style/setting_label"
                 android:text="@string/allow_repeated_call" />
@@ -90,7 +85,6 @@
 
         <!--    recent app-->
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 style="@style/setting_label"
                 android:text="@string/allow_recent_apps" />
@@ -120,22 +114,17 @@
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:src="@drawable/right_arrow"
-                app:tint="@color/dodger_blue" />
+                app:tint="@color/dodger_blue"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
         <!--    recent app end-->
 
         <!--    number filters-->
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 android:id="@+id/label_number_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/label_number_filter"
-                android:textColor="#2196F3"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                style="@style/setting_label"
+                android:text="@string/label_number_filter"/>
 
             <ImageView
                 android:id="@+id/setting_help_number_filter"
@@ -181,16 +170,10 @@
 
         <!--    sms content filters-->
         <LinearLayout style="@style/setting_row">
-
             <TextView
                 android:id="@+id/label_content_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/label_content_filter"
-                android:textColor="#2196F3"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                style="@style/setting_label"
+                android:text="@string/label_content_filter"/>
 
             <ImageView
                 android:id="@+id/setting_help_sms_content_filter"

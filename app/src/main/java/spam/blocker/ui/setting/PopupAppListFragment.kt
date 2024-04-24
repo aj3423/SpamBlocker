@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -76,7 +77,7 @@ class PopupAppListFragment(
             var all = listApps(ctx)
             val input = searchField.query.toString().lowercase()
 
-            Log.e(Def.TAG, "input is: $input")
+            Log.d(Def.TAG, "input is: $input")
             if (input != "") {
                 all = all.filter {
                     it.pkgName.lowercase().contains(input) || it.label.lowercase().contains(input)
@@ -110,7 +111,6 @@ class PopupAppListFragment(
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Log.e(Def.TAG, "query change: $newText")
                 asyncRefreshAppsByInput()
                 return false
             }

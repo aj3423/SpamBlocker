@@ -1,5 +1,6 @@
 package spam.blocker.service
 
+import android.app.NotificationManager
 import android.content.Intent
 import android.telecom.Call as TelecomCall
 import android.telecom.CallScreeningService
@@ -11,6 +12,7 @@ import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.ui.main.MainActivity
+import spam.blocker.util.Notification
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
@@ -33,32 +35,34 @@ class CallService : CallScreeningService() {
             Log.d(Def.TAG, phone)
 
             val r = shouldBlock(phone)
-            val block = r.first
-            val result = r.second
-            val reason = r.third
 
             // 1. log to db
             val call = Record()
             call.peer = phone
             call.time = System.currentTimeMillis()
-            call.result = result
-            call.reason = reason
+            call.result = r.result
+            call.reason = r.reason()
             val id = CallTable().addNewRecord(this, call)
 
             // 2. block
-            if (block) {
+            if (r.shouldBlock) {
                 builder.apply {
                     setRejectCall(true)
                     setDisallowCall(true)
                     setSkipCallLog(false)
                 }
-                Log.e(Def.TAG, String.format("Reject call %s", phone))
+                Log.d(Def.TAG, String.format("Reject call %s", phone))
+
+                val importance = if (r.result == Db.RESULT_BLOCKED_BLACKLIST)
+                    r.byFilter!!.importance
+                else
+                    Def.DEF_SPAM_IMPORTANCE
 
                 // click the notification to launch this app
                 val intent = Intent(this, MainActivity::class.java)
-                Util.showNotification(this, 0, resources.getString(R.string.spam_call_blocked), phone, true, intent)
+                Notification.show(this, 0, resources.getString(R.string.spam_call_blocked), phone, importance, intent)
             }
-            broadcastNewCall(block, id)
+            broadcastNewCall(r.shouldBlock, id)
 
         } catch (t: Throwable) {
             Log.w(Def.TAG, t)
@@ -76,7 +80,7 @@ class CallService : CallScreeningService() {
         sendBroadcast(intent)
     }
     // returns <should_block, result, reason>
-    private fun shouldBlock(phone: String): Triple<Boolean, Int, String> {
+    private fun shouldBlock(phone: String): CheckResult {
 
         val spf = SharedPref(this)
 
@@ -85,7 +89,7 @@ class CallService : CallScreeningService() {
             val contact = Util.findContact(this, phone)
             if (contact != null) {
                 Log.i(Def.TAG, "is contact")
-                return Triple(false, Db.RESULT_ALLOWED_AS_CONTACT, contact.name)
+                return CheckResult(false, Db.RESULT_ALLOWED_AS_CONTACT).setContactName(contact.name)
             }
         }
 
@@ -99,7 +103,7 @@ class CallService : CallScreeningService() {
 
             if (intersection.isNotEmpty()) {
                 Log.d(Def.TAG, "allowed by recent used app")
-                return Triple(false, Db.RESULT_ALLOWED_BY_RECENT_APP, intersection.first())
+                return CheckResult(false, Db.RESULT_ALLOWED_BY_RECENT_APP).setRecentApp(intersection.first())
             }
         }
 
@@ -108,7 +112,7 @@ class CallService : CallScreeningService() {
             val fiveMin = 5*60*1000
             if (CallTable().hasRepeatedRecordsWithin(this, phone, fiveMin)) {
                 Log.d(Def.TAG, "allowed by repeated call")
-                return Triple(false, Db.RESULT_ALLOWED_BY_REPEATED_CALL, "")
+                return CheckResult(false, Db.RESULT_ALLOWED_BY_REPEATED_CALL)
             }
         }
 
@@ -120,16 +124,15 @@ class CallService : CallScreeningService() {
 
             if (f.pattern.toRegex().matches(phone)) {
                 val block = f.isBlacklist
-                return Triple(
+                return CheckResult(
                     block,
-                    if (block) Db.RESULT_BLOCKED_BLACKLIST else Db.RESULT_ALLOWED_WHITELIST,
-                    f.id.toString()
-                )
+                    if (block) Db.RESULT_BLOCKED_BLACKLIST else Db.RESULT_ALLOWED_WHITELIST
+                ).setFilter(f)
             }
         }
 
         // 5. pass by default
-        return Triple(false, Db.RESULT_ALLOWED_BY_DEFAULT, "")
+        return CheckResult(false, Db.RESULT_ALLOWED_BY_DEFAULT)
     }
 
 

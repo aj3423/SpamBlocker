@@ -24,6 +24,7 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
+import spam.blocker.util.Notification
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
@@ -182,7 +183,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Util.cancelNotification(this)
+        Notification.cancelAll(this)
     }
     override fun onDestroy() {
         super.onDestroy()

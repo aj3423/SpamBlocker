@@ -9,7 +9,7 @@ import spam.blocker.def.Def
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 21
+        const val DB_VERSION = 22
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter tables ----
@@ -23,6 +23,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_FLAG_CALL_SMS = "flag_call_sms"
         const val COLUMN_PRIORITY = "priority"
         const val COLUMN_IS_BLACK = "blacklist"
+        const val COLUMN_IMPORTANCE = "importance"
+
 
         // flags
         // for call/sms
@@ -84,6 +86,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
                         "$COLUMN_FLAG_CALL_SMS INTEGER" +
+                        "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}" +
                         ")"
             )
         }
@@ -121,6 +124,10 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 21) && (oldVersion < 21)) {
             db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
             db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
+        }
+        if ((newVersion >= 22) && (oldVersion < 22)) {
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
         }
     }
 }

@@ -44,12 +44,13 @@
     <string name="repeated_call">Repeated Call</string>
     <string name="for_particular_number">For particular number</string>
     <string name="help_for_particular_number">If enabled, the filter only applies when both number and content match</string>
-    <string name="help_globally_enabled">The global switch, this app only works when this is turned on, a quick way to \"disable\" all the filters, turn this off when you temporarily want to receive some call/sms.</string>
-    <string name="help_repeated_call">Permit if the call is repeated within 5 minutes. Prior to the filters below.</string>
+    <string name="help_globally_enabled">The global switch, this app only works when this is turned on, a quick way to \"disable\" all the filters, turn this off when you temporarily want to receive some call/SMS.</string>
+    <string name="help_repeated_call">Permit if the call is repeated within 5 minutes. Prior to other filters below.\nIt works by checking the call history in the app\'s database, so do not delete the historical calls frequently, click to mark them as read instead.</string>
     <string name="help_permit_contact">Permit if the call is from a contact. Prior to the filters below.</string>
     <string name="help_recent_apps">Any call would be permitted if any of these apps has been used within 5 minutes\n\nA typical use case:\nYou ordered a pizza in PizzaApp, one minute later they call you to refund because they are closing. That call would pass if PizzaApp is enabled here. Prior to the filters below.</string>
     <string name="help_number_filter">Regex patterns that applied to the phone number, the \"priority\" is ordered together with the "Sms Content Filters" below.</string>
     <string name="help_sms_content_filter">Regex patterns that applied to sms content, the \"priority\" is ordered together with the "Phone Number Filters" above.</string>
+    <string name="help_importance">None: No notification at all. \nShade: The dropdown notification shade. \nStatusBar: The small icon in the top bar.\nSound: The default notification sound.\nHeads-Up: Popups a floating window on the top of the screen.</string>
     <string name="allow_repeated_call">Allow Repeated Call</string>
     <string name="confirm_del_all_filters">Delete all filters?</string>
     <string name="dark_theme">Dark Theme</string>
@@ -61,6 +62,15 @@
     <string name="delete_all">Delete all</string>
     <string name="show_passed">Show Passed</string>
     <string name="show_blocked">Show Blocked</string>
+    <string name="notification">Notification</string>
+    <string name="type">Type</string>
 
+    <string-array name="importance_list">
+        <item>None</item>
+        <item>Shade</item>
+        <item>StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade, Heads-up</item>
+    </string-array>
 
 </resources>
