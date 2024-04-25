@@ -44,11 +44,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName(
-                // the keystore file doesn't exist on github action,
-                // use "debug" instead and it will be signed by signing action later.
-                if (keystorePropertiesFile.exists()) "release" else "debug"
-            )
+
+            // the keystore file doesn't exist on github action,
+            // use "debug" instead and it will be signed by signing action later.
+            signingConfig = signingConfigs.getByName(if (keystorePropertiesFile.exists()) "release" else "debug" )
         }
     }
     compileOptions {
