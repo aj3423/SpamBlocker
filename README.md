@@ -6,7 +6,8 @@ An Android Call/SMS blocker.
 # Screenshot
 | Call        | Sms         | Setting     | Notification |
 | ----        | ----        | ----        | ----         |
-| <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/193db71d-84b0-4441-8225-cfcb6827f40e" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/f9e3c6f3-5045-479e-99ab-e0edee701b5c" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/4857ad5d-96b4-47c1-9627-f33770ab399e" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/99b62b58-8689-41b9-bd4b-7171af316ab5" width="200">  |
+| <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/15f3d8bf-9a2c-40a9-a0f7-4e75c6d0fc07" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/8bafb201-155b-47ea-9ca9-e7503fb3cb1c" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/8dc6cc10-1aa5-4b8f-b7bc-748dc3fb3775" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/99b62b58-8689-41b9-bd4b-7171af316ab5" width="200">  |
+
 
 # Features
 |                                                    | For Call                                                                                                                                               | For Sms                                                                                                        |
