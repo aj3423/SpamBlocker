@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="@string/select_apps"></androidx.appcompat.widget.SearchView>
+        app:queryHint="@string/select_apps" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popup_app_list"
@@ -26,6 +26,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/search_package"
         app:layout_constraintStart_toStartOf="@id/search_package"
-        app:layout_constraintTop_toBottomOf="@id/search_package"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@id/search_package" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

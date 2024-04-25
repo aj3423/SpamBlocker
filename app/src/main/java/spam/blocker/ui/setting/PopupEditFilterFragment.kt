@@ -1,11 +1,9 @@
 package spam.blocker.ui.setting
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -20,7 +18,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import spam.blocker.db.PatternFilter
 import spam.blocker.R
-import spam.blocker.def.Def
 import spam.blocker.util.Util
 
 class PopupEditFilterFragment(
@@ -63,7 +60,7 @@ class PopupEditFilterFragment(
         val help_importance = view.findViewById<ImageView>(R.id.popup_help_importance)
         val spin_importance = view.findViewById<Spinner>(R.id.spin_importance)
 
-        val btn_save = view.findViewById<MaterialButton>(R.id.popup_btn_save)
+        val btn_save = view.findViewById<MaterialButton>(R.id.popup_btn_save_filter)
 
         val init = initFilter
 
@@ -133,7 +130,7 @@ class PopupEditFilterFragment(
                 init.isBlacklist = false
             }
             init.importance = spin_importance.selectedItemPosition
-            if (Util.isPatternValid(init.pattern) && Util.isPatternValid(init.patternExtra)) {
+            if (Util.isRegexValid(init.pattern) && Util.isRegexValid(init.patternExtra)) {
                 close()
                 handleSave(init)
             }

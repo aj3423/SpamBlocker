@@ -8,6 +8,11 @@ object Def {
     const val SETTING_DARK_THEME = "dark_theme"
     const val SETTING_CONTACTS_PERMITTED = "contacts_permitted"
     const val SETTING_PERMIT_REPEATED = "permit_repeated"
+    const val SETTING_REPEATED_TIMES = "repeated_times"
+    const val SETTING_REPEATED_IN_X_MIN = "repeated_in_x_min"
+    const val SETTING_RECENT_APP_IN_X_MIN = "recent_app_in_x_min"
+
+
     const val SETTING_RECENT_APPS = "recent_apps"
     const val SETTING_ACTIVE_TAB = "active_tab"
     const val SETTING_REQUIRE_PERMISSION_ONCE = "require_permission_once"

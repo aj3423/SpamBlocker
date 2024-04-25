@@ -15,6 +15,10 @@
         <item name="android:layout_height">30dp</item>
     </style>
 
+    <style name="stroke_gray_button" parent="stroke_button">
+        <item name="android:textColor">@color/mid_grey</item>
+        <item name="strokeColor">@color/mid_grey</item>
+    </style>
     <style name="stroke_blue_button" parent="stroke_button">
         <item name="android:textColor">@color/dodger_blue</item>
         <item name="strokeColor">@color/dodger_blue</item>

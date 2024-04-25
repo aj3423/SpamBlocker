@@ -111,7 +111,7 @@ class Permission {
                 }
             }
 
-            return ret
+            return ret.distinct()
         }
     }
 }

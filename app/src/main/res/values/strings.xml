@@ -9,6 +9,7 @@
     <string name="particular_number_pattern">Particular Number Pattern</string>
     <string name="sms_content_pattern">Content Regex Pattern</string>
     <string name="invalid_regex_pattern">Invalid regex pattern</string>
+    <string name="invalid_number">Invalid Number</string>
     <string name="invalid_integer">Invalid integer</string>
     <string name="filter_desc">Description</string>
     <string name="apply_to_call">Apply to Call</string>
@@ -43,14 +44,14 @@
     <string name="allow_contact">Allow Contacts</string>
     <string name="repeated_call">Repeated Call</string>
     <string name="for_particular_number">For particular number</string>
-    <string name="help_for_particular_number">If enabled, the filter only applies when both number and content match</string>
+    <string name="help_for_particular_number">When enabled, the filter only applies when both number and content match</string>
     <string name="help_globally_enabled">The global switch, this app only works when this is turned on, a quick way to \"disable\" all the filters, turn this off when you temporarily want to receive some call/SMS.</string>
-    <string name="help_repeated_call">Permit if the call is repeated within 5 minutes. Prior to other filters below.\nIt works by checking the call history in the app\'s database, so do not delete the historical calls frequently, click to mark them as read instead.</string>
-    <string name="help_permit_contact">Permit if the call is from a contact. Prior to the filters below.</string>
-    <string name="help_recent_apps">Any call would be permitted if any of these apps has been used within 5 minutes\n\nA typical use case:\nYou ordered a pizza in PizzaApp, one minute later they call you to refund because they are closing. That call would pass if PizzaApp is enabled here. Prior to the filters below.</string>
+    <string name="help_repeated_call">Permit if the call is repeated within a period of time, because repeated calls are less likely to be spam. Prior to other filters below.\n\nIt works by checking the history records in the app\'s database, so do not delete the history records too frequently, being texted by the same number also counts.\n\nThe default setting \"1 Time / 5 Min\" means the second call within 5 minutes will be permitted.</string>
+    <string name="help_permit_contact">Permit if the call is from a contact. Prior to other filters below.</string>
+    <string name="help_recent_apps">Permitted any incoming call if any app in the list has been used recently.\n\nA typical use case:\nYou ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would pass if PizzaApp is enabled here. Prior to the filters below.\n\nThe default setting \"5 Min\" means any call will be permitted if any of those apps has been used within 5 minutes, by \"used\" it means being activated, or minimized, or killed.</string>
     <string name="help_number_filter">Regex patterns that applied to the phone number, the \"priority\" is ordered together with the "Sms Content Filters" below.</string>
     <string name="help_sms_content_filter">Regex patterns that applied to sms content, the \"priority\" is ordered together with the "Phone Number Filters" above.</string>
-    <string name="help_importance">None: No notification at all. \nShade: The dropdown notification shade. \nStatusBar: The small icon in the top bar.\nSound: The default notification sound.\nHeads-Up: Popups a floating window on the top of the screen.</string>
+    <string name="help_importance">None: No notification at all. \nShade: The dropdown notification shade. \nStatusBar: The small icon in the top bar.\nSound: The default notification sound.\nHeads-Up: Popups a floating window on the top of the screen. (default for Whitelist)</string>
     <string name="allow_repeated_call">Allow Repeated Call</string>
     <string name="confirm_del_all_filters">Delete all filters?</string>
     <string name="dark_theme">Dark Theme</string>
@@ -64,6 +65,12 @@
     <string name="show_blocked">Show Blocked</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
+    <string name="time">Time</string>
+    <string name="times">Times</string>
+    <string name="min">Min</string>
+    <string name="within_minutes">Within Minutes</string>
+
+
 
     <string-array name="importance_list">
         <item>None</item>

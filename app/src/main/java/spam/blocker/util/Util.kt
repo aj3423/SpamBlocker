@@ -163,8 +163,9 @@ class Util {
                 false
             }
         }
-
-
+        fun isInt(str: String): Boolean {
+            return str.toIntOrNull() != null
+        }
 
         private var cacheAppList : List<AppInfo>? = null
         @SuppressLint("UseCompatLoadingForDrawables")
@@ -202,14 +203,6 @@ class Util {
             return cacheAppMap!!
         }
 
-        fun isPatternValid(pattern: String): Boolean {
-            return try {
-                Regex(pattern)
-                true
-            } catch (e: Exception) {
-                false
-            }
-        }
 
 
         // setup the hint from the imgView.tooltipText

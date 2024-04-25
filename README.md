@@ -26,18 +26,19 @@ Regex is used, ask AI if you don't know how to write one, eg:
 
 Some typical patterns:
 - Any number: `.*`
+- Exact number: `12345`
 - Starts with 400: `^400.*`
 - Longer than 10: `.{11,}`
-- Content contain "verification": `.*verification.*`
+- Contains "verification": `.*verification.*`
 
 #### 2. In Contacts
 Permit if the number belongs to a contact.
 
 #### 3. Repeated Call
-Calls repeated within 5 minutes will be permitted.
+Calls repeated within a period of time will be permitted.
 
 #### 4. Recent Apps
-Any call would be permitted if any of these apps has been used within 5 minutes.
+Any call would be permitted if any of these apps has been used within a period of time.
 
 - A typical use case: 
 

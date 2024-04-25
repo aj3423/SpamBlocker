@@ -1,6 +1,5 @@
 package spam.blocker.service
 
-import android.app.NotificationManager
 import android.content.Intent
 import android.telecom.Call as TelecomCall
 import android.telecom.CallScreeningService
@@ -10,6 +9,7 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.Db
 import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.Record
+import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.main.MainActivity
 import spam.blocker.util.Notification
@@ -93,10 +93,26 @@ class CallService : CallScreeningService() {
             }
         }
 
-        // 2. check for app used recently
+        // 2. check for repeated call
+        if(spf.isRepeatedAllowed()) {
+            val cfg = spf.getRepeatedConfig()
+            val times = cfg.first
+            val durationMinutes = cfg.second * 60 * 1000
+
+            // repeated count of call/sms, sms also counts
+            val nCalls = CallTable().countRepeatedRecordsWithin(this, phone, durationMinutes)
+            val nSMSs = SmsTable().countRepeatedRecordsWithin(this, phone, durationMinutes)
+            if (nCalls + nSMSs >= times) {
+                Log.d(Def.TAG, "allowed by repeated call")
+                return CheckResult(false, Db.RESULT_ALLOWED_BY_REPEATED)
+            }
+        }
+
+        // 3. check for app used recently
         run {
             val enabledPackages = spf.getRecentAppList()
-            val usedApps = Permission.listUsedAppWithinXSecond(this, 5 * 60)
+            val inXmin = spf.getRecentAppConfig()
+            val usedApps = Permission.listUsedAppWithinXSecond(this, inXmin * 60)
             val intersection = enabledPackages.intersect(usedApps.toSet())
 
             Log.i(Def.TAG, "--- enabled: $enabledPackages, used: $usedApps, intersection: $intersection")
@@ -106,16 +122,6 @@ class CallService : CallScreeningService() {
                 return CheckResult(false, Db.RESULT_ALLOWED_BY_RECENT_APP).setRecentApp(intersection.first())
             }
         }
-
-        // 3. check for repeated call
-        if(spf.isRepeatedAllowed()) {
-            val fiveMin = 5*60*1000
-            if (CallTable().hasRepeatedRecordsWithin(this, phone, fiveMin)) {
-                Log.d(Def.TAG, "allowed by repeated call")
-                return CheckResult(false, Db.RESULT_ALLOWED_BY_REPEATED_CALL)
-            }
-        }
-
 
         // 4. check number filters
         val filters = NumberFilterTable().listFilters(this, Db.FLAG_FOR_CALL, Db.FLAG_BOTH_WHITE_BLACKLIST)

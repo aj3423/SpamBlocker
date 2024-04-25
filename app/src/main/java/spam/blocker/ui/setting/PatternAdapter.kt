@@ -50,11 +50,10 @@ class PatternAdapter(
 
         holder.labelPriority.text = ctx.resources.getString(R.string.priority) + ": ${f.priority}"
 
-        holder.imgBellRinging.visibility = if(f.importance >= NotificationManager.IMPORTANCE_DEFAULT) View.VISIBLE else View.GONE
-        holder.imgHeadsUp.visibility = if(f.importance == NotificationManager.IMPORTANCE_HIGH) View.VISIBLE else View.GONE
-        holder.imgShade.visibility = if(f.importance == NotificationManager.IMPORTANCE_MIN) View.VISIBLE else View.GONE
-        holder.imgStatusbarShadde.visibility = if(f.importance >= NotificationManager.IMPORTANCE_LOW) View.VISIBLE else View.GONE
-
+        holder.imgBellRinging.visibility = if(f.isBlacklist && f.importance >= NotificationManager.IMPORTANCE_DEFAULT) View.VISIBLE else View.GONE
+        holder.imgHeadsUp.visibility = if(f.isBlacklist && f.importance == NotificationManager.IMPORTANCE_HIGH) View.VISIBLE else View.GONE
+        holder.imgShade.visibility = if(f.isBlacklist && f.importance == NotificationManager.IMPORTANCE_MIN) View.VISIBLE else View.GONE
+        holder.imgStatusbarShadde.visibility = if(f.isBlacklist && f.importance >= NotificationManager.IMPORTANCE_LOW) View.VISIBLE else View.GONE
     }
 
     override fun getItemCount() = filters.size

@@ -27,7 +27,7 @@ class Record {
         return (result == Db.RESULT_ALLOWED_WHITELIST) or
                 (result == Db.RESULT_ALLOWED_BY_DEFAULT) or
                 (result == Db.RESULT_ALLOWED_BY_RECENT_APP) or
-                (result == Db.RESULT_ALLOWED_BY_REPEATED_CALL) or
+                (result == Db.RESULT_ALLOWED_BY_REPEATED) or
                 (result == Db.RESULT_ALLOWED_BY_CONTENT) or
                 (result == Db.RESULT_ALLOWED_AS_CONTACT)
     }
@@ -135,13 +135,13 @@ abstract class RecordTable {
     }
 
     // returns: updated rows
-    fun markAllRecordsAsRead(ctx: Context) : Int {
-        val cv = ContentValues()
-        cv.put(Db.COLUMN_READ, 1)
-        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, null, null)
-    }
+//    fun markAllRecordsAsRead(ctx: Context) : Int {
+//        val cv = ContentValues()
+//        cv.put(Db.COLUMN_READ, 1)
+//        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, null, null)
+//    }
 
-    fun hasRepeatedRecordsWithin(ctx: Context, phone: String, durationSeconds: Int) : Boolean {
+    fun countRepeatedRecordsWithin(ctx: Context, phone: String, durationSeconds: Int) : Int {
         val xSecondsAgo = System.currentTimeMillis() - durationSeconds
 
         val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
@@ -154,7 +154,7 @@ abstract class RecordTable {
             if (cursor.moveToFirst()) {
                 count = cursor.getInt(0)
             }
-            return count > 0
+            return count
         }
     }
 }

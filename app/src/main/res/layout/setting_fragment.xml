@@ -63,6 +63,7 @@
                 style="@style/setting_switch" />
         </LinearLayout>
 
+        <!--  repeated call -->
         <LinearLayout style="@style/setting_row">
             <TextView
                 style="@style/setting_label"
@@ -76,6 +77,13 @@
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_config_repeated_call"
+                style="@style/stroke_gray_button"
+                android:layout_height="26dp"
+                android:layout_marginEnd="10dp"
+                android:paddingHorizontal="10dp"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_allow_repeated_call"
@@ -96,13 +104,20 @@
                 android:tooltipText="@string/help_recent_apps"
                 tools:ignore="ContentDescription" />
 
+            <Space style="@style/setting_spacing" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_config_recent_apps"
+                style="@style/stroke_gray_button"
+                android:layout_width="60dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="10dp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_app_icons"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="right|center_vertical"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
                 android:layoutDirection="rtl"
                 android:orientation="horizontal"
                 tools:ignore="RtlHardcoded" />

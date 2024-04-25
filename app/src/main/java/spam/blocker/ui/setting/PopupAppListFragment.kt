@@ -54,7 +54,7 @@ class PopupAppListFragment(
         val searchField = view.findViewById<SearchView>(R.id.search_package)
         val recyclerApps = view.findViewById<RecyclerView>(R.id.popup_app_list)
 
-        adapter = PopupAppListAdapter(requireContext(), selected, filtered)
+        adapter = PopupAppListAdapter(selected, filtered)
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         recyclerApps.setLayoutManager(layoutManager)
         recyclerApps.setAdapter(adapter)

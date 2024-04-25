@@ -55,7 +55,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val RESULT_ALLOWED_WHITELIST = 2
         const val RESULT_ALLOWED_AS_CONTACT = 3
         const val RESULT_ALLOWED_BY_RECENT_APP = 4
-        const val RESULT_ALLOWED_BY_REPEATED_CALL = 5
+        const val RESULT_ALLOWED_BY_REPEATED = 5
         const val RESULT_ALLOWED_BY_CONTENT = 6
 
         // blocked

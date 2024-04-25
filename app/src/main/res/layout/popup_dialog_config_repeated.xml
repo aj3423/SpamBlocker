@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_dialog_config_repeated"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/container_repeated_call_times"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            app:helperTextTextColor="@color/salmon"
+            app:startIconDrawable="@drawable/ic_repeat">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_repeated_call_times"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/times"
+                android:inputType="number"
+                android:textColorHint="@color/hint_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/container_repeated_call_in_x_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            app:helperTextTextColor="@color/salmon"
+            app:startIconDrawable="@drawable/ic_duration">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_repeated_call_in_x_min"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/within_minutes"
+                android:inputType="number"
+                android:textColorHint="@color/hint_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/popup_repeated_call_btn_save"
+            style="@style/stroke_blue_button"
+            android:layout_marginTop="10dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:text="@string/save" />
+
+    </LinearLayout>
+</RelativeLayout>

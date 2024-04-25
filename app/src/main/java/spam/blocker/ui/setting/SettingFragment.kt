@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
@@ -21,10 +20,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
-import com.skydoves.balloon.ArrowPositionRules
-import com.skydoves.balloon.Balloon
-import com.skydoves.balloon.BalloonAnimation
-import com.skydoves.balloon.BalloonSizeSpec
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Add
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.AddAll
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Clear
@@ -90,7 +85,7 @@ class SettingFragment : Fragment() {
 
         setupAllowContacts(root)
 
-        setupAllowRepeated(root)
+        setupRepeatedCall(root)
 
         setupRecentApps(root)
 
@@ -115,14 +110,35 @@ class SettingFragment : Fragment() {
         return root
     }
 
-    private fun setupAllowRepeated(root: View) {
+    @SuppressLint("SetTextI18n")
+    private fun setupRepeatedCall(root: View) {
         val spf = SharedPref(requireContext())
+        val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_repeated_call)
         val switchAllowRepeated = root.findViewById<SwitchCompat>(R.id.switch_allow_repeated_call)
+
+        fun updateButton() {
+            val cfg = spf.getRepeatedConfig()
+            val labelTimes = resources.getString( if (cfg.first == 1) R.string.time else R.string.times )
+            val labelMin = resources.getString(R.string.min)
+            btn_config.text = "${cfg.first} $labelTimes / ${cfg.second} $labelMin"
+            btn_config.visibility = if (switchAllowRepeated.isChecked) View.VISIBLE else View.GONE
+        }
+
         switchAllowRepeated.isChecked = spf.isRepeatedAllowed()
         switchAllowRepeated.setOnClickListener {
             spf.setAllowRepeated(!spf.isRepeatedAllowed())
+            updateButton()
+        }
+
+        updateButton()
+        btn_config.setOnClickListener {
+            PopupRepeatedConfigFragment{ times: Int, inXMin:Int ->
+                spf.setRepeatedConfig(times, inXMin)
+                updateButton()
+            }.show(requireActivity().supportFragmentManager, "tag_config_repeated")
         }
     }
+
 
     private fun setupAllowContacts(root: View) {
         val ctx = requireContext()
@@ -164,12 +180,30 @@ class SettingFragment : Fragment() {
         val ctx = requireContext()
         val spf = SharedPref(ctx)
 
+        // config
+        val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_recent_apps)
+
+        fun updateButton() {
+            val inXmin = spf.getRecentAppConfig()
+            btn_config.text = "${inXmin} ${resources.getString(R.string.min)}"
+            btn_config.visibility = if (recentApps.size > 0) View.VISIBLE else View.GONE
+        }
+        updateButton()
+        btn_config.setOnClickListener {
+            PopupRecentAppConfigFragment{ inXMin:Int ->
+                spf.setRecentAppConfig(inXMin)
+                updateButton()
+            }.show(requireActivity().supportFragmentManager, "tag_config_recent_app")
+        }
+
+
         recentApps.clear()
         recentApps.addAll(spf.getRecentAppList())
         val adapterRecentApps = AppListAdapter(ctx, recentApps)
         recentApps.observe(viewLifecycleOwner) {
             Log.d(Def.TAG, "recentApps action in SettingFragment: " + it.action.toString())
 
+            updateButton()
             spf.setRecentAppList(recentApps.toList())
             when (it.action) {
                 Add -> adapterRecentApps.notifyItemInserted(it.actionInt!!)
@@ -182,6 +216,8 @@ class SettingFragment : Fragment() {
             }
         }
 
+
+        // recycler
         fun popupRecentApps() {
             if (!Permission.isUsagePermissionGranted(ctx)) {
                 AlertDialog.Builder(ctx)
@@ -302,10 +338,8 @@ class SettingFragment : Fragment() {
             val builder = AlertDialog.Builder(context)
             builder.setMessage(resources.getString(R.string.confirm_del_all_filters))
                 .setPositiveButton(resources.getString(R.string.yes)) { _, _ ->
-                    // 1. add to db and get new ID
                     dbTable.delAllPatternFilters(ctx)
 
-                    // 2. clear filter list
                     filters.clear()
                 }
                 .show()

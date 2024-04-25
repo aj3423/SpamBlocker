@@ -6,14 +6,14 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
     android:layout_marginVertical="8dp"
-    android:autofillHints="@string/filter_pattern"
     android:paddingHorizontal="10dp"
     android:paddingVertical="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/container_pattern"
@@ -22,7 +22,6 @@
             app:boxBackgroundColor="@android:color/transparent"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
-            android:hint="@string/filter_pattern"
             app:helperTextTextColor="@color/salmon"
             app:startIconDrawable="@drawable/ic_filter">
 
@@ -193,7 +192,7 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/popup_btn_save"
+            android:id="@+id/popup_btn_save_filter"
             style="@style/stroke_blue_button"
             android:layout_marginTop="10dp"
             android:layout_width="60dp"

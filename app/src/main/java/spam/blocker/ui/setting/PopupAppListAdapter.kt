@@ -17,21 +17,10 @@ import spam.blocker.def.Def
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Util.Companion.listApps
 
-class PopupAppListAdapter : RecyclerView.Adapter<PopupAppListAdapter.Holder> {
-    private var selected: ObservableArrayList<String>
-
-    private var ctx: Context
-
+class PopupAppListAdapter(
+    private var selected: ObservableArrayList<String>,
     private var filtered: ObservableArrayList<AppInfo>
-    constructor(
-        ctx: Context,
-        selected: ObservableArrayList<String>,
-        filtered: ObservableArrayList<AppInfo>
-    ) {
-        this.ctx = ctx
-        this.selected = selected
-        this.filtered = filtered
-    }
+) : RecyclerView.Adapter<PopupAppListAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.popup_app_item, parent, false);
@@ -40,7 +29,7 @@ class PopupAppListAdapter : RecyclerView.Adapter<PopupAppListAdapter.Holder> {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        var app = filtered[position]
+        val app = filtered[position]
 
         holder.imgAppIcon.setImageDrawable(app.icon)
         holder.labelAppLabel.text = app.label

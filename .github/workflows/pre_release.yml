@@ -1,4 +1,4 @@
-  name: Build Nightly
+  name: pre release
   on: workflow_dispatch
   jobs:
     build:

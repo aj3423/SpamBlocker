@@ -52,14 +52,24 @@ class SharedPref(context: Context) {
     fun isContactsAllowed(): Boolean {
         return readBoolean(Def.SETTING_CONTACTS_PERMITTED, false)
     }
+    fun setAllowContacts(enabled: Boolean) {
+        writeBoolean(Def.SETTING_CONTACTS_PERMITTED, enabled)
+    }
+
     fun setAllowRepeated(enabled: Boolean) {
         writeBoolean(Def.SETTING_PERMIT_REPEATED, enabled)
     }
     fun isRepeatedAllowed(): Boolean {
         return readBoolean(Def.SETTING_PERMIT_REPEATED, false)
     }
-    fun setAllowContacts(enabled: Boolean) {
-        writeBoolean(Def.SETTING_CONTACTS_PERMITTED, enabled)
+    fun getRepeatedConfig(): Pair<Int, Int> {
+        val times = readInt(Def.SETTING_REPEATED_TIMES, 1)
+        val inXMin = readInt(Def.SETTING_REPEATED_IN_X_MIN, 5)
+        return Pair(times, inXMin)
+    }
+    fun setRepeatedConfig(times: Int, inXMin: Int) {
+        writeInt(Def.SETTING_REPEATED_TIMES, times)
+        writeInt(Def.SETTING_REPEATED_IN_X_MIN, inXMin)
     }
 
     fun getRecentAppList(): List<String> {
@@ -71,6 +81,12 @@ class SharedPref(context: Context) {
     }
     fun setRecentAppList(list: List<String>) {
         writeString(Def.SETTING_RECENT_APPS, list.joinToString(","))
+    }
+    fun getRecentAppConfig() : Int {
+        return readInt(Def.SETTING_RECENT_APP_IN_X_MIN, 5)
+    }
+    fun setRecentAppConfig(inXMin : Int) {
+        writeInt(Def.SETTING_RECENT_APP_IN_X_MIN, inXMin)
     }
 
     fun getActiveTab(): String {

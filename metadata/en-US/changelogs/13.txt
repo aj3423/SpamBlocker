@@ -1,0 +1,6 @@
+- fix: long rule breaks UI
+- feature: filter for showing passed/blocked
+- feature: notification type per rule
+- RepeatedCall also checks for text
+- add option "x times in y mins" for RepeatedCall
+- add option "in x mins" for RecentApps

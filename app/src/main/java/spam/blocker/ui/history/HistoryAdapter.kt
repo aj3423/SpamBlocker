@@ -51,7 +51,7 @@ class HistoryAdapter(
         return when (rec.result) {
             Db.RESULT_ALLOWED_AS_CONTACT ->  ctx.resources.getString(R.string.contact)
             Db.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
-            Db.RESULT_ALLOWED_BY_REPEATED_CALL ->  ctx.resources.getString(R.string.repeated_call)
+            Db.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
             Db.RESULT_ALLOWED_WHITELIST ->  ctx.resources.getString(R.string.whitelist) + ": " + _filterReasonStr(NumberFilterTable(), rec.reason)
             Db.RESULT_BLOCKED_BLACKLIST ->  ctx.resources.getString(R.string.blacklist) + ": " + _filterReasonStr(NumberFilterTable(), rec.reason)
             Db.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + _filterReasonStr(ContentFilterTable(), rec.reason)
