@@ -1,4 +1,4 @@
-  name: pre release
+  name: workflow dispatch
   on: workflow_dispatch
   jobs:
     build:
