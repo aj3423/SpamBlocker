@@ -23,6 +23,10 @@ import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
 import spam.blocker.R
+import spam.blocker.db.ContentFilterTable
+import spam.blocker.db.NumberFilterTable
+import spam.blocker.db.PatternTable
+import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import java.text.SimpleDateFormat
@@ -217,13 +221,14 @@ class Util {
                     .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
                     .setArrowSize(10)
                     .setArrowPosition(0.5f)
-                    .setPadding(12)
+                    .setPadding(8)
                     .setCornerRadius(8f)
                     .setBackgroundColorResource(R.color.dodger_blue)
                     .setBalloonAnimation(BalloonAnimation.ELASTIC)
                     .setLifecycleOwner(viewLifecycleOwner)
                     .build()
 
+                balloon.setIsAttachedInDecor(false)
                 if (alignBottom) {
                     balloon.showAlignBottom(imgView)
                 } else {
@@ -243,6 +248,34 @@ class Util {
                     return false
                 }
             })
+        }
+
+        private fun reasonStr(ctx: Context, filterTable: PatternTable, reason: String) : String {
+            val f = filterTable.findPatternFilterById(ctx, reason.toLong())
+
+            val reasonStr = if (f != null) {
+                if (f.description != "") f.description else f.patternStr()
+            } else {
+                ctx.resources.getString(R.string.deleted_filter)
+            }
+            return reasonStr
+        }
+        fun resultStr(ctx: Context, result: Int, reason: String): String {
+            return when (result) {
+                Def.RESULT_ALLOWED_AS_CONTACT ->  ctx.resources.getString(R.string.contact)
+                Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
+                Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
+                Def.RESULT_ALLOWED_WHITELIST ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
+                    ctx, NumberFilterTable(), reason)
+                Def.RESULT_BLOCKED_BLACKLIST ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
+                    ctx, NumberFilterTable(), reason)
+                Def.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
+                    ctx, ContentFilterTable(), reason)
+                Def.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
+                    ctx, ContentFilterTable(), reason)
+
+                else -> ctx.resources.getString(R.string.passed_by_default)
+            }
         }
     }
 }

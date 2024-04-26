@@ -268,7 +268,7 @@ class SettingFragment : Fragment() {
         recyclerId: Int, addBtnId: Int, testBtnId: Int,
         filters: ObservableArrayList<PatternFilter>,
         dbTable: PatternTable,
-        smsOnly: Boolean
+        forSms: Boolean
     ) {
         val ctx = requireContext()
 
@@ -305,11 +305,11 @@ class SettingFragment : Fragment() {
 
                     // 3. gui update
                     asyncReloadFromDb()
-                }, smsOnly
+                }, forSms
             )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
-        }, filters, smsOnly)
+        }, filters, forSms)
         recycler.setAdapter(adapter)
 
         filters.observe(viewLifecycleOwner) {
@@ -334,15 +334,15 @@ class SettingFragment : Fragment() {
 
                     // 2. refresh gui
                     asyncReloadFromDb()
-                }, smsOnly
+                }, forSms
             )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }
         val btnTest = root.findViewById<MaterialButton>(testBtnId)
         btnTest.setOnClickListener {
-            // TODO: popup dlg
-        }
+            PopupTestFragment(forSms)
+                .show(requireActivity().supportFragmentManager, "tag_test")        }
 
         val swipeLeftCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(

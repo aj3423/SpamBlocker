@@ -50,17 +50,6 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_READ = "read" // Boolean
 
 
-        // allowed
-        const val RESULT_ALLOWED_BY_DEFAULT = 1
-        const val RESULT_ALLOWED_WHITELIST = 2
-        const val RESULT_ALLOWED_AS_CONTACT = 3
-        const val RESULT_ALLOWED_BY_RECENT_APP = 4
-        const val RESULT_ALLOWED_BY_REPEATED = 5
-        const val RESULT_ALLOWED_BY_CONTENT = 6
-
-        // blocked
-        const val RESULT_BLOCKED_BLACKLIST = 10
-        const val RESULT_BLOCKED_BY_CONTENT = 11
 
 
 

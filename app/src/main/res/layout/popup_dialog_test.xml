@@ -5,7 +5,8 @@
     android:id="@+id/popup_dialog_test"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,35 +15,88 @@
         tools:ignore="UselessParent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/container_test"
+            android:id="@+id/container_test_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@android:color/transparent"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_repeat">
+            app:startIconDrawable="@drawable/ic_call_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_repeated_call_times"
+                android:id="@+id/edit_test_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/times"
-                android:inputType="textLongMessage"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
                 android:textColorHint="@color/hint_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/container_test_sms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxBackgroundMode="outline"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_sms_24dp">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_test_sms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/sms_content"
+                android:inputType="textMultiLine"
+                android:textColorHint="@color/hint_grey" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/popup_repeated_call_btn_save"
-            style="@style/stroke_blue_button"
-            android:layout_marginTop="10dp"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:text="@string/save" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <!-- result  -->
+            <TextView
+                android:id="@+id/test_result"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone"/>
+
+            <!-- reason -->
+            <ImageView
+                android:id="@+id/test_reason"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                tools:ignore="ContentDescription"
+                android:visibility="gone"/>
+
+            <Space style="@style/setting_spacing" />
+
+            <!-- help icon -->
+            <ImageView
+                android:id="@+id/help_test"
+                style="@style/setting_help"
+                android:background="@drawable/ic_question"
+                android:tooltipText="@string/help_test"
+                tools:ignore="ContentDescription" />
+
+            <!-- Test Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_test"
+                style="@style/stroke_blue_button"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:text="@string/test" />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

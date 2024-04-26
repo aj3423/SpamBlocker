@@ -25,4 +25,27 @@ object Def {
 
     const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
 
+
+    // allowed
+    const val RESULT_ALLOWED_BY_DEFAULT = 1
+    const val RESULT_ALLOWED_WHITELIST = 2
+    const val RESULT_ALLOWED_AS_CONTACT = 3
+    const val RESULT_ALLOWED_BY_RECENT_APP = 4
+    const val RESULT_ALLOWED_BY_REPEATED = 5
+    const val RESULT_ALLOWED_BY_CONTENT = 6
+
+    // blocked
+    const val RESULT_BLOCKED_BLACKLIST = 10
+    const val RESULT_BLOCKED_BY_CONTENT = 11
+    fun isBlocked(result: Int): Boolean {
+        return !isNotBlocked(result)
+    }
+    fun isNotBlocked(result: Int): Boolean {
+        return (result == RESULT_ALLOWED_WHITELIST) or
+                (result == RESULT_ALLOWED_BY_DEFAULT) or
+                (result == RESULT_ALLOWED_BY_RECENT_APP) or
+                (result == RESULT_ALLOWED_BY_REPEATED) or
+                (result == RESULT_ALLOWED_BY_CONTENT) or
+                (result == RESULT_ALLOWED_AS_CONTACT)
+    }
 }

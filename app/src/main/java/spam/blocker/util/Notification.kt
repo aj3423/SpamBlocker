@@ -66,9 +66,8 @@ class Notification {
             if (shouldSilent(importance)) {
                 builder.setSilent(true) // disable the notification sound
             }
-//            builder.setColor(Color.GREEN)
-//            builder.setColorized(true)
-//            channel.lightColor = Color.CYAN
+
+            builder.setAutoCancel(true)
 
             val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
 

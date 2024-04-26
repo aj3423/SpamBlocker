@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="@string/select_apps" />
+        app:queryHint="@string/find_apps" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popup_app_list"

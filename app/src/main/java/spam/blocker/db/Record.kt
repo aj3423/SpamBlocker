@@ -21,15 +21,10 @@ class Record {
         return "record: $id, $peer, $time, $result, $reason, $read"
     }
     fun isBlocked(): Boolean {
-        return !isNotBlocked()
+        return Def.isBlocked(result)
     }
     fun isNotBlocked(): Boolean {
-        return (result == Db.RESULT_ALLOWED_WHITELIST) or
-                (result == Db.RESULT_ALLOWED_BY_DEFAULT) or
-                (result == Db.RESULT_ALLOWED_BY_RECENT_APP) or
-                (result == Db.RESULT_ALLOWED_BY_REPEATED) or
-                (result == Db.RESULT_ALLOWED_BY_CONTENT) or
-                (result == Db.RESULT_ALLOWED_AS_CONTACT)
+        return Def.isNotBlocked(result)
     }
 }
 

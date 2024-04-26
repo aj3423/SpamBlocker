@@ -65,6 +65,7 @@ class PatternFilter {
     fun setForSms(enabled: Boolean) {
         flagCallSms.set(Db.FLAG_FOR_SMS, enabled)
     }
+
 }
 
 

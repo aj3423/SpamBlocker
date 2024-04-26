@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.R
 import spam.blocker.db.ContentFilterTable
-import spam.blocker.db.Db
 import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.PatternTable
 import spam.blocker.db.Record
 import spam.blocker.db.RecordTable
+import spam.blocker.def.Def
 import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.getAppsMap
 
@@ -37,30 +37,7 @@ class HistoryAdapter(
         return Holder(view);
     }
 
-    private fun _filterReasonStr(filterTable: PatternTable, reason: String) : String {
-        val f = filterTable.findPatternFilterById(ctx, reason.toLong())
 
-        val reasonStr = if (f != null) {
-            if (f.description != "") f.description else f.patternStr()
-        } else {
-            ctx.resources.getString(R.string.deleted_filter)
-        }
-        return reasonStr
-    }
-    private fun _resultStr(rec: Record): String {
-        return when (rec.result) {
-            Db.RESULT_ALLOWED_AS_CONTACT ->  ctx.resources.getString(R.string.contact)
-            Db.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
-            Db.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
-            Db.RESULT_ALLOWED_WHITELIST ->  ctx.resources.getString(R.string.whitelist) + ": " + _filterReasonStr(NumberFilterTable(), rec.reason)
-            Db.RESULT_BLOCKED_BLACKLIST ->  ctx.resources.getString(R.string.blacklist) + ": " + _filterReasonStr(NumberFilterTable(), rec.reason)
-            Db.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + _filterReasonStr(ContentFilterTable(), rec.reason)
-            Db.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + _filterReasonStr(ContentFilterTable(), rec.reason)
-
-
-            else -> ctx.resources.getString(R.string.pass)
-        }
-    }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -79,10 +56,10 @@ class HistoryAdapter(
             DrawableCompat.setTint(drawable, color)
         }
         holder.labelPeer.text = contact?.name ?: record.peer
-        holder.labelPeer.setTextColor(if (record.isNotBlocked()) green else red)
-        holder.labelResult.text = _resultStr(record)
+        holder.labelPeer.setTextColor(if (record.isBlocked()) red else green)
+        holder.labelResult.text = Util.resultStr(ctx, record.result, record.reason)
         holder.unreadMark.visibility = if (record.read) View.INVISIBLE else View.VISIBLE
-        if (record.result == Db.RESULT_ALLOWED_BY_RECENT_APP) {
+        if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
             holder.imgReason.setImageDrawable(getAppsMap(ctx)[record.reason]?.icon)
         }
 
