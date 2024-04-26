@@ -85,7 +85,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_DESC TEXT, " +
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
-                        "$COLUMN_FLAG_CALL_SMS INTEGER" +
+                        "$COLUMN_FLAG_CALL_SMS INTEGER, " +
                         "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}" +
                         ")"
             )

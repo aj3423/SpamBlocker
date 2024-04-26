@@ -162,13 +162,13 @@
                 android:text="@string/add" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_clear_number_filters"
-                style="@style/stroke_red_button"
+                android:id="@+id/btn_test_number_filters"
+                style="@style/stroke_teal_button"
                 android:layout_width="60dp"
                 android:layout_height="26dp"
                 android:layout_marginEnd="8dp"
                 android:minHeight="0dip"
-                android:text="@string/clear" />
+                android:text="@string/test" />
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -211,13 +211,13 @@
                 android:text="@string/add" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_clear_content_filters"
-                style="@style/stroke_red_button"
+                android:id="@+id/btn_test_content_filters"
+                style="@style/stroke_teal_button"
                 android:layout_width="60dp"
                 android:layout_height="26dp"
                 android:layout_marginEnd="8dp"
                 android:minHeight="0dip"
-                android:text="@string/clear" />
+                android:text="@string/test" />
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView

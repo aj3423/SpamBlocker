@@ -91,14 +91,18 @@ class SettingFragment : Fragment() {
 
         setupFilter(
             root,
-            R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_clear_number_filters,
-            numberFilters, NumberFilterTable(), false
+            R.id.recycler_number_filters,
+            R.id.btn_add_number_filter,
+            R.id.btn_test_number_filters,
+            numberFilters,
+            NumberFilterTable(),
+            false
         )
         setupFilter(
             root,
             R.id.recycler_content_filters,
             R.id.btn_add_content_filter,
-            R.id.btn_clear_content_filters,
+            R.id.btn_test_content_filters,
             contentFilters,
             ContentFilterTable(),
             true
@@ -118,7 +122,8 @@ class SettingFragment : Fragment() {
 
         fun updateButton() {
             val cfg = spf.getRepeatedConfig()
-            val labelTimes = resources.getString( if (cfg.first == 1) R.string.time else R.string.times )
+            val labelTimes =
+                resources.getString(if (cfg.first == 1) R.string.time else R.string.times)
             val labelMin = resources.getString(R.string.min)
             btn_config.text = "${cfg.first} $labelTimes / ${cfg.second} $labelMin"
             btn_config.visibility = if (switchAllowRepeated.isChecked) View.VISIBLE else View.GONE
@@ -132,7 +137,7 @@ class SettingFragment : Fragment() {
 
         updateButton()
         btn_config.setOnClickListener {
-            PopupRepeatedConfigFragment{ times: Int, inXMin:Int ->
+            PopupRepeatedConfigFragment { times: Int, inXMin: Int ->
                 spf.setRepeatedConfig(times, inXMin)
                 updateButton()
             }.show(requireActivity().supportFragmentManager, "tag_config_repeated")
@@ -190,7 +195,7 @@ class SettingFragment : Fragment() {
         }
         updateButton()
         btn_config.setOnClickListener {
-            PopupRecentAppConfigFragment{ inXMin:Int ->
+            PopupRecentAppConfigFragment { inXMin: Int ->
                 spf.setRecentAppConfig(inXMin)
                 updateButton()
             }.show(requireActivity().supportFragmentManager, "tag_config_recent_app")
@@ -201,7 +206,7 @@ class SettingFragment : Fragment() {
         recentApps.addAll(spf.getRecentAppList())
         val adapterRecentApps = AppListAdapter(ctx, recentApps)
         recentApps.observe(viewLifecycleOwner) {
-            Log.d(Def.TAG, "recentApps action in SettingFragment: " + it.action.toString())
+//            Log.d(Def.TAG, "recentApps action in SettingFragment: " + it.action.toString())
 
             updateButton()
             spf.setRecentAppList(recentApps.toList())
@@ -260,7 +265,7 @@ class SettingFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun setupFilter(
         root: View,
-        recyclerId: Int, addBtnId: Int, clearBtnId: Int,
+        recyclerId: Int, addBtnId: Int, testBtnId: Int,
         filters: ObservableArrayList<PatternFilter>,
         dbTable: PatternTable,
         smsOnly: Boolean
@@ -300,14 +305,15 @@ class SettingFragment : Fragment() {
 
                     // 3. gui update
                     asyncReloadFromDb()
-                }, smsOnly)
+                }, smsOnly
+            )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }, filters, smsOnly)
         recycler.setAdapter(adapter)
 
         filters.observe(viewLifecycleOwner) {
-            Log.d(Def.TAG, "action in SettingFragment: " + it.action.toString())
+//            Log.d(Def.TAG, "action in SettingFragment: " + it.action.toString())
 
             when (it.action) {
                 Add -> adapter.notifyItemInserted(it.actionInt!!)
@@ -333,16 +339,9 @@ class SettingFragment : Fragment() {
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }
-        val btnDel = root.findViewById<MaterialButton>(clearBtnId)
-        btnDel.setOnClickListener {
-            val builder = AlertDialog.Builder(context)
-            builder.setMessage(resources.getString(R.string.confirm_del_all_filters))
-                .setPositiveButton(resources.getString(R.string.yes)) { _, _ ->
-                    dbTable.delAllPatternFilters(ctx)
-
-                    filters.clear()
-                }
-                .show()
+        val btnTest = root.findViewById<MaterialButton>(testBtnId)
+        btnTest.setOnClickListener {
+            // TODO: popup dlg
         }
 
         val swipeLeftCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
