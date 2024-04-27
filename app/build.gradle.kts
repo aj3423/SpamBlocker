@@ -29,8 +29,8 @@ android {
         applicationId = "spam.blocker"
         minSdk = 29
         targetSdk = 34
-        versionCode = 13
-        versionName = "1.3"
+        versionCode = 14
+        versionName = "1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -59,7 +59,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
-
+        buildConfig = true
     }
 }
 

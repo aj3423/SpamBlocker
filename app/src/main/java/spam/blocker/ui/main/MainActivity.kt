@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
-import android.provider.CallLog
 import android.provider.Telephony
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.databinding.MainActivityBinding
 import spam.blocker.db.CallTable
@@ -24,7 +24,6 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
-import spam.blocker.util.Notification
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
@@ -44,11 +43,19 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var broadcastReceiver: BroadcastReceiver
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (BuildConfig.DEBUG) {
+            test.exec(this)
+        }
+
+        // launched by clicking notification
+        val startFromNotification = intent.getStringExtra("startPage")
 
         // View Models
         run { // update the number indicator on the bottom nav view on data change
@@ -86,11 +93,19 @@ class MainActivity : AppCompatActivity() {
             })
 
             // go to last tab
-            when (spf.getActiveTab()) {
+            when (startFromNotification) {
                 "call" -> navView.selectedItemId = R.id.navigation_call
                 "sms" -> navView.selectedItemId = R.id.navigation_sms
-                else -> navView.selectedItemId = R.id.navigation_setting
+                else -> {
+                    // if not launched by clicking notification, restore the last active page
+                    when (spf.getActiveTab()) {
+                        "call" -> navView.selectedItemId = R.id.navigation_call
+                        "sms" -> navView.selectedItemId = R.id.navigation_sms
+                        else -> navView.selectedItemId = R.id.navigation_setting
+                    }
+                }
             }
+
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
@@ -181,10 +196,7 @@ class MainActivity : AppCompatActivity() {
 //            .invoke(null, true)
     }
 
-    override fun onResume() {
-        super.onResume()
-        Notification.cancelAll(this)
-    }
+
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(broadcastReceiver)

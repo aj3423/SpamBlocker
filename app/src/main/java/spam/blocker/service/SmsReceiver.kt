@@ -1,6 +1,11 @@
 package spam.blocker.service
 
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_NO_CREATE
+import android.app.PendingIntent.FLAG_ONE_SHOT
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -59,34 +64,36 @@ class SmsReceiver : BroadcastReceiver() {
                 importance = r.byFilter!!.importance
             }
 
-            // click the notification to launch this app
-            val callbackIntent = Intent(ctx, MainActivity::class.java)
+            val notificationId = System.currentTimeMillis().toInt()
+            val intent = Intent(ctx, NotificationOnClickReceiver::class.java).apply {
+                putExtra("type", "sms")
+                putExtra("blocked", true)
+            }.setAction("action_sms_block")
+
+            val pendingIntent = PendingIntent.getBroadcast(ctx, 0, intent, FLAG_IMMUTABLE or FLAG_UPDATE_CURRENT)
             Notification.show(
-                ctx,
-                1,
-                ctx.resources.getString(R.string.spam_sms_blocked),
-                phone,
-                importance,
-                callbackIntent
+                ctx, notificationId, ctx.resources.getString(R.string.spam_sms_blocked), phone, importance, pendingIntent
             )
         } else {
 
             // different notification id generates different dropdown items
             val notificationId = System.currentTimeMillis().toInt()
-//            val notificationId = phone.hashCode()
-            // click to launch the default sms app and navigate to this number
-            val smsUri = Uri.parse("smsto:$phone")
-            val callbackIntent = Intent(Intent.ACTION_SENDTO, smsUri)
-            val contact = Util.findContact(ctx, phone)
 
+            val intent = Intent(ctx, NotificationOnClickReceiver::class.java).apply {
+                putExtra("type", "sms")
+                putExtra("blocked", false)
+                putExtra("phone", phone)
+            }.setAction("action_sms_non_block")
+
+            val pendingIntent = PendingIntent.getBroadcast(ctx, 0, intent, FLAG_IMMUTABLE or FLAG_UPDATE_CURRENT)
 
             Notification.show(
                 ctx,
                 notificationId,
                 ctx.resources.getString(R.string.new_sms_received),
-                "${contact?.name ?: phone}: $content",
+                "${Util.findContact(ctx, phone)?.name ?: phone}: $content",
                 NotificationManager.IMPORTANCE_HIGH,
-                callbackIntent
+                pendingIntent
             )
         }
 

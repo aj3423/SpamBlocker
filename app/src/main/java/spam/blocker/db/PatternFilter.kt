@@ -172,7 +172,7 @@ abstract class PatternTable {
         val sql =
             "SELECT * FROM ${tableName()} $whereStr ORDER BY ${Db.COLUMN_PRIORITY} DESC"
 
-        Log.d(Def.TAG, sql)
+//        Log.d(Def.TAG, sql)
 
         return _listAllPatternFiltersByFilter(ctx, sql)
     }

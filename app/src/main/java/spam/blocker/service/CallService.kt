@@ -1,7 +1,12 @@
 package spam.blocker.service
 
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_NO_CREATE
+import android.app.PendingIntent.FLAG_ONE_SHOT
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.telecom.Call as TelecomCall
 import android.telecom.CallScreeningService
 import android.util.Log
@@ -11,6 +16,7 @@ import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.ui.main.MainActivity
 import spam.blocker.util.Notification
+import spam.blocker.util.Notification.Companion.GROUP_SPAM_CALL
 import spam.blocker.util.SharedPref
 
 class CallService : CallScreeningService() {
@@ -65,8 +71,17 @@ class CallService : CallScreeningService() {
                     Def.DEF_SPAM_IMPORTANCE
 
                 // click the notification to launch this app
-                val intent = Intent(ctx, MainActivity::class.java)
-                Notification.show(ctx, 0, ctx.resources.getString(R.string.spam_call_blocked), phone, importance, intent)
+                val intent = Intent(ctx, NotificationOnClickReceiver::class.java).apply {
+                    putExtra("type", "call")
+                    putExtra("blocked", true)
+                }.setAction("action_call")
+
+                val pendingIntent = PendingIntent.getBroadcast(
+                    ctx, 0, intent, FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                )
+
+                val notificationId = System.currentTimeMillis().toInt()
+                Notification.show(ctx, notificationId, ctx.resources.getString(R.string.spam_call_blocked), phone, importance, pendingIntent)
             }
 
             // broadcast new call

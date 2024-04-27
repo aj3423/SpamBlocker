@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -60,14 +59,13 @@
             </intent-filter>
         </receiver>
 
-<!--        <receiver android:name=".service.NotificationOnClickReceiver"-->
-<!--            android:exported="true"-->
-<!--            android:permission="TODO">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="NotificationClicked" >-->
-<!--                </action>-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
+        <receiver android:name=".service.NotificationOnClickReceiver"
+            android:priority="999"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="NotificationClicked" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

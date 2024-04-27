@@ -50,7 +50,6 @@ You ordered a pizza in PizzaApp, soon they call you to refund because they are c
 
 | Permission          | Why                                                                          |
 | ----                | ----                                                                         |
-| READ_CALL_LOG       | For feature: Recent call (checking if a number is repeated within 5 min)     |
 | ANSWER_PHONE_CALLS  | Reject spamming call                                                         |
 | POST_NOTIFICATIONS  | Show notifications                                                           |
 | READ_CONTACTS       | For matching contact number and showing contact avatar                       |
