@@ -134,7 +134,8 @@ class Util {
             return cacheContacts!!
         }
         fun findContact(ctx: Context, phone: String): ContactInfo? {
-            return readContacts(ctx).find { it.phone == clearNumber(phone) }
+            val clearedPhone = clearNumber(phone)
+            return readContacts(ctx).find { it.phone == clearedPhone }
         }
 
         // for round avatar

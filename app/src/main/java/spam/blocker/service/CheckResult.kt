@@ -89,9 +89,8 @@ class SpamChecker {
             // 4. check number filters
             val filters = NumberFilterTable().listFilters(ctx, Db.FLAG_FOR_CALL, Db.FLAG_BOTH_WHITE_BLACKLIST)
             for (f in filters) {
-                Log.i(Def.TAG, "checking filter: $f: ${f.pattern.toRegex().matches(phone)}")
 
-                if (f.pattern.toRegex().matches(phone)) {
+                if (f.pattern.toRegex().matches(Util.clearNumber(phone))) {
                     val block = f.isBlacklist
                     return CheckResult(
                         block,
@@ -143,10 +142,10 @@ class SpamChecker {
                     val f = wrapper.filter
 
                     val matches = if (wrapper.isNumberFilter) {
-                        f.pattern.toRegex().matches(phone)
+                        f.pattern.toRegex().matches(Util.clearNumber(phone))
                     } else { // sms content filter
                         if (f.patternExtra != "") {
-                            f.pattern.toRegex().matches(messageBody) && f.patternExtra.toRegex().matches(phone)
+                            f.pattern.toRegex().matches(messageBody) && f.patternExtra.toRegex().matches(Util.clearNumber(phone))
                         } else {
                             f.pattern.toRegex().matches(messageBody)
                         }
