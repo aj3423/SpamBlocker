@@ -60,6 +60,15 @@
             </intent-filter>
         </receiver>
 
+<!--        <receiver android:name=".service.NotificationOnClickReceiver"-->
+<!--            android:exported="true"-->
+<!--            android:permission="TODO">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="NotificationClicked" >-->
+<!--                </action>-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
     </application>
 
 </manifest>

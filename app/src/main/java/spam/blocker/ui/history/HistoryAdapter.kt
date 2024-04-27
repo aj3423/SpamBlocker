@@ -60,7 +60,10 @@ class HistoryAdapter(
         holder.labelResult.text = Util.resultStr(ctx, record.result, record.reason)
         holder.unreadMark.visibility = if (record.read) View.INVISIBLE else View.VISIBLE
         if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
+            holder.imgReason.visibility = View.VISIBLE
             holder.imgReason.setImageDrawable(getAppsMap(ctx)[record.reason]?.icon)
+        } else {
+            holder.imgReason.visibility = View.GONE
         }
 
         // mark the clicked record as read

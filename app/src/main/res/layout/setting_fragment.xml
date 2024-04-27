@@ -53,7 +53,7 @@
                 android:id="@+id/setting_help_permit_contacts"
                 style="@style/setting_help"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_permit_contact"
+                android:tooltipText="@string/help_contact"
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />

@@ -13,6 +13,7 @@ import android.graphics.Shader
 import android.net.Uri
 import android.provider.ContactsContract
 import android.util.Log
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -222,6 +223,7 @@ class Util {
                     .setArrowSize(10)
                     .setArrowPosition(0.5f)
                     .setPadding(8)
+                    .setTextGravity(Gravity.START)
                     .setCornerRadius(8f)
                     .setBackgroundColorResource(R.color.dodger_blue)
                     .setBalloonAnimation(BalloonAnimation.ELASTIC)

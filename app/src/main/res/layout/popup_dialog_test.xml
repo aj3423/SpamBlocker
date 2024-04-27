@@ -60,23 +60,31 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
 
-            <!-- result  -->
-            <TextView
-                android:id="@+id/test_result"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="10"
                 android:layout_gravity="center_vertical"
-                android:visibility="gone"/>
+                tools:ignore="UseCompoundDrawables">
 
-            <!-- reason -->
-            <ImageView
-                android:id="@+id/test_reason"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                tools:ignore="ContentDescription"
-                android:visibility="gone"/>
+                <!-- result  -->
+                <TextView
+                    android:id="@+id/test_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <!-- reason -->
+                <ImageView
+                    android:id="@+id/test_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    tools:ignore="ContentDescription"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
 
             <Space style="@style/setting_spacing" />
 
