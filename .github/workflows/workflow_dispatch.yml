@@ -15,7 +15,7 @@
         - name: Build
           run: ./gradlew assembleRelease
 
-        - uses: ilharp/sign-android-release@v1
+        - uses: ilharp/sign-android-release@nightly
           name: Sign apk
           id: sign_app
           with:
@@ -31,3 +31,14 @@
             name: app-release.apk
             path: ${{steps.sign_app.outputs.signedFile}}
             compression-level: 0
+
+
+        - name: Example Release
+          uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.SYNC_TOKEN }}"
+            automatic_release_tag: "latest"
+            prerelease: true
+            title: "Latest Release"
+            files: |
+              ${{ steps.sign_app.outputs.signedFile }}

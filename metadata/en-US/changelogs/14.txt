@@ -1,6 +1,7 @@
 - feature: testing rules
 - feature: filter for showing passed/blocked
 - feature: notify type per rule
+- fix: contact with country code not match
 - add option "x times in y mins" for RepeatedCall
 - add option "in x mins" for RecentApps
 - improved notification, UI, tooltip
