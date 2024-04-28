@@ -32,9 +32,12 @@ class NotificationTrampolineActivity : AppCompatActivity() {
             Log.d(Def.TAG, "phone: $phone")
 
             val smsUri = Uri.parse("smsto:$phone")
-            val smsIntent = Intent(Intent.ACTION_VIEW, smsUri)
+//            val smsIntent = Intent(Intent.ACTION_VIEW, smsUri) // this popups dialog for choosing an app
+            val smsIntent = Intent(Intent.ACTION_SENDTO, smsUri) // this doesn't popup that dialog
+            smsIntent.addCategory(Intent.CATEGORY_DEFAULT)
             smsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(smsIntent)
+
         } else {
             // launch SpamBlocker to the SMS page
             val intent = Intent(this, MainActivity::class.java)
