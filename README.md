@@ -6,7 +6,7 @@ An Android Call/SMS blocker.
 # Screenshot
 | Call        | Sms         | Setting     | Notification |
 | ----        | ----        | ----        | ----         |
-| <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/984e1186-7f8a-453e-bc30-bcd5440325b9" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/d613606c-d99d-49ef-871f-4bbd66da27d4" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/b383207c-ff00-414a-be25-a466d77a6871" width="200"> | <img src="[https://github.com/aj3423/SpamBlocker/assets/4710875/fa767435-8741-4dfa-80d0-540cebdaba7f](https://github.com/aj3423/SpamBlocker/assets/4710875/a2a90430-2a66-4f53-bac6-053c403b0706)" width="200">  |
+| <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/984e1186-7f8a-453e-bc30-bcd5440325b9" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/d613606c-d99d-49ef-871f-4bbd66da27d4" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/b383207c-ff00-414a-be25-a466d77a6871" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/a2a90430-2a66-4f53-bac6-053c403b0706" width="200">  |
 
 
 
