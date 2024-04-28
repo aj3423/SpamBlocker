@@ -1,30 +1,21 @@
 package spam.blocker.service
 
-import android.app.NotificationManager
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.provider.Telephony
+import android.os.Bundle
 import android.util.Log
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import spam.blocker.R
-import spam.blocker.db.ContentFilterTable
-import spam.blocker.db.Db
-import spam.blocker.db.NumberFilterTable
-import spam.blocker.db.PatternFilter
-import spam.blocker.db.Record
-import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.main.MainActivity
 import spam.blocker.util.Notification
-import spam.blocker.util.SharedPref
-import spam.blocker.util.Util
 
-class NotificationOnClickReceiver : BroadcastReceiver() {
-
-    override fun onReceive(ctx: Context?, intent: Intent?) {
-
-        Notification.cancelAll(ctx!!)
+class NotificationTrampolineActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         val type = intent!!.getStringExtra("type")
         val blocked = intent.getBooleanExtra("blocked", false)
@@ -35,8 +26,6 @@ class NotificationOnClickReceiver : BroadcastReceiver() {
 
         Log.d(Def.TAG, "notification clicked, type: $type, blocked: $blocked, action: $action")
 
-        Notification.cancelAll(ctx)
-
         // Launch the default SMS app, open the conversation with the specific number
         if (type == "sms" && !blocked) {
             val phone = intent.getStringExtra("phone")
@@ -45,13 +34,16 @@ class NotificationOnClickReceiver : BroadcastReceiver() {
             val smsUri = Uri.parse("smsto:$phone")
             val smsIntent = Intent(Intent.ACTION_VIEW, smsUri)
             smsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            ctx.startActivity(smsIntent)
+            startActivity(smsIntent)
         } else {
-            // Just launch SpamBlocker
-            val launchIntent = ctx.packageManager.getLaunchIntentForPackage(ctx.packageName)!!
-            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            launchIntent.putExtra("startPage", type)
-            ctx.startActivity(launchIntent)
+            // launch SpamBlocker to the SMS page
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("startPage", type)
+            startActivity(intent)
         }
+
+        Notification.cancelAll(this)
+
+        finish();
     }
 }

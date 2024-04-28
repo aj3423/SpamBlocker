@@ -4,6 +4,8 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_NO_CREATE
 import android.app.PendingIntent.FLAG_ONE_SHOT
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
+import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -71,17 +73,12 @@ class CallService : CallScreeningService() {
                     Def.DEF_SPAM_IMPORTANCE
 
                 // click the notification to launch this app
-                val intent = Intent(ctx, NotificationOnClickReceiver::class.java).apply {
+                val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
                     putExtra("type", "call")
                     putExtra("blocked", true)
                 }.setAction("action_call")
 
-                val pendingIntent = PendingIntent.getBroadcast(
-                    ctx, 0, intent, FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-                )
-
-                val notificationId = System.currentTimeMillis().toInt()
-                Notification.show(ctx, notificationId, ctx.resources.getString(R.string.spam_call_blocked), phone, importance, pendingIntent)
+                Notification.show(ctx, ctx.resources.getString(R.string.spam_call_blocked), phone, importance, intent)
             }
 
             // broadcast new call

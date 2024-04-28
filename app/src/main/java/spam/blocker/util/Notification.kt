@@ -4,7 +4,9 @@ package spam.blocker.util
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.TaskStackBuilder
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import spam.blocker.R
@@ -59,12 +61,16 @@ class Notification {
             return importance <= NotificationManager.IMPORTANCE_LOW
         }
         // different notification id generates different dropdown items
-        fun show(ctx: Context, notificationId: Int, title: String, body: String, importance: Int, pendingIntent: PendingIntent) {
+        fun show(ctx: Context, title: String, body: String, importance: Int, intent: Intent) {
             createChannelsOnce(ctx)
 
             val chId = channelId(importance) // 5 importance level <-> 5 channel id
             val builder = NotificationCompat.Builder(ctx, chId)
 
+            val pendingIntent = TaskStackBuilder.create(ctx).run {
+                addNextIntentWithParentStack(intent)
+                getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+            }
             builder
                 .setAutoCancel(true)
                 .setChannelId(chId)
@@ -77,6 +83,7 @@ class Notification {
             val notification = builder.build()
 
             val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationId = System.currentTimeMillis().toInt()
             manager.notify(notificationId, notification)
         }
         fun cancelAll(ctx: Context) {

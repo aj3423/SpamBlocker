@@ -5,29 +5,29 @@
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
-
-    <!-- sms -->
-    <uses-permission android:name="android.permission.RECEIVE_SMS"
+    <uses-permission
+        android:name="android.permission.RECEIVE_SMS"
         tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
-
-    <!-- There is no popup dialog for this dangerous permission, enable this manually in settings -->
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
-
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/bell_filter"
         android:label="@string/app_name"
         android:roundIcon="@drawable/bell_filter"
         android:supportsRtl="true"
-        android:hardwareAccelerated="true"
-        android:theme="@style/Theme.SpamBlocker"
-        >
+        android:theme="@style/Theme.SpamBlocker">
+
+        <activity
+            android:name=".service.NotificationTrampolineActivity"/>
 
         <activity
             android:name=".ui.main.MainActivity"
@@ -52,18 +52,10 @@
             android:name=".service.SmsReceiver"
             android:enabled="true"
             android:exported="true"
-            android:priority="999"
-            android:permission="android.permission.BROADCAST_SMS">
+            android:permission="android.permission.BROADCAST_SMS"
+            android:priority="999">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".service.NotificationOnClickReceiver"
-            android:priority="999"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="NotificationClicked" />
             </intent-filter>
         </receiver>
 

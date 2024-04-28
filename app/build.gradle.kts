@@ -32,7 +32,6 @@ android {
         versionCode = 14
         versionName = "1.4"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
