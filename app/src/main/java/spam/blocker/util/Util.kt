@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.regex.Pattern
 
 class Util {
     companion object {
@@ -82,61 +83,7 @@ class Util {
             }
         }
 
-        private var cacheContacts: ArrayList<ContactInfo>? = null
-        @SuppressLint("Range")
-        fun readContacts(ctx: Context): ArrayList<ContactInfo> {
 
-            if (cacheContacts == null) {
-                if (!isContactsPermissionGranted(ctx)) {
-                    return arrayListOf()
-                }
-
-                val ret = arrayListOf<ContactInfo>()
-
-                val cursor = ctx.contentResolver.query(
-                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                    arrayOf(
-                        ContactsContract.Contacts.DISPLAY_NAME,
-                        ContactsContract.CommonDataKinds.Phone.NUMBER,
-                        ContactsContract.Contacts.PHOTO_URI
-                    ),
-                    null,
-                    null,
-                    null
-                )
-                cursor?.use {
-                    val nameIndex = it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
-                    val numberIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                    val iconIndex = it.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)
-
-                    while (it.moveToNext()) {
-                        val number = it.getString(numberIndex)
-                        val name = it.getString(nameIndex)
-                        val iconUri = it.getString(iconIndex)
-
-                        val ci = ContactInfo()
-                        ci.name = name
-                        ci.phone = clearNumber(number)
-                        Log.d(Def.TAG, "read contact ${ci.phone}")
-
-                        if (iconUri != null) {
-                            val source = ImageDecoder.createSource(ctx.contentResolver, Uri.parse(iconUri))
-                            ci.icon = ImageDecoder.decodeBitmap(source)
-                            // convert hardware bitmap to software bitmap, otherwise it shows error:
-                            //   "Software rendering doesn't support hardware bitmaps"
-                            ci.icon = ci.icon!!.copy(Bitmap.Config.ARGB_8888, false)
-                        }
-                        ret.add(ci)
-                    }
-                }
-                cacheContacts = ret
-            }
-            return cacheContacts!!
-        }
-        fun findContact(ctx: Context, phone: String): ContactInfo? {
-            val clearedPhone = clearNumber(phone)
-            return readContacts(ctx).find { it.phone == clearedPhone }
-        }
 
         // for round avatar
         fun setRoundImage(imageView: ImageView, bitmap: Bitmap) {
@@ -279,6 +226,19 @@ class Util {
 
                 else -> ctx.resources.getString(R.string.passed_by_default)
             }
+        }
+
+        fun checkNum(str: String): Pair<String, String>? {
+            val matcher = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$").matcher(str);
+            if (!matcher.find()) {
+                return null
+            }
+            val cc = matcher.group(1) ?: return null
+
+            val phone = str.substring(cc.length)
+
+            Log.e(Def.TAG, "cc: $cc, g2: $phone")
+            return Pair(cc, phone)
         }
     }
 }

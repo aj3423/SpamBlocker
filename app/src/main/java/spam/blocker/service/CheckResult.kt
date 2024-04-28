@@ -9,6 +9,7 @@ import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.PatternFilter
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.util.Contacts
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
@@ -44,12 +45,12 @@ class CheckResult(
 class SpamChecker {
     companion object {
 
-        fun checkCall(ctx: Context, phone: String): CheckResult {
+        fun checkCall(ctx: Context, rawNumber: String): CheckResult {
             val spf = SharedPref(ctx)
 
             // 1. check contacts
             if (spf.isContactsAllowed()) {
-                val contact = Util.findContact(ctx, phone)
+                val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
                 if (contact != null) {
                     Log.i(Def.TAG, "is contact")
                     return CheckResult(false, Def.RESULT_ALLOWED_AS_CONTACT).setContactName(contact.name)
@@ -63,8 +64,8 @@ class SpamChecker {
                 val durationMinutes = cfg.second * 60 * 1000
 
                 // repeated count of call/sms, sms also counts
-                val nCalls = CallTable().countRepeatedRecordsWithin(ctx, phone, durationMinutes)
-                val nSMSs = SmsTable().countRepeatedRecordsWithin(ctx, phone, durationMinutes)
+                val nCalls = CallTable().countRepeatedRecordsWithin(ctx, rawNumber, durationMinutes)
+                val nSMSs = SmsTable().countRepeatedRecordsWithin(ctx, rawNumber, durationMinutes)
                 if (nCalls + nSMSs >= times) {
                     Log.d(Def.TAG, "allowed by repeated call")
                     return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)
@@ -90,7 +91,7 @@ class SpamChecker {
             val filters = NumberFilterTable().listFilters(ctx, Db.FLAG_FOR_CALL, Db.FLAG_BOTH_WHITE_BLACKLIST)
             for (f in filters) {
 
-                if (f.pattern.toRegex().matches(Util.clearNumber(phone))) {
+                if (f.pattern.toRegex().matches(Util.clearNumber(rawNumber))) {
                     val block = f.isBlacklist
                     return CheckResult(
                         block,
@@ -105,7 +106,7 @@ class SpamChecker {
 
         fun checkSms(
             ctx: Context,
-            phone: String,
+            rawNumber: String,
             messageBody: String
         ): CheckResult {
 
@@ -113,7 +114,7 @@ class SpamChecker {
 
             // 1. check contacts
             if (spf.isContactsAllowed()) {
-                val contact = Util.findContact(ctx, phone)
+                val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
                 if (contact != null) {
                     Log.i(Def.TAG, "is contact")
                     return CheckResult(false, Def.RESULT_ALLOWED_AS_CONTACT)
@@ -142,10 +143,10 @@ class SpamChecker {
                     val f = wrapper.filter
 
                     val matches = if (wrapper.isNumberFilter) {
-                        f.pattern.toRegex().matches(Util.clearNumber(phone))
+                        f.pattern.toRegex().matches(Util.clearNumber(rawNumber))
                     } else { // sms content filter
                         if (f.patternExtra != "") {
-                            f.pattern.toRegex().matches(messageBody) && f.patternExtra.toRegex().matches(Util.clearNumber(phone))
+                            f.pattern.toRegex().matches(messageBody) && f.patternExtra.toRegex().matches(Util.clearNumber(rawNumber))
                         } else {
                             f.pattern.toRegex().matches(messageBody)
                         }

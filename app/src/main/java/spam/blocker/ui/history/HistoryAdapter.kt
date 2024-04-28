@@ -4,6 +4,7 @@ package spam.blocker.ui.history
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import spam.blocker.db.PatternTable
 import spam.blocker.db.Record
 import spam.blocker.db.RecordTable
 import spam.blocker.def.Def
+import spam.blocker.util.Contacts
 import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.getAppsMap
 
@@ -46,13 +48,17 @@ class HistoryAdapter(
 
         val record = records[position]
 
-        val contact = Util.findContact(ctx, record.peer)
-        if (contact?.icon != null) {
-            Util.setRoundImage(holder.imgPhoto, contact.icon!!)
+        val contact = Contacts.findByRawNumberAuto(ctx, record.peer)
+
+        val bmpAvatar = contact?.loadAvatar(ctx)
+        if (bmpAvatar != null) {
+            Util.setRoundImage(holder.imgPhoto, bmpAvatar)
         } else {
             val drawable = holder.imgPhoto.background
             // use the hash code as color
-            val color = record.peer.hashCode() or Color.parseColor("#808080") // higher contrast
+            val toHash = contact?.rawPhone ?: record.peer
+            Log.d(Def.TAG, "tohash: $toHash")
+            val color = toHash.hashCode() or Color.parseColor("#808080") // higher contrast
             DrawableCompat.setTint(drawable, color)
         }
         holder.labelPeer.text = contact?.name ?: record.peer

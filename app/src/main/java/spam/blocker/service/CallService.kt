@@ -1,14 +1,7 @@
 package spam.blocker.service
 
-import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
-import android.app.PendingIntent.FLAG_NO_CREATE
-import android.app.PendingIntent.FLAG_ONE_SHOT
-import android.app.PendingIntent.FLAG_UPDATE_CURRENT
-import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.telecom.Call as TelecomCall
 import android.telecom.CallScreeningService
 import android.util.Log
@@ -16,9 +9,7 @@ import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
-import spam.blocker.ui.main.MainActivity
 import spam.blocker.util.Notification
-import spam.blocker.util.Notification.Companion.GROUP_SPAM_CALL
 import spam.blocker.util.SharedPref
 
 class CallService : CallScreeningService() {
@@ -27,9 +18,9 @@ class CallService : CallScreeningService() {
             callDetails.callDirection != TelecomCall.Details.DIRECTION_INCOMING
         ) return
 
-        val phone = callDetails.handle.schemeSpecificPart
+        val rawNumber = callDetails.handle.schemeSpecificPart
 
-        Log.d(Def.TAG, String.format("new call from: $phone"))
+        Log.d(Def.TAG, String.format("new call from: $rawNumber"))
 
         if (!SharedPref(this).isGloballyEnabled()) {
             return
@@ -37,7 +28,7 @@ class CallService : CallScreeningService() {
 
         val builder = CallResponse.Builder()
 
-        val r = processCall(this, phone)
+        val r = processCall(this, rawNumber)
 
         if (r.shouldBlock) {
             builder.apply {
@@ -49,14 +40,14 @@ class CallService : CallScreeningService() {
         respondToCall(callDetails, builder.build())
     }
 
-    fun processCall(ctx: Context, phone: String) : CheckResult {
+    fun processCall(ctx: Context, rawNumber: String) : CheckResult {
         var r = CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
         try {
-            r = SpamChecker.checkCall(ctx, phone)
+            r = SpamChecker.checkCall(ctx, rawNumber)
 
             // 1. log to db
             val call = Record()
-            call.peer = phone
+            call.peer = rawNumber
             call.time = System.currentTimeMillis()
             call.result = r.result
             call.reason = r.reason()
@@ -65,7 +56,7 @@ class CallService : CallScreeningService() {
             // 2. block
             if (r.shouldBlock) {
 
-                Log.d(Def.TAG, String.format("Reject call %s", phone))
+                Log.d(Def.TAG, String.format("Reject call %s", rawNumber))
 
                 val importance = if (r.result == Def.RESULT_BLOCKED_BLACKLIST)
                     r.byFilter!!.importance
@@ -78,7 +69,7 @@ class CallService : CallScreeningService() {
                     putExtra("blocked", true)
                 }.setAction("action_call")
 
-                Notification.show(ctx, ctx.resources.getString(R.string.spam_call_blocked), phone, importance, intent)
+                Notification.show(ctx, ctx.resources.getString(R.string.spam_call_blocked), rawNumber, importance, intent)
             }
 
             // broadcast new call

@@ -65,13 +65,13 @@ class PopupTestFragment(val forSms: Boolean) : ClosableDialogFragment() {
         }
 
         btn_test.setOnClickListener {
-            val phone = edit_phone.text.toString()
+            val rawNumber = edit_phone.text.toString()
             val sms = edit_sms.text.toString()
 
             val r = if (forSms)
-                SmsReceiver().processSms(ctx, phone, sms)
+                SmsReceiver().processSms(ctx, rawNumber, sms)
             else
-                CallService().processCall(ctx, phone)
+                CallService().processCall(ctx, rawNumber)
 
             // show result
             label_result.visibility = View.VISIBLE

@@ -60,7 +60,7 @@ abstract class RecordTable {
     fun listRecords(ctx: Context): List<Record> {
         val sql = "SELECT * FROM ${tableName()} ORDER BY time DESC"
 
-        Log.d(Def.TAG, sql)
+        //Log.d(Def.TAG, sql)
         return _listRecordsByFilter(ctx, sql)
     }
 
