@@ -90,13 +90,11 @@ class Checker { // for namespace only
             if (!spf.isRepeatedAllowed()) {
                 return null
             }
-            val cfg = spf.getRepeatedConfig()
-            val times = cfg.first
-            val durationMinutes = cfg.second/*cfg.2nd, not the second of second/minute*/ * 60 * 1000
+            val (times, durationMinutes) = spf.getRepeatedConfig()
 
             // repeated count of call/sms, sms also counts
-            val nCalls = CallTable().countRepeatedRecordsWithin(ctx, rawNumber, durationMinutes)
-            val nSMSs = SmsTable().countRepeatedRecordsWithin(ctx, rawNumber, durationMinutes)
+            val nCalls = CallTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
+            val nSMSs = SmsTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
             if (nCalls + nSMSs >= times) {
                 Log.d(Def.TAG, "allowed by repeated call")
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)

@@ -9,6 +9,7 @@
     <string name="particular_number_pattern">Particular Number Pattern</string>
     <string name="sms_content_pattern">Content Regex Pattern</string>
     <string name="invalid_regex_pattern">Invalid regex pattern</string>
+    <string name="pattern_contain_trailing_space">Trailing spaces found</string>
     <string name="invalid_number">Invalid Number</string>
     <string name="invalid_integer">Invalid integer</string>
     <string name="filter_desc">Description</string>
@@ -118,6 +119,8 @@
         &emsp;&emsp; +123 456–789 <br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
+        <br>
+        Uncheck the checkboxes to disable the rule, useful for testing.
         <br>
         Swipe left to delete a rule.
         ]]>

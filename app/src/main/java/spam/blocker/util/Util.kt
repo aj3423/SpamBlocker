@@ -99,7 +99,14 @@ class Util {
             imageView.setImageBitmap(circularBitmap)
         }
 
+
+        val pattern = "^[0-9\\s\\+\\-\\(\\)]*\$".toRegex()
         fun clearNumber(number: String): String {
+            // check it's a phone number or some caller like "Microsoft"
+            if (!pattern.matches(number)) { // don't clear for "Microsoft"
+                return number
+            }
+
             return number.replace("-", "")
                 .replace("+", "")
                 .replace(" ", "")
@@ -107,7 +114,7 @@ class Util {
                 .replace(")", "")
         }
 
-        fun isRegexValid(regex: String): Boolean {
+        private fun isRegexValid(regex: String): Boolean {
             return try {
                 Regex(regex)
                 true
@@ -115,6 +122,19 @@ class Util {
                 false
             }
         }
+        private fun hasTrailingSpacesOrNewlines(regexStr: String): Boolean {
+            return regexStr.isNotEmpty() && regexStr.trim() != regexStr
+        }
+        fun validateRegex(ctx: Context, regexStr: String) : Pair<Boolean, String> {
+            if (hasTrailingSpacesOrNewlines(regexStr))
+                return Pair(false, ctx.getString(R.string.pattern_contain_trailing_space))
+            return if (isRegexValid(regexStr))
+                Pair(true, "")
+            else
+                Pair(false, ctx.getString(R.string.invalid_regex_pattern))
+        }
+
+
         fun isInt(str: String): Boolean {
             return str.toIntOrNull() != null
         }

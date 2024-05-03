@@ -3,7 +3,6 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.util.Log
 import spam.blocker.def.Def
 import spam.blocker.util.Time
 
@@ -136,8 +135,8 @@ abstract class RecordTable {
 //        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, null, null)
 //    }
 
-    fun countRepeatedRecordsWithin(ctx: Context, phone: String, durationSeconds: Int) : Int {
-        val xSecondsAgo = Time.getCurrentTimeMilliss() - durationSeconds
+    fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
+        val xSecondsAgo = Time.getCurrentTimeMilliss() - durationSeconds*1000
 
         val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
             "SELECT COUNT(*) FROM ${tableName()} " +

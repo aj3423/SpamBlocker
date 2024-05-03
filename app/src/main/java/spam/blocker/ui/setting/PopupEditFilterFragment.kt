@@ -91,8 +91,8 @@ class PopupEditFilterFragment(
         val container_pattern = view.findViewById<TextInputLayout>(R.id.container_pattern)
         val edit_pattern = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern)
         val row_particular = view.findViewById<LinearLayout>(R.id.row_sms_particular_number)
-        val container_pattern_phone = view.findViewById<TextInputLayout>(R.id.container_pattern_phone)
         val switch_for_particular_number = view.findViewById<SwitchCompat>(R.id.switch_particular_number)
+        val container_pattern_phone = view.findViewById<TextInputLayout>(R.id.container_pattern_phone)
         val edit_pattern_phone = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern_phone)
         val edit_desc = view.findViewById<TextInputEditText>(R.id.popup_edit_desc)
         val chk_for_call = view.findViewById<CheckBox>(R.id.popup_chk_call)
@@ -123,11 +123,17 @@ class PopupEditFilterFragment(
 
         container_pattern.hint = if (forSms) str_content_pattern else str_number_pattern
 
-        edit_pattern.setText(init.pattern)
-        edit_pattern.addTextChangedListener {// validate regex
-            container_pattern.helperText = if (Util.isRegexValid(it.toString())) "" else resources.getString(R.string.invalid_regex_pattern)
+        fun showHelpOnError(container: TextInputLayout, edit: TextInputEditText) {
+            edit.addTextChangedListener {// validate regex
+                val (ok, errorReason) = Util.validateRegex(ctx, it.toString())
+                container.helperText = errorReason
+            }
         }
+
+        showHelpOnError(container_pattern, edit_pattern)
+        edit_pattern.setText(init.pattern)
         if (forSms) {
+            showHelpOnError(container_pattern_phone, edit_pattern_phone)
             Util.setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
             switch_for_particular_number.setOnClickListener{
                 val checked = switch_for_particular_number.isChecked
@@ -187,7 +193,10 @@ class PopupEditFilterFragment(
                 init.isBlacklist = false
             }
             init.importance = spin_importance.selectedItemPosition
-            if (Util.isRegexValid(init.pattern) && Util.isRegexValid(init.patternExtra)) {
+
+            val (ok1, _) = Util.validateRegex(ctx, init.pattern)
+            val (ok2, _) = Util.validateRegex(ctx, init.patternExtra)
+            if (ok1 && ok2) {
                 close()
                 handleSave(init)
             }

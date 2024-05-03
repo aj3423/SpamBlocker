@@ -23,6 +23,7 @@
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:helperTextTextColor="@color/salmon"
+            app:helperTextEnabled="true"
             app:startIconDrawable="@drawable/ic_filter">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -59,6 +60,7 @@
             app:endIconMode="clear_text"
             android:hint="@string/particular_number_pattern"
             app:helperTextTextColor="@color/salmon"
+            app:helperTextEnabled="true"
             app:startIconDrawable="@drawable/ic_filter">
 
             <com.google.android.material.textfield.TextInputEditText

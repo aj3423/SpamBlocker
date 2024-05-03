@@ -28,7 +28,7 @@ class PopupRepeatedConfigFragment(val handleSave : (Int, Int) -> Unit) : Closabl
         super.onViewCreated(view, savedInstanceState)
 
         val spf = SharedPref(requireContext())
-        val cfg = spf.getRepeatedConfig()
+        val (times, inXMin) = spf.getRepeatedConfig()
 
         // widgets
         val container_times = view.findViewById<TextInputLayout>(R.id.container_repeated_call_times)
@@ -37,8 +37,8 @@ class PopupRepeatedConfigFragment(val handleSave : (Int, Int) -> Unit) : Closabl
         val edit_in_x_min = view.findViewById<TextInputEditText>(R.id.edit_repeated_call_in_x_min)
         val btn_save = view.findViewById<MaterialButton>(R.id.popup_repeated_call_btn_save)
 
-        edit_times.setText(cfg.first.toString())
-        edit_in_x_min.setText(cfg.second.toString())
+        edit_times.setText(times.toString())
+        edit_in_x_min.setText(inXMin.toString())
         edit_times.addTextChangedListener {// validate regex
             container_times.helperText = if (Util.isInt(it.toString())) "" else resources.getString(R.string.invalid_number)
         }

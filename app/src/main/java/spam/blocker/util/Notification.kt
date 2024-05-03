@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import spam.blocker.R
@@ -49,6 +50,10 @@ class Notification {
                 fun create(importance: Int) {
                     val chId = channelId(importance)
                     val channel = NotificationChannel(chId, chId, importance)
+
+//                    channel.enableLights(true)
+//                    channel.lightColor = Color.RED
+
                     manager.createNotificationChannel(channel)
                 }
 

@@ -119,11 +119,11 @@ class SettingFragment : Fragment() {
         val switchAllowRepeated = root.findViewById<SwitchCompat>(R.id.switch_allow_repeated_call)
 
         fun updateButton() {
-            val cfg = spf.getRepeatedConfig()
+            val (times, inXMin) = spf.getRepeatedConfig()
             val labelTimes =
-                resources.getString(if (cfg.first == 1) R.string.time else R.string.times)
+                resources.getString(if (times == 1) R.string.time else R.string.times)
             val labelMin = resources.getString(R.string.min)
-            btn_config.text = "${cfg.first} $labelTimes / ${cfg.second} $labelMin"
+            btn_config.text = "$times $labelTimes / $inXMin $labelMin"
             btn_config.visibility = if (switchAllowRepeated.isChecked) View.VISIBLE else View.GONE
         }
 
