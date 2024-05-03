@@ -33,7 +33,7 @@
             compression-level: 0
 
 
-        - name: Example Release
+        - name: Publish Latest Release
           uses: "marvinpinto/action-automatic-releases@latest"
           with:
             repo_token: "${{ secrets.SYNC_TOKEN }}"

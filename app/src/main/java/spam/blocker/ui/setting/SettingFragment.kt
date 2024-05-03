@@ -3,7 +3,6 @@ package spam.blocker.ui.setting
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -36,7 +35,6 @@ import spam.blocker.db.ContentFilterTable
 import spam.blocker.db.PatternFilter
 import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.PatternTable
-import spam.blocker.def.Def
 import spam.blocker.util.Permission
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import spam.blocker.util.SharedPref
@@ -83,7 +81,7 @@ class SettingFragment : Fragment() {
             Util.applyTheme(spf.isDarkTheme())
         }
 
-        setupAllowContacts(root)
+        setupContacts(root)
 
         setupRepeatedCall(root)
 
@@ -145,38 +143,55 @@ class SettingFragment : Fragment() {
     }
 
 
-    private fun setupAllowContacts(root: View) {
+    private fun setupContacts(root: View) {
         val ctx = requireContext()
         val spf = SharedPref(ctx)
 
         // maybe it has been turned off in settings
         if (!isContactsPermissionGranted(ctx)) {
-            spf.setAllowContacts(false)
+            spf.setContactEnabled(false)
         }
 
-        val switchPermitContact = root.findViewById<SwitchCompat>(R.id.switch_permit_contacts)
-        val spfPermitted = spf.isContactsAllowed()
-        switchPermitContact.isChecked = spfPermitted
+        val btnInclusive = root.findViewById<MaterialButton>(R.id.btn_config_contact)
+        val switchContactEnabled = root.findViewById<SwitchCompat>(R.id.switch_permit_contacts)
+
+
+        fun updateButton() {
+            val isExclusive = spf.isContactExclusive()
+            btnInclusive.visibility = if (spf.isContactEnabled()) View.VISIBLE else View.GONE
+
+            val color = if (isExclusive) R.color.salmon else R.color.hint_grey
+            btnInclusive.setTextColor(resources.getColor(color, null))
+            btnInclusive.setStrokeColorResource(color)
+            btnInclusive.text = if (isExclusive) ctx.resources.getString(R.string.exclusive) else ctx.resources.getString(R.string.inclusive)
+        }
+
+        updateButton()
+
+        btnInclusive.setOnClickListener {
+            spf.toggleContactExclusive()
+            updateButton()
+        }
+        switchContactEnabled.isChecked = spf.isContactEnabled()
         val launcherPermitContact = registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
-            switchPermitContact.isChecked = isGranted
-            spf.setAllowContacts(isGranted)
+            switchContactEnabled.isChecked = isGranted
+            spf.setContactEnabled(isGranted)
         }
-        switchPermitContact.setOnClickListener {
-            Log.d(Def.TAG, "clicked.. currently permitted: $spfPermitted")
-
-            val newState = !spf.isContactsAllowed()
+        switchContactEnabled.setOnClickListener {
+            val newState = !spf.isContactEnabled()
 
             if (newState) {
                 if (isContactsPermissionGranted(ctx)) { // already granted
-                    spf.setAllowContacts(true)
+                    spf.setContactEnabled(true)
                 } else {
                     launcherPermitContact.launch(Manifest.permission.READ_CONTACTS)
                 }
             } else {
-                spf.setAllowContacts(false)
+                spf.setContactEnabled(false)
             }
+            updateButton()
         }
     }
 
@@ -384,31 +399,36 @@ class SettingFragment : Fragment() {
 
     private fun setupTooltips(root: View) {
         val ctx = requireContext()
-        Util.setupImgHint(
+        Util.setupImageTooltip(
             ctx,
             viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_globally_enabled)
+            root.findViewById(R.id.setting_help_globally_enabled),
+            R.string.help_globally_enabled
         )
-        Util.setupImgHint(
+        Util.setupImageTooltip(
             ctx,
             viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_permit_contacts)
+            root.findViewById(R.id.setting_help_enable_contacts),
+            R.string.help_contact
         )
-        Util.setupImgHint(
+        Util.setupImageTooltip(
             ctx,
             viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_repeated_call)
+            root.findViewById(R.id.setting_help_repeated_call),
+            R.string.help_repeated_call
         )
-        Util.setupImgHint(ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps))
-        Util.setupImgHint(
+        Util.setupImageTooltip(ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps), R.string.help_recent_apps)
+        Util.setupImageTooltip(
             ctx,
             viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_number_filter)
+            root.findViewById(R.id.setting_help_number_filter),
+            R.string.help_number_filter
         )
-        Util.setupImgHint(
+        Util.setupImageTooltip(
             ctx,
             viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_sms_content_filter)
+            root.findViewById(R.id.setting_help_sms_content_filter),
+            R.string.help_sms_content_filter
         )
     }
 }

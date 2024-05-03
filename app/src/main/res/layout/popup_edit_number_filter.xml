@@ -36,7 +36,8 @@
         <LinearLayout style="@style/setting_row" android:id="@+id/row_sms_particular_number">
             <TextView
                 style="@style/setting_label"
-                android:text="@string/for_particular_number" />
+                android:text="@string/for_particular_number"
+                android:textColor="@color/hint_grey" />
             <ImageView
                 android:id="@+id/popup_help_particular_number"
                 style="@style/setting_help"

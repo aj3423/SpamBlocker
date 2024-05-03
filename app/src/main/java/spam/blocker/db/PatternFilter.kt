@@ -32,8 +32,8 @@ class PatternFilter {
     var description: String = ""
     var priority: Int = 1
     var isBlacklist = true
-    var flagCallSms = Flag(Db.FLAG_FOR_BOTH_SMS_CALL)
-    var importance = Def.DEF_SPAM_IMPORTANCE
+    var flagCallSms = Flag(Db.FLAG_FOR_BOTH_SMS_CALL) // it applies to SMS or Call or both
+    var importance = Def.DEF_SPAM_IMPORTANCE // notification importance
 
     override fun toString(): String {
         return "id: $id, pattern: $pattern, patternExtra: $patternExtra, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance"
@@ -170,7 +170,7 @@ abstract class PatternTable {
         }
 
         val sql =
-            "SELECT * FROM ${tableName()} $whereStr ORDER BY ${Db.COLUMN_PRIORITY} DESC"
+            "SELECT * FROM ${tableName()} $whereStr ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
 
 //        Log.d(Def.TAG, sql)
 
@@ -230,10 +230,10 @@ abstract class PatternTable {
         }
     }
 
-    fun delAllPatternFilters(ctx: Context) {
+    fun clearAll(ctx: Context) {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${tableName()}"
-        db.rawQuery(sql, null)
+        db.execSQL(sql)
     }
 }
 

@@ -6,7 +6,8 @@ object Def {
     const val TAG = "1111111111111111"
 
     const val SETTING_DARK_THEME = "dark_theme"
-    const val SETTING_CONTACTS_PERMITTED = "contacts_permitted"
+    const val SETTING_CONTACT_ENABLED = "contacts_permitted"
+    const val SETTING_CONTACTS_EXCLUSIVE = "contacts_exclusive"
     const val SETTING_PERMIT_REPEATED = "permit_repeated"
     const val SETTING_REPEATED_TIMES = "repeated_times"
     const val SETTING_REPEATED_IN_X_MIN = "repeated_in_x_min"
@@ -28,24 +29,26 @@ object Def {
 
     // allowed
     const val RESULT_ALLOWED_BY_DEFAULT = 1
-    const val RESULT_ALLOWED_WHITELIST = 2
-    const val RESULT_ALLOWED_AS_CONTACT = 3
+    const val RESULT_ALLOWED_BY_NUMBER = 2
+    const val RESULT_ALLOWED_BY_CONTACT = 3
     const val RESULT_ALLOWED_BY_RECENT_APP = 4
     const val RESULT_ALLOWED_BY_REPEATED = 5
     const val RESULT_ALLOWED_BY_CONTENT = 6
 
     // blocked
-    const val RESULT_BLOCKED_BLACKLIST = 10
+    const val RESULT_BLOCKED_BY_NUMBER = 10
     const val RESULT_BLOCKED_BY_CONTENT = 11
+    const val RESULT_BLOCKED_BY_NON_CONTACT = 12
+
     fun isBlocked(result: Int): Boolean {
         return !isNotBlocked(result)
     }
     fun isNotBlocked(result: Int): Boolean {
-        return (result == RESULT_ALLOWED_WHITELIST) or
+        return (result == RESULT_ALLOWED_BY_NUMBER) or
                 (result == RESULT_ALLOWED_BY_DEFAULT) or
                 (result == RESULT_ALLOWED_BY_RECENT_APP) or
                 (result == RESULT_ALLOWED_BY_REPEATED) or
                 (result == RESULT_ALLOWED_BY_CONTENT) or
-                (result == RESULT_ALLOWED_AS_CONTACT)
+                (result == RESULT_ALLOWED_BY_CONTACT)
     }
 }

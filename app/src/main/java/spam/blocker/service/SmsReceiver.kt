@@ -50,7 +50,7 @@ class SmsReceiver : BroadcastReceiver() {
         if (r.shouldBlock) {
             var importance = NotificationManager.IMPORTANCE_LOW // default: LOW
 
-            if (r.result == Def.RESULT_BLOCKED_BLACKLIST || r.result == Def.RESULT_BLOCKED_BY_CONTENT) {
+            if (r.result == Def.RESULT_BLOCKED_BY_NUMBER || r.result == Def.RESULT_BLOCKED_BY_CONTENT) {
                 importance = r.byFilter!!.importance
             }
 

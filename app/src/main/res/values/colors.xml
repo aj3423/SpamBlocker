@@ -17,4 +17,5 @@
     <color name="dark_orange">#ff8c00</color>
     <color name="dodger_blue">#1e90ff</color>
     <color name="hint_grey">#D1C8C8</color>
+    <color name="tooltip_blue">#5173e8</color>
 </resources>

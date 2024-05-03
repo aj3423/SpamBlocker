@@ -23,7 +23,7 @@ class PatternAdapter(
 ) : RecyclerView.Adapter<PatternAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.filter_item, parent, false);
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.rule, parent, false);
 
         return Holder(view);
     }

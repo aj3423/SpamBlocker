@@ -54,7 +54,7 @@ class HistoryAdapter(
         if (bmpAvatar != null) {
             Util.setRoundImage(holder.imgPhoto, bmpAvatar)
         } else {
-            val drawable = holder.imgPhoto.background
+            val drawable = holder.imgPhoto.background.mutate()
             // use the hash code as color
             val toHash = contact?.rawPhone ?: record.peer
             Log.d(Def.TAG, "tohash: $toHash")

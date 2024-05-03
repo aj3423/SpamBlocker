@@ -31,13 +31,15 @@ class ContactInfo {
 }
 
 
-class Contacts {
+open class Contacts {
+
     companion object {
         // regex for splitting the cc and the rest, e.g.:
         //   +1 23-45
         // ->
         //   1 and 23-45
-        private val patternCCPhone = "^\\+(\\d+)\\s(.+)".toRegex()
+        val patternCCPhone = "^\\+(\\d+)\\s(.+)".toRegex()
+
 
         /*
         The logic:
@@ -71,13 +73,13 @@ class Contacts {
 
         private fun findByExactNumber(ctx: Context, number: String): ContactInfo? {
             val all = findAllEndWith(ctx, number)
-            val filtered = all.filter {
+            val filtered = all.arraylist.filter {
                 if (number == it.clearedPhone()) { // exact match
                     true
                 } else { // contact_number is longer than incoming number
                     // Split contact number into cc and phone using regex,
                     // then check if the parsed phone matches incoming number
-                    val ccPhone = Util.checkNum(it.clearedPhone())
+                    val ccPhone = Util.splitCcPhone(it.clearedPhone())
                     if (ccPhone == null) { // the contact's number can't be parsed to cc+phone
                         false
                     } else {
@@ -88,10 +90,17 @@ class Contacts {
             return if (filtered.isEmpty())
                 null
             else
-                all.first()
+                filtered.first()
         }
 
-        private fun findAllEndWith(ctx: Context, number: String): ArrayList<ContactInfo> {
+        class Wrapper (val arraylist: ArrayList<ContactInfo>){
+        }
+
+        // This function is supposed to return `ArrayList<ContactInfo>` directly,
+        // but the unit testing library `mockk` has a bug with functions return template container:
+        //   https://github.com/mockk/mockk/issues/340
+        // so use a wrapper to work around it
+        fun findAllEndWith(ctx: Context, number: String): Wrapper {
 
             val ret = arrayListOf<ContactInfo>()
 
@@ -128,8 +137,9 @@ class Contacts {
                     ret.add(ci)
                 }
             }
-            return ret
+            return Wrapper(ret)
         }
 
     }
+
 }

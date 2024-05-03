@@ -11,6 +11,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.IBinder
 import android.provider.Settings
 import android.util.Log
@@ -19,17 +20,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import spam.blocker.def.Def
 import android.os.Process
+import androidx.annotation.RequiresApi
 
-class Permission {
+open class Permission {
     companion object {
 
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
         fun requestAllManifestPermissions(activity: AppCompatActivity) {
             try {
                 val packageInfo = activity.packageManager.getPackageInfo(
-                    activity.packageName, PackageManager.PackageInfoFlags.of(
-                        PackageManager.GET_PERMISSIONS.toLong()
+                        activity.packageName, PackageManager.PackageInfoFlags.of(
+                            PackageManager.GET_PERMISSIONS.toLong()
+                        )
                     )
-                )
+
                 val set = mutableSetOf(*packageInfo.requestedPermissions ?: emptyArray())
                 val permissions = set.toTypedArray()
                 activity.requestPermissions(permissions, 0)
@@ -92,11 +96,12 @@ class Permission {
             val intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
             ctx.startActivity(intent)
         }
+
         fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String>{
             val ret = mutableListOf<String>()
 
             val usageStatsManager = ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-            val currentTime = System.currentTimeMillis()
+            val currentTime = Time.getCurrentTimeMilliss()
             val events = usageStatsManager.queryEvents(currentTime - sec * 1000, currentTime)
 
             while (events.hasNextEvent()) {

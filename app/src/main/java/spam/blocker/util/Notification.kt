@@ -15,12 +15,16 @@ import spam.blocker.R
 
 class Notification {
     companion object {
-        val GROUP_SPAM_SMS = "sms_spam"
-        val GROUP_PASS_SMS = "sms_pass"
-        val GROUP_SPAM_CALL = "call_spam"
 
         fun channelId(importance: Int): String {
-            return "SB_CHANNEL_$importance"
+            return when(importance) {
+                0 -> "None"
+                1 -> "Shade"
+                2 -> "StatusBar+Shade"
+                3 -> "Sound+StatusBar+Shade"
+                4 -> "Heads-up+Sound+StatusBar+Shade"
+                else -> ""
+            }
         }
 
         private var created = false

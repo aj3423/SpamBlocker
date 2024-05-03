@@ -44,19 +44,27 @@
                 style="@style/setting_switch" />
         </LinearLayout>
 
+        <!--  contact -->
         <LinearLayout style="@style/setting_row">
             <TextView
                 style="@style/setting_label"
                 android:text="@string/allow_contact" />
 
             <ImageView
-                android:id="@+id/setting_help_permit_contacts"
+                android:id="@+id/setting_help_enable_contacts"
                 style="@style/setting_help"
                 android:background="@drawable/ic_question"
                 android:tooltipText="@string/help_contact"
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_config_contact"
+                style="@style/stroke_gray_button"
+                android:layout_height="26dp"
+                android:layout_marginEnd="10dp"
+                android:paddingHorizontal="10dp"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_permit_contacts"

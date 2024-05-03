@@ -40,6 +40,8 @@ class SharedPref(context: Context) {
         return prefs.getBoolean(key, defaultValue)
     }
 
+    // ----------------------
+
     fun isDarkTheme(): Boolean {
         return readBoolean(Def.SETTING_DARK_THEME, false)
     }
@@ -49,11 +51,20 @@ class SharedPref(context: Context) {
     fun toggleDarkTheme() {
         setDarkTheme(!isDarkTheme())
     }
-    fun isContactsAllowed(): Boolean {
-        return readBoolean(Def.SETTING_CONTACTS_PERMITTED, false)
+    fun isContactEnabled(): Boolean {
+        return readBoolean(Def.SETTING_CONTACT_ENABLED, false)
     }
-    fun setAllowContacts(enabled: Boolean) {
-        writeBoolean(Def.SETTING_CONTACTS_PERMITTED, enabled)
+    fun setContactEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_CONTACT_ENABLED, enabled)
+    }
+    fun isContactExclusive() : Boolean {
+        return readBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, false)
+    }
+    fun setContactExclusive(exclusive: Boolean) {
+        writeBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, exclusive)
+    }
+    fun toggleContactExclusive() {
+        setContactExclusive(!isContactExclusive())
     }
 
     fun setAllowRepeated(enabled: Boolean) {

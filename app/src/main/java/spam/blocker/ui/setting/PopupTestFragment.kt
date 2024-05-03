@@ -46,7 +46,7 @@ class PopupTestFragment(val forSms: Boolean) : ClosableDialogFragment() {
         val label_result = view.findViewById<TextView>(R.id.test_result)
         val img_reason = view.findViewById<ImageView>(R.id.test_reason)
 
-        Util.setupImgHint(ctx, viewLifecycleOwner, help_test)
+        Util.setupImageTooltip(ctx, viewLifecycleOwner, help_test, R.string.help_test)
 
         fun clearResult() {
             label_result.visibility = View.GONE

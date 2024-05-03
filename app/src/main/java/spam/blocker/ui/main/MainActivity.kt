@@ -4,9 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Telephony
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -24,6 +22,7 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
+import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
@@ -129,15 +128,8 @@ class MainActivity : AppCompatActivity() {
             }
             navView.setOnItemReselectedListener { menuItem ->
                 when (menuItem.itemId) {
-                    R.id.navigation_call -> {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("content://call_log/calls"))
-                        startActivity(intent)
-                    }
-                    R.id.navigation_sms -> {
-                        val defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(this)
-                        val intent = packageManager.getLaunchIntentForPackage(defaultSmsApp)
-                        intent?.let { startActivity(it) }
-                    }
+                    R.id.navigation_call -> Launcher.launchCallApp(this)
+                    R.id.navigation_sms -> Launcher.launchSMSApp(this)
                 }
             }
         }

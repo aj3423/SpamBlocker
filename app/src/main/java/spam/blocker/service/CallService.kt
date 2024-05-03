@@ -2,6 +2,7 @@ package spam.blocker.service
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.telecom.Call as TelecomCall
 import android.telecom.CallScreeningService
 import android.util.Log
@@ -9,6 +10,7 @@ import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
+import spam.blocker.util.Launcher
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref
 
@@ -58,7 +60,7 @@ class CallService : CallScreeningService() {
 
                 Log.d(Def.TAG, String.format("Reject call %s", rawNumber))
 
-                val importance = if (r.result == Def.RESULT_BLOCKED_BLACKLIST)
+                val importance = if (r.result == Def.RESULT_BLOCKED_BY_NUMBER)
                     r.byFilter!!.importance
                 else
                     Def.DEF_SPAM_IMPORTANCE

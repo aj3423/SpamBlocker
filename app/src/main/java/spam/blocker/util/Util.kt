@@ -2,16 +2,17 @@ package spam.blocker.util
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
 import android.graphics.Canvas
-import android.graphics.ImageDecoder
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Shader
 import android.net.Uri
-import android.provider.ContactsContract
+import android.provider.Telephony
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
@@ -27,9 +28,7 @@ import spam.blocker.R
 import spam.blocker.db.ContentFilterTable
 import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.PatternTable
-import spam.blocker.db.Record
 import spam.blocker.def.Def
-import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -156,15 +155,14 @@ class Util {
             return cacheAppMap!!
         }
 
-
-
         // setup the hint from the imgView.tooltipText
-        fun setupImgHint(ctx: Context, viewLifecycleOwner: LifecycleOwner, imgView: ImageView, alignBottom: Boolean = true) {
+        fun setupImageTooltip(ctx: Context, viewLifecycleOwner: LifecycleOwner, imgView: ImageView, strId: Int, alignBottom: Boolean = true) {
             imgView.setOnClickListener {
                 val balloon = Balloon.Builder(ctx)
-                    .setWidthRatio(0.8f)
+//                    .setWidthRatio(0.9f)
                     .setHeight(BalloonSizeSpec.WRAP)
-                    .setText(imgView.tooltipText.toString())
+                    .setText(ctx.resources.getText(strId))
+                    .setTextIsHtml(true)
                     .setTextColorResource(R.color.white)
                     .setTextSize(15f)
                     .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
@@ -173,7 +171,7 @@ class Util {
                     .setPadding(8)
                     .setTextGravity(Gravity.START)
                     .setCornerRadius(8f)
-                    .setBackgroundColorResource(R.color.dodger_blue)
+                    .setBackgroundColor(ctx.resources.getColor(R.color.tooltip_blue, null))
                     .setBalloonAnimation(BalloonAnimation.ELASTIC)
                     .setLifecycleOwner(viewLifecycleOwner)
                     .build()
@@ -212,12 +210,14 @@ class Util {
         }
         fun resultStr(ctx: Context, result: Int, reason: String): String {
             return when (result) {
-                Def.RESULT_ALLOWED_AS_CONTACT ->  ctx.resources.getString(R.string.contact)
+                Def.RESULT_ALLOWED_BY_CONTACT ->  ctx.resources.getString(R.string.contact)
+                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  ctx.resources.getString(R.string.non_contact)
+
                 Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
                 Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_WHITELIST ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
+                Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
                     ctx, NumberFilterTable(), reason)
-                Def.RESULT_BLOCKED_BLACKLIST ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
+                Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
                     ctx, NumberFilterTable(), reason)
                 Def.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
                     ctx, ContentFilterTable(), reason)
@@ -228,7 +228,7 @@ class Util {
             }
         }
 
-        fun checkNum(str: String): Pair<String, String>? {
+        fun splitCcPhone(str: String): Pair<String, String>? {
             val matcher = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$").matcher(str);
             if (!matcher.find()) {
                 return null
@@ -237,8 +237,9 @@ class Util {
 
             val phone = str.substring(cc.length)
 
-            Log.e(Def.TAG, "cc: $cc, g2: $phone")
+//            Log.d(Def.TAG, "cc: $cc, g2: $phone")
             return Pair(cc, phone)
         }
+
     }
 }

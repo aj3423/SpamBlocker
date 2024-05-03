@@ -5,7 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import spam.blocker.def.Def
-
+import spam.blocker.util.Time
 
 
 class Record {
@@ -137,7 +137,7 @@ abstract class RecordTable {
 //    }
 
     fun countRepeatedRecordsWithin(ctx: Context, phone: String, durationSeconds: Int) : Int {
-        val xSecondsAgo = System.currentTimeMillis() - durationSeconds
+        val xSecondsAgo = Time.getCurrentTimeMilliss() - durationSeconds
 
         val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
             "SELECT COUNT(*) FROM ${tableName()} " +

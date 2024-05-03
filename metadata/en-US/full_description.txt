@@ -7,4 +7,7 @@ Features:
 3. Repeated call?
 4. Any specific app has been used recently?
 
+Note:
+For SMS messages, it works as an "addon" for the default SMS app, it blocks notifications instead of blocking messages.
+
 detail: https://github.com/aj3423/SpamBlocker

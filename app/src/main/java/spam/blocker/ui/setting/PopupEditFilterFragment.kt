@@ -1,6 +1,13 @@
 package spam.blocker.ui.setting
 
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.Paint
+import android.graphics.PixelFormat
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +17,53 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import spam.blocker.db.PatternFilter
 import spam.blocker.R
+import spam.blocker.db.PatternFilter
+import spam.blocker.def.Def
 import spam.blocker.util.Util
+
+
+class TextDrawable(private val text: String, private val color: Int) : Drawable() {
+    private val paint: Paint = Paint()
+
+    init {
+        paint.setColor(Color.WHITE)
+        paint.textSize = 36f
+        paint.isAntiAlias = true
+        paint.isFakeBoldText = true
+        paint.style = Paint.Style.FILL_AND_STROKE
+        paint.textAlign = Paint.Align.LEFT
+        paint.color = color
+    }
+
+    override fun draw(canvas: Canvas) {
+        val bounds = bounds
+
+        val x = bounds.centerX().toFloat() - paint.measureText(text) / 2
+        val y = bounds.centerY().toFloat() + paint.textSize / 2
+        canvas.drawText(text, x, y, paint)
+    }
+
+    override fun setAlpha(alpha: Int) {
+        paint.setAlpha(alpha)
+    }
+
+    override fun setColorFilter(cf: ColorFilter?) {
+        paint.setColorFilter(cf)
+    }
+
+    override fun getOpacity(): Int {
+        return PixelFormat.TRANSLUCENT
+    }
+}
 
 class PopupEditFilterFragment(
     private val initFilter: PatternFilter,
@@ -64,6 +109,18 @@ class PopupEditFilterFragment(
 
         val init = initFilter
 
+//        val imdlc = "imdlc"
+//        var i = 1
+//        container_pattern.endIconMode = TextInputLayout.END_ICON_CUSTOM
+//        container_pattern.endIconDrawable = ResourcesCompat.getDrawable(resources, R.drawable.ic_shade, null)
+//        container_pattern.isEndIconVisible = true
+//        container_pattern.setEndIconOnClickListener {
+//            Toast.makeText(ctx, " icon clicked, popup dropdown checkboxes....", Toast.LENGTH_SHORT).show()
+//            i += 1
+//            val drawable = TextDrawable(imdlc.substring(0, i), ctx.resources.getColor(R.color.orange, null))
+//            container_pattern.endIconDrawable = drawable
+//        }
+
         container_pattern.hint = if (forSms) str_content_pattern else str_number_pattern
 
         edit_pattern.setText(init.pattern)
@@ -71,7 +128,7 @@ class PopupEditFilterFragment(
             container_pattern.helperText = if (Util.isRegexValid(it.toString())) "" else resources.getString(R.string.invalid_regex_pattern)
         }
         if (forSms) {
-            Util.setupImgHint(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number))
+            Util.setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
             switch_for_particular_number.setOnClickListener{
                 val checked = switch_for_particular_number.isChecked
                 container_pattern_phone.visibility = if(checked) View.VISIBLE else View.GONE
@@ -109,7 +166,7 @@ class PopupEditFilterFragment(
             row_importance.visibility = if (checkedId == R.id.popup_radio_blacklist) View.VISIBLE else View.GONE
         }
         // importance
-        Util.setupImgHint(ctx, viewLifecycleOwner, help_importance, false)
+        Util.setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance, false)
         spin_importance.setSelection(init.importance)
 
         btn_save.setOnClickListener {

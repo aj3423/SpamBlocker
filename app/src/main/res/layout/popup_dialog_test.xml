@@ -30,7 +30,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/phone_number"
-                android:inputType="phone"
+                android:inputType="text"
                 android:textColorHint="@color/hint_grey" />
         </com.google.android.material.textfield.TextInputLayout>
 
