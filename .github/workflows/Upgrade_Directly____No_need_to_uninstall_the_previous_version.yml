@@ -1,4 +1,4 @@
-  name: workflow dispatch
+  name: bug fix or improvement
   on: workflow_dispatch
   jobs:
     build:
