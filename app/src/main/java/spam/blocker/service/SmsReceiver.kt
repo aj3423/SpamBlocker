@@ -59,7 +59,7 @@ class SmsReceiver : BroadcastReceiver() {
                 putExtra("blocked", true)
             }.setAction("action_sms_block")
 
-            Notification.show(ctx, ctx.resources.getString(R.string.spam_sms_blocked), rawNumber, importance, intent)
+            Notification.show(ctx, ctx.resources.getString(R.string.spam_sms_blocked), rawNumber, importance, ctx.resources.getColor(R.color.salmon, null), intent)
         } else {
 
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
@@ -70,7 +70,7 @@ class SmsReceiver : BroadcastReceiver() {
 
             val body = "${Contacts.findByRawNumberAuto(ctx, rawNumber)?.name ?: rawNumber}: $content"
 
-            Notification.show(ctx, ctx.resources.getString(R.string.new_sms_received), body, IMPORTANCE_HIGH, intent)
+            Notification.show(ctx, ctx.resources.getString(R.string.new_sms_received), body, IMPORTANCE_HIGH, ctx.resources.getColor(R.color.dark_sea_green, null), intent)
         }
 
         // broadcast new sms

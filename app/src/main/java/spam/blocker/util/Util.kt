@@ -100,10 +100,12 @@ class Util {
         }
 
 
-        val pattern = "^[0-9\\s\\+\\-\\(\\)]*\$".toRegex()
+        // check if a string only contains:
+        //   digits spaces + - ( )
+        val pattern = "^[0-9\\s+\\-()]*\$".toRegex()
         fun clearNumber(number: String): String {
-            // check it's a phone number or some caller like "Microsoft"
-            if (!pattern.matches(number)) { // don't clear for "Microsoft"
+            // check it's a phone number or some enterprise number like "Microsoft"
+            if (!pattern.matches(number)) { // don't clear for enterprise string number
                 return number
             }
 

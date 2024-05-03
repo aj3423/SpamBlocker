@@ -71,7 +71,7 @@ class CallService : CallScreeningService() {
                     putExtra("blocked", true)
                 }.setAction("action_call")
 
-                Notification.show(ctx, ctx.resources.getString(R.string.spam_call_blocked), rawNumber, importance, intent)
+                Notification.show(ctx, ctx.resources.getString(R.string.spam_call_blocked), rawNumber, importance, ctx.resources.getColor(R.color.salmon, null), intent)
             }
 
             // broadcast new call

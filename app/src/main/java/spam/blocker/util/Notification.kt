@@ -50,10 +50,6 @@ class Notification {
                 fun create(importance: Int) {
                     val chId = channelId(importance)
                     val channel = NotificationChannel(chId, chId, importance)
-
-//                    channel.enableLights(true)
-//                    channel.lightColor = Color.RED
-
                     manager.createNotificationChannel(channel)
                 }
 
@@ -70,7 +66,7 @@ class Notification {
             return importance <= NotificationManager.IMPORTANCE_LOW
         }
         // different notification id generates different dropdown items
-        fun show(ctx: Context, title: String, body: String, importance: Int, intent: Intent) {
+        fun show(ctx: Context, title: String, body: String, importance: Int, color: Int, intent: Intent) {
             createChannelsOnce(ctx)
 
             val chId = channelId(importance) // 5 importance level <-> 5 channel id
@@ -88,6 +84,8 @@ class Notification {
                 .setContentText(body)
                 .setSilent(shouldSilent(importance))
                 .setContentIntent(pendingIntent)
+                .setColor(color)
+                .setColorized(true)
 
             val notification = builder.build()
 
