@@ -8,12 +8,14 @@ import android.content.Intent
 import android.provider.Telephony
 import android.util.Log
 import spam.blocker.R
+import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.Record
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref
+import spam.blocker.util.Util
 
 class SmsReceiver : BroadcastReceiver() {
 
@@ -47,6 +49,8 @@ class SmsReceiver : BroadcastReceiver() {
         rec.reason = r.reason()
         val id = SmsTable().addNewRecord(ctx, rec)
 
+        val showName = Contacts.findByRawNumberAuto(ctx, rawNumber)?.name ?: rawNumber
+
         if (r.shouldBlock) {
             var importance = NotificationManager.IMPORTANCE_LOW // default: LOW
 
@@ -59,18 +63,21 @@ class SmsReceiver : BroadcastReceiver() {
                 putExtra("blocked", true)
             }.setAction("action_sms_block")
 
-            Notification.show(ctx, ctx.resources.getString(R.string.spam_sms_blocked), rawNumber, importance, ctx.resources.getColor(R.color.salmon, null), intent)
+            Notification.show(ctx, R.drawable.ic_sms_blocked,
+                showName,
+                Util.reasonStr(ctx, Util.reasonTable(r.result), r.reason()),
+                importance, ctx.resources.getColor(R.color.salmon, null), intent)
         } else {
 
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
                 putExtra("type", "sms")
                 putExtra("blocked", false)
-                putExtra("phone", rawNumber)
+                putExtra("rawNumber", rawNumber)
             }.setAction("action_sms_non_block")
 
-            val body = "${Contacts.findByRawNumberAuto(ctx, rawNumber)?.name ?: rawNumber}: $content"
-
-            Notification.show(ctx, ctx.resources.getString(R.string.new_sms_received), body, IMPORTANCE_HIGH, ctx.resources.getColor(R.color.dark_sea_green, null), intent)
+            Notification.show(ctx, R.drawable.ic_sms_pass,
+                showName, content,
+                IMPORTANCE_HIGH, ctx.resources.getColor(R.color.dark_sea_green, null), intent)
         }
 
         // broadcast new sms

@@ -1,11 +1,13 @@
 package spam.blocker.db
 
 import android.annotation.SuppressLint
-import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
-import android.util.Log
+import android.graphics.Color
+import android.text.SpannableStringBuilder
+import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.util.SpannableUtil
 
 class Flag(var value: Int) {
 
@@ -14,6 +16,9 @@ class Flag(var value: Int) {
         return value and f == f
     }
 
+    fun isClean(): Boolean {
+        return value == 0
+    }
     // add or remove a flag
     fun set(f: Int, enabled: Boolean) {
         value = if (enabled) { // add flag
@@ -22,25 +27,38 @@ class Flag(var value: Int) {
             value and f.inv()
         }
     }
+    fun toStr(attrMap: Map<Int, String>): String {
+        var ret = ""
+        attrMap.forEach { (k, v) ->
+            if (Has(k))
+                ret += v
+        }
+        return ret
+    }
 }
 
 class PatternFilter {
 
     var id: Long = 0
     var pattern: String = ""
+
+    // for now, this is only used as ParticularNumber
     var patternExtra: String = ""
+
+    var patternFlags = Flag(0)
+    var patternExtraFlags = Flag(0)
     var description: String = ""
     var priority: Int = 1
     var isBlacklist = true
-    var flagCallSms = Flag(Db.FLAG_FOR_BOTH_SMS_CALL) // it applies to SMS or Call or both
+    var flagCallSms = Flag(Def.FLAG_FOR_BOTH_SMS_CALL) // it applies to SMS or Call or both
     var importance = Def.DEF_SPAM_IMPORTANCE // notification importance
 
     override fun toString(): String {
-        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance"
+        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, patternFlags: $patternFlags, patternExtraFlags: $patternExtraFlags, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance"
     }
 
     fun isForCall(): Boolean {
-        return flagCallSms.Has(Db.FLAG_FOR_CALL)
+        return flagCallSms.Has(Def.FLAG_FOR_CALL)
     }
 
     fun patternStr(): String {
@@ -49,9 +67,37 @@ class PatternFilter {
         else
             pattern
     }
+    fun patternStrColorful(ctx: Context): SpannableStringBuilder {
+        val green = ctx.resources.getColor(R.color.dark_sea_green, null)
+        val red = ctx.resources.getColor(R.color.salmon, null)
+        val flagsColor = ctx.resources.getColor(R.color.regex_flags, null)
+
+        val ratioFlags = 0.9f
+
+        val patternColor = if (isBlacklist) red else green
+
+        // format:
+        //   imdl .*   <-   imdl particular.*
+        val sb = SpannableStringBuilder()
+
+        if (!patternFlags.isClean()) {
+            SpannableUtil.append(sb, patternFlags.toStr(Def.MAP_REGEX_FLAGS) + " ", flagsColor, relativeSize = ratioFlags)
+        }
+        SpannableUtil.append(sb, pattern, patternColor, bold = true)
+        if (patternExtra != "") {
+            SpannableUtil.append(sb, "   <-   ", Color.LTGRAY)
+            if (!patternExtraFlags.isClean()) {
+                SpannableUtil.append(sb, patternExtraFlags.toStr(Def.MAP_REGEX_FLAGS) + " ", flagsColor, relativeSize = ratioFlags)
+            }
+            SpannableUtil.append(sb, patternExtra, patternColor)
+        }
+
+        return sb
+    }
+
 
     fun isForSms(): Boolean {
-        return flagCallSms.Has(Db.FLAG_FOR_SMS)
+        return flagCallSms.Has(Def.FLAG_FOR_SMS)
     }
 
     fun isWhitelist(): Boolean {
@@ -59,17 +105,17 @@ class PatternFilter {
     }
 
     fun setForCall(enabled: Boolean) {
-        flagCallSms.set(Db.FLAG_FOR_CALL, enabled)
+        flagCallSms.set(Def.FLAG_FOR_CALL, enabled)
     }
 
     fun setForSms(enabled: Boolean) {
-        flagCallSms.set(Db.FLAG_FOR_SMS, enabled)
+        flagCallSms.set(Def.FLAG_FOR_SMS, enabled)
     }
 
 }
 
 
-abstract class PatternTable {
+abstract class RuleTable {
 
     abstract fun tableName(): String
 
@@ -88,6 +134,8 @@ abstract class PatternTable {
                     f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
                     val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
                     f.patternExtra = if(it.isNull(columnExtra)) "" else it.getString(columnExtra) // for historical compatibility
+                    f.patternFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)))
+                    f.patternExtraFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)))
                     f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                     f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                     f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
@@ -116,6 +164,8 @@ abstract class PatternTable {
                 f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
                 val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
                 f.patternExtra = if(it.isNull(columnExtra)) "" else it.getString(columnExtra) // for historical compatibility
+                f.patternFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)))
+                f.patternExtraFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)))
                 f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                 f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                 f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
@@ -131,36 +181,22 @@ abstract class PatternTable {
     }
 
     fun listAll(ctx: Context): List<PatternFilter> {
-        return listFilters(
-            ctx,
-            Db.FLAG_FOR_BOTH_SMS_CALL,
-            Db.FLAG_BOTH_WHITE_BLACKLIST
-        )
+        return listFilters(ctx, Def.FLAG_FOR_BOTH_SMS_CALL)
     }
 
     fun listFilters(
         ctx: Context,
-        flagCallSms: Int,
-        flagBlackWhite: Int
+        flagCallSms: Int
     ): List<PatternFilter> {
         val where = arrayListOf<String>()
 
         // 1. call/sms
-        val sms = Flag(flagCallSms).Has(Db.FLAG_FOR_SMS)
-        val call = Flag(flagCallSms).Has(Db.FLAG_FOR_CALL)
+        val sms = Flag(flagCallSms).Has(Def.FLAG_FOR_SMS)
+        val call = Flag(flagCallSms).Has(Def.FLAG_FOR_CALL)
         if (sms and !call) {
-            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Db.FLAG_FOR_SMS}) = ${Db.FLAG_FOR_SMS}")
+            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Def.FLAG_FOR_SMS}) = ${Def.FLAG_FOR_SMS}")
         } else if (call and !sms) {
-            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Db.FLAG_FOR_CALL}) = ${Db.FLAG_FOR_CALL}")
-        }
-
-        // 2. black/white
-        val black = Flag(flagBlackWhite).Has(Db.FLAG_BLACKLIST)
-        val white = Flag(flagBlackWhite).Has(Db.FLAG_WHITELIST)
-        if (black and !white) {
-            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Db.FLAG_BLACKLIST}) = ${Db.FLAG_BLACKLIST}")
-        } else if (white and !black) {
-            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Db.FLAG_WHITELIST}) = ${Db.FLAG_WHITELIST}")
+            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Def.FLAG_FOR_CALL}) = ${Def.FLAG_FOR_CALL}")
         }
 
         // 3. build where clause
@@ -182,6 +218,8 @@ abstract class PatternTable {
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
         cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
+        cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags.value)
+        cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags.value)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
@@ -197,6 +235,8 @@ abstract class PatternTable {
         cv.put(Db.COLUMN_ID, f.id)
         cv.put(Db.COLUMN_PATTERN, f.pattern)
         cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
+        cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags.value)
+        cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags.value)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
@@ -211,6 +251,8 @@ abstract class PatternTable {
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
         cv.put(Db.COLUMN_PATTERN_EXTRA, f.patternExtra)
+        cv.put(Db.COLUMN_PATTERN_FLAGS, f.patternFlags.value)
+        cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags.value)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
@@ -237,13 +279,13 @@ abstract class PatternTable {
     }
 }
 
-open class NumberFilterTable : PatternTable() {
+open class NumberFilterTable : RuleTable() {
     override fun tableName(): String {
         return Db.TABLE_NUMBER_FILTER
     }
 }
 
-open class ContentFilterTable : PatternTable() {
+open class ContentFilterTable : RuleTable() {
     override fun tableName(): String {
         return Db.TABLE_CONTENT_FILTER
     }

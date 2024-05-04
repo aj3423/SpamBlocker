@@ -1,13 +1,6 @@
 package spam.blocker.ui.setting
 
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.Paint
-import android.graphics.PixelFormat
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,53 +10,19 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import spam.blocker.R
+import spam.blocker.db.Flag
 import spam.blocker.db.PatternFilter
-import spam.blocker.def.Def
+import spam.blocker.ui.util.MaterialInputRegexFlagsUtil
+import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Util
 
-
-class TextDrawable(private val text: String, private val color: Int) : Drawable() {
-    private val paint: Paint = Paint()
-
-    init {
-        paint.setColor(Color.WHITE)
-        paint.textSize = 36f
-        paint.isAntiAlias = true
-        paint.isFakeBoldText = true
-        paint.style = Paint.Style.FILL_AND_STROKE
-        paint.textAlign = Paint.Align.LEFT
-        paint.color = color
-    }
-
-    override fun draw(canvas: Canvas) {
-        val bounds = bounds
-
-        val x = bounds.centerX().toFloat() - paint.measureText(text) / 2
-        val y = bounds.centerY().toFloat() + paint.textSize / 2
-        canvas.drawText(text, x, y, paint)
-    }
-
-    override fun setAlpha(alpha: Int) {
-        paint.setAlpha(alpha)
-    }
-
-    override fun setColorFilter(cf: ColorFilter?) {
-        paint.setColorFilter(cf)
-    }
-
-    override fun getOpacity(): Int {
-        return PixelFormat.TRANSLUCENT
-    }
-}
 
 class PopupEditFilterFragment(
     private val initFilter: PatternFilter,
@@ -89,10 +48,10 @@ class PopupEditFilterFragment(
 
         // widgets
         val container_pattern = view.findViewById<TextInputLayout>(R.id.container_pattern)
-        val edit_pattern = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern)
+        val edit_pattern_particular = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern)
         val row_particular = view.findViewById<LinearLayout>(R.id.row_sms_particular_number)
         val switch_for_particular_number = view.findViewById<SwitchCompat>(R.id.switch_particular_number)
-        val container_pattern_phone = view.findViewById<TextInputLayout>(R.id.container_pattern_phone)
+        val container_pattern_particular = view.findViewById<TextInputLayout>(R.id.container_pattern_phone)
         val edit_pattern_phone = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern_phone)
         val edit_desc = view.findViewById<TextInputEditText>(R.id.popup_edit_desc)
         val chk_for_call = view.findViewById<CheckBox>(R.id.popup_chk_call)
@@ -108,18 +67,11 @@ class PopupEditFilterFragment(
         val btn_save = view.findViewById<MaterialButton>(R.id.popup_btn_save_filter)
 
         val init = initFilter
+        // make a clone, so the flags of init won't be modified on the fly
+        val initPatternFlags = Flag(init.patternFlags.value)
+        val initPatternExtraFlags = Flag(init.patternExtraFlags.value)
 
-//        val imdlc = "imdlc"
-//        var i = 1
-//        container_pattern.endIconMode = TextInputLayout.END_ICON_CUSTOM
-//        container_pattern.endIconDrawable = ResourcesCompat.getDrawable(resources, R.drawable.ic_shade, null)
-//        container_pattern.isEndIconVisible = true
-//        container_pattern.setEndIconOnClickListener {
-//            Toast.makeText(ctx, " icon clicked, popup dropdown checkboxes....", Toast.LENGTH_SHORT).show()
-//            i += 1
-//            val drawable = TextDrawable(imdlc.substring(0, i), ctx.resources.getColor(R.color.orange, null))
-//            container_pattern.endIconDrawable = drawable
-//        }
+        MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern, edit_pattern_particular, initPatternFlags)
 
         container_pattern.hint = if (forSms) str_content_pattern else str_number_pattern
 
@@ -130,25 +82,26 @@ class PopupEditFilterFragment(
             }
         }
 
-        showHelpOnError(container_pattern, edit_pattern)
-        edit_pattern.setText(init.pattern)
+        showHelpOnError(container_pattern, edit_pattern_particular)
+        edit_pattern_particular.setText(init.pattern)
         if (forSms) {
-            showHelpOnError(container_pattern_phone, edit_pattern_phone)
-            Util.setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
+            showHelpOnError(container_pattern_particular, edit_pattern_phone)
+            setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
+            MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern_particular, edit_pattern_particular, initPatternExtraFlags)
             switch_for_particular_number.setOnClickListener{
                 val checked = switch_for_particular_number.isChecked
-                container_pattern_phone.visibility = if(checked) View.VISIBLE else View.GONE
+                container_pattern_particular.visibility = if(checked) View.VISIBLE else View.GONE
             }
             if (init.patternExtra != "") {
                 switch_for_particular_number.isChecked = true
 
                 edit_pattern_phone.setText(init.patternExtra)
             } else {
-                container_pattern_phone.visibility = View.GONE
+                container_pattern_particular.visibility = View.GONE
             }
         } else {
             row_particular.visibility = View.GONE
-            container_pattern_phone.visibility = View.GONE
+            container_pattern_particular.visibility = View.GONE
         }
 
         // description
@@ -172,11 +125,11 @@ class PopupEditFilterFragment(
             row_importance.visibility = if (checkedId == R.id.popup_radio_blacklist) View.VISIBLE else View.GONE
         }
         // importance
-        Util.setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance, false)
+        setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance, false)
         spin_importance.setSelection(init.importance)
 
         btn_save.setOnClickListener {
-            init.pattern = edit_pattern.text.toString()
+            init.pattern = edit_pattern_particular.text.toString()
             if(switch_for_particular_number.isChecked && edit_pattern_phone.text.toString() != "") {
                 init.patternExtra = edit_pattern_phone.text.toString()
             } else {
@@ -186,6 +139,8 @@ class PopupEditFilterFragment(
             init.priority = Integer.parseInt(edit_priority.text.toString())
             init.setForCall(chk_for_call.isChecked)
             init.setForSms(chk_for_sms.isChecked)
+            init.patternFlags = Flag(initPatternFlags.value)
+            init.patternExtraFlags = Flag(initPatternExtraFlags.value)
             if (radio_blacklist.isChecked) {
                 init.isBlacklist = true
             }

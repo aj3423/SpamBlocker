@@ -15,6 +15,7 @@ import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.service.CallService
 import spam.blocker.service.SmsReceiver
+import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.Util
 
@@ -46,7 +47,7 @@ class PopupTestFragment(val forSms: Boolean) : ClosableDialogFragment() {
         val label_result = view.findViewById<TextView>(R.id.test_result)
         val img_reason = view.findViewById<ImageView>(R.id.test_reason)
 
-        Util.setupImageTooltip(ctx, viewLifecycleOwner, help_test, R.string.help_test)
+        setupImageTooltip(ctx, viewLifecycleOwner, help_test, R.string.help_test)
 
         fun clearResult() {
             label_result.visibility = View.GONE

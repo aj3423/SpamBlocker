@@ -18,4 +18,5 @@
         <item name="android:textColorSecondary">@color/mid_grey</item>
 
     </style>
+    
 </resources>

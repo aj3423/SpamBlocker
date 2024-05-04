@@ -144,7 +144,8 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            if (filter.pattern.toRegex().matches(Util.clearNumber(rawNumber))) {
+            val opts = Util.flagsToRegexOptions(filter.patternFlags)
+            if (filter.pattern.toRegex(opts).matches(Util.clearNumber(rawNumber))) {
                 val block = filter.isBlacklist
                 return CheckResult(
                     block,
@@ -167,11 +168,16 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val f = filter // for short
 
+            val opts = Util.flagsToRegexOptions(filter.patternFlags)
+            val optsExtra = Util.flagsToRegexOptions(filter.patternExtraFlags)
+
+            val contentMatches = f.pattern.toRegex(opts).matches(messageBody)
+            val particularNumberMatches = f.patternExtra.toRegex(optsExtra).matches(Util.clearNumber(rawNumber))
+
             val matches = if (filter.patternExtra != "") { // for particular number enabled
-                f.pattern.toRegex().matches(messageBody)
-                        && f.patternExtra.toRegex() .matches(Util.clearNumber(rawNumber))
+                contentMatches && particularNumberMatches
             } else {
-                f.pattern.toRegex().matches(messageBody)
+                contentMatches
             }
 
             if (matches) {
@@ -200,8 +206,7 @@ class SpamChecker {
                 Checker.RecentApp(ctx)
             )
             //  add number rules to checkers
-            val filters = NumberFilterTable().listFilters(
-                ctx, Db.FLAG_FOR_CALL, Db.FLAG_BOTH_WHITE_BLACKLIST)
+            val filters = NumberFilterTable().listFilters(ctx, Def.FLAG_FOR_CALL)
             checkers += filters.map {
                 Checker.Number(rawNumber, it)
             }
@@ -237,17 +242,13 @@ class SpamChecker {
             )
 
             //  add number rules to checkers
-            val numberFilters = NumberFilterTable().listFilters(
-                ctx, Db.FLAG_FOR_SMS, Db.FLAG_BOTH_WHITE_BLACKLIST
-            )
+            val numberFilters = NumberFilterTable().listFilters(ctx, Def.FLAG_FOR_SMS)
             checkers += numberFilters.map {
                 Checker.Number(rawNumber, it)
             }
 
             //  add sms content rules to checkers
-            val contentFilters = ContentFilterTable().listFilters(
-                ctx, 0/* doesn't care */, Db.FLAG_BOTH_WHITE_BLACKLIST
-            )
+            val contentFilters = ContentFilterTable().listFilters(ctx, 0/* doesn't care */)
             checkers += contentFilters.map {
                 Checker.Content(rawNumber, messageBody, it)
             }

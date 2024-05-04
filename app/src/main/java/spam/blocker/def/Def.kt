@@ -51,4 +51,23 @@ object Def {
                 (result == RESULT_ALLOWED_BY_CONTENT) or
                 (result == RESULT_ALLOWED_BY_CONTACT)
     }
+
+
+    // flags
+    // for call/sms
+    const val FLAG_FOR_CALL = 1
+    const val FLAG_FOR_SMS = 2
+    const val FLAG_FOR_BOTH_SMS_CALL = 3
+
+    const val FLAG_REGEX_IGNORE_CASE = 1 shl 0
+    const val FLAG_REGEX_MULTILINE = 1 shl 1
+    const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
+    const val FLAG_REGEX_LITERAL = 1 shl 3
+
+    val MAP_REGEX_FLAGS = mapOf(
+        FLAG_REGEX_IGNORE_CASE to "i",
+        FLAG_REGEX_MULTILINE to "m",
+        FLAG_REGEX_DOT_MATCH_ALL to "d",
+        FLAG_REGEX_LITERAL to "l"
+    )
 }

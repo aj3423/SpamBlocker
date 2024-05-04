@@ -25,7 +25,7 @@ class NotificationTrampolineActivity : AppCompatActivity() {
                 if (blocked) { // launch the default SMS app
                     Launcher.launchSMSApp(this)
                 } else { // open the conversation in SMS app
-                    val smsto = intent.getStringExtra("phone")
+                    val smsto = intent.getStringExtra("rawNumber")
                     Launcher.openSMSConversation(this, smsto)
                 }
             }

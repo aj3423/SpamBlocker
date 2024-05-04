@@ -2,17 +2,17 @@ package spam.blocker.service
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.telecom.Call as TelecomCall
 import android.telecom.CallScreeningService
 import android.util.Log
 import spam.blocker.R
 import spam.blocker.db.CallTable
+import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
-import spam.blocker.util.Launcher
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref
+import spam.blocker.util.Util
 
 class CallService : CallScreeningService() {
     override fun onScreenCall(callDetails: TelecomCall.Details) {
@@ -36,7 +36,7 @@ class CallService : CallScreeningService() {
             builder.apply {
                 setRejectCall(true)
                 setDisallowCall(true)
-                setSkipCallLog(false)
+                setSkipCallLog(true)
             }
         }
         respondToCall(callDetails, builder.build())
@@ -71,7 +71,10 @@ class CallService : CallScreeningService() {
                     putExtra("blocked", true)
                 }.setAction("action_call")
 
-                Notification.show(ctx, ctx.resources.getString(R.string.spam_call_blocked), rawNumber, importance, ctx.resources.getColor(R.color.salmon, null), intent)
+                Notification.show(ctx, R.drawable.ic_call_blocked,
+                    rawNumber,
+                    Util.reasonStr(ctx, NumberFilterTable(), r.reason()),
+                    importance, ctx.resources.getColor(R.color.salmon, null), intent)
             }
 
             // broadcast new call

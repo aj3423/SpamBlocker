@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import spam.blocker.R
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -31,15 +29,16 @@ import kotlinx.coroutines.withContext
 import spam.blocker.databinding.CallFragmentBinding
 import spam.blocker.databinding.SmsFragmentBinding
 import spam.blocker.db.CallTable
-import spam.blocker.db.RecordTable
+import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.ui.util.Util.Companion.preventMenuClosingWhenItemClicked
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
 
 open class HistoryFragment<bindingT : ViewBinding>(
     private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> bindingT,
-    protected val table: RecordTable
+    protected val table: HistoryTable
 ) : Fragment() {
 
     private var _binding: bindingT? = null
@@ -131,7 +130,7 @@ open class HistoryFragment<bindingT : ViewBinding>(
 
                 it.setChecked(!it.isChecked)
 
-                Util.preventMenuClosingWhenItemClicked(ctx, it)
+                preventMenuClosingWhenItemClicked(ctx, it)
 
                 when (it.itemId) {
                     R.id.chk_show_passed -> {

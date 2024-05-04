@@ -9,7 +9,7 @@ import spam.blocker.def.Def
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 22
+        const val DB_VERSION = 23
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter tables ----
@@ -19,22 +19,13 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_ID = "id"
         const val COLUMN_PATTERN = "pattern"
         const val COLUMN_PATTERN_EXTRA = "pattern_extra"
+        const val COLUMN_PATTERN_FLAGS = "pattern_flag"
+        const val COLUMN_PATTERN_EXTRA_FLAGS = "pattern_extra_flag"
         const val COLUMN_DESC = "description"
         const val COLUMN_FLAG_CALL_SMS = "flag_call_sms"
         const val COLUMN_PRIORITY = "priority"
         const val COLUMN_IS_BLACK = "blacklist"
         const val COLUMN_IMPORTANCE = "importance"
-
-
-        // flags
-        // for call/sms
-        const val FLAG_FOR_CALL = 1
-        const val FLAG_FOR_SMS = 2
-        const val FLAG_FOR_BOTH_SMS_CALL = 3
-        // for black/white
-        const val FLAG_WHITELIST = 1
-        const val FLAG_BLACKLIST = 2
-        const val FLAG_BOTH_WHITE_BLACKLIST = 3
 
 
         // ---- call ----
@@ -48,9 +39,6 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_RESULT = "result" // Int, as RESULT_... below
         const val COLUMN_REASON = "reason" // Long, by which filter id is this blocked/whitelisted
         const val COLUMN_READ = "read" // Boolean
-
-
-
 
 
         @Volatile
@@ -71,6 +59,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "$COLUMN_PATTERN TEXT, " +
                         "$COLUMN_PATTERN_EXTRA TEXT, " +
+                        "$COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0, " +
+                        "$COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0, " +
                         "$COLUMN_DESC TEXT, " +
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
@@ -104,7 +94,6 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                     "$COLUMN_READ INTEGER" +
                     ")"
         )
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -117,6 +106,12 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 22) && (oldVersion < 22)) {
             db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
             db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
+        }
+        if ((newVersion >= 23) && (oldVersion < 23)) {
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0")
         }
     }
 }

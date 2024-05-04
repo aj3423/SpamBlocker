@@ -18,4 +18,8 @@
     <color name="dodger_blue">#1e90ff</color>
     <color name="hint_grey">#D1C8C8</color>
     <color name="tooltip_blue">#5173e8</color>
+
+    <color name="dialog_bg">@color/white</color>
+    <color name="dialog_border">@android:color/transparent</color>
+    <color name="regex_flags">#6ed0ff</color>
 </resources>

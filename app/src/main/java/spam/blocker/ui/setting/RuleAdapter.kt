@@ -3,6 +3,9 @@ package spam.blocker.ui.setting
 import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +18,12 @@ import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.db.PatternFilter
 import spam.blocker.R
 
-class PatternAdapter(
+class RuleAdapter(
     private var ctx: Context,
     private var onItemClick: (PatternFilter) -> Unit,
     private var filters: ObservableArrayList<PatternFilter>,
     private val forSmsOnly: Boolean
-) : RecyclerView.Adapter<PatternAdapter.Holder>() {
+) : RecyclerView.Adapter<RuleAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.rule, parent, false);
@@ -36,11 +39,7 @@ class PatternAdapter(
             onItemClick(f)
         }
 
-        val green = ctx.resources.getColor(R.color.dark_sea_green, null)
-        val red = ctx.resources.getColor(R.color.salmon, null)
-
-        holder.labelPattern.text = f.patternStr()
-        holder.labelPattern.setTextColor(if (f.isWhitelist()) green else red)
+        holder.labelPattern.text = f.patternStrColorful(ctx)
         holder.labelDesc.text = f.description
         holder.chkApplyToCall.isChecked = f.isForCall()
         holder.chkApplyToSms.isChecked = f.isForSms()

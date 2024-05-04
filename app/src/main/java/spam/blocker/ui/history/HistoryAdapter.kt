@@ -14,12 +14,10 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.R
-import spam.blocker.db.ContentFilterTable
-import spam.blocker.db.NumberFilterTable
-import spam.blocker.db.PatternTable
 import spam.blocker.db.Record
-import spam.blocker.db.RecordTable
+import spam.blocker.db.HistoryTable
 import spam.blocker.def.Def
+import spam.blocker.ui.util.Util.Companion.setRoundImage
 import spam.blocker.util.Contacts
 import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.getAppsMap
@@ -27,7 +25,7 @@ import spam.blocker.util.Util.Companion.getAppsMap
 
 class HistoryAdapter(
     private val ctx: Context,
-    private var table: RecordTable,
+    private var table: HistoryTable,
     private var records: ObservableArrayList<Record>
 ) :
     RecyclerView.Adapter<HistoryAdapter.Holder>()
@@ -52,7 +50,7 @@ class HistoryAdapter(
 
         val bmpAvatar = contact?.loadAvatar(ctx)
         if (bmpAvatar != null) {
-            Util.setRoundImage(holder.imgPhoto, bmpAvatar)
+            setRoundImage(holder.imgPhoto, bmpAvatar)
         } else {
             val drawable = holder.imgPhoto.background.mutate()
             // use the hash code as color

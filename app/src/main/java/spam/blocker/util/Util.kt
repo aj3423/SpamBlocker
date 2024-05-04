@@ -2,32 +2,13 @@ package spam.blocker.util
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapShader
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Shader
-import android.net.Uri
-import android.provider.Telephony
-import android.util.Log
-import android.view.Gravity
-import android.view.MenuItem
-import android.view.View
-import android.widget.ImageView
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.LifecycleOwner
-import com.skydoves.balloon.ArrowPositionRules
-import com.skydoves.balloon.Balloon
-import com.skydoves.balloon.BalloonAnimation
-import com.skydoves.balloon.BalloonSizeSpec
 import spam.blocker.R
 import spam.blocker.db.ContentFilterTable
+import spam.blocker.db.Flag
 import spam.blocker.db.NumberFilterTable
-import spam.blocker.db.PatternTable
+import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -74,30 +55,6 @@ class Util {
             return difference <= millisecondsInWeek
         }
 
-        fun applyTheme(dark: Boolean) {
-            if (dark) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        }
-
-
-
-        // for round avatar
-        fun setRoundImage(imageView: ImageView, bitmap: Bitmap) {
-            val circularBitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(circularBitmap)
-            val paint = Paint().apply {
-                shader = BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-                isAntiAlias = true
-                isDither = true
-                isFilterBitmap = true
-            }
-            val radius = bitmap.width.coerceAtMost(bitmap.height) / 2f
-            canvas.drawCircle(bitmap.width / 2f, bitmap.height / 2f, radius, paint)
-            imageView.setImageBitmap(circularBitmap)
-        }
 
 
         // check if a string only contains:
@@ -134,6 +91,23 @@ class Util {
                 Pair(true, "")
             else
                 Pair(false, ctx.getString(R.string.invalid_regex_pattern))
+        }
+        fun flagsToRegexOptions(flags: Flag) : Set<RegexOption> {
+            val opts = mutableSetOf<RegexOption>()
+            if (flags.Has(Def.FLAG_REGEX_IGNORE_CASE)) {
+                opts.add(RegexOption.IGNORE_CASE)
+            }
+            if (flags.Has(Def.FLAG_REGEX_MULTILINE)) {
+                opts.add(RegexOption.MULTILINE)
+            }
+            if (flags.Has(Def.FLAG_REGEX_DOT_MATCH_ALL)) {
+                opts.add(RegexOption.DOT_MATCHES_ALL)
+            }
+            if (flags.Has(Def.FLAG_REGEX_LITERAL)) {
+                opts.add(RegexOption.LITERAL)
+            }
+            return opts
+
         }
 
 
@@ -177,51 +151,9 @@ class Util {
             return cacheAppMap!!
         }
 
-        // setup the hint from the imgView.tooltipText
-        fun setupImageTooltip(ctx: Context, viewLifecycleOwner: LifecycleOwner, imgView: ImageView, strId: Int, alignBottom: Boolean = true) {
-            imgView.setOnClickListener {
-                val balloon = Balloon.Builder(ctx)
-//                    .setWidthRatio(0.9f)
-                    .setHeight(BalloonSizeSpec.WRAP)
-                    .setText(ctx.resources.getText(strId))
-                    .setTextIsHtml(true)
-                    .setTextColorResource(R.color.white)
-                    .setTextSize(15f)
-                    .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-                    .setArrowSize(10)
-                    .setArrowPosition(0.5f)
-                    .setPadding(8)
-                    .setTextGravity(Gravity.START)
-                    .setCornerRadius(8f)
-                    .setBackgroundColor(ctx.resources.getColor(R.color.tooltip_blue, null))
-                    .setBalloonAnimation(BalloonAnimation.ELASTIC)
-                    .setLifecycleOwner(viewLifecycleOwner)
-                    .build()
 
-                balloon.setIsAttachedInDecor(false)
-                if (alignBottom) {
-                    balloon.showAlignBottom(imgView)
-                } else {
-                    balloon.showAlignTop(imgView)
-                }
-            }
-        }
-        fun preventMenuClosingWhenItemClicked(ctx: Context, item: MenuItem) {
-            item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
-            item.actionView = View(ctx)
-            item.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-                override fun onMenuItemActionExpand(item: MenuItem): Boolean {
-                    return false
-                }
-
-                override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
-                    return false
-                }
-            })
-        }
-
-        private fun reasonStr(ctx: Context, filterTable: PatternTable, reason: String) : String {
-            val f = filterTable.findPatternFilterById(ctx, reason.toLong())
+        fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
+            val f = filterTable?.findPatternFilterById(ctx, reason.toLong())
 
             val reasonStr = if (f != null) {
                 if (f.description != "") f.description else f.patternStr()
@@ -229,6 +161,14 @@ class Util {
                 ctx.resources.getString(R.string.deleted_filter)
             }
             return reasonStr
+        }
+        fun reasonTable(result: Int):  RuleTable? {
+            return when (result) {
+                Def.RESULT_ALLOWED_BY_NUMBER, Def.RESULT_BLOCKED_BY_NUMBER ->  NumberFilterTable()
+                Def.RESULT_ALLOWED_BY_CONTENT, Def.RESULT_BLOCKED_BY_CONTENT ->  ContentFilterTable()
+
+                else -> null
+            }
         }
         fun resultStr(ctx: Context, result: Int, reason: String): String {
             return when (result) {

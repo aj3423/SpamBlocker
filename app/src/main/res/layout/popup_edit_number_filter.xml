@@ -16,21 +16,14 @@
         tools:ignore="UselessParent">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
             android:id="@+id/container_pattern"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
-            app:helperTextTextColor="@color/salmon"
-            app:helperTextEnabled="true"
             app:startIconDrawable="@drawable/ic_filter">
 
             <com.google.android.material.textfield.TextInputEditText
+                style = "@style/material_input"
                 android:id="@+id/popup_edit_pattern"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- for sms only -->
@@ -41,9 +34,8 @@
                 android:textColor="@color/hint_grey" />
             <ImageView
                 android:id="@+id/popup_help_particular_number"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_for_particular_number"
                 tools:ignore="ContentDescription" />
             <Space style="@style/setting_spacing" />
 
@@ -52,60 +44,40 @@
                 style="@style/setting_switch" />
         </LinearLayout>
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
             android:id="@+id/container_pattern_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
             android:hint="@string/particular_number_pattern"
-            app:helperTextTextColor="@color/salmon"
-            app:helperTextEnabled="true"
             app:startIconDrawable="@drawable/ic_filter">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/material_input"
                 android:id="@+id/popup_edit_pattern_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
+            style="@style/material_input_layout"
             app:startIconDrawable="@drawable/ic_question">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/material_input"
                 android:id="@+id/popup_edit_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:hint="@string/filter_desc"
-                android:inputType="text"
-                android:textColorHint="@color/hint_grey" />
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
             android:id="@+id/container_priority"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
-            app:helperTextTextColor="@color/salmon"
             app:startIconDrawable="@drawable/ic_priority">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/material_input"
                 android:id="@+id/edit_priority"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/priority"
-                android:inputType="number"
-                android:textColorHint="@color/hint_grey" />
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout style="@style/setting_row">
@@ -177,9 +149,8 @@
 
             <ImageView
                 android:id="@+id/popup_help_importance"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_importance"
                 tools:ignore="ContentDescription" />
 
             <Space

@@ -34,7 +34,9 @@ import spam.blocker.databinding.SettingFragmentBinding
 import spam.blocker.db.ContentFilterTable
 import spam.blocker.db.PatternFilter
 import spam.blocker.db.NumberFilterTable
-import spam.blocker.db.PatternTable
+import spam.blocker.db.RuleTable
+import spam.blocker.ui.util.Util.Companion.applyAppTheme
+import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Permission
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import spam.blocker.util.SharedPref
@@ -78,7 +80,7 @@ class SettingFragment : Fragment() {
         switchTheme.isChecked = dark
         switchTheme.setOnClickListener {
             spf.toggleDarkTheme()
-            Util.applyTheme(spf.isDarkTheme())
+            applyAppTheme(spf.isDarkTheme())
         }
 
         setupContacts(root)
@@ -87,7 +89,7 @@ class SettingFragment : Fragment() {
 
         setupRecentApps(root)
 
-        setupFilter(
+        setupRules(
             root,
             R.id.recycler_number_filters,
             R.id.btn_add_number_filter,
@@ -96,7 +98,7 @@ class SettingFragment : Fragment() {
             NumberFilterTable(),
             false
         )
-        setupFilter(
+        setupRules(
             root,
             R.id.recycler_content_filters,
             R.id.btn_add_content_filter,
@@ -163,7 +165,10 @@ class SettingFragment : Fragment() {
             val color = if (isExclusive) R.color.salmon else R.color.hint_grey
             btnInclusive.setTextColor(resources.getColor(color, null))
             btnInclusive.setStrokeColorResource(color)
-            btnInclusive.text = if (isExclusive) ctx.resources.getString(R.string.exclusive) else ctx.resources.getString(R.string.inclusive)
+            btnInclusive.text =
+                if (isExclusive) ctx.resources.getString(R.string.exclusive) else ctx.resources.getString(
+                    R.string.inclusive
+                )
         }
 
         updateButton()
@@ -205,7 +210,7 @@ class SettingFragment : Fragment() {
 
         fun updateButton() {
             val inXmin = spf.getRecentAppConfig()
-            btn_config.text = "${inXmin} ${resources.getString(R.string.min)}"
+            btn_config.text = "$inXmin ${resources.getString(R.string.min)}"
             btn_config.visibility = if (recentApps.size > 0) View.VISIBLE else View.GONE
         }
         updateButton()
@@ -278,11 +283,11 @@ class SettingFragment : Fragment() {
 
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("NotifyDataSetChanged")
-    private fun setupFilter(
+    private fun setupRules(
         root: View,
         recyclerId: Int, addBtnId: Int, testBtnId: Int,
         filters: ObservableArrayList<PatternFilter>,
-        dbTable: PatternTable,
+        dbTable: RuleTable,
         forSms: Boolean
     ) {
         val ctx = requireContext()
@@ -302,7 +307,7 @@ class SettingFragment : Fragment() {
         }
         asyncReloadFromDb()
 
-        val adapter = PatternAdapter(ctx, { clickedF -> // onItemClickCallback
+        val adapter = RuleAdapter(ctx, { clickedF -> // onItemClickCallback
             val i = filters.indexOf(clickedF)
 
             val dialog = PopupEditFilterFragment(
@@ -357,7 +362,8 @@ class SettingFragment : Fragment() {
         val btnTest = root.findViewById<MaterialButton>(testBtnId)
         btnTest.setOnClickListener {
             PopupTestFragment(forSms)
-                .show(requireActivity().supportFragmentManager, "tag_test")        }
+                .show(requireActivity().supportFragmentManager, "tag_test")
+        }
 
         val swipeLeftCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
@@ -399,35 +405,28 @@ class SettingFragment : Fragment() {
 
     private fun setupTooltips(root: View) {
         val ctx = requireContext()
-        Util.setupImageTooltip(
-            ctx,
-            viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_globally_enabled),
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_globally_enabled),
             R.string.help_globally_enabled
         )
-        Util.setupImageTooltip(
-            ctx,
-            viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_enable_contacts),
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_enable_contacts),
             R.string.help_contact
         )
-        Util.setupImageTooltip(
-            ctx,
-            viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_repeated_call),
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_repeated_call),
             R.string.help_repeated_call
         )
-        Util.setupImageTooltip(ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps), R.string.help_recent_apps)
-        Util.setupImageTooltip(
-            ctx,
-            viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_number_filter),
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps),
+            R.string.help_recent_apps
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),
             R.string.help_number_filter
         )
-        Util.setupImageTooltip(
-            ctx,
-            viewLifecycleOwner,
-            root.findViewById(R.id.setting_help_sms_content_filter),
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_sms_content_filter),
             R.string.help_sms_content_filter
         )
     }

@@ -14,24 +14,17 @@
         tools:ignore="UselessParent">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
             android:id="@+id/container_recent_app_in_x_min"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
-            app:helperTextTextColor="@color/salmon"
             app:startIconDrawable="@drawable/ic_duration">
 
             <com.google.android.material.textfield.TextInputEditText
+                style = "@style/material_input"
                 android:id="@+id/edit_recent_app_in_x_min"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/within_minutes"
-                android:inputType="number"
-                android:textColorHint="@color/hint_grey" />
+                android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton

@@ -26,7 +26,6 @@
             android:maxLines="10"
             android:ellipsize="end"
             android:text="@string/filter_pattern"
-            android:textColor="@color/salmon"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/text_filter_desc"

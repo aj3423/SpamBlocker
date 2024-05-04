@@ -27,7 +27,7 @@ class Record {
     }
 }
 
-abstract class RecordTable {
+abstract class HistoryTable {
     abstract fun tableName(): String
 
     @SuppressLint("Range")
@@ -152,12 +152,12 @@ abstract class RecordTable {
         }
     }
 }
-open class CallTable : RecordTable() {
+open class CallTable : HistoryTable() {
     override fun tableName(): String {
         return Db.TABLE_CALL
     }
 }
-open class SmsTable : RecordTable() {
+open class SmsTable : HistoryTable() {
     override fun tableName(): String {
         return Db.TABLE_SMS
     }

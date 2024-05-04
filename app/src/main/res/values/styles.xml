@@ -50,7 +50,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
     </style>
-    <style name="setting_help">
+    <style name="help_question_icon">
         <item name="android:layout_width">16dp</item>
         <item name="android:layout_height">16dp</item>
         <item name="android:layout_marginLeft">7dp</item>
@@ -62,5 +62,25 @@
     <style name="setting_switch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:alpha">0.1</item>
+        <item name="android:background">@color/black</item>
+    </style>
+    <style name="material_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="helperTextEnabled">true</item>
+        <item name="helperTextTextColor">@color/salmon</item>
+        <item name="endIconMode">clear_text</item>
+    </style>
+    <style name="material_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">12dp</item>
     </style>
 </resources>

@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
@@ -25,7 +25,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -51,8 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="6dp"
-                    android:gravity="center"
-                    android:text="call result"
+                    android:maxLines="10"
+                    android:text="call result dddd  ddddd dddddd d ddddddd dddd dd dddd dddddddd dddd"
                     android:textColor="@color/mid_grey"
                     android:textSize="16sp" />
 

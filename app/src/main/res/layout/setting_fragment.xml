@@ -20,9 +20,8 @@
 
             <ImageView
                 android:id="@+id/setting_help_globally_enabled"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_globally_enabled"
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />
@@ -52,9 +51,8 @@
 
             <ImageView
                 android:id="@+id/setting_help_enable_contacts"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_contact"
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />
@@ -79,9 +77,8 @@
 
             <ImageView
                 android:id="@+id/setting_help_repeated_call"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_repeated_call"
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />
@@ -107,9 +104,8 @@
 
             <ImageView
                 android:id="@+id/setting_help_recent_apps"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_recent_apps"
                 tools:ignore="ContentDescription" />
 
             <Space style="@style/setting_spacing" />
@@ -151,9 +147,8 @@
 
             <ImageView
                 android:id="@+id/setting_help_number_filter"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_number_filter"
                 tools:ignore="ContentDescription" />
 
             <Space
@@ -200,9 +195,8 @@
 
             <ImageView
                 android:id="@+id/setting_help_sms_content_filter"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_sms_content_filter"
                 tools:ignore="ContentDescription" />
 
             <Space

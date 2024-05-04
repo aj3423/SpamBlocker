@@ -22,10 +22,10 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
+import spam.blocker.ui.util.Util.Companion.applyAppTheme
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
-import spam.blocker.util.Util
 
 
 class MainActivity : AppCompatActivity() {
@@ -165,7 +165,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // theme
-        Util.applyTheme(SharedPref(this).isDarkTheme())
+        applyAppTheme(SharedPref(this).isDarkTheme())
 
         // require permission once
         if (!spf.hasAskedForAllPermissions()) {

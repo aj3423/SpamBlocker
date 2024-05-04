@@ -15,43 +15,31 @@
         tools:ignore="UselessParent">
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
             android:id="@+id/container_test_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_call_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/material_input"
                 android:id="@+id/edit_test_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/phone_number"
-                android:inputType="text"
-                android:textColorHint="@color/hint_grey" />
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
             android:id="@+id/container_test_sms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:endIconMode="clear_text"
             app:startIconDrawable="@drawable/ic_sms_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                style="@style/material_input"
                 android:id="@+id/edit_test_sms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/sms_content"
-                android:inputType="textMultiLine"
-                android:textColorHint="@color/hint_grey" />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -91,9 +79,8 @@
             <!-- help icon -->
             <ImageView
                 android:id="@+id/help_test"
-                style="@style/setting_help"
+                style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
-                android:tooltipText="@string/help_test"
                 tools:ignore="ContentDescription" />
 
             <!-- Test Button -->
