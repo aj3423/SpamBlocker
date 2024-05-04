@@ -36,7 +36,8 @@ class CallService : CallScreeningService() {
             builder.apply {
                 setRejectCall(true)
                 setDisallowCall(true)
-                setSkipCallLog(true)
+                setSkipCallLog(false)
+                setSkipNotification(true)
             }
         }
         respondToCall(callDetails, builder.build())

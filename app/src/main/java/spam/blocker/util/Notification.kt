@@ -66,7 +66,7 @@ class Notification {
             return importance <= NotificationManager.IMPORTANCE_LOW
         }
         // different notification id generates different dropdown items
-        fun show(ctx: Context, iconId: Int, title: String, body: String, importance: Int, color: Int, intent: Intent) {
+        fun show(ctx: Context, iconId: Int, title: String, body: String, importance: Int, color: Int?, intent: Intent) {
             createChannelsOnce(ctx)
 
             val chId = channelId(importance) // 5 importance level <-> 5 channel id
@@ -84,8 +84,10 @@ class Notification {
                 .setContentText(body)
                 .setSilent(shouldSilent(importance))
                 .setContentIntent(pendingIntent)
-                .setColor(color)
                 .setColorized(true)
+            if (color != null) {
+                builder.setColor(color)
+            }
 
             val notification = builder.build()
 

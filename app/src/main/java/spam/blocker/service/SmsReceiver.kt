@@ -77,7 +77,7 @@ class SmsReceiver : BroadcastReceiver() {
 
             Notification.show(ctx, R.drawable.ic_sms_pass,
                 showName, content,
-                IMPORTANCE_HIGH, ctx.resources.getColor(R.color.dark_sea_green, null), intent)
+                IMPORTANCE_HIGH, null, intent)
         }
 
         // broadcast new sms
