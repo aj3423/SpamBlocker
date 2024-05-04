@@ -52,7 +52,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/material_input"
                 android:id="@+id/popup_edit_pattern_phone"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +63,7 @@
                 style="@style/material_input"
                 android:id="@+id/popup_edit_desc"
                 android:hint="@string/filter_desc"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

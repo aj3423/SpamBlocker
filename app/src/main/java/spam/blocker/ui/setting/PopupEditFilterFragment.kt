@@ -48,11 +48,11 @@ class PopupEditFilterFragment(
 
         // widgets
         val container_pattern = view.findViewById<TextInputLayout>(R.id.container_pattern)
-        val edit_pattern_particular = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern)
+        val edit_pattern = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern)
         val row_particular = view.findViewById<LinearLayout>(R.id.row_sms_particular_number)
         val switch_for_particular_number = view.findViewById<SwitchCompat>(R.id.switch_particular_number)
         val container_pattern_particular = view.findViewById<TextInputLayout>(R.id.container_pattern_phone)
-        val edit_pattern_phone = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern_phone)
+        val edit_pattern_particular = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern_phone)
         val edit_desc = view.findViewById<TextInputEditText>(R.id.popup_edit_desc)
         val chk_for_call = view.findViewById<CheckBox>(R.id.popup_chk_call)
         val chk_for_sms = view.findViewById<CheckBox>(R.id.popup_chk_sms)
@@ -71,7 +71,7 @@ class PopupEditFilterFragment(
         val initPatternFlags = Flag(init.patternFlags.value)
         val initPatternExtraFlags = Flag(init.patternExtraFlags.value)
 
-        MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern, edit_pattern_particular, initPatternFlags)
+        MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern, edit_pattern, initPatternFlags)
 
         container_pattern.hint = if (forSms) str_content_pattern else str_number_pattern
 
@@ -82,10 +82,10 @@ class PopupEditFilterFragment(
             }
         }
 
-        showHelpOnError(container_pattern, edit_pattern_particular)
-        edit_pattern_particular.setText(init.pattern)
+        showHelpOnError(container_pattern, edit_pattern)
+        edit_pattern.setText(init.pattern)
         if (forSms) {
-            showHelpOnError(container_pattern_particular, edit_pattern_phone)
+            showHelpOnError(container_pattern_particular, edit_pattern_particular)
             setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
             MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern_particular, edit_pattern_particular, initPatternExtraFlags)
             switch_for_particular_number.setOnClickListener{
@@ -95,7 +95,7 @@ class PopupEditFilterFragment(
             if (init.patternExtra != "") {
                 switch_for_particular_number.isChecked = true
 
-                edit_pattern_phone.setText(init.patternExtra)
+                edit_pattern_particular.setText(init.patternExtra)
             } else {
                 container_pattern_particular.visibility = View.GONE
             }
@@ -129,9 +129,9 @@ class PopupEditFilterFragment(
         spin_importance.setSelection(init.importance)
 
         btn_save.setOnClickListener {
-            init.pattern = edit_pattern_particular.text.toString()
-            if(switch_for_particular_number.isChecked && edit_pattern_phone.text.toString() != "") {
-                init.patternExtra = edit_pattern_phone.text.toString()
+            init.pattern = edit_pattern.text.toString()
+            if(switch_for_particular_number.isChecked && edit_pattern_particular.text.toString() != "") {
+                init.patternExtra = edit_pattern_particular.text.toString()
             } else {
                 init.patternExtra = ""
             }
