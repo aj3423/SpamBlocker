@@ -17,6 +17,7 @@
         <item name="colorAccent">@color/teal_200</item>
         <item name="android:textColorSecondary">@color/mid_grey</item>
 
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
     </style>
-    
+
 </resources>

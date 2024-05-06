@@ -107,7 +107,8 @@
 
         </LinearLayout>
 
-        <LinearLayout style="@style/setting_row">
+        <LinearLayout style="@style/setting_row"
+            android:id="@+id/row_rule_type">
             <TextView
                 style="@style/setting_label"
                 android:text="@string/type"
@@ -140,7 +141,8 @@
         </LinearLayout>
 
 
-        <LinearLayout style="@style/setting_row" android:id="@+id/row_importance">
+        <LinearLayout style="@style/setting_row"
+            android:id="@+id/row_importance">
             <TextView
                 android:id="@+id/label_importance"
                 style="@style/setting_label"

@@ -4,15 +4,15 @@
     <style name="stroke_button" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
-        <item name="minHeight">0dp</item>
-        <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:minWidth">20dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingHorizontal">10dp</item>
         <item name="textAllCaps">false</item>
         <item name="cornerRadius">4dp</item>
         <item name="strokeWidth">2dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:paddingTop">0dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">30dp</item>
     </style>
 
     <style name="stroke_teal_button" parent="stroke_button">
@@ -30,6 +30,23 @@
     <style name="stroke_red_button" parent="stroke_button">
         <item name="android:textColor">@color/salmon</item>
         <item name="strokeColor">@color/salmon</item>
+    </style>
+
+    <style name="setting_stroke_button" parent="stroke_button">
+        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+    <style name="setting_stroke_blue_button" parent="setting_stroke_button">
+        <item name="android:textColor">@color/dodger_blue</item>
+        <item name="strokeColor">@color/dodger_blue</item>
+    </style>
+    <style name="setting_stroke_teal_button" parent="setting_stroke_button">
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="strokeColor">@color/teal_200</item>
+    </style>
+    <style name="setting_stroke_gray_button" parent="setting_stroke_button">
+        <item name="android:textColor">@color/mid_grey</item>
+        <item name="strokeColor">@color/mid_grey</item>
     </style>
 
     <style name="setting_row">
@@ -69,6 +86,7 @@
         <item name="android:alpha">0.1</item>
         <item name="android:background">@color/black</item>
     </style>
+
     <style name="material_input_layout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -83,4 +101,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">12dp</item>
     </style>
+
+
 </resources>

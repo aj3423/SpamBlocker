@@ -23,10 +23,11 @@ class MaterialInputRegexFlagsUtil {
             container.endIconMode = TextInputLayout.END_ICON_CUSTOM
             container.isEndIconVisible = true
             fun updateFlagsIcon() {
-                container.endIconDrawable = if (initFlags.isClean())
+                val imdlc = initFlags.toStr(Def.MAP_REGEX_FLAGS, Def.LIST_REGEX_FLAG_INVERSE)
+                container.endIconDrawable = if (imdlc.isEmpty())
                     ContextCompat.getDrawable(ctx, R.drawable.ic_flags)
                 else
-                    TextDrawable(initFlags.toStr(Def.MAP_REGEX_FLAGS), ctx.resources.getColor(R.color.regex_flags, null))
+                    TextDrawable(imdlc, ctx.resources.getColor(R.color.regex_flags, null))
             }
             updateFlagsIcon()
             container.setEndIconOnClickListener {
@@ -38,7 +39,6 @@ class MaterialInputRegexFlagsUtil {
 
                 val flags_i = root.findViewById<CheckBox>(R.id.flag_ignore_case)
                 val flags_d = root.findViewById<CheckBox>(R.id.flag_dot_match_all)
-                val flags_l = root.findViewById<CheckBox>(R.id.flag_literal)
                 fun bindCheckEvents(chk: CheckBox, flag: Int) {
                     chk.setOnCheckedChangeListener { _, isChecked ->
                         initFlags.set(flag, isChecked)
@@ -51,7 +51,6 @@ class MaterialInputRegexFlagsUtil {
                 }
                 initCheck(flags_i, Def.FLAG_REGEX_IGNORE_CASE)
                 initCheck(flags_d, Def.FLAG_REGEX_DOT_MATCH_ALL)
-                initCheck(flags_l, Def.FLAG_REGEX_LITERAL)
 
                 val popUp = PopupWindow(ctx)
                 popUp.contentView = binding.root

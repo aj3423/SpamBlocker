@@ -7,7 +7,7 @@ import android.telecom.CallScreeningService
 import android.util.Log
 import spam.blocker.R
 import spam.blocker.db.CallTable
-import spam.blocker.db.NumberFilterTable
+import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.Notification
@@ -46,7 +46,7 @@ class CallService : CallScreeningService() {
     fun processCall(ctx: Context, rawNumber: String) : CheckResult {
         var r = CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
         try {
-            r = SpamChecker.checkCall(ctx, rawNumber)
+            r = Checker.checkCall(ctx, rawNumber)
 
             // 1. log to db
             val call = Record()
@@ -74,7 +74,7 @@ class CallService : CallScreeningService() {
 
                 Notification.show(ctx, R.drawable.ic_call_blocked,
                     rawNumber,
-                    Util.reasonStr(ctx, NumberFilterTable(), r.reason()),
+                    Util.reasonStr(ctx, NumberRuleTable(), r.reason()),
                     importance, ctx.resources.getColor(R.color.salmon, null), intent)
             }
 

@@ -142,8 +142,6 @@ open class HistoryFragment<bindingT : ViewBinding>(
                         spf.setShowBlocked(it.isChecked)
                         asyncReloadFromDb()
                     }
-
-                    else -> {}
                 }
                 false
             }

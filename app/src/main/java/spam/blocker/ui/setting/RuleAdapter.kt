@@ -3,9 +3,6 @@ package spam.blocker.ui.setting
 import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +12,16 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
-import spam.blocker.db.PatternFilter
+import spam.blocker.db.PatternRule
 import spam.blocker.R
+import spam.blocker.def.Def
 
 class RuleAdapter(
-    private var ctx: Context,
-    private var onItemClick: (PatternFilter) -> Unit,
-    private var filters: ObservableArrayList<PatternFilter>,
-    private val forSmsOnly: Boolean
+    private val ctx: Context,
+    private val onItemClick: (PatternRule) -> Unit,
+    private val onItemLongClick: (PatternRule) -> Unit,
+    private val filters: ObservableArrayList<PatternRule>,
+    private val forType: Int
 ) : RecyclerView.Adapter<RuleAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -38,13 +37,17 @@ class RuleAdapter(
         holder.itemView.setOnClickListener{
             onItemClick(f)
         }
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick(f)
+            true
+        }
 
         holder.labelPattern.text = f.patternStrColorful(ctx)
         holder.labelDesc.text = f.description
         holder.chkApplyToCall.isChecked = f.isForCall()
         holder.chkApplyToSms.isChecked = f.isForSms()
-        if (forSmsOnly) {
-            holder.chkApplyToCall.visibility = View.INVISIBLE
+        if (forType != Def.ForCall) {
+            holder.chkApplyToCall.visibility = View.GONE
         }
 
         holder.labelPriority.text = ctx.resources.getString(R.string.priority) + ": ${f.priority}"

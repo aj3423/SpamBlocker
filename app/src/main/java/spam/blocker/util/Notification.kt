@@ -7,11 +7,10 @@ import android.app.PendingIntent
 import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import spam.blocker.R
-
+import spam.blocker.service.CopyToClipboardReceiver
 
 
 class Notification {
@@ -65,16 +64,30 @@ class Notification {
         private fun shouldSilent(importance: Int) : Boolean {
             return importance <= NotificationManager.IMPORTANCE_LOW
         }
+
         // different notification id generates different dropdown items
-        fun show(ctx: Context, iconId: Int, title: String, body: String, importance: Int, color: Int?, intent: Intent) {
+        fun show(
+            ctx: Context, iconId: Int, title: String, body: String, importance: Int, color: Int?,
+            intent: Intent, // notification clicking handler
+
+            toCopy: String? = null
+        ) {
             createChannelsOnce(ctx)
 
             val chId = channelId(importance) // 5 importance level <-> 5 channel id
+            val notificationId = System.currentTimeMillis().toInt()
             val builder = NotificationCompat.Builder(ctx, chId)
+
+            // Use different requestCode for every pendingIntent, otherwise the
+            //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
+            //   its action button disabled
+            val requestCode = System.currentTimeMillis().toInt()
 
             val pendingIntent = TaskStackBuilder.create(ctx).run {
                 addNextIntentWithParentStack(intent)
-                getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+                getPendingIntent(requestCode,
+                    PendingIntent.FLAG_UPDATE_CURRENT or
+                            PendingIntent.FLAG_IMMUTABLE)
             }
             builder
                 .setAutoCancel(true)
@@ -84,16 +97,31 @@ class Notification {
                 .setContentText(body)
                 .setSilent(shouldSilent(importance))
                 .setContentIntent(pendingIntent)
-                .setColorized(true)
+
             if (color != null) {
+                builder.setColorized(true)
                 builder.setColor(color)
+            }
+            if (toCopy != null) {
+                val copyIntent = Intent(ctx, CopyToClipboardReceiver::class.java).apply {
+                    putExtra("toCopy", toCopy)
+                    putExtra("notificationId", notificationId)
+                }
+                val pending = PendingIntent.getBroadcast(ctx, requestCode, copyIntent,
+                    PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+                val strCopy = ctx.getString(R.string.copy)
+                builder.addAction(0, "$strCopy: $toCopy", pending)
             }
 
             val notification = builder.build()
 
             val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
-            val notificationId = System.currentTimeMillis().toInt()
             manager.notify(notificationId, notification)
+        }
+        fun cancelById(ctx: Context, notificationId: Int) {
+            val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
+            manager.cancel(notificationId)
         }
         fun cancelAll(ctx: Context) {
             val manager = ctx.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager

@@ -8,7 +8,6 @@ import android.content.Intent
 import android.provider.Telephony
 import android.util.Log
 import spam.blocker.R
-import spam.blocker.db.NumberFilterTable
 import spam.blocker.db.Record
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
@@ -31,15 +30,15 @@ class SmsReceiver : BroadcastReceiver() {
         val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
         val msg = messages[0]
         val rawNumber = msg.originatingAddress!!
-        val content = msg.messageBody;
-        Log.d(Def.TAG, "onReceive sms from $rawNumber: $content")
+        val messageBody = msg.messageBody;
+        Log.d(Def.TAG, "onReceive sms from $rawNumber: $messageBody")
 
-        processSms(ctx, rawNumber, content)
+        processSms(ctx, rawNumber, messageBody)
     }
 
-    fun processSms(ctx: Context, rawNumber: String, content: String) : CheckResult {
+    fun processSms(ctx: Context, rawNumber: String, messageBody: String) : CheckResult {
 
-        val r = SpamChecker.checkSms(ctx, rawNumber, content)
+        val r = Checker.checkSms(ctx, rawNumber, messageBody)
 
         // 1. log to db
         val rec = Record()
@@ -67,17 +66,33 @@ class SmsReceiver : BroadcastReceiver() {
                 showName,
                 Util.reasonStr(ctx, Util.reasonTable(r.result), r.reason()),
                 importance, ctx.resources.getColor(R.color.salmon, null), intent)
-        } else {
 
+        } else { // passed
+
+            // handle clicking of the notification body:
+            //  - launch sms app, open conversation with that number
+            //  - cancel all notifications
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
                 putExtra("type", "sms")
                 putExtra("blocked", false)
                 putExtra("rawNumber", rawNumber)
             }.setAction("action_sms_non_block")
 
+            // COPY action button:
+            //  - copy content
+            //  - cancel this particular notification, other notifications remain
+            val res = Checker.checkQuickCopy(ctx, messageBody)
+            val toCopy : String? = if (res == null)
+                null
+            else {
+                Util.clearNumber(res.second).ifEmpty { null }
+            }
+
             Notification.show(ctx, R.drawable.ic_sms_pass,
-                showName, content,
-                IMPORTANCE_HIGH, null, intent)
+                showName, messageBody,
+                IMPORTANCE_HIGH, null, intent,
+                toCopy = toCopy
+            )
         }
 
         // broadcast new sms

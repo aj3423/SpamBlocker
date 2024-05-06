@@ -34,6 +34,9 @@
     <string name="passed_by_default">Passed by default</string>
     <string name="blocked">Blocked</string>
     <string name="from">From</string>
+    <string name="copy">Copy</string>
+    <string name="copied_to_clipboard">Copied "%s" to clipboard.</string>
+    <string name="quick_copy">Quick Copy</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
@@ -52,6 +55,7 @@
     <string name="allow_contact">Contacts</string>
     <string name="repeated_call">Repeated Call</string>
     <string name="for_particular_number">For particular number</string>
+    <string name="no_match_found">No match found</string>
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match</string>
     <string name="help_globally_enabled">
         <![CDATA[
@@ -135,8 +139,19 @@
           SMS app in system settings, let this app take over the notification, otherwise there will be double notifications. <br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        A quick way to copy content from SMS messages, such as a verification code. <br>
         <br>
-        Swipe left to delete a rule.
+        When it matches, a button like <font color="#d1c8c8"><b>Copy: 123456</b></font> would appear in the notification. <br>
+        Not like clicking on the notification, when the copy button is clicked, only this notification will be dismissed, other notifications will remain. <br>
+        <br>
+        A sample rule: <br>
+        &emsp; code.*?(\d+) <br>
+        <br>
+        Only works when the SMS message is <b>NOT</b> <font color="#fa7f71"><b>blocked</b></font>.
         ]]>
     </string>
     <string name="help_importance">
@@ -148,13 +163,20 @@
         Heads-Up: Popups a floating window on the top of the screen.
         ]]>
     </string>
-    <string name="help_test">
+    <string name="help_test_rules">
         <![CDATA[
         This helps to check if the rules are set as expected.<br>
         <br>
         It\'s just a simulation and will not actually popup an incoming call(or text message).<br>
         <br>
         The result is shown here, and in history log, with notification.
+        ]]>
+    </string>
+    <string name="help_test_quick_copy">
+        <![CDATA[
+        This is not a simulation, it only shows if any quick-copy rule matches the content.<br>
+        <br>
+        To simulate, use "Test" from "Message Rules" instead.
         ]]>
     </string>
     <string name="allow_repeated_call">Repeated Call</string>
@@ -168,6 +190,7 @@
     <string name="delete_all">Delete all</string>
     <string name="show_passed">Show Passed</string>
     <string name="show_blocked">Show Blocked</string>
+    <string name="clone_rule">Clone Rule</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
     <string name="time">Time</string>
@@ -185,8 +208,14 @@
     <string name="literal">Literal</string>
     <string name="help_regex_flags">
         <![CDATA[
+
+            These flags change the matching behavior of the regex, they are set for new rules by default. When
+              they are modified, there will be an indicator before the rule text.<br>
+            <br>
+
             <font color="#ffa500"><b>Ignore Case</b></font>:<br>
-            &ensp; It makes the pattern matching case-insensitive, <font color="cyan"><b>a</b></font> would match both <font color="cyan"><b>a</b></font> and <font color="cyan"><b>A</b></font>. <br>
+            &ensp; It makes the pattern matching case-insensitive, <font color="cyan"><b>a</b></font>
+              would match both <font color="cyan"><b>a</b></font> and <font color="cyan"><b>A</b></font>. <br>
             <br>
 
             <font color="#ffa500"><b>Dot Match All</b></font>: <br>
@@ -196,14 +225,9 @@
             &emsp;   Match multiline spam message: <br>
             &emsp;   <font color="#fa7f71">claim your prize: http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   With rule: <br>
+            &emsp;   with rule: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-
-            <font color="#ffa500"><b>Literal</b></font>: <br>
-            &ensp; The pattern will be treated as a literal string, useful for matching strings contain special characters,
-            such as <font color="cyan"><b>.*</b></font> <br>
         ]]>
     </string>
 

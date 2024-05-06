@@ -3,10 +3,10 @@ package spam.blocker.service
 import android.content.Context
 import android.util.Log
 import spam.blocker.db.CallTable
-import spam.blocker.db.ContentFilterTable
-import spam.blocker.db.Db
-import spam.blocker.db.NumberFilterTable
-import spam.blocker.db.PatternFilter
+import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.PatternRule
+import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
@@ -19,7 +19,7 @@ class CheckResult(
     val result: Int,
 ) {
     var byContactName: String? = null // allowed by contact
-    var byFilter: PatternFilter? = null // allowed or blocked by this filter rule
+    var byFilter: PatternRule? = null // allowed or blocked by this filter rule
     var byRecentApp: String? = null // allowed by recent app
 
     fun reason(): String {
@@ -34,7 +34,7 @@ class CheckResult(
         return this
     }
 
-    fun setFilter(f: PatternFilter): CheckResult {
+    fun setFilter(f: PatternRule): CheckResult {
         byFilter = f
         return this
     }
@@ -138,7 +138,7 @@ class Checker { // for namespace only
     /*
         Check if a number rule matches the incoming number
      */
-    class Number(private val rawNumber: String, private val filter: PatternFilter) : checker {
+    class Number(private val rawNumber: String, private val filter: PatternRule) : checker {
         override fun priority(): Int {
             return filter.priority
         }
@@ -160,7 +160,7 @@ class Checker { // for namespace only
         Check if text message body matches the SMS Content rule,
         the number is also checked when "for particular number" is enabled
      */
-    class Content(private val rawNumber: String, private val messageBody: String, private val filter: PatternFilter) : checker {
+    class Content(private val rawNumber: String, private val messageBody: String, private val filter: PatternRule) : checker {
         override fun priority(): Int {
             return filter.priority
         }
@@ -193,10 +193,7 @@ class Checker { // for namespace only
             return null
         }
     }
-}
 
-
-class SpamChecker {
     companion object {
 
         fun checkCall(ctx: Context, rawNumber: String): CheckResult {
@@ -206,7 +203,7 @@ class SpamChecker {
                 Checker.RecentApp(ctx)
             )
             //  add number rules to checkers
-            val filters = NumberFilterTable().listFilters(ctx, Def.FLAG_FOR_CALL)
+            val filters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
             checkers += filters.map {
                 Checker.Number(rawNumber, it)
             }
@@ -242,13 +239,13 @@ class SpamChecker {
             )
 
             //  add number rules to checkers
-            val numberFilters = NumberFilterTable().listFilters(ctx, Def.FLAG_FOR_SMS)
+            val numberFilters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
             checkers += numberFilters.map {
                 Checker.Number(rawNumber, it)
             }
 
             //  add sms content rules to checkers
-            val contentFilters = ContentFilterTable().listFilters(ctx, 0/* doesn't care */)
+            val contentFilters = ContentRuleTable().listRules(ctx, 0/* doesn't care */)
             checkers += contentFilters.map {
                 Checker.Content(rawNumber, messageBody, it)
             }
@@ -271,6 +268,46 @@ class SpamChecker {
 
             // pass by default
             return CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
+        }
+
+        fun checkQuickCopy(ctx: Context, messageBody: String) : Pair<PatternRule, String>? {
+
+            val rules = QuickCopyRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
+
+            var result : MatchResult? = null
+
+            val rule = rules.firstOrNull{
+                val opts = Util.flagsToRegexOptions(it.patternFlags)
+
+                result = it.pattern.toRegex(opts).find(messageBody)
+                result != null
+            }
+
+            return if (rule == null)
+                null
+            else {
+                /*
+                    lookbehind: has `value`, no `group(1)`
+                    capturing group: has both, should use group(1) only
+
+                    the logic:
+                        if has `value` && no `group(1)`
+                            use `value`
+                        else if has both
+                            use `group1`
+                 */
+
+                val v = result?.value
+                val g1 = result?.groupValues?.getOrNull(1)
+
+                if (v != null && g1 == null) {
+                    return Pair(rule, v)
+                } else if (v != null && g1 != null) {
+                    return Pair(rule, g1)
+                }
+
+                return null
+            }
         }
     }
 }

@@ -9,12 +9,13 @@ import spam.blocker.def.Def
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 23
+        const val DB_VERSION = 24
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter tables ----
-        const val TABLE_NUMBER_FILTER = "number_filter"
-        const val TABLE_CONTENT_FILTER = "content_filter"
+        const val TABLE_NUMBER_RULE = "number_filter"
+        const val TABLE_CONTENT_RULE = "content_filter"
+        const val TABLE_QUICK_COPY_RULE = "quick_copy"
 
         const val COLUMN_ID = "id"
         const val COLUMN_PATTERN = "pattern"
@@ -69,8 +70,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         ")"
             )
         }
-        createPatternTable(TABLE_NUMBER_FILTER)
-        createPatternTable(TABLE_CONTENT_FILTER)
+        createPatternTable(TABLE_NUMBER_RULE)
+        createPatternTable(TABLE_CONTENT_RULE)
+        createPatternTable(TABLE_QUICK_COPY_RULE)
 
         // call history
         db.execSQL(
@@ -100,18 +102,21 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         Log.i(Def.TAG, "upgrading db $oldVersion -> $newVersion")
 
         if ((newVersion >= 21) && (oldVersion < 21)) {
-            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
-            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")
         }
         if ((newVersion >= 22) && (oldVersion < 22)) {
-            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
-            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_IMPORTANCE INTEGER")
         }
         if ((newVersion >= 23) && (oldVersion < 23)) {
-            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0")
-            db.execSQL("ALTER TABLE $TABLE_NUMBER_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0")
-            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0")
-            db.execSQL("ALTER TABLE $TABLE_CONTENT_FILTER ADD COLUMN $COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_PATTERN_FLAGS INTEGER DEFAULT 0")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA_FLAGS INTEGER DEFAULT 0")
+        }
+        if ((newVersion >= 24) && (oldVersion < 24)) {
+            onCreate(db)
         }
     }
 }

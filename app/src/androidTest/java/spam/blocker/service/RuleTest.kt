@@ -1,7 +1,6 @@
 package spam.blocker.service
 
 import android.content.Context
-import android.util.Log
 import androidx.test.core.app.ApplicationProvider
 import io.mockk.clearAllMocks
 import io.mockk.every
@@ -11,11 +10,10 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import spam.blocker.db.CallTable
-import spam.blocker.db.ContentFilterTable
-import spam.blocker.db.Db
+import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Flag
-import spam.blocker.db.NumberFilterTable
-import spam.blocker.db.PatternFilter
+import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.PatternRule
 import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.ContactInfo
@@ -45,8 +43,8 @@ class RuleTest {
         spf.setRepeatedConfig(1, 5)
         spf.setRecentAppList(listOf())
         spf.setRecentAppConfig(5)
-        NumberFilterTable().clearAll(ctx)
-        ContentFilterTable().clearAll(ctx)
+        NumberRuleTable().clearAll(ctx)
+        ContentRuleTable().clearAll(ctx)
     }
     @After
     fun teardown() {}
@@ -54,8 +52,8 @@ class RuleTest {
     fun build_rule(
         pattern: String, patternExtra: String, priority: Int, isBlacklist: Boolean, flagCallSms: Int,
         patternFlags: Int = 0, patternExtraFlags: Int = 0
-    ) : PatternFilter {
-        val f = PatternFilter()
+    ) : PatternRule {
+        val f = PatternRule()
         f.pattern = pattern
         f.patternExtra = patternExtra
         f.priority = priority
@@ -67,11 +65,11 @@ class RuleTest {
         return f
     }
 
-    fun add_number_rule(f: PatternFilter) {
-        NumberFilterTable().addNewPatternFilter(ctx, f)
+    fun add_number_rule(f: PatternRule) {
+        NumberRuleTable().addNewPatternRule(ctx, f)
     }
-    fun add_content_rule(f: PatternFilter) {
-        ContentFilterTable().addNewPatternFilter(ctx, f)
+    fun add_content_rule(f: PatternRule) {
+        ContentRuleTable().addNewPatternRule(ctx, f)
     }
 
     fun nameOf(number: String) : String {
@@ -119,10 +117,10 @@ class RuleTest {
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
         // contact: pass
-        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, SpamChecker.checkCall(ctx, A).result)
+        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, A).result)
 
         // non-contact: block
-        assertEquals(Def.RESULT_BLOCKED_BY_NUMBER, SpamChecker.checkCall(ctx, B).result)
+        assertEquals(Def.RESULT_BLOCKED_BY_NUMBER, Checker.checkCall(ctx, B).result)
     }
 
     // Non Contact -> block
@@ -133,10 +131,10 @@ class RuleTest {
         mock_contact(A)
 
         // contact: pass
-        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, SpamChecker.checkCall(ctx, A).result)
+        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, A).result)
 
         // non-contact: block
-        assertEquals(Def.RESULT_BLOCKED_BY_NON_CONTACT, SpamChecker.checkCall(ctx, B).result)
+        assertEquals(Def.RESULT_BLOCKED_BY_NON_CONTACT, Checker.checkCall(ctx, B).result)
     }
 
     // testing contact contains special characters
@@ -151,10 +149,10 @@ class RuleTest {
 
         // all match
         incomingCalls.forEach {
-            assertEquals("should match: <$C> - <$it>", Def.RESULT_ALLOWED_BY_CONTACT, SpamChecker.checkCall(ctx, it).result)
+            assertEquals("should match: <$C> - <$it>", Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, it).result)
         }
         // should block
-        assertEquals("should block <$C> - <$B>", Def.RESULT_ALLOWED_BY_DEFAULT, SpamChecker.checkCall(ctx, B).result)
+        assertEquals("should block <$C> - <$B>", Def.RESULT_ALLOWED_BY_DEFAULT, Checker.checkCall(ctx, B).result)
     }
 
     // testing repeated call
@@ -168,19 +166,19 @@ class RuleTest {
 
         // should fail 3 times
         for (i in 1..3) {
-            val r = SpamChecker.checkCall(ctx, B)
+            val r = Checker.checkCall(ctx, B)
             assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
             add_call_record(B, r.result, r.reason())
         }
 
         // the 4th call should pass
-        val r = SpamChecker.checkCall(ctx, B)
+        val r = Checker.checkCall(ctx, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_REPEATED, r.result)
         add_call_record(B, r.result, r.reason())
 
         // should block again after 6 minutes
         mock_advance_time(6)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, SpamChecker.checkCall(ctx, B).result)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, Checker.checkCall(ctx, B).result)
     }
 
 
@@ -207,14 +205,14 @@ class RuleTest {
         mock_recent_app(pkgs, System.currentTimeMillis() + 5*60*1000)
 
         // should pass
-        var r = SpamChecker.checkCall(ctx, B)
+        var r = Checker.checkCall(ctx, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_RECENT_APP, r.result)
 
         // 5 min expired
         mock_advance_time(6)
 
         // should block
-        r = SpamChecker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
     }
@@ -233,11 +231,11 @@ class RuleTest {
         add_number_rule(build_rule("$B.*", "", 100, true, Def.FLAG_FOR_CALL))
 
         // A should pass
-        var r = SpamChecker.checkCall(ctx, A)
+        var r = Checker.checkCall(ctx, A)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_NUMBER, r.result)
 
         // B should block
-        r = SpamChecker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
     }
 
@@ -250,7 +248,7 @@ class RuleTest {
         add_number_rule(build_rule(Microsoft, "", 1, true, Def.FLAG_FOR_CALL))
 
         //  should block
-        val r = SpamChecker.checkCall(ctx, Microsoft)
+        val r = Checker.checkCall(ctx, Microsoft)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
     }
 
@@ -266,11 +264,11 @@ class RuleTest {
         add_content_rule(build_rule(".*discount.*", particularNumber, 2, false, Def.FLAG_FOR_SMS))
 
         // should pass for particular number
-        var r = SpamChecker.checkSms(ctx, particularNumber, msg)
+        var r = Checker.checkSms(ctx, particularNumber, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_CONTENT, r.result)
 
         //  should block for anyone else
-        r = SpamChecker.checkSms(ctx, A, msg)
+        r = Checker.checkSms(ctx, A, msg)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
 
@@ -281,14 +279,14 @@ class RuleTest {
 
         // should pass without this flag
         add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS))
-        var r = SpamChecker.checkSms(ctx, B, msg)
+        var r = Checker.checkSms(ctx, B, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
 
         // should block with this flag set
         add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS,
             patternFlags = Def.FLAG_REGEX_IGNORE_CASE))
 
-        r = SpamChecker.checkSms(ctx, B, msg)
+        r = Checker.checkSms(ctx, B, msg)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
     // test regex flags DotMatchAll
@@ -299,33 +297,15 @@ class RuleTest {
 
         // should pass without this flag
         add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS))
-        var r = SpamChecker.checkSms(ctx, B, msg)
+        var r = Checker.checkSms(ctx, B, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
 
         // should block with this flag set
         add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS,
             patternFlags = Def.FLAG_REGEX_DOT_MATCH_ALL))
 
-        r = SpamChecker.checkSms(ctx, B, msg)
+        r = Checker.checkSms(ctx, B, msg)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
 
-    // test regex flags Literal
-    @Test
-    fun regex_flags_literal() {
-        val msg = "SomeSuper*"
-        val rule = "SomeSuper*"
-
-        // should pass without this flag
-        add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS))
-        var r = SpamChecker.checkSms(ctx, B, msg)
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
-
-        // should block with this flag set
-        add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS,
-            patternFlags = Def.FLAG_REGEX_LITERAL))
-
-        r = SpamChecker.checkSms(ctx, B, msg)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
-    }
 }

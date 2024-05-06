@@ -69,7 +69,6 @@ class Util {
         ) {
             imgView.setOnClickListener {
                 val balloon = Balloon.Builder(ctx)
-//                    .setWidthRatio(0.9f)
                     .setHeight(BalloonSizeSpec.WRAP)
                     .setText(ctx.resources.getText(strId))
                     .setTextIsHtml(true)
@@ -77,7 +76,6 @@ class Util {
                     .setTextSize(15f)
                     .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
                     .setArrowSize(10)
-                    .setArrowPosition(0.5f)
                     .setPadding(8)
                     .setTextGravity(Gravity.START)
                     .setCornerRadius(8f)
@@ -85,9 +83,6 @@ class Util {
                     .setBalloonAnimation(BalloonAnimation.ELASTIC)
                     .setLifecycleOwner(viewLifecycleOwner)
                     .setIsAttachedInDecor(false)
-
-                    .setArrowOrientation(ArrowOrientation.BOTTOM)
-//                    .setArrowOrientation(ArrowOrientation.START)
 
                     .build()
 

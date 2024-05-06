@@ -70,4 +70,15 @@ object Def {
         FLAG_REGEX_DOT_MATCH_ALL to "d",
         FLAG_REGEX_LITERAL to "l"
     )
+    // inverse means it won't show labels for these flags when they are set
+    // only show labels when they are off
+    val LIST_REGEX_FLAG_INVERSE = listOf(
+        FLAG_REGEX_IGNORE_CASE,
+        FLAG_REGEX_DOT_MATCH_ALL
+    )
+
+
+    const val ForCall = 0
+    const val ForSms = 1
+    const val ForQuickCopy = 2
 }

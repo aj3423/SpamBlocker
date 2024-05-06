@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import spam.blocker.R
-import spam.blocker.db.ContentFilterTable
+import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Flag
-import spam.blocker.db.NumberFilterTable
+import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
 import java.text.SimpleDateFormat
@@ -153,7 +153,7 @@ class Util {
 
 
         fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
-            val f = filterTable?.findPatternFilterById(ctx, reason.toLong())
+            val f = filterTable?.findPatternRuleById(ctx, reason.toLong())
 
             val reasonStr = if (f != null) {
                 if (f.description != "") f.description else f.patternStr()
@@ -164,8 +164,8 @@ class Util {
         }
         fun reasonTable(result: Int):  RuleTable? {
             return when (result) {
-                Def.RESULT_ALLOWED_BY_NUMBER, Def.RESULT_BLOCKED_BY_NUMBER ->  NumberFilterTable()
-                Def.RESULT_ALLOWED_BY_CONTENT, Def.RESULT_BLOCKED_BY_CONTENT ->  ContentFilterTable()
+                Def.RESULT_ALLOWED_BY_NUMBER, Def.RESULT_BLOCKED_BY_NUMBER ->  NumberRuleTable()
+                Def.RESULT_ALLOWED_BY_CONTENT, Def.RESULT_BLOCKED_BY_CONTENT ->  ContentRuleTable()
 
                 else -> null
             }
@@ -178,13 +178,13 @@ class Util {
                 Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
                 Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
                 Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
-                    ctx, NumberFilterTable(), reason)
+                    ctx, NumberRuleTable(), reason)
                 Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
-                    ctx, NumberFilterTable(), reason)
+                    ctx, NumberRuleTable(), reason)
                 Def.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
-                    ctx, ContentFilterTable(), reason)
+                    ctx, ContentRuleTable(), reason)
                 Def.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
-                    ctx, ContentFilterTable(), reason)
+                    ctx, ContentRuleTable(), reason)
 
                 else -> ctx.resources.getString(R.string.passed_by_default)
             }

@@ -4,43 +4,48 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.MotionEvent
-import spam.blocker.R
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.PopupMenu
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Add
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.AddAll
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Clear
-import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Set
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.RemoveAt
+import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Set
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import spam.blocker.R
 import spam.blocker.databinding.SettingFragmentBinding
-import spam.blocker.db.ContentFilterTable
-import spam.blocker.db.PatternFilter
-import spam.blocker.db.NumberFilterTable
+import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.PatternRule
+import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
+import spam.blocker.def.Def
 import spam.blocker.ui.util.Util.Companion.applyAppTheme
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Permission
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import spam.blocker.util.SharedPref
-import spam.blocker.util.Util
+
 
 class SettingFragment : Fragment() {
 
@@ -49,8 +54,9 @@ class SettingFragment : Fragment() {
 
     private var recentApps = ObservableArrayList<String>()
 
-    private var numberFilters = ObservableArrayList<PatternFilter>()
-    private var contentFilters = ObservableArrayList<PatternFilter>()
+    private var numberRules = ObservableArrayList<PatternRule>()
+    private var contentRules = ObservableArrayList<PatternRule>()
+    private var quickCopyRules = ObservableArrayList<PatternRule>()
 
     @SuppressLint("Range", "ClickableViewAccessibility", "NotifyDataSetChanged")
     override fun onCreateView(
@@ -94,20 +100,28 @@ class SettingFragment : Fragment() {
             R.id.recycler_number_filters,
             R.id.btn_add_number_filter,
             R.id.btn_test_number_filters,
-            numberFilters,
-            NumberFilterTable(),
-            false
+            numberRules,
+            NumberRuleTable(),
+            Def.ForCall
         )
         setupRules(
             root,
             R.id.recycler_content_filters,
             R.id.btn_add_content_filter,
             R.id.btn_test_content_filters,
-            contentFilters,
-            ContentFilterTable(),
-            true
+            contentRules,
+            ContentRuleTable(),
+            Def.ForSms
         )
-
+        setupRules(
+            root,
+            R.id.recycler_quick_copy,
+            R.id.btn_add_quick_copy,
+            R.id.btn_test_quick_copy,
+            quickCopyRules,
+            QuickCopyRuleTable(),
+            Def.ForQuickCopy
+        )
         // tooltips
         setupTooltips(root)
 
@@ -286,9 +300,9 @@ class SettingFragment : Fragment() {
     private fun setupRules(
         root: View,
         recyclerId: Int, addBtnId: Int, testBtnId: Int,
-        filters: ObservableArrayList<PatternFilter>,
+        filters: ObservableArrayList<PatternRule>,
         dbTable: RuleTable,
-        forSms: Boolean
+        forRuleType: Int
     ) {
         val ctx = requireContext()
 
@@ -307,7 +321,7 @@ class SettingFragment : Fragment() {
         }
         asyncReloadFromDb()
 
-        val adapter = RuleAdapter(ctx, { clickedF -> // onItemClickCallback
+        val onItemClick = { clickedF: PatternRule -> Unit
             val i = filters.indexOf(clickedF)
 
             val dialog = PopupEditFilterFragment(
@@ -321,20 +335,39 @@ class SettingFragment : Fragment() {
                     existing.isBlacklist = newF.isBlacklist
 
                     // 2. update in db
-                    dbTable.updatePatternFilter(ctx, existing.id, existing)
+                    dbTable.updatePatternRule(ctx, existing.id, existing)
 
                     // 3. gui update
                     asyncReloadFromDb()
-                }, forSms
+                }, forRuleType
             )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
-        }, filters, forSms)
+        }
+        val onItemLongClick = { clickedF: PatternRule ->
+            val i = filters.indexOf(clickedF)
+            val viewHolder = recycler.findViewHolderForAdapterPosition(i);
+            val popup = PopupMenu(ctx, viewHolder?.itemView)
+            popup.menuInflater.inflate(R.menu.rule_context_menu, popup.menu)
+            popup.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.rule_clone -> {
+                        // 1. add to db
+                        dbTable.addNewPatternRule(ctx, clickedF)
+
+                        // 2. refresh gui
+                        asyncReloadFromDb()
+                    }
+                }
+                false
+            }
+            popup.show()
+        }
+
+        val adapter = RuleAdapter(ctx, onItemClick, onItemLongClick, filters, forRuleType)
         recycler.setAdapter(adapter)
 
         filters.observe(viewLifecycleOwner) {
-//            Log.d(Def.TAG, "action in SettingFragment: " + it.action.toString())
-
             when (it.action) {
                 Add -> adapter.notifyItemInserted(it.actionInt!!)
                 AddAll -> adapter.notifyDataSetChanged()
@@ -348,20 +381,20 @@ class SettingFragment : Fragment() {
         val btnAdd = root.findViewById<MaterialButton>(addBtnId)
         btnAdd.setOnClickListener {
             val dialog = PopupEditFilterFragment(
-                PatternFilter(), { newF -> // callback
+                PatternRule(), { newF -> // callback
                     // 1. add to db
-                    dbTable.addNewPatternFilter(ctx, newF)
+                    dbTable.addNewPatternRule(ctx, newF)
 
                     // 2. refresh gui
                     asyncReloadFromDb()
-                }, forSms
+                }, forRuleType
             )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }
         val btnTest = root.findViewById<MaterialButton>(testBtnId)
         btnTest.setOnClickListener {
-            PopupTestFragment(forSms)
+            PopupTestFragment(forRuleType)
                 .show(requireActivity().supportFragmentManager, "tag_test")
         }
 
@@ -379,7 +412,7 @@ class SettingFragment : Fragment() {
                 val fToDel = filters[i]
 
                 // 1. delete from db
-                dbTable.delPatternFilter(ctx, fToDel.id)
+                dbTable.delPatternRule(ctx, fToDel.id)
 
                 // 2. remove from ArrayList
                 filters.removeAt(i)
@@ -388,18 +421,19 @@ class SettingFragment : Fragment() {
                 Snackbar.make(recycler, fToDel.pattern, Snackbar.LENGTH_LONG).setAction(
                     resources.getString(R.string.undelete),
                 ) {
-                    dbTable.addPatternFilterWithId(ctx, fToDel)
+                    dbTable.addPatternRuleWithId(ctx, fToDel)
                     filters.add(i, fToDel)
                 }.show()
             }
         }
         ItemTouchHelper(swipeLeftCallback).attachToRecyclerView(recycler)
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        numberFilters.removeObservers(viewLifecycleOwner)
+        numberRules.removeObservers(viewLifecycleOwner)
         recentApps.removeObservers(viewLifecycleOwner)
     }
 
@@ -428,6 +462,10 @@ class SettingFragment : Fragment() {
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_sms_content_filter),
             R.string.help_sms_content_filter
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_quick_copy),
+            R.string.help_quick_copy
         )
     }
 }

@@ -14,10 +14,12 @@ import spam.blocker.def.Def
 class SpannableUtil {
     companion object {
         fun append(sb: SpannableStringBuilder, strToAppend: String, color: Int, bold: Boolean = false, relativeSize: Float = 0.0f) {
+            if (strToAppend.isEmpty())
+                return
+
             val lenBefore = sb.length
             val lenAfter = lenBefore + strToAppend.length
 
-            Log.i(Def.TAG, "before: $lenBefore, after: $lenAfter, color: $color")
             sb.append(strToAppend)
             sb.setSpan(ForegroundColorSpan(color), lenBefore, lenAfter, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             if (bold) {

@@ -18,16 +18,17 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import spam.blocker.R
 import spam.blocker.db.Flag
-import spam.blocker.db.PatternFilter
+import spam.blocker.db.PatternRule
+import spam.blocker.def.Def
 import spam.blocker.ui.util.MaterialInputRegexFlagsUtil
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Util
 
 
 class PopupEditFilterFragment(
-    private val initFilter: PatternFilter,
-    private val handleSave: (PatternFilter) -> Unit,
-    private val forSms: Boolean
+    private val initFilter: PatternRule,
+    private val handleSave: (PatternRule) -> Unit,
+    private val forType: Int
 ) : DialogFragment() {
 
     override fun onCreateView(
@@ -43,8 +44,6 @@ class PopupEditFilterFragment(
 
         val ctx = requireContext()
         val res = ctx.resources
-        val str_number_pattern = res.getString(R.string.number_pattern)
-        val str_content_pattern = res.getString(R.string.sms_content_pattern)
 
         // widgets
         val container_pattern = view.findViewById<TextInputLayout>(R.id.container_pattern)
@@ -59,7 +58,9 @@ class PopupEditFilterFragment(
         val radio_blackwhitelist = view.findViewById<RadioGroup>(R.id.popup_radio_blackwhitelist)
         val radio_whitelist = view.findViewById<RadioButton>(R.id.popup_radio_whitelist)
         val radio_blacklist = view.findViewById<RadioButton>(R.id.popup_radio_blacklist)
+        val container_priority = view.findViewById<TextInputLayout>(R.id.container_priority)
         val edit_priority = view.findViewById<TextInputEditText>(R.id.edit_priority)
+        val row_type = view.findViewById<LinearLayout>(R.id.row_rule_type)
         val row_importance = view.findViewById<LinearLayout>(R.id.row_importance)
         val help_importance = view.findViewById<ImageView>(R.id.popup_help_importance)
         val spin_importance = view.findViewById<Spinner>(R.id.spin_importance)
@@ -71,9 +72,16 @@ class PopupEditFilterFragment(
         val initPatternFlags = Flag(init.patternFlags.value)
         val initPatternExtraFlags = Flag(init.patternExtraFlags.value)
 
+        if (forType == Def.ForQuickCopy)
+            init.isBlacklist = false
+
         MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern, edit_pattern, initPatternFlags)
 
-        container_pattern.hint = if (forSms) str_content_pattern else str_number_pattern
+        container_pattern.hint = res.getString(when(forType) {
+            Def.ForCall -> R.string.number_pattern
+            Def.ForSms -> R.string.sms_content_pattern
+            else -> R.string.quick_copy
+        })
 
         fun showHelpOnError(container: TextInputLayout, edit: TextInputEditText) {
             edit.addTextChangedListener {// validate regex
@@ -84,7 +92,8 @@ class PopupEditFilterFragment(
 
         showHelpOnError(container_pattern, edit_pattern)
         edit_pattern.setText(init.pattern)
-        if (forSms) {
+
+        if (forType == Def.ForSms) {
             showHelpOnError(container_pattern_particular, edit_pattern_particular)
             setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
             MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern_particular, edit_pattern_particular, initPatternExtraFlags)
@@ -102,15 +111,18 @@ class PopupEditFilterFragment(
         } else {
             row_particular.visibility = View.GONE
             container_pattern_particular.visibility = View.GONE
+
+            // hide things
+            if (forType == Def.ForQuickCopy) {
+                container_priority.visibility = View.GONE
+                row_type.visibility = View.GONE
+            }
         }
 
-        // description
         edit_desc.setText(init.description)
-        // priority
         edit_priority.setText(init.priority.toString())
-        // call / sms
         chk_for_call.isChecked = init.isForCall()
-        if (forSms) {
+        if (forType != Def.ForCall) {
             chk_for_call.visibility = View.INVISIBLE
         }
         chk_for_sms.isChecked = init.isForSms()
@@ -120,7 +132,7 @@ class PopupEditFilterFragment(
         } else if (init.isBlacklist) {
             radio_blackwhitelist.check(R.id.popup_radio_blacklist)
         }
-        row_importance.visibility = if(init.isBlacklist) View.VISIBLE else View.GONE
+        row_importance.visibility = if(init.isBlacklist && forType != Def.ForQuickCopy) View.VISIBLE else View.GONE
         radio_blackwhitelist.setOnCheckedChangeListener { _, checkedId ->
             row_importance.visibility = if (checkedId == R.id.popup_radio_blacklist) View.VISIBLE else View.GONE
         }

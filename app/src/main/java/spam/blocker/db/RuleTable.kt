@@ -16,9 +16,6 @@ class Flag(var value: Int) {
         return value and f == f
     }
 
-    fun isClean(): Boolean {
-        return value == 0
-    }
     // add or remove a flag
     fun set(f: Int, enabled: Boolean) {
         value = if (enabled) { // add flag
@@ -27,17 +24,29 @@ class Flag(var value: Int) {
             value and f.inv()
         }
     }
-    fun toStr(attrMap: Map<Int, String>): String {
+
+    // Generate string "imdlc" from flags
+    // params:
+    //   attrMap - mapOf(IgnoreCase -> "i", DotMatchAll -> "d", ...)
+    //   inverse - invert the showing behavior of some flags,
+    //     by default it's: show when set
+    //     if it's inverted: show when not set
+    fun toStr(attrMap: Map<Int, String>, inverse: List<Int>): String {
         var ret = ""
         attrMap.forEach { (k, v) ->
-            if (Has(k))
-                ret += v
+            if (inverse.contains(k)) {
+                if (!Has(k))
+                    ret += v
+            } else {
+                if (Has(k))
+                    ret += v
+            }
         }
         return ret
     }
 }
 
-class PatternFilter {
+class PatternRule {
 
     var id: Long = 0
     var pattern: String = ""
@@ -45,8 +54,8 @@ class PatternFilter {
     // for now, this is only used as ParticularNumber
     var patternExtra: String = ""
 
-    var patternFlags = Flag(0)
-    var patternExtraFlags = Flag(0)
+    var patternFlags = Flag(Def.FLAG_REGEX_IGNORE_CASE or Def.FLAG_REGEX_DOT_MATCH_ALL)
+    var patternExtraFlags = Flag(Def.FLAG_REGEX_IGNORE_CASE or Def.FLAG_REGEX_DOT_MATCH_ALL)
     var description: String = ""
     var priority: Int = 1
     var isBlacklist = true
@@ -80,15 +89,15 @@ class PatternFilter {
         //   imdl .*   <-   imdl particular.*
         val sb = SpannableStringBuilder()
 
-        if (!patternFlags.isClean()) {
-            SpannableUtil.append(sb, patternFlags.toStr(Def.MAP_REGEX_FLAGS) + " ", flagsColor, relativeSize = ratioFlags)
-        }
+        val imdlc = patternFlags.toStr(Def.MAP_REGEX_FLAGS, Def.LIST_REGEX_FLAG_INVERSE)
+        SpannableUtil.append(sb, if (imdlc.isEmpty()) "" else "$imdlc ", flagsColor, relativeSize = ratioFlags)
+
         SpannableUtil.append(sb, pattern, patternColor, bold = true)
         if (patternExtra != "") {
             SpannableUtil.append(sb, "   <-   ", Color.LTGRAY)
-            if (!patternExtraFlags.isClean()) {
-                SpannableUtil.append(sb, patternExtraFlags.toStr(Def.MAP_REGEX_FLAGS) + " ", flagsColor, relativeSize = ratioFlags)
-            }
+
+            val imdlcEx = patternExtraFlags.toStr(Def.MAP_REGEX_FLAGS, Def.LIST_REGEX_FLAG_INVERSE)
+            SpannableUtil.append(sb, if (imdlcEx.isEmpty()) "" else "$imdlcEx ", flagsColor, relativeSize = ratioFlags)
             SpannableUtil.append(sb, patternExtra, patternColor)
         }
 
@@ -120,15 +129,15 @@ abstract class RuleTable {
     abstract fun tableName(): String
 
     @SuppressLint("Range")
-    fun _listAllPatternFiltersByFilter(ctx: Context, filterSql: String): List<PatternFilter> {
-        val ret: MutableList<PatternFilter> = mutableListOf()
+    fun _listAllPatternRulesByFilter(ctx: Context, filterSql: String): List<PatternRule> {
+        val ret: MutableList<PatternRule> = mutableListOf()
 
         val db = Db.getInstance(ctx).readableDatabase
         val cursor = db.rawQuery(filterSql, null)
         cursor.use {
             if (it.moveToFirst()) {
                 do {
-                    val f = PatternFilter()
+                    val f = PatternRule()
 
                     f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                     f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
@@ -151,7 +160,7 @@ abstract class RuleTable {
     }
 
     @SuppressLint("Range")
-    fun findPatternFilterById(ctx: Context, id: Long): PatternFilter? {
+    fun findPatternRuleById(ctx: Context, id: Long): PatternRule? {
         val db = Db.getInstance(ctx).readableDatabase
         val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
 
@@ -159,7 +168,7 @@ abstract class RuleTable {
 
         cursor.use {
             if (it.moveToFirst()) {
-                val f = PatternFilter()
+                val f = PatternRule()
                 f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                 f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
                 val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
@@ -180,14 +189,14 @@ abstract class RuleTable {
         }
     }
 
-    fun listAll(ctx: Context): List<PatternFilter> {
-        return listFilters(ctx, Def.FLAG_FOR_BOTH_SMS_CALL)
+    fun listAll(ctx: Context): List<PatternRule> {
+        return listRules(ctx, Def.FLAG_FOR_BOTH_SMS_CALL)
     }
 
-    fun listFilters(
+    fun listRules(
         ctx: Context,
         flagCallSms: Int
-    ): List<PatternFilter> {
+    ): List<PatternRule> {
         val where = arrayListOf<String>()
 
         // 1. call/sms
@@ -210,10 +219,10 @@ abstract class RuleTable {
 
 //        Log.d(Def.TAG, sql)
 
-        return _listAllPatternFiltersByFilter(ctx, sql)
+        return _listAllPatternRulesByFilter(ctx, sql)
     }
 
-    fun addNewPatternFilter(ctx: Context, f: PatternFilter): Long {
+    fun addNewPatternRule(ctx: Context, f: PatternRule): Long {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
@@ -229,7 +238,7 @@ abstract class RuleTable {
         return db.insert(tableName(), null, cv)
     }
 
-    fun addPatternFilterWithId(ctx: Context, f: PatternFilter) {
+    fun addPatternRuleWithId(ctx: Context, f: PatternRule) {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_ID, f.id)
@@ -246,7 +255,7 @@ abstract class RuleTable {
         db.insert(tableName(), null, cv)
     }
 
-    fun updatePatternFilter(ctx: Context, id: Long, f: PatternFilter): Boolean {
+    fun updatePatternRule(ctx: Context, id: Long, f: PatternRule): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
@@ -262,7 +271,7 @@ abstract class RuleTable {
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }
 
-    fun delPatternFilter(ctx: Context, id: Long): Boolean {
+    fun delPatternRule(ctx: Context, id: Long): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
         val cursor = db.rawQuery(sql, null)
@@ -279,14 +288,20 @@ abstract class RuleTable {
     }
 }
 
-open class NumberFilterTable : RuleTable() {
+open class NumberRuleTable : RuleTable() {
     override fun tableName(): String {
-        return Db.TABLE_NUMBER_FILTER
+        return Db.TABLE_NUMBER_RULE
     }
 }
 
-open class ContentFilterTable : RuleTable() {
+open class ContentRuleTable : RuleTable() {
     override fun tableName(): String {
-        return Db.TABLE_CONTENT_FILTER
+        return Db.TABLE_CONTENT_RULE
+    }
+}
+
+open class QuickCopyRuleTable : RuleTable() {
+    override fun tableName(): String {
+        return Db.TABLE_QUICK_COPY_RULE
     }
 }

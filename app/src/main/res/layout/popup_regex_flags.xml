@@ -47,11 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dot_match_all" />
-        <CheckBox
-            android:id="@+id/flag_literal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/literal" />
 
 
     </LinearLayout>
