@@ -15,18 +15,20 @@ An Android Call/SMS blocker.
 # Features
 |                                                    | For Call                                                                                                                                               | For Sms                                                                                                        |
 | ----                                               | ----                                                                                                                                               | ----                                                                                                       |
-| What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaion                                                                               |
-| What it doesn't                                    | Replace the default call app                                                                                                                       | Replace the default sms app                                                                                |
-| How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | Turn off the notification of the default sms app<br>(Note: turn it off manually in system settings).<br>This app takes over the notification of new messages. |
+| What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaions                                                                               |
+| What it doesn't                                    | Replace the default call app                                                                                                                       | Replace the default SMS app                                                                                |
+| How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | Turn off the notification of the default SMS app<br>(Note: turn it off manually in system settings).<br>This app takes over the notifications of new messages. |
 | Filters supported<br>([explained below](#Filters)) | 1. Phone number (regex)<br>2. In Contacts<br>3. Repeated call<br>4. Recent apps                                                                     | 1. Phone number (regex)<br>2. In Contacts<br>3. Sms content (regex)                                        |
 
 
 
 # Filters:
-#### 1. Phone number and Sms content
+#### 1. Phone number and SMS content
 
-Regex is used, ask AI if you don't know how to write one, eg: 
-"Show me regex for checking if a string starts with 400 and has a length of 10", which results in `^400.{7}$`
+Regex is used, ask AI if you don't know how to write one, e.g.: 
+> Show me regex for checking if a string starts with 400 and has a length of 10
+
+Which results in `^400.{7}$`
 
 Some typical patterns:
 - Any number: `.*`
@@ -42,7 +44,7 @@ Permit if the number belongs to a contact.
 Calls repeated within a period of time will be permitted.
 
 #### 4. Recent Apps
-Any call would be permitted if any of these apps has been used within a period of time.
+Any call would be permitted if any of these apps had been used within a period of time.
 
 - A typical use case: 
 
@@ -53,10 +55,10 @@ You ordered a pizza in PizzaApp, soon they call you to refund because they are c
 
 | Permission          | Why                                                                          |
 | ----                | ----                                                                         |
-| ANSWER_PHONE_CALLS  | Reject spamming call                                                         |
+| ANSWER_PHONE_CALLS  | Reject spam calls                                                            |
 | POST_NOTIFICATIONS  | Show notifications                                                           |
 | READ_CONTACTS       | For matching contact number and showing contact avatar                       |
-| RECEIVE_SMS         | For receiving new incoming message                                           |
+| RECEIVE_SMS         | For receiving new incoming messages                                           |
 | PACKAGE_USAGE_STATS | For feature: Recent Apps (checking whether an app has been used within 5 min) |
 | QUERY_ALL_PACKAGES  | For feature: Recent Apps (listing all apps for choosing)                      |
 
