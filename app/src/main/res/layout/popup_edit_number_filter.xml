@@ -86,6 +86,11 @@
                 android:text="@string/apply_to"
                 android:textColor="@color/hint_grey" />
 
+            <ImageView
+                android:id="@+id/popup_help_apply_to"
+                style="@style/help_question_icon"
+                android:background="@drawable/ic_question"
+                tools:ignore="ContentDescription" />
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

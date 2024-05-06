@@ -61,12 +61,14 @@ class Util {
         //   digits spaces + - ( )
         val pattern = "^[0-9\\s+\\-()]*\$".toRegex()
         fun clearNumber(number: String): String {
-            // check it's a phone number or some enterprise number like "Microsoft"
+            // check if it contains alphabetical characters like "Microsoft"
             if (!pattern.matches(number)) { // don't clear for enterprise string number
                 return number
             }
 
-            return number.replace("-", "")
+            return number
+                .trimStart('0') // remove leading "0"s
+                .replace("-", "")
                 .replace("+", "")
                 .replace(" ", "")
                 .replace("(", "")

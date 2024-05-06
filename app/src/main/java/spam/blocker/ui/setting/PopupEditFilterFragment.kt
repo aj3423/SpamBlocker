@@ -53,6 +53,7 @@ class PopupEditFilterFragment(
         val container_pattern_particular = view.findViewById<TextInputLayout>(R.id.container_pattern_phone)
         val edit_pattern_particular = view.findViewById<TextInputEditText>(R.id.popup_edit_pattern_phone)
         val edit_desc = view.findViewById<TextInputEditText>(R.id.popup_edit_desc)
+        val help_apply_to = view.findViewById<ImageView>(R.id.popup_help_apply_to)
         val chk_for_call = view.findViewById<CheckBox>(R.id.popup_chk_call)
         val chk_for_sms = view.findViewById<CheckBox>(R.id.popup_chk_sms)
         val radio_blackwhitelist = view.findViewById<RadioGroup>(R.id.popup_radio_blackwhitelist)
@@ -121,6 +122,8 @@ class PopupEditFilterFragment(
 
         edit_desc.setText(init.description)
         edit_priority.setText(init.priority.toString())
+
+        setupImageTooltip(ctx, viewLifecycleOwner, help_apply_to, R.string.help_apply_to)
         chk_for_call.isChecked = init.isForCall()
         if (forType != Def.ForCall) {
             chk_for_call.visibility = View.INVISIBLE
