@@ -1,0 +1,21 @@
+breaking change:
+- leading zeroes in numbers are removed before checking 
+
+new feature:
+- Quick Copy: copy verification code from notification
+
+enhancement:
+- priority for Contact/repeated/RecentApp
+- regex options, IgnoreCase, DotMatchAll by default
+- inclusive/exclusive contact mode
+- rule clone
+
+change:
+- clicking notifications opens default call/SMS app
+- better notificaton icon
+
+fix:
+- enterprise numbers like "Microsoft"
+- domestic trunk prefix(leading '0's)
+- rename notification channels: `Shade`, `Shade+Sound`...
+
