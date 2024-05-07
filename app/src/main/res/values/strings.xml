@@ -115,17 +115,23 @@
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        These rules apply to the phone number.<br>
+        These rules apply to the incoming phone number.<br>
         <br>
         <font color="#ffa500"><b>Important</b></font>:<br>
-        To simplify the regex, <font color="#fa7f71"><b>special characters</b></font>(+ - spaces)
-          and <font color="#fa7f71"><b>leading zeroes</b></font> are removed before checking, for example:<br>
-        &emsp; These two incoming numbers:<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123 456789 <br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 <br>
-        &emsp; are both checked as:<br>
+        To simplify the regex,
+          <font color="#fa7f71"><b>+</b></font>
+          and <font color="#fa7f71"><b>spaces</b></font>
+          and <font color="#fa7f71"><b>leading zeroes</b></font>
+          are removed before checking, for example:<br>
+        &emsp; The following list covers all the possible formats:<br>
+        &emsp;&emsp; 123456789 &emsp;(regular number)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(with <font color="#fa7f71"><b>spaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(with leading <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(with domestic trunk prefix <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp; They are <b>all</b> checked as:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp;So regex <font color="#d1c8c8"><b>^123.*</b></font> would match both of them.<br>
+        &emsp;So regex <font color="#d1c8c8"><b>^1234567.*</b></font> would match <b>all</b> of them.<br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>
@@ -147,13 +153,13 @@
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        A quick way to copy content from SMS messages, such as a verification code. <br>
+        A quick way to copy content from SMS messages, such as verification codes. <br>
         <br>
         When it matches, a button like <font color="#d1c8c8"><b>Copy: 123456</b></font> would appear in the notification. <br>
         It\'s not like clicking on the notification, when the copy button is clicked, only this notification will be dismissed, other notifications will remain. <br>
         <br>
         A sample rule: <br>
-        &emsp; code.*?(\d+) <br>
+        &emsp; code.*?(\\d+) <br>
         <br>
         Only works when the SMS message is <b>NOT</b> <font color="#fa7f71"><b>blocked</b></font>.
         ]]>

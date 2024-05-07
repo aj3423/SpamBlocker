@@ -197,6 +197,7 @@ class SettingFragment : Fragment() {
         ) { isGranted: Boolean ->
             switchContactEnabled.isChecked = isGranted
             spf.setContactEnabled(isGranted)
+            updateButton()
         }
         switchContactEnabled.setOnClickListener {
             val newState = !spf.isContactEnabled()

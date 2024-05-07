@@ -44,10 +44,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/popup_repeated_call_btn_save"
-            style="@style/stroke_blue_button"
+            style="@style/setting_stroke_blue_button"
             android:layout_marginTop="10dp"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_marginEnd="0dp"
             android:layout_gravity="end"
             android:text="@string/save" />
 

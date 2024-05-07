@@ -199,7 +199,7 @@ abstract class RuleTable {
     ): List<PatternRule> {
         val where = arrayListOf<String>()
 
-        // 1. call/sms
+        // call/sms
         val sms = Flag(flagCallSms).Has(Def.FLAG_FOR_SMS)
         val call = Flag(flagCallSms).Has(Def.FLAG_FOR_CALL)
         if (sms and !call) {
@@ -208,7 +208,7 @@ abstract class RuleTable {
             where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Def.FLAG_FOR_CALL}) = ${Def.FLAG_FOR_CALL}")
         }
 
-        // 3. build where clause
+        // build where clause
         var whereStr = ""
         if (where.size > 0) {
             whereStr = " WHERE (${where.joinToString(separator = " and ") { "($it)" }})"

@@ -1,5 +1,5 @@
 # SpamBlocker
-An Android Call/SMS blocker.
+An Android Call/SMS blocker, a funnel and a ring bell. 
 
 <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/20930282-db38-4c21-a0db-4720ad666151" height="100">[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"

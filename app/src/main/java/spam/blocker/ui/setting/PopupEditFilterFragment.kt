@@ -115,7 +115,6 @@ class PopupEditFilterFragment(
 
             // hide things
             if (forType == Def.ForQuickCopy) {
-                container_priority.visibility = View.GONE
                 row_type.visibility = View.GONE
             }
         }

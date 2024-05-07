@@ -86,9 +86,8 @@
             <!-- Test Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_test"
-                style="@style/stroke_blue_button"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
+                style="@style/setting_stroke_teal_button"
+                android:layout_marginEnd="0dp"
                 android:layout_gravity="end"
                 android:text="@string/test" />
         </LinearLayout>
