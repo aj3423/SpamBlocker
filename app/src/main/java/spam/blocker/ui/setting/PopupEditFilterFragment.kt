@@ -139,7 +139,7 @@ class PopupEditFilterFragment(
             row_importance.visibility = if (checkedId == R.id.popup_radio_blacklist) View.VISIBLE else View.GONE
         }
         // importance
-        setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance, false)
+        setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance)
         spin_importance.setSelection(init.importance)
 
         btn_save.setOnClickListener {

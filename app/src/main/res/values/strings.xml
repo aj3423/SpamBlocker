@@ -92,7 +92,7 @@
         <br>
         Receiving text message from the same number also counts. <br>
         <br>
-        The default setting <font color="#d1c8c8"><b>1 Time / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
+        The default setting <font color="cyan"><b>1 Time / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
         <br>
         Only applies for calls, <b>not</b> for text messages. <br>
         <br>
@@ -106,7 +106,7 @@
         A typical use case:<br>
         &emsp; You just ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would pass if PizzaApp is enabled here. <br>
         <br>
-        The default setting <font color="#d1c8c8"><b>5 Min</b></font> means any call will be permitted if any of these apps has been used within 5 minutes, by \"used\" it means either being activated, deactivated, minimized, or killed. <br>
+        The default setting <font color="cyan"><b>5 Min</b></font> means any call will be permitted if any of these apps has been used within 5 minutes, by \"used\" it means either being activated, deactivated, minimized, or killed. <br>
         <br>
         Only applies for calls, <b>not</b> for text messages. <br>
         <br>
@@ -131,7 +131,7 @@
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
         &emsp; They are <b>all</b> checked as:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp;So regex <font color="#d1c8c8"><b>^1234567.*</b></font> would match <b>all</b> of them.<br>
+        &emsp;So regex <font color="cyan"><b>^1234567.*</b></font> would match <b>all</b> of them.<br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>
@@ -155,13 +155,19 @@
         <![CDATA[
         A quick way to copy content from SMS messages, such as verification codes. <br>
         <br>
-        When it matches, a button like <font color="#d1c8c8"><b>Copy: 123456</b></font> would appear in the notification. <br>
-        It\'s not like clicking on the notification, when the copy button is clicked, only this notification will be dismissed, other notifications will remain. <br>
+        When it matches, a button like <font color="yellow"><b>Copy: 123456</b></font> would appear in the notification. <br>
+        It\'s not like clicking on the notification, when the copy button is clicked, only this notification is dismissed, other notifications will remain. <br>
         <br>
-        A sample rule: <br>
-        &emsp; code.*?(\\d+) <br>
+        A sample rule: (using capturing group) <br>
+        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        Another approach: (using lookaround) <br>
+        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
+        &emsp;<font color="#ffa500"><b>Note</b></font>: <br>
+        &emsp; It doesn\'t support <font color="#fa7f71"><b>.*</b></font> in lookarounds, it requires a bounded max length.<br>
+        &emsp; for example, use: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; instead of: <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
         <br>
-        Only works when the SMS message is <b>NOT</b> <font color="#fa7f71"><b>blocked</b></font>.
+        It only works when the SMS message is <b>NOT</b> <font color="#fa7f71"><b>blocked</b></font>.
         ]]>
     </string>
     <string name="help_apply_to">

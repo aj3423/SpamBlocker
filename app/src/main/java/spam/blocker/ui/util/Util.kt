@@ -64,8 +64,7 @@ class Util {
             ctx: Context,
             viewLifecycleOwner: LifecycleOwner,
             imgView: ImageView,
-            strId: Int,
-            alignBottom: Boolean = true
+            strId: Int
         ) {
             imgView.setOnClickListener {
                 val balloon = Balloon.Builder(ctx)
@@ -86,11 +85,7 @@ class Util {
 
                     .build()
 
-                if (alignBottom) {
                     balloon.showAlignBottom(imgView)
-                } else {
-                    balloon.showAlignTop(imgView)
-                }
             }
         }
     }
