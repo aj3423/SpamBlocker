@@ -87,7 +87,7 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             val spf = SharedPref(ctx)
-            if (!spf.isRepeatedAllowed()) {
+            if (!spf.isRepeatedCallEnabled()) {
                 return null
             }
             val (times, durationMinutes) = spf.getRepeatedConfig()

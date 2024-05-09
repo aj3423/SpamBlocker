@@ -85,7 +85,7 @@ class Util {
 
                     .build()
 
-                    balloon.showAlignBottom(imgView)
+                balloon.showAlignBottom(imgView)
             }
         }
     }

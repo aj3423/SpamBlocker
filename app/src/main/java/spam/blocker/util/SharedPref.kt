@@ -67,10 +67,10 @@ class SharedPref(context: Context) {
         setContactExclusive(!isContactExclusive())
     }
 
-    fun setAllowRepeated(enabled: Boolean) {
+    fun setRepeatedCallEnabled(enabled: Boolean) {
         writeBoolean(Def.SETTING_PERMIT_REPEATED, enabled)
     }
-    fun isRepeatedAllowed(): Boolean {
+    fun isRepeatedCallEnabled(): Boolean {
         return readBoolean(Def.SETTING_PERMIT_REPEATED, false)
     }
     fun getRepeatedConfig(): Pair<Int, Int> {
@@ -116,6 +116,9 @@ class SharedPref(context: Context) {
 
     fun isGloballyEnabled(): Boolean {
         return readBoolean(Def.SETTING_ENABLED, false)
+    }
+    fun setGloballyEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_ENABLED, enabled)
     }
     fun toggleGloballyEnabled() {
         writeBoolean(Def.SETTING_ENABLED, !isGloballyEnabled())

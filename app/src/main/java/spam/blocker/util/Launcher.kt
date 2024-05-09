@@ -39,5 +39,11 @@ class Launcher {
             smsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             ctx.startActivity(smsIntent)
         }
+
+        fun selfRestart(ctx: Context) {
+            val intent = Intent(ctx, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            ctx.startActivity(intent)
+        }
     }
 }

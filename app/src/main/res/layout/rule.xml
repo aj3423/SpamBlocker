@@ -5,8 +5,9 @@
     android:id="@+id/card_filter"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
-    app:cardCornerRadius="8dp"
+    android:layout_marginVertical="2dp"
+    app:cardBackgroundColor="@color/item_bg"
+    app:cardCornerRadius="6dp"
     android:layout_marginHorizontal="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

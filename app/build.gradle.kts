@@ -4,6 +4,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("plugin.serialization") version "1.9.24"
 }
 
 // load signing key for release
@@ -83,6 +84,8 @@ dependencies {
     implementation("il.co.theblitz:observablecollections:1.4.2") // in jcenter only
 
     implementation("com.github.skydoves:balloon:1.6.4") // for tooltip
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0") // for backup/restore
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

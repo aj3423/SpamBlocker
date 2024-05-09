@@ -5,10 +5,12 @@ import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
 import android.text.SpannableStringBuilder
+import kotlinx.serialization.Serializable
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.SpannableUtil
 
+@Serializable
 class Flag(var value: Int) {
 
     // check if it has a flag
@@ -46,6 +48,7 @@ class Flag(var value: Int) {
     }
 }
 
+@Serializable
 class PatternRule {
 
     var id: Long = 0

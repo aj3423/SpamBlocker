@@ -136,7 +136,7 @@ class Util {
                     try {
                         ret.icon = packageManager.getApplicationIcon(it)
                     } catch (e: PackageManager.NameNotFoundException) {
-                        ret.icon = ctx.getDrawable(R.drawable.android_24)!!
+                        ret.icon = ctx.getDrawable(R.drawable.unknown_app_icon)!!
                     }
                     ret
                 }

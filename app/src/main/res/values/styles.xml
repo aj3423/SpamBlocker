@@ -35,6 +35,7 @@
     <style name="setting_stroke_button" parent="stroke_button">
         <item name="android:layout_height">26dp</item>
         <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
     <style name="setting_stroke_blue_button" parent="setting_stroke_button">
         <item name="android:textColor">@color/dodger_blue</item>
@@ -60,7 +61,12 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
+    </style>
+    <style name="setting_blue_label" parent="setting_label">
         <item name="android:textColor">@color/dodger_blue</item>
+    </style>
+    <style name="setting_gray_label" parent="setting_label">
+        <item name="android:textColor">@color/hint_grey</item>
     </style>
     <style name="setting_spacing">
         <item name="android:layout_width">0dp</item>
@@ -102,5 +108,27 @@
         <item name="android:paddingTop">12dp</item>
     </style>
 
+    <style name="setting_group_relative">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+    <style name="setting_group_linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingHorizontal">14dp</item>
+        <item name="android:paddingVertical">8dp</item>
+        <item name="background">@drawable/group_bg</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="setting_group_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">-10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:background">@color/fragment_bg</item>
+    </style>
 
 </resources>

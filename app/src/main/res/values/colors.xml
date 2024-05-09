@@ -22,4 +22,8 @@
     <color name="dialog_bg">@color/white</color>
     <color name="dialog_border">@android:color/transparent</color>
     <color name="regex_flags">#6ed0ff</color>
+    <color name="fragment_bg">@android:color/background_light</color>
+
+    <color name="item_bg">#fafaff</color>
+    <color name="group_border">@color/hint_grey</color>
 </resources>

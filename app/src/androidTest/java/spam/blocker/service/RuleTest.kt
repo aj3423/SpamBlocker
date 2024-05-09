@@ -39,7 +39,7 @@ class RuleTest {
 
         spf.setContactEnabled(false)
         spf.setContactExclusive(false)
-        spf.setAllowRepeated(false)
+        spf.setRepeatedCallEnabled(false)
         spf.setRepeatedConfig(1, 5)
         spf.setRecentAppList(listOf())
         spf.setRecentAppConfig(5)
@@ -158,7 +158,7 @@ class RuleTest {
     // testing repeated call
     @Test
     fun repeated_call() {
-        spf.setAllowRepeated(true)
+        spf.setRepeatedCallEnabled(true)
         spf.setRepeatedConfig(3, 5)
 
         // block all number

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_dialog_config_repeated"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/popup_dialog_backup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/container_edit_backup"
+            style="@style/material_input_layout"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_backup"
+                style="@style/material_input"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/config_text"
+                android:inputType="textMultiLine"
+                android:maxLines="6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout style="@style/setting_row">
+
+            <TextView
+                android:id="@+id/backup_result"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+            <Space style="@style/setting_spacing" />
+
+            <ImageView
+                android:id="@+id/help_backup"
+                style="@style/help_question_icon"
+                android:background="@drawable/ic_question"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_backup"
+                style="@style/setting_stroke_gray_button"
+                android:text="@string/export" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -4,14 +4,13 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
+import android.widget.RelativeLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
@@ -70,16 +69,27 @@ class SettingFragment : Fragment() {
         val ctx = requireContext()
         val spf = SharedPref(ctx)
 
+
         // global enable switch
+        val group_quick_filters = root.findViewById<RelativeLayout>(R.id.group_quick_filters)
+        val group_regex_filters = root.findViewById<RelativeLayout>(R.id.group_regex_filters)
+        fun onEnabledChange() {
+            val enabled = spf.isGloballyEnabled()
+            requireActivity().window.statusBarColor = ContextCompat.getColor(
+                ctx,
+                if (enabled) R.color.dark_sea_green else R.color.salmon
+            )
+            group_quick_filters.visibility = if (enabled) View.VISIBLE else View.GONE
+            group_regex_filters.visibility = if (enabled) View.VISIBLE else View.GONE
+        }
+        onEnabledChange()
         val switchGlobalEnable = root.findViewById<SwitchCompat>(R.id.switch_globally_enabled)
         switchGlobalEnable.isChecked = spf.isGloballyEnabled()
         switchGlobalEnable.setOnClickListener {
             spf.toggleGloballyEnabled()
-            requireActivity().window.statusBarColor = ContextCompat.getColor(
-                ctx,
-                if (spf.isGloballyEnabled()) R.color.dark_sea_green else R.color.salmon
-            )
+            onEnabledChange()
         }
+
         // theme switch
         val switchTheme = root.findViewById<SwitchCompat>(R.id.switch_theme)
         val dark = spf.isDarkTheme()
@@ -87,6 +97,12 @@ class SettingFragment : Fragment() {
         switchTheme.setOnClickListener {
             spf.toggleDarkTheme()
             applyAppTheme(spf.isDarkTheme())
+        }
+
+        // backup / restore
+        val btn_backup = root.findViewById<MaterialButton>(R.id.btn_backup)
+        btn_backup.setOnClickListener {
+            PopupBackupFragment().show(requireActivity().supportFragmentManager, "tag_backup")
         }
 
         setupContacts(root)
@@ -143,9 +159,9 @@ class SettingFragment : Fragment() {
             btn_config.visibility = if (switchAllowRepeated.isChecked) View.VISIBLE else View.GONE
         }
 
-        switchAllowRepeated.isChecked = spf.isRepeatedAllowed()
+        switchAllowRepeated.isChecked = spf.isRepeatedCallEnabled()
         switchAllowRepeated.setOnClickListener {
-            spf.setAllowRepeated(!spf.isRepeatedAllowed())
+            spf.setRepeatedCallEnabled(!spf.isRepeatedCallEnabled())
             updateButton()
         }
 

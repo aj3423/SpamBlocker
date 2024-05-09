@@ -8,6 +8,7 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.widget.Toast
 import spam.blocker.R
+import spam.blocker.util.Clipboard
 import spam.blocker.util.Notification
 
 class CopyToClipboardReceiver : BroadcastReceiver() {
@@ -19,9 +20,7 @@ class CopyToClipboardReceiver : BroadcastReceiver() {
 
         // copy to clipboard
         val toCopy = intent.getStringExtra("toCopy")
-        val clipboardManager = ctx.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-        val clipData = ClipData.newPlainText("", toCopy)
-        clipboardManager.setPrimaryClip(clipData)
+        Clipboard.copy(ctx, toCopy)
 
 //        val copied = ctx.getString(R.string.copied_to_clipboard)
 //        Toast.makeText(ctx, copied.format(toCopy), Toast.LENGTH_SHORT).show();

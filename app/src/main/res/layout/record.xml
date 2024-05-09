@@ -5,6 +5,7 @@
     android:id="@+id/record"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/item_bg"
     app:cardCornerRadius="8dp"
     android:layout_margin="1dp">
 
@@ -36,7 +37,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:gravity="center"
-                android:text="13311112222"
+                android:text="1234567890"
                 android:textColor="@color/purple_200"
                 android:textSize="18sp" />
 
@@ -52,7 +53,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="6dp"
                     android:maxLines="10"
-                    android:text="call result dddd  ddddd dddddd d ddddddd dddd dd dddd dddddddd dddd"
+                    android:text="call result long long long long long text"
                     android:textColor="@color/mid_grey"
                     android:textSize="16sp" />
 

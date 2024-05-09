@@ -2,4 +2,8 @@
 <resources>
     <color name="dialog_bg">#424242</color>
     <color name="dialog_border">#383838</color>
+    <color name="fragment_bg">#111111</color>
+    <color name="item_bg">#1d1d1d</color>
+    <color name="group_border">#404040</color>
+
 </resources>

@@ -1,5 +1,5 @@
 # SpamBlocker
-An Android Call/SMS blocker, a funnel and a ring bell. 
+An Android Call/SMS blocker. 
 
 <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/20930282-db38-4c21-a0db-4720ad666151" height="100">[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
@@ -31,9 +31,9 @@ Regex is used, ask AI if you don't know how to write one, e.g.:
 Which results in `^400.{7}$`
 
 Some typical patterns:
-- Any number: `.*`
+- Any number: `.*` (the regex `.*` is identical to the wildcard `*` in many other apps)
 - Exact number: `12345`
-- Starts with 400: `^400.*`
+- Starts with 400: `400.*`
 - Longer than 10: `.{11,}`
 - Contains "verification": `.*verification.*`
 
