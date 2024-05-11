@@ -117,6 +117,8 @@ class SettingFragment : Fragment() {
 
         setupRecentApps(root)
 
+        setupSilenceCall(root)
+
         setupRules(
             root,
             R.id.recycler_number_filters,
@@ -398,6 +400,18 @@ class SettingFragment : Fragment() {
         }
     }
 
+    private fun setupSilenceCall(root: View) {
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
+        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_silence_call)
+
+        switchEnabled.isChecked = spf.isSilenceCallEnabled()
+
+        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
+            spf.setSilenceCallEnabled(isChecked)
+        }
+    }
+
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("NotifyDataSetChanged")
     private fun setupRules(
@@ -561,6 +575,10 @@ class SettingFragment : Fragment() {
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps),
             R.string.help_recent_apps
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_silence_call),
+            R.string.help_silence_call
         )
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),

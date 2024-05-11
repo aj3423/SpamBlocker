@@ -33,11 +33,20 @@ class CallService : CallScreeningService() {
         val r = processCall(this, rawNumber)
 
         if (r.shouldBlock) {
+            val silence = SharedPref(this).isSilenceCallEnabled()
+
+            Log.e(Def.TAG, "silence: $silence")
+
             builder.apply {
-                setRejectCall(true)
-                setDisallowCall(true)
                 setSkipCallLog(false)
                 setSkipNotification(true)
+                setDisallowCall(true)
+
+                if (silence) {
+                    setSilenceCall(true)
+                } else {
+                    setRejectCall(true)
+                }
             }
         }
         respondToCall(callDetails, builder.build())

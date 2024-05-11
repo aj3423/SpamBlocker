@@ -55,6 +55,27 @@ class Config {
         }
     }
     @Serializable
+    class Dialed {
+        var enabled = false
+        var inXDay = 0
+        fun load(ctx: Context) {
+            val spf = SharedPref(ctx)
+            enabled = spf.isDialedEnabled()
+            inXDay = spf.getDialedConfig()
+        }
+        fun apply(ctx: Context) {
+            val spf = SharedPref(ctx)
+            spf.setDialedEnabled(enabled)
+            spf.setDialedConfig(inXDay)
+        }
+    }
+    @Serializable
+    class Silence {
+        var enabled = false
+        fun load(ctx: Context) { enabled = SharedPref(ctx).isSilenceCallEnabled() }
+        fun apply(ctx: Context) { SharedPref(ctx).setSilenceCallEnabled(enabled) }
+    }
+    @Serializable
     class RecentApps {
         val list = mutableListOf<String>()
         var inXMin = 0
@@ -107,7 +128,9 @@ class Configs {
     val theme = Config.Theme()
     val contacts = Config.Contact()
     val repeatedCall = Config.RepeatedCall()
+    val dialed = Config.Dialed()
     val recentApps = Config.RecentApps()
+    val silence = Config.Silence()
     val numberRules = Config.NumberRules()
     val contentRules = Config.ContentRules()
     val quickCopyRules = Config.QuickCopyRules()
@@ -117,7 +140,9 @@ class Configs {
         theme.load(ctx)
         contacts.load(ctx)
         repeatedCall.load(ctx)
+        dialed.load(ctx)
         recentApps.load(ctx)
+        silence.load(ctx)
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
@@ -127,7 +152,9 @@ class Configs {
         theme.apply(ctx)
         contacts.apply(ctx)
         repeatedCall.apply(ctx)
+        dialed.apply(ctx)
         recentApps.apply(ctx)
+        silence.apply(ctx)
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)

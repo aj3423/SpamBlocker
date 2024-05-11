@@ -177,7 +177,7 @@ class Util {
 
                 Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
                 Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.label_dialed)
+                Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.dialed)
                 Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason)
                 Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(

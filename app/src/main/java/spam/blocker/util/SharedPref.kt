@@ -96,6 +96,13 @@ class SharedPref(context: Context) {
         writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay)
     }
 
+    fun setSilenceCallEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_ENABLE_SILENCE_CALL, enabled)
+    }
+    fun isSilenceCallEnabled(): Boolean {
+        return readBoolean(Def.SETTING_ENABLE_SILENCE_CALL, false)
+    }
+
     fun getRecentAppList(): List<String> {
         val s = readString(Def.SETTING_RECENT_APPS, "")
         if (s == "") {

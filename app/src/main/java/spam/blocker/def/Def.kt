@@ -14,6 +14,7 @@ object Def {
     const val SETTING_RECENT_APP_IN_X_MIN = "recent_app_in_x_min"
     const val SETTING_PERMIT_DIALED = "permit_dialed"
     const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
+    const val SETTING_ENABLE_SILENCE_CALL = "silence_call"
 
 
     const val SETTING_RECENT_APPS = "recent_apps"

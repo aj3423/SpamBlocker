@@ -99,7 +99,7 @@
 
                     <TextView
                         style="@style/setting_blue_label"
-                        android:text="@string/label_dialed" />
+                        android:text="@string/dialed" />
 
                     <ImageView
                         android:id="@+id/setting_help_dialed"
@@ -177,6 +177,25 @@
                 </LinearLayout>
                 <!--    recent app end-->
 
+                <!--  silence call -->
+                <LinearLayout style="@style/setting_row">
+                    <TextView
+                        style="@style/setting_blue_label"
+                        android:text="@string/silence_call" />
+
+                    <ImageView
+                        android:id="@+id/setting_help_silence_call"
+                        style="@style/help_question_icon"
+                        android:background="@drawable/ic_question"
+                        tools:ignore="ContentDescription" />
+
+                    <Space style="@style/setting_spacing" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_enable_silence_call"
+                        style="@style/setting_switch" />
+                </LinearLayout>
+                <!--    dialed end -->
 
             </LinearLayout>
 
