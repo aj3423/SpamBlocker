@@ -12,6 +12,8 @@ object Def {
     const val SETTING_REPEATED_TIMES = "repeated_times"
     const val SETTING_REPEATED_IN_X_MIN = "repeated_in_x_min"
     const val SETTING_RECENT_APP_IN_X_MIN = "recent_app_in_x_min"
+    const val SETTING_PERMIT_DIALED = "permit_dialed"
+    const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
 
 
     const val SETTING_RECENT_APPS = "recent_apps"
@@ -34,6 +36,8 @@ object Def {
     const val RESULT_ALLOWED_BY_RECENT_APP = 4
     const val RESULT_ALLOWED_BY_REPEATED = 5
     const val RESULT_ALLOWED_BY_CONTENT = 6
+    const val RESULT_ALLOWED_BY_DIALED = 7
+
 
     // blocked
     const val RESULT_BLOCKED_BY_NUMBER = 10
@@ -48,6 +52,7 @@ object Def {
                 (result == RESULT_ALLOWED_BY_DEFAULT) or
                 (result == RESULT_ALLOWED_BY_RECENT_APP) or
                 (result == RESULT_ALLOWED_BY_REPEATED) or
+                (result == RESULT_ALLOWED_BY_DIALED) or
                 (result == RESULT_ALLOWED_BY_CONTENT) or
                 (result == RESULT_ALLOWED_BY_CONTACT)
     }

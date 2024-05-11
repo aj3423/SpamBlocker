@@ -113,6 +113,8 @@ class SettingFragment : Fragment() {
 
         setupRepeatedCall(root)
 
+        setupDialed(root)
+
         setupRecentApps(root)
 
         setupRules(
@@ -161,7 +163,8 @@ class SettingFragment : Fragment() {
                 resources.getString(if (times == 1) R.string.time else R.string.times)
             val labelMin = resources.getString(R.string.min)
             btn_config.text = "$times $labelTimes / $inXMin $labelMin"
-            btn_config.visibility = if (spf.isRepeatedCallEnabled()) View.VISIBLE else View.GONE
+            btn_config.visibility = if (spf.isRepeatedCallEnabled() && isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx))
+                View.VISIBLE else View.GONE
         }
 
 
@@ -201,7 +204,58 @@ class SettingFragment : Fragment() {
             updateButton()
         }
     }
+    private fun setupDialed(root: View) {
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
+        val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_dialed)
+        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_dialed)
 
+        fun updateButton() {
+            val nDay = spf.getDialedConfig()
+            val labelDays =
+                resources.getString(if (nDay > 1) R.string.days else R.string.day)
+            btn_config.text = "$nDay $labelDays"
+            btn_config.visibility = if (spf.isDialedEnabled() && isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx))
+                View.VISIBLE else View.GONE
+        }
+
+
+        updateButton()
+        btn_config.setOnClickListener {
+            PopupDialedConfigFragment { inXDays: Int ->
+                spf.setDialedConfig(inXDays)
+                updateButton()
+            }.show(requireActivity().supportFragmentManager, "tag_config_dialed")
+        }
+
+        switchEnabled.isChecked = spf.isDialedEnabled()
+                && isCallLogPermissionGranted(ctx)
+                && isReadSmsPermissionGranted(ctx)
+
+        val permChain = PermissionChain(this,
+            listOf(
+                Manifest.permission.READ_CALL_LOG,
+                Manifest.permission.READ_SMS
+            )
+        ) { allGranted ->
+            switchEnabled.isChecked = allGranted
+            spf.setDialedEnabled(allGranted)
+            updateButton()
+        }
+
+        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx)) { // already granted
+                    spf.setDialedEnabled(true)
+                } else {
+                    permChain.ask()
+                }
+            } else {
+                spf.setDialedEnabled(false)
+            }
+            updateButton()
+        }
+    }
 
     private fun setupContacts(root: View) {
         val ctx = requireContext()
@@ -499,6 +553,10 @@ class SettingFragment : Fragment() {
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_repeated_call),
             R.string.help_repeated_call
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_dialed),
+            R.string.help_dialed
         )
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps),

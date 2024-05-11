@@ -220,7 +220,53 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r4.result)
     }
 
+    // testing dialed
+    @Test
+    fun dialed() {
+        val inXdays = 5
+        spf.setDialedEnabled(true)
+        spf.setDialedConfig(inXdays)
 
+        mockkObject(Permission)
+        mock_call_permission_granted()
+        mock_sms_permission_granted()
+
+        // block all number
+        add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
+
+        // mock no call/sms record
+        val now = System.currentTimeMillis()
+        val twoDaysAgo = now - 2*24*3600*1000
+        mock_calls(B, Def.DIRECTION_OUTGOING, 0, twoDaysAgo)
+        mock_sms(B, Def.DIRECTION_OUTGOING, 0, twoDaysAgo)
+
+        // should always fail when no history records
+        for (i in 1..3) {
+            val r = Checker.checkCall(ctx, B)
+            assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
+        }
+
+        // add a call
+        mock_calls(B, Def.DIRECTION_OUTGOING, 1, twoDaysAgo)
+
+        // should pass
+        val r1 = Checker.checkCall(ctx, B)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DIALED, r1.result)
+
+
+        // clear that call, add an sms
+        mock_calls(B, Def.DIRECTION_OUTGOING, 0, twoDaysAgo)
+        mock_sms(B, Def.DIRECTION_OUTGOING, 1, twoDaysAgo)
+
+        // should pass
+        val r2 = Checker.checkCall(ctx, B)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DIALED, r2.result)
+
+        // should block again after 10 days
+        mock_advance_time_by_minutes(10*24*60)
+        val r4 = Checker.checkCall(ctx, B)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r4.result)
+    }
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
         mockkObject(Permission)
         every { Permission.listUsedAppWithinXSecond(ctx, any()) } answers {

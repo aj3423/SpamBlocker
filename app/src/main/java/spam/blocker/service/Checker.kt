@@ -108,6 +108,32 @@ class Checker { // for namespace only
             return null
         }
     }
+    class Dialed(private val ctx: Context, private val rawNumber: String) : checker {
+        override fun priority(): Int {
+            return 10
+        }
+
+        override fun check(): CheckResult? {
+            val spf = SharedPref(ctx)
+            if (!spf.isDialedEnabled()
+                or !Permission.isCallLogPermissionGranted(ctx)
+                or !Permission.isReadSmsPermissionGranted(ctx))
+            {
+                return null
+            }
+            val durationDays = spf.getDialedConfig()
+
+            val durationMillis = (durationDays * 24 * 3600 * 1000).toLong()
+
+            // repeated count of call/sms, sms also counts
+            val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
+            val nSMSs = Permission.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
+            if (nCalls + nSMSs > 0) {
+                return CheckResult(false, Def.RESULT_ALLOWED_BY_DIALED)
+            }
+            return null
+        }
+    }
 
     class RecentApp(private val ctx: Context) : checker {
         override fun priority(): Int {
@@ -205,6 +231,7 @@ class Checker { // for namespace only
             val checkers = arrayListOf(
                 Checker.Contact(ctx, rawNumber),
                 Checker.RepeatedCall(ctx, rawNumber),
+                Checker.Dialed(ctx, rawNumber),
                 Checker.RecentApp(ctx)
             )
             //  add number rules to checkers

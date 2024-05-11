@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_dialog_config_dialed"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/material_input_layout"
+            android:id="@+id/container_dialed_in_x_day"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_duration">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/material_input"
+                android:id="@+id/edit_dialed_in_x_day"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/within_days"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/popup_dialed_btn_save"
+            style="@style/setting_stroke_blue_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_gravity="end"
+            android:text="@string/save" />
+
+    </LinearLayout>
+</RelativeLayout>

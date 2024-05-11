@@ -83,6 +83,19 @@ class SharedPref(context: Context) {
         writeInt(Def.SETTING_REPEATED_IN_X_MIN, inXMin)
     }
 
+    fun setDialedEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_PERMIT_DIALED, enabled)
+    }
+    fun isDialedEnabled(): Boolean {
+        return readBoolean(Def.SETTING_PERMIT_DIALED, false)
+    }
+    fun getDialedConfig(): Int {
+        return readInt(Def.SETTING_DIALED_IN_X_DAY, 3)
+    }
+    fun setDialedConfig(inXDay: Int) {
+        writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay)
+    }
+
     fun getRecentAppList(): List<String> {
         val s = readString(Def.SETTING_RECENT_APPS, "")
         if (s == "") {

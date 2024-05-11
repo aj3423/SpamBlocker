@@ -124,10 +124,11 @@
     </style>
     <style name="setting_group_text">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">-10dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">-9dp</item>
         <item name="android:layout_marginStart">20dp</item>
         <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:background">@color/fragment_bg</item>
     </style>
 
