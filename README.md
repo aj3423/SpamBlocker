@@ -25,23 +25,29 @@ An Android Call/SMS blocker.
 # Filters:
 #### 1. Phone number and SMS content
 
-Regex is used, ask AI if you don't know how to write one, e.g.: 
-> Show me regex for checking if a string starts with 400 and has a length of 10
+Regex is used, some typical regex patterns:
 
-Which results in `^400.{7}$`
-
-Some typical patterns:
 - Any number: `.*` (the regex `.*` is identical to the wildcard `*` in many other apps)
 - Exact number: `12345`
 - Starts with 400: `400.*`
+- Ends with 123: `.*123`
+- Less than 5: `.{0,4}`
 - Longer than 10: `.{11,}`
 - Contains "verification": `.*verification.*`
 
+If you don't know how to write regex, just ask AI: 
+> Show me regex that checks if a string starts with 400 or 200
+
+Results in `^(400|200).*`
+
 #### 2. In Contacts
-Permit if the number belongs to a contact.
+Permit calls from contacts.
 
 #### 3. Repeated Call
 Calls repeated within a period of time will be permitted.
+
+#### 4. Dialed
+Dialed numbers will be permitted.
 
 #### 4. Recent Apps
 Any call would be permitted if any of these apps had been used within a period of time.
@@ -53,12 +59,13 @@ You ordered a pizza in PizzaApp, soon they call you to refund because they are c
 
 # Permissions required
 
-| Permission          | Why                                                                          |
-| ----                | ----                                                                         |
-| ANSWER_PHONE_CALLS  | Reject spam calls                                                            |
-| POST_NOTIFICATIONS  | Show notifications                                                           |
-| READ_CONTACTS       | For matching contact number and showing contact avatar                       |
-| RECEIVE_SMS         | For receiving new incoming messages                                           |
-| PACKAGE_USAGE_STATS | For feature: Recent Apps (checking whether an app has been used within 5 min) |
-| QUERY_ALL_PACKAGES  | For feature: Recent Apps (listing all apps for choosing)                      |
+| Permission             | Why                                                                     |
+| ----                   | ----                                                                    |
+| ANSWER_PHONE_CALLS     | Reject spam calls                                                       |
+| POST_NOTIFICATIONS     | Show notifications                                                      |
+| READ_CONTACTS          | For matching contact number and showing contact avatar                  |
+| RECEIVE_SMS            | For receiving new incoming messages                                     |
+| READ_CALL_LOG/READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)              |
+| PACKAGE_USAGE_STATS    | For feature: Recent Apps (check whether an app has been used recently)  |
+| QUERY_ALL_PACKAGES     | For feature: Recent Apps (list all apps for choosing)                   |
 

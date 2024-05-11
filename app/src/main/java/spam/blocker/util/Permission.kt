@@ -152,11 +152,11 @@ open class Permission {
             withinMillis: Long
         ): Int {
             val selection = mutableListOf(
-                "REPLACE(REPLACE(REPLACE(${Calls.NUMBER}, '-', ''), ' ', ''), '+', '') = \"${
+                "REPLACE(REPLACE(REPLACE(${Calls.NUMBER}, '-', ''), ' ', ''), '+', '') LIKE '${
                     Util.clearNumber(
                         rawNumber
                     )
-                }\"",
+                }'",
                 "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
             )
 
@@ -190,11 +190,11 @@ open class Permission {
             withinMillis: Long
         ): Int {
             val selection = mutableListOf(
-                "REPLACE(REPLACE(REPLACE(${Sms.ADDRESS}, '-', ''), ' ', ''), '+', '') = \"${
+                "REPLACE(REPLACE(REPLACE(${Sms.ADDRESS}, '-', ''), ' ', ''), '+', '') LIKE '${
                     Util.clearNumber(
                         rawNumber
                     )
-                }\"",
+                }'",
                 "${Sms.DATE} >= ${Time.currentTimeMillis() - withinMillis}"
             )
 

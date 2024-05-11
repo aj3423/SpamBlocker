@@ -88,7 +88,7 @@
     <string name="show_blocked">显示已被阻止的</string>
     <string name="clone_rule">克隆规则</string>
     <string name="allow_repeated_call">反复呼叫</string>
-    <string name="label_dialed">已拨打</string>
+    <string name="dialed">已拨打</string>
     <string name="confirm_del_all_filters">删除全部过滤器？</string>
     <string name="dark_theme">黑暗主题</string>
     <string name="find_apps">查找应用</string>
@@ -138,6 +138,5 @@
 \n&lt;br&gt;
 \n此应用不需要互联网（INTERNET）和存储（STORAGE）权限，不支持\"将备份到云端或存储文件\"等功能。</string>
     <string name="help_silence_call">当启用时，&lt;font color=#fa7f71&gt;&lt;b&gt;被阻止&lt;/b&gt;&lt;/font&gt;的呼叫将会在后台&lt;b&gt;静默&lt;/b&gt;响铃，而不是立即挂断，给呼叫者一种印象，即你只是忙，没有空接那个电话。&lt;br&gt; &lt;br&gt; 通过&lt;b&gt;静默&lt;/b&gt;，意味着电话正在使用时不会显示呼叫屏幕，当屏幕已锁定时也不会唤醒手机。</string>
-    <string name="dialed">已呼叫</string>
     <string name="silence_call">静音呼叫</string>
 </resources>

@@ -35,8 +35,6 @@ class CallService : CallScreeningService() {
         if (r.shouldBlock) {
             val silence = SharedPref(this).isSilenceCallEnabled()
 
-            Log.e(Def.TAG, "silence: $silence")
-
             builder.apply {
                 setSkipCallLog(false)
                 setSkipNotification(true)

@@ -97,11 +97,11 @@ class Checker { // for namespace only
             }
             val (times, durationMinutes) = spf.getRepeatedConfig()
 
-            val durationMillis = durationMinutes * 60 * 1000
+            val durationMillis = durationMinutes.toLong() * 60 * 1000
 
             // repeated count of call/sms, sms also counts
-            val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis.toLong())
-            val nSMSs = Permission.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis.toLong())
+            val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
+            val nSMSs = Permission.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
             if (nCalls + nSMSs >= times) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)
             }
@@ -123,7 +123,7 @@ class Checker { // for namespace only
             }
             val durationDays = spf.getDialedConfig()
 
-            val durationMillis = (durationDays * 24 * 3600 * 1000).toLong()
+            val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
 
             // repeated count of call/sms, sms also counts
             val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)

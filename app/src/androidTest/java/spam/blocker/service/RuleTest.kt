@@ -43,6 +43,8 @@ class RuleTest {
         spf.setRepeatedConfig(1, 5)
         spf.setRecentAppList(listOf())
         spf.setRecentAppConfig(5)
+        spf.setDialedEnabled(false)
+        spf.setDialedConfig(3)
         NumberRuleTable().clearAll(ctx)
         ContentRuleTable().clearAll(ctx)
     }
