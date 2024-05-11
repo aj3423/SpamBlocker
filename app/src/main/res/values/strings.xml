@@ -70,9 +70,7 @@
         <![CDATA[
         The global switch, this app only works when this is turned on,
         a quick way to temporarily disable all the filters,
-        turn it off when you are waiting for some particular call/message.<br>
-        <br>
-        The top bar is <font color="#8fbc8f"><b>green</b></font> when enabled, <font color="#fa7f71"><b>red</b></font> when disabled.
+        turn it off when you are waiting for some particular call/message.
         ]]>
     </string>
     <string name="help_contact">
@@ -95,7 +93,7 @@
     </string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permit if the call is repeated within a period of time, because repeated calls are more likely to be urgent than spams. <br>
+        Permit if the call is repeated within a period of time, it\'s likely to be urgent rather than spam. <br>
         <br>
         It works by checking the history records in the app\'s database,
           so do not delete the history records right after received,
@@ -222,6 +220,8 @@
         &emsp; 1. Paste the <font color="#cccc00"><b>configuration text</b></font> into the textbox. <br>
         &emsp; 2. Press <font color="#0000ff"><b>Import</b></font>. <br>
         &emsp;&emsp; When it <font color="#fa7f71"><b>fails</b></font>, try to validate that json text, it may have been corrupted during transfer. If so, send it in a file instead. <br>
+        <br>
+        History records are ignored. <br>
         <br>
         If some switches like "Contacts" is not enabled after restoring, check the corresponding permission in system settings, permissions are not \"restored\" automatically. <br>
         <br>

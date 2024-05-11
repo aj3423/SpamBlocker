@@ -1,6 +1,8 @@
 package spam.blocker.service
 
 import android.content.Context
+import android.provider.CallLog
+import android.provider.Telephony
 import android.util.Log
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
@@ -61,7 +63,7 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = SharedPref(ctx)
 
-            if (!spf.isContactEnabled()) {
+            if (!spf.isContactEnabled() or !Permission.isContactsPermissionGranted(ctx)) {
                 return null
             }
             val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
@@ -87,16 +89,20 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             val spf = SharedPref(ctx)
-            if (!spf.isRepeatedCallEnabled()) {
+            if (!spf.isRepeatedCallEnabled()
+                or !Permission.isCallLogPermissionGranted(ctx)
+                or !Permission.isReadSmsPermissionGranted(ctx))
+            {
                 return null
             }
             val (times, durationMinutes) = spf.getRepeatedConfig()
 
+            val durationMillis = durationMinutes * 60 * 1000
+
             // repeated count of call/sms, sms also counts
-            val nCalls = CallTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
-            val nSMSs = SmsTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
+            val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis.toLong())
+            val nSMSs = Permission.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis.toLong())
             if (nCalls + nSMSs >= times) {
-                Log.d(Def.TAG, "allowed by repeated call")
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)
             }
             return null
@@ -125,7 +131,6 @@ class Checker { // for namespace only
             )
 
             if (intersection.isNotEmpty()) {
-                Log.d(Def.TAG, "allowed by recent used app")
                 return CheckResult(
                     false,
                     Def.RESULT_ALLOWED_BY_RECENT_APP
@@ -290,7 +295,7 @@ class Checker { // for namespace only
                     lookbehind: has `value`, no `group(1)`
                     capturing group: has both, should use group(1) only
 
-                    the logic:
+                    so the logic is:
                         if has `value` && no `group(1)`
                             use `value`
                         else if has both

@@ -93,17 +93,37 @@ class RuleTest {
         }
     }
 
-    private fun mock_advance_time(durationMinutes: Int) {
-        mockkObject(Time)
-        every { Time.getCurrentTimeMilliss() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
+    private fun mock_call_permission_granted() {
+        every { Permission.isCallLogPermissionGranted(any()) } returns true
     }
-    private fun add_call_record(rawNumber:String, result: Int, reason: String) {
-        val call = Record()
-        call.peer = rawNumber
-        call.time = System.currentTimeMillis()
-        call.result = result
-        call.reason = reason
-        CallTable().addNewRecord(ctx, call)
+    private fun mock_sms_permission_granted() {
+        every { Permission.isReadSmsPermissionGranted(any()) } returns true
+    }
+    private fun mock_calls(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
+        every { Permission.countHistoryCallByNumber(any(), rawNumber, direction, any()) } answers {
+            val withinMillis = lastArg<Long>()
+            val mockNow = Time.currentTimeMillis()
+            if (atTimeMillis in mockNow - withinMillis..mockNow) {
+                repeatedTimes
+            } else {
+                0
+            }
+        }
+    }
+    private fun mock_sms(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
+        every { Permission.countHistorySMSByNumber(any(), rawNumber, direction, any()) } answers {
+            val withinMillis = lastArg<Long>()
+            val mockNow = Time.currentTimeMillis()
+            if (atTimeMillis in mockNow - withinMillis..mockNow) {
+                repeatedTimes
+            } else {
+                0
+            }
+        }
+    }
+    private fun mock_advance_time_by_minutes(durationMinutes: Int) {
+        mockkObject(Time)
+        every { Time.currentTimeMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
     }
 
     // -------- tests begin --------
@@ -158,34 +178,53 @@ class RuleTest {
     // testing repeated call
     @Test
     fun repeated_call() {
+        val inXmin = 5
         spf.setRepeatedCallEnabled(true)
-        spf.setRepeatedConfig(3, 5)
+        spf.setRepeatedConfig(4, inXmin)
+
+        mockkObject(Permission)
+        mock_call_permission_granted()
+        mock_sms_permission_granted()
 
         // block all number
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
-        // should fail 3 times
+        // mock no call/sms record
+        val now = System.currentTimeMillis()
+        val twoMinAgo = now - 2*60*1000
+        mock_calls(B, Def.DIRECTION_INCOMING, 0, twoMinAgo)
+        mock_sms(B, Def.DIRECTION_INCOMING, 0, twoMinAgo)
+
+        // should always fail when no history records
         for (i in 1..3) {
             val r = Checker.checkCall(ctx, B)
             assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
-            add_call_record(B, r.result, r.reason())
         }
 
-        // the 4th call should pass
-        val r = Checker.checkCall(ctx, B)
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_REPEATED, r.result)
-        add_call_record(B, r.result, r.reason())
+        // add two calls
+        mock_calls(B, Def.DIRECTION_INCOMING, 2, twoMinAgo)
 
-        // should block again after 6 minutes
-        mock_advance_time(6)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, Checker.checkCall(ctx, B).result)
+        // should still fail, 2<4
+        val r2 = Checker.checkCall(ctx, B)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r2.result)
+
+        // add two sms
+        mock_sms(B, Def.DIRECTION_INCOMING, 2, twoMinAgo)
+        // should pass, 2+2>=4
+        val r3 = Checker.checkCall(ctx, B)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_REPEATED, r3.result)
+
+        // should block again after 10 minutes
+        mock_advance_time_by_minutes(10)
+        val r4 = Checker.checkCall(ctx, B)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r4.result)
     }
 
 
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
         mockkObject(Permission)
         every { Permission.listUsedAppWithinXSecond(ctx, any()) } answers {
-            if (Time.getCurrentTimeMilliss() < expire)
+            if (Time.currentTimeMillis() < expire)
                 pkgs
             else
                 listOf()
@@ -209,7 +248,7 @@ class RuleTest {
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_RECENT_APP, r.result)
 
         // 5 min expired
-        mock_advance_time(6)
+        mock_advance_time_by_minutes(6)
 
         // should block
         r = Checker.checkCall(ctx, B)

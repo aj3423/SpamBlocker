@@ -81,4 +81,7 @@ object Def {
     const val ForCall = 0
     const val ForSms = 1
     const val ForQuickCopy = 2
+
+    const val DIRECTION_INCOMING = 1
+    const val DIRECTION_OUTGOING = 2
 }

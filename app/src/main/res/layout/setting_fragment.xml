@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout style="@style/setting_row"
+        <LinearLayout
+            style="@style/setting_row"
             android:paddingHorizontal="14dp">
 
             <TextView
@@ -34,10 +35,9 @@
         </LinearLayout>
 
 
-
-
-        <RelativeLayout style="@style/setting_group_relative"
-            android:id="@+id/group_quick_filters">
+        <RelativeLayout
+            android:id="@+id/group_quick_filters"
+            style="@style/setting_group_relative">
 
             <LinearLayout
                 android:id="@+id/container_quick_filters"
@@ -61,7 +61,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_config_contact"
-                        style="@style/setting_stroke_gray_button" />
+                        style="@style/setting_stroke_gray_button"
+                        android:layout_marginEnd="0dp" />
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch_permit_contacts"
@@ -85,7 +86,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_config_repeated_call"
-                        style="@style/setting_stroke_gray_button" />
+                        style="@style/setting_stroke_gray_button"
+                        android:layout_marginEnd="0dp" />
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch_allow_repeated_call"
@@ -106,48 +108,63 @@
                         android:background="@drawable/ic_question"
                         tools:ignore="ContentDescription" />
 
-                    <Space style="@style/setting_spacing" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_config_recent_apps"
-                        style="@style/setting_stroke_gray_button"
-                        android:layout_height="26dp"
-                        android:layout_marginEnd="10dp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_app_icons"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_gravity="right|center_vertical"
-                        android:layoutDirection="rtl"
-                        android:orientation="horizontal"
-                        tools:ignore="RtlHardcoded" />
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Space style="@style/setting_spacing" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_config_recent_apps"
+                            style="@style/setting_stroke_gray_button"
+                            android:layout_marginEnd="10dp" />
+
+                        <HorizontalScrollView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_app_icons"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                />
+                        </HorizontalScrollView>
+
+                    </LinearLayout>
+
 
                     <ImageButton
                         android:id="@+id/btn_select_app"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="center|center_vertical"
                         android:background="@android:color/transparent"
                         android:src="@drawable/right_arrow"
                         app:tint="@color/dodger_blue"
                         tools:ignore="ContentDescription" />
+
+
                 </LinearLayout>
                 <!--    recent app end-->
 
 
             </LinearLayout>
+
             <TextView
                 style="@style/setting_group_text"
                 android:layout_alignStart="@id/container_quick_filters"
                 android:layout_alignTop="@id/container_quick_filters"
-                android:text="@string/quick_filters"/>
+                android:text="@string/quick_filters" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            style="@style/setting_group_relative"
-            android:id="@+id/group_regex_filters">
+            android:id="@+id/group_regex_filters"
+            style="@style/setting_group_relative">
 
             <LinearLayout
                 android:id="@+id/container_regex_filters"
@@ -271,15 +288,16 @@
                 </androidx.core.widget.NestedScrollView>
                 <!--    copy content -->
             </LinearLayout>
+
             <TextView
                 style="@style/setting_group_text"
                 android:layout_alignStart="@id/container_regex_filters"
                 android:layout_alignTop="@id/container_regex_filters"
-                android:text="@string/regex_filters"/>
+                android:text="@string/regex_filters" />
 
         </RelativeLayout>
-        <RelativeLayout
-            style="@style/setting_group_relative">
+
+        <RelativeLayout style="@style/setting_group_relative">
 
             <LinearLayout
                 android:id="@+id/setting_group_misc"
@@ -287,6 +305,7 @@
                 android:background="@drawable/group_bg">
 
                 <LinearLayout style="@style/setting_row">
+
                     <TextView
                         style="@style/setting_blue_label"
                         android:text="@string/dark_theme" />
@@ -300,6 +319,7 @@
 
 
                 <LinearLayout style="@style/setting_row">
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_backup"
                         style="@style/setting_stroke_blue_button"
@@ -307,11 +327,12 @@
 
                 </LinearLayout>
             </LinearLayout>
+
             <TextView
                 style="@style/setting_group_text"
                 android:layout_alignStart="@id/setting_group_misc"
                 android:layout_alignTop="@id/setting_group_misc"
-                android:text="@string/miscellaneous"/>
+                android:text="@string/miscellaneous" />
 
         </RelativeLayout>
 

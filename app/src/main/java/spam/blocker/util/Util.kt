@@ -55,8 +55,6 @@ class Util {
             return difference <= millisecondsInWeek
         }
 
-
-
         // check if a string only contains:
         //   digits spaces + - ( )
         val pattern = "^[0-9\\s+\\-()]*\$".toRegex()

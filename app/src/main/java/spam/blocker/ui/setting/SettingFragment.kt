@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
@@ -42,7 +43,10 @@ import spam.blocker.def.Def
 import spam.blocker.ui.util.Util.Companion.applyAppTheme
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Permission
+import spam.blocker.util.Permission.Companion.isCallLogPermissionGranted
 import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
+import spam.blocker.util.Permission.Companion.isReadSmsPermissionGranted
+import spam.blocker.util.PermissionChain
 import spam.blocker.util.SharedPref
 
 
@@ -146,9 +150,10 @@ class SettingFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun setupRepeatedCall(root: View) {
-        val spf = SharedPref(requireContext())
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
         val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_repeated_call)
-        val switchAllowRepeated = root.findViewById<SwitchCompat>(R.id.switch_allow_repeated_call)
+        val switchRepeatedEnabled = root.findViewById<SwitchCompat>(R.id.switch_allow_repeated_call)
 
         fun updateButton() {
             val (times, inXMin) = spf.getRepeatedConfig()
@@ -156,14 +161,9 @@ class SettingFragment : Fragment() {
                 resources.getString(if (times == 1) R.string.time else R.string.times)
             val labelMin = resources.getString(R.string.min)
             btn_config.text = "$times $labelTimes / $inXMin $labelMin"
-            btn_config.visibility = if (switchAllowRepeated.isChecked) View.VISIBLE else View.GONE
+            btn_config.visibility = if (spf.isRepeatedCallEnabled()) View.VISIBLE else View.GONE
         }
 
-        switchAllowRepeated.isChecked = spf.isRepeatedCallEnabled()
-        switchAllowRepeated.setOnClickListener {
-            spf.setRepeatedCallEnabled(!spf.isRepeatedCallEnabled())
-            updateButton()
-        }
 
         updateButton()
         btn_config.setOnClickListener {
@@ -171,6 +171,34 @@ class SettingFragment : Fragment() {
                 spf.setRepeatedConfig(times, inXMin)
                 updateButton()
             }.show(requireActivity().supportFragmentManager, "tag_config_repeated")
+        }
+
+        switchRepeatedEnabled.isChecked = spf.isRepeatedCallEnabled()
+                && isCallLogPermissionGranted(ctx)
+                && isReadSmsPermissionGranted(ctx)
+
+        val permChain = PermissionChain(this,
+            listOf(
+                Manifest.permission.READ_CALL_LOG,
+                Manifest.permission.READ_SMS
+            )
+        ) { allGranted ->
+            switchRepeatedEnabled.isChecked = allGranted
+            spf.setRepeatedCallEnabled(allGranted)
+            updateButton()
+        }
+
+        switchRepeatedEnabled.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx)) { // already granted
+                    spf.setRepeatedCallEnabled(true)
+                } else {
+                    permChain.ask()
+                }
+            } else {
+                spf.setRepeatedCallEnabled(false)
+            }
+            updateButton()
         }
     }
 
@@ -192,7 +220,7 @@ class SettingFragment : Fragment() {
             val isExclusive = spf.isContactExclusive()
             btnInclusive.visibility = if (spf.isContactEnabled()) View.VISIBLE else View.GONE
 
-            val color = if (isExclusive) R.color.salmon else R.color.hint_grey
+            val color = if (isExclusive) R.color.salmon else R.color.mid_grey
             btnInclusive.setTextColor(resources.getColor(color, null))
             btnInclusive.setStrokeColorResource(color)
             btnInclusive.text =
@@ -207,22 +235,25 @@ class SettingFragment : Fragment() {
             spf.toggleContactExclusive()
             updateButton()
         }
-        switchContactEnabled.isChecked = spf.isContactEnabled()
-        val launcherPermitContact = registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            switchContactEnabled.isChecked = isGranted
-            spf.setContactEnabled(isGranted)
+
+        switchContactEnabled.isChecked = spf.isContactEnabled() && isContactsPermissionGranted(ctx)
+
+        val permChain = PermissionChain(this,
+            listOf(
+                Manifest.permission.READ_CONTACTS
+            )
+        ) { allGranted ->
+            switchContactEnabled.isChecked = allGranted
+            spf.setContactEnabled(allGranted)
             updateButton()
         }
-        switchContactEnabled.setOnClickListener {
-            val newState = !spf.isContactEnabled()
 
-            if (newState) {
+        switchContactEnabled.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 if (isContactsPermissionGranted(ctx)) { // already granted
                     spf.setContactEnabled(true)
                 } else {
-                    launcherPermitContact.launch(Manifest.permission.READ_CONTACTS)
+                    permChain.ask()
                 }
             } else {
                 spf.setContactEnabled(false)
@@ -297,6 +328,7 @@ class SettingFragment : Fragment() {
 
         val layoutManagerApps = LinearLayoutManager(ctx, RecyclerView.HORIZONTAL, false)
         recyclerAppIcons.setLayoutManager(layoutManagerApps)
+
         recyclerAppIcons.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_UP -> {
