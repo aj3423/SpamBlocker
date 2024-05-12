@@ -4,7 +4,7 @@
     <string name="setting">设置</string>
     <string name="sms">短信</string>
     <string name="number_pattern">号码正则表达式</string>
-    <string name="particular_number_pattern">特定的数字模式</string>
+    <string name="particular_number_pattern">特定的号码模式</string>
     <string name="sms_content_pattern">正文正则表达式</string>
     <string name="invalid_regex_pattern">无效的正则表达式</string>
     <string name="invalid_number">无效号码</string>
