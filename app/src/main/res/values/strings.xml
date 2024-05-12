@@ -244,6 +244,16 @@
     </string>
     <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
+    <string name="off_time">Off Time</string>
+    <string name="help_off_time">
+        <![CDATA[
+        When enabled, all calls(messages) will be allowed during this time period. Usually there are no spams at night. <br>
+        <br>
+        If the start time is greater than the end time, for example, 20:00 -> 07:00, it means the period from 20:00 in the evening to 07:00 the next morning. <br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
+        ]]>
+    </string>
     <string name="silence_call">Silence Call</string>
     <string name="confirm_del_all_filters">Delete all filters?</string>
     <string name="dark_theme">Dark Theme</string>

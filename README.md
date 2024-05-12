@@ -17,8 +17,8 @@ An Android Call/SMS blocker.
 | ----                                               | ----                                                                                                                                               | ----                                                                                                       |
 | What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaions                                                                               |
 | What it doesn't                                    | Replace the default call app                                                                                                                       | Replace the default SMS app                                                                                |
-| How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | Turn off the notification of the default SMS app<br>(Note: turn it off manually in system settings).<br>This app takes over the notifications of new messages. |
-| Filters supported<br>([explained below](#Filters)) | 1. Phone number (regex)<br>2. In Contacts<br>3. Repeated call<br>4. Recent apps                                                                     | 1. Phone number (regex)<br>2. In Contacts<br>3. Sms content (regex)                                        |
+| How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | It takes over the notification of new messages. |
+| Filters supported<br>([explained below](#Filters)) | 1. Phone number (regex)<br>2. In Contacts<br>3. Repeated call<br>4. Recent apps<br>5. Dialed                                                                     | 1. Phone number (regex)<br>2. In Contacts<br>3. Sms content (regex)                                        |
 
 
 
@@ -59,13 +59,12 @@ You ordered a pizza in PizzaApp, soon they call you to refund because they are c
 
 # Permissions required
 
-| Permission             | Why                                                                     |
-| ----                   | ----                                                                    |
-| ANSWER_PHONE_CALLS     | Reject spam calls                                                       |
-| POST_NOTIFICATIONS     | Show notifications                                                      |
-| READ_CONTACTS          | For matching contact number and showing contact avatar                  |
-| RECEIVE_SMS            | For receiving new incoming messages                                     |
-| READ_CALL_LOG/READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)              |
-| PACKAGE_USAGE_STATS    | For feature: Recent Apps (check whether an app has been used recently)  |
-| QUERY_ALL_PACKAGES     | For feature: Recent Apps (list all apps for choosing)                   |
+| Permission             | Why                                                             |
+| ----                   | ----                                                            |
+| ANSWER_PHONE_CALLS     | Reject spam calls                                               |
+| POST_NOTIFICATIONS     | Show notifications                                              |
+| READ_CONTACTS          | For matching contact number and showing contact avatar          |
+| RECEIVE_SMS            | For receiving new messages                                      |
+| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)   |
+| PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
 

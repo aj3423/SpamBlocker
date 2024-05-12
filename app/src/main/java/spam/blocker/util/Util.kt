@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.text.format.DateFormat
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Flag
@@ -71,6 +72,53 @@ class Util {
                 .replace(" ", "")
                 .replace("(", "")
                 .replace(")", "")
+        }
+
+        fun formatTimeRange(
+            ctx: Context,
+            stHour: Int, stMin: Int, etHour: Int, etMin: Int
+        ): String {
+            val fmt24h = DateFormat.is24HourFormat(ctx)
+
+            if (fmt24h) {
+                val startTime = String.format("%02d:%02d", stHour, stMin)
+                val endTime = String.format("%02d:%02d", etHour, etMin)
+                return "$startTime - $endTime"
+            } else {
+                val startTime = String.format(
+                    "%02d:%02d %s",
+                    if (stHour == 0 || stHour == 12) 12 else stHour % 12,
+                    stMin,
+                    if (stHour < 12) "AM" else "PM"
+                )
+                val endTime = String.format(
+                    "%02d:%02d %s",
+                    if (etHour == 0 || etHour == 12) 12 else etHour % 12,
+                    etMin,
+                    if (etHour < 12) "AM" else "PM"
+                )
+                return "$startTime - $endTime"
+            }
+        }
+
+        fun currentHourMin(): Pair<Int, Int> {
+            val calendar = Calendar.getInstance()
+            val currHour = calendar.get(Calendar.HOUR_OF_DAY)
+            val currMinute = calendar.get(Calendar.MINUTE)
+            return Pair(currHour, currMinute)
+        }
+        fun isCurrentTimeWithinRange(stHour: Int, stMin: Int, etHour: Int, etMin: Int): Boolean {
+            val (currHour, currMinute) = currentHourMin()
+            val curr = currHour * 60 + currMinute
+
+            val rangeStart = stHour * 60 + stMin
+            val rangeEnd = etHour * 60 + etMin
+
+            return if (rangeStart <= rangeEnd) {
+                curr in rangeStart.. rangeEnd
+            } else {
+                curr >= rangeStart || curr <= rangeEnd
+            }
         }
 
         private fun isRegexValid(regex: String): Boolean {
@@ -178,6 +226,7 @@ class Util {
                 Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
                 Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
                 Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.dialed)
+                Def.RESULT_ALLOWED_BY_OFF_TIME ->  ctx.resources.getString(R.string.off_time)
                 Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason)
                 Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(

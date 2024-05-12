@@ -15,6 +15,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
+import java.util.Calendar
 
 class CheckResult(
     val shouldBlock: Boolean,
@@ -135,6 +136,27 @@ class Checker { // for namespace only
         }
     }
 
+    class OffTime(private val ctx: Context) : checker {
+        override fun priority(): Int {
+            return 10
+        }
+
+        override fun check(): CheckResult? {
+            val spf = SharedPref(ctx)
+            if (!spf.isOffTimeEnabled()) {
+                return null
+            }
+            val (stHour, stMin) = spf.getOffTimeStart()
+            val (etHour, etMin) = spf.getOffTimeEnd()
+
+            if (Util.isCurrentTimeWithinRange(stHour, stMin, etHour, etMin)) {
+                return CheckResult(false, Def.RESULT_ALLOWED_BY_OFF_TIME)
+            }
+
+            return null
+        }
+    }
+
     class RecentApp(private val ctx: Context) : checker {
         override fun priority(): Int {
             return 10
@@ -232,7 +254,8 @@ class Checker { // for namespace only
                 Checker.Contact(ctx, rawNumber),
                 Checker.RepeatedCall(ctx, rawNumber),
                 Checker.Dialed(ctx, rawNumber),
-                Checker.RecentApp(ctx)
+                Checker.RecentApp(ctx),
+                Checker.OffTime(ctx)
             )
             //  add number rules to checkers
             val filters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
@@ -268,6 +291,7 @@ class Checker { // for namespace only
 
             val checkers = arrayListOf<checker>(
                 Checker.Contact(ctx, rawNumber),
+                Checker.OffTime(ctx)
             )
 
             //  add number rules to checkers

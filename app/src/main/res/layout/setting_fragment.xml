@@ -177,6 +177,33 @@
                 </LinearLayout>
                 <!--    recent app end-->
 
+                <!--  off time -->
+                <LinearLayout style="@style/setting_row">
+
+                    <TextView
+                        style="@style/setting_blue_label"
+                        android:text="@string/off_time" />
+
+                    <ImageView
+                        android:id="@+id/setting_help_off_time"
+                        style="@style/help_question_icon"
+                        android:background="@drawable/ic_question"
+                        tools:ignore="ContentDescription" />
+
+                    <Space style="@style/setting_spacing" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_off_time"
+                        style="@style/setting_stroke_gray_button"
+                        android:layout_marginEnd="0dp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_enable_off_time"
+                        style="@style/setting_switch" />
+                </LinearLayout>
+                <!--    off time -->
+
                 <!--  silence call -->
                 <LinearLayout style="@style/setting_row">
                     <TextView

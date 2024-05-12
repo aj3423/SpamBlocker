@@ -45,6 +45,7 @@ class RuleTest {
         spf.setRecentAppConfig(5)
         spf.setDialedEnabled(false)
         spf.setDialedConfig(3)
+        spf.setOffTimeEnabled(false)
         NumberRuleTable().clearAll(ctx)
         ContentRuleTable().clearAll(ctx)
     }
@@ -278,7 +279,7 @@ class RuleTest {
                 listOf()
         }
     }
-    // testing contact contains special characters
+
     @Test
     fun recent_app() {
         val pkgs = listOf("my.pkg")
@@ -302,6 +303,51 @@ class RuleTest {
         r = Checker.checkCall(ctx, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
+    }
+
+    fun mock_current_hour_min(hour: Int, min: Int) {
+        mockkObject(Util)
+
+        every { Util.currentHourMin() } returns Pair(hour, min)
+    }
+    @Test
+    fun off_time() {
+
+        // block all number
+        add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
+
+        // should block
+        var r = Checker.checkCall(ctx, B)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
+
+        // set off-time to (1:00, 2:00)
+        spf.setOffTimeEnabled(true)
+        spf.setOffTimeStart(1, 0)
+        spf.setOffTimeEnd(2, 0)
+
+        // mock current time to 1:15
+        mock_current_hour_min(1, 15)
+
+        // should pass
+        r = Checker.checkCall(ctx, B)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_OFF_TIME, r.result)
+
+        // mock current time to 3:00
+        mock_current_hour_min(3, 0)
+
+        // should block
+        r = Checker.checkCall(ctx, B)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
+
+
+        // ---- test start > end (over night) ----
+        spf.setOffTimeStart(21, 0) // 21 PM -> 02 AM
+        spf.setOffTimeEnd(2, 0)
+        // mock current time to 22:00
+        mock_current_hour_min(22, 0)
+        // should pass
+        r = Checker.checkCall(ctx, B)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_OFF_TIME, r.result)
     }
 
     // testing call number rules

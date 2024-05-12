@@ -11,8 +11,6 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -40,6 +38,7 @@ import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
+import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.Util.Companion.applyAppTheme
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Permission
@@ -48,6 +47,7 @@ import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
 import spam.blocker.util.Permission.Companion.isReadSmsPermissionGranted
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.SharedPref
+import spam.blocker.util.Util
 
 
 class SettingFragment : Fragment() {
@@ -118,6 +118,8 @@ class SettingFragment : Fragment() {
         setupRecentApps(root)
 
         setupSilenceCall(root)
+
+        setupOffTime(root)
 
         setupRules(
             root,
@@ -412,6 +414,38 @@ class SettingFragment : Fragment() {
         }
     }
 
+    private fun setupOffTime(root: View) {
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
+        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_off_time)
+        val btn = root.findViewById<MaterialButton>(R.id.btn_off_time)
+
+        switchEnabled.isChecked = spf.isOffTimeEnabled()
+
+        fun updateButton() {
+            val (sHour, sMin) = spf.getOffTimeStart()
+            val (eHour, eMin) = spf.getOffTimeEnd()
+
+            btn.text = Util.formatTimeRange(ctx, sHour, sMin, eHour, eMin)
+            btn.visibility = if (spf.isOffTimeEnabled()) View.VISIBLE else View.GONE
+        }
+        updateButton()
+        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
+            spf.setOffTimeEnabled(isChecked)
+            updateButton()
+        }
+        btn.setOnClickListener {
+            val (startH, startM) = spf.getOffTimeStart()
+            val (endH, endM) = spf.getOffTimeEnd()
+
+            TimeRangePicker(this, startH, startM, endH, endM) { stH, stM, etH, etM ->
+                spf.setOffTimeStart(stH, stM)
+                spf.setOffTimeEnd(etH, etM)
+                updateButton()
+            }.show()
+        }
+    }
+
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("NotifyDataSetChanged")
     private fun setupRules(
@@ -591,6 +625,10 @@ class SettingFragment : Fragment() {
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_quick_copy),
             R.string.help_quick_copy
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_off_time),
+            R.string.help_off_time
         )
     }
 }

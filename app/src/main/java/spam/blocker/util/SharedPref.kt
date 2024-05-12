@@ -16,16 +16,15 @@ class SharedPref(context: Context) {
         editor.putString(key, value)
         editor.apply()
     }
-
     fun readString(key: String, defaultValue: String): String {
         return prefs.getString(key, defaultValue) ?: defaultValue
     }
+
     fun writeInt(key: String, value: Int) {
         val editor: SharedPreferences.Editor = prefs.edit()
         editor.putInt(key, value)
         editor.apply()
     }
-
     fun readInt(key: String, defaultValue: Int): Int {
         return prefs.getInt(key, defaultValue)
     }
@@ -35,7 +34,6 @@ class SharedPref(context: Context) {
         editor.putBoolean(key, value)
         editor.apply()
     }
-
     fun readBoolean(key: String, defaultValue: Boolean): Boolean {
         return prefs.getBoolean(key, defaultValue)
     }
@@ -94,6 +92,33 @@ class SharedPref(context: Context) {
     }
     fun setDialedConfig(inXDay: Int) {
         writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay)
+    }
+
+    fun isOffTimeEnabled(): Boolean {
+        return readBoolean(Def.SETTING_ENABLE_OFF_TIME, false)
+    }
+    fun setOffTimeEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_ENABLE_OFF_TIME, enabled)
+    }
+    fun setOffTimeStart(hour: Int, min: Int) {
+        writeInt(Def.SETTING_OFF_TIME_START_HOUR, hour)
+        writeInt(Def.SETTING_OFF_TIME_START_MIN, min)
+    }
+    fun setOffTimeEnd(hour: Int, min: Int) {
+        writeInt(Def.SETTING_OFF_TIME_END_HOUR, hour)
+        writeInt(Def.SETTING_OFF_TIME_END_MIN, min)
+    }
+    fun getOffTimeStart(): Pair<Int, Int> {
+        return Pair(
+            readInt(Def.SETTING_OFF_TIME_START_HOUR, 0),
+            readInt(Def.SETTING_OFF_TIME_START_MIN, 0)
+        )
+    }
+    fun getOffTimeEnd(): Pair<Int, Int> {
+        return Pair(
+            readInt(Def.SETTING_OFF_TIME_END_HOUR, 0),
+            readInt(Def.SETTING_OFF_TIME_END_MIN, 0)
+        )
     }
 
     fun setSilenceCallEnabled(enabled: Boolean) {

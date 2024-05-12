@@ -15,6 +15,11 @@ object Def {
     const val SETTING_PERMIT_DIALED = "permit_dialed"
     const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
     const val SETTING_ENABLE_SILENCE_CALL = "silence_call"
+    const val SETTING_ENABLE_OFF_TIME = "off_time"
+    const val SETTING_OFF_TIME_START_HOUR = "off_time_start_hour"
+    const val SETTING_OFF_TIME_START_MIN = "off_time_start_min"
+    const val SETTING_OFF_TIME_END_HOUR = "off_time_end_hour"
+    const val SETTING_OFF_TIME_END_MIN = "off_time_end_min"
 
 
     const val SETTING_RECENT_APPS = "recent_apps"
@@ -38,6 +43,8 @@ object Def {
     const val RESULT_ALLOWED_BY_REPEATED = 5
     const val RESULT_ALLOWED_BY_CONTENT = 6
     const val RESULT_ALLOWED_BY_DIALED = 7
+    const val RESULT_ALLOWED_BY_OFF_TIME = 8
+
 
 
     // blocked
@@ -55,6 +62,7 @@ object Def {
                 (result == RESULT_ALLOWED_BY_REPEATED) or
                 (result == RESULT_ALLOWED_BY_DIALED) or
                 (result == RESULT_ALLOWED_BY_CONTENT) or
+                (result == RESULT_ALLOWED_BY_OFF_TIME) or
                 (result == RESULT_ALLOWED_BY_CONTACT)
     }
 
