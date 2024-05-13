@@ -15,19 +15,19 @@
         - name: Build
           run: ./gradlew assembleRelease
 
-        - uses: ilharp/sign-android-release@nightly
-          name: Sign apk
-          id: sign_app
-          with:
-            releaseDir: app/build/outputs/apk/release
-            signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
-            keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
-            keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-            keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
-            buildToolsVersion: 34.0.0
+        # - uses: ilharp/sign-android-release@nightly
+        #   name: Sign apk
+        #   id: sign_app
+        #   with:
+        #     releaseDir: app/build/outputs/apk/release
+        #     signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
+        #     keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+        #     keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        #     keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        #     buildToolsVersion: 34.0.0
 
-        - uses: actions/upload-artifact@v4
-          with:
-            name: app-release.apk
-            path: ${{steps.sign_app.outputs.signedFile}}
-            compression-level: 0
+        # - uses: actions/upload-artifact@v4
+        #   with:
+        #     name: app-release.apk
+        #     path: ${{steps.sign_app.outputs.signedFile}}
+        #     compression-level: 0
