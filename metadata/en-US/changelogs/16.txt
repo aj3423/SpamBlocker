@@ -1,0 +1,13 @@
+Breaking changes:
+- RepeatedCall/Dialed are now based on system call log instead of local db
+- Now it requires READ_CALL_LOG and READ_SMS for RepeatedCall/Dialed to work
+
+New features:
+- Permit calls from dialed number
+- Silence call
+- Backup & Restore
+- Off Time
+
+Improvements:
+- New app icon, thanks to nvllz
+- i18n - Chinese Simplified, thanks to yzqzss
