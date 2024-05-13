@@ -63,8 +63,7 @@ class SmsReceiver : BroadcastReceiver() {
             }.setAction("action_sms_block")
 
             Notification.show(ctx, R.drawable.ic_sms_blocked,
-                showName,
-                Util.reasonStr(ctx, Util.reasonTable(r.result), r.reason()),
+                showName, messageBody,
                 importance, ctx.resources.getColor(R.color.salmon, null), intent)
 
         } else { // passed
