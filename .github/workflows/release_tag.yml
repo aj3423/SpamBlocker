@@ -37,7 +37,7 @@
           uses: "marvinpinto/action-automatic-releases@latest"
           with:
             repo_token: "${{ secrets.SYNC_TOKEN }}"
-            automatic_release_tag: "v1.0.1"
+            automatic_release_tag: "v1.6"
             prerelease: false
             draft: true
             files: |
