@@ -76,6 +76,30 @@ class Config {
         fun apply(ctx: Context) { SharedPref(ctx).setSilenceCallEnabled(enabled) }
     }
     @Serializable
+    class OffTime {
+        var enabled = false
+        var stHour = 0
+        var stMin = 0
+        var etHour = 0
+        var etMin = 0
+        fun load(ctx: Context) {
+            val spf = SharedPref(ctx)
+            enabled = spf.isOffTimeEnabled()
+            val (stHour_, stMin_) = spf.getOffTimeStart()
+            val (etHour_, etMin_) = spf.getOffTimeEnd()
+            stHour = stHour_
+            stMin = stMin_
+            etHour = etHour_
+            etMin = etMin_
+        }
+        fun apply(ctx: Context) {
+            val spf = SharedPref(ctx)
+            spf.setOffTimeEnabled(enabled)
+            spf.setOffTimeStart(stHour, stMin)
+            spf.setOffTimeEnd(etHour, etMin)
+        }
+    }
+    @Serializable
     class RecentApps {
         val list = mutableListOf<String>()
         var inXMin = 0
@@ -131,6 +155,7 @@ class Configs {
     val dialed = Config.Dialed()
     val recentApps = Config.RecentApps()
     val silence = Config.Silence()
+    val offTime = Config.OffTime()
     val numberRules = Config.NumberRules()
     val contentRules = Config.ContentRules()
     val quickCopyRules = Config.QuickCopyRules()
@@ -143,6 +168,7 @@ class Configs {
         dialed.load(ctx)
         recentApps.load(ctx)
         silence.load(ctx)
+        offTime.load(ctx)
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
@@ -155,6 +181,7 @@ class Configs {
         dialed.apply(ctx)
         recentApps.apply(ctx)
         silence.apply(ctx)
+        offTime.apply(ctx)
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)

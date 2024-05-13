@@ -1,0 +1,44 @@
+  name: tag release
+  on: workflow_dispatch
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@latest
+
+        - name: Setup JDK
+          uses: actions/setup-java@latest
+          with:
+            distribution: 'oracle'
+            java-version: "22"
+
+        - name: Build
+          run: ./gradlew assembleRelease
+
+        - uses: ilharp/sign-android-release@nightly
+          name: Sign apk
+          id: sign_app
+          with:
+            releaseDir: app/build/outputs/apk/release
+            signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
+            keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+            keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+            keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+            buildToolsVersion: 34.0.0
+
+        - uses: actions/upload-artifact@v4
+          with:
+            name: app-release.apk
+            path: ${{steps.sign_app.outputs.signedFile}}
+            compression-level: 0
+
+
+        - name: New Release
+          uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.SYNC_TOKEN }}"
+            automatic_release_tag: "v1.0.1"
+            prerelease: false
+            draft: true
+            files: |
+              ${{ steps.sign_app.outputs.signedFile }}

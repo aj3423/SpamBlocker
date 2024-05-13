@@ -48,12 +48,12 @@ Calls repeated within a period of time will be permitted.
 #### 4. Dialed
 Dialed numbers will be permitted.
 
-#### 4. Recent Apps
+#### 5. Recent Apps
 Any call would be permitted if any of these apps had been used within a period of time.
 
 - A typical use case: 
 
-You ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would be permitted if PizzaApp is enabled in Recent Apps list.
+You ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would be permitted if PizzaApp is enabled in this list.
 
 
 # Permissions required
