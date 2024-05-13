@@ -139,4 +139,6 @@
 \n此应用不需要互联网（INTERNET）和存储（STORAGE）权限，不支持\"将备份到云端或存储文件\"等功能。</string>
     <string name="help_silence_call">当启用时，&lt;font color=#fa7f71&gt;&lt;b&gt;被阻止&lt;/b&gt;&lt;/font&gt;的呼叫将会在后台&lt;b&gt;静默&lt;/b&gt;响铃，而不是立即挂断，给呼叫者一种印象，即你只是忙，没有空接那个电话。&lt;br&gt; &lt;br&gt; 通过&lt;b&gt;静默&lt;/b&gt;，意味着电话正在使用时不会显示呼叫屏幕，当屏幕已锁定时也不会唤醒手机。</string>
     <string name="silence_call">静音呼叫</string>
+    <string name="help_off_time">启用后，在此时间段内将允许所有呼叫（及消息）。通常晚上没有骚扰电话和短信&lt;br&gt;&lt;br&gt;如果开始时间大于结束时间，例如20:00-&gt;07:00，则表示从晚上20:00到第二天早上07:00的时间段&lt;br&gt;&lt;br&gt;&lt;font color=#ea86ff&gt;&lt;b&gt;优先级：10&lt;/b&gt;&lt;/font&gt;</string>
+    <string name="off_time">关闭时间</string>
 </resources>
