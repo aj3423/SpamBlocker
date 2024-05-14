@@ -156,8 +156,7 @@
                                 android:id="@+id/recycler_app_icons"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal"
-                                />
+                                android:orientation="horizontal" />
                         </HorizontalScrollView>
 
                     </LinearLayout>
@@ -206,6 +205,7 @@
 
                 <!--  silence call -->
                 <LinearLayout style="@style/setting_row">
+
                     <TextView
                         style="@style/setting_blue_label"
                         android:text="@string/silence_call" />
@@ -269,16 +269,13 @@
                         android:text="@string/test" />
                 </LinearLayout>
 
-                <androidx.core.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_number_filters"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" />
-                </androidx.core.widget.NestedScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_number_filters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical" />
                 <!--    number filters end-->
 
                 <!--    sms content filters-->
@@ -307,17 +304,13 @@
                         android:text="@string/test" />
                 </LinearLayout>
 
-                <androidx.core.widget.NestedScrollView
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_content_filters"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_content_filters"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" />
-
-                </androidx.core.widget.NestedScrollView>
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical" />
                 <!--    sms content filters end-->
 
 
@@ -347,17 +340,13 @@
                         android:text="@string/test" />
                 </LinearLayout>
 
-                <androidx.core.widget.NestedScrollView
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_quick_copy"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_quick_copy"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical" />
-
-                </androidx.core.widget.NestedScrollView>
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical" />
                 <!--    copy content -->
             </LinearLayout>
 
