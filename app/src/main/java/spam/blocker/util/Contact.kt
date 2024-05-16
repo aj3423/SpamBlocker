@@ -5,17 +5,16 @@ import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.provider.ContactsContract
+import android.provider.ContactsContract.CommonDataKinds.Phone
+import android.provider.ContactsContract.PhoneLookup
+import android.provider.ContactsContract.CommonDataKinds
+import android.provider.ContactsContract.Contacts
 import android.util.Log
 import spam.blocker.def.Def
 
 class ContactInfo {
     var name = ""
-    var rawPhone = ""
     var iconUri: String? = null // icon is Bitmap
-
-    fun clearedPhone(): String {
-        return Util.clearNumber(rawPhone)
-    }
 
     fun loadAvatar(ctx: Context): Bitmap? {
         if (iconUri == null) {
@@ -34,6 +33,56 @@ class ContactInfo {
 open class Contacts {
 
     companion object {
+
+        fun findByRawNumberAuto(ctx: Context, rawNumber: String): ContactInfo? {
+            if (!Permission.isContactsPermissionGranted(ctx)) {
+                return null
+            }
+            val uri = Uri.withAppendedPath(
+                PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(rawNumber)
+            )
+
+            val cursor = ctx.contentResolver.query(
+                uri,
+                arrayOf(
+                    Contacts.DISPLAY_NAME,
+                    Contacts.PHOTO_URI
+                ),
+                null,
+                null,
+                null
+            )
+
+            cursor?.use {
+                val nameIndex = it.getColumnIndex(Contacts.DISPLAY_NAME)
+                val iconIndex = it.getColumnIndex(Contacts.PHOTO_URI)
+
+                while (it.moveToNext()) {
+
+                    val ci = ContactInfo()
+
+                    ci.name = it.getString(nameIndex)
+                    ci.iconUri = it.getString(iconIndex)
+
+                    Log.d(
+                        Def.TAG,
+                        "---- contact matches, name: ${ci.name}, icon: ${ci.iconUri}"
+                    )
+                    return ci
+                }
+            }
+            return null
+        }
+
+        /*
+            ===============================================================
+            It turns out that Android has builtin way of querying contacts.
+            No need to do it myself...
+            ================================================================
+         */
+
+        /*
         // regex for splitting the cc and the rest, e.g.:
         //   +1 23-45
         // ->
@@ -140,6 +189,8 @@ open class Contacts {
             return Wrapper(ret)
         }
 
+
+         */
     }
 
 }

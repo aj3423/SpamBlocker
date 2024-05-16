@@ -19,41 +19,20 @@ An Android Call/SMS blocker.
 | How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | It takes over the notification of new messages. |
 | Filters supported<br>([explained below](#Filters)) | 1. Phone number (regex)<br>2. In Contacts<br>3. Repeated call<br>4. Recent apps<br>5. Dialed                                                                     | 1. Phone number (regex)<br>2. In Contacts<br>3. Sms content (regex)                                        |
 
-
-
 # Filters:
-#### 1. Phone number and SMS content
 
-Regex is used, some typical regex patterns:
+| Filter   | It checks                                       |
+| ----     | ----                                            |
+| Contacts | Whether it's from a contact                     |
+| Repeated | Whether the number has been calling repeatedly  |
+| Dialed   | Whether the number has been made outgoing calls |
+| Recent Apps | If some specific apps have been used recently, all calls are allowed.<br><br> A typical use case:<br> &emsp;You ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would be permitted if PizzaApp is enabled in this list. |
+| Off Time  | A time period that always permits calls, usually no spams at night. |
+| Regex Pattern | Some typical patterns:<br> - Any number: `.*` (the regex `.*` is identical to the wildcard `*` in many other apps) <br> - Exact number: `12345` <br> - Starts with 400: `400.*` <br> - Ends with 123: `.*123` <br> - Less than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Contains "verification": `.*verification.*` <br><br> If you don't know how to write regex, just ask AI: <br><br> "Show me regex that checks if a string starts with 400 or 200"<br> <br> Results in `^(400\|200).*`  |
 
-- Any number: `.*` (the regex `.*` is identical to the wildcard `*` in many other apps)
-- Exact number: `12345`
-- Starts with 400: `400.*`
-- Ends with 123: `.*123`
-- Less than 5: `.{0,4}`
-- Longer than 10: `.{11,}`
-- Contains "verification": `.*verification.*`
 
-If you don't know how to write regex, just ask AI: 
-> Show me regex that checks if a string starts with 400 or 200
 
-Results in `^(400|200).*`
 
-#### 2. In Contacts
-Permit calls from contacts.
-
-#### 3. Repeated Call
-Calls repeated within a period of time will be permitted.
-
-#### 4. Dialed
-Dialed numbers will be permitted.
-
-#### 5. Recent Apps
-Any call would be permitted if any of these apps had been used within a period of time.
-
-- A typical use case: 
-
-You ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would be permitted if PizzaApp is enabled in this list.
 
 
 # Permissions required

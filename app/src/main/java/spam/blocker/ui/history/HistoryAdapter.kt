@@ -54,7 +54,7 @@ class HistoryAdapter(
         } else {
             val drawable = holder.imgPhoto.background.mutate()
             // use the hash code as color
-            val toHash = contact?.rawPhone ?: record.peer
+            val toHash = contact?.name ?: record.peer
             Log.d(Def.TAG, "tohash: $toHash")
             val color = toHash.hashCode() or Color.parseColor("#808080") // higher contrast
             DrawableCompat.setTint(drawable, color)
