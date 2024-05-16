@@ -22,7 +22,7 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
-import spam.blocker.ui.util.Util.Companion.applyAppTheme
+import spam.blocker.ui.util.Util.Companion.applyTheme
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.SharedPref
@@ -49,8 +49,16 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // theme
+        applyTheme(SharedPref(this).isDarkTheme())
+
         if (BuildConfig.DEBUG) {
             test.exec(this)
+
+            // for debugging only, detecting resource leak, eg: db cursor not closed
+            Class.forName("dalvik.system.CloseGuard")
+                .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
+                .invoke(null, true)
         }
 
         // launched by clicking notification
@@ -164,9 +172,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // theme
-        applyAppTheme(SharedPref(this).isDarkTheme())
-
         // require permission once
         if (!spf.hasAskedForAllPermissions()) {
             spf.setAskedForAllPermission()
@@ -182,10 +187,6 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-//         for debugging only, detecting resource leak, eg: db cursor not closed
-//        Class.forName("dalvik.system.CloseGuard")
-//            .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
-//            .invoke(null, true)
     }
 
 

@@ -39,7 +39,7 @@ import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
 import spam.blocker.ui.util.TimeRangePicker
-import spam.blocker.ui.util.Util.Companion.applyAppTheme
+import spam.blocker.ui.util.Util.Companion.applyTheme
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Permission
 import spam.blocker.util.Permission.Companion.isCallLogPermissionGranted
@@ -100,7 +100,7 @@ class SettingFragment : Fragment() {
         switchTheme.isChecked = dark
         switchTheme.setOnClickListener {
             spf.toggleDarkTheme()
-            applyAppTheme(spf.isDarkTheme())
+            applyTheme(spf.isDarkTheme())
         }
 
         // backup / restore

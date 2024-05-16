@@ -12,7 +12,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.LifecycleOwner
-import com.skydoves.balloon.ArrowOrientation
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
@@ -22,7 +21,7 @@ import spam.blocker.R
 class Util {
     companion object {
 
-        fun applyAppTheme(dark: Boolean) {
+        fun applyTheme(dark: Boolean) {
             if (dark) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {

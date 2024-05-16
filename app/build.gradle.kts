@@ -79,7 +79,7 @@ dependencies {
     // For control over item selection of both touch and mouse driven selection
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
-    implementation("me.leolin:ShortcutBadger:1.1.22@aar") // for the number indicator on bottomNavView
+    implementation("me.leolin:ShortcutBadger:1.1.22@aar") // for the number indicator on app icon
 
     implementation("il.co.theblitz:observablecollections:1.4.2") // in jcenter only
 

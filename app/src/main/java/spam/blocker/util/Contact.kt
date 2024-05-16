@@ -38,6 +38,9 @@ open class Contacts {
             if (!Permission.isContactsPermissionGranted(ctx)) {
                 return null
             }
+            if (rawNumber.trim().isEmpty()) {
+                return null
+            }
             val uri = Uri.withAppendedPath(
                 PhoneLookup.CONTENT_FILTER_URI,
                 Uri.encode(rawNumber)

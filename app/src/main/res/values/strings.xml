@@ -86,9 +86,7 @@
               &emsp; Equivalent to <font color="#d1c8c8"><b>Inclusive</b></font> with a number rule <font color="#fa7f71"><b>.*</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Priority: 0</b></font> <br>
         <br>
-        It applies to both calls and SMS messages. <br>
-        <br>
-        Special characters(<b>+ - spaces</b>) in contact numbers are automagically handled.
+        It applies to both calls and SMS messages.
         ]]>
     </string>
     <string name="help_repeated_call">
@@ -158,7 +156,7 @@
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>
-        Uncheck the checkboxes to disable the rule, useful for testing.
+        Uncheck the checkboxes to disable the rule, useful for testing. <br>
         <br>
         Swipe left to delete a rule.
         ]]>
