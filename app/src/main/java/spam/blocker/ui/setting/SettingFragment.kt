@@ -2,8 +2,13 @@ package spam.blocker.ui.setting
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -11,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -115,6 +121,7 @@ class SettingFragment : Fragment() {
 
         setupDialed(root)
 
+        clearUninstalledRecentApps()
         setupRecentApps(root)
 
         setupSilenceCall(root)
@@ -320,6 +327,18 @@ class SettingFragment : Fragment() {
         }
     }
 
+    // Clear uninstalled apps from the recent apps list
+    private fun clearUninstalledRecentApps() {
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
+
+        val cleared = spf.getRecentAppList().filter {
+            Util.isPackageInstalled(ctx, it)
+        }
+        spf.setRecentAppList(cleared)
+    }
+
+
     @SuppressLint("NotifyDataSetChanged", "ClickableViewAccessibility")
     private fun setupRecentApps(root: View) {
         val ctx = requireContext()
@@ -327,17 +346,22 @@ class SettingFragment : Fragment() {
 
         // config
         val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_recent_apps)
+        val recyclerAppIcons = root.findViewById<RecyclerView>(R.id.recycler_app_icons)
 
-        fun updateButton() {
+        // update button and recycler
+        fun updateUI() {
+            val visibility = if (recentApps.size > 0 && Permission.isUsagePermissionGranted(ctx)) View.VISIBLE else View.GONE
             val inXmin = spf.getRecentAppConfig()
             btn_config.text = "$inXmin ${resources.getString(R.string.min)}"
-            btn_config.visibility = if (recentApps.size > 0) View.VISIBLE else View.GONE
+            btn_config.visibility = visibility
+
+            recyclerAppIcons.visibility = visibility
         }
-        updateButton()
+        updateUI()
         btn_config.setOnClickListener {
             PopupRecentAppConfigFragment { inXMin: Int ->
                 spf.setRecentAppConfig(inXMin)
-                updateButton()
+                updateUI()
             }.show(requireActivity().supportFragmentManager, "tag_config_recent_app")
         }
 
@@ -346,9 +370,7 @@ class SettingFragment : Fragment() {
         recentApps.addAll(spf.getRecentAppList())
         val adapterRecentApps = AppListAdapter(ctx, recentApps)
         recentApps.observe(viewLifecycleOwner) {
-//            Log.d(Def.TAG, "recentApps action in SettingFragment: " + it.action.toString())
-
-            updateButton()
+            updateUI()
             spf.setRecentAppList(recentApps.toList())
             when (it.action) {
                 Add -> adapterRecentApps.notifyItemInserted(it.actionInt!!)
@@ -363,13 +385,17 @@ class SettingFragment : Fragment() {
 
 
         // recycler
+        val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
+            updateUI()
+        }
         fun popupRecentApps() {
             if (!Permission.isUsagePermissionGranted(ctx)) {
                 AlertDialog.Builder(ctx)
                     .setMessage(ctx.resources.getString(R.string.prompt_go_to_usage_permission_setting))
                     .setPositiveButton(ctx.resources.getString(R.string.ok)) { dialog, _ ->
                         dialog.dismiss()
-                        Permission.goToUsagePermissionSetting(ctx)
+
+                        launcher.launch(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
                     }
                     .setNegativeButton(ctx.resources.getString(R.string.cancel)) { dialog, _ ->
                         dialog.dismiss()
@@ -381,7 +407,6 @@ class SettingFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, "tag_select_apps")
         }
 
-        val recyclerAppIcons = root.findViewById<RecyclerView>(R.id.recycler_app_icons)
         recyclerAppIcons.setAdapter(adapterRecentApps)
 
         val layoutManagerApps = LinearLayoutManager(ctx, RecyclerView.HORIZONTAL, false)

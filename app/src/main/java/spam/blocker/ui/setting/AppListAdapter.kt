@@ -31,9 +31,8 @@ class AppListAdapter(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val pkgName = selected[position]
-        val appInfo = getAppsMap(ctx)[pkgName]
 
-        holder.imgIcon.setImageDrawable(appInfo!!.icon)
+        holder.imgIcon.setImageDrawable(getAppsMap(ctx)[pkgName]?.icon)
     }
 
     override fun getItemCount() = selected.size

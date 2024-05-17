@@ -116,11 +116,6 @@ open class Permission {
             return (mode == AppOpsManager.MODE_ALLOWED)
         }
 
-        fun goToUsagePermissionSetting(ctx: Context) {
-            val intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
-            ctx.startActivity(intent)
-        }
-
         fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
             val ret = mutableListOf<String>()
 

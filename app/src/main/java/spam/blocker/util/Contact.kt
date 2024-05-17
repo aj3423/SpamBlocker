@@ -1,6 +1,7 @@
 package spam.blocker.util
 
 import android.content.Context
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -38,24 +39,26 @@ open class Contacts {
             if (!Permission.isContactsPermissionGranted(ctx)) {
                 return null
             }
-            if (rawNumber.trim().isEmpty()) {
-                return null
-            }
+
             val uri = Uri.withAppendedPath(
                 PhoneLookup.CONTENT_FILTER_URI,
                 Uri.encode(rawNumber)
             )
 
-            val cursor = ctx.contentResolver.query(
-                uri,
-                arrayOf(
-                    Contacts.DISPLAY_NAME,
-                    Contacts.PHOTO_URI
-                ),
-                null,
-                null,
+            val cursor: Cursor? = try {
+                ctx.contentResolver.query(
+                    uri,
+                    arrayOf(
+                        Contacts.DISPLAY_NAME,
+                        Contacts.PHOTO_URI
+                    ),
+                    null,
+                    null,
+                    null
+                )
+            } catch (e: Exception) {
                 null
-            )
+            }
 
             cursor?.use {
                 val nameIndex = it.getColumnIndex(Contacts.DISPLAY_NAME)

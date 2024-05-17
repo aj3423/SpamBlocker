@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import java.util.regex.Pattern
 
 class Util {
     companion object {
@@ -164,27 +163,30 @@ class Util {
         }
 
         private var cacheAppList : List<AppInfo>? = null
+        private val lock_1 = Any()
         @SuppressLint("UseCompatLoadingForDrawables")
         fun listApps(ctx: Context): List<AppInfo> {
-            if (cacheAppList == null) {
-                val packageManager = ctx.packageManager
+            synchronized(lock_1) {
+                if (cacheAppList == null) {
+                    val packageManager = ctx.packageManager
 
-                cacheAppList = packageManager.getInstalledApplications(
-                    PackageManager.MATCH_DISABLED_COMPONENTS or
-                            PackageManager.MATCH_UNINSTALLED_PACKAGES or
-                            PackageManager.GET_META_DATA
-                ).filter { appInfo ->
-                    (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
-                }.map {
-                    val ret = AppInfo()
-                    ret.pkgName = it.packageName
-                    ret.label = packageManager.getApplicationLabel(it).toString()
-                    try {
-                        ret.icon = packageManager.getApplicationIcon(it)
-                    } catch (e: PackageManager.NameNotFoundException) {
-                        ret.icon = ctx.getDrawable(R.drawable.unknown_app_icon)!!
+                    cacheAppList = packageManager.getInstalledApplications(
+                        PackageManager.MATCH_DISABLED_COMPONENTS or
+                                PackageManager.MATCH_UNINSTALLED_PACKAGES or
+                                PackageManager.GET_META_DATA
+                    ).filter { appInfo ->
+                        (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
+                    }.map {
+                        val ret = AppInfo()
+                        ret.pkgName = it.packageName
+                        ret.label = packageManager.getApplicationLabel(it).toString()
+                        try {
+                            ret.icon = packageManager.getApplicationIcon(it)
+                        } catch (e: PackageManager.NameNotFoundException) {
+                            ret.icon = ctx.getDrawable(R.drawable.unknown_app_icon)!!
+                        }
+                        ret
                     }
-                    ret
                 }
             }
 
@@ -192,10 +194,14 @@ class Util {
         }
 
         private var cacheAppMap : Map<String, AppInfo>? = null
+        private val lock_2 = Any()
         fun getAppsMap(ctx: Context): Map<String, AppInfo> {
-            if (cacheAppMap == null) {
-                cacheAppMap = listApps(ctx).associateBy { it.pkgName }
+            synchronized(lock_2) {
+                if (cacheAppMap == null) {
+                    cacheAppMap = listApps(ctx).associateBy { it.pkgName }
+                }
             }
+
             return cacheAppMap!!
         }
 
@@ -240,18 +246,28 @@ class Util {
             }
         }
 
-        fun splitCcPhone(str: String): Pair<String, String>? {
-            val matcher = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$").matcher(str);
-            if (!matcher.find()) {
-                return null
+//        fun splitCcPhone(str: String): Pair<String, String>? {
+//            val matcher = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$").matcher(str);
+//            if (!matcher.find()) {
+//                return null
+//            }
+//            val cc = matcher.group(1) ?: return null
+//
+//            val phone = str.substring(cc.length)
+//
+////            Log.d(Def.TAG, "cc: $cc, g2: $phone")
+//            return Pair(cc, phone)
+//        }
+
+        fun isPackageInstalled(ctx: Context, pkgName: String): Boolean {
+            val pm = ctx.packageManager
+            val flags = 0
+            return try {
+                pm.getPackageUid(pkgName, flags)
+                true
+            } catch (_: Exception) {
+                false
             }
-            val cc = matcher.group(1) ?: return null
-
-            val phone = str.substring(cc.length)
-
-//            Log.d(Def.TAG, "cc: $cc, g2: $phone")
-            return Pair(cc, phone)
         }
-
     }
 }
