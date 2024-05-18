@@ -128,17 +128,28 @@ class Util {
                 false
             }
         }
-        private fun hasTrailingSpacesOrNewlines(regexStr: String): Boolean {
-            return regexStr.isNotEmpty() && regexStr.trim() != regexStr
+
+        fun validateRegex(ctx: Context, regexStr: String) : String? {
+            var s = regexStr
+            if (s.isNotEmpty() && s.trim() != s)
+                return ctx.getString(R.string.pattern_contain_non_printable_characters)
+
+            if (!isRegexValid(s))
+                return ctx.getString(R.string.invalid_regex_pattern)
+
+            if (s.startsWith("^"))
+                s = s.substring(1)
+
+            if (s.startsWith("+") || s.startsWith("\\+"))
+                return ctx.getString(R.string.pattern_contain_leaing_plus) + " " + ctx.getString(R.string.check_balloon_for_explanation)
+
+            if (s.startsWith("0")) {
+                return ctx.getString(R.string.pattern_contain_leaing_zeroes) + " " + ctx.getString(R.string.check_balloon_for_explanation)
+            }
+
+            return null
         }
-        fun validateRegex(ctx: Context, regexStr: String) : Pair<Boolean, String> {
-            if (hasTrailingSpacesOrNewlines(regexStr))
-                return Pair(false, ctx.getString(R.string.pattern_contain_trailing_space))
-            return if (isRegexValid(regexStr))
-                Pair(true, "")
-            else
-                Pair(false, ctx.getString(R.string.invalid_regex_pattern))
-        }
+
         fun flagsToRegexOptions(flags: Flag) : Set<RegexOption> {
             val opts = mutableSetOf<RegexOption>()
             if (flags.Has(Def.FLAG_REGEX_IGNORE_CASE)) {

@@ -9,7 +9,10 @@
     <string name="particular_number_pattern">Particular Number Pattern</string>
     <string name="sms_content_pattern">Content Regex Pattern</string>
     <string name="invalid_regex_pattern">Invalid regex pattern</string>
-    <string name="pattern_contain_trailing_space">Trailing spaces found</string>
+    <string name="pattern_contain_non_printable_characters">Non printable characters found</string>
+    <string name="pattern_contain_leaing_zeroes">No need to add the leading "0", they are removed before checking.</string>
+    <string name="pattern_contain_leaing_plus">No need to add the leading "+", they are removed before checking.</string>
+    <string name="check_balloon_for_explanation">Check the help of the \"Number Rules\" for a detailed explanation.</string>
     <string name="invalid_number">Invalid Number</string>
     <string name="invalid_integer">Invalid integer</string>
     <string name="filter_desc">Description</string>

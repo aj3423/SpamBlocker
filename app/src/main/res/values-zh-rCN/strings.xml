@@ -48,7 +48,7 @@
     <string name="non_contact">非联系人</string>
     <string name="inclusive">包括的</string>
     <string name="blocked">被阻止</string>
-    <string name="pattern_contain_trailing_space">发现尾随空格</string>
+    <string name="pattern_contain_non_printable_characters">发现尾随空格</string>
     <string name="config_text">配置文本</string>
     <string name="label_contact_filter">联系人过滤器</string>
     <string name="label_number_filter">号码规则</string>

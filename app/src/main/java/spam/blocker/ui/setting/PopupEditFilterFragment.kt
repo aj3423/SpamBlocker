@@ -86,8 +86,7 @@ class PopupEditFilterFragment(
 
         fun showHelpOnError(container: TextInputLayout, edit: TextInputEditText) {
             edit.addTextChangedListener {// validate regex
-                val (ok, errorReason) = Util.validateRegex(ctx, it.toString())
-                container.helperText = errorReason
+                container.helperText = Util.validateRegex(ctx, it.toString())
             }
         }
 
@@ -163,9 +162,9 @@ class PopupEditFilterFragment(
             }
             init.importance = spin_importance.selectedItemPosition
 
-            val (ok1, _) = Util.validateRegex(ctx, init.pattern)
-            val (ok2, _) = Util.validateRegex(ctx, init.patternExtra)
-            if (ok1 && ok2) {
+            val err1 = Util.validateRegex(ctx, init.pattern)
+            val err2 = Util.validateRegex(ctx, init.patternExtra)
+            if (err1 == null && err2 == null) {
                 close()
                 handleSave(init)
             }
