@@ -368,21 +368,6 @@ class SettingFragment : Fragment() {
 
         recentApps.clear()
         recentApps.addAll(spf.getRecentAppList())
-        val adapterRecentApps = AppListAdapter(ctx, recentApps)
-        recentApps.observe(viewLifecycleOwner) {
-            updateUI()
-            spf.setRecentAppList(recentApps.toList())
-            when (it.action) {
-                Add -> adapterRecentApps.notifyItemInserted(it.actionInt!!)
-                AddAll -> adapterRecentApps.notifyDataSetChanged()
-                Set -> adapterRecentApps.notifyItemChanged(it.actionInt!!)
-                Clear -> adapterRecentApps.notifyDataSetChanged()
-                RemoveAt -> adapterRecentApps.notifyItemRemoved(it.actionInt!!)
-
-                else -> {}
-            }
-        }
-
 
         // recycler
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
@@ -407,19 +392,24 @@ class SettingFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, "tag_select_apps")
         }
 
-        recyclerAppIcons.setAdapter(adapterRecentApps)
+        val adapterRecentApps = AppListAdapter(ctx, recentApps) { popupRecentApps() }
+        recentApps.observe(viewLifecycleOwner) {
+            updateUI()
+            spf.setRecentAppList(recentApps.toList())
+            when (it.action) {
+                Add -> adapterRecentApps.notifyItemInserted(it.actionInt!!)
+                AddAll -> adapterRecentApps.notifyDataSetChanged()
+                Set -> adapterRecentApps.notifyItemChanged(it.actionInt!!)
+                Clear -> adapterRecentApps.notifyDataSetChanged()
+                RemoveAt -> adapterRecentApps.notifyItemRemoved(it.actionInt!!)
 
-        val layoutManagerApps = LinearLayoutManager(ctx, RecyclerView.HORIZONTAL, false)
-        recyclerAppIcons.setLayoutManager(layoutManagerApps)
-
-        recyclerAppIcons.setOnTouchListener { _, event ->
-            when (event.action) {
-                MotionEvent.ACTION_UP -> {
-                    popupRecentApps()
-                }
+                else -> {}
             }
-            true
         }
+
+        recyclerAppIcons.setAdapter(adapterRecentApps)
+        recyclerAppIcons.setLayoutManager(
+            LinearLayoutManager(ctx, RecyclerView.HORIZONTAL, false))
 
         val btnSelectApp = root.findViewById<ImageButton>(R.id.btn_select_app)
         btnSelectApp.setOnClickListener {

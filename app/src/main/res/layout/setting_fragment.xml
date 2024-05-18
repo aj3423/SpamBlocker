@@ -139,28 +139,21 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <Space style="@style/setting_spacing" />
+                        android:orientation="horizontal"
+                        android:gravity="end">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_config_recent_apps"
                             style="@style/setting_stroke_gray_button"
                             android:layout_marginEnd="10dp" />
 
-                        <HorizontalScrollView
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_app_icons"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recycler_app_icons"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal" />
-                        </HorizontalScrollView>
-
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:nestedScrollingEnabled="false"/>
                     </LinearLayout>
-
 
                     <ImageButton
                         android:id="@+id/btn_select_app"
@@ -171,7 +164,6 @@
                         android:src="@drawable/right_arrow"
                         app:tint="@color/dodger_blue"
                         tools:ignore="ContentDescription" />
-
 
                 </LinearLayout>
                 <!--    recent app end-->

@@ -18,8 +18,10 @@ import spam.blocker.util.Util.Companion.getAppsMap
 import spam.blocker.util.Util.Companion.listApps
 
 class AppListAdapter(
-    private var ctx: Context,
-    private var selected: ObservableArrayList<String>
+    private val ctx: Context,
+    private val selected: ObservableArrayList<String>,
+    private val onClick: ()->Unit
+
 ) :
     RecyclerView.Adapter<AppListAdapter.Holder>() {
 
@@ -32,6 +34,7 @@ class AppListAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val pkgName = selected[position]
 
+        holder.itemView.setOnClickListener { onClick() }
         holder.imgIcon.setImageDrawable(getAppsMap(ctx)[pkgName]?.icon)
     }
 
