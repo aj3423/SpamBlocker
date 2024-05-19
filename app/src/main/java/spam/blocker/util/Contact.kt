@@ -5,10 +5,7 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
-import android.provider.ContactsContract
-import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.provider.ContactsContract.PhoneLookup
-import android.provider.ContactsContract.CommonDataKinds
 import android.provider.ContactsContract.Contacts
 import android.util.Log
 import spam.blocker.def.Def
@@ -36,7 +33,7 @@ open class Contacts {
     companion object {
 
         fun findByRawNumberAuto(ctx: Context, rawNumber: String): ContactInfo? {
-            if (!Permission.isContactsPermissionGranted(ctx)) {
+            if (!Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
 
@@ -108,7 +105,7 @@ open class Contacts {
             for example: a call number 123 with match both +66123 and +77123.
          */
         fun findByRawNumberAuto(ctx: Context, rawNumber: String): ContactInfo? {
-            if (!Permission.isContactsPermissionGranted(ctx)) {
+            if (!Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
 

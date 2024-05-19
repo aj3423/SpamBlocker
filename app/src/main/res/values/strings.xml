@@ -96,7 +96,7 @@
         <![CDATA[
         Permit if the call is repeated within a period of time, it\'s likely to be urgent rather than spam. <br>
         <br>
-        Receiving text message from the same number also counts. <br>
+        Receiving text message from the same number also counts, this depends on whether the READ_SMS permission is granted, which is optional.<br>
         <br>
         The default setting <font color="cyan"><b>1 Time / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
         <br>
@@ -108,6 +108,8 @@
     <string name="help_dialed">
         <![CDATA[
         Corresponding to the \"Repeated Call\" that handles the incoming call/message, this feature handles the outgoing. <br>
+        <br>
+        Sending message also counts, this only works when READ_SMS permission is granted. <br>
         <br>
         The default setting <font color="cyan"><b>3 Days</b></font> means if a number has been made outgoing calls or sent messages within the past 3 days, calls from that number will be allowed, even if this number is not in contacts.<br>
         <br>

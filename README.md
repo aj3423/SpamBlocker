@@ -43,6 +43,6 @@ An Android Call/SMS blocker.
 | POST_NOTIFICATIONS     | Show notifications                                              |
 | READ_CONTACTS          | For matching contact number and showing contact avatar          |
 | RECEIVE_SMS            | For receiving new messages                                      |
-| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)   |
+| READ_CALL_LOG<br>READ_SMS(optional) | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
 

@@ -2,15 +2,11 @@ package spam.blocker.ui.setting
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -48,9 +44,10 @@ import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.Util.Companion.applyTheme
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
 import spam.blocker.util.Permission
-import spam.blocker.util.Permission.Companion.isCallLogPermissionGranted
-import spam.blocker.util.Permission.Companion.isContactsPermissionGranted
-import spam.blocker.util.Permission.Companion.isReadSmsPermissionGranted
+import spam.blocker.util.Permissions
+import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
+import spam.blocker.util.Permissions.Companion.isContactsPermissionGranted
+import spam.blocker.util.Permissions.Companion.isReadSmsPermissionGranted
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
@@ -174,7 +171,7 @@ class SettingFragment : Fragment() {
                 resources.getString(if (times == 1) R.string.time else R.string.times)
             val labelMin = resources.getString(R.string.min)
             btn_config.text = "$times $labelTimes / $inXMin $labelMin"
-            btn_config.visibility = if (spf.isRepeatedCallEnabled() && isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx))
+            btn_config.visibility = if (spf.isRepeatedCallEnabled() && isCallLogPermissionGranted(ctx))
                 View.VISIBLE else View.GONE
         }
 
@@ -189,12 +186,11 @@ class SettingFragment : Fragment() {
 
         switchRepeatedEnabled.isChecked = spf.isRepeatedCallEnabled()
                 && isCallLogPermissionGranted(ctx)
-                && isReadSmsPermissionGranted(ctx)
 
         val permChain = PermissionChain(this,
             listOf(
-                Manifest.permission.READ_CALL_LOG,
-                Manifest.permission.READ_SMS
+                Permission(Manifest.permission.READ_CALL_LOG),
+                Permission(Manifest.permission.READ_SMS, true)
             )
         ) { allGranted ->
             switchRepeatedEnabled.isChecked = allGranted
@@ -204,7 +200,7 @@ class SettingFragment : Fragment() {
 
         switchRepeatedEnabled.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                if (isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx)) { // already granted
+                if (isCallLogPermissionGranted(ctx)) { // already granted
                     spf.setRepeatedCallEnabled(true)
                 } else {
                     permChain.ask()
@@ -226,7 +222,7 @@ class SettingFragment : Fragment() {
             val labelDays =
                 resources.getString(if (nDay > 1) R.string.days else R.string.day)
             btn_config.text = "$nDay $labelDays"
-            btn_config.visibility = if (spf.isDialedEnabled() && isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx))
+            btn_config.visibility = if (spf.isDialedEnabled() && isCallLogPermissionGranted(ctx))
                 View.VISIBLE else View.GONE
         }
 
@@ -241,12 +237,11 @@ class SettingFragment : Fragment() {
 
         switchEnabled.isChecked = spf.isDialedEnabled()
                 && isCallLogPermissionGranted(ctx)
-                && isReadSmsPermissionGranted(ctx)
 
         val permChain = PermissionChain(this,
             listOf(
-                Manifest.permission.READ_CALL_LOG,
-                Manifest.permission.READ_SMS
+                Permission(Manifest.permission.READ_CALL_LOG),
+                Permission(Manifest.permission.READ_SMS, true)
             )
         ) { allGranted ->
             switchEnabled.isChecked = allGranted
@@ -256,7 +251,7 @@ class SettingFragment : Fragment() {
 
         switchEnabled.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                if (isCallLogPermissionGranted(ctx) && isReadSmsPermissionGranted(ctx)) { // already granted
+                if (isCallLogPermissionGranted(ctx)) { // already granted
                     spf.setDialedEnabled(true)
                 } else {
                     permChain.ask()
@@ -305,7 +300,7 @@ class SettingFragment : Fragment() {
 
         val permChain = PermissionChain(this,
             listOf(
-                Manifest.permission.READ_CONTACTS
+                Permission(Manifest.permission.READ_CONTACTS)
             )
         ) { allGranted ->
             switchContactEnabled.isChecked = allGranted
@@ -350,7 +345,7 @@ class SettingFragment : Fragment() {
 
         // update button and recycler
         fun updateUI() {
-            val visibility = if (recentApps.size > 0 && Permission.isUsagePermissionGranted(ctx)) View.VISIBLE else View.GONE
+            val visibility = if (recentApps.size > 0 && Permissions.isUsagePermissionGranted(ctx)) View.VISIBLE else View.GONE
             val inXmin = spf.getRecentAppConfig()
             btn_config.text = "$inXmin ${resources.getString(R.string.min)}"
             btn_config.visibility = visibility
@@ -374,7 +369,7 @@ class SettingFragment : Fragment() {
             updateUI()
         }
         fun popupRecentApps() {
-            if (!Permission.isUsagePermissionGranted(ctx)) {
+            if (!Permissions.isUsagePermissionGranted(ctx)) {
                 AlertDialog.Builder(ctx)
                     .setMessage(ctx.resources.getString(R.string.prompt_go_to_usage_permission_setting))
                     .setPositiveButton(ctx.resources.getString(R.string.ok)) { dialog, _ ->

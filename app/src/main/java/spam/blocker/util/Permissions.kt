@@ -15,7 +15,6 @@ import android.os.Build
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
-import android.provider.Settings
 import android.provider.Telephony.Sms
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
@@ -26,7 +25,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import spam.blocker.def.Def
 
-open class Permission {
+open class Permissions {
     companion object {
 
         @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -203,20 +202,26 @@ open class Permission {
                 )
             }
 
-            val cursor = ctx.contentResolver.query(
-                Sms.CONTENT_URI,
-                null,
-                selection.joinToString(" AND "),
-                null,
-                null
-            )
-            val count = cursor?.count ?: 0
+            return try {
+                val cursor = ctx.contentResolver.query(
+                    Sms.CONTENT_URI,
+                    null,
+                    selection.joinToString(" AND "),
+                    null,
+                    null
+                )
+                val count = cursor?.count ?: 0
 
-            cursor?.close()
-            return count
+                cursor?.close()
+                count
+            } catch (e: Exception) {
+                0
+            }
         }
-
     }
+}
+
+class Permission(val name: String, val isOptional: Boolean = false) {
 }
 
 /*
@@ -227,20 +232,21 @@ open class Permission {
     Must be created during the creation of the fragment
  */
 class PermissionChain(
-    fragment: Fragment,
-    private val permissions: List<String>,
+    private val fragment: Fragment,
+    private val permissions: List<Permission>,
     private val onResult: (Boolean) -> Unit
 ) {
     private val launcher: ActivityResultLauncher<String>
 
-    private lateinit var curr: MutableList<String>
+    private lateinit var curr: MutableList<Permission>
+    private var currIsOpotional: Boolean = false
 
     init {
         launcher = fragment.registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
 
-            if (isGranted) {
+            if (isGranted || currIsOpotional) {
                 checkNext()
             } else {
                 onResult(false)
@@ -259,7 +265,22 @@ class PermissionChain(
         } else {
             val p0 = curr.first()
             curr.removeAt(0)
-            launcher.launch(p0)
+
+            currIsOpotional = p0.isOptional
+
+            if (!p0.isOptional) { // a required permission, just launch the launcher
+                launcher.launch(p0.name)
+            } else { // optional permission, only ask for the first time
+                val spf = SharedPref(fragment.requireContext())
+                val attr = "ask_once_${p0.name}"
+                val askedAlready = spf.readBoolean(attr, false)
+                if (!askedAlready) {
+                    spf.writeBoolean(attr, true)
+                    launcher.launch(p0.name)
+                } else {
+                    checkNext()
+                }
+            }
         }
     }
 }

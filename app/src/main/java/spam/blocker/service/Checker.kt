@@ -1,21 +1,16 @@
 package spam.blocker.service
 
 import android.content.Context
-import android.provider.CallLog
-import android.provider.Telephony
 import android.util.Log
-import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
-import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
-import spam.blocker.util.Permission
+import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Util
-import java.util.Calendar
 
 class CheckResult(
     val shouldBlock: Boolean,
@@ -64,7 +59,7 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = SharedPref(ctx)
 
-            if (!spf.isContactEnabled() or !Permission.isContactsPermissionGranted(ctx)) {
+            if (!spf.isContactEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
             val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
@@ -91,8 +86,7 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = SharedPref(ctx)
             if (!spf.isRepeatedCallEnabled()
-                or !Permission.isCallLogPermissionGranted(ctx)
-                or !Permission.isReadSmsPermissionGranted(ctx))
+                or !Permissions.isCallLogPermissionGranted(ctx) )
             {
                 return null
             }
@@ -101,8 +95,8 @@ class Checker { // for namespace only
             val durationMillis = durationMinutes.toLong() * 60 * 1000
 
             // repeated count of call/sms, sms also counts
-            val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
-            val nSMSs = Permission.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
+            val nCalls = Permissions.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
+            val nSMSs = Permissions.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
             if (nCalls + nSMSs >= times) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)
             }
@@ -117,8 +111,7 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = SharedPref(ctx)
             if (!spf.isDialedEnabled()
-                or !Permission.isCallLogPermissionGranted(ctx)
-                or !Permission.isReadSmsPermissionGranted(ctx))
+                or !Permissions.isCallLogPermissionGranted(ctx) )
             {
                 return null
             }
@@ -127,8 +120,8 @@ class Checker { // for namespace only
             val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
 
             // repeated count of call/sms, sms also counts
-            val nCalls = Permission.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
-            val nSMSs = Permission.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
+            val nCalls = Permissions.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
+            val nSMSs = Permissions.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
             if (nCalls + nSMSs > 0) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_DIALED)
             }
@@ -170,7 +163,7 @@ class Checker { // for namespace only
                 return null
             }
             val inXmin = spf.getRecentAppConfig()
-            val usedApps = Permission.listUsedAppWithinXSecond(ctx, inXmin * 60)
+            val usedApps = Permissions.listUsedAppWithinXSecond(ctx, inXmin * 60)
 
             val intersection = enabledPackages.intersect(usedApps.toSet())
             Log.d(

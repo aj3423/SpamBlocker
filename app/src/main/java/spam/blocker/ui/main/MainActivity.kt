@@ -24,7 +24,7 @@ import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
 import spam.blocker.ui.util.Util.Companion.applyTheme
 import spam.blocker.util.Launcher
-import spam.blocker.util.Permission
+import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref
 
 
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val spf = SharedPref(this)
-        val promptIfScreeningServiceNotEnabled = Permission.promptSetAsDefaultCallScreeningApp(this)
+        val promptIfScreeningServiceNotEnabled = Permissions.promptSetAsDefaultCallScreeningApp(this)
 
 
         // Bottom Nav View
@@ -123,8 +123,8 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.navigation_sms -> {
-                        if (!Permission.isReceiveSmsPermissionGranted(this)) {
-                            Permission.requestReceiveSmsPermission(this)
+                        if (!Permissions.isReceiveSmsPermissionGranted(this)) {
+                            Permissions.requestReceiveSmsPermission(this)
                         }
                         spf.setActiveTab("sms")
                     }
@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
         // require permission once
         if (!spf.hasAskedForAllPermissions()) {
             spf.setAskedForAllPermission()
-            Permission.requestAllManifestPermissions(this)
+            Permissions.requestAllManifestPermissions(this)
             promptIfScreeningServiceNotEnabled()
         }
 

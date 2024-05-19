@@ -9,16 +9,14 @@ import junit.framework.TestCase.assertEquals
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Flag
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
-import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
-import spam.blocker.util.Permission
+import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref
 import spam.blocker.util.Time
 import spam.blocker.util.Util
@@ -80,8 +78,8 @@ class RuleTest {
         val ci = ContactInfo()
         ci.name = "Mock_contact_$rawNumber"
 
-        mockkObject(Permission)
-        every { Permission.isContactsPermissionGranted(ctx) } returns true
+        mockkObject(Permissions)
+        every { Permissions.isContactsPermissionGranted(ctx) } returns true
 
         mockkObject(Contacts)
         every { Contacts.findByRawNumberAuto(ctx, any()) } answers {
@@ -94,13 +92,13 @@ class RuleTest {
     }
 
     private fun mock_call_permission_granted() {
-        every { Permission.isCallLogPermissionGranted(any()) } returns true
+        every { Permissions.isCallLogPermissionGranted(any()) } returns true
     }
     private fun mock_sms_permission_granted() {
-        every { Permission.isReadSmsPermissionGranted(any()) } returns true
+        every { Permissions.isReadSmsPermissionGranted(any()) } returns true
     }
     private fun mock_calls(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
-        every { Permission.countHistoryCallByNumber(any(), rawNumber, direction, any()) } answers {
+        every { Permissions.countHistoryCallByNumber(any(), rawNumber, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Time.currentTimeMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -111,7 +109,7 @@ class RuleTest {
         }
     }
     private fun mock_sms(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
-        every { Permission.countHistorySMSByNumber(any(), rawNumber, direction, any()) } answers {
+        every { Permissions.countHistorySMSByNumber(any(), rawNumber, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Time.currentTimeMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -182,7 +180,7 @@ class RuleTest {
         spf.setRepeatedCallEnabled(true)
         spf.setRepeatedConfig(4, inXmin)
 
-        mockkObject(Permission)
+        mockkObject(Permissions)
         mock_call_permission_granted()
         mock_sms_permission_granted()
 
@@ -227,7 +225,7 @@ class RuleTest {
         spf.setDialedEnabled(true)
         spf.setDialedConfig(inXdays)
 
-        mockkObject(Permission)
+        mockkObject(Permissions)
         mock_call_permission_granted()
         mock_sms_permission_granted()
 
@@ -268,8 +266,8 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r4.result)
     }
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
-        mockkObject(Permission)
-        every { Permission.listUsedAppWithinXSecond(ctx, any()) } answers {
+        mockkObject(Permissions)
+        every { Permissions.listUsedAppWithinXSecond(ctx, any()) } answers {
             if (Time.currentTimeMillis() < expire)
                 pkgs
             else
