@@ -5,6 +5,8 @@ import android.app.NotificationManager
 object Def {
     const val TAG = "1111111111111111"
 
+    const val ACTION_TILE_TOGGLE = "tile_toggle"
+
     const val SETTING_DARK_THEME = "dark_theme"
     const val SETTING_CONTACT_ENABLED = "contacts_permitted"
     const val SETTING_CONTACTS_EXCLUSIVE = "contacts_exclusive"

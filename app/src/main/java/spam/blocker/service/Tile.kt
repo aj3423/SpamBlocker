@@ -1,8 +1,11 @@
 package spam.blocker.service
 
+import android.content.Intent
 import android.service.quicksettings.Tile.STATE_ACTIVE
 import android.service.quicksettings.Tile.STATE_INACTIVE
 import android.service.quicksettings.TileService
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import spam.blocker.def.Def
 import spam.blocker.util.SharedPref
 
 class Tile : TileService() {
@@ -22,5 +25,9 @@ class Tile : TileService() {
         SharedPref(this).toggleGloballyEnabled()
 
         update()
+
+        val intent = Intent(Def.ACTION_TILE_TOGGLE)
+        val lbm = LocalBroadcastManager.getInstance(this)
+        lbm.sendBroadcast(intent)
     }
 }

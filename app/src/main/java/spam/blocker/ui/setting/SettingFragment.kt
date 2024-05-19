@@ -3,19 +3,26 @@ package spam.blocker.ui.setting
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.registerReceiver
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +50,7 @@ import spam.blocker.def.Def
 import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.Util.Companion.applyTheme
 import spam.blocker.ui.util.Util.Companion.setupImageTooltip
+import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.Permissions
 import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
@@ -64,6 +72,8 @@ class SettingFragment : Fragment() {
     private var contentRules = ObservableArrayList<PatternRule>()
     private var quickCopyRules = ObservableArrayList<PatternRule>()
 
+    private lateinit var onEnabledChange: () -> Unit
+
     @SuppressLint("Range", "ClickableViewAccessibility", "NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,10 +88,13 @@ class SettingFragment : Fragment() {
 
 
         // global enable switch
+        val switchGlobalEnable = root.findViewById<SwitchCompat>(R.id.switch_globally_enabled)
         val group_quick_filters = root.findViewById<RelativeLayout>(R.id.group_quick_filters)
         val group_regex_filters = root.findViewById<RelativeLayout>(R.id.group_regex_filters)
-        fun onEnabledChange() {
+        onEnabledChange = {
             val enabled = spf.isGloballyEnabled()
+            if (switchGlobalEnable.isChecked != enabled)
+                switchGlobalEnable.isChecked = enabled
             requireActivity().window.statusBarColor = ContextCompat.getColor(
                 ctx,
                 if (enabled) R.color.dark_sea_green else R.color.salmon
@@ -90,8 +103,6 @@ class SettingFragment : Fragment() {
             group_regex_filters.visibility = if (enabled) View.VISIBLE else View.GONE
         }
         onEnabledChange()
-        val switchGlobalEnable = root.findViewById<SwitchCompat>(R.id.switch_globally_enabled)
-        switchGlobalEnable.isChecked = spf.isGloballyEnabled()
         switchGlobalEnable.setOnClickListener {
             spf.toggleGloballyEnabled()
             onEnabledChange()
@@ -155,8 +166,11 @@ class SettingFragment : Fragment() {
         // tooltips
         setupTooltips(root)
 
+//        handleToggledByTile(root)
+
         return root
     }
+
 
     @SuppressLint("SetTextI18n")
     private fun setupRepeatedCall(root: View) {
@@ -591,11 +605,13 @@ class SettingFragment : Fragment() {
 
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
         numberRules.removeObservers(viewLifecycleOwner)
         recentApps.removeObservers(viewLifecycleOwner)
+
     }
 
     private fun setupTooltips(root: View) {
@@ -640,5 +656,34 @@ class SettingFragment : Fragment() {
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_off_time),
             R.string.help_off_time
         )
+    }
+
+    // Synchronize the UI on Tile clicking
+    private lateinit var broadcastReceiver: BroadcastReceiver
+
+    override fun onResume() {
+        super.onResume()
+
+        onEnabledChange()
+
+        // handle tile click event, restart app
+        broadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                val action = intent.action
+                if (action == Def.ACTION_TILE_TOGGLE) {
+                    onEnabledChange()
+                }
+            }
+        }
+
+        val lbm = LocalBroadcastManager.getInstance(requireContext())
+        lbm.registerReceiver(broadcastReceiver, IntentFilter(Def.ACTION_TILE_TOGGLE))
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        val lbm = LocalBroadcastManager.getInstance(requireContext())
+        lbm.unregisterReceiver(broadcastReceiver)
     }
 }
