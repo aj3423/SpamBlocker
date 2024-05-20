@@ -1,0 +1,9 @@
+new:
+    support quick settings tile
+fix: 
+    contact number with local area code doesn't match
+    crash if RecentApp is uninstalled
+change:
+    show sms content instead of block reason in notification
+    recentapp icon now scrollable
+    READ_SMS is now optional for RepeatedCall/Dialed
