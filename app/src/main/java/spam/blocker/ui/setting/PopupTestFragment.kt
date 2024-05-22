@@ -90,7 +90,7 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
                 // set result text color
                 label_result.setTextColor(if (r.shouldBlock) red else green)
 
-                label_result.text = Util.resultStr(ctx, r.result, r.reason())
+                label_result.text = Checker.resultStr(ctx, r.result, r.reason())
                 if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
                     img_reason.visibility = View.VISIBLE
                     img_reason.setImageDrawable(Util.getAppsMap(ctx)[r.reason()]?.icon)

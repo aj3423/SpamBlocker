@@ -55,6 +55,8 @@
     <string name="import_fail">Failed to import</string>
     <string name="go_to_setting">Go to Setting</string>
     <string name="prompt_go_to_usage_permission_setting">This feature requires permission \"Usage Statistics\", it has to be manually enabled in Settings. \nOpen that Setting page? </string>
+    <string name="crashed">Crashed</string>
+    <string name="emergency">Emergency</string>
     <string name="contact">Contact</string>
     <string name="non_contact">Non Contact</string>
     <string name="inclusive">Inclusive</string>
@@ -65,6 +67,33 @@
     <string name="recent_app">Recent App</string>
     <string name="allow_recent_apps">Recent Apps</string>
     <string name="allow_contact">Contacts</string>
+    <string name="stir">STIR</string>
+    <string name="stir_include_unverified">Include Unverified</string>
+    <string name="unverified">Unverified</string>
+    <string name="valid">Valid</string>
+    <string name="spoof">Spoof</string>
+    <string name="help_stir">
+        <![CDATA[
+            STIR attestation requires <b>Android 11+</b> and <b>carrier support</b>. <br>
+            <br>
+            There are three possible attestation results: <br>
+            <font color="cyan"><b>Valid</b></font> <br>
+            &emsp; The call is very likely to be valid, not spoofed. <br>
+            <font color="#ffa500"><b>Unverified</b></font> <br>
+            &emsp; The call is not able to be validated, or STIR attestation is not supported. <br>
+            <font color="#fa7f71"><b>Spoof</b></font> <br>
+            &emsp; It\'s very likely to be a spoofed call. <br>
+            <br>
+            <br>
+              - <font color="#d1c8c8"><b>Inclusive</b></font>: <br>
+                  &emsp; Calls that fail this check will still be checked by other rules. <br>
+                  &emsp; <font color="#ea86ff"><b>Priority: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Exclusive</b></font>: <br>
+                  &emsp; Calls that fail this check will be <font color="#fa7f71"><b>blocked</b></font>. <br>
+                  &emsp; <font color="#ea86ff"><b>Priority: 0</b></font>
+        ]]>
+    </string>
     <string name="repeated_call">Repeated Call</string>
     <string name="for_particular_number">For particular number</string>
     <string name="no_match_found">No match found</string>
@@ -320,4 +349,12 @@
         <item>Sound, StatusBar, Shade, Heads-up</item>
     </string-array>
 
+    <string name="just_for_finding_colors">
+        <![CDATA[
+            <font color="#fa7f71"><b>  red
+            <font color="cyan"><b>
+            <font color="#d1c8c8"><b>  hint gray
+            <font color="#ffa500"><b> yellow
+        ]]>
+    </string>
 </resources>

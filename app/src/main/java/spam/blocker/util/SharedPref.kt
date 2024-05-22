@@ -49,6 +49,32 @@ class SharedPref(context: Context) {
     fun toggleDarkTheme() {
         setDarkTheme(!isDarkTheme())
     }
+
+    fun isStirEnabled(): Boolean {
+        return readBoolean(Def.SETTING_STIR_ENABLED, false)
+    }
+    fun setStirEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_STIR_ENABLED, enabled)
+    }
+    fun toggleStirEnabled() {
+        setStirEnabled(!isStirEnabled())
+    }
+    fun isStirExclusive() : Boolean {
+        return readBoolean(Def.SETTING_STIR_EXCLUSIVE, false)
+    }
+    fun setStirExclusive(exclusive: Boolean) {
+        writeBoolean(Def.SETTING_STIR_EXCLUSIVE, exclusive)
+    }
+    fun toggleStirExclusive() {
+        setStirExclusive(!isStirExclusive())
+    }
+    fun isStirIncludeUnverified() : Boolean {
+        return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false)
+    }
+    fun setStirIncludeUnverified(include: Boolean) {
+        writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include)
+    }
+
     fun isContactEnabled(): Boolean {
         return readBoolean(Def.SETTING_CONTACT_ENABLED, false)
     }

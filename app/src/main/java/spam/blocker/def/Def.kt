@@ -8,6 +8,9 @@ object Def {
     const val ACTION_TILE_TOGGLE = "tile_toggle"
 
     const val SETTING_DARK_THEME = "dark_theme"
+    const val SETTING_STIR_ENABLED = "stir_enabled"
+    const val SETTING_STIR_EXCLUSIVE = "stir_exclusive"
+    const val SETTING_STIR_INCLUDE_UNVERIFIED = "stir_include_unverified"
     const val SETTING_CONTACT_ENABLED = "contacts_permitted"
     const val SETTING_CONTACTS_EXCLUSIVE = "contacts_exclusive"
     const val SETTING_PERMIT_REPEATED = "permit_repeated"
@@ -37,7 +40,7 @@ object Def {
     const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
 
 
-    // allowed
+    // allowed (1-9, 100+)
     const val RESULT_ALLOWED_BY_DEFAULT = 1
     const val RESULT_ALLOWED_BY_NUMBER = 2
     const val RESULT_ALLOWED_BY_CONTACT = 3
@@ -46,26 +49,21 @@ object Def {
     const val RESULT_ALLOWED_BY_CONTENT = 6
     const val RESULT_ALLOWED_BY_DIALED = 7
     const val RESULT_ALLOWED_BY_OFF_TIME = 8
-
+    const val RESULT_ALLOWED_BY_EMERGENCY = 9
+    const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
 
 
     // blocked
     const val RESULT_BLOCKED_BY_NUMBER = 10
     const val RESULT_BLOCKED_BY_CONTENT = 11
     const val RESULT_BLOCKED_BY_NON_CONTACT = 12
+    const val RESULT_BLOCKED_BY_STIR = 13
 
     fun isBlocked(result: Int): Boolean {
-        return !isNotBlocked(result)
+        return result in 10..99
     }
     fun isNotBlocked(result: Int): Boolean {
-        return (result == RESULT_ALLOWED_BY_NUMBER) or
-                (result == RESULT_ALLOWED_BY_DEFAULT) or
-                (result == RESULT_ALLOWED_BY_RECENT_APP) or
-                (result == RESULT_ALLOWED_BY_REPEATED) or
-                (result == RESULT_ALLOWED_BY_DIALED) or
-                (result == RESULT_ALLOWED_BY_CONTENT) or
-                (result == RESULT_ALLOWED_BY_OFF_TIME) or
-                (result == RESULT_ALLOWED_BY_CONTACT)
+        return !isBlocked(result)
     }
 
 

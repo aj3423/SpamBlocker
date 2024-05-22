@@ -1,12 +1,20 @@
 package spam.blocker.service
 
 import android.content.Context
+import android.os.Build
+import android.telecom.Call
+import android.telecom.Connection
 import android.util.Log
+import androidx.annotation.RequiresApi
+import spam.blocker.BuildConfig
+import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
+import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
+import spam.blocker.ui.main.test
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref
@@ -19,11 +27,14 @@ class CheckResult(
     var byContactName: String? = null // allowed by contact
     var byFilter: PatternRule? = null // allowed or blocked by this filter rule
     var byRecentApp: String? = null // allowed by recent app
+    var stirResult: Int? = null
 
+    // This `reason` will be saved to database
     fun reason(): String {
         if (byContactName != null) return byContactName!!
         if (byFilter != null) return byFilter!!.id.toString()
         if (byRecentApp != null) return byRecentApp!!
+        if (stirResult != null) return stirResult.toString()
         return ""
     }
 
@@ -41,6 +52,10 @@ class CheckResult(
         byRecentApp = pkg
         return this
     }
+    fun setStirResult(result: Int): CheckResult {
+        stirResult = result
+        return this
+    }
 }
 
 interface checker {
@@ -49,6 +64,72 @@ interface checker {
 }
 
 class Checker { // for namespace only
+
+    class Emergency(private val callDetails: Call.Details?) : checker {
+        override fun priority(): Int {
+            return Int.MAX_VALUE
+        }
+
+        override fun check(): CheckResult? {
+            if (callDetails == null) // there is no callDetail when testing
+                return null
+
+            if (callDetails.hasProperty(Call.Details.PROPERTY_EMERGENCY_CALLBACK_MODE)
+                || callDetails.hasProperty(Call.Details.PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL)) {
+                return CheckResult(true, Def.RESULT_ALLOWED_BY_EMERGENCY)
+            }
+
+            return null
+        }
+    }
+
+    class STIR(private val ctx: Context, private val callDetails: Call.Details?) : checker {
+        override fun priority(): Int {
+            val isExclusive = SharedPref(ctx).isStirExclusive()
+            return if (isExclusive) 0 else 10
+        }
+
+        override fun check(): CheckResult? {
+            val spf = SharedPref(ctx)
+
+            // STIR only works >= Android 11
+            if (Build.VERSION.SDK_INT < 30) {
+                return null
+            }
+
+            // there is no callDetail when testing
+            if (callDetails == null)
+                return null
+
+            if (!spf.isStirEnabled())
+                return null
+
+            val exclusive = spf.isStirExclusive()
+            val includeUnverified = spf.isStirIncludeUnverified()
+
+            val stir = callDetails.callerNumberVerificationStatus
+
+            val pass = stir == Connection.VERIFICATION_STATUS_PASSED
+            val unverified = stir == Connection.VERIFICATION_STATUS_NOT_VERIFIED
+            val fail = stir == Connection.VERIFICATION_STATUS_FAILED
+
+            Log.d(Def.TAG, "STIR: pass: $pass, unverified: $unverified, fail: $fail, exclusive: $exclusive")
+
+            if (exclusive) {
+                if (fail || (includeUnverified && unverified)) {
+                    return CheckResult(true, Def.RESULT_BLOCKED_BY_STIR)
+                        .setStirResult(stir)
+                }
+            } else {
+                if (pass || (includeUnverified && unverified)) {
+                    return CheckResult(false, Def.RESULT_ALLOWED_BY_STIR)
+                        .setStirResult(stir)
+                }
+            }
+
+            return null
+        }
+    }
 
     class Contact(private val ctx: Context, private val rawNumber: String) : checker {
         override fun priority(): Int {
@@ -65,10 +146,8 @@ class Checker { // for namespace only
             val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
             if (contact != null) {
                 Log.i(Def.TAG, "is contact")
-                return CheckResult(
-                    false,
-                    Def.RESULT_ALLOWED_BY_CONTACT
-                ).setContactName(contact.name)
+                return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)
+                    .setContactName(contact.name)
             } else {
                 if (spf.isContactExclusive()) {
                     return CheckResult(true, Def.RESULT_BLOCKED_BY_NON_CONTACT)
@@ -242,14 +321,17 @@ class Checker { // for namespace only
 
     companion object {
 
-        fun checkCall(ctx: Context, rawNumber: String): CheckResult {
+        fun checkCall(ctx: Context, rawNumber: String, callDetails: Call.Details? = null): CheckResult {
             val checkers = arrayListOf(
+                Checker.Emergency(callDetails),
+                Checker.STIR(ctx, callDetails),
                 Checker.Contact(ctx, rawNumber),
                 Checker.RepeatedCall(ctx, rawNumber),
                 Checker.Dialed(ctx, rawNumber),
                 Checker.RecentApp(ctx),
                 Checker.OffTime(ctx)
             )
+
             //  add number rules to checkers
             val filters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
             checkers += filters.map {
@@ -356,6 +438,52 @@ class Checker { // for namespace only
                 }
 
                 return null
+            }
+        }
+
+
+        fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
+            val f = filterTable?.findPatternRuleById(ctx, reason.toLong())
+
+            val reasonStr = if (f != null) {
+                if (f.description != "") f.description else f.patternStr()
+            } else {
+                ctx.resources.getString(R.string.deleted_filter)
+            }
+            return reasonStr
+        }
+        fun resultStr(ctx: Context, result: Int, reason: String): String {
+
+            fun s(id: Int) : String {
+                return ctx.resources.getString(id)
+            }
+
+            return when (result) {
+                Def.RESULT_ALLOWED_BY_CONTACT ->  s(R.string.contact)
+                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  s(R.string.non_contact)
+                Def.RESULT_ALLOWED_BY_STIR, Def.RESULT_BLOCKED_BY_STIR -> {
+                    when (reason.toInt()) {
+                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${s(R.string.stir)} ${s(R.string.unverified)}"
+                        Connection.VERIFICATION_STATUS_PASSED -> "${s(R.string.stir)} ${s(R.string.valid)}"
+                        Connection.VERIFICATION_STATUS_FAILED -> "${s(R.string.stir)} ${s(R.string.spoof)}"
+                        else -> s(R.string.stir)
+                    }
+                }
+                Def.RESULT_ALLOWED_BY_EMERGENCY ->  ctx.resources.getString(R.string.emergency)
+                Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
+                Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
+                Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.dialed)
+                Def.RESULT_ALLOWED_BY_OFF_TIME ->  ctx.resources.getString(R.string.off_time)
+                Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
+                    ctx, NumberRuleTable(), reason)
+                Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
+                    ctx, NumberRuleTable(), reason)
+                Def.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
+                    ctx, ContentRuleTable(), reason)
+                Def.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
+                    ctx, ContentRuleTable(), reason)
+
+                else -> ctx.resources.getString(R.string.passed_by_default)
             }
         }
     }

@@ -17,6 +17,7 @@ import spam.blocker.R
 import spam.blocker.db.Record
 import spam.blocker.db.HistoryTable
 import spam.blocker.def.Def
+import spam.blocker.service.Checker
 import spam.blocker.ui.util.Util.Companion.setRoundImage
 import spam.blocker.util.Contacts
 import spam.blocker.util.Util
@@ -61,7 +62,7 @@ class HistoryAdapter(
         }
         holder.labelPeer.text = contact?.name ?: record.peer
         holder.labelPeer.setTextColor(if (record.isBlocked()) red else green)
-        holder.labelResult.text = Util.resultStr(ctx, record.result, record.reason)
+        holder.labelResult.text = Checker.resultStr(ctx, record.result, record.reason)
         holder.unreadMark.visibility = if (record.read) View.INVISIBLE else View.VISIBLE
         if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
             holder.imgReason.visibility = View.VISIBLE

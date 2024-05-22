@@ -44,6 +44,7 @@
                 style="@style/setting_group_linear"
                 android:background="@drawable/group_bg">
 
+
                 <!--  contact -->
                 <LinearLayout style="@style/setting_row">
 
@@ -68,6 +69,34 @@
                         android:id="@+id/switch_permit_contacts"
                         style="@style/setting_switch" />
                 </LinearLayout>
+
+
+                <!--  stir -->
+                <LinearLayout style="@style/setting_row">
+
+                    <TextView
+                        style="@style/setting_blue_label"
+                        android:text="@string/stir" />
+
+                    <ImageView
+                        android:id="@+id/setting_help_stir"
+                        style="@style/help_question_icon"
+                        android:background="@drawable/ic_question"
+                        tools:ignore="ContentDescription" />
+
+                    <Space style="@style/setting_spacing" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_config_stir"
+                        style="@style/setting_stroke_gray_button"
+                        android:layout_marginEnd="0dp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_enable_stir"
+                        style="@style/setting_switch" />
+                </LinearLayout>
+                <!--  end of stir -->
+
 
                 <!--  repeated call -->
                 <LinearLayout style="@style/setting_row">

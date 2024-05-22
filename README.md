@@ -24,15 +24,12 @@ An Android Call/SMS blocker.
 | Filter   | It checks                                       |
 | ----     | ----                                            |
 | Contacts | Whether it's from a contact                     |
+| STIR     | STIR attestation result                         |
 | Repeated | Whether the number has been calling repeatedly  |
 | Dialed   | Whether the number has been made outgoing calls |
 | Recent Apps | If some specific apps have been used recently, all calls are allowed.<br><br> A typical use case:<br> &emsp;You ordered a pizza in PizzaApp, soon they call you to refund because they are closing. That call would be permitted if PizzaApp is enabled in this list. |
 | Off Time  | A time period that always permits calls, usually no spams at night. |
 | Regex Pattern | Some typical patterns:<br> - Any number: `.*` (the regex `.*` is identical to the wildcard `*` in many other apps) <br> - Exact number: `12345` <br> - Starts with 400: `400.*` <br> - Ends with 123: `.*123` <br> - Less than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Contains "verification": `.*verification.*` <br>- Extract verification code from SMS message: `code.*?(\d+)`<br><br> You can ask AI to generate or explain regex for you: <br>&emsp; "Show me regex for checking if a string starts with 400 or 200"<br> &emsp; Results in `(400\|200).*` |
-
-
-
-
 
 
 # Permissions required

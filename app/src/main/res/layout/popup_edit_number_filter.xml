@@ -29,9 +29,8 @@
         <!-- for sms only -->
         <LinearLayout style="@style/setting_row" android:id="@+id/row_sms_particular_number">
             <TextView
-                style="@style/setting_blue_label"
-                android:text="@string/for_particular_number"
-                android:textColor="@color/hint_grey" />
+                style="@style/setting_gray_label"
+                android:text="@string/for_particular_number" />
             <ImageView
                 android:id="@+id/popup_help_particular_number"
                 style="@style/help_question_icon"
@@ -82,9 +81,8 @@
 
         <LinearLayout style="@style/setting_row">
             <TextView
-                style="@style/setting_blue_label"
-                android:text="@string/apply_to"
-                android:textColor="@color/hint_grey" />
+                style="@style/setting_gray_label"
+                android:text="@string/apply_to" />
 
             <ImageView
                 android:id="@+id/popup_help_apply_to"
@@ -115,9 +113,8 @@
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_rule_type">
             <TextView
-                style="@style/setting_blue_label"
-                android:text="@string/type"
-                android:textColor="@color/hint_grey" />
+                style="@style/setting_gray_label"
+                android:text="@string/type" />
 
             <Space
                 android:layout_width="0dp"
@@ -150,9 +147,8 @@
             android:id="@+id/row_importance">
             <TextView
                 android:id="@+id/label_importance"
-                style="@style/setting_blue_label"
-                android:text="@string/notification"
-                android:textColor="@color/hint_grey" />
+                style="@style/setting_gray_label"
+                android:text="@string/notification" />
 
             <ImageView
                 android:id="@+id/popup_help_importance"

@@ -30,7 +30,7 @@ class CallService : CallScreeningService() {
 
         val builder = CallResponse.Builder()
 
-        val r = processCall(this, rawNumber)
+        val r = processCall(this, rawNumber, callDetails)
 
         if (r.shouldBlock) {
             val silence = SharedPref(this).isSilenceCallEnabled()
@@ -50,10 +50,10 @@ class CallService : CallScreeningService() {
         respondToCall(callDetails, builder.build())
     }
 
-    fun processCall(ctx: Context, rawNumber: String) : CheckResult {
+    fun processCall(ctx: Context, rawNumber: String, callDetails: TelecomCall.Details? = null) : CheckResult {
         var r = CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
         try {
-            r = Checker.checkCall(ctx, rawNumber)
+            r = Checker.checkCall(ctx, rawNumber, callDetails)
 
             // 1. log to db
             val call = Record()
@@ -81,7 +81,7 @@ class CallService : CallScreeningService() {
 
                 Notification.show(ctx, R.drawable.ic_call_blocked,
                     rawNumber,
-                    Util.reasonStr(ctx, NumberRuleTable(), r.reason()),
+                    Checker.reasonStr(ctx, NumberRuleTable(), r.reason()),
                     importance, ctx.resources.getColor(R.color.salmon, null), intent)
             }
 

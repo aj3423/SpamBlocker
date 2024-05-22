@@ -217,45 +217,6 @@ class Util {
         }
 
 
-        fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
-            val f = filterTable?.findPatternRuleById(ctx, reason.toLong())
-
-            val reasonStr = if (f != null) {
-                if (f.description != "") f.description else f.patternStr()
-            } else {
-                ctx.resources.getString(R.string.deleted_filter)
-            }
-            return reasonStr
-        }
-        fun reasonTable(result: Int):  RuleTable? {
-            return when (result) {
-                Def.RESULT_ALLOWED_BY_NUMBER, Def.RESULT_BLOCKED_BY_NUMBER ->  NumberRuleTable()
-                Def.RESULT_ALLOWED_BY_CONTENT, Def.RESULT_BLOCKED_BY_CONTENT ->  ContentRuleTable()
-
-                else -> null
-            }
-        }
-        fun resultStr(ctx: Context, result: Int, reason: String): String {
-            return when (result) {
-                Def.RESULT_ALLOWED_BY_CONTACT ->  ctx.resources.getString(R.string.contact)
-                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  ctx.resources.getString(R.string.non_contact)
-
-                Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
-                Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.dialed)
-                Def.RESULT_ALLOWED_BY_OFF_TIME ->  ctx.resources.getString(R.string.off_time)
-                Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
-                    ctx, NumberRuleTable(), reason)
-                Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
-                    ctx, NumberRuleTable(), reason)
-                Def.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
-                    ctx, ContentRuleTable(), reason)
-                Def.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
-                    ctx, ContentRuleTable(), reason)
-
-                else -> ctx.resources.getString(R.string.passed_by_default)
-            }
-        }
 
 //        fun splitCcPhone(str: String): Pair<String, String>? {
 //            val matcher = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$").matcher(str);

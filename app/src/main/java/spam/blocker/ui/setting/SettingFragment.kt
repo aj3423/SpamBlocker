@@ -123,6 +123,8 @@ class SettingFragment : Fragment() {
             PopupBackupFragment().show(requireActivity().supportFragmentManager, "tag_backup")
         }
 
+        setupStir(root)
+
         setupContacts(root)
 
         setupRepeatedCall(root)
@@ -273,6 +275,47 @@ class SettingFragment : Fragment() {
             } else {
                 spf.setDialedEnabled(false)
             }
+            updateButton()
+        }
+    }
+
+    private fun setupStir(root: View) {
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
+
+        val btnInclusive = root.findViewById<MaterialButton>(R.id.btn_config_stir)
+        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_stir)
+
+        fun updateButton() {
+            val isExclusive = spf.isStirExclusive()
+            btnInclusive.visibility = if (spf.isStirEnabled()) View.VISIBLE else View.GONE
+
+            val color = if (isExclusive) R.color.salmon else R.color.mid_grey
+            btnInclusive.setTextColor(resources.getColor(color, null))
+            btnInclusive.setStrokeColorResource(color)
+
+            val trailingQuestionMark = if (spf.isStirIncludeUnverified()) " (?)" else ""
+            btnInclusive.text =
+                if (isExclusive)
+                    "${ctx.resources.getString(R.string.exclusive)}$trailingQuestionMark"
+                else
+                    "${ctx.resources.getString(R.string.inclusive)}$trailingQuestionMark"
+        }
+
+        updateButton()
+
+        btnInclusive.setOnClickListener {
+            PopupStirConfigFragment { isExclusive: Boolean, includeUnverified: Boolean ->
+                spf.setStirExclusive(isExclusive)
+                spf.setStirIncludeUnverified(includeUnverified)
+                updateButton()
+            }.show(requireActivity().supportFragmentManager, "tag_config_stir")
+        }
+
+        switchEnabled.isChecked = spf.isStirEnabled()
+
+        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
+            spf.setStirEnabled(isChecked)
             updateButton()
         }
     }
@@ -619,6 +662,10 @@ class SettingFragment : Fragment() {
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_globally_enabled),
             R.string.help_globally_enabled
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_stir),
+            R.string.help_stir
         )
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_enable_contacts),

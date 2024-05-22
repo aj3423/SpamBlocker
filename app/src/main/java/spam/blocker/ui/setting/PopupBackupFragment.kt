@@ -37,7 +37,6 @@ class PopupBackupFragment() : ClosableDialogFragment() {
         val ctx = requireContext()
 
         // widgets
-        val backup_result = view.findViewById<TextView>(R.id.backup_result)
         val edit = view.findViewById<TextInputEditText>(R.id.edit_backup)
         val btn = view.findViewById<MaterialButton>(R.id.btn_backup)
         val help = view.findViewById<ImageView>(R.id.help_backup)
