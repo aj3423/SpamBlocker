@@ -1,0 +1,123 @@
+<resources>
+    <string name="app_name">Блокиратор спама</string>
+    <string name="setting">Настройки</string>
+    <string name="call">Звонок</string>
+    <string name="sms">SMS</string>
+    <string name="globally_enabled">Включено</string>
+    <string name="number_pattern">Номер телефона</string>
+    <string name="particular_number_pattern">Конкретный номер телефона</string>
+    <string name="sms_content_pattern">Содержание SMS</string>
+    <string name="invalid_regex_pattern">Неправильное регулярное выражение</string>
+    <string name="pattern_contain_invisible_characters">Обнаружены невидимые символы</string>
+    <string name="pattern_contain_leading_zeroes">Не нужно добавлять префикс "0", он будет удален перед проверкой.</string>
+    <string name="pattern_contain_leading_plus">Не нужно добавлять префикс "+", он будет удален перед проверкой.</string>
+    <string name="check_balloon_for_explanation">Проверьте раздел справки \"Правила для номеров\" для получения подробного разъяснения.</string>
+    <string name="invalid_number">Неправильный номер</string>
+    <string name="invalid_integer">Неправильное целое число</string>
+    <string name="filter_desc">Описание</string>
+    <string name="apply_to_call">Применить к звонкам</string>
+    <string name="apply_to_sms">Применить к SMS</string>
+    <string name="title_add_rule">Новое правило</string>
+    <string name="title_edit_rule">Изменить правило</string>
+    <string name="add">Добавить</string>
+    <string name="delete">Удалить</string>
+    <string name="clear">Очистить</string>
+    <string name="test">Проверить</string>
+    <string name="save">Сохранить</string>
+    <string name="whitelist">Белый список</string>
+    <string name="blacklist">Черный список</string>
+    <string name="content">Содержание</string>
+    <string name="priority">Приоритет</string>
+    <string name="deleted_filter">(удалённое правило)</string>
+    <string name="apply_to">Применить к</string>
+    <string name="Delete">Удалить</string>
+    <string name="undelete">Восстановить</string>
+    <string name="passed">Пройдено</string>
+    <string name="passed_by_default">Пройдено по умолчанию</string>
+    <string name="blocked">Заблокировано</string>
+    <string name="from">От</string>
+    <string name="copy">Копировать</string>
+    <string name="copied_to_clipboard">Скопировано "%s" в буфер обмена.</string>
+    <string name="quick_copy">Быстрое копирование</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Отмена</string>
+    <string name="miscellaneous">Разное</string>
+    <string name="quick_settings">Быстрые настройки</string>
+    <string name="regex_settings">Настройки регулярных выражений</string>
+    <string name="backup_restore">Резервное копирование и восстановление</string>
+    <string name="import_">Импортировать</string>
+    <string name="export">Экспортировать</string>
+    <string name="config_text">Конфигурационный текст</string>
+    <string name="imported_successfully">Успешно импортировано.</string>
+    <string name="import_fail">Не удалось импортировать</string>
+    <string name="go_to_setting">Перейти к настройкам</string>
+    <string name="prompt_go_to_usage_permission_setting">Для этой функции требуется разрешение \"Статистика использования\", его необходимо включить вручную в настройках. \nОткрыть эту страницу настроек?</string>
+    <string name="crashed">Сбой</string>
+    <string name="emergency_call">Экстренный вызов</string>
+    <string name="contact">Контакт</string>
+    <string name="non_contact">Не контакт</string>
+    <string name="inclusive">Инклюзивный</string>
+    <string name="exclusive">Эксклюзивный</string>
+    <string name="label_contact_filter">Фильтр контактов</string>
+    <string name="label_number_filter">Правила для номеров</string>
+    <string name="label_content_filter">Правила для сообщений</string>
+    <string name="recent_app">Недавнее приложение</string>
+    <string name="allow_recent_apps">Недавние приложения</string>
+    <string name="allow_contact">Контакты</string>
+
+    <string name="stir">Подтверждение STIR</string>
+    <string name="stir_include_unverified">Включить неподтвержденные</string>
+    <string name="unverified">Неподтвержденные</string>
+    <string name="valid">Действительный звонок</string>
+    <string name="spoof">Поддельный звонок</string>
+    <string name="help_stir">
+        <![CDATA[
+            Для подтверждения STIR требуется <b>Android 11+</b> и <b>поддержка оператора связи</b>. <br>
+            <br>
+            Возможны три варианта результатов подтверждения: <br>
+            <font color="cyan"><b>Действительный</b></font> <br>
+            &emsp; С высокой вероятностью звонок является действительным, а не поддельным. <br>
+            <font color="#ffa500"><b>Неподтвержденный</b></font> <br>
+            &emsp; Звонок не удалось подтвердить или подтверждение STIR не поддерживается. <br>
+            <font color="#fa7f71"><b>Поддельный</b></font> <br>
+            &emsp; С высокой вероятностью это поддельный звонок. <br>
+            <br>
+            <br>
+              - <font color="#d1c8c8"><b>Инклюзивный</b></font>: <br>
+                  &emsp; Звонки, не прошедшие эту проверку, по-прежнему будут проверяться по другим правилам. <br>
+                  &emsp; <font color="#ea86ff"><b>Приоритет: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Эксклюзивный</b></font>: <br>
+                  &emsp; Звонки, не прошедшие эту проверку, будут <font color="#fa7f71"><b>заблокированы</b></font>. <br>
+                  &emsp; <font color="#ea86ff"><b>Приоритет: 0</b></font>
+        ]]>
+    </string>
+
+    <string name="repeated_call">Повторный звонок</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Разрешить, если звонок повторяется в течение определенного периода времени, поскольку он с большей вероятностью является срочным, а не спамом. <br>
+        <br>
+        Получение текстовых сообщений с одного и того же номера также учитывается, это зависит от того, предоставлено ли разрешение READ_SMS, которое является необязательным. <br>
+        <br>
+        Значение настройки по умолчанию <font color="cyan"><b>1 / 5 мин</b></font> означает, что второй звонок в течение 5 минут будет разрешен. <br>
+        <br>
+        Применяется только для звонков, <b>не</b> для текстовых сообщений. <br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Глобальный переключатель, это приложение работает только тогда, когда он включен,
+        отключите его, когда вы ожидаете определенный звонок/сообщение. <br>
+        <br>
+        Его также можно переключать в <b>Быстрых настройках выпадающего списка</b>.
+        ]]>
+    </string>
+
+
+</resources>

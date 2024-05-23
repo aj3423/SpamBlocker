@@ -1,0 +1,4 @@
+<string name="target_host_url">http://smarttv.oppo.com</string>
+<string name="target_package_name">com.oppo.mediacenter</string>
+<string name="target_app_activity">com.oppo.mediacenter.controller.MainControllerActivity</string>
+<string name="target_app_media_id">oppomediacenter</string>

@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.text.format.DateFormat
 import spam.blocker.R
-import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Flag
-import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -38,13 +36,11 @@ class Util {
             return currentDate == date
         }
 
-        fun getDayOfWeek(timestamp: Long): String {
+        fun getDayOfWeek(ctx: Context, timestamp: Long): String {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = timestamp
             val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-            val daysArray = arrayOf(
-                "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-            )
+            val daysArray = ctx.resources.getStringArray(R.array.week).asList()
             return daysArray[dayOfWeek - 1]
         }
 
@@ -132,7 +128,7 @@ class Util {
         fun validateRegex(ctx: Context, regexStr: String) : String? {
             var s = regexStr
             if (s.isNotEmpty() && s.trim() != s)
-                return ctx.getString(R.string.pattern_contain_non_printable_characters)
+                return ctx.getString(R.string.pattern_contain_invisible_characters)
 
             if (!isRegexValid(s))
                 return ctx.getString(R.string.invalid_regex_pattern)
@@ -141,10 +137,10 @@ class Util {
                 s = s.substring(1)
 
             if (s.startsWith("+") || s.startsWith("\\+"))
-                return ctx.getString(R.string.pattern_contain_leaing_plus) + " " + ctx.getString(R.string.check_balloon_for_explanation)
+                return ctx.getString(R.string.pattern_contain_leading_plus) + " " + ctx.getString(R.string.check_balloon_for_explanation)
 
             if (s.startsWith("0")) {
-                return ctx.getString(R.string.pattern_contain_leaing_zeroes) + " " + ctx.getString(R.string.check_balloon_for_explanation)
+                return ctx.getString(R.string.pattern_contain_leading_zeroes) + " " + ctx.getString(R.string.check_balloon_for_explanation)
             }
 
             return null
@@ -240,6 +236,17 @@ class Util {
             } catch (_: Exception) {
                 false
             }
+        }
+
+        fun setLocale(ctx: Context, languageCode: String) {
+            val locale = Locale(languageCode)
+            Locale.setDefault(locale)
+
+            val resources = ctx.resources
+            val configuration = resources.configuration
+            configuration.setLocale(locale)
+
+            resources.updateConfiguration(configuration, resources.displayMetrics)
         }
     }
 }

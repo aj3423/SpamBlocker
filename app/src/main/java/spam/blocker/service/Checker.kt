@@ -5,8 +5,6 @@ import android.os.Build
 import android.telecom.Call
 import android.telecom.Connection
 import android.util.Log
-import androidx.annotation.RequiresApi
-import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
@@ -14,7 +12,6 @@ import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
-import spam.blocker.ui.main.test
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref
@@ -90,8 +87,6 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            val spf = SharedPref(ctx)
-
             // STIR only works >= Android 11
             if (Build.VERSION.SDK_INT < 30) {
                 return null
@@ -101,6 +96,7 @@ class Checker { // for namespace only
             if (callDetails == null)
                 return null
 
+            val spf = SharedPref(ctx)
             if (!spf.isStirEnabled())
                 return null
 
@@ -469,7 +465,7 @@ class Checker { // for namespace only
                         else -> s(R.string.stir)
                     }
                 }
-                Def.RESULT_ALLOWED_BY_EMERGENCY ->  ctx.resources.getString(R.string.emergency)
+                Def.RESULT_ALLOWED_BY_EMERGENCY ->  ctx.resources.getString(R.string.emergency_call)
                 Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
                 Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
                 Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.dialed)

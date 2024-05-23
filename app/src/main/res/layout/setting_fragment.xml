@@ -386,8 +386,8 @@
                 style="@style/setting_group_linear"
                 android:background="@drawable/group_bg">
 
+                <!-- theme -->
                 <LinearLayout style="@style/setting_row">
-
                     <TextView
                         style="@style/setting_blue_label"
                         android:text="@string/dark_theme" />
@@ -398,16 +398,37 @@
                         android:id="@+id/switch_theme"
                         style="@style/setting_switch" />
                 </LinearLayout>
+                <!-- theme end -->
 
-
+                <!-- backup and restore -->
                 <LinearLayout style="@style/setting_row">
-
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_backup"
                         style="@style/setting_stroke_blue_button"
                         android:text="@string/backup_restore" />
-
                 </LinearLayout>
+                <!-- backup and restore end -->
+
+                <!-- language -->
+                <LinearLayout style="@style/setting_row">
+                    <TextView
+                        style="@style/setting_blue_label"
+                        android:text="@string/language" />
+                    <ImageView
+                        android:id="@+id/setting_help_language"
+                        style="@style/help_question_icon"
+                        android:background="@drawable/ic_question"
+                        tools:ignore="ContentDescription" />
+
+                    <Space style="@style/setting_spacing" />
+
+                    <Spinner
+                        android:id="@+id/spin_language"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:entries="@array/language_list"/>
+                </LinearLayout>
+                <!-- language end -->
             </LinearLayout>
 
             <TextView

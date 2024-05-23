@@ -9,6 +9,7 @@ object Def {
 
     const val SETTING_DARK_THEME = "dark_theme"
     const val SETTING_STIR_ENABLED = "stir_enabled"
+    const val SETTING_LANGUAGE = "language"
     const val SETTING_STIR_EXCLUSIVE = "stir_exclusive"
     const val SETTING_STIR_INCLUDE_UNVERIFIED = "stir_include_unverified"
     const val SETTING_CONTACT_ENABLED = "contacts_permitted"

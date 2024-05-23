@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:text="@string/filter_pattern"
+                android:text="filter pattern"
                 android:textColor="@color/dodger_blue"
                 android:textSize="16sp"
                 android:textStyle="bold"

@@ -13,9 +13,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
@@ -137,6 +139,7 @@ class SettingFragment : Fragment() {
         setupSilenceCall(root)
 
         setupOffTime(root)
+        setupLanguage(root)
 
         setupRules(
             root,
@@ -168,8 +171,6 @@ class SettingFragment : Fragment() {
         // tooltips
         setupTooltips(root)
 
-//        handleToggledByTile(root)
-
         return root
     }
 
@@ -183,10 +184,8 @@ class SettingFragment : Fragment() {
 
         fun updateButton() {
             val (times, inXMin) = spf.getRepeatedConfig()
-            val labelTimes =
-                resources.getString(if (times == 1) R.string.time else R.string.times)
             val labelMin = resources.getString(R.string.min)
-            btn_config.text = "$times $labelTimes / $inXMin $labelMin"
+            btn_config.text = "$times / $inXMin $labelMin"
             btn_config.visibility = if (spf.isRepeatedCallEnabled() && isCallLogPermissionGranted(ctx))
                 View.VISIBLE else View.GONE
         }
@@ -481,6 +480,29 @@ class SettingFragment : Fragment() {
         }
     }
 
+    private fun setupLanguage(root: View) {
+        val ctx = requireContext()
+        val spf = SharedPref(ctx)
+        val spin = root.findViewById<Spinner>(R.id.spin_language)
+
+        val lang = spf.getLanguage()
+        val allLanguages = ctx.resources.getStringArray(R.array.language_list)
+        var idx = allLanguages.indexOf(lang)
+        if (idx == -1)
+            idx = 0
+        spin.setSelection(idx)
+        spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                val newLanguage = allLanguages[position]
+                if (lang != newLanguage) {
+                    spf.setLanguage(newLanguage)
+                    Launcher.selfRestart(ctx)
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        }
+    }
+
     private fun setupOffTime(root: View) {
         val ctx = requireContext()
         val spf = SharedPref(ctx)
@@ -702,6 +724,10 @@ class SettingFragment : Fragment() {
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_off_time),
             R.string.help_off_time
+        )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_language),
+            R.string.help_language
         )
     }
 

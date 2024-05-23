@@ -1,0 +1,65 @@
+<resources>
+    <string name="off_time">免打扰时间</string>
+    <string name="help_off_time">
+        <![CDATA[
+        启用后，所有通话（消息）都将在此时间范围内被允许。通常夜间没有垃圾邮件。<br>
+        <br>
+        如果开始时间大于结束时间，例如 20:00 -> 07:00，则表示从晚上 20:00 到次日早上 07:00 的时间段。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+
+            这些标志改变了 regex 的匹配行为，默认情况下它们的新规则已设置。 <br>
+            <br>
+
+            <font color="#ffa500"><b>忽略大小写</b></font>：<br>
+            &ensp; 它使模式匹配不区分大小写，<font color="cyan"><b>a</b></font> 将匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>。 <br>
+            <br>
+
+            <font color="#ffa500"><b>点匹配全部</b></font>：<br>
+            &ensp; 启用后，<font color="cyan"><b>.</b></font> 也将匹配换行符（<font color="cyan"><b>\\n</b></font>）， 这使该点可以在多行中匹配。 <br>
+            &ensp; 用例：<br>
+            &emsp;   匹配多行垃圾邮件：<br>
+            &emsp;   <font color="#fa7f71">领取你的奖品：http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   带有规则：<br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+        ]]>
+    </string>
+
+    <string-array name="week">
+        <item>星期日</item>
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>无</item>
+        <item>遮罩</item>
+        <item>状态栏、遮罩</item>
+        <item>声音、状态栏、遮罩</item>
+        <item>声音、状态栏、遮罩、浮动通知</item>
+    </string-array>
+
+    <string name="language">语言</string>
+    <string name="help_language">
+        <![CDATA[
+            翻译是由google AI完成，提交一个问题到github为增加一种新的语言。
+        ]]>
+    </string>
+
+    <string-array name="language_list">
+        <item>en</item>
+        <item>ru</item>
+        <item>zh</item>
+    </string-array>
+</resources>

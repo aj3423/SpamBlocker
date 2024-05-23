@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +28,8 @@ import spam.blocker.ui.util.Util.Companion.applyTheme
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref
+import spam.blocker.util.Util
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,11 +50,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = MainActivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val spf = SharedPref(this)
+
+        // language
+        Util.setLocale(this, spf.getLanguage())
 
         // theme
-        applyTheme(SharedPref(this).isDarkTheme())
+        applyTheme(spf.isDarkTheme())
+
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (BuildConfig.DEBUG) {
             test.exec(this)
@@ -76,7 +85,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val spf = SharedPref(this)
         val promptIfScreeningServiceNotEnabled = Permissions.promptSetAsDefaultCallScreeningApp(this)
 
 
@@ -175,7 +183,8 @@ class MainActivity : AppCompatActivity() {
         // require permission once
         if (!spf.hasAskedForAllPermissions()) {
             spf.setAskedForAllPermission()
-            Permissions.requestAllManifestPermissions(this)
+            if (Build.VERSION.SDK_INT >= 33) // android 13+
+                Permissions.requestAllManifestPermissions(this)
             promptIfScreeningServiceNotEnabled()
         }
 

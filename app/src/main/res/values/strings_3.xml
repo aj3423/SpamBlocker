@@ -1,0 +1,113 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        These rules apply to the SMS message content.<br>
+        <br>
+        <font color="#ffa500"><b>Note</b></font>: For SMS messages, this app works as an \"addon\" of the default SMS app, it blocks notifications instead
+          of blocking messages, spam messages will still be present in the default SMS app. <font color="#fa7f71"><b>Disable</b></font> the notification of the default
+          SMS app in system settings, let this app take over the notification, otherwise there will be double notifications. <br>
+        <br>
+        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        A quick way to copy content from SMS messages, such as verification codes. <br>
+        <br>
+        When it matches, a button like <font color="yellow"><b>Copy: 123456</b></font> would appear in the notification. <br>
+        It\'s not like clicking on the notification, when the copy button is clicked, only this notification is dismissed, other notifications will remain. <br>
+        <br>
+        A sample rule: (using capturing group) <br>
+        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        Another approach: (using lookaround) <br>
+        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
+        &emsp;<font color="#ffa500"><b>Note</b></font>: <br>
+        &emsp; It doesn\'t support <font color="#fa7f71"><b>.*</b></font> in lookarounds, it requires a bounded max length.<br>
+        &emsp; for example, use: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; instead of: <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
+        <br>
+        It only works when the SMS message is <b>NOT</b> <font color="#fa7f71"><b>blocked</b></font>.
+        ]]>
+    </string>
+    <string name="help_apply_to">
+        <![CDATA[
+        You can uncheck these checkboxes to disable this rule for Call, SMS, or both.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        None: No notification at all. <br>
+        Shade: The dropdown notification shade. <br>
+        StatusBar: The small icon in the top bar. <br>
+        Sound: The default notification sound. <br>
+        Heads-Up: Popups a floating window on the top of the screen.
+        ]]>
+    </string>
+    <string name="help_test_rules">
+        <![CDATA[
+        This helps to check if the rules are set as expected.<br>
+        <br>
+        It\'s just a simulation and will not actually popup an incoming call(or text message).<br>
+        <br>
+        The result is shown here, and in history log, with notification.
+        ]]>
+    </string>
+    <string name="help_test_quick_copy">
+        <![CDATA[
+        This is not a simulation, it only shows if any quick-copy rule matches the content.<br>
+        <br>
+        To simulate receiving, use the <font color="cyan"><b>Test</b></font> from <font color="#0000ff"><b>Message Rules</b></font> instead.
+        ]]>
+    </string>
+    <string name="help_backup">
+        <![CDATA[
+        <font color="yellow"><b>To Backup</b></font>: <br>
+        &emsp; 1. Press <font color="cyan"><b>Export</b></font> to show the configuration in the textbox. <br>
+        &emsp; 2. Press <font color="cyan"><b>Copy</b></font> to copy it to clipboard. <br>
+        &emsp; 3. Send this <font color="#cccc00"><b>configuration text</b></font> to another device. <br>
+        <br>
+        <font color="yellow"><b>To Restore</b></font>: <br>
+        &emsp; 1. Paste the <font color="#cccc00"><b>configuration text</b></font> into the textbox. <br>
+        &emsp; 2. Press <font color="#0000ff"><b>Import</b></font>. <br>
+        &emsp;&emsp; When it <font color="#fa7f71"><b>fails</b></font>, try to validate that json text, it may have been corrupted during transfer. If so, send it in a file instead. <br>
+        <br>
+        History records are ignored. <br>
+        <br>
+        If some switches like "Contacts" is not enabled after restoring, check the corresponding permission in system settings, permissions are not \"restored\" automatically. <br>
+        <br>
+        This app does not require INTERNET and STORAGE permissions, there won\'t be feature like \"backup to cloud or storage file\".
+        ]]>
+    </string>
+    <string name="allow_repeated_call">Repeated Call</string>
+    <string name="dialed">Dialed</string>
+    <string name="silence_call">Silence Call</string>
+    <string name="confirm_del_all_filters">Delete all filters?</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="find_apps">Find Apps</string>
+    <string name="spam_sms_blocked">SMS Message Blocked</string>
+    <string name="spam_call_blocked">Call Blocked</string>
+    <string name="new_sms_received">New SMS Message</string>
+    <string name="mark_all_as_read">Mark all as read</string>
+    <string name="delete_all">Delete all</string>
+    <string name="show_passed">Show Passed</string>
+    <string name="show_blocked">Show Blocked</string>
+    <string name="clone_rule">Clone Rule</string>
+    <string name="notification">Notification</string>
+    <string name="type">Type</string>
+    <string name="time">Time</string>
+    <string name="times">Times</string>
+    <string name="day">Day</string>
+    <string name="days">Days</string>
+    <string name="min">Min</string>
+    <string name="within_minutes">Within Minutes</string>
+    <string name="within_days">Within Days</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sms_content">SMS Content</string>
+    <string name="result">Result</string>
+    <string name="reason">Reason</string>
+    <string name="regex_flags">Regex Flags</string>
+    <string name="ignore_case">Ignore Case</string>
+    <string name="dot_match_all">Dot Match All</string>
+    <string name="literal">Literal</string>
+
+</resources>

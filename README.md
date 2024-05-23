@@ -17,7 +17,7 @@ An Android Call/SMS blocker.
 | What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaions                                                                               |
 | What it doesn't                                    | Replace the default call app                                                                                                                       | Replace the default SMS app                                                                                |
 | How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | It takes over the notification of new messages. |
-| Filters supported<br>(explained below) | 1. Phone number (regex)<br>2. In Contacts<br>3. Repeated call<br>4. Recent apps<br>5. Dialed                                                                     | 1. Phone number (regex)<br>2. In Contacts<br>3. Sms content (regex)                                        |
+| Filters supported<br>(explained below) | 1. Phone number (regex)<br>2. Contacts<br>3. STIR<br>4. Repeated call<br>5. Recent apps<br>6. Dialed                                                                     | 1. Phone number (regex)<br>2. Contacts<br>3. Sms content (regex)                                        |
 
 # Filters:
 
@@ -43,3 +43,8 @@ An Android Call/SMS blocker.
 | READ_CALL_LOG<br>READ_SMS(optional) | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
 
+# Languages supported
+
+en, ru, zh
+
+Languages are translated by Gemini AI, using this [golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go), Fire an issue for adding new languages.

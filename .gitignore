@@ -4,3 +4,4 @@
 build/
 app/release/
 app/debug/
+auto_translate/go.sum

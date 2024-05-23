@@ -1,0 +1,82 @@
+<resources>
+    <string name="for_particular_number">具体号码</string>
+    <string name="no_match_found">无匹配项</string>
+    <string name="help_for_particular_number">启用后，该规则仅在号码和内容都匹配时才适用</string>
+    <string name="help_contact">
+        <![CDATA[
+        启用后，来自联系人的呼叫/短信始终允许。 <br>
+        <br>
+          - <font color="#d1c8c8"><b>包含</b></font>：<br>
+              &emsp; 非联系人号码将由其他规则检查。 <br>
+              &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>排除</b></font>：<br>
+              &emsp; 非联系人号码将 <font color="#fa7f71"><b>被阻止</b></font>。 <br>
+              &emsp; 等效于带数字规则 <font color="#fa7f71"><b>.*</b></font> 的 <font color="#d1c8c8"><b>包含</b></font>。 <br>
+              &emsp; <font color="#ea86ff"><b>优先级：0</b></font> <br>
+        <br>
+        它适用于呼叫和短信。
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        对应于处理来电/短信的“重复呼叫”，此功能处理去电。 <br>
+        <br>
+        发送短信也算在内，仅在授予 READ_SMS 权限时才有效。 <br>
+        <br>
+        默认设置 <font color="cyan"><b>3 天</b></font> 表示，如果某个号码在过去 3 天内拨出电话或发送过短信，则将允许来自该号码的呼叫，即使该号码不在联系人中。 <br>
+        <br>
+        仅适用于呼叫，<b>不</b>适用于短信。 <br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        如果列表中的任何应用程序最近已使用，则任何来电都将通过。<br>
+        <br>
+        典型用例：<br>
+        &emsp; 你刚在 PizzaApp 中订了一份披萨，很快他们便打电话来要求退款，因为他们要关门了。如果此处启用了 PizzaApp，则该呼叫将通过。 <br>
+        <br>
+        默认设置 <font color="cyan"><b>5 分钟</b></font> 表示，如果这些应用程序中的任何一个在 5 分钟内已使用，则将在允许任何呼叫，此处使用“已使用”既表示激活、停用、最小化也表示终止。 <br>
+        <br>
+        仅适用于呼叫，<b>不</b>适用于短信。 <br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font> <br>
+        ]]>
+    </string>
+    <string name="help_silence_call">
+        <![CDATA[
+        启用后，<font color="#fa7f71"><b>被阻止的</b></font> 呼叫将在后台<b>静音</b>响铃，而不是立即挂断，给来电者留下你只是很忙，还没有接电话的印象。<br>
+        <br>
+        <b>静音</b>表示当手机正在使用时，没有拨号器屏幕显示，并且手机在屏幕锁定时不会唤醒。
+        ]]>
+    </string>
+    <string name="help_number_filter">
+        <![CDATA[
+        这些规则适用于来电号码。<br>
+        <br>
+        <font color="#ffa500"><b>很重要</b></font>：<br>
+        为了简化正则表达式，
+          <font color="#fa7f71"><b>+</b></font>
+          和 <font color="#fa7f71"><b>空格</b></font>
+          和 <font color="#fa7f71"><b>前导零</b></font>
+          在检查之前会被删除，例如：<br>
+        &emsp; 所有可能的格式：<br>
+        &emsp;&emsp; 123456789 &emsp;（常规号码）<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;（带 <font color="#fa7f71"><b>空格</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;（带前导 <font color="#fa7f71"><b>+</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;（带国内中继前缀 <font color="#fa7f71"><b>0</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;（两个 <font color="#fa7f71"><b>0</b></font>）<br>
+        &emsp; <b>全部</b>按以下方式进行检查：<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp;因此正则表达式 <font color="cyan"><b>123.*</b></font> 将匹配<b>全部</b>号码。<br>
+        <br>
+        列表<b>按</b>优先级降序、描述升序和模式升序<b>显示</b>。 <br>
+        <br>
+        取消选中复选框可禁用规则，这对于测试很有用。 <br>
+        <br>
+        向左滑动以删除规则。
+        ]]>
+    </string>
+</resources>

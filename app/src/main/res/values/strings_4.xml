@@ -1,0 +1,67 @@
+<resources>
+    <string name="off_time">Off Time</string>
+    <string name="help_off_time">
+        <![CDATA[
+        When enabled, all calls(messages) will be allowed during this time period. Usually there are no spams at night. <br>
+        <br>
+        If the start time is greater than the end time, for example, 20:00 -> 07:00, it means the period from 20:00 in the evening to 07:00 the next morning. <br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+
+            These flags change the matching behavior of the regex, they are set for new rules by default. <br>
+            <br>
+
+            <font color="#ffa500"><b>Ignore Case</b></font>:<br>
+            &ensp; It makes the pattern matching case-insensitive, <font color="cyan"><b>a</b></font>
+              would match both <font color="cyan"><b>a</b></font> and <font color="cyan"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#ffa500"><b>Dot Match All</b></font>: <br>
+            &ensp; When enabled, <font color="cyan"><b>.</b></font> will also match newline characters (<font color="cyan"><b>\\n</b></font>),
+              this allows the dot to match across multiple lines. <br>
+            &ensp; Use case: <br>
+            &emsp;   Match multiline spam message: <br>
+            &emsp;   <font color="#fa7f71">claim your prize: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   with rule: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+        ]]>
+    </string>
+
+    <string-array name="week">
+        <item>Sunday</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thur</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>None</item>
+        <item>Shade</item>
+        <item>StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade, Heads-up</item>
+    </string-array>
+
+    <string name="language">Language</string>
+    <string name="help_language">
+        <![CDATA[
+            Translations are done by google AI, fire an issue on github for adding a new language.
+        ]]>
+    </string>
+
+    <string-array name="language_list">
+        <item>en</item>
+        <item>ru</item>
+        <item>zh</item>
+    </string-array>
+</resources>

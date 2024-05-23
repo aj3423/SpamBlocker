@@ -50,6 +50,13 @@ class SharedPref(context: Context) {
         setDarkTheme(!isDarkTheme())
     }
 
+    fun getLanguage(): String {
+        return readString(Def.SETTING_LANGUAGE, "")
+    }
+    fun setLanguage(lang: String) {
+        writeString(Def.SETTING_LANGUAGE, lang)
+    }
+
     fun isStirEnabled(): Boolean {
         return readBoolean(Def.SETTING_STIR_ENABLED, false)
     }

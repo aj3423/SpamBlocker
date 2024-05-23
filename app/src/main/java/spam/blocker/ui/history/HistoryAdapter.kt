@@ -87,7 +87,7 @@ class HistoryAdapter(
         if (Util.isToday(record.time)) {
             holder.labelTime.text = Util.hourMin(record.time)
         } else if (Util.isWithinAWeek(record.time)) {
-            holder.labelTime.text = Util.getDayOfWeek(record.time) + "\n" + Util.hourMin(record.time)
+            holder.labelTime.text = Util.getDayOfWeek(ctx, record.time) + "\n" + Util.hourMin(record.time)
         } else {
             holder.labelTime.text = Util.fullDateString(record.time)
         }

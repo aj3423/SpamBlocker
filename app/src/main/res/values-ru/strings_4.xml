@@ -1,0 +1,67 @@
+<resources>
+    <string name="off_time">Время выключения</string>
+    <string name="help_off_time">
+        <![CDATA[
+        При включении, все звонки(сообщения) будут разрешены в этот период времени. Обычно ночью не бывает спама. <br>
+        <br>
+        Если время начала больше времени окончания, например, 20:00 -> 07:00, это означает период с 20:00 вечера до 07:00 следующего утра. <br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+
+            Эти флаги изменяют поведение сопоставления регулярных выражений, они устанавливаются для новых правил по умолчанию. <br>
+            <br>
+
+            <font color="#ffa500"><b>Игнорировать регистр</b></font>:<br>
+            &ensp; Это делает сопоставление шаблона независимым от регистра, <font color="cyan"><b>a</b></font>
+              соответствовали бы и <font color="cyan"><b>a</b></font> и <font color="cyan"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#ffa500"><b>Точка сопоставляет всё</b></font>: <br>
+            &ensp; Когда включено, <font color="cyan"><b>.</b></font> будет также сопоставляться с символами новой строки (<font color="cyan"><b>\\n</b></font>),
+              это позволяет точке сопоставляться в нескольких строках. <br>
+            &ensp; Пример использования: <br>
+            &emsp;   Сопоставление многострочного спама: <br>
+            &emsp;   <font color="#fa7f71">заберите приз: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   с правилом: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+        ]]>
+    </string>
+
+    <string-array name="week">
+        <item>Воскресенье</item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Не указано</item>
+        <item>Тень</item>
+        <item>Строка состояния, Тень</item>
+        <item>Звук, Строка состояния, Тень</item>
+        <item>Звук, Строка состояния, Тень, Всплывающее окно</item>
+    </string-array>
+
+    <string name="language">Язык</string>
+    <string name="help_language">
+        <![CDATA[
+            Переводы выполняются с помощью ИИ Google. Откройте тикет на github, чтобы добавить новый язык.
+        ]]>
+    </string>
+
+    <string-array name="language_list">
+        <item>en</item>
+        <item>ru</item>
+        <item>zh</item>
+    </string-array>
+</resources>

@@ -26,4 +26,7 @@
 
     <color name="item_bg">#fafaff</color>
     <color name="group_border">@color/hint_grey</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
+
 </resources>
