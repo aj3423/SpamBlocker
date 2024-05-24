@@ -17,7 +17,7 @@
             style="@style/setting_row"
             android:paddingHorizontal="14dp">
 
-            <TextView
+            <me.grantland.widget.AutofitTextView
                 style="@style/setting_blue_label"
                 android:text="@string/globally_enabled" />
 
@@ -48,7 +48,7 @@
                 <!--  contact -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/allow_contact" />
 
@@ -74,7 +74,7 @@
                 <!--  stir -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/stir" />
 
@@ -101,7 +101,7 @@
                 <!--  repeated call -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/allow_repeated_call" />
 
@@ -126,7 +126,7 @@
                 <!--  dialed -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/dialed" />
 
@@ -153,7 +153,7 @@
                 <!--    recent app-->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/allow_recent_apps" />
 
@@ -200,7 +200,7 @@
                 <!--  off time -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/off_time" />
 
@@ -227,7 +227,7 @@
                 <!--  silence call -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/silence_call" />
 
@@ -267,7 +267,7 @@
                 <!--    number filters-->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/label_number_filter" />
 
@@ -279,15 +279,26 @@
 
                     <Space style="@style/setting_spacing" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_add_number_filter"
-                        style="@style/setting_stroke_blue_button"
-                        android:text="@string/add" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_test_number_filters"
-                        style="@style/setting_stroke_teal_button"
-                        android:text="@string/test" />
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/setting_stroke_blue_button"
+                            android:id="@+id/btn_add_number_filter"
+                            android:maxWidth="90dp"
+                            android:text="@string/add" />
+                    </me.grantland.widget.AutofitLayout>
+
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_test_number_filters"
+                            style="@style/setting_stroke_teal_button"
+                            android:maxWidth="90dp"
+                            android:text="@string/test" />
+                    </me.grantland.widget.AutofitLayout>
                 </LinearLayout>
 
 
@@ -302,7 +313,7 @@
                 <!--    sms content filters-->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/label_content_filter" />
 
@@ -314,15 +325,23 @@
 
                     <Space style="@style/setting_spacing" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_add_content_filter"
-                        style="@style/setting_stroke_blue_button"
-                        android:text="@string/add" />
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_add_content_filter"
+                            android:maxWidth="90dp"
+                            style="@style/setting_stroke_blue_button"
+                            android:text="@string/add" />
+                    </me.grantland.widget.AutofitLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_test_content_filters"
-                        style="@style/setting_stroke_teal_button"
-                        android:text="@string/test" />
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_test_content_filters"
+                            android:maxWidth="90dp"
+                            style="@style/setting_stroke_teal_button"
+                            android:text="@string/test" />
+                    </me.grantland.widget.AutofitLayout>
                 </LinearLayout>
 
 
@@ -338,7 +357,7 @@
                 <!--    quick copy content -->
                 <LinearLayout style="@style/setting_row">
 
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/quick_copy" />
 
@@ -350,15 +369,24 @@
 
                     <Space style="@style/setting_spacing" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_add_quick_copy"
-                        style="@style/setting_stroke_blue_button"
-                        android:text="@string/add" />
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_add_quick_copy"
+                            android:maxWidth="90dp"
+                            style="@style/setting_stroke_blue_button"
+                            android:text="@string/add" />
+                    </me.grantland.widget.AutofitLayout>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_test_quick_copy"
-                        style="@style/setting_stroke_teal_button"
-                        android:text="@string/test" />
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_test_quick_copy"
+                            android:maxWidth="90dp"
+                            style="@style/setting_stroke_teal_button"
+                            android:text="@string/test"
+                            tools:ignore="TooManyViews" />
+                    </me.grantland.widget.AutofitLayout>
                 </LinearLayout>
 
 
@@ -388,7 +416,7 @@
 
                 <!-- theme -->
                 <LinearLayout style="@style/setting_row">
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/dark_theme" />
 
@@ -402,16 +430,23 @@
 
                 <!-- backup and restore -->
                 <LinearLayout style="@style/setting_row">
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_backup"
-                        style="@style/setting_stroke_blue_button"
-                        android:text="@string/backup_restore" />
+
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_backup"
+                            style="@style/setting_stroke_blue_button"
+                            android:maxWidth="300dp"
+                            android:text="@string/backup_restore" />
+                    </me.grantland.widget.AutofitLayout>
+
                 </LinearLayout>
                 <!-- backup and restore end -->
 
                 <!-- language -->
                 <LinearLayout style="@style/setting_row">
-                    <TextView
+                    <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
                         android:text="@string/language" />
                     <ImageView
@@ -426,6 +461,7 @@
                         android:id="@+id/spin_language"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:minWidth="100dp"
                         android:entries="@array/language_list"/>
                 </LinearLayout>
                 <!-- language end -->

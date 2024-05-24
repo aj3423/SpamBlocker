@@ -36,6 +36,7 @@
         <item name="android:layout_height">26dp</item>
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
     </style>
     <style name="setting_stroke_blue_button" parent="setting_stroke_button">
         <item name="android:textColor">@color/dodger_blue</item>
@@ -50,6 +51,12 @@
         <item name="strokeColor">@color/mid_grey</item>
     </style>
 
+    <style name="setting_auto_fit">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
     <style name="setting_row">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
@@ -59,6 +66,8 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:maxWidth">130dp</item>
+        <item name="android:maxLines">1</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>

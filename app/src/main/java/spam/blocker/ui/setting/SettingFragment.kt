@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
@@ -485,11 +486,13 @@ class SettingFragment : Fragment() {
         val spf = SharedPref(ctx)
         val spin = root.findViewById<Spinner>(R.id.spin_language)
 
-        val lang = spf.getLanguage()
         val allLanguages = ctx.resources.getStringArray(R.array.language_list)
-        var idx = allLanguages.indexOf(lang)
-        if (idx == -1)
-            idx = 0
+        val adapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_item, allLanguages)
+        adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        spin.adapter = adapter
+
+        val lang = spf.getLanguage()
+        val idx = allLanguages.indexOf(lang)
         spin.setSelection(idx)
         spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {

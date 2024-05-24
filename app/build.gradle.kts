@@ -87,6 +87,8 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0") // for backup/restore
 
+    implementation("me.grantland:autofittextview:0.2.1") // for auto-fit label/button
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
