@@ -518,7 +518,7 @@ class SettingFragment : Fragment() {
             val (sHour, sMin) = spf.getOffTimeStart()
             val (eHour, eMin) = spf.getOffTimeEnd()
 
-            btn.text = Util.formatTimeRange(ctx, sHour, sMin, eHour, eMin)
+            btn.text = Util.formatTimeRange(sHour, sMin, eHour, eMin)
             btn.visibility = if (spf.isOffTimeEnabled()) View.VISIBLE else View.GONE
         }
         updateButton()

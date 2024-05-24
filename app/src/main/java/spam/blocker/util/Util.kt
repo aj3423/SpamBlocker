@@ -70,30 +70,30 @@ class Util {
         }
 
         fun formatTimeRange(
-            ctx: Context,
+//            ctx: Context,
             stHour: Int, stMin: Int, etHour: Int, etMin: Int
         ): String {
-            val fmt24h = DateFormat.is24HourFormat(ctx)
-
-            if (fmt24h) {
+            // not use fmt12h, "xx:xx AM - yy:yy PM" is too wide
+//            val fmt24h = DateFormat.is24HourFormat(ctx)
+//            if (fmt24h) {
                 val startTime = String.format("%02d:%02d", stHour, stMin)
                 val endTime = String.format("%02d:%02d", etHour, etMin)
                 return "$startTime - $endTime"
-            } else {
-                val startTime = String.format(
-                    "%02d:%02d %s",
-                    if (stHour == 0 || stHour == 12) 12 else stHour % 12,
-                    stMin,
-                    if (stHour < 12) "AM" else "PM"
-                )
-                val endTime = String.format(
-                    "%02d:%02d %s",
-                    if (etHour == 0 || etHour == 12) 12 else etHour % 12,
-                    etMin,
-                    if (etHour < 12) "AM" else "PM"
-                )
-                return "$startTime - $endTime"
-            }
+//            } else {
+//                val startTime = String.format(
+//                    "%02d:%02d %s",
+//                    if (stHour == 0 || stHour == 12) 12 else stHour % 12,
+//                    stMin,
+//                    if (stHour < 12) "AM" else "PM"
+//                )
+//                val endTime = String.format(
+//                    "%02d:%02d %s",
+//                    if (etHour == 0 || etHour == 12) 12 else etHour % 12,
+//                    etMin,
+//                    if (etHour < 12) "AM" else "PM"
+//                )
+//                return "$startTime - $endTime"
+//            }
         }
 
         fun currentHourMin(): Pair<Int, Int> {

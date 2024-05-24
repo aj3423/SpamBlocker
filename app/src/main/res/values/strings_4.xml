@@ -55,7 +55,7 @@
     <string name="language">Language</string>
     <string name="help_language">
         <![CDATA[
-            Translations are done by google AI, fire an issue on github for adding a new language.
+            Translations are done by Google AI, fire an issue on github for adding a new language.
         ]]>
     </string>
 
