@@ -1,0 +1,81 @@
+<resources>
+    <string name="for_particular_number">Pour un numéro particulier</string>
+    <string name="no_match_found">Aucune correspondance trouvée</string>
+    <string name="help_for_particular_number">Quand cette option est activée, la règle ne s\'applique que lorsque le numéro et le contenu correspondent</string>
+    <string name="help_contact">
+        <![CDATA[
+        Quand cette option est activée, les appels et SMS depuis les contacts sont toujours autorisés. <br>
+        <br>
+          - <font color="#d1c8c8"><b>Inclusif</b></font> : <br>
+              &emsp; Les numéros qui ne sont pas des contacts seront vérifiés par d\'autres règles. <br>
+              &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>Exclusif</b></font> : <br>
+              &emsp; Les numéros qui ne sont pas des contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+              &emsp; Équivalent à <font color="#d1c8c8"><b>Inclusif</b></font> avec une règle pour les numéros <font color="#fa7f71"><b>.*</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font> <br>
+        <br>
+        Cela s\'applique à la fois aux appels et aux SMS.
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        Correspondant à l\'option « Appels répétés » qui gère les appels et messages entrants, cette fonction gère les appels sortants. <br>
+        <br>
+        L\'envoi de SMS est également pris en compte, cela ne fonctionne que si l\'autorisation LIRE_SMS est accordée. <br>
+        <br>
+        Le paramètre par défaut <font color="cyan"><b>3 jours</b></font> signifie que si un numéro a effectué des appels sortants ou envoyé des messages au cours des 3 derniers jours, les appels depuis ce numéro seront autorisés, même si ce numéro ne figure pas dans les contacts.<br>
+        <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        ]]>
+    </string>    <string name="help_recent_apps">
+        <![CDATA[
+        Tout appel entrant sera accepté si une application de la liste a été utilisée récemment.<br>
+        <br>
+        Un cas d\'utilisation typique : <br>
+        &emsp; Vous venez de commander une pizza dans l\'application PizzaApp, et peu de temps après, ils vous appellent pour vous rembourser car ils ferment. Cet appel sera accepté si PizzaApp est activé ici. <br>
+        <br>
+        Le paramètre par défaut <font color="cyan"><b>5 min</b></font> signifie que tout appel sera autorisé si l\'une de ces applications a été utilisée dans les 5 dernières minutes. « Utilisée » signifie activée, désactivée, réduite ou fermée. <br>
+        <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
+        ]]>
+    </string>
+    <string name="help_silence_call">
+        <![CDATA[
+        Lorsque cette option est activée, les appels <font color="#fa7f71"><b>bloqués</b></font> sonneront <b>silencieusement</b> en arrière-plan au lieu d\'être immédiatement raccrochés, ce qui donnera l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'avez pas répondu à cet appel.<br>
+        <br>
+        Par <b>silencieusement</b>, nous entendons qu\'aucun écran de numérotation n\'est affiché lorsque le téléphone est utilisé et que l\'écran ne s\'allume pas lorsque l\'écran est verrouillé.
+        ]]>
+    </string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Ces règles s\'appliquent au numéro de téléphone entrant.<br>
+        <br>
+        <font color="#ffa500"><b>Important</b></font> : <br>
+        Pour simplifier l\'expression régulière,
+          <font color="#fa7f71"><b>+</b></font>
+          et les <font color="#fa7f71"><b>espaces</b></font>
+          et les <font color="#fa7f71"><b>zéros initiaux</b></font>
+          sont supprimés avant la vérification, par exemple :<br>
+        &emsp; Tous les formats possibles :<br>
+        &emsp;&emsp; 123456789 (numéro standard)<br>
+        &emsp;&emsp; 1 2345 6789 (avec des <font color="#fa7f71"><b>espaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 (avec un <font color="#fa7f71"><b>+</b></font> initial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 (avec le préfixe d\'interurbain domestique <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 (deux <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Par conséquent, l\'expression régulière <font color="cyan"><b>123.*</b></font> correspondrait à <b>tous</b> les numéros.<br>
+        <br>
+        La liste est <b>affichée</b> par ordre décroissant de priorité, ascendant par description et ascendant par modèle. <br>
+        <br>
+        Désélectionnez les cases à cocher pour désactiver la règle, ce qui est utile pour les tests. <br>
+        <br>
+        Balayez vers la gauche pour supprimer une règle.
+        ]]>
+    </string>
+</resources>

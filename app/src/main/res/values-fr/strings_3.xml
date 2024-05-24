@@ -1,0 +1,61 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        Ces règles s\'appliquent au contenu du SMS.<br>
+        <br>
+        <font color="#ffa500"><b>Remarque</b></font> : pour les messages SMS, cette application fonctionne comme un « module complémentaire » de l\'application SMS par défaut, elle bloque les notifications au lieu de bloquer les messages. Les messages indésirables seront toujours présents dans l\'application SMS par défaut. <font color="#fa7f71"><b>Désactivez</b></font> la notification de l\'application SMS par défaut dans les paramètres système, laissez cette application prendre en charge la notification, sinon il y aura des notifications doubles.<br>
+        <br>
+        La liste est <b>affichée</b> dans l\'ordre décroissant de priorité, de description croissante et de modèle croissant. <br>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        Un moyen rapide de copier le contenu des SMS, comme les codes de vérification. <br>
+        <br>
+        Lorsqu\'il correspond, un bouton tel que <font color="yellow"><b>Copier : 123456</b></font> apparaît dans la notification. <br>
+        Cela ne revient pas à cliquer sur la notification. Lorsque l\'on clique sur le bouton Copier, seule cette notification est supprimée, les autres notifications restent. <br>
+        <br>
+        Un exemple de règle : (avec groupe de capture) <br>
+        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        Une autre approche : (avec recherche de contexte) <br>
+        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
+        &emsp;<font color="#ffa500"><b>Remarque</b></font> : <br>
+        &emsp; Il ne prend pas en charge <font color="#fa7f71"><b>.*</b></font> dans les recherches de contexte, il nécessite une longueur maximale limitée.<br>
+        &emsp; Par exemple, utilisez : <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; Au lieu de : <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
+        <br>
+        Cela ne fonctionne que lorsque le SMS <b>N\'est PAS</b> <font color="#fa7f71"><b>bloqué</b></font>.
+        ]]>
+    </string>
+    <string name="help_apply_to">
+        <![CDATA[
+        Vous pouvez décocher ces cases pour désactiver cette règle pour les appels, les SMS ou les deux.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        Aucun : aucune notification. <br>
+        Nuance : volet de notification déroulante. <br>
+        Barre d\'état : petite icône dans la barre supérieure. <br>
+        Son : son de notification par défaut. <br>
+        Head-Up : ouvre une fenêtre flottante en haut de l\'écran.
+        ]]>
+    </string>
+    <string name="help_test_rules">
+        <![CDATA[
+        Cela permet de vérifier si les règles sont définies comme prévu.<br>
+        <br>
+        Il ne s\'agit que d\'une simulation et aucune notification d\'appel entrant (ou SMS) ne s\'affichera. <br>
+        <br>
+        Le résultat s\'affiche ici et dans l\'historique, avec une notification.
+        ]]>
+    </string>
+    <string name="help_test_quick_copy">
+        <![CDATA[
+        Il ne s\'agit pas d\'une simulation. Elle indique uniquement si une règle de copie rapide correspond au contenu.<br>
+        <br>
+        Pour simuler une réception, utilisez le <font color="cyan"><b>Test</b></font> de <font color="#0000ff"><b>Règles de message</b></font> à la place.
+        ]]>
+    </string>
+
+</resources>

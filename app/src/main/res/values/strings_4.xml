@@ -1,5 +1,23 @@
 <resources>
-    <string name="off_time">Off Time</string>
+    <string name="help_backup">
+        <![CDATA[
+        <font color="yellow"><b>To Backup</b></font>: <br>
+        &emsp; 1. Press <font color="cyan"><b>Export</b></font> to show the configuration in the textbox. <br>
+        &emsp; 2. Press <font color="cyan"><b>Copy</b></font> to copy it to clipboard. <br>
+        &emsp; 3. Send this <font color="#cccc00"><b>configuration text</b></font> to another device. <br>
+        <br>
+        <font color="yellow"><b>To Restore</b></font>: <br>
+        &emsp; 1. Paste the <font color="#cccc00"><b>configuration text</b></font> into the textbox. <br>
+        &emsp; 2. Press <font color="#0000ff"><b>Import</b></font>. <br>
+        &emsp;&emsp; When it <font color="#fa7f71"><b>fails</b></font>, try to validate that json text, it may have been corrupted during transfer. If so, send it in a file instead. <br>
+        <br>
+        History records are ignored. <br>
+        <br>
+        If some switches like "Contacts" is not enabled after restoring, check the corresponding permission in system settings, permissions are not \"restored\" automatically. <br>
+        <br>
+        This app does not require INTERNET and STORAGE permissions, there will not be feature like \"backup to cloud or storage file\".
+        ]]>
+    </string>
     <string name="help_off_time">
         <![CDATA[
         When enabled, all calls(messages) will be allowed during this time period. Usually there are no spams at night. <br>
@@ -34,34 +52,5 @@
         ]]>
     </string>
 
-    <string-array name="week">
-        <item>Sunday</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thur</item>
-        <item>Fri</item>
-        <item>Sat</item>
-    </string-array>
 
-    <string-array name="importance_list">
-        <item>None</item>
-        <item>Shade</item>
-        <item>StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade, Heads-up</item>
-    </string-array>
-
-    <string name="language">Language</string>
-    <string name="help_language">
-        <![CDATA[
-            Translations are done by Google AI, fire an issue on github for adding a new language.
-        ]]>
-    </string>
-
-    <string-array name="language_list">
-        <item>en</item>
-        <item>ru</item>
-        <item>zh</item>
-    </string-array>
 </resources>

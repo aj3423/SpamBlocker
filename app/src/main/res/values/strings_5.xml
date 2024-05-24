@@ -1,0 +1,59 @@
+<resources>
+
+    <string name="allow_repeated_call">Repeated Call</string>
+    <string name="dialed">Dialed</string>
+    <string name="silence_call">Silence Call</string>
+    <string name="confirm_del_all_filters">Delete all filters?</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="find_apps">Find Apps</string>
+    <string name="spam_sms_blocked">SMS Message Blocked</string>
+    <string name="spam_call_blocked">Call Blocked</string>
+    <string name="new_sms_received">New SMS Message</string>
+    <string name="mark_all_as_read">Mark all as read</string>
+    <string name="delete_all">Delete all</string>
+    <string name="show_passed">Show Passed</string>
+    <string name="show_blocked">Show Blocked</string>
+    <string name="clone_rule">Clone Rule</string>
+    <string name="notification">Notification</string>
+    <string name="type">Type</string>
+    <string name="time">Time</string>
+    <string name="times">Times</string>
+    <string name="day">Day</string>
+    <string name="days">Days</string>
+    <string name="min">Min</string>
+    <string name="within_minutes">Within Minutes</string>
+    <string name="within_days">Within Days</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sms_content">SMS Content</string>
+    <string name="result">Result</string>
+    <string name="reason">Reason</string>
+    <string name="regex_flags">Regex Flags</string>
+    <string name="ignore_case">Ignore Case</string>
+    <string name="dot_match_all">Dot Match All</string>
+    <string name="literal">Literal</string>
+    <string name="off_time">Off Time</string>
+    <string-array name="week">
+        <item>Sunday</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thur</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>None</item>
+        <item>Shade</item>
+        <item>StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade, Heads-up</item>
+    </string-array>
+
+    <string name="language">Language</string>
+    <string name="help_language">
+        <![CDATA[
+            Translations are done by Google AI, fire an issue on github for adding a new language.
+        ]]>
+    </string>
+</resources>

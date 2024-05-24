@@ -82,7 +82,7 @@
             <font color="#ffa500"><b>Unverified</b></font> <br>
             &emsp; The call is not able to be validated, or STIR attestation is not supported. <br>
             <font color="#fa7f71"><b>Spoof</b></font> <br>
-            &emsp; It\'s very likely to be a spoofed call. <br>
+            &emsp; It is very likely to be a spoofed call. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inclusive</b></font>: <br>
@@ -98,7 +98,7 @@
     <string name="repeated_call">Repeated Call</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permit if the call is repeated within a period of time, it\'s likely to be urgent rather than spam. <br>
+        Permit if the call is repeated within a period of time, it is likely to be urgent rather than spam. <br>
         <br>
         Receiving text message from the same number is also counted, this depends on whether the READ_SMS permission is granted, which is optional.<br>
         <br>

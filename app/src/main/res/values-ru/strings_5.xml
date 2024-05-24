@@ -1,0 +1,59 @@
+<resources>
+
+    <string name="allow_repeated_call">Повторный звонок</string>
+    <string name="dialed">Набраны</string>
+    <string name="silence_call">Заглушить звонок</string>
+    <string name="confirm_del_all_filters">Удалить все фильтры?</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="find_apps">Поиск приложений</string>
+    <string name="spam_sms_blocked">SMS-сообщение заблокировано</string>
+    <string name="spam_call_blocked">Заблокирован звонок</string>
+    <string name="new_sms_received">Новое SMS-сообщение</string>
+    <string name="mark_all_as_read">Отметить все как прочитанные</string>
+    <string name="delete_all">Удалить все</string>
+    <string name="show_passed">Показать прошедшие</string>
+    <string name="show_blocked">Показать заблокированные</string>
+    <string name="clone_rule">Скопировать правило</string>
+    <string name="notification">Уведомление</string>
+    <string name="type">Тип</string>
+    <string name="time">Время</string>
+    <string name="times">Разы</string>
+    <string name="day">День</string>
+    <string name="days">Дни</string>
+    <string name="min">Мин</string>
+    <string name="within_minutes">В пределах минут</string>
+    <string name="within_days">В пределах дней</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="sms_content">Содержание SMS</string>
+    <string name="result">Результат</string>
+    <string name="reason">Причина</string>
+    <string name="regex_flags">Флаги регулярных выражений</string>
+    <string name="ignore_case">Игнорировать регистр</string>
+    <string name="dot_match_all">Точка сопоставляет всё</string>
+    <string name="literal">Литерал</string>
+    <string name="off_time">Выключить время</string>
+    <string-array name="week">
+        <item>Воскресенье</item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Нет</item>
+        <item>Тень</item>
+        <item>Строка состояния, тень</item>
+        <item>Звук, строка состояния, тень</item>
+        <item>Звук, строка состояния, тень, всплывающее уведомление</item>
+    </string-array>
+
+    <string name="language">Язык</string>
+    <string name="help_language">
+        <![CDATA[
+            Переводы выполняются при помощи Google AI, оставьте вопрос на github для добавления нового языка.
+        ]]>
+    </string>
+</resources>

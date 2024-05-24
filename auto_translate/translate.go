@@ -87,7 +87,9 @@ func translate_1_file(lang string, fn string) error {
 		}
 	}
 
-	write_file(dest_file, sb.String())
+	// French has lots of '
+	cleared := strings.ReplaceAll(sb.String(), "'", "\\'")
+	write_file(dest_file, cleared)
 	return nil
 }
 
@@ -116,6 +118,9 @@ func translate_lang(lang string) error {
 			if fi.IsDir() || !strings.HasPrefix(fi.Name(), "strings_") {
 				return nil
 			}
+			if strings.Contains(fi.Name(), "languages") {
+				return nil
+			}
 
 			if filter != nil {
 				if !strings.Contains(fi.Name(), *filter) {
@@ -131,8 +136,8 @@ func translate_lang(lang string) error {
 }
 
 var langs = []string{
-	`ru`, `zh`,
-	// `de`, `fr`, `ja`, `ko`, `vi`, `zh-rTW`,
+	`fr`, `ru`, `zh`,
+	// `de`,  `ja`, `ko`, `vi`, `zh-rTW`,
 }
 
 func usage() {

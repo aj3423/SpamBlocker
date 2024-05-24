@@ -3,109 +3,59 @@
         <![CDATA[
         这些规则适用于短信内容。<br>
         <br>
-        <font color="#ffa500"><b>注意</b></font>：对于短信，该应用作为默认短信应用的“附加组件”工作，它阻止通知而不是阻止消息，垃圾短信仍然存在与默认短信应用中。在系统设置中<font color="#fa7f71"><b>禁用</b></font>默认短信应用的通知，让此应用接管通知，否则将有双重通知。<br>
+        <font color="#ffa500"><b>注意</b></font>:对于短信，此应用程序作为默认短信应用程序的“附加软件”，它屏蔽通知而不是屏蔽消息，垃圾邮件仍然会出现在默认短信应用程序中。<font color="#fa7f71"><b>禁用</b></font>系统设置中的默认短信应用程序通知，让此应用程序接管该通知，否则会有双重通知。<br>
         <br>
-        该列表按优先级降序、描述升序和模式升序<b>显示</b>。<br>
+        此列表以降序排列，显示优先级、升序描述和升序模式。<br>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        一种快速从短信中复制内容的方式，例如验证码。<br>
+        快速从短信中复制内容，例如验证码。<br>
         <br>
-        当它匹配时，通知中会出现一个类似<font color="yellow"><b>复制：123456</b></font>的按钮。<br>
-        这不像点击通知，当点击复制按钮时，只有此通知被忽略，其他通知将保留。<br>
+        匹配后，通知中会显示一个类似 <font color="yellow"><b>复制: 123456</b></font> 的按钮。<br>
+        它不像是点击通知，当点击此按钮时，只会清除此通知，其他通知将保留。<br>
         <br>
         一个示例规则： （使用捕获组）<br>
         &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
         另一种方法： （使用环视）<br>
         &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
-        &emsp;<font color="#ffa500"><b>注意</b></font>：<br>
-        &emsp; 它不支持环视中的<font color="#fa7f71"><b>.*</b></font>，它需要有界最大长度。<br>
-        &emsp; 例如，使用：<b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
-        &emsp; 而不是：<b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
+        &emsp;<font color="#ffa500"><b>注意</b></font>: <br>
+        &emsp; 它不支持在环视中使用 <font color="#fa7f71"><b>.*</b></font>，它需要一个有界的最大长度。<br>
+        &emsp; 例如，请使用： <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; 代替： <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
         <br>
-        仅当短信<b>未</b><font color="#fa7f71"><b>阻止</b></font>时才有效。
+        仅在短信 <b>未</b> <font color="#fa7f71"><b>被屏蔽</b></font> 时有效。
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        您可以取消选中这些复选框以禁用通话、短信或两者的规则。
+        您可以取消选择这些复选框，以禁用呼叫、短信或两者中的此规则。
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        无：完全没有通知。<br>
+        无：无通知。<br>
         阴影：下拉通知阴影。<br>
         状态栏：顶部栏中的小图标。<br>
-        声音：默认的通知声音。<br>
-        横幅：弹出屏幕顶部的悬浮窗口。
+        声音：默认通知提示音。<br>
+        通知：在屏幕顶端弹出浮动窗口。
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
         这有助于检查规则是否按预期设置。<br>
         <br>
-        这只是一个模拟，实际上不会弹出传入的呼叫（或短信）。<br>
+        它只是一个模拟，不会实际弹出来电（或短信）。<br>
         <br>
-        结果显示在此处、历史记录和通知中。
+        结果显示在此处，并在历史记录中显示，带有通知。
         ]]>
     </string>
     <string name="help_test_quick_copy">
         <![CDATA[
-        这不是模拟，它只显示任何快速复制规则是否匹配内容。<br>
+        这不是一个模拟，它只显示任何快速复制规则是否与内容匹配。<br>
         <br>
-        要模拟接收，请使用<font color="#0000ff"><b>消息规则</b></font>中的<font color="cyan"><b>测试</b></font>。
+        要模拟接收，请改用 <font color="#0000ff"><b>消息规则</b></font> 中的 <font color="cyan"><b>测试</b></font>。
         ]]>
     </string>
-    <string name="help_backup">
-        <![CDATA[
-        <font color="yellow"><b>备份</b></font>：<br>
-        &emsp; 1. 按<font color="cyan"><b>导出</b></font>以在文本框中显示配置。<br>
-        &emsp; 2. 按<font color="cyan"><b>复制</b></font>将其复制到剪贴板。<br>
-        &emsp; 3. 将这条<font color="#cccc00"><b>配置文本</b></font>发送到另一台设备。<br>
-        <br>
-        <font color="yellow"><b>恢复</b></font>：<br>
-        &emsp; 1. 将<font color="#cccc00"><b>配置文本</b></font>粘贴到文本框中。<br>
-        &emsp; 2. 按<font color="#0000ff"><b>导入</b></font>。<br>
-        &emsp;&emsp; 当它<font color="#fa7f71"><b>失败</b></font>时，尝试验证该 json 文本，它可能在传输过程中已损坏。如果是这样，请以文件形式发送它。<br>
-        <br>
-        历史记录被忽略。<br>
-        <br>
-        如果在恢复后某些开关（如“联系人”）未启用，请在系统设置中检查相应的权限，权限不会自动“恢复”。<br>
-        <br>
-        该应用不需要 INTERNET 和 STORAGE 权限，不会有“备份到云或存储文件”等功能。
-        ]]>
-    </string>
-    <string name="allow_repeated_call">重复呼叫</string>
-    <string name="dialed">已拨</string>
-    <string name="silence_call">静音呼叫</string>
-    <string name="confirm_del_all_filters">删除所有过滤器？</string>
-    <string name="dark_theme">黑夜主题</string>
-    <string name="find_apps">寻找应用</string>
-    <string name="spam_sms_blocked">已阻止短信</string>
-    <string name="spam_call_blocked">已阻止来电</string>
-    <string name="new_sms_received">收到新短信</string>
-    <string name="mark_all_as_read">将所有标记为已读</string>
-    <string name="delete_all">全部删除</string>
-    <string name="show_passed">显示通过</string>
-    <string name="show_blocked">显示已阻止</string>
-    <string name="clone_rule">克隆规则</string>
-    <string name="notification">通知</string>
-    <string name="type">类型</string>
-    <string name="time">时间</string>
-    <string name="times">次数</string>
-    <string name="day">天</string>
-    <string name="days">天</string>
-    <string name="min">分钟</string>
-    <string name="within_minutes">分钟内</string>
-    <string name="within_days">天内</string>
-    <string name="phone_number">电话号码</string>
-    <string name="sms_content">短信内容</string>
-    <string name="result">结果</string>
-    <string name="reason">原因</string>
-    <string name="regex_flags">正则表达式标记</string>
-    <string name="ignore_case">忽略大小写</string>
-    <string name="dot_match_all">点匹配所有</string>
-    <string name="literal">字面</string>
 
 </resources>
