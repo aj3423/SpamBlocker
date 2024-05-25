@@ -127,7 +127,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingHorizontal">14dp</item>
         <item name="android:paddingVertical">8dp</item>
-        <item name="background">@drawable/group_bg</item>
+        <item name="background">@drawable/shape_group_bg</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:orientation">vertical</item>
     </style>

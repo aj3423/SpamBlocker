@@ -487,8 +487,8 @@ class SettingFragment : Fragment() {
         val spin = root.findViewById<Spinner>(R.id.spin_language)
 
         val allLanguages = ctx.resources.getStringArray(R.array.language_list)
-        val adapter = ArrayAdapter(ctx, android.R.layout.simple_spinner_item, allLanguages)
-        adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        val adapter = ArrayAdapter(ctx, R.layout.spinner_text, allLanguages)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown)
         spin.adapter = adapter
 
         val lang = spf.getLanguage()

@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.content.res.Configuration
-import android.text.format.DateFormat
 import spam.blocker.R
 import spam.blocker.db.Flag
 import spam.blocker.def.Def
@@ -190,7 +188,7 @@ class Util {
                         try {
                             ret.icon = packageManager.getApplicationIcon(it)
                         } catch (e: PackageManager.NameNotFoundException) {
-                            ret.icon = ctx.getDrawable(R.drawable.unknown_app_icon)!!
+                            ret.icon = ctx.getDrawable(R.drawable.ic_unknown_app_icon)!!
                         }
                         ret
                     }

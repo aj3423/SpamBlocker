@@ -42,7 +42,7 @@
             <LinearLayout
                 android:id="@+id/container_quick_filters"
                 style="@style/setting_group_linear"
-                android:background="@drawable/group_bg">
+                android:background="@drawable/shape_group_bg">
 
 
                 <!--  contact -->
@@ -190,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|center_vertical"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/right_arrow"
+                        android:src="@drawable/ic_right_arrow"
                         app:tint="@color/dodger_blue"
                         tools:ignore="ContentDescription" />
 
@@ -262,7 +262,7 @@
             <LinearLayout
                 android:id="@+id/container_regex_filters"
                 style="@style/setting_group_linear"
-                android:background="@drawable/group_bg">
+                android:background="@drawable/shape_group_bg">
 
                 <!--    number filters-->
                 <LinearLayout style="@style/setting_row">
@@ -412,7 +412,7 @@
             <LinearLayout
                 android:id="@+id/setting_group_misc"
                 style="@style/setting_group_linear"
-                android:background="@drawable/group_bg">
+                android:background="@drawable/shape_group_bg">
 
                 <!-- theme -->
                 <LinearLayout style="@style/setting_row">
@@ -460,8 +460,8 @@
                     <Spinner
                         android:id="@+id/spin_language"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:minWidth="100dp"
+                        android:layout_height="26dp"
+                        android:background="@drawable/shape_spinner_bg"
                         android:entries="@array/language_list"/>
                 </LinearLayout>
                 <!-- language end -->
