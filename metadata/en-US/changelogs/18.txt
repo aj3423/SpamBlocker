@@ -1,0 +1,4 @@
+new: 
+- support STIR attestation
+- always allow emergency call, with max priority
+- multi-language support
