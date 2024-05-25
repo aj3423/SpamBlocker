@@ -72,7 +72,7 @@ func translate_1_file(lang string, fn string) error {
 	fmt.Println()
 
 	if resp.UsageMetadata.CandidatesTokenCount >= 2048 {
-		panic("CandidatesTokenCount reached 2048, split the xml")
+		panic("CandidatesTokenCount reached 2048, preferably < 1800, split the xml")
 	}
 
 	sb := &strings.Builder{}

@@ -16,19 +16,21 @@ import spam.blocker.util.Util
 
 class CallService : CallScreeningService() {
     override fun onScreenCall(callDetails: TelecomCall.Details) {
-        if (
-            callDetails.callDirection != TelecomCall.Details.DIRECTION_INCOMING
-        ) return
+
+        if (callDetails.callDirection != TelecomCall.Details.DIRECTION_INCOMING)
+            return
 
         val rawNumber = callDetails.handle.schemeSpecificPart
 
         Log.d(Def.TAG, String.format("new call from: $rawNumber"))
 
+        val builder = CallResponse.Builder()
+
         if (!SharedPref(this).isGloballyEnabled()) {
+            respondToCall(callDetails, builder.build())
             return
         }
 
-        val builder = CallResponse.Builder()
 
         val r = processCall(this, rawNumber, callDetails)
 

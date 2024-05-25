@@ -116,6 +116,12 @@ class Config {
         }
     }
     @Serializable
+    class Language {
+        var lang = ""
+        fun load(ctx: Context) { lang = SharedPref(ctx).getLanguage() }
+        fun apply(ctx: Context) { SharedPref(ctx).setLanguage(lang) }
+    }
+    @Serializable
     abstract class PatternRules {
         val rules = mutableListOf<PatternRule>()
 
@@ -156,6 +162,7 @@ class Configs {
     val recentApps = Config.RecentApps()
     val silence = Config.Silence()
     val offTime = Config.OffTime()
+    val language = Config.Language()
     val numberRules = Config.NumberRules()
     val contentRules = Config.ContentRules()
     val quickCopyRules = Config.QuickCopyRules()
@@ -169,6 +176,7 @@ class Configs {
         recentApps.load(ctx)
         silence.load(ctx)
         offTime.load(ctx)
+        language.load(ctx)
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
@@ -182,6 +190,7 @@ class Configs {
         recentApps.apply(ctx)
         silence.apply(ctx)
         offTime.apply(ctx)
+        language.apply(ctx)
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)

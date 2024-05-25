@@ -204,12 +204,12 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(broadcastReceiver)
     }
 
-    private fun refreshCurrentFragment() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-        val navController = navHostFragment.findNavController()
-        navController.navigate(navController.currentDestination!!.id)
-    }
+//    private fun refreshCurrentFragment() {
+//        val navHostFragment =
+//            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+//        val navController = navHostFragment.findNavController()
+//        navController.navigate(navController.currentDestination!!.id)
+//    }
 
     private fun updateNavCallBadge() {
         val unreadCount = callViewModel.records.count { !it.read }
