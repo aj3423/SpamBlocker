@@ -40,14 +40,14 @@ class Schedule {
         if (days == listOf(1,2,3,4,5,6,7)) // every day, ignore the day string
             return timeRangeDisplayStr(ctx)
         if (days == listOf(2,3,4,5,6))
-            return ctx.getString(R.string.workday) + " " + timeRangeDisplayStr(ctx)
+            return ctx.getString(R.string.workday) + "  " + timeRangeDisplayStr(ctx)
         if (days == listOf(1, 7))
-            return ctx.getString(R.string.weekend) + " " + timeRangeDisplayStr(ctx)
+            return ctx.getString(R.string.weekend) + "  " + timeRangeDisplayStr(ctx)
 
         // [1,3,5] -> "Sun,Tue,Thur"
         val daysStr = days.joinToString(",") { labels[it-1] }
 
-        return daysStr + " " + timeRangeDisplayStr(ctx)
+        return daysStr + "  " + timeRangeDisplayStr(ctx)
     }
     fun satisfyTime(timeMillis: Long): Boolean {
         val t = LocalDateTime.ofInstant(Instant.ofEpochMilli(timeMillis), ZoneId.systemDefault())

@@ -35,7 +35,8 @@ class CallService : CallScreeningService() {
         val r = processCall(this, rawNumber, callDetails)
 
         if (r.shouldBlock) {
-            val silence = Silence(this).isEnabled()
+            val silence = r.byFilter?.blockType == Def.BLOCK_TYPE_SILENCE // per rule
+                    || Silence(this).isEnabled() // global
 
             builder.apply {
                 setSkipCallLog(false)

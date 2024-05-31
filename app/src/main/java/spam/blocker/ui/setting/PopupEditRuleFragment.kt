@@ -66,6 +66,8 @@ class PopupEditRuleFragment(
         val edit_priority = view.findViewById<TextInputEditText>(R.id.edit_priority)
         val row_type = view.findViewById<LinearLayout>(R.id.row_rule_type)
         val row_importance = view.findViewById<LinearLayout>(R.id.row_importance)
+        val row_block_type = view.findViewById<LinearLayout>(R.id.row_block_type)
+        val spin_block_type = view.findViewById<Spinner>(R.id.spin_block_type)
         val help_importance = view.findViewById<ImageView>(R.id.popup_help_importance)
         val spin_importance = view.findViewById<Spinner>(R.id.spin_importance)
         val btn_schedule = view.findViewById<MaterialButton>(R.id.popup_btn_schedule)
@@ -135,12 +137,16 @@ class PopupEditRuleFragment(
         } else if (init.isBlacklist) {
             radio_blackwhitelist.check(R.id.popup_radio_blacklist)
         }
-        showIf(row_importance, init.isBlacklist && forType != Def.ForQuickCopy)
         radio_blackwhitelist.setOnCheckedChangeListener { _, checkedId ->
             showIf(row_importance, checkedId == R.id.popup_radio_blacklist)
+            showIf(row_block_type, checkedId == R.id.popup_radio_blacklist)
         }
+        // Block type
+        showIf(row_block_type, init.isBlacklist && forType == Def.ForNumber)
+        spin_block_type.setSelection(init.blockType)
 
         // Importance
+        showIf(row_importance, init.isBlacklist && forType != Def.ForQuickCopy)
         setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance)
         spin_importance.setSelection(init.importance)
 
@@ -204,6 +210,7 @@ class PopupEditRuleFragment(
                 init.isBlacklist = false
             }
             init.importance = spin_importance.selectedItemPosition
+            init.blockType = spin_block_type.selectedItemPosition
             init.schedule = schedule.serializeToStr()
 
             val err1 = Util.validateRegex(ctx, init.pattern)

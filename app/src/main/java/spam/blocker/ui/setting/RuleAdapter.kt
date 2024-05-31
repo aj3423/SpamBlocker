@@ -51,6 +51,7 @@ class RuleAdapter(
         holder.imgApplyToCall.setColorFilter(if (f.isForCall()) teal else gray, PorterDuff.Mode.SRC_IN)
         holder.imgApplyToSms.setColorFilter(if (f.isForSms()) teal else gray, PorterDuff.Mode.SRC_IN)
 
+        showIf(holder.imgBlockType, f.blockType != Def.BLOCK_TYPE_REJECT)
         if (forType != Def.ForNumber) {
             holder.imgApplyToCall.visibility = View.GONE
         }
@@ -69,6 +70,7 @@ class RuleAdapter(
 
         var labelPattern: TextView
         var labelDesc: TextView
+        var imgBlockType: ImageView
         var imgApplyToCall: ImageView
         var imgApplyToSms: ImageView
         var labelPriority: TextView
@@ -80,6 +82,7 @@ class RuleAdapter(
         init {
             labelPattern = itemView.findViewById(R.id.text_filter_pattern)
             labelDesc = itemView.findViewById(R.id.text_filter_desc)
+            imgBlockType = itemView.findViewById(R.id.img_block_type)
             imgApplyToCall = itemView.findViewById(R.id.img_for_call)
             imgApplyToSms = itemView.findViewById(R.id.img_for_sms)
             labelPriority = itemView.findViewById(R.id.label_priority)

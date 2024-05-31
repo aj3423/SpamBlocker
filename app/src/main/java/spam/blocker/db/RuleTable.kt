@@ -61,7 +61,7 @@ class PatternRule {
         // 1. Time schedule
         val sch = Schedule.parseFromStr(schedule)
         if (sch.enabled)
-            SpannableUtil.append(sb, sch.toDisplayStr(ctx) + " ", scheduleColor, relativeSize = 0.8f)
+            SpannableUtil.append(sb, sch.toDisplayStr(ctx) + "\n", scheduleColor, relativeSize = 0.8f)
 
         // 2. imdlc
         // format:

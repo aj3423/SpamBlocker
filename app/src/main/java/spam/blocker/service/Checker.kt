@@ -40,25 +40,6 @@ class CheckResult(
         if (stirResult != null) return stirResult.toString()
         return ""
     }
-
-    fun setContactName(name: String): CheckResult {
-        byContactName = name
-        return this
-    }
-
-    fun setFilter(f: PatternRule): CheckResult {
-        byFilter = f
-        return this
-    }
-
-    fun setRecentApp(pkg: String): CheckResult {
-        byRecentApp = pkg
-        return this
-    }
-    fun setStirResult(result: Int): CheckResult {
-        stirResult = result
-        return this
-    }
 }
 
 interface checker {
@@ -120,12 +101,12 @@ class Checker { // for namespace only
             if (exclusive) {
                 if (fail || (includeUnverified && unverified)) {
                     return CheckResult(true, Def.RESULT_BLOCKED_BY_STIR)
-                        .setStirResult(stir)
+                        .apply { stirResult = stir }
                 }
             } else {
                 if (pass || (includeUnverified && unverified)) {
                     return CheckResult(false, Def.RESULT_ALLOWED_BY_STIR)
-                        .setStirResult(stir)
+                        .apply { stirResult = stir }
                 }
             }
 
@@ -149,7 +130,7 @@ class Checker { // for namespace only
             if (contact != null) {
                 Log.i(Def.TAG, "is contact")
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)
-                    .setContactName(contact.name)
+                    .apply { byContactName = contact.name }
             } else {
                 if (spf.isExclusive()) {
                     return CheckResult(true, Def.RESULT_BLOCKED_BY_NON_CONTACT)
@@ -256,7 +237,7 @@ class Checker { // for namespace only
                 return CheckResult(
                     false,
                     Def.RESULT_ALLOWED_BY_RECENT_APP
-                ).setRecentApp(intersection.first())
+                ).apply { byRecentApp = intersection.first() }
             }
             return null
         }
@@ -287,7 +268,9 @@ class Checker { // for namespace only
                 return CheckResult(
                     block,
                     if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER
-                ).setFilter(filter)
+                ).apply {
+                    byFilter = filter
+                }
             }
 
             return null
@@ -335,7 +318,7 @@ class Checker { // for namespace only
                 return CheckResult(
                     block,
                     if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT
-                ).setFilter(f)
+                ).apply { byFilter = f }
             }
             return null
         }

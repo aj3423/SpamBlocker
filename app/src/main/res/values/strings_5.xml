@@ -36,6 +36,7 @@
     <string name="workday">Workday</string>
     <string name="weekend">Weekend</string>
     <string name="entire_day">Entire Day</string>
+    <string name="block_type">Block Type</string>
     <string-array name="week">
         <item>Sun</item>
         <item>Mon</item>
@@ -44,6 +45,11 @@
         <item>Thur</item>
         <item>Fri</item>
         <item>Sat</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Reject</item>
+        <item>Silence</item>
     </string-array>
 
     <string-array name="importance_list">

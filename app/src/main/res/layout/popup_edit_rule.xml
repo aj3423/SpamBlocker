@@ -137,6 +137,21 @@
 
         </LinearLayout>
 
+        <LinearLayout style="@style/setting_row"
+            android:id="@+id/row_block_type">
+            <TextView
+                style="@style/setting_gray_label"
+                android:text="@string/block_type" />
+
+            <Space style="@style/setting_spacing"/>
+
+            <Spinner
+                android:id="@+id/spin_block_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:entries="@array/block_type_list"/>
+        </LinearLayout>
 
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_importance">

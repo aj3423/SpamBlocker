@@ -51,6 +51,19 @@
             app:layout_constraintWidth_percent="0.58" />
 
         <ImageView
+            android:id="@+id/img_block_type"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_call_miss"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toStartOf="@+id/img_for_call"
+            app:layout_constraintTop_toTopOf="@+id/img_for_sms"
+            tools:ignore="ContentDescription"
+            app:tint="@color/mid_grey"/>
+
+        <ImageView
             android:id="@+id/img_for_call"
             android:layout_width="20dp"
             android:layout_height="20dp"
