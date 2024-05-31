@@ -32,7 +32,7 @@ An Android Call/SMS blocker.
 | Regex Pattern | Some typical patterns:<br> - Any number: `.*` (the regex `.*` is identical to the wildcard `*` in many other apps) <br> - Exact number: `12345` <br> - Starts with 400: `400.*` <br> - Ends with 123: `.*123` <br> - Less than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Contains "verification": `.*verification.*` <br>- Extract verification code from SMS message: `code.*?(\d+)`<br><br> You can ask AI to generate or explain regex for you: <br>&emsp; "Show me regex for checking if a string starts with 400 or 200"<br> &emsp; Results in `(400\|200).*` |
 
 
-# Permissions required
+# Permissions (all optional)
 
 | Permission             | Why                                                             |
 | ----                   | ----                                                            |
@@ -42,9 +42,8 @@ An Android Call/SMS blocker.
 | RECEIVE_SMS            | For receiving new messages                                      |
 | READ_CALL_LOG<br>READ_SMS(optional) | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
+| READ_PHONE_STATE(Android 10)<br>READ_PHONE_NUMBERS(Android 11+)    | For per SIM profile (list all SIM cards)  |
 
 # Languages supported
 
-en, ru, zh
-
-Languages are translated by Gemini AI, using this [golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go), Fire an issue for adding new languages.
+Languages are translated using Gemini AI, with this [golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go), if you need to add support for a new language, please fire an issue.

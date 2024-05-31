@@ -50,35 +50,31 @@
             app:layout_constraintTop_toBottomOf="@+id/text_filter_pattern"
             app:layout_constraintWidth_percent="0.58" />
 
-        <CheckedTextView
-            android:id="@+id/chk_applied_to_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        <ImageView
+            android:id="@+id/img_for_call"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_call_24dp"
             android:gravity="center_vertical"
-            android:text="@string/call"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/mid_grey"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/chk_applied_to_sms"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlCompat" />
+            app:layout_constraintEnd_toStartOf="@+id/img_for_sms"
+            app:layout_constraintTop_toTopOf="@+id/img_for_sms"
+            tools:ignore="ContentDescription"
+            app:tint="@color/teal_200" />
 
-        <CheckedTextView
-            android:id="@+id/chk_applied_to_sms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
-            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+
+        <ImageView
+            android:id="@+id/img_for_sms"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_sms_24dp"
             android:gravity="center_vertical"
-            android:text="@string/sms"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/mid_grey"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/chk_applied_to_call"
-            tools:ignore="RtlCompat" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            app:tint="@color/teal_200" />
 
         <ImageView
             android:id="@+id/img_bell_ringing"
@@ -129,13 +125,14 @@
             android:id="@+id/label_priority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="8dp"
             android:gravity="center_vertical"
             android:text="@string/priority"
             android:textColor="@color/purple_200"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chk_applied_to_sms" />
+            app:layout_constraintTop_toBottomOf="@id/img_for_sms" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

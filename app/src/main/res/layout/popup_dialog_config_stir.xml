@@ -48,6 +48,7 @@
         <LinearLayout style="@style/setting_row" >
             <TextView
                 style="@style/setting_gray_label"
+                android:maxWidth="300dp"
                 android:text="@string/stir_include_unverified" />
             <Space style="@style/setting_spacing" />
 

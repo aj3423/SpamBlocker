@@ -18,7 +18,8 @@ import spam.blocker.db.Record
 import spam.blocker.db.HistoryTable
 import spam.blocker.def.Def
 import spam.blocker.service.Checker
-import spam.blocker.ui.util.Util.Companion.setRoundImage
+import spam.blocker.ui.util.UI.Companion.setRoundImage
+import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.util.Contacts
 import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.getAppsMap
@@ -63,13 +64,11 @@ class HistoryAdapter(
         holder.labelPeer.text = contact?.name ?: record.peer
         holder.labelPeer.setTextColor(if (record.isBlocked()) red else green)
         holder.labelResult.text = Checker.resultStr(ctx, record.result, record.reason)
-        holder.unreadMark.visibility = if (record.read) View.INVISIBLE else View.VISIBLE
+        showIf(holder.unreadMark, record.read)
         if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
-            holder.imgReason.visibility = View.VISIBLE
             holder.imgReason.setImageDrawable(getAppsMap(ctx)[record.reason]?.icon)
-        } else {
-            holder.imgReason.visibility = View.GONE
         }
+        showIf(holder.imgReason, record.result == Def.RESULT_ALLOWED_BY_RECENT_APP)
 
         // mark the clicked record as read
         holder.itemView.setOnClickListener {

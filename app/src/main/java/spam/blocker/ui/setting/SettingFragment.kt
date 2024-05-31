@@ -9,21 +9,15 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.registerReceiver
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -51,16 +45,24 @@ import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
 import spam.blocker.ui.util.TimeRangePicker
-import spam.blocker.ui.util.Util.Companion.applyTheme
-import spam.blocker.ui.util.Util.Companion.setupImageTooltip
+import spam.blocker.ui.util.UI.Companion.applyTheme
+import spam.blocker.ui.util.UI.Companion.setupImageTooltip
+import spam.blocker.ui.util.UI.Companion.showIf
+import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.Permissions
 import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
 import spam.blocker.util.Permissions.Companion.isContactsPermissionGranted
-import spam.blocker.util.Permissions.Companion.isReadSmsPermissionGranted
 import spam.blocker.util.PermissionChain
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.Contact
+import spam.blocker.util.SharedPref.Dialed
+import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.OffTime
+import spam.blocker.util.SharedPref.RecentApps
+import spam.blocker.util.SharedPref.RepeatedCall
+import spam.blocker.util.SharedPref.Silence
+import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
 
 
@@ -87,120 +89,122 @@ class SettingFragment : Fragment() {
         val root: View = binding.root
 
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
 
+        // global settings
+        setupGlobalEnabled(root)
+        setupTheme(root)
+        setupLanguage(root)
+        setupBackupRestore(root)
 
-        // global enable switch
-        val switchGlobalEnable = root.findViewById<SwitchCompat>(R.id.switch_globally_enabled)
-        val group_quick_filters = root.findViewById<RelativeLayout>(R.id.group_quick_filters)
-        val group_regex_filters = root.findViewById<RelativeLayout>(R.id.group_regex_filters)
-        onEnabledChange = {
-            val enabled = spf.isGloballyEnabled()
-            if (switchGlobalEnable.isChecked != enabled)
-                switchGlobalEnable.isChecked = enabled
-            requireActivity().window.statusBarColor = ContextCompat.getColor(
-                ctx,
-                if (enabled) R.color.dark_sea_green else R.color.salmon
-            )
-            group_quick_filters.visibility = if (enabled) View.VISIBLE else View.GONE
-            group_regex_filters.visibility = if (enabled) View.VISIBLE else View.GONE
-        }
-        onEnabledChange()
-        switchGlobalEnable.setOnClickListener {
-            spf.toggleGloballyEnabled()
-            onEnabledChange()
-        }
-
-        // theme switch
-        val switchTheme = root.findViewById<SwitchCompat>(R.id.switch_theme)
-        val dark = spf.isDarkTheme()
-        switchTheme.isChecked = dark
-        switchTheme.setOnClickListener {
-            spf.toggleDarkTheme()
-            applyTheme(spf.isDarkTheme())
-        }
-
-        // backup / restore
-        val btn_backup = root.findViewById<MaterialButton>(R.id.btn_backup)
-        btn_backup.setOnClickListener {
-            PopupBackupFragment().show(requireActivity().supportFragmentManager, "tag_backup")
-        }
-
+        // sim settings
         setupStir(root)
-
         setupContacts(root)
-
         setupRepeatedCall(root)
-
         setupDialed(root)
-
         clearUninstalledRecentApps()
         setupRecentApps(root)
-
         setupSilenceCall(root)
-
         setupOffTime(root)
-        setupLanguage(root)
 
-        setupRules(
-            root,
-            R.id.recycler_number_filters,
-            R.id.btn_add_number_filter,
-            R.id.btn_test_number_filters,
-            numberRules,
-            NumberRuleTable(),
-            Def.ForCall
+        setupRules( root,
+            R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_test_number_filters,
+            numberRules, NumberRuleTable(), Def.ForNumber )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),
+            R.string.help_number_filter
         )
-        setupRules(
-            root,
-            R.id.recycler_content_filters,
-            R.id.btn_add_content_filter,
-            R.id.btn_test_content_filters,
-            contentRules,
-            ContentRuleTable(),
-            Def.ForSms
+
+        setupRules( root,
+            R.id.recycler_content_filters, R.id.btn_add_content_filter, R.id.btn_test_content_filters,
+            contentRules, ContentRuleTable(), Def.ForSms )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_sms_content_filter),
+            R.string.help_sms_content_filter
         )
-        setupRules(
-            root,
-            R.id.recycler_quick_copy,
-            R.id.btn_add_quick_copy,
-            R.id.btn_test_quick_copy,
-            quickCopyRules,
-            QuickCopyRuleTable(),
-            Def.ForQuickCopy
+
+        setupRules( root,
+            R.id.recycler_quick_copy, R.id.btn_add_quick_copy, R.id.btn_test_quick_copy,
+            quickCopyRules, QuickCopyRuleTable(), Def.ForQuickCopy )
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_quick_copy),
+            R.string.help_quick_copy
         )
-        // tooltips
-        setupTooltips(root)
 
         return root
     }
 
+    private fun setupGlobalEnabled(root: View) {
+        val ctx = requireContext()
+        val spf = Global(ctx)
+
+        val switch = root.findViewById<SwitchCompat>(R.id.switch_globally_enabled)
+        val group_quick_filters = root.findViewById<RelativeLayout>(R.id.group_quick_filters)
+        val group_regex_filters = root.findViewById<RelativeLayout>(R.id.group_regex_filters)
+        onEnabledChange = {
+            val enabled = spf.isGloballyEnabled()
+            if (switch.isChecked != enabled)
+                switch.isChecked = enabled
+            requireActivity().window.statusBarColor = ContextCompat.getColor(
+                ctx,
+                if (enabled) R.color.dark_sea_green else R.color.salmon
+            )
+            showIf(group_quick_filters, enabled)
+            showIf(group_regex_filters, enabled)
+        }
+        onEnabledChange()
+        switch.setOnClickListener {
+            spf.toggleGloballyEnabled()
+            onEnabledChange()
+        }
+
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_globally_enabled),
+            R.string.help_globally_enabled
+        )
+    }
+    private fun setupTheme(root: View) {
+        val spf = Global(requireContext())
+        val switch = root.findViewById<SwitchCompat>(R.id.switch_theme)
+        val dark = spf.isDarkTheme()
+        switch.isChecked = dark
+        switch.setOnClickListener {
+            spf.toggleDarkTheme()
+            applyTheme(spf.isDarkTheme())
+        }
+    }
+
+    private fun setupBackupRestore(root: View) {
+        val btn = root.findViewById<MaterialButton>(R.id.btn_backup)
+        btn.setOnClickListener {
+            PopupBackupFragment().show(requireActivity().supportFragmentManager, "tag_backup")
+        }
+    }
 
     @SuppressLint("SetTextI18n")
     private fun setupRepeatedCall(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
-        val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_repeated_call)
-        val switchRepeatedEnabled = root.findViewById<SwitchCompat>(R.id.switch_allow_repeated_call)
+        val spf = RepeatedCall(ctx)
+
+        val btn = root.findViewById<MaterialButton>(R.id.btn_config_repeated_call)
+        val switch = root.findViewById<SwitchCompat>(R.id.switch_allow_repeated_call)
 
         fun updateButton() {
-            val (times, inXMin) = spf.getRepeatedConfig()
+            val (times, inXMin) = spf.getConfig()
             val labelMin = resources.getString(R.string.min)
-            btn_config.text = "$times / $inXMin $labelMin"
-            btn_config.visibility = if (spf.isRepeatedCallEnabled() && isCallLogPermissionGranted(ctx))
-                View.VISIBLE else View.GONE
+            btn.text = "$times / $inXMin $labelMin"
+            showIf(btn, spf.isEnabled() && isCallLogPermissionGranted(ctx))
         }
 
 
         updateButton()
-        btn_config.setOnClickListener {
+        btn.setOnClickListener {
             PopupRepeatedConfigFragment { times: Int, inXMin: Int ->
-                spf.setRepeatedConfig(times, inXMin)
+                spf.setConfig(times, inXMin)
                 updateButton()
             }.show(requireActivity().supportFragmentManager, "tag_config_repeated")
         }
 
-        switchRepeatedEnabled.isChecked = spf.isRepeatedCallEnabled()
+        switch.isChecked = spf.isEnabled()
                 && isCallLogPermissionGranted(ctx)
 
         val permChain = PermissionChain(this,
@@ -209,49 +213,52 @@ class SettingFragment : Fragment() {
                 Permission(Manifest.permission.READ_SMS, true)
             )
         ) { allGranted ->
-            switchRepeatedEnabled.isChecked = allGranted
-            spf.setRepeatedCallEnabled(allGranted)
+            switch.isChecked = allGranted
+            spf.setEnabled(allGranted)
             updateButton()
         }
 
-        switchRepeatedEnabled.setOnCheckedChangeListener { _, isChecked ->
+        switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (isCallLogPermissionGranted(ctx)) { // already granted
-                    spf.setRepeatedCallEnabled(true)
+                    spf.setEnabled(true)
                 } else {
                     permChain.ask()
                 }
             } else {
-                spf.setRepeatedCallEnabled(false)
+                spf.setEnabled(false)
             }
             updateButton()
         }
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_repeated_call),
+            R.string.help_repeated_call
+        )
     }
     private fun setupDialed(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
-        val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_dialed)
-        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_dialed)
+        val spf = Dialed(ctx)
+
+        val btn = root.findViewById<MaterialButton>(R.id.btn_config_dialed)
+        val switch = root.findViewById<SwitchCompat>(R.id.switch_enable_dialed)
 
         fun updateButton() {
-            val nDay = spf.getDialedConfig()
+            val nDay = spf.getConfig()
             val labelDays =
                 resources.getString(if (nDay > 1) R.string.days else R.string.day)
-            btn_config.text = "$nDay $labelDays"
-            btn_config.visibility = if (spf.isDialedEnabled() && isCallLogPermissionGranted(ctx))
-                View.VISIBLE else View.GONE
+            btn.text = "$nDay $labelDays"
+            showIf(btn, spf.isEnabled() && isCallLogPermissionGranted(ctx))
         }
 
-
         updateButton()
-        btn_config.setOnClickListener {
+        btn.setOnClickListener {
             PopupDialedConfigFragment { inXDays: Int ->
-                spf.setDialedConfig(inXDays)
+                spf.setConfig(inXDays)
                 updateButton()
             }.show(requireActivity().supportFragmentManager, "tag_config_dialed")
         }
 
-        switchEnabled.isChecked = spf.isDialedEnabled()
+        switch.isChecked = spf.isEnabled()
                 && isCallLogPermissionGranted(ctx)
 
         val permChain = PermissionChain(this,
@@ -260,41 +267,45 @@ class SettingFragment : Fragment() {
                 Permission(Manifest.permission.READ_SMS, true)
             )
         ) { allGranted ->
-            switchEnabled.isChecked = allGranted
-            spf.setDialedEnabled(allGranted)
+            switch.isChecked = allGranted
+            spf.setEnabled(allGranted)
             updateButton()
         }
 
-        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
+        switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (isCallLogPermissionGranted(ctx)) { // already granted
-                    spf.setDialedEnabled(true)
+                    spf.setEnabled(true)
                 } else {
                     permChain.ask()
                 }
             } else {
-                spf.setDialedEnabled(false)
+                spf.setEnabled(false)
             }
             updateButton()
         }
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_dialed),
+            R.string.help_dialed
+        )
     }
 
     private fun setupStir(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = Stir(ctx)
 
         val btnInclusive = root.findViewById<MaterialButton>(R.id.btn_config_stir)
-        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_stir)
+        val switch = root.findViewById<SwitchCompat>(R.id.switch_enable_stir)
 
         fun updateButton() {
-            val isExclusive = spf.isStirExclusive()
-            btnInclusive.visibility = if (spf.isStirEnabled()) View.VISIBLE else View.GONE
+            val isExclusive = spf.isExclusive()
+            showIf(btnInclusive, spf.isEnabled())
 
             val color = if (isExclusive) R.color.salmon else R.color.mid_grey
             btnInclusive.setTextColor(resources.getColor(color, null))
             btnInclusive.setStrokeColorResource(color)
 
-            val trailingQuestionMark = if (spf.isStirIncludeUnverified()) " (?)" else ""
+            val trailingQuestionMark = if (spf.isIncludeUnverified()) " (?)" else ""
             btnInclusive.text =
                 if (isExclusive)
                     "${ctx.resources.getString(R.string.exclusive)}$trailingQuestionMark"
@@ -306,27 +317,31 @@ class SettingFragment : Fragment() {
 
         btnInclusive.setOnClickListener {
             PopupStirConfigFragment { isExclusive: Boolean, includeUnverified: Boolean ->
-                spf.setStirExclusive(isExclusive)
-                spf.setStirIncludeUnverified(includeUnverified)
+                spf.setExclusive(isExclusive)
+                spf.setIncludeUnverified(includeUnverified)
                 updateButton()
             }.show(requireActivity().supportFragmentManager, "tag_config_stir")
         }
 
-        switchEnabled.isChecked = spf.isStirEnabled()
+        switch.isChecked = spf.isEnabled()
 
-        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
-            spf.setStirEnabled(isChecked)
+        switch.setOnCheckedChangeListener { _, isChecked ->
+            spf.setEnabled(isChecked)
             updateButton()
         }
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_stir),
+            R.string.help_stir
+        )
     }
 
     private fun setupContacts(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = Contact(ctx)
 
         // maybe it has been turned off in settings
         if (!isContactsPermissionGranted(ctx)) {
-            spf.setContactEnabled(false)
+            spf.setEnabled(false)
         }
 
         val btnInclusive = root.findViewById<MaterialButton>(R.id.btn_config_contact)
@@ -334,8 +349,8 @@ class SettingFragment : Fragment() {
 
 
         fun updateButton() {
-            val isExclusive = spf.isContactExclusive()
-            btnInclusive.visibility = if (spf.isContactEnabled()) View.VISIBLE else View.GONE
+            val isExclusive = spf.isExclusive()
+            showIf(btnInclusive, spf.isEnabled())
 
             val color = if (isExclusive) R.color.salmon else R.color.mid_grey
             btnInclusive.setTextColor(resources.getColor(color, null))
@@ -349,11 +364,11 @@ class SettingFragment : Fragment() {
         updateButton()
 
         btnInclusive.setOnClickListener {
-            spf.toggleContactExclusive()
+            spf.toggleExclusive()
             updateButton()
         }
 
-        switchContactEnabled.isChecked = spf.isContactEnabled() && isContactsPermissionGranted(ctx)
+        switchContactEnabled.isChecked = spf.isEnabled() && isContactsPermissionGranted(ctx)
 
         val permChain = PermissionChain(this,
             listOf(
@@ -361,40 +376,44 @@ class SettingFragment : Fragment() {
             )
         ) { allGranted ->
             switchContactEnabled.isChecked = allGranted
-            spf.setContactEnabled(allGranted)
+            spf.setEnabled(allGranted)
             updateButton()
         }
 
         switchContactEnabled.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (isContactsPermissionGranted(ctx)) { // already granted
-                    spf.setContactEnabled(true)
+                    spf.setEnabled(true)
                 } else {
                     permChain.ask()
                 }
             } else {
-                spf.setContactEnabled(false)
+                spf.setEnabled(false)
             }
             updateButton()
         }
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_enable_contacts),
+            R.string.help_contact
+        )
     }
 
     // Clear uninstalled apps from the recent apps list
     private fun clearUninstalledRecentApps() {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = RecentApps(ctx)
 
-        val cleared = spf.getRecentAppList().filter {
+        val cleared = spf.getList().filter {
             Util.isPackageInstalled(ctx, it)
         }
-        spf.setRecentAppList(cleared)
+        spf.setList(cleared)
     }
 
 
     @SuppressLint("NotifyDataSetChanged", "ClickableViewAccessibility")
     private fun setupRecentApps(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = RecentApps(ctx)
 
         // config
         val btn_config = root.findViewById<MaterialButton>(R.id.btn_config_recent_apps)
@@ -402,24 +421,25 @@ class SettingFragment : Fragment() {
 
         // update button and recycler
         fun updateUI() {
-            val visibility = if (recentApps.size > 0 && Permissions.isUsagePermissionGranted(ctx)) View.VISIBLE else View.GONE
-            val inXmin = spf.getRecentAppConfig()
-            btn_config.text = "$inXmin ${resources.getString(R.string.min)}"
-            btn_config.visibility = visibility
 
-            recyclerAppIcons.visibility = visibility
+            val inXmin = spf.getConfig()
+            btn_config.text = "$inXmin ${resources.getString(R.string.min)}"
+
+            val visible = recentApps.size > 0 && Permissions.isUsagePermissionGranted(ctx)
+            showIf(btn_config, visible)
+            showIf(recyclerAppIcons, visible)
         }
         updateUI()
         btn_config.setOnClickListener {
             PopupRecentAppConfigFragment { inXMin: Int ->
-                spf.setRecentAppConfig(inXMin)
+                spf.setConfig(inXMin)
                 updateUI()
             }.show(requireActivity().supportFragmentManager, "tag_config_recent_app")
         }
 
 
         recentApps.clear()
-        recentApps.addAll(spf.getRecentAppList())
+        recentApps.addAll(spf.getList())
 
         // recycler
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
@@ -447,7 +467,7 @@ class SettingFragment : Fragment() {
         val adapterRecentApps = AppListAdapter(ctx, recentApps) { popupRecentApps() }
         recentApps.observe(viewLifecycleOwner) {
             updateUI()
-            spf.setRecentAppList(recentApps.toList())
+            spf.setList(recentApps.toList())
             when (it.action) {
                 Add -> adapterRecentApps.notifyItemInserted(it.actionInt!!)
                 AddAll -> adapterRecentApps.notifyDataSetChanged()
@@ -467,75 +487,91 @@ class SettingFragment : Fragment() {
         btnSelectApp.setOnClickListener {
             popupRecentApps()
         }
+
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps),
+            R.string.help_recent_apps
+        )
     }
 
     private fun setupSilenceCall(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = Silence(ctx)
+
         val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_silence_call)
 
-        switchEnabled.isChecked = spf.isSilenceCallEnabled()
+        switchEnabled.isChecked = spf.isEnabled()
 
         switchEnabled.setOnCheckedChangeListener { _, isChecked ->
-            spf.setSilenceCallEnabled(isChecked)
+            spf.setEnabled(isChecked)
         }
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_silence_call),
+            R.string.help_silence_call
+        )
     }
 
     private fun setupLanguage(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
-        val spin = root.findViewById<Spinner>(R.id.spin_language)
-
-        val allLanguages = ctx.resources.getStringArray(R.array.language_list)
-        val adapter = ArrayAdapter(ctx, R.layout.spinner_text, allLanguages)
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown)
-        spin.adapter = adapter
+        val spf = Global(ctx)
+        val btn = root.findViewById<MaterialButton>(R.id.btn_language)
 
         val lang = spf.getLanguage()
-        val idx = allLanguages.indexOf(lang)
-        spin.setSelection(idx)
-        spin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                val newLanguage = allLanguages[position]
-                if (lang != newLanguage) {
-                    spf.setLanguage(newLanguage)
+        btn.text = lang
+
+        val languages = ctx.resources.getStringArray(R.array.language_list).toList()
+
+        btn.setOnClickListener {
+            dynamicPopupMenu(ctx, languages, btn) { clickedIdx ->
+                val newLang = languages[clickedIdx]
+                if (newLang != lang) {
+                    spf.setLanguage(newLang)
                     Launcher.selfRestart(ctx)
                 }
             }
-            override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
+
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_language),
+            R.string.help_language
+        )
     }
 
     private fun setupOffTime(root: View) {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = OffTime(ctx)
+
         val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_off_time)
         val btn = root.findViewById<MaterialButton>(R.id.btn_off_time)
 
-        switchEnabled.isChecked = spf.isOffTimeEnabled()
+        switchEnabled.isChecked = spf.isEnabled()
 
         fun updateButton() {
-            val (sHour, sMin) = spf.getOffTimeStart()
-            val (eHour, eMin) = spf.getOffTimeEnd()
+            val (sHour, sMin) = spf.getStart()
+            val (eHour, eMin) = spf.getEnd()
 
             btn.text = Util.formatTimeRange(sHour, sMin, eHour, eMin)
-            btn.visibility = if (spf.isOffTimeEnabled()) View.VISIBLE else View.GONE
+            showIf(btn, spf.isEnabled())
         }
         updateButton()
         switchEnabled.setOnCheckedChangeListener { _, isChecked ->
-            spf.setOffTimeEnabled(isChecked)
+            spf.setEnabled(isChecked)
             updateButton()
         }
         btn.setOnClickListener {
-            val (startH, startM) = spf.getOffTimeStart()
-            val (endH, endM) = spf.getOffTimeEnd()
+            val (startH, startM) = spf.getStart()
+            val (endH, endM) = spf.getEnd()
 
             TimeRangePicker(this, startH, startM, endH, endM) { stH, stM, etH, etM ->
-                spf.setOffTimeStart(stH, stM)
-                spf.setOffTimeEnd(etH, etM)
+                spf.setStart(stH, stM)
+                spf.setEnd(etH, etM)
                 updateButton()
             }.show()
         }
+        setupImageTooltip(
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_off_time),
+            R.string.help_off_time
+        )
     }
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -567,18 +603,19 @@ class SettingFragment : Fragment() {
         val onItemClick = { clickedF: PatternRule -> Unit
             val i = filters.indexOf(clickedF)
 
-            val dialog = PopupEditFilterFragment(
-                filters[i], { newF -> // on save button clicked
+            val dialog = PopupEditRuleFragment(
+                filters[i], { newRule -> // on save button clicked
                     // 1. update this filter in memory
                     val existing = filters[i]
-                    existing.pattern = newF.pattern
-                    existing.patternExtra = newF.patternExtra
-                    existing.description = newF.description
-                    existing.flagCallSms = newF.flagCallSms
-                    existing.isBlacklist = newF.isBlacklist
+                    existing.pattern = newRule.pattern
+                    existing.patternExtra = newRule.patternExtra
+                    existing.description = newRule.description
+                    existing.flagCallSms = newRule.flagCallSms
+                    existing.isBlacklist = newRule.isBlacklist
+                    existing.schedule = newRule.schedule
 
                     // 2. update in db
-                    dbTable.updatePatternRule(ctx, existing.id, existing)
+                    dbTable.updateRuleById(ctx, existing.id, existing)
 
                     // 3. gui update
                     asyncReloadFromDb()
@@ -596,7 +633,7 @@ class SettingFragment : Fragment() {
                 when (it.itemId) {
                     R.id.rule_clone -> {
                         // 1. add to db
-                        dbTable.addNewPatternRule(ctx, clickedF)
+                        dbTable.addNewRule(ctx, clickedF)
 
                         // 2. refresh gui
                         asyncReloadFromDb()
@@ -623,10 +660,10 @@ class SettingFragment : Fragment() {
 
         val btnAdd = root.findViewById<MaterialButton>(addBtnId)
         btnAdd.setOnClickListener {
-            val dialog = PopupEditFilterFragment(
+            val dialog = PopupEditRuleFragment(
                 PatternRule(), { newF -> // callback
                     // 1. add to db
-                    dbTable.addNewPatternRule(ctx, newF)
+                    dbTable.addNewRule(ctx, newF)
 
                     // 2. refresh gui
                     asyncReloadFromDb()
@@ -655,7 +692,7 @@ class SettingFragment : Fragment() {
                 val fToDel = filters[i]
 
                 // 1. delete from db
-                dbTable.delPatternRule(ctx, fToDel.id)
+                dbTable.delById(ctx, fToDel.id)
 
                 // 2. remove from ArrayList
                 filters.removeAt(i)
@@ -664,7 +701,7 @@ class SettingFragment : Fragment() {
                 Snackbar.make(recycler, fToDel.pattern, Snackbar.LENGTH_LONG).setAction(
                     resources.getString(R.string.undelete),
                 ) {
-                    dbTable.addPatternRuleWithId(ctx, fToDel)
+                    dbTable.addRuleWithId(ctx, fToDel)
                     filters.add(i, fToDel)
                 }.show()
             }
@@ -673,65 +710,12 @@ class SettingFragment : Fragment() {
 
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
         numberRules.removeObservers(viewLifecycleOwner)
         recentApps.removeObservers(viewLifecycleOwner)
 
-    }
-
-    private fun setupTooltips(root: View) {
-        val ctx = requireContext()
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_globally_enabled),
-            R.string.help_globally_enabled
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_stir),
-            R.string.help_stir
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_enable_contacts),
-            R.string.help_contact
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_repeated_call),
-            R.string.help_repeated_call
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_dialed),
-            R.string.help_dialed
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_recent_apps),
-            R.string.help_recent_apps
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_silence_call),
-            R.string.help_silence_call
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),
-            R.string.help_number_filter
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_sms_content_filter),
-            R.string.help_sms_content_filter
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_quick_copy),
-            R.string.help_quick_copy
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_off_time),
-            R.string.help_off_time
-        )
-        setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_language),
-            R.string.help_language
-        )
     }
 
     // Synchronize the UI on Tile clicking

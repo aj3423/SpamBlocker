@@ -4,16 +4,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import spam.blocker.BuildConfig
@@ -24,12 +20,11 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
-import spam.blocker.ui.util.Util.Companion.applyTheme
+import spam.blocker.ui.util.UI.Companion.applyTheme
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
-import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val spf = SharedPref(this)
+        val spf = Global(this)
 
         // language
         Util.setLocale(this, spf.getLanguage())
@@ -180,14 +175,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // require permission once
-        if (!spf.hasAskedForAllPermissions()) {
-            spf.setAskedForAllPermission()
-            if (Build.VERSION.SDK_INT >= 33) // android 13+
-                Permissions.requestAllManifestPermissions(this)
-            promptIfScreeningServiceNotEnabled()
-        }
-
         // highlight the top status bar
         //   green == enabled,  red == disabled
         window.statusBarColor = ContextCompat.getColor(
@@ -195,7 +182,12 @@ class MainActivity : AppCompatActivity() {
             if (spf.isGloballyEnabled()) R.color.dark_sea_green else R.color.salmon
         )
 
-
+        // require permission once
+        if (!spf.hasAskedForAllPermissions()) {
+            spf.setAskedForAllPermission()
+            Permissions.requestAllManifestPermissions(this)
+            promptIfScreeningServiceNotEnabled()
+        }
     }
 
 

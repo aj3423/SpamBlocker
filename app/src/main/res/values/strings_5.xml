@@ -32,8 +32,12 @@
     <string name="dot_match_all">Dot Match All</string>
     <string name="literal">Literal</string>
     <string name="off_time">Off Time</string>
+    <string name="schedule">Schedule</string>
+    <string name="workday">Workday</string>
+    <string name="weekend">Weekend</string>
+    <string name="entire_day">Entire Day</string>
     <string-array name="week">
-        <item>Sunday</item>
+        <item>Sun</item>
         <item>Mon</item>
         <item>Tue</item>
         <item>Wed</item>

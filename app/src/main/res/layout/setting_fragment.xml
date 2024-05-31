@@ -457,12 +457,9 @@
 
                     <Space style="@style/setting_spacing" />
 
-                    <Spinner
-                        android:id="@+id/spin_language"
-                        android:layout_width="wrap_content"
-                        android:layout_height="26dp"
-                        android:background="@drawable/shape_spinner_bg"
-                        android:entries="@array/language_list"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_language"
+                        style="@style/setting_stroke_gray_button" />
                 </LinearLayout>
                 <!-- language end -->
             </LinearLayout>

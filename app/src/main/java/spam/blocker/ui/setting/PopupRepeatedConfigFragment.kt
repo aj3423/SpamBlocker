@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 import spam.blocker.R
 import spam.blocker.util.ClosableDialogFragment
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.Util
 
 class PopupRepeatedConfigFragment(val handleSave : (Int, Int) -> Unit) : ClosableDialogFragment() {
@@ -27,8 +27,8 @@ class PopupRepeatedConfigFragment(val handleSave : (Int, Int) -> Unit) : Closabl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spf = SharedPref(requireContext())
-        val (times, inXMin) = spf.getRepeatedConfig()
+        val spf = RepeatedCall(requireContext())
+        val (times, inXMin) = spf.getConfig()
 
         // widgets
         val container_times = view.findViewById<TextInputLayout>(R.id.container_repeated_call_times)

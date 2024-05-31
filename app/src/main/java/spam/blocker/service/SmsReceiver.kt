@@ -13,14 +13,14 @@ import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 
 class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, intent: Intent?) {
         Log.d(Def.TAG, "onReceive in SmsReceiver")
-        if (!SharedPref(ctx!!).isGloballyEnabled()) {
+        if (!Global(ctx!!).isGloballyEnabled()) {
             return
         }
         val action = intent?.action

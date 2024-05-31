@@ -6,12 +6,12 @@ import android.service.quicksettings.Tile.STATE_INACTIVE
 import android.service.quicksettings.TileService
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import spam.blocker.def.Def
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.Global
 
 class Tile : TileService() {
 
     private fun update() {
-        val spf = SharedPref(this)
+        val spf = Global(this)
         val enabled = spf.isGloballyEnabled()
         qsTile.state = if (enabled) STATE_ACTIVE else STATE_INACTIVE
 
@@ -22,7 +22,7 @@ class Tile : TileService() {
     }
 
     override fun onClick() {
-        SharedPref(this).toggleGloballyEnabled()
+        Global(this).toggleGloballyEnabled()
 
         update()
 

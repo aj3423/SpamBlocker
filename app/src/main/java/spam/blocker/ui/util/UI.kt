@@ -18,9 +18,17 @@ import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
 import spam.blocker.R
 
-class Util {
+class UI {
     companion object {
 
+        fun showIf(view: View, visible: Boolean, hide: Boolean = false) {
+            view.visibility = if(visible)
+                View.VISIBLE
+            else if (hide)
+                View.INVISIBLE
+            else
+                View.GONE
+        }
         fun applyTheme(dark: Boolean) {
             if (dark) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

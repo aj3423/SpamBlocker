@@ -32,9 +32,8 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
-import spam.blocker.ui.util.Util.Companion.preventMenuClosingWhenItemClicked
-import spam.blocker.util.SharedPref
-import spam.blocker.util.Util
+import spam.blocker.ui.util.UI.Companion.preventMenuClosingWhenItemClicked
+import spam.blocker.util.SharedPref.Global
 
 open class HistoryFragment<bindingT : ViewBinding>(
     private val inflateMethod: (LayoutInflater, ViewGroup?, Boolean) -> bindingT,
@@ -59,7 +58,7 @@ open class HistoryFragment<bindingT : ViewBinding>(
         savedInstanceState: Bundle?
     ): View {
         val ctx = requireContext()
-        val spf = SharedPref(ctx)
+        val spf = Global(ctx)
 
         _binding = inflateMethod.invoke(inflater, container, false)
         val root: View = binding!!.root
@@ -184,7 +183,7 @@ open class HistoryFragment<bindingT : ViewBinding>(
     @OptIn(DelicateCoroutinesApi::class)
     private fun asyncReloadFromDb() {
         GlobalScope.launch(Dispatchers.IO) {
-            val spf = SharedPref(requireContext())
+            val spf = Global(requireContext())
             val showPassed = spf.getShowPassed()
             val showBlocked = spf.getShowBlocked()
 

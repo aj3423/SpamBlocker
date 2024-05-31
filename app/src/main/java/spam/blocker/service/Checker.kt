@@ -14,7 +14,13 @@ import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref
+import spam.blocker.util.Schedule
+import spam.blocker.util.SharedPref.Contact
+import spam.blocker.util.SharedPref.Dialed
+import spam.blocker.util.SharedPref.RecentApps
+import spam.blocker.util.SharedPref.RepeatedCall
+import spam.blocker.util.SharedPref.Stir
+import spam.blocker.util.Time
 import spam.blocker.util.Util
 
 class CheckResult(
@@ -73,7 +79,7 @@ class Checker { // for namespace only
 
             if (callDetails.hasProperty(Call.Details.PROPERTY_EMERGENCY_CALLBACK_MODE)
                 || callDetails.hasProperty(Call.Details.PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL)) {
-                return CheckResult(true, Def.RESULT_ALLOWED_BY_EMERGENCY)
+                return CheckResult(false, Def.RESULT_ALLOWED_BY_EMERGENCY)
             }
 
             return null
@@ -82,7 +88,7 @@ class Checker { // for namespace only
 
     class STIR(private val ctx: Context, private val callDetails: Call.Details?) : checker {
         override fun priority(): Int {
-            val isExclusive = SharedPref(ctx).isStirExclusive()
+            val isExclusive = Stir(ctx).isExclusive()
             return if (isExclusive) 0 else 10
         }
 
@@ -96,12 +102,12 @@ class Checker { // for namespace only
             if (callDetails == null)
                 return null
 
-            val spf = SharedPref(ctx)
-            if (!spf.isStirEnabled())
+            val spf = Stir(ctx)
+            if (!spf.isEnabled())
                 return null
 
-            val exclusive = spf.isStirExclusive()
-            val includeUnverified = spf.isStirIncludeUnverified()
+            val exclusive = spf.isExclusive()
+            val includeUnverified = spf.isIncludeUnverified()
 
             val stir = callDetails.callerNumberVerificationStatus
 
@@ -129,14 +135,14 @@ class Checker { // for namespace only
 
     class Contact(private val ctx: Context, private val rawNumber: String) : checker {
         override fun priority(): Int {
-            val isExclusive = SharedPref(ctx).isContactExclusive()
+            val isExclusive = Contact(ctx).isExclusive()
             return if (isExclusive) 0 else 10
         }
 
         override fun check(): CheckResult? {
-            val spf = SharedPref(ctx)
+            val spf = Contact(ctx)
 
-            if (!spf.isContactEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
+            if (!spf.isEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
             val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
@@ -145,7 +151,7 @@ class Checker { // for namespace only
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)
                     .setContactName(contact.name)
             } else {
-                if (spf.isContactExclusive()) {
+                if (spf.isExclusive()) {
                     return CheckResult(true, Def.RESULT_BLOCKED_BY_NON_CONTACT)
                 }
             }
@@ -159,13 +165,13 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            val spf = SharedPref(ctx)
-            if (!spf.isRepeatedCallEnabled()
+            val spf = RepeatedCall(ctx)
+            if (!spf.isEnabled()
                 or !Permissions.isCallLogPermissionGranted(ctx) )
             {
                 return null
             }
-            val (times, durationMinutes) = spf.getRepeatedConfig()
+            val (times, durationMinutes) = spf.getConfig()
 
             val durationMillis = durationMinutes.toLong() * 60 * 1000
 
@@ -184,13 +190,13 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            val spf = SharedPref(ctx)
-            if (!spf.isDialedEnabled()
+            val spf = Dialed(ctx)
+            if (!spf.isEnabled()
                 or !Permissions.isCallLogPermissionGranted(ctx) )
             {
                 return null
             }
-            val durationDays = spf.getDialedConfig()
+            val durationDays = spf.getConfig()
 
             val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
 
@@ -210,12 +216,12 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            val spf = SharedPref(ctx)
-            if (!spf.isOffTimeEnabled()) {
+            val spf = spam.blocker.util.SharedPref.OffTime(ctx)
+            if (!spf.isEnabled()) {
                 return null
             }
-            val (stHour, stMin) = spf.getOffTimeStart()
-            val (etHour, etMin) = spf.getOffTimeEnd()
+            val (stHour, stMin) = spf.getStart()
+            val (etHour, etMin) = spf.getEnd()
 
             if (Util.isCurrentTimeWithinRange(stHour, stMin, etHour, etMin)) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_OFF_TIME)
@@ -231,13 +237,13 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            val spf = SharedPref(ctx)
+            val spf = RecentApps(ctx)
 
-            val enabledPackages = spf.getRecentAppList()
+            val enabledPackages = spf.getList()
             if (enabledPackages.isEmpty()) {
                 return null
             }
-            val inXmin = spf.getRecentAppConfig()
+            val inXmin = spf.getConfig()
             val usedApps = Permissions.listUsedAppWithinXSecond(ctx, inXmin * 60)
 
             val intersection = enabledPackages.intersect(usedApps.toSet())
@@ -265,6 +271,16 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            // 1. check time schedule
+            val sch = Schedule.parseFromStr(filter.schedule)
+            if (sch.enabled) {
+                val now = Time.currentTimeMillis()
+                if (!sch.satisfyTime(now)) {
+                    return null
+                }
+            }
+
+            // 2. check regex
             val opts = Util.flagsToRegexOptions(filter.patternFlags)
             if (filter.pattern.toRegex(opts).matches(Util.clearNumber(rawNumber))) {
                 val block = filter.isBlacklist
@@ -289,6 +305,16 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val f = filter // for short
 
+            // 1. check time schedule
+            val sch = Schedule.parseFromStr(filter.schedule)
+            if (sch.enabled) {
+                val now = Time.currentTimeMillis()
+                if (!sch.satisfyTime(now)) {
+                    return null
+                }
+            }
+
+            // 2. check regex
             val opts = Util.flagsToRegexOptions(filter.patternFlags)
             val optsExtra = Util.flagsToRegexOptions(filter.patternExtraFlags)
 

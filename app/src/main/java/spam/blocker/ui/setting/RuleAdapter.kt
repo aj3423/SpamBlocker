@@ -3,10 +3,10 @@ package spam.blocker.ui.setting
 import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
+import android.graphics.PorterDuff
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckedTextView
 import android.widget.ImageView
 import android.widget.TextView;
 
@@ -15,6 +15,7 @@ import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.db.PatternRule
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.ui.util.UI.Companion.showIf
 
 class RuleAdapter(
     private val ctx: Context,
@@ -34,6 +35,9 @@ class RuleAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val f = filters[position]
 
+        val gray = ctx.getColor(R.color.mid_grey)
+        val teal = ctx.getColor(R.color.teal_200)
+
         holder.itemView.setOnClickListener{
             onItemClick(f)
         }
@@ -44,18 +48,19 @@ class RuleAdapter(
 
         holder.labelPattern.text = f.patternStrColorful(ctx)
         holder.labelDesc.text = f.description
-        holder.chkApplyToCall.isChecked = f.isForCall()
-        holder.chkApplyToSms.isChecked = f.isForSms()
-        if (forType != Def.ForCall) {
-            holder.chkApplyToCall.visibility = View.GONE
+        holder.imgApplyToCall.setColorFilter(if (f.isForCall()) teal else gray, PorterDuff.Mode.SRC_IN)
+        holder.imgApplyToSms.setColorFilter(if (f.isForSms()) teal else gray, PorterDuff.Mode.SRC_IN)
+
+        if (forType != Def.ForNumber) {
+            holder.imgApplyToCall.visibility = View.GONE
         }
 
         holder.labelPriority.text = ctx.resources.getString(R.string.priority) + ": ${f.priority}"
 
-        holder.imgBellRinging.visibility = if(f.isBlacklist && f.importance >= NotificationManager.IMPORTANCE_DEFAULT) View.VISIBLE else View.GONE
-        holder.imgHeadsUp.visibility = if(f.isBlacklist && f.importance == NotificationManager.IMPORTANCE_HIGH) View.VISIBLE else View.GONE
-        holder.imgShade.visibility = if(f.isBlacklist && f.importance == NotificationManager.IMPORTANCE_MIN) View.VISIBLE else View.GONE
-        holder.imgStatusbarShadde.visibility = if(f.isBlacklist && f.importance >= NotificationManager.IMPORTANCE_LOW) View.VISIBLE else View.GONE
+        showIf(holder.imgBellRinging, f.isBlacklist && f.importance >= NotificationManager.IMPORTANCE_DEFAULT)
+        showIf(holder.imgHeadsUp, f.isBlacklist && f.importance == NotificationManager.IMPORTANCE_HIGH)
+        showIf(holder.imgShade, f.isBlacklist && f.importance == NotificationManager.IMPORTANCE_MIN)
+        showIf(holder.imgStatusbarShadde, f.isBlacklist && f.importance >= NotificationManager.IMPORTANCE_LOW)
     }
 
     override fun getItemCount() = filters.size
@@ -64,8 +69,8 @@ class RuleAdapter(
 
         var labelPattern: TextView
         var labelDesc: TextView
-        var chkApplyToCall: CheckedTextView
-        var chkApplyToSms: CheckedTextView
+        var imgApplyToCall: ImageView
+        var imgApplyToSms: ImageView
         var labelPriority: TextView
         var imgBellRinging: ImageView
         var imgHeadsUp: ImageView
@@ -75,8 +80,8 @@ class RuleAdapter(
         init {
             labelPattern = itemView.findViewById(R.id.text_filter_pattern)
             labelDesc = itemView.findViewById(R.id.text_filter_desc)
-            chkApplyToCall = itemView.findViewById(R.id.chk_applied_to_call)
-            chkApplyToSms = itemView.findViewById(R.id.chk_applied_to_sms)
+            imgApplyToCall = itemView.findViewById(R.id.img_for_call)
+            imgApplyToSms = itemView.findViewById(R.id.img_for_sms)
             labelPriority = itemView.findViewById(R.id.label_priority)
             imgBellRinging = itemView.findViewById(R.id.img_bell_ringing)
             imgHeadsUp = itemView.findViewById(R.id.img_heads_up)

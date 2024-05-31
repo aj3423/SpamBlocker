@@ -1,6 +1,7 @@
 package spam.blocker.ui.util
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.ImageView
@@ -11,10 +12,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import spam.blocker.R
 import spam.blocker.databinding.PopupRegexFlagsBinding
-import spam.blocker.db.Flag
 import spam.blocker.def.Def
-import spam.blocker.ui.util.Util.Companion.setupImageTooltip
-import spam.blocker.util.Util
+import spam.blocker.ui.util.UI.Companion.setupImageTooltip
+import spam.blocker.util.Flag
 
 class MaterialInputRegexFlagsUtil {
     companion object {
@@ -27,7 +27,7 @@ class MaterialInputRegexFlagsUtil {
                 container.endIconDrawable = if (imdlc.isEmpty())
                     ContextCompat.getDrawable(ctx, R.drawable.ic_flags)
                 else
-                    TextDrawable(imdlc, ctx.resources.getColor(R.color.regex_flags, null))
+                    TextDrawable(imdlc, Color.MAGENTA)
             }
             updateFlagsIcon()
             container.setEndIconOnClickListener {

@@ -118,7 +118,7 @@ func translate_lang(lang string) error {
 			if fi.IsDir() || !strings.HasPrefix(fi.Name(), "strings_") {
 				return nil
 			}
-			if strings.Contains(fi.Name(), "languages") {
+			if strings.Contains(fi.Name(), "no_translate") {
 				return nil
 			}
 

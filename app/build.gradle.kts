@@ -81,13 +81,15 @@ dependencies {
 
     implementation("me.leolin:ShortcutBadger:1.1.22@aar") // for the number indicator on app icon
 
-    implementation("il.co.theblitz:observablecollections:1.4.2") // in jcenter only
+    implementation("il.co.theblitz:observablecollections:1.4.2") // for UI observer pattern, in jcenter only
 
     implementation("com.github.skydoves:balloon:1.6.4") // for tooltip
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0") // for backup/restore
 
     implementation("me.grantland:autofittextview:0.2.1") // for auto-fit label/button
+
+    implementation("com.github.DavidProdinger:weekdays-selector:1.1.1") // for weekday picker
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

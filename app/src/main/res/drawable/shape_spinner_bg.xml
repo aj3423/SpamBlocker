@@ -15,7 +15,7 @@
         android:drawable="@drawable/spinner_arrow"
         android:height="12dp"
         android:width="12dp"
-        android:end="3dp"
-        android:top="12dp"
+        android:end="1dp"
+        android:top="13dp"
         android:gravity="end" />
 </layer-list>

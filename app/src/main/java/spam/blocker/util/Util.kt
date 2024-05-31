@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import spam.blocker.R
-import spam.blocker.db.Flag
 import spam.blocker.def.Def
 import java.text.SimpleDateFormat
 import java.util.Calendar

@@ -11,8 +11,8 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.Notification
-import spam.blocker.util.SharedPref
-import spam.blocker.util.Util
+import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.Silence
 
 class CallService : CallScreeningService() {
     override fun onScreenCall(callDetails: TelecomCall.Details) {
@@ -26,7 +26,7 @@ class CallService : CallScreeningService() {
 
         val builder = CallResponse.Builder()
 
-        if (!SharedPref(this).isGloballyEnabled()) {
+        if (!Global(this).isGloballyEnabled()) {
             respondToCall(callDetails, builder.build())
             return
         }
@@ -35,7 +35,7 @@ class CallService : CallScreeningService() {
         val r = processCall(this, rawNumber, callDetails)
 
         if (r.shouldBlock) {
-            val silence = SharedPref(this).isSilenceCallEnabled()
+            val silence = Silence(this).isEnabled()
 
             builder.apply {
                 setSkipCallLog(false)

@@ -14,7 +14,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import spam.blocker.R
-import spam.blocker.ui.util.Util.Companion.setupImageTooltip
+import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.util.Clipboard
 import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.Configs

@@ -89,10 +89,8 @@
                 style="@style/help_question_icon"
                 android:background="@drawable/ic_question"
                 tools:ignore="ContentDescription" />
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+
+            <Space style="@style/setting_spacing"/>
 
             <CheckBox
                 android:id="@+id/popup_chk_call"
@@ -116,10 +114,7 @@
                 style="@style/setting_gray_label"
                 android:text="@string/type" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            <Space style="@style/setting_spacing" />
 
             <RadioGroup
                 android:id="@+id/popup_radio_blackwhitelist"
@@ -146,7 +141,6 @@
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_importance">
             <TextView
-                android:id="@+id/label_importance"
                 style="@style/setting_gray_label"
                 android:text="@string/notification" />
 
@@ -156,10 +150,7 @@
                 android:background="@drawable/ic_question"
                 tools:ignore="ContentDescription" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+            <Space style="@style/setting_spacing"/>
 
             <Spinner
                 android:id="@+id/spin_importance"
@@ -168,6 +159,37 @@
                 android:entries="@array/importance_list"/>
         </LinearLayout>
 
+        <!-- schedule -->
+        <LinearLayout style="@style/setting_row"
+            android:id="@+id/row_schedule" >
+            <TextView
+                style="@style/setting_gray_label"
+                android:text="@string/schedule" />
+
+            <Space style="@style/setting_spacing"/>
+
+            <Button
+                android:id="@+id/popup_btn_schedule"
+                style="@style/setting_stroke_gray_button" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_schedule"
+                style="@style/setting_switch" />
+
+        </LinearLayout>
+        <LinearLayout style="@style/setting_row"
+            android:id="@+id/row_weekdays" >
+
+            <com.dpro.widgets.WeekdaysPicker
+                android:id="@+id/picker_weekdays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:highlight_color="@color/teal_200"
+                app:weekenddarker="true"
+                app:sunday_first_day="true" />
+        </LinearLayout>
+        <!-- schedule end -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/popup_btn_save_filter"
             style="@style/setting_stroke_blue_button"
@@ -175,7 +197,6 @@
             android:layout_marginEnd="0dp"
             android:layout_gravity="end"
             android:text="@string/save" />
-
 
     </LinearLayout>
 

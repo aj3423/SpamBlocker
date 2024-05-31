@@ -8,45 +8,10 @@ import android.text.SpannableStringBuilder
 import kotlinx.serialization.Serializable
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.util.Flag
+import spam.blocker.util.Schedule
 import spam.blocker.util.SpannableUtil
 
-@Serializable
-class Flag(var value: Int) {
-
-    // check if it has a flag
-    fun Has(f: Int): Boolean {
-        return value and f == f
-    }
-
-    // add or remove a flag
-    fun set(f: Int, enabled: Boolean) {
-        value = if (enabled) { // add flag
-            value or f
-        } else { // clear flag
-            value and f.inv()
-        }
-    }
-
-    // Generate string "imdlc" from flags
-    // params:
-    //   attrMap - mapOf(IgnoreCase -> "i", DotMatchAll -> "d", ...)
-    //   inverse - invert the showing behavior of some flags,
-    //     by default it's: show when set
-    //     if it's inverted: show when not set
-    fun toStr(attrMap: Map<Int, String>, inverse: List<Int>): String {
-        var ret = ""
-        attrMap.forEach { (k, v) ->
-            if (inverse.contains(k)) {
-                if (!Has(k))
-                    ret += v
-            } else {
-                if (Has(k))
-                    ret += v
-            }
-        }
-        return ret
-    }
-}
 
 @Serializable
 class PatternRule {
@@ -64,9 +29,11 @@ class PatternRule {
     var isBlacklist = true
     var flagCallSms = Flag(Def.FLAG_FOR_BOTH_SMS_CALL) // it applies to SMS or Call or both
     var importance = Def.DEF_SPAM_IMPORTANCE // notification importance
+    var schedule = ""
+    var blockType = Def.DEF_BLOCK_TYPE
 
     override fun toString(): String {
-        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, patternFlags: $patternFlags, patternExtraFlags: $patternExtraFlags, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance"
+        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, patternFlags: $patternFlags, patternExtraFlags: $patternExtraFlags, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance, schedule: $schedule, blockType: $blockType"
     }
 
     fun isForCall(): Boolean {
@@ -82,19 +49,27 @@ class PatternRule {
     fun patternStrColorful(ctx: Context): SpannableStringBuilder {
         val green = ctx.resources.getColor(R.color.dark_sea_green, null)
         val red = ctx.resources.getColor(R.color.salmon, null)
-        val flagsColor = ctx.resources.getColor(R.color.regex_flags, null)
+        val scheduleColor = ctx.resources.getColor(R.color.schedule, null)
+        val flagsColor = Color.MAGENTA
 
         val ratioFlags = 0.9f
 
         val patternColor = if (isBlacklist) red else green
 
-        // format:
-        //   imdl .*   <-   imdl particular.*
         val sb = SpannableStringBuilder()
 
+        // 1. Time schedule
+        val sch = Schedule.parseFromStr(schedule)
+        if (sch.enabled)
+            SpannableUtil.append(sb, sch.toDisplayStr(ctx) + " ", scheduleColor, relativeSize = 0.8f)
+
+        // 2. imdlc
+        // format:
+        //   imdl .*   <-   imdl particular.*
         val imdlc = patternFlags.toStr(Def.MAP_REGEX_FLAGS, Def.LIST_REGEX_FLAG_INVERSE)
         SpannableUtil.append(sb, if (imdlc.isEmpty()) "" else "$imdlc ", flagsColor, relativeSize = ratioFlags)
 
+        // 3. Particular Number
         SpannableUtil.append(sb, pattern, patternColor, bold = true)
         if (patternExtra != "") {
             SpannableUtil.append(sb, "   <-   ", Color.LTGRAY)
@@ -123,7 +98,6 @@ class PatternRule {
     fun setForSms(enabled: Boolean) {
         flagCallSms.set(Def.FLAG_FOR_SMS, enabled)
     }
-
 }
 
 
@@ -132,7 +106,7 @@ abstract class RuleTable {
     abstract fun tableName(): String
 
     @SuppressLint("Range")
-    fun _listAllPatternRulesByFilter(ctx: Context, filterSql: String): List<PatternRule> {
+    private fun listByFilter(ctx: Context, filterSql: String): List<PatternRule> {
         val ret: MutableList<PatternRule> = mutableListOf()
 
         val db = Db.getInstance(ctx).readableDatabase
@@ -154,7 +128,8 @@ abstract class RuleTable {
                     f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
                     val columnImportance = it.getColumnIndex(Db.COLUMN_IMPORTANCE)
                     f.importance = if(it.isNull(columnImportance)) Def.DEF_SPAM_IMPORTANCE else it.getInt(columnImportance) // for historical compatibility
-
+                    f.schedule = it.getString(it.getColumnIndex(Db.COLUMN_SCHEDULE))
+                    f.blockType = it.getInt(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
                     ret += f
                 } while (it.moveToNext())
             }
@@ -184,6 +159,8 @@ abstract class RuleTable {
                 f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
                 val columnImportance = it.getColumnIndex(Db.COLUMN_IMPORTANCE)
                 f.importance = if(it.isNull(columnImportance)) Def.DEF_SPAM_IMPORTANCE else it.getInt(columnImportance) // for historical compatibility
+                f.schedule = it.getString(it.getColumnIndex(Db.COLUMN_SCHEDULE))
+                f.blockType = it.getInt(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
 
                 return f
             } else {
@@ -222,10 +199,10 @@ abstract class RuleTable {
 
 //        Log.d(Def.TAG, sql)
 
-        return _listAllPatternRulesByFilter(ctx, sql)
+        return listByFilter(ctx, sql)
     }
 
-    fun addNewPatternRule(ctx: Context, f: PatternRule): Long {
+    fun addNewRule(ctx: Context, f: PatternRule): Long {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
@@ -237,11 +214,13 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+        cv.put(Db.COLUMN_SCHEDULE, f.schedule)
+        cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
 
         return db.insert(tableName(), null, cv)
     }
 
-    fun addPatternRuleWithId(ctx: Context, f: PatternRule) {
+    fun addRuleWithId(ctx: Context, f: PatternRule) {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_ID, f.id)
@@ -254,11 +233,13 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+        cv.put(Db.COLUMN_SCHEDULE, f.schedule)
+        cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
 
         db.insert(tableName(), null, cv)
     }
 
-    fun updatePatternRule(ctx: Context, id: Long, f: PatternRule): Boolean {
+    fun updateRuleById(ctx: Context, id: Long, f: PatternRule): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PATTERN, f.pattern)
@@ -270,11 +251,13 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+        cv.put(Db.COLUMN_SCHEDULE, f.schedule)
+        cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
 
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }
 
-    fun delPatternRule(ctx: Context, id: Long): Boolean {
+    fun delById(ctx: Context, id: Long): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
         val cursor = db.rawQuery(sql, null)

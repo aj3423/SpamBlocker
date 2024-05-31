@@ -1,6 +1,7 @@
 package spam.blocker.util
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AppOpsManager
 import android.app.role.RoleManager
@@ -8,6 +9,7 @@ import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.ComponentName
 import android.content.Context
+import android.content.Context.TELEPHONY_SUBSCRIPTION_SERVICE
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
@@ -16,6 +18,8 @@ import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
 import android.provider.Telephony.Sms
+import android.telephony.SubscriptionManager
+import android.telephony.TelephonyManager
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,26 +28,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import spam.blocker.def.Def
+import spam.blocker.util.SharedPref.Global
 
 open class Permissions {
     companion object {
-
-        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
         fun requestAllManifestPermissions(activity: AppCompatActivity) {
-            try {
-                val packageInfo = activity.packageManager.getPackageInfo(
-                    activity.packageName, PackageManager.PackageInfoFlags.of(
-                        PackageManager.GET_PERMISSIONS.toLong()
-                    )
-                )
+            val permissions = mutableListOf(
+                "android.permission.READ_CALL_LOG",
+                "android.permission.READ_SMS",
+                "android.permission.ANSWER_PHONE_CALLS",
+                "android.permission.POST_NOTIFICATIONS",
+                "android.permission.READ_CONTACTS",
+                "android.permission.RECEIVE_SMS",
+                "android.permission.QUERY_ALL_PACKAGES",
+            )
 
-                val set = mutableSetOf(*packageInfo.requestedPermissions ?: emptyArray())
-                val permissions = set.toTypedArray()
-                activity.requestPermissions(permissions, 0)
-
-            } catch (t: Throwable) {
-                Log.w(Def.TAG, t)
-            }
+            activity.requestPermissions(permissions.toTypedArray(), 0)
         }
 
         fun requestReceiveSmsPermission(activity: AppCompatActivity) {
@@ -221,8 +221,10 @@ open class Permissions {
     }
 }
 
-class Permission(val name: String, val isOptional: Boolean = false) {
-}
+class Permission(
+    val name: String,
+    val isOptional: Boolean = false,
+) { }
 
 /*
     Convenient class for asking multiple permissions,
@@ -238,15 +240,14 @@ class PermissionChain(
 ) {
     private val launcher: ActivityResultLauncher<String>
 
-    private lateinit var curr: MutableList<Permission>
-    private var currIsOpotional: Boolean = false
+    private lateinit var currList: MutableList<Permission>
+    private lateinit var curr: Permission
 
     init {
         launcher = fragment.registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
-
-            if (isGranted || currIsOpotional) {
+            if (isGranted || curr.isOptional) {
                 checkNext()
             } else {
                 onResult(false)
@@ -255,23 +256,23 @@ class PermissionChain(
     }
 
     fun ask() {
-        curr = ArrayList(permissions) // make a copy
+        currList = ArrayList(permissions) // make a copy
         checkNext()
     }
 
     private fun checkNext() {
-        if (curr.isEmpty()) {
+        if (currList.isEmpty()) {
             onResult(true)
         } else {
-            val p0 = curr.first()
-            curr.removeAt(0)
+            val p0 = currList.first()
+            currList.removeAt(0)
 
-            currIsOpotional = p0.isOptional
+            curr = p0
 
             if (!p0.isOptional) { // a required permission, just launch the launcher
                 launcher.launch(p0.name)
             } else { // optional permission, only ask for the first time
-                val spf = SharedPref(fragment.requireContext())
+                val spf = Global(fragment.requireContext())
                 val attr = "ask_once_${p0.name}"
                 val askedAlready = spf.readBoolean(attr, false)
                 if (!askedAlready) {

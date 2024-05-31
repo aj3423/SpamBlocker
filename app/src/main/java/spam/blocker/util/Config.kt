@@ -7,33 +7,65 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
+import spam.blocker.util.SharedPref.Contact
+import spam.blocker.util.SharedPref.Dialed
+import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.OffTime
+import spam.blocker.util.SharedPref.RecentApps
+import spam.blocker.util.SharedPref.RepeatedCall
+import spam.blocker.util.SharedPref.Silence
+import spam.blocker.util.SharedPref.Stir
 
 class Config {
     @Serializable
     class Global {
         var enabled = false
-        fun load(ctx: Context) { enabled = SharedPref(ctx).isGloballyEnabled() }
-        fun apply(ctx: Context) { SharedPref(ctx).setGloballyEnabled(enabled) }
+        fun load(ctx: Context) { enabled = Global(ctx).isGloballyEnabled() }
+        fun apply(ctx: Context) { Global(ctx).setGloballyEnabled(enabled) }
     }
     @Serializable
     class Theme {
         var isDark = false
-        fun load(ctx: Context) { isDark = SharedPref(ctx).isDarkTheme() }
-        fun apply(ctx: Context) { SharedPref(ctx).setDarkTheme(isDark) }
+        fun load(ctx: Context) { isDark = Global(ctx).isDarkTheme() }
+        fun apply(ctx: Context) { Global(ctx).setDarkTheme(isDark) }
+    }
+    @Serializable
+    class Language {
+        var lang = ""
+        fun load(ctx: Context) { lang = Global(ctx).getLanguage() }
+        fun apply(ctx: Context) { Global(ctx).setLanguage(lang) }
     }
     @Serializable
     class Contact {
         var enabled = false
         var isExcusive = false
         fun load(ctx: Context) {
-            val spf = SharedPref(ctx)
-            enabled = spf.isContactEnabled()
-            isExcusive = spf.isContactExclusive()
+            val spf = Contact(ctx)
+            enabled = spf.isEnabled()
+            isExcusive = spf.isExclusive()
         }
         fun apply(ctx: Context) {
-            val spf = SharedPref(ctx)
-            spf.setContactEnabled(enabled)
-            spf.setContactExclusive(isExcusive)
+            val spf = Contact(ctx)
+            spf.setEnabled(enabled)
+            spf.setExclusive(isExcusive)
+        }
+    }
+    @Serializable
+    class STIR {
+        var enabled = false
+        var isExcusive = false
+        var includeUnverified = false
+        fun load(ctx: Context) {
+            val spf = Stir(ctx)
+            enabled = spf.isEnabled()
+            isExcusive = spf.isExclusive()
+            includeUnverified = spf.isIncludeUnverified()
+        }
+        fun apply(ctx: Context) {
+            val spf = Stir(ctx)
+            spf.setEnabled(enabled)
+            spf.setExclusive(isExcusive)
+            spf.setIncludeUnverified(includeUnverified)
         }
     }
     @Serializable
@@ -42,16 +74,16 @@ class Config {
         var times = 0
         var inXMin = 0
         fun load(ctx: Context) {
-            val spf = SharedPref(ctx)
-            enabled = spf.isRepeatedCallEnabled()
-            val (tms, inxmin) = spf.getRepeatedConfig()
+            val spf = RepeatedCall(ctx)
+            enabled = spf.isEnabled()
+            val (tms, inxmin) = spf.getConfig()
             times = tms
             inXMin = inxmin
         }
         fun apply(ctx: Context) {
-            val spf = SharedPref(ctx)
-            spf.setRepeatedCallEnabled(enabled)
-            spf.setRepeatedConfig(times, inXMin)
+            val spf = RepeatedCall(ctx)
+            spf.setEnabled(enabled)
+            spf.setConfig(times, inXMin)
         }
     }
     @Serializable
@@ -59,21 +91,21 @@ class Config {
         var enabled = false
         var inXDay = 0
         fun load(ctx: Context) {
-            val spf = SharedPref(ctx)
-            enabled = spf.isDialedEnabled()
-            inXDay = spf.getDialedConfig()
+            val spf = Dialed(ctx)
+            enabled = spf.isEnabled()
+            inXDay = spf.getConfig()
         }
         fun apply(ctx: Context) {
-            val spf = SharedPref(ctx)
-            spf.setDialedEnabled(enabled)
-            spf.setDialedConfig(inXDay)
+            val spf = Dialed(ctx)
+            spf.setEnabled(enabled)
+            spf.setConfig(inXDay)
         }
     }
     @Serializable
     class Silence {
         var enabled = false
-        fun load(ctx: Context) { enabled = SharedPref(ctx).isSilenceCallEnabled() }
-        fun apply(ctx: Context) { SharedPref(ctx).setSilenceCallEnabled(enabled) }
+        fun load(ctx: Context) { enabled = Silence(ctx).isEnabled() }
+        fun apply(ctx: Context) { Silence(ctx).setEnabled(enabled) }
     }
     @Serializable
     class OffTime {
@@ -83,20 +115,20 @@ class Config {
         var etHour = 0
         var etMin = 0
         fun load(ctx: Context) {
-            val spf = SharedPref(ctx)
-            enabled = spf.isOffTimeEnabled()
-            val (stHour_, stMin_) = spf.getOffTimeStart()
-            val (etHour_, etMin_) = spf.getOffTimeEnd()
+            val spf = OffTime(ctx)
+            enabled = spf.isEnabled()
+            val (stHour_, stMin_) = spf.getStart()
+            val (etHour_, etMin_) = spf.getEnd()
             stHour = stHour_
             stMin = stMin_
             etHour = etHour_
             etMin = etMin_
         }
         fun apply(ctx: Context) {
-            val spf = SharedPref(ctx)
-            spf.setOffTimeEnabled(enabled)
-            spf.setOffTimeStart(stHour, stMin)
-            spf.setOffTimeEnd(etHour, etMin)
+            val spf = OffTime(ctx)
+            spf.setEnabled(enabled)
+            spf.setStart(stHour, stMin)
+            spf.setEnd(etHour, etMin)
         }
     }
     @Serializable
@@ -104,22 +136,16 @@ class Config {
         val list = mutableListOf<String>()
         var inXMin = 0
         fun load(ctx: Context) {
-            val spf = SharedPref(ctx)
+            val spf = RecentApps(ctx)
             list.clear()
-            list.addAll(spf.getRecentAppList())
-            inXMin = spf.getRecentAppConfig()
+            list.addAll(spf.getList())
+            inXMin = spf.getConfig()
         }
         fun apply(ctx: Context) {
-            val spf = SharedPref(ctx)
-            spf.setRecentAppList(list)
-            spf.setRecentAppConfig(inXMin)
+            val spf = RecentApps(ctx)
+            spf.setList(list)
+            spf.setConfig(inXMin)
         }
-    }
-    @Serializable
-    class Language {
-        var lang = ""
-        fun load(ctx: Context) { lang = SharedPref(ctx).getLanguage() }
-        fun apply(ctx: Context) { SharedPref(ctx).setLanguage(lang) }
     }
     @Serializable
     abstract class PatternRules {
@@ -134,7 +160,7 @@ class Config {
             val tbl = table()
             tbl.clearAll(ctx)
             rules.forEach{
-                tbl.addPatternRuleWithId(ctx, it)
+                tbl.addRuleWithId(ctx, it)
             }
         }
     }
@@ -156,13 +182,16 @@ class Config {
 class Configs {
     val global = Config.Global()
     val theme = Config.Theme()
+    val language = Config.Language()
+
     val contacts = Config.Contact()
+    val stir = Config.STIR()
     val repeatedCall = Config.RepeatedCall()
     val dialed = Config.Dialed()
     val recentApps = Config.RecentApps()
     val silence = Config.Silence()
     val offTime = Config.OffTime()
-    val language = Config.Language()
+
     val numberRules = Config.NumberRules()
     val contentRules = Config.ContentRules()
     val quickCopyRules = Config.QuickCopyRules()
@@ -170,13 +199,16 @@ class Configs {
     fun load(ctx: Context) {
         global.load(ctx)
         theme.load(ctx)
+        language.load(ctx)
+
         contacts.load(ctx)
+        stir.load(ctx)
         repeatedCall.load(ctx)
         dialed.load(ctx)
         recentApps.load(ctx)
         silence.load(ctx)
         offTime.load(ctx)
-        language.load(ctx)
+
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
@@ -184,13 +216,16 @@ class Configs {
     fun apply(ctx: Context) {
         global.apply(ctx)
         theme.apply(ctx)
+        language.apply(ctx)
+
         contacts.apply(ctx)
+        stir.apply(ctx)
         repeatedCall.apply(ctx)
         dialed.apply(ctx)
         recentApps.apply(ctx)
         silence.apply(ctx)
         offTime.apply(ctx)
-        language.apply(ctx)
+
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)

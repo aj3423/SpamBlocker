@@ -9,10 +9,10 @@ import spam.blocker.def.Def
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 24
+        const val DB_VERSION = 25
         const val DB_NAME = "spam_blocker.db"
 
-        // ---- filter tables ----
+        // ---- filter table ----
         const val TABLE_NUMBER_RULE = "number_filter"
         const val TABLE_CONTENT_RULE = "content_filter"
         const val TABLE_QUICK_COPY_RULE = "quick_copy"
@@ -27,6 +27,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_PRIORITY = "priority"
         const val COLUMN_IS_BLACK = "blacklist"
         const val COLUMN_IMPORTANCE = "importance"
+        const val COLUMN_SCHEDULE = "schedule"
+        const val COLUMN_BLOCK_TYPE = "block_type"
 
 
         // ---- call ----
@@ -34,7 +36,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         // ---- sms ----
         const val TABLE_SMS = "sms"
 
-        // "id"
+        // ---- history table ----
         const val COLUMN_PEER = "peer" // peer number
         const val COLUMN_TIME = "time"
         const val COLUMN_RESULT = "result" // Int, as RESULT_... below
@@ -66,7 +68,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
                         "$COLUMN_FLAG_CALL_SMS INTEGER, " +
-                        "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}" +
+                        "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}, " +
+                        "$COLUMN_SCHEDULE TEXT DEFAULT '', " +
+                        "$COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.DEF_BLOCK_TYPE}" +
                         ")"
             )
         }
@@ -117,6 +121,12 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         }
         if ((newVersion >= 24) && (oldVersion < 24)) {
             onCreate(db)
+        }
+        if ((newVersion >= 25) && (oldVersion < 25)) {
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_SCHEDULE TEXT DEFAULT ''")
+            db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.BLOCK_TYPE_REJECT}")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_SCHEDULE TEXT DEFAULT ''")
+            db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.BLOCK_TYPE_REJECT}")
         }
     }
 }

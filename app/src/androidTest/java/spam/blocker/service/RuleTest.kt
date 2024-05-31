@@ -10,22 +10,28 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import spam.blocker.db.ContentRuleTable
-import spam.blocker.db.Flag
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
 import spam.blocker.def.Def
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
+import spam.blocker.util.Flag
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref
+import spam.blocker.util.Schedule
+import spam.blocker.util.SharedPref.Contact
+import spam.blocker.util.SharedPref.Dialed
+import spam.blocker.util.SharedPref.OffTime
+import spam.blocker.util.SharedPref.RecentApps
+import spam.blocker.util.SharedPref.RepeatedCall
+import spam.blocker.util.SharedPref.SharedPref
 import spam.blocker.util.Time
 import spam.blocker.util.Util
+import java.util.Calendar
 
 
 class RuleTest {
 
     private val ctx: Context = ApplicationProvider.getApplicationContext()
-    private val spf = SharedPref(ctx)
 
     val A = "111" // Allow
     val B = "222" // Block
@@ -35,15 +41,7 @@ class RuleTest {
     fun setup() {
         clearAllMocks()
 
-        spf.setContactEnabled(false)
-        spf.setContactExclusive(false)
-        spf.setRepeatedCallEnabled(false)
-        spf.setRepeatedConfig(1, 5)
-        spf.setRecentAppList(listOf())
-        spf.setRecentAppConfig(5)
-        spf.setDialedEnabled(false)
-        spf.setDialedConfig(3)
-        spf.setOffTimeEnabled(false)
+        SharedPref(ctx).clear()
         NumberRuleTable().clearAll(ctx)
         ContentRuleTable().clearAll(ctx)
     }
@@ -52,7 +50,7 @@ class RuleTest {
 
     fun build_rule(
         pattern: String, patternExtra: String, priority: Int, isBlacklist: Boolean, flagCallSms: Int,
-        patternFlags: Int = 0, patternExtraFlags: Int = 0
+        patternFlags: Int = 0, patternExtraFlags: Int = 0, schedule: String = ""
     ) : PatternRule {
         val f = PatternRule()
         f.pattern = pattern
@@ -62,15 +60,16 @@ class RuleTest {
         f.flagCallSms = Flag(flagCallSms)
         f.patternFlags = Flag(patternFlags)
         f.patternExtraFlags = Flag(patternExtraFlags)
+        f.schedule = schedule
 
         return f
     }
 
     fun add_number_rule(f: PatternRule) {
-        NumberRuleTable().addNewPatternRule(ctx, f)
+        NumberRuleTable().addNewRule(ctx, f)
     }
     fun add_content_rule(f: PatternRule) {
-        ContentRuleTable().addNewPatternRule(ctx, f)
+        ContentRuleTable().addNewRule(ctx, f)
     }
 
 
@@ -123,14 +122,19 @@ class RuleTest {
         mockkObject(Time)
         every { Time.currentTimeMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
     }
+    private fun mock_current_time_millis(millis: Long) {
+        mockkObject(Time)
+        every { Time.currentTimeMillis() } returns millis
+    }
 
     // -------- tests begin --------
 
     // In Contact > blacklist
     @Test
     fun contact_inclusive() {
-        spf.setContactEnabled(true)
-        spf.setContactExclusive(false)
+        val spf = Contact(ctx)
+        spf.setEnabled(true)
+        spf.setExclusive(false)
         mock_contact(A)
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
@@ -144,8 +148,9 @@ class RuleTest {
     // Non Contact -> block
     @Test
     fun contact_exclusive() {
-        spf.setContactEnabled(true)
-        spf.setContactExclusive(true)
+        val spf = Contact(ctx)
+        spf.setEnabled(true)
+        spf.setExclusive(true)
         mock_contact(A)
 
         // contact: pass
@@ -155,30 +160,13 @@ class RuleTest {
         assertEquals(Def.RESULT_BLOCKED_BY_NON_CONTACT, Checker.checkCall(ctx, B).result)
     }
 
-    // testing contact contains special characters
-//    @Test
-//    fun contact_with_special_characters() {
-//        val C = "+1 222-333 4444" // Contact with Special Characters
-//        val incomingCalls = listOf("2223334444", "12223334444", "+12223334444", "+1 222 333-4444", "1 222 333 4 4 4 4")
-//
-//        spf.setContactEnabled(true)
-//        spf.setContactExclusive(false)
-//        mock_contact(C)
-//
-//        // all match
-//        incomingCalls.forEach {
-//            assertEquals("should match: <$C> - <$it>", Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, it).result)
-//        }
-//        // should block
-//        assertEquals("should block <$C> - <$B>", Def.RESULT_ALLOWED_BY_DEFAULT, Checker.checkCall(ctx, B).result)
-//    }
-
     // testing repeated call
     @Test
     fun repeated_call() {
+        val spf = RepeatedCall(ctx)
         val inXmin = 5
-        spf.setRepeatedCallEnabled(true)
-        spf.setRepeatedConfig(4, inXmin)
+        spf.setEnabled(true)
+        spf.setConfig(4, inXmin)
 
         mockkObject(Permissions)
         mock_call_permission_granted()
@@ -221,9 +209,10 @@ class RuleTest {
     // testing dialed
     @Test
     fun dialed() {
+        val spf = Dialed(ctx)
         val inXdays = 5
-        spf.setDialedEnabled(true)
-        spf.setDialedConfig(inXdays)
+        spf.setEnabled(true)
+        spf.setConfig(inXdays)
 
         mockkObject(Permissions)
         mock_call_permission_granted()
@@ -277,9 +266,10 @@ class RuleTest {
 
     @Test
     fun recent_app() {
+        val spf = RecentApps(ctx)
         val pkgs = listOf("my.pkg")
-        spf.setRecentAppConfig(5)
-        spf.setRecentAppList(pkgs)
+        spf.setConfig(5)
+        spf.setList(pkgs)
 
         // block all number
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
@@ -307,6 +297,7 @@ class RuleTest {
     }
     @Test
     fun off_time() {
+        val spf = OffTime(ctx)
 
         // block all number
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
@@ -316,9 +307,9 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
         // set off-time to (1:00, 2:00)
-        spf.setOffTimeEnabled(true)
-        spf.setOffTimeStart(1, 0)
-        spf.setOffTimeEnd(2, 0)
+        spf.setEnabled(true)
+        spf.setStart(1, 0)
+        spf.setEnd(2, 0)
 
         // mock current time to 1:15
         mock_current_hour_min(1, 15)
@@ -336,8 +327,8 @@ class RuleTest {
 
 
         // ---- test start > end (over night) ----
-        spf.setOffTimeStart(21, 0) // 21 PM -> 02 AM
-        spf.setOffTimeEnd(2, 0)
+        spf.setStart(21, 0) // 21 PM -> 02 AM
+        spf.setEnd(2, 0)
         // mock current time to 22:00
         mock_current_hour_min(22, 0)
         // should pass
@@ -345,6 +336,33 @@ class RuleTest {
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_OFF_TIME, r.result)
     }
 
+    private fun getTimestampInMilliseconds(dayOfWeek: Int, hour: Int, minute: Int): Long {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek)
+        calendar.set(Calendar.HOUR_OF_DAY, hour)
+        calendar.set(Calendar.MINUTE, minute)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.timeInMillis
+    }
+
+    // rule schedule
+    @Test
+    fun rule_schedule() {
+        // block all number
+        add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL, schedule = "2,01:00-02:00,true"))
+
+        // should block, Monday 01:20
+        mock_current_time_millis(getTimestampInMilliseconds(2, 1, 20))
+        var r = Checker.checkCall(ctx, B)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
+
+        // should pass, Thursday
+        mock_current_time_millis(getTimestampInMilliseconds(3, 1, 20))
+        r = Checker.checkCall(ctx, B)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
+
+   }
     // testing call number rules
     @Test
     fun number_rules_priority() {

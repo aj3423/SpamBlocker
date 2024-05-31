@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 import spam.blocker.R
 import spam.blocker.util.ClosableDialogFragment
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util
 
 class PopupRecentAppConfigFragment(val handleSave : (Int) -> Unit) : ClosableDialogFragment() {
@@ -27,8 +27,8 @@ class PopupRecentAppConfigFragment(val handleSave : (Int) -> Unit) : ClosableDia
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spf = SharedPref(requireContext())
-        val inXMin = spf.getRecentAppConfig()
+        val spf = RecentApps(requireContext())
+        val inXMin = spf.getConfig()
 
         // widgets
         val container_in_x_min = view.findViewById<TextInputLayout>(R.id.container_recent_app_in_x_min)

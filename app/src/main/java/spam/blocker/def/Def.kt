@@ -38,8 +38,12 @@ object Def {
     const val ON_NEW_CALL = "on_new_call"
     const val ON_NEW_SMS = "on_new_sms"
 
-    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
 
+    const val BLOCK_TYPE_REJECT = 0
+    const val BLOCK_TYPE_SILENCE = 1
+
+    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
+    const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT
 
     // allowed (1-9, 100+)
     const val RESULT_ALLOWED_BY_DEFAULT = 1
@@ -93,7 +97,7 @@ object Def {
     )
 
 
-    const val ForCall = 0
+    const val ForNumber = 0
     const val ForSms = 1
     const val ForQuickCopy = 2
 

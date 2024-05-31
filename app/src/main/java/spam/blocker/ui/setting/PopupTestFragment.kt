@@ -16,7 +16,8 @@ import spam.blocker.def.Def
 import spam.blocker.service.CallService
 import spam.blocker.service.Checker
 import spam.blocker.service.SmsReceiver
-import spam.blocker.ui.util.Util.Companion.setupImageTooltip
+import spam.blocker.ui.util.UI.Companion.setupImageTooltip
+import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.Util
 
@@ -60,7 +61,7 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
             label_result.visibility = View.GONE
             img_reason.visibility = View.GONE
         }
-        container_sms.visibility = if (forType != Def.ForCall) View.VISIBLE else View.GONE
+        showIf(container_sms, forType != Def.ForNumber)
         edit_phone.setText(currentPhone)
         edit_phone.addTextChangedListener {
             currentPhone = it.toString()
@@ -82,7 +83,7 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
             label_result.visibility = View.VISIBLE
 
             if (forType != Def.ForQuickCopy) {
-                val r = if (forType == Def.ForCall)
+                val r = if (forType == Def.ForNumber)
                     CallService().processCall(ctx, rawNumber)
                 else
                     SmsReceiver().processSms(ctx, rawNumber, sms)

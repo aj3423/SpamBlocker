@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 import spam.blocker.R
 import spam.blocker.util.ClosableDialogFragment
-import spam.blocker.util.SharedPref
+import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.Util
 
 class PopupDialedConfigFragment(val handleSave : (Int) -> Unit) : ClosableDialogFragment() {
@@ -27,8 +27,8 @@ class PopupDialedConfigFragment(val handleSave : (Int) -> Unit) : ClosableDialog
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spf = SharedPref(requireContext())
-        val inXMin = spf.getDialedConfig()
+        val spf = Dialed(requireContext())
+        val inXMin = spf.getConfig()
 
         // widgets
         val container_in_x_day = view.findViewById<TextInputLayout>(R.id.container_dialed_in_x_day)
