@@ -55,13 +55,13 @@ import spam.blocker.util.Permissions
 import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
 import spam.blocker.util.Permissions.Companion.isContactsPermissionGranted
 import spam.blocker.util.PermissionChain
+import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.OffTime
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
-import spam.blocker.util.SharedPref.Silence
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
 
@@ -103,7 +103,7 @@ class SettingFragment : Fragment() {
         setupDialed(root)
         clearUninstalledRecentApps()
         setupRecentApps(root)
-        setupSilenceCall(root)
+        setupBlockType(root)
         setupOffTime(root)
 
         setupRules( root,
@@ -212,18 +212,18 @@ class SettingFragment : Fragment() {
                 Permission(Manifest.permission.READ_CALL_LOG),
                 Permission(Manifest.permission.READ_SMS, true)
             )
-        ) { allGranted ->
-            switch.isChecked = allGranted
-            spf.setEnabled(allGranted)
-            updateButton()
-        }
+        )
 
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (isCallLogPermissionGranted(ctx)) { // already granted
                     spf.setEnabled(true)
                 } else {
-                    permChain.ask()
+                    permChain.ask { allGranted ->
+                        switch.isChecked = allGranted
+                        spf.setEnabled(allGranted)
+                        updateButton()
+                    }
                 }
             } else {
                 spf.setEnabled(false)
@@ -266,18 +266,18 @@ class SettingFragment : Fragment() {
                 Permission(Manifest.permission.READ_CALL_LOG),
                 Permission(Manifest.permission.READ_SMS, true)
             )
-        ) { allGranted ->
-            switch.isChecked = allGranted
-            spf.setEnabled(allGranted)
-            updateButton()
-        }
+        )
 
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (isCallLogPermissionGranted(ctx)) { // already granted
                     spf.setEnabled(true)
                 } else {
-                    permChain.ask()
+                    permChain.ask { allGranted ->
+                        switch.isChecked = allGranted
+                        spf.setEnabled(allGranted)
+                        updateButton()
+                    }
                 }
             } else {
                 spf.setEnabled(false)
@@ -374,18 +374,18 @@ class SettingFragment : Fragment() {
             listOf(
                 Permission(Manifest.permission.READ_CONTACTS)
             )
-        ) { allGranted ->
-            switchContactEnabled.isChecked = allGranted
-            spf.setEnabled(allGranted)
-            updateButton()
-        }
+        )
 
         switchContactEnabled.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (isContactsPermissionGranted(ctx)) { // already granted
                     spf.setEnabled(true)
                 } else {
-                    permChain.ask()
+                    permChain.ask { allGranted ->
+                        switchContactEnabled.isChecked = allGranted
+                        spf.setEnabled(allGranted)
+                        updateButton()
+                    }
                 }
             } else {
                 spf.setEnabled(false)
@@ -494,20 +494,41 @@ class SettingFragment : Fragment() {
         )
     }
 
-    private fun setupSilenceCall(root: View) {
+    private fun setupBlockType(root: View) {
         val ctx = requireContext()
-        val spf = Silence(ctx)
+        val spf = BlockType(ctx)
 
-        val switchEnabled = root.findViewById<SwitchCompat>(R.id.switch_enable_silence_call)
+        val btn = root.findViewById<MaterialButton>(R.id.setting_btn_block_type)
+        val types = ctx.resources.getStringArray(R.array.block_type_list).toList()
+        fun updateButton() {
+            btn.text = types[spf.getType()]
+        }
+        updateButton()
 
-        switchEnabled.isChecked = spf.isEnabled()
+        val permChain = PermissionChain(this,
+            listOf(
+                Permission(Manifest.permission.READ_PHONE_STATE),
+                Permission(Manifest.permission.ANSWER_PHONE_CALLS)
+            )
+        )
 
-        switchEnabled.setOnCheckedChangeListener { _, isChecked ->
-            spf.setEnabled(isChecked)
+        btn.setOnClickListener {
+            dynamicPopupMenu(ctx, types, btn) { clickedIdx ->
+                if (clickedIdx == Def.BLOCK_TYPE_ANSWER_AND_HANG) {
+                    permChain.ask { allGranted ->
+                        if (allGranted) {
+                            spf.setType(Def.BLOCK_TYPE_ANSWER_AND_HANG)
+                        }
+                        updateButton()
+                    }
+                } else {
+                    spf.setType(clickedIdx)
+                    updateButton()
+                }
+            }
         }
         setupImageTooltip(
-            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_silence_call),
-            R.string.help_silence_call
+            ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_block_type), R.string.help_block_type
         )
     }
 

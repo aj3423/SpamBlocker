@@ -42,7 +42,7 @@ An Android Call/SMS blocker.
 | RECEIVE_SMS            | For receiving new messages                                      |
 | READ_CALL_LOG<br>READ_SMS(optional) | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
-| READ_PHONE_STATE(Android 10)<br>READ_PHONE_NUMBERS(Android 11+)    | For per SIM profile (list all SIM cards)  |
+| READ_PHONE_STATE       | For block mode: Answer and Hang (monitor ringing state)  |
 
 # Languages supported
 

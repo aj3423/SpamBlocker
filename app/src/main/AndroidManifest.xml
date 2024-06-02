@@ -7,6 +7,7 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -32,9 +33,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpamBlocker">
 
-        <activity
-            android:name=".service.NotificationTrampolineActivity"/>
-
+        <activity android:name=".service.NotificationTrampolineActivity" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
@@ -46,7 +45,7 @@
         </activity>
 
         <service
-            android:name=".service.CallService"
+            android:name=".service.CallScreeningService"
             android:exported="true"
             android:permission="android.permission.BIND_SCREENING_SERVICE">
             <intent-filter>
@@ -59,27 +58,29 @@
             android:icon="@drawable/ic_tile"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-
             <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
 
-
+        <receiver
+            android:name=".service.CallStateReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
         <receiver
             android:name=".service.SmsReceiver"
-            android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.BROADCAST_SMS"
-            android:priority="999">
+            android:permission="android.permission.BROADCAST_SMS" >
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        
-        <receiver android:name=".service.CopyToClipboardReceiver"
+        <receiver
+            android:name=".service.CopyToClipboardReceiver"
             android:exported="false" />
-
     </application>
 
 </manifest>

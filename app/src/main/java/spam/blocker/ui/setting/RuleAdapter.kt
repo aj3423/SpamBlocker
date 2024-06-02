@@ -31,7 +31,7 @@ class RuleAdapter(
         return Holder(view);
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val f = filters[position]
 
@@ -51,7 +51,12 @@ class RuleAdapter(
         holder.imgApplyToCall.setColorFilter(if (f.isForCall()) teal else gray, PorterDuff.Mode.SRC_IN)
         holder.imgApplyToSms.setColorFilter(if (f.isForSms()) teal else gray, PorterDuff.Mode.SRC_IN)
 
-        showIf(holder.imgBlockType, f.blockType != Def.BLOCK_TYPE_REJECT)
+        holder.imgBlockType.setImageDrawable(when(f.blockType) {
+            Def.BLOCK_TYPE_SILENCE -> ctx.resources.getDrawable(R.drawable.ic_call_miss, null)
+            Def.BLOCK_TYPE_ANSWER_AND_HANG -> ctx.resources.getDrawable(R.drawable.ic_hang, null)
+            else -> ctx.resources.getDrawable(R.drawable.ic_call_blocked, null)
+        })
+        showIf(holder.imgBlockType, f.isBlacklist)
         if (forType != Def.ForNumber) {
             holder.imgApplyToCall.visibility = View.GONE
         }

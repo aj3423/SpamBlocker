@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputLayout
 
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.service.CallService
+import spam.blocker.service.CallScreeningService
 import spam.blocker.service.Checker
 import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
@@ -84,7 +84,7 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
 
             if (forType != Def.ForQuickCopy) {
                 val r = if (forType == Def.ForNumber)
-                    CallService().processCall(ctx, rawNumber)
+                    CallScreeningService().processCall(ctx, rawNumber)
                 else
                     SmsReceiver().processSms(ctx, rawNumber, sms)
 

@@ -45,13 +45,6 @@
         <font color="#ea86ff"><b>Priority: 10</b></font> <br>
         ]]>
     </string>
-    <string name="help_silence_call">
-        <![CDATA[
-        When enabled, <font color="#fa7f71"><b>blocked</b></font> calls will ring <b>silently</b> in the background instead of being hung off immediately, giving the impression to the caller that you are just busy and have not answered that call.<br>
-        <br>
-        By <b>silently</b> it means there is no dialer screen displayed when the phone is in use, and it does not wake up the phone when the screen is locked.
-        ]]>
-    </string>
     <string name="help_number_filter">
         <![CDATA[
         These rules apply to the incoming phone number.<br>

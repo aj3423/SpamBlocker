@@ -224,26 +224,26 @@
                 </LinearLayout>
                 <!--    off time -->
 
-                <!--  silence call -->
+                <!--  block type -->
                 <LinearLayout style="@style/setting_row">
 
                     <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
-                        android:text="@string/silence_call" />
+                        android:text="@string/block_type" />
 
                     <ImageView
-                        android:id="@+id/setting_help_silence_call"
+                        android:id="@+id/setting_help_block_type"
                         style="@style/help_question_icon"
                         android:background="@drawable/ic_question"
                         tools:ignore="ContentDescription" />
 
                     <Space style="@style/setting_spacing" />
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switch_enable_silence_call"
-                        style="@style/setting_switch" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/setting_btn_block_type"
+                        style="@style/setting_stroke_gray_button" />
                 </LinearLayout>
-                <!--    dialed end -->
+                <!--    block type end -->
 
             </LinearLayout>
 

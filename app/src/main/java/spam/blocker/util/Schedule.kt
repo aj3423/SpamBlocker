@@ -25,9 +25,11 @@ class Schedule {
 
         return "$part0,$part1,$part2"
     }
+    // for serialization only
     private fun timeRangeStr(): String {
         return String.format("%02d:%02d-%02d:%02d", startHour, startMin, endHour, endMin)
     }
+    // for display on UI
     fun timeRangeDisplayStr(ctx: Context): String {
         if (startHour == 0 && startMin == 0 && endHour == 0 && endMin == 0)
             return ctx.getString(R.string.entire_day)
@@ -37,7 +39,7 @@ class Schedule {
         val labels = ctx.resources.getStringArray(R.array.week)
         val days = weekdays.sorted()
 
-        if (days == listOf(1,2,3,4,5,6,7)) // every day, ignore the day string
+        if (days == listOf(1,2,3,4,5,6,7) || days.isEmpty()) // every day, ignore the day string
             return timeRangeDisplayStr(ctx)
         if (days == listOf(2,3,4,5,6))
             return ctx.getString(R.string.workday) + "  " + timeRangeDisplayStr(ctx)
@@ -53,8 +55,10 @@ class Schedule {
         val t = LocalDateTime.ofInstant(Instant.ofEpochMilli(timeMillis), ZoneId.systemDefault())
         var d = t.dayOfWeek.ordinal + 2
         if (d == 8) d = 1
-        if (d !in weekdays)
-            return false
+        if (weekdays.isNotEmpty()) { // empty means everyday
+            if (d !in weekdays)
+                return false
+        }
 
         // all 0s means entire day, always satisfies
         if (startHour == 0 && startMin == 0 && endHour == 0 && endMin == 0)

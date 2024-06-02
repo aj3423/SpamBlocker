@@ -2,19 +2,18 @@
 
     <string name="allow_repeated_call">Appel répété</string>
     <string name="dialed">Composé</string>
-    <string name="silence_call">Silencer l\'appel</string>
     <string name="confirm_del_all_filters">Supprimer tous les filtres ?</string>
     <string name="dark_theme">Thème sombre</string>
-    <string name="find_apps">Rechercher des applications</string>
+    <string name="find_apps">Trouver des applis</string>
     <string name="spam_sms_blocked">SMS bloqué</string>
     <string name="spam_call_blocked">Appel bloqué</string>
-    <string name="new_sms_received">Nouveau SMS reçu</string>
+    <string name="new_sms_received">Nouveau SMS reçu</string>
     <string name="mark_all_as_read">Tout marquer comme lu</string>
     <string name="delete_all">Tout supprimer</string>
-    <string name="show_passed">Afficher les messages réussis</string>
-    <string name="show_blocked">Afficher les messages bloqués</string>
+    <string name="show_passed">Afficher les appels autorisés</string>
+    <string name="show_blocked">Afficher les appels bloqués</string>
     <string name="clone_rule">Dupliquer la règle</string>
-    <string name="notification">Notification</string>
+    <string name="notification">Notifications</string>
     <string name="type">Type</string>
     <string name="time">Heure</string>
     <string name="times">Fois</string>
@@ -26,34 +25,57 @@
     <string name="phone_number">Numéro de téléphone</string>
     <string name="sms_content">Contenu du SMS</string>
     <string name="result">Résultat</string>
-    <string name="reason">Motif</string>
-    <string name="regex_flags">Drapeaux regex</string>
+    <string name="reason">Raison</string>
+    <string name="regex_flags">Indicateurs Regex</string>
     <string name="ignore_case">Ignorer la casse</string>
-    <string name="dot_match_all">Point correspondant à tout</string>
+    <string name="dot_match_all">Le point correspond à tout</string>
     <string name="literal">Littéral</string>
-    <string name="off_time">Heure de désactivation</string>
+    <string name="off_time">Heure d\'arrêt</string>
+    <string name="schedule">Calendrier</string>
+    <string name="workday">Jour ouvré</string>
+    <string name="weekend">Week-end</string>
+    <string name="entire_day">Toute la journée</string>
+    <string name="block_type">Type de blocage</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#d1c8c8"><b>Rejeter</b></font>: <br>
+        &emsp; Équivalent à appuyer sur le bouton Décliner. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Mettre en silencieux</b></font>: <br>
+        &emsp; Le téléphone sonnera en silencieux en arrière-plan, donnant l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'avez pas répondu. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Répondre et raccrocher</b></font>: <br>
+        &emsp; Pour éviter d\'être redirigé vers la messagerie vocale.
+        ]]>
+    </string>
     <string-array name="week">
-        <item>Dimanche</item>
-        <item>Lundi</item>
-        <item>Mardi</item>
-        <item>Mercredi</item>
-        <item>Jeudi</item>
-        <item>Vendredi</item>
-        <item>Samedi</item>
+        <item>Dim.</item>
+        <item>Lun.</item>
+        <item>Mar.</item>
+        <item>Mer.</item>
+        <item>Jeu.</item>
+        <item>Ven.</item>
+        <item>Sam.</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Rejeter</item>
+        <item>Mettre en silencieux</item>
+        <item>Répondre et raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucun</item>
-        <item>Ombrage</item>
-        <item>Barre d\'état, ombrage</item>
-        <item>Son, barre d\'état, ombrage</item>
-        <item>Son, barre d\'état, ombrage, notification en incrustation</item>
+        <item>Aucune</item>
+        <item>Ombre</item>
+        <item>Barre d\'état, ombre</item>
+        <item>Son, barre d\'état, ombre</item>
+        <item>Son, barre d\'état, ombre, tête haute</item>
     </string-array>
 
-    <string name="language">Langues</string>
+    <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont faites par l\'IA de Google, ouvrez un ticket sur github pour ajouter une nouvelle langue.
+            Les traductions sont effectuées par Google AI. Signalez un problème sur GitHub pour ajouter une nouvelle langue.
         ]]>
     </string>
 </resources>

@@ -7,6 +7,8 @@ object Def {
 
     const val ACTION_TILE_TOGGLE = "tile_toggle"
 
+    const val LAST_CALLED_TIME = "last_called_time"
+
     const val SETTING_DARK_THEME = "dark_theme"
     const val SETTING_STIR_ENABLED = "stir_enabled"
     const val SETTING_LANGUAGE = "language"
@@ -20,7 +22,7 @@ object Def {
     const val SETTING_RECENT_APP_IN_X_MIN = "recent_app_in_x_min"
     const val SETTING_PERMIT_DIALED = "permit_dialed"
     const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
-    const val SETTING_ENABLE_SILENCE_CALL = "silence_call"
+    const val SETTING_BLOCK_TYPE = "block_type"
     const val SETTING_ENABLE_OFF_TIME = "off_time"
     const val SETTING_OFF_TIME_START_HOUR = "off_time_start_hour"
     const val SETTING_OFF_TIME_START_MIN = "off_time_start_min"
@@ -41,6 +43,7 @@ object Def {
 
     const val BLOCK_TYPE_REJECT = 0
     const val BLOCK_TYPE_SILENCE = 1
+    const val BLOCK_TYPE_ANSWER_AND_HANG = 2
 
     const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
     const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT

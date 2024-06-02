@@ -1,9 +1,11 @@
 package spam.blocker.ui.setting
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -25,6 +27,8 @@ import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.util.Flag
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionChain
 import spam.blocker.util.Schedule
 import spam.blocker.util.Util
 
@@ -139,11 +143,31 @@ class PopupEditRuleFragment(
         }
         radio_blackwhitelist.setOnCheckedChangeListener { _, checkedId ->
             showIf(row_importance, checkedId == R.id.popup_radio_blacklist)
-            showIf(row_block_type, checkedId == R.id.popup_radio_blacklist)
+            showIf(row_block_type, checkedId == R.id.popup_radio_blacklist && forType == Def.ForNumber)
         }
         // Block type
         showIf(row_block_type, init.isBlacklist && forType == Def.ForNumber)
         spin_block_type.setSelection(init.blockType)
+        val permChain = PermissionChain(this,
+            listOf(
+                Permission(Manifest.permission.READ_PHONE_STATE),
+                Permission(Manifest.permission.ANSWER_PHONE_CALLS)
+            )
+        )
+        spin_block_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position == Def.BLOCK_TYPE_ANSWER_AND_HANG) {
+                    permChain.ask { allGranted ->
+                        if (!allGranted) {
+                            spin_block_type.setSelection(0)
+                        }
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        }
+
 
         // Importance
         showIf(row_importance, init.isBlacklist && forType != Def.ForQuickCopy)

@@ -7,13 +7,13 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
+import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.OffTime
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
-import spam.blocker.util.SharedPref.Silence
 import spam.blocker.util.SharedPref.Stir
 
 class Config {
@@ -102,10 +102,10 @@ class Config {
         }
     }
     @Serializable
-    class Silence {
-        var enabled = false
-        fun load(ctx: Context) { enabled = Silence(ctx).isEnabled() }
-        fun apply(ctx: Context) { Silence(ctx).setEnabled(enabled) }
+    class BlockType {
+        var type = 0
+        fun load(ctx: Context) { type = BlockType(ctx).getType() }
+        fun apply(ctx: Context) { BlockType(ctx).setType(type) }
     }
     @Serializable
     class OffTime {
@@ -189,7 +189,7 @@ class Configs {
     val repeatedCall = Config.RepeatedCall()
     val dialed = Config.Dialed()
     val recentApps = Config.RecentApps()
-    val silence = Config.Silence()
+    val blockType = Config.BlockType()
     val offTime = Config.OffTime()
 
     val numberRules = Config.NumberRules()
@@ -206,7 +206,7 @@ class Configs {
         repeatedCall.load(ctx)
         dialed.load(ctx)
         recentApps.load(ctx)
-        silence.load(ctx)
+        blockType.load(ctx)
         offTime.load(ctx)
 
         numberRules.load(ctx)
@@ -223,7 +223,7 @@ class Configs {
         repeatedCall.apply(ctx)
         dialed.apply(ctx)
         recentApps.apply(ctx)
-        silence.apply(ctx)
+        blockType.apply(ctx)
         offTime.apply(ctx)
 
         numberRules.apply(ctx)

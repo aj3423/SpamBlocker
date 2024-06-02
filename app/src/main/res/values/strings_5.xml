@@ -2,7 +2,6 @@
 
     <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
-    <string name="silence_call">Silence Call</string>
     <string name="confirm_del_all_filters">Delete all filters?</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="find_apps">Find Apps</string>
@@ -37,6 +36,18 @@
     <string name="weekend">Weekend</string>
     <string name="entire_day">Entire Day</string>
     <string name="block_type">Block Type</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#d1c8c8"><b>Reject</b></font>: <br>
+        &emsp; Same as pressing the decline button. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Silence</b></font>: <br>
+        &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Answer and Hang Up</b></font>: <br>
+        &emsp; To avoid being sent to the voicemail.
+        ]]>
+    </string>
     <string-array name="week">
         <item>Sun</item>
         <item>Mon</item>
@@ -50,6 +61,7 @@
     <string-array name="block_type_list">
         <item>Reject</item>
         <item>Silence</item>
+        <item>Answer+Hang Up</item>
     </string-array>
 
     <string-array name="importance_list">

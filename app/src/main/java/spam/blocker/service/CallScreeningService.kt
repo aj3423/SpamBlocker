@@ -11,46 +11,74 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.Notification
+import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
-import spam.blocker.util.SharedPref.Silence
 
-class CallService : CallScreeningService() {
-    override fun onScreenCall(callDetails: TelecomCall.Details) {
+class CallScreeningService : CallScreeningService() {
 
-        if (callDetails.callDirection != TelecomCall.Details.DIRECTION_INCOMING)
+    private fun pass(details: TelecomCall.Details) {
+        val builder = CallResponse.Builder()
+        respondToCall(details, builder.build())
+    }
+    private fun reject(details: TelecomCall.Details) {
+        val builder = CallResponse.Builder().apply {
+            setSkipCallLog(false)
+            setSkipNotification(true)
+            setDisallowCall(true)
+
+            setRejectCall(true)
+        }
+        respondToCall(details, builder.build())
+    }
+    private fun silence(details: TelecomCall.Details) {
+        val builder = CallResponse.Builder().apply {
+            setSkipCallLog(false)
+            setSkipNotification(true)
+            setDisallowCall(true)
+
+            setSilenceCall(true)
+        }
+        respondToCall(details, builder.build())
+    }
+    private fun pick_then_hang(details: TelecomCall.Details) {
+    }
+    override fun onScreenCall(details: TelecomCall.Details) {
+
+        if (details.callDirection != TelecomCall.Details.DIRECTION_INCOMING)
             return
 
-        val rawNumber = callDetails.handle.schemeSpecificPart
+        val rawNumber = details.handle.schemeSpecificPart
 
         Log.d(Def.TAG, String.format("new call from: $rawNumber"))
 
-        val builder = CallResponse.Builder()
-
         if (!Global(this).isGloballyEnabled()) {
-            respondToCall(callDetails, builder.build())
+            pass(details)
             return
         }
 
-
-        val r = processCall(this, rawNumber, callDetails)
+        val r = processCall(this, rawNumber, details)
 
         if (r.shouldBlock) {
-            val silence = r.byFilter?.blockType == Def.BLOCK_TYPE_SILENCE // per rule
-                    || Silence(this).isEnabled() // global
+            val blockType = getBlockType(r)
 
-            builder.apply {
-                setSkipCallLog(false)
-                setSkipNotification(true)
-                setDisallowCall(true)
-
-                if (silence) {
-                    setSilenceCall(true)
-                } else {
-                    setRejectCall(true)
+            when(blockType) {
+                Def.BLOCK_TYPE_SILENCE -> silence(details)
+                Def.BLOCK_TYPE_ANSWER_AND_HANG -> {
+                    Global(this).writeLong(Def.LAST_CALLED_TIME, System.currentTimeMillis())
+                    pass(details) // let it ring, it will be handled in CallStateReceiver
                 }
+                else -> reject(details)
             }
+        } else {
+            pass(details)
         }
-        respondToCall(callDetails, builder.build())
+    }
+    private fun getBlockType(r: CheckResult): Int {
+        return if (r.byFilter != null) { // per rule setting
+            r.byFilter!!.blockType
+        } else { // global setting
+            BlockType(this).getType()
+        }
     }
 
     fun processCall(ctx: Context, rawNumber: String, callDetails: TelecomCall.Details? = null) : CheckResult {

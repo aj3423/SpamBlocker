@@ -11,34 +11,40 @@ open class SharedPref(private val ctx: Context) {
         private const val PREFS_NAME = "settings"
     }
 
+    fun readString(key: String, defaultValue: String): String {
+        return prefs.getString(key, defaultValue) ?: defaultValue
+    }
     fun writeString(key: String, value: String) {
         val editor = prefs.edit()
         editor.putString(key, value)
         editor.apply()
     }
 
-    fun readString(key: String, defaultValue: String): String {
-        return prefs.getString(key, defaultValue) ?: defaultValue
+    fun readInt(key: String, defaultValue: Int): Int {
+        return prefs.getInt(key, defaultValue)
     }
-
     fun writeInt(key: String, value: Int) {
         val editor = prefs.edit()
         editor.putInt(key, value)
         editor.apply()
     }
 
-    fun readInt(key: String, defaultValue: Int): Int {
-        return prefs.getInt(key, defaultValue)
+    fun readLong(key: String, defaultValue: Long): Long {
+        return prefs.getLong(key, defaultValue)
     }
-
-    fun writeBoolean(key: String, value: Boolean) {
+    fun writeLong(key: String, value: Long) {
         val editor = prefs.edit()
-        editor.putBoolean(key, value)
+        editor.putLong(key, value)
         editor.apply()
     }
 
     fun readBoolean(key: String, defaultValue: Boolean): Boolean {
         return prefs.getBoolean(key, defaultValue)
+    }
+    fun writeBoolean(key: String, value: Boolean) {
+        val editor = prefs.edit()
+        editor.putBoolean(key, value)
+        editor.apply()
     }
 
     fun clear() {
@@ -193,12 +199,12 @@ class OffTime(ctx: Context) : SharedPref(ctx) {
         )
     }
 }
-class Silence(ctx: Context) : SharedPref(ctx) {
-    fun setEnabled(enabled: Boolean) {
-        writeBoolean(Def.SETTING_ENABLE_SILENCE_CALL, enabled)
+class BlockType(ctx: Context) : SharedPref(ctx) {
+    fun setType(type: Int) {
+        writeInt(Def.SETTING_BLOCK_TYPE, type)
     }
-    fun isEnabled(): Boolean {
-        return readBoolean(Def.SETTING_ENABLE_SILENCE_CALL, false)
+    fun getType(): Int {
+        return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE)
     }
 }
 class RecentApps(ctx: Context) : SharedPref(ctx) {

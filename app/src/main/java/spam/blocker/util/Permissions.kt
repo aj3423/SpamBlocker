@@ -36,6 +36,7 @@ open class Permissions {
             val permissions = mutableListOf(
                 "android.permission.READ_CALL_LOG",
                 "android.permission.READ_SMS",
+                "android.permission.READ_PHONE_STATE",
                 "android.permission.ANSWER_PHONE_CALLS",
                 "android.permission.POST_NOTIFICATIONS",
                 "android.permission.READ_CONTACTS",
@@ -81,7 +82,7 @@ open class Permissions {
             )
         }
 
-        private fun isPermissionGranted(ctx: Context, permission: String): Boolean {
+        fun isPermissionGranted(ctx: Context, permission: String): Boolean {
             val ret = ContextCompat.checkSelfPermission(
                 ctx, permission
             ) == PackageManager.PERMISSION_GRANTED
@@ -235,10 +236,10 @@ class Permission(
  */
 class PermissionChain(
     private val fragment: Fragment,
-    private val permissions: List<Permission>,
-    private val onResult: (Boolean) -> Unit
+    private val permissions: List<Permission>
 ) {
     private val launcher: ActivityResultLauncher<String>
+    private lateinit var onResult: (Boolean) -> Unit
 
     private lateinit var currList: MutableList<Permission>
     private lateinit var curr: Permission
@@ -255,7 +256,8 @@ class PermissionChain(
         }
     }
 
-    fun ask() {
+    fun ask(onResult: (Boolean)->Unit) {
+        this.onResult = onResult
         currList = ArrayList(permissions) // make a copy
         checkNext()
     }
