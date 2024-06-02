@@ -45,13 +45,6 @@
         <font color="#ea86ff"><b>优先级：10</b></font> <br>
         ]]>
     </string>
-    <string name="help_silence_call">
-        <![CDATA[
-        启用后，<font color="#fa7f71"><b>已阻止</b></font>的通话会在后台<b>静音</b>响铃，而不是立即挂断，给呼叫者留下你很忙但没有接听电话的印象。<br>
-        <br>
-        <b>静音</b>意味着当手机正在使用时，没有拨号程序屏幕显示，它不会在屏幕锁定时唤醒手机。
-        ]]>
-    </string>
     <string name="help_number_filter">
         <![CDATA[
         这些规则适用于来电号码。<br>

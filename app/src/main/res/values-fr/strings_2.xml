@@ -44,13 +44,6 @@
         <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
         ]]>
     </string>
-    <string name="help_silence_call">
-        <![CDATA[
-        Lorsque cette option est activée, les appels <font color="#fa7f71"><b>bloqués</b></font> sonneront <b>silencieusement</b> en arrière-plan au lieu d\'être immédiatement raccrochés, ce qui donnera l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'avez pas répondu à cet appel.<br>
-        <br>
-        Par <b>silencieusement</b>, nous entendons qu\'aucun écran de numérotation n\'est affiché lorsque le téléphone est utilisé et que l\'écran ne s\'allume pas lorsque l\'écran est verrouillé.
-        ]]>
-    </string>
     <string name="help_number_filter">
         <![CDATA[
         Ces règles s\'appliquent au numéro de téléphone entrant.<br>
