@@ -48,6 +48,7 @@ class RuleAdapter(
 
         holder.labelPattern.text = f.patternStrColorful(ctx)
         holder.labelDesc.text = f.description
+        showIf(holder.labelDesc, f.description.isNotEmpty())
         holder.imgApplyToCall.setColorFilter(if (f.isForCall()) teal else gray, PorterDuff.Mode.SRC_IN)
         holder.imgApplyToSms.setColorFilter(if (f.isForSms()) teal else gray, PorterDuff.Mode.SRC_IN)
 

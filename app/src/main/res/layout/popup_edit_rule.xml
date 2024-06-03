@@ -145,12 +145,9 @@
 
             <Space style="@style/setting_spacing"/>
 
-            <Spinner
-                android:id="@+id/spin_block_type"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="end"
-                android:entries="@array/block_type_list"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/popup_btn_block_type"
+                style="@style/setting_gray_spinner" />
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row"
@@ -167,11 +164,13 @@
 
             <Space style="@style/setting_spacing"/>
 
-            <Spinner
-                android:id="@+id/spin_importance"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:entries="@array/importance_list"/>
+            <me.grantland.widget.AutofitLayout
+                style="@style/setting_auto_fit">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_importance"
+                    style="@style/setting_gray_spinner"
+                    android:maxWidth="140dp"/>
+            </me.grantland.widget.AutofitLayout>
         </LinearLayout>
 
         <!-- schedule -->

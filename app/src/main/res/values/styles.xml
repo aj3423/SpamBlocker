@@ -51,6 +51,17 @@
         <item name="strokeColor">@color/mid_grey</item>
     </style>
 
+    <style name="setting_spinner" parent="setting_stroke_button">
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">-14dp</item>
+        <item name="android:drawableEnd">@drawable/spinner_arrow</item>
+        <item name="android:drawablePadding">0dp</item>
+    </style>
+    <style name="setting_gray_spinner" parent="setting_spinner">
+        <item name="android:textColor">@color/mid_grey</item>
+        <item name="strokeColor">@color/mid_grey</item>
+    </style>
+
     <style name="setting_auto_fit">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>

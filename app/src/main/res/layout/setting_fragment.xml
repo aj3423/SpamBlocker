@@ -241,7 +241,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/setting_btn_block_type"
-                        style="@style/setting_stroke_gray_button" />
+                        style="@style/setting_gray_spinner" />
                 </LinearLayout>
                 <!--    block type end -->
 
@@ -459,7 +459,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_language"
-                        style="@style/setting_stroke_gray_button" />
+                        style="@style/setting_gray_spinner" />
                 </LinearLayout>
                 <!-- language end -->
             </LinearLayout>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -19,6 +18,7 @@ import com.dpro.widgets.WeekdaysPicker
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.selects.select
 import spam.blocker.R
 import spam.blocker.db.PatternRule
 import spam.blocker.def.Def
@@ -26,6 +26,7 @@ import spam.blocker.ui.util.MaterialInputRegexFlagsUtil
 import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
+import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.Flag
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -71,9 +72,9 @@ class PopupEditRuleFragment(
         val row_type = view.findViewById<LinearLayout>(R.id.row_rule_type)
         val row_importance = view.findViewById<LinearLayout>(R.id.row_importance)
         val row_block_type = view.findViewById<LinearLayout>(R.id.row_block_type)
-        val spin_block_type = view.findViewById<Spinner>(R.id.spin_block_type)
+        val btn_block_type = view.findViewById<MaterialButton>(R.id.popup_btn_block_type)
         val help_importance = view.findViewById<ImageView>(R.id.popup_help_importance)
-        val spin_importance = view.findViewById<Spinner>(R.id.spin_importance)
+        val btn_importance = view.findViewById<MaterialButton>(R.id.btn_importance)
         val btn_schedule = view.findViewById<MaterialButton>(R.id.popup_btn_schedule)
         val switch_schedule = view.findViewById<SwitchCompat>(R.id.switch_schedule)
         val picker_weekday = view.findViewById<WeekdaysPicker>(R.id.picker_weekdays)
@@ -146,33 +147,51 @@ class PopupEditRuleFragment(
             showIf(row_block_type, checkedId == R.id.popup_radio_blacklist && forType == Def.ForNumber)
         }
         // Block type
+        val blockTypeLabels = ctx.resources.getStringArray(R.array.block_type_list).toList()
         showIf(row_block_type, init.isBlacklist && forType == Def.ForNumber)
-        spin_block_type.setSelection(init.blockType)
+        var selectedBlockType = init.blockType
+        fun updateBlockTypeButton() {
+            btn_block_type.text = blockTypeLabels[selectedBlockType]
+        }
+        updateBlockTypeButton()
         val permChain = PermissionChain(this,
             listOf(
                 Permission(Manifest.permission.READ_PHONE_STATE),
                 Permission(Manifest.permission.ANSWER_PHONE_CALLS)
             )
         )
-        spin_block_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (position == Def.BLOCK_TYPE_ANSWER_AND_HANG) {
+        btn_block_type.setOnClickListener {
+            dynamicPopupMenu(ctx, blockTypeLabels, btn_block_type) { clickedIdx ->
+                if (clickedIdx == Def.BLOCK_TYPE_ANSWER_AND_HANG) {
                     permChain.ask { allGranted ->
-                        if (!allGranted) {
-                            spin_block_type.setSelection(0)
+                        if (allGranted) {
+                            selectedBlockType = clickedIdx
                         }
+                        updateBlockTypeButton()
                     }
+                } else {
+                    selectedBlockType = clickedIdx
+                    updateBlockTypeButton()
                 }
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
 
 
         // Importance
+        val importanceList = ctx.resources.getStringArray(R.array.importance_list).asList()
+        var selectedImportance = init.importance
         showIf(row_importance, init.isBlacklist && forType != Def.ForQuickCopy)
         setupImageTooltip(ctx, viewLifecycleOwner, help_importance, R.string.help_importance)
-        spin_importance.setSelection(init.importance)
+        fun updateButtonImportance() {
+            btn_importance.text = importanceList[selectedImportance]
+        }
+        updateButtonImportance()
+        btn_importance.setOnClickListener {
+            dynamicPopupMenu(ctx, importanceList, btn_importance) { clickedIdx ->
+                selectedImportance = clickedIdx
+                updateButtonImportance()
+            }
+        }
 
         // Schedule
         showIf(row_schedule, forType != Def.ForQuickCopy)
@@ -233,8 +252,8 @@ class PopupEditRuleFragment(
             if (radio_whitelist.isChecked) {
                 init.isBlacklist = false
             }
-            init.importance = spin_importance.selectedItemPosition
-            init.blockType = spin_block_type.selectedItemPosition
+            init.importance = selectedImportance
+            init.blockType = selectedBlockType
             init.schedule = schedule.serializeToStr()
 
             val err1 = Util.validateRegex(ctx, init.pattern)
