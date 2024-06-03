@@ -1,5 +1,5 @@
 # SpamBlocker
-An Android Call/SMS blocker. 
+An Android Call/SMS blocker. (Android 10+)
 
 <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9d44afe7-2524-4b34-8bf3-ba285200bb5c" height="100">[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
@@ -43,6 +43,12 @@ An Android Call/SMS blocker.
 | READ_CALL_LOG<br>READ_SMS(optional) | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
 | READ_PHONE_STATE       | For block mode: Answer and Hang (monitor ringing state)  |
+
+# Troubleshooting 
+
+| Problem             | Solution                                                             |
+| ----                   | ----                                                            |
+| SMS notification doesn't work after app is killed    | Enable "app auto start" in battery settings:<br> &emsp; System Settings -> Battery -> ... -> Auto-start Manager -> enable SpamBlocker  |
 
 # Languages supported
 

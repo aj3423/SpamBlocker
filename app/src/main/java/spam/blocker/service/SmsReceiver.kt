@@ -81,11 +81,7 @@ class SmsReceiver : BroadcastReceiver() {
             //  - copy content
             //  - cancel this particular notification, other notifications remain
             val res = Checker.checkQuickCopy(ctx, messageBody)
-            val toCopy : String? = if (res == null)
-                null
-            else {
-                Util.clearNumber(res.second).ifEmpty { null }
-            }
+            val toCopy = res?.second?.trim()?.ifEmpty { null }
 
             Notification.show(ctx, R.drawable.ic_sms_pass,
                 showName, messageBody,

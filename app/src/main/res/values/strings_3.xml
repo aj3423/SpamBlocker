@@ -40,7 +40,7 @@
         Shade: The dropdown notification shade. <br>
         StatusBar: The small icon in the top bar. <br>
         Sound: The default notification sound. <br>
-        Heads-Up: Popups a floating window on the top of the screen.
+        Heads-Up: Popup a floating window on the top of the screen.
         ]]>
     </string>
     <string name="help_test_rules">
