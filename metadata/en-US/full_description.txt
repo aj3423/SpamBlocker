@@ -1,13 +1,13 @@
-It blocks spam calls & SMS messages without replacing your default call/SMS app. 
+It blocks unwanted calls & SMS messages without replacing your default call/SMS app. 
 
 Filters:
 
-1. Regex filter for number & SMS content.
-2. From a contact?
-3. Repeated call?
-4. Dialed number?
-5. Some apps have been used recently?
-6. Within a time period?
-7. Silence call
+1. Regex rule for number & SMS content.
+2. Contact
+3. STIR attestation
+4. Repeated call
+5. Dialed number
+6. Recently used apps
+7. Time schedule
 
-detail: https://github.com/aj3423/SpamBlocker
+Details: https://github.com/aj3423/SpamBlocker

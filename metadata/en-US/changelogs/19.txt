@@ -1,0 +1,11 @@
+breaking:
+ - SilenceCall is replaced with BlockType (reject / silence / answer & hang up)
+new:
+ - new block type: Answer & Hang Up (to avoid being sent to voicemail)
+ - time schedule per rule
+ - block type per rule
+fix:
+ - when the app is disabled, there is a 5 seconds delay before it starts ringing
+ - language and STIR settings not backed up/restored
+ - permit emergency call not work
+ - QuickCopy trims leading 0 (code 0123 shown as "Copy: 123")
