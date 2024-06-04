@@ -9,14 +9,17 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.provider.Settings
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -668,7 +671,26 @@ class SettingFragment : Fragment() {
         val adapter = RuleAdapter(ctx, onItemClick, onItemLongClick, filters, forRuleType)
         recycler.setAdapter(adapter)
 
+        // limit recycler height when it exceeds 100 items, otherwise it may crash by OOM.
+        fun adjustRecyclerHeight() {
+            val params = recycler.layoutParams as ViewGroup.LayoutParams
+            if (filters.size > 100) {
+                params.height = (Util.getScreenHeight(ctx) * 0.7).toInt() // height == 60% of screen height
+                recycler.layoutParams = params
+
+                recycler.isNestedScrollingEnabled = true
+            } else {
+                params.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                recycler.layoutParams = params
+
+                recycler.isNestedScrollingEnabled = false
+            }
+        }
+
         filters.observe(viewLifecycleOwner) {
+
+            adjustRecyclerHeight()
+
             when (it.action) {
                 Add -> adapter.notifyItemInserted(it.actionInt!!)
                 AddAll -> adapter.notifyDataSetChanged()

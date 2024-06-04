@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.util.DisplayMetrics
+import android.view.WindowManager
 import spam.blocker.R
 import spam.blocker.def.Def
 import java.text.SimpleDateFormat
@@ -244,6 +246,14 @@ class Util {
             configuration.setLocale(locale)
 
             resources.updateConfiguration(configuration, resources.displayMetrics)
+        }
+
+        fun getScreenHeight(ctx: Context) : Int {
+            val windowManager = ctx.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val display = windowManager.defaultDisplay
+            val metrics = DisplayMetrics()
+            display.getMetrics(metrics)
+            return metrics.heightPixels
         }
     }
 }

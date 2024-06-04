@@ -301,13 +301,15 @@
                     </me.grantland.widget.AutofitLayout>
                 </LinearLayout>
 
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_number_filters"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
+                    android:scrollbars="vertical"
                     android:nestedScrollingEnabled="false"
                     android:orientation="vertical" />
+
                 <!--    number filters end-->
 
                 <!--    sms content filters-->
@@ -428,22 +430,6 @@
                 </LinearLayout>
                 <!-- theme end -->
 
-                <!-- backup and restore -->
-                <LinearLayout style="@style/setting_row">
-
-                    <me.grantland.widget.AutofitLayout
-                        style="@style/setting_auto_fit">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_backup"
-                            style="@style/setting_stroke_blue_button"
-                            android:maxWidth="300dp"
-                            android:text="@string/backup_restore" />
-                    </me.grantland.widget.AutofitLayout>
-
-                </LinearLayout>
-                <!-- backup and restore end -->
-
                 <!-- language -->
                 <LinearLayout style="@style/setting_row">
                     <me.grantland.widget.AutofitTextView
@@ -462,6 +448,23 @@
                         style="@style/setting_gray_spinner" />
                 </LinearLayout>
                 <!-- language end -->
+
+                <!-- backup and restore -->
+                <LinearLayout style="@style/setting_row">
+
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_backup"
+                            style="@style/setting_stroke_blue_button"
+                            android:maxWidth="300dp"
+                            android:text="@string/backup_restore" />
+                    </me.grantland.widget.AutofitLayout>
+
+                </LinearLayout>
+                <!-- backup and restore end -->
+
             </LinearLayout>
 
             <TextView
