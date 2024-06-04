@@ -1,5 +1,7 @@
 pluginManagement {
     repositories {
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -7,8 +9,6 @@ pluginManagement {
                 includeGroupByRegex("androidx.*")
             }
         }
-        maven { url = uri("https://jitpack.io") }
-        mavenCentral()
         gradlePluginPortal()
         jcenter() // for observablecollections
     }
@@ -16,9 +16,9 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
-        maven { url = uri("https://jitpack.io") }
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+        google()
         jcenter() // for observablecollections
     }
 }
