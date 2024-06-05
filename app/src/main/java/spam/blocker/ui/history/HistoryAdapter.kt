@@ -64,7 +64,7 @@ class HistoryAdapter(
         holder.labelPeer.text = contact?.name ?: record.peer
         holder.labelPeer.setTextColor(if (record.isBlocked()) red else green)
         holder.labelResult.text = Checker.resultStr(ctx, record.result, record.reason)
-        showIf(holder.unreadMark, record.read)
+        showIf(holder.unreadMark, !record.read, true)
         if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
             holder.imgReason.setImageDrawable(getAppsMap(ctx)[record.reason]?.icon)
         }

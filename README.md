@@ -42,7 +42,7 @@ An Android Call/SMS blocker. (Android 10+)
 | RECEIVE_SMS            | For receiving new messages                                      |
 | READ_CALL_LOG<br>READ_SMS(optional) | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
-| READ_PHONE_STATE       | For block mode: Answer and Hang (monitor ringing state)  |
+| READ_PHONE_STATE       | For block mode: Answer + Hang-up (monitor ringing state)  |
 
 # Troubleshooting 
 
@@ -52,4 +52,4 @@ An Android Call/SMS blocker. (Android 10+)
 
 # Languages supported
 
-Languages are translated using Gemini AI, with this [golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go), if you need to add support for a new language, please fire an issue.
+Languages are translated using Gemini AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), fire an issue for requesting a new language support.

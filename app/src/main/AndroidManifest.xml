@@ -23,6 +23,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,7 +34,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpamBlocker">
 
-        <activity android:name=".service.NotificationTrampolineActivity" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
@@ -43,6 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".service.NotificationTrampolineActivity" />
+        <activity android:name=".ui.crash.CrashReportActivity" />
 
         <service
             android:name=".service.CallScreeningService"

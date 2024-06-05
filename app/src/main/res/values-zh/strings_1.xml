@@ -54,7 +54,6 @@
     <string name="import_fail">导入失败</string>
     <string name="go_to_setting">转到设置</string>
     <string name="prompt_go_to_usage_permission_setting">此功能需要“使用情况统计信息”权限，必须在设置中手动启用此权限。打开设置页面？</string>
-    <string name="crashed">已崩溃</string>
     <string name="emergency_call">紧急呼叫</string>
     <string name="contact">联系人</string>
     <string name="non_contact">非联系人</string>

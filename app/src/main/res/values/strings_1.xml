@@ -54,7 +54,6 @@
     <string name="import_fail">Failed to import</string>
     <string name="go_to_setting">Go to Setting</string>
     <string name="prompt_go_to_usage_permission_setting">This feature requires permission \"Usage Statistics\", it has to be manually enabled in Settings. \nOpen that Setting page? </string>
-    <string name="crashed">Crashed</string>
     <string name="emergency_call">Emergency Call</string>
     <string name="contact">Contact</string>
     <string name="non_contact">Non Contact</string>

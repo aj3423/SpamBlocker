@@ -54,7 +54,6 @@
     <string name="import_fail">Ошибка импорта</string>
     <string name="go_to_setting">Перейти к настройке</string>
     <string name="prompt_go_to_usage_permission_setting">Для этой функции требуется разрешение "Статистика использования", оно должно быть включено вручную в настройках. \nОткрыть эту страницу настроек?</string>
-    <string name="crashed">Сбой</string>
     <string name="emergency_call">Экстренный вызов</string>
     <string name="contact">Контакт</string>
     <string name="non_contact">Без контакта</string>

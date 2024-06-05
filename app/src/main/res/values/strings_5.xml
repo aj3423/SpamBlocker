@@ -48,6 +48,10 @@
         &emsp; To avoid being sent to the voicemail.
         ]]>
     </string>
+    <string name="crash_title">
+        Sorry, the app has crashed. \n\nPlease copy the content below and report this issue on github,
+        be sure to remove any sensitive information before reporting.
+    </string>
     <string-array name="week">
         <item>Sun</item>
         <item>Mon</item>
