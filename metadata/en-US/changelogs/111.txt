@@ -1,0 +1,5 @@
+fix:
+- db crash when upgrading from old version
+- msg rule doesn't work for long message
+- answer & hang up not work on android 14
+- dont show block type icon for msg rule
