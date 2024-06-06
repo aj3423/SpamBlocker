@@ -1,0 +1,5 @@
+new:
+ - crash report
+fix:
+ - crash with long rule list(1000+)
+ - unread mark(the red dot) in the history log shows the opposite status

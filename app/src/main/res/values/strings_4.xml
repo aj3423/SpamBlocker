@@ -14,8 +14,6 @@
         History records are ignored. <br>
         <br>
         If some switches like "Contacts" is not enabled after restoring, check the corresponding permission in system settings, permissions are not \"restored\" automatically. <br>
-        <br>
-        This app does not require INTERNET and STORAGE permissions, there will not be feature like \"backup to cloud or storage file\".
         ]]>
     </string>
     <string name="help_off_time">
