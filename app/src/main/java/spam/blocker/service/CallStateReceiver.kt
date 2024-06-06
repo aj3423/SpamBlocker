@@ -23,18 +23,20 @@ class CallStateReceiver : BroadcastReceiver() {
             // if the time since the `lastCalledTime` is less than 1 second,
             //   answer the call and hang up
             val now = System.currentTimeMillis()
-            val tolerance = 1000 // 1 second
+            val tolerance = 5000 // 1 second
             val shouldBlock = (now - lastCalledTime) < tolerance
 
             when (intent.getStringExtra(TelephonyManager.EXTRA_STATE)) {
                 // ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
+                    Log.e(Def.TAG, "EXTRA_STATE_RINGING...")
                     if (shouldBlock)
                         answerCall(ctx)
                 }
 
                 // call is active(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
+                    Log.e(Def.TAG, "EXTRA_STATE_OFFHOOK.......")
                     if (shouldBlock)
                         endCall(ctx)
                 }

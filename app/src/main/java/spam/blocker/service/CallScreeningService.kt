@@ -42,7 +42,11 @@ class CallScreeningService : CallScreeningService() {
     }
     private fun answerThenHangUp(details: TelecomCall.Details) {
         Global(this).writeLong(Def.LAST_CALLED_TIME, System.currentTimeMillis())
-        pass(details) // let it ring, it will be handled in CallStateReceiver
+//        pass(details) // let it ring, it will be handled in CallStateReceiver
+        val builder = CallResponse.Builder().apply {
+            setSilenceCall(true)
+        }
+        respondToCall(details, builder.build())
     }
 
     override fun onScreenCall(details: TelecomCall.Details) {

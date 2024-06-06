@@ -5,6 +5,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
 import android.text.SpannableStringBuilder
+import androidx.core.database.getIntOrNull
+import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -118,18 +120,16 @@ abstract class RuleTable {
 
                     f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                     f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
-                    val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
-                    f.patternExtra = if(it.isNull(columnExtra)) "" else it.getString(columnExtra) // for historical compatibility
+                    f.patternExtra = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: ""
                     f.patternFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)))
                     f.patternExtraFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)))
                     f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                     f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                     f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
                     f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
-                    val columnImportance = it.getColumnIndex(Db.COLUMN_IMPORTANCE)
-                    f.importance = if(it.isNull(columnImportance)) Def.DEF_SPAM_IMPORTANCE else it.getInt(columnImportance) // for historical compatibility
-                    f.schedule = it.getString(it.getColumnIndex(Db.COLUMN_SCHEDULE))
-                    f.blockType = it.getInt(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
+                    f.importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE)) ?: Def.DEF_SPAM_IMPORTANCE
+                    f.schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
+                    f.blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE)) ?: Def.DEF_BLOCK_TYPE
                     ret += f
                 } while (it.moveToNext())
             }
@@ -149,18 +149,16 @@ abstract class RuleTable {
                 val f = PatternRule()
                 f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
                 f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
-                val columnExtra = it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)
-                f.patternExtra = if(it.isNull(columnExtra)) "" else it.getString(columnExtra) // for historical compatibility
+                f.patternExtra = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: ""
                 f.patternFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)))
                 f.patternExtraFlags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)))
                 f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                 f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                 f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
                 f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
-                val columnImportance = it.getColumnIndex(Db.COLUMN_IMPORTANCE)
-                f.importance = if(it.isNull(columnImportance)) Def.DEF_SPAM_IMPORTANCE else it.getInt(columnImportance) // for historical compatibility
-                f.schedule = it.getString(it.getColumnIndex(Db.COLUMN_SCHEDULE))
-                f.blockType = it.getInt(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
+                f.importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE)) ?: Def.DEF_SPAM_IMPORTANCE
+                f.schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
+                f.blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE)) ?: Def.DEF_BLOCK_TYPE
 
                 return f
             } else {
