@@ -23,9 +23,6 @@ class CrashReportActivity : AppCompatActivity() {
 
         val spf = Global(this)
 
-        // language
-        Util.setLocale(this, spf.getLanguage())
-
         // theme
         UI.applyTheme(spf.isDarkTheme())
 

@@ -40,10 +40,12 @@ class CallScreeningService : CallScreeningService() {
         }
         respondToCall(details, builder.build())
     }
-    private fun pick_then_hang(details: TelecomCall.Details) {
+    private fun answerThenHangUp(details: TelecomCall.Details) {
+        Global(this).writeLong(Def.LAST_CALLED_TIME, System.currentTimeMillis())
+        pass(details) // let it ring, it will be handled in CallStateReceiver
     }
-    override fun onScreenCall(details: TelecomCall.Details) {
 
+    override fun onScreenCall(details: TelecomCall.Details) {
         if (details.callDirection != TelecomCall.Details.DIRECTION_INCOMING)
             return
 
@@ -63,10 +65,7 @@ class CallScreeningService : CallScreeningService() {
 
             when(blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
-                Def.BLOCK_TYPE_ANSWER_AND_HANG -> {
-                    Global(this).writeLong(Def.LAST_CALLED_TIME, System.currentTimeMillis())
-                    pass(details) // let it ring, it will be handled in CallStateReceiver
-                }
+                Def.BLOCK_TYPE_ANSWER_AND_HANG -> answerThenHangUp(details)
                 else -> reject(details)
             }
         } else {
