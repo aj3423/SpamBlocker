@@ -28,9 +28,11 @@ class SmsReceiver : BroadcastReceiver() {
             return
         }
         val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
-        val msg = messages[0]
-        val rawNumber = msg.originatingAddress!!
-        val messageBody = msg.messageBody;
+        // A single long message can be split into multiple parts due to character
+        // limitations of SMS messages. These parts are then reassembled by the
+        // phone and delivered together.
+        val messageBody = messages.fold("") { acc, it -> acc + it.messageBody }
+        val rawNumber = messages[0].originatingAddress!!
         Log.d(Def.TAG, "onReceive sms from $rawNumber: $messageBody")
 
         processSms(ctx, rawNumber, messageBody)
