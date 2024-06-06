@@ -57,7 +57,7 @@ class RuleAdapter(
             Def.BLOCK_TYPE_ANSWER_AND_HANG -> ctx.resources.getDrawable(R.drawable.ic_hang, null)
             else -> ctx.resources.getDrawable(R.drawable.ic_call_blocked, null)
         })
-        showIf(holder.imgBlockType, f.isBlacklist)
+        showIf(holder.imgBlockType, f.isBlacklist && forType == Def.ForNumber)
         if (forType != Def.ForNumber) {
             holder.imgApplyToCall.visibility = View.GONE
         }
