@@ -1,27 +1,27 @@
 <resources>
-    <string name="app_name">SpamBlocker</string>
+    <string name="app_name">垃圾短信/电话拦截器</string>
     <string name="setting">设置</string>
-    <string name="call">呼叫</string>
+    <string name="call">电话</string>
     <string name="sms">短信</string>
-    <string name="globally_enabled">已启用</string>
-    <string name="number_pattern">电话号码</string>
-    <string name="particular_number_pattern">特定电话号码</string>
+    <string name="globally_enabled">启用</string>
+    <string name="number_pattern">号码模式</string>
+    <string name="particular_number_pattern">特定号码</string>
     <string name="sms_content_pattern">短信内容</string>
-    <string name="invalid_regex_pattern">无效正则表达式</string>
-    <string name="pattern_contain_invisible_characters">发现不可见字符</string>
-    <string name="pattern_contain_leading_zeroes">无需添加前导“0”，在检查前系统将删除这些数字。</string>
-    <string name="pattern_contain_leading_plus">无需添加前导“+”，在检查前系统将删除这些数字。</string>
-    <string name="check_balloon_for_explanation">查看“号码规则”帮助，了解详细说明。</string>
-    <string name="invalid_number">无效号码</string>
-    <string name="invalid_integer">无效整数</string>
-    <string name="filter_desc">说明</string>
-    <string name="apply_to_call">应用到呼叫</string>
-    <string name="apply_to_sms">应用到短信</string>
+    <string name="invalid_regex_pattern">正则表达式不合法</string>
+    <string name="pattern_contain_invisible_characters">包含不可见字符</string>
+    <string name="pattern_contain_leading_zeroes">请勿包含前导“0”，它们在检查前会被移除。</string>
+    <string name="pattern_contain_leading_plus">请勿包含前导“+”，它们在检查前会被移除。</string>
+    <string name="check_balloon_for_explanation">详细解释请查看“数字规则”的帮助。</string>
+    <string name="invalid_number">无效的号码</string>
+    <string name="invalid_integer">无效的整数</string>
+    <string name="filter_desc">描述</string>
+    <string name="apply_to_call">应用于电话</string>
+    <string name="apply_to_sms">应用于短信</string>
     <string name="title_add_rule">新规则</string>
     <string name="title_edit_rule">编辑规则</string>
     <string name="add">添加</string>
     <string name="delete">删除</string>
-    <string name="clear">清除</string>
+    <string name="clear">清空</string>
     <string name="test">测试</string>
     <string name="save">保存</string>
     <string name="whitelist">白名单</string>
@@ -29,9 +29,9 @@
     <string name="content">内容</string>
     <string name="priority">优先级</string>
     <string name="deleted_filter">(已删除规则)</string>
-    <string name="apply_to">应用到</string>
+    <string name="apply_to">应用于</string>
     <string name="Delete">删除</string>
-    <string name="undelete">取消删除</string>
+    <string name="undelete">还原</string>
     <string name="passed">通过</string>
     <string name="passed_by_default">默认通过</string>
     <string name="blocked">已阻止</string>
@@ -41,79 +41,80 @@
     <string name="quick_copy">快速复制</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="ok">确定</string>
+    <string name="ok">好的</string>
     <string name="cancel">取消</string>
     <string name="miscellaneous">其他</string>
-    <string name="quick_settings">快速设置</string>
+    <string name="quick_settings">快捷设置</string>
     <string name="regex_settings">正则表达式设置</string>
-    <string name="backup_restore">备份和还原</string>
+    <string name="backup_restore">备份和恢复</string>
     <string name="import_">导入</string>
     <string name="export">导出</string>
     <string name="config_text">配置文本</string>
     <string name="imported_successfully">已成功导入。</string>
     <string name="import_fail">导入失败</string>
-    <string name="go_to_setting">转到设置</string>
-    <string name="prompt_go_to_usage_permission_setting">此功能需要“使用情况统计信息”权限，必须在设置中手动启用此权限。打开设置页面？</string>
+    <string name="go_to_setting">前往设置</string>
+    <string name="prompt_go_to_usage_permission_setting">此功能需要“使用率统计数据”权限，须在“设置”中手动启用。\n打开该“设置”页面？</string>
     <string name="emergency_call">紧急呼叫</string>
     <string name="contact">联系人</string>
     <string name="non_contact">非联系人</string>
     <string name="inclusive">包含</string>
     <string name="exclusive">排除</string>
-    <string name="label_contact_filter">联系人过滤</string>
+    <string name="label_contact_filter">联系人筛选</string>
     <string name="label_number_filter">号码规则</string>
-    <string name="label_content_filter">消息规则</string>
-    <string name="recent_app">最近的应用</string>
-    <string name="allow_recent_apps">最近的应用</string>
+    <string name="label_content_filter">短信规则</string>
+    <string name="recent_app">最近 App</string>
+    <string name="allow_recent_apps">最近 App</string>
     <string name="allow_contact">联系人</string>
 
-    <string name="stir">STIR 认证</string>
-    <string name="stir_include_unverified">包括未验证</string>
+    <string name="stir">STIR 验证</string>
+    <string name="stir_include_unverified">包含未验证</string>
     <string name="unverified">未验证</string>
-    <string name="valid">有效呼叫</string>
-    <string name="spoof">诈骗电话</string>
+    <string name="valid">有效来电</string>
+    <string name="spoof">仿冒来电</string>
     <string name="help_stir">
         <![CDATA[
-            STIR 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。<br>
+            STIR 验证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
             <br>
-            有三种可能的认证结果：<br>
+            可能有三种验证结果： <br>
             <font color="cyan"><b>有效</b></font> <br>
-            &emsp; 通话很可能是有效的，不是诈骗电话。 <br>
+            &emsp; 来电极有可能是有效来电，而非仿冒来电。 <br>
             <font color="#ffa500"><b>未验证</b></font> <br>
-            &emsp; 无法验证通话，或不支持 STIR 认证。 <br>
-            <font color="#fa7f71"><b>诈骗</b></font> <br>
-            &emsp; 此通话很可能是诈骗电话。 <br>
+            &emsp; 无法验证来电，或不支持 STIR 验证。 <br>
+            <font color="#fa7f71"><b>仿冒</b></font> <br>
+            &emsp; 来电极有可能是仿冒来电。 <br>
             <br>
             <br>
-              - <font color="#d1c8c8"><b>包含</b></font>：<br>
-                  &emsp; 不通过这项检查的通话仍将按照其他规则进行检查。 <br>
-                  &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
+              - <font color="#d1c8c8"><b>包含</b></font>: <br>
+                  &emsp; 此验证失败的来电仍会接受其他规则检查。 <br>
+                  &emsp; <font color="#ea86ff"><b>优先级: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>排除</b></font>：<br>
-                  &emsp; 不通过这项检查的通话将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
-                  &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
+              - <font color="#fa7f71"><b>排除</b></font>: <br>
+                  &emsp; 此验证失败的来电将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
+                  &emsp; <font color="#ea86ff"><b>优先级: 0</b></font>
         ]]>
     </string>
 
-    <string name="repeated_call">重复呼叫</string>
+    <string name="repeated_call">重复来电</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果通话在一段时间内重复，则允许通话，这可能是紧急通话而不是垃圾邮件。 <br>
+        如果来电在一段时间内重复出现，则允许来电，因其可能是紧急电话，而非垃圾电话。 <br>
         <br>
-        从同一个号码接收文本消息也会被计数，这取决于是否授予了 READ_SMS 权限（可选）。<br>
+        从同一号码接收短信也将被计算在内，这取决于 READ_SMS 权限是否授予，该权限是可选的。<br>
         <br>
-        默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示允许在 5 分钟内进行第二次通话。 <br>
+        默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示在 5 分钟内允许第二次来电。 <br>
         <br>
-        仅适用于呼叫，<b>不</b>适用于短信。 <br>
+        仅适用于来电，<b>不</b>适用于短信。 <br>
         <br>
-        <font color="#ea86ff"><b>优先级：10</b></font>
+        <font color="#ea86ff"><b>优先级: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，只有打开此开关，此应用才能正常工作，当你等待某个特定电话/消息时，可以将其关闭。 <br>
+        全局开关，仅当此开关开启时，此应用才有效，
+        在您等待特定来电/短信时，请关闭此开关。 <br>
         <br>
-        还可以从 <b>下拉快速设置</b>切换。
+        还可以从 <b>下拉快捷设置</b> 进行切换。
         ]]>
     </string>
 

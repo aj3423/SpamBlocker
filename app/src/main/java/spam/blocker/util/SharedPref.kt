@@ -58,6 +58,18 @@ open class SharedPref(private val ctx: Context) {
 //    }
 }
 
+class Temporary(ctx: Context) : SharedPref(ctx) {
+    fun getLastCallToBlock() : Pair<String, Long> {
+        return Pair(
+            readString(Def.LAST_NUMBER_TO_BLOCK, ""),
+            readLong(Def.LAST_CALLED_TIME, 0)
+        )
+    }
+    fun setLastCallToBlock(number: String, timestamp: Long) {
+        writeString(Def.LAST_NUMBER_TO_BLOCK, number)
+        writeLong(Def.LAST_CALLED_TIME, timestamp)
+    }
+}
 class Global(ctx: Context) : SharedPref(ctx) {
     fun isGloballyEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLED, false) }
     fun setGloballyEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_ENABLED, enabled) }

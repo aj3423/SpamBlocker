@@ -511,6 +511,7 @@ class SettingFragment : Fragment() {
         val permChain = PermissionChain(this,
             listOf(
                 Permission(Manifest.permission.READ_PHONE_STATE),
+                Permission(Manifest.permission.READ_CALL_LOG),
                 Permission(Manifest.permission.ANSWER_PHONE_CALLS)
             )
         )

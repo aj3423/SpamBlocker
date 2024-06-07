@@ -1,37 +1,37 @@
 <resources>
 
     <string name="allow_repeated_call">重复呼叫</string>
-    <string name="dialed">已拨</string>
+    <string name="dialed">已拨号</string>
     <string name="confirm_del_all_filters">删除所有过滤器？</string>
     <string name="dark_theme">暗色主题</string>
-    <string name="find_apps">查找应用</string>
-    <string name="spam_sms_blocked">短信已阻止</string>
-    <string name="spam_call_blocked">电话已阻止</string>
-    <string name="new_sms_received">收到一条新短信</string>
+    <string name="find_apps">寻找应用</string>
+    <string name="spam_sms_blocked">已拦截短信消息</string>
+    <string name="spam_call_blocked">已拦截电话</string>
+    <string name="new_sms_received">新短信消息</string>
     <string name="mark_all_as_read">全部标记为已读</string>
     <string name="delete_all">全部删除</string>
     <string name="show_passed">显示已通过</string>
-    <string name="show_blocked">显示已阻止</string>
+    <string name="show_blocked">显示已拦截</string>
     <string name="clone_rule">克隆规则</string>
     <string name="notification">通知</string>
     <string name="type">类型</string>
     <string name="time">时间</string>
-    <string name="times">次数</string>
+    <string name="times">次</string>
     <string name="day">天</string>
     <string name="days">天</string>
-    <string name="min">分钟</string>
-    <string name="within_minutes">分钟内</string>
-    <string name="within_days">天内</string>
+    <string name="min">分</string>
+    <string name="within_minutes">在分钟内</string>
+    <string name="within_days">在日内</string>
     <string name="phone_number">电话号码</string>
     <string name="sms_content">短信内容</string>
     <string name="result">结果</string>
     <string name="reason">原因</string>
-    <string name="regex_flags">正则标记</string>
+    <string name="regex_flags">正则表达式标记</string>
     <string name="ignore_case">忽略大小写</string>
-    <string name="dot_match_all">圆点匹配所有</string>
+    <string name="dot_match_all">点匹配所有</string>
     <string name="literal">文本</string>
     <string name="off_time">关闭时间</string>
-    <string name="schedule">计划</string>
+    <string name="schedule">时间表</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
     <string name="entire_day">全天</string>
@@ -39,17 +39,17 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>拒绝</b></font>: <br>
-        &emsp; 与按下拒绝按钮相同。 <br>
+        &emsp; 与拒接按钮一样。<br>
         <br>
-        - <font color="#d1c8c8"><b>静音</b></font>: <br>
-        &emsp; 电话将在后台静音响铃，使呼叫者感觉你只是很忙，还没有接听电话。 <br>
+        - <font color="#d1c8c8"><b>静默</b></font>: <br>
+        &emsp; 来电时会在后台静默响铃，给来电者造成你正忙未接听的印象。<br>
         <br>
-        - <font color="#d1c8c8"><b>接听+挂断</b></font>: <br>
-        &emsp; 避免被转到语音信箱。
+        - <font color="#d1c8c8"><b>接听并挂断</b></font>: <font color="#ffa500"><b>（实验性）</b></font><br>
+        &emsp; 为避免电话被转到语音信箱，此行为可能取决于运营商。
         ]]>
     </string>
     <string name="crash_title">
-        抱歉，应用已崩溃。\n\n请复制以下内容，并在 GitHub 上报告此问题，报告前请务必删除所有敏感信息。
+        抱歉，该应用已崩溃。\n\n请复制以下内容并在 GitHub 上报告此问题，确保在报告前删除任何敏感信息。
     </string>
     <string-array name="week">
         <item>周日</item>
@@ -63,22 +63,22 @@
 
     <string-array name="block_type_list">
         <item>拒绝</item>
-        <item>静音</item>
+        <item>静默</item>
         <item>接听+挂断</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>无</item>
-        <item>遮盖</item>
-        <item>状态栏、遮盖</item>
-        <item>声音、状态栏、遮盖</item>
-        <item>声音、状态栏、遮盖、首要</item>
+        <item>阴影</item>
+        <item>状态栏、阴影</item>
+        <item>声音、状态栏、阴影</item>
+        <item>声音、状态栏、阴影、提示</item>
     </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译由 Google AI 完成，请在 GitHub 上发起 issue 以添加新语言。
+            翻译由 Google AI 完成，请在 GitHub 上提交问题以添加新的语言。
         ]]>
     </string>
 </resources>

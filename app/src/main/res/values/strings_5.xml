@@ -44,8 +44,8 @@
         - <font color="#d1c8c8"><b>Silence</b></font>: <br>
         &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>
         <br>
-        - <font color="#d1c8c8"><b>Answer and Hang Up</b></font>: <br>
-        &emsp; To avoid being sent to the voicemail.
+        - <font color="#d1c8c8"><b>Answer and Hang Up</b></font>: <font color="#ffa500"><b>(experimental)</b></font><br>
+        &emsp; To avoid being sent to the voicemail, the behavior may depend on peer carrier.
         ]]>
     </string>
     <string name="crash_title">

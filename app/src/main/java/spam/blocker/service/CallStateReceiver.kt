@@ -10,21 +10,30 @@ import android.telephony.TelephonyManager
 import android.util.Log
 import spam.blocker.def.Def
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.Temporary
+import spam.blocker.util.Util
 
 class CallStateReceiver : BroadcastReceiver() {
     override fun onReceive(ctx: Context, intent: Intent) {
         if (intent.action == "android.intent.action.PHONE_STATE") {
 
-            // The `lastCalledTime` is set in the CallScreeningService,
-            //   it's only set when the call should be blocked.
-            val spf = Global(ctx)
-            val lastCalledTime = spf.readLong(Def.LAST_CALLED_TIME, 0)
+            val extras = intent.extras
+            if(extras == null || !extras.containsKey("incoming_number")) {
+                return
+            }
+            val currNumber = extras.getString("incoming_number")!!
+            Log.d(Def.TAG, "num:  $currNumber")
+
+            // `numToBlock` and `lastCalledTime` are set in the CallScreeningService,
+            //   they are only set when the call should be blocked by "answer + hang up"
+            val (numToBlock, lastCalledTime) = Temporary(ctx).getLastCallToBlock()
+
 
             // if the time since the `lastCalledTime` is less than 1 second,
             //   answer the call and hang up
             val now = System.currentTimeMillis()
-            val tolerance = 5000 // 1 second
-            val shouldBlock = (now - lastCalledTime) < tolerance
+            val tolerance = 5000 // 5 second
+            val shouldBlock = (now - lastCalledTime) < tolerance && numToBlock == Util.clearNumber(currNumber)
 
             when (intent.getStringExtra(TelephonyManager.EXTRA_STATE)) {
                 // ringing

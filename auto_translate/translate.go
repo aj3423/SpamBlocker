@@ -50,7 +50,7 @@ func translate_1_file(lang string, fn string) error {
 	GeminiToken := os.Getenv("GeminiToken")
 
 	text := fmt.Sprintf(
-		"Translate the following xml content to %s, don't touch the xml tags, show me the result only \n%s",
+		"Translate the following xml content to %s, better use short words, leave the XML tags unmodified, show me the result only \n%s",
 		lang, to_translate)
 
 	ctx := context.Background()

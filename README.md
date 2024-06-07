@@ -44,10 +44,11 @@ An Android Call/SMS blocker. (Android 10+)
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
 | READ_PHONE_STATE       | For block mode: Answer + Hang-up (monitor ringing state)  |
 
-# Troubleshooting 
+# Troubleshooting & FAQ
 
 | Problem             | Solution                                                             |
 | ----                   | ----                                                            |
+| How to make it only work for Calls and disable it for SMS messages.   | Disable all SMS permissions in System Settings  |
 | SMS notification doesn't work after app is killed    | Enable "app auto start" in battery settings:<br> &emsp; System Settings -> Battery -> ... -> Auto-start Manager -> enable SpamBlocker  |
 
 # Languages supported

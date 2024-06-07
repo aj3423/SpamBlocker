@@ -13,6 +13,8 @@ import spam.blocker.def.Def
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.Temporary
+import spam.blocker.util.Util
 
 class CallScreeningService : CallScreeningService() {
 
@@ -40,9 +42,14 @@ class CallScreeningService : CallScreeningService() {
         }
         respondToCall(details, builder.build())
     }
-    private fun answerThenHangUp(details: TelecomCall.Details) {
-        Global(this).writeLong(Def.LAST_CALLED_TIME, System.currentTimeMillis())
-//        pass(details) // let it ring, it will be handled in CallStateReceiver
+    private fun answerThenHangUp(rawNumber: String, details: TelecomCall.Details) {
+        // save number and time to shared pref, it will be read soon in CallStateReceiver
+        Temporary(this).setLastCallToBlock(
+            Util.clearNumber(rawNumber),
+            System.currentTimeMillis()
+        )
+
+        // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
         val builder = CallResponse.Builder().apply {
             setSilenceCall(true)
         }
@@ -69,7 +76,7 @@ class CallScreeningService : CallScreeningService() {
 
             when(blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
-                Def.BLOCK_TYPE_ANSWER_AND_HANG -> answerThenHangUp(details)
+                Def.BLOCK_TYPE_ANSWER_AND_HANG -> answerThenHangUp(rawNumber, details)
                 else -> reject(details)
             }
         } else {
@@ -85,54 +92,48 @@ class CallScreeningService : CallScreeningService() {
     }
 
     fun processCall(ctx: Context, rawNumber: String, callDetails: TelecomCall.Details? = null) : CheckResult {
-        var r = CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
-        try {
-            r = Checker.checkCall(ctx, rawNumber, callDetails)
+        val r = Checker.checkCall(ctx, rawNumber, callDetails)
 
-            // 1. log to db
-            val call = Record()
-            call.peer = rawNumber
-            call.time = System.currentTimeMillis()
-            call.result = r.result
-            call.reason = r.reason()
-            val id = CallTable().addNewRecord(ctx, call)
+        // 1. log to db
+        val call = Record()
+        call.peer = rawNumber
+        call.time = System.currentTimeMillis()
+        call.result = r.result
+        call.reason = r.reason()
+        val id = CallTable().addNewRecord(ctx, call)
 
-            // 2. block
-            if (r.shouldBlock) {
+        // 2. block
+        if (r.shouldBlock) {
 
-                Log.d(Def.TAG, String.format("Reject call %s", rawNumber))
+            Log.d(Def.TAG, String.format("Reject call %s", rawNumber))
 
-                val importance = if (r.result == Def.RESULT_BLOCKED_BY_NUMBER)
-                    r.byFilter!!.importance
-                else
-                    Def.DEF_SPAM_IMPORTANCE
+            val importance = if (r.result == Def.RESULT_BLOCKED_BY_NUMBER)
+                r.byFilter!!.importance
+            else
+                Def.DEF_SPAM_IMPORTANCE
 
-                // click the notification to launch this app
-                val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
-                    putExtra("type", "call")
-                    putExtra("blocked", true)
-                }.setAction("action_call")
+            // click the notification to launch this app
+            val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
+                putExtra("type", "call")
+                putExtra("blocked", true)
+            }.setAction("action_call")
 
-                Notification.show(ctx, R.drawable.ic_call_blocked,
-                    rawNumber,
-                    Checker.reasonStr(ctx, NumberRuleTable(), r.reason()),
-                    importance, ctx.resources.getColor(R.color.salmon, null), intent)
-            }
-
-            // broadcast new call
-            run {
-                val intent = Intent(Def.ON_NEW_CALL)
-                intent.putExtra("type", "call")
-                intent.putExtra("blocked", r.shouldBlock)
-                intent.putExtra("record_id", id)
-
-                ctx.sendBroadcast(intent)
-            }
-
-        } catch (t: Throwable) {
-            Log.w(Def.TAG, t)
-        } finally {
+            Notification.show(ctx, R.drawable.ic_call_blocked,
+                rawNumber,
+                Checker.resultStr(ctx, r.result, r.reason()),
+                importance, ctx.resources.getColor(R.color.salmon, null), intent)
         }
+
+        // broadcast new call
+        run {
+            val intent = Intent(Def.ON_NEW_CALL)
+            intent.putExtra("type", "call")
+            intent.putExtra("blocked", r.shouldBlock)
+            intent.putExtra("record_id", id)
+
+            ctx.sendBroadcast(intent)
+        }
+
         return r
     }
 

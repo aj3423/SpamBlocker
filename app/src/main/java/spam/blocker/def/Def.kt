@@ -7,7 +7,9 @@ object Def {
 
     const val ACTION_TILE_TOGGLE = "tile_toggle"
 
+    // for block mode: answer + hang-up
     const val LAST_CALLED_TIME = "last_called_time"
+    const val LAST_NUMBER_TO_BLOCK = "last_number_to_block"
 
     const val SETTING_DARK_THEME = "dark_theme"
     const val SETTING_STIR_ENABLED = "stir_enabled"

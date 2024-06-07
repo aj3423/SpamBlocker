@@ -1,85 +1,85 @@
 <resources>
 
-    <string name="allow_repeated_call">Повторные звонки</string>
+    <string name="allow_repeated_call">Повт. зв.</string>
     <string name="dialed">Набрано</string>
     <string name="confirm_del_all_filters">Удалить все фильтры?</string>
-    <string name="dark_theme">Темная тема</string>
-    <string name="find_apps">Поиск приложений</string>
-    <string name="spam_sms_blocked">Заблокировано SMS-сообщение</string>
-    <string name="spam_call_blocked">Звонок заблокирован</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="find_apps">Найти приложения</string>
+    <string name="spam_sms_blocked">Заблокировано SMS</string>
+    <string name="spam_call_blocked">Заблокирован вызов</string>
     <string name="new_sms_received">Новое SMS-сообщение</string>
     <string name="mark_all_as_read">Отметить все как прочитанные</string>
     <string name="delete_all">Удалить все</string>
     <string name="show_passed">Показать пропущенные</string>
     <string name="show_blocked">Показать заблокированные</string>
-    <string name="clone_rule">Клонировать правило</string>
+    <string name="clone_rule">Клон правила</string>
     <string name="notification">Уведомление</string>
     <string name="type">Тип</string>
     <string name="time">Время</string>
     <string name="times">Раз</string>
     <string name="day">День</string>
-    <string name="days">Дни</string>
+    <string name="days">Дней</string>
     <string name="min">Мин</string>
-    <string name="within_minutes">В течение минут</string>
-    <string name="within_days">В течение дней</string>
+    <string name="within_minutes">В пределах минут</string>
+    <string name="within_days">В пределах дней</string>
     <string name="phone_number">Номер телефона</string>
-    <string name="sms_content">Содержимое SMS</string>
+    <string name="sms_content">Содержание SMS</string>
     <string name="result">Результат</string>
     <string name="reason">Причина</string>
-    <string name="regex_flags">Флаги регулярных выражений</string>
+    <string name="regex_flags">Флаги Regex</string>
     <string name="ignore_case">Игнорировать регистр</string>
     <string name="dot_match_all">Точка соответствует всему</string>
-    <string name="literal">Буквальный</string>
-    <string name="off_time">Время бездействия</string>
+    <string name="literal">Значение</string>
+    <string name="off_time">Время откл</string>
     <string name="schedule">Расписание</string>
-    <string name="workday">Будний день</string>
-    <string name="weekend">Выходной день</string>
+    <string name="workday">Б.д.</string>
+    <string name="weekend">В.д.</string>
     <string name="entire_day">Весь день</string>
-    <string name="block_type">Тип блокировки</string>
+    <string name="block_type">Тип блок.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Отклонить</b></font>: <br>
-        &emsp; То же самое, что нажать кнопку отклонения. <br>
+        - <font color="#d1c8c8"><b>Отклон.</b></font>: <br>
+        &emsp; То же, что нажатие кнопки "Отклонить". <br>
         <br>
         - <font color="#d1c8c8"><b>Без звука</b></font>: <br>
-        &emsp; Будет звучать беззвучно в фоновом режиме, создавая у звонящего впечатление, что вы просто заняты и не ответили на звонок. <br>
+        &emsp; Сигнал будет звонить без звука в фоновом режиме, создавая у звонящего впечатление, что вы просто заняты и не ответили. <br>
         <br>
-        - <font color="#d1c8c8"><b>Ответить и сбросить</b></font>: <br>
-        &emsp; Чтобы избежать отправки на голосовую почту.
+        - <font color="#d1c8c8"><b>Ответить и пов.трубку</b></font>: <font color="#ffa500"><b>(экспериментально)</b></font><br>
+        &emsp; Во избежание переадресации на голосовую почту, поведение может зависеть от сотового оператора.
         ]]>
     </string>
     <string name="crash_title">
-        Извините, приложение аварийно завершило работу. \n\nСкопируйте приведенное ниже содержимое и сообщите об этой проблеме в Github,
-        перед отправкой удалите любую конфиденциальную информацию.
+        К сожалению, приложение вылетело. \n\nСкопируйте текст ниже и сообщите об этой проблеме на github,
+        перед сообщением убедитесь, что удалили конфиденциальные сведения.
     </string>
     <string-array name="week">
-        <item>Воскресенье</item>
-        <item>Понедельник</item>
-        <item>Вторник</item>
-        <item>Среда</item>
-        <item>Четверг</item>
-        <item>Пятница</item>
-        <item>Суббота</item>
+        <item>Вс</item>
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
     </string-array>
 
     <string-array name="block_type_list">
         <item>Отклонить</item>
         <item>Без звука</item>
-        <item>Ответить+сбросить</item>
+        <item>Отв.+пов.трубку</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Нет</item>
-        <item>Шторка</item>
-        <item>Строка состояния, шторка</item>
-        <item>Звук, строка состояния, шторка</item>
-        <item>Звук, строка состояния, шторка, всплывающий</item>
+        <item>Никакого</item>
+        <item>Выделение</item>
+        <item>Стат. строка, Выд.</item>
+        <item>Звук, Стат. стр., Выд.</item>
+        <item>Звук, Стат. стр., Выд., Всплыв.</item>
     </string-array>
 
     <string name="language">Язык</string>
     <string name="help_language">
         <![CDATA[
-            Переводы выполняются с помощью ИИ Google, создайте проблему на Github для добавления нового языка.
+            Перевод выполняет ИИ Google, запрос на добавление языка отправьте на github.
         ]]>
     </string>
 </resources>

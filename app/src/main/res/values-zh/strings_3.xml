@@ -3,59 +3,58 @@
         <![CDATA[
         这些规则适用于短信内容。<br>
         <br>
-        <font color="#ffa500"><b>注意</b></font>:对于短信，此应用程序作为默认短信应用程序的“附加软件”，它屏蔽通知而不是屏蔽消息，垃圾邮件仍然会出现在默认短信应用程序中。<font color="#fa7f71"><b>禁用</b></font>系统设置中的默认短信应用程序通知，让此应用程序接管该通知，否则会有双重通知。<br>
+        <font color="#ffa500"><b>注</b></font>：对于短信，此应用作为默认短信应用的“附加组件”，它阻止通知而不是阻止短信，垃圾短信仍会出现在默认短信应用中。在系统设置中<font color="#fa7f71"><b>禁用</b></font>默认短信应用的通知，让此应用接管通知，否则会出现双重通知。<br>
         <br>
-        此列表以降序排列，显示优先级、升序描述和升序模式。<br>
+        按优先级降序、描述升序和模式升序<b>显示</b>列表。<br>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        快速从短信中复制内容，例如验证码。<br>
+        一种从短信中快速复制内容的方式，如验证码。<br>
         <br>
-        匹配后，通知中会显示一个类似 <font color="yellow"><b>复制: 123456</b></font> 的按钮。<br>
-        它不像是点击通知，当点击此按钮时，只会清除此通知，其他通知将保留。<br>
+        当它匹配时，一个像 <font color="yellow"><b>复制：123456</b></font> 的按钮会出现在通知中。<br>
+        它不同于点击通知，当复制按钮被点击时，只有此通知被解除，其他通知将保留。<br>
         <br>
-        一个示例规则： （使用捕获组）<br>
+        示例规则：（使用捕获组）<br>
         &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        另一种方法： （使用环视）<br>
+        另一种方法：（使用环视）<br>
         &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
-        &emsp;<font color="#ffa500"><b>注意</b></font>: <br>
-        &emsp; 它不支持在环视中使用 <font color="#fa7f71"><b>.*</b></font>，它需要一个有界的最大长度。<br>
-        &emsp; 例如，请使用： <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
-        &emsp; 代替： <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
+        &emsp;<font color="#ffa500"><b>注</b></font>：<br>
+        &emsp; 它不支持环视中的<font color="#fa7f71"><b>.*</b></font>，它需要一个有界最大长度。<br>
+        &emsp; 例如，使用：<b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; 而不是：<b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
         <br>
-        仅在短信 <b>未</b> <font color="#fa7f71"><b>被屏蔽</b></font> 时有效。
+        它仅在短信<b>未</b><font color="#fa7f71"><b>阻止</b></font>时才有效。
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        您可以取消选择这些复选框，以禁用呼叫、短信或两者中的此规则。
+        取消选中这些复选框以禁用针对通话、短信或两者应用此规则。
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        无：无通知。<br>
-        阴影：下拉通知阴影。<br>
-        状态栏：顶部栏中的小图标。<br>
-        声音：默认通知提示音。<br>
-        通知：在屏幕顶端弹出浮动窗口。
+        无：根本无通知。<br>
+        遮罩：下拉通知遮罩。<br>
+        状态栏：最上栏中的小图标。<br>
+        声音：默认的通知声音。<br>
+        Heads-Up：在屏幕顶部弹出一个浮动窗口。
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
         这有助于检查规则是否按预期设置。<br>
         <br>
-        它只是一个模拟，不会实际弹出来电（或短信）。<br>
+        这只是一个模拟，不会实际弹出呼入电话（或短信）。<br>
         <br>
-        结果显示在此处，并在历史记录中显示，带有通知。
+        结果在此处显示，并在历史记录中通过通知显示。
         ]]>
     </string>
     <string name="help_test_quick_copy">
         <![CDATA[
-        这不是一个模拟，它只显示任何快速复制规则是否与内容匹配。<br>
+        这不是一个模拟，它只显示任何快速复制规则是否匹配内容。<br>
         <br>
-        要模拟接收，请改用 <font color="#0000ff"><b>消息规则</b></font> 中的 <font color="cyan"><b>测试</b></font>。
+        要模拟接收，请使用来自<font color="#0000ff"><b>消息规则</b></font>的<font color="cyan"><b>测试</b></font>。
         ]]>
     </string>
-
 </resources>
