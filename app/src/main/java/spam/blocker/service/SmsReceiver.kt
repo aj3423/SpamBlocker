@@ -20,7 +20,7 @@ class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, intent: Intent?) {
         Log.d(Def.TAG, "onReceive in SmsReceiver")
-        if (!Global(ctx!!).isGloballyEnabled()) {
+        if (!Global(ctx!!).isGloballyEnabled() || !Global(ctx).isSmsEnabled()) {
             return
         }
         val action = intent?.action

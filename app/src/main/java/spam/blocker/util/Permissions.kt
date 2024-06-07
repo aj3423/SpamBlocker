@@ -1,7 +1,6 @@
 package spam.blocker.util
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AppOpsManager
 import android.app.role.RoleManager
@@ -9,21 +8,16 @@ import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.ComponentName
 import android.content.Context
-import android.content.Context.TELEPHONY_SUBSCRIPTION_SERVICE
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
 import android.provider.Telephony.Sms
-import android.telephony.SubscriptionManager
-import android.telephony.TelephonyManager
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -51,18 +45,30 @@ open class Permissions {
             activity.requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), 0)
         }
 
-        fun promptSetAsDefaultCallScreeningApp(activity: AppCompatActivity): () -> Unit {
-            val roleManager =
-                activity.getSystemService(AppCompatActivity.ROLE_SERVICE) as RoleManager
+        fun isCallScreeningEnabled(ctx: Context): Boolean {
+            val roleManager = ctx.getSystemService(Context.ROLE_SERVICE) as RoleManager
+            return roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
+        }
+
+        // must be initialized in MainActivity
+        lateinit var askAsScreeningApp: (((isGranted: Boolean)->Unit)?) -> Unit
+
+        fun initSetAsCallScreeningApp(activity: AppCompatActivity) {
+            var callback: ((isGranted: Boolean)->Unit)? = null
+
+            val roleManager = activity.getSystemService(AppCompatActivity.ROLE_SERVICE) as RoleManager
             val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
             val startForRequestRoleResult = activity.registerForActivityResult(
                 ActivityResultContracts.StartActivityForResult()
             ) { result: androidx.activity.result.ActivityResult ->
-                if (result.resultCode == Activity.RESULT_OK) {
+                val granted = result.resultCode == Activity.RESULT_OK
+                if (granted) {
                     bindCallScreeningService(activity)
                 }
+                callback?.invoke(granted)
             }
-            return fun() {
+            askAsScreeningApp = fun(cb: ((isGranted: Boolean)->Unit)?) {
+                callback = cb
                 startForRequestRoleResult.launch(intent)
             }
         }

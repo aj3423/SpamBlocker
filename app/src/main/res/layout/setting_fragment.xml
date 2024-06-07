@@ -29,6 +29,28 @@
 
             <Space style="@style/setting_spacing" />
 
+            <ImageView
+                android:id="@+id/enabled_for_call"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_call_24dp"
+                android:gravity="center_vertical"
+                tools:ignore="ContentDescription"
+                app:tint="@color/teal_200" />
+
+            <ImageView
+                android:id="@+id/enabled_for_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_sms_24dp"
+                android:gravity="center_vertical"
+                tools:ignore="ContentDescription"
+                app:tint="@color/teal_200" />
+
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_globally_enabled"
                 style="@style/setting_switch" />

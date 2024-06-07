@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.provider.Settings
 import android.util.DisplayMetrics
@@ -15,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import androidx.activity.result.contract.ActivityResultContracts
@@ -143,22 +145,55 @@ class SettingFragment : Fragment() {
         val switch = root.findViewById<SwitchCompat>(R.id.switch_globally_enabled)
         val group_quick_filters = root.findViewById<RelativeLayout>(R.id.group_quick_filters)
         val group_regex_filters = root.findViewById<RelativeLayout>(R.id.group_regex_filters)
+        val img_call = root.findViewById<ImageView>(R.id.enabled_for_call)
+        val img_sms = root.findViewById<ImageView>(R.id.enabled_for_sms)
+
+        val green = ctx.getColor(R.color.dark_sea_green)
+        val red = ctx.getColor(R.color.salmon)
+        val teal = ctx.getColor(R.color.teal_200)
+        val gray = ctx.getColor(R.color.mid_grey)
+        val g = Global(ctx)
+        fun updateImagesColor() {
+            val callEnabled = g.isCallEnabled()
+            val hasCallPermission = Permissions.isCallScreeningEnabled(ctx)
+            img_call.setColorFilter(if (hasCallPermission && callEnabled) teal else gray, PorterDuff.Mode.SRC_IN)
+
+            val smsEnabled = g.isSmsEnabled()
+            val hasSmsPermission = Permissions.isReceiveSmsPermissionGranted(ctx)
+            img_sms.setColorFilter(if (hasSmsPermission && smsEnabled) teal else gray, PorterDuff.Mode.SRC_IN)
+        }
+
         onEnabledChange = {
             val enabled = spf.isGloballyEnabled()
             if (switch.isChecked != enabled)
                 switch.isChecked = enabled
-            requireActivity().window.statusBarColor = ContextCompat.getColor(
-                ctx,
-                if (enabled) R.color.dark_sea_green else R.color.salmon
-            )
+
+            // top bar color
+            requireActivity().window.statusBarColor = if (enabled) green else red
+
             showIf(group_quick_filters, enabled)
             showIf(group_regex_filters, enabled)
+
+            showIf(img_call, enabled)
+            showIf(img_sms, enabled)
+            updateImagesColor()
         }
         onEnabledChange()
         switch.setOnClickListener {
             spf.toggleGloballyEnabled()
             onEnabledChange()
         }
+
+        updateImagesColor()
+        fun popup() {
+            PopupEnableConfigFragment { callEnabled: Boolean, smsEnabled: Boolean ->
+                g.setCallEnabled(callEnabled)
+                g.setSmsEnabled(smsEnabled)
+                updateImagesColor()
+            }.show(requireActivity().supportFragmentManager, "tag_config_enabled")
+        }
+        img_call.setOnClickListener { popup() }
+        img_sms.setOnClickListener { popup() }
 
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_globally_enabled),

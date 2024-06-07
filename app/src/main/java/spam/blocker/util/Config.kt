@@ -20,8 +20,21 @@ class Config {
     @Serializable
     class Global {
         var enabled = false
-        fun load(ctx: Context) { enabled = Global(ctx).isGloballyEnabled() }
-        fun apply(ctx: Context) { Global(ctx).setGloballyEnabled(enabled) }
+        var callEnabled = false
+        var smsEnabled = false
+        fun load(ctx: Context) {
+            val g = Global(ctx)
+            enabled = g.isGloballyEnabled()
+            callEnabled = g.isCallEnabled()
+            smsEnabled = g.isSmsEnabled()
+        }
+        fun apply(ctx: Context) {
+            Global(ctx).apply {
+                setGloballyEnabled(enabled)
+                setCallEnabled(callEnabled)
+                setSmsEnabled(smsEnabled)
+            }
+        }
     }
     @Serializable
     class Theme {

@@ -74,6 +74,10 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun isGloballyEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLED, false) }
     fun setGloballyEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_ENABLED, enabled) }
     fun toggleGloballyEnabled() { writeBoolean(Def.SETTING_ENABLED, !isGloballyEnabled()) }
+    fun isCallEnabled(): Boolean { return readBoolean(Def.SETTING_CALL_ENABLED, true) }
+    fun setCallEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CALL_ENABLED, enabled) }
+    fun isSmsEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_ENABLED, true) }
+    fun setSmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_ENABLED, enabled) }
 
     fun isDarkTheme(): Boolean { return readBoolean(Def.SETTING_DARK_THEME, false) }
     fun setDarkTheme(enabled: Boolean) { writeBoolean(Def.SETTING_DARK_THEME, enabled) }

@@ -36,15 +36,15 @@ An Android Call/SMS blocker. (Android 10+)
 
 | Permission             | Why                                                             |
 | ----                   | ----                                                            |
-| ANSWER_PHONE_CALLS     | Reject spam calls                                               |
+| ANSWER_PHONE_CALLS     | Reject, Answer and Hang-up calls                                |
 | POST_NOTIFICATIONS     | Show notifications                                              |
-| READ_CONTACTS          | For matching contact number and showing contact avatar          |
+| READ_CONTACTS          | For matching contacts                                           |
 | RECEIVE_SMS            | For receiving new messages                                      |
 | READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)   |
 | PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
 | READ_PHONE_STATE       | For block mode: Answer + Hang-up (monitor ringing state)  |
 
-# Troubleshooting & FAQ
+# FAQ & Troubleshooting 
 
 | Problem             | Solution                                                             |
 | ----                   | ----                                                            |

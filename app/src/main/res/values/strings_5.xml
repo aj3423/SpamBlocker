@@ -82,4 +82,7 @@
             Translations are done by Google AI, fire an issue on github for adding a new language.
         ]]>
     </string>
+    <string name="enable_for_call">Enable for Call</string>
+    <string name="enable_for_sms">Enable for SMS</string>
+
 </resources>

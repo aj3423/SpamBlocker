@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup_dialog_config_enable"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout style="@style/setting_row" >
+            <TextView
+                style="@style/setting_gray_label"
+                android:maxWidth="300dp"
+                android:text="@string/enable_for_call" />
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_enable_for_call"
+                style="@style/setting_switch" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/setting_row" >
+            <TextView
+                style="@style/setting_gray_label"
+                android:maxWidth="300dp"
+                android:text="@string/enable_for_sms" />
+            <Space style="@style/setting_spacing" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch_enable_for_sms"
+                style="@style/setting_switch" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/popup_btn_save_enable"
+            style="@style/setting_stroke_blue_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_gravity="end"
+            android:text="@string/save" />
+
+    </LinearLayout>
+</RelativeLayout>

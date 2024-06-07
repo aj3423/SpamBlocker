@@ -80,8 +80,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val promptIfScreeningServiceNotEnabled = Permissions.promptSetAsDefaultCallScreeningApp(this)
-
+        Permissions.initSetAsCallScreeningApp(this)
 
         // Bottom Nav View
         run {
@@ -120,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
                     R.id.navigation_call -> {
-                        promptIfScreeningServiceNotEnabled()
+                        Permissions.askAsScreeningApp(null)
 
                         spf.setActiveTab("call")
                     }
@@ -186,7 +185,8 @@ class MainActivity : AppCompatActivity() {
         if (!spf.hasAskedForAllPermissions()) {
             spf.setAskedForAllPermission()
             Permissions.requestAllManifestPermissions(this)
-            promptIfScreeningServiceNotEnabled()
+
+            Permissions.askAsScreeningApp(null)
         }
     }
 

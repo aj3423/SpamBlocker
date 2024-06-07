@@ -5,48 +5,57 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.TELECOM_SERVICE
 import android.content.Intent
+import android.media.MediaPlayer
+import android.os.Bundle
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import android.util.Log
+import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
 
 class CallStateReceiver : BroadcastReceiver() {
+
+    private fun shouldBlock(ctx: Context, currNumber: String): Boolean {
+
+        // `numToBlock` and `lastCalledTime` are set in the CallScreeningService,
+        //   they are only set when the call should be blocked by "answer + hang up"
+        val (numToBlock, lastCalledTime) = Temporary(ctx).getLastCallToBlock()
+
+        // if the time since the `lastCalledTime` is less than 1 second,
+        //   answer the call and hang up
+        val now = System.currentTimeMillis()
+        val tolerance = 5000 // 5 second
+        return (now - lastCalledTime) < tolerance && numToBlock == Util.clearNumber(currNumber)
+    }
+
+    private fun extractNumber(intent: Intent) : String? {
+        return intent.extras?.getString("incoming_number")
+    }
+
     override fun onReceive(ctx: Context, intent: Intent) {
         if (intent.action == "android.intent.action.PHONE_STATE") {
 
-            val extras = intent.extras
-            if(extras == null || !extras.containsKey("incoming_number")) {
-                return
-            }
-            val currNumber = extras.getString("incoming_number")!!
-            Log.d(Def.TAG, "num:  $currNumber")
+            val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)
 
-            // `numToBlock` and `lastCalledTime` are set in the CallScreeningService,
-            //   they are only set when the call should be blocked by "answer + hang up"
-            val (numToBlock, lastCalledTime) = Temporary(ctx).getLastCallToBlock()
-
-
-            // if the time since the `lastCalledTime` is less than 1 second,
-            //   answer the call and hang up
-            val now = System.currentTimeMillis()
-            val tolerance = 5000 // 5 second
-            val shouldBlock = (now - lastCalledTime) < tolerance && numToBlock == Util.clearNumber(currNumber)
-
-            when (intent.getStringExtra(TelephonyManager.EXTRA_STATE)) {
+            when (state) {
                 // ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
-                    Log.e(Def.TAG, "EXTRA_STATE_RINGING...")
-                    if (shouldBlock)
+                    val currNumber = extractNumber(intent) ?: return
+                    Log.e(Def.TAG, "RINGING, num: $currNumber")
+
+                    if (shouldBlock(ctx, currNumber))
                         answerCall(ctx)
                 }
 
                 // call is active(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
-                    Log.e(Def.TAG, "EXTRA_STATE_OFFHOOK.......")
-                    if (shouldBlock)
+                    val currNumber = extractNumber(intent) ?: return
+                    Log.e(Def.TAG, "IN CALL, num: $currNumber")
+
+                    if (shouldBlock(ctx, currNumber))
                         endCall(ctx)
                 }
             }
