@@ -1,48 +1,49 @@
 <resources>
     <string name="help_backup">
         <![CDATA[
-        <font color="yellow"><b>备份</b></font>: <br>
-        &emsp; 1. 按 <font color="cyan"><b>导出</b></font> 在文本框中显示配置。 <br>
-        &emsp; 2. 按 <font color="cyan"><b>复制</b></font> 它到剪贴板。 <br>
-        &emsp; 3. 发送此 <font color="#cccc00"><b>配置文本</b></font> 到另一台设备。 <br>
+        <font color="yellow"><b>如何备份</b></font>: <br>
+        &emsp; 1. 按 <font color="cyan"><b>导出</b></font> 在文本框里显示配置. <br>
+        &emsp; 2. 按 <font color="cyan"><b>复制</b></font> 复制到剪贴板. <br>
+        &emsp; 3. 给另一设备发这条<font color="#cccc00"><b>配置信息</b></font>. <br>
         <br>
-        <font color="yellow"><b>恢复</b></font>: <br>
-        &emsp; 1. 粘贴 <font color="#cccc00"><b>配置文本</b></font> 到文本框。 <br>
-        &emsp; 2. 按 <font color="#0000ff"><b>导入</b></font>。 <br>
-        &emsp;&emsp; 当它 <font color="#fa7f71"><b>失败</b></font> 时，尝试验证 json 文本，它在传输过程中可能被破坏了。如果是这样，请将其发送到文件。 <br>
+        <font color="yellow"><b>如何恢复</b></font>: <br>
+        &emsp; 1. 粘贴 <font color="#cccc00"><b>配置信息</b></font> 到文本框. <br>
+        &emsp; 2. 按 <font color="#0000ff"><b>导入</b></font>. <br>
+        &emsp;&emsp; 如果 <font color="#fa7f71"><b>失败</b></font>, 尝试验证 json 文本, 它可能在传输过程中损坏了. 如果是, 请用文件形式发送. <br>
         <br>
-        历史记录将被忽略。 <br>
+        历史记录会被忽略. <br>
         <br>
-        如果一些开关如“联系人”在恢复后没有启用，请检查系统设置中的相应权限，权限不会被自动“恢复”。 <br>
+        如果有些开关如 "联系人" 在恢复后未启用, 检查系统设置里的对应权限, 权限不会自动 "恢复". <br>
         ]]>
     </string>
     <string name="help_off_time">
         <![CDATA[
-        当启用时，所有呼叫（消息）都将在此时段内被允许。通常在晚上没有垃圾邮件。 <br>
+        启用后, 所有通话(短信) 将在此时间段内被允许. 通常晚上没有垃圾短信. <br>
         <br>
-        如果开始时间大于结束时间，例如 20:00 -> 07:00，则表示从晚上 20:00 到第二天早上 07:00 的时段。 <br>
+        如果开始时间晚于结束时间, 例如 20:00 -> 07:00, 表示时间段从晚上 20:00 到次日凌晨 07:00. <br>
         <br>
-        <font color="#ea86ff"><b>优先级：10</b></font>
+        <font color="#ea86ff"><b>优先级: 10</b></font>
         ]]>
     </string>
 
     <string name="help_regex_flags">
         <![CDATA[
 
-            这些标志会改变正则表达式的匹配行为，它们默认用于新规则。 <br>
+            这些标志改变了正则表达式的匹配行为, 它们默认设置为新规则. <br>
             <br>
 
             <font color="#ffa500"><b>忽略大小写</b></font>:<br>
-            &ensp; 它使模式匹配不区分大小写，<font color="cyan"><b>a</b></font> 可以匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>。 <br>
+            &ensp; 它让模式匹配不区分大小写, <font color="cyan"><b>a</b></font> 将同时匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>. <br>
             <br>
 
             <font color="#ffa500"><b>点匹配所有</b></font>: <br>
-            &ensp; 当启用时，<font color="cyan"><b>.</b></font> 也会匹配换行符 (<font color="cyan"><b>\\n</b></font>)，这允许点跨多行匹配。 <br>
-            &ensp; 用例： <br>
-            &emsp;   匹配多行垃圾邮件： <br>
-            &emsp;   <font color="#fa7f71">领取你的奖品：http://<br>
+            &ensp; 启用时, <font color="cyan"><b>.</b></font> 也会匹配换行符 (<font color="cyan"><b>\\n</b></font>),
+              这样允许点跨行匹配. <br>
+            &ensp; 用例: <br>
+            &emsp;   匹配多行垃圾短信: <br>
+            &emsp;   <font color="#fa7f71">领取你的奖品: http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   使用规则： <br>
+            &emsp;   用规则: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
         ]]>

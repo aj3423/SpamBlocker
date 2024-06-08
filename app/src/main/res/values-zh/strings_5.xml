@@ -1,91 +1,76 @@
 <resources>
-
-    <string name="allow_repeated_call">重复来电</string>
-    <string name="dialed">拨号</string>
-    <string name="confirm_del_all_filters">删除所有过滤器？</string>
-    <string name="dark_theme">暗色主题</string>
+    <string name="allow_repeated_call">重复呼叫</string>
+    <string name="dialed">已拨打</string>
+    <string name="dark_theme">深色主题</string>
     <string name="find_apps">查找应用</string>
-    <string name="spam_sms_blocked">短信已拦截</string>
-    <string name="spam_call_blocked">电话已拦截</string>
+    <string name="spam_sms_blocked">短信已被阻止</string>
+    <string name="spam_call_blocked">已阻止来电</string>
     <string name="new_sms_received">收到新短信</string>
-    <string name="mark_all_as_read">标记全部已读</string>
+    <string name="mark_all_as_read">全部标记为已读</string>
     <string name="delete_all">全部删除</string>
-    <string name="show_passed">显示已通过</string>
-    <string name="show_blocked">显示已拦截</string>
+    <string name="show_passed">显示通过</string>
+    <string name="show_blocked">显示已阻止</string>
     <string name="clone_rule">克隆规则</string>
     <string name="notification">通知</string>
     <string name="type">类型</string>
     <string name="time">时间</string>
-    <string name="times">次</string>
+    <string name="times">次数</string>
     <string name="day">天</string>
     <string name="days">天</string>
     <string name="min">分钟</string>
-    <string name="within_minutes">几分钟内</string>
-    <string name="within_days">几天内</string>
+    <string name="within_minutes">分钟内</string>
+    <string name="within_days">天内</string>
     <string name="phone_number">电话号码</string>
     <string name="sms_content">短信内容</string>
     <string name="result">结果</string>
     <string name="reason">原因</string>
-    <string name="regex_flags">正则表达式标记</string>
+    <string name="regex_flags">正则表达式标志</string>
     <string name="ignore_case">忽略大小写</string>
-    <string name="dot_match_all">点号匹配所有</string>
-    <string name="literal">文本匹配</string>
+    <string name="dot_match_all">点号匹配全部</string>
+    <string name="literal">文字</string>
     <string name="off_time">关闭时间</string>
-    <string name="schedule">时间表</string>
+    <string name="schedule">计划</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
-    <string name="entire_day">整天</string>
-    <string name="block_type">拦截类型</string>
+    <string name="entire_day">全天</string>
+    <string name="block_type">拦截方式</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>拒绝</b></font>: <br>
         &emsp; 与按下拒绝按钮相同。 <br>
         <br>
         - <font color="#d1c8c8"><b>静音</b></font>: <br>
-        &emsp; 仅在后台静音响铃，让对方以为你很忙而没有接听。 <br>
+        &emsp; 它将在后台静音响起，让呼叫者以为你只是很忙并且没有接过电话。 <br>
         <br>
-        - <font color="#d1c8c8"><b>接听并挂断</b></font>: <font color="#ffa500"><b>（实验性功能）</b></font><br>
-        &emsp; 为避免被转到语音信箱，该行为可能取决于对等运营商。
+        - <font color="#d1c8c8"><b>接听并挂断</b></font>: <font color="#ffa500"><b>（实验性）</b></font><br>
+        &emsp; 为了避免被转到语音信箱，行为可能取决于对等运营商。
         ]]>
     </string>
-    <string name="crash_title">
-        抱歉，应用已崩溃。 \n\n请复制下方内容并向github报告此问题，举报前请删除任何敏感信息。
-    </string>
-    <string-array name="week">
-        <item>周日</item>
-        <item>周一</item>
-        <item>周二</item>
-        <item>周三</item>
-        <item>周四</item>
-        <item>周五</item>
-        <item>周六</item>
-    </string-array>
-
-    <string-array name="block_type_list">
-        <item>拒绝</item>
-        <item>静音</item>
-        <item>接听+挂断</item>
-    </string-array>
-
-    <string-array name="importance_list">
-        <item>无</item>
-        <item>阴影</item>
-        <item>状态栏、阴影</item>
-        <item>声音、状态栏、阴影</item>
-        <item>声音、状态栏、阴影、提示</item>
-    </string-array>
-    <string-array name="copy_as_list">
-        <item>复制为 Json</item>
-        <item>复制为压缩</item>
-    </string-array>
-
-    <string name="language">语言</string>
-    <string name="help_language">
+    <string name="stir">STIR 证明</string>
+    <string name="stir_include_unverified">包含未验证</string>
+    <string name="unverified">未验证</string>
+    <string name="valid">有效来电</string>
+    <string name="spoof">欺骗来电</string>
+    <string name="help_stir">
         <![CDATA[
-            翻译由 Google AI 完成，在 github 上提交 issue 来增加新语言。
+            STIR 证明需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
+            <br>
+            可能有三种可能的证明结果： <br>
+            <font color="cyan"><b>有效</b></font> <br>
+            &emsp; 该呼叫很可能是有效的，没有欺骗。 <br>
+            <font color="#ffa500"><b>未验证</b></font> <br>
+            &emsp; 无法验证该呼叫，或者不支持 STIR 证明。 <br>
+            <font color="#fa7f71"><b>欺骗</b></font> <br>
+            &emsp; 很可能是欺骗性呼叫。 <br>
+            <br>
+            <br>
+              - <font color="#d1c8c8"><b>包含</b></font>: <br>
+                  &emsp; 未通过此检查的呼叫仍将由其他规则检查。 <br>
+                  &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>排除</b></font>: <br>
+                  &emsp; 未通过此检查的呼叫将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
+                  &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
-    <string name="enabled_for_call">启用通话拦截</string>
-    <string name="enabled_for_sms">启用短信拦截</string>
-
 </resources>

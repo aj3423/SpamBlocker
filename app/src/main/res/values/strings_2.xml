@@ -20,7 +20,7 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Corresponding to the \"Repeated Call\" that handles the incoming call/message, this feature handles the outgoing. <br>
+        Dialed numbers will be permitted. <br>
         <br>
         Sending message also counts, this only works when READ_SMS permission is granted. <br>
         <br>

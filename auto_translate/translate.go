@@ -8,8 +8,11 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
+	"sync"
 
+	"github.com/fatih/color"
 	"github.com/google/generative-ai-go/genai"
+	"github.com/panjf2000/ants/v2"
 	"google.golang.org/api/option"
 )
 
@@ -50,7 +53,10 @@ func translate_1_file(lang string, fn string) error {
 	GeminiToken := os.Getenv("GeminiToken")
 
 	text := fmt.Sprintf(
-		"Translate the following xml content to %s, better use short words, leave the XML tags unmodified, show me the result only \n%s",
+		"Translate the following xml content to %s, it's about a call blocking app "+
+			"which blocks incoming spam calls and SMS messages. "+
+			"Better use short words, make sure leave the XML tags unmodified, show me the result only:\n"+
+			"%s",
 		lang, to_translate)
 
 	ctx := context.Background()
@@ -60,7 +66,11 @@ func translate_1_file(lang string, fn string) error {
 	defer client.Close()
 
 	model := client.GenerativeModel("gemini-pro")
-	// model.SetMaxOutputTokens(8192) // max is 8192 for gemini-pro v1.0 (8192 by default)
+
+	// max is 8192 for gemini-pro v1.0 (8192 by default)
+	// but actually it's only 2048...
+	// model.SetMaxOutputTokens(8192)
+
 	resp, err := model.GenerateContent(ctx, genai.Text(text))
 	check(err)
 
@@ -89,11 +99,14 @@ func translate_1_file(lang string, fn string) error {
 
 	// French has lots of '
 	cleared := strings.ReplaceAll(sb.String(), "'", "\\'")
+	if !strings.HasPrefix(cleared, "<resources>") {
+		return Retryable(errors.New("malformed result"))
+	}
 	write_file(dest_file, cleared)
 	return nil
 }
 
-func translate_lang(lang string) error {
+func translate_lang(lang string) {
 	path := RES_DIR + "/values-" + lang
 
 	// the 3rd commandline argument for regenerating particular xml
@@ -108,7 +121,10 @@ func translate_lang(lang string) error {
 		os.Mkdir(path, os.ModePerm)
 	}
 
-	e := filepath.Walk(
+	wg := sync.WaitGroup{}
+	pool, _ := ants.NewPool(3)
+
+	filepath.Walk(
 		RES_DIR+"/values",
 
 		func(path string, fi os.FileInfo, err error) error {
@@ -128,11 +144,29 @@ func translate_lang(lang string) error {
 				}
 			}
 
-			translate_1_file(lang, fi.Name())
+			wg.Add(1)
+			pool.Submit(func() {
+				e := Retry(5, func(attempt int) error {
+					err := translate_1_file(lang, fi.Name())
+					if IsRetryable(err) {
+						color.HiWhite("retry %s", color.HiYellowString(fi.Name()))
+					}
+					if err == nil {
+						color.HiWhite("done %s", color.HiGreenString(fi.Name()))
+					}
+					return err
+				})
+				if e != nil {
+					color.HiWhite("translate %s failed", color.HiRedString(fi.Name()))
+				}
+
+				wg.Done()
+			})
 			return nil
 		})
 
-	return e
+	wg.Wait()
+
 }
 
 var langs = []string{
@@ -158,7 +192,6 @@ func main() {
 		usage()
 		return
 	}
-	e := translate_lang(lang)
-	check(e)
+	translate_lang(lang)
 
 }

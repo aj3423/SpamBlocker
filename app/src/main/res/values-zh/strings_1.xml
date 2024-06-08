@@ -1,62 +1,62 @@
 <resources>
-    <string name="app_name">垃圾短信拦截</string>
+    <string name="app_name">垃圾电话拦截器</string>
     <string name="setting">设置</string>
     <string name="call">电话</string>
     <string name="sms">短信</string>
-    <string name="globally_enabled">启用</string>
+    <string name="globally_enabled">已启用</string>
     <string name="number_pattern">号码</string>
     <string name="particular_number_pattern">特定号码</string>
     <string name="sms_content_pattern">短信内容</string>
-    <string name="invalid_regex_pattern">无效正则表达式</string>
+    <string name="invalid_regex_pattern">非法正则表达式</string>
     <string name="pattern_contain_invisible_characters">包含不可见字符</string>
-    <string name="pattern_contain_leading_zeroes">号码前无需加0，检查前会自动去掉。</string>
-    <string name="pattern_contain_leading_plus">号码前无需加+，检查前会自动去掉。</string>
-    <string name="check_balloon_for_explanation">"号码规则"的帮助中查看详细解释。</string>
-    <string name="invalid_number">无效号码</string>
-    <string name="invalid_integer">无效整数</string>
+    <string name="pattern_contain_leading_zeroes">无需以"0"开头，会在检查前去除</string>
+    <string name="pattern_contain_leading_plus">无需以"+"开头，会在检查前去除</string>
+    <string name="check_balloon_for_explanation">点击"号码规则"获得详细解释</string>
+    <string name="invalid_number">非法号码</string>
+    <string name="invalid_integer">非法整数</string>
     <string name="filter_desc">描述</string>
-    <string name="apply_to_call">应用于电话</string>
-    <string name="apply_to_sms">应用于短信</string>
+    <string name="apply_to_call">应用到电话</string>
+    <string name="apply_to_sms">应用到短信</string>
     <string name="title_add_rule">新建规则</string>
-    <string name="title_edit_rule">修改规则</string>
+    <string name="title_edit_rule">编辑规则</string>
     <string name="add">添加</string>
     <string name="delete">删除</string>
-    <string name="clear">清空</string>
+    <string name="clear">清除</string>
     <string name="test">测试</string>
     <string name="save">保存</string>
-    <string name="whitelist">允许</string>
-    <string name="blacklist">拦截</string>
+    <string name="whitelist">白名单</string>
+    <string name="blacklist">黑名单</string>
     <string name="content">内容</string>
     <string name="priority">优先级</string>
     <string name="deleted_filter">(已删除规则)</string>
-    <string name="apply_to">应用于</string>
+    <string name="apply_to">应用到</string>
     <string name="Delete">删除</string>
-    <string name="undelete">恢复</string>
+    <string name="undelete">撤销删除</string>
     <string name="passed">通过</string>
     <string name="passed_by_default">默认通过</string>
     <string name="blocked">拦截</string>
     <string name="from">来自</string>
     <string name="copy">复制</string>
-    <string name="copied_to_clipboard">已复制 "%s" 到剪贴板。</string>
+    <string name="copied_to_clipboard">已将"%s"复制到剪贴板</string>
     <string name="quick_copy">快速复制</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="miscellaneous">其他</string>
-    <string name="quick_settings">快速设置</string>
-    <string name="regex_settings">正则表达式设置</string>
-    <string name="backup_restore">备份/还原</string>
+    <string name="quick_settings">快捷设置</string>
+    <string name="regex_settings">正则设置</string>
+    <string name="backup_restore">备份和恢复</string>
     <string name="import_">导入</string>
     <string name="export">导出</string>
     <string name="config_text">配置文本</string>
     <string name="imported_successfully">成功导入</string>
     <string name="import_fail">导入失败</string>
     <string name="go_to_setting">前往设置</string>
-    <string name="prompt_go_to_usage_permission_setting">此功能需要授权"使用情况统计"权限，需要在设置中手动开启。\n打开设置页面？</string>
-    <string name="emergency_call">紧急号码</string>
-    <string name="contact">联系人</string>
-    <string name="non_contact">非联系人</string>
+    <string name="prompt_go_to_usage_permission_setting">此功能需要"使用情况统计"权限，它必须在设置中手动启用。\n前往设置？</string>
+    <string name="emergency_call">紧急呼叫</string>
+    <string name="contact">通讯录</string>
+    <string name="non_contact">非通讯录</string>
     <string name="inclusive">包含</string>
     <string name="exclusive">排除</string>
     <string name="label_contact_filter">联系人过滤</string>
@@ -65,58 +65,5 @@
     <string name="recent_app">最近应用</string>
     <string name="allow_recent_apps">允许最近应用</string>
     <string name="allow_contact">允许联系人</string>
-
-    <string name="stir">STIR 签名</string>
-    <string name="stir_include_unverified">包含未认证</string>
-    <string name="unverified">未认证</string>
-    <string name="valid">有效电话</string>
-    <string name="spoof">欺诈电话</string>
-    <string name="help_stir">
-        <![CDATA[
-            STIR需要<b>安卓11以上</b>，并且<b>运营商支持</b>。 <br>
-            <br>
-            有三种可能的验证结果： <br>
-            <font color="cyan"><b>有效<b></font> <br>
-            &emsp; 电话很可能有效，不存在欺诈。 <br>
-            <font color="#ffa500"><b>未认证<b></font> <br>
-            &emsp; 电话未被验证，或者不支持STIR认证。 <br>
-            <font color="#fa7f71"><b>欺诈<b></font> <br>
-            &emsp; 非常可能是一通欺诈电话。 <br>
-            <br>
-            <br>
-              - <font color="#d1c8c8"><b>包含<b></font>: <br>
-                  &emsp; 不通过此验证的电话，仍将被其他规则检查。 <br>
-                  &emsp; <font color="#ea86ff"><b>优先级：10<b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>排除<b></font>: <br>
-                  &emsp; 不通过此验证的电话将被<font color="#fa7f71"><b>拦截<b></font>. <br>
-                  &emsp; <font color="#ea86ff"><b>优先级：0<b></font>
-        ]]>
-    </string>
-
-    <string name="repeated_call">重复来电</string>
-    <string name="help_repeated_call">
-        <![CDATA[
-        如果在一段时间内再次来电，则授权接听，此类电话可能是紧急电话而非垃圾电话。 <br>
-        <br>
-        收到同一号码的短信也会算作来电，这取决于是否已授予READ_SMS权限，此权限为可选项。<br>
-        <br>
-        默认设置<font color="cyan"><b>1 / 5 分</b></font>表示在5分钟内接到的第二个电话将被授权接听。 <br>
-        <br>
-        仅适用于电话，<b>不</b>适用于短信。 <br>
-        <br>
-        <font color="#ea86ff"><b>优先级：10<b></font>
-        ]]>
-    </string>
-
-    <string name="help_globally_enabled">
-        <![CDATA[
-        全局开关，仅在开启此选项时本应用才起作用，
-        若需接听或接收某些特定电话/短信，请关闭此开关。 <br>
-        <br>
-        也可以在<b>下拉快速设置</b>中切换此开关。
-        ]]>
-    </string>
-
 
 </resources>

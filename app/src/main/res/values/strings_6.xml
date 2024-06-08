@@ -1,0 +1,66 @@
+<resources>
+
+    <string name="crash_title">
+        Sorry, the app has crashed. \n\nPlease copy the content below and report this issue on github,
+        be sure to remove any sensitive information before reporting.
+    </string>
+    <string-array name="week">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thur</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Reject</item>
+        <item>Silence</item>
+        <item>Answer+Hang Up</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>None</item>
+        <item>Shade</item>
+        <item>StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade, Heads-up</item>
+    </string-array>
+    <string-array name="copy_as_list">
+        <item>Copy as Json</item>
+        <item>Copy as Compressed</item>
+    </string-array>
+
+    <string name="language">Language</string>
+    <string name="help_language">
+        <![CDATA[
+            Translations are done by Google AI, fire an issue on github for adding a new language.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Enable for Call</string>
+    <string name="enabled_for_sms">Enable for SMS</string>
+    <string name="repeated_call">Repeated Call</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Permit if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
+        <br>
+        Receiving text message from the same number is also counted, this depends on whether the READ_SMS permission is granted, which is optional.<br>
+        <br>
+        The default setting <font color="cyan"><b>1 / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
+        <br>
+        Only applies for calls, <b>not</b> for text messages. <br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        The global switch, this app only works when this is turned on,
+        turn it off when you are waiting for some particular call/message. <br>
+        <br>
+        It can also be toggled from the <b>Dropdown Quick Settings</b>.
+        ]]>
+    </string>
+</resources>

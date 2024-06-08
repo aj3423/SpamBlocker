@@ -1,0 +1,66 @@
+<resources>
+
+    <string name="crash_title">
+        К сожалению, приложение аварийно завершило работу. \n\nПожалуйста, скопируйте содержимое ниже и сообщите об этой проблеме на github.
+        Обязательно удалите конфиденциальную информацию перед отправкой.
+    </string>
+    <string-array name="week">
+        <item>Вск</item>
+        <item>Пнд</item>
+        <item>Втр</item>
+        <item>Срд</item>
+        <item>Чтв</item>
+        <item>Птн</item>
+        <item>Сбт</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Отклонить</item>
+        <item>Тишина</item>
+        <item>Ответить + Повесить</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Нет</item>
+        <item>Тень</item>
+        <item>Статус, Тень</item>
+        <item>Звук, Статус, Тень</item>
+        <item>Звук, Статус, Тень, Поверх</item>
+    </string-array>
+    <string-array name="copy_as_list">
+        <item>Копировать в Json</item>
+        <item>Сжатое копирование</item>
+    </string-array>
+
+    <string name="language">Язык</string>
+    <string name="help_language">
+        <![CDATA[
+            Перевод выполнен ИИ Google, создайте заявку на github для добавления нового языка.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Включить для звонков</string>
+    <string name="enabled_for_sms">Включить для SMS</string>
+    <string name="repeated_call">Повторяющиеся звонки</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Разрешить, если звонок повторяется в течение определенного периода времени, вероятно, это важно, а не спам-звонок. <br>
+        <br>
+        Прием текстового сообщения с одного и того же номера также учитывается. Это зависит от того, предоставлено ли разрешение READ_SMS, а это не обязательно.<br>
+        <br>
+        Значение по умолчанию <font color="cyan"><b>1 / 5 мин</b></font> означает, что второй звонок в течение 5 минут будет разрешен. <br>
+        <br>
+        Применяется только для звонков, но <b>не</b> для текстовых сообщений. <br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Глобальный переключатель, это приложение работает только когда он включен.
+        Выключите его, когда ожидаете какой-то конкретный звонок/сообщение. <br>
+        <br>
+        Его также можно переключать через <b>Быстрые настройки в раскрывающемся списке</b>.
+        ]]>
+    </string>
+</resources>
