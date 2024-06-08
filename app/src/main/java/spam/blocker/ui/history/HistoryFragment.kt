@@ -72,8 +72,6 @@ open class HistoryFragment<bindingT : ViewBinding>(
 
 
         viewModel.records.observe(viewLifecycleOwner) {
-            Log.d(Def.TAG, "action in Fragment: " + it.action.toString())
-
             when (it.action) {
                 Add -> adapter.notifyItemInserted(it.actionInt!!)
                 AddAll -> adapter.notifyDataSetChanged()

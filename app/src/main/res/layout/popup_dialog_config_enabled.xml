@@ -17,7 +17,7 @@
             <TextView
                 style="@style/setting_gray_label"
                 android:maxWidth="300dp"
-                android:text="@string/enable_for_call" />
+                android:text="@string/enabled_for_call" />
             <Space style="@style/setting_spacing" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -29,7 +29,7 @@
             <TextView
                 style="@style/setting_gray_label"
                 android:maxWidth="300dp"
-                android:text="@string/enable_for_sms" />
+                android:text="@string/enabled_for_sms" />
             <Space style="@style/setting_spacing" />
 
             <androidx.appcompat.widget.SwitchCompat

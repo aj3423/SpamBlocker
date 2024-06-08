@@ -45,9 +45,17 @@
                 tools:ignore="ContentDescription" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_backup"
-                style="@style/setting_stroke_gray_button"
+                android:id="@+id/btn_backup_export"
+                style="@style/setting_stroke_blue_button"
                 android:text="@string/export" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_backup_import"
+                style="@style/setting_stroke_purple_button"
+                android:text="@string/import_" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_backup_copy"
+                style="@style/setting_teal_spinner"
+                android:text="@string/copy" />
 
         </LinearLayout>
     </LinearLayout>

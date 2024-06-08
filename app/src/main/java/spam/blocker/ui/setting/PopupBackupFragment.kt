@@ -2,11 +2,12 @@ package spam.blocker.ui.setting
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -14,7 +15,15 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import spam.blocker.R
+import spam.blocker.def.Def
+import spam.blocker.ui.util.Algorithm
+import spam.blocker.ui.util.Algorithm.b64Decode
+import spam.blocker.ui.util.Algorithm.b64Encode
+import spam.blocker.ui.util.Algorithm.compressString
+import spam.blocker.ui.util.Algorithm.decompressString
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
+import spam.blocker.ui.util.UI.Companion.showIf
+import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.Clipboard
 import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.Configs
@@ -38,76 +47,93 @@ class PopupBackupFragment() : ClosableDialogFragment() {
 
         // widgets
         val edit = view.findViewById<TextInputEditText>(R.id.edit_backup)
-        val btn = view.findViewById<MaterialButton>(R.id.btn_backup)
+        val btn_export = view.findViewById<MaterialButton>(R.id.btn_backup_export)
+        val btn_import = view.findViewById<MaterialButton>(R.id.btn_backup_import)
+        val spin_copy = view.findViewById<MaterialButton>(R.id.btn_backup_copy)
         val help = view.findViewById<ImageView>(R.id.help_backup)
 
         setupImageTooltip(ctx, viewLifecycleOwner, help, R.string.help_backup)
 
+        fun updateButtons() {
+            val input = edit.text!!.toString().trim()
 
-        val blue = R.color.dodger_blue
-        val green = R.color.teal_200
-        fun updateButton() {
-            var btnColor = green
-            var btnText = R.string.export
+            // input box is empty
+            val isEmpty = input.isEmpty()
 
-            val input = edit.text!!.toString()
+            // input config is same as current config
+            var sameAsCurrent = false
 
-            if (input.trim().isNotEmpty()) {
+            if (!isEmpty) {
+                val curr = Configs()
+                curr.load(ctx)
+                val currCfgStr = Json.encodeToString(curr)
+                Log.e(Def.TAG, "currCfgStr: $currCfgStr")
+                Log.e(Def.TAG, "input: $input")
+
+                sameAsCurrent = input == currCfgStr
+            }
+
+            showIf(btn_export, isEmpty)
+            showIf(spin_copy, !isEmpty && sameAsCurrent)
+            showIf(btn_import, !isEmpty && !sameAsCurrent)
+        }
+
+        updateButtons()
+
+        edit.addTextChangedListener {
+           updateButtons()
+        }
+
+        btn_export.setOnClickListener {
+            val currCfg = Configs()
+            currCfg.load(ctx)
+            edit.setText(Json.encodeToString(currCfg))
+        }
+        btn_import.setOnClickListener {
+            var input = edit.text!!.toString().trim()
+
+            // It supports both json and b64+compressed string.
+            // First, try to recover b64+compressed to plain json,
+            //   if it fails, it is already json string.
+            try {
+                input = decompressString(b64Decode(input))
+            } catch (_:Exception) {}
+
+            val alert = AlertDialog.Builder(ctx)
+
+            // import from json string
+            try {
+                val newCfg = Json.decodeFromString<Configs>(input)
+                newCfg.apply(ctx)
+
+                alert.setTitle(" ")
+                alert.setIcon(R.drawable.ic_check_green)
+                alert.setMessage(resources.getString(R.string.imported_successfully))
+                alert.setPositiveButton(R.string.ok) { _, _ ->
+                    Launcher.selfRestart(ctx)
+                }
+            } catch (e: Exception) {
+                alert.setTitle(resources.getString(R.string.import_fail))
+                alert.setMessage(e.message)
+                alert.setIcon(R.drawable.ic_fail_red)
+            }
+
+            alert.create().show()
+        }
+
+        spin_copy.setOnClickListener {
+            val menu = ctx.resources.getStringArray(R.array.copy_as_list).toList()
+            dynamicPopupMenu(ctx, menu, spin_copy) { i ->
+                val input = edit.text!!.toString().trim()
+
                 val currCfg = Configs()
                 currCfg.load(ctx)
 
-                if (input == Json.encodeToString(currCfg)) {
-                    btnText = R.string.copy
-                } else {
-                    btnText = R.string.import_
-                    btnColor = blue
+                when(i) {
+                    0 -> Clipboard.copy(ctx, input)
+                    1 -> Clipboard.copy(ctx, b64Encode(compressString(input)))
                 }
             }
-            btn.setTextColor(resources.getColor(btnColor, null))
-            btn.setStrokeColorResource(btnColor)
-            btn.text = resources.getString(btnText)
         }
-        edit.addTextChangedListener {
-           updateButton()
-        }
-
-        btn.setOnClickListener {
-            val currCfg = Configs()
-            currCfg.load(ctx)
-
-            val input = edit.text!!.toString()
-            if (input.trim().isEmpty()) {
-                edit.setText(Json.encodeToString(currCfg))
-            } else {
-                if (input == Json.encodeToString(currCfg)) {
-                    Clipboard.copy(ctx, input)
-                } else {
-                    val alert = AlertDialog.Builder(ctx)
-
-                    try {
-                        val newCfg = Json.decodeFromString<Configs>(input)
-                        newCfg.apply(ctx)
-
-                        alert.setTitle(" ")
-                        alert.setIcon(R.drawable.ic_check_green)
-                        alert.setMessage(resources.getString(R.string.imported_successfully))
-                        alert.setPositiveButton(R.string.ok) { _, _ ->
-                            Launcher.selfRestart(ctx)
-                        }
-
-                    } catch (e: Exception) {
-                        alert.setTitle(resources.getString(R.string.import_fail))
-                        alert.setMessage(e.message)
-                        alert.setIcon(R.drawable.ic_fail_red)
-                    }
-
-                    alert.create().show()
-                }
-            }
-            updateButton()
-        }
-
-        updateButton()
-
     }
 }

@@ -50,16 +50,25 @@
         <item name="android:textColor">@color/mid_grey</item>
         <item name="strokeColor">@color/mid_grey</item>
     </style>
+    <style name="setting_stroke_purple_button" parent="setting_stroke_button">
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="strokeColor">@color/purple_200</item>
+    </style>
 
     <style name="setting_spinner" parent="setting_stroke_button">
-        <item name="android:paddingStart">14dp</item>
-        <item name="android:paddingEnd">-14dp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">-13dp</item>
         <item name="android:drawableEnd">@drawable/spinner_arrow</item>
         <item name="android:drawablePadding">0dp</item>
     </style>
     <style name="setting_gray_spinner" parent="setting_spinner">
         <item name="android:textColor">@color/mid_grey</item>
         <item name="strokeColor">@color/mid_grey</item>
+    </style>
+    <style name="setting_teal_spinner" parent="setting_spinner">
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="strokeColor">@color/teal_200</item>
+        <item name="android:drawableTint">@color/teal_200</item>
     </style>
 
     <style name="setting_auto_fit">

@@ -125,9 +125,8 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.navigation_sms -> {
-                        if (!Permissions.isReceiveSmsPermissionGranted(this)) {
-                            Permissions.requestReceiveSmsPermission(this)
-                        }
+                        Permissions.requestReceiveSmsPermission(this)
+                        
                         spf.setActiveTab("sms")
                     }
 

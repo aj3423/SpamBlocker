@@ -8,10 +8,16 @@ import android.util.DisplayMetrics
 import android.view.WindowManager
 import spam.blocker.R
 import spam.blocker.def.Def
+import java.io.BufferedReader
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.zip.GZIPInputStream
+import java.util.zip.GZIPOutputStream
 
 class Util {
     companion object {
