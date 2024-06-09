@@ -711,7 +711,10 @@ class SettingFragment : Fragment() {
         fun adjustRecyclerHeight() {
             val params = recycler.layoutParams as ViewGroup.LayoutParams
             if (filters.size > 100) {
-                params.height = (Util.getScreenHeight(ctx) * 0.7).toInt() // height == 60% of screen height
+                var h = (Util.getScreenHeight(ctx) * 0.7).toInt() // height == 70% of screen height
+                if (h<=0 || h > 1000)
+                    h = 1000
+                params.height = h
                 recycler.layoutParams = params
 
                 recycler.isNestedScrollingEnabled = true
