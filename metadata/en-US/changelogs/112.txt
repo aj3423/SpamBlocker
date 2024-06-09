@@ -1,0 +1,12 @@
+change:
+    "answer & hang up" now requires permission READ_CALL_LOG (required for getting incoming number)
+
+new:
+    call/sms blocking can be enabled individually
+
+fix: 
+    wrong call block reason in notification
+
+improvement:
+    backup/restore support compressing
+    use shorter words for translations
