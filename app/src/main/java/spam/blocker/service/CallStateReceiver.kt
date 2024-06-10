@@ -5,14 +5,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.TELECOM_SERVICE
 import android.content.Intent
-import android.media.MediaPlayer
-import android.os.Bundle
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import android.util.Log
-import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
 

@@ -1,0 +1,75 @@
+<resources>
+    <string name="for_particular_number">Für eine bestimmte Nummer</string>
+    <string name="no_match_found">Keine Übereinstimmung gefunden</string>
+    <string name="help_for_particular_number">Wenn aktiviert, gilt die Regel nur, wenn sowohl Nummer als auch Inhalt übereinstimmen</string>
+    <string name="help_contact">
+        <![CDATA[
+        Wenn aktiviert, werden Anrufe/SMS von Kontakten immer zugelassen. <br>
+        <br>
+          - <font color="#d1c8c8"><b>Inklusive</b></font>: <br>
+              &emsp; Nicht-Kontaktnummern werden von anderen Regeln geprüft. <br>
+              &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
+              &emsp; Nicht-Kontaktnummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+              &emsp; Entspricht <font color="#d1c8c8"><b>Inklusive</b></font> mit einer Nummernregel <font color="#fa7f71"><b>.*</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
+        <br>
+        Gilt sowohl für Anrufe als auch SMS-Nachrichten.
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        Gewählte Nummern werden zugelassen. <br>
+        <br>
+        Auch das Senden von Nachrichten zählt, dies funktioniert nur, wenn die Berechtigung READ_SMS erteilt wurde. <br>
+        <br>
+        Die Standardeinstellung <font color="cyan"><b>3 Tage</b></font> bedeutet, dass Anrufe von dieser Nummer erlaubt sind, wenn in den letzten 3 Tagen von einer Nummer ausgehende Anrufe getätigt oder Nachrichten gesendet wurden, auch wenn diese Nummer nicht in den Kontakten enthalten ist.<br>
+        <br>
+        Gilt nur für Anrufe, <b>nicht </b>für Textnachrichten. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Jeder eingehende Anruf wird durchgeleitet, wenn eine App in der Liste kürzlich verwendet wurde.<br>
+        <br>
+        Ein typischer Anwendungsfall:<br>
+        &emsp; Sie haben gerade eine Pizza in PizzaApp bestellt, bald rufen sie Sie an, um Geld zurückzuerstatten, weil sie schließen. Dieser Anruf würde weitergeleitet, wenn PizzaApp hier aktiviert ist. <br>
+        <br>
+        Die Standardeinstellung <font color="cyan"><b>5 Min</b></font> bedeutet, dass jeder Anruf zugelassen wird, wenn eine dieser Apps innerhalb von 5 Minuten verwendet wurde. Unter "verwendet" versteht man entweder aktiviert, deaktiviert, minimiert oder beendet. <br>
+        <br>
+        Gilt nur für Anrufe, <b>nicht </b>für Textnachrichten. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
+        ]]>
+    </string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Diese Regeln gelten für die eingehende Telefonnummer.<br>
+        <br>
+        <font color="#ffa500"><b>Wichtig</b></font>:<br>
+        Zur Vereinfachung des regulären Ausdrucks,
+          <font color="#fa7f71"><b>+</b></font>
+          und <font color="#fa7f71"><b>Leerzeichen</b></font>
+          und <font color="#fa7f71"><b>führende Nullen</b></font>
+          werden vor der Prüfung entfernt, z.B.:<br>
+        &emsp; Alle möglichen Formate:<br>
+        &emsp;&emsp; 123456789 &emsp;(normale Nummer)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Leerzeichen</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(mit führendem <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit nationalem Vorwahlpräfix <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(zwei <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;Sie werden <b>alle</b> geprüft als:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp;Also würde der reguläre Ausdruck <font color="cyan"><b>123.*</b></font> <b>alle</b> von ihnen abgleichen.<br>
+        <br>
+        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
+        <br>
+        Deaktivieren Sie die Kontrollkästchen, um die Regel zu deaktivieren, nützlich zum Testen. <br>
+        <br>
+        Streichen Sie nach links, um eine Regel zu löschen.
+        ]]>
+    </string>
+</resources>

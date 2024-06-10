@@ -1,0 +1,76 @@
+<resources>
+    <string name="allow_repeated_call">Wiederholter Anruf</string>
+    <string name="dialed">Gewählt</string>
+    <string name="dark_theme">Dunkles Design</string>
+    <string name="find_apps">Apps suchen</string>
+    <string name="spam_sms_blocked">SMS-Nachricht blockiert</string>
+    <string name="spam_call_blocked">Anruf blockiert</string>
+    <string name="new_sms_received">Neue SMS-Nachricht</string>
+    <string name="mark_all_as_read">Alle als gelesen markieren</string>
+    <string name="delete_all">Alle löschen</string>
+    <string name="show_passed">Zugelassene anzeigen</string>
+    <string name="show_blocked">Blockierte anzeigen</string>
+    <string name="clone_rule">Regel klonen</string>
+    <string name="notification">Benachrichtigung</string>
+    <string name="type">Typ</string>
+    <string name="time">Uhrzeit</string>
+    <string name="times">Anzahl</string>
+    <string name="day">Tag</string>
+    <string name="days">Tage</string>
+    <string name="min">Min</string>
+    <string name="within_minutes">Innerhalb von Minuten</string>
+    <string name="within_days">Innerhalb von Tagen</string>
+    <string name="phone_number">Telefonnummer</string>
+    <string name="sms_content">SMS-Inhalt</string>
+    <string name="result">Ergebnis</string>
+    <string name="reason">Grund</string>
+    <string name="regex_flags">Regex-Flags</string>
+    <string name="ignore_case">Groß-/Kleinschreibung ignorieren</string>
+    <string name="dot_match_all">Punkt ersetzt alles</string>
+    <string name="literal">Literal</string>
+    <string name="off_time">Auszeit</string>
+    <string name="schedule">Zeitplan</string>
+    <string name="workday">Werktag</string>
+    <string name="weekend">Wochenende</string>
+    <string name="entire_day">Ganzer Tag</string>
+    <string name="block_type">Blockiertyp</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#d1c8c8"><b>Abweisen</b></font>: <br>
+        &emsp; Wie das Drücken der Ablehnen-Taste. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Stummschalten</b></font>: <br>
+        &emsp; Klingelt im Hintergrund, sodass der Anrufer den Eindruck hat, dass du nur beschäftigt bist und nicht abgenommen hast. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Annehmen und auflegen</b></font><font color="#ffa500"><b>(experimentell)</b></font><br>
+        &emsp; Um zu vermeiden, dass du zur Mailbox weitergeleitet wirst, kann das Verhalten je nach Anbieter variieren.
+        ]]>
+    </string>
+    <string name="stir">STIR-Attestierung</string>
+    <string name="stir_include_unverified">Unverifizierte einschließen</string>
+    <string name="unverified">Unverfiziert</string>
+    <string name="valid">Gültiger Anruf</string>
+    <string name="spoof">Fälschungsanruf</string>
+    <string name="help_stir">
+        <![CDATA[
+            Die STIR-Attestierung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Anbieter</b>. <br>
+            <br>
+            Es gibt drei mögliche Attestierungsergebnisse: <br>
+            <font color="cyan"><b>Gültig</b></font> <br>
+            &emsp; Der Anruf ist sehr wahrscheinlich gültig, keine Fälschung. <br>
+            <font color="#ffa500"><b>Unverifiziert</b></font> <br>
+            &emsp; Der Anruf kann nicht validiert werden oder die STIR-Attestierung wird nicht unterstützt. <br>
+            <font color="#fa7f71"><b>Fälschung</b></font> <br>
+            &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf. <br>
+            <br>
+            <br>
+              - <font color="#d1c8c8"><b>Inklusive</b></font>: <br>
+                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden trotzdem von anderen Regeln überprüft. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Exklusive</b></font>: <br>
+                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
+        ]]>
+    </string>
+</resources>

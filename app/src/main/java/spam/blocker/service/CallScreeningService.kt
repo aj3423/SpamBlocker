@@ -7,7 +7,6 @@ import android.telecom.CallScreeningService
 import android.util.Log
 import spam.blocker.R
 import spam.blocker.db.CallTable
-import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.Record
 import spam.blocker.def.Def
 import spam.blocker.util.Notification
@@ -51,6 +50,7 @@ class CallScreeningService : CallScreeningService() {
 
         // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
         val builder = CallResponse.Builder().apply {
+            setSkipCallLog(false)
             setSilenceCall(true)
         }
         respondToCall(details, builder.build())

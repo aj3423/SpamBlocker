@@ -97,14 +97,12 @@
                 android:id="@+id/popup_chk_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="@string/call" />
 
             <CheckBox
                 android:id="@+id/popup_chk_sms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="@string/sms" />
 
         </LinearLayout>

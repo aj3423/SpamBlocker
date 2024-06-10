@@ -3,6 +3,7 @@ package spam.blocker.ui.setting
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.AppOpsManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.provider.Settings
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,6 +62,7 @@ import spam.blocker.util.Permissions
 import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
 import spam.blocker.util.Permissions.Companion.isContactsPermissionGranted
 import spam.blocker.util.PermissionChain
+import spam.blocker.util.ProtectedPermission
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
@@ -479,27 +482,23 @@ class SettingFragment : Fragment() {
         recentApps.clear()
         recentApps.addAll(spf.getList())
 
-        // recycler
-        val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
-            updateUI()
-        }
+        val permChain = PermissionChain(this,
+            listOf(
+                ProtectedPermission(
+                    AppOpsManager.OPSTR_GET_USAGE_STATS,
+                    intentName = Settings.ACTION_USAGE_ACCESS_SETTINGS,
+                    prompt = ctx.getString(R.string.prompt_go_to_usage_permission_setting)
+                )
+            )
+        )
         fun popupRecentApps() {
-            if (!Permissions.isUsagePermissionGranted(ctx)) {
-                AlertDialog.Builder(ctx)
-                    .setMessage(ctx.resources.getString(R.string.prompt_go_to_usage_permission_setting))
-                    .setPositiveButton(ctx.resources.getString(R.string.ok)) { dialog, _ ->
-                        dialog.dismiss()
-
-                        launcher.launch(Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS))
-                    }
-                    .setNegativeButton(ctx.resources.getString(R.string.cancel)) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .show()
-                return
+            permChain.ask { allGranted ->
+                if (allGranted) {
+                    val dialog = PopupAppListFragment(recentApps)
+                    dialog.show(requireActivity().supportFragmentManager, "tag_select_apps")
+                }
+                updateUI()
             }
-            val dialog = PopupAppListFragment(recentApps)
-            dialog.show(requireActivity().supportFragmentManager, "tag_select_apps")
         }
 
         val adapterRecentApps = AppListAdapter(ctx, recentApps) { popupRecentApps() }
@@ -553,16 +552,19 @@ class SettingFragment : Fragment() {
 
         btn.setOnClickListener {
             dynamicPopupMenu(ctx, types, btn) { clickedIdx ->
-                if (clickedIdx == Def.BLOCK_TYPE_ANSWER_AND_HANG) {
-                    permChain.ask { allGranted ->
-                        if (allGranted) {
-                            spf.setType(Def.BLOCK_TYPE_ANSWER_AND_HANG)
+                when(clickedIdx) {
+                    Def.BLOCK_TYPE_ANSWER_AND_HANG -> {
+                        permChain.ask { allGranted ->
+                            if (allGranted) {
+                                spf.setType(Def.BLOCK_TYPE_ANSWER_AND_HANG)
+                            }
+                            updateButton()
                         }
+                    }
+                    else -> {
+                        spf.setType(clickedIdx)
                         updateButton()
                     }
-                } else {
-                    spf.setType(clickedIdx)
-                    updateButton()
                 }
             }
         }

@@ -170,8 +170,8 @@ func translate_lang(lang string) {
 }
 
 var langs = []string{
-	`fr`, `ru`, `zh`,
-	// `de`,  `ja`, `ko`, `vi`, `zh-rTW`,
+	`fr`, `ru`, `zh`, `de`,
+	//  `ja`, `ko`, `vi`, `zh-rTW`,
 }
 
 func usage() {

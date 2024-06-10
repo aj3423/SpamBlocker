@@ -1,0 +1,64 @@
+<resources>
+
+    <string name="crash_title">
+        Entschuldigung, die App ist abgestürzt. \n\nBitte kopieren Sie den Inhalt unten und melden Sie das Problem auf GitHub. Entfernen Sie vor der Meldung alle sensiblen Informationen.
+    </string>
+    <string-array name="week">
+        <item>So</item>
+        <item>Mo</item>
+        <item>Di</item>
+        <item>Mi</item>
+        <item>Do</item>
+        <item>Fr</item>
+        <item>Sa</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Ablehnen</item>
+        <item>Stummschalten</item>
+        <item>Annehmen + Auflegen</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Keine</item>
+        <item>Schattierung</item>
+        <item>Statusleiste, Schattierung</item>
+        <item>Ton, Statusleiste, Schattierung</item>
+        <item>Ton, Statusleiste, Schattierung, Hinweis</item>
+    </string-array>
+    <string-array name="copy_as_list">
+        <item>Als Json kopieren</item>
+        <item>Als komprimiert kopieren</item>
+    </string-array>
+
+    <string name="language">Sprache</string>
+    <string name="help_language">
+        <![CDATA[
+            Übersetzungen werden von Google KI vorgenommen. Melden Sie ein Problem auf GitHub, um eine neue Sprache hinzuzufügen.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Für Anrufe aktiviert</string>
+    <string name="enabled_for_sms">Für SMS aktiviert</string>
+    <string name="repeated_call">Wiederholter Anruf</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird, ist es wahrscheinlich, dass er wichtig ist und kein Spam-Anruf. <br>
+        <br>
+        Auch der Empfang von Textnachrichten von derselben Nummer wird gezählt. Dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde, die optional ist.<br>
+        <br>
+        Die Standardeinstellung <font color="cyan"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
+        <br>
+        Gilt nur für Anrufe, **nicht** für Textnachrichten. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Der globale Schalter, diese App funktioniert nur, wenn diese eingeschaltet ist. Schalten Sie es aus, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
+        <br>
+        Es kann auch über die **Schnelleinstellungen** des Dropdown-Menüs umgeschaltet werden.
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,63 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        Diese Regeln gelten für den Inhalt der SMS-Nachricht.<br>
+        <br>
+        <font color="#ffa500"><b>Hinweis</b></font>: Bei SMS-Nachrichten funktioniert diese App als \"Add-on\" der Standard-SMS-App, sie blockiert Benachrichtigungen anstelle
+          Nachrichten zu blockieren. Spam-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden. <font color="#fa7f71"><b>Deaktiviere</b></font> die Benachrichtigung der Standard-
+          SMS-App in den Systemeinstellungen. Lass diese App die Benachrichtigung übernehmen, andernfalls gibt es doppelte Benachrichtigungen. <br>
+        <br>
+        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        Eine Schnellmethode zum Kopieren von Inhalt aus SMS-Nachrichten, wie z. B. Bestätigungscodes. <br>
+        <br>
+        Wenn es übereinstimmt, wird eine Schaltfläche wie <font color="yellow"><b>Kopieren: 123456</b></font> in der Benachrichtigung angezeigt. <br>
+        Es ist nicht wie das Anklicken der Benachrichtigung. Wenn auf die Kopierfunktion geklickt wird, wird nur diese Benachrichtigung geschlossen, andere Benachrichtigungen bleiben erhalten. <br>
+        <br>
+        Eine Beispielregel: (Verwenden einer Erfassungsgruppe) <br>
+        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        Ein anderer Ansatz: (Verwenden von Lookaround) <br>
+        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
+        &emsp;<font color="#ffa500"><b>Hinweis</b></font>: <br>
+        &emsp; Es unterstützt <font color="#fa7f71"><b>.*</b></font> in Lookarounds nicht, es erfordert eine begrenzte maximale Länge.<br>
+        &emsp; Verwende beispielsweise: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; anstelle von: <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
+        <br>
+        Es funktioniert nur, wenn die SMS-Nachricht <b>NICHT</b> <font color="#fa7f71"><b>blockiert</b></font> ist.
+        ]]>
+    </string>
+    <string name="help_apply_to">
+        <![CDATA[
+        Deaktiviere diese Kontrollkästchen, um diese Regel für Anruf, SMS oder beides zu deaktivieren.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        Keine: Überhaupt keine Benachrichtigung. <br>
+        Schatten: Die Dropdown-Benachrichtigungsschirm. <br>
+        Statusleiste: Das kleine Symbol in der oberen Leiste. <br>
+        Ton: Der Standard-Benachrichtigungston. <br>
+        Heads-Up: Öffne ein schwebendes Fenster oben auf dem Bildschirm.
+        ]]>
+    </string>
+    <string name="help_test_rules">
+        <![CDATA[
+        Dadurch kann überprüft werden, ob die Regeln wie erwartet eingestellt sind.<br>
+        <br>
+        Es handelt sich nur um eine Simulation und es wird kein eingehender Anruf (oder keine Textnachricht) angezeigt.<br>
+        <br>
+        Die Resultate werden hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
+        ]]>
+    </string>
+    <string name="help_test_quick_copy">
+        <![CDATA[
+        Dies ist keine Simulation. Es zeigt nur an, ob eine Schnellkopierrege mit dem Inhalt übereinstimmt.<br>
+        <br>
+        Um den Empfang zu simulieren, verwende stattdessen die <font color="cyan"><b>Test</b></font>-Funktion von <font color="#0000ff"><b>Nachrichtenregeln</b></font>.
+        ]]>
+    </string>
+
+</resources>
