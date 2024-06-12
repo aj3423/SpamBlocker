@@ -1,15 +1,15 @@
 <resources>
-    <string name="allow_repeated_call">Appel répété</string>
-    <string name="dialed">Appelé</string>
+    <string name="allow_repeated_call">Appels répétés</string>
+    <string name="dialed">Composé</string>
     <string name="dark_theme">Thème sombre</string>
-    <string name="find_apps">Rechercher des applications</string>
+    <string name="find_apps">Trouver des apps</string>
     <string name="spam_sms_blocked">SMS bloqué</string>
     <string name="spam_call_blocked">Appel bloqué</string>
     <string name="new_sms_received">Nouveau SMS reçu</string>
     <string name="mark_all_as_read">Tout marquer comme lu</string>
     <string name="delete_all">Tout supprimer</string>
-    <string name="show_passed">Afficher les appels passés</string>
-    <string name="show_blocked">Afficher les appels bloqués</string>
+    <string name="show_passed">Afficher les autorisés</string>
+    <string name="show_blocked">Afficher les bloqués</string>
     <string name="clone_rule">Cloner la règle</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
@@ -18,59 +18,61 @@
     <string name="day">Jour</string>
     <string name="days">Jours</string>
     <string name="min">Min</string>
-    <string name="within_minutes">Dans les minutes</string>
-    <string name="within_days">Dans les jours</string>
+    <string name="within_minutes">Dans quelques minutes</string>
+    <string name="within_days">Dans quelques jours</string>
     <string name="phone_number">Numéro de téléphone</string>
-    <string name="sms_content">Contenu des SMS</string>
+    <string name="sms_content">Contenu du SMS</string>
     <string name="result">Résultat</string>
     <string name="reason">Raison</string>
-    <string name="regex_flags">Drapeaux Regex</string>
+    <string name="regex_flags">Options de Regex</string>
     <string name="ignore_case">Ignorer la casse</string>
-    <string name="dot_match_all">Point correspondant à tout</string>
+    <string name="dot_match_all">Le point correspond à tout</string>
     <string name="literal">Littéral</string>
     <string name="off_time">Heure de désactivation</string>
-    <string name="schedule">Planification</string>
-    <string name="workday">Jour de semaine</string>
+    <string name="schedule">Programme</string>
+    <string name="workday">Jour ouvrable</string>
     <string name="weekend">Week-end</string>
-    <string name="entire_day">Toute la journée</string>
+    <string name="entire_day">Journée entière</string>
     <string name="block_type">Type de blocage</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Rejeter</b></font>: <br>
-        &emsp; Même chose qu\'en appuyant sur le bouton Décliner. <br>
+        &emsp; Identique au bouton Décliner. <br>
         <br>
-        - <font color="#d1c8c8"><b>Silence</b></font>: <br>
-        &emsp; Sonnerie silencieuse en arrière-plan, donnant l\'impression à l\'appelant que vous êtes occupé et n\'y avez pas répondu. <br>
+        - <font color="#d1c8c8"><b>Ignorer</b></font>: <br>
+        &emsp; Fait sonner silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous êtes occupé et n\'avez pas répondu. <br>
         <br>
-        - <font color="#d1c8c8"><b> Répondre et raccrocher </b></font>: <font color="#ffa500"><b> (expérimental) </b></font><br>
-        &emsp; Pour éviter d\'être renvoyé à la messagerie vocale, le comportement peut dépendre de l\'opérateur.
+        - <font color="#d1c8c8"><b>Répondre et raccrocher</b></font>: <font color="#ffa500"><b>(expérimental)</b></font><br>
+        &emsp; Pour éviter d\'être envoyé à la messagerie vocale, le comportement peut dépendre de l\'opérateur de l\'appelant.
         ]]>
     </string>
     <string name="stir">Attestation STIR</string>
-    <string name="stir_include_unverified">Inclure les appels non vérifiés</string>
+    <string name="stir_include_unverified">Inclure non vérifié</string>
     <string name="unverified">Non vérifié</string>
     <string name="valid">Appel valide</string>
     <string name="spoof">Appel usurpé</string>
     <string name="help_stir">
         <![CDATA[
-            L\'attestation STIR nécessite <b>Android 11+</b> et la <b>prise en charge de l\'opérateur</b>. <br>
+            L\'attestation STIR nécessite <b>Android 11+</b> et <b>la prise en charge de l\'opérateur</b>. <br>
             <br>
-            Trois résultats d\'attestation sont possibles : <br>
+            Il existe trois résultats d\'attestation possibles : <br>
             <font color="cyan"><b>Valide</b></font> <br>
             &emsp; L\'appel est très probablement valide, non usurpé. <br>
             <font color="#ffa500"><b>Non vérifié</b></font> <br>
             &emsp; L\'appel ne peut pas être validé ou l\'attestation STIR n\'est pas prise en charge. <br>
-            <font color="#fa7f71"><b>Usurpé</b></font> <br>
-            &emsp; Il est très probablement un appel usurpé. <br>
+            <font color="#fa7f71"><b>Usurpation</b></font> <br>
+            &emsp; Il s\'agit très probablement d\'un appel usurpé. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inclusif</b></font>: <br>
                   &emsp; Les appels qui échouent à cette vérification seront toujours vérifiés par d\'autres règles. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
+                  &emsp; Lorsque \"<b>Inclure non vérifié</b>\" est coché, un appel réussira également s\'il n\'est pas vérifié. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
                   &emsp; Les appels qui échouent à cette vérification seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>
+                  &emsp; Lorsque \"<b>Inclure non vérifié</b>\" est coché, un appel sera également bloqué s\'il n\'est pas vérifié. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>
         ]]>
     </string>
 </resources>

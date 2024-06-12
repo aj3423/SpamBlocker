@@ -6,18 +6,18 @@ An Android Call/SMS blocker. (Android 10+)
      height="80">](https://f-droid.org/packages/spam.blocker/)
 
 # Screenshot
-| Call        | Sms         | Setting     | Notification |
+| Call        | SMS         | Setting     | Notification |
 | ----        | ----        | ----        | ----         |
 | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9e5702ec-0520-4e6d-8564-1d444a08139d" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/cd255f40-6291-4d78-ae7f-f6f5c2161c49" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/36098399-5bea-4410-972b-bd50da80b716" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/633e0e24-5ba0-44d7-90ec-09324081d37b" width="200">  |
 
 
 # Features
-|                                                    | For Call                                                                                                                                               | For Sms                                                                                                        |
+|                                                    | For Call                                                                                                                                               | For SMS                                                                                                        |
 | ----                                               | ----                                                                                                                                               | ----                                                                                                       |
 | What it does                                       | Block unwanted calls                                                                                                                               | Silence unwanted notificaions                                                                               |
 | What it doesn't                                    | Replace the default call app                                                                                                                       | Replace the default SMS app                                                                                |
 | How it works                                       | Act as [CallScreeningService](https://developer.android.com/reference/android/telecom/CallScreeningService),<br>aka the default caller ID & spam app | It takes over the notification of new messages. |
-| Filters supported<br>(explained below) | 1. Phone number (regex)<br>2. Contacts<br>3. STIR<br>4. Repeated call<br>5. Recent apps<br>6. Dialed                                                                     | 1. Phone number (regex)<br>2. Contacts<br>3. Sms content (regex)                                        |
+| Filters supported<br>(explained below) | 1. Phone number (regex)<br>2. Contacts<br>3. STIR<br>4. Repeated call<br>5. Recent apps<br>6. Dialed                                                                     | 1. Phone number (regex)<br>2. Contacts<br>3. SMS content (regex)                                        |
 
 # Filters:
 
@@ -48,7 +48,6 @@ An Android Call/SMS blocker. (Android 10+)
 
 | Problem             | Solution                                                             |
 | ----                   | ----                                                            |
-| How to make it only work for Calls and disable it for SMS messages.   | Disable all SMS permissions in System Settings  |
 | SMS notification doesn't work after app is killed    | Enable "app auto start" in battery settings:<br> &emsp; System Settings -> Battery -> ... -> Auto-start Manager -> enable SpamBlocker  |
 
 # Languages supported

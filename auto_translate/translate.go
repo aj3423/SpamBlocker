@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -16,11 +17,25 @@ import (
 	"google.golang.org/api/option"
 )
 
+var lang_str string
+
+var filter_str string
+
 var RES_DIR string
+
+var wg sync.WaitGroup
+
+var pool *ants.Pool
 
 func init() {
 	cwd, _ := os.Getwd()
 	RES_DIR = cwd + "/../app/src/main/res"
+
+	flag.StringVar(&lang_str, "lang", "", "all, or de,es,...")
+	flag.StringVar(&filter_str, "filter", "", "")
+
+	wg = sync.WaitGroup{}
+	pool, _ = ants.NewPool(3)
 }
 
 func check(e error) {
@@ -46,7 +61,7 @@ func translate_1_file(lang string, fn string) error {
 	src_file := fmt.Sprintf("%s/values/%s", RES_DIR, fn)
 	dest_file := fmt.Sprintf("%s/values-%s/%s", RES_DIR, lang, fn)
 
-	fmt.Printf("processing: %s\n", src_file)
+	fmt.Printf("processing: %s -> %s\n", filepath.Base(src_file), lang)
 
 	to_translate := read_file(src_file)
 
@@ -109,20 +124,11 @@ func translate_1_file(lang string, fn string) error {
 func translate_lang(lang string) {
 	path := RES_DIR + "/values-" + lang
 
-	// the 3rd commandline argument for regenerating particular xml
-	var filter *string
-	if len(os.Args) > 2 {
-		filter = &os.Args[2]
-	}
-
-	if filter == nil {
+	if filter_str == "" {
 		fmt.Printf("clearing: %s\n\n", path)
 		os.RemoveAll(path)
 		os.Mkdir(path, os.ModePerm)
 	}
-
-	wg := sync.WaitGroup{}
-	pool, _ := ants.NewPool(3)
 
 	filepath.Walk(
 		RES_DIR+"/values",
@@ -138,8 +144,8 @@ func translate_lang(lang string) {
 				return nil
 			}
 
-			if filter != nil {
-				if !strings.Contains(fi.Name(), *filter) {
+			if filter_str != "" {
+				if !strings.Contains(fi.Name(), filter_str) {
 					return nil
 				}
 			}
@@ -165,12 +171,10 @@ func translate_lang(lang string) {
 			return nil
 		})
 
-	wg.Wait()
-
 }
 
 var langs = []string{
-	`fr`, `ru`, `zh`, `de`,
+	`fr`, `ru`, `zh`, `de`, `es`,
 	//  `ja`, `ko`, `vi`, `zh-rTW`,
 }
 
@@ -182,16 +186,24 @@ func usage() {
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		usage()
-		return
+	flag.Parse()
+
+	var languages []string
+	if lang_str == "all" {
+		languages = langs
+	} else {
+		languages = strings.Split(lang_str, ",")
+		if len(langs) == 0 {
+			usage()
+			return
+		}
 	}
 
-	lang := os.Args[1]
-	if !slices.Contains(langs, lang) {
-		usage()
-		return
+	for _, lang := range languages {
+		if !slices.Contains(langs, lang) {
+			panic("language " + lang + " not supported yet")
+		}
+		translate_lang(lang)
 	}
-	translate_lang(lang)
-
+	wg.Wait()
 }

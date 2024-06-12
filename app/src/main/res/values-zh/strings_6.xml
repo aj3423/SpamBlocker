@@ -1,7 +1,7 @@
 <resources>
 
     <string name="crash_title">
-        抱歉，应用程序已崩溃。\n\n请复制以下内容并在 github 上报告此问题，在报告前请务必删除任何敏感信息。
+        抱歉，应用已崩溃。\n\n请复制以下内容并在 github 上举报此问题，举报之前务必移除所有敏感信息。
     </string>
     <string-array name="week">
         <item>周日</item>
@@ -15,40 +15,40 @@
 
     <string-array name="block_type_list">
         <item>拒绝</item>
-        <item>静默</item>
-        <item>接听并挂断</item>
+        <item>静音</item>
+        <item>接听+挂断</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>无</item>
         <item>阴影</item>
-        <item>状态栏，阴影</item>
-        <item>声音，状态栏，阴影</item>
-        <item>声音，状态栏，阴影，抬头通知</item>
+        <item>状态栏、阴影</item>
+        <item>声音、状态栏、阴影</item>
+        <item>声音、状态栏、阴影、抬头</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>以 Json 形式复制</item>
-        <item>以压缩形式复制</item>
+        <item>复制为 Json</item>
+        <item>复制为压缩格式</item>
     </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译由 Google AI 进行，在 github 上提交问题以添加新语言。
+            翻译工作由 Google AI 完成，如果您希望添加对新语言的支持，请在 github 上提交问题。
         ]]>
     </string>
-    <string name="enabled_for_call">启用来电</string>
+    <string name="enabled_for_call">启用呼叫</string>
     <string name="enabled_for_sms">启用短信</string>
-    <string name="repeated_call">重复来电</string>
+    <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果在一段时间内重复来电，则允许来电，因为这可能是重要电话而不是垃圾电话。<br>
+        如果您在一段时间内重复呼叫，则可能是重要呼叫而非垃圾呼叫，因此允许呼叫。<br>
         <br>
-        接收来自同一号码的短信也会被计数，这取决于是否授予 READ_SMS 权限（该权限是可选的）。<br>
+        同样，从相同号码接收文本消息也会被计算在内，这取决于是否授予了可选的 READ_SMS 权限。<br>
         <br>
-        默认设置<font color="cyan"><b>1 / 5 分钟</b></font>表示在 5 分钟内允许第二次来电。<br>
+        默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示在 5 分钟内允许重复呼叫。<br>
         <br>
-        仅适用于电话，<b>不</b>适用于短信。<br>
+        仅适用于呼叫，<b>不</b>适用于文本消息。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
@@ -56,10 +56,14 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，仅当打开此开关时，此应用程序才起作用，
-        当您正在等待某些特定电话/信息时，请将其关闭。<br>
+        全局开关，仅当此开关打开时，此应用才能工作，如果您正在等待某个特定呼叫/消息，请关闭此开关。<br>
         <br>
-        也可以从<b>下拉快速设置</b>切换。
+        还可以通过<b>下拉快速设置</b>切换开关。
         ]]>
     </string>
+
+    <string name="about">关于</string>
+    <string name="version">版本</string>
+    <string name="build_time">构建时间 (UTC)</string>
+    <string name="source_code">源代码</string>
 </resources>

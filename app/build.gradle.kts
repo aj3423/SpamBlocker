@@ -1,5 +1,9 @@
 import java.io.FileInputStream
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.util.Properties
+
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -34,6 +38,10 @@ android {
         versionName = "1.12"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val nowUTC = OffsetDateTime.now(ZoneOffset.UTC)
+        val formattedTime = nowUTC.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        buildConfigField("String", "BUILD_TIME", "\"$formattedTime\"")
     }
 
     buildTypes {

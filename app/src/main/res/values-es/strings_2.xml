@@ -1,0 +1,75 @@
+<resources>
+    <string name="for_particular_number">Para un número en particular</string>
+    <string name="no_match_found">No se encontraron coincidencias</string>
+    <string name="help_for_particular_number">Cuando está habilitada, la regla solo se aplica cuando coinciden tanto el número como el contenido</string>
+    <string name="help_contact">
+        <![CDATA[
+        Cuando está habilitada, las llamadas o mensajes de texto de los contactos siempre se permiten. <br>
+        <br>
+          - <font color="#d1c8c8"><b>Inclusivo</b></font>: <br>
+              &emsp; Los números que no sean de contacto serán verificados por otras reglas. <br>
+              &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
+              &emsp; Los números que no sean de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+              &emsp; Equivalente a <font color="#d1c8c8"><b>Inclusivo</b></font> con una regla de número <font color="#fa7f71"><b>.*</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font> <br>
+        <br>
+        Se aplica tanto a llamadas como a mensajes de texto.
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        Se permitirán los números marcados. <br>
+        <br>
+        Enviar mensajes también cuenta, esto solo funciona cuando se otorga el permiso READ_SMS. <br>
+        <br>
+        El valor predeterminado <font color="cyan"><b>3 días</b></font> significa que si se han realizado llamadas salientes o enviado mensajes desde un número en los últimos 3 días, se permitirán las llamadas desde ese número, incluso si ese número no está en contactos.<br>
+        <br>
+        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Cualquier llamada entrante pasará si alguna aplicación de la lista se ha utilizado recientemente. <br>
+        <br>
+        Un caso de uso típico:<br>
+        &emsp; Acabas de pedir una pizza en PizzaApp, pronto te llaman para reembolsarte porque están cerrando. Esa llamada pasaría si PizzaApp está habilitado aquí. <br>
+        <br>
+        El valor predeterminado <font color="cyan"><b>5 min</b></font> significa que se permitirá cualquier llamada si alguna de estas aplicaciones se ha utilizado en 5 minutos, por \"usado\" se entiende haber sido activada, desactivada, minimizada o cerrada. <br>
+        <br>
+        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
+        ]]>
+    </string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Estas reglas se aplican al número de teléfono entrante. <br>
+        <br>
+        <font color="#ffa500"><b>Importante</b></font>: <br>
+        Para simplificar la expresión regular se eliminan
+          <font color="#fa7f71"><b>+</b></font>,
+          los <font color="#fa7f71"><b>espacios</b></font>
+          y los <font color="#fa7f71"><b>ceros a la izquierda</b></font>
+          antes de verificar, por ejemplo:<br>
+        &emsp; Todos los formatos posibles:<br>
+        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espacios</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> al inicio)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo de troncal nacional <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Todos se verifican <b>como</b>:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp;Entonces la expresión regular <font color="cyan"><b>123.*</b></font> coincidiría con <b>todos</b> ellos.<br>
+        <br>
+        La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente. <br>
+        <br>
+        Desmarca las casillas de verificación para desactivar la regla, útil para pruebas. <br>
+        <br>
+        Desliza el dedo hacia la izquierda para eliminar una regla.
+        ]]>
+    </string>
+</resources>

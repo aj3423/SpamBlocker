@@ -35,7 +35,7 @@
     <string name="language">Language</string>
     <string name="help_language">
         <![CDATA[
-            Translations are done by Google AI, fire an issue on github for adding a new language.
+            Translations are done by Google AI, fire an issue on github for adding a new language support.
         ]]>
     </string>
     <string name="enabled_for_call">Enable for Call</string>
@@ -63,4 +63,9 @@
         It can also be toggled from the <b>Dropdown Quick Settings</b>.
         ]]>
     </string>
+
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="build_time">Build Time (UTC)</string>
+    <string name="source_code">Source Code</string>
 </resources>

@@ -459,36 +459,34 @@ class Checker { // for namespace only
         }
         fun resultStr(ctx: Context, result: Int, reason: String): String {
 
-            fun s(id: Int) : String {
-                return ctx.resources.getString(id)
-            }
+            val res = ctx.resources
 
             return when (result) {
-                Def.RESULT_ALLOWED_BY_CONTACT ->  s(R.string.contact)
-                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  s(R.string.non_contact)
+                Def.RESULT_ALLOWED_BY_CONTACT ->  res.getString(R.string.contact)
+                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  res.getString(R.string.non_contact)
                 Def.RESULT_ALLOWED_BY_STIR, Def.RESULT_BLOCKED_BY_STIR -> {
                     when (reason.toInt()) {
-                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${s(R.string.stir)} ${s(R.string.unverified)}"
-                        Connection.VERIFICATION_STATUS_PASSED -> "${s(R.string.stir)} ${s(R.string.valid)}"
-                        Connection.VERIFICATION_STATUS_FAILED -> "${s(R.string.stir)} ${s(R.string.spoof)}"
-                        else -> s(R.string.stir)
+                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir)} ${res.getString(R.string.unverified)}"
+                        Connection.VERIFICATION_STATUS_PASSED -> "${res.getString(R.string.stir)} ${res.getString(R.string.valid)}"
+                        Connection.VERIFICATION_STATUS_FAILED -> "${res.getString(R.string.stir)} ${res.getString(R.string.spoof)}"
+                        else -> res.getString(R.string.stir)
                     }
                 }
-                Def.RESULT_ALLOWED_BY_EMERGENCY ->  ctx.resources.getString(R.string.emergency_call)
-                Def.RESULT_ALLOWED_BY_RECENT_APP ->  ctx.resources.getString(R.string.recent_app) + ": "
-                Def.RESULT_ALLOWED_BY_REPEATED ->  ctx.resources.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_BY_DIALED ->  ctx.resources.getString(R.string.dialed)
-                Def.RESULT_ALLOWED_BY_OFF_TIME ->  ctx.resources.getString(R.string.off_time)
-                Def.RESULT_ALLOWED_BY_NUMBER ->  ctx.resources.getString(R.string.whitelist) + ": " + reasonStr(
+                Def.RESULT_ALLOWED_BY_EMERGENCY ->  res.getString(R.string.emergency_call)
+                Def.RESULT_ALLOWED_BY_RECENT_APP ->  res.getString(R.string.recent_app) + ": "
+                Def.RESULT_ALLOWED_BY_REPEATED ->  res.getString(R.string.repeated_call)
+                Def.RESULT_ALLOWED_BY_DIALED ->  res.getString(R.string.dialed)
+                Def.RESULT_ALLOWED_BY_OFF_TIME ->  res.getString(R.string.off_time)
+                Def.RESULT_ALLOWED_BY_NUMBER ->  res.getString(R.string.whitelist) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason)
-                Def.RESULT_BLOCKED_BY_NUMBER ->  ctx.resources.getString(R.string.blacklist) + ": " + reasonStr(
+                Def.RESULT_BLOCKED_BY_NUMBER ->  res.getString(R.string.blacklist) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason)
-                Def.RESULT_ALLOWED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
+                Def.RESULT_ALLOWED_BY_CONTENT ->  res.getString(R.string.content) + ": " + reasonStr(
                     ctx, ContentRuleTable(), reason)
-                Def.RESULT_BLOCKED_BY_CONTENT ->  ctx.resources.getString(R.string.content) + ": " + reasonStr(
+                Def.RESULT_BLOCKED_BY_CONTENT ->  res.getString(R.string.content) + ": " + reasonStr(
                     ctx, ContentRuleTable(), reason)
 
-                else -> ctx.resources.getString(R.string.passed_by_default)
+                else -> res.getString(R.string.passed_by_default)
             }
         }
     }

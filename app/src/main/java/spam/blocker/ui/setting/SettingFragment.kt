@@ -11,20 +11,17 @@ import android.content.IntentFilter
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.provider.Settings
-import android.util.DisplayMetrics
-import android.util.Log
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -43,6 +40,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.databinding.SettingFragmentBinding
 import spam.blocker.db.ContentRuleTable
@@ -58,10 +56,10 @@ import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
+import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
 import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
 import spam.blocker.util.Permissions.Companion.isContactsPermissionGranted
-import spam.blocker.util.PermissionChain
 import spam.blocker.util.ProtectedPermission
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
@@ -103,6 +101,7 @@ class SettingFragment : Fragment() {
         setupTheme(root)
         setupLanguage(root)
         setupBackupRestore(root)
+        setupAbout(root)
 
         // sim settings
         setupStir(root)
@@ -218,6 +217,31 @@ class SettingFragment : Fragment() {
         val btn = root.findViewById<MaterialButton>(R.id.btn_backup)
         btn.setOnClickListener {
             PopupBackupFragment().show(requireActivity().supportFragmentManager, "tag_backup")
+        }
+    }
+    private fun setupAbout(root: View) {
+        val btn = root.findViewById<MaterialButton>(R.id.btn_about)
+        btn.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle(resources.getString(R.string.about))
+
+            val repo = "https://github.com/aj3423/SpamBlocker"
+            val msg =
+                "${resources.getString(R.string.version)}:<br>&emsp;${BuildConfig.VERSION_NAME}<br><br>" +
+                        "${resources.getString(R.string.build_time)}:<br>&emsp;${BuildConfig.BUILD_TIME}<br><br>" +
+                        "${resources.getString(R.string.source_code)}:<br>&emsp;<a href=\"$repo\">$repo</a><br><br>"
+
+            builder.setMessage(Html.fromHtml(msg, 0))
+
+            builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            val dlg = builder.create()
+            dlg.show()
+            // launch browser when the link is clicked
+            dlg.findViewById<TextView>(android.R.id.message).movementMethod =
+                LinkMovementMethod.getInstance()
         }
     }
 

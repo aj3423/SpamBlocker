@@ -1,54 +1,54 @@
 <resources>
 
     <string name="crash_title">
-        Entschuldigung, die App ist abgestürzt. \n\nBitte kopieren Sie den Inhalt unten und melden Sie das Problem auf GitHub. Entfernen Sie vor der Meldung alle sensiblen Informationen.
+        Entschuldigung, die App ist abgestürzt.\n\nBitte kopieren Sie den untenstehenden Inhalt und melden Sie dieses Problem auf GitHub. Entfernen Sie vor der Meldung alle vertraulichen Informationen.
     </string>
     <string-array name="week">
-        <item>So</item>
-        <item>Mo</item>
-        <item>Di</item>
-        <item>Mi</item>
-        <item>Do</item>
-        <item>Fr</item>
-        <item>Sa</item>
+        <item>So.</item>
+        <item>Mo.</item>
+        <item>Di.</item>
+        <item>Mi.</item>
+        <item>Do.</item>
+        <item>Fr.</item>
+        <item>Sa.</item>
     </string-array>
 
     <string-array name="block_type_list">
         <item>Ablehnen</item>
-        <item>Stummschalten</item>
-        <item>Annehmen + Auflegen</item>
+        <item>Stumm</item>
+        <item>Antworten + Auflegen</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Keine</item>
-        <item>Schattierung</item>
-        <item>Statusleiste, Schattierung</item>
-        <item>Ton, Statusleiste, Schattierung</item>
-        <item>Ton, Statusleiste, Schattierung, Hinweis</item>
+        <item>Schatten</item>
+        <item>Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten, Heads-up</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Als Json kopieren</item>
+        <item>Als JSON kopieren</item>
         <item>Als komprimiert kopieren</item>
     </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-            Übersetzungen werden von Google KI vorgenommen. Melden Sie ein Problem auf GitHub, um eine neue Sprache hinzuzufügen.
+        Übersetzungen erfolgen durch Google AI. Melde ein Problem auf GitHub, um eine neue Sprache hinzuzufügen.
         ]]>
     </string>
-    <string name="enabled_for_call">Für Anrufe aktiviert</string>
-    <string name="enabled_for_sms">Für SMS aktiviert</string>
+    <string name="enabled_for_call">Für Anruf aktivieren</string>
+    <string name="enabled_for_sms">Für SMS aktivieren</string>
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird, ist es wahrscheinlich, dass er wichtig ist und kein Spam-Anruf. <br>
+        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird. Es handelt sich wahrscheinlich eher um einen wichtigen als um einen Spam-Anruf. <br>
         <br>
-        Auch der Empfang von Textnachrichten von derselben Nummer wird gezählt. Dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde, die optional ist.<br>
+        Der Empfang von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung zum Lesen von SMS erteilt wurde, was optional ist. <br>
         <br>
         Die Standardeinstellung <font color="cyan"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
-        Gilt nur für Anrufe, **nicht** für Textnachrichten. <br>
+        Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
@@ -56,9 +56,15 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Der globale Schalter, diese App funktioniert nur, wenn diese eingeschaltet ist. Schalten Sie es aus, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
+        Globale Umschaltung, diese App funktioniert nur, wenn sie eingeschaltet ist.
+        Schalte sie aus, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
         <br>
-        Es kann auch über die **Schnelleinstellungen** des Dropdown-Menüs umgeschaltet werden.
+        Sie kann auch über die <b>Schnelleinstellungen der Dropdown-Liste</b> umgeschaltet werden.
         ]]>
     </string>
+
+    <string name="about">Info</string>
+    <string name="version">Version</string>
+    <string name="build_time">Build-Zeit (UTC)</string>
+    <string name="source_code">Quellcode</string>
 </resources>

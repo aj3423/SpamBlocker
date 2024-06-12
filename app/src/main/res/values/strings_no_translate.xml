@@ -1,7 +1,9 @@
 <resources>
     <string-array name="language_list">
         <item>en</item>
+
         <item>de</item>
+        <item>es</item>
         <item>fr</item>
         <item>ru</item>
         <item>zh</item>

@@ -487,6 +487,22 @@
                 </LinearLayout>
                 <!-- backup and restore end -->
 
+                <!-- about -->
+                <LinearLayout style="@style/setting_row">
+
+                    <me.grantland.widget.AutofitLayout
+                        style="@style/setting_auto_fit">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_about"
+                            style="@style/setting_stroke_blue_button"
+                            android:maxWidth="300dp"
+                            android:text="@string/about" />
+                    </me.grantland.widget.AutofitLayout>
+
+                </LinearLayout>
+                <!-- backup and restore end -->
+
             </LinearLayout>
 
             <TextView

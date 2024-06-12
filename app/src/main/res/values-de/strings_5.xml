@@ -1,20 +1,20 @@
 <resources>
-    <string name="allow_repeated_call">Wiederholter Anruf</string>
-    <string name="dialed">Gewählt</string>
-    <string name="dark_theme">Dunkles Design</string>
-    <string name="find_apps">Apps suchen</string>
+    <string name="allow_repeated_call">Mehrfache Anrufe</string>
+    <string name="dialed">Angewählt</string>
+    <string name="dark_theme">Darker Theme</string>
+    <string name="find_apps">Apps finden</string>
     <string name="spam_sms_blocked">SMS-Nachricht blockiert</string>
     <string name="spam_call_blocked">Anruf blockiert</string>
     <string name="new_sms_received">Neue SMS-Nachricht</string>
     <string name="mark_all_as_read">Alle als gelesen markieren</string>
     <string name="delete_all">Alle löschen</string>
-    <string name="show_passed">Zugelassene anzeigen</string>
+    <string name="show_passed">Erfolgreiche anzeigen</string>
     <string name="show_blocked">Blockierte anzeigen</string>
     <string name="clone_rule">Regel klonen</string>
-    <string name="notification">Benachrichtigung</string>
+    <string name="notification">Meldung</string>
     <string name="type">Typ</string>
-    <string name="time">Uhrzeit</string>
-    <string name="times">Anzahl</string>
+    <string name="time">Zeit</string>
+    <string name="times">mal</string>
     <string name="day">Tag</string>
     <string name="days">Tage</string>
     <string name="min">Min</string>
@@ -26,50 +26,52 @@
     <string name="reason">Grund</string>
     <string name="regex_flags">Regex-Flags</string>
     <string name="ignore_case">Groß-/Kleinschreibung ignorieren</string>
-    <string name="dot_match_all">Punkt ersetzt alles</string>
-    <string name="literal">Literal</string>
-    <string name="off_time">Auszeit</string>
+    <string name="dot_match_all">Punkt passt zu allen</string>
+    <string name="literal">wörtlich</string>
+    <string name="off_time">Aus-Zeit</string>
     <string name="schedule">Zeitplan</string>
     <string name="workday">Werktag</string>
     <string name="weekend">Wochenende</string>
     <string name="entire_day">Ganzer Tag</string>
-    <string name="block_type">Blockiertyp</string>
+    <string name="block_type">Block-Typ</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Abweisen</b></font>: <br>
-        &emsp; Wie das Drücken der Ablehnen-Taste. <br>
+        - <font color="#d1c8c8"><b>Ablehnen</b></font>: <br>
+        &emsp; Entspricht dem Drücken der Ablehnen-Schaltfläche. <br>
         <br>
         - <font color="#d1c8c8"><b>Stummschalten</b></font>: <br>
-        &emsp; Klingelt im Hintergrund, sodass der Anrufer den Eindruck hat, dass du nur beschäftigt bist und nicht abgenommen hast. <br>
+        &emsp; Klingelt lautlos im Hintergrund und vermittelt dem Anrufer den Eindruck, dass man nur beschäftigt sei und nicht abgenommen habe. <br>
         <br>
-        - <font color="#d1c8c8"><b>Annehmen und auflegen</b></font><font color="#ffa500"><b>(experimentell)</b></font><br>
-        &emsp; Um zu vermeiden, dass du zur Mailbox weitergeleitet wirst, kann das Verhalten je nach Anbieter variieren.
+        - <font color="#d1c8c8"><b>Annehmen und auflegen</b></font>: <font color="#ffa500"><b>(experimentell)</b></font><br>
+        &emsp; Um zu vermeiden, dass man auf die Voicemail weitergeleitet wird. Das Verhalten kann vom Mobilfunkanbieter abhängen.
         ]]>
     </string>
-    <string name="stir">STIR-Attestierung</string>
-    <string name="stir_include_unverified">Unverifizierte einschließen</string>
-    <string name="unverified">Unverfiziert</string>
+    <string name="stir">STIR-Bescheinigung</string>
+    <string name="stir_include_unverified">Nicht verifizierte einbeziehen</string>
+    <string name="unverified">nicht verifiziert</string>
     <string name="valid">Gültiger Anruf</string>
-    <string name="spoof">Fälschungsanruf</string>
+    <string name="spoof">Spoofing-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            Die STIR-Attestierung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Anbieter</b>. <br>
+            Für die STIR-Bescheinigung sind <b>Android 11+</b> und <b>Betreiberunterstützung</b> erforderlich. <br>
             <br>
-            Es gibt drei mögliche Attestierungsergebnisse: <br>
+            Es gibt drei mögliche Bescheinigungsergebnisse: <br>
             <font color="cyan"><b>Gültig</b></font> <br>
-            &emsp; Der Anruf ist sehr wahrscheinlich gültig, keine Fälschung. <br>
-            <font color="#ffa500"><b>Unverifiziert</b></font> <br>
-            &emsp; Der Anruf kann nicht validiert werden oder die STIR-Attestierung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Fälschung</b></font> <br>
-            &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf. <br>
+            &emsp; Der Anruf ist mit hoher Wahrscheinlichkeit gültig, kein Spoofing. <br>
+            <font color="#ffa500"><b>Nicht verifiziert</b></font> <br>
+            &emsp; Der Anruf kann nicht validiert werden oder die STIR-Bescheinigung wird nicht unterstützt. <br>
+            <font color="#fa7f71"><b>Spoofing</b></font> <br>
+            &emsp; Es handelt sich mit hoher Wahrscheinlichkeit um einen Spoofing-Anruf. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inklusive</b></font>: <br>
                   &emsp; Anrufe, die diese Prüfung nicht bestehen, werden trotzdem von anderen Regeln überprüft. <br>
+                  &emsp; Wenn \"<b>Nicht verifizierte einbeziehen</b>\" aktiviert ist, wird ein Anruf auch dann zugelassen, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Exklusive</b></font>: <br>
+              - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
                   &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+                  &emsp; Wenn \"<b>Nicht verifizierte einbeziehen</b>\" aktiviert ist, würde ein Anruf auch blockiert, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>

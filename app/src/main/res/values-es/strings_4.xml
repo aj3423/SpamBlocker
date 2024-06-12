@@ -1,0 +1,49 @@
+<resources>
+    <string name="help_backup">
+        <![CDATA[
+        <font color="yellow"><b>Hacer copia de seguridad</b></font>: <br>
+        &emsp; 1. Pulsa <font color="cyan"><b>Exportar</b></font> para mostrar la configuración en el cuadro de texto. <br>
+        &emsp; 2. Pulsa <font color="cyan"><b>Copiar</b></font> para copiarlo al portapapeles. <br>
+        &emsp; 3. Envía este <font color="#cccc00"><b>texto de configuración</b></font> a otro dispositivo. <br>
+        <br>
+        <font color="yellow"><b>Restaurar</b></font>: <br>
+        &emsp; 1. Pega el <font color="#cccc00"><b>texto de configuración</b></font> en el cuadro de texto. <br>
+        &emsp; 2. Pulsa <font color="#0000ff"><b>Importar</b></font>. <br>
+        &emsp;&emsp; Si <font color="#fa7f71"><b>falla</b></font>, intenta validar el texto json, ya que podría haberse dañado durante la transferencia. Si es así, envíalo en un archivo. <br>
+        <br>
+        Los registros del historial se ignoran. <br>
+        <br>
+        Si no se ha habilitado ningún selector como "Contactos" después de la restauración, comprueba el permiso correspondiente en los ajustes del sistema, ya que los permisos no se "restauran" automáticamente. <br>
+        ]]>
+    </string>
+    <string name="help_off_time">
+        <![CDATA[
+        Cuando está activado, todas las llamadas (mensajes) se permitirán durante este periodo de tiempo. <br>
+        Normalmente no hay spam por la noche. <br>
+        <br>
+        Si la hora de inicio es mayor que la hora de finalización; por ejemplo, 20:00 -> 07:00 significa el periodo de tiempo desde las 20:00 de la tarde hasta las 07:00 de la mañana siguiente. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Estas banderas cambian el comportamiento de coincidencia de la expresión regular, se definen para nuevas reglas de forma predeterminada. <br>
+            <br>
+            <font color="#ffa500"><b>Ignorar mayúsculas y minúsculas</b></font>: <br>
+            &ensp; Hace que la coincidencia de patrones no distinga entre mayúsculas y minúsculas, <font color="cyan"><b>a</b></font> coincidiría con <font color="cyan"><b>a</b></font> y <font color="cyan"><b>A</b></font>. <br>
+            <br>
+            <font color="#ffa500"><b>Dot Match All</b></font>: <br>
+            &ensp; Cuando está activado, <font color="cyan"><b>.</b></font> coincidirá con caracteres de nueva línea (<font color="cyan"><b>\\n</b></font>), lo que permite que el punto coincida en varias líneas. <br>
+            &ensp; Caso de uso: <br>
+            &emsp;   Hacer coincidir un mensaje de spam de varias líneas: <br>
+            &emsp;   <font color="#fa7f71">reclama tu premio: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   con la regla: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+        ]]>
+    </string>
+
+
+</resources>
