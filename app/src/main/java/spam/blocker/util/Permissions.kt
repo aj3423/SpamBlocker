@@ -160,9 +160,10 @@ open class Permissions {
         ): Int {
             val selection = mutableListOf(
                 "REPLACE(REPLACE(REPLACE(${Calls.NUMBER}, '-', ''), ' ', ''), '+', '') LIKE '${
-                    Util.clearNumber(
-                        rawNumber
-                    )
+                    rawNumber
+                        .replace(" ", "")
+                        .replace("-", "")
+                        .replace("+", "")
                 }'",
                 "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
             )
@@ -198,9 +199,10 @@ open class Permissions {
         ): Int {
             val selection = mutableListOf(
                 "REPLACE(REPLACE(REPLACE(${Sms.ADDRESS}, '-', ''), ' ', ''), '+', '') LIKE '${
-                    Util.clearNumber(
-                        rawNumber
-                    )
+                    rawNumber
+                        .replace(" ", "")
+                        .replace("-", "")
+                        .replace("+", "")
                 }'",
                 "${Sms.DATE} >= ${Time.currentTimeMillis() - withinMillis}"
             )
