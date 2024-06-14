@@ -39,9 +39,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val nowUTC = OffsetDateTime.now(ZoneOffset.UTC)
-        val formattedTime = nowUTC.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-        buildConfigField("String", "BUILD_TIME", "\"$formattedTime\"")
+//        val nowUTC = OffsetDateTime.now(ZoneOffset.UTC)
+//        val formattedTime = nowUTC.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+//        buildConfigField("String", "BUILD_TIME", "\"$formattedTime\"")
     }
 
     buildTypes {

@@ -228,7 +228,6 @@ class SettingFragment : Fragment() {
             val repo = "https://github.com/aj3423/SpamBlocker"
             val msg =
                 "${resources.getString(R.string.version)}:<br>&emsp;${BuildConfig.VERSION_NAME}<br><br>" +
-                        "${resources.getString(R.string.build_time)}:<br>&emsp;${BuildConfig.BUILD_TIME}<br><br>" +
                         "${resources.getString(R.string.source_code)}:<br>&emsp;<a href=\"$repo\">$repo</a><br><br>"
 
             builder.setMessage(Html.fromHtml(msg, 0))
