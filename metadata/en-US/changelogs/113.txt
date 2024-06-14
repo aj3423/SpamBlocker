@@ -1,0 +1,6 @@
+fix:
+- RepeatedCall/Dialed doesn't work with numbers that start with 0
+
+new:
+- language support: de, es
+- add "About" page
