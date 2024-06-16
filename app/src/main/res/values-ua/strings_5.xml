@@ -1,0 +1,78 @@
+<resources>
+    <string name="allow_repeated_call">Повторний виклик</string>
+    <string name="dialed">Набраний</string>
+    <string name="dark_theme">Темна тема</string>
+    <string name="find_apps">Знайти програми</string>
+    <string name="spam_sms_blocked">SMS-повідомлення заблоковано</string>
+    <string name="spam_call_blocked">Виклик заблоковано</string>
+    <string name="new_sms_received">Нове SMS-повідомлення</string>
+    <string name="mark_all_as_read">Позначити всі як прочитані</string>
+    <string name="delete_all">Видалити все</string>
+    <string name="show_passed">Показати пройдені</string>
+    <string name="show_blocked">Показати заблоковані</string>
+    <string name="clone_rule">Клонувати правило</string>
+    <string name="notification">Сповіщення</string>
+    <string name="type">Тип</string>
+    <string name="time">Час</string>
+    <string name="times">Рази</string>
+    <string name="day">День</string>
+    <string name="days">Днів</string>
+    <string name="min">Хв.</string>
+    <string name="within_minutes">Протягом хвилин</string>
+    <string name="within_days">Протягом днів</string>
+    <string name="phone_number">Номер телефону</string>
+    <string name="sms_content">Вміст SMS</string>
+    <string name="result">Результат</string>
+    <string name="reason">Причина</string>
+    <string name="regex_flags">Флаги регулярного виразу</string>
+    <string name="ignore_case">Ігнорувати регістр</string>
+    <string name="dot_match_all">Крапка відповідає будь-чому</string>
+    <string name="literal">Буквальний</string>
+    <string name="off_time">Час відключення</string>
+    <string name="schedule">Графік</string>
+    <string name="workday">Робочий день</string>
+    <string name="weekend">Вихідні</string>
+    <string name="entire_day">Цілий день</string>
+    <string name="block_type">Тип блокування</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#d1c8c8"><b>Відхилити</b></font>: <br>
+        &emsp; Те саме, що натискання кнопки відхилення. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Заглушити</b></font>: <br>
+        &emsp; Дзвінок буде звучати тихо на задньому плані, створюючи в абонента враження, що ви просто зайняті і не відповідаєте. <br>
+        <br>
+        - <font color="#d1c8c8"><b>Відповісти та повісити</b></font>: <font color="#ffa500"><b>(експериментально)</b></font><br>
+        &emsp; Щоб не бути переведеним на голосове повідомлення, поведінка може залежати від сусіднього оператора.
+        ]]>
+    </string>
+    <string name="stir">Атестація STIR</string>
+    <string name="stir_include_unverified">Включити непідтверджені</string>
+    <string name="unverified">Непідтверджений</string>
+    <string name="valid">Дійсне виклику</string>
+    <string name="spoof">Фальшивий виклик</string>
+    <string name="help_stir">
+        <![CDATA[
+            Атестація STIR вимагає <b>Android 11+</b> і <b>підтримки оператора</b>. <br>
+            <br>
+            Існує три можливих результати атестації: <br>
+            <font color="cyan"><b>Дійсне</b></font> <br>
+            &emsp; Виклик, швидше за все, дійсний, не підроблений. <br>
+            <font color="#ffa500"><b>Не підтверджено</b></font> <br>
+            &emsp; Виклик неможливо підтвердити або атестація STIR не підтримується. <br>
+            <font color="#fa7f71"><b>Підроблений</b></font> <br>
+            &emsp; Швидше за все, це фальшивий виклик. <br>
+            <br>
+            <br>
+              - <font color="#d1c8c8"><b>Інклюзивний</b></font>: <br>
+                  &emsp; Виклики, які не пройдуть цю перевірку, все одно перевірятимуться іншими правилами. <br>
+                  &emsp; Коли прапорець <b>«Включити непідтверджені»</b> встановлено, виклик також пройде, якщо він не підтверджений. <br>
+                  &emsp; <font color="#ea86ff"><b>Пріоритет: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Ексклюзивний</b></font>: <br>
+                  &emsp; Виклики, які не пройдуть цю перевірку, будуть <font color="#fa7f71"><b>заблоковані</b></font>. <br>
+                  &emsp; Коли прапорець <b>«Включити непідтверджені»</b> встановлено, виклик також буде заблоковано, якщо він не підтверджений. <br>
+                  &emsp; <font color="#ea86ff"><b>Пріоритет: 0</b></font>
+        ]]>
+    </string>
+</resources>

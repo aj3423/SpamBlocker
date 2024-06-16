@@ -27,15 +27,47 @@ var wg sync.WaitGroup
 
 var pool *ants.Pool
 
+var langs = []string{
+	`fr`, `ru`, `zh`, `de`, `es`, `ua`,
+	//  `ja`, `ko`, `vi`, `zh-rTW`,
+}
+
 func init() {
 	cwd, _ := os.Getwd()
 	RES_DIR = cwd + "/../app/src/main/res"
 
-	flag.StringVar(&lang_str, "lang", "", "all, or de,es,...")
+	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", langs))
 	flag.StringVar(&filter_str, "filter", "", "")
 
 	wg = sync.WaitGroup{}
 	pool, _ = ants.NewPool(3)
+}
+
+func check_param() []string {
+	if flag.CommandLine.Lookup("lang") == nil {
+		usage()
+		os.Exit(1)
+	}
+	if len(lang_str) == 0 {
+		panic("must specify language")
+	}
+	var languages []string
+	if lang_str == "all" {
+		languages = langs
+	} else {
+		languages = strings.Split(lang_str, ",")
+	}
+	for _, lang := range languages {
+		if !slices.Contains(langs, lang) {
+			panic("language " + lang + " not supported yet")
+		}
+	}
+	return languages
+}
+
+func usage() {
+
+	flag.Usage()
 }
 
 func check(e error) {
@@ -173,36 +205,12 @@ func translate_lang(lang string) {
 
 }
 
-var langs = []string{
-	`fr`, `ru`, `zh`, `de`, `es`,
-	//  `ja`, `ko`, `vi`, `zh-rTW`,
-}
-
-func usage() {
-	fmt.Println("usage:")
-	fmt.Println("go run . language [filter]")
-	fmt.Println("supported languages are:")
-	fmt.Println(langs)
-}
-
 func main() {
 	flag.Parse()
 
-	var languages []string
-	if lang_str == "all" {
-		languages = langs
-	} else {
-		languages = strings.Split(lang_str, ",")
-		if len(langs) == 0 {
-			usage()
-			return
-		}
-	}
+	languages := check_param()
 
 	for _, lang := range languages {
-		if !slices.Contains(langs, lang) {
-			panic("language " + lang + " not supported yet")
-		}
 		translate_lang(lang)
 	}
 	wg.Wait()

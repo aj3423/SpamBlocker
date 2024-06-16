@@ -1,0 +1,71 @@
+<resources>
+
+    <string name="crash_title">
+        На жаль, додаток вимкнувся.\n\nБудь ласка, скопіюйте вміст внизу і повідомте про цю помилку на github,
+        обов\'язково видаліть конфіденційну інформацію перед повідомленням.
+    </string>
+    <string-array name="week">
+        <item>Нед</item>
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Відхил</item>
+        <item>Без звуку</item>
+        <item>Відпов.+Кид</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Нема</item>
+        <item>Шторка</item>
+        <item>Рядок стану, Шторка</item>
+        <item>Звук, Рядок стану, Шторка</item>
+        <item>Звук, Рядок стану, Шторка, Пріоритет</item>
+    </string-array>
+    <string-array name="copy_as_list">
+        <item>Копіювати як Json</item>
+        <item>Копіювати як Стиснено</item>
+    </string-array>
+
+    <string name="language">Мова</string>
+    <string name="help_language">
+        <![CDATA[
+        Переклади зроблені штучним інтелектом Google, повідомте про додавання підтримки нової мови на github.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Увімкнути для Дзвінків</string>
+    <string name="enabled_for_sms">Увімкнути для СМС</string>
+    <string name="repeated_call">Повторний Дзвінок</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Дозволити, якщо дзвінок повторюється протягом певного періоду часу, швидше за все, це буде важливо, а не спам-дзвінок.<br>
+        <br>
+        Отримання текстового повідомлення з того ж номера також враховується, це залежить від того, чи надано дозвіл READ_SMS, який не є обов\'язковим.<br>
+        <br>
+        За замовчуванням установлено <font color="cyan"><b>1 / 5 Хв</b></font> означає, що буде дозволено другий дзвінок протягом 5 хвилин.<br>
+        <br>
+        Дійсно лише для дзвінків, <b>не</b> для текстових повідомлень.<br>
+        <br>
+        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Глобальний перемикач, цей додаток працює лише тоді, коли він увімкнутий,
+        вимкніть його, коли ви чекаєте певного дзвінка/повідомлення.<br>
+        <br>
+        Він також може бути увімкнений з <b>Панелі швидких налаштувань</b>.
+        ]]>
+    </string>
+
+    <string name="about">Про</string>
+    <string name="version">Версія</string>
+    <string name="build_time">Час зборки (UTC)</string>
+    <string name="source_code">Вихідний код</string>
+</resources>
