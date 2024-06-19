@@ -28,14 +28,14 @@ class CheckResult(
     val result: Int,
 ) {
     var byContactName: String? = null // allowed by contact
-    var byFilter: PatternRule? = null // allowed or blocked by this filter rule
+    var byRule: PatternRule? = null // allowed or blocked by this filter rule
     var byRecentApp: String? = null // allowed by recent app
     var stirResult: Int? = null
 
     // This `reason` will be saved to database
     fun reason(): String {
         if (byContactName != null) return byContactName!!
-        if (byFilter != null) return byFilter!!.id.toString()
+        if (byRule != null) return byRule!!.id.toString()
         if (byRecentApp != null) return byRecentApp!!
         if (stirResult != null) return stirResult.toString()
         return ""
@@ -246,14 +246,14 @@ class Checker { // for namespace only
     /*
         Check if a number rule matches the incoming number
      */
-    class Number(private val rawNumber: String, private val filter: PatternRule) : checker {
+    class Number(private val rawNumber: String, private val numberRule: PatternRule) : checker {
         override fun priority(): Int {
-            return filter.priority
+            return numberRule.priority
         }
 
         override fun check(): CheckResult? {
             // 1. check time schedule
-            val sch = Schedule.parseFromStr(filter.schedule)
+            val sch = Schedule.parseFromStr(numberRule.schedule)
             if (sch.enabled) {
                 val now = Time.currentTimeMillis()
                 if (!sch.satisfyTime(now)) {
@@ -262,14 +262,14 @@ class Checker { // for namespace only
             }
 
             // 2. check regex
-            val opts = Util.flagsToRegexOptions(filter.patternFlags)
-            if (filter.pattern.toRegex(opts).matches(Util.clearNumber(rawNumber))) {
-                val block = filter.isBlacklist
+            val opts = Util.flagsToRegexOptions(numberRule.patternFlags)
+            if (numberRule.pattern.toRegex(opts).matches(Util.clearNumber(rawNumber))) {
+                val block = numberRule.isBlacklist
                 return CheckResult(
                     block,
                     if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER
                 ).apply {
-                    byFilter = filter
+                    byRule = numberRule
                 }
             }
 
@@ -280,16 +280,14 @@ class Checker { // for namespace only
         Check if text message body matches the SMS Content rule,
         the number is also checked when "for particular number" is enabled
      */
-    class Content(private val rawNumber: String, private val messageBody: String, private val filter: PatternRule) : checker {
+    class Content(private val rawNumber: String, private val messageBody: String, private val smsRule: PatternRule) : checker {
         override fun priority(): Int {
-            return filter.priority
+            return smsRule.priority
         }
 
         override fun check(): CheckResult? {
-            val f = filter // for short
-
             // 1. check time schedule
-            val sch = Schedule.parseFromStr(filter.schedule)
+            val sch = Schedule.parseFromStr(smsRule.schedule)
             if (sch.enabled) {
                 val now = Time.currentTimeMillis()
                 if (!sch.satisfyTime(now)) {
@@ -298,27 +296,27 @@ class Checker { // for namespace only
             }
 
             // 2. check regex
-            val opts = Util.flagsToRegexOptions(filter.patternFlags)
-            val optsExtra = Util.flagsToRegexOptions(filter.patternExtraFlags)
+            val opts = Util.flagsToRegexOptions(smsRule.patternFlags)
+            val optsExtra = Util.flagsToRegexOptions(smsRule.patternExtraFlags)
 
-            val contentMatches = f.pattern.toRegex(opts).matches(messageBody)
-            val particularNumberMatches = f.patternExtra.toRegex(optsExtra).matches(Util.clearNumber(rawNumber))
+            val contentMatches = smsRule.pattern.toRegex(opts).matches(messageBody)
+            val particularNumberMatches = smsRule.patternExtra.toRegex(optsExtra).matches(Util.clearNumber(rawNumber))
 
-            val matches = if (filter.patternExtra != "") { // for particular number enabled
+            val matches = if (smsRule.patternExtra != "") { // for particular number enabled
                 contentMatches && particularNumberMatches
             } else {
                 contentMatches
             }
 
             if (matches) {
-                Log.d(Def.TAG, "filter matches: $f")
+                Log.d(Def.TAG, "filter matches: $smsRule")
 
-                val block = f.isBlacklist
+                val block = smsRule.isBlacklist
 
                 return CheckResult(
                     block,
                     if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT
-                ).apply { byFilter = f }
+                ).apply { byRule = smsRule }
             }
             return null
         }

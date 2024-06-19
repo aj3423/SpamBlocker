@@ -36,11 +36,11 @@
     </string>
     <string name="help_importance">
         <![CDATA[
-        None: No notification at all. <br>
-        Shade: The dropdown notification shade. <br>
-        StatusBar: The small icon in the top bar. <br>
-        Sound: The default notification sound. <br>
-        Heads-Up: Popup a floating window on the top of the screen.
+        <b>None</b>:<br>&emsp; No notification at all. <br>
+        <b>Shade</b>:<br>&emsp; The dropdown notification shade. <br>
+        <b>StatusBar</b>:<br>&emsp; The small icon in the top bar. <br>
+        <b>Sound</b>:<br>&emsp; The default notification sound. <br>
+        <b>Heads-Up</b>:<br>&emsp; Popup a floating window on the top of the screen.
         ]]>
     </string>
     <string name="help_test_rules">

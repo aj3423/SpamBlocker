@@ -84,31 +84,33 @@ class CallScreeningService : CallScreeningService() {
         }
     }
     private fun getBlockType(r: CheckResult): Int {
-        return if (r.byFilter != null) { // per rule setting
-            r.byFilter!!.blockType
+        return if (r.byRule != null) { // per rule setting
+            r.byRule!!.blockType
         } else { // global setting
             BlockType(this).getType()
         }
     }
 
     fun processCall(ctx: Context, rawNumber: String, callDetails: TelecomCall.Details? = null) : CheckResult {
+        // 0. check the number with all rules, get the result
         val r = Checker.checkCall(ctx, rawNumber, callDetails)
 
         // 1. log to db
-        val call = Record()
-        call.peer = rawNumber
-        call.time = System.currentTimeMillis()
-        call.result = r.result
-        call.reason = r.reason()
+        val call = Record().apply {
+            peer = rawNumber
+            time = System.currentTimeMillis()
+            result = r.result
+            reason = r.reason()
+        }
         val id = CallTable().addNewRecord(ctx, call)
 
-        // 2. block
+        // 2. show notification
         if (r.shouldBlock) {
 
             Log.d(Def.TAG, String.format("Reject call %s", rawNumber))
 
             val importance = if (r.result == Def.RESULT_BLOCKED_BY_NUMBER)
-                r.byFilter!!.importance
+                r.byRule!!.importance // use per rule notification type
             else
                 Def.DEF_SPAM_IMPORTANCE
 
@@ -124,7 +126,7 @@ class CallScreeningService : CallScreeningService() {
                 importance, ctx.resources.getColor(R.color.salmon, null), intent)
         }
 
-        // broadcast new call
+        // broadcast new call to update UI(add new item to call log)
         run {
             val intent = Intent(Def.ON_NEW_CALL)
             intent.putExtra("type", "call")

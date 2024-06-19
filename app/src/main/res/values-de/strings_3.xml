@@ -1,29 +1,27 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        Diese Regeln gelten für den Inhalt der SMS-Nachricht.<br>
+        Diese Regeln gelten für den Inhalt von SMS-Nachrichten.<br>
         <br>
-        <font color="#ffa500"><b>Hinweis</b></font>: Bei SMS-Nachrichten funktioniert diese App als \"Add-on\" der Standard-SMS-App, sie blockiert Benachrichtigungen anstelle
-          Nachrichten zu blockieren. Spam-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden. <font color="#fa7f71"><b>Deaktiviere</b></font> die Benachrichtigung der Standard-
-          SMS-App in den Systemeinstellungen. Lass diese App die Benachrichtigung übernehmen, andernfalls gibt es doppelte Benachrichtigungen. <br>
+        <font color="#ffa500"><b>Hinweis</b></font>: Bei SMS-Nachrichten fungiert diese App als \"Add-on\" für die Standard-SMS-App. Sie blockiert Benachrichtigungen, anstatt Nachrichten zu blockieren. Spam-Nachrichten werden weiterhin in der Standard-SMS-App angezeigt. <font color="#fa7f71"><b>Deaktivieren Sie</b></font> die Benachrichtigung der Standard-SMS-App in den Systemeinstellungen und lassen Sie diese App die Benachrichtigung übernehmen. Andernfalls werden doppelte Benachrichtigungen angezeigt. <br>
         <br>
-        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
+        Die Liste wird in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster <b>angezeigt</b>. <br>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Eine Schnellmethode zum Kopieren von Inhalt aus SMS-Nachrichten, wie z. B. Bestätigungscodes. <br>
+        Eine schnelle Möglichkeit, Inhalt aus SMS-Nachrichten zu kopieren, z. B. Bestätigungscodes. <br>
         <br>
-        Wenn es übereinstimmt, wird eine Schaltfläche wie <font color="yellow"><b>Kopieren: 123456</b></font> in der Benachrichtigung angezeigt. <br>
-        Es ist nicht wie das Anklicken der Benachrichtigung. Wenn auf die Kopierfunktion geklickt wird, wird nur diese Benachrichtigung geschlossen, andere Benachrichtigungen bleiben erhalten. <br>
+        Wenn eine Übereinstimmung vorliegt, wird in der Benachrichtigung eine Schaltfläche wie <font color="yellow"><b>Kopieren: 123456</b></font> angezeigt. <br>
+        Dies ist nicht wie das Klicken auf die Benachrichtigung. Wenn auf die Kopier-Schaltfläche geklickt wird, wird nur diese Benachrichtigung gelöscht, während andere Benachrichtigungen erhalten bleiben. <br>
         <br>
-        Eine Beispielregel: (Verwenden einer Erfassungsgruppe) <br>
+        Eine Beispielregel: (unter Verwendung einer Erfassungsgruppe) <br>
         &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        Ein anderer Ansatz: (Verwenden von Lookaround) <br>
+        Ein anderer Ansatz: (unter Verwendung von Lookaround) <br>
         &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
         &emsp;<font color="#ffa500"><b>Hinweis</b></font>: <br>
-        &emsp; Es unterstützt <font color="#fa7f71"><b>.*</b></font> in Lookarounds nicht, es erfordert eine begrenzte maximale Länge.<br>
-        &emsp; Verwende beispielsweise: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; In Lookarounds wird <font color="#fa7f71"><b>.*</b></font> nicht unterstützt. Es erfordert eine begrenzte maximale Länge.<br>
+        &emsp; verwenden Sie beispielsweise: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
         &emsp; anstelle von: <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
         <br>
         Es funktioniert nur, wenn die SMS-Nachricht <b>NICHT</b> <font color="#fa7f71"><b>blockiert</b></font> ist.
@@ -31,32 +29,32 @@
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        Deaktiviere diese Kontrollkästchen, um diese Regel für Anruf, SMS oder beides zu deaktivieren.
+        Deaktivieren Sie diese Kontrollkästchen, um diese Regel für Anrufe, SMS oder beides zu deaktivieren.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        Keine: Überhaupt keine Benachrichtigung. <br>
-        Schatten: Die Dropdown-Benachrichtigungsschirm. <br>
-        Statusleiste: Das kleine Symbol in der oberen Leiste. <br>
-        Ton: Der Standard-Benachrichtigungston. <br>
-        Heads-Up: Öffne ein schwebendes Fenster oben auf dem Bildschirm.
+        <b>Keine</b>:<br>&emsp; Überhaupt keine Benachrichtigung. <br>
+        <b>Schatten</b>:<br>&emsp; Die Dropdown-Benachrichtigungsleiste. <br>
+        <b>Statusleiste</b>:<br>&emsp; Das kleine Symbol in der oberen Leiste. <br>
+        <b>Ton</b>:<br>&emsp; Der Standard-Benachrichtigungston. <br>
+        <b>Heads-Up</b>:<br>&emsp; Zeigt ein schwebendes Fenster oben auf dem Bildschirm an.
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
-        Dadurch kann überprüft werden, ob die Regeln wie erwartet eingestellt sind.<br>
+        Dies hilft zu überprüfen, ob die Regeln wie erwartet festgelegt wurden.<br>
         <br>
-        Es handelt sich nur um eine Simulation und es wird kein eingehender Anruf (oder keine Textnachricht) angezeigt.<br>
+        Es ist nur eine Simulation und es wird kein eingehender Anruf (oder keine Textnachricht) tatsächlich angezeigt.<br>
         <br>
-        Die Resultate werden hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
+        Das Ergebnis wird hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
         ]]>
     </string>
     <string name="help_test_quick_copy">
         <![CDATA[
-        Dies ist keine Simulation. Es zeigt nur an, ob eine Schnellkopierrege mit dem Inhalt übereinstimmt.<br>
+        Dies ist keine Simulation. Es wird nur angezeigt, ob eine Regel zum schnellen Kopieren mit dem Inhalt übereinstimmt.<br>
         <br>
-        Um den Empfang zu simulieren, verwende stattdessen die <font color="cyan"><b>Test</b></font>-Funktion von <font color="#0000ff"><b>Nachrichtenregeln</b></font>.
+        Um den Empfang zu simulieren, verwenden Sie stattdessen <font color="cyan"><b>Test</b></font> unter <font color="#0000ff"><b>Nachrichtenregeln</b></font>.
         ]]>
     </string>
 

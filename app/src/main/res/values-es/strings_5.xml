@@ -2,15 +2,15 @@
     <string name="allow_repeated_call">Llamada repetida</string>
     <string name="dialed">Marcado</string>
     <string name="dark_theme">Tema oscuro</string>
-    <string name="find_apps">Buscar apps</string>
-    <string name="spam_sms_blocked">SMS bloqueado</string>
+    <string name="find_apps">Buscar aplicaciones</string>
+    <string name="spam_sms_blocked">Mensaje de SMS bloqueado</string>
     <string name="spam_call_blocked">Llamada bloqueada</string>
-    <string name="new_sms_received">Nuevo SMS recibido</string>
+    <string name="new_sms_received">Mensaje de SMS nuevo</string>
     <string name="mark_all_as_read">Marcar todo como leído</string>
-    <string name="delete_all">Borrar todo</string>
-    <string name="show_passed">Mostrar aprobados</string>
+    <string name="delete_all">Eliminar todo</string>
+    <string name="show_passed">Mostrar pasados</string>
     <string name="show_blocked">Mostrar bloqueados</string>
-    <string name="clone_rule">Duplicar regla</string>
+    <string name="clone_rule">Clonar regla</string>
     <string name="notification">Notificación</string>
     <string name="type">Tipo</string>
     <string name="time">Hora</string>
@@ -18,60 +18,60 @@
     <string name="day">Día</string>
     <string name="days">Días</string>
     <string name="min">Min</string>
-    <string name="within_minutes">En minutos</string>
-    <string name="within_days">En días</string>
+    <string name="within_minutes">Dentro de minutos</string>
+    <string name="within_days">Dentro de días</string>
     <string name="phone_number">Número de teléfono</string>
-    <string name="sms_content">Contenido SMS</string>
+    <string name="sms_content">Contenido de SMS</string>
     <string name="result">Resultado</string>
-    <string name="reason">Motivo</string>
-    <string name="regex_flags">Marcas de Expresión regular</string>
-    <string name="ignore_case">Ignorar mayúsculas/minúsculas</string>
-    <string name="dot_match_all">Punto para coincidir todo</string>
+    <string name="reason">Razón</string>
+    <string name="regex_flags">Marcadores Regex</string>
+    <string name="ignore_case">Ignorar mayúsculas y minúsculas</string>
+    <string name="dot_match_all">Punto para coincidir con todo</string>
     <string name="literal">Literal</string>
-    <string name="off_time">Tiempo de apagado</string>
-    <string name="schedule">Horario</string>
-    <string name="workday">Día laboral</string>
+    <string name="off_time">Hora de apagado</string>
+    <string name="schedule">Programa</string>
+    <string name="workday">Día laborable</string>
     <string name="weekend">Fin de semana</string>
-    <string name="entire_day">Día completo</string>
+    <string name="entire_day">Todo el día</string>
     <string name="block_type">Tipo de bloqueo</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Rechazar</b></font>: <br>
-        &emsp; Igual que presionar el botón de rechazar. <br>
+        &emsp; Lo mismo que presionar el botón de rechazo. Funciona completamente en silencio, la pantalla de bloqueo no se encenderá, es el tipo recomendado para aquellos que no usan el buzón de voz.<br>
         <br>
         - <font color="#d1c8c8"><b>Silenciar</b></font>: <br>
-        &emsp; Sonará silenciosamente en segundo plano, dando la impresión a la persona que llama de que estás ocupado y no lo has respondido. <br>
+        &emsp; Sonará en silencio en segundo plano, dando la impresión a la persona que llama de que está ocupado y no lo ha contestado. <br>
         <br>
-        - <font color="#d1c8c8"><b>Contestar y colgar</b></font>: <font color="#ffa500"><b>(experimental)</b></font><br>
-        &emsp; Para evitar que se envíe al buzón de voz, el comportamiento puede depender del operador de telefonía.
+        - <font color="#d1c8c8"><b>Responder y colgar</b></font>: <font color="#ffa500"><b>(experimental)</b></font><br>
+        &emsp; Para evitar que se envíe al buzón de voz, el comportamiento puede depender del operador. La pantalla de bloqueo se puede encender por un corto tiempo, también puede escuchar un tono de fin de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).<br>
         ]]>
     </string>
-    <string name="stir">Certificación STIR</string>
+    <string name="stir">Atestación STIR</string>
     <string name="stir_include_unverified">Incluir no verificado</string>
     <string name="unverified">No verificado</string>
     <string name="valid">Llamada válida</string>
     <string name="spoof">Llamada falsa</string>
     <string name="help_stir">
         <![CDATA[
-            La certificación STIR requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
+            La atestación STIR requiere <b>Android 11+</b> y <b>compatibilidad con el operador</b>. <br>
             <br>
-            Hay tres posibles resultados de certificación: <br>
+            Hay tres posibles resultados de atestación: <br>
             <font color="cyan"><b>Válido</b></font> <br>
-            &emsp; Es muy probable que la llamada sea válida, no falsa. <br>
+            &emsp; Es muy probable que la llamada sea válida, no falsificada. <br>
             <font color="#ffa500"><b>No verificado</b></font> <br>
-            &emsp; No se puede validar la llamada o no se admite la certificación STIR. <br>
+            &emsp; No se puede validar la llamada o no se admite la atestación STIR. <br>
             <font color="#fa7f71"><b>Falsa</b></font> <br>
             &emsp; Es muy probable que sea una llamada falsa. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no pasen esta comprobación se seguirán comprobando con otras reglas. <br>
-                  &emsp; Si se marca "<b>Incluir no verificado</b>", una llamada también se aprobará si no está verificada. <br>
+                  &emsp; Las llamadas que no pasen esta verificación seguirán siendo verificadas por otras reglas. <br>
+                  &emsp; Cuando \"<b>Incluir no verificado</b>\" está marcado, una llamada también pasaría si no está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no pasen esta comprobación se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
-                  &emsp; Si se marca "<b>Incluir no verificado</b>", una llamada también se bloqueará si no está verificada. <br>
+                  &emsp; Las llamadas que no pasen esta verificación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
+                  &emsp; Cuando \"<b>Incluir no verificado</b>\" está marcado, una llamada también se bloquearía si no está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
         ]]>
     </string>

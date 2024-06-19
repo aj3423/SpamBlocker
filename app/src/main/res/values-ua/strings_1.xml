@@ -13,7 +13,6 @@
     <string name="pattern_contain_leading_plus">Не потрібно додавати початкові "+", вони будуть видалені перед перевіркою.</string>
     <string name="check_balloon_for_explanation">Детальніше див. у розділі довідки "Правила номерів".</string>
     <string name="invalid_number">Невірний номер</string>
-    <string name="invalid_integer">Невірне ціле число</string>
     <string name="filter_desc">Опис</string>
     <string name="apply_to_call">Застосувати до викликів</string>
     <string name="apply_to_sms">Застосувати до SMS</string>

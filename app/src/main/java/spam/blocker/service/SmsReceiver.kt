@@ -14,7 +14,6 @@ import spam.blocker.def.Def
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.Global
-import spam.blocker.util.Util
 
 class SmsReceiver : BroadcastReceiver() {
 
@@ -56,7 +55,7 @@ class SmsReceiver : BroadcastReceiver() {
             var importance = NotificationManager.IMPORTANCE_LOW // default: LOW
 
             if (r.result == Def.RESULT_BLOCKED_BY_NUMBER || r.result == Def.RESULT_BLOCKED_BY_CONTENT) {
-                importance = r.byFilter!!.importance
+                importance = r.byRule!!.importance // use per rule notification type
             }
 
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {

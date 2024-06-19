@@ -1,13 +1,13 @@
 <resources>
-    <string name="allow_repeated_call">呼叫多次</string>
+    <string name="allow_repeated_call">重复来电</string>
     <string name="dialed">已拨</string>
-    <string name="dark_theme">暗黑主题</string>
+    <string name="dark_theme">深色模式</string>
     <string name="find_apps">查找应用</string>
     <string name="spam_sms_blocked">短信已拦截</string>
-    <string name="spam_call_blocked">呼叫已拦截</string>
+    <string name="spam_call_blocked">电话已拦截</string>
     <string name="new_sms_received">收到新短信</string>
     <string name="mark_all_as_read">全部标记为已读</string>
-    <string name="delete_all">全部删除</string>
+    <string name="delete_all">删除所有</string>
     <string name="show_passed">显示放行</string>
     <string name="show_blocked">显示拦截</string>
     <string name="clone_rule">复制规则</string>
@@ -24,55 +24,55 @@
     <string name="sms_content">短信内容</string>
     <string name="result">结果</string>
     <string name="reason">原因</string>
-    <string name="regex_flags">正则表达式标志</string>
+    <string name="regex_flags">正则标志</string>
     <string name="ignore_case">忽略大小写</string>
     <string name="dot_match_all">点号匹配所有</string>
-    <string name="literal">直译</string>
+    <string name="literal">逐字匹配</string>
     <string name="off_time">关闭时间</string>
     <string name="schedule">计划</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
-    <string name="entire_day">全天</string>
+    <string name="entire_day">整天</string>
     <string name="block_type">拦截类型</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>拒绝</b></font>: <br>
-        &emsp; 与点击拒绝通话按钮相同。 <br>
+        &emsp; 与按拒绝按钮相同。完全静默运行，锁屏不会亮起，是不用语音信箱的人员的推荐拦截类型。<br>
         <br>
         - <font color="#d1c8c8"><b>静音</b></font>: <br>
-        &emsp; 它会在后台静音响铃，给呼叫者留下您很忙、没有接听的印象。 <br>
+        &emsp; 电话在后台静音响起，让来电者感觉你只是很忙，没有接听电话。<br>
         <br>
         - <font color="#d1c8c8"><b>接听并挂断</b></font>: <font color="#ffa500"><b>（实验性）</b></font><br>
-        &emsp; 为避免发送到语音信箱，具体行为可能取决于运营商。
+        &emsp; 为了避免转到语音信箱，行为可能取决于运营商。锁屏可在短时间内亮起，你可能会听到通话结束音（部分手机提供静音此声音的选项）。<br>
         ]]>
     </string>
     <string name="stir">STIR 认证</string>
-    <string name="stir_include_unverified">包括未验证</string>
+    <string name="stir_include_unverified">包含未验证号码</string>
     <string name="unverified">未验证</string>
-    <string name="valid">有效来电</string>
-    <string name="spoof">欺诈来电</string>
+    <string name="valid">有效电话</string>
+    <string name="spoof">欺诈电话</string>
     <string name="help_stir">
         <![CDATA[
-            STIR 认证需要 <b>安卓 11+</b> 和 <b>运营商支持</b>。 <br>
+            STIR 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
             <br>
-            有三项可能的认证结果：<br>
+            认证共有 3 种可能结果： <br>
             <font color="cyan"><b>有效</b></font> <br>
-            &emsp; 这个来电极有可能是有效的，而非欺诈。 <br>
+            &emsp; 电话很可能是有效的，不是欺诈电话。 <br>
             <font color="#ffa500"><b>未验证</b></font> <br>
-            &emsp; 无法验证此来电，或不支持 STIR 认证。 <br>
+            &emsp; 电话无法验证，或不支持 STIR 认证。 <br>
             <font color="#fa7f71"><b>欺诈</b></font> <br>
-            &emsp; 极有可能是欺诈来电。 <br>
+            &emsp; 极有可能是欺诈电话。 <br>
             <br>
             <br>
-            - <font color="#d1c8c8"><b>包含</b></font>: <br>
-                &emsp; 未通过此项检查的来电仍可通过其他规则检查。 <br>
-                &emsp; 当选中“<b>包括未验证</b>”时，如果来电未验证，它也可以通过。 <br>
-                &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
-            <br>
-            - <font color="#fa7f71"><b>排除</b></font>: <br>
-                &emsp; 未通过此项检查的来电将被<font color="#fa7f71"><b>拦截</b></font>。 <br>
-                &emsp; 当选中“<b>包括未验证</b>”时，如果来电未验证，它也将被拦截。 <br>
-                &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
+              - <font color="#d1c8c8"><b>包含</b></font>: <br>
+                  &emsp; 未通过该检查的电话仍会通过其他规则进行检查。<br>
+                  &emsp; 选中“<b>包含未验证号码</b>”后，即使来电未验证，也视为通过。<br>
+                  &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>排除</b></font>: <br>
+                  &emsp; 未通过该检查的电话将被 <font color="#fa7f71"><b>拦截</b></font>。<br>
+                  &emsp; 选中“<b>包含未验证号码</b>”后，未验证时电话也将被拦截。<br>
+                  &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
 </resources>

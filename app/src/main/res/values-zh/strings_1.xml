@@ -13,7 +13,6 @@
     <string name="pattern_contain_leading_plus">无需以"+"开头，会在检查前去除</string>
     <string name="check_balloon_for_explanation">点击"号码规则"获得详细解释</string>
     <string name="invalid_number">非法号码</string>
-    <string name="invalid_integer">非法整数</string>
     <string name="filter_desc">描述</string>
     <string name="apply_to_call">应用到电话</string>
     <string name="apply_to_sms">应用到短信</string>

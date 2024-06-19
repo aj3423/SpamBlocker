@@ -37,13 +37,13 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Reject</b></font>: <br>
-        &emsp; Same as pressing the decline button. <br>
+        &emsp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on, it\'s the recommended type for those who don\'t use voicemail.<br>
         <br>
         - <font color="#d1c8c8"><b>Silence</b></font>: <br>
         &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>
         <br>
         - <font color="#d1c8c8"><b>Answer and Hang Up</b></font>: <font color="#ffa500"><b>(experimental)</b></font><br>
-        &emsp; To avoid being sent to the voicemail, the behavior may depend on peer carrier.
+        &emsp; To avoid being sent to the voicemail, the behavior may depend on the carrier. The lockscreen can be turned on for a short while, you might also hear a call end tone(some phones offer an option to mute this sound).<br>
         ]]>
     </string>
     <string name="stir">STIR Attestation</string>

@@ -44,10 +44,6 @@ func init() {
 }
 
 func check_param() []string {
-	if flag.CommandLine.Lookup("lang") == nil {
-		usage()
-		os.Exit(1)
-	}
 	if len(lang_str) == 0 {
 		panic("must specify language")
 	}
@@ -190,7 +186,7 @@ func translate_lang(lang string) {
 						color.HiWhite("retry %s", color.HiYellowString(fi.Name()))
 					}
 					if err == nil {
-						color.HiWhite("done %s", color.HiGreenString(fi.Name()))
+						color.HiWhite("done %s %s", lang, color.HiGreenString(fi.Name()))
 					}
 					return err
 				})

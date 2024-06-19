@@ -2,6 +2,7 @@ package spam.blocker.ui.setting
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,6 +69,7 @@ class PopupEditRuleFragment(
         val radio_blackwhitelist = view.findViewById<RadioGroup>(R.id.popup_radio_blackwhitelist)
         val radio_whitelist = view.findViewById<RadioButton>(R.id.popup_radio_whitelist)
         val radio_blacklist = view.findViewById<RadioButton>(R.id.popup_radio_blacklist)
+        val container_priority = view.findViewById<TextInputLayout>(R.id.container_priority)
         val edit_priority = view.findViewById<TextInputEditText>(R.id.edit_priority)
         val row_type = view.findViewById<LinearLayout>(R.id.row_rule_type)
         val row_importance = view.findViewById<LinearLayout>(R.id.row_importance)
@@ -100,17 +102,30 @@ class PopupEditRuleFragment(
             else -> R.string.quick_copy
         })
 
-        fun showHelpOnError(container: TextInputLayout, edit: TextInputEditText) {
+        fun showHelpOnError(container: TextInputLayout, edit: TextInputEditText, validator: (String) -> String?) {
             edit.addTextChangedListener {// validate regex
-                container.helperText = Util.validateRegex(ctx, it.toString())
+                container.helperText = validator(it.toString())
+            }
+        }
+        fun showHelpOnInvalidRegex(container: TextInputLayout, edit: TextInputEditText) {
+            showHelpOnError(container, edit) {
+                Util.validateRegex(ctx, it)
+            }
+        }
+        fun showHelpOnInvalidNumber(container: TextInputLayout, edit: TextInputEditText) {
+            showHelpOnError(container, edit) {
+                if (Util.isInt(it))
+                    null
+                else
+                    ctx.getString(R.string.invalid_number)
             }
         }
 
-        showHelpOnError(container_pattern, edit_pattern)
+        showHelpOnInvalidRegex(container_pattern, edit_pattern)
         edit_pattern.setText(init.pattern)
 
         if (forType == Def.ForSms) {
-            showHelpOnError(container_pattern_particular, edit_pattern_particular)
+            showHelpOnInvalidRegex(container_pattern_particular, edit_pattern_particular)
             setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
             MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern_particular, edit_pattern_particular, initPatternExtraFlags)
             switch_for_particular_number.setOnClickListener{
@@ -129,6 +144,7 @@ class PopupEditRuleFragment(
 
         edit_desc.setText(init.description)
         edit_priority.setText(init.priority.toString())
+        showHelpOnInvalidNumber(container_priority, edit_priority)
 
         // ForCall / ForSMS
         setupImageTooltip(ctx, viewLifecycleOwner, help_apply_to, R.string.help_apply_to)
@@ -235,31 +251,40 @@ class PopupEditRuleFragment(
 
         // Save Button
         btn_save.setOnClickListener {
-            init.pattern = edit_pattern.text.toString()
-            if(switch_for_particular_number.isChecked && edit_pattern_particular.text.toString() != "") {
-                init.patternExtra = edit_pattern_particular.text.toString()
+            val pattern = edit_pattern.text.toString()
+            val patternExtra = if(
+                switch_for_particular_number.isChecked
+                && edit_pattern_particular.text.toString() != "" )
+            {
+                edit_pattern_particular.text.toString()
             } else {
-                init.patternExtra = ""
+                ""
             }
-            init.description = edit_desc.text.toString()
-            init.priority = Integer.parseInt(edit_priority.text.toString())
-            init.setForCall(chk_for_call.isChecked)
-            init.setForSms(chk_for_sms.isChecked)
-            init.patternFlags = Flag(initPatternFlags.value)
-            init.patternExtraFlags = Flag(initPatternExtraFlags.value)
-            if (radio_blacklist.isChecked) {
-                init.isBlacklist = true
-            }
-            if (radio_whitelist.isChecked) {
-                init.isBlacklist = false
-            }
-            init.importance = selectedImportance
-            init.blockType = selectedBlockType
-            init.schedule = schedule.serializeToStr()
+            val priority = edit_priority.text.toString()
 
-            val err1 = Util.validateRegex(ctx, init.pattern)
-            val err2 = Util.validateRegex(ctx, init.patternExtra)
-            if (err1 == null && err2 == null) {
+            val err1 = Util.validateRegex(ctx, pattern)
+            val err2 = Util.validateRegex(ctx, patternExtra)
+            val err3 = !Util.isInt(priority)
+
+            if (err1 == null && err2 == null && !err3) {
+                init.pattern = pattern
+                init.patternExtra = patternExtra
+                init.description = edit_desc.text.toString()
+                init.priority = Integer.parseInt(priority)
+                init.setForCall(chk_for_call.isChecked)
+                init.setForSms(chk_for_sms.isChecked)
+                init.patternFlags = Flag(initPatternFlags.value)
+                init.patternExtraFlags = Flag(initPatternExtraFlags.value)
+                if (radio_blacklist.isChecked) {
+                    init.isBlacklist = true
+                }
+                if (radio_whitelist.isChecked) {
+                    init.isBlacklist = false
+                }
+                init.importance = selectedImportance
+                init.blockType = selectedBlockType
+                init.schedule = schedule.serializeToStr()
+
                 close()
                 handleSave(init)
             }

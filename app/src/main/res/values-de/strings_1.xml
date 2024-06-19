@@ -13,7 +13,6 @@
     <string name="pattern_contain_leading_plus">Führendes "+" nicht nötig, es wird vor Prüfung entfernt.</string>
     <string name="check_balloon_for_explanation">Hilfe unter "Nummer-Regeln" für ausführliche Erklärung</string>
     <string name="invalid_number">Ungültige Nummer</string>
-    <string name="invalid_integer">Ungültige Ganzzahl</string>
     <string name="filter_desc">Beschreibung</string>
     <string name="apply_to_call">Auf Anrufe anwenden</string>
     <string name="apply_to_sms">Auf SMS anwenden</string>

@@ -13,7 +13,6 @@
     <string name="pattern_contain_leading_plus">Pas besoin d\'ajouter le "+" initial, ils seront supprimés avant vérification.</string>
     <string name="check_balloon_for_explanation">Vérifiez l\'aide des "Règles de numéro" pour une explication détaillée.</string>
     <string name="invalid_number">Numéro invalide</string>
-    <string name="invalid_integer">Nombre entier invalide</string>
     <string name="filter_desc">Description</string>
     <string name="apply_to_call">Appliquer à l\'appel</string>
     <string name="apply_to_sms">Appliquer au SMS</string>

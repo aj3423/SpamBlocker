@@ -1,60 +1,60 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        Ces règles s\'appliquent au contenu des messages SMS.<br>
+        Ces règles s\'appliquent au contenu des SMS.<br>
         <br>
-        <font color="#ffa500"><b>Remarque</b></font> : pour les messages SMS, cette application fonctionne comme un « module complémentaire » de l\'application SMS par défaut, elle bloque les notifications au lieu de bloquer les messages, les messages indésirables seront toujours présents dans l\'application SMS par défaut. <font color="#fa7f71"><b>Désactivez</b></font> la notification de l\'application SMS par défaut dans les paramètres système, laissez cette application prendre en charge la notification, sinon il y aura des notifications en double. <br>
+        <font color="#ffa500"><b>Note</b></font>: pour les SMS, cette app fonctionne comme \"extension\" de l\'app SMS par défaut, elle bloque les notifications au lieu de bloquer les messages, les spams seront toujours présents dans l\'app SMS par défaut. <font color="#fa7f71"><b>Désactivez</b></font> la notification de l\'app SMS par défaut dans les paramètres système, autorisez cette app à gérer la notification, sinon des doubles notifications s\'afficheront.<br>
         <br>
-        La liste est <b>affichée</b> dans l\'ordre décroissant de priorité, de description ascendante et de modèle ascendant. <br>
+        La liste est <b>affichée</b> avec la priorité en ordre décroissant, la description en ordre croissant et le modèle en ordre croissant. <br>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Un moyen rapide de copier le contenu des messages SMS, tels que les codes de vérification. <br>
+        Un moyen rapide de copier le contenu des SMS, comme les codes de vérification. <br>
         <br>
-        Lorsqu\'il correspond, un bouton comme <font color="yellow"><b>Copier : 123456</b></font> apparaît dans la notification. <br>
-        Ce n\'est pas comme cliquer sur la notification, lorsque le bouton de copie est cliqué, seule cette notification est ignorée, les autres notifications restent. <br>
+        Lors de la mise en correspondance, un bouton comme <font color="yellow"><b>Copier : 123456</b></font> apparaît dans la notification. <br>
+        Ce n\'est pas comme cliquer sur la notification. Lorsque vous cliquez sur le bouton Copier, seule cette notification est ignorée. Les autres notifications restent. <br>
         <br>
-        Un exemple de règle : (en utilisant le groupe de capture)<br>
+        Un exemple de règle : (à l\'aide d\'un groupe de capture) <br>
         &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        Une autre approche : (en utilisant le regard autour)<br>
+        Une autre approche : (à l\'aide de la recherche) <br>
         &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
-        &emsp;<font color="#ffa500"><b>Remarque</b></font> :<br>
-        &emsp; Il ne prend pas en charge <font color="#fa7f71"><b>.*</b></font> dans les regards autour, il nécessite une longueur maximale limitée.<br>
-        &emsp; par exemple, utilisez : <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
-        &emsp; au lieu de : <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
+        &emsp;<font color="#ffa500"><b>Note</b></font>: <br>
+        &emsp; Elle ne prend pas en charge <font color="#fa7f71"><b>.*</b></font> dans les recherches. Une longueur max délimitée est requise.<br>
+        &emsp; Par exemple, utilisez : <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
+        &emsp; au lieu de : <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
         <br>
-        Cela ne fonctionne que lorsque le message SMS n\'est <b>PAS</b> <font color="#fa7f71"><b>bloqué</b></font>.
+        Elle fonctionne uniquement lorsque le SMS <b>N\'EST PAS</b> <font color="#fa7f71"><b>bloqué</b></font>.
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        Décochez ces cases pour désactiver cette règle pour les appels, les SMS ou les deux.
+        Décochez ces cases pour désactiver cette règle pour l\'appel, les SMS ou les deux.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        Aucun : aucune notification. <br>
-        Volet : la zone de notification déroulante. <br>
-        Barre d\'état : la petite icône dans la barre du haut. <br>
-        Son : le son de notification par défaut. <br>
-        Tête haute : faites apparaître une fenêtre flottante en haut de l\'écran.
+        <b>Aucune</b> :<br>&emsp; Aucune notification. <br>
+        <b>Ombrage</b> :<br>&emsp; Zone de notification déroulante. <br>
+        <b>Barre d\'état</b> :<br>&emsp; Petite icône dans la barre supérieure. <br>
+        <b>Son</b> :<br>&emsp; Son de notification par défaut. <br>
+        <b>Heads-Up</b> :<br>&emsp; Affiche une fenêtre flottante sur le haut de l\'écran.
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
         Cela permet de vérifier si les règles sont définies comme prévu.<br>
         <br>
-        Il ne s\'agit que d\'une simulation et ne fera pas réellement apparaître un appel entrant (ou un message texte).<br>
+        C\'est juste une simulation et n\'affichera pas réellement un appel entrant (ou un SMS).<br>
         <br>
-        Le résultat est affiché ici, et dans l\'historique, avec la notification.
+        Le résultat est affiché ici et dans l\'historique avec une notification.
         ]]>
     </string>
     <string name="help_test_quick_copy">
         <![CDATA[
-        Ce n\'est pas une simulation, il montre uniquement si une règle de copie rapide correspond au contenu.<br>
+        Ce n\'est pas une simulation, elle affiche uniquement si une règle de copie rapide correspond au contenu.<br>
         <br>
-        Pour simuler la réception, utilisez <font color="cyan"><b>Tester</b></font> depuis <font color="#0000ff"><b>Règles de message</b></font> à la place.
+        Pour simuler la réception, utilisez <font color="cyan"><b>Tester</b></font> dans <font color="#0000ff"><b>Règles des messages</b></font> à la place.
         ]]>
     </string>
 
