@@ -18,8 +18,8 @@ import spam.blocker.service.Checker
 import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
+import spam.blocker.util.AppInfo
 import spam.blocker.util.ClosableDialogFragment
-import spam.blocker.util.Util
 
 class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
     companion object {
@@ -94,7 +94,7 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
                 label_result.text = Checker.resultStr(ctx, r.result, r.reason())
                 if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
                     img_reason.visibility = View.VISIBLE
-                    img_reason.setImageDrawable(Util.getAppsMap(ctx)[r.reason()]?.icon)
+                    img_reason.setImageDrawable(AppInfo.fromPackage(ctx, r.reason()).icon)
                 }
 
             } else {

@@ -49,7 +49,7 @@ class SmsReceiver : BroadcastReceiver() {
         rec.reason = r.reason()
         val id = SmsTable().addNewRecord(ctx, rec)
 
-        val showName = Contacts.findByRawNumberAuto(ctx, rawNumber)?.name ?: rawNumber
+        val showName = Contacts.findByRawNumber(ctx, rawNumber)?.name ?: rawNumber
 
         if (r.shouldBlock) {
             var importance = NotificationManager.IMPORTANCE_LOW // default: LOW

@@ -1,23 +1,20 @@
 package spam.blocker.util
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import spam.blocker.R
 import spam.blocker.def.Def
-import java.io.BufferedReader
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import java.util.zip.GZIPInputStream
-import java.util.zip.GZIPOutputStream
 
 class Util {
     companion object {
@@ -180,57 +177,38 @@ class Util {
         fun listApps(ctx: Context): List<AppInfo> {
             synchronized(lock_1) {
                 if (cacheAppList == null) {
-                    val packageManager = ctx.packageManager
+                    val pm = ctx.packageManager
 
-                    cacheAppList = packageManager.getInstalledApplications(
-                        PackageManager.MATCH_DISABLED_COMPONENTS or
-                                PackageManager.MATCH_UNINSTALLED_PACKAGES or
-                                PackageManager.GET_META_DATA
-                    ).filter { appInfo ->
-                        (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
+                    val packageInfos = getPackagesHoldingPermissions(pm, arrayOf(Manifest.permission.INTERNET))
+
+                    cacheAppList = packageInfos.filter {
+                        (it.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
                     }.map {
-                        val ret = AppInfo()
-                        ret.pkgName = it.packageName
-                        ret.label = packageManager.getApplicationLabel(it).toString()
-                        try {
-                            ret.icon = packageManager.getApplicationIcon(it)
-                        } catch (e: PackageManager.NameNotFoundException) {
-                            ret.icon = ctx.getDrawable(R.drawable.ic_unknown_app_icon)!!
+                        val appInfo = it.applicationInfo
+
+                        AppInfo().apply {
+                            pkgName = it.packageName
+                            label = appInfo.loadLabel(pm).toString()
+                            icon = appInfo.loadIcon(pm)
                         }
-                        ret
                     }
                 }
             }
 
             return cacheAppList!!
         }
-
-        private var cacheAppMap : Map<String, AppInfo>? = null
-        private val lock_2 = Any()
-        fun getAppsMap(ctx: Context): Map<String, AppInfo> {
-            synchronized(lock_2) {
-                if (cacheAppMap == null) {
-                    cacheAppMap = listApps(ctx).associateBy { it.pkgName }
-                }
+        fun clearAppsCache() {
+            synchronized(lock_1) {
+                cacheAppList = null
             }
-
-            return cacheAppMap!!
         }
-
-
-
-//        fun splitCcPhone(str: String): Pair<String, String>? {
-//            val matcher = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$").matcher(str);
-//            if (!matcher.find()) {
-//                return null
-//            }
-//            val cc = matcher.group(1) ?: return null
-//
-//            val phone = str.substring(cc.length)
-//
-////            Log.d(Def.TAG, "cc: $cc, g2: $phone")
-//            return Pair(cc, phone)
-//        }
+        private fun getPackagesHoldingPermissions(pm: PackageManager, permissions: Array<String>): List<PackageInfo> {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                pm.getPackagesHoldingPermissions(permissions, PackageManager.PackageInfoFlags.of(0L))
+            } else {
+                pm.getPackagesHoldingPermissions(permissions, 0)
+            }
+        }
 
         fun isPackageInstalled(ctx: Context, pkgName: String): Boolean {
             val pm = ctx.packageManager

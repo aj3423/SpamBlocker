@@ -126,7 +126,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
-            val contact = Contacts.findByRawNumberAuto(ctx, rawNumber)
+            val contact = Contacts.findByRawNumber(ctx, rawNumber)
             if (contact != null) {
                 Log.i(Def.TAG, "is contact")
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)

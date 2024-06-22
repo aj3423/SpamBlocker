@@ -41,7 +41,7 @@ An Android Call/SMS blocker. (Android 10+)
 | READ_CONTACTS          | For matching contacts                                           |
 | RECEIVE_SMS            | For receiving new messages                                      |
 | READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)   |
-| PACKAGE_USAGE_STATS<br>QUERY_ALL_PACKAGES    | For feature: Recent Apps <br>For checking whether an app has been used recently,<br>and for choosing apps  |
+| PACKAGE_USAGE_STATS    | For feature: Recent Apps <br>For checking whether an app has been used recently  |
 | READ_PHONE_STATE       | For block mode: Answer + Hang-up (monitor ringing state)  |
 
 # FAQ & Troubleshooting 

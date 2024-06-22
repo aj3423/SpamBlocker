@@ -39,8 +39,6 @@ open class Permissions {
                 "android.permission.POST_NOTIFICATIONS",
 
                 "android.permission.READ_CONTACTS",
-
-                "android.permission.QUERY_ALL_PACKAGES",
             )
 
             activity.requestPermissions(permissions.toTypedArray(), 0)

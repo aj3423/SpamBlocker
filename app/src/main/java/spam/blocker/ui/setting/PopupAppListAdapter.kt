@@ -2,7 +2,6 @@ package spam.blocker.ui.setting
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import android.util.Log
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView;
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.R
-import spam.blocker.def.Def
 import spam.blocker.util.AppInfo
-import spam.blocker.util.Util.Companion.listApps
 
 class PopupAppListAdapter(
     private var selected: ObservableArrayList<String>,

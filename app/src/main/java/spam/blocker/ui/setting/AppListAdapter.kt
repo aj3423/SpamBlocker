@@ -12,10 +12,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView;
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.R
-import spam.blocker.def.Def
 import spam.blocker.util.AppInfo
-import spam.blocker.util.Util.Companion.getAppsMap
-import spam.blocker.util.Util.Companion.listApps
 
 class AppListAdapter(
     private val ctx: Context,
@@ -35,7 +32,7 @@ class AppListAdapter(
         val pkgName = selected[position]
 
         holder.itemView.setOnClickListener { onClick() }
-        holder.imgIcon.setImageDrawable(getAppsMap(ctx)[pkgName]?.icon)
+        holder.imgIcon.setImageDrawable(AppInfo.fromPackage(ctx, pkgName).icon)
     }
 
     override fun getItemCount() = selected.size

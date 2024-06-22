@@ -20,9 +20,9 @@ import spam.blocker.def.Def
 import spam.blocker.service.Checker
 import spam.blocker.ui.util.UI.Companion.setRoundImage
 import spam.blocker.ui.util.UI.Companion.showIf
+import spam.blocker.util.AppInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.Util
-import spam.blocker.util.Util.Companion.getAppsMap
 
 
 class HistoryAdapter(
@@ -48,7 +48,7 @@ class HistoryAdapter(
 
         val record = records[position]
 
-        val contact = Contacts.findByRawNumberAuto(ctx, record.peer)
+        val contact = Contacts.findByRawNumber(ctx, record.peer)
 
         val bmpAvatar = contact?.loadAvatar(ctx)
         if (bmpAvatar != null) {
@@ -66,7 +66,7 @@ class HistoryAdapter(
         holder.labelResult.text = Checker.resultStr(ctx, record.result, record.reason)
         showIf(holder.unreadMark, !record.read, true)
         if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
-            holder.imgReason.setImageDrawable(getAppsMap(ctx)[record.reason]?.icon)
+            holder.imgReason.setImageDrawable(AppInfo.fromPackage(ctx, record.reason).icon)
         }
         showIf(holder.imgReason, record.result == Def.RESULT_ALLOWED_BY_RECENT_APP)
 

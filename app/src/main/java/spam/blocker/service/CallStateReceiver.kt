@@ -40,7 +40,7 @@ class CallStateReceiver : BroadcastReceiver() {
                 // ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
                     val currNumber = extractNumber(intent) ?: return
-                    Log.e(Def.TAG, "RINGING, num: $currNumber")
+                    Log.i(Def.TAG, "RINGING, num: $currNumber")
 
                     if (shouldBlock(ctx, currNumber))
                         answerCall(ctx)
@@ -49,7 +49,7 @@ class CallStateReceiver : BroadcastReceiver() {
                 // call is active(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                     val currNumber = extractNumber(intent) ?: return
-                    Log.e(Def.TAG, "IN CALL, num: $currNumber")
+                    Log.i(Def.TAG, "IN CALL, num: $currNumber")
 
                     if (shouldBlock(ctx, currNumber))
                         endCall(ctx)
@@ -62,12 +62,12 @@ class CallStateReceiver : BroadcastReceiver() {
     private fun answerCall(ctx: Context) {
         val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
         telMgr.acceptRingingCall()
-        Log.e(Def.TAG, "answer call")
+        Log.i(Def.TAG, "answer call")
     }
     @SuppressLint("MissingPermission")
     private fun endCall(ctx: Context) {
         val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
         telMgr.endCall()
-        Log.e(Def.TAG, "end call")
+        Log.i(Def.TAG, "end call")
     }
 }

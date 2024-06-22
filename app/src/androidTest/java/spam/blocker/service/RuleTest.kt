@@ -17,7 +17,6 @@ import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.Flag
 import spam.blocker.util.Permissions
-import spam.blocker.util.Schedule
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.OffTime
@@ -81,7 +80,7 @@ class RuleTest {
         every { Permissions.isContactsPermissionGranted(ctx) } returns true
 
         mockkObject(Contacts)
-        every { Contacts.findByRawNumberAuto(ctx, any()) } answers {
+        every { Contacts.findByRawNumber(ctx, any()) } answers {
             val num = secondArg<String>()
             if (Util.clearNumber(rawNumber).endsWith(num))
                 ci

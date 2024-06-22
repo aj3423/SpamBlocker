@@ -67,8 +67,6 @@ class PopupBackupFragment() : ClosableDialogFragment() {
                 val curr = Configs()
                 curr.load(ctx)
                 val currCfgStr = Json.encodeToString(curr)
-                Log.e(Def.TAG, "currCfgStr: $currCfgStr")
-                Log.e(Def.TAG, "input: $input")
 
                 sameAsCurrent = input == currCfgStr
             }

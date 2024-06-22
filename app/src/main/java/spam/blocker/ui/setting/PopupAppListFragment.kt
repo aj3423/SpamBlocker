@@ -27,6 +27,7 @@ import kotlinx.coroutines.withContext
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.AppInfo
+import spam.blocker.util.Util.Companion.clearAppsCache
 import spam.blocker.util.Util.Companion.listApps
 
 class PopupAppListFragment(
@@ -70,6 +71,8 @@ class PopupAppListFragment(
                 else -> {}
             }
         }
+
+        clearAppsCache()
 
         val ctx = requireContext()
         fun filterAppsByInput(): List<AppInfo> {
