@@ -15,9 +15,7 @@ import android.content.pm.PackageManager
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
-import android.provider.Settings
 import android.provider.Telephony.Sms
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -32,12 +30,16 @@ open class Permissions {
         fun requestAllManifestPermissions(activity: AppCompatActivity) {
             val permissions = mutableListOf(
                 "android.permission.READ_CALL_LOG",
-                "android.permission.READ_SMS",
                 "android.permission.READ_PHONE_STATE",
                 "android.permission.ANSWER_PHONE_CALLS",
-                "android.permission.POST_NOTIFICATIONS",
-                "android.permission.READ_CONTACTS",
+
+                "android.permission.READ_SMS",
                 "android.permission.RECEIVE_SMS",
+
+                "android.permission.POST_NOTIFICATIONS",
+
+                "android.permission.READ_CONTACTS",
+
                 "android.permission.QUERY_ALL_PACKAGES",
             )
 
