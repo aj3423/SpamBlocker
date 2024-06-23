@@ -28,10 +28,10 @@
 
         - uses: actions/upload-artifact@v4
           with:
-            name: app-release.apk.zip
+            name: app-release.apk
             path: ${{steps.sign_app.outputs.signedFile}}
 
         - uses: actions/upload-artifact@v4
           with:
-            name: mapping.txt.zip
+            name: mapping.txt
             path: app/build/outputs/mapping/release/mapping.txt
