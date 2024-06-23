@@ -2,8 +2,6 @@ package spam.blocker.ui.setting
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +13,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import spam.blocker.R
-import spam.blocker.def.Def
-import spam.blocker.ui.util.Algorithm
 import spam.blocker.ui.util.Algorithm.b64Decode
 import spam.blocker.ui.util.Algorithm.b64Encode
 import spam.blocker.ui.util.Algorithm.compressString
@@ -26,7 +22,7 @@ import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.Clipboard
 import spam.blocker.util.ClosableDialogFragment
-import spam.blocker.util.Configs
+import spam.blocker.config.Configs
 import spam.blocker.util.Launcher
 
 
