@@ -26,15 +26,12 @@
             keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
             buildToolsVersion: 34.0.0
 
-        - name: Compress mapping.txt
-          run: tar zcvf mapping.txt.tar.gz app/build/outputs/mapping/release/mapping.txt
-
         - uses: actions/upload-artifact@v4
           with:
-            name: app-release.apk
+            name: app-release.apk.zip
             path: ${{steps.sign_app.outputs.signedFile}}
 
         - uses: actions/upload-artifact@v4
           with:
-            name: mapping.txt.tar.gz
-            path: mapping.txt.tar.gz
+            name: mapping.txt.zip
+            path: app/build/outputs/mapping/release/mapping.txt
