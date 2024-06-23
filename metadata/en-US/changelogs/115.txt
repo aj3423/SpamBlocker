@@ -1,0 +1,7 @@
+breaking:
+    RecentApps now only works for apps that have INTERNET access(to get rid of QUERY_ALL_PACKAGES)
+
+improvement:
+    no longer require permission QUERY_ALL_PACKAGES
+    improve launch speed
+    reduce apk size 13Mb -> 3Mb (using R8)
