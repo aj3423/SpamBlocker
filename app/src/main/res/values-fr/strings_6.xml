@@ -1,7 +1,14 @@
 <resources>
+    <string name="theme">Thème</string>
+    <string-array name="theme_list">
+        <item>Suivre le système</item>
+        <item>Clair</item>
+        <item>Sombre</item>
+    </string-array>
 
     <string name="crash_title">
-        Désolé, l\'application a planté. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur Github, assurez-vous de supprimer toute information sensible avant de signaler.
+        Désolé, l\'application a planté. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur github,
+        veillez à supprimer toute information sensible avant de signaler.
     </string>
     <string-array name="week">
         <item>Dim</item>
@@ -16,15 +23,15 @@
     <string-array name="block_type_list">
         <item>Rejeter</item>
         <item>Silence</item>
-        <item>Répondre + Raccrocher</item>
+        <item>Décrocher+raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucune</item>
-        <item>Volet</item>
-        <item>Barre d\'état, Volet</item>
-        <item>Son, Barre d\'état, Volet</item>
-        <item>Son, Barre d\'état, Volet, Affichage instantané</item>
+        <item>Aucun</item>
+        <item>Banderole</item>
+        <item>Barre d\'état, banderole</item>
+        <item>Son, barre d\'état, banderole</item>
+        <item>Son, barre d\'état, banderole, tête haute</item>
     </string-array>
     <string-array name="copy_as_list">
         <item>Copier en tant que JSON</item>
@@ -34,21 +41,21 @@
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par l\'IA Google, créez un problème sur Github pour ajouter une nouvelle langue.
+            Les traductions sont effectuées par l\'IA de Google. Ouvrez un problème sur github pour ajouter la prise en charge d\'une nouvelle langue.
         ]]>
     </string>
-    <string name="enabled_for_call">Activer pour appel</string>
-    <string name="enabled_for_sms">Activer pour SMS</string>
+    <string name="enabled_for_call">Activer pour les appels</string>
+    <string name="enabled_for_sms">Activer pour les SMS</string>
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un certain laps de temps, il est probable qu\'il soit important plutôt qu\'un appel de spam. <br>
+        Autoriser si l\'appel est répété dans un certain laps de temps, il est susceptible d\'être important plutôt qu\'un spam. <br>
         <br>
-        La réception de SMS du même numéro est également prise en compte, cela dépend de l\'octroi de l\'autorisation READ_SMS, qui est facultative.<br>
+        Recevoir un SMS du même numéro est également comptabilisé, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le second appel dans les 5 minutes sera autorisé. <br>
+        Le réglage par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
-        Ne s\'applique qu\'aux appels, <b>pas</b> aux SMS. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
@@ -56,9 +63,10 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        L\'interrupteur global, cette application ne fonctionne que lorsque celle-ci est activée, désactivez-la lorsque vous attendez un appel/message particulier. <br>
+        L\'interrupteur global, cette application ne fonctionne que lorsqu\'il est activé,
+        désactivez-la lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Il peut également être basculé à partir des <b>Paramètres rapides dans la liste déroulante</b>.
+        Il peut également être activé ou désactivé à partir des <b>Réglages rapides en liste déroulante</b>.
         ]]>
     </string>
 

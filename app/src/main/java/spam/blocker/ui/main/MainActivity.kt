@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         Util.setLocale(this, spf.getLanguage())
 
         // theme
-        applyTheme(spf.isDarkTheme())
+        applyTheme(spf.getThemeType())
 
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)

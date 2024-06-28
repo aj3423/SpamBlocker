@@ -203,13 +203,18 @@ class SettingFragment : Fragment() {
         )
     }
     private fun setupTheme(root: View) {
-        val spf = Global(requireContext())
-        val switch = root.findViewById<SwitchCompat>(R.id.switch_theme)
-        val dark = spf.isDarkTheme()
-        switch.isChecked = dark
-        switch.setOnClickListener {
-            spf.toggleDarkTheme()
-            applyTheme(spf.isDarkTheme())
+        val ctx = requireContext()
+        val spf = Global(ctx)
+        val btn = root.findViewById<MaterialButton>(R.id.btn_theme)
+        val type = spf.getThemeType()
+        val items = resources.getStringArray(R.array.theme_list).toList()
+        btn.text = items[type]
+        btn.setOnClickListener {
+            dynamicPopupMenu(ctx, items, btn) { clickedIdx ->
+                spf.setThemeType(clickedIdx)
+                btn.text = items[clickedIdx]
+                applyTheme(clickedIdx)
+            }
         }
     }
 

@@ -1,7 +1,6 @@
 <resources>
     <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
-    <string name="dark_theme">Dark Theme</string>
     <string name="find_apps">Find Apps</string>
     <string name="spam_sms_blocked">SMS Message Blocked</string>
     <string name="spam_call_blocked">Call Blocked</string>

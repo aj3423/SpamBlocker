@@ -442,13 +442,13 @@
                 <LinearLayout style="@style/setting_row">
                     <me.grantland.widget.AutofitTextView
                         style="@style/setting_blue_label"
-                        android:text="@string/dark_theme" />
+                        android:text="@string/theme" />
 
                     <Space style="@style/setting_spacing" />
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switch_theme"
-                        style="@style/setting_switch" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_theme"
+                        style="@style/setting_gray_spinner" />
                 </LinearLayout>
                 <!-- theme end -->
 

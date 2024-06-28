@@ -24,7 +24,7 @@ class CrashReportActivity : AppCompatActivity() {
         val spf = Global(this)
 
         // theme
-        UI.applyTheme(spf.isDarkTheme())
+        UI.applyTheme(spf.getThemeType())
 
         binding = CrashReportActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)

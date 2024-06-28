@@ -11,6 +11,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.lifecycle.LifecycleOwner
 import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
@@ -29,12 +32,14 @@ class UI {
             else
                 View.GONE
         }
-        fun applyTheme(dark: Boolean) {
-            if (dark) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
+        fun applyTheme(themeType: Int) {
+            AppCompatDelegate.setDefaultNightMode(
+                when(themeType) {
+                    1 -> MODE_NIGHT_NO
+                    2 -> MODE_NIGHT_YES
+                    else -> MODE_NIGHT_FOLLOW_SYSTEM
+                }
+            )
         }
 
         // for round avatar

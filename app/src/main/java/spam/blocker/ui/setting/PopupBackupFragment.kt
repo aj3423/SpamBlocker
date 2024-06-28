@@ -97,7 +97,8 @@ class PopupBackupFragment() : ClosableDialogFragment() {
 
             // import from json string
             try {
-                val newCfg = Json.decodeFromString<Configs>(input)
+                val json = Json { ignoreUnknownKeys = true }
+                val newCfg = json.decodeFromString<Configs>(input)
                 newCfg.apply(ctx)
 
                 alert.setTitle(" ")

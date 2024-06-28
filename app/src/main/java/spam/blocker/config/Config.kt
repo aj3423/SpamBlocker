@@ -39,13 +39,13 @@ class Global {
 
 @Serializable
 class Theme {
-    var isDark = false
+    var type = 0
     fun load(ctx: Context) {
-        isDark = Global(ctx).isDarkTheme()
+        type = Global(ctx).getThemeType()
     }
 
     fun apply(ctx: Context) {
-        Global(ctx).setDarkTheme(isDark)
+        Global(ctx).setThemeType(type)
     }
 }
 

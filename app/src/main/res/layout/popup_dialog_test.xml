@@ -37,6 +37,7 @@
                 style="@style/material_input"
                 android:id="@+id/edit_test_sms"
                 android:layout_weight="1"
+                android:maxLines="10"
                 android:ems="10"
                 android:hint="@string/sms_content"
                 android:inputType="textMultiLine" />

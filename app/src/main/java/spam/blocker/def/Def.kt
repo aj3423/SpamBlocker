@@ -11,7 +11,7 @@ object Def {
     const val LAST_CALLED_TIME = "last_called_time"
     const val LAST_NUMBER_TO_BLOCK = "last_number_to_block"
 
-    const val SETTING_DARK_THEME = "dark_theme"
+    const val SETTING_THEME_TYPE = "theme_type"
     const val SETTING_STIR_ENABLED = "stir_enabled"
     const val SETTING_LANGUAGE = "language"
     const val SETTING_STIR_EXCLUSIVE = "stir_exclusive"

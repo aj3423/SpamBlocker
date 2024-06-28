@@ -1,71 +1,77 @@
 <resources>
+    <string name="theme">Theme</string>
+    <string-array name="theme_list">
+        <item>Follow System</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
 
     <string name="crash_title">
-        На жаль, додаток вимкнувся.\n\nБудь ласка, скопіюйте вміст внизу і повідомте про цю помилку на github,
-        обов\'язково видаліть конфіденційну інформацію перед повідомленням.
+        Sorry, the app has crashed. \n\nPlease copy the content below and report this issue on github,
+        be sure to remove any sensitive information before reporting.
     </string>
     <string-array name="week">
-        <item>Нед</item>
-        <item>Пн</item>
-        <item>Вт</item>
-        <item>Ср</item>
-        <item>Чт</item>
-        <item>Пт</item>
-        <item>Сб</item>
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thur</item>
+        <item>Fri</item>
+        <item>Sat</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Відхил</item>
-        <item>Без звуку</item>
-        <item>Відпов.+Кид</item>
+        <item>Reject</item>
+        <item>Silence</item>
+        <item>Answer+Hang Up</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Нема</item>
-        <item>Шторка</item>
-        <item>Рядок стану, Шторка</item>
-        <item>Звук, Рядок стану, Шторка</item>
-        <item>Звук, Рядок стану, Шторка, Пріоритет</item>
+        <item>None</item>
+        <item>Shade</item>
+        <item>StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade</item>
+        <item>Sound, StatusBar, Shade, Heads-up</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Копіювати як Json</item>
-        <item>Копіювати як Стиснено</item>
+        <item>Copy as Json</item>
+        <item>Copy as Compressed</item>
     </string-array>
 
-    <string name="language">Мова</string>
+    <string name="language">Language</string>
     <string name="help_language">
         <![CDATA[
-        Переклади зроблені штучним інтелектом Google, повідомте про додавання підтримки нової мови на github.
+            Translations are done by Google AI, fire an issue on github for adding a new language support.
         ]]>
     </string>
-    <string name="enabled_for_call">Увімкнути для Дзвінків</string>
-    <string name="enabled_for_sms">Увімкнути для СМС</string>
-    <string name="repeated_call">Повторний Дзвінок</string>
+    <string name="enabled_for_call">Enable for Calls</string>
+    <string name="enabled_for_sms">Enable for Texts</string>
+    <string name="repeated_call">Repeated Calls</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Дозволити, якщо дзвінок повторюється протягом певного періоду часу, швидше за все, це буде важливо, а не спам-дзвінок.<br>
+        Permit if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
         <br>
-        Отримання текстового повідомлення з того ж номера також враховується, це залежить від того, чи надано дозвіл READ_SMS, який не є обов\'язковим.<br>
+        Receiving text message from the same number is also counted, this depends on whether the READ_SMS permission is granted, which is optional.<br>
         <br>
-        За замовчуванням установлено <font color="cyan"><b>1 / 5 Хв</b></font> означає, що буде дозволено другий дзвінок протягом 5 хвилин.<br>
+        The default setting <font color="cyan"><b>1 / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
         <br>
-        Дійсно лише для дзвінків, <b>не</b> для текстових повідомлень.<br>
+        Only applies for calls, <b>not</b> for text messages. <br>
         <br>
-        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Глобальний перемикач, цей додаток працює лише тоді, коли він увімкнутий,
-        вимкніть його, коли ви чекаєте певного дзвінка/повідомлення.<br>
+        The global switch, this app only works when this is turned on,
+        turn it off when you are waiting for some particular call/message. <br>
         <br>
-        Він також може бути увімкнений з <b>Панелі швидких налаштувань</b>.
+        It can also be toggled from the <b>Dropdown Quick Settings</b>.
         ]]>
     </string>
 
-    <string name="about">Про</string>
-    <string name="version">Версія</string>
-    <string name="build_time">Час зборки (UTC)</string>
-    <string name="source_code">Вихідний код</string>
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="build_time">Build Time (UTC)</string>
+    <string name="source_code">Source Code</string>
 </resources>

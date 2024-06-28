@@ -1,8 +1,14 @@
 <resources>
+    <string name="theme">Tema</string>
+    <string-array name="theme_list">
+        <item>Seguir sistema</item>
+        <item>Claro</item>
+        <item>Oscuro</item>
+    </string-array>
 
     <string name="crash_title">
-        Lo siento, la aplicación se ha bloqueado. \n\nCopia el contenido de abajo y reporta este problema en github,
-        asegúrate de quitar cualquier información sensible antes de reportar el problema.
+        Perdón, la aplicación ha fallado. \n\nCopia el contenido de abajo e informa este problema en github,
+        asegúrate de eliminar cualquier información confidencial antes de informar.
     </string>
     <string-array name="week">
         <item>Dom</item>
@@ -17,7 +23,7 @@
     <string-array name="block_type_list">
         <item>Rechazar</item>
         <item>Silenciar</item>
-        <item>Responder+Colgar</item>
+        <item>Contestar y colgar</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -25,31 +31,31 @@
         <item>Sombra</item>
         <item>Barra de estado, Sombra</item>
         <item>Sonido, Barra de estado, Sombra</item>
-        <item>Sonido, Barra de estado, Sombra, Notificación</item>
+        <item>Sonido, Barra de estado, Sombra, Heads-up</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Copiar como JSON</item>
-        <item>Copiar como comprimido</item>
+        <item>Copiar como Json</item>
+        <item>Copiar como Comprimido</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones las realiza Google AI, abre un problema en github para agregar un nuevo idioma.
+            Las traducciones son realizadas por Google AI, genera un problema en github para solicitar soporte para un idioma nuevo.
         ]]>
     </string>
-    <string name="enabled_for_call">Habilitar para las llamadas</string>
+    <string name="enabled_for_call">Habilitar para llamadas</string>
     <string name="enabled_for_sms">Habilitar para SMS</string>
-    <string name="repeated_call">Llamada repetida</string>
+    <string name="repeated_call">Llamadas repetidas</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite en un periodo de tiempo, probablemente sea una llamada importante y no spam. <br>
+        Permitir si la llamada se repite en un periodo de tiempo, es probable que sea una llamada importante en lugar de spam. <br>
         <br>
-        También se cuentan los mensajes de texto recibidos del mismo número, esto depende si se otorga o no el permiso LEER_SMS, que es opcional.<br>
+        Recibir mensajes de texto del mismo número también se cuenta, esto depende de si se concede el permiso READ_SMS, que es opcional.<br>
         <br>
-        La configuración predeterminada <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada en 5 minutos. <br>
+        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirán las llamadas dentro de los 5 minutos. <br>
         <br>
-        Solo aplica para llamadas, <b>no</b> para mensajes de texto. <br>
+        Solo aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
@@ -57,15 +63,15 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El interruptor global, esta aplicación solo funciona cuando esto esté activado,
-        desactívalo cuando estés esperando una llamada o mensaje en particular. <br>
+        Interruptor global, esta aplicación solo funciona cuando esté activada,
+        desactívala cuando esperes una llamada/mensaje en particular. <br>
         <br>
-        También se puede cambiar desde la <b>Configuración rápida desplegable</b>.
+        También puede activar/desactivar desde <b>Ajustes rápidos</b>.
         ]]>
     </string>
 
     <string name="about">Acerca de</string>
     <string name="version">Versión</string>
-    <string name="build_time">Hora de compilación (UTC)</string>
+    <string name="build_time">Tiempo de compilación (UTC)</string>
     <string name="source_code">Código fuente</string>
 </resources>

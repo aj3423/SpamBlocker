@@ -1,40 +1,47 @@
 <resources>
+    <string name="theme">Theme</string>
+    <string-array name="theme_list">
+        <item>System folgen</item>
+        <item>Hell</item>
+        <item>Dunkel</item>
+    </string-array>
 
     <string name="crash_title">
-        Entschuldigung, die App ist abgestürzt.\n\nBitte kopieren Sie den untenstehenden Inhalt und melden Sie dieses Problem auf GitHub. Entfernen Sie vor der Meldung alle vertraulichen Informationen.
+        Ups, die App ist abgestürzt. \n\nBitte den folgenden Inhalt kopieren und das Problem auf Github melden.
+        Denke daran, sensible Infos vor dem Melden zu entfernen.
     </string>
     <string-array name="week">
-        <item>So.</item>
-        <item>Mo.</item>
-        <item>Di.</item>
-        <item>Mi.</item>
-        <item>Do.</item>
-        <item>Fr.</item>
-        <item>Sa.</item>
+        <item>So</item>
+        <item>Mo</item>
+        <item>Di</item>
+        <item>Mi</item>
+        <item>Do</item>
+        <item>Fr</item>
+        <item>Sa</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Ablehnen</item>
+        <item>Abweisen</item>
         <item>Stumm</item>
-        <item>Antworten + Auflegen</item>
+        <item>Anruf annehmen und auflegen</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Keine</item>
-        <item>Schatten</item>
-        <item>Statusleiste, Schatten</item>
-        <item>Ton, Statusleiste, Schatten</item>
-        <item>Ton, Statusleiste, Schatten, Heads-up</item>
+        <item>Schattieren</item>
+        <item>Statusleiste, Schattieren</item>
+        <item>Klang, Statusleiste, Schattieren</item>
+        <item>Klang, Statusleiste, Schattieren, Heads-up</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Als JSON kopieren</item>
+        <item>Als Json kopieren</item>
         <item>Als komprimiert kopieren</item>
     </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-        Übersetzungen erfolgen durch Google AI. Melde ein Problem auf GitHub, um eine neue Sprache hinzuzufügen.
+            Die Übersetzungen kommen von Google AI. Für neue Sprachen ein Problem auf Github öffnen.
         ]]>
     </string>
     <string name="enabled_for_call">Für Anruf aktivieren</string>
@@ -42,13 +49,13 @@
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird. Es handelt sich wahrscheinlich eher um einen wichtigen als um einen Spam-Anruf. <br>
+        Zulassen, wenn der Anruf innerhalb einer bestimmten Zeit wiederholt wird. Dies ist wahrscheinlich ein wichtiger Anruf und kein Spam. <br>
         <br>
-        Der Empfang von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung zum Lesen von SMS erteilt wurde, was optional ist. <br>
+        Auch empfangene SMS von derselben Nummer werden gezählt. Dies hängt davon ab, ob die Berechtigung SMS_LESEN erteilt wurde. Diese ist optional. <br>
         <br>
         Die Standardeinstellung <font color="cyan"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
-        Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
+        Gilt nur für Anrufe, <b>nicht</b> für SMS. <br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
@@ -56,14 +63,13 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Globale Umschaltung, diese App funktioniert nur, wenn sie eingeschaltet ist.
-        Schalte sie aus, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
+        Der Hauptschalter. Diese App funktioniert nur, wenn dieser eingeschaltet ist. Deaktiviere ihn, wenn du einen bestimmten Anruf/eine bestimmte SMS erwartest. <br>
         <br>
-        Sie kann auch über die <b>Schnelleinstellungen der Dropdown-Liste</b> umgeschaltet werden.
+        Kann auch über die <b>Schnelleinstellungen</b> deaktiviert werden.
         ]]>
     </string>
 
-    <string name="about">Info</string>
+    <string name="about">Über</string>
     <string name="version">Version</string>
     <string name="build_time">Build-Zeit (UTC)</string>
     <string name="source_code">Quellcode</string>
