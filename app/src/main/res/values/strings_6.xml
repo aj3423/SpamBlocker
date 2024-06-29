@@ -74,4 +74,9 @@
     <string name="version">Version</string>
     <string name="build_time">Build Time (UTC)</string>
     <string name="source_code">Source Code</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="warning_running_in_work_profile">
+        This app may not work correctly within work profile, please install it in main profile instead.
+    </string>
+
 </resources>

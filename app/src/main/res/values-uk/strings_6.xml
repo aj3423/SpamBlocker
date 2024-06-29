@@ -44,9 +44,9 @@
             Translations are done by Google AI, fire an issue on github for adding a new language support.
         ]]>
     </string>
-    <string name="enabled_for_call">Enable for Calls</string>
-    <string name="enabled_for_sms">Enable for Texts</string>
-    <string name="repeated_call">Repeated Calls</string>
+    <string name="enabled_for_call">Enable for Call</string>
+    <string name="enabled_for_sms">Enable for SMS</string>
+    <string name="repeated_call">Repeated Call</string>
     <string name="help_repeated_call">
         <![CDATA[
         Permit if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
@@ -74,4 +74,7 @@
     <string name="version">Version</string>
     <string name="build_time">Build Time (UTC)</string>
     <string name="source_code">Source Code</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="warning_running_in_work_profile">This app may not work correctly within work profile, please install it in main profile instead.</string>
+
 </resources>

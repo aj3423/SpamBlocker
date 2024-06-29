@@ -1,60 +1,61 @@
 <resources>
-    <string name="theme">Тема</string>
+    <string name="theme">Темы</string>
     <string-array name="theme_list">
-        <item>Посистема</item>
-        <item>Светло</item>
-        <item>Тёмно</item>
+        <item>По умолчанию</item>
+        <item>СВетлая</item>
+        <item>Тёмная</item>
     </string-array>
 
     <string name="crash_title">
-        Извините, приложение не работает. \n\nПожалуйста, скопируйте содержание ниже и сообщите об этой ошибке на github,\nзапомните удалить конфиденциальную информацию перед отправкой.
+        Извините, приложение зависло. \n\nПожалуйста скопируйте содержимое ниже и сообщите в https://github.com/EdwardZhou2003/SpamCall-App  об этой проблеме,
+        убедитесь, что удалили все личные данные перед отправкой.
     </string>
     <string-array name="week">
-        <item>Вс</item>
-        <item>Пн</item>
-        <item>Вт</item>
-        <item>Ср</item>
-        <item>Чт</item>
-        <item>Пт</item>
-        <item>Сб</item>
+        <item>Вск</item>
+        <item>Пнд</item>
+        <item>Втр</item>
+        <item>Срд</item>
+        <item>Чтв</item>
+        <item>Пят</item>
+        <item>Суб</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Запретить</item>
-        <item>Без звука</item>
-        <item>Ответить+Сбросить</item>
+        <item>Отклонить</item>
+        <item>Заглушить</item>
+        <item>Ответить и положить</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Ничего</item>
-        <item>Панель</item>
-        <item>Строка состояния, Панель</item>
-        <item>Звук, Строка, Панель</item>
-        <item>Звук, Строка, Панель, Только самое важное</item>
+        <item>Оттенить</item>
+        <item>Статус-бар, Оттенить</item>
+        <item>Звук, Статус-бар, Оттенить</item>
+        <item>Звук, Статус-бар, Оттенить, Полноэкранная вставка</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Копировать как Json</item>
-        <item>Копировать сжатым</item>
+        <item>Скопировать как Json</item>
+        <item>Скопировать как архив</item>
     </string-array>
 
     <string name="language">Язык</string>
     <string name="help_language">
         <![CDATA[
-            Переводы сделаны Google AI, открыть ошибку на github для добавления поддержки нового языка.
+            Перевод сделан Google AI, создайте запрос support в https://github.com/EdwardZhou2003/SpamCall-App   для добавления языка.
         ]]>
     </string>
     <string name="enabled_for_call">Включить для звонков</string>
-    <string name="enabled_for_sms">Включить для SMS</string>
-    <string name="repeated_call">Повторный звонок</string>
+    <string name="enabled_for_sms">Включить для СМС</string>
+    <string name="repeated_call">Повторный вызов</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Разрешить, если звонок повторится в течение периода времени, скорее всего, это важно, а не спам-звонок. <br>
+        Разрешить, если вызов повторяется в течение определенного периода времени, скорее всего, он важен, а не спам-вызов. <br>
         <br>
-        Приём текстового сообщения с того же номера также учитывается, это зависит от того, предоставлено ли разрешение READ_SMS, которое не является обязательным. <br>
+        Получение текстового сообщения с одного номера также учитывается, это зависит от того, предоставлено ли разрешение READ_SMS, которое является необязательным.<br>
         <br>
-        Настройка по умолчанию <font color="cyan"><b>1 / 5 Мин</b></font> означает, что второй звонок в течение 5 минут будет разрешён. <br>
+        Настройка по умолчанию <font color="cyan"><b>1 / 5 Мин</b></font> означает, что второй вызов в течение 5 минут будет разрешен. <br>
         <br>
-        Действует только для звонков, <b>не</b> для текстовых сообщений. <br>
+        Применяется только к звонкам, <b>не</b> к текстовым сообщениям. <br>
         <br>
         <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
@@ -62,14 +63,18 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Глобальный переключатель, это приложение будет работать только тогда, когда оно включено,\nвыключите его, когда вы ждёте определённый вызов/сообщение. <br>
+        Глобальный переключатель, это приложение работает только тогда, когда он включен,
+        выключите его, когда ждете конкретного звонка / сообщения. <br>
         <br>
-        Его также можно переключать из <b>Быстрых настроек раскрывающегося списка</b>.
+        Его также можно переключать с помощью <b>Быстрых настроек раскрывающегося списка</b>.
         ]]>
     </string>
 
-    <string name="about">О программе</string>
+    <string name="about">О приложении</string>
     <string name="version">Версия</string>
     <string name="build_time">Время сборки (UTC)</string>
     <string name="source_code">Исходный код</string>
+    <string name="dismiss">Отклонить</string>
+    <string name="warning_running_in_work_profile">Это приложение может работать некорректно в рабочем профиле, вместо этого установите его в основном профиле.</string>
+
 </resources>

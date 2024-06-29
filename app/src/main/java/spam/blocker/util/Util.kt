@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.UserManager
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import spam.blocker.R
@@ -238,6 +239,15 @@ class Util {
             val metrics = DisplayMetrics()
             display.getMetrics(metrics)
             return metrics.heightPixels
+        }
+
+        fun isRunningInWorkProfile(ctx: Context) : Boolean {
+            val um = ctx.getSystemService(Context.USER_SERVICE) as UserManager
+
+            return if (Build.VERSION.SDK_INT >= Def.ANDROID_11) { // android 10 ignored
+                um.isManagedProfile
+            } else
+                false
         }
     }
 }

@@ -1,14 +1,14 @@
 <resources>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
-        <item>Suivre le système</item>
+        <item>Suivre système</item>
         <item>Clair</item>
         <item>Sombre</item>
     </string-array>
 
     <string name="crash_title">
-        Désolé, l\'application a planté. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur github,
-        veillez à supprimer toute information sensible avant de signaler.
+        Désolé, l\'app a planté. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur github,
+        assurez-vous de supprimer toute information sensible avant de signaler.
     </string>
     <string-array name="week">
         <item>Dim</item>
@@ -23,37 +23,37 @@
     <string-array name="block_type_list">
         <item>Rejeter</item>
         <item>Silence</item>
-        <item>Décrocher+raccrocher</item>
+        <item>Répondre+Raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucun</item>
-        <item>Banderole</item>
-        <item>Barre d\'état, banderole</item>
-        <item>Son, barre d\'état, banderole</item>
-        <item>Son, barre d\'état, banderole, tête haute</item>
+        <item>Aucune</item>
+        <item>Ombre</item>
+        <item>Barre d\'état, Ombre</item>
+        <item>Son, Barre d\'état, Ombre</item>
+        <item>Son, Barre d\'état, Ombre, Tête haute</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Copier en tant que JSON</item>
-        <item>Copier en tant que compressé</item>
+        <item>Copier comme Json</item>
+        <item>Copier comme Compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par l\'IA de Google. Ouvrez un problème sur github pour ajouter la prise en charge d\'une nouvelle langue.
+            Les traductions sont faites par l\'IA de Google, ouvrez un problème sur github pour ajouter un nouveau support linguistique.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
     <string name="enabled_for_sms">Activer pour les SMS</string>
-    <string name="repeated_call">Appel répété</string>
+    <string name="repeated_call">Appels répétés</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un certain laps de temps, il est susceptible d\'être important plutôt qu\'un spam. <br>
+        Autoriser si l\'appel est répété dans un délai imparti, il peut s\'agir d\'un appel important plutôt que d\'un spam. <br>
         <br>
-        Recevoir un SMS du même numéro est également comptabilisé, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
+        Recevoir un SMS du même numéro est également compté, cela dépend si la permission LIRE_SMS est accordée, ce qui est facultatif.<br>
         <br>
-        Le réglage par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
         S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
         <br>
@@ -63,15 +63,18 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        L\'interrupteur global, cette application ne fonctionne que lorsqu\'il est activé,
-        désactivez-la lorsque vous attendez un appel/message particulier. <br>
+        Le bouton global, cette application ne fonctionne que lorsque ce bouton est activé,
+        désactivez-le lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Il peut également être activé ou désactivé à partir des <b>Réglages rapides en liste déroulante</b>.
+        Il peut également être activé/désactivé depuis les <b>Paramètres rapides des menus déroulants</b>.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de construction (UTC)</string>
+    <string name="build_time">Heure de compilation (UTC)</string>
     <string name="source_code">Code source</string>
+    <string name="dismiss">Ignorer</string>
+    <string name="warning_running_in_work_profile">Cette application peut ne pas fonctionner correctement dans le profil professionnel, veuillez plutôt l\'installer dans le profil principal.</string>
+
 </resources>

@@ -94,6 +94,12 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun setAskedForAllPermission() {
         writeBoolean(Def.SETTING_REQUIRE_PERMISSION_ONCE, true)
     }
+    fun hasPromptedForRunningInWorkProfile(): Boolean {
+        return readBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, false)
+    }
+    fun setPromptedForRunningInWorkProfile() {
+        writeBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, true)
+    }
 
     fun getShowPassed(): Boolean {
         return readBoolean(Def.SETTING_SHOW_PASSED, true)

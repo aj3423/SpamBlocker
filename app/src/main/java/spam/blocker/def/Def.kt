@@ -35,6 +35,7 @@ object Def {
     const val SETTING_RECENT_APPS = "recent_apps"
     const val SETTING_ACTIVE_TAB = "active_tab"
     const val SETTING_REQUIRE_PERMISSION_ONCE = "require_permission_once"
+    const val SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE = "warn_running_in_work_profile_once"
     const val SETTING_ENABLED = "globally_enable"
     const val SETTING_CALL_ENABLED = "call_enable"
     const val SETTING_SMS_ENABLED = "sms_enable"
@@ -110,4 +111,7 @@ object Def {
 
     const val DIRECTION_INCOMING = 1
     const val DIRECTION_OUTGOING = 2
+
+    const val ANDROID_10 = 29
+    const val ANDROID_11 = 30
 }

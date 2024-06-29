@@ -1,14 +1,13 @@
 <resources>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
-        <item>Seguir sistema</item>
+        <item>Seguir al sistema</item>
         <item>Claro</item>
         <item>Oscuro</item>
     </string-array>
 
     <string name="crash_title">
-        Perdón, la aplicación ha fallado. \n\nCopia el contenido de abajo e informa este problema en github,
-        asegúrate de eliminar cualquier información confidencial antes de informar.
+        Lo siento, la aplicación se ha bloqueado. \n\nCopia el contenido de abajo y reporta el problema en github, asegúrate de eliminar cualquier información sensible antes de reportarlo.
     </string>
     <string-array name="week">
         <item>Dom</item>
@@ -28,34 +27,34 @@
 
     <string-array name="importance_list">
         <item>Ninguna</item>
-        <item>Sombra</item>
-        <item>Barra de estado, Sombra</item>
-        <item>Sonido, Barra de estado, Sombra</item>
-        <item>Sonido, Barra de estado, Sombra, Heads-up</item>
+        <item>Destacado</item>
+        <item>Barra de estado, destacado</item>
+        <item>Sonido, barra de estado, destacado</item>
+        <item>Sonido, barra de estado, destacado, en Primer plano</item>
     </string-array>
     <string-array name="copy_as_list">
         <item>Copiar como Json</item>
-        <item>Copiar como Comprimido</item>
+        <item>Copiar comprimido</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones son realizadas por Google AI, genera un problema en github para solicitar soporte para un idioma nuevo.
+            Las traducciones son hechas por Google AI, reporta un problema en github para añadir compatibilidad con un nuevo idioma.
         ]]>
     </string>
-    <string name="enabled_for_call">Habilitar para llamadas</string>
-    <string name="enabled_for_sms">Habilitar para SMS</string>
-    <string name="repeated_call">Llamadas repetidas</string>
+    <string name="enabled_for_call">Activar para llamadas</string>
+    <string name="enabled_for_sms">Activar para SMS</string>
+    <string name="repeated_call">Llamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite en un periodo de tiempo, es probable que sea una llamada importante en lugar de spam. <br>
+        Permite si la llamada se repite en un periodo de tiempo, es probable que sea importante en lugar de una llamada spam. <br>
         <br>
-        Recibir mensajes de texto del mismo número también se cuenta, esto depende de si se concede el permiso READ_SMS, que es opcional.<br>
+        Recibir mensajes de texto del mismo número también cuenta, esto depende de si el permiso READ_SMS es otorgado, el cual es opcional.<br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirán las llamadas dentro de los 5 minutos. <br>
+        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que la segunda llamada en 5 minutos será permitida. <br>
         <br>
-        Solo aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        Solo aplica para llamadas, <b>no</b> para mensajes de texto. <br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
@@ -63,15 +62,18 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Interruptor global, esta aplicación solo funciona cuando esté activada,
-        desactívala cuando esperes una llamada/mensaje en particular. <br>
+        El interruptor global, esta aplicación solo funciona cuando está activado,
+        desactívalo cuando estés esperando alguna llamada/mensaje en particular. <br>
         <br>
-        También puede activar/desactivar desde <b>Ajustes rápidos</b>.
+        También se puede activar o desactivar desde los <b>Ajustes rápidos desplegables</b>.
         ]]>
     </string>
 
     <string name="about">Acerca de</string>
     <string name="version">Versión</string>
-    <string name="build_time">Tiempo de compilación (UTC)</string>
+    <string name="build_time">Momento de la compilación (UTC)</string>
     <string name="source_code">Código fuente</string>
+    <string name="dismiss">Descartar</string>
+    <string name="warning_running_in_work_profile">Esta aplicación puede no funcionar correctamente dentro del perfil de trabajo, mejor instálala en el perfil principal.</string>
+
 </resources>

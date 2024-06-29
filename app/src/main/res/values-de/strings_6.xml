@@ -1,5 +1,5 @@
 <resources>
-    <string name="theme">Theme</string>
+    <string name="theme">Thema</string>
     <string-array name="theme_list">
         <item>System folgen</item>
         <item>Hell</item>
@@ -7,8 +7,8 @@
     </string-array>
 
     <string name="crash_title">
-        Ups, die App ist abgestürzt. \n\nBitte den folgenden Inhalt kopieren und das Problem auf Github melden.
-        Denke daran, sensible Infos vor dem Melden zu entfernen.
+        Es tut uns leid, die App ist abgestürzt. \n\nKopiere bitte den untenstehenden Inhalt und melde das Problem auf GitHub
+        Entferne bitte vorher vertrauliche Informationen.
     </string>
     <string-array name="week">
         <item>So</item>
@@ -22,36 +22,37 @@
 
     <string-array name="block_type_list">
         <item>Abweisen</item>
-        <item>Stumm</item>
-        <item>Anruf annehmen und auflegen</item>
+        <item>Tonlos</item>
+        <item>Annehmen+Aufhängen</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Keine</item>
-        <item>Schattieren</item>
-        <item>Statusleiste, Schattieren</item>
-        <item>Klang, Statusleiste, Schattieren</item>
-        <item>Klang, Statusleiste, Schattieren, Heads-up</item>
+        <item>Benachrichtigungsfeld</item>
+        <item>Statusleiste, Benachrichtigungsfeld</item>
+        <item>Ton, Statusleiste, Benachrichtigungsfeld</item>
+        <item>Ton, Statusleiste, Benachrichtigungsfeld, Pop-up</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Als Json kopieren</item>
+        <item>Als JSON kopieren</item>
         <item>Als komprimiert kopieren</item>
     </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-            Die Übersetzungen kommen von Google AI. Für neue Sprachen ein Problem auf Github öffnen.
+            Übersetzungen werden von Google AI durchgeführt. Melde ein Problem auf GitHub, um Unterstützung für eine neue Sprache hinzuzufügen.
         ]]>
     </string>
-    <string name="enabled_for_call">Für Anruf aktivieren</string>
+    <string name="enabled_for_call">Für Anrufe aktivieren</string>
     <string name="enabled_for_sms">Für SMS aktivieren</string>
-    <string name="repeated_call">Wiederholter Anruf</string>
+    <string name="repeated_call">Wiederholte Anrufe</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb einer bestimmten Zeit wiederholt wird. Dies ist wahrscheinlich ein wichtiger Anruf und kein Spam. <br>
+        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird. 
+        Es handelt sich wahrscheinlich eher um einen wichtigen als um einen Spam-Anruf. <br>
         <br>
-        Auch empfangene SMS von derselben Nummer werden gezählt. Dies hängt davon ab, ob die Berechtigung SMS_LESEN erteilt wurde. Diese ist optional. <br>
+        Der Empfang von SMS von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung READ_SMS erteilt wurde, was optional ist. <br>
         <br>
         Die Standardeinstellung <font color="cyan"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
@@ -63,9 +64,10 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Der Hauptschalter. Diese App funktioniert nur, wenn dieser eingeschaltet ist. Deaktiviere ihn, wenn du einen bestimmten Anruf/eine bestimmte SMS erwartest. <br>
+        Der globale Schalter. Diese App funktioniert nur, wenn dieser aktiviert ist. 
+        Schalte ihn aus, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
         <br>
-        Kann auch über die <b>Schnelleinstellungen</b> deaktiviert werden.
+        Er kann auch über die <b>Schnelleinstellungen des Dropdown-Menüs</b> umgeschaltet werden.
         ]]>
     </string>
 
@@ -73,4 +75,7 @@
     <string name="version">Version</string>
     <string name="build_time">Build-Zeit (UTC)</string>
     <string name="source_code">Quellcode</string>
+    <string name="dismiss">Schließen</string>
+    <string name="warning_running_in_work_profile">Diese App funktioniert möglicherweise nicht ordnungsgemäß im Arbeitsprofil. Installiere sie stattdessen im Hauptprofil.</string>
+
 </resources>

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -186,6 +187,20 @@ class MainActivity : AppCompatActivity() {
             Permissions.requestAllManifestPermissions(this)
 
             Permissions.askAsScreeningApp(null)
+        }
+
+        // show warning if this app is running in work profile
+        if (Util.isRunningInWorkProfile(this)) {
+            if (!spf.hasPromptedForRunningInWorkProfile()) {
+                AlertDialog.Builder(this).apply {
+                    setTitle(" ")
+                    setIcon(R.drawable.ic_warning)
+                    setMessage(resources.getString(R.string.warning_running_in_work_profile))
+                    setPositiveButton(R.string.dismiss) { _,_ ->
+                        spf.setPromptedForRunningInWorkProfile()
+                    }
+                }.create().show()
+            }
         }
     }
 
