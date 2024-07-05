@@ -14,6 +14,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.R
+import spam.blocker.db.Db
 import spam.blocker.db.Record
 import spam.blocker.db.HistoryTable
 import spam.blocker.def.Def
@@ -22,6 +23,7 @@ import spam.blocker.ui.util.UI.Companion.setRoundImage
 import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Contacts
+import spam.blocker.util.Launcher
 import spam.blocker.util.Util
 
 
@@ -43,7 +45,7 @@ class HistoryAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        val green = ctx.resources.getColor(R.color.dark_sea_green, null)
+        val green = ctx.resources.getColor(R.color.text_green, null)
         val red = ctx.resources.getColor(R.color.salmon, null)
 
         val record = records[position]
@@ -80,6 +82,17 @@ class HistoryAdapter(
                 table.markAsRead(ctx, clickedRecord.id)
                 clickedRecord.read = true
                 records[i] = clickedRecord
+            }
+
+            // Navigate to the default Call/SMS app, and open the conversation to this number
+            when(table.tableName()) {
+                Db.TABLE_CALL -> {
+                    Launcher.openCallConversation(ctx, clickedRecord.peer)
+                }
+                Db.TABLE_SMS -> {
+                    Launcher.openSMSConversation(ctx, clickedRecord.peer)
+
+                }
             }
         }
         // time

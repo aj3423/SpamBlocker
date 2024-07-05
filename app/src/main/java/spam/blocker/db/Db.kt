@@ -9,7 +9,7 @@ import spam.blocker.def.Def
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 25
+        const val DB_VERSION = 26
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -23,7 +23,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_PATTERN_FLAGS = "pattern_flag"
         const val COLUMN_PATTERN_EXTRA_FLAGS = "pattern_extra_flag"
         const val COLUMN_DESC = "description"
-        const val COLUMN_FLAG_CALL_SMS = "flag_call_sms"
+        const val COLUMN_FLAGS = "flag_call_sms" // the column name should be just "flags", but android<12 doesn't support renaming column
         const val COLUMN_PRIORITY = "priority"
         const val COLUMN_IS_BLACK = "blacklist"
         const val COLUMN_IMPORTANCE = "importance"
@@ -67,7 +67,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_DESC TEXT, " +
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
-                        "$COLUMN_FLAG_CALL_SMS INTEGER, " +
+                        "$COLUMN_FLAGS INTEGER, " +
                         "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}, " +
                         "$COLUMN_SCHEDULE TEXT DEFAULT '', " +
                         "$COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.DEF_BLOCK_TYPE}" +
@@ -127,6 +127,15 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
             db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.BLOCK_TYPE_REJECT}")
             db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_SCHEDULE TEXT DEFAULT ''")
             db.execSQL("ALTER TABLE $TABLE_CONTENT_RULE ADD COLUMN $COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.BLOCK_TYPE_REJECT}")
+        }
+        // v1.16 improved QuickCopy, upgrade all records in QuickCopy table to:
+        // - unset FLAG_FOR_CALL
+        // - set FLAG_FOR_CONTENT, FLAG_FOR_PASSED
+        if ((newVersion >= 26) && (oldVersion < 26)) {
+            // - unset FLAG_FOR_CALL
+            db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_FLAGS = $COLUMN_FLAGS & ~${Def.FLAG_FOR_CALL}")
+            // - set FLAG_FOR_CONTENT, FLAG_FOR_PASSED
+            db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_FLAGS = $COLUMN_FLAGS | ${Def.FLAG_FOR_CONTENT or Def.FLAG_FOR_PASSED}")
         }
     }
 }

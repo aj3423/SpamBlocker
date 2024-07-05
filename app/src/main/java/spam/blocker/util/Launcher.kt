@@ -28,6 +28,14 @@ class Launcher {
             ctx.startActivity(intent)
         }
 
+        fun openCallConversation(ctx: Context, phoneNumber: String) {
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:$phoneNumber")
+            }
+            if (intent.resolveActivity(ctx.packageManager) != null) {
+                ctx.startActivity(intent)
+            }
+        }
         fun openSMSConversation(ctx: Context, smsto: String?) {
 
             Log.d(Def.TAG, "smsto: $smsto")

@@ -1,33 +1,35 @@
 <resources>
     <string name="allow_repeated_call">Wiederholter Anruf</string>
     <string name="dialed">Gewählt</string>
-    <string name="find_apps">Apps suchen</string>
+    <string name="find_apps">Apps finden</string>
     <string name="spam_sms_blocked">SMS-Nachricht blockiert</string>
     <string name="spam_call_blocked">Anruf blockiert</string>
     <string name="new_sms_received">Neue SMS-Nachricht</string>
     <string name="mark_all_as_read">Alle als gelesen markieren</string>
     <string name="delete_all">Alle löschen</string>
-    <string name="show_passed">Erfolgreich anzeigen</string>
-    <string name="show_blocked">Blockiert anzeigen</string>
+    <string name="show_passed">Gelassene anzeigen</string>
+    <string name="show_blocked">Blockierte anzeigen</string>
     <string name="clone_rule">Regel klonen</string>
     <string name="notification">Benachrichtigung</string>
     <string name="type">Typ</string>
     <string name="time">Uhrzeit</string>
-    <string name="times">Mal</string>
+    <string name="times">Male</string>
     <string name="day">Tag</string>
     <string name="days">Tage</string>
     <string name="min">Min</string>
     <string name="within_minutes">Innerhalb von Minuten</string>
     <string name="within_days">Innerhalb von Tagen</string>
     <string name="phone_number">Telefonnummer</string>
+    <string name="phone_number_abbrev">Nummer</string>
     <string name="sms_content">SMS-Inhalt</string>
+    <string name="sms_content_abbrev">Inhalt</string>
     <string name="result">Ergebnis</string>
     <string name="reason">Grund</string>
     <string name="regex_flags">Regex-Flags</string>
-    <string name="ignore_case">Groß- und Kleinschreibung ignorieren</string>
+    <string name="ignore_case">Groß-/Kleinschreibung ignorieren</string>
     <string name="dot_match_all">Punkt passt auf alles</string>
     <string name="literal">Wörtlich</string>
-    <string name="off_time">Deaktivierungszeit</string>
+    <string name="off_time">Auszeit</string>
     <string name="schedule">Zeitplan</string>
     <string name="workday">Werktag</string>
     <string name="weekend">Wochenende</string>
@@ -35,42 +37,42 @@
     <string name="block_type">Blocktyp</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Ablehnen</b></font>: <br>
-        &emsp; Entspricht dem Drücken der Ablehntaste. Es funktioniert völlig geräuschlos, der Sperrbildschirm wird nicht aktiviert. Es ist der empfohlene Typ für Benutzer, die keine Voicemail nutzen.<br>
+        - <font color="#d1c8c8"><b>Abweisen</b></font>: <br>
+        &emsp; Entspricht dem Drücken der Ablehnungstaste. Es funktioniert völlig lautlos, der Sperrbildschirm wird nicht aktiviert. Dies ist der empfohlene Typ für Nutzer ohne Voicemail.<br>
         <br>
         - <font color="#d1c8c8"><b>Stummschalten</b></font>: <br>
-        &emsp; Es klingelt leise im Hintergrund und vermittelt dem Anrufer den Eindruck, dass Sie gerade beschäftigt sind und nicht antworten können. <br>
+        &emsp; Es klingelt lautlos im Hintergrund und erweckt beim Anrufer den Eindruck, dass du einfach beschäftigt bist und nicht abgehoben hast. <br>
         <br>
         - <font color="#d1c8c8"><b>Annehmen und auflegen</b></font>: <font color="#ffa500"><b>(experimentell)</b></font><br>
-        &emsp; Um zu vermeiden, dass Anrufe an die Voicemail weitergeleitet werden, kann sich das Verhalten je nach Mobilfunkanbieter unterscheiden. Der Sperrbildschirm kann für kurze Zeit aktiviert werden und Sie hören möglicherweise einen Anrufendeton (einige Telefone bieten die Möglichkeit, diesen Ton stummzuschalten).<br>
+        &emsp; Um zu vermeiden, dass du zur Voicemail weitergeleitet wirst, kann das Verhalten je nach Anbieter unterschiedlich sein. Der Sperrbildschirm kann kurzzeitig aktiviert werden, und du hörst möglicherweise auch einen Anrufabschluss-Ton (manche Telefone bieten die Option, diesen Ton stummzuschalten).
         ]]>
     </string>
-    <string name="stir">STIR-Zertifizierung</string>
-    <string name="stir_include_unverified">Nicht überprüft einschließen</string>
-    <string name="unverified">Nicht überprüft</string>
+    <string name="stir">STIR-Prüfung</string>
+    <string name="stir_include_unverified">Nicht verifiziert einschließen</string>
+    <string name="unverified">Nicht verifiziert</string>
     <string name="valid">Gültiger Anruf</string>
-    <string name="spoof">Fälschungsanruf</string>
+    <string name="spoof">Gefälschter Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            Für die STIR-Zertifizierung sind <b>Android 11+</b> und <b>Unterstützung durch den Mobilfunkanbieter</b> erforderlich. <br>
+            STIR-Prüfung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Mobilfunkanbieter</b>. <br>
             <br>
-            Es gibt drei mögliche Zertifizierungsergebnisse: <br>
+            Es gibt drei mögliche Prüfergebnisse: <br>
             <font color="cyan"><b>Gültig</b></font> <br>
-            &emsp; Der Anruf ist mit hoher Wahrscheinlichkeit gültig und nicht gefälscht. <br>
-            <font color="#ffa500"><b>Nicht überprüft</b></font> <br>
-            &emsp; Der Anruf kann nicht überprüft werden oder die STIR-Zertifizierung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Fälschung</b></font> <br>
-            &emsp; Es handelt sich mit hoher Wahrscheinlichkeit um einen gefälschten Anruf. <br>
+            &emsp; Es ist sehr wahrscheinlich, dass der Anruf gültig ist und nicht gefälscht wurde. <br>
+            <font color="#ffa500"><b>Nicht verifiziert</b></font> <br>
+            &emsp; Der Anruf kann nicht validiert werden, oder die STIR-Prüfung wird nicht unterstützt. <br>
+            <font color="#fa7f71"><b>Gefälscht</b></font> <br>
+            &emsp; Es ist sehr wahrscheinlich, dass der Anruf gefälscht ist. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inklusive</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin von anderen Regeln geprüft. <br>
-                  &emsp; Wenn "Nicht überprüft einschließen" aktiviert ist, wird ein Anruf auch bestehen, wenn er nicht überprüft wurde. <br>
+                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden dennoch von anderen Regeln geprüft. <br>
+                  &emsp; Wenn "<b>Nicht verifiziert einschließen</b>" aktiviert ist, wird ein Anruf auch bestehen, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exklusive</b></font>: <br>
                   &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-                  &emsp; Wenn "Nicht überprüft einschließen" aktiviert ist, wird ein Anruf auch blockiert, wenn er nicht überprüft wurde. <br>
+                  &emsp; Wenn "<b>Nicht verifiziert einschließen</b>" aktiviert ist, wird ein Anruf auch blockiert, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>

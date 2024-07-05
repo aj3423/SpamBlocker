@@ -15,6 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:itemIconTint="@drawable/selector_nav_view"
+        app:itemTextColor="@drawable/selector_nav_view"
         app:menu="@menu/bottom_nav_menu" />
 
     <fragment

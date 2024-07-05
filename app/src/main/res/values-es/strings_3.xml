@@ -3,58 +3,61 @@
         <![CDATA[
         Estas reglas se aplican al contenido de los mensajes SMS.<br>
         <br>
-        <font color="#ffa500"><b>Aviso</b></font>: Para los mensajes SMS, esta aplicación funciona como un \"complemento\" de la aplicación de SMS predeterminada. Bloquea notificaciones en lugar de mensajes. Los mensajes de spam aún estarán presentes en la aplicación de SMS predeterminada. <font color="#fa7f71"><b>Deshabilita</b></font> la notificación de la aplicación de SMS predeterminada en la configuración del sistema y deja que esta aplicación se encargue de la notificación; de lo contrario, habrá notificaciones dobles. <br>
+        <font color="#ffa500"><b>Nota</b></font>: Para mensajes SMS, esta aplicación funciona como un "complemento" para la aplicación SMS predeterminada, bloquea las notificaciones en lugar de bloquear los mensajes. Los mensajes de spam seguirán apareciendo en la aplicación SMS predeterminada. <font color="#fa7f71"><b>Desactiva</b></font> la notificación de la aplicación SMS predeterminada en los ajustes del sistema y permite que esta aplicación se encargue de las notificaciones; de lo contrario, habrá notificaciones duplicadas.<br>
         <br>
-        La lista se muestra en orden descendente de prioridad, descripción ascendente y patrón ascendente. <br>
+        La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente.
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Una forma rápida de copiar el contenido de mensajes SMS, como códigos de verificación. <br>
+        Forma rápida de copiar contenido de mensajes SMS o números de teléfono, facilitando la obtención de códigos de verificación o números entrantes.<br>
         <br>
-        Cuando coincida, aparecerá un botón como <font color="yellow"><b>Copiar: 123456</b></font> en la notificación. <br>
-        No es como hacer clic en la notificación. Al hacer clic en el botón Copiar, solo se descarta esta notificación. Las demás notificaciones permanecerán. <br>
+        Cuando se produce una coincidencia, aparece un botón como <font color="yellow"><b>Copiar: 123456</b></font> en la notificación.<br>
         <br>
-        Una regla de ejemplo: (utilizando grupo de captura) <br>
-        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        Otro enfoque: (utilizando búsqueda de contexto) <br>
-        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
-        &emsp;<font color="#ffa500"><b>Aviso</b></font>: <br>
-        &emsp; No admite <font color="#fa7f71"><b>.*</b></font> en búsquedas de contexto. Requiere una longitud máxima limitada.<br>
-        &emsp; Por ejemplo, utiliza: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
-        &emsp; en lugar de: <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
-        <br>
-        Solo funciona cuando el mensaje SMS <font color="#fa7f71"><b>no</b></font> está <font color="#fa7f71"><b>bloqueado</b></font>.
+        Ejemplo de regla para extraer códigos de verificación:<br>
+        &emsp; Mediante grupo de captura:<br>
+        &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        &emsp; Otro enfoque mediante búsqueda por proximidad:<br>
+        &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        Desmarca estas casillas de verificación para deshabilitar esta regla para llamadas, SMS o ambos.
+        Activa esta regla para llamadas, SMS o ambos.<br>
+        Desmarca estas casillas de verificación para desactivar la regla sin eliminarla.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        Cuando se marca <font color="#d1c8c8"><b> Número </b></font>, esta regla extraerá contenido a partir del número entrante.<br>
+        Por ejemplo, usa <b>(.*)</b> para copiar el número de teléfono.<br>
+        <br>
+        Cuando se marca <font color="#d1c8c8"><b>Contenido</b></font>, esta regla extraerá contenido del cuerpo del mensaje SMS, como códigos de verificación.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        Cuando se marca <font color="cyan"><b>Pasado</b></font>, esta regla se aplicará a las llamadas y mensajes pasados.<br>
+        <br>
+        Cuando se marca <font color="#fa7f71"><b>Bloqueado</b></font>, esta regla se aplicará a las llamadas y mensajes bloqueados.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>Ninguna</b>:<br>&emsp; No hay notificación en absoluto. <br>
-        <b>Sombra</b>:<br>&emsp; La sombra de notificación desplegable. <br>
-        <b>Barra de estado</b>:<br>&emsp; El ícono pequeño en la barra superior. <br>
-        <b>Sonido</b>:<br>&emsp; El sonido de notificación predeterminado. <br>
-        <b> emergente</b>:<br>&emsp; Abre una ventana flotante en la parte superior de la pantalla.
+        <b>Ninguno</b>:<br>&emsp; Ninguna notificación en absoluto. <br>
+        <b>Sombra</b>:<br>&emsp; Sombra desplegable de notificación. <br>
+        <b>Barra de estado</b>:<br>&emsp; Pequeño ícono en la barra superior. <br>
+        <b>Sonido</b>:<br>&emsp; Sonido de notificación predeterminado. <br>
+        <b>Emergente</b>:<br>&emsp; Despliega una ventana flotante en la parte superior de la pantalla.
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
-        Esto ayuda a verificar si las reglas se establecieron como se esperaba.<br>
+        Ayuda a comprobar si las reglas están configuradas según lo previsto.<br>
         <br>
-        Es solo una simulación y, de hecho, no abrirá una llamada entrante (o mensaje de texto).<br>
+        Es solo una simulación y no generará una llamada entrante (o mensaje de texto).<br>
         <br>
-        El resultado se muestra aquí y en el registro del historial, con notificación.
-        ]]>
-    </string>
-    <string name="help_test_quick_copy">
-        <![CDATA[
-        Esto no es una simulación, solo muestra si alguna regla de copia rápida coincide con el contenido.<br>
-        <br>
-        Para simular la recepción, utiliza <font color="cyan"><b>Probar</b></font> desde <font color="#0000ff"><b>Reglas de mensajes</b></font> en su lugar.
+        El resultado se muestra aquí y en el registro de historial, con notificación.
         ]]>
     </string>
 

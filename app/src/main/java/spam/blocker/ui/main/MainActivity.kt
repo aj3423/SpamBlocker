@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
@@ -178,7 +179,7 @@ class MainActivity : AppCompatActivity() {
         //   green == enabled,  red == disabled
         window.statusBarColor = ContextCompat.getColor(
             this,
-            if (spf.isGloballyEnabled()) R.color.dark_sea_green else R.color.salmon
+            if (spf.isGloballyEnabled()) R.color.text_green else R.color.salmon
         )
 
         // require permission once
@@ -223,6 +224,7 @@ class MainActivity : AppCompatActivity() {
         navView.getOrCreateBadge(R.id.navigation_call).apply {
             number = unreadCount
             isVisible = unreadCount != 0
+            setBackgroundColor(getColor(R.color.salmon));
         }
     }
 
@@ -232,6 +234,7 @@ class MainActivity : AppCompatActivity() {
         navView.getOrCreateBadge(R.id.navigation_sms).apply {
             number = unreadCount
             isVisible = unreadCount != 0
+            setBackgroundColor(getColor(R.color.salmon));
         }
     }
 }

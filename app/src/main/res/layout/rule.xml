@@ -43,13 +43,43 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:text="@string/filter_desc"
-            android:textColor="@color/mid_grey"
+            android:textColor="@color/text_grey"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_filter_pattern"
             app:layout_constraintWidth_percent="0.58" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/img_block_type"
+            app:layout_constraintTop_toTopOf="@+id/img_block_type"
+            android:paddingStart="0dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:id="@+id/img_for_number"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_number_sign"
+                android:gravity="center_vertical"
+                tools:ignore="ContentDescription"
+                app:tint="@color/text_grey"/>
+            <ImageView
+                android:id="@+id/img_for_content"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/ic_open_msg"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toStartOf="@+id/img_block_type"
+                app:layout_constraintTop_toTopOf="@+id/img_block_type"
+                tools:ignore="ContentDescription"
+                app:tint="@color/text_grey"/>
+        </LinearLayout>
         <ImageView
             android:id="@+id/img_block_type"
             android:layout_width="16dp"
@@ -61,13 +91,13 @@
             app:layout_constraintEnd_toStartOf="@+id/img_for_call"
             app:layout_constraintTop_toTopOf="@+id/img_for_sms"
             tools:ignore="ContentDescription"
-            app:tint="@color/mid_grey"/>
+            app:tint="@color/text_grey"/>
 
         <ImageView
             android:id="@+id/img_for_call"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="6dp"
+            android:layout_marginEnd="4dp"
             android:src="@drawable/ic_call_24dp"
             android:gravity="center_vertical"
             app:layout_constraintEnd_toStartOf="@+id/img_for_sms"
@@ -121,7 +151,7 @@
             app:layout_constraintEnd_toStartOf="@id/img_statusbar_shade"
             app:layout_constraintBottom_toBottomOf="@+id/label_priority"
             tools:ignore="ContentDescription"
-            app:tint="@color/white"/>
+            app:tint="@color/text_grey"/>
         <ImageView
             android:id="@+id/img_statusbar_shade"
             android:layout_width="16dp"
@@ -132,7 +162,7 @@
             app:layout_constraintEnd_toStartOf="@id/label_priority"
             app:layout_constraintBottom_toBottomOf="@+id/label_priority"
             tools:ignore="ContentDescription"
-            app:tint="@color/white"/>
+            app:tint="@color/text_grey"/>
 
         <TextView
             android:id="@+id/label_priority"

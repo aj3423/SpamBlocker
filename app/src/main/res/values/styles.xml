@@ -20,12 +20,12 @@
         <item name="strokeColor">@color/teal_200</item>
     </style>
     <style name="stroke_gray_button" parent="stroke_button">
-        <item name="android:textColor">@color/mid_grey</item>
-        <item name="strokeColor">@color/mid_grey</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="strokeColor">@color/text_grey</item>
     </style>
     <style name="stroke_blue_button" parent="stroke_button">
-        <item name="android:textColor">@color/dodger_blue</item>
-        <item name="strokeColor">@color/dodger_blue</item>
+        <item name="android:textColor">@color/sky_blue</item>
+        <item name="strokeColor">@color/sky_blue</item>
     </style>
     <style name="stroke_red_button" parent="stroke_button">
         <item name="android:textColor">@color/salmon</item>
@@ -39,16 +39,16 @@
         <item name="android:singleLine">true</item>
     </style>
     <style name="setting_stroke_blue_button" parent="setting_stroke_button">
-        <item name="android:textColor">@color/dodger_blue</item>
-        <item name="strokeColor">@color/dodger_blue</item>
+        <item name="android:textColor">@color/sky_blue</item>
+        <item name="strokeColor">@color/sky_blue</item>
     </style>
     <style name="setting_stroke_teal_button" parent="setting_stroke_button">
         <item name="android:textColor">@color/teal_200</item>
         <item name="strokeColor">@color/teal_200</item>
     </style>
     <style name="setting_stroke_gray_button" parent="setting_stroke_button">
-        <item name="android:textColor">@color/mid_grey</item>
-        <item name="strokeColor">@color/mid_grey</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="strokeColor">@color/text_grey</item>
     </style>
     <style name="setting_stroke_purple_button" parent="setting_stroke_button">
         <item name="android:textColor">@color/purple_200</item>
@@ -62,8 +62,8 @@
         <item name="android:drawablePadding">0dp</item>
     </style>
     <style name="setting_gray_spinner" parent="setting_spinner">
-        <item name="android:textColor">@color/mid_grey</item>
-        <item name="strokeColor">@color/mid_grey</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="strokeColor">@color/text_grey</item>
     </style>
     <style name="setting_teal_spinner" parent="setting_spinner">
         <item name="android:textColor">@color/teal_200</item>
@@ -92,10 +92,7 @@
         <item name="android:textSize">16sp</item>
     </style>
     <style name="setting_blue_label" parent="setting_label">
-        <item name="android:textColor">@color/dodger_blue</item>
-    </style>
-    <style name="setting_gray_label" parent="setting_label">
-        <item name="android:textColor">@color/hint_grey</item>
+        <item name="android:textColor">@color/sky_blue</item>
     </style>
     <style name="setting_spacing">
         <item name="android:layout_width">0dp</item>
@@ -109,7 +106,7 @@
         <item name="android:layout_marginRight">7dp</item>
         <item name="android:scaleType">centerInside</item>
         <item name="android:layout_gravity">center_vertical</item>
-        <item name="backgroundTint">@color/mid_grey</item>
+        <item name="backgroundTint">@color/text_grey</item>
     </style>
     <style name="setting_switch">
         <item name="android:layout_width">wrap_content</item>
@@ -130,11 +127,16 @@
         <item name="helperTextEnabled">true</item>
         <item name="helperTextTextColor">@color/salmon</item>
         <item name="endIconMode">clear_text</item>
+        <item name="android:textColorHint">@color/input_hint</item>
+        <item name="startIconTint">@color/mid_grey</item>
+        <item name="endIconTint">@color/mid_grey</item>
     </style>
     <style name="material_input">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">12dp</item>
+        <item name="android:inputType">textNoSuggestions</item>
+        <item name="android:textColor">@color/text_grey</item>
     </style>
 
     <style name="setting_group_relative">

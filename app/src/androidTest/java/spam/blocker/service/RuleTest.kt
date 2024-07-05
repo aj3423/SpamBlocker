@@ -56,7 +56,7 @@ class RuleTest {
         f.patternExtra = patternExtra
         f.priority = priority
         f.isBlacklist = isBlacklist
-        f.flagCallSms = Flag(flagCallSms)
+        f.flags = Flag(flagCallSms)
         f.patternFlags = Flag(patternFlags)
         f.patternExtraFlags = Flag(patternExtraFlags)
         f.schedule = schedule

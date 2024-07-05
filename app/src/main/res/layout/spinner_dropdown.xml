@@ -5,6 +5,6 @@
     android:paddingHorizontal="10dp"
     android:paddingVertical="4dp"
     android:textSize="18sp"
-    android:textColor="@color/mid_grey"
+    android:textColor="@color/text_grey"
     android:background="@color/dialog_bg">
 </TextView>

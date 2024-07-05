@@ -34,7 +34,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
                 android:text="filter pattern"
-                android:textColor="@color/dodger_blue"
+                android:textColor="@color/sky_blue"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
                 android:layout_marginStart="6dp"
                 android:singleLine="true"
                 android:text="@string/filter_desc"
-                android:textColor="@color/mid_grey"
+                android:textColor="@color/text_grey"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/text_app_label" />

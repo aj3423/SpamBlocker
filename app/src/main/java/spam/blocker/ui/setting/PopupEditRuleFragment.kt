@@ -2,7 +2,6 @@ package spam.blocker.ui.setting
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.Spinner
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
@@ -19,7 +17,6 @@ import com.dpro.widgets.WeekdaysPicker
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.coroutines.selects.select
 import spam.blocker.R
 import spam.blocker.db.PatternRule
 import spam.blocker.def.Def
@@ -28,6 +25,7 @@ import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.ui.util.dynamicPopupMenu
+import spam.blocker.ui.util.setWidthPercent
 import spam.blocker.util.Flag
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -52,6 +50,8 @@ class PopupEditRuleFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setWidthPercent(90)
+
         val ctx = requireContext()
         val res = ctx.resources
 
@@ -66,6 +66,14 @@ class PopupEditRuleFragment(
         val help_apply_to = view.findViewById<ImageView>(R.id.popup_help_apply_to)
         val chk_for_call = view.findViewById<CheckBox>(R.id.popup_chk_call)
         val chk_for_sms = view.findViewById<CheckBox>(R.id.popup_chk_sms)
+        val row_number_content = view.findViewById<LinearLayout>(R.id.row_apply_to_number_or_content)
+        val help_number_message = view.findViewById<ImageView>(R.id.help_apply_to_number_or_message)
+        val chk_for_number = view.findViewById<CheckBox>(R.id.popup_chk_number)
+        val chk_for_content = view.findViewById<CheckBox>(R.id.popup_chk_content)
+        val row_passed_blocked = view.findViewById<LinearLayout>(R.id.row_apply_to_passed_or_blocked)
+        val help_passed_blocked = view.findViewById<ImageView>(R.id.help_apply_to_passed_or_blocked)
+        val chk_for_passed = view.findViewById<CheckBox>(R.id.popup_chk_passed)
+        val chk_for_blocked = view.findViewById<CheckBox>(R.id.popup_chk_blocked)
         val radio_blackwhitelist = view.findViewById<RadioGroup>(R.id.popup_radio_blackwhitelist)
         val radio_whitelist = view.findViewById<RadioButton>(R.id.popup_radio_whitelist)
         val radio_blacklist = view.findViewById<RadioButton>(R.id.popup_radio_blacklist)
@@ -81,7 +89,7 @@ class PopupEditRuleFragment(
         val switch_schedule = view.findViewById<SwitchCompat>(R.id.switch_schedule)
         val picker_weekday = view.findViewById<WeekdaysPicker>(R.id.picker_weekdays)
         val row_weekday = view.findViewById<LinearLayout>(R.id.row_weekdays)
-        var row_schedule = view.findViewById<LinearLayout>(R.id.row_schedule)
+        val row_schedule = view.findViewById<LinearLayout>(R.id.row_schedule)
 
         val btn_save = view.findViewById<MaterialButton>(R.id.popup_btn_save_filter)
 
@@ -146,11 +154,23 @@ class PopupEditRuleFragment(
         edit_priority.setText(init.priority.toString())
         showHelpOnInvalidNumber(container_priority, edit_priority)
 
-        // ForCall / ForSMS
+        // For Call/SMS
         setupImageTooltip(ctx, viewLifecycleOwner, help_apply_to, R.string.help_apply_to)
         chk_for_call.isChecked = init.isForCall()
-        showIf(chk_for_call, forType == Def.ForNumber, true)
+        showIf(chk_for_call, forType != Def.ForSms, true)
         chk_for_sms.isChecked = init.isForSms()
+
+        // For Number/Content
+        setupImageTooltip(ctx, viewLifecycleOwner, help_number_message, R.string.help_apply_to_number_and_message)
+        chk_for_number.isChecked = init.flags.has(Def.FLAG_FOR_NUMBER)
+        chk_for_content.isChecked = init.flags.has(Def.FLAG_FOR_CONTENT)
+        showIf(row_number_content, forType == Def.ForQuickCopy)
+
+        // For Passed/Blocked
+        setupImageTooltip(ctx, viewLifecycleOwner, help_passed_blocked, R.string.help_apply_to_passed_and_blocked)
+        chk_for_passed.isChecked = init.flags.has(Def.FLAG_FOR_PASSED)
+        chk_for_blocked.isChecked = init.flags.has(Def.FLAG_FOR_BLOCKED)
+        showIf(row_passed_blocked, forType == Def.ForQuickCopy)
 
         // Whitelist / Blacklist
         if (init.isWhitelist()) {
@@ -271,8 +291,12 @@ class PopupEditRuleFragment(
                 init.patternExtra = patternExtra
                 init.description = edit_desc.text.toString()
                 init.priority = Integer.parseInt(priority)
-                init.setForCall(chk_for_call.isChecked)
-                init.setForSms(chk_for_sms.isChecked)
+                init.flags.set(Def.FLAG_FOR_CALL, chk_for_call.isChecked)
+                init.flags.set(Def.FLAG_FOR_SMS, chk_for_sms.isChecked)
+                init.flags.set(Def.FLAG_FOR_NUMBER, chk_for_number.isChecked)
+                init.flags.set(Def.FLAG_FOR_CONTENT, chk_for_content.isChecked)
+                init.flags.set(Def.FLAG_FOR_PASSED, chk_for_passed.isChecked)
+                init.flags.set(Def.FLAG_FOR_BLOCKED, chk_for_blocked.isChecked)
                 init.patternFlags = Flag(initPatternFlags.value)
                 init.patternExtraFlags = Flag(initPatternExtraFlags.value)
                 if (radio_blacklist.isChecked) {

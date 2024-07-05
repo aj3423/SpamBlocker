@@ -213,7 +213,7 @@
                         android:layout_gravity="center|center_vertical"
                         android:background="@android:color/transparent"
                         android:src="@drawable/ic_right_arrow"
-                        app:tint="@color/dodger_blue"
+                        app:tint="@color/sky_blue"
                         tools:ignore="ContentDescription" />
 
                 </LinearLayout>

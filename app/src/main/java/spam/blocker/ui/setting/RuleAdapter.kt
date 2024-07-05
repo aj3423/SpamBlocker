@@ -35,7 +35,7 @@ class RuleAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val f = filters[position]
 
-        val gray = ctx.getColor(R.color.mid_grey)
+        val gray = ctx.getColor(R.color.text_grey)
         val teal = ctx.getColor(R.color.teal_200)
 
         holder.itemView.setOnClickListener{
@@ -46,7 +46,7 @@ class RuleAdapter(
             true
         }
 
-        holder.labelPattern.text = f.patternStrColorful(ctx)
+        holder.labelPattern.text = f.patternStrColorful(ctx, forType)
         holder.labelDesc.text = f.description
         showIf(holder.labelDesc, f.description.isNotEmpty())
         holder.imgApplyToCall.setColorFilter(if (f.isForCall()) teal else gray, PorterDuff.Mode.SRC_IN)
@@ -57,10 +57,10 @@ class RuleAdapter(
             Def.BLOCK_TYPE_ANSWER_AND_HANG -> ctx.resources.getDrawable(R.drawable.ic_hang, null)
             else -> ctx.resources.getDrawable(R.drawable.ic_call_blocked, null)
         })
+        showIf(holder.imgForNumber, forType == Def.ForQuickCopy && f.flags.has(Def.FLAG_FOR_NUMBER))
+        showIf(holder.imgForContent, forType == Def.ForQuickCopy && f.flags.has(Def.FLAG_FOR_CONTENT))
         showIf(holder.imgBlockType, f.isBlacklist && forType == Def.ForNumber)
-        if (forType != Def.ForNumber) {
-            holder.imgApplyToCall.visibility = View.GONE
-        }
+        showIf(holder.imgApplyToCall, forType != Def.ForSms)
 
         holder.labelPriority.text = ctx.resources.getString(R.string.priority) + ": ${f.priority}"
 
@@ -76,6 +76,8 @@ class RuleAdapter(
 
         var labelPattern: TextView
         var labelDesc: TextView
+        var imgForNumber: ImageView
+        var imgForContent: ImageView
         var imgBlockType: ImageView
         var imgApplyToCall: ImageView
         var imgApplyToSms: ImageView
@@ -88,6 +90,8 @@ class RuleAdapter(
         init {
             labelPattern = itemView.findViewById(R.id.text_filter_pattern)
             labelDesc = itemView.findViewById(R.id.text_filter_desc)
+            imgForNumber = itemView.findViewById(R.id.img_for_number)
+            imgForContent = itemView.findViewById(R.id.img_for_content)
             imgBlockType = itemView.findViewById(R.id.img_block_type)
             imgApplyToCall = itemView.findViewById(R.id.img_for_call)
             imgApplyToSms = itemView.findViewById(R.id.img_for_sms)

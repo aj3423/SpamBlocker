@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import spam.blocker.R
 import spam.blocker.service.CopyToClipboardReceiver
+import kotlin.random.Random
 
 
 class Notification {
@@ -70,7 +71,7 @@ class Notification {
             ctx: Context, iconId: Int, title: String, body: String, importance: Int, color: Int?,
             intent: Intent, // notification clicking handler
 
-            toCopy: String? = null
+            toCopy: List<String> = listOf()
         ) {
             createChannelsOnce(ctx)
 
@@ -81,7 +82,7 @@ class Notification {
             // Use different requestCode for every pendingIntent, otherwise the
             //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
             //   its action button disabled
-            val requestCode = System.currentTimeMillis().toInt()
+            val requestCode = Random.nextInt()
 
             val pendingIntent = TaskStackBuilder.create(ctx).run {
                 addNextIntentWithParentStack(intent)
@@ -102,16 +103,20 @@ class Notification {
                 builder.setColorized(true)
                 builder.setColor(color)
             }
-            if (toCopy != null) {
+
+
+            // copy buttons
+            toCopy.forEach {
                 val copyIntent = Intent(ctx, CopyToClipboardReceiver::class.java).apply {
-                    putExtra("toCopy", toCopy)
+                    putExtra("toCopy", it)
                     putExtra("notificationId", notificationId)
                 }
-                val pending = PendingIntent.getBroadcast(ctx, requestCode, copyIntent,
+                val reqCode = Random.nextInt()
+                val pending = PendingIntent.getBroadcast(ctx, reqCode, copyIntent,
                     PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 
-                val strCopy = ctx.getString(R.string.copy)
-                builder.addAction(0, "$strCopy: $toCopy", pending)
+                val labelCopy = ctx.getString(R.string.copy)
+                builder.addAction(0, "$labelCopy: $it", pending)
             }
 
             val notification = builder.build()

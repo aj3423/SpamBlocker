@@ -15,7 +15,7 @@
 
         <LinearLayout style="@style/setting_row" >
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:maxWidth="300dp"
                 android:text="@string/enabled_for_call" />
             <Space style="@style/setting_spacing" />
@@ -27,7 +27,7 @@
 
         <LinearLayout style="@style/setting_row" >
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:maxWidth="300dp"
                 android:text="@string/enabled_for_sms" />
             <Space style="@style/setting_spacing" />

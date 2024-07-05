@@ -16,8 +16,7 @@
         <LinearLayout style="@style/setting_row" >
             <TextView
                 style="@style/setting_blue_label"
-                android:text="@string/type"
-                android:textColor="@color/hint_grey" />
+                android:text="@string/type" />
 
             <Space
                 android:layout_width="0dp"
@@ -34,20 +33,22 @@
                     android:id="@+id/radio_stir_inclusive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/inclusive" />
+                    android:text="@string/inclusive"
+                    android:textColor="@color/text_grey"/>
 
                 <RadioButton
                     android:id="@+id/radio_stir_exclusive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/exclusive" />
+                    android:text="@string/exclusive"
+                    android:textColor="@color/text_grey"/>
             </RadioGroup>
 
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row" >
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:maxWidth="300dp"
                 android:text="@string/stir_include_unverified" />
             <Space style="@style/setting_spacing" />

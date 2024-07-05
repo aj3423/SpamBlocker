@@ -18,7 +18,8 @@
         <!-- checked color -->
         <item name="colorAccent">@color/teal_200</item>
         <!-- unchecked color -->
-        <item name="android:textColorSecondary">@color/mid_grey</item>
+        <item name="android:textColorSecondary">@color/text_grey</item>
+
     </style>
 
 </resources>

@@ -150,10 +150,10 @@ class SettingFragment : Fragment() {
         val img_call = root.findViewById<ImageView>(R.id.enabled_for_call)
         val img_sms = root.findViewById<ImageView>(R.id.enabled_for_sms)
 
-        val green = ctx.getColor(R.color.dark_sea_green)
+        val green = ctx.getColor(R.color.text_green)
         val red = ctx.getColor(R.color.salmon)
         val teal = ctx.getColor(R.color.teal_200)
-        val gray = ctx.getColor(R.color.mid_grey)
+        val gray = ctx.getColor(R.color.text_grey)
         val g = Global(ctx)
         fun updateImagesColor() {
             val callEnabled = g.isCallEnabled()
@@ -227,18 +227,17 @@ class SettingFragment : Fragment() {
     private fun setupAbout(root: View) {
         val btn = root.findViewById<MaterialButton>(R.id.btn_about)
         btn.setOnClickListener {
-            val builder = AlertDialog.Builder(context)
-            builder.setTitle(resources.getString(R.string.about))
-
             val repo = "https://github.com/aj3423/SpamBlocker"
             val msg =
                 "${resources.getString(R.string.version)}:<br>&emsp;${BuildConfig.VERSION_NAME}<br><br>" +
                         "${resources.getString(R.string.source_code)}:<br>&emsp;<a href=\"$repo\">$repo</a><br><br>"
 
-            builder.setMessage(Html.fromHtml(msg, 0))
-
-            builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-                dialog.dismiss()
+            val builder = AlertDialog.Builder(context).apply {
+                setTitle(resources.getString(R.string.about))
+                setMessage(Html.fromHtml(msg, 0))
+                setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    dialog.dismiss()
+                }
             }
 
             val dlg = builder.create()
@@ -370,7 +369,7 @@ class SettingFragment : Fragment() {
             val isExclusive = spf.isExclusive()
             showIf(btnInclusive, spf.isEnabled())
 
-            val color = if (isExclusive) R.color.salmon else R.color.mid_grey
+            val color = if (isExclusive) R.color.salmon else R.color.text_grey
             btnInclusive.setTextColor(resources.getColor(color, null))
             btnInclusive.setStrokeColorResource(color)
 
@@ -421,7 +420,7 @@ class SettingFragment : Fragment() {
             val isExclusive = spf.isExclusive()
             showIf(btnInclusive, spf.isEnabled())
 
-            val color = if (isExclusive) R.color.salmon else R.color.mid_grey
+            val color = if (isExclusive) R.color.salmon else R.color.text_grey
             btnInclusive.setTextColor(resources.getColor(color, null))
             btnInclusive.setStrokeColorResource(color)
             btnInclusive.text =
@@ -700,7 +699,7 @@ class SettingFragment : Fragment() {
                     existing.pattern = newRule.pattern
                     existing.patternExtra = newRule.patternExtra
                     existing.description = newRule.description
-                    existing.flagCallSms = newRule.flagCallSms
+                    existing.flags = newRule.flags
                     existing.isBlacklist = newRule.isBlacklist
                     existing.schedule = newRule.schedule
 
@@ -772,8 +771,15 @@ class SettingFragment : Fragment() {
 
         val btnAdd = root.findViewById<MaterialButton>(addBtnId)
         btnAdd.setOnClickListener {
+            val defaultRule = PatternRule().apply {
+                if (forRuleType == Def.ForQuickCopy) { // set it for copying sms content by default
+                    flags.set(Def.FLAG_FOR_CALL, false)
+                    flags.set(Def.FLAG_FOR_PASSED, true)
+                    flags.set(Def.FLAG_FOR_CONTENT, true)
+                }
+            }
             val dialog = PopupEditRuleFragment(
-                PatternRule(), { newF -> // callback
+                defaultRule, { newF -> // callback
                     // 1. add to db
                     dbTable.addNewRule(ctx, newF)
 

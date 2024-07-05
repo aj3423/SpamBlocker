@@ -1,26 +1,26 @@
 <resources>
     <string name="help_backup">
         <![CDATA[
-        <font color="yellow"><b>Sichern</b></font>: <br>
-        &emsp; 1. <font color="cyan"><b>Exportieren</b></font> drücken, um die Konfiguration im Textfeld anzuzeigen. <br>
-        &emsp; 2. <font color="cyan"><b>Kopieren</b></font> drücken, um sie in die Zwischenablage zu kopieren. <br>
-        &emsp; 3. Diesen <font color="#cccc00"><b>Konfigurationstext</b></font> an ein anderes Gerät senden. <br>
+        <font color="yellow"><b>Backup</b></font>: <br>
+        &emsp; 1. Drücken Sie <font color="cyan"><b>Exportieren</b></font>, um die Konfiguration im Textfeld anzuzeigen. <br>
+        &emsp; 2. Drücken Sie <font color="cyan"><b>Kopieren</b></font>, um es in die Zwischenablage zu kopieren. <br>
+        &emsp; 3. Senden Sie diesen <font color="#cccc00"><b>Konfigurationstext</b></font> an ein anderes Gerät. <br>
         <br>
         <font color="yellow"><b>Wiederherstellen</b></font>: <br>
-        &emsp; 1. Den <font color="#cccc00"><b>Konfigurationstext</b></font> in das Textfeld einfügen. <br>
-        &emsp; 2. <font color="#0000ff"><b>Importieren</b></font> drücken. <br>
-        &emsp;&emsp; Wenn es <font color="#fa7f71"><b>fehlschlägt</b></font>, versuchen Sie, den JSON-Text zu validieren. Möglicherweise wurde er während der Übertragung beschädigt. Senden Sie ihn in diesem Fall stattdessen in einer Datei. <br>
+        &emsp; 1. Fügen Sie den <font color="#cccc00"><b>Konfigurationstext</b></font> in das Textfeld ein. <br>
+        &emsp; 2. Drücken Sie <font color="#0000ff"><b>Importieren</b></font>. <br>
+        &emsp;&emsp; Wenn es <font color="#fa7f71"><b>fehlschlägt</b></font>, versuchen Sie, diesen JSON-Text zu validieren. Er könnte während der Übertragung beschädigt worden sein. Senden Sie ihn in diesem Fall stattdessen in einer Datei. <br>
         <br>
-        Verlaufsaufzeichnungen werden ignoriert. <br>
+        Protokolldatensätze werden ignoriert. <br>
         <br>
-        Wenn einige Schalter wie "Kontakte" nach der Wiederherstellung nicht aktiviert sind, überprüfen Sie die entsprechende Berechtigung in den Systemeinstellungen. Berechtigungen werden nicht automatisch "wiederhergestellt". <br>
+        Wenn einige Schalter wie "Kontakte" nach dem Wiederherstellen nicht aktiviert sind, überprüfen Sie die entsprechende Berechtigung in den Systemeinstellungen. Berechtigungen werden nicht automatisch "wiederhergestellt". <br>
         ]]>
     </string>
     <string name="help_off_time">
         <![CDATA[
-        Wenn aktiviert, sind alle Anrufe (Nachrichten) während dieses Zeitraums zulässig. Normalerweise gibt es nachts keinen Spam. <br>
+        Wenn diese Option aktiviert ist, werden während dieses Zeitraums alle Anrufe (Nachrichten) zugelassen. Normalerweise gibt es nachts keine Spams. <br>
         <br>
-        Wenn die Startzeit größer als die Endzeit ist, z. B. 20:00 -> 07:00, bedeutet dies die Zeitspanne von 20:00 Uhr abends bis 07:00 Uhr am nächsten Morgen. <br>
+        Wenn die Startzeit größer ist als die Endzeit, z. B. 20:00 -> 07:00, bedeutet dies den Zeitraum von 20:00 Uhr abends bis 07:00 Uhr am nächsten Morgen. <br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
@@ -29,20 +29,20 @@
     <string name="help_regex_flags">
         <![CDATA[
 
-            Diese Flags ändern das Matching-Verhalten des Regex, sie werden standardmäßig für neue Regeln festgelegt. <br>
+            Diese Flags ändern das Übereinstimmungsverhalten des Regex. Sie sind standardmäßig für neue Regeln festgelegt. <br>
             <br>
 
             <font color="#ffa500"><b>Groß-/Kleinschreibung ignorieren</b></font>:<br>
-            &ensp; Macht das Muster-Matching unabhängig von der Groß-/Kleinschreibung, <font color="cyan"><b>a</b></font>
-              würde sowohl <font color="cyan"><b>a</b></font> als auch <font color="cyan"><b>A</b></font> entsprechen. <br>
+            &ensp; Dadurch wird die Musterübereinstimmung unabhängig von Groß-/Kleinschreibung. <font color="cyan"><b>a</b></font>
+            würde sowohl mit <font color="cyan"><b>a</b></font> als auch mit <font color="cyan"><b>A</b></font> übereinstimmen. <br>
             <br>
 
-            <font color="#ffa500"><b>Punkt soll alles abgleichen</b></font>: <br>
-            &ensp; Wenn aktiviert, wird <font color="cyan"><b>.</b></font> auch Zeilenumbruchzeichen (<font color="cyan"><b>\\n</b></font>) abgleichen.
-              Dadurch kann der Punkt über mehrere Zeilen hinweg abgleichen. <br>
+            <font color="#ffa500"><b>Punkt stimmt mit allem überein</b></font>: <br>
+            &ensp; Wenn diese Option aktiviert ist, stimmt <font color="cyan"><b>.</b></font> auch mit Zeilenumbruchzeichen (<font color="cyan"><b>\\n</b></font>) überein.
+            Dadurch kann der Punkt über mehrere Zeilen hinweg übereinstimmen. <br>
             &ensp; Anwendungsfall: <br>
-            &emsp;   Mehrzeilige Spam-Nachricht abgleichen: <br>
-            &emsp;   <font color="#fa7f71">Fordern Sie Ihren Preis an: http://<br>
+            &emsp;   Übereinstimmung mit mehrzeiliger Spam-Nachricht: <br>
+            &emsp;   <font color="#fa7f71">fordern Sie Ihren Preis an: http://<br>
             &emsp;   abc.com </font><br>
             &emsp;   mit Regel: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>

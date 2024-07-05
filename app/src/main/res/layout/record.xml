@@ -54,7 +54,7 @@
                     android:layout_marginBottom="6dp"
                     android:maxLines="10"
                     android:text="call result long long long long long text"
-                    android:textColor="@color/mid_grey"
+                    android:textColor="@color/text_grey"
                     android:textSize="16sp" />
 
                 <ImageView

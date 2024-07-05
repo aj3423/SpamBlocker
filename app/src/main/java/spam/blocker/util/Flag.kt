@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 class Flag(var value: Int) {
 
     // check if it has a flag
-    fun Has(f: Int): Boolean {
+    fun has(f: Int): Boolean {
         return value and f == f
     }
 
@@ -29,10 +29,10 @@ class Flag(var value: Int) {
         var ret = ""
         attrMap.forEach { (k, v) ->
             if (inverse.contains(k)) {
-                if (!Has(k))
+                if (!has(k))
                     ret += v
             } else {
-                if (Has(k))
+                if (has(k))
                     ret += v
             }
         }

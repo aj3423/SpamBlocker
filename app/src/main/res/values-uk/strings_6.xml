@@ -1,80 +1,77 @@
 <resources>
-    <string name="theme">Theme</string>
+    <string name="theme">Тема</string>
     <string-array name="theme_list">
-        <item>Follow System</item>
-        <item>Light</item>
-        <item>Dark</item>
+        <item>Дотрим. системи</item>
+        <item>Світла</item>
+        <item>Темна</item>
     </string-array>
 
     <string name="crash_title">
-        Sorry, the app has crashed. \n\nPlease copy the content below and report this issue on github,
-        be sure to remove any sensitive information before reporting.
+        На жаль, застосунок вийшов із ладу. \n\nСкопіюйте вміст нижче і повідомте про цю проблему на GitHub,
+        обов’язково видаліть усю конфіденційну інформацію перед тим, як повідомляти про це.
     </string>
     <string-array name="week">
-        <item>Sun</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thur</item>
-        <item>Fri</item>
-        <item>Sat</item>
+        <item>Нд</item>
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Reject</item>
-        <item>Silence</item>
-        <item>Answer+Hang Up</item>
+        <item>Відхилити</item>
+        <item>Мовчання</item>
+        <item>Відповісти+повісити</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>None</item>
-        <item>Shade</item>
-        <item>StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade, Heads-up</item>
+        <item>За жодних обставин</item>
+        <item>Панель</item>
+        <item>Панель статусу, панель</item>
+        <item>Звук, панель статусу, панель</item>
+        <item>Звук, панель статусу, панель, головний перегляд</item>
     </string-array>
     <string-array name="copy_as_list">
-        <item>Copy as Json</item>
-        <item>Copy as Compressed</item>
+        <item>Скопіювати як Json</item>
+        <item>Скопіювати у стислому вигляді</item>
     </string-array>
 
-    <string name="language">Language</string>
+    <string name="language">Мова</string>
     <string name="help_language">
         <![CDATA[
-            Translations are done by Google AI, fire an issue on github for adding a new language support.
+            Переклади виконуються AI Google, надішліть повідомлення про помилки на GitHub для додавання підтримки нової мови.
         ]]>
     </string>
-    <string name="enabled_for_call">Enable for Call</string>
-    <string name="enabled_for_sms">Enable for SMS</string>
-    <string name="repeated_call">Repeated Call</string>
+    <string name="enabled_for_call">Увімкнути для дзвінків</string>
+    <string name="enabled_for_sms">Увімкнути для SMS</string>
+    <string name="repeated_call">Повторний дзвінок</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permit if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
-        <br>
-        Receiving text message from the same number is also counted, this depends on whether the READ_SMS permission is granted, which is optional.<br>
-        <br>
-        The default setting <font color="cyan"><b>1 / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
-        <br>
-        Only applies for calls, <b>not</b> for text messages. <br>
-        <br>
-        <font color="#ea86ff"><b>Priority: 10</b></font>
+        Дозволити, якщо дзвінок повторюється протягом певного періоду часу, то, швидше за все, він важливий, а не спам-дзвінок. <br><br>
+        Отримання текстового повідомлення з того самого номера також враховується, це залежить від того, чи надано дозвіл READ_SMS, який є необов’язковим.<br><br>
+        Налаштування за замовчуванням <font color="cyan"><b>1/5 хв</b></font> означає, що другий дзвінок протягом 5 хвилин буде дозволений. <br><br>
+        Застосовується лише до дзвінків, <b>не</b> до текстових повідомлень. <br><br>
+        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        The global switch, this app only works when this is turned on,
-        turn it off when you are waiting for some particular call/message. <br>
-        <br>
-        It can also be toggled from the <b>Dropdown Quick Settings</b>.
+        Глобальний перемикач, цей застосунок працює лише коли він увімкнений,
+        вимкніть його, коли чекаєте на певний дзвінок/повідомлення. <br><br>
+        Його також можна перемкнути з <b>Швидких налаштувань спадного списку</b>.
         ]]>
     </string>
 
-    <string name="about">About</string>
-    <string name="version">Version</string>
-    <string name="build_time">Build Time (UTC)</string>
-    <string name="source_code">Source Code</string>
-    <string name="dismiss">Dismiss</string>
-    <string name="warning_running_in_work_profile">This app may not work correctly within work profile, please install it in main profile instead.</string>
+    <string name="about">Про</string>
+    <string name="version">Версія</string>
+    <string name="build_time">Час створення (UTC)</string>
+    <string name="source_code">Вихідний код</string>
+    <string name="dismiss">Відхилити</string>
+    <string name="warning_running_in_work_profile">
+        Цей застосунок може працювати неправильно у робочому профілі. Замість цього встановіть його у головному профілі.
+    </string>
 
 </resources>

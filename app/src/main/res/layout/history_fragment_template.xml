@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="50dp"
         android:src="@drawable/ic_display_filter"
-        app:backgroundTint="@color/dodger_blue"
+        app:backgroundTint="@color/sky_blue"
         app:fabSize="mini"
         app:useCompatPadding="true"
         tools:ignore="ContentDescription"

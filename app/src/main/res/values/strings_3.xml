@@ -7,31 +7,42 @@
           of blocking messages, spam messages will still be present in the default SMS app. <font color="#fa7f71"><b>Disable</b></font> the notification of the default
           SMS app in system settings, let this app take over the notification, otherwise there will be double notifications. <br>
         <br>
-        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
+        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern.
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        A quick way to copy content from SMS messages, such as verification codes. <br>
+        A quick way to copy content from SMS messages or phone numbers, making it easy to grab verification codes or incoming numbers.<br>
         <br>
-        When it matches, a button like <font color="yellow"><b>Copy: 123456</b></font> would appear in the notification. <br>
-        It is not like clicking on the notification, when the copy button is clicked, only this notification is dismissed, other notifications will remain. <br>
+        When it matches, a button like <font color="yellow"><b>Copy: 123456</b></font> would appear in the notification.<br>
         <br>
-        A sample rule: (using capturing group) <br>
-        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        Another approach: (using lookaround) <br>
-        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
-        &emsp;<font color="#ffa500"><b>Note</b></font>: <br>
-        &emsp; It does not support <font color="#fa7f71"><b>.*</b></font> in lookarounds, it requires a bounded max length.<br>
-        &emsp; for example, use: <b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
-        &emsp; instead of: <b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
-        <br>
-        It only works when the SMS message is <b>NOT</b> <font color="#fa7f71"><b>blocked</b></font>.
+        A sample rule for extracting verification codes:<br>
+        &emsp; Using capturing group:<br>
+        &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        &emsp; Another approach using lookaround:<br>
+        &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        Uncheck these checkboxes to disable this rule for Call, SMS, or both.
+        Enable this rule for Call, SMS, or both.<br>
+        Uncheck these checkboxes to disable the rule without deleting it.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        When <font color="#d1c8c8"><b>Number</b></font> is checked, this rule will extract content from the incoming number.
+        For example, use <b>(.*)</b> to copy the phone number.<br>
+        <br>
+        When <font color="#d1c8c8"><b>Content</b></font> is checked, this rule will extract content from the SMS message body,
+        such as verification codes.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        When <font color="cyan"><b>Passed</b></font> is checked, this rule will apply to passed calls and messages.<br>
+        <br>
+        When <font color="#fa7f71"><b>Blocked</b></font> is checked, this rule will apply to blocked calls and messages.
         ]]>
     </string>
     <string name="help_importance">
@@ -50,13 +61,6 @@
         It is just a simulation and will not actually popup an incoming call(or text message).<br>
         <br>
         The result is shown here, and in history log, with notification.
-        ]]>
-    </string>
-    <string name="help_test_quick_copy">
-        <![CDATA[
-        This is not a simulation, it only shows if any quick-copy rule matches the content.<br>
-        <br>
-        To simulate receiving, use the <font color="cyan"><b>Test</b></font> from <font color="#0000ff"><b>Message Rules</b></font> instead.
         ]]>
     </string>
 

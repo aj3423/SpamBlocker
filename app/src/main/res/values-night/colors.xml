@@ -5,5 +5,8 @@
     <color name="fragment_bg">#111111</color>
     <color name="item_bg">#1d1d1d</color>
     <color name="group_border">#404040</color>
+    <color name="input_hint">@color/silver_grey</color>
+    <color name="text_grey">#c0c0c0</color>
+    <color name="text_green">@color/light_green</color>
 
 </resources>

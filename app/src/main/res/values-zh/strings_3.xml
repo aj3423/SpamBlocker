@@ -1,60 +1,63 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        这些规则适用于短信内容。<br>
+        这些规则适用于短信消息内容。<br>
         <br>
-        <font color="#ffa500"><b>提示</b></font>：对于短信，此应用程序充当默认短信应用程序的“附加组件”，它会阻止通知，而不是阻止消息，垃圾邮件仍然会出现在默认短信应用程序中。<font color="#fa7f71"><b>禁用</b></font>系统设置中默认短信应用程序的通知，让此应用程序接管通知，否则会出现重复通知。<br>
+        <font color="#ffa500"><b>注意</b></font>：对于短信消息，此应用作为默认短信应用的“附加组件”，它阻止通知而不是阻止消息，垃圾邮件仍然存在于默认短信应用中。 <font color="#fa7f71"><b>禁用</b></font> 默认系统设置中的默认短信应用通知，让此应用进行通知，否则将出现重复通知。<br>
         <br>
-        此列表按优先级降序、描述升序和模式升序<b>显示</b>。<br>
+        列表按优先级降序、描述升序和模式升序<b>显示</b>。
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        快速从短信中复制内容（如验证码）的方法。<br>
+        一种从短信消息或电话号码中快速复制内容的方法，使用户可以轻松获取验证码或来电号码。<br>
         <br>
-        匹配时，通知中会显示类似 <font color="yellow"><b>复制：123456</b></font> 的按钮。<br>
-        这与点击通知不同，点击复制按钮时，仅会取消此通知，其他通知仍会保留。<br>
+        匹配时，会在通知中显示类似 <font color="yellow"><b>复制：123456</b></font> 的按钮。<br>
         <br>
-        示例规则（使用捕获组）：<br>
-        &emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        另一种方法（使用环顾）：<br>
-        &emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font><br>
-        &emsp;<font color="#ffa500"><b>提示</b></font>：<br>
-        &emsp; 在环顾中不支持<font color="#fa7f71"><b>.*</b></font>，它需要有界最大长度。<br>
-        &emsp; 例如，如下使用：<b>(?&lt;=code</b><font color="cyan"><b>.{0,3}</b></font><b>)\\d+</b> <br>
-        &emsp; 而不是：<b>(?&lt;=code</b><font color="#fa7f71"><b>.*</b></font><b>)\\d+</b> <br>
-        <br>
-        它仅在短信<b>没</b><font color="#fa7f71"><b>被阻止</b></font>时起作用。
+        提取验证码的示例规则：<br>
+        &emsp; 使用捕获组：<br>
+        &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        &emsp; 另一种环顾查找方法：<br>
+        &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
-        取消选中这些复选框，可禁用通话、短信或同时对这两者的规则。
+        启用此通话、短信或两者规则。<br>
+        取消选中这些复选框以禁用规则而不删除它。
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        选中<font color="#d1c8c8"><b>号码</b></font>时，此规则将从来电号码中提取内容。<br>
+        例如，使用<b>(.*)</b>复制电话号码。<br>
+        <br>
+        选中<font color="#d1c8c8"><b>内容</b></font>时，此规则会从短信正文中提取内容，例如验证码。
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        选中 <font color="cyan"><b>已通过</b></font> 时，此规则将会应用于已通过的通话和消息。<br>
+        <br>
+        选中 <font color="#fa7f71"><b>已阻止</b></font> 时，此规则将会应用于已阻止的通话和消息。
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>无</b>：<br>&emsp; 完全不通知。<br>
-        <b>遮罩</b>：<br>&emsp; 下拉通知遮罩。<br>
-        <b>状态栏</b>：<br>&emsp; 顶部栏中的小图标。<br>
-        <b>声音</b>：<br>&emsp; 默认通知声音。<br>
-        <b>提示</b>：<br>&emsp; 在屏幕顶部弹出浮动窗口。
+        <b>无</b>：<br>&emsp; 完全无通知。 <br>
+        <b>阴影</b>：<br>&emsp; 下拉通知栏。 <br>
+        <b>状态栏</b>：<br>&emsp; 顶部栏中的小图标。 <br>
+        <b>声音</b>：<br>&emsp; 默认的通知声音。 <br>
+        <b>抬头</b>：<br>&emsp; 在屏幕顶部弹出悬浮窗口。
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
-        此操作有助于检查规则是否按预期设置。<br>
+        这有助于检查规则是否按预期设置。<br>
         <br>
-        它仅为模拟，不会真实弹出通话（或文本消息）。<br>
+        这仅仅是一种模拟，不会真正弹出一个来电（或短信）。<br>
         <br>
-        结果将在此处以及历史日志中显示，带有通知。
-        ]]>
-    </string>
-    <string name="help_test_quick_copy">
-        <![CDATA[
-        这不是模拟，它仅显示快速复制规则是否与内容匹配。<br>
-        <br>
-        若要模拟接收，请使用 <font color="#0000ff"><b>消息规则</b></font> 中的 <font color="cyan"><b>测试</b></font>。 
+        结果与通知一起显示在此处和历史记录中。
         ]]>
     </string>
 

@@ -2,6 +2,7 @@ package spam.blocker.ui.util
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.widget.CheckBox
 import android.widget.ImageView
@@ -47,14 +48,17 @@ class MaterialInputRegexFlagsUtil {
                 }
                 fun initCheck(chk: CheckBox, flag: Int) {
                     bindCheckEvents(chk, flag)
-                    chk.isChecked = initFlags.Has(flag)
+                    chk.isChecked = initFlags.has(flag)
                 }
                 initCheck(flags_i, Def.FLAG_REGEX_IGNORE_CASE)
                 initCheck(flags_d, Def.FLAG_REGEX_DOT_MATCH_ALL)
 
-                val popUp = PopupWindow(ctx)
-                popUp.contentView = binding.root
-                popUp.isFocusable = true
+                val popUp = PopupWindow(ctx).apply {
+                    contentView = binding.root
+                    isFocusable = true
+                    isTouchable = true
+                    setBackgroundDrawable(ColorDrawable(ctx.getColor(R.color.dialog_bg)))
+                }
 
                 popUp.showAsDropDown(it)
             }

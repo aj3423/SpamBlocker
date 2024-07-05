@@ -120,10 +120,13 @@ class CallScreeningService : CallScreeningService() {
                 putExtra("blocked", true)
             }.setAction("action_call")
 
+            val toCopy = Checker.checkQuickCopy(
+                ctx, rawNumber, null, true, true)
             Notification.show(ctx, R.drawable.ic_call_blocked,
                 rawNumber,
                 Checker.resultStr(ctx, r.result, r.reason()),
-                importance, ctx.resources.getColor(R.color.salmon, null), intent)
+                importance, ctx.resources.getColor(R.color.salmon, null), intent,
+                toCopy = toCopy)
         }
 
         // broadcast new call to update UI(add new item to call log)

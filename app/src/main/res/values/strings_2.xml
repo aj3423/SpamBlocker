@@ -1,7 +1,7 @@
 <resources>
-    <string name="for_particular_number">For particular number</string>
+    <string name="for_particular_number">For number</string>
     <string name="no_match_found">No match found</string>
-    <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match</string>
+    <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
     <string name="help_contact">
         <![CDATA[
         When enabled, calls/texts from contacts are always permitted. <br>
@@ -42,7 +42,7 @@
         <br>
         Only applies for calls, <b>not</b> for text messages. <br>
         <br>
-        <font color="#ea86ff"><b>Priority: 10</b></font> <br>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
@@ -55,7 +55,7 @@
           and <font color="#fa7f71"><b>spaces</b></font>
           and <font color="#fa7f71"><b>leading zeroes</b></font>
           are removed before checking, for example:<br>
-        &emsp; All possible formats:<br>
+        &emsp; All these formats:<br>
         &emsp;&emsp; 123456789 &emsp;(regular number)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(with <font color="#fa7f71"><b>spaces</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(with leading <font color="#fa7f71"><b>+</b></font>)<br>
@@ -63,7 +63,7 @@
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
         &emsp; They are <b>all</b> checked as:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp;So regex <font color="cyan"><b>123.*</b></font> would match <b>all</b> of them.<br>
+        &emsp; So regex <font color="cyan"><b>123.*</b></font> would match <b>all</b> of them.<br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>

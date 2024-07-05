@@ -1,79 +1,82 @@
 <resources>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
-        <item>Seguir al sistema</item>
+        <item>Seguir sistema</item>
         <item>Claro</item>
-        <item>Oscuro</item>
+        <item>Escuro</item>
     </string-array>
 
     <string name="crash_title">
-        Lo siento, la aplicación se ha bloqueado. \n\nCopia el contenido de abajo y reporta el problema en github, asegúrate de eliminar cualquier información sensible antes de reportarlo.
+        Desculpe, o app travou. \n\nCopie o conteúdo abaixo e informe esse problema no Github,
+certifique-se de remover qualquer informação sensível antes de informar.
     </string>
     <string-array name="week">
         <item>Dom</item>
-        <item>Lun</item>
-        <item>Mar</item>
-        <item>Mié</item>
-        <item>Jue</item>
-        <item>Vie</item>
+        <item>Seg</item>
+        <item>Ter</item>
+        <item>Qua</item>
+        <item>Qui</item>
+        <item>Sex</item>
         <item>Sáb</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Rechazar</item>
+        <item>Rejeitar</item>
         <item>Silenciar</item>
-        <item>Contestar y colgar</item>
+        <item>Atender+Desligar</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Ninguna</item>
-        <item>Destacado</item>
-        <item>Barra de estado, destacado</item>
-        <item>Sonido, barra de estado, destacado</item>
-        <item>Sonido, barra de estado, destacado, en Primer plano</item>
+        <item>Nenhum</item>
+        <item>Sombra</item>
+        <item>Barra de status, Sombra</item>
+        <item>Som, Barra de status, Sombra</item>
+        <item>Som, Barra de status, Sombra, Cabeçalho</item>
     </string-array>
     <string-array name="copy_as_list">
         <item>Copiar como Json</item>
-        <item>Copiar comprimido</item>
+        <item>Copiar como compactado</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones son hechas por Google AI, reporta un problema en github para añadir compatibilidad con un nuevo idioma.
+            Traduções são feitas pela IA do Google, abra um problema no Github para adicionar suporte a um novo idioma.
         ]]>
     </string>
-    <string name="enabled_for_call">Activar para llamadas</string>
-    <string name="enabled_for_sms">Activar para SMS</string>
-    <string name="repeated_call">Llamada repetida</string>
+    <string name="enabled_for_call">Habilitar para ligação</string>
+    <string name="enabled_for_sms">Habilitar para SMS</string>
+    <string name="repeated_call">Ligções repetidas</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permite si la llamada se repite en un periodo de tiempo, es probable que sea importante en lugar de una llamada spam. <br>
+        Permitir se uma ligação for repetida em um período de tempo, é provável que ela seja importante e não uma ligação spam. <br>
         <br>
-        Recibir mensajes de texto del mismo número también cuenta, esto depende de si el permiso READ_SMS es otorgado, el cual es opcional.<br>
+        O recebimento de mensagens de texto do mesmo número também será contabilizado se a permissão READ_SMS for concedida, o que é opcional. <br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que la segunda llamada en 5 minutos será permitida. <br>
+        A configuração padrão <font color="cyan"><b>1 / 5 Min</b></font> significa que a segunda llamada em menos de 5 minutos será permitida. <br>
         <br>
-        Solo aplica para llamadas, <b>no</b> para mensajes de texto. <br>
+        Se aplica apenas a chamadas, <b>não</b> a mensagens de texto. <br>
         <br>
-        <font color="#ea86ff"><b>Prioridad: 10</b></font>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El interruptor global, esta aplicación solo funciona cuando está activado,
-        desactívalo cuando estés esperando alguna llamada/mensaje en particular. <br>
+        O controle global, esse app funciona apenas quando estiver ativado,
+        desative-o quando estiver esperando alguma ligação/mensagem específica. <br>
         <br>
-        También se puede activar o desactivar desde los <b>Ajustes rápidos desplegables</b>.
+        Também pode ser alternado a partir do <b>Configurações rápidas do menu suspenso</b>.
         ]]>
     </string>
 
-    <string name="about">Acerca de</string>
-    <string name="version">Versión</string>
-    <string name="build_time">Momento de la compilación (UTC)</string>
-    <string name="source_code">Código fuente</string>
-    <string name="dismiss">Descartar</string>
-    <string name="warning_running_in_work_profile">Esta aplicación puede no funcionar correctamente dentro del perfil de trabajo, mejor instálala en el perfil principal.</string>
+    <string name="about">Sobre</string>
+    <string name="version">Versão</string>
+    <string name="build_time">Horário de compilação (UTC)</string>
+    <string name="source_code">Código fonte</string>
+    <string name="dismiss">Dispensar</string>
+    <string name="warning_running_in_work_profile">
+        Este aplicativo pode não funcionar corretamente no perfil de trabalho. Instale-o no perfil principal.
+    </string>
 
 </resources>

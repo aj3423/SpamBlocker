@@ -92,11 +92,13 @@ func translate_1_file(lang string, fn string) error {
 	fmt.Printf("processing: %s -> %s\n", filepath.Base(src_file), lang)
 
 	to_translate := read_file(src_file)
+	to_translate = strings.ReplaceAll(to_translate, `\'`, `'`)
+	to_translate = strings.ReplaceAll(to_translate, `\"`, `"`)
 
 	GeminiToken := os.Getenv("GeminiToken")
 
 	text := fmt.Sprintf(
-		"Translate the following xml content to %s, it's about a call blocking app "+
+		"Translate the following xml content to language \"%s\", it's about a call blocking app "+
 			"which blocks incoming spam calls and SMS messages. "+
 			"Better use short words, make sure leave the XML tags unmodified, show me the result only:\n"+
 			"%s",

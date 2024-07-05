@@ -82,9 +82,12 @@ object Def {
 
     // flags
     // for call/sms
-    const val FLAG_FOR_CALL = 1
-    const val FLAG_FOR_SMS = 2
-    const val FLAG_FOR_BOTH_SMS_CALL = 3
+    const val FLAG_FOR_CALL = 1 shl 0
+    const val FLAG_FOR_SMS = 1 shl 1
+    const val FLAG_FOR_NUMBER = 1 shl 2
+    const val FLAG_FOR_CONTENT = 1 shl 3
+    const val FLAG_FOR_PASSED = 1 shl 4
+    const val FLAG_FOR_BLOCKED = 1 shl 5
 
     const val FLAG_REGEX_IGNORE_CASE = 1 shl 0
     const val FLAG_REGEX_MULTILINE = 1 shl 1

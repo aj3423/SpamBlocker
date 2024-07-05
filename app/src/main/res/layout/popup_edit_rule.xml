@@ -24,13 +24,13 @@
                 style = "@style/material_input"
                 android:id="@+id/popup_edit_pattern"
                 android:maxLines="10"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine|textNoSuggestions" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- for sms only -->
         <LinearLayout style="@style/setting_row" android:id="@+id/row_sms_particular_number">
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:text="@string/for_particular_number" />
             <ImageView
                 android:id="@+id/popup_help_particular_number"
@@ -52,7 +52,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/material_input"
                 android:id="@+id/popup_edit_pattern_phone"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine|textNoSuggestions" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +63,7 @@
                 style="@style/material_input"
                 android:id="@+id/popup_edit_desc"
                 android:hint="@string/filter_desc"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine|textNoSuggestions" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +82,7 @@
 
         <LinearLayout style="@style/setting_row">
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:text="@string/apply_to" />
 
             <ImageView
@@ -97,20 +97,77 @@
                 android:id="@+id/popup_chk_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/call" />
+                android:text="@string/call"
+                android:textColor="@color/text_grey" />
 
             <CheckBox
                 android:id="@+id/popup_chk_sms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sms" />
+                android:text="@string/sms"
+                android:textColor="@color/text_grey" />
+        </LinearLayout>
 
+        <LinearLayout style="@style/setting_row" android:id="@+id/row_apply_to_number_or_content">
+            <TextView
+                style="@style/setting_blue_label"
+                android:text="@string/apply_to" />
+
+            <ImageView
+                android:id="@+id/help_apply_to_number_or_message"
+                style="@style/help_question_icon"
+                android:background="@drawable/ic_question"
+                tools:ignore="ContentDescription" />
+
+            <Space style="@style/setting_spacing"/>
+
+            <CheckBox
+                android:id="@+id/popup_chk_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number_abbrev"
+                android:textColor="@color/text_grey" />
+
+            <CheckBox
+                android:id="@+id/popup_chk_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sms_content_abbrev"
+                android:textColor="@color/text_grey" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/setting_row" android:id="@+id/row_apply_to_passed_or_blocked">
+            <TextView
+                style="@style/setting_blue_label"
+                android:text="@string/apply_to" />
+
+            <ImageView
+                android:id="@+id/help_apply_to_passed_or_blocked"
+                style="@style/help_question_icon"
+                android:background="@drawable/ic_question"
+                tools:ignore="ContentDescription" />
+
+            <Space style="@style/setting_spacing"/>
+
+            <CheckBox
+                android:id="@+id/popup_chk_passed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/passed"
+                android:textColor="@color/text_green" />
+
+            <CheckBox
+                android:id="@+id/popup_chk_blocked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/blocked"
+                android:textColor="@color/salmon" />
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_rule_type">
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:text="@string/type" />
 
             <Space style="@style/setting_spacing" />
@@ -125,13 +182,15 @@
                     android:id="@+id/popup_radio_whitelist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/whitelist" />
+                    android:text="@string/whitelist"
+                    android:textColor="@color/text_green"/>
 
                 <RadioButton
                     android:id="@+id/popup_radio_blacklist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/blacklist" />
+                    android:text="@string/blacklist"
+                    android:textColor="@color/salmon"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -139,7 +198,7 @@
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_block_type">
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:text="@string/block_type" />
 
             <Space style="@style/setting_spacing"/>
@@ -151,9 +210,13 @@
 
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_importance">
-            <TextView
-                style="@style/setting_gray_label"
-                android:text="@string/notification" />
+            <me.grantland.widget.AutofitLayout
+                style="@style/setting_auto_fit">
+                <TextView
+                    style="@style/setting_blue_label"
+                    android:text="@string/notification"
+                    android:maxWidth="100dp"/>
+            </me.grantland.widget.AutofitLayout>
 
             <ImageView
                 android:id="@+id/popup_help_importance"
@@ -168,7 +231,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_importance"
                     style="@style/setting_gray_spinner"
-                    android:maxWidth="140dp"/>
+                    android:maxWidth="180dp"/>
             </me.grantland.widget.AutofitLayout>
         </LinearLayout>
 
@@ -176,7 +239,7 @@
         <LinearLayout style="@style/setting_row"
             android:id="@+id/row_schedule" >
             <TextView
-                style="@style/setting_gray_label"
+                style="@style/setting_blue_label"
                 android:text="@string/schedule" />
 
             <Space style="@style/setting_spacing"/>

@@ -29,17 +29,17 @@ class PatternRule {
     var description: String = ""
     var priority: Int = 1
     var isBlacklist = true
-    var flagCallSms = Flag(Def.FLAG_FOR_BOTH_SMS_CALL) // it applies to SMS or Call or both
+    var flags = Flag(Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL) // it applies to SMS or Call or both
     var importance = Def.DEF_SPAM_IMPORTANCE // notification importance
     var schedule = ""
     var blockType = Def.DEF_BLOCK_TYPE
 
     override fun toString(): String {
-        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, patternFlags: $patternFlags, patternExtraFlags: $patternExtraFlags, desc: $description, priority: $priority, flagCallSms: $flagCallSms, isBlacklist: $isBlacklist, importance: $importance, schedule: $schedule, blockType: $blockType"
+        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, patternFlags: $patternFlags, patternExtraFlags: $patternExtraFlags, desc: $description, priority: $priority, flagCallSms: $flags, isBlacklist: $isBlacklist, importance: $importance, schedule: $schedule, blockType: $blockType"
     }
 
     fun isForCall(): Boolean {
-        return flagCallSms.Has(Def.FLAG_FOR_CALL)
+        return flags.has(Def.FLAG_FOR_CALL)
     }
 
     fun patternStr(): String {
@@ -48,15 +48,28 @@ class PatternRule {
         else
             pattern
     }
-    fun patternStrColorful(ctx: Context): SpannableStringBuilder {
-        val green = ctx.resources.getColor(R.color.dark_sea_green, null)
+    fun patternStrColorful(ctx: Context, forType: Int): SpannableStringBuilder {
+        val gray = ctx.resources.getColor(R.color.text_grey, null)
+        val green = ctx.resources.getColor(R.color.text_green, null)
         val red = ctx.resources.getColor(R.color.salmon, null)
+        val blue = ctx.resources.getColor(R.color.dodge_blue, null)
         val scheduleColor = ctx.resources.getColor(R.color.schedule, null)
         val flagsColor = Color.MAGENTA
 
         val ratioFlags = 0.9f
 
-        val patternColor = if (isBlacklist) red else green
+        val patternColor = if (forType == Def.ForQuickCopy) {
+            // QuickCopy rule color is based on flags(passed/blocked)
+            val passed = flags.has(Def.FLAG_FOR_PASSED)
+            val blocked = flags.has(Def.FLAG_FOR_BLOCKED)
+            if (passed && blocked)
+                blue
+            else if (!passed && !blocked)
+                gray
+            else
+                if (passed) green else red
+        } else
+            if (isBlacklist) red else green
 
         val sb = SpannableStringBuilder()
 
@@ -86,19 +99,11 @@ class PatternRule {
 
 
     fun isForSms(): Boolean {
-        return flagCallSms.Has(Def.FLAG_FOR_SMS)
+        return flags.has(Def.FLAG_FOR_SMS)
     }
 
     fun isWhitelist(): Boolean {
         return !isBlacklist
-    }
-
-    fun setForCall(enabled: Boolean) {
-        flagCallSms.set(Def.FLAG_FOR_CALL, enabled)
-    }
-
-    fun setForSms(enabled: Boolean) {
-        flagCallSms.set(Def.FLAG_FOR_SMS, enabled)
     }
 }
 
@@ -126,7 +131,7 @@ abstract class RuleTable {
                     f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                     f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                     f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
-                    f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
+                    f.flags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS)))
                     f.importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE)) ?: Def.DEF_SPAM_IMPORTANCE
                     f.schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
                     f.blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE)) ?: Def.DEF_BLOCK_TYPE
@@ -155,7 +160,7 @@ abstract class RuleTable {
                 f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
                 f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
                 f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
-                f.flagCallSms = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAG_CALL_SMS)))
+                f.flags = Flag(it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS)))
                 f.importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE)) ?: Def.DEF_SPAM_IMPORTANCE
                 f.schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
                 f.blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE)) ?: Def.DEF_BLOCK_TYPE
@@ -168,7 +173,7 @@ abstract class RuleTable {
     }
 
     fun listAll(ctx: Context): List<PatternRule> {
-        return listRules(ctx, Def.FLAG_FOR_BOTH_SMS_CALL)
+        return listRules(ctx, Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL)
     }
 
     fun listRules(
@@ -178,12 +183,12 @@ abstract class RuleTable {
         val where = arrayListOf<String>()
 
         // call/sms
-        val sms = Flag(flagCallSms).Has(Def.FLAG_FOR_SMS)
-        val call = Flag(flagCallSms).Has(Def.FLAG_FOR_CALL)
+        val sms = Flag(flagCallSms).has(Def.FLAG_FOR_SMS)
+        val call = Flag(flagCallSms).has(Def.FLAG_FOR_CALL)
         if (sms and !call) {
-            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Def.FLAG_FOR_SMS}) = ${Def.FLAG_FOR_SMS}")
+            where.add("(${Db.COLUMN_FLAGS} & ${Def.FLAG_FOR_SMS}) = ${Def.FLAG_FOR_SMS}")
         } else if (call and !sms) {
-            where.add("(${Db.COLUMN_FLAG_CALL_SMS} & ${Def.FLAG_FOR_CALL}) = ${Def.FLAG_FOR_CALL}")
+            where.add("(${Db.COLUMN_FLAGS} & ${Def.FLAG_FOR_CALL}) = ${Def.FLAG_FOR_CALL}")
         }
 
         // build where clause
@@ -209,7 +214,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags.value)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
-        cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
+        cv.put(Db.COLUMN_FLAGS, f.flags.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
@@ -228,7 +233,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags.value)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
-        cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
+        cv.put(Db.COLUMN_FLAGS, f.flags.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
@@ -246,7 +251,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_PATTERN_EXTRA_FLAGS, f.patternExtraFlags.value)
         cv.put(Db.COLUMN_DESC, f.description)
         cv.put(Db.COLUMN_PRIORITY, f.priority)
-        cv.put(Db.COLUMN_FLAG_CALL_SMS, f.flagCallSms.value)
+        cv.put(Db.COLUMN_FLAGS, f.flags.value)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)

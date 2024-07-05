@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import kotlin.random.Random
 
 class Util {
     companion object {
@@ -70,6 +71,30 @@ class Util {
                 .replace(" ", "")
                 .replace("(", "")
                 .replace(")", "")
+        }
+
+        fun extractString(regex: Regex, haystack: String) : String? {
+            /*
+                lookbehind: has `value`, no `group(1)`
+                capturing group: has both, should use group(1) only
+
+                so the logic is:
+                    if has `value` && no `group(1)`
+                        use `value`
+                    else if has both
+                        use `group1`
+             */
+            val result = regex.find(haystack)
+            val v = result?.value
+            val g1 = result?.groupValues?.getOrNull(1)
+
+            if (v != null && g1 == null) {
+                return v
+            } else if (v != null && g1 != null) {
+                return g1
+            }
+
+            return null
         }
 
         fun formatTimeRange(
@@ -151,16 +176,16 @@ class Util {
 
         fun flagsToRegexOptions(flags: Flag) : Set<RegexOption> {
             val opts = mutableSetOf<RegexOption>()
-            if (flags.Has(Def.FLAG_REGEX_IGNORE_CASE)) {
+            if (flags.has(Def.FLAG_REGEX_IGNORE_CASE)) {
                 opts.add(RegexOption.IGNORE_CASE)
             }
-            if (flags.Has(Def.FLAG_REGEX_MULTILINE)) {
+            if (flags.has(Def.FLAG_REGEX_MULTILINE)) {
                 opts.add(RegexOption.MULTILINE)
             }
-            if (flags.Has(Def.FLAG_REGEX_DOT_MATCH_ALL)) {
+            if (flags.has(Def.FLAG_REGEX_DOT_MATCH_ALL)) {
                 opts.add(RegexOption.DOT_MATCHES_ALL)
             }
-            if (flags.Has(Def.FLAG_REGEX_LITERAL)) {
+            if (flags.has(Def.FLAG_REGEX_LITERAL)) {
                 opts.add(RegexOption.LITERAL)
             }
             return opts

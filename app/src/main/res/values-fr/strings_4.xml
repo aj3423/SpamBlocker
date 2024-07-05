@@ -1,26 +1,26 @@
 <resources>
     <string name="help_backup">
         <![CDATA[
-        <font color="yellow"><b>Pour sauvegarder</b></font> : <br>
-        &emsp; 1. Appuyez sur <font color="cyan"><b>Exporter</b></font> pour afficher la configuration dans la zone de texte. <br>
-        &emsp; 2. Appuyez sur <font color="cyan"><b>Copier</b></font> pour copier la configuration dans le presse-papiers. <br>
-        &emsp; 3. Envoyez ce <font color="#cccc00"><b>texte de configuration</b></font> à un autre appareil. <br>
+        <font color="yellow"><b>Pour sauvegarder</b></font> : <br>
+        &emsp; 1. Appuyez sur <font color="cyan"><b>Exporter</b></font> pour afficher la configuration dans la zone de texte.<br>
+        &emsp; 2. Appuyez sur <font color="cyan"><b>Copier</b></font> pour le copier dans le presse-papiers.<br>
+        &emsp; 3. Envoyez ce <font color="#cccc00"><b>texte de configuration</b></font> à un autre appareil.<br>
         <br>
-        <font color="yellow"><b>Pour restaurer</b></font> : <br>
-        &emsp; 1. Collez le <font color="#cccc00"><b>texte de configuration</b></font> dans la zone de texte. <br>
-        &emsp; 2. Appuyez sur <font color="#0000ff"><b>Importer</b></font>. <br>
-        &emsp;&emsp; En cas <font color="#fa7f71"><b>d\'échec</b></font>, essayez de valider le texte JSON. Il se peut qu\'il ait été corrompu pendant le transfert. Envoyez-le plutôt dans un fichier. <br>
+        <font color="yellow"><b>Pour restaurer</b></font> : <br>
+        &emsp; 1. Collez le <font color="#cccc00"><b>texte de configuration</b></font> dans la zone de texte.<br>
+        &emsp; 2. Appuyez sur <font color="#0000ff"><b>Importer</b></font>.<br>
+        &emsp;&emsp; Si cela <font color="#fa7f71"><b>échoue</b></font>, essayez de valider ce texte JSON, il peut avoir été corrompu pendant le transfert. Si c\'est le cas, envoyez-le plutôt dans un fichier.<br>
         <br>
-        Les enregistrements historiques sont ignorés. <br>
+        Les enregistrements de l\'historique sont ignorés.<br>
         <br>
-        Si certains commutateurs, tels que « Contacts », ne sont pas activés après la restauration, vérifiez l\'autorisation correspondante dans les paramètres système. Les autorisations ne sont pas « restaurées » automatiquement. <br>
+        Si certains commutateurs comme "Contacts" ne sont pas activés après la restauration, vérifiez l\'autorisation correspondante dans les paramètres système, les autorisations ne sont pas "restaurées" automatiquement.<br>
         ]]>
     </string>
     <string name="help_off_time">
         <![CDATA[
-        Une fois activé, tous les appels (messages) seront autorisés pendant cette période. Les spams sont généralement rares la nuit. <br>
+        Lorsqu\'elle est activée, tous les appels (messages) seront autorisés pendant cette période. Habituellement, il n\'y a pas de spams la nuit.<br>
         <br>
-        Si l\'heure de début est supérieure à l\'heure de fin, par exemple, 20 h 00 -> 07 h 00, cela signifie la période allant de 20 h 00 le soir à 07 h 00 le lendemain matin. <br>
+        Si l\'heure de début est supérieure à l\'heure de fin, par exemple 20:00 -> 07:00, cela signifie la période de 20:00 le soir à 07:00 le lendemain matin.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
@@ -29,26 +29,26 @@
     <string name="help_regex_flags">
         <![CDATA[
 
-            Ces indicateurs modifient le comportement de mise en correspondance de l\'expression régulière. Ils sont définis par défaut pour les nouvelles règles. <br>
+            Ces indicateurs modifient le comportement de correspondance de l\'expression régulière. Ils sont définis par défaut pour les nouvelles règles.<br>
             <br>
 
-            <font color="#ffa500"><b>Ignorer la casse</b></font> : <br>
-            &ensp; Il rend la correspondance du motif insensible à la casse : <font color="cyan"><b>a</b></font>
-              correspondrait à la fois à <font color="cyan"><b>a</b></font> et <font color="cyan"><b>A</b></font>. <br>
+            <font color="#ffa500"><b>Ignorer la casse</b></font> :<br>
+            &ensp; Cela rend la correspondance de modèle insensible à la casse, <font color="cyan"><b>a</b></font>
+              correspondrait à la fois à <font color="cyan"><b>a</b></font> et à <font color="cyan"><b>A</b></font>. <br>
             <br>
 
-            <font color="#ffa500"><b>Point correspondant à tout</b></font> : <br>
-            &ensp; Lorsqu\'il est activé, <font color="cyan"><b>.</b></font> correspond également aux caractères de nouvelle ligne (<font color="cyan"><b>\\n</b></font>).
-              Cela permet au point de correspondre sur plusieurs lignes. <br>
-            &ensp; Cas d\'utilisation : <br>
-            &emsp;   Appariement d\'un message spam sur plusieurs lignes : <br>
-            &emsp;   <font color="#fa7f71">réclamez votre prix : http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   avec la règle : <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+            <font color="#ffa500"><b>Le point correspond à tout</b></font> :<br>
+            &ensp; Lorsqu\'elle est activée, <font color="cyan"><b>.</b></font> correspondra également aux caractères de nouvelle ligne (<font color="cyan"><b>\\n</b></font>),
+              ce qui permet au point de correspondre sur plusieurs lignes.<br>
+            &ensp; Cas d\'utilisation :<br>
+            &emsp; Correspondre à un message de spam sur plusieurs lignes :<br>
+            &emsp; <font color="#fa7f71">Réclamez votre prix : http://<br>
+            &emsp; abc.com </font><br>
+            &emsp; avec la règle :<br>
+            &emsp; <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
         ]]>
     </string>
 
-    
+
 </resources>

@@ -20,7 +20,9 @@
     <string name="within_minutes">Within Minutes</string>
     <string name="within_days">Within Days</string>
     <string name="phone_number">Phone Number</string>
+    <string name="phone_number_abbrev">Number</string>
     <string name="sms_content">SMS Content</string>
+    <string name="sms_content_abbrev">Content</string>
     <string name="result">Result</string>
     <string name="reason">Reason</string>
     <string name="regex_flags">Regex Flags</string>
@@ -42,7 +44,7 @@
         &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>
         <br>
         - <font color="#d1c8c8"><b>Answer and Hang Up</b></font>: <font color="#ffa500"><b>(experimental)</b></font><br>
-        &emsp; To avoid being sent to the voicemail, the behavior may depend on the carrier. The lockscreen can be turned on for a short while, you might also hear a call end tone(some phones offer an option to mute this sound).<br>
+        &emsp; To avoid being sent to the voicemail, the behavior may depend on the carrier. The lockscreen can be turned on for a short while, you might also hear a call end tone(some phones offer an option to mute this sound).
         ]]>
     </string>
     <string name="stir">STIR Attestation</string>

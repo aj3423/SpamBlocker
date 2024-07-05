@@ -63,9 +63,13 @@ class SmsReceiver : BroadcastReceiver() {
                 putExtra("blocked", true)
             }.setAction("action_sms_block")
 
+            val toCopy = Checker.checkQuickCopy(
+                ctx, rawNumber, messageBody, false, true)
+
             Notification.show(ctx, R.drawable.ic_sms_blocked,
                 showName, messageBody,
-                importance, ctx.resources.getColor(R.color.salmon, null), intent)
+                importance, ctx.resources.getColor(R.color.salmon, null), intent,
+                toCopy = toCopy)
 
         } else { // passed
 
@@ -78,11 +82,8 @@ class SmsReceiver : BroadcastReceiver() {
                 putExtra("rawNumber", rawNumber)
             }.setAction("action_sms_non_block")
 
-            // COPY action button:
-            //  - copy content
-            //  - cancel this particular notification, other notifications remain
-            val res = Checker.checkQuickCopy(ctx, messageBody)
-            val toCopy = res?.second?.trim()?.ifEmpty { null }
+            val toCopy = Checker.checkQuickCopy(
+                ctx, rawNumber, messageBody, false, false)
 
             Notification.show(ctx, R.drawable.ic_sms_pass,
                 showName, messageBody,

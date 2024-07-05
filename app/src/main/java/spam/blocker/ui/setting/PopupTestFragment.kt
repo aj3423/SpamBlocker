@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.button.MaterialButton
@@ -41,7 +42,8 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
         val ctx = requireContext()
 
         // widgets
-        val container_phone = view.findViewById<TextInputLayout>(R.id.container_test_phone)
+
+        val radio_type = view.findViewById<RadioGroup>(R.id.test_radio_type)
         val edit_phone = view.findViewById<TextInputEditText>(R.id.edit_test_phone)
         val container_sms = view.findViewById<TextInputLayout>(R.id.container_test_sms)
         val edit_sms = view.findViewById<TextInputEditText>(R.id.edit_test_sms)
@@ -50,18 +52,27 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
         val label_result = view.findViewById<TextView>(R.id.test_result)
         val img_reason = view.findViewById<ImageView>(R.id.test_reason)
 
-        if (forType == Def.ForQuickCopy)
-            container_phone.visibility = View.GONE
-
-
-        setupImageTooltip(ctx, viewLifecycleOwner, help_test,
-            if (forType == Def.ForQuickCopy) R.string.help_test_quick_copy else R.string.help_test_rules)
 
         fun clearResult() {
             label_result.visibility = View.GONE
             img_reason.visibility = View.GONE
         }
-        showIf(container_sms, forType != Def.ForNumber)
+        fun updateUI() {
+            showIf(container_sms, radio_type.checkedRadioButtonId == R.id.test_radio_sms)
+            clearResult()
+        }
+        // type radio
+        radio_type.check(
+            if (forType == Def.ForNumber)
+                R.id.test_radio_call else R.id.test_radio_sms)
+        radio_type.setOnCheckedChangeListener { _, checkedId ->
+            updateUI()
+        }
+        updateUI()
+
+        setupImageTooltip(ctx, viewLifecycleOwner, help_test,
+           R.string.help_test_rules)
+
         edit_phone.setText(currentPhone)
         edit_phone.addTextChangedListener {
             currentPhone = it.toString()
@@ -74,40 +85,23 @@ class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
         }
 
         btn_test.setOnClickListener {
-            val rawNumber = edit_phone.text.toString()
-            val sms = edit_sms.text.toString()
-
             val red = resources.getColor(R.color.salmon, null)
-            val green = resources.getColor(R.color.dark_sea_green, null)
+            val green = resources.getColor(R.color.text_green, null)
 
             label_result.visibility = View.VISIBLE
 
-            if (forType != Def.ForQuickCopy) {
-                val r = if (forType == Def.ForNumber)
-                    CallScreeningService().processCall(ctx, rawNumber)
-                else
-                    SmsReceiver().processSms(ctx, rawNumber, sms)
+            val r = if (radio_type.checkedRadioButtonId == R.id.test_radio_call)
+                CallScreeningService().processCall(ctx, currentPhone)
+            else
+                SmsReceiver().processSms(ctx, currentPhone, currentSms)
 
-                // set result text color
-                label_result.setTextColor(if (r.shouldBlock) red else green)
+            // set result text color
+            label_result.setTextColor(if (r.shouldBlock) red else green)
 
-                label_result.text = Checker.resultStr(ctx, r.result, r.reason())
-                if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
-                    img_reason.visibility = View.VISIBLE
-                    img_reason.setImageDrawable(AppInfo.fromPackage(ctx, r.reason()).icon)
-                }
-
-            } else {
-                val r = Checker.checkQuickCopy(ctx, sms)
-
-                label_result.setTextColor(if (r == null) red else green)
-
-                if (r != null) {
-                    val byRule = if (r.first.description.isEmpty()) r.first.pattern else r.first.description
-                    label_result.text = "$byRule\n\n  ${r.second}"
-                } else {
-                    label_result.text = resources.getString(R.string.no_match_found)
-                }
+            label_result.text = Checker.resultStr(ctx, r.result, r.reason())
+            if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
+                img_reason.visibility = View.VISIBLE
+                img_reason.setImageDrawable(AppInfo.fromPackage(ctx, r.reason()).icon)
             }
         }
     }

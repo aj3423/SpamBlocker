@@ -404,48 +404,42 @@ class Checker { // for namespace only
             return CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
         }
 
-        fun checkQuickCopy(ctx: Context, messageBody: String) : Pair<PatternRule, String>? {
+        fun checkQuickCopy(
+            ctx: Context,
+            rawNumber: String, messageBody: String?,
+            isCall: Boolean, isBlocked: Boolean
+        ) : List<String> {
 
-            val rules = QuickCopyRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
+            return QuickCopyRuleTable().listAll(ctx).filter {
+                val c1 = it.flags.has(if(isCall) Def.FLAG_FOR_CALL else Def.FLAG_FOR_SMS)
+                val c2 = it.flags.has(if(isBlocked) Def.FLAG_FOR_BLOCKED else Def.FLAG_FOR_PASSED)
+                c1 && c2
+            }.sortedByDescending {
+                it.priority
+            }.fold(mutableListOf()) { acc, it ->
 
-            var result : MatchResult? = null
-
-            val rule = rules.firstOrNull{
                 val opts = Util.flagsToRegexOptions(it.patternFlags)
+                val regex = it.pattern.toRegex(opts)
 
-                result = it.pattern.toRegex(opts).find(messageBody)
-                result != null
-            }
+                val forNumber = it.flags.has(Def.FLAG_FOR_NUMBER)
+                val forContent = it.flags.has(Def.FLAG_FOR_CONTENT)
 
-            return if (rule == null)
-                null
-            else {
-                /*
-                    lookbehind: has `value`, no `group(1)`
-                    capturing group: has both, should use group(1) only
-
-                    so the logic is:
-                        if has `value` && no `group(1)`
-                            use `value`
-                        else if has both
-                            use `group1`
-                 */
-
-                val v = result?.value
-                val g1 = result?.groupValues?.getOrNull(1)
-
-                if (v != null && g1 == null) {
-                    return Pair(rule, v)
-                } else if (v != null && g1 != null) {
-                    return Pair(rule, g1)
+                if (forNumber) {
+                    val extracted = Util.extractString(regex, Util.clearNumber(rawNumber))
+                    if (extracted != null)
+                        acc.add(extracted)
                 }
-
-                return null
+                if (forContent && messageBody != null) {
+                    val extracted = Util.extractString(regex, messageBody)
+                    if (extracted != null)
+                        acc.add(extracted)
+                }
+                acc
             }
         }
 
 
-        fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
+        private fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
             val f = filterTable?.findPatternRuleById(ctx, reason.toLong())
 
             val reasonStr = if (f != null) {

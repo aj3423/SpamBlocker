@@ -1,6 +1,7 @@
 package spam.blocker.ui.util
 
 import android.content.Context
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,8 @@ fun dynamicPopupMenu(
 
         val rowView = TextView(ctx).apply {
             text = it
+            setTypeface(typeface, Typeface.BOLD)
+            setTextColor(ctx.getColor(R.color.text_grey))
             setPadding(32, 16, 32, 16)
         }
 

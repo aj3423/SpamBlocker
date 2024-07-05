@@ -3,8 +3,8 @@
     <stroke
         android:width="1dip"
         android:color="@color/dialog_border" />
-    <solid
-        android:color="@color/dialog_bg" />
-    <corners
-        android:radius="1dip" />
+
+    <solid android:color="@color/dialog_bg" />
+
+    <corners android:radius="1dip" />
 </shape>
