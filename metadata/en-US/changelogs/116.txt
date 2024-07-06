@@ -1,0 +1,9 @@
+Breaking:
+ - After upgrading to this version, QuickCopy rules are updated, please backup again.
+Fix:
+ - Rule notification icon missing in light theme
+Improvement:
+ - QuickCopy supports copying phone number
+ - Click history record to open the conversation in call/sms app
+ - New theme type "follow system"(used by default)
+ - Improved UI
