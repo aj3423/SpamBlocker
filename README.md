@@ -54,3 +54,8 @@ An Android Call/SMS blocker. (Android 10+)
 # Languages supported
 
 Languages are translated using Gemini AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), fire an issue for requesting a new language support.
+
+# Donation <3
+
+https://aj3423.github.io/donate
+
