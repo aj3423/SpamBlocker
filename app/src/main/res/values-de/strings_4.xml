@@ -1,21 +1,4 @@
 <resources>
-    <string name="help_backup">
-        <![CDATA[
-        <font color="yellow"><b>Backup</b></font>: <br>
-        &emsp; 1. Drücken Sie <font color="cyan"><b>Exportieren</b></font>, um die Konfiguration im Textfeld anzuzeigen. <br>
-        &emsp; 2. Drücken Sie <font color="cyan"><b>Kopieren</b></font>, um es in die Zwischenablage zu kopieren. <br>
-        &emsp; 3. Senden Sie diesen <font color="#cccc00"><b>Konfigurationstext</b></font> an ein anderes Gerät. <br>
-        <br>
-        <font color="yellow"><b>Wiederherstellen</b></font>: <br>
-        &emsp; 1. Fügen Sie den <font color="#cccc00"><b>Konfigurationstext</b></font> in das Textfeld ein. <br>
-        &emsp; 2. Drücken Sie <font color="#0000ff"><b>Importieren</b></font>. <br>
-        &emsp;&emsp; Wenn es <font color="#fa7f71"><b>fehlschlägt</b></font>, versuchen Sie, diesen JSON-Text zu validieren. Er könnte während der Übertragung beschädigt worden sein. Senden Sie ihn in diesem Fall stattdessen in einer Datei. <br>
-        <br>
-        Protokolldatensätze werden ignoriert. <br>
-        <br>
-        Wenn einige Schalter wie "Kontakte" nach dem Wiederherstellen nicht aktiviert sind, überprüfen Sie die entsprechende Berechtigung in den Systemeinstellungen. Berechtigungen werden nicht automatisch "wiederhergestellt". <br>
-        ]]>
-    </string>
     <string name="help_off_time">
         <![CDATA[
         Wenn diese Option aktiviert ist, werden während dieses Zeitraums alle Anrufe (Nachrichten) zugelassen. Normalerweise gibt es nachts keine Spams. <br>

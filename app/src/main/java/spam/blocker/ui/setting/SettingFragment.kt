@@ -2,6 +2,7 @@ package spam.blocker.ui.setting
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.AppOpsManager
 import android.content.BroadcastReceiver
@@ -9,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.PorterDuff
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
@@ -21,6 +23,7 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -40,8 +43,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import spam.blocker.BuildConfig
 import spam.blocker.R
+import spam.blocker.config.Configs
 import spam.blocker.databinding.SettingFragmentBinding
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
@@ -49,6 +56,11 @@ import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
+import spam.blocker.ui.util.Algorithm.b64Decode
+import spam.blocker.ui.util.Algorithm.compressString
+import spam.blocker.ui.util.Algorithm.decompressToString
+import spam.blocker.ui.util.FileInChooser
+import spam.blocker.ui.util.FileOutChooser
 import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.UI.Companion.applyTheme
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
@@ -70,6 +82,8 @@ import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class SettingFragment : Fragment() {
@@ -115,7 +129,10 @@ class SettingFragment : Fragment() {
 
         setupRules( root,
             R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_test_number_filters,
-            numberRules, NumberRuleTable(), Def.ForNumber )
+            numberRules, NumberRuleTable(), Def.ForNumber, onAddLongClick = {
+
+            })
+
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),
             R.string.help_number_filter
@@ -219,9 +236,86 @@ class SettingFragment : Fragment() {
     }
 
     private fun setupBackupRestore(root: View) {
-        val btn = root.findViewById<MaterialButton>(R.id.btn_backup)
-        btn.setOnClickListener {
-            PopupBackupFragment().show(requireActivity().supportFragmentManager, "tag_backup")
+        val ctx = requireContext()
+        val spin_export = root.findViewById<MaterialButton>(R.id.btn_backup_export)
+        val btn_import = root.findViewById<MaterialButton>(R.id.btn_backup_import)
+
+
+        val exportFileChooser = FileOutChooser(this) // must be initialized during fragment creation
+        spin_export.setOnClickListener {
+            val menu = ctx.resources.getStringArray(R.array.export_as_list).toList()
+            dynamicPopupMenu(ctx, menu, spin_export) { i ->
+                val compress = i == 1
+
+                // prepare file name
+                val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
+                val ymd = LocalDate.now().format(formatter)
+                val fn = "SpamBlocker.${ymd}.${if(compress) "gz" else "json"}"
+
+                // prepare file content
+                val curr = Configs()
+                curr.load(ctx)
+                val content = if (compress) {
+                    compressString(curr.toJsonString())
+                } else {
+                    curr.toPrettyJsonString().toByteArray()
+                }
+
+                exportFileChooser.create(fn, content)
+            }
+        }
+
+        // import
+        val importChooser = FileInChooser(this) // must be initialized during fragment creation
+        btn_import.setOnClickListener {
+            importChooser.load{ raw: ByteArray? ->
+
+                if (raw == null)
+                    return@load
+
+                val alert = AlertDialog.Builder(ctx)
+
+                fun onDecodeSucc(str: String) {
+                    val newCfg = Configs.createFromJson(str)
+                    newCfg.apply(ctx)
+
+                    alert.apply {
+                        setTitle(" ")
+                        setIcon(R.drawable.ic_check_green)
+                        setMessage(resources.getString(R.string.imported_successfully))
+                        setPositiveButton(R.string.ok) { _, _ ->
+                            Launcher.selfRestart(ctx)
+                        }
+                    }.create().show()
+                }
+                fun onDecodeFail() {
+                    alert.apply {
+                        setTitle(" ")
+                        setIcon(R.drawable.ic_fail_red)
+                        setMessage(resources.getString(R.string.import_fail))
+                    }.create().show()
+                }
+
+                try {
+                    // for history compatibility, text file contains b64(gzip)
+                    val jsonStr = decompressToString(b64Decode(String(raw)))
+                    onDecodeSucc(jsonStr)
+                } catch (_: Exception) {
+                    try {
+                        // try gzip compressed
+                        val jsonStr = decompressToString(raw)
+                        onDecodeSucc(jsonStr)
+                    } catch (e: Exception) {
+                        // try plain json string
+                        try {
+                            val jsonStr = String(raw)
+                            onDecodeSucc(jsonStr)
+                        } catch (e: Exception) {
+                            onDecodeFail()
+                        }
+                    }
+                }
+            }
         }
     }
     private fun setupAbout(root: View) {
@@ -670,7 +764,8 @@ class SettingFragment : Fragment() {
         recyclerId: Int, addBtnId: Int, testBtnId: Int,
         filters: ObservableArrayList<PatternRule>,
         dbTable: RuleTable,
-        forRuleType: Int
+        forRuleType: Int,
+        onAddLongClick: (()->Unit)? = null
     ) {
         val ctx = requireContext()
 
@@ -789,6 +884,12 @@ class SettingFragment : Fragment() {
             )
 
             dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
+        }
+        if (onAddLongClick != null) {
+            btnAdd.setOnLongClickListener {
+                onAddLongClick()
+                true
+            }
         }
         val btnTest = root.findViewById<MaterialButton>(testBtnId)
         btnTest.setOnClickListener {

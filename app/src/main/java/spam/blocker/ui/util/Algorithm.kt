@@ -18,7 +18,7 @@ object Algorithm {
         return bos.toByteArray()
     }
 
-    fun decompressString(compressed: ByteArray): String {
+    fun decompressToString(compressed: ByteArray): String {
         val bis = ByteArrayInputStream(compressed)
         val gis = GZIPInputStream(bis)
         val br = BufferedReader(InputStreamReader(gis, "UTF-8"))
@@ -33,9 +33,9 @@ object Algorithm {
         return sb.toString()
     }
 
-    fun b64Encode(raw: ByteArray): String {
-        return Base64.encodeToString(raw, Base64.NO_WRAP)
-    }
+//    fun b64Encode(raw: ByteArray): String {
+//        return Base64.encodeToString(raw, Base64.NO_WRAP)
+//    }
     fun b64Decode(encoded: String): ByteArray {
         return Base64.decode(encoded, Base64.NO_WRAP)
     }

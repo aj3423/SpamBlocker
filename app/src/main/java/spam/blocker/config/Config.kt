@@ -2,6 +2,9 @@ package spam.blocker.config
 
 import android.content.Context
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
@@ -283,5 +286,23 @@ class Configs {
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
+    }
+
+    fun toJsonString(): String {
+        return Json.encodeToString(this)
+    }
+    fun toPrettyJsonString(): String {
+        val prettyJson = Json {
+            prettyPrint = true
+        }
+        val jsonStr = prettyJson.encodeToString(this)
+        return jsonStr
+    }
+    companion object {
+        fun createFromJson(jsonStr: String) : Configs {
+            val json = Json { ignoreUnknownKeys = true }
+            val newCfg = json.decodeFromString<Configs>(jsonStr)
+            return newCfg
+        }
     }
 }

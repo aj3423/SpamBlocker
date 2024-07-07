@@ -1,5 +1,5 @@
 <resources>
-    <string name="theme"> thème</string>
+    <string name="theme">Thème</string>
     <string-array name="theme_list">
         <item>Suivre le système</item>
         <item>Clair</item>
@@ -7,7 +7,8 @@
     </string-array>
 
     <string name="crash_title">
-        Désolé, l\'application s\'est écrasée. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur Github. Assurez-vous de supprimer toute information sensible avant de le signaler.
+        Désolé, l\'appli s\'est arrêtée. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur github,
+        assurez-vous de supprimer toute information sensible avant de signaler.
     </string>
     <string-array name="week">
         <item>Dim</item>
@@ -22,50 +23,50 @@
     <string-array name="block_type_list">
         <item>Rejeter</item>
         <item>Silence</item>
-        <item>Décrocher + Raccrocher</item>
+        <item>Répondre+Raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Aucun</item>
         <item>Ombrage</item>
-        <item>Barre d\'état, Ombre</item>
-        <item>Son, Barre d\'état, Ombre</item>
-        <item>Son, Barre d\'état, Ombre, Tête haute</item>
+        <item>Barre, ombrage</item>
+        <item>Son, barre, ombrage</item>
+        <item>Son, barre, ombrage, notification</item>
     </string-array>
-    <string-array name="copy_as_list">
-        <item>Copier en Json</item>
-        <item>Copier en compressé</item>
+    <string-array name="export_as_list">
+        <item>Exporter en Json</item>
+        <item>Exporter en compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par Google AI, ouvrez un problème sur Github pour ajouter un nouveau support linguistique.
+            Les traductions sont effectuées par Google AI, signalez un problème sur github pour ajouter une prise en charge d\'une nouvelle langue.
         ]]>
     </string>
-    <string name="enabled_for_call">Activer pour l\'appel</string>
+    <string name="enabled_for_call">Activer pour les appels</string>
     <string name="enabled_for_sms">Activer pour les SMS</string>
-    <string name="repeated_call">Appel répété</string>
+    <string name="repeated_call">Appels répétés</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans une période donnée, il est probable qu\'il soit important plutôt qu\'un appel indésirable. <br>
+        Autoriser si l\'appel est répété dans un certain délai, il est probable qu\'il soit important plutôt qu\'un appel de spam. <br>
         <br>
-        La réception de SMS provenant du même numéro est également comptabilisée, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
+        La réception d\'un SMS du même numéro est également comptabilisée, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
-        S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
+        S\'applique uniquement pour les appels, <b>pas</b> pour les messages textes. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Le commutateur global, cette application ne fonctionne que lorsque celui-ci est activé,
+        Commutateur global, cette appli fonctionne uniquement lorsque celui-ci est activé,
         désactivez-le lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Il peut également être activé/désactivé à partir des <b>Paramètres rapides déroulants</b>.
+        Il peut également être activé ou désactivé depuis les <b>Paramètres rapides du menu déroulant</b>.
         ]]>
     </string>
 
@@ -73,9 +74,9 @@
     <string name="version">Version</string>
     <string name="build_time">Heure de construction (UTC)</string>
     <string name="source_code">Code source</string>
-    <string name="dismiss">Rejeter</string>
+    <string name="dismiss">Ignorer</string>
     <string name="warning_running_in_work_profile">
-        Cette application peut ne pas fonctionner correctement dans un profil de travail, veuillez l\'installer dans le profil principal à la place.
+        Cette appli peut ne pas fonctionner correctement dans un profil professionnel, installez-la plutôt dans le profil principal.
     </string>
 
 </resources>

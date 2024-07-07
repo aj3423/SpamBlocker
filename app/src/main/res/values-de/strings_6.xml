@@ -1,14 +1,14 @@
 <resources>
-    <string name="theme">Design</string>
+    <string name="theme">Thema</string>
     <string-array name="theme_list">
-        <item>System folgen</item>
+        <item>Dem System folgen</item>
         <item>Hell</item>
         <item>Dunkel</item>
     </string-array>
 
     <string name="crash_title">
-        Es tut uns leid, die App ist abgestürzt. \n\nBitte kopiere den untenstehenden Inhalt und melde dieses Problem auf GitHub.
-        Stelle vor dem Melden sicher, dass du alle sensiblen Informationen entfernt hast.
+        Sorry, die App ist abgestürzt. \n\n Bitte kopieren Sie den Inhalt unten und melden Sie dieses Problem auf GitHub.
+        Stellen Sie sicher, dass Sie alle vertraulichen Informationen entfernen, bevor Sie es melden.
     </string>
     <string-array name="week">
         <item>So</item>
@@ -21,39 +21,39 @@
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Ablehnen</item>
-        <item>Stumm</item>
-        <item>Annehmen + Auflegen</item>
+        <item>Abweisen</item>
+        <item>Stummschalten</item>
+        <item>Annehmen und auflegen</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Kein</item>
-        <item>Schattierung</item>
-        <item>Statusleiste, Schattierung</item>
-        <item>Ton, Statusleiste, Schattierung</item>
-        <item>Ton, Statusleiste, Schattierung, Pop-up</item>
+        <item>Keine</item>
+        <item>Schatten</item>
+        <item>Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten, Heads-up</item>
     </string-array>
-    <string-array name="copy_as_list">
-        <item>Als Json kopieren</item>
-        <item>Als komprimiert kopieren</item>
+    <string-array name="export_as_list">
+        <item>Als Json exportieren</item>
+        <item>Als komprimiert exportieren</item>
     </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-            Übersetzungen erfolgen durch die Google KI. Melde ein Problem auf GitHub, um Unterstützung für eine neue Sprache hinzuzufügen.
+            Übersetzungen werden von Google AI durchgeführt. Erstellen Sie ein Problem auf GitHub, um neue Sprachunterstützung hinzuzufügen.
         ]]>
     </string>
-    <string name="enabled_for_call">Für Anruf aktivieren</string>
+    <string name="enabled_for_call">Für Anrufe aktivieren</string>
     <string name="enabled_for_sms">Für SMS aktivieren</string>
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
         Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird. Es handelt sich wahrscheinlich eher um einen wichtigen als um einen Spam-Anruf. <br>
         <br>
-        Das Empfangen von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung READ_SMS erteilt wurde, was optional ist. <br>
+        Das Empfangen von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde, die optional ist. <br>
         <br>
-        Die Standardeinstellung <font color="cyan"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
+        Die Standardeinstellung <font color="cyan"><b>1 / 5 Min.</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
         Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>
@@ -63,20 +63,20 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Der globale Schalter. Diese App funktioniert nur, wenn dieser aktiviert ist.
-        Deaktiviere ihn, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
+        Der globale Schalter. Diese App funktioniert nur, wenn diese Option aktiviert ist.
+        Deaktivieren Sie sie, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
         <br>
-        Er kann auch über die <b>Schnelleinstellungen im Dropdown-Menü</b> umgeschaltet werden.
+        Er kann auch über <b>Dropdown-Schnelleinstellungen</b> umgeschaltet werden.
         ]]>
     </string>
 
-    <string name="about">Über</string>
+    <string name="about">Info</string>
     <string name="version">Version</string>
     <string name="build_time">Build-Zeit (UTC)</string>
     <string name="source_code">Quellcode</string>
     <string name="dismiss">Schließen</string>
     <string name="warning_running_in_work_profile">
-        Diese App funktioniert wahrscheinlich nicht korrekt im Arbeitsprofil. Installiere sie stattdessen im Hauptprofil.
+        Diese App funktioniert möglicherweise nicht ordnungsgemäß im Arbeitsprofil. Installieren Sie sie stattdessen im Hauptprofil.
     </string>
 
 </resources>

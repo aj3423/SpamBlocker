@@ -1,21 +1,4 @@
 <resources>
-    <string name="help_backup">
-        <![CDATA[
-        <font color="yellow"><b>Para realizar una copia de seguridad</b></font>: <br>
-        &emsp; 1. Presiona <font color="cyan"><b>Exportar</b></font> para mostrar la configuración en el cuadro de texto. <br>
-        &emsp; 2. Presiona <font color="cyan"><b>Copiar</b></font> para copiarlo al portapapeles. <br>
-        &emsp; 3. Envía este <font color="#cccc00"><b>texto de configuración</b></font> a otro dispositivo. <br>
-        <br>
-        <font color="yellow"><b>Para restaurar</b></font>: <br>
-        &emsp; 1. Pega el <font color="#cccc00"><b>texto de configuración</b></font> en el cuadro de texto. <br>
-        &emsp; 2. Presiona <font color="#0000ff"><b>Importar</b></font>. <br>
-        &emsp;&emsp; Si <font color="#fa7f71"><b>falla</b></font>, intenta validar ese texto JSON, ya que tal vez se haya dañado durante la transferencia. De ser así, envíalo en un archivo. <br>
-        <br>
-        Los registros del historial se ignoran. <br>
-        <br>
-        Si algunos interruptores como "Contactos" no se habilitan después de la restauración, verifica el permiso correspondiente en la configuración del sistema, ya que los permisos no se "restauran" automáticamente. <br>
-        ]]>
-    </string>
     <string name="help_off_time">
         <![CDATA[
         Cuando se activa, todas las llamadas (mensajes) se permitirán durante este período. Por lo general, no hay spam en la noche. <br>

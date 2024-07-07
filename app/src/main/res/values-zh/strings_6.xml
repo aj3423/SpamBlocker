@@ -2,12 +2,12 @@
     <string name="theme">主题</string>
     <string-array name="theme_list">
         <item>跟随系统</item>
-        <item>亮色</item>
-        <item>暗色</item>
+        <item>明亮</item>
+        <item>深色</item>
     </string-array>
 
     <string name="crash_title">
-        抱歉，该应用程序已崩溃。\n\n请复制以下内容并在 GitHub 上报告此问题，报告前请务必删除所有敏感信息。
+        抱歉，应用程序已崩溃。\n\n请复制以下内容并在 GitHub 上举报此问题，务必在举报前删除所有敏感信息。
     </string>
     <string-array name="week">
         <item>周日</item>
@@ -22,7 +22,7 @@
     <string-array name="block_type_list">
         <item>拒绝</item>
         <item>静音</item>
-        <item>接听 + 挂断</item>
+        <item>接听+挂断</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -30,41 +30,51 @@
         <item>阴影</item>
         <item>状态栏、阴影</item>
         <item>声音、状态栏、阴影</item>
-        <item>声音、状态栏、阴影、提醒</item>
+        <item>声音、状态栏、阴影、首选</item>
     </string-array>
-    <string-array name="copy_as_list">
-        <item>复制为 Json</item>
-        <item>复制为压缩版</item>
+    <string-array name="export_as_list">
+        <item>导出为 Json</item>
+        <item>导出为压缩文件</item>
     </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译工作由 Google AI 完成，可在 GitHub 上发起问题以添加对新语言的支持。
+            翻译由 Google AI 完成，请在 GitHub 上发起问题以添加新的语言支持。
         ]]>
     </string>
-    <string name="enabled_for_call">针对来电启用</string>
-    <string name="enabled_for_sms">针对短信启用</string>
-    <string name="repeated_call">重复来电</string>
+    <string name="enabled_for_call">启用通话功能</string>
+    <string name="enabled_for_sms">启用短信功能</string>
+    <string name="repeated_call">重复通话</string>
     <string name="help_repeated_call">
         <![CDATA[
-        当某号码在一段时间内重复来电时允许来电，这样一来，重要来电的可能性更大，而非垃圾电话。 <br> <br> 从相同号码接收短信时也计算在内，这取决于是否已授予读取短信权限，该权限为可选权限。<br> <br>默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示在 5 分钟内允许第二次来电。 <br> <br>仅适用于来电，<b>不</b>适用于短信。 <br> <br> <font color="#ea86ff"><b>优先级：10</b></font>
+        如果在一段时间内重复通话，则允许通话，因为这很可能是重要通话，而不是垃圾通话。<br>
+        <br>
+        接收来自同一号码的短信也会被计算在内，这取决于是否已授予读取短信权限，这是可选的。<br>
+        <br>
+        默认设置<font color="cyan"><b>1 / 5 分钟</b></font>表示将在 5 分钟内允许第二次通话。<br>
+        <br>
+        仅适用于电话，<b>不</b>适用于短信。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，仅当此开关打开时，此应用程序才有效，在等待某些特定来电/短信时请将其关闭。 <br> <br> 它还可以通过<b>下拉快速设置</b>进行切换。
+        全局开关，只有在打开此开关时，此应用程序才起作用，当您正在等待某些特定通话/消息时，请将其关闭。<br>
+        <br>
+        还可以从<b>下拉快速设置</b>中切换。
         ]]>
     </string>
 
     <string name="about">关于</string>
     <string name="version">版本</string>
-    <string name="build_time">构建时间 (UTC)</string>
+    <string name="build_time">编译时间（UTC）</string>
     <string name="source_code">源代码</string>
     <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
-        此应用程序在工作资料中可能无法正常工作，请改在主资料中安装。
+        此应用程序在工作资料中可能无法正常工作，请安装在主资料中。
     </string>
 
 </resources>

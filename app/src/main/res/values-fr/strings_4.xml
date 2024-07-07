@@ -1,21 +1,4 @@
 <resources>
-    <string name="help_backup">
-        <![CDATA[
-        <font color="yellow"><b>Pour sauvegarder</b></font> : <br>
-        &emsp; 1. Appuyez sur <font color="cyan"><b>Exporter</b></font> pour afficher la configuration dans la zone de texte.<br>
-        &emsp; 2. Appuyez sur <font color="cyan"><b>Copier</b></font> pour le copier dans le presse-papiers.<br>
-        &emsp; 3. Envoyez ce <font color="#cccc00"><b>texte de configuration</b></font> à un autre appareil.<br>
-        <br>
-        <font color="yellow"><b>Pour restaurer</b></font> : <br>
-        &emsp; 1. Collez le <font color="#cccc00"><b>texte de configuration</b></font> dans la zone de texte.<br>
-        &emsp; 2. Appuyez sur <font color="#0000ff"><b>Importer</b></font>.<br>
-        &emsp;&emsp; Si cela <font color="#fa7f71"><b>échoue</b></font>, essayez de valider ce texte JSON, il peut avoir été corrompu pendant le transfert. Si c\'est le cas, envoyez-le plutôt dans un fichier.<br>
-        <br>
-        Les enregistrements de l\'historique sont ignorés.<br>
-        <br>
-        Si certains commutateurs comme "Contacts" ne sont pas activés après la restauration, vérifiez l\'autorisation correspondante dans les paramètres système, les autorisations ne sont pas "restaurées" automatiquement.<br>
-        ]]>
-    </string>
     <string name="help_off_time">
         <![CDATA[
         Lorsqu\'elle est activée, tous les appels (messages) seront autorisés pendant cette période. Habituellement, il n\'y a pas de spams la nuit.<br>

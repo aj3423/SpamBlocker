@@ -64,6 +64,12 @@
     <style name="setting_gray_spinner" parent="setting_spinner">
         <item name="android:textColor">@color/text_grey</item>
         <item name="strokeColor">@color/text_grey</item>
+        <item name="android:drawableTint">@color/text_grey</item>
+    </style>
+    <style name="setting_blue_spinner" parent="setting_spinner">
+        <item name="android:textColor">@color/sky_blue</item>
+        <item name="strokeColor">@color/sky_blue</item>
+        <item name="android:drawableTint">@color/sky_blue</item>
     </style>
     <style name="setting_teal_spinner" parent="setting_spinner">
         <item name="android:textColor">@color/teal_200</item>

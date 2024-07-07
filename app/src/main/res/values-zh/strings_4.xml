@@ -1,21 +1,4 @@
 <resources>
-    <string name="help_backup">
-        <![CDATA[
-        <font color="yellow"><b>备份</b></font>: <br>
-        &emsp; 1. 按 <font color="cyan"><b>导出</b></font> 在文本框中显示配置信息。 <br>
-        &emsp; 2. 按 <font color="cyan"><b>复制</b></font> 将配置信息复制到剪贴板。 <br>
-        &emsp; 3. 将 <font color="#cccc00"><b>配置信息</b></font> 发送到另一台设备。 <br>
-        <br>
-        <font color="yellow"><b>恢复</b></font>: <br>
-        &emsp; 1. 将 <font color="#cccc00"><b>配置信息</b></font> 粘贴到文本框中。 <br>
-        &emsp; 2. 按 <font color="#0000ff"><b>导入</b></font>。 <br>
-        &emsp;&emsp; 如果 <font color="#fa7f71"><b>失败</b></font>，请验证 json 文本，它可能在传输过程中已损坏。如果损坏，请通过文件发送。 <br>
-        <br>
-        历史记录将被忽略。 <br>
-        <br>
-        如果在恢复后某些开关（如“联系人”）未启用，请检查系统设置中的相应权限，权限不会自动“恢复”。 <br>
-        ]]>
-    </string>
     <string name="help_off_time">
         <![CDATA[
         启用后，此时间段内将允许所有呼叫（消息）。夜间通常没有垃圾邮件。 <br>

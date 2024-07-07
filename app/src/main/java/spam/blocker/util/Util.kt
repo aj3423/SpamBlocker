@@ -6,12 +6,16 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.UserManager
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import spam.blocker.R
 import spam.blocker.def.Def
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -273,6 +277,27 @@ class Util {
                 um.isManagedProfile
             } else
                 false
+        }
+
+        fun writeDataToUri(ctx: Context, uri: Uri, dataToWrite: ByteArray) : Boolean {
+            return try {
+                ctx.contentResolver.openOutputStream(uri)?.use { outputStream ->
+                    outputStream.write(dataToWrite)
+                }
+                true
+            } catch (_: IOException) {
+                false
+            }
+        }
+
+        fun readDataFromUri(ctx: Context, uri: Uri): ByteArray? {
+            return try {
+                ctx.contentResolver.openInputStream(uri)?.use { inputStream ->
+                    inputStream.buffered().readBytes()
+                }
+            } catch (_: IOException) {
+                null
+            }
         }
     }
 }
