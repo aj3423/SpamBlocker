@@ -101,6 +101,13 @@ class Util {
             return null
         }
 
+        fun truncate(str: String, limit: Int = 300, showEllipsis: Boolean = true) : String {
+            return if (str.length >= limit)
+                str.substring(0, limit) + if (showEllipsis) "..." else ""
+            else
+                str
+        }
+
         fun formatTimeRange(
 //            ctx: Context,
             stHour: Int, stMin: Int, etHour: Int, etMin: Int

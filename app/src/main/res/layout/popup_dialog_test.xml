@@ -95,6 +95,7 @@
                     android:id="@+id/test_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="10"
                     android:visibility="gone"/>
 
                 <!-- reason -->
@@ -111,20 +112,25 @@
 
             <Space style="@style/setting_spacing" />
 
-            <!-- help icon -->
-            <ImageView
-                android:id="@+id/help_test"
-                style="@style/help_question_icon"
-                android:background="@drawable/ic_question"
-                tools:ignore="ContentDescription" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <!-- Test Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_test"
-                style="@style/setting_stroke_teal_button"
-                android:layout_marginEnd="0dp"
-                android:layout_gravity="end"
-                android:text="@string/test" />
+                <!-- help icon -->
+                <ImageView
+                    android:id="@+id/help_test"
+                    style="@style/help_question_icon"
+                    android:background="@drawable/ic_question"
+                    tools:ignore="ContentDescription" />
+
+                <!-- Test Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_test"
+                    style="@style/setting_stroke_teal_button"
+                    android:layout_marginEnd="0dp"
+                    android:layout_gravity="end"
+                    android:text="@string/test" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

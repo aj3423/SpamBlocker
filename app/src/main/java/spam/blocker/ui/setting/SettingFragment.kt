@@ -15,6 +15,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,6 +83,7 @@ import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
+import spam.blocker.util.Util.Companion.truncate
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -127,10 +129,35 @@ class SettingFragment : Fragment() {
         setupBlockType(root)
         setupOffTime(root)
 
+        val importBlacklistsChooser = FileInChooser(this) // must be initialized during fragment creation
         setupRules( root,
             R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_test_number_filters,
             numberRules, NumberRuleTable(), Def.ForNumber, onAddLongClick = {
+                importBlacklistsChooser.load { raw: ByteArray? ->
+                    if (raw == null)
+                        return@load
 
+                    val lines = String(raw).lines()
+                    val joined = lines.map {
+                        Util.clearNumber(it)
+                    }.filter {
+                        it.isNotEmpty()
+                    }.joinToString ( separator = "|" )
+
+                    val wrapped = "($joined)"
+
+                    val rule = PatternRule().apply {
+                        pattern = wrapped
+                        description = "${ctx.getString(R.string.imported)} ${lines.size}"
+                    }
+                    // 1. add to db
+                    val table = NumberRuleTable()
+                    val id = table.addNewRule(ctx, rule)
+                    rule.id = id
+
+                    // 2. refresh gui
+                    numberRules.add(rule)
+                }
             })
 
         setupImageTooltip(
@@ -917,7 +944,7 @@ class SettingFragment : Fragment() {
                 filters.removeAt(i)
 
                 // 3. show snackbar
-                Snackbar.make(recycler, fToDel.pattern, Snackbar.LENGTH_LONG).setAction(
+                Snackbar.make(recycler, truncate(fToDel.pattern), Snackbar.LENGTH_LONG).setAction(
                     resources.getString(R.string.undelete),
                 ) {
                     dbTable.addRuleWithId(ctx, fToDel)

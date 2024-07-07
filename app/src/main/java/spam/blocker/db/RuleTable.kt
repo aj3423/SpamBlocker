@@ -13,6 +13,7 @@ import spam.blocker.def.Def
 import spam.blocker.util.Flag
 import spam.blocker.util.Schedule
 import spam.blocker.util.SpannableUtil
+import spam.blocker.util.Util.Companion.truncate
 
 
 @Serializable
@@ -44,9 +45,9 @@ class PatternRule {
 
     fun patternStr(): String {
         return if (patternExtra != "")
-            "$pattern   <-   $patternExtra"
+            "${truncate(pattern)}   <-   $patternExtra"
         else
-            pattern
+            truncate(pattern)
     }
     fun patternStrColorful(ctx: Context, forType: Int): SpannableStringBuilder {
         val gray = ctx.resources.getColor(R.color.text_grey, null)
@@ -85,7 +86,7 @@ class PatternRule {
         SpannableUtil.append(sb, if (imdlc.isEmpty()) "" else "$imdlc ", flagsColor, relativeSize = ratioFlags)
 
         // 3. Particular Number
-        SpannableUtil.append(sb, pattern, patternColor, bold = true)
+        SpannableUtil.append(sb, truncate(pattern), patternColor, bold = true)
         if (patternExtra != "") {
             SpannableUtil.append(sb, "   <-   ", Color.LTGRAY)
 

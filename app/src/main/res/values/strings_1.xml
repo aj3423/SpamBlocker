@@ -47,6 +47,7 @@
     <string name="regex_settings">Regex Settings</string>
     <string name="backup">Backup</string>
     <string name="import_">Import</string>
+    <string name="imported">Imported</string>
     <string name="export">Export</string>
     <string name="config_text">Configuration Text</string>
     <string name="imported_successfully">Imported successfully.</string>

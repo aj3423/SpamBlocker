@@ -69,7 +69,9 @@
         <br>
         Uncheck the checkboxes to disable the rule, useful for testing. <br>
         <br>
-        Swipe left to delete a rule.
+        Swipe left to delete a rule.<br>
+        <br>
+        <b>Long press</b> the \"Add\" button to import numbers from a file, the format should be one number per row.
         ]]>
     </string>
 </resources>

@@ -54,6 +54,7 @@ class FileOutChooser(
 // Show file choose dialog, load data from the selected file
 class FileInChooser(
     private val fragment: Fragment,
+    private val mimeType: String = "*/*"
 ) {
     private var onResult: (ByteArray?) -> Unit = {}
 
@@ -76,7 +77,7 @@ class FileInChooser(
 
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
-            type = "application/txt"
+            type = mimeType
         }
         launcher.launch(intent)
     }
