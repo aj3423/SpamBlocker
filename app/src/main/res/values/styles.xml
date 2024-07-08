@@ -7,7 +7,7 @@
         <item name="android:minHeight">10dp</item>
         <item name="android:minWidth">20dip</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
         <item name="textAllCaps">false</item>
         <item name="cornerRadius">4dp</item>
         <item name="strokeWidth">2dp</item>
@@ -56,25 +56,17 @@
     </style>
 
     <style name="setting_spinner" parent="setting_stroke_button">
-        <item name="android:paddingStart">15dp</item>
-        <item name="android:paddingEnd">-13dp</item>
-        <item name="android:drawableEnd">@drawable/spinner_arrow</item>
-        <item name="android:drawablePadding">0dp</item>
+        <item name="background">@drawable/spinner_bg</item>
     </style>
     <style name="setting_gray_spinner" parent="setting_spinner">
         <item name="android:textColor">@color/text_grey</item>
         <item name="strokeColor">@color/text_grey</item>
-        <item name="android:drawableTint">@color/text_grey</item>
+        <item name="backgroundTint">@color/text_grey</item>
     </style>
     <style name="setting_blue_spinner" parent="setting_spinner">
         <item name="android:textColor">@color/sky_blue</item>
         <item name="strokeColor">@color/sky_blue</item>
-        <item name="android:drawableTint">@color/sky_blue</item>
-    </style>
-    <style name="setting_teal_spinner" parent="setting_spinner">
-        <item name="android:textColor">@color/teal_200</item>
-        <item name="strokeColor">@color/teal_200</item>
-        <item name="android:drawableTint">@color/teal_200</item>
+        <item name="backgroundTint">@color/sky_blue</item>
     </style>
 
     <style name="setting_auto_fit">

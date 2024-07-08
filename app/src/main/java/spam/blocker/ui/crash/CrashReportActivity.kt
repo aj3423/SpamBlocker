@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.databinding.CrashReportActivityBinding
 import spam.blocker.ui.util.UI
@@ -29,12 +30,11 @@ class CrashReportActivity : AppCompatActivity() {
         binding = CrashReportActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         // Get the error message from the intent
         val stackTrace = intent.getStringExtra("stackTrace")
 
         val edit = binding.root.findViewById<TextInputEditText>(R.id.edit_crash_reason)
-        edit.setText("$stackTrace")
+        edit.setText("version: ${BuildConfig.VERSION_NAME}\n$stackTrace")
 
         val btn = binding.root.findViewById<MaterialButton>(R.id.btn_crash_report)
         btn.setOnClickListener {

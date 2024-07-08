@@ -263,7 +263,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/setting_btn_block_type"
-                        style="@style/setting_gray_spinner" />
+                        style="@style/setting_gray_spinner"
+                        android:background="@drawable/spinner_bg" />
                 </LinearLayout>
                 <!--    block type end -->
 
@@ -306,8 +307,9 @@
                         style="@style/setting_auto_fit">
 
                         <com.google.android.material.button.MaterialButton
-                            style="@style/setting_stroke_blue_button"
+                            style="@style/setting_blue_spinner"
                             android:id="@+id/btn_add_number_filter"
+                            android:background="@drawable/long_press_bg"
                             android:maxWidth="90dp"
                             android:text="@string/add" />
                     </me.grantland.widget.AutofitLayout>
@@ -448,7 +450,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_theme"
-                        style="@style/setting_gray_spinner" />
+                        style="@style/setting_gray_spinner"
+                        android:background="@drawable/spinner_bg" />
                 </LinearLayout>
                 <!-- theme end -->
 
@@ -467,7 +470,8 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_language"
-                        style="@style/setting_gray_spinner" />
+                        style="@style/setting_gray_spinner"
+                        android:background="@drawable/spinner_bg" />
                 </LinearLayout>
                 <!-- language end -->
 
@@ -484,6 +488,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_backup_export"
                             style="@style/setting_blue_spinner"
+                            android:background="@drawable/spinner_bg"
                             android:text="@string/export" />
                     </me.grantland.widget.AutofitLayout>
 

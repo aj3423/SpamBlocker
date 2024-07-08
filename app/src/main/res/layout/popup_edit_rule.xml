@@ -205,7 +205,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/popup_btn_block_type"
-                style="@style/setting_gray_spinner" />
+                style="@style/setting_gray_spinner"
+                android:background="@drawable/spinner_bg"/>
         </LinearLayout>
 
         <LinearLayout style="@style/setting_row"
@@ -231,6 +232,7 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_importance"
                     style="@style/setting_gray_spinner"
+                    android:background="@drawable/spinner_bg"
                     android:maxWidth="180dp"/>
             </me.grantland.widget.AutofitLayout>
         </LinearLayout>
