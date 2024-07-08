@@ -2,8 +2,11 @@ package spam.blocker.service
 
 import android.content.Context
 import android.content.Intent
-import android.telecom.Call as TelecomCall
+import android.net.Uri
 import android.telecom.CallScreeningService
+import android.telecom.PhoneAccount
+import android.telecom.TelecomManager
+import android.telephony.TelephonyManager
 import android.util.Log
 import spam.blocker.R
 import spam.blocker.db.CallTable
@@ -14,6 +17,8 @@ import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
+import android.telecom.Call as TelecomCall
+
 
 class CallScreeningService : CallScreeningService() {
 
@@ -60,7 +65,20 @@ class CallScreeningService : CallScreeningService() {
         if (details.callDirection != TelecomCall.Details.DIRECTION_INCOMING)
             return
 
-        val rawNumber = details.handle.schemeSpecificPart
+        var rawNumber = ""
+        if (details.handle != null) {
+            rawNumber = details.handle.schemeSpecificPart
+        } else if (details.gatewayInfo?.originalAddress != null){
+            rawNumber = details.gatewayInfo?.originalAddress?.schemeSpecificPart!!
+        } else if (details.intentExtras != null) {
+            var uri = details.intentExtras.getParcelable<Uri>(TelecomManager.EXTRA_INCOMING_CALL_ADDRESS)
+            if (uri == null) {
+                uri = details.intentExtras.getParcelable<Uri>(TelephonyManager.EXTRA_INCOMING_NUMBER);
+            }
+            if (uri != null) {
+                rawNumber = uri.schemeSpecificPart
+            }
+        }
 
         Log.d(Def.TAG, String.format("new call from: $rawNumber"))
 
