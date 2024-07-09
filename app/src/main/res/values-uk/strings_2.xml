@@ -1,77 +1,76 @@
 <resources>
-    <string name="for_particular_number">Номер</string>
-    <string name="no_match_found">Збігів не знайдено</string>
-    <string name="help_for_particular_number">Якщо увімкнено, правило застосовується лише тоді, коли збігаються і номер, і вміст.</string>
+    <string name="for_particular_number">Pentru număr</string>
+    <string name="no_match_found">Nu s-a găsit nicio potrivire</string>
+    <string name="help_for_particular_number">Când e activat, regula se aplică doar când se potrivesc și numărul și conținutul.</string>
     <string name="help_contact">
         <![CDATA[
-        Якщо увімкнено, дзвінки/повідомлення з контактів завжди дозволяються. <br>
+        Când e activat, apelurile/mesajele de la contacte sunt întotdeauna permise. <br>
         <br>
-          - <font color="#d1c8c8"><b>Включаючи</b></font>: <br>
-              &emsp; Номери, що не є контактами, перевірятимуться іншими правилами. <br>
-              &emsp; <font color="#ea86ff"><b>Пріоритет: 10</b></font> <br>
+          - <font color="#d1c8c8"><b>Inclusiv</b></font>: <br>
+              &emsp; Numerele care nu sunt contacte vor fi verificate de alte reguli. <br>
+              &emsp; <font color="#ea86ff"><b>Prioritate: 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>Виключні</b></font>: <br>
-              &emsp; Номери, що не є контактами, <font color="#fa7f71"><b>будуть блокуватися</b></font>. <br>
-              &emsp; Еквівалент <font color="#d1c8c8"><b>Включаючи</b></font> з правилом для номерів <font color="#fa7f71"><b>.*</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Пріоритет: 0</b></font> <br>
+          - <font color="#fa7f71"><b>Exclusiv</b></font>: <br>
+              &emsp; Numerele care nu sunt contacte vor fi <font color="#fa7f71"><b>blocate</b></font>. <br>
+              &emsp; Echivalent cu <font color="#d1c8c8"><b>Inclusiv</b></font> cu o regulă de număr <font color="#fa7f71"><b>.*</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Prioritate: 0</b></font> <br>
         <br>
-        Застосовується як до дзвінків, так і до SMS-повідомлень.
+        Se aplică atât pentru apeluri, cât și pentru mesaje SMS.
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Набрані номери дозволятимуться. <br>
+        Numerele apelate vor fi permise. <br>
         <br>
-        Відправка повідомлень також зараховується, це працює лише тоді, коли надано дозвіл READ_SMS. <br>
+        Și trimiterea de mesaje contează, asta funcționează doar când e acordată permisiunea READ_SMS. <br>
         <br>
-        Налаштування за замовчуванням <font color="cyan"><b>3 дні</b></font> означає, що якщо номер здійснював вихідні дзвінки або надсилав повідомлення протягом останніх 3 днів, дзвінки з цього номера будуть дозволені, навіть якщо цього номера немає в контактах.<br>
+        Setarea implicită <font color="cyan"><b>3 zile</b></font> înseamnă că dacă un număr a efectuat apeluri prin ieșire sau a trimis mesaje în ultimele 3 zile, apelurile de la acel număr vor fi permise chiar dacă numărul nu e în contacte.<br>
         <br>
-        Застосовується лише для дзвінків, <b>не</b> для текстових повідомлень. <br>
+        Se aplică doar pentru apeluri, <b>nu</b> pentru mesaje text. <br>
         <br>
-        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
+        <font color="#ea86ff"><b>Prioritate: 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Будь-який вхідний дзвінок буде прийнято, якщо будь-яка програма зі списку нещодавно використовувалася.<br>
+        Orice apel primit va trece dacă vreo aplicație din listă a fost utilizată recent.<br>
         <br>
-        Типовий випадок використання:<br>
-        &emsp; Ви щойно замовили піцу в PizzaApp, і незабаром вони подзвонять вам, щоб повернути гроші, тому що зачиняються. Цей дзвінок буде прийнято, якщо PizzaApp буде тут увімкнено. <br>
+        Un caz de utilizare tipic:<br>
+        &emsp; Tocmai ai comandat o pizza din PizzaApp, în curând te sună să îți dea banii înapoi pentru că vor să închidă. Apelul va trece dacă PizzaApp este activat aici. <br>
         <br>
-        Налаштування за замовчуванням <font color="cyan"><b>5 хв</b></font> означає, що будь-який дзвінок буде дозволено, якщо будь-яку з цих програм використовували протягом 5 хвилин; під "використовували" мається на увазі або активація, або деактивація, або згортання, або закриття. <br>
+        Setarea implicită <font color="cyan"><b>5 min</b></font> înseamnă că orice apel va fi permis dacă oricare dintre aceste aplicații a fost folosit în ultimele 5 minute, prin „folosit” se înțelege activat, dezactivat, minimizat sau închis. <br>
         <br>
-        Застосовується лише для дзвінків, <b>не</b> для текстових повідомлень. <br>
+        Se aplică doar pentru apeluri, <b>nu</b> pentru mesaje text. <br>
         <br>
-        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
+        <font color="#ea86ff"><b>Prioritate: 10</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        Ці правила застосовуються до вхідного номера телефону.<br>
+        Aceste reguli se aplică numărului de telefon primit.<br>
         <br>
-        <font color="#ffa500"><b>Важливо</b></font>:<br>
-        Щоб спростити регулярний вираз,
-          <font color="#fa7f71"><b>+</b></font>
-          та <font color="#fa7f71"><b>пробіли</b></font>
-          та <font color="#fa7f71"><b>провідні нулі</b></font>
-          видаляються перед перевіркою, наприклад:<br>
-        &emsp; Усі ці формати:<br>
-        &emsp;&emsp; 123456789 &emsp;(звичайний номер)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(із <font color="#fa7f71"><b>пробілами</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(із провідним <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(із внутрішнім префіксом <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Вони <b>всі</b> перевіряються як:<br>
+        <font color="#ffa500"><b>Important</b></font>:<br>
+        Pentru a simplifica expresia regulată:<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font> și <font color="#fa7f71"><b>spațiile</b></font> și <font color="#fa7f71"><b>zerourile inițiale</b></font>
+          sunt eliminate înainte de verificare, de exemplu:<br>
+        &emsp; Toate aceste formate:<br>
+        &emsp;&emsp; 123456789 &emsp;(număr obișnuit)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(cu <font color="#fa7f71"><b>spații</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(cu <font color="#fa7f71"><b>+</b></font> inițial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(cu prefixul intern <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(doi <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Sunt <b>toate</b> verificate ca:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Тож регулярний вираз <font color="cyan"><b>123.*</b></font> збігатиметься <b>із усіма</b> ними.<br>
+        &emsp; Deci expresia regulată <font color="cyan"><b>123.*</b></font> s-ar potrivi cu <b>toate</b>.<br>
         <br>
-        Список <b>відображається</b> у порядку спадання пріоритету, висхідного опису та висхідного шаблону. <br>
+        Lista este <b>afișată</b> în ordinea descrescătoare a priorității, descriere crescătoare și model crescător. <br>
         <br>
-        Зніміть позначки, щоб вимкнути правило, зручно для тестування. <br>
+        Debifează casetele de selectare pentru a dezactiva regula, util pentru testare. <br>
         <br>
-        Торкніться ліворуч, щоб видалити правило.<br>
+        Trage cu degetul spre stânga pentru a șterge o regulă.<br>
         <br>
-        <b>Тривалим натисканням</b> кнопки "Додати" імпортуйте номери з файлу, формат має бути один номер на рядок.
+        <b>Apasă lung</b> butonul „Adaugă” pentru a importa numere dintr-un fișier, formatul trebuie să fie un număr pe rând,
+         sau formatul .csv cu prima coloană fiind numărul.
         ]]>
     </string>
 </resources>

@@ -137,9 +137,11 @@ class SettingFragment : Fragment() {
                     if (raw == null)
                         return@load
 
-                    val lines = String(raw).lines()
-                    val joined = lines.map {
-                        Util.clearNumber(it)
+                    val joined = String(raw).lines().map {
+                        // It support both text files that contains numbers
+                        // and .csv that has number as the first column
+                        val v = it.split(",")
+                        if (v.isNotEmpty()) Util.clearNumber(v[0]) else ""
                     }.filter {
                         it.isNotEmpty()
                     }.joinToString ( separator = "|" )
@@ -148,7 +150,12 @@ class SettingFragment : Fragment() {
 
                     val rule = PatternRule().apply {
                         pattern = wrapped
-                        description = "${ctx.getString(R.string.imported)} ${lines.size}"
+
+                        val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
+                        val ymd = LocalDate.now().format(formatter)
+
+                        description = "${ctx.getString(R.string.imported)} $ymd"
+                        priority = 11
                     }
                     // 1. add to db
                     val table = NumberRuleTable()

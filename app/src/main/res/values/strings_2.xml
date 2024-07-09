@@ -71,7 +71,8 @@
         <br>
         Swipe left to delete a rule.<br>
         <br>
-        <b>Long press</b> the \"Add\" button to import numbers from a file, the format should be one number per row.
+        <b>Long press</b> the \"Add\" button to import numbers from a file, the format should be one number per row,
+         or .csv format with the first column being the number.
         ]]>
     </string>
 </resources>
