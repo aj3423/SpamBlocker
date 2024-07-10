@@ -9,8 +9,8 @@
     <string name="sms_content_pattern">SMS Content</string>
     <string name="invalid_regex_pattern">Invalid regex</string>
     <string name="pattern_contain_invisible_characters">Invisible characters found</string>
-    <string name="pattern_contain_leading_zeroes">No need to add the leading "0", they will be removed before checking.</string>
-    <string name="pattern_contain_leading_plus">No need to add the leading "+", they will be removed before checking.</string>
+    <string name="pattern_contain_leading_zeroes">No need to add the leading 0, they will be removed before checking.</string>
+    <string name="pattern_contain_leading_plus">No need to add the leading +, they will be removed before checking.</string>
     <string name="check_balloon_for_explanation">Check the help of the \"Number Rules\" for a detailed explanation.</string>
     <string name="invalid_number">Invalid number</string>
     <string name="filter_desc">Description</string>
@@ -55,10 +55,6 @@
     <string name="go_to_setting">Go to Setting</string>
     <string name="prompt_go_to_usage_permission_setting">This feature requires permission:\n\n \"Usage Statistics\"\n\nIt has to be manually enabled in System Settings. \n\nOpen that setting page? </string>
     <string name="emergency_call">Emergency Call</string>
-    <string name="contact">Contact</string>
-    <string name="non_contact">Non Contact</string>
-    <string name="inclusive">Inclusive</string>
-    <string name="exclusive">Exclusive</string>
     <string name="label_contact_filter">Contact Filter</string>
     <string name="label_number_filter">Number Rules</string>
     <string name="label_content_filter">Message Rules</string>

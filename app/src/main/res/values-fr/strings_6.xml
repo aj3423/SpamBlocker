@@ -7,76 +7,75 @@
     </string-array>
 
     <string name="crash_title">
-        Désolé, l\'appli s\'est arrêtée. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur github,
-        assurez-vous de supprimer toute information sensible avant de signaler.
+        Désolé, l\'appli a planté. \n\nAfin de signaler cette erreur sur github, veuillez copier le contenu ci-dessous. N\'oubliez pas de retirer toute information sensible avant le signalement.
     </string>
     <string-array name="week">
-        <item>Dim</item>
-        <item>Lun</item>
-        <item>Mar</item>
-        <item>Mer</item>
-        <item>Jeu</item>
-        <item>Ven</item>
-        <item>Sam</item>
+        <item>Dim.</item>
+        <item>Lun.</item>
+        <item>Mar.</item>
+        <item>Mer.</item>
+        <item>Jeu.</item>
+        <item>Ven.</item>
+        <item>Sam.</item>
     </string-array>
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Silence</item>
-        <item>Répondre+Raccrocher</item>
+        <item>Mettre en silencieux</item>
+        <item>Répondre et raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucun</item>
+        <item>Aucune</item>
         <item>Ombrage</item>
-        <item>Barre, ombrage</item>
-        <item>Son, barre, ombrage</item>
-        <item>Son, barre, ombrage, notification</item>
+        <item>Barre d\'état, Ombrage</item>
+        <item>Son, Barre d\'état, Ombrage</item>
+        <item>Son, Barre d\'état, Ombrage, Pop-up</item>
     </string-array>
     <string-array name="export_as_list">
-        <item>Exporter en Json</item>
-        <item>Exporter en compressé</item>
+        <item>Exporter au format Json</item>
+        <item>Exporter au format compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par Google AI, signalez un problème sur github pour ajouter une prise en charge d\'une nouvelle langue.
+            Les traductions sont effectuées par Google AI. Signalez un problème sur github pour ajouter un support pour une nouvelle langue.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
     <string name="enabled_for_sms">Activer pour les SMS</string>
-    <string name="repeated_call">Appels répétés</string>
+    <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un certain délai, il est probable qu\'il soit important plutôt qu\'un appel de spam. <br>
+        Autoriser si l\'appel est répété dans une période de temps. Il est plus probable qu\'il soit important plutôt qu\'un appel anti-spam. <br>
         <br>
-        La réception d\'un SMS du même numéro est également comptabilisée, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
+        La réception d\'un SMS du même numéro est également prise en compte. Cela dépend de l\'octroi de l\'autorisation READ_SMS, qui est facultative.<br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le réglage par défaut <font color="cyan"><b>1 / 5 Min</b></font>, signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
-        S\'applique uniquement pour les appels, <b>pas</b> pour les messages textes. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Commutateur global, cette appli fonctionne uniquement lorsque celui-ci est activé,
-        désactivez-le lorsque vous attendez un appel/message particulier. <br>
+        L\'interrupteur global. Cette appli fonctionne uniquement si ce dernier est activé. Désactivez-le si vous attendez une certaine communication. <br>
         <br>
-        Il peut également être activé ou désactivé depuis les <b>Paramètres rapides du menu déroulant</b>.
+        Vous pouvez aussi l\'activer ou le désactiver depuis les <b>Paramètres rapides déroulants</b>.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de construction (UTC)</string>
+    <string name="build_time">Heure de compilation (UTC)</string>
     <string name="source_code">Code source</string>
-    <string name="dismiss">Ignorer</string>
+    <string name="dismiss">Fermer</string>
     <string name="warning_running_in_work_profile">
-        Cette appli peut ne pas fonctionner correctement dans un profil professionnel, installez-la plutôt dans le profil principal.
+        Cette appli pourrait ne pas fonctionner correctement dans un profil professionnel. Veuillez l\'installer dans le profil principal.
     </string>
+    <string name="read_balloon">Veuillez lire les bulles d\'aide pour obtenir des instructions sur chaque fonctionnalité.</string>
 
 </resources>

@@ -23,6 +23,10 @@ import com.skydoves.balloon.ArrowPositionRules
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.BalloonSizeSpec
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import spam.blocker.R
 
 
@@ -50,6 +54,14 @@ fun DialogFragment.setFullScreen() {
 class UI {
     companion object {
 
+        fun delay(millis: Int, action: ()->Unit) {
+            CoroutineScope(Dispatchers.Default).launch {
+                kotlinx.coroutines.delay(100)
+                withContext(Dispatchers.Main) {
+                    action()
+                }
+            }
+        }
         fun showIf(view: View, visible: Boolean, hide: Boolean = false) {
             view.visibility = if(visible)
                 View.VISIBLE
@@ -98,31 +110,39 @@ class UI {
         }
 
         // setup the hint from the imgView.tooltipText
+        fun createBalloon(
+            ctx: Context,
+            viewLifecycleOwner: LifecycleOwner,
+            strId: Int) : Balloon
+        {
+
+            val balloon = Balloon.Builder(ctx)
+                .setHeight(BalloonSizeSpec.WRAP)
+                .setText(ctx.resources.getText(strId))
+                .setTextIsHtml(true)
+                .setTextColorResource(R.color.white)
+                .setTextSize(15f)
+                .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
+                .setArrowSize(10)
+                .setPadding(8)
+                .setTextGravity(Gravity.START)
+                .setCornerRadius(8f)
+                .setBackgroundColor(ctx.resources.getColor(R.color.tooltip_blue, null))
+                .setBalloonAnimation(BalloonAnimation.ELASTIC)
+                .setLifecycleOwner(viewLifecycleOwner)
+                .setIsAttachedInDecor(false)
+
+                .build()
+            return balloon
+        }
         fun setupImageTooltip(
             ctx: Context,
             viewLifecycleOwner: LifecycleOwner,
             imgView: ImageView,
             strId: Int
         ) {
+            val balloon = createBalloon(ctx, viewLifecycleOwner, strId)
             imgView.setOnClickListener {
-                val balloon = Balloon.Builder(ctx)
-                    .setHeight(BalloonSizeSpec.WRAP)
-                    .setText(ctx.resources.getText(strId))
-                    .setTextIsHtml(true)
-                    .setTextColorResource(R.color.white)
-                    .setTextSize(15f)
-                    .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-                    .setArrowSize(10)
-                    .setPadding(8)
-                    .setTextGravity(Gravity.START)
-                    .setCornerRadius(8f)
-                    .setBackgroundColor(ctx.resources.getColor(R.color.tooltip_blue, null))
-                    .setBalloonAnimation(BalloonAnimation.ELASTIC)
-                    .setLifecycleOwner(viewLifecycleOwner)
-                    .setIsAttachedInDecor(false)
-
-                    .build()
-
                 balloon.showAlignBottom(imgView)
             }
         }

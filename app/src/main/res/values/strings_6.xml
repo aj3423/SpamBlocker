@@ -78,5 +78,6 @@
     <string name="warning_running_in_work_profile">
         This app may not work correctly within work profile, please install it in main profile instead.
     </string>
+    <string name="read_balloon">Please check the balloon tooltips for instructions of each feature.</string>
 
 </resources>

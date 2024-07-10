@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.SharedPref.SharedPref
+import spam.blocker.util.Util.Companion.doOnce
 
 open class Permissions {
     companion object {
@@ -332,15 +333,11 @@ class PermissionChain(
         }
 
         if (curr.isOptional) {
-            val spf = SharedPref(ctx)
-            val attr = "ask_once_${curr.name}"
-            val alreadyAsked = spf.readBoolean(attr, false)
-
-            if (alreadyAsked) {
-                checkNext()
-            } else {
-                spf.writeBoolean(attr, true)
+            val isFirstTime = doOnce(ctx, "ask_once_${curr.name}") {
                 handleCurrPermission()
+            }
+            if (!isFirstTime) {
+                checkNext()
             }
             return
         }

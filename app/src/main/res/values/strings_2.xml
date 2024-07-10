@@ -2,6 +2,10 @@
     <string name="for_particular_number">For number</string>
     <string name="no_match_found">No match found</string>
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
+    <string name="contact">Contact</string>
+    <string name="non_contact">Non Contact</string>
+    <string name="inclusive">Inclusive</string>
+    <string name="exclusive">Exclusive</string>
     <string name="help_contact">
         <![CDATA[
         When enabled, calls/texts from contacts are always permitted. <br>

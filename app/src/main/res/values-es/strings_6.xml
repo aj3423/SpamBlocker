@@ -1,13 +1,14 @@
 <resources>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
-        <item>Siguir Sistema</item>
+        <item>Sigue el Sistema</item>
         <item>Claro</item>
         <item>Oscuro</item>
     </string-array>
 
     <string name="crash_title">
-        Lo sentimos, la aplicación ha fallado. \n\nA continuación, copie el contenido e informe este problema en github, asegúrese de eliminar cualquier información confidencial antes de informar.
+        Lo siento, la aplicación falló. \n\nCopia el contenido de abajo e informa este problema en github.
+        Asegúrate de eliminar cualquier información delicada antes de informar.
     </string>
     <string-array name="week">
         <item>Dom</item>
@@ -26,54 +27,57 @@
     </string-array>
 
     <string-array name="importance_list">
-        <item>Ninguno</item>
+        <item>Ninguna</item>
         <item>Sombra</item>
         <item>Barra de Estado, Sombra</item>
-        <item>Sonido, Barra de estado, Sombra</item>
-        <item>Sonido, Barra de estado, Sombra, Heads-up</item>
+        <item>Sonido, Barra de Estado, Sombra</item>
+        <item>Sonido, Barra de Estado, Sombra, Heads-up</item>
     </string-array>
     <string-array name="export_as_list">
         <item>Exportar como Json</item>
-        <item>Exportar como comprimido</item>
+        <item>Exportar como Comprimido</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones las realiza Google AI, envía un problema en github para agregar un nuevo idioma compatible.
+            Las traducciones las hace la IA de Google. Informa un problema en github para agregar un idioma nuevo.
         ]]>
     </string>
-    <string name="enabled_for_call">Habilitar para llamadas</string>
-    <string name="enabled_for_sms">Habilitar para SMS</string>
-    <string name="repeated_call">Llamada repetida</string>
+    <string name="enabled_for_call">Activar para Llamada</string>
+    <string name="enabled_for_sms">Activar para SMS</string>
+    <string name="repeated_call">Llamada Repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permite que si la llamada se repite en un período de tiempo, es probable que sea importante más que una llamada de spam. <br>
+        Permitir si la llamada se repite dentro de un periodo de tiempo. Es probable que sea una llamada importante y no spam. <br>
         <br>
-        También se cuenta la recepción de mensajes de texto del mismo número, esto depende de si se otorga el permiso READ_SMS, que es opcional.<br>
+        Recibir un mensaje de texto del mismo número también cuenta, esto depende de si se otorgó el permiso READ_SMS, que es opcional.<br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que la segunda llamada dentro de los 5 minutos será permitida. <br>
+        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada dentro de 5 minutos. <br>
         <br>
-        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        Solo aplica para llamadas, <b>no</b> para mensajes de texto. <br>
         <br>
-        <font color="#ea86ff"><b>Prioridad: 10</b> </font>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El interruptor global, esta aplicación solo funciona cuando está activada, desactívela cuando esté esperando alguna llamada/mensaje en particular. <br>
+        El botón global, esta aplicación solo funciona cuando esto está activado.
+        Desactívalo cuando esperes una llamada o mensaje en particular. <br>
         <br>
-        También se puede activar/desactivar desde <b>Ajustes rápidos desplegables</b>.
+        También se puede activar o desactivar desde los <b>Ajustes Rápidos Desplegables</b>.
         ]]>
     </string>
 
-    <string name="about">Acerca de</string>
+    <string name="about">Sobre</string>
     <string name="version">Versión</string>
-    <string name="build_time">Tiempo de compilación (UTC)</string>
-    <string name="source_code">Código fuente</string>
+    <string name="build_time">Hora de Compilación (UTC)</string>
+    <string name="source_code">Código Fuente</string>
     <string name="dismiss">Descartar</string>
     <string name="warning_running_in_work_profile">
-        Es posible que esta aplicación no funcione correctamente en el perfil de trabajo, instálala en el perfil principal.
+        Esta aplicación podría no funcionar bien dentro del perfil de trabajo. En su lugar, instálala en el perfil principal.
     </string>
+    <string name="read_balloon">Revisa los globos de ayuda para las instrucciones de cada función.</string>
+
 </resources>

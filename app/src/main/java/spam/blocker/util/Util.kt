@@ -13,14 +13,12 @@ import android.util.DisplayMetrics
 import android.view.WindowManager
 import spam.blocker.R
 import spam.blocker.def.Def
-import java.io.BufferedReader
+import spam.blocker.util.SharedPref.SharedPref
 import java.io.IOException
-import java.io.InputStreamReader
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import kotlin.random.Random
 
 class Util {
     companion object {
@@ -305,6 +303,18 @@ class Util {
             } catch (_: IOException) {
                 null
             }
+        }
+
+        // returns `true` if it's the first time
+        fun doOnce(ctx: Context, tag: String, doSomething: ()->Unit) : Boolean {
+            val spf = SharedPref(ctx)
+            val alreadyExist = spf.readBoolean(tag, false)
+            if (!alreadyExist) {
+                spf.writeBoolean(tag, true)
+                doSomething()
+                return true
+            }
+            return false
         }
     }
 }

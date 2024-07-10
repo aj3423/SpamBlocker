@@ -7,8 +7,7 @@
     </string-array>
 
     <string name="crash_title">
-        Sorry, die App ist abgestürzt. \n\n Bitte kopieren Sie den Inhalt unten und melden Sie dieses Problem auf GitHub.
-        Stellen Sie sicher, dass Sie alle vertraulichen Informationen entfernen, bevor Sie es melden.
+        Es tut uns leid. Die App ist abgestürzt.\n\nKopieren Sie bitte den Inhalt unten und melden Sie dieses Problem auf github. Achten Sie darauf, alle vertraulichen Informationen vor der Meldung zu entfernen.
     </string>
     <string-array name="week">
         <item>So</item>
@@ -21,17 +20,17 @@
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Abweisen</item>
-        <item>Stummschalten</item>
-        <item>Annehmen und auflegen</item>
+        <item>Ablehnen</item>
+        <item>Stumm</item>
+        <item>Antw.+Auflegen</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Keine</item>
-        <item>Schatten</item>
-        <item>Statusleiste, Schatten</item>
-        <item>Ton, Statusleiste, Schatten</item>
-        <item>Ton, Statusleiste, Schatten, Heads-up</item>
+        <item>Schattierung</item>
+        <item>Statusleiste, Schattierung</item>
+        <item>Ton, Statusleiste, Schattierung</item>
+        <item>Ton, Statusleiste, Schattierung, Pop-up</item>
     </string-array>
     <string-array name="export_as_list">
         <item>Als Json exportieren</item>
@@ -41,7 +40,7 @@
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-            Übersetzungen werden von Google AI durchgeführt. Erstellen Sie ein Problem auf GitHub, um neue Sprachunterstützung hinzuzufügen.
+            Die Übersetzungen erfolgen durch Google-KI. Melden Sie ein Problem auf GitHub, um eine weitere Sprachunterstützung hinzuzufügen.
         ]]>
     </string>
     <string name="enabled_for_call">Für Anrufe aktivieren</string>
@@ -49,11 +48,11 @@
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird. Es handelt sich wahrscheinlich eher um einen wichtigen als um einen Spam-Anruf. <br>
+        Genehmigen Sie, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird. Dies ist wahrscheinlich wichtiger als ein Spam-Anruf. <br>
         <br>
-        Das Empfangen von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde, die optional ist. <br>
+        Der Erhalt von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde. Dies ist optional.<br>
         <br>
-        Die Standardeinstellung <font color="cyan"><b>1 / 5 Min.</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
+        Die Standardeinstellung <font color="cyan"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
         Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>
@@ -63,20 +62,20 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Der globale Schalter. Diese App funktioniert nur, wenn diese Option aktiviert ist.
-        Deaktivieren Sie sie, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
+        Der globale Schalter. Diese App funktioniert nur, wenn dieser aktiviert ist. Deaktivieren Sie ihn, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
         <br>
-        Er kann auch über <b>Dropdown-Schnelleinstellungen</b> umgeschaltet werden.
+        Er kann auch über die <b>Schnelleinstellungen des Dropdown-Menüs</b> ein- bzw. ausgeschaltet werden.
         ]]>
     </string>
 
-    <string name="about">Info</string>
+    <string name="about">Über</string>
     <string name="version">Version</string>
     <string name="build_time">Build-Zeit (UTC)</string>
     <string name="source_code">Quellcode</string>
-    <string name="dismiss">Schließen</string>
+    <string name="dismiss">Ablehnen</string>
     <string name="warning_running_in_work_profile">
         Diese App funktioniert möglicherweise nicht ordnungsgemäß im Arbeitsprofil. Installieren Sie sie stattdessen im Hauptprofil.
     </string>
+    <string name="read_balloon">Bitte lesen Sie die Sprechblasen-Tooltips für Anweisungen zu jeder Funktion.</string>
 
 </resources>

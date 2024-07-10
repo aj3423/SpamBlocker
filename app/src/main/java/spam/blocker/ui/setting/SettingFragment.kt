@@ -2,7 +2,6 @@ package spam.blocker.ui.setting
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.AppOpsManager
 import android.content.BroadcastReceiver
@@ -10,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.PorterDuff
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
@@ -24,7 +22,6 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -39,14 +36,12 @@ import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Cl
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.RemoveAt
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Set
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.config.Configs
@@ -63,7 +58,9 @@ import spam.blocker.ui.util.Algorithm.decompressToString
 import spam.blocker.ui.util.FileInChooser
 import spam.blocker.ui.util.FileOutChooser
 import spam.blocker.ui.util.TimeRangePicker
+import spam.blocker.ui.util.UI
 import spam.blocker.ui.util.UI.Companion.applyTheme
+import spam.blocker.ui.util.UI.Companion.delay
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.ui.util.dynamicPopupMenu
@@ -83,6 +80,7 @@ import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
+import spam.blocker.util.Util.Companion.doOnce
 import spam.blocker.util.Util.Companion.truncate
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -129,43 +127,10 @@ class SettingFragment : Fragment() {
         setupBlockType(root)
         setupOffTime(root)
 
-        val importBlacklistsChooser = FileInChooser(this) // must be initialized during fragment creation
         setupRules( root,
             R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_test_number_filters,
-            numberRules, NumberRuleTable(), Def.ForNumber, onAddLongClick = {
-                importBlacklistsChooser.load { raw: ByteArray? ->
-                    if (raw == null)
-                        return@load
-
-                    val joined = String(raw).lines().map {
-                        // It support both text files that contains numbers
-                        // and .csv that has number as the first column
-                        val v = it.split(",")
-                        if (v.isNotEmpty()) Util.clearNumber(v[0]) else ""
-                    }.filter {
-                        it.isNotEmpty()
-                    }.joinToString ( separator = "|" )
-
-                    val wrapped = "($joined)"
-
-                    val rule = PatternRule().apply {
-                        pattern = wrapped
-
-                        val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
-                        val ymd = LocalDate.now().format(formatter)
-
-                        description = "${ctx.getString(R.string.imported)} $ymd"
-                        priority = 11
-                    }
-                    // 1. add to db
-                    val table = NumberRuleTable()
-                    val id = table.addNewRule(ctx, rule)
-                    rule.id = id
-
-                    // 2. refresh gui
-                    numberRules.add(rule)
-                }
-            })
+            numberRules, NumberRuleTable(), Def.ForNumber
+        ) { onNumberAddLongClick() }
 
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),
@@ -188,7 +153,53 @@ class SettingFragment : Fragment() {
             R.string.help_quick_copy
         )
 
+        // show "read instructions" on first launch
+        doOnce(ctx, "prompt_once_read_balloon_tips") {
+            delay(100) { // no delay no popup, no idea
+                val balloon = UI.createBalloon(ctx, viewLifecycleOwner, R.string.read_balloon)
+                balloon.showAlignBottom(root.findViewById(R.id.setting_help_globally_enabled))
+            }
+        }
         return root
+    }
+
+    private val importBlacklistsChooser = FileInChooser(this) // must be initialized during fragment creation
+
+    private fun onNumberAddLongClick() {
+        val ctx = requireContext()
+
+        importBlacklistsChooser.load { raw: ByteArray? ->
+            if (raw == null)
+                return@load
+
+            val joined = String(raw).lines().map {
+                // It support both text files that contains numbers
+                // and .csv that has number as the first column
+                val v = it.split(",")
+                if (v.isNotEmpty()) Util.clearNumber(v[0]) else ""
+            }.filter {
+                it.isNotEmpty()
+            }.joinToString ( separator = "|" )
+
+            val wrapped = "($joined)"
+
+            val rule = PatternRule().apply {
+                pattern = wrapped
+
+                val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
+                val ymd = LocalDate.now().format(formatter)
+
+                description = "${ctx.getString(R.string.imported)} $ymd"
+                priority = 11
+            }
+            // 1. add to db
+            val table = NumberRuleTable()
+            val id = table.addNewRule(ctx, rule)
+            rule.id = id
+
+            // 2. refresh gui
+            asyncReloadFromDb(ctx, NumberRuleTable(), numberRules)
+        }
     }
 
     private fun setupGlobalEnabled(root: View) {
@@ -792,6 +803,15 @@ class SettingFragment : Fragment() {
     }
 
     @OptIn(DelicateCoroutinesApi::class)
+    private fun asyncReloadFromDb(ctx: Context, table: RuleTable, filters: ObservableArrayList<PatternRule>) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val records = table.listAll(ctx)
+            withContext(Dispatchers.Main) {
+                filters.clear()
+                filters.addAll(records)
+            }
+        }
+    }
     @SuppressLint("NotifyDataSetChanged")
     private fun setupRules(
         root: View,
@@ -807,16 +827,7 @@ class SettingFragment : Fragment() {
         val layoutManager = LinearLayoutManager(ctx, RecyclerView.VERTICAL, false)
         recycler.setLayoutManager(layoutManager)
 
-        fun asyncReloadFromDb() {
-            GlobalScope.launch(Dispatchers.IO) {
-                val records = dbTable.listAll(ctx)
-                withContext(Dispatchers.Main) {
-                    filters.clear()
-                    filters.addAll(records)
-                }
-            }
-        }
-        asyncReloadFromDb()
+        asyncReloadFromDb(ctx, dbTable, filters)
 
         val onItemClick = { clickedF: PatternRule -> Unit
             val i = filters.indexOf(clickedF)
@@ -836,7 +847,7 @@ class SettingFragment : Fragment() {
                     dbTable.updateRuleById(ctx, existing.id, existing)
 
                     // 3. gui update
-                    asyncReloadFromDb()
+                    asyncReloadFromDb(ctx, dbTable, filters)
                 }, forRuleType
             )
 
@@ -854,7 +865,7 @@ class SettingFragment : Fragment() {
                         dbTable.addNewRule(ctx, clickedF)
 
                         // 2. refresh gui
-                        asyncReloadFromDb()
+                        asyncReloadFromDb(ctx, dbTable, filters)
                     }
                 }
                 false
@@ -913,7 +924,7 @@ class SettingFragment : Fragment() {
                     dbTable.addNewRule(ctx, newF)
 
                     // 2. refresh gui
-                    asyncReloadFromDb()
+                    asyncReloadFromDb(ctx, dbTable, filters)
                 }, forRuleType
             )
 

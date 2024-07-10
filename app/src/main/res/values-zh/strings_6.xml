@@ -2,21 +2,22 @@
     <string name="theme">主题</string>
     <string-array name="theme_list">
         <item>跟随系统</item>
-        <item>明亮</item>
-        <item>深色</item>
+        <item>亮色</item>
+        <item>暗色</item>
     </string-array>
 
     <string name="crash_title">
-        抱歉，应用程序已崩溃。\n\n请复制以下内容并在 GitHub 上举报此问题，务必在举报前删除所有敏感信息。
+        抱歉，应用已崩溃。\n\n请复制以下内容并在 github 上报告此问题，
+        在报告之前务必删除任何敏感信息。
     </string>
     <string-array name="week">
-        <item>周日</item>
-        <item>周一</item>
-        <item>周二</item>
-        <item>周三</item>
-        <item>周四</item>
-        <item>周五</item>
-        <item>周六</item>
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
     </string-array>
 
     <string-array name="block_type_list">
@@ -28,9 +29,9 @@
     <string-array name="importance_list">
         <item>无</item>
         <item>阴影</item>
-        <item>状态栏、阴影</item>
-        <item>声音、状态栏、阴影</item>
-        <item>声音、状态栏、阴影、首选</item>
+        <item>状态栏，阴影</item>
+        <item>声音，状态栏，阴影</item>
+        <item>声音，状态栏，阴影，横幅</item>
     </string-array>
     <string-array name="export_as_list">
         <item>导出为 Json</item>
@@ -40,21 +41,21 @@
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译由 Google AI 完成，请在 GitHub 上发起问题以添加新的语言支持。
+            翻译由 Google AI 完成，请在 github 上发布问题以添加新的语言支持。
         ]]>
     </string>
-    <string name="enabled_for_call">启用通话功能</string>
-    <string name="enabled_for_sms">启用短信功能</string>
-    <string name="repeated_call">重复通话</string>
+    <string name="enabled_for_call">启用呼叫</string>
+    <string name="enabled_for_sms">启用短信</string>
+    <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果在一段时间内重复通话，则允许通话，因为这很可能是重要通话，而不是垃圾通话。<br>
+        如果呼叫在一段时间内重复，则允许呼叫，它可能很重要而不是垃圾呼叫。<br>
         <br>
-        接收来自同一号码的短信也会被计算在内，这取决于是否已授予读取短信权限，这是可选的。<br>
+        接收来自同一号码的短信也会被计数，这取决于是否授予了 READ_SMS 权限，该权限是可选的。<br>
         <br>
-        默认设置<font color="cyan"><b>1 / 5 分钟</b></font>表示将在 5 分钟内允许第二次通话。<br>
+        默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示 5 分钟内的第二个呼叫将被允许。<br>
         <br>
-        仅适用于电话，<b>不</b>适用于短信。<br>
+        仅适用于呼叫，<b>不</b>适用于短信。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
@@ -62,19 +63,21 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，只有在打开此开关时，此应用程序才起作用，当您正在等待某些特定通话/消息时，请将其关闭。<br>
+        全局开关，仅在打开此开关时，此应用才能使用，
+        当您等待某些特定呼叫/消息时，请将其关闭。<br>
         <br>
-        还可以从<b>下拉快速设置</b>中切换。
+        它还可以从<b>下拉快速设置</b>中切换。
         ]]>
     </string>
 
     <string name="about">关于</string>
     <string name="version">版本</string>
-    <string name="build_time">编译时间（UTC）</string>
+    <string name="build_time">构建时间 (UTC)</string>
     <string name="source_code">源代码</string>
     <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
-        此应用程序在工作资料中可能无法正常工作，请安装在主资料中。
+        此应用在工作资料中可能无法正常工作，请改为将其安装在主资料中。
     </string>
+    <string name="read_balloon">请查看气球工具提示以了解每个功能的说明。</string>
 
 </resources>
