@@ -78,6 +78,5 @@
     <string name="warning_running_in_work_profile">
         此应用在工作资料中可能无法正常工作，请改为将其安装在主资料中。
     </string>
-    <string name="read_balloon">请查看气球工具提示以了解每个功能的说明。</string>
 
 </resources>

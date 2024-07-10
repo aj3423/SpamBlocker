@@ -76,6 +76,5 @@
     <string name="warning_running_in_work_profile">
         Cette appli pourrait ne pas fonctionner correctement dans un profil professionnel. Veuillez l\'installer dans le profil principal.
     </string>
-    <string name="read_balloon">Veuillez lire les bulles d\'aide pour obtenir des instructions sur chaque fonctionnalité.</string>
 
 </resources>

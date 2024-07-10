@@ -78,6 +78,5 @@
     <string name="warning_running_in_work_profile">
         Esta aplicación podría no funcionar bien dentro del perfil de trabajo. En su lugar, instálala en el perfil principal.
     </string>
-    <string name="read_balloon">Revisa los globos de ayuda para las instrucciones de cada función.</string>
 
 </resources>

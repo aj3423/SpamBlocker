@@ -1,0 +1,9 @@
+Improvement:
+ - "Backup & Restore" is now based on file. (using scoped storage, no permission required)
+ - Improve performance for long rule
+
+New:
+ - Import blacklist numbers from file by long pressing the "Add" button, it supports any files that have numbers in the first column.
+
+Fix:
+ - Crash caused by unknown number

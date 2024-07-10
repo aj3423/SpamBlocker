@@ -153,13 +153,6 @@ class SettingFragment : Fragment() {
             R.string.help_quick_copy
         )
 
-        // show "read instructions" on first launch
-        doOnce(ctx, "prompt_once_read_balloon_tips") {
-            delay(100) { // no delay no popup, no idea
-                val balloon = UI.createBalloon(ctx, viewLifecycleOwner, R.string.read_balloon)
-                balloon.showAlignBottom(root.findViewById(R.id.setting_help_globally_enabled))
-            }
-        }
         return root
     }
 

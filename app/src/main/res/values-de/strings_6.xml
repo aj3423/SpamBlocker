@@ -76,6 +76,5 @@
     <string name="warning_running_in_work_profile">
         Diese App funktioniert möglicherweise nicht ordnungsgemäß im Arbeitsprofil. Installieren Sie sie stattdessen im Hauptprofil.
     </string>
-    <string name="read_balloon">Bitte lesen Sie die Sprechblasen-Tooltips für Anweisungen zu jeder Funktion.</string>
 
 </resources>

@@ -103,12 +103,12 @@ class MainActivity : AppCompatActivity() {
                 (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
             })
 
-            // go to last tab
+            // go to tab
             when (startFromNotification) {
                 "call" -> navView.selectedItemId = R.id.navigation_call
                 "sms" -> navView.selectedItemId = R.id.navigation_sms
                 else -> {
-                    // if not launched by clicking notification, restore the last active page
+                    // if not launched by clicking notification, restore the last active tab
                     when (spf.getActiveTab()) {
                         "call" -> navView.selectedItemId = R.id.navigation_call
                         "sms" -> navView.selectedItemId = R.id.navigation_sms
