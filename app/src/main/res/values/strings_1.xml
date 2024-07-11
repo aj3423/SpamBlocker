@@ -12,6 +12,7 @@
     <string name="pattern_contain_leading_zeroes">No need to add the leading 0, they will be removed before checking.</string>
     <string name="pattern_contain_leading_plus">No need to add the leading +, they will be removed before checking.</string>
     <string name="check_balloon_for_explanation">Check the help of the \"Number Rules\" for a detailed explanation.</string>
+    <string name="disable_number_optimization">This optimization can be disabled by the regex flag \"Raw Number\".</string>
     <string name="invalid_number">Invalid number</string>
     <string name="filter_desc">Description</string>
     <string name="apply_to_call">Apply to Call</string>

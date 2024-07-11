@@ -1,78 +1,79 @@
 <resources>
-    <string name="allow_repeated_call">Повторний виклик</string>
+    <string name="allow_repeated_call">Повторный дзвінок</string>
     <string name="dialed">Набрав</string>
-    <string name="find_apps">Знайти програми</string>
-    <string name="spam_sms_blocked">SMS-повідомлення заблоковано</string>
-    <string name="spam_call_blocked">Виклик заблоковано</string>
-    <string name="new_sms_received">Нове SMS-повідомлення</string>
-    <string name="mark_all_as_read">Позначити всі як прочитані</string>
-    <string name="delete_all">Видалити всі</string>
-    <string name="show_passed">Показати пропущено</string>
-    <string name="show_blocked">Показати заблоковано</string>
-    <string name="clone_rule">Клонувати правило</string>
+    <string name="find_apps">Знайти Програми</string>
+    <string name="spam_sms_blocked">SMS Повідомлення Заблоковано</string>
+    <string name="spam_call_blocked">Дзвінок Заблоковано</string>
+    <string name="new_sms_received">Нове SMS Повідомлення</string>
+    <string name="mark_all_as_read">Відзначити все як прочитане</string>
+    <string name="delete_all">Видалити все</string>
+    <string name="show_passed">Показати Пропущене</string>
+    <string name="show_blocked">Показати Заблоковане</string>
+    <string name="clone_rule">Клон Правила</string>
     <string name="notification">Сповіщення</string>
     <string name="type">Тип</string>
     <string name="time">Час</string>
-    <string name="times">Рази</string>
+    <string name="times">Разів</string>
     <string name="day">День</string>
-    <string name="days">Дні</string>
+    <string name="days">Днів</string>
     <string name="min">Хв</string>
-    <string name="within_minutes">За хвилини</string>
-    <string name="within_days">За дні</string>
-    <string name="phone_number">Номер телефону</string>
+    <string name="within_minutes">Протягом Хвилин</string>
+    <string name="within_days">Протягом Днів</string>
+    <string name="phone_number">Номер Телефону</string>
     <string name="phone_number_abbrev">Номер</string>
-    <string name="sms_content">Вміст SMS</string>
-    <string name="sms_content_abbrev">Вміст</string>
+    <string name="sms_content">Зміст SMS</string>
+    <string name="sms_content_abbrev">Зміст</string>
     <string name="result">Результат</string>
     <string name="reason">Причина</string>
-    <string name="regex_flags">Прапори регулярних виразів</string>
-    <string name="ignore_case">Ігнорувати регістр</string>
-    <string name="dot_match_all">Точка відповідає всьому</string>
+    <string name="regex_flags">Регулярні Вирази (Regex)</string>
+    <string name="ignore_case">Ігнорувати Регістр</string>
+    <string name="dot_match_all">Крапка Відповідає Всему</string>
+    <string name="raw_number">Сирий Номер</string>
     <string name="literal">Літерал</string>
-    <string name="off_time">Час вимкнення</string>
+    <string name="off_time">Час Виключення</string>
     <string name="schedule">Розклад</string>
-    <string name="workday">Робочий день</string>
-    <string name="weekend">Вихідні</string>
-    <string name="entire_day">Увесь день</string>
-    <string name="block_type">Тип блокування</string>
+    <string name="workday">Робочий День</string>
+    <string name="weekend">Вихідний День</string>
+    <string name="entire_day">Весь День</string>
+    <string name="block_type">Тип Блокування</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Відхилити</b></font>: <br>
-        &emsp; Так само, як натискання кнопки відхилення. Це працює абсолютно безшумно, екран блокування не вмикається, це рекомендований тип для тих, хто не використовує голосове повідомлення.<br>
+        &emsp; Те ж саме, що натискання кнопки відхилення. Це працює абсолютно безшумно, екран блокування не буде ввімкнено, це рекомендований тип для тих, хто не використовує голосової пошти.<br>
         <br>
-        - <font color="#d1c8c8"><b>Тиша</b></font>: <br>
-        &emsp; Воно безшумно пролунає у фоновому режимі, створюючи враження у абонента, що ви просто зайняті і не відповіли на нього. <br>
+        - <font color="#d1c8c8"><b>Заглушити</b></font>: <br>
+        &emsp; Воно буде безшумно дзвонити у фоновому режимі, створюючи враження для абонента, що ви просто зайняті й не відповідаєте на нього. <br>
         <br>
-        - <font color="#d1c8c8"><b>Відповісти і повісити</b></font>: <font color="#ffa500"><b>(експериментально)</b></font><br>
-        &emsp; Щоб уникнути відправлення на голосове повідомлення, поведінка може залежати від оператора. Екран блокування можна ввімкнути на короткий час, ви також можете почути сигнал закінчення виклику(деякі телефони пропонують можливість вимкнути цей звук).
+        - <font color="#d1c8c8"><b>Відповісти й Повісити</b></font>: <font color="#ffa500"><b>(експериментально)</b></font><br>
+        &emsp; Щоб уникнути відправлення на голосове повідомлення, поведінка може залежати від оператора зв\'язку. Екран блокування може бути ввімкнено на короткий час, ви також можете почути звуковий сигнал про закінчення виклику (деякі телефони пропонують можливість вимкнути цей звук).
         ]]>
     </string>
-    <string name="stir">Атестація STIR</string>
-    <string name="stir_include_unverified">Включити непідтверджені</string>
-    <string name="unverified">Непідтверджено</string>
-    <string name="valid">Дійсний виклик</string>
-    <string name="spoof">Фішинговий виклик</string>
+    <string name="stir">Підтвердження STIR</string>
+    <string name="stir_include_unverified">Включити Непідтверджені</string>
+    <string name="unverified">Неперевірений</string>
+    <string name="valid">Дійсний Дзвінок</string>
+    <string name="spoof">Фіктивний Дзвінок</string>
     <string name="help_stir">
         <![CDATA[
-            Атестація STIR вимагає <b>Android 11+</b> та <b>підтримки оператора</b>. <br>
+            Підтвердження STIR вимагає <b>Android 11+</b> і <b>підтримки оператора зв\'язку</b>. <br>
             <br>
-            Є три можливі результати атестації: <br>
+            Є три можливі результати підтвердження: <br>
             <font color="cyan"><b>Дійсний</b></font> <br>
-            &emsp; Виклик, швидше за все, дійсний, а не фішинговий. <br>
-            <font color="#ffa500"><b>Непідтверджено</b></font> <br>
-            &emsp; Виклик не може бути підтверджено, або атестація STIR не підтримується. <br>
-            <font color="#fa7f71"><b>Фішинг</b></font> <br>
-            &emsp; Ймовірно це фішинговий виклик. <br>
+            &emsp; Дзвінок, найімовірніше, дійсний, а не фіктивний. <br>
+            <font color="#ffa500"><b>Не підтверджено</b></font> <br>
+            &emsp; Дзвінок неможливо підтвердити або підтвердження STIR не підтримується. <br>
+            <font color="#fa7f71"><b>Фіктивний</b></font> <br>
+            &emsp; Є ймовірність, що це фіктивний дзвінок. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Інклюзивний</b></font>: <br>
-                  &emsp; Виклики, які не проходять цю перевірку, все ще будуть перевірятись за іншими правилами. <br>
-                  &emsp; Коли позначено "<b>Включити непідтверджені</b>", виклик також пройде, якщо він не підтверджений. <br>
+                  &emsp; Дзвінки, які не проходять цю перевірку, все одно будуть перевірені за іншими правилами. <br>
+                  &emsp; Коли встановлено прапорець "<b>Включити непідтверджені</b>", дзвінок також буде пропущено, якщо він не підтверджено. <br>
                   &emsp; <font color="#ea86ff"><b>Пріоритет: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Ексклюзивний</b></font>: <br>
-                  &emsp; Виклики, які не проходять цю перевірку, будуть <font color="#fa7f71"><b>заблоковані</b></font>. <br>
-                  &emsp; Коли позначено "<b>Включити непідтверджені</b>", виклик також буде заблоковано, якщо він не підтверджений. <br>
+              - <font color="#fa7f71"><b>Виключний</b></font>: <br>
+                  &emsp; Дзвінки, які не проходять цю перевірку, будуть <font color="#fa7f71"><b>заблоковані</b></font>. <br>
+                  &emsp; Коли встановлено прапорець "<b>Включити непідтверджені</b>", дзвінок також буде заблоковано, якщо він не підтверджено. <br>
                   &emsp; <font color="#ea86ff"><b>Пріоритет: 0</b></font>
         ]]>
     </string>

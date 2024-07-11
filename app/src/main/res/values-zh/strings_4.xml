@@ -1,9 +1,9 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        启用后，此时间段内将允许所有呼叫（消息）。夜间通常没有垃圾邮件。 <br>
+        启用后，在该时间段内所有通话（短信）将被允许。通常，夜间不会出现垃圾邮件。<br>
         <br>
-        如果开始时间大于结束时间，例如 20:00 -> 07:00，这意味着从晚上 20:00 到次日早上 07:00。 <br>
+        如果开始时间晚于结束时间，例如 20:00 -> 07:00，表示时间段从当晚 20:00 到次日凌晨 07:00。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
@@ -12,26 +12,28 @@
     <string name="help_regex_flags">
         <![CDATA[
 
-            这些标记会更改 regex 的匹配行为，它们是默认情况下为新规则设置的。 <br>
+            这些标志更改了正则表达式的匹配行为，默认情况下为新规则设置这些标志。<br>
             <br>
 
-            <font color="#ffa500"><b>忽略大小写</b></font>：<br>
-            &ensp; 它使模式匹配对大小写不敏感，<font color="cyan"><b>a</b></font>
-              将匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>。 <br>
+            <font color="#d1c8c8"><b>忽略大小写</b></font>:<br>
+            &ensp; 它使模式匹配不区分大小写，<font color="cyan"><b>a</b></font>
+              将同时匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>。<br>
             <br>
 
-            <font color="#ffa500"><b>点匹配所有</b></font>：<br>
-            &ensp; 启用后，<font color="cyan"><b>.</b></font> 还会匹配换行符 (<font color="cyan"><b>\\n</b></font>)，
-              这允许点跨多行匹配。 <br>
-            &ensp; 使用案例： <br>
-            &emsp;   匹配多行垃圾邮件： <br>
+            <font color="#d1c8c8"><b>点匹配所有</b></font>: <br>
+            &ensp; 启用后，<font color="cyan"><b>.</b></font> 也将匹配换行符 (<font color="cyan"><b>\\n</b></font>)，
+              这允许该点跨多行匹配。<br>
+            &ensp; 使用案例：<br>
+            &emsp;   匹配多行垃圾邮件：<br>
             &emsp;   <font color="#fa7f71">领取您的奖品：http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   规则为： <br>
+            &emsp;   使用规则：<br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
+            <br>
+            <font color="#d1c8c8"><b>原始号码</b></font>: <br>
+            &ensp; 启用后，号码将不被优化，<font color="cyan"><b>+</b></font> 和 <font color="cyan"><b>前导 0</b></font> 将保留，这对于区分国内号码很有用。
         ]]>
     </string>
-
 
 </resources>

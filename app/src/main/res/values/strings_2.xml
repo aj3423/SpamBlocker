@@ -68,6 +68,7 @@
         &emsp; They are <b>all</b> checked as:<br>
         &emsp;&emsp; 123456789 <br>
         &emsp; So regex <font color="cyan"><b>123.*</b></font> would match <b>all</b> of them.<br>
+        This number optimization can be <b>disabled</b> by the regex flag \"Raw Number\".<br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>

@@ -1,48 +1,47 @@
 <resources>
-    <string name="for_particular_number">Pour un numéro</string>
-    <string name="no_match_found">Aucune correspondance trouvée</string>
-    <string name="help_for_particular_number">Lorsqu\'activée, la règle s\'applique uniquement lorsque le numéro et le contenu correspondent.</string>
+    <string name="for_particular_number">Pour le numéro</string>
+    <string name="no_match_found">Aucune correspondance</string>
+    <string name="help_for_particular_number">Lorsqu\'elle est activée, la règle s\'applique uniquement lorsque le numéro et le contenu correspondent.</string>
     <string name="contact">Contact</string>
-    <string name="non_contact">Non contact</string>
-    <string name="inclusive">Incluant</string>
-    <string name="exclusive">Excluant</string>
+    <string name="non_contact">Pas contact</string>
+    <string name="inclusive">Inclus</string>
+    <string name="exclusive">Exclusif</string>
     <string name="help_contact">
         <![CDATA[
-        Lorsqu\'activée, les appels/SMS provenant de contacts sont toujours autorisés <br>
+        Lorsque activée, les appels/SMS des contacts sont toujours autorisés. <br>
         <br>
-          - <font color="#d1c8c8"><b>Incluant</b></font> : <br>
-              &emsp; Les numéros non contacts seront vérifiés par d\'autres règles.  <br>
-              &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font>  <br>
+          - <font color="#d1c8c8"><b>Inclusif</b></font>: <br>
+              &emsp; Les numéros qui ne sont pas des contacts seront vérifiés par d\'autres règles. <br>
+              &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>Excluant</b></font> : <br>
-              &emsp; Les numéros non contacts seront <font color="#fa7f71"><b>bloqués</b></font>.  <br>
-              &emsp; Équivalent à <font color="#d1c8c8"><b>Incluant</b></font> avec une règle de numéro <font color="#fa7f71"><b>.*</b></font>.  <br>
-              &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>  <br>
+          - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
+              &emsp; Les numéros qui ne sont pas des contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+              &emsp; Équivalent à <font color="#d1c8c8"><b>Inclusif</b></font> avec une règle de numéro <font color="#fa7f71"><b>.*</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font> <br>
         <br>
-        Elle s\'applique aux deux : appels et SMS.
+        S\'applique aux appels et aux SMS.
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
         Les numéros composés seront autorisés. <br>
         <br>
-        Les messages d\'envoi sont également pris en compte, cela ne fonctionne que lorsque l\'autorisation READ_SMS est accordée. <br>
+        L\'envoi de messages est également pris en compte. Cela fonctionne uniquement si l\'autorisation READ_SMS est accordée. <br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>3 jours</b></font> signifie que si un numéro a effectué des appels sortants ou envoyé des messages au cours des 3 derniers jours, les appels de ce numéro seront autorisés, même si ce numéro ne figure pas dans vos contacts.<br>
+        Le paramètre par défaut <font color="cyan"><b>3 jours</b></font> signifie que si un numéro a effectué des appels sortants ou envoyé des messages au cours des 3 derniers jours, les appels de ce numéro seront autorisés, même si ce numéro ne figure pas dans les contacts.<br>
         <br>
         S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
-    </string>
-    <string name="help_recent_apps">
+    </string>    <string name="help_recent_apps">
         <![CDATA[
-        Tout appel entrant passera si une application de la liste a été récemment utilisée.<br>
+        Tout appel entrant passera si l\'une des applications de la liste a été utilisée récemment.<br>
         <br>
-        Cas d\'utilisation typique :<br>
-        &emsp; Vous venez de commander une pizza dans PizzaApp, ils vous rappellent bientôt pour vous rembourser car ils ferment. Cet appel passera si PizzaApp est activé ici. <br>
+        Un cas d\'utilisation typique :<br>
+        &emsp; Vous venez de commander une pizza dans PizzaApp, ils vous appellent bientôt pour vous rembourser parce qu\'ils ferment. Cet appel passera si PizzaApp est activé ici. <br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>5 min</b></font> signifie que tout appel sera autorisé si l\'une de ces applications a été utilisée dans les 5 minutes, par « utilisée », cela signifie activée, désactivée, réduite ou tuée. <br>
+        Le paramètre par défaut <font color="cyan"><b>5 min</b></font> signifie que tout appel sera autorisé si l\'une de ces applications a été utilisée dans les 5 minutes. Par « utilisée », on entend activée, désactivée, réduite ou fermée. <br>
         <br>
         S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
         <br>
@@ -54,28 +53,30 @@
         Ces règles s\'appliquent au numéro de téléphone entrant.<br>
         <br>
         <font color="#ffa500"><b>Important</b></font> :<br>
-        Pour simplifier l\'expression rationnelle,
-          <font color="#fa7f71"><b>+</b></font>;
-          <font color="#fa7f71"><b>espaces</b></font>
+        Pour simplifier la regex,
+          <font color="#fa7f71"><b>+</b></font>
+          et <font color="#fa7f71"><b>espaces</b></font>
           et <font color="#fa7f71"><b>zéros non significatifs</b></font>
           sont supprimés avant vérification, par exemple :<br>
-        &emsp; Tous ces formats :<br>
-        &emsp;&emsp; 123456789 &emsp; (numéro régulier)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp; (avec <font color="#fa7f71"><b>espaces</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp; (avec <font color="#fa7f71"><b>+</b></font> non significatif)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp; (avec préfixe d\'acheminement national <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp; (deux <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
+        &emsp; Tous ces formats :<br>
+        &emsp;&emsp; 123456789 (numéro standard)<br>
+        &emsp;&emsp; 1 2345 6789 (avec <font color="#fa7f71"><b>espaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 (avec <font color="#fa7f71"><b>+</b></font> initial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 (avec préfixe national <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 (deux <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Donc, l\'expression rationnelle <font color="cyan"><b>123.*</b></font> correspondrait à <b>tous</b> ces formats.<br>
+        &emsp; Ainsi, la regex <font color="cyan"><b>123.*</b></font> correspondrait à <b>tous</b>.<br>
+        Cette optimisation de numéro peut être <b>désactivée</b> par l\'indicateur de regex « Numéro brut ».<br>
         <br>
-        La liste est <b>affichée</b> dans l\'ordre décroissant de la priorité, la description ascendante et le modèle ascendant. <br>
+        La liste est <b>affichée</b> par ordre décroissant de priorité, de description croissante et de modèle croissant. <br>
         <br>
         Décochez les cases pour désactiver la règle, utile pour les tests. <br>
         <br>
         Balayez vers la gauche pour supprimer une règle.<br>
         <br>
-        <b>Appuyez longuement</b> sur le bouton « Ajouter » pour importer des numéros à partir d\'un fichier ; le format doit être un numéro par ligne, ou au format .csv avec la première colonne étant le numéro.
+        <b>Appuyez longuement</b> sur le bouton « Ajouter » pour importer des numéros depuis un fichier. Le format doit être un numéro par ligne,
+         ou format .csv avec la première colonne contenant le numéro.
         ]]>
     </string>
 </resources>

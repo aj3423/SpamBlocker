@@ -40,6 +40,7 @@ class MaterialInputRegexFlagsUtil {
 
                 val flags_i = root.findViewById<CheckBox>(R.id.flag_ignore_case)
                 val flags_d = root.findViewById<CheckBox>(R.id.flag_dot_match_all)
+                val flags_r = root.findViewById<CheckBox>(R.id.flag_raw_number)
                 fun bindCheckEvents(chk: CheckBox, flag: Int) {
                     chk.setOnCheckedChangeListener { _, isChecked ->
                         initFlags.set(flag, isChecked)
@@ -52,6 +53,7 @@ class MaterialInputRegexFlagsUtil {
                 }
                 initCheck(flags_i, Def.FLAG_REGEX_IGNORE_CASE)
                 initCheck(flags_d, Def.FLAG_REGEX_DOT_MATCH_ALL)
+                initCheck(flags_r, Def.FLAG_REGEX_RAW_NUMBER)
 
                 val popUp = PopupWindow(ctx).apply {
                     contentView = binding.root

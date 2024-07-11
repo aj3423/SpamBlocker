@@ -49,7 +49,12 @@
             android:layout_height="wrap_content"
             android:text="@string/dot_match_all"
             android:textColor="@color/text_grey"/>
-
+        <CheckBox
+            android:id="@+id/flag_raw_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/raw_number"
+            android:textColor="@color/text_grey"/>
 
     </LinearLayout>
 </LinearLayout>

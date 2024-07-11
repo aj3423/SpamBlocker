@@ -162,7 +162,7 @@ class Util {
             }
         }
 
-        fun validateRegex(ctx: Context, regexStr: String) : String? {
+        fun validateRegex(ctx: Context, regexStr: String, disableNumberOptimization: Boolean) : String? {
             var s = regexStr
             if (s.isNotEmpty() && s.trim() != s)
                 return ctx.getString(R.string.pattern_contain_invisible_characters)
@@ -173,11 +173,19 @@ class Util {
             if (s.startsWith("^"))
                 s = s.substring(1)
 
-            if (s.startsWith("+") || s.startsWith("\\+"))
-                return ctx.getString(R.string.pattern_contain_leading_plus) + " " + ctx.getString(R.string.check_balloon_for_explanation)
+            if ((s.startsWith("+") || s.startsWith("\\+")) && !disableNumberOptimization)
+                return listOf(
+                    ctx.getString(R.string.pattern_contain_leading_plus),
+                    ctx.getString(R.string.disable_number_optimization),
+                    ctx.getString(R.string.check_balloon_for_explanation),
+                    ).joinToString(separator = "\n")
 
-            if (s.startsWith("0")) {
-                return ctx.getString(R.string.pattern_contain_leading_zeroes) + " " + ctx.getString(R.string.check_balloon_for_explanation)
+            if (s.startsWith("0") && !disableNumberOptimization) {
+                return listOf(
+                    ctx.getString(R.string.pattern_contain_leading_zeroes),
+                    ctx.getString(R.string.disable_number_optimization),
+                    ctx.getString(R.string.check_balloon_for_explanation),
+                    ).joinToString(separator = "\n")
             }
 
             return null

@@ -28,6 +28,7 @@
     <string name="regex_flags">Regex Flags</string>
     <string name="ignore_case">Ignore Case</string>
     <string name="dot_match_all">Dot Match All</string>
+    <string name="raw_number">Raw Number</string>
     <string name="literal">Literal</string>
     <string name="off_time">Off Time</string>
     <string name="schedule">Schedule</string>

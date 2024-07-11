@@ -93,12 +93,14 @@ object Def {
     const val FLAG_REGEX_MULTILINE = 1 shl 1
     const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
     const val FLAG_REGEX_LITERAL = 1 shl 3
+    const val FLAG_REGEX_RAW_NUMBER = 1 shl 10
 
     val MAP_REGEX_FLAGS = mapOf(
         FLAG_REGEX_IGNORE_CASE to "i",
         FLAG_REGEX_MULTILINE to "m",
         FLAG_REGEX_DOT_MATCH_ALL to "d",
-        FLAG_REGEX_LITERAL to "l"
+        FLAG_REGEX_LITERAL to "l",
+        FLAG_REGEX_RAW_NUMBER to "r"
     )
     // inverse means it won't show labels for these flags when they are set
     // only show labels when they are off

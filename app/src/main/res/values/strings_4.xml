@@ -15,12 +15,12 @@
             These flags change the matching behavior of the regex, they are set for new rules by default. <br>
             <br>
 
-            <font color="#ffa500"><b>Ignore Case</b></font>:<br>
+            <font color="#d1c8c8"><b>Ignore Case</b></font>:<br>
             &ensp; It makes the pattern matching case-insensitive, <font color="cyan"><b>a</b></font>
               would match both <font color="cyan"><b>a</b></font> and <font color="cyan"><b>A</b></font>. <br>
             <br>
 
-            <font color="#ffa500"><b>Dot Match All</b></font>: <br>
+            <font color="#d1c8c8"><b>Dot Match All</b></font>: <br>
             &ensp; When enabled, <font color="cyan"><b>.</b></font> will also match newline characters (<font color="cyan"><b>\\n</b></font>),
               this allows the dot to match across multiple lines. <br>
             &ensp; Use case: <br>
@@ -30,8 +30,10 @@
             &emsp;   with rule: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
+            <br>
+            <font color="#d1c8c8"><b>Raw Number</b></font>: <br>
+            &ensp; When enabled, the number will not be optimized, <font color="cyan"><b>+</b></font> and <font color="cyan"><b>leading 0s</b></font> will remain, useful for differentiating domestic numbers.
         ]]>
     </string>
-
 
 </resources>

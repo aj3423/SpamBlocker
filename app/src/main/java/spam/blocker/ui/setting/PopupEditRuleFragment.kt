@@ -12,6 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import com.dpro.widgets.WeekdaysPicker
 import com.google.android.material.button.MaterialButton
@@ -115,9 +116,9 @@ class PopupEditRuleFragment(
                 container.helperText = validator(it.toString())
             }
         }
-        fun showHelpOnInvalidRegex(container: TextInputLayout, edit: TextInputEditText) {
+        fun showHelpOnInvalidRegex(container: TextInputLayout, edit: TextInputEditText, regexFlags: Flag) {
             showHelpOnError(container, edit) {
-                Util.validateRegex(ctx, it)
+                Util.validateRegex(ctx, it, regexFlags.has(Def.FLAG_REGEX_RAW_NUMBER))
             }
         }
         fun showHelpOnInvalidNumber(container: TextInputLayout, edit: TextInputEditText) {
@@ -129,13 +130,14 @@ class PopupEditRuleFragment(
             }
         }
 
-        showHelpOnInvalidRegex(container_pattern, edit_pattern)
+        showHelpOnInvalidRegex(container_pattern, edit_pattern, initPatternFlags)
         edit_pattern.setText(init.pattern)
 
         if (forType == Def.ForSms) {
-            showHelpOnInvalidRegex(container_pattern_particular, edit_pattern_particular)
+            showHelpOnInvalidRegex(container_pattern_particular, edit_pattern_particular, initPatternExtraFlags)
             setupImageTooltip(ctx, viewLifecycleOwner, view.findViewById(R.id.popup_help_particular_number), R.string.help_for_particular_number)
             MaterialInputRegexFlagsUtil.attach(ctx, viewLifecycleOwner, container_pattern_particular, edit_pattern_particular, initPatternExtraFlags)
+
             switch_for_particular_number.setOnClickListener{
                 val checked = switch_for_particular_number.isChecked
                 showIf(container_pattern_particular, checked)
@@ -282,8 +284,8 @@ class PopupEditRuleFragment(
             }
             val priority = edit_priority.text.toString()
 
-            val err1 = Util.validateRegex(ctx, pattern)
-            val err2 = Util.validateRegex(ctx, patternExtra)
+            val err1 = Util.validateRegex(ctx, pattern, initPatternFlags.has(Def.FLAG_REGEX_RAW_NUMBER))
+            val err2 = Util.validateRegex(ctx, patternExtra, initPatternExtraFlags.has(Def.FLAG_REGEX_RAW_NUMBER))
             val err3 = !Util.isInt(priority)
 
             if (err1 == null && err2 == null && !err3) {

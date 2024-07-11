@@ -453,4 +453,19 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
 
+    // regex flags RawNumber
+    @Test
+    fun regex_flags_raw_number() {
+        val domesticNumber = "00123"
+
+        add_number_rule(build_rule("0.*", "", 2, true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_RAW_NUMBER))
+
+        // should pass by default
+        var r = Checker.checkCall(ctx, A)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
+
+        //  should block for leading 0
+        r = Checker.checkCall(ctx, domesticNumber)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
+    }
 }
