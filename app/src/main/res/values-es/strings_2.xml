@@ -1,34 +1,34 @@
 <resources>
-    <string name="for_particular_number">Para un número</string>
-    <string name="no_match_found">No se encontró coincidencia</string>
-    <string name="help_for_particular_number">Cuando está activado, la regla solo aplica cuando coinciden el número y el contenido.</string>
+    <string name="for_particular_number">Para número</string>
+    <string name="no_match_found">Sin coincidencias</string>
+    <string name="help_for_particular_number">Cuando está activado, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
     <string name="contact">Contacto</string>
-    <string name="non_contact">No es contacto</string>
+    <string name="non_contact">No contacto</string>
     <string name="inclusive">Inclusivo</string>
     <string name="exclusive">Exclusivo</string>
     <string name="help_contact">
         <![CDATA[
-        Cuando está activado, las llamadas/mensajes de texto de contactos están permitidos. <br>
+        Cuando está activado, las llamadas/mensajes de texto de los contactos siempre se permiten. <br>
         <br>
           - <font color="#d1c8c8"><b>Inclusivo</b></font>: <br>
-              &emsp; Números no contactos se comprobarán con otras reglas. <br>
+              &emsp; Los números no de contacto se comprobarán con otras reglas. <br>
               &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-              &emsp; Los números que no son contactos serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+              &emsp; Los números no de contacto se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
               &emsp; Equivalente a <font color="#d1c8c8"><b>Inclusivo</b></font> con una regla de número <font color="#fa7f71"><b>.*</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font> <br>
         <br>
-        Se aplica a llamadas y mensajes de texto.
+        Se aplica tanto a llamadas como a mensajes de texto.
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Los números marcados serán permitidos. <br>
+        Se permitirán los números marcados. <br>
         <br>
-        Enviar mensajes también cuenta, esto solo funciona cuando se concede el permiso READ_SMS. <br>
+        El envío de mensajes también cuenta, esto solo funciona cuando se otorga el permiso READ_SMS. <br>
         <br>
-        La configuración predeterminada <font color="cyan"><b>3 días</b></font> significa que si se han realizado llamadas salientes o enviado mensajes a un número en los últimos 3 días, las llamadas desde ese número estarán permitidas, aunque este número no esté en los contactos.<br>
+        La configuración predeterminada <font color="cyan"><b>3 días</b></font> significa que si un número ha realizado llamadas salientes o ha enviado mensajes en los últimos 3 días, se permitirán las llamadas de ese número, incluso si este número no está en los contactos.<br>
         <br>
         Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
@@ -37,12 +37,12 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Cualquier llamada entrante pasará si alguna aplicación en la lista se ha utilizado recientemente.<br>
+        Cualquier llamada entrante pasará si alguna aplicación de la lista se ha usado recientemente.<br>
         <br>
         Un caso de uso típico:<br>
-        &emsp; Acabas de pedir una pizza en PizzaApp, pronto te llaman para reembolsarte porque están cerrando. Esa llamada pasaría si PizzaApp está habilitado aquí. <br>
+        &emsp; Usted acaba de pedir una pizza en PizzaApp, pronto lo llaman para reembolsarle porque están cerrando. Esa llamada pasaría si PizzaApp está habilitado aquí. <br>
         <br>
-        La configuración predeterminada <font color="cyan"><b>5 min</b></font> significa que cualquier llamada se permitirá si alguna de estas aplicaciones se ha utilizado en los últimos 5 minutos, por "usado" se entiende activado, desactivado, minimizado o cerrado. <br>
+        La configuración predeterminada <font color="cyan"><b>5 minutos</b></font> significa que cualquier llamada se permitirá si alguna de estas aplicaciones se ha utilizado en 5 minutos, por "usado" se entiende activado, desactivado, minimizado o finalizado. <br>
         <br>
         Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
@@ -57,27 +57,31 @@
         Para simplificar la expresión regular,
           <font color="#fa7f71"><b>+</b></font>
           y <font color="#fa7f71"><b>espacios</b></font>
-          y <font color="#fa7f71"><b>ceros a la izquierda</b></font>
-          se eliminan antes de la comprobación, por ejemplo:<br>
+          y <font color="#fa7f71"><b>ceros iniciales</b></font>
+          se eliminan antes de realizar la comprobación, por ejemplo:<br>
         &emsp; Todos estos formatos:<br>
-        &emsp;&emsp; 123456789 &emsp;(número regular)<br>
+        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espacios</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con prefijo <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo de línea doméstica <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo de troncal nacional <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Se comprueban <b>todos</b> como:<br>
+        &emsp; se comprueban <b>todos</b> como:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Así que la expresión regular <font color="cyan"><b>123.*</b></font> coincidiría con <b>todos</b> ellos.<br>
-        Esta optimización de número puede ser <b>desactivada</b> por el indicador de expresión regular "Número en bruto".<br>
+        &emsp; Por lo tanto, la expresión regular <font color="cyan"><b>123.*</b></font> coincidiría con todos ellos.<br>
+        Esta optimización de números se puede <b>desactivar</b> mediante el indicador de expresión regular "Número sin procesar".<br>
         <br>
         La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente. <br>
         <br>
-        Desmarca las casillas de verificación para desactivar la regla, útil para realizar pruebas. <br>
+        Desmarque las casillas de verificación para desactivar la regla, deslícela hacia la izquierda para eliminarla.<br>
         <br>
-        Desliza hacia la izquierda para eliminar una regla.<br>
-        <br>
-        <b>Pulsa y mantén pulsado</b> el botón "Añadir" para importar números desde un archivo, el formato debe ser un número por fila,
-         o formato .csv con la primera columna como número.
+        <b>Mantenga presionado</b> el botón "Agregar" para importar números desde un archivo .csv; columnas admitidas (todas opcionales):<br>
+         - <no_translate>pattern</no_translate>: La expresión regular<br>
+         - <no_translate>description</no_translate><br>
+         - <no_translate>priority</no_translate>: predeterminado 1<br>
+         - <no_translate>flags</no_translate>: 1 (aplicar a llamadas), 2 (aplicar a SMS), 3 (ambos), predeterminado 3<br>
+         - <no_translate>isBlacklist</no_translate>: <no_translate>true</no_translate> o <no_translate>false</no_translate>, predeterminado <no_translate>true</no_translate><br>
+         - <no_translate>blockType</no_translate>: 0~2 correspondiente a los 3 tipos de bloqueos, predeterminado 0<br>
+         - <no_translate>importance</no_translate>: 0~4 correspondiente a los 5 tipos de notificaciones, predeterminado 2
         ]]>
     </string>
 </resources>

@@ -67,17 +67,21 @@
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
         &emsp; They are <b>all</b> checked as:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; So regex <font color="cyan"><b>123.*</b></font> would match <b>all</b> of them.<br>
+        &emsp; So regex <font color="cyan"><b>123.*</b></font> would match all of them.<br>
         This number optimization can be <b>disabled</b> by the regex flag \"Raw Number\".<br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>
-        Uncheck the checkboxes to disable the rule, useful for testing. <br>
+        Uncheck the checkboxes to disable the rule, swipe left to delete it.<br>
         <br>
-        Swipe left to delete a rule.<br>
-        <br>
-        <b>Long press</b> the \"Add\" button to import numbers from a file, the format should be one number per row,
-         or .csv format with the first column being the number.
+        <b>Long press</b> the \"Add\" button to import numbers from .csv file, columns supported(all optional):<br>
+         - <no_translate>pattern</no_translate>: The regex<br>
+         - <no_translate>description</no_translate><br>
+         - <no_translate>priority</no_translate>: default 1<br>
+         - <no_translate>flags</no_translate>: 1(Apply to Call), 2(Apply to SMS), 3(both), default 3<br>
+         - <no_translate>isBlacklist</no_translate>: <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
+         - <no_translate>blockType</no_translate>: 0~2 corresponding to the 3 block types, default 0<br>
+         - <no_translate>importance</no_translate>: 0~4 corresponding to the 5 notification types, default 2
         ]]>
     </string>
 </resources>

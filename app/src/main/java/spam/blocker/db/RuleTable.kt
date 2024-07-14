@@ -13,6 +13,7 @@ import spam.blocker.def.Def
 import spam.blocker.util.Flag
 import spam.blocker.util.Schedule
 import spam.blocker.util.SpannableUtil
+import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.truncate
 
 
@@ -105,6 +106,20 @@ class PatternRule {
 
     fun isWhitelist(): Boolean {
         return !isBlacklist
+    }
+
+    companion object {
+        fun fromMap(attrs: Map<String, String>) : PatternRule {
+            return PatternRule().apply {
+                if (attrs.contains("pattern")) pattern = Util.clearNumber(attrs["pattern"]!!)
+                if (attrs.contains("description")) description = attrs["description"]!!
+                if (attrs.contains("priority")) priority = attrs["priority"]!!.toInt()
+                if (attrs.contains("flags")) flags = Flag(attrs["flags"]!!.toInt())
+                if (attrs.contains("isBlacklist")) isBlacklist = attrs["isBlacklist"]!!.toBoolean()
+                if (attrs.contains("blockType")) blockType = attrs["blockType"]!!.toInt()
+                if (attrs.contains("importance")) importance = attrs["importance"]!!.toInt()
+            }
+        }
     }
 }
 

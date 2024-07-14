@@ -1,14 +1,13 @@
 <resources>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
-        <item>Sigue el Sistema</item>
+        <item>Sigue al sistema</item>
         <item>Claro</item>
         <item>Oscuro</item>
     </string-array>
 
     <string name="crash_title">
-        Lo siento, la aplicación falló. \n\nCopia el contenido de abajo e informa este problema en github.
-        Asegúrate de eliminar cualquier información delicada antes de informar.
+        Lo sentimos, la aplicación no funciona. \n\nCopia el contenido que figura a continuación y reporta este problema en GitHub. No olvides quitar toda la información delicada antes de generar el informe.
     </string>
     <string-array name="week">
         <item>Dom</item>
@@ -21,39 +20,39 @@
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Rechazar</item>
-        <item>Silenciar</item>
-        <item>Contestar+Colgar</item>
+        <item>Rechazo</item>
+        <item>Silencio</item>
+        <item>Respuesta + Cuelga</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Ninguna</item>
         <item>Sombra</item>
-        <item>Barra de Estado, Sombra</item>
-        <item>Sonido, Barra de Estado, Sombra</item>
-        <item>Sonido, Barra de Estado, Sombra, Heads-up</item>
+        <item>Barra de estado, Sombra</item>
+        <item>Sonido, Barra de estado, Sombra</item>
+        <item>Sonido, Barra de estado, Sombra, Alerta</item>
     </string-array>
     <string-array name="export_as_list">
         <item>Exportar como Json</item>
-        <item>Exportar como Comprimido</item>
+        <item>Exportar como comprimido</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones las hace la IA de Google. Informa un problema en github para agregar un idioma nuevo.
+            Las traducciones las realiza IA de Google. Genera un problema en GitHub para agregar un nuevo idioma.
         ]]>
     </string>
-    <string name="enabled_for_call">Activar para Llamada</string>
-    <string name="enabled_for_sms">Activar para SMS</string>
-    <string name="repeated_call">Llamada Repetida</string>
+    <string name="enabled_for_call">Habilitar para llamadas</string>
+    <string name="enabled_for_sms">Habilitar para SMS</string>
+    <string name="repeated_call">Llamadas repetidas</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite dentro de un periodo de tiempo. Es probable que sea una llamada importante y no spam. <br>
+        Permite la llamada si se repite dentro de un período de tiempo. Es probable que sea importante y no spam. <br>
         <br>
-        Recibir un mensaje de texto del mismo número también cuenta, esto depende de si se otorgó el permiso READ_SMS, que es opcional.<br>
+        También se cuentan los mensajes de texto del mismo número, pero esto depende de si se ha concedido el permiso de LECTURA DE SMS, que es opcional. <br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada dentro de 5 minutos. <br>
+        La opción predeterminada <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada dentro de los 5 minutos. <br>
         <br>
         Solo aplica para llamadas, <b>no</b> para mensajes de texto. <br>
         <br>
@@ -63,20 +62,23 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El botón global, esta aplicación solo funciona cuando esto está activado.
-        Desactívalo cuando esperes una llamada o mensaje en particular. <br>
+        El interruptor global. Esta aplicación solo funciona cuando está activado. Desactívalo cuando esperes una llamada o un mensaje en particular. <br>
         <br>
-        También se puede activar o desactivar desde los <b>Ajustes Rápidos Desplegables</b>.
+        También puedes activarlo o desactivarlo desde los <b>Ajustes rápidos desplegables</b>.
         ]]>
     </string>
 
-    <string name="about">Sobre</string>
+    <string name="about">Acerca de</string>
     <string name="version">Versión</string>
-    <string name="build_time">Hora de Compilación (UTC)</string>
-    <string name="source_code">Código Fuente</string>
-    <string name="dismiss">Descartar</string>
+    <string name="build_time">Tiempo de compilación (UTC)</string>
+    <string name="source_code">Código fuente</string>
+    <string name="dismiss">Omitir</string>
     <string name="warning_running_in_work_profile">
-        Esta aplicación podría no funcionar bien dentro del perfil de trabajo. En su lugar, instálala en el perfil principal.
+        Es posible que esta aplicación no funcione correctamente en un perfil de trabajo. Se recomienda instalarla en el perfil principal.
     </string>
+    <string-array name="import_csv_type">
+        <item>Importar .csv como una sola regla</item>
+        <item>Importar .csv como múltiples reglas</item>
+    </string-array>
 
 </resources>

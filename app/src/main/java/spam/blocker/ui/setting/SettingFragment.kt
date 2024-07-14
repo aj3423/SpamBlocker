@@ -36,7 +36,6 @@ import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Cl
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.RemoveAt
 import il.co.theblitz.observablecollections.enums.ObservableCollectionsAction.Set
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -58,12 +57,12 @@ import spam.blocker.ui.util.Algorithm.decompressToString
 import spam.blocker.ui.util.FileInChooser
 import spam.blocker.ui.util.FileOutChooser
 import spam.blocker.ui.util.TimeRangePicker
-import spam.blocker.ui.util.UI
 import spam.blocker.ui.util.UI.Companion.applyTheme
-import spam.blocker.ui.util.UI.Companion.delay
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.ui.util.dynamicPopupMenu
+import spam.blocker.util.Csv
+import spam.blocker.util.Flag
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -80,7 +79,6 @@ import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
-import spam.blocker.util.Util.Companion.doOnce
 import spam.blocker.util.Util.Companion.truncate
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -130,7 +128,7 @@ class SettingFragment : Fragment() {
         setupRules( root,
             R.id.recycler_number_filters, R.id.btn_add_number_filter, R.id.btn_test_number_filters,
             numberRules, NumberRuleTable(), Def.ForNumber
-        ) { onNumberAddLongClick() }
+        ) { onNumberAddLongPress(root) }
 
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_number_filter),
@@ -158,40 +156,57 @@ class SettingFragment : Fragment() {
 
     private val importBlacklistsChooser = FileInChooser(this) // must be initialized during fragment creation
 
-    private fun onNumberAddLongClick() {
+    private fun onNumberAddLongPress(root: View) {
         val ctx = requireContext()
+        val addBtn = root.findViewById<MaterialButton>(R.id.btn_add_number_filter)
 
-        importBlacklistsChooser.load { raw: ByteArray? ->
-            if (raw == null)
-                return@load
+        val items = resources.getStringArray(R.array.import_csv_type).toList()
+        dynamicPopupMenu(ctx, items, addBtn) { clickedIdx ->
+            importBlacklistsChooser.load { raw: ByteArray? ->
+                if (raw == null)
+                    return@load
 
-            val joined = String(raw).lines().map {
-                // It support both text files that contains numbers
-                // and .csv that has number as the first column
-                val v = it.split(",")
-                if (v.isNotEmpty()) Util.clearNumber(v[0]) else ""
-            }.filter {
-                it.isNotEmpty()
-            }.joinToString ( separator = "|" )
+                val rules = Csv.parseToMaps(raw).map {
+                    PatternRule.fromMap(it)
+                }
 
-            val wrapped = "($joined)"
+                when (clickedIdx) {
+                    0 -> { // import as single rule
+                        val joined = rules.map {
+                            Util.clearNumber(it.pattern)
+                        }.filter {
+                            it.isNotEmpty()
+                        }.joinToString ( separator = "|" )
 
-            val rule = PatternRule().apply {
-                pattern = wrapped
+                        val wrapped = "($joined)"
 
-                val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
-                val ymd = LocalDate.now().format(formatter)
+                        val rule = PatternRule().apply {
+                            pattern = wrapped
 
-                description = "${ctx.getString(R.string.imported)} $ymd"
-                priority = 11
+                            val formatter = DateTimeFormatter.ofPattern("yy_MM_dd")
+                            val ymd = LocalDate.now().format(formatter)
+
+                            description = "$ymd (${rules.size}) ${ctx.getString(R.string.imported)}"
+                        }
+                        // 1. add to db
+                        val table = NumberRuleTable()
+                        table.addNewRule(ctx, rule)
+
+                        // 2. refresh gui
+                        asyncReloadFromDb(ctx, table, numberRules)
+                    }
+                    1 -> { // import as multi rules
+                        // 1. add to db
+                        val table = NumberRuleTable()
+                        rules.forEach {
+                            table.addNewRule(ctx, it)
+                        }
+
+                        // 2. refresh gui
+                        asyncReloadFromDb(ctx, table, numberRules)
+                    }
+                }
             }
-            // 1. add to db
-            val table = NumberRuleTable()
-            val id = table.addNewRule(ctx, rule)
-            rule.id = id
-
-            // 2. refresh gui
-            asyncReloadFromDb(ctx, NumberRuleTable(), numberRules)
         }
     }
 

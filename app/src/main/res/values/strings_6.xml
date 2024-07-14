@@ -78,5 +78,9 @@
     <string name="warning_running_in_work_profile">
         This app may not work correctly within work profile, please install it in main profile instead.
     </string>
+    <string-array name="import_csv_type">
+        <item>Import .csv as a single rule</item>
+        <item>Import .csv as multiple rules</item>
+    </string-array>
 
 </resources>

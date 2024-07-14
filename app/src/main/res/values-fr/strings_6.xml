@@ -7,40 +7,40 @@
     </string-array>
 
     <string name="crash_title">
-        Désolé, l\'appli a planté. \n\nAfin de signaler cette erreur sur github, veuillez copier le contenu ci-dessous. N\'oubliez pas de retirer toute information sensible avant le signalement.
+        Désolés, l\'appli a planté. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur GitHub. Veillez à supprimer les informations sensibles avant de faire votre signalement.
     </string>
     <string-array name="week">
-        <item>Dim.</item>
-        <item>Lun.</item>
-        <item>Mar.</item>
-        <item>Mer.</item>
-        <item>Jeu.</item>
-        <item>Ven.</item>
-        <item>Sam.</item>
+        <item>Dim</item>
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mer</item>
+        <item>Jeu</item>
+        <item>Ven</item>
+        <item>Sam</item>
     </string-array>
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Mettre en silencieux</item>
-        <item>Répondre et raccrocher</item>
+        <item>Silence</item>
+        <item>Répondre + raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Aucune</item>
-        <item>Ombrage</item>
-        <item>Barre d\'état, Ombrage</item>
-        <item>Son, Barre d\'état, Ombrage</item>
-        <item>Son, Barre d\'état, Ombrage, Pop-up</item>
+        <item>Ombré</item>
+        <item>Barre d\'état, Ombré</item>
+        <item>Son, Barre d\'état, Ombré</item>
+        <item>Son, Barre d\'état, Ombré, Résumé de niveau 1</item>
     </string-array>
     <string-array name="export_as_list">
-        <item>Exporter au format Json</item>
-        <item>Exporter au format compressé</item>
+        <item>Exporter en Json</item>
+        <item>Exporter compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par Google AI. Signalez un problème sur github pour ajouter un support pour une nouvelle langue.
+            Les traductions sont réalisées par Google AI. Signalez un problème sur GitHub pour ajouter une nouvelle prise en charge de langue.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
@@ -48,33 +48,37 @@
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans une période de temps. Il est plus probable qu\'il soit important plutôt qu\'un appel anti-spam. <br>
+        Autoriser si l\'appel est répété dans une certaine durée. Cela permet d\'éviter les appels indésirables, car un appel important est généralement répété. <br>
         <br>
-        La réception d\'un SMS du même numéro est également prise en compte. Cela dépend de l\'octroi de l\'autorisation READ_SMS, qui est facultative.<br>
+        La réception d\'un message texte du même numéro est également comptabilisée. Cela dépend de l\'autorisation de READ_SMS, qui est facultative. <br>
         <br>
-        Le réglage par défaut <font color="cyan"><b>1 / 5 Min</b></font>, signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="cyan"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
         S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        L\'interrupteur global. Cette appli fonctionne uniquement si ce dernier est activé. Désactivez-le si vous attendez une certaine communication. <br>
+        Interrupteur global. Cette application fonctionne uniquement lorsque cet interrupteur est activé. Désactivez-le lorsque vous attendez un appel / un message particulier. <br>
         <br>
-        Vous pouvez aussi l\'activer ou le désactiver depuis les <b>Paramètres rapides déroulants</b>.
+        Cet interrupteur peut également être activé ou désactivé à partir des <b>Réglages rapides du menu déroulant</b>.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de compilation (UTC)</string>
-    <string name="source_code">Code source</string>
+    <string name="build_time">Date de construction (UTC)</string>
+    <string name="source_code">Code source</string>
     <string name="dismiss">Fermer</string>
     <string name="warning_running_in_work_profile">
-        Cette appli pourrait ne pas fonctionner correctement dans un profil professionnel. Veuillez l\'installer dans le profil principal.
+        Cette application peut ne pas fonctionner correctement dans un profil professionnel. Veuillez l\'installer dans le profil principal à la place.
     </string>
+    <string-array name="import_csv_type">
+        <item>Importer un fichier .csv comme une règle unique</item>
+        <item>Importer un fichier .csv comme plusieurs règles</item>
+    </string-array>
 
 </resources>

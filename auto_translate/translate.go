@@ -97,10 +97,12 @@ func translate_1_file(lang string, fn string) error {
 
 	GeminiToken := os.Getenv("GeminiToken")
 
-	text := fmt.Sprintf(
+	prompt := fmt.Sprintf(
 		"Translate the following xml content to language \"%s\", it's about a call blocking app "+
 			"which blocks incoming spam calls and SMS messages. "+
-			"Better use short words, make sure leave the XML tags unmodified, show me the result only:\n"+
+			"Better use short words, make sure leave the XML tags unmodified, "+
+			"do not translate text within <no_translate></no_translate> tag, "+
+			"show me the result only:\n"+
 			"%s",
 		lang, to_translate)
 
@@ -116,7 +118,7 @@ func translate_1_file(lang string, fn string) error {
 	// but actually it's only 2048...
 	// model.SetMaxOutputTokens(8192)
 
-	resp, err := model.GenerateContent(ctx, genai.Text(text))
+	resp, err := model.GenerateContent(ctx, genai.Text(prompt))
 	check(err)
 
 	fmt.Println("  - ",
