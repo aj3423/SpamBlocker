@@ -1,0 +1,4 @@
+New:
+    regex flag "Raw Number" for not optimizing number
+Enhancement:
+    import rules from .csv file
