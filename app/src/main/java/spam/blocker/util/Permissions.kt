@@ -11,7 +11,9 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
@@ -130,7 +132,7 @@ open class Permissions {
         }
 
         fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
-            val ret = mutableListOf<String>()
+            val mapApps = mutableMapOf<String, Boolean>()
 
             val usageStatsManager =
                 ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
@@ -145,13 +147,20 @@ open class Permissions {
                     event.eventType == UsageEvents.Event.ACTIVITY_PAUSED ||
                     event.eventType == UsageEvents.Event.ACTIVITY_STOPPED
                 ) {
-                    ret += event.packageName
+                    mapApps[event.packageName] = true
                 }
             }
 
-            return ret.distinct()
+            return mapApps.keys.toList()
         }
 
+        fun getPackagesHoldingPermissions(pm: PackageManager, permissions: Array<String>): List<PackageInfo> {
+            return if (Build.VERSION.SDK_INT >= Def.ANDROID_14) {
+                pm.getPackagesHoldingPermissions(permissions, PackageManager.PackageInfoFlags.of(0L))
+            } else {
+                pm.getPackagesHoldingPermissions(permissions, 0)
+            }
+        }
 
         fun countHistoryCallByNumber(
             ctx: Context,

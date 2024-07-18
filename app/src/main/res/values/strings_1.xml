@@ -11,8 +11,8 @@
     <string name="pattern_contain_invisible_characters">Invisible characters found</string>
     <string name="pattern_contain_leading_zeroes">No need to add the leading 0, they will be removed before checking.</string>
     <string name="pattern_contain_leading_plus">No need to add the leading +, they will be removed before checking.</string>
-    <string name="check_balloon_for_explanation">Check the help of the \"Number Rules\" for a detailed explanation.</string>
-    <string name="disable_number_optimization">This optimization can be disabled by the regex flag \"Raw Number\".</string>
+    <string name="check_balloon_for_explanation">Check the help of the `Number Rules` for a detailed explanation.</string>
+    <string name="disable_number_optimization">This optimization can be disabled by the regex flag `Raw Number`.</string>
     <string name="invalid_number">Invalid number</string>
     <string name="filter_desc">Description</string>
     <string name="apply_to_call">Apply to Call</string>
@@ -37,7 +37,7 @@
     <string name="blocked">Blocked</string>
     <string name="from">From</string>
     <string name="copy">Copy</string>
-    <string name="copied_to_clipboard">Copied "%s" to clipboard.</string>
+    <string name="copied_to_clipboard">Copied `%s` to clipboard.</string>
     <string name="quick_copy">Quick Copy</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -54,7 +54,7 @@
     <string name="imported_successfully">Imported successfully.</string>
     <string name="import_fail">Failed to import</string>
     <string name="go_to_setting">Go to Setting</string>
-    <string name="prompt_go_to_usage_permission_setting">This feature requires permission:\n\n \"Usage Statistics\"\n\nIt has to be manually enabled in System Settings. \n\nOpen that setting page? </string>
+    <string name="prompt_go_to_usage_permission_setting">This feature requires permission:\n\n `Usage Statistics`\n\nIt has to be manually enabled in System Settings.\n\n Open that setting page? </string>
     <string name="emergency_call">Emergency Call</string>
     <string name="label_contact_filter">Contact Filter</string>
     <string name="label_number_filter">Number Rules</string>

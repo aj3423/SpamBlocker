@@ -2,69 +2,77 @@
     <string name="theme">主题</string>
     <string-array name="theme_list">
         <item>跟随系统</item>
-        <item>浅色</item>
-        <item>深色</item>
+        <item>明亮</item>
+        <item>暗黑</item>
     </string-array>
 
     <string name="crash_title">
-        抱歉，应用已崩溃。\n\n请复制以下内容并在 github 上报告此问题，务必在报告之前删除所有敏感信息。
+        抱歉，应用已崩溃。\n\n
+        请复制以下内容，并在 github 上报告此错误，
+        报告之前请删除所有敏感信息。
     </string>
     <string-array name="week">
-        <item>周日</item>
-        <item>周一</item>
-        <item>周二</item>
-        <item>周三</item>
-        <item>周四</item>
-        <item>周五</item>
-        <item>周六</item>
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>拒接</item>
+        <item>拒绝</item>
         <item>静音</item>
-        <item>应答并挂断</item>
+        <item>接听+挂断</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>无</item>
         <item>阴影</item>
-        <item>状态栏、阴影</item>
-        <item>声音、状态栏、阴影</item>
-        <item>声音、状态栏、阴影、首要</item>
+        <item>状态栏，阴影</item>
+        <item>声音，状态栏，阴影</item>
+        <item>声音，状态栏，阴影，Heads-up</item>
     </string-array>
     <string-array name="export_as_list">
         <item>导出为 Json</item>
-        <item>导出为压缩包</item>
+        <item>导出为压缩文件</item>
     </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译由 Google AI 完成，在 github 上提交问题以添加新的语言支持。
+            翻译由 Google AI 完成，在 github 上提交问题以添加对新语言的支持。
         ]]>
     </string>
-    <string name="enabled_for_call">启用来电拦截</string>
-    <string name="enabled_for_sms">启用短信拦截</string>
+    <string name="enabled_for_call">启用来电</string>
+    <string name="enabled_for_sms">启用短信</string>
     <string name="repeated_call">重复来电</string>
     <string name="help_repeated_call">
         <![CDATA[
-        在一个时间段内重复来电，则允许，这是重要来电而不是垃圾来电的可能性更大。 <br>
+        如果在一定时间内重复拨打，则允许通话，这可能很紧急，而不是垃圾电话。 <br>
         <br>
-        接收来自同一号码的短信也被计算在内，这取决于是否授予了 READ_SMS 权限，这是可选的。<br>
+        从同一号码接收短信也计算在内，这取决于是否授予 READ_SMS 权限，它不是必需的。<br>
         <br>
-        默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示在 5 分钟内第二次来电将被允许。 <br>
+        默认设置 <font color="cyan"><b>1 / 5 分</b></font> 表示在 5 分钟内允许第二通电话。 <br>
         <br>
-        仅适用于来电，<b>不适用于</b>短信。 <br>
+        只适用于呼叫，<b>不</b>适用于短信。 <br>
         <br>
-        <font color="#ea86ff"><b>优先级：10</b></font>
+        <font color="#ea86ff"><b>优先级: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，只有在此开关开启时，此应用才起作用，当你正在等待特定来电/短信时可将其关闭。 <br>
+        全局开关，该应用仅在此开关开启时运行，
+        当你等待特定电话/短信时请关闭此开关。 <br>
         <br>
-        还可以在<b>下拉快速设置</b>中切换。
+        它还可以在<b>下拉快速设置</b>中切换。<br>
+        <br>
+        对于短信，该应用将接管短信通知，请
+        <font color="#fa7f71"><b>在系统设置中关闭默认短信应用的通知许可</b></font>，
+        否则将会有双重通知。
+        它只过滤短信通知，垃圾短信仍会出现在默认短信应用中。
         ]]>
     </string>
 
@@ -74,11 +82,17 @@
     <string name="source_code">源代码</string>
     <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
-        此应用可能在工作资料中无法正常工作，请安装在个人资料中。
+        此应用可能在工作资料中无法正常运行，请改为在主资料中安装。
     </string>
     <string-array name="import_csv_type">
-        <item>将 .csv 导入为单个规则</item>
+        <item>将 .csv 导入为单一规则</item>
         <item>将 .csv 导入为多个规则</item>
     </string-array>
-
+    <string name="warning_double_sms">
+        此应用将接管所有短信通知，
+        但默认短信应用的通知许可也已启用，
+        请在系统设置中禁用它以防止双重短信通知。
+    </string>
+    <string name="open_settings">打开设置</string>
+    <string name="ignore">忽略</string>
 </resources>

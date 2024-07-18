@@ -197,7 +197,7 @@ class MainActivity : AppCompatActivity() {
                     setTitle(" ")
                     setIcon(R.drawable.ic_warning)
                     setMessage(resources.getString(R.string.warning_running_in_work_profile))
-                    setPositiveButton(R.string.dismiss) { _,_ ->
+                    setPositiveButton(R.string.ignore) { _,_ ->
                         spf.setPromptedForRunningInWorkProfile()
                     }
                 }.create().show()

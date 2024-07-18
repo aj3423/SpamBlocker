@@ -2,17 +2,23 @@ package spam.blocker.util
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ApplicationInfo
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
 import android.os.UserManager
+import android.provider.Settings
+import android.provider.Telephony
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.WindowManager
+import androidx.annotation.RequiresApi
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.SharedPref
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -222,7 +228,7 @@ class Util {
                 if (cacheAppList == null) {
                     val pm = ctx.packageManager
 
-                    val packageInfos = getPackagesHoldingPermissions(pm, arrayOf(Manifest.permission.INTERNET))
+                    val packageInfos = Permissions.getPackagesHoldingPermissions(pm, arrayOf(Manifest.permission.INTERNET))
 
                     cacheAppList = packageInfos.filter {
                         (it.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
@@ -245,13 +251,53 @@ class Util {
                 cacheAppList = null
             }
         }
-        private fun getPackagesHoldingPermissions(pm: PackageManager, permissions: Array<String>): List<PackageInfo> {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                pm.getPackagesHoldingPermissions(permissions, PackageManager.PackageInfoFlags.of(0L))
-            } else {
-                pm.getPackagesHoldingPermissions(permissions, 0)
+
+        // android<13 will always return `false`
+        @RequiresApi(Def.ANDROID_13)
+        private fun isDefaultSmsAppNotificationEnabled(ctx: Context) : Boolean {
+            val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
+
+            val pm = ctx.packageManager
+
+            val result = pm.checkPermission(Manifest.permission.POST_NOTIFICATIONS, defSmsPkg)
+
+            return result == PERMISSION_GRANTED
+        }
+
+        private var dlgDebouncer = false
+        fun checkDoubleNotifications(ctx: Context) {
+
+            if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
+                val spf = Global(ctx)
+                if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled()&& spf.isSmsEnabled()) {
+                    if (!spf.isDoubleSMSWarningDismissed()) {
+
+                        if (dlgDebouncer)
+                            return
+                        dlgDebouncer = true
+
+                        AlertDialog.Builder(ctx).apply {
+                            setTitle(" ")
+                            setIcon(R.drawable.ic_warning)
+                            setMessage(ctx.resources.getString(R.string.warning_double_sms))
+                            setPositiveButton(R.string.open_settings) { _,_ ->
+                                val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
+                                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                intent.data = Uri.fromParts("package", defSmsPkg, null)
+                                context.startActivity(intent)
+                            }
+                            setNegativeButton(R.string.ignore) { _,_ ->
+                                spf.dismissDoubleSMSWarning()
+                            }
+                            setOnDismissListener {
+                                dlgDebouncer = false
+                            }
+                        }.create().show()
+                    }
+                }
             }
         }
+
 
         fun isPackageInstalled(ctx: Context, pkgName: String): Boolean {
             val pm = ctx.packageManager

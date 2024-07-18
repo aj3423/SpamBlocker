@@ -7,7 +7,8 @@
     </string-array>
 
     <string name="crash_title">
-        Désolés, l\'appli a planté. \n\nVeuillez copier le contenu ci-dessous et signaler ce problème sur GitHub. Veillez à supprimer les informations sensibles avant de faire votre signalement.
+        Désolé, l\'application a crashé.\n\n
+        Veuillez copier le contenu ci-dessous et signaler ce problème sur github, supprimez les informations sensibles avant de le signaler.
     </string>
     <string-array name="week">
         <item>Dim</item>
@@ -21,64 +22,71 @@
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Silence</item>
-        <item>Répondre + raccrocher</item>
+        <item>Mettre en silencieux</item>
+        <item>Répondre + Raccrocher</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucune</item>
-        <item>Ombré</item>
-        <item>Barre d\'état, Ombré</item>
-        <item>Son, Barre d\'état, Ombré</item>
-        <item>Son, Barre d\'état, Ombré, Résumé de niveau 1</item>
+        <item>Aucun</item>
+        <item>Voile</item>
+        <item>Barre de statut, Voile</item>
+        <item>Son, Barre de statut, Voile</item>
+        <item>Son, Barre de statut, Voile, Alerte</item>
     </string-array>
     <string-array name="export_as_list">
-        <item>Exporter en Json</item>
-        <item>Exporter compressé</item>
+        <item>Exporter au format Json</item>
+        <item>Exporter au format compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont réalisées par Google AI. Signalez un problème sur GitHub pour ajouter une nouvelle prise en charge de langue.
+            Les traductions sont effectuées par Google AI, signalez un problème sur github pour ajouter la prise en charge d\'une nouvelle langue.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
     <string name="enabled_for_sms">Activer pour les SMS</string>
-    <string name="repeated_call">Appel répété</string>
+    <string name="repeated_call">Appels répétés</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans une certaine durée. Cela permet d\'éviter les appels indésirables, car un appel important est généralement répété. <br>
+        Autoriser si l\'appel est répété dans un délai imparti, il est probable qu\'il soit important plutôt qu\'un appel indésirable. <br>
         <br>
-        La réception d\'un message texte du même numéro est également comptabilisée. Cela dépend de l\'autorisation de READ_SMS, qui est facultative. <br>
+        La réception de SMS du même numéro est également comptée, cela dépend de l\'octroi ou non de l\'autorisation READ_SMS, qui est facultative.<br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="cyan"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
         S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Interrupteur global. Cette application fonctionne uniquement lorsque cet interrupteur est activé. Désactivez-le lorsque vous attendez un appel / un message particulier. <br>
+        Basculement global, cette application ne fonctionne que lorsque celui-ci est activé. Désactivez-le lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Cet interrupteur peut également être activé ou désactivé à partir des <b>Réglages rapides du menu déroulant</b>.
+        Il peut également être activé/désactivé à partir des <b>Paramètres rapides du menu déroulant</b>.<br>
+        <br>
+        Pour les SMS, cette application prendra en charge les notifications SMS. Veuillez
+        <font color="#fa7f71"><b>désactiver l\'autorisation de notification</b></font> dans les paramètres système de l\'application SMS par défaut, sinon il y aura des notifications doubles. Elle filtre uniquement les notifications SMS, les SMS indésirables seront toujours présents dans l\'application SMS par défaut.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Date de construction (UTC)</string>
-    <string name="source_code">Code source</string>
-    <string name="dismiss">Fermer</string>
+    <string name="build_time">Heure de compilation (UTC)</string>
+    <string name="source_code">Code source</string>
+    <string name="dismiss">Ignorer</string>
     <string name="warning_running_in_work_profile">
-        Cette application peut ne pas fonctionner correctement dans un profil professionnel. Veuillez l\'installer dans le profil principal à la place.
+        Cette application risque de ne pas fonctionner correctement dans un profil professionnel. Veuillez plutôt l\'installer dans le profil principal.
     </string>
     <string-array name="import_csv_type">
-        <item>Importer un fichier .csv comme une règle unique</item>
-        <item>Importer un fichier .csv comme plusieurs règles</item>
+        <item>Importer le fichier .csv comme une seule règle</item>
+        <item>Importer le fichier .csv comme plusieurs règles</item>
     </string-array>
-
+    <string name="warning_double_sms">
+        Cette application va prendre en charge toutes les notifications SMS, mais l\'autorisation de notification de l\'application SMS par défaut est également activée. Veuillez la désactiver dans les paramètres système pour éviter les notifications SMS doubles.
+    </string>
+    <string name="open_settings">Ouvrir les paramètres</string>
+    <string name="ignore">Ignorer</string>
 </resources>

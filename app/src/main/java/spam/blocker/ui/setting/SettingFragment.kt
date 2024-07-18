@@ -9,11 +9,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.PorterDuff
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +22,7 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -62,7 +63,6 @@ import spam.blocker.ui.util.UI.Companion.setupImageTooltip
 import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.Csv
-import spam.blocker.util.Flag
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -249,6 +249,9 @@ class SettingFragment : Fragment() {
             showIf(img_call, enabled)
             showIf(img_sms, enabled)
             updateImagesColor()
+
+            if (enabled)
+                Util.checkDoubleNotifications(ctx)
         }
         onEnabledChange()
         switch.setOnClickListener {
@@ -1010,6 +1013,8 @@ class SettingFragment : Fragment() {
 
         val lbm = LocalBroadcastManager.getInstance(requireContext())
         lbm.registerReceiver(broadcastReceiver, IntentFilter(Def.ACTION_TILE_TOGGLE))
+
+        Util.checkDoubleNotifications(requireContext())
     }
 
     override fun onPause() {

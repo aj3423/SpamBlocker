@@ -1,15 +1,15 @@
 <resources>
-    <string name="allow_repeated_call">Appels répétés</string>
-    <string name="dialed">Composé</string>
-    <string name="find_apps">Trouver des applications</string>
-    <string name="spam_sms_blocked">SMS bloqué</string>
+    <string name="allow_repeated_call">Appel répété</string>
+    <string name="dialed">Appelé</string>
+    <string name="find_apps">Trouver les applications</string>
+    <string name="spam_sms_blocked">Message SMS bloqué</string>
     <string name="spam_call_blocked">Appel bloqué</string>
     <string name="new_sms_received">Nouveau SMS reçu</string>
-    <string name="mark_all_as_read">Marquer tout comme lu</string>
-    <string name="delete_all">Tout supprimer</string>
-    <string name="show_passed">Montrer les autorisés</string>
+    <string name="mark_all_as_read">Tout marquer comme lu</string>
+    <string name="delete_all">Tout effacer</string>
+    <string name="show_passed">Montrer les connus</string>
     <string name="show_blocked">Montrer les bloqués</string>
-    <string name="clone_rule">Cloner la règle</string>
+    <string name="clone_rule">Dupliquer la règle</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
     <string name="time">Heure</string>
@@ -17,8 +17,8 @@
     <string name="day">Jour</string>
     <string name="days">Jours</string>
     <string name="min">Min</string>
-    <string name="within_minutes">En quelques minutes</string>
-    <string name="within_days">En quelques jours</string>
+    <string name="within_minutes">Dans les minutes</string>
+    <string name="within_days">Dans les jours</string>
     <string name="phone_number">Numéro de téléphone</string>
     <string name="phone_number_abbrev">Numéro</string>
     <string name="sms_content">Contenu du SMS</string>
@@ -27,54 +27,56 @@
     <string name="reason">Raison</string>
     <string name="regex_flags">Drapeaux Regex</string>
     <string name="ignore_case">Ignorer la casse</string>
-    <string name="dot_match_all">Point correspondant à tout</string>
+    <string name="dot_match_all">Point pour tout</string>
     <string name="raw_number">Nombre brut</string>
     <string name="literal">Littéral</string>
-    <string name="off_time">Heure de désactivation</string>
-    <string name="schedule">Horaire</string>
-    <string name="workday">Jour de semaine</string>
+    <string name="off_time">Heure d\'arrêt</string>
+    <string name="schedule">Calendrier</string>
+    <string name="workday">Jour ouvrable</string>
     <string name="weekend">Week-end</string>
     <string name="entire_day">Journée entière</string>
     <string name="block_type">Type de blocage</string>
+    <string name="for_particular_number">Pour un numéro particulier</string>
+    <string name="no_match_found">Aucune correspondance trouvée</string>
+    <string name="help_for_particular_number">Lorsqu\'elle est activée, la règle s\'applique uniquement lorsque le numéro et le contenu correspondent.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Rejeter</b></font>: <br>
-        &emsp; Semblable à la pression sur la touche de refus. Cela fonctionne en toute discrétion, l\'écran de verrouillage ne s\'allumera pas, c\'est le type recommandé pour ceux qui n\'utilisent pas la messagerie vocale.<br>
+        &emsp; Pareil que d\'appuyer sur le bouton de refus. Cela fonctionne complètement silencieusement, l\'écran de verrouillage ne s\'allumera pas, c\'est le type recommandé pour ceux qui n\'utilisent pas la messagerie vocale.<br>
         <br>
-        - <font color="#d1c8c8"><b>Silencieux</b></font>: <br>
-        &emsp; La sonnerie retentira en silence en arrière-plan, donnant l\'impression à l\'appelant que vous êtes occupé et que vous n\'avez pas répondu. <br>
+        - <font color="#d1c8c8"><b>Mettre en silence</b></font>: <br>
+        &emsp; Il sonnera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'y avez pas répondu. <br>
         <br>
-        - <font color="#d1c8c8"><b>Répondre et raccrocher</b></font>: <font color="#ffa500"><b>(expérimental)</b></font><br>
-        &emsp; Pour éviter d\'être envoyé vers la messagerie vocale, le comportement peut dépendre de l\'opérateur. L\'écran de verrouillage peut s\'allumer pendant un court moment, vous pouvez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour désactiver ce son).
+        - <font color="#d1c8c8"><b>Répondre et raccrocher</b></font>: <br>
+        &emsp; Pour éviter d\'être envoyé à la messagerie vocale. L\'écran de verrouillage peut être activé pendant un court instant,
+         vous pouvez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour couper ce son).
         ]]>
     </string>
-    <string name="stir">Attestation STIR</string>
-    <string name="stir_include_unverified">Inclure non vérifié</string>
-    <string name="unverified">Non vérifié</string>
-    <string name="valid">Appel valide</string>
-    <string name="spoof">Appel usurpé</string>
-    <string name="help_stir">
+    <string name="help_dialed">
         <![CDATA[
-            L\'attestation STIR nécessite <b>Android 11+</b> et <b>la prise en charge de l\'opérateur</b>. <br>
-            <br>
-            Trois résultats d\'attestation sont possibles : <br>
-            <font color="cyan"><b>Valide</b></font> <br>
-            &emsp; L\'appel est très probablement valide, non usurpé. <br>
-            <font color="#ffa500"><b>Non vérifié</b></font> <br>
-            &emsp; L\'appel ne peut pas être validé ou l\'attestation STIR n\'est pas prise en charge. <br>
-            <font color="#fa7f71"><b>Usurpation</b></font> <br>
-            &emsp; Il s\'agit très probablement d\'un appel usurpé. <br>
-            <br>
-            <br>
-              - <font color="#d1c8c8"><b>Inclusif</b></font>: <br>
-                  &emsp; Les appels qui échouent à cette vérification seront toujours vérifiés par d\'autres règles. <br>
-                  &emsp; Lorsque "<b>Inclure non vérifié</b>" est coché, un appel sera également passé s\'il n\'est pas vérifié. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
-                  &emsp; Les appels qui échouent à cette vérification seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-                  &emsp; Lorsque "<b>Inclure non vérifié</b>" est coché, un appel sera également bloqué s\'il n\'est pas vérifié. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>
+        Les numéros composés seront autorisés. <br>
+        <br>
+        L\'envoi de message compte également, cela ne fonctionne que lorsque l\'autorisation READ_SMS est accordée. <br>
+        <br>
+        Le paramètre par défaut <font color="cyan"><b>3 Jours</b></font> signifie que si un numéro a émis des appels sortants ou envoyé des messages au cours des 3 derniers jours, les appels de ce numéro seront autorisés, même si ce numéro n\'est pas dans les contacts.<br>
+        <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Tout appel entrant passera si une application de la liste a été utilisée récemment.<br>
+        <br>
+        Un cas d\'utilisation typique :<br>
+        &emsp; Vous venez de commander une pizza dans PizzaApp, ils vous appellent rapidement pour vous rembourser car ils ferment. Cet appel passera si PizzaApp est activé ici. <br>
+        <br>
+        Le paramètre par défaut <font color="cyan"><b>5 Min</b></font> signifie que tout appel sera autorisé si l\'une de ces applications a été utilisée dans les 5 minutes, par « utilisée », on entend activée, désactivée, réduite ou fermée. <br>
+        <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 </resources>

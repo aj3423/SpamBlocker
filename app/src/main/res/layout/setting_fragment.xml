@@ -488,6 +488,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_backup_export"
                             style="@style/setting_blue_spinner"
+                            android:maxWidth="100dp"
                             android:background="@drawable/spinner_bg"
                             android:text="@string/export" />
                     </me.grantland.widget.AutofitLayout>
@@ -496,6 +497,7 @@
                         style="@style/setting_auto_fit">
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_backup_import"
+                            android:maxWidth="100dp"
                             style="@style/setting_stroke_teal_button"
                             android:text="@string/import_"
                             tools:ignore="TooManyViews" />

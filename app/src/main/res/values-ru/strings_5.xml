@@ -1,11 +1,11 @@
 <resources>
     <string name="allow_repeated_call">Повторный звонок</string>
     <string name="dialed">Набран</string>
-    <string name="find_apps">Найти приложения</string>
-    <string name="spam_sms_blocked">SMS-спам заблокирован</string>
-    <string name="spam_call_blocked">Звонок заблокирован</string>
-    <string name="new_sms_received">Новое SMS-сообщение</string>
-    <string name="mark_all_as_read">Отметить все как прочитанное</string>
+    <string name="find_apps">Поиск приложений</string>
+    <string name="spam_sms_blocked">Блокировка СМС-сообщения</string>
+    <string name="spam_call_blocked">Заблокированный звонок</string>
+    <string name="new_sms_received">Новое СМС-сообщение</string>
+    <string name="mark_all_as_read">Отметить все как прочитанные</string>
     <string name="delete_all">Удалить все</string>
     <string name="show_passed">Показать пропущенные</string>
     <string name="show_blocked">Показать заблокированные</string>
@@ -16,65 +16,66 @@
     <string name="times">Раза</string>
     <string name="day">День</string>
     <string name="days">Дня</string>
-    <string name="min">Мин.</string>
+    <string name="min">Мин</string>
     <string name="within_minutes">В течение минут</string>
     <string name="within_days">В течение дней</string>
     <string name="phone_number">Номер телефона</string>
     <string name="phone_number_abbrev">Номер</string>
-    <string name="sms_content">Содержание SMS</string>
-    <string name="sms_content_abbrev">Контент</string>
+    <string name="sms_content">Содержание СМС</string>
+    <string name="sms_content_abbrev">Содержание</string>
     <string name="result">Результат</string>
     <string name="reason">Причина</string>
-    <string name="regex_flags">Флаги регулярного выражения</string>
+    <string name="regex_flags">Флаги регулярных выражений</string>
     <string name="ignore_case">Игнорировать регистр</string>
-    <string name="dot_match_all">Соответствие любой точке</string>
+    <string name="dot_match_all">Точка совпадает со всем</string>
     <string name="raw_number">Исходный номер</string>
-    <string name="literal">Литерал</string>
-    <string name="off_time">Недоступность</string>
+    <string name="literal">Буквально</string>
+    <string name="off_time">Выкл. во время</string>
     <string name="schedule">Расписание</string>
     <string name="workday">Рабочий день</string>
     <string name="weekend">Выходные</string>
     <string name="entire_day">Весь день</string>
     <string name="block_type">Тип блокировки</string>
+    <string name="for_particular_number">Для номера</string>
+    <string name="no_match_found">Соответствий не найдено</string>
+    <string name="help_for_particular_number">Если включено, правило применяется только когда совпадает и номер, и содержание.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Отклонить</b></font>: <br>
-        &emsp; То же, что и нажатие кнопки отклонения. Работает совершенно беззвучно, экран блокировки не включается, это рекомендуемый тип для тех, кто не использует голосовую почту.<br>
+        &emsp; То же, что и нажатие кнопки отклонить. Работает полностью в фоновом режиме, экран блокировки не включается; рекомендуется тем, кто не пользуется голосовой почтой.<br>
         <br>
         - <font color="#d1c8c8"><b>Без звука</b></font>: <br>
-        &emsp; Будет звенеть без звука в фоновом режиме, создавая у звонящего впечатление, что вы просто заняты и не ответили на звонок. <br>
+        &emsp; Будет звонить без звука в фоновом режиме, создавая впечатление, что вы просто заняты и не отвечаете на звонок.<br>
         <br>
-        - <font color="#d1c8c8"><b>Принять и повесить трубку</b></font>: <font color="#ffa500"><b>(экспериментально)</b></font><br>
-        &emsp; Чтобы избежать перехода на голосовую почту, поведение может зависеть от оператора связи. Экран блокировки может ненадолго включиться, вы также можете услышать звуковой сигнал об окончании вызова (некоторые телефоны предлагают возможность отключения этого звука).
+        - <font color="#d1c8c8"><b>Ответить и повесить трубку</b></font>: <br>
+        &emsp; Чтобы вызов не перешел на голосовую почту. Экран блокировки может быть включен на короткое время, вы также можете услышать звуковой сигнал об окончании звонка (на некоторых телефонах есть возможность отключить его).
         ]]>
     </string>
-    <string name="stir">Аттестация STIR</string>
-    <string name="stir_include_unverified">Включить непроверенные</string>
-    <string name="unverified">Непроверенный</string>
-    <string name="valid">Достоверный звонок</string>
-    <string name="spoof">Поддельный звонок</string>
-    <string name="help_stir">
+    <string name="help_dialed">
         <![CDATA[
-            Для аттестации STIR требуются <b>Android 11+</b> и <b>поддержка оператора связи</b>. <br>
-            <br>
-            Возможны три результата аттестации: <br>
-            <font color="cyan"><b>Достоверный</b></font> <br>
-            &emsp; Вероятность, что звонок достоверный, а не поддельный, очень высока. <br>
-            <font color="#ffa500"><b>Непроверенный</b></font> <br>
-            &emsp; Звонок не поддается проверке или аттестация STIR не поддерживается. <br>
-            <font color="#fa7f71"><b>Поддельный</b></font> <br>
-            &emsp; С высокой вероятностью звонок является поддельным. <br>
-            <br>
-            <br>
-              - <font color="#d1c8c8"><b>Включительно</b></font>: <br>
-                  &emsp; Звонки, не прошедшие эту проверку, все равно будут проверяться по другим правилам. <br>
-                  &emsp; Если поставить галочку "<b>Включить непроверенные</b>", звонок будет также пропущен, если он не проверен. <br>
-                  &emsp; <font color="#ea86ff"><b>Приоритет: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Исключительно</b></font>: <br>
-                  &emsp; Звонки, не прошедшие эту проверку, будут <font color="#fa7f71"><b>заблокированы</b></font>. <br>
-                  &emsp; Если поставить галочку "<b>Включить непроверенные</b>", звонок также будет заблокирован, если он не проверен. <br>
-                  &emsp; <font color="#ea86ff"><b>Приоритет: 0</b></font>
+        Разрешены набранные номера. <br>
+        <br>
+        То же относится и к отправке сообщения; работает только при наличии разрешения READ_SMS. <br>
+        <br>
+        Настройка по умолчанию <font color="cyan"><b>3 дня</b></font> означает, что если за последние 3 дня с номера был сделан исходящий вызов или отправлено сообщение, вызовы с этого номера будут разрешены, даже если этого номера нет в контактах.<br>
+        <br>
+        Применяется только к вызовам, <b>не</b> к текстовым сообщениям. <br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Входящий вызов будет пропущен, если недавно использовалось какое-либо приложение из списка.<br>
+        <br>
+        Типичный вариант использования:<br>
+        &emsp; Вы только что заказали пиццу в PizzaApp и вскоре они вам перезванивают с возвратом средств в связи с закрытием. Этот вызов будет пропущен, если PizzaApp здесь включено. <br>
+        <br>
+        Настройка по умолчанию <font color="cyan"><b>5 мин.</b></font> означает, что любой вызов будет разрешен, если какое-либо из этих приложений использовалось в течение 5 минут; под "использовалось" понимается активация, деактивация, сворачивание или завершение работы. <br>
+        <br>
+        Применяется только к вызовам, <b>не</b> к текстовым сообщениям. <br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
 </resources>

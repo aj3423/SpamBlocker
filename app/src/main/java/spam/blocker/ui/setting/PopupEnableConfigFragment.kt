@@ -14,6 +14,7 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.Util
 
 class PopupEnableConfigFragment(val handleSave : (Boolean, Boolean) -> Unit) : ClosableDialogFragment() {
 
@@ -56,6 +57,9 @@ class PopupEnableConfigFragment(val handleSave : (Boolean, Boolean) -> Unit) : C
             if (isChecked) {
                 permChain.ask { allGranted ->
                     switch_sms.isChecked = allGranted
+                    if (allGranted) {
+                        Util.checkDoubleNotifications(ctx)
+                    }
                 }
             }
         }

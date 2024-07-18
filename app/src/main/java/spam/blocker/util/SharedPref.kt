@@ -100,6 +100,12 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun setPromptedForRunningInWorkProfile() {
         writeBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, true)
     }
+    fun isDoubleSMSWarningDismissed(): Boolean {
+        return readBoolean(Def.SETTING_WARN_DOUBLE_SMS, false)
+    }
+    fun dismissDoubleSMSWarning() {
+        writeBoolean(Def.SETTING_WARN_DOUBLE_SMS, true)
+    }
 
     fun getShowPassed(): Boolean {
         return readBoolean(Def.SETTING_SHOW_PASSED, true)

@@ -1,30 +1,26 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        Diese Regeln gelten für den SMS-Nachrichteninhalt.<br>
-        <br>
-        <font color="#ffa500"><b>Hinweis</b></font>: Bei SMS-Nachrichten funktioniert diese App als "Add-on" der Standard-SMS-App. Sie blockiert Benachrichtigungen und nicht Nachrichten. Spam-Nachrichten bleiben in der Standard-SMS-App erhalten. <font color="#fa7f71"><b>Deaktiviere</b></font> die Benachrichtigung der Standard-SMS-App in den Systemeinstellungen und lass diese App die Benachrichtigung übernehmen, da es sonst zu doppelten Benachrichtigungen kommt. <br>
-        <br>
-        Die Liste wird in absteigender Prioritätsreihenfolge, aufsteigender Beschreibung und aufsteigendem Muster <b>angezeigt</b>.
+        Diese Regeln werden auf den Inhalt der SMS-Nachricht angewendet.
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Eine schnelle Möglichkeit, Inhalte aus SMS-Nachrichten oder Telefonnummern zu kopieren, sodass Überprüfungscodes oder eingehende Nummern einfach abgerufen werden können.<br>
+        Eine schnelle Möglichkeit, Inhalte aus SMS-Nachrichten oder Telefonnummern zu kopieren, um Verifizierungscodes oder eingehende Nummern einfach abzurufen.<br>
         <br>
-        Wenn es übereinstimmt, erscheint in der Benachrichtigung eine Schaltfläche wie <font color="yellow"><b>Kopieren: 123456</b></font>.<br>
+        Wenn eine Übereinstimmung gefunden wird, erscheint eine Schaltfläche wie <font color="yellow"><b>Kopieren: 123456</b></font> in der Benachrichtigung.<br>
         <br>
-        Eine Beispielregel zum Extrahieren von Überprüfungscodes:<br>
-        &emsp; Mit Erfassungsgruppe:<br>
+        Ein Beispiel für eine Regel zum Extrahieren von Verifizierungscodes:<br>
+        &emsp; Verwende eine Erfassungsgruppe:<br>
         &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Ein anderer Ansatz mit Lookaround:<br>
+        &emsp; Ein anderer Ansatz unter Verwendung von Lookaround:<br>
         &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to">
         <![CDATA[
         Aktiviere diese Regel für Anrufe, SMS oder beides.<br>
-        Deaktiviere diese Checkboxen, um die Regel zu deaktivieren, ohne sie zu löschen.
+        Deaktiviere diese Kontrollkästchen, um die Regel zu deaktivieren, ohne sie zu löschen.
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
@@ -32,12 +28,13 @@
         Wenn <font color="#d1c8c8"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus der eingehenden Nummer.
         Verwende zum Beispiel <b>(.*)</b>, um die Telefonnummer zu kopieren.<br>
         <br>
-        Wenn <font color="#d1c8c8"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus dem SMS-Nachrichtentext, wie zum Beispiel Überprüfungscodes.
+        Wenn <font color="#d1c8c8"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus dem SMS-Nachrichtentext,
+        wie z. B. Verifizierungscodes.
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        Wenn <font color="cyan"><b>Bestanden</b></font> aktiviert ist, wird diese Regel auf weitergeleitete Anrufe und Nachrichten angewendet.<br>
+        Wenn <font color="cyan"><b>Durchgelassen</b></font> aktiviert ist, wird diese Regel auf durchgelassene Anrufe und Nachrichten angewendet.<br>
         <br>
         Wenn <font color="#fa7f71"><b>Blockiert</b></font> aktiviert ist, wird diese Regel auf blockierte Anrufe und Nachrichten angewendet.
         ]]>
@@ -45,19 +42,19 @@
     <string name="help_importance">
         <![CDATA[
         <b>Keine</b>:<br>&emsp; überhaupt keine Benachrichtigung. <br>
-        <b>Farbton</b>:<br>&emsp; die Dropdown-Benachrichtigung. <br>
+        <b>Schatten</b>:<br>&emsp; Dropdown-Benachrichtigungsschatten. <br>
         <b>Statusleiste</b>:<br>&emsp; das kleine Symbol in der oberen Leiste. <br>
-        <b>Ton</b>:<br>&emsp; der Standardbenachrichtigungston. <br>
-        <b>Heads-Up</b>:<br>&emsp; zeige ein schwebendes Fenster oben auf dem Bildschirm an.
+        <b>Ton</b>:<br>&emsp; den Standard-Benachrichtigungston. <br>
+        <b>Heads-Up</b>:<br>&emsp; Pop-up-Fenster oben auf dem Bildschirm.
         ]]>
     </string>
     <string name="help_test_rules">
         <![CDATA[
-        Dies hilft zu prüfen, ob die Regeln wie erwartet festgelegt sind.<br>
+        Hiermit kannst du überprüfen, ob die Regeln wie erwartet festgelegt sind.<br>
         <br>
-        Es ist nur eine Simulation und es wird kein eingehender Anruf (oder eine Textnachricht) angezeigt.<br>
+        Es handelt sich lediglich um eine Simulation und es wird kein eingehender Anruf (oder keine SMS) angezeigt.<br>
         <br>
-        Das Ergebnis wird hier und im Verlaufsprotokoll mit einer Benachrichtigung angezeigt.
+        Das Ergebnis wird hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
         ]]>
     </string>
 

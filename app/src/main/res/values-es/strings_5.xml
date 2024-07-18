@@ -1,15 +1,15 @@
 <resources>
     <string name="allow_repeated_call">Llamada repetida</string>
     <string name="dialed">Marcado</string>
-    <string name="find_apps">Buscar aplicaciones</string>
+    <string name="find_apps">Encontrar apps</string>
     <string name="spam_sms_blocked">Mensaje SMS bloqueado</string>
     <string name="spam_call_blocked">Llamada bloqueada</string>
     <string name="new_sms_received">Nuevo mensaje SMS</string>
     <string name="mark_all_as_read">Marcar todo como leído</string>
     <string name="delete_all">Borrar todo</string>
-    <string name="show_passed">Mostrar aprobados</string>
-    <string name="show_blocked">Mostrar bloqueados</string>
-    <string name="clone_rule">Duplicar regla</string>
+    <string name="show_passed">Mostrar aprobadas</string>
+    <string name="show_blocked">Mostrar bloqueadas</string>
+    <string name="clone_rule">Clonar regla</string>
     <string name="notification">Notificación</string>
     <string name="type">Tipo</string>
     <string name="time">Hora</string>
@@ -21,60 +21,61 @@
     <string name="within_days">En días</string>
     <string name="phone_number">Número de teléfono</string>
     <string name="phone_number_abbrev">Número</string>
-    <string name="sms_content">Contenido SMS</string>
+    <string name="sms_content">Contenido del SMS</string>
     <string name="sms_content_abbrev">Contenido</string>
     <string name="result">Resultado</string>
     <string name="reason">Razón</string>
-    <string name="regex_flags">Banderas de expresiones regulares</string>
+    <string name="regex_flags">Flags regex</string>
     <string name="ignore_case">Ignorar mayúsculas y minúsculas</string>
-    <string name="dot_match_all">Punto para coincidir con todo</string>
-    <string name="raw_number">Número sin procesar</string>
+    <string name="dot_match_all">Punto coincide con todo</string>
+    <string name="raw_number">Número sin formato</string>
     <string name="literal">Literal</string>
     <string name="off_time">Hora de apagado</string>
-    <string name="schedule">Horario</string>
+    <string name="schedule">Programación</string>
     <string name="workday">Día laborable</string>
     <string name="weekend">Fin de semana</string>
     <string name="entire_day">Todo el día</string>
     <string name="block_type">Tipo de bloqueo</string>
+    <string name="for_particular_number">Para número determinado</string>
+    <string name="no_match_found">No se encontró ninguna coincidencia</string>
+    <string name="help_for_particular_number">Cuando está activado, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Rechazar</b></font>: <br>
-        &emsp; Igual que si pulsa el botón de rechazar. Funciona completamente en silencio, la pantalla de bloqueo no se encenderá, es el tipo recomendado para aquellos que no utilizan el buzón de voz.<br>
+        &emsp; Es lo mismo que pulsar el botón para rechazar. Funciona de manera totalmente silenciosa, no se enciende la pantalla de bloqueo y es el tipo recomendado para los que no usan el buzón de voz.<br>
         <br>
         - <font color="#d1c8c8"><b>Silenciar</b></font>: <br>
-        &emsp; Sonará silenciosamente en segundo plano, dando la impresión a quien llama de que está ocupado y no ha respondido. <br>
+        &emsp; Sonará silenciosamente en segundo plano, dando la impresión a la persona que llama de que estás ocupado y no lo has cogido. <br>
         <br>
-        - <font color="#d1c8c8"><b>Responder y colgar</b></font>: <font color="#ffa500"><b>(experimental)</b></font><br>
-        &emsp; Para evitar que se envíe al buzón de voz, el comportamiento puede depender del operador. La pantalla de bloqueo puede encenderse durante un breve momento, es posible que también escuche un tono de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
+        - <font color="#d1c8c8"><b>Responder y colgar</b></font>: <br>
+        &emsp; Para evitar que te envíen al buzón de voz. La pantalla de bloqueo se puede activar durante un corto periodo de tiempo y podrías oír un tono de fin de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
         ]]>
     </string>
-    <string name="stir">Atestación STIR</string>
-    <string name="stir_include_unverified">Incluir no verificados</string>
-    <string name="unverified">No verificado</string>
-    <string name="valid">Llamada válida</string>
-    <string name="spoof">Llamada falsa</string>
-    <string name="help_stir">
+    <string name="help_dialed">
         <![CDATA[
-            La atestación STIR requiere <b>Android 11+</b> y <b>compatibilidad con el operador</b>. <br>
-            <br>
-            Hay tres posibles resultados de atestación: <br>
-            <font color="cyan"><b>Válido</b></font> <br>
-            &emsp; Es muy probable que la llamada sea válida, no falsa. <br>
-            <font color="#ffa500"><b>No verificado</b></font> <br>
-            &emsp; No se puede validar la llamada o no se admite la atestación STIR. <br>
-            <font color="#fa7f71"><b>Falso</b></font> <br>
-            &emsp; Es muy probable que sea una llamada falsa. <br>
-            <br>
-            <br>
-              - <font color="#d1c8c8"><b>Inclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no pasen esta verificación seguirán siendo revisadas por otras reglas. <br>
-                  &emsp; Cuando se marca "<b>Incluir no verificados</b>", una llamada también se aprobará si no está verificada. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no pasen esta verificación se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
-                  &emsp; Cuando se marca "<b>Incluir no verificados</b>", una llamada también se bloqueará si no está verificada. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
+        Se permitirán los números marcados. <br>
+        <br>
+        Enviar un mensaje también cuenta, esto solo funciona cuando se concede el permiso READ_SMS. <br>
+        <br>
+        El ajuste predeterminado <font color="cyan"><b>3 días</b></font> significa que si un número ha realizado llamadas salientes o enviado mensajes en los últimos 3 días, se permitirán las llamadas de ese número, incluso si el número no está en los contactos.<br>
+        <br>
+        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Se pasará cualquier llamada entrante si se ha utilizado alguna app de la lista recientemente.<br>
+        <br>
+        Un caso de uso típico:<br>
+        &emsp; Acabas de pedir una pizza en PizzaApp y enseguida te llaman para devolverte el dinero porque van a cerrar. Esa llamada se pasaría si PizzaApp está activada aquí. <br>
+        <br>
+        El ajuste predeterminado <font color="cyan"><b>5 min</b></font> significa que se permitirá cualquier llamada si se ha utilizado alguna de estas apps en los últimos 5 minutos, por "utilizar" se entiende haberla activado, desactivado, minimizado o cerrado. <br>
+        <br>
+        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
     </string>
 </resources>

@@ -1,13 +1,7 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        These rules apply to the SMS message content.<br>
-        <br>
-        <font color="#ffa500"><b>Note</b></font>: For SMS messages, this app works as an \"addon\" of the default SMS app, it blocks notifications instead
-          of blocking messages, spam messages will still be present in the default SMS app. <font color="#fa7f71"><b>Disable</b></font> the notification of the default
-          SMS app in system settings, let this app take over the notification, otherwise there will be double notifications. <br>
-        <br>
-        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern.
+        These rules apply to the SMS content.
         ]]>
     </string>
     <string name="help_quick_copy">

@@ -24,7 +24,7 @@
             &ensp; When enabled, <font color="cyan"><b>.</b></font> will also match newline characters (<font color="cyan"><b>\\n</b></font>),
               this allows the dot to match across multiple lines. <br>
             &ensp; Use case: <br>
-            &emsp;   Match multiline spam message: <br>
+            &emsp;   Match multiline SMS message: <br>
             &emsp;   <font color="#fa7f71">claim your prize: http://<br>
             &emsp;   abc.com </font><br>
             &emsp;   with rule: <br>
