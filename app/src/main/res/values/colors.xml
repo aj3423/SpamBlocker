@@ -16,6 +16,7 @@
     <color name="salmon">#fa8072</color>
     <color name="yellow_green">#9ACD32</color>
     <color name="light_green">#90cE90</color>
+    <color name="emerald">#50c878</color>
     <color name="orange">#ffa500</color>
     <color name="orange_red">#ff4500</color>
     <color name="dark_orange">#ff8c00</color>
@@ -24,7 +25,7 @@
     <color name="tooltip_blue">#5173e8</color>
 
     <color name="text_grey">#a0a0a0</color>
-    <color name="text_green">@color/yellow_green</color>
+    <color name="text_green">@color/emerald</color>
     <color name="dialog_bg">@color/white</color>
     <color name="dialog_border">@color/hint_grey</color>
     <color name="schedule">#6ed0ff</color>

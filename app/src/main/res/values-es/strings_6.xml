@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">Tema</string>
-    <string-array name="theme_list">
-        <item>Seguir sistema</item>
-        <item>Claro</item>
-        <item>Oscuro</item>
-    </string-array>
-
     <string name="crash_title">
         Lo siento, la app falló.\n\n
         Copia el contenido de abajo y reporta este problema en GitHub,

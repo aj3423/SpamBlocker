@@ -311,7 +311,11 @@ class Util {
         }
 
         fun setLocale(ctx: Context, languageCode: String) {
-            val locale = Locale(languageCode)
+            val locale = if (languageCode == "")
+                Locale.getDefault()
+            else
+                Locale(languageCode)
+
             Locale.setDefault(locale)
 
             val resources = ctx.resources

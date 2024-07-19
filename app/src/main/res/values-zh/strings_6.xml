@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">主题</string>
-    <string-array name="theme_list">
-        <item>跟随系统</item>
-        <item>明亮</item>
-        <item>暗黑</item>
-    </string-array>
-
     <string name="crash_title">
         抱歉，应用已崩溃。\n\n
         请复制以下内容，并在 github 上报告此错误，

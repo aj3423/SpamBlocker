@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">Theme</string>
-    <string-array name="theme_list">
-        <item>Folgen System</item>
-        <item>Hell</item>
-        <item>Dunkel</item>
-    </string-array>
-
     <string name="crash_title">
         Fehler, die App ist abgestürzt.\n\n
         Kopieren Sie den Inhalt unten und melden das Problem auf GitHub. Entfernen Sie sensible Daten vor dem Melden.

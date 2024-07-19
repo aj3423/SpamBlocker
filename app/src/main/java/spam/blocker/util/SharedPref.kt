@@ -82,7 +82,7 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun getThemeType(): Int { return readInt(Def.SETTING_THEME_TYPE, 0) }
     fun setThemeType(type: Int) { writeInt(Def.SETTING_THEME_TYPE, type) }
 
-    fun getLanguage(): String { return readString(Def.SETTING_LANGUAGE, "en") }
+    fun getLanguage(): String { return readString(Def.SETTING_LANGUAGE, "") }
     fun setLanguage(lang: String) { writeString(Def.SETTING_LANGUAGE, lang) }
 
     fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "") }

@@ -2,17 +2,11 @@
     <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
     <string name="find_apps">Find Apps</string>
-    <string name="spam_sms_blocked">SMS Message Blocked</string>
-    <string name="spam_call_blocked">Call Blocked</string>
-    <string name="new_sms_received">New SMS Message</string>
-    <string name="mark_all_as_read">Mark all as read</string>
-    <string name="delete_all">Delete all</string>
     <string name="show_passed">Show Passed</string>
     <string name="show_blocked">Show Blocked</string>
     <string name="clone_rule">Clone Rule</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
-    <string name="time">Time</string>
     <string name="times">Times</string>
     <string name="day">Day</string>
     <string name="days">Days</string>
@@ -23,13 +17,11 @@
     <string name="phone_number_abbrev">Number</string>
     <string name="sms_content">SMS Content</string>
     <string name="sms_content_abbrev">Content</string>
-    <string name="result">Result</string>
-    <string name="reason">Reason</string>
     <string name="regex_flags">Regex Flags</string>
     <string name="ignore_case">Ignore Case</string>
     <string name="dot_match_all">Dot Match All</string>
     <string name="raw_number">Raw Number</string>
-    <string name="literal">Literal</string>
+    <string name="disable_number_optimization">This optimization can be disabled by the regex flag `Raw Number`.</string>
     <string name="off_time">Off Time</string>
     <string name="schedule">Schedule</string>
     <string name="workday">Workday</string>
@@ -37,7 +29,6 @@
     <string name="entire_day">Entire Day</string>
     <string name="block_type">Block Type</string>
     <string name="for_particular_number">For number</string>
-    <string name="no_match_found">No match found</string>
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
     <string name="help_block_type">
         <![CDATA[

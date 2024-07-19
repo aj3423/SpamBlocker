@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">Thème</string>
-    <string-array name="theme_list">
-        <item>Suivre le système</item>
-        <item>Clair</item>
-        <item>Sombre</item>
-    </string-array>
-
     <string name="crash_title">
         Désolé, l\'application a crashé.\n\n
         Veuillez copier le contenu ci-dessous et signaler ce problème sur github, supprimez les informations sensibles avant de le signaler.

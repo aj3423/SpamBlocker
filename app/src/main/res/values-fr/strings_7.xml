@@ -1,0 +1,17 @@
+<resources>
+    <string name="follow_system">Suivre le système</string>
+    <string name="theme">Thème</string>
+    <string-array name="theme_list">
+        <item>Claire</item>
+        <item>Foncée</item>
+    </string-array>
+    <string-array name="language_list">
+        <item><no_translate>de</no_translate></item>
+        <item><no_translate>en</no_translate></item>
+        <item><no_translate>es</no_translate></item>
+        <item><no_translate>fr</no_translate></item>
+        <item><no_translate>ru</no_translate></item>
+        <item><no_translate>uk</no_translate></item>
+        <item><no_translate>zh</no_translate></item>
+    </string-array>
+</resources>

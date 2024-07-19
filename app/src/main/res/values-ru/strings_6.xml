@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">Тема</string>
-    <string-array name="theme_list">
-        <item>Следовать системе</item>
-        <item>Светлая</item>
-        <item>Тёмная</item>
-    </string-array>
-
     <string name="crash_title">
         К сожалению, приложение аварийно завершило работу.\n\n
         Пожалуйста, скопируйте содержимое ниже и сообщите об этой проблеме на GitHub,

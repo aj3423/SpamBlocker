@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">Тема</string>
-    <string-array name="theme_list">
-        <item>За системою</item>
-        <item>Світла</item>
-        <item>Темна</item>
-    </string-array>
-
     <string name="crash_title">
         Вибачте, додаток впав.\n\n
         Будь ласка, скопіюйте вміст нижче та повідомте про цю проблему на github,

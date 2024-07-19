@@ -1,14 +1,14 @@
 <resources>
     <string name="allow_repeated_call">Llamada repetida</string>
     <string name="dialed">Marcado</string>
-    <string name="find_apps">Encontrar apps</string>
+    <string name="find_apps">Encontrar aplicaciones</string>
     <string name="spam_sms_blocked">Mensaje SMS bloqueado</string>
     <string name="spam_call_blocked">Llamada bloqueada</string>
     <string name="new_sms_received">Nuevo mensaje SMS</string>
     <string name="mark_all_as_read">Marcar todo como leído</string>
-    <string name="delete_all">Borrar todo</string>
-    <string name="show_passed">Mostrar aprobadas</string>
-    <string name="show_blocked">Mostrar bloqueadas</string>
+    <string name="delete_all">Eliminar todo</string>
+    <string name="show_passed">Mostrar llamadas permitidas</string>
+    <string name="show_blocked">Mostrar llamadas bloqueadas</string>
     <string name="clone_rule">Clonar regla</string>
     <string name="notification">Notificación</string>
     <string name="type">Tipo</string>
@@ -17,47 +17,48 @@
     <string name="day">Día</string>
     <string name="days">Días</string>
     <string name="min">Min</string>
-    <string name="within_minutes">En minutos</string>
-    <string name="within_days">En días</string>
+    <string name="within_minutes">Dentro de los minutos</string>
+    <string name="within_days">Dentro de los días</string>
     <string name="phone_number">Número de teléfono</string>
     <string name="phone_number_abbrev">Número</string>
     <string name="sms_content">Contenido del SMS</string>
     <string name="sms_content_abbrev">Contenido</string>
     <string name="result">Resultado</string>
-    <string name="reason">Razón</string>
-    <string name="regex_flags">Flags regex</string>
+    <string name="reason">Motivo</string>
+    <string name="regex_flags">Indicadores de regex</string>
     <string name="ignore_case">Ignorar mayúsculas y minúsculas</string>
-    <string name="dot_match_all">Punto coincide con todo</string>
-    <string name="raw_number">Número sin formato</string>
+    <string name="dot_match_all">Punto que coincide con todo</string>
+    <string name="raw_number">Número sin procesar</string>
+    <string name="disable_number_optimization">Esta optimización se puede desactivar mediante el indicador de regex "Número sin procesar".</string>
     <string name="literal">Literal</string>
-    <string name="off_time">Hora de apagado</string>
-    <string name="schedule">Programación</string>
+    <string name="off_time">Hora desactivada</string>
+    <string name="schedule">Horario</string>
     <string name="workday">Día laborable</string>
     <string name="weekend">Fin de semana</string>
     <string name="entire_day">Todo el día</string>
     <string name="block_type">Tipo de bloqueo</string>
-    <string name="for_particular_number">Para número determinado</string>
+    <string name="for_particular_number">Para un número</string>
     <string name="no_match_found">No se encontró ninguna coincidencia</string>
-    <string name="help_for_particular_number">Cuando está activado, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
+    <string name="help_for_particular_number">Cuando está habilitada, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Rechazar</b></font>: <br>
-        &emsp; Es lo mismo que pulsar el botón para rechazar. Funciona de manera totalmente silenciosa, no se enciende la pantalla de bloqueo y es el tipo recomendado para los que no usan el buzón de voz.<br>
+        &emsp; Igual que presionar el botón de rechazar. Funciona de forma completamente silenciosa, la pantalla de bloqueo no se activará, es el tipo recomendado para quienes no usan el buzón de voz.<br>
         <br>
         - <font color="#d1c8c8"><b>Silenciar</b></font>: <br>
-        &emsp; Sonará silenciosamente en segundo plano, dando la impresión a la persona que llama de que estás ocupado y no lo has cogido. <br>
+        &emsp; Sonará silenciosamente en segundo plano, dando la impresión a la persona que llama de que simplemente estás ocupado y no has respondido. <br>
         <br>
         - <font color="#d1c8c8"><b>Responder y colgar</b></font>: <br>
-        &emsp; Para evitar que te envíen al buzón de voz. La pantalla de bloqueo se puede activar durante un corto periodo de tiempo y podrías oír un tono de fin de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
+        &emsp; Para evitar que se envíe al buzón de voz. La pantalla de bloqueo se puede activar por un corto tiempo, también puedes escuchar un tono de finalización de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
         Se permitirán los números marcados. <br>
         <br>
-        Enviar un mensaje también cuenta, esto solo funciona cuando se concede el permiso READ_SMS. <br>
+        Enviar mensaje también cuenta, esto solo funciona cuando se concede el permiso LEER SMS. <br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>3 días</b></font> significa que si un número ha realizado llamadas salientes o enviado mensajes en los últimos 3 días, se permitirán las llamadas de ese número, incluso si el número no está en los contactos.<br>
+        La configuración predeterminada <font color="cyan"><b>3 días</b></font> significa que si a un número se le han realizado llamadas salientes o se le han enviado mensajes en los últimos 3 días, se permitirán las llamadas desde ese número, incluso si no está en los contactos.<br>
         <br>
         Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
@@ -66,12 +67,12 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Se pasará cualquier llamada entrante si se ha utilizado alguna app de la lista recientemente.<br>
+        Cualquier llamada entrante pasará si alguna aplicación de la lista se ha utilizado recientemente.<br>
         <br>
         Un caso de uso típico:<br>
-        &emsp; Acabas de pedir una pizza en PizzaApp y enseguida te llaman para devolverte el dinero porque van a cerrar. Esa llamada se pasaría si PizzaApp está activada aquí. <br>
+        &emsp; Acabas de pedir una pizza en PizzaApp, pronto te llaman para devolverte el dinero porque están cerrando. Esa llamada pasaría si PizzaApp está habilitada aquí. <br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>5 min</b></font> significa que se permitirá cualquier llamada si se ha utilizado alguna de estas apps en los últimos 5 minutos, por "utilizar" se entiende haberla activado, desactivado, minimizado o cerrado. <br>
+        La configuración predeterminada <font color="cyan"><b>5 min</b></font> significa que cualquier llamada se permitirá si alguna de estas aplicaciones se ha utilizado en un plazo de 5 minutos, por "utilizada" se entiende activada, desactivada, minimizada o cerrada. <br>
         <br>
         Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>

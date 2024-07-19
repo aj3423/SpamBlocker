@@ -74,12 +74,12 @@
         <br>
         <b>Long press</b> the `Add` button to import numbers from .csv file, columns supported(all optional):<br>
          - <no_translate>pattern</no_translate>: The regex<br>
-         - <no_translate>description</no_translate><br>
-         - <no_translate>priority</no_translate>: default 1<br>
+         - <no_translate>description</no_translate>: Description<br>
+         - <no_translate>priority</no_translate>: Priority, default 1<br>
          - <no_translate>flags</no_translate>: 1(Apply to Call), 2(Apply to SMS), 3(both), default 3<br>
-         - <no_translate>isBlacklist</no_translate>: <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
-         - <no_translate>blockType</no_translate>: 0~2 corresponding to the 3 block types, default 0<br>
-         - <no_translate>importance</no_translate>: 0~4 corresponding to the 5 notification types, default 2
+         - <no_translate>isBlacklist</no_translate>: Blacklist or whitelist. <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
+         - <no_translate>blockType</no_translate>: Block type. 0~2 corresponding to the 3 block types, default 0<br>
+         - <no_translate>importance</no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2
         ]]>
     </string>
 </resources>

@@ -9,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.PorterDuff
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
@@ -22,7 +21,6 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -280,12 +278,13 @@ class SettingFragment : Fragment() {
         val spf = Global(ctx)
         val btn = root.findViewById<MaterialButton>(R.id.btn_theme)
         val type = spf.getThemeType()
-        val items = resources.getStringArray(R.array.theme_list).toList()
-        btn.text = items[type]
+        val followSystem = resources.getString(R.string.follow_system)
+        val themes = listOf(followSystem) + resources.getStringArray(R.array.theme_list).toList()
+        btn.text = themes[type]
         btn.setOnClickListener {
-            dynamicPopupMenu(ctx, items, btn) { clickedIdx ->
+            dynamicPopupMenu(ctx, themes, btn) { clickedIdx ->
                 spf.setThemeType(clickedIdx)
-                btn.text = items[clickedIdx]
+                btn.text = themes[clickedIdx]
                 applyTheme(clickedIdx)
             }
         }
@@ -755,15 +754,19 @@ class SettingFragment : Fragment() {
         val spf = Global(ctx)
         val btn = root.findViewById<MaterialButton>(R.id.btn_language)
 
-        val lang = spf.getLanguage()
-        btn.text = lang
+        val followSystem = ctx.getString(R.string.follow_system)
+        val languages = listOf(followSystem) + ctx.resources.getStringArray(R.array.language_list).toList()
 
-        val languages = ctx.resources.getStringArray(R.array.language_list).toList()
+        // language is "" when FollowSystem
+        val lang = spf.getLanguage()
+        btn.text = lang.ifEmpty { followSystem }
 
         btn.setOnClickListener {
             dynamicPopupMenu(ctx, languages, btn) { clickedIdx ->
-                val newLang = languages[clickedIdx]
+                var newLang = languages[clickedIdx]
                 if (newLang != lang) {
+                    if (clickedIdx == 0)
+                        newLang = "" // follow system
                     spf.setLanguage(newLang)
                     Launcher.selfRestart(ctx)
                 }

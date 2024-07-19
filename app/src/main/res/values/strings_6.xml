@@ -1,11 +1,4 @@
 <resources>
-    <string name="theme">Theme</string>
-    <string-array name="theme_list">
-        <item>Follow System</item>
-        <item>Light</item>
-        <item>Dark</item>
-    </string-array>
-
     <string name="crash_title">
         Sorry, the app has crashed.\n\n
         Please copy the content below and report this issue on github,

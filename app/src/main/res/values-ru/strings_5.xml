@@ -1,10 +1,10 @@
 <resources>
-    <string name="allow_repeated_call">Повторный звонок</string>
-    <string name="dialed">Набран</string>
-    <string name="find_apps">Поиск приложений</string>
-    <string name="spam_sms_blocked">Блокировка СМС-сообщения</string>
-    <string name="spam_call_blocked">Заблокированный звонок</string>
-    <string name="new_sms_received">Новое СМС-сообщение</string>
+    <string name="allow_repeated_call">Повторный вызов</string>
+    <string name="dialed">Набрано</string>
+    <string name="find_apps">Найти приложения</string>
+    <string name="spam_sms_blocked">Заблокировано SMS-сообщение</string>
+    <string name="spam_call_blocked">Заблокировано входящий звонок</string>
+    <string name="new_sms_received">Новое SMS-сообщение</string>
     <string name="mark_all_as_read">Отметить все как прочитанные</string>
     <string name="delete_all">Удалить все</string>
     <string name="show_passed">Показать пропущенные</string>
@@ -13,51 +13,52 @@
     <string name="notification">Уведомление</string>
     <string name="type">Тип</string>
     <string name="time">Время</string>
-    <string name="times">Раза</string>
+    <string name="times">Раз</string>
     <string name="day">День</string>
-    <string name="days">Дня</string>
+    <string name="days">Дней</string>
     <string name="min">Мин</string>
-    <string name="within_minutes">В течение минут</string>
-    <string name="within_days">В течение дней</string>
+    <string name="within_minutes">В течении минут</string>
+    <string name="within_days">В течении дней</string>
     <string name="phone_number">Номер телефона</string>
     <string name="phone_number_abbrev">Номер</string>
-    <string name="sms_content">Содержание СМС</string>
+    <string name="sms_content">Содержание SMS</string>
     <string name="sms_content_abbrev">Содержание</string>
     <string name="result">Результат</string>
     <string name="reason">Причина</string>
     <string name="regex_flags">Флаги регулярных выражений</string>
     <string name="ignore_case">Игнорировать регистр</string>
-    <string name="dot_match_all">Точка совпадает со всем</string>
-    <string name="raw_number">Исходный номер</string>
-    <string name="literal">Буквально</string>
-    <string name="off_time">Выкл. во время</string>
+    <string name="dot_match_all">Точка соответствует всему</string>
+    <string name="raw_number">Необработанный номер</string>
+    <string name="disable_number_optimization">Эту оптимизацию можно отключить с помощью флага регулярного выражения "Необработанный номер".</string>
+    <string name="literal">Литерал</string>
+    <string name="off_time">Время выключения</string>
     <string name="schedule">Расписание</string>
     <string name="workday">Рабочий день</string>
     <string name="weekend">Выходные</string>
     <string name="entire_day">Весь день</string>
     <string name="block_type">Тип блокировки</string>
     <string name="for_particular_number">Для номера</string>
-    <string name="no_match_found">Соответствий не найдено</string>
-    <string name="help_for_particular_number">Если включено, правило применяется только когда совпадает и номер, и содержание.</string>
+    <string name="no_match_found">Совпадение не найдено</string>
+    <string name="help_for_particular_number">Если включено, правило применяется только в том случае, если совпадают и номер, и содержимое.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Отклонить</b></font>: <br>
-        &emsp; То же, что и нажатие кнопки отклонить. Работает полностью в фоновом режиме, экран блокировки не включается; рекомендуется тем, кто не пользуется голосовой почтой.<br>
+        &emsp; То же самое, что и нажатие кнопки отклонения. Работает совершенно бесшумно, блокировка экрана не включится, это рекомендуемый тип для тех, кто не использует голосовую почту.<br>
         <br>
         - <font color="#d1c8c8"><b>Без звука</b></font>: <br>
-        &emsp; Будет звонить без звука в фоновом режиме, создавая впечатление, что вы просто заняты и не отвечаете на звонок.<br>
+        &emsp; Будет звонить без звука в фоновом режиме, создавая у звонящего впечатление, что вы просто заняты и не ответили.<br>
         <br>
-        - <font color="#d1c8c8"><b>Ответить и повесить трубку</b></font>: <br>
-        &emsp; Чтобы вызов не перешел на голосовую почту. Экран блокировки может быть включен на короткое время, вы также можете услышать звуковой сигнал об окончании звонка (на некоторых телефонах есть возможность отключить его).
+        - <font color="#d1c8c8"><b>Принять и повесить трубку</b></font>: <br>
+        &emsp; Чтобы избежать отправки на голосовую почту. Блокировка экрана может быть включена ненадолго, вы также можете услышать тон завершения вызова (некоторые телефоны предлагают возможность отключить этот звук).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Разрешены набранные номера. <br>
+        Набранные номера будут разрешены. <br>
         <br>
-        То же относится и к отправке сообщения; работает только при наличии разрешения READ_SMS. <br>
+        Отправка сообщения также учитывается, это работает только при предоставлении разрешения READ_SMS. <br>
         <br>
-        Настройка по умолчанию <font color="cyan"><b>3 дня</b></font> означает, что если за последние 3 дня с номера был сделан исходящий вызов или отправлено сообщение, вызовы с этого номера будут разрешены, даже если этого номера нет в контактах.<br>
+        Настройка по умолчанию <font color="cyan"><b>3 дня</b></font> означает, что если с номера в течение последних 3 дней совершались исходящие звонки или отправлялись сообщения, звонки с этого номера будут разрешены, даже если этого номера нет в контактах.<br>
         <br>
         Применяется только к вызовам, <b>не</b> к текстовым сообщениям. <br>
         <br>
@@ -66,12 +67,12 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Входящий вызов будет пропущен, если недавно использовалось какое-либо приложение из списка.<br>
+        Любой входящий звонок будет пропущен, если какое-либо приложение из списка было использовано недавно.<br>
         <br>
-        Типичный вариант использования:<br>
-        &emsp; Вы только что заказали пиццу в PizzaApp и вскоре они вам перезванивают с возвратом средств в связи с закрытием. Этот вызов будет пропущен, если PizzaApp здесь включено. <br>
+        Типичный пример использования:<br>
+        &emsp; Вы только что заказали пиццу в PizzaApp, вскоре они позвонят вам, чтобы вернуть деньги, потому что они закрываются. Этот вызов будет пропущен, если здесь включен PizzaApp. <br>
         <br>
-        Настройка по умолчанию <font color="cyan"><b>5 мин.</b></font> означает, что любой вызов будет разрешен, если какое-либо из этих приложений использовалось в течение 5 минут; под "использовалось" понимается активация, деактивация, сворачивание или завершение работы. <br>
+        Настройка по умолчанию <font color="cyan"><b>5 мин</b></font> означает, что любой звонок будет разрешен, если какое-либо из этих приложений было использовано в течение 5 минут, при этом "используется" означает, что оно либо активировано, деактивировано, свернуто или закрыто. <br>
         <br>
         Применяется только к вызовам, <b>не</b> к текстовым сообщениям. <br>
         <br>

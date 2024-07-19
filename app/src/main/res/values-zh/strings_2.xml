@@ -1,84 +1,85 @@
 <resources>
-    <string name="contact">联系方式</string>
-    <string name="non_contact">非联系方式</string>
-    <string name="inclusive">包括</string>
+    <string name="contact">联系人</string>
+    <string name="non_contact">非联系人</string>
+    <string name="inclusive">包含</string>
     <string name="exclusive">排除</string>
     <string name="help_contact">
         <![CDATA[
-        启用后，将始终允许来自联系人的通话/短信。 <br>
+        启用后，始终允许来自联系人的电话/短信。<br>
         <br>
-          - <font color="#d1c8c8"><b>包括</b></font>：<br>
-              &emsp; 非联系人号码将受其他规则的检查。 <br>
+          - <font color="#d1c8c8"><b>包含</b></font>：<br>
+              &emsp; 其他规则会检查非联系人号码。<br>
               &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>排除</b></font>：<br>
-              &emsp; 非联系人号码将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
+              &emsp; 非联系人号码将被 <font color="#fa7f71"><b>拦截</b></font>。<br>
               &emsp; <font color="#ea86ff"><b>优先级：0</b></font> <br>
         <br>
-        适用于通话和短信。
+        此设置适用于电话和短信。
         ]]>
     </string>
-    <string name="stir">STIR 验证</string>
-    <string name="stir_include_unverified">包括未验证</string>
+    <string name="stir">STIR 认证</string>
+    <string name="stir_include_unverified">包含未验证的</string>
     <string name="unverified">未验证</string>
-    <string name="valid">有效通话</string>
-    <string name="spoof">欺诈通话</string>
+    <string name="valid">有效的通话</string>
+    <string name="spoof">欺诈性通话</string>
     <string name="help_stir">
         <![CDATA[
-            STIR 验证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
+            STIR 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。<br>
             <br>
-            有三种可能的验证结果： <br>
+            认证可能产生三种结果：<br>
             <font color="cyan"><b>有效</b></font> <br>
-            &emsp; 通话极有可能是有效的，而不是欺诈通话。 <br>
+            &emsp; 拨打此电话的可能性非常高，且非欺诈。<br>
             <font color="#ffa500"><b>未验证</b></font> <br>
-            &emsp; 无法验证通话，或者不支持 STIR 验证。 <br>
+            &emsp; 无法验证通话，或不支持 STIR 认证。<br>
             <font color="#fa7f71"><b>欺诈</b></font> <br>
-            &emsp; 极有可能是欺诈电话。 <br>
+            &emsp; 拨打此电话的可能性非常高。 <br>
             <br>
             <br>
-              - <font color="#d1c8c8"><b>包括</b></font>：<br>
-                  &emsp; 未通过此检查的通话仍将受其他规则的检查。 <br>
-                  &emsp; 选中“<b>包括未验证</b>”后，如果通话未验证，也会通过。 <br>
+              - <font color="#d1c8c8"><b>包含</b></font>：<br>
+                  &emsp; 未通过此检查的通话仍将由其他规则检查。<br>
+                  &emsp; 如果选中了“<b>包含未验证的</b>”，则未经验证的通话也将通过。<br>
                   &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>排除</b></font>：<br>
-                  &emsp; 未通过此检查的通话将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
-                  &emsp; 选中“<b>包括未验证</b>”时，如果通话未验证，也将会被阻止。 <br>
+                  &emsp; 未通过此检查的通话将被 <font color="#fa7f71"><b>拦截</b></font>。<br>
+                  &emsp; 如果选中了“<b>包含未验证的</b>”，则未经验证的通话也会被拦截。<br>
                   &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        这些规则应用于来电号码。<br>
+        这些规则适用于呼入电话号码。<br>
         <br>
-        <font color="#ffa500"><b>重要</b></font>：<br>
-        为了简化正则表达式，会删除<br>
+        <font color="#ffa500"><b>重要提示</b></font>：<br>
+        为简化正则表达式，<br>
           <font color="#fa7f71"><b>+</b></font>
-          和<font color="#fa7f71"><b>空格</b></font>
-          以及<font color="#fa7f71"><b>前导零</b></font>再进行检查，例如：<br>
+          和 <font color="#fa7f71"><b>空格</b></font>
+          和 <font color="#fa7f71"><b>前缀零</b></font>
+          在检查前已删除，例如：<br>
         &emsp; 以下所有格式：<br>
-        &emsp;&emsp; 123456789 &emsp;（普通号码）<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;（包含 <font color="#fa7f71"><b>空格</b></font>）<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;（包含前导 <font color="#fa7f71"><b>+</b></font>）<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;（包含国内中继前缀 <font color="#fa7f71"><b>0</b></font>）<br>
+        &emsp;&emsp; 123456789 &emsp;（常规号码）<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;（带 <font color="#fa7f71"><b>空格</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;（带有前缀 <font color="#fa7f71"><b>+</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;（带有国内中继线前缀 <font color="#fa7f71"><b>0</b></font>）<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;（两个 <font color="#fa7f71"><b>0</b></font>）<br>
-        &emsp; 它们 <b>全部</b> 被检查为：<br>
+        &emsp; <b>全部</b>检查为：<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; 因此，正则表达式<font color="cyan"><b>123.*</b></font>将匹配所有这些数字。<br>
-        正则表达式标记“原始号码”可以<b>禁用</b>此号码优化。<br>
+        &emsp; 因此正则表达式 <font color="cyan"><b>123.*</b></font> 匹配所有数字。<br>
+        正则表达式标志“原始号码”可以<b>禁用</b>此数字优化。<br>
         <br>
-        列表以优先级降序、描述升序和模式升序<b>显示</b>。 <br>
+        该列表按优先级降序、描述升序和模式升序<b>显示</b>。<br>
         <br>
-        取消选中复选框以禁用规则，向左滑动以删除规则。<br>
+        取消选中复选框以禁用规则，向左滑动以删除它。<br>
         <br>
         <b>长按</b>“添加”按钮可从 .csv 文件导入号码，支持的列（全部可选）：<br>
          - <no_translate>pattern</no_translate>：正则表达式<br>
-         - <no_translate>description</no_translate><br>
-         - <no_translate>priority</no_translate>：默认为 1<br>
-         - <no_translate>flags</no_translate>：1（应用于通话），2（应用于短信），3（两者），默认为 3<br>
-         - <no_translate>isBlacklist</no_translate>：<no_translate>true</no_translate> 或 <no_translate>false</no_translate>，默认为 <no_translate>true</no_translate><br>
-         - <no_translate>blockType</no_translate>：0~2 对应 3 种阻止类型，默认为 0<br>
-         - <no_translate>importance</no_translate>：0~4 对应 5 种通知类型，默认为 2
+         - <no_translate>description</no_translate>：说明<br>
+         - <no_translate>priority</no_translate>：优先级，默认 1<br>
+         - <no_translate>flags</no_translate>：1（应用于通话）、2（应用于短信）、3（两者），默认 3<br>
+         - <no_translate>isBlacklist</no_translate>：黑名单或白名单。<no_translate>true</no_translate> 或 <no_translate>false</no_translate>，默认 <no_translate>true</no_translate><br>
+         - <no_translate>blockType</no_translate>：拦截类型。0~2 对应 3 种拦截类型，默认 0<br>
+         - <no_translate>importance</no_translate>：通知类型。0~4 对应 5 种通知类型，默认 2
         ]]>
     </string>
 </resources>

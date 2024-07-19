@@ -1,79 +1,81 @@
 <resources>
     <string name="allow_repeated_call">Повторний дзвінок</string>
-    <string name="dialed">Набрані</string>
-    <string name="find_apps">Знайти додатки</string>
-    <string name="spam_sms_blocked">Заблоковано SMS-повідомлення</string>
-    <string name="spam_call_blocked">Заблоковано дзвінок</string>
-    <string name="new_sms_received">Надійшло нове SMS-повідомлення</string>
-    <string name="mark_all_as_read">Відмітити все як прочитане</string>
+    <string name="dialed">Набрано</string>
+    <string name="find_apps">Знайти програми</string>
+    <string name="spam_sms_blocked">SMS-повідомлення заблоковане</string>
+    <string name="spam_call_blocked">Виклик заблокований</string>
+    <string name="new_sms_received">Нове SMS-повідомлення</string>
+    <string name="mark_all_as_read">Позначити все як прочитане</string>
     <string name="delete_all">Видалити все</string>
     <string name="show_passed">Показати пропущені</string>
     <string name="show_blocked">Показати заблоковані</string>
     <string name="clone_rule">Клонувати правило</string>
-    <string name="notification">Повідомлення</string>
+    <string name="notification">Сповіщення</string>
     <string name="type">Тип</string>
     <string name="time">Час</string>
     <string name="times">Рази</string>
     <string name="day">День</string>
     <string name="days">Дні</string>
     <string name="min">Хв</string>
-    <string name="within_minutes">За хвилин</string>
-    <string name="within_days">За днів</string>
+    <string name="within_minutes">За хвилини</string>
+    <string name="within_days">За дні</string>
     <string name="phone_number">Номер телефону</string>
     <string name="phone_number_abbrev">Номер</string>
-    <string name="sms_content">Вміст SMS</string>
-    <string name="sms_content_abbrev">Вміст</string>
+    <string name="sms_content">Контент SMS</string>
+    <string name="sms_content_abbrev">Контент</string>
     <string name="result">Результат</string>
     <string name="reason">Причина</string>
-    <string name="regex_flags">Флаги регулярних виразів</string>
+    <string name="regex_flags">Флаги Regex</string>
     <string name="ignore_case">Ігнорувати регістр</string>
     <string name="dot_match_all">Крапка відповідає всьому</string>
     <string name="raw_number">Необроблений номер</string>
-    <string name="literal">Літерал</string>
-    <string name="off_time">Час виключення</string>
+    <string name="disable_number_optimization">Цю оптимізацію можна вимкнути за допомогою прапора регулярного виразу "Необроблений номер".</string>
+    <string name="literal">Літературний</string>
+    <string name="off_time">Час вимкнення</string>
     <string name="schedule">Розклад</string>
-    <string name="workday">Робочий день</string>
+    <string name="workday">Робочі дні</string>
     <string name="weekend">Вихідні</string>
     <string name="entire_day">Весь день</string>
     <string name="block_type">Тип блокування</string>
-    <string name="for_particular_number">На цей номер</string>
-    <string name="no_match_found">Збігів не знайдено</string>
-    <string name="help_for_particular_number">Якщо увімкнено, правило застосовується лише тоді, коли збігається як номер, так і вміст.</string>
+    <string name="for_particular_number">Для номера</string>
+    <string name="no_match_found">Відповідностей не знайдено</string>
+    <string name="help_for_particular_number">Якщо увімкнуто, правило застосовується лише тоді, коли збігаються номер і вміст.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Відхилити</b></font>: <br>
-        &emsp; Те ж саме, що натиснути кнопку відхилення. Працює абсолютно безшумно, екран блокування не вмикатиметься, це рекомендований тип для тих, хто не використовує голосову пошту.<br>
+        &emsp; Те саме що натиснути кнопку відхилення. Він працює абсолютно без звуку, екран блокування не вмикається, це рекомендований тип для тих, хто не користується голосовою поштою.<br>
         <br>
-        - <font color="#d1c8c8"><b>Вимкнути звук</b></font>: <br>
-        &emsp; Дзвінок звучатиме безшумно у фоновому режимі, створюючи для абонента враження, що ви просто зайняті і не відповіли на нього. <br>
+        - <font color="#d1c8c8"><b>Заглушити</b></font>: <br>
+        &emsp; Він буде дзвонити мовчки у фоновому режимі, створюючи у абонента враження, що ви просто зайняті і не відповідаєте на нього. <br>
         <br>
-        - <font color="#d1c8c8"><b>Відповісти і покласти трубку</b></font>: <br>
-        &emsp; Щоб уникнути перенаправлення на голосову пошту. Екран блокування може ввімкнутися на короткий час, ви також можете почути тон завершення виклику (деякі телефони пропонують опцію вимкнути цей звук).
+        - <font color="#d1c8c8"><b>Відповісти і повісити</b></font>: <br>
+        &emsp; Щоб уникнути переадресації на голосове повідомлення. Екран блокування можна увімкнути на короткий час,
+         ви також можете почути сигнал закінчення виклику (деякі телефони пропонують можливість вимкнути звук).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Дозволятиметься набір номерів. <br>
+        Набрані номери будуть дозволені. <br>
         <br>
-        Також враховується надсилання повідомлень, це працює лише тоді, коли надано дозвіл READ_SMS. <br>
+        Також враховується відправлення повідомлень, це працює лише за умови надання дозволу READ_SMS. <br>
         <br>
-        Параметр за замовчуванням <font color="cyan"><b>3 дні</b></font> означає, що якщо номер робив вихідні дзвінки або надсилав повідомлення протягом останніх 3 днів, дзвінки з цього номера дозволятимуться, навіть якщо цього номера немає в контактах.<br>
+        Визначення за замовчуванням <font color="cyan"><b>3 дні</b></font> означає, що якщо номер телефону телефонував або надсилав повідомлення протягом останніх 3 днів, дзвінки з цього номера будуть дозволені, навіть якщо цього номера немає в контактах.<br>
         <br>
-        Застосовується лише до дзвінків, <b>не</b> до текстових повідомлень. <br>
+        Застосовується лише для дзвінків, <b>не</b> для текстових повідомлень. <br>
         <br>
         <font color="#ea86ff"><b>Пріоритет: 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Будь-який вхідний дзвінок буде пропущено, якщо будь-який додаток зі списку використовувався нещодавно.<br>
+        Будь-який вхідний дзвінок пройде, якщо будь-яка програма зі списку використовувалася нещодавно.<br>
         <br>
         Типовий варіант використання:<br>
-        &emsp; Ви щойно замовили піцу в PizzaApp, незабаром вони вам зателефонують, щоб повернути гроші, тому що вони закриваються. Цей дзвінок пройде, якщо тут увімкнено PizzaApp. <br>
+        &emsp; Ви щойно замовили піцу в PizzaApp, незабаром вам зателефонують, щоб повернути гроші, тому що вони зачиняються. Цей дзвінок пройде, якщо тут буде ввімкнено PizzaApp. <br>
         <br>
-        Налаштування за замовчуванням <font color="cyan"><b>5 хв</b></font> означає, що будь-кому дзвінку буде дозволено пройти, якщо будь-який з цих додатків використовувався протягом 5 хвилин; під "використовувався" мається на увазі активація, деактивація, згортання або завершення роботи програми. <br>
+        Визначення за замовчуванням <font color="cyan"><b>5 хв.</b></font> означає, що будь-який виклик буде дозволено, якщо будь-яка з цих програм використовувалася протягом 5 хвилин, "використання" означає активацію, деактивацію, згортання або закриття. <br>
         <br>
-        Застосовується лише до дзвінків, <b>не</b> до текстових повідомлень. <br>
+        Застосовується лише для дзвінків, <b>не</b> для текстових повідомлень. <br>
         <br>
         <font color="#ea86ff"><b>Пріоритет: 10</b></font>
         ]]>
