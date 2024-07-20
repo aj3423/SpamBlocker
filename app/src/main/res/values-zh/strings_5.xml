@@ -1,80 +1,70 @@
 <resources>
-    <string name="allow_repeated_call">重复呼叫</string>
-    <string name="dialed">已拨</string>
+    <string name="allow_repeated_call">重复拨打</string>
+    <string name="dialed">已拨打</string>
     <string name="find_apps">查找应用</string>
-    <string name="spam_sms_blocked">短信拦截</string>
-    <string name="spam_call_blocked">电话拦截</string>
-    <string name="new_sms_received">收到新短信</string>
-    <string name="mark_all_as_read">全部标记为已读</string>
-    <string name="delete_all">全部删除</string>
-    <string name="show_passed">显示通过</string>
-    <string name="show_blocked">显示拦截</string>
+    <string name="show_passed">显示已通过</string>
+    <string name="show_blocked">显示已阻止</string>
     <string name="clone_rule">复制规则</string>
     <string name="notification">通知</string>
     <string name="type">类型</string>
-    <string name="time">时间</string>
     <string name="times">次数</string>
-    <string name="day">日</string>
+    <string name="day">天</string>
     <string name="days">天</string>
-    <string name="min">分</string>
-    <string name="within_minutes">在分钟之内</string>
-    <string name="within_days">在几天之内</string>
+    <string name="min">分钟</string>
+    <string name="within_minutes">分钟内</string>
+    <string name="within_days">天内</string>
     <string name="phone_number">电话号码</string>
     <string name="phone_number_abbrev">号码</string>
     <string name="sms_content">短信内容</string>
     <string name="sms_content_abbrev">内容</string>
-    <string name="result">结果</string>
-    <string name="reason">拦截原因</string>
     <string name="regex_flags">正则标记</string>
     <string name="ignore_case">忽略大小写</string>
-    <string name="dot_match_all">点号匹配所有</string>
+    <string name="dot_match_all">点匹配全部</string>
     <string name="raw_number">原始号码</string>
-    <string name="disable_number_optimization">可以使用正则标记“原始号码”禁用此优化。</string>
-    <string name="literal">字面</string>
+    <string name="disable_number_optimization">启用正则标记“原始号码”可禁用此优化。</string>
     <string name="off_time">关闭时间</string>
-    <string name="schedule">时间表</string>
+    <string name="schedule">日程</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
-    <string name="entire_day">一整天</string>
-    <string name="block_type">拦截方式</string>
-    <string name="for_particular_number">特定号码</string>
-    <string name="no_match_found">没有找到匹配项</string>
-    <string name="help_for_particular_number">启用后，仅当号码和内容同时匹配时规则才适用。</string>
+    <string name="entire_day">整天</string>
+    <string name="block_type">阻止类型</string>
+    <string name="for_particular_number">针对号码</string>
+    <string name="help_for_particular_number">启用后，仅在号码和内容都匹配时规则才适用。</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>拒接</b></font>: <br>
-        &emsp; 与按下拒绝按钮相同。它完全静默运行，不会唤醒锁屏，对于不使用语音信箱的用户是推荐的类型。<br>
+        - <font color="#d1c8c8"><b>拒绝</b></font>：<br>
+        &emsp; 与按下拒绝按钮相同。它完全静默运行，不会解锁屏幕，是不会使用语音信箱的用户的推荐选择。<br>
         <br>
-        - <font color="#d1c8c8"><b>静音</b></font>: <br>
-        &emsp; 会在后台静音响铃，给打电话的人留下您很忙而没有接听的印象。 <br>
+        - <font color="#d1c8c8"><b>静音</b></font>：<br>
+        &emsp; 它将在后台静音响铃，让呼叫者以为你很忙，没有接听。<br>
         <br>
-        - <font color="#d1c8c8"><b>接听并挂断</b></font>: <br>
-        &emsp; 避免被转到语音信箱。可能会短时间内唤醒锁屏，您也可能会听电话挂断音（部分手机提供静音此声音的选项）。
+        - <font color="#d1c8c8"><b>接听并挂断</b></font>：<br>
+        &emsp; 为避免被转至语音信箱。屏幕可能会短暂解锁，你可能还会听到挂断音（有些手机提供关闭此声音的选项）。
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        已拨号码将被允许。 <br>
+        拨打的号码将被允许。 <br>
         <br>
-        发送短信也计算在内，这仅在授予 READ_SMS 权限时才起作用。 <br>
+        发送消息也将被计算在内，此规则仅在授予 READ_SMS 权限时有效。 <br>
         <br>
-        默认设置 <font color="cyan"><b>3 天</b></font> 表示，如果某个号码在过去 3 天内拨出过电话或发过短信，即使此号码不在联系人中，来自该号码的电话也将被允许。<br>
+        默认设置 <font color="cyan"><b>3 天</b></font> 表示，如果号码在过去 3 天内拨打过外呼电话或发送过消息，则该号码的来电将被允许，即使此号码不在通讯录中。<br>
         <br>
-        仅适用于电话，<b>不</b>适用于短信。 <br>
+        仅适用于呼叫，<b>不</b>适用于短信。 <br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        如果列表中的任何应用最近已被使用，任何来电都将通过。<br>
+        如果列表中的任何应用近期已被使用，任何来电都将通过。<br>
         <br>
-        一个典型的用例：<br>
-        &emsp; 您刚在 PizzaApp 中订购了比萨饼，不久他们给您打电话说要退款，因为他们要关门了。如果在此启用 PizzaApp，该电话将通过。 <br>
+        典型的用例：<br>
+        &emsp; 你刚刚在 PizzaApp 中订了披萨，很快他们回电退款，因为他们要打烊了。如果在该处启用了 PizzaApp，此来电将通过。 <br>
         <br>
-        默认设置 <font color="cyan"><b>5 分钟</b></font> 表示，如果在 5 分钟内使用了其中任何一个应用，则将允许任何来电，而“使用”是指激活、停用、最小化或杀死。<br>
+        默认设置 <font color="cyan"><b>5 分钟</b></font> 表示，只要 5 分钟内使用了这些应用中的任何一个，任何来电都将被允许，“使用”表示激活、停用、最小化或终止。 <br>
         <br>
-        仅适用于电话，<b>不</b>适用于短信。 <br>
+        仅适用于呼叫，<b>不</b>适用于短信。 <br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>

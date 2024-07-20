@@ -1,9 +1,9 @@
 <resources>
-    <string name="follow_system">Suivre le système</string>
+    <string name="follow_system">Système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
-        <item>Claire</item>
-        <item>Foncée</item>
+        <item>Clair</item>
+        <item>Sombre</item>
     </string-array>
     <string-array name="language_list">
         <item><no_translate>de</no_translate></item>

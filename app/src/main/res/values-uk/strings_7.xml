@@ -1,5 +1,5 @@
 <resources>
-    <string name="follow_system">За системними настройками</string>
+    <string name="follow_system">Системний</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
         <item>Світла</item>

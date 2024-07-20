@@ -1,9 +1,9 @@
 <resources>
-    <string name="follow_system">Следовать за системой</string>
+    <string name="follow_system">Следовать системе</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
-        <item>Светлая</item>
-        <item>Тёмная</item>
+        <item>Осветленный</item>
+        <item>Темный</item>
     </string-array>
     <string-array name="language_list">
         <item><no_translate>de</no_translate></item>

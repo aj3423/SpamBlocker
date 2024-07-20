@@ -1,5 +1,5 @@
 <resources>
-    <string name="follow_system">Seguir al sistema</string>
+    <string name="follow_system">Seguir sistema</string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>
