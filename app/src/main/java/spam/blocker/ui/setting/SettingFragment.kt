@@ -259,10 +259,12 @@ class SettingFragment : Fragment() {
 
         updateImagesColor()
         fun popup() {
-            PopupEnableConfigFragment { callEnabled: Boolean, smsEnabled: Boolean ->
-                g.setCallEnabled(callEnabled)
-                g.setSmsEnabled(smsEnabled)
-                updateImagesColor()
+            PopupEnableConfigFragment().apply {
+                handleSave = { callEnabled: Boolean, smsEnabled: Boolean ->
+                    g.setCallEnabled(callEnabled)
+                    g.setSmsEnabled(smsEnabled)
+                    updateImagesColor()
+                }
             }.show(requireActivity().supportFragmentManager, "tag_config_enabled")
         }
         img_call.setOnClickListener { popup() }
@@ -415,9 +417,11 @@ class SettingFragment : Fragment() {
 
         updateButton()
         btn.setOnClickListener {
-            PopupRepeatedConfigFragment { times: Int, inXMin: Int ->
-                spf.setConfig(times, inXMin)
-                updateButton()
+            PopupRepeatedConfigFragment().apply {
+                handleSave = { times: Int, inXMin: Int ->
+                    spf.setConfig(times, inXMin)
+                    updateButton()
+                }
             }.show(requireActivity().supportFragmentManager, "tag_config_repeated")
         }
 
@@ -469,9 +473,11 @@ class SettingFragment : Fragment() {
 
         updateButton()
         btn.setOnClickListener {
-            PopupDialedConfigFragment { inXDays: Int ->
-                spf.setConfig(inXDays)
-                updateButton()
+            PopupDialedConfigFragment().apply {
+                handleSave = { inXDays: Int ->
+                    spf.setConfig(inXDays)
+                    updateButton()
+                }
             }.show(requireActivity().supportFragmentManager, "tag_config_dialed")
         }
 
@@ -533,10 +539,12 @@ class SettingFragment : Fragment() {
         updateButton()
 
         btnInclusive.setOnClickListener {
-            PopupStirConfigFragment { isExclusive: Boolean, includeUnverified: Boolean ->
-                spf.setExclusive(isExclusive)
-                spf.setIncludeUnverified(includeUnverified)
-                updateButton()
+            PopupStirConfigFragment().apply {
+                handleSave = { isExclusive: Boolean, includeUnverified: Boolean ->
+                    spf.setExclusive(isExclusive)
+                    spf.setIncludeUnverified(includeUnverified)
+                    updateButton()
+                }
             }.show(requireActivity().supportFragmentManager, "tag_config_stir")
         }
 
@@ -648,9 +656,11 @@ class SettingFragment : Fragment() {
         }
         updateUI()
         btn_config.setOnClickListener {
-            PopupRecentAppConfigFragment { inXMin: Int ->
-                spf.setConfig(inXMin)
-                updateUI()
+            PopupRecentAppConfigFragment().apply {
+                handleSave = { inXMin: Int ->
+                    spf.setConfig(inXMin)
+                    updateUI()
+                }
             }.show(requireActivity().supportFragmentManager, "tag_config_recent_app")
         }
 
@@ -670,8 +680,9 @@ class SettingFragment : Fragment() {
         fun popupRecentApps() {
             permChain.ask { allGranted ->
                 if (allGranted) {
-                    val dialog = PopupAppListFragment(recentApps)
-                    dialog.show(requireActivity().supportFragmentManager, "tag_select_apps")
+                    PopupAppListFragment().apply {
+                        selected = recentApps
+                    }.show(requireActivity().supportFragmentManager, "tag_select_apps")
                 }
                 updateUI()
             }
@@ -846,8 +857,9 @@ class SettingFragment : Fragment() {
         val onItemClick = { clickedF: PatternRule -> Unit
             val i = filters.indexOf(clickedF)
 
-            val dialog = PopupEditRuleFragment(
-                filters[i], { newRule -> // on save button clicked
+            PopupEditRuleFragment().apply {
+                initFilter = filters[i]
+                handleSave = { newRule -> // on save button clicked
                     // 1. update this filter in memory
                     val existing = filters[i]
                     existing.pattern = newRule.pattern
@@ -862,10 +874,9 @@ class SettingFragment : Fragment() {
 
                     // 3. gui update
                     asyncReloadFromDb(ctx, dbTable, filters)
-                }, forRuleType
-            )
-
-            dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
+                }
+                forType = forRuleType
+            }.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }
         val onItemLongClick = { clickedF: PatternRule ->
             val i = filters.indexOf(clickedF)
@@ -932,17 +943,17 @@ class SettingFragment : Fragment() {
                     flags.set(Def.FLAG_FOR_CONTENT, true)
                 }
             }
-            val dialog = PopupEditRuleFragment(
-                defaultRule, { newF -> // callback
+            PopupEditRuleFragment().apply {
+                initFilter = defaultRule
+                handleSave = { newF -> // callback
                     // 1. add to db
                     dbTable.addNewRule(ctx, newF)
 
                     // 2. refresh gui
                     asyncReloadFromDb(ctx, dbTable, filters)
-                }, forRuleType
-            )
-
-            dialog.show(requireActivity().supportFragmentManager, "tag_edit_filter")
+                }
+                forType = forRuleType
+            }.show(requireActivity().supportFragmentManager, "tag_edit_filter")
         }
         if (onAddLongClick != null) {
             btnAdd.setOnLongClickListener {
@@ -952,7 +963,7 @@ class SettingFragment : Fragment() {
         }
         val btnTest = root.findViewById<MaterialButton>(testBtnId)
         btnTest.setOnClickListener {
-            PopupTestFragment(forRuleType)
+            PopupTestFragment().apply { forType = forRuleType }
                 .show(requireActivity().supportFragmentManager, "tag_test")
         }
 

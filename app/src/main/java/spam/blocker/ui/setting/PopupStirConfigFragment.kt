@@ -12,7 +12,8 @@ import spam.blocker.R
 import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.SharedPref.Stir
 
-class PopupStirConfigFragment(val handleSave : (Boolean, Boolean) -> Unit) : ClosableDialogFragment() {
+class PopupStirConfigFragment : ClosableDialogFragment() {
+    lateinit var handleSave : (Boolean, Boolean) -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

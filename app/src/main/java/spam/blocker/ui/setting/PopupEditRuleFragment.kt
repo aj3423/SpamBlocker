@@ -34,11 +34,12 @@ import spam.blocker.util.Schedule
 import spam.blocker.util.Util
 
 
-class PopupEditRuleFragment(
-    private val initFilter: PatternRule,
-    private val handleSave: (PatternRule) -> Unit,
-    private val forType: Int
-) : DialogFragment() {
+class PopupEditRuleFragment : DialogFragment() {
+    // must be set at creation
+    lateinit var initFilter: PatternRule
+    lateinit var handleSave: (PatternRule) -> Unit
+    var forType: Int = Def.ForNumber
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

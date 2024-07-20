@@ -14,7 +14,9 @@ import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.Util
 
-class PopupDialedConfigFragment(val handleSave : (Int) -> Unit) : ClosableDialogFragment() {
+class PopupDialedConfigFragment : ClosableDialogFragment() {
+    // must be set at creation
+    lateinit var handleSave : (Int) -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

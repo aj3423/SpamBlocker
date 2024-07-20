@@ -14,7 +14,8 @@ import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util
 
-class PopupRecentAppConfigFragment(val handleSave : (Int) -> Unit) : ClosableDialogFragment() {
+class PopupRecentAppConfigFragment : ClosableDialogFragment() {
+    lateinit var handleSave : (Int) -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

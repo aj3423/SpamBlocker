@@ -14,7 +14,8 @@ import spam.blocker.util.ClosableDialogFragment
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.Util
 
-class PopupRepeatedConfigFragment(val handleSave : (Int, Int) -> Unit) : ClosableDialogFragment() {
+class PopupRepeatedConfigFragment : ClosableDialogFragment() {
+    lateinit var handleSave : (Int, Int) -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

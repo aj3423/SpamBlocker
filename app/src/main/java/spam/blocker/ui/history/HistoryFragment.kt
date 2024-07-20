@@ -197,7 +197,7 @@ open class HistoryFragment<bindingT : ViewBinding>(
     }
 }
 
-class CallFragment() : HistoryFragment<CallFragmentBinding>(
+class CallFragment : HistoryFragment<CallFragmentBinding>(
     CallFragmentBinding::inflate,
     CallTable()
 ) {
@@ -211,7 +211,7 @@ class CallFragment() : HistoryFragment<CallFragmentBinding>(
     }
 }
 
-class SmsFragment() : HistoryFragment<SmsFragmentBinding>(
+class SmsFragment : HistoryFragment<SmsFragmentBinding>(
     SmsFragmentBinding::inflate,
     SmsTable()
 ) {

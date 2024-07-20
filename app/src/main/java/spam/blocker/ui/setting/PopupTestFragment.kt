@@ -22,7 +22,9 @@ import spam.blocker.ui.util.UI.Companion.showIf
 import spam.blocker.util.AppInfo
 import spam.blocker.util.ClosableDialogFragment
 
-class PopupTestFragment(val forType: Int) : ClosableDialogFragment() {
+class PopupTestFragment : ClosableDialogFragment() {
+    var forType: Int = Def.ForNumber
+
     companion object {
         // save the phone/sms content that user inputted
         var currentPhone = ""

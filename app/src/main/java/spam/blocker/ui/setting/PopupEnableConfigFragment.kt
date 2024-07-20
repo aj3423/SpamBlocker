@@ -16,7 +16,8 @@ import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 
-class PopupEnableConfigFragment(val handleSave : (Boolean, Boolean) -> Unit) : ClosableDialogFragment() {
+class PopupEnableConfigFragment : ClosableDialogFragment() {
+    lateinit var handleSave : (Boolean, Boolean) -> Unit
 
     override fun onCreateView(
         inflater: LayoutInflater,

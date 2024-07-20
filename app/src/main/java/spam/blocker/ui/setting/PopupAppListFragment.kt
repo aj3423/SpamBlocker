@@ -30,9 +30,10 @@ import spam.blocker.util.AppInfo
 import spam.blocker.util.Util.Companion.clearAppsCache
 import spam.blocker.util.Util.Companion.listApps
 
-class PopupAppListFragment(
-    private var selected: ObservableArrayList<String>
-) : DialogFragment() {
+class PopupAppListFragment : DialogFragment() {
+
+    // must be set on class creation
+    lateinit var selected: ObservableArrayList<String>
 
     private var filtered = ObservableArrayList<AppInfo>()
 
