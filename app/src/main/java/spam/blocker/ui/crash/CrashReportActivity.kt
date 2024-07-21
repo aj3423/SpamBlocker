@@ -1,6 +1,7 @@
 package spam.blocker.ui.crash
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +35,11 @@ class CrashReportActivity : AppCompatActivity() {
         val stackTrace = intent.getStringExtra("stackTrace")
 
         val edit = binding.root.findViewById<TextInputEditText>(R.id.edit_crash_reason)
-        edit.setText("version: ${BuildConfig.VERSION_NAME}\n$stackTrace")
+        edit.setText(
+            "android version: ${Build.VERSION.SDK_INT}\n"+
+            "app version: ${BuildConfig.VERSION_NAME}\n"+
+            "$stackTrace"
+        )
 
         val btn = binding.root.findViewById<MaterialButton>(R.id.btn_crash_report)
         btn.setOnClickListener {
