@@ -95,19 +95,19 @@ class UI {
             imageView.setImageBitmap(circularBitmap)
         }
 
-        fun preventMenuClosingWhenItemClicked(ctx: Context, item: MenuItem) {
-            item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
-            item.actionView = View(ctx)
-            item.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-                override fun onMenuItemActionExpand(item: MenuItem): Boolean {
-                    return false
-                }
-
-                override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
-                    return false
-                }
-            })
-        }
+//        fun preventMenuClosingWhenItemClicked(ctx: Context, item: MenuItem) {
+//            item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
+//            item.actionView = View(ctx)
+//            item.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+//                override fun onMenuItemActionExpand(item: MenuItem): Boolean {
+//                    return false
+//                }
+//
+//                override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
+//                    return false
+//                }
+//            })
+//        }
 
         // setup the hint from the imgView.tooltipText
         fun createBalloon(

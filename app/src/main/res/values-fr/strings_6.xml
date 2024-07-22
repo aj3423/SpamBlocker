@@ -1,7 +1,7 @@
 <resources>
     <string name="crash_title">
         Désolé, l\'application s\'est arrêtée.\n\n
-        Veuillez copier le contenu ci-dessous et signaler ce problème sur GitHub, supprimez toutes les informations sensibles avant de faire le signalement.
+        Veuillez copier le contenu ci-dessous et signaler ce problème sur github, supprimer toute information sensible avant de signaler.
     </string>
     <string-array name="week">
         <item>Dim</item>
@@ -15,36 +15,46 @@
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Muet</item>
+        <item>Silencieux</item>
         <item>Répondre+raccrocher</item>
+    </string-array>
+
+    <string-array name="history_display_filter">
+        <item>Afficher validés</item>
+        <item>Afficher bloqués</item>
+    </string-array>
+
+    <string-array name="history_record_context_menu">
+        <item>Copier le numéro</item>
+        <item>Ajouter à une nouvelle règle</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Aucune</item>
-        <item>Volet</item>
-        <item>Barre d\'état, Volet</item>
-        <item>Son, Barre d\'état, Volet</item>
-        <item>Son, Barre d\'état, Volet, Défilement</item>
+        <item>Ombre</item>
+        <item>Barre d\'état, Ombre</item>
+        <item>Son, Barre d\'état, Ombre</item>
+        <item>Son, Barre d\'état, Ombre, Alertes</item>
     </string-array>
     <string-array name="export_as_list">
-        <item>Exporter au format Json</item>
-        <item>Exporter au format compressé</item>
+        <item>Exporter en Json</item>
+        <item>Exporter compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par l\'IA de Google, ouvrez une discussion sur GitHub pour ajouter la prise en charge d\'une nouvelle langue.
+            Les traductions sont effectuées par l\'IA de Google, signalez un problème sur github pour ajouter la prise en charge d\'une nouvelle langue.
         ]]>
     </string>
-    <string name="enabled_for_call">Activer pour les appels</string>
-    <string name="enabled_for_sms">Activer pour les SMS</string>
-    <string name="repeated_call">Appel répété</string>
+    <string name="enabled_for_call">Activer pour appel</string>
+    <string name="enabled_for_sms">Activer pour SMS</string>
+    <string name="repeated_call">Appels répétés</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un certain laps de temps, il est probablement important plutôt qu\'un spam téléphonique. <br>
+        Autoriser si l\'appel est répété dans un intervalle de temps, il est probable qu\'il soit important plutôt qu\'un appel indésirable. <br>
         <br>
-        La réception d\'un SMS provenant du même numéro est également comptée, cela dépend de l\'autorisation READ_SMS, qui est facultative.<br>
+        La réception de SMS du même numéro est également comptabilisée, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
         <br>
         Le paramètre par défaut <font color="cyan"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
@@ -56,33 +66,33 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Interrupteur global, cette application ne fonctionne que lorsque celui-ci est activé, désactivez-le lorsque vous attendez un appel/message particulier. <br>
+        Commutateur global, cette application ne fonctionne que lorsque celui-ci est activé, désactivez-la lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Il peut également être activé/désactivé à partir des <b>Paramètres rapides déroulants</b>.<br>
+        Il peut également être activé/désactivé depuis les <b>paramètres rapides déroulants</b>.<br>
         <br>
         Pour les SMS, cette application prendra en charge les notifications SMS, veuillez
         <font color="#fa7f71"><b>désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système,
-        sinon il y aura des notifications doubles.
-        Il filtre uniquement les notifications SMS, les SMS indésirables seront toujours présents dans l\'application SMS par défaut.
+        sinon il y aura des doubles notifications.
+        Il ne filtre que les notifications SMS, les SMS indésirables seront toujours présents dans l\'application SMS par défaut.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de build (UTC)</string>
+    <string name="build_time">Heure de construction (UTC)</string>
     <string name="source_code">Code source</string>
-    <string name="dismiss">Rejeter</string>
+    <string name="dismiss">Ignorer</string>
     <string name="warning_running_in_work_profile">
-        Cette application peut ne pas fonctionner correctement dans le profil professionnel, veuillez l\'installer dans le profil principal à la place.
+        Cette application peut ne pas fonctionner correctement dans un profil de travail, veuillez plutôt l\'installer dans le profil principal.
     </string>
     <string-array name="import_csv_type">
-        <item>Importer .csv comme une règle unique</item>
-        <item>Importer .csv comme plusieurs règles</item>
+        <item>Importer .csv en tant que règle unique</item>
+        <item>Importer .csv en tant que règles multiples</item>
     </string-array>
     <string name="warning_double_sms">
         Cette application prendra en charge toutes les notifications SMS,
         mais l\'autorisation de notification de l\'application SMS par défaut est également activée,
-        veuillez la désactiver dans les paramètres système pour éviter les notifications SMS doubles.
+        veuillez la désactiver dans les paramètres système pour éviter les doubles notifications SMS.
     </string>
     <string name="open_settings">Ouvrir les paramètres</string>
     <string name="ignore">Ignorer</string>

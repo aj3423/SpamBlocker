@@ -2,8 +2,6 @@
     <string name="allow_repeated_call">Appel répété</string>
     <string name="dialed">Numérotation</string>
     <string name="find_apps">Recherche Applis</string>
-    <string name="show_passed">Montrer autorisé</string>
-    <string name="show_blocked">Montrer bloqué</string>
     <string name="clone_rule">Cloner règle</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>

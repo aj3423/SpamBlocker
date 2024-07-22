@@ -2,8 +2,6 @@
     <string name="allow_repeated_call">Mehrfache Anrufe</string>
     <string name="dialed">gewählt</string>
     <string name="find_apps">Apps suchen</string>
-    <string name="show_passed">Zugelasse anzeigen</string>
-    <string name="show_blocked">Blockierte anzeigen</string>
     <string name="clone_rule">Regel klonen</string>
     <string name="notification">Benachrichtigung</string>
     <string name="type">Typ</string>

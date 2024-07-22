@@ -2,8 +2,6 @@
     <string name="allow_repeated_call">重复拨打</string>
     <string name="dialed">已拨打</string>
     <string name="find_apps">查找应用</string>
-    <string name="show_passed">显示已通过</string>
-    <string name="show_blocked">显示已阻止</string>
     <string name="clone_rule">复制规则</string>
     <string name="notification">通知</string>
     <string name="type">类型</string>

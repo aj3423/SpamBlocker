@@ -1,22 +1,32 @@
 <resources>
     <string name="crash_title">
-        抱歉，该应用程序已崩溃。\n\n
-        请复制以下内容并在 github 上报告此问题，并在举报之前删除任何敏感信息。
+        抱歉，程序崩溃了。\n\n
+        请复制以下内容并发布 Github 上报告此问题，报告之前请删除所有敏感信息。
     </string>
     <string-array name="week">
-        <item>周日</item>
-        <item>周一</item>
-        <item>周二</item>
-        <item>周三</item>
-        <item>周四</item>
-        <item>周五</item>
-        <item>周六</item>
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
     </string-array>
 
     <string-array name="block_type_list">
         <item>拒绝</item>
         <item>静音</item>
-        <item>接听+挂断</item>
+        <item>应答+挂断</item>
+    </string-array>
+
+    <string-array name="history_display_filter">
+        <item>显示已通过</item>
+        <item>显示已屏蔽</item>
+    </string-array>
+
+    <string-array name="history_record_context_menu">
+        <item>复制号码</item>
+        <item>添加至新规则</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -24,31 +34,31 @@
         <item>阴影</item>
         <item>状态栏、阴影</item>
         <item>声音、状态栏、阴影</item>
-        <item>声音、状态栏、阴影、Heads-up</item>
+        <item>声音、状态栏、阴影、高优先级</item>
     </string-array>
     <string-array name="export_as_list">
-        <item>导出为 Json</item>
+        <item>导出为 JSON</item>
         <item>导出为压缩文件</item>
     </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译由 Google AI 完成，在 github 上提交问题以添加新的语言支持。
+            翻译由 Google AI 完成，在 Github 上发布 issue 以添加对新语言的支持。
         ]]>
     </string>
-    <string name="enabled_for_call">启用来电</string>
-    <string name="enabled_for_sms">启用短信</string>
+    <string name="enabled_for_call">启用来电拦截</string>
+    <string name="enabled_for_sms">启用短信拦截</string>
     <string name="repeated_call">重复来电</string>
     <string name="help_repeated_call">
         <![CDATA[
-        在一段时间内重复来电，可能会是重要电话，而不是垃圾电话。<br>
+        如果在一定时间内重复来电，可能是重要来电而非垃圾来电。 <br>
         <br>
-        从同一个号码接收短信也算在内，这取决于是否授予 READ_SMS 权限，该权限是可选的。<br>
+        从同一号码接收文本消息也会被计算在内，这取决于是否授予了 READ_SMS 权限（可选）。<br>
         <br>
-        默认设置 <font color="cyan"><b>1 / 5 分钟</b></font> 表示 5 分钟内的第二次呼叫将被允许。 <br>
+        默认设置 <font color="cyan"><b>1 / 5 分</b></font> 表示在 5 分钟内重复的第二通电话将获准。 <br>
         <br>
-        仅适用于来电，<b>不适用于</b>短信。 <br>
+        仅适用于来电，<b>不</b>适用于文本消息。 <br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
@@ -56,31 +66,32 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，此应用程序只有在打开时才有效，当你等待某些特定来电/短信时将其关闭。<br>
+        全局开关，本应用仅在此开关开启时才有效，当您正在等待特定来电/短信时将其关闭。 <br>
         <br>
-        也可以从<b>下拉快速设置</b>切换。<br>
+        还可以从<b>下拉快捷设置</b>切换开关。<br>
         <br>
-        对于短信，此应用程序将接管 SMS 通知，请在系统设置中<font color="#fa7f71"><b>关闭默认 SMS 应用程序的通知权限</b></font>，否则会有双重通知。
-        它仅过滤 SMS 通知，垃圾短信仍会出现在默认短信应用程序中。
+        对于短信，本应用会接管短信通知，请在系统设置中
+        <font color="#fa7f71"><b>关闭默认短信应用的通知权限</b></font>，否则会出现重复通知。
+        它只会过滤短信通知，垃圾短信仍会出现在默认短信应用中。
         ]]>
     </string>
 
     <string name="about">关于</string>
     <string name="version">版本</string>
-    <string name="build_time">构建时间 (UTC)</string>
+    <string name="build_time">编译时间（UTC）</string>
     <string name="source_code">源代码</string>
-    <string name="dismiss">解除</string>
+    <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
-        此应用程序在工作概况中可能无法正常工作，请将其安装在主概况中。
+        此应用在工作档案中可能无法正常工作，请改在其主档案中安装此应用。
     </string>
     <string-array name="import_csv_type">
-        <item>将 .csv 导入为单一规则</item>
-        <item>将 .csv 导入为多个规则</item>
+        <item>将 .csv 导入为单条规则</item>
+        <item>将 .csv 导入为多条规则</item>
     </string-array>
     <string name="warning_double_sms">
-        此应用程序将接管所有 SMS 通知，
-        但默认 SMS 应用程序的通知权限也已启用，
-        请在系统设置中将其禁用以防止出现双重 SMS 通知。
+        本应用将接管所有短信通知，
+        但默认短信应用的通知权限也启用，
+        请在系统设置中禁用该通知权限，以避免出现重复短信通知。
     </string>
     <string name="open_settings">打开设置</string>
     <string name="ignore">忽略</string>

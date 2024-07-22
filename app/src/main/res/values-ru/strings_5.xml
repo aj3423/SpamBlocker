@@ -2,8 +2,6 @@
     <string name="allow_repeated_call">Повторный звонок</string>
     <string name="dialed">Набран</string>
     <string name="find_apps">Найти приложения</string>
-    <string name="show_passed">Показать прошедшие</string>
-    <string name="show_blocked">Показать заблокированные</string>
     <string name="clone_rule">Клонировать правило</string>
     <string name="notification">Уведомление</string>
     <string name="type">Тип</string>

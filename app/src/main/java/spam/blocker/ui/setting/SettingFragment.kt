@@ -18,7 +18,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.SwitchCompat
@@ -53,6 +52,7 @@ import spam.blocker.def.Def
 import spam.blocker.ui.util.Algorithm.b64Decode
 import spam.blocker.ui.util.Algorithm.compressString
 import spam.blocker.ui.util.Algorithm.decompressToString
+import spam.blocker.ui.util.Button
 import spam.blocker.ui.util.FileInChooser
 import spam.blocker.ui.util.FileOutChooser
 import spam.blocker.ui.util.TimeRangePicker
@@ -159,7 +159,9 @@ class SettingFragment : Fragment() {
         val addBtn = root.findViewById<MaterialButton>(R.id.btn_add_number_filter)
 
         val items = resources.getStringArray(R.array.import_csv_type).toList()
-        dynamicPopupMenu(ctx, items, addBtn) { clickedIdx ->
+        dynamicPopupMenu(ctx, addBtn, items.map {
+            Button(it)
+        }, { clickedIdx ->
             importBlacklistsChooser.load { raw: ByteArray? ->
                 if (raw == null)
                     return@load
@@ -205,7 +207,7 @@ class SettingFragment : Fragment() {
                     }
                 }
             }
-        }
+        })
     }
 
     private fun setupGlobalEnabled(root: View) {
@@ -284,11 +286,13 @@ class SettingFragment : Fragment() {
         val themes = listOf(followSystem) + resources.getStringArray(R.array.theme_list).toList()
         btn.text = themes[type]
         btn.setOnClickListener {
-            dynamicPopupMenu(ctx, themes, btn) { clickedIdx ->
+            dynamicPopupMenu(ctx, btn, themes.map {
+                Button(it)
+            }, { clickedIdx ->
                 spf.setThemeType(clickedIdx)
                 btn.text = themes[clickedIdx]
                 applyTheme(clickedIdx)
-            }
+            })
         }
     }
 
@@ -301,8 +305,10 @@ class SettingFragment : Fragment() {
         val exportFileChooser = FileOutChooser(this) // must be initialized during fragment creation
         spin_export.setOnClickListener {
             val menu = ctx.resources.getStringArray(R.array.export_as_list).toList()
-            dynamicPopupMenu(ctx, menu, spin_export) { i ->
-                val compress = i == 1
+            dynamicPopupMenu(ctx, spin_export, menu.map {
+                Button(it)
+            }, { clickedIndex ->
+                val compress = clickedIndex == 1
 
                 // prepare file name
                 val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
@@ -319,7 +325,7 @@ class SettingFragment : Fragment() {
                 }
 
                 exportFileChooser.create(fn, content)
-            }
+            })
         }
 
         // import
@@ -738,7 +744,9 @@ class SettingFragment : Fragment() {
         )
 
         btn.setOnClickListener {
-            dynamicPopupMenu(ctx, types, btn) { clickedIdx ->
+            dynamicPopupMenu(ctx, btn, types.map {
+                Button(it)
+            }, { clickedIdx ->
                 when(clickedIdx) {
                     Def.BLOCK_TYPE_ANSWER_AND_HANG -> {
                         permChain.ask { allGranted ->
@@ -753,7 +761,7 @@ class SettingFragment : Fragment() {
                         updateButton()
                     }
                 }
-            }
+            })
         }
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_block_type), R.string.help_block_type
@@ -773,7 +781,9 @@ class SettingFragment : Fragment() {
         btn.text = lang.ifEmpty { followSystem }
 
         btn.setOnClickListener {
-            dynamicPopupMenu(ctx, languages, btn) { clickedIdx ->
+            dynamicPopupMenu(ctx, btn, languages.map {
+                Button(it)
+            }, { clickedIdx ->
                 var newLang = languages[clickedIdx]
                 if (newLang != lang) {
                     if (clickedIdx == 0)
@@ -781,7 +791,7 @@ class SettingFragment : Fragment() {
                     spf.setLanguage(newLang)
                     Launcher.selfRestart(ctx)
                 }
-            }
+            })
         }
 
         setupImageTooltip(
@@ -881,11 +891,13 @@ class SettingFragment : Fragment() {
         val onItemLongClick = { clickedF: PatternRule ->
             val i = filters.indexOf(clickedF)
             val viewHolder = recycler.findViewHolderForAdapterPosition(i);
-            val popup = PopupMenu(ctx, viewHolder?.itemView)
-            popup.menuInflater.inflate(R.menu.rule_context_menu, popup.menu)
-            popup.setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.rule_clone -> {
+
+            val items = listOf(ctx.getString(R.string.clone_rule))
+            dynamicPopupMenu(ctx, viewHolder?.itemView, items.map {
+                Button(it)
+            }, onItemClick = { clickedIndex ->
+                when (clickedIndex) {
+                    0 -> {
                         // 1. add to db
                         dbTable.addNewRule(ctx, clickedF)
 
@@ -893,9 +905,7 @@ class SettingFragment : Fragment() {
                         asyncReloadFromDb(ctx, dbTable, filters)
                     }
                 }
-                false
-            }
-            popup.show()
+            })
         }
 
         val adapter = RuleAdapter(ctx, onItemClick, onItemLongClick, filters, forRuleType)
@@ -945,9 +955,9 @@ class SettingFragment : Fragment() {
             }
             PopupEditRuleFragment().apply {
                 initFilter = defaultRule
-                handleSave = { newF -> // callback
+                handleSave = { newRule -> // callback
                     // 1. add to db
-                    dbTable.addNewRule(ctx, newF)
+                    dbTable.addNewRule(ctx, newRule)
 
                     // 2. refresh gui
                     asyncReloadFromDb(ctx, dbTable, filters)

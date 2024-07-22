@@ -11,24 +11,31 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import il.co.theblitz.observablecollections.lists.ObservableArrayList
 import spam.blocker.R
 import spam.blocker.db.Db
 import spam.blocker.db.Record
 import spam.blocker.db.HistoryTable
+import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.PatternRule
 import spam.blocker.def.Def
 import spam.blocker.service.Checker
+import spam.blocker.ui.setting.PopupEditRuleFragment
+import spam.blocker.ui.util.Button
 import spam.blocker.ui.util.UI.Companion.setRoundImage
 import spam.blocker.ui.util.UI.Companion.showIf
+import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.AppInfo
+import spam.blocker.util.Clipboard
 import spam.blocker.util.Contacts
 import spam.blocker.util.Launcher
 import spam.blocker.util.Util
 
 
 class HistoryAdapter(
-    private val ctx: Context,
+    private val fragment: Fragment,
     private var table: HistoryTable,
     private var records: ObservableArrayList<Record>
 ) :
@@ -45,6 +52,7 @@ class HistoryAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: Holder, position: Int) {
+        val ctx = fragment.requireContext()
         val green = ctx.resources.getColor(R.color.text_green, null)
         val red = ctx.resources.getColor(R.color.salmon, null)
 
@@ -90,10 +98,40 @@ class HistoryAdapter(
                 }
                 Db.TABLE_SMS -> {
                     Launcher.openSMSConversation(ctx, clickedRecord.peer)
-
                 }
             }
         }
+
+        // context menu
+        holder.itemView.setOnLongClickListener {
+            val items = ctx.resources.getStringArray(R.array.history_record_context_menu).asList()
+            dynamicPopupMenu(ctx, holder.itemView, items.map {
+                Button(it)
+            }, { clickedIndex ->
+                when (clickedIndex) {
+                    0 -> { // copy as raw number
+                        Clipboard.copy(ctx, record.peer)
+                    }
+                    1 -> { // add to new rule
+                        val defaultRule = PatternRule().apply {
+                            pattern = Util.clearNumber(record.peer)
+                        }
+
+                        PopupEditRuleFragment().apply {
+                            initFilter = defaultRule
+                            handleSave = { newRule -> // callback
+                                // 1. add to db
+                                NumberRuleTable().addNewRule(ctx, newRule)
+                            }
+                            forType = Def.ForNumber
+                        }.show(fragment.requireActivity().supportFragmentManager, "tag_edit_filter") // use a different tag here
+                    }
+                }
+            })
+
+            true
+        }
+
         // time
         if (Util.isToday(record.time)) {
             holder.labelTime.text = Util.hourMin(record.time)

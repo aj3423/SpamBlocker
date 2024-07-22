@@ -2,8 +2,6 @@
     <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
     <string name="find_apps">Find Apps</string>
-    <string name="show_passed">Show Passed</string>
-    <string name="show_blocked">Show Blocked</string>
     <string name="clone_rule">Clone Rule</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>

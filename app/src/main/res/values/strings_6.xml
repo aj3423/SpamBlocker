@@ -20,6 +20,16 @@
         <item>Answer+Hang Up</item>
     </string-array>
 
+    <string-array name="history_display_filter">
+        <item>Show Passed</item>
+        <item>Show Blocked</item>
+    </string-array>
+
+    <string-array name="history_record_context_menu">
+        <item>Copy Number</item>
+        <item>Add to New Rule</item>
+    </string-array>
+
     <string-array name="importance_list">
         <item>None</item>
         <item>Shade</item>

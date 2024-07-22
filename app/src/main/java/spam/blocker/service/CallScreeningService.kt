@@ -147,7 +147,7 @@ class CallScreeningService : CallScreeningService() {
                 toCopy = toCopy)
         }
 
-        // broadcast new call to update UI(add new item to call log)
+        // broadcast new call to update UI(add new MenuItem to call log)
         run {
             val intent = Intent(Def.ON_NEW_CALL)
             intent.putExtra("type", "call")

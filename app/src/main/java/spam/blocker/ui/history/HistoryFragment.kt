@@ -9,7 +9,6 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -32,7 +31,8 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
-import spam.blocker.ui.util.UI.Companion.preventMenuClosingWhenItemClicked
+import spam.blocker.ui.util.Check
+import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.SharedPref.Global
 
 open class HistoryFragment<bindingT : ViewBinding>(
@@ -67,7 +67,7 @@ open class HistoryFragment<bindingT : ViewBinding>(
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         recycler.setLayoutManager(layoutManager)
 
-        adapter = HistoryAdapter(requireContext(), table, viewModel.records)
+        adapter = HistoryAdapter(this, table, viewModel.records)
         recycler.setAdapter(adapter)
 
 
@@ -115,35 +115,17 @@ open class HistoryFragment<bindingT : ViewBinding>(
 
         val fab_display_filter = root.findViewById<FloatingActionButton>(R.id.fab_display_filter)
         fab_display_filter.setOnClickListener {
-            val popup = PopupMenu(ctx, fab_display_filter)
-            popup.menuInflater.inflate(R.menu.display_filter_menu, popup.menu)
-            
-            val chk_show_passed = popup.menu.findItem(R.id.chk_show_passed)
-            val chk_show_blocked = popup.menu.findItem(R.id.chk_show_blocked)
-            chk_show_passed.isChecked = spf.getShowPassed()
-            chk_show_blocked.isChecked = spf.getShowBlocked()
-
-            popup.setOnMenuItemClickListener {
-
-                it.setChecked(!it.isChecked)
-
-                preventMenuClosingWhenItemClicked(ctx, it)
-
-                when (it.itemId) {
-                    R.id.chk_show_passed -> {
-                        spf.setShowPassed(it.isChecked)
-                        asyncReloadFromDb()
-                    }
-
-                    R.id.chk_show_blocked -> {
-                        spf.setShowBlocked(it.isChecked)
-                        asyncReloadFromDb()
-                    }
+            val items = ctx.resources.getStringArray(R.array.history_display_filter).asList()
+            dynamicPopupMenu(ctx, fab_display_filter, items.mapIndexed { index, label ->
+                Check(label, if(index == 0)
+                    spf.getShowPassed() else spf.getShowBlocked())
+            }, onItemCheck = { clickedIndex, isChecked ->
+                when (clickedIndex) {
+                    0 -> spf.setShowPassed(isChecked)
+                    1 -> spf.setShowBlocked(isChecked)
                 }
-                false
-            }
-
-            popup.show()
+                asyncReloadFromDb()
+            })
         }
 
         val fab_clear = root.findViewById<FloatingActionButton>(R.id.fab_clear)

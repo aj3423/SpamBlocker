@@ -266,7 +266,7 @@
                 android:layout_height="wrap_content"
                 app:highlight_color="@color/teal_200"
                 app:weekenddarker="true"
-                app:sunday_first_day="true" />
+                app:sunday_first_day="false" />
         </LinearLayout>
         <!-- schedule end -->
 

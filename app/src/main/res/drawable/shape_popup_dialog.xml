@@ -6,5 +6,5 @@
 
     <solid android:color="@color/dialog_bg" />
 
-    <corners android:radius="1dip" />
+    <corners android:radius="3dip" />
 </shape>

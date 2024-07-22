@@ -12,7 +12,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import com.dpro.widgets.WeekdaysPicker
 import com.google.android.material.button.MaterialButton
@@ -21,6 +20,7 @@ import com.google.android.material.textfield.TextInputLayout
 import spam.blocker.R
 import spam.blocker.db.PatternRule
 import spam.blocker.def.Def
+import spam.blocker.ui.util.Button
 import spam.blocker.ui.util.MaterialInputRegexFlagsUtil
 import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
@@ -201,19 +201,21 @@ class PopupEditRuleFragment : DialogFragment() {
             )
         )
         btn_block_type.setOnClickListener {
-            dynamicPopupMenu(ctx, blockTypeLabels, btn_block_type) { clickedIdx ->
-                if (clickedIdx == Def.BLOCK_TYPE_ANSWER_AND_HANG) {
+            dynamicPopupMenu(ctx, btn_block_type, blockTypeLabels.map {
+                Button(it)
+            }, { clickedIndex: Int ->
+                if (clickedIndex < 2) {
+                    selectedBlockType = clickedIndex
+                    updateBlockTypeButton()
+                } else {
                     permChain.ask { allGranted ->
                         if (allGranted) {
-                            selectedBlockType = clickedIdx
+                            selectedBlockType = clickedIndex
                         }
                         updateBlockTypeButton()
                     }
-                } else {
-                    selectedBlockType = clickedIdx
-                    updateBlockTypeButton()
                 }
-            }
+            })
         }
 
 
@@ -227,10 +229,12 @@ class PopupEditRuleFragment : DialogFragment() {
         }
         updateButtonImportance()
         btn_importance.setOnClickListener {
-            dynamicPopupMenu(ctx, importanceList, btn_importance) { clickedIdx ->
+            dynamicPopupMenu(ctx, btn_importance, importanceList.map {
+                Button(it)
+            }, { clickedIdx ->
                 selectedImportance = clickedIdx
                 updateButtonImportance()
-            }
+            })
         }
 
         // Schedule
