@@ -1,0 +1,10 @@
+improvement:
+ - add context menu for history record
+   - Add to new rule
+   - Copy number
+ - language
+   - add "follow system"(by default)
+   - add icons
+ - show double-sms warning when notification is enabled for the default sms app
+fix:
+ - low probability crash: "Exception: unable to find fragment constructor"
