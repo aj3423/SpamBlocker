@@ -5,13 +5,4 @@
         <item>Claro</item>
         <item>Oscuro</item>
     </string-array>
-    <string-array name="language_list">
-        <item><no_translate>de</no_translate></item>
-        <item><no_translate>en</no_translate></item>
-        <item><no_translate>es</no_translate></item>
-        <item><no_translate>fr</no_translate></item>
-        <item><no_translate>ru</no_translate></item>
-        <item><no_translate>uk</no_translate></item>
-        <item><no_translate>zh</no_translate></item>
-    </string-array>
 </resources>

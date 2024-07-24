@@ -2,16 +2,7 @@
     <string name="follow_system">跟随系统</string>
     <string name="theme">主题</string>
     <string-array name="theme_list">
-        <item>亮</item>
-        <item>暗</item>
-    </string-array>
-    <string-array name="language_list">
-        <item><no_translate>de</no_translate></item>
-        <item><no_translate>en</no_translate></item>
-        <item><no_translate>es</no_translate></item>
-        <item><no_translate>fr</no_translate></item>
-        <item><no_translate>ru</no_translate></item>
-        <item><no_translate>uk</no_translate></item>
-        <item><no_translate>zh</no_translate></item>
+        <item>亮色</item>
+        <item>深色</item>
     </string-array>
 </resources>

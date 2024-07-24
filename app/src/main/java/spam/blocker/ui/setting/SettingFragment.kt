@@ -49,6 +49,7 @@ import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
+import spam.blocker.def.Languages
 import spam.blocker.ui.util.Algorithm.b64Decode
 import spam.blocker.ui.util.Algorithm.compressString
 import spam.blocker.ui.util.Algorithm.decompressToString
@@ -774,20 +775,25 @@ class SettingFragment : Fragment() {
         val btn = root.findViewById<MaterialButton>(R.id.btn_language)
 
         val followSystem = ctx.getString(R.string.follow_system)
-        val languages = listOf(followSystem) + ctx.resources.getStringArray(R.array.language_list).toList()
 
         // language is "" when FollowSystem
-        val lang = spf.getLanguage()
-        btn.text = lang.ifEmpty { followSystem }
+        val currLangCode = spf.getLanguage()
+        btn.text = if (currLangCode.isEmpty())
+            followSystem else "${Languages.map[currLangCode] ?: ""} $currLangCode"
+
+        // [de, en, ...]
+        val langCodes = Languages.map.keys.toMutableList()
+        // [🇩🇪 de, 🇬🇧 en, ...]
+        val labels = langCodes.map { "${Languages.map[it]} $it" }.toMutableList()
+        langCodes.add(0, "")
+        labels.add(0, followSystem)
 
         btn.setOnClickListener {
-            dynamicPopupMenu(ctx, btn, languages.map {
+            dynamicPopupMenu(ctx, btn, labels.map {
                 Button(it)
             }, { clickedIdx ->
-                var newLang = languages[clickedIdx]
-                if (newLang != lang) {
-                    if (clickedIdx == 0)
-                        newLang = "" // follow system
+                val newLang = langCodes[clickedIdx]
+                if (newLang != currLangCode) {
                     spf.setLanguage(newLang)
                     Launcher.selfRestart(ctx)
                 }

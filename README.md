@@ -31,7 +31,7 @@ Table of Contents
 # How it works
 It works without replacing your default Call/SMS app.
  - For call: <br>
- &ensp; Work as the Caller ID app 
+ &ensp; It's the Caller ID app 
  - For SMS: <br>
  &ensp; It takes over the SMS notification, it only filters the notifications, the spam messages will still be present in the SMS app.
    > 💡 Please turn off the notification permission of the default SMS app in system settings, otherwise there will be double SMS notifications.
