@@ -1,52 +1,52 @@
 <resources>
     <string name="allow_repeated_call">Llamada repetida</string>
     <string name="dialed">Marcado</string>
-    <string name="find_apps">Encontrar aplicaciones</string>
-    <string name="clone_rule">Clonar regla</string>
+    <string name="find_apps">Buscar apps</string>
+    <string name="clone_rule">Duplicar regla</string>
     <string name="notification">Notificación</string>
     <string name="type">Tipo</string>
     <string name="times">Veces</string>
     <string name="day">Día</string>
     <string name="days">Días</string>
     <string name="min">Min</string>
-    <string name="within_minutes">Dentro de minutos</string>
-    <string name="within_days">Dentro de días</string>
+    <string name="within_minutes">En minutos</string>
+    <string name="within_days">En días</string>
     <string name="phone_number">Número de teléfono</string>
     <string name="phone_number_abbrev">Número</string>
     <string name="sms_content">Contenido de SMS</string>
     <string name="sms_content_abbrev">Contenido</string>
     <string name="regex_flags">Marcas Regex</string>
-    <string name="ignore_case">Ignorar mayúsculas y minúsculas</string>
+    <string name="ignore_case">Ignorar mayús./minús.</string>
     <string name="dot_match_all">Punto coincide con todo</string>
     <string name="raw_number">Número sin formato</string>
-    <string name="disable_number_optimization">Esta optimización se puede deshabilitar con la marca Regex `Número sin formato`.</string>
-    <string name="off_time">Fuera de horario</string>
+    <string name="disable_number_optimization">Esta optimización se puede deshabilitar con la marca `Número sin formato`.</string>
+    <string name="off_time">Horario fuera</string>
     <string name="schedule">Horario</string>
     <string name="workday">Día laborable</string>
     <string name="weekend">Fin de semana</string>
     <string name="entire_day">Todo el día</string>
     <string name="block_type">Tipo de bloqueo</string>
-    <string name="for_particular_number">Para número determinado</string>
-    <string name="help_for_particular_number">Cuando está habilitado, la regla solo se aplica cuando coinciden el número y el contenido.</string>
+    <string name="for_particular_number">Para el número</string>
+    <string name="help_for_particular_number">Cuando se activa, la regla solo se aplica cuando coinciden el número y el contenido.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Rechazar</b></font>: <br>
-        &emsp; Igual que pulsar el botón de colgar. Funciona completamente en silencio, la pantalla de bloqueo no se encenderá, es el tipo recomendado para quienes no usan voicemail.<br>
+        &emsp; Igual que pulsar el botón de rechazar. Funciona completamente en silencio, la pantalla de bloqueo no se activará, es el tipo recomendado para quienes no usan el buzón de voz.<br>
         <br>
         - <font color="#d1c8c8"><b>Silenciar</b></font>: <br>
-        &emsp; Sonará silenciosamente en segundo plano, dando la impresión a la persona que llama de que estás ocupado y no lo has respondido. <br>
+        &emsp; Sonará en silencio en segundo plano, dando la impresión a quien llama de que estás ocupado y no has respondido.<br>
         <br>
-        - <font color="#d1c8c8"><b>Responder y colgar</b></font>: <br>
-        &emsp; Para evitar que se envíe al voicemail. La pantalla de bloqueo se puede encender durante un rato, también podrías oír un tono de llamada finalizada (algunos teléfonos ofrecen una opción para silenciar este sonido).
+        - <font color="#d1c8c8"><b>Contestar y colgar</b></font>: <br>
+        &emsp; Para evitar que se envíe al buzón de voz. La pantalla de bloqueo puede activarse durante un breve periodo, también puedes oír un tono de finalización de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
         Se permitirán los números marcados. <br>
         <br>
-        Enviar mensaje también cuenta, esto solo funciona cuando se concede el permiso LEER_SMS. <br>
+        Enviar mensajes también cuenta, esto solo funciona cuando se concede el permiso READ_SMS. <br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>3 días</b></font> significa que si se ha llamado o enviado mensajes desde un número en los últimos 3 días, se permitirán las llamadas desde ese número, aunque no esté en los contactos.<br>
+        El ajuste predeterminado <font color="cyan"><b>3 días</b></font> significa que si has marcado o enviado mensajes al número en los últimos 3 días, se permitirá las llamadas de ese número.<br>
         <br>
         Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
@@ -55,12 +55,12 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Cualquier llamada entrante pasará si se ha utilizado recientemente alguna aplicación de la lista.<br>
+        Cualquier llamada entrante pasará si se ha usado alguna app de la lista recientemente.<br>
         <br>
-        Un caso de uso habitual:<br>
-        &emsp; Acabas de pedir una pizza en PizzaApp, pronto te llaman para devolverte el dinero porque van a cerrar. Esa llamada pasaría si PizzaApp está habilitada aquí. <br>
+        Un caso de uso típico:<br>
+        &emsp; Acabas de pedir una pizza en PizzaApp, pronto te llaman para devolver el dinero porque están cerrando. Esa llamada pasará si PizzaApp está activada aquí. <br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>5 min</b></font> significa que se permitirá cualquier llamada si se ha utilizado alguna de estas aplicaciones en los últimos 5 minutos; por `utilizado` se entiende activado, desactivado, minimizado o cerrado. <br>
+        El ajuste predeterminado <font color="cyan"><b>5 minutos</b></font> significa que se permitirá cualquier llamada si se ha usado alguna de estas apps en 5 minutos, por `usado` se entiende activado, desactivado, minimizado o cerrado. <br>
         <br>
         Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>

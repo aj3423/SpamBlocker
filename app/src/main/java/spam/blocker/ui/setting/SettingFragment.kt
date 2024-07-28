@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -163,7 +164,7 @@ class SettingFragment : Fragment() {
         dynamicPopupMenu(ctx, addBtn, items.map {
             Button(it)
         }, { clickedIdx ->
-            importBlacklistsChooser.load { raw: ByteArray? ->
+            importBlacklistsChooser.load { fn: String?, raw: ByteArray? ->
                 if (raw == null)
                     return@load
 
@@ -179,15 +180,9 @@ class SettingFragment : Fragment() {
                             it.isNotEmpty()
                         }.joinToString ( separator = "|" )
 
-                        val wrapped = "($joined)"
-
                         val rule = PatternRule().apply {
-                            pattern = wrapped
-
-                            val formatter = DateTimeFormatter.ofPattern("yy_MM_dd")
-                            val ymd = LocalDate.now().format(formatter)
-
-                            description = "$ymd (${rules.size}) ${ctx.getString(R.string.imported)}"
+                            pattern = "($joined)"
+                            description = fn ?: ""
                         }
                         // 1. add to db
                         val table = NumberRuleTable()
@@ -332,8 +327,7 @@ class SettingFragment : Fragment() {
         // import
         val importChooser = FileInChooser(this) // must be initialized during fragment creation
         btn_import.setOnClickListener {
-            importChooser.load{ raw: ByteArray? ->
-
+            importChooser.load{ _: String?, raw: ByteArray? ->
                 if (raw == null)
                     return@load
 
@@ -785,7 +779,9 @@ class SettingFragment : Fragment() {
         val langCodes = Languages.map.keys.toMutableList()
         // [🇩🇪 de, 🇬🇧 en, ...]
         val labels = langCodes.map { "${Languages.map[it]} $it" }.toMutableList()
+        // ["", de, en, ...]
         langCodes.add(0, "")
+        // ["Follow System", 🇩🇪 de, 🇬🇧 en, ...]
         labels.add(0, followSystem)
 
         btn.setOnClickListener {

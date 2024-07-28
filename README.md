@@ -44,7 +44,7 @@ It works without replacing your default Call/SMS app.
 | Contacts | Whether from a contact                     |
 | STIR     | STIR attestation                                |
 | Repeated | Whether the number has been calling repeatedly  |
-| Dialed   | Whether the number has been made outgoing calls |
+| Dialed   | Whether the number has been dialed |
 | Recent Apps | If some specific apps have been used recently, all calls are allowed.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund.|
 | Off Time  | A time period that always permits calls, usually no spams at night. |
 | Regex Pattern | Some typical patterns:<br> - Any number: `.*` (the regex `.*` is equivalent to the wildcard `*` in many other apps) <br> - Exact number: `12345` <br> - Starts with 400: `400.*` <br> - Ends with 123: `.*123` <br> - Shorter than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Unknown number (it's empty string): `.{0}` or `^$`<br>  - Contains "verification": `.*verification.*` <br> - Contains any of the words: `.*(police\|hospital\|verification).*` <br> - Starts with 400, with leading country code 11 or not: `(?:11)?400.*` <br>- Extract verification code from SMS message: `code.*?(\d+)`<br><br> Ask AI to generate or explain a regex: <br>&emsp; "Show me regex for checking if a string starts with 400 or 200"<br> &emsp; Results in `(400\|200).*` |

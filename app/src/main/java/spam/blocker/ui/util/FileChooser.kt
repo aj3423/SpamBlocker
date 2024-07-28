@@ -2,11 +2,16 @@ package spam.blocker.ui.util
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import spam.blocker.def.Def
+import spam.blocker.util.Util.Companion.basename
+import spam.blocker.util.Util.Companion.getFilename
 import spam.blocker.util.Util.Companion.readDataFromUri
 import spam.blocker.util.Util.Companion.writeDataToUri
+
 
 // Show file choose dialog, and write data to the selected file
 class FileOutChooser(
@@ -56,22 +61,25 @@ class FileInChooser(
     private val fragment: Fragment,
     private val mimeType: String = "*/*"
 ) {
-    private var onResult: (ByteArray?) -> Unit = {}
+    private lateinit var onResult: (String?, ByteArray?) -> Unit
 
     private var launcher: ActivityResultLauncher<Intent> =
         fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.data?.also { uri ->
+                    val filename = getFilename(fragment.requireContext(), uri)
                     val data = readDataFromUri(fragment.requireContext(), uri)
-                    onResult(data)
+                    Log.e(Def.TAG, "filename: $filename")
+
+                    onResult(basename(filename!!), data)
                 }
             } else {
-                onResult(null)
+                onResult(null, null)
             }
         }
 
     fun load(
-        onResult: (ByteArray?) -> Unit = {},
+        onResult: (String?, ByteArray?) -> Unit,
     ) {
         this.onResult = onResult
 

@@ -10,6 +10,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
 import android.os.UserManager
+import android.provider.OpenableColumns
 import android.provider.Settings
 import android.provider.Telephony
 import android.util.DisplayMetrics
@@ -360,6 +361,27 @@ class Util {
                 }
             } catch (_: IOException) {
                 null
+            }
+        }
+        fun getFilename(ctx: Context, uri: Uri): String? {
+            val cursor = ctx.contentResolver.query(uri, null, null, null, null)
+            var filename: String? = null
+
+            cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME)?.let { nameIndex ->
+                cursor.moveToFirst()
+
+                filename = cursor.getString(nameIndex)
+                cursor.close()
+            }
+
+            return filename
+        }
+        fun basename(fn: String) : String {
+            val lastDotIndex = fn.lastIndexOf('.')
+            return if (lastDotIndex > 0) {
+                fn.substring(0, lastDotIndex)
+            } else {
+                fn
             }
         }
 
