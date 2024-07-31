@@ -468,8 +468,8 @@ class Checker { // for namespace only
             val res = ctx.resources
 
             return when (result) {
-                Def.RESULT_ALLOWED_BY_CONTACT ->  res.getString(R.string.contact)
-                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  res.getString(R.string.non_contact)
+                Def.RESULT_ALLOWED_BY_CONTACT ->  res.getString(R.string.contacts)
+                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  res.getString(R.string.non_contacts)
                 Def.RESULT_ALLOWED_BY_STIR, Def.RESULT_BLOCKED_BY_STIR -> {
                     when (reason.toInt()) {
                         Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir)} ${res.getString(R.string.unverified)}"

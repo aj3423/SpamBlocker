@@ -1,85 +1,90 @@
 <resources>
-    <string name="contact">Contacto</string>
-    <string name="non_contact">No contacto</string>
+    <string name="contacts">Contacto</string>
+    <string name="non_contacts">No contacto</string>
     <string name="inclusive">Inclusivo</string>
     <string name="exclusive">Exclusivo</string>
-    <string name="help_contact">
+    <string name="help_contacts">
         <![CDATA[
-        Cuando está habilitado, las llamadas/mensajes de contactos siempre están permitidas. <br>
+        Al habilitar, las llamadas/textos de contactos siempre están permitidos. <br>
         <br>
           - <font color="#d1c8c8"><b>Inclusivo</b></font>: <br>
-              Los números que no sean de contacto serán verificados por otras reglas. <br>
-              <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
+              &emsp; Los números que no sean de contacto serán comprobados por otras normas. <br>
+              &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-              Los números que no sean de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
-              <font color="#ea86ff"><b>Prioridad: 0</b></font> <br>
+              &emsp; Los números que no sean de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font> <br>
         <br>
-        Se aplica tanto a llamadas como a mensajes SMS.
+        Aplica a llamadas y mensajes SMS.
         ]]>
     </string>
-    <string name="stir">Atestación STIR</string>
+    <string name="stir">Atestado STIR</string>
     <string name="stir_include_unverified">Incluir no verificados</string>
     <string name="unverified">No verificado</string>
     <string name="valid">Llamada válida</string>
-    <string name="spoof">Llamada fraudulenta</string>
+    <string name="spoof">Llamada falsa</string>
     <string name="help_stir">
         <![CDATA[
-            La atestación STIR requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
+            El atestado STIR requiere <b>Android 11+</b> y <b>compatibilidad con el proveedor</b>. <br>
             <br>
-            Hay tres posibles resultados de atestación: <br>
+            Hay tres posibles resultados de atestado: <br>
             <font color="cyan"><b>Válido</b></font> <br>
-            La llamada es muy probable que sea válida, no fraudulenta. <br>
+            &emsp; La llamada tiene una alta probabilidad de ser válida, no es falsa. <br>
             <font color="#ffa500"><b>No verificado</b></font> <br>
-            No se puede validar la llamada o no se admite la atestación STIR. <br>
-            <font color="#fa7f71"><b>Fraude</b></font> <br>
-            Es muy probable que sea una llamada fraudulenta. <br>
+            &emsp; La llamada no puede ser validada, o el atestado STIR no está disponible. <br>
+            <font color="#fa7f71"><b>Falsa</b></font> <br>
+            &emsp; Es muy posible que sea una llamada falsa. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inclusivo</b></font>: <br>
-                  Las llamadas que no pasen esta verificación se seguirán verificando por otras reglas. <br>
-                  Cuando se marca "<b>Incluir no verificado</b>", una llamada también pasaría si no se verifica. <br>
-                  <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
+                  &emsp; Las llamadas que no pasen esta verificación serán comprobadas por otras normas. <br>
+                  &emsp; Al seleccionar "<b>Incluir no verificados</b>", una llamada también se aprobaría si no estuviera verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  Las llamadas que no pasen esta verificación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
-                  Cuando se marca "<b>Incluir no verificado</b>", una llamada también se bloquearía si no se verifica. <br>
-                  <font color="#ea86ff"><b>Prioridad: 0</b></font>
+                  &emsp; Las llamadas que no pasen esta verificación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
+                  &emsp; Al seleccionar "<b>Incluir no verificados</b>", una llamada también será bloqueada si no está verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        Estas reglas se aplican al número de teléfono entrante.<br>
+        Estas normas aplican al número de teléfono entrante.<br>
         <br>
         <font color="#ffa500"><b>Importante</b></font>:<br>
         Para simplificar la expresión regular,
           <font color="#fa7f71"><b>+</b></font>
           y <font color="#fa7f71"><b>espacios</b></font>
           y <font color="#fa7f71"><b>ceros a la izquierda</b></font>
-          se eliminan antes de verificar, por ejemplo:<br>
+          se eliminan antes de la verificación, por ejemplo:<br>
         &emsp; Todos estos formatos:<br>
         &emsp;&emsp; 123456789 &emsp;(número regular)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espacios</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> a la izquierda)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo de tronco nacional <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Se verifican <b>todos</b> como:<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Todos se comprueban como:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Entonces, la expresión regular <font color="cyan"><b>123.*</b></font> coincidirá con todos ellos.<br>
-        Esta optimización de números se puede <b>deshabilitar</b> mediante el indicador de expresión regular "Número sin procesar".<br>
+        &emsp; Así que la expresión regular <font color="cyan"><b>123.*</b></font> coincidiría con todos ellos.<br>
+        Esta optimización numérica puede <b>desactivarse</b> mediante el indicador de expresión regular `Número sin procesar`.<br>
         <br>
         La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente. <br>
         <br>
-        Desmarque las casillas de verificación para deshabilitar la regla, deslice hacia la izquierda para eliminarla.<br>
+        Desmarque las casillas para desactivar la norma y deslícela hacia la izquierda para eliminarla.<br>
         <br>
-        <b>Mantenga presionado</b> el botón "Agregar" para importar números del archivo .csv, columnas admitidas (todas opcionales):<br>
-         - <no_translate>pattern</no_translate>: La expresión regular<br>
+        <b>Pulse prolongadamente</b> el botón `Agregar` para importar números de un archivo .csv, columnas compatibles:<br>
+         - <no_translate>pattern</no_translate>: La expresión regular (<b>obligatoria</b>)<br>
          - <no_translate>description</no_translate>: Descripción<br>
-         - <no_translate>priority</no_translate>: Prioridad, valor predeterminado 1<br>
-         - <no_translate>flags</no_translate>: 1(Aplicar a la llamada), 2(Aplicar a SMS), 3(ambos), valor predeterminado 3<br>
-         - <no_translate>isBlacklist</no_translate>: Lista negra o lista blanca. <no_translate>true</no_translate> o <no_translate>false</no_translate>, valor predeterminado <no_translate>true</no_translate><br>
-         - <no_translate>blockType</no_translate>: Tipo de bloqueo. 0~2 correspondiente a los 3 tipos de bloqueo, valor predeterminado 0<br>
-         - <no_translate>importance</no_translate>: Tipo de notificación. 0~4 correspondiente a los 5 tipos de notificación, valor predeterminado 2
+         - <no_translate>priority</no_translate>: Prioridad, 1 por defecto<br>
+         - <no_translate>flags</no_translate>: 1 (aplicar a llamadas), 2 (aplicar a SMS), 3 (ambos), 3 por defecto<br>
+         - <no_translate>isBlacklist</no_translate>: Lista negra o lista blanca. <no_translate>true</no_translate> o <no_translate>false</no_translate>, <no_translate>true</no_translate> por defecto<br>
+         - <no_translate>blockType</no_translate>: Tipo de bloqueo. 0~2 correspondiente a los 3 tipos de bloqueo, 0 por defecto<br>
+         - <no_translate>importance</no_translate>: Tipo de notificación. 0~4 correspondiente a los 5 tipos de notificación, 2 por defecto
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        Falta el campo <b>patrón</b> obligatorio en el archivo .csv. Consulte la información sobre herramientas del globo para obtener una explicación detallada.
         ]]>
     </string>
 </resources>

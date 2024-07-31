@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -168,7 +167,20 @@ class SettingFragment : Fragment() {
                 if (raw == null)
                     return@load
 
-                val rules = Csv.parseToMaps(raw).map {
+                val (headers, rowMaps) = Csv.parseToMaps(raw)
+                // show error if there is no column `pattern`, because it will generate empty rows.
+                if (!headers.contains("pattern")) {
+                    AlertDialog.Builder(ctx).apply {
+                        setTitle(" ")
+                        setIcon(R.drawable.ic_fail_red)
+                        setMessage(Html.fromHtml(ctx.getString(R.string.failed_to_import_from_csv), 0))
+                    }.create().show()
+
+                    return@load
+                }
+
+
+                val rules = rowMaps.map {
                     PatternRule.fromMap(it)
                 }
 
@@ -620,7 +632,7 @@ class SettingFragment : Fragment() {
         }
         setupImageTooltip(
             ctx, viewLifecycleOwner, root.findViewById(R.id.setting_help_enable_contacts),
-            R.string.help_contact
+            R.string.help_contacts
         )
     }
 

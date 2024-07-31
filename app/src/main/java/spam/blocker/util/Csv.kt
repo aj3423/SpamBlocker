@@ -18,17 +18,24 @@ class Csv {
             }
         }
 
-        fun parseToMaps(csvBytes: ByteArray): List<Map<String, String>> {
+        // return pair:
+        //   headers: ["pattern", "flag", ...]
+        //   rows: [
+        //     {"pattern": "...", "flag": 3, ...}
+        //     {"pattern": "...", "flag": 3, ...}
+        //   ]
+        fun parseToMaps(csvBytes: ByteArray): Pair<List<String>, List<Map<String, String>>> {
             val csvString = String(removeBom(csvBytes))
             val lines = csvString.lines()
 
             // The first line must be header
             val headers = lines.first().split(",").map { it.trim() }
-
-            return lines
+            val rows = lines
                 .drop(1)
                 .map { it.split(",").map { it.trim() } }
                 .map { headers.zip(it).toMap() }
+
+            return Pair(headers, rows)
         }
     }
 }

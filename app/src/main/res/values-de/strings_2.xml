@@ -1,49 +1,49 @@
 <resources>
-    <string name="contact">Kontakt</string>
-    <string name="non_contact">Kein Kontakt</string>
+    <string name="contacts">Kontakt</string>
+    <string name="non_contacts">Kein Kontakt</string>
     <string name="inclusive">Inklusiv</string>
     <string name="exclusive">Exklusiv</string>
-    <string name="help_contact">
+    <string name="help_contacts">
         <![CDATA[
-        Wenn aktiviert, sind Anrufe/SMS von Kontakten immer erlaubt. <br>
+        Wenn aktiviert, werden Anrufe/Nachrichten von Kontakten immer zugelassen. <br>
         <br>
           - <font color="#d1c8c8"><b>Inklusiv</b></font>: <br>
-              &emsp; Nicht-Kontaktnummern werden mit anderen Regeln überprüft. <br>
+              &emsp; Nummern ohne Kontakte werden von anderen Regeln überprüft. <br>
               &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
-              &emsp; Nicht-Kontaktnummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+              &emsp; Nummern ohne Kontakte werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
         <br>
         Es gilt sowohl für Anrufe als auch für SMS-Nachrichten.
         ]]>
     </string>
-    <string name="stir">STIR-Bescheinigung</string>
-    <string name="stir_include_unverified">Nicht überprüft einschließen</string>
-    <string name="unverified">Nicht überprüft</string>
+    <string name="stir">STIR-Bestätigung</string>
+    <string name="stir_include_unverified">Nicht Verifizierte einbeziehen</string>
+    <string name="unverified">Nicht Verifiziert</string>
     <string name="valid">Gültiger Anruf</string>
     <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR-Bescheinigung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Mobilfunkanbieter</b>. <br>
+            Für die STIR-Bestätigung sind <b>Android 11+</b> und <b>Anbieterunterstützung</b> erforderlich. <br>
             <br>
-            Es gibt drei mögliche Bescheinigungsergebnisse: <br>
+            Es gibt drei mögliche Bestätigungsergebnisse: <br>
             <font color="cyan"><b>Gültig</b></font> <br>
-            &emsp; Der Anruf ist sehr wahrscheinlich gültig, kein Spoof. <br>
-            <font color="#ffa500"><b>Nicht überprüft</b></font> <br>
-            &emsp; Der Anruf kann nicht validiert werden oder die STIR-Bescheinigung wird nicht unterstützt. <br>
+            &emsp; Der Anruf ist höchstwahrscheinlich gültig, kein Spoof. <br>
+            <font color="#ffa500"><b>Nicht Verifiziert</b></font> <br>
+            &emsp; Der Anruf kann nicht validiert werden, oder die STIR-Bestätigung wird nicht unterstützt. <br>
             <font color="#fa7f71"><b>Spoof</b></font> <br>
-            &emsp; Es ist sehr wahrscheinlich ein Spoof-Anruf. <br>
+            &emsp; Es handelt sich höchstwahrscheinlich um einen Spoof-Anruf. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inklusiv</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden dennoch mit anderen Regeln überprüft. <br>
-                  &emsp; Wenn "<b>Nicht überprüft einschließen</b>" aktiviert ist, würde ein Anruf auch bestehen, wenn er nicht überprüft wurde. <br>
+                  &emsp; Anrufe, die diesen Check nicht bestehen, werden trotzdem von anderen Regeln überprüft. <br>
+                  &emsp; Wenn "<b>Nicht Verifizierte einbeziehen</b>" aktiviert ist, wird ein Anruf auch dann zugelassen, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-                  &emsp; Wenn "<b>Nicht überprüft einschließen</b>" aktiviert ist, würde ein Anruf auch blockiert, wenn er nicht überprüft wurde. <br>
+                  &emsp; Anrufe, die diesen Check nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+                  &emsp; Wenn "<b>Nicht Verifizierte einbeziehen</b>" aktiviert ist, wird ein Anruf auch dann blockiert, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
@@ -51,35 +51,40 @@
         <![CDATA[
         Diese Regeln gelten für die eingehende Telefonnummer.<br>
         <br>
-        <font color="#ffa500"><b>Wichtiger Hinweis</b></font>:<br>
-        Um die regulären Ausdrücke zu vereinfachen,
+        <font color="#ffa500"><b>Wichtig</b></font>:<br>
+        Um den regulären Ausdruck zu vereinfachen,
           <font color="#fa7f71"><b>+</b></font>
           und <font color="#fa7f71"><b>Leerzeichen</b></font>
           und <font color="#fa7f71"><b>führende Nullen</b></font>
           werden vor der Prüfung entfernt, z. B.:<br>
         &emsp; Alle diese Formate:<br>
-        &emsp;&emsp; 123456789 &emsp;(normale Nummer)<br>
+        &emsp;&emsp; 123456789 &emsp;(reguläre Nummer)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Leerzeichen</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(mit führendem <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit heimischem Vorwahlpräfix <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit inländischem Vorwahlpräfix <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(zwei <font color="#fa7f71"><b>0</b></font>s)<br>
         &emsp; Sie werden <b>alle</b> geprüft als:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Daher würde der reguläre Ausdruck <font color="cyan"><b>123.*</b></font> alle abgleichen.<br>
-        Diese Nummernoptimierung kann durch das Regex-Flag "Unbearbeitete Nummer" <b>deaktiviert</b> werden.<br>
+        &emsp; Daher würde der reguläre Ausdruck <font color="cyan"><b>123.*</b></font> mit allen übereinstimmen.<br>
+        Diese Nummernoptimierung kann durch das Regex-Flag "Rohzahl" <b>deaktiviert</b> werden.<br>
         <br>
-        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
+        Die Liste wird <b>in absteigender Reihenfolge</b> der Priorität, aufsteigender Beschreibung und aufsteigendem Muster <b>angezeigt</b>. <br>
         <br>
         Deaktivieren Sie die Kontrollkästchen, um die Regel zu deaktivieren, und wischen Sie nach links, um sie zu löschen.<br>
         <br>
-        <b>Langes Drücken</b> der Schaltfläche "Hinzufügen", um Nummern aus einer CSV-Datei zu importieren. Unterstützte Spalten (alle optional):<br>
-         - <no_translate>pattern</no_translate>: Der reguläre Ausdruck<br>
+        <b>Langes Drücken</b> auf die Schaltfläche "Hinzufügen", um Nummern aus einer CSV-Datei zu importieren. Unterstützte Spalten:<br>
+         - <no_translate>pattern</no_translate>: Der reguläre Ausdruck (<b>erforderlich</b>)<br>
          - <no_translate>description</no_translate>: Beschreibung<br>
          - <no_translate>priority</no_translate>: Priorität, Standard 1<br>
-         - <no_translate>flags</no_translate>: 1 (für Anrufe anwenden), 2 (für SMS anwenden), 3 (beides), Standard 3<br>
+         - <no_translate>flags</no_translate>: 1(Für Anrufe anwenden), 2(Für SMS anwenden), 3(beide), Standard 3<br>
          - <no_translate>isBlacklist</no_translate>: Blacklist oder Whitelist. <no_translate>true</no_translate> oder <no_translate>false</no_translate>, Standard <no_translate>true</no_translate><br>
-         - <no_translate>blockType</no_translate>: Blocktyp. 0~2 entspricht den 3 Blocktypen, Standard 0<br>
-         - <no_translate>importance</no_translate>: Benachrichtigungstyp. 0~4 entspricht den 5 Benachrichtigungstypen, Standard 2
+         - <no_translate>blockType</no_translate>: Blocktyp. 0~2 entsprechend den 3 Blocktypen, Standard 0<br>
+         - <no_translate>importance</no_translate>: Benachrichtigungstyp. 0~4 entsprechend den 5 Benachrichtigungstypen, Standard 2
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        Fehlendes Pflichtfeld <b>Muster</b> in der CSV-Datei. Überprüfen Sie den QuickInfo für eine detaillierte Erklärung.
         ]]>
     </string>
 </resources>

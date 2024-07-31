@@ -1,9 +1,9 @@
 <resources>
-    <string name="contact">Contact</string>
-    <string name="non_contact">Non Contact</string>
+    <string name="contacts">Contact</string>
+    <string name="non_contacts">Non Contact</string>
     <string name="inclusive">Inclusive</string>
     <string name="exclusive">Exclusive</string>
-    <string name="help_contact">
+    <string name="help_contacts">
         <![CDATA[
         When enabled, calls/texts from contacts are always permitted. <br>
         <br>
@@ -72,14 +72,19 @@
         <br>
         Uncheck the checkboxes to disable the rule, swipe left to delete it.<br>
         <br>
-        <b>Long press</b> the `Add` button to import numbers from .csv file, columns supported(all optional):<br>
-         - <no_translate>pattern</no_translate>: The regex<br>
+        <b>Long press</b> the `Add` button to import numbers from .csv file, columns supported:<br>
+         - <no_translate>pattern</no_translate>: The regex(<b>required</b>)<br>
          - <no_translate>description</no_translate>: Description<br>
          - <no_translate>priority</no_translate>: Priority, default 1<br>
          - <no_translate>flags</no_translate>: 1(Apply to Call), 2(Apply to SMS), 3(both), default 3<br>
          - <no_translate>isBlacklist</no_translate>: Blacklist or whitelist. <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
          - <no_translate>blockType</no_translate>: Block type. 0~2 corresponding to the 3 block types, default 0<br>
          - <no_translate>importance</no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        Missing required field <b>pattern</b> in the .csv file, check the balloon tooltip for a detailed explanation.
         ]]>
     </string>
 </resources>
