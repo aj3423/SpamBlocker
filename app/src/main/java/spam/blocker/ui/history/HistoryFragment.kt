@@ -1,6 +1,7 @@
 package spam.blocker.ui.history
 
 import android.annotation.SuppressLint
+import android.graphics.Canvas
 import android.util.Log
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -32,6 +33,7 @@ import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.util.Check
+import spam.blocker.ui.util.SwipeCallback
 import spam.blocker.ui.util.dynamicPopupMenu
 import spam.blocker.util.SharedPref.Global
 
@@ -84,15 +86,7 @@ open class HistoryFragment<bindingT : ViewBinding>(
         }
 
 
-        val swipeLeftCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-            override fun onMove(
-                rv: RecyclerView,
-                h: RecyclerView.ViewHolder,
-                t: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
+        val swipeLeftCallback = object : SwipeCallback(ctx) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 // 1. delete from memory
                 val i = viewHolder.absoluteAdapterPosition

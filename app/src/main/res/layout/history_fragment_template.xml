@@ -26,7 +26,7 @@
         app:fabSize="mini"
         app:useCompatPadding="true"
         tools:ignore="ContentDescription"
-        tools:tint="@color/white" />
+        app:tint="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_clear"
@@ -39,7 +39,8 @@
         app:fabSize="mini"
         app:useCompatPadding="true"
         tools:ignore="ContentDescription"
-        tools:tint="@color/white" />
+        app:tint="#fff"
+        />
 </RelativeLayout>
 
 

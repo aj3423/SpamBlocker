@@ -56,6 +56,7 @@ import spam.blocker.ui.util.Algorithm.decompressToString
 import spam.blocker.ui.util.Button
 import spam.blocker.ui.util.FileInChooser
 import spam.blocker.ui.util.FileOutChooser
+import spam.blocker.ui.util.SwipeCallback
 import spam.blocker.ui.util.TimeRangePicker
 import spam.blocker.ui.util.UI.Companion.applyTheme
 import spam.blocker.ui.util.UI.Companion.setupImageTooltip
@@ -986,15 +987,7 @@ class SettingFragment : Fragment() {
                 .show(requireActivity().supportFragmentManager, "tag_test")
         }
 
-        val swipeLeftCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-            override fun onMove(
-                rv: RecyclerView,
-                h: RecyclerView.ViewHolder,
-                t: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
+        val swipeLeftCallback = object : SwipeCallback(ctx) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val i = viewHolder.absoluteAdapterPosition
                 val fToDel = filters[i]
