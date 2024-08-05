@@ -902,16 +902,20 @@ class SettingFragment : Fragment() {
             val i = filters.indexOf(clickedF)
             val viewHolder = recycler.findViewHolderForAdapterPosition(i);
 
-            val items = listOf(ctx.getString(R.string.clone_rule))
+            val items = listOf(ctx.getString(R.string.clone_rule), ctx.getString(R.string.delete_all_rules))
             dynamicPopupMenu(ctx, viewHolder?.itemView, items.map {
                 Button(it)
             }, onItemClick = { clickedIndex ->
                 when (clickedIndex) {
-                    0 -> {
+                    0 -> { // clone rule
                         // 1. add to db
                         dbTable.addNewRule(ctx, clickedF)
 
                         // 2. refresh gui
+                        asyncReloadFromDb(ctx, dbTable, filters)
+                    }
+                    1 -> { // delete all rules
+                        dbTable.clearAll(ctx)
                         asyncReloadFromDb(ctx, dbTable, filters)
                     }
                 }

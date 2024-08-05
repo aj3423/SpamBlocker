@@ -92,13 +92,10 @@ abstract class HistoryTable {
             it.moveToFirst()
         }
     }
-    fun deleteAll(ctx: Context) : Boolean {
+    fun deleteAll(ctx: Context) {
+        val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${tableName()} "
-        val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
-
-        return cursor.use {
-            it.moveToFirst()
-        }
+        db.execSQL(sql)
     }
     @SuppressLint("Range")
     fun findRecordById(ctx: Context, id: Long): Record? {

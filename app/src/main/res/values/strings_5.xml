@@ -3,6 +3,7 @@
     <string name="dialed">Dialed</string>
     <string name="find_apps">Find Apps</string>
     <string name="clone_rule">Clone Rule</string>
+    <string name="delete_all_rules">Delete All Rules</string>
     <string name="notification">Notification</string>
     <string name="type">Type</string>
     <string name="times">Times</string>
