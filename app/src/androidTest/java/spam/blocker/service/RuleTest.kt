@@ -98,7 +98,7 @@ class RuleTest {
     private fun mock_calls(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
         every { Permissions.countHistoryCallByNumber(any(), rawNumber, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
-            val mockNow = Time.currentTimeMillis()
+            val mockNow = Time.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
                 repeatedTimes
             } else {
@@ -109,7 +109,7 @@ class RuleTest {
     private fun mock_sms(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
         every { Permissions.countHistorySMSByNumber(any(), rawNumber, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
-            val mockNow = Time.currentTimeMillis()
+            val mockNow = Time.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
                 repeatedTimes
             } else {
@@ -119,11 +119,11 @@ class RuleTest {
     }
     private fun mock_advance_time_by_minutes(durationMinutes: Int) {
         mockkObject(Time)
-        every { Time.currentTimeMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
+        every { Time.currentMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
     }
     private fun mock_current_time_millis(millis: Long) {
         mockkObject(Time)
-        every { Time.currentTimeMillis() } returns millis
+        every { Time.currentMillis() } returns millis
     }
 
     // -------- tests begin --------
@@ -256,7 +256,7 @@ class RuleTest {
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
         mockkObject(Permissions)
         every { Permissions.listUsedAppWithinXSecond(ctx, any()) } answers {
-            if (Time.currentTimeMillis() < expire)
+            if (Time.currentMillis() < expire)
                 pkgs
             else
                 listOf()

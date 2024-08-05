@@ -135,7 +135,7 @@ open class Permissions {
 
             val usageStatsManager =
                 ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-            val currentTime = Time.currentTimeMillis()
+            val currentTime = Time.currentMillis()
             val events = usageStatsManager.queryEvents(currentTime - sec * 1000, currentTime)
 
             while (events.hasNextEvent()) {
@@ -213,7 +213,7 @@ open class Permissions {
                         .replace("-", "")
                         .replace("+", "")
                 }'",
-                "${Sms.DATE} >= ${Time.currentTimeMillis() - withinMillis}"
+                "${Sms.DATE} >= ${Time.currentMillis() - withinMillis}"
             )
 
             if (direction == Def.DIRECTION_INCOMING) {

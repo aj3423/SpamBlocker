@@ -135,22 +135,22 @@ abstract class HistoryTable {
 //        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, null, null)
 //    }
 
-//    fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
-//        val xSecondsAgo = Time.getCurrentTimeMilliss() - durationSeconds*1000
-//
-//        val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
-//            "SELECT COUNT(*) FROM ${tableName()} " +
-//                    "WHERE ${Db.COLUMN_TIME} > $xSecondsAgo AND ${Db.COLUMN_PEER} = '$phone'"
-//            , null)
-//
-//        cursor.use {
-//            var count = 0
-//            if (cursor.moveToFirst()) {
-//                count = cursor.getInt(0)
-//            }
-//            return count
-//        }
-//    }
+    fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
+        val xSecondsAgo = Time.currentMillis() - durationSeconds*1000
+
+        val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
+            "SELECT COUNT(*) FROM ${tableName()} " +
+                    "WHERE ${Db.COLUMN_TIME} > $xSecondsAgo AND ${Db.COLUMN_PEER} = '$phone'"
+            , null)
+
+        cursor.use {
+            var count = 0
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0)
+            }
+            return count
+        }
+    }
 }
 open class CallTable : HistoryTable() {
     override fun tableName(): String {

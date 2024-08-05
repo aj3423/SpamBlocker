@@ -6,11 +6,13 @@ import android.telecom.Call
 import android.telecom.Connection
 import android.util.Log
 import spam.blocker.R
+import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PatternRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
+import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
@@ -140,25 +142,46 @@ class Checker { // for namespace only
         }
     }
 
-    class RepeatedCall(private val ctx: Context, private val rawNumber: String) : checker {
+    class RepeatedCall(
+        private val ctx: Context,
+        private val rawNumber: String,
+        private val isTesting: Boolean = false
+    ) : checker {
         override fun priority(): Int {
             return 10
         }
 
         override fun check(): CheckResult? {
+            val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
+            val canReadSMSs = Permissions.isReadSmsPermissionGranted(ctx)
+
             val spf = RepeatedCall(ctx)
-            if (!spf.isEnabled()
-                or !Permissions.isCallLogPermissionGranted(ctx) )
-            {
+            if (!spf.isEnabled() || (!canReadCalls && !canReadSMSs)) {
                 return null
             }
             val (times, durationMinutes) = spf.getConfig()
 
             val durationMillis = durationMinutes.toLong() * 60 * 1000
 
-            // repeated count of call/sms, sms also counts
-            val nCalls = Permissions.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
-            val nSMSs = Permissions.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
+            // count Calls
+            var nCalls = Permissions.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
+            // When testing, there is no real call log, try local db instead
+            if (isTesting) {
+                val nCallsTesting = CallTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
+                if (nCalls < nCallsTesting) // use the larger one
+                    nCalls = nCallsTesting
+            }
+
+            // count SMSs
+            var nSMSs = Permissions.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
+            if (isTesting) {
+                val nSMSsTesting = SmsTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
+                if (nSMSs < nSMSsTesting)
+                    nSMSs = nSMSsTesting
+            }
+
+
+            // check
             if (nCalls + nSMSs >= times) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)
             }
@@ -173,7 +196,7 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = Dialed(ctx)
             if (!spf.isEnabled()
-                or !Permissions.isCallLogPermissionGranted(ctx) )
+                || (!Permissions.isCallLogPermissionGranted(ctx) && !Permissions.isReadSmsPermissionGranted(ctx)))
             {
                 return null
             }
@@ -255,7 +278,7 @@ class Checker { // for namespace only
             // 1. check time schedule
             val sch = Schedule.parseFromStr(numberRule.schedule)
             if (sch.enabled) {
-                val now = Time.currentTimeMillis()
+                val now = Time.currentMillis()
                 if (!sch.satisfyTime(now)) {
                     return null
                 }
@@ -294,7 +317,7 @@ class Checker { // for namespace only
             // 1. check time schedule
             val sch = Schedule.parseFromStr(rule.schedule)
             if (sch.enabled) {
-                val now = Time.currentTimeMillis()
+                val now = Time.currentMillis()
                 if (!sch.satisfyTime(now)) {
                     return null
                 }
@@ -338,7 +361,7 @@ class Checker { // for namespace only
                 Checker.Emergency(callDetails),
                 Checker.STIR(ctx, callDetails),
                 Checker.Contact(ctx, rawNumber),
-                Checker.RepeatedCall(ctx, rawNumber),
+                Checker.RepeatedCall(ctx, rawNumber, isTesting = callDetails == null),
                 Checker.Dialed(ctx, rawNumber),
                 Checker.RecentApp(ctx),
                 Checker.OffTime(ctx)

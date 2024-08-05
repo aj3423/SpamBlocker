@@ -5,7 +5,7 @@ open class Time {
     companion object {
 
         // mocck doesn't work for hooking System.currentTimeMillis, so use a wrapper
-        fun currentTimeMillis(): Long {
+        fun currentMillis(): Long {
             return System.currentTimeMillis()
         }
     }
