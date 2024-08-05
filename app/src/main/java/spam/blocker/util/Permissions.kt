@@ -25,7 +25,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.util.SharedPref.SharedPref
 import spam.blocker.util.Util.Companion.doOnce
 
 open class Permissions {

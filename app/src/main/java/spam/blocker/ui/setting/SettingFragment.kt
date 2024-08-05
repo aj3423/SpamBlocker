@@ -228,8 +228,6 @@ class SettingFragment : Fragment() {
         val img_call = root.findViewById<ImageView>(R.id.enabled_for_call)
         val img_sms = root.findViewById<ImageView>(R.id.enabled_for_sms)
 
-        val green = ctx.getColor(R.color.text_green)
-        val red = ctx.getColor(R.color.salmon)
         val teal = ctx.getColor(R.color.teal_200)
         val gray = ctx.getColor(R.color.text_grey)
         val g = Global(ctx)
@@ -247,9 +245,6 @@ class SettingFragment : Fragment() {
             val enabled = spf.isGloballyEnabled()
             if (switch.isChecked != enabled)
                 switch.isChecked = enabled
-
-            // top bar color
-            requireActivity().window.statusBarColor = if (enabled) green else red
 
             showIf(group_quick_filters, enabled)
             showIf(group_regex_filters, enabled)

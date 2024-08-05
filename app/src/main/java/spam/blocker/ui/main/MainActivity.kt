@@ -7,11 +7,18 @@ import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import spam.blocker.BuildConfig
@@ -43,8 +50,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var broadcastReceiver: BroadcastReceiver
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        setupEdgeToEdge() // call before setContentView
+
         super.onCreate(savedInstanceState)
 
         val spf = Global(this)
@@ -58,6 +66,55 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupDebug()
+
+        // update the number indicator on the bottom nav view on data change
+        setupViewModels()
+
+        // create the `ActivityResultLauncher`,
+        // must be initialized in MainActivity, and before `setupBottomNavView`.
+        Permissions.initSetAsCallScreeningApp(this)
+
+        setupBottomNavView()
+
+        // update gui on incoming call
+        setupGuiEvents()
+
+        // require permission once
+        requirePermissionsOnce()
+
+        // show warning if this app is running in work profile
+        checkWorkProfile()
+    }
+
+    // This should be called before setContentView.
+    private fun setupEdgeToEdge() {
+        enableEdgeToEdge(
+//            statusBarStyle = SystemBarStyle.light(
+//                Color.TRANSPARENT,
+//                Color.TRANSPARENT,
+//            )
+        )
+
+        // preserve spaces for the top status bar and the bottom nav bar(back/home/tasks)
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView) { view, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars()
+                        or WindowInsetsCompat.Type.displayCutout()
+            )
+
+            // The status bar becomes opaque when there is padding-top, not sure why,
+            // how to make it transparent with padding-top?
+            view.updatePadding(
+                left = bars.left,
+                top = bars.top,
+                right = bars.right,
+                bottom = bars.bottom,
+            )
+            WindowInsetsCompat.CONSUMED
+        }
+    }
+    private fun setupDebug() {
         if (BuildConfig.DEBUG) {
             test.exec(this)
 
@@ -66,28 +123,36 @@ class MainActivity : AppCompatActivity() {
                 .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
                 .invoke(null, true)
         }
+    }
 
-        // launched by clicking notification
+    // launched by clicking notification
+    private fun setupStartupParam() {
         val startFromNotification = intent.getStringExtra("startPage")
 
-        // View Models
-        run { // update the number indicator on the bottom nav view on data change
-            callViewModel = ViewModelProvider(this)[CallViewModel::class.java]
-            callViewModel.records.observe(this) {
-                updateNavCallBadge()
-            }
-            smsViewModel = ViewModelProvider(this)[SmsViewModel::class.java]
-            smsViewModel.records.observe(this) {
-                updateNavSmsBadge()
+        // go to tab
+        when (startFromNotification) {
+            "call" -> navView.selectedItemId = R.id.navigation_call
+            "sms" -> navView.selectedItemId = R.id.navigation_sms
+            else -> {
+                // if not launched by clicking notification, restore the last active tab
+                val spf = Global(this)
+                when (spf.getActiveTab()) {
+                    "call" -> navView.selectedItemId = R.id.navigation_call
+                    "sms" -> navView.selectedItemId = R.id.navigation_sms
+                    else -> navView.selectedItemId = R.id.navigation_setting
+                }
             }
         }
+    }
 
-        Permissions.initSetAsCallScreeningApp(this)
+    private fun setupBottomNavView() {
+        val spf = Global(this)
 
         // Bottom Nav View
         run {
             navView = binding.navView
-            val navController = findNavController(R.id.nav_host_fragment_activity_main)
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+            val navController = navHostFragment.navController
             navView.setupWithNavController(navController)
 
             val showPassed = spf.getShowPassed()
@@ -103,19 +168,7 @@ class MainActivity : AppCompatActivity() {
                 (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
             })
 
-            // go to tab
-            when (startFromNotification) {
-                "call" -> navView.selectedItemId = R.id.navigation_call
-                "sms" -> navView.selectedItemId = R.id.navigation_sms
-                else -> {
-                    // if not launched by clicking notification, restore the last active tab
-                    when (spf.getActiveTab()) {
-                        "call" -> navView.selectedItemId = R.id.navigation_call
-                        "sms" -> navView.selectedItemId = R.id.navigation_sms
-                        else -> navView.selectedItemId = R.id.navigation_setting
-                    }
-                }
-            }
+            setupStartupParam()
 
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -128,7 +181,7 @@ class MainActivity : AppCompatActivity() {
 
                     R.id.navigation_sms -> {
                         Permissions.requestReceiveSmsPermission(this)
-                        
+
                         spf.setActiveTab("sms")
                     }
 
@@ -144,53 +197,57 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
 
-
+    private fun setupViewModels() {
+        callViewModel = ViewModelProvider(this)[CallViewModel::class.java]
+        callViewModel.records.observe(this) {
+            updateNavCallBadge()
+        }
+        smsViewModel = ViewModelProvider(this)[SmsViewModel::class.java]
+        smsViewModel.records.observe(this) {
+            updateNavSmsBadge()
+        }
+    }
+    private fun setupGuiEvents() {
         val ctx = this
-        // update gui on incoming call
-        run {
-            broadcastReceiver = object : BroadcastReceiver() {
-                override fun onReceive(context: Context, intent: Intent) {
-                    val action = intent.action
-                    Log.d(Def.TAG, "on receive broadcast: $action")
+        broadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                val action = intent.action
+                Log.d(Def.TAG, "on receive broadcast: $action")
 
-                    when (action) {
-                        Def.ON_NEW_CALL -> {
-                            val id = intent.getLongExtra("record_id", 0)
-                            val call = callTable.findRecordById(ctx, id)
-                            callViewModel.records.add(0, call!!)
-                        }
-                        Def.ON_NEW_SMS -> {
-                            val id = intent.getLongExtra("record_id", 0)
-                            val sms = smsTable.findRecordById(ctx, id)
-                            smsViewModel.records.add(0, sms!!)
-                        }
+                when (action) {
+                    Def.ON_NEW_CALL -> {
+                        val id = intent.getLongExtra("record_id", 0)
+                        val call = callTable.findRecordById(ctx, id)
+                        callViewModel.records.add(0, call!!)
+                    }
+                    Def.ON_NEW_SMS -> {
+                        val id = intent.getLongExtra("record_id", 0)
+                        val sms = smsTable.findRecordById(ctx, id)
+                        smsViewModel.records.add(0, sms!!)
                     }
                 }
             }
-            registerReceiver(broadcastReceiver, IntentFilter().apply {
-                addAction(Def.ON_NEW_CALL)
-                addAction(Def.ON_NEW_SMS)
-            }, Context.RECEIVER_EXPORTED)
         }
+        registerReceiver(broadcastReceiver, IntentFilter().apply {
+            addAction(Def.ON_NEW_CALL)
+            addAction(Def.ON_NEW_SMS)
+        }, Context.RECEIVER_EXPORTED)
+    }
 
-
-        // highlight the top status bar
-        //   green == enabled,  red == disabled
-        window.statusBarColor = ContextCompat.getColor(
-            this,
-            if (spf.isGloballyEnabled()) R.color.text_green else R.color.salmon
-        )
-
-        // require permission once
+    private fun requirePermissionsOnce() {
+        val spf = Global(this)
         if (!spf.hasAskedForAllPermissions()) {
             spf.setAskedForAllPermission()
             Permissions.requestAllManifestPermissions(this)
 
             Permissions.askAsScreeningApp(null)
         }
+    }
 
-        // show warning if this app is running in work profile
+    private fun checkWorkProfile() {
+        val spf = Global(this)
         if (Util.isRunningInWorkProfile(this)) {
             if (!spf.hasPromptedForRunningInWorkProfile()) {
                 AlertDialog.Builder(this).apply {
@@ -204,7 +261,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

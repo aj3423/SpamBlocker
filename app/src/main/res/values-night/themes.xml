@@ -9,13 +9,6 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-
-        <!-- checkbox color-->
-        <item name="colorAccent">@color/teal_200</item>
-        <item name="android:textColorSecondary">@color/text_grey</item>
 
     </style>
 

@@ -80,8 +80,6 @@ class CallScreeningService : CallScreeningService() {
             }
         }
 
-        Log.d(Def.TAG, String.format("new call from: $rawNumber"))
-
         if (!Global(this).isGloballyEnabled() || !Global(this).isCallEnabled()) {
             pass(details)
             return

@@ -113,6 +113,7 @@ class Util {
                 str
         }
 
+        @SuppressLint("DefaultLocale")
         fun formatTimeRange(
 //            ctx: Context,
             stHour: Int, stMin: Int, etHour: Int, etMin: Int
@@ -232,13 +233,16 @@ class Util {
                     val packageInfos = Permissions.getPackagesHoldingPermissions(pm, arrayOf(Manifest.permission.INTERNET))
 
                     cacheAppList = packageInfos.filter {
-                        (it.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0
+                        if (it.applicationInfo == null)
+                            false
+                        else
+                            (it.applicationInfo!!.flags and ApplicationInfo.FLAG_SYSTEM) == 0
                     }.map {
                         val appInfo = it.applicationInfo
 
                         AppInfo().apply {
                             pkgName = it.packageName
-                            label = appInfo.loadLabel(pm).toString()
+                            label = appInfo!!.loadLabel(pm).toString()
                             icon = appInfo.loadIcon(pm)
                         }
                     }

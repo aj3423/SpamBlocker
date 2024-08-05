@@ -1,5 +1,6 @@
 package spam.blocker.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import spam.blocker.R
 import java.time.Instant
@@ -26,10 +27,12 @@ class Schedule {
         return "$part0,$part1,$part2"
     }
     // for serialization only
+    @SuppressLint("DefaultLocale")
     private fun timeRangeStr(): String {
         return String.format("%02d:%02d-%02d:%02d", startHour, startMin, endHour, endMin)
     }
     // for display on UI
+    @SuppressLint("DefaultLocale")
     fun timeRangeDisplayStr(ctx: Context): String {
         if (startHour == 0 && startMin == 0 && endHour == 0 && endMin == 0)
             return ctx.getString(R.string.entire_day)

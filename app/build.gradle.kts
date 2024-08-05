@@ -25,20 +25,16 @@ android {
         }
     }
     namespace = "spam.blocker"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "spam.blocker"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 119
         versionName = "1.19"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-//        val nowUTC = OffsetDateTime.now(ZoneOffset.UTC)
-//        val formattedTime = nowUTC.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-//        buildConfigField("String", "BUILD_TIME", "\"$formattedTime\"")
     }
 
     buildTypes {
@@ -78,6 +74,7 @@ android {
             }
         }
     }
+    buildToolsVersion = "35.0.0"
 }
 
 dependencies {

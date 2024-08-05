@@ -7,7 +7,7 @@ Android Call/SMS blocker. (Android 10+)
 
 Table of Contents
 =================
-   * [Screeenshot](#screenshot)
+   * [Screenshot](#screenshot)
    * [Target Audience](#target-audience)
    * [How it works](#how-it-works)
    * [Features](#features)
