@@ -1,9 +1,12 @@
 # SpamBlocker
 Android Call/SMS blocker. (Android 10+)
 
-<img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9d44afe7-2524-4b34-8bf3-ba285200bb5c" height="100">[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+<img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9d44afe7-2524-4b34-8bf3-ba285200bb5c" height="90">  [<img src="https://github.com/user-attachments/assets/8757c78c-b0d5-4b8a-9adb-934d8a758e9e"
      alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/spam.blocker/)
+     height="70">](https://f-droid.org/packages/spam.blocker/)  [<img src="https://github.com/user-attachments/assets/187b63f2-5a37-47f1-add6-499db3a522b0"
+     alt="Get it on Google Play"
+     height="70">](https://play.google.com/store/apps/details?id=spam.blocker)
+
 
 Table of Contents
 =================
