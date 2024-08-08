@@ -47,7 +47,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".service.NotificationTrampolineActivity" />
+        <activity android:name=".service.NotificationTrampolineActivity"
+            android:excludeFromRecents="true"/>
         <activity android:name=".ui.crash.CrashReportActivity" />
 
         <service

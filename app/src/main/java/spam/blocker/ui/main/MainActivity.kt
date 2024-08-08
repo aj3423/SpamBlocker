@@ -4,19 +4,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
-import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -125,16 +120,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // launched by clicking notification
-    private fun setupStartupParam() {
-        val startFromNotification = intent.getStringExtra("startPage")
+    // open the last tab
+    private fun setupStartupPage() {
+        val startPage = intent.getStringExtra("startPage")
 
         // go to tab
-        when (startFromNotification) {
+        when (startPage) {
             "call" -> navView.selectedItemId = R.id.navigation_call
             "sms" -> navView.selectedItemId = R.id.navigation_sms
             else -> {
-                // if not launched by clicking notification, restore the last active tab
+                // if not launched by param, restore the last active tab
                 val spf = Global(this)
                 when (spf.getActiveTab()) {
                     "call" -> navView.selectedItemId = R.id.navigation_call
@@ -168,7 +163,7 @@ class MainActivity : AppCompatActivity() {
                 (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
             })
 
-            setupStartupParam()
+            setupStartupPage()
 
 
             navController.addOnDestinationChangedListener { _, destination, _ ->

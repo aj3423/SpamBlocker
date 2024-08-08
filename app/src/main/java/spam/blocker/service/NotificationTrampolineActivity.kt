@@ -39,6 +39,6 @@ class NotificationTrampolineActivity : AppCompatActivity() {
 
         Notification.cancelAll(this)
 
-        finish();
+        finish()
     }
 }
