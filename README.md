@@ -14,6 +14,7 @@ Table of Contents
    * [Features](#features)
    * [Permissions](#permissions)
    * [Privacy](#privacy)
+   * [Support](#support)
    * [FAQ](#faq)
    * [Language Support](#language-support)
    * [Donate](#donate)
@@ -69,7 +70,12 @@ It works without replacing your default Call/SMS app.
  - No external storage access, only accessable to scoped storage(the Downloads folder).
  - No communication with other app
 
+# Support
+ - Most problems have already been discussed in the issue list, please search first.
+ - There's also a [matrix channel](https://matrix.to/#/#spam-blocker:matrix.org)
+
 # FAQ
+ - [Google shows security warning when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
  - [SMS notification doesn't work after app is killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [How to always block particular number regardless of how many times it repeats, or within OffTime, etc...](https://github.com/aj3423/SpamBlocker/issues/80#issuecomment-2176943329)
  - [Integrate spam database](https://github.com/aj3423/SpamBlocker/issues/96#issuecomment-2218233500)
