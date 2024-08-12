@@ -1,0 +1,14 @@
+New: 
+  - adapt android 15, changes:
+    - the top bar no longer shows green/red to indicate enabled or not
+  - "Delete All Rules" context menu item
+
+Fix:
+  - no more ghost process that always redirects to the sms app
+
+Enhancement:
+ - testing now works with RepeatedCall, it also checks local db(only when testing)
+ - red indicator for swiping left
+ - Import rules from csv:
+   - use filename as description
+   - show warning when the .csv doesn't contain the required column "pattern", to prevent empty rows
