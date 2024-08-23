@@ -18,12 +18,16 @@ class ContactInfo {
         if (iconUri == null) {
             return null
         }
-        val source = ImageDecoder.createSource(ctx.contentResolver, Uri.parse(iconUri))
+        try {
+            val source = ImageDecoder.createSource(ctx.contentResolver, Uri.parse(iconUri))
 
-        val icon = ImageDecoder.decodeBitmap(source)
-        // convert hardware bitmap to software bitmap, otherwise it shows error:
-        //   "Software rendering doesn't support hardware bitmaps"
-        return icon.copy(Bitmap.Config.ARGB_8888, false)
+            val icon = ImageDecoder.decodeBitmap(source)
+            // convert hardware bitmap to software bitmap, otherwise it shows error:
+            //   "Software rendering doesn't support hardware bitmaps"
+            return icon.copy(Bitmap.Config.ARGB_8888, false)
+        } catch (_: Exception) {
+            return null
+        }
     }
 }
 
