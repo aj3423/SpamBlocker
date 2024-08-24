@@ -44,14 +44,14 @@ class CheckResult(
     }
 }
 
-interface checker {
+interface IChecker {
     fun priority(): Int
     fun check(): CheckResult?
 }
 
 class Checker { // for namespace only
 
-    class Emergency(private val callDetails: Call.Details?) : checker {
+    class Emergency(private val callDetails: Call.Details?) : IChecker {
         override fun priority(): Int {
             return Int.MAX_VALUE
         }
@@ -69,7 +69,7 @@ class Checker { // for namespace only
         }
     }
 
-    class STIR(private val ctx: Context, private val callDetails: Call.Details?) : checker {
+    class STIR(private val ctx: Context, private val callDetails: Call.Details?) : IChecker {
         override fun priority(): Int {
             val isExclusive = Stir(ctx).isExclusive()
             return if (isExclusive) 0 else 10
@@ -116,7 +116,7 @@ class Checker { // for namespace only
         }
     }
 
-    class Contact(private val ctx: Context, private val rawNumber: String) : checker {
+    class Contact(private val ctx: Context, private val rawNumber: String) : IChecker {
         override fun priority(): Int {
             val isExclusive = Contact(ctx).isExclusive()
             return if (isExclusive) 0 else 10
@@ -146,7 +146,7 @@ class Checker { // for namespace only
         private val ctx: Context,
         private val rawNumber: String,
         private val isTesting: Boolean = false
-    ) : checker {
+    ) : IChecker {
         override fun priority(): Int {
             return 10
         }
@@ -188,7 +188,7 @@ class Checker { // for namespace only
             return null
         }
     }
-    class Dialed(private val ctx: Context, private val rawNumber: String) : checker {
+    class Dialed(private val ctx: Context, private val rawNumber: String) : IChecker {
         override fun priority(): Int {
             return 10
         }
@@ -214,7 +214,7 @@ class Checker { // for namespace only
         }
     }
 
-    class OffTime(private val ctx: Context) : checker {
+    class OffTime(private val ctx: Context) : IChecker {
         override fun priority(): Int {
             return 10
         }
@@ -235,7 +235,7 @@ class Checker { // for namespace only
         }
     }
 
-    class RecentApp(private val ctx: Context) : checker {
+    class RecentApp(private val ctx: Context) : IChecker {
         override fun priority(): Int {
             return 10
         }
@@ -269,7 +269,7 @@ class Checker { // for namespace only
     /*
         Check if a number rule matches the incoming number
      */
-    class Number(private val rawNumber: String, private val numberRule: PatternRule) : checker {
+    class Number(private val rawNumber: String, private val numberRule: PatternRule) : IChecker {
         override fun priority(): Int {
             return numberRule.priority
         }
@@ -308,7 +308,7 @@ class Checker { // for namespace only
         Check if text message body matches the SMS Content rule,
         the number is also checked when "for particular number" is enabled
      */
-    class Content(private val rawNumber: String, private val messageBody: String, private val rule: PatternRule) : checker {
+    class Content(private val rawNumber: String, private val messageBody: String, private val rule: PatternRule) : IChecker {
         override fun priority(): Int {
             return rule.priority
         }
@@ -399,7 +399,7 @@ class Checker { // for namespace only
             messageBody: String
         ): CheckResult {
 
-            val checkers = arrayListOf<checker>(
+            val checkers = arrayListOf<IChecker>(
                 Checker.Contact(ctx, rawNumber),
                 Checker.OffTime(ctx)
             )
