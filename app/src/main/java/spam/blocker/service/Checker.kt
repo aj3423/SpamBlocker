@@ -9,7 +9,7 @@ import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.PatternRule
+import spam.blocker.db.RegexRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.db.SmsTable
@@ -24,17 +24,18 @@ import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Time
 import spam.blocker.util.Util
+import spam.blocker.util.hasFlag
 
 class CheckResult(
     val shouldBlock: Boolean,
     val result: Int,
 ) {
     var byContactName: String? = null // allowed by contact
-    var byRule: PatternRule? = null // allowed or blocked by this filter rule
+    var byRule: RegexRule? = null // allowed or blocked by this filter rule
     var byRecentApp: String? = null // allowed by recent app
     var stirResult: Int? = null
 
-    // This `reason` will be saved to database
+    // This `reason` will be saved to database as a string
     fun reason(): String {
         if (byContactName != null) return byContactName!!
         if (byRule != null) return byRule!!.id.toString()
@@ -61,7 +62,8 @@ class Checker { // for namespace only
                 return null
 
             if (callDetails.hasProperty(Call.Details.PROPERTY_EMERGENCY_CALLBACK_MODE)
-                || callDetails.hasProperty(Call.Details.PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL)) {
+                || callDetails.hasProperty(Call.Details.PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL)
+            ) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_EMERGENCY)
             }
 
@@ -77,7 +79,7 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             // STIR only works >= Android 11
-            if (Build.VERSION.SDK_INT < 30) {
+            if (Build.VERSION.SDK_INT < Def.ANDROID_11) {
                 return null
             }
 
@@ -97,8 +99,6 @@ class Checker { // for namespace only
             val pass = stir == Connection.VERIFICATION_STATUS_PASSED
             val unverified = stir == Connection.VERIFICATION_STATUS_NOT_VERIFIED
             val fail = stir == Connection.VERIFICATION_STATUS_FAILED
-
-            Log.d(Def.TAG, "STIR: pass: $pass, unverified: $unverified, fail: $fail, exclusive: $exclusive")
 
             if (exclusive) {
                 if (fail || (includeUnverified && unverified)) {
@@ -129,11 +129,10 @@ class Checker { // for namespace only
                 return null
             }
             val contact = Contacts.findByRawNumber(ctx, rawNumber)
-            if (contact != null) {
-                Log.i(Def.TAG, "is contact")
+            if (contact != null) { // is contact
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)
                     .apply { byContactName = contact.name }
-            } else {
+            } else { // not contact
                 if (spf.isExclusive()) {
                     return CheckResult(true, Def.RESULT_BLOCKED_BY_NON_CONTACT)
                 }
@@ -159,23 +158,42 @@ class Checker { // for namespace only
             if (!spf.isEnabled() || (!canReadCalls && !canReadSMSs)) {
                 return null
             }
-            val (times, durationMinutes) = spf.getConfig()
+            val times = spf.getTimes()
+            val durationMinutes = spf.getInXMin()
 
             val durationMillis = durationMinutes.toLong() * 60 * 1000
 
-            // count Calls
-            var nCalls = Permissions.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
-            // When testing, there is no real call log, try local db instead
+            // count Calls from real call history
+            var nCalls = Permissions.countHistoryCallByNumber(
+                ctx,
+                rawNumber,
+                Def.DIRECTION_INCOMING,
+                durationMillis
+            )
+            // When testing, there is no real call history, try local db instead
             if (isTesting) {
-                val nCallsTesting = CallTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
+                val nCallsTesting = CallTable().countRepeatedRecordsWithinSeconds(
+                    ctx,
+                    rawNumber,
+                    durationMinutes * 60
+                )
                 if (nCalls < nCallsTesting) // use the larger one
                     nCalls = nCallsTesting
             }
 
-            // count SMSs
-            var nSMSs = Permissions.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_INCOMING, durationMillis)
-            if (isTesting) {
-                val nSMSsTesting = SmsTable().countRepeatedRecordsWithinSeconds(ctx, rawNumber, durationMinutes*60)
+            // count SMSs from real SMS history
+            var nSMSs = Permissions.countHistorySMSByNumber(
+                ctx,
+                rawNumber,
+                Def.DIRECTION_INCOMING,
+                durationMillis
+            )
+            if (isTesting) { // try local db
+                val nSMSsTesting = SmsTable().countRepeatedRecordsWithinSeconds(
+                    ctx,
+                    rawNumber,
+                    durationMinutes * 60
+                )
                 if (nSMSs < nSMSsTesting)
                     nSMSs = nSMSsTesting
             }
@@ -188,6 +206,7 @@ class Checker { // for namespace only
             return null
         }
     }
+
     class Dialed(private val ctx: Context, private val rawNumber: String) : IChecker {
         override fun priority(): Int {
             return 10
@@ -196,17 +215,29 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = Dialed(ctx)
             if (!spf.isEnabled()
-                || (!Permissions.isCallLogPermissionGranted(ctx) && !Permissions.isReadSmsPermissionGranted(ctx)))
-            {
+                || (!Permissions.isCallLogPermissionGranted(ctx) && !Permissions.isReadSmsPermissionGranted(
+                    ctx
+                ))
+            ) {
                 return null
             }
-            val durationDays = spf.getConfig()
+            val durationDays = spf.getDays()
 
             val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
 
             // repeated count of call/sms, sms also counts
-            val nCalls = Permissions.countHistoryCallByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
-            val nSMSs = Permissions.countHistorySMSByNumber(ctx, rawNumber, Def.DIRECTION_OUTGOING, durationMillis)
+            val nCalls = Permissions.countHistoryCallByNumber(
+                ctx,
+                rawNumber,
+                Def.DIRECTION_OUTGOING,
+                durationMillis
+            )
+            val nSMSs = Permissions.countHistorySMSByNumber(
+                ctx,
+                rawNumber,
+                Def.DIRECTION_OUTGOING,
+                durationMillis
+            )
             if (nCalls + nSMSs > 0) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_DIALED)
             }
@@ -224,8 +255,15 @@ class Checker { // for namespace only
             if (!spf.isEnabled()) {
                 return null
             }
-            val (stHour, stMin) = spf.getStart()
-            val (etHour, etMin) = spf.getEnd()
+            val stHour = spf.getStartHour()
+            val stMin = spf.getStartMin()
+            val etHour = spf.getEndHour()
+            val etMin = spf.getEndMin()
+
+            // Entire day
+            if (stHour == etHour && stMin == etMin) {
+                return CheckResult(false, Def.RESULT_ALLOWED_BY_OFF_TIME)
+            }
 
             if (Util.isCurrentTimeWithinRange(stHour, stMin, etHour, etMin)) {
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_OFF_TIME)
@@ -247,14 +285,10 @@ class Checker { // for namespace only
             if (enabledPackages.isEmpty()) {
                 return null
             }
-            val inXmin = spf.getConfig()
-            val usedApps = Permissions.listUsedAppWithinXSecond(ctx, inXmin * 60)
+            val inXMin = spf.getMin()
+            val usedApps = Permissions.listUsedAppWithinXSecond(ctx, inXMin * 60)
 
             val intersection = enabledPackages.intersect(usedApps.toSet())
-            Log.d(
-                Def.TAG,
-                "--- enabled: $enabledPackages, used: $usedApps, intersection: $intersection"
-            )
 
             if (intersection.isNotEmpty()) {
                 return CheckResult(
@@ -269,7 +303,7 @@ class Checker { // for namespace only
     /*
         Check if a number rule matches the incoming number
      */
-    class Number(private val rawNumber: String, private val numberRule: PatternRule) : IChecker {
+    class Number(private val rawNumber: String, private val numberRule: RegexRule) : IChecker {
         override fun priority(): Int {
             return numberRule.priority
         }
@@ -286,7 +320,9 @@ class Checker { // for namespace only
 
             // 2. check regex
             val opts = Util.flagsToRegexOptions(numberRule.patternFlags)
-            val numberToCheck = if (numberRule.patternFlags.has(Def.FLAG_REGEX_RAW_NUMBER))
+
+            // check if user enabled the `RawNumber` mode for this regex
+            val numberToCheck = if (numberRule.patternFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
                 rawNumber
             else
                 Util.clearNumber(rawNumber)
@@ -304,11 +340,16 @@ class Checker { // for namespace only
             return null
         }
     }
+
     /*
         Check if text message body matches the SMS Content rule,
         the number is also checked when "for particular number" is enabled
      */
-    class Content(private val rawNumber: String, private val messageBody: String, private val rule: PatternRule) : IChecker {
+    class Content(
+        private val rawNumber: String,
+        private val messageBody: String,
+        private val rule: RegexRule
+    ) : IChecker {
         override fun priority(): Int {
             return rule.priority
         }
@@ -328,21 +369,21 @@ class Checker { // for namespace only
             val optsExtra = Util.flagsToRegexOptions(rule.patternExtraFlags)
 
             val contentMatches = rule.pattern.toRegex(opts).matches(messageBody)
-            val numberToCheck = if (rule.patternExtraFlags.has(Def.FLAG_REGEX_RAW_NUMBER))
+            val numberToCheck = if (rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
                 rawNumber
             else
                 Util.clearNumber(rawNumber)
-            val particularNumberMatches = rule.patternExtra.toRegex(optsExtra).matches(numberToCheck)
 
             val matches = if (rule.patternExtra != "") { // for particular number enabled
+                val particularNumberMatches =
+                    rule.patternExtra.toRegex(optsExtra).matches(numberToCheck)
+
                 contentMatches && particularNumberMatches
             } else {
                 contentMatches
             }
 
             if (matches) {
-                Log.d(Def.TAG, "filter matches: $rule")
-
                 val block = rule.isBlacklist
 
                 return CheckResult(
@@ -356,7 +397,11 @@ class Checker { // for namespace only
 
     companion object {
 
-        fun checkCall(ctx: Context, rawNumber: String, callDetails: Call.Details? = null): CheckResult {
+        fun checkCall(
+            ctx: Context,
+            rawNumber: String,
+            callDetails: Call.Details? = null
+        ): CheckResult {
             val checkers = arrayListOf(
                 Checker.Emergency(callDetails),
                 Checker.STIR(ctx, callDetails),
@@ -436,15 +481,18 @@ class Checker { // for namespace only
             return CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
         }
 
+        // It returns a list<String>, all the Strings will be shown as Buttons in the notification.
         fun checkQuickCopy(
             ctx: Context,
             rawNumber: String, messageBody: String?,
-            isCall: Boolean, isBlocked: Boolean
-        ) : List<String> {
+            isCall: Boolean, // is this called from incoming call or message.
+            isBlocked: Boolean,
+        ): List<String> {
 
             return QuickCopyRuleTable().listAll(ctx).filter {
-                val c1 = it.flags.has(if(isCall) Def.FLAG_FOR_CALL else Def.FLAG_FOR_SMS)
-                val c2 = it.flags.has(if(isBlocked) Def.FLAG_FOR_BLOCKED else Def.FLAG_FOR_PASSED)
+                val c1 = it.flags.hasFlag(if (isCall) Def.FLAG_FOR_CALL else Def.FLAG_FOR_SMS)
+                val c2 =
+                    it.flags.hasFlag(if (isBlocked) Def.FLAG_FOR_BLOCKED else Def.FLAG_FOR_PASSED)
                 c1 && c2
             }.sortedByDescending {
                 it.priority
@@ -453,11 +501,11 @@ class Checker { // for namespace only
                 val opts = Util.flagsToRegexOptions(it.patternFlags)
                 val regex = it.pattern.toRegex(opts)
 
-                val forNumber = it.flags.has(Def.FLAG_FOR_NUMBER)
-                val forContent = it.flags.has(Def.FLAG_FOR_CONTENT)
+                val forNumber = it.flags.hasFlag(Def.FLAG_FOR_NUMBER)
+                val forContent = it.flags.hasFlag(Def.FLAG_FOR_CONTENT)
 
                 if (forNumber) {
-                    val numberToCheck = if (it.patternFlags.has(Def.FLAG_REGEX_RAW_NUMBER))
+                    val numberToCheck = if (it.patternFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
                         rawNumber
                     else
                         Util.clearNumber(rawNumber)
@@ -476,7 +524,7 @@ class Checker { // for namespace only
         }
 
 
-        private fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String) : String {
+        private fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String): String {
             val f = filterTable?.findPatternRuleById(ctx, reason.toLong())
 
             val reasonStr = if (f != null) {
@@ -486,34 +534,58 @@ class Checker { // for namespace only
             }
             return reasonStr
         }
+
         fun resultStr(ctx: Context, result: Int, reason: String): String {
 
             val res = ctx.resources
 
             return when (result) {
-                Def.RESULT_ALLOWED_BY_CONTACT ->  res.getString(R.string.contacts)
-                Def.RESULT_BLOCKED_BY_NON_CONTACT ->  res.getString(R.string.non_contacts)
+                Def.RESULT_ALLOWED_BY_CONTACT -> res.getString(R.string.contacts)
+                Def.RESULT_BLOCKED_BY_NON_CONTACT -> res.getString(R.string.non_contacts)
                 Def.RESULT_ALLOWED_BY_STIR, Def.RESULT_BLOCKED_BY_STIR -> {
                     when (reason.toInt()) {
-                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir)} ${res.getString(R.string.unverified)}"
-                        Connection.VERIFICATION_STATUS_PASSED -> "${res.getString(R.string.stir)} ${res.getString(R.string.valid)}"
-                        Connection.VERIFICATION_STATUS_FAILED -> "${res.getString(R.string.stir)} ${res.getString(R.string.spoof)}"
+                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir)} ${
+                            res.getString(
+                                R.string.unverified
+                            )
+                        }"
+
+                        Connection.VERIFICATION_STATUS_PASSED -> "${res.getString(R.string.stir)} ${
+                            res.getString(
+                                R.string.valid
+                            )
+                        }"
+
+                        Connection.VERIFICATION_STATUS_FAILED -> "${res.getString(R.string.stir)} ${
+                            res.getString(
+                                R.string.spoof
+                            )
+                        }"
+
                         else -> res.getString(R.string.stir)
                     }
                 }
-                Def.RESULT_ALLOWED_BY_EMERGENCY ->  res.getString(R.string.emergency_call)
-                Def.RESULT_ALLOWED_BY_RECENT_APP ->  res.getString(R.string.recent_app) + ": "
-                Def.RESULT_ALLOWED_BY_REPEATED ->  res.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_BY_DIALED ->  res.getString(R.string.dialed)
-                Def.RESULT_ALLOWED_BY_OFF_TIME ->  res.getString(R.string.off_time)
-                Def.RESULT_ALLOWED_BY_NUMBER ->  res.getString(R.string.whitelist) + ": " + reasonStr(
-                    ctx, NumberRuleTable(), reason)
-                Def.RESULT_BLOCKED_BY_NUMBER ->  res.getString(R.string.blacklist) + ": " + reasonStr(
-                    ctx, NumberRuleTable(), reason)
-                Def.RESULT_ALLOWED_BY_CONTENT ->  res.getString(R.string.content) + ": " + reasonStr(
-                    ctx, ContentRuleTable(), reason)
-                Def.RESULT_BLOCKED_BY_CONTENT ->  res.getString(R.string.content) + ": " + reasonStr(
-                    ctx, ContentRuleTable(), reason)
+
+                Def.RESULT_ALLOWED_BY_EMERGENCY -> res.getString(R.string.emergency_call)
+                Def.RESULT_ALLOWED_BY_RECENT_APP -> res.getString(R.string.recent_app) + ": "
+                Def.RESULT_ALLOWED_BY_REPEATED -> res.getString(R.string.repeated_call)
+                Def.RESULT_ALLOWED_BY_DIALED -> res.getString(R.string.dialed)
+                Def.RESULT_ALLOWED_BY_OFF_TIME -> res.getString(R.string.off_time)
+                Def.RESULT_ALLOWED_BY_NUMBER -> res.getString(R.string.whitelist) + ": " + reasonStr(
+                    ctx, NumberRuleTable(), reason
+                )
+
+                Def.RESULT_BLOCKED_BY_NUMBER -> res.getString(R.string.blacklist) + ": " + reasonStr(
+                    ctx, NumberRuleTable(), reason
+                )
+
+                Def.RESULT_ALLOWED_BY_CONTENT -> res.getString(R.string.content) + ": " + reasonStr(
+                    ctx, ContentRuleTable(), reason
+                )
+
+                Def.RESULT_BLOCKED_BY_CONTENT -> res.getString(R.string.content) + ": " + reasonStr(
+                    ctx, ContentRuleTable(), reason
+                )
 
                 else -> res.getString(R.string.passed_by_default)
             }

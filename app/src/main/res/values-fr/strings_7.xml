@@ -1,8 +1,12 @@
 <resources>
-    <string name="follow_system">Suivre le système</string>
+    <string name="start_time">Heure de début</string>
+    <string name="end_time">Heure de fin</string>
+    <string name="next">Suiv</string>
+    <string name="previous">Prcd</string>
+    <string name="follow_system">Suivre système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
-        <item>Claire</item>
-        <item>Foncée</item>
+        <item>Clair</item>
+        <item>Foncé</item>
     </string-array>
 </resources>

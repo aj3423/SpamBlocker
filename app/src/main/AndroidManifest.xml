@@ -35,7 +35,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SpamBlocker">
+        android:theme="@style/Theme.SpamBlocker" >
 
         <activity
             android:name=".ui.main.MainActivity"

@@ -17,7 +17,7 @@
         &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
-    <string name="help_apply_to">
+    <string name="help_apply_to_call_sms">
         <![CDATA[
         Enable this rule for Call, SMS, or both.<br>
         Uncheck these checkboxes to disable the rule without deleting it.
@@ -48,6 +48,7 @@
         <b>Heads-Up</b>:<br>&emsp; Popup a floating window on the top of the screen.
         ]]>
     </string>
+    <string name="title_rule_testing">Rule Testing</string>
     <string name="help_test_rules">
         <![CDATA[
         This helps to check if the rules are set as expected.<br>

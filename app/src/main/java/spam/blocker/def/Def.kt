@@ -3,9 +3,13 @@ package spam.blocker.def
 import android.app.NotificationManager
 
 object Def {
-    const val TAG = "1111111111111111"
 
-    const val ACTION_TILE_TOGGLE = "tile_toggle"
+    const val MAX_POPUP_WIDTH = 280
+
+    // tabs route
+    const val CALL_TAB_ROUTE = "call"
+    const val SMS_TAB_ROUTE = "sms"
+    const val SETTING_TAB_ROUTE = "setting"
 
     // for block mode: answer + hang-up
     const val LAST_CALLED_TIME = "last_called_time"

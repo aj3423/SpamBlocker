@@ -1,9 +1,9 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        启用后，在此时间段内将允许所有呼叫（消息）。通常晚上没有垃圾邮件。<br>
+        启用时，在此时间段内将允许所有呼叫（消息）。通常晚上没有垃圾邮件。<br>
         <br>
-        如果开始时间大于结束时间，例如 20:00 -> 07:00，则表示从晚上 20:00 到次日早上 07:00 的时间段。<br>
+        如果开始时间晚于结束时间，例如 20:00 -> 07:00，则表示从晚上 20:00 到第二天早晨 07:00 的时间段。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
@@ -12,27 +12,27 @@
     <string name="help_regex_flags">
         <![CDATA[
 
-            这些标志会改变正则表达式的匹配行为，默认情况下为新规则设置这些标志。<br>
+            这些标志会改变正则的匹配行为，对默认新规则是设置的。<br>
             <br>
 
-            <font color="#d1c8c8"><b>忽略大小写</b></font>：<br>
+            <font color="#d1c8c8"><b>忽略大小写</b></font>:<br>
             &ensp; 它使模式匹配不区分大小写，<font color="cyan"><b>a</b></font>
-            将匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>。 <br>
+              将匹配 <font color="cyan"><b>a</b></font> 和 <font color="cyan"><b>A</b></font>。<br>
             <br>
 
-            <font color="#d1c8c8"><b>点匹配所有字符</b></font>： <br>
-            &ensp; 启用后，<font color="cyan"><b>.</b></font> 还会匹配换行符 (<font color="cyan"><b>\\n</b></font>)，
-            这允许点跨多行匹配。<br>
-            &ensp; 用例：<br>
+            <font color="#d1c8c8"><b>点匹配所有</b></font>: <br>
+            &ensp; 启用时，<font color="cyan"><b>.</b></font> 也将匹配换行符 (<font color="cyan"><b>\\n</b></font>)，
+              这允许点跨多行匹配。<br>
+            &ensp; 使用场景：<br>
             &emsp;   匹配多行短信：<br>
-            &emsp;   <font color="#fa7f71">领取你的奖品：http://<br>
+            &emsp;   <font color="#fa7f71">领取您的奖品：http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   规则为：<br>
+            &emsp;   使用规则：<br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>原始号码</b></font>： <br>
-            &ensp; 启用后，号码将不会被优化，<font color="cyan"><b>+</b></font> 和 <font color="cyan"><b>前导 0</b></font> 将保留，这有助于区分国内号码。
+            <font color="#d1c8c8"><b>原始号码</b></font>: <br>
+            &ensp; 启用时，数字将不会被优化，<font color="cyan"><b>+</b></font> 和 <font color="cyan"><b>前导 0</b></font> 将保持不变，对区分国内电话号码很有用。
         ]]>
     </string>
 

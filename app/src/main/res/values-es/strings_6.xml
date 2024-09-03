@@ -1,9 +1,10 @@
 <resources>
     <string name="crash_title">
         Lo siento, la aplicación se ha bloqueado.\n\n
-        Copia el contenido siguiente e informa de este problema en GitHub. Elimina cualquier información confidencial antes de informar.
+        Copia el contenido a continuación y reporta este problema en github,
+        elimina cualquier información confidencial antes de reportarlo.
     </string>
-    <string-array name="week">
+    <string-array name="short_weekdays">
         <item>Dom</item>
         <item>Lun</item>
         <item>Mar</item>
@@ -16,17 +17,17 @@
     <string-array name="block_type_list">
         <item>Rechazar</item>
         <item>Silenciar</item>
-        <item>Responder y colgar</item>
+        <item>Contestar+Colgar</item>
     </string-array>
 
     <string-array name="history_display_filter">
-        <item>Mostrar aprobados</item>
-        <item>Mostrar bloqueados</item>
+        <item>Mostrar permitidas</item>
+        <item>Mostrar bloqueadas</item>
     </string-array>
 
     <string-array name="history_record_context_menu">
         <item>Copiar número</item>
-        <item>Añadir a una nueva regla</item>
+        <item>Agregar número a nueva regla</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -34,9 +35,9 @@
         <item>Sombra</item>
         <item>Barra de estado, sombra</item>
         <item>Sonido, barra de estado, sombra</item>
-        <item>Sonido, barra de estado, sombra, aviso</item>
+        <item>Sonido, barra de estado, sombra, emergente</item>
     </string-array>
-    <string-array name="export_as_list">
+    <string-array name="export_type_list">
         <item>Exportar como Json</item>
         <item>Exportar como comprimido</item>
     </string-array>
@@ -44,19 +45,19 @@
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones las realiza Google AI, informa de un problema en GitHub para añadir compatibilidad con un nuevo idioma.
+            Las traducciones son realizadas por Google AI, abre un problema en github para agregar soporte para un nuevo idioma.
         ]]>
     </string>
-    <string name="enabled_for_call">Activar para llamadas</string>
-    <string name="enabled_for_sms">Activar para SMS</string>
-    <string name="repeated_call">Llamadas repetidas</string>
+    <string name="enabled_for_call">Habilitar para llamadas</string>
+    <string name="enabled_for_sms">Habilitar para SMS</string>
+    <string name="repeated_call">Llamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite en un periodo de tiempo; es probable que sea importante en lugar de una llamada de spam. <br>
+        Permitir si la llamada se repite dentro de un período de tiempo, es probable que sea importante en lugar de una llamada de spam. <br>
         <br>
-        También se cuentan los mensajes de texto recibidos del mismo número; esto depende de si se ha concedido el permiso READ_SMS, que es opcional.<br>
+        Recibir mensajes de texto del mismo número también se cuenta, esto depende de si se otorga el permiso READ_SMS, que es opcional.<br>
         <br>
-        El ajuste predeterminado <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada en 5 minutos. <br>
+        La configuración predeterminada <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada dentro de los 5 minutos. <br>
         <br>
         Solo se aplica a las llamadas, <b>no</b> a los mensajes de texto. <br>
         <br>
@@ -66,14 +67,15 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El conmutador global: esta aplicación solo funciona cuando está activado.
-        Desactívalo cuando estés esperando una llamada/mensaje concreto. <br>
+        El interruptor global, esta aplicación solo funciona cuando está activado,
+        desactívalo cuando esperes alguna llamada/mensaje en particular. <br>
         <br>
-        También se puede activar/desactivar desde los <b>Ajustes rápidos del desplegable</b>.<br>
+        También se puede activar desde los <b>Ajustes rápidos desplegables</b>.<br>
         <br>
-        Para los SMS, esta aplicación se hará cargo de las notificaciones de SMS; <font color="#fa7f71"><b>desactiva el permiso de notificación de la aplicación de SMS predeterminada</b></font> en los ajustes del sistema,
+        Para SMS, esta aplicación se hará cargo de las notificaciones de SMS, por favor
+        <font color="#fa7f71"><b>desactiva el permiso de notificación de la aplicación de SMS predeterminada</b></font> en los ajustes del sistema,
         de lo contrario habrá notificaciones dobles.
-        Solo filtra las notificaciones de SMS; los SMS de spam seguirán estando presentes en la aplicación de SMS predeterminada.
+        Solo filtra las notificaciones de SMS, los mensajes de spam seguirán estando presentes en la aplicación de SMS predeterminada.
         ]]>
     </string>
 
@@ -81,9 +83,9 @@
     <string name="version">Versión</string>
     <string name="build_time">Hora de compilación (UTC)</string>
     <string name="source_code">Código fuente</string>
-    <string name="dismiss">Cerrar</string>
+    <string name="dismiss">Descartar</string>
     <string name="warning_running_in_work_profile">
-        Esta aplicación podría no funcionar correctamente en el perfil de trabajo; en su lugar, instálala en el perfil principal.
+        Esta aplicación puede no funcionar correctamente dentro del perfil de trabajo, instálala en el perfil principal en su lugar.
     </string>
     <string-array name="import_csv_type">
         <item>Importar .csv como una sola regla</item>
@@ -91,8 +93,8 @@
     </string-array>
     <string name="warning_double_sms">
         Esta aplicación se hará cargo de todas las notificaciones de SMS,
-        pero el permiso de notificación de la aplicación de SMS predeterminada también está activado,
-        desactívalo en los ajustes del sistema para evitar notificaciones de SMS dobles.
+        pero el permiso de notificación de la aplicación de SMS predeterminada también está habilitado,
+        deshabilítalo en los ajustes del sistema para evitar notificaciones de SMS dobles.
     </string>
     <string name="open_settings">Abrir ajustes</string>
     <string name="ignore">Ignorar</string>

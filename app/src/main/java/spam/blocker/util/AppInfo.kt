@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import androidx.compose.runtime.Immutable
 import spam.blocker.R
 
+@Immutable
 class AppInfo {
     lateinit var pkgName: String
     lateinit var label: String

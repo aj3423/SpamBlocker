@@ -1,8 +1,12 @@
 <resources>
-    <string name="follow_system">Виконати системні</string>
+    <string name="start_time">час початку</string>
+    <string name="end_time">час завершення</string>
+    <string name="next">Далі</string>
+    <string name="previous">Попередній</string>
+    <string name="follow_system">Дотримуватися системи</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
-        <item>Світла</item>
-        <item>Темна</item>
+        <item>Світлий</item>
+        <item>Темний</item>
     </string-array>
 </resources>

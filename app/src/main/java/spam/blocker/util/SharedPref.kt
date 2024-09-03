@@ -85,7 +85,7 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun getLanguage(): String { return readString(Def.SETTING_LANGUAGE, "") }
     fun setLanguage(lang: String) { writeString(Def.SETTING_LANGUAGE, lang) }
 
-    fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "") }
+    fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "setting") }
     fun setActiveTab(tab: String) { writeString(Def.SETTING_ACTIVE_TAB, tab) }
 
     fun hasAskedForAllPermissions(): Boolean {
@@ -172,13 +172,16 @@ class RepeatedCall(ctx: Context) : SharedPref(ctx) {
     fun isEnabled(): Boolean {
         return readBoolean(Def.SETTING_PERMIT_REPEATED, false)
     }
-    fun getConfig(): Pair<Int, Int> {
-        val times = readInt(Def.SETTING_REPEATED_TIMES, 1)
-        val inXMin = readInt(Def.SETTING_REPEATED_IN_X_MIN, 5)
-        return Pair(times, inXMin)
+    fun getTimes(): Int {
+        return readInt(Def.SETTING_REPEATED_TIMES, 1)
     }
-    fun setConfig(times: Int, inXMin: Int) {
+    fun setTimes(times: Int ) {
         writeInt(Def.SETTING_REPEATED_TIMES, times)
+    }
+    fun getInXMin(): Int {
+        return readInt(Def.SETTING_REPEATED_IN_X_MIN, 5)
+    }
+    fun setInXMin(inXMin: Int) {
         writeInt(Def.SETTING_REPEATED_IN_X_MIN, inXMin)
     }
 }
@@ -190,10 +193,10 @@ class Dialed(ctx: Context) : SharedPref(ctx) {
     fun isEnabled(): Boolean {
         return readBoolean(Def.SETTING_PERMIT_DIALED, false)
     }
-    fun getConfig(): Int {
+    fun getDays(): Int {
         return readInt(Def.SETTING_DIALED_IN_X_DAY, 3)
     }
-    fun setConfig(inXDay: Int) {
+    fun setDays(inXDay: Int) {
         writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay)
     }
 }
@@ -205,25 +208,29 @@ class OffTime(ctx: Context) : SharedPref(ctx) {
     fun setEnabled(enabled: Boolean) {
         writeBoolean(Def.SETTING_ENABLE_OFF_TIME, enabled)
     }
-    fun setStart(hour: Int, min: Int) {
+    fun setStartHour(hour: Int) {
         writeInt(Def.SETTING_OFF_TIME_START_HOUR, hour)
+    }
+    fun setStartMin(min: Int) {
         writeInt(Def.SETTING_OFF_TIME_START_MIN, min)
     }
-    fun setEnd(hour: Int, min: Int) {
+    fun setEndHour(hour: Int) {
         writeInt(Def.SETTING_OFF_TIME_END_HOUR, hour)
+    }
+    fun setEndMin(min: Int) {
         writeInt(Def.SETTING_OFF_TIME_END_MIN, min)
     }
-    fun getStart(): Pair<Int, Int> {
-        return Pair(
-            readInt(Def.SETTING_OFF_TIME_START_HOUR, 0),
-            readInt(Def.SETTING_OFF_TIME_START_MIN, 0)
-        )
+    fun getStartHour(): Int {
+        return readInt(Def.SETTING_OFF_TIME_START_HOUR, 0)
     }
-    fun getEnd(): Pair<Int, Int> {
-        return Pair(
-            readInt(Def.SETTING_OFF_TIME_END_HOUR, 0),
-            readInt(Def.SETTING_OFF_TIME_END_MIN, 0)
-        )
+    fun getStartMin(): Int {
+        return readInt(Def.SETTING_OFF_TIME_START_MIN, 0)
+    }
+    fun getEndHour(): Int {
+        return readInt(Def.SETTING_OFF_TIME_END_HOUR, 0)
+    }
+    fun getEndMin(): Int {
+        return readInt(Def.SETTING_OFF_TIME_END_MIN, 0)
     }
 }
 class BlockType(ctx: Context) : SharedPref(ctx) {
@@ -245,10 +252,23 @@ class RecentApps(ctx: Context) : SharedPref(ctx) {
     fun setList(list: List<String>) {
         writeString(Def.SETTING_RECENT_APPS, list.joinToString(","))
     }
-    fun getConfig() : Int {
+    fun addPackage(pkgToAdd: String) {
+        val l = getList().toMutableList()
+        l.add(pkgToAdd)
+        setList(l)
+    }
+    fun removePackage(pkgToRemove: String) {
+        val l = getList().toMutableList()
+        val index = l.indexOf(pkgToRemove)
+        if (index != -1) {
+            l.removeAt(index)
+        }
+        setList(l)
+    }
+    fun getMin() : Int {
         return readInt(Def.SETTING_RECENT_APP_IN_X_MIN, 5)
     }
-    fun setConfig(inXMin : Int) {
+    fun setMin(inXMin : Int) {
         writeInt(Def.SETTING_RECENT_APP_IN_X_MIN, inXMin)
     }
 }

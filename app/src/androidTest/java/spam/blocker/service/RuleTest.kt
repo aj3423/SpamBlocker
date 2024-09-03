@@ -2,6 +2,7 @@ package spam.blocker.service
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
+//import androidx.test.core.app.ApplicationProvider
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockkObject
@@ -9,13 +10,16 @@ import junit.framework.TestCase.assertEquals
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+//import junit.framework.TestCase.assertEquals
+//import org.junit.After
+//import org.junit.Before
+//import org.junit.Test
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.PatternRule
+import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
-import spam.blocker.util.Flag
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
@@ -50,24 +54,24 @@ class RuleTest {
     fun build_rule(
         pattern: String, patternExtra: String, priority: Int, isBlacklist: Boolean, flagCallSms: Int,
         patternFlags: Int = 0, patternExtraFlags: Int = 0, schedule: String = ""
-    ) : PatternRule {
-        val f = PatternRule()
+    ) : RegexRule {
+        val f = RegexRule()
         f.pattern = pattern
         f.patternExtra = patternExtra
         f.priority = priority
         f.isBlacklist = isBlacklist
-        f.flags = Flag(flagCallSms)
-        f.patternFlags = Flag(patternFlags)
-        f.patternExtraFlags = Flag(patternExtraFlags)
+        f.flags = flagCallSms
+        f.patternFlags = patternFlags
+        f.patternExtraFlags = patternExtraFlags
         f.schedule = schedule
 
         return f
     }
 
-    fun add_number_rule(f: PatternRule) {
+    fun add_number_rule(f: RegexRule) {
         NumberRuleTable().addNewRule(ctx, f)
     }
-    fun add_content_rule(f: PatternRule) {
+    fun add_content_rule(f: RegexRule) {
         ContentRuleTable().addNewRule(ctx, f)
     }
 
@@ -162,10 +166,11 @@ class RuleTest {
     // testing repeated call
     @Test
     fun repeated_call() {
-        val spf = RepeatedCall(ctx)
-        val inXmin = 5
-        spf.setEnabled(true)
-        spf.setConfig(4, inXmin)
+        RepeatedCall(ctx).apply {
+            setEnabled(true)
+            setTimes(4)
+            setInXMin(5)
+        }
 
         mockkObject(Permissions)
         mock_call_permission_granted()
@@ -211,7 +216,7 @@ class RuleTest {
         val spf = Dialed(ctx)
         val inXdays = 5
         spf.setEnabled(true)
-        spf.setConfig(inXdays)
+        spf.setDays(inXdays)
 
         mockkObject(Permissions)
         mock_call_permission_granted()
@@ -267,7 +272,7 @@ class RuleTest {
     fun recent_app() {
         val spf = RecentApps(ctx)
         val pkgs = listOf("my.pkg")
-        spf.setConfig(5)
+        spf.setMin(5)
         spf.setList(pkgs)
 
         // block all number
@@ -296,8 +301,6 @@ class RuleTest {
     }
     @Test
     fun off_time() {
-        val spf = OffTime(ctx)
-
         // block all number
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
@@ -306,9 +309,14 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
         // set off-time to (1:00, 2:00)
-        spf.setEnabled(true)
-        spf.setStart(1, 0)
-        spf.setEnd(2, 0)
+        val spf = OffTime(ctx).apply {
+            setEnabled(true)
+
+            setStartHour(1)
+            setStartMin(0)
+            setEndHour(2)
+            setEndMin(0)
+        }
 
         // mock current time to 1:15
         mock_current_hour_min(1, 15)
@@ -326,8 +334,10 @@ class RuleTest {
 
 
         // ---- test start > end (over night) ----
-        spf.setStart(21, 0) // 21 PM -> 02 AM
-        spf.setEnd(2, 0)
+        spf.setStartHour(21)
+        spf.setStartMin(0) // 21 PM -> 02 AM
+        spf.setEndHour(2)
+        spf.setEndMin(0)
         // mock current time to 22:00
         mock_current_hour_min(22, 0)
         // should pass

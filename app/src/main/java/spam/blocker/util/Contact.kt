@@ -7,8 +7,6 @@ import android.graphics.ImageDecoder
 import android.net.Uri
 import android.provider.ContactsContract.PhoneLookup
 import android.provider.ContactsContract.Contacts
-import android.util.Log
-import spam.blocker.def.Def
 
 class ContactInfo {
     var name = ""
@@ -32,54 +30,48 @@ class ContactInfo {
 }
 
 
-open class Contacts {
+object Contacts {
 
-    companion object {
-
-        fun findByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
-            if (!Permissions.isContactsPermissionGranted(ctx)) {
-                return null
-            }
-
-            val uri = Uri.withAppendedPath(
-                PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(rawNumber)
-            )
-
-            val cursor: Cursor? = try {
-                ctx.contentResolver.query(
-                    uri,
-                    arrayOf(
-                        Contacts.DISPLAY_NAME,
-                        Contacts.PHOTO_URI
-                    ),
-                    null,
-                    null,
-                    null
-                )
-            } catch (e: Exception) {
-                null
-            }
-
-            cursor?.use {
-                val nameIndex = it.getColumnIndex(Contacts.DISPLAY_NAME)
-                val iconIndex = it.getColumnIndex(Contacts.PHOTO_URI)
-
-                while (it.moveToNext()) {
-
-                    val ci = ContactInfo()
-
-                    ci.name = it.getString(nameIndex)
-                    ci.iconUri = it.getString(iconIndex)
-
-                    Log.d(
-                        Def.TAG,
-                        "---- contact matches, name: ${ci.name}, icon: ${ci.iconUri}"
-                    )
-                    return ci
-                }
-            }
+    fun findByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
+        if (!Permissions.isContactsPermissionGranted(ctx)) {
             return null
         }
+
+        val uri = Uri.withAppendedPath(
+            PhoneLookup.CONTENT_FILTER_URI,
+            Uri.encode(rawNumber)
+        )
+
+        val cursor: Cursor? = try {
+            ctx.contentResolver.query(
+                uri,
+                arrayOf(
+                    Contacts.DISPLAY_NAME,
+                    Contacts.PHOTO_URI
+                ),
+                null,
+                null,
+                null
+            )
+        } catch (e: Exception) {
+            null
+        }
+
+        cursor?.use {
+            val nameIndex = it.getColumnIndex(Contacts.DISPLAY_NAME)
+            val iconIndex = it.getColumnIndex(Contacts.PHOTO_URI)
+
+            while (it.moveToNext()) {
+
+                val ci = ContactInfo()
+
+                ci.name = it.getString(nameIndex)
+                ci.iconUri = it.getString(iconIndex)
+
+                logd("---- contact matches, name: ${ci.name}, icon: ${ci.iconUri}")
+                return ci
+            }
+        }
+        return null
     }
 }

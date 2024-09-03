@@ -3,8 +3,9 @@ import java.util.Properties
 
 
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     kotlin("plugin.serialization") version "1.9.24"
 }
 
@@ -50,7 +51,8 @@ android {
 
             // the keystore file doesn't exist on github action,
             // use "debug" instead and it will be signed by signing action later.
-            signingConfig = signingConfigs.getByName(if (keystorePropertiesFile.exists()) "release" else "debug" )
+            signingConfig =
+                signingConfigs.getByName(if (keystorePropertiesFile.exists()) "release" else "debug")
         }
     }
     compileOptions {
@@ -61,6 +63,7 @@ android {
         jvmTarget = "17"
     }
     buildFeatures {
+        compose = true
         viewBinding = true
         buildConfig = true
     }
@@ -78,33 +81,18 @@ android {
 }
 
 dependencies {
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    // For control over item selection of both touch and mouse driven selection
-    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+    // jetbrains kotlinx
+    implementation(libs.serialization) // for backup/restore json serialization
 
-    implementation("il.co.theblitz:observablecollections:1.4.2") // for UI observer pattern, in jcenter only
+    // jetpack compose
+    implementation(platform(libs.compose.bom)) // auto compose version control
+    implementation(libs.compose.activity) // for ComponentActivity
+    implementation(libs.compose.lifecycle) // for LifecycleResumeEffect
+    implementation(libs.compose.material3) // for components like Scaffold, Surface
+    implementation(libs.compose.ui) // for components like AnnotatedString
 
-    implementation("com.github.skydoves:balloon:1.6.4") // for tooltip
-
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0") // for backup/restore
-
-    implementation("me.grantland:autofittextview:0.2.1") // for auto-fit label/button
-
-    implementation("com.github.DavidProdinger:weekdays-selector:1.1.1") // for weekday picker
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.activity)
-
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    androidTestImplementation("io.mockk:mockk-android:1.13.10")
+    // testing
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.mockk)
 }

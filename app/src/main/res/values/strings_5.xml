@@ -2,13 +2,23 @@
     <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
     <string name="find_apps">Find Apps</string>
-    <string name="clone_rule">Clone Rule</string>
-    <string name="delete_all_rules">Delete All Rules</string>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Clone Rule</item>
+        <item>Delete All Rules</item>
+    </string-array>
+    <string name="confirm_delete_all_rule">Confirm to delete All Rules?</string>
+
     <string name="notification">Notification</string>
     <string name="type">Type</string>
     <string name="times">Times</string>
-    <string name="day">Day</string>
-    <string name="days">Days</string>
+    <plurals name="days">
+        <item quantity="one">%d Day</item>
+        <item quantity="two">%d Days</item>
+        <item quantity="few">%d Days</item>
+        <item quantity="many">%d Days</item>
+        <item quantity="other">%d Days</item>
+    </plurals>
     <string name="min">Min</string>
     <string name="within_minutes">Within Minutes</string>
     <string name="within_days">Within Days</string>
@@ -17,9 +27,11 @@
     <string name="sms_content">SMS Content</string>
     <string name="sms_content_abbrev">Content</string>
     <string name="regex_flags">Regex Flags</string>
-    <string name="ignore_case">Ignore Case</string>
-    <string name="dot_match_all">Dot Match All</string>
-    <string name="raw_number">Raw Number</string>
+    <string-array name="regex_flags_list">
+        <item>Ignore Case</item>
+        <item>Dot Match All</item>
+        <item>Raw Number</item>
+    </string-array>
     <string name="disable_number_optimization">This optimization can be disabled by the regex flag `Raw Number`.</string>
     <string name="off_time">Off Time</string>
     <string name="schedule">Schedule</string>
@@ -32,7 +44,7 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#d1c8c8"><b>Reject</b></font>: <br>
-        &emsp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on, it\'s the recommended type for those who don\'t use voicemail.<br>
+        &emsp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on, it\'s the recommended type if you don\'t use voicemail.<br>
         <br>
         - <font color="#d1c8c8"><b>Silence</b></font>: <br>
         &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>

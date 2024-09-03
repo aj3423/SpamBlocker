@@ -6,55 +6,56 @@
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Una forma rápida de copiar contenido de los mensajes SMS o de los números de teléfono, lo que facilita la obtención de códigos de verificación o números entrantes.<br>
+        Una forma rápida de copiar contenido de mensajes SMS o números de teléfono, lo que facilita la obtención de códigos de verificación o números entrantes.<br>
         <br>
         Cuando coincida, aparecerá un botón como <font color="yellow"><b>Copiar: 123456</b></font> en la notificación.<br>
         <br>
         Una regla de ejemplo para extraer códigos de verificación:<br>
         &emsp; Uso del grupo de captura:<br>
-        &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Otro enfoque usando lookaround:<br>
-        &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        &emsp;&emsp; <font color="cyan"><b>código.*?(\\d+) </b></font><br>
+        &emsp; Otro enfoque utilizando lookaround:<br>
+        &emsp;&emsp; <font color="cyan"><b>(?&lt;=código.{0,3})\\d+</b></font>
         ]]>
     </string>
-    <string name="help_apply_to">
+    <string name="help_apply_to_call_sms">
         <![CDATA[
-        Activar esta regla para Llamada, SMS o ambos.<br>
-        Desmarca estas casillas para desactivar la regla sin eliminarla.
+        Habilita esta regla para llamada, SMS o ambos.<br>
+        Desmarca estas casillas de verificación para deshabilitar la regla sin eliminarla.
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Cuando <font color="#d1c8c8"><b>Número</b></font> está marcado, esta regla extraerá contenido del número entrante.
+        Cuando se selecciona <font color="#d1c8c8"><b>Número</b></font>, esta regla extraerá contenido del número entrante.
         Por ejemplo, usa <b>(.*)</b> para copiar el número de teléfono.<br>
         <br>
-        Cuando <font color="#d1c8c8"><b>Contenido</b></font> está marcado, esta regla extraerá contenido del cuerpo del mensaje SMS,
+        Cuando se selecciona <font color="#d1c8c8"><b>Contenido</b></font>, esta regla extraerá contenido del cuerpo del mensaje SMS,
         como códigos de verificación.
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        Cuando <font color="cyan"><b>Pasado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes pasados.<br>
+        Cuando se marca <font color="cyan"><b>Pasado</b></font>, esta regla se aplicará a las llamadas y mensajes pasados.<br>
         <br>
-        Cuando <font color="#fa7f71"><b>Bloqueado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes bloqueados.
+        Cuando se marca <font color="#fa7f71"><b>Bloqueado</b></font>, esta regla se aplicará a las llamadas y mensajes bloqueados.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>Ninguno</b>:<br>&emsp; Sin notificación. <br>
-        <b>Sombra</b>:<br>&emsp; Notificación desplegable. <br>
-        <b>Barra de estado</b>:<br>&emsp; El ícono pequeño en la barra superior. <br>
-        <b>Sonar</b>:<br>&emsp; El sonido de notificación predeterminado. <br>
-        <b>Cabeza arriba</b>:<br>&emsp; Emerge una ventana flotante en la parte superior de la pantalla.
+        <b>Ninguna</b>:<br>&emsp; Sin notificación alguna. <br>
+        <b>Sombra</b>:<br>&emsp; La sombra de notificación desplegable. <br>
+        <b>Barra de estado</b>:<br>&emsp; El pequeño icono en la barra superior. <br>
+        <b>Sonido</b>:<br>&emsp; El sonido de notificación predeterminado. <br>
+        <b>Heads-Up</b>:<br>&emsp; Muestra una ventana flotante en la parte superior de la pantalla.
         ]]>
     </string>
+    <string name="title_rule_testing">Prueba de regla</string>
     <string name="help_test_rules">
         <![CDATA[
         Esto ayuda a verificar si las reglas están configuradas como se esperaba.<br>
         <br>
-        Es solo una simulación y no mostrará una llamada entrante (o mensaje de texto).<br>
+        Es solo una simulación y en realidad no mostrará una llamada entrante (o mensaje de texto).<br>
         <br>
-        El resultado se muestra aquí y en el registro histórico, con notificación.
+        El resultado se muestra aquí, y en el registro del historial, con notificación.
         ]]>
     </string>
 

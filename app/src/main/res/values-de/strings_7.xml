@@ -1,6 +1,10 @@
 <resources>
-    <string name="follow_system">Dem System folgen</string>
-    <string name="theme">Design</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
+    <string name="next">Next</string>
+    <string name="previous">Prev</string>
+    <string name="follow_system">Syst.folgen</string>
+    <string name="theme">Thema</string>
     <string-array name="theme_list">
         <item>Hell</item>
         <item>Dunkel</item>

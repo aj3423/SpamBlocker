@@ -1,71 +1,83 @@
 <resources>
     <string name="allow_repeated_call">Appel répété</string>
-    <string name="dialed">Appelé</string>
-    <string name="find_apps">Trouver des applications</string>
-    <string name="clone_rule">Dupliquer la règle</string>
-    <string name="delete_all_rules">Supprimer toutes les règles</string>
+    <string name="dialed">Numérotation</string>
+    <string name="find_apps">Rechercher des applis</string>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Dupliquer la règle</item>
+        <item>Supprimer toutes les règles</item>
+    </string-array>
+    <string name="confirm_delete_all_rule">Confirmer la suppression de toutes les règles ?</string>
+
     <string name="notification">Notification</string>
     <string name="type">Type</string>
-    <string name="times">fois</string>
-    <string name="day">Jour</string>
-    <string name="days">Jours</string>
-    <string name="min">min</string>
+    <string name="times">Fois</string>
+    <plurals name="days">
+        <item quantity="one">%d jour</item>
+        <item quantity="two">%d jours</item>
+        <item quantity="few">%d jours</item>
+        <item quantity="many">%d jours</item>
+        <item quantity="other">%d jours</item>
+    </plurals>
+    <string name="min">Min</string>
     <string name="within_minutes">En quelques minutes</string>
     <string name="within_days">En quelques jours</string>
     <string name="phone_number">Numéro de téléphone</string>
-    <string name="phone_number_abbrev">N°</string>
+    <string name="phone_number_abbrev">Numéro</string>
     <string name="sms_content">Contenu SMS</string>
     <string name="sms_content_abbrev">Contenu</string>
     <string name="regex_flags">Drapeaux Regex</string>
-    <string name="ignore_case">Ignorer la casse</string>
-    <string name="dot_match_all">Cherche les no_translate</string>
-    <string name="raw_number">Numéro brut</string>
-    <string name="disable_number_optimization">Cette optimisation peut être désactivée par le drapeau regex `Numéro brut`.</string>
-    <string name="off_time">Heures hors bloc</string>
+    <string-array name="regex_flags_list">
+        <item>Ignorer la casse</item>
+        <item>Le point correspond à tout</item>
+        <item>Nombre brut</item>
+    </string-array>
+    <string name="disable_number_optimization">Cette optimisation peut être désactivée par le drapeau regex `Nombre brut`.</string>
+    <string name="off_time">Heure de désactivation</string>
     <string name="schedule">Planification</string>
-    <string name="workday">Jour de travail</string>
+    <string name="workday">Jour ouvrable</string>
     <string name="weekend">Week-end</string>
     <string name="entire_day">Journée entière</string>
-    <string name="block_type">Type de bloc</string>
-    <string name="for_particular_number">Pour un numéro</string>
-    <string name="help_for_particular_number">Lorsqu\'elle est activée, la règle s\'applique uniquement lorsque le numéro et le contenu correspondent.</string>
+    <string name="block_type">Type de blocage</string>
+    <string name="for_particular_number">Pour le numéro</string>
+    <string name="help_for_particular_number">Lorsque cette option est activée, la règle s\'applique uniquement lorsque le numéro et le contenu correspondent.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Rejeter</b></font> : <br>
-        &emsp; Identique à appuyer sur le bouton de refus. Fonctionne en mode complètement silencieux, l\'écran de verrouillage ne s\'allumera pas. C\'est le type recommandé pour ceux qui ne utilisent pas la messagerie vocale.<br>
+        - <font color="#d1c8c8"><b>Rejeter</b></font >: <br>
+        &emsp; Pareil que d\'appuyer sur le bouton Refuser. Cela fonctionne complètement discrètement, l\'écran de verrouillage ne s\'allumera pas, c\'est le type recommandé si vous n\'utilisez pas de messagerie vocale.<br>
         <br>
-        - <font color="#d1c8c8"><b>Silencieux</b></font> : <br>
-        &emsp; L\'appel sonne silencieusement en arrière-plan, ce qui donne à l\'appelant l\'impression que vous êtes simplement occupé et que vous n\'avez pas répondu.<br>
+        - <font color="#d1c8c8"><b>Silence</b></font >: <br>
+        &emsp; Il sonnera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'avez pas répondu.<br>
         <br>
-        - <font color="#d1c8c8"><b>Décrocher et raccrocher</b></font> : <br>
-        &emsp; Pour éviter d\'être renvoyé vers la messagerie vocale. L\'écran de verrouillage peut s\'allumer brièvement. Vous pouvez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour désactiver ce son).
+        - <font color="#d1c8c8"><b>Répondre et raccrocher</b></font >: <br>
+        &emsp; Pour éviter d\'être envoyé à la boîte vocale. L\'écran de verrouillage peut s\'allumer pendant un court moment, vous pouvez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour couper ce son).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Les numéros appelés seront autorisés. <br>
+        Les numéros numérotés seront autorisés. <br>
         <br>
-        L\'envoi de messages compte également, cela fonctionne uniquement lorsque l\'autorisation READ_SMS est accordée. <br>
+        L\'envoi de messages compte également, cela ne fonctionne que lorsque l\'autorisation READ_SMS est accordée. <br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>3 jours</b></font> signifie que si vous avez appelé ou envoyé des messages au numéro au cours des 3 derniers jours, les appels de ce numéro seront autorisés.<br>
+        Le paramètre par défaut <font color="cyan"><b>3 jours</b></font> signifie que si vous avez composé des numéros ou envoyé des messages à ce numéro au cours des 3 derniers jours, les appels de ce numéro seront autorisés.<br>
         <br>
-        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Tout appel entrant passera si une application de la liste a été utilisée récemment.<br>
+        Tout appel entrant sera transmis si une application de la liste a été utilisée récemment.<br>
         <br>
         Un cas d\'utilisation typique :<br>
-        &emsp; Vous venez de commander une pizza via PizzaApp, et peu de temps après, ils vous appellent pour vous rembourser car ils ferment. Cet appel passera si PizzaApp est activé ici. <br>
+        &emsp; Vous venez de commander une pizza dans PizzaApp, ils vous appellent bientôt pour vous rembourser car ils ferment. Cet appel sera transmis si PizzaApp est activé ici. <br>
         <br>
-        Le paramètre par défaut <font color="cyan"><b>5 min</b></font> signifie que tout appel sera autorisé si l\'une de ces applications a été utilisée dans les 5 minutes, par `utilisée`, cela signifie qu\'elle a été activée, désactivée, réduite ou fermée. <br>
+        Le paramètre par défaut <font color="cyan"><b>5 min</b></font> signifie que tout appel sera autorisé si l\'une de ces applications a été utilisée dans les 5 minutes, en « utilisé », cela signifie soit activé, désactivé, minimisé ou tué. <br>
         <br>
-        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 </resources>

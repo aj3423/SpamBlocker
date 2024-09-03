@@ -1,8 +1,12 @@
 <resources>
+    <string name="start_time">Начало</string>
+    <string name="end_time">Конец</string>
+    <string name="next">След</string>
+    <string name="previous">Назад</string>
     <string name="follow_system">Следовать системе</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
-        <item>Светлая</item>
-        <item>Темная</item>
+        <item>Светлый</item>
+        <item>Темный</item>
     </string-array>
 </resources>

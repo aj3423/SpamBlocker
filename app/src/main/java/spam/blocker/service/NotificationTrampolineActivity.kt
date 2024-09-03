@@ -1,13 +1,12 @@
 package spam.blocker.service
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import spam.blocker.def.Def
+import androidx.activity.ComponentActivity
 import spam.blocker.util.Launcher
 import spam.blocker.util.Notification
+import spam.blocker.util.logd
 
-class NotificationTrampolineActivity : AppCompatActivity() {
+class NotificationTrampolineActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,22 +17,22 @@ class NotificationTrampolineActivity : AppCompatActivity() {
         // otherwise the intent will be overridden by the next notification
         val action = intent.action
 
-        Log.d(Def.TAG, "notification clicked, type: $type, blocked: $blocked, action: $action")
+        logd("notification clicked, type: $type, blocked: $blocked, action: $action")
 
         when (type) {
             "sms" -> {
                 if (blocked) { // launch the default SMS app
                     Launcher.launchSMSApp(this)
                 } else { // open the conversation in SMS app
-                    val smsto = intent.getStringExtra("rawNumber")
-                    Launcher.openSMSConversation(this, smsto)
+                    val smsTo = intent.getStringExtra("rawNumber")
+                    Launcher.openSMSConversation(this, smsTo)
                 }
             }
             "call" -> { // only blocked calls have notification
                 Launcher.launchCallApp(this)
             }
             else -> { // this should never happen
-                Launcher.launchThisApp(this, "call")
+                Launcher.launchThisApp(this)
             }
         }
 

@@ -7,10 +7,9 @@ import android.content.Context.TELECOM_SERVICE
 import android.content.Intent
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
-import android.util.Log
-import spam.blocker.def.Def
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
+import spam.blocker.util.logi
 
 class CallStateReceiver : BroadcastReceiver() {
 
@@ -40,7 +39,7 @@ class CallStateReceiver : BroadcastReceiver() {
                 // ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
                     val currNumber = extractNumber(intent) ?: return
-                    Log.i(Def.TAG, "RINGING, num: $currNumber")
+                    logi("RINGING, num: $currNumber")
 
                     if (shouldBlock(ctx, currNumber))
                         answerCall(ctx)
@@ -49,7 +48,7 @@ class CallStateReceiver : BroadcastReceiver() {
                 // call is active(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                     val currNumber = extractNumber(intent) ?: return
-                    Log.i(Def.TAG, "IN CALL, num: $currNumber")
+                    logi("IN CALL, num: $currNumber")
 
                     if (shouldBlock(ctx, currNumber))
                         endCall(ctx)
@@ -62,12 +61,12 @@ class CallStateReceiver : BroadcastReceiver() {
     private fun answerCall(ctx: Context) {
         val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
         telMgr.acceptRingingCall()
-        Log.i(Def.TAG, "answer call")
+        logi("answer call")
     }
     @SuppressLint("MissingPermission")
     private fun endCall(ctx: Context) {
         val telMgr = ctx.getSystemService(TELECOM_SERVICE) as TelecomManager
         telMgr.endCall()
-        Log.i(Def.TAG, "end call")
+        logi("end call")
     }
 }

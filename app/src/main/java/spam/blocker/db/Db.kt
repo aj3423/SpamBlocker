@@ -3,8 +3,8 @@ package spam.blocker.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import spam.blocker.def.Def
+import spam.blocker.util.logi
 
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
@@ -103,7 +103,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        Log.i(Def.TAG, "upgrading db $oldVersion -> $newVersion")
+        logi("upgrading db $oldVersion -> $newVersion")
 
         if ((newVersion >= 21) && (oldVersion < 21)) {
             db.execSQL("ALTER TABLE $TABLE_NUMBER_RULE ADD COLUMN $COLUMN_PATTERN_EXTRA TEXT")

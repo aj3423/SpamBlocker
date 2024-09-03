@@ -1,12 +1,39 @@
 package spam.blocker.ui.history
 
+import android.content.Context
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import il.co.theblitz.observablecollections.lists.ObservableArrayList
-import spam.blocker.db.Record
+import androidx.lifecycle.ViewModelProvider
+import spam.blocker.db.CallTable
+import spam.blocker.db.HistoryRecord
+import spam.blocker.db.HistoryTable
+import spam.blocker.db.RegexRule
+import spam.blocker.db.SmsTable
+import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.loge
 
-// This class is only used for sharing data between MainActivity and CallFragment
-abstract class HistoryViewModel : ViewModel() {
-    var records = ObservableArrayList<Record>()
+/*
+  To simplify the code, this view model is used in GlobalVariables instead of viewModel<...>().
+ */
+open class HistoryViewModel(
+    val table: HistoryTable,
+) : ViewModel() {
+    val records = mutableStateListOf<HistoryRecord>()
+
+    fun reload(ctx: Context) {
+        records.clear()
+
+        val spf = Global(ctx)
+        val showPassed = spf.getShowPassed()
+        val showBlocked = spf.getShowBlocked()
+
+        records.addAll(table.listRecords(ctx).filter {
+            (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
+        })
+    }
 }
-class CallViewModel : HistoryViewModel() {}
-class SmsViewModel : HistoryViewModel() {}
+
+class CallViewModel : HistoryViewModel(CallTable())
+
+class SmsViewModel : HistoryViewModel(SmsTable())

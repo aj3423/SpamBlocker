@@ -1,0 +1,65 @@
+package spam.blocker.ui.widgets
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonColors
+import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.util.M
+import spam.blocker.util.Lambda1
+
+data class RadioItem(
+    val text: String,
+    val color: Color = Color.Unspecified
+)
+
+@Composable
+fun RadioGroup(
+    items: List<RadioItem>,
+    selectedIndex: Int,
+    onSelect: Lambda1<Int>,
+) {
+    val C = LocalPalette.current
+
+    items.forEachIndexed { idx, item ->
+        RowVCenter(
+            M.selectable(
+                // make the text also clickable
+                selected = idx == selectedIndex,
+                onClick = {
+                    onSelect(idx)
+                },
+            ),
+        ) {
+            RadioButton(
+                selected = idx == selectedIndex,
+                onClick = {
+                    onSelect(idx)
+                },
+                modifier = M
+                    .scale(0.7f)
+                    .size(24.dp),// reduce the gap between RadioButton and Text
+                colors = RadioButtonDefaults.colors(
+                    unselectedColor = C.disabled,
+                )
+            )
+            Text(
+                text = item.text,
+                color = item.color,
+                modifier = M.padding(end = 8.dp),
+            )
+        }
+    }
+}

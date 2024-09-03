@@ -2,13 +2,13 @@ package spam.blocker.util
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
 import android.app.AppOpsManager
 import android.app.role.RoleManager
 import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.ComponentName
 import android.content.Context
+import android.content.Context.ROLE_SERVICE
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageInfo
@@ -18,78 +18,75 @@ import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
 import android.provider.Telephony.Sms
-import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.ManagedActivityResultLauncher
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.ConfirmDialog
+import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Util.Companion.doOnce
 
 open class Permissions {
     companion object {
-        fun requestAllManifestPermissions(activity: AppCompatActivity) {
-            val permissions = mutableListOf(
-                "android.permission.READ_CALL_LOG",
-                "android.permission.READ_PHONE_STATE",
-                "android.permission.ANSWER_PHONE_CALLS",
-
-                "android.permission.READ_SMS",
-                "android.permission.RECEIVE_SMS",
-
-                "android.permission.POST_NOTIFICATIONS",
-
-                "android.permission.READ_CONTACTS",
-            )
-
-            activity.requestPermissions(permissions.toTypedArray(), 0)
-        }
-
-        fun requestReceiveSmsPermission(activity: AppCompatActivity) {
+        fun requestReceiveSmsPermission(activity: ComponentActivity) {
             activity.requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), 0)
         }
 
         fun isCallScreeningEnabled(ctx: Context): Boolean {
-            val roleManager = ctx.getSystemService(Context.ROLE_SERVICE) as RoleManager
+            val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager
             return roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
         }
 
         // must be initialized in MainActivity
-        lateinit var askAsScreeningApp: (((isGranted: Boolean)->Unit)?) -> Unit
+        lateinit var launcherSetAsCallScreeningApp: Lambda1<Lambda1<Boolean>?>
 
-        fun initSetAsCallScreeningApp(activity: AppCompatActivity) {
-            var callback: ((isGranted: Boolean)->Unit)? = null
+        fun initLauncherSetAsCallScreeningApp(activity: ComponentActivity) {
 
-            val roleManager = activity.getSystemService(AppCompatActivity.ROLE_SERVICE) as RoleManager
-            val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
-            val startForRequestRoleResult = activity.registerForActivityResult(
+            var callback: Lambda1<Boolean>? = null
+
+            val launcher = activity.registerForActivityResult(
                 ActivityResultContracts.StartActivityForResult()
-            ) { result: androidx.activity.result.ActivityResult ->
+            ) { result ->
                 val granted = result.resultCode == Activity.RESULT_OK
                 if (granted) {
                     bindCallScreeningService(activity)
                 }
                 callback?.invoke(granted)
             }
-            askAsScreeningApp = fun(cb: ((isGranted: Boolean)->Unit)?) {
+
+            launcherSetAsCallScreeningApp = fun(cb: Lambda1<Boolean>?) {
                 callback = cb
-                startForRequestRoleResult.launch(intent)
+
+                val roleManager = activity.getSystemService(ROLE_SERVICE) as RoleManager
+                val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
+
+                launcher.launch(intent)
             }
         }
 
-        private fun bindCallScreeningService(activity: AppCompatActivity) {
+        private fun bindCallScreeningService(ctx: Context) {
             val mCallServiceIntent = Intent("android.telecom.CallScreeningService")
-            mCallServiceIntent.setPackage(activity.applicationContext.packageName)
+            mCallServiceIntent.setPackage(ctx.applicationContext.packageName)
             val mServiceConnection: ServiceConnection = object : ServiceConnection {
                 override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {}
                 override fun onServiceDisconnected(componentName: ComponentName) {}
                 override fun onBindingDied(name: ComponentName) {}
             }
-            activity.bindService(
+            ctx.bindService(
                 mCallServiceIntent,
                 mServiceConnection,
-                AppCompatActivity.BIND_AUTO_CREATE
+                Activity.BIND_AUTO_CREATE
             )
         }
 
@@ -97,7 +94,6 @@ open class Permissions {
             val ret = ContextCompat.checkSelfPermission(
                 ctx, permission
             ) == PackageManager.PERMISSION_GRANTED
-//            Log.d(Def.TAG, "$permission Granted: $ret")
             return ret
         }
 
@@ -126,6 +122,7 @@ open class Permissions {
             )
             return (mode == AppOpsManager.MODE_ALLOWED)
         }
+
         fun isUsagePermissionGranted(ctx: Context): Boolean {
             return isProtectedPermissionGranted(ctx, AppOpsManager.OPSTR_GET_USAGE_STATS)
         }
@@ -153,9 +150,15 @@ open class Permissions {
             return mapApps.keys.toList()
         }
 
-        fun getPackagesHoldingPermissions(pm: PackageManager, permissions: Array<String>): List<PackageInfo> {
+        fun getPackagesHoldingPermissions(
+            pm: PackageManager,
+            permissions: Array<String>
+        ): List<PackageInfo> {
             return if (Build.VERSION.SDK_INT >= Def.ANDROID_14) {
-                pm.getPackagesHoldingPermissions(permissions, PackageManager.PackageInfoFlags.of(0L))
+                pm.getPackagesHoldingPermissions(
+                    permissions,
+                    PackageManager.PackageInfoFlags.of(0L)
+                )
             } else {
                 pm.getPackagesHoldingPermissions(permissions, 0)
             }
@@ -248,6 +251,7 @@ open class Permissions {
 abstract class PermissionChecker {
     abstract fun isGranted(ctx: Context): Boolean
 }
+
 open class Permission(
     val name: String,
     val isOptional: Boolean = false,
@@ -272,6 +276,7 @@ class ProtectedPermission(
     }
 }
 
+
 /*
     Convenient class for asking for multiple permissions,
 
@@ -282,12 +287,14 @@ class ProtectedPermission(
     Must be created during the creation of the fragment
  */
 class PermissionChain(
-    private val fragment: Fragment,
-    private val permissions: List<Permission>
+    private val ctx: Context,
+    private val permissions: List<Permission>,
 ) {
-    // for non-protected permission
-    private val launcherNormal: ActivityResultLauncher<String>
-    private val launcherProtected: ActivityResultLauncher<Intent>
+    // for non-protected permission, e.g.: CALL_LOG
+    private lateinit var launcherNormal: ManagedActivityResultLauncher<String, Boolean>
+
+    // for protected permission, e.g.: USAGE_STATS
+    private lateinit var launcherProtected: ManagedActivityResultLauncher<Intent, ActivityResult>
 
 
     // final callback
@@ -295,12 +302,36 @@ class PermissionChain(
 
     private lateinit var currList: MutableList<Permission>
     private lateinit var curr: Permission
-    private val ctx = fragment.requireContext()
 
-    init {
-        launcherNormal = fragment.registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
+    private lateinit var popupTrigger: MutableState<Boolean>
+
+    @Composable
+    fun Compose() {
+        popupTrigger = remember { mutableStateOf(false) }
+        if (popupTrigger.value) {
+            ConfirmDialog(
+                trigger = popupTrigger,
+                content = {
+                    Text(curr.prompt!!, color = LocalPalette.current.textGrey)
+                },
+                positive = {
+                    StrokeButton("ok", Teal200) {
+                        popupTrigger.value = false
+                        handle()
+                    }
+                },
+                negative = {
+                    GreyButton("cancel") {
+                        popupTrigger.value = false
+                        onResult(false)
+                    }
+                }
+            )
+        }
+
+        launcherNormal = rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.RequestPermission()
+        ) { isGranted ->
             if (isGranted || curr.isOptional) {
                 checkNext()
             } else {
@@ -308,7 +339,7 @@ class PermissionChain(
             }
         }
 
-        launcherProtected = fragment.registerForActivityResult(
+        launcherProtected = rememberLauncherForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { _ ->
             val isGranted = Permissions.isProtectedPermissionGranted(ctx, curr.name)
@@ -320,7 +351,7 @@ class PermissionChain(
         }
     }
 
-    fun ask(onResult: (Boolean)->Unit) {
+    fun ask(onResult: (Boolean) -> Unit) {
         this.onResult = onResult
         currList = ArrayList(permissions) // make a copy
         checkNext()
@@ -352,24 +383,15 @@ class PermissionChain(
 
         handleCurrPermission()
     }
+
     private fun handleCurrPermission() {
         if (curr.prompt == null) {
             handle()
         } else { // show prompt dialog
-            AlertDialog.Builder(ctx)
-                .setMessage(curr.prompt)
-                .setPositiveButton(ctx.resources.getString(R.string.ok)) { dialog, _ ->
-                    dialog.dismiss()
-
-                    handle()
-                }
-                .setNegativeButton(ctx.resources.getString(R.string.cancel)) { dialog, _ ->
-                    dialog.dismiss()
-                    onResult(false)
-                }
-                .show()
+            popupTrigger.value = true
         }
     }
+
     private fun handle() {
         if (curr is ProtectedPermission) {
             val protected = curr as ProtectedPermission
@@ -379,3 +401,4 @@ class PermissionChain(
         }
     }
 }
+

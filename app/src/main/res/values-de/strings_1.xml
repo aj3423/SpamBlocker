@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SpamBlocker</string>
     <string name="setting">Einstellungen</string>
-    <string name="call">Anruf</string>
+    <string name="call">Anrufe</string>
     <string name="sms">SMS</string>
     <string name="globally_enabled">Aktiviert</string>
     <string name="number_pattern">Telefonnummer</string>
@@ -9,13 +9,13 @@
     <string name="sms_content_pattern">SMS-Inhalt</string>
     <string name="invalid_regex_pattern">Ungültiger Regex</string>
     <string name="pattern_contain_invisible_characters">Unsichtbare Zeichen gefunden</string>
-    <string name="pattern_contain_leading_zeroes">Die führende 0 muss nicht hinzugefügt werden, sie wird vor der Prüfung entfernt.</string>
-    <string name="pattern_contain_leading_plus">Das führende + muss nicht hinzugefügt werden, es wird vor der Prüfung entfernt.</string>
-    <string name="check_balloon_for_explanation">Lies die Hilfe zu "Regeln für Rufnummern" für eine ausführliche Erklärung.</string>
+    <string name="pattern_contain_leading_zeroes">Keine führenden Nullen nötig, werden vor Prüfung entfernt.</string>
+    <string name="pattern_contain_leading_plus">Kein führendes +, wird vor Prüfung entfernt.</string>
+    <string name="check_balloon_for_explanation">Siehe Hilfe bei \'Nummernregeln\' für eine ausführliche Erklärung.</string>
     <string name="invalid_number">Ungültige Nummer</string>
-    <string name="filter_desc">Beschreibung</string>
-    <string name="apply_to_call">Anwenden auf Anruf</string>
-    <string name="apply_to_sms">Anwenden auf SMS</string>
+    <string name="description">Beschreibung</string>
+    <string name="apply_to_call">Auf Anrufe anwenden</string>
+    <string name="apply_to_sms">Auf SMS anwenden</string>
     <string name="title_add_rule">Neue Regel</string>
     <string name="title_edit_rule">Regel bearbeiten</string>
     <string name="add">Hinzufügen</string>
@@ -31,8 +31,8 @@
     <string name="apply_to">Anwenden auf</string>
     <string name="Delete">Löschen</string>
     <string name="undelete">Wiederherstellen</string>
-    <string name="passed">Bestanden</string>
-    <string name="passed_by_default">Standardmäßig bestanden</string>
+    <string name="passed">Passiert</string>
+    <string name="passed_by_default">Standardmäßig passieren</string>
     <string name="blocked">Blockiert</string>
     <string name="from">Von</string>
     <string name="copy">Kopieren</string>
@@ -44,21 +44,22 @@
     <string name="cancel">Abbrechen</string>
     <string name="miscellaneous">Sonstiges</string>
     <string name="quick_settings">Schnelleinstellungen</string>
-    <string name="regex_settings">Regex-Einstellungen</string>
-    <string name="backup">Sicherung</string>
+    <string name="regex_settings">Regex Einstellungen</string>
+    <string name="backup">Backup</string>
     <string name="import_">Importieren</string>
     <string name="imported">Importiert</string>
     <string name="export">Exportieren</string>
     <string name="config_text">Konfigurationstext</string>
-    <string name="imported_successfully">Erfolgreich importiert.</string>
+    <string name="imported_successfully">Erfolgreich importiert</string>
     <string name="import_fail">Import fehlgeschlagen</string>
-    <string name="go_to_setting">Zu Einstellungen wechseln</string>
-    <string name="prompt_go_to_usage_permission_setting">Diese Funktion benötigt eine Berechtigung:\n\n`Nutzungsstatistiken`\n\nDiese muss manuell in den Systemeinstellungen aktiviert werden.\n\n Diese Einstellungsseite öffnen?</string>
+    <string name="go_to_setting">Zu Einstellungen</string>
+    <string name="prompt_go_to_usage_permission_setting">Diese Funktion benötigt die Erlaubnis:\n\n `Nutzungsstatistik`\n\nSie muss in den Systemeinstellungen manuell aktiviert werden.\n\nDiese Einstellungsseite öffnen? </string>
     <string name="emergency_call">Notruf</string>
     <string name="label_contact_filter">Kontaktfilter</string>
-    <string name="label_number_filter">Regeln für Rufnummern</string>
+    <string name="label_number_filter">Nummernregeln</string>
     <string name="label_content_filter">Nachrichtenregeln</string>
-    <string name="recent_app">Aktuelle App</string>
-    <string name="allow_recent_apps">Aktuelle Apps</string>
+    <string name="recent_app">Letzte App</string>
+    <string name="allow_recent_apps">Letzte Apps</string>
     <string name="allow_contact">Kontakte</string>
+
 </resources>

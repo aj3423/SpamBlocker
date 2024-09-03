@@ -70,7 +70,7 @@
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
         <br>
-        Uncheck the checkboxes to disable the rule, swipe left to delete it.<br>
+        Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left<b></font> to delete it.<br>
         <br>
         <b>Long press</b> the `Add` button to import numbers from .csv file, columns supported:<br>
          - <no_translate>pattern</no_translate>: The regex(<b>required</b>)<br>

@@ -1,13 +1,27 @@
 package spam.blocker.config
 
 import android.content.Context
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.Serializer
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
+import kotlinx.serialization.descriptors.element
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonDecoder
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.JsonTransformingSerializer
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonPrimitive
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.PatternRule
+import spam.blocker.db.RegexRule
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RuleTable
 import spam.blocker.util.SharedPref.BlockType
@@ -109,15 +123,15 @@ class RepeatedCall {
     fun load(ctx: Context) {
         val spf = RepeatedCall(ctx)
         enabled = spf.isEnabled()
-        val (tms, inxmin) = spf.getConfig()
-        times = tms
-        inXMin = inxmin
+        times = spf.getTimes()
+        inXMin = spf.getInXMin()
     }
 
     fun apply(ctx: Context) {
         val spf = RepeatedCall(ctx)
         spf.setEnabled(enabled)
-        spf.setConfig(times, inXMin)
+        spf.setTimes(times)
+        spf.setInXMin(inXMin)
     }
 }
 
@@ -128,13 +142,13 @@ class Dialed {
     fun load(ctx: Context) {
         val spf = Dialed(ctx)
         enabled = spf.isEnabled()
-        inXDay = spf.getConfig()
+        inXDay = spf.getDays()
     }
 
     fun apply(ctx: Context) {
         val spf = Dialed(ctx)
         spf.setEnabled(enabled)
-        spf.setConfig(inXDay)
+        spf.setDays(inXDay)
     }
 }
 
@@ -159,20 +173,24 @@ class OffTime {
     var etMin = 0
     fun load(ctx: Context) {
         val spf = OffTime(ctx)
+
         enabled = spf.isEnabled()
-        val (stHour_, stMin_) = spf.getStart()
-        val (etHour_, etMin_) = spf.getEnd()
-        stHour = stHour_
-        stMin = stMin_
-        etHour = etHour_
-        etMin = etMin_
+
+        stHour = spf.getStartHour()
+        stMin = spf.getStartMin()
+        etHour = spf.getEndHour()
+        etMin = spf.getEndMin()
     }
 
     fun apply(ctx: Context) {
-        val spf = OffTime(ctx)
-        spf.setEnabled(enabled)
-        spf.setStart(stHour, stMin)
-        spf.setEnd(etHour, etMin)
+        OffTime(ctx).apply {
+            setEnabled(enabled)
+
+            setStartHour(stHour)
+            setStartMin(stMin)
+            setEndHour(etHour)
+            setEndMin(etMin)
+        }
     }
 }
 
@@ -184,19 +202,19 @@ class RecentApps {
         val spf = RecentApps(ctx)
         list.clear()
         list.addAll(spf.getList())
-        inXMin = spf.getConfig()
+        inXMin = spf.getMin()
     }
 
     fun apply(ctx: Context) {
         val spf = RecentApps(ctx)
         spf.setList(list)
-        spf.setConfig(inXMin)
+        spf.setMin(inXMin)
     }
 }
 
 @Serializable
 abstract class PatternRules {
-    val rules = mutableListOf<PatternRule>()
+    val rules = mutableListOf<RegexRule>()
 
     abstract fun table(): RuleTable
     fun load(ctx: Context) {
@@ -306,3 +324,4 @@ class Configs {
         }
     }
 }
+

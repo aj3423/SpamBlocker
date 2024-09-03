@@ -15,7 +15,7 @@ class Schedule {
     var startMin = 0
     var endHour = 0
     var endMin = 0
-    var weekdays = arrayListOf<Int>()
+    var weekdays = mutableListOf<Int>()
 
     fun serializeToStr(): String {
         val part0 = weekdays.fold("") { acc, item ->
@@ -31,28 +31,22 @@ class Schedule {
     private fun timeRangeStr(): String {
         return String.format("%02d:%02d-%02d:%02d", startHour, startMin, endHour, endMin)
     }
-    // for display on UI
-    @SuppressLint("DefaultLocale")
-    fun timeRangeDisplayStr(ctx: Context): String {
-        if (startHour == 0 && startMin == 0 && endHour == 0 && endMin == 0)
-            return ctx.getString(R.string.entire_day)
-        return String.format("%02d:%02d - %02d:%02d", startHour, startMin, endHour, endMin)
-    }
     fun toDisplayStr(ctx: Context): String {
-        val labels = ctx.resources.getStringArray(R.array.week)
+        val labels = ctx.resources.getStringArray(R.array.short_weekdays)
         val days = weekdays.sorted()
 
+        val rangeStr = Util.timeRangeStr(ctx, startHour, startMin, endHour, endMin)
         if (days == listOf(1,2,3,4,5,6,7) || days.isEmpty()) // every day, ignore the day string
-            return timeRangeDisplayStr(ctx)
+            return rangeStr
         if (days == listOf(2,3,4,5,6))
-            return ctx.getString(R.string.workday) + "  " + timeRangeDisplayStr(ctx)
+            return ctx.getString(R.string.workday) + "  " + rangeStr
         if (days == listOf(1, 7))
-            return ctx.getString(R.string.weekend) + "  " + timeRangeDisplayStr(ctx)
+            return ctx.getString(R.string.weekend) + "  " + rangeStr
 
         // [1,3,5] -> "Sun,Tue,Thur"
         val daysStr = days.joinToString(",") { labels[it-1] }
 
-        return daysStr + "  " + timeRangeDisplayStr(ctx)
+        return "$daysStr  $rangeStr"
     }
     fun satisfyTime(timeMillis: Long): Boolean {
         val t = LocalDateTime.ofInstant(Instant.ofEpochMilli(timeMillis), ZoneId.systemDefault())
@@ -106,6 +100,5 @@ class Schedule {
 
             return ret
         }
-
     }
 }

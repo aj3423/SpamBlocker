@@ -4,12 +4,12 @@
         Please copy the content below and report this issue on github,
         remove any sensitive information before reporting.
     </string>
-    <string-array name="week">
+    <string-array name="short_weekdays">
         <item>Sun</item>
         <item>Mon</item>
         <item>Tue</item>
         <item>Wed</item>
-        <item>Thur</item>
+        <item>Thu</item>
         <item>Fri</item>
         <item>Sat</item>
     </string-array>
@@ -27,7 +27,7 @@
 
     <string-array name="history_record_context_menu">
         <item>Copy Number</item>
-        <item>Add to New Rule</item>
+        <item>Add Number to new Rule</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -37,7 +37,7 @@
         <item>Sound, StatusBar, Shade</item>
         <item>Sound, StatusBar, Shade, Heads-up</item>
     </string-array>
-    <string-array name="export_as_list">
+    <string-array name="export_type_list">
         <item>Export as Json</item>
         <item>Export as Compressed</item>
     </string-array>

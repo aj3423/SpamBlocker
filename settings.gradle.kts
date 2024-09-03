@@ -10,7 +10,6 @@ pluginManagement {
             }
         }
         gradlePluginPortal()
-        jcenter() // for observablecollections
     }
 }
 dependencyResolutionManagement {
@@ -19,7 +18,6 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
         google()
-        jcenter() // for observablecollections
     }
 }
 

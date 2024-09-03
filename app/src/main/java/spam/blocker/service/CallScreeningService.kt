@@ -4,19 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.telecom.CallScreeningService
-import android.telecom.PhoneAccount
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
-import android.util.Log
 import spam.blocker.R
 import spam.blocker.db.CallTable
-import spam.blocker.db.Record
+import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
+import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
+import spam.blocker.util.logd
 import android.telecom.Call as TelecomCall
 
 
@@ -112,18 +112,18 @@ class CallScreeningService : CallScreeningService() {
         val r = Checker.checkCall(ctx, rawNumber, callDetails)
 
         // 1. log to db
-        val call = Record().apply {
-            peer = rawNumber
-            time = System.currentTimeMillis()
-            result = r.result
-            reason = r.reason()
-        }
+        val call = HistoryRecord(
+            peer = rawNumber,
+            time = System.currentTimeMillis(),
+            result = r.result,
+            reason = r.reason(),
+        )
         val id = CallTable().addNewRecord(ctx, call)
 
         // 2. show notification
         if (r.shouldBlock) {
 
-            Log.d(Def.TAG, String.format("Reject call %s", rawNumber))
+            logd(String.format("Reject call %s", rawNumber))
 
             val importance = if (r.result == Def.RESULT_BLOCKED_BY_NUMBER)
                 r.byRule!!.importance // use per rule notification type
@@ -141,11 +141,11 @@ class CallScreeningService : CallScreeningService() {
             Notification.show(ctx, R.drawable.ic_call_blocked,
                 rawNumber,
                 Checker.resultStr(ctx, r.result, r.reason()),
-                importance, ctx.resources.getColor(R.color.salmon, null), intent,
+                importance, Salmon, intent,
                 toCopy = toCopy)
         }
 
-        // broadcast new call to update UI(add new MenuItem to call log)
+        // broadcast new call to update Util(add new MenuItem to call log)
         run {
             val intent = Intent(Def.ON_NEW_CALL)
             intent.putExtra("type", "call")

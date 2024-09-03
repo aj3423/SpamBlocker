@@ -6,19 +6,20 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
-import android.util.Log
 import spam.blocker.R
-import spam.blocker.db.Record
+import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.logd
 
 class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, intent: Intent?) {
-        Log.d(Def.TAG, "onReceive in SmsReceiver")
+        logd("onReceive in SmsReceiver")
         if (!Global(ctx!!).isGloballyEnabled() || !Global(ctx).isSmsEnabled()) {
             return
         }
@@ -32,7 +33,7 @@ class SmsReceiver : BroadcastReceiver() {
         // phone and delivered together.
         val messageBody = messages.fold("") { acc, it -> acc + it.messageBody }
         val rawNumber = messages[0].originatingAddress!!
-        Log.d(Def.TAG, "onReceive sms from $rawNumber: $messageBody")
+        logd("onReceive sms from $rawNumber: $messageBody")
 
         processSms(ctx, rawNumber, messageBody)
     }
@@ -42,11 +43,12 @@ class SmsReceiver : BroadcastReceiver() {
         val r = Checker.checkSms(ctx, rawNumber, messageBody)
 
         // 1. log to db
-        val rec = Record()
-        rec.peer = rawNumber
-        rec.time = System.currentTimeMillis()
-        rec.result = r.result
-        rec.reason = r.reason()
+        val rec = HistoryRecord(
+            peer = rawNumber,
+            time = System.currentTimeMillis(),
+            result = r.result,
+            reason = r.reason(),
+        )
         val id = SmsTable().addNewRecord(ctx, rec)
 
         val showName = Contacts.findByRawNumber(ctx, rawNumber)?.name ?: rawNumber
@@ -68,7 +70,7 @@ class SmsReceiver : BroadcastReceiver() {
 
             Notification.show(ctx, R.drawable.ic_sms_blocked,
                 showName, messageBody,
-                importance, ctx.resources.getColor(R.color.salmon, null), intent,
+                importance, Salmon, intent,
                 toCopy = toCopy)
 
         } else { // passed

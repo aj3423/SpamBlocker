@@ -14,9 +14,9 @@ import android.provider.OpenableColumns
 import android.provider.Settings
 import android.provider.Telephony
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
+import androidx.compose.runtime.MutableState
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.SharedPref.Global
@@ -26,6 +26,21 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+
+typealias Lambda = () -> Unit
+typealias Lambda1<A> = (A) -> Unit
+typealias Lambda2<A, B> = (A, B) -> Unit
+typealias Lambda3<A, B, C> = (A, B, C) -> Unit
+typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
+
+// val c = a.chain(b)
+// c() // both a and b will be invoked
+fun Lambda.chain(other: Lambda) : Lambda {
+    return {
+        this()
+        other()
+    }
+}
 
 class Util {
     companion object {
@@ -49,19 +64,31 @@ class Util {
             return currentDate == date
         }
 
+        // For history record time
         fun getDayOfWeek(ctx: Context, timestamp: Long): String {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = timestamp
             val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-            val daysArray = ctx.resources.getStringArray(R.array.week).asList()
+            val daysArray = ctx.resources.getStringArray(R.array.short_weekdays).asList()
             return daysArray[dayOfWeek - 1]
         }
 
+        // For history record time.
         fun isWithinAWeek(timestamp: Long): Boolean {
             val currentTimeMillis = System.currentTimeMillis()
             val difference = currentTimeMillis - timestamp
             val millisecondsInWeek = 7 * 24 * 60 * 60 * 1000 // 7 days in milliseconds
             return difference <= millisecondsInWeek
+        }
+
+        fun formatTime(ctx: Context, timestamp: Long) : String {
+            return if (isToday(timestamp)) {
+                hourMin(timestamp)
+            } else if (isWithinAWeek(timestamp)) {
+                getDayOfWeek(ctx, timestamp) + "\n" + hourMin(timestamp)
+            } else {
+                fullDateString(timestamp)
+            }
         }
 
         // check if a string only contains:
@@ -113,32 +140,15 @@ class Util {
                 str
         }
 
+        // for display on Util
         @SuppressLint("DefaultLocale")
-        fun formatTimeRange(
-//            ctx: Context,
+        fun timeRangeStr(
+            ctx: Context,
             stHour: Int, stMin: Int, etHour: Int, etMin: Int
         ): String {
-            // not use fmt12h, "xx:xx AM - yy:yy PM" is too wide
-//            val fmt24h = DateFormat.is24HourFormat(ctx)
-//            if (fmt24h) {
-                val startTime = String.format("%02d:%02d", stHour, stMin)
-                val endTime = String.format("%02d:%02d", etHour, etMin)
-                return "$startTime - $endTime"
-//            } else {
-//                val startTime = String.format(
-//                    "%02d:%02d %s",
-//                    if (stHour == 0 || stHour == 12) 12 else stHour % 12,
-//                    stMin,
-//                    if (stHour < 12) "AM" else "PM"
-//                )
-//                val endTime = String.format(
-//                    "%02d:%02d %s",
-//                    if (etHour == 0 || etHour == 12) 12 else etHour % 12,
-//                    etMin,
-//                    if (etHour < 12) "AM" else "PM"
-//                )
-//                return "$startTime - $endTime"
-//            }
+            if (stHour == 0 && stMin == 0 && etHour == 0 && etMin == 0)
+                return ctx.getString(R.string.entire_day)
+            return String.format("%02d:%02d - %02d:%02d", stHour, stMin, etHour, etMin)
         }
 
         fun currentHourMin(): Pair<Int, Int> {
@@ -147,6 +157,8 @@ class Util {
             val currMinute = calendar.get(Calendar.MINUTE)
             return Pair(currHour, currMinute)
         }
+
+        // if currentTime == 00:00, it returns true
         fun isCurrentTimeWithinRange(stHour: Int, stMin: Int, etHour: Int, etMin: Int): Boolean {
             val (currHour, currMinute) = currentHourMin()
             val curr = currHour * 60 + currMinute
@@ -199,22 +211,21 @@ class Util {
             return null
         }
 
-        fun flagsToRegexOptions(flags: Flag) : Set<RegexOption> {
+        fun flagsToRegexOptions(flags: Int) : Set<RegexOption> {
             val opts = mutableSetOf<RegexOption>()
-            if (flags.has(Def.FLAG_REGEX_IGNORE_CASE)) {
+            if (flags.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) {
                 opts.add(RegexOption.IGNORE_CASE)
             }
-            if (flags.has(Def.FLAG_REGEX_MULTILINE)) {
+            if (flags.hasFlag(Def.FLAG_REGEX_MULTILINE)) {
                 opts.add(RegexOption.MULTILINE)
             }
-            if (flags.has(Def.FLAG_REGEX_DOT_MATCH_ALL)) {
+            if (flags.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) {
                 opts.add(RegexOption.DOT_MATCHES_ALL)
             }
-            if (flags.has(Def.FLAG_REGEX_LITERAL)) {
+            if (flags.hasFlag(Def.FLAG_REGEX_LITERAL)) {
                 opts.add(RegexOption.LITERAL)
             }
             return opts
-
         }
 
 
@@ -269,35 +280,18 @@ class Util {
             return result == PERMISSION_GRANTED
         }
 
-        private var dlgDebouncer = false
-        fun checkDoubleNotifications(ctx: Context) {
-
+        fun openSettingForDefaultSmsApp(ctx: Context) {
+            val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
+            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            intent.data = Uri.fromParts("package", defSmsPkg, null)
+            ctx.startActivity(intent)
+        }
+        fun checkDoubleNotifications(ctx: Context, trigger: MutableState<Boolean>) {
             if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
                 val spf = Global(ctx)
                 if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled()&& spf.isSmsEnabled()) {
                     if (!spf.isDoubleSMSWarningDismissed()) {
-
-                        if (dlgDebouncer)
-                            return
-                        dlgDebouncer = true
-
-                        AlertDialog.Builder(ctx).apply {
-                            setTitle(" ")
-                            setIcon(R.drawable.ic_warning)
-                            setMessage(ctx.resources.getString(R.string.warning_double_sms))
-                            setPositiveButton(R.string.open_settings) { _,_ ->
-                                val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
-                                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                intent.data = Uri.fromParts("package", defSmsPkg, null)
-                                context.startActivity(intent)
-                            }
-                            setNegativeButton(R.string.ignore) { _,_ ->
-                                spf.dismissDoubleSMSWarning()
-                            }
-                            setOnDismissListener {
-                                dlgDebouncer = false
-                            }
-                        }.create().show()
+                        trigger.value = true
                     }
                 }
             }

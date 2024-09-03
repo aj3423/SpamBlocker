@@ -3,19 +3,19 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import androidx.compose.runtime.Immutable
 import spam.blocker.def.Def
 import spam.blocker.util.Time
 
+data class HistoryRecord(
+    val id: Long = 0,
 
-class Record {
-    var id: Long = 0
-
-    var peer: String = ""
-    var time: Long = 0
-    var result: Int = 0
-    var reason: String = ""
-    var read: Boolean = false
-
+    val peer: String = "",
+    val time: Long = 0,
+    val result: Int = 0,
+    val reason: String = "",
+    val read: Boolean = false,
+) {
     override fun toString(): String {
         return "record: $id, $peer, $time, $result, $reason, $read"
     }
@@ -31,23 +31,23 @@ abstract class HistoryTable {
     abstract fun tableName(): String
 
     @SuppressLint("Range")
-    fun _listRecordsByFilter(ctx: Context, filterSql: String): List<Record> {
+    fun _listRecordsByFilter(ctx: Context, filterSql: String): List<HistoryRecord> {
 
-        val ret: MutableList<Record> = mutableListOf()
+        val ret: MutableList<HistoryRecord> = mutableListOf()
 
         val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(filterSql, null)
 
         cursor.use {
             if (it.moveToFirst()) {
                 do {
-                    val rec = Record()
-
-                    rec.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
-                    rec.peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER))
-                    rec.time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME))
-                    rec.result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT))
-                    rec.reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON))
-                    rec.read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1
+                    val rec = HistoryRecord(
+                        id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
+                        peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER)),
+                        time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME)),
+                        result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
+                        reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
+                        read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                    )
 
                     ret += rec
                 } while (it.moveToNext())
@@ -56,14 +56,13 @@ abstract class HistoryTable {
         }
     }
 
-    fun listRecords(ctx: Context): List<Record> {
+    fun listRecords(ctx: Context): List<HistoryRecord> {
         val sql = "SELECT * FROM ${tableName()} ORDER BY time DESC"
 
-        //Log.d(Def.TAG, sql)
         return _listRecordsByFilter(ctx, sql)
     }
 
-    fun addNewRecord(ctx: Context, r: Record): Long {
+    fun addNewRecord(ctx: Context, r: HistoryRecord): Long {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PEER, r.peer)
@@ -73,7 +72,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
         return db.insert(tableName(), null, cv)
     }
-    fun addRecordWithId(ctx: Context, r: Record) {
+    fun addRecordWithId(ctx: Context, r: HistoryRecord) {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_ID, r.id)
@@ -84,7 +83,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
         db.insert(tableName(), null, cv)
     }
-    fun deleteRecord(ctx: Context, id: Long): Boolean {
+    fun delById(ctx: Context, id: Long): Boolean {
         val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
         val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
 
@@ -92,26 +91,27 @@ abstract class HistoryTable {
             it.moveToFirst()
         }
     }
-    fun deleteAll(ctx: Context) {
+    fun clearAll(ctx: Context) {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${tableName()} "
         db.execSQL(sql)
     }
     @SuppressLint("Range")
-    fun findRecordById(ctx: Context, id: Long): Record? {
+    fun findRecordById(ctx: Context, id: Long): HistoryRecord? {
         val sql = "SELECT * FROM ${tableName()} WHERE id = $id"
 
         val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(sql, null)
 
         cursor.use {
             if (it.moveToFirst()) {
-                val rec = Record()
-                rec.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
-                rec.peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER))
-                rec.time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME))
-                rec.result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT))
-                rec.reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON))
-                rec.read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1
+                val rec = HistoryRecord(
+                    id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
+                    peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER)),
+                    time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME)),
+                    result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
+                    reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
+                    read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                )
 
                 return rec
             } else {
@@ -160,3 +160,9 @@ open class SmsTable : HistoryTable() {
     }
 }
 
+fun historyTableForType(forType: Int) : HistoryTable {
+    return when(forType) {
+        Def.ForNumber -> CallTable()
+        else -> SmsTable()
+    }
+}
