@@ -20,9 +20,9 @@ import spam.blocker.def.Def
 import spam.blocker.service.CallScreeningService
 import spam.blocker.service.Checker
 import spam.blocker.service.SmsReceiver
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.DrawableImage

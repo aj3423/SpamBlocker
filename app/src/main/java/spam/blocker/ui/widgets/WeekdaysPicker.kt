@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.util.M
 import spam.blocker.util.Lambda
 
 

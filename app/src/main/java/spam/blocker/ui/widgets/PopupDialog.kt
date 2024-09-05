@@ -21,9 +21,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.ui.util.M
 import spam.blocker.util.Lambda
 import kotlin.math.roundToInt
 
@@ -90,20 +90,11 @@ fun PopupDialog(
                 ),
                 shape = RoundedCornerShape(4.dp)
             ) {
-                val scrollState = rememberScrollState()
-
                 Column(
                     modifier = M
                         .padding(
                             horizontal = PopupPaddingHorizontal.dp,
                             vertical = PopupPaddingVertical.dp
-                        )
-                        .verticalScroll(scrollState)
-                        .verticalScrollbar(
-                            scrollState,
-                            offsetX = 30,
-                            persistent = true,
-                            scrollBarColor = SkyBlue
                         ),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(10.dp)

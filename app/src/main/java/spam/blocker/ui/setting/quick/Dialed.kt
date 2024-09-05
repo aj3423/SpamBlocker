@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PluralStr
@@ -40,7 +39,6 @@ fun Dialed() {
     PopupDialog(
         trigger = popupTrigger,
         content = {
-//            OutlinedTextField(value = "aa", onValueChange = {}, label = {Text("AAA")} )
             NumberInputBox(
                 intValue = inXDay,
                 onValueChange = { newValue, hasError ->

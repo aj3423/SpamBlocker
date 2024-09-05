@@ -88,12 +88,9 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "setting") }
     fun setActiveTab(tab: String) { writeString(Def.SETTING_ACTIVE_TAB, tab) }
 
-    fun hasAskedForAllPermissions(): Boolean {
-        return readBoolean(Def.SETTING_REQUIRE_PERMISSION_ONCE, false)
-    }
-    fun setAskedForAllPermission() {
-        writeBoolean(Def.SETTING_REQUIRE_PERMISSION_ONCE, true)
-    }
+    fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
+    fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }
+
     fun hasPromptedForRunningInWorkProfile(): Boolean {
         return readBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, false)
     }

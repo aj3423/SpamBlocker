@@ -3,6 +3,8 @@ package spam.blocker.ui.setting.regex
 import android.Manifest
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,9 +22,11 @@ import spam.blocker.R
 import spam.blocker.db.newRegexRule
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.ConfirmDialog
@@ -43,6 +47,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.WeekdayPicker
+import spam.blocker.ui.widgets.verticalScrollbar
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -67,13 +72,13 @@ fun RuleEditDialog(
 
     // Regex pattern
     var pattern by remember { mutableStateOf(initRule.pattern) }
-    var patternFlags by remember { mutableIntStateOf(initRule.patternFlags) }
+    val patternFlags = remember { mutableIntStateOf(initRule.patternFlags) }
     var patternError by remember { mutableStateOf(false) }
 
     // For particular number
     var forParticular by remember { mutableStateOf(initRule.patternExtra != "") }
     var patternExtra by remember { mutableStateOf(initRule.patternExtra) }
-    var patternExtraFlags by remember { mutableIntStateOf(initRule.patternExtraFlags) }
+    val patternExtraFlags = remember { mutableIntStateOf(initRule.patternExtraFlags) }
     var patternExtraError by remember { mutableStateOf(false) }
 
     // Description
@@ -159,7 +164,7 @@ fun RuleEditDialog(
                     onSave(
                         newRegexRule(
                             initRule.id,
-                            pattern, patternExtra, patternFlags, patternExtraFlags,
+                            pattern, patternExtra, patternFlags.intValue, patternExtraFlags.intValue,
                             description, priority, applyToWorB == 1,
                             flags, notifyType, schedule, blockType,
                         )
@@ -168,8 +173,16 @@ fun RuleEditDialog(
             )
         },
         content = {
+            val scrollState = rememberScrollState()
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                modifier = M
+                    .verticalScroll(scrollState)
+                    .verticalScrollbar(
+                        scrollState,
+                        offsetX = 30,
+                        persistent = true,
+                        scrollBarColor = SkyBlue
+                    ),
             ) {
                 // Pattern
                 RegexInputBox(
@@ -189,9 +202,6 @@ fun RuleEditDialog(
                     onRegexStrChange = { newVal, hasErr ->
                         patternError = hasErr
                         pattern = newVal
-                    },
-                    onRegexFlagsChange = { newFlags ->
-                        patternFlags = newFlags
                     },
                     leadingIconId = if (forType == Def.ForNumber) R.drawable.ic_number_sign else R.drawable.ic_open_msg
                 )
@@ -218,9 +228,6 @@ fun RuleEditDialog(
                             onRegexStrChange = { newValue, hasErr ->
                                 patternExtraError = hasErr
                                 patternExtra = newValue
-                            },
-                            onRegexFlagsChange = { newFlags ->
-                                patternExtraFlags = newFlags
                             },
                             leadingIconId = R.drawable.ic_number_sign
                         )

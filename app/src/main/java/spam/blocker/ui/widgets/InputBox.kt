@@ -1,6 +1,5 @@
 package spam.blocker.ui.widgets
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -17,6 +16,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,15 +36,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.ui.util.M
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
+import spam.blocker.util.loge
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
@@ -326,8 +327,7 @@ fun StrInputBox(
 fun RegexInputBox(
     regexStr: String,
     onRegexStrChange: Lambda2<String, Boolean>,
-    regexFlags: Int,
-    onRegexFlagsChange: Lambda1<Int>,
+    regexFlags: MutableIntState,
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -346,7 +346,7 @@ fun RegexInputBox(
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
     var lastText by remember(regexStr) { mutableStateOf(regexStr) }
     var errorStr = remember(lastText) {
-        Util.validateRegex(ctx, lastText, regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
+        Util.validateRegex(ctx, lastText, regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
     }
 
     InputBox(
@@ -359,7 +359,7 @@ fun RegexInputBox(
             lastText = newState.text
 
             errorStr =
-                Util.validateRegex(ctx, lastText, regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
+                Util.validateRegex(ctx, lastText, regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
 
             if (stringChangedSinceLastInvocation) {
                 onRegexStrChange(lastText, errorStr != null)
@@ -374,6 +374,10 @@ fun RegexInputBox(
         trailingIcon = {
             val C = LocalPalette.current
 
+            val hasI = remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) }
+            val hasD = remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) }
+            val hasR = remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) }
+
             val dropdownItems = remember {
                 val list = mutableListOf(
                     CustomItem {
@@ -384,20 +388,25 @@ fun RegexInputBox(
                             BalloonQuestionMark(helpTooltipId = R.string.help_regex_flags)
                         }
                     },
-                    DividerItem(thickness = 1, color = C.disabled),
+                    DividerItem(thickness = 1),
                 )
 
                 val ret = list + ctx.resources.getStringArray(R.array.regex_flags_list)
                     .mapIndexed { idx, label ->
                         CheckItem(
                             label = label,
-                            checked = when (idx) {
-                                0 -> regexFlags.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)
-                                1 -> regexFlags.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)
-                                else -> regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)
+                            state = when (idx) {
+                                0 -> hasI
+                                1 -> hasD
+                                else -> hasR
                             },
                             onCheckChange = { checked ->
-                                val newFlag = regexFlags.setFlag(
+                                when (idx) {
+                                    0 -> hasI.value = checked
+                                    1 -> hasD.value = checked
+                                    2 -> hasR.value = checked
+                                }
+                                regexFlags.intValue = regexFlags.intValue.setFlag(
                                     when (idx) {
                                         0 -> Def.FLAG_REGEX_IGNORE_CASE
                                         1 -> Def.FLAG_REGEX_DOT_MATCH_ALL
@@ -405,7 +414,6 @@ fun RegexInputBox(
                                     },
                                     checked
                                 )
-                                onRegexFlagsChange(newFlag)
                             },
                         )
                     }
@@ -413,7 +421,7 @@ fun RegexInputBox(
             }
 
             DropdownWrapper(items = dropdownItems) { expanded ->
-                val imdlc = regexFlags.toFlagStr()
+                val imdlc = regexFlags.intValue.toFlagStr()
                 val modifier = M.clickable {
                     expanded.value = true
                 }

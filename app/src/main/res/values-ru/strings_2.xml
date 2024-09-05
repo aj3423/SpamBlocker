@@ -1,90 +1,90 @@
 <resources>
     <string name="contacts">Контакт</string>
-    <string name="non_contacts">Не контакт</string>
-    <string name="inclusive">Разрешить</string>
-    <string name="exclusive">Запретить</string>
+    <string name="non_contacts">Не Контакт</string>
+    <string name="inclusive">Включая</string>
+    <string name="exclusive">Исключая</string>
     <string name="help_contacts">
         <![CDATA[
-        При включении вызовы/сообщения от контактов всегда разрешены. <br>
+        Если включено, вызовы/сообщения от контактов всегда разрешены. <br>
         <br>
-          - <font color="#d1c8c8"><b>Разрешить</b></font>: <br>
-              &emsp; Номера, не являющиеся контактами, будут проверены по другим правилам. <br>
+          - <font color="#d1c8c8"><b>Включительно</b></font>: <br>
+              &emsp; Номера не из контактов будут проверяться по другим правилам. <br>
               &emsp; <font color="#ea86ff"><b>Приоритет: 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>Запретить</b></font>: <br>
-              &emsp; Номера, не являющиеся контактами, будут <font color="#fa7f71"><b>заблокированы</b></font>. <br>
+          - <font color="#fa7f71"><b>Исключительно</b></font>: <br>
+              &emsp; Номера не из контактов будут <font color="#fa7f71"><b>заблокированы</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Приоритет: 0</b></font> <br>
         <br>
-        Применяется как к вызовам, так и к текстовым сообщениям.
+        Это относится как к вызовам, так и SMS-сообщениям.
         ]]>
     </string>
-    <string name="stir">Проверка подлинности STIR</string>
-    <string name="stir_include_unverified">Включить непроверенные</string>
-    <string name="unverified">Не проверено</string>
-    <string name="valid">Достоверный вызов</string>
-    <string name="spoof">Поддельный вызов</string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Включать Непроверенные</string>
+    <string name="unverified">Непроверенный</string>
+    <string name="valid">Достоверный Вызов</string>
+    <string name="spoof">Поддельный Вызов</string>
     <string name="help_stir">
         <![CDATA[
-            Для проверки подлинности STIR требуется <b>Android 11+</b> и <b>поддержка оператора</b>. <br>
+            Подтверждение подлинности STIR требует <b>Android 11+</b> и <b>поддержки оператора связи</b>. <br>
             <br>
-            Возможны три результата проверки:<br>
+            Возможны три результата подтверждения подлинности:<br>
             <font color="cyan"><b>Достоверный</b></font> <br>
-            &emsp; Вызов, скорее всего, достоверен, а не подделан. <br>
-            <font color="#ffa500"><b>Не проверено</b></font> <br>
-            &emsp; Вызов не может быть проверен или проверка подлинности STIR не поддерживается. <br>
-            <font color="#fa7f71"><b>Поддельный</b></font> <br>
-            &emsp; Вероятно, это поддельный вызов. <br>
+            &emsp; Очень вероятно, что вызов действительный, а не поддельный. <br>
+            <font color="#ffa500"><b>Непроверенный</b></font> <br>
+            &emsp; Вызов невозможно проверить или подтверждение подлинности STIR не поддерживается. <br>
+            <font color="#fa7f71"><b>Подделка</b></font> <br>
+            &emsp; Очень вероятно, что это поддельный вызов. <br>
             <br>
             <br>
-              - <font color="#d1c8c8"><b>Разрешить</b></font>: <br>
-                  &emsp; Вызовы, не прошедшие эту проверку, все равно будут проверяться по другим правилам. <br>
-                  &emsp; Если установлено "<b>Включить непроверенные</b>", вызов также будет проходить, если он не проверен. <br>
+              - <font color="#d1c8c8"><b>Включительно</b></font>: <br>
+                  &emsp; Вызовы, не прошедшие эту проверку, все равно будут проверены по другим правилам. <br>
+                  &emsp; Если установлен флажок "<b>Включать Непроверенные</b>", вызов также будет пройден, если он не проверен. <br>
                   &emsp; <font color="#ea86ff"><b>Приоритет: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Запретить</b></font>: <br>
+              - <font color="#fa7f71"><b>Исключительно</b></font>: <br>
                   &emsp; Вызовы, не прошедшие эту проверку, будут <font color="#fa7f71"><b>заблокированы</b></font>. <br>
-                  &emsp; Если установлено "<b>Включить непроверенные</b>", вызов также будет заблокирован, если он не проверен. <br>
+                  &emsp; Если установлен флажок "<b>Включать Непроверенные</b>", вызов также будет заблокирован, если он не проверен. <br>
                   &emsp; <font color="#ea86ff"><b>Приоритет: 0</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        Эти правила применяются к входящему номеру телефона.<br>
+        Эти правила применяются к входящему телефонному номеру. <br>
         <br>
         <font color="#ffa500"><b>Важно</b></font>:<br>
         Чтобы упростить регулярное выражение,
           <font color="#fa7f71"><b>+</b></font>
           и <font color="#fa7f71"><b>пробелы</b></font>
-          и <font color="#fa7f71"><b>начальные нули</b></font>
+          и <font color="#fa7f71"><b>ведущие нули</b></font>
           удаляются перед проверкой, например:<br>
         &emsp; Все эти форматы:<br>
         &emsp;&emsp; 123456789 &emsp;(обычный номер)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(с <font color="#fa7f71"><b>пробелами</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(с ведущим <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(с внутренним префиксом <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(с префиксом внутреннего кода <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp; Они <b>все</b> проверяются как:<br>
         &emsp;&emsp; 123456789 <br>
         &emsp; Поэтому регулярное выражение <font color="cyan"><b>123.*</b></font> будет соответствовать всем им.<br>
-        Эту оптимизацию номера можно <b>отключить</b> с помощью флага регулярного выражения "Исходный номер".<br>
+        Эту оптимизацию для номеров можно <b>отключить</b> флагом регулярного выражения `Простой Номер`.<br>
         <br>
         Список <b>отображается</b> в порядке убывания приоритета, возрастания описания и возрастания шаблона. <br>
         <br>
-        Снимите флажки, чтобы отключить правило, <font color="#fa7f71"><b>проведите пальцем влево<b></font>, чтобы удалить его.<br>
+        Снимите флажки, чтобы отключить правило, <font color="#fa7f71"><b>проведите пальцем влево<b></font> , чтобы удалить его. <br>
         <br>
-        <b>Удерживайте</b> кнопку "Добавить" нажатой, чтобы импортировать номера из файла .csv. Поддерживаемые столбцы:<br>
-         - <no_translate>pattern</no_translate>: регулярное выражение (<b>обязательно</b>)<br>
+        <b>Нажмите и удерживайте</b> кнопку `Добавить`, чтобы импортировать номера из CSV-файла, поддерживаются столбцы:<br>
+         - <no_translate>pattern</no_translate>: Регулярное выражение (<b>обязательно</b>)<br>
          - <no_translate>description</no_translate>: Описание<br>
-         - <no_translate>priority</no_translate>: Приоритет по умолчанию 1<br>
-         - <no_translate>flags</no_translate>: 1 (Применить к звонкам), 2 (Применить к SMS), 3 (оба), по умолчанию 3<br>
+         - <no_translate>priority</no_translate>: Приоритет, по умолчанию 1<br>
+         - <no_translate>flags</no_translate>: 1(применить к Вызову), 2(применить к SMS), 3(оба), по умолчанию 3<br>
          - <no_translate>isBlacklist</no_translate>: Черный или белый список. <no_translate>true</no_translate> или <no_translate>false</no_translate>, по умолчанию <no_translate>true</no_translate><br>
-         - <no_translate>blockType</no_translate>: Тип блокировки. 0~2 соответствует 3 типам блокировок, по умолчанию 0<br>
+         - <no_translate>blockType</no_translate>: Тип блокировки. 0~2 соответствуют 3 типам блокировки, по умолчанию 0<br>
          - <no_translate>importance</no_translate>: Тип уведомления. 0~4 соответствуют 5 типам уведомлений, по умолчанию 2
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        В файле .csv отсутствует обязательное поле <b>образец</b>, подробное объяснение см. во всплывающем окне подсказки.
+        Отсутствует обязательное поле <b>pattern</b> в CSV-файле, проверьте всплывающую подсказку для получения подробного объяснения.
         ]]>
     </string>
 </resources>

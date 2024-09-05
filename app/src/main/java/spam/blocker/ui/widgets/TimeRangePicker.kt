@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.util.M
 import spam.blocker.util.Lambda4
 
 // The TimeInput doesn't support callback

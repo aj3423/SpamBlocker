@@ -23,6 +23,7 @@ fun HistoryPage(
 
     val showPassed = remember { mutableStateOf(spf.getShowPassed()) }
     val showBlocked = remember { mutableStateOf(spf.getShowBlocked()) }
+    val logSms = remember { mutableStateOf(spf.isLogSmsContentEnabled()) }
 
     // Hide FAB on scrolling to the last item
     val listState = rememberLazyListState()
@@ -42,6 +43,7 @@ fun HistoryPage(
                 forType = forType,
                 showPassed = showPassed,
                 showBlocked = showBlocked,
+                logSmsContent = logSms,
                 modifier = positionModifier
             )
         }

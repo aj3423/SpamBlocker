@@ -42,7 +42,7 @@ val LightCustomColorsPalette = CustomColorsPalette(
     textGrey = ColdGrey,
     textGreen = Emerald,
 
-    schedule = Color(0xff6ed0ff),
+    schedule = MayaBlue,
     enabled = Teal200,
     disabled = ColdGrey,
     pass = Emerald,
@@ -63,7 +63,7 @@ val DarkCustomColorsPalette = CustomColorsPalette(
     textGrey = SilverGrey,
     textGreen = LightGreen,
 
-    schedule = Color(0xff6ed0ff),
+    schedule = MayaBlue,
     enabled = Teal200,
     disabled = ColdGrey,
     pass = Emerald,

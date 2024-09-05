@@ -11,13 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import spam.blocker.ui.util.M
+import spam.blocker.ui.M
 import spam.blocker.util.Lambda
 
 // The builtin FloatingActionButton is not customizable.
@@ -32,7 +33,7 @@ fun Fab(
     iconSize: Int = 30,
     onClick: Lambda,
 ) {
-    // Animate show/hide of FAB
+    // Animate show/hide
     AnimatedVisibility(
         modifier = modifier,
         visible = visible,
@@ -54,7 +55,7 @@ fun Fab(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                androidx.compose.material3.Icon(
+                Icon(
                     modifier = M
                         .size(iconSize.dp)
                         .align(Alignment.Center),

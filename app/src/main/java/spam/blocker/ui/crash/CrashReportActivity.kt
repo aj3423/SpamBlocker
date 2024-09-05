@@ -25,10 +25,10 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton

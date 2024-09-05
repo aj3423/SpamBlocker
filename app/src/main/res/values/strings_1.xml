@@ -18,7 +18,7 @@
     <string name="apply_to_sms">Apply to SMS</string>
     <string name="title_add_rule">New Rule</string>
     <string name="title_edit_rule">Edit Rule</string>
-    <string name="add">Add</string>
+    <string name="new_">New</string>
     <string name="delete">Delete</string>
     <string name="clear">Clear</string>
     <string name="test">Test</string>

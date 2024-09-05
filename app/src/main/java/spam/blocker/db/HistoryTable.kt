@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import androidx.compose.runtime.Immutable
+import androidx.core.database.getIntOrNull
+import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
 import spam.blocker.util.Time
 
@@ -15,9 +17,11 @@ data class HistoryRecord(
     val result: Int = 0,
     val reason: String = "",
     val read: Boolean = false,
+    val smsContent: String? = null,
+    val expanded: Boolean = false,
 ) {
     override fun toString(): String {
-        return "record: $id, $peer, $time, $result, $reason, $read"
+        return "record: $id, $peer, $time, $result, $reason, $read, $smsContent, $expanded"
     }
     fun isBlocked(): Boolean {
         return Def.isBlocked(result)
@@ -47,6 +51,8 @@ abstract class HistoryTable {
                         result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                         reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                         read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                        smsContent = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SMS_CONTENT)),
+                        expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                     )
 
                     ret += rec
@@ -70,8 +76,11 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
+        cv.put(Db.COLUMN_SMS_CONTENT, r.smsContent)
+        cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         return db.insert(tableName(), null, cv)
     }
+
     fun addRecordWithId(ctx: Context, r: HistoryRecord) {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
@@ -81,8 +90,11 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
+        cv.put(Db.COLUMN_SMS_CONTENT, r.smsContent)
+        cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         db.insert(tableName(), null, cv)
     }
+
     fun delById(ctx: Context, id: Long): Boolean {
         val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
         val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
@@ -111,6 +123,8 @@ abstract class HistoryTable {
                     result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                     reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                     read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                    smsContent = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SMS_CONTENT)),
+                    expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                 )
 
                 return rec
@@ -124,13 +138,11 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_READ, 1)
         return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) == 1
     }
-
-    // returns: updated rows
-//    fun markAllRecordsAsRead(ctx: Context) : Int {
-//        val cv = ContentValues()
-//        cv.put(Db.COLUMN_READ, 1)
-//        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, null, null)
-//    }
+    fun setExpanded(ctx: Context, id: Long, expanded: Boolean): Boolean {
+        val cv = ContentValues()
+        cv.put(Db.COLUMN_EXPANDED, if(expanded) 1 else 0)
+        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) == 1
+    }
 
     fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
         val xSecondsAgo = Time.currentMillis() - durationSeconds*1000

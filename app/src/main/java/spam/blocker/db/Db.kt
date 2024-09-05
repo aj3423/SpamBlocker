@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 26
+        const val DB_VERSION = 27
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -42,6 +42,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_RESULT = "result" // Int, as RESULT_... below
         const val COLUMN_REASON = "reason" // Long, by which filter id is this blocked/whitelisted
         const val COLUMN_READ = "read" // Boolean
+        const val COLUMN_SMS_CONTENT = "sms_content" // text
+        const val COLUMN_EXPANDED = "expanded" // Boollean
 
 
         @Volatile
@@ -78,28 +80,23 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         createPatternTable(TABLE_CONTENT_RULE)
         createPatternTable(TABLE_QUICK_COPY_RULE)
 
-        // call history
-        db.execSQL(
-            "CREATE TABLE IF NOT EXISTS $TABLE_CALL (" +
-                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "$COLUMN_PEER TEXT, " +
-                    "$COLUMN_TIME INTEGER, " +
-                    "$COLUMN_RESULT INTEGER, " +
-                    "$COLUMN_REASON LONG, " +
-                    "$COLUMN_READ INTEGER" +
-                    ")"
-        )
-        // sms history
-        db.execSQL(
-            "CREATE TABLE IF NOT EXISTS $TABLE_SMS (" +
-                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "$COLUMN_PEER TEXT, " +
-                    "$COLUMN_TIME INTEGER, " +
-                    "$COLUMN_RESULT INTEGER, " +
-                    "$COLUMN_REASON LONG, " +
-                    "$COLUMN_READ INTEGER" +
-                    ")"
-        )
+        // call/sms history
+        fun createHistoryTable(tableName: String) {
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS $tableName (" +
+                        "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "$COLUMN_PEER TEXT, " +
+                        "$COLUMN_TIME INTEGER, " +
+                        "$COLUMN_RESULT INTEGER, " +
+                        "$COLUMN_REASON LONG, " +
+                        "$COLUMN_READ INTEGER, " +
+                        "$COLUMN_SMS_CONTENT TEXT, " +
+                        "$COLUMN_EXPANDED INTEGER " +
+                        ")"
+            )
+        }
+        createHistoryTable(TABLE_CALL)
+        createHistoryTable(TABLE_SMS)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -136,6 +133,12 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
             db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_FLAGS = $COLUMN_FLAGS & ~${Def.FLAG_FOR_CALL}")
             // - set FLAG_FOR_CONTENT, FLAG_FOR_PASSED
             db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_FLAGS = $COLUMN_FLAGS | ${Def.FLAG_FOR_CONTENT or Def.FLAG_FOR_PASSED}")
+        }
+        // v2.0 introduced displaying sms content in sms history tab.
+        if ((newVersion >= 27) && (oldVersion < 27)) {
+            // - unset FLAG_FOR_CALL
+            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
+            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXPANDED INTEGER")
         }
     }
 }

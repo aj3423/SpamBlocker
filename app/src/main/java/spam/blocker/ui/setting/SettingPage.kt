@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
@@ -29,6 +29,7 @@ import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.misc.About
 import spam.blocker.ui.setting.misc.BackupRestore
 import spam.blocker.ui.setting.misc.Language
@@ -45,7 +46,6 @@ import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FabWrapper
@@ -53,6 +53,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 
+const val SettingRowMinHeight = 36
 
 @Composable
 fun SettingPage() {
@@ -84,7 +85,9 @@ fun SettingPage() {
     ) {
 
         Column(
-            modifier = M.verticalScroll(scrollState).padding(top = 8.dp)
+            modifier = M
+                .verticalScroll(scrollState)
+                .padding(top = 8.dp)
         ) {
             // global
             GloballyEnabled()
@@ -148,11 +151,10 @@ fun SettingPage() {
 @Composable
 fun SettingRow(
     modifier: Modifier = Modifier,
-    height: Int = 40,
     content: @Composable () -> Unit,
 ) {
     RowVCenter(
-        modifier = modifier.height(height.dp),
+        modifier = modifier.heightIn(min = SettingRowMinHeight.dp),
     ) {
         content()
     }
@@ -165,7 +167,7 @@ fun SettingLabel(labelId: Int) {
         maxLines = 1,
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
-        color = SkyBlue
+        color = SkyBlue,
     )
 }
 
@@ -175,14 +177,12 @@ fun LabeledRow(
 
     // optional
     modifier: Modifier = Modifier,
-    height: Int = 40,
     paddingHorizontal: Int = 0,
     helpTooltipId: Int? = null,
     content: @Composable RowScope.() -> Unit,
 ) {
     SettingRow(
         modifier = modifier.padding(horizontal = paddingHorizontal.dp),
-        height = height,
     ) {
         Row(
             modifier = M.wrapContentWidth(),

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda1
+import spam.blocker.util.loge
 
 
 @Composable
@@ -32,7 +33,9 @@ fun CheckBox(
             .clickable(
                 indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
                 interactionSource = remember { MutableInteractionSource() },
-                onClick = { onCheckChange(!checked) }
+                onClick = {
+                    onCheckChange(!checked)
+                }
             )
     ) {
         Checkbox(

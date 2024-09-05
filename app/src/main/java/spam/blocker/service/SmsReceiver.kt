@@ -39,6 +39,7 @@ class SmsReceiver : BroadcastReceiver() {
     }
 
     fun processSms(ctx: Context, rawNumber: String, messageBody: String) : CheckResult {
+        val spf = Global(ctx)
 
         val r = Checker.checkSms(ctx, rawNumber, messageBody)
 
@@ -48,6 +49,7 @@ class SmsReceiver : BroadcastReceiver() {
             time = System.currentTimeMillis(),
             result = r.result,
             reason = r.reason(),
+            smsContent = if (spf.isLogSmsContentEnabled()) messageBody else null
         )
         val id = SmsTable().addNewRecord(ctx, rec)
 

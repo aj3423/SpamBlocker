@@ -1,90 +1,90 @@
 <resources>
     <string name="contacts">Kontakt</string>
-    <string name="non_contacts">Außerhalb Kontakte</string>
-    <string name="inclusive">Inklusive</string>
-    <string name="exclusive">Exklusiv</string>
+    <string name="non_contacts">Kein Kontakt</string>
+    <string name="inclusive">Einschließend</string>
+    <string name="exclusive">Ausschließend</string>
     <string name="help_contacts">
         <![CDATA[
-        Bei Aktivierung sind Anrufe/Nachrichten von Kontakten immer zulässig. <br>
+        Wenn aktiviert, werden Anrufe/Nachrichten von Kontakten immer zugelassen. <br>
         <br>
-          - <font color="#d1c8c8"><b>Inklusive</b></font>: <br>
-              &emsp; Nicht-Kontaktnummern werden durch andere Regeln überprüft. <br>
+          - <font color="#d1c8c8"><b>Einschließend</b></font>: <br>
+              &emsp; Rufnummern ohne Kontakt werden durch andere Regeln überprüft. <br>
               &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
-              &emsp; Nicht-Kontaktnummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+          - <font color="#fa7f71"><b>Ausschließend</b></font>: <br>
+              &emsp; Rufnummern ohne Kontakt werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
         <br>
         Gilt sowohl für Anrufe als auch für SMS-Nachrichten.
         ]]>
     </string>
-    <string name="stir">STIR-Bescheinigung</string>
-    <string name="stir_include_unverified">Unverifizierte einschließen</string>
-    <string name="unverified">Unverifiziert</string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Nicht verifizierte einschließen</string>
+    <string name="unverified">Nicht verifiziert</string>
     <string name="valid">Gültiger Anruf</string>
-    <string name="spoof">Spoof-Anruf</string>
+    <string name="spoof">Gefälschter Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR-Bescheinigung erfordert <b>Android 11+</b> und <b>Netzbetreiberunterstützung</b>. <br>
+            STIR-Beglaubigung erfordert <b>Android 11+</b> und <b>Unterstützung des Mobilfunkanbieters</b>. <br>
             <br>
-            Es gibt drei mögliche Bescheinigungsergebnisse: <br>
+            Es gibt drei mögliche Beglaubigungsresultate: <br>
             <font color="cyan"><b>Gültig</b></font> <br>
-            &emsp; Der Anruf ist sehr wahrscheinlich gültig, kein Spoofing. <br>
-            <font color="#ffa500"><b>Unverifiziert</b></font> <br>
-            &emsp; Der Anruf kann nicht überprüft werden oder die STIR-Bescheinigung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Spoof</b></font> <br>
-            &emsp; Es ist sehr wahrscheinlich ein Spoof-Anruf. <br>
+            &emsp; Der Anruf ist sehr wahrscheinlich gültig, nicht gefälscht. <br>
+            <font color="#ffa500"><b>Nicht verifiziert</b></font> <br>
+            &emsp; Der Anruf kann nicht bestätigt werden, oder STIR-Beglaubigung wird nicht unterstützt. <br>
+            <font color="#fa7f71"><b>Gefälscht</b></font> <br>
+            &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf. <br>
             <br>
             <br>
-              - <font color="#d1c8c8"><b>Inklusive</b></font>: <br>
+              - <font color="#d1c8c8"><b>Einschließend</b></font>: <br>
                   &emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin durch andere Regeln überprüft. <br>
-                  &emsp; Wenn "<b>Unverifizierte einschließen</b>" aktiviert ist, wird ein Anruf auch bestanden, wenn er unverifiziert ist. <br>
+                  &emsp; Wenn "<b>Nicht verifizierte einschließen</b>" aktiviert ist, wird ein Anruf auch durchgelassen, wenn er nicht verifiziert wurde. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
+              - <font color="#fa7f71"><b>Ausschließend</b></font>: <br>
                   &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-                  &emsp; Wenn "<b>Unverifizierte einschließen</b>" aktiviert ist, wird ein Anruf auch blockiert, wenn er unverifiziert ist. <br>
+                  &emsp; Wenn "<b>Nicht verifizierte einschließen</b>" aktiviert ist, wird ein Anruf auch blockiert, wenn er nicht verifiziert wurde. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        Diese Regeln gelten für die eingehende Telefonnummer.<br>
+        Diese Regeln gelten für die eingehende Rufnummer.<br>
         <br>
         <font color="#ffa500"><b>Wichtig</b></font>:<br>
-        Zur Vereinfachung des regulären Ausdrucks
+        Zur Vereinfachung des regulären Ausdrucks werden
           <font color="#fa7f71"><b>+</b></font>
-          und <font color="#fa7f71"><b>Spaces</b></font>
+          und <font color="#fa7f71"><b>Leerzeichen</b></font>
           und <font color="#fa7f71"><b>führende Nullen</b></font>
-          werden vor der Prüfung entfernt, z. B.:<br>
+          vor der Prüfung entfernt, z. B.:<br>
         &emsp; Alle diese Formate:<br>
         &emsp;&emsp; 123456789 &emsp;(reguläre Nummer)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Spaces</b></font>)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Leerzeichen</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(mit führendem <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit Inlandsvorwahl <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit nationalem Amtskennzeichen <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(zwei <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Sie werden <b>alle</b> geprüft als:<br>
+        &emsp; Sie werden <b>alle</b> überprüft wie:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Daher würde RegEx <font color="cyan"><b>123.*</b></font> mit allen übereinstimmen.<br>
-        Diese Nummernoptimierung kann durch das RegEx-Flag "Rohzahl" <b>deaktiviert</b> werden.<br>
+        &emsp; Der reguläre Ausdruck <font color="cyan"><b>123.*</b></font> würde also auf alle davon zutreffen.<br>
+        Diese Nummernoptimierung kann durch das reguläre Ausdrucks-Flag "Roh Nummer" <b>deaktiviert</b> werden.<br>
         <br>
-        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
+        Die Liste wird in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster <b>angezeigt</b>. <br>
         <br>
-        Deaktivieren Sie die Kontrollkästchen, um die Regel zu deaktivieren, <font color="#fa7f71"><b>wischen Sie nach links<b></font> zum Löschen.<br>
+        Deaktiviere die Regeln durch Entfernen der Häkchen. Wische zum Löschen <b>nach links<b>.<br>
         <br>
-        <b>Drücken Sie lange</b> die Schaltfläche "Hinzufügen", um Nummern aus einer CSV-Datei zu importieren. Unterstützte Spalten:<br>
-         - <no_translate>pattern</no_translate>: Der RegEx(<b>erforderlich</b>)<br>
-         - <no_translate>description</no_translate>: Beschreibung<br>
-         - <no_translate>priority</no_translate>: Priorität, Standard 1<br>
-         - <no_translate>flags</no_translate>: 1(Auf Anruf anwenden), 2(Auf SMS anwenden), 3(beide), Standard 3<br>
-         - <no_translate>isBlacklist</no_translate>: Blacklist oder Whitelist. <no_translate>true</no_translate> oder <no_translate>false</no_translate>, Standard <no_translate>true</no_translate><br>
-         - <no_translate>blockType</no_translate>: Blocktyp. 0~2 entsprechend den 3 Blocktypen, Standard 0<br>
-         - <no_translate>importance</no_translate>: Benachrichtigungstyp. 0~4 entsprechend den 5 Benachrichtigungstypen, Standard 2
+        <b>Drücke lange</b> auf die Schaltfläche "Hinzufügen", um Nummern aus einer CSV-Datei zu importieren. Unterstützte Spalten:<br>
+         - <no_translate>Muster</no_translate>: Der reguläre Ausdruck (<b>erforderlich</b>)<br>
+         - <no_translate>Beschreibung</no_translate>: Beschreibung<br>
+         - <no_translate>Priorität</no_translate>: Priorität, Standard 1<br>
+         - <no_translate>Kennzeichen</no_translate>: 1 (für Anruf anwenden), 2 (für SMS anwenden), 3 (beides), Standard 3<br>
+         - <no_translate>Schwarze Liste</no_translate>: Schwarze oder weiße Liste. <no_translate>true</no_translate> oder <no_translate>false</no_translate>, Standard <no_translate>true</no_translate><br>
+         - <no_translate>blockieren Typ</no_translate>: Typ des Blockierens. 0-2 entsprechen den 3 Blockiertypen, Standard 0<br>
+         - <no_translate>Wichtigkeit</no_translate>: Typ der Benachrichtigung. 0-4 entsprechen den 5 Typen der Benachrichtigung, Standard 2
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-         Fehlendes Pflichtfeld <b>Muster</b> in der CSV-Datei. Weitere Erläuterungen finden Sie im Tooltip-Ballon.
+        Erforderliches Feld <b>Muster</b> fehlt in der CSV-Datei. Details findest du in der Hilfe zum Ballon-Tooltip.
         ]]>
     </string>
 </resources>

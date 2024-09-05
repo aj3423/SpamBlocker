@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.telecom.Call
 import android.telecom.Connection
-import android.util.Log
 import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
@@ -544,25 +543,25 @@ class Checker { // for namespace only
                 Def.RESULT_BLOCKED_BY_NON_CONTACT -> res.getString(R.string.non_contacts)
                 Def.RESULT_ALLOWED_BY_STIR, Def.RESULT_BLOCKED_BY_STIR -> {
                     when (reason.toInt()) {
-                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir)} ${
+                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir_attestation)} ${
                             res.getString(
                                 R.string.unverified
                             )
                         }"
 
-                        Connection.VERIFICATION_STATUS_PASSED -> "${res.getString(R.string.stir)} ${
+                        Connection.VERIFICATION_STATUS_PASSED -> "${res.getString(R.string.stir_attestation)} ${
                             res.getString(
                                 R.string.valid
                             )
                         }"
 
-                        Connection.VERIFICATION_STATUS_FAILED -> "${res.getString(R.string.stir)} ${
+                        Connection.VERIFICATION_STATUS_FAILED -> "${res.getString(R.string.stir_attestation)} ${
                             res.getString(
                                 R.string.spoof
                             )
                         }"
 
-                        else -> res.getString(R.string.stir)
+                        else -> res.getString(R.string.stir_attestation)
                     }
                 }
 

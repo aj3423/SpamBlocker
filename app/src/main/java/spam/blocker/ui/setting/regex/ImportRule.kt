@@ -104,7 +104,7 @@ fun ImportRuleButton(
     }
     DropdownWrapper(items = importRuleItems) { expanded ->
         LongPressButton(
-            label = Str(R.string.add),
+            label = Str(R.string.new_),
             color = SkyBlue,
             onClick = onClick,
             onLongClick = {

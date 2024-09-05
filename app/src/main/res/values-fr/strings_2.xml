@@ -1,49 +1,49 @@
 <resources>
     <string name="contacts">Contacts</string>
-    <string name="non_contacts">Sans Contact</string>
-    <string name="inclusive">Inclusif</string>
+    <string name="non_contacts">Pas contacts</string>
+    <string name="inclusive">Inclus</string>
     <string name="exclusive">Exclusif</string>
     <string name="help_contacts">
         <![CDATA[
-        Lorsqu\'elle est activée, tous les appels/sms provenant de vos contacts sont toujours autorisés. <br>
+        Lorsqu\'elle est activée, les appels/messages provenant de contacts sont toujours autorisés. <br>
         <br>
           - <font color="#d1c8c8"><b>Inclusif</b></font>: <br>
-              &emsp; Les numéros autres que ceux de vos contacts seront vérifiés par d\'autres règles. <br>
+              &emsp; Les numéros qui ne sont pas des contacts seront vérifiés par d\'autres règles. <br>
               &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
-              &emsp; Les numéros autres que ceux de vos contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+              &emsp; Les numéros qui ne sont pas des contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font> <br>
         <br>
-        Ceci s\'applique à la fois aux appels et aux SMS.
+        S\'applique aux appels et aux messages SMS.
         ]]>
     </string>
-    <string name="stir">Attestation STIR</string>
-    <string name="stir_include_unverified">Inclure les non-vérifiés</string>
-    <string name="unverified">Non-vérifié</string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Inclure les non vérifiés</string>
+    <string name="unverified">Non vérifié</string>
     <string name="valid">Appel valide</string>
-    <string name="spoof">Appel usurpé</string>
+    <string name="spoof">Appel d\'usurpation d\'identité</string>
     <string name="help_stir">
         <![CDATA[
             L\'attestation STIR nécessite <b>Android 11+</b> et la <b>prise en charge de l\'opérateur</b>. <br>
             <br>
             Il existe trois résultats d\'attestation possibles : <br>
             <font color="cyan"><b>Valide</b></font> <br>
-            &emsp; L\'appel est très probablement valide, non usurpé. <br>
+            &emsp; L\'appel est très probablement valide, pas usurpé. <br>
             <font color="#ffa500"><b>Non vérifié</b></font> <br>
             &emsp; L\'appel ne peut pas être validé ou l\'attestation STIR n\'est pas prise en charge. <br>
-            <font color="#fa7f71"><b>Usurpation</b></font> <br>
-            &emsp; Il est très probablement question d\'un appel usurpé. <br>
+            <font color="#fa7f71"><b>Usurpation d\'identité</b></font> <br>
+            &emsp; Il s\'agit très probablement d\'un appel d\'usurpation d\'identité. <br>
             <br>
             <br>
               - <font color="#d1c8c8"><b>Inclusif</b></font>: <br>
-                  &emsp; Les appels qui échouent à cette vérification seront toujours vérifiés par d\'autres règles. <br>
-                  &emsp; Lorsque « <b>Inclure les non-vérifiés</b> » est coché, un appel sera également validé s\'il n\'est pas vérifié. <br>
+                  &emsp; Les appels qui échouent à cette vérification seront quand même vérifiés par d\'autres règles. <br>
+                  &emsp; Lorsque \"<b>Inclure les non vérifiés</b>\" est coché, un appel est également approuvé s\'il n\'est pas vérifié. <br>
                   &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
                   &emsp; Les appels qui échouent à cette vérification seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-                  &emsp; Lorsque « <b>Inclure les non-vérifiés</b> » est coché, un appel sera également bloqué s\'il n\'est pas vérifié. <br>
+                  &emsp; Lorsque \"<b>Inclure les non vérifiés</b>\" est coché, un appel est également bloqué s\'il n\'est pas vérifié. <br>
                   &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>
         ]]>
     </string>
@@ -54,37 +54,37 @@
         <font color="#ffa500"><b>Important</b></font>:<br>
         Pour simplifier l\'expression régulière,
           <font color="#fa7f71"><b>+</b></font>
-          et <font color="#fa7f71"><b>espaces</b></font>
-          et <font color="#fa7f71"><b>zéros non significatifs</b></font>
+          et les <font color="#fa7f71"><b>espaces</b></font>
+          et les <font color="#fa7f71"><b>zéros non significatifs</b></font>
           sont supprimés avant la vérification, par exemple :<br>
         &emsp; Tous ces formats :<br>
-        &emsp;&emsp; 123456789 (numéro normal)<br>
-        &emsp;&emsp; 1 2345 6789 (avec <font color="#fa7f71"><b>espaces</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 (avec <font color="#fa7f71"><b>+</b></font> en tête)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 (avec préfixe d\'indicatif national <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 (deux <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; 123456789 &emsp;(numéro normal)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(avec <font color="#fa7f71"><b>espaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> non significatif)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec préfixe tronc domestique <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(deux <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Ainsi, l\'expression régulière <font color="cyan"><b>123.*</b></font> correspondrait à tous.<br>
-        Cette optimisation de numéro peut être <b>désactivée</b> par le drapeau d\'expression régulière « Numéro brut ».<br>
+        &emsp; Donc, l\'expression régulière <font color="cyan"><b>123.*</b></font> correspondrait à tous.<br>
+        Cette optimisation des numéros peut être <b>désactivée</b> par l\'indicateur d\'expression régulière \"Numéro brut\".<br>
         <br>
-        La liste est <b>affichée</b> par ordre décroissant de priorité, d\'ordre alphabétique croissant de description et d\'ordre alphabétique croissant de modèle. <br>
+        La liste est <b>affichée</b> par ordre décroissant de priorité, description croissante et motif croissant. <br>
         <br>
-        Décochez les cases pour désactiver la règle, <b>faites glisser vers la gauche</b> pour la supprimer.<br>
+        Décochez les cases pour désactiver la règle, <font color="#fa7f71"><b>glissez vers la gauche<b></font> pour la supprimer.<br>
         <br>
-        <b>Appuyez longuement</b> sur le bouton « Ajouter » pour importer des numéros depuis un fichier .csv. Voici les colonnes prises en charge :<br>
+        <b>Maintenez enfoncé</b> le bouton \"Ajouter\" pour importer des numéros à partir d\'un fichier .csv, colonnes prises en charge :<br>
          - <no_translate>pattern</no_translate>: L\'expression régulière (<b>obligatoire</b>)<br>
          - <no_translate>description</no_translate>: Description<br>
          - <no_translate>priority</no_translate>: Priorité, 1 par défaut<br>
-         - <no_translate>flags</no_translate>: 1 (Appliquer à l\'appel), 2 (Appliquer au SMS), 3 (les deux), 3 par défaut<br>
+         - <no_translate>flags</no_translate>: 1 (appliquer à l\'appel), 2 (appliquer aux SMS), 3 (les deux), 3 par défaut<br>
          - <no_translate>isBlacklist</no_translate>: Liste noire ou liste blanche. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, <no_translate>true</no_translate> par défaut<br>
-         - <no_translate>blockType</no_translate>: Type de blocage. 0 à 2 correspondent aux 3 types de blocage, 0 par défaut<br>
-         - <no_translate>importance</no_translate>: Type de notification. 0 à 4 correspondent aux 5 types de notification, 2 par défaut
+         - <no_translate>blockType</no_translate>: Type de blocage. 0 à 2 correspondant aux 3 types de blocage, 0 par défaut<br>
+         - <no_translate>importance</no_translate>: Type de notification. 0 à 4 correspondant aux 5 types de notification, 2 par défaut
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Champ obligatoire <b>modèle</b> manquant dans le fichier .csv, consultez l\'info-bulle pour une explication détaillée.
+        Champ obligatoire manquant <b>pattern</b> dans le fichier .csv, vérifiez l\'info-bulle pour une explication détaillée.
         ]]>
     </string>
 </resources>

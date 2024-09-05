@@ -1,23 +1,22 @@
 package spam.blocker.ui.widgets
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.util.M
 import spam.blocker.util.Lambda1
 
 data class RadioItem(
@@ -45,12 +44,11 @@ fun RadioGroup(
         ) {
             RadioButton(
                 selected = idx == selectedIndex,
-                onClick = {
-                    onSelect(idx)
-                },
+                onClick = null,
                 modifier = M
                     .scale(0.7f)
-                    .size(24.dp),// reduce the gap between RadioButton and Text
+                    .width(24.dp)// reduce the gap between RadioButton and Text
+                    .height(10.dp),
                 colors = RadioButtonDefaults.colors(
                     unselectedColor = C.disabled,
                 )

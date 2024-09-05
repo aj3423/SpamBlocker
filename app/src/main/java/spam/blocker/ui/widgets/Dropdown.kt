@@ -11,14 +11,17 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import spam.blocker.ui.util.M
+import spam.blocker.ui.M
+import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
+import spam.blocker.util.loge
 
 interface IMenuItem {
     @Composable
@@ -27,7 +30,7 @@ interface IMenuItem {
 
 @Immutable
 class CustomItem(
-    val content: @Composable () -> Unit
+    val content: @Composable () -> Unit,
 ) : IMenuItem {
 
     @Composable
@@ -38,12 +41,11 @@ class CustomItem(
 
 @Immutable
 class DividerItem(
-    val color: Color,
     private val thickness: Int = 1,
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        HorizontalDivider(thickness = thickness.dp, color = color)
+        HorizontalDivider(thickness = thickness.dp, color = LocalPalette.current.disabled)
     }
 }
 
@@ -73,13 +75,13 @@ class LabelItem(
 
 @Immutable
 class CheckItem(
-    val checked: Boolean,
+    val state: MutableState<Boolean>,
     val label: String,
     private val onCheckChange: Lambda1<Boolean>
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        CheckBox(label = { GreyLabel(label) }, checked = checked, onCheckChange = onCheckChange)
+        CheckBox(label = { GreyLabel(label) }, checked = state.value, onCheckChange =  onCheckChange )
     }
 }
 

@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.ResIcon

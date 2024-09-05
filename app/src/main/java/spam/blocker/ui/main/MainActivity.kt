@@ -29,12 +29,13 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryPage
 import spam.blocker.ui.setting.SettingPage
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.Badge
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
@@ -143,7 +144,7 @@ class MainActivity : ComponentActivity() {
                     snackbarHost = {
                         SnackbarHost(hostState = SnackBar.state) { // customize color
                             Snackbar(
-                                containerColor = LocalPalette.current.schedule,
+                                containerColor = MayaBlue,
                                 contentColor = Color.DarkGray,
                                 actionColor = Color.DarkGray,
                                 snackbarData = it

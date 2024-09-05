@@ -62,7 +62,7 @@ fun Stir() {
         })
 
     LabeledRow(
-        R.string.stir,
+        R.string.stir_attestation,
         helpTooltipId = R.string.help_stir,
         content = {
             if (isEnabled) {

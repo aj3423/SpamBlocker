@@ -24,6 +24,18 @@
         <item>Show Passed</item>
         <item>Show Blocked</item>
     </string-array>
+    <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
+    <string name="log_sms_content">Log SMS Content</string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Show the SMS content in this list.<br>
+        &emsp; <b>Tap</b> to expand/collapse the full message.<br>
+        &emsp; <b>Swipe right</b> to see it in the default SMS app.<br>
+        <br>
+        <b>Notice</b>:<br>
+        &emsp; When enabled, the SMS message will be logged in the local database, it\'s not logged when disabled.
+        ]]>
+    </string>
 
     <string-array name="history_record_context_menu">
         <item>Copy Number</item>

@@ -4,8 +4,6 @@ import android.app.NotificationManager
 
 object Def {
 
-    const val MAX_POPUP_WIDTH = 280
-
     // tabs route
     const val CALL_TAB_ROUTE = "call"
     const val SMS_TAB_ROUTE = "sms"
@@ -38,7 +36,6 @@ object Def {
 
     const val SETTING_RECENT_APPS = "recent_apps"
     const val SETTING_ACTIVE_TAB = "active_tab"
-    const val SETTING_REQUIRE_PERMISSION_ONCE = "require_permission_once"
     const val SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE = "warn_running_in_work_profile_once"
     const val SETTING_WARN_DOUBLE_SMS = "warn_double_sms"
     const val SETTING_ENABLED = "globally_enable"
@@ -46,6 +43,7 @@ object Def {
     const val SETTING_SMS_ENABLED = "sms_enable"
     const val SETTING_SHOW_PASSED = "show_passed"
     const val SETTING_SHOW_BLOCKED = "show_blocked"
+    const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
 
     const val ON_NEW_CALL = "on_new_call"
     const val ON_NEW_SMS = "on_new_sms"

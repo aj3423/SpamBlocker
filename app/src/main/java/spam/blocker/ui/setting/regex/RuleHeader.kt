@@ -1,13 +1,10 @@
 package spam.blocker.ui.setting.regex
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
@@ -16,10 +13,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.PopupTesting
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.util.M
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 
@@ -84,7 +78,7 @@ fun RuleHeader(
             }
         } else {
             StrokeButton(
-                label = Str(R.string.add),
+                label = Str(R.string.new_),
                 color = SkyBlue,
                 onClick = { addRuleTrigger.value = true },
             )
