@@ -1,8 +1,7 @@
 <resources>
     <string name="crash_title">
-        Lo siento, la aplicación se ha estrellado.\n\n
-        Por favor, copia el contenido de abajo e informa de este problema en Github,
-        elimina cualquier información confidencial antes de informar.
+        Lo siento, la aplicación ha fallado.\n\n
+        Copia el contenido a continuación e informa de este problema en GitHub. Elimina cualquier información confidencial antes de informar.
     </string>
     <string-array name="short_weekdays">
         <item>Dom</item>
@@ -17,23 +16,23 @@
     <string-array name="block_type_list">
         <item>Rechazar</item>
         <item>Silenciar</item>
-        <item>Contestar+Colgar</item>
+        <item>Contestar y colgar</item>
     </string-array>
 
     <string-array name="history_display_filter">
-        <item>Mostrar pasadas</item>
-        <item>Mostrar bloqueadas</item>
+        <item>Mostrar superados</item>
+        <item>Mostrar bloqueados</item>
     </string-array>
-    <string name="confirm_delete_all_records">¿Confirmar la eliminación de todos los registros?</string>
-    <string name="log_sms_content">Registrar contenido SMS</string>
+    <string name="confirm_delete_all_records">Confirma para eliminar todos los registros.</string>
+    <string name="log_sms_content">Registrar contenido de SMS</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Mostrar el contenido SMS en esta lista.<br>
-        &emsp; <b>Pulsar</b> para expandir/contraer el mensaje completo.<br>
-        &emsp; <b>Deslizar hacia la derecha</b> para verlo en la aplicación SMS predeterminada.<br>
+        Mostrar el contenido de SMS en esta lista.<br>
+        &emsp; - <font color="#00BFFF"><b>Tocar</b></font> para expandir/contraer el mensaje completo.<br>
+        &emsp; - <font color="#00BFFF"><b>Deslizar a la derecha</b></font> para abrirlo en la aplicación de SMS predeterminada.<br>
+        &emsp; - <font color="#00BFFF"><b>Deslizar a la izquierda</b></font> para eliminarlo.<br>
         <br>
-        <b>Aviso</b>:<br>
-        &emsp; Cuando esté habilitado, el mensaje SMS se registrará en la base de datos local, no se registrará cuando esté deshabilitado.
+        &emsp; Cuando está habilitado, el mensaje SMS se <font color="#ffa500"><b>registrará</b></font> en la base de datos local; no se registra cuando está deshabilitado.
         ]]>
     </string>
 
@@ -43,21 +42,21 @@
     </string-array>
 
     <string-array name="importance_list">
-        <item>Ninguna</item>
+        <item>Ninguno</item>
         <item>Sombra</item>
         <item>Barra de estado, sombra</item>
         <item>Sonido, barra de estado, sombra</item>
-        <item>Sonido, barra de estado, sombra, Heads-up</item>
+        <item>Sonido, barra de estado, sombra, emergente</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>Exportar como Json</item>
+        <item>Exportar como JSON</item>
         <item>Exportar como comprimido</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones las realiza la IA de Google. Envía un problema en Github para añadir un nuevo idioma compatible.
+            Las traducciones las realiza Google AI; envía un error en GitHub para añadir una nueva compatibilidad de idioma.
         ]]>
     </string>
     <string name="enabled_for_call">Habilitar para llamadas</string>
@@ -65,13 +64,13 @@
     <string name="repeated_call">Llamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite en un período de tiempo, es probable que sea importante en lugar de una llamada de spam. <br>
+        Permitir si la llamada se repite dentro de un período de tiempo; es probable que sea importante en lugar de una llamada de spam. <br>
         <br>
-        La recepción de mensajes de texto del mismo número también se cuenta, esto depende de si se concede el permiso READ_SMS, que es opcional.<br>
+        Recibir mensajes de texto del mismo número también se tiene en cuenta; esto depende de si se ha concedido el permiso READ_SMS, que es opcional.<br>
         <br>
-        La configuración predeterminada <font color="cyan"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada en 5 minutos. <br>
+        El ajuste predeterminado <font color="#03DAC5"><b>1 / 5 min</b></font> significa que se permitirá la segunda llamada en 5 minutos. <br>
         <br>
-        Sólo se aplica a las llamadas, <b>no</b> a los mensajes de texto. <br>
+        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
@@ -79,15 +78,12 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El interruptor global, esta aplicación sólo funciona cuando está activado.
-        Desactívalo cuando estés esperando alguna llamada o mensaje en particular. <br>
+        El interruptor global; esta aplicación solo funciona cuando está activada. Desactívala cuando estés esperando una llamada o mensaje en particular. <br>
         <br>
-        También se puede activar o desactivar desde los <b>Ajustes rápidos del menú desplegable</b>.<br>
+        También se puede activar o desactivar desde <font color="#6ed0ff"><b>Ajustes rápidos desplegables</b></font>.<br>
         <br>
-        Para los SMS, esta aplicación se ocupará de las notificaciones de SMS, por favor
-        <font color="#fa7f71"><b>desactiva el permiso de notificación de la aplicación SMS predeterminada</b></font> en la configuración del sistema,
-        de lo contrario habrá notificaciones dobles.
-        Sólo filtra las notificaciones SMS, los SMS de spam seguirán estando presentes en la aplicación SMS predeterminada.
+        Para SMS, esta aplicación asumirá las notificaciones de SMS; <font color="#fa7f71"><b>desactiva el permiso de notificaciones de la aplicación de SMS predeterminada</b></font> en los ajustes del sistema; de lo contrario, habrá notificaciones dobles.
+        Solo filtra las notificaciones de SMS; los mensajes de spam seguirán estando presentes en la aplicación de SMS predeterminada.
         ]]>
     </string>
 
@@ -95,18 +91,18 @@
     <string name="version">Versión</string>
     <string name="build_time">Hora de compilación (UTC)</string>
     <string name="source_code">Código fuente</string>
-    <string name="dismiss">Descartar</string>
+    <string name="dismiss">Rechazar</string>
     <string name="warning_running_in_work_profile">
-        Es posible que esta aplicación no funcione correctamente dentro del perfil de trabajo, instálala en el perfil principal.
+        Es posible que esta aplicación no funcione correctamente dentro del perfil de trabajo; instálala en el perfil principal.
     </string>
     <string-array name="import_csv_type">
         <item>Importar .csv como una sola regla</item>
-        <item>Importar .csv como múltiples reglas</item>
+        <item>Importar .csv como varias reglas</item>
     </string-array>
     <string name="warning_double_sms">
-        Esta aplicación se hará cargo de todas las notificaciones SMS,
-        pero el permiso de notificación de la aplicación SMS predeterminada también está habilitado,
-        por favor desactívalo en los ajustes del sistema para evitar notificaciones SMS dobles.
+        Esta aplicación asumirá todas las notificaciones de SMS,
+        pero el permiso de notificaciones de la aplicación de SMS predeterminada también está activado;
+        desactívalo en los ajustes del sistema para evitar notificaciones de SMS dobles.
     </string>
     <string name="open_settings">Abrir ajustes</string>
     <string name="ignore">Ignorar</string>

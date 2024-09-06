@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
@@ -89,7 +90,7 @@ fun BackupRestore() {
                 fileReader.Compose(ctx)
 
                 var succeeded by remember { mutableStateOf(false) }
-                val resultTrigger = remember { mutableStateOf(false) }
+                val resultTrigger = rememberSaveable { mutableStateOf(false) }
 
                 if (resultTrigger.value) {
                     PopupDialog(

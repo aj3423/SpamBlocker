@@ -3,6 +3,7 @@ package spam.blocker.ui.setting.regex
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
@@ -31,7 +32,7 @@ fun ImportRuleButton(
     val fileReader = rememberFileReadChooser()
     fileReader.Compose(ctx)
 
-    val warningTrigger = remember { mutableStateOf(false) }
+    val warningTrigger = rememberSaveable { mutableStateOf(false) }
     if (warningTrigger.value) {
         PopupDialog(
             trigger = warningTrigger,

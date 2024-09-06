@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
@@ -30,7 +31,7 @@ fun Stir() {
     var isExclusive by remember { mutableStateOf(spf.isExclusive()) }
     var includeUnverified by remember { mutableStateOf(spf.isIncludeUnverified()) }
 
-    val popupTrigger = remember { mutableStateOf(false) }
+    val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
     PopupDialog(
         trigger = popupTrigger,

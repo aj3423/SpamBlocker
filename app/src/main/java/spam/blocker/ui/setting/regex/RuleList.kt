@@ -20,6 +20,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.geometry.Offset
@@ -75,7 +76,7 @@ fun RuleList(
     val ctx = LocalContext.current
     val coroutine = rememberCoroutineScope()
 
-    val editRuleTrigger = remember { mutableStateOf(false) }
+    val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
     val clickedRule = remember { mutableStateOf(RegexRule()) }
 
     if (editRuleTrigger.value) {

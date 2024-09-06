@@ -33,13 +33,14 @@ import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryPage
 import spam.blocker.ui.setting.SettingPage
 import spam.blocker.ui.theme.AppTheme
-import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.Badge
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
 import spam.blocker.ui.widgets.ConfirmDialog
+import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
@@ -116,52 +117,52 @@ class MainActivity : ComponentActivity() {
         G.smsVM.reload(ctx)
 
         setContent {
-            Main()
+            AppTheme(
+                darkTheme = when (G.themeType.intValue) {
+                    1 -> false
+                    2 -> true
+                    else -> isSystemInDarkTheme()
+                }
+            ) {
+                Main()
 
-            // TODO verify works?
-            // show warning if this app is running in work profile
-            checkWorkProfile()
+                // show warning if this app is running in work profile
+                checkWorkProfile()
+            }
         }
-
     }
 
     @Composable
     private fun Main() {
-        AppTheme(
-            darkTheme = when (G.themeType.intValue) {
-                1 -> false
-                2 -> true
-                else -> isSystemInDarkTheme()
-            }
-        ) {
-            // An extra surface to make the top-status-bar and bottom-system-bar
-            //   to have the same color as the app background.
-            Surface(modifier = M.fillMaxSize()) {
-                Scaffold(
-                    modifier = M
-                        .fillMaxSize()
-                        .systemBarsPadding(), // fix bottom-bar behind system-bar
-                    snackbarHost = {
-                        SnackbarHost(hostState = SnackBar.state) { // customize color
-                            Snackbar(
-                                containerColor = MayaBlue,
-                                contentColor = Color.DarkGray,
-                                actionColor = Color.DarkGray,
-                                snackbarData = it
-                            )
-                        }
-                    },
-                    bottomBar = {
-                        BottomBar(G.bottomBarVM)
+        // An extra surface to make the top-status-bar and bottom-system-bar
+        //   to be the same color as the app background.
+        Surface(modifier = M.fillMaxSize()) {
+            Scaffold(
+                modifier = M
+                    .fillMaxSize()
+                    .systemBarsPadding(), // fix bottom-bar behind system-bar
+                snackbarHost = {
+                    SnackbarHost(hostState = SnackBar.state) { // customize color
+                        Snackbar(
+                            containerColor = MayaBlue,
+                            contentColor = Color.DarkGray,
+                            actionColor = Color.DarkGray,
+                            snackbarData = it
+                        )
                     }
-                ) { scaffoldPadding ->
-                    Column(modifier = M
+                },
+                bottomBar = {
+                    BottomBar(G.bottomBarVM)
+                }
+            ) { scaffoldPadding ->
+                Column(
+                    modifier = M
                         .padding(scaffoldPadding)
-                        .fillMaxSize()) {
-                        G.bottomBarVM.tabItems.forEach {
-                            if (it.isSelected.value) {
-                                it.content()
-                            }
+                        .fillMaxSize()
+                ) {
+                    G.bottomBarVM.tabItems.forEach {
+                        if (it.isSelected.value) {
+                            it.content()
                         }
                     }
                 }
@@ -204,6 +205,7 @@ class MainActivity : ComponentActivity() {
             Def.SMS_TAB_ROUTE -> Permissions.requestReceiveSmsPermission(this)
         }
     }
+
     private fun onTabReSelected(route: String) {
         when (route) {
             Def.CALL_TAB_ROUTE -> Launcher.launchCallApp(this)
@@ -217,23 +219,23 @@ class MainActivity : ComponentActivity() {
         val spf = Global(this)
         val alreadyShown by remember { mutableStateOf(spf.hasPromptedForRunningInWorkProfile()) }
         val runningInWorkProf by remember { mutableStateOf(Util.isRunningInWorkProfile(this)) }
-        val showWarning by remember {
-            derivedStateOf { !alreadyShown && runningInWorkProf }
-        }
 
-        val popup = remember { mutableStateOf(false) }
-        if (showWarning) {
+        val trigger = remember {
+            mutableStateOf(!alreadyShown && runningInWorkProf)
+        }
+        if (trigger.value) {
             ConfirmDialog(
-                trigger = popup,
+                trigger = trigger,
                 content = {
-                    Text(Str(R.string.warning_running_in_work_profile))
+                    GreyLabel(Str(R.string.warning_running_in_work_profile))
                 },
-                icon = { ResIcon(R.drawable.ic_warning) },
+                icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
                 positive = {
                     StrokeButton(
-                        label = getString(R.string.ignore),
-                        color = Teal200,
+                        label = getString(R.string.dismiss),
+                        color = DarkOrange,
                     ) {
+                        trigger.value = false
                         spf.setPromptedForRunningInWorkProfile()
                     }
                 }

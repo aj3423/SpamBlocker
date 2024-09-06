@@ -1,38 +1,38 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Після активації всі дзвінки (повідомлення) буде дозволено протягом цього періоду часу. Зазвичай вночі спаму немає. <br>
+        <no_translate>под час</no_translate> <no_translate>тої</no_translate> <no_translate>включений</no_translate>, <no_translate>будуть</no_translate> <no_translate>дозволяти</no_translate> <no_translate>всі</no_translate> <no_translate>дзвони</no_translate>(<no_translate>повідомлення</no_translate>) <no_translate>за</no_translate> <no_translate>того</no_translate> <no_translate>періоду</no_translate>. <no_translate>Зазвичай</no_translate>, <no_translate>спам</no_translate> <no_translate>немає</no_translate> <no_translate>в</no_translate> <no_translate>ночі</no_translate>. <br>
         <br>
-        Якщо час початку більше кінцевого часу, наприклад, 20:00 -> 07:00, це означає, що період з 20:00 вечора до 07:00 наступного ранку. <br>
+        <no_translate>Якщо</no_translate> <no_translate>час</no_translate> <no_translate>початку</no_translate> <no_translate>більший</no_translate> <no_translate>за</no_translate> <no_translate>час</no_translate> <no_translate>закінчення</no_translate>, <no_translate>наприклад</no_translate>, 20:00 -> 07:00, <no_translate>це</no_translate> <no_translate>означає</no_translate>, <no_translate>що</no_translate> <no_translate>період</no_translate> <no_translate>з</no_translate> 20:00 <no_translate>увечері</no_translate> <no_translate>до</no_translate> 07:00 <no_translate>наступного</no_translate> <no_translate>ранку</no_translate>. <br>
         <br>
-        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
+        <font color="#ea86ff"><b><no_translate>Пріоритет</no_translate>: 10</b></font>
         ]]>
     </string>
 
     <string name="help_regex_flags">
         <![CDATA[
 
-            Ці прапорці змінюють узгоджену поведінку Regex, вони встановлені для нових правил за замовчуванням. <br>
+            <no_translate>Ці</no_translate> <no_translate>прапори</no_translate> <no_translate>змінюють</no_translate> <no_translate>поведінку</no_translate> <no_translate>співпадіння</no_translate> <no_translate>regex</no_translate>, <no_translate>вони</no_translate> <no_translate>встановлені</no_translate> <no_translate>для</no_translate> <no_translate>нових</no_translate> <no_translate>правил</no_translate> <no_translate>за</no_translate> <no_translate>замовчуванням</no_translate>. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Ігнорувати регістр</b></font>:<br>
-            &ensp; Це робить шаблон відповідності незалежним від регістру, <font color="cyan"><b>a</b></font>
-              відповідатиме як <font color="cyan"><b>a</b></font>, так і <font color="cyan"><b>A</b></font>. <br>
+            <font color="#d1c8c8"><b><no_translate>Ігнорувати регістр</no_translate></b></font>:<br>
+            &ensp; <no_translate>Вона робить</no_translate> <no_translate>співпадіння</no_translate> <no_translate>моделі</no_translate> <no_translate>нечутливими</no_translate> <no_translate>до</no_translate> <no_translate>регістру</no_translate>, <font color="#03DAC5"><b><no_translate>а</no_translate></b></font>
+              <no_translate>співпадатиме</no_translate> <no_translate>з</no_translate> <font color="#03DAC5"><b><no_translate>а</no_translate></b></font> <no_translate>і</no_translate> <font color="#03DAC5"><b><no_translate>А</no_translate></b></font>. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Крапка збігається з усім</b></font>: <br>
-            &ensp; Коли активовано, <font color="cyan"><b>.</b></font> також відповідатиме символам нового рядка (<font color="cyan"><b>\\n</b></font>),
-              це дозволяє точці відповідати кільком рядкам. <br>
-            &ensp; Вариант використання: <br>
-            &emsp;   Відповідність багаторядковому SMS-повідомленню: <br>
-            &emsp;   <font color="#fa7f71">вимагати свій приз: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   з правилом: <br>
-            &emsp;   <font color="#fa7f71"><b>*http .*com .*</b></font> <br>
+            <font color="#d1c8c8"><b><no_translate>Крапка зіставляється з усім</no_translate></b></font>: <br>
+            &ensp; <no_translate>Якщо</no_translate> <no_translate>увімкнено</no_translate>, <font color="#03DAC5"><b>.</b></font> <no_translate>також</no_translate> <no_translate>співпадатиме</no_translate> <no_translate>з</no_translate> <no_translate>переносами</no_translate> (<font color="#03DAC5"><b>\\n</b></font>),
+              <no_translate>це</no_translate> <no_translate>дозволяє</no_translate> <no_translate>крапці</no_translate> <no_translate>співпадати</no_translate> <no_translate>в</no_translate> <no_translate>кількох</no_translate> <no_translate>рядках</no_translate>. <br>
+            &ensp; <no_translate>Випадок використання</no_translate>: <br>
+            &emsp;   <no_translate>Співпадати</no_translate> <no_translate>з</no_translate> <no_translate>багаторядковими</no_translate> <no_translate>повідомленнями</no_translate> SMS: <br>
+            &emsp;   <font color="#fa7f71"><no_translate>вимагайте вашого призу</no_translate>: http://<br>
+            &emsp;   <no_translate>abc</no_translate>.<no_translate>com</no_translate> </font><br>
+            &emsp;   <no_translate>з</no_translate> <no_translate>правилом</no_translate>: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>Необроблений номер</b></font>: <br>
-            &ensp; Якщо активовано, номер не буде оптимізовано, <font color="cyan"><b>+</b></font> та <font color="cyan"><b>провідні 0</b></font> залишаться, що корисно для розрізнення внутрішніх номерів.
+            <font color="#d1c8c8"><b><no_translate>Сирий номер</no_translate></b></font>: <br>
+            &ensp; <no_translate>Якщо</no_translate> <no_translate>увімкнено</no_translate>, <no_translate>номер</no_translate> <no_translate>не</no_translate> <no_translate>буде</no_translate> <no_translate>оптимізовано</no_translate>, <font color="#03DAC5"><b>+</b></font> <no_translate>і</no_translate> <font color="#03DAC5"><b>провідні</no_translate> <no_translate>0</no_translate></b></font> <no_translate>залишаться</no_translate>, <no_translate>це</no_translate> <no_translate>корисно</no_translate> <no_translate>для</no_translate> <no_translate>диференціації</no_translate> <no_translate>місцевих</no_translate> <no_translate>номерів</no_translate>.
         ]]>
     </string>
 

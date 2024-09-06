@@ -7,11 +7,11 @@
         <item>Regel klonen</item>
         <item>Alle Regeln löschen</item>
     </string-array>
-    <string name="confirm_delete_all_rule">Bestätigen, dass alle Regeln gelöscht werden?</string>
+    <string name="confirm_delete_all_rule">Bestätigen, um alle Regeln zu löschen?</string>
 
     <string name="notification">Benachrichtigung</string>
     <string name="type">Typ</string>
-    <string name="times">Mal</string>
+    <string name="times">Zeiten</string>
     <plurals name="days">
         <item quantity="one">%d Tag</item>
         <item quantity="two">%d Tage</item>
@@ -28,39 +28,38 @@
     <string name="sms_content_abbrev">Inhalt</string>
     <string name="regex_flags">Regex-Flags</string>
     <string-array name="regex_flags_list">
-        <item>Groß-/Kleinschreibung ignorieren</item>
-        <item>Punktübereinstimmung für alle</item>
-        <item>Rohnummer</item>
+        <item>Groß-/Kleinschreibung ignor.</item>
+        <item>Punkt passt zu allen</item>
+        <item>Unformatierte Zahl</item>
     </string-array>
-    <string name="disable_number_optimization">Diese Optimierung kann durch das Regex-Flag "Rohnummer" deaktiviert werden.</string>
-    <string name="off_time">Aus-Zeit</string>
+    <string name="disable_number_optimization">Diese Optimierung kann durch das Regex-Flag "Unformatierte Zahl" deaktiviert werden.</string>
+    <string name="off_time">Abschaltzeit</string>
     <string name="schedule">Zeitplan</string>
     <string name="workday">Werktag</string>
     <string name="weekend">Wochenende</string>
     <string name="entire_day">Ganzer Tag</string>
-    <string name="block_type">Sperrtyp</string>
+    <string name="block_type">Blocktyp</string>
     <string name="for_particular_number">Für Nummer</string>
-    <string name="help_for_particular_number">Wenn aktiviert, wird die Regel nur angewendet, wenn sowohl Nummer als auch Inhalt übereinstimmen.</string>
+    <string name="help_for_particular_number">Wenn aktiviert, gilt die Regel nur, wenn sowohl Nummer als auch Inhalt übereinstimmen.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Ablehnen</b></font>: <br>
-        &emsp; Wie beim Drücken der Ablehn-Taste. Funktioniert vollständig geräuschlos, Sperrbildschirm wird nicht aktiviert, dies ist der empfohlene Typ, wenn Sie keine Mailbox nutzen.<br>
+        - <font color="#d1c8c8"><b>Abweisen</b></font>: <br>
+        &emsp; Gleiches wie das Drücken der Ablehnungstaste. Funktioniert völlig geräuschlos, der Lockscreen wird nicht eingeschaltet, dies ist der empfohlene Typ, wenn Sie keine Voicemail verwenden.<br>
         <br>
         - <font color="#d1c8c8"><b>Stummschalten</b></font>: <br>
-        &emsp; Klingelt lautlos im Hintergrund, wodurch dem Anrufer der Eindruck vermittelt wird, dass Sie nur beschäftigt sind und es nicht beantwortet haben. <br>
+        &emsp; Klingelt lautlos im Hintergrund und vermittelt dem Anrufer den Eindruck, dass Sie nur beschäftigt sind und nicht geantwortet haben. <br>
         <br>
         - <font color="#d1c8c8"><b>Annehmen und auflegen</b></font>: <br>
-        &emsp; Um zu vermeiden, dass Sie auf die Mailbox weitergeleitet werden. Der Sperrbildschirm kann kurzzeitig aktiviert werden,
-         Sie hören möglicherweise auch einen Anrufbeenden-Ton (einige Telefone bieten eine Option, diesen Ton stummzuschalten).
+        &emsp; Um zu vermeiden, dass Sie zur Voicemail weitergeleitet werden. Der Lockscreen kann für kurze Zeit eingeschaltet werden, Sie hören möglicherweise auch einen Anrufbeendetton (einige Telefone bieten die Möglichkeit, diesen Ton stummzuschalten).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Gewählte Nummern werden zugelassen. <br>
+        Gewählte Nummern werden zugelassen.<br>
         <br>
-        Auch das Senden von Nachrichten wird gezählt. Dies funktioniert nur, wenn die READ_SMS-Berechtigung erteilt wurde. <br>
+        Auch das Senden von Nachrichten zählt. Dies funktioniert nur, wenn die Berechtigung READ_SMS erteilt wurde. <br>
         <br>
-        Die Standardeinstellung <font color="cyan"><b>3 Tage</b></font> bedeutet: Wenn Sie innerhalb der letzten 3 Tage die Nummer gewählt oder ihr Nachrichten gesendet haben, werden Anrufe von dieser Nummer zugelassen.<br>
+        Die Standardeinstellung <font color="#03DAC5"><b>3 Tage</b></font> bedeutet, dass Anrufe von dieser Nummer zugelassen werden, wenn Sie die Nummer innerhalb der letzten 3 Tage gewählt oder ihr Nachrichten gesendet haben.<br>
         <br>
         Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>
@@ -69,12 +68,12 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Jeder eingehende Anruf wird weitergeleitet, wenn eine App aus der Liste kürzlich verwendet wurde.<br>
+        Jeder Anruf würde passieren, wenn eine App in der Liste kürzlich verwendet wurde.<br>
         <br>
         Ein typischer Anwendungsfall:<br>
-        &emsp; Sie haben gerade eine Pizza in PizzaApp bestellt, bald rufen sie Sie an, um Ihnen Ihr Geld zurückzuerstatten, weil sie schließen. Dieser Anruf würde weitergeleitet werden, wenn PizzaApp hier aktiviert ist. <br>
+        &emsp; Sie haben gerade eine Pizza in PizzaApp bestellt, bald rufen sie Sie an, um Rückzahlungen zu leisten, weil sie schließen. Dieser Anruf würde passieren, wenn PizzaApp hier aktiviert ist. <br>
         <br>
-        Die Standardeinstellung <font color="cyan"><b>5 Minuten</b></font> bedeutet: Jeder Anruf wird zugelassen, wenn eine dieser Apps innerhalb von 5 Minuten verwendet wurde. Unter "verwendet" wird dabei verstanden: aktiviert, deaktiviert, minimiert oder beendet. <br>
+        Die Standardeinstellung <font color="03DAC5"><b>5 Min.</b></font> bedeutet, dass jeder Anruf passiert, wenn eine der Apps innerhalb von 5 Minuten verwendet wurde. "Verwendet" bedeutet entweder aktiviert, deaktiviert, minimiert oder beendet. <br>
         <br>
         Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>

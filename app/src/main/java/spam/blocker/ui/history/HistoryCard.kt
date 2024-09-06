@@ -62,7 +62,7 @@ fun HistoryCard(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background,
         ),
-        border = BorderStroke(width = 0.5.dp, color = C.cardBorder),
+        border = BorderStroke(width = 1.dp, color = C.cardBorder),
         shape = RoundedCornerShape(6.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -120,7 +120,7 @@ fun HistoryCard(
                 // SMS Message
                 if (forType == Def.ForSms && record.smsContent != null) {
                     Column {
-                        HorizontalDivider(thickness = 0.2.dp, color = C.disabled, modifier = M.padding(vertical = 4.dp))
+                        HorizontalDivider(thickness = 0.5.dp, color = C.disabled, modifier = M.padding(vertical = 4.dp))
                         Text(
                             text = record.smsContent,
                             color = C.textGrey,

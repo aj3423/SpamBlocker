@@ -8,13 +8,13 @@
         <![CDATA[
         A quick way to copy content from SMS messages or phone numbers, making it easy to grab verification codes or incoming numbers.<br>
         <br>
-        When it matches, a button like <font color="yellow"><b>Copy: 123456</b></font> would appear in the notification.<br>
+        When it matches, a button like <font color="#00BFFF"><b>Copy: 123456</b></font> would appear in the notification.<br>
         <br>
         A sample rule for extracting verification codes:<br>
         &emsp; Using capturing group:<br>
-        &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
         &emsp; Another approach using lookaround:<br>
-        &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
@@ -34,7 +34,7 @@
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        When <font color="cyan"><b>Passed</b></font> is checked, this rule will apply to passed calls and messages.<br>
+        When <font color="#03DAC5"><b>Passed</b></font> is checked, this rule will apply to passed calls and messages.<br>
         <br>
         When <font color="#fa7f71"><b>Blocked</b></font> is checked, this rule will apply to blocked calls and messages.
         ]]>

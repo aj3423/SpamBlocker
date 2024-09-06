@@ -26,6 +26,7 @@ import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Purple200
 import spam.blocker.ui.widgets.GreyIcon
@@ -46,7 +47,7 @@ fun RuleCard(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background,
         ),
-        border = BorderStroke(width = 0.5.dp, color = C.cardBorder),
+        border = BorderStroke(width = 1.dp, color = C.cardBorder),
         shape = RoundedCornerShape(6.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -133,7 +134,7 @@ fun RuleCard(
                 RowVCenterSpaced(space = 8) {
 
                     // [NotifyType]
-                    RowVCenterSpaced(space = 4) {
+                    RowVCenterSpaced(space = 2) {
                         if (rule.isBlacklist && rule.importance >= NotificationManager.IMPORTANCE_DEFAULT) {
                             GreyIcon(iconId = R.drawable.ic_bell_ringing, modifier = M.size(16.dp))
                         }
@@ -141,7 +142,7 @@ fun RuleCard(
                             GreyIcon(iconId = R.drawable.ic_heads_up, modifier = M.size(18.dp))
                         }
                         if (rule.isBlacklist && rule.importance == NotificationManager.IMPORTANCE_MIN) {
-                            GreyIcon(iconId = R.drawable.ic_shade, modifier = M.size(22.dp))
+                            GreyIcon(iconId = R.drawable.ic_shade, modifier = M.size(18.dp))
                         }
                         if (rule.isBlacklist && rule.importance >= NotificationManager.IMPORTANCE_LOW) {
                             GreyIcon(
@@ -154,7 +155,7 @@ fun RuleCard(
                     // [Priority]
                     Text(
                         text = "${Str(R.string.priority)}: ${rule.priority}",
-                        color = Purple200,
+                        color = Color.Magenta,
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                     )

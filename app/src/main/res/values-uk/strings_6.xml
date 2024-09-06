@@ -1,113 +1,113 @@
 <resources>
     <string name="crash_title">
-        Sorry, the app has crashed.\n\n
-        Please copy the content below and report this issue on github,
-        remove any sensitive information before reporting.
+        Вибачте, додаток зламався.\n\n
+        Скопіюйте вміст нижче та повідомте про цю проблему на github,
+        видаліть будь-яку конфіденційну інформацію перед відправкою звіту.
     </string>
     <string-array name="short_weekdays">
-        <item>Sun</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
-        <item>Sat</item>
+        <item>Нд</item>
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Reject</item>
-        <item>Silence</item>
-        <item>Answer+Hang Up</item>
+        <item>Відхилити</item>
+        <item>Мовчки</item>
+        <item>Відповісти+Покласти слухавку</item>
     </string-array>
 
     <string-array name="history_display_filter">
-        <item>Show Passed</item>
-        <item>Show Blocked</item>
+        <item>Показати успішні</item>
+        <item>Показати заблоковані</item>
     </string-array>
-    <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
-    <string name="log_sms_content">Log SMS Content</string>
+    <string name="confirm_delete_all_records">Підтвердити видалення всіх записів?</string>
+    <string name="log_sms_content">Записувати вміст SMS</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Show the SMS content in this list.<br>
-        &emsp; <b>Tap</b> to expand/collapse the full message.<br>
-        &emsp; <b>Swipe right</b> to see it in the default SMS app.<br>
+        Показати вміст SMS у цьому списку.<br>
+        &emsp; - <font color="#00BFFF"><b>Торкнутися</b></font>, щоб розгорнути/згорнути повне повідомлення.<br>
+        &emsp; - <font color="#00BFFF"><b>Провести пальцем праворуч</b></font>, щоб відкрити його в SMS-додатку.<br>
+        &emsp; - <font color="#00BFFF"><b>Провести пальцем ліворуч</b></font>, щоб видалити.<br>
         <br>
-        <b>Notice</b>:<br>
-        &emsp; When enabled, the SMS message will be logged in the local database, it\'s not logged when disabled.
+        &emsp; Якщо цей параметр увімкнуто, SMS-повідомлення буде <font color="#ffa500"><b>записане</b></font> у локальній базі даних.
         ]]>
     </string>
 
     <string-array name="history_record_context_menu">
-        <item>Copy Number</item>
-        <item>Add Number to new Rule</item>
+        <item>Копіювати номер</item>
+        <item>Додати номер до нового правила</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>None</item>
-        <item>Shade</item>
-        <item>StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade, Heads-up</item>
+        <item>Немає</item>
+        <item>Тінь</item>
+        <item>Смуга стану, Тінь</item>
+        <item>Звук, Смуга стану, Тінь</item>
+        <item>Звук, Смуга стану, Тінь, ВАЖЛИВЕ ПОВІДОМЛЕННЯ</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>Export as Json</item>
-        <item>Export as Compressed</item>
+        <item>Експортувати в JSON</item>
+        <item>Експортувати в стисненому вигляді</item>
     </string-array>
 
-    <string name="language">Language</string>
+    <string name="language">Мова</string>
     <string name="help_language">
         <![CDATA[
-            Translations are done by Google AI, fire an issue on github for adding a new language support.
+            Переклади виконуються за допомогою Google AI; повідомте про проблему у програмі github, щоб додати підтримку нової мови.
         ]]>
     </string>
-    <string name="enabled_for_call">Enable for Call</string>
-    <string name="enabled_for_sms">Enable for SMS</string>
-    <string name="repeated_call">Repeated Call</string>
+    <string name="enabled_for_call">Увімкнути для дзвінків</string>
+    <string name="enabled_for_sms">Увімкнути для SMS</string>
+    <string name="repeated_call">Повторний дзвінок</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permit if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
+        Дозволити, якщо виклик повторюється протягом певного періоду часу; скоріше за все це буде важливий, а не спам-дзвінок. <br>
         <br>
-        Receiving text message from the same number is also counted, this depends on whether the READ_SMS permission is granted, which is optional.<br>
+        Отримання текстового повідомлення з одного й того самого номера також враховується; це залежить від того, чи надано дозвіл READ_SMS, який не є обов’язковим.<br>
         <br>
-        The default setting <font color="cyan"><b>1 / 5 Min</b></font> means the second call within 5 minutes will be permitted. <br>
+        Стандартне налаштування <font color="#03DAC5"><b>1 / 5 хв</b></font> означає, що дозволяються повторні дзвінки протягом 5 хвилин. <br>
         <br>
-        Only applies for calls, <b>not</b> for text messages. <br>
+        Застосовується лише до дзвінків, а <b>не</b> до текстових повідомлень. <br>
         <br>
-        <font color="#ea86ff"><b>Priority: 10</b></font>
+        <font color="#ea86ff"><b>Пріоритет: 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        The global switch, this app only works when this is turned on,
-        turn it off when you are waiting for some particular call/message. <br>
+        Глобальний перемикач, ця програма працює лише тоді, коли цей параметр увімкнено.
+        Вимкніть його, коли очікуєте на певний дзвінок/повідомлення. <br>
         <br>
-        It can also be toggled from the <b>Dropdown Quick Settings</b>.<br>
+        Його також можна перемкнути із <font color="#6ed0ff"><b>швидких налаштувань</b></font>.<br>
         <br>
-        For SMS, this app will take over the SMS notifications, please
-        <font color="#fa7f71"><b>turn off the notification permission of the default SMS app</b></font> in system settings,
-        otherwise there will be double notifications.
-        It only filters SMS notifications, spam SMS messages will still be present in the default SMS app.
+        Для SMS-повідомлень ця програма візьме на себе SMS-повідомлення; будь ласка,
+        <font color="#fa7f71"><b>вимкніть дозвіл на сповіщення у налаштуваннях програми SMS</b></font> за замовчуванням,
+        інакше будуть подвійні сповіщення.
+        Він фільтрує лише SMS-сповіщення, спам-повідомлення все одно будуть присутні у програмі SMS за замовчуванням.
         ]]>
     </string>
 
-    <string name="about">About</string>
-    <string name="version">Version</string>
-    <string name="build_time">Build Time (UTC)</string>
-    <string name="source_code">Source Code</string>
-    <string name="dismiss">Dismiss</string>
+    <string name="about">Про програму</string>
+    <string name="version">Версія</string>
+    <string name="build_time">Час збірки (UTC)</string>
+    <string name="source_code">Вихідний код</string>
+    <string name="dismiss">Відхилити</string>
     <string name="warning_running_in_work_profile">
-        This app may not work correctly within work profile, please install it in main profile instead.
+        Ця програма може працювати некоректно в робочому профілі; встановіть її в основному профілі.
     </string>
     <string-array name="import_csv_type">
-        <item>Import .csv as a single rule</item>
-        <item>Import .csv as multiple rules</item>
+        <item>Імпортувати .csv як єдине правило</item>
+        <item>Імпортувати .csv як кількох правил</item>
     </string-array>
     <string name="warning_double_sms">
-        This app will take over all SMS notifications,
-        but the notification permission of the default SMS app is also enabled,
-        please disable it in system settings to prevent double SMS notifications.
+        Ця програма візьме на себе всі SMS-сповіщення,
+        але також увімкнуто дозвіл на сповіщення SMS-програми за замовчуванням;
+        Будь ласка, вимкніть його в налаштуваннях системи, щоб запобігти подвійним SMS-сповіщенням.
     </string>
-    <string name="open_settings">Open Settings</string>
-    <string name="ignore">Ignore</string>
+    <string name="open_settings">Відкрити налаштування</string>
+    <string name="ignore">Ігнорувати</string>
 </resources>

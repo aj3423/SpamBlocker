@@ -38,6 +38,7 @@ import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
@@ -49,9 +50,13 @@ import spam.blocker.util.loge
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
+
 // Code copied from OutlinedInputBox, modifications:
-//  - reduce height
-//  - remove the content padding-top
+//  - reduce height:
+//      defaultMinSize( minWidth = 2000.dp, minHeight = 36.dp, ),
+//  - reduce the content padding-top:
+//      contentPadding = PaddingValues( 16.dp, 12.dp ),
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun InputBox(
@@ -139,8 +144,8 @@ private fun InputBox(
                     // the padding of the text within the box
                     contentPadding = PaddingValues(
                         16.dp,
-                        10.dp
-                    ), // remove the vertical padding TODO
+                        12.dp
+                    ),
 
                     value = value.text,
                     visualTransformation = visualTransformation,
@@ -433,7 +438,7 @@ fun RegexInputBox(
                 } else {
                     Text(
                         text = imdlc,
-                        color = Color.Magenta,
+                        color = LightMagenta,
                         modifier = modifier,
                     )
                 }

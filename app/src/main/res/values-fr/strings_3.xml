@@ -6,20 +6,20 @@
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Un moyen rapide de copier du contenu à partir de messages SMS ou de numéros de téléphone, ce qui facilite la récupération des codes de vérification ou des numéros entrants.<br>
+        Un moyen rapide de copier du contenu de messages SMS ou des numéros de téléphone, ce qui facilite la récupération des codes de vérification ou des numéros entrants.<br>
         <br>
-        Lorsqu\'elle correspond, un bouton comme <font color="yellow"><b>Copier : 123456</b></font> apparaît dans la notification.<br>
+        Lorsqu\'il correspond, un bouton comme <font color="#00BFFF"><b>Copier : 123456</b></font> apparaîtrait dans la notification.<br>
         <br>
-        Un exemple de règle pour extraire les codes de vérification :<br>
-        &emsp; À l\'aide du groupe de capture :<br>
-        &emsp;&emsp; <font color="cyan"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Une autre approche utilisant la recherche :<br>
-        &emsp;&emsp; <font color="cyan"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        Un exemple de règle d\'extraction des codes de vérification :<br>
+        &emsp; En utilisant un groupe de capture :<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        &emsp; Une autre approche utilisant la recherche à l\'entour :<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
         <![CDATA[
-        Activez cette règle pour les appels, les SMS ou les deux.<br>
+        Activer cette règle pour un appel, un SMS ou les deux.<br>
         Décochez ces cases pour désactiver la règle sans la supprimer.
         ]]>
     </string>
@@ -28,33 +28,34 @@
         Lorsque <font color="#d1c8c8"><b>Numéro</b></font> est coché, cette règle extraira le contenu du numéro entrant.
         Par exemple, utilisez <b>(.*)</b> pour copier le numéro de téléphone.<br>
         <br>
-        Lorsque <font color="#d1c8c8"><b>Contenu</b></font> est coché, cette règle extraira le contenu du corps du message SMS, comme les codes de vérification.
+        Lorsque <font color="#d1c8c8"><b>Contenu</b></font> est coché, cette règle extraira le contenu du corps du message SMS,
+        comme les codes de vérification.
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        Lorsque <font color="cyan"><b>Autorisé</b></font> est coché, cette règle s\'appliquera aux appels et aux messages autorisés.<br>
+        Lorsque <font color="#03DAC5"><b>Passé</b></font> est coché, cette règle s\'applique aux appels et messages passés.<br>
         <br>
-        Lorsque <font color="#fa7f71"><b>Bloqué</b></font> est coché, cette règle s\'appliquera aux appels et aux messages bloqués.
+        Lorsque <font color="#fa7f71"><b>Bloqué</b></font> est coché, cette règle s\'applique aux appels et messages bloqués.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>Aucun :</b><br>&emsp; Aucune notification.<br>
-        <b>Notification</b> :<br>&emsp; La fenêtre déroulante des notifications.<br>
-        <b>Barre d\'état</b> :<br>&emsp; La petite icône dans la barre supérieure.<br>
-        <b>Son</b> :<br>&emsp; La sonnerie de notification par défaut.<br>
-        <b>Prioritaire</b> :<br>&emsp; Affiche une fenêtre flottante en haut de l\'écran.
+        <b>Aucun</b> :<br>&emsp; Aucune notification. <br>
+        <b>Volet</b> :<br>&emsp; Le volet de notifications déroulant. <br>
+        <b>Barre d\'état</b> :<br>&emsp; La petite icône dans la barre supérieure. <br>
+        <b>Son</b> :<br>&emsp; Le son de notification par défaut. <br>
+        <b>Heads-Up</b> :<br>&emsp; Faire apparaître une fenêtre flottante en haut de l\'écran.
         ]]>
     </string>
-    <string name="title_rule_testing">Test de règle</string>
+    <string name="title_rule_testing">Test de règles</string>
     <string name="help_test_rules">
         <![CDATA[
         Cela permet de vérifier si les règles sont définies comme prévu.<br>
         <br>
-        Il s\'agit simplement d\'une simulation et aucun appel entrant (ou message texte) n\'apparaîtra réellement.<br>
+        Ce n\'est qu\'une simulation qui ne fera pas réellement apparaître un appel entrant (ou un SMS).<br>
         <br>
-        Le résultat est affiché ici et dans l\'historique, avec une notification.
+        Le résultat est affiché ici et dans le journal d\'historique, avec une notification.
         ]]>
     </string>
 

@@ -32,6 +32,8 @@ data class CustomColorsPalette(
     val dialogBorder: Color = Color.Unspecified,
 
     val bottomNavBg: Color = Color.Unspecified, // bg of bottom nav bar
+
+    val balloonBorder: Color = Color.Unspecified,
 //    val fragmentBg         :Color = Color.Unspecified,
 //    val inputHint          :Color = Color.Unspecified,
 //    val groupBorder        :Color = Color.Unspecified,
@@ -57,6 +59,8 @@ val LightCustomColorsPalette = CustomColorsPalette(
     bottomNavBg = Color.White,
     dialogBg = Color.White,
     dialogBorder = SwissCoffee,
+
+    balloonBorder = OrangeRed,
 )
 
 val DarkCustomColorsPalette = CustomColorsPalette(
@@ -78,6 +82,8 @@ val DarkCustomColorsPalette = CustomColorsPalette(
     bottomNavBg = Black2d2d2d,
     dialogBg = Grey424242,
     dialogBorder = Grey383838,
+
+    balloonBorder = DarkOrange,
 )
 
 // Usage:
@@ -90,7 +96,7 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = Color.White,
     surfaceTint = White, // this affects pop menu bg
-    surface = White, // systembar, balloon
+    surface = White, // systembar, balloon bg
 )
 private val DarkColorScheme = darkColorScheme(
     primary = Teal200,
@@ -98,7 +104,7 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = Pink80,
     background = Black111111,
     surfaceTint = White, // this affects pop menu bg
-    surface = Black111111, // systembar, balloon
+    surface = Black111111, // systembar, balloon bg
 
 //    onPrimary               = Color.Red,
 //    primaryContainer        = Color.Red,

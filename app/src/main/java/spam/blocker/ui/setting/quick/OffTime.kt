@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
@@ -24,7 +25,7 @@ fun OffTime() {
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
 
-    val popupTrigger = remember { mutableStateOf(false) }
+    val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
     var sHour by remember { mutableIntStateOf(spf.getStartHour()) }
     var sMin by remember { mutableIntStateOf(spf.getStartMin()) }

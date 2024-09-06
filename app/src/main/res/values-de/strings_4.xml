@@ -1,27 +1,28 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Wenn aktiviert, werden während dieses Zeitraums alle Anrufe(Nachrichten) zugelassen. Normalerweise gibt es nachts keinen Spam. <br>
+        Wenn aktiviert, sind während dieses Zeitraums alle Anrufe (Nachrichten) zulässig. Nachts gibt es normalerweise keinen Spam. <br>
         <br>
-        Wenn die Startzeit größer als die Endzeit ist, z. B. 20:00 -> 07:00, bedeutet dies den Zeitraum von 20:00 Uhr abends bis 07:00 Uhr am nächsten Morgen. <br>
+        Wenn die Startzeit größer als die Endzeit ist, z. B. 20:00 -> 07:00, bedeutet dies den Zeitraum von 20:00 Uhr am Abend bis 07:00 Uhr am nächsten Morgen. <br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
     </string>
+
     <string name="help_regex_flags">
         <![CDATA[
 
-            Diese Flags ändern das Verhalten der Regex beim Abgleich. Sie werden standardmäßig für neue Regeln festgelegt. <br>
+            Diese Flags ändern das Abgleichverhalten von Regex. Sie sind standardmäßig für neue Regeln festgelegt. <br>
             <br>
 
             <font color="#d1c8c8"><b>Groß-/Kleinschreibung ignorieren</b></font>:<br>
-            &ensp; Dadurch wird die Groß-/Kleinschreibung beim Abgleich des Musters nicht beachtet, <font color="cyan"><b>a</b></font>
-              würde sowohl <font color="cyan"><b>a</b></font> als auch <font color="cyan"><b>A</b></font> entsprechen. <br>
+            &ensp; Dadurch wird die Groß-/Kleinschreibung beim Abgleich des Musters ignoriert, <font color="#03DAC5"><b>a</b></font>
+              würde sowohl mit <font color="#03DAC5"><b>a</b></font> als auch <font color="#03DAC5"><b>A</b></font> übereinstimmen. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Punkt passt zu allen</b></font>: <br>
-            &ensp; Wenn aktiviert, entspricht <font color="cyan"><b>.</b></font> auch Zeilenumbruchzeichen (<font color="cyan"><b>\\n</b></font>).
-              Dadurch kann der Punkt über mehrere Zeilen hinweg entsprechen. <br>
+            <font color="#d1c8c8"><b>Punkt mit allen übereinstimmen</b></font>: <br>
+            &ensp; Wenn aktiviert, stimmt <font color="#03DAC5"><b>.</b></font> auch mit Zeilenumbruchzeichen (<font color="#03DAC5"><b>\\n</b></font>) überein.
+              Dadurch kann der Punkt über mehrere Zeilen hinweg übereinstimmen. <br>
             &ensp; Anwendungsfall: <br>
             &emsp;   Mehrzeilige SMS-Nachricht abgleichen: <br>
             &emsp;   <font color="#fa7f71">Fordern Sie Ihren Preis an: http://<br>
@@ -30,8 +31,9 @@
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>Rohnummer</b></font>: <br>
-            &ensp; Wenn aktiviert, wird die Nummer nicht optimiert, <font color="cyan"><b>+</b></font> und <font color="cyan"><b>führende 0en</b></font> bleiben erhalten. Dies ist nützlich, um Inlandsnummern zu unterscheiden.
+            <font color="#d1c8c8"><b>Unformatierte Nummer</b></font>: <br>
+            &ensp; Wenn aktiviert, wird die Nummer nicht optimiert. <font color="#03DAC5"><b>+</b></font> und <font color="#03DAC5"><b>führende 0en</b></font> bleiben erhalten. Dies ist für die Unterscheidung inländischer Nummern nützlich.
         ]]>
     </string>
+
 </resources>

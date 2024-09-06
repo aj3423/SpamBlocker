@@ -27,6 +27,7 @@ import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RowVCenter
@@ -71,6 +72,7 @@ fun PopupTesting(
 
     ConfirmDialog(
         trigger = trigger,
+        popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 600),
         title = {
             RowVCenter {
                 GreyLabel(Str(R.string.title_rule_testing))

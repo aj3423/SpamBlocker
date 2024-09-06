@@ -1,38 +1,39 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        When enabled, all calls(messages) will be allowed during this time period. Usually there are no spams at night. <br>
+        При включении все вызовы(сообщения) будут разрешены в указанное время. Как правило, ночью спам-звонков нет. <br>
         <br>
-        If the start time is greater than the end time, for example, 20:00 -> 07:00, it means the period from 20:00 in the evening to 07:00 the next morning. <br>
+        Если время начала больше, чем время окончания, например, 20:00 -> 07:00, это означает период с 20:00 вечера до 07:00 следующего утра. <br>
         <br>
-        <font color="#ea86ff"><b>Priority: 10</b></font>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
 
     <string name="help_regex_flags">
         <![CDATA[
 
-            These flags change the matching behavior of the regex, they are set for new rules by default. <br>
+            Эти флаги изменяют поведение соответствия регулярного выражения, они устанавливаются для новых правил по умолчанию. <br>
             <br>
 
-            <font color="#d1c8c8"><b>С учетом регистра</b></font>:<br>
-            &ensp; Это делает соответствие шаблона чувствительным к регистру, <font color="cyan"><b>a</b></font>
-              будет совпадать только с <font color="cyan"><b>a</b></font> но не с <font color="cyan"><b>A</b></font>. <br>
+            <font color="#d1c8c8"><b>Игнорировать регистр</b></font>:<br>
+            &ensp; Это делает сопоставление шаблонов независимым от регистра, <font color="#03DAC5"><b>a</b></font>
+               будет соответствовать как <font color="#03DAC5"><b>a</b></font>, так и <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
-            <font color="#d1c8c8"><b>. Совпадает со всем</b></font>: <br>
-            &ensp; Когда включено, <font color="cyan"><b>.</b></font> будет также совпадать с символами перевода строки (<font color="cyan"><b>\\n</b></font>),
-              это позволяет точке совпадать на нескольких строках. <br>
+            <font color="#d1c8c8"><b>Точка соответствует всем символам</b></font>: <br>
+            &ensp; При включении <font color="#03DAC5"><b>.</b></font> будет также соответствовать символам новой строки (<font color="#03DAC5"><b>\\n</b></font>),
+            это позволяет точке соответствовать нескольким строкам. <br>
             &ensp; Пример использования: <br>
-            &emsp;   Совпадение многострочного SMS-сообщения: <br>
-            &emsp;   <font color="#fa7f71">получить приз: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   с правилом: <br>
+            &emsp; Сопоставление многострочного текстового сообщения: <br>
+            &emsp; <font color="#fa7f71">получите свой приз: http://<br>
+            &emsp; abc.com </font><br>
+            &emsp; с правилом: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>Необработанное число</b></font>: <br>
-            &ensp; Когда включено, номер не будет оптимизирован, <font color="cyan"><b>+</b></font> и <font color="cyan"><b>начальные 0</b></font> останутся, полезно для различения внутренних номеров.
+            <font color="#d1c8c8"><b>Исходное число</b></font>: <br>
+            &ensp; При включении число не будет оптимизировано, <font color="#03DAC5"><b>+</b></font> и <font color="#03DAC5"><b>начальные нули</b></font> останутся, что полезно для различения внутренних
+            номеров.
         ]]>
     </string>
 

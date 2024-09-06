@@ -34,7 +34,6 @@ fun Language() {
         mutableStateOf(spf.getLanguage())
     }
 
-    // TODO how to do this only once? instead on every Composition.
     val items = remember {
 
         val followSystem = ctx.getString(R.string.follow_system)

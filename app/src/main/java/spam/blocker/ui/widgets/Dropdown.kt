@@ -4,8 +4,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
@@ -15,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import spam.blocker.ui.M
@@ -53,23 +57,31 @@ class DividerItem(
 class LabelItem(
     val id: String = "",
     val label: String,
+    val icon: (@Composable () -> Unit)? = null,
     val selected: Boolean = false,
     private val dismissOnClick: Boolean = true, // collapse the dropdown menu when item is clicked
     val onClick: Lambda,
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        GreyLabel(
-            text = label,
-            modifier = M
-                .fillMaxWidth()
-                .clickable {
-                    onClick()
-                    if (dismissOnClick)
-                        menuExpandedState.value = false
-                },
-            fontWeight = if (selected) FontWeight.Bold else null,
-        )
+        RowVCenter {
+            icon?.let {
+                it()
+                Spacer(modifier = M.width(width = 10.dp))
+            }
+
+            GreyLabel(
+                text = label,
+                modifier = M
+                    .fillMaxWidth()
+                    .clickable {
+                        onClick()
+                        if (dismissOnClick)
+                            menuExpandedState.value = false
+                    },
+                fontWeight = if (selected) FontWeight.Bold else null,
+            )
+        }
     }
 }
 

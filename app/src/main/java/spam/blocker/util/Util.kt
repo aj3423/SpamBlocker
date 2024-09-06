@@ -229,10 +229,6 @@ class Util {
         }
 
 
-        fun isInt(str: String): Boolean {
-            return str.toIntOrNull() != null
-        }
-
         private var cacheAppList : List<AppInfo>? = null
         private val lock_1 = Any()
         @SuppressLint("UseCompatLoadingForDrawables")

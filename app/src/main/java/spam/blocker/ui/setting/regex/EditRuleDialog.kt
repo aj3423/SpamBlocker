@@ -3,6 +3,7 @@ package spam.blocker.ui.setting.regex
 import android.Manifest
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -31,6 +33,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
@@ -39,6 +42,7 @@ import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.ShowAnimated
 import spam.blocker.ui.widgets.Spinner
@@ -164,9 +168,17 @@ fun RuleEditDialog(
                     onSave(
                         newRegexRule(
                             initRule.id,
-                            pattern, patternExtra, patternFlags.intValue, patternExtraFlags.intValue,
-                            description, priority, applyToWorB == 1,
-                            flags, notifyType, schedule, blockType,
+                            pattern,
+                            patternExtra,
+                            patternFlags.intValue,
+                            patternExtraFlags.intValue,
+                            description,
+                            priority,
+                            applyToWorB == 1,
+                            flags,
+                            notifyType,
+                            schedule,
+                            blockType,
                         )
                     )
                 }
@@ -345,25 +357,47 @@ fun RuleEditDialog(
                     permChain.Compose()
 
                     LabeledRow(labelId = R.string.block_type) {
-                        val blockTypeLabels =
+                        val icons = remember {
+                            listOf<@Composable () -> Unit>(
+                                // list.map{} doesn't support returning @Composable...
+                                {
+                                    GreyIcon(
+                                        iconId = R.drawable.ic_call_blocked,
+                                        modifier = M.size(16.dp)
+                                    )
+                                },
+                                {
+                                    GreyIcon(
+                                        iconId = R.drawable.ic_call_miss,
+                                        modifier = M.size(16.dp)
+                                    )
+                                },
+                                { GreyIcon(iconId = R.drawable.ic_hang, modifier = M.size(16.dp)) },
+                            )
+                        }
+                        val blockTypeLabels = remember {
                             ctx.resources.getStringArray(R.array.block_type_list)
                                 .mapIndexed { index, label ->
-                                    LabelItem(label = label, onClick = {
-                                        when (index) {
-                                            0, 1 -> { // Reject, Silence
-                                                blockType = index
-                                            }
+                                    LabelItem(
+                                        label = label,
+                                        icon = icons[index],
+                                        onClick = {
+                                            when (index) {
+                                                0, 1 -> { // Reject, Silence
+                                                    blockType = index
+                                                }
 
-                                            2 -> { // Answer-HangUp
-                                                permChain.ask { granted ->
-                                                    if (granted) {
-                                                        blockType = index
+                                                2 -> { // Answer-HangUp
+                                                    permChain.ask { granted ->
+                                                        if (granted) {
+                                                            blockType = index
+                                                        }
                                                     }
                                                 }
                                             }
-                                        }
-                                    })
+                                        })
                                 }
+                        }
                         Spinner(blockTypeLabels, blockType)
                     }
                 }
@@ -374,20 +408,47 @@ fun RuleEditDialog(
                         labelId = R.string.notification,
                         helpTooltipId = R.string.help_importance,
                     ) {
-                        val notifyTypeLabels =
+                        val icons = remember {
+                            listOf<@Composable () -> Unit>(
+                                // list.map{} doesn't support returning @Composable...
+                                { GreyIcon(R.drawable.ic_empty, modifier = M.size(16.dp)) },
+                                { GreyIcon(R.drawable.ic_shade, modifier = M.size(16.dp)) },
+                                { GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp)) },
+                                {
+                                    RowVCenterSpaced(2) {
+                                        GreyIcon(R.drawable.ic_bell_ringing, modifier = M.size(16.dp))
+                                        GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp))
+                                    }
+                                },
+                                {
+                                    RowVCenterSpaced(2) {
+                                        GreyIcon(R.drawable.ic_bell_ringing, modifier = M.size(16.dp))
+                                        GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp))
+                                        GreyIcon(R.drawable.ic_heads_up, modifier = M.size(16.dp))
+                                    }
+                                },
+                            )
+                        }
+
+                        val notifyTypeLabels = remember {
                             ctx.resources.getStringArray(R.array.importance_list)
                                 .mapIndexed { index, label ->
-                                    LabelItem(label = label, onClick = {
-                                        notifyType = index
-                                    })
+                                    LabelItem(
+                                        label = label,
+                                        icon = icons[index],
+                                        onClick = {
+                                            notifyType = index
+                                        }
+                                    )
                                 }
+                        }
                         Spinner(notifyTypeLabels, notifyType)
                     }
                 }
 
                 // Schedule
                 if (forType != Def.ForQuickCopy) {
-                    val popupTrigger = remember { mutableStateOf(false) }
+                    val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
                     if (popupTrigger.value) {
                         TimeRangePicker(

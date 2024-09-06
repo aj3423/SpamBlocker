@@ -21,6 +21,7 @@ import kotlinx.serialization.json.JsonTransformingSerializer
 import spam.blocker.def.Def
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Schedule
 import spam.blocker.util.Util
@@ -124,7 +125,7 @@ data class RegexRule(
             withStyle(
                 style = SpanStyle(
                     fontSize = 12.sp,
-                    color = androidx.compose.ui.graphics.Color.Magenta
+                    color = LightMagenta
                 )
             ) {
                 append(if (imdlc.isEmpty()) "" else "$imdlc ")
@@ -137,7 +138,6 @@ data class RegexRule(
                     //  rest content when it exceeds 10 lines, but the performance is very low for
                     //  super long string. So manually truncate it first.
                     // For jetpack compose Text, not tested yet ,
-                    // TODO: test super long string performance, remove `truncate()` if not necessary
                     truncate(pattern)
                 )
             }
@@ -152,7 +152,7 @@ data class RegexRule(
                 withStyle(
                     style = SpanStyle(
                         fontSize = 12.sp,
-                        color = androidx.compose.ui.graphics.Color.Magenta
+                        color = LightMagenta
                     )
                 ) {
                     append(if (imdlcEx.isEmpty()) "" else "$imdlcEx ")

@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
@@ -181,8 +182,8 @@ fun RecentApps() {
 
     val inXMin = remember { mutableStateOf<Int?>(spf.getMin()) }
 
-    val buttonPopupTrigger = remember { mutableStateOf(false) }
-    val appsPopupTrigger = remember { mutableStateOf(false) }
+    val buttonPopupTrigger = rememberSaveable { mutableStateOf(false) }
+    val appsPopupTrigger = rememberSaveable { mutableStateOf(false) }
 
     val enabledPkgs = remember {
         mutableStateListOf<String>()

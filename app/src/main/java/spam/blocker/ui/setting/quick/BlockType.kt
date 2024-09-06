@@ -1,13 +1,18 @@
 package spam.blocker.ui.setting.quick
 
 import android.Manifest
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -35,9 +40,15 @@ fun BlockType() {
     }
 
     val options = remember {
+        val icons = listOf<@Composable ()-> Unit>( // list.map{} doesn't support returning @Composable...
+            { GreyIcon(iconId = R.drawable.ic_call_blocked, modifier = M.size(16.dp)) },
+            { GreyIcon(iconId = R.drawable.ic_call_miss, modifier = M.size(16.dp)) },
+            { GreyIcon(iconId = R.drawable.ic_hang, modifier = M.size(16.dp)) },
+        )
         ctx.resources.getStringArray(R.array.block_type_list).mapIndexed { index, label ->
             LabelItem(
                 label = label,
+                icon = icons[index],
                 onClick = {
                     when(index) {
                         0, 1 -> { // Reject, Silence

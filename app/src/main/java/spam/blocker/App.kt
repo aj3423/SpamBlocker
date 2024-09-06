@@ -13,7 +13,6 @@ class App : Application() {
     override fun attachBaseContext(base:Context) {
         super.attachBaseContext(base)
 
-        // TODO
         // Set the default uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             handleUncaughtException(thread, throwable)

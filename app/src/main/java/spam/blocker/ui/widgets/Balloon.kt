@@ -28,6 +28,7 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DarkOrange
+import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.loge
 
 
@@ -49,7 +50,7 @@ fun BalloonQuestionMark(helpTooltipId: Int) {
                 modifier = Modifier
                     .border(
                         if (isSystemInDarkTheme()) BalloonBorderWidthDark.dp else BalloonBorderWidthLight.dp,
-                            DarkOrange,
+                            LocalPalette.current.balloonBorder,
                         shape = RoundedCornerShape(BalloonCornerRadius.dp)
                     )
             ) {
