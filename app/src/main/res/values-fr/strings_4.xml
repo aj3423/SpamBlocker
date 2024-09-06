@@ -14,12 +14,12 @@
             Ces indicateurs modifient le comportement de correspondance de l\'expression régulière. Ils sont définis pour les nouvelles règles par défaut. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Ignorer la casse</b></font>:<br>
+            <font color="#00BFFF"><b>Ignorer la casse</b></font>:<br>
             &ensp; Elle rend la correspondance du modèle insensible à la casse, <font color="#03DAC5"><b>a</b></font>
               correspondra à la fois à <font color="#03DAC5"><b>a</b></font> et <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Le point correspond à tout</b></font>: <br>
+            <font color="#00BFFF"><b>Le point correspond à tout</b></font>: <br>
             &ensp; Si cette option est activée, <font color="#03DAC5"><b>.</b></font> correspondra également aux caractères de nouvelle ligne (<font color="#03DAC5"><b>\\n</b></font>),
               ce qui permet au point de correspondre sur plusieurs lignes. <br>
             &ensp; Cas d\'utilisation: <br>
@@ -30,7 +30,7 @@
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>Nombre brut</b></font>: <br>
+            <font color="#00BFFF"><b>Nombre brut</b></font>: <br>
             &ensp; Si cette option est activée, le numéro ne sera pas optimisé, <font color="#03DAC5"><b>+</b></font> et <font color="#03DAC5"><b>les 0 initiaux</b></font> seront conservés, ce qui est utile pour différencier les numéros nationaux.
         ]]>
     </string>

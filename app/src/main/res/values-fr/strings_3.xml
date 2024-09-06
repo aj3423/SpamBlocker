@@ -25,10 +25,10 @@
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Lorsque <font color="#d1c8c8"><b>Numéro</b></font> est coché, cette règle extrait le contenu du numéro entrant.
+        Lorsque <font color="#00BFFF"><b>Numéro</b></font> est coché, cette règle extrait le contenu du numéro entrant.
         Par exemple, utilisez <b>(.*)</b> pour copier le numéro de téléphone.<br>
         <br>
-        Lorsque <font color="#d1c8c8"><b>Contenu</b></font> est coché, cette règle extrait le contenu du corps du message SMS,
+        Lorsque <font color="#00BFFF"><b>Contenu</b></font> est coché, cette règle extrait le contenu du corps du message SMS,
         comme les codes de vérification.
         ]]>
     </string>

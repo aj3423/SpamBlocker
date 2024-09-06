@@ -21,6 +21,7 @@ fun HtmlText(
         factory = { context ->
             TextView(context).apply {
                 setTextColor(color.toArgb())
+                textSize = 15f
 
                 // make links clickable
                 movementMethod = LinkMovementMethod.getInstance()

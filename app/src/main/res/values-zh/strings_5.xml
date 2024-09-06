@@ -1,5 +1,4 @@
 <resources>
-    <string name="allow_repeated_call">重复来电</string>
     <string name="dialed">已拨号</string>
     <string name="find_apps">查找应用</string>
 
@@ -25,7 +24,6 @@
     <string name="phone_number">电话号码</string>
     <string name="phone_number_abbrev">号码</string>
     <string name="sms_content">短信内容</string>
-    <string name="sms_content_abbrev">内容</string>
     <string name="regex_flags">正则表达式标志</string>
     <string-array name="regex_flags_list">
         <item>忽略大小写</item>
@@ -43,13 +41,13 @@
     <string name="help_for_particular_number">启用时，仅当号码和内容同时匹配时规则才会应用。</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>拒绝</b></font>: <br>
+        - <font color="#00BFFF"><b>拒绝</b></font>: <br>
         &emsp; 等同于按拒绝按钮。它完全静默运行，不会打开锁屏，如果不用语音信箱，这是推荐的类型。<br>
         <br>
-        - <font color="#d1c8c8"><b>静音</b></font>: <br>
+        - <font color="#00BFFF"><b>静音</b></font>: <br>
         &emsp; 它会在后台静音响铃，给来电者留下你正忙而无人应答的印象。<br>
         <br>
-        - <font color="#d1c8c8"><b>应答后挂断</b></font>: <br>
+        - <font color="#00BFFF"><b>应答后挂断</b></font>: <br>
         &emsp; 为避免将电话转到语音信箱。锁屏可能短暂打开，你可能还会听到通话结束音（有些手机提供将该声音静音的选项）。
         ]]>
     </string>

@@ -438,7 +438,7 @@ fun RegexInputBox(
                 } else {
                     Text(
                         text = imdlc,
-                        color = LightMagenta,
+                        color = Color.Magenta,
                         modifier = modifier,
                     )
                 }

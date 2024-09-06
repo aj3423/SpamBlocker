@@ -3,6 +3,7 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -125,7 +126,7 @@ data class RegexRule(
             withStyle(
                 style = SpanStyle(
                     fontSize = 12.sp,
-                    color = LightMagenta
+                    color = Color.Magenta
                 )
             ) {
                 append(if (imdlc.isEmpty()) "" else "$imdlc ")
@@ -152,7 +153,7 @@ data class RegexRule(
                 withStyle(
                     style = SpanStyle(
                         fontSize = 12.sp,
-                        color = LightMagenta
+                        color = Color.Magenta
                     )
                 ) {
                     append(if (imdlcEx.isEmpty()) "" else "$imdlcEx ")

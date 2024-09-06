@@ -14,12 +14,12 @@
             这些标志改变了正则表达式的匹配行为，默认情况下它们将为新规则设置。 <br>
             <br>
 
-            <font color="#d1c8c8"><b>忽略大小写</b></font>：<br>
+            <font color="#00BFFF"><b>忽略大小写</b></font>：<br>
             &ensp; 它使模式匹配不区分大小写，<font color="#03DAC5"><b>a</b></font>
               将同时匹配 <font color="#03DAC5"><b>a</b></font> 和 <font color="#03DAC5"><b>A</b></font>。 <br>
             <br>
 
-            <font color="#d1c8c8"><b>点匹配所有</b></font>：<br>
+            <font color="#00BFFF"><b>点匹配所有</b></font>：<br>
             &ensp; 启用后，<font color="#03DAC5"><b>.</b></font> 也将匹配换行符 (<font color="#03DAC5"><b>\\n</b></font>)，
               这允许点跨多行匹配。 <br>
             &ensp; 用例：<br>
@@ -30,7 +30,7 @@
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>原始数字</b></font>： <br>
+            <font color="#00BFFF"><b>原始数字</b></font>： <br>
             &ensp; 启用后，数字不会被优化，<font color="#03DAC5"><b>+</b></font> 和 <font color="#03DAC5"><b>前导 0</b></font> 将保留，这对于区分国内号码很有用。
         ]]>
     </string>

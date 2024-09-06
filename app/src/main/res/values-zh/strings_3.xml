@@ -25,10 +25,10 @@
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        当选中<font color="#d1c8c8"><b>号码</b></font>时，此规则将从传入号码中提取内容。
+        当选中<font color="#00BFFF"><b>号码</b></font>时，此规则将从传入号码中提取内容。
         例如，使用<b>(.*)</b>来复制电话号码。<br>
         <br>
-        当选中<font color="#d1c8c8"><b>内容</b></font>时，此规则将从短信正文中提取内容，
+        当选中<font color="#00BFFF"><b>内容</b></font>时，此规则将从短信正文中提取内容，
         例如验证码。
         ]]>
     </string>

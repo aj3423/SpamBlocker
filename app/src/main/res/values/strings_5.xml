@@ -41,13 +41,13 @@
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Reject</b></font>: <br>
+        - <font color="#00BFFF"><b>Reject</b></font>: <br>
         &emsp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on, it\'s the recommended type if you don\'t use voicemail.<br>
         <br>
-        - <font color="#d1c8c8"><b>Silence</b></font>: <br>
+        - <font color="#00BFFF"><b>Silence</b></font>: <br>
         &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>
         <br>
-        - <font color="#d1c8c8"><b>Answer and Hang Up</b></font>: <br>
+        - <font color="#00BFFF"><b>Answer and Hang Up</b></font>: <br>
         &emsp; To avoid being sent to the voicemail. The lockscreen can be turned on for a short while,
          you might also hear a call end tone(some phones offer an option to mute this sound).
         ]]>

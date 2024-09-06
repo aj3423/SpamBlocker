@@ -155,7 +155,7 @@ fun RuleCard(
                     // [Priority]
                     Text(
                         text = "${Str(R.string.priority)}: ${rule.priority}",
-                        color = Color.Magenta,
+                        color = LightMagenta,
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
                     )

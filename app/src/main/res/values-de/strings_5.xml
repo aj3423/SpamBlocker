@@ -1,5 +1,4 @@
 <resources>
-    <string name="allow_repeated_call">Wiederholte Anrufe</string>
     <string name="dialed">Gewählt</string>
     <string name="find_apps">Apps finden</string>
 
@@ -25,7 +24,6 @@
     <string name="phone_number">Telefonnummer</string>
     <string name="phone_number_abbrev">Nummer</string>
     <string name="sms_content">SMS-Inhalt</string>
-    <string name="sms_content_abbrev">Inhalt</string>
     <string name="regex_flags">Regex-Flags</string>
     <string-array name="regex_flags_list">
         <item>Groß-/Kleinschreibung ignorieren</item>
@@ -43,13 +41,13 @@
     <string name="help_for_particular_number">Ist diese Option aktiviert, gilt die Regel nur, wenn sowohl Nummer als auch Inhalt übereinstimmen.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Ablehnen</b></font>: <br>
+        - <font color="#00BFFF"><b>Ablehnen</b></font>: <br>
         &emsp; Wie das Drücken der Ablehnentaste. Es funktioniert völlig lautlos, der Sperrbildschirm wird nicht eingeschaltet, es ist der empfohlene Typ, wenn Sie keine Voicemail verwenden.<br>
         <br>
-        - <font color="#d1c8c8"><b>Stummschalten</b></font>: <br>
+        - <font color="#00BFFF"><b>Stummschalten</b></font>: <br>
         &emsp; Es klingelt leise im Hintergrund und vermittelt dem Anrufer den Eindruck, dass Sie nur beschäftigt sind und nicht geantwortet haben. <br>
         <br>
-        - <font color="#d1c8c8"><b>Annehmen und auflegen</b></font>: <br>
+        - <font color="#00BFFF"><b>Annehmen und auflegen</b></font>: <br>
         &emsp; Um zu verhindern, dass Sie an die Voicemail weitergeleitet werden. Der Sperrbildschirm kann für eine kurze Zeit eingeschaltet werden,
          außerdem hören Sie möglicherweise einen Anrufendton (bei einigen Telefonen gibt es eine Option, diesen Ton stummzuschalten).
         ]]>

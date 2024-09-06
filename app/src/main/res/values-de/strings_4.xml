@@ -14,12 +14,12 @@
             Diese Flags ändern das Matching-Verhalten des Regex, sie sind standardmäßig für neue Regeln gesetzt. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Groß-Kleinschreibung ignorieren</b></font>:<br>
+            <font color="#00BFFF"><b>Groß-Kleinschreibung ignorieren</b></font>:<br>
             &ensp; Dadurch wird die Mustersuche nicht zwischen Groß- und Kleinschreibung unterschieden, <font color="#03DAC5"><b>a</b></font>
               würde sowohl <font color="#03DAC5"><b>a</b></font> als auch <font color="#03DAC5"><b>A</b></font> entsprechen. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Punkt stimmt mit allem überein</b></font>: <br>
+            <font color="#00BFFF"><b>Punkt stimmt mit allem überein</b></font>: <br>
             &ensp; Wenn aktiviert, <font color="#03DAC5"><b>.</b></font> wird auch mit Zeilenumbruchzeichen übereinstimmen (<font color="#03DAC5"><b>\\n</b></font>)
               Dies ermöglicht es dem Punkt, über mehrere Zeilen hinweg übereinzustimmen. <br>
             &ensp; Anwendungsbeispiel: <br>
@@ -30,7 +30,7 @@
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>Rohe Nummer</b></font>: <br>
+            <font color="#00BFFF"><b>Rohe Nummer</b></font>: <br>
             &ensp; Wenn aktiviert, wird die Nummer nicht optimiert, <font color="#03DAC5"><b>+</b></font> und <font color="#03DAC5"><b>führende 0er</b></font> bleiben erhalten, nützlich zur Unterscheidung von Landesvorwahlen.
         ]]>
     </string>

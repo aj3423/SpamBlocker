@@ -41,13 +41,13 @@
     <string name="help_for_particular_number">Cuando se habilita, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#d1c8c8"><b>Rechazar</b></font>: <br>
+        - <font color="#00BFFF"><b>Rechazar</b></font>: <br>
         &emsp; Igual que presionar el botón de declinar. Funciona de forma totalmente silenciosa, la pantalla de bloqueo no se activará, es el tipo recomendado si no usas el correo de voz.<br>
         <br>
-        - <font color="#d1c8c8"><b>Silenciar</b></font>: <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
         &emsp; Sonará silenciosamente en segundo plano, lo que dará la impresión a la persona que llama de que estás ocupado y no has respondido.<br>
         <br>
-        - <font color="#d1c8c8"><b>Responder y colgar</b></font>: <br>
+        - <font color="#00BFFF"><b>Responder y colgar</b></font>: <br>
         &emsp; Para evitar que se envíe al correo de voz. La pantalla de bloqueo se puede activar por un corto tiempo,
          también puedes escuchar un tono de finalización de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
         ]]>

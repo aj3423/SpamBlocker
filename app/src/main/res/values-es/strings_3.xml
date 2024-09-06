@@ -25,10 +25,10 @@
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Cuando <font color="#d1c8c8"><b>Número</b></font> esté marcado, esta regla extraerá contenido del número entrante.
+        Cuando <font color="#00BFFF"><b>Número</b></font> esté marcado, esta regla extraerá contenido del número entrante.
         Por ejemplo, usa <b>(.*)</b> para copiar el número de teléfono.<br>
         <br>
-        Cuando <font color="#d1c8c8"><b>Contenido</b></font> esté marcado, esta regla extraerá contenido del cuerpo del mensaje SMS,
+        Cuando <font color="#00BFFF"><b>Contenido</b></font> esté marcado, esta regla extraerá contenido del cuerpo del mensaje SMS,
         como códigos de verificación.
         ]]>
     </string>

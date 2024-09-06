@@ -25,10 +25,10 @@
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        When <font color="#d1c8c8"><b>Number</b></font> is checked, this rule will extract content from the incoming number.
+        When <font color="#00BFFF"><b>Number</b></font> is checked, this rule will extract content from the incoming number.
         For example, use <b>(.*)</b> to copy the phone number.<br>
         <br>
-        When <font color="#d1c8c8"><b>Content</b></font> is checked, this rule will extract content from the SMS message body,
+        When <font color="#00BFFF"><b>Content</b></font> is checked, this rule will extract content from the SMS message body,
         such as verification codes.
         ]]>
     </string>

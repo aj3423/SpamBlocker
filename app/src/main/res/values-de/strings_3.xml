@@ -25,10 +25,10 @@
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Wenn <font color="#d1c8c8"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalt aus der eingehenden Nummer.
+        Wenn <font color="#00BFFF"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalt aus der eingehenden Nummer.
         Verwenden Sie beispielsweise <b>(.*)</b>, um die Telefonnummer zu kopieren.<br>
         <br>
-        Wenn <font color="#d1c8c8"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalt aus dem Textkörper der SMS-Nachricht,
+        Wenn <font color="#00BFFF"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalt aus dem Textkörper der SMS-Nachricht,
         wie etwa Verifizierungscodes.
         ]]>
     </string>

@@ -76,14 +76,14 @@ fun BoxScope.Badge(count: Int) {
             contentAlignment = Alignment.Center
         ) {
             Canvas(
-                modifier = M.size(14.dp)
+                modifier = M.size(16.dp)
             ) {
                 drawCircle(color = Salmon, radius = size.minDimension / 2)
             }
             Text(
                 text = count.toString(),
                 color = Color.White,
-                fontSize = 10.sp,
+                fontSize = 11.sp,
             )
         }
     }
