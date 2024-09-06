@@ -1,9 +1,9 @@
 <resources>
-    <string name="start_time">Tiempo de Inicio</string>
-    <string name="end_time">Tiempo de Fin</string>
+    <string name="start_time">Tiempo de inicio</string>
+    <string name="end_time">Tiempo final</string>
     <string name="next">Sig</string>
     <string name="previous">Ant</string>
-    <string name="follow_system">Seguir Sist</string>
+    <string name="follow_system">Seguir sist.</string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>

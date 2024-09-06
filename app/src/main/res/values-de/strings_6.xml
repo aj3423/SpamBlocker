@@ -1,8 +1,8 @@
 <resources>
     <string name="crash_title">
-        Es tut mir leid, die App ist abgestürzt.\n\n
-        Kopiere bitte den Inhalt unten und melde dieses Problem auf Github.
-        Entferne alle vertraulichen Informationen, bevor du es meldest.
+        Leider ist die App abgestürzt.\n\n
+        Kopiere bitte den folgenden Inhalt und melde das Problem auf Github,
+        entferne alle vertraulichen Informationen, bevor du es meldest.
     </string>
     <string-array name="short_weekdays">
         <item>So</item>
@@ -17,23 +17,23 @@
     <string-array name="block_type_list">
         <item>Ablehnen</item>
         <item>Stummschalten</item>
-        <item>Annehmen+Aufhängen</item>
+        <item>Annehmen+auflegen</item>
     </string-array>
 
     <string-array name="history_display_filter">
-        <item>Zugelassene anzeigen</item>
-        <item>Blockierte anzeigen</item>
+        <item>Genehmigt anzeigen</item>
+        <item>Blockiert anzeigen</item>
     </string-array>
-    <string name="confirm_delete_all_records">Wirklich alle Einträge löschen?</string>
-    <string name="log_sms_content">SMS-Inhalt protokollieren</string>
+    <string name="confirm_delete_all_records">Alle Datensätze löschen?</string>
+    <string name="log_sms_content">SMS-Inhalte protokollieren</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Zeigt den SMS-Inhalt in dieser Liste an.<br>
-        &emsp; - <font color="#00BFFF"><b>Tippen</b></font>, um die gesamte Nachricht einzublenden/auszublenden.<br>
+        Zeige den SMS-Inhalt in dieser Liste.<br>
+        &emsp; - <font color="#00BFFF"><b>Antippen</b></font>, um die vollständige Nachricht aus-/einzuklappen.<br>
         &emsp; - <font color="#00BFFF"><b>Nach rechts wischen</b></font>, um sie in der Standard-SMS-App zu öffnen.<br>
         &emsp; - <font color="#00BFFF"><b>Nach links wischen</b></font>, um sie zu löschen.<br>
         <br>
-        Wenn aktiviert, wird die SMS-Nachricht in der lokalen Datenbank <font color="#ffa500"><b>protokolliert</b></font>, bei Deaktivierung findet keine Protokollierung statt.
+        Wenn aktiviert, wird die SMS-Nachricht in der lokalen Datenbank <font color="#ffa500"><b>protokolliert</b></font>, beim Deaktivieren wird sie nicht protokolliert.
         ]]>
     </string>
 
@@ -44,30 +44,30 @@
 
     <string-array name="importance_list">
         <item>Keine</item>
-        <item>Benachrichtigung</item>
-        <item>Statusleiste, Benachrichtigung</item>
-        <item>Ton, Statusleiste, Benachrichtigung</item>
-        <item>Ton, Statusleiste, Benachrichtigung, Head-up</item>
+        <item>Schattieren</item>
+        <item>Statusleiste, Schattieren</item>
+        <item>Ton, Statusleiste, Schattieren</item>
+        <item>Ton, Statusleiste, Schattieren, Heads-up</item>
     </string-array>
     <string-array name="export_type_list">
         <item>Als Json exportieren</item>
-        <item>Als Komprimiert exportieren</item>
+        <item>Als komprimiert exportieren</item>
     </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-            Übersetzungen werden von Google AI durchgeführt, melde ein Problem auf Github, um Unterstützung für eine neue Sprache hinzuzufügen.
+            Übersetzungen werden von der Google-KI durchgeführt. Erstelle ein Problem auf Github, um eine neue Sprachunterstützung hinzuzufügen.
         ]]>
     </string>
     <string name="enabled_for_call">Für Anrufe aktivieren</string>
     <string name="enabled_for_sms">Für SMS aktivieren</string>
-    <string name="repeated_call">Wiederholter Anruf</string>
+    <string name="repeated_call">Wiederholte Anrufe</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird, da er wahrscheinlich eher wichtig als ein Spam-Anruf ist. <br>
+        Zulassen, wenn der Anruf innerhalb einer bestimmten Zeit wiederholt wird. Dann ist es wahrscheinlich ein wichtiger Anruf und kein Spam-Anruf. <br>
         <br>
-        Der Empfang von Textnachrichten von derselben Nummer wird ebenfalls gezählt, dies hängt davon ab, ob die Berechtigung READ_SMS erteilt wurde, was optional ist.<br>
+        Der Empfang von Textnachrichten von derselben Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde. Dies ist optional.<br>
         <br>
         Die Standardeinstellung <font color="#03DAC5"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
@@ -79,33 +79,34 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Der globale Schalter, diese App funktioniert nur, wenn dieser eingeschaltet ist. Schalte ihn aus, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
+        Globaler Schalter funktioniert nur, wenn dieser aktiviert ist,
+        deaktiviere ihn, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
         <br>
-        Er kann auch über die <font color="#6ed0ff"><b>Dropdown-Schnelleinstellungen</b></font> umgeschaltet werden.<br>
+        Er kann auch über die <font color="#6ed0ff"><b>Schnelleinstellungen in der Dropdown-Liste</b></font> umgeschaltet werden.<br>
         <br>
-        Bei SMS übernimmt diese App die SMS-Benachrichtigungen, bitte
-        <font color="#fa7f71"><b>deaktiviere die Benachrichtigungsberechtigung der Standard-SMS-App</b></font> in den Systemeinstellungen,
-        sonst gibt es doppelte Benachrichtigungen.
-        Sie filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden.
+        Für SMS übernimmt diese App die SMS-Benachrichtigungen. Bitte
+        <font color="#fa7f71"><b>deaktiviere die Benachrichtigungsberechtigung für die Standard-SMS-App</b></font> in den Systemeinstellungen,
+        ansonsten wird es doppelte Benachrichtigungen geben.
+        Es werden nur SMS-Benachrichtigungen gefiltert. Spam-SMS-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden.
         ]]>
     </string>
 
     <string name="about">Über</string>
     <string name="version">Version</string>
-    <string name="build_time">Build-Zeit (UTC)</string>
+    <string name="build_time">Erstellungszeit (UTC)</string>
     <string name="source_code">Quellcode</string>
     <string name="dismiss">Schließen</string>
     <string name="warning_running_in_work_profile">
-        Diese App funktioniert möglicherweise im Arbeitsbereich nicht ordnungsgemäß. Installiere sie stattdessen im Hauptprofil.
+        Diese App funktioniert möglicherweise nicht ordnungsgemäß im Arbeitsprofil. Installiere sie stattdessen im Hauptprofil.
     </string>
     <string-array name="import_csv_type">
-        <item>.csv als einzelne Regel importieren</item>
-        <item>.csv als mehrere Regeln importieren</item>
+        <item>Importiere .csv als einzelne Regel</item>
+        <item>Importiere .csv als mehrere Regeln</item>
     </string-array>
     <string name="warning_double_sms">
         Diese App übernimmt alle SMS-Benachrichtigungen,
-        aber die Benachrichtigungsberechtigung der Standard-SMS-App ist ebenfalls aktiviert.
-        Deaktiviere sie bitte in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
+        die Benachrichtigungsberechtigung der Standard-SMS-App ist aber ebenfalls aktiviert.
+        Deaktiviere sie in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
     </string>
     <string name="open_settings">Einstellungen öffnen</string>
     <string name="ignore">Ignorieren</string>

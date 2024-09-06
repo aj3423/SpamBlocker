@@ -6,54 +6,54 @@
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Eine schnelle Möglichkeit, Inhalte aus SMS-Nachrichten oder Telefonnummern zu kopieren, wodurch Sie leicht Bestätigungscodes oder eingehende Nummern abrufen können.<br>
+        Eine schnelle Möglichkeit, Inhalt aus SMS-Nachrichten oder Telefonnummern zu kopieren. So können Sie mühelos Verifizierungscodes oder eingehende Nummern erfassen.<br>
         <br>
-        Wenn er übereinstimmt, wird eine Schaltfläche wie <font color="#00BFFF"><b>Kopieren: 123456</b></font> in der Benachrichtigung angezeigt.<br>
+        Wenn eine Übereinstimmung gefunden wird, wird eine Schaltfläche wie <font color="#00BFFF"><b>Kopieren: 123456</b></font> in der Benachrichtigung angezeigt.<br>
         <br>
-        Eine Beispielregel zum Extrahieren von Bestätigungscodes:<br>
-        &emsp; Verwendung von Erfassungsgruppe:<br>
+        Eine Beispielregel zum Extrahieren von Verifizierungscodes:<br>
+        &emsp; Mithilfe einer Erfassungsgruppe:<br>
         &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Ein weiterer Ansatz unter Verwendung von Lookaround:<br>
+        &emsp; Ein anderer Ansatz mithilfe eines Lookaround:<br>
         &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
         <![CDATA[
-        Aktivieren Sie diese Regel für Anruf, SMS oder beides.<br>
+        Diese Regel für Anrufe, SMS oder beides aktivieren.<br>
         Deaktivieren Sie diese Kontrollkästchen, um die Regel zu deaktivieren, ohne sie zu löschen.
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Wenn <font color="#d1c8c8"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus der eingehenden Nummer.
+        Wenn <font color="#d1c8c8"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalt aus der eingehenden Nummer.
         Verwenden Sie beispielsweise <b>(.*)</b>, um die Telefonnummer zu kopieren.<br>
         <br>
-        Wenn <font color="#d1c8c8"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus dem Textkörper der SMS-Nachricht,
-        z. B. Bestätigungscodes.
+        Wenn <font color="#d1c8c8"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalt aus dem Textkörper der SMS-Nachricht,
+        wie etwa Verifizierungscodes.
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        Wenn <font color="#03DAC5"><b>Übergeben</b></font> aktiviert ist, wird diese Regel auf übergebene Anrufe und Nachrichten angewendet.<br>
+        Wenn <font color="#03DAC5"><b>Zugelassen</b></font> aktiviert ist, wird diese Regel für zugelassene Anrufe und Nachrichten angewendet.<br>
         <br>
-        Wenn <font color="#fa7f71"><b>Blockiert</b></font> aktiviert ist, wird diese Regel auf blockierte Anrufe und Nachrichten angewendet.
+        Wenn <font color="#fa7f71"><b>Blockiert</b></font> aktiviert ist, wird diese Regel für blockierte Anrufe und Nachrichten angewendet.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
         <b>Keine</b>:<br>&emsp; Überhaupt keine Benachrichtigung. <br>
-        <b>Schatten</b>:<br>&emsp; Der Dropdown-Benachrichtigungsschirm. <br>
+        <b>Ton</b>:<br>&emsp; Der Dropdown-Ton für Benachrichtigungen. <br>
         <b>Statusleiste</b>:<br>&emsp; Das kleine Symbol in der oberen Leiste. <br>
-        <b>Ton</b>:<br>&emsp; Der Standardbenachrichtigungston. <br>
-        <b>Heads-Up</b>:<br>&emsp; Popup-Fenster oben auf dem Bildschirm.
+        <b>Ton</b>:<br>&emsp; Der standardmäßige Benachrichtigungston. <br>
+        <b>Heads-Up</b>:<br>&emsp; Ein Pop-up-Fenster oben auf dem Bildschirm.
         ]]>
     </string>
     <string name="title_rule_testing">Regeltest</string>
     <string name="help_test_rules">
         <![CDATA[
-        Hiermit können Sie überprüfen, ob die Regeln wie erwartet festgelegt wurden.<br>
+        Damit können Sie prüfen, ob die Regeln wie erwartet festgelegt wurden.<br>
         <br>
-        Es ist nur eine Simulation und es wird kein eingehender Anruf (oder keine Textnachricht) angezeigt.<br>
+        Dies ist nur eine Simulation und es wird nicht tatsächlich ein eingehender Anruf (oder eine Textnachricht) angezeigt.<br>
         <br>
         Das Ergebnis wird hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
         ]]>

@@ -1,5 +1,4 @@
 <resources>
-    <string name="allow_repeated_call">Repeated Call</string>
     <string name="dialed">Dialed</string>
     <string name="find_apps">Find Apps</string>
 
@@ -25,7 +24,6 @@
     <string name="phone_number">Phone Number</string>
     <string name="phone_number_abbrev">Number</string>
     <string name="sms_content">SMS Content</string>
-    <string name="sms_content_abbrev">Content</string>
     <string name="regex_flags">Regex Flags</string>
     <string-array name="regex_flags_list">
         <item>Ignore Case</item>

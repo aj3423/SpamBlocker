@@ -1,8 +1,7 @@
 <resources>
     <string name="crash_title">
-        Désolés, l\'application a planté.\n\n
-        Veuillez copier le contenu ci-dessous et signaler ce problème sur github,
-        supprimez tous les informations sensibles avant de signaler.
+        Désolé, l\'application s\'est arrêtée.\n\n
+        Veuillez copier le contenu ci-dessous et signaler ce problème sur GitHub, supprimer toute information sensible avant de signaler.
     </string>
     <string-array name="short_weekdays">
         <item>Dim</item>
@@ -17,23 +16,23 @@
     <string-array name="block_type_list">
         <item>Rejeter</item>
         <item>Silence</item>
-        <item>Répondre+Raccrocher</item>
+        <item>Décrocher + raccrocher</item>
     </string-array>
 
     <string-array name="history_display_filter">
-        <item>Afficher passé</item>
-        <item>Afficher bloqué</item>
+        <item>Afficher les autorisés</item>
+        <item>Afficher les bloqués</item>
     </string-array>
-    <string name="confirm_delete_all_records">Confirmer la suppression de tous les registres ?</string>
-    <string name="log_sms_content">Contenus des SMS</string>
+    <string name="confirm_delete_all_records">Confirmez-vous la suppression de tous les enregistrements ?</string>
+    <string name="log_sms_content">Enregistrement du contenu SMS</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Afficher le contenu des SMS dans cette liste.<br>
-        &emsp; - <font color="#00BFFF"><b>Touchez</b></font> pour développer / réduire le message complet.<br>
-        &emsp; - <font color="#00BFFF"><b>Faites glisser vers la droite</b></font> pour l\'ouvrir dans l\'application SMS par défaut.<br>
-        &emsp; - <font color="#00BFFF"><b>Faites glisser vers la gauche</b></font> pour le supprimer.<br>
+        Affiche le contenu SMS dans cette liste.<br>
+        &emsp; - <font color="#00BFFF"><b>Touchez</b></font> pour développer/réduire le message entier.<br>
+        &emsp; - <font color="#00BFFF"><b>Balayez vers la droite</b></font> pour l\'ouvrir dans l\'application SMS par défaut.<br>
+        &emsp; - <font color="#00BFFF"><b>Balayez vers la gauche</b></font> pour supprimer.<br>
         <br>
-        Lorsqu\'il est activé, le SMS sera <font color="#ffa500"><b>enregistré</b></font> dans la base de données locale, il n\'est pas enregistré lorsqu\'il est désactivé.
+        Lorsque cette option est activée, le message SMS sera <font color="#ffa500"><b>enregistré</b></font> dans la base de données locale, il n\'est pas enregistré lorsqu\'il est désactivé.
         ]]>
     </string>
 
@@ -43,69 +42,66 @@
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucune</item>
-        <item>Ton gris</item>
-        <item>Barre d\'état, ton gris</item>
-        <item>Son, barre d\'état, ton gris</item>
-        <item>Son, barre d\'état, ton gris, notifications</item>
+        <item>Aucun</item>
+        <item>Nuance</item>
+        <item>Barre d\'état, nuance</item>
+        <item>Son, barre d\'état, nuance</item>
+        <item>Son, barre d\'état, nuance, tête haute</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>Exporter sous forme de Json</item>
-        <item>Exporter en tant que compressé</item>
+        <item>Exporter en JSON</item>
+        <item>Exporter en compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont faites par Google AI, signalez un problème sur github pour ajouter un support pour une nouvelle langue.
+            Les traductions sont effectuées par l\'IA de Google. Signalez un problème sur GitHub pour ajouter la prise en charge d\'une nouvelle langue.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
-    <string name="enabled_for_sms">Activer pour les SMS</string>
+    <string name="enabled_for_sms">Activer pour SMS</string>
     <string name="repeated_call">Appels répétés</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété sur une période de temps, il est probable qu\'il soit important plutôt qu\'un appel de spam. <br>
+        Autoriser si l\'appel est répété pendant une période donnée, il est probable qu\'il soit important plutôt qu\'un appel de spam. <br>
         <br>
-        La réception de SMS depuis le même numéro est également prise en compte, cela dépend si la permission LIRE_SMS est accordée, ce qui est facultatif.<br>
+        La réception de messages texte provenant du même numéro est également prise en compte, cela dépend de l\'octroi ou non de l\'autorisation READ_SMS, qui est facultative.<br>
         <br>
-        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 min</b></font> signifie que le second appel dans les 5 minutes sera autorisé. <br>
         <br>
-        S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Le commutateur global, cette application fonctionne uniquement lorsque celui-ci est activé,
-        désactivez-le lorsque vous attendez un appel / message particulier. <br>
+        L\'interrupteur global, cette application fonctionne uniquement lorsque celui-ci est activé, désactivez-le lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Il peut également être basculé depuis les <font color="#6ed0ff"><b>Paramètres rapides déroulants</b></font>.<br>
+        Il peut également être activé ou désactivé à partir des <font color="#6ed0ff"><b>Paramètres rapides dans la barre déroulante</b></font>.<br>
         <br>
-        Pour les SMS, cette application prendra en charge les notifications SMS, veuillez <font color="#fa7f71"><b>désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres du système,
-        sinon, il y aura des doubles notifications.
+        Pour les SMS, cette application prendra en charge les notifications SMS, veuillez 
+        <font color="#fa7f71">désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système, sinon il y aura deux notifications.
         Elle filtre uniquement les notifications SMS, les SMS de spam seront toujours présents dans l\'application SMS par défaut.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de génération (UTC)</string>
+    <string name="build_time">Heure de la build (UTC)</string>
     <string name="source_code">Code source</string>
     <string name="dismiss">Annuler</string>
     <string name="warning_running_in_work_profile">
-        Cette application peut ne pas fonctionner correctement dans le profil de travail, veuillez l\'installer dans le profil principal à la place.
+        Cette application peut ne pas fonctionner correctement dans le profil de travail. Veuillez l\'installer dans le profil principal à la place.
     </string>
     <string-array name="import_csv_type">
-        <item>Importer .csv comme une règle unique</item>
-        <item>Importer .csv avec plusieurs règles</item>
+        <item>Importer un fichier .csv en tant que règle unique</item>
+        <item>Importer un fichier .csv en tant que plusieurs règles</item>
     </string-array>
     <string name="warning_double_sms">
-        Cette application prendra en charge toutes les notifications SMS,
-        mais l\'autorisation de notification de l\'application SMS par défaut est également activée,
-        veuillez la désactiver dans les paramètres système pour éviter les doubles notifications SMS.
+        Cette application prendra en charge toutes les notifications SMS, mais l\'autorisation de notification de l\'application SMS par défaut est également activée. Veuillez la désactiver dans les paramètres système pour éviter les doubles notifications SMS.
     </string>
     <string name="open_settings">Ouvrir les paramètres</string>
     <string name="ignore">Ignorer</string>

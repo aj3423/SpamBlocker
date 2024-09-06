@@ -17,6 +17,8 @@ import (
 	"google.golang.org/api/option"
 )
 
+const Threads = 4
+
 var lang_str string
 
 var filter_str string
@@ -40,7 +42,7 @@ func init() {
 	flag.StringVar(&filter_str, "filter", "", "")
 
 	wg = sync.WaitGroup{}
-	pool, _ = ants.NewPool(3)
+	pool, _ = ants.NewPool(Threads)
 }
 
 func check_param() []string {
@@ -100,9 +102,14 @@ func translate_1_file(lang string, fn string) error {
 	prompt := fmt.Sprintf(
 		"Translate the following xml content to language \"%s\", it's about a call blocking app "+
 			"which blocks incoming spam calls and SMS messages, nothing about email."+
-			"When translating short phrases of 1 or 2 words, choose short translation, as short as possible, "+
 			"make sure leave the XML tags unmodified, "+
-			"do not translate text within <no_translate></no_translate> tag, "+
+			"do not translate text within <no_translate></no_translate> tag. "+
+
+			"For those text to translate that are just 1 or 2 words, find all possible translation alternatives, "+
+			"then pick the shortest one, as short as possible, use single word translation if possible."+
+
+			"For contents that wrapped in tag <short></short>, force use single word translation."+
+
 			"show me the result only:\n"+
 			"%s",
 		lang, to_translate)

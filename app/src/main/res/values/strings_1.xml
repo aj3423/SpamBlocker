@@ -45,7 +45,7 @@
     <string name="miscellaneous">Miscellaneous</string>
     <string name="quick_settings">Quick Settings</string>
     <string name="regex_settings">Regex Settings</string>
-    <string name="backup">Backup</string>
+    <string name="backup"><short>Backu</short></string>
     <string name="import_">Import</string>
     <string name="imported">Imported</string>
     <string name="export">Export</string>
@@ -59,7 +59,7 @@
     <string name="label_number_filter">Number Rules</string>
     <string name="label_content_filter">Message Rules</string>
     <string name="recent_app">Recent App</string>
-    <string name="allow_recent_apps">Recent Apps</string>
+    <string name="allow_recent_apps"><short>Recent Apps</short></string>
     <string name="allow_contact">Contacts</string>
 
 </resources>

@@ -1,65 +1,61 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        这些规则应用于短信内容。
+        这些规则适用于短信内容。
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        这是一种从短信或手机号码快速复制内容的方法，可轻松获取验证代码或来电号码。<br>
+        这是一种从短信或电话号码中快速复制内容的方法，便于抓取验证码或来电号码。<br>
         <br>
-        匹配时，通知中会出现一个类似 <font color="#00BFFF"><b>复制：123456</b></font> 的按钮。<br>
+        当它匹配时，通知中将出现一个类似<font color="#00BFFF"><b>复制：123456</b></font>的按钮。<br>
         <br>
-        提取验证代码的示例规则：<br>
-        &emsp;使用捕获组：<br>
+        提取验证码的示例规则：<br>
+        &emsp; 使用捕获组：<br>
         &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp;使用环视的另一种方法：<br>
+        &emsp; 另一种使用环顾的办法：<br>
         &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
         <![CDATA[
-        针对拨号、短信或两者启用此规则。<br>
-        取消选中这些复选框，即可在不删除规则的情况下禁用此规则。
+        启用此规则适用于来电、短信或两者。<br>
+        取消选中此复选框即可禁用此规则，而无需删除。
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        选中 <font color="#d1c8c8"><b>号码</b></font> 后，此规则将从来电号码中提取内容。
-        例如，使用 <b>(.*)</b> 复制电话号码。<br>
+        当选中<font color="#d1c8c8"><b>号码</b></font>时，此规则将从传入号码中提取内容。
+        例如，使用<b>(.*)</b>来复制电话号码。<br>
         <br>
-        选中 <font color="#d1c8c8"><b>内容</b></font> 后，此规则将从短信正文内容（如验证码）中提取内容。
+        当选中<font color="#d1c8c8"><b>内容</b></font>时，此规则将从短信正文中提取内容，
+        例如验证码。
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        选中 <font color="#03DAC5"><b>已通过</b></font> 后，此规则将应用于已通过的拨号和短信。<br>
+        当选中<font color="#03DAC5"><b>已通过</b></font>时，此规则将适用于已通过的来电和短信。<br>
         <br>
-        选中 <font color="#fa7f71"><b>已屏蔽</b></font> 后，此规则将应用于已屏蔽的拨号和短信。
+        当选中<font color="#fa7f71"><b>已拦截</b></font>时，此规则将适用于已拦截的来电和短信。
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>无</b>：<br>
-        &emsp;完全没有通知。<br>
-        <b>色块</b>：<br>
-        &emsp;下拉通知色块。<br>
-        <b>状态栏</b>：<br>
-        &emsp;顶部栏中的小图标。<br>
-        <b>声音</b>：<br>
-        &emsp;默认通知声音。<br>
-        <b>浮动提醒</b>：<br>
-        &emsp;在屏幕顶部弹出浮动窗口。
+        <b>无</b>：<br>&emsp; 无任何通知。 <br>
+        <b>阴影</b>：<br>&emsp; 下拉通知阴影。 <br>
+        <b>状态栏</b>：<br>&emsp; 顶部栏中的小图标。 <br>
+        <b>声音</b>：<br>&emsp; 默认通知声音。 <br>
+        <b>提示信息</b>：<br>&emsp; 在屏幕顶部弹出悬浮窗口。
         ]]>
     </string>
     <string name="title_rule_testing">规则测试</string>
     <string name="help_test_rules">
         <![CDATA[
-        这有助于检查规则是否按预期设置。<br>
+        这有助于检查是否已按预期设置规则。<br>
         <br>
-        这仅仅是一种模拟，不会真正弹出传入电话（或短信）。<br>
+        这只是模拟，不会真正弹出传入电话（或短信）。<br>
         <br>
-        结果会在此处、历史记录和通知中显示。
+        结果将显示在此处以及历史记录中，并带有通知。
         ]]>
     </string>
 

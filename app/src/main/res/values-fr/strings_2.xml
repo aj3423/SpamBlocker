@@ -1,90 +1,90 @@
 <resources>
-    <string name="contacts">Contacts</string>
-    <string name="non_contacts">Non contacts</string>
+    <string name="contacts">Contact</string>
+    <string name="non_contacts">Hors contacts</string>
     <string name="inclusive">Inclusif</string>
     <string name="exclusive">Exclusif</string>
     <string name="help_contacts">
         <![CDATA[
-        Si activé, les appels/messages provenant de contacts sont toujours autorisés. <br>
+        Lorsque activé, les appels/messages provenant de contacts sont toujours autorisés. <br>
         <br>
           - <b>Inclusif</b>: <br>
-              &emsp; Les numéros autres que ceux des contacts seront vérifiés par d&apos;autres règles. <br>
+              &emsp; Les numéros hors contact seront vérifiés par d\'autres règles. <br>
               &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>Exclusif</b></font> : <br>
-              &emsp; Les numéros autres que ceux des contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+          - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
+              &emsp; Les numéros hors contact seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font> <br>
         <br>
-        Cela s&apos;applique aux appels et aux SMS.
+        S\'applique aux appels et aux SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Inclure : non vérifié</string>
-    <string name="unverified">Non vérifié</string>
+    <string name="stir_include_unverified">Inclure non vérifiés</string>
+    <string name="unverified">Non vérifiié</string>
     <string name="valid">Appel valide</string>
     <string name="spoof">Appel usurpé</string>
     <string name="help_stir">
         <![CDATA[
-            La certification STIR requiert <b>Android 11 +</b> et <b>la prise en charge de l&apos;opérateur</b>. <br>
+            L\'attestation STIR nécessite <b>Android 11+</b> et la <b>prise en charge de l\'opérateur</b>. <br>
             <br>
-            Trois résultats de certification sont possibles : <br>
+            Trois résultats d\'attestation sont possibles : <br>
             <font color="#03DAC5"><b>Valide</b></font> <br>
-            &emsp; L&apos;appel a de fortes chances d&apos;être valide, il n&apos;est pas usurpé. <br>
+            &emsp; L\'appel est très probablement valide, non usurpé. <br>
             <font color="#ffa500"><b>Non vérifié</b></font> <br>
-            &emsp; L&apos;appel n&apos;a pu être validé ou la certification STIR n&apos;est pas prise en charge. <br>
-            <font color="#fa7f71"><b>Usurpation</b></font> <br>
-            &emsp; Il a de fortes chances de s&apos;agir d&apos;un appel usurpé. <br>
+            &emsp; L\'appel ne peut pas être validé, ou l\'attestation STIR n\'est pas prise en charge. <br>
+            <font color="#fa7f71"><b>Usurpé</b></font> <br>
+            &emsp; Il s\'agit très probablement d\'un appel usurpé. <br>
             <br>
             <br>
               - <b>Inclusif</b>: <br>
-                  &emsp; Les appels qui échouent ce contrôle seront toujours vérifiés par d&apos;autres règles. <br>
-                  &emsp; Lorsque « <b>Inclure : non vérifié</b> » est coché, un appel passe également s&apos;il n&apos;est pas vérifié. <br>
+                  &emsp; Les appels qui échouent à cette vérification seront quand même vérifiés par d\'autres règles. <br>
+                  &emsp; Lorsque "<b>Inclure non vérifiés</b>" est coché, un appel sera également accepté s\'il n\'est pas vérifié. <br>
                   &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Exclusif</b></font> : <br>
-                  &emsp; Les appels qui échouent ce contrôle seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-                  &emsp; Lorsque « <b>Inclure : non vérifié</b> » est coché, un appel sera également bloqué s&apos;il n&apos;est pas vérifié. <br>
+              - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
+                  &emsp; Les appels qui échouent à cette vérification seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+                  &emsp; Lorsque "<b>Inclure non vérifiés</b>" est coché, un appel sera également bloqué s\'il n\'est pas vérifié. <br>
                   &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>
         ]]>
     </string>
     <string name="help_number_filter">
         <![CDATA[
-        Ces règles s&apos;appliquent au numéro de téléphone entrant.<br>
+        Ces règles s\'appliquent au numéro de téléphone entrant.<br>
         <br>
-        <font color="#ffa500"><b>Important</b></font> :<br>
-        Pour simplifier l&apos;expression régulière,
+        <font color="#ffa500"><b>Important</b></font>:<br>
+        Pour simplifier l\'expression régulière,
           <font color="#fa7f71"><b>+</b></font>,
            <font color="#fa7f71"><b>espaces</b></font>
           et <font color="#fa7f71"><b>zéros non significatifs</b></font>
-          sont supprimés avant la vérification. Par exemple :<br>
+          sont supprimés avant la vérification, par exemple :<br>
         &emsp; Tous ces formats :<br>
         &emsp;&emsp; 123456789 &emsp;(numéro normal)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(avec <font color="#fa7f71"><b>espaces</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> en début)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec le préfixe du tronc national <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> non significatif)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec préfixe de trafic national <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(deux <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
+        &emsp; Sont <b>tous</b> vérifiés comme :<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; L&apos;expression régulière <font color="#03DAC5"><b>123.*</b></font> correspondrait donc à tous.<br>
-        Cette optimisation du numéro peut être <b>désactivée</b> par l&apos;indicateur d&apos;expression régulière « Numéro brut ».<br>
+        &emsp; L\'expression régulière <font color="#03DAC5"><b>123.*</b></font> correspondrait donc à tous.<br>
+        Cette optimisation des numéros peut être <b>désactivée</b> par l\'indicateur d\'expression régulière "Numéro brut".<br>
         <br>
-        La liste est <b>affichée</b> par ordre décroissant de priorité, ordre croissant de description et ordre croissant de motif. <br>
+        La liste est <b>affichée</b> par ordre décroissant de priorité, description croissante et modèle croissant. <br>
         <br>
-        Décochez les cases pour désactiver la règle, <font color="#fa7f71"><b>glissez vers la gauche pour la supprimer</b></font>.<br>
+        Décochez les cases pour désactiver la règle, <font color="#fa7f71"><b>faites glisser vers la gauche pour supprimer</b></font>.<br>
         <br>
-        <b>Appuyez longuement</b> sur le bouton « Ajouter » pour importer des numéros à partir d&apos;un fichier .csv. Colonnes prises en charge :<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate> : Expression régulière (<b>obligatoire</b>)<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate> : Description<br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate> : Priorité, par défaut 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate> : 1 (appliquer à l&apos;appel), 2 (appliquer au SMS), 3 (les deux), par défaut 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate> : Liste noire ou liste blanche. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, par défaut <no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate> : Type de bloc. 0 à 2 correspondant aux 3 types de blocs, par défaut 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate> : Type de notification. 0 à 4 correspondant aux 5 types de notification, par défaut 2
+        <b>Appuyez longuement</b> sur le bouton "Ajouter" pour importer des numéros depuis un fichier .csv, les colonnes prises en charge :<br>
+         - <no_translate><font color="#00BFFF">pattern</font></no_translate>: Expression régulière (<b>obligatoire</b>)<br>
+         - <no_translate><font color="#00BFFF">description</font></no_translate>: Description<br>
+         - <no_translate><font color="#00BFFF">priority</font></no_translate>: Priorité, par défaut 1<br>
+         - <no_translate><font color="#00BFFF">flags</font></no_translate>: 1 (Appliquer à l\'appel), 2 (Appliquer aux SMS), 3 (aux deux), par défaut 3<br>
+         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>: Liste noire ou blanche. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, par défaut <no_translate>true</no_translate><br>
+         - <no_translate><font color="#00BFFF">blockType</font></no_translate>: Type de blocage. 0 à 2 correspondent aux 3 types de blocage, par défaut 0<br>
+         - <no_translate><font color="#00BFFF">importance</font></no_translate>: Type de notification. 0 à 4 correspondent aux 5 types de notification, par défaut 2
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Champ obligatoire <b>pattern</b> manquant dans le fichier .csv. Consultez l&apos;infobulle pour une explication détaillée.
+        Champ obligatoire manquant <b>pattern</b> dans le fichier .csv, consultez l\'info-bulle pour une explication détaillée.
         ]]>
     </string>
 </resources>

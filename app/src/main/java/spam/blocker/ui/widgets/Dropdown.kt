@@ -27,6 +27,8 @@ import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.loge
 
+// The built-in DropdownMenuItem is twice height as it should be.
+
 interface IMenuItem {
     @Composable
     fun Compose(menuExpandedState: MutableState<Boolean>) // expanded State

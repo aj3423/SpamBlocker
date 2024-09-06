@@ -1,9 +1,9 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Wenn aktiviert, sind während dieses Zeitraums alle Anrufe (Nachrichten) zulässig. Nachts gibt es normalerweise keinen Spam. <br>
+        Wenn aktiviert, werden alle Anrufe(Nachrichten) während dieser Zeitspanne zugelassen. Normalerweise gibt es nachts keine Spamnachrichten. <br>
         <br>
-        Wenn die Startzeit größer als die Endzeit ist, z. B. 20:00 -> 07:00, bedeutet dies den Zeitraum von 20:00 Uhr am Abend bis 07:00 Uhr am nächsten Morgen. <br>
+        Wenn die Startzeit größer ist als die Endzeit, z. B. 20:00 -> 07:00, bedeutet dies die Zeitspanne von 20:00 Uhr abends bis 07:00 Uhr des nächsten Morgens. <br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
@@ -11,28 +11,27 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-
-            Diese Flags ändern das Abgleichverhalten von Regex. Sie sind standardmäßig für neue Regeln festgelegt. <br>
+            Diese Flags ändern das Matching-Verhalten des Regex, sie sind standardmäßig für neue Regeln gesetzt. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Groß-/Kleinschreibung ignorieren</b></font>:<br>
-            &ensp; Dadurch wird die Groß-/Kleinschreibung beim Abgleich des Musters ignoriert, <font color="#03DAC5"><b>a</b></font>
-              würde sowohl mit <font color="#03DAC5"><b>a</b></font> als auch <font color="#03DAC5"><b>A</b></font> übereinstimmen. <br>
+            <font color="#d1c8c8"><b>Groß-Kleinschreibung ignorieren</b></font>:<br>
+            &ensp; Dadurch wird die Mustersuche nicht zwischen Groß- und Kleinschreibung unterschieden, <font color="#03DAC5"><b>a</b></font>
+              würde sowohl <font color="#03DAC5"><b>a</b></font> als auch <font color="#03DAC5"><b>A</b></font> entsprechen. <br>
             <br>
 
-            <font color="#d1c8c8"><b>Punkt mit allen übereinstimmen</b></font>: <br>
-            &ensp; Wenn aktiviert, stimmt <font color="#03DAC5"><b>.</b></font> auch mit Zeilenumbruchzeichen (<font color="#03DAC5"><b>\\n</b></font>) überein.
-              Dadurch kann der Punkt über mehrere Zeilen hinweg übereinstimmen. <br>
-            &ensp; Anwendungsfall: <br>
-            &emsp;   Mehrzeilige SMS-Nachricht abgleichen: <br>
-            &emsp;   <font color="#fa7f71">Fordern Sie Ihren Preis an: http://<br>
+            <font color="#d1c8c8"><b>Punkt stimmt mit allem überein</b></font>: <br>
+            &ensp; Wenn aktiviert, <font color="#03DAC5"><b>.</b></font> wird auch mit Zeilenumbruchzeichen übereinstimmen (<font color="#03DAC5"><b>\\n</b></font>)
+              Dies ermöglicht es dem Punkt, über mehrere Zeilen hinweg übereinzustimmen. <br>
+            &ensp; Anwendungsbeispiel: <br>
+            &emsp;   Übereinstimmung mit mehrzeiligen SMS-Nachrichten: <br>
+            &emsp;   <font color="#fa7f71">fordern Sie Ihren Preis an: http://<br>
             &emsp;   abc.com </font><br>
             &emsp;   mit Regel: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#d1c8c8"><b>Unformatierte Nummer</b></font>: <br>
-            &ensp; Wenn aktiviert, wird die Nummer nicht optimiert. <font color="#03DAC5"><b>+</b></font> und <font color="#03DAC5"><b>führende 0en</b></font> bleiben erhalten. Dies ist für die Unterscheidung inländischer Nummern nützlich.
+            <font color="#d1c8c8"><b>Rohe Nummer</b></font>: <br>
+            &ensp; Wenn aktiviert, wird die Nummer nicht optimiert, <font color="#03DAC5"><b>+</b></font> und <font color="#03DAC5"><b>führende 0er</b></font> bleiben erhalten, nützlich zur Unterscheidung von Landesvorwahlen.
         ]]>
     </string>
 

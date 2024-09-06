@@ -54,7 +54,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 
-const val SettingRowMinHeight = 36
+const val SettingRowMinHeight = 40
 
 @Composable
 fun SettingPage() {

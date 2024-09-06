@@ -85,7 +85,7 @@ fun RepeatedCall() {
     permChain.Compose()
 
     LabeledRow(
-        R.string.allow_repeated_call,
+        R.string.repeated_call,
         helpTooltipId = R.string.help_repeated_call,
         content = {
             if (isEnabled && isCallLogPermissionGranted(ctx)) {
