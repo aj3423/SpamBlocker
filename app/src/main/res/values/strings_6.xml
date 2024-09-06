@@ -33,7 +33,7 @@
         &emsp; - <font color="#00BFFF"><b>Swipe right</b></font> to open it in the default SMS app.<br>
         &emsp; - <font color="#00BFFF"><b>Swipe left</b></font> to delete.<br>
         <br>
-        &emsp; When enabled, the SMS message will be <font color="#ffa500"><b>logged</b></font> in the local database, it\'s not logged when disabled.
+        When enabled, the SMS message will be <font color="#ffa500"><b>logged</b></font> in the local database, it\'s not logged when disabled.
         ]]>
     </string>
 

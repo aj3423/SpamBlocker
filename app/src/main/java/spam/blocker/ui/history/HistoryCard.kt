@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
@@ -76,7 +77,9 @@ fun HistoryCard(
             if (bmpAvatar != null) {
                 ComposeImage(bmpAvatar.asImageBitmap(), "", modifier = M
                     .size(ItemHeight.dp)
-                    .align(Alignment.Top))
+                    .align(Alignment.Top)
+                    .clip(RoundedCornerShape((ItemHeight/2).dp))
+                )
             } else {
                 // Use the hash code as color
                 val toHash = contact?.name ?: record.peer

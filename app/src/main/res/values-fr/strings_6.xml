@@ -33,7 +33,7 @@
         &emsp; - <font color="#00BFFF"><b>Faites glisser vers la droite</b></font> pour l\'ouvrir dans l\'application SMS par défaut.<br>
         &emsp; - <font color="#00BFFF"><b>Faites glisser vers la gauche</b></font> pour le supprimer.<br>
         <br>
-        &emsp; Lorsqu\'il est activé, le SMS sera <font color="#ffa500"><b>enregistré</b></font> dans la base de données locale, il n\'est pas enregistré lorsqu\'il est désactivé.
+        Lorsqu\'il est activé, le SMS sera <font color="#ffa500"><b>enregistré</b></font> dans la base de données locale, il n\'est pas enregistré lorsqu\'il est désactivé.
         ]]>
     </string>
 

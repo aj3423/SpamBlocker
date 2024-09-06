@@ -33,7 +33,7 @@
         &emsp; - <font color="#00BFFF"><b>Nach rechts wischen</b></font>, um sie in der Standard-SMS-App zu öffnen.<br>
         &emsp; - <font color="#00BFFF"><b>Nach links wischen</b></font>, um sie zu löschen.<br>
         <br>
-        &emsp; Wenn aktiviert, wird die SMS-Nachricht in der lokalen Datenbank <font color="#ffa500"><b>protokolliert</b></font>, bei Deaktivierung findet keine Protokollierung statt.
+        Wenn aktiviert, wird die SMS-Nachricht in der lokalen Datenbank <font color="#ffa500"><b>protokolliert</b></font>, bei Deaktivierung findet keine Protokollierung statt.
         ]]>
     </string>
 

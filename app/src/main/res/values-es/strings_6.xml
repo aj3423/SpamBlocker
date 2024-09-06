@@ -32,7 +32,7 @@
         &emsp; - <font color="#00BFFF"><b>Deslizar a la derecha</b></font> para abrirlo en la aplicación de SMS predeterminada.<br>
         &emsp; - <font color="#00BFFF"><b>Deslizar a la izquierda</b></font> para eliminarlo.<br>
         <br>
-        &emsp; Cuando está habilitado, el mensaje SMS se <font color="#ffa500"><b>registrará</b></font> en la base de datos local; no se registra cuando está deshabilitado.
+        Cuando está habilitado, el mensaje SMS se <font color="#ffa500"><b>registrará</b></font> en la base de datos local; no se registra cuando está deshabilitado.
         ]]>
     </string>
 

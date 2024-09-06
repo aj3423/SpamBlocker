@@ -32,7 +32,7 @@
         &emsp; - <font color="#00BFFF"><b>右滑</b></font>在默认短信应用中打开。 <br>
         &emsp; - <font color="#00BFFF"><b>左滑</b></font>删除。<br>
         <br>
-        &emsp; 启用时，短信将<font color="#ffa500"><b>记录</b></font>在本地数据库中，禁用时不记录。
+        启用时，短信将<font color="#ffa500"><b>记录</b></font>在本地数据库中，禁用时不记录。
         ]]>
     </string>
 
