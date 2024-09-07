@@ -1,7 +1,6 @@
 package spam.blocker.ui.setting.regex
 
 import android.Manifest
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -21,8 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
-import spam.blocker.db.newRegexRule
 import spam.blocker.db.RegexRule
+import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
@@ -40,9 +39,7 @@ import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
-import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.RegexInputBox
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.ShowAnimated
 import spam.blocker.ui.widgets.Spinner
@@ -50,6 +47,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker
 import spam.blocker.ui.widgets.verticalScrollbar
 import spam.blocker.util.Lambda1

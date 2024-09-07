@@ -4,8 +4,6 @@ package spam.blocker.ui.widgets
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandHorizontally
-import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.background
@@ -19,8 +17,8 @@ import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxState
 import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.SwipeToDismissBoxValue.EndToStart
-import androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
 import androidx.compose.material3.SwipeToDismissBoxValue.Settled
+import androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,10 +38,10 @@ import spam.blocker.R
 import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Lambda
+import spam.blocker.util.loge
 import kotlin.math.min
 
-private const val SwipeThresholdPercent = 0.5f
-private const val SwipeThresholdMax = 600f // max 400 dp
+private const val SwipeThresholdPercent = 0.4f
 
 private const val AnimationDuration = 200
 
@@ -60,7 +58,6 @@ data class SwipeInfo(
 )
 
 
-
 // Wrap a @Composable to make it swipeable in both directions.
 @Composable
 fun SwipeWrapper(
@@ -71,22 +68,32 @@ fun SwipeWrapper(
     var trigger by remember { mutableStateOf(false) }
     var triggeredDir by remember { mutableStateOf(Settled) }
 
-    val state = rememberSwipeToDismissBoxState(
+    // ref: https://stackoverflow.com/a/78960161/2219196
+    var state: SwipeToDismissBoxState? = null
+    state = rememberSwipeToDismissBoxState(
         positionalThreshold = {
-            min(it * SwipeThresholdPercent, SwipeThresholdMax)
+            it * SwipeThresholdPercent
         },
         confirmValueChange = { dir ->
             triggeredDir = dir
 
             when (dir) {
                 EndToStart -> {
-                    trigger = true
-                    left?.veto != true
+                    if (state!!.progress > SwipeThresholdPercent) {
+                        trigger = true
+                        left?.veto != true
+                    } else {
+                        false
+                    }
                 }
 
                 StartToEnd -> {
-                    trigger = true
-                    right?.veto != true
+                    if (state!!.progress > SwipeThresholdPercent) {
+                        trigger = true
+                        right?.veto != true
+                    } else {
+                        false
+                    }
                 }
 
                 else -> false
@@ -132,11 +139,11 @@ fun LeftDeleteSwipeWrapper(
     val scope = rememberCoroutineScope()
 
     SwipeWrapper(
-        left = left?.copy (
+        left = left?.copy(
             onSwipe = {
                 isDeleted = true
                 scope.launch {
-                    delay(AnimationDuration.toLong() )
+                    delay(AnimationDuration.toLong())
                     left.onSwipe()
                 }
             },
@@ -146,7 +153,7 @@ fun LeftDeleteSwipeWrapper(
         content = {
             AnimatedVisibility(
                 visible = !isDeleted,
-                exit = shrinkHorizontally (
+                exit = shrinkHorizontally(
                     animationSpec = tween(durationMillis = AnimationDuration),
                     shrinkTowards = Alignment.Start
                 ) + fadeOut()
@@ -165,7 +172,12 @@ fun BgDelete(
     direction: SwipeToDismissBoxValue = EndToStart,
 ) {
     val color = if (state.dismissDirection == direction) {
-        Salmon.copy(alpha = min(state.progress / SwipeThresholdPercent, 1.0f))
+        Salmon.copy(
+            alpha = if (state.progress >= SwipeThresholdPercent)
+                1.0f
+            else
+                (state.progress / SwipeThresholdPercent) * 0.7f
+        )
     } else Color.Transparent
 
     Box(
@@ -194,7 +206,12 @@ fun BgLaunchApp(
     direction: SwipeToDismissBoxValue = StartToEnd,
 ) {
     val color = if (state.dismissDirection == direction) {
-        MayaBlue.copy(alpha = min(state.progress / SwipeThresholdPercent, 1.0f))
+        MayaBlue.copy(
+            alpha = if (state.progress >= SwipeThresholdPercent)
+                1.0f
+            else
+                (state.progress / SwipeThresholdPercent) * 0.7f
+        )
     } else Color.Transparent
 
     Box(

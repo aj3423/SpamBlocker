@@ -1,13 +1,8 @@
 package spam.blocker.service
 
 import android.content.BroadcastReceiver
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
-import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
-import android.widget.Toast
-import spam.blocker.R
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Notification
 

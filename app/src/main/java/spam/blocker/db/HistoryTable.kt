@@ -3,7 +3,6 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import androidx.compose.runtime.Immutable
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def

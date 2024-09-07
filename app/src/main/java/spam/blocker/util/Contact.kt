@@ -5,8 +5,8 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
-import android.provider.ContactsContract.PhoneLookup
 import android.provider.ContactsContract.Contacts
+import android.provider.ContactsContract.PhoneLookup
 
 class ContactInfo {
     var name = ""

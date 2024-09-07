@@ -1,12 +1,10 @@
 package spam.blocker.ui.history
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.Image as ComposeImage
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -42,7 +40,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.Util
-import spam.blocker.util.loge
+import androidx.compose.foundation.Image as ComposeImage
 
 
 // The default values when not expanded

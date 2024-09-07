@@ -12,7 +12,6 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain

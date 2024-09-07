@@ -13,10 +13,10 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.HtmlText
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.util.Csv

@@ -3,9 +3,6 @@ package spam.blocker.ui.widgets
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
-import androidx.compose.material3.contentColorFor
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.Color
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import spam.blocker.util.Lambda

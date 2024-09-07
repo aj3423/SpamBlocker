@@ -24,9 +24,9 @@ import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
-import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox

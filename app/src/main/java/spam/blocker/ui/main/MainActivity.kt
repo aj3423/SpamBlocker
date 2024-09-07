@@ -18,9 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,7 +33,6 @@ import spam.blocker.ui.setting.SettingPage
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.MayaBlue
-import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.Badge
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel

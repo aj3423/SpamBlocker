@@ -45,7 +45,7 @@
     <string name="miscellaneous">Miscellaneous</string>
     <string name="quick_settings">Quick Settings</string>
     <string name="regex_settings">Regex Settings</string>
-    <string name="backup"><short>Backu</short></string>
+    <string name="backup"><short>Backup</short></string>
     <string name="import_">Import</string>
     <string name="imported">Imported</string>
     <string name="export">Export</string>

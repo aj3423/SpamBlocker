@@ -41,9 +41,9 @@ import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.SwissCoffee
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
-import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox

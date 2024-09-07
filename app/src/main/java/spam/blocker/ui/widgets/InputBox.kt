@@ -38,15 +38,12 @@ import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
-import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
-import spam.blocker.util.loge
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 

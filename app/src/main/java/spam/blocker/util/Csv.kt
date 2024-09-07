@@ -1,7 +1,5 @@
 package spam.blocker.util
 
-import kotlinx.serialization.json.Json
-
 class Csv {
     companion object {
 

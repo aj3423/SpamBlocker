@@ -22,13 +22,11 @@ import kotlinx.serialization.json.JsonTransformingSerializer
 import spam.blocker.def.Def
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
-import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Schedule
 import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.truncate
 import spam.blocker.util.hasFlag
-import spam.blocker.util.loge
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 

@@ -1,17 +1,13 @@
 package spam.blocker.ui.history
 
 import android.content.Context
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
-import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.util.SharedPref.Global
-import spam.blocker.util.loge
 
 /*
   To simplify the code, this view model is used in GlobalVariables instead of viewModel<...>().

@@ -8,8 +8,8 @@ import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.RegexRule
 import spam.blocker.db.QuickCopyRuleTable
+import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
