@@ -26,6 +26,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.HistoryOptions
 
 @Composable
 fun HistoryFabs(
@@ -37,7 +38,7 @@ fun HistoryFabs(
     logSmsContent: MutableState<Boolean>
 ) {
     val ctx = LocalContext.current
-    val spf = Global(ctx)
+    val spf = HistoryOptions(ctx)
 
     RowVCenterSpaced(space = 8, modifier = modifier) {
         // Context Menu

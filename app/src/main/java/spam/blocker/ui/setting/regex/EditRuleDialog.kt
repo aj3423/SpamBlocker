@@ -114,21 +114,12 @@ fun RuleEditDialog(
 
     // Schedule
     val sch = remember { Schedule.parseFromStr(initRule.schedule) }
-    var schEnabled by remember { mutableStateOf(false) }
-    val schWeekdays = remember { mutableStateListOf<Int>() }
-    var schSHour by remember { mutableIntStateOf(0) }
-    var schSMin by remember { mutableIntStateOf(0) }
-    var schEHour by remember { mutableIntStateOf(0) }
-    var schEMin by remember { mutableIntStateOf(0) }
-    LaunchedEffect(sch) {
-        schEnabled = sch.enabled
-        schWeekdays.clear()
-        schWeekdays.addAll(sch.weekdays)
-        schSHour = sch.startHour
-        schSMin = sch.startMin
-        schEHour = sch.endHour
-        schEMin = sch.endMin
-    }
+    var schEnabled by remember { mutableStateOf(sch.enabled) }
+    val schWeekdays = remember { mutableStateListOf(*sch.weekdays.toTypedArray()) }
+    var schSHour by remember { mutableIntStateOf(sch.startHour) }
+    var schSMin by remember { mutableIntStateOf(sch.startMin) }
+    var schEHour by remember { mutableIntStateOf(sch.endHour) }
+    var schEMin by remember { mutableIntStateOf(sch.endMin) }
 
     // if any error, disable the Save button
     val anyError = remember(patternError, patternExtraError, priorityError) {
@@ -183,17 +174,7 @@ fun RuleEditDialog(
             )
         },
         content = {
-            val scrollState = rememberScrollState()
-            Column(
-                modifier = M
-                    .verticalScroll(scrollState)
-                    .verticalScrollbar(
-                        scrollState,
-                        offsetX = 30,
-                        persistent = true,
-                        scrollBarColor = SkyBlue
-                    ),
-            ) {
+            Column {
                 // Pattern
                 RegexInputBox(
                     label = {
@@ -407,9 +388,9 @@ fun RuleEditDialog(
                         helpTooltipId = R.string.help_importance,
                     ) {
                         val icons = remember {
-                            listOf<@Composable () -> Unit>(
-                                // list.map{} doesn't support returning @Composable...
-                                { GreyIcon(R.drawable.ic_empty, modifier = M.size(16.dp)) },
+                            // list.map{} doesn't support returning @Composable...
+                            listOf<(@Composable () -> Unit)?>(
+                                null,
                                 { GreyIcon(R.drawable.ic_shade, modifier = M.size(16.dp)) },
                                 { GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp)) },
                                 {

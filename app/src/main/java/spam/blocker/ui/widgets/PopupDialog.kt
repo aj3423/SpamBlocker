@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -21,6 +23,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.Lambda
 import kotlin.math.roundToInt
 
@@ -78,10 +81,20 @@ fun PopupDialog(
                 usePlatformDefaultWidth = popupSize == null,
             )
         ) {
+            val scrollState = rememberScrollState()
+
             Card(
-                modifier = M.width(
-                    popupSize?.calculate()?.dp ?: Dp.Unspecified
-                ),
+                modifier = M
+                    .width(
+                        popupSize?.calculate()?.dp ?: Dp.Unspecified
+                    )
+                    .verticalScroll(scrollState)
+                    .verticalScrollbar(
+                        scrollState,
+                        offsetX = -8,
+                        persistent = true,
+                        scrollBarColor = SkyBlue
+                    ),
                 colors = CardDefaults.cardColors(
                     containerColor = LocalPalette.current.dialogBg,
                 ),

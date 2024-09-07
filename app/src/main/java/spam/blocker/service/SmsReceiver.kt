@@ -14,6 +14,7 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.HistoryOptions
 import spam.blocker.util.logd
 
 class SmsReceiver : BroadcastReceiver() {
@@ -39,7 +40,7 @@ class SmsReceiver : BroadcastReceiver() {
     }
 
     fun processSms(ctx: Context, rawNumber: String, messageBody: String) : CheckResult {
-        val spf = Global(ctx)
+        val spf = HistoryOptions(ctx)
 
         val r = Checker.checkSms(ctx, rawNumber, messageBody)
 

@@ -8,6 +8,7 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.HistoryOptions
 
 /*
   To simplify the code, this view model is used in GlobalVariables instead of viewModel<...>().
@@ -20,7 +21,7 @@ open class HistoryViewModel(
     fun reload(ctx: Context) {
         records.clear()
 
-        val spf = Global(ctx)
+        val spf = HistoryOptions(ctx)
         val showPassed = spf.getShowPassed()
         val showBlocked = spf.getShowBlocked()
 

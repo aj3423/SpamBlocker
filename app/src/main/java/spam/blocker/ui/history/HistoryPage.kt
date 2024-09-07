@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.db.HistoryRecord
 import spam.blocker.ui.widgets.FabWrapper
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.HistoryOptions
 
 
 @Composable
@@ -19,7 +20,7 @@ fun HistoryPage(
     records: SnapshotStateList<HistoryRecord>,
 ) {
     val ctx = LocalContext.current
-    val spf = Global(ctx)
+    val spf = HistoryOptions(ctx)
 
     val showPassed = remember { mutableStateOf(spf.getShowPassed()) }
     val showBlocked = remember { mutableStateOf(spf.getShowBlocked()) }

@@ -18,6 +18,10 @@ import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
 
+/*
+  These default values only works when upgrading from an old version that does not
+    have this attribute yet.
+ */
 @Serializable
 class Global {
     var enabled = false
@@ -35,6 +39,27 @@ class Global {
             setGloballyEnabled(enabled)
             setCallEnabled(callEnabled)
             setSmsEnabled(smsEnabled)
+        }
+    }
+}
+
+@Serializable
+class HistoryOptions {
+    var showPassed = true
+    var showBlocked = true
+    var logSmsContent = false
+    fun load(ctx: Context) {
+        val spf = spam.blocker.util.SharedPref.HistoryOptions(ctx)
+        showPassed = spf.getShowPassed()
+        showBlocked = spf.getShowBlocked()
+        logSmsContent = spf.isLogSmsContentEnabled()
+    }
+
+    fun apply(ctx: Context) {
+        spam.blocker.util.SharedPref.HistoryOptions(ctx).apply {
+            setShowPassed(showPassed)
+            setShowBlocked(showBlocked)
+            setLogSmsContentEnabled(logSmsContent)
         }
     }
 }
@@ -240,6 +265,7 @@ class QuickCopyRules : PatternRules() {
 @Serializable
 class Configs {
     val global = Global()
+    val historyOptions = HistoryOptions()
     val theme = Theme()
     val language = Language()
 
@@ -257,6 +283,7 @@ class Configs {
 
     fun load(ctx: Context) {
         global.load(ctx)
+        historyOptions.load(ctx)
         theme.load(ctx)
         language.load(ctx)
 
@@ -275,6 +302,7 @@ class Configs {
 
     fun apply(ctx: Context) {
         global.apply(ctx)
+        historyOptions.apply(ctx)
         theme.apply(ctx)
         language.apply(ctx)
 

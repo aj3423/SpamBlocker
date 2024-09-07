@@ -88,9 +88,7 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "setting") }
     fun setActiveTab(tab: String) { writeString(Def.SETTING_ACTIVE_TAB, tab) }
 
-    fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
-    fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }
-
+    // Following settings will not backed up
     fun hasPromptedForRunningInWorkProfile(): Boolean {
         return readBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, false)
     }
@@ -103,19 +101,16 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun dismissDoubleSMSWarning() {
         writeBoolean(Def.SETTING_WARN_DOUBLE_SMS, true)
     }
+}
 
-    fun getShowPassed(): Boolean {
-        return readBoolean(Def.SETTING_SHOW_PASSED, true)
-    }
-    fun setShowPassed(enabled: Boolean) {
-        writeBoolean(Def.SETTING_SHOW_PASSED, enabled)
-    }
-    fun getShowBlocked(): Boolean {
-        return readBoolean(Def.SETTING_SHOW_BLOCKED, true)
-    }
-    fun setShowBlocked(enabled: Boolean) {
-        writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled)
-    }
+class HistoryOptions(ctx: Context) : SharedPref(ctx) {
+    fun getShowPassed(): Boolean { return readBoolean(Def.SETTING_SHOW_PASSED, true) }
+    fun setShowPassed(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_PASSED, enabled) }
+    fun getShowBlocked(): Boolean { return readBoolean(Def.SETTING_SHOW_BLOCKED, true) }
+    fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
+
+    fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
+    fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }
 }
 
 
