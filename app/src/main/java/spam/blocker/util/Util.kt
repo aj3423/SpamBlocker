@@ -266,20 +266,30 @@ class Util {
         // android<13 will always return `false`
         @RequiresApi(Def.ANDROID_13)
         private fun isDefaultSmsAppNotificationEnabled(ctx: Context) : Boolean {
-            val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
+            // It can throw exception, ref: https://github.com/aj3423/SpamBlocker/issues/122
+            try {
+                val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
 
-            val pm = ctx.packageManager
+                val pm = ctx.packageManager
 
-            val result = pm.checkPermission(Manifest.permission.POST_NOTIFICATIONS, defSmsPkg)
+                val result = pm.checkPermission(Manifest.permission.POST_NOTIFICATIONS, defSmsPkg)
 
-            return result == PERMISSION_GRANTED
+                return result == PERMISSION_GRANTED
+            } catch (e :Exception) {
+                loge("exception in isDefaultSmsAppNotificationEnabled: $e")
+                return false
+            }
         }
 
         fun openSettingForDefaultSmsApp(ctx: Context) {
-            val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
-            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-            intent.data = Uri.fromParts("package", defSmsPkg, null)
-            ctx.startActivity(intent)
+            try {
+                val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                intent.data = Uri.fromParts("package", defSmsPkg, null)
+                ctx.startActivity(intent)
+            } catch (e: Exception) {
+                loge("exception in openSettingForDefaultSmsApp: $e")
+            }
         }
         fun checkDoubleNotifications(ctx: Context, trigger: MutableState<Boolean>) {
             if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
