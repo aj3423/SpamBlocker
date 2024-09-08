@@ -136,7 +136,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         }
         // v2.0 introduced displaying sms content in sms history tab.
         if ((newVersion >= 27) && (oldVersion < 27)) {
-            // - unset FLAG_FOR_CALL
+            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
+            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_EXPANDED INTEGER")
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXPANDED INTEGER")
         }
