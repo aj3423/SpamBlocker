@@ -51,6 +51,7 @@ import spam.blocker.ui.theme.White
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FabWrapper
+import spam.blocker.ui.widgets.NormalScrollbar
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
@@ -86,63 +87,65 @@ fun SettingPage() {
         }
     ) {
 
-        Column(
-            modifier = M
-                .verticalScroll(scrollState)
-                .padding(top = 8.dp)
-        ) {
-            // global
-            GloballyEnabled()
+        NormalScrollbar(state = scrollState) {
+            Column(
+                modifier = M
+                    .verticalScroll(scrollState)
+                    .padding(top = 8.dp)
+            ) {
+                // global
+                GloballyEnabled()
 
-            // quick settings
-            if (G.globallyEnabled.value) {
-                Section(title = Str(R.string.quick_settings)) {
-                    Column {
-                        Contacts()
-                        Stir()
-                        RepeatedCall()
-                        Dialed()
-                        RecentApps()
-                        OffTime()
-                        BlockType()
+                // quick settings
+                if (G.globallyEnabled.value) {
+                    Section(title = Str(R.string.quick_settings)) {
+                        Column {
+                            Contacts()
+                            Stir()
+                            RepeatedCall()
+                            Dialed()
+                            RecentApps()
+                            OffTime()
+                            BlockType()
+                        }
+                    }
+                    Section(
+                        title = Str(R.string.regex_settings),
+                    ) {
+                        Column {
+                            // Number Rules
+                            val numberRules = remember {
+                                mutableStateListOf(*NumberRuleTable().listAll(ctx).toTypedArray())
+                            }
+
+                            RuleHeader(Def.ForNumber, numberRules)
+                            RuleList(Def.ForNumber, numberRules)
+
+                            // Content Rules
+                            val contentRules = remember {
+                                mutableStateListOf(*ContentRuleTable().listAll(ctx).toTypedArray())
+                            }
+                            RuleHeader(Def.ForSms, contentRules)
+                            RuleList(Def.ForSms, contentRules)
+
+                            // QuickCopy Rules
+                            val quickCopyRules = remember {
+                                mutableStateListOf(*QuickCopyRuleTable().listAll(ctx).toTypedArray())
+                            }
+                            RuleHeader(Def.ForQuickCopy, quickCopyRules)
+                            RuleList(Def.ForQuickCopy, quickCopyRules)
+                        }
                     }
                 }
-                Section(
-                    title = Str(R.string.regex_settings),
-                ) {
-                    Column {
-                        // Number Rules
-                        val numberRules = remember {
-                            mutableStateListOf(*NumberRuleTable().listAll(ctx).toTypedArray())
-                        }
-
-                        RuleHeader(Def.ForNumber, numberRules)
-                        RuleList(Def.ForNumber, numberRules)
-
-                        // Content Rules
-                        val contentRules = remember {
-                            mutableStateListOf(*ContentRuleTable().listAll(ctx).toTypedArray())
-                        }
-                        RuleHeader(Def.ForSms, contentRules)
-                        RuleList(Def.ForSms, contentRules)
-
-                        // QuickCopy Rules
-                        val quickCopyRules = remember {
-                            mutableStateListOf(*QuickCopyRuleTable().listAll(ctx).toTypedArray())
-                        }
-                        RuleHeader(Def.ForQuickCopy, quickCopyRules)
-                        RuleList(Def.ForQuickCopy, quickCopyRules)
+                Section(title = Str(R.string.miscellaneous)) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(0.dp),
+                    ) {
+                        Theme()
+                        Language()
+                        BackupRestore()
+                        About()
                     }
-                }
-            }
-            Section(title = Str(R.string.miscellaneous)) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(0.dp),
-                ) {
-                    Theme()
-                    Language()
-                    BackupRestore()
-                    About()
                 }
             }
         }

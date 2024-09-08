@@ -24,7 +24,6 @@ fun WeekdayPicker(
     selectedDays: SnapshotStateList<Int>,
 ) {
     RowVCenter(
-        modifier = M.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         val C = LocalPalette.current

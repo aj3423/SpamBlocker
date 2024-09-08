@@ -3,15 +3,12 @@ package spam.blocker.ui.setting.regex
 import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -24,10 +21,10 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.rememberMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.GreyButton
@@ -49,7 +46,6 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker
-import spam.blocker.ui.widgets.verticalScrollbar
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -72,57 +68,60 @@ fun RuleEditDialog(
     val C = LocalPalette.current
     val ctx = LocalContext.current
 
+    // id
+    val id by rememberSaveable { mutableLongStateOf(initRule.id) }
+
     // Regex pattern
-    var pattern by remember { mutableStateOf(initRule.pattern) }
-    val patternFlags = remember { mutableIntStateOf(initRule.patternFlags) }
-    var patternError by remember { mutableStateOf(false) }
+    var pattern by rememberSaveable { mutableStateOf(initRule.pattern) }
+    val patternFlags = rememberSaveable { mutableIntStateOf(initRule.patternFlags) }
+    var patternError by rememberSaveable { mutableStateOf(false) }
 
     // For particular number
-    var forParticular by remember { mutableStateOf(initRule.patternExtra != "") }
-    var patternExtra by remember { mutableStateOf(initRule.patternExtra) }
-    val patternExtraFlags = remember { mutableIntStateOf(initRule.patternExtraFlags) }
-    var patternExtraError by remember { mutableStateOf(false) }
+    var forParticular by rememberSaveable { mutableStateOf(initRule.patternExtra != "") }
+    var patternExtra by rememberSaveable { mutableStateOf(initRule.patternExtra) }
+    val patternExtraFlags = rememberSaveable { mutableIntStateOf(initRule.patternExtraFlags) }
+    var patternExtraError by rememberSaveable { mutableStateOf(false) }
 
     // Description
-    var description by remember { mutableStateOf(initRule.description) }
+    var description by rememberSaveable { mutableStateOf(initRule.description) }
 
     // Priority
-    var priority by remember { mutableIntStateOf(initRule.priority) }
-    var priorityError by remember { mutableStateOf(false) }
+    var priority by rememberSaveable { mutableIntStateOf(initRule.priority) }
+    var priorityError by rememberSaveable { mutableStateOf(false) }
 
     // Apply to Call/SMS
-    var applyToCall by remember { mutableStateOf(initRule.isForCall()) }
-    var applyToSms by remember { mutableStateOf(initRule.isForSms()) }
+    var applyToCall by rememberSaveable { mutableStateOf(initRule.isForCall()) }
+    var applyToSms by rememberSaveable { mutableStateOf(initRule.isForSms()) }
 
     // Apply to Number/Content
-    var applyToNumber by remember { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_NUMBER)) }
-    var applyToContent by remember { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_CONTENT)) }
+    var applyToNumber by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_NUMBER)) }
+    var applyToContent by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_CONTENT)) }
 
     // Apply to Passed/Blocked
-    var applyToPassed by remember { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_PASSED)) }
-    var applyToBlocked by remember { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_BLOCKED)) }
+    var applyToPassed by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_PASSED)) }
+    var applyToBlocked by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_BLOCKED)) }
 
     // Whitelist or Blacklist
     // selected index
-    var applyToWorB by remember { mutableIntStateOf(if (initRule.isWhitelist()) 0 else 1) }
+    var applyToWorB by rememberSaveable { mutableIntStateOf(if (initRule.isWhitelist()) 0 else 1) }
 
     // Block Type
-    var blockType by remember { mutableIntStateOf(initRule.blockType) }
+    var blockType by rememberSaveable { mutableIntStateOf(initRule.blockType) }
 
     // NotificationType
-    var notifyType by remember { mutableIntStateOf(initRule.importance) }
+    var notifyType by rememberSaveable { mutableIntStateOf(initRule.importance) }
 
     // Schedule
     val sch = remember { Schedule.parseFromStr(initRule.schedule) }
-    var schEnabled by remember { mutableStateOf(sch.enabled) }
-    val schWeekdays = remember { mutableStateListOf(*sch.weekdays.toTypedArray()) }
-    var schSHour by remember { mutableIntStateOf(sch.startHour) }
-    var schSMin by remember { mutableIntStateOf(sch.startMin) }
-    var schEHour by remember { mutableIntStateOf(sch.endHour) }
-    var schEMin by remember { mutableIntStateOf(sch.endMin) }
+    var schEnabled by rememberSaveable { mutableStateOf(sch.enabled) }
+    val schWeekdays = rememberMutableStateListOf(*sch.weekdays.toTypedArray())
+    var schSHour by rememberSaveable { mutableIntStateOf(sch.startHour) }
+    var schSMin by rememberSaveable { mutableIntStateOf(sch.startMin) }
+    var schEHour by rememberSaveable { mutableIntStateOf(sch.endHour) }
+    var schEMin by rememberSaveable { mutableIntStateOf(sch.endMin) }
 
     // if any error, disable the Save button
-    val anyError = remember(patternError, patternExtraError, priorityError) {
+    val anyError = rememberSaveable(patternError, patternExtraError, priorityError) {
         patternError || patternExtraError || priorityError
     }
 
@@ -132,7 +131,7 @@ fun RuleEditDialog(
         buttons = {
             StrokeButton(
                 label = Str(R.string.save),
-                color = if (anyError) LocalPalette.current.disabled else Teal200,
+                color = if (anyError) C.disabled else Teal200,
                 enabled = !anyError,
                 onClick = {
                     trigger.value = false
@@ -156,7 +155,7 @@ fun RuleEditDialog(
 
                     onSave(
                         newRegexRule(
-                            initRule.id,
+                            id,
                             pattern,
                             patternExtra,
                             patternFlags.intValue,

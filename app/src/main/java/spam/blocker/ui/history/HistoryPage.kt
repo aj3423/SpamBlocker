@@ -10,7 +10,6 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.db.HistoryRecord
 import spam.blocker.ui.widgets.FabWrapper
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.HistoryOptions
 
 
@@ -50,7 +49,7 @@ fun HistoryPage(
         }
     ) {
         HistoryList(
-            listState = listState,
+            lazyState = listState,
             forType = forType,
             records = records
         )

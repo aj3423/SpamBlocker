@@ -81,8 +81,11 @@ android {
 }
 
 dependencies {
+    // third-party
+    implementation(libs.lazycolumnscrollbar) // for scroll bar
+
     // jetbrains kotlinx
-    implementation(libs.serialization) // for backup/restore json serialization
+    implementation(libs.serialization.json) // for backup/restore json serialization
 
     // jetpack compose
     implementation(platform(libs.compose.bom)) // auto compose version control

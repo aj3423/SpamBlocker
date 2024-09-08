@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -35,6 +36,7 @@ import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.LazyScrollbar
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.SnackBar
@@ -74,10 +76,10 @@ fun RuleList(
             trigger = editRuleTrigger,
             initRule = clickedRule.value,
             forType = forType,
-            onSave = { newRule ->
+            onSave = { updatedRule ->
                 // 1. update in db
                 val table = ruleTableForType(forType)
-                table.updateRuleById(ctx, newRule.id, newRule)
+                table.updateRuleById(ctx, updatedRule.id, updatedRule)
 
                 // 2. reload from db
                 ruleList.clear()
@@ -143,22 +145,28 @@ fun RuleList(
         val halfScreenDp = remember {
             with(density) {
                 val screenHeightPx = ctx.resources.displayMetrics.heightPixels
-                screenHeightPx.toDp().value * 0.7
+                screenHeightPx.toDp().value * 0.6
             }
         }
+        val lazyState = rememberLazyListState()
 
-        LazyColumn(
+        LazyScrollbar(
+            state = lazyState,
             modifier = M.height(halfScreenDp.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            itemsIndexed(
-                items = ruleList,
-                key = { _, it -> it.id }
-            ) { i, rule ->
-                RuleItem(
-                    coroutine, forType, i, ruleList,
-                    clickedRule, editRuleTrigger, contextMenuItems
-                )
+            LazyColumn(
+                state = lazyState,
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                itemsIndexed(
+                    items = ruleList,
+                    key = { _, it -> it.id }
+                ) { i, rule ->
+                    RuleItem(
+                        coroutine, forType, i, ruleList,
+                        clickedRule, editRuleTrigger, contextMenuItems
+                    )
+                }
             }
         }
     } else {

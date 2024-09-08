@@ -6,6 +6,7 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ fun CheckBox(
         modifier = modifier
             .clip(MaterialTheme.shapes.small)
             .clickable(
-                indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
+                indication = ripple(color = MaterialTheme.colorScheme.primary),
                 interactionSource = remember { MutableInteractionSource() },
                 onClick = {
                     onCheckChange(!checked)

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -15,7 +14,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -106,11 +104,10 @@ fun PopupDialog(
                             if (!scrollEnabled) M else {
                                 M
                                     .verticalScroll(scrollState)
-                                    .verticalScrollbar(
+                                    .simpleVerticalScrollbar(
                                         scrollState,
                                         offsetX = -8,
-                                        persistent = true,
-                                        scrollBarColor = SkyBlue
+                                        persistent = true
                                     )
                             }
                         )

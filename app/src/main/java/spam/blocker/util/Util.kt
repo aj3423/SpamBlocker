@@ -32,14 +32,6 @@ typealias Lambda2<A, B> = (A, B) -> Unit
 typealias Lambda3<A, B, C> = (A, B, C) -> Unit
 typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
-// val c = a.chain(b)
-// c() // both a and b will be invoked
-fun Lambda.chain(other: Lambda) : Lambda {
-    return {
-        this()
-        other()
-    }
-}
 
 class Util {
     companion object {

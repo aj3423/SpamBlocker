@@ -29,6 +29,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.BgLaunchApp
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.LazyScrollbar
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
@@ -39,7 +40,7 @@ import spam.blocker.util.Util
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun HistoryList(
-    listState: LazyListState,
+    lazyState: LazyListState,
     forType: Int,
     records: SnapshotStateList<HistoryRecord>,
 ) {
@@ -82,107 +83,109 @@ fun HistoryList(
 
     val coroutineScope = rememberCoroutineScope()
 
-    LazyColumn(
-        state = listState,
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)
-    ) {
-        itemsIndexed(items = records, key = { _, it -> it.id }) { index, record ->
-            DropdownWrapper(items = contextMenuItems) { contextMenuExpanded ->
+    LazyScrollbar(state = lazyState) {
+        LazyColumn(
+            state = lazyState,
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)
+        ) {
+            itemsIndexed(items = records, key = { _, it -> it.id }) { index, record ->
+                DropdownWrapper(items = contextMenuItems) { contextMenuExpanded ->
 
-                // Swipe <---->
-                LeftDeleteSwipeWrapper(
-                    right = SwipeInfo(
-                        veto = true,
-                        background = { state -> BgLaunchApp(state, StartToEnd) },
-                        onSwipe = {
-                            // Navigate to the default app, open the conversation to this number.
-                            if (!record.read) {
-                                // 1. update db
-                                historyTableForType(forType).markAsRead(ctx, record.id)
-                                // 2. update UI
-                                records[index] = records[index].copy(read = true)
+                    // Swipe <---->
+                    LeftDeleteSwipeWrapper(
+                        right = SwipeInfo(
+                            veto = true,
+                            background = { state -> BgLaunchApp(state, StartToEnd) },
+                            onSwipe = {
+                                // Navigate to the default app, open the conversation to this number.
+                                if (!record.read) {
+                                    // 1. update db
+                                    historyTableForType(forType).markAsRead(ctx, record.id)
+                                    // 2. update UI
+                                    records[index] = records[index].copy(read = true)
+                                }
+                                when (forType) {
+                                    Def.ForNumber -> Launcher.openCallConversation(ctx, record.peer)
+                                    Def.ForSms -> Launcher.openSMSConversation(ctx, record.peer)
+                                }
+                                records[index] = records[index]
                             }
-                            when (forType) {
-                                Def.ForNumber -> Launcher.openCallConversation(ctx, record.peer)
-                                Def.ForSms -> Launcher.openSMSConversation(ctx, record.peer)
-                            }
-                            records[index] = records[index]
-                        }
 
-                    ),
-                    left = SwipeInfo(
-                        onSwipe = {
-                            val recToDel = records[index]
-                            val table = historyTableForType(forType)
+                        ),
+                        left = SwipeInfo(
+                            onSwipe = {
+                                val recToDel = records[index]
+                                val table = historyTableForType(forType)
 
-                            // 1. delete from db
-                            table.delById(ctx, recToDel.id)
+                                // 1. delete from db
+                                table.delById(ctx, recToDel.id)
 
-                            // 2. remove from ArrayList
-                            records.removeAt(index)
+                                // 2. remove from ArrayList
+                                records.removeAt(index)
 
-                            // 3. show snackbar
-                            SnackBar.show(
-                                coroutineScope,
-                                recToDel.peer,
-                                ctx.getString(R.string.undelete),
-                            ) {
-                                table.addRecordWithId(ctx, recToDel)
-                                records.add(index, recToDel)
-                            }
-                        },
-                    )
-                ) {
-                    HistoryCard(
-                        forType = forType,
-                        record = record,
-                        modifier = M
-                            .combinedClickable(
-                                onClick = {
-                                    if (!record.read) {
-                                        // 1. update db
-                                        historyTableForType(forType).markAsRead(ctx, record.id)
-                                        // 2. update UI
-                                        records[index] = records[index].copy(read = true)
-                                    }
-
-                                    when (forType) {
-                                        // Navigate to the default app, open the conversation to this number.
-                                        Def.ForNumber -> {
-                                            Launcher.openCallConversation(ctx, record.peer)
+                                // 3. show snackbar
+                                SnackBar.show(
+                                    coroutineScope,
+                                    recToDel.peer,
+                                    ctx.getString(R.string.undelete),
+                                ) {
+                                    table.addRecordWithId(ctx, recToDel)
+                                    records.add(index, recToDel)
+                                }
+                            },
+                        )
+                    ) {
+                        HistoryCard(
+                            forType = forType,
+                            record = record,
+                            modifier = M
+                                .combinedClickable(
+                                    onClick = {
+                                        if (!record.read) {
+                                            // 1. update db
+                                            historyTableForType(forType).markAsRead(ctx, record.id)
+                                            // 2. update UI
+                                            records[index] = records[index].copy(read = true)
                                         }
 
-                                        Def.ForSms -> {
-                                            // Expand/Collapse the SMS body
-                                            if (record.smsContent != null) {
-                                                val rec = records[index]
-                                                // 1. update db
-                                                historyTableForType(forType).setExpanded(
-                                                    ctx,
-                                                    record.id,
-                                                    !rec.expanded
-                                                )
-                                                // 2. update ui
-                                                records[index] =
-                                                    rec.copy(expanded = !rec.expanded)
-                                            } else {
-                                                // Navigate to the default app, open the conversation to this number.
-                                                Launcher.openSMSConversation(ctx, record.peer)
+                                        when (forType) {
+                                            // Navigate to the default app, open the conversation to this number.
+                                            Def.ForNumber -> {
+                                                Launcher.openCallConversation(ctx, record.peer)
+                                            }
+
+                                            Def.ForSms -> {
+                                                // Expand/Collapse the SMS body
+                                                if (record.smsContent != null) {
+                                                    val rec = records[index]
+                                                    // 1. update db
+                                                    historyTableForType(forType).setExpanded(
+                                                        ctx,
+                                                        record.id,
+                                                        !rec.expanded
+                                                    )
+                                                    // 2. update ui
+                                                    records[index] =
+                                                        rec.copy(expanded = !rec.expanded)
+                                                } else {
+                                                    // Navigate to the default app, open the conversation to this number.
+                                                    Launcher.openSMSConversation(ctx, record.peer)
+                                                }
                                             }
                                         }
+                                        clickedRecord.value = records[index]
+                                    },
+                                    onLongClick = {
+                                        clickedRecord.value = record
+                                        contextMenuExpanded.value = true
                                     }
-                                    clickedRecord.value = records[index]
-                                },
-                                onLongClick = {
-                                    clickedRecord.value = record
-                                    contextMenuExpanded.value = true
-                                }
-                            )
-                    )
+                                )
+                        )
+                    }
                 }
-            }
 //            }
+            }
         }
     }
 }

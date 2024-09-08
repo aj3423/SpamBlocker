@@ -3,6 +3,8 @@ package spam.blocker.ui.widgets
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -13,16 +15,26 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import my.nanihadesuka.compose.ColumnScrollbar
+import my.nanihadesuka.compose.LazyColumnScrollbar
+import my.nanihadesuka.compose.ScrollbarSelectionActionable
+import my.nanihadesuka.compose.ScrollbarSelectionMode
+import my.nanihadesuka.compose.ScrollbarSettings
 import spam.blocker.ui.theme.DarkOrange
+import spam.blocker.ui.theme.DodgeBlue
+import spam.blocker.ui.theme.MayaBlue
+import spam.blocker.ui.theme.SkyBlue
 import kotlin.math.max
 
 
-// from https://gist.github.com/XFY9326/2067efcc3c5899557cc6a334d76a92c8
-fun Modifier.verticalScrollbar(
+// ref: https://gist.github.com/XFY9326/2067efcc3c5899557cc6a334d76a92c8
+// Only used in Balloon, and PopupDialog, others are using LazyColumnScrollbar below, because it
+//  has a bug that always maximizes the popup window.
+fun Modifier.simpleVerticalScrollbar(
     scrollState: ScrollState,
     scrollBarWidth: Dp = 2.dp,
     minScrollBarHeight: Dp = 5.dp,
-    scrollBarColor: Color = DarkOrange,
+    scrollBarColor: Color = SkyBlue,
     cornerRadius: Dp = 2.dp,
     persistent: Boolean = false, // auto hide when not scrolling, set to `true` to always show
     offsetX: Int = 0
@@ -55,5 +67,52 @@ fun Modifier.verticalScrollbar(
                 cornerRadius = CornerRadius(cornerRadius.toPx())
             )
         }
+    }
+}
+
+@Composable
+fun LazyScrollbar(
+    state: LazyListState,
+    modifier: Modifier = Modifier,
+    content: @Composable ()->Unit
+) {
+    LazyColumnScrollbar(
+        modifier = modifier,
+        state = state,
+        settings = ScrollbarSettings.Default.copy(
+            alwaysShowScrollbar = false,
+            thumbThickness = 4.dp,
+            scrollbarPadding = 4.dp,
+            thumbUnselectedColor = SkyBlue,
+            thumbSelectedColor = DodgeBlue,
+            selectionMode = ScrollbarSelectionMode.Full,
+            selectionActionable = ScrollbarSelectionActionable.Always,
+            hideDelayMillis = 400,
+        )
+    ) {
+        content()
+    }
+}
+@Composable
+fun NormalScrollbar(
+    state: ScrollState,
+    modifier: Modifier = Modifier,
+    content: @Composable ()->Unit
+) {
+    ColumnScrollbar(
+        modifier = modifier,
+        state = state,
+        settings = ScrollbarSettings.Default.copy(
+            alwaysShowScrollbar = false,
+            thumbThickness = 4.dp,
+            scrollbarPadding = 4.dp,
+            thumbUnselectedColor = SkyBlue,
+            thumbSelectedColor = DodgeBlue,
+            selectionMode = ScrollbarSelectionMode.Full,
+            selectionActionable = ScrollbarSelectionActionable.Always,
+            hideDelayMillis = 400,
+        )
+    ) {
+        content()
     }
 }

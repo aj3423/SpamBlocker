@@ -41,7 +41,7 @@ import spam.blocker.util.Lambda
 import spam.blocker.util.loge
 import kotlin.math.min
 
-private const val SwipeThresholdPercent = 0.4f
+private const val SwipeThresholdPercent = 0.35f
 
 private const val AnimationDuration = 200
 

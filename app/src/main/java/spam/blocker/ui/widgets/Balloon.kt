@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 
 
@@ -51,7 +52,7 @@ fun BalloonQuestionMark(helpTooltipId: Int) {
                     Str(helpTooltipId),
                     modifier = M
                     .verticalScroll(state)
-                    .verticalScrollbar(state, offsetX = 30, persistent = true)
+                    .simpleVerticalScrollbar(state, offsetX = 30, persistent = true, scrollBarColor = DarkOrange)
                 )
             }
         },
