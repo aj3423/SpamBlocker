@@ -15,6 +15,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -29,6 +30,7 @@ import kotlin.math.roundToInt
 
 const val PopupPaddingHorizontal = 16
 const val PopupPaddingVertical = 16
+const val PopupScrollVPadding = 4
 
 data class PopupSize(
     val percentage: Float = 0.9f,
@@ -65,6 +67,7 @@ fun PopupDialog(
     onDismiss: Lambda? = null,
     buttons: (@Composable RowScope.() -> Unit)? = null,
     popupSize: PopupSize? = null,
+    scrollEnabled: Boolean = true,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     if (trigger.value) {
@@ -87,14 +90,8 @@ fun PopupDialog(
                 modifier = M
                     .width(
                         popupSize?.calculate()?.dp ?: Dp.Unspecified
-                    )
-                    .verticalScroll(scrollState)
-                    .verticalScrollbar(
-                        scrollState,
-                        offsetX = -8,
-                        persistent = true,
-                        scrollBarColor = SkyBlue
                     ),
+
                 colors = CardDefaults.cardColors(
                     containerColor = LocalPalette.current.dialogBg,
                 ),
@@ -103,9 +100,25 @@ fun PopupDialog(
                 Column(
                     modifier = M
                         .padding(
+                            vertical = PopupScrollVPadding.dp
+                        )
+                        .then(
+                            if (!scrollEnabled) M else {
+                                M
+                                    .verticalScroll(scrollState)
+                                    .verticalScrollbar(
+                                        scrollState,
+                                        offsetX = -8,
+                                        persistent = true,
+                                        scrollBarColor = SkyBlue
+                                    )
+                            }
+                        )
+                        .padding(
                             horizontal = PopupPaddingHorizontal.dp,
-                            vertical = PopupPaddingVertical.dp
-                        ),
+                            vertical = (PopupPaddingVertical- PopupScrollVPadding).dp
+                        )
+                    ,
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
@@ -139,31 +152,3 @@ fun PopupDialog(
     }
 }
 
-// A PopupDialog with a bottom button row, with customizable buttons.
-@Composable
-fun ConfirmDialog(
-    trigger: MutableState<Boolean>,
-    title: (@Composable () -> Unit)? = null,
-    icon: (@Composable () -> Unit)? = null,
-    dismiss: Lambda? = null,
-    popupSize: PopupSize? = null,
-    negative: (@Composable () -> Unit)? = null,
-    positive: (@Composable () -> Unit)? = null,
-    content: @Composable ColumnScope.() -> Unit,
-) {
-    PopupDialog(
-        trigger = trigger,
-        content = content,
-        popupSize = popupSize,
-        title = title,
-        icon = icon,
-        onDismiss = dismiss,
-        buttons = {
-            negative?.invoke()
-
-            Spacer(modifier = M.width(10.dp))
-
-            positive?.invoke()
-        }
-    )
-}

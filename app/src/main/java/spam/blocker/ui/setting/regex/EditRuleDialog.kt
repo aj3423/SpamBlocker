@@ -30,12 +30,12 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.CheckBox
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
@@ -126,10 +126,10 @@ fun RuleEditDialog(
         patternError || patternExtraError || priorityError
     }
 
-    ConfirmDialog(
+    PopupDialog(
         trigger = trigger,
         popupSize = PopupSize(percentage = 0.9f, minWidth = 340, maxWidth = 600),
-        positive = {
+        buttons = {
             StrokeButton(
                 label = Str(R.string.save),
                 color = if (anyError) LocalPalette.current.disabled else Teal200,

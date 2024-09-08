@@ -14,13 +14,13 @@ import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.CheckItem
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
@@ -103,9 +103,9 @@ fun HistoryFabs(
 
         // Delete all
         val deleteConfirm = remember { mutableStateOf(false) }
-        ConfirmDialog(
+        PopupDialog(
             trigger = deleteConfirm,
-            positive = {
+            buttons = {
                 StrokeButton(label = Str(R.string.delete), color = Salmon) {
                     deleteConfirm.value = false
                     when (forType) {

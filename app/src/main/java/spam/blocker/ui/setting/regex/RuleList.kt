@@ -31,12 +31,12 @@ import spam.blocker.db.ruleTableForType
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
@@ -88,10 +88,10 @@ fun RuleList(
 
     // Confirm dialog for "Delete All"
     val confirmDeleteAll = remember { mutableStateOf(false) }
-    ConfirmDialog(
+    PopupDialog(
         trigger = confirmDeleteAll,
         content = { GreyLabel(text = Str(R.string.confirm_delete_all_rule), fontSize = 18.sp) },
-        positive = {
+        buttons = {
             StrokeButton(label = Str(R.string.delete), color = DarkOrange) {
                 confirmDeleteAll.value = false
 

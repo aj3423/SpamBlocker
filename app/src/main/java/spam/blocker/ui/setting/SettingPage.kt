@@ -44,6 +44,7 @@ import spam.blocker.ui.setting.quick.RepeatedCall
 import spam.blocker.ui.setting.quick.Stir
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
+import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
@@ -75,9 +76,9 @@ fun SettingPage() {
         fabRow = { positionModifier ->
             Fab(
                 visible = !bottomReached,
-                iconId = R.drawable.ic_testing,
+                iconId = R.drawable.ic_tube,
                 iconColor = White,
-                bgColor = Teal200,
+                bgColor = SkyBlue,
                 modifier = positionModifier
             ) {
                 testingTrigger.value = true

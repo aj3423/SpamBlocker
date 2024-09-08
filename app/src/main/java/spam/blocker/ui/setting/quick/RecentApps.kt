@@ -65,6 +65,7 @@ private fun PopupChooseApps(
     // popup for choosing apps
     PopupDialog(
         trigger = popupTrigger,
+        scrollEnabled = false,
         content = {
             var searchFilter by remember { mutableStateOf("") }
 

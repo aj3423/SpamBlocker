@@ -36,8 +36,8 @@ import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.widgets.Badge
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
@@ -221,13 +221,13 @@ class MainActivity : ComponentActivity() {
             mutableStateOf(!alreadyShown && runningInWorkProf)
         }
         if (trigger.value) {
-            ConfirmDialog(
+            PopupDialog(
                 trigger = trigger,
                 content = {
                     GreyLabel(Str(R.string.warning_running_in_work_profile))
                 },
                 icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
-                positive = {
+                buttons = {
                     StrokeButton(
                         label = getString(R.string.dismiss),
                         color = DarkOrange,

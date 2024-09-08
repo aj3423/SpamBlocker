@@ -24,9 +24,9 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonQuestionMark
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
@@ -70,7 +70,7 @@ fun PopupTesting(
 
     val vm = G.testingVM
 
-    ConfirmDialog(
+    PopupDialog(
         trigger = trigger,
         popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 600),
         title = {
@@ -79,7 +79,7 @@ fun PopupTesting(
                 BalloonQuestionMark(helpTooltipId = R.string.help_test_rules)
             }
         },
-        positive = { // Test Button
+        buttons = { // Test Button
             StrokeButton(label = Str(R.string.test), color = Teal200) {
                 val r = if (vm.selectedType.intValue == 0/* for call */)
                     CallScreeningService().processCall(ctx, vm.phone.value)

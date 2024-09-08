@@ -5,13 +5,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -22,7 +25,6 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
@@ -55,20 +57,19 @@ fun GloballyEnabled() {
 
     val doubleSmsWarningTrigger = remember(smsState) { mutableStateOf(false) }
     if (doubleSmsWarningTrigger.value) {
-        ConfirmDialog(
+        PopupDialog(
             trigger = doubleSmsWarningTrigger,
             icon = { ResIcon(R.drawable.ic_warning, color= Color.Unspecified) },
-            negative = {
+            buttons = {
                 StrokeButton(label = Str(R.string.dismiss), color = Orange) {
                     spf.dismissDoubleSMSWarning()
                     doubleSmsWarningTrigger.value = false
                 }
-            },
-            positive = {
+                Spacer(modifier = M.width(10.dp))
                 StrokeButton(label = Str(R.string.open_settings), color = Teal200) {
                     Util.openSettingForDefaultSmsApp(ctx)
                 }
-            }
+            },
         ) {
             GreyLabel(ctx.resources.getString(R.string.warning_double_sms))
         }

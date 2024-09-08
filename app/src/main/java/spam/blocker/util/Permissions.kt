@@ -23,17 +23,22 @@ import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.widgets.ConfirmDialog
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Util.Companion.doOnce
 
@@ -309,21 +314,21 @@ class PermissionChain(
     fun Compose() {
         popupTrigger = remember { mutableStateOf(false) }
         if (popupTrigger.value) {
-            ConfirmDialog(
+            PopupDialog(
                 trigger = popupTrigger,
                 content = {
                     Text(curr.prompt!!, color = LocalPalette.current.textGrey)
                 },
-                positive = {
-                    StrokeButton("ok", Teal200) {
-                        popupTrigger.value = false
-                        handle()
-                    }
-                },
-                negative = {
+                buttons = {
                     GreyButton("cancel") {
                         popupTrigger.value = false
                         onResult(false)
+                    }
+                    Spacer(modifier = M.width(10.dp))
+
+                    StrokeButton("ok", Teal200) {
+                        popupTrigger.value = false
+                        handle()
                     }
                 }
             )
