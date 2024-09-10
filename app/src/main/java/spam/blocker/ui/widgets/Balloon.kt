@@ -16,6 +16,7 @@ import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import spam.blocker.R
@@ -31,19 +32,23 @@ const val BalloonBorderWidthLight = 0.6
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BalloonQuestionMark(helpTooltipId: Int) {
+fun BalloonQuestionMark(helpTooltipId: Int, offset: IntOffset? = null) {
     val tooltipState = rememberTooltipState(isPersistent = true)
     val scope = rememberCoroutineScope()
 
     TooltipBox(
-        positionProvider = TooltipDefaults.rememberRichTooltipPositionProvider(),
+        positionProvider = if (offset == null) {
+            TooltipDefaults.rememberRichTooltipPositionProvider()
+        } else {
+            rememberPositionProvider(userOffset = offset)
+        },
         tooltip = {
             RichTooltip(
                 shape = RoundedCornerShape(BalloonCornerRadius.dp),
                 modifier = Modifier
                     .border(
                         if (isSystemInDarkTheme()) BalloonBorderWidthDark.dp else BalloonBorderWidthLight.dp,
-                            LocalPalette.current.balloonBorder,
+                        LocalPalette.current.balloonBorder,
                         shape = RoundedCornerShape(BalloonCornerRadius.dp)
                     )
             ) {
@@ -51,8 +56,13 @@ fun BalloonQuestionMark(helpTooltipId: Int) {
                 HtmlText(
                     Str(helpTooltipId),
                     modifier = M
-                    .verticalScroll(state)
-                    .simpleVerticalScrollbar(state, offsetX = 30, persistent = true, scrollBarColor = DarkOrange)
+                        .verticalScroll(state)
+                        .simpleVerticalScrollbar(
+                            state,
+                            offsetX = 30,
+                            persistent = true,
+                            scrollBarColor = DarkOrange
+                        )
                 )
             }
         },

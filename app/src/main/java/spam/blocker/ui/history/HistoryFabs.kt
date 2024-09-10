@@ -2,13 +2,20 @@ package spam.blocker.ui.history
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.round
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.BalloonQuestionMark
@@ -39,6 +46,9 @@ fun HistoryFabs(
 ) {
     val ctx = LocalContext.current
     val spf = HistoryOptions(ctx)
+
+    // a fix for Tooltip+DropdownMenu
+    val dropdownOffset = remember { mutableStateOf(Offset.Zero) }
 
     RowVCenterSpaced(space = 8, modifier = modifier) {
         // Context Menu
@@ -81,7 +91,10 @@ fun HistoryFabs(
                                     spf.setLogSmsContentEnabled(!spf.isLogSmsContentEnabled())
                                 }
                             )
-                            BalloonQuestionMark(helpTooltipId = R.string.help_log_sms_content)
+                            BalloonQuestionMark(
+                                helpTooltipId = R.string.help_log_sms_content,
+                                dropdownOffset.value.round()
+                            )
                         }
                     }
                 )
@@ -91,7 +104,12 @@ fun HistoryFabs(
         }
 
         // Show Passed/Blocked
-        DropdownWrapper(items = menuItems) { expanded ->
+        DropdownWrapper(
+            items = menuItems,
+            modifier = M.onGloballyPositioned {
+                dropdownOffset.value = it.positionOnScreen()
+            }
+        ) { expanded ->
             Fab(
                 visible = visible,
                 iconId = R.drawable.ic_display_filter,

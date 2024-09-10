@@ -65,6 +65,11 @@ class CallScreeningService : CallScreeningService() {
         if (details.callDirection != TelecomCall.Details.DIRECTION_INCOMING)
             return
 
+        if (!Global(this).isGloballyEnabled() || !Global(this).isCallEnabled()) {
+            pass(details)
+            return
+        }
+
         var rawNumber = ""
         if (details.handle != null) {
             rawNumber = details.handle.schemeSpecificPart
@@ -78,11 +83,6 @@ class CallScreeningService : CallScreeningService() {
             if (uri != null) {
                 rawNumber = uri.schemeSpecificPart
             }
-        }
-
-        if (!Global(this).isGloballyEnabled() || !Global(this).isCallEnabled()) {
-            pass(details)
-            return
         }
 
         val r = processCall(this, rawNumber, details)

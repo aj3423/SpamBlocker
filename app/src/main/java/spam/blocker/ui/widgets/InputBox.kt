@@ -22,9 +22,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -33,6 +36,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.round
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -361,7 +365,11 @@ fun RegexInputBox(
             lastText = newState.text
 
             errorStr =
-                Util.validateRegex(ctx, lastText, regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
+                Util.validateRegex(
+                    ctx,
+                    lastText,
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)
+                )
 
             if (stringChangedSinceLastInvocation) {
                 onRegexStrChange(lastText, errorStr != null)
@@ -376,9 +384,17 @@ fun RegexInputBox(
         trailingIcon = {
             val C = LocalPalette.current
 
-            val hasI = remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) }
-            val hasD = remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) }
-            val hasR = remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) }
+            val hasI =
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) }
+            val hasD =
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) }
+            val hasR =
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) }
+
+            // a fix for Tooltip+DropdownMenu
+            val dropdownOffset = remember {
+                mutableStateOf(Offset.Zero)
+            }
 
             val dropdownItems = remember {
                 val list = mutableListOf(
@@ -387,7 +403,10 @@ fun RegexInputBox(
                             modifier = M.padding(horizontal = 10.dp)
                         ) {
                             GreyLabel(Str(R.string.regex_flags))
-                            BalloonQuestionMark(helpTooltipId = R.string.help_regex_flags)
+                            BalloonQuestionMark(
+                                helpTooltipId = R.string.help_regex_flags,
+                                dropdownOffset.value.round()
+                            )
                         }
                     },
                     DividerItem(thickness = 1),
@@ -422,7 +441,13 @@ fun RegexInputBox(
                 ret
             }
 
-            DropdownWrapper(items = dropdownItems) { expanded ->
+            DropdownWrapper(
+                items = dropdownItems,
+                modifier = M.onGloballyPositioned {
+                    dropdownOffset.value = it.positionOnScreen()
+                }
+            ) { expanded ->
+
                 val imdlc = regexFlags.intValue.toFlagStr()
                 val modifier = M.clickable {
                     expanded.value = true
