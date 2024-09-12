@@ -54,15 +54,15 @@ It works without replacing your default Call/SMS app.
 
 # Permissions 
 
-| Permission (all optional)   | Why                                                             |
-| ----                   | ----         s                                                  |
-| ANSWER_PHONE_CALLS     | Reject, Answer and Hang-up calls                                |
-| POST_NOTIFICATIONS     | Show notifications                                              |
-| READ_CONTACTS          | For matching contacts                                           |
-| RECEIVE_SMS            | For receiving new messages                                      |
-| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)   |
-| PACKAGE_USAGE_STATS    | For feature: Recent Apps <br>For checking whether an app has been used recently  |
-| READ_PHONE_STATE       | For block mode: Answer + Hang-up (monitor ringing state)  |
+| Permission (all optional) | Why                                                                             |
+|---------------------------|---------------------------------------------------------------------------------|
+| ANSWER_PHONE_CALLS        | Reject, Answer and Hang-up calls                                                |
+| POST_NOTIFICATIONS        | Show notifications                                                              |
+| READ_CONTACTS             | For matching contacts                                                           |
+| RECEIVE_SMS               | For receiving new messages                                                      |
+| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Cwall/Dialed (check if it's repeated)                     |
+| PACKAGE_USAGE_STATS       | For feature: Recent Apps <br>For checking whether an app has been used recently |
+| READ_PHONE_STATE          | For block mode: Answer + Hang-up (monitor ringing state)                        |
 
 # Privacy
  No data collection
