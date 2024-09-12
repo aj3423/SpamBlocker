@@ -25,7 +25,7 @@
     <string name="spoof">欺骗通话</string>
     <string name="help_stir">
         <![CDATA[
-            STIR 认证需要<b>Android 11+</b>和<b>运营商支持</b>。 <br>
+            STIR/SHAKEN 认证需要<b>Android 11+</b>和<b>运营商支持</b>。 <br>
             <br>
             可能有三种可能的认证结果： <br>
             <font color="#03DAC5"><b>有效</b></font> <br>

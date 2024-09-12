@@ -25,7 +25,7 @@
     <string name="spoof">Appel usurpé</string>
     <string name="help_stir">
         <![CDATA[
-            L\'attestation STIR nécessite <b>Android 11+</b> et la <b>prise en charge de l\'opérateur</b>. <br>
+            L\'attestation STIR/SHAKEN nécessite <b>Android 11+</b> et la <b>prise en charge de l\'opérateur</b>. <br>
             <br>
             Trois résultats d\'attestation sont possibles : <br>
             <font color="#03DAC5"><b>Valide</b></font> <br>

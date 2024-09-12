@@ -1,0 +1,16 @@
+The UI has been completely re-written with jetpack compose.
+
+Fix:
+ - Crash caused by some mysterious contact image.
+ - Crash caused by rotating screen.
+ - Wrong contact image.
+ - Some settings not backed up:
+   - show passed
+   - show blocked
+
+New:
+ - Show SMS detail:
+   A new switch "Log SMS Content" in the SMS tab. When enabled, SMS message will be logged in local database and displayed in the history record. Disabled by default.
+
+Changes: 
+ - 3 testing buttons are replaced by a floating button.

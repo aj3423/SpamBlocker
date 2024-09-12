@@ -25,7 +25,7 @@
     <string name="spoof">Gefälschter Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR-Bescheinigung erfordert <b>Android 11+</b> und <b>Unterstützung durch Betreiber</b>. <br>
+            STIR/SHAKEN-Bescheinigung erfordert <b>Android 11+</b> und <b>Unterstützung durch Betreiber</b>. <br>
             <br>
             Es gibt drei mögliche Bescheinigungsergebnisse: <br>
             <font color="#03DAC5"><b>Gültig</b></font> <br>

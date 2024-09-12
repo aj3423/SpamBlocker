@@ -25,7 +25,7 @@
     <string name="spoof">Spoof Call</string>
     <string name="help_stir">
         <![CDATA[
-            STIR attestation requires <b>Android 11+</b> and <b>carrier support</b>. <br>
+            STIR/SHAKEN attestation requires <b>Android 11+</b> and <b>carrier support</b>. <br>
             <br>
             There are three possible attestation results: <br>
             <font color="#03DAC5"><b>Valid</b></font> <br>

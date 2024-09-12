@@ -25,7 +25,7 @@
     <string name="spoof">Підроблений виклик</string>
     <string name="help_stir">
         <![CDATA[
-            Підтвердження STIR вимагає <b>Android 11+</b> і <b>підтримки оператора</b>. <br>
+            Підтвердження STIR/SHAKEN вимагає <b>Android 11+</b> і <b>підтримки оператора</b>. <br>
             <br>
             Є три можливі результати підтвердження: <br>
             <font color="#03DAC5"><b>Дійсний</b></font> <br>

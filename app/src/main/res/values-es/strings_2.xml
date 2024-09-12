@@ -25,7 +25,7 @@
     <string name="spoof">Llamada falsa</string>
     <string name="help_stir">
         <![CDATA[
-            La verificación STIR requiere <b>Android 11+</b> y <b>soporte del proveedor</b>. <br>
+            La verificación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del proveedor</b>. <br>
             <br>
             Hay tres posibles resultados de verificación: <br>
             <font color="#03DAC5"><b>Válido</b></font> <br>
