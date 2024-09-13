@@ -3,6 +3,7 @@ package spam.blocker.util.SharedPref
 import android.content.Context
 import android.content.SharedPreferences
 import spam.blocker.def.Def
+import spam.blocker.def.Def.HISTORY_TTL_NEVER_EXPIRE
 
 open class SharedPref(private val ctx: Context) {
     private val prefs: SharedPreferences = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -109,6 +110,13 @@ class HistoryOptions(ctx: Context) : SharedPref(ctx) {
     fun getShowBlocked(): Boolean { return readBoolean(Def.SETTING_SHOW_BLOCKED, true) }
     fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
 
+    // TimeToLive for history records:
+    // -1: history records never expire, will not be auto deleted
+    // 0: history logging is completely disabled
+    // > 0: records will be deleted after x days
+    fun getHistoryTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL, HISTORY_TTL_NEVER_EXPIRE) } // -1: never expire
+    fun setHistoryTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
+
     fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
     fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }
 }
@@ -121,17 +129,11 @@ class Stir(ctx: Context) : SharedPref(ctx) {
     fun setEnabled(enabled: Boolean) {
         writeBoolean(Def.SETTING_STIR_ENABLED, enabled)
     }
-    fun toggleEnabled() {
-        setEnabled(!isEnabled())
-    }
     fun isExclusive() : Boolean {
         return readBoolean(Def.SETTING_STIR_EXCLUSIVE, false)
     }
     fun setExclusive(exclusive: Boolean) {
         writeBoolean(Def.SETTING_STIR_EXCLUSIVE, exclusive)
-    }
-    fun toggleExclusive() {
-        setExclusive(!isExclusive())
     }
     fun isIncludeUnverified() : Boolean {
         return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false)

@@ -40,6 +40,7 @@ fun SwitchBox(
 
     Box(
         modifier = Modifier
+            .clickable { onCheckedChange(!checked) }
             .size(width = Width.dp, height = Height.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -60,7 +61,6 @@ fun SwitchBox(
                     .offset(x = thumbOffset.dp)
                     .clip(RoundedCornerShape(ThumbRadius.dp))
                     .background(thumbColor)
-                    .clickable { onCheckedChange(!checked) }
             )
         }
     }

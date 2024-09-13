@@ -200,6 +200,7 @@ private fun InputBox(
 @Composable
 fun NumberInputBox(
     intValue: Int?,
+    modifier: Modifier = Modifier,
     onValueChange: (Int?, Boolean) -> Unit,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -219,7 +220,10 @@ fun NumberInputBox(
 
     InputBox(
         value = state,
+        modifier = modifier,
         onValueChange = { newState ->
+            state = newState
+
             val newText = newState.text
             val int = newText.toIntOrNull()
 
@@ -227,15 +231,12 @@ fun NumberInputBox(
 
             if (int == null) {
                 if (newText.isEmpty()) { // empty string
-                    state = newState
                     lastText = newState.text
                 }
                 // It's up to the caller to check if it's null and decide whether to
                 // update the state.
                 onValueChange(null, hasError)
             } else {
-                state = newState
-
                 val stringChangedSinceLastInvocation = lastText != newState.text
                 lastText = newState.text
 

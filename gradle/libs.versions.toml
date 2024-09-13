@@ -4,15 +4,17 @@ espressoCore = "3.6.1"
 junitVersion = "1.2.1"
 kotlin = "2.0.0"
 activityCompose = "1.9.2"
-composeBom = "2024.09.00"
+composeBom = "2024.09.01"
 serialization = "1.7.1"
 mockk = "1.13.10"
 lifecycleRuntimeComposeAndroid = "2.8.5"
 lazycolumnscrollbar = "2.2.0"
+workRuntimeKtx = "2.9.1"
 
 [libraries]
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }

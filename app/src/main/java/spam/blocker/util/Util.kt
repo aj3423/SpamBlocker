@@ -22,6 +22,8 @@ import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.SharedPref
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -35,6 +37,14 @@ typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
 class Util {
     companion object {
+        fun nextMidnightTimestamp(): Long {
+            val now = LocalDateTime.now()
+
+            val midnight = now.plusDays(1).withHour(0).withMinute(0).withSecond(0).withNano(0)
+
+            return midnight.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        }
+
         fun fullDateString(timestamp: Long): String {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd\nHH:mm", Locale.getDefault())
             val date = Date(timestamp)

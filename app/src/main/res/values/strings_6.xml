@@ -20,20 +20,35 @@
         <item>Answer+Hang Up</item>
     </string-array>
 
-    <string-array name="history_display_filter">
-        <item>Show Passed</item>
-        <item>Show Blocked</item>
-    </string-array>
+    <string name="show_passed">Show Passed</string>
+    <string name="show_blocked">Show Blocked</string>
+
     <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
     <string name="log_sms_content">Log SMS Content</string>
+    <string name="expire">Expire</string>
+    <string name="days">Days</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; The history records will be logged in database and will expire after N days,
+              expired records will be deleted automatically.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; The history logging is disabled, nothing will be logged in the database.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; The records will be logged and will never expire.
+        ]]>
+    </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Show the SMS content in this list.<br>
-        &emsp; - <font color="#00BFFF"><b>Tap</b></font> to expand/collapse the full message.<br>
-        &emsp; - <font color="#00BFFF"><b>Swipe right</b></font> to open it in the default SMS app.<br>
-        &emsp; - <font color="#00BFFF"><b>Swipe left</b></font> to delete.<br>
+        When enabled, the SMS content will also be logged in the database and displayed in this list, it will not be logged in database when disabled.<br>
         <br>
-        When enabled, the SMS message will be <font color="#ffa500"><b>logged</b></font> in the local database, it\'s not logged when disabled.
+        - When enabled:<br>
+        &emsp; <b>Tap</b> to expand/collapse the full message.<br>
+        <br>
+        - When disabled:<br>
+        &emsp; <b>Tap</b> to open the conversation in the default app.
         ]]>
     </string>
 

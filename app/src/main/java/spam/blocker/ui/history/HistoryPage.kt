@@ -18,13 +18,6 @@ fun HistoryPage(
     forType: Int,
     records: SnapshotStateList<HistoryRecord>,
 ) {
-    val ctx = LocalContext.current
-    val spf = HistoryOptions(ctx)
-
-    val showPassed = remember { mutableStateOf(spf.getShowPassed()) }
-    val showBlocked = remember { mutableStateOf(spf.getShowBlocked()) }
-    val logSms = remember { mutableStateOf(spf.isLogSmsContentEnabled()) }
-
     // Hide FAB on scrolling to the last item
     val listState = rememberLazyListState()
     val fabVisible by remember {
@@ -41,9 +34,6 @@ fun HistoryPage(
             HistoryFabs(
                 visible = fabVisible,
                 forType = forType,
-                showPassed = showPassed,
-                showBlocked = showBlocked,
-                logSmsContent = logSms,
                 modifier = positionModifier
             )
         }

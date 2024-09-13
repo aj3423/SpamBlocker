@@ -105,7 +105,7 @@ func translate_1_file(lang string, fn string) error {
 			"make sure leave the XML tags unmodified, "+
 			"do not translate text within <no_translate></no_translate> tag. "+
 
-			"For those text to translate that are just 1 or 2 words, find all possible translation alternatives, "+
+			"For those text to translate that are just 1 or 2 or 3 words, find all possible translation alternatives, "+
 			"then pick the shortest one, as short as possible, use single word translation if possible."+
 
 			"For contents that wrapped in tag <short></short>, force use single word translation."+

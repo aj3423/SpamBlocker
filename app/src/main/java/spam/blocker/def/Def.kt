@@ -43,11 +43,14 @@ object Def {
     const val SETTING_SMS_ENABLED = "sms_enable"
     const val SETTING_SHOW_PASSED = "show_passed"
     const val SETTING_SHOW_BLOCKED = "show_blocked"
+    const val SETTING_HISTORY_TTL = "history_ttl"
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
 
     const val ON_NEW_CALL = "on_new_call"
     const val ON_NEW_SMS = "on_new_sms"
 
+    const val HISTORY_TTL_NEVER_EXPIRE = -1
+    const val HISTORY_TTL_DISABLED = 0
 
     const val BLOCK_TYPE_REJECT = 0
     const val BLOCK_TYPE_SILENCE = 1

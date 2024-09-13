@@ -1,7 +1,8 @@
 <resources>
     <string name="crash_title">
-        Lo lamentamos, la aplicación se ha bloqueado.\n\n
-        Copie el contenido siguiente e informe de este problema en Github, elimine toda información confidencial antes de informar.
+        Vaya, la aplicación falló.\n\n
+        Copia el contenido a continuación e informa este problema en Github,
+        quita toda información confidencial antes de informar.
     </string>
     <string-array name="short_weekdays">
         <item>Dom</item>
@@ -15,62 +16,77 @@
 
     <string-array name="block_type_list">
         <item>Rechazar</item>
-        <item>Silenciar</item>
+        <item>Silencio</item>
         <item>Responder+Colgar</item>
     </string-array>
 
-    <string-array name="history_display_filter">
-        <item>Mostrar aprobados</item>
-        <item>Mostrar bloqueados</item>
-    </string-array>
-    <string name="confirm_delete_all_records">¿Confirmar eliminar todos los registros?</string>
+    <string name="show_passed">Mostrar pasadas</string>
+    <string name="show_blocked">Mostrar bloqueadas</string>
+
+    <string name="confirm_delete_all_records">¿Confirmar borrar todos los registros?</string>
     <string name="log_sms_content">Registrar contenido SMS</string>
+    <string name="expire">Vencer</string>
+    <string name="days">Días</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Los registros de historial se guardarán en la base de datos y vencerán después de N días,
+              los registros vencidos se borrarán automáticamente.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; El registro de historial está deshabilitado, no se guardará nada en la base de datos.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; No vencerán los registros que se guarden.
+        ]]>
+    </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Mostrar el contenido del SMS en esta lista.<br>
-        &emsp; - <font color="#00BFFF"><b>Pulsar</b></font> para expandir/contraer el mensaje completo.<br>
-        &emsp; - <font color="#00BFFF"><b>Deslizar a la derecha</b></font> para abrirlo en la aplicación de SMS predeterminada.<br>
-        &emsp; - <font color="#00BFFF"><b>Deslizar a la izquierda</b></font> para eliminarlo.<br>
+        Cuando está habilitado, el contenido del SMS también se guardará en la base de datos y se mostrará en esta lista, no se guardará en la base de datos cuando esté deshabilitado.<br>
         <br>
-        Cuando está habilitado, el mensaje SMS se <font color="#ffa500"><b>registrará</b></font> en la base de datos local, no se registra cuando está deshabilitado.
+        - Cuando está habilitado:<br>
+        &emsp; <b>Toca</b> para expandir/contraer el mensaje completo.<br>
+        <br>
+        - Cuando está deshabilitado:<br>
+        &emsp; <b>Toca</b> para abrir la conversación en la aplicación predeterminada.
         ]]>
     </string>
 
     <string-array name="history_record_context_menu">
         <item>Copiar número</item>
-        <item>Añadir número a nueva regla</item>
+        <item>Añadir número a una nueva regla</item>
     </string-array>
 
     <string-array name="importance_list">
-        <item>Ninguna</item>
-        <item>Sombreado</item>
-        <item>Barra de estado, sombreado</item>
-        <item>Sonido, barra de estado, sombreado</item>
-        <item>Sonido, barra de estado, sombreado, Emergente</item>
+        <item>Ninguno</item>
+        <item>Sombra</item>
+        <item>Barra de estado, Sombra</item>
+        <item>Sonido, Barra de estado, Sombra</item>
+        <item>Sonido, Barra de estado, Sombra, Heads-up</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>Exportar como JSON</item>
+        <item>Exportar como Json</item>
         <item>Exportar como comprimido</item>
     </string-array>
 
     <string name="language">Idioma</string>
     <string name="help_language">
         <![CDATA[
-            Las traducciones las realiza la IA de Google, emita un problema en Github para agregar un nuevo soporte de idioma.
+            Las traducciones se hacen con IA de Google, inicia una emisión en Github para añadir compatibilidad con un nuevo idioma.
         ]]>
     </string>
     <string name="enabled_for_call">Habilitar para llamadas</string>
     <string name="enabled_for_sms">Habilitar para SMS</string>
-    <string name="repeated_call"><short>Llamada repetida</short></string>
+    <string name="repeated_call">Llamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir si la llamada se repite dentro de un período de tiempo, es probable que sea importante y no una llamada de spam. <br>
+        Permitir si la llamada se repite en un periodo de tiempo, es probable que sea importante más que una llamada spam.<br>
         <br>
-        Recibir mensajes de texto del mismo número también se cuenta, esto depende de si se otorga el permiso READ_SMS, que es opcional.<br>
+        Si se recibe un mensaje de texto del mismo número también cuenta, esto depende de que se conceda el permiso READ_SMS, que es opcional.<br>
         <br>
-        La configuración predeterminada <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que se permitirá la segunda llamada dentro de los 5 minutos. <br>
+        El ajuste predeterminado <font color="#03DAC5"><b>1 / 5 min</b></font> significa que se permitirá la segunda llamada en 5 minutos. <br>
         <br>
-        Solo se aplica a llamadas, <b>no</b> a mensajes de texto. <br>
+        Se aplica solo a llamadas, <b>no</b> a mensajes de texto. <br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
@@ -78,33 +94,33 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        El interruptor global, esta aplicación solo funciona cuando está activado, desactívelo cuando esté esperando una llamada/mensaje en particular. <br>
+        El interruptor global, esta aplicación solo funciona cuando está activado, desactívalo cuando estés esperando alguna llamada/mensaje en concreto. <br>
         <br>
-        También se puede alternar desde el <font color="#6ed0ff"><b>Desplegable de ajustes rápidos</b></font>.<br>
+        También se puede alternar desde los <font color="#6ed0ff"><b>Ajustes rápidos desplegables</b></font>.<br>
         <br>
-        Para SMS, esta aplicación se hará cargo de las notificaciones de SMS, por favor
-        <font color="#fa7f71"><b>desactive el permiso de notificación de la aplicación de SMS predeterminada</b></font> en la configuración del sistema,
+        Para SMS, esta aplicación se hará cargo de las notificaciones SMS, por favor
+        <font color="#fa7f71"><b>desactiva el permiso de notificación de la aplicación SMS predeterminada</b></font> en los ajustes del sistema,
         de lo contrario habrá notificaciones dobles.
-        Solo filtra las notificaciones de SMS, los mensajes SMS spam seguirán estando presentes en la aplicación de SMS predeterminada.
+        Solo filtra las notificaciones SMS, los mensajes SMS spam seguirán presentes en la aplicación SMS predeterminada.
         ]]>
     </string>
 
     <string name="about">Acerca de</string>
     <string name="version">Versión</string>
-    <string name="build_time">Fecha de compilación (UTC)</string>
+    <string name="build_time">Hora de compilación (UTC)</string>
     <string name="source_code">Código fuente</string>
     <string name="dismiss">Descartar</string>
     <string name="warning_running_in_work_profile">
-        Es posible que esta aplicación no funcione correctamente dentro del perfil de trabajo, instálela en el perfil principal.
+        Esta aplicación puede no funcionar correctamente en el perfil empresarial, instálala en el perfil principal.
     </string>
     <string-array name="import_csv_type">
         <item>Importar .csv como una sola regla</item>
-        <item>Importar .csv como múltiples reglas</item>
+        <item>Importar .csv como varias reglas</item>
     </string-array>
     <string name="warning_double_sms">
-        Esta aplicación se hará cargo de todas las notificaciones de SMS,
-        pero el permiso de notificación de la aplicación de SMS predeterminada también está habilitado,
-        desactívelo en la configuración del sistema para evitar notificaciones de SMS duplicadas.
+        Esta aplicación se hará cargo de todas las notificaciones SMS,
+        pero el permiso de notificación de la aplicación SMS predeterminada también está habilitado,
+        por favor desactívalo en los ajustes del sistema para evitar notificaciones SMS dobles.
     </string>
     <string name="open_settings">Abrir ajustes</string>
     <string name="ignore">Ignorar</string>

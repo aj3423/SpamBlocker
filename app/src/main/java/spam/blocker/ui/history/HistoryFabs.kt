@@ -1,38 +1,37 @@
 package spam.blocker.ui.history
 
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.round
+import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.service.CleanerSchedule
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.BalloonQuestionMark
-import spam.blocker.ui.widgets.CheckBox
-import spam.blocker.ui.widgets.CheckItem
-import spam.blocker.ui.widgets.CustomItem
-import spam.blocker.ui.widgets.DividerItem
-import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.IMenuItem
+import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.RowCenter
+import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.SharedPref.Global
+import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.SharedPref.HistoryOptions
 
 @Composable
@@ -40,83 +39,91 @@ fun HistoryFabs(
     modifier: Modifier,
     visible: Boolean,
     forType: Int,
-    showPassed: MutableState<Boolean>,
-    showBlocked: MutableState<Boolean>,
-    logSmsContent: MutableState<Boolean>
 ) {
     val ctx = LocalContext.current
     val spf = HistoryOptions(ctx)
 
-    // a fix for Tooltip+DropdownMenu
-    val dropdownOffset = remember { mutableStateOf(Offset.Zero) }
+    var showPassed by rememberSaveable { mutableStateOf(spf.getShowPassed()) }
+    var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }
+    var historyTTL by rememberSaveable { mutableIntStateOf(spf.getHistoryTTL()) }
+    var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
 
-    RowVCenterSpaced(space = 8, modifier = modifier) {
-        // Context Menu
-        val menuItems: MutableList<IMenuItem> = remember {
+    val settingPopupTrigger = rememberSaveable { mutableStateOf(false) }
 
-            // add "Show Passed" and "Show Blocked"
-            val ret = mutableListOf<IMenuItem>()
-            ret += ctx.resources.getStringArray(R.array.history_display_filter)
-                .mapIndexed { idx, label ->
-                    CheckItem(
-                        state = if (idx == 0) showPassed else showBlocked,
-                        label = label
-                    ) { isOn ->
-                        if (idx == 0) {
-                            showPassed.value = isOn
-                            spf.setShowPassed(isOn)
-                        } else {
-                            showBlocked.value = isOn
-                            spf.setShowBlocked(isOn)
+    fun reloadVM() {
+        if (forType == Def.ForNumber)
+            G.callVM.reload(ctx)
+        else
+            G.smsVM.reload(ctx)
+    }
+
+    PopupDialog(
+        trigger = settingPopupTrigger,
+        popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 500),
+        content = {
+            // TTL
+            LabeledRow(
+                labelId = R.string.expire,
+                helpTooltipId = R.string.help_history_ttl
+            ) {
+                NumberInputBox(
+                    intValue = historyTTL,
+                    onValueChange = { newValue, hasError ->
+                        if (!hasError) {
+                            historyTTL = newValue!!
+                            spf.setHistoryTTL(newValue)
+
+                            CleanerSchedule.cancelPrevious(ctx)
+                            if (newValue > 0) {
+                                CleanerSchedule.scheduleNext(ctx)
+                            } else if (newValue == 0) {
+                                // it will not record data, no need to cleanup
+                            } else {
+                                // it will record data, but it will never expire, no need to cleanup
+                            }
                         }
-                        if (forType == Def.ForNumber)
-                            G.callVM.reload(ctx)
-                        else
-                            G.smsVM.reload(ctx)
-                    }
-
-                }
-
-            // add "SMS Log"
-            if (forType == Def.ForSms) {
-                ret.add(DividerItem())
-                ret.add(
-                    CustomItem {
-                        RowCenter {
-                            CheckBox(
-                                checked = logSmsContent.value,
-                                label = { GreyLabel(Str(R.string.log_sms_content)) },
-                                onCheckChange = {
-                                    logSmsContent.value = !logSmsContent.value
-                                    spf.setLogSmsContentEnabled(!spf.isLogSmsContentEnabled())
-                                }
-                            )
-                            BalloonQuestionMark(
-                                helpTooltipId = R.string.help_log_sms_content,
-                                dropdownOffset.value.round()
-                            )
-                        }
-                    }
+                    },
+                    label = { Text(Str(R.string.days)) },
+                    leadingIconId = R.drawable.ic_recycle_bin,
                 )
             }
 
-            ret
-        }
+            // Log SMS Content
+            if (forType == Def.ForSms) {
+                LabeledRow(
+                    labelId = R.string.log_sms_content,
+                    helpTooltipId = R.string.help_log_sms_content
+                ) {
+                    SwitchBox(checked = logSmsContent, onCheckedChange = { isTurningOn ->
+                        logSmsContent = isTurningOn
+                        spf.setLogSmsContentEnabled(isTurningOn)
+                    })
+                }
+            }
+            HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
+            LabeledRow(labelId = R.string.show_passed) {
+                SwitchBox(checked = showPassed, onCheckedChange = { isOn ->
+                    showPassed = isOn
+                    spf.setShowPassed(isOn)
+                    reloadVM()
+                })
+            }
+            LabeledRow(labelId = R.string.show_blocked) {
+                SwitchBox(checked = showBlocked, onCheckedChange = { isOn ->
+                    showBlocked = isOn
+                    spf.setShowBlocked(isOn)
+                    reloadVM()
+                })
+            }
+        })
 
-        // Show Passed/Blocked
-        DropdownWrapper(
-            items = menuItems,
-            modifier = M.onGloballyPositioned {
-                dropdownOffset.value = it.positionOnScreen()
-            }
-        ) { expanded ->
-            Fab(
-                visible = visible,
-                iconId = R.drawable.ic_display_filter,
-                bgColor = SkyBlue
-            ) {
-                expanded.value = true
-            }
+    RowVCenterSpaced(space = 8, modifier = modifier) {
+        Fab(
+            visible = visible,
+            iconId = R.drawable.ic_display_filter,
+            bgColor = SkyBlue
+        ) {
+            settingPopupTrigger.value = true
         }
 
         // Delete all

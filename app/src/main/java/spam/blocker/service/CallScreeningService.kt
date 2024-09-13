@@ -10,10 +10,12 @@ import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
+import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.HistoryOptions
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
 import spam.blocker.util.logd
@@ -112,15 +114,27 @@ class CallScreeningService : CallScreeningService() {
         val r = Checker.checkCall(ctx, rawNumber, callDetails)
 
         // 1. log to db
-        val call = HistoryRecord(
-            peer = rawNumber,
-            time = System.currentTimeMillis(),
-            result = r.result,
-            reason = r.reason(),
-        )
-        val id = CallTable().addNewRecord(ctx, call)
+        val isLogEnabled = HistoryOptions(ctx).getHistoryTTL() != HISTORY_TTL_DISABLED
+        val id = if (isLogEnabled) {
+            CallTable().addNewRecord(ctx, HistoryRecord(
+                peer = rawNumber,
+                time = System.currentTimeMillis(),
+                result = r.result,
+                reason = r.reason(),
+            ))
+        } else 0
 
-        // 2. show notification
+        // 2. broadcast the call to add a new item in history page
+        if (isLogEnabled) {
+            val intent = Intent(Def.ON_NEW_CALL)
+            intent.putExtra("type", "call")
+            intent.putExtra("blocked", r.shouldBlock)
+            intent.putExtra("record_id", id)
+
+            ctx.sendBroadcast(intent)
+        }
+
+        // 3. show notification
         if (r.shouldBlock) {
 
             logd(String.format("Reject call %s", rawNumber))
@@ -143,16 +157,6 @@ class CallScreeningService : CallScreeningService() {
                 Checker.resultStr(ctx, r.result, r.reason()),
                 importance, Salmon, intent,
                 toCopy = toCopy)
-        }
-
-        // broadcast new call to update Util(add new MenuItem to call log)
-        run {
-            val intent = Intent(Def.ON_NEW_CALL)
-            intent.putExtra("type", "call")
-            intent.putExtra("blocked", r.shouldBlock)
-            intent.putExtra("record_id", id)
-
-            ctx.sendBroadcast(intent)
         }
 
         return r

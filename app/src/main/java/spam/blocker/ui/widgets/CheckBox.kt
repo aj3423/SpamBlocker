@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.ripple.rememberRipple
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda1
 
@@ -25,7 +27,6 @@ fun CheckBox(
     RowVCenterSpaced(
         space = 4,
         modifier = modifier
-            .clip(MaterialTheme.shapes.small)
             .clickable(
                 indication = ripple(color = MaterialTheme.colorScheme.primary),
                 interactionSource = remember { MutableInteractionSource() },
@@ -33,6 +34,7 @@ fun CheckBox(
                     onCheckChange(!checked)
                 }
             )
+            .clip(MaterialTheme.shapes.small)
     ) {
         Checkbox(
             checked = checked,

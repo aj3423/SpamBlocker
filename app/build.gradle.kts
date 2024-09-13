@@ -86,6 +86,7 @@ dependencies {
 
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization
+    implementation(libs.androidx.work.runtime.ktx) // for clearing db everyday
 
     // jetpack compose
     implementation(platform(libs.compose.bom)) // auto compose version control

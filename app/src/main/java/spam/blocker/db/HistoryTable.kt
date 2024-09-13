@@ -7,6 +7,7 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
 import spam.blocker.util.Time
+import spam.blocker.util.logi
 
 data class HistoryRecord(
     val id: Long = 0,
@@ -92,6 +93,15 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_SMS_CONTENT, r.smsContent)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         db.insert(tableName(), null, cv)
+    }
+
+    fun clearRecordsBeforeTimestamp(ctx: Context, timestamp: Long) : Boolean {
+        val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_TIME} < $timestamp"
+        val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
+
+        return cursor.use {
+            it.moveToFirst()
+        }
     }
 
     fun delById(ctx: Context, id: Long): Boolean {

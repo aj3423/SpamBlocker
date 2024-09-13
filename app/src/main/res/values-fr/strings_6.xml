@@ -1,7 +1,8 @@
 <resources>
     <string name="crash_title">
-        Désolé, l\'application s\'est arrêtée.\n\n
-        Veuillez copier le contenu ci-dessous et signaler ce problème sur GitHub, supprimer toute information sensible avant de signaler.
+        Désolé, l\'application a planté.\n\n
+        Veuillez copier le contenu ci-dessous et signaler ce problème sur github,
+        supprimez toute information sensible avant de signaler.
     </string>
     <string-array name="short_weekdays">
         <item>Dim</item>
@@ -15,24 +16,38 @@
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Silence</item>
-        <item>Décrocher + raccrocher</item>
+        <item>Silencieux</item>
+        <item>Répondre+Raccrocher</item>
     </string-array>
 
-    <string-array name="history_display_filter">
-        <item>Afficher les autorisés</item>
-        <item>Afficher les bloqués</item>
-    </string-array>
-    <string name="confirm_delete_all_records">Confirmez-vous la suppression de tous les enregistrements ?</string>
-    <string name="log_sms_content">Enregistrement du contenu SMS</string>
+    <string name="show_passed">Montrer les autorisés</string>
+    <string name="show_blocked">Montrer les bloqués</string>
+
+    <string name="confirm_delete_all_records">Confirmer la suppression de tous les enregistrements ?</string>
+    <string name="log_sms_content">Journaliser le contenu des SMS</string>
+    <string name="expire">Expirer</string>
+    <string name="days">Jours</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Les enregistrements d\'historique seront consignés dans la base de données et expireront après N jours, les enregistrements expirés seront supprimés automatiquement.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; La journalisation de l\'historique est désactivée, rien ne sera consigné dans la base de données.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Les enregistrements seront consignés et n\'expireront jamais.
+        ]]>
+    </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Affiche le contenu SMS dans cette liste.<br>
-        &emsp; - <font color="#00BFFF"><b>Touchez</b></font> pour développer/réduire le message entier.<br>
-        &emsp; - <font color="#00BFFF"><b>Balayez vers la droite</b></font> pour l\'ouvrir dans l\'application SMS par défaut.<br>
-        &emsp; - <font color="#00BFFF"><b>Balayez vers la gauche</b></font> pour supprimer.<br>
+        Lorsqu\'il est activé, le contenu des SMS sera également consigné dans la base de données et affiché dans cette liste ; il ne sera pas consigné dans la base de données lorsqu\'il sera désactivé.<br>
         <br>
-        Lorsque cette option est activée, le message SMS sera <font color="#ffa500"><b>enregistré</b></font> dans la base de données locale, il n\'est pas enregistré lorsqu\'il est désactivé.
+        - Lorsqu\'il est activé :<br>
+        &emsp; <b>Appuyez</b> pour développer/réduire le message complet.<br>
+        <br>
+        - Lorsqu\'il est désactivé :<br>
+        &emsp; <b>Appuyez</b> pour ouvrir la conversation dans l\'application par défaut.
         ]]>
     </string>
 
@@ -42,66 +57,69 @@
     </string-array>
 
     <string-array name="importance_list">
-        <item>Aucun</item>
-        <item>Nuance</item>
-        <item>Barre d\'état, nuance</item>
-        <item>Son, barre d\'état, nuance</item>
-        <item>Son, barre d\'état, nuance, tête haute</item>
+        <item>Aucune</item>
+        <item>Ombrage</item>
+        <item>Barre d\'état, ombrage</item>
+        <item>Son, barre d\'état, ombrage</item>
+        <item>Son, barre d\'état, ombrage, notification</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>Exporter en JSON</item>
-        <item>Exporter en compressé</item>
+        <item>Exporter en JSON</item>
+        <item>Exporter compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par l\'IA de Google. Signalez un problème sur GitHub pour ajouter la prise en charge d\'une nouvelle langue.
+            Les traductions sont effectuées par l\'IA de Google. Signalez un problème sur github pour ajouter la prise en charge d\'une nouvelle langue.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
-    <string name="enabled_for_sms">Activer pour SMS</string>
-    <string name="repeated_call">Appels répétés</string>
+    <string name="enabled_for_sms">Activer pour les SMS</string>
+    <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété pendant une période donnée, il est probable qu\'il soit important plutôt qu\'un appel de spam. <br>
+        Autoriser si l\'appel est répété dans un délai donné ; il est probable qu\'il soit important plutôt qu\'un appel de spam.<br>
         <br>
-        La réception de messages texte provenant du même numéro est également prise en compte, cela dépend de l\'octroi ou non de l\'autorisation READ_SMS, qui est facultative.<br>
+        La réception d\'un SMS du même numéro est également comptabilisée, cela dépend si l\'autorisation READ_SMS est accordée, ce qui est facultatif.<br>
         <br>
-        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 min</b></font> signifie que le second appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé.<br>
         <br>
-        S\'applique uniquement aux appels, <b>pas</b> aux messages texte. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        L\'interrupteur global, cette application fonctionne uniquement lorsque celui-ci est activé, désactivez-le lorsque vous attendez un appel/message particulier. <br>
+        Le commutateur global ; cette application ne fonctionne que lorsque celui-ci est activé ; désactivez-le lorsque vous attendez un appel/message particulier.<br>
         <br>
-        Il peut également être activé ou désactivé à partir des <font color="#6ed0ff"><b>Paramètres rapides dans la barre déroulante</b></font>.<br>
+        Il peut également être activé/désactivé à partir des <font color="#6ed0ff"><b>Paramètres rapides déroulants</b></font>.<br>
         <br>
-        Pour les SMS, cette application prendra en charge les notifications SMS, veuillez 
-        <font color="#fa7f71">désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système, sinon il y aura deux notifications.
-        Elle filtre uniquement les notifications SMS, les SMS de spam seront toujours présents dans l\'application SMS par défaut.
+        Pour les SMS, cette application prendra en charge les notifications SMS, veuillez
+        <font color="#fa7f71"><b>désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système,
+        sinon il y aura des notifications en double.
+        Elle ne filtre que les notifications SMS ; les SMS de spam seront toujours présents dans l\'application SMS par défaut.
         ]]>
     </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de la build (UTC)</string>
+    <string name="build_time">Heure de construction (UTC)</string>
     <string name="source_code">Code source</string>
-    <string name="dismiss">Annuler</string>
+    <string name="dismiss">Rejeter</string>
     <string name="warning_running_in_work_profile">
-        Cette application peut ne pas fonctionner correctement dans le profil de travail. Veuillez l\'installer dans le profil principal à la place.
+        Cette application peut ne pas fonctionner correctement dans le profil professionnel. Veuillez l\'installer dans le profil principal à la place.
     </string>
     <string-array name="import_csv_type">
-        <item>Importer un fichier .csv en tant que règle unique</item>
-        <item>Importer un fichier .csv en tant que plusieurs règles</item>
+        <item>Importer .csv comme règle unique</item>
+        <item>Importer .csv comme règles multiples</item>
     </string-array>
     <string name="warning_double_sms">
-        Cette application prendra en charge toutes les notifications SMS, mais l\'autorisation de notification de l\'application SMS par défaut est également activée. Veuillez la désactiver dans les paramètres système pour éviter les doubles notifications SMS.
+        Cette application prendra en charge toutes les notifications SMS,
+        mais l\'autorisation de notification de l\'application SMS par défaut est également activée.
+        Veuillez la désactiver dans les paramètres système pour éviter les notifications SMS en double.
     </string>
     <string name="open_settings">Ouvrir les paramètres</string>
     <string name="ignore">Ignorer</string>

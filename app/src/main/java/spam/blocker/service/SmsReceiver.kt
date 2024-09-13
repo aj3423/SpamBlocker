@@ -10,6 +10,7 @@ import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
@@ -45,14 +46,24 @@ class SmsReceiver : BroadcastReceiver() {
         val r = Checker.checkSms(ctx, rawNumber, messageBody)
 
         // 1. log to db
-        val rec = HistoryRecord(
+        val isLogEnabled = spf.getHistoryTTL() != HISTORY_TTL_DISABLED
+        val id = if(isLogEnabled) SmsTable().addNewRecord(ctx, HistoryRecord(
             peer = rawNumber,
             time = System.currentTimeMillis(),
             result = r.result,
             reason = r.reason(),
             smsContent = if (spf.isLogSmsContentEnabled()) messageBody else null
-        )
-        val id = SmsTable().addNewRecord(ctx, rec)
+        )) else 0
+
+        // 2. broadcast new sms to add a new item in history page
+        if(isLogEnabled) {
+            val intent = Intent(Def.ON_NEW_SMS)
+            intent.putExtra("type", "sms")
+            intent.putExtra("blocked", r.shouldBlock)
+            intent.putExtra("record_id", id)
+
+            ctx.sendBroadcast(intent)
+        }
 
         val showName = Contacts.findByRawNumber(ctx, rawNumber)?.name ?: rawNumber
 
@@ -97,15 +108,6 @@ class SmsReceiver : BroadcastReceiver() {
             )
         }
 
-        // broadcast new sms
-        run {
-            val intent = Intent(Def.ON_NEW_SMS)
-            intent.putExtra("type", "sms")
-            intent.putExtra("blocked", r.shouldBlock)
-            intent.putExtra("record_id", id)
-
-            ctx.sendBroadcast(intent)
-        }
         return r
     }
 

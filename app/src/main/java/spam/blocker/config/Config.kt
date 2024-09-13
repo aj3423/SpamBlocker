@@ -47,11 +47,16 @@ class Global {
 class HistoryOptions {
     var showPassed = true
     var showBlocked = true
+
+    var ttl = -1
     var logSmsContent = false
+
     fun load(ctx: Context) {
         val spf = spam.blocker.util.SharedPref.HistoryOptions(ctx)
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
+
+        ttl = spf.getHistoryTTL()
         logSmsContent = spf.isLogSmsContentEnabled()
     }
 
@@ -59,6 +64,8 @@ class HistoryOptions {
         spam.blocker.util.SharedPref.HistoryOptions(ctx).apply {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
+
+            setHistoryTTL(ttl)
             setLogSmsContentEnabled(logSmsContent)
         }
     }
