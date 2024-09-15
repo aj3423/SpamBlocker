@@ -23,6 +23,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.SmsTable
@@ -114,13 +116,16 @@ class MainActivity : ComponentActivity() {
         G.smsVM.reload(ctx)
 
         setContent {
-            AppTheme(
-                darkTheme = when (G.themeType.intValue) {
-                    1 -> false
-                    2 -> true
-                    else -> isSystemInDarkTheme()
-                }
-            ) {
+            val isDarkTheme = when (G.themeType.intValue) {
+                1 -> false
+                2 -> true
+                else -> isSystemInDarkTheme()
+            }
+            AppTheme(darkTheme = isDarkTheme) {
+                // fix white statusbar text when forced to white theme
+                WindowCompat.getInsetsController(window, LocalView.current)
+                    .isAppearanceLightStatusBars = !isDarkTheme
+
                 Main()
 
                 // show warning if this app is running in work profile

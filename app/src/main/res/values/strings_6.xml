@@ -25,7 +25,7 @@
 
     <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
     <string name="log_sms_content">Log SMS Content</string>
-    <string name="expire">Expire</string>
+    <string name="expiry">Expiry</string>
     <string name="days">Days</string>
     <string name="help_history_ttl">
         <![CDATA[

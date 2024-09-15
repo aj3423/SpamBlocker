@@ -1,6 +1,5 @@
 package spam.blocker.ui.history
 
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,12 +16,10 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.service.CleanerSchedule
-import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
@@ -63,7 +60,7 @@ fun HistoryFabs(
         content = {
             // TTL
             LabeledRow(
-                labelId = R.string.expire,
+                labelId = R.string.expiry,
                 helpTooltipId = R.string.help_history_ttl
             ) {
                 NumberInputBox(
