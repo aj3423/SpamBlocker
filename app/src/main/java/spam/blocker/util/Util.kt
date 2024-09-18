@@ -159,7 +159,6 @@ class Util {
             return Pair(currHour, currMinute)
         }
 
-        // if currentTime == 00:00, it returns true
         fun isCurrentTimeWithinRange(stHour: Int, stMin: Int, etHour: Int, etMin: Int): Boolean {
             val (currHour, currMinute) = currentHourMin()
             val curr = currHour * 60 + currMinute

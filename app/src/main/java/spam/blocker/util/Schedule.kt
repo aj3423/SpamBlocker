@@ -26,51 +26,71 @@ class Schedule {
 
         return "$part0,$part1,$part2"
     }
+
     // for serialization only
     @SuppressLint("DefaultLocale")
     private fun timeRangeStr(): String {
         return String.format("%02d:%02d-%02d:%02d", startHour, startMin, endHour, endMin)
     }
+
     fun toDisplayStr(ctx: Context): String {
         val labels = ctx.resources.getStringArray(R.array.short_weekdays)
         val days = weekdays.sorted()
 
         val rangeStr = Util.timeRangeStr(ctx, startHour, startMin, endHour, endMin)
-        if (days == listOf(1,2,3,4,5,6,7) || days.isEmpty()) // every day, ignore the day string
+        if (isEveryday()) // every day, ignore the day string
             return rangeStr
-        if (days == listOf(2,3,4,5,6))
+        if (days == listOf(2, 3, 4, 5, 6))
             return ctx.getString(R.string.workday) + "  " + rangeStr
         if (days == listOf(1, 7))
             return ctx.getString(R.string.weekend) + "  " + rangeStr
 
         // [1,3,5] -> "Sun,Tue,Thur"
-        val daysStr = days.joinToString(",") { labels[it-1] }
+        val daysStr = days.joinToString(",") { labels[it - 1] }
 
         return "$daysStr  $rangeStr"
     }
+
+    // all weekdays
+    private fun isEveryday(): Boolean {
+        return weekdays.isEmpty() || weekdays.size == 7
+    }
+
+    // all hours
+    private fun isEntireDay(): Boolean {
+        return startHour == 0 && startMin == 0 && endHour == 0 && endMin == 0
+    }
+
+    private fun containsDay(day: Int): Boolean {
+        return (isEveryday() || (day in weekdays))
+    }
+
+    // The time can span multiple days like: 21:00-05:00
     fun satisfyTime(timeMillis: Long): Boolean {
         val t = LocalDateTime.ofInstant(Instant.ofEpochMilli(timeMillis), ZoneId.systemDefault())
         var d = t.dayOfWeek.ordinal + 2
-        if (d == 8) d = 1
-        if (weekdays.isNotEmpty()) { // empty means everyday
-            if (d !in weekdays)
-                return false
+        if (d == 8) d = 1 // d: 1~7
+
+        var pd = d - 1 // previous day
+        if (pd == 0) pd = 7
+
+        val start = startHour * 60 + startMin
+        val end = endHour * 60 + endMin
+        val tm = t.hour * 60 + t.minute
+
+        return if (start < end) { // 05:00-10:00
+            containsDay(d) && tm in start..end
+        } else { // start >= end, like: 21:00-07:00, or 12:00-12:00, or 00-00:00:00(Entire Day)
+            ((tm >= start) && containsDay(d))
+                    ||
+                    ((tm <= end) && containsDay(pd))
         }
-
-        // all 0s means entire day, always satisfies
-        if (startHour == 0 && startMin == 0 && endHour == 0 && endMin == 0)
-            return true
-
-        val min = startHour * 60 + startMin
-        val max = endHour * 60 + endMin
-        val v = t.hour * 60 + t.minute
-        return v in min..max
     }
-    
+
     companion object {
         private val regexRange = """(\d{1,2}):(\d{1,2})-(\d{1,2}):(\d{1,2})""".toRegex()
 
-        fun parseFromStr(str: String) : Schedule {
+        fun parseFromStr(str: String): Schedule {
             val ret = Schedule()
 
             if (str.isEmpty())
