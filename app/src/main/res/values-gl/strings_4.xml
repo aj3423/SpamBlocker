@@ -1,0 +1,38 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        Cando se activa, todas as chamadas(mensaxes) serán permitidas durante este período de tempo. Xeralmente non hai spam pola noite. <br>
+        <br>
+        Se a hora de comezo é superior á hora de remate, por exemplo, 20:00 -> 07:00, significa o período das 20:00 da tarde ás 07:00 da mañá seguinte. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Estas bandeiras cambian o comportamento de concordancia da regex, están configuradas para novas regras por defecto. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignorar maiúsculas e minúsculas</b></font>:<br>
+            &ensp; Fai que o patrón de concordancia non teña en conta as maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
+              coincidiría tanto con <font color="#03DAC5"><b>a</b></font> como con <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Punto coincide con todo</b></font>: <br>
+            &ensp; Cando está activado, <font color="#03DAC5"><b>.</b></font> tamén coincidirá con caracteres de nova liña (<font color="#03DAC5"><b>\\n</b></font>),
+              isto permite que o punto coincida en varias liñas. <br>
+            &ensp; Caso de uso: <br>
+            &emsp;   Coincidir con mensaxes SMS de varias liñas: <br>
+            &emsp;   <font color="#fa7f71">solicita o teu premio: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   con regra: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+            <br>
+            <font color="#00BFFF"><b>Número sen procesar</b></font>: <br>
+            &ensp; Cando está activado, o número non será optimizado, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>0s iniciais</b></font> permanecerán, útil para diferenciar números nacionais.
+        ]]>
+    </string>
+
+</resources>

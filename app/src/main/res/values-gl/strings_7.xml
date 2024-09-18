@@ -1,0 +1,12 @@
+<resources>
+    <string name="start_time">Hora comezo</string>
+    <string name="end_time">Hora fin</string>
+    <string name="next">Seguinte</string>
+    <string name="previous">Anterior</string>
+    <string name="follow_system">Seguir sistema</string>
+    <string name="theme">Tema</string>
+    <string-array name="theme_list">
+        <item>Claro</item>
+        <item>Escuro</item>
+    </string-array>
+</resources>

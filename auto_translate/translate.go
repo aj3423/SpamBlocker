@@ -30,7 +30,7 @@ var wg sync.WaitGroup
 var pool *ants.Pool
 
 var langs = []string{
-	`fr`, `ru`, `zh`, `de`, `es`, `uk`,
+	`fr`, `ru`, `zh`, `de`, `es`, `uk`, `gl`,
 	//  `ja`, `ko`, `vi`, `zh-rTW`,
 }
 

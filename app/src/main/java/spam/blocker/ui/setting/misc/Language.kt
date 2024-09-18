@@ -19,6 +19,7 @@ object Languages {
         Pair("en", "🇬🇧"),
         Pair("es", "🇪🇸"),
         Pair("fr", "🇫🇷"),
+        Pair("gl", ""),
         Pair("ru", "🇷🇺"),
         Pair("uk", "🇺🇦"),
         Pair("zh", "🇨🇳"),
