@@ -1,0 +1,38 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        Cando se active, todas as chamadas (mensaxes) serán permitidas durante este período. Normalmente non hai spam de noite. <br>
+        <br>
+        Se a hora de comezo é maior que a hora de finalización, por exemplo, 20:00 -> 07:00, significa o período das 20:00 da tarde ás 07:00 do día seguinte. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Estas bandeiras cambian o comportamento de concordancia do regex, están configuradas para novas regras por defecto. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignorar caso</b></font>:<br>
+            &ensp; Fai que a concordancia da pauta non teña maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
+              concordaría con <font color="#03DAC5"><b>a</b></font> e <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Punto coincide con todo</b></font>: <br>
+            &ensp; Cando se activa, <font color="#03DAC5"><b>.</b></font> tamén coincidirá con caracteres de nova liña (<font color="#03DAC5"><b>\\n</b></font>),
+              isto permite que o punto coincida con varias liñas. <br>
+            &ensp; Caso de uso: <br>
+            &emsp;   Coincidir coa mensaxe SMS multilínea: <br>
+            &emsp;   <font color="#fa7f71">solicita o teu premio: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   coa regra: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+            <br>
+            <font color="#00BFFF"><b>Número sen procesar</b></font>: <br>
+            &ensp; Cando se activa, o número non se optimizará, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>ceros iniciais</b></font> manteranse, útil para diferenciar números nacionais.
+        ]]>
+    </string>
+
+</resources>

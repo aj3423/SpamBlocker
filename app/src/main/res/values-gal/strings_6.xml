@@ -1,0 +1,126 @@
+<resources>
+    <string name="crash_title">
+        Perdón, a aplicación bateu.\n\n
+        Copia o contido seguinte e informa deste problema en github, elimina calquera información sensible antes de informar.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Dom</item>
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mér</item>
+        <item>Xov</item>
+        <item>Ven</item>
+        <item>Sáb</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Rexeitar</item>
+        <item>Silenciar</item>
+        <item>Responder+Colgar</item>
+    </string-array>
+
+    <string name="show_passed">Amosar aprobado</string>
+    <string name="show_blocked">Amosar bloqueado</string>
+
+    <string name="confirm_delete_all_records">Confirma a eliminación de todos os rexistros?</string>
+    <string name="log_sms_content">Rexistro de contido SMS</string>
+    <string name="expiry">Caducidade</string>
+    <string name="days">Días</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Os rexistros do historial rexistraránse na base de datos e caducarán despois de N días, os rexistros caducados eliminaranse automaticamente.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; O rexistro do historial está desactivado, non se rexistrará nada na base de datos.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Os rexistros rexistraránse e nunca caducarán.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Cando estea activado, o contido do SMS tamén se rexistrará na base de datos e visualizarase nesta lista, non se rexistrará na base de datos cando estea desactivado.<br>
+        <br>
+        - Cando estea activado:<br>
+        &emsp; <b>Preme</b> para despregar/contraer a mensaxe completa.<br>
+        <br>
+        - Cando estea desactivado:<br>
+        &emsp; <b>Preme</b> para abrir a conversa na aplicación predeterminada.
+        ]]>
+    </string>
+
+    <string-array name="history_record_context_menu">
+        <item>Copiar número</item>
+        <item>Engadir número á nova regra</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Ningún</item>
+        <item>Sombra</item>
+        <item>Barra de estado, sombra</item>
+        <item>Son, barra de estado, sombra</item>
+        <item>Son, barra de estado, sombra, emerxente</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Exportar como Json</item>
+        <item>Exportar como comprimido</item>
+    </string-array>
+
+    <string name="language">Idioma</string>
+    <string name="help_language">
+        <![CDATA[
+            As traducións son realizadas pola IA de Google, abre un problema en github para engadir soporte a un novo idioma.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Activar para chamada</string>
+    <string name="enabled_for_sms">Activar para SMS</string>
+    <string name="repeated_call">Chamada repetida</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Permite se a chamada se repite nun período de tempo, é probable que sexa importante e non unha chamada de spam. <br>
+        <br>
+        Tamén se conta a recepción de mensaxes de texto do mesmo número, isto depende de se se concede o permiso de READ_SMS, que é opcional.<br>
+        <br>
+        A configuración predeterminada <font color="#03DAC5"><b>1 / 5 min</b></font> significa que a segunda chamada en 5 minutos será permitida. <br>
+        <br>
+        Só se aplica ás chamadas, <b>non</b> ás mensaxes de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        O interruptor global, esta aplicación só funciona cando está activado,
+        apagalo cando esteas esperando unha chamada/mensaxe en particular. <br>
+        <br>
+        Tamén se pode alternar desde a <font color="#6ed0ff"><b>Configuración rápida despregable</b></font>.<br>
+        <br>
+        Para os SMS, esta aplicación encargarase das notificacións de SMS, por favor
+        <font color="#fa7f71"><b>desactiva o permiso de notificación da aplicación de SMS predeterminada</b></font> na configuración do sistema,
+        de non ser así haberá notificacións duplicadas.
+        Só filtra as notificacións de SMS, as mensaxes SMS de spam seguirán estando presentes na aplicación de SMS predeterminada.
+        ]]>
+    </string>
+
+    <string name="about">Acerca de</string>
+    <string name="version">Versión</string>
+    <string name="build_time">Hora de compilación (UTC)</string>
+    <string name="source_code">Código fonte</string>
+    <string name="dismiss">Descartar</string>
+    <string name="warning_running_in_work_profile">
+        Esta aplicación pode non funcionar correctamente dentro do perfil de traballo, instálaa no perfil principal.
+    </string>
+    <string-array name="import_csv_type">
+        <item>Importar .csv como unha regra única</item>
+        <item>Importar .csv como regras múltiples</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Esta aplicación encargarase de todas as notificacións de SMS,
+        pero o permiso de notificación da aplicación de SMS predeterminada tamén está activado,
+        desactívao na configuración do sistema para evitar notificacións de SMS duplicadas.
+    </string>
+    <string name="open_settings">Abrir configuración</string>
+    <string name="ignore">Ignorar</string>
+</resources>

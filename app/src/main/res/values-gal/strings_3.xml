@@ -1,0 +1,61 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        Estas regras aplícanse ao contido das SMS.
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        Unha forma rápida de copiar contido de mensaxes de SMS ou números de teléfono, o que facilita a obtención de códigos de verificación ou números entrantes.<br>
+        <br>
+        Cando coincide, aparecerá un botón como <font color="#00BFFF"><b>Copiar: 123456</b></font> na notificación.<br>
+        <br>
+        Unha regra de mostra para extraer códigos de verificación:<br>
+        &emsp; Usando o grupo de captura:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        &emsp; Outra aproximación usando a ollada arredor:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        ]]>
+    </string>
+    <string name="help_apply_to_call_sms">
+        <![CDATA[
+        Habilita esta regra para Chamada, SMS ou ambos.<br>
+        Desmarca estas caixas de verificación para desactivar a regra sen eliminala.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        Cando <font color="#00BFFF"><b>Número</b></font> estea marcado, esta regra extraerá o contido do número entrante.
+        Por exemplo, usa <b>(.*)</b> para copiar o número de teléfono.<br>
+        <br>
+        Cando <font color="#00BFFF"><b>Contenido</b></font> estea marcado, esta regra extraerá o contido do corpo da mensaxe SMS,
+        como códigos de verificación.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        Cando <font color="#03DAC5"><b>Pasado</b></font> estea marcado, esta regra aplicarase às chamadas e mensaxes pasadas.<br>
+        <br>
+        Cando <font color="#fa7f71"><b>Bloqueado</b></font> estea marcado, esta regra aplicarase às chamadas e mensaxes bloqueadas.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        <b>Ningunha</b>:<br>&emsp; Ningunha notificación en absoluto. <br>
+        <b>Ton</b>:<br>&emsp; A caixa desplegable de notificación. <br>
+        <b>Barra de estado</b>:<br>&emsp; A icona pequena na barra superior. <br>
+        <b>Sonido</b>:<br>&emsp; O son de notificación predeterminado. <br>
+        <b>Cabezallo</b>:<br>&emsp; Emerxer unha xanela flotante no cumio da pantalla.
+        ]]>
+    </string>
+    <string name="title_rule_testing">Proba de regras</string>
+    <string name="help_test_rules">
+        <![CDATA[
+        Isto axuda a comprobar se as regras están definidas como se esperaba.<br>
+        <br>
+        É só unha simulación e non emerxerá realmente unha chamada entrante (ou unha mensaxe de texto).<br>
+        <br>
+        O resultado móstrase aquí e no rexistro do historial, coa notificación.
+        ]]>
+    </string>
+</resources>

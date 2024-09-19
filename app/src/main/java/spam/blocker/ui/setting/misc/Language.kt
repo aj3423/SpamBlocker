@@ -13,13 +13,14 @@ import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.Launcher
 import spam.blocker.util.SharedPref.Global
 
+// https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement
 object Languages {
     val map = sortedMapOf(
         Pair("de", "🇩🇪"),
         Pair("en", "🇬🇧"),
         Pair("es", "🇪🇸"),
         Pair("fr", "🇫🇷"),
-        Pair("gl", ""),
+        Pair("gal", "\uD83C\uDD36\uD83C\uDD30\uD83C\uDD3B"),
         Pair("ru", "🇷🇺"),
         Pair("uk", "🇺🇦"),
         Pair("zh", "🇨🇳"),

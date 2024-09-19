@@ -17,7 +17,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-const Threads = 4
+const Threads = 3 // >3 may cause "resource exhausted"
 
 var lang_str string
 
@@ -29,12 +29,22 @@ var wg sync.WaitGroup
 
 var pool *ants.Pool
 
-var langs = []string{
-	`fr`, `ru`, `zh`, `de`, `es`, `uk`, `gl`,
-	//  `ja`, `ko`, `vi`, `zh-rTW`,
+var nameMap = map[string]string{
+	`de`:  `German`,
+	`es`:  `Spanish`,
+	`fr`:  `French`,
+	`gal`: `Galician`,
+	`ru`:  `Russian`,
+	`uk`:  `Ukrainian`,
+	`zh`:  `Chinese`,
 }
+var langs []string // [de, es, fr, ...]
 
 func init() {
+	for key := range nameMap {
+		langs = append(langs, key)
+	}
+
 	cwd, _ := os.Getwd()
 	RES_DIR = cwd + "/../app/src/main/res"
 
@@ -100,7 +110,7 @@ func translate_1_file(lang string, fn string) error {
 	GeminiToken := os.Getenv("GeminiToken")
 
 	prompt := fmt.Sprintf(
-		"Translate the following xml content to language \"%s\", it's about a call blocking app "+
+		"Translate the following xml content to language \"%s\"(\"%s\"), it's about a call blocking app "+
 			"which blocks incoming spam calls and SMS messages, nothing about email."+
 			"make sure leave the XML tags unmodified, "+
 			"do not translate text within <no_translate></no_translate> tag. "+
@@ -112,7 +122,7 @@ func translate_1_file(lang string, fn string) error {
 
 			"show me the result only:\n"+
 			"%s",
-		lang, to_translate)
+		lang, nameMap[lang], to_translate)
 
 	ctx := context.Background()
 
