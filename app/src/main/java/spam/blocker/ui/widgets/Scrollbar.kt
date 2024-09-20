@@ -20,9 +20,7 @@ import my.nanihadesuka.compose.LazyColumnScrollbar
 import my.nanihadesuka.compose.ScrollbarSelectionActionable
 import my.nanihadesuka.compose.ScrollbarSelectionMode
 import my.nanihadesuka.compose.ScrollbarSettings
-import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.DodgeBlue
-import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.theme.SkyBlue
 import kotlin.math.max
 
@@ -94,7 +92,7 @@ fun LazyScrollbar(
     }
 }
 @Composable
-fun NormalScrollbar(
+fun NormalColumnScrollbar(
     state: ScrollState,
     modifier: Modifier = Modifier,
     content: @Composable ()->Unit

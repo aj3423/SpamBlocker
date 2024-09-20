@@ -8,18 +8,25 @@ import androidx.compose.runtime.mutableStateOf
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
 import spam.blocker.ui.setting.TestingViewModel
+import spam.blocker.ui.setting.regex.ContentRuleViewModel
+import spam.blocker.ui.setting.regex.NumberRuleViewModel
+import spam.blocker.ui.setting.regex.QuickCopyRuleViewModel
 import spam.blocker.ui.widgets.BottomBarViewModel
 
 @Immutable
 object G {
+    val globallyEnabled : MutableState<Boolean> = mutableStateOf(false)
+
+    val themeType : MutableIntState  = mutableIntStateOf(0)
+
     val callVM : CallViewModel = CallViewModel()
     val smsVM : SmsViewModel = SmsViewModel()
 
-    val globallyEnabled : MutableState<Boolean> = mutableStateOf(false)
+    val NumberRuleVM : NumberRuleViewModel = NumberRuleViewModel()
+    val ContentRuleVM : ContentRuleViewModel = ContentRuleViewModel()
+    val QuickCopyRuleVM : QuickCopyRuleViewModel = QuickCopyRuleViewModel()
 
     lateinit var bottomBarVM : BottomBarViewModel
 
     val testingVM : TestingViewModel = TestingViewModel()
-
-    val themeType : MutableIntState  = mutableIntStateOf(0)
 }

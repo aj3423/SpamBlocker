@@ -1,12 +1,18 @@
 <resources>
-    <string name="start_time">Tiempo de inicio</string>
-    <string name="end_time">Tiempo final</string>
-    <string name="next">Sig</string>
-    <string name="previous">Ant</string>
-    <string name="follow_system">Seguir sist.</string>
+    <string name="start_time">Hora de inicio</string>
+    <string name="end_time">Hora de finalización</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="follow_system">Seguir el sistema</string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>
         <item>Oscuro</item>
+    </string-array>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Buscar regla</item>
+        <item>Clonar regla</item>
+        <item>Borrar todas las reglas</item>
     </string-array>
 </resources>

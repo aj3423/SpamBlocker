@@ -11,9 +11,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -26,9 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.ContentRuleTable
-import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.misc.About
@@ -44,14 +41,13 @@ import spam.blocker.ui.setting.quick.RepeatedCall
 import spam.blocker.ui.setting.quick.Stir
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
-import spam.blocker.ui.theme.MayaBlue
+import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FabWrapper
-import spam.blocker.ui.widgets.NormalScrollbar
+import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
@@ -59,7 +55,7 @@ import spam.blocker.ui.widgets.Str
 const val SettingRowMinHeight = 40
 
 @Composable
-fun SettingPage() {
+fun SettingScreen() {
     val ctx = LocalContext.current
 
     val testingTrigger = rememberSaveable { mutableStateOf(false) }
@@ -87,7 +83,7 @@ fun SettingPage() {
         }
     ) {
 
-        NormalScrollbar(state = scrollState) {
+        NormalColumnScrollbar(state = scrollState) {
             Column(
                 modifier = M
                     .verticalScroll(scrollState)
@@ -114,26 +110,22 @@ fun SettingPage() {
                     ) {
                         Column {
                             // Number Rules
-                            val numberRules = remember {
-                                mutableStateListOf(*NumberRuleTable().listAll(ctx).toTypedArray())
-                            }
-
-                            RuleHeader(Def.ForNumber, numberRules)
-                            RuleList(Def.ForNumber, numberRules)
+                            LaunchedEffect(true) { G.NumberRuleVM.reload(ctx) }
+                            RuleHeader(Def.ForNumber, G.NumberRuleVM)
+                            RuleSearchBox(G.NumberRuleVM)
+                            RuleList(Def.ForNumber, G.NumberRuleVM)
 
                             // Content Rules
-                            val contentRules = remember {
-                                mutableStateListOf(*ContentRuleTable().listAll(ctx).toTypedArray())
-                            }
-                            RuleHeader(Def.ForSms, contentRules)
-                            RuleList(Def.ForSms, contentRules)
+                            LaunchedEffect(true) { G.ContentRuleVM.reload(ctx) }
+                            RuleHeader(Def.ForSms, G.ContentRuleVM)
+                            RuleSearchBox(G.ContentRuleVM)
+                            RuleList(Def.ForSms, G.ContentRuleVM)
 
                             // QuickCopy Rules
-                            val quickCopyRules = remember {
-                                mutableStateListOf(*QuickCopyRuleTable().listAll(ctx).toTypedArray())
-                            }
-                            RuleHeader(Def.ForQuickCopy, quickCopyRules)
-                            RuleList(Def.ForQuickCopy, quickCopyRules)
+                            LaunchedEffect(true) { G.QuickCopyRuleVM.reload(ctx) }
+                            RuleHeader(Def.ForQuickCopy, G.QuickCopyRuleVM)
+                            RuleSearchBox(G.QuickCopyRuleVM)
+                            RuleList(Def.ForQuickCopy, G.QuickCopyRuleVM)
                         }
                     }
                 }

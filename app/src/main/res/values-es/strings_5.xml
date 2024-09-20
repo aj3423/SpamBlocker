@@ -2,10 +2,6 @@
     <string name="dialed">Marcado</string>
     <string name="find_apps">Buscar apps</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>Clonar regla</item>
-        <item>Eliminar todas las reglas</item>
-    </string-array>
     <string name="confirm_delete_all_rule">¿Confirmar para eliminar todas las reglas?</string>
 
     <string name="notification">Notificación</string>

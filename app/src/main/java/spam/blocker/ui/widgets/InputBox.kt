@@ -275,6 +275,7 @@ fun NumberInputBox(
 fun StrInputBox(
     text: String,
     onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
@@ -295,6 +296,7 @@ fun StrInputBox(
 
     InputBox(
         value = state,
+        modifier = modifier,
         onValueChange = { newState ->
             state = newState
 

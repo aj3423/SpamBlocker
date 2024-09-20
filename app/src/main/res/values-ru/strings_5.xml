@@ -2,10 +2,6 @@
     <string name="dialed">Набран</string>
     <string name="find_apps">Найти приложения</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>Клонировать правило</item>
-        <item>Удалить все правила</item>
-    </string-array>
     <string name="confirm_delete_all_rule">Подтвердить удаление всех правил?</string>
 
     <string name="notification">Уведомление</string>

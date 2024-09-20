@@ -2,10 +2,6 @@
     <string name="dialed">已拨号</string>
     <string name="find_apps">查找应用</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>克隆规则</item>
-        <item>删除所有规则</item>
-    </string-array>
     <string name="confirm_delete_all_rule">是否确认删除所有规则？</string>
 
     <string name="notification">通知</string>

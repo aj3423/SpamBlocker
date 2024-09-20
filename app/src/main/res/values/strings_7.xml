@@ -9,4 +9,10 @@
         <item>Light</item>
         <item>Dark</item>
     </string-array>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Search Rule</item>
+        <item>Clone Rule</item>
+        <item>Delete All Rules</item>
+    </string-array>
 </resources>

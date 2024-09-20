@@ -2,10 +2,6 @@
     <string name="dialed">Dialed</string>
     <string name="find_apps">Find Apps</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>Clone Rule</item>
-        <item>Delete All Rules</item>
-    </string-array>
     <string name="confirm_delete_all_rule">Confirm to delete All Rules?</string>
 
     <string name="notification">Notification</string>

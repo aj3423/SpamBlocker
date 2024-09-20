@@ -2,10 +2,6 @@
     <string name="dialed">Gewählt</string>
     <string name="find_apps">Apps finden</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>Regel klonen</item>
-        <item>Alle Regeln löschen</item>
-    </string-array>
     <string name="confirm_delete_all_rule">Bestätigen Sie das Löschen aller Regeln?</string>
 
     <string name="notification">Benachrichtigung</string>

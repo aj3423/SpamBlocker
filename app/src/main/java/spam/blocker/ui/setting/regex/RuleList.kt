@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.regex
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.ruleTableForType
@@ -63,7 +65,7 @@ class DisableNestedScrolling : NestedScrollConnection {
 @Composable
 fun RuleList(
     forType: Int,
-    ruleList: SnapshotStateList<RegexRule>,
+    vm: RuleViewModel,
 ) {
     val ctx = LocalContext.current
     val coroutine = rememberCoroutineScope()
@@ -82,8 +84,7 @@ fun RuleList(
                 table.updateRuleById(ctx, updatedRule.id, updatedRule)
 
                 // 2. reload from db
-                ruleList.clear()
-                ruleList.addAll(table.listAll(ctx))
+                vm.reload(ctx)
             }
         )
     }
@@ -103,7 +104,7 @@ fun RuleList(
                 table.clearAll(ctx)
 
                 // 2. refresh gui
-                ruleList.clear()
+                vm.rules.clear()
             }
         }
     )
@@ -114,18 +115,19 @@ fun RuleList(
             LabelItem(
                 label = label,
             ) {
-                val table = ruleTableForType(forType)
                 when (menuIndex) {
-                    0 -> { // clone rule
+                    0 -> { // search rule
+                        vm.searchEnabled.value = true
+                    }
+                    1 -> { // clone rule
                         // 1. add to db
-                        table.addNewRule(ctx, clickedRule.value)
+                        vm.table.addNewRule(ctx, clickedRule.value)
 
                         // 2. refresh gui
-                        ruleList.clear()
-                        ruleList.addAll(table.listAll(ctx))
+                        vm.reload(ctx)
                     }
 
-                    1 -> { // delete all rules
+                    2 -> { // delete all rules
                         confirmDeleteAll.value = true
                     }
                 }
@@ -137,8 +139,8 @@ fun RuleList(
     // when < 20 rules:
     //   show as normal column
     // else
-    //   show as LazyColumn with fixed height: 70% height of the screen
-    if (ruleList.size > 20) {
+    //   show as LazyColumn with fixed height: 60% height of the screen
+    if (vm.rules.size > 20) {
         val density = LocalDensity.current
 
         // Calculate x% of the screen width
@@ -159,11 +161,11 @@ fun RuleList(
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 itemsIndexed(
-                    items = ruleList,
+                    items = vm.rules,
                     key = { _, it -> it.id }
                 ) { i, rule ->
                     RuleItem(
-                        coroutine, forType, i, ruleList,
+                        coroutine, forType, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems
                     )
                 }
@@ -174,10 +176,10 @@ fun RuleList(
             modifier = M.nestedScroll(DisableNestedScrolling()),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            ruleList.forEachIndexed { i, rule ->
+            vm.rules.forEachIndexed { i, rule ->
                 key(rule.id) {
                     RuleItem(
-                        coroutine, forType, i, ruleList,
+                        coroutine, forType, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems
                     )
                 }
@@ -244,5 +246,4 @@ fun RuleItem(
             )
         }
     }
-
 }

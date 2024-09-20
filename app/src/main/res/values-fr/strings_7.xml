@@ -1,12 +1,18 @@
 <resources>
-    <string name="start_time">Heure<no_translate> de </no_translate> début</string>
-    <string name="end_time">Heure<no_translate> de </no_translate> fin</string>
+    <string name="start_time">Heure de départ</string>
+    <string name="end_time">Heure de fin</string>
     <string name="next">Suiv</string>
     <string name="previous">Préc</string>
-    <string name="follow_system">Syst.</string>
+    <string name="follow_system">Suivre système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
         <item>Clair</item>
-        <item>Sombre</item>
+        <item>Obscur</item>
+    </string-array>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Rech règle</item>
+        <item>Clone règle</item>
+        <item>Suppr toutes règles</item>
     </string-array>
 </resources>

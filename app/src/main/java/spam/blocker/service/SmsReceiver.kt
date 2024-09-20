@@ -21,7 +21,6 @@ import spam.blocker.util.logd
 class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, intent: Intent?) {
-        logd("onReceive in SmsReceiver")
         if (!Global(ctx!!).isGloballyEnabled() || !Global(ctx).isSmsEnabled()) {
             return
         }
@@ -35,7 +34,7 @@ class SmsReceiver : BroadcastReceiver() {
         // phone and delivered together.
         val messageBody = messages.fold("") { acc, it -> acc + it.messageBody }
         val rawNumber = messages[0].originatingAddress!!
-        logd("onReceive sms from $rawNumber: $messageBody")
+        // logd("onReceive sms from $rawNumber: $messageBody")
 
         processSms(ctx, rawNumber, messageBody)
     }

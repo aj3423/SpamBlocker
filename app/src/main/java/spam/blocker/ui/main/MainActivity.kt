@@ -30,8 +30,8 @@ import spam.blocker.R
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.M
-import spam.blocker.ui.history.HistoryPage
-import spam.blocker.ui.setting.SettingPage
+import spam.blocker.ui.history.HistoryScreen
+import spam.blocker.ui.setting.SettingScreen
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.MayaBlue
@@ -84,7 +84,7 @@ class MainActivity : ComponentActivity() {
                         Badge(count = G.callVM.records.count { !it.read })
                     }
                 ) {
-                    HistoryPage(Def.ForNumber, G.callVM.records)
+                    HistoryScreen(Def.ForNumber, G.callVM.records)
                 },
                 TabItem(
                     route = Def.SMS_TAB_ROUTE,
@@ -95,7 +95,7 @@ class MainActivity : ComponentActivity() {
                         Badge(count = G.smsVM.records.count { !it.read })
                     },
                 ) {
-                    HistoryPage(Def.ForSms, G.smsVM.records)
+                    HistoryScreen(Def.ForSms, G.smsVM.records)
                 },
                 TabItem(
                     route = Def.SETTING_TAB_ROUTE,
@@ -103,7 +103,7 @@ class MainActivity : ComponentActivity() {
                     icon = R.drawable.ic_settings,
                     isSelected = mutableStateOf(lastTab == Def.SETTING_TAB_ROUTE)
                 ) {
-                    SettingPage()
+                    SettingScreen()
                 }
             )
         )

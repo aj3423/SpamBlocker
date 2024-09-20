@@ -1,12 +1,18 @@
 <resources>
     <string name="start_time">Час початку</string>
     <string name="end_time">Час закінчення</string>
-    <string name="next">Наст.</string>
-    <string name="previous">Попер.</string>
-    <string name="follow_system">Системний</string>
+    <string name="next">Далі</string>
+    <string name="previous">Назад</string>
+    <string name="follow_system">Слідувати системі</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
         <item>Світла</item>
         <item>Темна</item>
+    </string-array>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Пошук правил</item>
+        <item>Клонувати правило</item>
+        <item>Видалити всі правила</item>
     </string-array>
 </resources>

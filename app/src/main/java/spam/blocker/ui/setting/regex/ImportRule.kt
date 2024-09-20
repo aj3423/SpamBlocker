@@ -24,7 +24,7 @@ import spam.blocker.util.Lambda
 
 @Composable
 fun ImportRuleButton(
-    ruleList: SnapshotStateList<RegexRule>,
+    vm: RuleViewModel,
     onClick: Lambda,
 ) {
     val ctx = LocalContext.current
@@ -83,8 +83,7 @@ fun ImportRuleButton(
                                 table.addNewRule(ctx, rule)
 
                                 // 2. refresh gui
-                                ruleList.clear()
-                                ruleList.addAll(table.listAll(ctx))
+                                vm.reload(ctx)
                             }
                             1 -> { // import as multi rules
                                 // 1. add to db
@@ -94,8 +93,7 @@ fun ImportRuleButton(
                                 }
 
                                 // 2. refresh gui
-                                ruleList.clear()
-                                ruleList.addAll(table.listAll(ctx))
+                                vm.reload(ctx)
                             }
                         }
                     }

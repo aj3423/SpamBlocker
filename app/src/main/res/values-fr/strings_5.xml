@@ -2,10 +2,6 @@
     <string name="dialed">Numéro composé</string>
     <string name="find_apps">Trouver les applications</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>Cloner la règle</item>
-        <item>Supprimer toutes les règles</item>
-    </string-array>
     <string name="confirm_delete_all_rule">Confirmer la suppression de toutes les règles ?</string>
 
     <string name="notification">Notification</string>

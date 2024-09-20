@@ -3,10 +3,16 @@
     <string name="end_time">Конец</string>
     <string name="next">След.</string>
     <string name="previous">Пред.</string>
-    <string name="follow_system">Сист.</string>
+    <string name="follow_system">Следовать системе</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
         <item>Светлая</item>
         <item>Темная</item>
+    </string-array>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Найти правило</item>
+        <item>Клон правила</item>
+        <item>Удалить все правила</item>
     </string-array>
 </resources>

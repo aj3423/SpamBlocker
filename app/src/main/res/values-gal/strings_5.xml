@@ -2,10 +2,6 @@
     <string name="dialed">Marcación</string>
     <string name="find_apps">Atopar Apps</string>
 
-    <string-array name="rule_dropdown_menu">
-        <item>Duplicar Regra</item>
-        <item>Eliminar Todas as Regras</item>
-    </string-array>
     <string name="confirm_delete_all_rule">Confirmar para eliminar todas as regras?</string>
 
     <string name="notification">Notificación</string>

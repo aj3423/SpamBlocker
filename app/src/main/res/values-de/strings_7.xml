@@ -1,12 +1,18 @@
 <resources>
-    <string name="start_time">Startzeit</string>
-    <string name="end_time">Endzeit</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
     <string name="next">Weiter</string>
     <string name="previous">Zurück</string>
-    <string name="follow_system">Systemfolgen</string>
+    <string name="follow_system">System</string>
     <string name="theme">Thema</string>
     <string-array name="theme_list">
         <item>Hell</item>
         <item>Dunkel</item>
+    </string-array>
+
+    <string-array name="rule_dropdown_menu">
+        <item>Regel suchen</item>
+        <item>Regel klonen</item>
+        <item>Alle Regeln löschen</item>
     </string-array>
 </resources>

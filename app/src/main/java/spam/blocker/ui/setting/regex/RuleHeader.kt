@@ -12,6 +12,7 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.defaultRegexRuleByType
+import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.SkyBlue
@@ -23,17 +24,10 @@ import spam.blocker.ui.widgets.StrokeButton
 @Composable
 fun RuleHeader(
     forType: Int,
-    ruleList: SnapshotStateList<RegexRule>,
+    vm: RuleViewModel,
 ) {
     val ctx = LocalContext.current
 
-    val table = remember {
-        when (forType) {
-            Def.ForNumber -> NumberRuleTable()
-            Def.ForSms -> ContentRuleTable()
-            else -> QuickCopyRuleTable()
-        }
-    }
     val labelId = remember {
         when (forType) {
             Def.ForNumber -> R.string.label_number_filter
@@ -58,11 +52,10 @@ fun RuleHeader(
             forType = forType,
             onSave = { newRule ->
                 // 1. add to db
-                table.addNewRule(ctx, newRule)
+                vm.table.addNewRule(ctx, newRule)
 
                 // 2. reload from db
-                ruleList.clear()
-                ruleList.addAll(table.listAll(ctx))
+                vm.reload(ctx)
             }
         )
     }
@@ -73,7 +66,7 @@ fun RuleHeader(
     ) {
         if (forType == Def.ForNumber) {
             ImportRuleButton(
-                ruleList = ruleList
+                vm = vm,
             ) {
                 addRuleTrigger.value = true
             }
