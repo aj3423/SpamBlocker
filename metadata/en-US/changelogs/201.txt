@@ -1,0 +1,5 @@
+New: 
+ - Option to disable history logging, or auto expire
+ - Rule schedule now supports two-day time spans, like 21:00-05:00
+ - "Search Rule" context menu item 
+ - Language support: Galician (gal)

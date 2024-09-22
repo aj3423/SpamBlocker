@@ -40,8 +40,8 @@ fun RuleSearchBox(
                 vm.filter = it
                 vm.reload(ctx)
             },
-            // Auto focus, and force scroll to input box.
             modifier = M
+                // Auto focus, and force scroll to input box.
                 .focusRequester(focusRequester)
                 .onGloballyPositioned {
                     if (!textFieldLoaded) {
@@ -49,6 +49,8 @@ fun RuleSearchBox(
                         textFieldLoaded = true // stop cyclic recompositions
                     }
                 }
+
+                // Hide itself when lose focus, the unfocused event is triggered in SettingScreen
                 .onFocusEvent { focusState ->
                     if (textFieldLoaded && !focusState.isFocused) {
                         vm.searchEnabled.value = false
