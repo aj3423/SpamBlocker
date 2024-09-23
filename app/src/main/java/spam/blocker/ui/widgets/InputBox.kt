@@ -202,6 +202,7 @@ fun NumberInputBox(
     intValue: Int?,
     modifier: Modifier = Modifier,
     onValueChange: (Int?, Boolean) -> Unit,
+    allowEmpty: Boolean = false,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
@@ -216,7 +217,12 @@ fun NumberInputBox(
     // callback. We keep track of it to prevent calling onValueChange(String) for same String when
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
     var lastText by remember(intValue) { mutableStateOf(intValue?.toString() ?: "") }
-    var hasError by remember(lastText) { mutableStateOf(lastText.toIntOrNull() == null) }
+    var hasError by remember(lastText) { mutableStateOf(
+        if (allowEmpty && lastText.isEmpty())
+            false
+        else
+            lastText.toIntOrNull() == null
+    ) }
 
     InputBox(
         value = state,
@@ -227,7 +233,7 @@ fun NumberInputBox(
             val newText = newState.text
             val int = newText.toIntOrNull()
 
-            hasError = int == null
+            hasError = if (allowEmpty && newText.isEmpty()) false else int == null
 
             if (int == null) {
                 if (newText.isEmpty()) { // empty string

@@ -235,34 +235,63 @@ class BlockType(ctx: Context) : SharedPref(ctx) {
         return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE)
     }
 }
-class RecentApps(ctx: Context) : SharedPref(ctx) {
-    fun getList(): List<String> {
-        val s = readString(Def.SETTING_RECENT_APPS, "")
-        if (s == "") {
-            return listOf()
+data class RecentAppInfo(
+    val pkgName: String,
+    val duration: Int? = null
+) {
+    override fun toString(): String {
+        return if (duration == null) {
+            pkgName
+        } else {
+            "$pkgName@$duration"
         }
-        return s.split(",")
     }
-    fun setList(list: List<String>) {
-        writeString(Def.SETTING_RECENT_APPS, list.joinToString(","))
+    companion object {
+        fun fromString(str: String) : RecentAppInfo {
+            val parts = str.split("@")
+            return RecentAppInfo(
+                pkgName = parts[0],
+                duration = parts.getOrNull(1)?.toIntOrNull()
+            )
+        }
+    }
+}
+class RecentApps(ctx: Context) : SharedPref(ctx) {
+    fun getList(): List<RecentAppInfo> {
+        // pkg.a,pkg.b@20,pkg.c
+        val s = readString(Def.SETTING_RECENT_APPS, "")
+
+        if (s == "")
+            return listOf()
+
+        return s.split(",").map {
+            RecentAppInfo.fromString(it)
+        }
+    }
+    fun setList(list: List<RecentAppInfo>) {
+        writeString(Def.SETTING_RECENT_APPS, list.joinToString(",") {
+            it.toString()
+        })
     }
     fun addPackage(pkgToAdd: String) {
         val l = getList().toMutableList()
-        l.add(pkgToAdd)
+        l.add(RecentAppInfo(pkgToAdd, null))
         setList(l)
     }
     fun removePackage(pkgToRemove: String) {
         val l = getList().toMutableList()
-        val index = l.indexOf(pkgToRemove)
+        val index = l.indexOfFirst {
+            it.pkgName == pkgToRemove
+        }
         if (index != -1) {
             l.removeAt(index)
         }
         setList(l)
     }
-    fun getMin() : Int {
+    fun getDefaultMin() : Int {
         return readInt(Def.SETTING_RECENT_APP_IN_X_MIN, 5)
     }
-    fun setMin(inXMin : Int) {
+    fun setDefaultMin(inXMin : Int) {
         writeInt(Def.SETTING_RECENT_APP_IN_X_MIN, inXMin)
     }
 }

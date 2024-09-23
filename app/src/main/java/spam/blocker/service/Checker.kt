@@ -280,20 +280,33 @@ class Checker { // for namespace only
         override fun check(): CheckResult? {
             val spf = RecentApps(ctx)
 
-            val enabledPackages = spf.getList()
-            if (enabledPackages.isEmpty()) {
-                return null
+            val defaultDuration = spf.getDefaultMin() // in minutes
+
+            // To avoid querying db for each app, aggregate them by duration, like:
+            //  pkg.a,pkg.b@20,pkg.c
+            // ->
+            //  map {
+            //    5  -> [pkg.a,pkg.c], // 5 is the default duration
+            //    20 -> [pkg.b],
+            //  }
+            //  So it only queries db for two times: 5 min and 20 min.
+            val aggregation = spf.getList().groupBy {
+                it.duration ?: defaultDuration
+            }.mapValues { (_, values) ->
+                values.map { it.pkgName }
             }
-            val inXMin = spf.getMin()
-            val usedApps = Permissions.listUsedAppWithinXSecond(ctx, inXMin * 60)
 
-            val intersection = enabledPackages.intersect(usedApps.toSet())
+            for ((duration, appList) in aggregation) {
+                val usedApps = Permissions.listUsedAppWithinXSecond(ctx, duration * 60)
 
-            if (intersection.isNotEmpty()) {
-                return CheckResult(
-                    false,
-                    Def.RESULT_ALLOWED_BY_RECENT_APP
-                ).apply { byRecentApp = intersection.first() }
+                val intersection = appList.toList().intersect(usedApps.toSet())
+
+                if (intersection.isNotEmpty()) {
+                    return CheckResult(
+                        false,
+                        Def.RESULT_ALLOWED_BY_RECENT_APP
+                    ).apply { byRecentApp = intersection.first() }
+                }
             }
             return null
         }

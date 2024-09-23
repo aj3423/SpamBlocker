@@ -81,6 +81,8 @@ fun PopupTesting(
         },
         buttons = { // Test Button
             StrokeButton(label = Str(R.string.test), color = Teal200) {
+                clearResult()
+
                 val r = if (vm.selectedType.intValue == 0/* for call */)
                     CallScreeningService().processCall(ctx, vm.phone.value)
                 else

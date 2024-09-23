@@ -24,6 +24,7 @@ import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.OffTime
+import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.SharedPref
@@ -272,8 +273,8 @@ class RuleTest {
     fun recent_app() {
         val spf = RecentApps(ctx)
         val pkgs = listOf("my.pkg")
-        spf.setMin(5)
-        spf.setList(pkgs)
+        spf.setDefaultMin(5)
+        spf.setList(pkgs.map { RecentAppInfo(it) })
 
         // block all number
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))

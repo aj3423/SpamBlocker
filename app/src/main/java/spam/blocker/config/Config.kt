@@ -14,6 +14,7 @@ import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.OffTime
+import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
@@ -213,19 +214,19 @@ class OffTime {
 
 @Serializable
 class RecentApps {
-    val list = mutableListOf<String>()
+    val list = mutableListOf<String>() // [pkg.a, pkg.b@20, pkg.c]
     var inXMin = 0
     fun load(ctx: Context) {
         val spf = RecentApps(ctx)
         list.clear()
-        list.addAll(spf.getList())
-        inXMin = spf.getMin()
+        list.addAll(spf.getList().map { it.toString() })
+        inXMin = spf.getDefaultMin()
     }
 
     fun apply(ctx: Context) {
         val spf = RecentApps(ctx)
-        spf.setList(list)
-        spf.setMin(inXMin)
+        spf.setList(list.map { RecentAppInfo.fromString(it) })
+        spf.setDefaultMin(inXMin)
     }
 }
 

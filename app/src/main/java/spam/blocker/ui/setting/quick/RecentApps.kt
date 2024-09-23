@@ -43,8 +43,9 @@ import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
-import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
@@ -52,6 +53,7 @@ import spam.blocker.util.AppInfo
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
 import spam.blocker.util.ProtectedPermission
+import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util
 import spam.blocker.util.Util.Companion.listApps
@@ -60,8 +62,10 @@ import spam.blocker.util.Util.Companion.listApps
 private fun PopupChooseApps(
     ctx: Context,
     popupTrigger: MutableState<Boolean>,
-    enabledPkgs: SnapshotStateList<String>,
+    enabledPkgs: SnapshotStateList<RecentAppInfo>,
 ) {
+    val C = LocalPalette.current
+
     // popup for choosing apps
     PopupDialog(
         trigger = popupTrigger,
@@ -81,11 +85,11 @@ private fun PopupChooseApps(
                     }
                 }
                 // 2. sort by: selected, then by package label
-                all.sortedWith(compareBy<AppInfo> {
-                    !enabledPkgs.contains(it.pkgName)
+                all.sortedWith(compareBy<AppInfo> { appInfo ->
+                    enabledPkgs.find { it.pkgName == appInfo.pkgName } == null
                 }.thenBy {
                     it.label
-                })
+                }).toMutableList()
             }
 
             Column {
@@ -99,9 +103,13 @@ private fun PopupChooseApps(
                 )
                 LazyColumn(modifier = M.padding(top = 4.dp)) {
                     itemsIndexed(sortedApps) { index, it ->
-                        RowVCenter(
+                        val pkgName = it.pkgName
+                        val info = enabledPkgs.find { it.pkgName == pkgName }
+                        val isEnabled = info != null
+
+                        RowVCenterSpaced(
+                            space = 10,
                             modifier = M.height(48.dp),
-                            horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             // icon
                             DrawableImage(it.icon, modifier = M.size(24.dp))
@@ -125,20 +133,65 @@ private fun PopupChooseApps(
                                 )
                             }
 
+                            // duration icon
+                            if (info != null) {
+                                val popupTrigger1 = rememberSaveable { mutableStateOf(false) }
+
+                                if (popupTrigger1.value) {
+                                    PopupDialog(
+                                        trigger = popupTrigger1,
+                                        content = {
+                                            NumberInputBox(
+                                                intValue = info.duration,
+                                                allowEmpty = true,
+                                                label = { Text(Str(R.string.within_minutes)) },
+                                                leadingIconId = R.drawable.ic_duration,
+                                                onValueChange = { newValue, hasError ->
+                                                    val i =
+                                                        enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+
+                                                    // 1. update gui
+                                                    enabledPkgs[i] =
+                                                        RecentAppInfo(pkgName, newValue)
+
+                                                    // 2. save to SharedPref
+                                                    RecentApps(ctx).setList(enabledPkgs)
+                                                })
+                                        }
+                                    )
+                                }
+                                if (info.duration == null) {
+                                    ResIcon(
+                                        iconId = R.drawable.ic_duration,
+                                        modifier = M
+                                            .size(16.dp)
+                                            .clickable {
+                                                popupTrigger1.value = true
+                                            }
+                                    )
+                                } else {
+                                    GreyButton("${info.duration} ${Str(R.string.min)}") {
+                                        popupTrigger1.value = true
+                                    }
+                                }
+                            }
+
                             // checkbox
-                            SwitchBox(checked = enabledPkgs.contains(it.pkgName)) { isChecked ->
+                            SwitchBox(checked = isEnabled) { isChecked ->
                                 if (isChecked) {
                                     // 1. add to SharedPref
                                     RecentApps(ctx).addPackage(it.pkgName)
 
                                     // 2. trigger recompose
-                                    enabledPkgs.add(it.pkgName)
+                                    enabledPkgs.add(RecentAppInfo(pkgName))
                                 } else {
                                     // 1. remove from SharedPref
                                     RecentApps(ctx).removePackage(it.pkgName)
 
                                     // 2. trigger recompose
-                                    enabledPkgs.removeAt(enabledPkgs.indexOf(it.pkgName))
+                                    enabledPkgs.removeAt(
+                                        enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+                                    )
                                 }
                             }
                         }
@@ -167,7 +220,7 @@ private fun PopupConfig(
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         inXMin.value = newValue
-                        RecentApps(ctx).setMin(newValue!!)
+                        RecentApps(ctx).setDefaultMin(newValue!!)
                     }
                 },
                 label = { Text(Str(R.string.within_minutes)) },
@@ -181,23 +234,24 @@ fun RecentApps() {
     val ctx = LocalContext.current
     val spf = RecentApps(ctx)
 
-    val inXMin = remember { mutableStateOf<Int?>(spf.getMin()) }
+    val defaultInXMin = remember { mutableStateOf<Int?>(spf.getDefaultMin()) }
 
     val buttonPopupTrigger = rememberSaveable { mutableStateOf(false) }
     val appsPopupTrigger = rememberSaveable { mutableStateOf(false) }
 
     val enabledPkgs = remember {
-        mutableStateListOf<String>()
+        mutableStateListOf<RecentAppInfo>()
     }
 
     SideEffect {
         clearUninstalledRecentApps(ctx)
         enabledPkgs.clear()
-        enabledPkgs.addAll(spf.getList())
+        val list = spf.getList()
+        enabledPkgs.addAll(list)
     }
 
     PopupChooseApps(ctx = ctx, popupTrigger = appsPopupTrigger, enabledPkgs = enabledPkgs)
-    PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = inXMin)
+    PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = defaultInXMin)
 
     val permChain = remember {
         PermissionChain(
@@ -224,7 +278,7 @@ fun RecentApps() {
             ) {
                 if (enabledPkgs.isNotEmpty() && Permissions.isUsagePermissionGranted(ctx)) {
                     GreyButton(
-                        label = "${inXMin.value} ${Str(R.string.min)}",
+                        label = "${defaultInXMin.value} ${Str(R.string.min)}",
                     ) {
                         buttonPopupTrigger.value = true
                     }
@@ -239,7 +293,7 @@ fun RecentApps() {
                 ) {
                     items(enabledPkgs) {
                         DrawableImage(
-                            AppInfo.fromPackage(ctx, it).icon,
+                            AppInfo.fromPackage(ctx, it.pkgName).icon,
                             modifier = M
                                 .size(24.dp)
                                 .padding(horizontal = 2.dp)
@@ -271,7 +325,7 @@ private fun clearUninstalledRecentApps(ctx: Context) {
     val spf = RecentApps(ctx)
 
     val cleared = spf.getList().filter {
-        Util.isPackageInstalled(ctx, it)
+        Util.isPackageInstalled(ctx, it.pkgName)
     }
     spf.setList(cleared)
 }
