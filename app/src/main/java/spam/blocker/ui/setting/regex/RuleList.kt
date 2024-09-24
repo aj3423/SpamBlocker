@@ -137,7 +137,7 @@ fun RuleList(
 
     // Nested LazyColumn is forbidden in jetpack compose, to workaround this:
     // when < 20 rules:
-    //   show as normal column
+    //   show as normal Column
     // else
     //   show as LazyColumn with fixed height: 60% height of the screen
     if (vm.rules.size > 20) {

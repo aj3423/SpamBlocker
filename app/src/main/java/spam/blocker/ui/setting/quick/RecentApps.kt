@@ -39,6 +39,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.SwissCoffee
+import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.NumberInputBox
@@ -64,8 +65,6 @@ private fun PopupChooseApps(
     popupTrigger: MutableState<Boolean>,
     enabledPkgs: SnapshotStateList<RecentAppInfo>,
 ) {
-    val C = LocalPalette.current
-
     // popup for choosing apps
     PopupDialog(
         trigger = popupTrigger,
@@ -141,28 +140,34 @@ private fun PopupChooseApps(
                                     PopupDialog(
                                         trigger = popupTrigger1,
                                         content = {
-                                            NumberInputBox(
-                                                intValue = info.duration,
-                                                allowEmpty = true,
-                                                label = { Text(Str(R.string.within_minutes)) },
-                                                leadingIconId = R.drawable.ic_duration,
-                                                onValueChange = { newValue, hasError ->
-                                                    val i =
-                                                        enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+                                            LabeledRow(
+                                                labelId = R.string.duration,
+                                                helpTooltipId = R.string.help_recent_apps_individual_duration
+                                            ) {
+                                                NumberInputBox(
+                                                    intValue = info.duration,
+                                                    allowEmpty = true,
+                                                    label = { Text(Str(R.string.min)) },
+                                                    leadingIconId = R.drawable.ic_duration,
+                                                    onValueChange = { newValue, hasError ->
+                                                        val i =
+                                                            enabledPkgs.indexOfFirst { it.pkgName == pkgName }
 
-                                                    // 1. update gui
-                                                    enabledPkgs[i] =
-                                                        RecentAppInfo(pkgName, newValue)
+                                                        // 1. update gui
+                                                        enabledPkgs[i] =
+                                                            RecentAppInfo(pkgName, newValue)
 
-                                                    // 2. save to SharedPref
-                                                    RecentApps(ctx).setList(enabledPkgs)
-                                                })
+                                                        // 2. save to SharedPref
+                                                        RecentApps(ctx).setList(enabledPkgs)
+                                                    })
+                                            }
                                         }
                                     )
                                 }
                                 if (info.duration == null) {
                                     ResIcon(
                                         iconId = R.drawable.ic_duration,
+                                        color = LocalPalette.current.textGrey,
                                         modifier = M
                                             .size(16.dp)
                                             .clickable {
@@ -246,8 +251,7 @@ fun RecentApps() {
     SideEffect {
         clearUninstalledRecentApps(ctx)
         enabledPkgs.clear()
-        val list = spf.getList()
-        enabledPkgs.addAll(list)
+        enabledPkgs.addAll(spf.getList())
     }
 
     PopupChooseApps(ctx = ctx, popupTrigger = appsPopupTrigger, enabledPkgs = enabledPkgs)

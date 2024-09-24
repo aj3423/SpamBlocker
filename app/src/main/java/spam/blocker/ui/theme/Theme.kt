@@ -96,7 +96,8 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = Color.White,
     surfaceTint = White, // this affects pop menu bg
-    surface = White, // systembar, balloon bg
+    surface = White, // systembar
+    surfaceContainer = White, // balloon bg
 )
 private val DarkColorScheme = darkColorScheme(
     primary = Teal200,
@@ -104,7 +105,7 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = Pink80,
     background = Black111111,
     surfaceTint = White, // this affects pop menu bg
-    surface = Black111111, // systembar, balloon bg
+    surface = Black111111, // systembar
 
 //    onPrimary               = Color.Red,
 //    primaryContainer        = Color.Red,
@@ -133,7 +134,6 @@ private val DarkColorScheme = darkColorScheme(
 //    scrim                   = Color.Blue,
 
 //    surfaceBright           = Color.Green,
-//    surfaceContainer        = Color.Green,
 //    surfaceContainerHigh    = Color.Green,
 //    surfaceContainerHighest = Color.Green,
 //    surfaceContainerLow     = Color.Green,

@@ -1,18 +1,23 @@
 <resources>
     <string name="start_time">开始时间</string>
     <string name="end_time">结束时间</string>
-    <string name="next">下一步</string>
-    <string name="previous">前一步</string>
+    <string name="next">下一页</string>
+    <string name="previous">上一页</string>
     <string name="follow_system">跟随系统</string>
     <string name="theme">主题</string>
     <string-array name="theme_list">
         <item>亮色</item>
         <item>暗色</item>
     </string-array>
-
     <string-array name="rule_dropdown_menu">
         <item>搜索规则</item>
-        <item>克隆规则</item>
+        <item>复制规则</item>
         <item>删除所有规则</item>
     </string-array>
+    <string name="duration">时长</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        每个应用的自定义时长，留空时将使用全局时长。
+        ]]>
+    </string>
 </resources>

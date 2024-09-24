@@ -1,6 +1,6 @@
 <resources>
-    <string name="start_time">Hora inicio</string>
-    <string name="end_time">Hora fin</string>
+    <string name="start_time">Hora de comezo</string>
+    <string name="end_time">Hora de remate</string>
     <string name="next">Seguinte</string>
     <string name="previous">Ant</string>
     <string name="follow_system">Seguir sistema</string>
@@ -9,10 +9,15 @@
         <item>Claro</item>
         <item>Escuro</item>
     </string-array>
-
     <string-array name="rule_dropdown_menu">
         <item>Buscar regra</item>
         <item>Clonar regra</item>
         <item>Eliminar todas as regras</item>
     </string-array>
+    <string name="duration">Duración</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        Duración individual para cada aplicación, se se deixa baleiro, recuará á duración global.
+        ]]>
+    </string>
 </resources>

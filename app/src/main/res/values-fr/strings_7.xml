@@ -6,13 +6,18 @@
     <string name="follow_system">Suivre système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
-        <item>Clair</item>
-        <item>Obscur</item>
+        <item>Claire</item>
+        <item>Foncée</item>
     </string-array>
-
     <string-array name="rule_dropdown_menu">
-        <item>Rech règle</item>
-        <item>Clone règle</item>
-        <item>Suppr toutes règles</item>
+        <item>Chercher règle</item>
+        <item>Cloner règle</item>
+        <item>Supprimer toutes règles</item>
     </string-array>
+    <string name="duration">Durée</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        Durée individuelle pour chaque appli, lorsqu\'il est vide, il retournera à la durée globale.
+        ]]>
+    </string>
 </resources>

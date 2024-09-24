@@ -9,10 +9,15 @@
         <item>Light</item>
         <item>Dark</item>
     </string-array>
-
     <string-array name="rule_dropdown_menu">
         <item>Search Rule</item>
         <item>Clone Rule</item>
         <item>Delete All Rules</item>
     </string-array>
+    <string name="duration">Duration</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        Individual duration for each app, when left empty, it will fall back to the global duration.
+        ]]>
+    </string>
 </resources>
