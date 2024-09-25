@@ -12,8 +12,10 @@
     <string-array name="rule_dropdown_menu">
         <item>Search Rule</item>
         <item>Clone Rule</item>
-        <item>Delete All Rules</item>
+        <item>Delete Duplicated Rules</item>
+        <item>Delete All(%d) Rules</item>
     </string-array>
+    <string name="confirm_delete_duplicated_rule">Confirm to delete %d duplicated Rules?</string>
     <string name="duration">Duration</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[

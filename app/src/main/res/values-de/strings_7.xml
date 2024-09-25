@@ -3,8 +3,8 @@
     <string name="end_time">Endzeit</string>
     <string name="next">Weiter</string>
     <string name="previous">Zurück</string>
-    <string name="follow_system">Systemfolgen</string>
-    <string name="theme">Theme</string>
+    <string name="follow_system">System</string>
+    <string name="theme">Thema</string>
     <string-array name="theme_list">
         <item>Hell</item>
         <item>Dunkel</item>
@@ -12,12 +12,14 @@
     <string-array name="rule_dropdown_menu">
         <item>Regel suchen</item>
         <item>Regel klonen</item>
-        <item>Alle Regeln löschen</item>
+        <item>Doppelte Regeln löschen</item>
+        <item>Alle (%d) Regeln löschen</item>
     </string-array>
-    <string name="duration">Dauer</string>
+    <string name="confirm_delete_duplicated_rule">Soll(en) die %d doppelten Regeln gelöscht werden?</string>
+    <string name="duration">dauer</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Individuelle Dauer für jede App, wenn leer gelassen, wird auf die globale Dauer zurückgegriffen.
+        Einzelne Dauer für jede App, bei leerer Eingabe gilt die globale Dauer.
         ]]>
     </string>
 </resources>

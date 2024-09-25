@@ -1,12 +1,13 @@
 package spam.blocker.ui.setting.regex
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,13 +28,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.ruleTableForType
 import spam.blocker.ui.M
-import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
@@ -95,7 +95,7 @@ fun RuleList(
         trigger = confirmDeleteAll,
         content = { GreyLabel(text = Str(R.string.confirm_delete_all_rule), fontSize = 18.sp) },
         buttons = {
-            StrokeButton(label = Str(R.string.delete), color = DarkOrange) {
+            StrokeButton(label = Str(R.string.delete), color = Salmon) {
                 confirmDeleteAll.value = false
 
                 val table = ruleTableForType(forType)
@@ -109,16 +109,69 @@ fun RuleList(
         }
     )
 
+    // Confirm dialog for "Delete duplicated rules"
+    val confirmDeleteDuplicated = remember { mutableStateOf(false) }
+    val duplicatedRules = remember { mutableListOf<RegexRule>() }
+    PopupDialog(
+        trigger = confirmDeleteDuplicated,
+        scrollEnabled = false,
+        content = {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                duplicatedRules.clear()
+                duplicatedRules.addAll(vm.table.listDuplicated(ctx))
+
+                GreyLabel(
+                    text = Str(R.string.confirm_delete_duplicated_rule).format(duplicatedRules.size),
+                    fontSize = 18.sp
+                )
+
+                val density = LocalDensity.current
+
+                // Calculate x% of the screen width
+                val halfScreenDp = remember {
+                    with(density) {
+                        val screenHeightPx = ctx.resources.displayMetrics.heightPixels
+                        screenHeightPx.toDp().value * 0.5
+                    }
+                }
+                LazyColumn(modifier = M.heightIn(max = halfScreenDp.dp)) {
+                    items(duplicatedRules, key = {it.id}) {
+                        RuleCard(rule = it, forType = forType)
+                    }
+                }
+            }
+        },
+        buttons = {
+            StrokeButton(label = Str(R.string.delete), color = Salmon) {
+                confirmDeleteDuplicated.value = false
+
+                val table = ruleTableForType(forType)
+
+                // 1. clear db
+                table.deleteByIds(ctx, duplicatedRules.map { it.id })
+
+                // 2. clear cache
+                duplicatedRules.clear()
+
+                // 3. refresh gui
+                vm.reload(ctx)
+            }
+        }
+    )
 
     val contextMenuItems = remember {
         ctx.resources.getStringArray(R.array.rule_dropdown_menu).mapIndexed { menuIndex, label ->
             LabelItem(
-                label = label,
+                label = when (menuIndex) {
+                    3 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
+                    else -> label
+                },
             ) {
                 when (menuIndex) {
                     0 -> { // search rule
                         vm.searchEnabled.value = true
                     }
+
                     1 -> { // clone rule
                         // 1. add to db
                         vm.table.addNewRule(ctx, clickedRule.value)
@@ -127,7 +180,11 @@ fun RuleList(
                         vm.reload(ctx)
                     }
 
-                    2 -> { // delete all rules
+                    2 -> { // delete duplicated rules
+                        confirmDeleteDuplicated.value = true
+                    }
+
+                    3 -> { // delete all rules
                         confirmDeleteAll.value = true
                     }
                 }
@@ -212,7 +269,7 @@ fun RuleItem(
                     val table = ruleTableForType(forType)
 
                     // 1. delete from db
-                    table.delById(ctx, ruleToDel.id)
+                    table.deleteById(ctx, ruleToDel.id)
 
                     // 2. remove from ArrayList
                     ruleList.removeAt(ruleIndex)

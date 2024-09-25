@@ -1,9 +1,9 @@
 <resources>
     <string name="start_time">Hora de inicio</string>
     <string name="end_time">Hora de finalización</string>
-    <string name="next">Sig</string>
-    <string name="previous">Ant</string>
-    <string name="follow_system">Seguir sist.</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="follow_system">Seguir el sistema</string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>
@@ -12,12 +12,14 @@
     <string-array name="rule_dropdown_menu">
         <item>Buscar regla</item>
         <item>Clonar regla</item>
-        <item>Eliminar todas las reglas</item>
+        <item>Eliminar reglas duplicadas</item>
+        <item>Eliminar todas (%d) reglas</item>
     </string-array>
+    <string name="confirm_delete_duplicated_rule">Confirmar la eliminación de %d reglas duplicadas?</string>
     <string name="duration">Duración</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Duración individual para cada aplicación, cuando se deja vacía, vuelve a la duración global.
+        Duración individual para cada aplicación; si se deja vacía, se utilizará la duración global.
         ]]>
     </string>
 </resources>

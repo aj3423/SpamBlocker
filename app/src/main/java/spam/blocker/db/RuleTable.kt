@@ -3,6 +3,7 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -44,6 +45,7 @@ object CompatibleIntSerializer : JsonTransformingSerializer<Int>(Int.serializer(
             is JsonObject -> {
                 element["value"] ?: throw SerializationException("Missing 'value' field")
             }
+
             else -> throw SerializationException("Unexpected JSON format for Int")
         }
     }
@@ -172,7 +174,7 @@ data class RegexRule(
     }
 
     companion object {
-        fun fromMap(attrs: Map<String, String>) : RegexRule {
+        fun fromMap(attrs: Map<String, String>): RegexRule {
             return RegexRule().apply {
                 if (attrs.contains("pattern")) pattern = Util.clearNumber(attrs["pattern"]!!)
                 if (attrs.contains("description")) description = attrs["description"]!!
@@ -186,7 +188,7 @@ data class RegexRule(
     }
 }
 
-fun defaultRegexRuleByType(forType: Int) : RegexRule {
+fun defaultRegexRuleByType(forType: Int): RegexRule {
     return RegexRule().apply {
         if (forType == Def.ForQuickCopy) { // set it for copying sms content by default
             flags = flags.setFlag(Def.FLAG_FOR_CALL, false)
@@ -198,7 +200,7 @@ fun defaultRegexRuleByType(forType: Int) : RegexRule {
 }
 
 fun newRegexRule(
-    id : Long,
+    id: Long,
     pattern: String,
     patternExtra: String,
     patternFlags: Int,
@@ -232,6 +234,42 @@ abstract class RuleTable {
 
     abstract fun tableName(): String
 
+
+    fun count(ctx: Context): Int {
+        val db = Db.getInstance(ctx).readableDatabase
+        val sql = "SELECT COUNT(*) FROM ${tableName()} "
+
+        val cursor = db.rawQuery(sql, null)
+
+        var count = 0
+        cursor.use {
+            if (it.moveToFirst()) {
+                count = cursor.getInt(0)
+            }
+        }
+        return count
+    }
+
+    @SuppressLint("Range")
+    private fun ruleFromCursor(it: Cursor): RegexRule {
+        return RegexRule(
+            id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
+            pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN)),
+            patternExtra = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: "",
+            patternFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS)),
+            patternExtraFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS)),
+            description = it.getString(it.getColumnIndex(Db.COLUMN_DESC)),
+            priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY)),
+            isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1,
+            flags = it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS)),
+            importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE))
+                ?: Def.DEF_SPAM_IMPORTANCE,
+            schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: "",
+            blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
+                ?: Def.DEF_BLOCK_TYPE
+        )
+    }
+
     @SuppressLint("Range")
     private fun listByFilter(ctx: Context, filterSql: String): List<RegexRule> {
         val ret: MutableList<RegexRule> = mutableListOf()
@@ -241,25 +279,7 @@ abstract class RuleTable {
         cursor.use {
             if (it.moveToFirst()) {
                 do {
-                    val f = RegexRule()
-
-                    f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
-                    f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
-                    f.patternExtra =
-                        it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: ""
-                    f.patternFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS))
-                    f.patternExtraFlags =
-                        it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS))
-                    f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
-                    f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
-                    f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
-                    f.flags = it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS))
-                    f.importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE))
-                        ?: Def.DEF_SPAM_IMPORTANCE
-                    f.schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
-                    f.blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
-                        ?: Def.DEF_BLOCK_TYPE
-                    ret += f
+                    ret += ruleFromCursor(it)
                 } while (it.moveToNext())
             }
             return ret
@@ -275,25 +295,7 @@ abstract class RuleTable {
 
         cursor.use {
             if (it.moveToFirst()) {
-                val f = RegexRule()
-                f.id = it.getLong(it.getColumnIndex(Db.COLUMN_ID))
-                f.pattern = it.getString(it.getColumnIndex(Db.COLUMN_PATTERN))
-                f.patternExtra =
-                    it.getStringOrNull(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA)) ?: ""
-                f.patternFlags = it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_FLAGS))
-                f.patternExtraFlags =
-                    it.getInt(it.getColumnIndex(Db.COLUMN_PATTERN_EXTRA_FLAGS))
-                f.description = it.getString(it.getColumnIndex(Db.COLUMN_DESC))
-                f.priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY))
-                f.isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1
-                f.flags = it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS))
-                f.importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE))
-                    ?: Def.DEF_SPAM_IMPORTANCE
-                f.schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: ""
-                f.blockType =
-                    it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE)) ?: Def.DEF_BLOCK_TYPE
-
-                return f
+                return ruleFromCursor(it)
             } else {
                 return null
             }
@@ -331,6 +333,50 @@ abstract class RuleTable {
             "SELECT * FROM ${tableName()} $whereStr ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
 
         return listByFilter(ctx, sql)
+    }
+
+
+    @SuppressLint("Range")
+    fun listDuplicated(ctx: Context): List<RegexRule> {
+        val ret: MutableList<RegexRule> = mutableListOf()
+
+        val db = Db.getInstance(ctx).readableDatabase
+
+        val sql = "SELECT * FROM ${tableName()}" +
+                " GROUP BY ${Db.COLUMN_PATTERN}, ${Db.COLUMN_PATTERN_EXTRA}, ${Db.COLUMN_PATTERN_FLAGS}, ${Db.COLUMN_PATTERN_EXTRA_FLAGS}, ${Db.COLUMN_SCHEDULE}" +
+                " HAVING COUNT(*) > 1"
+
+        val cursor = db.rawQuery(sql, null)
+
+        cursor.use {
+            if (it.moveToFirst()) {
+                do {
+                    val first = ruleFromCursor(it)
+
+                    val sql2 = """
+                        SELECT * FROM ${tableName()}
+                        WHERE ${Db.COLUMN_PATTERN} = ? AND ${Db.COLUMN_PATTERN_EXTRA} = ? AND ${Db.COLUMN_PATTERN_FLAGS} = ? AND ${Db.COLUMN_PATTERN_EXTRA_FLAGS} = ? AND ${Db.COLUMN_SCHEDULE} = ?
+                        AND id != ?
+                    """
+                    val cursor2 = db.rawQuery(sql2, arrayOf(
+                        first.pattern,
+                        first.patternExtra,
+                        first.patternFlags.toString(),
+                        first.patternExtraFlags.toString() ,
+                        first.schedule,
+                        first.id.toString()
+                    ))
+                    cursor2.use {
+                        if (cursor2.moveToFirst()) {
+                            do {
+                                ret += ruleFromCursor(cursor2)
+                            } while (cursor2.moveToNext())
+                        }
+                    }
+                } while (it.moveToNext())
+            }
+        }
+        return ret
     }
 
     fun addNewRule(ctx: Context, f: RegexRule): Long {
@@ -388,9 +434,13 @@ abstract class RuleTable {
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }
 
-    fun delById(ctx: Context, id: Long): Boolean {
+    fun deleteById(ctx: Context, id: Long): Boolean {
+        return deleteByIds(ctx, listOf(id))
+    }
+
+    fun deleteByIds(ctx: Context, ids: List<Long>): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
-        val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
+        val sql = "DELETE FROM ${tableName()} WHERE ${Db.COLUMN_ID} IN (${ids.joinToString(",")})"
         val cursor = db.rawQuery(sql, null)
 
         return cursor.use {
@@ -423,8 +473,8 @@ open class QuickCopyRuleTable : RuleTable() {
     }
 }
 
-fun ruleTableForType(forType: Int) : RuleTable {
-    return when(forType) {
+fun ruleTableForType(forType: Int): RuleTable {
+    return when (forType) {
         Def.ForNumber -> NumberRuleTable()
         Def.ForSms -> ContentRuleTable()
         else -> QuickCopyRuleTable()

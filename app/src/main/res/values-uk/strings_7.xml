@@ -2,22 +2,24 @@
     <string name="start_time">Час початку</string>
     <string name="end_time">Час завершення</string>
     <string name="next">Наступний</string>
-    <string name="previous">Попередній</string>
-    <string name="follow_system">Слідувати системі</string>
+    <string name="previous">Поперед.</string>
+    <string name="follow_system">Слідкувати за системою</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
-        <item>Світла</item>
-        <item>Темна</item>
+        <item>Світлий</item>
+        <item>Темний</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Пошук правила</item>
+        <item>Шукати правило</item>
         <item>Клонувати правило</item>
-        <item>Видалити всі правила</item>
+        <item>Видалити дублікати правил</item>
+        <item>Видалити всі (%d) правила</item>
     </string-array>
-    <string name="duration"><no_translate>Duration</no_translate></string>
+    <string name="confirm_delete_duplicated_rule">Підтвердити видалення %d дублікатів правил?</string>
+    <string name="duration">Тривалість</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        <no_translate>Individual duration for each app, when left empty, it will fall back to the global duration.</no_translate>
+        Індивідуальна тривалість для кожного додатку. Якщо залишити пустим, використовуватиметься загальна тривалість.
         ]]>
     </string>
 </resources>

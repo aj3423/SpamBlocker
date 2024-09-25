@@ -1,23 +1,25 @@
 <resources>
-    <string name="start_time">Heure de départ</string>
+    <string name="start_time">Heure de début</string>
     <string name="end_time">Heure de fin</string>
     <string name="next">Suiv</string>
     <string name="previous">Préc</string>
-    <string name="follow_system">Suivre système</string>
+    <string name="follow_system">Suivre le système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
-        <item>Claire</item>
-        <item>Foncée</item>
+        <item>Clair</item>
+        <item>Foncé</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Chercher règle</item>
-        <item>Cloner règle</item>
-        <item>Supprimer toutes règles</item>
+        <item>Chercher Règle</item>
+        <item>Cloner Règle</item>
+        <item>Supprimer Règles doublées</item>
+        <item>Supprimer toutes les Règles(%d)</item>
     </string-array>
+    <string name="confirm_delete_duplicated_rule">Confirmer la suppression de %d Règles doublées ?</string>
     <string name="duration">Durée</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Durée individuelle pour chaque appli, lorsqu\'il est vide, il retournera à la durée globale.
+        Durée individuelle pour chaque appli. Si ce champ est laissé vide, la durée globale s\'appliquera.
         ]]>
     </string>
 </resources>

@@ -1,23 +1,25 @@
 <resources>
-    <string name="start_time">Начало времени</string>
-    <string name="end_time">Конец времени</string>
-    <string name="next">Следующий</string>
-    <string name="previous">Предыдущий</string>
-    <string name="follow_system">Следовать системе</string>
+    <string name="start_time">Время начала</string>
+    <string name="end_time">Время окончания</string>
+    <string name="next">Далее</string>
+    <string name="previous">Назад</string>
+    <string name="follow_system">Сл. системе</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
-        <item>Светлый</item>
-        <item>Темный</item>
+        <item>Светлая</item>
+        <item>Темная</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Искать правило</item>
-        <item>Клонировать правило</item>
-        <item>Удалить все правила</item>
+        <item>Найти правило</item>
+        <item>Клон. прав.</item>
+        <item>Уд. повторн. прав.</item>
+        <item>Уд. все(%d) прав.</item>
     </string-array>
-    <string name="duration">Промежуток</string>
+    <string name="confirm_delete_duplicated_rule">Удалить %d повторяющихся прав.?</string>
+    <string name="duration">Длительность</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Отдельный промежуток для каждого приложения, если оставить пустым, то будет использоваться общий промежуток.
+        Отдельная длительность для каждого приложения, когда пусто, то станет общей длительностью.
         ]]>
     </string>
 </resources>
