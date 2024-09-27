@@ -24,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import spam.blocker.G
 import spam.blocker.R
@@ -194,10 +195,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        registerReceiver(broadcastReceiver, IntentFilter().apply {
-            addAction(Def.ON_NEW_CALL)
-            addAction(Def.ON_NEW_SMS)
-        }, Context.RECEIVER_EXPORTED)
+        ContextCompat.registerReceiver(this, broadcastReceiver,
+            IntentFilter().apply {
+                addAction(Def.ON_NEW_CALL)
+                addAction(Def.ON_NEW_SMS)
+            },
+            ContextCompat.RECEIVER_EXPORTED)
     }
 
     private fun onTabSelected(route: String) {
