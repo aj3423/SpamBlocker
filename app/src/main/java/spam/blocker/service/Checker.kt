@@ -21,7 +21,6 @@ import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
-import spam.blocker.util.Time
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
 
@@ -29,14 +28,14 @@ class CheckResult(
     val shouldBlock: Boolean,
     val result: Int,
 ) {
-    var byContactName: String? = null // allowed by contact
+    var byContact: String? = null // allowed by contact
     var byRule: RegexRule? = null // allowed or blocked by this filter rule
     var byRecentApp: String? = null // allowed by recent app
     var stirResult: Int? = null
 
     // This `reason` will be saved to database as a string
     fun reason(): String {
-        if (byContactName != null) return byContactName!!
+        if (byContact != null) return byContact!!
         if (byRule != null) return byRule!!.id.toString()
         if (byRecentApp != null) return byRecentApp!!
         if (stirResult != null) return stirResult.toString()
@@ -115,6 +114,8 @@ class Checker { // for namespace only
         }
     }
 
+    // The "Contacts" in quick settings.
+    // It checks whether the phone number belongs to a contact.
     class Contact(private val ctx: Context, private val rawNumber: String) : IChecker {
         override fun priority(): Int {
             val isExclusive = Contact(ctx).isExclusive()
@@ -127,10 +128,10 @@ class Checker { // for namespace only
             if (!spf.isEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
-            val contact = Contacts.findByRawNumber(ctx, rawNumber)
+            val contact = Contacts.findContactByRawNumber(ctx, rawNumber)
             if (contact != null) { // is contact
                 return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)
-                    .apply { byContactName = contact.name }
+                    .apply { byContact = contact.name }
             } else { // not contact
                 if (spf.isExclusive()) {
                     return CheckResult(true, Def.RESULT_BLOCKED_BY_NON_CONTACT)
@@ -312,9 +313,7 @@ class Checker { // for namespace only
         }
     }
 
-    /*
-        Check if a number rule matches the incoming number
-     */
+    // Check if a number rule matches the incoming number
     class Number(private val rawNumber: String, private val numberRule: RegexRule) : IChecker {
         override fun priority(): Int {
             return numberRule.priority
@@ -322,13 +321,8 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             // 1. check time schedule
-            val sch = Schedule.parseFromStr(numberRule.schedule)
-            if (sch.enabled) {
-                val now = Time.currentMillis()
-                if (!sch.satisfyTime(now)) {
-                    return null
-                }
-            }
+            if (Schedule.dissatisfyNow(numberRule.schedule))
+                return null
 
             // 2. check regex
             val opts = Util.flagsToRegexOptions(numberRule.patternFlags)
@@ -353,11 +347,50 @@ class Checker { // for namespace only
         }
     }
 
+    // The flag `Contact Group`, it matches the contact group name instead of the phone number
+    class ContactGroup(
+        private val ctx: Context,
+        private val rawNumber: String,
+        private val rule: RegexRule
+    ) : IChecker {
+        override fun priority(): Int {
+            return rule.priority
+        }
+
+        override fun check(): CheckResult? {
+            if (!Permissions.isContactsPermissionGranted(ctx)) {
+                return null
+            }
+
+            // 1. check time schedule
+            if (Schedule.dissatisfyNow(rule.schedule))
+                return null
+
+            // 2. check regex
+            val groupNames = Contacts.findGroupsByRawNumber(ctx, rawNumber)
+            for (groupName in groupNames) { // is contact
+                val opts = Util.flagsToRegexOptions(rule.patternFlags)
+
+                if (rule.pattern.toRegex(opts).matches(groupName)) {
+                    val block = rule.isBlacklist
+                    return CheckResult(
+                        block,
+                        if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP
+                    ).apply {
+                        byRule = rule
+                    }
+                }
+            }
+            return null
+        }
+    }
+
     /*
         Check if text message body matches the SMS Content rule,
         the number is also checked when "for particular number" is enabled
      */
     class Content(
+        private val ctx: Context,
         private val rawNumber: String,
         private val messageBody: String,
         private val rule: RegexRule
@@ -368,13 +401,8 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             // 1. check time schedule
-            val sch = Schedule.parseFromStr(rule.schedule)
-            if (sch.enabled) {
-                val now = Time.currentMillis()
-                if (!sch.satisfyTime(now)) {
-                    return null
-                }
-            }
+            if (Schedule.dissatisfyNow(rule.schedule))
+                return null
 
             // 2. check regex
             val opts = Util.flagsToRegexOptions(rule.patternFlags)
@@ -386,11 +414,23 @@ class Checker { // for namespace only
             else
                 Util.clearNumber(rawNumber)
 
+            // 3. check for particular number
             val matches = if (rule.patternExtra != "") { // for particular number enabled
-                val particularNumberMatches =
-                    rule.patternExtra.toRegex(optsExtra).matches(numberToCheck)
+                // if this regex is for matching contact group
+                val forContactGroup =
+                    rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                if (forContactGroup) {
+                    val anyContactGroupMatches = Contacts.findGroupsByRawNumber(ctx, rawNumber)
+                        .any { groupName ->
+                            rule.patternExtra.toRegex(optsExtra).matches(groupName)
+                        }
+                    contentMatches && anyContactGroupMatches
+                } else {
+                    val particularNumberMatches =
+                        rule.patternExtra.toRegex(optsExtra).matches(numberToCheck)
 
-                contentMatches && particularNumberMatches
+                    contentMatches && particularNumberMatches
+                }
             } else {
                 contentMatches
             }
@@ -425,9 +465,13 @@ class Checker { // for namespace only
             )
 
             //  add number rules to checkers
-            val filters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
-            checkers += filters.map {
-                Checker.Number(rawNumber, it)
+            val rules = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
+            checkers += rules.map {
+                val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                if (forContactGroup)
+                    Checker.ContactGroup(ctx, rawNumber, it)
+                else
+                    Checker.Number(rawNumber, it)
             }
 
             // sort by priority desc
@@ -464,13 +508,17 @@ class Checker { // for namespace only
             //  add number rules to checkers
             val numberFilters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
             checkers += numberFilters.map {
-                Checker.Number(rawNumber, it)
+                val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                if (forContactGroup)
+                    Checker.ContactGroup(ctx, rawNumber, it)
+                else
+                    Checker.Number(rawNumber, it)
             }
 
             //  add sms content rules to checkers
             val contentFilters = ContentRuleTable().listRules(ctx, 0/* doesn't care */)
             checkers += contentFilters.map {
-                Checker.Content(rawNumber, messageBody, it)
+                Checker.Content(ctx, rawNumber, messageBody, it)
             }
 
             // sort by priority desc
@@ -588,6 +636,14 @@ class Checker { // for namespace only
                 )
 
                 Def.RESULT_BLOCKED_BY_NUMBER -> res.getString(R.string.blacklist) + ": " + reasonStr(
+                    ctx, NumberRuleTable(), reason
+                )
+
+                Def.RESULT_ALLOWED_BY_CONTACT_GROUP -> res.getString(R.string.contact_group) + ": " + reasonStr(
+                    ctx, NumberRuleTable(), reason
+                )
+
+                Def.RESULT_BLOCKED_BY_CONTACT_GROUP -> res.getString(R.string.contact_group) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason
                 )
 

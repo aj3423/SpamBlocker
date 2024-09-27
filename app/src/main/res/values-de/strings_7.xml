@@ -3,8 +3,23 @@
     <string name="end_time">Endzeit</string>
     <string name="next">Weiter</string>
     <string name="previous">Zurück</string>
-    <string name="follow_system">System</string>
-    <string name="theme">Thema</string>
+    <string name="switch_mode">Modus wechseln</string>
+    <string name="contact_group">Kontaktgruppe</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>Telefonnummer</b></font>:<br>
+        &ensp; Der Standardmodus, die Regex wird mit der Telefonnummer übereinstimmen.<br>
+        <br>
+        <font color="#00BFFF"><b>Kontaktgruppe</b></font>:<br>
+        &ensp; Die Regex wird mit der Kontaktgruppe übereinstimmen, die mit der eingehenden Nummer verbunden ist,
+                 alle Kontakte in dieser Gruppe werden blockiert.<br>
+        <br>
+        &ensp; Ein Anwendungsfall wäre:<br>
+        &emsp; Kontaktgruppe <b>Arbeit</b> am Wochenende mit Regex `Arbeit` blockieren.
+        ]]>
+    </string>
+    <string name="follow_system">System folgen</string>
+    <string name="theme">Design</string>
     <string-array name="theme_list">
         <item>Hell</item>
         <item>Dunkel</item>
@@ -13,13 +28,13 @@
         <item>Regel suchen</item>
         <item>Regel klonen</item>
         <item>Doppelte Regeln löschen</item>
-        <item>Alle (%d) Regeln löschen</item>
+        <item>Alle(%d) Regeln löschen</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Soll(en) die %d doppelten Regeln gelöscht werden?</string>
-    <string name="duration">dauer</string>
+    <string name="confirm_delete_duplicated_rule">Bestätigen Sie, um %d doppelte Regeln zu löschen?</string>
+    <string name="duration">Dauer</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Einzelne Dauer für jede App, bei leerer Eingabe gilt die globale Dauer.
+        Einzelne Dauer für jede App, wenn leer gelassen, wird auf die globale Dauer zurückgegriffen.
         ]]>
     </string>
 </resources>

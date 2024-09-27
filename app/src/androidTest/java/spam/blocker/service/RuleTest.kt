@@ -78,14 +78,16 @@ class RuleTest {
 
 
     private fun mock_contact(rawNumber: String) {
-        val ci = ContactInfo()
-        ci.name = "Mock_contact_$rawNumber"
+        val ci = ContactInfo(
+            id = "",
+            name = "Mock_contact_$rawNumber"
+        )
 
         mockkObject(Permissions)
         every { Permissions.isContactsPermissionGranted(ctx) } returns true
 
         mockkObject(Contacts)
-        every { Contacts.findByRawNumber(ctx, any()) } answers {
+        every { Contacts.findContactByRawNumber(ctx, any()) } answers {
             val num = secondArg<String>()
             if (Util.clearNumber(rawNumber).endsWith(num))
                 ci

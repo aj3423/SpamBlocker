@@ -70,7 +70,7 @@ fun HistoryCard(
             modifier = modifier.padding(8.dp)
         ) {
             // 1. avatar
-            val contact = Contacts.findByRawNumber(ctx, record.peer)
+            val contact = Contacts.findContactByRawNumber(ctx, record.peer)
             val bmpAvatar = contact?.loadAvatar(ctx)
             if (bmpAvatar != null) {
                 ComposeImage(bmpAvatar.asImageBitmap(), "", modifier = M

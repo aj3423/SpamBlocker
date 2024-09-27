@@ -1,9 +1,24 @@
 <resources>
-    <string name="start_time">Hora de inicio</string>
-    <string name="end_time">Hora de finalización</string>
+    <string name="start_time">Hora inicio</string>
+    <string name="end_time">Hora final</string>
     <string name="next">Siguiente</string>
     <string name="previous">Anterior</string>
-    <string name="follow_system">Seguir el sistema</string>
+    <string name="switch_mode">Cambiar modo</string>
+    <string name="contact_group">Grupo contactos</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>Número teléfono</b></font>:<br>
+        &ensp; Modo por defecto, la regex coincidirá con el número teléfono.<br>
+        <br>
+        <font color="#00BFFF"><b>Grupo contactos</b></font>:<br>
+        &ensp; La regex coincidirá con el grupo contactos asociado con el número entrante,
+                 todos los contactos en ese grupo serán bloqueados.<br>
+        <br>
+        &ensp; Caso práctico:<br>
+        &emsp; Bloquear el grupo contactos <b>trabajo</b> en fin de semana con la regex `trabajo`.
+        ]]>
+    </string>
+    <string name="follow_system">Seguir Sistema</string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>
@@ -11,15 +26,15 @@
     </string-array>
     <string-array name="rule_dropdown_menu">
         <item>Buscar regla</item>
-        <item>Clonar regla</item>
-        <item>Eliminar reglas duplicadas</item>
-        <item>Eliminar todas (%d) reglas</item>
+        <item>Duplicar regla</item>
+        <item>Borrar reglas duplicadas</item>
+        <item>Borrar todas las (%d) reglas</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Confirmar la eliminación de %d reglas duplicadas?</string>
+    <string name="confirm_delete_duplicated_rule">¿Confirmar borrar las %d reglas duplicadas?</string>
     <string name="duration">Duración</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Duración individual para cada aplicación; si se deja vacía, se utilizará la duración global.
+        Duración individual para cada app, cuando es vacío, seleccionará la duración general.
         ]]>
     </string>
 </resources>

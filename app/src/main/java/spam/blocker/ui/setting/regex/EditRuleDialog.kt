@@ -1,8 +1,14 @@
 package spam.blocker.ui.setting.regex
 
 import android.Manifest
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -13,9 +19,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.round
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
@@ -26,10 +40,15 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.CheckBox
+import spam.blocker.ui.widgets.CustomItem
+import spam.blocker.ui.widgets.DividerItem
+import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
@@ -37,6 +56,8 @@ import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.ResIcon
+import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.ShowAnimated
 import spam.blocker.ui.widgets.Spinner
@@ -46,6 +67,7 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker
+import spam.blocker.util.Clipboard
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
@@ -53,6 +75,78 @@ import spam.blocker.util.Schedule
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
 import spam.blocker.util.setFlag
+
+@Composable
+fun LeadingDropdownIcon(regexFlags: MutableState<Int>) {
+    val ctx = LocalContext.current
+    val C = LocalPalette.current
+
+    val dropdownOffset = remember {
+        mutableStateOf(Offset.Zero)
+    }
+
+    val dropdownItems = remember(Unit) {
+        val items: MutableList<IMenuItem> = mutableListOf(
+            CustomItem {
+                RowVCenter(
+                    modifier = M.padding(horizontal = 10.dp)
+                ) {
+                    GreyLabel(Str(R.string.switch_mode))
+                    BalloonQuestionMark(
+                        helpTooltipId = R.string.help_number_mode,
+                        dropdownOffset.value.round()
+                    )
+                }
+            },
+            DividerItem(thickness = 1),
+        )
+        // Number Mode
+        items += LabelItem(
+            label = ctx.getString(R.string.phone_number),
+            icon = { GreyIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp)) }
+        ) {
+            regexFlags.value = regexFlags.value.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, false)
+        }
+        // Contact Group Mode
+        items += LabelItem(
+            label = ctx.getString(R.string.contact_group),
+            icon = { GreyIcon(R.drawable.ic_account_circle, modifier = M.size(16.dp)) }
+        ) {
+            regexFlags.value = regexFlags.value.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, true)
+        }
+        items
+    }
+
+    DropdownWrapper(
+        items = dropdownItems,
+        modifier = M.onGloballyPositioned {
+            dropdownOffset.value = it.positionOnScreen()
+        }
+    ) { expanded ->
+        val forContactGroup = regexFlags.value.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+
+        Box {
+            ResIcon(
+                iconId = if (forContactGroup) {
+                    R.drawable.ic_account_circle
+                } else {
+                    R.drawable.ic_number_sign
+                },
+                modifier = M.size(18.dp)
+            )
+            Icon(
+                imageVector = ImageVector.vectorResource(R.drawable.spinner_arrow),
+                contentDescription = "",
+                tint = C.textGrey,
+                modifier = Modifier
+                    .size(6.dp)
+                    .align(Alignment.BottomEnd)
+                    .offset((4).dp, (4).dp)
+                    .clickable { expanded.value = true }
+            )
+        }
+    }
+}
 
 @Composable
 fun RuleEditDialog(
@@ -193,7 +287,11 @@ fun RuleEditDialog(
                         patternError = hasErr
                         pattern = newVal
                     },
-                    leadingIconId = if (forType == Def.ForNumber) R.drawable.ic_number_sign else R.drawable.ic_open_msg
+                    leadingIcon = if (forType == Def.ForNumber) {
+                        { LeadingDropdownIcon(patternFlags) }
+                    } else {
+                        { ResIcon(iconId = R.drawable.ic_open_msg, modifier = M.size(18.dp)) }
+                    }
                 )
 
                 // For particular number
@@ -219,7 +317,7 @@ fun RuleEditDialog(
                                 patternExtraError = hasErr
                                 patternExtra = newValue
                             },
-                            leadingIconId = R.drawable.ic_number_sign
+                            leadingIcon = { LeadingDropdownIcon(patternExtraFlags) }
                         )
                     }
                 }
@@ -391,17 +489,34 @@ fun RuleEditDialog(
                             listOf<(@Composable () -> Unit)?>(
                                 null,
                                 { GreyIcon(R.drawable.ic_shade, modifier = M.size(16.dp)) },
-                                { GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp)) },
+                                {
+                                    GreyIcon(
+                                        R.drawable.ic_statusbar_shade,
+                                        modifier = M.size(16.dp)
+                                    )
+                                },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon(R.drawable.ic_bell_ringing, modifier = M.size(16.dp))
-                                        GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp))
+                                        GreyIcon(
+                                            R.drawable.ic_bell_ringing,
+                                            modifier = M.size(16.dp)
+                                        )
+                                        GreyIcon(
+                                            R.drawable.ic_statusbar_shade,
+                                            modifier = M.size(16.dp)
+                                        )
                                     }
                                 },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon(R.drawable.ic_bell_ringing, modifier = M.size(16.dp))
-                                        GreyIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp))
+                                        GreyIcon(
+                                            R.drawable.ic_bell_ringing,
+                                            modifier = M.size(16.dp)
+                                        )
+                                        GreyIcon(
+                                            R.drawable.ic_statusbar_shade,
+                                            modifier = M.size(16.dp)
+                                        )
                                         GreyIcon(R.drawable.ic_heads_up, modifier = M.size(16.dp))
                                     }
                                 },

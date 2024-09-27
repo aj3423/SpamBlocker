@@ -16,7 +16,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.HistoryOptions
-import spam.blocker.util.logd
 
 class SmsReceiver : BroadcastReceiver() {
 
@@ -64,7 +63,7 @@ class SmsReceiver : BroadcastReceiver() {
             ctx.sendBroadcast(intent)
         }
 
-        val showName = Contacts.findByRawNumber(ctx, rawNumber)?.name ?: rawNumber
+        val showName = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber
 
         if (r.shouldBlock) {
             var importance = NotificationManager.IMPORTANCE_LOW // default: LOW

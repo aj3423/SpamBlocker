@@ -73,7 +73,7 @@ private fun InputBox(
     ),
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
-    leadingIconId: Int? = null,
+    leadingIcon: @Composable (() -> Unit)? = null, // size should be 18.dp by default
     trailingIcon: @Composable (() -> Unit)? = null,
     prefix: @Composable (() -> Unit)? = null,
     suffix: @Composable (() -> Unit)? = null,
@@ -153,16 +153,7 @@ private fun InputBox(
                     innerTextField = innerTextField,
                     placeholder = placeholder,
                     label = label,
-                    leadingIcon = if (leadingIconId == null) {
-                        null
-                    } else {
-                        {
-                            ResIcon(
-                                leadingIconId,
-                                modifier = Modifier.size(18.dp)
-                            )
-                        }
-                    },
+                    leadingIcon = leadingIcon,
                     trailingIcon = trailingIcon,
                     prefix = prefix,
                     suffix = suffix,
@@ -217,12 +208,14 @@ fun NumberInputBox(
     // callback. We keep track of it to prevent calling onValueChange(String) for same String when
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
     var lastText by remember(intValue) { mutableStateOf(intValue?.toString() ?: "") }
-    var hasError by remember(lastText) { mutableStateOf(
-        if (allowEmpty && lastText.isEmpty())
-            false
-        else
-            lastText.toIntOrNull() == null
-    ) }
+    var hasError by remember(lastText) {
+        mutableStateOf(
+            if (allowEmpty && lastText.isEmpty())
+                false
+            else
+                lastText.toIntOrNull() == null
+        )
+    }
 
     InputBox(
         value = state,
@@ -253,7 +246,9 @@ fun NumberInputBox(
         },
         label = label,
         placeholder = placeholder,
-        leadingIconId = leadingIconId,
+        leadingIcon = leadingIconId?.let {
+            { ResIcon(iconId = it, modifier = M.size(18.dp)) }
+        },
         supportingTextStr = if (hasError) Str(R.string.invalid_number) else null,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
@@ -317,7 +312,9 @@ fun StrInputBox(
         singleLine = singleLine,
         maxLines = maxLines,
         placeholder = placeholder,
-        leadingIconId = leadingIconId,
+        leadingIcon = leadingIconId?.let {
+            { ResIcon(iconId = it, modifier = M.size(18.dp)) }
+        },
         keyboardOptions = KeyboardOptions(),
         trailingIcon = {
             if (lastText.isNotEmpty()) {
@@ -346,7 +343,7 @@ fun RegexInputBox(
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
-    leadingIconId: Int? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
 ) {
     val ctx = LocalContext.current
 
@@ -386,7 +383,7 @@ fun RegexInputBox(
         },
         label = label,
         placeholder = placeholder,
-        leadingIconId = leadingIconId,
+        leadingIcon = leadingIcon,
         supportingTextStr = errorStr,
         singleLine = false,
         maxLines = 10,

@@ -1,17 +1,22 @@
 package spam.blocker.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
-import android.provider.ContactsContract.Contacts
+import android.provider.ContactsContract
 import android.provider.ContactsContract.PhoneLookup
+import android.provider.ContactsContract.CommonDataKinds.Phone
+import android.provider.ContactsContract.CommonDataKinds.GroupMembership
 
-class ContactInfo {
-    var name = ""
-    var iconUri: String? = null // icon is Bitmap
-
+data class ContactInfo(
+    val id: String,
+    val name: String,
+    val iconUri: String? = null
+) {
+    // icon is Bitmap
     fun loadAvatar(ctx: Context): Bitmap? {
         if (iconUri == null) {
             return null
@@ -31,8 +36,7 @@ class ContactInfo {
 
 
 object Contacts {
-
-    fun findByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
+    fun findContactByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
         if (!Permissions.isContactsPermissionGranted(ctx)) {
             return null
         }
@@ -46,8 +50,9 @@ object Contacts {
             ctx.contentResolver.query(
                 uri,
                 arrayOf(
-                    Contacts.DISPLAY_NAME,
-                    Contacts.PHOTO_URI
+                    PhoneLookup.CONTACT_ID,
+                    PhoneLookup.DISPLAY_NAME,
+                    PhoneLookup.PHOTO_URI
                 ),
                 null,
                 null,
@@ -58,20 +63,71 @@ object Contacts {
         }
 
         cursor?.use {
-            val nameIndex = it.getColumnIndex(Contacts.DISPLAY_NAME)
-            val iconIndex = it.getColumnIndex(Contacts.PHOTO_URI)
+            val idIndex = it.getColumnIndex(PhoneLookup.CONTACT_ID)
+            val nameIndex = it.getColumnIndex(PhoneLookup.DISPLAY_NAME)
+            val iconIndex = it.getColumnIndex(PhoneLookup.PHOTO_URI)
 
             while (it.moveToNext()) {
-
-                val ci = ContactInfo()
-
-                ci.name = it.getString(nameIndex)
-                ci.iconUri = it.getString(iconIndex)
-
-                logd("---- contact matches, name: ${ci.name}, icon: ${ci.iconUri}")
+                val ci = ContactInfo(
+                    id = it.getString(idIndex),
+                    name = it.getString(nameIndex),
+                    iconUri = it.getString(iconIndex)
+                )
+//                logd("---- contact matches, name: ${ci.name}, icon: ${ci.iconUri}")
                 return ci
             }
         }
         return null
+    }
+
+    // Find a list of groups that contain this number,
+    // returns the group names
+    @SuppressLint("Range")
+    fun findGroupsByRawNumber(ctx: Context, rawNumber: String): List<String> {
+        val groupNames = mutableListOf<String>()
+
+        if (!Permissions.isContactsPermissionGranted(ctx)) {
+            return groupNames
+        }
+
+        val contactId = findContactByRawNumber(ctx, rawNumber)?.id
+
+        if (contactId != null) {
+
+            // Query to get the group IDs this contact belongs to
+            val groupCursor = ctx.contentResolver.query(
+                ContactsContract.Data.CONTENT_URI,
+                arrayOf(GroupMembership.GROUP_ROW_ID),
+                "${ContactsContract.Data.CONTACT_ID} = ? AND ${ContactsContract.Data.MIMETYPE} = ?",
+                arrayOf(contactId, GroupMembership.CONTENT_ITEM_TYPE),
+                null
+            )
+
+            // iterate all groups
+            groupCursor?.use { gc ->
+                while (gc.moveToNext()) {
+                    val groupId = gc.getString(gc.getColumnIndex(GroupMembership.GROUP_ROW_ID))
+
+                    // Query the group details to get the group name
+                    val cursor = ctx.contentResolver.query(
+                        ContactsContract.Groups.CONTENT_URI,
+                        arrayOf(ContactsContract.Groups.TITLE),
+                        "${ContactsContract.Groups._ID} = ?",
+                        arrayOf(groupId),
+                        null
+                    )
+
+                    cursor?.use { gcDetail ->
+                        if (gcDetail.moveToFirst()) {
+                            val groupName =
+                                gcDetail.getString(gcDetail.getColumnIndex(ContactsContract.Groups.TITLE))
+                            groupNames.add(groupName)
+                        }
+                    }
+                }
+            }
+        }
+
+        return groupNames
     }
 }

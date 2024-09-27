@@ -59,7 +59,7 @@ object Def {
     const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
     const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT
 
-    // allowed (1-9, 100+)
+    // allowed (1~9, 100+)
     const val RESULT_ALLOWED_BY_DEFAULT = 1
     const val RESULT_ALLOWED_BY_NUMBER = 2
     const val RESULT_ALLOWED_BY_CONTACT = 3
@@ -70,24 +70,26 @@ object Def {
     const val RESULT_ALLOWED_BY_OFF_TIME = 8
     const val RESULT_ALLOWED_BY_EMERGENCY = 9
     const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
+    const val RESULT_ALLOWED_BY_CONTACT_GROUP = 101
 
 
-    // blocked
+    // blocked (10~99)
     const val RESULT_BLOCKED_BY_NUMBER = 10
     const val RESULT_BLOCKED_BY_CONTENT = 11
     const val RESULT_BLOCKED_BY_NON_CONTACT = 12
     const val RESULT_BLOCKED_BY_STIR = 13
+    const val RESULT_BLOCKED_BY_CONTACT_GROUP = 14
 
     fun isBlocked(result: Int): Boolean {
         return result in 10..99
     }
+
     fun isNotBlocked(result: Int): Boolean {
         return !isBlocked(result)
     }
 
 
     // flags
-    // for call/sms
     const val FLAG_FOR_CALL = 1 shl 0
     const val FLAG_FOR_SMS = 1 shl 1
     const val FLAG_FOR_NUMBER = 1 shl 2
@@ -95,21 +97,25 @@ object Def {
     const val FLAG_FOR_PASSED = 1 shl 4
     const val FLAG_FOR_BLOCKED = 1 shl 5
 
+    // regexFlags
     const val FLAG_REGEX_IGNORE_CASE = 1 shl 0
     const val FLAG_REGEX_MULTILINE = 1 shl 1
     const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
     const val FLAG_REGEX_LITERAL = 1 shl 3
-    const val FLAG_REGEX_RAW_NUMBER = 1 shl 10
+    const val FLAG_REGEX_RAW_NUMBER = 1 shl 10 // max: 1 shl 30
+    const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
 
     val MAP_REGEX_FLAGS = mapOf(
         FLAG_REGEX_IGNORE_CASE to "i",
         FLAG_REGEX_MULTILINE to "m",
         FLAG_REGEX_DOT_MATCH_ALL to "d",
         FLAG_REGEX_LITERAL to "l",
-        FLAG_REGEX_RAW_NUMBER to "r"
+        FLAG_REGEX_RAW_NUMBER to "r",
+        FLAG_REGEX_FOR_CONTACT_GROUP to "g",
     )
+
     // inverse means it won't show labels for these flags when they are set
-    // only show labels when they are off
+    // only show labels when they are not set
     val LIST_REGEX_FLAG_INVERSE = listOf(
         FLAG_REGEX_IGNORE_CASE,
         FLAG_REGEX_DOT_MATCH_ALL

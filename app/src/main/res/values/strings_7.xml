@@ -3,6 +3,21 @@
     <string name="end_time">End Time</string>
     <string name="next">Next</string>
     <string name="previous">Prev</string>
+    <string name="switch_mode">Switch Mode</string>
+    <string name="contact_group">Contact Group</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>Phone Number</b></font>:<br>
+        &ensp; The default mode, the regex will match the phone number.<br>
+        <br>
+        <font color="#00BFFF"><b>Contact Group</b></font>:<br>
+        &ensp; The regex will match the contact group associated with the incoming number,
+                 all the contacts in that group will be blocked.<br>
+        <br>
+        &ensp; A use case would be:<br>
+        &emsp; Block contact group <b>work</b> at weekend with regex `work`.
+        ]]>
+    </string>
     <string name="follow_system">Follow System</string>
     <string name="theme">Theme</string>
     <string-array name="theme_list">

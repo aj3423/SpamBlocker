@@ -120,5 +120,17 @@ class Schedule {
 
             return ret
         }
+
+        // If it's enabled and not match the current time
+        fun dissatisfyNow(scheduleString: String): Boolean {
+            val sch = parseFromStr(scheduleString)
+            if (sch.enabled) {
+                val now = Time.currentMillis()
+                if (!sch.satisfyTime(now)) {
+                    return true
+                }
+            }
+            return false
+        }
     }
 }

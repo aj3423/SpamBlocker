@@ -1,25 +1,40 @@
 <resources>
     <string name="start_time">Время начала</string>
-    <string name="end_time">Время окончания</string>
+    <string name="end_time">Время конца</string>
     <string name="next">Далее</string>
     <string name="previous">Назад</string>
-    <string name="follow_system">Сл. системе</string>
+    <string name="switch_mode">Переключить режим</string>
+    <string name="contact_group">Группа контактов</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>Телефонный номер</b></font>:<br>
+        &ensp; Режим по умолчанию, регулярное выражение будет соответствовать номеру телефона.<br>
+        <br>
+        <font color="#00BFFF"><b>Группа контактов</b></font>:<br>
+        &ensp; Регулярное выражение будет соответствовать группе контактов, связанной с входящим номером,
+                 все контакты в этой группе будут заблокированы.<br>
+        <br>
+        &ensp; Пример использования:<br>
+        &emsp; Заблокировать группу контактов <b>работа</b> на выходных с регулярным выражением `работа`.
+        ]]>
+    </string>
+    <string name="follow_system">Следовать за системой</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
         <item>Светлая</item>
         <item>Темная</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Найти правило</item>
-        <item>Клон. прав.</item>
-        <item>Уд. повторн. прав.</item>
-        <item>Уд. все(%d) прав.</item>
+        <item>Искать правило</item>
+        <item>Клонировать правило</item>
+        <item>Удалить дублированные правила</item>
+        <item>Удалить все (%d) правила</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Удалить %d повторяющихся прав.?</string>
+    <string name="confirm_delete_duplicated_rule">Подтвердите удаление %d дублированных правил?</string>
     <string name="duration">Длительность</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Отдельная длительность для каждого приложения, когда пусто, то станет общей длительностью.
+        Индивидуальная длительность для каждого приложения, если оставить пустым, то она будет совпадать с глобальной длительностью.
         ]]>
     </string>
 </resources>
