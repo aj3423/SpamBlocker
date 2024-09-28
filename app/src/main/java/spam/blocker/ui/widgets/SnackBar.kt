@@ -21,7 +21,7 @@ object SnackBar {
             state.currentSnackbarData?.dismiss()
 
             val result = state.showSnackbar(
-                content,
+                if (content.length > 50) content.substring(0, 50) + "..." else content,
                 actionLabel,
                 withDismissAction = false,
                 duration = SnackbarDuration.Short

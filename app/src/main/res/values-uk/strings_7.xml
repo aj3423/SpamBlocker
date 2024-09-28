@@ -1,8 +1,6 @@
 <resources>
     <string name="start_time">Час початку</string>
     <string name="end_time">Час закінчення</string>
-    <string name="next">Далі</string>
-    <string name="previous">Назад</string>
     <string name="switch_mode">Зміна режиму</string>
     <string name="contact_group">Контактна група</string>
     <string name="help_number_mode">
