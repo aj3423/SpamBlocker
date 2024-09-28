@@ -2,24 +2,25 @@
     <string name="start_time">Startzeit</string>
     <string name="end_time">Endzeit</string>
     <string name="next">Weiter</string>
-    <string name="previous">Zurück</string>
-    <string name="switch_mode">Modus wechseln</string>
+    <string name="previous">Vorherig</string>
+    <string name="switch_mode">Modus ändern</string>
     <string name="contact_group">Kontaktgruppe</string>
     <string name="help_number_mode">
         <![CDATA[
         <font color="#00BFFF"><b>Telefonnummer</b></font>:<br>
-        &ensp; Der Standardmodus, die Regex wird mit der Telefonnummer übereinstimmen.<br>
+        &ensp; Der Standardmodus, der Regex wird die Telefonnummer abgleichen.<br>
         <br>
         <font color="#00BFFF"><b>Kontaktgruppe</b></font>:<br>
-        &ensp; Die Regex wird mit der Kontaktgruppe übereinstimmen, die mit der eingehenden Nummer verbunden ist,
-                 alle Kontakte in dieser Gruppe werden blockiert.<br>
+        &ensp; Der Regex wird den mit der ankommenden Nummer verknüpften Kontaktgruppennamen abgleichen,
+                 der sich auf alle Kontakte in dieser Gruppe auswirkt, sodass Sie sie nicht einzeln hinzufügen müssen,
+                 und Sie müssen sie auch dann nicht aktualisieren, wenn es Personaländerungen gibt.<br>
         <br>
-        &ensp; Ein Anwendungsfall wäre:<br>
-        &emsp; Kontaktgruppe <b>Arbeit</b> am Wochenende mit Regex `Arbeit` blockieren.
+        &ensp; Ein Anwendungsfall:<br>
+        &emsp; Blockieren Sie alle Mitarbeiter am Wochenende, indem Sie die Kontaktgruppe "Arbeit" blockieren.
         ]]>
     </string>
     <string name="follow_system">System folgen</string>
-    <string name="theme">Design</string>
+    <string name="theme">Thema</string>
     <string-array name="theme_list">
         <item>Hell</item>
         <item>Dunkel</item>
@@ -27,14 +28,14 @@
     <string-array name="rule_dropdown_menu">
         <item>Regel suchen</item>
         <item>Regel klonen</item>
-        <item>Doppelte Regeln löschen</item>
-        <item>Alle(%d) Regeln löschen</item>
+        <item>Duplizierte Regeln löschen</item>
+        <item>Alles löschen (%d) Regeln</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Bestätigen Sie, um %d doppelte Regeln zu löschen?</string>
+    <string name="confirm_delete_duplicated_rule">%d duplizierte Regeln zum Löschen bestätigen?</string>
     <string name="duration">Dauer</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Einzelne Dauer für jede App, wenn leer gelassen, wird auf die globale Dauer zurückgegriffen.
+        Individuelle Dauer für jede App, wenn leer gelassen, wird auf die globale Dauer zurückgegriffen.
         ]]>
     </string>
 </resources>

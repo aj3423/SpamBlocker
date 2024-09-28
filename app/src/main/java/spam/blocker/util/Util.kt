@@ -190,7 +190,7 @@ class Util {
             if (!isRegexValid(s))
                 return ctx.getString(R.string.invalid_regex_pattern)
 
-            if (s.startsWith("^"))
+            if (s.startsWith("^")) // may be it's `^0` or `^+1`
                 s = s.substring(1)
 
             if ((s.startsWith("+") || s.startsWith("\\+")) && !disableNumberOptimization)

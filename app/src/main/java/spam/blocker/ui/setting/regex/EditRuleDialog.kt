@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -77,7 +78,7 @@ import spam.blocker.util.hasFlag
 import spam.blocker.util.setFlag
 
 @Composable
-fun LeadingDropdownIcon(regexFlags: MutableState<Int>) {
+fun LeadingDropdownIcon(regexFlags: MutableIntState) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
@@ -105,14 +106,14 @@ fun LeadingDropdownIcon(regexFlags: MutableState<Int>) {
             label = ctx.getString(R.string.phone_number),
             icon = { GreyIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp)) }
         ) {
-            regexFlags.value = regexFlags.value.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, false)
+            regexFlags.intValue = regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, false)
         }
         // Contact Group Mode
         items += LabelItem(
             label = ctx.getString(R.string.contact_group),
             icon = { GreyIcon(R.drawable.ic_account_circle, modifier = M.size(16.dp)) }
         ) {
-            regexFlags.value = regexFlags.value.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, true)
+            regexFlags.intValue = regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, true)
         }
         items
     }
@@ -123,7 +124,7 @@ fun LeadingDropdownIcon(regexFlags: MutableState<Int>) {
             dropdownOffset.value = it.positionOnScreen()
         }
     ) { expanded ->
-        val forContactGroup = regexFlags.value.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+        val forContactGroup = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
 
         Box {
             ResIcon(
@@ -274,7 +275,9 @@ fun RuleEditDialog(
                         Text(
                             Str(
                                 when (forType) {
-                                    Def.ForNumber -> R.string.number_pattern
+                                    Def.ForNumber -> if (patternFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
+                                        R.string.contact_group else R.string.phone_number
+
                                     Def.ForSms -> R.string.sms_content_pattern
                                     else -> R.string.quick_copy
                                 }
@@ -327,7 +330,7 @@ fun RuleEditDialog(
                     text = description,
                     label = { Text(Str(R.string.description), color = Color.Unspecified) },
                     onValueChange = { description = it },
-                    leadingIconId = R.drawable.ic_question,
+                    leadingIconId = R.drawable.ic_note,
                     maxLines = 1,
                 )
 

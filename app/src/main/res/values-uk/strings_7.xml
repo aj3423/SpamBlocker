@@ -1,40 +1,39 @@
 <resources>
     <string name="start_time">Початковий час</string>
     <string name="end_time">Кінцевий час</string>
-    <string name="next">Наступний</string>
+    <string name="next">Далі</string>
     <string name="previous">Попередній</string>
-    <string name="switch_mode">Переключити режим</string>
+    <string name="switch_mode">Вибір режиму</string>
     <string name="contact_group">Група контактів</string>
     <string name="help_number_mode">
         <![CDATA[
         <font color="#00BFFF"><b>Номер телефону</b></font>:<br>
-        &ensp; Режим за замовчуванням, регулярний вираз буде співпадати з номером телефону.<br>
+        &ensp; Режим за замовчуванням.<br>
         <br>
         <font color="#00BFFF"><b>Група контактів</b></font>:<br>
-        &ensp; Регулярний вираз буде співпадати з групою контактів, пов\'язаної з вхідним номером,
-                 всі контакти в цій групі будуть заблоковані.<br>
+        &ensp; Охоплює повідомлення від контактів з відповідної групи. Тож не обов\'язково кожного контакту вносити окремо і оновлювати при змінах персоналу.<br>
         <br>
-        &ensp; Приклад використання:<br>
-        &emsp; Заблокувати групу контактів <b>робота</b> на вихідні з регулярним виразом `робота`.
+        &ensp; Варіант використання:<br>
+        &emsp; Заборонити контакти з робочої групи "робота" у вихідні.
         ]]>
     </string>
-    <string name="follow_system">Використовувати системні</string>
+    <string name="follow_system">За схемою</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
         <item>Світла</item>
         <item>Темна</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Знайти правило</item>
+        <item>Шукати правила</item>
         <item>Клонувати правило</item>
-        <item>Видалити дублюючі правила</item>
-        <item>Видалити всі (%d) правила</item>
+        <item>Видалити дублікати правил</item>
+        <item>Видалити всі (%d) правил</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Підтвердити видалення %d дублюючих правил?</string>
+    <string name="confirm_delete_duplicated_rule">Підтвердити видалення %d дублікатів правил?</string>
     <string name="duration">Тривалість</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Індивідуальна тривалість для кожного застосунку, коли залишено пустим, буде використано глобальну тривалість.
+        Індивідуальна тривалість для кожного додатку. Якщо залишити пустим, буде застосовано загальну тривалість.
         ]]>
     </string>
 </resources>

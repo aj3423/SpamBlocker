@@ -357,8 +357,17 @@ fun RegexInputBox(
     // callback. We keep track of it to prevent calling onValueChange(String) for same String when
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
     var lastText by remember(regexStr) { mutableStateOf(regexStr) }
+
+    fun validate(): String? {
+        return Util.validateRegex(
+            ctx,
+            lastText,
+            regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER) ||
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+        )
+    }
     var errorStr = remember(lastText) {
-        Util.validateRegex(ctx, lastText, regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
+        validate()
     }
 
     InputBox(
@@ -370,12 +379,7 @@ fun RegexInputBox(
             val stringChangedSinceLastInvocation = lastText != newState.text
             lastText = newState.text
 
-            errorStr =
-                Util.validateRegex(
-                    ctx,
-                    lastText,
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)
-                )
+            errorStr = validate()
 
             if (stringChangedSinceLastInvocation) {
                 onRegexStrChange(lastText, errorStr != null)
@@ -388,8 +392,6 @@ fun RegexInputBox(
         singleLine = false,
         maxLines = 10,
         trailingIcon = {
-            val C = LocalPalette.current
-
             val hasI =
                 remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) }
             val hasD =

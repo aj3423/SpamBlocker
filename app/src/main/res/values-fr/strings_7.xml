@@ -1,40 +1,41 @@
 <resources>
     <string name="start_time">Heure de départ</string>
     <string name="end_time">Heure de fin</string>
-    <string name="next">Après</string>
-    <string name="previous">Avant</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Précédent</string>
     <string name="switch_mode">Changer de mode</string>
     <string name="contact_group">Groupe de contacts</string>
     <string name="help_number_mode">
         <![CDATA[
-        <font color="#00BFFF"><b>Numéro de tél.</b></font>:<br>
-        &ensp; Par défaut, l\'expression régulière correspond au numéro de téléphone.<br>
+        <font color="#00BFFF"><b>Numéro de tel</b></font>:<br>
+        &ensp; Le mode par défaut, le regex correspondra au numéro de téléphone.<br>
         <br>
         <font color="#00BFFF"><b>Groupe de contacts</b></font>:<br>
-        &ensp; L\'expression régulière correspond au groupe de contacts associé au numéro entrant,
-                 tous les contacts de ce groupe seront bloqués.<br>
+        &ensp; Le regex correspondra au nom du groupe de contacts associé au numéro entrant,
+                 impactant tous les contacts dans ce groupe, donc vous n\'avez pas besoin de les ajouter individuellement,
+                 et pas besoin de le mettre à jour même en cas de changements de personnel.<br>
         <br>
-        &ensp; Cas d\'utilisation :<br>
-        &emsp; Bloquer le groupe de contacts <b>travail</b> le week-end avec l\'expression "travail".
+        &ensp; Un scénario d\'utilisation :<br>
+        &emsp; Bloquer tous les collègues le week-end en bloquant le groupe de contacts "travail".
         ]]>
     </string>
-    <string name="follow_system">Suivre syst.</string>
+    <string name="follow_system">Suivre le système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
-        <item>Claro</item>
+        <item>Clair</item>
         <item>Foncé</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Chercher la règle</item>
+        <item>Rechercher la règle</item>
         <item>Cloner la règle</item>
-        <item>Supprimer les règles en doublon</item>
-        <item>Tout supprimer (%d) règles</item>
+        <item>Supprimer les règles en double</item>
+        <item>Tout supprimer (%d ) Règles</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Confirmer la suppression de %d règles en doublon ?</string>
+    <string name="confirm_delete_duplicated_rule">Confirmer la suppression de %d règles en double ?</string>
     <string name="duration">Durée</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Durée individuelle pour chaque application ; si vide, revient à la durée générale.
+        Durée individuelle pour chaque appli, lorsque vide, il reviendra à la durée globale.
         ]]>
     </string>
 </resources>
