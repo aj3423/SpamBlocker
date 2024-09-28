@@ -159,7 +159,7 @@ fun RuleList(
         }
     )
 
-    val contextMenuItems = remember {
+    val contextMenuItems =
         ctx.resources.getStringArray(R.array.rule_dropdown_menu).mapIndexed { menuIndex, label ->
             LabelItem(
                 label = when (menuIndex) {
@@ -190,7 +190,6 @@ fun RuleList(
                 }
             }
         }
-    }
 
     // Nested LazyColumn is forbidden in jetpack compose, to workaround this:
     // when < 20 rules:
