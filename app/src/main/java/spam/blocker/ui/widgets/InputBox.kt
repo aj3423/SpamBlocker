@@ -43,6 +43,8 @@ import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Orange
+import spam.blocker.ui.theme.OrangeRed
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.Lambda2
@@ -57,6 +59,8 @@ import spam.blocker.util.toFlagStr
 //      defaultMinSize( minWidth = 2000.dp, minHeight = 36.dp, ),
 //  - reduce the content padding-top:
 //      contentPadding = PaddingValues( 16.dp, 12.dp ),
+
+const val MAX_STR_LEN = 1000
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -108,6 +112,11 @@ private fun InputBox(
     ),
 ) {
 
+    // The input box will freeze for super long text, to solve this, if the input text exceeds
+    // this length, the text will be truncated to this length, and the edit will be disabled.
+    // There is no point to edit such long text, it has to be a imported rule.
+    val exceedsMaxLen = value.text.length > MAX_STR_LEN
+
     Column(
         modifier = if (label != null) {
             modifier
@@ -120,14 +129,17 @@ private fun InputBox(
         }
     ) {
         BasicTextField(
-            value = value,
+            value = if (exceedsMaxLen)
+                value.copy(text = value.text.substring(0, MAX_STR_LEN))
+            else
+                value,
             modifier = M
                 .defaultMinSize(
                     minWidth = 2000.dp, // use a large value, it wil be shrunk automatically
                     minHeight = 36.dp, // 36 is enough
                 ),
             onValueChange = onValueChange,
-            enabled = enabled,
+            enabled = enabled && !exceedsMaxLen,
             readOnly = readOnly,
             textStyle = textStyle,
             cursorBrush = SolidColor(
@@ -174,6 +186,16 @@ private fun InputBox(
                 )
             }
         )
+
+        if (exceedsMaxLen) {
+            Text(
+                text = Str(R.string.text_too_long),
+                color = Orange,
+                fontSize = 14.sp,
+                lineHeight = 14.sp,
+                modifier = M.padding(4.dp),
+            )
+        }
 
         // support text
         if (supportingTextStr != null) {
@@ -366,6 +388,7 @@ fun RegexInputBox(
                     regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
         )
     }
+
     var errorStr = remember(lastText) {
         validate()
     }

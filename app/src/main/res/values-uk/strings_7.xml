@@ -1,39 +1,42 @@
 <resources>
-    <string name="start_time">Початковий час</string>
-    <string name="end_time">Кінцевий час</string>
+    <string name="start_time">Час початку</string>
+    <string name="end_time">Час закінчення</string>
     <string name="next">Далі</string>
-    <string name="previous">Попередній</string>
-    <string name="switch_mode">Вибір режиму</string>
-    <string name="contact_group">Група контактів</string>
+    <string name="previous">Назад</string>
+    <string name="switch_mode">Зміна режиму</string>
+    <string name="contact_group">Контактна група</string>
     <string name="help_number_mode">
         <![CDATA[
         <font color="#00BFFF"><b>Номер телефону</b></font>:<br>
-        &ensp; Режим за замовчуванням.<br>
+        &ensp; Режим за замовчуванням, regex зіставлятиметься з номером телефону.<br>
         <br>
-        <font color="#00BFFF"><b>Група контактів</b></font>:<br>
-        &ensp; Охоплює повідомлення від контактів з відповідної групи. Тож не обов\'язково кожного контакту вносити окремо і оновлювати при змінах персоналу.<br>
+        <font color="#00BFFF"><b>Контактна група</b></font>:<br>
+        &ensp; Regex зіставлятиметься з іменем контактної групи, пов\'язаним із вхідним номером,
+                 впливаючи на всі контакти у цій групі, тому вам не потрібно додавати їх окремо,
+                 і не потрібно оновлювати його навіть у разі зміни персоналу.<br>
         <br>
-        &ensp; Варіант використання:<br>
-        &emsp; Заборонити контакти з робочої групи "робота" у вихідні.
+        &ensp; Випадок використання:<br>
+        &emsp; Заблокуйте усіх співробітників на вихідних, заблокувавши контактну групу "Робота".
         ]]>
     </string>
-    <string name="follow_system">За схемою</string>
+    <string name="text_too_long">Текст надто довгий; редагування вимкнено</string>
+    <string name="follow_system">Відповідно до системи</string>
     <string name="theme">Тема</string>
     <string-array name="theme_list">
         <item>Світла</item>
         <item>Темна</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Шукати правила</item>
-        <item>Клонувати правило</item>
-        <item>Видалити дублікати правил</item>
-        <item>Видалити всі (%d) правил</item>
+        <item>Пошук правила</item>
+        <item>Клонування правила</item>
+        <item>Видалення повторюваних правил</item>
+        <item>Видалити всі(%d) правила</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Підтвердити видалення %d дублікатів правил?</string>
+    <string name="confirm_delete_duplicated_rule">Підтвердити видалення %d повторюваних правил?</string>
     <string name="duration">Тривалість</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Індивідуальна тривалість для кожного додатку. Якщо залишити пустим, буде застосовано загальну тривалість.
+        Тривалість для кожного додатка, якщо залишити її порожньою, вона повернеться до глобальної тривалості.
         ]]>
     </string>
 </resources>

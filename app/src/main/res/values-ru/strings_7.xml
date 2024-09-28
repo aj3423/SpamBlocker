@@ -1,41 +1,42 @@
 <resources>
-    <string name="start_time">Начало</string>
-    <string name="end_time">Конец</string>
-    <string name="next">След</string>
-    <string name="previous">Пред</string>
+    <string name="start_time">Время начала</string>
+    <string name="end_time">Время окончания</string>
+    <string name="next">След.</string>
+    <string name="previous">Пред.</string>
     <string name="switch_mode">Переключить режим</string>
-    <string name="contact_group">Контакты</string>
+    <string name="contact_group">Группа контактов</string>
     <string name="help_number_mode">
         <![CDATA[
         <font color="#00BFFF"><b>Номер телефона</b></font>:<br>
         &ensp; Режим по умолчанию, регулярное выражение будет соответствовать номеру телефона.<br>
         <br>
-        <font color="#00BFFF"><b>Контакты</b></font>:<br>
-        &ensp; Регулярное выражение будет соответствовать имени группы контактов, связанной с входящим номером,
-                 затрагивая все контакты в этой группе, поэтому вам не нужно добавлять их по отдельности,
-                 и нет необходимости обновлять его даже при изменениях в составе персонала.<br>
+        <font color="#00BFFF"><b>Группа контактов</b></font>:<br>
+        &ensp; Регулярное выражение будет соответствовать названию группы контактов, связанной с номером,
+                 действуя на все контакты в этой группе, так что вам не нужно добавлять их по отдельности
+                 и не нужно ее обновлять даже при изменении состава сотрудников.<br>
         <br>
         &ensp; Пример использования:<br>
-        &emsp; Блокировать всех коллег в выходные дни, заблокировав группу контактов «Работа».
+        &emsp; Заблокировать всех сослуживцев на выходных, заблокировав группу контактов "работа".
         ]]>
     </string>
-    <string name="follow_system">Следовать системе</string>
-    <string name="theme">Тема</string>
+    <string name="text_too_long">Текст слишком длинный, редактирование отключено</string>
+    <string name="follow_system">Система</string>
+    <string name="theme">Темы</string>
     <string-array name="theme_list">
         <item>Светлая</item>
         <item>Тёмная</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Найти правило</item>
+        <item>Искать правило</item>
         <item>Клонировать правило</item>
-        <item>Удалить повторяющиеся правила</item>
-        <item>Удалить все правила (%d)</item>
+        <item>Удалить дублирующие правила</item>
+        <item>Удалить все (%d) правила</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Подтвердите удаление %d повторяющихся правил?</string>
+    <string name="confirm_delete_duplicated_rule">Подтвердите удаление %d дублирующихся правил?</string>
     <string name="duration">Длительность</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Индивидуальная длительность для каждого приложения, если оставить пустым, она вернется к глобальной длительности.
+        Длительность для каждого приложения отдельно, если оставить пустым, будет использоваться общая длительность.
         ]]>
     </string>
 </resources>

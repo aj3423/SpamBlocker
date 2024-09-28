@@ -310,7 +310,8 @@ fun RuleEditDialog(
                         RegexInputBox(
                             label = {
                                 Text(
-                                    Str(R.string.phone_number),
+                                    Str(if (patternExtraFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
+                                        R.string.contact_group else R.string.phone_number),
                                     color = Color.Unspecified
                                 )
                             },

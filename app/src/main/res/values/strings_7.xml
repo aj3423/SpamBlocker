@@ -19,6 +19,7 @@
         &emsp; Block all coworkers at weekends by blocking the contact group "work".
         ]]>
     </string>
+    <string name="text_too_long">Text too long, editing is disabled</string>
     <string name="follow_system">Follow System</string>
     <string name="theme">Theme</string>
     <string-array name="theme_list">
