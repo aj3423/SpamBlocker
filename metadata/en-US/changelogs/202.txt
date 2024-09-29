@@ -1,0 +1,7 @@
+New: 
+ - RecentApps: individual duration for each app
+ - "Contact Group" mode in regex rule, making it easy to block all contacts in a group at once instead of blocking them individually 
+ - Context menu item "Delete duplicated rules"
+Fix:
+ - UI frozen due to super long regex
+ - rule count indicator in "delete all(%d) rules" never get updated
