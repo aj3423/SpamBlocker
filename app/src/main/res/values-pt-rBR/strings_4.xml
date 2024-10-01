@@ -1,0 +1,38 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        Quando ativado, todas as chamadas(mensagens) serão permitidas durante este período. Geralmente não há spams à noite. <br>
+        <br>
+        Se o horário de início for maior que o horário de término, por exemplo, 20:00 -> 07:00, significa o período das 20:00 da noite até às 07:00 da manhã seguinte. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Estas flags alteram o comportamento de correspondência do regex, elas são definidas para novas regras por padrão. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignorar Maiúsculas / Minúsculas</b></font>: <br>
+            &ensp; Torna a correspondência de padrões insensível ao caso, <font color="#03DAC5"><b>a</b></font>
+            corresponderia a <font color="#03DAC5"><b>a</b></font> e <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Ponto <short>Corresponde</short> Tudo</b></font>: <br>
+            &ensp; Quando ativado, <font color="#03DAC5"><b>.</b></font> também corresponderá a caracteres de nova linha (<font color="#03DAC5"><b>\\n</b></font>),
+            permitindo que o ponto corresponda a várias linhas. <br>
+            &ensp; Caso de uso: <br>
+            &emsp; Combine mensagem SMS multiline: <br>
+            &emsp; <font color="#fa7f71">reivindique seu prêmio: http://<br>
+            &emsp; abc.com </font><br>
+            &emsp; com regra: <br>
+            &emsp; <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+            <br>
+            <font color="#00BFFF"><b>Número <short>Bruto</short></b></font>: <br>
+            &ensp; Quando ativado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>0s iniciais</b></font> permanecerão, útil para diferenciar números nacionais.
+        ]]>
+    </string>
+
+</resources>

@@ -1,0 +1,78 @@
+<resources>
+    <string name="dialed">Discado</string>
+    <string name="find_apps">Encontrar Apps</string>
+
+    <string name="confirm_delete_all_rule">Confirmar a exclusão de todas as regras?</string>
+
+    <string name="notification">Notificação</string>
+    <string name="type">Tipo</string>
+    <string name="times">Vezes</string>
+    <plurals name="days">
+        <item quantity="one">%d Dia</item>
+        <item quantity="two">%d Dias</item>
+        <item quantity="few">%d Dias</item>
+        <item quantity="many">%d Dias</item>
+        <item quantity="other">%d Dias</item>
+    </plurals>
+    <string name="min">Min</string>
+    <string name="within_minutes">Em Minutos</string>
+    <string name="within_days">Em Dias</string>
+    <string name="phone_number">Número de Telefone</string>
+    <string name="phone_number_abbrev">Número</string>
+    <string name="sms_content">Conteúdo do SMS</string>
+    <string name="regex_flags">Flags de Regex</string>
+    <string-array name="regex_flags_list">
+        <item>Ignorar Maiúsculas/Minúsculas</item>
+        <item>Ponto Corresponde a Tudo</item>
+        <item>Número Bruto</item>
+    </string-array>
+    <string name="disable_number_optimization">A otimização pode ser desativada pela flag de regex `Número Bruto`.</string>
+    <string name="off_time">Horário Desligado</string>
+    <string name="schedule">Agendamento</string>
+    <string name="workday">Dias de Semana</string>
+    <string name="weekend">Fim de Semana</string>
+    <string name="entire_day">Dia Inteiro</string>
+    <string name="block_type">Tipo de Bloqueio</string>
+    <string name="for_particular_number">Para número</string>
+    <string name="help_for_particular_number">Quando ativado, a regra só é aplicada quando o número e o conteúdo correspondem.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
+        &emsp; Igual a pressionar o botão "recusar". Funciona silenciosamente, a tela de bloqueio não acende, é o tipo recomendado caso você não use correio de voz.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+        &emsp; Vai tocar silenciosamente em segundo plano, dando a impressão para quem ligou que você está ocupado e não atendeu. <br>
+        <br>
+        - <font color="#00BFFF"><b>Atender e Desligar</b></font>: <br>
+        &emsp; Para evitar ser encaminhado para o correio de voz. A tela de bloqueio pode acender por um tempo, você também pode ouvir um tom de fim de chamada (alguns telefones oferecem a opção de silenciar este som).
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        Números discados serão permitidos.<br>
+        <br>
+        Enviar mensagem também conta, isso só funciona quando a permissão LEITURA_SMS foi concedida. <br>
+        <br>
+        A configuração padrão <font color="#03DAC5"><b>3 Dias</b></font> significa que se você discou ou enviou mensagens para o número nos últimos 3 dias, chamadas desse número serão permitidas.<br>
+        <br>
+        Apenas se aplica a chamadas, <b>não</b> a mensagens de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Qualquer chamada passará se algum aplicativo na lista tiver sido usado recentemente.<br>
+        <br>
+        Um caso de uso típico:<br>
+        &emsp; Você acabou de pedir uma pizza no PizzaApp, logo eles ligam para reembolsar porque estão fechando. Essa chamada passará se o PizzaApp for ativado aqui. <br>
+        <br>
+        A configuração padrão <font color="03DAC5"><b>5 Min</b></font> significa que qualquer chamada passará se algum dos aplicativos foi usado em 5 minutos,
+        "usado" significa ativado, desativado, minimizado ou fechado. <br>
+        <br>
+        Apenas se aplica a chamadas, <b>não</b> a mensagens de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+</resources>

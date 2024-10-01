@@ -30,13 +30,14 @@ var wg sync.WaitGroup
 var pool *ants.Pool
 
 var nameMap = map[string]string{
-	`de`:  `German`,
-	`es`:  `Spanish`,
-	`fr`:  `French`,
-	`gal`: `Galician`,
-	`ru`:  `Russian`,
-	`uk`:  `Ukrainian`,
-	`zh`:  `Chinese`,
+	`de`:     `German`,
+	`es`:     `Spanish`,
+	`fr`:     `French`,
+	`gal`:    `Galician`,
+	`pt-rBR`: `Brazilian Portuguese`,
+	`ru`:     `Russian`,
+	`uk`:     `Ukrainian`,
+	`zh`:     `Chinese`,
 }
 var langs []string // [de, es, fr, ...]
 

@@ -318,8 +318,14 @@ class Util {
         fun setLocale(ctx: Context, languageCode: String) {
             val locale = if (languageCode == "")
                 Locale.getDefault()
-            else
-                Locale(languageCode)
+            else {
+                if (languageCode.contains("-")) { // e.g.: pt-rBR
+                    val parts = languageCode.split("-")
+                    Locale(parts[0], parts[1])
+                } else {
+                    Locale(languageCode)
+                }
+            }
 
             Locale.setDefault(locale)
 
