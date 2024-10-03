@@ -13,7 +13,8 @@ import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.Launcher
 import spam.blocker.util.SharedPref.Global
 
-// https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement
+// list of language codes: https://github.com/championswimmer/android-locales
+// non-flag emoji: https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement
 object Languages {
     val map = sortedMapOf(
         Pair("de", "🇩🇪"),
@@ -21,6 +22,7 @@ object Languages {
         Pair("es", "🇪🇸"),
         Pair("fr", "🇫🇷"),
         Pair("gal", "🄶🄰🄻"),
+        Pair("ja", "🇯🇵"),
         Pair("pt-rBR", "🇧🇷"),
         Pair("ru", "🇷🇺"),
         Pair("uk", "🇺🇦"),

@@ -1,0 +1,11 @@
+<resources>
+    <string name="help_sms_content_filter"><![CDATA[こうしたルールはSMSのコンテンツに適用されます。]]></string>
+    <string name="help_quick_copy"><![CDATA[SMSメッセージや電話番号からコンテンツを素早くコピーする方法で、確認コードや着信番号の簡単な取得ができます。<br><br>一致すると、通知に<font color="#00BFFF"><b>コピー: 123456</b></font>のようなボタンが表示されます。<br><br>確認コードの抽出のためのルール例:<br>&emsp; キャプチャリンググループ使用:<br>&emsp;&emsp; <font color="#03DAC5"><b>code.*?(\d+) </b></font><br>&emsp; ルックアラウンドを使った別の方法:<br>&emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\d+</b></font>]]></string>
+    <string name="help_apply_to_call_sms"><![CDATA[このルールを電話、SMS、または両方に有効にします。<br>ルールを削除せずに無効にするには、これらのチェックボックスのチェックを外します。]]></string>
+    <string name="help_apply_to_number_and_message"><![CDATA[<b>[番号]</b>が選択されている場合、このルールは着信番号からコンテンツを抽出します。たとえば、<b>(.*)</b>を使用して電話番号をコピーします。<br><br><b>[コンテンツ]</b>が選択されている場合、このルールはSMSメッセージ本文からコンテンツを抽出します(確認コードなど)。]]></string>
+    <string name="help_apply_to_passed_and_blocked"><![CDATA[<b>[合格]</b>が選択されている場合、このルールは通過した通話とメッセージに適用されます。<br><br><b>[ブロック]</b>が選択されている場合、このルールはブロックされた通話とメッセージに適用されます。]]></string>
+    <string name="help_importance"><![CDATA[<b>なし</b>:<br>&emsp; 通知は一切ありません。<br><b>シェード</b>:<br>&emsp; ドロップダウン通知シェード。<br><b>ステータスバー</b>:<br>&emsp; 上部バーの小さなアイコン。<br><b>サウンド</b>:<br>&emsp; デフォルトの通知音。<br><b>ヘッドアップ</b>:<br>&emsp; 画面上部にフローティングウィンドウを表示します。]]></string>
+    <string name="title_rule_testing">ルールのテスト</string>
+    <string name="help_test_rules"><![CDATA[ルールが期待どおりに設定されているかを確認できます。<br><br>シミュレーションにすぎず、実際に着信コール(またはテキストメッセージ)はポップアップしません。<br><br>結果は、通知とともにここに、さらに履歴ログに表示されます。]]></string>
+
+</resources>

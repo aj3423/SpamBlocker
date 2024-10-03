@@ -1,0 +1,36 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        有効にすると、すべての通話(メッセージ)がこの時間帯に許可されます。通常、夜間にはスパムはありません。 <br>
+        <br>
+        開始時間が終了時間よりも遅い場合(例: 20:00 -> 07:00)、これは夜間の20:00から翌朝の07:00までの期間を意味します。 <br>
+        <br>
+        <font color="#ea86ff"><b>優先度: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            これらのフラグは正規表現の一致動作を変更し、既定では新しいルール用に設定されています。 <br>
+            <br>
+
+            <font color="#00BFFF"><b>大文字小文字の区別をしない</b></font>:<br>
+            &ensp; パターン一致で大文字小文字を区別しなくなるため、<font color="#03DAC5"><b>a</b></font>は <font color="#03DAC5"><b>a</b></font>と<font color="#03DAC5"><b>A</b></font>の両方と一致します。 <br>
+            <br>
+
+            <font color="#00BFFF"><b>ドットがすべてに一致</b></font>: <br>
+            &ensp; 有効にすると、<font color="#03DAC5"><b>.</b></font>は改行文字(<font color="#03DAC5"><b>\\n</b></font>)にも一致します。これにより、ドットは複数の行にまたがって一致できます。 <br>
+            &ensp; 使用例: <br>
+            &emsp;   複数行の SMS メッセージに一致する: <br>
+            &emsp;   <font color="#fa7f71">賞品を請求: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   ルール:<br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+            <br>
+            <font color="#00BFFF"><b>加工されていない番号</b></font>: <br>
+            &ensp; 有効にすると、番号は最適化されず、<font color="#03DAC5"><b>+</b></font>と<font color="#03DAC5"><b>先頭の0</b></font>はそのまま残り、国内番号の区別になります。
+        ]]>
+    </string>
+
+</resources>

@@ -1,0 +1,78 @@
+<resources>
+    <string name="dialed">電話番号</string>
+    <string name="find_apps">アプリの検索</string>
+
+    <string name="confirm_delete_all_rule">すべてのルールを削除しますか？</string>
+
+    <string name="notification">通知</string>
+    <string name="type">タイプ</string>
+    <string name="times">回</string>
+    <plurals name="days">
+        <item quantity="one">%d 日</item>
+        <item quantity="two">%d 日</item>
+        <item quantity="few">%d 日</item>
+        <item quantity="many">%d 日</item>
+        <item quantity="other">%d 日</item>
+    </plurals>
+    <string name="min">分</string>
+    <string name="within_minutes">分以内</string>
+    <string name="within_days">日以内</string>
+    <string name="phone_number">電話番号</string>
+    <string name="phone_number_abbrev">番号</string>
+    <string name="sms_content">SMSの内容</string>
+    <string name="regex_flags">正規表現フラグ</string>
+    <string-array name="regex_flags_list">
+        <item>大文字小文字を無視する</item>
+        <item>すべてに一致する</item>
+        <item>生の番号</item>
+    </string-array>
+    <string name="disable_number_optimization">この最適化は正規表現フラグの「生の番号」で無効にすることができます。</string>
+    <string name="off_time">オフの時間</string>
+    <string name="schedule">スケジュール</string>
+    <string name="workday">平日</string>
+    <string name="weekend">週末</string>
+    <string name="entire_day">終日</string>
+    <string name="block_type">ブロックの種類</string>
+    <string name="for_particular_number">番号</string>
+    <string name="help_for_particular_number">有効にすると、ルールは番号とコンテンツが一致した場合にのみ適用されます。</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>拒否</b></font>: <br>
+        &emsp; 拒否ボタンを押すのと同じです。完全に無音で動作し、ロック画面はオンになりません。ボイスメールを使用しない場合は、おすすめのタイプです。<br>
+        <br>
+        - <font color="#00BFFF"><b>着信音消去</b></font>: <br>
+        &emsp; バックグラウンドで無音で鳴り、発信者に忙しくて応答していないように見せます。<br>
+        <br>
+        - <font color="#00BFFF"><b>応答して切断</b></font>: <br>
+        &emsp; ボイスメールに送信されないようにします。少しの間、ロック画面がオンになる場合があり、通話終了音が聞こえることもあります(この音をミュートするオプションを提供する電話もあります)。
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        ダイヤルされた番号は許可されます。<br>
+        <br>
+        メッセージの送信もカウントされます。これはREAD_SMSパーミッションが付与されている場合にのみ機能します。<br>
+        <br>
+        デフォルト設定の<font color="#03DAC5"><b>3日</b></font>とは、過去3日以内にその番号にダイヤルまたはメッセージを送信した場合、その番号からの通話は許可されることを意味します。<br>
+        <br>
+        通話にのみ適用され、<b>テキストメッセージには適用されません</b>。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        リスト内のアプリが最近使用されていれば、通話を受け付けます。<br>
+        <br>
+        典型的な使用例:<br>
+        &emsp; PizzaAppでピザを注文したところ、すぐに閉店するため払い戻しの電話がかかってきました。ここでPizzaAppが有効になっていれば、その通話は受け付けられます。<br>
+        <br>
+        デフォルト設定の<font color="03DAC5"><b>5分</b></font>とは、アプリのいずれかが5分以内に使用されていれば、通話を受け付けることを意味します。
+        「使用」とは、アクティブ、非アクティブ、最小化、または終了しているいずれかを意味します。<br>
+        <br>
+        通話にのみ適用され、<b>テキストメッセージには適用されません</b>。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度: 10</b></font>
+        ]]>
+    </string>
+</resources>
