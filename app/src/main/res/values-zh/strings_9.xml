@@ -1,13 +1,13 @@
 <resources>
     <string name="directory">目录</string>
     <string name="filename">文件名</string>
-    <string name="invalid_input_type">无效的输入类型，预期： %s，结果： %s</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">到期天数</string>
-    <string name="column_mapping">字段映射</string>
-    <string name="include_spam_db">包含垃圾邮件数据库</string>
+    <string name="invalid_input_type">无效的输入类型，预计为：%s，获取为：%s</string>
+    <string name="url">网址</string>
+    <string name="expiry_days">有效期（天）</string>
+    <string name="column_mapping">列映射</string>
+    <string name="include_spam_db">包括垃圾信息数据库</string>
     <string name="configuration_only">仅配置</string>
-    <string name="no_config_needed">不需要配置</string>
+    <string name="no_config_needed">无需配置</string>
     <string name="success">成功</string>
     <string name="failed">失败</string>
     <string name="running">正在运行</string>
@@ -17,31 +17,34 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>测试</b></font><br>
-        手动运行工作进程，这些动作会立即执行。<br>
+        这些操作将立即执行，用来检查设置是否正确，
+        或你仅仅想手动运行此工作流。<br>
         <br>
-        - <font color="#00BFFF"><b>新增</b></font><br>
-            创建新动作，多个动作可链在一起完成复杂任务。<br>
-            项目间的绿/红点表示它们是否可链。<br>
-            <br>
-            一些示例工作进程： <br>
-            <br>
-            &emsp; - http下载文件 -> 解码 7z 格式 -> 解析为 csv 格式 -> 导入垃圾邮件数据库。<br>
-            <br>
-            &emsp; - 于工作日应用设置 A，周末则应用设置 B。<br>
+        - <font color="#00BFFF"><b>新建</b></font><br>
+        创建新操作，多个操作可以串接在一起完成复杂任务。<br>
+        项目间的绿色或红色圆点表示它们是否可以串接。<br>
+        <br>
+        一些工作流示例：<br>
+        <br>
+        &emsp; - http下载文件 -> 解码7z格式 -> 解析为csv格式 -> 导入到垃圾信息数据库。<br>
+        <br>
+        &emsp; - 工作日应用设置A，周末应用设置B。<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            于每一个工作日从 <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - 拒绝来电</no_translate> </a> 下载垃圾电话号码，然后导入垃圾邮件数据库。
+            每天工作日下载
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - 禁止来电</no_translate> </a>中的垃圾电话号码，
+            并将其导入到垃圾信息数据库。
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">从数据库中删除过期的记录。</string>
-    <string name="help_bot_preset_cleanup_history">删除过期的来电/短信历史记录。</string>
+    <string name="help_bot_preset_cleanup_spam_db">从此垃圾信息数据库中删除过期的记录。</string>
+    <string name="help_bot_preset_cleanup_history">删除过期的历史通话/短信记录。</string>
     <string name="help_bot_preset_auto_backup">备份所有设置。</string>
     <string name="everyday">每天</string>
-    <string name="daily">每天</string>
+    <string name="daily">每日</string>
     <string name="weekly">每周</string>
     <string name="periodically">定期</string>
     <string name="time">时间</string>
@@ -49,15 +52,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        如果您未使用垃圾邮件数据库，这两个选项等效。<br>
+        如果不使用垃圾信息数据库，两个选项作用相同。<br>
         <br>
-        - <b>包含垃圾邮件数据库</b><br>
-        &emsp; 请勿用于定期备份，因为垃圾邮件数据库应经常更新。
-         这仅在将配置克隆到另一部手机时有用。<br>
+        - <b>包括垃圾信息数据库</b><br>
+        &emsp;不要将它用于常规备份，因为垃圾信息数据库理应频繁更新。
+        仅在将配置克隆至另一手机时此选项才有用。<br>
         <br>
         - <b>仅配置</b><br>
-        &emsp; - 导出时，这将减小备份文件大小。 <br>
-        &emsp; - 导入时，垃圾邮件数据库中的记录将保留其当前状态。
+        &emsp; - 导出时，选项将减小备份文件大小。 <br>
+        &emsp; - 导入时，垃圾信息数据库中的记录将保留其当前状态。
         ]]>
     </string>
 

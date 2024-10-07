@@ -4,18 +4,18 @@
 
     <string name="help_spam_db">
         <![CDATA[
-        Os números nesta base de datos serán bloqueados.<br>
+        Os números desta base de datos serán bloqueados.<br>
         <br>
-        Podes integrar calquera base de datos pública ou mesmo varias bases de datos, tamén podes importar números de ficheiros locais.<br>
+        Podes integrar calquera base de datos pública, ou mesmo varias bases de datos, tamén podes importar números de ficheiros locais.<br>
         <br>
-        Comproba a sección "Automatización" a continuación para saber como programar unha tarefa de importación automática.<br>
+        Consulta a sección "Automatización" a continuación para saber como programar unha tarefa de importación automática.<br>
         <br>
-        Aplícase tanto a chamadas como a mensaxes SMS.<br>
+        Aplícase ás chamadas e ás mensaxes SMS.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Os números de spam na base de datos expirarán despois de N días, os rexistros caducados serán eliminados automaticamente.</string>
+    <string name="help_spam_db_ttl">Os números de spam da base de datos caducarán despois de N días, os rexistros caducados serán eliminados automaticamente.</string>
     <string name="customize">Personalizar</string>
     <string name="workflow">Fluxo de traballo</string>
     <string name="workflows">Fluxos de traballo</string>
@@ -24,17 +24,17 @@
         <![CDATA[
         Os fluxos de traballo pódense usar para executar tarefas automaticamente, como actualizar a base de datos ou a copia de seguridade automática.<br>
         <br>
-        Hai axustes predefinidos para unha configuración rápida, tamén podes crealos dende cero.<br>
+        Hai predefinidos para unha configuración rápida, tamén podes construílos desde cero.<br>
         <br>
-        Se atopas algún fluxo de traballo que puidese ser amplamente utilizado e debería engadirse aos axustes predefinidos, informa diso en github.
+        Se atopas algún fluxo de traballo que se poida usar amplamente e se deba engadir aos predefinidos, informa diso en github.
         ]]>
     </string>
     <string name="manual">Manual</string>
     <string name="help_manual">
         <![CDATA[
-        Hai axustes predefinidos para unha configuración rápida, tamén podes crealos dende cero.<br>
+        Hai predefinidos para unha configuración rápida, tamén podes construílos desde cero.<br>
         <br>
-        Se atopas algún fluxo de traballo que puidese ser amplamente utilizado e debería engadirse aos axustes predefinidos, informa diso.
+        Se atopas algún fluxo de traballo que se poida usar amplamente e se deba engadir aos predefinidos, informa.
         ]]>
     </string>
 
@@ -45,35 +45,35 @@
 
     <string name="action_cleanup_history">Limpar historial</string>
     <string name="action_http_download">Descarga HTTP</string>
-    <string name="action_cleanup_spam_db">Limpar base de datos de spam</string>
-    <string name="action_backup_export">Exportar copia de seguridade</string>
-    <string name="action_backup_import">Importar copia de seguridade</string>
+    <string name="action_cleanup_spam_db">Limpar a base de datos de spam</string>
+    <string name="action_backup_export">Exportación da copia de seguridade</string>
+    <string name="action_backup_import">Importación da copia de seguridade</string>
     <string name="action_read_file">Ler ficheiro</string>
     <string name="action_write_file">Escribir ficheiro</string>
     <string name="action_parse_csv">Analizar CSV</string>
     <string name="action_import_to_spam_db">Importar á base de datos de spam</string>
-    <string name="action_import_as_regex_rule">Importar como regra de Regex</string>
+    <string name="action_import_as_regex_rule">Importar como regra Regex</string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        Descarga o ficheiro HTTP como <u>bytes de contido</u>
+        Descarga de ficheiros HTTP como <u>bytes de contido</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Borrar números caducados da base de datos de spam.</string>
     <string name="help_action_cleanup_history">Borrar rexistros do historial caducados.</string>
     <string name="help_action_backup_export">
         <![CDATA[
-        Exportar os axustes actuais aos <u>bytes de contido</u>.
+        Exportar os axustes actuais a <u>bytes de contido</u>.
         ]]>
     </string>
     <string name="help_action_backup_import">
         <![CDATA[
-        Aplicar axustes dende <u>bytes de contido</u>.
+        Aplicar axustes desde <u>bytes de contido</u>.
         ]]>
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Obter <u>bytes de contido</u> dun ficheiro.
+        Obter os <u>bytes de contido</u> dun ficheiro.
         ]]>
     </string>
     <string name="help_action_write_file">
@@ -83,7 +83,7 @@
     </string>
     <string name="help_action_parse_csv">
         <![CDATA[
-        Analizar <u>bytes de contido</u> a unha <u>lista de números</u>
+        Analizar <u>bytes de contido</u> nun <u>lista de números</u>
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
@@ -93,7 +93,7 @@
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Xerar unha nova regra de expresións regulares a partir dunha <u>lista de números</u>.
+        Xerar unha nova regra Regex desde unha <u>lista de números</u>.
         ]]>
     </string>
 </resources>

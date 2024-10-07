@@ -17,7 +17,8 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Test</b></font><br>
-        Manually run the workflow, these actions will be executed immediately.<br>
+        These actions will be executed immediately, for checking whether it has been set correctly,
+        or maybe you just want to manually run this workflow.<br>
         <br>
         - <font color="#00BFFF"><b>New</b></font><br>
             Create a new action, multiple actions can be chained together to complete a complex task.<br>

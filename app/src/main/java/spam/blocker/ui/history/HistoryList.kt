@@ -45,7 +45,6 @@ fun HistoryList(
     records: SnapshotStateList<HistoryRecord>,
 ) {
     val ctx = LocalContext.current
-    val C = LocalPalette.current
 
     val clickedRecord = remember { mutableStateOf(HistoryRecord()) }
 
@@ -184,7 +183,6 @@ fun HistoryList(
                         )
                     }
                 }
-//            }
             }
         }
     }

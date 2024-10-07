@@ -100,7 +100,6 @@ object SpamTable {
     // Delete expired records before this timestamp
     fun deleteBeforeTimestamp(ctx: Context, timestamp: Long): Boolean {
         val sql = "DELETE FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_TIME} < $timestamp"
-        loge("sql: $sql")
         val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
 
         return cursor.use {

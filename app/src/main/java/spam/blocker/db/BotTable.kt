@@ -6,11 +6,16 @@ import android.content.Context
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
+import spam.blocker.service.bot.CleanupSpamDB
+import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
+import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
+import spam.blocker.util.SharedPref.SpamDB
+import java.util.UUID
 
 @Serializable
 data class Bot(
@@ -21,6 +26,31 @@ data class Bot(
     val enabled: Boolean = false,
     val workUUID: String? = null, // null means not started
 )
+
+
+// It returns the new workUUID if it's enabled
+fun reScheduleBot(ctx: Context, bot: Bot) : String? {
+
+    // 1. Stop previous schedule
+    if (!bot.workUUID.isNullOrEmpty()) {
+        MyWorkManager.cancelById(ctx, bot.workUUID)
+        // set the workUUID to null
+        BotTable.updateById(ctx, bot.id, bot.copy(workUUID = null))
+    }
+
+    // 2. Start new schedule
+    if (bot.enabled) {
+        val newWorkUUID = UUID.randomUUID().toString()
+
+        MyWorkManager.schedule(
+            ctx, bot.schedule!!.serialize(), bot.actions.serialize(),
+            workUUID = newWorkUUID
+        )
+        BotTable.updateById(ctx, bot.id, bot.copy(workUUID = newWorkUUID))
+        return newWorkUUID
+    }
+    return null
+}
 
 object BotTable {
     @SuppressLint("Range")
@@ -85,6 +115,7 @@ object BotTable {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_SCHEDULE, if (r.schedule == null) "" else r.schedule.serialize())
+        cv.put(Db.COLUMN_DESC, r.desc)
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
         cv.put(Db.COLUMN_WORK_UUID, r.workUUID)

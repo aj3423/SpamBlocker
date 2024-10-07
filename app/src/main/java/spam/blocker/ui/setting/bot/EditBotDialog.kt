@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.bot
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +17,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.db.Bot
+import spam.blocker.db.reScheduleBot
+import spam.blocker.service.bot.CleanupSpamDB
+import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.allChainable
 import spam.blocker.service.bot.clone
@@ -38,6 +42,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Lambda1
+import spam.blocker.util.SharedPref.SpamDB
 import java.util.UUID
 
 
@@ -77,31 +82,18 @@ fun EditBotDialog(
                 onClick = {
                     trigger.value = false
 
-                    // 1. Cancel the previous schedule
-                    if (!initial.workUUID.isNullOrEmpty()) {
-                        MyWorkManager.cancelById(ctx, initial.workUUID)
-                        workUUID = null
-                    }
-                    // 2. Start new schedule
-                    if (enabled) {
-                        workUUID = UUID.randomUUID().toString()
-
-                        MyWorkManager.schedule(
-                            ctx, schedule.value!!.serialize(), actions.serialize(),
-                            workUUID = workUUID
-                        )
-                    }
-
-                    onSave(
-                        Bot(
-                            id = initial.id,
-                            desc = description,
-                            schedule = schedule.value,
-                            actions = actions,
-                            enabled = enabled,
-                            workUUID = workUUID,
-                        )
+                    val newBot = Bot(
+                        id = initial.id,
+                        desc = description,
+                        schedule = schedule.value,
+                        actions = actions,
+                        enabled = enabled,
+                        workUUID = workUUID,
                     )
+
+                    reScheduleBot(ctx, newBot)
+
+                    onSave(newBot)
                 }
             )
         },
@@ -164,7 +156,7 @@ fun EditBotDialog(
                     Column(modifier = M.fillMaxWidth()) {
                         // Action Header
                         ActionHeader(actions = actions)
-                        
+
                         // Action List
                         ActionList(actions = actions)
                     }

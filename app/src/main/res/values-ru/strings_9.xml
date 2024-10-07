@@ -1,11 +1,11 @@
 <resources>
-    <string name="directory">Каталог</string>
+    <string name="directory">Директория</string>
     <string name="filename">Имя файла</string>
-    <string name="invalid_input_type">Неправильный тип входных данных, должно быть: <no_translate>%s</no_translate>, получено: <no_translate>%s</no_translate></string>
+    <string name="invalid_input_type">Недопустимый тип ввода: ожидается %s, получено %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Срок действия (дней)</string>
-    <string name="column_mapping">Соответствие столбцов</string>
-    <string name="include_spam_db">Включить базу данных спама</string>
+    <string name="expiry_days">Дней до истечения срока действия</string>
+    <string name="column_mapping">Сопоставление столбцов</string>
+    <string name="include_spam_db">Включить базу данных <short>спама</short></string>
     <string name="configuration_only">Только конфигурация</string>
     <string name="no_config_needed">Настройка не требуется</string>
     <string name="success">Успех</string>
@@ -17,48 +17,49 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Тест</b></font><br>
-        Запустить рабочий процесс вручную, эти действия будут выполнены немедленно.<br>
+        Эти действия будут выполнены немедленно для проверки правильности их установки
+        или, возможно, вы просто хотите запустить этот рабочий процесс вручную.<br>
         <br>
         - <font color="#00BFFF"><b>Новый</b></font><br>
-            Создать новое действие, можно объединить несколько действий в один сложный процесс.<br>
-            Зеленые и красные точки между элементами показывают, можно ли их объединить.<br>
-            <br>
-            Примеры рабочих процессов:<br>
-            <br>
-            &emsp; - скачать файл по HTTP -> разархивировать файл формата 7z -> проанализировать в формате CSV -> импортировать в базу данных спама.<br>
-            <br>
-            &emsp; - применить настройки A в рабочие дни и настройки B в выходные.
+        Создать новое действие. Несколько действий могут быть объединены вместе для выполнения сложной задачи.<br>
+        Эти зеленые или красные точки между элементами указывают, можно ли их связывать.<br>
+        <br>
+        Несколько примеров рабочих процессов: <br>
+        <br>
+        &emsp; - загрузка файла http -> декодирование формата 7z -> анализ как формата csv -> импорт в базу данных <short>спама</short>.<br>
+        <br>
+        &emsp; - применять настройки A в рабочие дни и применять настройки B в выходные дни.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Загрузите ежедневные номера спамеров с сайта
+            Ежедневно загружайте <short>спам-</short>номера из
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC – Не звонить</no_translate> </a>
-             и импортируйте их в базу данных спама.
+            <no_translate>Федеральной торговой комиссии - Не звонить</no_translate> </a> и импортируйте их в базу данных <short>спама</short>.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Удалить записи с истекшим сроком хранения из базы данных спама.</string>
-    <string name="help_bot_preset_cleanup_history">Удалить записи о вызовах и SMS с истекшим сроком хранения.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Удалить устаревшие записи из базы данных <short>спама</short>.</string>
+    <string name="help_bot_preset_cleanup_history">Удалить устаревшие записи журнала вызовов/SMS.</string>
     <string name="help_bot_preset_auto_backup">Создать резервную копию всех настроек.</string>
-    <string name="everyday">Ежедневно</string>
+    <string name="everyday">Каждый день</string>
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>
-    <string name="periodically">Регулярно</string>
+    <string name="periodically">Периодически</string>
     <string name="time">Время</string>
     <string name="workdays">Рабочие дни</string>
 
     <string name="help_backup">
         <![CDATA[
-        Если вы не используете базу данных спама, оба варианта будут равнозначными.<br>
+        Если вы не используете базу данных <short>спама</short>, оба варианта будут эквивалентными.<br>
         <br>
-        - <b>Включить базу данных спама</b><br>
-        &emsp; Не используйте этот вариант для обычного резервного копирования, потому что база данных спама должна часто обновляться. Обычно он используется только для клонирования конфигурации на другом телефоне.<br>
+        - <b>Включить базу данных <short>спама</short></b><br>
+        &emsp; Не используйте это для регулярного резервного копирования, так как база данных <short>спама</short> должна обновляться часто.
+         Это полезно только при клонировании конфигурации на другой телефон.<br>
         <br>
         - <b>Только конфигурация</b><br>
-        &emsp; - При экспорте это уменьшит размер файла резервной копии.<br>
-        &emsp; - При импорте записи в базе данных спама сохранят свое текущее состояние.
+        &emsp; - При экспорте это уменьшит размер файла резервной копии. <br>
+        &emsp; - При импорте записи в базе данных <short>спама</short> сохранят свое текущее состояние.
         ]]>
     </string>
 

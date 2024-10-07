@@ -1,74 +1,74 @@
 <resources>
     <string name="database">数据库</string>
-    <string name="total">总数</string>
+    <string name="total">总计</string>
 
     <string name="help_spam_db">
         <![CDATA[
-        此数据库中的号码将被拦截。<br>
+        此数据库中的号码将会被拦截。<br>
         <br>
-        您可以集成任何公共数据库，甚至多个数据库，您还可以从本地文件中导入号码。<br>
+        你可以集成任意公共数据库，甚至是多个数据库，你还可以从本地文件中导入号码。<br>
         <br>
-        检查下面的“自动化”部分以了解如何安排自动导入任务。<br>
+        在下面的“自动化”部分查看如何安排自动导入任务。<br>
         <br>
-        它同时适用于通话和短信。<br>
+        它适用于通话和短信。<br>
         <br>
         <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">数据库中的垃圾信息将在 N 天后过期，过期记录将自动删除。</string>
+    <string name="help_spam_db_ttl">数据库中的垃圾号码将在 N 天后过期，过期的记录将自动删除。</string>
     <string name="customize">自定义</string>
     <string name="workflow">工作流</string>
     <string name="workflows">工作流</string>
     <string name="automation">自动化</string>
     <string name="help_workflows">
         <![CDATA[
-        工作流可用于自动执行任务，例如更新数据库或自动备份。<br>
+        工作流可用于自动运行任务，例如更新数据库或自动备份。<br>
         <br>
-        有一些预设可供快速设置，您还可以从头开始构建它。<br>
+        有用于快速设置的预设，你还可以从头开始构建。<br>
         <br>
-        如果您发现任何可以广泛使用且应该添加到预设中的工作流，请在 github 上报告。
+        如果你发现任何可能广泛使用且应该添加到预设中的工作流，请在 github 上报告它。
         ]]>
     </string>
     <string name="manual">手动</string>
     <string name="help_manual">
         <![CDATA[
-        有一些预设可供快速设置，您还可以从头开始构建它。<br>
+        有用于快速设置的预设，你还可以从头开始构建。<br>
         <br>
-        如果您发现任何可以广泛使用且应该添加到预设中的工作流，请报告。
+        如果你发现任何可以广泛使用且应该添加到预设中的工作流，请报告。
         ]]>
     </string>
 
     <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
-    <string name="bot_preset_cleanup_spam_db">垃圾信息数据库清理</string>
+    <string name="bot_preset_cleanup_spam_db">垃圾数据库清理</string>
     <string name="bot_preset_cleanup_history">历史记录清理</string>
     <string name="bot_preset_auto_backup">自动备份</string>
 
-    <string name="action_cleanup_history">清理历史记录</string>
+    <string name="action_cleanup_history">清理历史</string>
     <string name="action_http_download">HTTP 下载</string>
-    <string name="action_cleanup_spam_db">清理垃圾信息数据库</string>
+    <string name="action_cleanup_spam_db">清理垃圾数据库</string>
     <string name="action_backup_export">备份导出</string>
     <string name="action_backup_import">备份导入</string>
     <string name="action_read_file">读取文件</string>
     <string name="action_write_file">写入文件</string>
     <string name="action_parse_csv">解析 CSV</string>
-    <string name="action_import_to_spam_db">导入垃圾信息数据库</string>
+    <string name="action_import_to_spam_db">导入到垃圾数据库</string>
     <string name="action_import_as_regex_rule">作为正则表达式规则导入</string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        HTTP 下载文件为<u>内容字节</u>
+        HTTP 下载文件作为<u>内容字节</u>
         ]]>
     </string>
-    <string name="help_action_cleanup_spam_db">从垃圾信息数据库中删除过期的号码。</string>
+    <string name="help_action_cleanup_spam_db">从垃圾数据库中删除过期的号码。</string>
     <string name="help_action_cleanup_history">删除过期的历史记录。</string>
     <string name="help_action_backup_export">
         <![CDATA[
-        将当前设置导出到<u>内容字节</u>。
+        将当前设置导出为<u>内容字节</u>。
         ]]>
     </string>
     <string name="help_action_backup_import">
         <![CDATA[
-        应用<u>内容字节</u>中的设置。
+        应用来自<u>内容字节</u>的设置。
         ]]>
     </string>
     <string name="help_action_read_file">
@@ -88,12 +88,12 @@
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        向垃圾信息数据库添加<u>号码列表</u>。
+        向垃圾数据库中添加<u>号码列表</u>。
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        从<u>号码列表</u>生成一条新的正则表达式规则。
+        从<u>号码列表</u>生成新的正则表达式规则。
         ]]>
     </string>
 </resources>

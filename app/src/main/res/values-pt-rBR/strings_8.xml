@@ -1,0 +1,99 @@
+<resources>
+    <string name="database">Banco de dados</string>
+    <string name="total">Total</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        Números neste banco de dados serão bloqueados.<br>
+        <br>
+        Você pode integrar qualquer banco de dados público ou até mesmo vários bancos de dados, você também pode importar números de arquivos locais.<br>
+        <br>
+        Verifique a seção "Automação" abaixo para saber como agendar uma tarefa de importação automática.<br>
+        <br>
+        Aplica-se a chamadas e mensagens SMS.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">Números de spam no banco de dados expiram após N dias, registros expirados serão excluídos automaticamente.</string>
+    <string name="customize">Personalizar</string>
+    <string name="workflow">Fluxo de trabalho</string>
+    <string name="workflows">Fluxos de trabalho</string>
+    <string name="automation">Automação</string>
+    <string name="help_workflows">
+        <![CDATA[
+        Os fluxos de trabalho podem ser usados para executar tarefas automaticamente, como atualizar o banco de dados ou fazer backup automático.<br>
+        <br>
+        Há predefinições para uma configuração rápida, você também pode construí-lo do zero.<br>
+        <br>
+        Se você encontrar algum fluxo de trabalho que possa ser amplamente usado e deva ser adicionado às predefinições, relate no github.
+        ]]>
+    </string>
+    <string name="manual">Manual</string>
+    <string name="help_manual">
+        <![CDATA[
+        Há predefinições para uma configuração rápida, você também pode construí-lo do zero.<br>
+        <br>
+        Se você encontrar algum fluxo de trabalho que possa ser amplamente usado e deva ser adicionado às predefinições, relate.
+        ]]>
+    </string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">Limpeza do banco de dados de spam</string>
+    <string name="bot_preset_cleanup_history">Limpeza do histórico</string>
+    <string name="bot_preset_auto_backup">Backup automático</string>
+
+    <string name="action_cleanup_history">Limpar histórico</string>
+    <string name="action_http_download">Download HTTP</string>
+    <string name="action_cleanup_spam_db">Limpar banco de dados de spam</string>
+    <string name="action_backup_export">Exportar backup</string>
+    <string name="action_backup_import">Importar backup</string>
+    <string name="action_read_file">Ler arquivo</string>
+    <string name="action_write_file">Gravar arquivo</string>
+    <string name="action_parse_csv">Analisar CSV</string>
+    <string name="action_import_to_spam_db">Importar para banco de dados de spam</string>
+    <string name="action_import_as_regex_rule">Importar como regra Regex</string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        Fazer o download do arquivo HTTP como <u>bytes de conteúdo</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">Excluir números expirados do banco de dados de spam.</string>
+    <string name="help_action_cleanup_history">Excluir registros de histórico expirados.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Exportar as configurações atuais para <u>bytes de conteúdo</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Aplicar configurações de <u>bytes de conteúdo</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Obter os <u>bytes de conteúdo</u> de um arquivo.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Gravar <u>bytes de conteúdo</u> em um arquivo.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Analisar <u>bytes de conteúdo</u> para uma <u>lista de números</u>
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Adicionar uma <u>lista de números</u> ao banco de dados de spam.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Gerar uma nova regra regex a partir de uma <u>lista de números</u>.
+        ]]>
+    </string>
+</resources>

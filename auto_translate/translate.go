@@ -113,8 +113,8 @@ func translate_1_file(lang string, fn string) error {
 
 	prompt := fmt.Sprintf(
 		"Translate the following xml content to language \"%s\"(\"%s\"), it's about a call blocking app "+
-			"which blocks incoming spam calls and SMS messages, for the word 'spam', it's always about spam phone numbers, never about email."+
-			"make sure leave the XML tags unmodified, "+
+			"which blocks spam calls, for the word 'spam', it always references to spam calls or spam number database, it's never about email."+
+			"Make sure leave the XML tags unmodified, "+
 			"do not translate text within <no_translate></no_translate> tag. "+
 
 			"For those text to translate that are just 1 or 2 or 3 words, find all possible translation alternatives, "+

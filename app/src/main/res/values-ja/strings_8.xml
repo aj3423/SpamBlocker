@@ -1,0 +1,99 @@
+<resources>
+    <string name="database">データベース</string>
+    <string name="total">合計</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        このデータベース内の番号はブロックされます。<br>
+        <br>
+        パブリックデータベースや複数のデータベースを統合できます。また、ローカルファイルから番号をインポートすることもできます。<br>
+        <br>
+        自動インポートタスクのスケジュール設定方法は、以下の「自動化」セクションを参照してください。<br>
+        <br>
+        通話と SMS メッセージの両方に適用されます。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">データベース内のスパム番号は N 日後に期限切れになり、期限切れのレコードは自動的に削除されます。</string>
+    <string name="customize">カスタマイズ</string>
+    <string name="workflow">ワークフロー</string>
+    <string name="workflows">ワークフロー</string>
+    <string name="automation">自動化</string>
+    <string name="help_workflows">
+        <![CDATA[
+        ワークフローを使用して、データベースの更新や自動バックアップなど、タスクを自動的に実行できます。<br>
+        <br>
+        クイックセットアップ用のプリセットがありますが、最初から作成することもできます。<br>
+        <br>
+        広く使用でき、プリセットに追加する必要があるワークフローを見つけた場合は、github で報告してください。
+        ]]>
+    </string>
+    <string name="manual">手動</string>
+    <string name="help_manual">
+        <![CDATA[
+        クイックセットアップ用のプリセットがありますが、最初から作成することもできます。<br>
+        <br>
+        広く使用でき、プリセットに追加する必要があるワークフローを見つけた場合は、報告してください。
+        ]]>
+    </string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">スパムデータベースのクリーニング</string>
+    <string name="bot_preset_cleanup_history">履歴のクリーニング</string>
+    <string name="bot_preset_auto_backup">自動バックアップ</string>
+
+    <string name="action_cleanup_history">履歴のクリーニング</string>
+    <string name="action_http_download">HTTP ダウンロード</string>
+    <string name="action_cleanup_spam_db">スパム DB のクリーニング</string>
+    <string name="action_backup_export">バックアップのエクスポート</string>
+    <string name="action_backup_import">バックアップのインポート</string>
+    <string name="action_read_file">ファイルの読み取り</string>
+    <string name="action_write_file">ファイルの書き込み</string>
+    <string name="action_parse_csv">CSV の解析</string>
+    <string name="action_import_to_spam_db">スパムデータベースにインポート</string>
+    <string name="action_import_as_regex_rule">正規表現ルールとしてインポート</string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        HTTP ダウンロードファイルを<u>コンテンツバイト</u>として
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">スパムデータベースから期限切れの番号を削除します。</string>
+    <string name="help_action_cleanup_history">期限切れの履歴レコードを削除します。</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        現在の設定を<u>コンテンツバイト</u>にエクスポートします。
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        <u>コンテンツバイト</u>から設定を適用します。
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        <u>コンテンツバイト</u>をファイルから取得します。
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        <u>コンテンツバイト</u>をファイルに書き込みます。
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        <u>コンテンツバイト</u>を<u>番号リスト</u>に解析します
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        スパムデータベースに<u>番号リスト</u>を追加します。
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        <u>番号リスト</u>から新しい正規表現ルールを生成します。
+        ]]>
+    </string>
+</resources>
