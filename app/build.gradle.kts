@@ -83,6 +83,9 @@ android {
 dependencies {
     // third-party
     implementation(libs.lazycolumnscrollbar) // for scroll bar
+    implementation(libs.reorderable) // for reordering Action items with drag & drop
+
+    implementation(kotlin("reflect")) // for finding class by name, used in TaskScheduler
 
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization
@@ -93,9 +96,11 @@ dependencies {
     implementation(libs.compose.activity) // for ComponentActivity
     implementation(libs.compose.lifecycle) // for LifecycleResumeEffect
     implementation(libs.compose.material3) // for components like Scaffold, Surface
-    implementation(libs.compose.ui) // for components like AnnotatedString
+    implementation(libs.compose.ui)
 
     // testing
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.mockk)

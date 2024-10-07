@@ -3,12 +3,16 @@ package spam.blocker.config
 import android.content.Context
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import spam.blocker.db.Bot
+import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
+import spam.blocker.db.SpamNumber
+import spam.blocker.db.SpamTable
+import spam.blocker.service.bot.botJson
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
@@ -18,6 +22,7 @@ import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.Stir
+
 
 /*
   These default values only works when upgrading from an old version that does not
@@ -57,7 +62,7 @@ class HistoryOptions {
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
 
-        ttl = spf.getHistoryTTL()
+        ttl = spf.getTTL()
         logSmsContent = spf.isLogSmsContentEnabled()
     }
 
@@ -66,7 +71,7 @@ class HistoryOptions {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
 
-            setHistoryTTL(ttl)
+            setTTL(ttl)
             setLogSmsContentEnabled(logSmsContent)
         }
     }
@@ -130,6 +135,21 @@ class STIR {
         spf.setEnabled(enabled)
         spf.setExclusive(isExcusive)
         spf.setIncludeUnverified(includeUnverified)
+    }
+}
+@Serializable
+class SpamDB {
+    var ttl = 90
+
+    fun load(ctx: Context) {
+        val spf = spam.blocker.util.SharedPref.SpamDB(ctx)
+        ttl = spf.getTTL()
+    }
+
+    fun apply(ctx: Context) {
+        spam.blocker.util.SharedPref.SpamDB(ctx).apply {
+            setTTL(ttl)
+        }
     }
 }
 
@@ -271,6 +291,37 @@ class QuickCopyRules : PatternRules() {
 }
 
 @Serializable
+class Bots {
+    val bots = mutableListOf<Bot>()
+
+    fun load(ctx: Context) {
+        bots.clear()
+        bots.addAll(BotTable.listAll(ctx))
+    }
+
+    fun apply(ctx: Context) {
+        BotTable.clearAll(ctx)
+        bots.forEach {
+            BotTable.addRecordWithId(ctx, it)
+        }
+    }
+}
+@Serializable
+class SpamNumbers {
+    val numbers = mutableListOf<SpamNumber>()
+
+    fun load(ctx: Context) {
+        numbers.clear()
+        numbers.addAll(SpamTable.listAll(ctx))
+    }
+
+    fun apply(ctx: Context) {
+        SpamTable.clearAll(ctx)
+        SpamTable.addAll(ctx, numbers)
+    }
+}
+
+@Serializable
 class Configs {
     val global = Global()
     val historyOptions = HistoryOptions()
@@ -279,6 +330,7 @@ class Configs {
 
     val contacts = Contact()
     val stir = STIR()
+    val spamDB = SpamDB()
     val repeatedCall = RepeatedCall()
     val dialed = Dialed()
     val recentApps = RecentApps()
@@ -289,7 +341,11 @@ class Configs {
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
 
-    fun load(ctx: Context) {
+    val bots = Bots()
+
+    val spamNumbers = SpamNumbers()
+
+    fun load(ctx: Context, includeSpamDB: Boolean = true) {
         global.load(ctx)
         historyOptions.load(ctx)
         theme.load(ctx)
@@ -297,6 +353,7 @@ class Configs {
 
         contacts.load(ctx)
         stir.load(ctx)
+        spamDB.load(ctx)
         repeatedCall.load(ctx)
         dialed.load(ctx)
         recentApps.load(ctx)
@@ -306,9 +363,14 @@ class Configs {
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
+
+        bots.load(ctx)
+
+        if (includeSpamDB)
+            spamNumbers.load(ctx)
     }
 
-    fun apply(ctx: Context) {
+    fun apply(ctx: Context, includeSpamDB: Boolean = true) {
         global.apply(ctx)
         historyOptions.apply(ctx)
         theme.apply(ctx)
@@ -316,6 +378,7 @@ class Configs {
 
         contacts.apply(ctx)
         stir.apply(ctx)
+        spamDB.apply(ctx)
         repeatedCall.apply(ctx)
         dialed.apply(ctx)
         recentApps.apply(ctx)
@@ -325,24 +388,21 @@ class Configs {
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
+
+        bots.apply(ctx)
+
+        if (includeSpamDB)
+            spamNumbers.apply(ctx)
     }
 
     fun toJsonString(): String {
-        return Json.encodeToString(this)
+        return botJson.encodeToString(this)
     }
-    fun toPrettyJsonString(): String {
-        val prettyJson = Json {
-            prettyPrint = true
-        }
-        val jsonStr = prettyJson.encodeToString(this)
-        return jsonStr
-    }
+
     companion object {
         fun createFromJson(jsonStr: String) : Configs {
-            val json = Json { ignoreUnknownKeys = true }
-            val newCfg = json.decodeFromString<Configs>(jsonStr)
+            val newCfg = botJson.decodeFromString<Configs>(jsonStr)
             return newCfg
         }
     }
 }
-

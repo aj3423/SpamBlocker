@@ -1,0 +1,66 @@
+<resources>
+    <string name="directory">Verzeichnis</string>
+    <string name="filename">Dateiname</string>
+    <string name="invalid_input_type">Ungültiger Eingabetyp, erwartet: %s, erhalten: %s</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Ablauftage</string>
+    <string name="column_mapping">Spaltenzuordnung</string>
+    <string name="include_spam_db">Spam-Datenbank einschließen</string>
+    <string name="configuration_only">Nur Konfiguration</string>
+    <string name="no_config_needed">Keine Konfiguration erforderlich</string>
+    <string name="success">Erfolgreich</string>
+    <string name="failed">Fehlgeschlagen</string>
+    <string name="running">Wird ausgeführt</string>
+    <string name="optional">(optional)</string>
+
+    <string name="run_execute">Ausführen</string>
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Testen</b></font><br>
+        Workflow manuell ausführen, diese Aktionen werden sofort ausgeführt.<br>
+        <br>
+        - <font color="#00BFFF"><b>Neu</b></font><br>
+            Eine neue Aktion erstellen, mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe zu erledigen.<br>
+            Diese grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie verkettet werden können oder nicht.<br>
+            <br>
+            Einige Beispiel-Workflows: <br>
+            <br>
+            &emsp; - HTTP-Datei herunterladen -> 7z-Format dekodieren -> als CSV-Format analysieren -> in Spam-Datenbank importieren.<br>
+            <br>
+            &emsp; - An Werktagen Einstellungen A und am Wochenende Einstellungen B anwenden.<br>
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Täglich Spam-Nummern herunterladen von
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a>
+             und in die Spam-Datenbank importieren.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Abgelaufene Datensätze aus der Spam-Datenbank löschen.</string>
+    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufsdatensätze löschen.</string>
+    <string name="help_bot_preset_auto_backup">Alle Einstellungen sichern.</string>
+    <string name="everyday">Täglich</string>
+    <string name="daily">Täglich</string>
+    <string name="weekly">Wöchentlich</string>
+    <string name="periodically">Regelmäßig</string>
+    <string name="time">Zeit</string>
+    <string name="workdays">Werktage</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Wenn Sie die Spam-Datenbank nicht verwenden, sind beide Optionen gleichwertig.<br>
+        <br>
+        - <b>Spam-Datenbank einschließen</b><br>
+        &emsp; Verwenden Sie dies nicht für regelmäßige Backups, da die Spam-Datenbank häufig aktualisiert werden sollte.
+         Normalerweise wird dies nur zum Klonen der Konfiguration auf ein anderes Telefon verwendet.<br>
+        <br>
+        - <b>Nur Konfiguration</b><br>
+        &emsp; - Beim Exportieren reduziert dies die Größe der Sicherungsdatei. <br>
+        &emsp; - Beim Importieren behalten die Datensätze in der Spam-Datenbank ihren aktuellen Zustand.
+        ]]>
+    </string>
+
+</resources>

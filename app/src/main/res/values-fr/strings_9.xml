@@ -1,0 +1,65 @@
+<resources>
+    <string name="directory">Directory</string>
+    <string name="filename">Nom du fichier</string>
+    <string name="invalid_input_type">Type d\'entrée incorrect, attendu : %s, obtenu : %s</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Nombre de jours d\'expiration</string>
+    <string name="column_mapping">Mappage des colonnes</string>
+    <string name="include_spam_db">Inclure la base de données des spams</string>
+    <string name="configuration_only">Configuration uniquement</string>
+    <string name="no_config_needed">Aucune configuration requise</string>
+    <string name="success">Succès</string>
+    <string name="failed">Échec</string>
+    <string name="running">En cours d\'exécution</string>
+    <string name="optional">(facultatif)</string>
+
+    <string name="run_execute">Exécuter</string>
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Tester</b></font><br>
+        Exécuter manuellement le flux de travail, ces actions seront exécutées immédiatement.<br>
+        <br>
+        - <font color="#00BFFF"><b>Nouveau</b></font><br>
+            Créer une nouvelle action, plusieurs actions peuvent être chaînées pour effectuer une tâche complexe.<br>
+            Ces points verts ou rouges entre les éléments indiquent s\'ils sont enchaînables ou non.<br>
+            <br>
+            Quelques exemples de flux de travail : <br>
+            <br>
+            &emsp; - téléchargement d\'un fichier http -> décodage au format 7z -> analyse au format CSV -> importation dans la base de données des spams.<br>
+            <br>
+            &emsp; - appliquer les paramètres A aux jours ouvrables et appliquer les paramètres B au week-end.<br>
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Télécharger les numéros de spam quotidiens de
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Ne pas appeler</no_translate> </a>
+             et les importer dans la base de données des spams.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données des spams.</string>
+    <string name="help_bot_preset_cleanup_history">Supprimer l\'historique des appels/SMS expirés.</string>
+    <string name="help_bot_preset_auto_backup">Sauvegarder tous les paramètres.</string>
+    <string name="everyday">Tous les jours</string>
+    <string name="daily">Quotidiennement</string>
+    <string name="weekly">Hebdomadairement</string>
+    <string name="periodically">Périodiquement</string>
+    <string name="time">Heure</string>
+    <string name="workdays">Jours ouvrables</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Si vous n\'utilisez pas la base de données des spams, les deux options seront équivalentes.<br>
+        <br>
+        - <b>Inclure la base de données des spams</b><br>
+        &emsp; Ne pas utiliser pour une sauvegarde régulière, car la base de données des spams est censée être mise à jour fréquemment. Habituellement, cela sert uniquement à cloner la configuration vers un autre téléphone.<br>
+        <br>
+        - <b>Configuration uniquement</b><br>
+        &emsp; - Lors de l\'exportation, cela réduira la taille du fichier de sauvegarde.<br>
+        &emsp; - Lors de l\'importation, les enregistrements de la base de données des spams conserveront leur état actuel.
+        ]]>
+    </string>
+
+</resources>

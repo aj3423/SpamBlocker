@@ -1,0 +1,65 @@
+<resources>
+    <string name="directory">Каталог</string>
+    <string name="filename">Имя файла</string>
+    <string name="invalid_input_type">Неправильный тип входных данных, должно быть: <no_translate>%s</no_translate>, получено: <no_translate>%s</no_translate></string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Срок действия (дней)</string>
+    <string name="column_mapping">Соответствие столбцов</string>
+    <string name="include_spam_db">Включить базу данных спама</string>
+    <string name="configuration_only">Только конфигурация</string>
+    <string name="no_config_needed">Настройка не требуется</string>
+    <string name="success">Успех</string>
+    <string name="failed">Ошибка</string>
+    <string name="running">Выполняется</string>
+    <string name="optional">(необязательно)</string>
+
+    <string name="run_execute">Выполнить</string>
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Тест</b></font><br>
+        Запустить рабочий процесс вручную, эти действия будут выполнены немедленно.<br>
+        <br>
+        - <font color="#00BFFF"><b>Новый</b></font><br>
+            Создать новое действие, можно объединить несколько действий в один сложный процесс.<br>
+            Зеленые и красные точки между элементами показывают, можно ли их объединить.<br>
+            <br>
+            Примеры рабочих процессов:<br>
+            <br>
+            &emsp; - скачать файл по HTTP -> разархивировать файл формата 7z -> проанализировать в формате CSV -> импортировать в базу данных спама.<br>
+            <br>
+            &emsp; - применить настройки A в рабочие дни и настройки B в выходные.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Загрузите ежедневные номера спамеров с сайта
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC – Не звонить</no_translate> </a>
+             и импортируйте их в базу данных спама.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Удалить записи с истекшим сроком хранения из базы данных спама.</string>
+    <string name="help_bot_preset_cleanup_history">Удалить записи о вызовах и SMS с истекшим сроком хранения.</string>
+    <string name="help_bot_preset_auto_backup">Создать резервную копию всех настроек.</string>
+    <string name="everyday">Ежедневно</string>
+    <string name="daily">Ежедневно</string>
+    <string name="weekly">Еженедельно</string>
+    <string name="periodically">Регулярно</string>
+    <string name="time">Время</string>
+    <string name="workdays">Рабочие дни</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Если вы не используете базу данных спама, оба варианта будут равнозначными.<br>
+        <br>
+        - <b>Включить базу данных спама</b><br>
+        &emsp; Не используйте этот вариант для обычного резервного копирования, потому что база данных спама должна часто обновляться. Обычно он используется только для клонирования конфигурации на другом телефоне.<br>
+        <br>
+        - <b>Только конфигурация</b><br>
+        &emsp; - При экспорте это уменьшит размер файла резервной копии.<br>
+        &emsp; - При импорте записи в базе данных спама сохранят свое текущее состояние.
+        ]]>
+    </string>
+
+</resources>

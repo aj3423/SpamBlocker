@@ -32,7 +32,7 @@ const val BalloonBorderWidthLight = 0.6
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BalloonQuestionMark(helpTooltipId: Int, offset: IntOffset? = null) {
+fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
     val tooltipState = rememberTooltipState(isPersistent = true)
     val scope = rememberCoroutineScope()
 
@@ -54,7 +54,7 @@ fun BalloonQuestionMark(helpTooltipId: Int, offset: IntOffset? = null) {
             ) {
                 val state = rememberScrollState()
                 HtmlText(
-                    Str(helpTooltipId),
+                    tooltip,
                     modifier = M
                         .verticalScroll(state)
                         .simpleVerticalScrollbar(

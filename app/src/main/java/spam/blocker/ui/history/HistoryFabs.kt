@@ -1,5 +1,6 @@
 package spam.blocker.ui.history
 
+import android.content.Context
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,7 +16,10 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.service.CleanerSchedule
+import spam.blocker.service.bot.CleanupHistory
+import spam.blocker.service.bot.Daily
+import spam.blocker.service.bot.MyWorkManager
+import spam.blocker.service.bot.serialize
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -31,6 +35,28 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.SharedPref.HistoryOptions
 
+
+private const val HISTORY_CLEANUP_WORK_TAG = "history_cleanup_work_tag"
+
+fun reScheduleHistoryCleanup(ctx: Context) {
+    MyWorkManager.cancelByTag(ctx, HISTORY_CLEANUP_WORK_TAG)
+
+    val ttl = HistoryOptions(ctx).getTTL()
+    if (ttl > 0) {
+        MyWorkManager.schedule(
+            ctx,
+            scheduleConfig = Daily().serialize(),
+            actionsConfig = listOf(CleanupHistory(ttl)).serialize(),
+            workTag = HISTORY_CLEANUP_WORK_TAG
+        )
+    } else if (ttl == 0) {
+        // no logging, no need to cleanup
+    } else {
+        // logging + never expire, no need to cleanup
+    }
+}
+
+
 @Composable
 fun HistoryFabs(
     modifier: Modifier,
@@ -42,7 +68,7 @@ fun HistoryFabs(
 
     var showPassed by rememberSaveable { mutableStateOf(spf.getShowPassed()) }
     var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }
-    var historyTTL by rememberSaveable { mutableIntStateOf(spf.getHistoryTTL()) }
+    var historyTTL by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
     var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
 
     val settingPopupTrigger = rememberSaveable { mutableStateOf(false) }
@@ -68,16 +94,9 @@ fun HistoryFabs(
                     onValueChange = { newValue, hasError ->
                         if (!hasError) {
                             historyTTL = newValue!!
-                            spf.setHistoryTTL(newValue)
+                            spf.setTTL(newValue)
 
-                            CleanerSchedule.cancelPrevious(ctx)
-                            if (newValue > 0) {
-                                CleanerSchedule.scheduleNext(ctx)
-                            } else if (newValue == 0) {
-                                // it will not record data, no need to cleanup
-                            } else {
-                                // it will record data, but it will never expire, no need to cleanup
-                            }
+                            reScheduleHistoryCleanup(ctx)
                         }
                     },
                     label = { Text(Str(R.string.days)) },

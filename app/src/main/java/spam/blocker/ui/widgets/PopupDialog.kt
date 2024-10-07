@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -14,6 +15,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -82,6 +84,7 @@ fun PopupDialog(
                 usePlatformDefaultWidth = popupSize == null,
             )
         ) {
+            val C = LocalPalette.current
             val scrollState = rememberScrollState()
 
             Card(
@@ -90,6 +93,7 @@ fun PopupDialog(
                         popupSize?.calculate()?.dp ?: Dp.Unspecified
                     ),
 
+                border = BorderStroke(1.dp, color= C.dialogBorder),
                 colors = CardDefaults.cardColors(
                     containerColor = LocalPalette.current.dialogBg,
                 ),

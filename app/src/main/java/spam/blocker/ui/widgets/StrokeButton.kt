@@ -53,10 +53,9 @@ fun Button(
             )
 
             .combinedClickable(
-                onClick = { if(enabled) onClick() },
-                onLongClick = { if(enabled) onLongClick?.invoke() }
-            )
-        ,
+                onClick = { if (enabled) onClick() },
+                onLongClick = { if (enabled) onLongClick?.invoke() }
+            ),
         propagateMinConstraints = true
     ) {
         RowCenter(
@@ -87,7 +86,7 @@ fun StrokeButton(
         contentPadding = contentPadding,
         color = color,
         shape = shape,
-        onClick =  onClick
+        onClick = onClick
     ) {
         Text(
             text = label, color = color, maxLines = 1, overflow = TextOverflow.Ellipsis
@@ -156,17 +155,21 @@ fun LongPressButton(
 }
 
 // Button with a small triangle sign at the bottom right,
-//  has a fixed label.
+//  the label always follows the selected item
 @Composable
-fun MenuButton(
-    label: String,
-    items: List<IMenuItem>,
+fun Spinner(
+    items: List<LabelItem>,
+    selected: Int,
+    modifier: Modifier = Modifier,
     color: Color = LocalPalette.current.textGrey,
 ) {
-    DropdownWrapper(items = items) { expanded ->
+    DropdownWrapper(
+        items = items,
+    ) { expanded ->
         FooterButton(
-            label = label,
+            label = items[selected].label,
             color = color,
+            modifier = modifier,
             footerOffset = Pair(-4, -4),
             footerSize = 6,
             footerIconId = R.drawable.spinner_arrow,
@@ -177,19 +180,19 @@ fun MenuButton(
 }
 
 // Button with a small triangle sign at the bottom right,
-//  the label always follows the selected item
+//  has a fixed label.
 @Composable
-fun Spinner(
-    items: List<LabelItem>,
-    selected: Int,
+fun MenuButton(
+    label: String,
+    items: List<IMenuItem>,
+    modifier: Modifier = Modifier,
     color: Color = LocalPalette.current.textGrey,
 ) {
-    DropdownWrapper(
-        items = items,
-    ) { expanded ->
+    DropdownWrapper(items = items) { expanded ->
         FooterButton(
-            label = items[selected].label,
+            label = label,
             color = color,
+            modifier = modifier,
             footerOffset = Pair(-4, -4),
             footerSize = 6,
             footerIconId = R.drawable.spinner_arrow,
@@ -198,3 +201,4 @@ fun Spinner(
         }
     }
 }
+

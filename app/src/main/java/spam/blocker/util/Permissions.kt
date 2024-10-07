@@ -30,7 +30,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import spam.blocker.def.Def
@@ -40,7 +39,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.Util.Companion.doOnce
+import spam.blocker.util.Util.doOnce
 
 open class Permissions {
     companion object {
@@ -137,7 +136,7 @@ open class Permissions {
 
             val usageStatsManager =
                 ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-            val currentTime = Time.currentMillis()
+            val currentTime = Now.currentMillis()
             val events = usageStatsManager.queryEvents(currentTime - sec * 1000, currentTime)
 
             while (events.hasNextEvent()) {
@@ -221,7 +220,7 @@ open class Permissions {
                         .replace("-", "")
                         .replace("+", "")
                 }'",
-                "${Sms.DATE} >= ${Time.currentMillis() - withinMillis}"
+                "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
             )
 
             if (direction == Def.DIRECTION_INCOMING) {

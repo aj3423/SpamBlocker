@@ -1,0 +1,66 @@
+<resources>
+    <string name="directory">Довідник</string>
+    <string name="filename">Імʼя файлу</string>
+    <string name="invalid_input_type">Неправильний тип даних, очікується: %s, отримано: %s</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Днів до закінчення дії</string>
+    <string name="column_mapping">Зіставлення стовпців</string>
+    <string name="include_spam_db">Включити базу даних спаму</string>
+    <string name="configuration_only">Тільки конфігурація</string>
+    <string name="no_config_needed">Конфігурація не потрібна</string>
+    <string name="success">Успішно</string>
+    <string name="failed">Помилка</string>
+    <string name="running">Виконується</string>
+    <string name="optional">(необовʼязково)</string>
+
+    <string name="run_execute">Запустити</string>
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Тест</b></font><br>
+        Запустити процес вручну, ці дії будуть виконані негайно.<br>
+        <br>
+        - <font color="#00BFFF"><b>Створити</b></font><br>
+            Створити нову дію, декілька дій можна обʼєднати для виконання складного завдання.<br>
+            Зелені або червоні крапки між елементами вказують на те, чи можуть вони бути обʼєднані чи ні.<br>
+            <br>
+            Кілька прикладів послідовностей дій: <br>
+            <br>
+            &emsp; - завантажити файл за допомогою http -> розархівувати у форматі 7z -> розібрати у форматі csv -> імпортувати у базу даних спаму.<br>
+            <br>
+            &emsp; - застосувати параметри A у робочі дні та параметри B у вихідні.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Завантажити щоденні номери спаму зі сторінки 
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a>
+             та імпортувати їх до бази даних спаму.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Видалити протерміновані записи з бази даних спаму.</string>
+    <string name="help_bot_preset_cleanup_history">Видалити протерміновані історії дзвінків/SMS.</string>
+    <string name="help_bot_preset_auto_backup">Зробити резервну копію всіх налаштувань.</string>
+    <string name="everyday">Щоденно</string>
+    <string name="daily">Щодня</string>
+    <string name="weekly">Щотижня</string>
+    <string name="periodically">Періодично</string>
+    <string name="time">Час</string>
+    <string name="workdays">Робочі дні</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Якщо ви не використовуєте базу даних спаму, обидва параметри будуть тотожні.<br>
+        <br>
+        - <b>Включити базу даних спаму</b><br>
+        &emsp; Не використовуйте цей параметр для регулярного резервного копіювання, оскільки база даних спаму оновлюється досить часто.
+         Зазвичай цей параметр використовується виключно для клонування конфігурації на інший телефон.<br>
+        <br>
+        - <b>Тільки конфігурація</b><br>
+        &emsp; - При експортуванні це зменшить розмір резервної копії.<br>
+        &emsp; - При імпортуванні записи у базі даних спаму залишаться у поточному стані.
+        ]]>
+    </string>
+
+</resources>

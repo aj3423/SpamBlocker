@@ -3,6 +3,7 @@ package spam.blocker.util.SharedPref
 import android.content.Context
 import android.content.SharedPreferences
 import spam.blocker.def.Def
+import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
 import spam.blocker.def.Def.HISTORY_TTL_NEVER_EXPIRE
 
 open class SharedPref(private val ctx: Context) {
@@ -114,8 +115,8 @@ class HistoryOptions(ctx: Context) : SharedPref(ctx) {
     // -1: history records never expire, will not be auto deleted
     // 0: history logging is completely disabled
     // > 0: records will be deleted after x days
-    fun getHistoryTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL, HISTORY_TTL_NEVER_EXPIRE) } // -1: never expire
-    fun setHistoryTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
+    fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL, HISTORY_TTL_NEVER_EXPIRE) } // -1: never expire
+    fun setTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
 
     fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
     fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }
@@ -141,6 +142,16 @@ class Stir(ctx: Context) : SharedPref(ctx) {
     fun setIncludeUnverified(include: Boolean) {
         writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include)
     }
+}
+class SpamDB(ctx: Context) : SharedPref(ctx) {
+    fun isEnabled(): Boolean {
+        return readBoolean(Def.SETTING_SPAM_DB_ENABLED, false)
+    }
+    fun setEnabled(enabled: Boolean) {
+        writeBoolean(Def.SETTING_SPAM_DB_ENABLED, enabled)
+    }
+    fun getTTL(): Int { return readInt(Def.SETTING_SPAM_DB_TTL, DEFAULT_SPAM_DB_TTL) } // 90 days
+    fun setTTL(days: Int) { writeInt(Def.SETTING_SPAM_DB_TTL, days) }
 }
 class Contact(ctx: Context) : SharedPref(ctx) {
     fun isEnabled(): Boolean {

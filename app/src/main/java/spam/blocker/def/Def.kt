@@ -15,9 +15,9 @@ object Def {
 
     const val SETTING_THEME_TYPE = "theme_type"
     const val SETTING_STIR_ENABLED = "stir_enabled"
-    const val SETTING_LANGUAGE = "language"
     const val SETTING_STIR_EXCLUSIVE = "stir_exclusive"
     const val SETTING_STIR_INCLUDE_UNVERIFIED = "stir_include_unverified"
+    const val SETTING_LANGUAGE = "language"
     const val SETTING_CONTACT_ENABLED = "contacts_permitted"
     const val SETTING_CONTACTS_EXCLUSIVE = "contacts_exclusive"
     const val SETTING_PERMIT_REPEATED = "permit_repeated"
@@ -32,8 +32,6 @@ object Def {
     const val SETTING_OFF_TIME_START_MIN = "off_time_start_min"
     const val SETTING_OFF_TIME_END_HOUR = "off_time_end_hour"
     const val SETTING_OFF_TIME_END_MIN = "off_time_end_min"
-
-
     const val SETTING_RECENT_APPS = "recent_apps"
     const val SETTING_ACTIVE_TAB = "active_tab"
     const val SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE = "warn_running_in_work_profile_once"
@@ -45,9 +43,14 @@ object Def {
     const val SETTING_SHOW_BLOCKED = "show_blocked"
     const val SETTING_HISTORY_TTL = "history_ttl"
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
+    const val SETTING_SPAM_DB_ENABLED = "spam_db_enabled"
+    const val SETTING_SPAM_DB_TTL = "spam_db_ttl"
+
 
     const val ON_NEW_CALL = "on_new_call"
     const val ON_NEW_SMS = "on_new_sms"
+
+    const val DEFAULT_SPAM_DB_TTL = 90 // days
 
     const val HISTORY_TTL_NEVER_EXPIRE = -1
     const val HISTORY_TTL_DISABLED = 0
@@ -71,6 +74,7 @@ object Def {
     const val RESULT_ALLOWED_BY_EMERGENCY = 9
     const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
     const val RESULT_ALLOWED_BY_CONTACT_GROUP = 101
+    const val RESULT_ALLOWED_BY_CONTACT_REGEX = 102
 
 
     // blocked (10~99)
@@ -79,6 +83,8 @@ object Def {
     const val RESULT_BLOCKED_BY_NON_CONTACT = 12
     const val RESULT_BLOCKED_BY_STIR = 13
     const val RESULT_BLOCKED_BY_CONTACT_GROUP = 14
+    const val RESULT_BLOCKED_BY_CONTACT_REGEX = 15
+    const val RESULT_BLOCKED_BY_SPAM_DB = 16
 
     fun isBlocked(result: Int): Boolean {
         return result in 10..99
@@ -87,7 +93,6 @@ object Def {
     fun isNotBlocked(result: Int): Boolean {
         return !isBlocked(result)
     }
-
 
     // flags
     const val FLAG_FOR_CALL = 1 shl 0

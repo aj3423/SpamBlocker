@@ -30,7 +30,7 @@ fun ImportRuleButton(
     val ctx = LocalContext.current
 
     val fileReader = rememberFileReadChooser()
-    fileReader.Compose(ctx)
+    fileReader.Compose()
 
     val warningTrigger = rememberSaveable { mutableStateOf(false) }
     if (warningTrigger.value) {
@@ -55,14 +55,14 @@ fun ImportRuleButton(
                         if (raw == null)
                             return@popup
 
-                        val (headers, rowMaps) = Csv.parseToMaps(raw)
+                        val csv = Csv.parse(raw)
                         // show error if there is no column `pattern`, because it will generate empty rows.
-                        if (!headers.contains("pattern")) {
+                        if (!csv.headers.contains("pattern")) {
                             warningTrigger.value = true
                             return@popup
                         }
 
-                        val rules = rowMaps.map {
+                        val rules = csv.rows.map {
                             RegexRule.fromMap(it)
                         }
 
@@ -87,7 +87,7 @@ fun ImportRuleButton(
                             }
                             1 -> { // import as multi rules
                                 // 1. add to db
-                                val table = spam.blocker.db.NumberRuleTable()
+                                val table = NumberRuleTable()
                                 rules.forEach {
                                     table.addNewRule(ctx, it)
                                 }

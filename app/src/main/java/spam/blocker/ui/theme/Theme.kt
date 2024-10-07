@@ -30,6 +30,8 @@ data class CustomColorsPalette(
     // popup
     val dialogBg: Color = Color.Unspecified,
     val dialogBorder: Color = Color.Unspecified,
+    val menuBg: Color = Color.Unspecified,
+    val menuBorder: Color = Color.Unspecified,
 
     val bottomNavBg: Color = Color.Unspecified, // bg of bottom nav bar
 
@@ -60,6 +62,9 @@ val LightCustomColorsPalette = CustomColorsPalette(
     dialogBg = Color.White,
     dialogBorder = SwissCoffee,
 
+    menuBg = Color.White,
+    menuBorder = LightGrey,
+
     balloonBorder = OrangeRed,
 )
 
@@ -79,9 +84,12 @@ val DarkCustomColorsPalette = CustomColorsPalette(
     switchTrackOff = Color(0xff5a5a5a),
     switchThumbOff = ColdGrey,
 
-    bottomNavBg = Black2d2d2d,
-    dialogBg = Grey424242,
+    bottomNavBg = RaisinBlack,
+    dialogBg = RaisinBlack,
     dialogBorder = Grey383838,
+
+    menuBg = RaisinBlack,
+    menuBorder = Grey424242,
 
     balloonBorder = DarkOrange,
 )

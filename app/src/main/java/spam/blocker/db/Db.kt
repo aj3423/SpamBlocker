@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 27
+        const val DB_VERSION = 28
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -30,6 +30,18 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_SCHEDULE = "schedule"
         const val COLUMN_BLOCK_TYPE = "block_type"
 
+        // ---- spam table ----
+        const val TABLE_SPAM = "spam"
+//        COLUMN_PEER = "peer"
+//        COLUMN_TIME = "time"
+
+        // ---- bot table ----
+        const val TABLE_BOT = "bot"
+//        const val COLUMN_DESC
+//        const val COLUMN_SCHEDULE
+        const val COLUMN_ACTIONS = "actions"
+        const val COLUMN_ENABLED = "enabled"
+        const val COLUMN_WORK_UUID = "work_uuid"
 
         // ---- call ----
         const val TABLE_CALL = "call"
@@ -43,7 +55,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_REASON = "reason" // Long, by which filter id is this blocked/whitelisted
         const val COLUMN_READ = "read" // Boolean
         const val COLUMN_SMS_CONTENT = "sms_content" // text
-        const val COLUMN_EXPANDED = "expanded" // Boollean
+        const val COLUMN_EXPANDED = "expanded" // Boolean
 
 
         @Volatile
@@ -79,6 +91,28 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         createPatternTable(TABLE_NUMBER_RULE)
         createPatternTable(TABLE_CONTENT_RULE)
         createPatternTable(TABLE_QUICK_COPY_RULE)
+
+        // spam database
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_SPAM (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_PEER TEXT UNIQUE, " +
+                    "$COLUMN_TIME INTEGER " +
+                    ")"
+        )
+        db.execSQL("CREATE INDEX IF NOT EXISTS index_peer ON $TABLE_SPAM($COLUMN_PEER)")
+
+        // bot
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_BOT (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_DESC TEXT, " +
+                    "$COLUMN_SCHEDULE TEXT, " +
+                    "$COLUMN_ACTIONS TEXT, " +
+                    "$COLUMN_ENABLED INTEGER, " +
+                    "$COLUMN_WORK_UUID TEXT UNIQUE" +
+                    ")"
+        )
 
         // call/sms history
         fun createHistoryTable(tableName: String) {
@@ -140,6 +174,10 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
             db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_EXPANDED INTEGER")
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXPANDED INTEGER")
+        }
+        // v3.0 introduces spam db and bot db
+        if ((newVersion >= 28) && (oldVersion < 28)) {
+            onCreate(db)
         }
     }
 }

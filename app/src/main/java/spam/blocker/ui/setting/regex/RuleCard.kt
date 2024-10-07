@@ -27,6 +27,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
@@ -40,14 +41,7 @@ fun RuleCard(
 ) {
     val C = LocalPalette.current
 
-    OutlinedCard(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background,
-        ),
-        border = BorderStroke(width = 1.dp, color = C.cardBorder),
-        shape = RoundedCornerShape(6.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
-    ) {
+    OutlineCard {
         Row(
             modifier = modifier.padding(horizontal = 10.dp, vertical = 8.dp)
         ) {

@@ -57,7 +57,7 @@ import spam.blocker.util.ProtectedPermission
 import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util
-import spam.blocker.util.Util.Companion.listApps
+import spam.blocker.util.Util.listApps
 
 @Composable
 private fun PopupChooseApps(

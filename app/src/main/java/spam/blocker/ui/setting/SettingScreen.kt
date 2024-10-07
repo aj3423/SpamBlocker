@@ -31,6 +31,8 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.bot.BotHeader
+import spam.blocker.ui.setting.bot.BotList
 import spam.blocker.ui.setting.misc.About
 import spam.blocker.ui.setting.misc.BackupRestore
 import spam.blocker.ui.setting.misc.Language
@@ -41,6 +43,7 @@ import spam.blocker.ui.setting.quick.Dialed
 import spam.blocker.ui.setting.quick.OffTime
 import spam.blocker.ui.setting.quick.RecentApps
 import spam.blocker.ui.setting.quick.RepeatedCall
+import spam.blocker.ui.setting.quick.SpamDB
 import spam.blocker.ui.setting.quick.Stir
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
@@ -109,10 +112,14 @@ fun SettingScreen() {
 
                 // quick settings
                 if (G.globallyEnabled.value) {
-                    Section(title = Str(R.string.quick_settings)) {
+                    Section(
+                        title = Str(R.string.quick_settings),
+                        horizontalPadding = 8
+                    ) {
                         Column {
                             Contacts()
                             Stir()
+                            SpamDB()
                             RepeatedCall()
                             Dialed()
                             RecentApps()
@@ -122,6 +129,7 @@ fun SettingScreen() {
                     }
                     Section(
                         title = Str(R.string.regex_settings),
+                        horizontalPadding = 8
                     ) {
                         Column {
                             // Number Rules
@@ -144,7 +152,23 @@ fun SettingScreen() {
                         }
                     }
                 }
-                Section(title = Str(R.string.miscellaneous)) {
+                Section(
+                    title = Str(R.string.automation),
+                    horizontalPadding = 8
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(0.dp),
+                    ) {
+                        // Bot list
+                        LaunchedEffect(true) { G.BotVM.reload(ctx) }
+                        BotHeader()
+                        BotList()
+                    }
+                }
+                Section(
+                    title = Str(R.string.miscellaneous),
+                    horizontalPadding = 8
+                ) {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(0.dp),
                     ) {
@@ -163,7 +187,7 @@ fun SettingScreen() {
 @Composable
 fun SettingRow(
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit,
+    content: @Composable RowScope.() -> Unit,
 ) {
     RowVCenter(
         modifier = modifier.heightIn(min = SettingRowMinHeight.dp),
@@ -205,7 +229,7 @@ fun LabeledRow(
 
             // balloon tooltip
             if (helpTooltipId != null)
-                BalloonQuestionMark(helpTooltipId)
+                BalloonQuestionMark(Str(helpTooltipId))
 
             // rest content
             RowVCenter(

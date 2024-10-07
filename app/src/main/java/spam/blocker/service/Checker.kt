@@ -12,14 +12,17 @@ import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
 import spam.blocker.db.SmsTable
+import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.ui.setting.quick.SpamDB
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
-import spam.blocker.util.Schedule
+import spam.blocker.util.TimeSchedule
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
+import spam.blocker.util.SharedPref.SpamDB
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
@@ -110,6 +113,28 @@ class Checker { // for namespace only
                 }
             }
 
+            return null
+        }
+    }
+
+    // The "Database" in quick settings.
+    // It checks whether the number exists in the spam database.
+    class SpamDB(private val ctx: Context, private val rawNumber: String) : IChecker {
+        override fun priority(): Int {
+            return 0
+        }
+
+        override fun check(): CheckResult? {
+            val enabled = SpamDB(ctx).isEnabled()
+            if (!enabled)
+                return null
+
+            val exists = SpamTable.numberExists(ctx, rawNumber) ||
+                    SpamTable.numberExists(ctx, Util.clearNumber(rawNumber))
+
+            if (exists) {
+                return CheckResult(true, Def.RESULT_BLOCKED_BY_SPAM_DB)
+            }
             return null
         }
     }
@@ -321,7 +346,7 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             // 1. check time schedule
-            if (Schedule.dissatisfyNow(numberRule.schedule))
+            if (TimeSchedule.dissatisfyNow(numberRule.schedule))
                 return null
 
             // 2. check regex
@@ -363,7 +388,7 @@ class Checker { // for namespace only
             }
 
             // 1. check time schedule
-            if (Schedule.dissatisfyNow(rule.schedule))
+            if (TimeSchedule.dissatisfyNow(rule.schedule))
                 return null
 
             // 2. check regex
@@ -401,7 +426,7 @@ class Checker { // for namespace only
 
         override fun check(): CheckResult? {
             // 1. check time schedule
-            if (Schedule.dissatisfyNow(rule.schedule))
+            if (TimeSchedule.dissatisfyNow(rule.schedule))
                 return null
 
             // 2. check regex
@@ -457,6 +482,7 @@ class Checker { // for namespace only
             val checkers = arrayListOf(
                 Checker.Emergency(callDetails),
                 Checker.STIR(ctx, callDetails),
+                Checker.SpamDB(ctx, rawNumber),
                 Checker.Contact(ctx, rawNumber),
                 Checker.RepeatedCall(ctx, rawNumber, isTesting = callDetails == null),
                 Checker.Dialed(ctx, rawNumber),
@@ -502,6 +528,7 @@ class Checker { // for namespace only
 
             val checkers = arrayListOf<IChecker>(
                 Checker.Contact(ctx, rawNumber),
+                Checker.SpamDB(ctx, rawNumber),
                 Checker.OffTime(ctx)
             )
 
@@ -638,6 +665,8 @@ class Checker { // for namespace only
                 Def.RESULT_BLOCKED_BY_NUMBER -> res.getString(R.string.blacklist) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason
                 )
+
+                Def.RESULT_BLOCKED_BY_SPAM_DB -> res.getString(R.string.database)
 
                 Def.RESULT_ALLOWED_BY_CONTACT_GROUP -> res.getString(R.string.contact_group) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason

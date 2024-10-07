@@ -11,6 +11,7 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
+import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
@@ -44,7 +45,7 @@ class SmsReceiver : BroadcastReceiver() {
         val r = Checker.checkSms(ctx, rawNumber, messageBody)
 
         // 1. log to db
-        val isLogEnabled = spf.getHistoryTTL() != HISTORY_TTL_DISABLED
+        val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED
         val id = if(isLogEnabled) SmsTable().addNewRecord(ctx, HistoryRecord(
             peer = rawNumber,
             time = System.currentTimeMillis(),

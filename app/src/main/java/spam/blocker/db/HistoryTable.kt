@@ -6,8 +6,7 @@ import android.content.Context
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
-import spam.blocker.util.Time
-import spam.blocker.util.logi
+import spam.blocker.util.Now
 
 data class HistoryRecord(
     val id: Long = 0,
@@ -154,7 +153,7 @@ abstract class HistoryTable {
     }
 
     fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
-        val xSecondsAgo = Time.currentMillis() - durationSeconds*1000
+        val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
 
         val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(
             "SELECT COUNT(*) FROM ${tableName()} " +

@@ -13,12 +13,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import spam.blocker.Events
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
@@ -41,6 +44,7 @@ fun BackupRestore() {
 
     LabeledRow(
         R.string.backup,
+        helpTooltipId = R.string.help_backup,
         content = {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -48,46 +52,48 @@ fun BackupRestore() {
             ) {
                 // export
                 val fileWriter = rememberFileWriteChooser()
-                fileWriter.Compose(ctx)
+                fileWriter.Compose()
 
-                val exportItems = ctx.resources.getStringArray(R.array.export_type_list)
-                    .mapIndexed { index, label ->
-                        LabelItem(
-                            label = label,
-                            onClick = {
-                                val compress = index == 1
+                val labels = listOf(
+                    R.string.include_spam_db,
+                    R.string.configuration_only,
+                )
+                val icons = listOf(
+                    R.drawable.ic_db_and_config,
+                    R.drawable.ic_settings
+                )
+                val exportMenuItems = labels.mapIndexed { index, labelId ->
+                    LabelItem(
+                        label = Str(labelId),
+                        icon = { GreyIcon(icons[index]) }
+                    ) {
+                        val includeSpamDB = index == 0
 
-                                // prepare file name
-                                val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
-                                val ymd = LocalDate.now().format(formatter)
-                                val fn = "SpamBlocker.${ymd}.${if (compress) "gz" else "json"}"
+                        // prepare file name
+                        val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd")
+                        val ymd = LocalDate.now().format(formatter)
+                        val fn = "SpamBlocker.${ymd}${if (includeSpamDB) ".db" else ""}.gz"
 
-                                // prepare file content
-                                val curr = Configs()
-                                curr.load(ctx)
-                                val content = if (compress) {
-                                    compressString(curr.toJsonString())
-                                } else {
-                                    curr.toPrettyJsonString().toByteArray()
-                                }
+                        // prepare file content
+                        val curr = Configs()
+                        curr.load(ctx, includeSpamDB)
+                        val content = compressString(curr.toJsonString())
 
-                                fileWriter.popup(
-                                    filename = fn,
-                                    content = content,
-                                )
-                            }
+                        fileWriter.popup(
+                            filename = fn,
+                            content = content,
                         )
                     }
-
+                }
                 MenuButton(
                     label = Str(R.string.export),
-                    items = exportItems,
-                    color = SkyBlue,
+                    items = exportMenuItems,
+                    color = Teal200,
                 )
 
                 // import
                 val fileReader = rememberFileReadChooser()
-                fileReader.Compose(ctx)
+                fileReader.Compose()
 
                 var succeeded by remember { mutableStateOf(false) }
                 val resultTrigger = rememberSaveable { mutableStateOf(false) }
@@ -120,48 +126,62 @@ fun BackupRestore() {
                     )
                 }
 
-                StrokeButton(
-                    label = Str(R.string.import_),
-                    color = Teal200,
-                ) {
-                    fileReader.popup { _, raw ->
-                        if (raw == null)
-                            return@popup
+                val importMenuItems = labels.mapIndexed { index, labelId ->
+                    LabelItem(
+                        label = Str(labelId),
+                        icon = { GreyIcon(icons[index]) }
+                    ) {
+                        val includeSpamDB = index == 0
 
-                        fun onDecodeSuccess(str: String) {
-                            val newCfg = Configs.createFromJson(str)
-                            newCfg.apply(ctx)
+                        fileReader.popup { _, raw ->
+                            if (raw == null)
+                                return@popup
 
-                            succeeded = true
-                            resultTrigger.value = true
-                        }
+                            fun onDecodeSuccess(str: String) {
+                                val newCfg = Configs.createFromJson(str)
+                                newCfg.apply(ctx, includeSpamDB)
 
-                        fun onDecodeFail() {
-                            succeeded = false
-                            resultTrigger.value = true
-                        }
+                                succeeded = true
+                                resultTrigger.value = true
 
-                        try {
-                            // for history compatibility, text file contains b64(gzip)
-                            val jsonStr = decompressToString(b64Decode(String(raw)))
-                            onDecodeSuccess(jsonStr)
-                        } catch (_: Exception) {
+                                // Fire an event to notify the configuration has changed,
+                                // for example, the history cleanup schedule should restart
+                                Events.configImported.value = Events.configImported.value?.plus(1)
+                            }
+
+                            fun onDecodeFail() {
+                                succeeded = false
+                                resultTrigger.value = true
+                            }
+
                             try {
-                                // try gzip compressed
-                                val jsonStr = decompressToString(raw)
+                                // for history compatibility, text file contains b64(gzip)
+                                val jsonStr = decompressToString(b64Decode(String(raw)))
                                 onDecodeSuccess(jsonStr)
-                            } catch (e: Exception) {
-                                // try plain json string
+                            } catch (_: Exception) {
                                 try {
-                                    val jsonStr = String(raw)
+                                    // try gzip compressed
+                                    val jsonStr = decompressToString(raw)
                                     onDecodeSuccess(jsonStr)
                                 } catch (e: Exception) {
-                                    onDecodeFail()
+                                    // try plain json string
+                                    try {
+                                        val jsonStr = String(raw)
+                                        onDecodeSuccess(jsonStr)
+                                    } catch (e: Exception) {
+                                        onDecodeFail()
+                                    }
                                 }
                             }
                         }
                     }
                 }
+
+                MenuButton(
+                    label = Str(R.string.import_),
+                    items = importMenuItems,
+                    color = SkyBlue,
+                )
             }
         }
     )

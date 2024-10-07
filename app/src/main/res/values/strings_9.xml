@@ -1,0 +1,66 @@
+<resources>
+    <string name="directory">Directory</string>
+    <string name="filename">Filename</string>
+    <string name="invalid_input_type">Invalid input type, expect: %s, got: %s</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Expiry Days</string>
+    <string name="column_mapping">Column Mapping</string>
+    <string name="include_spam_db">Include Spam Database</string>
+    <string name="configuration_only">Configuration Only</string>
+    <string name="no_config_needed">No configuration needed</string>
+    <string name="success">Success</string>
+    <string name="failed">Failed</string>
+    <string name="running">Running</string>
+    <string name="optional">(optional)</string>
+
+    <string name="run_execute">Run</string>
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Test</b></font><br>
+        Manually run the workflow, these actions will be executed immediately.<br>
+        <br>
+        - <font color="#00BFFF"><b>New</b></font><br>
+            Create a new action, multiple actions can be chained together to complete a complex task.<br>
+            Those green or red dots between items indicate whether they are chainable or not.<br>
+            <br>
+            Some example workflows: <br>
+            <br>
+            &emsp; - http download file -> decode 7z format -> parse as csv format -> import to spam database.<br>
+            <br>
+            &emsp; - apply settings A at workdays and apply settings B at weekend.<br>
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Download spam phone numbers from
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> every workday,
+             and import them to the spam database.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Delete expired records from the spam database.</string>
+    <string name="help_bot_preset_cleanup_history">Delete expired history call/SMS records.</string>
+    <string name="help_bot_preset_auto_backup">Backup all settings.</string>
+    <string name="everyday">Everyday</string>
+    <string name="daily">Daily</string>
+    <string name="weekly">Weekly</string>
+    <string name="periodically">Periodically</string>
+    <string name="time">Time</string>
+    <string name="workdays">Workdays</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        If you don\'t use the spam database, both options will be equivalent.<br>
+        <br>
+        - <b>Include Spam Database</b><br>
+        &emsp; Do not use this for regular backup, because the spam database is supposed to get updated frequently.
+         This is only useful when cloning the configuration to another phone.<br>
+        <br>
+        - <b>Configuration Only</b><br>
+        &emsp; - When exporting, this will reduce the backup file size. <br>
+        &emsp; - When importing, records in spam database will retain its current state.
+        ]]>
+    </string>
+
+</resources>

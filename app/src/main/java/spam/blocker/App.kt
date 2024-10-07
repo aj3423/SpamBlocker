@@ -13,6 +13,10 @@ class App : Application() {
     override fun attachBaseContext(base:Context) {
         super.attachBaseContext(base)
 
+        // The Launcher.selfRestart will launch another MainActivity, which cause events being
+        // triggered twice, so bind here to prevent the double triggering.
+        Events.setup(this)
+
         // Set the default uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             handleUncaughtException(thread, throwable)

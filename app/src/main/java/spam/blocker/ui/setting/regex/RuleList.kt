@@ -219,7 +219,7 @@ fun RuleList(
                 itemsIndexed(
                     items = vm.rules,
                     key = { _, it -> it.id }
-                ) { i, rule ->
+                ) { i, _ ->
                     RuleItem(
                         coroutine, forType, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems

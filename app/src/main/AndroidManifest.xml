@@ -6,6 +6,8 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- for call -->
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -47,7 +49,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".service.NotificationTrampolineActivity"
+        <activity android:name=".ui.NotificationTrampolineActivity"
             android:excludeFromRecents="true"/>
         <activity android:name=".ui.crash.CrashReportActivity" />
 

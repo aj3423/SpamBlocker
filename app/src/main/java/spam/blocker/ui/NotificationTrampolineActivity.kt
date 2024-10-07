@@ -1,4 +1,4 @@
-package spam.blocker.service
+package spam.blocker.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -9,7 +9,7 @@ import java.time.ZoneId
 
 // Serialized format: "weekdays,time range,enabled"
 // e.g. "12345,00:00-01:02,true"
-class Schedule {
+class TimeSchedule {
     var enabled = false
     var startHour = 0
     var startMin = 0
@@ -90,15 +90,15 @@ class Schedule {
     companion object {
         private val regexRange = """(\d{1,2}):(\d{1,2})-(\d{1,2}):(\d{1,2})""".toRegex()
 
-        fun parseFromStr(str: String): Schedule {
-            val ret = Schedule()
+        fun parseFromStr(str: String): TimeSchedule {
+            val ret = TimeSchedule()
 
             if (str.isEmpty())
-                return Schedule()
+                return TimeSchedule()
 
             val parts = str.split(",")
             if (parts.size != 3)
-                return Schedule()
+                return TimeSchedule()
 
             // 1. weekdays, e.g.: "23456"
             // Calendar.SUNDAY ~ Calendar.SATURDAY (1~7)
@@ -107,7 +107,7 @@ class Schedule {
             }
 
             // 2. time range, e.g.: "01:00-02:30"
-            val match = regexRange.matchEntire(parts[1]) ?: return Schedule()
+            val match = regexRange.matchEntire(parts[1]) ?: return TimeSchedule()
 
             val (startHour, startMinute, endHour, endMinute) = match.destructured
             ret.startHour = startHour.toInt()
@@ -125,7 +125,7 @@ class Schedule {
         fun dissatisfyNow(scheduleString: String): Boolean {
             val sch = parseFromStr(scheduleString)
             if (sch.enabled) {
-                val now = Time.currentMillis()
+                val now = Now.currentMillis()
                 if (!sch.satisfyTime(now)) {
                     return true
                 }

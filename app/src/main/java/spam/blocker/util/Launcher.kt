@@ -34,8 +34,6 @@ object Launcher {
 
     fun openSMSConversation(ctx: Context, smsto: String?) {
 
-        logd("smsto: $smsto")
-
         val smsUri = Uri.parse("smsto:$smsto")
         // val smsIntent = Intent(Intent.ACTION_VIEW, smsUri) // this popups dialog for choosing an app
         val smsIntent = Intent(Intent.ACTION_SENDTO, smsUri) // this doesn't popup that dialog

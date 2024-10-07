@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,7 +35,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.ui.M
-import spam.blocker.ui.rememberMutableStateListOf
+import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
@@ -67,12 +66,11 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
-import spam.blocker.ui.widgets.WeekdayPicker
-import spam.blocker.util.Clipboard
+import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
-import spam.blocker.util.Schedule
+import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
 import spam.blocker.util.setFlag
@@ -94,7 +92,7 @@ fun LeadingDropdownIcon(regexFlags: MutableIntState) {
                 ) {
                     GreyLabel(Str(R.string.switch_mode))
                     BalloonQuestionMark(
-                        helpTooltipId = R.string.help_number_mode,
+                        tooltip = Str(R.string.help_number_mode),
                         dropdownOffset.value.round()
                     )
                 }
@@ -106,14 +104,16 @@ fun LeadingDropdownIcon(regexFlags: MutableIntState) {
             label = ctx.getString(R.string.phone_number),
             icon = { GreyIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp)) }
         ) {
-            regexFlags.intValue = regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, false)
+            regexFlags.intValue =
+                regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, false)
         }
         // Contact Group Mode
         items += LabelItem(
             label = ctx.getString(R.string.contact_group),
             icon = { GreyIcon(R.drawable.ic_account_circle, modifier = M.size(16.dp)) }
         ) {
-            regexFlags.intValue = regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, true)
+            regexFlags.intValue =
+                regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, true)
         }
         items
     }
@@ -207,9 +207,9 @@ fun RuleEditDialog(
     var notifyType by rememberSaveable { mutableIntStateOf(initRule.importance) }
 
     // Schedule
-    val sch = remember { Schedule.parseFromStr(initRule.schedule) }
+    val sch = remember { TimeSchedule.parseFromStr(initRule.schedule) }
     var schEnabled by rememberSaveable { mutableStateOf(sch.enabled) }
-    val schWeekdays = rememberMutableStateListOf(*sch.weekdays.toTypedArray())
+    val schWeekdays = rememberSaveableMutableStateListOf(*sch.weekdays.toTypedArray())
     var schSHour by rememberSaveable { mutableIntStateOf(sch.startHour) }
     var schSMin by rememberSaveable { mutableIntStateOf(sch.startMin) }
     var schEHour by rememberSaveable { mutableIntStateOf(sch.endHour) }
@@ -239,7 +239,7 @@ fun RuleEditDialog(
                     flags = flags.setFlag(Def.FLAG_FOR_PASSED, applyToPassed)
                     flags = flags.setFlag(Def.FLAG_FOR_BLOCKED, applyToBlocked)
 
-                    val schedule = Schedule().apply {
+                    val schedule = TimeSchedule().apply {
                         enabled = schEnabled
                         startHour = schSHour
                         startMin = schSMin
@@ -310,8 +310,10 @@ fun RuleEditDialog(
                         RegexInputBox(
                             label = {
                                 Text(
-                                    Str(if (patternExtraFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
-                                        R.string.contact_group else R.string.phone_number),
+                                    Str(
+                                        if (patternExtraFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
+                                            R.string.contact_group else R.string.phone_number
+                                    ),
                                     color = Color.Unspecified
                                 )
                             },
@@ -329,7 +331,12 @@ fun RuleEditDialog(
                 // Description
                 StrInputBox(
                     text = description,
-                    label = { Text(Str(R.string.description), color = Color.Unspecified) },
+                    label = {
+                        Text(
+                            Str(R.string.description) + " " + Str(R.string.optional),
+                            color = Color.Unspecified
+                        )
+                    },
                     onValueChange = { description = it },
                     leadingIconId = R.drawable.ic_note,
                     maxLines = 1,
@@ -574,7 +581,7 @@ fun RuleEditDialog(
                     }
                     if (schEnabled) {
                         SettingRow {
-                            WeekdayPicker(selectedDays = schWeekdays)
+                            WeekdayPicker1(selectedDays = schWeekdays)
                         }
                     }
                 }

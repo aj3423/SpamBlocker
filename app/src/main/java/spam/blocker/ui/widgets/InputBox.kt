@@ -75,6 +75,7 @@ private fun InputBox(
         color = LocalPalette.current.textGrey,
         fontWeight = FontWeight.SemiBold,
     ),
+    limitTextLength: Boolean = false,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // size should be 18.dp by default
@@ -115,7 +116,7 @@ private fun InputBox(
     // The input box will freeze for super long text, to solve this, if the input text exceeds
     // this length, the text will be truncated to this length, and the edit will be disabled.
     // There is no point to edit such long text, it has to be a imported rule.
-    val exceedsMaxLen = value.text.length > MAX_STR_LEN
+    val exceedsMaxLen = limitTextLength && (value.text.length > MAX_STR_LEN)
 
     Column(
         modifier = if (label != null) {
@@ -411,6 +412,7 @@ fun RegexInputBox(
         label = label,
         placeholder = placeholder,
         leadingIcon = leadingIcon,
+        limitTextLength = true,
         supportingTextStr = errorStr,
         singleLine = false,
         maxLines = 10,
@@ -435,7 +437,7 @@ fun RegexInputBox(
                         ) {
                             GreyLabel(Str(R.string.regex_flags))
                             BalloonQuestionMark(
-                                helpTooltipId = R.string.help_regex_flags,
+                                tooltip = Str(R.string.help_regex_flags),
                                 dropdownOffset.value.round()
                             )
                         }

@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.text.font.FontWeight
@@ -38,12 +40,12 @@ interface IMenuItem {
 
 @Immutable
 class CustomItem(
-    val content: @Composable () -> Unit,
+    val content: @Composable (MutableState<Boolean>) -> Unit,
 ) : IMenuItem {
 
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        content()
+        content(menuExpandedState)
     }
 }
 
@@ -62,22 +64,22 @@ class LabelItem(
     val id: String = "",
     val label: String,
     val icon: (@Composable () -> Unit)? = null,
+    val tooltip: String? = null,
     val selected: Boolean = false,
     private val dismissOnClick: Boolean = true, // collapse the dropdown menu when item is clicked
     val onClick: Lambda,
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        RowVCenter {
+        RowVCenterSpaced(10) {
             icon?.let {
                 it()
-                Spacer(modifier = M.width(width = 10.dp))
             }
 
             GreyLabel(
                 text = label,
                 modifier = M
-                    .fillMaxWidth()
+                    .weight(1f)
                     .clickable {
                         onClick()
                         if (dismissOnClick)
@@ -85,6 +87,9 @@ class LabelItem(
                     },
                 fontWeight = if (selected) FontWeight.Bold else null,
             )
+            tooltip?.let {
+                BalloonQuestionMark(tooltip = tooltip)
+            }
         }
     }
 }
@@ -107,6 +112,8 @@ fun DropdownWrapper(
     modifier: Modifier = Modifier,
     content: @Composable (MutableState<Boolean>) -> Unit, // Boolean == expanded or not
 ) {
+    val C = LocalPalette.current
+
     Box {
         val expanded = remember { mutableStateOf(false) }
 
@@ -116,6 +123,8 @@ fun DropdownWrapper(
             modifier = modifier,
             expanded = expanded.value,
             onDismissRequest = { expanded.value = false },
+            containerColor = C.menuBg,
+            border = BorderStroke(1.dp, C.menuBorder)
         ) {
             DropdownMenuItems(
                 items = items,

@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.SmsTable
@@ -60,6 +61,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         super.onCreate(savedInstanceState)
+
+        debug(this)
 
         val ctx = this
         val spf = Global(ctx)
@@ -172,7 +175,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
 
     private fun listenToNewCallSMS() {
         val ctx = this

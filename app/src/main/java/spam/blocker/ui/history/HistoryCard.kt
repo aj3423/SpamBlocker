@@ -34,6 +34,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.DrawableImage
+import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowCenter
 import spam.blocker.ui.widgets.RowVCenter
@@ -57,14 +58,7 @@ fun HistoryCard(
     val C = LocalPalette.current
     val ctx = LocalContext.current
 
-    OutlinedCard(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background,
-        ),
-        border = BorderStroke(width = 1.dp, color = C.cardBorder),
-        shape = RoundedCornerShape(6.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
-    ) {
+    OutlineCard {
         RowVCenter(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = modifier.padding(8.dp)

@@ -11,6 +11,7 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
+import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.BlockType
@@ -114,7 +115,7 @@ class CallScreeningService : CallScreeningService() {
         val r = Checker.checkCall(ctx, rawNumber, callDetails)
 
         // 1. log to db
-        val isLogEnabled = HistoryOptions(ctx).getHistoryTTL() != HISTORY_TTL_DISABLED
+        val isLogEnabled = HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
         val id = if (isLogEnabled) {
             CallTable().addNewRecord(ctx, HistoryRecord(
                 peer = rawNumber,

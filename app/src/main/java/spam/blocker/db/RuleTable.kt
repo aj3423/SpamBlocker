@@ -24,9 +24,9 @@ import spam.blocker.def.Def
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.Salmon
-import spam.blocker.util.Schedule
+import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
-import spam.blocker.util.Util.Companion.truncate
+import spam.blocker.util.Util.truncate
 import spam.blocker.util.hasFlag
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
@@ -111,7 +111,7 @@ data class RegexRule(
 
         return buildAnnotatedString {
             // 1. Time schedule
-            val sch = Schedule.parseFromStr(schedule)
+            val sch = TimeSchedule.parseFromStr(schedule)
             if (sch.enabled) {
                 withStyle(style = SpanStyle(fontSize = 12.sp, color = palette.schedule)) {
                     append(sch.toDisplayStr(ctx))

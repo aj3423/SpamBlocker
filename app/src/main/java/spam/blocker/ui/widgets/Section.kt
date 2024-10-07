@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.ui.M
@@ -23,6 +24,8 @@ import spam.blocker.ui.theme.SwissCoffee
 @Composable
 fun Section(
     title: String,
+    horizontalPadding : Int = 0,
+    bgColor: Color = MaterialTheme.colorScheme.background,
     content: @Composable ()->Unit,
 ) {
     val C = LocalPalette.current
@@ -31,8 +34,7 @@ fun Section(
         Box(
             modifier = M
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(13.dp))
-                .padding(horizontal = 8.dp)
+                .padding(horizontal = horizontalPadding.dp)
                 .border(0.5.dp, C.cardBorder, shape = RoundedCornerShape(4.dp))
                 .padding(horizontal = 14.dp, vertical = 10.dp)
                 .wrapContentHeight()
@@ -45,7 +47,7 @@ fun Section(
             modifier = M
                 .wrapContentWidth()
                 .offset(20.dp, (-8).dp)
-                .background(MaterialTheme.colorScheme.background)
+                .background(bgColor)
         ) {
             Text(
                 text = title,

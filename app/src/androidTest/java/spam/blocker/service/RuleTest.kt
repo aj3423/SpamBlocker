@@ -28,7 +28,7 @@ import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.SharedPref
-import spam.blocker.util.Time
+import spam.blocker.util.Now
 import spam.blocker.util.Util
 import java.util.Calendar
 
@@ -105,7 +105,7 @@ class RuleTest {
     private fun mock_calls(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
         every { Permissions.countHistoryCallByNumber(any(), rawNumber, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
-            val mockNow = Time.currentMillis()
+            val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
                 repeatedTimes
             } else {
@@ -116,7 +116,7 @@ class RuleTest {
     private fun mock_sms(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
         every { Permissions.countHistorySMSByNumber(any(), rawNumber, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
-            val mockNow = Time.currentMillis()
+            val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
                 repeatedTimes
             } else {
@@ -125,12 +125,12 @@ class RuleTest {
         }
     }
     private fun mock_advance_time_by_minutes(durationMinutes: Int) {
-        mockkObject(Time)
-        every { Time.currentMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
+        mockkObject(Now)
+        every { Now.currentMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
     }
     private fun mock_current_time_millis(millis: Long) {
-        mockkObject(Time)
-        every { Time.currentMillis() } returns millis
+        mockkObject(Now)
+        every { Now.currentMillis() } returns millis
     }
 
     // -------- tests begin --------
@@ -264,7 +264,7 @@ class RuleTest {
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
         mockkObject(Permissions)
         every { Permissions.listUsedAppWithinXSecond(ctx, any()) } answers {
-            if (Time.currentMillis() < expire)
+            if (Now.currentMillis() < expire)
                 pkgs
             else
                 listOf()

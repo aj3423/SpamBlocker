@@ -1,0 +1,99 @@
+<resources>
+    <string name="database">Database</string>
+    <string name="total">Total</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        Numbers in this database will be blocked.<br>
+        <br>
+        You can integrate any public database, or even multiple databases, you can also import numbers from local files.<br>
+        <br>
+        Check the "Automation" section below for how to schedule an auto-import task.<br>
+        <br>
+        It Applies to both calls and SMS messages.<br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">Spam numbers in the database will expire after N days, expired records will be deleted automatically.</string>
+    <string name="customize">Customize</string>
+    <string name="workflow">Workflow</string>
+    <string name="workflows">Workflows</string>
+    <string name="automation">Automation</string>
+    <string name="help_workflows">
+        <![CDATA[
+        Workflows can be used to run tasks automatically, such as updating database, or auto backup.<br>
+        <br>
+        There are presets for a quick setup, you can also build it from scratch.<br>
+        <br>
+        If you find any workflow that could be widely used and should be added to the presets, please report it on github.
+        ]]>
+    </string>
+    <string name="manual">Manual</string>
+    <string name="help_manual">
+        <![CDATA[
+        There are presets for a quick setup, you can also build it from scratch.<br>
+        <br>
+        If you find any workflow that can be widely used and should be added to the presets, please report.
+        ]]>
+    </string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">Spam Database Cleanup</string>
+    <string name="bot_preset_cleanup_history">History Cleanup</string>
+    <string name="bot_preset_auto_backup">Auto Backup</string>
+
+    <string name="action_cleanup_history">Clean up History</string>
+    <string name="action_http_download">HTTP Download</string>
+    <string name="action_cleanup_spam_db">Cleanup Spam DB</string>
+    <string name="action_backup_export">Backup Export</string>
+    <string name="action_backup_import">Backup Import</string>
+    <string name="action_read_file">Read File</string>
+    <string name="action_write_file">Write File</string>
+    <string name="action_parse_csv">Parse CSV</string>
+    <string name="action_import_to_spam_db">Import to Spam Database</string>
+    <string name="action_import_as_regex_rule">Import as Regex Rule</string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        HTTP download file as <u>content bytes</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">Delete expired numbers from spam database.</string>
+    <string name="help_action_cleanup_history">Delete expired history records.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Export the current settings to <u>content bytes</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Apply settings from <u>content bytes</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Get the <u>content bytes</u> from a file.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Write <u>content bytes</u> to a file.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Parse <u>content bytes</u> to a <u>list of numbers</u>
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Add a <u>list of numbers</u> to the spam database.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Generate a new regex rule from a <u>list of numbers</u>.
+        ]]>
+    </string>
+</resources>

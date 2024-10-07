@@ -76,7 +76,7 @@ fun PopupTesting(
         title = {
             RowVCenter {
                 GreyLabel(Str(R.string.title_rule_testing))
-                BalloonQuestionMark(helpTooltipId = R.string.help_test_rules)
+                BalloonQuestionMark(Str(R.string.help_test_rules))
             }
         },
         buttons = { // Test Button
