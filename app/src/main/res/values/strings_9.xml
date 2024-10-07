@@ -1,4 +1,5 @@
 <resources>
+    <string name="contact_rule">Contact Rule</string>
     <string name="directory">Directory</string>
     <string name="filename">Filename</string>
     <string name="invalid_input_type">Invalid input type, expect: %s, got: %s</string>

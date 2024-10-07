@@ -42,6 +42,7 @@ import spam.blocker.ui.theme.SwissCoffee
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
@@ -165,11 +166,9 @@ private fun PopupChooseApps(
                                     )
                                 }
                                 if (info.duration == null) {
-                                    ResIcon(
+                                    GreyIcon16(
                                         iconId = R.drawable.ic_duration,
-                                        color = LocalPalette.current.textGrey,
                                         modifier = M
-                                            .size(16.dp)
                                             .clickable {
                                                 popupTrigger1.value = true
                                             }

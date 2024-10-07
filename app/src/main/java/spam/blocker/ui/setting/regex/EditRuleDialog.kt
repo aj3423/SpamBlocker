@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -29,7 +28,6 @@ import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.round
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
@@ -40,13 +38,12 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.CheckBox
-import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -57,7 +54,6 @@ import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
-import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.ShowAnimated
 import spam.blocker.ui.widgets.Spinner
@@ -72,11 +68,13 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
+import spam.blocker.util.addFlag
 import spam.blocker.util.hasFlag
+import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
 @Composable
-fun LeadingDropdownIcon(regexFlags: MutableIntState) {
+fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
@@ -84,36 +82,48 @@ fun LeadingDropdownIcon(regexFlags: MutableIntState) {
         mutableStateOf(Offset.Zero)
     }
 
+    val permChain = remember {
+        PermissionChain(
+            ctx,
+            listOf(Permission(Manifest.permission.READ_CONTACTS))
+        )
+    }
+    permChain.Compose()
+
     val dropdownItems = remember(Unit) {
         val items: MutableList<IMenuItem> = mutableListOf(
-            CustomItem {
-                RowVCenter(
-                    modifier = M.padding(horizontal = 10.dp)
-                ) {
-                    GreyLabel(Str(R.string.switch_mode))
-                    BalloonQuestionMark(
-                        tooltip = Str(R.string.help_number_mode),
-                        dropdownOffset.value.round()
-                    )
-                }
-            },
+            LabelItem(
+                label = ctx.getString(R.string.switch_mode),
+                tooltip = ctx.getString(R.string.help_number_mode)
+            ),
             DividerItem(thickness = 1),
         )
         // Number Mode
         items += LabelItem(
             label = ctx.getString(R.string.phone_number),
-            icon = { GreyIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp)) }
+            icon = { GreyIcon16(R.drawable.ic_number_sign) }
         ) {
-            regexFlags.intValue =
-                regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, false)
+            regexFlags.intValue = regexFlags.intValue
+                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
+        }
+        // Contact Mode
+        items += LabelItem(
+            label = ctx.getString(R.string.contacts),
+            icon = { GreyIcon16(R.drawable.ic_contact_square) }
+        ) {
+            regexFlags.intValue = regexFlags.intValue
+                .addFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
         }
         // Contact Group Mode
         items += LabelItem(
             label = ctx.getString(R.string.contact_group),
-            icon = { GreyIcon(R.drawable.ic_account_circle, modifier = M.size(16.dp)) }
+            icon = { GreyIcon16(R.drawable.ic_contacts_square) }
         ) {
-            regexFlags.intValue =
-                regexFlags.intValue.setFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP, true)
+            regexFlags.intValue = regexFlags.intValue
+                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                .addFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
         }
         items
     }
@@ -125,11 +135,14 @@ fun LeadingDropdownIcon(regexFlags: MutableIntState) {
         }
     ) { expanded ->
         val forContactGroup = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+        val forContact = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
 
         Box {
             ResIcon(
-                iconId = if (forContactGroup) {
-                    R.drawable.ic_account_circle
+                iconId = if(forContact) {
+                    R.drawable.ic_contact_square
+                } else if (forContactGroup) {
+                    R.drawable.ic_contacts_square
                 } else {
                     R.drawable.ic_number_sign
                 },
@@ -147,6 +160,30 @@ fun LeadingDropdownIcon(regexFlags: MutableIntState) {
             )
         }
     }
+}
+
+@Composable
+fun RegexFieldLabel(
+    forType: Int,
+    flags: Int,
+) {
+    Text(
+        Str(
+            when (forType) {
+                Def.ForNumber -> {
+                    if (flags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
+                        R.string.contact_group
+                    else if (flags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT))
+                        R.string.contacts
+                    else
+                        R.string.phone_number
+                }
+
+                Def.ForSms -> R.string.sms_content_pattern
+                else -> R.string.quick_copy
+            }
+        )
+    )
 }
 
 @Composable
@@ -272,17 +309,7 @@ fun RuleEditDialog(
                 // Pattern
                 RegexInputBox(
                     label = {
-                        Text(
-                            Str(
-                                when (forType) {
-                                    Def.ForNumber -> if (patternFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
-                                        R.string.contact_group else R.string.phone_number
-
-                                    Def.ForSms -> R.string.sms_content_pattern
-                                    else -> R.string.quick_copy
-                                }
-                            )
-                        )
+                        RegexFieldLabel(forType = forType, flags = patternFlags.intValue)
                     },
                     regexStr = pattern,
                     regexFlags = patternFlags,
@@ -291,7 +318,7 @@ fun RuleEditDialog(
                         pattern = newVal
                     },
                     leadingIcon = if (forType == Def.ForNumber) {
-                        { LeadingDropdownIcon(patternFlags) }
+                        { RegexLeadingDropdownIcon(patternFlags) }
                     } else {
                         { ResIcon(iconId = R.drawable.ic_open_msg, modifier = M.size(18.dp)) }
                     }
@@ -309,12 +336,8 @@ fun RuleEditDialog(
                     ShowAnimated(visible = forParticular) {
                         RegexInputBox(
                             label = {
-                                Text(
-                                    Str(
-                                        if (patternExtraFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
-                                            R.string.contact_group else R.string.phone_number
-                                    ),
-                                    color = Color.Unspecified
+                                RegexFieldLabel(
+                                    forType = forType, flags = patternExtraFlags.intValue
                                 )
                             },
                             regexStr = patternExtra,
@@ -323,7 +346,7 @@ fun RuleEditDialog(
                                 patternExtraError = hasErr
                                 patternExtra = newValue
                             },
-                            leadingIcon = { LeadingDropdownIcon(patternExtraFlags) }
+                            leadingIcon = { RegexLeadingDropdownIcon(patternExtraFlags) }
                         )
                     }
                 }
@@ -447,19 +470,9 @@ fun RuleEditDialog(
                         val icons = remember {
                             listOf<@Composable () -> Unit>(
                                 // list.map{} doesn't support returning @Composable...
-                                {
-                                    GreyIcon(
-                                        iconId = R.drawable.ic_call_blocked,
-                                        modifier = M.size(16.dp)
-                                    )
-                                },
-                                {
-                                    GreyIcon(
-                                        iconId = R.drawable.ic_call_miss,
-                                        modifier = M.size(16.dp)
-                                    )
-                                },
-                                { GreyIcon(iconId = R.drawable.ic_hang, modifier = M.size(16.dp)) },
+                                { GreyIcon16( iconId = R.drawable.ic_call_blocked ) },
+                                { GreyIcon16( iconId = R.drawable.ic_call_miss ) },
+                                { GreyIcon16(iconId = R.drawable.ic_hang ) },
                             )
                         }
                         val blockTypeLabels = remember {
@@ -499,38 +512,21 @@ fun RuleEditDialog(
                             // list.map{} doesn't support returning @Composable...
                             listOf<(@Composable () -> Unit)?>(
                                 null,
-                                { GreyIcon(R.drawable.ic_shade, modifier = M.size(16.dp)) },
-                                {
-                                    GreyIcon(
-                                        R.drawable.ic_statusbar_shade,
-                                        modifier = M.size(16.dp)
-                                    )
-                                },
+                                { GreyIcon16(R.drawable.ic_shade) },
+                                { GreyIcon16( R.drawable.ic_statusbar_shade ) },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon(
-                                            R.drawable.ic_bell_ringing,
-                                            modifier = M.size(16.dp)
-                                        )
-                                        GreyIcon(
-                                            R.drawable.ic_statusbar_shade,
-                                            modifier = M.size(16.dp)
-                                        )
+                                        GreyIcon16( R.drawable.ic_bell_ringing )
+                                        GreyIcon( R.drawable.ic_statusbar_shade )
                                     }
                                 },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon(
-                                            R.drawable.ic_bell_ringing,
-                                            modifier = M.size(16.dp)
-                                        )
-                                        GreyIcon(
-                                            R.drawable.ic_statusbar_shade,
-                                            modifier = M.size(16.dp)
-                                        )
-                                        GreyIcon(R.drawable.ic_heads_up, modifier = M.size(16.dp))
+                                        GreyIcon( R.drawable.ic_bell_ringing )
+                                        GreyIcon( R.drawable.ic_statusbar_shade )
+                                        GreyIcon(R.drawable.ic_heads_up)
                                     }
-                                },
+                                }
                             )
                         }
 

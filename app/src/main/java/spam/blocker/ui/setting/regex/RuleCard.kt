@@ -27,6 +27,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -81,28 +82,17 @@ fun RuleCard(
                         // [Number, Message]
                         RowVCenterSpaced(space = 4) {
                             if (rule.flags.hasFlag(Def.FLAG_FOR_NUMBER))
-                                GreyIcon(
-                                    iconId = R.drawable.ic_number_sign,
-                                    modifier = M.size(16.dp)
-                                )
+                                GreyIcon16( iconId = R.drawable.ic_number_sign )
                             if (rule.flags.hasFlag(Def.FLAG_FOR_CONTENT))
-                                GreyIcon(iconId = R.drawable.ic_open_msg, modifier = M.size(16.dp))
+                                GreyIcon16(iconId = R.drawable.ic_open_msg)
                         }
                     }
                     if (forType == Def.ForNumber && rule.isBlacklist) {
                         // [BlockType]
                         when (rule.blockType) {
-                            0 -> GreyIcon(
-                                iconId = R.drawable.ic_call_blocked,
-                                modifier = M.size(16.dp)
-                            )
-
-                            1 -> GreyIcon(
-                                iconId = R.drawable.ic_call_miss,
-                                modifier = M.size(16.dp)
-                            )
-
-                            2 -> GreyIcon(iconId = R.drawable.ic_hang, modifier = M.size(16.dp))
+                            0 -> GreyIcon16( iconId = R.drawable.ic_call_blocked )
+                            1 -> GreyIcon( iconId = R.drawable.ic_call_miss )
+                            2 -> GreyIcon(iconId = R.drawable.ic_hang)
                         }
                     }
                     // [Call, SMS]
@@ -127,19 +117,16 @@ fun RuleCard(
                     // [NotifyType]
                     RowVCenterSpaced(space = 2) {
                         if (rule.isBlacklist && rule.importance >= NotificationManager.IMPORTANCE_DEFAULT) {
-                            GreyIcon(iconId = R.drawable.ic_bell_ringing, modifier = M.size(16.dp))
+                            GreyIcon16(iconId = R.drawable.ic_bell_ringing)
                         }
                         if (rule.isBlacklist && rule.importance == NotificationManager.IMPORTANCE_HIGH) {
-                            GreyIcon(iconId = R.drawable.ic_heads_up, modifier = M.size(18.dp))
+                            GreyIcon16(iconId = R.drawable.ic_heads_up)
                         }
                         if (rule.isBlacklist && rule.importance == NotificationManager.IMPORTANCE_MIN) {
-                            GreyIcon(iconId = R.drawable.ic_shade, modifier = M.size(18.dp))
+                            GreyIcon16(iconId = R.drawable.ic_shade)
                         }
                         if (rule.isBlacklist && rule.importance >= NotificationManager.IMPORTANCE_LOW) {
-                            GreyIcon(
-                                iconId = R.drawable.ic_statusbar_shade,
-                                modifier = M.size(16.dp)
-                            )
+                            GreyIcon16( iconId = R.drawable.ic_statusbar_shade )
                         }
                     }
 

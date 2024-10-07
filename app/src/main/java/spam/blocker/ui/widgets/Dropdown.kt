@@ -67,7 +67,7 @@ class LabelItem(
     val tooltip: String? = null,
     val selected: Boolean = false,
     private val dismissOnClick: Boolean = true, // collapse the dropdown menu when item is clicked
-    val onClick: Lambda,
+    val onClick: Lambda? = null,
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
@@ -80,10 +80,16 @@ class LabelItem(
                 text = label,
                 modifier = M
                     .weight(1f)
-                    .clickable {
-                        onClick()
-                        if (dismissOnClick)
-                            menuExpandedState.value = false
+                    .let { baseModifier->
+                        if (onClick != null) {
+                            baseModifier.clickable {
+                                onClick!!()
+                                if (dismissOnClick)
+                                    menuExpandedState.value = false
+                            }
+                        } else {
+                            baseModifier
+                        }
                     },
                 fontWeight = if (selected) FontWeight.Bold else null,
             )

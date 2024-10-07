@@ -1,48 +1,49 @@
 <resources>
+    <string name="contact_rule">Regla de contacto</string>
     <string name="directory">Directorio</string>
-    <string name="filename">Nombre del archivo</string>
-    <string name="invalid_input_type">Tipo de entrada no válido, esperado: %s, recibido: %s</string>
+    <string name="filename">Nombre de archivo</string>
+    <string name="invalid_input_type">Tipo de entrada no válida, espera: %s, obtuvo: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Días de expiración</string>
-    <string name="column_mapping">Mapeo de columnas</string>
-    <string name="include_spam_db">Incluir base de datos de <short>spam</short></string>
+    <string name="expiry_days">Días de caducidad</string>
+    <string name="column_mapping">Asignación de columnas</string>
+    <string name="include_spam_db">Incluir base de datos de spam</string>
     <string name="configuration_only">Solo configuración</string>
     <string name="no_config_needed">No se necesita configuración</string>
     <string name="success">Éxito</string>
     <string name="failed">Fallido</string>
-    <string name="running">Ejecutando</string>
+    <string name="running">En ejecución</string>
     <string name="optional">(opcional)</string>
 
     <string name="run_execute">Ejecutar</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Prueba</b></font><br>
-        Estas acciones se ejecutarán inmediatamente, para verificar si se ha configurado correctamente,
-        o tal vez solo desee ejecutar este flujo de trabajo manualmente.<br>
+        - <font color="#03DAC5"><b>Probar</b></font><br>
+        Estas acciones se ejecutarán inmediatamente, para comprobar si se han configurado correctamente,
+        o tal vez solo quieras ejecutar manualmente este flujo de trabajo.<br>
         <br>
         - <font color="#00BFFF"><b>Nuevo</b></font><br>
-            Cree una nueva acción, varias acciones se pueden encadenar juntas para completar una tarea compleja.<br>
-            Esos puntos verdes o rojos entre elementos indican si son encadenables o no.<br>
+            Crear una nueva acción, se pueden encadenar varias acciones para completar una tarea compleja.<br>
+            Esos puntos verdes o rojos entre elementos indican si se pueden encadenar o no.<br>
             <br>
-            Algunos ejemplos de flujos de trabajo: <br>
+            Algunos flujos de trabajo de ejemplo: <br>
             <br>
-            &emsp; - <short>spam</short> descargar archivo -> decodificar formato 7z -> analizar como formato csv -> importar a base de datos de <short>spam</short>.<br>
+            &emsp; - Descarga de archivo http -> Decodificar formato 7z -> Analizar como formato csv -> Importar a base de datos de spam.<br>
             <br>
-            &emsp; - aplicar configuración A en días hábiles y aplicar configuración B en fin de semana.<br>
+            &emsp; - Aplicar ajustes A en días laborables y aplicar ajustes B en fines de semana.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Descargar números de teléfono de <short>spam</short> desde
+            Descargar números de teléfono de spam de
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> cada día laborable,
-             e importarlos a la base de datos de <short>spam</short>.
+            <no_translate>FTC - No llamar</no_translate> </a> cada día laboral,
+             e importarlos a la base de datos de spam.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Eliminar registros caducados de la base de datos de <short>spam</short>.</string>
-    <string name="help_bot_preset_cleanup_history">Eliminar registros de llamadas/SMS caducados.</string>
-    <string name="help_bot_preset_auto_backup">Realizar una copia de seguridad de todos los ajustes.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Eliminar registros caducados de la base de datos de spam.</string>
+    <string name="help_bot_preset_cleanup_history">Eliminar registros de historial de llamadas/SMS caducados.</string>
+    <string name="help_bot_preset_auto_backup">Realizar copia de seguridad de todos los ajustes.</string>
     <string name="everyday">Todos los días</string>
     <string name="daily">Diariamente</string>
     <string name="weekly">Semanalmente</string>
@@ -52,15 +53,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        Si no utiliza la base de datos de <short>spam</short>, ambas opciones serán equivalentes.<br>
+        Si no se usa la base de datos de spam, ambas opciones serán equivalentes.<br>
         <br>
-        - <b>Incluir base de datos de <short>spam</short></b><br>
-        &emsp; No utilice esto para copias de seguridad normales, porque se supone que la base de datos de <short>spam</short> se actualiza con frecuencia.
-         Esto solo es útil cuando se clona la configuración a otro teléfono.<br>
+        - <b>Incluir base de datos de spam</b><br>
+        &emsp; No usar esto para realizar una copia de seguridad normal, porque se supone que la base de datos de spam se actualiza con frecuencia.
+        Esto solo es útil al clonar la configuración en otro teléfono.<br>
         <br>
         - <b>Solo configuración</b><br>
-        &emsp; - Al exportar, esto reducirá el tamaño del archivo de la copia de seguridad. <br>
-        &emsp; - Al importar, los registros en la base de datos de <short>spam</short> conservarán su estado actual.
+        &emsp; - Al exportar, esto reducirá el tamaño del archivo de copia de seguridad. <br>
+        &emsp; - Al importar, los registros de la base de datos de spam conservarán su estado actual.
         ]]>
     </string>
 

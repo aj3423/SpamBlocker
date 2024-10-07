@@ -372,7 +372,45 @@ class Checker { // for namespace only
         }
     }
 
-    // The flag `Contact Group`, it matches the contact group name instead of the phone number
+    // The regex flag `Contact`, it matches the contact name instead of the phone number
+    class RegexContact(
+        private val ctx: Context,
+        private val rawNumber: String,
+        private val rule: RegexRule
+    ) : IChecker {
+        override fun priority(): Int {
+            return rule.priority
+        }
+
+        override fun check(): CheckResult? {
+            if (!Permissions.isContactsPermissionGranted(ctx)) {
+                return null
+            }
+
+            // 1. check time schedule
+            if (TimeSchedule.dissatisfyNow(rule.schedule))
+                return null
+
+            // 2. check regex
+            val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
+            if (contactInfo != null) {
+                val opts = Util.flagsToRegexOptions(rule.patternFlags)
+
+                if (rule.pattern.toRegex(opts).matches(contactInfo.name)) {
+                    val block = rule.isBlacklist
+                    return CheckResult(
+                        block,
+                        if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX
+                    ).apply {
+                        byRule = rule
+                    }
+                }
+            }
+            return null
+        }
+    }
+
+    // The regex flag `Contact Group`, it matches the contact group name instead of the phone number
     class ContactGroup(
         private val ctx: Context,
         private val rawNumber: String,
@@ -493,8 +531,11 @@ class Checker { // for namespace only
             //  add number rules to checkers
             val rules = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
             checkers += rules.map {
+                val forContact = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
                 val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-                if (forContactGroup)
+                if (forContact)
+                    Checker.RegexContact(ctx, rawNumber, it)
+                else if (forContactGroup)
                     Checker.ContactGroup(ctx, rawNumber, it)
                 else
                     Checker.Number(rawNumber, it)
@@ -535,8 +576,11 @@ class Checker { // for namespace only
             //  add number rules to checkers
             val numberFilters = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
             checkers += numberFilters.map {
+                val forContact = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
                 val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-                if (forContactGroup)
+                if (forContact)
+                    Checker.RegexContact(ctx, rawNumber, it)
+                else if (forContactGroup)
                     Checker.ContactGroup(ctx, rawNumber, it)
                 else
                     Checker.Number(rawNumber, it)
@@ -668,13 +712,15 @@ class Checker { // for namespace only
 
                 Def.RESULT_BLOCKED_BY_SPAM_DB -> res.getString(R.string.database)
 
-                Def.RESULT_ALLOWED_BY_CONTACT_GROUP -> res.getString(R.string.contact_group) + ": " + reasonStr(
-                    ctx, NumberRuleTable(), reason
-                )
+                Def.RESULT_ALLOWED_BY_CONTACT_GROUP, Def.RESULT_BLOCKED_BY_CONTACT_GROUP -> {
+                    res.getString(R.string.contact_group) + ": " +
+                            reasonStr(ctx, NumberRuleTable(), reason)
+                }
 
-                Def.RESULT_BLOCKED_BY_CONTACT_GROUP -> res.getString(R.string.contact_group) + ": " + reasonStr(
-                    ctx, NumberRuleTable(), reason
-                )
+                Def.RESULT_ALLOWED_BY_CONTACT_REGEX, Def.RESULT_BLOCKED_BY_CONTACT_REGEX -> {
+                    res.getString(R.string.contact_rule) + ": " +
+                            reasonStr(ctx, NumberRuleTable(), reason)
+                }
 
                 Def.RESULT_ALLOWED_BY_CONTENT -> res.getString(R.string.content) + ": " + reasonStr(
                     ctx, ContentRuleTable(), reason

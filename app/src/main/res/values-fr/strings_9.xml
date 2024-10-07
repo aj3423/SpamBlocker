@@ -1,66 +1,65 @@
 <resources>
+    <string name="contact_rule">Règle de contact</string>
     <string name="directory">Répertoire</string>
     <string name="filename">Nom de fichier</string>
-    <string name="invalid_input_type">Type d\'entrée invalide, attendu : %s, obtenu : %s</string>
+    <string name="invalid_input_type">Type d\'entrée non valide, attendu : %s, obtenu : %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Jours d\'expiration</string>
-    <string name="column_mapping">Mappage de colonne</string>
-    <string name="include_spam_db">Inclure la base de données anti-spam</string>
+    <string name="column_mapping">Mappage des colonnes</string>
+    <string name="include_spam_db">Inclure les appels <short>indésirables</short></string>
     <string name="configuration_only">Configuration uniquement</string>
-    <string name="no_config_needed">Aucune configuration nécessaire</string>
-    <string name="success">Réussite</string>
-    <string name="failed">Échec</string>
+    <string name="no_config_needed">Aucune configuration requise</string>
+    <string name="success">Réussi</string>
+    <string name="failed">Échoué</string>
     <string name="running">En cours d\'exécution</string>
-    <string name="optional">(optionnel)</string>
+    <string name="optional">(facultatif)</string>
 
     <string name="run_execute">Exécuter</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Tester</b></font><br>
-        Ces actions seront exécutées immédiatement, pour vérifier si elles ont été configurées correctement,
-        ou peut-être souhaitez-vous simplement exécuter ce workflow manuellement .<br>
+        - <font color="#03DAC5"><b>Test</b></font><br>
+        Ces actions seront exécutées immédiatement pour vérifier si elles ont été définies correctement, ou peut-être vous souhaitez simplement exécuter manuellement ce workflow.<br>
         <br>
-        - <font color="#00BFFF"><b>Nouvelle</b></font><br>
-            Créez une nouvelle action, plusieurs actions peuvent être chaînées ensemble pour accomplir une tâche complexe .<br>
-            Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non .<br>
+        - <font color="#00BFFF"><b>Nouveau</b></font><br>
+            Créez une nouvelle action, plusieurs actions peuvent être chaînées ensemble pour accomplir une tâche complexe.<br>
+            Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.<br>
             <br>
-            Quelques exemples de workflows : <br>
+            Quelques exemples de workflows :<br>
             <br>
-            &emsp; - télécharger de fichiers http -> décoder au format 7z -> analyser au format csv -> importer dans la base de données anti-spam .<br>
+            &emsp; - télécharger un fichier http -> décoder au format 7z -> analyser au format csv -> importer dans une base de données d\'appels <short>indésirables</short>.<br>
             <br>
-            &emsp; - appliquer les paramètres A en semaine et appliquer les paramètres B le week-end .<br>
+            &emsp; - appliquer les paramètres A pendant les jours de semaine et appliquer les paramètres B le weekend.
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Téléchargez des numéros de téléphone anti-spam depuis
+            Télécharger les numéros de téléphone <short>indésirables</short> depuis
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Ne pas appeler</no_translate> </a> chaque jour ouvré,
-             et importez-les dans la base de données anti-spam .
+            <no_translate>FTC - Do Not Call</no_translate> </a> tous les jours de la semaine,
+             et les importer dans la base de données <short>indésirable</short>.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Supprimez les enregistrements expirés de la base de données anti-spam.</string>
-    <string name="help_bot_preset_cleanup_history">Supprimez les enregistrements d\'appels/SMS expirés.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données <short>indésirable</short></string>
+    <string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'appels/SMS historiques expirés.</string>
     <string name="help_bot_preset_auto_backup">Sauvegarder tous les paramètres.</string>
     <string name="everyday">Tous les jours</string>
-    <string name="daily">Quotidiennement</string>
+    <string name="daily">Quotidien</string>
     <string name="weekly">Hebdomadaire</string>
     <string name="periodically">Régulièrement</string>
     <string name="time">Heure</string>
-    <string name="workdays">Jours de semaine</string>
+    <string name="workdays">Jours de la semaine</string>
 
     <string name="help_backup">
         <![CDATA[
-        Si vous n\'utilisez pas la base de données anti-spam, les deux options seront équivalentes .<br>
+        Si vous n\'utilisez pas la base de données <short>indésirable</short>, les deux options seront équivalentes.<br>
         <br>
-        - <b>Inclure la base de données anti-spam</b><br>
-        &emsp; N\'utilisez pas cette option pour les sauvegardes régulières, car la base de données anti-spam est censée être mise à jour fréquemment.
-         Cela n\'est utile que lorsque vous clonez la configuration sur un autre téléphone .<br>
+        - <b>Inclure les appels <short>indésirables</short></b><br>
+        &emsp; N\'utilisez pas ceci pour une sauvegarde régulière, car la base de données <short>indésirable</short> est censée être mise à jour fréquemment. Ceci n\'est utile que lors du clonage de la configuration vers un autre téléphone.<br>
         <br>
         - <b>Configuration uniquement</b><br>
         &emsp; - Lors de l\'exportation, cela réduira la taille du fichier de sauvegarde. <br>
-        &emsp; - Lors de l\'importation, les enregistrements de la base de données anti-spam conserveront leur état actuel .
+        &emsp; - Lors de l\'importation, les enregistrements dans la base de données <short>indésirable</short> conserveront leur état actuel.
         ]]>
     </string>
 

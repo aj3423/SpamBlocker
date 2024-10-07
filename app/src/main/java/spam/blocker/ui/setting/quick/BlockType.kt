@@ -11,6 +11,7 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.Permission
@@ -40,9 +41,9 @@ fun BlockType() {
 
     val options = remember {
         val icons = listOf<@Composable ()-> Unit>( // list.map{} doesn't support returning @Composable...
-            { GreyIcon(iconId = R.drawable.ic_call_blocked, modifier = M.size(16.dp)) },
-            { GreyIcon(iconId = R.drawable.ic_call_miss, modifier = M.size(16.dp)) },
-            { GreyIcon(iconId = R.drawable.ic_hang, modifier = M.size(16.dp)) },
+            { GreyIcon16(iconId = R.drawable.ic_call_blocked) },
+            { GreyIcon16(iconId = R.drawable.ic_call_miss) },
+            { GreyIcon16(iconId = R.drawable.ic_hang) },
         )
         ctx.resources.getStringArray(R.array.block_type_list).mapIndexed { index, label ->
             LabelItem(

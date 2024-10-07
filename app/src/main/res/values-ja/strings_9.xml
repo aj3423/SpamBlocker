@@ -1,13 +1,14 @@
 <resources>
+    <string name="contact_rule">コンタクトルール</string>
     <string name="directory">ディレクトリ</string>
     <string name="filename">ファイル名</string>
-    <string name="invalid_input_type">無効な入力型: %s が予想されていましたが、%s が得られました</string>
+    <string name="invalid_input_type">無効な入力タイプ、期待：%s、取得：%s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">有効期限の日数</string>
-    <string name="column_mapping">列マッピング</string>
+    <string name="expiry_days">有効期限（日）</string>
+    <string name="column_mapping">カラムのマッピング</string>
     <string name="include_spam_db">スパムデータベースを含める</string>
-    <string name="configuration_only">設定のみ</string>
-    <string name="no_config_needed">設定は必要ありません</string>
+    <string name="configuration_only">コンフィグレーションのみ</string>
+    <string name="no_config_needed">コンフィグレーションは不要</string>
     <string name="success">成功</string>
     <string name="failed">失敗</string>
     <string name="running">実行中</string>
@@ -17,48 +18,49 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>テスト</b></font><br>
-        これらのアクションはすぐに実行されます。正しく設定されているかを確認するために、またはこのワークフローを手動で実行したい場合に使用できます。<br>
+        これらのアクションは正確に設定されているかどうかを確認するため、すぐに実行されます。
+        または、このワークフローを手動で実行したい場合があります。<br>
         <br>
-        - <font color="#00BFFF"><b>追加</b></font><br>
-            新しいアクションを作成します。複数のアクションを連結して、複雑なタスクを完了できます。<br>
-            項目間の緑色または赤色の点は、連結できるかどうかを示します。<br>
+        - <font color="#00BFFF"><b>新規</b></font><br>
+            新しいアクションを作成します。複数のアクションをチェーンして、複雑なタスクを完了することができます。<br>
+            項目間の緑または赤の点は、それらがチェーン可能かどうかを示します。<br>
             <br>
-            ワークフローの例:<br>
+            ワークフローの例：<br>
             <br>
-            &emsp; - HTTP ファイルをダウンロード -> 7z 形式でデコード -> csv 形式として解析 -> スパムデータベースにインポート。<br>
+            &emsp; - httpファイルダウンロード -&gt; 7z形式のデコード -&gt; csv形式として解析 -&gt; スパムデータベースへインポート<br>
             <br>
-            &emsp; - 勤務時間中に設定 A を適用し、週末に設定 B を適用する。<br>
+            &emsp; - 平日に設定Aを適用し、週末に設定Bを適用します。<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
+            スパム電話番号を
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate></a> からスパム電話番号をダウンロードします。
-            その後、スパムデータベースにインポートします。
+            <no_translate>FTC - Do Not Call</no_translate> </a>から毎日ダウンロードして、スパムデータベースにインポートします。
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから有効期限切れのレコードを削除します。</string>
-    <string name="help_bot_preset_cleanup_history">有効期限切れの通話履歴/SMS レコードを削除します。</string>
+    <string name="help_bot_preset_cleanup_spam_db">有効期限が切れたレコードをスパムデータベースから削除します。</string>
+    <string name="help_bot_preset_cleanup_history">有効期限が切れた履歴の通話/SMSレコードを削除します。</string>
     <string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
     <string name="everyday">毎日</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
     <string name="periodically">定期的に</string>
-    <string name="time">時刻</string>
-    <string name="workdays">勤務時間</string>
+    <string name="time">時間</string>
+    <string name="workdays">平日</string>
 
     <string name="help_backup">
         <![CDATA[
-        スパムデータベースを使用しない場合は、どちらのオプションも同等です。<br>
+        スパムデータベースを使用しない場合、どちらのオプションも同等になります。<br>
         <br>
         - <b>スパムデータベースを含める</b><br>
-        &emsp; スパムデータベースは頻繁に更新されることになるため、通常のバックアップには使用しないでください。
-        これは、設定を別の電話に複製する場合にのみ役立ちます。<br>
+        &emsp; 定期的なバックアップには使用しないでください。スパムデータベースは頻繁に更新される必要があります。<br>
+        これは、別の電話機にコンフィグレーションをクローンする場合にのみ役立ちます。<br>
         <br>
-        - <b>設定のみ</b><br>
-        &emsp; - エクスポートの場合、バックアップファイルのサイズが小さくなります。<br>
-        &emsp; - インポートの場合、スパムデータベース内のレコードは現在の状態を保持します。
+        - <b>コンフィグレーションのみ</b><br>
+        &emsp; - エクスポートする場合、バックアップファイルのサイズが小さくなります。<br>
+        &emsp; - インポートする場合、スパムデータベース内のレコードは現在の状態を保持します。
         ]]>
     </string>
 

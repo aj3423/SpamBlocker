@@ -1,7 +1,6 @@
 package spam.blocker.ui.history
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,10 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -76,7 +72,7 @@ fun HistoryCard(
                 // Use the hash code as color
                 val toHash = contact?.name ?: record.peer
                 val color = Color(toHash.hashCode().toLong() or 0xff808080/* for higher contrast */)
-                ResImage(R.drawable.ic_account_circle, color = color, modifier = M
+                ResImage(R.drawable.ic_contact_circle, color = color, modifier = M
                     .size(ItemHeight.dp)
                     .align(Alignment.Top))
             }

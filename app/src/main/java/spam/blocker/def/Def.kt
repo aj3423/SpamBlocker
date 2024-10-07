@@ -109,6 +109,7 @@ object Def {
     const val FLAG_REGEX_LITERAL = 1 shl 3
     const val FLAG_REGEX_RAW_NUMBER = 1 shl 10 // max: 1 shl 30
     const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
+    const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
 
     val MAP_REGEX_FLAGS = mapOf(
         FLAG_REGEX_IGNORE_CASE to "i",
@@ -117,6 +118,7 @@ object Def {
         FLAG_REGEX_LITERAL to "l",
         FLAG_REGEX_RAW_NUMBER to "r",
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
+        FLAG_REGEX_FOR_CONTACT to "c",
     )
 
     // inverse means it won't show labels for these flags when they are set

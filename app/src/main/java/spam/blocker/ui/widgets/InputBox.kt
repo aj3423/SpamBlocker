@@ -44,7 +44,6 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
-import spam.blocker.ui.theme.OrangeRed
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.Lambda2
@@ -283,11 +282,7 @@ fun NumberInputBox(
                         lastText = ""
                         onValueChange(null, true)
                     }) {
-                    ResIcon(
-                        R.drawable.ic_clear,
-                        color = LocalPalette.current.textGrey,
-                        modifier = M.size(16.dp),
-                    )
+                    GreyIcon16(R.drawable.ic_clear)
                 }
             }
         }
@@ -347,11 +342,7 @@ fun StrInputBox(
                         lastText = ""
                         onValueChange("")
                     }) {
-                    ResIcon(
-                        R.drawable.ic_clear,
-                        color = LocalPalette.current.textGrey,
-                        modifier = M.size(16.dp),
-                    )
+                    GreyIcon16(R.drawable.ic_clear)
                 }
             }
         }
@@ -386,7 +377,8 @@ fun RegexInputBox(
             ctx,
             lastText,
             regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER) ||
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP) ||
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
         )
     }
 
@@ -482,19 +474,19 @@ fun RegexInputBox(
             ) { expanded ->
 
                 val imdlc = regexFlags.intValue.toFlagStr()
-                val modifier = M.clickable {
+                val clickableModifier = M.clickable {
                     expanded.value = true
                 }
                 if (imdlc == "") {
                     GreyIcon(
-                        modifier = modifier.padding(8.dp),
+                        modifier = clickableModifier.padding(8.dp),
                         iconId = R.drawable.ic_flags,
                     )
                 } else {
                     Text(
                         text = imdlc,
                         color = Color.Magenta,
-                        modifier = modifier,
+                        modifier = clickableModifier,
                     )
                 }
             }

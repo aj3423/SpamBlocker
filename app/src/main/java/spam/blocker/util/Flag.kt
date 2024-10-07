@@ -15,6 +15,12 @@ fun Int.setFlag(f: Int, enabled: Boolean): Int {
         this and f.inv()
     }
 }
+fun Int.addFlag(f: Int): Int {
+    return setFlag(f, true)
+}
+fun Int.removeFlag(f: Int): Int {
+    return setFlag(f, false)
+}
 
 // Generate string "imdlc" from flags
 // params:

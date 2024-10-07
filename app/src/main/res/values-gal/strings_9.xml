@@ -1,66 +1,67 @@
 <resources>
+    <string name="contact_rule">Regra de contactos</string>
     <string name="directory">Directorio</string>
-    <string name="filename">Nome de ficheiro</string>
-    <string name="invalid_input_type">Tipo de entrada inválido, agardábase: %s, recibida: %s</string>
+    <string name="filename">Nome do ficheiro</string>
+    <string name="invalid_input_type">Tipo de entrada non válido, agarda: %s, obtido: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Días de caducidade</string>
-    <string name="column_mapping">Asignación de columnas</string>
-    <string name="include_spam_db">Incluir base de datos de correo non desexado</string>
+    <string name="column_mapping">Mapeado de columnas</string>
+    <string name="include_spam_db">Incluir base de datos de spam</string>
     <string name="configuration_only">Só configuración</string>
-    <string name="no_config_needed">Non é necesaria a configuración</string>
-    <string name="success">Correcto</string>
-    <string name="failed">Error</string>
+    <string name="no_config_needed">Non se necesita configuración</string>
+    <string name="success">Éxito</string>
+    <string name="failed">Fallou</string>
     <string name="running">Executándose</string>
     <string name="optional">(opcional)</string>
 
     <string name="run_execute">Executar</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Probar</b></font><br>
-        Estas accións executaranse de inmediato, para comprobar se está configurado correctamente,
-        ou quizais só queiras executar este fluxo de traballo manualmente.<br>
+        - <font color="#03DAC5"><b>Proba</b></font><br>
+        Estas accións executaranse inmediatamente para comprobar se están definidas correctamente,
+        ou talvez só queiras executar este fluxo de traballo manualmente.<br>
         <br>
         - <font color="#00BFFF"><b>Novo</b></font><br>
-            Crear unha nova acción, pódense encadear varias accións para completar unha tarefa complexa.<br>
-            Os puntos verdes ou vermellos entre elementos indican se son encadiables ou non.<br>
+            Crea unha nova acción, pódense encadear varias accións para completar unha tarefa complexa.<br>
+            Estes puntos verdes ou vermellos entre os elementos indican se se poden encadear ou non.<br>
             <br>
             Algúns exemplos de fluxos de traballo: <br>
             <br>
-            &emsp; - descarga de ficheiros HTTP -> decodificar formato 7z -> analizar como formato CSV -> importar a base de datos de correo non desexado.<br>
+            &emsp; - descarga do ficheiro http -> decodificación do formato 7z -> análise como formato csv -> importación á base de datos de spam.<br>
             <br>
-            &emsp; - aplicar os axustes A nos días laborables e aplicar os axustes B o fin de semana.<br>
+            &emsp; - aplicar a configuración A en días laborables e aplicar a configuración B no fin de semana.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Descargar números de teléfono de correo non desexado desde
+            Descarga números de teléfono de spam desde
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
             <no_translate>FTC - Non chamar</no_translate> </a> cada día laborable,
-             e importalos á base de datos de correo non desexado.
+             e impórtanos á base de datos de spam.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Borrar rexistros caducados da base de datos de correo non desexado.</string>
-    <string name="help_bot_preset_cleanup_history">Borrar rexistros caducados de chamadas/SMS históricos.</string>
-    <string name="help_bot_preset_auto_backup">Facer unha copia de seguridade de todos os axustes.</string>
-    <string name="everyday">Cada día</string>
-    <string name="daily">A diario</string>
-    <string name="weekly">Semanalmente</string>
+    <string name="help_bot_preset_cleanup_spam_db">Elimina rexistros caducados da base de datos de spam.</string>
+    <string name="help_bot_preset_cleanup_history">Elimina rexistros caducados de chamadas/SMS do historial.</string>
+    <string name="help_bot_preset_auto_backup">Realiza unha copia de seguridade de todos os axustes.</string>
+    <string name="everyday">Todos os días</string>
+    <string name="daily">Diario</string>
+    <string name="weekly">Semanal</string>
     <string name="periodically">Periodicamente</string>
-    <string name="time">Hora</string>
+    <string name="time">Tempo</string>
     <string name="workdays">Días laborables</string>
 
     <string name="help_backup">
         <![CDATA[
-        Se non usas a base de datos de correo non desexado, ambas as opcións serán equivalentes.<br>
+        Se non usas a base de datos de spam, ambas as opcións serán equivalentes.<br>
         <br>
-        - <b>Incluir base de datos de correo non desexado</b><br>
-        &emsp; Non uses isto para copias de seguridade regulares, porque a base de datos de correo non desexado está pensada para actualizarse con frecuencia.
-         Só é útil cando se clona a configuración noutro teléfono.<br>
+        - <b>Incluir base de datos de spam</b><br>
+        &emsp; Non a uses para copias de seguridade habituais, porque a base de datos de spam debe actualizarse con frecuencia.
+         Isto só é útil cando se clona a configuración noutro teléfono.<br>
         <br>
         - <b>Só configuración</b><br>
-        &emsp; - Cando se exporta, isto reducirá o tamaño do ficheiro de copia de seguridade. <br>
-        &emsp; - Cando se importa, os rexistros na base de datos de correo non desexado manterán o seu estado actual.
+        &emsp; - Ao exportar, isto reducirá o tamaño do ficheiro de copia de seguridade. <br>
+        &emsp; - Ao importar, os rexistros da base de datos de spam manterán o seu estado actual.
         ]]>
     </string>
 

@@ -1,65 +1,67 @@
 <resources>
-    <string name="directory">Директория</string>
+    <string name="contact_rule">Правило контактов</string>
+    <string name="directory">Справочник</string>
     <string name="filename">Имя файла</string>
-    <string name="invalid_input_type">Недопустимый тип ввода: ожидается %s, получено %s</string>
+    <string name="invalid_input_type">Неверный тип ввода. Ожидалось: %s, получено: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Дней до истечения срока действия</string>
+    <string name="expiry_days">Срок окончания</string>
     <string name="column_mapping">Сопоставление столбцов</string>
-    <string name="include_spam_db">Включить базу данных <short>спама</short></string>
+    <string name="include_spam_db">Включить <short>спам</short>-БД</string>
     <string name="configuration_only">Только конфигурация</string>
-    <string name="no_config_needed">Настройка не требуется</string>
+    <string name="no_config_needed">Конфигурация не требуется</string>
     <string name="success">Успех</string>
-    <string name="failed">Ошибка</string>
-    <string name="running">Выполняется</string>
+    <string name="failed">Провал</string>
+    <string name="running">Выполнение</string>
     <string name="optional">(необязательно)</string>
 
     <string name="run_execute">Выполнить</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Тест</b></font><br>
-        Эти действия будут выполнены немедленно для проверки правильности их установки
-        или, возможно, вы просто хотите запустить этот рабочий процесс вручную.<br>
+        Эти действия будут выполнены сразу же, чтобы проверить, правильно ли он настроен,
+        или, возможно, вы просто хотите вручную запустить этот рабочий процесс.<br>
         <br>
         - <font color="#00BFFF"><b>Новый</b></font><br>
-        Создать новое действие. Несколько действий могут быть объединены вместе для выполнения сложной задачи.<br>
-        Эти зеленые или красные точки между элементами указывают, можно ли их связывать.<br>
-        <br>
-        Несколько примеров рабочих процессов: <br>
-        <br>
-        &emsp; - загрузка файла http -> декодирование формата 7z -> анализ как формата csv -> импорт в базу данных <short>спама</short>.<br>
-        <br>
-        &emsp; - применять настройки A в рабочие дни и применять настройки B в выходные дни.<br>
+            Создайте новое действие, можно объединить несколько действий в цепочку для выполнения сложной задачи.<br>
+            Эти зеленые или красные точки между элементами указывают, можно ли их объединять в цепочку или нет.<br>
+            <br>
+            Некоторые примеры рабочих процессов:<br>
+            <br>
+            &emsp; - загрузка файла http -> декодирование формата 7z -> анализ как формата csv -> импорт в <short>спам</short>-БД.<br>
+            <br>
+            &emsp; - применять настройки A в рабочие дни и применять настройки B в выходные.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Ежедневно загружайте <short>спам-</short>номера из
+            Загружайте <short>спам</short>-номера телефонов с
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>Федеральной торговой комиссии - Не звонить</no_translate> </a> и импортируйте их в базу данных <short>спама</short>.
+            <no_translate>FTC - Не звонить</no_translate> </a> каждый рабочий день,
+             и импортируйте их в <short>спам</short>-БД.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Удалить устаревшие записи из базы данных <short>спама</short>.</string>
-    <string name="help_bot_preset_cleanup_history">Удалить устаревшие записи журнала вызовов/SMS.</string>
-    <string name="help_bot_preset_auto_backup">Создать резервную копию всех настроек.</string>
-    <string name="everyday">Каждый день</string>
+    <string name="help_bot_preset_cleanup_spam_db">Удаление записей с истекшим сроком действия из <short>спам</short>-БД.</string>
+    <string name="help_bot_preset_cleanup_history">Удалить историю звонков/SMS с истекшим сроком действия.</string>
+    <string name="help_bot_preset_auto_backup">Резервное копирование всех настроек.</string>
+    <string name="everyday">Ежедневно</string>
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>
     <string name="periodically">Периодически</string>
     <string name="time">Время</string>
-    <string name="workdays">Рабочие дни</string>
+    <string name="workdays">Будни</string>
 
     <string name="help_backup">
         <![CDATA[
-        Если вы не используете базу данных <short>спама</short>, оба варианта будут эквивалентными.<br>
+        Если вы не используете <short>спам</short>-БД, оба варианта будут эквивалентны.<br>
         <br>
-        - <b>Включить базу данных <short>спама</short></b><br>
-        &emsp; Не используйте это для регулярного резервного копирования, так как база данных <short>спама</short> должна обновляться часто.
-         Это полезно только при клонировании конфигурации на другой телефон.<br>
+        - <b>Включить <short>спам</short>-БД</b><br>
+        &emsp; Не используйте это для обычного резервного копирования, потому что <short>спам</short>-БД, как предполагается, должна часто обновляться.
+        Это полезно только при клонировании конфигурации на другой телефон.<br>
         <br>
         - <b>Только конфигурация</b><br>
         &emsp; - При экспорте это уменьшит размер файла резервной копии. <br>
-        &emsp; - При импорте записи в базе данных <short>спама</short> сохранят свое текущее состояние.
+        &emsp; - При импорте записи в <short>спам</short>-БД сохранят свое текущее состояние.
         ]]>
     </string>
 
