@@ -47,41 +47,6 @@
                   &emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font>
         ]]>
     </string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Estas regras aplícanse ao número de teléfono entrante.<br>
-        <br>
-        <font color="#ffa500"><b>Importante</b></font>:<br>
-        Para simplificar o regex,
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>espazos</b></font>
-          e <font color="#fa7f71"><b>ceros á esquerda</b></font>
-          elímínanse antes da comprobación, por exemplo:<br>
-        &emsp; Todos estes formatos:<br>
-        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espazos</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> á esquerda)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefixo de tronco nacional <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dous <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Están <b>todos</b> comprobados como:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; Así que o regex <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos eles.<br>
-        Esta optimización de números pódese <b>desactivar</b> coa bandeira de regex "Número en bruto".<br>
-        <br>
-        A lista <b>móstrase</b> en orde descendente de prioridade, descrición ascendente e patrón ascendente. <br>
-        <br>
-        Desmarca as caixas de verificación para desactivar a regra, <font color="#fa7f71"><b>desliza cara á esquerda para eliminar</b></font>a.<br>
-        <br>
-        <b>Mantén premido</b> o botón "Engadir" para importar números dun ficheiro .csv, columnas admitidas:<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate>: O regex (<b>obrigatorio</b>)<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate>: Descrición<br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate>: Prioridade, predeterminada 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate>: 1 (aplicar a chamada), 2 (aplicar a SMS), 3 (ambos), predeterminado 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>: Lista negra ou lista branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, predeterminado <no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate>: Tipo de bloqueo. 0~2 corresponden aos 3 tipos de bloqueo, predeterminado 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate>: Tipo de notificación. 0~4 corresponden aos 5 tipos de notificación, predeterminado 2
-        ]]>
-    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Falta o campo obrigatorio <b>pattern</b> no ficheiro .csv, comproba a información emerxente para obter unha explicación detallada.

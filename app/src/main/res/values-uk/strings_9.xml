@@ -1,50 +1,51 @@
 <resources>
-    <string name="contact_rule">Правило для контактів</string>
+    <string name="contact_rule">Правила контактів</string>
     <string name="directory">Каталог</string>
-    <string name="filename">Назва файлу</string>
-    <string name="invalid_input_type">Неправильний тип вхідних даних, очікували: %s, отримали: %s</string>
+    <string name="filename">Ім’я файлу</string>
+    <string name="invalid_input_type">Неправильний тип вхідних даних, очікується: %s, отримано: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Дні закінчення</string>
-    <string name="column_mapping">Зіставлення стовпців</string>
+    <string name="expiry_days">Дні закінчення терміну дії</string>
+    <string name="column_mapping">Перелік стовпців</string>
     <string name="include_spam_db">Включити базу спаму</string>
-    <string name="configuration_only">Лише налаштування</string>
-    <string name="no_config_needed">Налаштування не потрібне</string>
-    <string name="success">Успішно</string>
-    <string name="failed">Невдача</string>
-    <string name="running">Виконання</string>
-    <string name="optional">(необов\'язково)</string>
+    <string name="configuration_only">Тільки конфігурація</string>
+    <string name="no_config_needed">Конфігурація не потрібна</string>
+    <string name="success">Виконано</string>
+    <string name="failed">Не вдалося</string>
+    <string name="running">Виконується</string>
+    <string name="optional">(необов’язково)</string>
 
     <string name="run_execute">Виконати</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Тест</b></font><br>
-        Цю дію буде виконано відразу, щоб перевірити налаштування або якщо потрібно вручну запустити цей робочий процес.<br>
+        - <font color="#03DAC5"><b>Перевірка</b></font><br>
+        Ці дії будуть виконані негайно, щоб перевірити, чи вони були налаштовані правильно,
+        або, можливо, ви просто хочете запустити цей робочий процес вручну.<br>
         <br>
-        - <font color="#00BFFF"><b>Нове</b></font><br>
-            Встановити нову дію; можна об\'єднати низку дій, щоб виконати складне завдання.<br>
-            Зелені або червоні індикатори поруч з елементами показують, чи можна їх об\'єднати.<br>
+        - <font color="#00BFFF"><b>Нова</b></font><br>
+            Створити нову дію. Можна об’єднати кілька дій разом у ланцюжок для виконання складного завдання.<br>
+            Точки зеленого або червоного кольору між елементами вказують на те, чи можна їх об’єднувати в ланцюжок.<br>
             <br>
-            Приклади робочих процесів: <br>
+            Деякі приклади робочих процесів: <br>
             <br>
-            &emsp; - завантаження файлів HTTP -> декодування у форматі 7z -> перетворення у формат CSV -> імпорт у базу спаму.<br>
+            &emsp; - завантаження файлу через http -> декодування у форматі 7z -> аналіз як CSV -> імпорт у базу спаму.<br>
             <br>
-            &emsp; - застосування налаштувань A у робочі дні та налаштувань B на вихідних.
+            &emsp; - застосування налаштувань A у робочі дні, і B — у вихідні.
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Завантажувати номери спам-телефонів із
+            Завантажувати номери спам-телефонів з
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Заборонити дзвінки</no_translate> </a> кожного робочого дня
-             та імпортувати їх у базу спаму.
+            <no_translate>FTC - Do Not Call</no_translate> </a> у кожен робочий день,
+            та імпортувати їх у базу спаму.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Видаляти записи, що втратили чинність, із бази спаму.</string>
-    <string name="help_bot_preset_cleanup_history">Видаляти записи журналу викликів/SMS, що втратили чинність.</string>
-    <string name="help_bot_preset_auto_backup">Резервувати копії всіх налаштувань.</string>
-    <string name="everyday">Кожен день</string>
-    <string name="daily">Щоденно</string>
+    <string name="help_bot_preset_cleanup_spam_db">Видаляти з бази спаму застарілі записи.</string>
+    <string name="help_bot_preset_cleanup_history">Видаляти застарілі записи журналу викликів/SMS.</string>
+    <string name="help_bot_preset_auto_backup">Створювати резервні копії всіх налаштувань.</string>
+    <string name="everyday">Щодня</string>
+    <string name="daily">Щодня</string>
     <string name="weekly">Щотижня</string>
     <string name="periodically">Періодично</string>
     <string name="time">Час</string>
@@ -52,16 +53,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        Якщо база спаму не використовується, обидва варіанти будуть рівнозначними.<br>
+        Якщо ви не користуєтесь базою спаму, обидва варіанти будуть еквівалентними.<br>
         <br>
         - <b>Включити базу спаму</b><br>
-        &emsp; Не використовуйте цю опцію для створення регулярних резервних копій, оскільки базу спаму потрібно часто оновлювати.
-         Це корисно лише в разі клонування налаштувань на інший телефон.<br>
+        &emsp; Не використовуйте це для звичайного резервного копіювання, оскільки база спаму має оновлюватися часто.
+        Це корисно тільки при клонуванні конфігурації на інший телефон.<br>
         <br>
-        - <b>Лише налаштування</b><br>
-        &emsp; - під час експорту це зменшить розмір резервної копії. <br>
-        &emsp; - під час імпорту записи в базі спаму збережуть свій поточний стан.
+        - <b>Тільки конфігурація</b><br>
+        &emsp; - При експорті, це зменшить розмір файлу резервної копії. <br>
+        &emsp; - При імпорті, записи в базі спаму залишаться в їхньому поточному стані.
         ]]>
     </string>
-
 </resources>

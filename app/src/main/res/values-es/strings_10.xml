@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        Estas reglas se aplican al número de teléfono entrante.<br>
+        <br>
+        <font color="#00BFFF"><b> - Relacionado con la interfaz de usuario</b></font>:<br>
+        Desmarca las casillas de verificación para desactivar la regla, <font color="#fa7f71"><b>desliza hacia la izquierda para eliminarla</b></font>.<br>
+        <br>
+        La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente. <br>
+        <br>
+        <font color="#00BFFF"><b> - Optimización de expresiones regulares</b></font>:<br>
+        Para simplificar la expresión regular,
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>espacios</b></font>
+          y <font color="#fa7f71"><b>ceros iniciales</b></font>
+          se eliminan antes de verificar, por ejemplo:<br>
+        &emsp; Todos estos formatos:<br>
+        &emsp;&emsp; 123456789 &emsp;(número regular)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espacios</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo de troncal doméstico <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Todos se <b>verifican</b> como:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Entonces, la expresión regular <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos ellos.<br>
+        Esta optimización de número se puede <b>deshabilitar</b> con la marca de expresión regular "Número sin formato".<br>
+        <br>
+        <font color="#00BFFF"><b> - Algunos patrones típicos</b></font>:<br>
+        &ensp; - Cualquier número: <font color="#03DAC5"><b>.*</b></font> (la expresión regular .* es equivalente al comodín * en otras aplicaciones) <br>
+        &ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Comienza con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Termina con 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Más corto que 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Más largo que 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Número desconocido(cadena vacía): <font color="#03DAC5"><b>.{0}</b></font> o <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Contiene "verificación": <font color="#03DAC5"><b>.*verificación.*</b></font> <br>
+        &ensp; - Contiene cualquiera de las palabras: <font color="#03DAC5"><b>.*(policía|hospital|verificación).*</b></font> <br>
+        &ensp; - Comienza con 400, con código de país inicial 11 o no: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Importar regla de .csv</b></font>:<br>
+        Puedes exportar reglas desde otra aplicación a un archivo .csv e importarlas a esta aplicación.<br>
+        Mantén presionado el botón "Agregar" para importar números del archivo .csv, columnas compatibles:<br>
+         - <no_translate><b>patrón</b></no_translate>: La expresión regular(<b>obligatorio</b>)<br>
+         - <no_translate><b>descripción</b></no_translate>: Descripción<br>
+         - <no_translate><b>prioridad</b></no_translate>: Prioridad, predeterminado 1<br>
+         - <no_translate><b>indicadores</b></no_translate>: 1(Aplicar a llamada), 2(Aplicar a SMS), 3(ambas), predeterminado 3<br>
+         - <no_translate><b>esListaNegra</b></no_translate>: Lista negra o lista blanca. <no_translate>true</no_translate> o <no_translate>false</no_translate>, predeterminado <no_translate>true</no_translate><br>
+         - <no_translate><b>tipoBloqueo</b></no_translate>: Tipo de bloqueo. 0~2 corresponde a los 3 tipos de bloqueo, predeterminado 0<br>
+         - <no_translate><b>importancia</b></no_translate>: Tipo de notificación. 0~4 corresponde a los 5 tipos de notificación, predeterminado 2
+        ]]>
+    </string>
+</resources>

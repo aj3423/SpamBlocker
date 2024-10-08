@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        Estas regras aplícanse ao número de teléfono entrante.<br>
+        <br>
+        <font color="#00BFFF"><b> - Relacionado co UI</b></font>:<br>
+        Desmarca as caixas de verificación para desactivar a regra, <font color="#fa7f71"><b>desliza cara á esquerda para eliminar</b></font>na.<br>
+        <br>
+        A lista <b>móstrase</b> en orde descendente de prioridade, en orde ascendente de descrición e en orde ascendente de patrón. <br>
+        <br>
+        <font color="#00BFFF"><b> - Optimización de Regex</b></font>:<br>
+        Para simplificar o regex,
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>espazos</b></font>
+          e <font color="#fa7f71"><b>ceros á esquerda</b></font>
+          elíminanse antes de comprobar, por exemplo:<br>
+        &emsp; Todos estes formatos:<br>
+        &emsp;&emsp; 123456789 &emsp;(número regular)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espazos</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(co <font color="#fa7f71"><b>+</b></font> á esquerda)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(co prefixo troncal doméstico <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dous <font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp; Están <b>todos</b> comprobados como:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Así que o regex <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos eles.<br>
+        Esta optimización do número pode <b>desactivarse</b> coa bandeira de regex `Número en bruto`.<br>
+        <br>
+        <font color="#00BFFF"><b> - Algúns patróns típicos</b></font>:<br>
+        &ensp; - Calquera número: <font color="#03DAC5"><b>.*</b></font> (o regex .* é equivalente ao comodín * noutras aplicacións) <br>
+        &ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Comeza por 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Remata en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Máis curto ca 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Máis longo ca 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Número descoñecido(cadea baleira): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Contén "verificación": <font color="#03DAC5"><b>.*verificación.*</b></font> <br>
+        &ensp; - Contén calquera destas palabras: <font color="#03DAC5"><b>.*(policía|hospital|verificación).*</b></font> <br>
+        &ensp; - Comeza por 400, con código de país 11 á esquerda ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Importar regras desde .csv</b></font>:<br>
+        Podes exportar regras desde outra aplicación a un ficheiro .csv e importalas nesta aplicación.<br>
+        Pulsa prolongadamente o botón `Engadir` para importar números desde un ficheiro .csv, columas admitidas:<br>
+         - <no_translate><b>pattern</b></no_translate>: O regex(<b>requirido</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Descrición<br>
+         - <no_translate><b>priority</b></no_translate>: Prioridade, por defecto é 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Aplicar a chamadas), 2(Aplicar a SMS), 3(ambas), por defecto 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou lista branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 corresponden cos 3 tipos de bloqueo, por defecto é 0<br>
+         - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 que corresponden cos 5 tipos de notificación, por defecto é 2
+        ]]>
+    </string>
+</resources>

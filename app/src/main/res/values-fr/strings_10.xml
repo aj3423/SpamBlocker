@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        Ces règles s\'appliquent au numéro de téléphone entrant.<br>
+        <br>
+        <font color="#00BFFF"><b> - Lié à l\'interface utilisateur</b></font>:<br>
+        Décochez les cases pour désactiver la règle, <font color="#fa7f71"><b>faites glisser vers la gauche pour supprimer</b></font>.<br>
+        <br>
+        La liste est <b>affichée</b> par ordre décroissant de priorité, description croissante et motif croissant. <br>
+        <br>
+        <font color="#00BFFF"><b> - Optimisation de regex</b></font>:<br>
+        Pour simplifier la regex,
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>espaces</b></font>
+          et <font color="#fa7f71"><b>zéros non significatifs</b></font>
+          sont supprimés avant vérification, par exemple :<br>
+        &emsp; Tous ces formats :<br>
+        &emsp;&emsp; 123456789 &emsp;(numéro normal)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(avec <font color="#fa7f71"><b>espaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> non significatif)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec préfixe de réseau domestique <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(deux <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Donc, la regex <font color="#03DAC5"><b>123.*</b></font> correspondrait à chacun d\'entre eux.<br>
+        Cette optimisation de nombre peut être <b>désactivée</b> avec le drapeau de regex « Nombre brut ».<br>
+        <br>
+        <font color="#00BFFF"><b> - Quelques motifs courants</b></font>:<br>
+        &ensp; - N\'importe quel numéro : <font color="#03DAC5"><b>.*</b></font> (la regex .* équivaut au caractère générique * dans d\'autres applications) <br>
+        &ensp; - Numéro exact : <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Commence par 400 : <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Se termine par 123 : <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Plus court que 5 : <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Plus long que 10 : <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Numéro inconnu (chaîne vide) : <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Contient « vérification » : <font color="#03DAC5"><b>.*vérification.*</b></font> <br>
+        &ensp; - Contient l\'un des mots : <font color="#03DAC5"><b>.*(police|hôpital|vérification).*</b></font> <br>
+        &ensp; - Commence par 400, avec ou sans code pays 11 : <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Importer une règle à partir d\'un fichier .csv</b></font>:<br>
+        Vous pouvez exporter des règles à partir d\'une autre application vers un fichier .csv et les importer dans cette application.<br>
+        Appuyez longuement sur le bouton « Ajouter » pour importer des numéros à partir d\'un fichier .csv. Les colonnes prises en charge :<br>
+         - <no_translate><b>modèle</b></no_translate> : La regex (<b>obligatoire</b>)<br>
+         - <no_translate><b>description</b></no_translate> : Description<br>
+         - <no_translate><b>priorité</b></no_translate> : Priorité, 1 par défaut<br>
+         - <no_translate><b>drapeaux</b></no_translate> : 1 (appliquer à appeler), 2 (appliquer à SMS), 3 (les deux), 3 par défaut<br>
+         - <no_translate><b>estListeNoire</b></no_translate> : Liste noire ou liste blanche. <no_translate>vrai</no_translate> ou <no_translate>faux</no_translate>, <no_translate>vrai</no_translate> par défaut<br>
+         - <no_translate><b>typeBlocage</b></no_translate> : Type de blocage. 0 à 2 correspondant aux 3 types de blocage, 0 par défaut<br>
+         - <no_translate><b>importance</b></no_translate> : Type de notification. 0 à 4 correspondant aux 5 types de notification, 2 par défaut
+        ]]>
+    </string>
+</resources>

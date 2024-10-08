@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        Essas regras se aplicam ao número de telefone de entrada.<br>
+        <br>
+        <font color="#00BFFF"><b> - Relacionado à interface do usuário</b></font>:<br>
+        Desmarque as caixas de seleção para desabilitar a regra, <font color="#fa7f71"><b>deslize para a esquerda para excluir</b></font>.<br>
+        <br>
+        A lista é <b>exibida</b> em ordem decrescente de prioridade, descrição crescente e padrão crescente. <br>
+        <br>
+        <font color="#00BFFF"><b> - Otimização de Expressão Regular</b></font>:<br>
+        Para simplificar a expressão regular,
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>espaços</b></font>
+          e <font color="#fa7f71"><b>zeros à esquerda</b></font>
+          são removidos antes de verificar, por exemplo:<br>
+        &emsp; Todos esses formatos:<br>
+        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(com <font color="#fa7f71"><b>espaços</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(com <font color="#fa7f71"><b>+</b></font> inicial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(com prefixo de tronco doméstico <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dois <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Eles são <b>todos</b> verificados como:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Portanto, regex <font color="#03DAC5"><b>123.*</b></font> corresponderia a todos eles.<br>
+        Essa otimização de número pode ser <b>desativada</b> com o sinalizador regex `Número Bruto`.<br>
+        <br>
+        <font color="#00BFFF"><b> - Alguns Padrões Típicos</b></font>:<br>
+        &ensp; - Qualquer número: <font color="#03DAC5"><b>.*</b></font> (regex .* é equivalente ao curinga * em outros apps) <br>
+        &ensp; - Número exato: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Começa com 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Termina com 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Mais curto que 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Mais longo que 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Número desconhecido (string vazia): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Contém "verificação": <font color="#03DAC5"><b>.*verificação.*</b></font> <br>
+        &ensp; - Contém qualquer palavra: <font color="#03DAC5"><b>.*(polícia|hospital|verificação).*</b></font> <br>
+        &ensp; - Começa com 400, com ou sem código do país 11: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Importar Regra de .csv</b></font>:<br>
+        Você pode exportar regras de outros apps para um arquivo .csv e importá-las para este app.<br>
+        Pressione e segure o botão `Adicionar` para importar números do arquivo .csv. Colunas compatíveis:<br>
+         - <no_translate><b>pattern</b></no_translate>: Regex (<b>necessário</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Descrição<br>
+         - <no_translate><b>priority</b></no_translate>: Prioridade, padrão 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Aplicar à Chamada), 2(Aplicar ao SMS), 3(ambos), padrão 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, padrão <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueio. 0~2 correspondente aos 3 tipos de bloqueio, padrão 0<br>
+         - <no_translate><b>importance</b></no_translate>: Tipo de notificação. 0~4 correspondente aos 5 tipos de notificação, padrão 2
+        ]]>
+    </string>
+</resources>

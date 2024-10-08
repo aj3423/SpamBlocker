@@ -25,7 +25,7 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
-import spam.blocker.util.Permissions.Companion.isCallLogPermissionGranted
+import spam.blocker.util.Permissions.isCallLogPermissionGranted
 import spam.blocker.util.SharedPref.RepeatedCall
 
 @Composable

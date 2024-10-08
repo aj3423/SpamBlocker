@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        これらの規則は受信電話番号に適用されます。<br>
+        <br>
+        <font color="#00BFFF"><b> - UI 関連</b></font>:<br>
+        チェックボックスをオフにしてルールを無効にし、<font color="#fa7f71"><b>左にスワイプして削除</b></font>します。<br>
+        <br>
+        リストは<b>表示</b>される優先度の降順、説明の昇順、パターンを昇順としています。<br>
+        <br>
+        <font color="#00BFFF"><b> - 正規表現の最適化</b></font>:<br>
+        正規表現を簡素化するために、<br>
+          <font color="#fa7f71"><b>+</b></font>、
+           <font color="#fa7f71"><b>スペース</b></font>
+          および <font color="#fa7f71"><b>先頭ゼロ</b></font>
+          はチェックする前に削除されます。例:<br>
+        &emsp; これらの形式すべて:<br>
+        &emsp;&emsp; 123456789 &emsp;(通常の数字)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;( <font color="#fa7f71"><b>スペース</b></font>あり)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(<font color="#fa7f71"><b>+</b></font>あり)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(<font color="#fa7f71"><b>0</b></font>あり)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(x2 <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; <b>すべて</b>以下のとおりにチェックされます:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; そのため、正規表現 <font color="#03DAC5"><b>123.*</b></font> はそれらすべてに一致します。<br>
+        この数字の最適化は、正規表現フラグ `未加工数字` で<b>無効にする</b>ことができます。<br>
+        <br>
+        <font color="#00BFFF"><b> - よくあるパターン</b></font>:<br>
+        &ensp; - 任意の数字: <font color="#03DAC5"><b>.*</b></font> (正規表現 .* は、他のアプリのワイルドカード * と同等です) <br>
+        &ensp; - 正確な数字: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - 400 で始まる: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - 123 で終わる: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 5 より少ない: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - 10 より長い: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - 番号不明(空の文字列): <font color="#03DAC5"><b>.{0}</b></font> または <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - "確認" を含む: <font color="#03DAC5"><b>.*確認.*</b></font> <br>
+        &ensp; - 以下の単語を含む: <font color="#03DAC5"><b>.*(警察|病院|確認).*</b></font> <br>
+        &ensp; - 400 で始まり、国コード 11 がある場合とない場合: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - .csv から規則をインポート</b></font>:<br>
+        別のアプリからルールを .csv ファイルにエクスポートして、このアプリにインポートすることができます。<br>
+        `追加` ボタンを長押しして .csv ファイルから数字をインポートします。サポートされている列:<br>
+         - <no_translate><b>pattern</b></no_translate>: 正規表現(<b>必須</b>)<br>
+         - <no_translate><b>description</b></no_translate>: 説明<br>
+         - <no_translate><b>priority</b></no_translate>: 優先度、デフォルトは 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(通話に適用)、2(SMS に適用)、3(両方)、デフォルトは 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: ブラックリストまたはホワイトリスト。 <no_translate>true</no_translate> または <no_translate>false</no_translate>、デフォルトは <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: ブロックタイプ。 0～2 が 3 つのブロックタイプに対応し、デフォルトは 0<br>
+         - <no_translate><b>importance</b></no_translate>: 通知タイプ。 0～4 が 5 つの通知タイプに対応し、デフォルトは 2
+        ]]>
+    </string>
+</resources>

@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
@@ -9,6 +10,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.os.PowerManager
 import android.os.UserManager
 import android.provider.OpenableColumns
 import android.provider.Settings
@@ -314,15 +316,9 @@ object Util {
         return cacheAppList!!
     }
 
-    fun clearAppsCache() {
-        synchronized(lock_1) {
-            cacheAppList = null
-        }
-    }
-
     // android<13 will always return `false`
     @RequiresApi(Def.ANDROID_13)
-    private fun isDefaultSmsAppNotificationEnabled(ctx: Context): Boolean {
+    fun isDefaultSmsAppNotificationEnabled(ctx: Context): Boolean {
         // It can throw exception, ref: https://github.com/aj3423/SpamBlocker/issues/122
         try {
             val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
@@ -348,18 +344,6 @@ object Util {
             loge("exception in openSettingForDefaultSmsApp: $e")
         }
     }
-
-    fun checkDoubleNotifications(ctx: Context, trigger: MutableState<Boolean>) {
-        if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
-            val spf = Global(ctx)
-            if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled() && spf.isSmsEnabled()) {
-                if (!spf.isDoubleSMSWarningDismissed()) {
-                    trigger.value = true
-                }
-            }
-        }
-    }
-
 
     fun isPackageInstalled(ctx: Context, pkgName: String): Boolean {
         val pm = ctx.packageManager

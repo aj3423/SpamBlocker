@@ -1,7 +1,11 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        These rules apply to the SMS content.
+        These rules apply to the SMS content.<br>
+        <br>
+        <font color="#00BFFF"><b> - Some typical Patterns</b></font>:<br>
+        &ensp; - Contains "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
     <string name="help_quick_copy">

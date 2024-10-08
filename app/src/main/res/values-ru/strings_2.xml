@@ -47,41 +47,6 @@
                   &emsp; <font color="#ea86ff"><b>Приоритет: 0</b></font>
         ]]>
     </string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Эти правила применяются к входящему номеру телефона.<br>
-        <br>
-        <font color="#ffa500"><b>Важное замечание</b></font>:<br>
-        Для упрощения регулярных выражений
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>пробелы</b></font>
-          и <font color="#fa7f71"><b>ведущие нули</b></font>
-          удаляются перед проверкой, например:<br>
-        &emsp; Все эти форматы:<br>
-        &emsp;&emsp; 123456789 &emsp;(обычный номер)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(с <font color="#fa7f71"><b>пробелами</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(с ведущим <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(с внутренним префиксом <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Они <b>все</b> проверяются как:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; Таким образом, регулярное выражение <font color="#03DAC5"><b>123.*</b></font> будет соответствовать всем из них.<br>
-        Эту оптимизацию номера можно <b>отключить</b> с помощью флага регулярного выражения «Исходный номер».<br>
-        <br>
-        Список <b>отображается</b> в порядке убывания приоритета, возрастания описания и возрастания шаблона. <br>
-        <br>
-        Снимите флажки, чтобы отключить правило, <font color="#fa7f71"><b>проведите пальцем влево, чтобы удалить</b></font> его.<br>
-        <br>
-        <b>Длительное нажатие</b> кнопки «Добавить» для импорта номеров из CSV-файла, поддерживаемые столбцы:<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate>: Регулярное выражение(<b>обязательный</b>)<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate>: Описание<br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate>: Приоритет, по умолчанию 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate>: 1(Применить к вызову), 2(Применить к SMS), 3(оба), по умолчанию 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>: Черный или белый список. <no_translate>true</no_translate> или <no_translate>false</no_translate>, по умолчанию <no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate>: Тип блокировки. От 0 до 2 соответствуют 3 типам блокировки, по умолчанию 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate>: Тип уведомления. От 0 до 4 соответствуют 5 типам уведомлений, по умолчанию 2
-        ]]>
-    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         В CSV-файле отсутствует обязательное поле <b>pattern</b>. Для более подробного объяснения см. всплывающую подсказку.

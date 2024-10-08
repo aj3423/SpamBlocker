@@ -85,16 +85,13 @@ dependencies {
     implementation(libs.lazycolumnscrollbar) // for scroll bar
     implementation(libs.reorderable) // for reordering Action items with drag & drop
 
-    implementation(kotlin("reflect")) // for finding class by name, used in TaskScheduler
-
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization
-    implementation(libs.androidx.work.runtime.ktx) // for clearing db everyday
+    implementation(libs.androidx.work.runtime.ktx) // for WorkManager
 
     // jetpack compose
     implementation(platform(libs.compose.bom)) // auto compose version control
     implementation(libs.compose.activity) // for ComponentActivity
-    implementation(libs.compose.lifecycle) // for LifecycleResumeEffect
     implementation(libs.compose.material3) // for components like Scaffold, Surface
     implementation(libs.compose.ui)
 

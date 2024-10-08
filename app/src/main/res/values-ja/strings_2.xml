@@ -47,41 +47,6 @@
                   &emsp; <font color="#ea86ff"><b>優先順位: 0</b></font>
         ]]>
     </string>
-    <string name="help_number_filter">
-        <![CDATA[
-        これらのルールは入力電話番号に適用されます。<br>
-        <br>
-        <font color="#ffa500"><b>重要</b></font>:<br>
-        正規表現を簡素化するため、
-          <font color="#fa7f71"><b>+</b></font>、
-           <font color="#fa7f71"><b>スペース</b></font>、
-          <font color="#fa7f71"><b>先頭のゼロ</b></font>
-          はチェックの前に削除されます。たとえば:<br>
-        &emsp; これらのすべての形式:<br>
-        &emsp;&emsp; 123456789 &emsp;(通常の番号)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;( <font color="#fa7f71"><b>スペース</b></font>あり)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;( <font color="#fa7f71"><b>+</b></font>先頭あり)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(国内局番 <font color="#fa7f71"><b>0</b></font>あり)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;( <font color="#fa7f71"><b>0</b></font>が 2 つ)<br>
-        &emsp; これらはすべて次のとおりにチェックされます:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; したがって、正規表現 <font color="#03DAC5"><b>123.*</b></font> はそれらすべてに一致します。<br>
-        この数字の最適化は、正規表現フラグの "生番号" によって無効にすることができます。<br>
-        <br>
-        リストは優先順位の降順、説明の昇順、パターンの昇順で <b>表示</b>されます。<br>
-        <br>
-        ルールを無効にするにはチェックボックスをオフにし、<font color="#fa7f71"><b>左にスワイプして削除</b></font>します。<br>
-        <br>
-        <b>長押し</b> `追加` ボタンで .csv ファイルから番号をインポートします。サポートされる列:<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate>: 正規表現(<b>必須</b>)<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate>: 説明<br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate>: 優先順位、既定値 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate>: 1(通話に適用)、2(SMS に適用)、3(両方)、既定値 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>: ブラックリストまたはホワイトリスト。 <no_translate>true</no_translate> または <no_translate>false</no_translate>、既定値 <no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate>: ブロックタイプ。0 ～ 2 は 3 つのブロックタイプに対応、既定値 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate>: 通知タイプ。0 ～ 4 は 5 つの通知タイプに対応、既定値 2
-        ]]>
-    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         .csv ファイルで必須フィールド <b>pattern</b> が見つかりません。詳細については、バルーンツールチップを確認してください。

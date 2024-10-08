@@ -127,8 +127,9 @@ fun EditBotDialog(
                         if (enabled) {
                             LabeledRow(R.string.type) {
                                 val items = defaultSchedules.map {
-                                    LabelItem(label = it.label(ctx)) {
+                                    LabelItem(label = it.label(ctx)) { menuExpanded ->
                                         schedule.value = it
+                                        menuExpanded.value = false
                                     }
                                 }
                                 val selected = defaultSchedules.indexOfFirst {

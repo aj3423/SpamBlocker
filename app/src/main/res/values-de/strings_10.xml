@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        Diese Regeln gelten für eingehende Telefonnummern.<br>
+        <br>
+        <font color="#00BFFF"><b> - UI-bezogen</b></font>:<br>
+        Deaktivieren Sie Regeln durch Deaktivieren des Kontrollkästchens, <font color="#fa7f71"><b>nach links wischen zum Löschen</b></font>.<br>
+        <br>
+        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
+        <br>
+        <font color="#00BFFF"><b> - Regex-Optimierung</b></font>:<br>
+        Um die Regex zu vereinfachen, werden
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>Leerzeichen</b></font>
+          und <font color="#fa7f71"><b>führende Nullen</b></font>
+          vor der Überprüfung entfernt, beispielsweise:<br>
+        &emsp; Alle diese Formate:<br>
+        &emsp;&emsp; 123456789 &emsp;(reguläre Nummer)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Leerzeichen</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(mit führendem <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit Inlandstrankenhausvorwahl <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(zwei <font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp; Sie werden <b>alle</b> geprüft als:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Die Regex <font color="#03DAC5"><b>123.*</b></font> würde also alle finden.<br>
+        Diese Nummernoptimierung kann mit dem Regex-Flag „Rohnummer“ <b>deaktiviert</b> werden.<br>
+        <br>
+        <font color="#00BFFF"><b> - Einige typische Muster</b></font>:<br>
+        &ensp; - Jede Nummer: <font color="#03DAC5"><b>.*</b></font> (die Regex .* ist in anderen Apps dem Platzhalter * gleichwertig) <br>
+        &ensp; - Genaue Nummer: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Beginnt mit 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Endet mit 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Kürzer als 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Länger als 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Unbekannte Nummer(leere Zeichenfolge): <font color="#03DAC5"><b>.{0}</b></font> oder <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Enthält „Überprüfung“: <font color="#03DAC5"><b>.*Überprüfung.*</b></font> <br>
+        &ensp; - Enthält irgendein Wort: <font color="#03DAC5"><b>.*(Polizei|Krankenhaus|Überprüfung).*</b></font> <br>
+        &ensp; - Beginnt mit 400, mit führender Landesvorwahl 11 oder ohne: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Regel aus .csv importieren</b></font>:<br>
+        Sie können Regeln von anderen Apps in eine .csv-Datei exportieren und in diese App importieren.<br>
+        Drücken Sie lange auf die Schaltfläche „Hinzufügen“, um Nummern aus der .csv-Datei zu importieren. Unterstützte Spalten:<br>
+         - <no_translate><b>pattern</b></no_translate>: Die Regex(<b>erforderlich</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Beschreibung<br>
+         - <no_translate><b>priority</b></no_translate>: Priorität, standardmäßig 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(für Anruf anwenden), 2(für SMS anwenden), 3(beides), standardmäßig 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Blacklist oder Whitelist. <no_translate>true</no_translate> oder <no_translate>false</no_translate>, standardmäßig <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Blocktyp. 0~2 entsprechen den 3 Blocktypen, standardmäßig 0<br>
+         - <no_translate><b>importance</b></no_translate>: Benachrichtigungstyp. 0~4 entsprechen den 5 Benachrichtigungstypen, standardmäßig 2
+        ]]>
+    </string>
+</resources>

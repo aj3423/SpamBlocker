@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting
 
 import android.Manifest
+import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
@@ -36,6 +38,7 @@ import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
+import spam.blocker.util.Util.isDefaultSmsAppNotificationEnabled
 
 @Composable
 fun GloballyEnabled() {
@@ -51,14 +54,14 @@ fun GloballyEnabled() {
         return spf.isSmsEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)
     }
 
-    var callState by remember { mutableStateOf(checkCallState()) }
-    var smsState by remember { mutableStateOf(checkSmsState()) }
+    var callEnabled by remember { mutableStateOf(checkCallState()) }
+    var smsEnabled by remember { mutableStateOf(checkSmsState()) }
 
-    val doubleSmsWarningTrigger = remember(smsState) { mutableStateOf(false) }
+    val doubleSmsWarningTrigger = remember(smsEnabled) { mutableStateOf(false) }
     if (doubleSmsWarningTrigger.value) {
         PopupDialog(
             trigger = doubleSmsWarningTrigger,
-            icon = { ResIcon(R.drawable.ic_warning, color= Color.Unspecified) },
+            icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
             buttons = {
                 StrokeButton(label = Str(R.string.dismiss), color = Orange) {
                     spf.dismissDoubleSMSWarning()
@@ -66,6 +69,7 @@ fun GloballyEnabled() {
                 }
                 Spacer(modifier = M.width(10.dp))
                 StrokeButton(label = Str(R.string.open_settings), color = Teal200) {
+                    doubleSmsWarningTrigger.value = false
                     Util.openSettingForDefaultSmsApp(ctx)
                 }
             },
@@ -73,11 +77,18 @@ fun GloballyEnabled() {
             GreyLabel(ctx.resources.getString(R.string.warning_double_sms))
         }
     }
-
-    // Check double sms issue when `onResume`
-    LifecycleResumeEffect(smsState) {
-        if (smsState)
-            Util.checkDoubleNotifications(ctx, doubleSmsWarningTrigger)
+    // Show warnings `onResume`
+    // - double sms notification
+    LifecycleResumeEffect(smsEnabled) {
+        if (smsEnabled) {
+            if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
+                if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled() && spf.isSmsEnabled()) {
+                    if(!spf.isDoubleSMSWarningDismissed()) {
+                        doubleSmsWarningTrigger.value = true
+                    }
+                }
+            }
+        }
         onPauseOrDispose { }
     }
 
@@ -88,17 +99,17 @@ fun GloballyEnabled() {
         content = {
             Column {
                 LabeledRow(labelId = R.string.enabled_for_call) {
-                    SwitchBox(checked = callState, onCheckedChange = { isTurningOn ->
+                    SwitchBox(checked = callEnabled, onCheckedChange = { isTurningOn ->
                         if (isTurningOn) {
                             Permissions.launcherSetAsCallScreeningApp { granted ->
                                 if (granted) {
                                     spf.setCallEnabled(true)
-                                    callState = checkCallState()
+                                    callEnabled = checkCallState()
                                 }
                             }
                         } else {
                             spf.setCallEnabled(false)
-                            callState = checkCallState()
+                            callEnabled = checkCallState()
                         }
                     })
                 }
@@ -109,17 +120,17 @@ fun GloballyEnabled() {
                 ).apply { Compose() }
 
                 LabeledRow(labelId = R.string.enabled_for_sms) {
-                    SwitchBox(checked = smsState, onCheckedChange = { isTurningOn ->
+                    SwitchBox(checked = smsEnabled, onCheckedChange = { isTurningOn ->
                         if (isTurningOn) {
                             permChain.ask { granted ->
                                 if (granted) {
                                     spf.setSmsEnabled(true)
-                                    smsState = checkSmsState()
+                                    smsEnabled = checkSmsState()
                                 }
                             }
                         } else {
                             spf.setSmsEnabled(false)
-                            smsState = checkSmsState()
+                            smsEnabled = checkSmsState()
                         }
                     })
                 }
@@ -140,12 +151,12 @@ fun GloballyEnabled() {
                     Row {
                         ResImage(
                             R.drawable.ic_call,
-                            if (callState) C.enabled else C.disabled,
+                            if (callEnabled) C.enabled else C.disabled,
                             M.padding(end = 4.dp)
                         )
                         ResImage(
                             R.drawable.ic_sms,
-                            if (smsState) C.enabled else C.disabled,
+                            if (smsEnabled) C.enabled else C.disabled,
                             M.padding(end = 16.dp)
                         )
                     }

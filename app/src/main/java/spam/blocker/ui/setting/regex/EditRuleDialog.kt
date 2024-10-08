@@ -82,13 +82,10 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
         mutableStateOf(Offset.Zero)
     }
 
-    val permChain = remember {
-        PermissionChain(
-            ctx,
-            listOf(Permission(Manifest.permission.READ_CONTACTS))
-        )
+    val contactPermChain = remember {
+        PermissionChain(ctx, listOf(Permission(Manifest.permission.READ_CONTACTS)))
     }
-    permChain.Compose()
+    contactPermChain.Compose()
 
     val dropdownItems = remember(Unit) {
         val items: MutableList<IMenuItem> = mutableListOf(
@@ -98,32 +95,51 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
             ),
             DividerItem(thickness = 1),
         )
-        // Number Mode
-        items += LabelItem(
-            label = ctx.getString(R.string.phone_number),
-            icon = { GreyIcon16(R.drawable.ic_number_sign) }
-        ) {
-            regexFlags.intValue = regexFlags.intValue
-                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
-        }
-        // Contact Mode
-        items += LabelItem(
-            label = ctx.getString(R.string.contacts),
-            icon = { GreyIcon16(R.drawable.ic_contact_square) }
-        ) {
-            regexFlags.intValue = regexFlags.intValue
-                .addFlag(Def.FLAG_REGEX_FOR_CONTACT)
-                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-        }
-        // Contact Group Mode
-        items += LabelItem(
-            label = ctx.getString(R.string.contact_group),
-            icon = { GreyIcon16(R.drawable.ic_contacts_square) }
-        ) {
-            regexFlags.intValue = regexFlags.intValue
-                .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
-                .addFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+        val labelIds = listOf(
+            R.string.phone_number,
+            R.string.contacts,
+            R.string.contact_group,
+        )
+        val iconIds = listOf(
+            R.drawable.ic_number_sign,
+            R.drawable.ic_contact_square,
+            R.drawable.ic_contacts_square,
+        )
+        items += labelIds.mapIndexed { index, labelId ->
+            LabelItem(
+                label = ctx.getString(labelId),
+                icon = { GreyIcon16(iconIds[index]) },
+                dismissOnClick = index == 0,
+            ) { menuExpanded ->
+                when (index) {
+                    0 -> { // Number Mode
+                        regexFlags.intValue = regexFlags.intValue
+                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                    }
+
+                    1, 2 -> { // Contact Mode, Contact Group Mode
+                        contactPermChain.ask { granted ->
+                            if (granted) {
+                                when (index) {
+                                    1 -> { // Contact Mode
+                                        regexFlags.intValue = regexFlags.intValue
+                                            .addFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                                    }
+
+                                    2 -> { // Contact Group Mode
+                                        regexFlags.intValue = regexFlags.intValue
+                                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                                            .addFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                                    }
+                                }
+                                menuExpanded.value = false
+                            }
+                        }
+                    }
+                }
+            }
         }
         items
     }
@@ -139,7 +155,7 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
 
         Box {
             ResIcon(
-                iconId = if(forContact) {
+                iconId = if (forContact) {
                     R.drawable.ic_contact_square
                 } else if (forContactGroup) {
                     R.drawable.ic_contacts_square
@@ -470,9 +486,9 @@ fun RuleEditDialog(
                         val icons = remember {
                             listOf<@Composable () -> Unit>(
                                 // list.map{} doesn't support returning @Composable...
-                                { GreyIcon16( iconId = R.drawable.ic_call_blocked ) },
-                                { GreyIcon16( iconId = R.drawable.ic_call_miss ) },
-                                { GreyIcon16(iconId = R.drawable.ic_hang ) },
+                                { GreyIcon16(iconId = R.drawable.ic_call_blocked) },
+                                { GreyIcon16(iconId = R.drawable.ic_call_miss) },
+                                { GreyIcon16(iconId = R.drawable.ic_hang) },
                             )
                         }
                         val blockTypeLabels = remember {
@@ -495,7 +511,9 @@ fun RuleEditDialog(
                                                     }
                                                 }
                                             }
-                                        })
+                                            true
+                                        }
+                                    )
                                 }
                         }
                         Spinner(blockTypeLabels, blockType)
@@ -513,17 +531,17 @@ fun RuleEditDialog(
                             listOf<(@Composable () -> Unit)?>(
                                 null,
                                 { GreyIcon16(R.drawable.ic_shade) },
-                                { GreyIcon16( R.drawable.ic_statusbar_shade ) },
+                                { GreyIcon16(R.drawable.ic_statusbar_shade) },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon16( R.drawable.ic_bell_ringing )
-                                        GreyIcon( R.drawable.ic_statusbar_shade )
+                                        GreyIcon16(R.drawable.ic_bell_ringing)
+                                        GreyIcon(R.drawable.ic_statusbar_shade)
                                     }
                                 },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon( R.drawable.ic_bell_ringing )
-                                        GreyIcon( R.drawable.ic_statusbar_shade )
+                                        GreyIcon(R.drawable.ic_bell_ringing)
+                                        GreyIcon(R.drawable.ic_statusbar_shade)
                                         GreyIcon(R.drawable.ic_heads_up)
                                     }
                                 }
@@ -538,6 +556,7 @@ fun RuleEditDialog(
                                         icon = icons[index],
                                         onClick = {
                                             notifyType = index
+                                            true
                                         }
                                     )
                                 }

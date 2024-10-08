@@ -58,6 +58,7 @@ It works without replacing your default Call/SMS app.
 
 | Permission (all optional) | Why                                                                             |
 |---------------------------|---------------------------------------------------------------------------------|
+| INTERNET                  | For downloading spam numbers from public databases                              | 
 | ANSWER_PHONE_CALLS        | Reject, Answer and Hang-up calls                                                |
 | POST_NOTIFICATIONS        | Show notifications                                                              |
 | READ_CONTACTS             | For matching contacts                                                           |
@@ -68,7 +69,7 @@ It works without replacing your default Call/SMS app.
 
 # Privacy
  No data collection
- - Internet access is only used for downloading spam database, if you don't use this feature, you can [disable the internet access]().
+ - Internet access is only used for downloading spam numbers, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147).
  - No external storage access, only accessible to scoped storage(the Downloads folder).
  - No communication with other app
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk

@@ -47,41 +47,6 @@
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Diese Regeln gelten für die eingehende Telefonnummer.<br>
-        <br>
-        <font color="#ffa500"><b>Wichtig</b></font>:<br>
-        Um den regulären Ausdruck zu vereinfachen werden
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>Leerzeichen</b></font>
-          und <font color="#fa7f71"><b>leitende Nullen</b></font>
-          vor der Prüfung entfernt, zum Beispiel:<br>
-        &emsp; Alle diese Formate:<br>
-        &emsp;&emsp; 123456789 &emsp;(reguläre Nummer)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Leerzeichen</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(mit leitender <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit nationaler Vorwahl <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(zwei <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Sie werden <b>alle</b> geprüft als:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; Also würde der reguläre Ausdruck <font color="#03DAC5"><b>123.*</b></font> sie alle finden.<br>
-        Diese Nummernoptimierung kann mit dem regulären Ausdrucksflag `Roh-Nummer` <b>deaktiviert</b> werden.<br>
-        <br>
-        Die Liste wird <b>angezeigt</b> in absteigender Reihenfolge nach Priorität, aufsteigender Beschreibung und aufsteigendem Muster. <br>
-        <br>
-        Deaktiviere die Kontrollkästchen, um die Regel zu deaktivieren, <font color="#fa7f71"><b>wischen nach links, um zu löschen</b></font>.<br>
-        <br>
-        <b>Lange drücken</b> die Schaltfläche `Hinzufügen`, um Zahlen aus CSV-Datei zu importieren, unterstützte Spalten:<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate>: Der reguläre Ausdruck(<b>erforderlich</b>)<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate>: Beschreibung<br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate>: Priorität, Standard 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate>: 1(Für Anrufe), 2(Für SMS), 3(Beides), Standard 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>: Blacklist oder Whitelist. <no_translate>true</no_translate> oder <no_translate>false</no_translate>, Standard <no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate>: Blocktyp. 0~2 entsprechend den 3 Blocktypen, Standard 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate>: Benachrichtigungstyp. 0~4 entsprechend den 5 Benachrichtigungstypen, Standard 2
-        ]]>
-    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Fehlendes erforderliches Feld <b>pattern</b> in der CSV-Datei, siehe Ballon-Tooltip für eine detaillierte Erklärung.

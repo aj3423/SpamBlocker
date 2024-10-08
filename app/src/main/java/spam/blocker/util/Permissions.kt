@@ -15,6 +15,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.IBinder
+import android.os.PowerManager
 import android.os.Process
 import android.provider.CallLog.Calls
 import android.provider.Telephony.Sms
@@ -41,161 +42,200 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Util.doOnce
 
-open class Permissions {
-    companion object {
-        fun requestReceiveSmsPermission(activity: ComponentActivity) {
-            activity.requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), 0)
+object Permissions {
+    fun requestReceiveSmsPermission(activity: ComponentActivity) {
+        activity.requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), 0)
+    }
+
+    fun isCallScreeningEnabled(ctx: Context): Boolean {
+        val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager
+        return roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
+    }
+
+    // must be initialized in MainActivity
+    lateinit var launcherSetAsCallScreeningApp: Lambda1<Lambda1<Boolean>?>
+
+    fun initLauncherSetAsCallScreeningApp(activity: ComponentActivity) {
+
+        var callback: Lambda1<Boolean>? = null
+
+        val launcher = activity.registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            val granted = result.resultCode == Activity.RESULT_OK
+            if (granted) {
+                bindCallScreeningService(activity)
+            }
+            callback?.invoke(granted)
         }
 
-        fun isCallScreeningEnabled(ctx: Context): Boolean {
-            val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager
-            return roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
+        launcherSetAsCallScreeningApp = fun(cb: Lambda1<Boolean>?) {
+            callback = cb
+
+            val roleManager = activity.getSystemService(ROLE_SERVICE) as RoleManager
+            val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
+
+            launcher.launch(intent)
+        }
+    }
+
+    private fun bindCallScreeningService(ctx: Context) {
+        val mCallServiceIntent = Intent("android.telecom.CallScreeningService")
+        mCallServiceIntent.setPackage(ctx.applicationContext.packageName)
+        val mServiceConnection: ServiceConnection = object : ServiceConnection {
+            override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {}
+            override fun onServiceDisconnected(componentName: ComponentName) {}
+            override fun onBindingDied(name: ComponentName) {}
+        }
+        ctx.bindService(
+            mCallServiceIntent,
+            mServiceConnection,
+            Activity.BIND_AUTO_CREATE
+        )
+    }
+
+    fun isPermissionGranted(ctx: Context, permission: String): Boolean {
+        val ret = ContextCompat.checkSelfPermission(
+            ctx, permission
+        ) == PackageManager.PERMISSION_GRANTED
+        return ret
+    }
+
+    fun isContactsPermissionGranted(ctx: Context): Boolean {
+        return isPermissionGranted(ctx, Manifest.permission.READ_CONTACTS)
+    }
+
+    fun isReceiveSmsPermissionGranted(ctx: Context): Boolean {
+        return isPermissionGranted(ctx, Manifest.permission.RECEIVE_SMS)
+    }
+
+    fun isCallLogPermissionGranted(ctx: Context): Boolean {
+        return isPermissionGranted(ctx, Manifest.permission.READ_CALL_LOG)
+    }
+
+    fun isReadSmsPermissionGranted(ctx: Context): Boolean {
+        return isPermissionGranted(ctx, Manifest.permission.READ_SMS)
+    }
+
+    fun isProtectedPermissionGranted(ctx: Context, permission: String): Boolean {
+        val appOps = ctx.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        val mode = appOps.unsafeCheckOpNoThrow(
+            permission,
+            Process.myUid(),
+            ctx.packageName
+        )
+        return (mode == AppOpsManager.MODE_ALLOWED)
+    }
+
+    fun isUsagePermissionGranted(ctx: Context): Boolean {
+        return isProtectedPermissionGranted(ctx, AppOpsManager.OPSTR_GET_USAGE_STATS)
+    }
+
+    fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
+        val mapApps = mutableMapOf<String, Boolean>()
+
+        val usageStatsManager =
+            ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val currentTime = Now.currentMillis()
+        val events = usageStatsManager.queryEvents(currentTime - sec * 1000, currentTime)
+
+        while (events.hasNextEvent()) {
+            val event = UsageEvents.Event()
+            events.getNextEvent(event)
+
+            if (event.eventType == UsageEvents.Event.ACTIVITY_RESUMED ||
+                event.eventType == UsageEvents.Event.ACTIVITY_PAUSED ||
+                event.eventType == UsageEvents.Event.ACTIVITY_STOPPED
+            ) {
+                mapApps[event.packageName] = true
+            }
         }
 
-        // must be initialized in MainActivity
-        lateinit var launcherSetAsCallScreeningApp: Lambda1<Lambda1<Boolean>?>
+        return mapApps.keys.toList()
+    }
 
-        fun initLauncherSetAsCallScreeningApp(activity: ComponentActivity) {
-
-            var callback: Lambda1<Boolean>? = null
-
-            val launcher = activity.registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()
-            ) { result ->
-                val granted = result.resultCode == Activity.RESULT_OK
-                if (granted) {
-                    bindCallScreeningService(activity)
-                }
-                callback?.invoke(granted)
-            }
-
-            launcherSetAsCallScreeningApp = fun(cb: Lambda1<Boolean>?) {
-                callback = cb
-
-                val roleManager = activity.getSystemService(ROLE_SERVICE) as RoleManager
-                val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
-
-                launcher.launch(intent)
-            }
+    fun getPackagesHoldingPermissions(
+        pm: PackageManager,
+        permissions: Array<String>
+    ): List<PackageInfo> {
+        return if (Build.VERSION.SDK_INT >= Def.ANDROID_14) {
+            pm.getPackagesHoldingPermissions(
+                permissions,
+                PackageManager.PackageInfoFlags.of(0L)
+            )
+        } else {
+            pm.getPackagesHoldingPermissions(permissions, 0)
         }
+    }
 
-        private fun bindCallScreeningService(ctx: Context) {
-            val mCallServiceIntent = Intent("android.telecom.CallScreeningService")
-            mCallServiceIntent.setPackage(ctx.applicationContext.packageName)
-            val mServiceConnection: ServiceConnection = object : ServiceConnection {
-                override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {}
-                override fun onServiceDisconnected(componentName: ComponentName) {}
-                override fun onBindingDied(name: ComponentName) {}
-            }
-            ctx.bindService(
-                mCallServiceIntent,
-                mServiceConnection,
-                Activity.BIND_AUTO_CREATE
+    fun countHistoryCallByNumber(
+        ctx: Context,
+        rawNumber: String,
+        direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
+        withinMillis: Long
+    ): Int {
+        val selection = mutableListOf(
+            "REPLACE(REPLACE(REPLACE(${Calls.NUMBER}, '-', ''), ' ', ''), '+', '') LIKE '${
+                rawNumber
+                    .replace(" ", "")
+                    .replace("-", "")
+                    .replace("+", "")
+            }'",
+            "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
+        )
+
+        if (direction == Def.DIRECTION_INCOMING) {
+            selection.add(
+                "${Calls.TYPE} IN (${Calls.INCOMING_TYPE}, ${Calls.MISSED_TYPE}, ${Calls.VOICEMAIL_TYPE}, ${Calls.REJECTED_TYPE}, ${Calls.BLOCKED_TYPE}, ${Calls.ANSWERED_EXTERNALLY_TYPE})"
+            )
+        } else {
+            selection.add(
+                "${Calls.TYPE} = ${Calls.OUTGOING_TYPE}"
             )
         }
 
-        fun isPermissionGranted(ctx: Context, permission: String): Boolean {
-            val ret = ContextCompat.checkSelfPermission(
-                ctx, permission
-            ) == PackageManager.PERMISSION_GRANTED
-            return ret
-        }
+        val cursor = ctx.contentResolver.query(
+            Calls.CONTENT_URI,
+            null,
+            selection.joinToString(" AND "),
+            null,
+            null
+        )
+        val count = cursor?.count ?: 0
 
-        fun isContactsPermissionGranted(ctx: Context): Boolean {
-            return isPermissionGranted(ctx, Manifest.permission.READ_CONTACTS)
-        }
+        cursor?.close()
+        return count
+    }
 
-        fun isReceiveSmsPermissionGranted(ctx: Context): Boolean {
-            return isPermissionGranted(ctx, Manifest.permission.RECEIVE_SMS)
-        }
+    fun countHistorySMSByNumber(
+        ctx: Context,
+        rawNumber: String,
+        direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
+        withinMillis: Long
+    ): Int {
+        val selection = mutableListOf(
+            "REPLACE(REPLACE(REPLACE(${Sms.ADDRESS}, '-', ''), ' ', ''), '+', '') LIKE '${
+                rawNumber
+                    .replace(" ", "")
+                    .replace("-", "")
+                    .replace("+", "")
+            }'",
+            "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
+        )
 
-        fun isCallLogPermissionGranted(ctx: Context): Boolean {
-            return isPermissionGranted(ctx, Manifest.permission.READ_CALL_LOG)
-        }
-
-        fun isReadSmsPermissionGranted(ctx: Context): Boolean {
-            return isPermissionGranted(ctx, Manifest.permission.READ_SMS)
-        }
-
-        fun isProtectedPermissionGranted(ctx: Context, permission: String): Boolean {
-            val appOps = ctx.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
-            val mode = appOps.unsafeCheckOpNoThrow(
-                permission,
-                Process.myUid(),
-                ctx.packageName
+        if (direction == Def.DIRECTION_INCOMING) {
+            selection.add(
+                "${Sms.TYPE} = ${Sms.MESSAGE_TYPE_INBOX}"
             )
-            return (mode == AppOpsManager.MODE_ALLOWED)
-        }
-
-        fun isUsagePermissionGranted(ctx: Context): Boolean {
-            return isProtectedPermissionGranted(ctx, AppOpsManager.OPSTR_GET_USAGE_STATS)
-        }
-
-        fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
-            val mapApps = mutableMapOf<String, Boolean>()
-
-            val usageStatsManager =
-                ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
-            val currentTime = Now.currentMillis()
-            val events = usageStatsManager.queryEvents(currentTime - sec * 1000, currentTime)
-
-            while (events.hasNextEvent()) {
-                val event = UsageEvents.Event()
-                events.getNextEvent(event)
-
-                if (event.eventType == UsageEvents.Event.ACTIVITY_RESUMED ||
-                    event.eventType == UsageEvents.Event.ACTIVITY_PAUSED ||
-                    event.eventType == UsageEvents.Event.ACTIVITY_STOPPED
-                ) {
-                    mapApps[event.packageName] = true
-                }
-            }
-
-            return mapApps.keys.toList()
-        }
-
-        fun getPackagesHoldingPermissions(
-            pm: PackageManager,
-            permissions: Array<String>
-        ): List<PackageInfo> {
-            return if (Build.VERSION.SDK_INT >= Def.ANDROID_14) {
-                pm.getPackagesHoldingPermissions(
-                    permissions,
-                    PackageManager.PackageInfoFlags.of(0L)
-                )
-            } else {
-                pm.getPackagesHoldingPermissions(permissions, 0)
-            }
-        }
-
-        fun countHistoryCallByNumber(
-            ctx: Context,
-            rawNumber: String,
-            direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
-            withinMillis: Long
-        ): Int {
-            val selection = mutableListOf(
-                "REPLACE(REPLACE(REPLACE(${Calls.NUMBER}, '-', ''), ' ', ''), '+', '') LIKE '${
-                    rawNumber
-                        .replace(" ", "")
-                        .replace("-", "")
-                        .replace("+", "")
-                }'",
-                "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
+        } else {
+            selection.add(
+                "${Sms.TYPE} IN (${Sms.MESSAGE_TYPE_SENT}, ${Sms.MESSAGE_TYPE_OUTBOX}, ${Sms.MESSAGE_TYPE_FAILED})"
             )
+        }
 
-            if (direction == Def.DIRECTION_INCOMING) {
-                selection.add(
-                    "${Calls.TYPE} IN (${Calls.INCOMING_TYPE}, ${Calls.MISSED_TYPE}, ${Calls.VOICEMAIL_TYPE}, ${Calls.REJECTED_TYPE}, ${Calls.BLOCKED_TYPE}, ${Calls.ANSWERED_EXTERNALLY_TYPE})"
-                )
-            } else {
-                selection.add(
-                    "${Calls.TYPE} = ${Calls.OUTGOING_TYPE}"
-                )
-            }
-
+        return try {
             val cursor = ctx.contentResolver.query(
-                Calls.CONTENT_URI,
+                Sms.CONTENT_URI,
                 null,
                 selection.joinToString(" AND "),
                 null,
@@ -204,50 +244,9 @@ open class Permissions {
             val count = cursor?.count ?: 0
 
             cursor?.close()
-            return count
-        }
-
-        fun countHistorySMSByNumber(
-            ctx: Context,
-            rawNumber: String,
-            direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
-            withinMillis: Long
-        ): Int {
-            val selection = mutableListOf(
-                "REPLACE(REPLACE(REPLACE(${Sms.ADDRESS}, '-', ''), ' ', ''), '+', '') LIKE '${
-                    rawNumber
-                        .replace(" ", "")
-                        .replace("-", "")
-                        .replace("+", "")
-                }'",
-                "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
-            )
-
-            if (direction == Def.DIRECTION_INCOMING) {
-                selection.add(
-                    "${Sms.TYPE} = ${Sms.MESSAGE_TYPE_INBOX}"
-                )
-            } else {
-                selection.add(
-                    "${Sms.TYPE} IN (${Sms.MESSAGE_TYPE_SENT}, ${Sms.MESSAGE_TYPE_OUTBOX}, ${Sms.MESSAGE_TYPE_FAILED})"
-                )
-            }
-
-            return try {
-                val cursor = ctx.contentResolver.query(
-                    Sms.CONTENT_URI,
-                    null,
-                    selection.joinToString(" AND "),
-                    null,
-                    null
-                )
-                val count = cursor?.count ?: 0
-
-                cursor?.close()
-                count
-            } catch (e: Exception) {
-                0
-            }
+            count
+        } catch (e: Exception) {
+            0
         }
     }
 }

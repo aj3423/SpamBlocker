@@ -1,67 +1,62 @@
 <resources>
-    <string name="contact_rule">コンタクトルール</string>
+    <string name="contact_rule">連絡先ルール</string>
     <string name="directory">ディレクトリ</string>
     <string name="filename">ファイル名</string>
-    <string name="invalid_input_type">無効な入力タイプ、期待：%s、取得：%s</string>
+    <string name="invalid_input_type">無効な入力タイプです: %s エラー: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">有効期限（日）</string>
-    <string name="column_mapping">カラムのマッピング</string>
-    <string name="include_spam_db">スパムデータベースを含める</string>
-    <string name="configuration_only">コンフィグレーションのみ</string>
-    <string name="no_config_needed">コンフィグレーションは不要</string>
+    <string name="expiry_days">有効期限(日)</string>
+    <string name="column_mapping">列マッピング</string>
+    <string name="include_spam_db"><short>スパムDB</short>を含める</string>
+    <string name="configuration_only">設定のみ</string>
+    <string name="no_config_needed">設定は不要です</string>
     <string name="success">成功</string>
     <string name="failed">失敗</string>
     <string name="running">実行中</string>
-    <string name="optional">(省略可能)</string>
+    <string name="optional">(任意)</string>
 
     <string name="run_execute">実行</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>テスト</b></font><br>
-        これらのアクションは正確に設定されているかどうかを確認するため、すぐに実行されます。
-        または、このワークフローを手動で実行したい場合があります。<br>
+        このアクションはすぐに実行され、正しく設定されているかどうかを確認するために、または単にこのワークフローを手動で実行する場合に使用できます。<br>
         <br>
-        - <font color="#00BFFF"><b>新規</b></font><br>
-            新しいアクションを作成します。複数のアクションをチェーンして、複雑なタスクを完了することができます。<br>
-            項目間の緑または赤の点は、それらがチェーン可能かどうかを示します。<br>
-            <br>
-            ワークフローの例：<br>
-            <br>
-            &emsp; - httpファイルダウンロード -&gt; 7z形式のデコード -&gt; csv形式として解析 -&gt; スパムデータベースへインポート<br>
-            <br>
-            &emsp; - 平日に設定Aを適用し、週末に設定Bを適用します。<br>
+        - <font color="#00BFFF"><b>新規登録</b></font><br>
+        新しいアクションを作成します。複数の<short>アクション</short>を連結して、複雑な<short>タスク</short>を実行できます。<br>
+        アイテム間の緑または赤のドットは、それらの連結が可能かどうかを示します。<br>
+        <br>
+        ワークフローの例:<br>
+        <br>
+        &emsp; - httpファイルダウンロード -> 7z形式のデコード -> csv形式として解析 -> スパムデータベースにインポートする。<br>
+        <br>
+        &emsp; - 平日設定Aを適用し、週末設定Bを適用する。<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            スパム電話番号を
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a>から毎日ダウンロードして、スパムデータベースにインポートします。
+        <no_translate>FTC - Do Not Call</no_translate> から平日にスパムの電話番号をダウンロード して スパムデータベースにインポートします。
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">有効期限が切れたレコードをスパムデータベースから削除します。</string>
+    <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから有効期限が切れたレコードを削除します。</string>
     <string name="help_bot_preset_cleanup_history">有効期限が切れた履歴の通話/SMSレコードを削除します。</string>
     <string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
     <string name="everyday">毎日</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
     <string name="periodically">定期的に</string>
-    <string name="time">時間</string>
+    <string name="time">時刻</string>
     <string name="workdays">平日</string>
 
     <string name="help_backup">
         <![CDATA[
         スパムデータベースを使用しない場合、どちらのオプションも同等になります。<br>
         <br>
-        - <b>スパムデータベースを含める</b><br>
-        &emsp; 定期的なバックアップには使用しないでください。スパムデータベースは頻繁に更新される必要があります。<br>
-        これは、別の電話機にコンフィグレーションをクローンする場合にのみ役立ちます。<br>
+        - <b><short>スパムDB</short>を含める</b><br>
+        &emsp; スパムは頻繁に更新されるため、通常のバックアップには使用しないでください。<short>設定</short>を別の携帯電話に複製する場合にのみ<short>有効</short>です。<br>
         <br>
-        - <b>コンフィグレーションのみ</b><br>
-        &emsp; - エクスポートする場合、バックアップファイルのサイズが小さくなります。<br>
-        &emsp; - インポートする場合、スパムデータベース内のレコードは現在の状態を保持します。
+        - <b>設定のみ</b><br>
+        &emsp; - <short>エクスポート</short>時に、バックアップファイルのサイズを<short>削減</short>します。<br>
+        &emsp; - <short>インポート</short>時に、スパムデータベースのレコードは現在の状態を保持します。
         ]]>
     </string>
-
 </resources>

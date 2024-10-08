@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        这些规则适用于来电号码。<br>
+        <br>
+        <font color="#00BFFF"><b> - 界面相关</b></font>：<br>
+        取消选中复选框可禁用规则，<font color="#fa7f71"><b>向左滑动可删除</b></font>它。<br>
+        <br>
+        列表<b>按</b>优先级降序、描述升序和模式升序<b>显示</b>。<br>
+        <br>
+        <font color="#00BFFF"><b> - 正则表达式优化</b></font>：<br>
+        为了简化正则表达式，
+          <font color="#fa7f71"><b>+</b></font>
+           <font color="#fa7f71"><b>空格</b></font>
+          和 <font color="#fa7f71"><b>前导零</b></font>
+          在检查前被删除，例如：<br>
+        &ensp; 所有这些格式：<br>
+        &ensp;&emsp; 123456789（常规号码）<br>
+        &ensp;&emsp; 1 2345 6789（带<font color="#fa7f71"><b>空格</b></font>）<br>
+        &ensp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789（带前导<font color="#fa7f71"><b>+</b></font>）<br>
+        &ensp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789（带国内中继电话前缀<font color="#fa7f71"><b>0</b></font>）<br>
+        &ensp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789（两个<font color="#fa7f71"><b>0</b></font>）<br>
+        &ensp; 它们<b>全部</b>检查为：<br>
+        &ensp;&emsp; 123456789 <br>
+        &ensp; 所以正则表达式<font color="#03DAC5"><b>123.*</b></font>将匹配所有这些。<br>
+        此数字优化可以通过正则表达式标志“原始数字”<b>禁用</b>。<br>
+        <br>
+        <font color="#00BFFF"><b> - 一些典型的模式</b></font>：<br>
+        &ensp; - 任意号码：<font color="#03DAC5"><b>.*</b></font>（正则表达式 .* 等同于其他应用程序中的通配符 *）<br>
+        &ensp; - 确切号码：<font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - 以 400 开头：<font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - 以 123 结尾：<font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 小于 5：<font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - 大于 10：<font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - 未知号码（空字符串）：<font color="#03DAC5"><b>.{0}</b></font> 或 <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - 包含“验证”：<font color="#03DAC5"><b>.*验证.*</b></font> <br>
+        &ensp; - 包含以下任意单词：<font color="#03DAC5"><b>.*(警察|医院|验证).*</b></font> <br>
+        &ensp; - 以 400 开头，带国家代码 11 或不带：<font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - 从 .csv 导入规则</b></font>：<br>
+        你可以将其他应用程序中的规则导出到 .csv 文件，然后将其导入到此应用程序。<br>
+        长按“添加”按钮以从 .csv 文件中导入号码，支持以下列：<br>
+         - <no_translate><b>pattern</b></no_translate>：正则表达式（<b>必需</b>）<br>
+         - <no_translate><b>description</b></no_translate>：描述<br>
+         - <no_translate><b>priority</b></no_translate>：优先级，默认为 1<br>
+         - <no_translate><b>flags</b></no_translate>：1（应用于通话）、2（应用于短信）、3（两者都应用），默认为 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>：黑名单或白名单。<no_translate>true</no_translate>或<no_translate>false</no_translate>，默认为<no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>：封锁类型。0~2 对应于 3 种封锁类型，默认为 0<br>
+         - <no_translate><b>importance</b></no_translate>：通知类型。0~4 对应于 5 种通知类型，默认为 2
+        ]]>
+    </string>
+</resources>

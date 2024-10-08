@@ -1,59 +1,68 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        Estas reglas se aplican al contenido del SMS.
+        Estas reglas se aplican al contenido de los SMS.<br>
+        <br>
+        <font color="#00BFFF"><b> - Algunos Patrones típicos</b></font>:<br>
+        &ensp; - Contiene "verificación": <font color="#03DAC5"><b>.*verificación.*</b></font><br>
+        &emsp; - Contiene cualquiera de las palabras: <font color="#03DAC5"><b>.*(policía|hospital|verificación).*</b></font>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Una manera rápida de copiar contenido de mensajes SMS o números de teléfono, lo que facilita la obtención de códigos de verificación o números entrantes.<br>
+        Una forma rápida de copiar contenido de mensajes SMS o números de teléfono, lo que facilita el acceso a códigos de verificación o números entrantes.<br>
         <br>
-        Cuando coincida, aparecería un botón como <font color="#00BFFF"><b>Copiar: 123456</b></font> en la notificación.<br>
+        Cuando coincide, un botón como <font color="#00BFFF"><b>Copiar: 123456</b></font> aparecería en la notificación.<br>
         <br>
-        Una regla de muestra para extraer códigos de verificación:<br>
-        &emsp; Uso del grupo de captura:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        Una regla de ejemplo para extraer códigos de verificación:<br>
+        &emsp; Usando el grupo de captura:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>código.*?(\\d+) </b></font><br>
         &emsp; Otro enfoque usando lookaround:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=código.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
         <![CDATA[
-        Habilita esta regla para llamadas, SMS o ambos.<br>
-        Desmarca estas casillas de verificación para deshabilitar la regla sin eliminarla.
+        Habilita esta regla para Llamada, SMS o ambos.<br>
+        Desmarca estas casillas para desactivar la regla sin eliminarla.
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Cuando <font color="#00BFFF"><b>Número</b></font> esté marcado, esta regla extraerá contenido del número entrante.
-        Por ejemplo, usa <b>(.*)</b> para copiar el número de teléfono.<br>
+        Cuando se marca <font color="#00BFFF"><b>Número</b></font>, esta regla extraerá contenido del número entrante.<br>
+        Por ejemplo, use <b>(.*)</b> para copiar el número de teléfono.<br>
         <br>
-        Cuando <font color="#00BFFF"><b>Contenido</b></font> esté marcado, esta regla extraerá contenido del cuerpo del mensaje SMS,
+        Cuando se marca <font color="#00BFFF"><b>Contenido</b></font>, esta regla extraerá contenido del cuerpo del mensaje SMS,
         como códigos de verificación.
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        Cuando <font color="#03DAC5"><b>Pasado</b></font> esté marcado, esta regla se aplicará a llamadas y mensajes pasados.<br>
+        Cuando se marca <font color="#03DAC5"><b>Pasadas</b></font>, esta regla se aplicará a llamadas y mensajes pasados.<br>
         <br>
-        Cuando <font color="#fa7f71"><b>Bloqueado</b></font> esté marcado, esta regla se aplicará a llamadas y mensajes bloqueados.
+        Cuando se marca <font color="#fa7f71"><b>Bloqueadas</b></font>, esta regla se aplicará a llamadas y mensajes bloqueados.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>Ninguno</b>:<br>&emsp; No hay notificación.<br>
-        <b>Sombra</b>:<br>&emsp; Sombra de notificación desplegable.<br>
-        <b>Barra de estado</b>:<br>&emsp; El ícono pequeño en la barra superior.<br>
-        <b>Sonido</b>:<br>&emsp; El sonido de notificación predeterminado.<br>
-        <b>Emergente</b>:<br>&emsp; Muestra una ventana emergente en la parte superior de la pantalla.
+        <b>Ninguna</b>:<br>
+        &emsp; Sin notificación alguna.<br>
+        <b>Sombra</b>:<br>
+        &emsp; La persiana de notificación desplegable.<br>
+        <b>Barra de estado</b>:<br>
+        &emsp; El icono pequeño en la barra superior.<br>
+        <b>Sonido</b>:<br>
+        &emsp; El sonido de notificación predeterminado.<br>
+        <b>Heads-Up</b>:<br>
+        &emsp; Emerge una ventana emergente en la parte superior de la pantalla.
         ]]>
     </string>
-    <string name="title_rule_testing">Probar regla</string>
+    <string name="title_rule_testing">Prueba de reglas</string>
     <string name="help_test_rules">
         <![CDATA[
-        Esto ayuda a verificar si las reglas están configuradas según lo esperado.<br>
+        Esto ayuda a comprobar si las reglas están configuradas según lo esperado.<br>
         <br>
-        Es solo una simulación y en realidad no mostrará una llamada entrante (o mensaje de texto).<br>
+        Es solo una simulación y no activará una llamada entrante (o mensaje de texto) en realidad.<br>
         <br>
         El resultado se muestra aquí y en el registro del historial, con notificación.
         ]]>

@@ -47,41 +47,6 @@
                   &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
-    <string name="help_number_filter">
-        <![CDATA[
-        这些规则适用于来电号码。<br>
-        <br>
-        <font color="#ffa500"><b>重要</b></font>：<br>
-        为了简化正则表达式，
-          <font color="#fa7f71"><b>+</b></font>、
-           <font color="#fa7f71"><b>空格</b></font>
-          和 <font color="#fa7f71"><b>前导零</b></font>
-          在检查之前将被移除，例如：<br>
-        &emsp; 所有这些格式：<br>
-        &emsp;&emsp; 123456789 &emsp;（普通号码）<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;（带<font color="#fa7f71"><b>空格</b></font>）<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;（带前导<font color="#fa7f71"><b>+</b></font>）<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;（带国内中继前缀<font color="#fa7f71"><b>0</b></font>）<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;（两个<font color="#fa7f71"><b>0</b></font>）<br>
-        &emsp; 它们都<b>全</b>部检查为：<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; 所以正则表达式<font color="#03DAC5"><b>123.*</b></font>将匹配它们所有。<br>
-        此数字优化可以通过正则表达式标志“原始号码”<b>禁用</b>。<br>
-        <br>
-        该列表<b>显示</b>为优先级降序排列、描述升序排列和模式升序排列。 <br>
-        <br>
-        取消选中复选框以禁用规则，<font color="#fa7f71"><b>向左滑动以删除</b></font>。 <br>
-        <br>
-        <b>长按</b>“添加”按钮从 .csv 文件导入号码，支持的列：<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate>：正则表达式（<b>必需</b>）<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate>：说明 <br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate>：优先级，默认 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate>：1（应用于通话），2（应用于短信），3（两者），默认 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>：黑名单或白名单。 <no_translate>true</no_translate>或<no_translate>false</no_translate>，默认<no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate>：阻止类型。0~2 对应 3 种阻止类型，默认 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate>：通知类型。0~4 对应 5 种通知类型，默认 2
-        ]]>
-    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         .csv 文件中缺少必需字段<b>pattern</b>，请查看气泡工具提示以获取详细解释。

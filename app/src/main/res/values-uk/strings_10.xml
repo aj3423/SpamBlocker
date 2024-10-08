@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        Ці правила стосуються вхідних телефонних номерів.<br>
+        <br>
+        <font color="#00BFFF"><b> - Пов\'язані з інтерфейсом користувача</b></font>:<br>
+        Зніміть позначки, щоб вимкнути правило, <font color="#fa7f71"><b>проведіть пальцем вліво, щоб видалити</b></font>.<br>
+        <br>
+        Список відображається в порядку спадання пріоритету, висхідного опису і висхідного шаблону.<br>
+        <br>
+        <font color="#00BFFF"><b> - Оптимізація регулярних виразів</b></font>:<br>
+        Щоб спростити регулярні вирази,
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>пробіли</b></font>
+          і <font color="#fa7f71"><b>провідні нулі</b></font>
+          видаляються перед перевіркою, наприклад:<br>
+        &emsp; Усі ці формати:<br>
+        &emsp;&emsp; 123456789 &emsp;(звичайне число)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(з <font color="#fa7f71"><b>пробілами</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(з провідним <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(з внутрішнім префіксом <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Вони <b>всі</b> перевіряються як:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Отже, регулярний вираз <font color="#03DAC5"><b>123.*</b></font> буде відповідати всім цим шаблонам.<br>
+        Цю оптимізацію чисел можна <b>вимикати</b> за допомогою прапора регулярного виразу `Raw Number`.<br>
+        <br>
+        <font color="#00BFFF"><b> - Деякі типові шаблони</b></font>:<br>
+        &ensp; - Будь-яке число: <font color="#03DAC5"><b>.*</b></font> (регулярний вираз .* еквівалентний символу підстановки * в інших додатках)<br>
+        &ensp; - Точне число: <font color="#03DAC5"><b>12345</b></font><br>
+        &ensp; - Починається з 400: <font color="#03DAC5"><b>400.*</b></font><br>
+        &ensp; - Закінчується на 123: <font color="#03DAC5"><b>.*123</b></font><br>
+        &ensp; - Коротше 5: <font color="#03DAC5"><b>.{0,4}</b></font><br>
+        &ensp; - Довше 10: <font color="#03DAC5"><b>.{11,}</b></font><br>
+        &ensp; - Невідоме число(порожній рядок): <font color="#03DAC5"><b>.{0}</b></font> або <font color="#03DAC5"><b>^$</b></font><br>
+        &ensp; - Містить "перевірка": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Містить будь-яке з слів: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font><br>
+        &ensp; - Починається з 400, з провідним кодом країни 11 або без нього: <font color="#03DAC5"><b>(?:11)?400.*</b></font><br>
+        <br>
+        <font color="#00BFFF"><b> - Імпорт правила з .csv</b></font>:<br>
+        Ви можете експортувати правила з іншого додатка в файл .csv і імпортувати їх у цей додаток.<br>
+        Тривале натискання кнопки «Додати», щоб імпортувати числа з файлу .csv, підтримувані стовпці:<br>
+         - <no_translate><b>pattern</b></no_translate>: Регулярний вираз(<b>обов\'язково</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Опис<br>
+         - <no_translate><b>priority</b></no_translate>: Пріоритет, за замовчуванням 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(застосовувати до дзвінків), 2(застосовувати до SMS), 3(обидва), за замовчуванням 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Чорний або білий список. <no_translate>true</no_translate> або <no_translate>false</no_translate>, за замовчуванням <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Тип блокування. 0~2 відповідають 3 типам блокування, за замовчуванням 0<br>
+         - <no_translate><b>importance</b></no_translate>: Тип сповіщення. 0~4 відповідають 5 типам сповіщень, за замовчуванням 2
+        ]]>
+    </string>
+</resources>

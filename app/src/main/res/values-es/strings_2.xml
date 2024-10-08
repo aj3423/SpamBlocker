@@ -47,41 +47,6 @@
                   &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
         ]]>
     </string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Estas reglas se aplican al número de teléfono entrante.<br>
-        <br>
-        <font color="#ffa500"><b>Importante</b></font>:<br>
-        Para simplificar la expresión regular,
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>espacios</b></font>
-          y <font color="#fa7f71"><b>ceros iniciales</b></font>
-          se eliminan antes de comprobar, por ejemplo:<br>
-        &emsp; Todos estos formatos:<br>
-        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espacios</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo de tronco nacional <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Se comprueban <b>todos</b> como:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; Así que la expresión regular <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos ellos.<br>
-        Esta optimización de números se puede <b>desactivar</b> mediante el indicador de expresión regular "Número sin procesar".<br>
-        <br>
-        La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente. <br>
-        <br>
-        Desmarque las casillas para deshabilitar la regla, <font color="#fa7f71"><b>deslice hacia la izquierda para eliminar</b></font>.<br>
-        <br>
-        <b>Mantenga presionado</b> el botón "Agregar" para importar números desde un archivo .csv, columnas admitidas:<br>
-         - <no_translate><font color="#00BFFF">pattern</font></no_translate>: La expresión regular(<b>obligatorio</b>)<br>
-         - <no_translate><font color="#00BFFF">description</font></no_translate>: Descripción<br>
-         - <no_translate><font color="#00BFFF">priority</font></no_translate>: Prioridad, valor predeterminado 1<br>
-         - <no_translate><font color="#00BFFF">flags</font></no_translate>: 1(Aplicar a la llamada), 2(Aplicar a SMS), 3(ambos), valor predeterminado 3<br>
-         - <no_translate><font color="#00BFFF">isBlacklist</font></no_translate>: Lista negra o blanca. <no_translate>true</no_translate> o <no_translate>false</no_translate>, valor predeterminado <no_translate>true</no_translate><br>
-         - <no_translate><font color="#00BFFF">blockType</font></no_translate>: Tipo de bloqueo. 0~2 correspondiente a los 3 tipos de bloqueo, valor predeterminado 0<br>
-         - <no_translate><font color="#00BFFF">importance</font></no_translate>: Tipo de notificación. 0~4 correspondiente a los 5 tipos de notificación, valor predeterminado 2
-        ]]>
-    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Falta el campo obligatorio <b>pattern</b> en el archivo .csv, consulte la información sobre herramientas del globo para obtener una explicación detallada.

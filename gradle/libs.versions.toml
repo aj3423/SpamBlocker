@@ -8,7 +8,6 @@ composeBom = "2024.09.02"
 reorderable = "2.3.3"
 serialization = "1.7.1"
 mockk = "1.13.10"
-lifecycleRuntimeComposeAndroid = "2.8.6"
 lazycolumnscrollbar = "2.2.0"
 workRuntimeKtx = "2.9.1"
 junitJupiter = "5.8.2"
@@ -24,7 +23,6 @@ compose-activity = { group = "androidx.activity", name = "activity-compose", ver
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-compose-lifecycle= { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
 lazycolumnscrollbar = { module = "com.github.nanihadesuka:LazyColumnScrollbar", version.ref = "lazycolumnscrollbar" }
 junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitJupiter" }
 

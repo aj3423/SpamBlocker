@@ -1,0 +1,52 @@
+<resources>
+    <string name="help_number_filter">
+        <![CDATA[
+        These rules apply to the incoming phone number.<br>
+        <br>
+        <font color="#00BFFF"><b> - UI related</b></font>:<br>
+        Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left to delete</b></font> it.<br>
+        <br>
+        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
+        <br>
+        <font color="#00BFFF"><b> - Regex Optimization</b></font>:<br>
+        To simplify the regex,
+          <font color="#fa7f71"><b>+</b></font>,
+           <font color="#fa7f71"><b>spaces</b></font>
+          and <font color="#fa7f71"><b>leading zeroes</b></font>
+          are removed before checking, for example:<br>
+        &emsp; All these formats:<br>
+        &emsp;&emsp; 123456789 &emsp;(regular number)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(with <font color="#fa7f71"><b>spaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(with leading <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(with domestic trunk prefix <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp; They are <b>all</b> checked as:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; So regex <font color="#03DAC5"><b>123.*</b></font> would match all of them.<br>
+        This number optimization can be <b>disabled</b> with the regex flag `Raw Number`.<br>
+        <br>
+        <font color="#00BFFF"><b> - Some typical Patterns</b></font>:<br>
+        &ensp; - Any number: <font color="#03DAC5"><b>.*</b></font> (the regex .* is equivalent to the wildcard * in other apps) <br>
+        &ensp; - Exact number: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Starts with 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Ends with 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Shorter than 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Longer than 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Unknown number(empty string): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Contains "verification": <font color="#03DAC5"><b>.*verification.*</b></font> <br>
+        &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font> <br>
+        &ensp; - Starts with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Import Rule from .csv</b></font>:<br>
+        You can export rules from other app to a .csv file and import them to this app.<br>
+        Long press the `Add` button to import numbers from .csv file, columns supported:<br>
+         - <no_translate><b>pattern</b></no_translate>: The regex(<b>required</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Description<br>
+         - <no_translate><b>priority</b></no_translate>: Priority, default 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Apply to Call), 2(Apply to SMS), 3(both), default 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Blacklist or whitelist. <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Block type. 0~2 corresponding to the 3 block types, default 0<br>
+         - <no_translate><b>importance</b></no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2
+        ]]>
+    </string>
+</resources>

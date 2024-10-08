@@ -635,8 +635,8 @@ class WriteFile(
         val fn = filename.resolveTimeTags()
 
         return try {
-            val bytes = Util.writeFile(path, fn, arg)
-            Pair(true, bytes)
+            Util.writeFile(path, fn, arg)
+            Pair(true, null)
         } catch (e: Exception) {
             Pair(false, "WriteFile: $e")
         }
