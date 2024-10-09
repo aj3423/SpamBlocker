@@ -130,6 +130,9 @@ class MainActivity : ComponentActivity() {
                 WindowCompat.getInsetsController(window, LocalView.current)
                     .isAppearanceLightStatusBars = !isDarkTheme
 
+                // Prepare for the permission launcher
+                G.permissionChain.Compose()
+
                 Main()
 
                 // show warning if this app is running in work profile

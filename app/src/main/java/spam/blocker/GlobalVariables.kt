@@ -16,6 +16,7 @@ import spam.blocker.ui.setting.regex.ContentRuleViewModel
 import spam.blocker.ui.setting.regex.NumberRuleViewModel
 import spam.blocker.ui.setting.regex.QuickCopyRuleViewModel
 import spam.blocker.ui.widgets.BottomBarViewModel
+import spam.blocker.util.PermissionChain
 
 @Immutable
 object G {
@@ -34,4 +35,6 @@ object G {
     lateinit var bottomBarVM : BottomBarViewModel
 
     val testingVM : TestingViewModel = TestingViewModel()
+
+    val permissionChain = PermissionChain()
 }

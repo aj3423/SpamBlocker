@@ -1,20 +1,17 @@
 package spam.blocker.ui.setting.quick
 
 import android.Manifest
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
+import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Spinner
-import spam.blocker.util.Permission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.SharedPref.BlockType
 
@@ -23,24 +20,13 @@ fun BlockType() {
     val ctx = LocalContext.current
     val spf = BlockType(ctx)
 
-    val permChain = remember {
-        PermissionChain(
-            ctx,
-            listOf(
-                Permission(Manifest.permission.READ_PHONE_STATE),
-                Permission(Manifest.permission.READ_CALL_LOG),
-                Permission(Manifest.permission.ANSWER_PHONE_CALLS)
-            )
-        )
-    }
-    permChain.Compose()
-
     val selected = remember {
         mutableIntStateOf(spf.getType())
     }
 
     val options = remember {
-        val icons = listOf<@Composable ()-> Unit>( // list.map{} doesn't support returning @Composable...
+        val icons = listOf<@Composable () -> Unit>(
+            // list.map{} doesn't support returning @Composable...
             { GreyIcon16(iconId = R.drawable.ic_call_blocked) },
             { GreyIcon16(iconId = R.drawable.ic_call_miss) },
             { GreyIcon16(iconId = R.drawable.ic_hang) },
@@ -50,13 +36,22 @@ fun BlockType() {
                 label = label,
                 icon = icons[index],
                 onClick = {
-                    when(index) {
+                    when (index) {
                         0, 1 -> { // Reject, Silence
                             spf.setType(index)
                             selected.intValue = index
                         }
+
                         2 -> { // Answer+Hangup
-                            permChain.ask { granted ->
+
+                            G.permissionChain.ask(
+                                ctx,
+                                listOf(
+                                    NormalPermission(Manifest.permission.READ_PHONE_STATE),
+                                    NormalPermission(Manifest.permission.READ_CALL_LOG),
+                                    NormalPermission(Manifest.permission.ANSWER_PHONE_CALLS)
+                                )
+                            ) { granted ->
                                 if (granted) {
                                     spf.setType(index)
                                     selected.intValue = index

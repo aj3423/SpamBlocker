@@ -2,6 +2,7 @@ package spam.blocker.ui.setting.quick
 
 import android.app.AppOpsManager
 import android.content.Context
+import android.content.Intent
 import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -33,28 +34,28 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.SwissCoffee
-import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.AppInfo
+import spam.blocker.util.AppOpsPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
-import spam.blocker.util.ProtectedPermission
+import spam.blocker.util.IntentPermission
 import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util
@@ -256,20 +257,6 @@ fun RecentApps() {
     PopupChooseApps(ctx = ctx, popupTrigger = appsPopupTrigger, enabledPkgs = enabledPkgs)
     PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = defaultInXMin)
 
-    val permChain = remember {
-        PermissionChain(
-            ctx,
-            listOf(
-                ProtectedPermission(
-                    AppOpsManager.OPSTR_GET_USAGE_STATS,
-                    intentName = Settings.ACTION_USAGE_ACCESS_SETTINGS,
-                    prompt = ctx.getString(R.string.prompt_go_to_usage_permission_setting)
-                )
-            )
-        )
-    }
-    permChain.Compose()
-
     LabeledRow(
         R.string.allow_recent_apps,
         helpTooltipId = R.string.help_recent_apps,
@@ -312,7 +299,16 @@ fun RecentApps() {
                     .padding(start = 4.dp)
                     .wrapContentHeight(align = Alignment.CenterVertically)
                     .clickable {
-                        permChain.ask { granted ->
+                        G.permissionChain.ask(
+                            ctx,
+                            listOf(
+                                AppOpsPermission(
+                                    AppOpsManager.OPSTR_GET_USAGE_STATS,
+                                    intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
+                                    prompt = ctx.getString(R.string.prompt_go_to_usage_permission_setting)
+                                )
+                            )
+                        ) { granted ->
                             if (granted) {
                                 appsPopupTrigger.value = true
                             }

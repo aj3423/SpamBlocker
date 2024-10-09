@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
@@ -64,7 +65,7 @@ import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Lambda1
-import spam.blocker.util.Permission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
@@ -81,11 +82,6 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
     val dropdownOffset = remember {
         mutableStateOf(Offset.Zero)
     }
-
-    val contactPermChain = remember {
-        PermissionChain(ctx, listOf(Permission(Manifest.permission.READ_CONTACTS)))
-    }
-    contactPermChain.Compose()
 
     val dropdownItems = remember(Unit) {
         val items: MutableList<IMenuItem> = mutableListOf(
@@ -119,7 +115,10 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                     }
 
                     1, 2 -> { // Contact Mode, Contact Group Mode
-                        contactPermChain.ask { granted ->
+                        G.permissionChain.ask(
+                            ctx,
+                            listOf(NormalPermission(Manifest.permission.READ_CONTACTS))
+                        ) { granted ->
                             if (granted) {
                                 when (index) {
                                     1 -> { // Contact Mode
@@ -470,18 +469,6 @@ fun RuleEditDialog(
 
                 // Block Type
                 ShowAnimated(visible = forType == Def.ForNumber && applyToWorB == 1) {
-                    val permChain = remember {
-                        PermissionChain(
-                            ctx,
-                            listOf(
-                                Permission(Manifest.permission.READ_PHONE_STATE),
-                                Permission(Manifest.permission.READ_CALL_LOG),
-                                Permission(Manifest.permission.ANSWER_PHONE_CALLS)
-                            )
-                        )
-                    }
-                    permChain.Compose()
-
                     LabeledRow(labelId = R.string.block_type) {
                         val icons = remember {
                             listOf<@Composable () -> Unit>(
@@ -504,7 +491,14 @@ fun RuleEditDialog(
                                                 }
 
                                                 2 -> { // Answer-HangUp
-                                                    permChain.ask { granted ->
+                                                    G.permissionChain.ask(
+                                                        ctx,
+                                                        listOf(
+                                                            NormalPermission(Manifest.permission.READ_PHONE_STATE),
+                                                            NormalPermission(Manifest.permission.READ_CALL_LOG),
+                                                            NormalPermission(Manifest.permission.ANSWER_PHONE_CALLS)
+                                                        )
+                                                    ) { granted ->
                                                         if (granted) {
                                                             blockType = index
                                                         }

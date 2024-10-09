@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
@@ -14,7 +15,7 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.Permission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions.isContactsPermissionGranted
 import spam.blocker.util.SharedPref.Contact
@@ -34,14 +35,6 @@ fun Contacts() {
 
     var isExclusive by remember { mutableStateOf(spf.isExclusive()) }
 
-    val permChain = remember {
-        PermissionChain(
-            ctx,
-            listOf(Permission(Manifest.permission.READ_CONTACTS))
-        )
-    }
-    permChain.Compose()
-
     LabeledRow(
         R.string.allow_contact,
         helpTooltipId = R.string.help_contacts,
@@ -59,7 +52,10 @@ fun Contacts() {
             }
             SwitchBox(isTurnedOn) { isTurningOn ->
                 if (isTurningOn) {
-                    permChain.ask { granted ->
+                    G.permissionChain.ask(
+                        ctx,
+                        listOf(NormalPermission(Manifest.permission.READ_CONTACTS))
+                    ) { granted ->
                         if (granted) {
                             spf.setEnabled(true)
                             isTurnedOn = true

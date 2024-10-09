@@ -13,34 +13,17 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
+import android.os.Environment
 import android.os.IBinder
-import android.os.PowerManager
 import android.os.Process
 import android.provider.CallLog.Calls
 import android.provider.Telephony.Sms
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.ManagedActivityResultLauncher
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import spam.blocker.def.Def
-import spam.blocker.ui.M
-import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.widgets.GreyButton
-import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.Util.doOnce
 
 object Permissions {
     fun requestReceiveSmsPermission(activity: ComponentActivity) {
@@ -101,6 +84,26 @@ object Permissions {
         return ret
     }
 
+//    fun isInternetPermissionGranted(ctx: Context) : Boolean {
+//        val pm = ctx.packageManager
+//        val result = pm.checkPermission(Manifest.permission.INTERNET, ctx.packageName)
+//        return result == PERMISSION_GRANTED
+//    }
+    fun isFileReadPermissionGranted(ctx: Context): Boolean {
+        return if(Build.VERSION.SDK_INT == Def.ANDROID_10) {
+            isPermissionGranted(ctx, Manifest.permission.READ_EXTERNAL_STORAGE)
+        } else {
+            Environment.isExternalStorageManager()
+        }
+    }
+    fun isFileWritePermissionGranted(ctx: Context): Boolean {
+        return if(Build.VERSION.SDK_INT == Def.ANDROID_10) {
+            isPermissionGranted(ctx, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        } else {
+            Environment.isExternalStorageManager()
+        }
+    }
+
     fun isContactsPermissionGranted(ctx: Context): Boolean {
         return isPermissionGranted(ctx, Manifest.permission.READ_CONTACTS)
     }
@@ -117,7 +120,7 @@ object Permissions {
         return isPermissionGranted(ctx, Manifest.permission.READ_SMS)
     }
 
-    fun isProtectedPermissionGranted(ctx: Context, permission: String): Boolean {
+    fun isAppOpsPermissionGranted(ctx: Context, permission: String): Boolean {
         val appOps = ctx.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
         val mode = appOps.unsafeCheckOpNoThrow(
             permission,
@@ -128,7 +131,7 @@ object Permissions {
     }
 
     fun isUsagePermissionGranted(ctx: Context): Boolean {
-        return isProtectedPermissionGranted(ctx, AppOpsManager.OPSTR_GET_USAGE_STATS)
+        return isAppOpsPermissionGranted(ctx, AppOpsManager.OPSTR_GET_USAGE_STATS)
     }
 
     fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
@@ -250,158 +253,3 @@ object Permissions {
         }
     }
 }
-
-abstract class PermissionChecker {
-    abstract fun isGranted(ctx: Context): Boolean
-}
-
-open class Permission(
-    val name: String,
-    val isOptional: Boolean = false,
-    val prompt: String? = null // show a prompt dialog before asking for permission
-) : PermissionChecker() {
-    override fun isGranted(ctx: Context): Boolean {
-        return Permissions.isPermissionGranted(ctx, name)
-    }
-}
-
-class ProtectedPermission(
-    name: String,
-    isOptional: Boolean = false,
-    prompt: String? = null,
-
-    // intent for navigating to system setting page
-    val intentName: String? = null,
-) : Permission(name, isOptional, prompt) {
-
-    override fun isGranted(ctx: Context): Boolean {
-        return Permissions.isProtectedPermissionGranted(ctx, name)
-    }
-}
-
-
-/*
-    Convenient class for asking for multiple permissions,
-
-    callback is triggered with param:
-    - true: all required permissions are granted
-    - false: at least one of required permissions failed.
-
-    Must be created during the creation of the fragment
- */
-class PermissionChain(
-    private val ctx: Context,
-    private val permissions: List<Permission>,
-) {
-    // for non-protected permission, e.g.: CALL_LOG
-    private lateinit var launcherNormal: ManagedActivityResultLauncher<String, Boolean>
-
-    // for protected permission, e.g.: USAGE_STATS
-    private lateinit var launcherProtected: ManagedActivityResultLauncher<Intent, ActivityResult>
-
-
-    // final callback
-    private lateinit var onResult: (Boolean) -> Unit
-
-    private lateinit var currList: MutableList<Permission>
-    private lateinit var curr: Permission
-
-    private lateinit var popupTrigger: MutableState<Boolean>
-
-    @Composable
-    fun Compose() {
-        popupTrigger = remember { mutableStateOf(false) }
-        if (popupTrigger.value) {
-            PopupDialog(
-                trigger = popupTrigger,
-                content = {
-                    Text(curr.prompt!!, color = LocalPalette.current.textGrey)
-                },
-                buttons = {
-                    GreyButton("cancel") {
-                        popupTrigger.value = false
-                        onResult(false)
-                    }
-                    Spacer(modifier = M.width(10.dp))
-
-                    StrokeButton("ok", Teal200) {
-                        popupTrigger.value = false
-                        handle()
-                    }
-                }
-            )
-        }
-
-        launcherNormal = rememberLauncherForActivityResult(
-            contract = ActivityResultContracts.RequestPermission()
-        ) { isGranted ->
-            if (isGranted || curr.isOptional) {
-                checkNext()
-            } else {
-                onResult(false)
-            }
-        }
-
-        launcherProtected = rememberLauncherForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { _ ->
-            val isGranted = Permissions.isProtectedPermissionGranted(ctx, curr.name)
-            if (isGranted || curr.isOptional) {
-                checkNext()
-            } else {
-                onResult(false)
-            }
-        }
-    }
-
-    fun ask(onResult: (Boolean) -> Unit) {
-        this.onResult = onResult
-        currList = ArrayList(permissions) // make a copy
-        checkNext()
-    }
-
-    private fun checkNext() {
-        if (currList.isEmpty()) {
-            onResult(true)
-            return
-        }
-
-        curr = currList.first()
-        currList.removeAt(0)
-
-        if (curr.isGranted(ctx)) { // already granted
-            checkNext()
-            return
-        }
-
-        if (curr.isOptional) {
-            val isFirstTime = doOnce(ctx, "ask_once_${curr.name}") {
-                handleCurrPermission()
-            }
-            if (!isFirstTime) {
-                checkNext()
-            }
-            return
-        }
-
-        handleCurrPermission()
-    }
-
-    private fun handleCurrPermission() {
-        if (curr.prompt == null) {
-            handle()
-        } else { // show prompt dialog
-            popupTrigger.value = true
-        }
-    }
-
-    private fun handle() {
-        if (curr is ProtectedPermission) {
-            val protected = curr as ProtectedPermission
-            launcherProtected.launch(Intent(protected.intentName))
-        } else {
-            launcherNormal.launch(curr.name)
-        }
-    }
-}
-

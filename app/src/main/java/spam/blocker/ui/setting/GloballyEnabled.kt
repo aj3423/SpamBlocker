@@ -33,7 +33,7 @@ import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.Permission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Global
@@ -83,7 +83,7 @@ fun GloballyEnabled() {
         if (smsEnabled) {
             if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {
                 if (isDefaultSmsAppNotificationEnabled(ctx) && spf.isGloballyEnabled() && spf.isSmsEnabled()) {
-                    if(!spf.isDoubleSMSWarningDismissed()) {
+                    if (!spf.isDoubleSMSWarningDismissed()) {
                         doubleSmsWarningTrigger.value = true
                     }
                 }
@@ -114,15 +114,14 @@ fun GloballyEnabled() {
                     })
                 }
 
-                val permChain = PermissionChain(
-                    ctx,
-                    listOf(Permission(Manifest.permission.RECEIVE_SMS))
-                ).apply { Compose() }
 
                 LabeledRow(labelId = R.string.enabled_for_sms) {
                     SwitchBox(checked = smsEnabled, onCheckedChange = { isTurningOn ->
                         if (isTurningOn) {
-                            permChain.ask { granted ->
+                            G.permissionChain.ask(
+                                ctx,
+                                listOf(NormalPermission(Manifest.permission.RECEIVE_SMS))
+                            ) { granted ->
                                 if (granted) {
                                     spf.setSmsEnabled(true)
                                     smsEnabled = checkSmsState()

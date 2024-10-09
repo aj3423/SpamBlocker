@@ -73,6 +73,7 @@ fun ActionCard(
                 // Label
                 Text(
                     text = action.label(ctx),
+                    color = C.textGrey,
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                     modifier = M.padding(top = 2.dp),

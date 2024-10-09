@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyButton
@@ -17,7 +18,7 @@ import spam.blocker.ui.widgets.PluralStr
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.Permission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions.isCallLogPermissionGranted
 import spam.blocker.util.SharedPref.Dialed
@@ -49,17 +50,6 @@ fun Dialed() {
             )
         })
 
-    val permChain = remember {
-        PermissionChain(
-            ctx,
-            listOf(
-                Permission(Manifest.permission.READ_CALL_LOG),
-                Permission(Manifest.permission.READ_SMS, true)
-            )
-        )
-    }
-    permChain.Compose()
-
     LabeledRow(
         R.string.dialed,
         helpTooltipId = R.string.help_dialed,
@@ -73,7 +63,13 @@ fun Dialed() {
             }
             SwitchBox(isEnabled) { isTurningOn ->
                 if (isTurningOn) {
-                    permChain.ask { granted ->
+                    G.permissionChain.ask(
+                        ctx,
+                        listOf(
+                            NormalPermission(Manifest.permission.READ_CALL_LOG),
+                            NormalPermission(Manifest.permission.READ_SMS, true)
+                        )
+                    ) { granted ->
                         if (granted) {
                             spf.setEnabled(true)
                             isEnabled = true

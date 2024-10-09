@@ -11,7 +11,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import spam.blocker.R
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.clone
@@ -41,7 +43,7 @@ fun TestActionButton(
     val trigger = rememberSaveable { mutableStateOf(false) }
 
     var finished by rememberSaveable { mutableStateOf(false) }
-    var error by rememberSaveable { mutableStateOf<String?>("") }
+    var error by rememberSaveable { mutableStateOf<String?>(null) }
 
     PopupDialog(
         trigger = trigger,
@@ -67,9 +69,15 @@ fun TestActionButton(
     val coroutine = rememberCoroutineScope()
     StrokeButton(label = Str(R.string.test), color = Teal200) {
         trigger.value = true
+
+        finished = false
+        error = null
+
         coroutine.launch {
-            error = actions.executeAll(ctx)
-            finished = true
+            withContext(Dispatchers.IO) {
+                error = actions.executeAll(ctx)
+                finished = true
+            }
         }
     }
 }

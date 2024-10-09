@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.bot
 
-import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,15 +17,11 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.reScheduleBot
-import spam.blocker.service.bot.CleanupSpamDB
-import spam.blocker.service.bot.Daily
-import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.allChainable
 import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.rememberSaveableActionList
 import spam.blocker.service.bot.rememberSaveableScheduleState
-import spam.blocker.service.bot.serialize
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
@@ -42,8 +37,6 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Lambda1
-import spam.blocker.util.SharedPref.SpamDB
-import java.util.UUID
 
 
 @Composable
@@ -59,14 +52,11 @@ fun EditBotDialog(
     val C = LocalPalette.current
     val ctx = LocalContext.current
 
+    var description by rememberSaveable { mutableStateOf(initial.desc) }
+    var enabled by rememberSaveable { mutableStateOf(initial.enabled) }
     val schedule = rememberSaveableScheduleState(initial.schedule)
     val actions = rememberSaveableActionList(initial.actions)
 
-    // Description
-    var description by rememberSaveable { mutableStateOf(initial.desc) }
-
-    var enabled by rememberSaveable { mutableStateOf(initial.enabled) }
-    var workUUID by rememberSaveable { mutableStateOf(initial.workUUID) }
 
     // if any error, disable the Save button
     val anyError = !actions.allChainable()
@@ -80,15 +70,22 @@ fun EditBotDialog(
                 color = if (anyError) C.disabled else Teal200,
                 enabled = !anyError,
                 onClick = {
+                    // Check all actions' permissions
+                    val restricted =  actions.firstOrNull { !it.isPermissionGranted(ctx) }
+                    if (restricted != null) {
+                        restricted.askForPermission(ctx) {}
+                        return@StrokeButton
+                    }
+
+                    // All action permissions ok
+
                     trigger.value = false
 
-                    val newBot = Bot(
-                        id = initial.id,
+                    val newBot = initial.copy(
                         desc = description,
+                        enabled = enabled,
                         schedule = schedule.value,
                         actions = actions,
-                        enabled = enabled,
-                        workUUID = workUUID,
                     )
 
                     reScheduleBot(ctx, newBot)

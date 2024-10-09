@@ -14,6 +14,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
@@ -23,7 +24,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.Permission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions.isCallLogPermissionGranted
 import spam.blocker.util.SharedPref.RepeatedCall
@@ -72,17 +73,6 @@ fun RepeatedCall() {
             }
         })
 
-    val permChain = remember {
-        PermissionChain(
-            ctx,
-            listOf(
-                Permission(Manifest.permission.READ_CALL_LOG),
-                Permission(Manifest.permission.READ_SMS, true)
-            )
-        )
-    }
-    permChain.Compose()
-
     LabeledRow(
         R.string.repeated_call,
         helpTooltipId = R.string.help_repeated_call,
@@ -97,7 +87,13 @@ fun RepeatedCall() {
             }
             SwitchBox(isEnabled) { isTurningOn ->
                 if (isTurningOn) {
-                    permChain.ask { granted ->
+                    G.permissionChain.ask(
+                        ctx,
+                        listOf(
+                            NormalPermission(Manifest.permission.READ_CALL_LOG),
+                            NormalPermission(Manifest.permission.READ_SMS, true)
+                        )
+                    ) { granted ->
                         if (granted) {
                             spf.setEnabled(true)
                             isEnabled = true
