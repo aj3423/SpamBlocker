@@ -1,99 +1,112 @@
 <resources>
     <string name="database">Datenbank</string>
     <string name="total">Gesamt</string>
+    <string name="replace_from">Von</string>
+    <string name="replace_to">Zu</string>
 
     <string name="help_spam_db">
         <![CDATA[
-        Nummern in dieser Datenbank werden blockiert.<br>
+        <no_translate>Nummern</no_translate> in dieser Datenbank werden blockiert.<br>
         <br>
-        Du kannst jede öffentliche Datenbank oder sogar mehrere Datenbanken einbinden. Du kannst auch Nummern aus lokalen Dateien importieren.<br>
+        Sie können jede öffentliche Datenbank oder sogar mehrere Datenbanken integrieren. Sie können auch <no_translate>Nummern</no_translate> aus lokalen Dateien importieren.<br>
         <br>
-        Im Abschnitt "Automatisierung" unten findest du Anweisungen zum Einplanen eines automatischen Importauftrags.<br>
+        Überprüfen Sie den Abschnitt "Automatisierung" unten, um zu erfahren, wie Sie eine automatische Importaufgabe planen.<br>
         <br>
-        Gilt sowohl für Anrufe als auch SMS-Nachrichten.<br>
+        Es gilt sowohl für Anrufe als auch für SMS-Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Spam-Nummern in der Datenbank verfallen nach N Tagen, abgelaufene Einträge werden automatisch gelöscht.</string>
+    <string name="help_spam_db_ttl">Spam-<no_translate>Nummern</no_translate> in der Datenbank laufen nach N Tagen ab, abgelaufene Datensätze werden automatisch gelöscht.</string>
     <string name="customize">Anpassen</string>
-    <string name="workflow">Workflow</string>
-    <string name="workflows">Workflows</string>
+    <string name="workflow">Arbeitsablauf</string>
+    <string name="workflows">Arbeitsabläufe</string>
     <string name="automation">Automatisierung</string>
     <string name="help_workflows">
         <![CDATA[
-        Workflows können verwendet werden, um Aufgaben automatisch auszuführen, z. B. das Aktualisieren der Datenbank oder das automatische Backup.<br>
+        Arbeitsabläufe können verwendet werden, um Aufgaben automatisch auszuführen, wie z. B. das Aktualisieren der Datenbank oder das automatische Backup.<br>
         <br>
-        Es gibt Voreinstellungen für eine schnelle Einrichtung, du kannst sie aber auch von Grund auf neu erstellen.<br>
+        Es gibt Voreinstellungen für eine schnelle Einrichtung, Sie können sie aber auch von Grund auf neu erstellen oder aus einer JSON-Konfiguration importieren, die von anderen Benutzern freigegeben wurde.<br>
         <br>
-        Wenn du einen Workflow findest, der weit verbreitet ist und zu den Voreinstellungen hinzugefügt werden sollte, melde ihn bitte auf Github.
+        Wenn Sie einen Arbeitsablauf finden, der weit verbreitet werden könnte und den Voreinstellungen hinzugefügt werden sollte, melden Sie dies bitte auf Github.
         ]]>
     </string>
     <string name="manual">Manuell</string>
-    <string name="help_manual">
-        <![CDATA[
-        Es gibt Voreinstellungen für eine schnelle Einrichtung, du kannst sie aber auch von Grund auf neu erstellen.<br>
-        <br>
-        Wenn du einen Workflow findest, der weit verbreitet ist und zu den Voreinstellungen hinzugefügt werden sollte, melde ihn bitte.
-        ]]>
-    </string>
 
     <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
-    <string name="bot_preset_cleanup_spam_db">Spam-Datenbank-Bereinigung</string>
-    <string name="bot_preset_cleanup_history">Verlaufsbereinigung</string>
+    <string name="bot_preset_cleanup_spam_db">Bereinigung der Spam-Datenbank</string>
+    <string name="bot_preset_cleanup_history">Bereinigung des Verlaufs</string>
     <string name="bot_preset_auto_backup">Automatisches Backup</string>
 
     <string name="action_cleanup_history">Verlauf bereinigen</string>
     <string name="action_http_download">HTTP-Download</string>
-    <string name="action_cleanup_spam_db">Spam-Datenbank bereinigen</string>
+    <string name="action_cleanup_spam_db">Spam-DB bereinigen</string>
     <string name="action_backup_export">Backup-Export</string>
     <string name="action_backup_import">Backup-Import</string>
     <string name="action_read_file">Datei lesen</string>
     <string name="action_write_file">Datei schreiben</string>
-    <string name="action_parse_csv">CSV-Datei parsen</string>
-    <string name="action_import_to_spam_db">In Spam-Datenbank importieren</string>
+    <string name="action_parse_csv">CSV parsen</string>
+    <string name="action_parse_xml">XML parsen</string>
+    <string name="action_import_to_spam_db">In die Spam-Datenbank importieren</string>
     <string name="action_import_as_regex_rule">Als Regex-Regel importieren</string>
+    <string name="action_convert_number"><no_translate>Nummer</no_translate> ersetzen</string>
 
     <string name="help_action_http_download">
         <![CDATA[
         HTTP-Datei als <u>Inhaltsbytes</u> herunterladen
         ]]>
     </string>
-    <string name="help_action_cleanup_spam_db">Abgelaufene Nummern aus der Spam-Datenbank löschen.</string>
-    <string name="help_action_cleanup_history">Abgelaufene Verlaufseinträge löschen.</string>
+    <string name="help_action_cleanup_spam_db">Abgelaufene <no_translate>Nummern</no_translate> aus der Spam-Datenbank löschen.</string>
+    <string name="help_action_cleanup_history">Abgelaufene Verlaufsdatensätze löschen.</string>
     <string name="help_action_backup_export">
         <![CDATA[
-        Die aktuellen Einstellungen in <u>Inhaltsbytes</u> exportieren.
+        Exportieren Sie die aktuellen Einstellungen in <u>Inhaltsbytes</u>.
         ]]>
     </string>
     <string name="help_action_backup_import">
         <![CDATA[
-        Einstellungen aus <u>Inhaltsbytes</u> anwenden.
+        Anwenden der Einstellungen aus <u>Inhaltsbytes</u>.
         ]]>
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Die <u>Inhaltsbytes</u> aus einer Datei beziehen.
+        Rufen Sie die <u>Inhaltsbytes</u> aus einer Datei ab.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        <u>Inhaltsbytes</u> in eine Datei schreiben.
+        Schreiben Sie <u>Inhaltsbytes</u> in eine Datei.
         ]]>
     </string>
     <string name="help_action_parse_csv">
         <![CDATA[
-        <u>Inhaltsbytes</u> in eine <u>Liste von Nummern</u> parsen
+        CSV-<u>Inhaltsbytes</u> in eine <u>Liste von <no_translate>Nummern</no_translate></u> parsen
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        XML-<u>Inhaltsbytes</u> mit <b>xpath</b> parsen und eine <u>Liste von <no_translate>Nummern</no_translate></u> generieren.
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        Eine <u>Liste von Nummern</u> zur Spam-Datenbank hinzufügen.
+        Fügen Sie eine <u>Liste von <no_translate>Nummern</no_translate></u> zur Spam-Datenbank hinzu.
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Eine neue Regex-Regel aus einer <u>Liste von Nummern</u> generieren.
+        Generieren Sie eine neue Regex-Regel aus einer <u>Liste von <no_translate>Nummern</no_translate></u>.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        Konvertieren Sie die <u>Liste der <no_translate>Nummern</no_translate></u> in das von dieser App verwendete Format.<br>
+        <br>
+        Fügen Sie beispielsweise zwei Aktionen hinzu, um Folgendes zu ersetzen:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` bis `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        <br>
+        &ensp; - Ersetzen Sie `<font color="#fa7f71">(+)</font>` durch ``<br>
+        &ensp; - Ersetzen Sie `<font color="#fa7f71">(#)</font>` durch `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
 </resources>

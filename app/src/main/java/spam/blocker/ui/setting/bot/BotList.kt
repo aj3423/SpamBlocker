@@ -16,21 +16,27 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
+import spam.blocker.service.bot.botJson
+import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.Clipboard
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BotList() {
     val ctx = LocalContext.current
-    val vm = G.BotVM
+    val vm = G.botVM
     val coroutineScope = rememberCoroutineScope()
 
     val editTrigger = rememberSaveable { mutableStateOf(false) }
@@ -50,42 +56,78 @@ fun BotList() {
             }
         )
     }
+
+    val exportTrigger = remember { mutableStateOf(false) }
+    if (exportTrigger.value) {
+        BotImportExportDialog(
+            trigger = exportTrigger,
+            isExport = true,
+            initialText = botPrettyJson.encodeToString(vm.list[clickedIndex]),
+        )
+    }
+
+    val menuLabels = listOf(
+        R.string.export
+    )
+    val menuIcons = listOf(
+        R.drawable.ic_backup_export
+    )
+    val contextMenuItems = menuLabels.mapIndexed { menuIndex, label ->
+        LabelItem(
+            label = ctx.getString(label),
+            icon = { GreyIcon16(menuIcons[menuIndex]) }
+        ) {
+            when (menuIndex) {
+                0 -> { // export
+                    exportTrigger.value = true
+                }
+            }
+        }
+    }
+
     Column(
         modifier = M.nestedScroll(DisableNestedScrolling()),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         vm.list.forEachIndexed { index, bot ->
             key(bot.id) {
-                LeftDeleteSwipeWrapper(
-                    left = SwipeInfo(
-                        onSwipe = {
-                            // 1. delete from db
-                            BotTable.deleteById(ctx, bot.id)
+                DropdownWrapper(items = contextMenuItems) { contextMenuExpanded ->
 
-                            // 2. remove from ArrayList
-                            vm.list.removeAt(index)
+                    LeftDeleteSwipeWrapper(
+                        left = SwipeInfo(
+                            onSwipe = {
+                                // 1. delete from db
+                                BotTable.deleteById(ctx, bot.id)
 
-                            // 3. show snackbar
-                            SnackBar.show(
-                                coroutineScope,
-                                bot.desc,
-                                ctx.getString(R.string.undelete),
-                            ) {
-                                BotTable.addRecordWithId(ctx, bot)
-                                vm.list.add(index, bot)
+                                // 2. remove from ArrayList
+                                vm.list.removeAt(index)
+
+                                // 3. show snackbar
+                                SnackBar.show(
+                                    coroutineScope,
+                                    bot.desc,
+                                    ctx.getString(R.string.undelete),
+                                ) {
+                                    BotTable.addRecordWithId(ctx, bot)
+                                    vm.list.add(index, bot)
+                                }
                             }
-                        }
-                    )
-                ) {
-                    BotCard(
-                        bot,
-                        modifier = M.combinedClickable(
-                            onClick = {
-                                clickedIndex = index
-                                editTrigger.value = true
-                            },
                         )
-                    )
+                    ) {
+                        BotCard(
+                            bot,
+                            modifier = M.combinedClickable(
+                                onClick = {
+                                    clickedIndex = index
+                                    editTrigger.value = true
+                                },
+                                onLongClick = {
+                                    clickedIndex = index
+                                    contextMenuExpanded.value = true
+                                }
+                            )
+                        )
+                    }
                 }
             }
         }

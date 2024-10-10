@@ -1,6 +1,7 @@
 package spam.blocker.service.bot
 
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonBuilder
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
@@ -20,8 +21,10 @@ val botModule = SerializersModule {
         subclass(ReadFile::class)
         subclass(WriteFile::class)
         subclass(ParseCSV::class)
+        subclass(ParseXML::class)
         subclass(ImportToSpamDB::class)
         subclass(ImportAsRegexRule::class)
+        subclass(ConvertNumber::class)
     }
 }
 
@@ -33,3 +36,11 @@ val botJson =  Json {
     ignoreUnknownKeys = true
 }
 
+val botPrettyJson =  Json {
+    prettyPrint = true
+
+    serializersModule = botModule
+    encodeDefaults = true
+    classDiscriminator = "type"
+    ignoreUnknownKeys = true
+}

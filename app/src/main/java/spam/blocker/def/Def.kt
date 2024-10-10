@@ -111,6 +111,8 @@ object Def {
     const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
     const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
 
+    const val DefaultRegexFlags =  FLAG_REGEX_IGNORE_CASE or FLAG_REGEX_DOT_MATCH_ALL
+
     val MAP_REGEX_FLAGS = mapOf(
         FLAG_REGEX_IGNORE_CASE to "i",
         FLAG_REGEX_MULTILINE to "m",

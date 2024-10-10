@@ -112,12 +112,12 @@ func translate_1_file(lang string, fn string) error {
 	GeminiToken := os.Getenv("GeminiToken")
 
 	prompt := fmt.Sprintf(
-		"Translate the following xml content to language \"%s\"(\"%s\"), it's about a call blocking app "+
-			"which blocks spam calls, for the word 'spam', it always references to spam calls or spam number database, it's never about email."+
-			"Make sure leave the XML tags unmodified, "+
-			"do not translate text within <no_translate></no_translate> tag. "+
+		"Translate the following xml content to language \"%s\"(\"%s\"), it's about a call blocking app which blocks spam calls. "+
+			"For the word 'number', it always references to phone number. "+
+			"For the word 'spam', it always references to spam calls, it's never about email."+
+			"Make sure leave the XML tags unmodified, do not translate text within <no_translate></no_translate> tag. "+
 
-			"For those text to translate that are just 1 or 2 or 3 words, find all possible translation alternatives, "+
+			"For the origin text that are just 1 or 2 or 3 words, find all possible translation alternatives, "+
 			"then pick the shortest one, as short as possible, use single word translation if possible."+
 
 			"For contents that wrapped in tag <short></short>, force use single word translation."+

@@ -66,11 +66,11 @@ import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Lambda1
 import spam.blocker.util.NormalPermission
-import spam.blocker.util.PermissionChain
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.addFlag
 import spam.blocker.util.hasFlag
+import spam.blocker.util.loge
 import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
@@ -332,6 +332,9 @@ fun RuleEditDialog(
                         patternError = hasErr
                         pattern = newVal
                     },
+                    onFlagsChange = {
+                        patternFlags.intValue = it
+                    },
                     leadingIcon = if (forType == Def.ForNumber) {
                         { RegexLeadingDropdownIcon(patternFlags) }
                     } else {
@@ -360,6 +363,9 @@ fun RuleEditDialog(
                             onRegexStrChange = { newValue, hasErr ->
                                 patternExtraError = hasErr
                                 patternExtra = newValue
+                            },
+                            onFlagsChange = {
+                                patternExtraFlags.intValue = it
                             },
                             leadingIcon = { RegexLeadingDropdownIcon(patternExtraFlags) }
                         )

@@ -46,6 +46,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
@@ -353,7 +354,8 @@ fun StrInputBox(
 fun RegexInputBox(
     regexStr: String,
     onRegexStrChange: Lambda2<String, Boolean>,
-    regexFlags: MutableIntState,
+    regexFlags: MutableIntState,// don't replace this type to Int, it'll cause bug, not sure why
+    onFlagsChange: Lambda1<Int>,
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -452,7 +454,7 @@ fun RegexInputBox(
                                     1 -> hasD.value = checked
                                     2 -> hasR.value = checked
                                 }
-                                regexFlags.intValue = regexFlags.intValue.setFlag(
+                                val newVal = regexFlags.intValue.setFlag(
                                     when (idx) {
                                         0 -> Def.FLAG_REGEX_IGNORE_CASE
                                         1 -> Def.FLAG_REGEX_DOT_MATCH_ALL
@@ -460,6 +462,7 @@ fun RegexInputBox(
                                     },
                                     checked
                                 )
+                                onFlagsChange(newVal)
                             },
                         )
                     }

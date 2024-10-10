@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -28,9 +29,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
+import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.RegexRule
+import spam.blocker.db.SpamTable
 import spam.blocker.db.ruleTableForType
+import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -72,6 +76,14 @@ fun RuleList(
 
     val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
     val clickedRule = remember { mutableStateOf(RegexRule()) }
+
+    // Refresh UI on global events, such as workflow action AddToRegexRule
+    if (forType == Def.ForNumber) {
+        LaunchedEffect(Events.regexRuleUpdated.intValue) {
+            vm.reload(ctx)
+        }
+    }
+
 
     if (editRuleTrigger.value) {
         RuleEditDialog(
@@ -135,7 +147,7 @@ fun RuleList(
                     }
                 }
                 LazyColumn(modifier = M.heightIn(max = halfScreenDp.dp)) {
-                    items(duplicatedRules, key = {it.id}) {
+                    items(duplicatedRules, key = { it.id }) {
                         RuleCard(rule = it, forType = forType)
                     }
                 }

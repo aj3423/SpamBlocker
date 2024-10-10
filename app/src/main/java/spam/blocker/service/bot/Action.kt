@@ -3,7 +3,6 @@ package spam.blocker.service.bot
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -25,7 +24,7 @@ import java.lang.Exception
 
 // When adding a new IAction type, follow all the steps:
 //  - add to  `ActionType`
-//  - implement it
+//  - implement it in Actions.kt
 //  - add to  `defaultActions`
 //  - add to  `botModule` in BotSerializersModule.kt
 
@@ -41,19 +40,23 @@ enum class ActionType {
     ParseCSV,
     ImportToSpamDB,
     ImportAsRegexRule,
+    ConvertNumber,
+    ParseXML,
 }
 
 val defaultActions = listOf(
     HttpDownload(),
+    ImportToSpamDB(),
+    ImportAsRegexRule(),
+    ReadFile(),
+    WriteFile(),
+    ParseCSV(),
+    ParseXML(),
+    ConvertNumber(),
     CleanupSpamDB(),
     CleanupHistory(),
     BackupExport(),
     BackupImport(),
-    ReadFile(),
-    WriteFile(),
-    ParseCSV(),
-    ImportToSpamDB(),
-    ImportAsRegexRule(),
 )
 
 
@@ -62,7 +65,7 @@ enum class ParamType {
     None,
     String,
     ByteArray,
-    RuleList
+    RuleList,
 }
 
 interface IAction {

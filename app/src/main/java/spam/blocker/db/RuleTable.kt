@@ -60,9 +60,9 @@ data class RegexRule(
     var patternExtra: String = "",
 
     @Serializable(with = CompatibleIntSerializer::class)
-    var patternFlags: Int = Def.FLAG_REGEX_IGNORE_CASE or Def.FLAG_REGEX_DOT_MATCH_ALL,
+    var patternFlags: Int = Def.DefaultRegexFlags,
     @Serializable(with = CompatibleIntSerializer::class)
-    var patternExtraFlags: Int = Def.FLAG_REGEX_IGNORE_CASE or Def.FLAG_REGEX_DOT_MATCH_ALL,
+    var patternExtraFlags: Int = Def.DefaultRegexFlags,
 
     var description: String = "",
     var priority: Int = 1,

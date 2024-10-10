@@ -4,14 +4,19 @@ import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.json.JSONObject
+import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.db.CallTable
@@ -20,10 +25,12 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
+import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
+import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
@@ -32,6 +39,7 @@ import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Csv
 import spam.blocker.util.Now
 import spam.blocker.util.Util
+import spam.blocker.util.Xml
 import spam.blocker.util.logi
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -41,7 +49,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 @Composable
-fun NoConfigNeeded() {
+fun NoOptionNeeded() {
     GreyLabel(text = Str(R.string.no_config_needed))
 }
 
@@ -189,8 +197,12 @@ class CleanupSpamDB(
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry * 24 * 3600 * 1000
 
-        logi("now clean up spam db, deleting data before timestamp: $expireTimeMs")
+        logi("clean up spam db, deleting data before timestamp: $expireTimeMs")
         SpamTable.deleteBeforeTimestamp(ctx, expireTimeMs)
+
+        // fire event to update the UI
+        Events.spamDbUpdated.intValue = Events.spamDbUpdated.intValue.plus(1)
+
         return Pair(true, null)
     }
 
@@ -242,7 +254,7 @@ class CleanupSpamDB(
 @Serializable
 @SerialName("BackupExport")
 class BackupExport(
-    private var includeSpamDB: Boolean = true
+    private var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         // Generate config data bytes
@@ -298,13 +310,13 @@ class BackupExport(
 @Serializable
 @SerialName("BackupImport")
 class BackupImport(
-    private var includeSpamDB: Boolean = true
+    private var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         if (arg !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    "ByteArray", arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
                 )
             )
         }
@@ -437,7 +449,7 @@ class WriteFile(
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         if (arg !is ByteArray) {
             return Pair(false, ctx.getString(R.string.invalid_input_type).format(
-                "ByteArray", arg?.javaClass?.simpleName
+                ParamType.ByteArray.name, arg?.javaClass?.simpleName
             ))
         }
         val path = dir.resolvePathTags()
@@ -512,7 +524,7 @@ class ParseCSV(
         if (arg !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    "ByteArray", arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
                 )
             )
         }
@@ -570,6 +582,75 @@ class ParseCSV(
 }
 
 /*
+input: ByteArray
+output: List<RegexRule>
+ */
+@Serializable
+@SerialName("ParseXML")
+class ParseXML(
+    var xpath: String = ""
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+        if (arg !is ByteArray) {
+            return Pair(
+                false, ctx.getString(R.string.invalid_input_type).format(
+                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                )
+            )
+        }
+
+        return try {
+            val rules = Xml.parse(bytes = arg, xpath).map {
+                RegexRule.fromMap(it)
+            }
+
+            Pair(true, rules)
+        } catch (e: Exception) {
+            Pair(false, e.toString())
+        }
+    }
+
+    override fun type(): ActionType {
+        return ActionType.ParseXML
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_parse_xml)
+    }
+
+    override fun summary(ctx: Context): String {
+        return "XPath: $xpath"
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_parse_xml)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.ByteArray
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.RuleList
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_xml)
+    }
+
+    @Composable
+    override fun Options() {
+        StrInputBox(
+            text = xpath,
+            label = { Text("XPath") },
+            onValueChange = { xpath = it }
+        )
+    }
+}
+
+/*
 input: List<RegexRule>
 output: null
  */
@@ -577,6 +658,7 @@ output: null
 @SerialName("ImportToSpamDB")
 class ImportToSpamDB : IPermissiveAction {
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         // It must be written like this, cannot be inlined in the `if()`, seems to be kotlin bug
         val inputValid = (arg is List<*>) && ((arg as List<*>).all { it is RegexRule })
@@ -595,6 +677,14 @@ class ImportToSpamDB : IPermissiveAction {
                 SpamNumber(peer = (it as RegexRule).pattern, time = now)
             }
             val errorStr = SpamTable.addAll(ctx, numbers)
+
+            // Fire a global event to update UI
+            GlobalScope.launch {
+                withContext(Dispatchers.IO) {
+                    Events.spamDbUpdated.intValue = Events.spamDbUpdated.intValue.plus(1)
+                }
+            }
+
             Pair(errorStr == null, errorStr)
         } catch (e: Exception) {
             Pair(false, e.toString())
@@ -632,7 +722,7 @@ class ImportToSpamDB : IPermissiveAction {
 
     @Composable
     override fun Options() {
-        NoConfigNeeded()
+        NoOptionNeeded()
     }
 }
 
@@ -651,7 +741,7 @@ class ImportAsRegexRule(
         if (!(arg is List<*> && arg.all { it is RegexRule })) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    "List<Rule>", arg?.javaClass?.simpleName
+                    ParamType.RuleList.name, arg?.javaClass?.simpleName
                 )
             )
         }
@@ -669,6 +759,9 @@ class ImportAsRegexRule(
             )
             NumberRuleTable().addNewRule(ctx, newRule)
 
+            // fire event to update the UI
+            Events.regexRuleUpdated.intValue = Events.regexRuleUpdated.intValue.plus(1)
+
             Pair(true, null)
         } catch (e: Exception) {
             Pair(false, e.toString())
@@ -685,7 +778,11 @@ class ImportAsRegexRule(
 
     override fun summary(ctx: Context): String {
         val labelPriority = ctx.getString(R.string.priority)
-        return "$labelPriority: $priority"
+
+        return if (description.isEmpty())
+            "$labelPriority: $priority"
+        else
+            "$description, $labelPriority: $priority"
     }
 
     override fun tooltip(ctx: Context): String {
@@ -723,5 +820,94 @@ class ImportAsRegexRule(
                 }
             )
         }
+    }
+}
+/*
+input: List<RegexRule>
+output: List<RegexRule>
+ */
+@Serializable
+@SerialName("ConvertNumber")
+class ConvertNumber(
+    var from: String = "",
+    var flags: Int = Def.DefaultRegexFlags,
+    var to: String = "",
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+        if (!(arg is List<*> && arg.all { it is RegexRule })) {
+            return Pair(
+                false, ctx.getString(R.string.invalid_input_type).format(
+                    ParamType.RuleList.name, arg?.javaClass?.simpleName
+                )
+            )
+        }
+
+        val clearedRuleList = (arg as List<*>).map {
+            val r = it as RegexRule
+
+            val newNum = from.toRegex().replace(r.pattern, to)
+
+            r.copy(
+                pattern = newNum
+            )
+        }
+        return Pair(true, clearedRuleList)
+    }
+
+    override fun type(): ActionType {
+        return ActionType.ConvertNumber
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_convert_number)
+    }
+
+    override fun summary(ctx: Context): String {
+        return "$from -> $to"
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_convert_number)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.RuleList
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.RuleList
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_replace)
+    }
+
+    @Composable
+    override fun Options() {
+
+        val flagsState = remember { mutableIntStateOf(flags) }
+        RegexInputBox(
+            label = { Text(Str(R.string.replace_from))},
+            regexStr = from,
+            onRegexStrChange = { newVal, hasErr ->
+                if (!hasErr) {
+                    from = newVal
+                }
+            },
+            regexFlags = flagsState,
+            onFlagsChange = {
+                flagsState.intValue = it
+                flags = it
+            }
+        )
+        StrInputBox(
+            label = { Text(Str(R.string.replace_to))},
+            text = to,
+            onValueChange = {
+                to  = it
+            }
+        )
     }
 }

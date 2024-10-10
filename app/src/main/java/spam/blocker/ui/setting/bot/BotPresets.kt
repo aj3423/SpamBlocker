@@ -40,7 +40,8 @@ val BotPresets = listOf(
             ),
             actions = listOf(
                 HttpDownload(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
-                ParseCSV("{'Company_Phone_Number': 'pattern'}"),
+                ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
+                // no need to add ClearNumber here
                 ImportToSpamDB(),
             )
         )

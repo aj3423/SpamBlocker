@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
+import spam.blocker.BuildConfig
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
@@ -62,7 +63,8 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
 
-        debug(this)
+        if (BuildConfig.DEBUG)
+            debug(this)
 
         val ctx = this
         val spf = Global(ctx)

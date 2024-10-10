@@ -160,7 +160,7 @@ fun SettingScreen() {
                         verticalArrangement = Arrangement.spacedBy(0.dp),
                     ) {
                         // Bot list
-                        LaunchedEffect(true) { G.BotVM.reload(ctx) }
+                        LaunchedEffect(true) { G.botVM.reload(ctx) }
                         BotHeader()
                         BotList()
                     }

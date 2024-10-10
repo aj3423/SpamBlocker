@@ -3,11 +3,8 @@ package spam.blocker
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.MutableLiveData
 import spam.blocker.ui.history.CallViewModel
 import spam.blocker.ui.history.SmsViewModel
 import spam.blocker.ui.setting.TestingViewModel
@@ -30,7 +27,7 @@ object G {
     val NumberRuleVM : NumberRuleViewModel = NumberRuleViewModel()
     val ContentRuleVM : ContentRuleViewModel = ContentRuleViewModel()
     val QuickCopyRuleVM : QuickCopyRuleViewModel = QuickCopyRuleViewModel()
-    val BotVM : BotViewModel = BotViewModel()
+    val botVM : BotViewModel = BotViewModel()
 
     lateinit var bottomBarVM : BottomBarViewModel
 

@@ -2,6 +2,7 @@ package spam.blocker
 
 import android.content.Context
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.work.WorkManager
 import spam.blocker.db.BotTable
@@ -11,6 +12,12 @@ import spam.blocker.ui.setting.quick.reScheduleSpamDBCleanup
 
 @Immutable
 object Events {
+
+    // An event triggered when spam db is updated, maybe triggered by Workflow
+    val spamDbUpdated = mutableIntStateOf(0)
+
+    // An event triggered when regex rule list is updated, maybe triggered by Workflow
+    val regexRuleUpdated = mutableIntStateOf(0)
 
     // An event for notifying the configuration has changed,
     // observers should restart, such as:

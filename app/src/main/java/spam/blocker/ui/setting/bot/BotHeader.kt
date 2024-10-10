@@ -1,9 +1,11 @@
 package spam.blocker.ui.setting.bot
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
@@ -12,10 +14,10 @@ import spam.blocker.db.BotTable
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.DividerItem
+import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
-import spam.blocker.util.loge
 
 // The row:
 //   "Number Rule"       [Add] [Test]
@@ -23,29 +25,45 @@ import spam.blocker.util.loge
 fun BotHeader() {
     val ctx = LocalContext.current
 
+    val initialBotToEdit = remember { mutableStateOf(Bot()) }
     val addTrigger = rememberSaveable { mutableStateOf(false) }
-
-    var initial = remember { mutableStateOf(Bot()) }
-
     if (addTrigger.value) {
         EditBotDialog(
             trigger = addTrigger,
-            initial = initial.value,
+            initial = initialBotToEdit.value,
             onSave = { newBot ->
                 // 1. add to db
                 BotTable.addNewRecord(ctx, newBot)
 
                 // 2. reload UI
-                G.BotVM.reload(ctx)
+                G.botVM.reload(ctx)
             }
+        )
+    }
+
+    val importTrigger = remember { mutableStateOf(false) }
+    if (importTrigger.value) {
+        BotImportExportDialog(
+            trigger = importTrigger,
+            initialText = "",
+            isExport = false
         )
     }
 
     val dropdownItems = remember {
         val ret = mutableListOf(
-            LabelItem(label = ctx.getString(R.string.customize)) {
-                initial.value = Bot()
+            LabelItem(
+                label = ctx.getString(R.string.customize),
+                icon = { GreyIcon(R.drawable.ic_note) }
+            ) {
+                initialBotToEdit.value = Bot()
                 addTrigger.value = true
+            },
+            LabelItem(
+                label = ctx.getString(R.string.import_),
+                icon = { GreyIcon(R.drawable.ic_backup_import) }
+            ) {
+                importTrigger.value = true
             },
             DividerItem(),
         )
@@ -55,7 +73,7 @@ fun BotHeader() {
                 label = bot.desc,
                 tooltip = ctx.getString(preset.tooltipId)
             ) {
-                initial.value = bot
+                initialBotToEdit.value = bot
 
                 addTrigger.value = true
             }

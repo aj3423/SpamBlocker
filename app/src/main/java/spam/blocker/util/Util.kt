@@ -134,11 +134,13 @@ object Util {
     }
 
     // check if a string only contains:
-    //   digits spaces + - ( )
+    //   digit spaces + - ( )
+    // Param:
+    //   when `force`==true, numbers like "+123####" will also be cleared.
     val pattern = "^[0-9\\s+\\-()]*\$".toRegex()
-    fun clearNumber(number: String): String {
+    fun clearNumber(number: String, force: Boolean = false): String {
         // check if it contains alphabetical characters like "Microsoft"
-        if (!pattern.matches(number)) { // don't clear for enterprise string number
+        if (!force && !pattern.matches(number)) { // don't clear for enterprise string number
             return number
         }
 

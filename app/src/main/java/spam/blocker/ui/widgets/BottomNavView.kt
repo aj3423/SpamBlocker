@@ -123,7 +123,7 @@ fun BottomBar(vm: BottomBarViewModel) {
             modifier = M.fillMaxSize(),
             horizontalArrangement = Arrangement.Center
         ) {
-            // 3 tabs
+            // 3 tab items
             vm.tabItems.forEach { tab ->
                 Surface( // for the round clicking ripple
                     shape = RoundedCornerShape(30.dp),

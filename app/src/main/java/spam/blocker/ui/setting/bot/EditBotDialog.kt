@@ -113,6 +113,7 @@ fun EditBotDialog(
                     bgColor = C.dialogBg
                 ) {
                     Column {
+                        // Enabled switch box
                         LabeledRow(R.string.enabled) {
                             SwitchBox(checked = enabled, onCheckedChange = { isTurningOn ->
                                 if (isTurningOn && schedule.value == null) {

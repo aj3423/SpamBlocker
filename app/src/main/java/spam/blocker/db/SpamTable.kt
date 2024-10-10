@@ -8,6 +8,7 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
 import spam.blocker.def.Def
+import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
 import spam.blocker.util.loge
 
