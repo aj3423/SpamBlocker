@@ -7,9 +7,8 @@ import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.provider.ContactsContract
-import android.provider.ContactsContract.PhoneLookup
-import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.provider.ContactsContract.CommonDataKinds.GroupMembership
+import android.provider.ContactsContract.PhoneLookup
 
 data class ContactInfo(
     val id: String,

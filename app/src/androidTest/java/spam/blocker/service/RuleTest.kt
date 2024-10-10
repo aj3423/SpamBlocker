@@ -1,8 +1,12 @@
 package spam.blocker.service
 
+//import androidx.test.core.app.ApplicationProvider
+//import junit.framework.TestCase.assertEquals
+//import org.junit.After
+//import org.junit.Before
+//import org.junit.Test
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-//import androidx.test.core.app.ApplicationProvider
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockkObject
@@ -10,16 +14,13 @@ import junit.framework.TestCase.assertEquals
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-//import junit.framework.TestCase.assertEquals
-//import org.junit.After
-//import org.junit.Before
-//import org.junit.Test
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
+import spam.blocker.util.Now
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
@@ -28,7 +29,6 @@ import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.SharedPref
-import spam.blocker.util.Now
 import spam.blocker.util.Util
 import java.util.Calendar
 

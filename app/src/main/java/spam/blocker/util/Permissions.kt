@@ -1,6 +1,7 @@
 package spam.blocker.util
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AppOpsManager
 import android.app.role.RoleManager
@@ -14,6 +15,8 @@ import android.content.ServiceConnection
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Environment
 import android.os.IBinder
@@ -80,15 +83,10 @@ object Permissions {
     fun isPermissionGranted(ctx: Context, permission: String): Boolean {
         val ret = ContextCompat.checkSelfPermission(
             ctx, permission
-        ) == PackageManager.PERMISSION_GRANTED
+        ) == PERMISSION_GRANTED
         return ret
     }
 
-//    fun isInternetPermissionGranted(ctx: Context) : Boolean {
-//        val pm = ctx.packageManager
-//        val result = pm.checkPermission(Manifest.permission.INTERNET, ctx.packageName)
-//        return result == PERMISSION_GRANTED
-//    }
     fun isFileReadPermissionGranted(ctx: Context): Boolean {
         return if(Build.VERSION.SDK_INT == Def.ANDROID_10) {
             isPermissionGranted(ctx, Manifest.permission.READ_EXTERNAL_STORAGE)

@@ -25,7 +25,6 @@ import spam.blocker.db.historyTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.RuleEditDialog
-import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.BgLaunchApp
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.LabelItem

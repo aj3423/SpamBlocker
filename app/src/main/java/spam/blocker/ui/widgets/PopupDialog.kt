@@ -15,7 +15,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
@@ -24,7 +23,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.Lambda
 import kotlin.math.roundToInt
 

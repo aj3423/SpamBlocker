@@ -12,7 +12,6 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.NormalPermission
-import spam.blocker.util.PermissionChain
 import spam.blocker.util.SharedPref.BlockType
 
 @Composable

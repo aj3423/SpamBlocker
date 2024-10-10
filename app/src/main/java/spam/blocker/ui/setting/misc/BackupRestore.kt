@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import spam.blocker.Events
-import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.ui.setting.LabeledRow
@@ -27,7 +26,6 @@ import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.Algorithm.b64Decode

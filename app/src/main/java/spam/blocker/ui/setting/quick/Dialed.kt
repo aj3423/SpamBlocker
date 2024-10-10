@@ -19,7 +19,6 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.NormalPermission
-import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions.isCallLogPermissionGranted
 import spam.blocker.util.SharedPref.Dialed
 

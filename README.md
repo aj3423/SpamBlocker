@@ -27,7 +27,7 @@ Table of Contents
 # Target Audience
 - :white_check_mark: For people who are more inclined to reject unknown calls.
 - For those who need to answer unknown calls, for example, salesmen or lawyers, etc:
-  - :white_check_mark: If your carrier supports STIR/SHAKEN attestation, or there is any public spam database for your country.
+  - :white_check_mark: If your carrier supports STIR/SHAKEN attestation, or there is any public spam database available for your country.
   - :x: Otherwise, consider using a blocker that has its own proprietary spam database.
 
 # How it works
@@ -56,21 +56,22 @@ It works without replacing your default Call/SMS app.
 
 # Permissions 
 
-| Permission (all optional) | Why                                                                             |
-|---------------------------|---------------------------------------------------------------------------------|
-| INTERNET                  | For downloading spam numbers from public databases                              | 
-| ANSWER_PHONE_CALLS        | Reject, Answer and Hang-up calls                                                |
-| POST_NOTIFICATIONS        | Show notifications                                                              |
-| READ_CONTACTS             | For matching contacts                                                           |
-| RECEIVE_SMS               | For receiving new messages                                                      |
-| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)                      |
-| PACKAGE_USAGE_STATS       | For feature: Recent Apps <br>For checking whether an app has been used recently |
-| READ_PHONE_STATE          | For block mode: Answer + Hang-up (monitor ringing state)                        |
+| Permission (all optional)                                                         | Why                                                                             |
+|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| INTERNET                                                                          | For downloading spam numbers from public databases                              | 
+| MANAGE_EXTERNAL_STORAGE (Android 11+)<br>READ/WRITE_EXTERNAL_STORAGE (Android 10) | For file access from automated workflow                                         | 
+| ANSWER_PHONE_CALLS                                                                | Reject, Answer and Hang-up calls                                                |
+| POST_NOTIFICATIONS                                                                | Show notifications                                                              |
+| READ_CONTACTS                                                                     | For matching contacts                                                           |
+| RECEIVE_SMS                                                                       | For receiving new messages                                                      |
+| READ_CALL_LOG<br>READ_SMS                                                         | For checking if a call is repeated                                              |
+| PACKAGE_USAGE_STATS                                                               | For feature: Recent Apps <br>For checking whether an app has been used recently |
+| READ_PHONE_STATE                                                                  | For block mode: Answer + Hang-up (monitor ringing state)                        |
 
 # Privacy
  No data collection
- - Internet access is only used for downloading spam numbers, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147).
- - No external storage access, only accessible to scoped storage(the Downloads folder).
+ - Internet access:
+   - It's only used for downloading spam numbers, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147).
  - No communication with other app
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
 
@@ -80,8 +81,8 @@ It works without replacing your default Call/SMS app.
 
 # FAQ
  - [Google shows security warning when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
- - [Any feature stops working after app is killed](https://github.com/aj3423/SpamBlocker/issues/100)
- - [How to always block particular number regardless of how many times it repeats, or within OffTime, etc...](https://github.com/aj3423/SpamBlocker/issues/80#issuecomment-2176943329)
+ - [Any feature stops working after the app is killed](https://github.com/aj3423/SpamBlocker/issues/100)
+ - [How to always block a particular number regardless of how many times it repeats, or within OffTime, etc...](https://github.com/aj3423/SpamBlocker/issues/80#issuecomment-2176943329)
  - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
  - [Dual SIM support](https://github.com/aj3423/SpamBlocker/issues/72#issuecomment-2158981192)
 

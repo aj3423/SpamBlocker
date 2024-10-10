@@ -1,7 +1,6 @@
 package spam.blocker.ui.widgets
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult

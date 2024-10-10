@@ -7,7 +7,6 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.HistoryOptions
 
 /*

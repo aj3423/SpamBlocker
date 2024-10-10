@@ -53,9 +53,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.AppInfo
 import spam.blocker.util.AppOpsPermission
-import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
-import spam.blocker.util.IntentPermission
 import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util

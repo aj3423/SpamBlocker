@@ -1,16 +1,9 @@
 package spam.blocker.db
 
 import android.annotation.SuppressLint
-import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import androidx.core.database.getIntOrNull
-import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
-import spam.blocker.def.Def
-import spam.blocker.util.Util
-import spam.blocker.util.hasFlag
-import spam.blocker.util.loge
 
 @Serializable
 data class SpamNumber(

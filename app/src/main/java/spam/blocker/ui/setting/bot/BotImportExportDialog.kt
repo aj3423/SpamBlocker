@@ -22,8 +22,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Clipboard
-import spam.blocker.util.Launcher
-import java.lang.Exception
 
 @Composable
 fun BotImportExportDialog(

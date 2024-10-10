@@ -14,10 +14,10 @@ import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
 import java.time.DayOfWeek.FRIDAY
 import java.time.DayOfWeek.MONDAY
-import java.time.DayOfWeek.THURSDAY
-import java.time.DayOfWeek.TUESDAY
 import java.time.DayOfWeek.SATURDAY
 import java.time.DayOfWeek.SUNDAY
+import java.time.DayOfWeek.THURSDAY
+import java.time.DayOfWeek.TUESDAY
 import java.time.DayOfWeek.WEDNESDAY
 
 class BotPreset(

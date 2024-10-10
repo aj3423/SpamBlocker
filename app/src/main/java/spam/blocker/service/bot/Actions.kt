@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -44,7 +43,6 @@ import spam.blocker.util.logi
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toStringMap
-import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 

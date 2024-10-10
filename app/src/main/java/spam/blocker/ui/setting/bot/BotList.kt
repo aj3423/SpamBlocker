@@ -20,7 +20,6 @@ import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.BotTable
-import spam.blocker.service.bot.botJson
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
@@ -30,7 +29,6 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
-import spam.blocker.util.Clipboard
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

@@ -38,8 +38,6 @@ import spam.blocker.R
 import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Lambda
-import spam.blocker.util.loge
-import kotlin.math.min
 
 private const val SwipeThresholdPercent = 0.35f
 

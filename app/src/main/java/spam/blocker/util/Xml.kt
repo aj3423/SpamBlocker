@@ -2,7 +2,6 @@ package spam.blocker.util
 
 import org.w3c.dom.Document
 import org.w3c.dom.NodeList
-import spam.blocker.db.RegexRule
 import java.io.ByteArrayInputStream
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.xpath.XPathConstants

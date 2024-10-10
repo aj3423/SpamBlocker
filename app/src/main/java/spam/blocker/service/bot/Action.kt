@@ -20,7 +20,6 @@ import spam.blocker.util.IntentPermission
 import spam.blocker.util.Lambda1
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions
-import java.lang.Exception
 
 // When adding a new IAction type, follow all the steps:
 //  - add to  `ActionType`

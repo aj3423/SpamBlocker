@@ -32,7 +32,6 @@ import kotlinx.coroutines.CoroutineScope
 import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.RegexRule
-import spam.blocker.db.SpamTable
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.M

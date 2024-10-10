@@ -6,15 +6,12 @@ import android.content.Context
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
-import spam.blocker.service.bot.CleanupSpamDB
-import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
-import spam.blocker.util.SharedPref.SpamDB
 import java.util.UUID
 
 @Serializable

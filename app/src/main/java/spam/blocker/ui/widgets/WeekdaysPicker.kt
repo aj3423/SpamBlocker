@@ -14,7 +14,6 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import java.time.DayOfWeek
 

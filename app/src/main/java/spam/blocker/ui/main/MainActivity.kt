@@ -27,7 +27,6 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import spam.blocker.BuildConfig
-import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.SmsTable
@@ -63,8 +62,14 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
 
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             debug(this)
+
+            // Detect resource leak
+            Class.forName("dalvik.system.CloseGuard")
+                .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
+                .invoke(null, true)
+        }
 
         val ctx = this
         val spf = Global(ctx)

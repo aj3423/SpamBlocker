@@ -17,19 +17,15 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import sh.calvin.reorderable.ReorderableColumn
 import spam.blocker.service.bot.IAction
-import spam.blocker.service.bot.allChainable
 import spam.blocker.service.bot.isNextChainable
 import spam.blocker.service.bot.isPreviousChainable
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
-import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SwipeInfo
-import spam.blocker.util.loge
 
 // Draw a green/red line above/below each action card,
 // indicating whether it's chainable to the previous/next action.

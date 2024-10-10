@@ -7,9 +7,9 @@ import org.junit.Test
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.Weekly
+import java.time.DayOfWeek.THURSDAY
 import java.time.DayOfWeek.TUESDAY
 import java.time.DayOfWeek.WEDNESDAY
-import java.time.DayOfWeek.THURSDAY
 import java.time.Duration
 import java.time.LocalDateTime
 

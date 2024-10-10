@@ -34,7 +34,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.NormalPermission
-import spam.blocker.util.PermissionChain
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util

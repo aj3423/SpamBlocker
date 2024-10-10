@@ -70,7 +70,6 @@ import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.addFlag
 import spam.blocker.util.hasFlag
-import spam.blocker.util.loge
 import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 

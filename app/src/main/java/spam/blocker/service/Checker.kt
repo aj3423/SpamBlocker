@@ -14,16 +14,15 @@ import spam.blocker.db.RuleTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
-import spam.blocker.ui.setting.quick.SpamDB
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
-import spam.blocker.util.TimeSchedule
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.SharedPref.RepeatedCall
 import spam.blocker.util.SharedPref.SpamDB
 import spam.blocker.util.SharedPref.Stir
+import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
 
