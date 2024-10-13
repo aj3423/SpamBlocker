@@ -27,7 +27,7 @@
             buildToolsVersion: 34.0.0
 
         - name: Compress mapping.txt
-          run: tar zcvf mapping.txt.tar.gz app/build/outputs/mapping/release/mapping.txt
+          run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/release/mapping.txt
 
         - name: Publish Latest Release
           uses: "marvinpinto/action-automatic-releases@latest"
@@ -38,4 +38,4 @@
             title: "Latest Release"
             files: |
               ${{ steps.sign_app.outputs.signedFile }}
-              mapping.txt.tar.gz
+              debug.symbol.tar.gz

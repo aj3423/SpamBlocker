@@ -22,6 +22,23 @@ import spam.blocker.util.Util
 import spam.blocker.util.logd
 import android.telecom.Call as TelecomCall
 
+fun TelecomCall.Details.getRawNumber():String {
+    var rawNumber = ""
+    if (handle != null) {
+        rawNumber = handle.schemeSpecificPart
+    } else if (gatewayInfo?.originalAddress != null){
+        rawNumber = gatewayInfo?.originalAddress?.schemeSpecificPart!!
+    } else if (intentExtras != null) {
+        var uri = intentExtras.getParcelable<Uri>(TelecomManager.EXTRA_INCOMING_CALL_ADDRESS)
+        if (uri == null) {
+            uri = intentExtras.getParcelable<Uri>(TelephonyManager.EXTRA_INCOMING_NUMBER);
+        }
+        if (uri != null) {
+            rawNumber = uri.schemeSpecificPart
+        }
+    }
+    return rawNumber
+}
 
 class CallScreeningService : CallScreeningService() {
 
@@ -73,20 +90,7 @@ class CallScreeningService : CallScreeningService() {
             return
         }
 
-        var rawNumber = ""
-        if (details.handle != null) {
-            rawNumber = details.handle.schemeSpecificPart
-        } else if (details.gatewayInfo?.originalAddress != null){
-            rawNumber = details.gatewayInfo?.originalAddress?.schemeSpecificPart!!
-        } else if (details.intentExtras != null) {
-            var uri = details.intentExtras.getParcelable<Uri>(TelecomManager.EXTRA_INCOMING_CALL_ADDRESS)
-            if (uri == null) {
-                uri = details.intentExtras.getParcelable<Uri>(TelephonyManager.EXTRA_INCOMING_NUMBER);
-            }
-            if (uri != null) {
-                rawNumber = uri.schemeSpecificPart
-            }
-        }
+        val rawNumber = details.getRawNumber()
 
         val r = processCall(this, rawNumber, details)
 

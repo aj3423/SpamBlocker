@@ -25,17 +25,19 @@ import spam.blocker.util.Util.doOnce
 
 
 abstract class IPermission {
-    abstract fun name(): String
-    abstract fun isGranted(ctx: Context): Boolean
+    abstract val name: String
     abstract val isOptional: Boolean
+    abstract fun isGranted(ctx: Context): Boolean
+
+    // Show a prompt dialog before asking for permission, explaining for why it's required
+    abstract val prompt: String?
 }
 
 open class NormalPermission(
-    open val name: String,
+    override val name: String,
     override val isOptional: Boolean = false,
-    val prompt: String? = null // show a prompt dialog before asking for permission
+    override val prompt: String? = null
 ) : IPermission() {
-    override fun name(): String{ return name }
     override fun isGranted(ctx: Context): Boolean {
         return Permissions.isPermissionGranted(ctx, name)
     }
@@ -43,34 +45,36 @@ open class NormalPermission(
 
 // For those permissions that will launch an Intent Activity, such as UsageStats and AllFileAccess
 open class IntentPermission(
-    isOptional: Boolean = false,
-    prompt: String? = null,
+    override val isOptional: Boolean = false,
+    override val prompt: String? = null,
 
     // intent for opening system setting page
     val intent: Intent,
-    val checkGranted: (ctx: Context) -> Boolean
-) : NormalPermission(intent.action!!, isOptional, prompt) {
+    val isGrantedChecker: (ctx: Context) -> Boolean,
+) : IPermission() {
 
-    override fun name(): String{ return intent.action!! }
+    override val name: String
+        get() = intent.action!!
+
     override fun isGranted(ctx: Context): Boolean {
-        return checkGranted(ctx)
+        return isGrantedChecker(ctx)
     }
 }
 
-// For UsageStats
+// For permissions like UsageStats
 class AppOpsPermission(
     override val name: String,
+    intent: Intent,
     isOptional: Boolean = false,
     prompt: String? = null,
-    intent: Intent,
 ) : IntentPermission(
-    isOptional, prompt, intent, { ctx ->
+    isOptional = isOptional,
+    prompt = prompt,
+    intent = intent,
+    isGrantedChecker = { ctx ->
         Permissions.isAppOpsPermissionGranted(ctx, name)
     }
-) {
-
-    override fun name(): String{ return name }
-}
+)
 
 /*
     Convenient class for asking for multiple permissions,
@@ -93,8 +97,8 @@ class PermissionChain(
     // final callback
     private lateinit var onResult: (Boolean) -> Unit
 
-    private lateinit var currList: MutableList<NormalPermission>
-    private lateinit var curr: NormalPermission
+    private lateinit var currList: MutableList<IPermission>
+    private lateinit var curr: IPermission
 
     private lateinit var popupTrigger: MutableState<Boolean>
 
@@ -148,7 +152,7 @@ class PermissionChain(
 
     fun ask(
         ctx: Context,
-        permissions: List<NormalPermission>,
+        permissions: List<IPermission>,
         onResult: (Boolean) -> Unit
     ) {
         this.onResult = onResult

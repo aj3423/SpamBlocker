@@ -1,0 +1,17 @@
+Breaking:
+- no longer support "export backup as json format"
+- New permissions:
+  - INTERNET: for downloading spam database, you can [disable it](https://github.com/aj3423/SpamBlocker/issues/147) if you don't use this feature.
+  - MANAGE_EXTERNAL_STORAGE(Android 11+) or READ/WRITE_EXTERNAL_STORAGE(Android 10), for automated file operations, such as "backup" or "import .csv".
+
+New:
+- Spam Database. It's compatible with any public data sources, such as the [FTC - DNC](ftc.gov/policy-notices/open-government/data-sets/do-not-call-data)
+- Automated workflow. Use cases:
+  - Download spam numbers from public database everyday.
+  - Clean up expired numbers in database.
+  - Auto backup, auto switch configuration, auto import csv/xml, etc.
+- Regex contact mode. The regex will match the contact name instead of the phone number
+- language support: pt-rBR, ja
+
+Fix: 
+- The history cleanup task is not applied after backup-import
