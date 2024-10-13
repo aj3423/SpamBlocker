@@ -87,6 +87,7 @@ fun SpamDB() {
     PopupDialog(
         trigger = popupTrigger,
         onDismiss = {
+            spf.setTTL(ttl)
             reScheduleSpamDBCleanup(ctx)
         }
     ) {
