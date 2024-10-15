@@ -95,17 +95,20 @@ class CallScreeningService : CallScreeningService() {
         val r = processCall(this, rawNumber, details)
 
         if (r.shouldBlock) {
-            val blockType = getBlockType(r)
+            val blockType = getBlockType(r) // reject / silence / answer+hangup
 
             when(blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
-                Def.BLOCK_TYPE_ANSWER_AND_HANG -> answerThenHangUp(rawNumber, details)
+                Def.BLOCK_TYPE_ANSWER_AND_HANGUP -> answerThenHangUp(rawNumber, details)
                 else -> reject(details)
             }
         } else {
             pass(details)
         }
     }
+
+    // If it's blocked by regex rule, return `rule.blockType`
+    // otherwise return the global setting
     private fun getBlockType(r: CheckResult): Int {
         return if (r.byRule != null) { // per rule setting
             r.byRule!!.blockType

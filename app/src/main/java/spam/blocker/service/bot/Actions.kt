@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.json.JSONObject
@@ -199,7 +198,7 @@ class CleanupSpamDB(
         SpamTable.deleteBeforeTimestamp(ctx, expireTimeMs)
 
         // fire event to update the UI
-        Events.spamDbUpdated.intValue = Events.spamDbUpdated.intValue.plus(1)
+        Events.spamDbUpdated.fire()
 
         return Pair(true, null)
     }
@@ -324,6 +323,7 @@ class BackupImport(
             val newCfg = Configs.createFromJson(jsonStr)
             newCfg.apply(ctx, includeSpamDB)
 
+            Events.configImported.fire()
             return Pair(true, null)
         } catch (e:Exception) {
             return Pair(false, "$e")
@@ -677,11 +677,7 @@ class ImportToSpamDB : IPermissiveAction {
             val errorStr = SpamTable.addAll(ctx, numbers)
 
             // Fire a global event to update UI
-            GlobalScope.launch {
-                withContext(Dispatchers.IO) {
-                    Events.spamDbUpdated.intValue = Events.spamDbUpdated.intValue.plus(1)
-                }
-            }
+            Events.spamDbUpdated.fire()
 
             Pair(errorStr == null, errorStr)
         } catch (e: Exception) {
@@ -758,7 +754,7 @@ class ImportAsRegexRule(
             NumberRuleTable().addNewRule(ctx, newRule)
 
             // fire event to update the UI
-            Events.regexRuleUpdated.intValue = Events.regexRuleUpdated.intValue.plus(1)
+            Events.regexRuleUpdated.fire()
 
             Pair(true, null)
         } catch (e: Exception) {

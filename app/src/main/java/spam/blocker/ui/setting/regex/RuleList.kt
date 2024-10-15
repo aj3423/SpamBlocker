@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import kotlinx.coroutines.CoroutineScope
 import spam.blocker.Events
 import spam.blocker.R
@@ -70,6 +71,7 @@ fun RuleList(
     forType: Int,
     vm: RuleViewModel,
 ) {
+    val lifecycleOwner = LocalLifecycleOwner.current
     val ctx = LocalContext.current
     val coroutine = rememberCoroutineScope()
 
@@ -78,11 +80,12 @@ fun RuleList(
 
     // Refresh UI on global events, such as workflow action AddToRegexRule
     if (forType == Def.ForNumber) {
-        LaunchedEffect(Events.regexRuleUpdated.intValue) {
-            vm.reload(ctx)
+        LaunchedEffect(true) {
+            Events.regexRuleUpdated.listen(lifecycleOwner) {
+                vm.reload(ctx)
+            }
         }
     }
-
 
     if (editRuleTrigger.value) {
         RuleEditDialog(

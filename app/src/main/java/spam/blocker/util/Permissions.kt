@@ -1,7 +1,6 @@
 package spam.blocker.util
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AppOpsManager
 import android.app.role.RoleManager
@@ -15,8 +14,6 @@ import android.content.ServiceConnection
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Environment
 import android.os.IBinder

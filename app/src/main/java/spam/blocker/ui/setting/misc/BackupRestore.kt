@@ -144,7 +144,7 @@ fun BackupRestore() {
 
                                 // Fire an event to notify the configuration has changed,
                                 // for example, the history cleanup schedule should restart
-                                Events.configImported.value = Events.configImported.value?.plus(1)
+                                Events.configImported.fire()
                             }
 
                             fun onDecodeFail() {

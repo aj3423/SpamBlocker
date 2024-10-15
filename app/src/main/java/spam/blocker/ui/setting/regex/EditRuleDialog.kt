@@ -43,7 +43,6 @@ import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyButton
-import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
@@ -534,14 +533,14 @@ fun RuleEditDialog(
                                 {
                                     RowVCenterSpaced(2) {
                                         GreyIcon16(R.drawable.ic_bell_ringing)
-                                        GreyIcon(R.drawable.ic_statusbar_shade)
+                                        GreyIcon16(R.drawable.ic_statusbar_shade)
                                     }
                                 },
                                 {
                                     RowVCenterSpaced(2) {
-                                        GreyIcon(R.drawable.ic_bell_ringing)
-                                        GreyIcon(R.drawable.ic_statusbar_shade)
-                                        GreyIcon(R.drawable.ic_heads_up)
+                                        GreyIcon16(R.drawable.ic_bell_ringing)
+                                        GreyIcon16(R.drawable.ic_statusbar_shade)
+                                        GreyIcon16(R.drawable.ic_heads_up)
                                     }
                                 }
                             )

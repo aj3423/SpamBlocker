@@ -3,25 +3,46 @@ package spam.blocker
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import spam.blocker.db.BotTable
+import spam.blocker.db.reScheduleBot
+import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.ui.crash.CrashReportActivity
+import spam.blocker.ui.history.reScheduleHistoryCleanup
+import spam.blocker.ui.setting.quick.reScheduleSpamDBCleanup
 import java.io.PrintWriter
 import java.io.StringWriter
 import kotlin.system.exitProcess
 
-
 class App : Application() {
-    override fun attachBaseContext(base:Context) {
+    override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
 
-        // The Launcher.selfRestart will launch another MainActivity, which cause events being
-        // triggered twice, so bind here to prevent the double triggering.
-        Events.setup(this)
+        // Re-schedule all tasks after backup-import.
+        // The Launcher.selfRestart will launch another MainActivity, which causes events being
+        // triggered twice, so bind events here instead of in the MainActivity to prevent double triggering.
+        Events.configImported.listen {
+            // cancel all
+            MyWorkManager.cancelAll(base)
+
+            // Re-schedule history cleanup task
+            reScheduleHistoryCleanup(base)
+
+            // Re-schedule spam db cleanup task
+            reScheduleSpamDBCleanup(base)
+
+            // Re-schedule all bots
+            val bots = BotTable.listAll(base)
+            bots.forEach {
+                reScheduleBot(base, it)
+            }
+        }
 
         // Set the default uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             handleUncaughtException(thread, throwable)
         }
     }
+
     private fun handleUncaughtException(thread: Thread, throwable: Throwable) {
         throwable.printStackTrace()
 
@@ -29,12 +50,12 @@ class App : Application() {
         val intent = Intent(this, CrashReportActivity::class.java)
             .apply {
 
-            val sw = StringWriter()
-            throwable.printStackTrace(PrintWriter(sw))
-            putExtra("stackTrace", sw.toString())
+                val sw = StringWriter()
+                throwable.printStackTrace(PrintWriter(sw))
+                putExtra("stackTrace", sw.toString())
 
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        }
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            }
 
         startActivity(intent)
 

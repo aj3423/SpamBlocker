@@ -57,7 +57,7 @@ object Def {
 
     const val BLOCK_TYPE_REJECT = 0
     const val BLOCK_TYPE_SILENCE = 1
-    const val BLOCK_TYPE_ANSWER_AND_HANG = 2
+    const val BLOCK_TYPE_ANSWER_AND_HANGUP = 2
 
     const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
     const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT

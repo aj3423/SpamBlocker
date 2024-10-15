@@ -63,6 +63,10 @@ object MyWorkManager {
         WorkManager.getInstance(ctx).cancelWorkById(UUID.fromString(uuid))
     }
 
+    fun cancelAll(ctx: Context) {
+        WorkManager.getInstance(ctx).cancelAllWork()
+    }
+
     // Schedule a recurring task
     // Return `false` if the scheduleConfig is invalid
     fun schedule(
