@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
+import spam.blocker.db.BotTable
 import spam.blocker.service.bot.botJson
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
@@ -81,7 +82,12 @@ fun BotImportExportDialog(
                                 enabled = false,
                                 workUUID = null,
                             )
-                            G.botVM.list.add(newBot)
+                            
+                            // 1. add to db
+                            BotTable.addNewRecord(ctx, newBot)
+                            // 2. reload UI
+                            G.botVM.reload(ctx)
+
                             succeeded = true
                         } catch (e: Exception) {
                             succeeded = false
