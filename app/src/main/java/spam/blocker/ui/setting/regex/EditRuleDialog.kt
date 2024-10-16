@@ -55,7 +55,7 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.ShowAnimated
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
@@ -349,7 +349,7 @@ fun RuleEditDialog(
                         SwitchBox(checked = forParticular) { forParticular = it }
                     }
 
-                    ShowAnimated(visible = forParticular) {
+                    AnimatedVisibleV(visible = forParticular) {
                         RegexInputBox(
                             label = {
                                 RegexFieldLabel(
@@ -472,7 +472,7 @@ fun RuleEditDialog(
                 }
 
                 // Block Type
-                ShowAnimated(visible = forType == Def.ForNumber && applyToWorB == 1) {
+                AnimatedVisibleV(visible = forType == Def.ForNumber && applyToWorB == 1) {
                     LabeledRow(labelId = R.string.block_type) {
                         val icons = remember {
                             listOf<@Composable () -> Unit>(
@@ -519,7 +519,7 @@ fun RuleEditDialog(
                 }
 
                 // Notification Type
-                ShowAnimated(visible = forType != Def.ForQuickCopy && applyToWorB == 1) {
+                AnimatedVisibleV(visible = forType != Def.ForQuickCopy && applyToWorB == 1) {
                     LabeledRow(
                         labelId = R.string.notification,
                         helpTooltipId = R.string.help_importance,

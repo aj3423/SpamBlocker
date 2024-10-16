@@ -82,7 +82,7 @@ fun ImportRuleButton(
                                 table.addNewRule(ctx, rule)
 
                                 // 2. refresh gui
-                                vm.reload(ctx)
+                                vm.reloadDb(ctx)
                             }
                             1 -> { // import as multi rules
                                 // 1. add to db
@@ -92,7 +92,7 @@ fun ImportRuleButton(
                                 }
 
                                 // 2. refresh gui
-                                vm.reload(ctx)
+                                vm.reloadDb(ctx)
                             }
                         }
                     }

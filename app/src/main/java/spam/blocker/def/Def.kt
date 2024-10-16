@@ -45,6 +45,9 @@ object Def {
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
     const val SETTING_SPAM_DB_ENABLED = "spam_db_enabled"
     const val SETTING_SPAM_DB_TTL = "spam_db_ttl"
+    const val SETTING_NUMBER_RULE_COLLAPSED = "number_rule_collapsed"
+    const val SETTING_CONTENT_RULE_COLLAPSED = "content_rule_collapsed"
+    const val SETTING_QUICK_COPY_RULE_COLLAPSED = "quick_copy_rule_collapsed"
 
 
     const val DEFAULT_SPAM_DB_TTL = 90 // days

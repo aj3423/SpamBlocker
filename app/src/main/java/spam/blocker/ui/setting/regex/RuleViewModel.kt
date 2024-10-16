@@ -8,16 +8,20 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
+import spam.blocker.def.Def
+import spam.blocker.util.SharedPref.RegexOptions
 
 open class RuleViewModel(
     val table: RuleTable,
+    val forType: Int,
 ) {
     val rules = mutableStateListOf<RegexRule>()
     val searchEnabled = mutableStateOf(false)
+    val listCollapsed = mutableStateOf(false)
 
     var filter = ""
 
-    fun reload(ctx: Context) {
+    fun reloadDb(ctx: Context) {
         rules.clear()
         var all = table.listAll(ctx)
         if (filter.isNotEmpty()) {
@@ -27,8 +31,33 @@ open class RuleViewModel(
         }
         rules.addAll(all)
     }
+
+    fun toggleCollapse(ctx: Context) {
+        listCollapsed.value = !listCollapsed.value
+        val spf = RegexOptions(ctx)
+        when (forType) {
+            Def.ForNumber -> spf.setNumberCollapsed(listCollapsed.value)
+            Def.ForSms -> spf.setContentCollapsed(listCollapsed.value)
+            else -> spf.setQuickCopyCollapsed(listCollapsed.value)
+        }
+    }
+
+    fun reloadOptions(ctx: Context) {
+        val spf = RegexOptions(ctx)
+
+        listCollapsed.value = when (forType) {
+            Def.ForNumber -> spf.isNumberCollapsed()
+            Def.ForSms -> spf.isContentCollapsed()
+            else -> spf.isQuickCopyCollapsed()
+        }
+    }
+
+    fun reloadDbAndOptions(ctx: Context) {
+        reloadOptions(ctx)
+        reloadDb(ctx)
+    }
 }
 
-class NumberRuleViewModel : RuleViewModel(NumberRuleTable())
-class ContentRuleViewModel : RuleViewModel(ContentRuleTable())
-class QuickCopyRuleViewModel : RuleViewModel(QuickCopyRuleTable())
+class NumberRuleViewModel : RuleViewModel(NumberRuleTable(), Def.ForNumber)
+class ContentRuleViewModel : RuleViewModel(ContentRuleTable(), Def.ForSms)
+class QuickCopyRuleViewModel : RuleViewModel(QuickCopyRuleTable(), Def.ForQuickCopy)

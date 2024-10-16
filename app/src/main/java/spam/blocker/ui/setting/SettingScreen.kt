@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.bot.BotHeader
 import spam.blocker.ui.setting.bot.BotList
@@ -57,6 +56,7 @@ import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.AnimatedVisibleV
 
 const val SettingRowMinHeight = 40
 
@@ -133,22 +133,31 @@ fun SettingScreen() {
                     ) {
                         Column {
                             // Number Rules
-                            LaunchedEffect(true) { G.NumberRuleVM.reload(ctx) }
-                            RuleHeader(Def.ForNumber, G.NumberRuleVM)
-                            RuleSearchBox(G.NumberRuleVM)
-                            RuleList(Def.ForNumber, G.NumberRuleVM)
+                            val vm1 = G.NumberRuleVM
+                            LaunchedEffect(true) { vm1.reloadDbAndOptions(ctx) }
+                            RuleHeader(vm1)
+                            AnimatedVisibleV(!vm1.listCollapsed.value) {
+                                RuleSearchBox(vm1)
+                                RuleList(vm1)
+                            }
 
                             // Content Rules
-                            LaunchedEffect(true) { G.ContentRuleVM.reload(ctx) }
-                            RuleHeader(Def.ForSms, G.ContentRuleVM)
-                            RuleSearchBox(G.ContentRuleVM)
-                            RuleList(Def.ForSms, G.ContentRuleVM)
+                            val vm2 = G.ContentRuleVM
+                            LaunchedEffect(true) { vm2.reloadDbAndOptions(ctx) }
+                            RuleHeader(vm2)
+                            AnimatedVisibleV(!vm2.listCollapsed.value) {
+                                RuleSearchBox(vm2)
+                                RuleList(vm2)
+                            }
 
                             // QuickCopy Rules
-                            LaunchedEffect(true) { G.QuickCopyRuleVM.reload(ctx) }
-                            RuleHeader(Def.ForQuickCopy, G.QuickCopyRuleVM)
-                            RuleSearchBox(G.QuickCopyRuleVM)
-                            RuleList(Def.ForQuickCopy, G.QuickCopyRuleVM)
+                            val vm3 = G.QuickCopyRuleVM
+                            LaunchedEffect(true) { vm3.reloadDbAndOptions(ctx) }
+                            RuleHeader(vm3)
+                            AnimatedVisibleV(!vm3.listCollapsed.value) {
+                                RuleSearchBox(vm3)
+                                RuleList(vm3)
+                            }
                         }
                     }
                 }
@@ -197,9 +206,13 @@ fun SettingRow(
 }
 
 @Composable
-fun SettingLabel(labelId: Int) {
+fun SettingLabel(
+    labelId: Int,
+    modifier: Modifier = Modifier,
+) {
     Text(
         text = stringResource(id = labelId),
+        modifier = modifier,
         maxLines = 1,
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
@@ -209,7 +222,7 @@ fun SettingLabel(labelId: Int) {
 
 @Composable
 fun LabeledRow(
-    labelId: Int,
+    label: @Composable () -> Unit,
 
     // optional
     modifier: Modifier = Modifier,
@@ -225,7 +238,7 @@ fun LabeledRow(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // label
-            SettingLabel(labelId)
+            label()
 
             // balloon tooltip
             if (helpTooltipId != null)
@@ -242,3 +255,23 @@ fun LabeledRow(
     }
 }
 
+@Composable
+fun LabeledRow(
+    labelId: Int,
+
+    // optional
+    modifier: Modifier = Modifier,
+    paddingHorizontal: Int = 0,
+    helpTooltipId: Int? = null,
+    content: @Composable RowScope.() -> Unit,
+) {
+    LabeledRow(
+        label = {
+            SettingLabel(labelId)
+        },
+        modifier = modifier,
+        paddingHorizontal = paddingHorizontal,
+        helpTooltipId = helpTooltipId,
+        content = content,
+    )
+}

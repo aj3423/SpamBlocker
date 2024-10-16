@@ -33,7 +33,7 @@ fun RuleSearchBox(
             leadingIconId = R.drawable.ic_find,
             onValueChange = {
                 vm.filter = it
-                vm.reload(ctx)
+                vm.reloadDb(ctx)
             },
             modifier = M
                 // Auto focus, and force scroll to input box.
@@ -50,7 +50,7 @@ fun RuleSearchBox(
                     if (textFieldLoaded && !focusState.isFocused) {
                         vm.searchEnabled.value = false
                         vm.filter = ""
-                        vm.reload(ctx)
+                        vm.reloadDb(ctx)
                     }
                 }
         )

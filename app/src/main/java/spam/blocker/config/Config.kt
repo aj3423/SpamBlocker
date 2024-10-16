@@ -78,6 +78,28 @@ class HistoryOptions {
 }
 
 @Serializable
+class RegexOptions {
+    var numberCollapsed = false
+    var contentCollapsed = false
+    var quickCopyCollapsed = false
+
+    fun load(ctx: Context) {
+        val spf = spam.blocker.util.SharedPref.RegexOptions(ctx)
+        numberCollapsed = spf.isNumberCollapsed()
+        contentCollapsed = spf.isContentCollapsed()
+        quickCopyCollapsed = spf.isQuickCopyCollapsed()
+    }
+
+    fun apply(ctx: Context) {
+        spam.blocker.util.SharedPref.RegexOptions(ctx).apply {
+            setNumberCollapsed(numberCollapsed)
+            setContentCollapsed(contentCollapsed)
+            setQuickCopyCollapsed(quickCopyCollapsed)
+        }
+    }
+}
+
+@Serializable
 class Theme {
     var type = 0
     fun load(ctx: Context) {
@@ -325,6 +347,7 @@ class SpamNumbers {
 class Configs {
     val global = Global()
     val historyOptions = HistoryOptions()
+    val regexOptions = RegexOptions()
     val theme = Theme()
     val language = Language()
 
@@ -348,6 +371,7 @@ class Configs {
     fun load(ctx: Context, includeSpamDB: Boolean = true) {
         global.load(ctx)
         historyOptions.load(ctx)
+        regexOptions.load(ctx)
         theme.load(ctx)
         language.load(ctx)
 
@@ -373,6 +397,7 @@ class Configs {
     fun apply(ctx: Context, includeSpamDB: Boolean = true) {
         global.apply(ctx)
         historyOptions.apply(ctx)
+        regexOptions.apply(ctx)
         theme.apply(ctx)
         language.apply(ctx)
 

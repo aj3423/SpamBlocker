@@ -105,6 +105,15 @@ class Global(ctx: Context) : SharedPref(ctx) {
     }
 }
 
+class RegexOptions(ctx: Context) : SharedPref(ctx) {
+    fun isNumberCollapsed(): Boolean { return readBoolean(Def.SETTING_NUMBER_RULE_COLLAPSED, false) }
+    fun setNumberCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_NUMBER_RULE_COLLAPSED, enabled) }
+    fun isContentCollapsed(): Boolean { return readBoolean(Def.SETTING_CONTENT_RULE_COLLAPSED, false) }
+    fun setContentCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_CONTENT_RULE_COLLAPSED, enabled) }
+    fun isQuickCopyCollapsed(): Boolean { return readBoolean(Def.SETTING_QUICK_COPY_RULE_COLLAPSED, false) }
+    fun setQuickCopyCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_QUICK_COPY_RULE_COLLAPSED, enabled) }
+}
+
 class HistoryOptions(ctx: Context) : SharedPref(ctx) {
     fun getShowPassed(): Boolean { return readBoolean(Def.SETTING_SHOW_PASSED, true) }
     fun setShowPassed(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_PASSED, enabled) }

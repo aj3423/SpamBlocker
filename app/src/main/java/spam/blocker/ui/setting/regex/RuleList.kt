@@ -67,10 +67,9 @@ class DisableNestedScrolling : NestedScrollConnection {
 
 @Composable
 fun RuleList(
-    forType: Int,
     vm: RuleViewModel,
 ) {
-    val lifecycleOwner = LocalLifecycleOwner.current
+    val forType = vm.forType
     val ctx = LocalContext.current
     val coroutine = rememberCoroutineScope()
 
@@ -80,7 +79,7 @@ fun RuleList(
     // Refresh UI on global events, such as workflow action AddToRegexRule
     if (forType == Def.ForNumber) {
         Events.regexRuleUpdated.Listen {
-            vm.reload(ctx)
+            vm.reloadDb(ctx)
         }
     }
 
@@ -95,7 +94,7 @@ fun RuleList(
                 table.updateRuleById(ctx, updatedRule.id, updatedRule)
 
                 // 2. reload from db
-                vm.reload(ctx)
+                vm.reloadDb(ctx)
             }
         )
     }
@@ -165,7 +164,7 @@ fun RuleList(
                 duplicatedRules.clear()
 
                 // 3. refresh gui
-                vm.reload(ctx)
+                vm.reloadDb(ctx)
             }
         }
     )
@@ -188,7 +187,7 @@ fun RuleList(
                         vm.table.addNewRule(ctx, clickedRule.value)
 
                         // 2. refresh gui
-                        vm.reload(ctx)
+                        vm.reloadDb(ctx)
                     }
 
                     2 -> { // delete duplicated rules
