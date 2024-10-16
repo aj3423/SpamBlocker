@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import spam.blocker.db.BotTable
+import spam.blocker.db.SmsTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.ui.crash.CrashReportActivity
@@ -17,25 +18,9 @@ class App : Application() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
 
-        // Re-schedule all tasks after backup-import.
-        // The Launcher.selfRestart will launch another MainActivity, which causes events being
-        // triggered twice, so bind events here instead of in the MainActivity to prevent double triggering.
-        Events.configImported.listen {
-            // cancel all
-            MyWorkManager.cancelAll(base)
-
-            // Re-schedule history cleanup task
-            reScheduleHistoryCleanup(base)
-
-            // Re-schedule spam db cleanup task
-            reScheduleSpamDBCleanup(base)
-
-            // Re-schedule all bots
-            val bots = BotTable.listAll(base)
-            bots.forEach {
-                reScheduleBot(base, it)
-            }
-        }
+        // Bind events here instead of in MainActivity, because it may be called multiple times.
+        listenToConfigImport()
+        listenToNewCallSMS()
 
         // Set the default uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
@@ -62,5 +47,39 @@ class App : Application() {
         // Kill the process
         android.os.Process.killProcess(android.os.Process.myPid())
         exitProcess(1)
+    }
+
+
+    // Re-schedule all tasks after backup-import.
+    // The Launcher.selfRestart will launch another MainActivity, which causes events being
+    // triggered twice, so bind events here instead of in the MainActivity to prevent double triggering.
+    private fun listenToConfigImport() {
+        Events.configImported.listen {
+            // cancel all
+            MyWorkManager.cancelAll(this)
+
+            // Re-schedule history cleanup task
+            reScheduleHistoryCleanup(this)
+
+            // Re-schedule spam db cleanup task
+            reScheduleSpamDBCleanup(this)
+
+            // Re-schedule all bots
+            val bots = BotTable.listAll(this)
+            bots.forEach {
+                reScheduleBot(this, it)
+            }
+        }
+    }
+
+    private fun listenToNewCallSMS() {
+        Events.onNewCall.listen { recordId ->
+            val record = G.callVM.table.findRecordById(this, recordId as Long)
+            G.callVM.records.add(0, record!!)
+        }
+        Events.onNewSMS.listen { recordId ->
+            val record = SmsTable().findRecordById(this, recordId as Long)
+            G.smsVM.records.add(0, record!!)
+        }
     }
 }

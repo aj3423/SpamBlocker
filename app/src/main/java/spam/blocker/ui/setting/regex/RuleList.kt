@@ -12,7 +12,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -80,10 +79,8 @@ fun RuleList(
 
     // Refresh UI on global events, such as workflow action AddToRegexRule
     if (forType == Def.ForNumber) {
-        LaunchedEffect(true) {
-            Events.regexRuleUpdated.listen(lifecycleOwner) {
-                vm.reload(ctx)
-            }
+        Events.regexRuleUpdated.Listen {
+            vm.reload(ctx)
         }
     }
 

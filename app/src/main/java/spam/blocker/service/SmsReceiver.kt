@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
+import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
@@ -46,7 +47,7 @@ class SmsReceiver : BroadcastReceiver() {
 
         // 1. log to db
         val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED
-        val id = if(isLogEnabled) SmsTable().addNewRecord(ctx, HistoryRecord(
+        val recordId = if(isLogEnabled) SmsTable().addNewRecord(ctx, HistoryRecord(
             peer = rawNumber,
             time = System.currentTimeMillis(),
             result = r.result,
@@ -56,12 +57,7 @@ class SmsReceiver : BroadcastReceiver() {
 
         // 2. broadcast new sms to add a new item in history page
         if(isLogEnabled) {
-            val intent = Intent(Def.ON_NEW_SMS)
-            intent.putExtra("type", "sms")
-            intent.putExtra("blocked", r.shouldBlock)
-            intent.putExtra("record_id", id)
-
-            ctx.sendBroadcast(intent)
+            Events.onNewSMS.fire(recordId)
         }
 
         val showName = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber

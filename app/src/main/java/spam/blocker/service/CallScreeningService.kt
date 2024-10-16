@@ -6,6 +6,7 @@ import android.net.Uri
 import android.telecom.CallScreeningService
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
+import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
@@ -123,7 +124,7 @@ class CallScreeningService : CallScreeningService() {
 
         // 1. log to db
         val isLogEnabled = HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
-        val id = if (isLogEnabled) {
+        val recordId = if (isLogEnabled) {
             CallTable().addNewRecord(ctx, HistoryRecord(
                 peer = rawNumber,
                 time = System.currentTimeMillis(),
@@ -134,12 +135,7 @@ class CallScreeningService : CallScreeningService() {
 
         // 2. broadcast the call to add a new item in history page
         if (isLogEnabled) {
-            val intent = Intent(Def.ON_NEW_CALL)
-            intent.putExtra("type", "call")
-            intent.putExtra("blocked", r.shouldBlock)
-            intent.putExtra("record_id", id)
-
-            ctx.sendBroadcast(intent)
+            Events.onNewCall.fire(recordId)
         }
 
         // 3. show notification

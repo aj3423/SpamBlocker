@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -15,7 +14,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.LocalLifecycleOwner
 import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.SpamTable
@@ -55,7 +53,6 @@ fun reScheduleSpamDBCleanup(ctx: Context) {
 
 @Composable
 fun SpamDB() {
-    val lifecycleOwner = LocalLifecycleOwner.current
     val ctx = LocalContext.current
     val spf = SpamDB(ctx)
 
@@ -65,11 +62,10 @@ fun SpamDB() {
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
     var total by remember { mutableIntStateOf(SpamTable.count(ctx)) }
 
+
     // Refresh UI on global events, such as workflow action AddToSpamDB and ClearSpamDB
-    LaunchedEffect(true) {
-        Events.spamDbUpdated.listen(lifecycleOwner) {
-            total = SpamTable.count(ctx)
-        }
+    Events.spamDbUpdated.Listen {
+        total = SpamTable.count(ctx)
     }
 
     // Clear All

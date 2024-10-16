@@ -1,10 +1,6 @@
 package spam.blocker.ui.main
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,12 +20,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
-import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryScreen
@@ -54,8 +48,6 @@ import spam.blocker.util.Util
 
 
 class MainActivity : ComponentActivity() {
-
-    private lateinit var broadcastReceiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -121,8 +113,6 @@ class MainActivity : ComponentActivity() {
 
         Permissions.initLauncherSetAsCallScreeningApp(this)
 
-        listenToNewCallSMS()
-
         G.callVM.reload(ctx)
         G.smsVM.reload(ctx)
 
@@ -186,35 +176,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun listenToNewCallSMS() {
-        val ctx = this
-        broadcastReceiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                val action = intent.action
-
-                when (action) {
-                    Def.ON_NEW_CALL -> {
-                        val id = intent.getLongExtra("record_id", 0)
-                        val record = G.callVM.table.findRecordById(ctx, id)
-                        G.callVM.records.add(0, record!!)
-                    }
-
-                    Def.ON_NEW_SMS -> {
-                        val id = intent.getLongExtra("record_id", 0)
-                        val record = SmsTable().findRecordById(ctx, id)
-                        G.smsVM.records.add(0, record!!)
-                    }
-                }
-            }
-        }
-        ContextCompat.registerReceiver(this, broadcastReceiver,
-            IntentFilter().apply {
-                addAction(Def.ON_NEW_CALL)
-                addAction(Def.ON_NEW_SMS)
-            },
-            ContextCompat.RECEIVER_EXPORTED)
-    }
-
     private fun onTabSelected(route: String) {
         Global(this).setActiveTab(route)
         when (route) {
@@ -258,10 +219,5 @@ class MainActivity : ComponentActivity() {
                 }
             )
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(broadcastReceiver)
     }
 }

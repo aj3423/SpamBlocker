@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.ui.M
@@ -71,7 +72,9 @@ data class BottomBarViewModel(
 fun BoxScope.Badge(count: Int) {
     if (count > 0) {
         Box(
-            modifier = M.align(Alignment.TopEnd).offset(x = 10.dp, y = (-4).dp) ,
+            modifier = M
+                .align(Alignment.TopEnd)
+                .offset(x = 10.dp, y = (-4).dp),
             contentAlignment = Alignment.Center
         ) {
             Canvas(
@@ -82,7 +85,9 @@ fun BoxScope.Badge(count: Int) {
             Text(
                 text = count.toString(),
                 color = Color.White,
+                fontWeight = FontWeight.Bold,
                 fontSize = 11.sp,
+                modifier = M.offset(y = 1.dp),
             )
         }
     }

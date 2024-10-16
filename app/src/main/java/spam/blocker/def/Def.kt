@@ -47,9 +47,6 @@ object Def {
     const val SETTING_SPAM_DB_TTL = "spam_db_ttl"
 
 
-    const val ON_NEW_CALL = "on_new_call"
-    const val ON_NEW_SMS = "on_new_sms"
-
     const val DEFAULT_SPAM_DB_TTL = 90 // days
 
     const val HISTORY_TTL_NEVER_EXPIRE = -1
