@@ -135,10 +135,13 @@ fun SettingScreen() {
                             // Number Rules
                             val vm1 = G.NumberRuleVM
                             LaunchedEffect(true) { vm1.reloadDbAndOptions(ctx) }
+
                             RuleHeader(vm1)
                             AnimatedVisibleV(!vm1.listCollapsed.value) {
-                                RuleSearchBox(vm1)
-                                RuleList(vm1)
+                                Column {
+                                    RuleSearchBox(vm1)
+                                    RuleList(vm1)
+                                }
                             }
 
                             // Content Rules
@@ -146,8 +149,10 @@ fun SettingScreen() {
                             LaunchedEffect(true) { vm2.reloadDbAndOptions(ctx) }
                             RuleHeader(vm2)
                             AnimatedVisibleV(!vm2.listCollapsed.value) {
-                                RuleSearchBox(vm2)
-                                RuleList(vm2)
+                                Column {
+                                    RuleSearchBox(vm2)
+                                    RuleList(vm2)
+                                }
                             }
 
                             // QuickCopy Rules
@@ -155,8 +160,10 @@ fun SettingScreen() {
                             LaunchedEffect(true) { vm3.reloadDbAndOptions(ctx) }
                             RuleHeader(vm3)
                             AnimatedVisibleV(!vm3.listCollapsed.value) {
-                                RuleSearchBox(vm3)
-                                RuleList(vm3)
+                                Column {
+                                    RuleSearchBox(vm3)
+                                    RuleList(vm3)
+                                }
                             }
                         }
                     }
