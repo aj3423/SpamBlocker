@@ -23,6 +23,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Clipboard
+import java.util.UUID
 
 @Composable
 fun BotImportExportDialog(
@@ -38,9 +39,10 @@ fun BotImportExportDialog(
 
         var succeeded by remember { mutableStateOf(false) }
 
-        val resultTrigger = remember { mutableStateOf(false) }
+        val importResultTrigger = remember { mutableStateOf(false) }
         PopupDialog(
-            trigger = resultTrigger,
+            trigger = importResultTrigger,
+            onDismiss = { trigger.value = false }, // close import dialog
             icon = {
                 ResIcon(
                     iconId = if (succeeded) R.drawable.ic_check_green else R.drawable.ic_fail_red,
@@ -80,7 +82,7 @@ fun BotImportExportDialog(
                             val newBot = botJson.decodeFromString<Bot>(text).copy(
                                 id = 0,
                                 enabled = false,
-                                workUUID = null,
+                                workUUID = UUID.randomUUID().toString(),
                             )
                             
                             // 1. add to db
@@ -92,7 +94,7 @@ fun BotImportExportDialog(
                         } catch (e: Exception) {
                             succeeded = false
                         }
-                        resultTrigger.value = true
+                        importResultTrigger.value = true
                     }
                 }
             }

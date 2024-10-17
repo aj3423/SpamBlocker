@@ -27,6 +27,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -59,7 +60,7 @@ fun EditBotDialog(
 
 
     // if any error, disable the Save button
-    val anyError = !actions.allChainable()
+    val anyError = !actions.allChainable() || !(schedule.value?.isValid() ?: false)
 
     PopupDialog(
         trigger = trigger,
@@ -125,13 +126,16 @@ fun EditBotDialog(
                         if (enabled) {
                             LabeledRow(R.string.type) {
                                 val items = defaultSchedules.map {
-                                    LabelItem(label = it.label(ctx)) { menuExpanded ->
+                                    LabelItem(
+                                        label = it.label(ctx),
+                                        icon = { GreyIcon16(it.iconId) }
+                                    ) { menuExpanded ->
                                         schedule.value = it
                                         menuExpanded.value = false
                                     }
                                 }
                                 val selected = defaultSchedules.indexOfFirst {
-                                    it.type() == schedule.value!!.type()
+                                    it::class == schedule.value!!::class
                                 }
                                 Spinner(items = items, selected = selected)
                             }

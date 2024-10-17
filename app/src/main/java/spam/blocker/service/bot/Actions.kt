@@ -67,10 +67,6 @@ class CleanupHistory(
         return Pair(true, null)
     }
 
-    override fun type(): ActionType {
-        return ActionType.CleanupHistory
-    }
-
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_cleanup_history)
     }
@@ -145,10 +141,6 @@ class HttpDownload(
         return ret
     }
 
-    override fun type(): ActionType {
-        return ActionType.HttpDownload
-    }
-
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_http_download)
     }
@@ -201,10 +193,6 @@ class CleanupSpamDB(
         Events.spamDbUpdated.fire()
 
         return Pair(true, null)
-    }
-
-    override fun type(): ActionType {
-        return ActionType.CleanupSpamDB
     }
 
     override fun label(ctx: Context): String {
@@ -260,10 +248,6 @@ class BackupExport(
         val compressed = compressString(curr.toJsonString())
 
         return Pair(true, compressed)
-    }
-
-    override fun type(): ActionType {
-        return ActionType.BackupExport
     }
 
     override fun label(ctx: Context): String {
@@ -330,10 +314,6 @@ class BackupImport(
         }
     }
 
-    override fun type(): ActionType {
-        return ActionType.BackupImport
-    }
-
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_backup_import)
     }
@@ -389,10 +369,6 @@ class ReadFile(
         } catch (e: Exception) {
             Pair(false, "ReadFile: $e")
         }
-    }
-
-    override fun type(): ActionType {
-        return ActionType.ReadFile
     }
 
     override fun label(ctx: Context): String {
@@ -461,10 +437,6 @@ class WriteFile(
         } catch (e: Exception) {
             Pair(false, "WriteFile: $e")
         }
-    }
-
-    override fun type(): ActionType {
-        return ActionType.WriteFile
     }
 
     override fun label(ctx: Context): String {
@@ -542,10 +514,6 @@ class ParseCSV(
         }
     }
 
-    override fun type(): ActionType {
-        return ActionType.ParseCSV
-    }
-
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_parse_csv)
     }
@@ -609,10 +577,6 @@ class ParseXML(
         } catch (e: Exception) {
             Pair(false, e.toString())
         }
-    }
-
-    override fun type(): ActionType {
-        return ActionType.ParseXML
     }
 
     override fun label(ctx: Context): String {
@@ -684,10 +648,6 @@ class RegexExtract(
         } catch (e: Exception) {
             Pair(false, e.toString())
         }
-    }
-
-    override fun type(): ActionType {
-        return ActionType.RegexExtract
     }
 
     override fun label(ctx: Context): String {
@@ -773,10 +733,6 @@ class ImportToSpamDB : IPermissiveAction {
         }
     }
 
-    override fun type(): ActionType {
-        return ActionType.ImportToSpamDB
-    }
-
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_import_to_spam_db)
     }
@@ -848,10 +804,6 @@ class ImportAsRegexRule(
         } catch (e: Exception) {
             Pair(false, e.toString())
         }
-    }
-
-    override fun type(): ActionType {
-        return ActionType.ImportAsRegexRule
     }
 
     override fun label(ctx: Context): String {
@@ -936,10 +888,6 @@ class ConvertNumber(
             )
         }
         return Pair(true, clearedRuleList)
-    }
-
-    override fun type(): ActionType {
-        return ActionType.ConvertNumber
     }
 
     override fun label(ctx: Context): String {

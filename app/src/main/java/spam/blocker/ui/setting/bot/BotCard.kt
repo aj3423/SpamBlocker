@@ -16,11 +16,14 @@ import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NonLazyGrid
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.util.loge
 
 
 @Composable
@@ -49,12 +52,17 @@ fun BotCard(
                 // schedule
                 RowVCenter {
                     val isScheduled = bot.enabled && bot.schedule != null
+
                     // Green active dot
                     if (isScheduled) {
-                        Canvas(
-                            modifier = Modifier.size(6.dp)
-                        ) {
-                            drawCircle(color = Color.Green, radius = size.minDimension / 2)
+                        RowVCenterSpaced(8) {
+                            Canvas(
+                                modifier = Modifier.size(6.dp)
+                            ) {
+                                drawCircle(color = Color.Green, radius = size.minDimension / 2)
+                            }
+
+                            GreyIcon16(bot.schedule!!.iconId)
                         }
                     }
 

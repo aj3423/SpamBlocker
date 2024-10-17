@@ -22,27 +22,9 @@ import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions
 
 // When adding a new IAction type, follow all the steps:
-//  - add to  `ActionType`
 //  - implement it in Actions.kt
 //  - add to  `defaultActions`
 //  - add to  `botModule` in BotSerializersModule.kt
-
-// Only append to this list, do not modify existing ones
-enum class ActionType {
-    CleanupHistory,
-    HttpDownload,
-    CleanupSpamDB,
-    BackupImport,
-    BackupExport,
-    ReadFile,
-    WriteFile,
-    ParseCSV,
-    ImportToSpamDB,
-    ImportAsRegexRule,
-    ConvertNumber,
-    ParseXML,
-    RegexExtract,
-}
 
 val defaultActions = listOf(
     HttpDownload(),
@@ -73,8 +55,6 @@ interface IAction {
     // the return value will be used as the input `arg` for the next Action
     // When it fails, it returns: <false, errorReasonString>
     fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> // return <Success, output>
-
-    fun type(): ActionType
 
     // Return values:
     // null: no permission needed

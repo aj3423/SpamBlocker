@@ -10,6 +10,7 @@ val botModule = SerializersModule {
     polymorphic(ISchedule::class) {
         subclass(Daily::class)
         subclass(Weekly::class)
+        subclass(Periodically::class)
     }
     polymorphic(IAction::class) {
         subclass(CleanupHistory::class)

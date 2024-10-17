@@ -21,32 +21,23 @@ data class Bot(
     val schedule: ISchedule? = null, // null means manually trigger
     val actions: List<IAction> = listOf(),
     val enabled: Boolean = false,
-    val workUUID: String? = null, // null means not started
+    val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag
 )
 
 
 // It returns the new workUUID if it's enabled
-fun reScheduleBot(ctx: Context, bot: Bot) : String? {
+fun reScheduleBot(ctx: Context, bot: Bot) {
 
     // 1. Stop previous schedule
-    if (!bot.workUUID.isNullOrEmpty()) {
-        MyWorkManager.cancelById(ctx, bot.workUUID)
-        // set the workUUID to null
-        BotTable.updateById(ctx, bot.id, bot.copy(workUUID = null))
-    }
+    MyWorkManager.cancelByTag(ctx, bot.workUUID)
 
     // 2. Start new schedule
     if (bot.enabled) {
-        val newWorkUUID = UUID.randomUUID().toString()
-
         MyWorkManager.schedule(
             ctx, bot.schedule!!.serialize(), bot.actions.serialize(),
-            workUUID = newWorkUUID
+            workTag = bot.workUUID
         )
-        BotTable.updateById(ctx, bot.id, bot.copy(workUUID = newWorkUUID))
-        return newWorkUUID
     }
-    return null
 }
 
 object BotTable {
@@ -75,7 +66,7 @@ object BotTable {
                         schedule = sch,
                         actions = actions,
                         enabled = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ENABLED)) == 1,
-                        workUUID = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_WORK_UUID)),
+                        workUUID = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_WORK_UUID)) ?: "",
                     )
 
                     ret += rec
@@ -115,7 +106,7 @@ object BotTable {
         cv.put(Db.COLUMN_DESC, r.desc)
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
-        cv.put(Db.COLUMN_WORK_UUID, r.workUUID)
+//        cv.put(Db.COLUMN_WORK_UUID, r.workUUID) // UUID never changes
 
         return db.update(Db.TABLE_BOT, cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }

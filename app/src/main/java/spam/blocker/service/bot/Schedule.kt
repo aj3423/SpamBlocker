@@ -33,7 +33,6 @@ import java.time.LocalDateTime
 import java.time.temporal.TemporalAdjusters
 
 // When adding a new ISchedule type, follow all the steps:
-//  - add to  `ScheduleType`
 //  - implement it
 //  - add to `defaultSchedules`
 //  - add to  `botModule` in BotSerializersModule.kt
@@ -42,29 +41,23 @@ import java.time.temporal.TemporalAdjusters
 val defaultSchedules = listOf (
     Daily(),
     Weekly(),
+    Periodically(),
 )
 
 val Workdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY)
 val Weekend = listOf(SATURDAY, SUNDAY)
 
-// Only append to this list, do not modify existing ones
-enum class ScheduleType {
-    Daily,
-    Weekly
-}
-
 interface ISchedule {
     fun isValid(): Boolean
     fun nextOccurrence(): Duration
-
-    // Different type id for each classes
-    fun type(): ScheduleType
 
     // A displaying label for the selecting spinner
     fun label(ctx: Context): String
 
     // A brief summary for all the current configurations, like: "Everyday 12:00"
     fun summary(ctx: Context): String
+
+    abstract val iconId: Int
 
     // Render configuration items on the editing dialog
     @Composable
@@ -136,16 +129,14 @@ class Daily(
         }
     }
 
-    override fun type(): ScheduleType {
-        return ScheduleType.Daily
-    }
+    override val iconId = R.drawable.ic_daily
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.daily)
     }
 
     override fun summary(ctx: Context): String {
-        return ctx.getString(R.string.daily) + " " + time.summary()
+        return time.summary()
     }
 
     @Composable
@@ -202,9 +193,7 @@ class Weekly(
         return delay
     }
 
-    override fun type(): ScheduleType {
-        return ScheduleType.Weekly
-    }
+    override val iconId = R.drawable.ic_weekly
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.weekly)
@@ -242,6 +231,40 @@ class Weekly(
                     time.hour = h
                     time.min = m
                 }
+            }
+        }
+    }
+}
+@Serializable
+@SerialName("Periodically")
+class Periodically(
+    var time: Time = Time()
+) : ISchedule {
+    override fun isValid(): Boolean {
+        return time.isValid() &&
+                !(time.hour == 0 && time.min == 0) // prevent infinite loop
+    }
+
+    override fun nextOccurrence(): Duration {
+        return Duration.ofHours(time.hour.toLong()).plusMinutes(time.min.toLong())
+    }
+
+    override val iconId = R.drawable.ic_repeat
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.periodically)
+    }
+
+    override fun summary(ctx: Context): String {
+        return time.summary()
+    }
+
+    @Composable
+    override fun Options() {
+        RowCenter(modifier = M.fillMaxWidth()) {
+            HourMinInput(time.hour, time.min) { h, m ->
+                time.hour = h
+                time.min = m
             }
         }
     }

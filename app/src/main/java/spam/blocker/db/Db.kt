@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 28
+        const val DB_VERSION = 29
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -175,9 +175,16 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXPANDED INTEGER")
         }
+
         // v3.0 introduces spam db and bot db
         if ((newVersion >= 28) && (oldVersion < 28)) {
             onCreate(db)
+        }
+
+        // v3.1 uses Bot.taskUUID as tag, it may have null value in v3.0.
+        // Set all bots' taskUUID to random uuid string
+        if ((newVersion >= 29) && (oldVersion < 29)) {
+            db.execSQL("UPDATE $TABLE_BOT SET $COLUMN_WORK_UUID = REPLACE(HEX(RANDOMBLOB(16)), '-', '') WHERE $COLUMN_WORK_UUID IS NULL;")
         }
     }
 }
