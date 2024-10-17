@@ -41,6 +41,7 @@ enum class ActionType {
     ImportAsRegexRule,
     ConvertNumber,
     ParseXML,
+    RegexExtract,
 }
 
 val defaultActions = listOf(
@@ -51,6 +52,7 @@ val defaultActions = listOf(
     WriteFile(),
     ParseCSV(),
     ParseXML(),
+    RegexExtract(),
     ConvertNumber(),
     CleanupSpamDB(),
     CleanupHistory(),

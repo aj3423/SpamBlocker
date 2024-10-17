@@ -2,65 +2,67 @@
     <string name="database">Base de datos</string>
     <string name="total">Total</string>
     <string name="replace_from">De</string>
-    <string name="replace_to">A</string>
+    <string name="replace_to">Para</string>
+    <string name="regex_pattern">RegEx</string>
 
     <string name="help_spam_db">
         <![CDATA[
-        Los números incluidos en esta base de datos se bloquearán.<br>
+        Los números en esta base de datos se bloquearán.<br>
         <br>
-        Puedes integrar cualquier base de datos pública, o incluso varias bases de datos. También puedes importar números desde archivos locales.<br>
+        Puedes integrar cualquier base de datos pública, o incluso varias bases de datos; también puedes importar números desde archivos locales.<br>
         <br>
-        Consulta la sección "Automatización" para programar una tarea de importación automática.<br>
+        Consulta la sección "Automatización" más abajo sobre cómo programar una tarea de importación automática.<br>
         <br>
-        Se aplica tanto a llamadas como a mensajes SMS.<br>
+        Se aplica tanto para llamadas como para mensajes SMS.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Los números de spam en la base de datos caducarán después de N días; los registros caducados se eliminarán automáticamente.</string>
+    <string name="help_spam_db_ttl">Los números de <short>spam</short> en la base de datos caducarán después de N días; los registros caducados se eliminarán automáticamente.</string>
     <string name="customize">Personalizar</string>
     <string name="workflow">Flujo de trabajo</string>
     <string name="workflows">Flujos de trabajo</string>
     <string name="automation">Automatización</string>
     <string name="help_workflows">
         <![CDATA[
-        Los flujos de trabajo se pueden usar para ejecutar tareas automáticamente, como actualizar la base de datos o realizar copias de seguridad automáticas.<br>
+        Los flujos de trabajo se pueden usar para ejecutar tareas automáticamente, como actualizar la base de datos o hacer una copia de seguridad automática.<br>
         <br>
-        Hay ajustes prestablecidos para una configuración rápida. También puedes crearlos desde cero o importarlos desde una configuración json compartida por otros usuarios.<br>
+        Hay valores predefinidos para una configuración rápida; también puedes crearla desde cero o importarla desde una configuración json que otros usuarios hayan compartido.<br>
         <br>
-        Si encuentras un flujo de trabajo que podría usarse ampliamente y debería agregarse a los ajustes preestablecidos, infórmalo en github.
+        Si encuentras algún flujo de trabajo que se pueda usar ampliamente y deba agregarse a los valores predefinidos, repórtalo en github.
         ]]>
     </string>
     <string name="manual">Manual</string>
 
     <string name="bot_preset_dnc"><no_translate>FTC - No llamar</no_translate></string>
-    <string name="bot_preset_cleanup_spam_db">Limpieza de base de datos de spam</string>
-    <string name="bot_preset_cleanup_history">Limpieza de historial</string>
+    <string name="bot_preset_cleanup_spam_db">Limpiar base de datos de <short>spam</short></string>
+    <string name="bot_preset_cleanup_history">Limpiar historial</string>
     <string name="bot_preset_auto_backup">Copia de seguridad automática</string>
 
     <string name="action_cleanup_history">Limpiar historial</string>
     <string name="action_http_download">Descarga HTTP</string>
-    <string name="action_cleanup_spam_db">Limpiar base de datos de spam</string>
+    <string name="action_cleanup_spam_db">Limpiar base de datos de <short>spam</short></string>
     <string name="action_backup_export">Exportar copia de seguridad</string>
     <string name="action_backup_import">Importar copia de seguridad</string>
     <string name="action_read_file">Leer archivo</string>
     <string name="action_write_file">Escribir archivo</string>
     <string name="action_parse_csv">Analizar CSV</string>
     <string name="action_parse_xml">Analizar XML</string>
-    <string name="action_import_to_spam_db">Importar a la base de datos de spam</string>
-    <string name="action_import_as_regex_rule">Importar como regla de expresión regular</string>
-    <string name="action_convert_number">Reemplazar número</string>
+    <string name="action_regex_extract">Extraer RegEx</string>
+    <string name="action_import_to_spam_db">Importar a la base de datos de <short>spam</short></string>
+    <string name="action_import_as_regex_rule">Importar como regla RegEx</string>
+    <string name="action_convert_number">Reemplazar <short>número</short></string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        Descarga de archivos HTTP como <u>bytes de contenido</u>
+        Descargar archivo HTTP como <u>bytes de contenido</u>
         ]]>
     </string>
-    <string name="help_action_cleanup_spam_db">Elimina los números caducados de la base de datos de spam.</string>
-    <string name="help_action_cleanup_history">Elimina los registros del historial caducados.</string>
+    <string name="help_action_cleanup_spam_db">Elimina los números caducados de la base de datos de <short>spam</short>.</string>
+    <string name="help_action_cleanup_history">Eliminar los registros de historial caducados.</string>
     <string name="help_action_backup_export">
         <![CDATA[
-        Exporta la configuración actual a <u>bytes de contenido</u>.
+        Exportar la configuración actual a <u>bytes de contenido</u>.
         ]]>
     </string>
     <string name="help_action_backup_import">
@@ -70,43 +72,48 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Obtén los <u>bytes de contenido</u> de un archivo.
+        Obtener <u>bytes de contenido</u> de un archivo.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Escribe <u>bytes de contenido</u> en un archivo.
+        Escribir <u>bytes de contenido</u> en un archivo.
         ]]>
     </string>
     <string name="help_action_parse_csv">
         <![CDATA[
-        Analiza los <u>bytes de contenido</u> csv a una <u>lista de números</u>
+        Analizar <u>bytes de contenido</u> csv en una <u>lista de números</u>
         ]]>
     </string>
     <string name="help_action_parse_xml">
         <![CDATA[
-        Analiza los <u>bytes de contenido</u> xml mediante <b>xpath</b> y genera una <u>lista de números.</u>
+        Analizar <u>bytes de contenido</u> xml usando <b>xpath</b> y generar una <u>lista de números</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Extrae una <u>lista de números</u> de los <u>bytes de contenido</u> de entrada utilizando esta RegEx.
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        Agrega una <u>lista de números</u> a la base de datos de spam.
+        Agregar una <u>lista de números</u> a la base de datos de <short>spam</short>.
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Genera una nueva regla de expresión regular desde una <u>lista de números</u>.
+        Genera una nueva regla RegEx desde una <u>lista de números</u>.
         ]]>
     </string>
     <string name="help_action_convert_number">
         <![CDATA[
-        Convierte la <u>lista de números</u> al formato que utiliza esta aplicación.<br>
+        Convertir la <u>lista de números</u> al formato que usa esta aplicación.<br>
         <br>
-        Por ejemplo, añade dos acciones para reemplazar:<br>
+        Por ejemplo, agregar dos acciones para reemplazar:<br>
         `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a `12345<font color="#03DAC5"><b>....</b></font>`:<br>
         <br>
-        &ensp; - Reemplaza `<font color="#fa7f71">(+)</font>` por ``<br>
-        &ensp; - Reemplaza `<font color="#fa7f71">(#)</font>` por `<font color="#03DAC5"><b>.</b></font>`<br>
+        &ensp; - Reemplazar `<font color="#fa7f71">(+)</font>` por ``<br>
+        &ensp; - Reemplazar `<font color="#fa7f71">(#)</font>` por `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
 </resources>

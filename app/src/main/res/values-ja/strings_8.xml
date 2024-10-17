@@ -1,37 +1,38 @@
 <resources>
     <string name="database">データベース</string>
     <string name="total">合計</string>
-    <string name="replace_from">から</string>
-    <string name="replace_to">に</string>
+    <string name="replace_from">前</string>
+    <string name="replace_to">後</string>
+    <string name="regex_pattern">正規表現</string>
 
     <string name="help_spam_db">
         <![CDATA[
-        このデータベースの番号はブロックされます。<br>
+        このデータベース内の電話番号はブロックされます。<br>
         <br>
-        パブリックデータベースまたは複数のデータベースを統合することもできます。また、ローカルファイルから番号をインポートすることもできます。<br>
+        任意の公開データベース、または複数のデータベースを統合できますが、ローカルファイルから電話番号をインポートすることもできます。<br>
         <br>
-        自動インポートタスクをスケジュールする方法については、下記の「自動化」セクションで確認してください。<br>
+        自動インポートタスクをスケジュールする方法については、以下の「自動化」セクションを確認してください。<br>
         <br>
         通話とSMSメッセージの両方に適用されます。<br>
         <br>
-        <font color="#ea86ff"><b>優先度: 0</b></font>
+        <font color="#ea86ff"><b>優先順位: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">データベース内のスパム番号はN日後に期限切れになり、有効期限が切れたレコードは自動的に削除されます。</string>
+    <string name="help_spam_db_ttl">データベース内のスパム番号は N 日後に期限切れになり、期限切れのレコードは自動的に削除されます。</string>
     <string name="customize">カスタマイズ</string>
     <string name="workflow">ワークフロー</string>
     <string name="workflows">ワークフロー</string>
     <string name="automation">自動化</string>
     <string name="help_workflows">
         <![CDATA[
-        ワークフローを使用して、データベースの更新、または自動バックアップなどのタスクを自動的に実行できます。<br>
+        ワークフローを使用して、データベースの更新や自動バックアップなど、タスクを自動的に実行できます。<br>
         <br>
-        すばやく設定するためのプリセットがあり、最初から作成したり、他のユーザーから共有されたjson設定からインポートしたりすることもできます。<br>
+        クイックセットアップのためのプリセットがありますが、最初から作成したり、他のユーザーから共有された json 設定からインポートしたりすることもできます。<br>
         <br>
-        広く使用でき、プリセットに追加する必要があるワークフローを見つけた場合は、githubで報告してください。
+        広く使用され、プリセットに追加する必要があるワークフローがある場合は、github で報告してください。
         ]]>
     </string>
-    <string name="manual">マニュアル</string>
+    <string name="manual">手動</string>
 
     <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">スパムデータベースのクリーンアップ</string>
@@ -39,21 +40,22 @@
     <string name="bot_preset_auto_backup">自動バックアップ</string>
 
     <string name="action_cleanup_history">履歴のクリーンアップ</string>
-    <string name="action_http_download">HTTPダウンロード</string>
-    <string name="action_cleanup_spam_db">スパムデータベースのクリーンアップ</string>
-    <string name="action_backup_export">バックアップエクスポート</string>
-    <string name="action_backup_import">バックアップインポート</string>
-    <string name="action_read_file">ファイルの読み取り</string>
-    <string name="action_write_file">ファイルへの書き込み</string>
-    <string name="action_parse_csv">CSVのパース</string>
-    <string name="action_parse_xml">XMLのパース</string>
-    <string name="action_import_to_spam_db">スパムデータベースにインポート</string>
+    <string name="action_http_download">HTTP ダウンロード</string>
+    <string name="action_cleanup_spam_db">スパムのデータベースのクリーンアップ</string>
+    <string name="action_backup_export">バックアップのエクスポート</string>
+    <string name="action_backup_import">バックアップのインポート</string>
+    <string name="action_read_file">ファイルの読み込み</string>
+    <string name="action_write_file">ファイルの書き込み</string>
+    <string name="action_parse_csv">CSV の解析</string>
+    <string name="action_parse_xml">XML の解析</string>
+    <string name="action_regex_extract">正規表現の抽出</string>
+    <string name="action_import_to_spam_db">スパムデータベースへのインポート</string>
     <string name="action_import_as_regex_rule">正規表現ルールとしてインポート</string>
     <string name="action_convert_number">番号の置換</string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        <u>コンテンツバイト</u>としてファイルをHTTPダウンロードします
+        <u>コンテンツバイト</u>としてファイルを HTTP ダウンロード
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">スパムデータベースから期限切れの番号を削除します。</string>
@@ -80,30 +82,35 @@
     </string>
     <string name="help_action_parse_csv">
         <![CDATA[
-        CSV<u>コンテンツバイト</u>を<u>数値リスト</u>にパースします
+        csv <u>コンテンツバイト</u>を<u>番号のリスト</u>に解析します
         ]]>
     </string>
     <string name="help_action_parse_xml">
         <![CDATA[
-        <b>xpath</b>を使用してXML<u>コンテンツバイト</u>を解析し、<u>数値リスト</u>を生成します。
+        <b>xpath</b> を使用して xml <u>コンテンツバイト</u>を解析し、<u>番号のリスト</u>を生成します。
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        この正規表現を使用して、入力<u>コンテンツバイト</u>から<u>番号のリスト</u>を抽出します。
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        スパムデータベースに<u>数値リスト</u>を追加します。
+        スパムデータベースに<u>番号のリスト</u>を追加します。
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        <u>数値リスト</u>から新しい正規表現ルールを生成します。
+        <u>番号のリスト</u>から新しい正規表現ルールを生成します。
         ]]>
     </string>
     <string name="help_action_convert_number">
         <![CDATA[
-        <u>数値リスト</u>をこのアプリが使用する形式に変換します。<br>
+        <u>番号のリスト</u>を、このアプリで使用している形式に変換します。<br>
         <br>
-        たとえば、次の置換を行うアクションを2つ追加します:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` から `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        たとえば、置換する 2 つの操作を追加します。<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` から `12345<font color="#03DAC5"><b>....</b></font>`: <br>
         <br>
         &ensp; - `<font color="#fa7f71">(+)</font>` を `` に置換<br>
         &ensp; - `<font color="#fa7f71">(#)</font>` を `<font color="#03DAC5"><b>.</b></font>` に置換<br>

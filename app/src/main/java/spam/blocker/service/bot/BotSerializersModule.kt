@@ -21,6 +21,7 @@ val botModule = SerializersModule {
         subclass(WriteFile::class)
         subclass(ParseCSV::class)
         subclass(ParseXML::class)
+        subclass(RegexExtract::class)
         subclass(ImportToSpamDB::class)
         subclass(ImportAsRegexRule::class)
         subclass(ConvertNumber::class)

@@ -325,7 +325,7 @@ class BackupImport(
 
             Events.configImported.fire()
             return Pair(true, null)
-        } catch (e:Exception) {
+        } catch (e: Exception) {
             return Pair(false, "$e")
         }
     }
@@ -446,9 +446,11 @@ class WriteFile(
 
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         if (arg !is ByteArray) {
-            return Pair(false, ctx.getString(R.string.invalid_input_type).format(
-                ParamType.ByteArray.name, arg?.javaClass?.simpleName
-            ))
+            return Pair(
+                false, ctx.getString(R.string.invalid_input_type).format(
+                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                )
+            )
         }
         val path = dir.resolvePathTags()
         val fn = filename.resolveTimeTags()
@@ -649,6 +651,92 @@ class ParseXML(
 }
 
 /*
+input: ByteArray
+output: List<RegexRule>
+ */
+@Serializable
+@SerialName("RegexExtract")
+class RegexExtract(
+    var pattern: String = "",
+    var regexFlags: Int = Def.DefaultRegexFlags,
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+        if (arg !is ByteArray) {
+            return Pair(
+                false, ctx.getString(R.string.invalid_input_type).format(
+                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                )
+            )
+        }
+
+        return try {
+            val opts = Util.flagsToRegexOptions(regexFlags)
+
+            val haystack = arg.toString(Charsets.UTF_8)
+            val all = pattern.toRegex(opts).findAll(haystack)
+
+            val rules = all.map {
+                RegexRule(pattern = it.groupValues[1])
+            }.toList()
+
+            Pair(true, rules)
+        } catch (e: Exception) {
+            Pair(false, e.toString())
+        }
+    }
+
+    override fun type(): ActionType {
+        return ActionType.RegexExtract
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_regex_extract)
+    }
+
+    override fun summary(ctx: Context): String {
+        val label = ctx.getString(R.string.regex_pattern)
+        return "$label: $pattern"
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_regex_extract)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.ByteArray
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.RuleList
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_regex_capture)
+    }
+
+    @Composable
+    override fun Options() {
+        val flags = remember { mutableIntStateOf(regexFlags) }
+        RegexInputBox(
+            regexStr = pattern,
+            label = { Text(Str(R.string.regex_pattern)) },
+            regexFlags = flags,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    pattern = newVal
+                }
+            },
+            onFlagsChange = {
+                flags.intValue = it
+                regexFlags = it
+            }
+        )
+    }
+}
+
+/*
 input: List<RegexRule>
 output: null
  */
@@ -816,6 +904,7 @@ class ImportAsRegexRule(
         }
     }
 }
+
 /*
 input: List<RegexRule>
 output: List<RegexRule>
@@ -883,7 +972,7 @@ class ConvertNumber(
 
         val flagsState = remember { mutableIntStateOf(flags) }
         RegexInputBox(
-            label = { Text(Str(R.string.replace_from))},
+            label = { Text(Str(R.string.replace_from)) },
             regexStr = from,
             onRegexStrChange = { newVal, hasErr ->
                 if (!hasErr) {
@@ -897,10 +986,10 @@ class ConvertNumber(
             }
         )
         StrInputBox(
-            label = { Text(Str(R.string.replace_to))},
+            label = { Text(Str(R.string.replace_to)) },
             text = to,
             onValueChange = {
-                to  = it
+                to = it
             }
         )
     }

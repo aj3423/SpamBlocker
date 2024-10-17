@@ -3,6 +3,7 @@
     <string name="total">Total</string>
     <string name="replace_from">From</string>
     <string name="replace_to">To</string>
+    <string name="regex_pattern">RegEx</string>
 
     <string name="help_spam_db">
         <![CDATA[
@@ -47,6 +48,7 @@
     <string name="action_write_file">Write File</string>
     <string name="action_parse_csv">Parse CSV</string>
     <string name="action_parse_xml">Parse XML</string>
+    <string name="action_regex_extract">Regex Extract</string>
     <string name="action_import_to_spam_db">Import to Spam Database</string>
     <string name="action_import_as_regex_rule">Import as Regex Rule</string>
     <string name="action_convert_number">Replace Number</string>
@@ -86,6 +88,11 @@
     <string name="help_action_parse_xml">
         <![CDATA[
         Parse xml <u>content bytes</u> using <b>xpath</b> and generate a <u>list of numbers.</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Extract a <u>list of numbers.</u> from the input <u>content bytes</u> using this regex.
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
