@@ -7,8 +7,7 @@
         - uses: actions/checkout@v4
 
         - name: Remove internet permission from manifest
-          run: |
-          sed -i '/android.permission.INTERNET/d' app/src/main/AndroidManifest.xml
+          run: sed -i '/android.permission.INTERNET/d' app/src/main/AndroidManifest.xml
 
         - name: Setup JDK
           uses: actions/setup-java@v4
