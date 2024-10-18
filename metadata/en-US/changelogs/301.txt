@@ -1,0 +1,7 @@
+Enhancement:
+- Collapse/expand the regex list by clicking the list header.
+
+Fix: 
+- Imported workflow not saved.
+- Scheduled task not run.
+    - If you are upgrading from v3.0, please do a backup and restore, it will fix all the schedule issues.
