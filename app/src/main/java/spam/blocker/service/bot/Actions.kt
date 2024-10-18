@@ -57,7 +57,7 @@ class CleanupHistory(
 ) : IPermissiveAction {
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         val now = Now.currentMillis()
-        val expireTimeMs = now - expiry * 24 * 3600 * 1000
+        val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
         logi("now clean up history db, deleting data before timestamp: $expireTimeMs")
 
@@ -184,7 +184,7 @@ class CleanupSpamDB(
 
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         val now = Now.currentMillis()
-        val expireTimeMs = now - expiry * 24 * 3600 * 1000
+        val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
         logi("clean up spam db, deleting data before timestamp: $expireTimeMs")
         SpamTable.deleteBeforeTimestamp(ctx, expireTimeMs)
