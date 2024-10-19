@@ -119,6 +119,15 @@ object BotTable {
             it.moveToFirst()
         }
     }
+    fun isWorkUuidExist(ctx: Context, workUUID: String) : Boolean {
+        val db = Db.getInstance(ctx).readableDatabase
+
+        val cursor = db.rawQuery("SELECT * FROM ${Db.TABLE_BOT} WHERE ${Db.COLUMN_WORK_UUID} = '$workUUID'", null)
+
+        return cursor.use {
+            it.moveToFirst()
+        }
+    }
     fun clearAll(ctx: Context) {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${Db.TABLE_BOT}"

@@ -26,6 +26,7 @@ import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.UUID
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit
@@ -445,5 +446,13 @@ object Util {
             return true
         }
         return false
+    }
+    fun isUUID(string: String): Boolean {
+        return try {
+            UUID.fromString(string)
+            true
+        } catch (exception: IllegalArgumentException) {
+            false
+        }
     }
 }

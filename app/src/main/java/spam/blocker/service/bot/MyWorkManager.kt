@@ -7,7 +7,9 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import spam.blocker.db.BotTable
 import spam.blocker.def.Def
+import spam.blocker.util.Util
 import spam.blocker.util.loge
 import spam.blocker.util.logi
 import java.util.UUID
@@ -48,6 +50,15 @@ class MyWorker(
         val scheduleConfig = data[Param_ScheduleConfig] as String
         val actionsConfig = data[Param_ActionsConfig] as String
         val workTag = data[Param_WorkTag] as String
+
+        // This check can be removed later, it's a temporary fix for the previous bug
+        //   that a workflow is not stopped after being deleted.
+        // Don't re-schedule it if the work uuid no longer exists in the database.
+        if (workTag.isEmpty())
+            return
+        if(!(Util.isUUID(workTag) && BotTable.isWorkUuidExist(ctx, workTag)))
+            return
+
 
         MyWorkManager.schedule(
             ctx,
