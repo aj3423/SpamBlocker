@@ -1,0 +1,4 @@
+New:
+- Each release will also include an apk that doesn't require internet permission. (No android.permission.INTERNET in manifest xml)
+
+Fix: workflow not re-scheduled after Delete/Undelete

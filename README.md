@@ -71,7 +71,7 @@ It works without replacing your default Call/SMS app.
 # Privacy
  No data collection
  - Internet access:
-   - It's only used for downloading spam numbers, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147).
+   - It's only used for downloading spam numbers, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147), or download the offline version from the release page.
  - No communication with other app
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
 
