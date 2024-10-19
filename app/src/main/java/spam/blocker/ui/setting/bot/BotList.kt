@@ -20,6 +20,8 @@ import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.BotTable
+import spam.blocker.db.reScheduleBot
+import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
@@ -96,18 +98,23 @@ fun BotList() {
                             onSwipe = {
                                 // 1. delete from db
                                 BotTable.deleteById(ctx, bot.id)
-
-                                // 2. remove from ArrayList
+                                // 2. remove from UI
                                 vm.list.removeAt(index)
+                                // 3. Stop previous schedule
+                                MyWorkManager.cancelByTag(ctx, bot.workUUID)
 
-                                // 3. show snackbar
+                                // 4. show snackbar
                                 SnackBar.show(
                                     coroutineScope,
                                     bot.desc,
                                     ctx.getString(R.string.undelete),
                                 ) {
+                                    // 1. add to db
                                     BotTable.addRecordWithId(ctx, bot)
+                                    // 2. add to UI
                                     vm.list.add(index, bot)
+                                    // 3. re-schedule
+                                    reScheduleBot(ctx, bot)
                                 }
                             }
                         )
