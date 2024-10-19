@@ -22,6 +22,7 @@ import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.Now
 import spam.blocker.util.Permissions
+import spam.blocker.util.PhoneNumber
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.OffTime
@@ -103,7 +104,8 @@ class RuleTest {
         every { Permissions.isReadSmsPermissionGranted(any()) } returns true
     }
     private fun mock_calls(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
-        every { Permissions.countHistoryCallByNumber(any(), rawNumber, direction, any()) } answers {
+        val number = PhoneNumber(ctx, rawNumber)
+        every { Permissions.countHistoryCallByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -114,7 +116,8 @@ class RuleTest {
         }
     }
     private fun mock_sms(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
-        every { Permissions.countHistorySMSByNumber(any(), rawNumber, direction, any()) } answers {
+        val number = PhoneNumber(ctx, rawNumber)
+        every { Permissions.countHistorySMSByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
