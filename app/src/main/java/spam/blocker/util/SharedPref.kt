@@ -113,6 +113,10 @@ class RegexOptions(ctx: Context) : SharedPref(ctx) {
     fun isQuickCopyCollapsed(): Boolean { return readBoolean(Def.SETTING_QUICK_COPY_RULE_COLLAPSED, false) }
     fun setQuickCopyCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_QUICK_COPY_RULE_COLLAPSED, enabled) }
 }
+class BotOptions(ctx: Context) : SharedPref(ctx) {
+    fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_BOT_LIST_COLLAPSED, false) }
+    fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_BOT_LIST_COLLAPSED, enabled) }
+}
 
 class HistoryOptions(ctx: Context) : SharedPref(ctx) {
     fun getShowPassed(): Boolean { return readBoolean(Def.SETTING_SHOW_PASSED, true) }

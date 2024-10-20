@@ -100,6 +100,22 @@ class RegexOptions {
 }
 
 @Serializable
+class BotOptions {
+    var listCollapsed = false
+
+    fun load(ctx: Context) {
+        val spf = spam.blocker.util.SharedPref.BotOptions(ctx)
+        listCollapsed = spf.isListCollapsed()
+    }
+
+    fun apply(ctx: Context) {
+        spam.blocker.util.SharedPref.BotOptions(ctx).apply {
+            setListCollapsed(listCollapsed)
+        }
+    }
+}
+
+@Serializable
 class Theme {
     var type = 0
     fun load(ctx: Context) {
@@ -348,6 +364,7 @@ class Configs {
     val global = Global()
     val historyOptions = HistoryOptions()
     val regexOptions = RegexOptions()
+    val botOptions = BotOptions()
     val theme = Theme()
     val language = Language()
 
@@ -372,6 +389,7 @@ class Configs {
         global.load(ctx)
         historyOptions.load(ctx)
         regexOptions.load(ctx)
+        botOptions.load(ctx)
         theme.load(ctx)
         language.load(ctx)
 
@@ -398,6 +416,7 @@ class Configs {
         global.apply(ctx)
         historyOptions.apply(ctx)
         regexOptions.apply(ctx)
+        botOptions.apply(ctx)
         theme.apply(ctx)
         language.apply(ctx)
 

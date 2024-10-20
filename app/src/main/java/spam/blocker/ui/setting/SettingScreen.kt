@@ -177,8 +177,10 @@ fun SettingScreen() {
                     ) {
                         // Bot list
                         LaunchedEffect(true) { G.botVM.reload(ctx) }
-                        BotHeader()
-                        BotList()
+                        BotHeader(G.botVM)
+                        AnimatedVisibleV(!G.botVM.listCollapsed.value) {
+                            BotList()
+                        }
                     }
                 }
                 Section(

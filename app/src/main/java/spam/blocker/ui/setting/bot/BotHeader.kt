@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.bot
 
+import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -9,18 +10,24 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 
 // The row:
 //   "Number Rule"       [Add] [Test]
 @Composable
-fun BotHeader() {
+fun BotHeader(
+    vm: BotViewModel,
+) {
     val ctx = LocalContext.current
 
     val initialBotToEdit = remember { mutableStateOf(Bot()) }
@@ -80,7 +87,20 @@ fun BotHeader() {
     }
 
     LabeledRow(
-        labelId = R.string.workflows,
+        label = {
+            RowVCenterSpaced(4) {
+                SettingLabel(
+                    labelId = R.string.workflows,
+                    modifier = M.clickable { vm.toggleCollapse(ctx) }
+                )
+                if (vm.listCollapsed.value) {
+                    GreyIcon16(
+                        iconId = R.drawable.ic_dropdown_arrow,
+                        modifier = M.clickable { vm.toggleCollapse(ctx) }
+                    )
+                }
+            }
+        },
         helpTooltipId = R.string.help_workflows,
     ) {
         MenuButton(

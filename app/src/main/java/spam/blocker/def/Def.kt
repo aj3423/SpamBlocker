@@ -48,6 +48,7 @@ object Def {
     const val SETTING_NUMBER_RULE_COLLAPSED = "number_rule_collapsed"
     const val SETTING_CONTENT_RULE_COLLAPSED = "content_rule_collapsed"
     const val SETTING_QUICK_COPY_RULE_COLLAPSED = "quick_copy_rule_collapsed"
+    const val SETTING_BOT_LIST_COLLAPSED = "bot_list_collapsed"
 
 
     const val DEFAULT_SPAM_DB_TTL = 90 // days
