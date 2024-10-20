@@ -75,7 +75,7 @@ fun BotList() {
     }
 
     val contextMenuItems = mutableListOf<IMenuItem>()
-    if (clickedIndex >= 0 && clickedIndex < vm.bots.size) {
+    if (clickedIndex >= 0 && clickedIndex < vm.bots.size && vm.bots[clickedIndex].enabled) {
         contextMenuItems += CustomItem{
             var label by remember { mutableStateOf(
                 Util.durationString(ctx, vm.bots[clickedIndex].schedule!!.nextOccurrence())
