@@ -62,7 +62,7 @@ fun BotCard(
                                 drawCircle(color = Color.Green, radius = size.minDimension / 2)
                             }
 
-                            GreyIcon16(bot.schedule!!.iconId)
+                            GreyIcon16(bot.schedule!!.iconId())
                         }
                     }
 

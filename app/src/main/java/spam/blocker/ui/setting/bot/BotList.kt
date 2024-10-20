@@ -5,6 +5,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
@@ -16,6 +17,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
@@ -25,12 +28,17 @@ import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.widgets.CustomItem
+import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.Util
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -41,12 +49,12 @@ fun BotList() {
 
     val editTrigger = rememberSaveable { mutableStateOf(false) }
 
-    var clickedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var clickedIndex by rememberSaveable { mutableIntStateOf(-1) }
 
     if (editTrigger.value) {
         EditBotDialog(
             trigger = editTrigger,
-            initial = vm.list[clickedIndex],
+            initial = vm.bots[clickedIndex],
             onSave = { updatedBot ->
                 // 1. update in db
                 BotTable.updateById(ctx, updatedBot.id, updatedBot)
@@ -62,20 +70,45 @@ fun BotList() {
         BotImportExportDialog(
             trigger = exportTrigger,
             isExport = true,
-            initialText = botPrettyJson.encodeToString(vm.list[clickedIndex]),
+            initialText = botPrettyJson.encodeToString(vm.bots[clickedIndex]),
         )
     }
 
-    val menuLabels = listOf(
-        R.string.export
+    val contextMenuItems = mutableListOf<IMenuItem>()
+    if (clickedIndex >= 0 && clickedIndex < vm.bots.size) {
+        contextMenuItems += CustomItem{
+            var label by remember { mutableStateOf(
+                Util.durationString(ctx, vm.bots[clickedIndex].schedule!!.nextOccurrence())
+            ) }
+            DisposableEffect(true) {
+                val job = coroutineScope.launch {
+                    while (true) {
+                        delay(1000) // Delay for 1 second
+                        label = Util.durationString(ctx, vm.bots[clickedIndex].schedule!!.nextOccurrence())
+                    }
+                }
+                onDispose {
+                    job.cancel()
+                }
+            }
+            LabelItem(
+                label = label,
+                icon = { GreyIcon16(R.drawable.ic_hourglass)}
+            ).Compose(it)
+        }
+        contextMenuItems += DividerItem()
+    }
+
+    val labels = listOf(
+        ctx.getString(R.string.export),
     )
-    val menuIcons = listOf(
-        R.drawable.ic_backup_export
+    val icons = listOf(
+        R.drawable.ic_backup_export,
     )
-    val contextMenuItems = menuLabels.mapIndexed { menuIndex, label ->
-        LabelItem(
-            label = ctx.getString(label),
-            icon = { GreyIcon16(menuIcons[menuIndex]) }
+    labels.forEachIndexed { menuIndex, label ->
+        contextMenuItems += LabelItem(
+            label = label,
+            icon = { GreyIcon16(icons[menuIndex]) }
         ) {
             when (menuIndex) {
                 0 -> { // export
@@ -89,7 +122,7 @@ fun BotList() {
         modifier = M.nestedScroll(DisableNestedScrolling()),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        vm.list.forEachIndexed { index, bot ->
+        vm.bots.forEachIndexed { index, bot ->
             key(bot.id) {
                 DropdownWrapper(items = contextMenuItems) { contextMenuExpanded ->
 
@@ -99,7 +132,7 @@ fun BotList() {
                                 // 1. delete from db
                                 BotTable.deleteById(ctx, bot.id)
                                 // 2. remove from UI
-                                vm.list.removeAt(index)
+                                vm.bots.removeAt(index)
                                 // 3. Stop previous schedule
                                 MyWorkManager.cancelByTag(ctx, bot.workUUID)
 
@@ -112,7 +145,7 @@ fun BotList() {
                                     // 1. add to db
                                     BotTable.addRecordWithId(ctx, bot)
                                     // 2. add to UI
-                                    vm.list.add(index, bot)
+                                    vm.bots.add(index, bot)
                                     // 3. re-schedule
                                     reScheduleBot(ctx, bot)
                                 }

@@ -9,6 +9,8 @@ import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
 import android.util.Log
 import androidx.core.content.getSystemService
+import spam.blocker.def.Def.ANDROID_11
+import spam.blocker.def.Def.ANDROID_12
 
 class PhoneNumber(private val ctx: Context, private val rawNumber: String) {
     private val candidateCountries: Set<String> by lazy {
@@ -19,7 +21,7 @@ class PhoneNumber(private val ctx: Context, private val rawNumber: String) {
         if (rawNumber == otherNumber) { // short circuit
             return true
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= ANDROID_12) {
             candidateCountries.forEach {
                 if(PhoneNumberUtils.areSamePhoneNumber(rawNumber, otherNumber, it)) {
                     return true
@@ -40,7 +42,7 @@ class PhoneNumber(private val ctx: Context, private val rawNumber: String) {
         // Determine country for each mobile network the device is currently in:
         val telephony = ctx.getSystemService<TelephonyManager>()!!
         codes += telephony.networkCountryIso
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= ANDROID_11) {
             val slots = telephony.activeModemCount
             for (slot in 0..<slots) {
                 try {

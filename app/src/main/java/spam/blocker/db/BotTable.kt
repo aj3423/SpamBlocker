@@ -9,6 +9,8 @@ import kotlinx.serialization.Serializable
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager
+import spam.blocker.service.bot.clone
+import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
@@ -18,7 +20,7 @@ import java.util.UUID
 data class Bot(
     val id: Long = 0,
     val desc: String = "",
-    val schedule: ISchedule? = null, // null means manually trigger
+    val schedule: ISchedule? = defaultSchedules[0].clone(), // nullable for historical compatible
     val actions: List<IAction> = listOf(),
     val enabled: Boolean = false,
     val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag

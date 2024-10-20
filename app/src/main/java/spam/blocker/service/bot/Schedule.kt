@@ -57,7 +57,9 @@ interface ISchedule {
     // A brief summary for all the current configurations, like: "Everyday 12:00"
     fun summary(ctx: Context): String
 
-    abstract val iconId: Int
+    // Use a function to avoid being serialized to json
+    // And to avoid using variable with @Transient, it doesn't support fields in interface.
+    fun iconId(): Int
 
     // Render configuration items on the editing dialog
     @Composable
@@ -129,7 +131,7 @@ class Daily(
         }
     }
 
-    override val iconId = R.drawable.ic_daily
+    override fun iconId() : Int { return R.drawable.ic_daily }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.daily)
@@ -193,7 +195,7 @@ class Weekly(
         return delay
     }
 
-    override val iconId = R.drawable.ic_weekly
+    override fun iconId() : Int { return R.drawable.ic_weekly}
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.weekly)
@@ -249,7 +251,7 @@ class Periodically(
         return Duration.ofHours(time.hour.toLong()).plusMinutes(time.min.toLong())
     }
 
-    override val iconId = R.drawable.ic_repeat
+    override fun iconId() : Int { return R.drawable.ic_repeat }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.periodically)

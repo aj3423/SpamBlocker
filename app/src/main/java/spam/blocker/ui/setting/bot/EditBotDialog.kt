@@ -128,7 +128,7 @@ fun EditBotDialog(
                                 val items = defaultSchedules.map {
                                     LabelItem(
                                         label = it.label(ctx),
-                                        icon = { GreyIcon16(it.iconId) }
+                                        icon = { GreyIcon16(it.iconId()) }
                                     ) { menuExpanded ->
                                         schedule.value = it
                                         menuExpanded.value = false

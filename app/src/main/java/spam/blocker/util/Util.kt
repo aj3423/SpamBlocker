@@ -22,6 +22,7 @@ import spam.blocker.util.SharedPref.SharedPref
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.Duration
 import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
@@ -67,6 +68,7 @@ private fun toValue(element: Any) = when (element) {
     is JSONArray -> element.toList()
     else -> element
 }
+
 fun JSONArray.toList(): List<Any?> =
     (0 until length()).map { index -> toValue(get(index)) }
 
@@ -75,7 +77,6 @@ fun JSONObject.toMap(): Map<String, Any?> =
 
 fun JSONObject.toStringMap(): Map<String, String> =
     keys().asSequence().associateWith { key -> toValue(get(key)) as String }
-
 
 
 object Util {
@@ -125,6 +126,27 @@ object Util {
         } else {
             fullDateString(timestamp)
         }
+    }
+
+    val MIN: Long = 60
+    val HOUR: Long = 60 * MIN
+    val DAY: Long = 24 * HOUR
+
+    fun durationString(ctx: Context, dur: Duration): String {
+        val parts = mutableListOf<String>()
+
+        val days = dur.seconds / DAY
+        val hours = dur.seconds % DAY / HOUR
+        val minutes = dur.seconds % HOUR / MIN
+        val seconds = dur.seconds % MIN
+
+        if (days > 0) {
+            val nDays = ctx.resources.getQuantityString(R.plurals.days, days.toInt(), days)
+            parts += "$nDays "
+        }
+        parts += "%02d:%02d:%02d".format(hours, minutes, seconds)
+
+        return parts.joinToString(" ")
     }
 
     // check if a string only contains:
@@ -431,6 +453,7 @@ object Util {
         val data = file.readBytes()
         return data
     }
+
     fun writeFile(dir: String, filename: String, data: ByteArray) {
         val file = File(dir, filename)
         file.writeBytes(data)
@@ -447,6 +470,7 @@ object Util {
         }
         return false
     }
+
     fun isUUID(string: String): Boolean {
         return try {
             UUID.fromString(string)

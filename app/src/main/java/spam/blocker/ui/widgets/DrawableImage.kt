@@ -120,15 +120,12 @@ public class DrawablePainter(
     }
 
     override fun applyLayoutDirection(layoutDirection: LayoutDirection): Boolean {
-        if (Build.VERSION.SDK_INT >= 23) {
-            return drawable.setLayoutDirection(
-                when (layoutDirection) {
-                    LayoutDirection.Ltr -> View.LAYOUT_DIRECTION_LTR
-                    LayoutDirection.Rtl -> View.LAYOUT_DIRECTION_RTL
-                }
-            )
-        }
-        return false
+        return drawable.setLayoutDirection(
+            when (layoutDirection) {
+                LayoutDirection.Ltr -> View.LAYOUT_DIRECTION_LTR
+                LayoutDirection.Rtl -> View.LAYOUT_DIRECTION_RTL
+            }
+        )
     }
 
     override val intrinsicSize: Size get() = drawableIntrinsicSize
@@ -160,7 +157,7 @@ public class DrawablePainter(
  * @sample com.google.accompanist.sample.drawablepainter.BasicSample
  */
 @Composable
-public fun rememberDrawablePainter(drawable: Drawable?): Painter = remember(drawable) {
+fun rememberDrawablePainter(drawable: Drawable?): Painter = remember(drawable) {
     when (drawable) {
         null -> EmptyPainter
         is ColorDrawable -> ColorPainter(Color(drawable.color))
