@@ -111,6 +111,10 @@ object Permissions {
         return isPermissionGranted(ctx, Manifest.permission.READ_CALL_LOG)
     }
 
+    fun isPhoneStatePermissionGranted(ctx: Context): Boolean {
+        return isPermissionGranted(ctx, Manifest.permission.READ_PHONE_STATE)
+    }
+
     fun isReadSmsPermissionGranted(ctx: Context): Boolean {
         return isPermissionGranted(ctx, Manifest.permission.READ_SMS)
     }
@@ -168,17 +172,11 @@ object Permissions {
 
     fun countHistoryCallByNumber(
         ctx: Context,
-        rawNumber: String,
+        phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
     ): Int {
         val selection = mutableListOf(
-            "REPLACE(REPLACE(REPLACE(${Calls.NUMBER}, '-', ''), ' ', ''), '+', '') LIKE '${
-                rawNumber
-                    .replace(" ", "")
-                    .replace("-", "")
-                    .replace("+", "")
-            }'",
             "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
         )
 
@@ -192,32 +190,33 @@ object Permissions {
             )
         }
 
-        val cursor = ctx.contentResolver.query(
+        var count = 0
+        ctx.contentResolver.query(
             Calls.CONTENT_URI,
-            null,
+            arrayOf(Calls.NUMBER),
             selection.joinToString(" AND "),
             null,
             null
-        )
-        val count = cursor?.count ?: 0
-
-        cursor?.close()
+        )?.use {
+            if(it.moveToFirst()) {
+                do {
+                    val calledNumber = it.getString(0)
+                    if(phoneNumber.isSame(calledNumber)) {
+                        count++
+                    }
+                } while(it.moveToNext())
+            }
+        }
         return count
     }
 
     fun countHistorySMSByNumber(
         ctx: Context,
-        rawNumber: String,
+        phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
     ): Int {
         val selection = mutableListOf(
-            "REPLACE(REPLACE(REPLACE(${Sms.ADDRESS}, '-', ''), ' ', ''), '+', '') LIKE '${
-                rawNumber
-                    .replace(" ", "")
-                    .replace("-", "")
-                    .replace("+", "")
-            }'",
             "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
         )
 
@@ -231,20 +230,26 @@ object Permissions {
             )
         }
 
-        return try {
-            val cursor = ctx.contentResolver.query(
+        var count = 0
+        try {
+            ctx.contentResolver.query(
                 Sms.CONTENT_URI,
-                null,
+                arrayOf(Sms.ADDRESS),
                 selection.joinToString(" AND "),
                 null,
                 null
-            )
-            val count = cursor?.count ?: 0
-
-            cursor?.close()
-            count
-        } catch (e: Exception) {
-            0
+            )?.use {
+                if (it.moveToFirst()) {
+                    do {
+                        val messagedNumber = it.getString(0)
+                        if (phoneNumber.isSame(messagedNumber)) {
+                            count++
+                        }
+                    } while (it.moveToNext())
+                }
+            }
+        } catch (ignore: Exception) {
         }
+        return count
     }
 }

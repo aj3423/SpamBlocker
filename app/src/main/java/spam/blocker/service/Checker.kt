@@ -16,6 +16,7 @@ import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
 import spam.blocker.util.Permissions
+import spam.blocker.util.PhoneNumber
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.RecentApps
@@ -187,10 +188,12 @@ class Checker { // for namespace only
 
             val durationMillis = durationMinutes.toLong() * 60 * 1000
 
+            val phoneNumber = PhoneNumber(ctx, rawNumber)
+
             // count Calls from real call history
             var nCalls = Permissions.countHistoryCallByNumber(
                 ctx,
-                rawNumber,
+                phoneNumber,
                 Def.DIRECTION_INCOMING,
                 durationMillis
             )
@@ -208,7 +211,7 @@ class Checker { // for namespace only
             // count SMSs from real SMS history
             var nSMSs = Permissions.countHistorySMSByNumber(
                 ctx,
-                rawNumber,
+                phoneNumber,
                 Def.DIRECTION_INCOMING,
                 durationMillis
             )
@@ -250,15 +253,16 @@ class Checker { // for namespace only
             val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
 
             // repeated count of call/sms, sms also counts
+            val phoneNumber = PhoneNumber(ctx, rawNumber)
             val nCalls = Permissions.countHistoryCallByNumber(
                 ctx,
-                rawNumber,
+                phoneNumber,
                 Def.DIRECTION_OUTGOING,
                 durationMillis
             )
             val nSMSs = Permissions.countHistorySMSByNumber(
                 ctx,
-                rawNumber,
+                phoneNumber,
                 Def.DIRECTION_OUTGOING,
                 durationMillis
             )

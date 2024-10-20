@@ -90,6 +90,7 @@ fun RepeatedCall() {
                         ctx,
                         listOf(
                             NormalPermission(Manifest.permission.READ_CALL_LOG),
+                            NormalPermission(Manifest.permission.READ_PHONE_STATE, true),
                             NormalPermission(Manifest.permission.READ_SMS, true)
                         )
                     ) { granted ->
