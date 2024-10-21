@@ -9,7 +9,7 @@
     <string name="include_spam_db">Spamdatenbank einbeziehen</string>
     <string name="configuration_only">Nur Konfiguration</string>
     <string name="no_config_needed">Keine Konfiguration erforderlich</string>
-    <string name="success">Erfolgreich</string>
+    <string name="success">Erfolg</string>
     <string name="failed">Fehlgeschlagen</string>
     <string name="running">Läuft</string>
     <string name="optional">(optional)</string>
@@ -17,37 +17,37 @@
     <string name="run_execute">Ausführen</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Testen</b></font><br>
-        Diese Aktionen werden sofort ausgeführt, um zu prüfen, ob sie korrekt eingestellt wurden,
-        oder Sie möchten diesen Workflow möglicherweise einfach manuell ausführen.<br>
+        - <font color="#03DAC5"><b>Test</b></font><br>
+        Diese Aktionen werden sofort ausgeführt, um zu überprüfen, ob sie korrekt eingestellt wurden,
+        oder um diesen Workflow nur manuell auszuführen.<br>
         <br>
         - <font color="#00BFFF"><b>Neu</b></font><br>
-            Erstellen Sie eine neue Aktion. Mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe auszuführen.<br>
-            Diese grünen oder roten Punkte zwischen den Elementen geben an, ob sie verkettet werden können oder nicht.<br>
+            Eine neue Aktion erstellen. Mehrere Aktionen können miteinander verknüpft werden, um eine komplexe Aufgabe auszuführen.<br>
+            Die grünen und roten Punkte zwischen den Elementen zeigen an, ob sie verknüpft werden können oder nicht.<br>
             <br>
             Einige Beispiel-Workflows: <br>
             <br>
-            &emsp; - HTTP-Datei herunterladen -> 7z-Format dekodieren -> als CSV-Format parsen -> in Spamdatenbank importieren.<br>
+            &emsp; - HTTP-Datei herunterladen -> 7z-Format dekodieren -> als csv-Format parsen -> in Spamdatenbank importieren.<br>
             <br>
-            &emsp; - Einstellungen A an Werktagen und Einstellungen B am Wochenende anwenden.<br>
+            &emsp; - Einstellungen A an Werktagen anwenden und Einstellungen B am Wochenende.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Laden Sie an jedem Werktag Spam-Telefonnummern von
+            Spam-Telefonnummern von
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> herunter
-             und importieren Sie sie in die Spamdatenbank.
+            <no_translate>FTC - Do Not Call</no_translate> </a> jeden Werktag herunterladen
+             und in die Spamdatenbank importieren.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Abgelaufene Datensätze aus der Spamdatenbank löschen.</string>
-    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Historie löschen.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Abgelaufene Einträge aus der Spamdatenbank löschen.</string>
+    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufseinträge löschen.</string>
     <string name="help_bot_preset_auto_backup">Alle Einstellungen sichern.</string>
     <string name="everyday">Täglich</string>
     <string name="daily">Täglich</string>
     <string name="weekly">Wöchentlich</string>
-    <string name="periodically">In regelmäßigen Abständen</string>
+    <string name="periodically">Periodisch</string>
     <string name="time">Zeit</string>
     <string name="workdays">Werktage</string>
 
@@ -56,12 +56,35 @@
         Wenn Sie die Spamdatenbank nicht verwenden, sind beide Optionen gleichwertig.<br>
         <br>
         - <b>Spamdatenbank einbeziehen</b><br>
-        &emsp; Verwenden Sie dies nicht für regelmäßige Sicherungen, da die Spamdatenbank voraussichtlich häufig aktualisiert wird.
+        &emsp; Verwenden Sie diese Option nicht für regelmäßige Backups, da die Spamdatenbank häufig aktualisiert werden soll.
          Dies ist nur nützlich, wenn die Konfiguration auf ein anderes Telefon geklont wird.<br>
         <br>
         - <b>Nur Konfiguration</b><br>
         &emsp; - Beim Exportieren wird dadurch die Größe der Sicherungsdatei reduziert. <br>
-        &emsp; - Beim Importieren behalten Datensätze in der Spamdatenbank ihren aktuellen Zustand bei.
+        &emsp; - Beim Importieren behalten die Datensätze in der Spamdatenbank ihren aktuellen Status bei.
         ]]>
     </string>
+    <string name="mode">Modus</string>
+    <string-array name="regex_action_add_mode">
+        <item>Erstellen</item>
+        <item>Ersetzen</item>
+        <item>Zusammenführen</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Erstellen</b></font><br>
+        &ensp; Immer eine neue Regex-Regel erstellen.<br>
+        <br>
+        - <font color="#00BFFF"><b>Ersetzen</b></font><br>
+        &ensp; Es wird versucht, eine vorhandene Regel mit derselben <b>Beschreibung</b> zu finden. <br>
+        &ensp;&ensp; - Wenn gefunden, wird sie überschrieben.<br>
+        &ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, die mit <b>Erstellen</b> identisch ist.<br>
+        <br>
+        - <font color="#00BFFF"><b>Zusammenführen</b></font><br>
+        &ensp;- Wenn eine Regel mit derselben Beschreibung vorhanden ist, werden die neuen <short>Nummern</short> darin zusammengeführt,<br>
+        doppelte <short>Nummern</short> werden automatisch entfernt.<br>
+        &ensp;- Wenn sie nicht existiert, wird eine neue Regel erstellt, die mit <b>Erstellen</b> identisch ist.<br>
+        ]]>
+    </string>
+
 </resources>

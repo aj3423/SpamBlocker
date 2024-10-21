@@ -659,7 +659,7 @@ class Checker { // for namespace only
 
 
         private fun reasonStr(ctx: Context, filterTable: RuleTable?, reason: String): String {
-            val f = filterTable?.findPatternRuleById(ctx, reason.toLong())
+            val f = filterTable?.findRuleById(ctx, reason.toLong())
 
             val reasonStr = if (f != null) {
                 if (f.description != "") f.description else f.patternStr()

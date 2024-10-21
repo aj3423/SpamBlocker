@@ -1,67 +1,90 @@
 <resources>
     <string name="contact_rule">Regla de contacto</string>
     <string name="directory">Directorio</string>
-    <string name="filename">Nombre del archivo</string>
-    <string name="invalid_input_type">Tipo de entrada no válida, esperado: %s, obtenido: %s</string>
+    <string name="filename">Nombre de archivo</string>
+    <string name="invalid_input_type">Tipo de entrada no válido, se esperaba: %s, se obtuvo: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Días de vencimiento</string>
-    <string name="column_mapping">Mapeo de columnas</string>
-    <string name="include_spam_db">Incluir base de datos de <short>spam</short></string>
+    <string name="column_mapping">Mapeo de columna</string>
+    <string name="include_spam_db">Incluir base de datos de correo no deseado</string>
     <string name="configuration_only">Solo configuración</string>
-    <string name="no_config_needed">No se necesita configuración</string>
+    <string name="no_config_needed">No es necesaria configuración</string>
     <string name="success">Éxito</string>
     <string name="failed">Error</string>
-    <string name="running">En ejecución</string>
-    <string name="optional">(Opcional)</string>
+    <string name="running">Ejecutándose</string>
+    <string name="optional">(opcional)</string>
 
     <string name="run_execute">Ejecutar</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Prueba</b></font><br>
-        Estas acciones se ejecutarán inmediatamente para comprobar si se han configurado correctamente
-        o quizás solo quieras ejecutar manualmente este flujo de trabajo.<br>
+        Estas acciones se ejecutarán de inmediato, para verificar si se han configurado correctamente,
+        o tal vez solo quieras ejecutar manualmente este flujo de trabajo.<br>
         <br>
         - <font color="#00BFFF"><b>Nuevo</b></font><br>
             Crea una nueva acción, se pueden encadenar varias acciones para completar una tarea compleja.<br>
-            Estos puntos verdes o rojos entre elementos indican si se pueden encadenar o no.<br>
+            Esos puntos verdes o rojos entre elementos indican si se pueden encadenar o no.<br>
             <br>
-            Algunos flujos de trabajo de ejemplo: <br>
+            Algunos ejemplos de flujos de trabajo: <br>
             <br>
-            &emsp; - <short>Descargar</short> archivo <short>http</short> -> decodificar formato 7z -> analizar como formato CSV -> importar a base de datos de <short>spam</short>.<br>
+            &emsp; - Descargar el archivo http -> decodificar el formato 7z -> analizar como formato csv -> importar a la base de datos de correo no deseado.<br>
             <br>
-            &emsp; - aplicar configuración A en días laborables y configuración B el fin de semana.<br>
+            &emsp; - Aplicar la configuración A en los días laborales y aplicar la configuración B en el fin de semana.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            <short>Descargar</short> números de teléfono <short>spam</short> de
+            Descargar números de teléfono no deseados de
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> cada día laborable
-            e importarlos a la base de datos de <short>spam</short>.
+            <no_translate>FTC - No llamar</no_translate> </a> cada día laborable,
+             e impórtalos a la base de datos de correo no deseado.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Eliminar registros vencidos de la base de datos de <short>spam</short>.</string>
-    <string name="help_bot_preset_cleanup_history">Eliminar registros de historial de SMS y llamadas vencidos.</string>
-    <string name="help_bot_preset_auto_backup">Hacer copia de seguridad de todos los ajustes.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Borrar registros vencidos de la base de datos de correo no deseado.</string>
+    <string name="help_bot_preset_cleanup_history">Borrar registros de llamadas/SMS de historial vencidos.</string>
+    <string name="help_bot_preset_auto_backup">Copia de seguridad de todas las configuraciones.</string>
     <string name="everyday">Todos los días</string>
     <string name="daily">Diariamente</string>
     <string name="weekly">Semanalmente</string>
     <string name="periodically">Periódicamente</string>
     <string name="time">Hora</string>
-    <string name="workdays">Días laborables</string>
+    <string name="workdays">Días laborales</string>
 
     <string name="help_backup">
         <![CDATA[
-        Si no usas la base de datos de <short>spam</short>, ambas opciones serán equivalentes.<br>
+        Si no usas la base de datos de correo no deseado, ambas opciones serán equivalentes.<br>
         <br>
-        - <b>Incluir base de datos de <short>spam</short></b><br>
-        &emsp; No uses esto para una copia de seguridad regular porque se supone que la base de datos de <short>spam</short> debe actualizarse con frecuencia.
-        Esto solo es útil cuando clones la configuración en otro teléfono.<br>
+        - <b>Incluir base de datos de correo no deseado</b><br>
+        &emsp; No uses esto para copias de seguridad regulares, porque se supone que la base de datos de correo no deseado se actualiza con frecuencia.
+         Esto solo es útil al clonar la configuración a otro teléfono.<br>
         <br>
         - <b>Solo configuración</b><br>
-        &emsp; - Cuando exportaciones, esto reducirá el tamaño del archivo de copia de seguridad. <br>
-        &emsp; - Cuando importes, los registros en la base de datos de <short>spam</short> conservarán su estado actual.
+        &emsp; - Al exportar, esto reducirá el tamaño del archivo de copia de seguridad. <br>
+        &emsp; - Al importar, los registros en la base de datos de correo no deseado conservarán su estado actual.
         ]]>
     </string>
+    <string name="mode">Modo</string>
+    <string-array name="regex_action_add_mode">
+        <item>Crear</item>
+        <item>Reemplazar</item>
+        <item>Combinar</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Crear</b></font><br>
+        &ensp; Crear siempre una nueva regla de expresiones regulares.<br>
+        <br>
+        - <font color="#00BFFF"><b>Reemplazar</b></font><br>
+        &ensp; Intentará encontrar una regla existente que tenga la misma <b>descripción</b>. <br>
+        &ensp;&ensp; - Si la encuentra, se anulará.<br>
+        &ensp;&ensp; - Si no se encuentra, se creará una nueva regla, igual que <b>Crear</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Combinar</b></font><br>
+        &ensp;- Si existe una regla con la misma descripción, los nuevos números se combinarán con ella,<br>
+         los números duplicados se eliminarán automáticamente.<br>
+        &ensp;- Si no existe, se creará una nueva regla, igual que <b>Crear</b>.<br>
+        ]]>
+    </string>
+
 </resources>

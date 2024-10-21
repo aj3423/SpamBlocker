@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -25,10 +29,15 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
+import spam.blocker.ui.widgets.RadioGroup
+import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
@@ -764,6 +773,12 @@ class ImportToSpamDB : IPermissiveAction {
     }
 }
 
+enum class ImportType {
+    Create,
+    Replace, // create if not found
+    Merge, // create if not found
+}
+
 /*
 input: List<RegexRule>
 output: null
@@ -773,6 +788,8 @@ output: null
 class ImportAsRegexRule(
     var description: String = "",
     var priority: Int = 0,
+    var isWhitelist: Boolean = false,
+    var importType: ImportType = ImportType.Create,
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
@@ -785,17 +802,13 @@ class ImportAsRegexRule(
         }
 
         return try {
-            // Join numbers to `11|22|33...`
-            val combinedPattern = (arg as List<*>).joinToString("|") {
-                (it as RegexRule).pattern
-            }
+            val numberList = (arg as List<*>).map { (it as RegexRule).pattern }.distinct()
 
-            val newRule = RegexRule(
-                pattern = "($combinedPattern)",
-                description = description,
-                priority = priority,
-            )
-            NumberRuleTable().addNewRule(ctx, newRule)
+            when (importType) {
+                ImportType.Create -> create(ctx, numberList)
+                ImportType.Replace -> replace(ctx, numberList)
+                else -> merge(ctx, numberList)
+            }
 
             // fire event to update the UI
             Events.regexRuleUpdated.fire()
@@ -806,17 +819,55 @@ class ImportAsRegexRule(
         }
     }
 
+    private fun create(ctx: Context, numbers: List<String>) {
+        // Join numbers to `11|22|33...`
+        val combinedPattern = numbers.joinToString("|")
+
+        val newRule = RegexRule(
+            pattern = "($combinedPattern)",
+            description = description,
+            priority = priority,
+            isBlacklist = !isWhitelist,
+        )
+        NumberRuleTable().addNewRule(ctx, newRule)
+    }
+
+    private fun replace(ctx: Context, numbers: List<String>) {
+        val table = NumberRuleTable()
+        val oldRule = table.findRuleByDesc(ctx, description)
+        if (oldRule == null) {
+            create(ctx, numbers)
+        } else {
+            // 1. delete the previous rule
+            table.deleteById(ctx, oldRule.id)
+            // 2. create a new one
+            create(ctx, numbers)
+        }
+    }
+
+    private fun merge(ctx: Context, numbers: List<String>) {
+        val table = NumberRuleTable()
+        val oldRule = table.findRuleByDesc(ctx, description)
+        if (oldRule == null) {
+            create(ctx, numbers)
+        } else {
+            val oldNumbers = oldRule.pattern.trim('(', ')').split('|')
+
+            val all = (oldNumbers + numbers).distinct()
+            table.updateRuleById(
+                ctx, oldRule.id, oldRule.copy(
+                    pattern = "(" + all.joinToString("|") + ")"
+                )
+            )
+        }
+    }
+
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_import_as_regex_rule)
     }
 
     override fun summary(ctx: Context): String {
-        val labelPriority = ctx.getString(R.string.priority)
-
-        return if (description.isEmpty())
-            "$labelPriority: $priority"
-        else
-            "$description, $labelPriority: $priority"
+        return description
     }
 
     override fun tooltip(ctx: Context): String {
@@ -838,6 +889,8 @@ class ImportAsRegexRule(
 
     @Composable
     override fun Options() {
+        val ctx = LocalContext.current
+        val C = LocalPalette.current
         Column {
             StrInputBox(
                 text = description,
@@ -853,6 +906,37 @@ class ImportAsRegexRule(
                     }
                 }
             )
+            // Type Whitelist/ Blacklist
+            LabeledRow(R.string.type) {
+                var applyToWorB by rememberSaveable { mutableIntStateOf(if (isWhitelist) 0 else 1) }
+                val items = listOf(
+                    RadioItem(Str(R.string.whitelist), C.pass),
+                    RadioItem(Str(R.string.blacklist), C.block),
+                )
+                RadioGroup(items = items, selectedIndex = applyToWorB) {
+                    applyToWorB = it
+                    isWhitelist = it == 0
+                }
+            }
+            // Type Create/Replace/Merge
+            LabeledRow(R.string.mode, helpTooltipId = R.string.help_regex_action_add_mode) {
+                var selected by rememberSaveable {
+                    mutableIntStateOf(ImportType.entries.indexOf(importType))
+                }
+
+                val items = ctx.resources.getStringArray(R.array.regex_action_add_mode)
+                Spinner(
+                    items = items.mapIndexed { index, label ->
+                        LabelItem(
+                            label = label,
+                        ) {
+                            selected = index
+                            importType = ImportType.entries[index]
+                        }
+                    },
+                    selected = selected,
+                )
+            }
         }
     }
 }

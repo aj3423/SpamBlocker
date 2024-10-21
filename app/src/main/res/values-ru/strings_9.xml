@@ -1,48 +1,50 @@
 <resources>
-    <string name="contact_rule">Правило контакта</string>
+    <string name="contact_rule">Правило контактов</string>
     <string name="directory">Каталог</string>
     <string name="filename">Имя файла</string>
-    <string name="invalid_input_type">Неверный тип ввода. Ожидалось: %s, получено: %s</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">Дни срока действия</string>
+    <string name="invalid_input_type">Недопустимый тип ввода, ожидается: %s, получено: %s</string>
+    <string name="url">URL-адрес</string>
+    <string name="expiry_days">Дни истечения срока</string>
     <string name="column_mapping">Сопоставление столбцов</string>
     <string name="include_spam_db">Включить базу данных спама</string>
     <string name="configuration_only">Только конфигурация</string>
-    <string name="no_config_needed">Конфигурация не требуется</string>
-    <string name="success">Успех</string>
-    <string name="failed">Не удалось</string>
+    <string name="no_config_needed">Настройка не требуется</string>
+    <string name="success">Успешно</string>
+    <string name="failed">Ошибка</string>
     <string name="running">Выполняется</string>
-    <string name="optional">(необязательно)</string>
+    <string name="optional">(необязательный)</string>
 
-    <string name="run_execute">Запуск</string>
+    <string name="run_execute">Выполнить</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Тест</b></font><br>
-        Эти действия будут выполнены немедленно для проверки правильности их настройки или, возможно, вы просто хотите запустить этот рабочий процесс вручную.<br>
+        - <font color="#03DAC5"><b>Проверка</b></font><br>
+        Эти действия будут выполнены немедленно, чтобы проверить, правильно ли они настроены,
+        или, возможно, вы просто хотите запустить этот рабочий процесс вручную.<br>
         <br>
         - <font color="#00BFFF"><b>Новый</b></font><br>
-            Создать новое действие. Несколько действий можно объединить для выполнения сложного задания.<br>
-            Эти зеленые или красные точки между элементами указывают, можно ли их объединять или нет.<br>
+            Создайте новое действие, несколько действий могут быть объединены в цепочку для выполнения сложной задачи.<br>
+            Эти зеленые или красные точки между элементами указывают, можно ли их объединять в цепочку.<br>
             <br>
-            Некоторые примеры рабочих процессов: <br>
+            Несколько примеров рабочих процессов:<br>
             <br>
-            &emsp; - загрузка веб-файла -> декодирование формата 7z -> разбор в формате CSV -> импорт в базу данных спама.<br>
+            &emsp; - http-загрузка файла -> декодирование формата 7z -> анализ в формате csv -> импорт в базу данных спама.<br>
             <br>
-            &emsp; - применение настроек A в рабочие дни и применение настроек B в выходные.
+            &emsp; - применение настроек A по рабочим дням и B по выходным.
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Загружать номера спам-телефонов из
+            Загрузка телефонных номеров спама с
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> каждый рабочий день и импортировать их базу данных спама.
+            <no_translate>FTC - Do Not Call</no_translate> </a> в каждый рабочий день,
+             и импорт их в базу данных спама.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Удаление истекших записей из базы данных спама.</string>
-    <string name="help_bot_preset_cleanup_history">Удаление истекших записей истории звонков/SMS.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Удаление записей с истекшим сроком хранения из базы данных спама.</string>
+    <string name="help_bot_preset_cleanup_history">Удаление записей об истории вызовов/SMS с истекшим сроком хранения.</string>
     <string name="help_bot_preset_auto_backup">Резервное копирование всех настроек.</string>
-    <string name="everyday">Каждый день</string>
+    <string name="everyday">Ежедневно</string>
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>
     <string name="periodically">Периодически</string>
@@ -51,14 +53,38 @@
 
     <string name="help_backup">
         <![CDATA[
-        Если вы не используете базу данных спама, обе опции будут эквивалентны.<br>
+        Если вы не используете базу данных спама, оба варианта будут эквивалентны.<br>
         <br>
         - <b>Включить базу данных спама</b><br>
-        &emsp; Не используйте это для регулярного резервного копирования, так как база данных спама должна часто обновляться. Это полезно только при клонировании конфигурации на другой телефон.<br>
+        &emsp; Не используйте это для обычного резервного копирования, поскольку предполагается, что база данных спама будет часто обновляться.
+         Это полезно только при клонировании конфигурации на другой телефон.<br>
         <br>
         - <b>Только конфигурация</b><br>
         &emsp; - При экспорте это уменьшит размер файла резервной копии. <br>
         &emsp; - При импорте записи в базе данных спама сохранят свое текущее состояние.
         ]]>
     </string>
+    <string name="mode">Режим</string>
+    <string-array name="regex_action_add_mode">
+        <item>Создать</item>
+        <item>Заменить</item>
+        <item>Объединить</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Создать</b></font><br>
+        &ensp; Всегда создавайте новое правило регулярных выражений.<br>
+        <br>
+        - <font color="#00BFFF"><b>Заменить</b></font><br>
+        &ensp; Он попытается найти существующее правило, имеющее то же <b>описание</b>. <br>
+        &ensp;&ensp; - Если найдено, оно будет переопределено.<br>
+        &ensp;&ensp; - Если не найдено, будет создано новое правило, такое же, как <b>Создать</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Объединить</b></font><br>
+        &ensp;- Если существует правило с тем же описанием, в него будут объединены новые номера,<br>
+         дублированные числа будут удалены автоматически.<br>
+        &ensp;- Если не существует, будет создано новое правило, как в пункте <b>Создать</b>.<br>
+        ]]>
+    </string>
+
 </resources>

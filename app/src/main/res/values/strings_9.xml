@@ -64,4 +64,27 @@
         &emsp; - When importing, records in spam database will retain its current state.
         ]]>
     </string>
+    <string name="mode">Mode</string>
+    <string-array name="regex_action_add_mode">
+        <item>Create</item>
+        <item>Replace</item>
+        <item>Merge</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Create</b></font><br>
+        &ensp; Always create a new regex rule.<br>
+        <br>
+        - <font color="#00BFFF"><b>Replace</b></font><br>
+        &ensp; It will try to find an existing rule that has the same <b>description</b>. <br>
+        &ensp;&ensp; - If found, it will be overridden.<br>
+        &ensp;&ensp; - If not found, a new rule will be created, same as the <b>Create</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Merge</b></font><br>
+        &ensp;- If a rule with the same description exists, the new numbers will be merged into it,<br>
+         duplicated numbers will be removed automatically.<br>
+        &ensp;- If not exists, a new rule will be created, same as the <b>Create</b>.<br>
+        ]]>
+    </string>
+
 </resources>

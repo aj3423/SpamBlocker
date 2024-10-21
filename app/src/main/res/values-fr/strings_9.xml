@@ -1,16 +1,16 @@
 <resources>
-    <string name="contact_rule">Règle Contact</string>
-    <string name="directory">Répertoire</string>
+    <string name="contact_rule">Règle contact</string>
+    <string name="directory">Annuaire</string>
     <string name="filename">Nom de fichier</string>
-    <string name="invalid_input_type">Type d\'entrée invalide, attendu : %s, obtenu : %s</string>
+    <string name="invalid_input_type">Type d\'entrée invalide, attendu : %s, obtenu : %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Jours d\'expiration</string>
     <string name="column_mapping">Mappage de colonnes</string>
-    <string name="include_spam_db">Inclure base de données <short>spams</short></string>
+    <string name="include_spam_db">Inclure la base de données de spam</string>
     <string name="configuration_only">Configuration uniquement</string>
-    <string name="no_config_needed">Aucune configuration nécessaire</string>
+    <string name="no_config_needed">Aucune configuration requise</string>
     <string name="success">Réussi</string>
-    <string name="failed">Échec</string>
+    <string name="failed">Échoué</string>
     <string name="running">En cours d\'exécution</string>
     <string name="optional">(facultatif)</string>
 
@@ -19,49 +19,72 @@
         <![CDATA[
         - <font color="#03DAC5"><b>Tester</b></font><br>
         Ces actions seront exécutées immédiatement, pour vérifier si elles ont été définies correctement,
-        ou peut-être souhaitez-vous simplement exécuter manuellement ce workflow.<br>
+        ou peut-être que vous souhaitez simplement exécuter manuellement ce flux de tâches.<br>
         <br>
         - <font color="#00BFFF"><b>Nouveau</b></font><br>
-            Créer une nouvelle action, plusieurs actions peuvent être chaînées pour réaliser une tâche complexe.<br>
-            Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.<br>
+            Créer une nouvelle action. Plusieurs actions peuvent être chaînées ensemble pour effectuer une tâche complexe.<br>
+            Ces points verts ou rouges entre les éléments indiquent s\'ils peuvent être chaînés ou non.<br>
             <br>
-            Quelques exemples de workflows :<br>
+            Quelques exemples de flux de tâches :<br>
             <br>
-            &emsp; - Télécharger un fichier http -> Décoder un format 7z -> Analyser comme format csv -> Importer dans une base de données <short>spams</short>.<br>
+            &emsp; - Téléchargement de fichier HTTP -> Décoder au format 7z -> Analyser au format CSV -> Importer dans la base de données de spam.<br>
             <br>
-            &emsp; - Appliquer les paramètres A en jours ouvrables et appliquer les paramètres B le week-end.<br>
+            &emsp; - Appliquer les paramètres A en jours ouvrables et les paramètres B le week-end.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Téléchargez les numéros de téléphone <short>spams</short> à partir de
+            Télécharger les <short>numéros</short> de <short>téléphone</short> indésirables depuis
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
             <no_translate>FTC - Ne pas appeler</no_translate> </a> chaque jour ouvrable,
-             et importez-les dans la base de données <short>spams</short>.
+             et les importer dans la base de données de spam.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données <short>spams</short>.</string>
-    <string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'appels/SMS de l\'historique expirés.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données de spam.</string>
+    <string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'historique d\'appels/SMS expirés.</string>
     <string name="help_bot_preset_auto_backup">Sauvegarder tous les paramètres.</string>
     <string name="everyday">Tous les jours</string>
-    <string name="daily">Quotidiennement</string>
-    <string name="weekly">Hebdomadairement</string>
+    <string name="daily">Quotidien</string>
+    <string name="weekly">Hebdomadaire</string>
     <string name="periodically">Périodiquement</string>
     <string name="time">Heure</string>
     <string name="workdays">Jours ouvrables</string>
 
     <string name="help_backup">
         <![CDATA[
-        Si vous n\'utilisez pas la base de données <short>spams</short>, les deux options seront équivalentes.<br>
+        Si vous n\'utilisez pas la base de données de spam, les deux options seront équivalentes.<br>
         <br>
-        - <b>Inclure la base de données <short>spams</short></b><br>
-        &emsp; Ne pas utiliser cela pour une sauvegarde régulière, car la base de données <short>spams</short> est censée être mise à jour fréquemment.
-         Ceci n\'est utile que lors du clonage de la configuration sur un autre téléphone.<br>
+        - <b>Inclure la base de données de spam</b><br>
+        &emsp; Ne pas utiliser cette option pour une sauvegarde régulière, car la base de données de spam est censée être mise à jour fréquemment.
+         Ceci n\'est utile que lorsque vous clonez la configuration sur un autre <short>téléphone</short>.<br>
         <br>
         - <b>Configuration uniquement</b><br>
-        &emsp; - Lors de l\'exportation, cela réduit la taille du fichier de sauvegarde. <br>
-        &emsp; - Lors de l\'importation, les enregistrements de la base de données <short>spams</short> conservent leur état actuel.
+        &emsp; - Lors de l\'exportation, cela réduira la taille du fichier de sauvegarde. <br>
+        &emsp; - Lors de l\'importation, les enregistrements de la base de données de spam conserveront leur état actuel.
         ]]>
     </string>
+    <string name="mode">Mode</string>
+    <string-array name="regex_action_add_mode">
+        <item>Créer</item>
+        <item>Remplacer</item>
+        <item>Fusionner</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Créer</b></font><br>
+        &ensp; Créer toujours une nouvelle règle d\'expression régulière.<br>
+        <br>
+        - <font color="#00BFFF"><b>Remplacer</b></font><br>
+        &ensp; Essayer de trouver une règle existante ayant la même <b>description</b>. <br>
+        &ensp;&ensp; - Si elle est trouvée, elle sera remplacée.<br>
+        &ensp;&ensp; - Si elle n\'est pas trouvée, une nouvelle règle sera créée, comme dans <b>Créer</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Fusionner</b></font><br>
+        &ensp;- Si une règle avec la même description existe, les nouveaux <short>numéros</short> seront fusionnés avec elle,<br>
+         les <short>numéros</short> dupliqués seront supprimés automatiquement.<br>
+        &ensp;- Si elle n\'existe pas, une nouvelle règle sera créée, comme dans <b>Créer</b>.<br>
+        ]]>
+    </string>
+
 </resources>

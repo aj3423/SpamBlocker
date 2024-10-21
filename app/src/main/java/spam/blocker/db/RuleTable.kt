@@ -287,9 +287,25 @@ abstract class RuleTable {
     }
 
     @SuppressLint("Range")
-    fun findPatternRuleById(ctx: Context, id: Long): RegexRule? {
+    fun findRuleById(ctx: Context, id: Long): RegexRule? {
         val db = Db.getInstance(ctx).readableDatabase
         val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_ID} = $id"
+
+        val cursor = db.rawQuery(sql, null)
+
+        cursor.use {
+            if (it.moveToFirst()) {
+                return ruleFromCursor(it)
+            } else {
+                return null
+            }
+        }
+    }
+
+    @SuppressLint("Range")
+    fun findRuleByDesc(ctx: Context, desc: String): RegexRule? {
+        val db = Db.getInstance(ctx).readableDatabase
+        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_DESC} = '$desc'"
 
         val cursor = db.rawQuery(sql, null)
 
