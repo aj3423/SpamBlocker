@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -22,6 +24,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.service.bot.MyWorkManager
@@ -36,9 +39,56 @@ import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Util
+import spam.blocker.util.loge
+import java.time.Duration
+import java.time.Instant
+
+
+@Composable
+fun CountdownMenuItem(bot: Bot) {
+    val ctx = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+
+    var nextTick by remember { mutableLongStateOf(0) }
+
+    var label by remember { mutableStateOf("" ) }
+
+    fun refreshLabel() {
+        label = Util.durationString(
+            ctx,
+            Duration.between(Instant.now(), Instant.ofEpochMilli(nextTick))
+        )
+    }
+
+    LaunchedEffect(true) {
+        MyWorkManager.getWorkInfoByTag(ctx, bot.workUUID)?.let {
+            nextTick = it.nextScheduleTimeMillis
+            refreshLabel()
+        }
+    }
+
+    DisposableEffect(true) {
+        val job = coroutineScope.launch {
+            while (true) {
+                delay(500) // Delay for 1 second
+                refreshLabel()
+            }
+        }
+        onDispose {
+            job.cancel()
+        }
+    }
+
+    RowVCenterSpaced(10) {
+        GreyIcon16(R.drawable.ic_hourglass)
+
+        GreyLabel(text = label, modifier = M.weight(1f))
+    }
+}
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -75,27 +125,9 @@ fun BotList() {
     }
 
     val contextMenuItems = mutableListOf<IMenuItem>()
+    // countdown timer for scheduled bot
     if (clickedIndex >= 0 && clickedIndex < vm.bots.size && vm.bots[clickedIndex].enabled) {
-        contextMenuItems += CustomItem{
-            var label by remember { mutableStateOf(
-                Util.durationString(ctx, vm.bots[clickedIndex].schedule!!.nextOccurrence())
-            ) }
-            DisposableEffect(true) {
-                val job = coroutineScope.launch {
-                    while (true) {
-                        delay(1000) // Delay for 1 second
-                        label = Util.durationString(ctx, vm.bots[clickedIndex].schedule!!.nextOccurrence())
-                    }
-                }
-                onDispose {
-                    job.cancel()
-                }
-            }
-            LabelItem(
-                label = label,
-                icon = { GreyIcon16(R.drawable.ic_hourglass)}
-            ).Compose(it)
-        }
+        contextMenuItems += CustomItem { CountdownMenuItem(bot = vm.bots[clickedIndex]) }
         contextMenuItems += DividerItem()
     }
 

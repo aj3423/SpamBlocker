@@ -23,6 +23,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.time.Duration
+import java.time.Instant
 import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
@@ -93,12 +94,15 @@ object Util {
         return dateFormat.format(date)
     }
 
-    fun isToday(timestamp: Long): Boolean {
-        val calendar = Calendar.getInstance()
-        val currentDate = calendar.get(Calendar.DAY_OF_MONTH)
-        calendar.timeInMillis = timestamp
-        val date = calendar.get(Calendar.DAY_OF_MONTH)
-        return currentDate == date
+    fun isToday(timestampMillis: Long): Boolean {
+        val currentTimeMillis = System.currentTimeMillis()
+        val timestampInstant = Instant.ofEpochMilli(timestampMillis)
+        val currentInstant = Instant.ofEpochMilli(currentTimeMillis)
+
+        // Check if the timestamps are within the same day
+        val duration = Duration.between(timestampInstant, currentInstant)
+        val days = duration.toDays()
+        return days == 0L && duration.toHours() >= 0L && duration.toHours() <= 24L
     }
 
     // For history record time

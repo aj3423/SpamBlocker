@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -56,7 +57,7 @@ class MyWorker(
         // Don't re-schedule it if the work uuid no longer exists in the database.
         if (workTag.isEmpty())
             return
-        if(!(Util.isUUID(workTag) && BotTable.isWorkUuidExist(ctx, workTag)))
+        if (!(Util.isUUID(workTag) && BotTable.isWorkUuidExist(ctx, workTag)))
             return
 
 
@@ -76,6 +77,13 @@ object MyWorkManager {
 
     fun cancelAll(ctx: Context) {
         WorkManager.getInstance(ctx).cancelAllWork()
+    }
+
+    fun getWorkInfoByTag(ctx: Context, tag: String): WorkInfo? {
+        val workManager = WorkManager.getInstance(ctx)
+        return workManager.getWorkInfosByTag(tag).get().firstOrNull {
+            !it.state.isFinished
+        }
     }
 
     // Schedule a recurring task
@@ -108,9 +116,9 @@ object MyWorkManager {
             .build()
 
         if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
-            logi("schedule task <${workTag?:actionsConfig}> after: ${delay.toDaysPart()} days, ${delay.toHoursPart()} hours, ${delay.toMinutesPart()} minutes, ${delay.toSecondsPart()} seconds")
+            logi("schedule task <${workTag ?: actionsConfig}> after: ${delay.toDaysPart()} days, ${delay.toHoursPart()} hours, ${delay.toMinutesPart()} minutes, ${delay.toSecondsPart()} seconds")
         } else {
-            logi("schedule task <${workTag?:actionsConfig}> after: ${delay.toMillis()} milliseconds")
+            logi("schedule task <${workTag ?: actionsConfig}> after: ${delay.toMillis()} milliseconds")
         }
         WorkManager.getInstance(ctx).enqueue(nextWorkRequest)
 
