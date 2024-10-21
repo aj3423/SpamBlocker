@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.database.Cursor
 import kotlinx.serialization.Serializable
+import spam.blocker.db.Db.Companion.COLUMN_PEER
+import spam.blocker.db.Db.Companion.COLUMN_TIME
+import spam.blocker.db.Db.Companion.TABLE_SPAM
 
 @Serializable
 data class SpamNumber(
@@ -13,18 +16,22 @@ data class SpamNumber(
 )
 
 object SpamTable {
+
     fun addAll(
         ctx: Context,
         numbers: List<SpamNumber>,
-    ) : String? {
+    ): String? {
         val db = Db.getInstance(ctx).writableDatabase
+
+        val now = System.currentTimeMillis()
 
         db.beginTransaction()
         return try {
             for (number in numbers) {
                 db.execSQL(
-                    "INSERT OR IGNORE INTO ${Db.TABLE_SPAM} (${Db.COLUMN_PEER}, ${Db.COLUMN_TIME})"+
-                            " VALUES ('${number.peer}', ${number.time})"
+                    "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME)" +
+                            " VALUES ('${number.peer}', ${number.time})" +
+                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET $COLUMN_TIME = $now"
                 )
             }
             db.setTransactionSuccessful()
@@ -66,17 +73,18 @@ object SpamTable {
     }
 
 
-    fun numberExists(ctx: Context, number: String) : Boolean {
+    fun numberExists(ctx: Context, number: String): Boolean {
         val db = Db.getInstance(ctx).readableDatabase
 
-        val cursor = db.rawQuery("SELECT * FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_PEER} = '$number'", null)
+        val cursor =
+            db.rawQuery("SELECT * FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_PEER} = '$number'", null)
 
         return cursor.use {
             it.moveToFirst()
         }
     }
 
-    fun count(ctx: Context) : Int {
+    fun count(ctx: Context): Int {
         val db = Db.getInstance(ctx).readableDatabase
         val cursor = db.rawQuery("SELECT COUNT(*) FROM ${Db.TABLE_SPAM}", null)
 
@@ -85,6 +93,7 @@ object SpamTable {
             it.getInt(0)
         }
     }
+
     fun clearAll(ctx: Context) {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${Db.TABLE_SPAM}"

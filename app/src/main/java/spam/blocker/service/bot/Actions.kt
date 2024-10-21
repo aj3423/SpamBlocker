@@ -713,7 +713,6 @@ output: null
 @SerialName("ImportToSpamDB")
 class ImportToSpamDB : IPermissiveAction {
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         // It must be written like this, cannot be inlined in the `if()`, seems to be kotlin bug
         val inputValid = (arg is List<*>) && ((arg as List<*>).all { it is RegexRule })
@@ -731,7 +730,7 @@ class ImportToSpamDB : IPermissiveAction {
             val numbers = (arg as List<*>).map {
                 SpamNumber(peer = (it as RegexRule).pattern, time = now)
             }
-            val errorStr = SpamTable.addAll(ctx, numbers)
+            val errorStr = SpamTable.addAll(ctx, numbers, updateTimeOnConflict = true)
 
             // Fire a global event to update UI
             Events.spamDbUpdated.fire()
