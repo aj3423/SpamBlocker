@@ -14,10 +14,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
-import spam.blocker.G
 import spam.blocker.def.Def
+import spam.blocker.util.IPermission
 import spam.blocker.util.IntentPermission
-import spam.blocker.util.Lambda1
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions
 
@@ -59,8 +58,7 @@ interface IAction {
     // Return values:
     // null: no permission needed
     // true or false: is granted or not
-    fun isPermissionGranted(ctx: Context): Boolean
-    fun askForPermission(ctx: Context, callback: Lambda1<Boolean>)
+    fun missingPermissions(ctx: Context): List<IPermission>
 
     // A name displayed on the button
     fun label(ctx: Context): String
@@ -87,11 +85,9 @@ interface IAction {
 
 // Actions that don't require any permission
 interface IPermissiveAction : IAction {
-    override fun isPermissionGranted(ctx: Context): Boolean {
-        return true
+    override fun missingPermissions(ctx: Context): List<IPermission> {
+        return listOf()
     }
-
-    override fun askForPermission(ctx: Context, callback: Lambda1<Boolean>) {}
 }
 
 // Actions that require Internet permission, such as HTTP, FTP ...
@@ -104,31 +100,28 @@ interface IPermissiveAction : IAction {
 
 // Actions that require file read/write permissions
 interface IFileAction : IAction {
-    override fun isPermissionGranted(ctx: Context): Boolean {
-        return Permissions.isFileReadPermissionGranted(ctx) &&
-                Permissions.isFileWritePermissionGranted(ctx)
-    }
-
-    override fun askForPermission(ctx: Context, callback: Lambda1<Boolean>) {
-        val list = if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
-            listOf(
-                NormalPermission(Manifest.permission.READ_EXTERNAL_STORAGE),
-                NormalPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            )
+    override fun missingPermissions(ctx: Context): List<IPermission> {
+        if( Permissions.isFileReadPermissionGranted(ctx) &&
+                Permissions.isFileWritePermissionGranted(ctx)) {
+            return listOf()
         } else {
-            listOf(
-                IntentPermission(
-                    intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
-                        .apply {
-                            data = Uri.fromParts("package", ctx.packageName, null)
-                        }
-                ) {
-                    Environment.isExternalStorageManager()
-                }
-            )
-        }
-        G.permissionChain.ask(ctx, list) { granted ->
-            callback(granted)
+            return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
+                listOf(
+                    NormalPermission(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    NormalPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                )
+            } else {
+                listOf(
+                    IntentPermission(
+                        intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                            .apply {
+                                data = Uri.fromParts("package", ctx.packageName, null)
+                            }
+                    ) {
+                        Environment.isExternalStorageManager()
+                    }
+                )
+            }
         }
     }
 }

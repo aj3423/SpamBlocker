@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.reScheduleBot
@@ -71,27 +72,25 @@ fun EditBotDialog(
                 color = if (anyError) C.disabled else Teal200,
                 enabled = !anyError,
                 onClick = {
-                    // Check all actions' permissions
-                    val restricted =  actions.firstOrNull { !it.isPermissionGranted(ctx) }
-                    if (restricted != null) {
-                        restricted.askForPermission(ctx) {}
-                        return@StrokeButton
+                    // Gather all required permissions for all actions
+                    val missingPermissions = actions.map { it.missingPermissions(ctx) }.flatten()
+
+                    G.permissionChain.ask(ctx, missingPermissions) { isGranted ->
+                        if (isGranted) {
+                            trigger.value = false
+
+                            val newBot = initial.copy(
+                                desc = description,
+                                enabled = enabled,
+                                schedule = schedule.value,
+                                actions = actions,
+                            )
+
+                            reScheduleBot(ctx, newBot)
+
+                            onSave(newBot)
+                        }
                     }
-
-                    // All action permissions ok
-
-                    trigger.value = false
-
-                    val newBot = initial.copy(
-                        desc = description,
-                        enabled = enabled,
-                        schedule = schedule.value,
-                        actions = actions,
-                    )
-
-                    reScheduleBot(ctx, newBot)
-
-                    onSave(newBot)
                 }
             )
         },
