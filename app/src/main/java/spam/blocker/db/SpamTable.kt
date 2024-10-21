@@ -23,15 +23,13 @@ object SpamTable {
     ): String? {
         val db = Db.getInstance(ctx).writableDatabase
 
-        val now = System.currentTimeMillis()
-
         db.beginTransaction()
         return try {
             for (number in numbers) {
                 db.execSQL(
                     "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME)" +
                             " VALUES ('${number.peer}', ${number.time})" +
-                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET $COLUMN_TIME = $now"
+                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET $COLUMN_TIME = ${number.time}"
                 )
             }
             db.setTransactionSuccessful()

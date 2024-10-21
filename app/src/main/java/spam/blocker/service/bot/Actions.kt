@@ -730,7 +730,7 @@ class ImportToSpamDB : IPermissiveAction {
             val numbers = (arg as List<*>).map {
                 SpamNumber(peer = (it as RegexRule).pattern, time = now)
             }
-            val errorStr = SpamTable.addAll(ctx, numbers, updateTimeOnConflict = true)
+            val errorStr = SpamTable.addAll(ctx, numbers)
 
             // Fire a global event to update UI
             Events.spamDbUpdated.fire()
