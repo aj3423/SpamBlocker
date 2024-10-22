@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -95,18 +96,31 @@ object Util {
     }
 
     fun isToday(timestampMillis: Long): Boolean {
-        val currentTimeMillis = System.currentTimeMillis()
-        val timestampInstant = Instant.ofEpochMilli(timestampMillis)
-        val currentInstant = Instant.ofEpochMilli(currentTimeMillis)
+        val now = LocalDateTime.now()
 
-        // Check if the timestamps are within the same day
-        val duration = Duration.between(timestampInstant, currentInstant)
-        val days = duration.toDays()
-        return days == 0L && duration.toHours() >= 0L && duration.toHours() <= 24L
+        // Convert the timestamp in milliseconds to a LocalDateTime object
+        val then = LocalDateTime.ofInstant(
+            Instant.ofEpochMilli(timestampMillis), ZoneId.systemDefault()
+        )
+
+        return now.year == then.year && now.month == then.month && now.dayOfMonth == then.dayOfMonth
+    }
+
+    fun isYesterday(timestampMillis: Long): Boolean {
+        val now = LocalDateTime.now()
+
+        // Convert the timestamp in milliseconds to a LocalDateTime object
+        val then = LocalDateTime.ofInstant(
+            Instant.ofEpochMilli(timestampMillis),
+            ZoneId.systemDefault()
+        )
+
+        // Check if the difference between now and then is less than 24 hours
+        return now.minusDays(1) <= then && then < now
     }
 
     // For history record time
-    fun getDayOfWeek(ctx: Context, timestamp: Long): String {
+    fun dayOfWeekString(ctx: Context, timestamp: Long): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = timestamp
         val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
@@ -125,8 +139,10 @@ object Util {
     fun formatTime(ctx: Context, timestamp: Long): String {
         return if (isToday(timestamp)) {
             hourMin(timestamp)
+        } else if (isYesterday(timestamp)) {
+            ctx.getString(R.string.yesterday) + "\n" + hourMin(timestamp)
         } else if (isWithinAWeek(timestamp)) {
-            getDayOfWeek(ctx, timestamp) + "\n" + hourMin(timestamp)
+            dayOfWeekString(ctx, timestamp) + "\n" + hourMin(timestamp)
         } else {
             fullDateString(timestamp)
         }
