@@ -1,7 +1,6 @@
 package spam.blocker.def
 
 import android.app.NotificationManager
-import android.os.Build
 
 object Def {
 

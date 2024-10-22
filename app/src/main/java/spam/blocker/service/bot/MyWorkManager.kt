@@ -11,9 +11,7 @@ import androidx.work.WorkerParameters
 import spam.blocker.db.BotTable
 import spam.blocker.def.Def
 import spam.blocker.util.Util
-import spam.blocker.util.loge
 import spam.blocker.util.logi
-import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 // The Android built-in WorkManager doesn't support schedule like: "at 00:00:00 every day",

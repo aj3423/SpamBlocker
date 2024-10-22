@@ -16,14 +16,12 @@ import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NonLazyGrid
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.util.loge
 
 
 @Composable

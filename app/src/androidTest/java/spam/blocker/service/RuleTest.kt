@@ -1,10 +1,5 @@
 package spam.blocker.service
 
-//import androidx.test.core.app.ApplicationProvider
-//import junit.framework.TestCase.assertEquals
-//import org.junit.After
-//import org.junit.Before
-//import org.junit.Test
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import io.mockk.clearAllMocks

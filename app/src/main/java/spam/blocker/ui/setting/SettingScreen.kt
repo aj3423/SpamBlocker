@@ -49,6 +49,7 @@ import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.White
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FabWrapper
@@ -56,7 +57,6 @@ import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.AnimatedVisibleV
 
 const val SettingRowMinHeight = 40
 

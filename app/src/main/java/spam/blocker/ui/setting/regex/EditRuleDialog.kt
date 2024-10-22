@@ -39,6 +39,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
@@ -55,7 +56,6 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox

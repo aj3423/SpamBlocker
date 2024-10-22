@@ -47,6 +47,7 @@ import spam.blocker.util.Csv
 import spam.blocker.util.Now
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
+import spam.blocker.util.loge
 import spam.blocker.util.logi
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -800,8 +801,13 @@ class ImportAsRegexRule(
             )
         }
 
-        return try {
+        try {
             val numberList = (arg as List<*>).map { (it as RegexRule).pattern }.distinct()
+
+            // Do nothing when there isn't any number to add, to prevent adding a `()`
+            if (numberList.isEmpty()) {
+                return Pair(true, null)
+            }
 
             when (importType) {
                 ImportType.Create -> create(ctx, numberList)
@@ -812,9 +818,9 @@ class ImportAsRegexRule(
             // fire event to update the UI
             Events.regexRuleUpdated.fire()
 
-            Pair(true, null)
+            return Pair(true, null)
         } catch (e: Exception) {
-            Pair(false, e.toString())
+            return Pair(false, e.toString())
         }
     }
 

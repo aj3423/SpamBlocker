@@ -43,7 +43,6 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Util
-import spam.blocker.util.loge
 import java.time.Duration
 import java.time.Instant
 
