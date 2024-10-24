@@ -19,6 +19,9 @@ if (keystorePropertiesFile.exists()) {
 android {
     signingConfigs {
         create("release") {
+            enableV2Signing = false
+            enableV3Signing = true
+
             storeFile = file(keystoreProperties["storeFile"].toString())
             storePassword = keystoreProperties["storePassword"].toString()
             keyPassword = keystoreProperties["keyPassword"].toString()
@@ -32,7 +35,7 @@ android {
         applicationId = "spam.blocker"
         minSdk = 29
         targetSdk = 35
-        versionCode = 303
+        versionCode = 1
         versionName = "0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
