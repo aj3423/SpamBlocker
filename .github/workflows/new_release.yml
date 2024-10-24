@@ -1,0 +1,74 @@
+  name: new_release
+  on: workflow_dispatch
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Setup JDK
+          uses: actions/setup-java@v4
+          with:
+            distribution: 'oracle'
+            java-version: "22"
+
+        # 1 build apk with internet permission
+        - name: Build
+          run: ./gradlew assembleRelease
+
+        # 1.1 sign it
+        - uses: ilharp/sign-android-release@nightly
+          name: Sign apk
+          id: sign_app_1
+          with:
+            releaseDir: app/build/outputs/apk/release
+            signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
+            keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+            keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+            keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+            buildToolsVersion: 34.0.0
+
+        # 1.2. move the signed apk and the compressed mapping.txt to ./
+        - name: move the apk
+          run: mv ${{ steps.sign_app_1.outputs.signedFile }} ./app-release.apk
+
+        - name: Compress mapping.txt
+          run: tar zcvf debug.symbol.tar.gz app/build/outputs/mapping/release/mapping.txt
+
+        # 2. build apk without internet permission
+        - name: Remove internet permission from manifest
+          run: sed -i '/android.permission.INTERNET/d' app/src/main/AndroidManifest.xml
+
+        - name: Build
+          run: ./gradlew assembleRelease
+
+        # 2.1 sign it
+        - uses: ilharp/sign-android-release@nightly
+          name: Sign apk
+          id: sign_app_2
+          with:
+            releaseDir: app/build/outputs/apk/release
+            signingKey: ${{ secrets.ANDROID_SIGNING_KEY }}
+            keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+            keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+            keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+            buildToolsVersion: 34.0.0
+
+        # 2.2. move the signed apk to ./
+        - name: move the apk
+          run: mv ${{ steps.sign_app_2.outputs.signedFile }} ./app-release-without-internet-permission.apk
+
+
+        # 3. publish release
+        - name: Publish new release tag
+          uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.SYNC_TOKEN }}"
+            draft: true
+            automatic_release_tag: "v0.1"
+            prerelease: false
+            title: ""
+            files: |
+              app-release.apk
+              app-release-without-internet-permission.apk
+              debug.symbol.tar.gz
