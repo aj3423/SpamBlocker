@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -249,7 +250,7 @@ class CleanupSpamDB(
 @Serializable
 @SerialName("BackupExport")
 class BackupExport(
-    private var includeSpamDB: Boolean = false
+    var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         // Generate config data bytes
@@ -289,8 +290,12 @@ class BackupExport(
 
     @Composable
     override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var includeDB by remember { mutableStateOf(includeSpamDB) }
+
         LabeledRow(labelId = R.string.include_spam_db) {
-            SwitchBox(includeSpamDB) { isTurningOn ->
+            SwitchBox(includeDB) { isTurningOn ->
+                includeDB = isTurningOn
                 includeSpamDB = isTurningOn
             }
         }
@@ -301,7 +306,7 @@ class BackupExport(
 @Serializable
 @SerialName("BackupImport")
 class BackupImport(
-    private var includeSpamDB: Boolean = false
+    var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
         if (arg !is ByteArray) {
@@ -353,8 +358,12 @@ class BackupImport(
 
     @Composable
     override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var includeDB by remember { mutableStateOf(includeSpamDB) }
+
         LabeledRow(labelId = R.string.include_spam_db) {
-            SwitchBox(includeSpamDB) { isTurningOn ->
+            SwitchBox(includeDB) { isTurningOn ->
+                includeDB = isTurningOn
                 includeSpamDB = isTurningOn
             }
         }
