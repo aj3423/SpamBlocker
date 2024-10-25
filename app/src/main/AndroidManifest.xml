@@ -39,6 +39,7 @@
         android:name=".App"
         android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
