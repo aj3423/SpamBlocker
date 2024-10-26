@@ -1,19 +1,8 @@
-import java.io.FileInputStream
-import java.util.Properties
-
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     kotlin("plugin.serialization") version "1.9.24"
-}
-
-// load signing key for release
-val keystoreProperties = Properties()
-var keystorePropertiesFile = rootProject.file("/e/android/release_keys/SpamBlocker.properties")
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -22,10 +11,10 @@ android {
             enableV2Signing = false
             enableV3Signing = true
 
-            storeFile = file(keystoreProperties["storeFile"].toString())
-            storePassword = keystoreProperties["storePassword"].toString()
-            keyPassword = keystoreProperties["keyPassword"].toString()
-            keyAlias = keystoreProperties["keyAlias"].toString()
+            storeFile = file("../../keystore.jks")
+            storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            keyPassword = System.getenv("ANDROID_KEY_PASSWORD")
+            keyAlias = System.getenv("ANDROID_KEY_ALIAS")
         }
     }
     namespace = "spam.blocker"
@@ -52,10 +41,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            // the keystore file doesn't exist on github action,
-            // use "debug" instead and it will be signed by signing action later.
-            signingConfig =
-                signingConfigs.getByName(if (keystorePropertiesFile.exists()) "release" else "debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

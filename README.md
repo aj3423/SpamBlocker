@@ -25,17 +25,17 @@ Table of Contents
 | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/7f03d0a0-d12e-4e1b-a064-2412fc1cee8e" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/ff1dd6c3-56dc-4f64-96a5-e7ca379af035" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/a86fff09-d30b-428e-866c-0f07b874d479" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/633e0e24-5ba0-44d7-90ec-09324081d37b" width="200"> |
 
 # Target Audience
-- :white_check_mark: For people who are more inclined to reject unknown calls.
-- For those who need to answer unknown calls, for example, salesmen or lawyers, etc:
+- :white_check_mark: For people who tends to avoid unknown calls.
+- For those who need to answer unknown calls, for example, salespeople or lawyers, etc:
   - :white_check_mark: If your carrier supports STIR/SHAKEN attestation, or there is any public spam database available for your country.
-  - :x: Otherwise, consider using a blocker that has its own proprietary spam database.
+  - :x: Otherwise, consider using a blocker with its own spam database.
 
 # How it works
-It works without replacing your default Call/SMS app.
+It works without replacing your default call/SMS app.
  - For call: <br>
  &ensp; It's the Caller ID app 
  - For SMS: <br>
- &ensp; It takes over the SMS notification, it only filters the notifications, the spam messages will still be present in the SMS app.
+ &ensp; It takes over the SMS notifications, it only filters the notifications, the spam messages will still be present in the SMS app.
    > 💡 Please turn off the notification permission of the default SMS app in system settings, otherwise there will be double SMS notifications.
 
 
@@ -71,7 +71,7 @@ It works without replacing your default Call/SMS app.
 # Privacy
  No data collection
  - Internet access:
-   - It's only used for downloading spam numbers, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147), or download the offline version from the release page.
+   - For downloading spam numbers only, if you don't use this feature, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147), or download the offline version from the release page.
  - No communication with other app
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
 
@@ -81,10 +81,12 @@ It works without replacing your default Call/SMS app.
 
 # FAQ
  - [Google shows security warning when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
- - [Any feature stops working after the app is killed](https://github.com/aj3423/SpamBlocker/issues/100)
+ - [How does the "Priority" work](https://github.com/aj3423/SpamBlocker/issues/166)
+ - [It stopped working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [How to always block a particular number regardless of how many times it repeats, or within OffTime, etc...](https://github.com/aj3423/SpamBlocker/issues/80#issuecomment-2176943329)
  - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
  - [Dual SIM support](https://github.com/aj3423/SpamBlocker/issues/72#issuecomment-2158981192)
+ - [Auto delete spam SMS messages](https://github.com/aj3423/SpamBlocker/discussions/164#discussioncomment-11037830)
 
 # Language support
 
