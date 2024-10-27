@@ -81,8 +81,7 @@ It works without replacing your default call/SMS app.
 
 # FAQ
  - [Google shows security warning when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
- - [How does the "Priority" work](https://github.com/aj3423/SpamBlocker/issues/166)
- - [How to always block a particular number regardless of how many times it repeats, or within OffTime, etc...](https://github.com/aj3423/SpamBlocker/issues/166)
+ - [How does the "Priority" work, how to always block a particular number regardless of any other rules](https://github.com/aj3423/SpamBlocker/issues/166)
  - [It stopped working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
  - [Dual SIM support](https://github.com/aj3423/SpamBlocker/issues/72#issuecomment-2158981192)
