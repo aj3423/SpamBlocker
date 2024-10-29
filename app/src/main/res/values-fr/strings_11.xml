@@ -1,3 +1,16 @@
 <resources>
     <string name="yesterday">Hier</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Refuser les appels pendant les réunions vidéo<br>
+        <br>
+        Il vérifie si une app sélectionnée exécute un <no_translate><b>service</b></no_translate> au premier plan, couramment utilisé par les apps de vidéoconférence pour maintenir la connexion.<br>
+        <br>
+        Il s’applique aux appels et aux messages.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">En réunion</string>
+
 </resources>

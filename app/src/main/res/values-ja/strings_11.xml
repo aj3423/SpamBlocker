@@ -1,3 +1,17 @@
 <resources>
     <string name="yesterday">昨日</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        ビデオ会議中に着信拒否を行います<br>
+        <br>
+        選択したアプリで<b>フォアグラウンドサービス</b>を実行しているかどうか確認します。<br>
+        このサービスは、ビデオ会議アプリで接続を維持するために一般的に使用されます<br>
+        <br>
+        着信とメッセージの両方に適用されます。<br>
+        <br>
+        <font color="#ea86ff"><b>デフォルトの優先順位: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">会議中</string>
+
 </resources>

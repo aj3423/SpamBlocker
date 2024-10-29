@@ -98,7 +98,7 @@ fun HistoryCard(
                         overflow = TextOverflow.Ellipsis,
                     )
                     // by RecentApp Icon
-                    if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
+                    if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP || record.result == Def.RESULT_BLOCKED_BY_MEETING_MODE) {
                         DrawableImage(
                             AppInfo.fromPackage(ctx, record.reason).icon,
                             modifier = M

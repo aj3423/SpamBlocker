@@ -86,7 +86,7 @@
         <br>
         The default setting <font color="#03DAC5"><b>1 / 5 Min</b></font> means the second call within 5 minutes will be allowed. <br>
         <br>
-        Only applies for calls, <b>not</b> for text messages. <br>
+        Only applies to calls, <b>not</b> to text messages. <br>
         <br>
         <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>

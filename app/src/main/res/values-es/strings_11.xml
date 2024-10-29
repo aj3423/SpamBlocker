@@ -1,3 +1,16 @@
 <resources>
     <string name="yesterday">Ayer</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Rechazar llamadas durante videollamadas.<br>
+        <br>
+        Comprueba si cualquier aplicación seleccionada está ejecutando un <b>servicio en primer plano</b>,
+        que es comúnmente usado por aplicaciones de videoconferencia para mantener la conexión activa.<br>
+        <br>
+        Aplica tanto a llamadas como a mensajes.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad predeterminada: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">En reunión</string>
 </resources>

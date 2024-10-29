@@ -17,6 +17,7 @@ import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.MeetingMode
 import spam.blocker.util.SharedPref.OffTime
 import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
@@ -289,6 +290,24 @@ class RecentApps {
 }
 
 @Serializable
+class MeetingMode {
+    val list = mutableListOf<String>() // [pkg.a, pkg.b@20, pkg.c]
+    var priority = 20
+    fun load(ctx: Context) {
+        val spf = MeetingMode(ctx)
+        list.clear()
+        list.addAll(spf.getList().map { it })
+        priority = spf.getPriority()
+    }
+
+    fun apply(ctx: Context) {
+        val spf = MeetingMode(ctx)
+        spf.setList(list.map { it })
+        spf.setPriority(priority)
+    }
+}
+
+@Serializable
 abstract class PatternRules {
     val rules = mutableListOf<RegexRule>()
 
@@ -374,6 +393,7 @@ class Configs {
     val repeatedCall = RepeatedCall()
     val dialed = Dialed()
     val recentApps = RecentApps()
+    val meetingMode = MeetingMode()
     val blockType = BlockType()
     val offTime = OffTime()
 
@@ -399,6 +419,7 @@ class Configs {
         repeatedCall.load(ctx)
         dialed.load(ctx)
         recentApps.load(ctx)
+        meetingMode.load(ctx)
         blockType.load(ctx)
         offTime.load(ctx)
 
@@ -426,6 +447,7 @@ class Configs {
         repeatedCall.apply(ctx)
         dialed.apply(ctx)
         recentApps.apply(ctx)
+        meetingMode.apply(ctx)
         blockType.apply(ctx)
         offTime.apply(ctx)
 

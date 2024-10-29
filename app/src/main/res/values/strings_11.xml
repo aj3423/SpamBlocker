@@ -1,3 +1,17 @@
 <resources>
     <string name="yesterday">Yesterday</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Decline calls during video meetings.<br>
+        <br>
+        It checks whether any selected app is running a <b>foreground service</b>,
+        which is commonly used by video conferencing apps to keep the connection alive.<br>
+        <br>
+        It applies to both calls and messages.<br>
+        <br>
+        <font color="#ea86ff"><b>Default Priority: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">In Meeting</string>
+
 </resources>

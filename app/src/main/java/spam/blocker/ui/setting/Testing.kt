@@ -60,11 +60,11 @@ fun PopupTesting(
 
     var passOrBlock by remember { mutableStateOf(false) }
     var result by remember { mutableStateOf("") }
-    var recentAppPkg by remember { mutableStateOf("") }
+    var byApp by remember { mutableStateOf("") }
 
     fun clearResult() {
         result = ""
-        recentAppPkg = ""
+        byApp = ""
     }
 
 
@@ -92,8 +92,8 @@ fun PopupTesting(
                 result = Checker.resultStr(ctx, r.result, r.reason())
                 passOrBlock = !r.shouldBlock
 
-                if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP) {
-                    recentAppPkg = r.reason()
+                if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP || r.result == Def.RESULT_BLOCKED_BY_MEETING_MODE) {
+                    byApp = r.reason()
                 }
             }
         },
@@ -139,9 +139,9 @@ fun PopupTesting(
                                 text = result,
                                 color = if (passOrBlock) C.pass else C.block,
                             )
-                            if (recentAppPkg != "") {
+                            if (byApp != "") {
                                 DrawableImage(
-                                    AppInfo.fromPackage(ctx, recentAppPkg).icon,
+                                    AppInfo.fromPackage(ctx, byApp).icon,
                                     modifier = M
                                         .size(24.dp)
                                         .padding(horizontal = 2.dp)

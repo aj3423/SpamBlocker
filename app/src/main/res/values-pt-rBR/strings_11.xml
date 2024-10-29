@@ -1,3 +1,17 @@
 <resources>
     <string name="yesterday">Ontem</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Recuse chamadas durante reuniões por vídeo.<br>
+        <br>
+        Ele verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
+        que é comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
+        <br>
+        Aplica-se a chamadas e mensagens.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade padrão: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Em reunião</string>
+
 </resources>

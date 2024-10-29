@@ -28,7 +28,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
@@ -53,6 +52,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.AppInfo
 import spam.blocker.util.AppOpsPermission
+import spam.blocker.util.Lambda2
 import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.RecentAppInfo
 import spam.blocker.util.SharedPref.RecentApps
@@ -60,10 +60,48 @@ import spam.blocker.util.Util
 import spam.blocker.util.Util.listApps
 
 @Composable
-private fun PopupChooseApps(
+fun AppChooserIcon(
+    popupTrigger: MutableState<Boolean>
+) {
+    val ctx = LocalContext.current
+
+    ResImage(
+        resId = R.drawable.ic_right_arrow,
+        color = SkyBlue,
+        modifier = M
+            .fillMaxHeight()
+            .padding(start = 4.dp)
+            .wrapContentHeight(align = Alignment.CenterVertically)
+            .clickable {
+                G.permissionChain.ask(
+                    ctx,
+                    listOf(
+                        AppOpsPermission(
+                            AppOpsManager.OPSTR_GET_USAGE_STATS,
+                            intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
+                            prompt = ctx.getString(R.string.prompt_go_to_usage_permission_setting)
+                        )
+                    )
+                ) { granted ->
+                    if (granted) {
+                        popupTrigger.value = true
+                    }
+                }
+            }
+    )
+
+}
+
+@Composable
+fun <T> PopupChooseApps(
     ctx: Context,
     popupTrigger: MutableState<Boolean>,
-    enabledPkgs: SnapshotStateList<RecentAppInfo>,
+
+    finder: (String) -> T?,
+
+    extra: (@Composable (T?) -> Unit)? = null,
+
+    onCheckChange: Lambda2<String, Boolean>,
 ) {
     // popup for choosing apps
     PopupDialog(
@@ -85,7 +123,7 @@ private fun PopupChooseApps(
                 }
                 // 2. sort by: selected, then by package label
                 all.sortedWith(compareBy<AppInfo> { appInfo ->
-                    enabledPkgs.find { it.pkgName == appInfo.pkgName } == null
+                    finder(appInfo.pkgName) == null
                 }.thenBy {
                     it.label
                 }).toMutableList()
@@ -101,9 +139,9 @@ private fun PopupChooseApps(
                     }
                 )
                 LazyColumn(modifier = M.padding(top = 4.dp)) {
-                    itemsIndexed(sortedApps) { index, it ->
-                        val pkgName = it.pkgName
-                        val info = enabledPkgs.find { it.pkgName == pkgName }
+                    itemsIndexed(sortedApps) { index, appInfo ->
+                        val pkgName = appInfo.pkgName
+                        val info = finder(pkgName)
                         val isEnabled = info != null
 
                         RowVCenterSpaced(
@@ -111,12 +149,12 @@ private fun PopupChooseApps(
                             modifier = M.height(48.dp),
                         ) {
                             // icon
-                            DrawableImage(it.icon, modifier = M.size(24.dp))
+                            DrawableImage(appInfo.icon, modifier = M.size(24.dp))
 
                             // label & package
                             Column(modifier = M.weight(1f)) {
                                 Text(
-                                    it.label,
+                                    appInfo.label,
                                     color = SkyBlue,
                                     overflow = TextOverflow.Ellipsis,
                                     maxLines = 1,
@@ -124,7 +162,7 @@ private fun PopupChooseApps(
                                 )
 
                                 Text(
-                                    it.pkgName,
+                                    appInfo.pkgName,
                                     color = LocalPalette.current.textGrey,
                                     overflow = TextOverflow.Ellipsis,
                                     lineHeight = 12.sp,
@@ -133,69 +171,12 @@ private fun PopupChooseApps(
                             }
 
                             // duration icon
-                            if (info != null) {
-                                val popupTrigger1 = rememberSaveable { mutableStateOf(false) }
+                            extra?.let { it(info) }
 
-                                if (popupTrigger1.value) {
-                                    PopupDialog(
-                                        trigger = popupTrigger1,
-                                        content = {
-                                            LabeledRow(
-                                                labelId = R.string.duration,
-                                                helpTooltipId = R.string.help_recent_apps_individual_duration
-                                            ) {
-                                                NumberInputBox(
-                                                    intValue = info.duration,
-                                                    allowEmpty = true,
-                                                    label = { Text(Str(R.string.min)) },
-                                                    leadingIconId = R.drawable.ic_duration,
-                                                    onValueChange = { newValue, hasError ->
-                                                        val i =
-                                                            enabledPkgs.indexOfFirst { it.pkgName == pkgName }
-
-                                                        // 1. update gui
-                                                        enabledPkgs[i] =
-                                                            RecentAppInfo(pkgName, newValue)
-
-                                                        // 2. save to SharedPref
-                                                        RecentApps(ctx).setList(enabledPkgs)
-                                                    })
-                                            }
-                                        }
-                                    )
-                                }
-                                if (info.duration == null) {
-                                    GreyIcon16(
-                                        iconId = R.drawable.ic_duration,
-                                        modifier = M
-                                            .clickable {
-                                                popupTrigger1.value = true
-                                            }
-                                    )
-                                } else {
-                                    GreyButton("${info.duration} ${Str(R.string.min)}") {
-                                        popupTrigger1.value = true
-                                    }
-                                }
-                            }
 
                             // checkbox
                             SwitchBox(checked = isEnabled) { isChecked ->
-                                if (isChecked) {
-                                    // 1. add to SharedPref
-                                    RecentApps(ctx).addPackage(it.pkgName)
-
-                                    // 2. trigger recompose
-                                    enabledPkgs.add(RecentAppInfo(pkgName))
-                                } else {
-                                    // 1. remove from SharedPref
-                                    RecentApps(ctx).removePackage(it.pkgName)
-
-                                    // 2. trigger recompose
-                                    enabledPkgs.removeAt(
-                                        enabledPkgs.indexOfFirst { it.pkgName == pkgName }
-                                    )
-                                }
+                                onCheckChange(pkgName, isChecked)
                             }
                         }
 
@@ -252,7 +233,79 @@ fun RecentApps() {
         enabledPkgs.addAll(spf.getList())
     }
 
-    PopupChooseApps(ctx = ctx, popupTrigger = appsPopupTrigger, enabledPkgs = enabledPkgs)
+    PopupChooseApps(
+        ctx = ctx,
+        popupTrigger = appsPopupTrigger,
+        finder = { pkgName ->
+            enabledPkgs.find { it.pkgName == pkgName }
+        },
+        onCheckChange = { pkgName, isChecked ->
+            if (isChecked) {
+                // 1. add to SharedPref
+                RecentApps(ctx).addPackage(pkgName)
+
+                // 2. trigger recompose
+                enabledPkgs.add(RecentAppInfo(pkgName))
+            } else {
+                // 1. remove from SharedPref
+                RecentApps(ctx).removePackage(pkgName)
+
+                // 2. trigger recompose
+                enabledPkgs.removeAt(
+                    enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+                )
+            }
+        },
+        extra = { recentAppInfo ->
+            if (recentAppInfo != null) {
+                val popupTrigger1 = rememberSaveable { mutableStateOf(false) }
+
+                if (popupTrigger1.value) {
+                    PopupDialog(
+                        trigger = popupTrigger1,
+                        content = {
+                            LabeledRow(
+                                labelId = R.string.duration,
+                                helpTooltipId = R.string.help_recent_apps_individual_duration
+                            ) {
+                                NumberInputBox(
+                                    intValue = recentAppInfo.duration,
+                                    allowEmpty = true,
+                                    label = { Text(Str(R.string.min)) },
+                                    leadingIconId = R.drawable.ic_duration,
+                                    onValueChange = { newValue, hasError ->
+                                        val pkgName = recentAppInfo.pkgName
+
+                                        val i =
+                                            enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+
+                                        // 1. update gui
+                                        enabledPkgs[i] =
+                                            RecentAppInfo(pkgName, newValue)
+
+                                        // 2. save to SharedPref
+                                        RecentApps(ctx).setList(enabledPkgs)
+                                    })
+                            }
+                        }
+                    )
+                }
+                if (recentAppInfo.duration == null) {
+                    GreyIcon16(
+                        iconId = R.drawable.ic_duration,
+                        modifier = M
+                            .clickable {
+                                popupTrigger1.value = true
+                            }
+                    )
+                } else {
+                    GreyButton("${recentAppInfo.duration} ${Str(R.string.min)}") {
+                        popupTrigger1.value = true
+                    }
+                }
+            }
+        }
+    )
     PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = defaultInXMin)
 
     LabeledRow(
@@ -289,30 +342,8 @@ fun RecentApps() {
                     }
                 }
             }
-            ResImage(
-                resId = R.drawable.ic_right_arrow,
-                color = SkyBlue,
-                modifier = M
-                    .fillMaxHeight()
-                    .padding(start = 4.dp)
-                    .wrapContentHeight(align = Alignment.CenterVertically)
-                    .clickable {
-                        G.permissionChain.ask(
-                            ctx,
-                            listOf(
-                                AppOpsPermission(
-                                    AppOpsManager.OPSTR_GET_USAGE_STATS,
-                                    intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
-                                    prompt = ctx.getString(R.string.prompt_go_to_usage_permission_setting)
-                                )
-                            )
-                        ) { granted ->
-                            if (granted) {
-                                appsPopupTrigger.value = true
-                            }
-                        }
-                    }
-            )
+
+            AppChooserIcon(appsPopupTrigger)
         }
     )
 }

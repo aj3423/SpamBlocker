@@ -156,6 +156,45 @@ object Permissions {
         return mapApps.keys.toList()
     }
 
+    // Get all events of a list of apps.
+    // Returns a Map<pkgName, List<Event>>
+    fun getAppsEvents(
+        ctx: Context,
+        pkgNames: Set<String>,
+        withinMillis: Long = 24 * 3600 * 1000,
+    ): Map<String, List<Int>> {
+        val ret = mutableMapOf<String, MutableList<Int>>()
+
+        val usageStatsManager =
+            ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val currentTime = Now.currentMillis()
+        val events = usageStatsManager.queryEvents(currentTime - withinMillis, currentTime)
+
+        while (events.hasNextEvent()) {
+            val event = UsageEvents.Event()
+            events.getNextEvent(event)
+
+            val pkg = event.packageName
+            if (pkgNames.contains(pkg)) {
+                ret.getOrPut(pkg) { mutableListOf() }.add(event.eventType)
+            }
+        }
+        return ret
+    }
+
+    // It checks if the app events contains FOREGROUND_SERVICE_START but no following FOREGROUND_SERVICE_STOP,
+    //   which means the video or audio is started and not stopped yet.
+    fun isForegroundServiceRunning(appEvents: List<Int>?): Boolean {
+        val lastStart = appEvents?.lastIndexOf(UsageEvents.Event.FOREGROUND_SERVICE_START)
+        return if (lastStart == null || lastStart == -1) {
+            // There's never been any foreground service started.
+            false
+        } else {
+            // If there isn't a STOP after the START.
+            !appEvents.drop(lastStart).contains(UsageEvents.Event.FOREGROUND_SERVICE_STOP)
+        }
+    }
+
     fun getPackagesHoldingPermissions(
         pm: PackageManager,
         permissions: Array<String>

@@ -48,7 +48,6 @@ import spam.blocker.util.Csv
 import spam.blocker.util.Now
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
-import spam.blocker.util.loge
 import spam.blocker.util.logi
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags

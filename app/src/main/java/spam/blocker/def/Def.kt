@@ -24,6 +24,7 @@ object Def {
     const val SETTING_REPEATED_TIMES = "repeated_times"
     const val SETTING_REPEATED_IN_X_MIN = "repeated_in_x_min"
     const val SETTING_RECENT_APP_IN_X_MIN = "recent_app_in_x_min"
+    const val SETTING_MEETING_MODE_PRIORITY = "meeting_mode_priority"
     const val SETTING_PERMIT_DIALED = "permit_dialed"
     const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
     const val SETTING_BLOCK_TYPE = "block_type"
@@ -33,6 +34,7 @@ object Def {
     const val SETTING_OFF_TIME_END_HOUR = "off_time_end_hour"
     const val SETTING_OFF_TIME_END_MIN = "off_time_end_min"
     const val SETTING_RECENT_APPS = "recent_apps"
+    const val SETTING_MEETING_APPS = "meeting_apps"
     const val SETTING_ACTIVE_TAB = "active_tab"
     const val SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE = "warn_running_in_work_profile_once"
     const val SETTING_WARN_DOUBLE_SMS = "warn_double_sms"
@@ -86,6 +88,7 @@ object Def {
     const val RESULT_BLOCKED_BY_CONTACT_GROUP = 14
     const val RESULT_BLOCKED_BY_CONTACT_REGEX = 15
     const val RESULT_BLOCKED_BY_SPAM_DB = 16
+    const val RESULT_BLOCKED_BY_MEETING_MODE = 17
 
     fun isBlocked(result: Int): Boolean {
         return result in 10..99

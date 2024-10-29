@@ -56,7 +56,7 @@
         <br>
         The default setting <font color="#03DAC5"><b>3 Days</b></font> means if you have dialed or sent messages to the number within the past 3 days, calls from that number will be allowed.<br>
         <br>
-        Only applies for calls, <b>not</b> for text messages. <br>
+        Only applies to calls, <b>not</b> to text messages. <br>
         <br>
         <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>
@@ -71,7 +71,7 @@
         The default setting <font color="03DAC5"><b>5 Min</b></font> means any call would pass if any of the apps has been used within 5 minutes,
         by `used` it means either being activated, deactivated, minimized, or killed. <br>
         <br>
-        Only applies for calls, <b>not</b> for text messages. <br>
+        Only applies to calls, <b>not</b> to text messages. <br>
         <br>
         <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>

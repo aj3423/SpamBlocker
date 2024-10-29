@@ -1,3 +1,17 @@
 <resources>
     <string name="yesterday">Onte</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Rexeita chamadas durante as videoconferencias.<br>
+        <br>
+        Comproba se algunha aplicación seleccionada está executando un <b> servizo en primeiro plano </b>,
+        que as aplicacións de videoconferencia usan habitualmente para manter a conexión activa.<br>
+        <br>
+        Aplícase tanto a chamadas como a mensaxes.<br>
+        <br>
+        <font color="#ea86ff"><b> Prioridade predeterminada: 20 </b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">En reunión</string>
+
 </resources>

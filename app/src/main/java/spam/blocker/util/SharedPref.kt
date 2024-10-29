@@ -320,3 +320,33 @@ class RecentApps(ctx: Context) : SharedPref(ctx) {
     }
 }
 
+class MeetingMode(ctx: Context) : SharedPref(ctx) {
+    fun getList(): List<String> {
+        val s = readString(Def.SETTING_MEETING_APPS, "")
+
+        if (s == "")
+            return listOf()
+
+        return s.split(",")
+    }
+    fun setList(list: List<String>) {
+        writeString(Def.SETTING_MEETING_APPS, list.joinToString(","))
+    }
+    fun addPackage(pkgToAdd: String) {
+        val l = getList().toMutableList()
+        l.add(pkgToAdd)
+        setList(l)
+    }
+    fun removePackage(pkgToRemove: String) {
+        val l = getList().toMutableList()
+        l.remove(pkgToRemove)
+        setList(l)
+    }
+    fun getPriority() : Int {
+        return readInt(Def.SETTING_MEETING_MODE_PRIORITY, 20)
+    }
+    fun setPriority(priority : Int) {
+        writeInt(Def.SETTING_MEETING_MODE_PRIORITY, priority)
+    }
+}
+

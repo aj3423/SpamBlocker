@@ -33,14 +33,14 @@ class CheckResult(
 ) {
     var byContact: String? = null // allowed by contact
     var byRule: RegexRule? = null // allowed or blocked by this filter rule
-    var byRecentApp: String? = null // allowed by recent app
+    var byApp: String? = null // allowed by recent app, or blocked by meeting mode
     var stirResult: Int? = null
 
     // This `reason` will be saved to database as a string
     fun reason(): String {
         if (byContact != null) return byContact!!
         if (byRule != null) return byRule!!.id.toString()
-        if (byRecentApp != null) return byRecentApp!!
+        if (byApp != null) return byApp!!
         if (stirResult != null) return stirResult.toString()
         return ""
     }
@@ -334,8 +334,37 @@ class Checker { // for namespace only
                     return CheckResult(
                         false,
                         Def.RESULT_ALLOWED_BY_RECENT_APP
-                    ).apply { byRecentApp = intersection.first() }
+                    ).apply { byApp = intersection.first() }
                 }
+            }
+            return null
+        }
+    }
+
+    class MeetingMode(private val ctx: Context) : IChecker {
+        override fun priority(): Int {
+            val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
+            return spf.getPriority()
+        }
+
+        override fun check(): CheckResult? {
+            val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
+
+
+            val apps = spf.getList()
+
+            val eventsMap = Permissions.getAppsEvents(ctx, apps.toSet())
+
+            // Check if any app is running a foreground service
+            val appInMeeting = apps.firstOrNull {
+                Permissions.isForegroundServiceRunning(eventsMap[it])
+            }
+
+            if (appInMeeting != null) {
+                return CheckResult(
+                    true,
+                    Def.RESULT_BLOCKED_BY_MEETING_MODE
+                ).apply { byApp = appInMeeting }
             }
             return null
         }
@@ -528,6 +557,7 @@ class Checker { // for namespace only
                 Checker.RepeatedCall(ctx, rawNumber, isTesting = callDetails == null),
                 Checker.Dialed(ctx, rawNumber),
                 Checker.RecentApp(ctx),
+                Checker.MeetingMode(ctx),
                 Checker.OffTime(ctx)
             )
 
@@ -573,6 +603,7 @@ class Checker { // for namespace only
             val checkers = arrayListOf<IChecker>(
                 Checker.Contact(ctx, rawNumber),
                 Checker.SpamDB(ctx, rawNumber),
+                Checker.MeetingMode(ctx),
                 Checker.OffTime(ctx)
             )
 
@@ -702,6 +733,7 @@ class Checker { // for namespace only
 
                 Def.RESULT_ALLOWED_BY_EMERGENCY -> res.getString(R.string.emergency_call)
                 Def.RESULT_ALLOWED_BY_RECENT_APP -> res.getString(R.string.recent_app) + ": "
+                Def.RESULT_BLOCKED_BY_MEETING_MODE -> res.getString(R.string.in_meeting) + ": "
                 Def.RESULT_ALLOWED_BY_REPEATED -> res.getString(R.string.repeated_call)
                 Def.RESULT_ALLOWED_BY_DIALED -> res.getString(R.string.dialed)
                 Def.RESULT_ALLOWED_BY_OFF_TIME -> res.getString(R.string.off_time)
