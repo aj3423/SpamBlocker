@@ -2,15 +2,21 @@
     <string name="yesterday">Hier</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Refuser les appels pendant les réunions vidéo<br>
+        Refuser les appels pendant les visioconférences.<br>
         <br>
-        Il vérifie si une app sélectionnée exécute un <no_translate><b>service</b></no_translate> au premier plan, couramment utilisé par les apps de vidéoconférence pour maintenir la connexion.<br>
+        Elle vérifie si une application sélectionnée exécute un <b>service de premier plan</b>,
+        qui est généralement utilisé par les applications de visioconférence pour maintenir la connexion.<br>
         <br>
-        Il s’applique aux appels et aux messages.<br>
+        Elle s\'applique à la fois aux appels et aux messages.<br>
         <br>
         <font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">En réunion</string>
-
+    <string name="http_header">En-tête HTTP</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Un attribut par ligne, par exemple :
+        ]]>
+    </string>
 </resources>

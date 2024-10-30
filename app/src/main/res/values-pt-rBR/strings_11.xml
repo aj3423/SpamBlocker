@@ -2,10 +2,10 @@
     <string name="yesterday">Ontem</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Recuse chamadas durante reuniões por vídeo.<br>
+        Recusar chamadas durante videoconferências.<br>
         <br>
-        Ele verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
-        que é comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
+        Verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
+        que é usado por aplicativos de videoconferência para manter a conexão viva.<br>
         <br>
         Aplica-se a chamadas e mensagens.<br>
         <br>
@@ -13,5 +13,10 @@
         ]]>
     </string>
     <string name="in_meeting">Em reunião</string>
-
+    <string name="http_header">Cabeçalho HTTP</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Um atributo por linha. Por exemplo:
+        ]]>
+    </string>
 </resources>

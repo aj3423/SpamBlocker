@@ -2,16 +2,21 @@
     <string name="yesterday">昨天</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        拒绝视频会议期间的来电。<br>
+        视频会议期间拒绝通话。<br>
         <br>
-        它将检查有无选定的应用正在<B>运行前台服务</B>
-        ，视频会议应用通常使用此服务来保持连接。<br>
+        它会检查所选应用是否运行<b>前台服务</b>，
+        这常被视频会议应用用来保持连接。<br>
         <br>
-        它对来电和短信都有效。<br>
+        它适用于通话和短信。<br>
         <br>
         <font color="#ea86ff"><b>默认优先级：20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">会议中</string>
-
+    <string name="in_meeting">正在开会</string>
+    <string name="http_header">Http 标头</string>
+    <string name="help_http_header">
+        <![CDATA[
+        每行一个属性，例如：
+        ]]>
+    </string>
 </resources>

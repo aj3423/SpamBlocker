@@ -2,16 +2,21 @@
     <string name="yesterday">Gestern</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Abweisen von Anrufen während Videokonferenzen.<br>
+        Anruf ablehnen während Videokonferenzen.<br>
         <br>
-        Es wird überprüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
-        der in der Regel von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
+        Es prüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
+        der häufig von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
         <br>
-        Es gilt sowohl für Anrufe als auch für Nachrichten.<br>
+        Es gilt sowohl für Anrufe als auch Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">In Besprechung</string>
-
+    <string name="in_meeting">In einer Besprechung</string>
+    <string name="http_header">Http Header</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Ein Attribut pro Zeile, z. B.:
+        ]]>
+    </string>
 </resources>

@@ -13,5 +13,10 @@
         ]]>
     </string>
     <string name="in_meeting">In Meeting</string>
-
+    <string name="http_header">Http Header</string>
+    <string name="help_http_header">
+        <![CDATA[
+        One attribute per line, for example:
+        ]]>
+    </string>
 </resources>

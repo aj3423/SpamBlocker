@@ -2,16 +2,21 @@
     <string name="yesterday">Onte</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Rexeita chamadas durante as videoconferencias.<br>
+        Rechamar chamadas durante reunións de vídeo.<br>
         <br>
-        Comproba se algunha aplicación seleccionada está executando un <b> servizo en primeiro plano </b>,
-        que as aplicacións de videoconferencia usan habitualmente para manter a conexión activa.<br>
+        Comproba se calquera aplicación seleccionada está a executar un <b>servizo en primeiro plano</b>,
+        que normalmente se usa nas aplicacións de videoconferencia para manter a conexión activa.<br>
         <br>
         Aplícase tanto a chamadas como a mensaxes.<br>
         <br>
-        <font color="#ea86ff"><b> Prioridade predeterminada: 20 </b></font>
+        <font color="#ea86ff"><b>Prioridade predeterminada: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">En reunión</string>
-
+    <string name="http_header">Cabeceira HTTP</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Un atributo por liña, por exemplo:
+        ]]>
+    </string>
 </resources>

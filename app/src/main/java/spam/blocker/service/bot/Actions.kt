@@ -2,15 +2,21 @@ package spam.blocker.service.bot
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -29,18 +35,27 @@ import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.SettingRow
+import spam.blocker.ui.setting.bot.TestActionButton
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
@@ -120,8 +135,28 @@ class CleanupHistory(
 @Serializable
 @SerialName("HttpDownload")
 class HttpDownload(
-    var url: String = ""
+    var url: String = "",
+    var header: String = "",
 ) : IPermissiveAction {
+
+    /*
+    Split the header string:
+        ua: chrome\n
+        cookie: xxx\n
+        some_key: yyy
+    into:
+        Map(
+            ua => chrome,
+            cookie => xxx,
+            some_key => yyy,
+        )
+     */
+    private fun splitHeader(allHeadersStr: String): Map<String, String> {
+        return allHeadersStr.trim().lines().associate { line ->
+            val (key, value) = line.split(":").map { it.trim() }
+            key to value
+        }
+    }
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
@@ -130,10 +165,16 @@ class HttpDownload(
 
         val thread = GlobalScope.launch(Dispatchers.IO) {
             ret = try {
+                // Add http headers
+                splitHeader(header).forEach { (key, value) ->
+                    connection.setRequestProperty(key, value)
+                }
+
                 connection.connect()
+
                 val responseCode = connection.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                    val byteArray: ByteArray = connection.inputStream.use { it.readBytes() }
+                    val byteArray = connection.inputStream.use { it.readBytes() }
                     Pair(true, byteArray)
                 } else {
                     Pair(false, "HTTP: $responseCode")
@@ -178,10 +219,19 @@ class HttpDownload(
 
     @Composable
     override fun Options() {
+        val C = LocalPalette.current
+
         StrInputBox(
             text = url,
             label = { Text(Str(R.string.url)) },
             onValueChange = { url = it }
+        )
+
+        StrInputBox(
+            text = header,
+            label = { Text(Str(R.string.http_header)) },
+            onValueChange = { header = it },
+            placeholder = { GreyLabel(Str(R.string.help_http_header)+ "\n\nUser-Agent: Chrome\nAuthorization: Basic ABC\n...", color = C.textGrey.copy(alpha = 0.6f)) }
         )
     }
 }
