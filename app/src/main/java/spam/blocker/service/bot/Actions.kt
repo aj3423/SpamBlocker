@@ -152,7 +152,12 @@ class HttpDownload(
         )
      */
     private fun splitHeader(allHeadersStr: String): Map<String, String> {
-        return allHeadersStr.trim().lines().associate { line ->
+        val str = allHeadersStr.trim()
+
+        if (str.isEmpty())
+            return mapOf()
+
+        return str.lines().associate { line ->
             val (key, value) = line.split(":").map { it.trim() }
             key to value
         }
