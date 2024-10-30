@@ -2,20 +2,21 @@
     <string name="yesterday">昨日</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        ビデオ会議中に電話を拒否する。<br>
+        ビデオ会議中に通話を拒否します。<br>
         <br>
-        ビデオ会議アプリが接続を維持するために一般的に使用する<b>フォアグラウンドサービス</b>が実行されているかどうかを確認します。<br>
+        選択されたアプリが<b>フォアグラウンドサービス</b>を実行しているかどうかをチェックします。これは通常、ビデオ会議アプリが接続を維持するために使用されます。<br>
         <br>
         通話とメッセージの両方に適用されます。<br>
         <br>
-        <font color="#ea86ff"><b>デフォルトの優先順位: 20</b></font>
+        <font color="#ea86ff"><b>既定の優先順位: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">会議中</string>
-    <string name="http_header">Http ヘッダー</string>
+    <string name="in_meeting">会議モード</string>
+    <string name="search">検索</string>
+    <string name="http_header">HTTPヘッダー</string>
     <string name="help_http_header">
         <![CDATA[
-        1 行に 1 つの属性。例:
+        行ごとに1つの属性（例）：
         ]]>
     </string>
 </resources>

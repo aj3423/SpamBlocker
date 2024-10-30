@@ -67,9 +67,28 @@ object SpamTable {
             }
             return ret
         }
-
     }
 
+    fun search(
+        ctx: Context,
+        pattern: String,
+        limit: Int = 10,
+    ): List<SpamNumber> {
+        val sql = "SELECT * FROM $TABLE_SPAM WHERE $COLUMN_PEER LIKE '%$pattern%' LIMIT $limit"
+
+        val ret: MutableList<SpamNumber> = mutableListOf()
+
+        val db = Db.getInstance(ctx).readableDatabase
+        val cursor = db.rawQuery(sql, null)
+        cursor.use {
+            if (it.moveToFirst()) {
+                do {
+                    ret += ruleFromCursor(it)
+                } while (it.moveToNext())
+            }
+            return ret
+        }
+    }
 
     fun numberExists(ctx: Context, number: String): Boolean {
         val db = Db.getInstance(ctx).readableDatabase
@@ -96,6 +115,15 @@ object SpamTable {
         val db = Db.getInstance(ctx).writableDatabase
         val sql = "DELETE FROM ${Db.TABLE_SPAM}"
         db.execSQL(sql)
+    }
+
+    fun deleteById(ctx: Context, id: Long): Boolean {
+        val sql = "DELETE FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_ID} = $id"
+        val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
+
+        return cursor.use {
+            it.moveToFirst()
+        }
     }
 
     // Delete expired records before this timestamp
