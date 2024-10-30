@@ -2,15 +2,16 @@
     <string name="yesterday">Gestern</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Anrufe während Videokonferenzen ablehnen.<br>
+        Abweisen von Anrufen während Videokonferenzen.<br>
         <br>
-        Es wird geprüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
-        der von Videokonferenz-Apps üblicherweise verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
+        Es wird überprüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
+        der in der Regel von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
         <br>
-        Dies gilt sowohl für Anrufe als auch für Nachrichten.<br>
+        Es gilt sowohl für Anrufe als auch für Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">In einer Besprechung</string>
+    <string name="in_meeting">In Besprechung</string>
+
 </resources>

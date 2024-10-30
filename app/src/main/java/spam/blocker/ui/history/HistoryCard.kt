@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -128,7 +129,7 @@ fun HistoryCard(
             // 3. Time / Unread Indicator
             Box(
                 modifier = M
-                    .height(ItemHeight.dp)
+                    .heightIn(min = ItemHeight.dp)
                     .align(Alignment.Top)
             ) {
                 // time
