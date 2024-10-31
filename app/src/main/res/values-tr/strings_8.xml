@@ -1,5 +1,5 @@
 <resources>
-    <string name="database">Veritaban</string>
+    <string name="database">Veritabanı</string>
     <string name="total">Toplam</string>
     <string name="replace_from">Den/Dan</string>
     <string name="replace_to">İle</string>
