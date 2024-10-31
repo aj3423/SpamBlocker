@@ -30,7 +30,7 @@
     <string name="help_history_ttl">
         <![CDATA[
             <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; arih kayıtları veritabanına kaydedilecek ve N gün sonra süresi dolacaktır,
+            &emsp; Tarih kayıtları veritabanına kaydedilecek ve N gün sonra süresi dolacaktır,
               Süresi dolmuş kayıtlar otomatik olarak silinecektir.<br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
