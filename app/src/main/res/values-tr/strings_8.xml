@@ -1,0 +1,119 @@
+<resources>
+    <string name="database">Veritaban</string>
+    <string name="total">Toplam</string>
+    <string name="replace_from">Den/Dan</string>
+    <string name="replace_to">İle</string>
+    <string name="regex_pattern">Düzenli İfade</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        Bu veritabanındaki numaralar engellenecektir.<br>
+        <br>
+        Herhangi bir kamu veritabanını veya birden fazla veritabanını entegre edebilir, ayrıca yerel dosyalardan numaraları da içe aktarabilirsiniz.<br>
+        <br>
+        Otomatik içe aktarma görevini nasıl planlayacağınızı öğrenmek için aşağıdaki "Otomasyon" bölümünü kontrol edin.<br>
+        <br>
+        Bu, hem aramalar hem de SMS mesajları için geçerlidir.<br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">Veritabanındaki spam numaraları N gün sonra süresi dolacak, süresi dolan kayıtlar otomatik olarak silinecektir.</string>
+    <string name="customize">Özelleştir</string>
+    <string name="workflow">İş Akışı</string>
+    <string name="workflows">İş Akışları</string>
+    <string name="automation">Otomasyon</string>
+    <string name="help_workflows">
+        <![CDATA[
+        İş akışları, veritabanını güncelleme veya otomatik yedekleme gibi görevleri otomatik olarak çalıştırmak için kullanılabilir.<br>
+        <br>
+        Hızlı bir kurulum için ön ayarlar mevcuttur, ayrıca sıfırdan oluşturabilir veya diğer kullanıcılar tarafından paylaşılan bir JSON yapılandırmasından içe aktarabilirsiniz.<br>
+        <br>
+        Eğer yaygın olarak kullanılabilecek ve ön ayarlara eklenmesi gereken bir iş akışı bulursanız, lütfen bunu GitHub'da bildirin.
+        ]]>
+    </string>
+    <string name="manual">Kılavuz</string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Arama Yapmayın</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">Spam Veritabanı Temizliği</string>
+    <string name="bot_preset_cleanup_history">Geçmiş Temizliği</string>
+    <string name="bot_preset_auto_backup">Otomatik Yedekleme</string>
+
+    <string name="action_cleanup_history">Geçmişi Temizle</string>
+    <string name="action_http_download">HTTP İndir</string>
+    <string name="action_cleanup_spam_db">Spam Veritabanını Temizle</string>
+    <string name="action_backup_export">Yedekleme Dışa Aktarımı</string>
+    <string name="action_backup_import">Yedekleme İçe Aktarımı</string>
+    <string name="action_read_file">Dosyayı Oku</string>
+    <string name="action_write_file">Dosyayı Yaz</string>
+    <string name="action_parse_csv">CSV Ayrıştır</string>
+    <string name="action_parse_xml">XML Ayrıştır</string>
+    <string name="action_regex_extract">Düzenli İfade Çıkar</string>
+    <string name="action_import_to_spam_db">Spam Veritabanına İçe Aktar</string>
+    <string name="action_import_as_regex_rule">Düzenli İfade Kuralı Olarak İçe Aktar</string>
+    <string name="action_convert_number">Numarayı Değiştir</string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        HTTP indirme dosyası <u>bayt olarak</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">Spam veritabanından süresi dolmuş numaraları sil.</string>
+    <string name="help_action_cleanup_history">Süresi dolmuş geçmiş kayıtlarını sil.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Mevcut ayarları <u>içerik baytlarına</u> dışarı aktar.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        <u>İçerik baytlar</u> ayarlarını uygula.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Bir dosyadan <u>içerik baytlarını</u> al.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Bir dosyaya <u>içerik baytlarını</u> yaz.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        csv <u>içerik baytlarını</u> bir <u>numara listesine</u> ayrıştır.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        xml <u>içerik baytların</u> <b>xpath</b> kullanarak ayrıştır ve bir<u>numara listesi</u> oluştur.
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Girdi <u>içerik baytlarından</u> bu düzenli ifadeyi kullanarak <u>numara listesi</u> çıkar.
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Spam veritabanına bir <u>numara listesi</u> ekle.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Bir <u>numara listesinden</u>  yeni bir düzenli ifade kuralı oluştur.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        <u>Numara listesini</u> bu uygulamanın kullandığı formata dönüştür.<br>
+        <br>
+        Örneğin, değiştirmek için iki eylem ekle:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a/e `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        <br>
+        &ensp; - Değiştir `<font color="#fa7f71">(+)</font>` a/e ``<br>
+        &ensp; - Değiştir `<font color="#fa7f71">(#)</font>` a/e `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+</resources>

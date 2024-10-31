@@ -1,0 +1,67 @@
+<resources>
+    <string name="contact_rule">İletişim Kuralı</string>
+    <string name="directory">Dizin</string>
+    <string name="filename">DosyaAdı</string>
+    <string name="invalid_input_type">Geçersiz girdi türü, bekleniyor: %s, aldı: %s</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Son Kullanım Günleri</string>
+    <string name="column_mapping">Sütun Eşleştirme</string>
+    <string name="include_spam_db">Spam Veritabanını Dahil Et</string>
+    <string name="configuration_only">Sadece Yapılandırma</string>
+    <string name="no_config_needed">Yapılandırma gerekmez</string>
+    <string name="success">Başarılı</string>
+    <string name="failed">Başarısız</string>
+    <string name="running">Çalışıyor</string>
+    <string name="optional">(isteğe bağlı)</string>
+
+    <string name="run_execute">Çalıştır</string>
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Test</b></font><br>
+        Bu eylemler hemen gerçekleştirilecektir, doğru bir şekilde ayarlanıp ayarlanmadığını kontrol etmek için,
+        ya da belki bu iş akışını manuel olarak çalıştırmak istiyorsunuzdur.<br>
+        <br>
+        - <font color="#00BFFF"><b>Yeni</b></font><br>
+            Yeni bir eylem oluşturun, birden fazla eylem bir araya getirilerek karmaşık bir görevi tamamlayabilir.<br>
+            Öğeler arasındaki yeşil veya kırmızı noktalar, bunların engellenebilir olup olmadığını gösterir.<br>
+            <br>
+            Bazı örnek iş akışları: <br>
+            <br>
+            &emsp; - http ile dosya indir -> 7z formatını çöz -> csv formatında ayrıştır -> spam veritabanına aktar.<br>
+            <br>
+            &emsp; - İş günlerinde ayar A'yı uygula ve hafta sonlarında ayar B'yi uygula.<br>
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Spam telefon numaralarını şuradan indir.
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Arama Yapma</no_translate> </a> her iş günü,
+             ve bunları spam veritabanına aktar.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Spam veritabanından süresi dolmuş kayıtları sil.</string>
+    <string name="help_bot_preset_cleanup_history">Süresi dolmuş arama/SMS kayıtlarını sil.</string>
+    <string name="help_bot_preset_auto_backup">Tüm ayarları yedekle.</string>
+    <string name="everyday">Her gün</string>
+    <string name="daily">Günlük</string>
+    <string name="weekly">Haftalık</string>
+    <string name="periodically">Düzenli olarak</string>
+    <string name="time">Zaman</string>
+    <string name="workdays">İş günleri</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Spam veritabanını kullanmıyorsanız, her iki seçenek de eşdeğer olacaktır.<br>
+        <br>
+        - <b>Spam Veritabanını Dahil Et</b><br>
+        &emsp; Bunu düzenli yedekleme için kullanmayın, çünkü spam veritabanının sık sık güncellenmesi beklenmektedir.
+         Bu, yapılandırmayı başka bir telefona kopyalarken yalnızca faydalıdır.<br>
+        <br>
+        - <b>Sadece Yapılandırma</b><br>
+        &emsp; - Dışa aktarırken, bu yedek dosyasının boyutunu azaltacaktır. <br>
+        &emsp; - İçe aktarırken, spam veritabanındaki kayıtlar mevcut durumunu koruyacaktır.
+        ]]>
+    </string>
+</resources>

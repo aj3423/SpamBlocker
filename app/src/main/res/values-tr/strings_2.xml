@@ -1,0 +1,55 @@
+<resources>
+    <string name="contacts">Kişiler</string>
+    <string name="non_contacts">Rehberde Olmayan</string>
+    <string name="inclusive">Dahil</string>
+    <string name="exclusive">Hariç</string>
+    <string name="help_contacts">
+        <![CDATA[
+        Etkinleştirildiğinde, rehberdeki kişilerden gelen aramalar/mesajlar her zaman izinlidir. <br>
+        <br>
+          - <b>Dahil</b>: <br>
+              &emsp; Rehberde olmayan numaralar diğer kurallara göre kontrol edilecektir. <br>
+              &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>Hariç</b></font>: <br>
+              &emsp; Rehberde olmayan numaralar <font color="#fa7f71"><b>engellenecektir.</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font> <br>
+        <br>
+        Hem aramalar hem de SMS mesajları kabul edilecektir.
+        ]]>
+    </string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Doğrulanmamışları Dahil Et</string>
+    <string name="unverified">Doğrulanmamış</string>
+    <string name="valid">Geçerli Arama</string>
+    <string name="spoof">Sahte Arama</string>
+    <string name="help_stir">
+        <![CDATA[
+            STIR/SHAKEN doğrulama <b>Android 11+</b> ve <b>taşıyıcı desteği gerektirir</b>. <br>
+            <br>
+            Üç olası doğrulama sonucu vardır: <br>
+            <font color="#03DAC5"><b>Geçerli</b></font> <br>
+            &emsp; Aramanın geçerli olması çok muhtemeldir, sahte değildir. <br>
+            <font color="#ffa500"><b>Doğrulanmamış</b></font> <br>
+            &emsp; Arama doğrulanamıyor veya STIR doğrulaması desteklenmiyor. <br>
+            <font color="#fa7f71"><b>Sahte</b></font> <br>
+            &emsp; Bunun sahte bir arama olma ihtimali çok yüksektir. <br>
+            <br>
+            <br>
+              - <b>Dahil</b>: <br>
+                  &emsp; Bu kontrolü geçemeyen aramalar, diğer kurallara göre hala kontrol edilecektir. <br>
+                  &emsp;  \"<b>Doğrulanmamışları Dahil Et</b>\" seçeneği işaretlendiğinde arama doğrulanmamış olsa bile geçecektir. <br>
+                  &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Hariç</b></font>: <br>
+                  &emsp; Bu kontrolü geçemeyen aramalar <font color="#fa7f71"><b>engellenecektir.</b></font>. <br>
+                  &emsp;  \"<b>Doğrulanmamışları Dahil Et</b>\" seçeneği işaretlendiğinde, arama doğrulanmamışsa olsa bile engellenecektir. <br>
+                  &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font>
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        .csv dosyasında gerekli alan <b>şekil</b> eksik, ayrıntılı açıklama için balon ipucunu kontrol edin.
+        ]]>
+    </string>
+</resources>

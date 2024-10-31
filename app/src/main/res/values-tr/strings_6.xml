@@ -1,0 +1,128 @@
+<resources>
+    <string name="crash_title">
+        Üzgünüm, uygulama çöktü.\n\n
+        Lütfen aşağıdaki içeriği kopyalayın ve bu sorunu GitHub'da bildirin,
+        raporlamadan önce hassas bilgileri kaldırın.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Paz</item>
+        <item>Pzt</item>
+        <item>Sal</item>
+        <item>Çar</item>
+        <item>Per</item>
+        <item>Cum</item>
+        <item>Cmt</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Reddet</item>
+        <item>Sessiz</item>
+        <item>Cevapla+Kapat</item>
+    </string-array>
+
+    <string name="show_passed">Geçenleri göster</string>
+    <string name="show_blocked">Engellenenleri göster</string>
+
+    <string name="confirm_delete_all_records">Tüm kayıtları silmek için onaylıyor musunuz?</string>
+    <string name="log_sms_content">SMS içeriğini kaydet</string>
+    <string name="expiry">Son kullanma tarihi</string>
+    <string name="days">Günler</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; arih kayıtları veritabanına kaydedilecek ve N gün sonra süresi dolacaktır,
+              Süresi dolmuş kayıtlar otomatik olarak silinecektir.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; Geçmiş kaydı devre dışı bırakıldı, veritabanına hiçbir şey kaydedilmeyecektir.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Kayıtlar kaydedilecek ve asla süresi dolmayacaktır.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Açık olduğunda, SMS içeriği de veritabanına kaydedilecek ve bu listede görüntülenecektir; kapalı olduğunda ise veritabanına kaydedilmeyecektir.<br>
+        <br>
+        - Etkinleştirildiğinde:<br>
+        &emsp; <b>Tap</b> tam mesajı genişletmek/küçültmek için.<br>
+        <br>
+        - Devre dışı bırakıldığında:<br>
+        &emsp; <b>Tap</b> konuşmayı varsayılan uygulamada açmak için.
+        ]]>
+    </string>
+
+    <string-array name="history_record_context_menu">
+        <item>Numarayı kopyala</item>
+        <item>Numarayı yeni kurala ekle</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Yok</item>
+        <item>Bildirim Paneli</item>
+        <item>Durum Çubuğu, Bildirim Paneli</item>
+        <item>Ses, Durum Çubuğu, Bildirim Paneli</item>
+        <item>Ses, Durum Çubuğu, Bildirim Paneli, Kayan Pencere</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>JSON olarak Dışa Aktar</item>
+        <item>Sıkıştırılmış Olarak Dışa Aktar</item>
+    </string-array>
+
+    <string name="language">Dil</string>
+    <string name="help_language">
+        <![CDATA[
+            Çeviriler Google AI tarafından yapılmaktadır, yeni bir dil desteği eklemek için GitHub'da bir sorun açın.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Arama için Etkinleştir</string>
+    <string name="enabled_for_sms">SMS için Etkinleştir</string>
+    <string name="repeated_call">Tekrarlanan Arama</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Belirli bir süre içinde arama tekrarlanırsa, bunun muhtemelen önemli bir arama olduğu, spam araması olma olasılığından daha yüksektir. <br>
+        <br>
+        Aynı numaradan gelen metin mesajları da sayılmaktadır; bu, READ_SMS izninin verilmesine bağlıdır, bu izin isteğe bağlıdır.<br>
+        <br>
+        Varsayılan ayar <font color="#03DAC5"><b>1 / 5 Dk.</b></font>dır. Bu 5 dakika içinde yapılan ikinci aramanın izin verileceği anlamına gelir. <br>
+        <br>
+        Sadece aramalar için geçerlidir, <b>not</b> metin mesajları için geçerli değildir. <br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Küresel anahtar, uygulama yalnızca bu açık olduğunda çalışır,
+        belirli bir arama/mesaj beklerken kapatın. <br>
+        <br>
+        Ayrıca <font color="#6ed0ff"><b>Açılır Hızlı Ayarlar</b></font>.<br>dan da kapaılabilir.
+        <br>
+        SMS için, bu uygulama SMS bildirimlerini devralacaktır, lütfen.
+        sistem ayarlarından <font color="#fa7f71"><b>Varsayılan SMS uygulamasının bildirim iznini kapatın</b></font>,
+        Aksi takdirde, çift bildirim olacaktır.
+        Sadece SMS bildirimlerini filtreler, spam SMS mesajları varsayılan SMS uygulamasında hâlâ mevcut olacaktır.
+        ]]>
+    </string>
+
+    <string name="about">Hakkında</string>
+    <string name="version">Sürüm</string>
+    <string name="build_time">Derleme Zamanı (UTC)</string>
+    <string name="source_code">Kaynak Kodu</string>
+    <string name="dismiss">Kapat</string>
+    <string name="warning_running_in_work_profile">
+        Bu uygulama iş profili içinde doğru çalışmayabilir, lütfen bunu ana profilde kurun.
+    </string>
+    <string-array name="import_csv_type">
+        <item>.csv'yi tek bir kural olarak içe aktar</item>
+        <item>.csv'yi birden fazla kural olarak içe aktar</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Bu uygulama tüm SMS bildirimlerini devralacaktır,
+        fakat varsayılan SMS uygulamasının bildirim izni de etkinse,
+        lütfen çift SMS bildirimlerini önlemek için sistem ayarlarında devre dışı bırakın.
+    </string>
+    <string name="open_settings">Ayarları Aç</string>
+    <string name="ignore">Görmezden Gel</string>
+</resources>

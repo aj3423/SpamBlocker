@@ -1,0 +1,38 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+       Etkinleştirildiğinde, bu süre boyunca tüm aramalara (mesajlara) izin verilecektir. Genellikle geceleri spam olmaz. <br>
+        <br>
+        Başlangıç saati bitiş saatinden büyükse, örneğin 20:00 -> 07:00, akşam 20:00'den ertesi sabah 07:00'ye kadar olan süreyi ifade eder. <br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Bu bayraklar düzenli ifadenin eşleştirme davranışını değiştirir, varsayılan olarak yeni kurallar için ayarlanırlar. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Büyük/küçük harf duyarsızlığı.</b></font>:<br>
+            &ensp; Desen eşlemesini büyük/küçük harf duyarsız hale getirir, <font color="#03DAC5"><b>a</b></font>
+              her ikisini de eşleştirir <font color="#03DAC5"><b>a</b></font> ve <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Nokta Tümünü Eşleştir</b></font>: <br>
+            &ensp; Etkinleştirildiğinde, <font color="#03DAC5"><b>.</b></font> ki; aynı zamanda satır sonu karakterlerini de eşleşecektir (<font color="#03DAC5"><b>\\n</b></font>),
+              bu, noktanın birden fazla satırda eşleşmesine olanak tanır. <br>
+            &ensp; Kullanım durumu: <br>
+            &emsp;   Çok satırlı SMS mesajını eşleştir: <br>
+            &emsp;   <font color="#fa7f71">ödül kazandınız: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   kural ile: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+            <br>
+            <font color="#00BFFF"><b>Ham Numara</b></font>: <br>
+            &ensp; Etkinleştirildiğinde, numara optimize edilmeyecek, <font color="#03DAC5"><b>+</b></font> ve <font color="#03DAC5"><b>öncelikli 0s</b></font> korunacak; bu, yerel numaraları ayırt etmek için faydalıdır.
+        ]]>
+    </string>
+
+</resources>
