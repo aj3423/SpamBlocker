@@ -26,7 +26,7 @@
         <item>Tümünü Eşleştir</item>
         <item>Ham Numara</item>
     </string-array>
-    <string name="disable_number_optimization">Bu optimizasyon, düzenli ifade bayrağı 'Ham Numara' ile devre dışı bırakılabilir.</string>
+    <string name="disable_number_optimization">Bu optimizasyon, düzenli ifade bayrağı \'Ham Numara\' ile devre dışı bırakılabilir.</string>
     <string name="off_time">Kapalı Zaman</string>
     <string name="schedule">Takvim</string>
     <string name="workday">Çalışma Günü</string>
@@ -66,10 +66,10 @@
         Listede yer alan herhangi bir uygulama son zamanlarda kullanıldıysa, herhangi bir arama geçecektir.<br>
         <br>
         Tipik bir kullanım durumu:<br>
-        &emsp; PizzaApp'tan bir pizza siparişi verdiniz, kısa süre sonra kapandıkları için sizi geri ödeme yapmak üzere arıyorlar. Eğer PizzaApp burada etkinse, o arama geçecektir. <br>
+        &emsp; PizzaApp\'tan bir pizza siparişi verdiniz, kısa süre sonra kapandıkları için sizi geri ödeme yapmak üzere arıyorlar. Eğer PizzaApp burada etkinse, o arama geçecektir. <br>
         <br>
         Varsayılan ayar  <font color="03DAC5"><b>5 Dk.</b></font> Eğer son 5 dakika içinde uygulamalardan herhangi biri kullanıldıysa, herhangi bir aramanın geçeceği anlamına gelir.
-        'Kullanıldı' derken, uygulamanın etkinleştirilmesi, devre dışı bırakılması, küçültülmesi veya kapatılması anlamına gelir. <br>
+        \'Kullanıldı\' derken, uygulamanın etkinleştirilmesi, devre dışı bırakılması, küçültülmesi veya kapatılması anlamına gelir. <br>
         <br>
         Sadece aramalar için geçerlidir, <b>not</b> metin mesajları için. <br>
         <br>

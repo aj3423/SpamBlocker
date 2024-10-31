@@ -23,15 +23,15 @@
         &emsp; <b>Hepsi</b> şu şekilde işaretlendi:<br>
         &emsp;&emsp; 123456789 <br>
         &emsp; Bu nedenle düzenli ifade <font color="#03DAC5"><b>123.*</b></font> hepsini eşleştirecektir.<br>
-        Bu sayı optimizasyonu, düzenli ifade bayrağı 'Ham Numara' ile <b>devre dışı bırakıldı</b>.<br>
+        Bu sayı optimizasyonu, düzenli ifade bayrağı \'Ham Numara\' ile <b>devre dışı bırakıldı</b>.<br>
         <br>
         <font color="#00BFFF"><b> - Bazı tipik Desenler</b></font>:<br>
         &ensp; - Herhangi bir sayı: <font color="#03DAC5"><b>.*</b></font> (düzenli ifade .* diğer uygulamalardaki joker karakter * ile eşdeğerdir) <br>
         &ensp; - Tam sayı: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - 400 ile başlar: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - 123 ile biter: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 5'ten daha kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - 10'dan daha uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - 5\'ten daha kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - 10\'dan daha uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Bilinmeyen sayı (boş dize): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
         &ensp; - "doğrulama" içerir: <font color="#03DAC5"><b>.*doğrulama.*</b></font> <br>
         &ensp; - Aşağıdaki kelimelerden herhangi birini içerir: <font color="#03DAC5"><b>.*(polis|hastane|doğrulama).*</b></font> <br>
@@ -43,10 +43,10 @@
          - <no_translate><b>desen</b></no_translate>: Düzenli ifade(<b>gerekli</b>)<br>
          - <no_translate><b>tanım</b></no_translate>: Tanım<br>
          - <no_translate><b>öncelik</b></no_translate>: Öncelik, varsayılan 1<br>
-         - <no_translate><b>bayraklar</b></no_translate>: 1(Aramaya uygula), 2(SMS'e uygula), 3(her ikisi), varsayılan 3<br>
+         - <no_translate><b>bayraklar</b></no_translate>: 1(Aramaya uygula), 2(SMS\'e uygula), 3(her ikisi), varsayılan 3<br>
          - <no_translate><b>KaraListedir</b></no_translate>: Kara liste veya beyaz liste. <no_translate>doğru</no_translate> veya <no_translate>yanlış</no_translate>, varsayılan <no_translate>doğru</no_translate><br>
-         - <no_translate><b>engellemetürü</b></no_translate>: Engelleme türü. 0~2 engelleme türü 3'e karşılık gelir, varsayılan 0<br>
-         - <no_translate><b>önemli</b></no_translate>: Bildirim türü. 0~4 bildirim türü 5'e karşılık gelir, varsayılan 2
+         - <no_translate><b>engellemetürü</b></no_translate>: Engelleme türü. 0~2 engelleme türü 3\'e karşılık gelir, varsayılan 0<br>
+         - <no_translate><b>önemli</b></no_translate>: Bildirim türü. 0~4 bildirim türü 5\'e karşılık gelir, varsayılan 2
         ]]>
     </string>
 </resources>

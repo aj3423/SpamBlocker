@@ -29,7 +29,7 @@
         <br>
         Hızlı bir kurulum için ön ayarlar mevcuttur, ayrıca sıfırdan oluşturabilir veya diğer kullanıcılar tarafından paylaşılan bir JSON yapılandırmasından içe aktarabilirsiniz.<br>
         <br>
-        Eğer yaygın olarak kullanılabilecek ve ön ayarlara eklenmesi gereken bir iş akışı bulursanız, lütfen bunu GitHub'da bildirin.
+        Eğer yaygın olarak kullanılabilecek ve ön ayarlara eklenmesi gereken bir iş akışı bulursanız, lütfen bunu GitHub\'da bildirin.
         ]]>
     </string>
     <string name="manual">Kılavuz</string>

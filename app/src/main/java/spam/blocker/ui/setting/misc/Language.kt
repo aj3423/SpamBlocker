@@ -25,6 +25,7 @@ object Languages {
         Pair("ja", "🇯🇵"),
         Pair("pt-rBR", "🇧🇷"),
         Pair("ru", "🇷🇺"),
+        Pair("tr", "🇹🇷"),
         Pair("uk", "🇺🇦"),
         Pair("zh", "🇨🇳"),
     )

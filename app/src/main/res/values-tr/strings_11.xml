@@ -1,0 +1,23 @@
+<resources>
+    <string name="yesterday">Dün</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Video toplantıları sırasında aramaları reddet.<br>
+        <br>
+        Seçili bir uygulamanın bir <b>ön plan hizmetini</b> çalıştırıp çalıştırmadığını kontrol eder; bu hizmet,
+        video konferans uygulamalarında genellikle bağlantıyı sürdürmek için kullanılır.<br>
+        <br>
+        Hem aramalar hem de mesajlar için geçerlidir.<br>
+        <br>
+        <font color="#ea86ff"><b>Varsayılan Öncelik: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Toplantı Modu</string>
+    <string name="search">Ara</string>
+    <string name="http_header">Http Üst Bilgisi</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Satır başına bir öznitelik, örneğin:
+        ]]>
+    </string>
+</resources>

@@ -7,13 +7,13 @@
     <string name="sms_content_pattern">SMS İçeriği</string>
     <string name="invalid_regex_pattern">Geçersiz düzenli ifade</string>
     <string name="pattern_contain_invisible_characters">Geçersiz karakterler bulundu</string>
-    <string name="pattern_contain_leading_zeroes">Baştaki 0'ı eklemenize gerek yok, kontrol edilmeden önce kaldırılacaktır.</string>
+    <string name="pattern_contain_leading_zeroes">Baştaki 0\'ı eklemenize gerek yok, kontrol edilmeden önce kaldırılacaktır.</string>
     <string name="pattern_contain_leading_plus">Baştaki + işaretini eklemenize gerek yok, kontrol edilmeden önce kaldırılacaktır.</string>
     <string name="check_balloon_for_explanation">Ayrıntılı açıklama için `Sayı Kuralları` yardımına bakın.</string>
     <string name="invalid_number">Geçersiz numara</string>
     <string name="description">Açıklama</string>
     <string name="apply_to_call">Çağrılara Uygula</string>
-    <string name="apply_to_sms">SMS'e Uygula</string>
+    <string name="apply_to_sms">SMS\'e Uygula</string>
     <string name="title_add_rule">Yeni Kural</string>
     <string name="title_edit_rule">Kuralı Düzenle</string>
     <string name="new_">Yeni</string>
@@ -50,8 +50,8 @@
     <string name="config_text">Yapılandırma Metni</string>
     <string name="imported_successfully">Başarıyla içe aktarıldı</string>
     <string name="import_fail">Başarısız içe aktarma</string>
-    <string name="go_to_setting">Ayarlar'a git</string>
-    <string name="prompt_go_to_usage_permission_setting">Bu özellik izin gerektiriyor:\n\n `Kullanım İstatistikleri`\n\nSistem Ayarları'nda manuel olarak etkinleştirilmesi gerekiyor.\n\n Ayar sayfasını açalım mı? </string>
+    <string name="go_to_setting">Ayarlar\'a git</string>
+    <string name="prompt_go_to_usage_permission_setting">Bu özellik izin gerektiriyor:\n\n `Kullanım İstatistikleri`\n\nSistem Ayarları\'nda manuel olarak etkinleştirilmesi gerekiyor.\n\n Ayar sayfasını açalım mı? </string>
     <string name="emergency_call">Acil Arama</string>
     <string name="label_contact_filter">Kişi Filtre</string>
     <string name="label_number_filter">Numara Kuralları</string>

@@ -37,6 +37,7 @@ var nameMap = map[string]string{
 	`ja`:     `Japanese`,
 	`pt-rBR`: `Brazilian Portuguese`,
 	`ru`:     `Russian`,
+	`tr`:     `Turkish`,
 	`uk`:     `Ukrainian`,
 	`zh`:     `Chinese`,
 }

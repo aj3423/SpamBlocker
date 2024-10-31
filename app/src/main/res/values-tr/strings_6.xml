@@ -1,7 +1,7 @@
 <resources>
     <string name="crash_title">
         Üzgünüm, uygulama çöktü.\n\n
-        Lütfen aşağıdaki içeriği kopyalayın ve bu sorunu GitHub'da bildirin,
+        Lütfen aşağıdaki içeriği kopyalayın ve bu sorunu GitHub\'da bildirin,
         raporlamadan önce hassas bilgileri kaldırın.
     </string>
     <string-array name="short_weekdays">
@@ -72,7 +72,7 @@
     <string name="language">Dil</string>
     <string name="help_language">
         <![CDATA[
-            Çeviriler Google AI tarafından yapılmaktadır, yeni bir dil desteği eklemek için GitHub'da bir sorun açın.
+            Çeviriler Google AI tarafından yapılmaktadır, yeni bir dil desteği eklemek için GitHub\'da bir sorun açın.
         ]]>
     </string>
     <string name="enabled_for_call">Arama için Etkinleştir</string>
@@ -115,8 +115,8 @@
         Bu uygulama iş profili içinde doğru çalışmayabilir, lütfen bunu ana profilde kurun.
     </string>
     <string-array name="import_csv_type">
-        <item>.csv'yi tek bir kural olarak içe aktar</item>
-        <item>.csv'yi birden fazla kural olarak içe aktar</item>
+        <item>.csv\'yi tek bir kural olarak içe aktar</item>
+        <item>.csv\'yi birden fazla kural olarak içe aktar</item>
     </string-array>
     <string name="warning_double_sms">
         Bu uygulama tüm SMS bildirimlerini devralacaktır,
