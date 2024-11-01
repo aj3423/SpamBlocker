@@ -2,22 +2,33 @@
     <string name="yesterday">Ayer</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Rechaza llamadas durante las videollamadas.<br>
+        Rechazar llamadas during online video meetings.<br>
         <br>
         Comprueba si alguna aplicación seleccionada está ejecutando un <b>servicio en primer plano</b>,
-        que es comúnmente usado por aplicaciones de videoconferencia para mantener la conexión activa.<br>
+        que normalmente utilizan las aplicaciones de videoconferencia para mantener activa la conexión.<br>
         <br>
-        Se aplica tanto a llamadas como a mensajes.<br>
+        Se aplica a llamadas y mensajes.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad predeterminada: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Modo de reunión</string>
+    <string name="in_meeting">Modo de Reunión</string>
     <string name="search">Buscar</string>
-    <string name="http_header">Encabezado Http</string>
+    <string name="http_header">Encabezado HTTP</string>
     <string name="help_http_header">
         <![CDATA[
         Un atributo por línea, por ejemplo:
         ]]>
     </string>
+    <string name="log_sms_content_to_db">Registrar SMS</string>
+    <string name="initial_row_count">Número de filas inicial</string>
+    <plurals name="rows">
+        <item quantity="one">%d fila</item>
+        <item quantity="two">%d filas</item>
+        <item quantity="few">%d filas</item>
+        <item quantity="many">%d filas</item>
+        <item quantity="other">%d filas</item>
+    </plurals>
+
+
 </resources>

@@ -23,7 +23,6 @@
     <string name="show_blocked">Amosar bloqueado</string>
 
     <string name="confirm_delete_all_records">Confirma a eliminación de todos os rexistros?</string>
-    <string name="log_sms_content">Rexistro de contido SMS</string>
     <string name="expiry">Caducidade</string>
     <string name="days">Días</string>
     <string name="help_history_ttl">

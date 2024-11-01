@@ -73,7 +73,6 @@
         &emsp; <b>Нажмите</b>, чтобы открыть беседу в стандартном приложении.
         ]]>
     </string>
-    <string name="log_sms_content">Зарегистрировать содержимое SMS</string>
     <string name="confirm_delete_all_records">Подтвердите удаление всех записей?</string>
     <string-array name="block_type_list">
         <item>Отклонить</item>

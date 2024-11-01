@@ -57,6 +57,7 @@ class HistoryOptions {
 
     var ttl = -1
     var logSmsContent = false
+    var initialSmsRowCount = 1
 
     fun load(ctx: Context) {
         val spf = spam.blocker.util.SharedPref.HistoryOptions(ctx)
@@ -65,6 +66,7 @@ class HistoryOptions {
 
         ttl = spf.getTTL()
         logSmsContent = spf.isLogSmsContentEnabled()
+        initialSmsRowCount = spf.getInitialSmsRowCount()
     }
 
     fun apply(ctx: Context) {
@@ -74,6 +76,7 @@ class HistoryOptions {
 
             setTTL(ttl)
             setLogSmsContentEnabled(logSmsContent)
+            setInitialSmsRowCount(initialSmsRowCount)
         }
     }
 }

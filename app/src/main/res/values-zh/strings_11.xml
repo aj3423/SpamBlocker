@@ -2,21 +2,32 @@
     <string name="yesterday">昨天</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        视频会议期间拒接来电。<br>
+        在线视频会议期间拒绝来电。<br>
         <br>
-        检查所选应用是否运行着<b>前台服务</b>，视频会议应用通常使用此服务来保持连接。<br>
+        它将检查是否有任何选中的应用程序正在运行<b>前台服务</b>，这通常由视频会议应用程序使用以保持连接。<br>
         <br>
-        此规则适用于来电和短信。<br>
+        它适用于通话和短信。<br>
         <br>
-        <font color="#ea86ff"><b>默認优先级：20</b></font>
+        <font color="#ea86ff"><b>默认优先级：20</b></font>
         ]]>
     </string>
     <string name="in_meeting">会议模式</string>
     <string name="search">搜索</string>
-    <string name="http_header">HTTP标头</string>
+    <string name="http_header">HTTP 标头</string>
     <string name="help_http_header">
         <![CDATA[
-        每一行一个属性，比如：
+        每行一个属性，例如：
         ]]>
     </string>
+    <string name="log_sms_content_to_db">记录短信</string>
+    <string name="initial_row_count">初始行数</string>
+    <plurals name="rows">
+        <item quantity="one">%d 行</item>
+        <item quantity="two">%d 行</item>
+        <item quantity="few">%d 行</item>
+        <item quantity="many">%d 行</item>
+        <item quantity="other">%d 行</item>
+    </plurals>
+
+
 </resources>

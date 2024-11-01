@@ -116,7 +116,8 @@ func translate_1_file(lang string, fn string) error {
 		"Translate the following xml content to language \"%s\"(\"%s\"), it's about a call blocking app which blocks spam calls. "+
 			"For the word 'number', it always references to phone number. "+
 			"For the word 'spam', it always references to spam calls, it's never about email."+
-			"Make sure leave the XML tags unmodified, do not translate text within <no_translate></no_translate> tag. "+
+			"Make sure leave the XML tags unmodified. "+
+			"If the origin text is wrapped within tag <no_translate></no_translate>, do not translate it, keep it as it is. "+
 
 			"For the origin text that are just 1 or 2 or 3 words, find all possible translation alternatives, "+
 			"then pick the shortest one, as short as possible, use single word translation if possible."+

@@ -24,7 +24,6 @@
     <string name="show_blocked">Blockiert anzeigen</string>
 
     <string name="confirm_delete_all_records">Bestätigung zum Löschen aller Datensätze?</string>
-    <string name="log_sms_content">SMS-Inhalt protokollieren</string>
     <string name="expiry">Ablauf</string>
     <string name="days">Tage</string>
     <string name="help_history_ttl">

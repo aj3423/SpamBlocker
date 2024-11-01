@@ -23,7 +23,6 @@
     <string name="show_blocked">Afficher les appels bloqués</string>
 
     <string name="confirm_delete_all_records">Confirmer la suppression de tous les enregistrements ?</string>
-    <string name="log_sms_content">Enregistrer le contenu des SMS</string>
     <string name="expiry">Expiration</string>
     <string name="days">Jours</string>
     <string name="help_history_ttl">

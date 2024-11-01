@@ -2,22 +2,33 @@
     <string name="yesterday">Вчора</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Відхиляти дзвінки під час відеозустрічей.<br>
+        Відхиляти дзвінки під час онлайн-відеоконференцій.<br>
         <br>
-        Він перевіряє, чи будь-яка вибрана програма виконує <b>фонову службу</b>,
-        яку зазвичай використовують програми відеоконференцій для підтримки підключення.<br>
+        Перевіряє, чи в обраному додатку запущено <b>фонову службу</b>,
+        яку зазвичай використовують програми для відеоконференцій для підтримки активного з’єднання.<br>
         <br>
-        Це стосується як дзвінків, так і повідомлень.<br>
+        Ця функція застосовується як до дзвінків, так і до повідомлень.<br>
         <br>
-        <font color="#ea86ff"><b>Приоритет за замовчуванням: 20</b></font>
+        <font color="#ea86ff"><b>Пріоритет за замовчуванням: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Режим зустрічі</string>
+    <string name="in_meeting">Режим наради</string>
     <string name="search">Пошук</string>
     <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
         <![CDATA[
-        Один атрибут у рядку, наприклад:
+        По одному атрибуту в рядку, наприклад:
         ]]>
     </string>
+    <string name="log_sms_content_to_db">Журнал SMS</string>
+    <string name="initial_row_count">Початкова кількість рядків</string>
+    <plurals name="rows">
+        <item quantity="one">%d Рядок</item>
+        <item quantity="two">%d Рядки</item>
+        <item quantity="few">%d Рядки</item>
+        <item quantity="many">%d Рядки</item>
+        <item quantity="other">%d Рядків</item>
+    </plurals>
+
+
 </resources>

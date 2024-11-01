@@ -23,7 +23,6 @@
     <string name="show_blocked">显示阻止的</string>
 
     <string name="confirm_delete_all_records">确认删除所有记录？</string>
-    <string name="log_sms_content">记录短信内容</string>
     <string name="expiry">过期时间</string>
     <string name="days">天</string>
     <string name="help_history_ttl">

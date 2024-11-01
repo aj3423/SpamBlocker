@@ -2,14 +2,12 @@
     <string name="yesterday">Вчера</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Отклонять звонки во время видеоконференций.<br>
+        Отклонение вызовов во время онлайн-видеоконференций.<br>
         <br>
-        Проверяется, запущены ли <b> фоновые службы </b> в выбранном приложении,
-        которые обычно используют приложения для видеоконференций, чтобы поддерживать соединение.<br>
+        Проверка активного выполнения выбранным приложением <b>службы на переднем плане</b>, используемой приложениями для видеоконференций для поддержания связи<br>
         <br>
-        Это относится как к звонкам, так и к сообщениям.<br>
-        <br>
-        <font color="#ea86ff"><b>Приоритет по умолчанию: 20</b></font>
+        Применяется как к вызовам, так и к сообщениям<br><br>
+        <b><font color="#ea86ff">Приоритет по умолчанию: 20</font></b>
         ]]>
     </string>
     <string name="in_meeting">Режим собрания</string>
@@ -17,7 +15,18 @@
     <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
         <![CDATA[
-        Один атрибут в строке, например:
+        Один аттрибут в строке, например:
         ]]>
     </string>
+    <string name="log_sms_content_to_db">Вести журнал SMS</string>
+    <string name="initial_row_count">Исходное количество строк</string>
+    <plurals name="rows">
+        <item quantity="one">%d строка</item>
+        <item quantity="two">%d строки</item>
+        <item quantity="few">%d строки</item>
+        <item quantity="many">%d строк</item>
+        <item quantity="other">%d строки</item>
+    </plurals>
+
+
 </resources>

@@ -45,6 +45,7 @@ object Def {
     const val SETTING_SHOW_BLOCKED = "show_blocked"
     const val SETTING_HISTORY_TTL = "history_ttl"
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
+    const val SETTING_INITIAL_SMS_ROW_COUNT = "initial_sms_row_count"
     const val SETTING_SPAM_DB_ENABLED = "spam_db_enabled"
     const val SETTING_SPAM_DB_TTL = "spam_db_ttl"
     const val SETTING_NUMBER_RULE_COLLAPSED = "number_rule_collapsed"

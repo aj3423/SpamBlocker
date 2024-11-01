@@ -24,7 +24,6 @@
     <string name="show_blocked">Engellenenleri göster</string>
 
     <string name="confirm_delete_all_records">Tüm kayıtları silmek için onaylıyor musunuz?</string>
-    <string name="log_sms_content">SMS içeriğini kaydet</string>
     <string name="expiry">Son kullanma tarihi</string>
     <string name="days">Günler</string>
     <string name="help_history_ttl">

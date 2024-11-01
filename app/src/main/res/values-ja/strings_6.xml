@@ -23,7 +23,6 @@
     <string name="show_blocked">ブロックを表示</string>
 
     <string name="confirm_delete_all_records">すべてのレコードを削除することを確認しますか？</string>
-    <string name="log_sms_content">SMSコンテンツのログ</string>
     <string name="expiry">有効期限</string>
     <string name="days">日</string>
     <string name="help_history_ttl">

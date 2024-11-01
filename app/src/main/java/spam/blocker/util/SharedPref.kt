@@ -133,6 +133,8 @@ class HistoryOptions(ctx: Context) : SharedPref(ctx) {
 
     fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
     fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }
+    fun getInitialSmsRowCount(): Int { return readInt(Def.SETTING_INITIAL_SMS_ROW_COUNT, 1) }
+    fun setInitialSmsRowCount(rows: Int) { writeInt(Def.SETTING_INITIAL_SMS_ROW_COUNT, rows) }
 }
 
 

@@ -1,18 +1,18 @@
 <resources>
-    <string name="yesterday">Hier</string>
+    <string name="yesterday">Yesterday</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Refuser les appels pendant les visioconférences.<br>
+        Décliner les appels lors de réunions vidéo en ligne.<br>
         <br>
         Il vérifie si une application sélectionnée exécute un <b>service de premier plan</b>,
-        qui est généralement utilisé par les applications de visioconférence pour maintenir la connexion.<br>
+        qui est couramment utilisé par les applications de vidéo conférence pour maintenir la connexion active.<br>
         <br>
         Il s\'applique à la fois aux appels et aux messages.<br>
         <br>
         <font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Mode réunion</string>
+    <string name="in_meeting">Mode Réunion</string>
     <string name="search">Recherche</string>
     <string name="http_header">En-tête HTTP</string>
     <string name="help_http_header">
@@ -20,4 +20,15 @@
         Un attribut par ligne, par exemple :
         ]]>
     </string>
+    <string name="log_sms_content_to_db">Enregistrer les SMS</string>
+    <string name="initial_row_count">Nombre initial de lignes</string>
+    <plurals name="rows">
+        <item quantity="one">%d ligne</item>
+        <item quantity="two">%d lignes</item>
+        <item quantity="few">%d lignes</item>
+        <item quantity="many">%d lignes</item>
+        <item quantity="other">%d lignes</item>
+    </plurals>
+
+
 </resources>

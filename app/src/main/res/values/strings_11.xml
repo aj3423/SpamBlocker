@@ -2,7 +2,7 @@
     <string name="yesterday">Yesterday</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Decline calls during video meetings.<br>
+        Decline calls during online video meetings.<br>
         <br>
         It checks whether any selected app is running a <b>foreground service</b>,
         which is commonly used by video conferencing apps to keep the connection alive.<br>
@@ -20,4 +20,15 @@
         One attribute per line, for example:
         ]]>
     </string>
+    <string name="log_sms_content_to_db">Log SMS</string>
+    <string name="initial_row_count">Initial Row Count</string>
+    <plurals name="rows">
+        <item quantity="one">%d Row</item>
+        <item quantity="two">%d Rows</item>
+        <item quantity="few">%d Rows</item>
+        <item quantity="many">%d Rows</item>
+        <item quantity="other">%d Rows</item>
+    </plurals>
+
+
 </resources>

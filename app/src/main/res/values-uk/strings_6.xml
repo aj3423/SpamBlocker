@@ -23,7 +23,6 @@
     <string name="show_blocked">Показати заблоковане</string>
 
     <string name="confirm_delete_all_records">Підтвердити видалення всіх записів?</string>
-    <string name="log_sms_content">Журнал вмісту SMS</string>
     <string name="expiry">Закінчення</string>
     <string name="days">Днів</string>
     <string name="help_history_ttl">

@@ -5,7 +5,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -51,11 +50,12 @@ fun HistoryCard(
     forType: Int,
     record: HistoryRecord,
     modifier: Modifier,
+    initialSmsRows: Int,
 ) {
     val C = LocalPalette.current
     val ctx = LocalContext.current
 
-    OutlineCard {
+    OutlineCard(modifier = M.animateContentSize() ) {
         RowVCenter(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = modifier.padding(8.dp)
@@ -64,18 +64,21 @@ fun HistoryCard(
             val contact = Contacts.findContactByRawNumber(ctx, record.peer)
             val bmpAvatar = contact?.loadAvatar(ctx)
             if (bmpAvatar != null) {
-                ComposeImage(bmpAvatar.asImageBitmap(), "", modifier = M
-                    .size(ItemHeight.dp)
-                    .align(Alignment.Top)
-                    .clip(RoundedCornerShape((ItemHeight/2).dp))
+                ComposeImage(
+                    bmpAvatar.asImageBitmap(), "", modifier = M
+                        .size(ItemHeight.dp)
+                        .align(Alignment.Top)
+                        .clip(RoundedCornerShape((ItemHeight / 2).dp))
                 )
             } else {
                 // Use the hash code as color
                 val toHash = contact?.name ?: record.peer
                 val color = Color(toHash.hashCode().toLong() or 0xff808080/* for higher contrast */)
-                ResImage(R.drawable.ic_contact_circle, color = color, modifier = M
-                    .size(ItemHeight.dp)
-                    .align(Alignment.Top))
+                ResImage(
+                    R.drawable.ic_contact_circle, color = color, modifier = M
+                        .size(ItemHeight.dp)
+                        .align(Alignment.Top)
+                )
             }
 
             // 2. Number / BlockReason / Message
@@ -111,17 +114,22 @@ fun HistoryCard(
 
                 // SMS Message
                 if (forType == Def.ForSms && record.smsContent != null) {
-                    Column {
-                        HorizontalDivider(thickness = 0.5.dp, color = C.disabled, modifier = M.padding(vertical = 4.dp))
-                        Text(
-                            text = record.smsContent,
-                            color = C.textGrey,
-                            fontSize = 16.sp,
-                            lineHeight = 16.sp,
-                            maxLines = if(record.expanded) 20 else 1,
-                            overflow = TextOverflow.Ellipsis,
-                            modifier = M.animateContentSize()
-                        )
+                    if (initialSmsRows > 0 || record.expanded) {
+                        Column {
+                            HorizontalDivider(
+                                thickness = 0.5.dp,
+                                color = C.disabled,
+                                modifier = M.padding(vertical = 4.dp)
+                            )
+                            Text(
+                                text = record.smsContent,
+                                color = C.textGrey,
+                                fontSize = 16.sp,
+                                lineHeight = 16.sp,
+                                overflow = TextOverflow.Ellipsis,
+                                maxLines = if (record.expanded) Int.MAX_VALUE else initialSmsRows
+                            )
+                        }
                     }
                 }
             }
