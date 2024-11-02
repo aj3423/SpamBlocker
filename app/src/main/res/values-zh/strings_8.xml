@@ -34,7 +34,7 @@
     </string>
     <string name="manual">手动</string>
 
-    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">清理垃圾数据库</string>
     <string name="bot_preset_cleanup_history">清理历史</string>
     <string name="bot_preset_auto_backup">自动备份</string>

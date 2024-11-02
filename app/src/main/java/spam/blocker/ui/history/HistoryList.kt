@@ -26,6 +26,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.RuleEditDialog
 import spam.blocker.ui.widgets.BgLaunchApp
 import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LazyScrollbar
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
@@ -62,9 +63,10 @@ fun HistoryList(
     }
 
     val contextMenuItems = remember(Unit) {
+        val icons = listOf(R.drawable.ic_copy, R.drawable.ic_regex, R.drawable.ic_db_add)
         ctx.resources.getStringArray(R.array.history_record_context_menu).asList()
             .mapIndexed { menuIndex, label ->
-                LabelItem(label = label) {
+                LabelItem(label = label, icon = { GreyIcon16(icons[menuIndex])}) {
                     val record = clickedRecord.value
                     when (menuIndex) {
                         0 -> { // copy as raw number

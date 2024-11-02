@@ -54,7 +54,7 @@ object Def {
     const val SETTING_BOT_LIST_COLLAPSED = "bot_list_collapsed"
 
 
-    const val DEFAULT_SPAM_DB_TTL = 90 // days
+    const val DEFAULT_SPAM_DB_TTL = 180 // days
 
     const val HISTORY_TTL_NEVER_EXPIRE = -1
     const val HISTORY_TTL_DISABLED = 0

@@ -37,6 +37,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -168,6 +169,7 @@ fun RuleList(
         }
     )
 
+    val icons = listOf(R.drawable.ic_find, R.drawable.ic_copy, R.drawable.ic_recycle_bin, R.drawable.ic_recycle_bin)
     val contextMenuItems =
         ctx.resources.getStringArray(R.array.rule_dropdown_menu).mapIndexed { menuIndex, label ->
             LabelItem(
@@ -175,6 +177,7 @@ fun RuleList(
                     3 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
                     else -> label
                 },
+                icon = { GreyIcon16(icons[menuIndex])}
             ) {
                 when (menuIndex) {
                     0 -> { // search rule

@@ -32,7 +32,7 @@
         ]]>
     </string>
     <string name="manual">Manuel</string>
-    <string name="bot_preset_dnc"><no_translate>FTC - Ne pas appeler</no_translate></string>
+    <string name="bot_preset_dnc"><no_translate>FTC - Ne pas appeler 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">Nettoyage de la base de données de spam</string>
     <string name="bot_preset_cleanup_history">Nettoyage de l\'historique</string>
     <string name="bot_preset_auto_backup">Sauvegarde automatique</string>

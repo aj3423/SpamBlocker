@@ -113,7 +113,7 @@ fun HistoryFabs(
                     helpTooltipId = R.string.help_log_sms_content
                 ) {
                     val trigger = remember { mutableStateOf(false) }
-                    PopupDialog( trigger = trigger ) {
+                    PopupDialog(trigger = trigger) {
                         NumberInputBox(
                             label = { GreyLabel(Str(R.string.initial_row_count)) },
                             intValue = rows,
@@ -126,18 +126,16 @@ fun HistoryFabs(
                             }
                         )
                     }
-                    RowVCenterSpaced(16) {
-                        if (logSmsContent) {
-                            val nRows = ctx.resources.getQuantityString(R.plurals.rows, rows!!, rows)
+                    if (logSmsContent) {
+                        val nRows = ctx.resources.getQuantityString(R.plurals.rows, rows!!, rows)
 
-                            GreyButton(label = nRows) { trigger.value = true }
-                        }
-                        SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
-                            logSmsContent = isOn
-                            spf.setLogSmsContentEnabled(isOn)
-                            reloadVM()
-                        })
+                        GreyButton(label = nRows) { trigger.value = true }
                     }
+                    SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
+                        logSmsContent = isOn
+                        spf.setLogSmsContentEnabled(isOn)
+                        reloadVM()
+                    })
                 }
             }
             HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)

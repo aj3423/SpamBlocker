@@ -34,7 +34,7 @@
     </string>
     <string name="manual">Manuell</string>
 
-    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call</no_translate></string>
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">Spam-Datenbankbereinigung</string>
     <string name="bot_preset_cleanup_history">Verlaufsbereinigung</string>
     <string name="bot_preset_auto_backup">Automatische Sicherung</string>

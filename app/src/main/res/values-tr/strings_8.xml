@@ -34,7 +34,7 @@
     </string>
     <string name="manual">Kılavuz</string>
 
-    <string name="bot_preset_dnc"><no_translate>FTC - Arama Yapmayın</no_translate></string>
+    <string name="bot_preset_dnc"><no_translate>FTC - Arama Yapmayın 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">Spam Veritabanı Temizliği</string>
     <string name="bot_preset_cleanup_history">Geçmiş Temizliği</string>
     <string name="bot_preset_auto_backup">Otomatik Yedekleme</string>
