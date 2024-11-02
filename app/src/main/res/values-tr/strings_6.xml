@@ -99,9 +99,9 @@
         <br>
         Ayrıca <font color="#6ed0ff"><b>Açılır Hızlı Ayarlar</b></font>.<br>dan da kapaılabilir.
         <br>
-        SMS için, bu uygulama SMS bildirimlerini devralacaktır, lütfen.
+        SMS için, bu uygulama SMS bildirimlerini devralacaktır, lütfen
         sistem ayarlarından <font color="#fa7f71"><b>Varsayılan SMS uygulamasının bildirim iznini kapatın</b></font>,
-        Aksi takdirde, çift bildirim olacaktır.
+        aksi takdirde çift bildirim olacaktır.
         Sadece SMS bildirimlerini filtreler, spam SMS mesajları varsayılan SMS uygulamasında hâlâ mevcut olacaktır.
         ]]>
     </string>
