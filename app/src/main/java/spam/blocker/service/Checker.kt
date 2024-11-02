@@ -732,10 +732,10 @@ class Checker { // for namespace only
                 }
 
                 Def.RESULT_ALLOWED_BY_EMERGENCY -> res.getString(R.string.emergency_call)
-                Def.RESULT_ALLOWED_BY_RECENT_APP -> res.getString(R.string.recent_app) + " "
+                Def.RESULT_ALLOWED_BY_RECENT_APP -> res.getString(R.string.recent_apps) + " "
                 Def.RESULT_BLOCKED_BY_MEETING_MODE -> res.getString(R.string.in_meeting) + " "
                 Def.RESULT_ALLOWED_BY_REPEATED -> res.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_BY_DIALED -> res.getString(R.string.dialed)
+                Def.RESULT_ALLOWED_BY_DIALED -> res.getString(R.string.dialed_number)
                 Def.RESULT_ALLOWED_BY_OFF_TIME -> res.getString(R.string.off_time)
                 Def.RESULT_ALLOWED_BY_NUMBER -> res.getString(R.string.whitelist) + ": " + reasonStr(
                     ctx, NumberRuleTable(), reason

@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed">Aradı</string>
+    <string name="dialed_number">Aradı</string>
     <string name="find_apps">Uygulamaları Bul</string>
 
     <string name="confirm_delete_all_rule">Tüm Kuralları silmek istediğinizi onaylıyor musunuz?</string>
@@ -77,3 +77,4 @@
         ]]>
     </string>
 </resources>
+

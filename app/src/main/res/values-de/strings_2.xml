@@ -1,55 +1,55 @@
 <resources>
     <string name="contacts">Kontakt</string>
     <string name="non_contacts">Nicht Kontakt</string>
-    <string name="inclusive">Inklusiv</string>
+    <string name="inclusive">Einschließlich</string>
     <string name="exclusive">Exklusiv</string>
     <string name="help_contacts">
         <![CDATA[
-        Wenn aktiviert, sind Anrufe/Nachrichten von Kontakten immer zugelassen. <br>
+        Wenn aktiviert, sind Anrufe/Nachrichten von Kontakten immer erlaubt. <br>
         <br>
-          - <b>Inklusiv</b>: <br>
-              &emsp; Nicht-Kontaktnummern werden von anderen Regeln überprüft. <br>
+          - <b>Einschließlich</b>: <br>
+              &emsp; Nicht-Kontakt-Nummern werden von anderen Regeln geprüft. <br>
               &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
-              &emsp; Nicht-Kontaktnummern werden <font color="#fa7f71"><b>geblockt</b></font>. <br>
+              &emsp; Nicht-Kontakt-Nummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
         <br>
-        Für Anrufe und SMS-Nachrichten
+        Gilt sowohl für Anrufe als auch für SMS-Nachrichten.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Nicht Verifizierte Inkludieren</string>
-    <string name="unverified">Nicht Verifiziert</string>
+    <string name="stir_include_unverified">Nicht verifizierte einschließen</string>
+    <string name="unverified">Nicht verifiziert</string>
     <string name="valid">Gültiger Anruf</string>
-    <string name="spoof">Gefälschter Anruf</string>
+    <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN-Bescheinigung erfordert <b>Android 11+</b> und <b>Unterstützung durch Betreiber</b>. <br>
+            STIR/SHAKEN-Bestätigung erfordert <b>Android 11+</b> und <b>Betreiberunterstützung</b>. <br>
             <br>
-            Es gibt drei mögliche Bescheinigungsergebnisse: <br>
+            Es gibt drei mögliche Bestätigungsergebnisse: <br>
             <font color="#03DAC5"><b>Gültig</b></font> <br>
             &emsp; Der Anruf ist sehr wahrscheinlich gültig, nicht gefälscht. <br>
-            <font color="#ffa500"><b>Nicht Verifiziert</b></font> <br>
-            &emsp; Der Anruf kann nicht validiert werden, oder STIR-Bescheinigung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Gefälscht</b></font> <br>
-            &emsp; Es handelt sich höchstwahrscheinlich um einen gefälschten Anruf. <br>
+            <font color="#ffa500"><b>Nicht verifiziert</b></font> <br>
+            &emsp; Der Anruf kann nicht validiert werden oder STIR-Bestätigung wird nicht unterstützt. <br>
+            <font color="#fa7f71"><b>Spoof</b></font> <br>
+            &emsp; Es ist sehr wahrscheinlich ein gefälschter Anruf. <br>
             <br>
             <br>
-              - <b>Inklusiv</b>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin von anderen Regeln überprüft. <br>
-                  &emsp; Wenn "<b>Nicht Verifizierte Inkludieren</b>" aktiviert ist, wird ein Anruf auch akzeptiert, wenn er nicht verifiziert ist. <br>
+              - <b>Einschließlich</b>: <br>
+                  &emsp; Anrufe, die diesen Test nicht bestehen, werden weiterhin von anderen Regeln geprüft. <br>
+                  &emsp; Wenn "<b>Nicht verifizierte einschließen</b>" aktiviert ist, würde ein Anruf auch bestehen, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>geblockt</b></font>. <br>
-                  &emsp; Wenn "<b>Nicht Verifizierte Inkludieren</b>" aktiviert ist, wird ein Anruf auch geblockt, wenn er nicht verifiziert ist. <br>
+                  &emsp; Anrufe, die diesen Test nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+                  &emsp; Wenn "<b>Nicht verifizierte einschließen</b>" aktiviert ist, würde ein Anruf auch blockiert werden, wenn er nicht verifiziert ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Fehlendes erforderliches Feld <b>pattern</b> in der CSV-Datei, siehe Ballon-Tooltip für eine detaillierte Erklärung.
+        Das erforderliche Feld <b>Muster</b> fehlt in der .csv-Datei, überprüfen Sie den Tooltip des Ballons für eine detaillierte Erklärung.
         ]]>
     </string>
 </resources>

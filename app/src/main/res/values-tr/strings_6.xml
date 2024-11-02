@@ -54,6 +54,7 @@
     <string-array name="history_record_context_menu">
         <item>Numarayı kopyala</item>
         <item>Numarayı yeni kurala ekle</item>
+        <item>Numarayı veritabanına ekle</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -125,3 +126,4 @@
     <string name="open_settings">Ayarları Aç</string>
     <string name="ignore">Görmezden Gel</string>
 </resources>
+

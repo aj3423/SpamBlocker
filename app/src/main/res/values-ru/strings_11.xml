@@ -2,30 +2,32 @@
     <string name="yesterday">Вчера</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Отклонение вызовов во время онлайн-видеоконференций.<br>
+        Отклонять звонки во время онлайн-видеоконференций.<br>
         <br>
-        Проверка активного выполнения выбранным приложением <b>службы на переднем плане</b>, используемой приложениями для видеоконференций для поддержания связи<br>
+        Проверяет, запущена ли выбранная вами программа в <b>фоновом режиме</b>,
+        что обычно используется видеоконференц-приложениями для поддержания соединения.<br>
         <br>
-        Применяется как к вызовам, так и к сообщениям<br><br>
-        <b><font color="#ea86ff">Приоритет по умолчанию: 20</font></b>
+        Применимо как к звонкам, так и к сообщениям.<br>
+        <br>
+        <font color="#ea86ff"><b>Стандартный приоритет: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Режим собрания</string>
+    <string name="in_meeting">Режим собраний</string>
     <string name="search">Поиск</string>
     <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
         <![CDATA[
-        Один аттрибут в строке, например:
+        Один атрибут на строку, например:
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Вести журнал SMS</string>
-    <string name="initial_row_count">Исходное количество строк</string>
+    <string name="log_sms_content_to_db">Лог SMS</string>
+    <string name="initial_row_count">Начальное количество строк</string>
     <plurals name="rows">
-        <item quantity="one">%d строка</item>
-        <item quantity="two">%d строки</item>
-        <item quantity="few">%d строки</item>
-        <item quantity="many">%d строк</item>
-        <item quantity="other">%d строки</item>
+        <item quantity="one">%d Строка</item>
+        <item quantity="two">%d Строки</item>
+        <item quantity="few">%d Строки</item>
+        <item quantity="many">%d Строк</item>
+        <item quantity="other">%d Строк</item>
     </plurals>
 
 

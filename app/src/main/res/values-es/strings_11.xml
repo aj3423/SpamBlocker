@@ -2,32 +2,32 @@
     <string name="yesterday">Ayer</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Rechazar llamadas during online video meetings.<br>
+        Rechazar llamadas durante las videollamadas online.<br>
         <br>
         Comprueba si alguna aplicación seleccionada está ejecutando un <b>servicio en primer plano</b>,
-        que normalmente utilizan las aplicaciones de videoconferencia para mantener activa la conexión.<br>
+        que es comúnmente utilizado por las aplicaciones de videoconferencia para mantener la conexión viva.<br>
         <br>
-        Se aplica a llamadas y mensajes.<br>
+        Se aplica tanto a las llamadas como a los mensajes.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad predeterminada: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Modo de Reunión</string>
+    <string name="in_meeting">Modo Reunión</string>
     <string name="search">Buscar</string>
-    <string name="http_header">Encabezado HTTP</string>
+    <string name="http_header">Encabezado Http</string>
     <string name="help_http_header">
         <![CDATA[
         Un atributo por línea, por ejemplo:
         ]]>
     </string>
     <string name="log_sms_content_to_db">Registrar SMS</string>
-    <string name="initial_row_count">Número de filas inicial</string>
+    <string name="initial_row_count">Recuento inicial de filas</string>
     <plurals name="rows">
-        <item quantity="one">%d fila</item>
-        <item quantity="two">%d filas</item>
-        <item quantity="few">%d filas</item>
-        <item quantity="many">%d filas</item>
-        <item quantity="other">%d filas</item>
+        <item quantity="one">%d Fila</item>
+        <item quantity="two">%d Filas</item>
+        <item quantity="few">%d Filas</item>
+        <item quantity="many">%d Filas</item>
+        <item quantity="other">%d Filas</item>
     </plurals>
 
 

@@ -134,7 +134,7 @@ func translate_1_file(lang string, fn string) error {
 	check(err)
 	defer client.Close()
 
-	model := client.GenerativeModel("gemini-pro")
+	model := client.GenerativeModel("gemini-1.5-flash")
 
 	// max is 8192 for gemini-pro v1.0 (8192 by default)
 	// but actually it's only 2048...

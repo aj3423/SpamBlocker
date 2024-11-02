@@ -2,25 +2,26 @@
     <string name="yesterday">Gestern</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Anrufe während Online-Videobesprechungen ablehnen.<br>
+        Anrufe während Online-Videokonferenzen ablehnen.<br>
         <br>
-        Es wird überprüft, ob eine ausgewählte App einen <no_translate><b>Vordergrunddienst</b></no_translate> ausführt, was häufig von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
+        Es prüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
+        der üblicherweise von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
         <br>
         Dies gilt sowohl für Anrufe als auch für Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Meeting-Modus</string>
+    <string name="in_meeting">Besprechungsmodus</string>
     <string name="search">Suchen</string>
     <string name="http_header">HTTP-Header</string>
     <string name="help_http_header">
         <![CDATA[
-        Ein Attribut pro Zeile, z. B.:
+        Ein Attribut pro Zeile, zum Beispiel:
         ]]>
     </string>
     <string name="log_sms_content_to_db">SMS protokollieren</string>
-    <string name="initial_row_count">Erste Zeilenanzahl</string>
+    <string name="initial_row_count">Anfangszeilenanzahl</string>
     <plurals name="rows">
         <item quantity="one">%d Zeile</item>
         <item quantity="two">%d Zeilen</item>

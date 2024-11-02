@@ -2,31 +2,31 @@
     <string name="yesterday">昨日</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        オンラインビデオ会議中に着信を拒否します。<br>
+        オンラインビデオ会議中に電話を拒否します。<br>
         <br>
-        ビデオ会議アプリケーションで通常接続を維持するために使用される、<b>フォアグラウンドサービス</b>が実行中の選択済みのアプリケーションがあるかどうか確認します。<br>
+        選択したアプリが<b>フォアグラウンドサービス</b>を実行しているかどうかを確認します。これは、ビデオ会議アプリで接続を維持するために一般的に使用されます。<br>
         <br>
-        通話とメッセージの両方に適用されます。<br>
+        電話とメッセージの両方に適用されます。<br>
         <br>
-        <font color="#ea86ff"><b>デフォルトの優先度: 20</b></font>
+        <font color="#ea86ff"><b>デフォルトの優先順位：20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">ミーティングモード</string>
+    <string name="in_meeting">会議モード</string>
     <string name="search">検索</string>
-    <string name="http_header">HTTPヘッダ</string>
+    <string name="http_header">HTTPヘッダー</string>
     <string name="help_http_header">
         <![CDATA[
-        1行に1つの属性、たとえば:
+        1行に1つの属性、例：
         ]]>
     </string>
-    <string name="log_sms_content_to_db">SMSを記録</string>
+    <string name="log_sms_content_to_db">SMSをログに記録する</string>
     <string name="initial_row_count">初期行数</string>
     <plurals name="rows">
-        <item quantity="one">%d行</item>
-        <item quantity="two">%d行</item>
-        <item quantity="few">%d行</item>
-        <item quantity="many">%d行</item>
-        <item quantity="other">%d行</item>
+        <item quantity="one">%d 行</item>
+        <item quantity="two">%d 行</item>
+        <item quantity="few">%d 行</item>
+        <item quantity="many">%d 行</item>
+        <item quantity="other">%d 行</item>
     </plurals>
 
 

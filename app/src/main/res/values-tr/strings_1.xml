@@ -56,8 +56,7 @@
     <string name="label_contact_filter">Kişi Filtre</string>
     <string name="label_number_filter">Numara Kuralları</string>
     <string name="label_content_filter">Mesaj Kuralları</string>
-    <string name="recent_app">Son Uygulama</string>
-    <string name="allow_recent_apps"><short>Son Uygulamalar</short></string>
+    <string name="recent_apps">Son Uygulama</string>
     <string name="allow_contact">Kişiler</string>
 
 </resources>

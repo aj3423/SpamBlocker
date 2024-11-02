@@ -35,6 +35,7 @@ import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -83,7 +84,7 @@ fun CountdownMenuItem(bot: Bot) {
     }
 
     RowVCenterSpaced(10) {
-        GreyIcon16(R.drawable.ic_hourglass)
+        GreyIcon20(R.drawable.ic_hourglass)
 
         GreyLabel(text = label, modifier = M.weight(1f))
     }
@@ -139,7 +140,7 @@ fun BotList() {
     labels.forEachIndexed { menuIndex, label ->
         contextMenuItems += LabelItem(
             label = label,
-            icon = { GreyIcon16(icons[menuIndex]) }
+            icon = { GreyIcon20(icons[menuIndex]) }
         ) {
             when (menuIndex) {
                 0 -> { // export

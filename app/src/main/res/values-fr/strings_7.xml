@@ -1,40 +1,40 @@
 <resources>
-    <string name="start_time">Début</string>
-    <string name="end_time">Fin</string>
-    <string name="switch_mode">Changer de mode</string>
+    <string name="start_time">Heure de début</string>
+    <string name="end_time">Heure de fin</string>
+    <string name="switch_mode">Mode de commutation</string>
     <string name="contact_group">Groupe de contacts</string>
     <string name="help_number_mode">
         <![CDATA[
-        <no_translate><font color="#00BFFF"><b>Numéro de téléphone</b></font>:</no_translate><br>
+        <font color="#00BFFF"><b>Numéro de téléphone</b></font>:<br>
         &ensp; Le mode par défaut, l\'expression régulière correspondra au numéro de téléphone.<br>
         <br>
-        <no_translate><font color="#00BFFF"><b>Contacts</b></font>:</no_translate><br>
+        <font color="#00BFFF"><b>Contacts</b></font>:<br>
         &ensp; L\'expression régulière correspondra au nom du contact associé au numéro entrant.<br>
-        &ensp;  - Un cas  d\'utilisation :<br>
+        &ensp;  - Un cas d\'utilisation:<br>
         &emsp; Bloquer tous les non-contacts le week-end avec l\'expression régulière `.*`.<br>
         <br>
-        <no_translate><font color="#00BFFF"><b>Groupe de contacts</b></font>:</no_translate><br>
+        <font color="#00BFFF"><b>Groupe de contacts</b></font>:<br>
         &ensp; L\'expression régulière correspondra au nom du groupe de contacts associé au numéro entrant,
-                 impactant ainsi tous les contacts de ce groupe. Vous n\'avez donc pas besoin de les ajouter individuellement,
-                 et vous n\'avez pas besoin de le mettre à jour même en cas de changements de personnel.<br>
-        &ensp;  - Un cas  d\'utilisation :<br>
+                 impactant tous les contacts de ce groupe, vous n\'avez donc pas besoin de les ajouter individuellement,
+                 et pas besoin de le mettre à jour même en cas de changements de personnel.<br>
+        &ensp;  - Un cas d\'utilisation:<br>
         &emsp; Bloquer tous les collègues le week-end en bloquant le groupe de contacts "travail".
         ]]>
     </string>
-    <string name="text_too_long">Texte trop long,l\'édition est désactivée</string>
-    <string name="follow_system">Suivre système</string>
+    <string name="text_too_long">Texte trop long, l\'édition est désactivée</string>
+    <string name="follow_system">Suivre le système</string>
     <string name="theme">Thème</string>
     <string-array name="theme_list">
         <item>Clair</item>
         <item>Sombre</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Rechercher règle</item>
-        <item>Cloner règle</item>
-        <item>Supprimer les règles en double</item>
+        <item>Règle de recherche</item>
+        <item>Cloner la règle</item>
+        <item>Supprimer les règles dupliquées</item>
         <item>Supprimer toutes les règles (%d)</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">Confirmer la suppression de %d règles en double ?</string>
+    <string name="confirm_delete_duplicated_rule">Confirmer la suppression de %d règles dupliquées ?</string>
     <string name="duration">Durée</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[

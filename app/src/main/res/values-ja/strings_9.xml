@@ -4,10 +4,10 @@
     <string name="filename">ファイル名</string>
     <string name="invalid_input_type">無効な入力タイプ、期待値: %s、取得値: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">有効期限 (日)</string>
+    <string name="expiry_days">有効期限（日）</string>
     <string name="column_mapping">列マッピング</string>
-    <string name="include_spam_db">迷惑電話データベースを追加</string>
-    <string name="configuration_only">構成のみ</string>
+    <string name="include_spam_db">スパムデータベースを含める</string>
+    <string name="configuration_only">設定のみ</string>
     <string name="no_config_needed">設定不要</string>
     <string name="success">成功</string>
     <string name="failed">失敗</string>
@@ -17,32 +17,31 @@
     <string name="run_execute">実行</string>
     <string name="help_action_header">
         <![CDATA[
-        -<font color="#03DAC5"><b>テスト</b></font><br>
-        これらのアクションはすぐに実行されて、設定が正しく設定されているか確認できます。
-        ワークフローを手動で実行することが便利です。<br>
+        - <font color="#03DAC5"><b>テスト</b></font><br>
+        これらのアクションは、設定が正しく行われているかを確認するため、または手動でワークフローを実行する場合に、すぐに実行されます。<br>
         <br>
-        -<font color="#00BFFF"><b>作成</b></font><br>
-        新しいアクションを作成します。複数のアクションは、複雑なタスクを完了するために連結することができます。<br>
-        アイテム間の緑または赤のドットは、チェーン可能かどうかを示します。<br>
-        <br>
-        ワークフローの例:<br>
-        <br>
-        &emsp; - httpファイルのダウンロード-> 7z形式のデコード-> csv形式として解析->迷惑電話データベースにインポート。<br>
-        <br>
-        &emsp; - 平日の設定Aを適用し、週末の設定Bを適用します。<br>
+        - <font color="#00BFFF"><b>新規</b></font><br>
+            新しいアクションを作成します。複数のアクションをチェーンして、複雑なタスクを完了させることができます。<br>
+            アイテム間の緑または赤の点は、チェーン可能かどうかを示しています。<br>
+            <br>
+            ワークフローの例:<br>
+            <br>
+            &emsp; - HTTP ファイルダウンロード -> 7z 形式のデコード -> CSV 形式で解析 -> スパムデータベースにインポートします。<br>
+            <br>
+            &emsp; - 勤務日には設定 A を適用し、週末には設定 B を適用します。<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            迷惑電話番号をダウンロードします。
+            毎営業日、
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> 平日、
-            迷惑電話データベースにインポートします。
+            <no_translate>FTC - Do Not Call</no_translate> </a>
+            からスパム電話番号をダウンロードして、スパムデータベースにインポートします。
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">迷惑電話データベースから有効期限切れのレコードを削除します。</string>
-    <string name="help_bot_preset_cleanup_history">有効期限切れの履歴の通話/SMSレコードを削除します。</string>
+    <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから期限切れのレコードを削除します。</string>
+    <string name="help_bot_preset_cleanup_history">期限切れの通話/SMS 履歴レコードを削除します。</string>
     <string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
     <string name="everyday">毎日</string>
     <string name="daily">毎日</string>
@@ -53,37 +52,36 @@
 
     <string name="help_backup">
         <![CDATA[
-        迷惑電話データベースを使用しない場合、両方のオプションは等価になります。<br>
+        スパムデータベースを使用しない場合、どちらのオプションも同じになります。<br>
         <br>
-        - <b>迷惑電話データベースを追加</b><br>
-        &emsp;迷惑電話データベースは頻繁に更新されるため、通常のバックアップにはこれを使用しないでください。
-        これは構成を別の電話に複製する場合にのみ役立ちます。<br>
+        - <b>スパムデータベースを含める</b><br>
+        &emsp; スパムデータベースは頻繁に更新されるため、通常のバックアップには使用しないでください。これは、構成を別の電話に複製する場合にのみ役立ちます。<br>
         <br>
-        - <b>構成のみ</b><br>
-        &emsp; - エクスポート時にバックアップファイルのサイズが小さくなります。 <br>
-        &emsp; - インポート時、迷惑電話データベースのレコードは現在の状態を維持します。
+        - <b>設定のみ</b><br>
+        &emsp; - エクスポート時に、バックアップファイルのサイズが小さくなります。 <br>
+        &emsp; - インポート時に、スパムデータベースのレコードは現在の状態を保持します。
         ]]>
     </string>
     <string name="mode">モード</string>
     <string-array name="regex_action_add_mode">
         <item>作成</item>
         <item>置換</item>
-        <item>結合</item>
+        <item>マージ</item>
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>作成</b></font><br>
-        &ensp;常に新しい正規表現ルールを作成します。<br>
+        &ensp; 常に新しい正規表現ルールを作成します。<br>
         <br>
         - <font color="#00BFFF"><b>置換</b></font><br>
-        &ensp; <b>説明</b>が同じ既存のルールを見つけようとします。<br>
+        &ensp; 同じ<b>説明</b>を持つ既存のルールを見つけようとします。 <br>
         &ensp;&ensp; - 見つかった場合、上書きされます。<br>
-        &ensp;&ensp; - 見つからない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
+        &ensp;&ensp; - 見つからなかった場合、新しいルールが作成されます。<b>作成</b>と同じです。<br>
         <br>
-        - <font color="#00BFFF"><b>結合</b></font><br>
-        &ensp;- 説明が同じルールが存在する場合、新しい番号が結合されます。<br>
-        &ensp; 重複した番号は自動的に削除されます。<br>
-        &ensp;- 存在しない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
+        - <font color="#00BFFF"><b>マージ</b></font><br>
+        &ensp;- 同じ説明を持つルールが存在する場合、新しい番号がマージされます。<br>
+         重複する番号は自動的に削除されます。<br>
+        &ensp;- 存在しない場合、新しいルールが作成されます。<b>作成</b>と同じです。<br>
         ]]>
     </string>
 
