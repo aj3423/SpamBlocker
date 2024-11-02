@@ -94,8 +94,8 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Küresel anahtar, uygulama yalnızca bu açık olduğunda çalışır,
-        belirli bir arama/mesaj beklerken kapatın. <br>
+        Küresel anahtar, uygulama yalnızca bu açık olduğunda çalışır.
+        Belirli bir arama/mesaj beklerken kapatın. <br>
         <br>
         Ayrıca <font color="#6ed0ff"><b>Açılır Hızlı Ayarlar</b></font>.<br>dan da kapaılabilir.
         <br>
