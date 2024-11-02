@@ -309,7 +309,7 @@ fun RecentApps() {
     PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = defaultInXMin)
 
     LabeledRow(
-        R.string.allow_recent_apps,
+        R.string.recent_apps,
         helpTooltipId = R.string.help_recent_apps,
         content = {
             Row(

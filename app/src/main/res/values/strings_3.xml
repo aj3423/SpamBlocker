@@ -3,7 +3,7 @@
         <![CDATA[
         These rules apply to the SMS content.<br>
         <br>
-        <font color="#00BFFF"><b> - Some typical Patterns</b></font>:<br>
+        <font color="#00BFFF"><b> - Some typical patterns</b></font>:<br>
         &ensp; - Contains "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>

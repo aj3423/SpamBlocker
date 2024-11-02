@@ -2,17 +2,17 @@
     <string name="yesterday">Onte</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Rechazar chamadas durante videoconferencias.<br>
+        Rechaza chamadas durante as videoconferencias en liña.<br>
         <br>
-        Comproba se a aplicación seleccionada está executando un <b>servizo de primeiro plano</b>,
-        que adoitan utilizar as aplicacións de videoconferencia para manter a conexión activa.<br>
+        Comproba se algunha aplicación seleccionada está a executar un <b>servizo en primeiro plano</b>,
+        o que é comúnmente usado polas aplicacións de videoconferencia para manter a conexión activa.<br>
         <br>
-        Aplicábel a chamadas e mensaxes.<br>
+        Aplicarase tanto a chamadas como a mensaxes.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade predeterminada: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Modo de reunión</string>
+    <string name="in_meeting">Modo Reunión</string>
     <string name="search">Buscar</string>
     <string name="http_header">Cabeceira HTTP</string>
     <string name="help_http_header">
@@ -20,4 +20,15 @@
         Un atributo por liña, por exemplo:
         ]]>
     </string>
+    <string name="log_sms_content_to_db">Rexistro SMS</string>
+    <string name="initial_row_count">Contador de filas inicial</string>
+    <plurals name="rows">
+        <item quantity="one">%d Fila</item>
+        <item quantity="two">%d Filas</item>
+        <item quantity="few">%d Filas</item>
+        <item quantity="many">%d Filas</item>
+        <item quantity="other">%d Filas</item>
+    </plurals>
+
+
 </resources>

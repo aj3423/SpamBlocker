@@ -1,24 +1,24 @@
 <resources>
-    <string name="start_time">Hora inicial</string>
-    <string name="end_time">Hora final</string>
+    <string name="start_time">Hora de inicio</string>
+    <string name="end_time">Hora de finalización</string>
     <string name="switch_mode">Cambiar modo</string>
     <string name="contact_group">Grupo de contactos</string>
     <string name="help_number_mode">
         <![CDATA[
-        <font color="#00BFFF"><b><no_translate>Número de teléfono</no_translate></b></font>:<br>
-        &ensp; <no_translate>El</no_translate> modo predeterminado, la expresión regular coincidirá con el número de teléfono.<br>
+        <font color="#00BFFF"><b>Número de teléfono</b></font>:<br>
+        &ensp; El modo predeterminado, la expresión regular coincidirá con el número de teléfono.<br>
         <br>
-        <font color="#00BFFF"><b><no_translate>Contactos</no_translate></b></font>:<br>
-        &ensp; <no_translate>La</no_translate> expresión regular coincidirá con el nombre del contacto asociado con el número entrante.<br>
+        <font color="#00BFFF"><b>Contactos</b></font>:<br>
+        &ensp; La expresión regular coincidirá con el nombre de contacto asociado con el número entrante.<br>
         &ensp;  - Un caso de uso:<br>
-        &emsp; Bloquear todos los que no son contactos durante el fin de semana con la expresión regular `.*`.<br>
+        &emsp; Bloquear todos los no contactos los fines de semana con la expresión regular `.*`.<br>
         <br>
-        <font color="#00BFFF"><b><no_translate>Grupo de contactos</no_translate></b></font>:<br>
-        &ensp; <no_translate>La</no_translate> expresión regular coincidirá con el nombre del grupo de contactos asociado con el número entrante,
-                 impacta a todos los contactos en ese grupo, por lo que no es necesario agregarlos individualmente,
+        <font color="#00BFFF"><b>Grupo de contactos</b></font>:<br>
+        &ensp; La expresión regular coincidirá con el nombre del grupo de contactos asociado con el número entrante,
+                 impactando a todos los contactos de ese grupo, por lo que no es necesario agregarlos individualmente,
                  y no es necesario actualizarlo incluso cuando hay cambios de personal.<br>
         &ensp;  - Un caso de uso:<br>
-        &emsp; Bloquear a todos los compañeros de trabajo el fin de semana bloqueando el grupo de contactos "trabajo".
+        &emsp; Bloquear a todos los compañeros de trabajo los fines de semana bloqueando el grupo de contactos "trabajo".
         ]]>
     </string>
     <string name="text_too_long">Texto demasiado largo, la edición está deshabilitada</string>
@@ -32,13 +32,13 @@
         <item>Buscar regla</item>
         <item>Clonar regla</item>
         <item>Eliminar reglas duplicadas</item>
-        <item>Borrar todas las reglas (%d)</item>
+        <item>Eliminar todas (%d) reglas</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">¿Confirmar para eliminar %d reglas duplicadas?</string>
+    <string name="confirm_delete_duplicated_rule">¿Confirmar eliminar %d reglas duplicadas?</string>
     <string name="duration">Duración</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Duración individual para cada aplicación, cuando se deja vacío, volverá a la duración global.
+        Duración individual para cada aplicación, cuando se deja vacía, volverá a la duración global.
         ]]>
     </string>
 </resources>

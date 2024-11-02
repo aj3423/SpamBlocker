@@ -53,6 +53,13 @@ fun GreyIcon16(
 ) {
     GreyIcon(iconId, modifier = modifier.size(16.dp))
 }
+@Composable
+fun GreyIcon20(
+    iconId: Int,
+    modifier: Modifier = Modifier,
+) {
+    GreyIcon(iconId, modifier = modifier.size(20.dp))
+}
 
 @Composable
 fun ResImage(

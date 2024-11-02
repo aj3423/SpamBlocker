@@ -2,10 +2,9 @@
     <string name="yesterday">Dün</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Video toplantıları sırasında aramaları reddet.<br>
+        Çevrimiçi video toplantıları sırasında aramaları reddetin.<br>
         <br>
-        Seçili bir uygulamanın bir <b>ön plan hizmetini</b> çalıştırıp çalıştırmadığını kontrol eder; bu hizmet,
-        video konferans uygulamalarında genellikle bağlantıyı sürdürmek için kullanılır.<br>
+        Seçili herhangi bir uygulamanın <b>ön plan hizmetini</b> çalıştırdığını kontrol eder, bu durum genellikle video konferans uygulamaları tarafından bağlantıyı canlı tutmak için kullanılır.<br>
         <br>
         Hem aramalar hem de mesajlar için geçerlidir.<br>
         <br>
@@ -14,10 +13,21 @@
     </string>
     <string name="in_meeting">Toplantı Modu</string>
     <string name="search">Ara</string>
-    <string name="http_header">Http Üst Bilgisi</string>
+    <string name="http_header">Http Başlığı</string>
     <string name="help_http_header">
         <![CDATA[
-        Satır başına bir öznitelik, örneğin:
+        Her satırda bir öznitelik, örneğin:
         ]]>
     </string>
+    <string name="log_sms_content_to_db">SMS\'i Kaydet</string>
+    <string name="initial_row_count">Başlangıç Satır Sayısı</string>
+    <plurals name="rows">
+        <item quantity="one">%d Satır</item>
+        <item quantity="two">%d Satır</item>
+        <item quantity="few">%d Satır</item>
+        <item quantity="many">%d Satır</item>
+        <item quantity="other">%d Satır</item>
+    </plurals>
+
+
 </resources>

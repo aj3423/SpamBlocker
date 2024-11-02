@@ -25,7 +25,7 @@
         &emsp; So regex <font color="#03DAC5"><b>123.*</b></font> would match all of them.<br>
         This number optimization can be <b>disabled</b> with the regex flag `Raw Number`.<br>
         <br>
-        <font color="#00BFFF"><b> - Some typical Patterns</b></font>:<br>
+        <font color="#00BFFF"><b> - Some typical patterns</b></font>:<br>
         &ensp; - Any number: <font color="#03DAC5"><b>.*</b></font> (the regex .* is equivalent to the wildcard * in other apps) <br>
         &ensp; - Exact number: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Starts with 400: <font color="#03DAC5"><b>400.*</b></font> <br>
@@ -37,7 +37,7 @@
         &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font> <br>
         &ensp; - Starts with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <font color="#00BFFF"><b> - Import Rule from .csv</b></font>:<br>
+        <font color="#00BFFF"><b> - Import rules from .csv</b></font>:<br>
         You can export rules from other app to a .csv file and import them to this app.<br>
         Long press the `Add` button to import numbers from .csv file, columns supported:<br>
          - <no_translate><b>pattern</b></no_translate>: The regex(<b>required</b>)<br>

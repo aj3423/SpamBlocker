@@ -1,9 +1,9 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Cuando está habilitado, todas las llamadas (mensajes) se permitirán durante este período. Usualmente noche no hay spam. <br>
+        Cuando está habilitado, todas las llamadas (mensajes) estarán permitidas durante este período de tiempo. Normalmente no hay llamadas de spam por la noche. <br>
         <br>
-        Si la hora de inicio es mayor que la hora de finalización, por ejemplo, 20:00 -> 07:00, significa el período desde 20:00 de la tarde hasta 07:00 de la mañana siguiente. <br>
+        Si la hora de inicio es mayor que la hora de finalización, por ejemplo, 20:00 -> 07:00, significa el período desde las 20:00 de la noche hasta las 07:00 de la mañana siguiente. <br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
@@ -11,27 +11,27 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Estas banderas cambian el comportamiento de coincidencia de la expresión regular, están establecidas para nuevas reglas por defecto. <br>
+            Estas banderas cambian el comportamiento de coincidencia de la expresión regular, se establecen de forma predeterminada para las nuevas reglas. <br>
             <br>
 
             <font color="#00BFFF"><b>Ignorar mayúsculas y minúsculas</b></font>:<br>
-            &ensp; Hace que la coincidencia de patrón no distinga entre mayúsculas y minúsculas, <font color="#03DAC5"><b>a</b></font>
+            &ensp; Hace que la coincidencia de patrones no distinga entre mayúsculas y minúsculas, <font color="#03DAC5"><b>a</b></font>
               coincidiría tanto con <font color="#03DAC5"><b>a</b></font> como con <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
             <font color="#00BFFF"><b>Punto coincide con todo</b></font>: <br>
-            &ensp; Cuando está habilitado, <font color="#03DAC5"><b>.</b></font> también coincidirá con caracteres de nueva línea (<font color="#03DAC5"><b>\\n</b></font>),
-              esto permite que el punto coincida en múltiples líneas. <br>
+            &ensp; Cuando está habilitado, <font color="#03DAC5"><b>.</b></font> también coincidirá con los caracteres de nueva línea (<font color="#03DAC5"><b>\\n</b></font>),
+              esto permite que el punto coincida con varias líneas. <br>
             &ensp; Caso de uso: <br>
             &emsp;   Coincidir con mensaje SMS multilínea: <br>
-            &emsp;   <font color="#fa7f71">reclamar su premio: http://<br>
+            &emsp;   <font color="#fa7f71">reclama tu premio: http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   con regla: <br>
+            &emsp;   con la regla: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#00BFFF"><b>Número sin procesar</b></font>: <br>
-            &ensp; Cuando está habilitado, el número no se optimizará, <font color="#03DAC5"><b>+</b></font> y <font color="#03DAC5"><b>0 a la izquierda</b></font> permanecerán, útil para diferenciar números domésticos.
+            <font color="#00BFFF"><b>Número bruto</b></font>: <br>
+            &ensp; Cuando está habilitado, el número no se optimizará, <font color="#03DAC5"><b>+</b></font> y <font color="#03DAC5"><b>ceros iniciales</b></font> permanecerán, útil para diferenciar números nacionales.
         ]]>
     </string>
 

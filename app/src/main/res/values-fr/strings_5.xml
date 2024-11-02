@@ -1,6 +1,6 @@
 <resources>
-    <string name="dialed">Numéro composé</string>
-    <string name="find_apps">Trouver les applications</string>
+    <string name="dialed_number">Numéro composé</string>
+    <string name="find_apps">Trouver des applications</string>
 
     <string name="confirm_delete_all_rule">Confirmer la suppression de toutes les règles ?</string>
 
@@ -8,68 +8,68 @@
     <string name="type">Type</string>
     <string name="times">Fois</string>
     <plurals name="days">
-        <item quantity="one">%d jour</item>
-        <item quantity="two">%d jours</item>
-        <item quantity="few">%d jours</item>
-        <item quantity="many">%d jours</item>
-        <item quantity="other">%d jours</item>
+        <item quantity="one">%d Jour</item>
+        <item quantity="two">%d Jours</item>
+        <item quantity="few">%d Jours</item>
+        <item quantity="many">%d Jours</item>
+        <item quantity="other">%d Jours</item>
     </plurals>
     <string name="min">Min</string>
-    <string name="within_minutes">En quelques minutes</string>
-    <string name="within_days">En quelques jours</string>
+    <string name="within_minutes">Dans quelques minutes</string>
+    <string name="within_days">Dans quelques jours</string>
     <string name="phone_number">Numéro de téléphone</string>
     <string name="phone_number_abbrev">Numéro</string>
     <string name="sms_content">Contenu du SMS</string>
     <string name="regex_flags">Drapeaux Regex</string>
     <string-array name="regex_flags_list">
         <item>Ignorer la casse</item>
-        <item>Tous les caractères spéciaux</item>
-        <item>Nombre brut</item>
+        <item>Point correspond à tout</item>
+        <item>Numéro brut</item>
     </string-array>
-    <string name="disable_number_optimization">Cette optimisation peut être désactivée à l’aide du drapeau Regex « Nombre brut ».</string>
-    <string name="off_time">Heure d\'extinction</string>
-    <string name="schedule">Calendrier</string>
+    <string name="disable_number_optimization">Cette optimisation peut être désactivée par le drapeau Regex « Numéro brut ». </string>
+    <string name="off_time">Heure d\'arrêt</string>
+    <string name="schedule">Planification</string>
     <string name="workday">Jour ouvrable</string>
     <string name="weekend">Week-end</string>
-    <string name="entire_day">Journée entière</string>
+    <string name="entire_day">Toute la journée</string>
     <string name="block_type">Type de blocage</string>
     <string name="for_particular_number">Pour le numéro</string>
-    <string name="help_for_particular_number">Lorsque cette option est activée, la règle ne s\'applique que si le numéro et le contenu correspondent.</string>
+    <string name="help_for_particular_number">Une fois activée, la règle s\'applique uniquement lorsque le numéro et le contenu correspondent.</string>
     <string name="help_block_type">
         <![CDATA[
-        - <font color="#00BFFF"><b>Rejeter</b></font> : <br>
-        &emsp; Identique au fait d\'appuyer sur le bouton de refus. Silencieux, l\'écran de verrouillage ne s\'allume pas. Il s\'agit du type recommandé si vous n\'utilisez pas la messagerie vocale.<br>
+        - <font color="#00BFFF"><b>Rejeter</b></font>: <br>
+        &emsp; Comme si vous appuyiez sur le bouton de refus. Cela fonctionne complètement silencieusement, l\'écran de verrouillage ne sera pas activé, il s\'agit du type recommandé si vous n\'utilisez pas la messagerie vocale.<br>
         <br>
-        - <font color="#00BFFF"><b>Silencieux</b></font> : <br>
-        &emsp; La sonnerie reste silencieuse en arrière-plan, donnant l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'avez pas répondu. <br>
+        - <font color="#00BFFF"><b>Silence</b></font>: <br>
+        &emsp; La sonnerie se fera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous êtes simplement occupé et que vous n\'avez pas répondu.<br>
         <br>
-        - <font color="#00BFFF"><b>Répondre et raccrocher</b></font> : <br>
-        &emsp; Pour éviter d\'être redirigé vers la messagerie vocale. L\'écran de verrouillage peut s\'allumer brièvement, vous pouvez aussi entendre un signal de fin d\'appel (certains téléphones offrent une option pour désactiver ce son).
+        - <font color="#00BFFF"><b>Répondre et raccrocher</b></font>: <br>
+        &emsp; Pour éviter d\'être envoyé à la messagerie vocale. L\'écran de verrouillage peut être activé pendant un court moment, vous pouvez également entendre un signal de fin d\'appel (certains téléphones offrent une option pour désactiver ce son).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
         Les numéros composés seront autorisés.<br>
         <br>
-        L\'envoi de messages compte également. Cela fonctionne uniquement lorsque l\'autorisation READ_SMS est accordée. <br>
+        L\'envoi de messages est également pris en compte, cela ne fonctionne que si l\'autorisation READ_SMS est accordée.<br>
         <br>
-        Le paramètre par défaut <font color="#03DAC5"><b>3 jours</b></font> signifie que si vous avez composé ou envoyé des messages au numéro dans les 3 derniers jours, les appels provenant de ce numéro seront autorisés.<br>
+        Le paramètre par défaut <font color="#03DAC5"><b>3 jours</b></font> signifie que si vous avez composé ou envoyé des messages au numéro au cours des 3 derniers jours, les appels de ce numéro seront autorisés.<br>
         <br>
-        Ne s\'applique qu\'aux appels, <b>pas</b> aux messages texte. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Tous les appels seront autorisés si l\'une des applications de la liste a été utilisée récemment.<br>
+        Tout appel sera autorisé si une application de la liste a été utilisée récemment.<br>
         <br>
-        Cas d\'utilisation typique :<br>
-        &emsp; Vous venez de commander une pizza depuis PizzaApp, qui vous appelle rapidement pour un remboursement car ils vont fermer. Cet appel sera autorisé si PizzaApp est activé ici. <br>
+        Un cas d\'utilisation typique :<br>
+        &emsp; Vous venez de commander une pizza dans PizzaApp, ils vous appellent bientôt pour vous rembourser car ils ferment. Cet appel passerait si PizzaApp est activé ici.<br>
         <br>
-        Le paramètre par défaut <font color="03DAC5"><b>5 min</b></font> signifie que tous les appels seront autorisés si l\'une des applications a été utilisée dans les 5 dernières minutes. Le terme « utilisée » signifie activée, désactivée, réduite ou supprimée. <br>
+        Le paramètre par défaut <font color="03DAC5"><b>5 min</b></font> signifie que tout appel passera si l\'une des applications a été utilisée dans les 5 minutes, par « utilisée », on entend activée, désactivée, réduite ou interrompue.<br>
         <br>
-        Ne s\'applique qu\'aux appels, <b>pas</b> aux messages texte. <br>
+        S\'applique uniquement aux appels, <b>pas</b> aux messages texte.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>

@@ -1,87 +1,90 @@
 <resources>
-    <string name="contact_rule">Правило контактів</string>
+    <string name="contact_rule">Правило контакту</string>
     <string name="directory">Каталог</string>
-    <string name="filename">Ім\'я файла</string>
-    <string name="invalid_input_type">Неприпустимий тип вхідних даних, очікувані: %s, отримані: %s</string>
+    <string name="filename">Назва файлу</string>
+    <string name="invalid_input_type">Неправильний тип вводу, очікується: %s, отримано: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Дні, що залишилися</string>
-    <string name="column_mapping">Відображення стовпців</string>
-    <string name="include_spam_db">Включати базу даних спаму</string>
-    <string name="configuration_only">Лише конфігурація</string>
-    <string name="no_config_needed">Не потрібно конфігурації</string>
+    <string name="expiry_days">Днів до закінчення терміну</string>
+    <string name="column_mapping">Картування стовпців</string>
+    <string name="include_spam_db">Включити базу даних спаму</string>
+    <string name="configuration_only">Тільки конфігурація</string>
+    <string name="no_config_needed">Конфігурація не потрібна</string>
     <string name="success">Успішно</string>
-    <string name="failed">Помилка</string>
-    <string name="running">Запускається</string>
-    <string name="optional">додатково</string>
+    <string name="failed">Не вдалося</string>
+    <string name="running">Запущено</string>
+    <string name="optional">(необов\'язково)</string>
 
-    <string name="run_execute">Запуск</string>
+    <string name="run_execute">Запустити</string>
     <string name="help_action_header">
         <![CDATA[
-        - <font color="#03DAC5"><b>Тестування</b></font><br>
-        Ці дії будуть виконані негайно, щоб перевірити, чи їх налаштовано правильно,
-        або якщо ви просто хочете запустити цей робочий процес вручну.<br>
+        - <font color="#03DAC5"><b>Тест</b></font><br>
+        Ці дії будуть виконані негайно для перевірки того, чи вони налаштовані правильно,
+        або можливо ви просто хочете вручну запустити цей робочий процес.<br>
         <br>
         - <font color="#00BFFF"><b>Новий</b></font><br>
-        Створіть нову дію. Кілька дій можна об\'єднати разом для вирішення складного завдання.<br>
-        Зелені або червоні точки між елементами вказують, чи можна їх об\'єднувати або ні.<br>
-        <br>
-        Кілька прикладів робочих процесів: <br>
-        <br>
-        &emsp; - завантаження файлу HTTP -> декодування у форматі 7z -> аналіз у форматі CSV -> імпорт до бази даних спаму.<br>
-        <br>
-        &emsp; - застосувати налаштування A в робочі дні та налаштування B на вихідних.<br>
+            Створити нову дію, декілька дій можна з\'єднати в ланцюжок, щоб виконати складне завдання.<br>
+            Ці зелені або червоні крапки між елементами вказують на те, чи можна їх з\'єднати.<br>
+            <br>
+            Деякі приклади робочих процесів: <br>
+            <br>
+            &emsp; - завантажити файл з http -> декодувати формат 7z -> проаналізувати у форматі csv -> імпортувати в базу даних спаму.<br>
+            <br>
+            &emsp; - застосувати налаштування A в робочі дні та застосувати налаштування B у вихідні.<br>
         ]]>
     </string>
+
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Завантажувати номери телефонів спаму з
+            Завантажити номери телефонів спаму з
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
             <no_translate>FTC - Do Not Call</no_translate> </a> кожного робочого дня,
-            і імпортувати їх у базу даних спаму.
+             та імпортувати їх до бази даних спаму.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Видаляти з бази даних спаму записи, термін дії яких закінчився.</string>
-    <string name="help_bot_preset_cleanup_history">Видаляти записи про дзвінки/SMS із закінченим терміном дії.</string>
-    <string name="help_bot_preset_auto_backup">Резервувати всі налаштування.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Видалити застарілі записи з бази даних спаму.</string>
+    <string name="help_bot_preset_cleanup_history">Видалити застарілі записи про дзвінки/SMS.</string>
+    <string name="help_bot_preset_auto_backup">Зберегти резервну копію всіх налаштувань.</string>
     <string name="everyday">Щодня</string>
     <string name="daily">Щоденно</string>
     <string name="weekly">Щотижня</string>
     <string name="periodically">Періодично</string>
     <string name="time">Час</string>
     <string name="workdays">Робочі дні</string>
+
     <string name="help_backup">
         <![CDATA[
         Якщо ви не використовуєте базу даних спаму, обидва варіанти будуть еквівалентними.<br>
         <br>
-        - <b>Включати базу даних спаму</b><br>
-        &emsp; Не використовуйте це для звичайного резервного копіювання, тому що база даних спаму, як очікується, оновлюється досить часто.
-        Це корисно лише під час клонування конфігурації на інший телефон.<br>
+        - <b>Включити базу даних спаму</b><br>
+        &emsp; Не використовуйте цей варіант для регулярного резервного копіювання, оскільки база даних спаму має оновлюватися часто.
+         Це корисно лише при клонуванні конфігурації на інший телефон.<br>
         <br>
-        - <b>Лише конфігурація</b><br>
-        &emsp; - При експорті це зменшить розмір резервної копії файлу. <br>
-        &emsp; - При імпорті записи в базі даних спаму будуть зберігатися у поточному стані.
+        - <b>Тільки конфігурація</b><br>
+        &emsp; - При експорті це зменшить розмір резервної копії. <br>
+        &emsp; - При імпорті записи в базі даних спаму збережуть свій поточний стан.
         ]]>
     </string>
     <string name="mode">Режим</string>
     <string-array name="regex_action_add_mode">
         <item>Створити</item>
         <item>Замінити</item>
-        <item>Об\'єднати</item>
+        <item>Злити</item>
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Створити</b></font><br>
-        &ensp; Завжди створювати нове правило регулярних виразів.<br>
+        &ensp; Завжди створити нове правило регулярного виразу.<br>
         <br>
         - <font color="#00BFFF"><b>Замінити</b></font><br>
-        &ensp; Це спробує знайти існуюче правило, яке має той самий <b>опис</b>. <br>
-        &ensp;&ensp; - Якщо знайдено, воно буде перевизначене.<br>
-        &ensp;&ensp; - Якщо не знайдено, буде створено нове правило, таке ж, як і в <b>Створити</b>.<br>
+        &ensp; Спробує знайти існуюче правило з тим самим <b>описом</b>. <br>
+        &ensp;&ensp; - Якщо знайдено, його буде переписано.<br>
+        &ensp;&ensp; - Якщо не знайдено, буде створено нове правило, як і в <b>Створити</b>.<br>
         <br>
-        - <font color="#00BFFF"><b>Об\'єднати</b></font><br>
-        &ensp;- Якщо існує правило з таким самим описом, нові номери будуть об\'єднані з ним,<br>
-        дубльовані номери автоматично видалятимуться.<br>
-        &ensp;- Якщо не існує, буде створено нове правило, таке ж, як і в <b>Створити</b>.<br>
+        - <font color="#00BFFF"><b>Злити</b></font><br>
+        &ensp;- Якщо правило з тим самим описом існує, нові номери будуть злиті в нього,<br>
+         дубльовані номери будуть автоматично видалені.<br>
+        &ensp;- Якщо не існує, буде створено нове правило, як і в <b>Створити</b>.<br>
         ]]>
     </string>
+
 </resources>

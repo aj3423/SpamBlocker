@@ -1,38 +1,66 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        Essas regras se aplicam ao conteúdo do SMS.<br><br><font color="#00BFFF"><b>- Alguns Padrões Típicos</b></font>:<br>- Contém "verificação": <font color="#03DAC5"><b>.*verificação.*</b></font><br>- Contém qualquer uma das palavras: <font color="#03DAC5"><b>.*(polícia|hospital|verificação).*</b></font>
+        Estas regras se aplicam ao conteúdo do SMS.<br>
+        <br>
+        <font color="#00BFFF"><b> - Alguns padrões típicos</b></font>:<br>
+        &ensp; - Contém "verificação": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Contém qualquer uma das palavras: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        Uma forma rápida de copiar o conteúdo das mensagens SMS ou números de telefone, facilitando obter códigos de verificação ou números recebidos.<br><br>Quando corresponde, um botão como <font color="#00BFFF"><b>Copiar: 123456</b></font> aparece na notificação.<br><br>Um exemplo de regra para extrair códigos de verificação:<br>&emsp;Usando o grupo de captura:<br>&emsp;&emsp; <font color="#03DAC5"><b>código.*?(\\d+) </b></font><br>&emsp;Outra abordagem usando lookaround:<br>&emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=código.{0,3})\\d+</b></font>
+        Uma forma rápida de copiar conteúdo de mensagens SMS ou números de telefone, facilitando a captura de códigos de verificação ou números recebidos.<br>
+        <br>
+        Quando houver correspondência, um botão como <font color="#00BFFF"><b>Copiar: 123456</b></font> aparecerá na notificação.<br>
+        <br>
+        Uma regra de exemplo para extrair códigos de verificação:<br>
+        &emsp; Usando grupo de captura:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        &emsp; Outra abordagem usando lookaround:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
         <![CDATA[
-        Ative esta regra para Chamada, SMS ou ambos.<br>Desmarque essas caixas de seleção para desativar a regra sem excluí-la.
+        Ative esta regra para Chamada, SMS ou ambos.<br>
+        Desmarque essas caixas de seleção para desabilitar a regra sem excluí-la.
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        Quando <font color="#00BFFF"><b>Número</b></font> é selecionado, esta regra irá extrair o conteúdo do número de entrada. Por exemplo, use <b>(.*)</b> para copiar o número de telefone.<br><br>Quando <font color="#00BFFF"><b>Conteúdo</b></font> é selecionado, esta regra irá extrair o conteúdo do corpo da mensagem SMS, como códigos de verificação.
+        Quando <font color="#00BFFF"><b>Número</b></font> está marcado, esta regra irá extrair conteúdo do número recebido.
+        Por exemplo, use <b>(.*)</b> para copiar o número de telefone.<br>
+        <br>
+        Quando <font color="#00BFFF"><b>Conteúdo</b></font> está marcado, esta regra irá extrair conteúdo do corpo da mensagem SMS,
+        como códigos de verificação.
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        Quando <font color="#03DAC5"><b>Passados</b></font> é selecionado, esta regra será aplicada a chamadas e mensagens passadas.<br><br>Quando <font color="#fa7f71"><b>Bloqueados</b></font> é selecionado, esta regra será aplicada a chamadas e mensagens bloqueadas.
+        Quando <font color="#03DAC5"><b>Passado</b></font> está marcado, esta regra será aplicada a chamadas e mensagens passadas.<br>
+        <br>
+        Quando <font color="#fa7f71"><b>Bloqueado</b></font> está marcado, esta regra será aplicada a chamadas e mensagens bloqueadas.
         ]]>
     </string>
     <string name="help_importance">
         <![CDATA[
-        <b>Nenhum</b>:<br>&emsp; nenhuma notificação. <br><b>Cortina</b>:<br>&emsp; a cortina de notificação suspensa. <br><b>Barra de Status</b>:<br>&emsp; o pequeno ícone na barra superior. <br><b>Som</b>:<br>&emsp; o som padrão de notificação. <br><b>Heads-Up</b>:<br>&emsp; abre uma janela flutuante no topo da tela.
+        <b>Nenhum</b>:<br>&emsp; Nenhuma notificação.<br>
+        <b>Sombra</b>:<br>&emsp; A barra de notificações suspensa.<br>
+        <b>Barra de Status</b>:<br>&emsp; O pequeno ícone na barra superior.<br>
+        <b>Som</b>:<br>&emsp; O som de notificação padrão.<br>
+        <b>Heads-Up</b>:<br>&emsp; Exibir uma janela flutuante na parte superior da tela.
         ]]>
     </string>
-    <string name="title_rule_testing">Teste de Regras</string>
+    <string name="title_rule_testing">Testando Regras</string>
     <string name="help_test_rules">
         <![CDATA[
-        Isso ajuda a verificar se as regras foram definidas conforme o esperado.<br><br>É apenas uma simulação e não irá realmente mostrar uma chamada recebida (ou mensagem de texto).<br><br>O resultado é mostrado aqui e no log de histórico, com notificação.
+        Isso ajuda a verificar se as regras estão definidas como esperado.<br>
+        <br>
+        É apenas uma simulação e não irá realmente exibir uma chamada (ou mensagem de texto) recebida.<br>
+        <br>
+        O resultado é mostrado aqui, e no histórico de logs, com notificação.
         ]]>
     </string>
+
 </resources>

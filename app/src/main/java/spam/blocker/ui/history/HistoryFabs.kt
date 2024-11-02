@@ -25,6 +25,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.Fab
+import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
@@ -70,6 +71,7 @@ fun HistoryFabs(
     var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }
     var historyTTL by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
     var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
+    var rows by rememberSaveable { mutableStateOf<Int?>(spf.getInitialSmsRowCount()) }
 
     val settingPopupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -107,12 +109,32 @@ fun HistoryFabs(
             // Log SMS Content
             if (forType == Def.ForSms) {
                 LabeledRow(
-                    labelId = R.string.log_sms_content,
+                    labelId = R.string.log_sms_content_to_db,
                     helpTooltipId = R.string.help_log_sms_content
                 ) {
-                    SwitchBox(checked = logSmsContent, onCheckedChange = { isTurningOn ->
-                        logSmsContent = isTurningOn
-                        spf.setLogSmsContentEnabled(isTurningOn)
+                    val trigger = remember { mutableStateOf(false) }
+                    PopupDialog(trigger = trigger) {
+                        NumberInputBox(
+                            label = { GreyLabel(Str(R.string.initial_row_count)) },
+                            intValue = rows,
+                            onValueChange = { newVal, hasError ->
+                                if (!hasError) {
+                                    rows = newVal
+                                    spf.setInitialSmsRowCount(rows!!)
+                                    reloadVM()
+                                }
+                            }
+                        )
+                    }
+                    if (logSmsContent) {
+                        val nRows = ctx.resources.getQuantityString(R.plurals.rows, rows!!, rows)
+
+                        GreyButton(label = nRows) { trigger.value = true }
+                    }
+                    SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
+                        logSmsContent = isOn
+                        spf.setLogSmsContentEnabled(isOn)
+                        reloadVM()
                     })
                 }
             }

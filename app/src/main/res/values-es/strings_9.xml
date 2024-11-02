@@ -2,86 +2,86 @@
     <string name="contact_rule">Regla de contacto</string>
     <string name="directory">Directorio</string>
     <string name="filename">Nombre de archivo</string>
-    <string name="invalid_input_type">Tipo de entrada no válido, se esperaba: %s, se obtuvo: %s</string>
+    <string name="invalid_input_type">Tipo de entrada no válido, se espera: %s, se obtuvo: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Días de vencimiento</string>
-    <string name="column_mapping">Mapeo de columna</string>
-    <string name="include_spam_db">Incluir base de datos de correo no deseado</string>
+    <string name="expiry_days">Días de caducidad</string>
+    <string name="column_mapping">Mapeo de columnas</string>
+    <string name="include_spam_db">Incluir base de datos de spam</string>
     <string name="configuration_only">Solo configuración</string>
-    <string name="no_config_needed">No es necesaria configuración</string>
+    <string name="no_config_needed">No se necesita configuración</string>
     <string name="success">Éxito</string>
-    <string name="failed">Error</string>
-    <string name="running">Ejecutándose</string>
+    <string name="failed">Fallido</string>
+    <string name="running">En ejecución</string>
     <string name="optional">(opcional)</string>
 
     <string name="run_execute">Ejecutar</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Prueba</b></font><br>
-        Estas acciones se ejecutarán de inmediato, para verificar si se han configurado correctamente,
-        o tal vez solo quieras ejecutar manualmente este flujo de trabajo.<br>
+        Estas acciones se ejecutarán inmediatamente, para verificar si se han configurado correctamente,
+        o quizás solo quieras ejecutar este flujo de trabajo manualmente.<br>
         <br>
         - <font color="#00BFFF"><b>Nuevo</b></font><br>
             Crea una nueva acción, se pueden encadenar varias acciones para completar una tarea compleja.<br>
-            Esos puntos verdes o rojos entre elementos indican si se pueden encadenar o no.<br>
+            Esos puntos verdes o rojos entre los elementos indican si se pueden encadenar o no.<br>
             <br>
             Algunos ejemplos de flujos de trabajo: <br>
             <br>
-            &emsp; - Descargar el archivo http -> decodificar el formato 7z -> analizar como formato csv -> importar a la base de datos de correo no deseado.<br>
+            &emsp; - descargar archivo http -> decodificar formato 7z -> analizar como formato csv -> importar a la base de datos de spam.<br>
             <br>
-            &emsp; - Aplicar la configuración A en los días laborales y aplicar la configuración B en el fin de semana.<br>
+            &emsp; - aplicar la configuración A los días laborables y aplicar la configuración B los fines de semana.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Descargar números de teléfono no deseados de
+            Descarga números de teléfono de spam de
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - No llamar</no_translate> </a> cada día laborable,
-             e impórtalos a la base de datos de correo no deseado.
+            <no_translate>FTC - Do Not Call</no_translate> </a> cada día laborable,
+             e impórtalos a la base de datos de spam.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Borrar registros vencidos de la base de datos de correo no deseado.</string>
-    <string name="help_bot_preset_cleanup_history">Borrar registros de llamadas/SMS de historial vencidos.</string>
-    <string name="help_bot_preset_auto_backup">Copia de seguridad de todas las configuraciones.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Eliminar registros caducados de la base de datos de spam.</string>
+    <string name="help_bot_preset_cleanup_history">Eliminar registros de llamadas/SMS de historial caducados.</string>
+    <string name="help_bot_preset_auto_backup">Realizar copia de seguridad de todas las configuraciones.</string>
     <string name="everyday">Todos los días</string>
-    <string name="daily">Diariamente</string>
-    <string name="weekly">Semanalmente</string>
+    <string name="daily">Diario</string>
+    <string name="weekly">Semanal</string>
     <string name="periodically">Periódicamente</string>
     <string name="time">Hora</string>
-    <string name="workdays">Días laborales</string>
+    <string name="workdays">Días laborables</string>
 
     <string name="help_backup">
         <![CDATA[
-        Si no usas la base de datos de correo no deseado, ambas opciones serán equivalentes.<br>
+        Si no utilizas la base de datos de spam, ambas opciones serán equivalentes.<br>
         <br>
-        - <b>Incluir base de datos de correo no deseado</b><br>
-        &emsp; No uses esto para copias de seguridad regulares, porque se supone que la base de datos de correo no deseado se actualiza con frecuencia.
-         Esto solo es útil al clonar la configuración a otro teléfono.<br>
+        - <b>Incluir base de datos de spam</b><br>
+        &emsp; No uses esto para la copia de seguridad regular, porque se supone que la base de datos de spam debe actualizarse con frecuencia.
+         Esto solo es útil cuando se clona la configuración a otro teléfono.<br>
         <br>
         - <b>Solo configuración</b><br>
         &emsp; - Al exportar, esto reducirá el tamaño del archivo de copia de seguridad. <br>
-        &emsp; - Al importar, los registros en la base de datos de correo no deseado conservarán su estado actual.
+        &emsp; - Al importar, los registros en la base de datos de spam conservarán su estado actual.
         ]]>
     </string>
     <string name="mode">Modo</string>
     <string-array name="regex_action_add_mode">
         <item>Crear</item>
         <item>Reemplazar</item>
-        <item>Combinar</item>
+        <item>Fusionar</item>
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Crear</b></font><br>
-        &ensp; Crear siempre una nueva regla de expresiones regulares.<br>
+        &ensp; Siempre crea una nueva regla de expresión regular.<br>
         <br>
         - <font color="#00BFFF"><b>Reemplazar</b></font><br>
         &ensp; Intentará encontrar una regla existente que tenga la misma <b>descripción</b>. <br>
-        &ensp;&ensp; - Si la encuentra, se anulará.<br>
+        &ensp;&ensp; - Si se encuentra, se sobrescribirá.<br>
         &ensp;&ensp; - Si no se encuentra, se creará una nueva regla, igual que <b>Crear</b>.<br>
         <br>
-        - <font color="#00BFFF"><b>Combinar</b></font><br>
-        &ensp;- Si existe una regla con la misma descripción, los nuevos números se combinarán con ella,<br>
+        - <font color="#00BFFF"><b>Fusionar</b></font><br>
+        &ensp;- Si existe una regla con la misma descripción, los nuevos números se fusionarán en ella,<br>
          los números duplicados se eliminarán automáticamente.<br>
         &ensp;- Si no existe, se creará una nueva regla, igual que <b>Crear</b>.<br>
         ]]>

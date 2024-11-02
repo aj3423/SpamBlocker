@@ -1,7 +1,7 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        When enabled, all calls(messages) will be allowed during this time period. Usually there are no spams at night. <br>
+        When enabled, all calls(messages) will be allowed during this time period. Usually there are no spam calls at night. <br>
         <br>
         If the start time is greater than the end time, for example, 20:00 -> 07:00, it means the period from 20:00 in the evening to 07:00 the next morning. <br>
         <br>

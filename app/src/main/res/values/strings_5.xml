@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed">Dialed</string>
+    <string name="dialed_number">Dialed Number</string>
     <string name="find_apps">Find Apps</string>
 
     <string name="confirm_delete_all_rule">Confirm to delete All Rules?</string>

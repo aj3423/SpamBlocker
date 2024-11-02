@@ -1,8 +1,8 @@
 <resources>
     <string name="crash_title">
-        Sorry, die App ist abgestürzt.\n\n
-        Bitte kopiere den folgenden Inhalt und melde das Problem auf github,
-        entferne alle vertraulichen Informationen vor dem Melden.
+        Entschuldigung, die App ist abgestürzt.\n\n
+        Bitte kopieren Sie den Inhalt unten und melden Sie dieses Problem auf github,
+        entfernen Sie alle sensiblen Informationen vor der Meldung.
     </string>
     <string-array name="short_weekdays">
         <item>So</item>
@@ -15,26 +15,25 @@
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Abweisen</item>
-        <item>Stumm</item>
-        <item>Antworten+Ablegen</item>
+        <item>Ablehnen</item>
+        <item>Stummschalten</item>
+        <item>Annehmen + Auflegen</item>
     </string-array>
 
-    <string name="show_passed">Bestanden anzeigen</string>
-    <string name="show_blocked">Blockiert anzeigen</string>
+    <string name="show_passed">Geblockte anzeigen</string>
+    <string name="show_blocked">Gelöschte anzeigen</string>
 
-    <string name="confirm_delete_all_records">Bestätigung zum Löschen aller Datensätze?</string>
-    <string name="log_sms_content">SMS-Inhalt protokollieren</string>
+    <string name="confirm_delete_all_records">Alle Datensätze löschen bestätigen?</string>
     <string name="expiry">Ablauf</string>
     <string name="days">Tage</string>
     <string name="help_history_ttl">
         <![CDATA[
             <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Die Verlaufsdatensätze werden in der Datenbank protokolliert und verfallen nach N Tagen,
-              Abgelaufene Datensätze werden automatisch gelöscht.<br>
+            &emsp; Die Verlaufsdatensätze werden in der Datenbank protokolliert und nach N Tagen ablaufen,
+              abgelaufene Datensätze werden automatisch gelöscht.<br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; Die Verlaufsaufzeichnung ist deaktiviert, nichts wird in der Datenbank protokolliert.<br>
+            &emsp; Die Verlaufsprotokollierung ist deaktiviert, nichts wird in der Datenbank protokolliert.<br>
             <br>
             <font color="#00BFFF"><b>< 0</b></font><br>
             &emsp; Die Datensätze werden protokolliert und verfallen nie.
@@ -42,47 +41,48 @@
     </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Wenn aktiviert, wird der SMS-Inhalt auch in der Datenbank protokolliert und in dieser Liste angezeigt. Er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.<br>
+        Wenn aktiviert, wird der SMS-Inhalt ebenfalls in der Datenbank protokolliert und in dieser Liste angezeigt, er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.<br>
         <br>
         - Wenn aktiviert:<br>
-        &emsp; <b>Tippen</b> zum Erweitern/Reduzieren der vollständigen Nachricht.<br>
+        &emsp; <b>Tippen</b> zum Erweitern/Einziehen der vollständigen Nachricht.<br>
         <br>
         - Wenn deaktiviert:<br>
-        &emsp; <b>Tippen</b>, um die Konversation in der Standard-App zu öffnen.
+        &emsp; <b>Tippen</b> zum Öffnen der Konversation in der Standard-App.
         ]]>
     </string>
 
     <string-array name="history_record_context_menu">
         <item>Nummer kopieren</item>
-        <item>Nummer zu neuer Regel hinzufügen</item>
+        <item>Nummer zu einer neuen Regel hinzufügen</item>
+        <item>Nummer zur Datenbank hinzufügen</item>
     </string-array>
 
     <string-array name="importance_list">
         <item>Keine</item>
-        <item>Schattieren</item>
-        <item>Statusleiste, Schattieren</item>
-        <item>Ton, Statusleiste, Schattieren</item>
-        <item>Ton, Statusleiste, Schattieren, Popup</item>
+        <item>Schatten</item>
+        <item>Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten, Heads-up</item>
     </string-array>
     <string-array name="export_type_list">
         <item>Als Json exportieren</item>
-        <item>Als komprimiert exportieren</item>
+        <item>Als Komprimiertes exportieren</item>
     </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
         <![CDATA[
-            Die Übersetzungen werden von Google AI durchgeführt, melde ein Problem auf Github, um Unterstützung für eine neue Sprache hinzuzufügen.
+            Übersetzungen werden von Google AI durchgeführt, melden Sie ein Problem auf github, um die Unterstützung einer neuen Sprache hinzuzufügen.
         ]]>
     </string>
-    <string name="enabled_for_call">Für Anrufe aktivieren</string>
+    <string name="enabled_for_call">Für Anruf aktivieren</string>
     <string name="enabled_for_sms">Für SMS aktivieren</string>
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird, ist er wahrscheinlich eher wichtig als ein Spam-Anruf. <br>
+        Zulassen, wenn der Anruf innerhalb eines bestimmten Zeitraums wiederholt wird, ist es wahrscheinlich, dass er wichtiger ist als ein Spam-Anruf. <br>
         <br>
-        Empfang von Textnachrichten von derselben Nummer wird ebenfalls gezählt, dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde, die optional ist.<br>
+        Der Empfang von Textnachrichten von der gleichen Nummer wird ebenfalls gezählt, dies hängt davon ab, ob die READ_SMS-Berechtigung erteilt wurde, die optional ist.<br>
         <br>
         Die Standardeinstellung <font color="#03DAC5"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
@@ -95,33 +95,33 @@
     <string name="help_globally_enabled">
         <![CDATA[
         Der globale Schalter, diese App funktioniert nur, wenn dieser eingeschaltet ist,
-        Schalte ihn aus, wenn du auf einen bestimmten Anruf/eine bestimmte Nachricht wartest. <br>
+        schalten Sie ihn aus, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
         <br>
-        Es kann auch über die <font color="#6ed0ff"><b>Dropdown-Schnelleinstellungen</b></font> umgeschaltet werden.<br>
+        Er kann auch über die <font color="#6ed0ff"><b>Schnelleinstellungen Dropdown</b></font> umgeschaltet werden.<br>
         <br>
-        Für SMS übernimmt diese App die SMS-Benachrichtigungen, bitte
-        <font color="#fa7f71"><b>deaktiviere die Benachrichtigungsberechtigung der Standard-SMS-App</b></font> in den Systemeinstellungen,
-        sonst gibt es doppelte Benachrichtigungen.
-        Sie filtert nur SMS-Benachrichtigungen, Spam-SMS sind weiterhin in der Standard-SMS-App vorhanden.
+        Für SMS wird diese App die SMS-Benachrichtigungen übernehmen, bitte
+        <font color="#fa7f71"><b>deaktivieren Sie die Benachrichtigungsberechtigung der Standard-SMS-App</b></font> in den Systemeinstellungen,
+        andernfalls gibt es doppelte Benachrichtigungen.
+        Es filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden.
         ]]>
     </string>
 
-    <string name="about">Info</string>
+    <string name="about">Über</string>
     <string name="version">Version</string>
-    <string name="build_time">Build-Zeit (UTC)</string>
+    <string name="build_time">Build Time (UTC)</string>
     <string name="source_code">Quellcode</string>
-    <string name="dismiss">Entlassen</string>
+    <string name="dismiss">Abbrechen</string>
     <string name="warning_running_in_work_profile">
-        Diese App funktioniert möglicherweise nicht korrekt im Arbeitsprofil, installiere sie stattdessen im Hauptprofil.
+        Diese App funktioniert möglicherweise nicht korrekt im Arbeitsprofil. Installieren Sie sie stattdessen im Hauptprofil.
     </string>
     <string-array name="import_csv_type">
-        <item>Importiere .csv als einzelne Regel</item>
+        <item>Importiere .csv als eine einzelne Regel</item>
         <item>Importiere .csv als mehrere Regeln</item>
     </string-array>
     <string name="warning_double_sms">
-        Diese App übernimmt alle SMS-Benachrichtigungen,
-        aber die Benachrichtigungsberechtigung der Standard-SMS-App ist ebenfalls aktiviert.
-        Bitte deaktiviere sie in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
+        Diese App wird alle SMS-Benachrichtigungen übernehmen,
+        aber die Benachrichtigungsberechtigung der Standard-SMS-App ist auch aktiviert,
+        deaktivieren Sie sie bitte in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
     </string>
     <string name="open_settings">Einstellungen öffnen</string>
     <string name="ignore">Ignorieren</string>

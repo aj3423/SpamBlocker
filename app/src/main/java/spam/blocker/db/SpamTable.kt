@@ -41,6 +41,10 @@ object SpamTable {
         }
     }
 
+    fun add(ctx: Context, rawNumber: String) {
+        addAll(ctx, listOf(SpamNumber(peer = rawNumber, time = System.currentTimeMillis())))
+    }
+
     @SuppressLint("Range")
     private fun ruleFromCursor(it: Cursor): SpamNumber {
         return SpamNumber(

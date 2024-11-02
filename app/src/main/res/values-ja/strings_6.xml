@@ -1,7 +1,8 @@
 <resources>
     <string name="crash_title">
         申し訳ありませんが、アプリがクラッシュしました。\n\n
-        以下の内容をコピーして、githubでこの問題を報告してください。報告する前に機密情報を削除してください。
+        以下の内容をコピーしてgithubにこの問題を報告してください。\n
+        報告する前に機密情報を取り除いてください。
     </string>
     <string-array name="short_weekdays">
         <item>日</item>
@@ -16,14 +17,13 @@
     <string-array name="block_type_list">
         <item>拒否</item>
         <item>サイレント</item>
-        <item>自動応答+切断</item>
+        <item>応答+切る</item>
     </string-array>
 
-    <string name="show_passed">パスを表示</string>
-    <string name="show_blocked">ブロックを表示</string>
+    <string name="show_passed">通過表示</string>
+    <string name="show_blocked">ブロック表示</string>
 
-    <string name="confirm_delete_all_records">すべてのレコードを削除することを確認しますか？</string>
-    <string name="log_sms_content">SMSコンテンツのログ</string>
+    <string name="confirm_delete_all_records">すべてのレコードを削除しますか？</string>
     <string name="expiry">有効期限</string>
     <string name="days">日</string>
     <string name="help_history_ttl">
@@ -32,27 +32,28 @@
             &emsp; 履歴レコードはデータベースに記録され、N日後に期限切れになります。期限切れのレコードは自動的に削除されます。<br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp;履歴の記録は無効になっています。データベースで何も記録されません。<br>
+            &emsp; 履歴ログは無効になっています。データベースには何も記録されません。<br>
             <br>
             <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp;レコードはログに記録され、期限は設定されません。
+            &emsp; レコードはログに記録され、期限切れになることはありません。
         ]]>
     </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        有効になっている場合、SMSコンテンツもデータベースに記録され、このリストに表示されます。無効になっている場合は、データベースには記録されません。<br>
+        有効にすると、SMSの内容もデータベースに記録され、このリストに表示されます。無効にすると、データベースに記録されません。<br>
         <br>
-        - 有効の場合:<br>
-        &emsp; <b>タップ</b>でメッセージを展開/折りたたみます。<br>
+        - 有効な場合:<br>
+        &emsp; <b>タップ</b>すると、完全なメッセージを展開/折りたたみます。<br>
         <br>
-        - 無効の場合:<br>
-        &emsp; <b>タップ</b>で既定のアプリで会話を開きます。
+        - 無効な場合:<br>
+        &emsp; <b>タップ</b>すると、デフォルトのアプリで会話が開きます。
         ]]>
     </string>
 
     <string-array name="history_record_context_menu">
-        <item>番号のコピー</item>
-        <item>新しいルールに番号を追加</item>
+        <item>番号をコピー</item>
+        <item>番号を新規ルールに追加</item>
+        <item>番号をデータベースに追加</item>
     </string-array>
 
     <string-array name="importance_list">
@@ -60,7 +61,7 @@
         <item>シェード</item>
         <item>ステータスバー、シェード</item>
         <item>サウンド、ステータスバー、シェード</item>
-        <item>サウンド、ステータスバー、シェード、ポップアップ表示</item>
+        <item>サウンド、ステータスバー、シェード、ヘッドアップ</item>
     </string-array>
     <string-array name="export_type_list">
         <item>Jsonとしてエクスポート</item>
@@ -70,21 +71,21 @@
     <string name="language">言語</string>
     <string name="help_language">
         <![CDATA[
-            翻訳はGoogleAIによって行われます。新しい言語サポートを追加するには、githubで問題を報告します。
+            翻訳はGoogle AIによって行われています。新しい言語のサポートを追加する場合は、githubに問題を報告してください。
         ]]>
     </string>
-    <string name="enabled_for_call">通話用に有効化</string>
-    <string name="enabled_for_sms">SMS用に有効化</string>
-    <string name="repeated_call">着信を許可</string>
+    <string name="enabled_for_call">通話で有効</string>
+    <string name="enabled_for_sms">SMSで有効</string>
+    <string name="repeated_call">繰り返し通話</string>
     <string name="help_repeated_call">
         <![CDATA[
-        一定時間内に着信を許可します。スパム着信よりも重要な着信である可能性があります。<br>
+        一定期間内に通話が繰り返された場合は、迷惑電話ではなく重要な通話である可能性があります。 <br>
         <br>
-        同じ番号からのテキストメッセージの受信もカウントされます。これは、READ_SMS権限が許可されているかどうかによって異なります。これはオプションです。<br>
+        同じ番号からのテキストメッセージもカウントされます。これは、オプションのREAD_SMS権限が付与されているかどうかによって異なります。 <br>
         <br>
-        デフォルト設定<font color="#03DAC5"><b>1/5分</b></font>とは、5分以内の2番目の着信が許可されることを意味します。<br>
+        デフォルト設定<font color="#03DAC5"><b>1 / 5分</b></font>は、5分以内の2回目の通話は許可されることを意味します。 <br>
         <br>
-        通話にのみ適用され、テキストメッセージには適用されません。<br>
+        通話にのみ適用され、<b>テキストメッセージには適用されません</b>。 <br>
         <br>
         <font color="#ea86ff"><b>優先度: 10</b></font>
         ]]>
@@ -92,33 +93,32 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        グローバルスイッチ、オンの場合のみこのアプリは動作します。
-        特定の通話/メッセージを待っている場合はオフにしてください。<br>
+        グローバルスイッチ。このアプリは、これがオンになっている場合にのみ機能します。
+        特定の通話/メッセージを待っている場合は、オフにしてください。 <br>
         <br>
-        <font color="#6ed0ff"><b>ドロップダウンクイック設定</b></font>から切り替えることもできます。<br>
+        <font color="#6ed0ff"><b>ドロップダウンクイック設定</b></font>からも切り替えることができます。 <br>
         <br>
         SMSの場合、このアプリはSMS通知を引き継ぎます。
-        システム設定で<font color="#fa7f71"><b>既定のSMSアプリの通知権限をオフにしてください</b></font>、そうしないと重複通知が発生します。
-        SMS通知のみをフィルタリングするので、迷惑SMSメッセージは既定のSMSアプリに引き続き表示されます。
+        システム設定で<font color="#fa7f71"><b>デフォルトのSMSアプリの通知権限をオフにしてください</b></font>。
+        そうしないと、通知が重複します。
+        これはSMS通知のみをフィルタリングするため、迷惑SMSメッセージはデフォルトのSMSアプリに表示されたままになります。
         ]]>
     </string>
 
-    <string name="about">バージョン情報</string>
+    <string name="about">について</string>
     <string name="version">バージョン</string>
-    <string name="build_time">ビルド時刻(UTC)</string>
+    <string name="build_time">ビルド時間 (UTC)</string>
     <string name="source_code">ソースコード</string>
     <string name="dismiss">閉じる</string>
     <string name="warning_running_in_work_profile">
-        このアプリは勤務中プロファイル内では正しく動作しない場合があります。代わりにメインプロファイルにインストールしてください。
+        このアプリは、ワークプロファイル内では正しく動作しない場合があります。代わりにメインプロファイルにインストールしてください。
     </string>
     <string-array name="import_csv_type">
-        <item>.csvを単一のルールとしてインポート</item>
-        <item>.csvを複数のルールとしてインポート</item>
+        <item>単一のルールとして.csvをインポート</item>
+        <item>複数のルールとして.csvをインポート</item>
     </string-array>
     <string name="warning_double_sms">
-        このアプリはすべてのSMS通知を引き継ぎますが、
-        既定のSMSアプリの通知権限も有効になっています。
-        重複したSMS通知を防ぐには、システム設定で無効にしてください。
+        このアプリはすべてのSMS通知を引き継ぎますが、デフォルトのSMSアプリの通知権限も有効になっているため、SMS通知の重複を防ぐためにシステム設定で無効にしてください。
     </string>
     <string name="open_settings">設定を開く</string>
     <string name="ignore">無視</string>
