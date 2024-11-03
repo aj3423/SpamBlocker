@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed_number">Aradı</string>
+    <string name="dialed_number">Aranan</string>
     <string name="find_apps">Uygulamaları Bul</string>
 
     <string name="confirm_delete_all_rule">Tüm Kuralları silmek istediğinizi onaylıyor musunuz?</string>
@@ -56,7 +56,7 @@
         <br>
         Varsayılan ayar <font color="#03DAC5"><b>3 Gün</b></font> Eğer son 3 gün içinde o numaraya arama yaptıysanız veya mesaj gönderdiyseniz, o numaradan gelen aramalara izin verileceği anlamına gelir.<br>
         <br>
-        Sadece aramalar için geçerlidir, <b>not</b> metin mesajları için. <br>
+        Sadece aramalar için geçerlidir, metin mesajları için<b>değil</b>. <br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>
