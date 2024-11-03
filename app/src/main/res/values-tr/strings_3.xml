@@ -4,7 +4,7 @@
         Bu kurallar SMS içeriğine uygulanır.<br>
         <br>
         <font color="#00BFFF"><b> - Bazı tipik Desenler</b></font>:<br>
-        &ensp; - İçeriyorsa "doğrulama": <font color="#03DAC5"><b>.*doğrulama.*</b></font><br>
+        &ensp; - "doğrulama" içeriyorsa: <font color="#03DAC5"><b>.*doğrulama.*</b></font><br>
         &ensp; - Kelimelerden herhangi birini içeriyorsa: <font color="#03DAC5"><b>.*(polis|hastane|doğrulama).*</b></font>
         ]]>
     </string>
