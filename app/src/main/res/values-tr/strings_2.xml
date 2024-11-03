@@ -12,7 +12,7 @@
               &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Hariç</b></font>: <br>
-              &emsp; Rehberde olmayan numaralar <font color="#fa7f71"><b>engellenecektir.</b></font>. <br>
+              &emsp; Rehberde olmayan numaralar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font> <br>
         <br>
         Hem aramalar hem de SMS mesajları kabul edilecektir.
@@ -42,8 +42,8 @@
                   &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Hariç</b></font>: <br>
-                  &emsp; Bu kontrolü geçemeyen aramalar <font color="#fa7f71"><b>engellenecektir.</b></font>. <br>
-                  &emsp;  \"<b>Doğrulanmamışları Dahil Et</b>\" seçeneği işaretlendiğinde, arama doğrulanmamışsa olsa bile engellenecektir. <br>
+                  &emsp; Bu kontrolü geçemeyen aramalar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
+                  &emsp;  \"<b>Doğrulanmamışları Dahil Et</b>\" seçeneği işaretlendiğinde, arama doğrulanmamış olsa bile engellenecektir. <br>
                   &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font>
         ]]>
     </string>

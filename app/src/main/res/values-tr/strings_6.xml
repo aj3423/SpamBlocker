@@ -29,7 +29,7 @@
     <string name="help_history_ttl">
         <![CDATA[
             <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; arih kayıtları veritabanına kaydedilecek ve N gün sonra süresi dolacaktır,
+            &emsp; Tarih kayıtları veritabanına kaydedilecek ve N gün sonra süresi dolacaktır,
               Süresi dolmuş kayıtlar otomatik olarak silinecektir.<br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
@@ -94,14 +94,14 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Küresel anahtar, uygulama yalnızca bu açık olduğunda çalışır,
-        belirli bir arama/mesaj beklerken kapatın. <br>
+        Küresel anahtar, uygulama yalnızca bu açık olduğunda çalışır.
+        Belirli bir arama/mesaj beklerken kapatın. <br>
         <br>
         Ayrıca <font color="#6ed0ff"><b>Açılır Hızlı Ayarlar</b></font>.<br>dan da kapaılabilir.
         <br>
-        SMS için, bu uygulama SMS bildirimlerini devralacaktır, lütfen.
+        SMS için, bu uygulama SMS bildirimlerini devralacaktır, lütfen
         sistem ayarlarından <font color="#fa7f71"><b>Varsayılan SMS uygulamasının bildirim iznini kapatın</b></font>,
-        Aksi takdirde, çift bildirim olacaktır.
+        aksi takdirde çift bildirim olacaktır.
         Sadece SMS bildirimlerini filtreler, spam SMS mesajları varsayılan SMS uygulamasında hâlâ mevcut olacaktır.
         ]]>
     </string>

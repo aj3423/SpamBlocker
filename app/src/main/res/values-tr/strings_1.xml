@@ -44,7 +44,7 @@
     <string name="quick_settings">Hızlı Ayarlar</string>
     <string name="regex_settings">Düzenli İfade Ayarları</string>
     <string name="backup"><short>Yedekleme</short></string>
-    <string name="import_">İçe Aktarma</string>
+    <string name="import_">İçe Aktar</string>
     <string name="imported">İçe Aktarıldı</string>
     <string name="export">Dışa Aktar</string>
     <string name="config_text">Yapılandırma Metni</string>
