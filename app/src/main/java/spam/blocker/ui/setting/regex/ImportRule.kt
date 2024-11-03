@@ -20,6 +20,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.util.Csv
 import spam.blocker.util.Lambda
+import spam.blocker.util.Util
 
 @Composable
 fun ImportRuleButton(
@@ -61,33 +62,44 @@ fun ImportRuleButton(
                             return@popup
                         }
 
-                        val rules = csv.rows.map {
+                        val allRules = csv.rows.map {
                             RegexRule.fromMap(it)
                         }
 
                         when (menuItemIndex) {
                             0 -> { // import as single rule
-                                val joined = rules.map {
-                                    spam.blocker.util.Util.clearNumber(it.pattern)
-                                }.filter {
-                                    it.isNotEmpty()
-                                }.joinToString ( separator = "|" )
+                                fun add(rules: List<RegexRule>, isBlacklist: Boolean) {
+                                    if (rules.isEmpty())
+                                        return
 
-                                val rule = RegexRule().apply {
-                                    pattern = "($joined)"
-                                    description = fn ?: ""
+                                    val joined = rules.map {
+                                        Util.clearNumber(it.pattern)
+                                    }.filter {
+                                        it.isNotEmpty()
+                                    }.joinToString ( separator = "|" )
+
+                                    val rule = RegexRule().apply {
+                                        pattern = "($joined)"
+                                        description = fn ?: ""
+                                        this.isBlacklist = isBlacklist
+                                    }
+                                    // 1. add to db
+                                    val table = NumberRuleTable()
+                                    table.addNewRule(ctx, rule)
+
+                                    // 2. refresh gui
+                                    vm.reloadDb(ctx)
                                 }
-                                // 1. add to db
-                                val table = NumberRuleTable()
-                                table.addNewRule(ctx, rule)
-
-                                // 2. refresh gui
-                                vm.reloadDb(ctx)
+                                // Add two different rules for whitelist/blacklist
+                                val white = allRules.filter { !it.isBlacklist }
+                                val black = allRules.filter { it.isBlacklist }
+                                add(white, false)
+                                add(black, true)
                             }
                             1 -> { // import as multi rules
                                 // 1. add to db
                                 val table = NumberRuleTable()
-                                rules.forEach {
+                                allRules.forEach {
                                     table.addNewRule(ctx, it)
                                 }
 
