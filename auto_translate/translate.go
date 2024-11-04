@@ -19,14 +19,22 @@ import (
 
 const Threads = 3 // >3 may cause "resource exhausted"
 
-// flags begin
+// -------- flags
 var lang_str string
 
 var filter_str string
+
+var move string
 var from string
 var to string
 
-// flags end
+var only string
+
+var short bool
+
+// -------- flags end
+
+const ENGLISH = ""
 
 var RES_DIR string
 
@@ -46,75 +54,100 @@ var nameMap = map[string]string{
 	`uk`:     `Ukrainian`,
 	`zh`:     `Chinese`,
 }
-var langs []string // [de, es, fr, ...]
+var LANGUAGES []string // [de, es, fr, ...]
 
 func init() {
 	for key := range nameMap {
-		langs = append(langs, key)
+		LANGUAGES = append(LANGUAGES, key)
 	}
 
 	cwd, _ := os.Getwd()
 	RES_DIR = cwd + "/../app/src/main/res"
 
-	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", langs))
+	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES))
 	flag.StringVar(&filter_str, "filter", "", "")
+	flag.StringVar(&move, "move", "", "")
+	flag.StringVar(&from, "from", "", "")
+	flag.StringVar(&to, "to", "", "")
+	flag.BoolVar(&short, "short", false, "")
+	flag.StringVar(&only, "only", "", "")
 
 	wg = sync.WaitGroup{}
 	pool, _ = ants.NewPool(Threads)
 }
 
-func check_param() []string {
+func check_lang_param() []string {
 	if len(lang_str) == 0 {
 		panic("must specify language")
 	}
 	var languages []string
 	if lang_str == "all" {
-		languages = langs
+		languages = LANGUAGES
 	} else {
 		languages = strings.Split(lang_str, ",")
 	}
 	for _, lang := range languages {
-		if !slices.Contains(langs, lang) {
+		if !slices.Contains(LANGUAGES, lang) {
 			panic("language " + lang + " not supported yet")
 		}
 	}
 	return languages
 }
 
-func usage() {
-
-	flag.Usage()
-}
-
-func check(e error) {
+func assert(e error) {
 	if e != nil {
 		panic(e)
 	}
 }
 
-func read_file(fn string) string {
-	s, err := os.ReadFile(fn)
+func read_file(fullpath string) string {
+	s, err := os.ReadFile(fullpath)
 	if err != nil {
 		return ""
 	}
 	return string(s)
 }
-
-func write_file(fn string, data string) error {
-	return os.WriteFile(fn, []byte(data), 0666)
+func read_file_lines(fullpath string) []string {
+	return strings.Split(read_file(fullpath), "\n")
 }
 
-func translate_1_file(lang string, fn string) error {
+func write_file(fullpath string, data string) error {
+	return os.WriteFile(fullpath, []byte(data), 0666)
+}
 
-	src_file := fmt.Sprintf("%s/values/%s", RES_DIR, fn)
-	dest_file := fmt.Sprintf("%s/values-%s/%s", RES_DIR, lang, fn)
+func read_xml(lang string, xml_fn string) string {
+	src_file := lang_xmls_dir(lang) + "/" + xml_fn
 
-	fmt.Printf("processing: %s -> %s\n", filepath.Base(src_file), lang)
+	content := read_file(src_file)
+	content = strings.ReplaceAll(content, `\'`, `'`)
+	content = strings.ReplaceAll(content, `\"`, `"`)
+	return strings.TrimSpace(content)
+}
 
-	to_translate := read_file(src_file)
-	to_translate = strings.ReplaceAll(to_translate, `\'`, `'`)
-	to_translate = strings.ReplaceAll(to_translate, `\"`, `"`)
+func lang_xmls_dir(lang string) string {
+	if lang == "" {
+		return RES_DIR + "/values"
+	} else {
+		return RES_DIR + "/values-" + lang
+	}
+}
+func write_xml(lang string, xml_fn string, content string) error {
+	escaped := strings.ReplaceAll(content, "'", "\\'")
+	return write_file(lang_xmls_dir(lang)+"/"+xml_fn, escaped)
+}
+func clear_lang_xmls(lang string) {
+	dir := lang_xmls_dir(lang)
 
+	fmt.Printf("clearing: %s\n\n", dir)
+	os.RemoveAll(dir)
+	os.Mkdir(dir, os.ModePerm)
+}
+
+func translate_text(lang string, content_to_translate string) (string, error) {
+
+	if content_to_translate == "" {
+		return "", nil
+	}
 	GeminiToken := os.Getenv("GeminiToken")
 
 	prompt := fmt.Sprintf(
@@ -131,12 +164,14 @@ func translate_1_file(lang string, fn string) error {
 
 			"show me the result only:\n"+
 			"%s",
-		lang, nameMap[lang], to_translate)
+		lang, nameMap[lang], content_to_translate)
 
 	ctx := context.Background()
 
 	client, err := genai.NewClient(ctx, option.WithAPIKey(GeminiToken))
-	check(err)
+	if err != nil {
+		return "", err
+	}
 	defer client.Close()
 
 	model := client.GenerativeModel("gemini-1.5-flash")
@@ -146,7 +181,9 @@ func translate_1_file(lang string, fn string) error {
 	// model.SetMaxOutputTokens(8192)
 
 	resp, err := model.GenerateContent(ctx, genai.Text(prompt))
-	check(err)
+	if err != nil {
+		return "", err
+	}
 
 	fmt.Println("  - ",
 		"TotalTokenCount", resp.UsageMetadata.TotalTokenCount,
@@ -164,7 +201,7 @@ func translate_1_file(lang string, fn string) error {
 	for _, c := range resp.Candidates {
 		if c.Content == nil {
 			fmt.Println(c)
-			return errors.New("no c.Content returned")
+			return "", errors.New("no c.Content returned")
 		}
 		for _, p := range c.Content.Parts {
 			fmt.Fprintf(sb, "%v", p)
@@ -172,34 +209,24 @@ func translate_1_file(lang string, fn string) error {
 	}
 
 	// French has lots of '
-	cleared := strings.ReplaceAll(sb.String(), "'", "\\'")
-	if !strings.HasPrefix(cleared, "<resources>") {
-		return Retryable(errors.New("malformed result"))
+	ret := sb.String()
+	if !strings.HasPrefix(ret, "<resources>") {
+		return "", Retryable(errors.New("malformed result"))
 	}
-	write_file(dest_file, cleared)
-	return nil
+	return ret, nil
 }
 
-func translate_lang(lang string) {
-	path := RES_DIR + "/values-" + lang
-
-	if filter_str == "" {
-		fmt.Printf("clearing: %s\n\n", path)
-		os.RemoveAll(path)
-		os.Mkdir(path, os.ModePerm)
-	}
+// Iterate through all xml files for a particular language
+func walk_lang_xmls(lang string, operation func(string) error) {
 
 	filepath.Walk(
-		RES_DIR+"/values",
+		lang_xmls_dir(lang),
 
 		func(path string, fi os.FileInfo, err error) error {
 			if err != nil {
 				return err
 			}
 			if fi.IsDir() || !strings.HasPrefix(fi.Name(), "strings_") {
-				return nil
-			}
-			if strings.Contains(fi.Name(), "no_translate") {
 				return nil
 			}
 
@@ -212,15 +239,9 @@ func translate_lang(lang string) {
 			wg.Add(1)
 			pool.Submit(func() {
 				e := Retry(5, func(attempt int) error {
-					err := translate_1_file(lang, fi.Name())
-					if IsRetryable(err) {
-						color.HiWhite("retry %s", color.HiYellowString(fi.Name()))
-					}
-					if err == nil {
-						color.HiWhite("done %s %s", lang, color.HiGreenString(fi.Name()))
-					}
-					return err
+					return operation(fi.Name())
 				})
+
 				if e != nil {
 					color.HiWhite("translate %s failed", color.HiRedString(fi.Name()))
 				}
@@ -229,16 +250,132 @@ func translate_lang(lang string) {
 			})
 			return nil
 		})
+}
 
+func split(content string) []string {
+	return strings.Split(content, "\n")
+}
+func join(lines []string) string {
+	return strings.Join(lines, "\n")
+}
+
+func translate_1_xml(lang string, xml_fn string) error {
+	content := read_xml(ENGLISH, xml_fn)
+	fmt.Printf("translating: %s -> %s\n", xml_fn, lang)
+	translated, e := translate_text(lang, content)
+
+	if IsRetryable(e) {
+		color.HiWhite("retry %s, error: %s", color.HiYellowString(xml_fn), e.Error())
+	}
+	if e == nil {
+		color.HiWhite("done %s %s", lang, color.HiGreenString(xml_fn))
+		if only == "" { // replace entire xml
+			write_xml(lang, xml_fn, translated)
+		} else { // only replace the specific tag
+			found1, start1, end1, matched_lines1 := extract_tag(split(content), only)
+			found2, start2, end2, matched_lines2 := extract_tag(split(translated), only)
+			if !found1 || !found2 {
+				panic(fmt.Sprintf("tag: <%s> not foun in lang: <%s>, xml: <%s>", only, lang, xml_fn))
+			}
+		}
+	}
+	return e
+}
+func lang_translator(lang string) func(string) error {
+	return func(xml_fn string) error {
+		return translate_1_xml(lang, xml_fn)
+	}
+}
+
+// return:
+//
+//	found or not, start line, end line, tag lines
+//
+// 3 types of tag:
+//
+//	<string> </string>
+//	<plurals> </plurals>
+//	<string-array> </string-array>
+func extract_tag(lines []string, tag string) (bool, int, int, []string) {
+	start := -1
+	end := -1
+	var close_tag string
+
+	for i := 0; i < len(lines); i++ {
+		if strings.Contains(lines[i], `name="`+tag+`"`) {
+			start = i
+			if strings.Contains(lines[i], "<string name=") {
+				close_tag = "</string>"
+			} else if strings.Contains(lines[i], "<plurals name=") {
+				close_tag = "</plurals>"
+			} else if strings.Contains(lines[i], "<string-array name=") {
+				close_tag = "</string-array>"
+			} else {
+				panic(fmt.Sprintf("unknown tag: %s", lines[i]))
+			}
+		}
+		if start != -1 { // look for end
+			if strings.Contains(lines[i], close_tag) {
+				end = i + 1
+				return true, start, end, lines[start:end]
+			}
+		}
+	}
+	return false, start, end, nil
+}
+
+func insert_lines_at(dest []string, at int, to_insert []string) []string {
+	return slices.Concat(
+		slices.Concat(dest[:at], to_insert),
+		dest[at:],
+	)
+}
+
+// -move recent_apps -to strings_2.xml
+func move_tag(tag string, lang string, to_xml string) func(string) error {
+	return func(xml_fn string) error {
+
+		src_lines := split(read_xml(lang, xml_fn))
+		found, start, end, matched_lines := extract_tag(src_lines, tag)
+		if found {
+			// 1. add to dest xml
+			dest_lines := split(read_xml(lang, to_xml))
+			penultimate := len(dest_lines) - 1
+			// insert the matched_lines at the line before last line
+			new_lines := insert_lines_at(dest_lines, penultimate, matched_lines)
+
+			write_xml(lang, to_xml, join(new_lines))
+
+			// 2. remove from source xml
+			cleared := append(src_lines[:start], src_lines[end:]...)
+			write_xml(lang, xml_fn, join(cleared))
+		}
+
+		return nil
+	}
 }
 
 func main() {
 	flag.Parse()
 
-	languages := check_param()
-
-	for _, lang := range languages {
-		translate_lang(lang)
+	if move != "" { // -move recent_apps -to strings_2.xml
+		if to == "" {
+			color.HiRed("usage: go run . -move %s -to strings_x.xml", move)
+			return
+		}
+		languages := append(LANGUAGES, "")
+		for _, lang := range languages {
+			walk_lang_xmls(lang, move_tag(move, lang, to))
+		}
+	} else { // translate
+		languages := check_lang_param()
+		for _, lang := range languages {
+			if filter_str == "" {
+				clear_lang_xmls(lang)
+			}
+			walk_lang_xmls(ENGLISH, lang_translator(lang))
+		}
 	}
+
 	wg.Wait()
 }
