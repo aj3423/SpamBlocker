@@ -2,8 +2,7 @@
     <string name="yesterday">Yesterday</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Decline calls during online video meetings.<br>
-        <br>
+        Decline calls during online video meetings.<br> <br>
         It checks whether any selected app is running a <b>foreground service</b>,
         which is commonly used by video conferencing apps to keep the connection alive.<br>
         <br>
@@ -30,5 +29,22 @@
         <item quantity="other">%d Rows</item>
     </plurals>
 
-
+    <string name="label_max_none_scroll_items">Scrollbar Threshold</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        The maximum number of items that can be displayed in the list before a scrollbar appears.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Scroll Height</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        When the scrollbar appears, this value represents the list height as a percentage of the screen.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Max Regex Lines</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        The maximum display lines for the regex text, remaining text will be truncated and followed by an ellipsis.
+        ]]>
+    </string>
 </resources>

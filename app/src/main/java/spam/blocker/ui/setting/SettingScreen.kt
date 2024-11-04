@@ -233,7 +233,7 @@ fun SettingLabel(
 
 @Composable
 fun LabeledRow(
-    label: @Composable () -> Unit,
+    label: (@Composable () -> Unit)?,
 
     // optional
     modifier: Modifier = Modifier,
@@ -244,12 +244,11 @@ fun LabeledRow(
     SettingRow(
         modifier = modifier.padding(horizontal = paddingHorizontal.dp),
     ) {
-        Row(
-            modifier = M.wrapContentWidth(),
-            verticalAlignment = Alignment.CenterVertically
+        RowVCenter(
+            modifier = M.wrapContentWidth()
         ) {
             // label
-            label()
+            label?.let { it() }
 
             // balloon tooltip
             if (helpTooltipId != null)
@@ -266,6 +265,7 @@ fun LabeledRow(
     }
 }
 
+// This is used in SettingScreen
 @Composable
 fun LabeledRow(
     labelId: Int,
@@ -286,3 +286,4 @@ fun LabeledRow(
         content = content,
     )
 }
+

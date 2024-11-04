@@ -86,12 +86,18 @@ class RegexOptions {
     var numberCollapsed = false
     var contentCollapsed = false
     var quickCopyCollapsed = false
+    var maxNoneScrollRows = 10
+    var maxRegexRows = 3
+    var listHeightPercentage = 60
 
     fun load(ctx: Context) {
         val spf = spam.blocker.util.SharedPref.RegexOptions(ctx)
         numberCollapsed = spf.isNumberCollapsed()
         contentCollapsed = spf.isContentCollapsed()
         quickCopyCollapsed = spf.isQuickCopyCollapsed()
+        maxNoneScrollRows = spf.getMaxNoneScrollRows()
+        maxRegexRows = spf.getMaxRegexRows()
+        listHeightPercentage = spf.getRuleListHeightPercentage()
     }
 
     fun apply(ctx: Context) {
@@ -99,6 +105,9 @@ class RegexOptions {
             setNumberCollapsed(numberCollapsed)
             setContentCollapsed(contentCollapsed)
             setQuickCopyCollapsed(quickCopyCollapsed)
+            setMaxNoneScrollRows(maxNoneScrollRows)
+            setMaxRegexRows(maxRegexRows)
+            setRuleListHeightPercentage(listHeightPercentage)
         }
     }
 }

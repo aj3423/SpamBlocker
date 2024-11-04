@@ -2,17 +2,16 @@
     <string name="yesterday">Вчера</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Отклонять звонки во время онлайн-видеоконференций.<br>
+        Отклонять звонки во время онлайн-видеоконференций.<br> <br>
+        Проверяет, работает ли какое-либо выбранное приложение в качестве <b>фонового сервиса</b>,
+        который обычно используется приложениями для видеоконференций, чтобы поддерживать соединение активным.<br>
         <br>
-        Проверяет, запущена ли выбранная вами программа в <b>фоновом режиме</b>,
-        что обычно используется видеоконференц-приложениями для поддержания соединения.<br>
+        Это относится как к звонкам, так и к сообщениям.<br>
         <br>
-        Применимо как к звонкам, так и к сообщениям.<br>
-        <br>
-        <font color="#ea86ff"><b>Стандартный приоритет: 20</b></font>
+        <font color="#ea86ff"><b>Приоритет по умолчанию: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Режим собраний</string>
+    <string name="in_meeting">Режим совещания</string>
     <string name="search">Поиск</string>
     <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
@@ -20,7 +19,7 @@
         Один атрибут на строку, например:
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Лог SMS</string>
+    <string name="log_sms_content_to_db">Логирование SMS</string>
     <string name="initial_row_count">Начальное количество строк</string>
     <plurals name="rows">
         <item quantity="one">%d Строка</item>
@@ -30,5 +29,23 @@
         <item quantity="other">%d Строк</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">Порог полосы прокрутки</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Максимальное количество элементов, которые могут быть отображены в списке, прежде чем появится полоса прокрутки.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Высота прокрутки</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Когда появляется полоса прокрутки, это значение представляет высоту списка в процентах от экрана.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Макс. строк Regex</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Максимальное количество строк, отображаемых для текста Regex, оставшийся текст будет усечен и дополнен многоточием.
+        ]]>
+    </string>
 
 </resources>

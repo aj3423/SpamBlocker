@@ -92,7 +92,7 @@
     </string>
     <string name="help_action_regex_extract">
         <![CDATA[
-        Extract a <u>list of numbers.</u> from the input <u>content bytes</u> using this regex.
+        Extract a <u>list of numbers</u> from <u>content bytes</u> using regex.
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">

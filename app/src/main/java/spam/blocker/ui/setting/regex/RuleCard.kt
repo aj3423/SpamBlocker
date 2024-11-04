@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -27,6 +28,7 @@ import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
+import spam.blocker.util.SharedPref.RegexOptions
 import spam.blocker.util.hasFlag
 
 @Composable
@@ -36,13 +38,18 @@ fun RuleCard(
     modifier: Modifier = Modifier,
 ) {
     val C = LocalPalette.current
+    val ctx = LocalContext.current
+    val spf = RegexOptions(ctx)
 
     OutlineCard {
         Row(
             modifier = modifier.padding(horizontal = 10.dp, vertical = 8.dp)
         ) {
             // Regex and Description
-            Column(M.weight(1f).padding(end = 4.dp), verticalArrangement = Arrangement.Center) {
+            Column(
+                M
+                    .weight(1f)
+                    .padding(end = 4.dp), verticalArrangement = Arrangement.Center) {
                 // Regex
                 Text(
                     text = rule.colorfulRegexStr(
@@ -53,7 +60,7 @@ fun RuleCard(
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
                     modifier = M.padding(top = 2.dp),
-                    maxLines = 10,
+                    maxLines = spf.getMaxRegexRows(),
                     overflow = TextOverflow.Ellipsis
                 )
                 // Description
@@ -61,7 +68,7 @@ fun RuleCard(
                     Text(
                         text = rule.description,
                         fontSize = 18.sp,
-                        maxLines = 1,
+                        maxLines = 10,
                         overflow = TextOverflow.Ellipsis,
                         color = C.textGrey,
                         modifier = M.padding(start = 10.dp),
@@ -126,8 +133,9 @@ fun RuleCard(
                     }
 
                     // [Priority]
+                    ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))
                     Text(
-                        text = "${Str(R.string.priority)}: ${rule.priority}",
+                        text = "${rule.priority}",
                         color = LightMagenta,
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,

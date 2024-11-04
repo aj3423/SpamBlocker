@@ -52,6 +52,10 @@ object Def {
     const val SETTING_CONTENT_RULE_COLLAPSED = "content_rule_collapsed"
     const val SETTING_QUICK_COPY_RULE_COLLAPSED = "quick_copy_rule_collapsed"
     const val SETTING_BOT_LIST_COLLAPSED = "bot_list_collapsed"
+    const val SETTING_RULE_LIST_MAX_NONE_SCROLL_ROWS = "rule_list_max_none_scroll_rows"
+    const val SETTING_RULE_LIST_HEIGHT_PERCENTAGE = "rule_list_height_percentage"
+    const val SETTING_RULE_MAX_REGEX_ROWS = "rule_max_regex_rows"
+    const val SETTING_RULE_MAX_DESC_ROWS = "rule_max_description_rows"
 
 
     const val DEFAULT_SPAM_DB_TTL = 180 // days

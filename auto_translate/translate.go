@@ -19,9 +19,14 @@ import (
 
 const Threads = 3 // >3 may cause "resource exhausted"
 
+// flags begin
 var lang_str string
 
 var filter_str string
+var from string
+var to string
+
+// flags end
 
 var RES_DIR string
 

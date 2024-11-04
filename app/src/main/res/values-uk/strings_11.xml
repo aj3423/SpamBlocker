@@ -2,19 +2,18 @@
     <string name="yesterday">Вчора</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Відхиляти дзвінки під час онлайн-відеоконференцій.<br>
+        Відхиляти дзвінки під час онлайн-відеоконференцій.<br> <br>
+        Перевіряє, чи запущено будь-який обраний додаток як <b>службу переднього плану</b>,
+        що часто використовується відеоконференційними програмами для підтримки з’єднання.<br>
         <br>
-        Перевіряє, чи запущений будь-який обраний додаток як <b>фоновий сервіс</b>,
-        що зазвичай використовується відеоконференц-додатками для підтримки з’єднання.<br>
-        <br>
-        Діє як для дзвінків, так і для повідомлень.<br>
+        Це стосується як дзвінків, так і повідомлень.<br>
         <br>
         <font color="#ea86ff"><b>За замовчуванням пріоритет: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Режим Зустрічі</string>
+    <string name="in_meeting">Режим зустрічі</string>
     <string name="search">Пошук</string>
-    <string name="http_header">HTTP-заголовок</string>
+    <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
         <![CDATA[
         Один атрибут на рядок, наприклад:
@@ -23,12 +22,30 @@
     <string name="log_sms_content_to_db">Зберегти SMS</string>
     <string name="initial_row_count">Початкова кількість рядків</string>
     <plurals name="rows">
-        <item quantity="one">%d Рядок</item>
-        <item quantity="two">%d Рядки</item>
-        <item quantity="few">%d Рядки</item>
-        <item quantity="many">%d Рядки</item>
-        <item quantity="other">%d Рядки</item>
+        <item quantity="one">%d рядок</item>
+        <item quantity="two">%d рядки</item>
+        <item quantity="few">%d рядки</item>
+        <item quantity="many">%d рядки</item>
+        <item quantity="other">%d рядків</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">Порогове значення смуги прокрутки</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Максимальна кількість елементів, які можна відобразити в списку, перш ніж з’явиться смуга прокрутки.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Висота прокрутки</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Коли з’являється смуга прокрутки, це значення представляє висоту списку як відсоток екрана.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Макс. рядки регулярних виразів</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Максимальна кількість рядків для відображення тексту регулярних виразів, решта тексту буде обрізана та закінчуватиметься багатокрапкою.
+        ]]>
+    </string>
 
 </resources>

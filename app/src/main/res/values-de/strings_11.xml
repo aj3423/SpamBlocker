@@ -2,19 +2,18 @@
     <string name="yesterday">Gestern</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Anrufe während Online-Videokonferenzen ablehnen.<br>
-        <br>
+        Anrufe während Online-Videokonferenzen ablehnen.<br> <br>
         Es prüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
-        der üblicherweise von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
+        der von Videokonferenz-Apps häufig verwendet wird, um die Verbindung aktiv zu halten.<br>
         <br>
         Dies gilt sowohl für Anrufe als auch für Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Besprechungsmodus</string>
+    <string name="in_meeting">Meeting-Modus</string>
     <string name="search">Suchen</string>
-    <string name="http_header">HTTP-Header</string>
+    <string name="http_header">Http-Header</string>
     <string name="help_http_header">
         <![CDATA[
         Ein Attribut pro Zeile, zum Beispiel:
@@ -30,5 +29,23 @@
         <item quantity="other">%d Zeilen</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">Scrollbalken-Schwellenwert</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Die maximale Anzahl von Elementen, die in der Liste angezeigt werden können, bevor eine Scrollleiste angezeigt wird.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Scrollhöhe</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Wenn die Scrollleiste angezeigt wird, stellt dieser Wert die Listenhöhe als Prozentsatz des Bildschirms dar.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Max. Regex-Zeilen</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Die maximale Anzahl an angezeigten Zeilen für den Regex-Text. Der restliche Text wird abgeschnitten und mit einer Auslassungspunkten versehen.
+        ]]>
+    </string>
 
 </resources>

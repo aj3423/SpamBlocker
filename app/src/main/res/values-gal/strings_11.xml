@@ -2,26 +2,25 @@
     <string name="yesterday">Onte</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Rechaza chamadas durante as videoconferencias en liña.<br>
+        Rechaza chamadas durante as reunións de vídeo en liña.<br> <br>
+        Comproba se calquera aplicación seleccionada está a executar un <b>servizo en primeiro plano</b>,
+        o cal é usado normalmente polas aplicacións de videoconferencia para manter a conexión viva.<br>
         <br>
-        Comproba se algunha aplicación seleccionada está a executar un <b>servizo en primeiro plano</b>,
-        o que é comúnmente usado polas aplicacións de videoconferencia para manter a conexión activa.<br>
-        <br>
-        Aplicarase tanto a chamadas como a mensaxes.<br>
+        Aplicase a chamadas e mensaxes.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade predeterminada: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">Modo Reunión</string>
     <string name="search">Buscar</string>
-    <string name="http_header">Cabeceira HTTP</string>
+    <string name="http_header">Cabeceira Http</string>
     <string name="help_http_header">
         <![CDATA[
         Un atributo por liña, por exemplo:
         ]]>
     </string>
     <string name="log_sms_content_to_db">Rexistro SMS</string>
-    <string name="initial_row_count">Contador de filas inicial</string>
+    <string name="initial_row_count">Contador de Filas Inicial</string>
     <plurals name="rows">
         <item quantity="one">%d Fila</item>
         <item quantity="two">%d Filas</item>
@@ -30,5 +29,23 @@
         <item quantity="other">%d Filas</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">Umbral da Barra de Desprazamento</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        O número máximo de elementos que se poden mostrar na lista antes de que apareza unha barra de desprazamento.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Altura do Desprazamento</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Cando aparece a barra de desprazamento, este valor representa a altura da lista como un porcentaxe da pantalla.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Máximo de Liñas Regex</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        As liñas de visualización máximas para o texto regex, o texto restante truncarase e seguirase por unha elipse.
+        ]]>
+    </string>
 
 </resources>

@@ -112,6 +112,13 @@ class RegexOptions(ctx: Context) : SharedPref(ctx) {
     fun setContentCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_CONTENT_RULE_COLLAPSED, enabled) }
     fun isQuickCopyCollapsed(): Boolean { return readBoolean(Def.SETTING_QUICK_COPY_RULE_COLLAPSED, false) }
     fun setQuickCopyCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_QUICK_COPY_RULE_COLLAPSED, enabled) }
+
+    fun getMaxNoneScrollRows(): Int { return readInt(Def.SETTING_RULE_LIST_MAX_NONE_SCROLL_ROWS, 10) }
+    fun setMaxNoneScrollRows(rows: Int) { writeInt(Def.SETTING_RULE_LIST_MAX_NONE_SCROLL_ROWS, rows) }
+    fun getMaxRegexRows(): Int { return readInt(Def.SETTING_RULE_MAX_REGEX_ROWS, 3) }
+    fun setMaxRegexRows(rows: Int) { writeInt(Def.SETTING_RULE_MAX_REGEX_ROWS, rows) }
+    fun getRuleListHeightPercentage(): Int { return readInt(Def.SETTING_RULE_LIST_HEIGHT_PERCENTAGE, 60) }
+    fun setRuleListHeightPercentage(percentage: Int) { writeInt(Def.SETTING_RULE_LIST_HEIGHT_PERCENTAGE, percentage) }
 }
 class BotOptions(ctx: Context) : SharedPref(ctx) {
     fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_BOT_LIST_COLLAPSED, false) }

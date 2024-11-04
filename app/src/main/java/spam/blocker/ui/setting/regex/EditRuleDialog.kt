@@ -65,6 +65,7 @@ import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Lambda1
 import spam.blocker.util.NormalPermission
+import spam.blocker.util.SharedPref.RegexOptions
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.addFlag
@@ -381,7 +382,7 @@ fun RuleEditDialog(
                     },
                     onValueChange = { description = it },
                     leadingIconId = R.drawable.ic_note,
-                    maxLines = 1,
+                    maxLines = 10,
                 )
 
                 // Priority

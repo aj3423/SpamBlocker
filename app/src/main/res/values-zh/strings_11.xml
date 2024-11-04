@@ -2,10 +2,9 @@
     <string name="yesterday">昨天</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        在进行在线视频会议时拒绝来电。<br>
-        <br>
-        它会检查您选择应用是否正在运行<b>前台服务</b>，
-        这通常被视频会议应用用来保持连接。<br>
+        在在线视频会议期间拒绝来电。<br> <br>
+        它检查是否任何选定的应用程序正在运行<b>前台服务</b>，
+        这通常由视频会议应用程序使用以保持连接活动。<br>
         <br>
         它适用于来电和短信。<br>
         <br>
@@ -14,13 +13,13 @@
     </string>
     <string name="in_meeting">会议模式</string>
     <string name="search">搜索</string>
-    <string name="http_header">HTTP 头部</string>
+    <string name="http_header">Http 头</string>
     <string name="help_http_header">
         <![CDATA[
         每行一个属性，例如：
         ]]>
     </string>
-    <string name="log_sms_content_to_db">记录短信</string>
+    <string name="log_sms_content_to_db">日志短信</string>
     <string name="initial_row_count">初始行数</string>
     <plurals name="rows">
         <item quantity="one">%d 行</item>
@@ -30,5 +29,23 @@
         <item quantity="other">%d 行</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">滚动条阈值</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        在出现滚动条之前，列表中可以显示的最大项目数。
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">滚动高度</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        当滚动条出现时，此值表示列表高度占屏幕的百分比。
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">最大正则表达式行</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        正则表达式文本的最大显示行数，其余文本将被截断，并在末尾添加省略号。
+        ]]>
+    </string>
 
 </resources>

@@ -2,13 +2,12 @@
     <string name="yesterday">昨日</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        オンラインビデオ会議中に電話を拒否します。<br>
-        <br>
-        選択したアプリが<b>フォアグラウンドサービス</b>を実行しているかどうかを確認します。これは、ビデオ会議アプリで接続を維持するために一般的に使用されます。<br>
+        オンラインビデオ会議中に電話を拒否します。<br> <br>
+        ビデオ会議アプリが接続を維持するために一般的に使用される<b>フォアグラウンドサービス</b>が選択したアプリで実行されているかどうかを確認します。<br>
         <br>
         電話とメッセージの両方に適用されます。<br>
         <br>
-        <font color="#ea86ff"><b>デフォルトの優先順位：20</b></font>
+        <font color="#ea86ff"><b>デフォルトの優先度: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">会議モード</string>
@@ -16,10 +15,10 @@
     <string name="http_header">HTTPヘッダー</string>
     <string name="help_http_header">
         <![CDATA[
-        1行に1つの属性、例：
+        1行に1つの属性、例:
         ]]>
     </string>
-    <string name="log_sms_content_to_db">SMSをログに記録する</string>
+    <string name="log_sms_content_to_db">SMSログ</string>
     <string name="initial_row_count">初期行数</string>
     <plurals name="rows">
         <item quantity="one">%d 行</item>
@@ -29,5 +28,23 @@
         <item quantity="other">%d 行</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">スクロールバーのしきい値</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        スクロールバーが表示される前にリストに表示できるアイテムの最大数。
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">スクロール高さ</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        スクロールバーが表示されると、この値はリストの高さを画面のパーセンテージで表します。
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">正規表現の最大行数</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        正規表現テキストの最大表示行数。残りのテキストは切り捨てられ、省略記号が続きます。
+        ]]>
+    </string>
 
 </resources>

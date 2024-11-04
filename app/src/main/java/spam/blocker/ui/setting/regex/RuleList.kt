@@ -11,13 +11,17 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -34,21 +38,24 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LazyScrollbar
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
+import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.SharedPref.RegexOptions
 
 
 // From:
@@ -67,12 +74,80 @@ class DisableNestedScrolling : NestedScrollConnection {
 }
 
 @Composable
+fun RuleSettingsPopup(trigger: MutableState<Boolean>) {
+    PopupDialog(
+        trigger = trigger,
+    ) {
+        val ctx = LocalContext.current
+        val spf = RegexOptions(ctx)
+
+        // max none scroll items: []
+        LabeledRow(
+            label = null,
+            helpTooltipId = R.string.help_max_none_scroll_items
+        ) {
+            var max by remember { mutableIntStateOf(spf.getMaxNoneScrollRows()) }
+            NumberInputBox(
+                intValue = max,
+                label = { Text(Str(R.string.label_max_none_scroll_items)) },
+                onValueChange = { newVal, hasError ->
+                    if (!hasError) {
+                        max = newVal!!
+                        spf.setMaxNoneScrollRows(max)
+                    }
+                }
+            )
+        }
+
+        // max scroll height: []
+        LabeledRow(
+            label = null,
+            helpTooltipId = R.string.help_max_scroll_height
+        ) {
+            var height by remember { mutableIntStateOf(spf.getRuleListHeightPercentage()) }
+            NumberInputBox(
+                intValue = height,
+                label = { Text(Str(R.string.label_max_scroll_height)) },
+                onValueChange = { newVal, hasError ->
+                    if (!hasError) {
+                        height = newVal!!
+                        spf.setRuleListHeightPercentage(height)
+                    }
+                }
+            )
+        }
+
+        // max regex lines: []
+        LabeledRow(
+            label = null,
+            helpTooltipId = R.string.help_max_regex_lines
+        ) {
+            var rows by remember { mutableIntStateOf(spf.getMaxRegexRows()) }
+            NumberInputBox(
+                intValue = rows,
+                label = { Text(Str(R.string.label_max_regex_lines)) },
+                onValueChange = { newVal, hasError ->
+                    if (!hasError) {
+                        rows = newVal!!
+                        spf.setMaxRegexRows(rows)
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Composable
 fun RuleList(
     vm: RuleViewModel,
 ) {
     val forType = vm.forType
     val ctx = LocalContext.current
+    val spf = RegexOptions(ctx)
     val coroutine = rememberCoroutineScope()
+
+    val ruleSettingsTrigger = rememberSaveable { mutableStateOf(false) }
+    RuleSettingsPopup(trigger = ruleSettingsTrigger)
 
     val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
     val clickedRule = remember { mutableStateOf(RegexRule()) }
@@ -170,7 +245,12 @@ fun RuleList(
         }
     )
 
-    val icons = listOf(R.drawable.ic_find, R.drawable.ic_copy, R.drawable.ic_recycle_bin, R.drawable.ic_recycle_bin)
+    val icons = listOf(
+        R.drawable.ic_find,
+        R.drawable.ic_copy,
+        R.drawable.ic_recycle_bin,
+        R.drawable.ic_recycle_bin
+    )
     val contextMenuItems =
         ctx.resources.getStringArray(R.array.rule_dropdown_menu).mapIndexed { menuIndex, label ->
             LabelItem(
@@ -201,33 +281,42 @@ fun RuleList(
                         confirmDeleteAll.value = true
                     }
                 }
-            }
-        }
+            } as IMenuItem
+        }.toMutableList()
+    contextMenuItems += DividerItem()
+    contextMenuItems += LabelItem(
+        label = Str(R.string.setting),
+        icon = { GreyIcon20(R.drawable.ic_settings) }
+    ) {
+        ruleSettingsTrigger.value = true
+    }
 
-    // Nested LazyColumn is forbidden in jetpack compose, to workaround this:
-    // when < 20 rules:
+    // Nested scrollable Column/LazyColumn is forbidden in jetpack compose, to workaround this:
+    // when < 10 rules:
     //   show as normal Column
     // else
-    //   show as LazyColumn with fixed height: 60% height of the screen
-    if (vm.rules.size > 20) {
-        val density = LocalDensity.current
+    //   show as LazyColumn
+    val useLazy = vm.rules.size > spf.getMaxNoneScrollRows()
+    if (useLazy) { // LazyColumn
+        val lazyState = rememberLazyListState()
 
         // Calculate x% of the screen width
-        val halfScreenDp = remember {
-            with(density) {
+        val percentage = spf.getRuleListHeightPercentage()
+        val density = LocalDensity.current
+        val lazyHeight = remember {
+            density.run {
                 val screenHeightPx = ctx.resources.displayMetrics.heightPixels
-                screenHeightPx.toDp().value * 0.6
+                screenHeightPx.toDp().value * percentage / 100
             }
         }
-        val lazyState = rememberLazyListState()
 
         LazyScrollbar(
             state = lazyState,
-            modifier = M.height(halfScreenDp.dp),
+            modifier = M.height(lazyHeight.dp),
         ) {
             LazyColumn(
                 state = lazyState,
-                verticalArrangement = Arrangement.spacedBy(4.dp)
+                verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 itemsIndexed(
                     items = vm.rules,
@@ -240,7 +329,7 @@ fun RuleList(
                 }
             }
         }
-    } else {
+    } else { // normal column
         Column(
             modifier = M.nestedScroll(DisableNestedScrolling()),
             verticalArrangement = Arrangement.spacedBy(4.dp)

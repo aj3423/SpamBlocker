@@ -2,14 +2,13 @@
     <string name="yesterday">Ontem</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Recusar chamadas durante videoconferências online.<br>
-        <br>
+        Recusar chamadas durante reuniões online de vídeo.<br> <br>
         Verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
-        que é comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
+        comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
         <br>
         Aplica-se a chamadas e mensagens.<br>
         <br>
-        <font color="#ea86ff"><b>Prioridade padrão: 20</b></font>
+        <font color="#ea86ff"><b>Prioridade Padrão: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">Modo Reunião</string>
@@ -30,5 +29,23 @@
         <item quantity="other">%d Linhas</item>
     </plurals>
 
+    <string name="label_max_none_scroll_items">Limiar da Barra de Rolagem</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        O número máximo de itens que podem ser exibidos na lista antes que uma barra de rolagem apareça.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Altura de Rolagem</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Quando a barra de rolagem aparece, esse valor representa a altura da lista como uma porcentagem da tela.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Linhas Max Regex</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        As linhas de exibição máximas para o texto regex, o texto restante será truncado e seguido por reticências.
+        ]]>
+    </string>
 
 </resources>
