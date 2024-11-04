@@ -4,11 +4,11 @@
         <![CDATA[
         Отклонять звонки во время онлайн-видеоконференций.<br> <br>
         Проверяет, работает ли какое-либо выбранное приложение в качестве <b>фонового сервиса</b>,
-        который обычно используется приложениями для видеоконференций, чтобы поддерживать соединение активным.<br>
+        который обычно используется приложениями для видеоконференций, чтобы поддерживать связь.<br>
         <br>
         Это относится как к звонкам, так и к сообщениям.<br>
         <br>
-        <font color="#ea86ff"><b>Приоритет по умолчанию: 20</b></font>
+        <font color="#ea86ff"><b>Стандартный приоритет: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">Режим совещания</string>
@@ -19,20 +19,20 @@
         Один атрибут на строку, например:
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Логирование SMS</string>
+    <string name="log_sms_content_to_db">Логировать SMS</string>
     <string name="initial_row_count">Начальное количество строк</string>
     <plurals name="rows">
         <item quantity="one">%d Строка</item>
         <item quantity="two">%d Строки</item>
         <item quantity="few">%d Строки</item>
-        <item quantity="many">%d Строк</item>
-        <item quantity="other">%d Строк</item>
+        <item quantity="many">%d Строки</item>
+        <item quantity="other">%d Строки</item>
     </plurals>
 
-    <string name="label_max_none_scroll_items">Порог полосы прокрутки</string>
+    <string name="label_max_none_scroll_items">Порог прокрутки</string>
     <string name="help_max_none_scroll_items">
         <![CDATA[
-        Максимальное количество элементов, которые могут быть отображены в списке, прежде чем появится полоса прокрутки.
+        Максимальное количество элементов, которые могут отображаться в списке, прежде чем появится полоса прокрутки.
         ]]>
     </string>
     <string name="label_max_scroll_height">Высота прокрутки</string>
@@ -44,7 +44,13 @@
     <string name="label_max_regex_lines">Макс. строк Regex</string>
     <string name="help_max_regex_lines">
         <![CDATA[
-        Максимальное количество строк, отображаемых для текста Regex, оставшийся текст будет усечен и дополнен многоточием.
+        Максимальное количество отображаемых строк для текста Regex, оставшийся текст будет усечен и дополнен многоточием.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Макс. строк описания</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Максимальное количество отображаемых строк для текста описания, оставшийся текст будет усечен и дополнен многоточием.
         ]]>
     </string>
 

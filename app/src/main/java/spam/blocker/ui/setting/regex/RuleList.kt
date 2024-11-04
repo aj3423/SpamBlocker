@@ -74,11 +74,20 @@ class DisableNestedScrolling : NestedScrollConnection {
 }
 
 @Composable
-fun RuleSettingsPopup(trigger: MutableState<Boolean>) {
+fun RuleSettingsPopup(
+    trigger: MutableState<Boolean>,
+    vm: RuleViewModel,
+) {
+    val ctx = LocalContext.current
+    var dirty by rememberSaveable { mutableStateOf(false) }
+
     PopupDialog(
         trigger = trigger,
+        onDismiss = {
+            if (dirty)
+                vm.reloadDb(ctx)
+        }
     ) {
-        val ctx = LocalContext.current
         val spf = RegexOptions(ctx)
 
         // max none scroll items: []
@@ -94,6 +103,7 @@ fun RuleSettingsPopup(trigger: MutableState<Boolean>) {
                     if (!hasError) {
                         max = newVal!!
                         spf.setMaxNoneScrollRows(max)
+                        dirty = true
                     }
                 }
             )
@@ -112,6 +122,7 @@ fun RuleSettingsPopup(trigger: MutableState<Boolean>) {
                     if (!hasError) {
                         height = newVal!!
                         spf.setRuleListHeightPercentage(height)
+                        dirty = true
                     }
                 }
             )
@@ -130,6 +141,26 @@ fun RuleSettingsPopup(trigger: MutableState<Boolean>) {
                     if (!hasError) {
                         rows = newVal!!
                         spf.setMaxRegexRows(rows)
+                        dirty = true
+                    }
+                }
+            )
+        }
+
+        // max description lines: []
+        LabeledRow(
+            label = null,
+            helpTooltipId = R.string.help_max_desc_lines
+        ) {
+            var rows by remember { mutableIntStateOf(spf.getMaxDescRows()) }
+            NumberInputBox(
+                intValue = rows,
+                label = { Text(Str(R.string.label_max_desc_lines)) },
+                onValueChange = { newVal, hasError ->
+                    if (!hasError) {
+                        rows = newVal!!
+                        spf.setMaxDescRows(rows)
+                        dirty = true
                     }
                 }
             )
@@ -147,7 +178,7 @@ fun RuleList(
     val coroutine = rememberCoroutineScope()
 
     val ruleSettingsTrigger = rememberSaveable { mutableStateOf(false) }
-    RuleSettingsPopup(trigger = ruleSettingsTrigger)
+    RuleSettingsPopup(trigger = ruleSettingsTrigger, vm = vm)
 
     val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
     val clickedRule = remember { mutableStateOf(RegexRule()) }

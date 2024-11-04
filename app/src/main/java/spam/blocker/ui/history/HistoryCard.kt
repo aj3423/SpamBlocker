@@ -98,7 +98,7 @@ fun HistoryCard(
                         text = Checker.resultStr(ctx, record.result, record.reason),
                         color = C.textGrey,
                         fontSize = 16.sp,
-                        maxLines = 1,
+                        maxLines = if(record.expanded) 2 else 1,
                         overflow = TextOverflow.Ellipsis,
                     )
                     // by RecentApp Icon

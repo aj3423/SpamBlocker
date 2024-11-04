@@ -3,23 +3,23 @@
     <string name="help_meeting_mode">
         <![CDATA[
         Refuser les appels pendant les réunions vidéo en ligne.<br> <br>
-        Il vérifie si une application sélectionnée exécute un <b>service d\'arrière-plan</b>,
+        Il vérifie si une application sélectionnée exécute un <b>service de premier plan</b>,
         qui est couramment utilisé par les applications de visioconférence pour maintenir la connexion active.<br>
         <br>
         Il s\'applique aux appels et aux messages.<br>
         <br>
-        <font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
+        <font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
         ]]>
     </string>
-    <string name="in_meeting">Mode réunion</string>
-    <string name="search">Recherche</string>
-    <string name="http_header">En-tête HTTP</string>
+    <string name="in_meeting">Mode Réunion</string>
+    <string name="search">Rechercher</string>
+    <string name="http_header">En-tête Http</string>
     <string name="help_http_header">
         <![CDATA[
         Un attribut par ligne, par exemple :
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Journaliser SMS</string>
+    <string name="log_sms_content_to_db">Journaux SMS</string>
     <string name="initial_row_count">Nombre de lignes initial</string>
     <plurals name="rows">
         <item quantity="one">%d Ligne</item>
@@ -32,7 +32,7 @@
     <string name="label_max_none_scroll_items">Seuil de la barre de défilement</string>
     <string name="help_max_none_scroll_items">
         <![CDATA[
-        Le nombre maximal d\'éléments pouvant être affichés dans la liste avant qu\'une barre de défilement n\'apparaisse.
+        Le nombre maximal d\'éléments pouvant être affichés dans la liste avant l\'apparition d\'une barre de défilement.
         ]]>
     </string>
     <string name="label_max_scroll_height">Hauteur de défilement</string>
@@ -41,10 +41,16 @@
         Lorsque la barre de défilement apparaît, cette valeur représente la hauteur de la liste en pourcentage de l\'écran.
         ]]>
     </string>
-    <string name="label_max_regex_lines">Lignes de regex maximales</string>
+    <string name="label_max_regex_lines">Lignes de Regex Max</string>
     <string name="help_max_regex_lines">
         <![CDATA[
-        Le nombre maximal de lignes d\'affichage pour le texte de regex, le texte restant sera tronqué et suivi d\'une ellipse.
+        Le nombre maximal de lignes d\'affichage pour le texte Regex, le texte restant sera tronqué et suivi d\'une ellipse.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Lignes de Description Max</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Le nombre maximal de lignes d\'affichage pour le texte de la description, le texte restant sera tronqué et suivi d\'une ellipse.
         ]]>
     </string>
 

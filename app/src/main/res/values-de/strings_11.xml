@@ -3,20 +3,20 @@
     <string name="help_meeting_mode">
         <![CDATA[
         Anrufe während Online-Videokonferenzen ablehnen.<br> <br>
-        Es prüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
-        der von Videokonferenz-Apps häufig verwendet wird, um die Verbindung aktiv zu halten.<br>
+        Es wird geprüft, ob eine ausgewählte App einen <b> Vordergrunddienst </b> ausführt,
+        der häufig von Videokonferenz-Apps verwendet wird, um die Verbindung aufrechtzuerhalten.<br>
         <br>
-        Dies gilt sowohl für Anrufe als auch für Nachrichten.<br>
+        Es gilt für Anrufe und Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">Meeting-Modus</string>
-    <string name="search">Suchen</string>
-    <string name="http_header">Http-Header</string>
+    <string name="search">Suche</string>
+    <string name="http_header">HTTP-Header</string>
     <string name="help_http_header">
         <![CDATA[
-        Ein Attribut pro Zeile, zum Beispiel:
+        Ein Attribut pro Zeile, z. B.:
         ]]>
     </string>
     <string name="log_sms_content_to_db">SMS protokollieren</string>
@@ -44,7 +44,13 @@
     <string name="label_max_regex_lines">Max. Regex-Zeilen</string>
     <string name="help_max_regex_lines">
         <![CDATA[
-        Die maximale Anzahl an angezeigten Zeilen für den Regex-Text. Der restliche Text wird abgeschnitten und mit einer Auslassungspunkten versehen.
+        Die maximale Anzahl an Anzeigezeilen für den Regex-Text. Der restliche Text wird abgeschnitten und mit einer Auslassungspunkten versehen.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Max. Beschreibungszeilen</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Die maximale Anzahl an Anzeigezeilen für den Beschreibungstext. Der restliche Text wird abgeschnitten und mit einer Auslassungspunkten versehen.
         ]]>
     </string>
 

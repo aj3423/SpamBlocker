@@ -117,6 +117,8 @@ class RegexOptions(ctx: Context) : SharedPref(ctx) {
     fun setMaxNoneScrollRows(rows: Int) { writeInt(Def.SETTING_RULE_LIST_MAX_NONE_SCROLL_ROWS, rows) }
     fun getMaxRegexRows(): Int { return readInt(Def.SETTING_RULE_MAX_REGEX_ROWS, 3) }
     fun setMaxRegexRows(rows: Int) { writeInt(Def.SETTING_RULE_MAX_REGEX_ROWS, rows) }
+    fun getMaxDescRows(): Int { return readInt(Def.SETTING_RULE_MAX_DESC_ROWS, 2) }
+    fun setMaxDescRows(rows: Int) { writeInt(Def.SETTING_RULE_MAX_DESC_ROWS, rows) }
     fun getRuleListHeightPercentage(): Int { return readInt(Def.SETTING_RULE_LIST_HEIGHT_PERCENTAGE, 60) }
     fun setRuleListHeightPercentage(percentage: Int) { writeInt(Def.SETTING_RULE_LIST_HEIGHT_PERCENTAGE, percentage) }
 }

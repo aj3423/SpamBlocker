@@ -47,4 +47,11 @@
         The maximum display lines for the regex text, remaining text will be truncated and followed by an ellipsis.
         ]]>
     </string>
+    <string name="label_max_desc_lines">Max Description Lines</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        The maximum display lines for the description text, remaining text will be truncated and followed by an ellipsis.
+        ]]>
+    </string>
+
 </resources>

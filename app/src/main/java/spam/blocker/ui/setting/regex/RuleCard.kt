@@ -68,7 +68,7 @@ fun RuleCard(
                     Text(
                         text = rule.description,
                         fontSize = 18.sp,
-                        maxLines = 10,
+                        maxLines = spf.getMaxDescRows(),
                         overflow = TextOverflow.Ellipsis,
                         color = C.textGrey,
                         modifier = M.padding(start = 10.dp),

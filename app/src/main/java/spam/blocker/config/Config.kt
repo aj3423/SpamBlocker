@@ -88,6 +88,7 @@ class RegexOptions {
     var quickCopyCollapsed = false
     var maxNoneScrollRows = 10
     var maxRegexRows = 3
+    var maxDescRows = 2
     var listHeightPercentage = 60
 
     fun load(ctx: Context) {
@@ -97,6 +98,7 @@ class RegexOptions {
         quickCopyCollapsed = spf.isQuickCopyCollapsed()
         maxNoneScrollRows = spf.getMaxNoneScrollRows()
         maxRegexRows = spf.getMaxRegexRows()
+        maxDescRows = spf.getMaxDescRows()
         listHeightPercentage = spf.getRuleListHeightPercentage()
     }
 
@@ -107,6 +109,7 @@ class RegexOptions {
             setQuickCopyCollapsed(quickCopyCollapsed)
             setMaxNoneScrollRows(maxNoneScrollRows)
             setMaxRegexRows(maxRegexRows)
+            setMaxDescRows(maxDescRows)
             setRuleListHeightPercentage(listHeightPercentage)
         }
     }

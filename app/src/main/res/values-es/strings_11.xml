@@ -2,7 +2,7 @@
     <string name="yesterday">Ayer</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Rechazar llamadas durante las videollamadas en línea.<br> <br>
+        Rechazar llamadas durante las videoconferencias en línea.<br> <br>
         Comprueba si alguna aplicación seleccionada está ejecutando un <b>servicio en primer plano</b>,
         que es comúnmente utilizado por las aplicaciones de videoconferencia para mantener la conexión activa.<br>
         <br>
@@ -20,7 +20,7 @@
         ]]>
     </string>
     <string name="log_sms_content_to_db">Registrar SMS</string>
-    <string name="initial_row_count">Conteo de filas inicial</string>
+    <string name="initial_row_count">Conteo de Filas Inicial</string>
     <plurals name="rows">
         <item quantity="one">%d Fila</item>
         <item quantity="two">%d Filas</item>
@@ -29,22 +29,28 @@
         <item quantity="other">%d Filas</item>
     </plurals>
 
-    <string name="label_max_none_scroll_items">Umbral de desplazamiento</string>
+    <string name="label_max_none_scroll_items">Umbral de la Barra de Desplazamiento</string>
     <string name="help_max_none_scroll_items">
         <![CDATA[
         El número máximo de elementos que se pueden mostrar en la lista antes de que aparezca una barra de desplazamiento.
         ]]>
     </string>
-    <string name="label_max_scroll_height">Altura de desplazamiento</string>
+    <string name="label_max_scroll_height">Altura de Desplazamiento</string>
     <string name="help_max_scroll_height">
         <![CDATA[
         Cuando aparece la barra de desplazamiento, este valor representa la altura de la lista como un porcentaje de la pantalla.
         ]]>
     </string>
-    <string name="label_max_regex_lines">Máximo de líneas de expresiones regulares</string>
+    <string name="label_max_regex_lines">Líneas Máximas de Regex</string>
     <string name="help_max_regex_lines">
         <![CDATA[
-        El número máximo de líneas de visualización para el texto de expresiones regulares, el texto restante se truncará y seguirá con puntos suspensivos.
+        Las líneas de visualización máximas para el texto de regex, el texto restante se truncará y se seguirá con un punto suspensivo.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Líneas Máximas de Descripción</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Las líneas de visualización máximas para el texto de descripción, el texto restante se truncará y se seguirá con un punto suspensivo.
         ]]>
     </string>
 
