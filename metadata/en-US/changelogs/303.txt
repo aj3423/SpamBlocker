@@ -1,6 +1,6 @@
 Fix:
 
-- RepeatedCall/Dialed fail to idenntify international and domestic numbers belonging to the same person. Thanks to @lbschenkel for the PR.
+- RepeatedCall/Dialed fail to identify international and domestic numbers belonging to the same person. Thanks to @lbschenkel for the PR.
   The permission READ_PHONE_STATE is necessary for this to work. (it's optional)
 - History record not showing full date for old records
 
