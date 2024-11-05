@@ -26,7 +26,7 @@
         <item>Dot Match All</item>
         <item>Raw Number</item>
     </string-array>
-    <string name="disable_number_optimization">This optimization can be disabled by the regex flag `Raw Number`.</string>
+    <string name="disable_number_optimization">This optimization can be disabled by the regex flag "Raw Number".</string>
     <string name="off_time">Off Time</string>
     <string name="schedule">Schedule</string>
     <string name="workday">Workday</string>

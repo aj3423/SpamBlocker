@@ -23,7 +23,7 @@
         &emsp; They are <b>all</b> checked as:<br>
         &emsp;&emsp; 123456789 <br>
         &emsp; So regex <font color="#03DAC5"><b>123.*</b></font> would match all of them.<br>
-        This number optimization can be <b>disabled</b> with the regex flag `Raw Number`.<br>
+        This number optimization can be <b>disabled</b> with the regex flag "Raw Number".<br>
         <br>
         <font color="#00BFFF"><b> - Some typical patterns</b></font>:<br>
         &ensp; - Any number: <font color="#03DAC5"><b>.*</b></font> (the regex .* is equivalent to the wildcard * in other apps) <br>
@@ -33,12 +33,11 @@
         &ensp; - Shorter than 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Longer than 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Unknown number(empty string): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Contains "verification": <font color="#03DAC5"><b>.*verification.*</b></font> <br>
-        &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font> <br>
+        &ensp; - Contains "verification": <font color="#03DAC5"><b>.*<translate>verification</translate>.*</b></font> <br>
+        &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(<translate>police|hospital|verification</translate>).*</b></font> <br>
         &ensp; - Starts with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Import rules from .csv</b></font>:<br>
-        You can export rules from other app to a .csv file and import them to this app.<br>
         Long press the `Add` button to import numbers from .csv file, columns supported:<br>
          - <no_translate><b>pattern</b></no_translate>: The regex(<b>required</b>)<br>
          - <no_translate><b>description</b></no_translate>: Description<br>

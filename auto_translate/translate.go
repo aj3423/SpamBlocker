@@ -146,21 +146,22 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	if content_to_translate == "" {
 		return "", nil
 	}
+
 	GeminiToken := os.Getenv("GeminiToken")
 
 	var use_short string
 	if short {
-		use_short = `Use extream short translating, as short a possible.`
+		use_short = `Use extream short translation, as short a possible.`
 	} else {
-		use_short = `When translating short words, use short translations, as short as possible, for long sentences, make the translation as clear as possible. `
+		use_short = `Important: when translating short phrases, use extream short translations, as short as possible, for long sentences, make the translation as clear as possible. `
 	}
 
 	prompt := fmt.Sprintf(
 		"Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. "+
-			"For the word 'number', it always references to phone number. "+
-			"For the word 'spam', it always references to spam calls, don't translate it to spam email."+
-			"Make sure leave the XML tags unmodified. "+
-			"If the origin text is wrapped within tag <no_translate></no_translate>, do not translate it, keep it as it is. "+
+			"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. "+
+			// "Make sure leave the XML tags unmodified. "+
+			"Do not translate text within tag <no_translate> and </no_translate>, keep it as it is. "+
+			"Always tranalste text within tag <translate> and </translate>. "+
 			use_short+
 			"show me the result only:\n"+
 			"%s",
@@ -243,7 +244,7 @@ func walk_lang_xmls(lang string, operation func(string) error) {
 				})
 
 				if e != nil {
-					color.HiWhite("translate %s failed", color.HiRedString(fi.Name()))
+					color.HiWhite("translate %s failed, error: %s", color.HiRedString(fi.Name()), e.Error())
 				}
 
 				wg.Done()

@@ -38,7 +38,6 @@
         &ensp; - 400 ile başlar, ülke kodu 11 ile ya da olmadan ilerler: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Kuralı içe aktar: .csv</b></font>:<br>
-        Diğer uygulamalardan kuralları .csv dosyası olarak dışa aktarabilir ve bu uygulamaya içe aktarabilirsiniz.<br>
         .csv dosyasından numaraları içe aktarmak için `Ekle` düğmesine uzun basın, sütunlar desteklenir:<br>
          - <no_translate><b>desen</b></no_translate>: Düzenli ifade(<b>gerekli</b>)<br>
          - <no_translate><b>tanım</b></no_translate>: Tanım<br>
