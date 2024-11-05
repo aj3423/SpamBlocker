@@ -7,25 +7,25 @@
 
     <string name="help_spam_db">
         <![CDATA[
-        Nummern in dieser Datenbank werden blockiert.<br>
+        Telefonnummern in dieser Datenbank werden blockiert.<br>
         <br>
-        Sie können jede öffentliche Datenbank integrieren oder sogar mehrere Datenbanken, Sie können auch Nummern aus lokalen Dateien importieren.<br>
+        Sie können jede öffentliche Datenbank integrieren, oder sogar mehrere Datenbanken, Sie können auch Telefonnummern aus lokalen Dateien importieren.<br>
         <br>
         Im Abschnitt "Automatisierung" unten finden Sie Informationen zum Planen einer automatischen Import-Aufgabe.<br>
         <br>
-        Es gilt für Anrufe und SMS-Nachrichten.<br>
+        Dies gilt sowohl für Anrufe als auch für SMS-Nachrichten.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Spam-Nummern in der Datenbank verfallen nach N Tagen, abgelaufene Datensätze werden automatisch gelöscht.</string>
+    <string name="help_spam_db_ttl">Spam-Telefonnummern in der Datenbank verfallen nach N Tagen, abgelaufene Einträge werden automatisch gelöscht.</string>
     <string name="customize">Anpassen</string>
     <string name="workflow">Workflow</string>
     <string name="workflows">Workflows</string>
     <string name="automation">Automatisierung</string>
     <string name="help_workflows">
         <![CDATA[
-        Workflows können verwendet werden, um Aufgaben automatisch auszuführen, z. B. Datenbankaktualisierungen oder automatische Sicherungen.<br>
+        Workflows können verwendet werden, um Aufgaben automatisch auszuführen, z. B. Datenbankaktualisierung oder automatische Sicherung.<br>
         <br>
         Es gibt Voreinstellungen für eine schnelle Einrichtung, Sie können sie auch von Grund auf neu erstellen oder aus einer JSON-Konfiguration importieren, die von anderen Benutzern geteilt wird.<br>
         <br>
@@ -41,76 +41,76 @@
 
     <string name="action_cleanup_history">Verlauf bereinigen</string>
     <string name="action_http_download">HTTP-Download</string>
-    <string name="action_cleanup_spam_db">Spam-DB bereinigen</string>
+    <string name="action_cleanup_spam_db">Spam-Datenbank bereinigen</string>
     <string name="action_backup_export">Sicherung exportieren</string>
     <string name="action_backup_import">Sicherung importieren</string>
     <string name="action_read_file">Datei lesen</string>
     <string name="action_write_file">Datei schreiben</string>
-    <string name="action_parse_csv">CSV analysieren</string>
-    <string name="action_parse_xml">XML analysieren</string>
-    <string name="action_regex_extract">Regex extrahieren</string>
-    <string name="action_import_to_spam_db">In Spam-Datenbank importieren</string>
+    <string name="action_parse_csv">CSV-Datei analysieren</string>
+    <string name="action_parse_xml">XML-Datei analysieren</string>
+    <string name="action_regex_extract">Regex-Extraktion</string>
+    <string name="action_import_to_spam_db">In die Spam-Datenbank importieren</string>
     <string name="action_import_as_regex_rule">Als Regex-Regel importieren</string>
-    <string name="action_convert_number">Nummer ersetzen</string>
+    <string name="action_convert_number">Telefonnummer ersetzen</string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        HTTP-Datei als <u>Inhaltsbytes</u> herunterladen
+        HTTP-Download-Datei als <u>Inhaltsbytes</u>
         ]]>
     </string>
-    <string name="help_action_cleanup_spam_db">Abgelaufene Nummern aus der Spam-Datenbank löschen.</string>
+    <string name="help_action_cleanup_spam_db">Abgelaufene Telefonnummern aus der Spam-Datenbank löschen.</string>
     <string name="help_action_cleanup_history">Abgelaufene Verlaufseinträge löschen.</string>
     <string name="help_action_backup_export">
         <![CDATA[
-        Die aktuellen Einstellungen als <u>Inhaltsbytes</u> exportieren.
+        Exportieren Sie die aktuellen Einstellungen als <u>Inhaltsbytes</u>.
         ]]>
     </string>
     <string name="help_action_backup_import">
         <![CDATA[
-        Einstellungen aus <u>Inhaltsbytes</u> übernehmen.
+        Einstellungen aus <u>Inhaltsbytes</u> anwenden.
         ]]>
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Die <u>Inhaltsbytes</u> aus einer Datei abrufen.
+        Laden Sie die <u>Inhaltsbytes</u> aus einer Datei.
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        <u>Inhaltsbytes</u> in eine Datei schreiben.
+        Schreiben Sie <u>Inhaltsbytes</u> in eine Datei.
         ]]>
     </string>
     <string name="help_action_parse_csv">
         <![CDATA[
-        CSV-<u>Inhaltsbytes</u> in eine <u>Liste von Nummern</u> analysieren
+        Analysieren Sie CSV-<u>Inhaltsbytes</u> in eine <u>Liste von Telefonnummern</u>
         ]]>
     </string>
     <string name="help_action_parse_xml">
         <![CDATA[
-        XML-<u>Inhaltsbytes</u> mit <b>xpath</b> analysieren und eine <u>Liste von Nummern</u> erzeugen.
+        Analysieren Sie XML-<u>Inhaltsbytes</u> mit <b>xpath</b> und generieren Sie eine <u>Liste von Telefonnummern.</u>
         ]]>
     </string>
     <string name="help_action_regex_extract">
         <![CDATA[
-        Mit diesem Regex eine <u>Liste von Nummern</u> aus den eingegebenen <u>Inhaltsbytes</u> extrahieren.
+        Extrahieren Sie eine <u>Liste von Telefonnummern</u> aus <u>Inhaltsbytes</u> mit Regex.
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        Eine <u>Liste von Nummern</u> zur Spam-Datenbank hinzufügen.
+        Fügen Sie eine <u>Liste von Telefonnummern</u> zur Spam-Datenbank hinzu.
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        Eine neue Regex-Regel aus einer <u>Liste von Nummern</u> generieren.
+        Erstellen Sie eine neue Regex-Regel aus einer <u>Liste von Telefonnummern</u>.
         ]]>
     </string>
     <string name="help_action_convert_number">
         <![CDATA[
-        Konvertieren Sie die <u>Liste von Nummern</u> in das Format, das diese App verwendet.<br>
+        Konvertieren Sie die <u>Liste von Telefonnummern</u> in das Format, das diese App verwendet.<br>
         <br>
-        Fügen Sie beispielsweise zwei Aktionen zum Ersetzen hinzu:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` to `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        Fügen Sie beispielsweise zwei Aktionen hinzu, um zu ersetzen:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` zu `12345<font color="#03DAC5"><b>....</b></font>`:<br>
         <br>
         &ensp; - Ersetzen Sie `<font color="#fa7f71">(+)</font>` durch ``<br>
         &ensp; - Ersetzen Sie `<font color="#fa7f71">(#)</font>` durch `<font color="#03DAC5"><b>.</b></font>`<br>

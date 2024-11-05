@@ -4,6 +4,8 @@ import android.Manifest
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -43,11 +45,13 @@ import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.CheckBox
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
+import spam.blocker.ui.widgets.NonLazyGrid
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -200,6 +204,7 @@ fun RegexFieldLabel(
     )
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun RuleEditDialog(
     trigger: MutableState<Boolean>,
@@ -403,7 +408,7 @@ fun RuleEditDialog(
                     labelId = R.string.apply_to,
                     helpTooltipId = R.string.help_apply_to_call_sms,
                 ) {
-                    RowVCenterSpaced(10) {
+                    FlowRowSpaced(10) {
                         if (forType != Def.ForSms) {
                             CheckBox(
                                 checked = applyToCall,
@@ -424,7 +429,7 @@ fun RuleEditDialog(
                         labelId = R.string.apply_to,
                         helpTooltipId = R.string.help_apply_to_number_and_message,
                     ) {
-                        RowVCenterSpaced(10) {
+                        FlowRowSpaced(10) {
                             CheckBox(
                                 checked = applyToNumber,
                                 label = { GreyLabel(Str(R.string.phone_number_abbrev)) },
@@ -443,7 +448,7 @@ fun RuleEditDialog(
                         labelId = R.string.apply_to,
                         helpTooltipId = R.string.help_apply_to_passed_and_blocked,
                     ) {
-                        RowVCenterSpaced(10) {
+                        FlowRowSpaced(10) {
                             CheckBox(
                                 checked = applyToPassed,
                                 label = { Text(Str(R.string.passed), color = C.pass) },
@@ -579,7 +584,7 @@ fun RuleEditDialog(
                         }
                     }
                     LabeledRow(labelId = R.string.schedule) {
-                        RowVCenterSpaced(8) {
+                        FlowRowSpaced(8) {
                             if (schEnabled) {
                                 GreyButton(
                                     label = Util.timeRangeStr(

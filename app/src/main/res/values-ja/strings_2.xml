@@ -1,26 +1,26 @@
 <resources>
     <string name="contacts">連絡先</string>
     <string name="non_contacts">非連絡先</string>
-    <string name="inclusive">包含的</string>
-    <string name="exclusive">排他的</string>
+    <string name="inclusive">包含</string>
+    <string name="exclusive">除外</string>
     <string name="help_contacts">
         <![CDATA[
         有効にすると、連絡先からの通話/メッセージは常に許可されます。 <br>
         <br>
-          - <b>包含的</b>: <br>
-              &emsp; 非連絡先番号は他のルールでチェックされます。 <br>
-              &emsp; <font color="#ea86ff"><b>優先度: 10</b></font> <br>
+          - <b>包含</b>: <br>
+              &emsp; 非連絡先番号は、他のルールで確認されます。 <br>
+              &emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>排他的</b></font>: <br>
-              &emsp; 非連絡先番号は <font color="#fa7f71"><b>ブロック</b></font> されます。 <br>
-              &emsp; <font color="#ea86ff"><b>優先度: 0</b></font> <br>
+          - <font color="#fa7f71"><b>除外</b></font>: <br>
+              &emsp; 非連絡先番号は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
+              &emsp; <font color="#ea86ff"><b>優先順位: 0</b></font> <br>
         <br>
-        これは通話とSMSメッセージの両方に適用されます。
+        これは、通話とSMSメッセージの両方に適用されます。
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">未確認を含める</string>
-    <string name="unverified">未確認</string>
+    <string name="stir_include_unverified">未検証を含む</string>
+    <string name="unverified">未検証</string>
     <string name="valid">有効な通話</string>
     <string name="spoof">なりすまし通話</string>
     <string name="help_stir">
@@ -29,22 +29,22 @@
             <br>
             認証には、3 つの結果があります。 <br>
             <font color="#03DAC5"><b>有効</b></font> <br>
-            &emsp; 通話は非常に有効である可能性が高く、なりすましではありません。 <br>
-            <font color="#ffa500"><b>未確認</b></font> <br>
-            &emsp; 通話は検証できません。または、STIR 認証がサポートされていません。 <br>
+            &emsp; この通話は、なりすましではなく、有効である可能性が高いです。 <br>
+            <font color="#ffa500"><b>未検証</b></font> <br>
+            &emsp; この通話は検証できません。または、STIR 認証がサポートされていません。 <br>
             <font color="#fa7f71"><b>なりすまし</b></font> <br>
-            &emsp; なりすまし通話である可能性が非常に高いです。 <br>
+            &emsp; この通話は、なりすましである可能性が高いです。 <br>
             <br>
             <br>
-              - <b>包含的</b>: <br>
-                  &emsp; このチェックに失敗した通話は、他のルールでもチェックされます。 <br>
-                  &emsp; 「<b>未確認を含める</b>」がチェックされている場合、通話は未確認であっても通過します。 <br>
-                  &emsp; <font color="#ea86ff"><b>優先度: 10</b></font> <br>
+              - <b>包含</b>: <br>
+                  &emsp; このチェックに失敗した通話は、他のルールでも確認されます。 <br>
+                  &emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はパスします。 <br>
+                  &emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>排他的</b></font>: <br>
-                  &emsp; このチェックに失敗した通話は <font color="#fa7f71"><b>ブロック</b></font> されます。 <br>
-                  &emsp; 「<b>未確認を含める</b>」がチェックされている場合、通話は未確認であってもブロックされます。 <br>
-                  &emsp; <font color="#ea86ff"><b>優先度: 0</b></font>
+              - <font color="#fa7f71"><b>除外</b></font>: <br>
+                  &emsp; このチェックに失敗した通話は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
+                  &emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はブロックされます。 <br>
+                  &emsp; <font color="#ea86ff"><b>優先順位: 0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

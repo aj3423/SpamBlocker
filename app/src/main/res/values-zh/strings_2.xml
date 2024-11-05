@@ -5,51 +5,51 @@
     <string name="exclusive">排除</string>
     <string name="help_contacts">
         <![CDATA[
-        启用后，来自联系人的通话/短信始终允许。<br>
+        启用后，来自联系人的呼叫/消息始终允许。 <br>
         <br>
           - <b>包含</b>: <br>
               &emsp; 非联系人号码将由其他规则检查。 <br>
               &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>排除</b></font>: <br>
-              &emsp; 非联系人号码将被 <font color="#fa7f71"><b>屏蔽</b></font>。 <br>
+              &emsp; 非联系人号码将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
               &emsp; <font color="#ea86ff"><b>优先级：0</b></font> <br>
         <br>
-        它适用于通话和短信。
+        它适用于呼叫和短信。
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
     <string name="stir_include_unverified">包含未验证</string>
     <string name="unverified">未验证</string>
-    <string name="valid">有效通话</string>
-    <string name="spoof">伪造通话</string>
+    <string name="valid">有效呼叫</string>
+    <string name="spoof">伪造呼叫</string>
     <string name="help_stir">
         <![CDATA[
             STIR/SHAKEN 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
             <br>
             有三种可能的认证结果： <br>
             <font color="#03DAC5"><b>有效</b></font> <br>
-            &emsp; 通话很可能是有效的，没有被伪造。 <br>
+            &emsp; 呼叫很可能是有效的，没有被伪造。 <br>
             <font color="#ffa500"><b>未验证</b></font> <br>
-            &emsp; 通话无法验证，或者不支持 STIR 认证。 <br>
+            &emsp; 无法验证呼叫，或者不支持 STIR 认证。 <br>
             <font color="#fa7f71"><b>伪造</b></font> <br>
-            &emsp; 很可能是一个伪造的电话。 <br>
+            &emsp; 很可能是一个伪造的呼叫。 <br>
             <br>
             <br>
               - <b>包含</b>: <br>
-                  &emsp; 未通过此检查的通话仍将由其他规则检查。 <br>
-                  &emsp; 当选中“<b>包含未验证</b>”时，如果通话未经验证，也将会通过。 <br>
+                  &emsp; 未通过此检查的呼叫仍将由其他规则检查。 <br>
+                  &emsp; 当选中“<b>包含未验证</b>”时，如果呼叫未经验证，也会通过。 <br>
                   &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>排除</b></font>: <br>
-                  &emsp; 未通过此检查的通话将被 <font color="#fa7f71"><b>屏蔽</b></font>。 <br>
-                  &emsp; 当选中“<b>包含未验证</b>”时，如果通话未经验证，也将会被屏蔽。 <br>
+                  &emsp; 未通过此检查的呼叫将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
+                  &emsp; 当选中“<b>包含未验证</b>”时，如果呼叫未经验证，也会被阻止。 <br>
                   &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        .csv 文件中缺少必需的字段 <b>pattern</b>，请查看气泡提示以获取详细说明。
+        .csv 文件中缺少必需的字段 <b>pattern</b>，请查看气球工具提示以获取详细说明。
         ]]>
     </string>
 </resources>

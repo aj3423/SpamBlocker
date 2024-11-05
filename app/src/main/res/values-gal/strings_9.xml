@@ -1,14 +1,14 @@
 <resources>
     <string name="contact_rule">Regra de Contacto</string>
     <string name="directory">Directorio</string>
-    <string name="filename">Nome do Ficheiro</string>
-    <string name="invalid_input_type">Tipo de entrada inválido, esperado: %s, obtido: %s</string>
+    <string name="filename">Nome do ficheiro</string>
+    <string name="invalid_input_type">Tipo de entrada inválido, espera: %s, obtivo: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Días de Caducidade</string>
-    <string name="column_mapping">Mapeamento de Columnas</string>
-    <string name="include_spam_db">Incluír Base de Datos de Spam</string>
-    <string name="configuration_only">Só Configuración</string>
-    <string name="no_config_needed">Non se precisa configuración</string>
+    <string name="expiry_days">Días de caducidade</string>
+    <string name="column_mapping">Mapeamento de columna</string>
+    <string name="include_spam_db">Incluir base de datos de spam</string>
+    <string name="configuration_only">Só configuración</string>
+    <string name="no_config_needed">Non se necesita configuración</string>
     <string name="success">Éxito</string>
     <string name="failed">Fallo</string>
     <string name="running">En execución</string>
@@ -18,32 +18,32 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Probar</b></font><br>
-        Estas accións executaranse inmediatamente, para comprobar se están configuradas correctamente,
-        ou quizais só queiras executar este fluxo de traballo manualmente.<br>
+        Estas accións executaranse inmediatamente, para comprobar se se configuraron correctamente,
+        ou quizais só queiras executar manualmente este fluxo de traballo.<br>
         <br>
-        - <font color="#00BFFF"><b>Nova</b></font><br>
-            Crea unha nova acción, múltiples accións poden ser encadenadas xuntas para completar unha tarefa complexa.<br>
+        - <font color="#00BFFF"><b>Novo</b></font><br>
+            Crea unha nova acción, varias accións pódense encadear xuntas para completar unha tarefa complexa.<br>
             Eses puntos verdes ou vermellos entre os elementos indican se son encadenables ou non.<br>
             <br>
             Algúns exemplos de fluxos de traballo: <br>
             <br>
             &emsp; - descargar ficheiro http -> decodificar formato 7z -> analizar como formato csv -> importar á base de datos de spam.<br>
             <br>
-            &emsp; - aplicar a configuración A nos días laborables e aplicar a configuración B no fin de semana.<br>
+            &emsp; - aplicar a configuración A en días laborables e aplicar a configuración B o fin de semana.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Descarga números de teléfono spam de
+            Descarga números de teléfono de spam desde
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> cada día laborable,
+            <no_translate>FTC - Do Not Call</no_translate> </a> todos os días laborables,
              e impórtaos á base de datos de spam.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Elimina os rexistros caducados da base de datos de spam.</string>
-    <string name="help_bot_preset_cleanup_history">Elimina os rexistros de chamadas/SMS caducados.</string>
-    <string name="help_bot_preset_auto_backup">Fai unha copia de seguridade de todas as configuracións.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Eliminar rexistros caducados da base de datos de spam.</string>
+    <string name="help_bot_preset_cleanup_history">Eliminar rexistros de chamadas/SMS de historial caducados.</string>
+    <string name="help_bot_preset_auto_backup">Facer copia de seguridade de todas as configuracións.</string>
     <string name="everyday">Todos os días</string>
     <string name="daily">Diario</string>
     <string name="weekly">Semanal</string>
@@ -53,13 +53,13 @@
 
     <string name="help_backup">
         <![CDATA[
-        Se non utilizas a base de datos de spam, ambas as opcións serán equivalentes.<br>
+        Se non usas a base de datos de spam, ambas opcións serán equivalentes.<br>
         <br>
-        - <b>Incluír Base de Datos de Spam</b><br>
-        &emsp; Non o uses para a copia de seguridade regular, porque se supón que a base de datos de spam se actualiza con frecuencia.
-         Só é útil cando se clona a configuración a outro teléfono.<br>
+        - <b>Incluir base de datos de spam</b><br>
+        &emsp; Non uses isto para copias de seguridade regulares, porque se supón que a base de datos de spam se actualiza con frecuencia.
+         Isto só é útil ao clonar a configuración a outro teléfono.<br>
         <br>
-        - <b>Só Configuración</b><br>
+        - <b>Só configuración</b><br>
         &emsp; - Ao exportar, isto reducirá o tamaño do ficheiro de copia de seguridade. <br>
         &emsp; - Ao importar, os rexistros na base de datos de spam manterán o seu estado actual.
         ]]>
@@ -82,7 +82,7 @@
         <br>
         - <font color="#00BFFF"><b>Fusionar</b></font><br>
         &ensp;- Se existe unha regra coa mesma descrición, os novos números fusionaranse nela,<br>
-         os números duplicados eliminaranse automaticamente.<br>
+         os números duplicados eliminarase automaticamente.<br>
         &ensp;- Se non existe, crearase unha nova regra, igual que a <b>Crear</b>.<br>
         ]]>
     </string>

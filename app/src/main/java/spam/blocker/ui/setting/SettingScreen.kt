@@ -210,7 +210,9 @@ fun SettingRow(
     content: @Composable RowScope.() -> Unit,
 ) {
     RowVCenter(
-        modifier = modifier.heightIn(min = SettingRowMinHeight.dp),
+        modifier = modifier
+            .heightIn(min = SettingRowMinHeight.dp)
+            .padding(vertical = 2.dp)
     ) {
         content()
     }

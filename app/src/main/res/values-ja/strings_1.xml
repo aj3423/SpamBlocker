@@ -1,18 +1,18 @@
 <resources>
-    <string name="app_name">迷惑電話ブロッカー</string>
+    <string name="app_name">SpamBlocker</string>
     <string name="setting">設定</string>
-    <string name="call">通話</string>
+    <string name="call">発信</string>
     <string name="sms">SMS</string>
     <string name="enabled">有効</string>
     <string name="sms_content_pattern">SMS コンテンツ</string>
     <string name="invalid_regex_pattern">無効な正規表現</string>
     <string name="pattern_contain_invisible_characters">不可視文字が見つかりました</string>
-    <string name="pattern_contain_leading_zeroes">先頭の 0 は追加する必要はありません。確認前に削除されます。</string>
-    <string name="pattern_contain_leading_plus">先頭の + は追加する必要はありません。確認前に削除されます。</string>
-    <string name="check_balloon_for_explanation">詳細については、`番号ルール`のヘルプを確認してください。</string>
+    <string name="pattern_contain_leading_zeroes">先頭に 0 を追加する必要はありません。チェック前に削除されます。</string>
+    <string name="pattern_contain_leading_plus">先頭に + を追加する必要はありません。チェック前に削除されます。</string>
+    <string name="check_balloon_for_explanation">詳細については、`番号ルール` のヘルプを確認してください。</string>
     <string name="invalid_number">無効な番号</string>
     <string name="description">説明</string>
-    <string name="apply_to_call">通話に適用</string>
+    <string name="apply_to_call">発信に適用</string>
     <string name="apply_to_sms">SMS に適用</string>
     <string name="title_add_rule">新しいルール</string>
     <string name="title_edit_rule">ルールの編集</string>
@@ -23,8 +23,8 @@
     <string name="save">保存</string>
     <string name="whitelist">ホワイトリスト</string>
     <string name="blacklist">ブラックリスト</string>
-    <string name="content">内容</string>
-    <string name="priority">優先度</string>
+    <string name="content">コンテンツ</string>
+    <string name="priority">優先順位</string>
     <string name="deleted_filter">(削除されたルール)</string>
     <string name="apply_to">適用先</string>
     <string name="Delete">削除</string>
@@ -32,9 +32,9 @@
     <string name="passed">通過</string>
     <string name="passed_by_default">デフォルトで通過</string>
     <string name="blocked">ブロック</string>
-    <string name="from">発信元</string>
+    <string name="from">送信元</string>
     <string name="copy">コピー</string>
-    <string name="copied_to_clipboard">`%s`をクリップボードにコピーしました。</string>
+    <string name="copied_to_clipboard">`%s` をクリップボードにコピーしました。</string>
     <string name="quick_copy">クイックコピー</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
@@ -50,13 +50,13 @@
     <string name="config_text">設定テキスト</string>
     <string name="imported_successfully">インポートが正常に完了しました。</string>
     <string name="import_fail">インポートに失敗しました。</string>
-    <string name="go_to_setting">設定画面へ</string>
-    <string name="prompt_go_to_usage_permission_setting">この機能には以下の権限が必要です:\n\n `使用状況統計`\n\nこれはシステム設定で手動で有効にする必要があります。\n\n 設定ページを開きますか？ </string>
+    <string name="go_to_setting">設定へ移動</string>
+    <string name="prompt_go_to_usage_permission_setting">この機能には次の権限が必要です。\n\n `使用状況統計`\n\nシステム設定で手動で有効にする必要があります。\n\n 設定ページを開きますか？ </string>
     <string name="emergency_call">緊急通話</string>
     <string name="label_contact_filter">連絡先フィルター</string>
     <string name="label_number_filter">番号ルール</string>
     <string name="label_content_filter">メッセージルール</string>
-    <string name="recent_apps">最近のアプリ</string>
+    <string name="recent_apps"><short>最近のアプリ</short></string>
     <string name="allow_contact">連絡先</string>
 
 </resources>

@@ -1,6 +1,9 @@
 package spam.blocker.ui.widgets
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.FlowRowScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
@@ -34,6 +37,24 @@ inline fun RowVCenterSpaced(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(space.dp),
+    ) {
+        content()
+    }
+}
+
+// content aligned center vertically, items spaced by x horizontally
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun FlowRowSpaced(
+    space: Int,
+    modifier: Modifier = Modifier,
+    vSpace: Int = 4,
+    content: @Composable FlowRowScope.() -> Unit,
+) {
+    FlowRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(space.dp),
+        verticalArrangement = Arrangement.spacedBy(vSpace.dp)
     ) {
         content()
     }

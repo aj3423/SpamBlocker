@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed_number">発信番号</string>
+    <string name="dialed_number"><short>発信番号</short></string>
     <string name="find_apps">アプリを探す</string>
 
     <string name="confirm_delete_all_rule">すべてのルールを削除しますか？</string>
@@ -19,59 +19,59 @@
     <string name="within_days">数日以内</string>
     <string name="phone_number">電話番号</string>
     <string name="phone_number_abbrev">番号</string>
-    <string name="sms_content">SMS 内容</string>
+    <string name="sms_content">SMS コンテンツ</string>
     <string name="regex_flags">正規表現フラグ</string>
     <string-array name="regex_flags_list">
         <item>大文字小文字を区別しない</item>
         <item>ドットがすべてに一致</item>
         <item>生番号</item>
     </string-array>
-    <string name="disable_number_optimization">この最適化は、正規表現フラグ「生番号」によって無効にすることができます。</string>
+    <string name="disable_number_optimization">この最適化は正規表現フラグ「生番号」で無効にできます。</string>
     <string name="off_time">オフ時間</string>
     <string name="schedule">スケジュール</string>
     <string name="workday">平日</string>
     <string name="weekend">週末</string>
-    <string name="entire_day">一日中</string>
+    <string name="entire_day">終日</string>
     <string name="block_type">ブロックタイプ</string>
     <string name="for_particular_number">番号用</string>
-    <string name="help_for_particular_number">有効にすると、ルールは番号と内容が両方一致した場合にのみ適用されます。</string>
+    <string name="help_for_particular_number">有効にすると、ルールは番号とコンテンツの両方が一致した場合にのみ適用されます。</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>拒否</b></font>: <br>
-        &emsp; 拒否ボタンを押すのと同様です。完全にサイレントで動作し、ロック画面はオンになりません。ボイスメールを使用しない場合は、推奨されるタイプです。 <br>
+        &emsp; 拒否ボタンを押すのと同じです。完全にサイレントに動作し、ロック画面はオンになりません。ボイスメールを使用しない場合は、推奨されるタイプです。 <br>
         <br>
         - <font color="#00BFFF"><b>サイレント</b></font>: <br>
-        &emsp; バックグラウンドでサイレントに鳴り、発信者にただ忙しいだけで電話に出られないという印象を与えます。 <br>
+        &emsp; 背景でサイレントに鳴り、発信者にはあなたがただ忙しいだけで応答していないという印象を与えます。 <br>
         <br>
         - <font color="#00BFFF"><b>応答して切る</b></font>: <br>
-        &emsp; ボイスメールに送られるのを防ぐためです。ロック画面が短時間オンになる可能性があり、通話終了音も聞こえる場合があります（一部の携帯電話ではこの音をミュートにするオプションがあります）。
+        &emsp; ボイスメールに送られないようにします。ロック画面はしばらくの間オンになる場合があり、通話の終了音が聞こえることもあります（一部の電話ではこの音をミュートにするオプションがあります）。
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        発信番号は許可されます。 <br>
+        発信した番号は許可されます。<br>
         <br>
-        メッセージの送信もカウントされます。これは、READ_SMS パーミッションが付与されている場合にのみ機能します。 <br>
+        メッセージを送信する場合もカウントされます。これは、READ_SMS権限が付与されている場合にのみ機能します。 <br>
         <br>
-        デフォルト設定は <font color="#03DAC5"><b>3 日</b></font> で、過去 3 日以内にその番号に発信またはメッセージを送信した場合、その番号からの通話は許可されます。 <br>
+        デフォルト設定は<font color="#03DAC5"><b>3 日</b></font>です。つまり、過去 3 日以内に番号に発信したりメッセージを送信したりした場合、その番号からの通話は許可されます。 <br>
         <br>
-        通話にのみ適用され、<b>テキストメッセージには適用されません</b>。 <br>
+        通話にのみ適用され、<b>テキストメッセージ</b>には適用されません。 <br>
         <br>
-        <font color="#ea86ff"><b>優先順位：10</b></font>
+        <font color="#ea86ff"><b>優先順位: 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        リスト内のアプリが最近使用された場合、すべての通話が通過します。 <br>
+        リスト内のいずれかのアプリが最近使用された場合は、すべての通話が通過します。 <br>
         <br>
-        一般的なユースケース： <br>
-        &emsp; PizzaApp でピザを注文したばかりで、すぐに閉鎖のため返金のために電話がかかってきました。 PizzaApp がここで有効になっている場合、その通話は通過します。 <br>
+        一般的なユースケース: <br>
+        &emsp; PizzaApp でピザを注文したばかりで、閉店のためすぐに返金のために電話がかかってきました。 PizzaApp がここで有効になっている場合は、その通話は通過します。 <br>
         <br>
-        デフォルト設定は <font color="03DAC5"><b>5 分</b></font> で、リスト内のいずれかのアプリが 5 分以内に使用された場合、すべての通話が通過します。「使用」とは、アクティブ化、非アクティブ化、最小化、または強制終了のいずれかを意味します。 <br>
+        デフォルト設定は<font color="03DAC5"><b>5 分</b></font>です。つまり、いずれかのアプリが 5 分以内に使用された場合は、すべての通話が通過します。`使用済み`とは、アクティブ化、非アクティブ化、最小化、または強制終了のいずれかです。 <br>
         <br>
-        通話にのみ適用され、<b>テキストメッセージには適用されません</b>。 <br>
+        通話にのみ適用され、<b>テキストメッセージ</b>には適用されません。 <br>
         <br>
-        <font color="#ea86ff"><b>優先順位：10</b></font>
+        <font color="#ea86ff"><b>優先順位: 10</b></font>
         ]]>
     </string>
 </resources>

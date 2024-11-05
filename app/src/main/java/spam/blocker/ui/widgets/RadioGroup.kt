@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -20,6 +21,7 @@ data class RadioItem(
     val color: Color = Color.Unspecified
 )
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun RadioGroup(
     items: List<RadioItem>,
@@ -28,32 +30,33 @@ fun RadioGroup(
 ) {
     val C = LocalPalette.current
 
-    items.forEachIndexed { idx, item ->
-        RowVCenter(
-            M.selectable(
-                // make the text also clickable
-                selected = idx == selectedIndex,
-                onClick = {
-                    onSelect(idx)
-                },
-            ),
-        ) {
-            RadioButton(
-                selected = idx == selectedIndex,
-                onClick = null,
-                modifier = M
-                    .scale(0.7f)
-                    .width(24.dp)// reduce the gap between RadioButton and Text
-                    .height(10.dp),
-                colors = RadioButtonDefaults.colors(
-                    unselectedColor = C.disabled,
+    FlowRowSpaced(8) {
+        items.forEachIndexed { idx, item ->
+            RowVCenter(
+                M.selectable(
+                    // make the text also clickable
+                    selected = idx == selectedIndex,
+                    onClick = {
+                        onSelect(idx)
+                    },
+                ),
+            ) {
+                RadioButton(
+                    selected = idx == selectedIndex,
+                    onClick = null,
+                    modifier = M
+                        .scale(0.7f)
+                        .width(24.dp)// reduce the gap between RadioButton and Text
+                        .height(10.dp),
+                    colors = RadioButtonDefaults.colors(
+                        unselectedColor = C.disabled,
+                    )
                 )
-            )
-            Text(
-                text = item.text,
-                color = item.color,
-                modifier = M.padding(end = 8.dp),
-            )
+                Text(
+                    text = item.text,
+                    color = item.color,
+                )
+            }
         }
     }
 }

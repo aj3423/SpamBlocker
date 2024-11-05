@@ -1,9 +1,9 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Quando ativado, todas as chamadas (mensagens) serão permitidas durante este período. Normalmente não há chamadas de spam à noite. <br>
+        Quando habilitado, todas as chamadas (mensagens) serão permitidas durante este período de tempo. Normalmente não há chamadas de spam à noite. <br>
         <br>
-        Se a hora de início for maior que a hora de término, por exemplo, 20:00 -> 07:00, significa o período das 20:00 da noite às 07:00 da manhã seguinte. <br>
+        Se a hora de início for maior que a hora de término, por exemplo, 20:00 -> 07:00, significa o período das 20:00 da noite até as 07:00 da manhã seguinte. <br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
@@ -11,27 +11,27 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Essas flags alteram o comportamento de correspondência da expressão regular, elas são definidas para novas regras por padrão. <br>
+            Essas bandeiras alteram o comportamento de correspondência da expressão regular, elas são definidas para novas regras por padrão. <br>
             <br>
 
             <font color="#00BFFF"><b>Ignorar maiúsculas e minúsculas</b></font>:<br>
             &ensp; Isso torna a correspondência de padrões insensível a maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
-              corresponderia tanto a <font color="#03DAC5"><b>a</b></font> quanto a <font color="#03DAC5"><b>A</b></font>. <br>
+              corresponderia a <font color="#03DAC5"><b>a</b></font> e <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
-            <font color="#00BFFF"><b>Ponto corresponde a todos</b></font>: <br>
-            &ensp; Quando ativado, <font color="#03DAC5"><b>.</b></font> também corresponderá a caracteres de nova linha (<font color="#03DAC5"><b>\\n</b></font>),
+            <font color="#00BFFF"><b>Ponto corresponde a tudo</b></font>: <br>
+            &ensp; Quando habilitado, <font color="#03DAC5"><b>.</b></font> também corresponderá a caracteres de nova linha (<font color="#03DAC5"><b>\\n</b></font>),
               isso permite que o ponto corresponda a várias linhas. <br>
             &ensp; Caso de uso: <br>
-            &emsp;   Correspondência de mensagem SMS multilinha: <br>
-            &emsp;   <font color="#fa7f71">reivindique seu prêmio: http://<br>
+            &emsp;   Corresponder a mensagem SMS multilinha: <br>
+            &emsp;   <font color="#fa7f71">reclame seu prêmio: http://<br>
             &emsp;   abc.com </font><br>
             &emsp;   com a regra: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#00BFFF"><b>Número bruto</b></font>: <br>
-            &ensp; Quando ativado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>0s iniciais</b></font> permanecerão, útil para diferenciar números domésticos.
+            <font color="#00BFFF"><b>Número Bruto</b></font>: <br>
+            &ensp; Quando habilitado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>zeros à esquerda</b></font> permanecerão, útil para diferenciar números domésticos.
         ]]>
     </string>
 

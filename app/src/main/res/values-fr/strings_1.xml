@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">Bloqueur de Spam</string>
+    <string name="app_name">SpamBlocker</string>
     <string name="setting">Paramètres</string>
     <string name="call">Appel</string>
     <string name="sms">SMS</string>
     <string name="enabled">Activé</string>
     <string name="sms_content_pattern">Contenu du SMS</string>
     <string name="invalid_regex_pattern">Expression régulière invalide</string>
-    <string name="pattern_contain_invisible_characters">Caractères invisibles trouvés</string>
-    <string name="pattern_contain_leading_zeroes">Pas besoin d\'ajouter le zéro initial, il sera supprimé avant la vérification.</string>
-    <string name="pattern_contain_leading_plus">Pas besoin d\'ajouter le signe plus initial, il sera supprimé avant la vérification.</string>
+    <string name="pattern_contain_invisible_characters">Des caractères invisibles ont été trouvés</string>
+    <string name="pattern_contain_leading_zeroes">Pas besoin d\'ajouter le 0 en tête, ils seront supprimés avant la vérification.</string>
+    <string name="pattern_contain_leading_plus">Pas besoin d\'ajouter le + en tête, ils seront supprimés avant la vérification.</string>
     <string name="check_balloon_for_explanation">Consultez l\'aide des `Règles de numéros` pour une explication détaillée.</string>
     <string name="invalid_number">Numéro invalide</string>
     <string name="description">Description</string>
@@ -42,21 +42,21 @@
     <string name="cancel">Annuler</string>
     <string name="miscellaneous">Divers</string>
     <string name="quick_settings">Paramètres rapides</string>
-    <string name="regex_settings">Paramètres Regex</string>
+    <string name="regex_settings">Paramètres de l\'expression régulière</string>
     <string name="backup">Sauvegarde</string>
     <string name="import_">Importer</string>
     <string name="imported">Importé</string>
     <string name="export">Exporter</string>
     <string name="config_text">Texte de configuration</string>
-    <string name="imported_successfully">Importation réussie</string>
+    <string name="imported_successfully">Importé avec succès</string>
     <string name="import_fail">Échec de l\'importation</string>
     <string name="go_to_setting">Aller aux paramètres</string>
-    <string name="prompt_go_to_usage_permission_setting">Cette fonctionnalité nécessite l\'autorisation :\n\n `Statistiques d\'utilisation`\n\nElle doit être activée manuellement dans les paramètres système.\n\n Ouvrir la page des paramètres ?</string>
+    <string name="prompt_go_to_usage_permission_setting">Cette fonctionnalité nécessite une autorisation :\n\n`Statistiques d\'utilisation`\n\nElle doit être activée manuellement dans les paramètres système.\n\nOuvrir la page des paramètres ?</string>
     <string name="emergency_call">Appel d\'urgence</string>
-    <string name="label_contact_filter">Filtre de contact</string>
+    <string name="label_contact_filter">Filtre des contacts</string>
     <string name="label_number_filter">Règles de numéros</string>
     <string name="label_content_filter">Règles de messages</string>
-    <string name="recent_apps">Application récente</string>
+    <string name="recent_apps"><short>Applications récentes</short></string>
     <string name="allow_contact">Contacts</string>
 
 </resources>

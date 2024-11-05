@@ -1,12 +1,12 @@
 <resources>
-    <string name="dialed_number">Gewählte Nummer</string>
+    <string name="dialed_number"><short>Gewählte Nummer</short></string>
     <string name="find_apps">Apps finden</string>
 
     <string name="confirm_delete_all_rule">Alle Regeln löschen bestätigen?</string>
 
     <string name="notification">Benachrichtigung</string>
     <string name="type">Typ</string>
-    <string name="times">Male</string>
+    <string name="times">Zeiten</string>
     <plurals name="days">
         <item quantity="one">%d Tag</item>
         <item quantity="two">%d Tage</item>
@@ -19,42 +19,42 @@
     <string name="within_days">Innerhalb von Tagen</string>
     <string name="phone_number">Telefonnummer</string>
     <string name="phone_number_abbrev">Nummer</string>
-    <string name="sms_content">SMS-Inhalt</string>
-    <string name="regex_flags">Regex-Flags</string>
+    <string name="sms_content">SMS Inhalt</string>
+    <string name="regex_flags">Regex Flags</string>
     <string-array name="regex_flags_list">
         <item>Groß-/Kleinschreibung ignorieren</item>
-        <item>Punkt stimmt mit allem überein</item>
-        <item>Roh-Nummer</item>
+        <item>Punkt passt zu allen</item>
+        <item>Rohzahl</item>
     </string-array>
-    <string name="disable_number_optimization">Diese Optimierung kann mit dem Regex-Flag `Roh-Nummer` deaktiviert werden.</string>
+    <string name="disable_number_optimization">Diese Optimierung kann durch den Regex-Flag "Rohzahl" deaktiviert werden.</string>
     <string name="off_time">Auszeit</string>
     <string name="schedule">Zeitplan</string>
-    <string name="workday">Werktag</string>
+    <string name="workday">Arbeitstag</string>
     <string name="weekend">Wochenende</string>
     <string name="entire_day">Ganzer Tag</string>
-    <string name="block_type">Blocktyp</string>
+    <string name="block_type">Block-Typ</string>
     <string name="for_particular_number">Für Nummer</string>
-    <string name="help_for_particular_number">Wenn aktiviert, gilt die Regel nur, wenn Nummer und Inhalt übereinstimmen.</string>
+    <string name="help_for_particular_number">Wenn aktiviert, gilt die Regel nur, wenn sowohl Nummer als auch Inhalt übereinstimmen.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Ablehnen</b></font>: <br>
-        &emsp; Wie das Drücken der Ablehntaste. Es funktioniert völlig lautlos, der Sperrbildschirm wird nicht eingeschaltet, es ist der empfohlene Typ, wenn du keinen Anrufbeantworter verwendest.<br>
+        &emsp; Dasselbe wie das Drücken der Ablehnungsschaltfläche. Es funktioniert völlig lautlos, der Sperrbildschirm wird nicht aktiviert, dies ist der empfohlene Typ, wenn Sie keinen Anrufbeantworter verwenden.<br>
         <br>
-        - <font color="#00BFFF"><b>Stumm schalten</b></font>: <br>
-        &emsp; Es läutet im Hintergrund stumm, so dass der Anrufer den Eindruck hat, du seist einfach beschäftigt und hast nicht abgehoben. <br>
+        - <font color="#00BFFF"><b>Stummschalten</b></font>: <br>
+        &emsp; Es klingelt im Hintergrund leise, wodurch der Anrufer den Eindruck gewinnt, dass Sie gerade beschäftigt sind und nicht abgenommen haben. <br>
         <br>
         - <font color="#00BFFF"><b>Annehmen und auflegen</b></font>: <br>
-        &emsp; Um zu vermeiden, dass du zum Anrufbeantworter weitergeleitet wirst. Der Sperrbildschirm kann für kurze Zeit eingeschaltet werden,
-         du hörst möglicherweise auch einen Anrufabbruchton (einige Telefone bieten eine Option, diesen Ton stummzuschalten).
+        &emsp; Um zu vermeiden, dass Sie an den Anrufbeantworter weitergeleitet werden. Der Sperrbildschirm kann kurz aktiviert werden,
+         möglicherweise hören Sie auch einen Gesprächsendeton (einige Telefone bieten eine Option, diesen Ton stummzuschalten).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
         Gewählte Nummern werden zugelassen.<br>
         <br>
-        Das Senden einer Nachricht zählt ebenfalls, dies funktioniert nur, wenn die Berechtigung READ_SMS erteilt wurde. <br>
+        Das Senden von Nachrichten zählt ebenfalls, dies funktioniert nur, wenn die Berechtigung READ_SMS erteilt wird. <br>
         <br>
-        Die Standardeinstellung <font color="#03DAC5"><b>3 Tage</b></font> bedeutet, dass Anrufe von dieser Nummer zugelassen werden, wenn du die Nummer innerhalb der letzten 3 Tage gewählt oder Nachrichten an sie gesendet hast.<br>
+        Die Standardeinstellung <font color="#03DAC5"><b>3 Tage</b></font> bedeutet, dass Anrufe von dieser Nummer zugelassen werden, wenn Sie innerhalb der letzten 3 Tage die Nummer gewählt oder Nachrichten an diese gesendet haben.<br>
         <br>
         Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>
@@ -63,13 +63,13 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Jeder Anruf wird durchgelassen, wenn eine App in der Liste kürzlich verwendet wurde.<br>
+        Jeder Anruf würde durchgehen, wenn eine der Apps in der Liste kürzlich verwendet wurde.<br>
         <br>
         Ein typischer Anwendungsfall:<br>
-        &emsp; Du hast gerade in PizzaApp eine Pizza bestellt, kurz darauf rufen sie dich an, um eine Rückerstattung zu veranlassen, weil sie schließen. Dieser Anruf würde durchgelassen, wenn PizzaApp hier aktiviert ist. <br>
+        &emsp; Sie haben gerade eine Pizza in PizzaApp bestellt, bald rufen sie Sie an, um Ihnen eine Rückerstattung anzubieten, weil sie schließen. Dieser Anruf würde durchgehen, wenn PizzaApp hier aktiviert ist. <br>
         <br>
-        Die Standardeinstellung <font color="03DAC5"><b>5 Min</b></font> bedeutet, dass jeder Anruf durchgelassen wird, wenn eine der Apps innerhalb von 5 Minuten verwendet wurde,
-        unter „verwendet“ versteht man entweder Aktivieren, Deaktivieren, Minimieren oder Beenden. <br>
+        Die Standardeinstellung <font color="03DAC5"><b>5 Min</b></font> bedeutet, dass jeder Anruf durchgeht, wenn eine der Apps innerhalb von 5 Minuten verwendet wurde,
+        mit `verwendet` ist gemeint, dass sie entweder aktiviert, deaktiviert, minimiert oder beendet wurde. <br>
         <br>
         Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
         <br>

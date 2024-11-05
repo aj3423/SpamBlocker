@@ -1,28 +1,28 @@
 <resources>
-    <string name="start_time">Hora de Início</string>
-    <string name="end_time">Hora de Término</string>
-    <string name="switch_mode">Alternar Modo</string>
-    <string name="contact_group">Grupo de Contatos</string>
+    <string name="start_time">Hora de início</string>
+    <string name="end_time">Hora de término</string>
+    <string name="switch_mode">Alternar modo</string>
+    <string name="contact_group">Grupo de contatos</string>
     <string name="help_number_mode">
         <![CDATA[
         <font color="#00BFFF"><b>Número de Telefone</b></font>:<br>
-        &ensp; O modo padrão, a expressão regular coincidirá com o número de telefone.<br>
+        &ensp; O modo padrão, a expressão regular corresponderá ao número de telefone.<br>
         <br>
         <font color="#00BFFF"><b>Contatos</b></font>:<br>
-        &ensp; A expressão regular coincidirá com o nome do contato associado ao número de entrada.<br>
+        &ensp; A expressão regular corresponderá ao nome do contato associado ao número de entrada.<br>
         &ensp;  - Um caso de uso:<br>
         &emsp; Bloquear todos os não contatos no fim de semana com a expressão regular `.*`.<br>
         <br>
         <font color="#00BFFF"><b>Grupo de Contatos</b></font>:<br>
-        &ensp; A expressão regular coincidirá com o nome do grupo de contatos associado ao número de entrada,
+        &ensp; A expressão regular corresponderá ao nome do grupo de contatos associado ao número de entrada,
                  impactando todos os contatos nesse grupo, para que você não precise adicioná-los individualmente,
-                 e não há necessidade de atualizar mesmo quando houver mudanças de pessoal.<br>
+                 e não precisa atualizá-lo mesmo quando houver mudanças de pessoal.<br>
         &ensp;  - Um caso de uso:<br>
         &emsp; Bloquear todos os colegas de trabalho no fim de semana bloqueando o grupo de contatos "trabalho".
         ]]>
     </string>
-    <string name="text_too_long">Texto muito longo, edição desabilitada</string>
-    <string name="follow_system">Seguir Sistema</string>
+    <string name="text_too_long">Texto muito longo, a edição está desabilitada</string>
+    <string name="follow_system"><short>Seguir Sistema</short></string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>
@@ -32,13 +32,13 @@
         <item>Pesquisar Regra</item>
         <item>Clonar Regra</item>
         <item>Excluir Regras Duplicadas</item>
-        <item>Excluir Todas(%d) Regras</item>
+        <item>Excluir Todas (%d) Regras</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">Confirmar a exclusão de %d Regras duplicadas?</string>
     <string name="duration">Duração</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Duração individual para cada aplicativo, quando deixado em branco, voltará à duração global.
+        Duração individual para cada aplicativo, quando deixada em branco, voltará para a duração global.
         ]]>
     </string>
 </resources>

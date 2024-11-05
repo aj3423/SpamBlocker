@@ -6,39 +6,39 @@
     <string name="help_number_mode">
         <![CDATA[
         <font color="#00BFFF"><b>電話番号</b></font>:<br>
-        &ensp; デフォルトモードで、正規表現は電話番号と一致します。<br>
+        &ensp; デフォルトモードでは、正規表現は電話番号と一致します。<br>
         <br>
         <font color="#00BFFF"><b>連絡先</b></font>:<br>
         &ensp; 正規表現は、着信番号に関連付けられた連絡先名と一致します。<br>
-        &ensp;  - 使用例:<br>
-        &emsp; 正規表現`.*`を使用して、週末はすべての非連絡先をブロックします。<br>
+        &ensp;  - ユースケース:<br>
+        &emsp; 週末に連絡先以外のすべてを正規表現`.*`でブロックします。<br>
         <br>
         <font color="#00BFFF"><b>連絡先グループ</b></font>:<br>
         &ensp; 正規表現は、着信番号に関連付けられた連絡先グループ名と一致します。
-                 これにより、そのグループ内のすべての連絡先に影響するため、個別に追加する必要がなく、
+                 これにより、そのグループのすべての連絡先に影響が及ぶため、個別に追加する必要がなく、
                  人事異動があっても更新する必要はありません。<br>
-        &ensp;  - 使用例:<br>
-        &emsp; 連絡先グループ「仕事」をブロックして、週末はすべての同僚をブロックします。
+        &ensp;  - ユースケース:<br>
+        &emsp; 連絡先グループ「仕事」をブロックすることで、週末にすべての同僚をブロックします。
         ]]>
     </string>
-    <string name="text_too_long">テキストが長すぎます。編集は無効になっています。</string>
-    <string name="follow_system">システムに従う</string>
+    <string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
+    <string name="follow_system"><short>システムに従う</short></string>
     <string name="theme">テーマ</string>
     <string-array name="theme_list">
         <item>ライト</item>
         <item>ダーク</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>ルール検索</item>
-        <item>ルール複製</item>
-        <item>重複ルール削除</item>
-        <item>すべて(%d)のルール削除</item>
+        <item>ルールを検索</item>
+        <item>ルールを複製</item>
+        <item>重複したルールを削除</item>
+        <item>すべての(%d)ルールを削除</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">%dの重複ルールを削除しますか？</string>
+    <string name="confirm_delete_duplicated_rule">%dの重複したルールを削除しますか?</string>
     <string name="duration">期間</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        アプリごとの個別の期間。空欄の場合、グローバル期間に戻ります。
+        各アプリの個別の期間。空欄の場合、グローバル期間に戻ります。
         ]]>
     </string>
 </resources>

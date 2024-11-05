@@ -1,7 +1,7 @@
 <resources>
     <string name="crash_title">
-        Perdón, a aplicación fallou.\n\n
-        Por favor, copia o contido de abaixo e informa deste problema en github,
+        Pena, a aplicación fallou.\n\n
+        Por favor, copia o contido de abaixo e reporta este problema en github,
         elimina calquera información sensible antes de informar.
     </string>
     <string-array name="short_weekdays">
@@ -17,36 +17,36 @@
     <string-array name="block_type_list">
         <item>Rexeitar</item>
         <item>Silencio</item>
-        <item>Atender + Colgar</item>
+        <item>Atender+Colgar</item>
     </string-array>
 
     <string name="show_passed">Mostrar Pasados</string>
     <string name="show_blocked">Mostrar Bloqueados</string>
 
-    <string name="confirm_delete_all_records">Confirmar borrar todos os rexistros?</string>
+    <string name="confirm_delete_all_records">Confirmar eliminar todos os rexistros?</string>
     <string name="expiry">Caducidade</string>
     <string name="days">Días</string>
     <string name="help_history_ttl">
         <![CDATA[
             <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Os rexistros de historial rexistraránse na base de datos e caducarán despois de N días,
-              os rexistros caducados eliminaranse automaticamente.<br>
+            &emsp; Os rexistros do historial serán rexistrados na base de datos e caducarán despois de N días,
+              os rexistros caducados serán eliminados automaticamente.<br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; O rexistro de historial está desactivado, nada se rexistrará na base de datos.<br>
+            &emsp; O rexistro do historial está desactivado, nada se rexistrará na base de datos.<br>
             <br>
             <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Os rexistros rexistraránse e nunca caducarán.
+            &emsp; Os rexistros serán rexistrados e nunca caducarán.
         ]]>
     </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Cando se activa, o contido do SMS tamén se rexistrará na base de datos e mostraráse nesta lista, non se rexistrará na base de datos cando se desactive.<br>
+        Cando está habilitado, o contido do SMS tamén se rexistrará na base de datos e se mostrará nesta lista, non se rexistrará na base de datos cando estea desactivado.<br>
         <br>
-        - Cando se activa:<br>
+        - Cando está habilitado:<br>
         &emsp; <b>Toca</b> para expandir/colapsar a mensaxe completa.<br>
         <br>
-        - Cando se desactive:<br>
+        - Cando está desactivado:<br>
         &emsp; <b>Toca</b> para abrir a conversa na aplicación predeterminada.
         ]]>
     </string>
@@ -60,33 +60,33 @@
     <string-array name="importance_list">
         <item>Ningún</item>
         <item>Sombra</item>
-        <item>Barra de estado, Sombra</item>
-        <item>Son, Barra de estado, Sombra</item>
-        <item>Son, Barra de estado, Sombra, Heads-up</item>
+        <item>Barra de Estado, Sombra</item>
+        <item>Son, Barra de Estado, Sombra</item>
+        <item>Son, Barra de Estado, Sombra, Cabeceira</item>
     </string-array>
     <string-array name="export_type_list">
         <item>Exportar como Json</item>
-        <item>Exportar como comprimido</item>
+        <item>Exportar como Comprimido</item>
     </string-array>
 
-    <string name="language">Idioma</string>
+    <string name="language">Lingua</string>
     <string name="help_language">
         <![CDATA[
-            As traducións están feitas por Google AI, abre un problema en github para engadir un novo soporte de idioma.
+            As traducións están feitas por Google AI, abre un problema en github para engadir soporte para unha nova lingua.
         ]]>
     </string>
-    <string name="enabled_for_call">Activar para chamada</string>
-    <string name="enabled_for_sms">Activar para SMS</string>
+    <string name="enabled_for_call">Habilitar para chamada</string>
+    <string name="enabled_for_sms">Habilitar para SMS</string>
     <string name="repeated_call">Chamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir se a chamada se repete nun período de tempo, é probable que sexa importante en vez dunha chamada de spam. <br>
+        Permitir se a chamada se repete nun período de tempo, é probable que sexa importante en vez dunha chamada spam. <br>
         <br>
-        Recibir unha mensaxe de texto do mesmo número tamén se conta, isto depende de se se concede o permiso READ_SMS, que é opcional.<br>
+        Recibir unha mensaxe de texto do mesmo número tamén se conta, isto depende de se o permiso READ_SMS está concedido, que é opcional.<br>
         <br>
-        O axuste predeterminado <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que a segunda chamada dentro de 5 minutos se permitirá. <br>
+        A configuración predeterminada <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que a segunda chamada dentro dos 5 minutos se permitirá. <br>
         <br>
-        Só se aplica a chamadas, <b>non</b> a mensaxes de texto. <br>
+        Só se aplica ás chamadas, <b>non</b> ás mensaxes de texto. <br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
@@ -94,35 +94,35 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        O interruptor global, esta aplicación só funciona cando está activada,
-        desactivaa cando esteas esperando unha chamada/mensaxe particular. <br>
+        O interruptor global, esta aplicación só funciona cando isto está activado,
+        desactivalo cando esteas esperando unha chamada/mensaxe en particular. <br>
         <br>
-        Tamén se pode alternar desde a <font color="#6ed0ff"><b>Configuración rápida de despregable</b></font>.<br>
+        Tamén se pode alternar desde as <font color="#6ed0ff"><b>Configuracións rápidas do menú despregable</b></font>.<br>
         <br>
-        Para SMS, esta aplicación asumirá as notificacións de SMS, por favor
+        Para SMS, esta aplicación se encargará das notificacións SMS, por favor
         <font color="#fa7f71"><b>desactiva o permiso de notificación da aplicación SMS predeterminada</b></font> nas configuracións do sistema,
-        en caso contrario, haberá notificacións duplicadas.
-        Só filtra as notificacións de SMS, as mensaxes de SMS de spam aínda estarán presentes na aplicación SMS predeterminada.
+        en caso contrario haberá duplicidade de notificacións.
+        Só filtra as notificacións SMS, as mensaxes SMS spam seguirán estando presentes na aplicación SMS predeterminada.
         ]]>
     </string>
 
-    <string name="about">Sobre</string>
+    <string name="about">Acerca de</string>
     <string name="version">Versión</string>
     <string name="build_time">Tempo de compilación (UTC)</string>
     <string name="source_code">Código fonte</string>
     <string name="dismiss">Descartar</string>
     <string name="warning_running_in_work_profile">
-        Esta aplicación pode non funcionar correctamente dentro do perfil de traballo, instálaa no perfil principal en vez diso.
+        Esta aplicación pode non funcionar correctamente dentro do perfil de traballo, instalaa no perfil principal en vez diso.
     </string>
     <string-array name="import_csv_type">
         <item>Importar .csv como unha única regra</item>
         <item>Importar .csv como varias regras</item>
     </string-array>
     <string name="warning_double_sms">
-        Esta aplicación asumirá todas as notificacións de SMS,
+        Esta aplicación se encargará de todas as notificacións SMS,
         pero o permiso de notificación da aplicación SMS predeterminada tamén está activado,
-        desactívaa nas configuracións do sistema para evitar notificacións de SMS duplicadas.
+        desactívao nas configuracións do sistema para evitar notificacións SMS duplicadas.
     </string>
-    <string name="open_settings">Abrir configuracións</string>
+    <string name="open_settings">Abrir configuración</string>
     <string name="ignore">Ignorar</string>
 </resources>

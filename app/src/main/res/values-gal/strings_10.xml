@@ -1,50 +1,49 @@
 <resources>
     <string name="help_number_filter">
         <![CDATA[
-        Estas regras aplícanse ao número de teléfono entrante.<br>
+        Estas regras aplícanse ao <translate>número de teléfono</translate> entrante.<br>
         <br>
-        <font color="#00BFFF"><b> - Relativo á IU</b></font>:<br>
-        Desmarca as caixas de verificación para deshabilitar a regra, <font color="#fa7f71"><b>desliza cara a esquerda para eliminar</b></font> a mesma.<br>
+        <font color="#00BFFF"><b> - Relacionado coa IU</b></font>:<br>
+        Desmarca as caixas de verificación para desactivar a regra, <font color="#fa7f71"><b>desliza cara á esquerda para eliminala</b></font>.<br>
         <br>
-        A lista <b>amósase</b> en orde descendente de prioridade, ascendente de descrición e ascendente de patrón.<br>
+        A lista <b>amóstrase</b> en orde descendente de prioridade, ascendente de descrición e ascendente de patrón.<br>
         <br>
         <font color="#00BFFF"><b> - Optimización de Regex</b></font>:<br>
         Para simplificar a regex,
           <font color="#fa7f71"><b>+</b></font>,
            <font color="#fa7f71"><b>espazos</b></font>
-          e <font color="#fa7f71"><b>ceros iniciais</b></font>
-          se eliminan antes de comprobar, por exemplo:<br>
+          e <font color="#fa7f71"><b>ceros á esquerda</b></font>
+          eliminanse antes de comprobar, por exemplo:<br>
         &emsp; Todos estes formatos:<br>
-        &emsp;&emsp; 123456789 &emsp;(número regular)<br>
+        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espazos</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con inicial <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefixo doméstico <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con código de país <font color="#fa7f71"><b>+</b></font> á esquerda)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefixo de tronco nacional <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dous <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Todos eles <b>se comprueban</b> como:<br>
+        &emsp; Todos eles son comprobados como:<br>
         &emsp;&emsp; 123456789 <br>
         &emsp; Polo tanto, a regex <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos eles.<br>
-        Esta optimización do número pódese <b>deshabilitar</b> coa marca de regex `Número bruto`.<br>
+        Esta optimización de número pódese <b>desactivar</b> coa bandeira regex "Raw Number".<br>
         <br>
-        <font color="#00BFFF"><b> - Algúns patróns típicos</b></font>:<br>
-        &ensp; - Calquera número: <font color="#03DAC5"><b>.*</b></font> (a regex .* é equivalente ao comodín * noutras aplicacións) <br>
+        <font color="#00BFFF"><b> - Algúns padróns típicos</b></font>:<br>
+        &ensp; - Calquera número: <font color="#03DAC5"><b>.*</b></font> (a regex .* é equivalente á comodín * en outras aplicacións) <br>
         &ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Comeza con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - Termina en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - Menor de 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - Maior de 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Comeza por 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Remata en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Menor que 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Maior que 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Número descoñecido (cadea baleira): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Contén "verificación": <font color="#03DAC5"><b>.*verification.*</b></font> <br>
-        &ensp; - Contén calquera das palabras: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font> <br>
-        &ensp; - Comeza con 400, con código de país 11 ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Contén "<translate>verificación</translate>": <font color="#03DAC5"><b>.*<translate>verificación</translate>.*</b></font> <br>
+        &ensp; - Contén algunha das palabras: <font color="#03DAC5"><b>.*(<translate>policía|hospital|verificación</translate>).*</b></font> <br>
+        &ensp; - Comeza por 400, con código de país 11 ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <font color="#00BFFF"><b> - Importar regras desde .csv</b></font>:<br>
-        Podes exportar regras desde outra aplicación a un ficheiro .csv e importalas a esta aplicación.<br>
-        Preme longamente o botón `Engadir` para importar números desde un ficheiro .csv, columnas compatibles:<br>
-         - <no_translate><b>pattern</b></no_translate>: A regex(<b>obrigatorio</b>)<br>
+        <font color="#00BFFF"><b> - Importar regras de .csv</b></font>:<br>
+        Preme longamente o botón `Engadir` para importar <translate>números</translate> desde o ficheiro .csv, columnas compatibles:<br>
+         - <no_translate><b>pattern</b></no_translate>: A regex(<b>necesario</b>)<br>
          - <no_translate><b>description</b></no_translate>: Descrición<br>
          - <no_translate><b>priority</b></no_translate>: Prioridade, por defecto 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Aplícase a chamada), 2(Aplícase a SMS), 3(ambas), por defecto 3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
+         - <no_translate><b>flags</b></no_translate>: 1(Aplicar a Chamada), 2(Aplicar a SMS), 3(ambos), por defecto 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou lista branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondente aos 3 tipos de bloqueo, por defecto 0<br>
          - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondente aos 5 tipos de notificación, por defecto 2
         ]]>

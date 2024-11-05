@@ -2,15 +2,15 @@
     <string name="contact_rule">Regra de Contato</string>
     <string name="directory">Diretório</string>
     <string name="filename">Nome do Arquivo</string>
-    <string name="invalid_input_type">Tipo de entrada inválido, espera: %s, obteve: %s</string>
+    <string name="invalid_input_type">Tipo de entrada inválido, esperado: %s, obtido: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Dias de Expiração</string>
-    <string name="column_mapping">Mapeamento de Coluna</string>
-    <string name="include_spam_db">Incluir Banco de Dados de Spam</string>
+    <string name="expiry_days">Dias de Validade</string>
+    <string name="column_mapping">Mapeamento de Colunas</string>
+    <string name="include_spam_db">Incluir Banco de Dados de <translate>Spam</translate></string>
     <string name="configuration_only">Somente Configuração</string>
     <string name="no_config_needed">Não precisa de configuração</string>
     <string name="success">Sucesso</string>
-    <string name="failed">Falhou</string>
+    <string name="failed">Falha</string>
     <string name="running">Em execução</string>
     <string name="optional">(opcional)</string>
 
@@ -19,7 +19,7 @@
         <![CDATA[
         - <font color="#03DAC5"><b>Teste</b></font><br>
         Essas ações serão executadas imediatamente, para verificar se foram configuradas corretamente,
-        ou talvez você queira apenas executar manualmente este fluxo de trabalho.<br>
+        ou talvez você só queira executar este fluxo de trabalho manualmente.<br>
         <br>
         - <font color="#00BFFF"><b>Novo</b></font><br>
             Crie uma nova ação, várias ações podem ser encadeadas para completar uma tarefa complexa.<br>
@@ -27,23 +27,23 @@
             <br>
             Alguns exemplos de fluxos de trabalho: <br>
             <br>
-            &emsp; - baixar arquivo http -> decodificar formato 7z -> analisar como formato csv -> importar para o banco de dados de spam.<br>
+            &emsp; - baixar arquivo http -> decodificar formato 7z -> analisar como formato csv -> importar para o banco de dados de <translate>spam</translate>.<br>
             <br>
-            &emsp; - aplicar as configurações A nos dias úteis e aplicar as configurações B no fim de semana.<br>
+            &emsp; - aplicar as configurações A nos dias úteis e as configurações B no fim de semana.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Baixe números de telefone de spam de
+            Baixe os <translate>números de telefone de spam</translate> de
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
             <no_translate>FTC - Do Not Call</no_translate> </a> todos os dias úteis,
-             e importe-os para o banco de dados de spam.
+             e importe-os para o banco de dados de <translate>spam</translate>.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Excluir registros expirados do banco de dados de spam.</string>
-    <string name="help_bot_preset_cleanup_history">Excluir registros de chamadas/SMS expirados do histórico.</string>
-    <string name="help_bot_preset_auto_backup">Fazer backup de todas as configurações.</string>
+    <string name="help_bot_preset_cleanup_spam_db">Exclua os registros expirados do banco de dados de <translate>spam</translate>.</string>
+    <string name="help_bot_preset_cleanup_history">Exclua os registros de histórico de chamadas/SMS expirados.</string>
+    <string name="help_bot_preset_auto_backup">Faça backup de todas as configurações.</string>
     <string name="everyday">Todos os dias</string>
     <string name="daily">Diariamente</string>
     <string name="weekly">Semanalmente</string>
@@ -53,15 +53,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        Se você não usar o banco de dados de spam, ambas as opções serão equivalentes.<br>
+        Se você não usar o banco de dados de <translate>spam</translate>, ambas as opções serão equivalentes.<br>
         <br>
-        - <b>Incluir Banco de Dados de Spam</b><br>
-        &emsp; Não use isso para backup regular, pois o banco de dados de spam deve ser atualizado com frequência.
+        - <b>Incluir Banco de Dados de <translate>Spam</translate></b><br>
+        &emsp; Não use isso para backup regular, pois o banco de dados de <translate>spam</translate> deve ser atualizado frequentemente.
          Isso só é útil ao clonar a configuração para outro telefone.<br>
         <br>
         - <b>Somente Configuração</b><br>
         &emsp; - Ao exportar, isso reduzirá o tamanho do arquivo de backup. <br>
-        &emsp; - Ao importar, os registros no banco de dados de spam manterão seu estado atual.
+        &emsp; - Ao importar, os registros no banco de dados de <translate>spam</translate> manterão seu estado atual.
         ]]>
     </string>
     <string name="mode">Modo</string>
@@ -73,17 +73,17 @@
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Criar</b></font><br>
-        &ensp; Sempre crie uma nova regra regex.<br>
+        &ensp; Sempre crie uma nova regra de expressão regular.<br>
         <br>
         - <font color="#00BFFF"><b>Substituir</b></font><br>
         &ensp; Ele tentará encontrar uma regra existente que tenha a mesma <b>descrição</b>. <br>
-        &ensp;&ensp; - Se encontrado, será substituído.<br>
-        &ensp;&ensp; - Se não encontrado, uma nova regra será criada, igual a <b>Criar</b>.<br>
+        &ensp;&ensp; - Se encontrada, será substituída.<br>
+        &ensp;&ensp; - Se não encontrada, uma nova regra será criada, igual ao <b>Criar</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Mesclar</b></font><br>
-        &ensp;- Se uma regra com a mesma descrição existir, os novos números serão mesclados nela,<br>
-         números duplicados serão removidos automaticamente.<br>
-        &ensp;- Se não existir, uma nova regra será criada, igual a <b>Criar</b>.<br>
+        &ensp;- Se uma regra com a mesma descrição existir, os novos <translate>números</translate> serão mesclados nela,<br>
+         os <translate>números</translate> duplicados serão removidos automaticamente.<br>
+        &ensp;- Se não existir, uma nova regra será criada, igual ao <b>Criar</b>.<br>
         ]]>
     </string>
 

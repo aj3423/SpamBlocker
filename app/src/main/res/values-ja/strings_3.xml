@@ -1,46 +1,45 @@
 <resources>
     <string name="help_sms_content_filter">
         <![CDATA[
-        これらのルールは SMS の内容に適用されます。<br>
+        これらのルールはSMSコンテンツに適用されます。<br>
         <br>
-        <font color="#00BFFF"><b> - 一般的なパターン</b></font>:<br>
-        &ensp; - "verification" を含む: <font color="#03DAC5"><b>.*verification.*</b></font><br>
-        &ensp; - 次のいずれかの単語を含む: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
+        <font color="#00BFFF"><b> - 典型的なパターン</b></font>:<br>
+        &ensp; - "verification"を含む: <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - 以下のいずれかの単語を含む: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
     <string name="help_quick_copy">
         <![CDATA[
-        SMS メッセージまたは電話番号からコンテンツをコピーするための簡単な方法で、確認コードや着信番号を簡単に取得できます。<br>
+        SMSメッセージまたは電話番号からコンテンツをコピーするための簡単な方法であり、認証コードや着信番号を簡単に取得できます。<br>
         <br>
-        一致すると、<font color="#00BFFF"><b>コピー: 123456</b></font> のようなボタンが通知に表示されます。<br>
+        一致した場合、<font color="#00BFFF"><b>コピー: 123456</b></font>のようなボタンが通知に表示されます。<br>
         <br>
-        確認コードを抽出するためのサンプルルール:<br>
-        &emsp; キャプチャグループを使用:<br>
+        認証コードを抽出するためのサンプルルール:<br>
+        &emsp; キャプチャリンググループを使用:<br>
         &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp; ルックアラウンドを使用した別の方法:<br>
+        &emsp; ルックアラウンドを使用する別の方法:<br>
         &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
         ]]>
     </string>
     <string name="help_apply_to_call_sms">
         <![CDATA[
-        通話、SMS、またはその両方にこのルールを有効にします。<br>
-        削除せずにルールを無効にするには、これらのチェックボックスをオフにします。
+        このルールを電話、SMS、またはその両方に有効にします。<br>
+        これらのチェックボックスをオフにすると、ルールを削除せずに無効にすることができます。
         ]]>
     </string>
     <string name="help_apply_to_number_and_message">
         <![CDATA[
-        <font color="#00BFFF"><b>番号</b></font> がオンの場合、このルールは着信番号からコンテンツを抽出します。
-        たとえば、<b>(.*)</b> を使用して電話番号をコピーします。<br>
+        <font color="#00BFFF"><b>電話番号</b></font>がチェックされている場合、このルールは着信番号からコンテンツを抽出します。
+        たとえば、<b>(.*)</b>を使用して電話番号をコピーします。<br>
         <br>
-        <font color="#00BFFF"><b>コンテンツ</b></font> がオンの場合、このルールは SMS メッセージ本文から、
-        確認コードなどのコンテンツを抽出します。
+        <font color="#00BFFF"><b>コンテンツ</b></font>がチェックされている場合、このルールは認証コードなどのSMSメッセージ本文からコンテンツを抽出します。
         ]]>
     </string>
     <string name="help_apply_to_passed_and_blocked">
         <![CDATA[
-        <font color="#03DAC5"><b>通過</b></font> がオンの場合、このルールは通過した通話とメッセージに適用されます。<br>
+        <font color="#03DAC5"><b>通過</b></font>がチェックされている場合、このルールは通過した通話とメッセージに適用されます。<br>
         <br>
-        <font color="#fa7f71"><b>ブロック</b></font> がオンの場合、このルールはブロックされた通話とメッセージに適用されます。
+        <font color="#fa7f71"><b>ブロック</b></font>がチェックされている場合、このルールはブロックされた通話とメッセージに適用されます。
         ]]>
     </string>
     <string name="help_importance">
@@ -48,18 +47,18 @@
         <b>なし</b>:<br>&emsp; 通知は一切ありません。 <br>
         <b>シェード</b>:<br>&emsp; ドロップダウン通知シェード。 <br>
         <b>ステータスバー</b>:<br>&emsp; 上部のバーにある小さなアイコン。 <br>
-        <b>サウンド</b>:<br>&emsp; デフォルトの通知サウンド。 <br>
-        <b>ヘッドアップ</b>:<br>&emsp; 画面上部にフローティングウィンドウをポップアップします。
+        <b>サウンド</b>:<br>&emsp; デフォルトの通知音。 <br>
+        <b>ヘッドアップ</b>:<br>&emsp; 画面の上部にフロートウィンドウを表示します。
         ]]>
     </string>
     <string name="title_rule_testing">ルールテスト</string>
     <string name="help_test_rules">
         <![CDATA[
-        これは、ルールが期待どおりに設定されているかどうかを確認するのに役立ちます。<br>
+        これにより、ルールが期待どおりに設定されているかどうかを確認できます。<br>
         <br>
-        これは単なるシミュレーションであり、実際に着信通話（またはテキストメッセージ）をポップアップすることはありません。<br>
+        これは単なるシミュレーションであり、実際には着信電話（またはテキストメッセージ）はポップアップしません。<br>
         <br>
-        結果は、ここに、履歴ログに、通知とともに表示されます。
+        結果は、通知付きでここに、および履歴ログに表示されます。
         ]]>
     </string>
 

@@ -7,18 +7,18 @@
 
     <string name="help_spam_db">
         <![CDATA[
-        このデータベース内の番号はブロックされます。<br>
+        このデータベース内の<translate>番号</translate>はブロックされます。<br>
         <br>
-        公開されているデータベースを統合したり、複数のデータベースを統合したりできます。また、ローカルファイルから番号をインポートすることもできます。<br>
+        <translate>スパム</translate>の公開データベースを統合したり、複数のデータベースを統合したり、ローカルファイルから<translate>番号</translate>をインポートすることもできます。<br>
         <br>
-        自動インポートタスクのスケジュール設定方法については、下の「自動化」セクションをご覧ください。<br>
+        自動インポートタスクのスケジュール設定方法については、以下の「自動化」セクションを確認してください。<br>
         <br>
-        これは、通話とSMSメッセージの両方に適用されます。<br>
+        これは通話とSMSメッセージの両方に適用されます。<br>
         <br>
-        <font color="#ea86ff"><b>優先度: 0</b></font>
+        <font color="#ea86ff"><b>優先順位: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">データベース内の迷惑電話の番号はN日後に期限切れになり、期限切れのレコードは自動的に削除されます。</string>
+    <string name="help_spam_db_ttl">データベース内の<translate>スパム番号</translate>はN日後に期限切れになり、期限切れのレコードは自動的に削除されます。</string>
     <string name="customize">カスタマイズ</string>
     <string name="workflow">ワークフロー</string>
     <string name="workflows">ワークフロー</string>
@@ -27,39 +27,39 @@
         <![CDATA[
         ワークフローは、データベースの更新や自動バックアップなど、タスクを自動的に実行するために使用できます。<br>
         <br>
-        クイックセットアップ用のプリセットがあり、ゼロから構築することも、他のユーザーから共有されたjson構成からインポートすることもできます。<br>
+        クイックセットアップ用のプリセットがありますが、ゼロから構築することも、他のユーザーから共有されたjson構成からインポートすることもできます。<br>
         <br>
-        広く使用できるワークフローが見つかり、プリセットに追加する必要がある場合は、githubに報告してください。
+        広く使用でき、プリセットに追加する必要があるワークフローを見つけた場合は、githubで報告してください。
         ]]>
     </string>
     <string name="manual">手動</string>
 
     <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
-    <string name="bot_preset_cleanup_spam_db">迷惑電話データベースのクリーンアップ</string>
-    <string name="bot_preset_cleanup_history">履歴のクリーンアップ</string>
+    <string name="bot_preset_cleanup_spam_db"><translate>スパムデータベースクリーンアップ</translate></string>
+    <string name="bot_preset_cleanup_history"><translate>履歴クリーンアップ</translate></string>
     <string name="bot_preset_auto_backup">自動バックアップ</string>
 
-    <string name="action_cleanup_history">履歴のクリーンアップ</string>
+    <string name="action_cleanup_history"><translate>履歴をクリーンアップ</translate></string>
     <string name="action_http_download">HTTPダウンロード</string>
-    <string name="action_cleanup_spam_db">迷惑電話DBのクリーンアップ</string>
-    <string name="action_backup_export">バックアップのエクスポート</string>
-    <string name="action_backup_import">バックアップのインポート</string>
+    <string name="action_cleanup_spam_db"><translate>スパムデータベースをクリーンアップ</translate></string>
+    <string name="action_backup_export">バックアップエクスポート</string>
+    <string name="action_backup_import">バックアップインポート</string>
     <string name="action_read_file">ファイルの読み込み</string>
     <string name="action_write_file">ファイルへの書き込み</string>
     <string name="action_parse_csv">CSVの解析</string>
     <string name="action_parse_xml">XMLの解析</string>
     <string name="action_regex_extract">正規表現による抽出</string>
-    <string name="action_import_to_spam_db">迷惑電話データベースへのインポート</string>
-    <string name="action_import_as_regex_rule">正規表現ルールとしてインポート</string>
-    <string name="action_convert_number">番号の置換</string>
+    <string name="action_import_to_spam_db"><translate>スパムデータベースへのインポート</translate></string>
+    <string name="action_import_as_regex_rule"><translate>正規表現ルールとしてインポート</translate></string>
+    <string name="action_convert_number"><translate>番号の置換</translate></string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        <u>コンテンツバイト</u>としてHTTPファイルをダウンロードします
+        <u>コンテンツバイト</u>としてHTTPダウンロードファイル
         ]]>
     </string>
-    <string name="help_action_cleanup_spam_db">迷惑電話データベースから期限切れの番号を削除します。</string>
-    <string name="help_action_cleanup_history">期限切れの履歴レコードを削除します。</string>
+    <string name="help_action_cleanup_spam_db"><translate>スパムデータベースから期限切れの番号を削除します。</translate></string>
+    <string name="help_action_cleanup_history"><translate>期限切れの履歴レコードを削除します。</translate></string>
     <string name="help_action_backup_export">
         <![CDATA[
         現在の設定を<u>コンテンツバイト</u>にエクスポートします。
@@ -77,40 +77,40 @@
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        ファイルに<u>コンテンツバイト</u>を書き込みます。
+        <u>コンテンツバイト</u>をファイルに書き込みます。
         ]]>
     </string>
     <string name="help_action_parse_csv">
         <![CDATA[
-        csv <u>コンテンツバイト</u>を<u>番号のリスト</u>に解析します
+        csv <u>コンテンツバイト</u>を<u><translate>番号</translate>のリスト</u>に解析します
         ]]>
     </string>
     <string name="help_action_parse_xml">
         <![CDATA[
-        <b>xpath</b>を使用してxml <u>コンテンツバイト</u>を解析し、<u>番号のリスト</u>を生成します。
+        <b>xpath</b>を使用してxml <u>コンテンツバイト</u>を解析し、<u><translate>番号</translate>のリスト</u>を生成します。
         ]]>
     </string>
     <string name="help_action_regex_extract">
         <![CDATA[
-        この正規表現を使用して、入力<u>コンテンツバイト</u>から<u>番号のリスト</u>を抽出します。
+        正規表現を使用して、<u>コンテンツバイト</u>から<u><translate>番号</translate>のリスト</u>を抽出します。
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        迷惑電話データベースに<u>番号のリスト</u>を追加します。
+        <u><translate>番号</translate>のリスト</u>を<translate>スパムデータベース</translate>に追加します。
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        <u>番号のリスト</u>から新しい正規表現ルールを生成します。
+        <u><translate>番号</translate>のリスト</u>から新しい正規表現ルールを生成します。
         ]]>
     </string>
     <string name="help_action_convert_number">
         <![CDATA[
-        <u>番号のリスト</u>をこのアプリで使用される形式に変換します。<br>
+        <u><translate>番号</translate>のリスト</u>をこのアプリで使用される形式に変換します。<br>
         <br>
-        たとえば、次の2つのアクションを追加して置換します。<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` を `12345<font color="#03DAC5"><b>....</b></font>` に。<br>
+        たとえば、置換するために2つのアクションを追加します。<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` を `12345<font color="#03DAC5"><b>....</b></font>` に:<br>
         <br>
         &ensp; - `<font color="#fa7f71">(+)</font>` を `` に置換<br>
         &ensp; - `<font color="#fa7f71">(#)</font>` を `<font color="#03DAC5"><b>.</b></font>` に置換<br>

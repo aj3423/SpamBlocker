@@ -1,6 +1,8 @@
 package spam.blocker.ui.setting.misc
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
@@ -36,6 +39,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun BackupRestore() {
     val ctx = LocalContext.current
@@ -44,10 +48,7 @@ fun BackupRestore() {
         R.string.backup,
         helpTooltipId = R.string.help_backup,
         content = {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
+            FlowRowSpaced( 8 ) {
                 // export
                 val fileWriter = rememberFileWriteChooser()
                 fileWriter.Compose()

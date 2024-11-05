@@ -9,20 +9,20 @@
         &ensp; El modo predeterminado, la expresión regular coincidirá con el número de teléfono.<br>
         <br>
         <font color="#00BFFF"><b>Contactos</b></font>:<br>
-        &ensp; La expresión regular coincidirá con el nombre de contacto asociado con el número entrante.<br>
+        &ensp; La expresión regular coincidirá con el nombre del contacto asociado con el número entrante.<br>
         &ensp;  - Un caso de uso:<br>
-        &emsp; Bloquear todos los no contactos los fines de semana con la expresión regular `.*`.<br>
+        &emsp; Bloquear todos los no contactos durante el fin de semana con la expresión regular `.*`.<br>
         <br>
         <font color="#00BFFF"><b>Grupo de contactos</b></font>:<br>
         &ensp; La expresión regular coincidirá con el nombre del grupo de contactos asociado con el número entrante,
-                 impactando a todos los contactos de ese grupo, por lo que no es necesario agregarlos individualmente,
+                 impactando a todos los contactos en ese grupo, por lo que no necesita agregarlos individualmente,
                  y no es necesario actualizarlo incluso cuando hay cambios de personal.<br>
         &ensp;  - Un caso de uso:<br>
-        &emsp; Bloquear a todos los compañeros de trabajo los fines de semana bloqueando el grupo de contactos "trabajo".
+        &emsp; Bloquear a todos los compañeros de trabajo durante el fin de semana bloqueando el grupo de contactos "trabajo".
         ]]>
     </string>
     <string name="text_too_long">Texto demasiado largo, la edición está deshabilitada</string>
-    <string name="follow_system">Seguir sistema</string>
+    <string name="follow_system"><short>Seguir sistema</short></string>
     <string name="theme">Tema</string>
     <string-array name="theme_list">
         <item>Claro</item>
@@ -34,11 +34,11 @@
         <item>Eliminar reglas duplicadas</item>
         <item>Eliminar todas (%d) reglas</item>
     </string-array>
-    <string name="confirm_delete_duplicated_rule">¿Confirmar eliminar %d reglas duplicadas?</string>
+    <string name="confirm_delete_duplicated_rule">¿Confirmar la eliminación de %d reglas duplicadas?</string>
     <string name="duration">Duración</string>
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
-        Duración individual para cada aplicación, cuando se deja vacía, volverá a la duración global.
+        Duración individual para cada aplicación, cuando está vacío, volverá a la duración global.
         ]]>
     </string>
 </resources>

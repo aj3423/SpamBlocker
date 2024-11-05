@@ -56,7 +56,7 @@
     <string name="label_contact_filter">Contact Filter</string>
     <string name="label_number_filter">Number Rules</string>
     <string name="label_content_filter">Message Rules</string>
-    <string name="recent_apps">Recent App</string>
+    <string name="recent_apps"><short>Recent Apps</short></string>
     <string name="allow_contact">Contacts</string>
 
 </resources>

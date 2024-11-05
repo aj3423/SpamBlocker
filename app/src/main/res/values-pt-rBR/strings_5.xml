@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed_number">Número Discado</string>
+    <string name="dialed_number"><short>Número Discado</short></string>
     <string name="find_apps">Encontrar Apps</string>
 
     <string name="confirm_delete_all_rule">Confirmar a exclusão de todas as Regras?</string>
@@ -19,40 +19,40 @@
     <string name="within_days">Dentro de Dias</string>
     <string name="phone_number">Número de Telefone</string>
     <string name="phone_number_abbrev">Número</string>
-    <string name="sms_content">Conteúdo do SMS</string>
-    <string name="regex_flags">Bandeiras Regex</string>
+    <string name="sms_content">Conteúdo SMS</string>
+    <string name="regex_flags">Flags Regex</string>
     <string-array name="regex_flags_list">
         <item>Ignorar Maiúsculas/Minúsculas</item>
-        <item>Ponto Corresponde a Tudo</item>
+        <item>Ponto Combina com Todos</item>
         <item>Número Bruto</item>
     </string-array>
-    <string name="disable_number_optimization">Esta otimização pode ser desabilitada pela bandeira regex `Número Bruto`.</string>
-    <string name="off_time">Tempo Desligado</string>
-    <string name="schedule">Agendamento</string>
+    <string name="disable_number_optimization">Essa otimização pode ser desabilitada pela flag regex "Número Bruto".</string>
+    <string name="off_time">Horários Indisponíveis</string>
+    <string name="schedule">Cronograma</string>
     <string name="workday">Dia Útil</string>
     <string name="weekend">Fim de Semana</string>
     <string name="entire_day">Dia Inteiro</string>
     <string name="block_type">Tipo de Bloqueio</string>
     <string name="for_particular_number">Para o número</string>
-    <string name="help_for_particular_number">Quando habilitada, a regra só se aplica quando o número e o conteúdo corresponderem.</string>
+    <string name="help_for_particular_number">Quando habilitado, a regra só se aplica quando o número e o conteúdo correspondem.</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
-        &emsp; Igual a pressionar o botão de recusar. Funciona completamente silenciosamente, a tela de bloqueio não será ativada, é o tipo recomendado se você não usa correio de voz.<br>
+        &emsp; Igual a pressionar o botão de declínio. Funciona completamente silenciosamente, a tela de bloqueio não será ativada, é o tipo recomendado se você não usa correio de voz.<br>
         <br>
-        - <font color="#00BFFF"><b>Silêncio</b></font>: <br>
-        &emsp; Tocará silenciosamente em segundo plano, dando a impressão ao chamador de que você está apenas ocupado e não atendeu. <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+        &emsp; Ele tocará silenciosamente em segundo plano, dando a impressão ao chamador de que você está apenas ocupado e não atendeu. <br>
         <br>
         - <font color="#00BFFF"><b>Atender e Desligar</b></font>: <br>
-        &emsp; Para evitar ser enviado para o correio de voz. A tela de bloqueio pode ser ativada por um curto período,
-         você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar este som).
+        &emsp; Para evitar ser direcionado para o correio de voz. A tela de bloqueio pode ser ativada por um curto período,
+         você também pode ouvir um tom de finalização de chamada (alguns telefones oferecem uma opção para silenciar esse som).
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
         Números discados serão permitidos.<br>
         <br>
-        Enviar mensagem também conta, isso só funciona quando a permissão READ_SMS é concedida. <br>
+        Enviar mensagens também conta, isso só funciona quando a permissão READ_SMS é concedida. <br>
         <br>
         A configuração padrão <font color="#03DAC5"><b>3 Dias</b></font> significa que se você discou ou enviou mensagens para o número nos últimos 3 dias, as chamadas desse número serão permitidas.<br>
         <br>
@@ -63,13 +63,13 @@
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        Qualquer chamada passará se algum aplicativo na lista tiver sido usado recentemente.<br>
+        Qualquer chamada seria permitida se qualquer aplicativo na lista tivesse sido usado recentemente.<br>
         <br>
         Um caso de uso típico:<br>
-        &emsp; Você acabou de pedir uma pizza no PizzaApp, em breve eles te ligam para reembolso porque estão fechando. Essa chamada passaria se o PizzaApp estivesse habilitado aqui. <br>
+        &emsp; Você acabou de pedir uma pizza no PizzaApp, em breve eles ligam para você para reembolsar porque estão fechando. Essa chamada seria permitida se o PizzaApp estivesse habilitado aqui. <br>
         <br>
-        A configuração padrão <font color="03DAC5"><b>5 Min</b></font> significa que qualquer chamada passaria se algum dos aplicativos tivesse sido usado nos últimos 5 minutos,
-        por `usado` significa estar ativado, desativado, minimizado ou morto. <br>
+        A configuração padrão <font color="03DAC5"><b>5 Min</b></font> significa que qualquer chamada seria permitida se qualquer um dos aplicativos tivesse sido usado nos últimos 5 minutos,
+        por `usado` significa ser ativado, desativado, minimizado ou morto. <br>
         <br>
         Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
         <br>

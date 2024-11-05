@@ -4,13 +4,13 @@
     <string name="filename">Dateiname</string>
     <string name="invalid_input_type">Ungültiger Eingabe-Typ, erwartet: %s, erhalten: %s</string>
     <string name="url">URL</string>
-    <string name="expiry_days">Gültigkeitsdauer in Tagen</string>
+    <string name="expiry_days">Gültigkeitsdauer (Tage)</string>
     <string name="column_mapping">Spaltenzuordnung</string>
-    <string name="include_spam_db">Spam-Datenbank einbeziehen</string>
+    <string name="include_spam_db">Spam-Datenbank einschließen</string>
     <string name="configuration_only">Nur Konfiguration</string>
     <string name="no_config_needed">Keine Konfiguration erforderlich</string>
     <string name="success">Erfolg</string>
-    <string name="failed">Fehlgeschlagen</string>
+    <string name="failed">Fehler</string>
     <string name="running">Läuft</string>
     <string name="optional">(optional)</string>
 
@@ -18,16 +18,16 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Test</b></font><br>
-        Diese Aktionen werden sofort ausgeführt, um zu prüfen, ob sie korrekt eingerichtet wurden,
+        Diese Aktionen werden sofort ausgeführt, um zu überprüfen, ob sie korrekt eingerichtet wurden,
         oder vielleicht möchten Sie diesen Workflow einfach manuell ausführen.<br>
         <br>
         - <font color="#00BFFF"><b>Neu</b></font><br>
-            Erstellen Sie eine neue Aktion. Mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe zu erledigen.<br>
-            Die grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie miteinander verkettet werden können oder nicht.<br>
+            Eine neue Aktion erstellen, mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe zu erledigen.<br>
+            Die grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie verkettbar sind oder nicht.<br>
             <br>
-            Einige Beispiel-Workflows:<br>
+            Einige Beispiel-Workflows: <br>
             <br>
-            &emsp; - http-Datei herunterladen -> 7z-Format decodieren -> als csv-Format analysieren -> in die Spam-Datenbank importieren.<br>
+            &emsp; - http-Datei herunterladen -> 7z-Format decodieren -> als csv-Format parsen -> in Spam-Datenbank importieren.<br>
             <br>
             &emsp; - Einstellungen A an Werktagen und Einstellungen B am Wochenende anwenden.<br>
         ]]>
@@ -37,12 +37,12 @@
         <![CDATA[
             Spam-Telefonnummern von
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> jeden Werktag herunterladen
+            <no_translate>FTC - Do Not Call</no_translate> </a> an jedem Werktag herunterladen
              und in die Spam-Datenbank importieren.
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Abgelaufene Einträge aus der Spam-Datenbank löschen.</string>
-    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufseinträge löschen.</string>
+    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufsdatensätze löschen.</string>
     <string name="help_bot_preset_auto_backup">Alle Einstellungen sichern.</string>
     <string name="everyday">Täglich</string>
     <string name="daily">Täglich</string>
@@ -55,13 +55,13 @@
         <![CDATA[
         Wenn Sie die Spam-Datenbank nicht verwenden, sind beide Optionen gleichwertig.<br>
         <br>
-        - <b>Spam-Datenbank einbeziehen</b><br>
-        &emsp; Verwenden Sie dies nicht für regelmäßige Sicherungen, da die Spam-Datenbank häufig aktualisiert werden soll.
+        - <b>Spam-Datenbank einschließen</b><br>
+        &emsp; Verwenden Sie dies nicht für regelmäßige Backups, da die Spam-Datenbank häufig aktualisiert werden soll.
          Dies ist nur nützlich, wenn Sie die Konfiguration auf ein anderes Telefon klonen.<br>
         <br>
         - <b>Nur Konfiguration</b><br>
         &emsp; - Beim Exportieren wird die Größe der Sicherungsdatei reduziert. <br>
-        &emsp; - Beim Importieren behalten die Einträge in der Spam-Datenbank ihren aktuellen Status.
+        &emsp; - Beim Importieren bleiben die Datensätze in der Spam-Datenbank in ihrem aktuellen Zustand erhalten.
         ]]>
     </string>
     <string name="mode">Modus</string>
@@ -73,17 +73,17 @@
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Erstellen</b></font><br>
-        &ensp; Erstellen Sie immer eine neue Regex-Regel.<br>
+        &ensp; Erstellt immer eine neue Regex-Regel.<br>
         <br>
         - <font color="#00BFFF"><b>Ersetzen</b></font><br>
-        &ensp; Es wird versucht, eine bestehende Regel zu finden, die die gleiche <b>Beschreibung</b> hat.<br>
+        &ensp; Es wird versucht, eine vorhandene Regel zu finden, die die gleiche <b>Beschreibung</b> hat. <br>
         &ensp;&ensp; - Wenn gefunden, wird sie überschrieben.<br>
-        &ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, genauso wie beim <b>Erstellen</b>.<br>
+        &ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, identisch mit <b>Erstellen</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Zusammenführen</b></font><br>
-        &ensp;- Wenn eine Regel mit der gleichen Beschreibung existiert, werden die neuen Nummern in sie zusammengeführt,<br>
+        &ensp;- Wenn eine Regel mit der gleichen Beschreibung vorhanden ist, werden die neuen Nummern in diese integriert,<br>
          doppelte Nummern werden automatisch entfernt.<br>
-        &ensp;- Wenn nicht vorhanden, wird eine neue Regel erstellt, genauso wie beim <b>Erstellen</b>.<br>
+        &ensp;- Wenn keine vorhanden ist, wird eine neue Regel erstellt, identisch mit <b>Erstellen</b>.<br>
         ]]>
     </string>
 

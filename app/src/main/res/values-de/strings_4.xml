@@ -1,9 +1,9 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Wenn aktiviert, werden alle Anrufe (Nachrichten) in diesem Zeitraum zugelassen. In der Regel gibt es nachts keine Spam-Anrufe. <br>
+        Wenn aktiviert, werden alle Anrufe (Nachrichten) während dieses Zeitraums zugelassen. Normalerweise gibt es nachts keine Spam-Anrufe. <br>
         <br>
-        Ist die Startzeit größer als die Endzeit, z. B. 20:00 -> 07:00, so bedeutet dies den Zeitraum von 20:00 Uhr abends bis 07:00 Uhr am nächsten Morgen. <br>
+        Wenn die Startzeit größer ist als die Endzeit, z. B. 20:00 -> 07:00, bedeutet dies den Zeitraum von 20:00 Uhr abends bis 07:00 Uhr am nächsten Morgen. <br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
@@ -11,7 +11,7 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Diese Flags ändern das Übereinstimmungsverhalten des regulären Ausdrucks, sie sind standardmäßig für neue Regeln festgelegt. <br>
+            Diese Flags ändern das Übereinstimmungsverhalten des Regex, sie werden standardmäßig für neue Regeln festgelegt. <br>
             <br>
 
             <font color="#00BFFF"><b>Groß-/Kleinschreibung ignorieren</b></font>:<br>
@@ -19,9 +19,9 @@
               würde sowohl <font color="#03DAC5"><b>a</b></font> als auch <font color="#03DAC5"><b>A</b></font> entsprechen. <br>
             <br>
 
-            <font color="#00BFFF"><b>Punkt passt alles an</b></font>: <br>
-            &ensp; Wenn aktiviert, <font color="#03DAC5"><b>.</b></font> wird auch mit Zeilenumbruchzeichen (<font color="#03DAC5"><b>\\n</b></font>) übereinstimmen,
-              Dadurch kann der Punkt über mehrere Zeilen hinweg übereinstimmen. <br>
+            <font color="#00BFFF"><b>Punkt stimmt alles überein</b></font>: <br>
+            &ensp; Wenn aktiviert, wird <font color="#03DAC5"><b>.</b></font> auch Zeilenumbruchzeichen (<font color="#03DAC5"><b>\\n</b></font>) übereinstimmen,
+              dadurch kann der Punkt über mehrere Zeilen hinweg übereinstimmen. <br>
             &ensp; Anwendungsfall: <br>
             &emsp;   Mehrzeilige SMS-Nachricht abgleichen: <br>
             &emsp;   <font color="#fa7f71">fordern Sie Ihren Preis an: http://<br>

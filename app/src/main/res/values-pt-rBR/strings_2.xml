@@ -5,17 +5,17 @@
     <string name="exclusive">Exclusivo</string>
     <string name="help_contacts">
         <![CDATA[
-        Quando habilitado, chamadas/mensagens de contatos são sempre permitidas. <br>
+        Quando ativado, chamadas/mensagens de contatos são sempre permitidas. <br>
         <br>
           - <b>Inclusivo</b>: <br>
-              &emsp; Números não-contatos serão verificados por outras regras. <br>
+              &emsp; Números não salvos nos contatos serão verificados por outras regras. <br>
               &emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-              &emsp; Números não-contatos serão <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+              &emsp; Números não salvos nos contatos serão <font color="#fa7f71"><b>bloqueados</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font> <br>
         <br>
-        Aplica-se a chamadas e mensagens SMS.
+        Isso se aplica a chamadas e mensagens SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -25,13 +25,13 @@
     <string name="spoof">Chamada Falsa</string>
     <string name="help_stir">
         <![CDATA[
-            Atestação STIR/SHAKEN exige <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
+            Atestação STIR/SHAKEN requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
             <br>
-            Existem três possíveis resultados de atestação: <br>
+            Existem três resultados possíveis de atestação: <br>
             <font color="#03DAC5"><b>Válido</b></font> <br>
-            &emsp; A chamada é muito provável ser válida, não falsificada. <br>
+            &emsp; A chamada é muito provavelmente válida, não falsificada. <br>
             <font color="#ffa500"><b>Não Verificado</b></font> <br>
-            &emsp; A chamada não pode ser validada, ou a atestação STIR não é suportada. <br>
+            &emsp; A chamada não pode ser validada ou a atestação STIR não é suportada. <br>
             <font color="#fa7f71"><b>Falsa</b></font> <br>
             &emsp; É muito provável que seja uma chamada falsificada. <br>
             <br>
@@ -49,7 +49,7 @@
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Campo obrigatório ausente <b>pattern</b> no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
+        Campo obrigatório <b>pattern</b> ausente no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
         ]]>
     </string>
 </resources>

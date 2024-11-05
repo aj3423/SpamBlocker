@@ -1,5 +1,5 @@
 <resources>
-    <string name="dialed_number">拨打的号码</string>
+    <string name="dialed_number"><short>拨号号码</short></string>
     <string name="find_apps">查找应用</string>
 
     <string name="confirm_delete_all_rule">确认删除所有规则？</string>
@@ -26,50 +26,51 @@
         <item>点匹配所有</item>
         <item>原始号码</item>
     </string-array>
-    <string name="disable_number_optimization">可以使用正则表达式标志“原始号码”禁用此优化。</string>
-    <string name="off_time">关闭时间</string>
-    <string name="schedule">计划</string>
+    <string name="disable_number_optimization">可以通过正则表达式标志“原始号码”来禁用此优化。</string>
+    <string name="off_time">非工作时间</string>
+    <string name="schedule">时间安排</string>
     <string name="workday">工作日</string>
     <string name="weekend">周末</string>
-    <string name="entire_day">全天</string>
-    <string name="block_type">屏蔽类型</string>
+    <string name="entire_day">整天</string>
+    <string name="block_type">阻止类型</string>
     <string name="for_particular_number">针对号码</string>
-    <string name="help_for_particular_number">启用后，规则仅在号码和内容都匹配时适用。</string>
+    <string name="help_for_particular_number">启用后，规则仅在号码和内容匹配时才适用。</string>
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>拒绝</b></font>: <br>
-        &emsp; 与按下拒绝按钮相同。它完全静默工作，不会打开锁屏，如果您不使用语音信箱，建议使用此类型。<br>
+        &emsp; 等同于按下拒绝按钮。它完全静默运行，不会打开锁屏，如果您不使用语音信箱，这是推荐的类型。<br>
         <br>
         - <font color="#00BFFF"><b>静音</b></font>: <br>
-        &emsp; 它将在后台静音响铃，给来电者一种您只是很忙还没有接听的印象。<br>
+        &emsp; 它将在后台静音响铃，给对方造成您只是忙着没有接听的印象。<br>
         <br>
         - <font color="#00BFFF"><b>接听并挂断</b></font>: <br>
-        &emsp; 避免被转到语音信箱。锁屏可能会短暂开启，您也可能听到通话结束音（一些手机提供静音此声音的选项）。
+        &emsp; 避免被转接到语音信箱。锁屏可能会打开一小段时间，您可能还会听到通话结束音（有些手机提供静音此声音的选项）。
         ]]>
     </string>
     <string name="help_dialed">
         <![CDATA[
-        允许拨打的号码。<br>
+        拨号号码将被允许。<br>
         <br>
-        发送消息也计算在内，这仅在授予 READ_SMS 权限时有效。<br>
+        发送消息也计入，这只有在授予 READ_SMS 权限时才有效。<br>
         <br>
-        默认设置 <font color="#03DAC5"><b>3 天</b></font> 表示如果您在过去 3 天内拨打了该号码或向该号码发送了消息，则允许来自该号码的呼叫。<br>
+        默认设置 <font color="#03DAC5"><b>3 天</b></font> 表示如果您在过去 3 天内拨打过或发送过消息给该号码，来自该号码的呼叫将被允许。<br>
         <br>
-        仅适用于通话，<b>不适用于</b>短信。<br>
+        仅适用于呼叫，<b>不</b>适用于短信。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">
         <![CDATA[
-        如果列表中的任何应用最近使用过，则任何呼叫都会通过。<br>
+        如果列表中的任何应用最近使用过，任何呼叫都将通过。<br>
         <br>
-        典型用例：<br>
-        &emsp; 您刚在 PizzaApp 上订购了比萨，很快他们就打电话给您退款，因为他们要关门。如果 PizzaApp 在此处启用，该呼叫将通过。<br>
+        一个典型的用例：<br>
+        &emsp; 您刚刚在 PizzaApp 中订购了披萨，很快他们打电话给您退款，因为他们要关门。如果 PizzaApp 在此处启用，该呼叫将通过。<br>
         <br>
-        默认设置 <font color="03DAC5"><b>5 分钟</b></font> 表示如果任何应用在 5 分钟内使用过，则任何呼叫都会通过，通过“使用”是指激活、停用、最小化或终止。 <br>
+        默认设置 <font color="03DAC5"><b>5 分钟</b></font> 表示如果任何应用在 5 分钟内使用过，任何呼叫都将通过，
+        “使用”是指被激活、停用、最小化或关闭。<br>
         <br>
-        仅适用于通话，<b>不适用于</b>短信。<br>
+        仅适用于呼叫，<b>不</b>适用于短信。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>

@@ -1,37 +1,37 @@
 <resources>
     <string name="help_off_time">
         <![CDATA[
-        Lorsqu\'activé, tous les appels (messages) seront autorisés pendant cette période. Généralement, il n\'y a pas d\'appels indésirables la nuit. <br>
+        Lorsque cette option est activée, tous les appels (messages) seront autorisés pendant cette période. En général, il n\'y a pas d\'appels indésirables la nuit. <br>
         <br>
         Si l\'heure de début est supérieure à l\'heure de fin, par exemple, 20h00 -> 07h00, cela signifie la période de 20h00 le soir à 07h00 le lendemain matin. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_regex_flags">
         <![CDATA[
-            Ces indicateurs modifient le comportement de correspondance de l\'expression régulière ; ils sont définis par défaut pour les nouvelles règles. <br>
+            Ces drapeaux modifient le comportement de correspondance de l\'expression régulière, ils sont définis par défaut pour les nouvelles règles. <br>
             <br>
 
-            <font color="#00BFFF"><b>Ignorer la casse</b></font> :<br>
-            &ensp; Cela rend la correspondance de modèle insensible à la casse, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Ignorer la casse</b></font>:<br>
+            &ensp; Cela rend la correspondance de motif insensible à la casse, <font color="#03DAC5"><b>a</b></font>
               correspondrait à la fois à <font color="#03DAC5"><b>a</b></font> et à <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
-            <font color="#00BFFF"><b>Point correspondant à tous</b></font> : <br>
-            &ensp; Lorsqu\'activé, <font color="#03DAC5"><b>.</b></font> correspondra également aux caractères de nouvelle ligne (<font color="#03DAC5"><b>\\n</b></font>),
+            <font color="#00BFFF"><b>Point correspond à tout</b></font>: <br>
+            &ensp; Lorsque cette option est activée, <font color="#03DAC5"><b>.</b></font> correspondra également aux caractères de nouvelle ligne (<font color="#03DAC5"><b>\\n</b></font>),
               ce qui permet au point de correspondre sur plusieurs lignes. <br>
-            &ensp; Cas d\'utilisation : <br>
-            &emsp;   Correspondance de message SMS multiligne : <br>
-            &emsp;   <font color="#fa7f71">réclamez votre prix : http://<br>
+            &ensp; Cas d\'utilisation : <br>
+            &emsp;   Correspondance de message SMS multilingue : <br>
+            &emsp;   <font color="#fa7f71">réclamez votre prix : http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   avec la règle : <br>
+            &emsp;   avec la règle : <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
             <br>
-            <font color="#00BFFF"><b>Numéro brut</b></font> : <br>
-            &ensp; Lorsqu\'activé, le <short>numéro</short> ne sera pas optimisé, <font color="#03DAC5"><b>+</b></font> et <font color="#03DAC5"><b>0 initiaux</b></font> resteront, utile pour différencier les numéros nationaux.
+            <font color="#00BFFF"><b>Numéro brut</b></font>: <br>
+            &ensp; Lorsque cette option est activée, le <short>numéro</short> ne sera pas optimisé, <font color="#03DAC5"><b>+</b></font> et <font color="#03DAC5"><b>les 0s de tête</b></font> resteront, utiles pour différencier les <short>numéros</short> nationaux.
         ]]>
     </string>
 

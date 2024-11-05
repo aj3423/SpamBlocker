@@ -151,19 +151,16 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 
 	var use_short string
 	if short {
-		use_short = `Use extream short translation, as short a possible.`
-	} else {
-		use_short = `Important: when translating short phrases, use extream short translations, as short as possible, for long sentences, make the translation as clear as possible. `
+		use_short = "Use extream short translation. "
 	}
-
 	prompt := fmt.Sprintf(
 		"Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. "+
 			"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. "+
-			// "Make sure leave the XML tags unmodified. "+
-			"Do not translate text within tag <no_translate> and </no_translate>, keep it as it is. "+
-			"Always tranalste text within tag <translate> and </translate>. "+
+			"If the content contains tags <translate> and </translate>, always translate the text in between. "+
+			"If the content contains tags <no_translate> and </no_translate>, keep it as it is. "+
+			"If the content contains tags <short> and </short>, always translate the text in between with extream short translations. "+
 			use_short+
-			"show me the result only:\n"+
+			"show me the raw result only:\n"+
 			"%s",
 		lang, nameMap[lang], content_to_translate)
 
@@ -209,9 +206,16 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		}
 	}
 
-	// French has lots of '
 	ret := sb.String()
+
+	// skip the first line: <?xml version="1.0" encoding="utf-8"?>
+	if strings.HasPrefix(ret, "<?xml version=") {
+		index := strings.IndexByte(ret, '\n')
+		ret = ret[index+1:]
+	}
+
 	if !strings.HasPrefix(ret, "<resources>") {
+		color.HiMagenta(ret)
 		return "", Retryable(errors.New("malformed result"))
 	}
 	return ret, nil
@@ -386,9 +390,9 @@ func main() {
 	} else { // translate
 		languages := check_lang_param()
 		for _, lang := range languages {
-			if filter_str == "" {
-				clear_lang_xmls(lang)
-			}
+			// if filter_str == "" {
+			// clear_lang_xmls(lang)
+			// }
 			walk_lang_xmls(ENGLISH, lang_translator(lang))
 		}
 	}

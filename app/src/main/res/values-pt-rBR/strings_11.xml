@@ -2,13 +2,13 @@
     <string name="yesterday">Ontem</string>
     <string name="help_meeting_mode">
         <![CDATA[
-        Recusar chamadas durante reuniões online de vídeo.<br> <br>
-        Verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
+        Recusar chamadas durante videochamadas online.<br> <br>
+        Ele verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
         que é comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
         <br>
-        Aplica-se a chamadas e mensagens.<br>
+        Ele se aplica a chamadas e mensagens.<br>
         <br>
-        <font color="#ea86ff"><b>Prioridade padrão: 20</b></font>
+        <font color="#ea86ff"><b>Prioridade Padrão: 20</b></font>
         ]]>
     </string>
     <string name="in_meeting">Modo Reunião</string>
@@ -29,10 +29,10 @@
         <item quantity="other">%d Linhas</item>
     </plurals>
 
-    <string name="label_max_none_scroll_items">Limite da Barra de Rolagem</string>
+    <string name="label_max_none_scroll_items">Limiar da Barra de Rolagem</string>
     <string name="help_max_none_scroll_items">
         <![CDATA[
-        O número máximo de itens que podem ser exibidos na lista antes que a barra de rolagem apareça.
+        O número máximo de itens que podem ser exibidos na lista antes que uma barra de rolagem apareça.
         ]]>
     </string>
     <string name="label_max_scroll_height">Altura da Rolagem</string>
@@ -44,13 +44,13 @@
     <string name="label_max_regex_lines">Linhas Máximas de Regex</string>
     <string name="help_max_regex_lines">
         <![CDATA[
-        As linhas máximas de exibição para o texto regex, o texto restante será truncado e seguido por reticências.
+        O número máximo de linhas de exibição para o texto regex, o texto restante será truncado e seguido por reticências.
         ]]>
     </string>
     <string name="label_max_desc_lines">Linhas Máximas de Descrição</string>
     <string name="help_max_desc_lines">
         <![CDATA[
-        As linhas máximas de exibição para o texto de descrição, o texto restante será truncado e seguido por reticências.
+        O número máximo de linhas de exibição para o texto da descrição, o texto restante será truncado e seguido por reticências.
         ]]>
     </string>
 

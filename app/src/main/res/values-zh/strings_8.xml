@@ -1,35 +1,35 @@
 <resources>
     <string name="database">数据库</string>
-    <string name="total">总计</string>
+    <string name="total">总数</string>
     <string name="replace_from">从</string>
     <string name="replace_to">到</string>
-    <string name="regex_pattern">正则</string>
+    <string name="regex_pattern">正则表达式</string>
 
     <string name="help_spam_db">
         <![CDATA[
         此数据库中的号码将被屏蔽。<br>
         <br>
-        您可以整合任何公开数据库，甚至多个数据库，您也可以从本地文件导入号码。<br>
+        您可以整合任何公开数据库，甚至多个数据库，也可以从本地文件导入号码。<br>
         <br>
-        查看下面的“自动化”部分，了解如何安排自动导入任务。<br>
+        查看下面的“自动化”部分以了解如何安排自动导入任务。<br>
         <br>
         它适用于呼叫和短信。<br>
         <br>
         <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">数据库中的垃圾号码将在 N 天后过期，过期记录将被自动删除。</string>
+    <string name="help_spam_db_ttl">数据库中的垃圾号码将在 N 天后过期，过期记录将自动删除。</string>
     <string name="customize">自定义</string>
-    <string name="workflow">工作流</string>
-    <string name="workflows">工作流</string>
+    <string name="workflow">工作流程</string>
+    <string name="workflows">工作流程</string>
     <string name="automation">自动化</string>
     <string name="help_workflows">
         <![CDATA[
-        工作流可用于自动运行任务，例如更新数据库或自动备份。<br>
+        工作流程可用于自动运行任务，例如更新数据库或自动备份。<br>
         <br>
-        有一些预设可供快速设置，您也可以从头开始构建，或从其他用户共享的 json 配置中导入。<br>
+        有预设用于快速设置，您也可以从头开始构建它，或从其他用户共享的 json 配置中导入。<br>
         <br>
-        如果您发现任何可能被广泛使用且应添加到预设中的工作流，请在 github 上报告。
+        如果您发现任何可能被广泛使用且应该添加到预设中的工作流程，请在 github 上报告它。
         ]]>
     </string>
     <string name="manual">手动</string>
@@ -48,9 +48,9 @@
     <string name="action_write_file">写入文件</string>
     <string name="action_parse_csv">解析 CSV</string>
     <string name="action_parse_xml">解析 XML</string>
-    <string name="action_regex_extract">正则提取</string>
+    <string name="action_regex_extract">正则表达式提取</string>
     <string name="action_import_to_spam_db">导入到垃圾数据库</string>
-    <string name="action_import_as_regex_rule">导入为正则规则</string>
+    <string name="action_import_as_regex_rule">作为正则表达式规则导入</string>
     <string name="action_convert_number">替换号码</string>
 
     <string name="help_action_http_download">
@@ -62,17 +62,17 @@
     <string name="help_action_cleanup_history">删除过期的历史记录。</string>
     <string name="help_action_backup_export">
         <![CDATA[
-        将当前设置导出为<u>内容字节</u>。
+        将当前设置导出到<u>内容字节</u>。
         ]]>
     </string>
     <string name="help_action_backup_import">
         <![CDATA[
-        从<u>内容字节</u>应用设置。
+        应用来自<u>内容字节</u>的设置。
         ]]>
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        从文件中获取<u>内容字节</u>。
+        从文件获取<u>内容字节</u>。
         ]]>
     </string>
     <string name="help_action_write_file">
@@ -92,25 +92,25 @@
     </string>
     <string name="help_action_regex_extract">
         <![CDATA[
-        使用此正则表达式从输入<u>内容字节</u>中提取<u>号码列表。</u>
+        使用正则表达式从<u>内容字节</u>中提取<u>号码列表</u>。
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
-        将<u>号码列表</u>添加到垃圾数据库中。
+        将<u>号码列表</u>添加到垃圾数据库。
         ]]>
     </string>
     <string name="help_action_import_as_regex_rule">
         <![CDATA[
-        从<u>号码列表</u>生成新的正则规则。
+        从<u>号码列表</u>生成新的正则表达式规则。
         ]]>
     </string>
     <string name="help_action_convert_number">
         <![CDATA[
         将<u>号码列表</u>转换为此应用使用的格式。<br>
         <br>
-        例如，添加两个操作以替换：<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` to `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        例如，添加两个操作来替换：<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` 到 `12345<font color="#03DAC5"><b>....</b></font>`:<br>
         <br>
         &ensp; - 替换 `<font color="#fa7f71">(+)</font>` 为 ``<br>
         &ensp; - 替换 `<font color="#fa7f71">(#)</font>` 为 `<font color="#03DAC5"><b>.</b></font>`<br>

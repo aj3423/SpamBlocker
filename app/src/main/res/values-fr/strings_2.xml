@@ -5,51 +5,51 @@
     <string name="exclusive">Exclusif</string>
     <string name="help_contacts">
         <![CDATA[
-        Si activé, les appels/messages de vos contacts sont toujours autorisés. <br>
+        Lorsque activé, les appels/messages provenant de contacts sont toujours autorisés. <br>
         <br>
           - <b>Inclusif</b>: <br>
-              &emsp; Les numéros non-contacts seront vérifiés par d\'autres règles. <br>
-              &emsp; <font color="#ea86ff"><b>Priorité: 10</b></font> <br>
+              &emsp; Les numéros non-contact seront vérifiés par d\'autres règles. <br>
+              &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
-              &emsp; Les numéros non-contacts seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Priorité: 0</b></font> <br>
+              &emsp; Les numéros non-contact seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font> <br>
         <br>
         Cela s\'applique aux appels et aux SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Inclure Non Vérifié</string>
-    <string name="unverified">Non Vérifié</string>
-    <string name="valid">Appel Valide</string>
-    <string name="spoof">Appel Spoof</string>
+    <string name="stir_include_unverified">Inclure non vérifiés</string>
+    <string name="unverified">Non vérifié</string>
+    <string name="valid">Appel valide</string>
+    <string name="spoof">Appel falsifié</string>
     <string name="help_stir">
         <![CDATA[
-            L\'attestation STIR/SHAKEN nécessite <b>Android 11+</b> et le <b>support de l\'opérateur</b>. <br>
+            L\'attestation STIR/SHAKEN nécessite <b>Android 11+</b> et <b>le support de l\'opérateur</b>. <br>
             <br>
-            Il y a trois résultats d\'attestation possibles: <br>
+            Il existe trois résultats d\'attestation possibles : <br>
             <font color="#03DAC5"><b>Valide</b></font> <br>
-            &emsp; L\'appel est très probablement valide, non falsifié. <br>
-            <font color="#ffa500"><b>Non Vérifié</b></font> <br>
-            &emsp; L\'appel ne peut pas être validé, ou l\'attestation STIR n\'est pas supportée. <br>
-            <font color="#fa7f71"><b>Spoof</b></font> <br>
+            &emsp; L\'appel est très probablement valide, pas falsifié. <br>
+            <font color="#ffa500"><b>Non vérifié</b></font> <br>
+            &emsp; L\'appel ne peut pas être validé, ou l\'attestation STIR n\'est pas prise en charge. <br>
+            <font color="#fa7f71"><b>Falsifié</b></font> <br>
             &emsp; Il est très probable qu\'il s\'agisse d\'un appel falsifié. <br>
             <br>
             <br>
               - <b>Inclusif</b>: <br>
-                  &emsp; Les appels qui échouent à cette vérification seront toujours vérifiés par d\'autres règles. <br>
-                  &emsp; Lorsque "<b>Inclure Non Vérifié</b>" est coché, un appel serait également autorisé s\'il n\'est pas vérifié. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorité: 10</b></font> <br>
+                  &emsp; Les appels qui échouent à ce contrôle seront quand même vérifiés par d\'autres règles. <br>
+                  &emsp; Lorsque "<b>Inclure non vérifiés</b>" est coché, un appel réussira également s\'il n\'est pas vérifié. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorité : 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusif</b></font>: <br>
-                  &emsp; Les appels qui échouent à cette vérification seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
-                  &emsp; Lorsque "<b>Inclure Non Vérifié</b>" est coché, un appel serait également bloqué s\'il n\'est pas vérifié. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorité: 0</b></font>
+                  &emsp; Les appels qui échouent à ce contrôle seront <font color="#fa7f71"><b>bloqués</b></font>. <br>
+                  &emsp; Lorsque "<b>Inclure non vérifiés</b>" est coché, un appel sera également bloqué s\'il n\'est pas vérifié. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorité : 0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Champ requis <b>pattern</b> manquant dans le fichier .csv, consultez l\'info-bulle pour une explication détaillée.
+        Champ obligatoire manquant <b>pattern</b> dans le fichier .csv, consultez l\'info-bulle pour une explication détaillée.
         ]]>
     </string>
 </resources>

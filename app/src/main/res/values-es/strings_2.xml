@@ -1,6 +1,6 @@
 <resources>
-    <string name="contacts">Contactos</string>
-    <string name="non_contacts">No contacto</string>
+    <string name="contacts">Contacto</string>
+    <string name="non_contacts">No Contacto</string>
     <string name="inclusive">Inclusivo</string>
     <string name="exclusive">Exclusivo</string>
     <string name="help_contacts">
@@ -8,48 +8,48 @@
         Cuando está habilitado, las llamadas/mensajes de los contactos siempre están permitidos. <br>
         <br>
           - <b>Inclusivo</b>: <br>
-              &emsp; Los números que no son de contacto se comprobarán mediante otras reglas. <br>
+              &emsp; Los números que no son de contacto se verificarán con otras reglas. <br>
               &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-              &emsp; Los números que no son de contacto se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
+              &emsp; Los números que no son de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font> <br>
         <br>
-        Se aplica tanto a las llamadas como a los mensajes SMS.
+        Se aplica a las llamadas y los mensajes SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Incluir no verificado</string>
-    <string name="unverified">No verificado</string>
-    <string name="valid">Llamada válida</string>
-    <string name="spoof">Llamada falsa</string>
+    <string name="stir_include_unverified">Incluir No Verificado</string>
+    <string name="unverified">No Verificado</string>
+    <string name="valid">Llamada Válida</string>
+    <string name="spoof">Llamada Falsificada</string>
     <string name="help_stir">
         <![CDATA[
-            La atestación STIR/SHAKEN requiere <b>Android 11+</b> y <b>compatibilidad del operador</b>. <br>
+            La atestación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
             <br>
             Hay tres posibles resultados de atestación: <br>
             <font color="#03DAC5"><b>Válido</b></font> <br>
-            &emsp; Es muy probable que la llamada sea válida, no falsa. <br>
-            <font color="#ffa500"><b>No verificado</b></font> <br>
-            &emsp; No se puede validar la llamada, o la atestación STIR no es compatible. <br>
-            <font color="#fa7f71"><b>Falsa</b></font> <br>
-            &emsp; Es muy probable que sea una llamada falsa. <br>
+            &emsp; Es muy probable que la llamada sea válida, no falsificada. <br>
+            <font color="#ffa500"><b>No Verificado</b></font> <br>
+            &emsp; No se puede validar la llamada, o STIR no es compatible. <br>
+            <font color="#fa7f71"><b>Falsificado</b></font> <br>
+            &emsp; Es muy probable que sea una llamada falsificada. <br>
             <br>
             <br>
               - <b>Inclusivo</b>: <br>
-                  &emsp; Las llamadas que no superen esta comprobación seguirán comprobándose mediante otras reglas. <br>
-                  &emsp; Cuando "<b>Incluir no verificado</b>" está activado, una llamada también se aprobaría si no está verificada. <br>
+                  &emsp; Las llamadas que no superan esta verificación se seguirán comprobando con otras reglas. <br>
+                  &emsp; Cuando se marca "<b>Incluir No Verificado</b>", una llamada también se aprobará si no está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no superen esta comprobación se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
-                  &emsp; Cuando "<b>Incluir no verificado</b>" está activado, una llamada también se bloquearía si no está verificada. <br>
+                  &emsp; Las llamadas que no superan esta verificación se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
+                  &emsp; Cuando se marca "<b>Incluir No Verificado</b>", una llamada también se bloqueará si no está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Falta el campo obligatorio <b>patrón</b> en el archivo .csv, consulte la sugerencia del globo para obtener una explicación detallada.
+        Falta el campo requerido <b>patrón</b> en el archivo .csv, consulte la información sobre herramientas del globo para obtener una explicación detallada.
         ]]>
     </string>
 </resources>

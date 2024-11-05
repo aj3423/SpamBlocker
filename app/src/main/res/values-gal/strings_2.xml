@@ -1,6 +1,6 @@
 <resources>
-    <string name="contacts">Contacto</string>
-    <string name="non_contacts">Non contacto</string>
+    <string name="contacts">Contactos</string>
+    <string name="non_contacts">Non contactos</string>
     <string name="inclusive">Inclusivo</string>
     <string name="exclusive">Exclusivo</string>
     <string name="help_contacts">
@@ -8,48 +8,48 @@
         Cando está habilitado, as chamadas/mensaxes dos contactos sempre están permitidas. <br>
         <br>
           - <b>Inclusivo</b>: <br>
-              &emsp; Os números que non son de contacto serán comprobados por outras regras. <br>
+              &emsp; Os números que non son contactos serán comprobados por outras regras. <br>
               &emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-              &emsp; Os números que non son de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+              &emsp; Os números que non son contactos serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
               &emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font> <br>
         <br>
-        Aplicarase a chamadas e mensaxes SMS.
+        Aplicase tanto a chamadas como a mensaxes SMS.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Incluir non verificado</string>
+    <string name="stir_include_unverified">Incluír non verificado</string>
     <string name="unverified">Non verificado</string>
     <string name="valid">Chamada válida</string>
-    <string name="spoof">Chamada falsa</string>
+    <string name="spoof">Chamada fraudulenta</string>
     <string name="help_stir">
         <![CDATA[
-            A atestación STIR/SHAKEN require <b>Android 11+</b> e <b>soporte do operador</b>. <br>
+            A atestación STIR/SHAKEN require <b>Android 11+</b> e <b>compatibilidade do operador</b>. <br>
             <br>
-            Hai tres resultados de atestación posibles: <br>
+            Hai tres posibles resultados de atestación: <br>
             <font color="#03DAC5"><b>Válido</b></font> <br>
-            &emsp; É moi probable que a chamada sexa válida, non falsa. <br>
+            &emsp; A chamada é moi probable que sexa válida, non fraudulenta. <br>
             <font color="#ffa500"><b>Non verificado</b></font> <br>
-            &emsp; Non se pode validar a chamada ou a atestación STIR non é compatible. <br>
-            <font color="#fa7f71"><b>Falsa</b></font> <br>
-            &emsp; É moi probable que sexa unha chamada falsa. <br>
+            &emsp; A chamada non se pode validar, ou a atestación STIR non é compatible. <br>
+            <font color="#fa7f71"><b>Fraude</b></font> <br>
+            &emsp; É moi probable que sexa unha chamada fraudulenta. <br>
             <br>
             <br>
               - <b>Inclusivo</b>: <br>
-                  &emsp; As chamadas que fallan esta comprobación seguirán sendo comprobadas por outras regras. <br>
-                  &emsp; Cando se activa "<b>Incluir non verificado</b>", unha chamada tamén pasaría se non está verificada. <br>
+                  &emsp; As chamadas que fallan nesta comprobación seguirán sendo comprobadas por outras regras. <br>
+                  &emsp; Cando se activa "<b>Incluír non verificado</b>", unha chamada tamén pasaría se non está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  &emsp; As chamadas que fallan esta comprobación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
-                  &emsp; Cando se activa "<b>Incluir non verificado</b>", unha chamada tamén se bloquearía se non está verificada. <br>
+                  &emsp; As chamadas que fallan nesta comprobación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
+                  &emsp; Cando se activa "<b>Incluír non verificado</b>", unha chamada tamén se bloquearía se non está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
-        Falta o campo obrigatorio <b>patrón</b> no ficheiro .csv, consulta a información do globo para obter unha explicación detallada.
+        Falta o campo obrigatorio <b>pattern</b> no ficheiro .csv, consulta o consello do globo para unha explicación detallada.
         ]]>
     </string>
 </resources>

@@ -1,17 +1,17 @@
 <resources>
     <string name="crash_title">
-        抱歉，应用程序已崩溃。\n\n
-        请复制以下内容并在github上报告此问题，
-        报告之前删除所有敏感信息。
+        抱歉，应用程序崩溃了。\n\n
+        请复制以下内容并将其提交到github上，
+        在报告之前请删除任何敏感信息。
     </string>
     <string-array name="short_weekdays">
-        <item>周日</item>
-        <item>周一</item>
-        <item>周二</item>
-        <item>周三</item>
-        <item>周四</item>
-        <item>周五</item>
-        <item>周六</item>
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
     </string-array>
 
     <string-array name="block_type_list">
@@ -20,20 +20,20 @@
         <item>接听+挂断</item>
     </string-array>
 
-    <string name="show_passed">显示已通过</string>
-    <string name="show_blocked">显示已拦截</string>
+    <string name="show_passed">显示通过</string>
+    <string name="show_blocked">显示拦截</string>
 
-    <string name="confirm_delete_all_records">确认删除所有记录？</string>
+    <string name="confirm_delete_all_records">确认要删除所有记录吗？</string>
     <string name="expiry">过期</string>
     <string name="days">天</string>
     <string name="help_history_ttl">
         <![CDATA[
             <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; 历史记录将被记录在数据库中，并在N天后过期，
-              过期记录将被自动删除。\n<br>
+            &emsp; 历史记录将被记录到数据库中，并在N天后过期，
+              过期记录将自动删除。 <br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; 历史记录日志已禁用，数据库中不会记录任何内容。\n<br>
+            &emsp; 历史记录日志已禁用，数据库中不会记录任何内容。 <br>
             <br>
             <font color="#00BFFF"><b>< 0</b></font><br>
             &emsp; 记录将被记录并且永远不会过期。
@@ -41,13 +41,13 @@
     </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        启用后，短信内容也将被记录在数据库中并显示在此列表中，禁用后将不会记录在数据库中。\n<br>
+        启用后，短信内容也将记录在数据库中并显示在此列表中，禁用后将不会记录在数据库中。 <br>
         <br>
-        - 启用时：\n<br>
-        &emsp; <b>点按</b> 展开/折叠完整消息。\n<br>
+        - 启用时： <br>
+        &emsp; <b>点按</b>展开/折叠完整消息。 <br>
         <br>
-        - 禁用时：\n<br>
-        &emsp; <b>点按</b> 在默认应用程序中打开对话。
+        - 禁用时： <br>
+        &emsp; <b>点按</b>在默认应用程序中打开对话。
         ]]>
     </string>
 
@@ -65,28 +65,28 @@
         <item>声音，状态栏，阴影，悬浮通知</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>导出为Json</item>
+        <item>导出为 Json</item>
         <item>导出为压缩文件</item>
     </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
         <![CDATA[
-            翻译由 Google AI 完成，在github上发布问题以添加新的语言支持。
+            翻译由 Google AI 完成，请在 github 上提交问题以添加新的语言支持。
         ]]>
     </string>
-    <string name="enabled_for_call">启用电话功能</string>
-    <string name="enabled_for_sms">启用短信功能</string>
+    <string name="enabled_for_call">启用电话</string>
+    <string name="enabled_for_sms">启用短信</string>
     <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果通话在一段时间内重复，则允许，它很可能很重要，而不是垃圾电话。\n<br>
+        如果电话在一段时间内重复，则很可能很重要而不是垃圾电话。 <br>
         <br>
-        从同一个号码接收短信也会被计算在内，这取决于是否授予READ_SMS权限，这是可选的。\n<br>
+        从同一个号码接收短信也被计算在内，这取决于是否授予了 READ_SMS 权限，这是可选的。 <br>
         <br>
-        默认设置 <font color="#03DAC5"><b>1 / 5 分钟</b></font> 表示 5 分钟内的第二次通话将被允许。\n<br>
+        默认设置 <font color="#03DAC5"><b>1 / 5 分钟</b></font> 表示 5 分钟内的第二次通话将被允许。 <br>
         <br>
-        仅适用于通话，<b>不适用于</b> 文本消息。\n<br>
+        仅适用于电话，<b>不</b>适用于短信。 <br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
@@ -94,15 +94,15 @@
 
     <string name="help_globally_enabled">
         <![CDATA[
-        全局开关，此应用程序仅在打开时有效，
-        在等待特定呼叫/消息时将其关闭。\n<br>
+        全局开关，此应用程序仅在打开此开关时才有效，
+        当您正在等待某些特定电话/消息时关闭它。 <br>
         <br>
-        它也可以从 <font color="#6ed0ff"><b>下拉快速设置</b></font> 中切换。\n<br>
+        它也可以从 <font color="#6ed0ff"><b>下拉快速设置</b></font> 中切换。 <br>
         <br>
         对于短信，此应用程序将接管短信通知，请
-        <font color="#fa7f71"><b>在系统设置中关闭默认短信应用程序的通知权限</b></font>，
-        否则会有双重通知。
-        它只过滤短信通知，垃圾短信仍然会出现在默认短信应用程序中。
+        <font color="#fa7f71"><b>关闭默认短信应用程序的通知权限</b></font> 在系统设置中，
+        否则将有双重通知。
+        它只过滤短信通知，垃圾短信仍然存在于默认短信应用程序中。
         ]]>
     </string>
 
@@ -112,15 +112,15 @@
     <string name="source_code">源代码</string>
     <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
-        此应用程序可能无法在工作资料中正常工作，请改为安装在主资料中。
+        此应用程序可能无法在工作配置文件中正常工作，请将其安装在主配置文件中。
     </string>
     <string-array name="import_csv_type">
-        <item>将 .csv 导入为单条规则</item>
-        <item>将 .csv 导入为多条规则</item>
+        <item>将 .csv 导入为单个规则</item>
+        <item>将 .csv 导入为多个规则</item>
     </string-array>
     <string name="warning_double_sms">
         此应用程序将接管所有短信通知，
-        但默认短信应用程序的通知权限也已启用，
+        但是默认短信应用程序的通知权限也已启用，
         请在系统设置中禁用它以防止双重短信通知。
     </string>
     <string name="open_settings">打开设置</string>

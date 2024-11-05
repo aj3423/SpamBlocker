@@ -1,45 +1,44 @@
 <resources>
     <string name="help_number_filter">
         <![CDATA[
-        Ces règles s\'appliquent au numéro de téléphone entrant.<br>
+        Ces règles s\'appliquent au <translate>numéro</translate> de téléphone entrant.<br>
         <br>
-        <font color="#00BFFF"><b> - Lié à l\'interface utilisateur</b></font>:<br>
-        Décochez les cases pour désactiver la règle, <font color="#fa7f71"><b>glissez vers la gauche pour supprimer</b></font> la règle.<br>
+        <font color="#00BFFF"><b> - UI related</b></font>:<br>
+        Décochez les cases à cocher pour désactiver la règle, <font color="#fa7f71"><b>glissez vers la gauche pour la supprimer</b></font>.<br>
         <br>
-        La liste est <b>affichée</b> par ordre décroissant de priorité, ordre croissant de description et ordre croissant de motif. <br>
+        La liste est <b>affichée</b> par ordre décroissant de priorité, ordre croissant de description et ordre croissant de modèle. <br>
         <br>
-        <font color="#00BFFF"><b> - Optimisation de l\'expression régulière</b></font>:<br>
+        <font color="#00BFFF"><b> - Optimisation Regex</b></font>:<br>
         Pour simplifier l\'expression régulière,
           <font color="#fa7f71"><b>+</b></font>,
            <font color="#fa7f71"><b>espaces</b></font>
           et <font color="#fa7f71"><b>zéros en tête</b></font>
-          sont supprimés avant la vérification, par exemple:<br>
-        &emsp; Tous ces formats:<br>
-        &emsp;&emsp; 123456789 &emsp;(numéro ordinaire)<br>
+          sont supprimés avant la vérification, par exemple :<br>
+        &emsp; Tous ces formats :<br>
+        &emsp;&emsp; 123456789 &emsp;(nombre régulier)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(avec <font color="#fa7f71"><b>espaces</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec un <font color="#fa7f71"><b>+</b></font> en tête)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec préfixe interurbain national <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> en tête)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec préfixe de tronc national <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(deux <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
+        &emsp; Ils sont <b>tous</b> vérifiés en tant que :<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Donc l\'expression régulière <font color="#03DAC5"><b>123.*</b></font> correspondrait à tous ces formats.<br>
-        Cette optimisation de numéro peut être <b>désactivée</b> avec l\'indicateur d\'expression régulière `Raw Number`.<br>
+        &emsp; Ainsi, l\'expression régulière <font color="#03DAC5"><b>123.*</b></font> correspondrait à tous. <br>
+        Cette optimisation du <translate>numéro</translate> peut être <b>désactivée</b> avec l\'indicateur d\'expression régulière "Raw Number".<br>
         <br>
-        <font color="#00BFFF"><b> - Exemples de motifs courants</b></font>:<br>
-        &ensp; - Tout numéro: <font color="#03DAC5"><b>.*</b></font> (l\'expression régulière .* équivaut au caractère générique * dans d\'autres applications) <br>
-        &ensp; - Numéro exact: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Commence par 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - Se termine par 123: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - Inférieur à 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - Supérieur à 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Numéro inconnu (chaîne vide): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Contient "verification": <font color="#03DAC5"><b>.*verification.*</b></font> <br>
-        &ensp; - Contient l\'un des mots: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font> <br>
-        &ensp; - Commence par 400, avec ou sans indicatif international 11: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <font color="#00BFFF"><b> - Certains modèles typiques</b></font>:<br>
+        &ensp; - Tout <translate>numéro</translate> : <font color="#03DAC5"><b>.*</b></font> (l\'expression régulière .* équivaut à l\'astérisque joker * dans d\'autres applications) <br>
+        &ensp; - <translate>Numéro</translate> exact : <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Commence par 400 : <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Se termine par 123 : <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Plus court que 5 : <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Plus long que 10 : <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - <translate>Numéro</translate> inconnu (chaîne vide) : <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Contient "vérification" : <font color="#03DAC5"><b>.*<translate>verification</translate>.*</b></font> <br>
+        &ensp; - Contient l\'un des mots : <font color="#03DAC5"><b>.*(<translate>police|hospital|verification</translate>).*</b></font> <br>
+        &ensp; - Commence par 400, avec ou sans code pays 11 en tête : <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <font color="#00BFFF"><b> - Importer des règles à partir d\'un fichier .csv</b></font>:<br>
-        Vous pouvez exporter des règles d\'une autre application vers un fichier .csv et les importer dans cette application.<br>
-        Appuyez longuement sur le bouton `Ajouter` pour importer des numéros à partir d\'un fichier .csv, colonnes prises en charge:<br>
+        <font color="#00BFFF"><b> - Importer des règles à partir de .csv</b></font>:<br>
+        Appuyez longuement sur le bouton `Ajouter` pour importer des <translate>numéros</translate> à partir d\'un fichier .csv, colonnes prises en charge :<br>
          - <no_translate><b>pattern</b></no_translate>: L\'expression régulière(<b>obligatoire</b>)<br>
          - <no_translate><b>description</b></no_translate>: Description<br>
          - <no_translate><b>priority</b></no_translate>: Priorité, par défaut 1<br>

@@ -18,48 +18,47 @@
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>テスト</b></font><br>
-        これらのアクションは、設定が正しく行われているかを確認するため、または手動でワークフローを実行する場合に、すぐに実行されます。<br>
+        これらのアクションは、設定が正しく行われているかどうかを確認するために、またはワークフローを手動で実行したい場合に、ただちに実行されます。<br>
         <br>
         - <font color="#00BFFF"><b>新規</b></font><br>
-            新しいアクションを作成します。複数のアクションをチェーンして、複雑なタスクを完了させることができます。<br>
-            アイテム間の緑または赤の点は、チェーン可能かどうかを示しています。<br>
+            新しいアクションを作成します。複数のアクションを連結して、複雑なタスクを完了させることができます。<br>
+            アイテム間の緑または赤のドットは、連結可能かどうかを示しています。<br>
             <br>
-            ワークフローの例:<br>
+            ワークフローの例：<br>
             <br>
-            &emsp; - HTTP ファイルダウンロード -> 7z 形式のデコード -> CSV 形式で解析 -> スパムデータベースにインポートします。<br>
+            &emsp; - httpからファイルダウンロード -> 7z形式をデコード -> csv形式として解析 -> スパムデータベースにインポート。<br>
             <br>
-            &emsp; - 勤務日には設定 A を適用し、週末には設定 B を適用します。<br>
+            &emsp; - 勤務日には設定Aを適用し、週末には設定Bを適用します。<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            毎営業日、
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a>
-            からスパム電話番号をダウンロードして、スパムデータベースにインポートします。
+            <no_translate>FTC - Do Not Call</no_translate> から、<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            スパム電話番号</a>を毎日ダウンロードして、スパムデータベースにインポートします。
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから期限切れのレコードを削除します。</string>
-    <string name="help_bot_preset_cleanup_history">期限切れの通話/SMS 履歴レコードを削除します。</string>
+    <string name="help_bot_preset_cleanup_history">期限切れの通話/SMS履歴レコードを削除します。</string>
     <string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
     <string name="everyday">毎日</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>
     <string name="periodically">定期的に</string>
     <string name="time">時間</string>
-    <string name="workdays">平日</string>
+    <string name="workdays">勤務日</string>
 
     <string name="help_backup">
         <![CDATA[
-        スパムデータベースを使用しない場合、どちらのオプションも同じになります。<br>
+        スパムデータベースを使用しない場合は、どちらのオプションも同等になります。<br>
         <br>
         - <b>スパムデータベースを含める</b><br>
-        &emsp; スパムデータベースは頻繁に更新されるため、通常のバックアップには使用しないでください。これは、構成を別の電話に複製する場合にのみ役立ちます。<br>
+        &emsp; スパムデータベースは頻繁に更新されるため、通常のバックアップには使用しないでください。<br>
+        &emsp;これは、設定を別の電話にクローンする場合にのみ役立ちます。<br>
         <br>
         - <b>設定のみ</b><br>
-        &emsp; - エクスポート時に、バックアップファイルのサイズが小さくなります。 <br>
-        &emsp; - インポート時に、スパムデータベースのレコードは現在の状態を保持します。
+        &emsp; - エクスポート時に、バックアップファイルのサイズが小さくなります。<br>
+        &emsp; - インポート時に、スパムデータベース内のレコードは現在の状態を保持します。
         ]]>
     </string>
     <string name="mode">モード</string>
@@ -70,18 +69,18 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        -<font color="#00BFFF"><b>作成</b></font><br>
+        - <font color="#00BFFF"><b>作成</b></font><br>
         &ensp; 常に新しい正規表現ルールを作成します。<br>
         <br>
         - <font color="#00BFFF"><b>置換</b></font><br>
-        &ensp; 同じ<b>説明</b>を持つ既存のルールを見つけようとします。 <br>
-        &ensp;&ensp; - 見つかった場合、上書きされます。<br>
-        &ensp;&ensp; - 見つからなかった場合、新しいルールが作成されます。<b>作成</b>と同じです。<br>
+        &ensp; 同じ<b>説明</b>を持つ既存のルールを検索しようとします。<br>
+        &ensp;&ensp; - 見つかった場合は、上書きされます。<br>
+        &ensp;&ensp; - 見つからなかった場合は、新しいルールが作成されます。<b>作成</b>と同じです。<br>
         <br>
         - <font color="#00BFFF"><b>マージ</b></font><br>
-        &ensp;- 同じ説明を持つルールが存在する場合、新しい番号がマージされます。<br>
+        &ensp; - 同じ説明を持つルールが存在する場合は、新しい番号がそのルールにマージされます。<br>
          重複する番号は自動的に削除されます。<br>
-        &ensp;- 存在しない場合、新しいルールが作成されます。<b>作成</b>と同じです。<br>
+        &ensp; - 存在しない場合は、新しいルールが作成されます。<b>作成</b>と同じです。<br>
         ]]>
     </string>
 

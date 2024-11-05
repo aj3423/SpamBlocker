@@ -5,25 +5,25 @@
         supprimez toute information sensible avant de signaler.
     </string>
     <string-array name="short_weekdays">
-        <item>Dim</item>
-        <item>Lun</item>
-        <item>Mar</item>
-        <item>Mer</item>
-        <item>Jeu</item>
-        <item>Ven</item>
-        <item>Sam</item>
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
     </string-array>
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Silencieux</item>
-        <item>Répondre + Raccrocher</item>
+        <item>Silence</item>
+        <item>Répondre + raccrocher</item>
     </string-array>
 
     <string name="show_passed">Afficher les appels autorisés</string>
     <string name="show_blocked">Afficher les appels bloqués</string>
 
-    <string name="confirm_delete_all_records">Confirmer la suppression de tous les enregistrements ?</string>
+    <string name="confirm_delete_all_records">Confirmer la suppression de tous les enregistrements ?</string>
     <string name="expiry">Expiration</string>
     <string name="days">Jours</string>
     <string name="help_history_ttl">
@@ -33,20 +33,20 @@
               les enregistrements expirés seront supprimés automatiquement.<br>
             <br>
             <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; L\'historique est désactivé, rien ne sera enregistré dans la base de données.<br>
+            &emsp; La journalisation de l\'historique est désactivée, rien ne sera enregistré dans la base de données.<br>
             <br>
             <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Les enregistrements seront enregistrés et n\'expireront jamais.
+            &emsp; Les enregistrements seront consignés et n\'expireront jamais.
         ]]>
     </string>
     <string name="help_log_sms_content">
         <![CDATA[
-        Lorsque cette option est activée, le contenu des SMS sera également enregistré dans la base de données et affiché dans cette liste. Il ne sera pas enregistré dans la base de données lorsqu\'elle est désactivée.<br>
+        Lorsque cette option est activée, le contenu des SMS sera également enregistré dans la base de données et affiché dans cette liste, il ne sera pas enregistré dans la base de données lorsqu\'elle est désactivée.<br>
         <br>
-        - Lorsqu\'elle est activée :<br>
+        - Lorsqu\'elle est activée:<br>
         &emsp; <b>Appuyez</b> pour développer/réduire le message complet.<br>
         <br>
-        - Lorsqu\'elle est désactivée :<br>
+        - Lorsqu\'elle est désactivée:<br>
         &emsp; <b>Appuyez</b> pour ouvrir la conversation dans l\'application par défaut.
         ]]>
     </string>
@@ -62,17 +62,17 @@
         <item>Ombre</item>
         <item>Barre d\'état, Ombre</item>
         <item>Son, Barre d\'état, Ombre</item>
-        <item>Son, Barre d\'état, Ombre, Notifications contextuelles</item>
+        <item>Son, Barre d\'état, Ombre, Notification contextuelle</item>
     </string-array>
     <string-array name="export_type_list">
-        <item>Exporter au format Json</item>
-        <item>Exporter au format compressé</item>
+        <item>Exporter en Json</item>
+        <item>Exporter compressé</item>
     </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont effectuées par Google AI. Signalez un problème sur github pour ajouter la prise en charge d\'une nouvelle langue.
+            Les traductions sont réalisées par Google AI, signalez un problème sur github pour ajouter une nouvelle prise en charge de la langue.
         ]]>
     </string>
     <string name="enabled_for_call">Activer pour les appels</string>
@@ -80,29 +80,29 @@
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un délai donné, il est probable qu\'il soit important plutôt qu\'un spam. <br>
+        Autoriser si l\'appel est répété dans un délai donné, il est probable qu\'il soit important plutôt qu\'un appel indésirable. <br>
         <br>
-        La réception de SMS du même numéro est également prise en compte, cela dépend de l\'octroi de l\'autorisation READ_SMS, qui est facultative.<br>
+        La réception d\'un SMS du même numéro est également prise en compte, cela dépend de l\'octroi de l\'autorisation READ_SMS, qui est facultative.<br>
         <br>
-        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
-        S\'applique uniquement aux appels, <b>pas</b> aux SMS. <br>
+        Ne s\'applique qu\'aux appels, <b>pas</b> aux SMS. <br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
 
     <string name="help_globally_enabled">
         <![CDATA[
-        Le commutateur global, cette application ne fonctionne que lorsqu\'il est activé,
-        désactivez-le lorsque vous attendez un appel ou un message particulier. <br>
+        Le commutateur global, cette application ne fonctionne que lorsque celui-ci est activé,
+        désactivez-le lorsque vous attendez un appel/message particulier. <br>
         <br>
-        Il peut également être activé/désactivé à partir des <font color="#6ed0ff"><b>paramètres rapides déroulants</b></font>.<br>
+        Il peut également être activé/désactivé à partir des <font color="#6ed0ff"><b>Paramètres rapides déroulants</b></font>.<br>
         <br>
-        Pour les SMS, cette application prendra le contrôle des notifications SMS, veuillez
+        Pour les SMS, cette application prendra en charge les notifications SMS, veuillez
         <font color="#fa7f71"><b>désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système,
         sinon il y aura des notifications doubles.
-        Elle filtre uniquement les notifications SMS. Les SMS indésirables seront toujours présents dans l\'application SMS par défaut.
+        Elle ne filtre que les notifications SMS, les SMS indésirables seront toujours présents dans l\'application SMS par défaut.
         ]]>
     </string>
 
@@ -112,16 +112,16 @@
     <string name="source_code">Code source</string>
     <string name="dismiss">Rejeter</string>
     <string name="warning_running_in_work_profile">
-        Cette application peut ne pas fonctionner correctement dans un profil professionnel. Veuillez l\'installer dans le profil principal à la place.
+        Cette application peut ne pas fonctionner correctement dans le profil professionnel, veuillez l\'installer dans le profil principal à la place.
     </string>
     <string-array name="import_csv_type">
-        <item>Importer un fichier .csv en tant que règle unique</item>
-        <item>Importer un fichier .csv en tant que plusieurs règles</item>
+        <item>Importer .csv comme une seule règle</item>
+        <item>Importer .csv comme plusieurs règles</item>
     </string-array>
     <string name="warning_double_sms">
-        Cette application prendra le contrôle de toutes les notifications SMS,
-        mais l\'autorisation de notification de l\'application SMS par défaut est également activée.
-        Veuillez la désactiver dans les paramètres système pour éviter les notifications SMS doubles.
+        Cette application prendra en charge toutes les notifications SMS,
+        mais l\'autorisation de notification de l\'application SMS par défaut est également activée,
+        veuillez la désactiver dans les paramètres système pour éviter les notifications SMS doubles.
     </string>
     <string name="open_settings">Ouvrir les paramètres</string>
     <string name="ignore">Ignorer</string>

@@ -2,15 +2,15 @@
     <string name="contact_rule">Règle de contact</string>
     <string name="directory">Répertoire</string>
     <string name="filename">Nom de fichier</string>
-    <string name="invalid_input_type">Type d\'entrée non valide, attendu : %s, reçu : %s</string>
+    <string name="invalid_input_type">Type d\'entrée invalide, attendu : %s, obtenu : %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Jours d\'expiration</string>
     <string name="column_mapping">Mappage de colonne</string>
     <string name="include_spam_db">Inclure la base de données de spam</string>
     <string name="configuration_only">Configuration uniquement</string>
     <string name="no_config_needed">Aucune configuration nécessaire</string>
-    <string name="success">Réussi</string>
-    <string name="failed">Échoué</string>
+    <string name="success">Succès</string>
+    <string name="failed">Échec</string>
     <string name="running">En cours d\'exécution</string>
     <string name="optional">(facultatif)</string>
 
@@ -19,23 +19,23 @@
         <![CDATA[
         - <font color="#03DAC5"><b>Test</b></font><br>
         Ces actions seront exécutées immédiatement, pour vérifier si elles ont été correctement configurées,
-        ou peut-être voulez-vous simplement exécuter manuellement ce flux de travail.<br>
+        ou peut-être que vous voulez simplement exécuter manuellement ce workflow.<br>
         <br>
         - <font color="#00BFFF"><b>Nouveau</b></font><br>
-            Créer une nouvelle action, plusieurs actions peuvent être enchaînées pour effectuer une tâche complexe.<br>
+            Créez une nouvelle action, plusieurs actions peuvent être chaînées ensemble pour effectuer une tâche complexe.<br>
             Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.<br>
             <br>
-            Exemples de flux de travail : <br>
+            Quelques exemples de workflows : <br>
             <br>
-            &emsp; - Télécharger un fichier à partir d\'un site web -> décoder le format 7z -> analyser au format csv -> importer dans la base de données de spam.<br>
+            &emsp; - Télécharger un fichier à partir d\'un lien http -> décoder au format 7z -> analyser au format csv -> importer dans la base de données de spam.<br>
             <br>
-            &emsp; - Appliquer les paramètres A les jours ouvrables et les paramètres B le week-end.<br>
+            &emsp; - Appliquer les paramètres A aux jours ouvrables et appliquer les paramètres B aux week-ends.<br>
         ]]>
     </string>
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Télécharger des numéros de téléphone indésirables depuis
+            Télécharger les numéros de téléphone de spam à partir de
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
             <no_translate>FTC - Do Not Call</no_translate> </a> tous les jours ouvrables,
              et les importer dans la base de données de spam.
@@ -56,8 +56,8 @@
         Si vous n\'utilisez pas la base de données de spam, les deux options seront équivalentes.<br>
         <br>
         - <b>Inclure la base de données de spam</b><br>
-        &emsp; Ne l\'utilisez pas pour une sauvegarde régulière, car la base de données de spam est censée être mise à jour fréquemment.
-         Ceci n\'est utile que lors du clonage de la configuration sur un autre téléphone.<br>
+        &emsp; N\'utilisez pas cette option pour une sauvegarde régulière, car la base de données de spam est censée être mise à jour fréquemment.
+         Ceci est seulement utile pour cloner la configuration vers un autre téléphone.<br>
         <br>
         - <b>Configuration uniquement</b><br>
         &emsp; - Lors de l\'exportation, cela réduira la taille du fichier de sauvegarde. <br>
@@ -73,16 +73,16 @@
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Créer</b></font><br>
-        &ensp; Créer toujours une nouvelle règle d\'expression régulière.<br>
+        &ensp; Créez toujours une nouvelle règle regex.<br>
         <br>
         - <font color="#00BFFF"><b>Remplacer</b></font><br>
-        &ensp; Il tentera de trouver une règle existante ayant la même <b>description</b>. <br>
+        &ensp; Il tentera de trouver une règle existante qui a la même <b>description</b>. <br>
         &ensp;&ensp; - Si elle est trouvée, elle sera remplacée.<br>
         &ensp;&ensp; - Si elle n\'est pas trouvée, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Fusionner</b></font><br>
-        &ensp;- Si une règle avec la même description existe, les nouveaux numéros seront fusionnés avec elle,<br>
-         les numéros en double seront automatiquement supprimés.<br>
+        &ensp;- Si une règle avec la même description existe, les nouveaux numéros seront fusionnés dans celle-ci,<br>
+         les numéros dupliqués seront automatiquement supprimés.<br>
         &ensp;- Si elle n\'existe pas, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
         ]]>
     </string>
