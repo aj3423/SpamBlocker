@@ -25,7 +25,6 @@ var lang_str string
 var filter_str string
 
 var move string
-var from string
 var to string
 
 var only string
@@ -67,7 +66,6 @@ func init() {
 	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES))
 	flag.StringVar(&filter_str, "filter", "", "")
 	flag.StringVar(&move, "move", "", "")
-	flag.StringVar(&from, "from", "", "")
 	flag.StringVar(&to, "to", "", "")
 	flag.BoolVar(&short, "short", false, "")
 	flag.StringVar(&only, "only", "", "")
@@ -150,18 +148,20 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	}
 	GeminiToken := os.Getenv("GeminiToken")
 
+	var use_short string
+	if short {
+		use_short = `Use extream short translating, as short a possible.`
+	} else {
+		use_short = `When translating short words, use short translations, as short as possible, for long sentences, make the translation as clear as possible. `
+	}
+
 	prompt := fmt.Sprintf(
-		"Translate the following xml content to language \"%s\"(\"%s\"), it's about a call blocking app which blocks spam calls. "+
+		"Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. "+
 			"For the word 'number', it always references to phone number. "+
-			"For the word 'spam', it always references to spam calls, it's never about email."+
+			"For the word 'spam', it always references to spam calls, don't translate it to spam email."+
 			"Make sure leave the XML tags unmodified. "+
 			"If the origin text is wrapped within tag <no_translate></no_translate>, do not translate it, keep it as it is. "+
-
-			"For the origin text that are just 1 or 2 or 3 words, find all possible translation alternatives, "+
-			"then pick the shortest one, as short as possible, use single word translation if possible."+
-
-			"For contents that wrapped in tag <short></short>, force use single word translation."+
-
+			use_short+
 			"show me the result only:\n"+
 			"%s",
 		lang, nameMap[lang], content_to_translate)
@@ -259,10 +259,16 @@ func join(lines []string) string {
 	return strings.Join(lines, "\n")
 }
 
+func remove_lines(slice []string, start, end int) []string {
+	s1 := slice[0:start]
+	s2 := slice[end:]
+	return slices.Concat(s1, s2)
+}
+
 func translate_1_xml(lang string, xml_fn string) error {
-	content := read_xml(ENGLISH, xml_fn)
+	english := read_xml(ENGLISH, xml_fn)
 	fmt.Printf("translating: %s -> %s\n", xml_fn, lang)
-	translated, e := translate_text(lang, content)
+	translated, e := translate_text(lang, english)
 
 	if IsRetryable(e) {
 		color.HiWhite("retry %s, error: %s", color.HiYellowString(xml_fn), e.Error())
@@ -272,11 +278,20 @@ func translate_1_xml(lang string, xml_fn string) error {
 		if only == "" { // replace entire xml
 			write_xml(lang, xml_fn, translated)
 		} else { // only replace the specific tag
-			found1, start1, end1, matched_lines1 := extract_tag(split(content), only)
-			found2, start2, end2, matched_lines2 := extract_tag(split(translated), only)
+			origin_lines := split(read_xml(lang, xml_fn))
+			translated_lines := split(translated)
+			found1, start1, end1, _ := extract_tag(origin_lines, only)
+			found2, _, _, matched_translated_lines := extract_tag(translated_lines, only)
 			if !found1 || !found2 {
 				panic(fmt.Sprintf("tag: <%s> not foun in lang: <%s>, xml: <%s>", only, lang, xml_fn))
 			}
+			// replace the tag content with the `matched_translated_lines`
+			new_lines := insert_lines_at(
+				remove_lines(origin_lines, start1, end1),
+				start1,
+				matched_translated_lines,
+			)
+			write_xml(lang, xml_fn, join(new_lines))
 		}
 	}
 	return e
