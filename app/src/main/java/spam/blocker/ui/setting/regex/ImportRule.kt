@@ -6,7 +6,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
-import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
@@ -84,8 +83,7 @@ fun ImportRuleButton(
                                         this.isBlacklist = isBlacklist
                                     }
                                     // 1. add to db
-                                    val table = NumberRuleTable()
-                                    table.addNewRule(ctx, rule)
+                                    vm.table.addNewRule(ctx, rule)
 
                                     // 2. refresh gui
                                     vm.reloadDb(ctx)
@@ -98,9 +96,8 @@ fun ImportRuleButton(
                             }
                             1 -> { // import as multi rules
                                 // 1. add to db
-                                val table = NumberRuleTable()
                                 allRules.forEach {
-                                    table.addNewRule(ctx, it)
+                                    vm.table.addNewRule(ctx, it)
                                 }
 
                                 // 2. refresh gui

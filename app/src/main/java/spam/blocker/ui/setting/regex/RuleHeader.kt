@@ -76,7 +76,7 @@ fun RuleHeader(
         },
         helpTooltipId = helpTooltipId,
     ) {
-        if (forType == Def.ForNumber) {
+        if (forType == Def.ForNumber || forType == Def.ForSms) {
             ImportRuleButton(
                 vm = vm,
             ) {
