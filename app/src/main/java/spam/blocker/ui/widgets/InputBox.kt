@@ -16,6 +16,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -384,8 +385,13 @@ fun RegexInputBox(
         )
     }
 
-    var errorStr = remember(lastText) {
-        validate()
+    var errorStr by remember(lastText) {
+        mutableStateOf(validate())
+    }
+
+    // Validate the regex on input change.
+    LaunchedEffect(state) {
+        errorStr = validate()
     }
 
     InputBox(
@@ -396,8 +402,6 @@ fun RegexInputBox(
 
             val stringChangedSinceLastInvocation = lastText != newState.text
             lastText = newState.text
-
-            errorStr = validate()
 
             if (stringChangedSinceLastInvocation) {
                 onRegexStrChange(lastText, errorStr != null)
@@ -421,6 +425,11 @@ fun RegexInputBox(
             // a fix for Tooltip+DropdownMenu
             val dropdownOffset = remember {
                 mutableStateOf(Offset.Zero)
+            }
+
+            // Validate the regex on flags change, it should disappear for `+123` when RawMode is turned on.
+            LaunchedEffect(regexFlags.intValue) {
+                errorStr = validate()
             }
 
             val dropdownItems = remember {
@@ -462,6 +471,7 @@ fun RegexInputBox(
                                     },
                                     checked
                                 )
+
                                 onFlagsChange(newVal)
                             },
                         )
