@@ -1,0 +1,18 @@
+New:
+-  Meeting Mode, auto decline calls during online video conferences
+- language support: Turkish(tr), thanks to @parduspanteri
+
+Fix:
+- "include spam database" switch not toggled on tapping
+- when adding a rule, the error text is not refreshed on flags change
+
+Improvement:
+- upgrade translation engine from gemini v1.0 to v1.5, improving translation quality
+- for languages that have long text, widgets will wrap to the next line if there's insufficient space left
+- configurable "initial sms row count" in sms history
+- new history context menu item "add number to spam db"
+- search/delete number in spam db
+- customizable http header for HttpDownload
+- support clear-text HttpDownload 
+- rule list options: max display lines for the regex/description, max list height 
+- import SMS rules from .csv
