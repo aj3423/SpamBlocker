@@ -145,21 +145,23 @@ class HttpDownload(
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        val connection = URL(url.resolveTimeTags()).openConnection() as HttpURLConnection
         var ret: Pair<Boolean, Any?> = Pair(false, null)
+
+        var connection: HttpURLConnection? = null
 
         val thread = GlobalScope.launch(Dispatchers.IO) {
             ret = try {
+                connection = URL(url.resolveTimeTags()).openConnection() as HttpURLConnection
                 // Add http headers
                 splitHeader(header).forEach { (key, value) ->
-                    connection.setRequestProperty(key, value)
+                    connection!!.setRequestProperty(key, value)
                 }
 
-                connection.connect()
+                connection!!.connect()
 
-                val responseCode = connection.responseCode
+                val responseCode = connection!!.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                    val byteArray = connection.inputStream.use { it.readBytes() }
+                    val byteArray = connection!!.inputStream.use { it.readBytes() }
                     Pair(true, byteArray)
                 } else {
                     Pair(false, "HTTP: $responseCode")
@@ -167,7 +169,7 @@ class HttpDownload(
             } catch (e: Exception) {
                 Pair(false, "$e")
             } finally {
-                connection.disconnect()
+                connection?.disconnect()
             }
         }
         runBlocking {
