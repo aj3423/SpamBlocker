@@ -21,7 +21,7 @@ body:
       placeholder: |
         Example: 15
     validations:
-      required: false
+      required: true
 
 
   - type: textarea
