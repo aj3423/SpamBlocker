@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+    // https://github.com/aj3423/SpamBlocker/issues/184
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+    }
+
     signingConfigs {
         create("release") {
             enableV2Signing = false
