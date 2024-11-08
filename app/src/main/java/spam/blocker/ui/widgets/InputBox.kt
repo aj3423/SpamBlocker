@@ -389,11 +389,6 @@ fun RegexInputBox(
         mutableStateOf(validate())
     }
 
-    // Validate the regex on input change.
-    LaunchedEffect(state) {
-        errorStr = validate()
-    }
-
     InputBox(
         modifier = modifier,
         value = state,
@@ -404,6 +399,7 @@ fun RegexInputBox(
             lastText = newState.text
 
             if (stringChangedSinceLastInvocation) {
+                errorStr = validate() // update errorStr before callback
                 onRegexStrChange(lastText, errorStr != null)
             }
         },

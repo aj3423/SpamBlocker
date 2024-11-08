@@ -152,13 +152,14 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	var use_short string
 	if short {
 		use_short = "Use extream short translation. "
+	} else {
+		use_short = "If the content contains tags <short> and </short>, always translate the text in between with extream short translations. "
 	}
 	prompt := fmt.Sprintf(
 		"Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. "+
 			"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. "+
 			"If the content contains tags <translate> and </translate>, always translate the text in between. "+
 			"If the content contains tags <no_translate> and </no_translate>, keep it as it is. "+
-			"If the content contains tags <short> and </short>, always translate the text in between with extream short translations. "+
 			use_short+
 			"show me the raw result only:\n"+
 			"%s",
@@ -174,7 +175,7 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 
 	model := client.GenerativeModel("gemini-1.5-flash")
 
-	// max is 8192 for gemini-pro v1.0 (8192 by default)
+	// max is 8192 for gemini-v1.5-flash (8192 by default)
 	// but actually it's only 2048...
 	// model.SetMaxOutputTokens(8192)
 
