@@ -76,6 +76,8 @@ It works without replacing your default call/SMS app.
  - No communication with other app
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
 
+[Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRIVACY%20POLICY.md)
+
 # Support
  - Most problems have already been discussed in the issue list, please search first.
  - There's also a [matrix channel](https://matrix.to/#/#spam-blocker:matrix.org)
