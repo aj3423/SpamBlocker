@@ -3,4 +3,10 @@ description: Suggest a new feature
 labels: [new feature]
 body:
 
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: The feature
+    validations:
+      required: true
 

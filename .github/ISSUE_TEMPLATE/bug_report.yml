@@ -8,9 +8,9 @@ body:
     attributes:
       label: SpamBlocker version
       description: |
-        You can the version in **About** section.
+        You can find the version in **About** section.
       placeholder: |
-        Example: "3.2"
+        Example: 3.2
     validations:
       required: false
 
@@ -19,7 +19,7 @@ body:
     attributes:
       label: Android version
       placeholder: |
-        Example: "15"
+        Example: 15
     validations:
       required: false
 
