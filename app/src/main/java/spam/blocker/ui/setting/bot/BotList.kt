@@ -34,7 +34,6 @@ import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem

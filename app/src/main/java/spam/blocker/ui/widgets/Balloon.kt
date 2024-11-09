@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
@@ -52,10 +53,12 @@ fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
                         shape = RoundedCornerShape(BalloonCornerRadius.dp)
                     )
             ) {
+
                 val state = rememberScrollState()
                 HtmlText(
                     tooltip,
                     modifier = M
+                        .maxScreenHeight(0.9f)
                         .verticalScroll(state)
                         .simpleVerticalScrollbar(
                             state,

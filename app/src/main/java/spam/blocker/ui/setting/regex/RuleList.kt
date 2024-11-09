@@ -5,7 +5,6 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -28,7 +27,6 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
@@ -38,6 +36,8 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.maxScreenHeight
+import spam.blocker.ui.screenHeightDp
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -242,16 +242,7 @@ fun RuleList(
                     fontSize = 18.sp
                 )
 
-                val density = LocalDensity.current
-
-                // Calculate x% of the screen width
-                val halfScreenDp = remember {
-                    with(density) {
-                        val screenHeightPx = ctx.resources.displayMetrics.heightPixels
-                        screenHeightPx.toDp().value * 0.5
-                    }
-                }
-                LazyColumn(modifier = M.heightIn(max = halfScreenDp.dp)) {
+                LazyColumn(modifier = M.maxScreenHeight(0.5f)) {
                     items(duplicatedRules, key = { it.id }) {
                         RuleCard(rule = it, forType = forType)
                     }
@@ -331,19 +322,12 @@ fun RuleList(
     if (useLazy) { // LazyColumn
         val lazyState = rememberLazyListState()
 
-        // Calculate x% of the screen width
+        // Calculate x% of the screen height
         val percentage = spf.getRuleListHeightPercentage()
-        val density = LocalDensity.current
-        val lazyHeight = remember {
-            density.run {
-                val screenHeightPx = ctx.resources.displayMetrics.heightPixels
-                screenHeightPx.toDp().value * percentage / 100
-            }
-        }
 
         LazyScrollbar(
             state = lazyState,
-            modifier = M.height(lazyHeight.dp),
+            modifier = M.height((screenHeightDp() * percentage / 100).dp),
         ) {
             LazyColumn(
                 state = lazyState,

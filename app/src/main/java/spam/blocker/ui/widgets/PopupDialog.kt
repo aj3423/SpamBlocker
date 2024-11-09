@@ -15,16 +15,14 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import spam.blocker.ui.M
+import spam.blocker.ui.screenWidthDp
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
-import kotlin.math.roundToInt
 
 const val PopupPaddingHorizontal = 16
 const val PopupPaddingVertical = 16
@@ -37,12 +35,8 @@ data class PopupSize(
 ) {
     @Composable
     fun calculate(): Int {
-        val screenWidth = LocalContext.current.resources.displayMetrics.widthPixels
+        var width = (screenWidthDp() * percentage).toInt()
 
-        // Calculate x% of the screen width
-        var width = with(LocalDensity.current) {
-            (screenWidth * percentage).roundToInt().toDp().value.toInt()
-        }
         // must >= minWidth
         if (width < minWidth) {
             width = minWidth

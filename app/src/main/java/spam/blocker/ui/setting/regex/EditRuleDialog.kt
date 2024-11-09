@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -51,7 +50,6 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
-import spam.blocker.ui.widgets.NonLazyGrid
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -69,7 +67,6 @@ import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Lambda1
 import spam.blocker.util.NormalPermission
-import spam.blocker.util.SharedPref.RegexOptions
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.addFlag

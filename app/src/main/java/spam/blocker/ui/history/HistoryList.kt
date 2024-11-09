@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.db.historyTableForType
@@ -28,7 +27,6 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.RuleEditDialog
 import spam.blocker.ui.widgets.BgLaunchApp
 import spam.blocker.ui.widgets.DropdownWrapper
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LazyScrollbar
