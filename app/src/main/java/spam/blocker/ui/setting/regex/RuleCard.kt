@@ -92,8 +92,8 @@ fun RuleCard(
                         // [BlockType]
                         when (rule.blockType) {
                             0 -> GreyIcon16( iconId = R.drawable.ic_call_blocked )
-                            1 -> GreyIcon( iconId = R.drawable.ic_call_miss )
-                            2 -> GreyIcon(iconId = R.drawable.ic_hang)
+                            1 -> GreyIcon16( iconId = R.drawable.ic_call_miss )
+                            2 -> GreyIcon16(iconId = R.drawable.ic_hang)
                         }
                     }
                     // [Call, SMS]

@@ -33,8 +33,7 @@
         &ensp; - Shorter than 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Longer than 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Unknown number(empty string): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Contains "verification": <font color="#03DAC5"><b>.*<translate>verification</translate>.*</b></font> <br>
-        &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(<translate>police|hospital|verification</translate>).*</b></font> <br>
+        &ensp; - Matches any of the patterns: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
         &ensp; - Starts with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Import rules from .csv</b></font>:<br>

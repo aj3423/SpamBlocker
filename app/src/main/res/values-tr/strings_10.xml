@@ -1,51 +1,50 @@
 <resources>
     <string name="help_number_filter">
         <![CDATA[
-        Bu kurallar gelen telefon numarasına uygulanır.<br>
+        Bu kurallar gelen <translate>telefon numarasına</translate> uygulanır.<br>
         <br>
-        <font color="#00BFFF"><b> - Arayüz ile ilgili</b></font>:<br>
-        Kuralları devre dışı bırakmak için onay kutularını işaretini kaldırın, <font color="#fa7f71"><b>silmek için sola kaydırın</b></font>.<br>
+        <font color="#00BFFF"><b> - UI ile ilgili</b></font>:<br>
+        Kuralı devre dışı bırakmak için onay kutularının işaretini kaldırın, <font color="#fa7f71"><b>soldan kaydırarak silin</b></font>.<br>
         <br>
-        Liste öncelik sırasına göre azalan, açıklamaya göre artan ve desen sırasına göre artan şekilde  <b>gösterilmektedir</b>. <br>
+        Liste <translate>öncelik azalan, açıklama artan ve desen artan sırada görüntülenir</translate>. <br>
         <br>
-        <font color="#00BFFF"><b> - Düzenli ifade Optimizasyonu</b></font>:<br>
-        Düzenli ifadeyi basitleştirmek için,
+        <font color="#00BFFF"><b> - Regex Optimizasyonu</b></font>:<br>
+        Regex\'i basitleştirmek için,
           <font color="#fa7f71"><b>+</b></font>,
            <font color="#fa7f71"><b>boşluklar</b></font>
-          and <font color="#fa7f71"><b>önceki sıfırlar</b></font>
-          kontrol edilmeden önce kaldırılır, örneğin:<br>
+          ve <font color="#fa7f71"><b>baştaki sıfırlar</b></font>
+          kontrol etmeden önce kaldırılır, örneğin:<br>
         &emsp; Tüm bu formatlar:<br>
-        &emsp;&emsp; 123456789 &emsp;(düzenli sayı)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(ile <font color="#fa7f71"><b>boşluk</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(ile ilerleyen <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(yerel ana hat eki <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(iki <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; <b>Hepsi</b> şu şekilde işaretlendi:<br>
+        &emsp;&emsp; 123456789 &emsp;(normal <translate>numara</translate>)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(ile <font color="#fa7f71"><b>boşluklar</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(baştaki <font color="#fa7f71"><b>+</b></font> ile)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(yerel şebeke ön eki <font color="#fa7f71"><b>0</b></font> ile)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(iki <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Bunların <translate>hepsi</translate> şu şekilde kontrol edilir:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Bu nedenle düzenli ifade <font color="#03DAC5"><b>123.*</b></font> hepsini eşleştirecektir.<br>
-        Bu sayı optimizasyonu, düzenli ifade bayrağı \'Ham Numara\' ile <b>devre dışı bırakıldı</b>.<br>
+        &emsp; Yani regex <font color="#03DAC5"><b>123.*</b></font> hepsine uyacaktır.<br>
+        Bu <translate>numara</translate> optimizasyonu, "Ham <translate>Numara</translate>" regex bayrağı ile <translate>devre dışı bırakılabilir</translate>.<br>
         <br>
-        <font color="#00BFFF"><b> - Bazı tipik Desenler</b></font>:<br>
-        &ensp; - Herhangi bir sayı: <font color="#03DAC5"><b>.*</b></font> (düzenli ifade .* diğer uygulamalardaki joker karakter * ile eşdeğerdir) <br>
-        &ensp; - Tam sayı: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - 400 ile başlar: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - 123 ile biter: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 5\'ten daha kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - 10\'dan daha uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Bilinmeyen sayı (boş dize): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - "doğrulama" içerir: <font color="#03DAC5"><b>.*doğrulama.*</b></font> <br>
-        &ensp; - Aşağıdaki kelimelerden herhangi birini içerir: <font color="#03DAC5"><b>.*(polis|hastane|doğrulama).*</b></font> <br>
-        &ensp; - 400 ile başlar, ülke kodu 11 ile ya da olmadan ilerler: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <font color="#00BFFF"><b> - Bazı tipik kalıplar</b></font>:<br>
+        &ensp; - Herhangi bir <translate>numara</translate>: <font color="#03DAC5"><b>.*</b></font> (regex .* diğer uygulamalardaki joker karakter * ile aynıdır) <br>
+        &ensp; - Tam <translate>numara</translate>: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - 400 ile başlayan: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - 123 ile biten: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 5\'ten kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - 10\'dan uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Bilinmeyen <translate>numara</translate>(boş dize): <font color="#03DAC5"><b>.{0}</b></font> veya <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Kalıplardan herhangi birine uyan: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
+        &ensp; - 11 olan veya olmayan baştaki ülke kodu ile 400 ile başlayan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <font color="#00BFFF"><b> - Kuralı içe aktar: .csv</b></font>:<br>
-        .csv dosyasından numaraları içe aktarmak için `Ekle` düğmesine uzun basın, sütunlar desteklenir:<br>
-         - <no_translate><b>desen</b></no_translate>: Düzenli ifade(<b>gerekli</b>)<br>
-         - <no_translate><b>tanım</b></no_translate>: Tanım<br>
-         - <no_translate><b>öncelik</b></no_translate>: Öncelik, varsayılan 1<br>
-         - <no_translate><b>bayraklar</b></no_translate>: 1(Aramaya uygula), 2(SMS\'e uygula), 3(her ikisi), varsayılan 3<br>
-         - <no_translate><b>KaraListe</b></no_translate>: Kara liste veya beyaz liste. <no_translate>gerçek</no_translate> veya <no_translate>sahte</no_translate>, varsayılan <no_translate>gerçek</no_translate><br>
-         - <no_translate><b>engelleme türü</b></no_translate>: Engelleme türü. 0~2 engelleme türü 3\'e karşılık gelir, varsayılan 0<br>
-         - <no_translate><b>önemli</b></no_translate>: Bildirim türü. 0~4 bildirim türü 5\'e karşılık gelir, varsayılan 2
+        <font color="#00BFFF"><b> - .csv\'den kurallar içe aktar</b></font>:<br>
+        <translate>Numaraları</translate> .csv dosyasından içe aktarmak için `Ekle` düğmesine uzun basın, desteklenen sütunlar:<br>
+         - <no_translate><b>pattern</b></no_translate>: Regex(<b>zorunlu</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Açıklama<br>
+         - <no_translate><b>priority</b></no_translate>: Öncelik, varsayılan 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Çağrıya Uygulanır), 2(SMS\'e Uygulanır), 3(her ikisi de), varsayılan 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Kara liste veya beyaz liste. <no_translate>true</no_translate> veya <no_translate>false</no_translate>, varsayılan <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Engelleme türü. 0~2, 3 engelleme türüne karşılık gelir, varsayılan 0<br>
+         - <no_translate><b>importance</b></no_translate>: Bildirim türü. 0~4, 5 bildirim türüne karşılık gelir, varsayılan 2
         ]]>
     </string>
 </resources>

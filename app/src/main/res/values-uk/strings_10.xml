@@ -1,14 +1,14 @@
 <resources>
     <string name="help_number_filter">
         <![CDATA[
-        Ці правила застосовуються до вхідного <translate>номеру</translate>.<br>
+        Ці правила застосовуються до вхідного <translate>номеру телефону</translate>.<br>
         <br>
         <font color="#00BFFF"><b> - UI related</b></font>:<br>
-        Зніміть прапорці, щоб вимкнути правило, <font color="#fa7f71"><b>змістіть вліво, щоб видалити</b></font> його.<br>
+        Зніміть прапорці, щоб вимкнути правило, <font color="#fa7f71"><b>проведіть пальцем ліворуч, щоб видалити його</b></font>.<br>
         <br>
-        Список <b>відображається</b> у порядку спадання пріоритету, зростання опису та зростання шаблону.<br>
+        Список <translate>відображається</translate> в порядку спадання пріоритету, зростаючого опису та зростаючого шаблону. <br>
         <br>
-        <font color="#00BFFF"><b> - Regex Optimization</b></font>:<br>
+        <font color="#00BFFF"><b> - Оптимізація Regex</b></font>:<br>
         Щоб спростити regex,
           <font color="#fa7f71"><b>+</b></font>,
            <font color="#fa7f71"><b>пробіли</b></font>
@@ -18,12 +18,12 @@
         &emsp;&emsp; 123456789 &emsp;(звичайний <translate>номер</translate>)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(з <font color="#fa7f71"><b>пробілами</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(з провідним <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(з внутрішнім префіксом <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(з префіксом внутрішнього ствола <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Вони <b>всі</b> перевіряються як:<br>
+        &emsp; Вони <translate>всі</translate> перевіряються як:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Тому regex <font color="#03DAC5"><b>123.*</b></font> відповідатиме всім з них.<br>
-        Цю оптимізацію <translate>номеру</translate> можна <b>вимкнути</b> за допомогою прапорця regex "Raw Number".<br>
+        &emsp; Тому regex <font color="#03DAC5"><b>123.*</b></font> відповідатиме <translate>всім</translate> з них.<br>
+        Цю оптимізацію <translate>номерів</translate> можна <translate>вимкнути</translate> за допомогою прапора regex "Raw Number".<br>
         <br>
         <font color="#00BFFF"><b> - Деякі типові шаблони</b></font>:<br>
         &ensp; - Будь-який <translate>номер</translate>: <font color="#03DAC5"><b>.*</b></font> (regex .* еквівалентний підстановці * в інших програмах) <br>
@@ -31,21 +31,20 @@
         &ensp; - Починається з 400: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Закінчується на 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - Коротший за 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - Довше за 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Довший за 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Невідомий <translate>номер</translate>(порожній рядок): <font color="#03DAC5"><b>.{0}</b></font> або <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Містить "<translate>верифікацію</translate>": <font color="#03DAC5"><b>.*<translate>verification</translate>.*</b></font> <br>
-        &ensp; - Містить будь-яке з слів: <font color="#03DAC5"><b>.*(<translate>police|hospital|verification</translate>).*</b></font> <br>
-        &ensp; - Починається з 400, з провідним кодом країни 11 або без: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Відповідає будь-якому з шаблонів: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
+        &ensp; - Починається з 400, з провідним кодом країни 11 або ні: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Імпорт правил з .csv</b></font>:<br>
-        Довго натисніть кнопку «Додати», щоб імпортувати <translate>номери</translate> з файлу .csv, підтримувані стовпці:<br>
+        Довге натискання на кнопку `Додати`, щоб імпортувати <translate>номери</translate> з файлу .csv, підтримуються стовпці:<br>
          - <no_translate><b>pattern</b></no_translate>: Regex(<b>обов\'язково</b>)<br>
          - <no_translate><b>description</b></no_translate>: Опис<br>
          - <no_translate><b>priority</b></no_translate>: Пріоритет, за замовчуванням 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Застосовувати до дзвінка), 2(Застосовувати до SMS), 3(обидва), за замовчуванням 3<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Застосувати до дзвінка), 2(Застосувати до SMS), 3(обидва), за замовчуванням 3<br>
          - <no_translate><b>isBlacklist</b></no_translate>: Чорний список або білий список. <no_translate>true</no_translate> або <no_translate>false</no_translate>, за замовчуванням <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>: Тип блокування. 0~2 відповідає 3 типам блокування, за замовчуванням 0<br>
-         - <no_translate><b>importance</b></no_translate>: Тип сповіщення. 0~4 відповідає 5 типам сповіщення, за замовчуванням 2
+         - <no_translate><b>importance</b></no_translate>: Тип сповіщення. 0~4 відповідає 5 типам сповіщень, за замовчуванням 2
         ]]>
     </string>
 </resources>
