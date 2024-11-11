@@ -145,7 +145,7 @@ fun LeftDeleteSwipeWrapper(
                     left.onSwipe()
                 }
             },
-            background = { state -> BgDelete(state, EndToStart) }
+            background = left.background ?: { state -> BgDelete(state, EndToStart) }
         ),
         right = right,
         content = {

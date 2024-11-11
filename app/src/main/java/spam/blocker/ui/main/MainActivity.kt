@@ -18,12 +18,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import spam.blocker.BuildConfig
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryScreen
@@ -35,11 +39,13 @@ import spam.blocker.ui.widgets.Badge
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permissions
@@ -149,12 +155,22 @@ class MainActivity : ComponentActivity() {
                     .systemBarsPadding(), // fix bottom-bar behind system-bar
                 snackbarHost = {
                     SnackbarHost(hostState = SnackBar.state) { // customize color
-                        Snackbar(
-                            containerColor = MayaBlue,
-                            contentColor = Color.DarkGray,
-                            actionColor = Color.DarkGray,
-                            snackbarData = it
-                        )
+                        LeftDeleteSwipeWrapper(
+                            left = SwipeInfo(
+                                onSwipe = {
+                                    SnackBar.dismiss()
+                                },
+                                background = {}, // don't show the red bg color and a "recycler bin"
+                            )
+                        ) {
+                            Snackbar(
+                                modifier = M.padding(horizontal = 10.dp),
+                                containerColor = MayaBlue,
+                                contentColor = Color.DarkGray,
+                                actionColor = Color.DarkGray,
+                                snackbarData = it
+                            )
+                        }
                     }
                 },
                 bottomBar = {

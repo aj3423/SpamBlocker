@@ -18,7 +18,7 @@ object SnackBar {
     ) {
         coroutine.launch {
             // cancel previous
-            state.currentSnackbarData?.dismiss()
+            dismiss()
 
             val result = state.showSnackbar(
                 if (content.length > 50) content.substring(0, 50) + "..." else content,
@@ -30,5 +30,8 @@ object SnackBar {
                 onAction()
             }
         }
+    }
+    fun dismiss() {
+        state.currentSnackbarData?.dismiss()
     }
 }
