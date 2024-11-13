@@ -116,4 +116,25 @@
         &ensp; - 替换 `<font color="#fa7f71">(#)</font>` 为 `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
+    <string name="action_find_rules">查找规则</string>
+    <string name="action_modify_rules">修改规则</string>
+    <string name="action_modify_rules_placeholder">
+        一个 json 字符串，例如：\n
+        {\n
+        "flags": 0, // 禁用规则\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        查找与特定描述匹配的<u>规则列表</u>。
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        更改<u>规则列表</u>的一个或多个属性。
+        ]]>
+    </string>
 </resources>

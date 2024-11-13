@@ -1106,7 +1106,6 @@ class FindRules(
         val found = NumberRuleTable().listAll(ctx).filter {
             patternRegex.matches(it.description)
         }
-        loge("found: $found")
         return Pair(true, found)
     }
 

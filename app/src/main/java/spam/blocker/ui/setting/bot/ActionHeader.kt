@@ -98,7 +98,7 @@ fun ActionPresetCard(
 ) {
     val ctx = LocalContext.current
 
-    RowVCenterSpaced(10, modifier = M.padding(vertical = 2.dp)) {
+    RowVCenterSpaced(10) {
         // Icon
         action.Icon()
         // Title
@@ -122,17 +122,15 @@ fun ActionHeader(
     PopupDialog(
         trigger = trigger,
     ) {
-        Column(modifier = M.maxScreenHeight(0.7f)) {
-            defaultActions.map { action ->
-                ActionPresetCard(
-                    action = action,
-                    onClick = {
-                        val newAction = action.clone()
-                        actions.add(newAction)
-                        trigger.value = false
-                    }
-                )
-            }
+        defaultActions.map { action ->
+            ActionPresetCard(
+                action = action,
+                onClick = {
+                    val newAction = action.clone()
+                    actions.add(newAction)
+                    trigger.value = false
+                }
+            )
         }
     }
 

@@ -116,4 +116,25 @@
         &ensp; - Değiştir `<font color="#fa7f71">(#)</font>` a/e `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
+    <string name="action_find_rules">Kuralları Bul</string>
+    <string name="action_modify_rules">Kuralları Değiştir</string>
+    <string name="action_modify_rules_placeholder">
+        Örneğin bir json dizesi:\n
+        {\n
+        "flags": 0, // Kuralı devre dışı bırak\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Belirli bir açıklamayla eşleşen <u>kural listesini</u> bulun.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        <u>Kural listesinin</u> bir veya birden çok özniteliğini değiştirin.
+        ]]>
+    </string>
 </resources>

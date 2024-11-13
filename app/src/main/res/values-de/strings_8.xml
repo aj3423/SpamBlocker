@@ -116,4 +116,25 @@
         &ensp; - Ersetzen Sie `<font color="#fa7f71">(#)</font>` durch `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
+    <string name="action_find_rules">Regeln finden</string>
+    <string name="action_modify_rules">Regeln ändern</string>
+    <string name="action_modify_rules_placeholder">
+        Eine JSON-Zeichenkette, zum Beispiel:\n
+        {\n
+        "flags": 0, // Regel deaktivieren\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Eine <u>Liste von Regeln</u> finden, die mit einer bestimmten Beschreibung übereinstimmen.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Ändere ein oder mehrere Attribute für eine <u>Liste von Regeln</u>.
+        ]]>
+    </string>
 </resources>

@@ -116,4 +116,25 @@
         &ensp; - Reemplazar `<font color="#fa7f71">(#)</font>` por `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
+    <string name="action_find_rules">Buscar reglas</string>
+    <string name="action_modify_rules">Modificar reglas</string>
+    <string name="action_modify_rules_placeholder">
+        Una cadena json, por ejemplo:\n
+        {\n
+        "flags": 0, // Deshabilitar la regla\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Encontrar una <u>lista de reglas</u> que coincidan con una descripción específica.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Cambiar uno o varios atributos para una <u>lista de reglas</u>.
+        ]]>
+    </string>
 </resources>

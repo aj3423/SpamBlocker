@@ -284,20 +284,34 @@ func translate_1_xml(lang string, xml_fn string) error {
 		if only == "" { // replace entire xml
 			write_xml(lang, xml_fn, translated)
 		} else { // only replace the specific tag
-			origin_lines := split(read_xml(lang, xml_fn))
-			translated_lines := split(translated)
-			found1, start1, end1, _ := extract_tag(origin_lines, only)
-			found2, _, _, matched_translated_lines := extract_tag(translated_lines, only)
-			if !found1 || !found2 {
-				panic(fmt.Sprintf("tag: <%s> not foun in lang: <%s>, xml: <%s>", only, lang, xml_fn))
+			v_only := strings.Split(only, ",")
+			for _, target := range v_only {
+				origin_lines := split(read_xml(lang, xml_fn))
+				translated_lines := split(translated)
+				found1, start1, end1, _ := extract_tag(origin_lines, target)
+				found2, _, _, matched_translated_lines := extract_tag(translated_lines, target)
+				if !found2 {
+					panic(fmt.Sprintf("tag: <%s> not found in translated result: <%s>, xml: <%s>", target, lang, xml_fn))
+				}
+
+				// if tag already exists in xml, replace it, otherwise, append as last tag.
+				if found1 {
+					// replace the tag content with the `matched_translated_lines`
+					new_lines := insert_lines_at(
+						remove_lines(origin_lines, start1, end1),
+						start1,
+						matched_translated_lines,
+					)
+					write_xml(lang, xml_fn, join(new_lines))
+				} else {
+					new_lines := insert_lines_at(
+						origin_lines,
+						len(origin_lines)-1,
+						matched_translated_lines,
+					)
+					write_xml(lang, xml_fn, join(new_lines))
+				}
 			}
-			// replace the tag content with the `matched_translated_lines`
-			new_lines := insert_lines_at(
-				remove_lines(origin_lines, start1, end1),
-				start1,
-				matched_translated_lines,
-			)
-			write_xml(lang, xml_fn, join(new_lines))
 		}
 	}
 	return e

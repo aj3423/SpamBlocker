@@ -116,4 +116,25 @@
         &ensp; - `<font color="#fa7f71">(#)</font>` を `<font color="#03DAC5"><b>.</b></font>` に置換<br>
         ]]>
     </string>
+    <string name="action_find_rules">ルールの検索</string>
+    <string name="action_modify_rules">ルールの変更</string>
+    <string name="action_modify_rules_placeholder">
+        JSON文字列、例：\n
+        {\n
+        "flags": 0, // ルールを無効化\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        特定の説明に一致する<u>ルールのリスト</u>を検索します。
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        <u>ルールのリスト</u>の1つまたは複数の属性を変更します。
+        ]]>
+    </string>
 </resources>

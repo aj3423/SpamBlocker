@@ -116,4 +116,25 @@
         &ensp; - Заменить `<font color="#fa7f71">(#)</font>` на `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
+    <string name="action_find_rules">Найти правила</string>
+    <string name="action_modify_rules">Изменить правила</string>
+    <string name="action_modify_rules_placeholder">
+        Строка json, например:\n
+        {\n
+        "flags": 0, // Отключить правило\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Найти <u>список правил</u>, соответствующих определенному описанию.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Изменить один или несколько атрибутов для <u>списка правил</u>.
+        ]]>
+    </string>
 </resources>
