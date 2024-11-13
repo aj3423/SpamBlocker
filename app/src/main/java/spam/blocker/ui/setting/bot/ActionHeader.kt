@@ -1,16 +1,23 @@
 package spam.blocker.ui.setting.bot
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,17 +27,20 @@ import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.defaultActions
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.M
+import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonQuestionMark
+import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.util.Lambda
 
 @Composable
 fun TestActionButton(
@@ -82,19 +92,47 @@ fun TestActionButton(
 }
 
 @Composable
-fun ActionHeader(
-    actions: SnapshotStateList<IAction>
+fun ActionPresetCard(
+    action: IAction,
+    onClick: Lambda,
 ) {
     val ctx = LocalContext.current
 
-    val dropdownActionItems = defaultActions.mapIndexed { index, action ->
-        LabelItem(
-            label = action.label(ctx),
-            icon = { action.Icon() },
-            tooltip = action.tooltip(ctx)
-        ) {
-            val newAction = defaultActions[index].clone()
-            actions.add(newAction)
+    RowVCenterSpaced(10, modifier = M.padding(vertical = 2.dp)) {
+        // Icon
+        action.Icon()
+        // Title
+        GreyLabel(
+            text = action.label(ctx),
+            modifier = M
+                .weight(1f)
+                .clickable { onClick() },
+            fontWeight = FontWeight.Bold,
+        )
+        // Tooltip
+        BalloonQuestionMark(tooltip = action.tooltip(ctx))
+    }
+}
+
+@Composable
+fun ActionHeader(
+    actions: SnapshotStateList<IAction>
+) {
+    val trigger = remember { mutableStateOf(false) }
+    PopupDialog(
+        trigger = trigger,
+    ) {
+        Column(modifier = M.maxScreenHeight(0.7f)) {
+            defaultActions.map { action ->
+                ActionPresetCard(
+                    action = action,
+                    onClick = {
+                        val newAction = action.clone()
+                        actions.add(newAction)
+                        trigger.value = false
+                    }
+                )
+            }
         }
     }
 
@@ -111,11 +149,12 @@ fun ActionHeader(
             TestActionButton(actions = actions)
 
             // New
-            MenuButton(
+            StrokeButton(
                 label = Str(R.string.new_),
                 color = SkyBlue,
-                items = dropdownActionItems
-            )
+            ) {
+                trigger.value = true
+            }
         }
     }
 }

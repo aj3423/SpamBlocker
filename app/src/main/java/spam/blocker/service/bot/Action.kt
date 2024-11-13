@@ -28,6 +28,7 @@ import spam.blocker.util.Permissions
 val defaultActions = listOf(
     HttpDownload(),
     ImportToSpamDB(),
+    CleanupSpamDB(),
     ImportAsRegexRule(),
     ReadFile(),
     WriteFile(),
@@ -35,7 +36,6 @@ val defaultActions = listOf(
     ParseXML(),
     RegexExtract(),
     ConvertNumber(),
-    CleanupSpamDB(),
     CleanupHistory(),
     BackupExport(),
     BackupImport(),

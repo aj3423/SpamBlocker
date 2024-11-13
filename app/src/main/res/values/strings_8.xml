@@ -41,7 +41,7 @@
 
     <string name="action_cleanup_history">Clean up History</string>
     <string name="action_http_download">HTTP Download</string>
-    <string name="action_cleanup_spam_db">Cleanup Spam DB</string>
+    <string name="action_cleanup_spam_db">Cleanup Spam Database</string>
     <string name="action_backup_export">Backup Export</string>
     <string name="action_backup_import">Backup Import</string>
     <string name="action_read_file">Read File</string>
