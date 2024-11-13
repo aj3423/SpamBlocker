@@ -31,7 +31,7 @@ class Csv(
             csvBytes: ByteArray,
             columnMap: Map<String, String> = mapOf()
         ): Csv {
-            val csvString = String(removeBom(csvBytes))
+            val csvString = String(removeBom(csvBytes)).trim()
             val lines = csvString.lines()
 
             // The first line must be header

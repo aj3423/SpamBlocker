@@ -18,16 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import spam.blocker.BuildConfig
-import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.history.HistoryScreen

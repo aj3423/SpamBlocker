@@ -18,6 +18,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import spam.blocker.Events
 import spam.blocker.R
@@ -46,11 +48,14 @@ import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Csv
 import spam.blocker.util.Now
+import spam.blocker.util.PermissiveJson
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
+import spam.blocker.util.loge
 import spam.blocker.util.logi
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
+import spam.blocker.util.toMap
 import spam.blocker.util.toStringMap
 import java.net.HttpURLConnection
 import java.net.URL
@@ -137,7 +142,7 @@ class HttpDownload(
         )
      */
     private fun splitHeader(allHeadersStr: String): Map<String, String> {
-        return allHeadersStr.lines().filter{ it.trim().isNotEmpty() }.associate { line ->
+        return allHeadersStr.lines().filter { it.trim().isNotEmpty() }.associate { line ->
             val (key, value) = line.split(":").map { it.trim() }
             key to value
         }
@@ -218,7 +223,12 @@ class HttpDownload(
             text = header,
             label = { Text(Str(R.string.http_header)) },
             onValueChange = { header = it },
-            placeholder = { GreyLabel(Str(R.string.help_http_header)+ "\n\nUser-Agent: Chrome\nAuthorization: Basic ABC\n...", color = C.textGrey.copy(alpha = 0.6f)) }
+            placeholder = {
+                GreyLabel(
+                    Str(R.string.help_http_header) + "\n\nUser-Agent: Chrome\nAuthorization: Basic ABC\n…",
+                    color = C.textGrey.copy(alpha = 0.6f)
+                )
+            }
         )
     }
 }
@@ -884,12 +894,12 @@ class ImportAsRegexRule(
 
     private fun replace(ctx: Context, numbers: List<String>) {
         val table = NumberRuleTable()
-        val oldRule = table.findRuleByDesc(ctx, description)
-        if (oldRule == null) {
+        val oldRules = table.findRuleByDesc(ctx, description)
+        if (oldRules.isEmpty()) {
             create(ctx, numbers)
         } else {
             // 1. delete the previous rule
-            table.deleteById(ctx, oldRule.id)
+            table.deleteById(ctx, oldRules[0].id)
             // 2. create a new one
             create(ctx, numbers)
         }
@@ -897,15 +907,16 @@ class ImportAsRegexRule(
 
     private fun merge(ctx: Context, numbers: List<String>) {
         val table = NumberRuleTable()
-        val oldRule = table.findRuleByDesc(ctx, description)
-        if (oldRule == null) {
+        val oldRules = table.findRuleByDesc(ctx, description)
+        if (oldRules.isEmpty()) {
             create(ctx, numbers)
         } else {
-            val oldNumbers = oldRule.pattern.trim('(', ')').split('|')
+            val previous = oldRules[0]
+            val oldNumbers = previous.pattern.trim('(', ')').split('|')
 
             val all = (oldNumbers + numbers).distinct()
             table.updateRuleById(
-                ctx, oldRule.id, oldRule.copy(
+                ctx, previous.id, previous.copy(
                     pattern = "(" + all.joinToString("|") + ")"
                 )
             )
@@ -1072,6 +1083,155 @@ class ConvertNumber(
             text = to,
             onValueChange = {
                 to = it
+            }
+        )
+    }
+}
+
+/*
+input: None
+output: List<RegexRule>
+ */
+@Serializable
+@SerialName("FindRules")
+class FindRules(
+    var pattern: String = "",
+    var flags: Int = Def.DefaultRegexFlags,
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+        val opts = Util.flagsToRegexOptions(flags)
+        val patternRegex = pattern.toRegex(opts)
+
+        val found = NumberRuleTable().listAll(ctx).filter {
+            patternRegex.matches(it.description)
+        }
+        loge("found: $found")
+        return Pair(true, found)
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_find_rules)
+    }
+
+    override fun summary(ctx: Context): String {
+        return "${ctx.getString(R.string.description)}: $pattern"
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_find_rules)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.RuleList
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_find)
+    }
+
+    @Composable
+    override fun Options() {
+        val flagsState = remember { mutableIntStateOf(flags) }
+        RegexInputBox(
+            label = { Text(Str(R.string.description)) },
+            placeholder = { Text(Str(R.string.regex_pattern)) },
+            regexStr = pattern,
+            onRegexStrChange = { newVal, hasErr ->
+                if (!hasErr) {
+                    pattern = newVal
+                }
+            },
+            regexFlags = flagsState,
+            onFlagsChange = {
+                flagsState.intValue = it
+                flags = it
+            }
+        )
+    }
+}
+
+/*
+input: List<RegexRule>
+output: none
+ */
+@Serializable
+@SerialName("ModifyRules")
+class ModifyRules(
+    var config: String = "",
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+        if (!(arg is List<*> && arg.all { it is RegexRule })) {
+            return Pair(
+                false, ctx.getString(R.string.invalid_input_type).format(
+                    ParamType.RuleList.name, arg?.javaClass?.simpleName
+                )
+            )
+        }
+
+        try {
+            (arg as List<*>).forEach {
+                val origin = it as RegexRule
+                val strOrigin = PermissiveJson.encodeToString(origin)
+                val mapOrigin = JSONObject(strOrigin).toMap()
+
+                val mapConfig = JSONObject(config).toMap()
+
+                val mapModified = mapOrigin + mapConfig // override with mapModify
+
+                val newRule =
+                    PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
+                NumberRuleTable().updateRuleById(ctx, origin.id, newRule)
+            }
+        } catch (e: Exception) {
+            return Pair(false, "$e")
+        }
+
+        // fire event to update the UI
+        Events.regexRuleUpdated.fire()
+
+        return Pair(true, null)
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_modify_rules)
+    }
+
+    override fun summary(ctx: Context): String {
+        return config
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_modify_rules)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.RuleList
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_replace)
+    }
+
+    @Composable
+    override fun Options() {
+        StrInputBox(
+            label = { Text(Str(R.string.config_text)) },
+            placeholder = { Text(Str(R.string.action_modify_rules_placeholder)) },
+            text = config,
+            onValueChange = {
+                config = it
             }
         )
     }

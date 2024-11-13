@@ -110,7 +110,7 @@
         Преобразовать <u>список номеров</u> в формат, который использует это приложение.<br>
         <br>
         Например, добавьте два действия для замены:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` на `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` на `12345<font color="#03DAC5"><b>…</b></font>`:<br>
         <br>
         &ensp; - Заменить `<font color="#fa7f71">(+)</font>` на ``<br>
         &ensp; - Заменить `<font color="#fa7f71">(#)</font>` на `<font color="#03DAC5"><b>.</b></font>`<br>

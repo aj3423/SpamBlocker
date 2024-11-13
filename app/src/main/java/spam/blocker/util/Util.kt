@@ -14,6 +14,7 @@ import android.provider.OpenableColumns
 import android.provider.Settings
 import android.provider.Telephony
 import androidx.annotation.RequiresApi
+import kotlinx.serialization.json.Json
 import org.json.JSONArray
 import org.json.JSONObject
 import spam.blocker.R
@@ -80,6 +81,11 @@ fun JSONObject.toMap(): Map<String, Any?> =
 fun JSONObject.toStringMap(): Map<String, String> =
     keys().asSequence().associateWith { key -> toValue(get(key)) as String }
 
+// A json serializer that allows unknown attributes
+val PermissiveJson =  Json {
+    encodeDefaults = true
+    ignoreUnknownKeys = true
+}
 
 object Util {
 
@@ -215,7 +221,7 @@ object Util {
 
     fun truncate(str: String, limit: Int = 300, showEllipsis: Boolean = true): String {
         return if (str.length >= limit)
-            str.substring(0, limit) + if (showEllipsis) "..." else ""
+            str.substring(0, limit) + if (showEllipsis) "…" else ""
         else
             str
     }

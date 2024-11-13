@@ -110,7 +110,7 @@
         Konvertieren Sie die <u>Liste von Telefonnummern</u> in das Format, das diese App verwendet.<br>
         <br>
         Fügen Sie beispielsweise zwei Aktionen hinzu, um zu ersetzen:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` zu `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` zu `12345<font color="#03DAC5"><b>…</b></font>`:<br>
         <br>
         &ensp; - Ersetzen Sie `<font color="#fa7f71">(+)</font>` durch ``<br>
         &ensp; - Ersetzen Sie `<font color="#fa7f71">(#)</font>` durch `<font color="#03DAC5"><b>.</b></font>`<br>

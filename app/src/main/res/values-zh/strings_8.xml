@@ -110,7 +110,7 @@
         将<u>号码列表</u>转换为此应用使用的格式。<br>
         <br>
         例如，添加两个操作来替换：<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` 到 `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` 到 `12345<font color="#03DAC5"><b>…</b></font>`:<br>
         <br>
         &ensp; - 替换 `<font color="#fa7f71">(+)</font>` 为 ``<br>
         &ensp; - 替换 `<font color="#fa7f71">(#)</font>` 为 `<font color="#03DAC5"><b>.</b></font>`<br>

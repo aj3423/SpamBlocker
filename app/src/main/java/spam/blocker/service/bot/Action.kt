@@ -30,6 +30,8 @@ val defaultActions = listOf(
     ImportToSpamDB(),
     CleanupSpamDB(),
     ImportAsRegexRule(),
+    FindRules(),
+    ModifyRules(),
     ReadFile(),
     WriteFile(),
     ParseCSV(),

@@ -52,6 +52,17 @@
     <string name="action_import_to_spam_db">Import to Spam Database</string>
     <string name="action_import_as_regex_rule">Import as Regex Rule</string>
     <string name="action_convert_number">Replace Number</string>
+    <string name="action_find_rules">Find Rules</string>
+    <string name="action_modify_rules">Modify Rules</string>
+    <string name="action_modify_rules_placeholder">
+        A json string, for example:\n
+        {\n
+        "flags": 0, // Disable the rule\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
 
     <string name="help_action_http_download">
         <![CDATA[
@@ -110,10 +121,20 @@
         Convert the <u>list of numbers</u> to the format this app uses.<br>
         <br>
         For example, add two actions to replace:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` to `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` to `12345<font color="#03DAC5"><b>…</b></font>`:<br>
         <br>
         &ensp; - Replace `<font color="#fa7f71">(+)</font>` to ``<br>
         &ensp; - Replace `<font color="#fa7f71">(#)</font>` to `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Find a <u>list of rules</u> that match a specific description.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Change one or multiple attributes for a <u>list of rules</u>.
         ]]>
     </string>
 </resources>

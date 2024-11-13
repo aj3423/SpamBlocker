@@ -20,10 +20,12 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.JsonTransformingSerializer
+import org.json.JSONObject
 import spam.blocker.def.Def
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.util.PermissiveJson
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.Util.truncate
@@ -175,15 +177,7 @@ data class RegexRule(
 
     companion object {
         fun fromMap(attrs: Map<String, String>): RegexRule {
-            return RegexRule().apply {
-                if (attrs.contains("pattern")) pattern = Util.clearNumber(attrs["pattern"]!!)
-                if (attrs.contains("description")) description = attrs["description"]!!
-                if (attrs.contains("priority")) priority = attrs["priority"]!!.toInt()
-                if (attrs.contains("flags")) flags = attrs["flags"]!!.toInt()
-                if (attrs.contains("isBlacklist")) isBlacklist = attrs["isBlacklist"]!!.toBoolean()
-                if (attrs.contains("blockType")) blockType = attrs["blockType"]!!.toInt()
-                if (attrs.contains("importance")) importance = attrs["importance"]!!.toInt()
-            }
+            return PermissiveJson.decodeFromString<RegexRule>(JSONObject(attrs).toString())
         }
     }
 }
@@ -303,18 +297,14 @@ abstract class RuleTable {
     }
 
     @SuppressLint("Range")
-    fun findRuleByDesc(ctx: Context, desc: String): RegexRule? {
-        val db = Db.getInstance(ctx).readableDatabase
-        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_DESC} = '$desc'"
-
-        val cursor = db.rawQuery(sql, null)
-
-        cursor.use {
-            if (it.moveToFirst()) {
-                return ruleFromCursor(it)
-            } else {
-                return null
-            }
+    fun findRuleByDesc(
+        ctx: Context,
+        descPattern: String,
+        descFlags: Int = Def.DefaultRegexFlags
+    ): List<RegexRule> {
+        val regEx = descPattern.toRegex(Util.flagsToRegexOptions(descFlags))
+        return listAll(ctx).filter {
+            regEx.matches(it.description)
         }
     }
 

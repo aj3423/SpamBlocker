@@ -110,7 +110,7 @@
         Convertir la <u>lista de números</u> al formato que utiliza esta aplicación.<br>
         <br>
         Por ejemplo, añadir dos acciones para reemplazar:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a `12345<font color="#03DAC5"><b>…</b></font>`:<br>
         <br>
         &ensp; - Reemplazar `<font color="#fa7f71">(+)</font>` por ``<br>
         &ensp; - Reemplazar `<font color="#fa7f71">(#)</font>` por `<font color="#03DAC5"><b>.</b></font>`<br>

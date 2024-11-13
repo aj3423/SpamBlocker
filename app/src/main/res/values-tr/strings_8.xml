@@ -110,7 +110,7 @@
         <u>Numara listesini</u> bu uygulamanın kullandığı formata dönüştür.<br>
         <br>
         Örneğin, değiştirmek için iki eylem ekle:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a/e `12345<font color="#03DAC5"><b>....</b></font>`:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a/e `12345<font color="#03DAC5"><b>…</b></font>`:<br>
         <br>
         &ensp; - Değiştir `<font color="#fa7f71">(+)</font>` a/e ``<br>
         &ensp; - Değiştir `<font color="#fa7f71">(#)</font>` a/e `<font color="#03DAC5"><b>.</b></font>`<br>

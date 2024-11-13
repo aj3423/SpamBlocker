@@ -26,6 +26,8 @@ val botModule = SerializersModule {
         subclass(ImportToSpamDB::class)
         subclass(ImportAsRegexRule::class)
         subclass(ConvertNumber::class)
+        subclass(FindRules::class)
+        subclass(ModifyRules::class)
     }
 }
 

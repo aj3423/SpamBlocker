@@ -110,7 +110,7 @@
         <u><translate>番号</translate>のリスト</u>をこのアプリで使用される形式に変換します。<br>
         <br>
         たとえば、置換するために2つのアクションを追加します。<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` を `12345<font color="#03DAC5"><b>....</b></font>` に:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` を `12345<font color="#03DAC5"><b>…</b></font>` に:<br>
         <br>
         &ensp; - `<font color="#fa7f71">(+)</font>` を `` に置換<br>
         &ensp; - `<font color="#fa7f71">(#)</font>` を `<font color="#03DAC5"><b>.</b></font>` に置換<br>
