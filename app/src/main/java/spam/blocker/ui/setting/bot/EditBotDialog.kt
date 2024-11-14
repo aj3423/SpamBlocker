@@ -114,7 +114,7 @@ fun EditBotDialog(
                 ) {
                     Column {
                         // Enabled switch box
-                        LabeledRow(R.string.enabled) {
+                        LabeledRow(R.string.enable) {
                             SwitchBox(checked = enabled, onCheckedChange = { isTurningOn ->
                                 if (isTurningOn && schedule.value == null) {
                                     schedule.value = defaultSchedules[0].clone()

@@ -76,15 +76,28 @@
         &ensp; Siempre crea una nueva regla de expresión regular.<br>
         <br>
         - <font color="#00BFFF"><b>Reemplazar</b></font><br>
-        &ensp; Intentará encontrar una regla existente que tenga la misma <b>descripción</b>. <br>
+        &ensp; Intentará encontrar una regla existente que tenga la misma <b>descripción</b>.<br>
         &ensp;&ensp; - Si se encuentra, se sobrescribirá.<br>
-        &ensp;&ensp; - Si no se encuentra, se creará una nueva regla, igual que <b>Crear</b>.<br>
+        &ensp;&ensp; - Si no se encuentra, se creará una nueva regla, igual que la <b>Crear</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Fusionar</b></font><br>
         &ensp;- Si existe una regla con la misma descripción, los nuevos números se fusionarán en ella,<br>
          los números duplicados se eliminarán automáticamente.<br>
-        &ensp;- Si no existe, se creará una nueva regla, igual que <b>Crear</b>.<br>
+        &ensp;- Si no existe, se creará una nueva regla, igual que la <b>Crear</b>.<br>
         ]]>
     </string>
 
+    <string name="one_off">Única vez</string>
+    <string name="action_enable_workflow">Habilitar flujo de trabajo</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Habilita o deshabilita este flujo de trabajo. Un caso de uso sería hacer que un flujo de trabajo periódico se convierta en único.
+        ]]>
+    </string>
+    <string name="action_enable_app">Habilitar aplicación</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Habilita o deshabilita la aplicación. Un caso de uso sería deshabilitarla temporalmente y volver a habilitarla automáticamente después de un par de horas.
+        ]]>
+    </string>
 </resources>

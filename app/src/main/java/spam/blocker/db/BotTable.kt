@@ -6,6 +6,7 @@ import android.content.Context
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
+import spam.blocker.db.Db.Companion.COLUMN_WORK_UUID
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager
@@ -44,9 +45,9 @@ fun reScheduleBot(ctx: Context, bot: Bot) {
 
 object BotTable {
     @SuppressLint("Range")
-    fun listAll(ctx: Context): List<Bot> {
+    fun listAll(ctx: Context, where: String = ""): List<Bot> {
 
-        val sql = "SELECT * FROM ${Db.TABLE_BOT} ORDER BY ${Db.COLUMN_DESC}"
+        val sql = "SELECT * FROM ${Db.TABLE_BOT} $where ORDER BY ${Db.COLUMN_DESC}"
 
         val ret: MutableList<Bot> = mutableListOf()
 
@@ -121,6 +122,14 @@ object BotTable {
             it.moveToFirst()
         }
     }
+    fun findByWorkUuid(ctx: Context, workUUID: String) : Bot? {
+        val found = listAll(ctx, " WHERE ${Db.COLUMN_WORK_UUID} = '$workUUID'")
+        return if (found.isEmpty())
+            null
+        else
+            found[0]
+    }
+
     fun isWorkUuidExist(ctx: Context, workUUID: String) : Boolean {
         val db = Db.getInstance(ctx).readableDatabase
 

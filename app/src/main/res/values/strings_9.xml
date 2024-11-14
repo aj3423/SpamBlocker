@@ -48,6 +48,7 @@
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>
     <string name="periodically">Periodically</string>
+    <string name="one_off">One-off</string>
     <string name="time">Time</string>
     <string name="workdays">Workdays</string>
 
@@ -84,6 +85,18 @@
         &ensp;- If a rule with the same description exists, the new numbers will be merged into it,<br>
          duplicated numbers will be removed automatically.<br>
         &ensp;- If not exists, a new rule will be created, same as the <b>Create</b>.<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">Enable Workflow</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Enable or disable this workflow. A use case would be to make a periodic workflow become one-off.
+        ]]>
+    </string>
+    <string name="action_enable_app">Enable App</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Enable or disable the app. A use case would be to temporarily disable it and auto re-enable it after a couple of hours.
         ]]>
     </string>
 

@@ -82,9 +82,22 @@
         <br>
         - <font color="#00BFFF"><b>合并</b></font><br>
         &ensp;- 如果存在具有相同描述的规则，则新号码将合并到其中，<br>
-         重复号码将被自动删除。<br>
+         重复的号码将被自动删除。<br>
         &ensp;- 如果不存在，将创建一个新规则，与<b>创建</b>相同。<br>
         ]]>
     </string>
 
+    <string name="one_off">一次性</string>
+    <string name="action_enable_workflow">启用工作流程</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        启用或禁用此工作流程。一个用例是将定期工作流程变为一次性工作流程。
+        ]]>
+    </string>
+    <string name="action_enable_app">启用应用</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        启用或禁用应用。一个用例是暂时禁用它并在几个小时后自动重新启用它。
+        ]]>
+    </string>
 </resources>

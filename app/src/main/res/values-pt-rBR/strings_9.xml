@@ -73,18 +73,31 @@
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Criar</b></font><br>
-        &ensp; Sempre crie uma nova regra de expressão regular.<br>
+        &ensp; Sempre crie uma nova regra regex.<br>
         <br>
         - <font color="#00BFFF"><b>Substituir</b></font><br>
         &ensp; Ele tentará encontrar uma regra existente que tenha a mesma <b>descrição</b>. <br>
         &ensp;&ensp; - Se encontrada, será substituída.<br>
-        &ensp;&ensp; - Se não encontrada, uma nova regra será criada, igual ao <b>Criar</b>.<br>
+        &ensp;&ensp; - Se não for encontrada, uma nova regra será criada, da mesma forma que <b>Criar</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Mesclar</b></font><br>
-        &ensp;- Se uma regra com a mesma descrição existir, os novos <translate>números</translate> serão mesclados nela,<br>
-         os <translate>números</translate> duplicados serão removidos automaticamente.<br>
-        &ensp;- Se não existir, uma nova regra será criada, igual ao <b>Criar</b>.<br>
+        &ensp;- Se uma regra com a mesma descrição existir, os novos números serão mesclados nela,<br>
+         números duplicados serão removidos automaticamente.<br>
+        &ensp;- Se não existir, uma nova regra será criada, da mesma forma que <b>Criar</b>.<br>
         ]]>
     </string>
 
+    <string name="one_off">Uma Vez</string>
+    <string name="action_enable_workflow">Habilitar Fluxo de Trabalho</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Habilitar ou desabilitar este fluxo de trabalho. Um caso de uso seria fazer um fluxo de trabalho periódico se tornar único.
+        ]]>
+    </string>
+    <string name="action_enable_app">Habilitar Aplicativo</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Habilitar ou desabilitar o aplicativo. Um caso de uso seria desabilitar temporariamente e reabilitar automaticamente após algumas horas.
+        ]]>
+    </string>
 </resources>

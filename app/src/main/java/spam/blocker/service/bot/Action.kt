@@ -41,6 +41,8 @@ val defaultActions = listOf(
     CleanupHistory(),
     BackupExport(),
     BackupImport(),
+    EnableWorkflow(),
+    EnableApp(),
 )
 
 
@@ -52,10 +54,15 @@ enum class ParamType {
     RuleList,
 }
 
+data class ActionParam(
+    val workTag: String,
+    val input: Any?,
+)
+
 interface IAction {
     // the return value will be used as the input `arg` for the next Action
     // When it fails, it returns: <false, errorReasonString>
-    fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> // return <Success, output>
+    fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> // return <Success, output>
 
     // Return values:
     // null: no permission needed
@@ -212,13 +219,19 @@ fun List<IAction>.allChainable(): Boolean {
 
 // Return value:
 //  - null, all success
-//  - String, it failed, this String is the error reason.
-fun List<IAction>.executeAll(ctx: Context): String? {
+//  - String, the error reason when it fails.
+fun List<IAction>.executeAll(
+    ctx: Context,
+    workTag: String = "", // empty when Testing
+): String? {
     var lastRet: Any? = null
 
     // Run until any action fails
     val anyError = this.any {
-        val (succeeded, output) = it.execute(ctx, lastRet)
+        val (succeeded, output) = it.execute(ctx, ActionParam(
+            workTag = workTag,
+            input = lastRet,
+        ))
         lastRet = output
         !succeeded
     }

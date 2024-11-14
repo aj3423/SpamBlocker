@@ -53,6 +53,9 @@ object Events {
     // An event triggered when regex rule list is updated, maybe triggered by Workflow
     val regexRuleUpdated = Event()
 
+    // An event triggered when one or multiple Bot is updated, maybe triggered by Workflow
+    val botUpdated = Event()
+
     // An event for notifying the configuration has changed,
     // observers should restart, such as:
     //  - history cleanup task

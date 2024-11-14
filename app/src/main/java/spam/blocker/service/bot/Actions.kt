@@ -19,17 +19,19 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import org.json.JSONObject
 import spam.blocker.Events
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.config.Configs
+import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
+import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
@@ -49,9 +51,9 @@ import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Csv
 import spam.blocker.util.Now
 import spam.blocker.util.PermissiveJson
+import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
-import spam.blocker.util.loge
 import spam.blocker.util.logi
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -70,7 +72,7 @@ fun NoOptionNeeded() {
 class CleanupHistory(
     var expiry: Int = 90 // days
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
@@ -149,7 +151,7 @@ class HttpDownload(
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
         var ret: Pair<Boolean, Any?> = Pair(false, null)
 
         var connection: HttpURLConnection? = null
@@ -239,7 +241,7 @@ class CleanupSpamDB(
     var expiry: Int = 1 // days
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
@@ -298,7 +300,7 @@ class CleanupSpamDB(
 class BackupExport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
         // Generate config data bytes
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
@@ -354,17 +356,19 @@ class BackupExport(
 class BackupImport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (arg !is ByteArray) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+
+        if (input !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, input?.javaClass?.simpleName
                 )
             )
         }
 
         try {
-            val jsonStr = decompressToString(arg)
+            val jsonStr = decompressToString(input)
             val newCfg = Configs.createFromJson(jsonStr)
             newCfg.apply(ctx, includeSpamDB)
 
@@ -423,7 +427,7 @@ class ReadFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
         val path = dir.resolvePathTags()
 
         val fn = filename.resolveTimeTags()
@@ -485,11 +489,12 @@ class WriteFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (arg !is ByteArray) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (input !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, input?.javaClass?.simpleName
                 )
             )
         }
@@ -497,7 +502,7 @@ class WriteFile(
         val fn = filename.resolveTimeTags()
 
         return try {
-            Util.writeFile(path, fn, arg)
+            Util.writeFile(path, fn, input)
             Pair(true, null)
         } catch (e: Exception) {
             Pair(false, "WriteFile: $e")
@@ -557,17 +562,18 @@ class ParseCSV(
     var columnMapping: String = "{}"
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (arg !is ByteArray) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (input !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, input?.javaClass?.simpleName
                 )
             )
         }
 
         return try {
-            val csv = Csv.parse(arg, JSONObject(columnMapping).toStringMap())
+            val csv = Csv.parse(input, JSONObject(columnMapping).toStringMap())
 
             val rules = csv.rows.map {
                 RegexRule.fromMap(it)
@@ -624,17 +630,18 @@ class ParseXML(
     var xpath: String = ""
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (arg !is ByteArray) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (input !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, input?.javaClass?.simpleName
                 )
             )
         }
 
         return try {
-            val rules = Xml.parse(bytes = arg, xpath).map {
+            val rules = Xml.parse(bytes = input, xpath).map {
                 RegexRule.fromMap(it)
             }
 
@@ -690,11 +697,12 @@ class RegexExtract(
     var regexFlags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (arg !is ByteArray) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (input !is ByteArray) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, arg?.javaClass?.simpleName
+                    ParamType.ByteArray.name, input?.javaClass?.simpleName
                 )
             )
         }
@@ -702,7 +710,7 @@ class RegexExtract(
         return try {
             val opts = Util.flagsToRegexOptions(regexFlags)
 
-            val haystack = arg.toString(Charsets.UTF_8)
+            val haystack = input.toString(Charsets.UTF_8)
             val all = pattern.toRegex(opts).findAll(haystack)
 
             val rules = all.map {
@@ -769,13 +777,14 @@ output: null
 @SerialName("ImportToSpamDB")
 class ImportToSpamDB : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
         // It must be written like this, cannot be inlined in the `if()`, seems to be kotlin bug
-        val inputValid = (arg is List<*>) && ((arg as List<*>).all { it is RegexRule })
+        val inputValid = (input is List<*>) && ((input as List<*>).all { it is RegexRule })
         if (!inputValid) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    "List<Rule>", arg?.javaClass?.simpleName
+                    "List<Rule>", input?.javaClass?.simpleName
                 )
             )
         }
@@ -783,7 +792,7 @@ class ImportToSpamDB : IPermissiveAction {
         return try {
             val now = System.currentTimeMillis()
 
-            val numbers = (arg as List<*>).map {
+            val numbers = (input as List<*>).map {
                 SpamNumber(peer = (it as RegexRule).pattern, time = now)
             }
             val errorStr = SpamTable.addAll(ctx, numbers)
@@ -847,17 +856,18 @@ class ImportAsRegexRule(
     var importType: ImportType = ImportType.Create,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (!(arg is List<*> && arg.all { it is RegexRule })) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (!(input is List<*> && input.all { it is RegexRule })) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.RuleList.name, arg?.javaClass?.simpleName
+                    ParamType.RuleList.name, input?.javaClass?.simpleName
                 )
             )
         }
 
         try {
-            val numberList = (arg as List<*>).map { (it as RegexRule).pattern }.distinct()
+            val numberList = (input as List<*>).map { (it as RegexRule).pattern }.distinct()
 
             // Do nothing when there isn't any number to add, to prevent adding a `()`
             if (numberList.isEmpty()) {
@@ -1014,16 +1024,17 @@ class ConvertNumber(
     var to: String = "",
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (!(arg is List<*> && arg.all { it is RegexRule })) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (!(input is List<*> && input.all { it is RegexRule })) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.RuleList.name, arg?.javaClass?.simpleName
+                    ParamType.RuleList.name, input?.javaClass?.simpleName
                 )
             )
         }
 
-        val clearedRuleList = (arg as List<*>).map {
+        val clearedRuleList = (input as List<*>).map {
             val r = it as RegexRule
 
             val newNum = from.toRegex().replace(r.pattern, to)
@@ -1099,7 +1110,7 @@ class FindRules(
     var flags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
         val opts = Util.flagsToRegexOptions(flags)
         val patternRegex = pattern.toRegex(opts)
 
@@ -1165,17 +1176,18 @@ class ModifyRules(
     var config: String = "",
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, arg: Any?): Pair<Boolean, Any?> {
-        if (!(arg is List<*> && arg.all { it is RegexRule })) {
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val input = param.input
+        if (!(input is List<*> && input.all { it is RegexRule })) {
             return Pair(
                 false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.RuleList.name, arg?.javaClass?.simpleName
+                    ParamType.RuleList.name, input?.javaClass?.simpleName
                 )
             )
         }
 
         try {
-            (arg as List<*>).forEach {
+            (input as List<*>).forEach {
                 val origin = it as RegexRule
                 val strOrigin = PermissiveJson.encodeToString(origin)
                 val mapOrigin = JSONObject(strOrigin).toMap()
@@ -1233,5 +1245,131 @@ class ModifyRules(
                 config = it
             }
         )
+    }
+}
+
+/*
+input: None
+output: None
+ */
+@Serializable
+@SerialName("EnableWorkflow")
+class EnableWorkflow(
+    var enable: Boolean = false,
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        val workTag = param.workTag
+
+        val bot = BotTable
+            .findByWorkUuid(ctx, workTag)
+            ?.copy(enabled = enable)
+
+        if (bot != null) {
+            // 1. enable/disable bot
+            BotTable.updateById(ctx, bot.id, bot)
+
+            // 2. reSchedule
+            reScheduleBot(ctx, bot)
+
+            // 3. fire event
+            Events.botUpdated.fire()
+        }
+
+        return Pair(true, null)
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_enable_workflow)
+    }
+
+    override fun summary(ctx: Context): String {
+        return "${ctx.getString(R.string.enable)}: $enable"
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_enable_workflow)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_workflow)
+    }
+
+    @Composable
+    override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabled by remember { mutableStateOf(enable) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabled) { isTurningOn ->
+                enabled = isTurningOn
+                enable = isTurningOn
+            }
+        }
+    }
+}
+
+/*
+input: None
+output: None
+ */
+@Serializable
+@SerialName("EnableApp")
+class EnableApp(
+    var enable: Boolean = true,
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+        Global(ctx).setGloballyEnabled(enable)
+        G.globallyEnabled.value = enable
+
+        return Pair(true, null)
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_enable_app)
+    }
+
+    override fun summary(ctx: Context): String {
+        return "${ctx.getString(R.string.enable)}: $enable"
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_enable_app)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_toggle)
+    }
+
+    @Composable
+    override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabled by remember { mutableStateOf(enable) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabled) { isTurningOn ->
+                enabled = isTurningOn
+                enable = isTurningOn
+            }
+        }
     }
 }

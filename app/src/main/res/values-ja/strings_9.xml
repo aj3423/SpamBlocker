@@ -69,19 +69,32 @@
     </string-array>
     <string name="help_regex_action_add_mode">
         <![CDATA[
-        - <font color="#00BFFF"><b>作成</b></font><br>
+        -<font color="#00BFFF"><b>作成</b></font><br>
         &ensp; 常に新しい正規表現ルールを作成します。<br>
         <br>
         - <font color="#00BFFF"><b>置換</b></font><br>
-        &ensp; 同じ<b>説明</b>を持つ既存のルールを検索しようとします。<br>
-        &ensp;&ensp; - 見つかった場合は、上書きされます。<br>
-        &ensp;&ensp; - 見つからなかった場合は、新しいルールが作成されます。<b>作成</b>と同じです。<br>
+        &ensp; 同じ<b>説明</b>を持つ既存のルールを見つけようとします。<br>
+        &ensp;&ensp; - 見つかった場合、上書きされます。<br>
+        &ensp;&ensp; - 見つからない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
         <br>
         - <font color="#00BFFF"><b>マージ</b></font><br>
-        &ensp; - 同じ説明を持つルールが存在する場合は、新しい番号がそのルールにマージされます。<br>
-         重複する番号は自動的に削除されます。<br>
-        &ensp; - 存在しない場合は、新しいルールが作成されます。<b>作成</b>と同じです。<br>
+        &ensp;- 同じ説明を持つルールが存在する場合、新しい番号がマージされます。<br>
+         重複した番号は自動的に削除されます。<br>
+        &ensp;- 存在しない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
         ]]>
     </string>
 
+    <string name="one_off">ワンタイム</string>
+    <string name="action_enable_workflow">ワークフローを有効にする</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        このワークフローを有効または無効にします。定期的なワークフローをワンタイムにするというユースケースがあります。
+        ]]>
+    </string>
+    <string name="action_enable_app">アプリを有効にする</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        アプリを有効または無効にします。一時的に無効にして、数時間後に自動的に再有効にするというユースケースがあります。
+        ]]>
+    </string>
 </resources>

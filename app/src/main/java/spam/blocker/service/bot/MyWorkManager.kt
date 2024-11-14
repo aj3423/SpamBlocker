@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit
 // The Android built-in WorkManager doesn't support schedule like: "at 00:00:00 every day",
 // this is a workaround, using a one-off task, when it triggers, schedule a new one.
 
-private const val Param_ScheduleConfig = "scheduleConfig"
-private const val Param_ActionsConfig = "actionsConfig"
-private const val Param_WorkTag = "workTag"
+private const val scheduleConfig = "scheduleConfig"
+private const val actionsConfig = "actionsConfig"
+private const val workTag = "workTag"
 
 
 class MyWorker(
@@ -36,19 +36,24 @@ class MyWorker(
     }
 
     private fun runActions() {
-        val actionsConfig = workerParams.inputData.getString(Param_ActionsConfig)!!
-        val actions = actionsConfig.parseActions()
+        val actions = getActionsConfig().parseActions()
 
         logi("execute actions: ${actions.map { it.label(ctx) + ": " + it.summary(ctx) }}")
-        actions.executeAll(ctx)
+        actions.executeAll(ctx, getWorkTag())
+    }
+
+    private fun getWorkTag(): String {
+        return workerParams.inputData.keyValueMap[workTag] as String
+    }
+    private fun getActionsConfig(): String {
+        return workerParams.inputData.keyValueMap[actionsConfig] as String
+    }
+    private fun getScheduleConfig(): String {
+        return workerParams.inputData.keyValueMap[scheduleConfig] as String
     }
 
     private fun scheduleNext() {
-        val data = workerParams.inputData.keyValueMap
-
-        val scheduleConfig = data[Param_ScheduleConfig] as String
-        val actionsConfig = data[Param_ActionsConfig] as String
-        val workTag = data[Param_WorkTag] as String
+        val workTag = getWorkTag()
 
         // This check can be removed later, it's a temporary fix for the previous bug
         //   that a workflow is not stopped after being deleted.
@@ -61,8 +66,8 @@ class MyWorker(
 
         MyWorkManager.schedule(
             ctx,
-            scheduleConfig = scheduleConfig,
-            actionsConfig = actionsConfig,
+            scheduleConfig = getScheduleConfig(),
+            actionsConfig = getActionsConfig(),
             workTag = workTag,
         )
     }
@@ -100,10 +105,10 @@ object MyWorkManager {
 
         // add parameters to the worker
         val data = Data.Builder().apply {
-            putString(Param_ScheduleConfig, scheduleConfig)
-            putString(Param_ActionsConfig, actionsConfig)
+            putString(spam.blocker.service.bot.scheduleConfig, scheduleConfig)
+            putString(spam.blocker.service.bot.actionsConfig, actionsConfig)
 
-            putString(Param_WorkTag, workTag)
+            putString(spam.blocker.service.bot.workTag, workTag)
         }.build()
 
         val nextWorkRequest = OneTimeWorkRequest.Builder(MyWorker::class.java)

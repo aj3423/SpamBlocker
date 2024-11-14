@@ -73,18 +73,31 @@
     <string name="help_regex_action_add_mode">
         <![CDATA[
         -<font color="#00BFFF"><b>Erstellen</b></font><br>
-        &ensp; Erstellt immer eine neue Regex-Regel.<br>
+        &ensp; Erstelle immer eine neue Regex-Regel.<br>
         <br>
         - <font color="#00BFFF"><b>Ersetzen</b></font><br>
-        &ensp; Es wird versucht, eine vorhandene Regel zu finden, die die gleiche <b>Beschreibung</b> hat. <br>
+        &ensp; Es wird versucht, eine bestehende Regel zu finden, die dieselbe <b>Beschreibung</b> hat. <br>
         &ensp;&ensp; - Wenn gefunden, wird sie überschrieben.<br>
-        &ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, identisch mit <b>Erstellen</b>.<br>
+        &ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Zusammenführen</b></font><br>
-        &ensp;- Wenn eine Regel mit der gleichen Beschreibung vorhanden ist, werden die neuen Nummern in diese integriert,<br>
+        &ensp;- Wenn eine Regel mit derselben Beschreibung existiert, werden die neuen Nummern in sie zusammengeführt,<br>
          doppelte Nummern werden automatisch entfernt.<br>
-        &ensp;- Wenn keine vorhanden ist, wird eine neue Regel erstellt, identisch mit <b>Erstellen</b>.<br>
+        &ensp;- Wenn sie nicht existiert, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
         ]]>
     </string>
 
+    <string name="one_off">Einmalig</string>
+    <string name="action_enable_workflow">Workflow aktivieren</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Aktiviere oder deaktiviere diesen Workflow. Ein Anwendungsfall wäre, einen periodischen Workflow zu einem einmaligen Workflow zu machen.
+        ]]>
+    </string>
+    <string name="action_enable_app">App aktivieren</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Aktiviere oder deaktiviere die App. Ein Anwendungsfall wäre, die App vorübergehend zu deaktivieren und sie nach ein paar Stunden automatisch wieder zu aktivieren.
+        ]]>
+    </string>
 </resources>

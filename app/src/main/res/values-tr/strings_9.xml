@@ -64,4 +64,39 @@
         &emsp; - İçe aktarırken, spam veritabanındaki kayıtlar mevcut durumunu koruyacaktır.
         ]]>
     </string>
+    <string name="one_off">Tek seferlik</string>
+    <string name="mode">Mod</string>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Oluştur</b></font><br>
+        &ensp; Her zaman yeni bir regex kuralı oluşturun.<br>
+        <br>
+        - <font color="#00BFFF"><b>Değiştir</b></font><br>
+        &ensp; Aynı <b>açıklamaya</b> sahip mevcut bir kural bulmaya çalışacaktır. <br>
+        &ensp;&ensp; - Bulunursa, geçersiz hale getirilecektir.<br>
+        &ensp;&ensp; - Bulunmazsa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
+        <br>
+        - <font color="#00BFFF"><b>Birleştir</b></font><br>
+        &ensp;- Aynı açıklamalı bir kural varsa, yeni numaralar ona birleştirilecektir,<br>
+         yinelenen numaralar otomatik olarak kaldırılacaktır.<br>
+        &ensp;- Var yoksa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
+        ]]>
+    </string>
+    <string-array name="regex_action_add_mode">
+        <item>Oluştur</item>
+        <item>Değiştir</item>
+        <item>Birleştir</item>
+    </string-array>
+    <string name="action_enable_workflow">İş Akışını Etkinleştir</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Bu iş akışını etkinleştirin veya devre dışı bırakın. Bir kullanım örneği, periyodik bir iş akışını tek seferlik hale getirmek olur.
+        ]]>
+    </string>
+    <string name="action_enable_app">Uygulamayı Etkinleştir</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Uygulamayı etkinleştirin veya devre dışı bırakın. Bir kullanım örneği, geçici olarak devre dışı bırakıp birkaç saat sonra otomatik olarak yeniden etkinleştirmek olur.
+        ]]>
+    </string>
 </resources>

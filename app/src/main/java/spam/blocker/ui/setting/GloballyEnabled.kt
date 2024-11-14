@@ -136,7 +136,7 @@ fun GloballyEnabled() {
         })
 
     LabeledRow(
-        R.string.enabled,
+        R.string.enable,
         paddingHorizontal = 22,
         helpTooltipId = R.string.help_globally_enabled,
         content = {

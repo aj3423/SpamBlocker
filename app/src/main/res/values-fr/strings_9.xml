@@ -76,15 +76,28 @@
         &ensp; Créez toujours une nouvelle règle regex.<br>
         <br>
         - <font color="#00BFFF"><b>Remplacer</b></font><br>
-        &ensp; Il tentera de trouver une règle existante qui a la même <b>description</b>. <br>
+        &ensp; Il essaiera de trouver une règle existante ayant la même <b>description</b>. <br>
         &ensp;&ensp; - Si elle est trouvée, elle sera remplacée.<br>
         &ensp;&ensp; - Si elle n\'est pas trouvée, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Fusionner</b></font><br>
-        &ensp;- Si une règle avec la même description existe, les nouveaux numéros seront fusionnés dans celle-ci,<br>
-         les numéros dupliqués seront automatiquement supprimés.<br>
+        &ensp;- Si une règle avec la même description existe, les nouveaux numéros seront fusionnés, <br>
+         les numéros dupliqués seront supprimés automatiquement.<br>
         &ensp;- Si elle n\'existe pas, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
         ]]>
     </string>
 
+    <string name="one_off">Unique</string>
+    <string name="action_enable_workflow">Activer le flux de travail</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Activer ou désactiver ce flux de travail. Un cas d\'utilisation serait de faire d\'un flux de travail périodique un flux de travail unique.
+        ]]>
+    </string>
+    <string name="action_enable_app">Activer l\'application</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Activer ou désactiver l\'application. Un cas d\'utilisation serait de la désactiver temporairement et de la réactiver automatiquement après quelques heures.
+        ]]>
+    </string>
 </resources>

@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
@@ -95,6 +96,12 @@ fun BotList() {
     val ctx = LocalContext.current
     val vm = G.botVM
     val coroutineScope = rememberCoroutineScope()
+
+
+    // workflow actions may update bots
+    Events.botUpdated.Listen {
+        vm.reload(ctx)
+    }
 
     val editTrigger = rememberSaveable { mutableStateOf(false) }
 

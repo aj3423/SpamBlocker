@@ -77,14 +77,27 @@
         <br>
         - <font color="#00BFFF"><b>Substituír</b></font><br>
         &ensp; Intentará atopar unha regra existente que teña a mesma <b>descrición</b>. <br>
-        &ensp;&ensp; - Se se encontra, será substituída.<br>
-        &ensp;&ensp; - Se non se encontra, crearase unha nova regra, igual que a <b>Crear</b>.<br>
+        &ensp;&ensp; - Se se atopa, será substituída.<br>
+        &ensp;&ensp; - Se non se atopa, crearase unha nova regra, igual que a <b>Crear</b>.<br>
         <br>
         - <font color="#00BFFF"><b>Fusionar</b></font><br>
         &ensp;- Se existe unha regra coa mesma descrición, os novos números fusionaranse nela,<br>
-         os números duplicados eliminarase automaticamente.<br>
+         os números duplicados serán eliminados automaticamente.<br>
         &ensp;- Se non existe, crearase unha nova regra, igual que a <b>Crear</b>.<br>
         ]]>
     </string>
 
+    <string name="one_off">Unha vez</string>
+    <string name="action_enable_workflow">Activar fluxo de traballo</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Activa ou desativa este fluxo de traballo. Un caso de uso sería facer que un fluxo de traballo periódico se converta nunha vez.
+        ]]>
+    </string>
+    <string name="action_enable_app">Activar aplicación</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Activa ou desativa a aplicación. Un caso de uso sería desactivala temporalmente e reactivala automaticamente despois dun par de horas.
+        ]]>
+    </string>
 </resources>
