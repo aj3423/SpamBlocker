@@ -17,9 +17,8 @@ import (
 	"google.golang.org/api/option"
 )
 
-const Threads = 3 // >3 may cause "resource exhausted"
-
 // -------- flags
+var thread int
 var lang_str string
 
 var filter_str string
@@ -54,25 +53,6 @@ var nameMap = map[string]string{
 	`zh`:     `Chinese`,
 }
 var LANGUAGES []string // [de, es, fr, ...]
-
-func init() {
-	for key := range nameMap {
-		LANGUAGES = append(LANGUAGES, key)
-	}
-
-	cwd, _ := os.Getwd()
-	RES_DIR = cwd + "/../app/src/main/res"
-
-	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES))
-	flag.StringVar(&filter_str, "filter", "", "")
-	flag.StringVar(&move, "move", "", "")
-	flag.StringVar(&to, "to", "", "")
-	flag.BoolVar(&short, "short", false, "")
-	flag.StringVar(&only, "only", "", "")
-
-	wg = sync.WaitGroup{}
-	pool, _ = ants.NewPool(Threads)
-}
 
 func check_lang_param() []string {
 	if len(lang_str) == 0 {
@@ -253,7 +233,7 @@ func walk_lang_xmls(lang string, operation func(string) error) {
 				})
 
 				if e != nil {
-					color.HiWhite("translate %s failed, error: %s", color.HiRedString(fi.Name()), e.Error())
+					color.HiWhite("translate failed: %s, error: %s", color.HiRedString(fi.Name()), e.Error())
 				}
 
 				wg.Done()
@@ -320,9 +300,16 @@ func translate_1_xml(lang string, xml_fn string) error {
 	}
 	return e
 }
-func lang_translator(lang string) func(string) error {
+func lang_translator(target_lang string) func(string) error {
 	return func(xml_fn string) error {
-		return translate_1_xml(lang, xml_fn)
+
+		e := translate_1_xml(target_lang, xml_fn)
+
+		if e != nil {
+			color.HiRed("translate %s, %s, error: %s",
+				color.HiWhiteString(target_lang), xml_fn, e.Error())
+		}
+		return e
 	}
 }
 
@@ -394,8 +381,29 @@ func move_tag(tag string, lang string, to_xml string) func(string) error {
 	}
 }
 
-func main() {
+func setup() {
+	for key := range nameMap {
+		LANGUAGES = append(LANGUAGES, key)
+	}
+
+	cwd, _ := os.Getwd()
+	RES_DIR = cwd + "/../app/src/main/res"
+
+	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES))
+	flag.StringVar(&filter_str, "filter", "", "")
+	flag.StringVar(&move, "move", "", "")
+	flag.StringVar(&to, "to", "", "")
+	flag.BoolVar(&short, "short", false, "")
+	flag.StringVar(&only, "only", "", "")
+	flag.IntVar(&thread, "thread", 3, "")
 	flag.Parse()
+
+	wg = sync.WaitGroup{}
+	pool, _ = ants.NewPool(thread)
+
+}
+func main() {
+	setup()
 
 	if move != "" { // -move recent_apps -to strings_2.xml
 		if to == "" {
@@ -408,11 +416,11 @@ func main() {
 		}
 	} else { // translate
 		languages := check_lang_param()
-		for _, lang := range languages {
+		for _, target_lang := range languages {
 			// if filter_str == "" {
 			// clear_lang_xmls(lang)
 			// }
-			walk_lang_xmls(ENGLISH, lang_translator(lang))
+			walk_lang_xmls(ENGLISH, lang_translator(target_lang))
 		}
 	}
 

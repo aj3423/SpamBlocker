@@ -53,15 +53,13 @@
 
     <string name="help_backup">
         <![CDATA[
-        Wenn Sie die Spam-Datenbank nicht verwenden, sind beide Optionen gleichwertig.<br>
+        Das Sicherungsdateiformat ist eine gzip-komprimierte JSON-Datei. Sie können sie mit jedem Archivierungsprogramm öffnen und bearbeiten.<br>
         <br>
-        - <b>Spam-Datenbank einschließen</b><br>
-        &emsp; Verwenden Sie dies nicht für regelmäßige Backups, da die Spam-Datenbank häufig aktualisiert werden soll.
-         Dies ist nur nützlich, wenn Sie die Konfiguration auf ein anderes Telefon klonen.<br>
+        - <font color="#00BFFF"><b>Spam-Datenbank einschließen</b></font><br>
+        Langer Druck auf die Taste, um auch die Spam-Datenbank zu exportieren/importieren.<br>
         <br>
-        - <b>Nur Konfiguration</b><br>
-        &emsp; - Beim Exportieren wird die Größe der Sicherungsdatei reduziert. <br>
-        &emsp; - Beim Importieren bleiben die Datensätze in der Spam-Datenbank in ihrem aktuellen Zustand erhalten.
+        <font color="#ffa500">Hinweis:</font><br>
+        &ensp; Das Einschließen der Spam-Datenbank in die Sicherungsdatei erhöht deren Größe erheblich. Da die Datenbank regelmäßig aktualisiert wird, ist dies normalerweise nicht notwendig, es sei denn, Sie möchten sie auf ein anderes Telefon klonen.<br>
         ]]>
     </string>
     <string name="mode">Modus</string>

@@ -54,15 +54,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        If you don\'t use the spam database, both options will be equivalent.<br>
+        The backup file format is a gzip compressed json, you can open and edit it with any archivers.<br>
         <br>
-        - <b>Include Spam Database</b><br>
-        &emsp; Do not use this for regular backup, because the spam database is supposed to get updated frequently.
-         This is only useful when cloning the configuration to another phone.<br>
+        - <font color="#00BFFF"><b>Include Spam Database</b></font><br>
+        Long press the button to also export/import the spam database.<br>
         <br>
-        - <b>Configuration Only</b><br>
-        &emsp; - When exporting, this will reduce the backup file size. <br>
-        &emsp; - When importing, records in spam database will retain its current state.
+        <font color="#ffa500">Note:</font><br>
+        &ensp; Including the spam database in the backup file will significantly increase its size,
+        since the database will be updated regularly, this is usually unnecessary, unless you want to clone
+        it to another phone.<br>
         ]]>
     </string>
     <string name="mode">Mode</string>

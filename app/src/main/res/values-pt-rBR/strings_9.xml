@@ -53,15 +53,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        Se você não usar o banco de dados de <translate>spam</translate>, ambas as opções serão equivalentes.<br>
+        O formato do arquivo de backup é um json compactado com gzip, você pode abri-lo e editá-lo com qualquer compactador.<br>
         <br>
-        - <b>Incluir Banco de Dados de <translate>Spam</translate></b><br>
-        &emsp; Não use isso para backup regular, pois o banco de dados de <translate>spam</translate> deve ser atualizado frequentemente.
-         Isso só é útil ao clonar a configuração para outro telefone.<br>
+        - <font color="#00BFFF"><b>Incluir Banco de Dados de Spam</b></font><br>
+        Pressione longamente o botão para também exportar/importar o banco de dados de spam.<br>
         <br>
-        - <b>Somente Configuração</b><br>
-        &emsp; - Ao exportar, isso reduzirá o tamanho do arquivo de backup. <br>
-        &emsp; - Ao importar, os registros no banco de dados de <translate>spam</translate> manterão seu estado atual.
+        <font color="#ffa500">Observação:</font><br>
+        &ensp; Incluir o banco de dados de spam no arquivo de backup aumentará significativamente seu tamanho,
+        já que o banco de dados será atualizado regularmente, isso geralmente é desnecessário, a menos que você queira cloná-lo
+        para outro telefone.<br>
         ]]>
     </string>
     <string name="mode">Modo</string>

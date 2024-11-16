@@ -53,15 +53,13 @@
 
     <string name="help_backup">
         <![CDATA[
-        Spam veritabanını kullanmıyorsanız, her iki seçenek de eşdeğer olacaktır.<br>
+        Yedek dosya formatı gzip sıkıştırılmış bir jsondur, herhangi bir arşivleyici ile açıp düzenleyebilirsiniz.<br>
         <br>
-        - <b>Spam Veritabanını Dahil Et</b><br>
-        &emsp; Bunu düzenli yedekleme için kullanmayın, çünkü spam veritabanının sık sık güncellenmesi beklenmektedir.
-         Bu, yapılandırmayı başka bir telefona kopyalarken yalnızca faydalıdır.<br>
+        - <font color="#00BFFF"><b>Spam Veritabanını Dahil Et</b></font><br>
+        Spam veritabanını da içe/dışa aktarmak için düğmeye uzun basın.<br>
         <br>
-        - <b>Sadece Yapılandırma</b><br>
-        &emsp; - Dışa aktarırken, bu yedek dosyasının boyutunu azaltacaktır. <br>
-        &emsp; - İçe aktarırken, spam veritabanındaki kayıtlar mevcut durumunu koruyacaktır.
+        <font color="#ffa500">Not:</font><br>
+        &ensp; Yedek dosyasına spam veritabanını dahil etmek, veritabanının düzenli olarak güncelleneceğinden boyutunu önemli ölçüde artıracaktır, bu genellikle başka bir telefona klonlamak istemediğiniz sürece gereksizdir.<br>
         ]]>
     </string>
     <string name="one_off">Tek seferlik</string>

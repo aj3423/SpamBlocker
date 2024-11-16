@@ -53,15 +53,15 @@
 
     <string name="help_backup">
         <![CDATA[
-        Si no utilizas la base de datos de spam, ambas opciones serán equivalentes.<br>
+        El formato del archivo de copia de seguridad es un json comprimido con gzip, puedes abrirlo y editarlo con cualquier archivador.<br>
         <br>
-        - <b>Incluir base de datos de spam</b><br>
-        &emsp; No utilices esto para la copia de seguridad regular, porque se supone que la base de datos de spam debe actualizarse con frecuencia.
-         Esto solo es útil cuando se clona la configuración a otro teléfono.<br>
+        - <font color="#00BFFF"><b>Incluir Base de Datos de Spam</b></font><br>
+        Mantén pulsado el botón para exportar/importar también la base de datos de spam.<br>
         <br>
-        - <b>Solo configuración</b><br>
-        &emsp; - Al exportar, esto reducirá el tamaño del archivo de copia de seguridad. <br>
-        &emsp; - Al importar, los registros en la base de datos de spam conservarán su estado actual.
+        <font color="#ffa500">Nota:</font><br>
+        &ensp; Incluir la base de datos de spam en el archivo de copia de seguridad aumentará significativamente su tamaño,
+        ya que la base de datos se actualizará regularmente, esto suele ser innecesario, a menos que quieras clonarla
+        a otro teléfono.<br>
         ]]>
     </string>
     <string name="mode">Modo</string>
