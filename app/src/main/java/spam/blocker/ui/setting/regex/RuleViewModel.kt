@@ -33,6 +33,10 @@ open class RuleViewModel(
     }
 
     fun toggleCollapse(ctx: Context) {
+        // don't collapse if it's empty
+        if (rules.size == 0 && !listCollapsed.value) {
+            return
+        }
         listCollapsed.value = !listCollapsed.value
         val spf = RegexOptions(ctx)
         when (forType) {

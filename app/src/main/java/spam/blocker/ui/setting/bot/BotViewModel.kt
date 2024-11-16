@@ -22,6 +22,11 @@ class BotViewModel {
     }
 
     fun toggleCollapse(ctx: Context) {
+        // don't collapse if it's empty
+        if (bots.size == 0 && !listCollapsed.value) {
+            return
+        }
+
         listCollapsed.value = !listCollapsed.value
         BotOptions(ctx).setListCollapsed(listCollapsed.value)
     }
