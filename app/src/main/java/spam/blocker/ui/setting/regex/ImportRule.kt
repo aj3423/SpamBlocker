@@ -61,8 +61,8 @@ fun ImportRuleButton(
                             return@popup
                         }
 
-                        val allRules = csv.rows.map {
-                            RegexRule.fromMap(it)
+                        val allRules = csv.rows.map { row ->
+                            RegexRule.fromMap(csv.headers.zip(row).toMap())
                         }
 
                         when (menuItemIndex) {

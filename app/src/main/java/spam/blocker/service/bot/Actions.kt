@@ -575,8 +575,8 @@ class ParseCSV(
         return try {
             val csv = Csv.parse(input, JSONObject(columnMapping).toStringMap())
 
-            val rules = csv.rows.map {
-                RegexRule.fromMap(it)
+            val rules = csv.rows.map { row ->
+                RegexRule.fromMap(csv.headers.zip(row).toMap())
             }
 
             Pair(true, rules)

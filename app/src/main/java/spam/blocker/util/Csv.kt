@@ -1,14 +1,14 @@
 package spam.blocker.util
 
 class Csv(
-    //   headers: ["pattern", "flag", ...]
+    //   headers: ["pattern", "flags", ...]
     val headers: List<String>,
 
     //   rows: [
-    //     {"pattern": "...", "flag": 3, ...}
-    //     {"pattern": "...", "flag": 3, ...}
+    //     ["111", "1", ...]
+    //     ["222", "2", ...]
     //   ]
-    val rows: List<Map<String, String>>
+    val rows: List<List<String>>
 ) {
     var filename: String? = null
 
@@ -27,7 +27,7 @@ class Csv(
             }
         }
 
-        fun detectSeparator(headerLine: String): String? {
+        private fun detectSeparator(headerLine: String): String? {
             val match = "([,;|])".toRegex().find(headerLine)
             return match?.groups?.first()?.value
         }
@@ -47,13 +47,20 @@ class Csv(
             val headers = headerLine.split(sep).map { it.trim() }
 
             // map header columns with columnMap
-            // for example, map column "Spam Number" to "pattern"
+            // e.g.:
+            //   convert "Spam Number" to "pattern"
+            // result:
+            //   [pattern,priority,dummy]
             val mappedHeaders = headers.map { columnMap[it] ?: it }
 
             val rows = lines
+                // drop header line
                 .drop(1)
+
+                // split the line with "," and trim spaces for each value
+                // e.g., result:
+                //   [123,4,5]
                 .map { it.split(sep).map { it.trim() } }
-                .map { mappedHeaders.zip(it).toMap() }
 
             return Csv(mappedHeaders, rows)
         }
