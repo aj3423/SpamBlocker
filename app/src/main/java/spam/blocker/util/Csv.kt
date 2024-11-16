@@ -27,15 +27,24 @@ class Csv(
             }
         }
 
+        fun detectSeparator(headerLine: String): String? {
+            val match = "([,;|])".toRegex().find(headerLine)
+            return match?.groups?.first()?.value
+        }
+
         fun parse(
             csvBytes: ByteArray,
-            columnMap: Map<String, String> = mapOf()
+            columnMap: Map<String, String> = mapOf(),
         ): Csv {
             val csvString = String(removeBom(csvBytes)).trim()
             val lines = csvString.lines()
 
+            val headerLine = lines.first()
+
+            val sep = detectSeparator(headerLine) ?: ","
+
             // The first line must be header
-            val headers = lines.first().split(",").map { it.trim() }
+            val headers = headerLine.split(sep).map { it.trim() }
 
             // map header columns with columnMap
             // for example, map column "Spam Number" to "pattern"
@@ -43,7 +52,7 @@ class Csv(
 
             val rows = lines
                 .drop(1)
-                .map { it.split(",").map { it.trim() } }
+                .map { it.split(sep).map { it.trim() } }
                 .map { mappedHeaders.zip(it).toMap() }
 
             return Csv(mappedHeaders, rows)

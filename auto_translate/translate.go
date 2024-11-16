@@ -214,6 +214,10 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		index := strings.IndexByte(ret, '\n')
 		ret = ret[index+1:]
 	}
+	if strings.HasPrefix(ret, "```xml") {
+		lines := split_lines(ret)
+		ret = join_lines(lines[1 : len(lines)-1])
+	}
 
 	if !strings.HasPrefix(ret, "<resources>") {
 		color.HiMagenta(ret)
@@ -258,10 +262,10 @@ func walk_lang_xmls(lang string, operation func(string) error) {
 		})
 }
 
-func split(content string) []string {
+func split_lines(content string) []string {
 	return strings.Split(content, "\n")
 }
-func join(lines []string) string {
+func join_lines(lines []string) string {
 	return strings.Join(lines, "\n")
 }
 
@@ -286,8 +290,8 @@ func translate_1_xml(lang string, xml_fn string) error {
 		} else { // only replace the specific tag
 			v_only := strings.Split(only, ",")
 			for _, target := range v_only {
-				origin_lines := split(read_xml(lang, xml_fn))
-				translated_lines := split(translated)
+				origin_lines := split_lines(read_xml(lang, xml_fn))
+				translated_lines := split_lines(translated)
 				found1, start1, end1, _ := extract_tag(origin_lines, target)
 				found2, _, _, matched_translated_lines := extract_tag(translated_lines, target)
 				if !found2 {
@@ -302,14 +306,14 @@ func translate_1_xml(lang string, xml_fn string) error {
 						start1,
 						matched_translated_lines,
 					)
-					write_xml(lang, xml_fn, join(new_lines))
+					write_xml(lang, xml_fn, join_lines(new_lines))
 				} else {
 					new_lines := insert_lines_at(
 						origin_lines,
 						len(origin_lines)-1,
 						matched_translated_lines,
 					)
-					write_xml(lang, xml_fn, join(new_lines))
+					write_xml(lang, xml_fn, join_lines(new_lines))
 				}
 			}
 		}
@@ -370,20 +374,20 @@ func insert_lines_at(dest []string, at int, to_insert []string) []string {
 func move_tag(tag string, lang string, to_xml string) func(string) error {
 	return func(xml_fn string) error {
 
-		src_lines := split(read_xml(lang, xml_fn))
+		src_lines := split_lines(read_xml(lang, xml_fn))
 		found, start, end, matched_lines := extract_tag(src_lines, tag)
 		if found {
 			// 1. add to dest xml
-			dest_lines := split(read_xml(lang, to_xml))
+			dest_lines := split_lines(read_xml(lang, to_xml))
 			penultimate := len(dest_lines) - 1
 			// insert the matched_lines at the line before last line
 			new_lines := insert_lines_at(dest_lines, penultimate, matched_lines)
 
-			write_xml(lang, to_xml, join(new_lines))
+			write_xml(lang, to_xml, join_lines(new_lines))
 
 			// 2. remove from source xml
 			cleared := append(src_lines[:start], src_lines[end:]...)
-			write_xml(lang, xml_fn, join(cleared))
+			write_xml(lang, xml_fn, join_lines(cleared))
 		}
 
 		return nil

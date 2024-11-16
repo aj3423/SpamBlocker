@@ -1284,7 +1284,7 @@ class EnableWorkflow(
     }
 
     override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.enable)}: $enable"
+        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if(enable) R.string.yes else R.string.no)}"
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1340,7 +1340,7 @@ class EnableApp(
     }
 
     override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.enable)}: $enable"
+        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if(enable) R.string.yes else R.string.no)}"
     }
 
     override fun tooltip(ctx: Context): String {
