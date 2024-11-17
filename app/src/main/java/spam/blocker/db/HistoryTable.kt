@@ -184,10 +184,3 @@ open class SmsTable : HistoryTable() {
         return Db.TABLE_SMS
     }
 }
-
-fun historyTableForType(forType: Int) : HistoryTable {
-    return when(forType) {
-        Def.ForNumber -> CallTable()
-        else -> SmsTable()
-    }
-}

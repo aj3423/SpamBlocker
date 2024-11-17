@@ -13,7 +13,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
@@ -21,7 +20,6 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.SpamTable
 import spam.blocker.db.defaultRegexRuleByType
-import spam.blocker.db.historyTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.RuleEditDialog
@@ -112,7 +110,7 @@ fun HistoryList(
                                 // Navigate to the default app, open the conversation to this number.
                                 if (!record.read) {
                                     // 1. update db
-                                    historyTableForType(vm.forType).markAsRead(ctx, record.id)
+                                    vm.table.markAsRead(ctx, record.id)
                                     // 2. update UI
                                     vm.records[index] = vm.records[index].copy(read = true)
                                 }
@@ -127,10 +125,9 @@ fun HistoryList(
                         left = SwipeInfo(
                             onSwipe = {
                                 val recToDel = vm.records[index]
-                                val table = historyTableForType(vm.forType)
 
                                 // 1. delete from db
-                                table.delById(ctx, recToDel.id)
+                                vm.table.delById(ctx, recToDel.id)
 
                                 // 2. remove from ArrayList
                                 vm.records.removeAt(index)
@@ -141,7 +138,7 @@ fun HistoryList(
                                     recToDel.peer,
                                     ctx.getString(R.string.undelete),
                                 ) {
-                                    table.addRecordWithId(ctx, recToDel)
+                                    vm.table.addRecordWithId(ctx, recToDel)
                                     vm.records.add(index, recToDel)
                                 }
                             },
@@ -156,23 +153,18 @@ fun HistoryList(
                                     onClick = {
                                         if (!record.read) {
                                             // 1. update db
-                                            historyTableForType(vm.forType).markAsRead(ctx, record.id)
+                                            vm.table.markAsRead(ctx, record.id)
                                             // 2. update UI
                                             vm.records[index] = vm.records[index].copy(read = true)
                                         }
 
                                         when (vm.forType) {
-                                            // Navigate to the default app, open the conversation to this number.
-                                            Def.ForNumber -> {
-                                                Launcher.openCallConversation(ctx, record.peer)
-                                            }
-
                                             Def.ForSms -> {
                                                 // Expand/Collapse the SMS body
                                                 if (record.smsContent != null) {
                                                     val rec = vm.records[index]
                                                     // 1. update db
-                                                    historyTableForType(vm.forType).setExpanded(
+                                                    vm.table.setExpanded(
                                                         ctx,
                                                         record.id,
                                                         !rec.expanded
@@ -180,9 +172,6 @@ fun HistoryList(
                                                     // 2. update ui
                                                     vm.records[index] =
                                                         rec.copy(expanded = !rec.expanded)
-                                                } else {
-                                                    // Navigate to the default app, open the conversation to this number.
-                                                    Launcher.openSMSConversation(ctx, record.peer)
                                                 }
                                             }
                                         }
