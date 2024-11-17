@@ -42,8 +42,7 @@ import spam.blocker.util.Util
 @Composable
 fun HistoryList(
     lazyState: LazyListState,
-    forType: Int,
-    records: SnapshotStateList<HistoryRecord>,
+    vm: HistoryViewModel,
 ) {
     val ctx = LocalContext.current
 
@@ -65,7 +64,7 @@ fun HistoryList(
 
     val contextMenuItems = remember(Unit) {
         val icons = listOf(
-            R.drawable.ic_copy, R.drawable.ic_regex, R.drawable.ic_db_add, R.drawable.ic_db_add
+            R.drawable.ic_copy, R.drawable.ic_regex, R.drawable.ic_db_add, R.drawable.ic_check_circle
         )
         ctx.resources.getStringArray(R.array.history_record_context_menu).asList()
             .mapIndexed { menuIndex, label ->
@@ -83,6 +82,11 @@ fun HistoryList(
                         2 -> { // add number to spam database
                             SpamTable.add(ctx, record.peer)
                         }
+
+                        3 -> { // mark all as read
+                            vm.table.markAllAsRead(ctx)
+                            vm.reload(ctx)
+                        }
                     }
                 }
             }
@@ -96,7 +100,7 @@ fun HistoryList(
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)
         ) {
-            itemsIndexed(items = records, key = { _, it -> it.id }) { index, record ->
+            itemsIndexed(items = vm.records, key = { _, it -> it.id }) { index, record ->
                 DropdownWrapper(items = contextMenuItems) { contextMenuExpanded ->
 
                     // Swipe <---->
@@ -108,28 +112,28 @@ fun HistoryList(
                                 // Navigate to the default app, open the conversation to this number.
                                 if (!record.read) {
                                     // 1. update db
-                                    historyTableForType(forType).markAsRead(ctx, record.id)
+                                    historyTableForType(vm.forType).markAsRead(ctx, record.id)
                                     // 2. update UI
-                                    records[index] = records[index].copy(read = true)
+                                    vm.records[index] = vm.records[index].copy(read = true)
                                 }
-                                when (forType) {
+                                when (vm.forType) {
                                     Def.ForNumber -> Launcher.openCallConversation(ctx, record.peer)
                                     Def.ForSms -> Launcher.openSMSConversation(ctx, record.peer)
                                 }
-                                records[index] = records[index]
+                                vm.records[index] = vm.records[index]
                             }
 
                         ),
                         left = SwipeInfo(
                             onSwipe = {
-                                val recToDel = records[index]
-                                val table = historyTableForType(forType)
+                                val recToDel = vm.records[index]
+                                val table = historyTableForType(vm.forType)
 
                                 // 1. delete from db
                                 table.delById(ctx, recToDel.id)
 
                                 // 2. remove from ArrayList
-                                records.removeAt(index)
+                                vm.records.removeAt(index)
 
                                 // 3. show snackbar
                                 SnackBar.show(
@@ -138,13 +142,13 @@ fun HistoryList(
                                     ctx.getString(R.string.undelete),
                                 ) {
                                     table.addRecordWithId(ctx, recToDel)
-                                    records.add(index, recToDel)
+                                    vm.records.add(index, recToDel)
                                 }
                             },
                         )
                     ) {
                         HistoryCard(
-                            forType = forType,
+                            forType = vm.forType,
                             record = record,
                             initialSmsRows = HistoryOptions(ctx).getInitialSmsRowCount(),
                             modifier = M
@@ -152,12 +156,12 @@ fun HistoryList(
                                     onClick = {
                                         if (!record.read) {
                                             // 1. update db
-                                            historyTableForType(forType).markAsRead(ctx, record.id)
+                                            historyTableForType(vm.forType).markAsRead(ctx, record.id)
                                             // 2. update UI
-                                            records[index] = records[index].copy(read = true)
+                                            vm.records[index] = vm.records[index].copy(read = true)
                                         }
 
-                                        when (forType) {
+                                        when (vm.forType) {
                                             // Navigate to the default app, open the conversation to this number.
                                             Def.ForNumber -> {
                                                 Launcher.openCallConversation(ctx, record.peer)
@@ -166,15 +170,15 @@ fun HistoryList(
                                             Def.ForSms -> {
                                                 // Expand/Collapse the SMS body
                                                 if (record.smsContent != null) {
-                                                    val rec = records[index]
+                                                    val rec = vm.records[index]
                                                     // 1. update db
-                                                    historyTableForType(forType).setExpanded(
+                                                    historyTableForType(vm.forType).setExpanded(
                                                         ctx,
                                                         record.id,
                                                         !rec.expanded
                                                     )
                                                     // 2. update ui
-                                                    records[index] =
+                                                    vm.records[index] =
                                                         rec.copy(expanded = !rec.expanded)
                                                 } else {
                                                     // Navigate to the default app, open the conversation to this number.
@@ -182,7 +186,7 @@ fun HistoryList(
                                                 }
                                             }
                                         }
-                                        clickedRecord.value = records[index]
+                                        clickedRecord.value = vm.records[index]
                                     },
                                     onLongClick = {
                                         clickedRecord.value = record

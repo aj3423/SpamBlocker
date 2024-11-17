@@ -7,12 +7,14 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
+import spam.blocker.def.Def
 import spam.blocker.util.SharedPref.HistoryOptions
 
 /*
   To simplify the code, this view model is used in GlobalVariables instead of viewModel<...>().
  */
 open class HistoryViewModel(
+    val forType: Int,
     val table: HistoryTable,
 ) : ViewModel() {
     val records = mutableStateListOf<HistoryRecord>()
@@ -30,6 +32,6 @@ open class HistoryViewModel(
     }
 }
 
-class CallViewModel : HistoryViewModel(CallTable())
+class CallViewModel : HistoryViewModel(Def.ForNumber, CallTable())
 
-class SmsViewModel : HistoryViewModel(SmsTable())
+class SmsViewModel : HistoryViewModel(Def.ForSms, SmsTable())

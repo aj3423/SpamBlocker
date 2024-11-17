@@ -52,9 +52,10 @@
     </string>
 
     <string-array name="history_record_context_menu">
-        <item>Copy Number</item>
+        <item>Copy number</item>
         <item>Add number to a new rule</item>
         <item>Add number to database</item>
+        <item>Mark all as read</item>
     </string-array>
 
     <string-array name="importance_list">

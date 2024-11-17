@@ -55,6 +55,7 @@
         <item>Nummer kopieren</item>
         <item>Nummer zu einer neuen Regel hinzufügen</item>
         <item>Nummer zur Datenbank hinzufügen</item>
+        <item>Alle als gelesen markieren</item>
     </string-array>
 
     <string-array name="importance_list">

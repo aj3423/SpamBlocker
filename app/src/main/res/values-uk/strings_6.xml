@@ -52,9 +52,10 @@
     </string>
 
     <string-array name="history_record_context_menu">
-        <item>Скопіювати номер</item>
+        <item>Копіювати номер</item>
         <item>Додати номер до нового правила</item>
         <item>Додати номер до бази даних</item>
+        <item>Позначити все як прочитане</item>
     </string-array>
 
     <string-array name="importance_list">

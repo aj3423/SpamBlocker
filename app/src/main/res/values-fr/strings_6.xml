@@ -55,6 +55,7 @@
         <item>Copier le numéro</item>
         <item>Ajouter le numéro à une nouvelle règle</item>
         <item>Ajouter le numéro à la base de données</item>
+        <item>Marquer tout comme lu</item>
     </string-array>
 
     <string-array name="importance_list">

@@ -90,7 +90,7 @@ class MainActivity : ComponentActivity() {
                         Badge(count = G.callVM.records.count { !it.read })
                     }
                 ) {
-                    HistoryScreen(Def.ForNumber, G.callVM.records)
+                    HistoryScreen(G.callVM)
                 },
                 TabItem(
                     route = Def.SMS_TAB_ROUTE,
@@ -101,7 +101,7 @@ class MainActivity : ComponentActivity() {
                         Badge(count = G.smsVM.records.count { !it.read })
                     },
                 ) {
-                    HistoryScreen(Def.ForSms, G.smsVM.records)
+                    HistoryScreen(G.smsVM)
                 },
                 TabItem(
                     route = Def.SETTING_TAB_ROUTE,

@@ -62,7 +62,7 @@ fun reScheduleHistoryCleanup(ctx: Context) {
 fun HistoryFabs(
     modifier: Modifier,
     visible: Boolean,
-    forType: Int,
+    vm: HistoryViewModel,
 ) {
     val ctx = LocalContext.current
     val spf = HistoryOptions(ctx)
@@ -74,13 +74,6 @@ fun HistoryFabs(
     var rows by rememberSaveable { mutableStateOf<Int?>(spf.getInitialSmsRowCount()) }
 
     val settingPopupTrigger = rememberSaveable { mutableStateOf(false) }
-
-    fun reloadVM() {
-        if (forType == Def.ForNumber)
-            G.callVM.reload(ctx)
-        else
-            G.smsVM.reload(ctx)
-    }
 
     PopupDialog(
         trigger = settingPopupTrigger,
@@ -107,7 +100,7 @@ fun HistoryFabs(
             }
 
             // Log SMS Content
-            if (forType == Def.ForSms) {
+            if (vm.forType == Def.ForSms) {
                 LabeledRow(
                     labelId = R.string.log_sms_content_to_db,
                     helpTooltipId = R.string.help_log_sms_content
@@ -121,7 +114,7 @@ fun HistoryFabs(
                                 if (!hasError) {
                                     rows = newVal
                                     spf.setInitialSmsRowCount(rows!!)
-                                    reloadVM()
+                                    vm.reload(ctx)
                                 }
                             }
                         )
@@ -134,7 +127,7 @@ fun HistoryFabs(
                     SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
                         logSmsContent = isOn
                         spf.setLogSmsContentEnabled(isOn)
-                        reloadVM()
+                        vm.reload(ctx)
                     })
                 }
             }
@@ -143,14 +136,14 @@ fun HistoryFabs(
                 SwitchBox(checked = showPassed, onCheckedChange = { isOn ->
                     showPassed = isOn
                     spf.setShowPassed(isOn)
-                    reloadVM()
+                    vm.reload(ctx)
                 })
             }
             LabeledRow(labelId = R.string.show_blocked) {
                 SwitchBox(checked = showBlocked, onCheckedChange = { isOn ->
                     showBlocked = isOn
                     spf.setShowBlocked(isOn)
-                    reloadVM()
+                    vm.reload(ctx)
                 })
             }
         })
@@ -171,7 +164,7 @@ fun HistoryFabs(
             buttons = {
                 StrokeButton(label = Str(R.string.delete), color = Salmon) {
                     deleteConfirm.value = false
-                    when (forType) {
+                    when (vm.forType) {
                         Def.ForNumber -> {
                             G.callVM.table.clearAll(ctx)
                             G.callVM.records.clear()

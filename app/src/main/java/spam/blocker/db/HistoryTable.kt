@@ -146,6 +146,11 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_READ, 1)
         return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) == 1
     }
+    fun markAllAsRead(ctx: Context): Boolean {
+        val cv = ContentValues()
+        cv.put(Db.COLUMN_READ, 1)
+        return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, null, null) == 1
+    }
     fun setExpanded(ctx: Context, id: Long, expanded: Boolean): Boolean {
         val cv = ContentValues()
         cv.put(Db.COLUMN_EXPANDED, if(expanded) 1 else 0)

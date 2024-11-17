@@ -53,8 +53,9 @@
 
     <string-array name="history_record_context_menu">
         <item>Copiar número</item>
-        <item>Añadir número a una nueva regla</item>
-        <item>Añadir número a la base de datos</item>
+        <item>Agregar número a una nueva regla</item>
+        <item>Agregar número a la base de datos</item>
+        <item>Marcar todo como leído</item>
     </string-array>
 
     <string-array name="importance_list">

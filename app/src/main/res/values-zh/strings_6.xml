@@ -55,6 +55,7 @@
         <item>复制号码</item>
         <item>将号码添加到新规则</item>
         <item>将号码添加到数据库</item>
+        <item>标记全部为已读</item>
     </string-array>
 
     <string-array name="importance_list">

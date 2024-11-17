@@ -12,8 +12,7 @@ import spam.blocker.ui.widgets.FabWrapper
 
 @Composable
 fun HistoryScreen(
-    forType: Int,
-    records: SnapshotStateList<HistoryRecord>,
+    vm: HistoryViewModel,
 ) {
     // Hide FAB on scrolling to the last item
     val listState = rememberLazyListState()
@@ -30,15 +29,14 @@ fun HistoryScreen(
             // Two FABs
             HistoryFabs(
                 visible = fabVisible,
-                forType = forType,
-                modifier = positionModifier
+                vm = vm,
+                modifier = positionModifier,
             )
         }
     ) {
         HistoryList(
             lazyState = listState,
-            forType = forType,
-            records = records
+            vm = vm,
         )
     }
 }

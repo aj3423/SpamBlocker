@@ -54,8 +54,9 @@
 
     <string-array name="history_record_context_menu">
         <item>番号をコピー</item>
-        <item>新しいルールに番号を追加</item>
-        <item>データベースに番号を追加</item>
+        <item>番号を新しいルールに追加</item>
+        <item>番号をデータベースに追加</item>
+        <item>すべて既読にする</item>
     </string-array>
 
     <string-array name="importance_list">
