@@ -197,23 +197,28 @@ object Util {
 
     fun extractString(regex: Regex, haystack: String): String? {
         /*
-            lookbehind: has `value`, no `group(1)`
-            capturing group: has both, should use group(1) only
+            lookbehind: has `value`, no `group`
+            capturing group: has both, should use `group` only
 
             so the logic is:
-                if has `value` && no `group(1)`
+                if has `value` && no `group`
                     use `value`
                 else if has both
                     use `group1`
          */
         val result = regex.find(haystack)
-        val v = result?.value
-        val g1 = result?.groupValues?.getOrNull(1)
 
-        if (v != null && g1 == null) {
+        val v = result?.value
+        // https://github.com/aj3423/SpamBlocker/discussions/192#discussioncomment-11328612
+        val group = result?.groups
+            ?.drop(1) // skip group[0], it's always the entire string
+            ?.filterNotNull()
+            ?.first()?.value
+
+        if (v != null && group == null) {
             return v
-        } else if (v != null && g1 != null) {
-            return g1
+        } else if (v != null && group != null) {
+            return group
         }
 
         return null
