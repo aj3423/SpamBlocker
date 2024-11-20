@@ -1,0 +1,16 @@
+Fixes:
+- android 15 tooltip truncated
+- rule "Save" button is always disabled under certain conditions
+
+Improvements:
+- swipe left to dismiss the snackbar 
+- "Mark all as read" for history records
+- new workflow actions:
+  - "Enable App" and "Enable Workflow"
+    - use case: temporarily disable the app and auto re-enable it after 1 hour
+  - "Find Rules" and "Modify Rules"
+    - use case: temporarily disable/enable multiple rules
+- support more .csv separators: , ; |
+
+Changes:
+- Tapping a history record will only mark it as read, swipe right to open the conversation in the default app.
