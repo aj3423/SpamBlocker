@@ -81,6 +81,8 @@ class CleanupHistory(
         CallTable().clearRecordsBeforeTimestamp(ctx, expireTimeMs)
         SmsTable().clearRecordsBeforeTimestamp(ctx, expireTimeMs)
 
+        Events.historyUpdated.fire()
+
         return Pair(true, null)
     }
 

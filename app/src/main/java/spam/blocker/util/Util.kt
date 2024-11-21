@@ -197,14 +197,14 @@ object Util {
 
     fun extractString(regex: Regex, haystack: String): String? {
         /*
-            lookbehind: has `value`, no `group`
-            capturing group: has both, should use `group` only
+            lookbehind: there is `value`, no `group`
+            capturing group: there are both `value` and `group`, should use `group` only
 
             so the logic is:
-                if has `value` && no `group`
+                if there is only `value`, no `group`
                     use `value`
-                else if has both
-                    use `group1`
+                else if both exist
+                    use `group`
          */
         val result = regex.find(haystack)
 

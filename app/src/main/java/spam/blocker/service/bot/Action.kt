@@ -60,16 +60,15 @@ data class ActionParam(
 )
 
 interface IAction {
-    // the return value will be used as the input `arg` for the next Action
+    // When it succeeds, it returns: <true, output>
+    //   the output will be used as the input `param` for the next Action
     // When it fails, it returns: <false, errorReasonString>
-    fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> // return <Success, output>
+    fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?>
 
-    // Return values:
-    // null: no permission needed
-    // true or false: is granted or not
+    // It returns a list of missing permissions.
     fun missingPermissions(ctx: Context): List<IPermission>
 
-    // A name displayed on the button
+    // The display name of this action
     fun label(ctx: Context): String
 
     // A brief string showing current settings
@@ -78,16 +77,15 @@ interface IAction {
     // Explains what this action does, used in balloon tooltip
     fun tooltip(ctx: Context): String
 
-    // These two functions are for checking if two sibling actions are chainable
+    // For checking if two sibling actions are chainable
     fun inputParamType(): ParamType
     fun outputParamType(): ParamType
 
-
-    // the resource icon id
+    // The icon of this action.
     @Composable
     fun Icon()
 
-    // This will be used on the automation editing popup dialog
+    // The option dialog for editing this action.
     @Composable
     fun Options()
 }

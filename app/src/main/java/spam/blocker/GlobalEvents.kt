@@ -47,6 +47,9 @@ object Events {
     val onNewCall = Event()
     val onNewSMS = Event()
 
+    // An event triggered when history records get updated, maybe triggered by Workflow
+    val historyUpdated = Event()
+
     // An event triggered when spam db is updated, maybe triggered by Workflow
     val spamDbUpdated = Event()
 

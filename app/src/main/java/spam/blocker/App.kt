@@ -21,6 +21,7 @@ class App : Application() {
         // Bind events here instead of in MainActivity, because it may be called multiple times.
         listenToConfigImport()
         listenToNewCallSMS()
+        listenToHistoryCleanup()
 
         // Set the default uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
@@ -80,6 +81,13 @@ class App : Application() {
         Events.onNewSMS.listen { recordId ->
             val record = SmsTable().findRecordById(this, recordId as Long)
             G.smsVM.records.add(0, record!!)
+        }
+    }
+
+    private fun listenToHistoryCleanup() {
+        Events.historyUpdated.listen {
+            G.callVM.reload(this)
+            G.smsVM.reload(this)
         }
     }
 }
