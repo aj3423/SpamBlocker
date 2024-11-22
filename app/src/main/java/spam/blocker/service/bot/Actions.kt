@@ -48,6 +48,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
+import spam.blocker.util.CSVParser
 import spam.blocker.util.Csv
 import spam.blocker.util.Now
 import spam.blocker.util.PermissiveJson
@@ -59,6 +60,11 @@ import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toMap
 import spam.blocker.util.toStringMap
+import java.io.BufferedReader
+import java.io.ByteArrayInputStream
+import java.io.InputStreamReader
+import java.io.PushbackReader
+import java.io.StringReader
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -575,7 +581,10 @@ class ParseCSV(
         }
 
         return try {
-            val csv = Csv.parse(input, JSONObject(columnMapping).toStringMap())
+            val csv = CSVParser(
+                PushbackReader(BufferedReader(InputStreamReader(ByteArrayInputStream(input)))),
+                JSONObject(columnMapping).toStringMap(),
+            ).parse()
 
             val rules = csv.rows.map { row ->
                 RegexRule.fromMap(csv.headers.zip(row).toMap())
@@ -1286,7 +1295,7 @@ class EnableWorkflow(
     }
 
     override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if(enable) R.string.yes else R.string.no)}"
+        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}"
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1342,7 +1351,7 @@ class EnableApp(
     }
 
     override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if(enable) R.string.yes else R.string.no)}"
+        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}"
     }
 
     override fun tooltip(ctx: Context): String {
