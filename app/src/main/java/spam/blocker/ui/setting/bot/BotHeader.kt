@@ -87,16 +87,15 @@ fun BotHeader(
     }
 
     LabeledRow(
+        modifier = M.clickable{ vm.toggleCollapse(ctx) },
         label = {
             RowVCenterSpaced(4) {
                 SettingLabel(
                     labelId = R.string.workflows,
-                    modifier = M.clickable { vm.toggleCollapse(ctx) }
                 )
                 if (vm.listCollapsed.value) {
                     GreyIcon16(
                         iconId = R.drawable.ic_dropdown_arrow,
-                        modifier = M.clickable { vm.toggleCollapse(ctx) }
                     )
                 }
             }

@@ -35,6 +35,7 @@ import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
@@ -226,6 +227,7 @@ class HttpDownload(
         StrInputBox(
             text = url,
             label = { Text(Str(R.string.url)) },
+            placeholder = { DimGreyLabel("https://...") },
             onValueChange = { url = it }
         )
 
@@ -234,7 +236,7 @@ class HttpDownload(
             label = { Text(Str(R.string.http_header)) },
             onValueChange = { header = it },
             placeholder = {
-                GreyLabel(
+                DimGreyLabel(
                     Str(R.string.help_http_header) + "\n\nUser-Agent: Chrome\nAuthorization: Basic ABC\n…",
                     color = C.textGrey.copy(alpha = 0.6f)
                 )
@@ -1088,6 +1090,13 @@ class ConvertNumber(
         val flagsState = remember { mutableIntStateOf(flags) }
         RegexInputBox(
             label = { Text(Str(R.string.replace_from)) },
+            placeholder = {
+                DimGreyLabel(
+                    Str(R.string.regex_pattern) + "\n"
+                            + Str(R.string.for_example) + "\n"
+                            + "(\"|-)"
+                )
+            },
             regexStr = from,
             onRegexStrChange = { newVal, hasErr ->
                 if (!hasErr) {
@@ -1161,7 +1170,13 @@ class FindRules(
         val flagsState = remember { mutableIntStateOf(flags) }
         RegexInputBox(
             label = { Text(Str(R.string.description)) },
-            placeholder = { Text(Str(R.string.regex_pattern)) },
+            placeholder = {
+                DimGreyLabel(
+                    Str(R.string.regex_pattern) + "\n"
+                            + Str(R.string.for_example) + "\n"
+                            + ".*"
+                )
+            },
             regexStr = pattern,
             onRegexStrChange = { newVal, hasErr ->
                 if (!hasErr) {
@@ -1250,7 +1265,7 @@ class ModifyRules(
     override fun Options() {
         StrInputBox(
             label = { Text(Str(R.string.config_text)) },
-            placeholder = { Text(Str(R.string.action_modify_rules_placeholder)) },
+            placeholder = { DimGreyLabel(Str(R.string.action_modify_rules_placeholder)) },
             text = config,
             onValueChange = {
                 config = it

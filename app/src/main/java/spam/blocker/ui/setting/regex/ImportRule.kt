@@ -57,7 +57,9 @@ fun ImportRuleButton(
                 label = label,
 
                 onClick = {
-                    fileReader.popup { fn: String?, raw: ByteArray? ->
+                    fileReader.popup(
+                        type = "text/*",
+                    ) { fn: String?, raw: ByteArray? ->
                         if (raw == null)
                             return@popup
 

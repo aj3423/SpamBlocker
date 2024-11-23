@@ -24,3 +24,21 @@ fun GreyLabel(
         fontWeight = fontWeight,
     )
 }
+
+// Used as input placeholder
+@Composable
+fun DimGreyLabel(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = LocalPalette.current.textGrey.copy(alpha = 0.6f),
+    fontSize: TextUnit = TextUnit.Unspecified,
+    fontWeight: FontWeight? = null,
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        color = color,
+        fontSize = fontSize,
+        fontWeight = fontWeight,
+    )
+}

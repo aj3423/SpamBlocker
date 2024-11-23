@@ -122,7 +122,9 @@ fun ImportButton() {
     }
 
     fun chooseImportFile(includeSpamDB: Boolean) {
-        fileReader.popup { _, raw ->
+        fileReader.popup(
+            mimeTypes = arrayOf("application/octet-stream", "application/gzip")
+        ) { _, raw ->
             if (raw == null)
                 return@popup
 

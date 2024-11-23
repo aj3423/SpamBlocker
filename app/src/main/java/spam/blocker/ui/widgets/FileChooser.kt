@@ -45,7 +45,6 @@ class FileWriteChooser {
     fun popup(
         filename: String,
         content: ByteArray,
-        mimeType: String = "application/txt",
         onResult: Lambda1<Boolean>? = null
     ) {
         this.content = content
@@ -53,9 +52,9 @@ class FileWriteChooser {
 
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
-            setType(mimeType)
-
+            type = "*/*"
             putExtra(Intent.EXTRA_TITLE, filename)
+            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
         }
         launcher.launch(intent)
     }
@@ -93,18 +92,23 @@ class FileReadChooser {
     }
 
     fun popup(
-        mimeType: String = "*/*",
+        type: String = "*/*",
+        mimeTypes: Array<String>? = null,
         onResult: Lambda2<String?, ByteArray?>,
     ) {
         this.onResult = onResult
 
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
-            type = mimeType
+            setType(type)
+            mimeTypes?.let {
+                putExtra(Intent.EXTRA_MIME_TYPES, it)
+            }
         }
         launcher.launch(intent)
     }
 }
+
 @Composable
 fun rememberFileReadChooser() : FileReadChooser {
     return remember { FileReadChooser() }

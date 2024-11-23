@@ -1,4 +1,5 @@
 <resources>
+    <string name="for_example">For example:</string>
     <string name="yesterday">Yesterday</string>
     <string name="help_meeting_mode">
         <![CDATA[
@@ -53,5 +54,4 @@
         The maximum display lines for the description text, remaining text will be truncated and followed by an ellipsis.
         ]]>
     </string>
-
 </resources>

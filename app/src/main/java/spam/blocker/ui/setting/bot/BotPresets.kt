@@ -96,7 +96,7 @@ val BotPresets = listOf(
             ),
             actions = listOf(
                 BackupExport(),
-                WriteFile(filename = "SpamBlocker.auto.bak")
+                WriteFile(filename = "SpamBlocker.auto.gz")
             )
         )
     }

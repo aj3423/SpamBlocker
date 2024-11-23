@@ -60,16 +60,15 @@ fun RuleHeader(
     }
 
     LabeledRow(
+        modifier = M.clickable{ vm.toggleCollapse(ctx) },
         label = {
             RowVCenterSpaced(4) {
                 SettingLabel(
-                    labelId = labelId,
-                    modifier = M.clickable { vm.toggleCollapse(ctx) }
+                    labelId = labelId
                 )
                 if (vm.listCollapsed.value) {
                     GreyIcon16(
                         iconId = R.drawable.ic_dropdown_arrow,
-                        modifier = M.clickable { vm.toggleCollapse(ctx) }
                     )
                 }
             }
