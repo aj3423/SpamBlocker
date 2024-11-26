@@ -60,7 +60,7 @@ class MyWorker(
         // Don't re-schedule it if the work uuid no longer exists in the database.
         if (workTag.isEmpty())
             return
-        if (!(Util.isUUID(workTag) && BotTable.isWorkUuidExist(ctx, workTag)))
+        if (Util.isUUID(workTag) && !BotTable.isWorkUuidExist(ctx, workTag))
             return
 
 
