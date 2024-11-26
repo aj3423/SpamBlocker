@@ -78,9 +78,13 @@ class SmsReceiver : BroadcastReceiver() {
                 ctx, rawNumber, messageBody, false, true)
 
             Notification.show(ctx, R.drawable.ic_sms_blocked,
-                showName, messageBody,
-                importance, Salmon, intent,
-                toCopy = toCopy)
+                title = showName,
+                body = messageBody,
+                importance = importance,
+                color = Salmon,
+                intent = intent,
+                toCopy = toCopy,
+            )
 
         } else { // passed
 
@@ -97,13 +101,15 @@ class SmsReceiver : BroadcastReceiver() {
                 ctx, rawNumber, messageBody, false, false)
 
             Notification.show(ctx, R.drawable.ic_sms_pass,
-                showName, messageBody,
-                IMPORTANCE_HIGH, null, intent,
-                toCopy = toCopy
+                title = showName,
+                body = messageBody,
+                importance = IMPORTANCE_HIGH,
+                color = null,
+                intent = intent,
+                toCopy = toCopy,
             )
         }
 
         return r
     }
-
 }

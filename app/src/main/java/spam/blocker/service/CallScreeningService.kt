@@ -14,6 +14,7 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.util.Contacts
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
@@ -156,10 +157,13 @@ class CallScreeningService : CallScreeningService() {
 
             val toCopy = Checker.checkQuickCopy(
                 ctx, rawNumber, null, true, true)
+
             Notification.show(ctx, R.drawable.ic_call_blocked,
-                rawNumber,
-                Checker.resultStr(ctx, r.result, r.reason()),
-                importance, Salmon, intent,
+                title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
+                body = Checker.resultStr(ctx, r.result, r.reason()),
+                importance = importance,
+                color = Salmon,
+                intent = intent,
                 toCopy = toCopy)
         }
 
