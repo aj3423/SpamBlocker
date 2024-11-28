@@ -1,5 +1,7 @@
 # Contribution Documentation
 
+__Community support is very important, any help is greatly appreciated.__
+
 ### Table of Contents
 
 - [For translator](#for-translator)
@@ -9,23 +11,24 @@
 
 ## For translator:
 
-You are free to propose one or more translations, or to update any existing one. Be sure of your work before providing it to the developers, who cannot verify it. You can translate it using [Weblate](https://hosted.weblate.org/engage/urlcheck/), as a [pull request](https://github.com/TrianguloY/UrlChecker/pulls)/[issue](https://github.com/TrianguloY/UrlChecker/issues/new) titled `{locale} Translation proposal` or by sending the files by email to [TrianguloY](https://github.com/TrianguloY).
+You are free to propose one or more translations, or to update any existing one. Be sure of your work before providing it to the developers, who cannot verify it. You can translate it then share it via a [pull request](https://github.com/aj3423/SpamBlocker/pulls)/[issue](https://github.com/aj3423/SpamBlocker/issues/new) titled `{locale} Translation proposal` or by sending the files by email to [aj3423](https://github.com/aj3423).
 
 For manual translation, there are two independent things to translate:
 
-- **App strings**: the [`strings.xml`](../app/src/main/res/values/strings.xml) file
+- **App strings**: all [`strings_.xml`](../app/src/main/res/values/strings_1.xml) files contained in the [`values`](../app/src/main/res/values) folder
     - Translate all texts between the `<string>` and `</string>` tags.
     - Remember to insert a backslash `\` before any apostrophe `'`, or enclose all text in quotes `"`
-    - Place the translated file in the corresponding `./app/src/main/res/values-{locale}/` folder
+    - Place all translated files in the corresponding `./app/src/main/res/values-{locale}/` folder
 
-- **Store strings**: the [`title.txt`](../app/src/main/play/listings/en-US/title.txt) [`short-description.txt`](../app/src/main/play/listings/en-US/short-description.txt) and/or [`full-description.txt`](../app/src/main/play/listings/en-US/full-description.txt) files
+<!-- - **Store strings**: the [`title.txt`](../app/src/main/play/listings/en-US/title.txt) [`short-description.txt`](../app/src/main/play/listings/en-US/short-description.txt) and/or [`full-description.txt`](../app/src/main/play/listings/en-US/full-description.txt) files
     - Place the translated files in the corresponding `./app/src/main/play/listings/{locale}/` folder
-
-Note: if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).
+- Not useful actually -->
+#### Note
+* if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).
+* If you are worried about making a mistake in the elements to be _(or not to be)_ translated, look at the 'strings.xml' files of the other languages are ​​already translated.
 
 ## For coder/developer:
-
-Try to keep it similar to existing code, with just a couple notes:
+Please try to keep new codes similar to existing ones, with just a couple notes:
 
 - Please write comments. No need to write full paragraphs for each line, but at least a minor comment for functions or non-obvious blocks of code really help.
 
@@ -47,14 +50,5 @@ Note that there are several ways to prepare your computer for this purpose, and 
 
 ## App Architecture
 
-UrlChecker is an Android Application that checks Url links. It is separated into modules. A very basic overview of the codebase is:
-
-- Activities: Full activities, like the startup screen, the settings, backup, etc.
-- Dialogs: Popup dialogs, same as activities but show the previous app behind, like the main dialog.
-- Fragments: Parts of an app that can be placed on different things. Not exactly Android's fragments...
-- Modules: Each of the 'parts' that you can individually enable/disable for the main functionality. This is where you probably want to start.
-- Services: Custom tabs service.
-- Url: Manages the data that the modules use to communicate.
-- Utilities: General-purpose methods and classes.
-- Views: Custom views.
+Not Yet...
     
