@@ -18,7 +18,12 @@
         <font color="#ea86ff"><b>Prioridade: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Números de spam no banco de dados expirarão após N dias, registros expirados serão excluídos automaticamente.</string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        Números de spam no banco de dados irão expirar após N dias, registros expirados serão excluídos automaticamente.<br>
+        Configure para -1 para desativar, então os números nunca serão excluídos automaticamente.
+        ]]>
+    </string>
     <string name="customize">Personalizar</string>
     <string name="workflow">Fluxo de trabalho</string>
     <string name="workflows">Fluxos de trabalho</string>

@@ -18,7 +18,12 @@
         <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Spam-Telefonnummern in der Datenbank verfallen nach N Tagen, abgelaufene Einträge werden automatisch gelöscht.</string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        Spam-Nummern in der Datenbank laufen nach N Tagen ab, abgelaufene Datensätze werden automatisch gelöscht.<br>
+        Stellen Sie es auf -1 ein, um es zu deaktivieren, sodass die Nummern niemals automatisch gelöscht werden.
+        ]]>
+    </string>
     <string name="customize">Anpassen</string>
     <string name="workflow">Workflow</string>
     <string name="workflows">Workflows</string>

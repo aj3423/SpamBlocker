@@ -18,7 +18,12 @@
         <font color="#ea86ff"><b>Priority: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Spam numbers in the database will expire after N days, expired records will be deleted automatically.</string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        Spam numbers in the database will expire after N days, expired records will be deleted automatically.<br>
+        Set it to -1 to disable it, so the numbers will never be deleted automatically.
+        ]]>
+    </string>
     <string name="customize">Customize</string>
     <string name="workflow">Workflow</string>
     <string name="workflows">Workflows</string>

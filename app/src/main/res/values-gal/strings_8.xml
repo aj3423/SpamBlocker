@@ -18,7 +18,12 @@
         <font color="#ea86ff"><b>Prioridade: 0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">Os números de spam da base de datos caducarán despois de N días, os rexistros caducados eliminarase automaticamente.</string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        Os números de spam na base de datos caducarán despois de N días, os rexistros caducados eliminaranse automaticamente.<br>
+        Axustao a -1 para desactivalo, polo que os números nunca se eliminarán automaticamente.
+        ]]>
+    </string>
     <string name="customize">Personalizar</string>
     <string name="workflow">Fluxo de traballo</string>
     <string name="workflows">Fluxos de traballo</string>

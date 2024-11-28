@@ -18,7 +18,12 @@
         <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>
-    <string name="help_spam_db_ttl">数据库中的垃圾号码将在 N 天后过期，过期记录将自动删除。</string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        数据库中的垃圾号码将在N天后过期，过期记录将自动删除。<br>
+        将其设置为-1以禁用它，这样号码将永远不会被自动删除。
+        ]]>
+    </string>
     <string name="customize">自定义</string>
     <string name="workflow">工作流程</string>
     <string name="workflows">工作流程</string>
