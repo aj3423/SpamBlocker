@@ -38,6 +38,7 @@ Core:
 Store file:
 - changed-files:
       - any-glob-to-any-file: 'app/src/main/play/**/*'
+      - any-glob-to-any-file: 'metadata/**/*'
 
 # Add 'Gradle wrapper' label to any change within the 'gradle' folder and subfolder
 Gradle wrapper:
