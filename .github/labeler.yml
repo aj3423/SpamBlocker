@@ -46,8 +46,7 @@ Gradle wrapper:
       - any-glob-to-any-file: 'gradle/wrapper/**/*'
 
 # Add 'Translation` label to any change to strings.xml files as long as the English strings.xml file hasn't changed
-Translation:
-- changed-files:
-      - any-glob-to-any-file:
-       - any: ['app/src/**/strings_*.xml']
-       - all: ['!app/src/main/res/values/strings_*.xml']
+#Translation:
+#- changed-files:
+#      - any-glob-to-any-file: 'app/src/**/strings_*.xml']
+#       - all: ['!app/src/main/res/values/strings_*.xml']
