@@ -1691,7 +1691,7 @@ class ParseQueryResult(
         }
 
         if (isNegative == true) {
-            aCtx.logger?.warn(ctx.getString(R.string.identified_as_spam)
+            aCtx.logger?.error(ctx.getString(R.string.identified_as_spam)
                 .format(category ?: ""))
         } else if (isPositive == true) {
             aCtx.logger?.success(ctx.getString(R.string.identified_as_valid)

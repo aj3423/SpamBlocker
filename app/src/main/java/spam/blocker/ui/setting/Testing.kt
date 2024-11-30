@@ -8,10 +8,12 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -46,6 +48,8 @@ fun PopupTesting(
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
+    val coroutine = rememberCoroutineScope()
+    
     val items = remember {
         listOf(
             RadioItem(text = ctx.getString(R.string.call), color = C.textGrey),
@@ -64,10 +68,6 @@ fun PopupTesting(
     }
 
 
-//    var passOrBlock by remember { mutableStateOf(false) }
-//    var result by remember { mutableStateOf("") }
-//    var byApp by remember { mutableStateOf("") }
-
     fun clearResult() {
         logStr.value = buildAnnotatedString {  }
     }
@@ -84,24 +84,19 @@ fun PopupTesting(
             }
         },
         buttons = { // Test Button
+
             StrokeButton(label = Str(R.string.test), color = Teal200) {
                 clearResult()
                 logTrigger.value = true
 
                 val textLogger = TextLogger(logStr, C)
-//                val r =
-                if (vm.selectedType.intValue == 0/* for call */)
-                    CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
-                else
-                    SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
 
-                // set result text color
-//                result = Checker.resultStr(ctx, r.result, r.reason())
-//                passOrBlock = !r.shouldBlock
-//
-//                if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP || r.result == Def.RESULT_BLOCKED_BY_MEETING_MODE) {
-//                    byApp = r.reason()
-//                }
+                coroutine.launch {
+                    if (vm.selectedType.intValue == 0/* for call */)
+                        CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
+                    else
+                        SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
+                }
             }
         },
         content = {
@@ -124,7 +119,7 @@ fun PopupTesting(
                         clearResult()
                     },
                 )
-//                // SMS content
+                // SMS content
                 if (vm.selectedType.intValue != Def.ForNumber) {
                     StrInputBox(
                         text = vm.sms.value,
@@ -136,27 +131,6 @@ fun PopupTesting(
                         }
                     )
                 }
-//                RowVCenter(
-//                    horizontalArrangement = Arrangement.SpaceBetween
-//                ) {
-//                    RowVCenter {
-//                        if (result != "") {
-//
-//                            Text(
-//                                text = result,
-//                                color = if (passOrBlock) C.pass else C.block,
-//                            )
-//                            if (byApp != "") {
-//                                DrawableImage(
-//                                    AppInfo.fromPackage(ctx, byApp).icon,
-//                                    modifier = M
-//                                        .size(24.dp)
-//                                        .padding(horizontal = 2.dp)
-//                                )
-//                            }
-//                        }
-//                    }
-//                }
             }
         }
     )
