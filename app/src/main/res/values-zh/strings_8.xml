@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">自动备份</string>
 
     <string name="action_cleanup_history">清理历史记录</string>
-    <string name="action_http_download">HTTP 下载</string>
+    <string name="action_http_request">HTTP请求</string>
     <string name="action_cleanup_spam_db">清理垃圾数据库</string>
     <string name="action_backup_export">备份导出</string>
     <string name="action_backup_import">备份导入</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        将 HTTP 下载的文件作为<u>内容字节</u>
+        将HTTP下载数据作为<u>内容字节</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">从垃圾数据库中删除过期的号码。</string>

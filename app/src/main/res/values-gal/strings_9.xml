@@ -2,19 +2,16 @@
     <string name="contact_rule">Regra de Contacto</string>
     <string name="directory">Directorio</string>
     <string name="filename">Nome do ficheiro</string>
-    <string name="invalid_input_type">Tipo de entrada inválido, espera: %s, obtivo: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Días de caducidade</string>
     <string name="column_mapping">Mapeamento de columna</string>
     <string name="include_spam_db">Incluir base de datos de spam</string>
-    <string name="configuration_only">Só configuración</string>
     <string name="no_config_needed">Non se necesita configuración</string>
     <string name="success">Éxito</string>
     <string name="failed">Fallo</string>
     <string name="running">En execución</string>
     <string name="optional">(opcional)</string>
 
-    <string name="run_execute">Executar</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Probar</b></font><br>
@@ -23,13 +20,7 @@
         <br>
         - <font color="#00BFFF"><b>Novo</b></font><br>
             Crea unha nova acción, varias accións pódense encadear xuntas para completar unha tarefa complexa.<br>
-            Eses puntos verdes ou vermellos entre os elementos indican se son encadenables ou non.<br>
-            <br>
-            Algúns exemplos de fluxos de traballo: <br>
-            <br>
-            &emsp; - descargar ficheiro http -> decodificar formato 7z -> analizar como formato csv -> importar á base de datos de spam.<br>
-            <br>
-            &emsp; - aplicar a configuración A en días laborables e aplicar a configuración B o fin de semana.<br>
+            Eses puntos verdes ou vermellos entre os elementos indican se son encadenables ou non.
         ]]>
     </string>
 
@@ -87,7 +78,6 @@
         ]]>
     </string>
 
-    <string name="one_off">Unha vez</string>
     <string name="action_enable_workflow">Activar fluxo de traballo</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

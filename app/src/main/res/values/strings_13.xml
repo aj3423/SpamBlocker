@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Cleaning up history db, deleting records before timestamp: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Cleaning up spam db, deleting %s records before timestamp: %s".
+    </string>
+    <string name="resolved_url">Resolved url: %s.</string>
+    <string name="resolved_path">Resolved path: %s.</string>
+    <string name="resolved_filename">Resolved filename: %s.</string>
+    <string name="time_cost">Time cost: %s milliseconds.</string>
+    <string name="parsed_n_rules">Parsed %s rules.</string>
+    <string name="add_n_numbers_to_spam_db">Adding %s numbers to spam db.</string>
+    <string name="nothing_to_import">Number list is empty, nothing to import.</string>
+    <string name="importing_n_numbers">Importing %s numbers as regex rule.</string>
+    <string name="create_rule_with_numbers">Creating rule with %s numbers.</string>
+    <string name="replace_rule_with_desc">Replacing the rule with description: %s.</string>
+    <string name="rule_with_desc_not_found">Rule with description %s not found.</string>
+    <string name="merging_rule_with_desc">Merging the rule with description: %s.</string>
+    <string name="regex_count_after_merge">Regex count before: %s, after: %s.</string>
+    <string name="replace_number_from_to">Replacing number from %s to %s.</string>
+    <string name="find_rule_with_desc">Found %s rules with description %s.</string>
+    <string name="modify_n_rules">Modifying %s rules.</string>
+    <string name="parse_number_fail">Failed to parse the number: %s.</string>
+    <string name="error_international_only">internationOnly is enabled but the number is not in international format, skip.</string>
+    <string name="permission_not_granted">Permission not granted.</string>
+    <string name="fail_detect_cc">Failed to detect country code.</string>
+    <string name="empty_fixed_cc">The fixed country code is empty.</string>
+    <string name="identified_as_spam">Identified as spam number, category: %s.</string>
+    <string name="identified_as_valid">Identified as valid number, category: %s.</string>
+    <string name="unidentified_number">Unidentified number.</string>
+</resources>

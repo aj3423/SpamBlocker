@@ -2,29 +2,24 @@ package spam.blocker.ui.setting
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.service.CallScreeningService
-import spam.blocker.service.Checker
 import spam.blocker.service.SmsReceiver
-import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonQuestionMark
-import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -34,7 +29,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.AppInfo
+import spam.blocker.util.TextLogger
 
 
 class TestingViewModel {
@@ -58,15 +53,24 @@ fun PopupTesting(
         )
     }
 
-    var passOrBlock by remember { mutableStateOf(false) }
-    var result by remember { mutableStateOf("") }
-    var byApp by remember { mutableStateOf("") }
+    var logStr = remember { mutableStateOf(buildAnnotatedString {}) }
 
-    fun clearResult() {
-        result = ""
-        byApp = ""
+    // Log output dialog
+    val logTrigger = rememberSaveable { mutableStateOf(false) }
+    PopupDialog(
+        trigger = logTrigger,
+    ) {
+        Text(text = logStr.value)
     }
 
+
+//    var passOrBlock by remember { mutableStateOf(false) }
+//    var result by remember { mutableStateOf("") }
+//    var byApp by remember { mutableStateOf("") }
+
+    fun clearResult() {
+        logStr.value = buildAnnotatedString {  }
+    }
 
     val vm = G.testingVM
 
@@ -82,19 +86,22 @@ fun PopupTesting(
         buttons = { // Test Button
             StrokeButton(label = Str(R.string.test), color = Teal200) {
                 clearResult()
+                logTrigger.value = true
 
-                val r = if (vm.selectedType.intValue == 0/* for call */)
-                    CallScreeningService().processCall(ctx, vm.phone.value)
+                val textLogger = TextLogger(logStr, C)
+//                val r =
+                if (vm.selectedType.intValue == 0/* for call */)
+                    CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
                 else
-                    SmsReceiver().processSms(ctx, vm.phone.value, vm.sms.value)
+                    SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
 
                 // set result text color
-                result = Checker.resultStr(ctx, r.result, r.reason())
-                passOrBlock = !r.shouldBlock
-
-                if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP || r.result == Def.RESULT_BLOCKED_BY_MEETING_MODE) {
-                    byApp = r.reason()
-                }
+//                result = Checker.resultStr(ctx, r.result, r.reason())
+//                passOrBlock = !r.shouldBlock
+//
+//                if (r.result == Def.RESULT_ALLOWED_BY_RECENT_APP || r.result == Def.RESULT_BLOCKED_BY_MEETING_MODE) {
+//                    byApp = r.reason()
+//                }
             }
         },
         content = {
@@ -129,27 +136,27 @@ fun PopupTesting(
                         }
                     )
                 }
-                RowVCenter(
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    RowVCenter {
-                        if (result != "") {
-
-                            Text(
-                                text = result,
-                                color = if (passOrBlock) C.pass else C.block,
-                            )
-                            if (byApp != "") {
-                                DrawableImage(
-                                    AppInfo.fromPackage(ctx, byApp).icon,
-                                    modifier = M
-                                        .size(24.dp)
-                                        .padding(horizontal = 2.dp)
-                                )
-                            }
-                        }
-                    }
-                }
+//                RowVCenter(
+//                    horizontalArrangement = Arrangement.SpaceBetween
+//                ) {
+//                    RowVCenter {
+//                        if (result != "") {
+//
+//                            Text(
+//                                text = result,
+//                                color = if (passOrBlock) C.pass else C.block,
+//                            )
+//                            if (byApp != "") {
+//                                DrawableImage(
+//                                    AppInfo.fromPackage(ctx, byApp).icon,
+//                                    modifier = M
+//                                        .size(24.dp)
+//                                        .padding(horizontal = 2.dp)
+//                                )
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
     )

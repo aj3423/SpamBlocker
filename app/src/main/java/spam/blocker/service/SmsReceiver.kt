@@ -15,6 +15,7 @@ import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
+import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.HistoryOptions
@@ -37,13 +38,13 @@ class SmsReceiver : BroadcastReceiver() {
         val rawNumber = messages[0].originatingAddress!!
         // logd("onReceive sms from $rawNumber: $messageBody")
 
-        processSms(ctx, rawNumber, messageBody)
+        processSms(ctx, logger = null, rawNumber, messageBody)
     }
 
-    fun processSms(ctx: Context, rawNumber: String, messageBody: String) : CheckResult {
+    fun processSms(ctx: Context, logger: ILogger?, rawNumber: String, messageBody: String) : CheckResult {
         val spf = HistoryOptions(ctx)
 
-        val r = Checker.checkSms(ctx, rawNumber, messageBody)
+        val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
 
         // 1. log to db
         val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED

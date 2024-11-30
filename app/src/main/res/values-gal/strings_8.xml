@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">Copia de seguridade automática</string>
 
     <string name="action_cleanup_history">Limpar historial</string>
-    <string name="action_http_download">Descarga HTTP</string>
+    <string name="action_http_request">Solicitude HTTP</string>
     <string name="action_cleanup_spam_db">Limpeza da base de datos de spam</string>
     <string name="action_backup_export">Exportación de copia de seguridade</string>
     <string name="action_backup_import">Importación de copia de seguridade</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        Descargar o ficheiro HTTP como <u>bytes de contido</u>
+        Descargar datos HTTP como <u>bytes de contido</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Eliminar números caducados da base de datos de spam.</string>

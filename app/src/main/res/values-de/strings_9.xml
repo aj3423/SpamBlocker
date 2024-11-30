@@ -2,19 +2,16 @@
     <string name="contact_rule">Kontaktregel</string>
     <string name="directory">Verzeichnis</string>
     <string name="filename">Dateiname</string>
-    <string name="invalid_input_type">Ungültiger Eingabe-Typ, erwartet: %s, erhalten: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Gültigkeitsdauer (Tage)</string>
     <string name="column_mapping">Spaltenzuordnung</string>
     <string name="include_spam_db">Spam-Datenbank einschließen</string>
-    <string name="configuration_only">Nur Konfiguration</string>
     <string name="no_config_needed">Keine Konfiguration erforderlich</string>
     <string name="success">Erfolg</string>
     <string name="failed">Fehler</string>
     <string name="running">Läuft</string>
     <string name="optional">(optional)</string>
 
-    <string name="run_execute">Ausführen</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Test</b></font><br>
@@ -23,13 +20,7 @@
         <br>
         - <font color="#00BFFF"><b>Neu</b></font><br>
             Eine neue Aktion erstellen, mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe zu erledigen.<br>
-            Die grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie verkettbar sind oder nicht.<br>
-            <br>
-            Einige Beispiel-Workflows: <br>
-            <br>
-            &emsp; - http-Datei herunterladen -> 7z-Format decodieren -> als csv-Format parsen -> in Spam-Datenbank importieren.<br>
-            <br>
-            &emsp; - Einstellungen A an Werktagen und Einstellungen B am Wochenende anwenden.<br>
+            Die grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie verkettbar sind oder nicht.
         ]]>
     </string>
 
@@ -85,7 +76,6 @@
         ]]>
     </string>
 
-    <string name="one_off">Einmalig</string>
     <string name="action_enable_workflow">Workflow aktivieren</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

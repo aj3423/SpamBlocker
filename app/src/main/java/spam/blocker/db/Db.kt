@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 29
+        const val DB_VERSION = 30
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -43,9 +43,12 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_ENABLED = "enabled"
         const val COLUMN_WORK_UUID = "work_uuid"
 
-        // ---- call ----
+        // ---- api table ----
+        const val TABLE_API = "api"
+
+        // ---- call table ----
         const val TABLE_CALL = "call"
-        // ---- sms ----
+        // ---- sms table ----
         const val TABLE_SMS = "sms"
 
         // ---- history table ----
@@ -102,6 +105,15 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         )
         db.execSQL("CREATE INDEX IF NOT EXISTS index_peer ON $TABLE_SPAM($COLUMN_PEER)")
 
+        // api
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_API (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_DESC TEXT, " +
+                    "$COLUMN_ACTIONS TEXT, " +
+                    "$COLUMN_ENABLED INTEGER" +
+                    ")"
+        )
         // bot
         db.execSQL(
             "CREATE TABLE IF NOT EXISTS $TABLE_BOT (" +
@@ -185,6 +197,10 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         // Set all bots' taskUUID to random uuid string
         if ((newVersion >= 29) && (oldVersion < 29)) {
             db.execSQL("UPDATE $TABLE_BOT SET $COLUMN_WORK_UUID = REPLACE(HEX(RANDOMBLOB(16)), '-', '') WHERE $COLUMN_WORK_UUID IS NULL;")
+        }
+        // v4.0 introduced api
+        if ((newVersion >= 30) && (oldVersion < 30)) {
+            onCreate(db)
         }
     }
 }

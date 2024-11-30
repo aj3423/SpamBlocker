@@ -45,13 +45,21 @@ class RuleTest {
         NumberRuleTable().clearAll(ctx)
         ContentRuleTable().clearAll(ctx)
     }
+
     @After
-    fun teardown() {}
+    fun teardown() {
+    }
 
     fun build_rule(
-        pattern: String, patternExtra: String, priority: Int, isBlacklist: Boolean, flagCallSms: Int,
-        patternFlags: Int = 0, patternExtraFlags: Int = 0, schedule: String = ""
-    ) : RegexRule {
+        pattern: String,
+        patternExtra: String,
+        priority: Int,
+        isBlacklist: Boolean,
+        flagCallSms: Int,
+        patternFlags: Int = 0,
+        patternExtraFlags: Int = 0,
+        schedule: String = ""
+    ): RegexRule {
         val f = RegexRule()
         f.pattern = pattern
         f.patternExtra = patternExtra
@@ -68,6 +76,7 @@ class RuleTest {
     fun add_number_rule(f: RegexRule) {
         NumberRuleTable().addNewRule(ctx, f)
     }
+
     fun add_content_rule(f: RegexRule) {
         ContentRuleTable().addNewRule(ctx, f)
     }
@@ -95,10 +104,17 @@ class RuleTest {
     private fun mock_call_permission_granted() {
         every { Permissions.isCallLogPermissionGranted(any()) } returns true
     }
+
     private fun mock_sms_permission_granted() {
         every { Permissions.isReadSmsPermissionGranted(any()) } returns true
     }
-    private fun mock_calls(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
+
+    private fun mock_calls(
+        rawNumber: String,
+        direction: Int,
+        repeatedTimes: Int,
+        atTimeMillis: Long
+    ) {
         val number = PhoneNumber(ctx, rawNumber)
         every { Permissions.countHistoryCallByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
@@ -110,7 +126,13 @@ class RuleTest {
             }
         }
     }
-    private fun mock_sms(rawNumber: String, direction: Int, repeatedTimes: Int, atTimeMillis: Long) {
+
+    private fun mock_sms(
+        rawNumber: String,
+        direction: Int,
+        repeatedTimes: Int,
+        atTimeMillis: Long
+    ) {
         val number = PhoneNumber(ctx, rawNumber)
         every { Permissions.countHistorySMSByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
@@ -122,10 +144,12 @@ class RuleTest {
             }
         }
     }
+
     private fun mock_advance_time_by_minutes(durationMinutes: Int) {
         mockkObject(Now)
-        every { Now.currentMillis() } answers { System.currentTimeMillis() + durationMinutes*60*1000}
+        every { Now.currentMillis() } answers { System.currentTimeMillis() + durationMinutes * 60 * 1000 }
     }
+
     private fun mock_current_time_millis(millis: Long) {
         mockkObject(Now)
         every { Now.currentMillis() } returns millis
@@ -143,10 +167,10 @@ class RuleTest {
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
         // contact: pass
-        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, A).result)
+        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, logger = null, A).result)
 
         // non-contact: block
-        assertEquals(Def.RESULT_BLOCKED_BY_NUMBER, Checker.checkCall(ctx, B).result)
+        assertEquals(Def.RESULT_BLOCKED_BY_NUMBER, Checker.checkCall(ctx, logger = null, B).result)
     }
 
     // Non Contact -> block
@@ -158,10 +182,13 @@ class RuleTest {
         mock_contact(A)
 
         // contact: pass
-        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, A).result)
+        assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, logger = null, A).result)
 
         // non-contact: block
-        assertEquals(Def.RESULT_BLOCKED_BY_NON_CONTACT, Checker.checkCall(ctx, B).result)
+        assertEquals(
+            Def.RESULT_BLOCKED_BY_NON_CONTACT,
+            Checker.checkCall(ctx, logger = null, B).result
+        )
     }
 
     // testing repeated call
@@ -182,13 +209,13 @@ class RuleTest {
 
         // mock no call/sms record
         val now = System.currentTimeMillis()
-        val twoMinAgo = now - 2*60*1000
+        val twoMinAgo = now - 2 * 60 * 1000
         mock_calls(B, Def.DIRECTION_INCOMING, 0, twoMinAgo)
         mock_sms(B, Def.DIRECTION_INCOMING, 0, twoMinAgo)
 
         // should always fail when no history records
         for (i in 1..3) {
-            val r = Checker.checkCall(ctx, B)
+            val r = Checker.checkCall(ctx, logger = null, B)
             assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
         }
 
@@ -196,18 +223,18 @@ class RuleTest {
         mock_calls(B, Def.DIRECTION_INCOMING, 2, twoMinAgo)
 
         // should still fail, 2<4
-        val r2 = Checker.checkCall(ctx, B)
+        val r2 = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r2.result)
 
         // add two sms
         mock_sms(B, Def.DIRECTION_INCOMING, 2, twoMinAgo)
         // should pass, 2+2>=4
-        val r3 = Checker.checkCall(ctx, B)
+        val r3 = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_REPEATED, r3.result)
 
         // should block again after 10 minutes
         mock_advance_time_by_minutes(10)
-        val r4 = Checker.checkCall(ctx, B)
+        val r4 = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r4.result)
     }
 
@@ -228,13 +255,13 @@ class RuleTest {
 
         // mock no call/sms record
         val now = System.currentTimeMillis()
-        val twoDaysAgo = now - 2*24*3600*1000
+        val twoDaysAgo = now - 2 * 24 * 3600 * 1000
         mock_calls(B, Def.DIRECTION_OUTGOING, 0, twoDaysAgo)
         mock_sms(B, Def.DIRECTION_OUTGOING, 0, twoDaysAgo)
 
         // should always fail when no history records
         for (i in 1..3) {
-            val r = Checker.checkCall(ctx, B)
+            val r = Checker.checkCall(ctx, logger = null, B)
             assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
         }
 
@@ -242,7 +269,7 @@ class RuleTest {
         mock_calls(B, Def.DIRECTION_OUTGOING, 1, twoDaysAgo)
 
         // should pass
-        val r1 = Checker.checkCall(ctx, B)
+        val r1 = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DIALED, r1.result)
 
 
@@ -251,14 +278,15 @@ class RuleTest {
         mock_sms(B, Def.DIRECTION_OUTGOING, 1, twoDaysAgo)
 
         // should pass
-        val r2 = Checker.checkCall(ctx, B)
+        val r2 = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DIALED, r2.result)
 
         // should block again after 10 days
-        mock_advance_time_by_minutes(10*24*60)
-        val r4 = Checker.checkCall(ctx, B)
+        mock_advance_time_by_minutes(10 * 24 * 60)
+        val r4 = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r4.result)
     }
+
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
         mockkObject(Permissions)
         every { Permissions.listUsedAppWithinXSecond(ctx, any()) } answers {
@@ -280,17 +308,17 @@ class RuleTest {
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
         // app being used
-        mock_recent_app(pkgs, System.currentTimeMillis() + 5*60*1000)
+        mock_recent_app(pkgs, System.currentTimeMillis() + 5 * 60 * 1000)
 
         // should pass
-        var r = Checker.checkCall(ctx, B)
+        var r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_RECENT_APP, r.result)
 
         // 5 min expired
         mock_advance_time_by_minutes(6)
 
         // should block
-        r = Checker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
     }
@@ -300,13 +328,14 @@ class RuleTest {
 
         every { Util.currentHourMin() } returns Pair(hour, min)
     }
+
     @Test
     fun off_time() {
         // block all number
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
         // should block
-        var r = Checker.checkCall(ctx, B)
+        var r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
         // set off-time to (1:00, 2:00)
@@ -323,14 +352,14 @@ class RuleTest {
         mock_current_hour_min(1, 15)
 
         // should pass
-        r = Checker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_OFF_TIME, r.result)
 
         // mock current time to 3:00
         mock_current_hour_min(3, 0)
 
         // should block
-        r = Checker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
 
@@ -342,7 +371,7 @@ class RuleTest {
         // mock current time to 22:00
         mock_current_hour_min(22, 0)
         // should pass
-        r = Checker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_OFF_TIME, r.result)
     }
 
@@ -360,19 +389,23 @@ class RuleTest {
     @Test
     fun rule_schedule() {
         // block all number
-        add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL, schedule = "2,01:00-02:00,true"))
+        add_number_rule(
+            build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL,
+                schedule = "2,01:00-02:00,true")
+        )
 
         // should block, Monday 01:20
         mock_current_time_millis(getTimestampInMilliseconds(2, 1, 20))
-        var r = Checker.checkCall(ctx, B)
+        var r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
 
         // should pass, Thursday
         mock_current_time_millis(getTimestampInMilliseconds(3, 1, 20))
-        r = Checker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
 
-   }
+    }
+
     // testing call number rules
     @Test
     fun number_rules_priority() {
@@ -387,11 +420,11 @@ class RuleTest {
         add_number_rule(build_rule("$B.*", "", 100, true, Def.FLAG_FOR_CALL))
 
         // A should pass
-        var r = Checker.checkCall(ctx, A)
+        var r = Checker.checkCall(ctx, logger = null, A)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_NUMBER, r.result)
 
         // B should block
-        r = Checker.checkCall(ctx, B)
+        r = Checker.checkCall(ctx, logger = null, B)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
     }
 
@@ -404,7 +437,7 @@ class RuleTest {
         add_number_rule(build_rule(Microsoft, "", 1, true, Def.FLAG_FOR_CALL))
 
         //  should block
-        val r = Checker.checkCall(ctx, Microsoft)
+        val r = Checker.checkCall(ctx, logger = null, Microsoft)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
     }
 
@@ -420,11 +453,11 @@ class RuleTest {
         add_content_rule(build_rule(".*discount.*", particularNumber, 2, false, Def.FLAG_FOR_SMS))
 
         // should pass for particular number
-        var r = Checker.checkSms(ctx, particularNumber, msg)
+        var r = Checker.checkSms(ctx, logger = null, particularNumber, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_CONTENT, r.result)
 
         //  should block for anyone else
-        r = Checker.checkSms(ctx, A, msg)
+        r = Checker.checkSms(ctx, logger = null, A, msg)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
 
@@ -435,16 +468,21 @@ class RuleTest {
 
         // should pass without this flag
         add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS))
-        var r = Checker.checkSms(ctx, B, msg)
+        var r = Checker.checkSms(ctx, logger = null, B, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
 
         // should block with this flag set
-        add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS,
-            patternFlags = Def.FLAG_REGEX_IGNORE_CASE))
+        add_content_rule(
+            build_rule(
+                ".*discount.*", "", 1, true, Def.FLAG_FOR_SMS,
+                patternFlags = Def.FLAG_REGEX_IGNORE_CASE
+            )
+        )
 
-        r = Checker.checkSms(ctx, B, msg)
+        r = Checker.checkSms(ctx, logger = null, B, msg)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
+
     // test regex flags DotMatchAll
     @Test
     fun regex_flags_dot_match_all() {
@@ -453,14 +491,18 @@ class RuleTest {
 
         // should pass without this flag
         add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS))
-        var r = Checker.checkSms(ctx, B, msg)
+        var r = Checker.checkSms(ctx, logger = null, B, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
 
         // should block with this flag set
-        add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS,
-            patternFlags = Def.FLAG_REGEX_DOT_MATCH_ALL))
+        add_content_rule(
+            build_rule(
+                rule, "", 1, true, Def.FLAG_FOR_SMS,
+                patternFlags = Def.FLAG_REGEX_DOT_MATCH_ALL
+            )
+        )
 
-        r = Checker.checkSms(ctx, B, msg)
+        r = Checker.checkSms(ctx, logger = null, B, msg)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.result)
     }
 
@@ -469,14 +511,17 @@ class RuleTest {
     fun regex_flags_raw_number() {
         val domesticNumber = "00123"
 
-        add_number_rule(build_rule("0.*", "", 2, true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_RAW_NUMBER))
+        add_number_rule(
+            build_rule("0.*", "", 2, true, Def.FLAG_FOR_CALL,
+                patternFlags = Def.FLAG_REGEX_RAW_NUMBER)
+        )
 
         // should pass by default
-        var r = Checker.checkCall(ctx, A)
+        var r = Checker.checkCall(ctx, logger = null, A)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.result)
 
         //  should block for leading 0
-        r = Checker.checkCall(ctx, domesticNumber)
+        r = Checker.checkCall(ctx, logger = null, domesticNumber)
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.result)
     }
 }

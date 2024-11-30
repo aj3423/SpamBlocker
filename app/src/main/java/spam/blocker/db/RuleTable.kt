@@ -78,8 +78,11 @@ data class RegexRule(
     var blockType: Int = Def.DEF_BLOCK_TYPE,
 ) {
 
-    override fun toString(): String {
-        return "id: $id, pattern: $pattern, patternExtra: $patternExtra, patternFlags: $patternFlags, patternExtraFlags: $patternExtraFlags, desc: $description, priority: $priority, flagCallSms: $flags, isBlacklist: $isBlacklist, importance: $importance, schedule: $schedule, blockType: $blockType"
+    fun summary(): String {
+        return if (description.isNotEmpty())
+            description
+        else
+            truncate(patternStr(), limit = 40)
     }
 
     fun isForCall(): Boolean {

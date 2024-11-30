@@ -53,6 +53,14 @@ fun GreyIcon16(
 ) {
     GreyIcon(iconId, modifier = modifier.size(16.dp))
 }
+// for input box leading icons
+@Composable
+fun GreyIcon18(
+    iconId: Int,
+    modifier: Modifier = Modifier,
+) {
+    GreyIcon(iconId, modifier = modifier.size(18.dp))
+}
 @Composable
 fun GreyIcon20(
     iconId: Int,

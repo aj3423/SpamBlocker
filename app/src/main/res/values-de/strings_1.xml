@@ -59,4 +59,6 @@
     <string name="recent_apps"><short>Letzte Apps</short></string>
     <string name="allow_contact">Kontakte</string>
 
+    <string name="number_filter">Rufnummernregel</string>
+    <string name="content_filter">Nachrichtenregel</string>
 </resources>

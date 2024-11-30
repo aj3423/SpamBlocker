@@ -121,22 +121,18 @@ object SpamTable {
         db.execSQL(sql)
     }
 
-    fun deleteById(ctx: Context, id: Long): Boolean {
-        val sql = "DELETE FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_ID} = $id"
-        val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
-
-        return cursor.use {
-            it.moveToFirst()
-        }
+    fun deleteById(ctx: Context, id: Long): Int {
+        val args = arrayOf(id.toString())
+        val deletedCount = Db.getInstance(ctx).writableDatabase
+            .delete(Db.TABLE_SPAM, "${Db.COLUMN_ID} = ?", args)
+        return deletedCount
     }
 
     // Delete expired records before this timestamp
-    fun deleteBeforeTimestamp(ctx: Context, timestamp: Long): Boolean {
-        val sql = "DELETE FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_TIME} < $timestamp"
-        val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
-
-        return cursor.use {
-            it.moveToFirst()
-        }
+    fun deleteBeforeTimestamp(ctx: Context, timestamp: Long): Int {
+        val args = arrayOf(timestamp.toString())
+        val deletedCount = Db.getInstance(ctx).writableDatabase
+            .delete(Db.TABLE_SPAM, "${Db.COLUMN_TIME} < ?", args)
+        return deletedCount
     }
 }

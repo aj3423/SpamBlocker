@@ -8,7 +8,6 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
-import android.os.Environment
 import android.os.UserManager
 import android.provider.OpenableColumns
 import android.provider.Settings
@@ -38,31 +37,6 @@ typealias Lambda2<A, B> = (A, B) -> Unit
 typealias Lambda3<A, B, C> = (A, B, C) -> Unit
 typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
-
-fun String.resolveTimeTags(): String {
-    val now = LocalDateTime.now()
-    return this
-        .replace("{year}", now.year.toString())
-        .replace("{month}", now.monthValue.toString().padStart(2, '0'))
-        .replace("{day}", now.dayOfMonth.toString().padStart(2, '0'))
-        .replace("{hour}", now.hour.toString().padStart(2, '0'))
-        .replace("{minute}", now.minute.toString().padStart(2, '0'))
-        .replace("{second}", now.second.toString().padStart(2, '0'))
-
-        .replace("{month_index}", now.monthValue.toString())
-        .replace("{day_index}", now.dayOfMonth.toString())
-        .replace("{hour_index}", now.hour.toString())
-        .replace("{minute_index}", now.minute.toString())
-        .replace("{second_index}", now.second.toString())
-}
-
-fun String.resolvePathTags(): String {
-    return this
-        .replace(
-            "{Downloads}",
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
-        )
-}
 
 // parse json -> map
 private fun toValue(element: Any) = when (element) {
@@ -508,6 +482,18 @@ object Util {
             true
         } catch (exception: IllegalArgumentException) {
             false
+        }
+    }
+
+    // extract "abc" from "https://www.abc.com/...."
+    fun extractDomainName(url: String): String? {
+        return try {
+            val uri = Uri.parse(url)
+            val host = uri.host ?: return null
+            val domain = host.split('.').takeLast(2).joinToString(".")
+            domain
+        } catch (_: Exception) {
+            null
         }
     }
 }

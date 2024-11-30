@@ -221,6 +221,7 @@ fun NumberInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
+    helpTooltipId: Int? = null,
 ) {
     // Code learned from the built-in BasicTextField.kt
     var state by remember {
@@ -277,14 +278,19 @@ fun NumberInputBox(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
         trailingIcon = {
-            if (lastText.isNotEmpty()) {
-                IconButton(
-                    onClick = {
-                        state = TextFieldValue()
-                        lastText = ""
-                        onValueChange(null, true)
-                    }) {
-                    GreyIcon16(R.drawable.ic_clear)
+            RowVCenter {
+                if (lastText.isNotEmpty()) {
+                    IconButton(
+                        onClick = {
+                            state = TextFieldValue()
+                            lastText = ""
+                            onValueChange(null, true)
+                        }) {
+                        GreyIcon16(R.drawable.ic_clear)
+                    }
+                }
+                helpTooltipId?.let {
+                    BalloonQuestionMark(LocalContext.current.getString(it))
                 }
             }
         }
@@ -300,6 +306,7 @@ fun StrInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
+    helpTooltipId: Int? = null,
 
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
@@ -333,18 +340,23 @@ fun StrInputBox(
         maxLines = maxLines,
         placeholder = placeholder,
         leadingIcon = leadingIconId?.let {
-            { ResIcon(iconId = it, modifier = M.size(18.dp)) }
+            { GreyIcon18(it) }
         },
         keyboardOptions = KeyboardOptions(),
         trailingIcon = {
-            if (lastText.isNotEmpty()) {
-                IconButton(
-                    onClick = {
-                        state = TextFieldValue()
-                        lastText = ""
-                        onValueChange("")
-                    }) {
-                    GreyIcon16(R.drawable.ic_clear)
+            RowVCenter {
+                if (lastText.isNotEmpty()) {
+                    IconButton(
+                        onClick = {
+                            state = TextFieldValue()
+                            lastText = ""
+                            onValueChange("")
+                        }) {
+                        GreyIcon16(R.drawable.ic_clear)
+                    }
+                }
+                helpTooltipId?.let {
+                    BalloonQuestionMark(LocalContext.current.getString(it))
                 }
             }
         }
@@ -360,7 +372,8 @@ fun RegexInputBox(
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
-    leadingIcon: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
+    helpTooltipId: Int? = null,
 ) {
     val ctx = LocalContext.current
 
@@ -475,28 +488,34 @@ fun RegexInputBox(
                 ret
             }
 
-            DropdownWrapper(
-                items = dropdownItems,
-                modifier = M.onGloballyPositioned {
-                    dropdownOffset.value = it.positionOnScreen()
-                }
-            ) { expanded ->
+            RowVCenter {
+                DropdownWrapper(
+                    items = dropdownItems,
+                    modifier = M.onGloballyPositioned {
+                        dropdownOffset.value = it.positionOnScreen()
+                    }
+                ) { expanded ->
 
-                val imdlc = regexFlags.intValue.toFlagStr()
-                val clickableModifier = M.clickable {
-                    expanded.value = true
+                    val imdlc = regexFlags.intValue.toFlagStr()
+                    val clickableModifier = M.clickable {
+                        expanded.value = true
+                    }
+                    if (imdlc == "") {
+                        GreyIcon(
+                            modifier = clickableModifier,
+                            iconId = R.drawable.ic_flags,
+                        )
+                    } else {
+                        Text(
+                            text = imdlc,
+                            color = Color.Magenta,
+                            modifier = clickableModifier,
+                        )
+                    }
                 }
-                if (imdlc == "") {
-                    GreyIcon(
-                        modifier = clickableModifier.padding(8.dp),
-                        iconId = R.drawable.ic_flags,
-                    )
-                } else {
-                    Text(
-                        text = imdlc,
-                        color = Color.Magenta,
-                        modifier = clickableModifier,
-                    )
+
+                helpTooltipId?.let {
+                    BalloonQuestionMark(LocalContext.current.getString(it))
                 }
             }
         }

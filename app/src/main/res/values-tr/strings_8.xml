@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">Otomatik Yedekleme</string>
 
     <string name="action_cleanup_history">Geçmişi Temizle</string>
-    <string name="action_http_download">HTTP İndir</string>
+    <string name="action_http_request">HTTP İsteği</string>
     <string name="action_cleanup_spam_db">Spam Veritabanını Temizle</string>
     <string name="action_backup_export">Yedekleme Dışa Aktarımı</string>
     <string name="action_backup_import">Yedekleme İçe Aktarımı</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        HTTP indirme dosyası <u>bayt olarak</u>
+        HTTP verilerini <u>içerik baytları</u> olarak indir
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Spam veritabanından süresi dolmuş numaraları sil.</string>

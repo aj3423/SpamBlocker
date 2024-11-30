@@ -61,6 +61,7 @@ class PhoneNumber(private val ctx: Context, private val rawNumber: String) {
         }
 
         return codes
+            .distinct()
             .filterNotNull()
             .filter { it.isNotEmpty() }
             .map { it.uppercase() }

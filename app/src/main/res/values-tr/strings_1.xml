@@ -59,4 +59,6 @@
     <string name="recent_apps">Son Uygulama</string>
     <string name="allow_contact">Kişiler</string>
 
+    <string name="number_filter">Numara Kuralı</string>
+    <string name="content_filter">Mesaj Kuralı</string>
 </resources>

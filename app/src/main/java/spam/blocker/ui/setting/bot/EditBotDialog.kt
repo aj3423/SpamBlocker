@@ -27,6 +27,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
@@ -122,28 +123,30 @@ fun EditBotDialog(
                                 enabled = isTurningOn
                             })
                         }
-                        if (enabled) {
-                            LabeledRow(R.string.type) {
-                                val items = defaultSchedules.map {
-                                    LabelItem(
-                                        label = it.label(ctx),
-                                        icon = { GreyIcon16(it.iconId()) }
-                                    ) { menuExpanded ->
-                                        schedule.value = it
-                                        menuExpanded.value = false
+                        AnimatedVisibleV(enabled) {
+                            Column {
+                                LabeledRow(R.string.type) {
+                                    val items = defaultSchedules.map {
+                                        LabelItem(
+                                            label = it.label(ctx),
+                                            icon = { GreyIcon16(it.iconId()) }
+                                        ) { menuExpanded ->
+                                            schedule.value = it
+                                            menuExpanded.value = false
+                                        }
                                     }
+                                    val selected = defaultSchedules.indexOfFirst {
+                                        it::class == schedule.value!!::class
+                                    }
+                                    Spinner(items = items, selected = selected)
                                 }
-                                val selected = defaultSchedules.indexOfFirst {
-                                    it::class == schedule.value!!::class
-                                }
-                                Spinner(items = items, selected = selected)
-                            }
 
-                            val triggerConfigSchedule = rememberSaveable { mutableStateOf(false) }
-                            EditScheduleDialog(trigger = triggerConfigSchedule, schedule)
-                            LabeledRow(R.string.time) {
-                                GreyButton(label = schedule.value!!.summary(ctx)) {
-                                    triggerConfigSchedule.value = true
+                                val triggerConfigSchedule = rememberSaveable { mutableStateOf(false) }
+                                EditScheduleDialog(trigger = triggerConfigSchedule, schedule)
+                                LabeledRow(R.string.time) {
+                                    GreyButton(label = schedule.value!!.summary(ctx)) {
+                                        triggerConfigSchedule.value = true
+                                    }
                                 }
                             }
                         }
@@ -157,7 +160,7 @@ fun EditBotDialog(
                 ) {
                     Column(modifier = M.fillMaxWidth()) {
                         // Action Header
-                        ActionHeader(actions = actions)
+                        ActionHeader(currentActions = actions)
 
                         // Action List
                         ActionList(actions = actions)

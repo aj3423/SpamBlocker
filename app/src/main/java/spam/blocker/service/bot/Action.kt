@@ -14,7 +14,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
+import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.util.ILogger
 import spam.blocker.util.IPermission
 import spam.blocker.util.IntentPermission
 import spam.blocker.util.NormalPermission
@@ -22,10 +24,10 @@ import spam.blocker.util.Permissions
 
 // When adding a new IAction type, follow all the steps:
 //  - implement it in Actions.kt
-//  - add to  `defaultActions`
+//  - add to  `botActions` / `apiActions`
 //  - add to  `botModule` in BotSerializersModule.kt
 
-val defaultActions = listOf(
+val botActions = listOf(
     HttpDownload(),
     ImportToSpamDB(),
     CleanupSpamDB(),
@@ -45,6 +47,12 @@ val defaultActions = listOf(
     EnableApp(),
 )
 
+val apiActions = listOf(
+    ParseIncomingNumber(),
+    HttpDownload(),
+    ParseQueryResult(),
+)
+
 
 // A list represents all input/output types, which is used to check whether two items are chainable.
 enum class ParamType {
@@ -52,18 +60,33 @@ enum class ParamType {
     String,
     ByteArray,
     RuleList,
+    InstantQueryResult,
 }
 
-data class ActionParam(
-    val workTag: String,
-    val input: Any?,
+data class ActionContext(
+    // the error reason when it fails
+    var logger: ILogger? = null,
+
+    // the output of the previous action
+    var lastOutput: Any? = null,
+
+    // for bot only
+    var workTag: String? = null,
+
+    // for api only
+    // Set by the caller before executing the actions, it will be read by Action `ParseIncomingNumber`
+    var rawNumber: String? = null,
+    // The action `ParseIncomingNumber` will parse the rawNumber and fill these values,
+    //  they will be used in `HttpDownload`
+    var cc: String? = null,
+    var domestic: String? = null,
 )
 
 interface IAction {
     // When it succeeds, it returns: <true, output>
     //   the output will be used as the input `param` for the next Action
     // When it fails, it returns: <false, errorReasonString>
-    fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?>
+    fun execute(ctx: Context, aCtx: ActionContext): Boolean
 
     // It returns a list of missing permissions.
     fun missingPermissions(ctx: Context): List<IPermission>
@@ -72,7 +95,8 @@ interface IAction {
     fun label(ctx: Context): String
 
     // A brief string showing current settings
-    fun summary(ctx: Context): String
+    @Composable
+    fun Summary()
 
     // Explains what this action does, used in balloon tooltip
     fun tooltip(ctx: Context): String
@@ -108,8 +132,9 @@ interface IPermissiveAction : IAction {
 // Actions that require file read/write permissions
 interface IFileAction : IAction {
     override fun missingPermissions(ctx: Context): List<IPermission> {
-        if( Permissions.isFileReadPermissionGranted(ctx) &&
-                Permissions.isFileWritePermissionGranted(ctx)) {
+        if (Permissions.isFileReadPermissionGranted(ctx) &&
+            Permissions.isFileWritePermissionGranted(ctx)
+        ) {
             return listOf()
         } else {
             return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
@@ -216,25 +241,19 @@ fun List<IAction>.allChainable(): Boolean {
 }
 
 // Return value:
-//  - null, all success
-//  - String, the error reason when it fails.
+//  - Boolean, succeeded or failed
 fun List<IAction>.executeAll(
     ctx: Context,
-    workTag: String = "", // empty when Testing
-): String? {
-    var lastRet: Any? = null
-
+    aCtx: ActionContext,
+): Boolean {
     // Run until any action fails
     val anyError = this.any {
-        val (succeeded, output) = it.execute(ctx, ActionParam(
-            workTag = workTag,
-            input = lastRet,
-        ))
-        lastRet = output
+        val succeeded = it.execute(ctx, aCtx)
+
         !succeeded
     }
-    return if (anyError)
-        lastRet as String
-    else
-        null
+    if (anyError) {
+        aCtx.logger?.error(ctx.getString(R.string.failed))
+    }
+    return !anyError
 }

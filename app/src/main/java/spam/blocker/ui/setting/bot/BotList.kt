@@ -32,6 +32,7 @@ import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
@@ -123,9 +124,8 @@ fun BotList() {
 
     val exportTrigger = remember { mutableStateOf(false) }
     if (exportTrigger.value) {
-        BotImportExportDialog(
+        ConfigExportDialog(
             trigger = exportTrigger,
-            isExport = true,
             initialText = botPrettyJson.encodeToString(vm.bots[clickedIndex]),
         )
     }

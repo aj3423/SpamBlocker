@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.api.ApiHeader
+import spam.blocker.ui.setting.api.ApiList
 import spam.blocker.ui.setting.bot.BotHeader
 import spam.blocker.ui.setting.bot.BotList
 import spam.blocker.ui.setting.misc.About
@@ -164,6 +166,22 @@ fun SettingScreen() {
                                     RuleSearchBox(vm3)
                                     RuleList(vm3)
                                 }
+                            }
+                        }
+                    }
+
+                    Section(
+                        title = Str(R.string.instant_query),
+                        horizontalPadding = 8
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(0.dp),
+                        ) {
+                            // Api list
+                            LaunchedEffect(true) { G.apiVM.reload(ctx) }
+                            ApiHeader(G.apiVM)
+                            AnimatedVisibleV(!G.apiVM.listCollapsed.value) {
+                                ApiList()
                             }
                         }
                     }

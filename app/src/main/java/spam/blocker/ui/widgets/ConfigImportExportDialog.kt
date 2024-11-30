@@ -1,4 +1,4 @@
-package spam.blocker.ui.setting.bot
+package spam.blocker.ui.widgets
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -9,33 +9,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.Bot
-import spam.blocker.db.BotTable
-import spam.blocker.service.bot.botJson
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.ResIcon
-import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.StrInputBox
-import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Clipboard
-import java.util.UUID
+import spam.blocker.util.Lambda1
 
 @Composable
-fun BotImportExportDialog(
+fun ConfigImportDialog(
     trigger: MutableState<Boolean>,
-    initialText: String,
-    isExport: Boolean,
+    applyContent: Lambda1<String>,
 ) {
-    val ctx = LocalContext.current
-
     if (trigger.value) {
 
-        var text by remember { mutableStateOf(initialText) }
+        var text by remember { mutableStateOf("") }
 
         var succeeded by remember { mutableStateOf(false) }
 
@@ -66,37 +53,51 @@ fun BotImportExportDialog(
         PopupDialog(
             trigger = trigger,
             buttons = {
-                if (isExport) { // Export
+                    StrokeButton(
+                        label = Str(R.string.import_),
+                        color = Teal200
+                    ) {
+                        succeeded = try {
+                            applyContent(text)
+                            true
+                        } catch (_: Exception) {
+                            false
+                        }
+                        importResultTrigger.value = true
+                    }
+            }
+        ) {
+            StrInputBox(
+                label = { GreyLabel(Str(R.string.config_text)) },
+                text = text,
+                maxLines = 20,
+                onValueChange = {
+                    text = it
+                }
+            )
+        }
+    }
+}
+@Composable
+fun ConfigExportDialog(
+    trigger: MutableState<Boolean>,
+    initialText: String,
+) {
+    val ctx = LocalContext.current
+
+    if (trigger.value) {
+
+        var text by remember { mutableStateOf(initialText) }
+
+        PopupDialog(
+            trigger = trigger,
+            buttons = {
                     StrokeButton(
                         label = Str(R.string.copy),
                         color = Teal200
                     ) {
                         Clipboard.copy(ctx, text)
                     }
-                } else { // Import
-                    StrokeButton(
-                        label = Str(R.string.import_),
-                        color = Teal200
-                    ) {
-                        try {
-                            val newBot = botJson.decodeFromString<Bot>(text).copy(
-                                id = 0,
-                                enabled = false,
-                                workUUID = UUID.randomUUID().toString(),
-                            )
-                            
-                            // 1. add to db
-                            BotTable.addNewRecord(ctx, newBot)
-                            // 2. reload UI
-                            G.botVM.reload(ctx)
-
-                            succeeded = true
-                        } catch (e: Exception) {
-                            succeeded = false
-                        }
-                        importResultTrigger.value = true
-                    }
-                }
             }
         ) {
             StrInputBox(

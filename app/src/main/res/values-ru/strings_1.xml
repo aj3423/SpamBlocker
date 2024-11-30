@@ -59,4 +59,6 @@
     <string name="recent_apps"><short>Недавние приложения</short></string>
     <string name="allow_contact">Контакты</string>
 
+    <string name="number_filter">Правило номера</string>
+    <string name="content_filter">Правило сообщения</string>
 </resources>

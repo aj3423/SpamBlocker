@@ -57,17 +57,7 @@ fun ActionCard(
                 )
 
                 // Summary
-                val summary = action.summary(ctx)
-                if (summary.isNotEmpty()) {
-                    Text(
-                        text = summary,
-                        fontSize = 13.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        color = C.textGrey,
-                        modifier = M.padding(start = 10.dp),
-                    )
-                }
+                action.Summary()
             }
             // Reorder Icon
             GreyIcon(iconId = R.drawable.ic_reorder)

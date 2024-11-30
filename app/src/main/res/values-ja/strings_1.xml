@@ -59,4 +59,6 @@
     <string name="recent_apps"><short>最近のアプリ</short></string>
     <string name="allow_contact">連絡先</string>
 
+    <string name="number_filter">電話番号ルール</string>
+    <string name="content_filter">メッセージルール</string>
 </resources>

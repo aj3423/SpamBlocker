@@ -1,0 +1,114 @@
+<resources>
+    <string name="automatic">Auto</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Query the incoming number online in real time, multiple API endpoints will be queried simultaneously.<br>
+        <br>
+        It only applies to calls, not to SMS messages.<br>
+        <br>
+        It will only be triggered when the call passes all other rules.<br>
+        <br>
+        <font color="#ea86ff"><b>Priority: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Instant Query</string>
+    <string name="negative_identifier">Negative Identifier</string>
+    <string name="hint_negative_identifier">
+        E.g.: (\"valid\":false)
+    </string>
+    <string name="help_negative_identifier">
+        It will be identified as spam number if this regex pattern is found in the result.
+    </string>
+    <string name="positive_identifier">Positive Identifier</string>
+    <string name="hint_positive_identifier">
+        E.g.: (\"valid\":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Optional.<br>
+        It will be identified as non-spam number if this regex pattern is found in the result, it\'s optional.<br>
+        <br>
+        Usually this is <b>unnecessary</b>, some API providers will identify unknown numbers as non-spam,
+        only use this when the API is really accurate.
+        ]]>
+    </string>
+    <string name="category_identifier">Category Identifier</string>
+    <string name="hint_category_identifier">
+        E.g.: \"type\":\"(.+?)\"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Optional. <br>
+        Once a number is identified, this regex will be used to extract its category(telemarketing, fishing, etc).
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">Parse Query Result</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Parse the HTTP result, the number will be identified as a spam if the result contains a particular regex pattern.<br>
+        An extra regex pattern will be used to extract the spam category from the result, if there is any.
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">Parse Incoming Number</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        The incoming call number will be parsed into different tags:<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; The leading country code.<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; The domestic part.<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; The full number, which is equivalent to the concatenation of the above two.<br>
+        <br>
+        These tags will be used to build the HTTP URL, for example:<br>
+        <br>
+        1. For international number like <b>+122222</b>, these are equivalent.<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        It will be parsed to: https://test.com/number=<b>122222</b><br>
+        <br>
+        2. For domestic number like <b>12345</b>, you need to provide the country code in the settings,
+        or let the app detect it automatically.<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">Auto Detect Country Code</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        Enable this if you often travel internationally,
+        the country code will be detected automatically when it changes.<br>
+        <br>
+        It requires permission READ_PHONE_STATE.
+        ]]>
+    </string>
+    <string name="country_code">Country Code</string>
+    <string name="fixed_country_code">Fixed CC</string>
+    <string name="api_services">API Services</string>
+    <string name="query_timeout">Query Timeout</string>
+    <string name="help_query_timeout">
+        Android\'s call screening feature has a 5-second response time limit,
+        this app uses 4 seconds by default, leaving 1 second for other rules.
+        Timed-out requests will be discarded.
+    </string>
+    <string name="international_only">International Only</string>
+    <string name="help_international_only">
+        <![CDATA[
+        Most APIs require the country code.<br>
+        <br>
+        - <b>When enabled</b>:<br>
+        &ensp; It will only check international numbers that start with "+", domestic numbers
+        will be ignored.<br>
+        <br>
+        - <b>When disabled</b>:<br>
+        &ensp; It will also check domestic numbers, you will need to set a fixed country code,
+        or let it detect automatically.
+        ]]>
+    </string>
+    <string name="checking_template">Checking: %s</string>
+    <string name="skip_for_testing">Skip for testing.</string>
+    <string name="allowed_by">Allowed by: %s</string>
+    <string name="blocked_by">Blocked by: %s</string>
+    <string name="outside_time_schedule">Outside time schedule, skip.</string>
+    <string name="android_ver_lower_than_11">Android version is lower than 11, skip.</string>
+</resources>

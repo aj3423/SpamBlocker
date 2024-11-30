@@ -5,8 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import spam.blocker.db.HistoryRecord
 import spam.blocker.ui.widgets.FabWrapper
 
 

@@ -19,10 +19,8 @@ import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FlowRowSpaced
-import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LongPressButton
-import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str

@@ -15,6 +15,7 @@ import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
+import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
@@ -24,11 +25,11 @@ import spam.blocker.util.Util
 import spam.blocker.util.logd
 import android.telecom.Call as TelecomCall
 
-fun TelecomCall.Details.getRawNumber():String {
+fun TelecomCall.Details.getRawNumber(): String {
     var rawNumber = ""
     if (handle != null) {
         rawNumber = handle.schemeSpecificPart
-    } else if (gatewayInfo?.originalAddress != null){
+    } else if (gatewayInfo?.originalAddress != null) {
         rawNumber = gatewayInfo?.originalAddress?.schemeSpecificPart!!
     } else if (intentExtras != null) {
         var uri = intentExtras.getParcelable<Uri>(TelecomManager.EXTRA_INCOMING_CALL_ADDRESS)
@@ -48,6 +49,7 @@ class CallScreeningService : CallScreeningService() {
         val builder = CallResponse.Builder()
         respondToCall(details, builder.build())
     }
+
     private fun reject(details: TelecomCall.Details) {
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
@@ -58,6 +60,7 @@ class CallScreeningService : CallScreeningService() {
         }
         respondToCall(details, builder.build())
     }
+
     private fun silence(details: TelecomCall.Details) {
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
@@ -68,6 +71,7 @@ class CallScreeningService : CallScreeningService() {
         }
         respondToCall(details, builder.build())
     }
+
     private fun answerThenHangUp(rawNumber: String, details: TelecomCall.Details) {
         // save number and time to shared pref, it will be read soon in CallStateReceiver
         Temporary(this).setLastCallToBlock(
@@ -94,12 +98,12 @@ class CallScreeningService : CallScreeningService() {
 
         val rawNumber = details.getRawNumber()
 
-        val r = processCall(this, rawNumber, details)
+        val r = processCall(this, null, rawNumber, details)
 
         if (r.shouldBlock) {
             val blockType = getBlockType(r) // reject / silence / answer+hangup
 
-            when(blockType) {
+            when (blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
                 Def.BLOCK_TYPE_ANSWER_AND_HANGUP -> answerThenHangUp(rawNumber, details)
                 else -> reject(details)
@@ -119,23 +123,30 @@ class CallScreeningService : CallScreeningService() {
         }
     }
 
-    fun processCall(ctx: Context, rawNumber: String, callDetails: TelecomCall.Details? = null) : CheckResult {
+    fun processCall(
+        ctx: Context,
+        logger: ILogger?, // for showing detailed steps to logcat or for testing purpose
+        rawNumber: String,
+        callDetails: TelecomCall.Details? = null,
+    ): CheckResult {
         // 0. check the number with all rules, get the result
-        val r = Checker.checkCall(ctx, rawNumber, callDetails)
+        val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
 
         // 1. log to db
-        val isLogEnabled = HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
-        val recordId = if (isLogEnabled) {
-            CallTable().addNewRecord(ctx, HistoryRecord(
-                peer = rawNumber,
-                time = System.currentTimeMillis(),
-                result = r.result,
-                reason = r.reason(),
-            ))
+        val isDbLogEnabled = HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
+        val recordId = if (isDbLogEnabled) {
+            CallTable().addNewRecord(
+                ctx, HistoryRecord(
+                    peer = rawNumber,
+                    time = System.currentTimeMillis(),
+                    result = r.result,
+                    reason = r.reason(),
+                )
+            )
         } else 0
 
         // 2. broadcast the call to add a new item in history page
-        if (isLogEnabled) {
+        if (isDbLogEnabled) {
             Events.onNewCall.fire(recordId)
         }
 
@@ -156,15 +167,18 @@ class CallScreeningService : CallScreeningService() {
             }.setAction("action_call")
 
             val toCopy = Checker.checkQuickCopy(
-                ctx, rawNumber, null, true, true)
+                ctx, rawNumber, null, true, true
+            )
 
-            Notification.show(ctx, R.drawable.ic_call_blocked,
+            Notification.show(
+                ctx, R.drawable.ic_call_blocked,
                 title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
                 body = Checker.resultStr(ctx, r.result, r.reason()),
                 importance = importance,
                 color = Salmon,
                 intent = intent,
-                toCopy = toCopy)
+                toCopy = toCopy
+            )
         }
 
         return r

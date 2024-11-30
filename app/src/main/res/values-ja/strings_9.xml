@@ -2,19 +2,16 @@
     <string name="contact_rule">連絡先ルール</string>
     <string name="directory">ディレクトリ</string>
     <string name="filename">ファイル名</string>
-    <string name="invalid_input_type">無効な入力タイプ、期待値: %s、取得値: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">有効期限（日）</string>
     <string name="column_mapping">列マッピング</string>
     <string name="include_spam_db">スパムデータベースを含める</string>
-    <string name="configuration_only">設定のみ</string>
     <string name="no_config_needed">設定不要</string>
     <string name="success">成功</string>
     <string name="failed">失敗</string>
     <string name="running">実行中</string>
     <string name="optional">(オプション)</string>
 
-    <string name="run_execute">実行</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>テスト</b></font><br>
@@ -22,13 +19,7 @@
         <br>
         - <font color="#00BFFF"><b>新規</b></font><br>
             新しいアクションを作成します。複数のアクションを連結して、複雑なタスクを完了させることができます。<br>
-            アイテム間の緑または赤のドットは、連結可能かどうかを示しています。<br>
-            <br>
-            ワークフローの例：<br>
-            <br>
-            &emsp; - httpからファイルダウンロード -> 7z形式をデコード -> csv形式として解析 -> スパムデータベースにインポート。<br>
-            <br>
-            &emsp; - 勤務日には設定Aを適用し、週末には設定Bを適用します。<br>
+            アイテム間の緑または赤のドットは、連結可能かどうかを示しています。
         ]]>
     </string>
 
@@ -82,7 +73,6 @@
         ]]>
     </string>
 
-    <string name="one_off">ワンタイム</string>
     <string name="action_enable_workflow">ワークフローを有効にする</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

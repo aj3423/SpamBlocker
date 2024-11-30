@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 import spam.blocker.ui.theme.LocalPalette
 
 @Composable
@@ -15,6 +17,8 @@ fun GreyLabel(
     color: Color = LocalPalette.current.textGrey,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontWeight: FontWeight? = null,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Clip,
 ) {
     Text(
         text = text,
@@ -22,6 +26,19 @@ fun GreyLabel(
         color = color,
         fontSize = fontSize,
         fontWeight = fontWeight,
+        maxLines = maxLines,
+        overflow = overflow,
+    )
+}
+@Composable
+fun SummaryLabel(
+    text: String,
+) {
+    GreyLabel(
+        text = text,
+        fontSize = 13.sp,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
     )
 }
 

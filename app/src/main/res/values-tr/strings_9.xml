@@ -2,19 +2,16 @@
     <string name="contact_rule">İletişim Kuralı</string>
     <string name="directory">Dizin</string>
     <string name="filename">DosyaAdı</string>
-    <string name="invalid_input_type">Geçersiz girdi türü, bekleniyor: %s, aldı: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Son Kullanım Günleri</string>
     <string name="column_mapping">Sütun Eşleştirme</string>
     <string name="include_spam_db">Spam Veritabanını Dahil Et</string>
-    <string name="configuration_only">Sadece Yapılandırma</string>
     <string name="no_config_needed">Yapılandırma gerekmez</string>
     <string name="success">Başarılı</string>
     <string name="failed">Başarısız</string>
     <string name="running">Çalışıyor</string>
     <string name="optional">(isteğe bağlı)</string>
 
-    <string name="run_execute">Çalıştır</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Test</b></font><br>
@@ -23,13 +20,7 @@
         <br>
         - <font color="#00BFFF"><b>Yeni</b></font><br>
             Yeni bir eylem oluşturun, birden fazla eylem bir araya getirilerek karmaşık bir görevi tamamlayabilir.<br>
-            Öğeler arasındaki yeşil veya kırmızı noktalar, bunların engellenebilir olup olmadığını gösterir.<br>
-            <br>
-            Bazı örnek iş akışları: <br>
-            <br>
-            &emsp; - http ile dosya indir -> 7z formatını çöz -> csv formatında ayrıştır -> spam veritabanına aktar.<br>
-            <br>
-            &emsp; - İş günlerinde ayar A\'yı uygula ve hafta sonlarında ayar B\'yi uygula.<br>
+            Öğeler arasındaki yeşil veya kırmızı noktalar, bunların engellenebilir olup olmadığını gösterir.
         ]]>
     </string>
 
@@ -62,7 +53,6 @@
         &ensp; Yedek dosyasına spam veritabanını dahil etmek, veritabanının düzenli olarak güncelleneceğinden boyutunu önemli ölçüde artıracaktır, bu genellikle başka bir telefona klonlamak istemediğiniz sürece gereksizdir.<br>
         ]]>
     </string>
-    <string name="one_off">Tek seferlik</string>
     <string name="mode">Mod</string>
     <string name="help_regex_action_add_mode">
         <![CDATA[

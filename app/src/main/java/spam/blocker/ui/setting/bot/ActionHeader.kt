@@ -1,92 +1,107 @@
 package spam.blocker.ui.setting.bot
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.IAction
+import spam.blocker.service.bot.botActions
 import spam.blocker.service.bot.clone
-import spam.blocker.service.bot.defaultActions
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.M
-import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonQuestionMark
+import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.LabelItem
-import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda
+import spam.blocker.util.TextLogger
+
 
 @Composable
 fun TestActionButton(
-    actions: SnapshotStateList<IAction>
+    actions: SnapshotStateList<IAction>,
+    testingRequireNumber: Boolean = false, // testing InstantQuery requires a number
 ) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
-    val trigger = rememberSaveable { mutableStateOf(false) }
 
-    var finished by rememberSaveable { mutableStateOf(false) }
-    var error by rememberSaveable { mutableStateOf<String?>(null) }
+    var logStr = remember { mutableStateOf(buildAnnotatedString {}) }
 
+    // Log output dialog
+    val logTrigger = rememberSaveable { mutableStateOf(false) }
     PopupDialog(
-        trigger = trigger,
+        trigger = logTrigger,
     ) {
-        Text(
-            text = if (finished) {
-                if (error == null) {
-                    Str(R.string.success)
-                } else {
-                    Str(R.string.failed) + ": " + error
-                }
-            } else {
-                Str(R.string.running)
-            },
-            color = if (!finished) {
-                C.textGrey
-            } else {
-                if (error == null) C.pass else C.block
+        Text(text = logStr.value)
+    }
+
+    val coroutine = rememberCoroutineScope()
+    fun testActions(
+        rawNumber: String? = null,
+    ) {
+        logTrigger.value = true
+        logStr.value = buildAnnotatedString {} // clear previous log
+
+        coroutine.launch {
+            withContext(Dispatchers.IO) {
+                val aCtx = ActionContext(
+                    logger = TextLogger(logStr, C),
+                    rawNumber = rawNumber
+                )
+                actions.executeAll(ctx, aCtx)
+            }
+        }
+    }
+
+    // Input number dialog for InstantQuery
+    val inputNumberTrigger = rememberSaveable { mutableStateOf(false) }
+    PopupDialog(
+        trigger = inputNumberTrigger,
+        buttons = {
+            StrokeButton(label = Str(R.string.ok), color = Teal200) {
+                testActions(G.testingVM.phone.value)
+            }
+        }
+    ) {
+        StrInputBox(
+            text = G.testingVM.phone.value,
+            label = { GreyLabel(Str(R.string.phone_number))},
+            placeholder = { DimGreyLabel("+12223334444") },
+            onValueChange = {
+                G.testingVM.phone.value = it
             }
         )
     }
 
-    val coroutine = rememberCoroutineScope()
     StrokeButton(label = Str(R.string.test), color = Teal200) {
-        trigger.value = true
-
-        finished = false
-        error = null
-
-        coroutine.launch {
-            withContext(Dispatchers.IO) {
-                error = actions.executeAll(ctx)
-                finished = true
-            }
+        if (testingRequireNumber) {
+            inputNumberTrigger.value = true
+        } else {
+            testActions()
         }
     }
 }
@@ -116,18 +131,20 @@ fun ActionPresetCard(
 
 @Composable
 fun ActionHeader(
-    actions: SnapshotStateList<IAction>
+    currentActions: SnapshotStateList<IAction>,
+    availableActions: List<IAction> = botActions,
+    testingRequireNumber: Boolean = false,
 ) {
     val trigger = remember { mutableStateOf(false) }
     PopupDialog(
         trigger = trigger,
     ) {
-        defaultActions.map { action ->
+        availableActions.map { action ->
             ActionPresetCard(
                 action = action,
                 onClick = {
                     val newAction = action.clone()
-                    actions.add(newAction)
+                    currentActions.add(newAction)
                     trigger.value = false
                 }
             )
@@ -144,7 +161,10 @@ fun ActionHeader(
             BalloonQuestionMark(Str(R.string.help_action_header))
 
             // Test
-            TestActionButton(actions = actions)
+            TestActionButton(
+                actions = currentActions,
+                testingRequireNumber = testingRequireNumber,
+            )
 
             // New
             StrokeButton(

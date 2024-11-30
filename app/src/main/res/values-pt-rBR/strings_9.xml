@@ -2,19 +2,16 @@
     <string name="contact_rule">Regra de Contato</string>
     <string name="directory">Diretório</string>
     <string name="filename">Nome do Arquivo</string>
-    <string name="invalid_input_type">Tipo de entrada inválido, esperado: %s, obtido: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Dias de Validade</string>
     <string name="column_mapping">Mapeamento de Colunas</string>
     <string name="include_spam_db">Incluir Banco de Dados de <translate>Spam</translate></string>
-    <string name="configuration_only">Somente Configuração</string>
     <string name="no_config_needed">Não precisa de configuração</string>
     <string name="success">Sucesso</string>
     <string name="failed">Falha</string>
     <string name="running">Em execução</string>
     <string name="optional">(opcional)</string>
 
-    <string name="run_execute">Executar</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Teste</b></font><br>
@@ -23,13 +20,7 @@
         <br>
         - <font color="#00BFFF"><b>Novo</b></font><br>
             Crie uma nova ação, várias ações podem ser encadeadas para completar uma tarefa complexa.<br>
-            Esses pontos verdes ou vermelhos entre os itens indicam se eles são encadeáveis ou não.<br>
-            <br>
-            Alguns exemplos de fluxos de trabalho: <br>
-            <br>
-            &emsp; - baixar arquivo http -> decodificar formato 7z -> analisar como formato csv -> importar para o banco de dados de <translate>spam</translate>.<br>
-            <br>
-            &emsp; - aplicar as configurações A nos dias úteis e as configurações B no fim de semana.<br>
+            Esses pontos verdes ou vermelhos entre os itens indicam se eles são encadeáveis ou não.
         ]]>
     </string>
 
@@ -87,7 +78,6 @@
         ]]>
     </string>
 
-    <string name="one_off">Uma Vez</string>
     <string name="action_enable_workflow">Habilitar Fluxo de Trabalho</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

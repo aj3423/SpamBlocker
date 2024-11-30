@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
-import org.json.JSONObject
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.ui.theme.Salmon
@@ -19,10 +18,8 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.util.CSVParser
-import spam.blocker.util.Csv
 import spam.blocker.util.Lambda
 import spam.blocker.util.Util
-import spam.blocker.util.toStringMap
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader

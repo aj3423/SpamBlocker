@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">Auto Backup</string>
 
     <string name="action_cleanup_history">Clean up History</string>
-    <string name="action_http_download">HTTP Download</string>
+    <string name="action_http_request">HTTP Request</string>
     <string name="action_cleanup_spam_db">Cleanup Spam Database</string>
     <string name="action_backup_export">Backup Export</string>
     <string name="action_backup_import">Backup Import</string>
@@ -71,7 +71,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        HTTP download file as <u>content bytes</u>
+        HTTP download data as <u>content bytes</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Delete expired numbers from spam database.</string>

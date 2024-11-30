@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">自動バックアップ</string>
 
     <string name="action_cleanup_history"><translate>履歴をクリーンアップ</translate></string>
-    <string name="action_http_download">HTTPダウンロード</string>
+    <string name="action_http_request">HTTPリクエスト</string>
     <string name="action_cleanup_spam_db"><translate>スパムデータベースをクリーンアップ</translate></string>
     <string name="action_backup_export">バックアップエクスポート</string>
     <string name="action_backup_import">バックアップインポート</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        <u>コンテンツバイト</u>としてHTTPダウンロードファイル
+        HTTPデータ(<u>バイト列</u>)のダウンロード
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db"><translate>スパムデータベースから期限切れの番号を削除します。</translate></string>

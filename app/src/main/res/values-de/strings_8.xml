@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">Automatische Sicherung</string>
 
     <string name="action_cleanup_history">Verlauf bereinigen</string>
-    <string name="action_http_download">HTTP-Download</string>
+    <string name="action_http_request">HTTP-Anfrage</string>
     <string name="action_cleanup_spam_db">Spam-Datenbank bereinigen</string>
     <string name="action_backup_export">Sicherung exportieren</string>
     <string name="action_backup_import">Sicherung importieren</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        HTTP-Download-Datei als <u>Inhaltsbytes</u>
+        HTTP-Daten als <u>Inhaltsbytes</u> herunterladen
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Abgelaufene Telefonnummern aus der Spam-Datenbank löschen.</string>

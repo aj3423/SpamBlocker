@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">Автоматичне резервне копіювання</string>
 
     <string name="action_cleanup_history">Очистити історію</string>
-    <string name="action_http_download">Завантаження по HTTP</string>
+    <string name="action_http_request">HTTP запит</string>
     <string name="action_cleanup_spam_db">Очистити спам-базу даних</string>
     <string name="action_backup_export">Експорт резервної копії</string>
     <string name="action_backup_import">Імпорт резервної копії</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        Завантажити файл по HTTP як <u>байти вмісту</u>
+        Завантажити дані HTTP як <u>байти вмісту</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Видалити застарілі номери зі спам-бази даних.</string>

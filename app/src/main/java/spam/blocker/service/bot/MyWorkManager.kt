@@ -10,6 +10,7 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import spam.blocker.db.BotTable
 import spam.blocker.def.Def
+import spam.blocker.util.AdbLogger
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import java.util.concurrent.TimeUnit
@@ -38,8 +39,13 @@ class MyWorker(
     private fun runActions() {
         val actions = getActionsConfig().parseActions()
 
-        logi("execute actions: ${actions.map { it.label(ctx) + ": " + it.summary(ctx) }}")
-        actions.executeAll(ctx, getWorkTag())
+        logi("execute actions: ${actions.map { it.label(ctx) }}")
+
+        val aCtx = ActionContext(
+            logger = AdbLogger(),
+            workTag = getWorkTag(),
+        )
+        actions.executeAll(ctx, aCtx)
     }
 
     private fun getWorkTag(): String {

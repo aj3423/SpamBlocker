@@ -10,10 +10,12 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
+import spam.blocker.service.bot.botJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.ConfigImportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
@@ -21,6 +23,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
+import java.util.UUID
 
 // The row:
 //   "Number Rule"       [Add] [Test]
@@ -48,11 +51,20 @@ fun BotHeader(
 
     val importTrigger = remember { mutableStateOf(false) }
     if (importTrigger.value) {
-        BotImportExportDialog(
+        ConfigImportDialog(
             trigger = importTrigger,
-            initialText = "",
-            isExport = false
-        )
+        ) { configJson ->
+            val newBot = botJson.decodeFromString<Bot>(configJson).copy(
+                id = 0,
+                enabled = false,
+                workUUID = UUID.randomUUID().toString(),
+            )
+
+            // 1. add to db
+            BotTable.addNewRecord(ctx, newBot)
+            // 2. reload UI
+            G.botVM.reload(ctx)
+        }
     }
 
     val dropdownItems = remember {

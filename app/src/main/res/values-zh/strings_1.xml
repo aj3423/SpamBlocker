@@ -59,4 +59,6 @@
     <string name="recent_apps"><short>最近应用</short></string>
     <string name="allow_contact">联系人</string>
 
+    <string name="number_filter">号码规则</string>
+    <string name="content_filter">短信规则</string>
 </resources>

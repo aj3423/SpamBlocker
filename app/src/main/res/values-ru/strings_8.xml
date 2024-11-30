@@ -45,7 +45,7 @@
     <string name="bot_preset_auto_backup">Автоматическое резервное копирование</string>
 
     <string name="action_cleanup_history">Очистить историю</string>
-    <string name="action_http_download">Загрузка по HTTP</string>
+    <string name="action_http_request">HTTP-запрос</string>
     <string name="action_cleanup_spam_db">Очистить базу данных спама</string>
     <string name="action_backup_export">Экспорт резервной копии</string>
     <string name="action_backup_import">Импорт резервной копии</string>
@@ -60,7 +60,7 @@
 
     <string name="help_action_http_download">
         <![CDATA[
-        Загрузить файл по HTTP как <u>байты содержимого</u>
+        HTTP загрузка данных как <u>байты контента</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Удалить просроченные номера из базы данных спама.</string>

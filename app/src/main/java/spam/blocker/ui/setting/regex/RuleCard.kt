@@ -22,7 +22,6 @@ import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon

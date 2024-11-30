@@ -2,19 +2,16 @@
     <string name="contact_rule">联系人规则</string>
     <string name="directory">目录</string>
     <string name="filename">文件名</string>
-    <string name="invalid_input_type">无效的输入类型，预期：%s，得到：%s</string>
     <string name="url">URL</string>
     <string name="expiry_days">过期天数</string>
     <string name="column_mapping">列映射</string>
     <string name="include_spam_db">包含垃圾电话数据库</string>
-    <string name="configuration_only">仅配置</string>
     <string name="no_config_needed">无需配置</string>
     <string name="success">成功</string>
     <string name="failed">失败</string>
     <string name="running">正在运行</string>
     <string name="optional">(可选)</string>
 
-    <string name="run_execute">运行</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>测试</b></font><br>
@@ -23,13 +20,7 @@
         <br>
         - <font color="#00BFFF"><b>新建</b></font><br>
             创建一个新的操作，多个操作可以链接在一起以完成一项复杂的任务。<br>
-            项目之间的绿色或红色点指示它们是否可链接。<br>
-            <br>
-            一些示例工作流程：<br>
-            <br>
-            &emsp; - http 下载文件 -> 解码 7z 格式 -> 解析为 csv 格式 -> 导入到垃圾电话数据库。<br>
-            <br>
-            &emsp; - 在工作日应用设置 A，在周末应用设置 B。<br>
+            项目之间的绿色或红色点指示它们是否可链接。
         ]]>
     </string>
 
@@ -86,7 +77,6 @@
         ]]>
     </string>
 
-    <string name="one_off">一次性</string>
     <string name="action_enable_workflow">启用工作流程</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

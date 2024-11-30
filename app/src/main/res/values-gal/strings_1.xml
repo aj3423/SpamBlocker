@@ -59,4 +59,6 @@
     <string name="recent_apps"><short>Aplicacións recentes</short></string>
     <string name="allow_contact">Contactos</string>
 
+    <string name="number_filter">Regra de Número</string>
+    <string name="content_filter">Regra de Mensaxe</string>
 </resources>

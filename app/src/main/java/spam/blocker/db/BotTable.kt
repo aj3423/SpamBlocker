@@ -6,7 +6,6 @@ import android.content.Context
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
-import spam.blocker.db.Db.Companion.COLUMN_WORK_UUID
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager

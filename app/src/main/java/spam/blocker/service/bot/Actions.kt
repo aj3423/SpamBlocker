@@ -1,7 +1,10 @@
 package spam.blocker.service.bot
 
+import android.Manifest
 import android.content.Context
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -11,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -33,30 +37,41 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon18
+import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
+import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
+import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.CSVParser
-import spam.blocker.util.Csv
+import spam.blocker.util.CountryCode
+import spam.blocker.util.IPermission
+import spam.blocker.util.NormalPermission
 import spam.blocker.util.Now
+import spam.blocker.util.Permissions
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
-import spam.blocker.util.logi
+import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.toMap
@@ -65,9 +80,9 @@ import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
-import java.io.StringReader
 import java.net.HttpURLConnection
 import java.net.URL
+import kotlin.collections.drop
 
 @Composable
 fun NoOptionNeeded() {
@@ -79,27 +94,32 @@ fun NoOptionNeeded() {
 class CleanupHistory(
     var expiry: Int = 90 // days
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
-        logi("now clean up history db, deleting data before timestamp: $expireTimeMs")
+        aCtx.logger?.debug(
+            ctx.getString(R.string.cleaning_up_history_db)
+                .format("$expireTimeMs")
+        )
 
         CallTable().clearRecordsBeforeTimestamp(ctx, expireTimeMs)
         SmsTable().clearRecordsBeforeTimestamp(ctx, expireTimeMs)
 
         Events.historyUpdated.fire()
 
-        return Pair(true, null)
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_cleanup_history)
     }
 
-    override fun summary(ctx: Context): String {
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
         val nDays = ctx.resources.getQuantityString(R.plurals.days, expiry, expiry)
-        return ctx.getString(R.string.expiry) + ": $nDays"
+        SummaryLabel(ctx.getString(R.string.expiry) + ": $nDays")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -135,7 +155,7 @@ class CleanupHistory(
 
 @Serializable
 @SerialName("HttpDownload")
-class HttpDownload(
+open class HttpDownload(
     var url: String = "",
     var header: String = "",
 ) : IPermissiveAction {
@@ -160,30 +180,44 @@ class HttpDownload(
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        var ret: Pair<Boolean, Any?> = Pair(false, null)
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        var ret: Boolean = false
 
         var connection: HttpURLConnection? = null
 
+        val startTime = System.currentTimeMillis()
+
         val thread = GlobalScope.launch(Dispatchers.IO) {
             ret = try {
-                connection = URL(url.resolveTimeTags()).openConnection() as HttpURLConnection
+                val resolvedUrl = url
+                    .resolveTimeTags()
+                    .resolveNumberTag(
+                        cc = aCtx.cc,
+                        domestic = aCtx.domestic,
+                    )
+                aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
+
+                connection = URL(resolvedUrl).openConnection() as HttpURLConnection
                 // Add http headers
                 splitHeader(header).forEach { (key, value) ->
-                    connection!!.setRequestProperty(key, value)
+                    aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: $key -> $value")
+                    connection.setRequestProperty(key, value)
                 }
 
-                connection!!.connect()
+                connection.connect()
 
-                val responseCode = connection!!.responseCode
+                val responseCode = connection.responseCode
                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                    val byteArray = connection!!.inputStream.use { it.readBytes() }
-                    Pair(true, byteArray)
+                    val byteArray = connection.inputStream.use { it.readBytes() }
+                    aCtx.lastOutput = byteArray
+                    true
                 } else {
-                    Pair(false, "HTTP: $responseCode")
+                    aCtx.logger?.error("HTTP: $responseCode")
+                    false
                 }
             } catch (e: Exception) {
-                Pair(false, "$e")
+                aCtx.logger?.error("$e")
+                false
             } finally {
                 connection?.disconnect()
             }
@@ -191,16 +225,22 @@ class HttpDownload(
         runBlocking {
             thread.join()
         }
+        aCtx.logger?.debug(
+            ctx.getString(R.string.time_cost)
+                .format("${System.currentTimeMillis() - startTime}")
+        )
 
         return ret
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_http_download)
+        return ctx.getString(R.string.action_http_request)
     }
 
-    override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.url)}: $url"
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+        SummaryLabel("${ctx.getString(R.string.url)}: $url")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -245,32 +285,40 @@ class HttpDownload(
     }
 }
 
+
 @Serializable
 @SerialName("CleanupSpamDB")
 class CleanupSpamDB(
     var expiry: Int = 1 // days
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
-        logi("clean up spam db, deleting data before timestamp: $expireTimeMs")
-        SpamTable.deleteBeforeTimestamp(ctx, expireTimeMs)
+        val deletedCount = SpamTable.deleteBeforeTimestamp(ctx, expireTimeMs)
+
+        aCtx.logger?.debug(
+            ctx.getString(R.string.cleaning_up_spam_db)
+                .format("$deletedCount", "$expireTimeMs")
+        )
 
         // fire event to update the UI
         Events.spamDbUpdated.fire()
 
-        return Pair(true, null)
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_cleanup_spam_db)
     }
 
-    override fun summary(ctx: Context): String {
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
         val nDays = ctx.resources.getQuantityString(R.plurals.days, expiry, expiry)
-        return ctx.getString(R.string.expiry) + ": $nDays"
+        SummaryLabel(ctx.getString(R.string.expiry) + ": $nDays")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -310,23 +358,29 @@ class CleanupSpamDB(
 class BackupExport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Generate config data bytes
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
         val compressed = compressString(curr.toJsonString())
 
-        return Pair(true, compressed)
+        aCtx.logger?.debug(ctx.getString(R.string.action_backup_export))
+
+        aCtx.lastOutput = compressed
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_backup_export)
     }
 
-    override fun summary(ctx: Context): String {
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
         val yes = ctx.getString(R.string.yes)
         val no = ctx.getString(R.string.no)
-        return ctx.getString(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}"
+        SummaryLabel(ctx.getString(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -352,9 +406,9 @@ class BackupExport(
         var includeDB by remember { mutableStateOf(includeSpamDB) }
 
         LabeledRow(labelId = R.string.include_spam_db) {
-            SwitchBox(includeDB) { isTurningOn ->
-                includeDB = isTurningOn
-                includeSpamDB = isTurningOn
+            SwitchBox(includeDB) { on ->
+                includeDB = on
+                includeSpamDB = on
             }
         }
     }
@@ -366,26 +420,21 @@ class BackupExport(
 class BackupImport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-
-        if (input !is ByteArray) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
 
         try {
             val jsonStr = decompressToString(input)
             val newCfg = Configs.createFromJson(jsonStr)
             newCfg.apply(ctx, includeSpamDB)
 
+            aCtx.logger?.debug(ctx.getString(R.string.action_backup_import))
+
             Events.configImported.fire()
-            return Pair(true, null)
+            return true
         } catch (e: Exception) {
-            return Pair(false, "$e")
+            aCtx.logger?.error("$e")
+            return false
         }
     }
 
@@ -393,10 +442,13 @@ class BackupImport(
         return ctx.getString(R.string.action_backup_import)
     }
 
-    override fun summary(ctx: Context): String {
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
         val yes = ctx.getString(R.string.yes)
         val no = ctx.getString(R.string.no)
-        return ctx.getString(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}"
+        SummaryLabel(ctx.getString(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -422,9 +474,9 @@ class BackupImport(
         var includeDB by remember { mutableStateOf(includeSpamDB) }
 
         LabeledRow(labelId = R.string.include_spam_db) {
-            SwitchBox(includeDB) { isTurningOn ->
-                includeDB = isTurningOn
-                includeSpamDB = isTurningOn
+            SwitchBox(includeDB) { on ->
+                includeDB = on
+                includeSpamDB = on
             }
         }
     }
@@ -437,16 +489,20 @@ class ReadFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val path = dir.resolvePathTags()
 
         val fn = filename.resolveTimeTags()
 
         return try {
+            aCtx.logger?.debug(label(ctx) + ": $path/$fn")
+
             val bytes = Util.readFile(path, fn)
-            Pair(true, bytes)
+            aCtx.lastOutput = bytes
+            true
         } catch (e: Exception) {
-            Pair(false, "ReadFile: $e")
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
@@ -454,8 +510,11 @@ class ReadFile(
         return ctx.getString(R.string.action_read_file)
     }
 
-    override fun summary(ctx: Context): String {
-        return "$dir/$filename"
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
+        SummaryLabel("$dir/$filename")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -499,23 +558,20 @@ class WriteFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (input !is ByteArray) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
+
         val path = dir.resolvePathTags()
         val fn = filename.resolveTimeTags()
 
+        aCtx.logger?.debug(label(ctx) + ": $path/$fn")
+
         return try {
             Util.writeFile(path, fn, input)
-            Pair(true, null)
+            true
         } catch (e: Exception) {
-            Pair(false, "WriteFile: $e")
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
@@ -523,8 +579,9 @@ class WriteFile(
         return ctx.getString(R.string.action_write_file)
     }
 
-    override fun summary(ctx: Context): String {
-        return "$dir/$filename"
+    @Composable
+    override fun Summary() {
+        SummaryLabel("$dir/$filename")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -572,15 +629,8 @@ class ParseCSV(
     var columnMapping: String = "{}"
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (input !is ByteArray) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
 
         return try {
             val csv = CSVParser(
@@ -591,10 +641,13 @@ class ParseCSV(
             val rules = csv.rows.map { row ->
                 RegexRule.fromMap(csv.headers.zip(row).toMap())
             }
+            aCtx.logger?.debug(ctx.getString(R.string.parsed_n_rules).format("${rules.size}"))
 
-            Pair(true, rules)
+            aCtx.lastOutput = rules
+            true
         } catch (e: Exception) {
-            Pair(false, e.toString())
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
@@ -602,8 +655,9 @@ class ParseCSV(
         return ctx.getString(R.string.action_parse_csv)
     }
 
-    override fun summary(ctx: Context): String {
-        return columnMapping
+    @Composable
+    override fun Summary() {
+        SummaryLabel(columnMapping)
     }
 
     override fun tooltip(ctx: Context): String {
@@ -643,24 +697,21 @@ class ParseXML(
     var xpath: String = ""
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (input !is ByteArray) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
 
         return try {
             val rules = Xml.parse(bytes = input, xpath).map {
                 RegexRule.fromMap(it)
             }
 
-            Pair(true, rules)
+            aCtx.logger?.debug(ctx.getString(R.string.parsed_n_rules).format("${rules.size}"))
+
+            aCtx.lastOutput = rules
+            true
         } catch (e: Exception) {
-            Pair(false, e.toString())
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
@@ -668,8 +719,9 @@ class ParseXML(
         return ctx.getString(R.string.action_parse_xml)
     }
 
-    override fun summary(ctx: Context): String {
-        return "XPath: $xpath"
+    @Composable
+    override fun Summary() {
+        SummaryLabel("XPath: $xpath")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -710,15 +762,8 @@ class RegexExtract(
     var regexFlags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (input !is ByteArray) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.ByteArray.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
 
         return try {
             val opts = Util.flagsToRegexOptions(regexFlags)
@@ -730,9 +775,13 @@ class RegexExtract(
                 RegexRule(pattern = it.groupValues[1])
             }.toList()
 
-            Pair(true, rules)
+            aCtx.logger?.debug(ctx.getString(R.string.parsed_n_rules).format("${rules.size}"))
+
+            aCtx.lastOutput = rules
+            true
         } catch (e: Exception) {
-            Pair(false, e.toString())
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
@@ -740,9 +789,12 @@ class RegexExtract(
         return ctx.getString(R.string.action_regex_extract)
     }
 
-    override fun summary(ctx: Context): String {
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
         val label = ctx.getString(R.string.regex_pattern)
-        return "$label: $pattern"
+        SummaryLabel("$label: $pattern")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -790,32 +842,32 @@ output: null
 @SerialName("ImportToSpamDB")
 class ImportToSpamDB : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        // It must be written like this, cannot be inlined in the `if()`, seems to be kotlin bug
-        val inputValid = (input is List<*>) && ((input as List<*>).all { it is RegexRule })
-        if (!inputValid) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    "List<Rule>", input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
         return try {
             val now = System.currentTimeMillis()
 
-            val numbers = (input as List<*>).map {
+            val numbers = rules.map {
                 SpamNumber(peer = (it as RegexRule).pattern, time = now)
             }
             val errorStr = SpamTable.addAll(ctx, numbers)
 
+            aCtx.logger?.debug(ctx.getString(R.string.add_n_numbers_to_spam_db)
+                .format("${numbers.size}"))
+
             // Fire a global event to update UI
             Events.spamDbUpdated.fire()
 
-            Pair(errorStr == null, errorStr)
+            if (errorStr == null) {
+                true
+            } else {
+                aCtx.logger?.error(errorStr)
+                false
+            }
         } catch (e: Exception) {
-            Pair(false, e.toString())
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
@@ -823,8 +875,8 @@ class ImportToSpamDB : IPermissiveAction {
         return ctx.getString(R.string.action_import_to_spam_db)
     }
 
-    override fun summary(ctx: Context): String {
-        return ""
+    @Composable
+    override fun Summary() {
     }
 
     override fun tooltip(ctx: Context): String {
@@ -869,42 +921,43 @@ class ImportAsRegexRule(
     var importType: ImportType = ImportType.Create,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (!(input is List<*> && input.all { it is RegexRule })) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.RuleList.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
-        try {
-            val numberList = (input as List<*>).map { (it as RegexRule).pattern }.distinct()
+        return try {
+            val numberList = rules.map { (it as RegexRule).pattern }.distinct()
 
             // Do nothing when there isn't any number to add, to prevent adding a `()`
             if (numberList.isEmpty()) {
-                return Pair(true, null)
+                aCtx.logger?.warn(ctx.getString(R.string.nothing_to_import))
+                true
             }
 
+            aCtx.logger?.info(ctx.getString(R.string.importing_n_numbers)
+                .format("${numberList.size}"))
+
             when (importType) {
-                ImportType.Create -> create(ctx, numberList)
-                ImportType.Replace -> replace(ctx, numberList)
-                else -> merge(ctx, numberList)
+                ImportType.Create -> create(ctx, aCtx, numberList)
+                ImportType.Replace -> replace(ctx, aCtx, numberList)
+                else -> merge(ctx, aCtx, numberList)
             }
 
             // fire event to update the UI
             Events.regexRuleUpdated.fire()
 
-            return Pair(true, null)
+            true
         } catch (e: Exception) {
-            return Pair(false, e.toString())
+            aCtx.logger?.error("$e")
+            false
         }
     }
 
-    private fun create(ctx: Context, numbers: List<String>) {
+    private fun create(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
         // Join numbers to `11|22|33...`
         val combinedPattern = numbers.joinToString("|")
+
+        aCtx.logger?.debug(ctx.getString(R.string.create_rule_with_numbers)
+            .format("${numbers.size}"))
 
         val newRule = RegexRule(
             pattern = "($combinedPattern)",
@@ -915,29 +968,44 @@ class ImportAsRegexRule(
         NumberRuleTable().addNewRule(ctx, newRule)
     }
 
-    private fun replace(ctx: Context, numbers: List<String>) {
+    private fun replace(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
+        aCtx.logger?.debug(ctx.getString(R.string.replace_rule_with_desc)
+            .format(description))
+
         val table = NumberRuleTable()
         val oldRules = table.findRuleByDesc(ctx, description)
         if (oldRules.isEmpty()) {
-            create(ctx, numbers)
+            aCtx.logger?.warn(ctx.getString(R.string.rule_with_desc_not_found)
+                .format(description))
+            create(ctx, aCtx, numbers)
         } else {
             // 1. delete the previous rule
             table.deleteById(ctx, oldRules[0].id)
             // 2. create a new one
-            create(ctx, numbers)
+            create(ctx, aCtx, numbers)
         }
     }
 
-    private fun merge(ctx: Context, numbers: List<String>) {
+    private fun merge(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
+        aCtx.logger?.debug(ctx.getString(R.string.merging_rule_with_desc)
+            .format(description))
+
         val table = NumberRuleTable()
         val oldRules = table.findRuleByDesc(ctx, description)
         if (oldRules.isEmpty()) {
-            create(ctx, numbers)
+            aCtx.logger?.warn(ctx.getString(R.string.rule_with_desc_not_found)
+                .format(description))
+
+            create(ctx, aCtx, numbers)
         } else {
             val previous = oldRules[0]
             val oldNumbers = previous.pattern.trim('(', ')').split('|')
 
             val all = (oldNumbers + numbers).distinct()
+
+            aCtx.logger?.debug(ctx.getString(R.string.regex_count_after_merge)
+                .format("${oldNumbers.size}", "${all.size}"))
+
             table.updateRuleById(
                 ctx, previous.id, previous.copy(
                     pattern = "(" + all.joinToString("|") + ")"
@@ -950,8 +1018,9 @@ class ImportAsRegexRule(
         return ctx.getString(R.string.action_import_as_regex_rule)
     }
 
-    override fun summary(ctx: Context): String {
-        return description
+    @Composable
+    override fun Summary() {
+        SummaryLabel(description)
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1037,17 +1106,13 @@ class ConvertNumber(
     var to: String = "",
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (!(input is List<*> && input.all { it is RegexRule })) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.RuleList.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val rules = aCtx.lastOutput as List<*> // List<RegexRule>
 
-        val clearedRuleList = (input as List<*>).map {
+        aCtx.logger?.debug(ctx.getString(R.string.replace_number_from_to)
+            .format(from, to))
+
+        val clearedRuleList = rules.map {
             val r = it as RegexRule
 
             val newNum = from.toRegex().replace(r.pattern, to)
@@ -1056,15 +1121,17 @@ class ConvertNumber(
                 pattern = newNum
             )
         }
-        return Pair(true, clearedRuleList)
+        aCtx.lastOutput = clearedRuleList
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_convert_number)
     }
 
-    override fun summary(ctx: Context): String {
-        return "$from -> $to"
+    @Composable
+    override fun Summary() {
+        SummaryLabel("$from -> $to")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1126,26 +1193,34 @@ output: List<RegexRule>
 @Serializable
 @SerialName("FindRules")
 class FindRules(
-    var pattern: String = "",
+    var pattern: String = "", // description pattern
     var flags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val opts = Util.flagsToRegexOptions(flags)
         val patternRegex = pattern.toRegex(opts)
 
         val found = NumberRuleTable().listAll(ctx).filter {
             patternRegex.matches(it.description)
         }
-        return Pair(true, found)
+
+        aCtx.logger?.debug(ctx.getString(R.string.find_rule_with_desc)
+            .format("${found.size}", pattern))
+
+        aCtx.lastOutput = found
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_find_rules)
     }
 
-    override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.description)}: $pattern"
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
+        SummaryLabel("${ctx.getString(R.string.description)}: $pattern")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1202,18 +1277,14 @@ class ModifyRules(
     var config: String = "",
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val input = param.input
-        if (!(input is List<*> && input.all { it is RegexRule })) {
-            return Pair(
-                false, ctx.getString(R.string.invalid_input_type).format(
-                    ParamType.RuleList.name, input?.javaClass?.simpleName
-                )
-            )
-        }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val rules = aCtx.lastOutput as List<*>
+
+        aCtx.logger?.debug(ctx.getString(R.string.modify_n_rules)
+            .format("${rules.size}"))
 
         try {
-            (input as List<*>).forEach {
+            rules.forEach {
                 val origin = it as RegexRule
                 val strOrigin = PermissiveJson.encodeToString(origin)
                 val mapOrigin = JSONObject(strOrigin).toMap()
@@ -1227,21 +1298,23 @@ class ModifyRules(
                 NumberRuleTable().updateRuleById(ctx, origin.id, newRule)
             }
         } catch (e: Exception) {
-            return Pair(false, "$e")
+            aCtx.logger?.error("$e")
+            return false
         }
 
         // fire event to update the UI
         Events.regexRuleUpdated.fire()
 
-        return Pair(true, null)
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_modify_rules)
     }
 
-    override fun summary(ctx: Context): String {
-        return config
+    @Composable
+    override fun Summary() {
+        SummaryLabel(config)
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1284,8 +1357,16 @@ class EnableWorkflow(
     var enable: Boolean = false,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
-        val workTag = param.workTag
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val workTag = aCtx.workTag
+
+        aCtx.logger?.debug("${label(ctx)}: $workTag")
+
+        // null when Testing, do nothing
+        if (workTag == null) {
+            aCtx.logger?.debug(ctx.getString(R.string.skip_for_testing))
+            return true
+        }
 
         val bot = BotTable
             .findByWorkUuid(ctx, workTag)
@@ -1302,15 +1383,18 @@ class EnableWorkflow(
             Events.botUpdated.fire()
         }
 
-        return Pair(true, null)
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_enable_workflow)
     }
 
-    override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}"
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
+        SummaryLabel("${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1336,9 +1420,9 @@ class EnableWorkflow(
         var enabled by remember { mutableStateOf(enable) }
 
         LabeledRow(labelId = R.string.enable) {
-            SwitchBox(enabled) { isTurningOn ->
-                enabled = isTurningOn
-                enable = isTurningOn
+            SwitchBox(enabled) { on ->
+                enabled = on
+                enable = on
             }
         }
     }
@@ -1354,19 +1438,24 @@ class EnableApp(
     var enable: Boolean = true,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, param: ActionParam): Pair<Boolean, Any?> {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         Global(ctx).setGloballyEnabled(enable)
         G.globallyEnabled.value = enable
 
-        return Pair(true, null)
+        aCtx.logger?.debug("${ctx.getString(R.string.action_enable_app)}: $enable")
+
+        return true
     }
 
     override fun label(ctx: Context): String {
         return ctx.getString(R.string.action_enable_app)
     }
 
-    override fun summary(ctx: Context): String {
-        return "${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}"
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
+        SummaryLabel("${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1392,10 +1481,334 @@ class EnableApp(
         var enabled by remember { mutableStateOf(enable) }
 
         LabeledRow(labelId = R.string.enable) {
-            SwitchBox(enabled) { isTurningOn ->
-                enabled = isTurningOn
-                enable = isTurningOn
+            SwitchBox(enabled) { on ->
+                enabled = on
+                enable = on
             }
         }
+    }
+}
+
+
+@Serializable
+@SerialName("ParseIncomingNumber")
+class ParseIncomingNumber(
+    var internationOnly: Boolean = true,
+    var autoCC: Boolean = false, // for people who often travel around between different countries
+    var fixedCC: String = "", // for people who don't go abroad
+) : IAction {
+
+    override fun missingPermissions(ctx: Context): List<IPermission> {
+        return if (autoCC) {
+            listOf(
+                NormalPermission(Manifest.permission.READ_PHONE_STATE),
+            )
+        } else {
+            listOf()
+        }
+    }
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        // The `rawNumber` is set by the workflow caller before it's executed.
+        val rawNumber = aCtx.rawNumber!!
+        aCtx.logger?.debug("${label(ctx)}: $rawNumber")
+
+        // Case 1: the number starts with "+"
+        if (rawNumber.startsWith("+")) {
+            val (ok, cc, domestic) = CountryCode.parseNumber(Util.clearNumber(rawNumber))
+            if (ok) {
+                aCtx.cc = cc
+                aCtx.domestic = domestic
+                return true
+            } else {
+                aCtx.logger?.debug(ctx.getString(R.string.parse_number_fail)
+                    .format(rawNumber))
+                return false
+            }
+        } else {
+            if (internationOnly) {
+                aCtx.logger?.debug(ctx.getString(R.string.error_international_only))
+                return false
+            }
+            if (autoCC) {
+                if (!Permissions.isPhoneStatePermissionGranted(ctx)) {
+                    aCtx.logger?.error(ctx.getString(R.string.permission_not_granted)
+                            + ": READ_PHONE_STATE")
+                    return false
+                }
+                val cc = CountryCode.current(ctx)
+                if (cc == null) {
+                    aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc))
+                    return false
+                }
+                aCtx.cc = cc.toString()
+                aCtx.domestic = Util.clearNumber(rawNumber)
+            } else {
+                if (fixedCC.isEmpty()) {
+                    aCtx.logger?.error(ctx.getString(R.string.empty_fixed_cc))
+                    return false
+                }
+
+                aCtx.cc = fixedCC
+                aCtx.domestic = Util.clearNumber(rawNumber)
+            }
+        }
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.actionn_parse_incoming_number)
+    }
+
+    @Composable
+    override fun Summary() {
+        val ctx = LocalContext.current
+
+        val auto = ctx.getString(R.string.automatic)
+        val yes = ctx.getString(R.string.yes)
+        val no = ctx.getString(R.string.no)
+
+        RowVCenterSpaced(4) {
+            GreyIcon20(R.drawable.ic_international)
+            SummaryLabel(if (internationOnly) yes else no)
+
+            if (!internationOnly) {
+                Spacer(modifier = M.width(4.dp))
+
+                GreyIcon20(R.drawable.ic_airplane)
+                SummaryLabel(if (autoCC) auto else fixedCC)
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_parse_incoming_number)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon20(iconId = R.drawable.ic_call)
+    }
+
+    @Composable
+    override fun Options() {
+        var internationOnlyState by remember { mutableStateOf(internationOnly) }
+        LabeledRow(
+            R.string.international_only,
+            helpTooltipId = R.string.help_international_only,
+        ) {
+            SwitchBox(internationOnlyState) { on ->
+                internationOnlyState = on
+                internationOnly = on
+            }
+        }
+
+        var autoCCState by remember { mutableStateOf(autoCC) }
+        AnimatedVisibleV(!internationOnlyState) {
+            LabeledRow(
+                R.string.auto_detect_country_code,
+                helpTooltipId = R.string.help_auto_detect_country_code,
+            ) {
+                SwitchBox(autoCCState) { on ->
+                    autoCCState = on
+                    autoCC = on
+                }
+            }
+        }
+
+        AnimatedVisibleV(!internationOnlyState) {
+            AnimatedVisibleV(visible = !autoCCState) {
+                StrInputBox(
+                    text = fixedCC,
+                    label = { Text(Str(R.string.country_code)) },
+                    leadingIconId = R.drawable.ic_airplane,
+                    placeholder = { DimGreyLabel(Str(R.string.for_example) + " 1") },
+                    onValueChange = { fixedCC = it }
+                )
+            }
+        }
+    }
+}
+
+data class QueryResult(
+    val isSpam: Boolean? = null, // null means undetermined number
+    val category: String? = null,
+)
+
+@Serializable
+@SerialName("ParseQueryResult")
+class ParseQueryResult(
+    var negativeSig: String = "", // positive signature
+    var negativeFlags: Int = Def.DefaultRegexFlags,
+
+    var positiveSig: String = "",
+    var positiveFlags: Int = Def.DefaultRegexFlags,
+
+    var categorySig: String = "",
+    var categoryFlags: Int = Def.DefaultRegexFlags,
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
+
+        val html = String(input)
+
+        aCtx.logger?.debug("${label(ctx)}: ${Util.truncate(html)}")
+
+        // 1. negative
+        val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
+        val isNegative = if (negativeSig.isEmpty())
+            null
+        else
+            negativeSig.toRegex(negativeOpts).containsMatchIn(html)
+
+        // 2. positive
+        val positiveOpts = Util.flagsToRegexOptions(positiveFlags)
+        val isPositive = if (positiveSig.isEmpty())
+            null
+        else
+            positiveSig.toRegex(positiveOpts).containsMatchIn(html)
+
+        var category: String? = null
+
+        if (isNegative != null || isPositive != null) {
+            // 3. category
+            val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
+            category = categorySig.toRegex(categoryOpts).find(html)
+                ?.groups
+                ?.drop(1)
+                ?.filterNotNull()
+                ?.first()?.value
+        }
+
+        if (isNegative == true) {
+            aCtx.logger?.warn(ctx.getString(R.string.identified_as_spam)
+                .format(category ?: ""))
+        } else if (isPositive == true) {
+            aCtx.logger?.success(ctx.getString(R.string.identified_as_valid)
+                .format(category ?: ""))
+        } else {
+            aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
+        }
+
+        aCtx.lastOutput = QueryResult(
+            isSpam = if (isNegative == true) true else {
+                if (isPositive == true) false else null
+            },
+            category = category,
+        )
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.actionn_parse_query_result)
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(4) {
+            RowVCenter {
+                GreyIcon16(R.drawable.ic_no)
+                SummaryLabel(negativeSig)
+            }
+
+            if (positiveSig.isNotEmpty()) {
+                RowVCenter {
+                    GreyIcon16(R.drawable.ic_yes)
+                    SummaryLabel(positiveSig)
+                }
+            }
+
+            if (categorySig.isNotEmpty()) {
+                RowVCenter {
+                    GreyIcon16(R.drawable.ic_category)
+                    SummaryLabel(categorySig)
+                }
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_parse_query_result)
+    }
+
+    override fun inputParamType(): ParamType {
+        return ParamType.ByteArray
+    }
+
+    override fun outputParamType(): ParamType {
+        return ParamType.None
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_find_check)
+    }
+
+    @Composable
+    override fun Options() {
+        val negativeFlagsCopy = remember { mutableIntStateOf(negativeFlags) }
+        RegexInputBox(
+            regexStr = negativeSig,
+            label = { Text(Str(R.string.negative_identifier)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_no) },
+            helpTooltipId = R.string.help_negative_identifier,
+            placeholder = { DimGreyLabel(Str(R.string.hint_negative_identifier)) },
+            regexFlags = negativeFlagsCopy,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    negativeSig = newVal
+                }
+            },
+            onFlagsChange = {
+                negativeFlagsCopy.intValue = it
+                negativeFlags = it
+            }
+        )
+        val positiveFlagsCopy = remember { mutableIntStateOf(positiveFlags) }
+        RegexInputBox(
+            regexStr = positiveSig,
+            label = { Text(Str(R.string.positive_identifier)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_yes) },
+            helpTooltipId = R.string.help_positive_identifier,
+            placeholder = { DimGreyLabel(Str(R.string.hint_positive_identifier)) },
+            regexFlags = positiveFlagsCopy,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    positiveSig = newVal
+                }
+            },
+            onFlagsChange = {
+                positiveFlagsCopy.intValue = it
+                positiveFlags = it
+            }
+        )
+        val reasonFlagsCopy = remember { mutableIntStateOf(categoryFlags) }
+        RegexInputBox(
+            regexStr = categorySig,
+            label = { Text(Str(R.string.category_identifier)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_category) },
+            helpTooltipId = R.string.help_category_identifier,
+            placeholder = { DimGreyLabel(Str(R.string.hint_category_identifier)) },
+            regexFlags = reasonFlagsCopy,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    categorySig = newVal
+                }
+            },
+            onFlagsChange = {
+                reasonFlagsCopy.intValue = it
+                categoryFlags = it
+            }
+        )
     }
 }

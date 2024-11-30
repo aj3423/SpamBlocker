@@ -2,19 +2,16 @@
     <string name="contact_rule">Règle de contact</string>
     <string name="directory">Répertoire</string>
     <string name="filename">Nom de fichier</string>
-    <string name="invalid_input_type">Type d\'entrée invalide, attendu : %s, obtenu : %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Jours d\'expiration</string>
     <string name="column_mapping">Mappage de colonne</string>
     <string name="include_spam_db">Inclure la base de données de spam</string>
-    <string name="configuration_only">Configuration uniquement</string>
     <string name="no_config_needed">Aucune configuration nécessaire</string>
     <string name="success">Succès</string>
     <string name="failed">Échec</string>
     <string name="running">En cours d\'exécution</string>
     <string name="optional">(facultatif)</string>
 
-    <string name="run_execute">Exécuter</string>
     <string name="help_action_header">
         <![CDATA[
         - <font color="#03DAC5"><b>Test</b></font><br>
@@ -23,13 +20,7 @@
         <br>
         - <font color="#00BFFF"><b>Nouveau</b></font><br>
             Créez une nouvelle action, plusieurs actions peuvent être chaînées ensemble pour effectuer une tâche complexe.<br>
-            Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.<br>
-            <br>
-            Quelques exemples de workflows : <br>
-            <br>
-            &emsp; - Télécharger un fichier à partir d\'un lien http -> décoder au format 7z -> analyser au format csv -> importer dans la base de données de spam.<br>
-            <br>
-            &emsp; - Appliquer les paramètres A aux jours ouvrables et appliquer les paramètres B aux week-ends.<br>
+            Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.
         ]]>
     </string>
 
@@ -87,7 +78,6 @@
         ]]>
     </string>
 
-    <string name="one_off">Unique</string>
     <string name="action_enable_workflow">Activer le flux de travail</string>
     <string name="help_action_enable_workflow">
         <![CDATA[

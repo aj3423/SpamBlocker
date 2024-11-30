@@ -30,6 +30,8 @@ val botModule = SerializersModule {
         subclass(ModifyRules::class)
         subclass(EnableWorkflow::class)
         subclass(EnableApp::class)
+        subclass(ParseQueryResult::class)
+        subclass(ParseIncomingNumber::class)
     }
 }
 

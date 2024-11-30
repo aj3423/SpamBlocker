@@ -2,12 +2,10 @@
     <string name="contact_rule">Правило контакту</string>
     <string name="directory">Каталог</string>
     <string name="filename">Ім\'я файлу</string>
-    <string name="invalid_input_type">Неправильний тип вводу, очікується: %s, отримано: %s</string>
     <string name="url">URL</string>
     <string name="expiry_days">Днів до закінчення терміну дії</string>
     <string name="column_mapping">Відповідність стовпців</string>
     <string name="include_spam_db">Включити базу даних спаму</string>
-    <string name="configuration_only">Тільки конфігурація</string>
     <string name="no_config_needed">Налаштування не потрібне</string>
     <string name="success">Вдало</string>
     <string name="failed">Не вдалося</string>
@@ -23,13 +21,7 @@
         <br>
         - <font color="#00BFFF"><b>Новий</b></font><br>
             Створити нову дію, кілька дій можуть бути з\'єднані разом, щоб виконати складне завдання.<br>
-            Ці зелені або червоні точки між елементами вказують на те, чи можна їх з\'єднати чи ні.<br>
-            <br>
-            Приклади робочих процесів: <br>
-            <br>
-            &emsp; - завантажити файл з http -> декодувати формат 7z -> розібрати як формат csv -> імпортувати до бази даних спаму.<br>
-            <br>
-            &emsp; - застосувати налаштування A в робочі дні та застосувати налаштування B у вихідні.<br>
+            Ці зелені або червоні точки між елементами вказують на те, чи можна їх з\'єднати чи ні.
         ]]>
     </string>
 
@@ -87,7 +79,6 @@
         ]]>
     </string>
 
-    <string name="one_off">Одноразово</string>
     <string name="action_enable_workflow">Увімкнути робочий процес</string>
     <string name="help_action_enable_workflow">
         <![CDATA[
