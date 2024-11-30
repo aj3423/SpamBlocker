@@ -1680,14 +1680,16 @@ class ParseQueryResult(
 
         var category: String? = null
 
+        // 3. category
         if (isNegative != null || isPositive != null) {
-            // 3. category
-            val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
-            category = categorySig.toRegex(categoryOpts).find(html)
-                ?.groups
-                ?.drop(1)
-                ?.filterNotNull()
-                ?.first()?.value
+            if (categorySig.trim().isNotEmpty()) {
+                val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
+                category = categorySig.trim().toRegex(categoryOpts).find(html)
+                    ?.groups
+                    ?.drop(1)
+                    ?.filterNotNull()
+                    ?.first()?.value
+            }
         }
 
         if (isNegative == true) {

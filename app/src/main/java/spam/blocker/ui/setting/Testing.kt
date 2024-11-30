@@ -49,7 +49,7 @@ fun PopupTesting(
     val C = LocalPalette.current
 
     val coroutine = rememberCoroutineScope()
-    
+
     val items = remember {
         listOf(
             RadioItem(text = ctx.getString(R.string.call), color = C.textGrey),
