@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Очищення історії бази даних, видалення записів до позначки часу: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Очищення спам-бази даних, видалення %s записів до позначки часу: %s.
+    </string>
+    <string name="resolved_url">Розв\'язаний URL: %s.</string>
+    <string name="resolved_path">Розв\'язаний шлях: %s.</string>
+    <string name="resolved_filename">Розв\'язане ім\'я файлу: %s.</string>
+    <string name="time_cost">Час виконання: %s мілісекунд.</string>
+    <string name="parsed_n_rules">Розпарсено %s правил.</string>
+    <string name="add_n_numbers_to_spam_db">Додавання %s номерів до спам-бази даних.</string>
+    <string name="nothing_to_import">Список номерів порожній, немає чого імпортувати.</string>
+    <string name="importing_n_numbers">Імпорт %s номерів як правила регулярних виразів.</string>
+    <string name="create_rule_with_numbers">Створення правила з %s номерами.</string>
+    <string name="replace_rule_with_desc">Заміна правила з описом: %s.</string>
+    <string name="rule_with_desc_not_found">Правило з описом %s не знайдено.</string>
+    <string name="merging_rule_with_desc">Злиття правила з описом: %s.</string>
+    <string name="regex_count_after_merge">Кількість регулярних виразів до: %s, після: %s.</string>
+    <string name="replace_number_from_to">Заміна номера з %s на %s.</string>
+    <string name="find_rule_with_desc">Знайдено %s правил з описом %s.</string>
+    <string name="modify_n_rules">Модифікація %s правил.</string>
+    <string name="parse_number_fail">Не вдалося розпарсити номер: %s.</string>
+    <string name="error_international_only">internationOnly увімкнено, але номер не в міжнародному форматі, пропускаємо.</string>
+    <string name="permission_not_granted">Дозвіл не надано.</string>
+    <string name="fail_detect_cc">Не вдалося визначити код країни.</string>
+    <string name="empty_fixed_cc">Фіксований код країни порожній.</string>
+    <string name="identified_as_spam">Визначено як спам-номер, категорія: %s.</string>
+    <string name="identified_as_valid">Визначено як валідний номер, категорія: %s.</string>
+    <string name="unidentified_number">Невизначений номер.</string>
+</resources>

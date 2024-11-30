@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        正在清理历史数据库，删除时间戳之前%s的记录。
+    </string>
+    <string name="cleaning_up_spam_db">
+        正在清理垃圾电话数据库，删除时间戳之前%s的记录。
+    </string>
+    <string name="resolved_url">已解析URL：%s。</string>
+    <string name="resolved_path">已解析路径：%s。</string>
+    <string name="resolved_filename">已解析文件名：%s。</string>
+    <string name="time_cost">耗时：%s毫秒。</string>
+    <string name="parsed_n_rules">已解析%s条规则。</string>
+    <string name="add_n_numbers_to_spam_db">正在将%s个号码添加到垃圾电话数据库。</string>
+    <string name="nothing_to_import">号码列表为空，无需导入。</string>
+    <string name="importing_n_numbers">正在导入%s个号码作为正则表达式规则。</string>
+    <string name="create_rule_with_numbers">正在创建包含%s个号码的规则。</string>
+    <string name="replace_rule_with_desc">用描述替换规则：%s。</string>
+    <string name="rule_with_desc_not_found">未找到描述为%s的规则。</string>
+    <string name="merging_rule_with_desc">正在合并描述为%s的规则。</string>
+    <string name="regex_count_after_merge">合并前正则表达式数量：%s，合并后：%s。</string>
+    <string name="replace_number_from_to">将号码从%s替换为%s。</string>
+    <string name="find_rule_with_desc">找到%s条描述为%s的规则。</string>
+    <string name="modify_n_rules">正在修改%s条规则。</string>
+    <string name="parse_number_fail">号码解析失败：%s。</string>
+    <string name="error_international_only">已启用internationOnly，但号码不是国际格式，跳过。</string>
+    <string name="permission_not_granted">权限未授予。</string>
+    <string name="fail_detect_cc">国家代码检测失败。</string>
+    <string name="empty_fixed_cc">固定的国家代码为空。</string>
+    <string name="identified_as_spam">识别为垃圾号码，类别：%s。</string>
+    <string name="identified_as_valid">识别为有效号码，类别：%s。</string>
+    <string name="unidentified_number">无法识别的号码。</string>
+</resources>

@@ -1,0 +1,107 @@
+<resources>
+    <string name="automatic">自动</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        实时在线查询来电号码，将同时查询多个API端点。<br>
+        <br>
+        仅适用于来电，不适用于短信。<br>
+        <br>
+        只有在来电通过所有其他规则后才会触发。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：-1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">即时查询</string>
+    <string name="negative_identifier">负向标识符</string>
+    <string name="hint_negative_identifier">
+        例如：("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        如果在结果中找到此正则表达式模式，则将其识别为垃圾号码。
+    </string>
+    <string name="positive_identifier">正向标识符</string>
+    <string name="hint_positive_identifier">
+        例如：("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        可选。<br>
+        如果在结果中找到此正则表达式模式，则将其识别为非垃圾号码，此项可选。<br>
+        <br>
+        通常情况下这是<b>不必要</b>的，一些API提供商会将未知号码识别为非垃圾号码，只有在API非常准确的情况下才使用此功能。
+        ]]>
+    </string>
+    <string name="category_identifier">类别标识符</string>
+    <string name="hint_category_identifier">
+        例如："type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        可选。<br>
+        识别号码后，将使用此正则表达式提取其类别（电话推销、钓鱼等）。
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">解析查询结果</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        解析HTTP结果，如果结果包含特定正则表达式模式，则号码将被识别为垃圾号码。<br>
+        如果存在，则将使用额外的正则表达式模式从结果中提取垃圾邮件类别。
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">解析来电号码</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        将来电号码解析成不同的标签：<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; 国家区号。<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; 国内部分。<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; 完整号码，相当于以上两者的串联。<br>
+        <br>
+        这些标签将用于构建HTTP URL，例如：<br>
+        <br>
+        1. 对于国际号码，例如<b>+122222</b>，这些是等效的。<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        它将被解析为：https://test.com/number=<b>122222</b><br>
+        <br>
+        2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家区号，或让应用自动检测。<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">自动检测国家区号</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        如果您经常国际旅行，请启用此功能，国家区号将在更改时自动检测。<br>
+        <br>
+        这需要READ_PHONE_STATE权限。
+        ]]>
+    </string>
+    <string name="country_code">国家区号</string>
+    <string name="fixed_country_code">固定区号</string>
+    <string name="api_services">API服务</string>
+    <string name="query_timeout">查询超时</string>
+    <string name="help_query_timeout">
+        Android的来电筛选功能有5秒的响应时间限制，此应用默认使用4秒，为其他规则留出1秒。超时请求将被丢弃。
+    </string>
+    <string name="international_only">仅限国际号码</string>
+    <string name="help_international_only">
+        <![CDATA[
+        大多数API都需要国家区号。<br>
+        <br>
+        - <b>启用时</b>：<br>
+        &ensp; 它将只检查以“+”开头的国际号码，国内号码将被忽略。<br>
+        <br>
+        - <b>禁用时</b>：<br>
+        &ensp; 它也将检查国内号码，您需要设置一个固定的国家区号，或让它自动检测。
+        ]]>
+    </string>
+    <string name="checking_template">正在检查：%s</string>
+    <string name="skip_for_testing">跳过测试。</string>
+    <string name="allowed_by">允许于：%s</string>
+    <string name="blocked_by">阻止于：%s</string>
+    <string name="outside_time_schedule">不在时间范围内，跳过。</string>
+    <string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
+</resources>

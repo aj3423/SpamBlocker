@@ -1,0 +1,108 @@
+<resources>
+    <string name="automatic">Auto</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Consulta o número de telefone recebido online em tempo real; vários endpoints de API serão consultados simultaneamente.<br>
+        <br>
+        Aplica-se apenas a chamadas, não a mensagens SMS.<br>
+        <br>
+        Será acionado somente quando a chamada passar por todas as outras regras.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Consulta Instantânea</string>
+    <string name="negative_identifier">Identificador Negativo</string>
+    <string name="hint_negative_identifier">
+        E.g.: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Será identificado como número de spam se este padrão regex for encontrado no resultado.
+    </string>
+    <string name="positive_identifier">Identificador Positivo</string>
+    <string name="hint_positive_identifier">
+        E.g.: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Opcional.<br>
+        Será identificado como número não spam se este padrão regex for encontrado no resultado; é opcional.<br>
+        <br>
+        Geralmente isso é <b>desnecessário</b>; alguns provedores de API identificam números desconhecidos como não spam;<br>
+        use apenas quando a API for realmente precisa.
+        ]]>
+    </string>
+    <string name="category_identifier">Identificador de Categoria</string>
+    <string name="hint_category_identifier">
+        E.g.: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Opcional.<br>
+        Assim que um número for identificado, esta expressão regular será usada para extrair sua categoria (telemarketing, phishing, etc.).
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">Analisar Resultado da Consulta</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Analisa o resultado HTTP; o número será identificado como spam se o resultado contiver um determinado padrão regex.<br>
+        Um padrão regex extra será usado para extrair a categoria de spam do resultado, se houver.
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">Analisar Número de Entrada</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        O número de telefone da chamada recebida será analisado em diferentes tags:<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; O código do país inicial.<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; A parte doméstica.<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; O número completo, equivalente à concatenação dos dois acima.<br>
+        <br>
+        Estas tags serão usadas para construir a URL HTTP, por exemplo:<br>
+        <br>
+        1. Para números internacionais como <b>+122222</b>, estes são equivalentes.<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Será analisado para: https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Para números domésticos como <b>12345</b>, você precisa fornecer o código do país nas configurações ou deixar o aplicativo detectá-lo automaticamente.<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">Detectar Código do País Autom.</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        Ative isto se você viaja internacionalmente com frequência; o código do país será detectado automaticamente quando mudar.<br>
+        <br>
+        Requer a permissão READ_PHONE_STATE.
+        ]]>
+    </string>
+    <string name="country_code">Código do País</string>
+    <string name="fixed_country_code">CC Fixo</string>
+    <string name="api_services">Serviços de API</string>
+    <string name="query_timeout">Tempo Limite da Consulta</string>
+    <string name="help_query_timeout">
+        O recurso de triagem de chamadas do Android tem um limite de tempo de resposta de 5 segundos; este aplicativo usa 4 segundos por padrão, deixando 1 segundo para outras regras.  Pedidos com tempo limite serão descartados.
+    </string>
+    <string name="international_only">Somente Internacional</string>
+    <string name="help_international_only">
+        <![CDATA[
+        A maioria das APIs requer o código do país.<br>
+        <br>
+        - <b>Quando ativado</b>:<br>
+        &ensp; Verificará apenas números internacionais que começam com "+"; números domésticos serão ignorados.<br>
+        <br>
+        - <b>Quando desativado</b>:<br>
+        &ensp; Verificará também números domésticos; você precisará definir um código de país fixo ou deixá-lo detectar automaticamente.
+        ]]>
+    </string>
+    <string name="checking_template">Verificando: %s</string>
+    <string name="skip_for_testing">Ignorar para teste.</string>
+    <string name="allowed_by">Permitido por: %s</string>
+    <string name="blocked_by">Bloqueado por: %s</string>
+    <string name="outside_time_schedule">Fora do horário programado, ignorar.</string>
+    <string name="android_ver_lower_than_11">Versão do Android inferior a 11, ignorar.</string>
+</resources>

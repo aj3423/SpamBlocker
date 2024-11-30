@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Geçmiş veritabanı temizleniyor, zaman damgasından önceki kayıtlar siliniyor: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Spam veritabanı temizleniyor, zaman damgasından önceki %s kayıt siliniyor: %s.
+    </string>
+    <string name="resolved_url">Çözümlenen url: %s.</string>
+    <string name="resolved_path">Çözümlenen yol: %s.</string>
+    <string name="resolved_filename">Çözümlenen dosya adı: %s.</string>
+    <string name="time_cost">Zaman maliyeti: %s milisaniye.</string>
+    <string name="parsed_n_rules">%s kural çözümlendi.</string>
+    <string name="add_n_numbers_to_spam_db">Spam veritabanına %s numara ekleniyor.</string>
+    <string name="nothing_to_import">Numara listesi boş, içe aktarılacak hiçbir şey yok.</string>
+    <string name="importing_n_numbers">%s numara regex kuralı olarak içe aktarılıyor.</string>
+    <string name="create_rule_with_numbers">%s numara ile kural oluşturuluyor.</string>
+    <string name="replace_rule_with_desc">Kural, açıklaması: %s ile değiştiriliyor.</string>
+    <string name="rule_with_desc_not_found">Açıklaması %s olan kural bulunamadı.</string>
+    <string name="merging_rule_with_desc">Açıklaması: %s olan kural birleştiriliyor.</string>
+    <string name="regex_count_after_merge">Regex sayısı önce: %s, sonra: %s.</string>
+    <string name="replace_number_from_to">%s numarası %s ile değiştiriliyor.</string>
+    <string name="find_rule_with_desc">Açıklaması %s olan %s kural bulundu.</string>
+    <string name="modify_n_rules">%s kural değiştiriliyor.</string>
+    <string name="parse_number_fail">Numara çözümlenemedi: %s.</string>
+    <string name="error_international_only">internationOnly etkin ancak numara uluslararası formatta değil, atlanıyor.</string>
+    <string name="permission_not_granted">İzin verilmedi.</string>
+    <string name="fail_detect_cc">Ülke kodu tespit edilemedi.</string>
+    <string name="empty_fixed_cc">Sabit ülke kodu boş.</string>
+    <string name="identified_as_spam">Spam numarası olarak tanımlandı, kategori: %s.</string>
+    <string name="identified_as_valid">Geçerli numara olarak tanımlandı, kategori: %s.</string>
+    <string name="unidentified_number">Tanımlanamayan numara.</string>
+</resources>

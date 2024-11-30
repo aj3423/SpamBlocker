@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        履歴DBのクリーンアップ中、タイムスタンプ%s以前のレコードを削除しています。
+    </string>
+    <string name="cleaning_up_spam_db">
+        スパムDBのクリーンアップ中、タイムスタンプ%s以前の%s件のレコードを削除しています。
+    </string>
+    <string name="resolved_url">解決済みURL: %s。</string>
+    <string name="resolved_path">解決済みパス: %s。</string>
+    <string name="resolved_filename">解決済みファイル名: %s。</string>
+    <string name="time_cost">処理時間: %sミリ秒。</string>
+    <string name="parsed_n_rules">%s個のルールを解析しました。</string>
+    <string name="add_n_numbers_to_spam_db">%s件の電話番号をスパムDBに追加しています。</string>
+    <string name="nothing_to_import">電話番号リストが空です。インポートするものがありません。</string>
+    <string name="importing_n_numbers">%s件の電話番号を正規表現ルールとしてインポートしています。</string>
+    <string name="create_rule_with_numbers">%s件の電話番号でルールを作成しています。</string>
+    <string name="replace_rule_with_desc">説明: %s のルールを置き換えています。</string>
+    <string name="rule_with_desc_not_found">説明が%sのルールが見つかりません。</string>
+    <string name="merging_rule_with_desc">説明: %s のルールをマージしています。</string>
+    <string name="regex_count_after_merge">マージ前正規表現数: %s、マージ後: %s。</string>
+    <string name="replace_number_from_to">%sから%sへの電話番号の置き換え。</string>
+    <string name="find_rule_with_desc">説明が%sのルールを%s件検出しました。</string>
+    <string name="modify_n_rules">%s個のルールを変更しています。</string>
+    <string name="parse_number_fail">電話番号%sの解析に失敗しました。</string>
+    <string name="error_international_only">internationOnlyが有効になっていますが、電話番号が国際フォーマットではありません。スキップします。</string>
+    <string name="permission_not_granted">権限が付与されていません。</string>
+    <string name="fail_detect_cc">国番号の検出に失敗しました。</string>
+    <string name="empty_fixed_cc">固定国番号が空です。</string>
+    <string name="identified_as_spam">スパム番号と識別されました。カテゴリ: %s。</string>
+    <string name="identified_as_valid">有効な番号と識別されました。カテゴリ: %s。</string>
+    <string name="unidentified_number">未識別番号。</string>
+</resources>

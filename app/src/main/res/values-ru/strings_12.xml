@@ -1,0 +1,107 @@
+<resources>
+    <string name="automatic">Авто</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Запрос входящего номера онлайн в реальном времени, несколько API-точек будут запрашиваться одновременно.<br>
+        <br>
+        Применяется только к звонкам, не к SMS-сообщениям.<br>
+        <br>
+        Будет срабатывать только тогда, когда звонок пройдёт все остальные правила.<br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Мгновенный запрос</string>
+    <string name="negative_identifier">Отрицательный идентификатор</string>
+    <string name="hint_negative_identifier">
+        Например: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Номер будет идентифицирован как спам, если эта регулярная маска найдена в результате.
+    </string>
+    <string name="positive_identifier">Положительный идентификатор</string>
+    <string name="hint_positive_identifier">
+        Например: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Необязательно.<br>
+        Номер будет идентифицирован как не спам, если эта регулярная маска найдена в результате. Это необязательно.<br>
+        <br>
+        Обычно это <b>ненужно</b>, некоторые провайдеры API идентифицируют неизвестные номера как не спам, используйте это только если API действительно точный.
+        ]]>
+    </string>
+    <string name="category_identifier">Идентификатор категории</string>
+    <string name="hint_category_identifier">
+        Например: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Необязательно. <br>
+        После идентификации номера эта регулярка будет использоваться для извлечения его категории (телемаркетинг, фишинг и т.д.).
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">Обработать результат запроса</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Обработать HTTP-результат, номер будет идентифицирован как спам, если результат содержит определённую регулярную маску.<br>
+        Дополнительная регулярная маска будет использоваться для извлечения категории спама из результата, если таковая имеется.
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">Обработать входящий номер</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        Входящий номер будет разбит на теги:<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; Код страны.<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; Внутренняя часть номера.<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; Полный номер, эквивалентен конкатенации двух выше.<br>
+        <br>
+        Эти теги будут использоваться для построения HTTP-URL, например:<br>
+        <br>
+        1. Для международного номера, например <b>+122222</b>, это эквивалентно.<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Будет преобразовано в: https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Для внутреннего номера, например <b>12345</b>, нужно указать код страны в настройках или позволить приложению определить его автоматически.<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">Автоматическое определение кода страны</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        Включите, если часто путешествуете за границу, код страны будет определяться автоматически при изменении.<br>
+        <br>
+        Требуется разрешение READ_PHONE_STATE.
+        ]]>
+    </string>
+    <string name="country_code">Код страны</string>
+    <string name="fixed_country_code">Фикс. код</string>
+    <string name="api_services">API-сервисы</string>
+    <string name="query_timeout">Таймаут запроса</string>
+    <string name="help_query_timeout">
+        Функция блокировки звонков Android имеет ограничение по времени отклика в 5 секунд, это приложение использует 4 секунды по умолчанию, оставляя 1 секунду для других правил. Запросы с таймаутом будут отброшены.
+    </string>
+    <string name="international_only">Только международные</string>
+    <string name="help_international_only">
+        <![CDATA[
+        Большинство API требуют код страны.<br>
+        <br>
+        - <b>Включено</b>:<br>
+        &ensp; Будут проверяться только международные номера, начинающиеся с "+", внутренние номера будут игнорироваться.<br>
+        <br>
+        - <b>Выключено</b>:<br>
+        &ensp; Будут проверяться также внутренние номера, нужно будет установить фиксированный код страны или позволить приложению определять его автоматически.
+        ]]>
+    </string>
+    <string name="checking_template">Проверка: %s</string>
+    <string name="skip_for_testing">Пропустить для тестирования.</string>
+    <string name="allowed_by">Разрешено: %s</string>
+    <string name="blocked_by">Заблокировано: %s</string>
+    <string name="outside_time_schedule">За пределами расписания, пропуск.</string>
+    <string name="android_ver_lower_than_11">Версия Android ниже 11, пропуск.</string>
+</resources>

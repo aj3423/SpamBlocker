@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Limpiando la base de datos de historial, eliminando registros anteriores a la marca de tiempo: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Limpiando la base de datos de llamadas spam, eliminando %s registros anteriores a la marca de tiempo: %s".
+    </string>
+    <string name="resolved_url">URL resuelta: %s.</string>
+    <string name="resolved_path">Ruta resuelta: %s.</string>
+    <string name="resolved_filename">Nombre de archivo resuelto: %s.</string>
+    <string name="time_cost">Tiempo de coste: %s milisegundos.</string>
+    <string name="parsed_n_rules">Analizadas %s reglas.</string>
+    <string name="add_n_numbers_to_spam_db">Añadiendo %s números a la base de datos de spam.</string>
+    <string name="nothing_to_import">La lista de números está vacía, no hay nada que importar.</string>
+    <string name="importing_n_numbers">Importando %s números como regla regex.</string>
+    <string name="create_rule_with_numbers">Creando regla con %s números.</string>
+    <string name="replace_rule_with_desc">Reemplazando la regla con descripción: %s.</string>
+    <string name="rule_with_desc_not_found">Regla con descripción %s no encontrada.</string>
+    <string name="merging_rule_with_desc">Fusionando la regla con descripción: %s.</string>
+    <string name="regex_count_after_merge">Conteo regex antes: %s, después: %s.</string>
+    <string name="replace_number_from_to">Reemplazando número de %s a %s.</string>
+    <string name="find_rule_with_desc">Encontradas %s reglas con descripción %s.</string>
+    <string name="modify_n_rules">Modificando %s reglas.</string>
+    <string name="parse_number_fail">Error al analizar el número: %s.</string>
+    <string name="error_international_only">internationOnly está habilitado pero el número no está en formato internacional, se omite.</string>
+    <string name="permission_not_granted">Permiso no concedido.</string>
+    <string name="fail_detect_cc">Error al detectar el código de país.</string>
+    <string name="empty_fixed_cc">El código de país fijo está vacío.</string>
+    <string name="identified_as_spam">Identificado como número spam, categoría: %s.</string>
+    <string name="identified_as_valid">Identificado como número válido, categoría: %s.</string>
+    <string name="unidentified_number">Número no identificado.</string>
+</resources>

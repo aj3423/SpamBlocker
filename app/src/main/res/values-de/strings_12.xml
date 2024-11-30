@@ -1,0 +1,107 @@
+<resources>
+    <string name="automatic">Auto</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Sucht die eingehende Nummer in Echtzeit online ab; mehrere API-Endpunkte werden gleichzeitig abgefragt.<br>
+        <br>
+        Dies gilt nur für Anrufe, nicht für SMS-Nachrichten.<br>
+        <br>
+        Es wird nur ausgelöst, wenn der Anruf alle anderen Regeln besteht.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Sofortige Abfrage</string>
+    <string name="negative_identifier">Negativer Identifier</string>
+    <string name="hint_negative_identifier">
+        Z. B.: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Wenn dieses Regex-Muster im Ergebnis gefunden wird, wird die Nummer als Spam-Nummer identifiziert.
+    </string>
+    <string name="positive_identifier">Positiver Identifier</string>
+    <string name="hint_positive_identifier">
+        Z. B.: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Optional.<br>
+        Wenn dieses Regex-Muster im Ergebnis gefunden wird, wird die Nummer als Nicht-Spam-Nummer identifiziert. Dies ist optional.<br>
+        <br>
+        Normalerweise ist dies <b>nicht notwendig</b>; einige API-Anbieter identifizieren unbekannte Nummern als Nicht-Spam. Verwenden Sie dies nur, wenn die API wirklich präzise ist.
+        ]]>
+    </string>
+    <string name="category_identifier">Kategorie-Identifier</string>
+    <string name="hint_category_identifier">
+        Z. B.: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Optional. <br>
+        Sobald eine Nummer identifiziert wurde, wird dieser Regex verwendet, um ihre Kategorie (Telemarketing, Phishing usw.) zu extrahieren.
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">Abfrageergebnis parsen</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Parsen des HTTP-Ergebnisses; die Nummer wird als Spam identifiziert, wenn das Ergebnis ein bestimmtes Regex-Muster enthält.<br>
+        Ein zusätzliches Regex-Muster wird verwendet, um die Spam-Kategorie aus dem Ergebnis zu extrahieren, falls vorhanden.
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">Eingehende Nummer parsen</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        Die eingehende Rufnummer wird in verschiedene Tags aufgeteilt:<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; Die führende Landesvorwahl.<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; Der nationale Teil.<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; Die vollständige Nummer, entspricht der Konkatenation der beiden obigen.<br>
+        <br>
+        Diese Tags werden verwendet, um die HTTP-URL zu erstellen, z. B.:<br>
+        <br>
+        1. Für internationale Nummern wie <b>+122222</b> sind diese äquivalent.<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Es wird geparst zu: https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Für nationale Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die automatische Erkennung durch die App zulassen.<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">Landesvorwahl automatisch erkennen</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        Aktivieren Sie dies, wenn Sie häufig international reisen; die Landesvorwahl wird bei einer Änderung automatisch erkannt.<br>
+        <br>
+        Erfordert die Berechtigung READ_PHONE_STATE.
+        ]]>
+    </string>
+    <string name="country_code">Landesvorwahl</string>
+    <string name="fixed_country_code">Festgelegte LW</string>
+    <string name="api_services">API-Dienste</string>
+    <string name="query_timeout">Abfrage-Timeout</string>
+    <string name="help_query_timeout">
+        Die Anruf-Screening-Funktion von Android hat eine Antwortzeitbegrenzung von 5 Sekunden; diese App verwendet standardmäßig 4 Sekunden und lässt 1 Sekunde für andere Regeln übrig. Zeitüberschreitende Anfragen werden verworfen.
+    </string>
+    <string name="international_only">Nur international</string>
+    <string name="help_international_only">
+        <![CDATA[
+        Die meisten APIs benötigen die Landesvorwahl.<br>
+        <br>
+        - <b>Wenn aktiviert</b>:<br>
+        &ensp; Es werden nur internationale Nummern überprüft, die mit "+" beginnen; nationale Nummern werden ignoriert.<br>
+        <br>
+        - <b>Wenn deaktiviert</b>:<br>
+        &ensp; Es werden auch nationale Nummern überprüft; Sie müssen eine feste Landesvorwahl einstellen oder die automatische Erkennung zulassen.
+        ]]>
+    </string>
+    <string name="checking_template">Prüfe: %s</string>
+    <string name="skip_for_testing">Zum Testen überspringen.</string>
+    <string name="allowed_by">Zulässig durch: %s</string>
+    <string name="blocked_by">Blockiert durch: %s</string>
+    <string name="outside_time_schedule">Außerhalb des Zeitplans, überspringen.</string>
+    <string name="android_ver_lower_than_11">Android-Version ist niedriger als 11, überspringen.</string>
+</resources>

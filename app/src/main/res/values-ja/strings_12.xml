@@ -1,0 +1,107 @@
+<resources>
+    <string name="automatic">自動</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        着信番号をオンラインでリアルタイムに照会します。複数のAPIエンドポイントが同時に照会されます。<br>
+        <br>
+        これは通話にのみ適用され、SMSメッセージには適用されません。<br>
+        <br>
+        他のすべてのルールをクリアした通話の場合のみトリガーされます。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">瞬時照会</string>
+    <string name="negative_identifier">ネガティブ識別子</string>
+    <string name="hint_negative_identifier">
+        例: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        この正規表現パターンが結果に見つかった場合、迷惑電話番号として識別されます。
+    </string>
+    <string name="positive_identifier">ポジティブ識別子</string>
+    <string name="hint_positive_identifier">
+        例: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        任意。<br>
+        この正規表現パターンが結果に見つかった場合、迷惑電話番号以外として識別されます。これは任意です。<br>
+        <br>
+        通常は<b>不要</b>です。一部のAPIプロバイダーは不明な番号を迷惑電話番号以外として識別します。APIが非常に正確な場合にのみ使用してください。
+        ]]>
+    </string>
+    <string name="category_identifier">カテゴリ識別子</string>
+    <string name="hint_category_identifier">
+        例: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        任意。<br>
+        番号が識別されると、この正規表現を使用してそのカテゴリ（テレマーケティング、フィッシングなど）が抽出されます。
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">照会結果の解析</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        HTTP結果を解析します。結果に特定の正規表現パターンが含まれている場合、番号は迷惑電話として識別されます。<br>
+        あれば、迷惑電話のカテゴリを結果から抽出するために、追加の正規表現パターンが使用されます。
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">着信番号の解析</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        着信電話番号が異なるタグに解析されます。<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; 先頭の国番号。<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; 国内部分。<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; 上記2つの連結に相当する電話番号全体。<br>
+        <br>
+        これらのタグを使用してHTTP URLを作成します。例:<br>
+        <br>
+        1. <b>+122222</b>のような国際番号の場合、これらは同等です。<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        これはhttps://test.com/number=<b>122222</b>に解析されます。<br>
+        <br>
+        2. <b>12345</b>のような国内番号の場合、設定で国番号を指定するか、アプリで自動的に検出させる必要があります。<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">国番号の自動検出</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        国際的に頻繁に旅行する場合は、これを有効にすると、国番号が変更されたときに自動的に検出されます。<br>
+        <br>
+        READ_PHONE_STATE権限が必要です。
+        ]]>
+    </string>
+    <string name="country_code">国番号</string>
+    <string name="fixed_country_code">固定CC</string>
+    <string name="api_services">APIサービス</string>
+    <string name="query_timeout">照会タイムアウト</string>
+    <string name="help_query_timeout">
+        Androidの発信者番号表示機能には、5秒の応答時間制限があります。このアプリはデフォルトで4秒を使用し、他のルールに1秒残します。タイムアウトしたリクエストは破棄されます。
+    </string>
+    <string name="international_only">国際番号のみ</string>
+    <string name="help_international_only">
+        <![CDATA[
+        ほとんどのAPIでは国番号が必要です。<br>
+        <br>
+        - <b>有効な場合</b>:<br>
+        &ensp; "+"で始まる国際番号のみチェックされ、国内番号は無視されます。<br>
+        <br>
+        - <b>無効な場合</b>:<br>
+        &ensp; 国内番号もチェックされます。固定の国番号を設定するか、自動的に検出させる必要があります。
+        ]]>
+    </string>
+    <string name="checking_template">確認中: %s</string>
+    <string name="skip_for_testing">テストのためスキップ。</string>
+    <string name="allowed_by">許可: %s</string>
+    <string name="blocked_by">ブロック: %s</string>
+    <string name="outside_time_schedule">時間外のためスキップ。</string>
+    <string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
+</resources>

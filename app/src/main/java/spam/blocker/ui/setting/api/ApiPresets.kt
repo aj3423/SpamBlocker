@@ -12,23 +12,23 @@ class ApiPreset(
     val newInstance: (Context) -> Api,
 )
 
-val ApiPresets = listOf(
+val ApiPresets = listOf<ApiPreset>(
 
     // FTC Do Not Call, update every Monday~Friday @ 18:00:00
-    ApiPreset(
-        tooltipId = R.string.help_bot_preset_dnc,
-    ) { ctx ->
-        Api(
-            desc = ctx.getString(R.string.bot_preset_dnc),
-            enabled = true,
-            actions = listOf(
-                HttpDownload(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
-                ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
-                // no need to add ClearNumber here
-                ImportToSpamDB(),
-            )
-        )
-    },
+//    ApiPreset(
+//        tooltipId = R.string.help_bot_preset_dnc,
+//    ) { ctx ->
+//        Api(
+//            desc = ctx.getString(R.string.bot_preset_dnc),
+//            enabled = true,
+//            actions = listOf(
+//                HttpDownload(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
+//                ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
+//                // no need to add ClearNumber here
+//                ImportToSpamDB(),
+//            )
+//        )
+//    },
 
 
 )

@@ -1,0 +1,107 @@
+<resources>
+    <string name="automatic">Otomatik</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Gelen numarayı gerçek zamanlı olarak çevrimiçi olarak sorgulayın, birden çok API uç noktası aynı anda sorgulanacaktır.<br>
+        <br>
+        Yalnızca aramalar için geçerlidir, SMS mesajları için değil.<br>
+        <br>
+        Yalnızca arama diğer tüm kuralları geçtiğinde tetiklenecektir.<br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Anında Sorgu</string>
+    <string name="negative_identifier">Negatif Tanımlayıcı</string>
+    <string name="hint_negative_identifier">
+        Örn.: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Sonuçta bu regex deseni bulunursa spam numarası olarak tanımlanacaktır.
+    </string>
+    <string name="positive_identifier">Pozitif Tanımlayıcı</string>
+    <string name="hint_positive_identifier">
+        Örn.: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        İsteğe bağlı.<br>
+        Sonuçta bu regex deseni bulunursa spam olmayan numara olarak tanımlanacaktır, isteğe bağlıdır.<br>
+        <br>
+        Genellikle bu <b>gerekli değildir</b>, bazı API sağlayıcıları bilinmeyen numaraları spam olmayan olarak tanımlar, yalnızca API gerçekten doğru olduğunda bunu kullanın.
+        ]]>
+    </string>
+    <string name="category_identifier">Kategori Tanımlayıcı</string>
+    <string name="hint_category_identifier">
+        Örn.: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        İsteğe bağlı. <br>
+        Bir numara tanımlandıktan sonra, bu regex kategorisini (telepazarlama, kimlik avı vb.) çıkarmak için kullanılır.
+        ]]>
+    </string>
+    <string name="actionn_parse_query_result">Sorgu Sonucunu Ayrıştır</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        HTTP sonucunu ayrıştırın, sonuçta belirli bir regex deseni içeriyorsa numara spam olarak tanımlanacaktır.<br>
+        Varsa, spam kategorisini sonuçtan çıkarmak için ek bir regex deseni kullanılacaktır.
+        ]]>
+    </string>
+    <string name="actionn_parse_incoming_number">Gelen Numarayı Ayrıştır</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        Gelen arama numarası farklı etiketlere ayrıştırılacaktır:<br>
+        <br>
+        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
+        &emsp; Baştaki ülke kodu.<br>
+        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &emsp; Yerel kısım.<br>
+        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
+        &emsp; Yukarıdakilerin birleştirilmesine eşdeğer olan tam numara.<br>
+        <br>
+        Bu etiketler HTTP URL\'sini oluşturmak için kullanılacaktır, örneğin:<br>
+        <br>
+        1. <b>+122222</b> gibi uluslararası numaralar için bunlar eşdeğerdir.<br>
+        <br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Şu şekilde ayrıştırılacaktır: https://test.com/number=<b>122222</b><br>
+        <br>
+        2. <b>12345</b> gibi yerel numaralar için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
+        ]]>
+    </string>
+    <string name="auto_detect_country_code">Ülke Kodunu Otomatik Algıla</string>
+    <string name="help_auto_detect_country_code">
+        <![CDATA[
+        Sık sık uluslararası seyahat ediyorsanız, ülke kodu değiştiğinde otomatik olarak algılanacaktır.<br>
+        <br>
+        READ_PHONE_STATE izni gerektirir.
+        ]]>
+    </string>
+    <string name="country_code">Ülke Kodu</string>
+    <string name="fixed_country_code">Sabit Ülke Kodu</string>
+    <string name="api_services">API Hizmetleri</string>
+    <string name="query_timeout">Sorgu Zaman Aşımı</string>
+    <string name="help_query_timeout">
+        Android\'in arama engelleme özelliğinin 5 saniyelik bir yanıt süresi sınırı vardır, bu uygulama varsayılan olarak 4 saniye kullanır ve diğer kurallar için 1 saniye bırakır. Zaman aşımına uğramış istekler atılacaktır.
+    </string>
+    <string name="international_only">Yalnızca Uluslararası</string>
+    <string name="help_international_only">
+        <![CDATA[
+        Çoğu API ülke kodunu gerektirir.<br>
+        <br>
+        - <b>Etkinleştirildiğinde</b>:<br>
+        &ensp; Yalnızca "+" ile başlayan uluslararası numaraları kontrol edecektir, yerel numaralar göz ardı edilecektir.<br>
+        <br>
+        - <b>Devre dışı bırakıldığında</b>:<br>
+        &ensp; Yerel numaraları da kontrol edecektir, sabit bir ülke kodu ayarlamanız veya otomatik olarak algılamasına izin vermeniz gerekecektir.
+        ]]>
+    </string>
+    <string name="checking_template">Kontrol ediliyor: %s</string>
+    <string name="skip_for_testing">Test için atla.</string>
+    <string name="allowed_by">İzin verildi: %s</string>
+    <string name="blocked_by">Engellendi: %s</string>
+    <string name="outside_time_schedule">Zaman çizelgesinin dışında, atla.</string>
+    <string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
+</resources>

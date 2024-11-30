@@ -1,0 +1,32 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Nettoyage de la base de données d\'historique, suppression des enregistrements avant l\'horodatage : %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Nettoyage de la base de données des appels indésirables, suppression de %s enregistrements avant l\'horodatage : %s.
+    </string>
+    <string name="resolved_url">URL résolue : %s.</string>
+    <string name="resolved_path">Chemin résolu : %s.</string>
+    <string name="resolved_filename">Nom de fichier résolu : %s.</string>
+    <string name="time_cost">Temps de traitement : %s millisecondes.</string>
+    <string name="parsed_n_rules">%s règles analysées.</string>
+    <string name="add_n_numbers_to_spam_db">Ajout de %s numéros à la base de données des appels indésirables.</string>
+    <string name="nothing_to_import">La liste des numéros est vide, rien à importer.</string>
+    <string name="importing_n_numbers">Importation de %s numéros en tant que règle d\'expression régulière.</string>
+    <string name="create_rule_with_numbers">Création d\'une règle avec %s numéros.</string>
+    <string name="replace_rule_with_desc">Remplacement de la règle par la description : %s.</string>
+    <string name="rule_with_desc_not_found">Règle avec la description %s introuvable.</string>
+    <string name="merging_rule_with_desc">Fusion de la règle avec la description : %s.</string>
+    <string name="regex_count_after_merge">Nombre d\'expressions régulières avant : %s, après : %s.</string>
+    <string name="replace_number_from_to">Remplacement du numéro de %s à %s.</string>
+    <string name="find_rule_with_desc">%s règles trouvées avec la description %s.</string>
+    <string name="modify_n_rules">Modification de %s règles.</string>
+    <string name="parse_number_fail">Échec de l\'analyse du numéro : %s.</string>
+    <string name="error_international_only">internationOnly est activé mais le numéro n\'est pas au format international, saut.</string>
+    <string name="permission_not_granted">Autorisation non accordée.</string>
+    <string name="fail_detect_cc">Échec de la détection de l\'indicatif pays.</string>
+    <string name="empty_fixed_cc">L\'indicatif pays fixe est vide.</string>
+    <string name="identified_as_spam">Identifié comme numéro indésirable, catégorie : %s.</string>
+    <string name="identified_as_valid">Identifié comme numéro valide, catégorie : %s.</string>
+    <string name="unidentified_number">Numéro non identifié.</string>
+</resources>

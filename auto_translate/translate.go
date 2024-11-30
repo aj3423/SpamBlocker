@@ -196,7 +196,7 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	}
 	if strings.HasPrefix(ret, "```xml") {
 		lines := split_lines(ret)
-		ret = join_lines(lines[1 : len(lines)-1])
+		ret = join_lines(lines[1 : len(lines)-2]) // the last line must be ```
 	}
 
 	if !strings.HasPrefix(ret, "<resources>") {
