@@ -3,6 +3,7 @@ package spam.blocker.util
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -35,15 +36,13 @@ private suspend fun <C, R> racing(
 
     val jobs = competitors.map { competitor ->
         scope.launch {
-            withContext(Dispatchers.IO) {
-                val result = runner(competitor)()
+            val result = runner(competitor)()
 
-                // set the channel if it's not null
-                if (result != null)
-                    resultChannel.send(
-                        Pair(competitor, result as R?)
-                    )
-            }
+            // set the channel if it's not null
+            if (result != null)
+                resultChannel.send(
+                    Pair(competitor, result as R?)
+                )
         }
     }
 
