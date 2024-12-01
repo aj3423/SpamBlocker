@@ -4,7 +4,9 @@ import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import spam.blocker.util.Lambda
 
 object SnackBar {
@@ -17,17 +19,19 @@ object SnackBar {
         onAction: Lambda
     ) {
         coroutine.launch {
-            // cancel previous
-            dismiss()
+            withContext(Dispatchers.IO) {
+                // cancel previous
+                dismiss()
 
-            val result = state.showSnackbar(
-                if (content.length > 50) content.substring(0, 50) + "…" else content,
-                actionLabel,
-                withDismissAction = false,
-                duration = SnackbarDuration.Short
-            )
-            if (result == SnackbarResult.ActionPerformed) {
-                onAction()
+                val result = state.showSnackbar(
+                    if (content.length > 50) content.substring(0, 50) + "…" else content,
+                    actionLabel,
+                    withDismissAction = false,
+                    duration = SnackbarDuration.Short
+                )
+                if (result == SnackbarResult.ActionPerformed) {
+                    onAction()
+                }
             }
         }
     }

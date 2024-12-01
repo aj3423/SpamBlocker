@@ -75,7 +75,9 @@ fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
             R.drawable.ic_question, ColdGrey, M
                 .size(30.dp)
                 .clickable { // put before `.padding` for larger clicking area
-                    scope.launch { tooltipState.show() }
+                    scope.launch {
+                        tooltipState.show()
+                    }
                 }
                 .padding(horizontal = 6.dp)
         )

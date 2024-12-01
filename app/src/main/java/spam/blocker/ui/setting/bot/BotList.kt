@@ -19,8 +19,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import spam.blocker.Events
 import spam.blocker.G
@@ -74,9 +76,11 @@ fun CountdownMenuItem(bot: Bot) {
 
     DisposableEffect(true) {
         val job = coroutineScope.launch {
-            while (true) {
-                delay(500) // Delay for 1 second
-                refreshLabel()
+            withContext(Dispatchers.IO) {
+                while (true) {
+                    delay(500) // Delay for 1 second
+                    refreshLabel()
+                }
             }
         }
         onDispose {

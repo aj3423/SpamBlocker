@@ -7,6 +7,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 
 
@@ -34,13 +35,15 @@ private suspend fun <C, R> racing(
 
     val jobs = competitors.map { competitor ->
         scope.launch {
-            val result = runner(competitor)()
+            withContext(Dispatchers.IO) {
+                val result = runner(competitor)()
 
-            // set the channel if it's not null
-            if (result != null)
-                resultChannel.send(
-                    Pair(competitor, result as R?)
-                )
+                // set the channel if it's not null
+                if (result != null)
+                    resultChannel.send(
+                        Pair(competitor, result as R?)
+                    )
+            }
         }
     }
 

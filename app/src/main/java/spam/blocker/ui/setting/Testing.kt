@@ -13,7 +13,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -86,16 +88,18 @@ fun PopupTesting(
         buttons = { // Test Button
 
             StrokeButton(label = Str(R.string.test), color = Teal200) {
-                clearResult()
                 logTrigger.value = true
+                clearResult()
 
                 val textLogger = TextLogger(logStr, C)
 
                 coroutine.launch {
-                    if (vm.selectedType.intValue == 0/* for call */)
-                        CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
-                    else
-                        SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
+                    withContext(Dispatchers.IO) {
+                        if (vm.selectedType.intValue == 0/* for call */)
+                            CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
+                        else
+                            SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
+                    }
                 }
             }
         },
