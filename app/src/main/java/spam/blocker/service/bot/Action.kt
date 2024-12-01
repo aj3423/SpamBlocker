@@ -78,8 +78,10 @@ data class ActionContext(
     var rawNumber: String? = null,
     // The action `ParseIncomingNumber` will parse the rawNumber and fill these values,
     //  they will be used in `HttpDownload`
-    var cc: String? = null,
-    var domestic: String? = null,
+    // For the number "+12223334444"
+    var cc: String? = null, // "1"
+    var domestic: String? = null, // "2223334444"
+    var fullNumber: String? = null, // "12223334444"
 )
 
 interface IAction {

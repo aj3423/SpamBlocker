@@ -16,7 +16,7 @@
     <string name="http_header">En-tête HTTP</string>
     <string name="help_http_header">
         <![CDATA[
-        Un attribut par ligne, par exemple :
+        Un attribut par ligne.
         ]]>
     </string>
     <string name="log_sms_content_to_db">Journaliser les SMS</string>

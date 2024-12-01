@@ -280,14 +280,14 @@ fun NumberInputBox(
         trailingIcon = {
             RowVCenter {
                 if (lastText.isNotEmpty()) {
-                    IconButton(
-                        onClick = {
+                    GreyIcon16(
+                        R.drawable.ic_clear,
+                        modifier = M.clickable{
                             state = TextFieldValue()
                             lastText = ""
                             onValueChange(null, true)
-                        }) {
-                        GreyIcon16(R.drawable.ic_clear)
-                    }
+                        }
+                    )
                 }
                 helpTooltipId?.let {
                     BalloonQuestionMark(LocalContext.current.getString(it))
@@ -346,14 +346,14 @@ fun StrInputBox(
         trailingIcon = {
             RowVCenter {
                 if (lastText.isNotEmpty()) {
-                    IconButton(
-                        onClick = {
+                    GreyIcon16(
+                        R.drawable.ic_clear,
+                        modifier = M.clickable{
                             state = TextFieldValue()
                             lastText = ""
                             onValueChange("")
-                        }) {
-                        GreyIcon16(R.drawable.ic_clear)
-                    }
+                        }
+                    )
                 }
                 helpTooltipId?.let {
                     BalloonQuestionMark(LocalContext.current.getString(it))

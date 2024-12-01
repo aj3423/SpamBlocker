@@ -29,4 +29,25 @@
     <string name="identified_as_spam">Identifié comme numéro indésirable, catégorie : %s.</string>
     <string name="identified_as_valid">Identifié comme numéro valide, catégorie : %s.</string>
     <string name="unidentified_number">Numéro non identifié.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Balises prises en charge lors de la requête de numéros :<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Le code pays.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; La partie nationale.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Le numéro complet, incluant le code pays et la partie nationale, sans le + et les 0 en tête.<br>
+        <br>
+        Balises prises en charge lors du téléchargement des fichiers de base de données :<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; L\'année, par exemple : 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Les nombres à un seul chiffre seront complétés par un zéro en tête, par exemple :<br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Ces valeurs seront complétées sans zéro en tête, par exemple :<br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
 </resources>

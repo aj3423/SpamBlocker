@@ -194,6 +194,7 @@ open class HttpDownload(
                     .resolveNumberTag(
                         cc = aCtx.cc,
                         domestic = aCtx.domestic,
+                        fullNumber = aCtx.fullNumber,
                     )
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
 
@@ -262,25 +263,22 @@ open class HttpDownload(
 
     @Composable
     override fun Options() {
-        val C = LocalPalette.current
-
         StrInputBox(
             text = url,
             label = { Text(Str(R.string.url)) },
+            leadingIconId = R.drawable.ic_link,
             placeholder = { DimGreyLabel("https://...") },
+            helpTooltipId = R.string.help_http_url,
             onValueChange = { url = it }
         )
 
         StrInputBox(
             text = header,
             label = { Text(Str(R.string.http_header)) },
+            leadingIconId = R.drawable.ic_http_header,
             onValueChange = { header = it },
-            placeholder = {
-                DimGreyLabel(
-                    Str(R.string.help_http_header) + "\n\nUser-Agent: Chrome\nAuthorization: Basic ABC\n…",
-                    color = C.textGrey.copy(alpha = 0.6f)
-                )
-            }
+            helpTooltipId = R.string.help_http_header,
+            placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
         )
     }
 }
@@ -1513,19 +1511,18 @@ class ParseIncomingNumber(
         val rawNumber = aCtx.rawNumber!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 
+        val clearedNumber = Util.clearNumber(rawNumber)
+
         // Case 1: the number starts with "+"
         if (rawNumber.startsWith("+")) {
-            val (ok, cc, domestic) = CountryCode.parseNumber(Util.clearNumber(rawNumber))
+            aCtx.fullNumber = clearedNumber
+            val (ok, cc, domestic) = CountryCode.parseCcDomestic(clearedNumber)
             if (ok) {
                 aCtx.cc = cc
                 aCtx.domestic = domestic
-                return true
-            } else {
-                aCtx.logger?.debug(ctx.getString(R.string.parse_number_fail)
-                    .format(rawNumber))
-                return false
             }
-        } else {
+            return true
+        } else { // not start with "+"
             if (internationOnly) {
                 aCtx.logger?.debug(ctx.getString(R.string.error_international_only))
                 return false
@@ -1542,7 +1539,7 @@ class ParseIncomingNumber(
                     return false
                 }
                 aCtx.cc = cc.toString()
-                aCtx.domestic = Util.clearNumber(rawNumber)
+                aCtx.domestic = clearedNumber
             } else {
                 if (fixedCC.isEmpty()) {
                     aCtx.logger?.error(ctx.getString(R.string.empty_fixed_cc))

@@ -105,4 +105,5 @@
     <string name="blocked_by">Bloqueado por: %s</string>
     <string name="outside_time_schedule">Fora do horário programado, ignorar.</string>
     <string name="android_ver_lower_than_11">Versão do Android inferior a 11, ignorar.</string>
+    <string name="query">Consulta</string>
 </resources>

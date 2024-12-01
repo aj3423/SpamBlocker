@@ -16,7 +16,7 @@
     <string name="http_header">Cabeçalho Http</string>
     <string name="help_http_header">
         <![CDATA[
-        Um atributo por linha, por exemplo:
+        Um atributo por linha.
         ]]>
     </string>
     <string name="log_sms_content_to_db">Registrar SMS</string>

@@ -29,4 +29,26 @@
     <string name="identified_as_spam">Identified as spam number, category: %s.</string>
     <string name="identified_as_valid">Identified as valid number, category: %s.</string>
     <string name="unidentified_number">Unidentified number.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Supported tags when querying numbers:<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; The country code.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; The domestic part.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; The full number, including both country code and domestic part, without leading + and 0s.<br>
+        <br>
+        Supported tags when downloading database files:<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; The year, e.g.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Single-digit number will be padded with leading zero, e.g.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; These values will be padded without leading zero, e.g.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+
 </resources>

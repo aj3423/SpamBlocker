@@ -29,4 +29,25 @@
     <string name="identified_as_spam">Определено как спам-номер, категория: %s.</string>
     <string name="identified_as_valid">Определено как валидный номер, категория: %s.</string>
     <string name="unidentified_number">Неизвестный номер.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Поддерживаемые теги при запросе номеров:<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Код страны.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; Внутренняя часть номера.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Полный номер, включая код страны и внутреннюю часть, без ведущих + и 0.<br>
+        <br>
+        Поддерживаемые теги при загрузке файлов базы данных:<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; Год, например: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Однозначные числа дополняются ведущим нулём, например:<br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Эти значения дополняются без ведущего нуля, например:<br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
 </resources>

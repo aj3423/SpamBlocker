@@ -12,7 +12,7 @@ object CountryCode {
     // e.g.:
     //   12223334444 will be parsed to
     //     cc = 1, domestic = 2223334444
-    fun parseNumber(fullNumber: String): Triple<Boolean, String, String> {
+    fun parseCcDomestic(fullNumber: String): Triple<Boolean, String, String> {
         val pattern = Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$")
         val matcher = pattern.matcher(fullNumber)
 

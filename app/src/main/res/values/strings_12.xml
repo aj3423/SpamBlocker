@@ -12,6 +12,7 @@
         ]]>
     </string>
     <string name="instant_query">Instant Query</string>
+    <string name="query">Query</string>
     <string name="negative_identifier">Negative Identifier</string>
     <string name="hint_negative_identifier">
         E.g.: (\"valid\":false)

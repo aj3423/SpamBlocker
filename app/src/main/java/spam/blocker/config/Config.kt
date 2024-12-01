@@ -3,6 +3,8 @@ package spam.blocker.config
 import android.content.Context
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
+import spam.blocker.db.Api
+import spam.blocker.db.ApiTable
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRuleTable
@@ -363,6 +365,23 @@ class QuickCopyRules : PatternRules() {
 }
 
 @Serializable
+class Apis {
+    val apis = mutableListOf<Api>()
+
+    fun load(ctx: Context) {
+        apis.clear()
+        apis.addAll(ApiTable.listAll(ctx))
+    }
+
+    fun apply(ctx: Context) {
+        ApiTable.clearAll(ctx)
+        apis.forEach {
+            ApiTable.addRecordWithId(ctx, it)
+        }
+    }
+}
+
+@Serializable
 class Bots {
     val bots = mutableListOf<Bot>()
 
@@ -416,6 +435,7 @@ class Configs {
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
 
+    val apis = Apis()
     val bots = Bots()
 
     val spamNumbers = SpamNumbers()
@@ -442,6 +462,7 @@ class Configs {
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
 
+        apis.load(ctx)
         bots.load(ctx)
 
         if (includeSpamDB)
@@ -470,6 +491,7 @@ class Configs {
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
 
+        apis.apply(ctx)
         bots.apply(ctx)
 
         if (includeSpamDB)

@@ -29,4 +29,25 @@
     <string name="identified_as_spam">Identificado como número spam, categoría: %s.</string>
     <string name="identified_as_valid">Identificado como número válido, categoría: %s.</string>
     <string name="unidentified_number">Número no identificado.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Etiquetas compatibles al consultar números:<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; El código de país.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; La parte nacional.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; El número completo, incluyendo el código de país y la parte nacional, sin el + inicial y los 0s.<br>
+        <br>
+        Etiquetas compatibles al descargar archivos de base de datos:<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; El año, ej.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Los números de un solo dígito se rellenarán con un cero inicial, ej.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Estos valores se rellenarán sin cero inicial, ej.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
 </resources>

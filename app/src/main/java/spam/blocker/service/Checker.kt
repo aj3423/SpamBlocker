@@ -988,7 +988,7 @@ class Checker { // for namespace only
                 Def.RESULT_ALLOWED_BY_RECENT_APP -> res.getString(R.string.recent_apps) + " "
                 Def.RESULT_BLOCKED_BY_MEETING_MODE -> res.getString(R.string.in_meeting) + " "
                 Def.RESULT_BLOCKED_BY_INSTANT_QUERY, Def.RESULT_ALLOWED_BY_INSTANT_QUERY ->
-                    res.getString(R.string.instant_query) + ": " + reason
+                    res.getString(R.string.query) + ": " + reason
 
                 Def.RESULT_ALLOWED_BY_REPEATED -> res.getString(R.string.repeated_call)
                 Def.RESULT_ALLOWED_BY_DIALED -> res.getString(R.string.dialed_number)

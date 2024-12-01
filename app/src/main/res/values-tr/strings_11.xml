@@ -15,7 +15,7 @@
     <string name="http_header">Http Başlığı</string>
     <string name="help_http_header">
         <![CDATA[
-        Satır başına bir öznitelik, örneğin:
+        Satır başına bir özellik.
         ]]>
     </string>
     <string name="log_sms_content_to_db">SMS Kaydet</string>

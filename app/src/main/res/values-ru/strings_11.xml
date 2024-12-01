@@ -16,7 +16,7 @@
     <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
         <![CDATA[
-        Один атрибут на строку, например:
+        Один атрибут на строку.
         ]]>
     </string>
     <string name="log_sms_content_to_db">Лог SMS</string>

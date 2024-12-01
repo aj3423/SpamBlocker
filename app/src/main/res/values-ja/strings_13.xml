@@ -29,4 +29,25 @@
     <string name="identified_as_spam">スパム番号と識別されました。カテゴリ: %s。</string>
     <string name="identified_as_valid">有効な番号と識別されました。カテゴリ: %s。</string>
     <string name="unidentified_number">未識別番号。</string>
+    <string name="help_http_url">
+        <![CDATA[
+        電話番号を問い合わせる際のサポートタグ:<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; 国番号。<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; 国内番号。<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; 国番号と国内番号を含む電話番号全体（先頭の+と0を除く）。<br>
+        <br>
+        データベースファイルをダウンロードする際のサポートタグ:<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; 年、例: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; 1桁の数字には先頭に0が追加されます。例: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; これらの値には先頭に0は追加されません。例: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
 </resources>

@@ -29,4 +29,25 @@
     <string name="identified_as_spam">Spam numarası olarak tanımlandı, kategori: %s.</string>
     <string name="identified_as_valid">Geçerli numara olarak tanımlandı, kategori: %s.</string>
     <string name="unidentified_number">Tanımlanamayan numara.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Numaraları sorgularken desteklenen etiketler:<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Ülke kodu.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; Yerel kısım.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Ülke kodu ve yerel kısmı içeren, başında + ve 0 olmayan tam numara.<br>
+        <br>
+        Veritabanı dosyalarını indirilirken desteklenen etiketler:<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; Yıl, örn.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Tek basamaklı sayılar başa 0 eklenerek doldurulur, örn.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Bu değerler başa 0 eklenmeden doldurulur, örn.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
 </resources>

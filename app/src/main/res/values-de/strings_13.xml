@@ -29,4 +29,25 @@
     <string name="identified_as_spam">Als Spam-Nummer identifiziert, Kategorie: %s.</string>
     <string name="identified_as_valid">Als gültige Nummer identifiziert, Kategorie: %s.</string>
     <string name="unidentified_number">Unbekannte Nummer.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Unterstützte Tags beim Abfragen von Nummern:<br>
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Die Landesvorwahl.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; Der nationale Teil.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Die vollständige Nummer, einschließlich Landesvorwahl und nationalem Teil, ohne führende + und 0en.<br>
+        <br>
+        Unterstützte Tags beim Herunterladen von Datenbankdateien:<br>
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; Das Jahr, z. B.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Einstellige Zahlen werden mit einer führenden Null aufgefüllt, z. B.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Diese Werte werden ohne führende Null aufgefüllt, z. B.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
 </resources>

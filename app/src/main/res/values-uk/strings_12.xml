@@ -111,4 +111,5 @@
     <string name="blocked_by">Заблоковано: %s</string>
     <string name="outside_time_schedule">За межами графіка, пропущено.</string>
     <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
+    <string name="query">Запит</string>
 </resources>

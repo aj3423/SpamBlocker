@@ -16,7 +16,7 @@
     <string name="http_header">Http-Header</string>
     <string name="help_http_header">
         <![CDATA[
-        Ein Attribut pro Zeile, zum Beispiel:
+        Ein Attribut pro Zeile.
         ]]>
     </string>
     <string name="log_sms_content_to_db">SMS protokollieren</string>

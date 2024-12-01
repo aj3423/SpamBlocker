@@ -16,7 +16,7 @@
     <string name="http_header">HTTPヘッダー</string>
     <string name="help_http_header">
         <![CDATA[
-        1行に1つの属性。例:
+        1行につき1つの属性。
         ]]>
     </string>
     <string name="log_sms_content_to_db">SMSをログに記録</string>
