@@ -25,10 +25,9 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        Optional.<br>
-        Wenn dieses Regex-Muster im Ergebnis gefunden wird, wird die Nummer als Nicht-Spam-Nummer identifiziert. Dies ist optional.<br>
+        Die Nummer wird als Nicht-Spam-Nummer identifiziert, wenn dieses Regex-Muster im Ergebnis gefunden wird. Dies ist optional.<br>
         <br>
-        Normalerweise ist dies <b>nicht notwendig</b>; einige API-Anbieter identifizieren unbekannte Nummern als Nicht-Spam. Verwenden Sie dies nur, wenn die API wirklich präzise ist.
+        Normalerweise ist dies <b>nicht notwendig</b>, einige API-Anbieter identifizieren unbekannte Nummern als Nicht-Spam. Verwenden Sie dies nur, wenn die API wirklich präzise ist.
         ]]>
     </string>
     <string name="category_identifier">Kategorie-Identifier</string>
@@ -84,7 +83,11 @@
     <string name="api_services">API-Dienste</string>
     <string name="query_timeout">Abfrage-Timeout</string>
     <string name="help_query_timeout">
-        Die Anruf-Screening-Funktion von Android hat eine Antwortzeitbegrenzung von 5 Sekunden; diese App verwendet standardmäßig 4 Sekunden und lässt 1 Sekunde für andere Regeln übrig. Zeitüberschreitende Anfragen werden verworfen.
+        <![CDATA[
+        Die Anruf-Screening-Funktion von Android hat ein Antwortzeitlimit von 5 Sekunden. Der Anruf beginnt zu klingeln, wenn ein Timeout auftritt.<br>
+        Die App verwendet standardmäßig 4 Sekunden und lässt 1 Sekunde für andere Regeln übrig.<br>
+        Zeitüberschreitende Anfragen werden verworfen.
+        ]]>
     </string>
     <string name="international_only">Nur international</string>
     <string name="help_international_only">

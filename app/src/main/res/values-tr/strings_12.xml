@@ -25,10 +25,9 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        İsteğe bağlı.<br>
-        Sonuçta bu regex deseni bulunursa spam olmayan numara olarak tanımlanacaktır, isteğe bağlıdır.<br>
+        Sonuçta bu düzenli ifade kalıbı bulunursa spam olmayan numara olarak tanımlanacaktır, isteğe bağlıdır.<br>
         <br>
-        Genellikle bu <b>gerekli değildir</b>, bazı API sağlayıcıları bilinmeyen numaraları spam olmayan olarak tanımlar, yalnızca API gerçekten doğru olduğunda bunu kullanın.
+        Genellikle <b>gereksizdir</b>, bazı API sağlayıcıları bilinmeyen numaraları spam olmayan olarak tanımlar, yalnızca API gerçekten doğru olduğunda kullanın.
         ]]>
     </string>
     <string name="category_identifier">Kategori Tanımlayıcı</string>
@@ -84,7 +83,12 @@
     <string name="api_services">API Hizmetleri</string>
     <string name="query_timeout">Sorgu Zaman Aşımı</string>
     <string name="help_query_timeout">
-        Android\'in arama engelleme özelliğinin 5 saniyelik bir yanıt süresi sınırı vardır, bu uygulama varsayılan olarak 4 saniye kullanır ve diğer kurallar için 1 saniye bırakır. Zaman aşımına uğramış istekler atılacaktır.
+        <![CDATA[
+        Android\'in arama engelleme özelliğinin 5 saniyelik yanıt süresi limiti vardır,<br>
+        zaman aşımı olursa arama çalmaya başlar.<br>
+        Uygulama varsayılan olarak 4 saniye kullanır ve diğer kurallar için 1 saniye bırakır.<br>
+        Zaman aşımına uğramış istekler atılacaktır.
+        ]]>
     </string>
     <string name="international_only">Yalnızca Uluslararası</string>
     <string name="help_international_only">

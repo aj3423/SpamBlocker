@@ -1,54 +1,49 @@
 # Contribution Documentation
 
-__Community support is very important, any help is greatly appreciated.__
+__Any help is greatly appreciated.__
 
 ### Table of Contents
 
 - [For translator](#for-translator)
 - [For coder/developer](#for-coderdeveloper)
-- [Installing SpamBlocker in Android Studio](#installing-spamblocker-in-android-studio)
-- [App Architecture](#app-architecture)
+- [Build from source](#build-from-source)
+- [New presets](#new-presets)
 
 ## For translator:
 
-You are free to propose one or more translations, or to update any existing one. Be sure of your work before providing it to the developers, who cannot verify it. You can translate it then share it via a [pull request](https://github.com/aj3423/SpamBlocker/pulls)/[issue](https://github.com/aj3423/SpamBlocker/issues/new) titled `{locale} Translation proposal` or by sending the files by email to [aj3423](https://github.com/aj3423).
+Languages are translated using AI, it's improving, but still cannot fully replicate the precision of human translation. Feel free to propose new translations, or to update any existing one. You can translate it then share it via a [pull request](https://github.com/aj3423/SpamBlocker/pulls)/[issue](https://github.com/aj3423/SpamBlocker/issues/new).
 
-For manual translation, there are two independent things to translate:
+#### Files to translate:
 
-- **App strings**: all [`strings_.xml`](../app/src/main/res/values/strings_1.xml) files contained in the [`values`](../app/src/main/res/values) folder
-    - Translate all texts between the `<string>` and `</string>` tags.
-    - Remember to insert a backslash `\` before any apostrophe `'`, or enclose all text in quotes `"`
-    - Place all translated files in the corresponding `./app/src/main/res/values-{locale}/` folder
+-  All [`strings_.xml`](../app/src/main/res/values/strings_1.xml) files in the [`values`](../app/src/main/res/values) folder 
+    - Make sure to insert a backslash `\` before any apostrophe `'` or quotes `"`
 
-<!-- - **Store strings**: the [`title.txt`](../app/src/main/play/listings/en-US/title.txt) [`short-description.txt`](../app/src/main/play/listings/en-US/short-description.txt) and/or [`full-description.txt`](../app/src/main/play/listings/en-US/full-description.txt) files
-    - Place the translated files in the corresponding `./app/src/main/play/listings/{locale}/` folder
-- Not useful actually -->
 #### Note
 * if you are unsure the locale prefix of a specific language you can find it [here](https://countrycode.org/).
-* If you are worried about making a mistake in the elements to be _(or not to be)_ translated, look at the 'strings.xml' files of the other languages are ​​already translated.
+
+#### Explanation
+* AI can't handle large files, that's why the strings.xml is split into multiple small files.
+
 
 ## For coder/developer:
 Please try to keep new codes similar to existing ones, with just a couple notes:
 
-- Please write comments. No need to write full paragraphs for each line, but at least a minor comment for functions or non-obvious blocks of code really help.
+- Please write comments.
+- Please discuss first if you want to contribute a new feature.
 
-- Try to make meaningful commits, when possible. On a PR we'll probably check everything together, but later it's nicer to have a detailed git log. For example: don't create a unique commit with everything, but also avoid very small ones. Usually a commit for each functionality/fix/improvement is enough.
 
-You can check existing code to see examples, but be aware that some are not perfect. In doubt, just ask.
+## Build from source
 
-## Installing SpamBlocker in Android Studio
-
-This is a small guide for first-time contributors to be able to build and execute this application in Android Studio.
-Note that there are several ways to prepare your computer for this purpose, and this may not be the best one for your setup, but it should work in most cases:
+This is a small guide for how to build and run this application with Android Studio:
 
 1. Download Android Studio from [here](https://developer.android.com/studio).
-2. Clone this github repository to your local workspace. You can do it from inside Android Studio Itself, or using git directly: `git clone https://github.com/aj3423/SpamBlocker.git`.
-3. Wait until the app is downloaded and parsed. You should wait until all background tasks finish. Usually you will get either a 'ready' notification or a red error. If it's the later try to fix it according to the error message and Internet's help, if you stil can't feel free to create an issue.
-4. If not yet, prepare a device emulator from the Tools->Device Manager. You can just follow the instructions in the setup dialog. This step may be automatic when you try to run the app, so if you see an emulator already there, you probably don't need to do anything else. Using your own device for testing is also possible, but it may be more difficult to setup (although, again, Android Studio should provide you with a step-by-step guide).
-5. Run the app. If step 3 was completed you should be able to just press the 'play' button (green triangle) at the top. If it is disabled it may say why, if it complains about a missing emulator, setup one using step 4.
-6. If everything went according to plan, you should be able to see the app installed in your emulator and be able to run it smoothly.
+2. Clone this github repository to your local workspace: `git clone https://github.com/aj3423/SpamBlocker.git`.
+3. Prepare a device emulator from the menu: Tools->Device Manager, follow the step-by-step guide.
+4. Run the app. If step 3 was completed you should be able to just press the 'play' button (green triangle) at the top.
+5. If everything goes well, you should be able to see the app installed in your emulator and be able to run it smoothly.
 
-## App Architecture
+## New presets
 
-Not Yet...
-    
+If you know a public database or API service that can be added to the presets, please report. 
+- PRs are welcome for public services
+- For proprietary services, I'll contact them, asking for the permission of the integration. It will only be added with their permission.

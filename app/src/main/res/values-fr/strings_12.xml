@@ -25,10 +25,9 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        Facultatif.<br>
-        Le numéro sera identifié comme non-spam si ce modèle regex est trouvé dans le résultat ; c’est facultatif.<br>
+        Le numéro sera identifié comme non-spam si ce motif d’expression régulière est trouvé dans le résultat. Ceci est facultatif.<br>
         <br>
-        Habituellement, ceci est <b>inutile</b> ; certains fournisseurs d’API identifieront les numéros inconnus comme non-spam ; utilisez ceci uniquement si l’API est vraiment précise.
+        En général, ceci est <b>inutile</b>. Certains fournisseurs d’API identifieront les numéros inconnus comme non-spam. Utilisez ceci uniquement si l’API est vraiment précise.
         ]]>
     </string>
     <string name="category_identifier">Identificateur de catégorie</string>
@@ -84,7 +83,11 @@
     <string name="api_services">Services API</string>
     <string name="query_timeout">Délai d’attente de la requête</string>
     <string name="help_query_timeout">
-        La fonction de filtrage des appels d’Android a une limite de temps de réponse de 5 secondes ; cette application utilise 4 secondes par défaut, laissant 1 seconde pour les autres règles. Les requêtes ayant dépassé le délai seront ignorées.
+        <![CDATA[
+        La fonctionnalité de filtrage des appels d’Android a une limite de temps de réponse de 5 secondes ; l’appel commencera à sonner en cas de délai d’attente.<br>
+        L’application utilise 4 secondes par défaut, laissant 1 seconde pour les autres règles.<br>
+        Les requêtes ayant expiré seront ignorées.
+        ]]>
     </string>
     <string name="international_only">International uniquement</string>
     <string name="help_international_only">

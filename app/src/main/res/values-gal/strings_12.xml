@@ -25,10 +25,9 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        Opcional.<br>
-        Identificarase como número non spam se se atopa este patrón regex no resultado, é opcional.<br>
+        Identificarase como número non spam se se encontra este patrón regex no resultado, é opcional.<br>
         <br>
-        Normalmente isto é <b>innecesario</b>, algúns provedores de API identificarán os números descoñecidos como non spam,<br>
+        Xeralmente isto é <b>innecesario</b>, algúns provedores de API identificarán números descoñecidos como non spam,<br>
         só utilízao cando a API sexa realmente precisa.
         ]]>
     </string>
@@ -87,9 +86,12 @@
     <string name="api_services">Servizos API</string>
     <string name="query_timeout">Tempo límite de consulta</string>
     <string name="help_query_timeout">
-        A función de bloqueo de chamadas de Android ten un límite de tempo de resposta de 5 segundos,
-        esta aplicación usa 4 segundos por defecto, deixando 1 segundo para outras regras.
-        As solicitudes con tempo esgotado serán descartadas.
+        <![CDATA[
+        A función de bloqueo de chamadas de Android ten un límite de tempo de resposta de 5 segundos,<br>
+        a chamada comezará a soar se se produce un tempo de espera.<br>
+        A aplicación usa 4 segundos por defecto, deixando 1 segundo para outras regras.<br>
+        As peticións con tempo de espera descartaranse.
+        ]]>
     </string>
     <string name="international_only">Só internacional</string>
     <string name="help_international_only">

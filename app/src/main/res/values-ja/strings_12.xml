@@ -25,10 +25,9 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        任意。<br>
-        この正規表現パターンが結果に見つかった場合、迷惑電話番号以外として識別されます。これは任意です。<br>
+        この正規表現パターンが結果に見つかった場合、迷惑電話ではないと識別されます。これはオプションです。<br>
         <br>
-        通常は<b>不要</b>です。一部のAPIプロバイダーは不明な番号を迷惑電話番号以外として識別します。APIが非常に正確な場合にのみ使用してください。
+        通常は<b>不要</b>です。一部のAPIプロバイダーは不明な番号を迷惑電話ではないと識別します。APIが非常に正確な場合にのみ使用してください。
         ]]>
     </string>
     <string name="category_identifier">カテゴリ識別子</string>
@@ -84,7 +83,11 @@
     <string name="api_services">APIサービス</string>
     <string name="query_timeout">照会タイムアウト</string>
     <string name="help_query_timeout">
-        Androidの発信者番号表示機能には、5秒の応答時間制限があります。このアプリはデフォルトで4秒を使用し、他のルールに1秒残します。タイムアウトしたリクエストは破棄されます。
+        <![CDATA[
+        Androidの通話スクリーニング機能には、5秒の応答時間制限があります。タイムアウトが発生すると、通話が鳴り始めます。<br>
+        アプリはデフォルトで4秒を使用し、他のルールに1秒を残します。<br>
+        タイムアウトしたリクエストは破棄されます。
+        ]]>
     </string>
     <string name="international_only">国際番号のみ</string>
     <string name="help_international_only">

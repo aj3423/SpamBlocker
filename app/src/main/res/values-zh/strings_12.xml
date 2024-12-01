@@ -25,10 +25,9 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        可选。<br>
-        如果在结果中找到此正则表达式模式，则将其识别为非垃圾号码，此项可选。<br>
+        如果在结果中找到此正则表达式模式，则将其识别为非垃圾号码，这是可选的。<br>
         <br>
-        通常情况下这是<b>不必要</b>的，一些API提供商会将未知号码识别为非垃圾号码，只有在API非常准确的情况下才使用此功能。
+        通常情况下这是<b>不需要的</b>，一些API提供商会将未知号码识别为非垃圾号码，只有在API非常准确的情况下才使用此功能。
         ]]>
     </string>
     <string name="category_identifier">类别标识符</string>
@@ -84,7 +83,11 @@
     <string name="api_services">API服务</string>
     <string name="query_timeout">查询超时</string>
     <string name="help_query_timeout">
-        Android的来电筛选功能有5秒的响应时间限制，此应用默认使用4秒，为其他规则留出1秒。超时请求将被丢弃。
+        <![CDATA[
+        Android的来电筛选功能有5秒的响应时间限制，超时将开始响铃。<br>
+        应用默认使用4秒，为其他规则留出1秒。<br>
+        超时请求将被丢弃。
+        ]]>
     </string>
     <string name="international_only">仅限国际号码</string>
     <string name="help_international_only">

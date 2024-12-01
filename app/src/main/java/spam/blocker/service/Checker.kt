@@ -34,6 +34,13 @@ import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
 
+class CheckContext(
+    val rawNumber: String,
+    val callDetails: Call.Details? = null,
+    val logger: ILogger?,
+    val startTimeMillis: Long = System.currentTimeMillis(),
+)
+
 class CheckResult(
     val shouldBlock: Boolean,
     val result: Int,

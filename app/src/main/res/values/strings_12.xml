@@ -26,7 +26,6 @@
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
-        Optional.<br>
         It will be identified as non-spam number if this regex pattern is found in the result, it\'s optional.<br>
         <br>
         Usually this is <b>unnecessary</b>, some API providers will identify unknown numbers as non-spam,
@@ -88,9 +87,12 @@
     <string name="api_services">API Services</string>
     <string name="query_timeout">Query Timeout</string>
     <string name="help_query_timeout">
+        <![CDATA[
         Android\'s call screening feature has a 5-second response time limit,
-        this app uses 4 seconds by default, leaving 1 second for other rules.
+        the call will start ringing if a timeout occurs.<br>
+        The app uses 4 seconds by default, leaving 1 second for other rules.<br>
         Timed-out requests will be discarded.
+        ]]>
     </string>
     <string name="international_only">International Only</string>
     <string name="help_international_only">
