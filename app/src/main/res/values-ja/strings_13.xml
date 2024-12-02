@@ -57,4 +57,5 @@
         APIドキュメント: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>
 </resources>

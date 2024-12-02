@@ -57,4 +57,5 @@
         API文档：https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
 </resources>

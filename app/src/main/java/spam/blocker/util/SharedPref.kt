@@ -129,8 +129,6 @@ class BotOptions(ctx: Context) : SharedPref(ctx) {
 class ApiOptions(ctx: Context) : SharedPref(ctx) {
     fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_LIST_COLLAPSED, false) }
     fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_API_LIST_COLLAPSED, enabled) }
-    fun getTimeout(): Int { return readInt(Def.SETTING_API_TIMEOUT_MILLIS, 4000) }
-    fun setTimeout(timeoutMillis: Int) { writeInt(Def.SETTING_API_TIMEOUT_MILLIS, timeoutMillis) }
 }
 
 class HistoryOptions(ctx: Context) : SharedPref(ctx) {

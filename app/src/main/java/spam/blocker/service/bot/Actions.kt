@@ -838,10 +838,18 @@ class ImportToSpamDB : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = if (aCtx.lastOutput is QueryResult) {
-            listOf(RegexRule(
-                pattern = aCtx.rawNumber!!,
-                isBlacklist = true,
-            ))
+            // Too lazy to add a new IAction for converting InstantQueryResult to List<Rule>,
+            //  just check it here...
+            val qResult = aCtx.lastOutput as QueryResult
+            if (qResult.determined && qResult.isSpam) {
+                listOf(
+                    RegexRule(
+                        pattern = aCtx.rawNumber!!,
+                        isBlacklist = true,
+                    )
+                )
+            } else
+                listOf()
         } else {
             aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
         }
@@ -1161,8 +1169,7 @@ class ConvertNumber(
             placeholder = {
                 DimGreyLabel(
                     Str(R.string.regex_pattern) + "\n"
-                            + Str(R.string.for_example) + "\n"
-                            + "(\"|-)"
+                            + Str(R.string.for_example) + " " + "(\"|-)"
                 )
             },
             regexStr = from,

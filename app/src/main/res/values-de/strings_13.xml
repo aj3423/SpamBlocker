@@ -57,4 +57,5 @@
         Die API-Dokumentation: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>
 </resources>

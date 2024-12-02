@@ -71,25 +71,6 @@ fun ApiList() {
             initialText = botPrettyJson.encodeToString(vm.apis[clickedIndex]),
         )
     }
-    val settingTrigger = remember { mutableStateOf(false) }
-    if (settingTrigger.value) {
-        PopupDialog(
-            trigger = settingTrigger,
-        ) {
-            val spf = ApiOptions(ctx)
-            var timeout by remember { mutableIntStateOf(spf.getTimeout()) }
-            NumberInputBox(
-                intValue = timeout,
-                label = { GreyLabel(Str(R.string.query_timeout)) },
-                onValueChange = { newVal, hasError ->
-                    if (!hasError) {
-                        timeout = newVal!!
-                        spf.setTimeout(newVal)
-                    }
-                }
-            )
-        }
-    }
 
     val contextMenuItems = mutableListOf<IMenuItem>(
         LabelItem(
@@ -97,13 +78,6 @@ fun ApiList() {
             icon = { GreyIcon20(R.drawable.ic_backup_export) }
         ) {
             exportTrigger.value = true
-        },
-        DividerItem(),
-        LabelItem(
-            label = ctx.getString(R.string.setting),
-            icon = { GreyIcon20(R.drawable.ic_settings) }
-        ) {
-            settingTrigger.value = true
         },
     )
 

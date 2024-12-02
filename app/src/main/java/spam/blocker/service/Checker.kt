@@ -37,7 +37,7 @@ import spam.blocker.util.race
 class CheckContext(
     val rawNumber: String,
     val callDetails: Call.Details? = null,
-    val logger: ILogger?,
+    val logger: ILogger? = null,
     val startTimeMillis: Long = System.currentTimeMillis(),
 )
 
@@ -71,14 +71,16 @@ class Checker { // for namespace only
 
     class Emergency(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val callDetails: Call.Details?
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return Int.MAX_VALUE
         }
 
         override fun check(): CheckResult? {
+            val logger = cCtx.logger
+            val callDetails = cCtx.callDetails
+
             logger?.info(
                 ctx.getString(R.string.checking_template)
                     .format(ctx.getString(R.string.emergency_call))
@@ -104,8 +106,7 @@ class Checker { // for namespace only
 
     class STIR(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val callDetails: Call.Details?
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             val isExclusive = Stir(ctx).isExclusive()
@@ -113,6 +114,9 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val logger = cCtx.logger
+            val callDetails = cCtx.callDetails
+
             val spf = Stir(ctx)
             if (!spf.isEnabled())
                 return null
@@ -173,14 +177,16 @@ class Checker { // for namespace only
     // It checks whether the number exists in the spam database.
     class SpamDB(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return 0
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             val enabled = SpamDB(ctx).isEnabled()
             if (!enabled)
                 return null
@@ -206,8 +212,7 @@ class Checker { // for namespace only
     // It checks whether the phone number belongs to a contact.
     class Contact(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             val isExclusive = Contact(ctx).isExclusive()
@@ -215,6 +220,9 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             val spf = Contact(ctx)
 
             if (!spf.isEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
@@ -248,15 +256,17 @@ class Checker { // for namespace only
 
     class RepeatedCall(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
-        private val isTesting: Boolean = false
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return 10
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+            val isTesting = cCtx.callDetails == null
+
             val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
             val canReadSMSs = Permissions.isReadSmsPermissionGranted(ctx)
 
@@ -327,14 +337,16 @@ class Checker { // for namespace only
 
     class Dialed(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return 10
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             val spf = Dialed(ctx)
             if (!spf.isEnabled()
                 || (!Permissions.isCallLogPermissionGranted(ctx) && !Permissions.isReadSmsPermissionGranted(
@@ -381,13 +393,15 @@ class Checker { // for namespace only
 
     class OffTime(
         private val ctx: Context,
-        private val logger: ILogger?,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return 10
         }
 
         override fun check(): CheckResult? {
+            val logger = cCtx.logger
+
             val spf = spam.blocker.util.SharedPref.OffTime(ctx)
             if (!spf.isEnabled()) {
                 return null
@@ -423,13 +437,15 @@ class Checker { // for namespace only
 
     class RecentApp(
         private val ctx: Context,
-        private val logger: ILogger?,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return 10
         }
 
         override fun check(): CheckResult? {
+            val logger = cCtx.logger
+
             logger?.info(
                 ctx.getString(R.string.checking_template)
                     .format(ctx.getString(R.string.recent_apps))
@@ -475,7 +491,7 @@ class Checker { // for namespace only
 
     class MeetingMode(
         private val ctx: Context,
-        private val logger: ILogger?,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
@@ -483,6 +499,8 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val logger = cCtx.logger
+
             logger?.info(
                 ctx.getString(R.string.checking_template).format(ctx.getString(R.string.in_meeting))
             )
@@ -515,29 +533,41 @@ class Checker { // for namespace only
 
     class InstantQuery(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
             return -1
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             val apis = ApiTable.listAll(ctx).filter { it.enabled }
 
             if (apis.isNotEmpty())
                 logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.instant_query)))
 
-            val timeout = ApiOptions(ctx).getTimeout().toLong()
+            // The call screening time limit is 5 seconds, with a 500ms buffer for
+            //  the inaccuracy of System.currentTimeMillis(), the total time limit
+            //  is actually 4500ms
+            val now = System.currentTimeMillis()
+            val alreadyCost = now - cCtx.startTimeMillis
+            val buffer = 500
+            val timeLeft = 5000 - buffer - alreadyCost
+            if (timeLeft <= 0) {
+                logger?.warn(ctx.getString(R.string.not_enough_time_left).format(
+                    "$buffer", "${5000-buffer}", "$alreadyCost"))
+                return null
+            }
 
-            // Run all apis simultaneously
-            // get the first non-null return value, and stop all others
+            // Run all apis simultaneously, get the first non-null result,
+            //  and return that result immediately without waiting for others to finish.
             var (winnerApi, result) = race(
                 competitors = apis,
                 runner = {
                     {
                         try {
-
                             val aCtx = ActionContext(
                                 logger = logger,
                                 rawNumber = rawNumber,
@@ -558,7 +588,7 @@ class Checker { // for namespace only
                         }
                     }
                 },
-                timeoutMillis = timeout,
+                timeoutMillis = timeLeft,
             )
 
             if (result?.determined == true) { // either spam or non-spam
@@ -583,8 +613,7 @@ class Checker { // for namespace only
     // Check if a number rule matches the incoming number
     class Number(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
         private val numberRule: RegexRule,
     ) : IChecker {
         override fun priority(): Int {
@@ -592,6 +621,9 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(numberRule.schedule)) {
                 logger?.debug(ctx.getString(R.string.outside_time_schedule))
@@ -632,8 +664,7 @@ class Checker { // for namespace only
     // The regex flag `Contact`, it matches the contact name instead of the phone number
     class RegexContact(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
         private val rule: RegexRule
     ) : IChecker {
         override fun priority(): Int {
@@ -641,6 +672,9 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             if (!Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
@@ -680,8 +714,7 @@ class Checker { // for namespace only
     // The regex flag `Contact Group`, it matches the contact group name instead of the phone number
     class ContactGroup(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
         private val rule: RegexRule
     ) : IChecker {
         override fun priority(): Int {
@@ -689,6 +722,9 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             if (!Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
@@ -732,8 +768,7 @@ class Checker { // for namespace only
      */
     class Content(
         private val ctx: Context,
-        private val logger: ILogger?,
-        private val rawNumber: String,
+        private val cCtx: CheckContext,
         private val messageBody: String,
         private val rule: RegexRule
     ) : IChecker {
@@ -742,6 +777,9 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
             logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
 
             // 1. check time schedule
@@ -806,17 +844,22 @@ class Checker { // for namespace only
             rawNumber: String,
             callDetails: Call.Details? = null
         ): CheckResult {
+            val cCtx = CheckContext(
+                rawNumber = rawNumber,
+                callDetails = callDetails,
+                logger = logger,
+            )
             val checkers = arrayListOf(
-                Checker.Emergency(ctx, logger, callDetails),
-                Checker.STIR(ctx, logger, callDetails),
-                Checker.SpamDB(ctx, logger, rawNumber),
-                Checker.Contact(ctx, logger, rawNumber),
-                Checker.RepeatedCall(ctx, logger, rawNumber, isTesting = callDetails == null),
-                Checker.Dialed(ctx, logger, rawNumber),
-                Checker.RecentApp(ctx, logger),
-                Checker.MeetingMode(ctx, logger),
-                Checker.OffTime(ctx, logger),
-                Checker.InstantQuery(ctx, logger, rawNumber),
+                Checker.Emergency(ctx, cCtx),
+                Checker.STIR(ctx, cCtx),
+                Checker.SpamDB(ctx, cCtx),
+                Checker.Contact(ctx, cCtx),
+                Checker.RepeatedCall(ctx, cCtx),
+                Checker.Dialed(ctx, cCtx),
+                Checker.RecentApp(ctx, cCtx),
+                Checker.MeetingMode(ctx, cCtx),
+                Checker.OffTime(ctx, cCtx),
+                Checker.InstantQuery(ctx, cCtx),
             )
 
             //  add number rules to checkers
@@ -825,11 +868,11 @@ class Checker { // for namespace only
                 val forContact = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
                 val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
                 if (forContact)
-                    Checker.RegexContact(ctx, logger, rawNumber, it)
+                    Checker.RegexContact(ctx, cCtx, it)
                 else if (forContactGroup)
-                    Checker.ContactGroup(ctx, logger, rawNumber, it)
+                    Checker.ContactGroup(ctx, cCtx, it)
                 else
-                    Checker.Number(ctx, logger, rawNumber, it)
+                    Checker.Number(ctx, cCtx, it)
             }
 
             // sort by priority desc
@@ -860,11 +903,15 @@ class Checker { // for namespace only
             messageBody: String
         ): CheckResult {
 
+            val cCtx = CheckContext(
+                rawNumber = rawNumber,
+                logger = logger,
+            )
             val checkers = arrayListOf<IChecker>(
-                Checker.Contact(ctx, logger, rawNumber),
-                Checker.SpamDB(ctx, logger, rawNumber),
-                Checker.MeetingMode(ctx, logger),
-                Checker.OffTime(ctx, logger)
+                Checker.Contact(ctx, cCtx),
+                Checker.SpamDB(ctx, cCtx),
+                Checker.MeetingMode(ctx, cCtx),
+                Checker.OffTime(ctx, cCtx)
             )
 
             //  add number rules to checkers
@@ -873,17 +920,17 @@ class Checker { // for namespace only
                 val forContact = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
                 val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
                 if (forContact)
-                    Checker.RegexContact(ctx, logger, rawNumber, it)
+                    Checker.RegexContact(ctx, cCtx, it)
                 else if (forContactGroup)
-                    Checker.ContactGroup(ctx, logger, rawNumber, it)
+                    Checker.ContactGroup(ctx, cCtx, it)
                 else
-                    Checker.Number(ctx, logger, rawNumber, it)
+                    Checker.Number(ctx, cCtx, it)
             }
 
             //  add sms content rules to checkers
             val contentFilters = ContentRuleTable().listRules(ctx, 0/* doesn't care */)
             checkers += contentFilters.map {
-                Checker.Content(ctx, logger, rawNumber, messageBody, it)
+                Checker.Content(ctx, cCtx, messageBody, it)
             }
 
             // sort by priority desc

@@ -57,4 +57,5 @@
         Documentação da API: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">O limite de tempo para triagem de chamadas é de 5 segundos, com um buffer de %s ms para a imprecisão das funções de tempo, o limite de tempo total é de %s ms. As etapas anteriores custaram %s ms, tempo insuficiente, pulando.</string>
 </resources>

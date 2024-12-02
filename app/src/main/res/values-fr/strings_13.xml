@@ -57,4 +57,5 @@
         La documentation de l\'API : https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">La limite de temps de filtrage des appels est de 5 secondes, avec une marge de %s ms pour l\'imprécision des fonctions de temps, la limite de temps totale est en réalité de %s ms. Les étapes précédentes ont coûté %s ms, il ne reste pas assez de temps, ignoré.</string>
 </resources>

@@ -55,5 +55,10 @@
         The API document: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">
+        The call screening time limit is 5 seconds, with a %s ms buffer
+        for the inaccuracy of time functions, the total time limit is actually %s ms.
+        The previous steps cost %s ms, not enough time left, skip.
+    </string>
 
 </resources>

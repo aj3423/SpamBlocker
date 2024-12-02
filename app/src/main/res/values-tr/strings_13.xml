@@ -57,4 +57,5 @@
         API dökümanı: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
+    <string name="not_enough_time_left">Çağrı tarama süresi limiti 5 saniyedir, zaman fonksiyonlarının doğruluk hatası için %s ms tampon ile toplam süre limiti aslında %s ms\'dir. Önceki adımlar %s ms sürdü, yeterli zaman kalmadı, atlanıyor.</string>
 </resources>
