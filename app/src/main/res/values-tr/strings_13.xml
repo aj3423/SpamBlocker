@@ -58,4 +58,10 @@
         ]]>
     </string>
     <string name="not_enough_time_left">Çağrı tarama süresi limiti 5 saniyedir, zaman fonksiyonlarının doğruluk hatası için %s ms tampon ile toplam süre limiti aslında %s ms\'dir. Önceki adımlar %s ms sürdü, yeterli zaman kalmadı, atlanıyor.</string>
+    <string name="action_filter_query_result">Filtre Sorgu Sonucu</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Önceki adımda tanımlanan tüm spam numaralarını içeren bir <u>numara listesi</u> oluşturur.
+        ]]>
+    </string>
 </resources>

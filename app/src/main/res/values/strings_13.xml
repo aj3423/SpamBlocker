@@ -60,5 +60,11 @@
         for the inaccuracy of time functions, the total time limit is actually %s ms.
         The previous steps cost %s ms, not enough time left, skip.
     </string>
+    <string name="action_filter_query_result">Filter Query Result</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Generate a <u>list of numbers</u> that contains all spam numbers that were identified in the previous step.
+        ]]>
+    </string>
 
 </resources>

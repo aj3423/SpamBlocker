@@ -58,4 +58,10 @@
         ]]>
     </string>
     <string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>
+    <string name="action_filter_query_result">Filterabfrageergebnis</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Generiert eine <u>Liste von Nummern</u>, die alle Spam-Nummern enthält, die im vorherigen Schritt identifiziert wurden.
+        ]]>
+    </string>
 </resources>

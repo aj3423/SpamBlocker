@@ -51,6 +51,7 @@ val apiActions = listOf(
     ParseIncomingNumber(),
     HttpDownload(),
     ParseQueryResult(),
+    FilterQueryResult(),
     ImportToSpamDB(),
 )
 

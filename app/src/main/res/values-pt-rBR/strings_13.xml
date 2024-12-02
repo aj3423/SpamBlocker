@@ -58,4 +58,10 @@
         ]]>
     </string>
     <string name="not_enough_time_left">O limite de tempo para triagem de chamadas é de 5 segundos, com um buffer de %s ms para a imprecisão das funções de tempo, o limite de tempo total é de %s ms. As etapas anteriores custaram %s ms, tempo insuficiente, pulando.</string>
+    <string name="action_filter_query_result">Resultado da Consulta de Filtro</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Gerar uma <u>lista de números</u> que contém todos os números de spam que foram identificados na etapa anterior.
+        ]]>
+    </string>
 </resources>

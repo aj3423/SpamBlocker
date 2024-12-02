@@ -837,22 +837,7 @@ output: null
 class ImportToSpamDB : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val rules = if (aCtx.lastOutput is QueryResult) {
-            // Too lazy to add a new IAction for converting InstantQueryResult to List<Rule>,
-            //  just check it here...
-            val qResult = aCtx.lastOutput as QueryResult
-            if (qResult.determined && qResult.isSpam) {
-                listOf(
-                    RegexRule(
-                        pattern = aCtx.rawNumber!!,
-                        isBlacklist = true,
-                    )
-                )
-            } else
-                listOf()
-        } else {
-            aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
-        }
+        val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
         return try {
             val now = System.currentTimeMillis()
@@ -893,7 +878,7 @@ class ImportToSpamDB : IPermissiveAction {
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.RuleList, ParamType.InstantQueryResult)
+        return listOf(ParamType.RuleList)
     }
 
     override fun outputParamType(): List<ParamType> {
@@ -1813,5 +1798,57 @@ class ParseQueryResult(
                 categoryFlags = it
             }
         )
+    }
+}
+
+@Serializable
+@SerialName("FilterQueryResult")
+class FilterQueryResult(
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as QueryResult
+
+        aCtx.lastOutput = if (input.determined && input.isSpam) {
+            listOf(
+                RegexRule(
+                    pattern = aCtx.rawNumber!!,
+                    isBlacklist = true,
+                )
+            )
+        } else
+            listOf()
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_filter_query_result)
+    }
+
+    @Composable
+    override fun Summary() {
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_filter_query_result)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.InstantQueryResult)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_filter)
+    }
+
+    @Composable
+    override fun Options() {
+        NoOptionNeeded()
     }
 }

@@ -58,8 +58,8 @@ private suspend fun <C, R> racing(
     }
 
     return@coroutineScope Pair(
-        firstNonNullResult?.getOrNull()?.first,
-        firstNonNullResult?.getOrNull()?.second,
+        firstNonNullResult?.getOrNull()?.first, // the competitor
+        firstNonNullResult?.getOrNull()?.second, // the result
     )
 }
 

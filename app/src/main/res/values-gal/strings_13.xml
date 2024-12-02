@@ -58,4 +58,10 @@
         ]]>
     </string>
     <string name="not_enough_time_left">O límite de tempo de selección de chamadas é de 5 segundos, cun búfer de %s ms pola imprecisión das funcións de tempo, o límite de tempo total é realmente de %s ms. Os pasos previos custaron %s ms, non queda tempo suficiente, omitir.</string>
+    <string name="action_filter_query_result">Resultado da consulta de filtro</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Xerar unha <u>lista de números</u> que conteña todos os números spam que foron identificados no paso anterior.
+        ]]>
+    </string>
 </resources>

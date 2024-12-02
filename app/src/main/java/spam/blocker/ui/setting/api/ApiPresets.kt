@@ -3,6 +3,7 @@ package spam.blocker.ui.setting.api
 import android.content.Context
 import spam.blocker.R
 import spam.blocker.db.Api
+import spam.blocker.service.bot.FilterQueryResult
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.ParseCSV
@@ -32,7 +33,8 @@ val ApiPresets = listOf<ApiPreset>(
                     negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE)",
                     categorySig = "\"rating\":\"(.+?)\"",
                 ),
-//                ImportToSpamDB(),
+                FilterQueryResult(),
+                ImportToSpamDB(),
             )
         )
     },

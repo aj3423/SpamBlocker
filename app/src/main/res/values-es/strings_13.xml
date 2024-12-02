@@ -58,4 +58,10 @@
         ]]>
     </string>
     <string name="not_enough_time_left">El límite de tiempo de la identificación de llamadas es de 5 segundos, con un búfer de %s ms para la imprecisión de las funciones de tiempo, el límite de tiempo total es en realidad de %s ms. Los pasos previos costaron %s ms, no queda suficiente tiempo, se omite.</string>
+    <string name="action_filter_query_result">Resultado de la consulta de filtro</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Genera una <u>lista de números</u> que contiene todos los números no deseados que se identificaron en el paso anterior.
+        ]]>
+    </string>
 </resources>

@@ -574,8 +574,9 @@ class Checker { // for namespace only
                             )
                             val success = it.actions.executeAll(ctx, aCtx)
 
-                            if (!success)
+                            if (!success) {
                                 null
+                            }
 
                             val result = aCtx.lastOutput as QueryResult
                             if (result.determined) { // null == undetermined

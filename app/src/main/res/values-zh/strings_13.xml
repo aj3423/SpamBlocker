@@ -58,4 +58,10 @@
         ]]>
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
+    <string name="action_filter_query_result">筛选查询结果</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        生成包含上一步中识别出的所有垃圾电话号码的<u>号码列表</u>。
+        ]]>
+    </string>
 </resources>
