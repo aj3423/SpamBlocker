@@ -59,8 +59,6 @@ fun ActionList(
         EditActionDialog(trigger = editTrigger, actions = actions, index = clickedIndex)
     }
 
-    var isAnyDragging by remember { mutableStateOf(false) }
-
     ReorderableColumn(
         list = actions.toList(),
         modifier = M.nestedScroll(DisableNestedScrolling()),
@@ -69,8 +67,7 @@ fun ActionList(
                 add(toIndex, removeAt(fromIndex))
             }
         },
-        onMove = {
-        },
+        onMove = {},
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) { index, action, isDragging ->
 
@@ -81,7 +78,7 @@ fun ActionList(
                         // 1. remove from list
                         actions.removeAt(index)
 
-                        // 2. snackbar shows behind popup, it's a bit complex to implement..
+                        // 2. snackbar shows behind popup, it's a bit complex to implement the Undelete here..
                     }
                 )
             ) {
@@ -90,8 +87,8 @@ fun ActionList(
                     modifier = M
                         .drawBehind {
                             // Draw a green/red line above/below each action card,
-                            // indicating whether it's chainable to the previous/next action.
-                            if (!isAnyDragging) {
+                            //  indicating whether it's chainable to the previous/next action.
+                            if (!isDragging) {
                                 val prev: IAction? = if (index == 0) null else actions[index - 1]
                                 val prevChainable = isPreviousChainable(action, prev)
                                 if (prevChainable != null)
@@ -104,10 +101,7 @@ fun ActionList(
                                     link(if (nextChainable) Color.Green else Color.Red, false)
                             }
                         }
-                        .draggableHandle(
-                            onDragStarted = { isAnyDragging = true },
-                            onDragStopped = { isAnyDragging = false },
-                        )
+                        .draggableHandle() // make the card draggable
                         .combinedClickable(
                             onClick = {
                                 clickedIndex = index

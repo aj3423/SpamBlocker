@@ -29,14 +29,14 @@ fun RuleHeader(
 
     val labelId = remember {
         when (forType) {
-            Def.ForNumber -> R.string.label_number_filter
-            Def.ForSms -> R.string.label_content_filter
+            Def.ForNumber -> R.string.label_number_rules
+            Def.ForSms -> R.string.label_content_rules
             else -> R.string.quick_copy
         }
     }
     val helpTooltipId = remember {
         when (forType) {
-            Def.ForNumber -> R.string.help_number_filter
+            Def.ForNumber -> R.string.help_number_rules
             Def.ForSms -> R.string.help_sms_content_filter
             else -> R.string.help_quick_copy
         }

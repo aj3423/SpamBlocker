@@ -89,16 +89,21 @@
         Zeitüberschreitende Anfragen werden verworfen.
         ]]>
     </string>
-    <string name="international_only">Nur international</string>
-    <string name="help_international_only">
+    <string name="number_filter">Nummernfilter</string>
+    <string name="help_number_filter">
         <![CDATA[
-        Die meisten APIs benötigen die Landesvorwahl.<br>
+        Einige API-Dienste unterstützen nur internationale Nummern, während andere nur nationale Nummern unterstützen.<br>
         <br>
-        - <b>Wenn aktiviert</b>:<br>
-        &ensp; Es werden nur internationale Nummern überprüft, die mit "+" beginnen; nationale Nummern werden ignoriert.<br>
+        Dieser Regex filtert die Nummern entsprechend. Eingehende Nummern, die nicht mit diesem Regex übereinstimmen, werden nicht geprüft.<br>
         <br>
-        - <b>Wenn deaktiviert</b>:<br>
-        &ensp; Es werden auch nationale Nummern überprüft; Sie müssen eine feste Landesvorwahl einstellen oder die automatische Erkennung zulassen.
+        - Nur <b>internationale Nummern</b> prüfen:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Nur <b>nationale Nummern</b> prüfen:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - <b>Jede Nummer</b> prüfen:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">Prüfe: %s</string>

@@ -548,7 +548,7 @@ class Checker { // for namespace only
                                 null
 
                             val result = aCtx.lastOutput as QueryResult
-                            if (result.isSpam != null) { // null == undetermined
+                            if (result.determined) { // null == undetermined
                                 result
                             } else {
                                 null
@@ -561,7 +561,7 @@ class Checker { // for namespace only
                 timeoutMillis = timeout,
             )
 
-            if (result?.isSpam != null) { // either spam or non-spam
+            if (result?.determined == true) { // either spam or non-spam
                 if (result.isSpam)
                     logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.instant_query)))
                 else
@@ -598,7 +598,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.number_filter)) + ": ${numberRule.summary()}")
+            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
 
             // 2. check regex
             val opts = Util.flagsToRegexOptions(numberRule.patternFlags)
@@ -613,9 +613,9 @@ class Checker { // for namespace only
                 val block = numberRule.isBlacklist
 
                 if (block)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.number_filter)) + ": ${numberRule.summary()}")
+                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
                 else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.number_filter)) + ": ${numberRule.summary()}")
+                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
 
                 return CheckResult(
                     block,
@@ -742,7 +742,7 @@ class Checker { // for namespace only
         }
 
         override fun check(): CheckResult? {
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.content_filter)) + ": ${rule.summary()}")
+            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
 
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(rule.schedule)) {
@@ -785,9 +785,9 @@ class Checker { // for namespace only
                 val block = rule.isBlacklist
 
                 if (block)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.content_filter)) + ": ${rule.summary()}")
+                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
                 else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.content_filter)) + ": ${rule.summary()}")
+                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
 
                 return CheckResult(
                     block,

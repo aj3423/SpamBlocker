@@ -22,7 +22,6 @@
     <string name="find_rule_with_desc">Encontradas %s regras com a descrição %s.</string>
     <string name="modify_n_rules">Modificando %s regras.</string>
     <string name="parse_number_fail">Falha ao analisar o número: %s.</string>
-    <string name="error_international_only">internationOnly está ativado, mas o número não está no formato internacional, ignorando.</string>
     <string name="permission_not_granted">Permissão não concedida.</string>
     <string name="fail_detect_cc">Falha ao detectar o código do país.</string>
     <string name="empty_fixed_cc">O código de país fixo está vazio.</string>
@@ -48,6 +47,14 @@
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
         &ensp; Esses valores serão preenchidos sem zero à esquerda, ex.: <br>
         &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="number_not_match_filter">O número %s não corresponde ao filtro %s, pulando.</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Apenas para usuários alemães.<br>
+        Documentação da API: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
 </resources>

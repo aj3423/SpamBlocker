@@ -54,11 +54,11 @@
     <string name="prompt_go_to_usage_permission_setting">Для этой функции требуется разрешение:\n\n `Статистика использования`\n\nЕго необходимо включить вручную в системных настройках.\n\n Открыть страницу настроек?</string>
     <string name="emergency_call">Экстренный вызов</string>
     <string name="label_contact_filter">Фильтр контактов</string>
-    <string name="label_number_filter">Правила для номеров</string>
-    <string name="label_content_filter">Правила для сообщений</string>
+    <string name="label_number_rules">Правила для номеров</string>
+    <string name="label_content_rules">Правила для сообщений</string>
     <string name="recent_apps"><short>Недавние приложения</short></string>
     <string name="allow_contact">Контакты</string>
 
-    <string name="number_filter">Правило номера</string>
-    <string name="content_filter">Правило сообщения</string>
+    <string name="number_rule">Правило номера</string>
+    <string name="content_rule">Правило сообщения</string>
 </resources>

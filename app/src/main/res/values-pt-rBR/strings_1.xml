@@ -54,11 +54,11 @@
     <string name="prompt_go_to_usage_permission_setting">Este recurso requer permissão:\n\n `Estatísticas de Uso`\n\nEle deve ser ativado manualmente nas Configurações do Sistema.\n\n Abrir a página de configuração?</string>
     <string name="emergency_call">Chamada de Emergência</string>
     <string name="label_contact_filter">Filtro de Contatos</string>
-    <string name="label_number_filter">Regras de Número</string>
-    <string name="label_content_filter">Regras de Mensagem</string>
+    <string name="label_number_rules">Regras de Número</string>
+    <string name="label_content_rules">Regras de Mensagem</string>
     <string name="recent_apps"><short>Aplicativos Recentes</short></string>
     <string name="allow_contact">Contatos</string>
 
-    <string name="number_filter">Regra de Número</string>
-    <string name="content_filter">Regra de Mensagem</string>
+    <string name="number_rule">Regra de Número</string>
+    <string name="content_rule">Regra de Mensagem</string>
 </resources>

@@ -3,8 +3,6 @@ package spam.blocker.service.bot
 import android.Manifest
 import android.content.Context
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -37,7 +34,6 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
-import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.AnimatedVisibleV
@@ -66,7 +62,6 @@ import spam.blocker.util.CountryCode
 import spam.blocker.util.IPermission
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
@@ -126,12 +121,12 @@ class CleanupHistory(
         return ctx.getString(R.string.help_action_cleanup_history)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -195,6 +190,7 @@ open class HttpDownload(
                         cc = aCtx.cc,
                         domestic = aCtx.domestic,
                         fullNumber = aCtx.fullNumber,
+                        rawNumber = aCtx.rawNumber,
                     )
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
 
@@ -248,12 +244,12 @@ open class HttpDownload(
         return ctx.getString(R.string.help_action_http_download)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
     @Composable
@@ -323,12 +319,12 @@ class CleanupSpamDB(
         return ctx.getString(R.string.help_action_cleanup_spam_db)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -385,12 +381,12 @@ class BackupExport(
         return ctx.getString(R.string.help_action_backup_export)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
     @Composable
@@ -453,12 +449,12 @@ class BackupImport(
         return ctx.getString(R.string.help_action_backup_import)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -519,12 +515,12 @@ class ReadFile(
         return ctx.getString(R.string.help_action_read_file)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
     @Composable
@@ -586,12 +582,12 @@ class WriteFile(
         return ctx.getString(R.string.help_action_write_file)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -662,12 +658,12 @@ class ParseCSV(
         return ctx.getString(R.string.help_action_parse_csv)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
     @Composable
@@ -726,12 +722,12 @@ class ParseXML(
         return ctx.getString(R.string.help_action_parse_xml)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
     @Composable
@@ -799,12 +795,12 @@ class RegexExtract(
         return ctx.getString(R.string.help_action_regex_extract)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
     @Composable
@@ -833,7 +829,7 @@ class RegexExtract(
 }
 
 /*
-input: List<RegexRule>
+input: List<RegexRule> or QueryResult
 output: null
  */
 @Serializable
@@ -841,7 +837,14 @@ output: null
 class ImportToSpamDB : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
+        val rules = if (aCtx.lastOutput is QueryResult) {
+            listOf(RegexRule(
+                pattern = aCtx.rawNumber!!,
+                isBlacklist = true,
+            ))
+        } else {
+            aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
+        }
 
         return try {
             val now = System.currentTimeMillis()
@@ -881,12 +884,12 @@ class ImportToSpamDB : IPermissiveAction {
         return ctx.getString(R.string.help_action_import_to_spam_db)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList, ParamType.InstantQueryResult)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -1025,12 +1028,12 @@ class ImportAsRegexRule(
         return ctx.getString(R.string.help_action_import_as_regex_rule)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -1136,12 +1139,12 @@ class ConvertNumber(
         return ctx.getString(R.string.help_action_convert_number)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
     @Composable
@@ -1225,12 +1228,12 @@ class FindRules(
         return ctx.getString(R.string.help_action_find_rules)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
     @Composable
@@ -1319,12 +1322,12 @@ class ModifyRules(
         return ctx.getString(R.string.help_action_modify_rules)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.RuleList
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.RuleList)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -1399,12 +1402,12 @@ class EnableWorkflow(
         return ctx.getString(R.string.help_action_enable_workflow)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -1460,12 +1463,12 @@ class EnableApp(
         return ctx.getString(R.string.help_action_enable_app)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -1488,10 +1491,12 @@ class EnableApp(
 }
 
 
+// This action parses the incoming number and fill the ActionContext with cc/domestic/number,
+//  which will be used in following actions like HttpRequest.
 @Serializable
 @SerialName("ParseIncomingNumber")
 class ParseIncomingNumber(
-    var internationOnly: Boolean = true,
+    var numberFilter: String = "",
     var autoCC: Boolean = false, // for people who often travel around between different countries
     var fixedCC: String = "", // for people who don't go abroad
 ) : IAction {
@@ -1511,9 +1516,15 @@ class ParseIncomingNumber(
         val rawNumber = aCtx.rawNumber!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 
+        val matchesFilter = numberFilter.toRegex().matches(rawNumber)
+        if (!matchesFilter) {
+            aCtx.logger?.debug(ctx.getString(R.string.number_not_match_filter)
+                .format(rawNumber, numberFilter))
+            return false
+        }
+
         val clearedNumber = Util.clearNumber(rawNumber)
 
-        // Case 1: the number starts with "+"
         if (rawNumber.startsWith("+")) {
             aCtx.fullNumber = clearedNumber
             val (ok, cc, domestic) = CountryCode.parseCcDomestic(clearedNumber)
@@ -1523,16 +1534,7 @@ class ParseIncomingNumber(
             }
             return true
         } else { // not start with "+"
-            if (internationOnly) {
-                aCtx.logger?.debug(ctx.getString(R.string.error_international_only))
-                return false
-            }
             if (autoCC) {
-                if (!Permissions.isPhoneStatePermissionGranted(ctx)) {
-                    aCtx.logger?.error(ctx.getString(R.string.permission_not_granted)
-                            + ": READ_PHONE_STATE")
-                    return false
-                }
                 val cc = CountryCode.current(ctx)
                 if (cc == null) {
                     aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc))
@@ -1541,11 +1543,6 @@ class ParseIncomingNumber(
                 aCtx.cc = cc.toString()
                 aCtx.domestic = clearedNumber
             } else {
-                if (fixedCC.isEmpty()) {
-                    aCtx.logger?.error(ctx.getString(R.string.empty_fixed_cc))
-                    return false
-                }
-
                 aCtx.cc = fixedCC
                 aCtx.domestic = Util.clearNumber(rawNumber)
             }
@@ -1563,19 +1560,14 @@ class ParseIncomingNumber(
         val ctx = LocalContext.current
 
         val auto = ctx.getString(R.string.automatic)
-        val yes = ctx.getString(R.string.yes)
-        val no = ctx.getString(R.string.no)
 
         RowVCenterSpaced(4) {
-            GreyIcon20(R.drawable.ic_international)
-            SummaryLabel(if (internationOnly) yes else no)
+            GreyIcon20(R.drawable.ic_filter)
+            SummaryLabel(numberFilter)
 
-            if (!internationOnly) {
-                Spacer(modifier = M.width(4.dp))
 
-                GreyIcon20(R.drawable.ic_airplane)
-                SummaryLabel(if (autoCC) auto else fixedCC)
-            }
+            GreyIcon20(R.drawable.ic_airplane)
+            SummaryLabel(if (autoCC) auto else fixedCC)
         }
     }
 
@@ -1583,12 +1575,12 @@ class ParseIncomingNumber(
         return ctx.getString(R.string.help_action_parse_incoming_number)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.None
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
     }
 
     @Composable
@@ -1598,46 +1590,50 @@ class ParseIncomingNumber(
 
     @Composable
     override fun Options() {
-        var internationOnlyState by remember { mutableStateOf(internationOnly) }
-        LabeledRow(
-            R.string.international_only,
-            helpTooltipId = R.string.help_international_only,
-        ) {
-            SwitchBox(internationOnlyState) { on ->
-                internationOnlyState = on
-                internationOnly = on
-            }
-        }
+        val dummyFlags = remember { mutableIntStateOf(Def.FLAG_REGEX_RAW_NUMBER) }
+        RegexInputBox(
+            regexStr = numberFilter,
+            label = { Text(Str(R.string.number_filter)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
+            helpTooltipId = R.string.help_number_filter,
+            placeholder = { DimGreyLabel(".*") },
+            regexFlags = dummyFlags,
+            showFlagsIcon = false,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    numberFilter = newVal
+                }
+            },
+            onFlagsChange = { }
+        )
 
         var autoCCState by remember { mutableStateOf(autoCC) }
-        AnimatedVisibleV(!internationOnlyState) {
-            LabeledRow(
-                R.string.auto_detect_country_code,
-                helpTooltipId = R.string.help_auto_detect_country_code,
-            ) {
-                SwitchBox(autoCCState) { on ->
-                    autoCCState = on
-                    autoCC = on
-                }
+        LabeledRow(
+            R.string.auto_detect_country_code,
+            helpTooltipId = R.string.help_auto_detect_country_code,
+        ) {
+            SwitchBox(autoCCState) { on ->
+                autoCCState = on
+                autoCC = on
             }
         }
 
-        AnimatedVisibleV(!internationOnlyState) {
-            AnimatedVisibleV(visible = !autoCCState) {
-                StrInputBox(
-                    text = fixedCC,
-                    label = { Text(Str(R.string.country_code)) },
-                    leadingIconId = R.drawable.ic_airplane,
-                    placeholder = { DimGreyLabel(Str(R.string.for_example) + " 1") },
-                    onValueChange = { fixedCC = it }
-                )
-            }
+        AnimatedVisibleV(visible = !autoCCState) {
+            StrInputBox(
+                text = fixedCC,
+                label = { Text(Str(R.string.country_code)) },
+                leadingIconId = R.drawable.ic_airplane,
+                placeholder = { DimGreyLabel(Str(R.string.for_example) + " 1") },
+                onValueChange = { fixedCC = it }
+            )
         }
     }
 }
 
 data class QueryResult(
-    val isSpam: Boolean? = null, // null means undetermined number
+    val determined: Boolean = false,
+    // These values are only useful when determined == true
+    val isSpam: Boolean = false,
     val category: String? = null,
 )
 
@@ -1677,8 +1673,10 @@ class ParseQueryResult(
 
         var category: String? = null
 
+        val determined = isNegative != null || isPositive != null
+
         // 3. category
-        if (isNegative != null || isPositive != null) {
+        if (determined) {
             if (categorySig.trim().isNotEmpty()) {
                 val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
                 category = categorySig.trim().toRegex(categoryOpts).find(html)
@@ -1700,9 +1698,8 @@ class ParseQueryResult(
         }
 
         aCtx.lastOutput = QueryResult(
-            isSpam = if (isNegative == true) true else {
-                if (isPositive == true) false else null
-            },
+            determined = determined,
+            isSpam = isNegative == true,
             category = category,
         )
         return true
@@ -1740,12 +1737,12 @@ class ParseQueryResult(
         return ctx.getString(R.string.help_action_parse_query_result)
     }
 
-    override fun inputParamType(): ParamType {
-        return ParamType.ByteArray
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
     }
 
-    override fun outputParamType(): ParamType {
-        return ParamType.None
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None, ParamType.InstantQueryResult)
     }
 
     @Composable

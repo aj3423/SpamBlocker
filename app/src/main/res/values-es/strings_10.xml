@@ -1,5 +1,5 @@
 <resources>
-    <string name="help_number_filter">
+    <string name="help_number_rules">
         <![CDATA[
         Estas reglas se aplican al <translate>número de teléfono</translate> entrante.<br>
         <br>

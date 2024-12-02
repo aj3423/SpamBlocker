@@ -51,6 +51,7 @@ val apiActions = listOf(
     ParseIncomingNumber(),
     HttpDownload(),
     ParseQueryResult(),
+    ImportToSpamDB(),
 )
 
 
@@ -104,8 +105,8 @@ interface IAction {
     fun tooltip(ctx: Context): String
 
     // For checking if two sibling actions are chainable
-    fun inputParamType(): ParamType
-    fun outputParamType(): ParamType
+    fun inputParamType(): List<ParamType>
+    fun outputParamType(): List<ParamType>
 
     // The icon of this action.
     @Composable
@@ -206,23 +207,24 @@ fun String.parseActions(): List<IAction> {
 //  false - draw red indicator
 fun isPreviousChainable(curr: IAction, prev: IAction?): Boolean? {
     return if (prev == null) {
-        if (curr.inputParamType() == ParamType.None)
+        if (curr.inputParamType().contains(ParamType.None))
             null
         else
             false
     } else {
-        curr.inputParamType() == prev.outputParamType()
+        // They will be chainable if the input/output param list share same type of params
+        curr.inputParamType().intersect(prev.outputParamType()).isNotEmpty()
     }
 }
 
 fun isNextChainable(curr: IAction, next: IAction?): Boolean? {
     return if (next == null) {
-        if (curr.outputParamType() == ParamType.None)
+        if (curr.outputParamType().contains(ParamType.None))
             null
         else
             false
     } else {
-        curr.outputParamType() == next.inputParamType()
+        curr.outputParamType().intersect(next.inputParamType()).isNotEmpty()
     }
 }
 

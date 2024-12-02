@@ -374,6 +374,7 @@ fun RegexInputBox(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
     helpTooltipId: Int? = null,
+    showFlagsIcon: Boolean = true,
 ) {
     val ctx = LocalContext.current
 
@@ -489,28 +490,31 @@ fun RegexInputBox(
             }
 
             RowVCenter {
-                DropdownWrapper(
-                    items = dropdownItems,
-                    modifier = M.onGloballyPositioned {
-                        dropdownOffset.value = it.positionOnScreen()
-                    }
-                ) { expanded ->
+                // flags icon
+                if (showFlagsIcon) {
+                    DropdownWrapper(
+                        items = dropdownItems,
+                        modifier = M.onGloballyPositioned {
+                            dropdownOffset.value = it.positionOnScreen()
+                        }
+                    ) { expanded ->
 
-                    val imdlc = regexFlags.intValue.toFlagStr()
-                    val clickableModifier = M.clickable {
-                        expanded.value = true
-                    }
-                    if (imdlc == "") {
-                        GreyIcon(
-                            modifier = clickableModifier,
-                            iconId = R.drawable.ic_flags,
-                        )
-                    } else {
-                        Text(
-                            text = imdlc,
-                            color = Color.Magenta,
-                            modifier = clickableModifier,
-                        )
+                        val imdlc = regexFlags.intValue.toFlagStr()
+                        val clickableModifier = M.clickable {
+                            expanded.value = true
+                        }
+                        if (imdlc == "") {
+                            GreyIcon(
+                                modifier = clickableModifier,
+                                iconId = R.drawable.ic_flags,
+                            )
+                        } else {
+                            Text(
+                                text = imdlc,
+                                color = Color.Magenta,
+                                modifier = clickableModifier,
+                            )
+                        }
                     }
                 }
 

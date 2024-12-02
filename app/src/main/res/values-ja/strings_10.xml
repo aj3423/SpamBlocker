@@ -1,5 +1,5 @@
 <resources>
-    <string name="help_number_filter">
+    <string name="help_number_rules">
         <![CDATA[
         これらのルールは着信電話番号に適用されます。<br>
         <br>

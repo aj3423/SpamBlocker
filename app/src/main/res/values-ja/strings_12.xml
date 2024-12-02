@@ -89,16 +89,21 @@
         タイムアウトしたリクエストは破棄されます。
         ]]>
     </string>
-    <string name="international_only">国際番号のみ</string>
-    <string name="help_international_only">
+    <string name="number_filter">番号フィルター</string>
+    <string name="help_number_filter">
         <![CDATA[
-        ほとんどのAPIでは国番号が必要です。<br>
+        一部のAPIサービスは国際番号のみをサポートし、一部は国内番号のみをサポートします。<br>
         <br>
-        - <b>有効な場合</b>:<br>
-        &ensp; "+"で始まる国際番号のみチェックされ、国内番号は無視されます。<br>
+        この正規表現は番号をそれに応じてフィルタリングします。この正規表現に一致しない着信番号は、チェックがスキップされます。<br>
         <br>
-        - <b>無効な場合</b>:<br>
-        &ensp; 国内番号もチェックされます。固定の国番号を設定するか、自動的に検出させる必要があります。
+        - <b>国際番号</b>のみチェックします。<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - <b>国内番号</b>のみチェックします。<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - <b>任意の番号</b>をチェックします。<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">確認中: %s</string>

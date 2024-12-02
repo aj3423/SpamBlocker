@@ -6,6 +6,8 @@ import spam.blocker.db.Api
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.ParseCSV
+import spam.blocker.service.bot.ParseIncomingNumber
+import spam.blocker.service.bot.ParseQueryResult
 
 class ApiPreset(
     val tooltipId: Int,
@@ -14,21 +16,24 @@ class ApiPreset(
 
 val ApiPresets = listOf<ApiPreset>(
 
-    // FTC Do Not Call, update every Monday~Friday @ 18:00:00
-//    ApiPreset(
-//        tooltipId = R.string.help_bot_preset_dnc,
-//    ) { ctx ->
-//        Api(
-//            desc = ctx.getString(R.string.bot_preset_dnc),
-//            enabled = true,
-//            actions = listOf(
-//                HttpDownload(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
-//                ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
-//                // no need to add ClearNumber here
+    // PhoneBlock
+    ApiPreset(
+        tooltipId = R.string.help_api_preset_phoneblock,
+    ) { ctx ->
+        Api(
+            desc = ctx.getString(R.string.api_preset_phoneblock),
+            enabled = true,
+            actions = listOf(
+                ParseIncomingNumber(
+                    numberFilter = "0.*",
+                ),
+                HttpDownload(url = "https://phoneblock.net/phoneblock/api/num/{origin_number}"),
+                ParseQueryResult(
+                    negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE)",
+                    categorySig = "\"rating\":\"(.+?)\"",
+                ),
 //                ImportToSpamDB(),
-//            )
-//        )
-//    },
-
-
+            )
+        )
+    },
 )

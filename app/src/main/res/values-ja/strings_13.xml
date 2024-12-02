@@ -22,7 +22,6 @@
     <string name="find_rule_with_desc">説明が%sのルールを%s件検出しました。</string>
     <string name="modify_n_rules">%s個のルールを変更しています。</string>
     <string name="parse_number_fail">電話番号%sの解析に失敗しました。</string>
-    <string name="error_international_only">internationOnlyが有効になっていますが、電話番号が国際フォーマットではありません。スキップします。</string>
     <string name="permission_not_granted">権限が付与されていません。</string>
     <string name="fail_detect_cc">国番号の検出に失敗しました。</string>
     <string name="empty_fixed_cc">固定国番号が空です。</string>
@@ -48,6 +47,14 @@
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
         &ensp; これらの値には先頭に0は追加されません。例: <br>
         &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="number_not_match_filter">電話番号%sはフィルタ%sに一致しません。スキップします。</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        ドイツのユーザーのみ対象です。<br>
+        APIドキュメント: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
 </resources>

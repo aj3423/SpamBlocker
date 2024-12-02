@@ -1,5 +1,5 @@
 <resources>
-    <string name="help_number_filter">
+    <string name="help_number_rules">
         <![CDATA[
         这些规则适用于传入的号码。<br>
         <br>

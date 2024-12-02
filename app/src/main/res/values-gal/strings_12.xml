@@ -93,17 +93,21 @@
         As peticións con tempo de espera descartaranse.
         ]]>
     </string>
-    <string name="international_only">Só internacional</string>
-    <string name="help_international_only">
+    <string name="number_filter">Filtro de números</string>
+    <string name="help_number_filter">
         <![CDATA[
-        A maioría das APIs requiren o código de país.<br>
+        Algúns servizos de API só admiten números internacionais, mentres que outros só admiten números domésticos.<br>
         <br>
-        - <b>Cando está activado</b>:<br>
-        &ensp; Só comprobará os números internacionais que comezan con "+", os números domésticos ignoraranse.<br>
+        Este regex filtra os números en consecuencia, os números entrantes que non coincidan con este regex saltaranse a comprobación.<br>
         <br>
-        - <b>Cando está desactivado</b>:<br>
-        &ensp; Tamén comprobará os números domésticos, terás que establecer un código de país fixo,<br>
-        ou deixalo detectar automaticamente.
+        - Só comprobar <b>números internacionais</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Só comprobar <b>números domésticos</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Comprobar <b>calquera número</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">Comprobando: %s</string>

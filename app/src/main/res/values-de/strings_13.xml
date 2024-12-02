@@ -22,7 +22,6 @@
     <string name="find_rule_with_desc">%s Regeln mit Beschreibung %s gefunden.</string>
     <string name="modify_n_rules">Ändere %s Regeln.</string>
     <string name="parse_number_fail">Fehler beim Parsen der Nummer: %s.</string>
-    <string name="error_international_only">internationOnly ist aktiviert, aber die Nummer ist nicht im internationalen Format, überspringen.</string>
     <string name="permission_not_granted">Berechtigung nicht erteilt.</string>
     <string name="fail_detect_cc">Fehler beim Erkennen der Landesvorwahl.</string>
     <string name="empty_fixed_cc">Die feste Landesvorwahl ist leer.</string>
@@ -48,6 +47,14 @@
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
         &ensp; Diese Werte werden ohne führende Null aufgefüllt, z. B.: <br>
         &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="number_not_match_filter">Die Nummer %s passt nicht zum Filter %s, übersprungen.</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Nur für deutsche Nutzer.<br>
+        Die API-Dokumentation: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
 </resources>

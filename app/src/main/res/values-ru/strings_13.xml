@@ -22,7 +22,6 @@
     <string name="find_rule_with_desc">Найдено %s правил с описанием %s.</string>
     <string name="modify_n_rules">Изменение %s правил.</string>
     <string name="parse_number_fail">Ошибка разбора номера: %s.</string>
-    <string name="error_international_only">Включен параметр internationOnly, но номер не в международном формате, пропускаем.</string>
     <string name="permission_not_granted">Разрешение не предоставлено.</string>
     <string name="fail_detect_cc">Не удалось определить код страны.</string>
     <string name="empty_fixed_cc">Фиксированный код страны пуст.</string>
@@ -48,6 +47,14 @@
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
         &ensp; Эти значения дополняются без ведущего нуля, например:<br>
         &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="number_not_match_filter">Номер %s не соответствует фильтру %s, пропускаем.</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Только для пользователей из Германии.<br>
+        Документация API: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
 </resources>

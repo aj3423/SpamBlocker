@@ -90,16 +90,21 @@
         Zaman aşımına uğramış istekler atılacaktır.
         ]]>
     </string>
-    <string name="international_only">Yalnızca Uluslararası</string>
-    <string name="help_international_only">
+    <string name="number_filter">Numara Filtresi</string>
+    <string name="help_number_filter">
         <![CDATA[
-        Çoğu API ülke kodunu gerektirir.<br>
+        Bazı API hizmetleri yalnızca uluslararası numaraları desteklerken, bazıları yalnızca yurtiçi numaraları destekler.<br>
         <br>
-        - <b>Etkinleştirildiğinde</b>:<br>
-        &ensp; Yalnızca "+" ile başlayan uluslararası numaraları kontrol edecektir, yerel numaralar göz ardı edilecektir.<br>
+        Bu regex, numaraları buna göre filtreler, bu regex ile eşleşmeyen gelen numaralar kontrol edilmeden atlanacaktır.<br>
         <br>
-        - <b>Devre dışı bırakıldığında</b>:<br>
-        &ensp; Yerel numaraları da kontrol edecektir, sabit bir ülke kodu ayarlamanız veya otomatik olarak algılamasına izin vermeniz gerekecektir.
+        - Yalnızca <b>uluslararası numaraları</b> kontrol et:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Yalnızca <b>yurtiçi numaraları</b> kontrol et:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - <b>Herhangi bir numarayı</b> kontrol et:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">Kontrol ediliyor: %s</string>

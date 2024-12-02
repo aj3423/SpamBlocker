@@ -54,11 +54,11 @@
     <string name="prompt_go_to_usage_permission_setting">Для цієї функції потрібен дозвіл:\n\n `Статистика використання`\n\nЙого потрібно ввімкнути вручну в системних налаштуваннях.\n\n Відкрити сторінку налаштувань?</string>
     <string name="emergency_call">Терміновий дзвінок</string>
     <string name="label_contact_filter">Фільтр контактів</string>
-    <string name="label_number_filter">Правила номерів</string>
-    <string name="label_content_filter">Правила повідомлень</string>
+    <string name="label_number_rules">Правила номерів</string>
+    <string name="label_content_rules">Правила повідомлень</string>
     <string name="recent_apps"><short>Останні програми</short></string>
     <string name="allow_contact">Контакти</string>
 
-    <string name="number_filter">Правило для номера</string>
-    <string name="content_filter">Правило для повідомлення</string>
+    <string name="number_rule">Правило для номера</string>
+    <string name="content_rule">Правило для повідомлення</string>
 </resources>

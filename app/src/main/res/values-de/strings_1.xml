@@ -54,11 +54,11 @@
     <string name="prompt_go_to_usage_permission_setting">Diese Funktion erfordert die Berechtigung:\n\n `Verwendungsstatistiken`\n\nDiese muss in den Systemeinstellungen manuell aktiviert werden.\n\n Die Einstellungsseite öffnen?</string>
     <string name="emergency_call">Notruf</string>
     <string name="label_contact_filter">Kontaktfilter</string>
-    <string name="label_number_filter">Telefonnummern-Regeln</string>
-    <string name="label_content_filter">Nachrichten-Regeln</string>
+    <string name="label_number_rules">Telefonnummern-Regeln</string>
+    <string name="label_content_rules">Nachrichten-Regeln</string>
     <string name="recent_apps"><short>Letzte Apps</short></string>
     <string name="allow_contact">Kontakte</string>
 
-    <string name="number_filter">Rufnummernregel</string>
-    <string name="content_filter">Nachrichtenregel</string>
+    <string name="number_rule">Rufnummernregel</string>
+    <string name="content_rule">Nachrichtenregel</string>
 </resources>

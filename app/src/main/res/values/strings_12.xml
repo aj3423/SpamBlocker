@@ -79,7 +79,7 @@
         Enable this if you often travel internationally,
         the country code will be detected automatically when it changes.<br>
         <br>
-        It requires permission READ_PHONE_STATE.
+        It requires permission READ_PHONE_STATE.<br>
         ]]>
     </string>
     <string name="country_code">Country Code</string>
@@ -94,18 +94,21 @@
         Timed-out requests will be discarded.
         ]]>
     </string>
-    <string name="international_only">International Only</string>
-    <string name="help_international_only">
+    <string name="number_filter">Number Filter</string>
+    <string name="help_number_filter">
         <![CDATA[
-        Most APIs require the country code.<br>
+        Some API services only support international numbers, while some only support domestic numbers.<br>
         <br>
-        - <b>When enabled</b>:<br>
-        &ensp; It will only check international numbers that start with "+", domestic numbers
-        will be ignored.<br>
+        This regex filters numbers accordingly, incoming numbers that don\'t match this regex will be skipped checking.<br>
         <br>
-        - <b>When disabled</b>:<br>
-        &ensp; It will also check domestic numbers, you will need to set a fixed country code,
-        or let it detect automatically.
+        - Only check <b>international numbers</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Only check <b>domestic numbers</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Check <b>any number</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">Checking: %s</string>

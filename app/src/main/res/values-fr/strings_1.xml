@@ -54,11 +54,11 @@
     <string name="prompt_go_to_usage_permission_setting">Cette fonctionnalité nécessite une autorisation :\n\n`Statistiques d\'utilisation`\n\nElle doit être activée manuellement dans les paramètres système.\n\nOuvrir la page des paramètres ?</string>
     <string name="emergency_call">Appel d\'urgence</string>
     <string name="label_contact_filter">Filtre des contacts</string>
-    <string name="label_number_filter">Règles de numéros</string>
-    <string name="label_content_filter">Règles de messages</string>
+    <string name="label_number_rules">Règles de numéros</string>
+    <string name="label_content_rules">Règles de messages</string>
     <string name="recent_apps"><short>Applications récentes</short></string>
     <string name="allow_contact">Contacts</string>
 
-    <string name="number_filter">Règle de numéro</string>
-    <string name="content_filter">Règle de message</string>
+    <string name="number_rule">Règle de numéro</string>
+    <string name="content_rule">Règle de message</string>
 </resources>

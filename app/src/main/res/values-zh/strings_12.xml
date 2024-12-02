@@ -89,16 +89,21 @@
         超时请求将被丢弃。
         ]]>
     </string>
-    <string name="international_only">仅限国际号码</string>
-    <string name="help_international_only">
+    <string name="number_filter">号码过滤器</string>
+    <string name="help_number_filter">
         <![CDATA[
-        大多数API都需要国家区号。<br>
+        一些API服务只支持国际号码，而一些只支持国内号码。<br>
         <br>
-        - <b>启用时</b>：<br>
-        &ensp; 它将只检查以“+”开头的国际号码，国内号码将被忽略。<br>
+        此正则表达式相应地过滤号码，不匹配此正则表达式的来电号码将跳过检查。<br>
         <br>
-        - <b>禁用时</b>：<br>
-        &ensp; 它也将检查国内号码，您需要设置一个固定的国家区号，或让它自动检测。
+        - 只检查<b>国际号码</b>：<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - 只检查<b>国内号码</b>：<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - 检查<b>任何号码</b>：<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">正在检查：%s</string>

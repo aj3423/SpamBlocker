@@ -89,16 +89,21 @@
         Les requêtes ayant expiré seront ignorées.
         ]]>
     </string>
-    <string name="international_only">International uniquement</string>
-    <string name="help_international_only">
+    <string name="number_filter">Filtre de numéros</string>
+    <string name="help_number_filter">
         <![CDATA[
-        La plupart des API nécessitent l’indicatif téléphonique.<br>
+        Certains services API prennent uniquement en charge les numéros internationaux, tandis que d’autres prennent uniquement en charge les numéros nationaux.<br>
         <br>
-        - <b>Activé :</b><br>
-        &ensp; Seuls les numéros internationaux commençant par « + » seront vérifiés ; les numéros nationaux seront ignorés.<br>
+        Cette expression régulière filtre les numéros en conséquence ; les numéros entrants qui ne correspondent pas à cette expression régulière seront ignorés.<br>
         <br>
-        - <b>Désactivé :</b><br>
-        &ensp; Les numéros nationaux seront également vérifiés ; vous devrez définir un indicatif téléphonique fixe ou le laisser détecter automatiquement.
+        - Vérifier uniquement les <b>numéros internationaux</b> :<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Vérifier uniquement les <b>numéros nationaux</b> :<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Vérifier <b>tous les numéros</b> :<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
     <string name="checking_template">Vérification : %s</string>

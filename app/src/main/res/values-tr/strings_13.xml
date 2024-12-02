@@ -22,7 +22,6 @@
     <string name="find_rule_with_desc">Açıklaması %s olan %s kural bulundu.</string>
     <string name="modify_n_rules">%s kural değiştiriliyor.</string>
     <string name="parse_number_fail">Numara çözümlenemedi: %s.</string>
-    <string name="error_international_only">internationOnly etkin ancak numara uluslararası formatta değil, atlanıyor.</string>
     <string name="permission_not_granted">İzin verilmedi.</string>
     <string name="fail_detect_cc">Ülke kodu tespit edilemedi.</string>
     <string name="empty_fixed_cc">Sabit ülke kodu boş.</string>
@@ -48,6 +47,14 @@
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
         &ensp; Bu değerler başa 0 eklenmeden doldurulur, örn.: <br>
         &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="number_not_match_filter">%s numarası %s filtresine uymuyor, atlanıyor.</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Sadece Alman kullanıcılar için.<br>
+        API dökümanı: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
 </resources>

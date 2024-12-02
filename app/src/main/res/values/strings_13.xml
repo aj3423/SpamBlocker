@@ -5,9 +5,7 @@
     <string name="cleaning_up_spam_db">
         Cleaning up spam db, deleting %s records before timestamp: %s".
     </string>
-    <string name="resolved_url">Resolved url: %s.</string>
-    <string name="resolved_path">Resolved path: %s.</string>
-    <string name="resolved_filename">Resolved filename: %s.</string>
+    <string name="resolved_url">Resolved url: %s</string>
     <string name="time_cost">Time cost: %s milliseconds.</string>
     <string name="parsed_n_rules">Parsed %s rules.</string>
     <string name="add_n_numbers_to_spam_db">Adding %s numbers to spam db.</string>
@@ -21,9 +19,7 @@
     <string name="replace_number_from_to">Replacing number from %s to %s.</string>
     <string name="find_rule_with_desc">Found %s rules with description %s.</string>
     <string name="modify_n_rules">Modifying %s rules.</string>
-    <string name="parse_number_fail">Failed to parse the number: %s.</string>
-    <string name="error_international_only">internationOnly is enabled but the number is not in international format, skip.</string>
-    <string name="permission_not_granted">Permission not granted.</string>
+    <string name="number_not_match_filter">The number %s doesn\'t match the filter %s, skip.</string>
     <string name="fail_detect_cc">Failed to detect country code.</string>
     <string name="empty_fixed_cc">The fixed country code is empty.</string>
     <string name="identified_as_spam">Identified as spam number, category: %s.</string>
@@ -37,7 +33,9 @@
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; The domestic part.<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; The full number, including both country code and domestic part, without leading + and 0s.<br>
+        &ensp; The full number, including both country code and domestic part, without leading + or 0s.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; The origin number that can contain leading + or 0s.<br>
         <br>
         Supported tags when downloading database files:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
@@ -48,6 +46,13 @@
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
         &ensp; These values will be padded without leading zero, e.g.: <br>
         &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        For German users only.<br>
+        The API document: https://phoneblock.net/phoneblock/api/
         ]]>
     </string>
 
