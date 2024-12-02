@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.coroutines.yield
+import java.util.concurrent.atomic.AtomicInteger
 
 
 // Run multiple blocking functions simultaneously, it returns immediately
@@ -23,7 +25,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 private suspend fun <C, R> racing(
     competitors: List<C>,
     // runner takes a competitor as param and generate a executable function to run
-    runner: (C) -> (()->R),
+    runner: (C) -> (()->R?),
     timeoutMillis: Long,
 ): Pair<C?, R?> = coroutineScope {
     if (competitors.isEmpty()) {
@@ -34,15 +36,27 @@ private suspend fun <C, R> racing(
 
     val resultChannel = Channel<Pair<C?,R?>>()
 
+    val finishedCount = AtomicInteger(0)
+
     val jobs = competitors.map { competitor ->
         scope.launch {
             val result = runner(competitor)()
 
             // set the channel if it's not null
-            if (result != null)
+            if (result != null) {
                 resultChannel.send(
                     Pair(competitor, result as R?)
                 )
+            }
+
+            yield()
+
+            // All threads are done, but no one has crossed the finish line, return anyway.
+            if(finishedCount.addAndGet(1) >= competitors.size) {
+                resultChannel.send(
+                    Pair(null, null)
+                )
+            }
         }
     }
 

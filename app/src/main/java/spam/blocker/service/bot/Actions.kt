@@ -1665,7 +1665,7 @@ class ParseQueryResult(
 
         var category: String? = null
 
-        val determined = isNegative != null || isPositive != null
+        val determined = isNegative == true || isPositive == true
 
         // 3. category
         if (determined) {
@@ -1679,6 +1679,7 @@ class ParseQueryResult(
             }
         }
 
+        // show log
         if (isNegative == true) {
             aCtx.logger?.error(ctx.getString(R.string.identified_as_spam)
                 .format(category ?: ""))
@@ -1689,11 +1690,13 @@ class ParseQueryResult(
             aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
         }
 
-        aCtx.lastOutput = QueryResult(
+        val result = QueryResult(
             determined = determined,
             isSpam = isNegative == true,
             category = category,
         )
+        aCtx.lastOutput = result
+        aCtx.racingResult = result
         return true
     }
 

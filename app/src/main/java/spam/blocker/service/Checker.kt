@@ -578,7 +578,7 @@ class Checker { // for namespace only
                                 null
                             }
 
-                            val result = aCtx.lastOutput as QueryResult
+                            val result = aCtx.racingResult as QueryResult
                             if (result.determined) { // null == undetermined
                                 result
                             } else {

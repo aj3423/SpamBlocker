@@ -84,6 +84,8 @@ data class ActionContext(
     var cc: String? = null, // "1"
     var domestic: String? = null, // "2223334444"
     var fullNumber: String? = null, // "12223334444"
+    // The check result by the first api that successfully identified the number
+    var racingResult: Any? = null,
 )
 
 interface IAction {
