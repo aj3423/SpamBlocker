@@ -20,6 +20,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -76,7 +77,7 @@ fun CountdownMenuItem(bot: Bot) {
 
     DisposableEffect(true) {
         val job = coroutineScope.launch {
-            withContext(Dispatchers.IO) {
+            withContext(IO) {
                 while (true) {
                     delay(500) // Delay for 1 second
                     refreshLabel()

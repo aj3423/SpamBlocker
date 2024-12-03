@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.G
@@ -67,7 +68,7 @@ fun TestActionButton(
         logStr.value = buildAnnotatedString {} // clear previous log
 
         coroutine.launch {
-            withContext(Dispatchers.IO) {
+            withContext(IO) {
                 val aCtx = ActionContext(
                     logger = TextLogger(logStr, C),
                     rawNumber = rawNumber

@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.G
@@ -94,7 +95,7 @@ fun PopupTesting(
                 val textLogger = TextLogger(logStr, C)
 
                 coroutine.launch {
-                    withContext(Dispatchers.IO) {
+                    withContext(IO) {
                         if (vm.selectedType.intValue == 0/* for call */)
                             CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
                         else

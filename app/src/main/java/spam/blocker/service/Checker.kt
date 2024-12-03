@@ -566,9 +566,10 @@ class Checker { // for namespace only
             var (winnerApi, result) = race(
                 competitors = apis,
                 runner = {
-                    {
+                    { scope ->
                         try {
                             val aCtx = ActionContext(
+                                scope = scope,
                                 logger = logger,
                                 rawNumber = rawNumber,
                             )
@@ -594,9 +595,9 @@ class Checker { // for namespace only
 
             if (result?.determined == true) { // either spam or non-spam
                 if (result.isSpam)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.instant_query)))
+                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi!!.summary()}>")
                 else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.instant_query)))
+                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi!!.summary()}>")
 
                 return CheckResult(
                     result.isSpam,

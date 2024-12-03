@@ -64,4 +64,5 @@
         Genera una <u>lista de números</u> que contiene todos los números no deseados que se identificaron en el paso anterior.
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">Otro hilo se canceló.</string>
 </resources>

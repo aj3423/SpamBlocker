@@ -9,6 +9,7 @@ import androidx.compose.ui.text.withStyle
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.DodgeBlue
+import spam.blocker.ui.theme.SkyBlue
 
 // For showing detailed execution steps when testing Workflows
 interface ILogger {
@@ -59,7 +60,7 @@ class TextLogger(
     }
 
     override fun info(message: String) {
-        output(message, DodgeBlue)
+        output(message, SkyBlue)
     }
 
     override fun warn(message: String) {

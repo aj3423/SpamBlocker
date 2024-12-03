@@ -66,5 +66,6 @@
         Generate a <u>list of numbers</u> that contains all spam numbers that were identified in the previous step.
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>
 
 </resources>

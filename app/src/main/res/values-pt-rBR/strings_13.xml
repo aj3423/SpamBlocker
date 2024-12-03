@@ -64,4 +64,5 @@
         Gerar uma <u>lista de números</u> que contém todos os números de spam que foram identificados na etapa anterior.
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">Outra thread foi cancelada.</string>
 </resources>

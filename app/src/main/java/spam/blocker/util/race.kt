@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
@@ -25,14 +26,14 @@ import java.util.concurrent.atomic.AtomicInteger
 private suspend fun <C, R> racing(
     competitors: List<C>,
     // runner takes a competitor as param and generate a executable function to run
-    runner: (C) -> (()->R?),
+    runner: (C) -> ((CoroutineScope)->R?),
     timeoutMillis: Long,
 ): Pair<C?, R?> = coroutineScope {
     if (competitors.isEmpty()) {
         return@coroutineScope Pair(null, null)
     }
 
-    val scope = CoroutineScope(Dispatchers.IO)
+    val scope = CoroutineScope(IO)
 
     val resultChannel = Channel<Pair<C?,R?>>()
 
@@ -40,7 +41,7 @@ private suspend fun <C, R> racing(
 
     val jobs = competitors.map { competitor ->
         scope.launch {
-            val result = runner(competitor)()
+            val result = runner(competitor)(this)
 
             // set the channel if it's not null
             if (result != null) {
@@ -67,6 +68,7 @@ private suspend fun <C, R> racing(
     }.await()
 
     // once there is a result, stop all other jobs
+    scope.cancel()
     jobs.forEach { job ->
         job.cancel()
     }
@@ -80,7 +82,7 @@ private suspend fun <C, R> racing(
 fun <C, R> race(
     competitors: List<C>,
     // runner takes a competitor as param and generate a executable function to run
-    runner: (C) -> (()->R),
+    runner: (C) -> ((CoroutineScope)->R),
     timeoutMillis: Long,
 ):  Pair<C?, R?>  {
     return runBlocking {

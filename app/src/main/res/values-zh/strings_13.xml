@@ -64,4 +64,5 @@
         生成包含上一步中识别出的所有垃圾电话号码的<u>号码列表</u>。
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">另一个线程已取消。</string>
 </resources>

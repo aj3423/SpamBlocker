@@ -64,4 +64,5 @@
         前のステップで識別されたすべてのスパム番号を含む<u>電話番号リスト</u>を生成します。
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
 </resources>

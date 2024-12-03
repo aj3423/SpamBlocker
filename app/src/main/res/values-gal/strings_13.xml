@@ -64,4 +64,5 @@
         Xerar unha <u>lista de números</u> que conteña todos os números spam que foron identificados no paso anterior.
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
 </resources>

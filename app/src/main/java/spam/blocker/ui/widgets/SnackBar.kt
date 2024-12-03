@@ -5,6 +5,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import spam.blocker.util.Lambda
@@ -19,7 +20,7 @@ object SnackBar {
         onAction: Lambda
     ) {
         coroutine.launch {
-            withContext(Dispatchers.IO) {
+            withContext(IO) {
                 // cancel previous
                 dismiss()
 

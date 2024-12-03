@@ -12,6 +12,13 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.yield
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import spam.blocker.R
@@ -66,6 +73,8 @@ enum class ParamType {
 }
 
 data class ActionContext(
+    val scope: CoroutineScope = CoroutineScope(IO),
+
     // the error reason when it fails
     var logger: ILogger? = null,
 
@@ -92,7 +101,7 @@ interface IAction {
     // When it succeeds, it returns: <true, output>
     //   the output will be used as the input `param` for the next Action
     // When it fails, it returns: <false, errorReasonString>
-    fun execute(ctx: Context, aCtx: ActionContext): Boolean
+    suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean
 
     // It returns a list of missing permissions.
     fun missingPermissions(ctx: Context): List<IPermission>
@@ -253,14 +262,22 @@ fun List<IAction>.executeAll(
     ctx: Context,
     aCtx: ActionContext,
 ): Boolean {
-    // Run until any action fails
-    val anyError = this.any {
-        val succeeded = it.execute(ctx, aCtx)
+    val self = this
 
-        !succeeded
+    // Run until any action fails
+    val anyError = runBlocking {
+        aCtx.scope.async{
+            self.any {
+                val succeeded = it.execute(ctx, aCtx)
+
+                yield()
+
+                !succeeded
+            }
+        }.await()
     }
-    if (anyError) {
-        aCtx.logger?.error(ctx.getString(R.string.failed))
-    }
+//    if (anyError) {
+//        aCtx.logger?.error(ctx.getString(R.string.failed))
+//    }
     return !anyError
 }

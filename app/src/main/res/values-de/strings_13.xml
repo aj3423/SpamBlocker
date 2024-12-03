@@ -64,4 +64,5 @@
         Generiert eine <u>Liste von Nummern</u>, die alle Spam-Nummern enthält, die im vorherigen Schritt identifiziert wurden.
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">Ein anderer Thread wurde abgebrochen.</string>
 </resources>

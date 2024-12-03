@@ -12,11 +12,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.coroutines.yield
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
@@ -66,6 +67,7 @@ import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 import spam.blocker.util.Xml
+import spam.blocker.util.asyncHttpRequest
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -76,7 +78,6 @@ import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
 import java.net.HttpURLConnection
-import java.net.URL
 import kotlin.collections.drop
 
 @Composable
@@ -89,7 +90,7 @@ fun NoOptionNeeded() {
 class CleanupHistory(
     var expiry: Int = 90 // days
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
@@ -175,59 +176,63 @@ open class HttpDownload(
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        var ret: Boolean = false
-
-        var connection: HttpURLConnection? = null
-
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val startTime = System.currentTimeMillis()
 
-        val thread = GlobalScope.launch(Dispatchers.IO) {
-            ret = try {
-                val resolvedUrl = url
-                    .resolveTimeTags()
-                    .resolveNumberTag(
-                        cc = aCtx.cc,
-                        domestic = aCtx.domestic,
-                        fullNumber = aCtx.fullNumber,
-                        rawNumber = aCtx.rawNumber,
-                    )
-                aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
+        val success = try {
+            // 1. Url
+            val resolvedUrl = url
+                .resolveTimeTags()
+                .resolveNumberTag(
+                    cc = aCtx.cc,
+                    domestic = aCtx.domestic,
+                    fullNumber = aCtx.fullNumber,
+                    rawNumber = aCtx.rawNumber,
+                )
+            aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
 
-                connection = URL(resolvedUrl).openConnection() as HttpURLConnection
-                // Add http headers
-                splitHeader(header).forEach { (key, value) ->
-                    aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: $key -> $value")
-                    connection.setRequestProperty(key, value)
-                }
-
-                connection.connect()
-
-                val responseCode = connection.responseCode
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    val byteArray = connection.inputStream.use { it.readBytes() }
-                    aCtx.lastOutput = byteArray
-                    true
-                } else {
-                    aCtx.logger?.error("HTTP: $responseCode")
-                    false
-                }
-            } catch (e: Exception) {
-                aCtx.logger?.error("$e")
-                false
-            } finally {
-                connection?.disconnect()
+            // 2. Headers map
+            val headersMap = splitHeader(header)
+            headersMap.forEach { (key, value) ->
+                aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: $key -> $value")
             }
-        }
-        runBlocking {
-            thread.join()
-        }
-        aCtx.logger?.debug(
-            ctx.getString(R.string.time_cost)
-                .format("${System.currentTimeMillis() - startTime}")
-        )
 
-        return ret
+            // 3. Send request
+            val resultChannel = asyncHttpRequest(
+                scope = aCtx.scope,
+                urlString = resolvedUrl,
+                headersMap = headersMap,
+            )
+
+            // 4. Get response
+            val result = aCtx.scope.async {
+                resultChannel.receiveCatching()
+            }.await().getOrNull()
+
+            aCtx.logger?.info(
+                ctx.getString(R.string.time_cost)
+                    .format("${System.currentTimeMillis() - startTime}")
+            )
+
+            aCtx.lastOutput = result?.bytes
+
+            if (result?.statusCode == HttpURLConnection.HTTP_OK) {
+                true
+            } else {
+                val echo = if (result?.bytes != null) String(result.bytes) else ""
+                aCtx.logger?.error("HTTP: <${result?.statusCode}>: $echo")
+                false
+            }
+
+        } catch (_: CancellationException) { // a winner is found, others are cancelled
+            aCtx.logger?.debug(ctx.getString(R.string.another_thread_is_cancelled))
+            false
+        } catch (e: Exception) {
+            aCtx.logger?.error("$e")
+            false
+        }
+
+        return success
     }
 
     override fun label(ctx: Context): String {
@@ -286,7 +291,7 @@ class CleanupSpamDB(
     var expiry: Int = 1 // days
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
@@ -352,7 +357,7 @@ class CleanupSpamDB(
 class BackupExport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Generate config data bytes
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
@@ -414,7 +419,7 @@ class BackupExport(
 class BackupImport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         try {
@@ -483,7 +488,7 @@ class ReadFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val path = dir.resolvePathTags()
 
         val fn = filename.resolveTimeTags()
@@ -552,7 +557,7 @@ class WriteFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         val path = dir.resolvePathTags()
@@ -623,7 +628,7 @@ class ParseCSV(
     var columnMapping: String = "{}"
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         return try {
@@ -691,7 +696,7 @@ class ParseXML(
     var xpath: String = ""
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         return try {
@@ -756,7 +761,7 @@ class RegexExtract(
     var regexFlags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         return try {
@@ -836,7 +841,7 @@ output: null
 @SerialName("ImportToSpamDB")
 class ImportToSpamDB : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
         return try {
@@ -847,8 +852,10 @@ class ImportToSpamDB : IPermissiveAction {
             }
             val errorStr = SpamTable.addAll(ctx, numbers)
 
-            aCtx.logger?.debug(ctx.getString(R.string.add_n_numbers_to_spam_db)
-                .format("${numbers.size}"))
+            aCtx.logger?.debug(
+                ctx.getString(R.string.add_n_numbers_to_spam_db)
+                    .format("${numbers.size}")
+            )
 
             // Fire a global event to update UI
             Events.spamDbUpdated.fire()
@@ -915,7 +922,7 @@ class ImportAsRegexRule(
     var importType: ImportType = ImportType.Create,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
         return try {
@@ -927,8 +934,10 @@ class ImportAsRegexRule(
                 true
             }
 
-            aCtx.logger?.info(ctx.getString(R.string.importing_n_numbers)
-                .format("${numberList.size}"))
+            aCtx.logger?.info(
+                ctx.getString(R.string.importing_n_numbers)
+                    .format("${numberList.size}")
+            )
 
             when (importType) {
                 ImportType.Create -> create(ctx, aCtx, numberList)
@@ -950,8 +959,10 @@ class ImportAsRegexRule(
         // Join numbers to `11|22|33...`
         val combinedPattern = numbers.joinToString("|")
 
-        aCtx.logger?.debug(ctx.getString(R.string.create_rule_with_numbers)
-            .format("${numbers.size}"))
+        aCtx.logger?.debug(
+            ctx.getString(R.string.create_rule_with_numbers)
+                .format("${numbers.size}")
+        )
 
         val newRule = RegexRule(
             pattern = "($combinedPattern)",
@@ -963,14 +974,18 @@ class ImportAsRegexRule(
     }
 
     private fun replace(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
-        aCtx.logger?.debug(ctx.getString(R.string.replace_rule_with_desc)
-            .format(description))
+        aCtx.logger?.debug(
+            ctx.getString(R.string.replace_rule_with_desc)
+                .format(description)
+        )
 
         val table = NumberRuleTable()
         val oldRules = table.findRuleByDesc(ctx, description)
         if (oldRules.isEmpty()) {
-            aCtx.logger?.warn(ctx.getString(R.string.rule_with_desc_not_found)
-                .format(description))
+            aCtx.logger?.warn(
+                ctx.getString(R.string.rule_with_desc_not_found)
+                    .format(description)
+            )
             create(ctx, aCtx, numbers)
         } else {
             // 1. delete the previous rule
@@ -981,14 +996,18 @@ class ImportAsRegexRule(
     }
 
     private fun merge(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
-        aCtx.logger?.debug(ctx.getString(R.string.merging_rule_with_desc)
-            .format(description))
+        aCtx.logger?.debug(
+            ctx.getString(R.string.merging_rule_with_desc)
+                .format(description)
+        )
 
         val table = NumberRuleTable()
         val oldRules = table.findRuleByDesc(ctx, description)
         if (oldRules.isEmpty()) {
-            aCtx.logger?.warn(ctx.getString(R.string.rule_with_desc_not_found)
-                .format(description))
+            aCtx.logger?.warn(
+                ctx.getString(R.string.rule_with_desc_not_found)
+                    .format(description)
+            )
 
             create(ctx, aCtx, numbers)
         } else {
@@ -997,8 +1016,10 @@ class ImportAsRegexRule(
 
             val all = (oldNumbers + numbers).distinct()
 
-            aCtx.logger?.debug(ctx.getString(R.string.regex_count_after_merge)
-                .format("${oldNumbers.size}", "${all.size}"))
+            aCtx.logger?.debug(
+                ctx.getString(R.string.regex_count_after_merge)
+                    .format("${oldNumbers.size}", "${all.size}")
+            )
 
             table.updateRuleById(
                 ctx, previous.id, previous.copy(
@@ -1100,11 +1121,13 @@ class ConvertNumber(
     var to: String = "",
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // List<RegexRule>
 
-        aCtx.logger?.debug(ctx.getString(R.string.replace_number_from_to)
-            .format(from, to))
+        aCtx.logger?.debug(
+            ctx.getString(R.string.replace_number_from_to)
+                .format(from, to)
+        )
 
         val clearedRuleList = rules.map {
             val r = it as RegexRule
@@ -1190,7 +1213,7 @@ class FindRules(
     var flags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val opts = Util.flagsToRegexOptions(flags)
         val patternRegex = pattern.toRegex(opts)
 
@@ -1198,8 +1221,10 @@ class FindRules(
             patternRegex.matches(it.description)
         }
 
-        aCtx.logger?.debug(ctx.getString(R.string.find_rule_with_desc)
-            .format("${found.size}", pattern))
+        aCtx.logger?.debug(
+            ctx.getString(R.string.find_rule_with_desc)
+                .format("${found.size}", pattern)
+        )
 
         aCtx.lastOutput = found
         return true
@@ -1270,11 +1295,13 @@ class ModifyRules(
     var config: String = "",
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*>
 
-        aCtx.logger?.debug(ctx.getString(R.string.modify_n_rules)
-            .format("${rules.size}"))
+        aCtx.logger?.debug(
+            ctx.getString(R.string.modify_n_rules)
+                .format("${rules.size}")
+        )
 
         try {
             rules.forEach {
@@ -1350,7 +1377,7 @@ class EnableWorkflow(
     var enable: Boolean = false,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val workTag = aCtx.workTag
 
         aCtx.logger?.debug("${label(ctx)}: $workTag")
@@ -1431,7 +1458,7 @@ class EnableApp(
     var enable: Boolean = true,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         Global(ctx).setGloballyEnabled(enable)
         G.globallyEnabled.value = enable
 
@@ -1503,15 +1530,17 @@ class ParseIncomingNumber(
         }
     }
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // The `rawNumber` is set by the workflow caller before it's executed.
         val rawNumber = aCtx.rawNumber!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 
         val matchesFilter = numberFilter.toRegex().matches(rawNumber)
         if (!matchesFilter) {
-            aCtx.logger?.debug(ctx.getString(R.string.number_not_match_filter)
-                .format(rawNumber, numberFilter))
+            aCtx.logger?.debug(
+                ctx.getString(R.string.number_not_match_filter)
+                    .format(rawNumber, numberFilter)
+            )
             return false
         }
 
@@ -1642,7 +1671,7 @@ class ParseQueryResult(
     var categoryFlags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         val html = String(input)
@@ -1681,13 +1710,17 @@ class ParseQueryResult(
 
         // show log
         if (isNegative == true) {
-            aCtx.logger?.error(ctx.getString(R.string.identified_as_spam)
-                .format(category ?: ""))
+            aCtx.logger?.error(
+                ctx.getString(R.string.identified_as_spam)
+                    .format(category ?: "")
+            )
         } else if (isPositive == true) {
-            aCtx.logger?.success(ctx.getString(R.string.identified_as_valid)
-                .format(category ?: ""))
+            aCtx.logger?.success(
+                ctx.getString(R.string.identified_as_valid)
+                    .format(category ?: "")
+            )
         } else {
-            aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
+            aCtx.logger?.info(ctx.getString(R.string.unidentified_number))
         }
 
         val result = QueryResult(
@@ -1809,7 +1842,7 @@ class ParseQueryResult(
 class FilterQueryResult(
 ) : IPermissiveAction {
 
-    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as QueryResult
 
         aCtx.lastOutput = if (input.determined && input.isSpam) {

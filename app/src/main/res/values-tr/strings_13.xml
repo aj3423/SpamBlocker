@@ -64,4 +64,5 @@
         Önceki adımda tanımlanan tüm spam numaralarını içeren bir <u>numara listesi</u> oluşturur.
         ]]>
     </string>
+    <string name="another_thread_is_cancelled">Başka bir işlem iptal edildi.</string>
 </resources>
