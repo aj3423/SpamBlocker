@@ -47,3 +47,6 @@ This is a small guide for how to build and run this application with Android Stu
 If you know a public database or API service that can be added to the presets, please report. 
 - PRs are welcome for public services
 - For proprietary services, I'll contact them, asking for the permission of the integration. It will only be added with their permission.
+  - If you have contacted them and got positive reply, you can fire a PR with a preset template, I appreciate that and will be happy to merge it.
+    - When contacting them, please make sure to clarify:
+      - This app will not share numbers identified by APIs with others, it will only share numbers that were blocked by local rules. Because no provider would allow their numbers to be leaked to competitors.

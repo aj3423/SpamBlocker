@@ -24,18 +24,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
-import spam.blocker.def.Def
-import spam.blocker.service.Checker
+import spam.blocker.service.checker.parseCheckResultFromDb
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
-import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResImage
-import spam.blocker.ui.widgets.RowCenter
 import spam.blocker.ui.widgets.RowVCenter
-import spam.blocker.util.AppInfo
 import spam.blocker.util.Contacts
+import spam.blocker.util.SharedPref.HistoryOptions
 import spam.blocker.util.Util
 import androidx.compose.foundation.Image as ComposeImage
 
@@ -47,10 +44,8 @@ const val ItemHeight = CardHeight - 2 * CardPaddingVertical // the height of Ava
 
 @Composable
 fun HistoryCard(
-    forType: Int,
     record: HistoryRecord,
     modifier: Modifier,
-    initialSmsRows: Int,
 ) {
     val C = LocalPalette.current
     val ctx = LocalContext.current
@@ -81,7 +76,7 @@ fun HistoryCard(
                 )
             }
 
-            // 2. Number / BlockReason / Message
+            // 2. Number / BlockReason / SMS Content
             Column(
                 modifier = M.weight(1f)
             ) {
@@ -91,47 +86,13 @@ fun HistoryCard(
                     color = if (record.isBlocked()) C.block else C.pass,
                     fontSize = 18.sp
                 )
-                // Allow/Block Reason
-                RowCenter {
-                    // Reason text
-                    Text(
-                        text = Checker.resultStr(ctx, record.result, record.reason),
-                        color = C.textGrey,
-                        fontSize = 16.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
-                    // by RecentApp Icon
-                    if (record.result == Def.RESULT_ALLOWED_BY_RECENT_APP || record.result == Def.RESULT_BLOCKED_BY_MEETING_MODE) {
-                        DrawableImage(
-                            AppInfo.fromPackage(ctx, record.reason).icon,
-                            modifier = M
-                                .size(24.dp)
-                                .padding(start = 2.dp)
-                        )
-                    }
-                }
 
-                // SMS Message
-                if (forType == Def.ForSms && record.smsContent != null) {
-                    if (initialSmsRows > 0 || record.expanded) {
-                        Column {
-                            HorizontalDivider(
-                                thickness = 0.5.dp,
-                                color = C.disabled,
-                                modifier = M.padding(vertical = 4.dp)
-                            )
-                            Text(
-                                text = record.smsContent,
-                                color = C.textGrey,
-                                fontSize = 16.sp,
-                                lineHeight = 16.sp,
-                                overflow = TextOverflow.Ellipsis,
-                                maxLines = if (record.expanded) Int.MAX_VALUE else initialSmsRows
-                            )
-                        }
-                    }
-                }
+                // Reason Summary
+                val r = parseCheckResultFromDb(ctx, record.result, record.reason)
+                r.ResultSummary(record.expanded)
+
+                // SMS Content / Api Echo
+                r.ExtraInfo(record.expanded)
             }
 
             // 3. Time / Unread Indicator

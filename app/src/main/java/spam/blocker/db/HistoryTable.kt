@@ -16,12 +16,8 @@ data class HistoryRecord(
     val result: Int = 0,
     val reason: String = "",
     val read: Boolean = false,
-    val smsContent: String? = null,
     val expanded: Boolean = false,
 ) {
-    override fun toString(): String {
-        return "record: $id, $peer, $time, $result, $reason, $read, $smsContent, $expanded"
-    }
     fun isBlocked(): Boolean {
         return Def.isBlocked(result)
     }
@@ -50,7 +46,6 @@ abstract class HistoryTable {
                         result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                         reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                         read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
-                        smsContent = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SMS_CONTENT)),
                         expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                     )
 
@@ -75,7 +70,6 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
-        cv.put(Db.COLUMN_SMS_CONTENT, r.smsContent)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         return db.insert(tableName(), null, cv)
     }
@@ -89,7 +83,6 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
-        cv.put(Db.COLUMN_SMS_CONTENT, r.smsContent)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         db.insert(tableName(), null, cv)
     }
@@ -131,7 +124,6 @@ abstract class HistoryTable {
                     result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                     reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                     read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
-                    smsContent = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SMS_CONTENT)),
                     expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                 )
 

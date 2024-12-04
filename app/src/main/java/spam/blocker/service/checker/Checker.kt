@@ -1,4 +1,4 @@
-package spam.blocker.service
+package spam.blocker.service.checker
 
 import android.content.Context
 import android.os.Build
@@ -11,10 +11,11 @@ import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
-import spam.blocker.db.RuleTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.QueryResult
 import spam.blocker.service.bot.executeAll
@@ -22,7 +23,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Permissions
 import spam.blocker.util.PhoneNumber
-import spam.blocker.util.SharedPref.ApiOptions
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.RecentApps
@@ -41,30 +41,10 @@ class CheckContext(
     val startTimeMillis: Long = System.currentTimeMillis(),
 )
 
-class CheckResult(
-    val shouldBlock: Boolean,
-    val result: Int,
-) {
-    var byContact: String? = null // allowed by contact
-    var byRule: RegexRule? = null // allowed or blocked by this filter rule
-    var byApp: String? = null // allowed by recent app, or blocked by meeting mode
-    var stirResult: Int? = null
-    var byInstantQuerySummary: String? = null
-
-    // This `reason` will be saved to database as a string
-    fun reason(): String {
-        if (byContact != null) return byContact!!
-        if (byRule != null) return byRule!!.id.toString()
-        if (byApp != null) return byApp!!
-        if (stirResult != null) return stirResult.toString()
-        if (byInstantQuerySummary != null) return byInstantQuerySummary.toString()
-        return ""
-    }
-}
 
 interface IChecker {
     fun priority(): Int
-    fun check(): CheckResult?
+    fun check(): ICheckResult?
 }
 
 class Checker { // for namespace only
@@ -77,7 +57,7 @@ class Checker { // for namespace only
             return Int.MAX_VALUE
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val logger = cCtx.logger
             val callDetails = cCtx.callDetails
 
@@ -97,7 +77,7 @@ class Checker { // for namespace only
                     ctx.getString(R.string.allowed_by)
                         .format(ctx.getString(R.string.emergency_call))
                 )
-                return CheckResult(false, Def.RESULT_ALLOWED_BY_EMERGENCY)
+                return ByEmergency()
             }
 
             return null
@@ -113,7 +93,7 @@ class Checker { // for namespace only
             return if (isExclusive) 0 else 10
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val logger = cCtx.logger
             val callDetails = cCtx.callDetails
 
@@ -149,23 +129,21 @@ class Checker { // for namespace only
 
             if (exclusive) {
                 if (fail || (includeUnverified && unverified)) {
+                    val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.stir_attestation))
-                                + ": ${resultStr(ctx, Def.RESULT_BLOCKED_BY_STIR, stir.toString())}"
+                            .format(ret.resultSummary(ctx))
                     )
-                    return CheckResult(true, Def.RESULT_BLOCKED_BY_STIR)
-                        .apply { stirResult = stir }
+                    return ret
                 }
             } else {
                 if (pass || (includeUnverified && unverified)) {
+                    val ret = BySTIR(RESULT_ALLOWED_BY_STIR, stir)
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.stir_attestation))
-                                + ": ${resultStr(ctx, Def.RESULT_ALLOWED_BY_STIR, stir.toString())}"
+                            .format(ret.resultSummary(ctx))
                     )
-                    return CheckResult(false, Def.RESULT_ALLOWED_BY_STIR)
-                        .apply { stirResult = stir }
+                    return ret
                 }
             }
 
@@ -183,7 +161,7 @@ class Checker { // for namespace only
             return 0
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -202,7 +180,7 @@ class Checker { // for namespace only
                 logger?.error(
                     ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.database))
                 )
-                return CheckResult(true, Def.RESULT_BLOCKED_BY_SPAM_DB)
+                return BySpamDb()
             }
             return null
         }
@@ -219,7 +197,7 @@ class Checker { // for namespace only
             return if (isExclusive) 0 else 10
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -238,16 +216,16 @@ class Checker { // for namespace only
                     ctx.getString(R.string.allowed_by)
                         .format(ctx.getString(R.string.contacts)) + ": ${contact.name}"
                 )
-                return CheckResult(false, Def.RESULT_ALLOWED_BY_CONTACT)
-                    .apply { byContact = contact.name }
+                return ByContact(Def.RESULT_ALLOWED_BY_CONTACT, contact.name)
             } else { // not contact
                 if (spf.isExclusive()) {
+                    val ret = ByContact(RESULT_BLOCKED_BY_NON_CONTACT)
                     logger?.error(
                         ctx.getString(R.string.blocked_by).format(
-                            resultStr(ctx, Def.RESULT_BLOCKED_BY_NON_CONTACT, "")
+                            ret.resultSummary(ctx)
                         )
                     )
-                    return CheckResult(true, Def.RESULT_BLOCKED_BY_NON_CONTACT)
+                    return ret
                 }
             }
             return null
@@ -262,7 +240,7 @@ class Checker { // for namespace only
             return 10
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
             val isTesting = cCtx.callDetails == null
@@ -329,7 +307,7 @@ class Checker { // for namespace only
                 logger?.success(
                     ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.repeated_call))
                 )
-                return CheckResult(false, Def.RESULT_ALLOWED_BY_REPEATED)
+                return ByRepeatedCall()
             }
             return null
         }
@@ -343,7 +321,7 @@ class Checker { // for namespace only
             return 10
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -385,7 +363,7 @@ class Checker { // for namespace only
                 logger?.success(
                     ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.dialed_number))
                 )
-                return CheckResult(false, Def.RESULT_ALLOWED_BY_DIALED)
+                return ByDialedNumber()
             }
             return null
         }
@@ -399,7 +377,7 @@ class Checker { // for namespace only
             return 10
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val logger = cCtx.logger
 
             val spf = spam.blocker.util.SharedPref.OffTime(ctx)
@@ -421,14 +399,14 @@ class Checker { // for namespace only
                 logger?.success(
                     ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.off_time))
                 )
-                return CheckResult(false, Def.RESULT_ALLOWED_BY_OFF_TIME)
+                return ByOffTime()
             }
 
             if (Util.isCurrentTimeWithinRange(stHour, stMin, etHour, etMin)) {
                 logger?.success(
                     ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.off_time))
                 )
-                return CheckResult(false, Def.RESULT_ALLOWED_BY_OFF_TIME)
+                return ByOffTime()
             }
 
             return null
@@ -443,7 +421,7 @@ class Checker { // for namespace only
             return 10
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val logger = cCtx.logger
 
             logger?.info(
@@ -479,10 +457,7 @@ class Checker { // for namespace only
                         ctx.getString(R.string.allowed_by)
                             .format(ctx.getString(R.string.recent_apps)) + ": ${intersection.first()}"
                     )
-                    return CheckResult(
-                        false,
-                        Def.RESULT_ALLOWED_BY_RECENT_APP
-                    ).apply { byApp = intersection.first() }
+                    return ByRecentApp( pkgName = intersection.first() )
                 }
             }
             return null
@@ -498,7 +473,7 @@ class Checker { // for namespace only
             return spf.getPriority()
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val logger = cCtx.logger
 
             logger?.info(
@@ -518,14 +493,11 @@ class Checker { // for namespace only
             }
 
             if (appInMeeting != null) {
-                logger?.success(
-                    ctx.getString(R.string.allowed_by)
+                logger?.error(
+                    ctx.getString(R.string.blocked_by)
                         .format(ctx.getString(R.string.in_meeting)) + ": $appInMeeting"
                 )
-                return CheckResult(
-                    true,
-                    Def.RESULT_BLOCKED_BY_MEETING_MODE
-                ).apply { byApp = appInMeeting }
+                return ByMeetingMode( pkgName = appInMeeting )
             }
             return null
         }
@@ -539,7 +511,7 @@ class Checker { // for namespace only
             return -1
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -594,18 +566,22 @@ class Checker { // for namespace only
             )
 
             if (result?.determined == true) { // either spam or non-spam
-                if (result.isSpam)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi!!.summary()}>")
-                else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi!!.summary()}>")
+                winnerApi!! // If it's determined, the winnerApi must exist
 
-                return CheckResult(
-                    result.isSpam,
-                    if (result.isSpam) Def.RESULT_BLOCKED_BY_INSTANT_QUERY else Def.RESULT_ALLOWED_BY_INSTANT_QUERY
-                ).apply {
-                    byInstantQuerySummary =
-                        "${winnerApi?.summary()}${if (result.category != null) " (${result.category})" else ""}"
-                }
+                if (result.isSpam)
+                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi.summary()}>")
+                else
+                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi.summary()}>")
+
+                return ByApiQuery(
+                    type = if (result.isSpam) Def.RESULT_BLOCKED_BY_API_QUERY else Def.RESULT_ALLOWED_BY_API_QUERY,
+                    extraInfo = ApiQueryExtraInfo(
+                        apiId = winnerApi.id,
+                        apiSummary = winnerApi.summary(),
+                        category = result.category,
+                        serverEcho = result.serverEcho!!,
+                    )
+                )
             }
 
             return null
@@ -622,7 +598,7 @@ class Checker { // for namespace only
             return numberRule.priority
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -651,12 +627,11 @@ class Checker { // for namespace only
                 else
                     logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
 
-                return CheckResult(
-                    block,
-                    if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER
-                ).apply {
-                    byRule = numberRule
-                }
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER,
+                    rule = numberRule,
+                    extraInfo = RegexExtraInfo(recordId = numberRule.id)
+                )
             }
 
             return null
@@ -673,7 +648,7 @@ class Checker { // for namespace only
             return rule.priority
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -701,12 +676,11 @@ class Checker { // for namespace only
                     else
                         logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}")
 
-                    return CheckResult(
-                        block,
-                        if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX
-                    ).apply {
-                        byRule = rule
-                    }
+                    return ByRegexRule(
+                        type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX,
+                        rule = rule,
+                        extraInfo = RegexExtraInfo(recordId = rule.id)
+                    )
                 }
             }
             return null
@@ -723,7 +697,7 @@ class Checker { // for namespace only
             return rule.priority
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -752,12 +726,11 @@ class Checker { // for namespace only
                     else
                         logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}")
 
-                    return CheckResult(
-                        block,
-                        if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP
-                    ).apply {
-                        byRule = rule
-                    }
+                    return ByRegexRule(
+                        type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP,
+                        rule = rule,
+                        extraInfo = RegexExtraInfo(recordId = rule.id)
+                    )
                 }
             }
             return null
@@ -778,7 +751,7 @@ class Checker { // for namespace only
             return rule.priority
         }
 
-        override fun check(): CheckResult? {
+        override fun check(): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
@@ -829,10 +802,11 @@ class Checker { // for namespace only
                 else
                     logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
 
-                return CheckResult(
-                    block,
-                    if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT
-                ).apply { byRule = rule }
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT,
+                    rule = rule,
+                    extraInfo = RegexExtraInfo(recordId = rule.id, smsContent = messageBody)
+                )
             }
             return null
         }
@@ -845,23 +819,23 @@ class Checker { // for namespace only
             logger: ILogger?,
             rawNumber: String,
             callDetails: Call.Details? = null
-        ): CheckResult {
+        ): ICheckResult {
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
                 callDetails = callDetails,
                 logger = logger,
             )
             val checkers = arrayListOf(
-                Checker.Emergency(ctx, cCtx),
-                Checker.STIR(ctx, cCtx),
-                Checker.SpamDB(ctx, cCtx),
-                Checker.Contact(ctx, cCtx),
-                Checker.RepeatedCall(ctx, cCtx),
-                Checker.Dialed(ctx, cCtx),
-                Checker.RecentApp(ctx, cCtx),
-                Checker.MeetingMode(ctx, cCtx),
-                Checker.OffTime(ctx, cCtx),
-                Checker.InstantQuery(ctx, cCtx),
+                Emergency(ctx, cCtx),
+                STIR(ctx, cCtx),
+                SpamDB(ctx, cCtx),
+                Contact(ctx, cCtx),
+                RepeatedCall(ctx, cCtx),
+                Dialed(ctx, cCtx),
+                RecentApp(ctx, cCtx),
+                MeetingMode(ctx, cCtx),
+                OffTime(ctx, cCtx),
+                InstantQuery(ctx, cCtx),
             )
 
             //  add number rules to checkers
@@ -870,11 +844,11 @@ class Checker { // for namespace only
                 val forContact = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
                 val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
                 if (forContact)
-                    Checker.RegexContact(ctx, cCtx, it)
+                    RegexContact(ctx, cCtx, it)
                 else if (forContactGroup)
-                    Checker.ContactGroup(ctx, cCtx, it)
+                    ContactGroup(ctx, cCtx, it)
                 else
-                    Checker.Number(ctx, cCtx, it)
+                    Number(ctx, cCtx, it)
             }
 
             // sort by priority desc
@@ -883,7 +857,7 @@ class Checker { // for namespace only
             }
 
             // try all checkers in order, until a match is found
-            var result: CheckResult? = null
+            var result: ICheckResult? = null
             checkers.firstOrNull {
                 result = it.check()
                 result != null
@@ -895,7 +869,7 @@ class Checker { // for namespace only
 
             logger?.success(ctx.getString(R.string.passed_by_default))
             // pass by default
-            return CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
+            return ByDefault()
         }
 
         fun checkSms(
@@ -903,17 +877,17 @@ class Checker { // for namespace only
             logger: ILogger?,
             rawNumber: String,
             messageBody: String
-        ): CheckResult {
+        ): ICheckResult {
 
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
                 logger = logger,
             )
             val checkers = arrayListOf<IChecker>(
-                Checker.Contact(ctx, cCtx),
-                Checker.SpamDB(ctx, cCtx),
-                Checker.MeetingMode(ctx, cCtx),
-                Checker.OffTime(ctx, cCtx)
+                Contact(ctx, cCtx),
+                SpamDB(ctx, cCtx),
+                MeetingMode(ctx, cCtx),
+                OffTime(ctx, cCtx)
             )
 
             //  add number rules to checkers
@@ -922,17 +896,17 @@ class Checker { // for namespace only
                 val forContact = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
                 val forContactGroup = it.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
                 if (forContact)
-                    Checker.RegexContact(ctx, cCtx, it)
+                    RegexContact(ctx, cCtx, it)
                 else if (forContactGroup)
-                    Checker.ContactGroup(ctx, cCtx, it)
+                    ContactGroup(ctx, cCtx, it)
                 else
-                    Checker.Number(ctx, cCtx, it)
+                    Number(ctx, cCtx, it)
             }
 
             //  add sms content rules to checkers
             val contentFilters = ContentRuleTable().listRules(ctx, 0/* doesn't care */)
             checkers += contentFilters.map {
-                Checker.Content(ctx, cCtx, messageBody, it)
+                Content(ctx, cCtx, messageBody, it)
             }
 
             // sort by priority desc
@@ -941,18 +915,20 @@ class Checker { // for namespace only
             }
 
             // try all checkers in order, until a match is found
-            var result: CheckResult? = null
+            var result: ICheckResult? = null
             checkers.firstOrNull {
                 result = it.check()
                 result != null
             }
             // match found
             if (result != null) {
-                return result!!
+                return result
             }
 
+            logger?.success(ctx.getString(R.string.passed_by_default))
+
             // pass by default
-            return CheckResult(false, Def.RESULT_ALLOWED_BY_DEFAULT)
+            return ByDefault()
         }
 
         // It returns a list<String>, all the Strings will be shown as Buttons in the notification.
@@ -994,90 +970,6 @@ class Checker { // for namespace only
                         acc.add(extracted)
                 }
                 acc
-            }
-        }
-
-
-        private fun ruleReasonStr(ctx: Context, ruleTable: RuleTable?, reason: String): String {
-            val f = ruleTable?.findRuleById(ctx, reason.toLong())
-
-            val reasonStr = if (f != null) {
-                if (f.description != "") f.description else f.patternStr()
-            } else {
-                ctx.resources.getString(R.string.deleted_filter)
-            }
-            return reasonStr
-        }
-
-        fun resultStr(ctx: Context, result: Int, reason: String): String {
-
-            val res = ctx.resources
-
-            return when (result) {
-                Def.RESULT_ALLOWED_BY_CONTACT -> res.getString(R.string.contacts)
-                Def.RESULT_BLOCKED_BY_NON_CONTACT -> res.getString(R.string.non_contacts)
-                Def.RESULT_ALLOWED_BY_STIR, Def.RESULT_BLOCKED_BY_STIR -> {
-                    when (reason.toInt()) {
-                        Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${res.getString(R.string.stir_attestation)} ${
-                            res.getString(
-                                R.string.unverified
-                            )
-                        }"
-
-                        Connection.VERIFICATION_STATUS_PASSED -> "${res.getString(R.string.stir_attestation)} ${
-                            res.getString(
-                                R.string.valid
-                            )
-                        }"
-
-                        Connection.VERIFICATION_STATUS_FAILED -> "${res.getString(R.string.stir_attestation)} ${
-                            res.getString(
-                                R.string.spoof
-                            )
-                        }"
-
-                        else -> res.getString(R.string.stir_attestation)
-                    }
-                }
-
-                Def.RESULT_ALLOWED_BY_EMERGENCY -> res.getString(R.string.emergency_call)
-                Def.RESULT_ALLOWED_BY_RECENT_APP -> res.getString(R.string.recent_apps) + " "
-                Def.RESULT_BLOCKED_BY_MEETING_MODE -> res.getString(R.string.in_meeting) + " "
-                Def.RESULT_BLOCKED_BY_INSTANT_QUERY, Def.RESULT_ALLOWED_BY_INSTANT_QUERY ->
-                    res.getString(R.string.query) + ": " + reason
-
-                Def.RESULT_ALLOWED_BY_REPEATED -> res.getString(R.string.repeated_call)
-                Def.RESULT_ALLOWED_BY_DIALED -> res.getString(R.string.dialed_number)
-                Def.RESULT_ALLOWED_BY_OFF_TIME -> res.getString(R.string.off_time)
-                Def.RESULT_ALLOWED_BY_NUMBER -> res.getString(R.string.whitelist) + ": " + ruleReasonStr(
-                    ctx, NumberRuleTable(), reason
-                )
-
-                Def.RESULT_BLOCKED_BY_NUMBER -> res.getString(R.string.blacklist) + ": " + ruleReasonStr(
-                    ctx, NumberRuleTable(), reason
-                )
-
-                Def.RESULT_BLOCKED_BY_SPAM_DB -> res.getString(R.string.database)
-
-                Def.RESULT_ALLOWED_BY_CONTACT_GROUP, Def.RESULT_BLOCKED_BY_CONTACT_GROUP -> {
-                    res.getString(R.string.contact_group) + ": " +
-                            ruleReasonStr(ctx, NumberRuleTable(), reason)
-                }
-
-                Def.RESULT_ALLOWED_BY_CONTACT_REGEX, Def.RESULT_BLOCKED_BY_CONTACT_REGEX -> {
-                    res.getString(R.string.contact_rule) + ": " +
-                            ruleReasonStr(ctx, NumberRuleTable(), reason)
-                }
-
-                Def.RESULT_ALLOWED_BY_CONTENT -> res.getString(R.string.content) + ": " + ruleReasonStr(
-                    ctx, ContentRuleTable(), reason
-                )
-
-                Def.RESULT_BLOCKED_BY_CONTENT -> res.getString(R.string.content) + ": " + ruleReasonStr(
-                    ctx, ContentRuleTable(), reason
-                )
-
-                else -> res.getString(R.string.passed_by_default)
             }
         }
     }

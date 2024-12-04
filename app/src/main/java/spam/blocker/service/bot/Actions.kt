@@ -1656,6 +1656,7 @@ data class QueryResult(
     // These values are only useful when determined == true
     val isSpam: Boolean = false,
     val category: String? = null,
+    val serverEcho: String? = null,
 )
 
 @Serializable
@@ -1727,6 +1728,7 @@ class ParseQueryResult(
             determined = determined,
             isSpam = isNegative == true,
             category = category,
+            serverEcho = html,
         )
         aCtx.lastOutput = result
         aCtx.racingResult = result

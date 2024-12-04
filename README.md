@@ -17,6 +17,7 @@ Table of Contents
    * [Support](#support)
    * [FAQ](#faq)
    * [Language Support](#language-support)
+   * [Contributing](#contributing)
    * [Donate](#donate)
 
 # Screenshot
@@ -93,6 +94,9 @@ It works without replacing your default call/SMS app.
 # Language support
 
 Languages are translated using Gemini AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), fire an issue for requesting a new language support.
+
+# Contributing
+ - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)
 
 # Donate
 

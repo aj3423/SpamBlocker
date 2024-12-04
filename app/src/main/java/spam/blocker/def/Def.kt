@@ -84,7 +84,7 @@ object Def {
     const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
     const val RESULT_ALLOWED_BY_CONTACT_GROUP = 101
     const val RESULT_ALLOWED_BY_CONTACT_REGEX = 102
-    const val RESULT_ALLOWED_BY_INSTANT_QUERY = 103
+    const val RESULT_ALLOWED_BY_API_QUERY = 103
 
 
     // blocked (10~99)
@@ -96,7 +96,7 @@ object Def {
     const val RESULT_BLOCKED_BY_CONTACT_REGEX = 15
     const val RESULT_BLOCKED_BY_SPAM_DB = 16
     const val RESULT_BLOCKED_BY_MEETING_MODE = 17
-    const val RESULT_BLOCKED_BY_INSTANT_QUERY = 18
+    const val RESULT_BLOCKED_BY_API_QUERY = 18
 
     fun isBlocked(result: Int): Boolean {
         return result in 10..99

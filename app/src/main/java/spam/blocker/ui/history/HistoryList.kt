@@ -145,9 +145,7 @@ fun HistoryList(
                         )
                     ) {
                         HistoryCard(
-                            forType = vm.forType,
                             record = record,
-                            initialSmsRows = HistoryOptions(ctx).getInitialSmsRowCount(),
                             modifier = M
                                 .combinedClickable(
                                     onClick = {
@@ -158,23 +156,13 @@ fun HistoryList(
                                             vm.records[index] = vm.records[index].copy(read = true)
                                         }
 
-                                        when (vm.forType) {
-                                            Def.ForSms -> {
-                                                // Expand/Collapse the SMS body
-                                                if (record.smsContent != null) {
-                                                    val rec = vm.records[index]
-                                                    // 1. update db
-                                                    vm.table.setExpanded(
-                                                        ctx,
-                                                        record.id,
-                                                        !rec.expanded
-                                                    )
-                                                    // 2. update ui
-                                                    vm.records[index] =
-                                                        rec.copy(expanded = !rec.expanded)
-                                                }
-                                            }
-                                        }
+                                        // Toggle expanded
+                                        val rec = vm.records[index]
+                                        // 1. update db
+                                        vm.table.setExpanded(ctx, record.id, !rec.expanded)
+                                        // 2. update ui
+                                        vm.records[index] = rec.copy(expanded = !rec.expanded)
+
                                         clickedRecord.value = vm.records[index]
                                     },
                                     onLongClick = {

@@ -12,12 +12,13 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
+import spam.blocker.service.checker.ICheckResult
+import spam.blocker.service.checker.Checker
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
-import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.HistoryOptions
 import spam.blocker.util.SharedPref.Temporary
@@ -100,8 +101,8 @@ class CallScreeningService : CallScreeningService() {
 
         val r = processCall(this, null, rawNumber, details)
 
-        if (r.shouldBlock) {
-            val blockType = getBlockType(r) // reject / silence / answer+hangup
+        if (r.shouldBlock()) {
+            val blockType = r.getBlockType(this) // reject / silence / answer+hangup
 
             when (blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
@@ -113,22 +114,13 @@ class CallScreeningService : CallScreeningService() {
         }
     }
 
-    // If it's blocked by regex rule, return `rule.blockType`
-    // otherwise return the global setting
-    private fun getBlockType(r: CheckResult): Int {
-        return if (r.byRule != null) { // per rule setting
-            r.byRule!!.blockType
-        } else { // global setting
-            BlockType(this).getType()
-        }
-    }
 
     fun processCall(
         ctx: Context,
         logger: ILogger?, // for showing detailed steps to logcat or for testing purpose
         rawNumber: String,
         callDetails: TelecomCall.Details? = null,
-    ): CheckResult {
+    ): ICheckResult {
         // 0. check the number with all rules, get the result
         val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
 
@@ -139,8 +131,8 @@ class CallScreeningService : CallScreeningService() {
                 ctx, HistoryRecord(
                     peer = rawNumber,
                     time = System.currentTimeMillis(),
-                    result = r.result,
-                    reason = r.reason(),
+                    result = r.type,
+                    reason = r.reasonToDb(),
                 )
             )
         } else 0
@@ -151,14 +143,9 @@ class CallScreeningService : CallScreeningService() {
         }
 
         // 3. show notification
-        if (r.shouldBlock) {
+        if (r.shouldBlock()) {
 
             logd(String.format("Reject call %s", rawNumber))
-
-            val importance = if (r.result == Def.RESULT_BLOCKED_BY_NUMBER)
-                r.byRule!!.importance // use per rule notification type
-            else
-                Def.DEF_SPAM_IMPORTANCE
 
             // click the notification to launch this app
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
@@ -166,15 +153,16 @@ class CallScreeningService : CallScreeningService() {
                 putExtra("blocked", true)
             }.setAction("action_call")
 
-            val toCopy = Checker.checkQuickCopy(
+            val toCopy = Checker.Companion.checkQuickCopy(
                 ctx, rawNumber, null, true, true
             )
 
             Notification.show(
-                ctx, R.drawable.ic_call_blocked,
+                ctx,
+                R.drawable.ic_call_blocked,
                 title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
-                body = Checker.resultStr(ctx, r.result, r.reason()),
-                importance = importance,
+                body = r.resultSummary(ctx),
+                importance = r.getImportance(),
                 color = Salmon,
                 intent = intent,
                 toCopy = toCopy

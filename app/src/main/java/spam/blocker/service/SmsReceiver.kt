@@ -12,6 +12,8 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
+import spam.blocker.service.checker.ICheckResult
+import spam.blocker.service.checker.Checker
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
@@ -41,34 +43,36 @@ class SmsReceiver : BroadcastReceiver() {
         processSms(ctx, logger = null, rawNumber, messageBody)
     }
 
-    fun processSms(ctx: Context, logger: ILogger?, rawNumber: String, messageBody: String) : CheckResult {
+    fun processSms(
+        ctx: Context,
+        logger: ILogger?,
+        rawNumber: String,
+        messageBody: String
+    ): ICheckResult {
         val spf = HistoryOptions(ctx)
 
         val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
 
         // 1. log to db
         val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED
-        val recordId = if(isLogEnabled) SmsTable().addNewRecord(ctx, HistoryRecord(
-            peer = rawNumber,
-            time = System.currentTimeMillis(),
-            result = r.result,
-            reason = r.reason(),
-            smsContent = if (spf.isLogSmsContentEnabled()) messageBody else null
-        )) else 0
+        val recordId = if (isLogEnabled)
+            SmsTable().addNewRecord(
+                ctx, HistoryRecord(
+                    peer = rawNumber,
+                    time = System.currentTimeMillis(),
+                    result = r.type,
+                    reason = r.reasonToDb(),
+                )
+            ) else 0
 
         // 2. broadcast new sms to add a new item in history page
-        if(isLogEnabled) {
+        if (isLogEnabled) {
             Events.onNewSMS.fire(recordId)
         }
 
         val showName = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber
 
-        if (r.shouldBlock) {
-            var importance = NotificationManager.IMPORTANCE_LOW // default: LOW
-
-            if (r.result == Def.RESULT_BLOCKED_BY_NUMBER || r.result == Def.RESULT_BLOCKED_BY_CONTENT) {
-                importance = r.byRule!!.importance // use per rule notification type
-            }
+        if (r.shouldBlock()) {
 
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
                 putExtra("type", "sms")
@@ -76,12 +80,14 @@ class SmsReceiver : BroadcastReceiver() {
             }.setAction("action_sms_block")
 
             val toCopy = Checker.checkQuickCopy(
-                ctx, rawNumber, messageBody, false, true)
+                ctx, rawNumber, messageBody, false, true
+            )
 
-            Notification.show(ctx, R.drawable.ic_sms_blocked,
+            Notification.show(
+                ctx, R.drawable.ic_sms_blocked,
                 title = showName,
                 body = messageBody,
-                importance = importance,
+                importance = r.getImportance(),
                 color = Salmon,
                 intent = intent,
                 toCopy = toCopy,
@@ -99,9 +105,11 @@ class SmsReceiver : BroadcastReceiver() {
             }.setAction("action_sms_non_block")
 
             val toCopy = Checker.checkQuickCopy(
-                ctx, rawNumber, messageBody, false, false)
+                ctx, rawNumber, messageBody, false, false
+            )
 
-            Notification.show(ctx, R.drawable.ic_sms_pass,
+            Notification.show(
+                ctx, R.drawable.ic_sms_pass,
                 title = showName,
                 body = messageBody,
                 importance = IMPORTANCE_HIGH,

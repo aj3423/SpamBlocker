@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 30
+        const val DB_VERSION = 31
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -198,9 +198,15 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 29) && (oldVersion < 29)) {
             db.execSQL("UPDATE $TABLE_BOT SET $COLUMN_WORK_UUID = REPLACE(HEX(RANDOMBLOB(16)), '-', '') WHERE $COLUMN_WORK_UUID IS NULL;")
         }
-        // v4.0 introduced api
+        // v4.0 introduced:
+        // 1. api
         if ((newVersion >= 30) && (oldVersion < 30)) {
             onCreate(db)
+        }
+        // 2. and the history api records are incompatible.
+        if ((newVersion >= 31) && (oldVersion < 31)) {
+            db.execSQL("DELETE FROM $TABLE_CALL")
+            db.execSQL("DELETE FROM $TABLE_SMS")
         }
     }
 }
