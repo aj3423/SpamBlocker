@@ -38,13 +38,15 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rexeitar</b></font>: <br>
-        &emsp; Igual que premer o botón de rexeitar. Funciona completamente en silencio, a pantalla de bloqueo non se activará, é o tipo recomendado se non utilizas o correo de voz.<br>
+        &ensp; Igual que premer o botón de rexeitar. Funciona completamente en silencio, a pantalla de bloqueo non se activará.<br>
         <br>
-        - <font color="#00BFFF"><b>Silencio</b></font>: <br>
-        &emsp; Soará silenciosamente en segundo plano, dando a impresión ao chamador de que estás ocupado e non respondiches.<br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+        &ensp; Soará en silencio en segundo plano, dando a impresión ao chamador de que non estabas dispoñible e perdiches a chamada. <br>
         <br>
-        - <font color="#00BFFF"><b>Atender e Colgar</b></font>: <br>
-        &emsp; Para evitar ser enviado ao correo de voz. A pantalla de bloqueo pódese activar durante un curto período de tempo,
+        &ensp; Tamén pode axudar se tes chamadas spam repetidas, estenderá a duración da chamada, facendo menos eficiente para os spammers, potencialmente desalentándoos de chamarte de novo.<br>
+        <br>
+        - <font color="#00BFFF"><b>Atender e colgar</b></font>: <br>
+        &ensp; Para evitar ser enviado ao correo de voz. A pantalla de bloqueo pode activarse por un tempo curto,
          tamén podes escoitar un ton de fin de chamada (algúns teléfonos ofrecen a opción de silenciar este son).
         ]]>
     </string>

@@ -38,14 +38,16 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
-        &emsp; Igual a pressionar o botão de declínio. Funciona completamente silenciosamente, a tela de bloqueio não será ativada, é o tipo recomendado se você não usa correio de voz.<br>
+        &ensp; Igual a pressionar o botão de recusar. Funciona completamente em silêncio, a tela de bloqueio não será ativada.<br>
         <br>
         - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-        &emsp; Ele tocará silenciosamente em segundo plano, dando a impressão ao chamador de que você está apenas ocupado e não atendeu. <br>
+        &ensp; Tocará silenciosamente em segundo plano, dando a impressão ao chamador de que você estava indisponível e perdeu a chamada. <br>
+        <br>
+        &ensp; Também pode ajudar se você estiver recebendo chamadas de spam repetidas, pois aumentará a duração da chamada, tornando-a menos eficiente para spammers, potencialmente desencorajando-os a ligar novamente.<br>
         <br>
         - <font color="#00BFFF"><b>Atender e Desligar</b></font>: <br>
-        &emsp; Para evitar ser direcionado para o correio de voz. A tela de bloqueio pode ser ativada por um curto período,
-         você também pode ouvir um tom de finalização de chamada (alguns telefones oferecem uma opção para silenciar esse som).
+        &ensp; Para evitar ser encaminhado para o correio de voz. A tela de bloqueio pode ser ativada por um curto período,
+         você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar este som).
         ]]>
     </string>
     <string name="help_dialed">

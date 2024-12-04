@@ -38,14 +38,16 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rechazar</b></font>: <br>
-        &emsp; Igual que presionar el botón de rechazar. Funciona completamente en silencio, la pantalla de bloqueo no se encenderá, es el tipo recomendado si no utiliza el buzón de voz.<br>
+        &ensp; Igual que presionar el botón de rechazar. Funciona completamente en silencio, la pantalla de bloqueo no se activará.<br>
         <br>
         - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-        &emsp; Sonará silenciosamente en segundo plano, dando la impresión al llamante de que está ocupado y no ha respondido.<br>
+        &ensp; Sonará silenciosamente en segundo plano, dando la impresión al llamador de que no estaba disponible y perdió la llamada. <br>
         <br>
-        - <font color="#00BFFF"><b>Contestar y Colgar</b></font>: <br>
-        &emsp; Para evitar ser enviado al buzón de voz. La pantalla de bloqueo puede encenderse por un breve tiempo,
-         es posible que también escuche un tono de fin de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
+        &ensp; También puede ayudar si experimenta llamadas de spam repetidas, extenderá la duración de la llamada, lo que la hará menos eficiente para los spammers, lo que posiblemente los desanime a llamarlo nuevamente.<br>
+        <br>
+        - <font color="#00BFFF"><b>Contestar y colgar</b></font>: <br>
+        &ensp; Para evitar ser enviado al buzón de voz. La pantalla de bloqueo se puede activar por un corto tiempo,
+         también puede escuchar un tono de fin de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido).
         ]]>
     </string>
     <string name="help_dialed">

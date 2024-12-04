@@ -38,14 +38,15 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Reddet</b></font>: <br>
-        &emsp; Reddet butonuna basmakla aynı. Tamamen sessiz çalışır, kilit ekranı açılmaz, sesli mesaj kullanmıyorsanız önerilen türdür.<br>
+        &ensp; Reddet düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
         <br>
-        - <font color="#00BFFF"><b>Sessiz</b></font>: <br>
-        &emsp; Arka planda sessizce çalacak, arayan kişiye meşgul olduğunuz ve yanıtlamadığınız izlenimini verecektir. <br>
+        - <font color="#00BFFF"><b>Sessize Al</b></font>: <br>
+        &ensp; Arka planda sessizce çalar, arayana müsait olmadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
+        <br>
+        &ensp; Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak spamciler için daha az verimli hale getirir ve sizi tekrar aramaktan caydırabilir.<br>
         <br>
         - <font color="#00BFFF"><b>Cevapla ve Kapat</b></font>: <br>
-        &emsp; Sesli mesaja yönlendirilmekten kaçınmak için. Kilit ekranı kısa bir süreliğine açılabilir,
-         ayrıca bir arama sonu tonu duyabilirsiniz. (bazı telefonlar bu sesi susturma seçeneği sunar)
+        &ensp; Sesli mesaja yönlendirilmeyi önlemek için. Kilit ekranı kısa bir süre açılabilir, ayrıca bir arama sonu sesi duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar).
         ]]>
     </string>
     <string name="help_dialed">
@@ -77,4 +78,3 @@
         ]]>
     </string>
 </resources>
-

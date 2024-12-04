@@ -38,14 +38,16 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rejeter</b></font>: <br>
-        &emsp; Identique à appuyer sur le bouton de refus. Fonctionne en mode complètement silencieux, l’écran de verrouillage ne s’allume pas, c’est le type recommandé si vous n’utilisez pas la messagerie vocale. <br>
+        &ensp; Identique à appuyer sur le bouton de refus. Cela fonctionne complètement silencieusement, l\'écran de verrouillage ne sera pas activé.<br>
         <br>
-        - <font color="#00BFFF"><b>Silence</b></font>: <br>
-        &emsp; La sonnerie se fait en silence en arrière-plan, donnant l’impression à l’appelant que vous êtes tout simplement occupé et n’avez pas répondu. <br>
+        - <font color="#00BFFF"><b>Silencieux</b></font>: <br>
+        &ensp; Il sonnera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous étiez indisponible et avez manqué l\'appel. <br>
+        <br>
+        &ensp; Cela peut également être utile si vous subissez des appels indésirables répétés, cela prolongera la durée de l\'appel, le rendant moins efficace pour les spammeurs, ce qui pourrait les dissuader de vous rappeler.<br>
         <br>
         - <font color="#00BFFF"><b>Répondre et raccrocher</b></font>: <br>
-        &emsp; Pour éviter d’être redirigé vers la messagerie vocale. L’écran de verrouillage peut s’allumer pendant un court moment,
-         vous pouvez également entendre un bip de fin d’appel (certains téléphones offrent une option pour désactiver ce son).
+        &ensp; Pour éviter d\'être envoyé sur la messagerie vocale. L\'écran de verrouillage peut être activé pendant un court instant,
+         vous pourriez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour couper ce son).
         ]]>
     </string>
     <string name="help_dialed">

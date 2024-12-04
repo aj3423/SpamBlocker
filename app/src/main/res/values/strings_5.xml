@@ -38,13 +38,15 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Reject</b></font>: <br>
-        &emsp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on, it\'s the recommended type if you don\'t use voicemail.<br>
+        &ensp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on.<br>
         <br>
         - <font color="#00BFFF"><b>Silence</b></font>: <br>
-        &emsp; It will ring silently in the background, giving the impression to the caller that you are just busy and have not answered it. <br>
+        &ensp; It will ring silently in the background, giving the impression to the caller that you were unavailable and missed the call. <br>
+        <br>
+        &ensp; It may also help if you are experiencing repeated spam calls, it will extend the call duration, making it less efficient for spammers, potentially discouraging them from calling you again.<br>
         <br>
         - <font color="#00BFFF"><b>Answer and Hang Up</b></font>: <br>
-        &emsp; To avoid being sent to the voicemail. The lockscreen can be turned on for a short while,
+        &ensp; To avoid being sent to the voicemail. The lockscreen can be turned on for a short while,
          you might also hear a call end tone(some phones offer an option to mute this sound).
         ]]>
     </string>

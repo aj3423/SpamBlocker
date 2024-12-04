@@ -38,14 +38,16 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Ablehnen</b></font>: <br>
-        &emsp; Dasselbe wie das Drücken der Ablehnungsschaltfläche. Es funktioniert völlig lautlos, der Sperrbildschirm wird nicht aktiviert, dies ist der empfohlene Typ, wenn Sie keinen Anrufbeantworter verwenden.<br>
+        &ensp; Entspricht dem Drücken der Ablehntaste. Funktioniert völlig lautlos, der Sperrbildschirm wird nicht aktiviert.<br>
         <br>
         - <font color="#00BFFF"><b>Stummschalten</b></font>: <br>
-        &emsp; Es klingelt im Hintergrund leise, wodurch der Anrufer den Eindruck gewinnt, dass Sie gerade beschäftigt sind und nicht abgenommen haben. <br>
+        &ensp; Es klingelt leise im Hintergrund und erweckt beim Anrufer den Eindruck, dass Sie nicht erreichbar waren und den Anruf verpasst haben. <br>
+        <br>
+        &ensp; Dies kann auch hilfreich sein, wenn Sie wiederholt Spam-Anrufe erhalten. Es verlängert die Anrufdauer und macht es für Spammer weniger effizient, was sie möglicherweise davon abhält, Sie erneut anzurufen.<br>
         <br>
         - <font color="#00BFFF"><b>Annehmen und auflegen</b></font>: <br>
-        &emsp; Um zu vermeiden, dass Sie an den Anrufbeantworter weitergeleitet werden. Der Sperrbildschirm kann kurz aktiviert werden,
-         möglicherweise hören Sie auch einen Gesprächsendeton (einige Telefone bieten eine Option, diesen Ton stummzuschalten).
+        &ensp; Um zu vermeiden, dass Sie auf die Mailbox geschickt werden. Der Sperrbildschirm kann kurzzeitig aktiviert werden,
+         möglicherweise hören Sie auch einen Gesprächsendeton (einige Telefone bieten eine Option, diesen Ton zu stummschalten).
         ]]>
     </string>
     <string name="help_dialed">
