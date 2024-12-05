@@ -30,7 +30,8 @@
     </string-array>
     <string-array name="rule_dropdown_menu">
         <item>搜索规则</item>
-        <item>克隆规则</item>
+        <item>复制规则</item>
+        <item>删除规则</item>
         <item>删除重复规则</item>
         <item>删除所有(%d)规则</item>
     </string-array>

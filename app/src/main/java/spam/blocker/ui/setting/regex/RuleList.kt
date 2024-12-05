@@ -30,6 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
 import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.RegexRule
@@ -55,6 +56,7 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.RegexOptions
 
 
@@ -267,9 +269,19 @@ fun RuleList(
         }
     )
 
+
+    // Suggest to swipe instead of "Delete Rule" menu item
+    val suggestSwipeToDelTrigger = remember { mutableStateOf(false) }
+    PopupDialog(
+        trigger = suggestSwipeToDelTrigger,
+    ) {
+        GreyLabel(Str(R.string.suggest_to_swipe))
+    }
+
     val icons = listOf(
         R.drawable.ic_find,
         R.drawable.ic_copy,
+        R.drawable.ic_recycle_bin,
         R.drawable.ic_recycle_bin,
         R.drawable.ic_recycle_bin
     )
@@ -295,11 +307,15 @@ fun RuleList(
                         vm.reloadDb(ctx)
                     }
 
-                    2 -> { // delete duplicated rules
+                    2 -> { // delete a rule
+                        // Show prompt for swipe right
+                        suggestSwipeToDelTrigger.value = true
+                    }
+                    3 -> { // delete duplicated rules
                         confirmDeleteDuplicated.value = true
                     }
 
-                    3 -> { // delete all rules
+                    4 -> { // delete all rules
                         confirmDeleteAll.value = true
                     }
                 }

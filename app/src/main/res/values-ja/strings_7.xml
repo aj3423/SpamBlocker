@@ -29,10 +29,11 @@
         <item>ダーク</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>ルールを検索</item>
-        <item>ルールを複製</item>
-        <item>重複したルールを削除</item>
-        <item>すべての(%d)ルールを削除</item>
+        <item>ルール検索</item>
+        <item>ルール複製</item>
+        <item>ルール削除</item>
+        <item>重複ルールの削除</item>
+        <item>すべてのルール(%d)削除</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">%dの重複したルールを削除しますか?</string>
     <string name="duration">期間</string>

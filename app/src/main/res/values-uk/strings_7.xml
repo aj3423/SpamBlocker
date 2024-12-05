@@ -30,8 +30,9 @@
     </string-array>
     <string-array name="rule_dropdown_menu">
         <item>Пошук правила</item>
-        <item>Клонувати правило</item>
-        <item>Видалити дублюючі правила</item>
+        <item>Копіювати правило</item>
+        <item>Видалити правило</item>
+        <item>Видалити дублікати правил</item>
         <item>Видалити всі (%d) правила</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">Підтвердити видалення %d дублюючих правил?</string>

@@ -12,6 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.RichTooltip
 import androidx.compose.material3.TooltipBox
 import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.TooltipState
 import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -33,9 +34,13 @@ const val BalloonBorderWidthLight = 0.6
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
+fun BalloonWrapper(
+    tooltip: String,
+    offset: IntOffset? = null,
+    body: @Composable (TooltipState) -> Unit,
+) {
+
     val tooltipState = rememberTooltipState(isPersistent = true)
-    val scope = rememberCoroutineScope()
 
     TooltipBox(
         positionProvider = if (offset == null) {
@@ -71,6 +76,18 @@ fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
         },
         state = tooltipState
     ) {
+        body(tooltipState)
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
+    BalloonWrapper(
+        tooltip = tooltip,
+        offset = offset,
+    ) { tooltipState ->
+        val scope = rememberCoroutineScope()
         ResImage(
             R.drawable.ic_question, ColdGrey, M
                 .size(30.dp)
@@ -83,4 +100,3 @@ fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
         )
     }
 }
-

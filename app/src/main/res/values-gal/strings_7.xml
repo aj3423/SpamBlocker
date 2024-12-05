@@ -29,10 +29,11 @@
         <item>Escuro</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Buscar Regra</item>
-        <item>Clonar Regra</item>
-        <item>Eliminar Regras Duplicadas</item>
-        <item>Eliminar Todas (%d) Regras</item>
+        <item>Buscar regra</item>
+        <item>Clonar regra</item>
+        <item>Eliminar regra</item>
+        <item>Eliminar regras duplicadas</item>
+        <item>Eliminar todas (%d) regras</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">Confirma a eliminación de %d Regras duplicadas?</string>
     <string name="duration">Duración</string>

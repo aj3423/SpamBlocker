@@ -29,8 +29,9 @@
         <item>Темная</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Поиск правила</item>
-        <item>Клонирование правила</item>
+        <item>Найти правило</item>
+        <item>Клонировать правило</item>
+        <item>Удалить правило</item>
         <item>Удалить дубликаты правил</item>
         <item>Удалить все (%d) правила</item>
     </string-array>

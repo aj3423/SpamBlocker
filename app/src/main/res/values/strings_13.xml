@@ -82,5 +82,13 @@
     <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>
     <string name="username">username</string>>
     <string name="password">password</string>>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        Swipe left to delete it.<br>
+        <br>
+        Most card-like UI elements in this app are associated with swiping gestures,
+        some of which also support swiping right, for example, the history records.
+        ]]>
+    </string>>
 
 </resources>

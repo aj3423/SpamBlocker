@@ -57,6 +57,7 @@ object Def {
     const val SETTING_RULE_LIST_HEIGHT_PERCENTAGE = "rule_list_height_percentage"
     const val SETTING_RULE_MAX_REGEX_ROWS = "rule_max_regex_rows"
     const val SETTING_RULE_MAX_DESC_ROWS = "rule_max_description_rows"
+    const val SETTING_SUGGESTED_SWIPE_TO_DELETE = "suggested_prompt_to_delete"
 
 
     const val DEFAULT_SPAM_DB_TTL = 180 // days

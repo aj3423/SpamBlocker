@@ -31,6 +31,7 @@
     <string-array name="rule_dropdown_menu">
         <item>Buscar regla</item>
         <item>Clonar regla</item>
+        <item>Eliminar regla</item>
         <item>Eliminar reglas duplicadas</item>
         <item>Eliminar todas (%d) reglas</item>
     </string-array>

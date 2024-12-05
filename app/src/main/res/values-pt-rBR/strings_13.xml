@@ -82,4 +82,12 @@
     <string name="username">nome de usuário</string>
     <string name="password">senha</string>
     <string name="auto_detect_cc_permission">A detecção automática do código do país requer a permissão READ_PHONE_STATE.</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        Deslize para a esquerda para excluí-lo.<br>
+        <br>
+        A maioria dos elementos da interface do usuário semelhantes a cartões neste aplicativo estão associados a gestos de deslizamento,
+        alguns dos quais também são compatíveis com o deslizamento para a direita, por exemplo, os registros de histórico.
+        ]]>
+    </string>
 </resources>

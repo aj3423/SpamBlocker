@@ -29,10 +29,11 @@
         <item>Sombre</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Rechercher la règle</item>
+        <item>Rechercher une règle</item>
         <item>Cloner la règle</item>
+        <item>Supprimer la règle</item>
         <item>Supprimer les règles dupliquées</item>
-        <item>Supprimer toutes les règles (%d)</item>
+        <item>Supprimer toutes les (%d) règles</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">Confirmer la suppression de %d règles dupliquées ?</string>
     <string name="duration">Durée</string>

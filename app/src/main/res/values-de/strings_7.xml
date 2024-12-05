@@ -31,6 +31,7 @@
     <string-array name="rule_dropdown_menu">
         <item>Regel suchen</item>
         <item>Regel klonen</item>
+        <item>Regel löschen</item>
         <item>Doppelte Regeln löschen</item>
         <item>Alle (%d) Regeln löschen</item>
     </string-array>

@@ -82,4 +82,12 @@
     <string name="username">Имя пользователя</string>
     <string name="password">Пароль</string>
     <string name="auto_detect_cc_permission">Для автоматического определения кода страны требуется разрешение READ_PHONE_STATE.</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        Смахните влево, чтобы удалить.<br>
+        <br>
+        Большинство элементов интерфейса в стиле карточек в этом приложении связаны с жестами смахивания,
+        некоторые из которых также поддерживают смахивание вправо, например, записи истории.
+        ]]>
+    </string>
 </resources>

@@ -81,4 +81,11 @@
     <string name="username">ユーザー名</string>
     <string name="password">パスワード</string>
     <string name="auto_detect_cc_permission">国番号の自動検出には、READ_PHONE_STATE権限が必要です。</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        左にスワイプして削除します。<br>
+        <br>
+        このアプリのほとんどのカードのようなUI要素は、スワイプジェスチャーに関連付けられています。履歴レコードなど、右へのスワイプもサポートしているものもあります。
+        ]]>
+    </string>
 </resources>

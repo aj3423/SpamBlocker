@@ -29,10 +29,11 @@
         <item>Karanlık</item>
     </string-array>
     <string-array name="rule_dropdown_menu">
-        <item>Kuralı Ara</item>
+        <item>Kural Ara</item>
         <item>Kuralı Kopyala</item>
+        <item>Kuralı Sil</item>
         <item>Yinelenen Kuralları Sil</item>
-        <item>Bütün(%d) Kuralları Sil</item>
+        <item>Tüm (%d) Kuralları Sil</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">Yenilenen %d kuralı silmek istediğinizi onaylıyor musunuz?</string>
     <string name="duration">Süre</string>

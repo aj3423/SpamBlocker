@@ -87,10 +87,10 @@ class Global(ctx: Context) : SharedPref(ctx) {
     fun getLanguage(): String { return readString(Def.SETTING_LANGUAGE, "") }
     fun setLanguage(lang: String) { writeString(Def.SETTING_LANGUAGE, lang) }
 
+    // Following settings will not backed up
     fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "setting") }
     fun setActiveTab(tab: String) { writeString(Def.SETTING_ACTIVE_TAB, tab) }
 
-    // Following settings will not backed up
     fun hasPromptedForRunningInWorkProfile(): Boolean {
         return readBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, false)
     }

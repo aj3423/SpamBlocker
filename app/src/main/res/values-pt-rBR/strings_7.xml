@@ -31,8 +31,9 @@
     <string-array name="rule_dropdown_menu">
         <item>Pesquisar Regra</item>
         <item>Clonar Regra</item>
-        <item>Excluir Regras Duplicadas</item>
-        <item>Excluir Todas (%d) Regras</item>
+        <item>Deletar Regra</item>
+        <item>Deletar Regras Duplicadas</item>
+        <item>Deletar Todas (%d) Regras</item>
     </string-array>
     <string name="confirm_delete_duplicated_rule">Confirmar a exclusão de %d Regras duplicadas?</string>
     <string name="duration">Duração</string>
