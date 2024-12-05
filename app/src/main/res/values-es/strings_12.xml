@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Auto</string>
     <string name="help_instant_query">
         <![CDATA[
         Consulta el número entrante en línea en tiempo real; se consultarán varios puntos finales de API simultáneamente.<br>
@@ -71,26 +70,7 @@
         2. Para números nacionales como <b>12345</b>, debe proporcionar el código de país en la configuración o dejar que la aplicación lo detecte automáticamente.<br>
         ]]>
     </string>
-    <string name="auto_detect">Detección automática</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Habilita esto si viajas con frecuencia internacionalmente; el código de país se detectará automáticamente cuando cambie.<br>
-        <br>
-        Requiere el permiso READ_PHONE_STATE.
-        ]]>
-    </string>
-    <string name="country_code">Código de país</string>
-    <string name="fixed_country_code">CC fijo</string>
     <string name="api_services">Servicios API</string>
-    <string name="query_timeout">Tiempo de espera de consulta</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        La función de bloqueo de llamadas de Android tiene un límite de tiempo de respuesta de 5 segundos,<br>
-        la llamada comenzará a sonar si se produce un tiempo de espera.<br>
-        La aplicación utiliza 4 segundos por defecto, dejando 1 segundo para otras reglas.<br>
-        Las solicitudes con tiempo de espera se descartarán.
-        ]]>
-    </string>
     <string name="number_filter">Filtro de Número</string>
     <string name="help_number_filter">
         <![CDATA[

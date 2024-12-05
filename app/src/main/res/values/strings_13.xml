@@ -21,7 +21,6 @@
     <string name="modify_n_rules">Modifying %s rules.</string>
     <string name="number_not_match_filter">The number %s doesn\'t match the filter %s, skip.</string>
     <string name="fail_detect_cc">Failed to detect country code.</string>
-    <string name="empty_fixed_cc">The fixed country code is empty.</string>
     <string name="identified_as_spam">Identified as spam number, category: %s.</string>
     <string name="identified_as_valid">Identified as valid number, category: %s.</string>
     <string name="unidentified_number">Unidentified number.</string>
@@ -52,7 +51,7 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Currently, it\'s only for <b>German</b> users, with plans for future global expansion.<br>
+        Currently, it\'s for <b>German</b> users, with potential for global expansion.<br>
         Website: https://phoneblock.net
         ]]>
     </string>

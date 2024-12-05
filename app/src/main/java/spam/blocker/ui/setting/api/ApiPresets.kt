@@ -59,7 +59,6 @@ val ApiPresets = listOf<ApiPreset>(
                 actions = listOf(
                     ParseIncomingNumber(
                         numberFilter = "0.*",
-                        autoCC = true,
                     ),
                     HttpDownload(
                         url = "https://phoneblock.net/phoneblock/api/num/{origin_number}",

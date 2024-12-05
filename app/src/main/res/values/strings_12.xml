@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Auto</string>
     <string name="help_instant_query">
         <![CDATA[
         Query the incoming number online in real time, multiple API endpoints will be queried simultaneously.<br>
@@ -73,27 +72,7 @@
         or let the app detect it automatically.<br>
         ]]>
     </string>
-    <string name="auto_detect">Auto Detect</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Enable this if you often travel internationally,
-        the country code will be detected automatically when it changes.<br>
-        <br>
-        It requires permission READ_PHONE_STATE.<br>
-        ]]>
-    </string>
-    <string name="country_code">Country Code</string>
-    <string name="fixed_country_code">Fixed CC</string>
     <string name="api_services">API Services</string>
-    <string name="query_timeout">Query Timeout</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Android\'s call screening feature has a 5-second response time limit,
-        the call will start ringing if a timeout occurs.<br>
-        The app uses 4 seconds by default, leaving 1 second for other rules.<br>
-        Timed-out requests will be discarded.
-        ]]>
-    </string>
     <string name="number_filter">Number Filter</string>
     <string name="help_number_filter">
         <![CDATA[

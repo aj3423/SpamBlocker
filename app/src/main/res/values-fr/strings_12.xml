@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Auto</string>
     <string name="help_instant_query">
         <![CDATA[
         Interroge le numéro entrant en ligne en temps réel ; plusieurs points de terminaison d’API seront interrogés simultanément.<br>
@@ -70,25 +69,7 @@
         2. Pour un numéro national comme <b>12345</b>, vous devez fournir l’indicatif téléphonique dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
         ]]>
     </string>
-    <string name="auto_detect">Détection auto</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Activez ceci si vous voyagez souvent à l’international ; l’indicatif téléphonique sera détecté automatiquement lorsqu’il change.<br>
-        <br>
-        Nécessite l’autorisation READ_PHONE_STATE.
-        ]]>
-    </string>
-    <string name="country_code">Indicatif</string>
-    <string name="fixed_country_code">Indicatif fixe</string>
     <string name="api_services">Services API</string>
-    <string name="query_timeout">Délai d’attente de la requête</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        La fonctionnalité de filtrage des appels d’Android a une limite de temps de réponse de 5 secondes ; l’appel commencera à sonner en cas de délai d’attente.<br>
-        L’application utilise 4 secondes par défaut, laissant 1 seconde pour les autres règles.<br>
-        Les requêtes ayant expiré seront ignorées.
-        ]]>
-    </string>
     <string name="number_filter">Filtre de numéros</string>
     <string name="help_number_filter">
         <![CDATA[

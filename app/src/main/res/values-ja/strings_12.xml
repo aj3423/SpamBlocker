@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">自動</string>
     <string name="help_instant_query">
         <![CDATA[
         着信番号をオンラインでリアルタイムに照会します。複数のAPIエンドポイントが同時に照会されます。<br>
@@ -70,25 +69,7 @@
         2. <b>12345</b>のような国内番号の場合、設定で国番号を指定するか、アプリで自動的に検出させる必要があります。<br>
         ]]>
     </string>
-    <string name="auto_detect">自動検出</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        国際的に頻繁に旅行する場合は、これを有効にすると、国番号が変更されたときに自動的に検出されます。<br>
-        <br>
-        READ_PHONE_STATE権限が必要です。
-        ]]>
-    </string>
-    <string name="country_code">国番号</string>
-    <string name="fixed_country_code">固定CC</string>
     <string name="api_services">APIサービス</string>
-    <string name="query_timeout">照会タイムアウト</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Androidの通話スクリーニング機能には、5秒の応答時間制限があります。タイムアウトが発生すると、通話が鳴り始めます。<br>
-        アプリはデフォルトで4秒を使用し、他のルールに1秒を残します。<br>
-        タイムアウトしたリクエストは破棄されます。
-        ]]>
-    </string>
     <string name="number_filter">番号フィルター</string>
     <string name="help_number_filter">
         <![CDATA[

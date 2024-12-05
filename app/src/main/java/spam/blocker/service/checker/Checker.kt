@@ -537,6 +537,7 @@ class Checker { // for namespace only
             //  and return that result immediately without waiting for others to finish.
             var (winnerApi, result) = race(
                 competitors = apis,
+                timeoutMillis = timeLeft,
                 runner = {
                     { scope ->
                         try {
@@ -552,7 +553,7 @@ class Checker { // for namespace only
                             }
 
                             val result = aCtx.racingResult as QueryResult
-                            if (result.determined) { // null == undetermined
+                            if (result.determined) {
                                 result
                             } else {
                                 null
@@ -561,8 +562,7 @@ class Checker { // for namespace only
                             null
                         }
                     }
-                },
-                timeoutMillis = timeLeft,
+                }
             )
 
             if (result?.determined == true) { // either spam or non-spam

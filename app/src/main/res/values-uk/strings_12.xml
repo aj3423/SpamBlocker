@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Авто</string>
     <string name="help_instant_query">
         <![CDATA[
         Онлайн-запит вхідного номера в реальному часі, одночасне звернення до кількох API-кінцевих точок.<br>
@@ -72,27 +71,7 @@
         або дозволити програмі автоматично його виявляти.<br>
         ]]>
     </string>
-    <string name="auto_detect">Автовизначення</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Увімкніть цю функцію, якщо ви часто подорожуєте за кордон,<br>
-        код країни буде автоматично визначатися при зміні.<br>
-        <br>
-        Потрібний дозвіл READ_PHONE_STATE.
-        ]]>
-    </string>
-    <string name="country_code">Код країни</string>
-    <string name="fixed_country_code">Фікс. код країни</string>
     <string name="api_services">API-сервіси</string>
-    <string name="query_timeout">Таймаут запиту</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Функція перевірки дзвінків Android має обмеження часу відповіді 5 секунд,<br>
-        дзвінок почне дзвонити, якщо виникне таймаут.<br>
-        Програма використовує 4 секунди за замовчуванням, залишаючи 1 секунду для інших правил.<br>
-        Запити з таймаутом будуть відкинуті.
-        ]]>
-    </string>
     <string name="number_filter">Фільтр номерів</string>
     <string name="help_number_filter">
         <![CDATA[

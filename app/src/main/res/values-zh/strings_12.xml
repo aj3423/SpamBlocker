@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">自动</string>
     <string name="help_instant_query">
         <![CDATA[
         实时在线查询来电号码，将同时查询多个API端点。<br>
@@ -70,25 +69,7 @@
         2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家区号，或让应用自动检测。<br>
         ]]>
     </string>
-    <string name="auto_detect">自动检测</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        如果您经常国际旅行，请启用此功能，国家区号将在更改时自动检测。<br>
-        <br>
-        这需要READ_PHONE_STATE权限。
-        ]]>
-    </string>
-    <string name="country_code">国家区号</string>
-    <string name="fixed_country_code">固定区号</string>
     <string name="api_services">API服务</string>
-    <string name="query_timeout">查询超时</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Android的来电筛选功能有5秒的响应时间限制，超时将开始响铃。<br>
-        应用默认使用4秒，为其他规则留出1秒。<br>
-        超时请求将被丢弃。
-        ]]>
-    </string>
     <string name="number_filter">号码过滤器</string>
     <string name="help_number_filter">
         <![CDATA[

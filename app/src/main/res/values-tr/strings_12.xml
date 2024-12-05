@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Otomatik</string>
     <string name="help_instant_query">
         <![CDATA[
         Gelen numarayı gerçek zamanlı olarak çevrimiçi olarak sorgulayın, birden çok API uç noktası aynı anda sorgulanacaktır.<br>
@@ -70,26 +69,7 @@
         2. <b>12345</b> gibi yerel numaralar için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
         ]]>
     </string>
-    <string name="auto_detect">Otomatik Algıla</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Sık sık uluslararası seyahat ediyorsanız, ülke kodu değiştiğinde otomatik olarak algılanacaktır.<br>
-        <br>
-        READ_PHONE_STATE izni gerektirir.
-        ]]>
-    </string>
-    <string name="country_code">Ülke Kodu</string>
-    <string name="fixed_country_code">Sabit Ülke Kodu</string>
     <string name="api_services">API Hizmetleri</string>
-    <string name="query_timeout">Sorgu Zaman Aşımı</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Android\'in arama engelleme özelliğinin 5 saniyelik yanıt süresi limiti vardır,<br>
-        zaman aşımı olursa arama çalmaya başlar.<br>
-        Uygulama varsayılan olarak 4 saniye kullanır ve diğer kurallar için 1 saniye bırakır.<br>
-        Zaman aşımına uğramış istekler atılacaktır.
-        ]]>
-    </string>
     <string name="number_filter">Numara Filtresi</string>
     <string name="help_number_filter">
         <![CDATA[

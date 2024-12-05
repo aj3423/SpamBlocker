@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Auto</string>
     <string name="help_instant_query">
         <![CDATA[
         Consulta o número entrante en liña en tempo real, consultarase simultaneamente varias API.<br>
@@ -72,27 +71,7 @@
         ou deixar que a aplicación o detecte automaticamente.<br>
         ]]>
     </string>
-    <string name="auto_detect">Detección automática</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Activa isto se viaxas con frecuencia internacionalmente,
-        o código de país detectarase automaticamente cando cambie.<br>
-        <br>
-        Requírese o permiso READ_PHONE_STATE.
-        ]]>
-    </string>
-    <string name="country_code">Código de país</string>
-    <string name="fixed_country_code">CC fixo</string>
     <string name="api_services">Servizos API</string>
-    <string name="query_timeout">Tempo límite de consulta</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        A función de bloqueo de chamadas de Android ten un límite de tempo de resposta de 5 segundos,<br>
-        a chamada comezará a soar se se produce un tempo de espera.<br>
-        A aplicación usa 4 segundos por defecto, deixando 1 segundo para outras regras.<br>
-        As peticións con tempo de espera descartaranse.
-        ]]>
-    </string>
     <string name="number_filter">Filtro de números</string>
     <string name="help_number_filter">
         <![CDATA[

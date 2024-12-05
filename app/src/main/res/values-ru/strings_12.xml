@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Авто</string>
     <string name="help_instant_query">
         <![CDATA[
         Запрос входящего номера онлайн в реальном времени, несколько API-точек будут запрашиваться одновременно.<br>
@@ -71,26 +70,7 @@
         2. Для внутреннего номера, например <b>12345</b>, нужно указать код страны в настройках или позволить приложению определить его автоматически.<br>
         ]]>
     </string>
-    <string name="auto_detect">Автоопределение</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Включите, если часто путешествуете за границу, код страны будет определяться автоматически при изменении.<br>
-        <br>
-        Требуется разрешение READ_PHONE_STATE.
-        ]]>
-    </string>
-    <string name="country_code">Код страны</string>
-    <string name="fixed_country_code">Фикс. код</string>
     <string name="api_services">API-сервисы</string>
-    <string name="query_timeout">Таймаут запроса</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Функция блокировки звонков Android имеет ограничение времени отклика в 5 секунд,<br>
-        звонок начнёт поступать, если произойдёт таймаут.<br>
-        Приложение по умолчанию использует 4 секунды, оставляя 1 секунду для других правил.<br>
-        Запросы с таймаутом будут отброшены.
-        ]]>
-    </string>
     <string name="number_filter">Фильтр номеров</string>
     <string name="help_number_filter">
         <![CDATA[

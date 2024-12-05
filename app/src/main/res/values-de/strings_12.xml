@@ -1,5 +1,4 @@
 <resources>
-    <string name="automatic">Auto</string>
     <string name="help_instant_query">
         <![CDATA[
         Sucht die eingehende Nummer in Echtzeit online ab; mehrere API-Endpunkte werden gleichzeitig abgefragt.<br>
@@ -70,25 +69,7 @@
         2. Für nationale Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die automatische Erkennung durch die App zulassen.<br>
         ]]>
     </string>
-    <string name="auto_detect">Automatisch erkennen</string>
-    <string name="help_auto_detect_country_code">
-        <![CDATA[
-        Aktivieren Sie dies, wenn Sie häufig international reisen; die Landesvorwahl wird bei einer Änderung automatisch erkannt.<br>
-        <br>
-        Erfordert die Berechtigung READ_PHONE_STATE.
-        ]]>
-    </string>
-    <string name="country_code">Landesvorwahl</string>
-    <string name="fixed_country_code">Festgelegte LW</string>
     <string name="api_services">API-Dienste</string>
-    <string name="query_timeout">Abfrage-Timeout</string>
-    <string name="help_query_timeout">
-        <![CDATA[
-        Die Anruf-Screening-Funktion von Android hat ein Antwortzeitlimit von 5 Sekunden. Der Anruf beginnt zu klingeln, wenn ein Timeout auftritt.<br>
-        Die App verwendet standardmäßig 4 Sekunden und lässt 1 Sekunde für andere Regeln übrig.<br>
-        Zeitüberschreitende Anfragen werden verworfen.
-        ]]>
-    </string>
     <string name="number_filter">Nummernfilter</string>
     <string name="help_number_filter">
         <![CDATA[

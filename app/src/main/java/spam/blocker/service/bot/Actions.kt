@@ -241,8 +241,10 @@ open class HttpDownload(
 
     @Composable
     override fun Summary() {
-        val ctx = LocalContext.current
-        SummaryLabel("${ctx.getString(R.string.url)}: $url")
+        RowVCenterSpaced(4) {
+            GreyIcon20(R.drawable.ic_link)
+            SummaryLabel(" $url")
+        }
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1519,19 +1521,13 @@ class EnableApp(
 @SerialName("ParseIncomingNumber")
 class ParseIncomingNumber(
     var numberFilter: String = "",
-    var autoCC: Boolean = false, // for people who often travel around between different countries
-    var fixedCC: String = "", // for people who don't go abroad
 ) : IAction {
 
     override fun missingPermissions(ctx: Context): List<IPermission> {
-        return if (autoCC) {
-            listOf(
-                NormalPermission(Manifest.permission.READ_PHONE_STATE,
-                    prompt = ctx.getString(R.string.auto_detect_cc_permission)),
-            )
-        } else {
-            listOf()
-        }
+        return listOf(
+            NormalPermission(Manifest.permission.READ_PHONE_STATE,
+                prompt = ctx.getString(R.string.auto_detect_cc_permission)),
+        )
     }
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -1559,18 +1555,13 @@ class ParseIncomingNumber(
             }
             return true
         } else { // not start with "+"
-            if (autoCC) {
-                val cc = CountryCode.current(ctx)
-                if (cc == null) {
-                    aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc))
-                    return false
-                }
-                aCtx.cc = cc.toString()
-                aCtx.domestic = clearedNumber
-            } else {
-                aCtx.cc = fixedCC
-                aCtx.domestic = Util.clearNumber(rawNumber)
+            val cc = CountryCode.current(ctx)
+            if (cc == null) {
+                aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc))
+                return false
             }
+            aCtx.cc = cc.toString()
+            aCtx.domestic = clearedNumber
         }
 
         return true
@@ -1582,17 +1573,9 @@ class ParseIncomingNumber(
 
     @Composable
     override fun Summary() {
-        val ctx = LocalContext.current
-
-        val auto = ctx.getString(R.string.automatic)
-
         RowVCenterSpaced(4) {
             GreyIcon20(R.drawable.ic_filter)
             SummaryLabel(numberFilter)
-
-
-            GreyIcon20(R.drawable.ic_airplane)
-            SummaryLabel(if (autoCC) auto else fixedCC)
         }
     }
 
@@ -1631,34 +1614,6 @@ class ParseIncomingNumber(
             },
             onFlagsChange = { }
         )
-
-        Section(
-            title = Str(R.string.country_code),
-            bgColor = LocalPalette.current.dialogBg
-        ) {
-            Column(modifier = M.fillMaxWidth()) {
-                var autoCCState by remember { mutableStateOf(autoCC) }
-                LabeledRow(
-                    R.string.auto_detect,
-                    helpTooltipId = R.string.help_auto_detect_country_code,
-                ) {
-                    SwitchBox(autoCCState) { on ->
-                        autoCCState = on
-                        autoCC = on
-                    }
-                }
-
-                AnimatedVisibleV(visible = !autoCCState) {
-                    StrInputBox(
-                        text = fixedCC,
-                        label = { Text(Str(R.string.country_code)) },
-                        leadingIconId = R.drawable.ic_airplane,
-                        placeholder = { DimGreyLabel(Str(R.string.for_example) + " 1") },
-                        onValueChange = { fixedCC = it }
-                    )
-                }
-            }
-        }
     }
 }
 
