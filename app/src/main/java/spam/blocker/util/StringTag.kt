@@ -1,6 +1,7 @@
 package spam.blocker.util
 
 import android.os.Environment
+import spam.blocker.util.Algorithm.b64Encode
 import java.time.LocalDateTime
 
 fun String.resolveTimeTags(): String {
@@ -40,4 +41,21 @@ fun String.resolveNumberTag(
         .replace("{domestic}", domestic ?: "")
         .replace("{number}", fullNumber ?: ((cc?:"") + (domestic?:"")))
         .replace("{origin_number}", rawNumber!!)
+}
+
+fun String.resolveBase64Tag(): String {
+    var ret = this
+
+    val tpl ="\\{base64\\((.*?)\\)\\}"
+    val result = tpl.toRegex().find(ret)
+
+    result?.groups?.size?.let {
+        if (it > 1) {
+            val g0 = result.groups[0]!!.value
+            val g1 = result.groups[1]!!.value
+
+            ret = ret.replace(g0, b64Encode(g1))
+        }
+    }
+    return ret
 }

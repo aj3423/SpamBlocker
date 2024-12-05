@@ -30,22 +30,24 @@
     <string name="unidentified_number">Número non identificado.</string>
     <string name="help_http_url">
         <![CDATA[
-        Etiquetas soportadas ao consultar números:<br>
+        Etiquetas soportadas:<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; O código de país.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; A parte doméstica.<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; O número completo, incluíndo tanto o código de país como a parte doméstica, sen o + e os 0 iniciais.<br>
+        &ensp; O número completo, incluíndo o código de país e a parte doméstica, sen + ou 0s iniciais.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; O número orixinal que pode conter + ou 0s iniciais.<br>
         <br>
-        Etiquetas soportadas ao descargar ficheiros de base de datos:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
         &ensp; O ano, ex: 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Os números dun só díxito completaránse con cero á esquerda, ex:<br>
+        &ensp; O número dun só díxito completarase con cero inicial, ex:<br>
         &emsp; {month}_{day} -> 01_02<br>
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Estes valores completaránse sen cero á esquerda, ex:<br>
+        &ensp; Estes valores completaránse sen cero inicial, ex:<br>
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Só para usuarios alemáns.<br>
-        A documentación da API: https://phoneblock.net/phoneblock/api/
+        Actualmente, só para usuarios alemáns, con plans para unha futura expansión global.<br>
+        Sitio web: https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">O límite de tempo de selección de chamadas é de 5 segundos, cun búfer de %s ms pola imprecisión das funcións de tempo, o límite de tempo total é realmente de %s ms. Os pasos previos custaron %s ms, non queda tempo suficiente, omitir.</string>
@@ -65,4 +67,19 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Rexístrese nunha conta en <a href="https://phoneblock.net">https://phoneblock.net</a>
+        para obter o seu nome de usuario e contrasinal. Despois, enchézaos a continuación.<br>
+        <br>
+        Deberían parecerse a:<br>
+        - nome de usuario:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - contrasinal:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">nome de usuario</string>
+    <string name="password">contrasinal</string>
+    <string name="auto_detect_cc_permission">A detección automática do código de país require o permiso READ_PHONE_STATE.</string>
 </resources>

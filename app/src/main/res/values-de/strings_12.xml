@@ -40,14 +40,14 @@
         Sobald eine Nummer identifiziert wurde, wird dieser Regex verwendet, um ihre Kategorie (Telemarketing, Phishing usw.) zu extrahieren.
         ]]>
     </string>
-    <string name="actionn_parse_query_result">Abfrageergebnis parsen</string>
+    <string name="action_parse_query_result">Abfrageergebnis parsen</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         Parsen des HTTP-Ergebnisses; die Nummer wird als Spam identifiziert, wenn das Ergebnis ein bestimmtes Regex-Muster enthält.<br>
         Ein zusätzliches Regex-Muster wird verwendet, um die Spam-Kategorie aus dem Ergebnis zu extrahieren, falls vorhanden.
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">Eingehende Nummer parsen</string>
+    <string name="action_parse_incoming_number">Eingehende Nummer parsen</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Die eingehende Rufnummer wird in verschiedene Tags aufgeteilt:<br>
@@ -70,7 +70,7 @@
         2. Für nationale Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die automatische Erkennung durch die App zulassen.<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">Landesvorwahl automatisch erkennen</string>
+    <string name="auto_detect">Automatisch erkennen</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         Aktivieren Sie dies, wenn Sie häufig international reisen; die Landesvorwahl wird bei einer Änderung automatisch erkannt.<br>

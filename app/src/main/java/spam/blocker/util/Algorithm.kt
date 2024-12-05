@@ -33,9 +33,12 @@ object Algorithm {
         return sb.toString()
     }
 
-//    fun b64Encode(raw: ByteArray): String {
-//        return Base64.encodeToString(raw, Base64.NO_WRAP)
-//    }
+    fun b64Encode(raw: ByteArray): String {
+        return Base64.encodeToString(raw, Base64.NO_WRAP)
+    }
+    fun b64Encode(raw: String): String {
+        return b64Encode(raw.toByteArray())
+    }
     fun b64Decode(encoded: String): ByteArray {
         return Base64.decode(encoded, Base64.NO_WRAP)
     }

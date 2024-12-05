@@ -41,14 +41,14 @@
         Після ідентифікації номера цей регулярний вираз буде використано для вилучення його категорії (телемаркетинг, фішинг тощо).
         ]]>
     </string>
-    <string name="actionn_parse_query_result">Розбір результату запиту</string>
+    <string name="action_parse_query_result">Розбір результату запиту</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         Розбір результату HTTP, номер буде ідентифіковано як спам, якщо результат містить певний шаблон регулярного виразу.<br>
         Для вилучення категорії спаму з результату, якщо вона є, буде використано додатковий шаблон регулярного виразу.
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">Розбір вхідного номера</string>
+    <string name="action_parse_incoming_number">Розбір вхідного номера</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Вхідний номер буде розбитий на різні теги:<br>
@@ -72,7 +72,7 @@
         або дозволити програмі автоматично його виявляти.<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">Автовизначення коду країни</string>
+    <string name="auto_detect">Автовизначення</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         Увімкніть цю функцію, якщо ви часто подорожуєте за кордон,<br>

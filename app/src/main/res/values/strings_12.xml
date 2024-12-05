@@ -42,14 +42,14 @@
         Once a number is identified, this regex will be used to extract its category(telemarketing, fishing, etc).
         ]]>
     </string>
-    <string name="actionn_parse_query_result">Parse Query Result</string>
+    <string name="action_parse_query_result">Parse Query Result</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         Parse the HTTP result, the number will be identified as a spam if the result contains a particular regex pattern.<br>
         An extra regex pattern will be used to extract the spam category from the result, if there is any.
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">Parse Incoming Number</string>
+    <string name="action_parse_incoming_number">Parse Incoming Number</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         The incoming call number will be parsed into different tags:<br>
@@ -73,7 +73,7 @@
         or let the app detect it automatically.<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">Auto Detect Country Code</string>
+    <string name="auto_detect">Auto Detect</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         Enable this if you often travel internationally,

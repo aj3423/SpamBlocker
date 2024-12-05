@@ -3,6 +3,7 @@ package spam.blocker.service.bot
 import android.Manifest
 import android.content.Context
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -15,9 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.async
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.withTimeoutOrNull
-import kotlinx.coroutines.yield
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
@@ -35,6 +33,7 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.AnimatedVisibleV
@@ -51,6 +50,7 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
@@ -850,12 +850,15 @@ class ImportToSpamDB : IPermissiveAction {
             val numbers = rules.map {
                 SpamNumber(peer = (it as RegexRule).pattern, time = now)
             }
-            val errorStr = SpamTable.addAll(ctx, numbers)
 
-            aCtx.logger?.debug(
-                ctx.getString(R.string.add_n_numbers_to_spam_db)
-                    .format("${numbers.size}")
-            )
+            if (numbers.isNotEmpty()) {
+                aCtx.logger?.debug(
+                    ctx.getString(R.string.add_n_numbers_to_spam_db)
+                        .format("${numbers.size}")
+                )
+            }
+
+            val errorStr = SpamTable.addAll(ctx, numbers)
 
             // Fire a global event to update UI
             Events.spamDbUpdated.fire()
@@ -1523,7 +1526,8 @@ class ParseIncomingNumber(
     override fun missingPermissions(ctx: Context): List<IPermission> {
         return if (autoCC) {
             listOf(
-                NormalPermission(Manifest.permission.READ_PHONE_STATE),
+                NormalPermission(Manifest.permission.READ_PHONE_STATE,
+                    prompt = ctx.getString(R.string.auto_detect_cc_permission)),
             )
         } else {
             listOf()
@@ -1573,7 +1577,7 @@ class ParseIncomingNumber(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.actionn_parse_incoming_number)
+        return ctx.getString(R.string.action_parse_incoming_number)
     }
 
     @Composable
@@ -1628,25 +1632,32 @@ class ParseIncomingNumber(
             onFlagsChange = { }
         )
 
-        var autoCCState by remember { mutableStateOf(autoCC) }
-        LabeledRow(
-            R.string.auto_detect_country_code,
-            helpTooltipId = R.string.help_auto_detect_country_code,
+        Section(
+            title = Str(R.string.country_code),
+            bgColor = LocalPalette.current.dialogBg
         ) {
-            SwitchBox(autoCCState) { on ->
-                autoCCState = on
-                autoCC = on
-            }
-        }
+            Column(modifier = M.fillMaxWidth()) {
+                var autoCCState by remember { mutableStateOf(autoCC) }
+                LabeledRow(
+                    R.string.auto_detect,
+                    helpTooltipId = R.string.help_auto_detect_country_code,
+                ) {
+                    SwitchBox(autoCCState) { on ->
+                        autoCCState = on
+                        autoCC = on
+                    }
+                }
 
-        AnimatedVisibleV(visible = !autoCCState) {
-            StrInputBox(
-                text = fixedCC,
-                label = { Text(Str(R.string.country_code)) },
-                leadingIconId = R.drawable.ic_airplane,
-                placeholder = { DimGreyLabel(Str(R.string.for_example) + " 1") },
-                onValueChange = { fixedCC = it }
-            )
+                AnimatedVisibleV(visible = !autoCCState) {
+                    StrInputBox(
+                        text = fixedCC,
+                        label = { Text(Str(R.string.country_code)) },
+                        leadingIconId = R.drawable.ic_airplane,
+                        placeholder = { DimGreyLabel(Str(R.string.for_example) + " 1") },
+                        onValueChange = { fixedCC = it }
+                    )
+                }
+            }
         }
     }
 }
@@ -1736,7 +1747,7 @@ class ParseQueryResult(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.actionn_parse_query_result)
+        return ctx.getString(R.string.action_parse_query_result)
     }
 
     @Composable

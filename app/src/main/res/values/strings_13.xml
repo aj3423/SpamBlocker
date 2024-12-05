@@ -25,9 +25,11 @@
     <string name="identified_as_spam">Identified as spam number, category: %s.</string>
     <string name="identified_as_valid">Identified as valid number, category: %s.</string>
     <string name="unidentified_number">Unidentified number.</string>
+    <string name="auto_detect_cc_permission">Auto detect country code requires permission READ_PHONE_STATE.</string>
     <string name="help_http_url">
         <![CDATA[
-        Supported tags when querying numbers:<br>
+        Supported tags:<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; The country code.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
@@ -37,7 +39,6 @@
         - <font color="#00BFFF"><b>{origin_number}</b></font><br>
         &ensp; The origin number that can contain leading + or 0s.<br>
         <br>
-        Supported tags when downloading database files:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
         &ensp; The year, e.g.: 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
@@ -51,8 +52,20 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        For German users only.<br>
-        The API document: https://phoneblock.net/phoneblock/api/
+        Currently, it\'s only for <b>German</b> users, with plans for future global expansion.<br>
+        Website: https://phoneblock.net
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Register an account on <a href="https://phoneblock.net">https://phoneblock.net</a>
+        to get your username and password. Then, fill them in below.<br>
+        <br>
+        They should look like:<br>
+        - username:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - password:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
         ]]>
     </string>
     <string name="not_enough_time_left">
@@ -67,5 +80,7 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>
+    <string name="username">username</string>>
+    <string name="password">password</string>>
 
 </resources>

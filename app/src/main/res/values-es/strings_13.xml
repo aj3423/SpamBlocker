@@ -30,15 +30,17 @@
     <string name="unidentified_number">Número no identificado.</string>
     <string name="help_http_url">
         <![CDATA[
-        Etiquetas compatibles al consultar números:<br>
+        Etiquetas compatibles:<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; El código de país.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; La parte nacional.<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; El número completo, incluyendo el código de país y la parte nacional, sin el + inicial y los 0s.<br>
+        &ensp; El número completo, incluyendo el código de país y la parte nacional, sin + o 0s iniciales.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; El número de origen que puede contener + o 0s iniciales.<br>
         <br>
-        Etiquetas compatibles al descargar archivos de base de datos:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
         &ensp; El año, ej.: 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Solo para usuarios alemanes.<br>
-        El documento de la API: https://phoneblock.net/phoneblock/api/
+        Actualmente, solo para usuarios alemanes, con planes de expansión global en el futuro.<br>
+        Sitio web: https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">El límite de tiempo de la identificación de llamadas es de 5 segundos, con un búfer de %s ms para la imprecisión de las funciones de tiempo, el límite de tiempo total es en realidad de %s ms. Los pasos previos costaron %s ms, no queda suficiente tiempo, se omite.</string>
@@ -65,4 +67,19 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Otro hilo se canceló.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Registre una cuenta en <a href="https://phoneblock.net">https://phoneblock.net</a>
+        para obtener su nombre de usuario y contraseña. Luego, complételos a continuación.<br>
+        <br>
+        Deberían verse así:<br>
+        - nombre de usuario:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - contraseña:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">nombre de usuario</string>
+    <string name="password">contraseña</string>
+    <string name="auto_detect_cc_permission">La detección automática del código de país requiere el permiso READ_PHONE_STATE.</string>
 </resources>

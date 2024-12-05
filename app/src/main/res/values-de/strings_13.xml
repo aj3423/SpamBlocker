@@ -30,22 +30,24 @@
     <string name="unidentified_number">Unbekannte Nummer.</string>
     <string name="help_http_url">
         <![CDATA[
-        Unterstützte Tags beim Abfragen von Nummern:<br>
+        Unterstützte Tags:<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; Die Landesvorwahl.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; Der nationale Teil.<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Die vollständige Nummer, einschließlich Landesvorwahl und nationalem Teil, ohne führende + und 0en.<br>
+        &ensp; Die vollständige Nummer, inklusive Landesvorwahl und nationalem Teil, ohne führende + oder 0en.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Die ursprüngliche Nummer, kann führende + oder 0en enthalten.<br>
         <br>
-        Unterstützte Tags beim Herunterladen von Datenbankdateien:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; Das Jahr, z. B.: 2024<br>
+        &ensp; Das Jahr, z.B.: 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Einstellige Zahlen werden mit einer führenden Null aufgefüllt, z. B.: <br>
+        &ensp; Einstellige Zahlen werden mit einer führenden Null aufgefüllt, z.B.: <br>
         &emsp; {month}_{day} -> 01_02<br>
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Diese Werte werden ohne führende Null aufgefüllt, z. B.: <br>
+        &ensp; Diese Werte werden ohne führende Null aufgefüllt, z.B.: <br>
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Nur für deutsche Nutzer.<br>
-        Die API-Dokumentation: https://phoneblock.net/phoneblock/api/
+        Derzeit nur für deutsche Nutzer verfügbar, globale Erweiterung geplant.<br>
+        Website: https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>
@@ -65,4 +67,19 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Ein anderer Thread wurde abgebrochen.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Registrieren Sie ein Konto auf <a href="https://phoneblock.net">https://phoneblock.net</a>
+        um Ihren Benutzernamen und Ihr Passwort zu erhalten.  Füllen Sie diese dann unten aus.<br>
+        <br>
+        Sie sollten so aussehen:<br>
+        - Benutzername:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - Passwort:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">Benutzername</string>
+    <string name="password">Passwort</string>
+    <string name="auto_detect_cc_permission">Die automatische Erkennung der Landesvorwahl benötigt die Berechtigung READ_PHONE_STATE.</string>
 </resources>

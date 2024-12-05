@@ -30,22 +30,24 @@
     <string name="unidentified_number">Tanımlanamayan numara.</string>
     <string name="help_http_url">
         <![CDATA[
-        Numaraları sorgularken desteklenen etiketler:<br>
+        Desteklenen etiketler:<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; Ülke kodu.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; Yerel kısım.<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Ülke kodu ve yerel kısmı içeren, başında + ve 0 olmayan tam numara.<br>
+        &ensp; Ülke kodu ve yerel kısım dahil, önde gelen + veya 0\'lar olmadan tam numara.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Önde gelen + veya 0\'lar içerebilen orijinal numara.<br>
         <br>
-        Veritabanı dosyalarını indirilirken desteklenen etiketler:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; Yıl, örn.: 2024<br>
+        &ensp; Yıl, örn: 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Tek basamaklı sayılar başa 0 eklenerek doldurulur, örn.: <br>
+        &ensp; Tek basamaklı sayılar önde gelen sıfır ile doldurulur, örn:<br>
         &emsp; {month}_{day} -> 01_02<br>
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Bu değerler başa 0 eklenmeden doldurulur, örn.: <br>
+        &ensp; Bu değerler önde gelen sıfır olmadan doldurulur, örn:<br>
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Sadece Alman kullanıcılar için.<br>
-        API dökümanı: https://phoneblock.net/phoneblock/api/
+        Şu anda sadece Alman kullanıcılar için geçerlidir, gelecekte küresel genişleme planları mevcuttur.<br>
+        Web sitesi: https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">Çağrı tarama süresi limiti 5 saniyedir, zaman fonksiyonlarının doğruluk hatası için %s ms tampon ile toplam süre limiti aslında %s ms\'dir. Önceki adımlar %s ms sürdü, yeterli zaman kalmadı, atlanıyor.</string>
@@ -65,4 +67,18 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Başka bir işlem iptal edildi.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Kullanıcı adınızı ve şifrenizi almak için <a href="https://phoneblock.net">https://phoneblock.net</a> adresinden bir hesap oluşturun. Ardından, bunları aşağıya girin.<br>
+        <br>
+        Şu şekilde görünmelidir:<br>
+        - kullanıcı adı:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - şifre:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">kullanıcı adı</string>
+    <string name="password">şifre</string>
+    <string name="auto_detect_cc_permission">Ülke kodunun otomatik olarak tespit edilmesi için READ_PHONE_STATE izni gereklidir.</string>
 </resources>

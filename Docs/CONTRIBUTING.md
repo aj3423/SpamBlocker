@@ -7,7 +7,7 @@ __Any help is greatly appreciated.__
 - [For translator](#for-translator)
 - [For coder/developer](#for-coderdeveloper)
 - [Build from source](#build-from-source)
-- [New presets](#new-presets)
+- [New API presets](#new-api-presets)
 
 ## For translator:
 
@@ -42,7 +42,7 @@ This is a small guide for how to build and run this application with Android Stu
 4. Run the app. If step 3 was completed you should be able to just press the 'play' button (green triangle) at the top.
 5. If everything goes well, you should be able to see the app installed in your emulator and be able to run it smoothly.
 
-## New presets
+## New API presets
 
 If you know a public database or API service that can be added to the presets, please report. 
 - PRs are welcome for public services

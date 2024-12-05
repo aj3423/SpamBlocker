@@ -40,14 +40,14 @@
         番号が識別されると、この正規表現を使用してそのカテゴリ（テレマーケティング、フィッシングなど）が抽出されます。
         ]]>
     </string>
-    <string name="actionn_parse_query_result">照会結果の解析</string>
+    <string name="action_parse_query_result">照会結果の解析</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         HTTP結果を解析します。結果に特定の正規表現パターンが含まれている場合、番号は迷惑電話として識別されます。<br>
         あれば、迷惑電話のカテゴリを結果から抽出するために、追加の正規表現パターンが使用されます。
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">着信番号の解析</string>
+    <string name="action_parse_incoming_number">着信番号の解析</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         着信電話番号が異なるタグに解析されます。<br>
@@ -70,7 +70,7 @@
         2. <b>12345</b>のような国内番号の場合、設定で国番号を指定するか、アプリで自動的に検出させる必要があります。<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">国番号の自動検出</string>
+    <string name="auto_detect">自動検出</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         国際的に頻繁に旅行する場合は、これを有効にすると、国番号が変更されたときに自動的に検出されます。<br>

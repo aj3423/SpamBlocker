@@ -30,15 +30,17 @@
     <string name="unidentified_number">Numéro non identifié.</string>
     <string name="help_http_url">
         <![CDATA[
-        Balises prises en charge lors de la requête de numéros :<br>
+        Balises prises en charge :<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
-        &ensp; Le code pays.<br>
+        &ensp; L\'indicatif pays.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; La partie nationale.<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Le numéro complet, incluant le code pays et la partie nationale, sans le + et les 0 en tête.<br>
+        &ensp; Le numéro complet, y compris l\'indicatif pays et la partie nationale, sans + ou 0 en tête.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Le numéro d\'origine pouvant contenir + ou 0 en tête.<br>
         <br>
-        Balises prises en charge lors du téléchargement des fichiers de base de données :<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
         &ensp; L\'année, par exemple : 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Uniquement pour les utilisateurs allemands.<br>
-        La documentation de l\'API : https://phoneblock.net/phoneblock/api/
+        Actuellement, il est uniquement destiné aux utilisateurs allemands, avec des projets d\'expansion mondiale future.<br>
+        Site web : https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">La limite de temps de filtrage des appels est de 5 secondes, avec une marge de %s ms pour l\'imprécision des fonctions de temps, la limite de temps totale est en réalité de %s ms. Les étapes précédentes ont coûté %s ms, il ne reste pas assez de temps, ignoré.</string>
@@ -65,4 +67,19 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Un autre thread est annulé.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Créez un compte sur <a href="https://phoneblock.net">https://phoneblock.net</a>
+        pour obtenir votre nom d\'utilisateur et votre mot de passe. Ensuite, renseignez-les ci-dessous.<br>
+        <br>
+        Ils doivent ressembler à :<br>
+        - nom d\'utilisateur :<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - mot de passe :<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">nom d\'utilisateur</string>
+    <string name="password">mot de passe</string>
+    <string name="auto_detect_cc_permission">La détection automatique de l\'indicatif pays nécessite l\'autorisation READ_PHONE_STATE.</string>
 </resources>

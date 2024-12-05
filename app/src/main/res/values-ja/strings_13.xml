@@ -30,22 +30,24 @@
     <string name="unidentified_number">未識別番号。</string>
     <string name="help_http_url">
         <![CDATA[
-        電話番号を問い合わせる際のサポートタグ:<br>
+        対応タグ：<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; 国番号。<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; 国内番号。<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; 国番号と国内番号を含む電話番号全体（先頭の+と0を除く）。<br>
+        &ensp; 国番号と国内番号を含む完全な番号（先頭の+または0を除く）。<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; 先頭に+または0が含まれる可能性のある元の番号。<br>
         <br>
-        データベースファイルをダウンロードする際のサポートタグ:<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; 年、例: 2024<br>
+        &ensp; 年（例：2024）<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; 1桁の数字には先頭に0が追加されます。例: <br>
+        &ensp; 1桁の数字は先頭に0を付加します（例：<br>
         &emsp; {month}_{day} -> 01_02<br>
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; これらの値には先頭に0は追加されません。例: <br>
+        &ensp; これらの値は先頭に0を付加しません（例：<br>
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        ドイツのユーザーのみ対象です。<br>
-        APIドキュメント: https://phoneblock.net/phoneblock/api/
+        現在、ドイツのユーザーのみに対応しており、将来的にはグローバル展開を予定しています。<br>
+        ウェブサイト: https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>
@@ -65,4 +67,18 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        <a href="https://phoneblock.net">https://phoneblock.net</a>でアカウントを登録して、ユーザー名とパスワードを取得してください。その後、下記に入力してください。<br>
+        <br>
+        形式は以下のようになります。<br>
+        - ユーザー名:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - パスワード:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">ユーザー名</string>
+    <string name="password">パスワード</string>
+    <string name="auto_detect_cc_permission">国番号の自動検出には、READ_PHONE_STATE権限が必要です。</string>
 </resources>

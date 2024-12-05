@@ -41,14 +41,14 @@
         Una vez que se identifica un número, esta expresión regular se usará para extraer su categoría (telemercadeo, phishing, etc.).
         ]]>
     </string>
-    <string name="actionn_parse_query_result">Analizar resultado de consulta</string>
+    <string name="action_parse_query_result">Analizar resultado de consulta</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         Analiza el resultado HTTP; el número se identificará como spam si el resultado contiene un patrón regex particular.<br>
         Se utilizará un patrón regex adicional para extraer la categoría de spam del resultado, si la hay.
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">Analizar número entrante</string>
+    <string name="action_parse_incoming_number">Analizar Número Entrante</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         El número de llamada entrante se analizará en diferentes etiquetas:<br>
@@ -71,7 +71,7 @@
         2. Para números nacionales como <b>12345</b>, debe proporcionar el código de país en la configuración o dejar que la aplicación lo detecte automáticamente.<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">Detección automática de código de país</string>
+    <string name="auto_detect">Detección automática</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         Habilita esto si viajas con frecuencia internacionalmente; el código de país se detectará automáticamente cuando cambie.<br>

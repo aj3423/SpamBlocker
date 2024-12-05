@@ -40,14 +40,14 @@
         Bir numara tanımlandıktan sonra, bu regex kategorisini (telepazarlama, kimlik avı vb.) çıkarmak için kullanılır.
         ]]>
     </string>
-    <string name="actionn_parse_query_result">Sorgu Sonucunu Ayrıştır</string>
+    <string name="action_parse_query_result">Sorgu Sonucunu Ayrıştır</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         HTTP sonucunu ayrıştırın, sonuçta belirli bir regex deseni içeriyorsa numara spam olarak tanımlanacaktır.<br>
         Varsa, spam kategorisini sonuçtan çıkarmak için ek bir regex deseni kullanılacaktır.
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">Gelen Numarayı Ayrıştır</string>
+    <string name="action_parse_incoming_number">Gelen Numarayı Ayrıştır</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Gelen arama numarası farklı etiketlere ayrıştırılacaktır:<br>
@@ -70,7 +70,7 @@
         2. <b>12345</b> gibi yerel numaralar için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">Ülke Kodunu Otomatik Algıla</string>
+    <string name="auto_detect">Otomatik Algıla</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         Sık sık uluslararası seyahat ediyorsanız, ülke kodu değiştiğinde otomatik olarak algılanacaktır.<br>

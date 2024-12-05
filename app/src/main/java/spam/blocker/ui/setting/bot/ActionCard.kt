@@ -52,7 +52,7 @@ fun ActionCard(
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                     modifier = M.padding(top = 2.dp),
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
 

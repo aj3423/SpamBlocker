@@ -25,11 +25,13 @@ data class Api(
         if(desc.isNotEmpty()) {
             return desc
         }
+        // If the `desc` is not set, show the domain name instead
 
-        // Find the HttpDownload
+        // Find the HttpDownload action
         val httpAction = actions.firstOrNull {
             it is HttpDownload
         }
+        // show
         return if (httpAction != null) {
             val http = httpAction as HttpDownload
             Util.extractDomainName(http.url) ?: ""

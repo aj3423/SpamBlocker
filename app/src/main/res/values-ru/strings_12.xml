@@ -41,14 +41,14 @@
         После идентификации номера эта регулярка будет использоваться для извлечения его категории (телемаркетинг, фишинг и т.д.).
         ]]>
     </string>
-    <string name="actionn_parse_query_result">Обработать результат запроса</string>
+    <string name="action_parse_query_result">Обработать результат запроса</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
         Обработать HTTP-результат, номер будет идентифицирован как спам, если результат содержит определённую регулярную маску.<br>
         Дополнительная регулярная маска будет использоваться для извлечения категории спама из результата, если таковая имеется.
         ]]>
     </string>
-    <string name="actionn_parse_incoming_number">Обработать входящий номер</string>
+    <string name="action_parse_incoming_number">Разобрать входящий номер</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Входящий номер будет разбит на теги:<br>
@@ -71,7 +71,7 @@
         2. Для внутреннего номера, например <b>12345</b>, нужно указать код страны в настройках или позволить приложению определить его автоматически.<br>
         ]]>
     </string>
-    <string name="auto_detect_country_code">Автоматическое определение кода страны</string>
+    <string name="auto_detect">Автоопределение</string>
     <string name="help_auto_detect_country_code">
         <![CDATA[
         Включите, если часто путешествуете за границу, код страны будет определяться автоматически при изменении.<br>

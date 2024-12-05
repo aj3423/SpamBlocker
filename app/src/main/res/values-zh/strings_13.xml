@@ -30,22 +30,24 @@
     <string name="unidentified_number">无法识别的号码。</string>
     <string name="help_http_url">
         <![CDATA[
-        查询号码时支持的标签：<br>
+        支持的标签：<br>
+        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; 国家代码。<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
         &ensp; 国内部分。<br>
         - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; 完整号码，包括国家代码和国内部分，不含前导+和0。<br>
+        &ensp; 完整号码，包括国家代码和国内部分，不含前导 + 或 0。<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; 原号码，可能包含前导 + 或 0。<br>
         <br>
-        下载数据库文件时支持的标签：<br>
         - <font color="#00BFFF"><b>{year}</b></font><br>
         &ensp; 年份，例如：2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; 单数位将用前导零填充，例如：<br>
+        &ensp; 个位数将用前导零填充，例如：<br>
         &emsp; {month}_{day} -> 01_02<br>
         - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; 这些值将填充，不带前导零，例如：<br>
+        &ensp; 这些值将不使用前导零进行填充，例如：<br>
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
@@ -53,8 +55,8 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        仅限德国用户。<br>
-        API文档：https://phoneblock.net/phoneblock/api/
+        目前仅限德国用户使用，未来计划扩展到全球。<br>
+        网站：https://phoneblock.net
         ]]>
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
@@ -65,4 +67,18 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">另一个线程已取消。</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        在 <a href="https://phoneblock.net">https://phoneblock.net</a> 注册帐户以获取用户名和密码。然后，在下面填写它们。<br>
+        <br>
+        它们应如下所示：<br>
+        - 用户名：<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - 密码：<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="auto_detect_cc_permission">自动检测国家代码需要 READ_PHONE_STATE 权限。</string>
 </resources>
