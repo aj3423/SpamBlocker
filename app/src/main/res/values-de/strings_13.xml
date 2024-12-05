@@ -84,10 +84,10 @@
     <string name="auto_detect_cc_permission">Die automatische Erkennung der Landesvorwahl benötigt die Berechtigung READ_PHONE_STATE.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
-        Wischen Sie nach links, um es zu löschen.<br>
+        <font color="#03DAC5"><b>Nach links wischen</b></font> zum Löschen.<br>
         <br>
-        Die meisten kartenartigen UI-Elemente in dieser App sind mit Wischgesten verbunden,
-        von denen einige auch das Wischen nach rechts unterstützen, z. B. die Verlaufseinträge.
+        Die meisten kartenartigen Benutzeroberflächenelemente in dieser App sind mit Wischgesten verknüpft,
+        von denen einige auch <font color="#03DAC5"><b>Rechtswischen</b></font> unterstützen, z. B. die Verlaufseinträge.
         ]]>
     </string>
 </resources>

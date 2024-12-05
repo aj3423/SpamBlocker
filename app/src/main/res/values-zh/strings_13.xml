@@ -83,10 +83,9 @@
     <string name="auto_detect_cc_permission">自动检测国家代码需要 READ_PHONE_STATE 权限。</string>
     <string name="suggest_to_swipe">
         <![CDATA[
-        向左滑动以删除。<br>
+        <font color="#03DAC5"><b>向左滑动</b></font> 删除它。<br>
         <br>
-        此应用程序中的大多数卡片式 UI 元素都与滑动手势相关联，
-        其中一些也支持向右滑动，例如历史记录。
+        此应用中的大多数卡片式 UI 元素都与滑动手势相关联，其中一些也支持<font color="#03DAC5"><b>向右滑动</b></font>，例如，历史记录。
         ]]>
     </string>
 </resources>

@@ -83,9 +83,10 @@
     <string name="auto_detect_cc_permission">Ülke kodunun otomatik olarak tespit edilmesi için READ_PHONE_STATE izni gereklidir.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
-        Silmek için sola kaydırın.<br>
+        Silmek için <font color="#03DAC5"><b>sola kaydırın</b></font>.<br>
         <br>
-        Bu uygulamadaki çoğu kart benzeri UI öğesi kaydırma hareketleriyle ilişkilendirilmiştir, bunlardan bazıları sağa kaydırmayı da destekler, örneğin geçmiş kayıtları.
+        Bu uygulamadaki çoğu kart benzeri UI öğesi kaydırma hareketleriyle ilişkilendirilmiştir,
+        bazıları da <font color="#03DAC5"><b>sağa kaydırmayı</b></font> destekler, örneğin geçmiş kayıtları.
         ]]>
     </string>
 </resources>

@@ -46,6 +46,7 @@ import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LazyScrollbar
@@ -275,7 +276,7 @@ fun RuleList(
     PopupDialog(
         trigger = suggestSwipeToDelTrigger,
     ) {
-        GreyLabel(Str(R.string.suggest_to_swipe))
+        HtmlText(Str(R.string.suggest_to_swipe))
     }
 
     val icons = listOf(
@@ -289,7 +290,7 @@ fun RuleList(
         ctx.resources.getStringArray(R.array.rule_dropdown_menu).mapIndexed { menuIndex, label ->
             LabelItem(
                 label = when (menuIndex) {
-                    3 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
+                    4 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
                     else -> label
                 },
                 icon = { GreyIcon20(icons[menuIndex]) }

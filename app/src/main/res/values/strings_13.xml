@@ -84,10 +84,10 @@
     <string name="password">password</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
-        Swipe left to delete it.<br>
+        <font color="#03DAC5"><b>Swipe left</b></font> to delete it.<br>
         <br>
         Most card-like UI elements in this app are associated with swiping gestures,
-        some of which also support swiping right, for example, the history records.
+        some of which also support <font color="#03DAC5"><b>swiping right</b></font>, for example, the history records.
         ]]>
     </string>>
 

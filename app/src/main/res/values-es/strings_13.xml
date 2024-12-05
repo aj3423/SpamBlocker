@@ -84,10 +84,10 @@
     <string name="auto_detect_cc_permission">La detección automática del código de país requiere el permiso READ_PHONE_STATE.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
-        Desliza hacia la izquierda para eliminarlo.<br>
+        <font color="#03DAC5"><b>Desliza hacia la izquierda</b></font> para eliminarlo.<br>
         <br>
-        La mayoría de los elementos de la interfaz de usuario tipo tarjeta en esta aplicación están asociados con gestos de deslizamiento,
-        algunos de los cuales también admiten deslizar hacia la derecha, por ejemplo, los registros del historial.
+        La mayoría de los elementos de IU tipo tarjeta en esta aplicación están asociados con gestos de deslizamiento,
+        algunos de los cuales también admiten <font color="#03DAC5"><b>deslizar hacia la derecha</b></font>, por ejemplo, los registros del historial.
         ]]>
     </string>
 </resources>

@@ -84,10 +84,10 @@
     <string name="auto_detect_cc_permission">La détection automatique de l\'indicatif pays nécessite l\'autorisation READ_PHONE_STATE.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
-        Glissez vers la gauche pour le supprimer.<br>
+        <font color="#03DAC5"><b>Faites glisser vers la gauche</b></font> pour le supprimer.<br>
         <br>
         La plupart des éléments d\'interface utilisateur de type carte dans cette application sont associés à des gestes de glissement,
-        dont certains prennent également en charge le glissement vers la droite, par exemple, les enregistrements de l\'historique.
+        dont certains prennent également en charge <font color="#03DAC5"><b>le glissement vers la droite</b></font>, par exemple, les enregistrements d\'historique.
         ]]>
     </string>
 </resources>
