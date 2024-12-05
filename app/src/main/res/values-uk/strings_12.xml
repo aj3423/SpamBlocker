@@ -50,25 +50,19 @@
     <string name="action_parse_incoming_number">Розбір вхідного номера</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
-        Вхідний номер буде розбитий на різні теги:<br>
+        Вхідний номер буде розділений на різні теги:<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; Початковий код країни.<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; Внутрішня частина.<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; Повний номер, еквівалентний конкатенації двох попередніх.<br>
+        %s
         <br>
         Ці теги будуть використані для побудови URL HTTP, наприклад:<br>
         <br>
-        1. Для міжнародного номера, такого як <b>+122222</b>, вони еквівалентні.<br>
-        <br>
+        1. Для міжнародного номера, як <b>+122222</b>, ці два рівнозначні:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         Буде розпарсено як: https://test.com/number=<b>122222</b><br>
         <br>
-        2. Для внутрішнього номера, такого як <b>12345</b>, потрібно вказати код країни в налаштуваннях<br>
-        або дозволити програмі автоматично його виявляти.<br>
+        2. Для внутрішнього номера, як <b>12345</b>, потрібно вказати код країни в налаштуваннях<br>
+        або дозволити програмі автоматично його визначити.<br>
         ]]>
     </string>
     <string name="api_services">API-сервіси</string>

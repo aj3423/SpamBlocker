@@ -3,7 +3,6 @@ package spam.blocker.service.bot
 import android.Manifest
 import android.content.Context
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,10 +32,8 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
-import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
@@ -50,7 +47,6 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
@@ -66,6 +62,7 @@ import spam.blocker.util.Now
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
+import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
 import spam.blocker.util.asyncHttpRequest
 import spam.blocker.util.resolveNumberTag
@@ -271,7 +268,10 @@ open class HttpDownload(
             label = { Text(Str(R.string.url)) },
             leadingIconId = R.drawable.ic_link,
             placeholder = { DimGreyLabel("https://...") },
-            helpTooltipId = R.string.help_http_url,
+            helpTooltip = Str(R.string.help_http_url).format(
+                Str(R.string.number_tags),
+                Str(R.string.time_tags),
+            ),
             onValueChange = { url = it }
         )
 
@@ -280,7 +280,7 @@ open class HttpDownload(
             label = { Text(Str(R.string.http_header)) },
             leadingIconId = R.drawable.ic_http_header,
             onValueChange = { header = it },
-            helpTooltipId = R.string.help_http_header,
+            helpTooltip= Str(R.string.help_http_header),
             placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
         )
     }
@@ -1535,6 +1535,12 @@ class ParseIncomingNumber(
         val rawNumber = aCtx.rawNumber!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 
+        // Skip alpha/empty numbers, such as: Microsoft and ""
+        if (rawNumber.isEmpty() || isAlphaNumber(rawNumber)) {
+            aCtx.logger?.warn(ctx.getString(R.string.skip_alpha_empty_number))
+            return false
+        }
+
         val matchesFilter = numberFilter.toRegex().matches(rawNumber)
         if (!matchesFilter) {
             aCtx.logger?.debug(
@@ -1549,9 +1555,12 @@ class ParseIncomingNumber(
         if (rawNumber.startsWith("+")) {
             aCtx.fullNumber = clearedNumber
             val (ok, cc, domestic) = CountryCode.parseCcDomestic(clearedNumber)
-            if (ok) {
+            if (ok) { // +1 222 333 4444 mobile format
                 aCtx.cc = cc
                 aCtx.domestic = domestic
+            } else { // unknown error
+                aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc) + " " + ctx.getString(R.string.bug_number))
+                return false
             }
             return true
         } else { // not start with "+"
@@ -1580,7 +1589,9 @@ class ParseIncomingNumber(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_parse_incoming_number)
+        return ctx.getString(R.string.help_action_parse_incoming_number).format(
+            ctx.getString(R.string.number_tags)
+        )
     }
 
     override fun inputParamType(): List<ParamType> {

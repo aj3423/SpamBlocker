@@ -51,22 +51,16 @@
         <![CDATA[
         Gelen arama numarası farklı etiketlere ayrıştırılacaktır:<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; Baştaki ülke kodu.<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; Yerel kısım.<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; Yukarıdakilerin birleştirilmesine eşdeğer olan tam numara.<br>
+        %s
         <br>
-        Bu etiketler HTTP URL\'sini oluşturmak için kullanılacaktır, örneğin:<br>
+        Bu etiketler HTTP URL\'sini oluşturmak için kullanılır, örneğin:<br>
         <br>
-        1. <b>+122222</b> gibi uluslararası numaralar için bunlar eşdeğerdir.<br>
-        <br>
+        1. <b>+122222</b> gibi uluslararası numara için, bunların ikisi eşdeğerdir:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         Şu şekilde ayrıştırılacaktır: https://test.com/number=<b>122222</b><br>
         <br>
-        2. <b>12345</b> gibi yerel numaralar için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
+        2. <b>12345</b> gibi yerel numara için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
         ]]>
     </string>
     <string name="api_services">API Hizmetleri</string>

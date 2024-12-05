@@ -6,8 +6,6 @@
         Очистка спам-БД, удаление %s записей до метки времени: %s.
     </string>
     <string name="resolved_url">Resolved url: %s.</string>
-    <string name="resolved_path">Resolved path: %s.</string>
-    <string name="resolved_filename">Resolved filename: %s.</string>
     <string name="time_cost">Время выполнения: %s миллисекунд.</string>
     <string name="parsed_n_rules">Обработано %s правил.</string>
     <string name="add_n_numbers_to_spam_db">Добавление %s номеров в спам-базу данных.</string>
@@ -21,10 +19,7 @@
     <string name="replace_number_from_to">Замена номера с %s на %s.</string>
     <string name="find_rule_with_desc">Найдено %s правил с описанием %s.</string>
     <string name="modify_n_rules">Изменение %s правил.</string>
-    <string name="parse_number_fail">Ошибка разбора номера: %s.</string>
-    <string name="permission_not_granted">Разрешение не предоставлено.</string>
     <string name="fail_detect_cc">Не удалось определить код страны.</string>
-    <string name="empty_fixed_cc">Фиксированный код страны пуст.</string>
     <string name="identified_as_spam">Определено как спам-номер, категория: %s.</string>
     <string name="identified_as_valid">Определено как валидный номер, категория: %s.</string>
     <string name="unidentified_number">Неизвестный номер.</string>
@@ -32,31 +27,18 @@
         <![CDATA[
         Поддерживаемые теги:<br>
         <br>
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
-        &ensp; Код страны.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
-        &ensp; Внутренняя часть номера.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Полный номер, включая код страны и внутреннюю часть, без ведущих + или 0.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; Исходный номер, может содержать ведущие + или 0.<br>
+        %s
         <br>
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; Год, например: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Однозначные числа дополняются ведущим нулём, например:<br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Эти значения дополняются без ведущего нуля, например:<br>
-        &emsp; {month}_{day} -> 1_2<br>
+        %s
         ]]>
     </string>
     <string name="number_not_match_filter">Номер %s не соответствует фильтру %s, пропускаем.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Сейчас доступно только для пользователей из Германии, планируется глобальное расширение.<br>
-        Веб-сайт: https://phoneblock.net
+        В настоящее время предназначено для пользователей из <b>Германии</b>, с возможностью глобального расширения.<br>
+        <br>
+        Веб-сайт: <a href="https://phoneblock.net">https://phoneblock.net</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Лимит времени проверки вызова составляет 5 секунд, с буфером %s мс для неточности функций времени, общий лимит времени составляет %s мс. Предыдущие шаги заняли %s мс, времени не достаточно, пропускаем.</string>
@@ -90,4 +72,30 @@
         некоторые из которых также поддерживают <font color="#03DAC5"><b>смахивание вправо</b></font>, например, записи истории.
         ]]>
     </string>
+    <string name="bug_number">Если это валидный номер, пожалуйста, сообщите об этом на github.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Код страны.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; Внутренняя часть номера.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Полный номер, включая код страны и внутреннюю часть, без ведущих + или 0.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Исходный номер, может содержать ведущие + или 0.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; Год, например: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Однозначные числа дополняются ведущим нулём, например:<br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Эти значения дополняются без ведущего нуля, например:<br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="skip_alpha_empty_number">Пропуск буквенных или пустых номеров.</string>
 </resources>

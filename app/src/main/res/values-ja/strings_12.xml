@@ -49,24 +49,18 @@
     <string name="action_parse_incoming_number">着信番号の解析</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
-        着信電話番号が異なるタグに解析されます。<br>
+        着信電話番号は、異なるタグに解析されます。<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; 先頭の国番号。<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; 国内部分。<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; 上記2つの連結に相当する電話番号全体。<br>
+        %s
         <br>
-        これらのタグを使用してHTTP URLを作成します。例:<br>
+        これらのタグは、HTTP URLを作成するために使用されます。例：<br>
         <br>
-        1. <b>+122222</b>のような国際番号の場合、これらは同等です。<br>
-        <br>
+        1. <b>+122222</b>のような国際番号の場合、これら2つは同等です。<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         これはhttps://test.com/number=<b>122222</b>に解析されます。<br>
         <br>
-        2. <b>12345</b>のような国内番号の場合、設定で国番号を指定するか、アプリで自動的に検出させる必要があります。<br>
+        2. <b>12345</b>のような国内番号の場合、設定で国コードを指定するか、アプリで自動的に検出させる必要があります。<br>
         ]]>
     </string>
     <string name="api_services">APIサービス</string>

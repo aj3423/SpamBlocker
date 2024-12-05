@@ -51,22 +51,16 @@
         <![CDATA[
         Le numéro d’appel entrant sera analysé en différentes balises :<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; L’indicatif téléphonique.<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; La partie nationale.<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; Le numéro complet, qui équivaut à la concaténation des deux éléments ci-dessus.<br>
+        %s
         <br>
         Ces balises seront utilisées pour construire l’URL HTTP, par exemple :<br>
         <br>
-        1. Pour un numéro international comme <b>+122222</b>, ceux-ci sont équivalents.<br>
-        <br>
+        1. Pour un numéro international comme <b>+122222</b>, ces deux sont équivalents :<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         Il sera analysé en : https://test.com/number=<b>122222</b><br>
         <br>
-        2. Pour un numéro national comme <b>12345</b>, vous devez fournir l’indicatif téléphonique dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
+        2. Pour un numéro national comme <b>12345</b>, vous devez fournir le code pays dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
         ]]>
     </string>
     <string name="api_services">Services API</string>

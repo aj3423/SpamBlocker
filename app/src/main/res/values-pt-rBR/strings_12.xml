@@ -52,22 +52,17 @@
         <![CDATA[
         O número de telefone da chamada recebida será analisado em diferentes tags:<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; O código do país inicial.<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; A parte doméstica.<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; O número completo, equivalente à concatenação dos dois acima.<br>
+        %s
         <br>
         Estas tags serão usadas para construir a URL HTTP, por exemplo:<br>
         <br>
-        1. Para números internacionais como <b>+122222</b>, estes são equivalentes.<br>
-        <br>
+        1. Para números internacionais como <b>+122222</b>, estes dois são equivalentes:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         Será analisado para: https://test.com/number=<b>122222</b><br>
         <br>
-        2. Para números domésticos como <b>12345</b>, você precisa fornecer o código do país nas configurações ou deixar o aplicativo detectá-lo automaticamente.<br>
+        2. Para números domésticos como <b>12345</b>, você precisa fornecer o código do país nas configurações,<br>
+        ou deixar o aplicativo detectá-lo automaticamente.<br>
         ]]>
     </string>
     <string name="api_services">Serviços de API</string>

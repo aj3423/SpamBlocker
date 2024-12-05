@@ -149,14 +149,19 @@ object Util {
         return parts.joinToString(" ")
     }
 
+    // Check if it only contains:
+    //   0-9 space - ( )
+    val nonAlphaPattern = "^[0-9\\s+\\-()]*\$".toRegex()
+    fun isAlphaNumber(number: String): Boolean {
+        return !nonAlphaPattern.matches(number)
+    }
     // check if a string only contains:
     //   digit spaces + - ( )
     // Param:
     //   when `force`==true, numbers like "+123####" will also be cleared.
-    val pattern = "^[0-9\\s+\\-()]*\$".toRegex()
     fun clearNumber(number: String, force: Boolean = false): String {
         // check if it contains alphabetical characters like "Microsoft"
-        if (!force && !pattern.matches(number)) { // don't clear for enterprise string number
+        if (!force && isAlphaNumber(number)) { // don't clear for enterprise string number
             return number
         }
 

@@ -6,8 +6,6 @@
         Spam veritabanı temizleniyor, zaman damgasından önceki %s kayıt siliniyor: %s.
     </string>
     <string name="resolved_url">Çözümlenen url: %s.</string>
-    <string name="resolved_path">Çözümlenen yol: %s.</string>
-    <string name="resolved_filename">Çözümlenen dosya adı: %s.</string>
     <string name="time_cost">Zaman maliyeti: %s milisaniye.</string>
     <string name="parsed_n_rules">%s kural çözümlendi.</string>
     <string name="add_n_numbers_to_spam_db">Spam veritabanına %s numara ekleniyor.</string>
@@ -21,10 +19,7 @@
     <string name="replace_number_from_to">%s numarası %s ile değiştiriliyor.</string>
     <string name="find_rule_with_desc">Açıklaması %s olan %s kural bulundu.</string>
     <string name="modify_n_rules">%s kural değiştiriliyor.</string>
-    <string name="parse_number_fail">Numara çözümlenemedi: %s.</string>
-    <string name="permission_not_granted">İzin verilmedi.</string>
     <string name="fail_detect_cc">Ülke kodu tespit edilemedi.</string>
-    <string name="empty_fixed_cc">Sabit ülke kodu boş.</string>
     <string name="identified_as_spam">Spam numarası olarak tanımlandı, kategori: %s.</string>
     <string name="identified_as_valid">Geçerli numara olarak tanımlandı, kategori: %s.</string>
     <string name="unidentified_number">Tanımlanamayan numara.</string>
@@ -32,31 +27,18 @@
         <![CDATA[
         Desteklenen etiketler:<br>
         <br>
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
-        &ensp; Ülke kodu.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
-        &ensp; Yerel kısım.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Ülke kodu ve yerel kısım dahil, önde gelen + veya 0\'lar olmadan tam numara.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; Önde gelen + veya 0\'lar içerebilen orijinal numara.<br>
+        %s
         <br>
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; Yıl, örn: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Tek basamaklı sayılar önde gelen sıfır ile doldurulur, örn:<br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Bu değerler önde gelen sıfır olmadan doldurulur, örn:<br>
-        &emsp; {month}_{day} -> 1_2<br>
+        %s
         ]]>
     </string>
     <string name="number_not_match_filter">%s numarası %s filtresine uymuyor, atlanıyor.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Şu anda sadece Alman kullanıcılar için geçerlidir, gelecekte küresel genişleme planları mevcuttur.<br>
-        Web sitesi: https://phoneblock.net
+        Şu anda <b>Alman</b> kullanıcılar içindir, küresel genişleme potansiyeli vardır.<br>
+        <br>
+        Web sitesi: <a href="https://phoneblock.net">https://phoneblock.net</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Çağrı tarama süresi limiti 5 saniyedir, zaman fonksiyonlarının doğruluk hatası için %s ms tampon ile toplam süre limiti aslında %s ms\'dir. Önceki adımlar %s ms sürdü, yeterli zaman kalmadı, atlanıyor.</string>
@@ -89,4 +71,30 @@
         bazıları da <font color="#03DAC5"><b>sağa kaydırmayı</b></font> destekler, örneğin geçmiş kayıtları.
         ]]>
     </string>
+    <string name="bug_number">Bu geçerli bir numara ise lütfen github\'da bildirin.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Ülke kodu.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; Yerel kısım.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Ülke kodu ve yerel kısmı içeren, başında + veya 0 olmayan tam numara.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Başında + veya 0 içerebilen orijinal numara.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; Yıl, örneğin: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Tek basamaklı sayılar başa 0 eklenerek gösterilir, örneğin: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Bu değerler başa 0 eklenmeden gösterilir, örneğin: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="skip_alpha_empty_number">Alfabetik veya boş numara atlanıyor.</string>
 </resources>

@@ -25,10 +25,8 @@
     <string name="identified_as_valid">Identified as valid number, category: %s.</string>
     <string name="unidentified_number">Unidentified number.</string>
     <string name="auto_detect_cc_permission">Auto detect country code requires permission READ_PHONE_STATE.</string>
-    <string name="help_http_url">
+    <string name="number_tags">
         <![CDATA[
-        Supported tags:<br>
-        <br>
         - <font color="#00BFFF"><b>{cc}</b></font><br>
         &ensp; The country code.<br>
         - <font color="#00BFFF"><b>{domestic}</b></font><br>
@@ -37,7 +35,10 @@
         &ensp; The full number, including both country code and domestic part, without leading + or 0s.<br>
         - <font color="#00BFFF"><b>{origin_number}</b></font><br>
         &ensp; The origin number that can contain leading + or 0s.<br>
-        <br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
         - <font color="#00BFFF"><b>{year}</b></font><br>
         &ensp; The year, e.g.: 2024<br>
         - <font color="#00BFFF"><b>{month} {day}</b></font><br>
@@ -48,11 +49,21 @@
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="help_http_url">
+        <![CDATA[
+        Supported tags:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
         Currently, it\'s for <b>German</b> users, with potential for global expansion.<br>
-        Website: https://phoneblock.net
+        <br>
+        Website: <a href="https://phoneblock.net">https://phoneblock.net</a>
         ]]>
     </string>
     <string name="help_api_preset_phoneblock_authorization">
@@ -79,8 +90,8 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>
-    <string name="username">username</string>>
-    <string name="password">password</string>>
+    <string name="username">Username</string>>
+    <string name="password">Password</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Swipe left</b></font> to delete it.<br>
@@ -89,5 +100,6 @@
         some of which also support <font color="#03DAC5"><b>swiping right</b></font>, for example, the history records.
         ]]>
     </string>>
-
+    <string name="bug_number">If this is a valid number, please report it on github.</string>>
+    <string name="skip_alpha_empty_number">Skip alpha or empty number.</string>>
 </resources>

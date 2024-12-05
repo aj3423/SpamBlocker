@@ -306,7 +306,7 @@ fun StrInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
-    helpTooltipId: Int? = null,
+    helpTooltip: String? = null,
 
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
@@ -355,8 +355,9 @@ fun StrInputBox(
                         }
                     )
                 }
-                helpTooltipId?.let {
-                    BalloonQuestionMark(LocalContext.current.getString(it))
+
+                helpTooltip?.let {
+                    BalloonQuestionMark(it)
                 }
             }
         }

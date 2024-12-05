@@ -51,22 +51,16 @@
         <![CDATA[
         Die eingehende Rufnummer wird in verschiedene Tags aufgeteilt:<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; Die führende Landesvorwahl.<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; Der nationale Teil.<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; Die vollständige Nummer, entspricht der Konkatenation der beiden obigen.<br>
+        %s
         <br>
         Diese Tags werden verwendet, um die HTTP-URL zu erstellen, z. B.:<br>
         <br>
-        1. Für internationale Nummern wie <b>+122222</b> sind diese äquivalent.<br>
-        <br>
+        1. Für internationale Nummern wie <b>+122222</b> sind diese beiden äquivalent:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         Es wird geparst zu: https://test.com/number=<b>122222</b><br>
         <br>
-        2. Für nationale Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die automatische Erkennung durch die App zulassen.<br>
+        2. Für inländische Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die App diese automatisch erkennen lassen.<br>
         ]]>
     </string>
     <string name="api_services">API-Dienste</string>

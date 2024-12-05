@@ -6,8 +6,6 @@
         正在清理垃圾电话数据库，删除时间戳之前%s的记录。
     </string>
     <string name="resolved_url">已解析URL：%s。</string>
-    <string name="resolved_path">已解析路径：%s。</string>
-    <string name="resolved_filename">已解析文件名：%s。</string>
     <string name="time_cost">耗时：%s毫秒。</string>
     <string name="parsed_n_rules">已解析%s条规则。</string>
     <string name="add_n_numbers_to_spam_db">正在将%s个号码添加到垃圾电话数据库。</string>
@@ -21,10 +19,7 @@
     <string name="replace_number_from_to">将号码从%s替换为%s。</string>
     <string name="find_rule_with_desc">找到%s条描述为%s的规则。</string>
     <string name="modify_n_rules">正在修改%s条规则。</string>
-    <string name="parse_number_fail">号码解析失败：%s。</string>
-    <string name="permission_not_granted">权限未授予。</string>
     <string name="fail_detect_cc">国家代码检测失败。</string>
-    <string name="empty_fixed_cc">固定的国家代码为空。</string>
     <string name="identified_as_spam">识别为垃圾号码，类别：%s。</string>
     <string name="identified_as_valid">识别为有效号码，类别：%s。</string>
     <string name="unidentified_number">无法识别的号码。</string>
@@ -32,31 +27,18 @@
         <![CDATA[
         支持的标签：<br>
         <br>
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
-        &ensp; 国家代码。<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
-        &ensp; 国内部分。<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; 完整号码，包括国家代码和国内部分，不含前导 + 或 0。<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; 原号码，可能包含前导 + 或 0。<br>
+        %s
         <br>
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; 年份，例如：2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; 个位数将用前导零填充，例如：<br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; 这些值将不使用前导零进行填充，例如：<br>
-        &emsp; {month}_{day} -> 1_2<br>
+        %s
         ]]>
     </string>
     <string name="number_not_match_filter">号码 %s 与过滤器 %s 不匹配，跳过。</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        目前仅限德国用户使用，未来计划扩展到全球。<br>
-        网站：https://phoneblock.net
+        目前适用于<b>德国</b>用户，未来可能扩展到全球。<br>
+        <br>
+        网站：<a href="https://phoneblock.net">https://phoneblock.net</a>
         ]]>
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
@@ -88,4 +70,30 @@
         此应用中的大多数卡片式 UI 元素都与滑动手势相关联，其中一些也支持<font color="#03DAC5"><b>向右滑动</b></font>，例如，历史记录。
         ]]>
     </string>
+    <string name="bug_number">如果这是一个有效号码，请在github上报告。</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; 国家代码。<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; 国内部分。<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; 完整号码，包括国家代码和国内部分，不含前导 + 或 0。<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; 原号码，可能包含前导 + 或 0。<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; 年份，例如：2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; 个位数将用前导零填充，例如：<br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; 这些值将不使用前导零进行填充，例如：<br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="skip_alpha_empty_number">跳过字母或空号码。</string>
 </resources>

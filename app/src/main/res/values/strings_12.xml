@@ -53,17 +53,11 @@
         <![CDATA[
         The incoming call number will be parsed into different tags:<br>
         <br>
-        <font color="#6ed0ff"><b><no_translate>{cc}</no_translate></b></font><br>
-        &emsp; The leading country code.<br>
-        <font color="#6ed0ff"><b><no_translate>{domestic}</no_translate></b></font><br>
-        &emsp; The domestic part.<br>
-        <font color="#6ed0ff"><b><no_translate>{number}</no_translate></b></font><br>
-        &emsp; The full number, which is equivalent to the concatenation of the above two.<br>
+        %s
         <br>
         These tags will be used to build the HTTP URL, for example:<br>
         <br>
-        1. For international number like <b>+122222</b>, these are equivalent.<br>
-        <br>
+        1. For international number like <b>+122222</b>, these two are equivalent:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
         It will be parsed to: https://test.com/number=<b>122222</b><br>

@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.api
 
 import android.content.Context
+import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.db.Api
 import spam.blocker.service.bot.FilterQueryResult
@@ -58,14 +59,17 @@ val ApiPresets = listOf<ApiPreset>(
                 enabled = true,
                 actions = listOf(
                     ParseIncomingNumber(
-                        numberFilter = "0.*",
+                        numberFilter = ".*",
                     ),
                     HttpDownload(
-                        url = "https://phoneblock.net/phoneblock/api/num/{origin_number}",
+                        url =  if (BuildConfig.DEBUG)
+                            "https://phoneblock.net/pb-test/api/num/+{cc}{domestic}"
+                        else
+                            "https://phoneblock.net/phoneblock/api/num/+{cc}{domestic}" ,
                         header = "Authorization: Basic {base64({username}:{password})}"
                     ),
                     ParseQueryResult(
-                        negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE)",
+                        negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE|B_MISSED)",
                         categorySig = "\"rating\":\"(.+?)\"",
                     ),
                     FilterQueryResult(),
