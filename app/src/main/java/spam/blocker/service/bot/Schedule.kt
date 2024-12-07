@@ -42,6 +42,7 @@ val defaultSchedules = listOf (
     Daily(),
     Weekly(),
     Periodically(),
+//    Delay(), // Don't show this on UI, it's only used for auto reporting numbers.
 )
 
 val Workdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY)
@@ -49,7 +50,7 @@ val Weekend = listOf(SATURDAY, SUNDAY)
 
 interface ISchedule {
     fun isValid(): Boolean
-    fun nextOccurrence(): Duration
+    fun nextOccurrence(): Duration?
 
     // A displaying label for the selecting spinner
     fun label(ctx: Context): String
@@ -112,6 +113,45 @@ class Time(
 }
 
 @Serializable
+@SerialName("Delay")
+class Delay(
+    var time: Time = Time(),
+    var runTimes: Int = 0,
+) : ISchedule {
+    override fun isValid(): Boolean {
+        return time.isValid()
+    }
+
+    override fun nextOccurrence(): Duration? {
+        if (runTimes > 0)
+            return null
+        runTimes++
+        val totalMinutes = time.hour*60 + time.min
+        return Duration.ofMinutes(totalMinutes.toLong())
+    }
+
+    override fun iconId() : Int { return R.drawable.ic_delay }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.delay)
+    }
+
+    override fun summary(ctx: Context): String {
+        return time.summary()
+    }
+
+    @Composable
+    override fun Options() {
+        RowCenter(modifier = M.fillMaxWidth()) {
+            HourMinInput(time.hour, time.min) { h, m ->
+                time.hour = h
+                time.min = m
+            }
+        }
+    }
+}
+
+@Serializable
 @SerialName("Daily")
 class Daily(
     var time: Time = Time()
@@ -120,7 +160,7 @@ class Daily(
         return time.isValid()
     }
 
-    override fun nextOccurrence(): Duration {
+    override fun nextOccurrence(): Duration? {
         val now = LocalDateTimeMockk.now()
         val targetTime = now.withHour(time.hour).withMinute(time.min).withSecond(0).withNano(0)
 
@@ -164,7 +204,7 @@ class Weekly(
                 weekdays.all { it in MONDAY..SUNDAY }
     }
 
-    override fun nextOccurrence(): Duration {
+    override fun nextOccurrence(): Duration? {
         val weekDays = weekdays.sorted()
 
         val now = LocalDateTimeMockk.now()
@@ -247,7 +287,7 @@ class Periodically(
                 !(time.hour == 0 && time.min == 0) // prevent infinite loop
     }
 
-    override fun nextOccurrence(): Duration {
+    override fun nextOccurrence(): Duration? {
         return Duration.ofHours(time.hour.toLong()).plusMinutes(time.min.toLong())
     }
 

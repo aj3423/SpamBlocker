@@ -52,13 +52,14 @@ object Def {
     const val SETTING_CONTENT_RULE_COLLAPSED = "content_rule_collapsed"
     const val SETTING_QUICK_COPY_RULE_COLLAPSED = "quick_copy_rule_collapsed"
     const val SETTING_BOT_LIST_COLLAPSED = "bot_list_collapsed"
-    const val SETTING_API_LIST_COLLAPSED = "api_list_collapsed"
+    const val SETTING_API_QUERY_LIST_COLLAPSED = "api_query_list_collapsed"
+    const val SETTING_API_REPORT_LIST_COLLAPSED = "api_report_list_collapsed"
     const val SETTING_RULE_LIST_MAX_NONE_SCROLL_ROWS = "rule_list_max_none_scroll_rows"
     const val SETTING_RULE_LIST_HEIGHT_PERCENTAGE = "rule_list_height_percentage"
     const val SETTING_RULE_MAX_REGEX_ROWS = "rule_max_regex_rows"
     const val SETTING_RULE_MAX_DESC_ROWS = "rule_max_description_rows"
-    const val SETTING_SUGGESTED_SWIPE_TO_DELETE = "suggested_prompt_to_delete"
 
+    const val NUMBER_REPORTING_BUFFER_HOURS = 1L // 1 hour
 
     const val DEFAULT_SPAM_DB_TTL = 180 // days
 
@@ -147,6 +148,9 @@ object Def {
     const val ForNumber = 0
     const val ForSms = 1
     const val ForQuickCopy = 2
+
+    const val ForApiQuery = 0
+    const val ForApiReport = 1
 
     const val DIRECTION_INCOMING = 1
     const val DIRECTION_OUTGOING = 2

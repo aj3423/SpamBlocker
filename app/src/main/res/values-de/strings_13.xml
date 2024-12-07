@@ -33,26 +33,30 @@
         ]]>
     </string>
     <string name="number_not_match_filter">Die Nummer %s passt nicht zum Filter %s, übersprungen.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
+        <font color="#ffa500"><b>Derzeit im Testbetrieb mit Test-API, der Wechsel zur Produktions-API erfolgt im nächsten Release v4.0.<b></font><br>
+        <br>
+        <font color="#ffa500"><b>Test- und Produktionskonten sind nicht kompatibel, bitte registrieren Sie sich nach dem späteren Wechsel zur Produktion erneut.<b></font><br>
+        <br>
         Derzeit ist es für <b>deutsche</b> Benutzer gedacht, mit dem Potenzial für eine globale Expansion.<br>
         <br>
-        Website: <a href="https://phoneblock.net">https://phoneblock.net</a>
+        Website: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>
-    <string name="action_filter_query_result">Filterabfrageergebnis</string>
+    <string name="action_filter_query_result">Spam filtern</string>
     <string name="help_action_filter_query_result">
         <![CDATA[
-        Generiert eine <u>Liste von Nummern</u>, die alle Spam-Nummern enthält, die im vorherigen Schritt identifiziert wurden.
+        Generiert eine <u>Liste von Nummern</u>, die die aus dem vorherigen Schritt identifizierten Spam-Nummern enthält und für den Import in die Datenbank bereit ist.
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Ein anderer Thread wurde abgebrochen.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registrieren Sie ein Konto auf <a href="https://phoneblock.net">https://phoneblock.net</a>
-        um Ihren Benutzernamen und Ihr Passwort zu erhalten.  Füllen Sie diese dann unten aus.<br>
+        Registrieren Sie ein Konto unter <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        um Ihren Benutzernamen und Ihr Passwort zu erhalten. Füllen Sie diese dann unten aus.<br>
         <br>
         Sie sollten so aussehen:<br>
         - Benutzername:<br>
@@ -63,7 +67,7 @@
     </string>
     <string name="username">Benutzername</string>
     <string name="password">Passwort</string>
-    <string name="auto_detect_cc_permission">Die automatische Erkennung der Landesvorwahl benötigt die Berechtigung READ_PHONE_STATE.</string>
+    <string name="auto_detect_cc_permission">Die Berechtigung READ_PHONE_STATE wird benötigt, um die Landesvorwahl zu erkennen.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Nach links wischen</b></font> zum Löschen.<br>

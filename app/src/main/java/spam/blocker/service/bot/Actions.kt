@@ -2,6 +2,7 @@ package spam.blocker.service.bot
 
 import android.Manifest
 import android.content.Context
+import android.provider.CallLog.Calls
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -12,9 +13,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import com.google.i18n.phonenumbers.PhoneNumberUtil
+import com.google.i18n.phonenumbers.Phonenumber
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
@@ -34,6 +40,7 @@ import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
@@ -52,6 +59,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.AdbLogger
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.CSVParser
@@ -59,12 +67,15 @@ import spam.blocker.util.CountryCode
 import spam.blocker.util.IPermission
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Now
+import spam.blocker.util.Permissions
 import spam.blocker.util.PermissiveJson
+import spam.blocker.util.PhoneNumber
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
 import spam.blocker.util.asyncHttpRequest
+import spam.blocker.util.logi
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -146,11 +157,16 @@ class CleanupHistory(
     }
 }
 
+const val HTTP_GET = 0
+const val HTTP_POST = 1
+
 @Serializable
 @SerialName("HttpDownload")
 open class HttpDownload(
+    var method: Int = HTTP_GET,
     var url: String = "",
     var header: String = "",
+    var body: String = "", // post body
 ) : IPermissiveAction {
 
     /*
@@ -194,11 +210,26 @@ open class HttpDownload(
                 aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: $key -> $value")
             }
 
+            // 3. body
+            val resolvedBody = body
+                .resolveNumberTag(
+                    cc = aCtx.cc,
+                    domestic = aCtx.domestic,
+                    fullNumber = aCtx.fullNumber,
+                    rawNumber = aCtx.rawNumber,
+                )
+            if (method == HTTP_POST){
+                aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: $resolvedBody")
+            }
+
+
             // 3. Send request
             val resultChannel = asyncHttpRequest(
                 scope = aCtx.scope,
                 urlString = resolvedUrl,
                 headersMap = headersMap,
+                method = method,
+                postBody = resolvedBody,
             )
 
             // 4. Get response
@@ -213,10 +244,12 @@ open class HttpDownload(
 
             aCtx.lastOutput = result?.bytes
 
+            val echo = Util.truncate(String(result?.bytes ?: byteArrayOf()))
             if (result?.statusCode == HttpURLConnection.HTTP_OK) {
+                aCtx.logger?.success("HTTP: <${result.statusCode}>")
+                aCtx.logger?.debug(echo)
                 true
             } else {
-                val echo = if (result?.bytes != null) String(result.bytes) else ""
                 aCtx.logger?.error("HTTP: <${result?.statusCode}>: $echo")
                 false
             }
@@ -253,7 +286,7 @@ open class HttpDownload(
     }
 
     override fun outputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteArray, ParamType.None)
     }
 
     @Composable
@@ -263,6 +296,7 @@ open class HttpDownload(
 
     @Composable
     override fun Options() {
+
         StrInputBox(
             text = url,
             label = { Text(Str(R.string.url)) },
@@ -283,6 +317,32 @@ open class HttpDownload(
             helpTooltip= Str(R.string.help_http_header),
             placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
         )
+
+        var selected by remember { mutableIntStateOf(method) }
+        val options = remember {
+            listOf("GET", "POST").mapIndexed { index, label ->
+                LabelItem(label = label) {
+                    method = index
+                    selected = index
+                }
+            }
+        }
+        LabeledRow(R.string.http_method) {
+            Spinner(options, selected)
+        }
+
+        AnimatedVisibleV(selected == HTTP_POST) {
+
+            StrInputBox(
+                text = body,
+                label = { Text(Str(R.string.http_post_body)) },
+                leadingIconId = R.drawable.ic_post,
+                onValueChange = { body = it },
+                helpTooltip= Str(R.string.help_http_post_body).format(
+                    Str(R.string.number_tags)
+                ),
+            )
+        }
     }
 }
 
@@ -1569,8 +1629,24 @@ class ParseIncomingNumber(
                 aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc))
                 return false
             }
-            aCtx.cc = cc.toString()
-            aCtx.domestic = clearedNumber
+            // Not sure if it's possible to have a number start with CC but has no leading `+`,
+            //  for instance: 33xxxxxxxx
+            // Check the part xxxxxxxx, if it's still a valid number for cc==33,
+            //   then the xxxxxxxx is the domestic part.
+            // Otherwise, the entire 33xxxxxxxx is a domestic number
+            val rest = clearedNumber.substring(cc.toString().length)
+            val pnUtil = PhoneNumberUtil.getInstance()
+            val n = Phonenumber.PhoneNumber().apply {
+                countryCode = cc
+                nationalNumber = rest.toLong()
+            }
+            if (pnUtil.isValidNumber(n)) { // the number start with CC
+                aCtx.cc = cc.toString()
+                aCtx.domestic = rest
+            } else { // it's simply a domestic number
+                aCtx.cc = cc.toString()
+                aCtx.domestic = clearedNumber
+            }
         }
 
         return true
@@ -1654,7 +1730,7 @@ class ParseQueryResult(
 
         val html = String(input)
 
-        aCtx.logger?.debug("${label(ctx)}: ${Util.truncate(html)}")
+        aCtx.logger?.debug(label(ctx))
 
         // 1. negative
         val negativeOpts = Util.flagsToRegexOptions(negativeFlags)
@@ -1678,11 +1754,15 @@ class ParseQueryResult(
         if (determined) {
             if (categorySig.trim().isNotEmpty()) {
                 val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
-                category = categorySig.trim().toRegex(categoryOpts).find(html)
-                    ?.groups
-                    ?.drop(1)
-                    ?.filterNotNull()
-                    ?.first()?.value
+                category = categorySig.trim().toRegex(categoryOpts).findAll(html)
+                    .map {
+                        it.groups
+                            .drop(1)
+                            .filterNotNull()
+                            .first().value
+                    }
+                    .filterNot { it.isEmpty() }
+                    .joinToString(" ")
             }
         }
 
@@ -1698,7 +1778,7 @@ class ParseQueryResult(
                     .format(category ?: "")
             )
         } else {
-            aCtx.logger?.info(ctx.getString(R.string.unidentified_number))
+            aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
         }
 
         val result = QueryResult(
@@ -1817,9 +1897,8 @@ class ParseQueryResult(
 }
 
 @Serializable
-@SerialName("FilterQueryResult")
-class FilterQueryResult(
-) : IPermissiveAction {
+@SerialName("FilterSpamResult")
+class FilterSpamResult() : IPermissiveAction {
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as QueryResult
@@ -1865,5 +1944,94 @@ class FilterQueryResult(
     @Composable
     override fun Options() {
         NoOptionNeeded()
+    }
+}
+
+// Report number to all api endpoints.
+// (For internal app usage only.)
+@Serializable
+@SerialName("ReportNumber")
+class ReportNumber(
+    val rawNumber: String
+) : IPermissiveAction {
+    override fun missingPermissions(ctx: Context): List<IPermission> {
+        return listOf(
+            NormalPermission(Manifest.permission.READ_CALL_LOG,
+                prompt = ctx.getString(R.string.report_number_require_call_log_permission)),
+        )
+    }
+
+    private fun isAllowedLater(ctx: Context) : Boolean {
+        // 1. check if the number is repeated or dialed
+        val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
+        if (!canReadCalls)
+            return false
+
+        val phoneNumber = PhoneNumber(ctx, rawNumber)
+        val incoming = Permissions.getHistoryCallsByNumber(
+            ctx, phoneNumber, Def.DIRECTION_INCOMING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
+        )
+        val outgoing = Permissions.getHistoryCallsByNumber(
+            ctx, phoneNumber, Def.DIRECTION_OUTGOING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
+        )
+        val isAllowedLater = (incoming + outgoing).any {
+            listOf(
+                Calls.INCOMING_TYPE,
+                Calls.OUTGOING_TYPE,
+                Calls.MISSED_TYPE,
+            ).contains(it)
+        }
+        return isAllowedLater
+    }
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (isAllowedLater(ctx)) {
+            logi("skip reporting repeated/dialed number: $rawNumber")
+            return false
+        }
+
+        // 2. report
+        val scope = CoroutineScope(IO)
+        val apis = G.apiReportVM.table.listAll(ctx).filter { it.enabled }
+        apis.forEach { api ->
+            scope.launch {
+                val aCtx = ActionContext(
+                    scope = scope,
+                    logger = AdbLogger(),
+                    rawNumber = rawNumber,
+                )
+                val success = api.actions.executeAll(ctx, aCtx)
+                logi("report number $rawNumber to ${api.desc}, success: $success")
+            }
+        }
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return "Report Number" // it will not be displayed on UI
+    }
+
+    @Composable
+    override fun Summary() {
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ""
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+    }
+
+    @Composable
+    override fun Options() {
     }
 }

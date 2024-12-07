@@ -40,14 +40,15 @@
         После идентификации номера эта регулярка будет использоваться для извлечения его категории (телемаркетинг, фишинг и т.д.).
         ]]>
     </string>
-    <string name="action_parse_query_result">Обработать результат запроса</string>
+    <string name="action_parse_query_result">Обработать результат</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Обработать HTTP-результат, номер будет идентифицирован как спам, если результат содержит определённую регулярную маску.<br>
-        Дополнительная регулярная маска будет использоваться для извлечения категории спама из результата, если таковая имеется.
+        Обработка результата запроса, номер будет идентифицирован как спам, если результат содержит определённую регулярку.<br>
+        <br>
+        Дополнительная регулярка может использоваться для извлечения категории спама. (необязательно)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Разобрать входящий номер</string>
+    <string name="action_parse_incoming_number">Обработать номер</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Входящий номер будет разбит на разные теги:<br>
@@ -64,7 +65,7 @@
         2. Для внутреннего номера, например <b>12345</b>, необходимо указать код страны в настройках или позволить приложению определить его автоматически.<br>
         ]]>
     </string>
-    <string name="api_services">API-сервисы</string>
+    <string name="query_api">API запроса</string>
     <string name="number_filter">Фильтр номеров</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -89,4 +90,5 @@
     <string name="outside_time_schedule">За пределами расписания, пропуск.</string>
     <string name="android_ver_lower_than_11">Версия Android ниже 11, пропуск.</string>
     <string name="query">Запрос</string>
+    <string name="report_api">API отчётов</string>
 </resources>

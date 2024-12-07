@@ -209,12 +209,12 @@ object Permissions {
         }
     }
 
-    fun countHistoryCallByNumber(
+    fun getHistoryCallsByNumber(
         ctx: Context,
         phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
-    ): Int {
+    ): List<Int> {
         val selection = mutableListOf(
             "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
         )
@@ -229,10 +229,10 @@ object Permissions {
             )
         }
 
-        var count = 0
+        var ret = listOf<Int>()
         ctx.contentResolver.query(
             Calls.CONTENT_URI,
-            arrayOf(Calls.NUMBER),
+            arrayOf(Calls.NUMBER, Calls.TYPE),
             selection.joinToString(" AND "),
             null,
             null
@@ -241,12 +241,12 @@ object Permissions {
                 do {
                     val calledNumber = it.getString(0)
                     if(phoneNumber.isSame(calledNumber)) {
-                        count++
+                        ret += it.getInt(1)
                     }
                 } while(it.moveToNext())
             }
         }
-        return count
+        return ret
     }
 
     fun countHistorySMSByNumber(

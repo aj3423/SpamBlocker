@@ -1,0 +1,39 @@
+<resources>
+    <string name="auto_report">自動レポート</string>
+    <string name="help_auto_report">
+        <![CDATA[
+        着信時にブロックされた番号をすべてのAPIエンドポイントに自動的に報告します。<br>
+        <br>
+        番号が報告されるまで1時間の時間バッファがあります。この時間バッファ内で番号が繰り返されたり、発信されたりした場合は、迷惑電話とは見なされず、報告されません。<br>
+        <br>
+        次のタイプの番号のみが報告されます。<font color="#03DAC5"><b>されます</b></font><br>
+        - <font color="#6ed0ff"><b>非連絡先</b></font>(連絡先限定モード)<br>
+        - <font color="#6ed0ff"><b>STIR認証</b></font><br>
+        - <font color="#6ed0ff"><b>番号正規表現</b></font><br>
+        - <font color="#6ed0ff"><b>SMS本文正規表現</b></font><br>
+        <br>
+        次のタイプの番号は報告されません。<font color="#fa7f71"><b>ません</b></font><br>
+        - <font color="#6ed0ff"><b>インスタントクエリ</b></font>、APIエンドポイントの番号が競合他社に漏洩するのを防ぎます。<br>
+        - <font color="#6ed0ff"><b>迷惑電話データベース</b></font>、APIエンドポイントからインポートされている可能性が高いです。<br>
+        - <font color="#6ed0ff"><b>連絡先正規表現、連絡先グループ正規表現</b></font><br>
+        - <font color="#6ed0ff"><b>会議モード</b></font><br>
+        - <font color="#6ed0ff"><b>グローバルテスト</b></font><br>
+        <br>
+        通過した番号は<font color="#fa7f71"><b>報告されません</b></font>。
+        ]]>
+    </string>
+    <string name="http_method">メソッド</string>
+    <string name="http_post_body">ポスト本文</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        サポートされているタグ:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">有効な認証情報を入力してください。</string>
+    <string name="delay">遅延</string>
+    <string name="report_number_require_call_log_permission">
+        繰り返し発信された番号や折り返し発信された番号の誤った報告を防ぐため、番号の報告には通話履歴の権限が必要です。
+    </string>
+</resources>

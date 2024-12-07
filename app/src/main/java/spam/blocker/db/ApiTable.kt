@@ -41,11 +41,13 @@ data class Api(
     }
 }
 
-object ApiTable {
+class ApiTable(
+    val tableName: String
+) {
     @SuppressLint("Range")
     fun listAll(ctx: Context, where: String = ""): List<Api> {
 
-        val sql = "SELECT * FROM ${Db.TABLE_API} $where ORDER BY ${Db.COLUMN_DESC}"
+        val sql = "SELECT * FROM $tableName $where ORDER BY ${Db.COLUMN_DESC}"
 
         val ret: MutableList<Api> = mutableListOf()
 
@@ -78,7 +80,7 @@ object ApiTable {
         cv.put(Db.COLUMN_DESC, r.desc)
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
-        return db.insert(Db.TABLE_API, null, cv)
+        return db.insert(tableName, null, cv)
     }
 
     fun addRecordWithId(ctx: Context, r: Api) {
@@ -88,7 +90,7 @@ object ApiTable {
         cv.put(Db.COLUMN_DESC, r.desc)
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
-        db.insert(Db.TABLE_API, null, cv)
+        db.insert(tableName, null, cv)
     }
 
     fun updateById(ctx: Context, id: Long, r: Api): Boolean {
@@ -98,11 +100,11 @@ object ApiTable {
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
 
-        return db.update(Db.TABLE_API, cv, "${Db.COLUMN_ID} = $id", null) >= 0
+        return db.update(tableName, cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }
 
     fun deleteById(ctx: Context, id: Long): Boolean {
-        val sql = "DELETE FROM ${Db.TABLE_API} WHERE ${Db.COLUMN_ID} = $id"
+        val sql = "DELETE FROM $tableName WHERE ${Db.COLUMN_ID} = $id"
         val cursor = Db.getInstance(ctx).writableDatabase.rawQuery(sql, null)
 
         return cursor.use {
@@ -112,7 +114,7 @@ object ApiTable {
 
     fun clearAll(ctx: Context) {
         val db = Db.getInstance(ctx).writableDatabase
-        val sql = "DELETE FROM ${Db.TABLE_API}"
+        val sql = "DELETE FROM $tableName"
         db.execSQL(sql)
     }
 

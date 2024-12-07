@@ -24,26 +24,19 @@ import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.widgets.ConfigExportDialog
-import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
-import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
-import spam.blocker.ui.widgets.NumberInputBox
-import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.SnackBar
-import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwipeInfo
-import spam.blocker.util.SharedPref.ApiOptions
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ApiList() {
+fun ApiList(vm: ApiViewModel) {
     val ctx = LocalContext.current
-    val vm = G.apiVM
     val coroutineScope = rememberCoroutineScope()
 
     val editTrigger = rememberSaveable { mutableStateOf(false) }
@@ -56,10 +49,10 @@ fun ApiList() {
             initial = vm.apis[clickedIndex],
             onSave = { updatedApi ->
                 // 1. update in db
-                ApiTable.updateById(ctx, updatedApi.id, updatedApi)
+                vm.table.updateById(ctx, updatedApi.id, updatedApi)
 
                 // 2. reload UI
-                vm.reload(ctx)
+                vm.reloadDb(ctx)
             }
         )
     }
@@ -93,7 +86,7 @@ fun ApiList() {
                         left = SwipeInfo(
                             onSwipe = {
                                 // 1. delete from db
-                                ApiTable.deleteById(ctx, api.id)
+                                vm.table.deleteById(ctx, api.id)
                                 // 2. remove from UI
                                 vm.apis.removeAt(index)
                                 // 3. show snackbar
@@ -103,7 +96,7 @@ fun ApiList() {
                                     ctx.getString(R.string.undelete),
                                 ) {
                                     // 1. add to db
-                                    ApiTable.addRecordWithId(ctx, api)
+                                    vm.table.addRecordWithId(ctx, api)
                                     // 2. add to UI
                                     vm.apis.add(index, api)
                                 }

@@ -40,14 +40,15 @@
         Після ідентифікації номера цей регулярний вираз буде використано для вилучення його категорії (телемаркетинг, фішинг тощо).
         ]]>
     </string>
-    <string name="action_parse_query_result">Розбір результату запиту</string>
+    <string name="action_parse_query_result">Розбір результату</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Розбір результату HTTP, номер буде ідентифіковано як спам, якщо результат містить певний шаблон регулярного виразу.<br>
-        Для вилучення категорії спаму з результату, якщо вона є, буде використано додатковий шаблон регулярного виразу.
+        Розбір результату запиту, номер буде ідентифіковано як спам, якщо результат містить певний шаблон регулярного виразу.<br>
+        <br>
+        Для вилучення категорії спаму можна використовувати додатковий регулярний вираз (необов\'язково).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Розбір вхідного номера</string>
+    <string name="action_parse_incoming_number">Розбір номера</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Вхідний номер буде розділений на різні теги:<br>
@@ -65,7 +66,7 @@
         або дозволити програмі автоматично його визначити.<br>
         ]]>
     </string>
-    <string name="api_services">API-сервіси</string>
+    <string name="query_api">API запиту</string>
     <string name="number_filter">Фільтр номерів</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -90,4 +91,5 @@
     <string name="outside_time_schedule">За межами графіка, пропущено.</string>
     <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
     <string name="query">Запит</string>
+    <string name="report_api">API звітування</string>
 </resources>

@@ -24,7 +24,7 @@
     <string name="identified_as_spam">Identified as spam number, category: %s.</string>
     <string name="identified_as_valid">Identified as valid number, category: %s.</string>
     <string name="unidentified_number">Unidentified number.</string>
-    <string name="auto_detect_cc_permission">Auto detect country code requires permission READ_PHONE_STATE.</string>
+    <string name="auto_detect_cc_permission">The permission READ_PHONE_STATE is required for detecting country code.</string>
     <string name="number_tags">
         <![CDATA[
         - <font color="#00BFFF"><b>{cc}</b></font><br>
@@ -58,23 +58,29 @@
         %s
         ]]>
     </string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
+        <font color="#ffa500"><b>Currently in testing with testing API, it will transition to
+        the production API in the next release v4.0.<b></font><br>
+        <br>
+        <font color="#ffa500"><b>Testing and production accounts are not compatible,
+        please register again after switching to production later.<b></font><br>
+        <br>
         Currently, it\'s for <b>German</b> users, with potential for global expansion.<br>
         <br>
-        Website: <a href="https://phoneblock.net">https://phoneblock.net</a>
+        Website: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         ]]>
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Register an account on <a href="https://phoneblock.net">https://phoneblock.net</a>
+        Register an account on <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         to get your username and password. Then, fill them in below.<br>
         <br>
         They should look like:<br>
-        - username:<br>
+        - Username:<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - password:<br>
+        - Password:<br>
          &emsp; xxxxxxxxxxxxxxxxxxxx
         ]]>
     </string>
@@ -83,10 +89,10 @@
         for the inaccuracy of time functions, the total time limit is actually %s ms.
         The previous steps cost %s ms, not enough time left, skip.
     </string>
-    <string name="action_filter_query_result">Filter Query Result</string>
+    <string name="action_filter_query_result">Filter Spam</string>
     <string name="help_action_filter_query_result">
         <![CDATA[
-        Generate a <u>list of numbers</u> that contains all spam numbers that were identified in the previous step.
+        Generate a <u>list of numbers</u> containing the spam number identified from the previous step, and ready to be imported to the database.
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>

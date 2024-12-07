@@ -23,8 +23,6 @@ fun ApiCard(
     api: Api,
     modifier: Modifier,
 ) {
-    val ctx = LocalContext.current
-
     OutlineCard(
         containerBg = MaterialTheme.colorScheme.background
     ) {

@@ -41,14 +41,15 @@
         Once a number is identified, this regex will be used to extract its category(telemarketing, fishing, etc).
         ]]>
     </string>
-    <string name="action_parse_query_result">Parse Query Result</string>
+    <string name="action_parse_query_result">Parse Result</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Parse the HTTP result, the number will be identified as a spam if the result contains a particular regex pattern.<br>
-        An extra regex pattern will be used to extract the spam category from the result, if there is any.
+        Parse the query result, the number will be identified as a spam if the result contains a particular regex pattern.<br>
+        <br>
+        An extra regex can be used to extract the spam category. (optional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Parse Incoming Number</string>
+    <string name="action_parse_incoming_number">Parse Number</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         The incoming call number will be parsed into different tags:<br>
@@ -60,13 +61,15 @@
         1. For international number like <b>+122222</b>, these two are equivalent:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        It will be parsed to: https://test.com/number=<b>122222</b><br>
+        It will be parsed to: <br>
+        https://test.com/number=<b>122222</b><br>
         <br>
         2. For domestic number like <b>12345</b>, you need to provide the country code in the settings,
         or let the app detect it automatically.<br>
         ]]>
     </string>
-    <string name="api_services">API Services</string>
+    <string name="query_api">Query API</string>
+    <string name="report_api">Report API</string>
     <string name="number_filter">Number Filter</string>
     <string name="help_number_filter">
         <![CDATA[

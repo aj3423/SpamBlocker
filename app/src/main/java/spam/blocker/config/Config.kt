@@ -3,8 +3,8 @@ package spam.blocker.config
 import android.content.Context
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
+import spam.blocker.G
 import spam.blocker.db.Api
-import spam.blocker.db.ApiTable
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRuleTable
@@ -365,18 +365,36 @@ class QuickCopyRules : PatternRules() {
 }
 
 @Serializable
-class Apis {
+class ApiQuery {
     val apis = mutableListOf<Api>()
 
     fun load(ctx: Context) {
         apis.clear()
-        apis.addAll(ApiTable.listAll(ctx))
+        apis.addAll(G.apiQueryVM.table.listAll(ctx))
     }
 
     fun apply(ctx: Context) {
-        ApiTable.clearAll(ctx)
+        val table = G.apiQueryVM.table
+        table.clearAll(ctx)
         apis.forEach {
-            ApiTable.addRecordWithId(ctx, it)
+            table.addRecordWithId(ctx, it)
+        }
+    }
+}
+@Serializable
+class ApiReport {
+    val apis = mutableListOf<Api>()
+
+    fun load(ctx: Context) {
+        apis.clear()
+        apis.addAll(G.apiReportVM.table.listAll(ctx))
+    }
+
+    fun apply(ctx: Context) {
+        val table = G.apiReportVM.table
+        table.clearAll(ctx)
+        apis.forEach {
+            table.addRecordWithId(ctx, it)
         }
     }
 }
@@ -435,7 +453,8 @@ class Configs {
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
 
-    val apis = Apis()
+    val apiQuery = ApiQuery()
+    val apiReport = ApiReport()
     val bots = Bots()
 
     val spamNumbers = SpamNumbers()
@@ -462,7 +481,8 @@ class Configs {
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
 
-        apis.load(ctx)
+        apiQuery.load(ctx)
+        apiReport.load(ctx)
         bots.load(ctx)
 
         if (includeSpamDB)
@@ -491,7 +511,8 @@ class Configs {
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
 
-        apis.apply(ctx)
+        apiQuery.apply(ctx)
+        apiReport.apply(ctx)
         bots.apply(ctx)
 
         if (includeSpamDB)

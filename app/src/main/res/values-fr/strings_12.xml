@@ -39,14 +39,15 @@
         Une fois qu’un numéro est identifié, ce regex sera utilisé pour extraire sa catégorie (télémarketing, hameçonnage, etc.).
         ]]>
     </string>
-    <string name="action_parse_query_result">Analyser le résultat de la requête</string>
+    <string name="action_parse_query_result">Analyser le résultat</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Analyser le résultat HTTP ; le numéro sera identifié comme spam si le résultat contient un modèle regex particulier.<br>
-        Un modèle regex supplémentaire sera utilisé pour extraire la catégorie de spam du résultat, le cas échéant.
+        Analyser le résultat de la requête ; le numéro sera identifié comme indésirable si le résultat contient un motif d’expression régulière particulier.<br>
+        <br>
+        Une expression régulière supplémentaire peut être utilisée pour extraire la catégorie d’appel indésirable. (facultatif)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analyser le numéro entrant</string>
+    <string name="action_parse_incoming_number">Analyser le numéro</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Le numéro d’appel entrant sera analysé en différentes balises :<br>
@@ -63,7 +64,7 @@
         2. Pour un numéro national comme <b>12345</b>, vous devez fournir le code pays dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
         ]]>
     </string>
-    <string name="api_services">Services API</string>
+    <string name="query_api">API de requête</string>
     <string name="number_filter">Filtre de numéros</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -88,4 +89,5 @@
     <string name="outside_time_schedule">Hors plage horaire, ignorer.</string>
     <string name="android_ver_lower_than_11">Version Android inférieure à 11, ignorer.</string>
     <string name="query">Requête</string>
+    <string name="report_api">API de rapport</string>
 </resources>

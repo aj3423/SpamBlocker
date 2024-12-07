@@ -117,13 +117,13 @@ class RuleTest {
         atTimeMillis: Long
     ) {
         val number = PhoneNumber(ctx, rawNumber)
-        every { Permissions.countHistoryCallByNumber(any(), number, direction, any()) } answers {
+        every { Permissions.getHistoryCallsByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
-                repeatedTimes
+                List<Int>(repeatedTimes) {0}
             } else {
-                0
+                listOf()
             }
         }
     }

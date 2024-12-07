@@ -30,6 +30,8 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.api.ApiHeader
 import spam.blocker.ui.setting.api.ApiList
+import spam.blocker.ui.setting.api.ApiQueryPresets
+import spam.blocker.ui.setting.api.ApiReportPresets
 import spam.blocker.ui.setting.bot.BotHeader
 import spam.blocker.ui.setting.bot.BotList
 import spam.blocker.ui.setting.misc.About
@@ -177,11 +179,26 @@ fun SettingScreen() {
                         Column(
                             verticalArrangement = Arrangement.spacedBy(0.dp),
                         ) {
-                            // Api list
-                            LaunchedEffect(true) { G.apiVM.reload(ctx) }
-                            ApiHeader(G.apiVM)
-                            AnimatedVisibleV(!G.apiVM.listCollapsed.value) {
-                                ApiList()
+                            // Api Query list
+                            LaunchedEffect(true) { G.apiQueryVM.reloadDb(ctx) }
+                            ApiHeader(G.apiQueryVM, ApiQueryPresets)
+                            AnimatedVisibleV(!G.apiQueryVM.listCollapsed.value) {
+                                ApiList(G.apiQueryVM)
+                            }
+                        }
+                    }
+                    Section(
+                        title = Str(R.string.auto_report),
+                        horizontalPadding = 8
+                    ) {
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(0.dp),
+                        ) {
+                            // Api Report list
+                            LaunchedEffect(true) { G.apiReportVM.reloadDb(ctx) }
+                            ApiHeader(G.apiReportVM, ApiReportPresets)
+                            AnimatedVisibleV(!G.apiReportVM.listCollapsed.value) {
+                                ApiList(G.apiReportVM)
                             }
                         }
                     }

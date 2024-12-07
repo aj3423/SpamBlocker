@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Build
 import android.telecom.Call
 import android.telecom.Connection
+import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.ApiTable
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
@@ -265,12 +265,12 @@ class Checker { // for namespace only
             val phoneNumber = PhoneNumber(ctx, rawNumber)
 
             // count Calls from real call history
-            var nCalls = Permissions.countHistoryCallByNumber(
+            var nCalls = Permissions.getHistoryCallsByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_INCOMING,
                 durationMillis
-            )
+            ).size
             // When testing, there is no real call history, try local db instead
             if (isTesting) {
                 val nCallsTesting = CallTable().countRepeatedRecordsWithinSeconds(
@@ -345,12 +345,12 @@ class Checker { // for namespace only
 
             // repeated count of call/sms, sms also counts
             val phoneNumber = PhoneNumber(ctx, rawNumber)
-            val nCalls = Permissions.countHistoryCallByNumber(
+            val nCalls = Permissions.getHistoryCallsByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_OUTGOING,
                 durationMillis
-            )
+            ).size
             val nSMSs = Permissions.countHistorySMSByNumber(
                 ctx,
                 phoneNumber,
@@ -515,10 +515,12 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val apis = ApiTable.listAll(ctx).filter { it.enabled }
+            val apis = G.apiQueryVM.table.listAll(ctx).filter { it.enabled }
 
-            if (apis.isNotEmpty())
-                logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.instant_query)))
+            if (apis.isEmpty())
+                return null
+
+            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.instant_query)))
 
             // The call screening time limit is 5 seconds, with a 500ms buffer for
             //  the inaccuracy of System.currentTimeMillis(), the total time limit
@@ -533,7 +535,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            // Run all apis simultaneously, get the first non-null result,
+            // Run all apis simultaneously, get the first non-null result, which is determined,
             //  and return that result immediately without waiting for others to finish.
             var (winnerApi, result) = race(
                 competitors = apis,

@@ -13,15 +13,12 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
-import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.util.ILogger
 import spam.blocker.util.IPermission
@@ -58,7 +55,7 @@ val apiActions = listOf(
     ParseIncomingNumber(),
     HttpDownload(),
     ParseQueryResult(),
-    FilterQueryResult(),
+    FilterSpamResult(),
     ImportToSpamDB(),
 )
 
@@ -268,7 +265,11 @@ fun List<IAction>.executeAll(
     val anyError = runBlocking {
         aCtx.scope.async{
             self.any {
-                val succeeded = it.execute(ctx, aCtx)
+                val succeeded = try {
+                    it.execute(ctx, aCtx)
+                } catch (_: Exception) {
+                    false
+                }
 
                 yield()
 

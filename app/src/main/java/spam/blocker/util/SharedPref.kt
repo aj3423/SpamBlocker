@@ -126,9 +126,13 @@ class BotOptions(ctx: Context) : SharedPref(ctx) {
     fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_BOT_LIST_COLLAPSED, false) }
     fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_BOT_LIST_COLLAPSED, enabled) }
 }
-class ApiOptions(ctx: Context) : SharedPref(ctx) {
-    fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_LIST_COLLAPSED, false) }
-    fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_API_LIST_COLLAPSED, enabled) }
+class ApiQueryOptions(ctx: Context) : SharedPref(ctx) {
+    fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_QUERY_LIST_COLLAPSED, false) }
+    fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_API_QUERY_LIST_COLLAPSED, enabled) }
+}
+class ApiReportOptions(ctx: Context) : SharedPref(ctx) {
+    fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_REPORT_LIST_COLLAPSED, false) }
+    fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_API_REPORT_LIST_COLLAPSED, enabled) }
 }
 
 class HistoryOptions(ctx: Context) : SharedPref(ctx) {

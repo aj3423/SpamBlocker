@@ -40,14 +40,15 @@
         Assim que um número for identificado, esta expressão regular será usada para extrair sua categoria (telemarketing, phishing, etc.).
         ]]>
     </string>
-    <string name="action_parse_query_result">Analisar Resultado da Consulta</string>
+    <string name="action_parse_query_result">Analisar Resultado</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Analisa o resultado HTTP; o número será identificado como spam se o resultado contiver um determinado padrão regex.<br>
-        Um padrão regex extra será usado para extrair a categoria de spam do resultado, se houver.
+        Analisa o resultado da consulta; o número será identificado como spam se o resultado contiver um padrão regex específico.<br>
+        <br>
+        Uma expressão regular extra pode ser usada para extrair a categoria de spam. (opcional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analisar Número Recebido</string>
+    <string name="action_parse_incoming_number">Analisar Número</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         O número de telefone da chamada recebida será analisado em diferentes tags:<br>
@@ -65,7 +66,7 @@
         ou deixar o aplicativo detectá-lo automaticamente.<br>
         ]]>
     </string>
-    <string name="api_services">Serviços de API</string>
+    <string name="query_api">API de Consulta</string>
     <string name="number_filter">Filtro de Número</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -90,4 +91,5 @@
     <string name="outside_time_schedule">Fora do horário programado, ignorar.</string>
     <string name="android_ver_lower_than_11">Versão do Android inferior a 11, ignorar.</string>
     <string name="query">Consulta</string>
+    <string name="report_api">API de Relatório</string>
 </resources>

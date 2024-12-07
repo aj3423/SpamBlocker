@@ -12,15 +12,16 @@ import spam.blocker.db.BotTable
 import spam.blocker.def.Def
 import spam.blocker.util.AdbLogger
 import spam.blocker.util.Util
+import spam.blocker.util.logd
 import spam.blocker.util.logi
 import java.util.concurrent.TimeUnit
 
 // The Android built-in WorkManager doesn't support schedule like: "at 00:00:00 every day",
 // this is a workaround, using a one-off task, when it triggers, schedule a new one.
 
-private const val scheduleConfig = "scheduleConfig"
-private const val actionsConfig = "actionsConfig"
-private const val workTag = "workTag"
+private const val ScheduleConfig = "scheduleConfig"
+private const val ActionsConfig = "actionsConfig"
+private const val WorkTag = "workTag"
 
 
 class MyWorker(
@@ -49,13 +50,13 @@ class MyWorker(
     }
 
     private fun getWorkTag(): String {
-        return workerParams.inputData.keyValueMap[workTag] as String
+        return workerParams.inputData.keyValueMap[WorkTag] as String
     }
     private fun getActionsConfig(): String {
-        return workerParams.inputData.keyValueMap[actionsConfig] as String
+        return workerParams.inputData.keyValueMap[ActionsConfig] as String
     }
     private fun getScheduleConfig(): String {
-        return workerParams.inputData.keyValueMap[scheduleConfig] as String
+        return workerParams.inputData.keyValueMap[ScheduleConfig] as String
     }
 
     private fun scheduleNext() {
@@ -107,14 +108,18 @@ object MyWorkManager {
         if (!schedule.isValid())
             return false
 
+        // `null` means no need to run anymore, e.g.: Delay(one-off schedule)
         val delay = schedule.nextOccurrence()
+        if (delay == null) {
+            logd("skip finished task: $scheduleConfig")
+            return false
+        }
 
         // add parameters to the worker
         val data = Data.Builder().apply {
-            putString(spam.blocker.service.bot.scheduleConfig, scheduleConfig)
-            putString(spam.blocker.service.bot.actionsConfig, actionsConfig)
-
-            putString(spam.blocker.service.bot.workTag, workTag)
+            putString(ScheduleConfig, schedule.serialize())
+            putString(ActionsConfig, actionsConfig)
+            putString(WorkTag, workTag)
         }.build()
 
         val nextWorkRequest = OneTimeWorkRequest.Builder(MyWorker::class.java)

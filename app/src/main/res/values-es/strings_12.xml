@@ -40,14 +40,15 @@
         Una vez que se identifica un número, esta expresión regular se usará para extraer su categoría (telemercadeo, phishing, etc.).
         ]]>
     </string>
-    <string name="action_parse_query_result">Analizar resultado de consulta</string>
+    <string name="action_parse_query_result">Analizar resultado</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Analiza el resultado HTTP; el número se identificará como spam si el resultado contiene un patrón regex particular.<br>
-        Se utilizará un patrón regex adicional para extraer la categoría de spam del resultado, si la hay.
+        Analiza el resultado de la consulta; el número se identificará como spam si el resultado contiene un patrón regex particular.<br>
+        <br>
+        Se puede usar una expresión regular adicional para extraer la categoría de spam (opcional).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analizar Número Entrante</string>
+    <string name="action_parse_incoming_number">Analizar número</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         El número de llamada entrante se analizará en diferentes etiquetas:<br>
@@ -64,7 +65,7 @@
         2. Para números nacionales como <b>12345</b>, debe proporcionar el código de país en la configuración o dejar que la aplicación lo detecte automáticamente.<br>
         ]]>
     </string>
-    <string name="api_services">Servicios API</string>
+    <string name="query_api">API de consulta</string>
     <string name="number_filter">Filtro de Número</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -89,4 +90,5 @@
     <string name="outside_time_schedule">Fuera del horario, omitir.</string>
     <string name="android_ver_lower_than_11">La versión de Android es inferior a la 11, omitir.</string>
     <string name="query">Consulta</string>
+    <string name="report_api">API de reporte</string>
 </resources>

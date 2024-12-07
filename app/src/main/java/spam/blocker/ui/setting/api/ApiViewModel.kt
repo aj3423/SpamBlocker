@@ -5,20 +5,29 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import spam.blocker.db.Api
 import spam.blocker.db.ApiTable
-import spam.blocker.util.SharedPref.ApiOptions
+import spam.blocker.db.Db
+import spam.blocker.def.Def
+import spam.blocker.util.SharedPref.ApiQueryOptions
+import spam.blocker.util.SharedPref.ApiReportOptions
 
-class ApiViewModel {
+open class ApiViewModel(
+    val table: ApiTable,
+    val forType: Int,
+) {
     val apis = mutableStateListOf<Api>()
     val listCollapsed = mutableStateOf(false)
 
 
-    fun reload(ctx: Context) {
+    fun reloadDb(ctx: Context) {
         apis.clear()
 
-        val all = ApiTable.listAll(ctx)
+        val all = table.listAll(ctx)
         apis.addAll(all)
 
-        listCollapsed.value = ApiOptions(ctx).isListCollapsed()
+        listCollapsed.value = if (forType == Def.ForApiQuery)
+            ApiQueryOptions(ctx).isListCollapsed()
+        else
+            ApiReportOptions(ctx).isListCollapsed()
     }
 
     fun toggleCollapse(ctx: Context) {
@@ -28,6 +37,9 @@ class ApiViewModel {
         }
 
         listCollapsed.value = !listCollapsed.value
-        ApiOptions(ctx).setListCollapsed(listCollapsed.value)
+        ApiQueryOptions(ctx).setListCollapsed(listCollapsed.value)
     }
 }
+
+class ApiQueryViewModel : ApiViewModel(ApiTable(Db.TABLE_API_QUERY), Def.ForApiQuery)
+class ApiReportViewModel : ApiViewModel(ApiTable(Db.TABLE_API_REPORT), Def.ForApiReport)

@@ -81,6 +81,7 @@ dependencies {
     // third-party
     implementation(libs.lazycolumnscrollbar) // for scroll bar
     implementation(libs.reorderable) // for reordering Action items with drag & drop
+    implementation(libs.libphonenumber) // for checking whether 33123 and +33123 are the same number
 
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization

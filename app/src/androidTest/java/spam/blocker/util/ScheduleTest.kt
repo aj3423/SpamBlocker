@@ -37,17 +37,17 @@ class ScheduleTest {
 
         // now: <2000-1-1 0:0>, time: <1:0>  ->  dur: 1 hour
         setNow(LocalDateTime.of(2000, 1, 1, 0, 0, 0))
-        dur = Daily(Time(1, 0)).nextOccurrence()
+        dur = Daily(Time(1, 0)).nextOccurrence()!!
         assertEquals("same day", 1 * 3600 * 1000, dur.toMillis())
 
         // now: <2000-1-1 0:0>, time: <0:0>  -> dur: 24 hours
         setNow(LocalDateTime.of(2000, 1, 1, 0, 0, 0))
-        dur = Daily(Time(0, 0)).nextOccurrence()
+        dur = Daily(Time(0, 0)).nextOccurrence()!!
         assertEquals("next day", 24 * 3600 * 1000, dur.toMillis())
 
         // now: <2023-12-31 10:0>, time: <0:0>  -> dur: 14 hours
         setNow(LocalDateTime.of(2023, 12, 31, 10, 0, 0))
-        dur = Daily(Time(0, 0)).nextOccurrence()
+        dur = Daily(Time(0, 0)).nextOccurrence()!!
         assertEquals("cross year", 14 * 3600 * 1000, dur.toMillis())
     }
 
@@ -61,27 +61,27 @@ class ScheduleTest {
 
         // now: <2024-10-1 Tuesday 0:0:0>, weekdays: [Tuesday], time: <1:0:0>  -> dur: 1 hour
         setNow(LocalDateTime.parse("2024-10-01T00:00:00"))
-        dur = Weekly(listOf(TUESDAY), Time(1, 0)).nextOccurrence()
+        dur = Weekly(listOf(TUESDAY), Time(1, 0)).nextOccurrence()!!
         assertEquals("same day", 1 * hour, dur.toMillis())
 
         // now: <2024-10-1 Tuesday 0:0:0>, weekdays: [Tuesday, Wednesday], time: <0:0:0>  -> dur: 1 day
         setNow(LocalDateTime.parse("2024-10-01T00:00:00"))
-        dur = Weekly(listOf(TUESDAY, WEDNESDAY), Time(0, 0)).nextOccurrence()
+        dur = Weekly(listOf(TUESDAY, WEDNESDAY), Time(0, 0)).nextOccurrence()!!
         assertEquals("next day", 1 * day, dur.toMillis())
 
         // now: <2024-10-1 Tuesday 0:0:0>, weekdays: [Tuesday], time: <0:0:0>  -> dur: 7 days
         setNow(LocalDateTime.parse("2024-10-01T00:00:00"))
-        dur = Weekly(listOf(TUESDAY), Time(0, 0)).nextOccurrence()
+        dur = Weekly(listOf(TUESDAY), Time(0, 0)).nextOccurrence()!!
         assertEquals("next week", 7 * day, dur.toMillis())
 
         // now: <2024-10-31 Thursday 0:0:0>, weekdays: [Thursday], time: <0:0:0>  -> dur: 7 days
         setNow(LocalDateTime.parse("2024-10-31T00:00:00"))
-        dur = Weekly(listOf(THURSDAY), Time(0, 0)).nextOccurrence()
+        dur = Weekly(listOf(THURSDAY), Time(0, 0)).nextOccurrence()!!
         assertEquals("cross month", 7 * day, dur.toMillis())
 
         // now: <2024-12-31 Tuesday 0:0:0>, weekdays: [Tuesday], time: <0:0:0>  -> dur: 7 days
         setNow(LocalDateTime.parse("2024-12-31T00:00:00"))
-        dur = Weekly(listOf(TUESDAY), Time(0, 0)).nextOccurrence()
+        dur = Weekly(listOf(TUESDAY), Time(0, 0)).nextOccurrence()!!
         assertEquals("cross year", 7 * day, dur.toMillis())
     }
 }

@@ -33,37 +33,43 @@
         ]]>
     </string>
     <string name="number_not_match_filter">O número %s não corresponde ao filtro %s, pulando.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Atualmente, é para usuários <translate>alemães</translate>, com potencial para expansão global.<br>
+        <font color="#ffa500"><b>Atualmente em teste com a API de teste, fará a transição para
+        a API de produção na próxima versão v4.0.<b></font><br>
         <br>
-        Site: <a href="https://phoneblock.net">https://phoneblock.net</a>
+        <font color="#ffa500"><b>Contas de teste e produção não são compatíveis,
+        por favor, registre-se novamente após a mudança para produção mais tarde.<b></font><br>
+        <br>
+        Atualmente, é para usuários <b>alemães</b>, com potencial para expansão global.<br>
+        <br>
+        Website: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">O limite de tempo para triagem de chamadas é de 5 segundos, com um buffer de %s ms para a imprecisão das funções de tempo, o limite de tempo total é de %s ms. As etapas anteriores custaram %s ms, tempo insuficiente, pulando.</string>
-    <string name="action_filter_query_result">Resultado da Consulta de Filtro</string>
+    <string name="action_filter_query_result">Filtrar Spam</string>
     <string name="help_action_filter_query_result">
         <![CDATA[
-        Gerar uma <u>lista de números</u> que contém todos os números de spam que foram identificados na etapa anterior.
+        Gera uma <translate>lista de números</translate> contendo os números de spam identificados na etapa anterior e prontos para serem importados para o banco de dados.
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Outra thread foi cancelada.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registre uma conta em <a href="https://phoneblock.net">https://phoneblock.net</a>
+        Registre uma conta em <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         para obter seu nome de usuário e senha. Em seguida, preencha-os abaixo.<br>
         <br>
         Devem ser parecidos com:<br>
-        - nome de usuário:<br>
+        - Nome de usuário:<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - senha:<br>
+        - Senha:<br>
          &emsp; xxxxxxxxxxxxxxxxxxxx
         ]]>
     </string>
     <string name="username">nome de usuário</string>
     <string name="password">senha</string>
-    <string name="auto_detect_cc_permission">A detecção automática do código do país requer a permissão READ_PHONE_STATE.</string>
+    <string name="auto_detect_cc_permission">A permissão READ_PHONE_STATE é necessária para detectar o código do país.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Deslize para a esquerda</b></font> para excluí-lo.<br>

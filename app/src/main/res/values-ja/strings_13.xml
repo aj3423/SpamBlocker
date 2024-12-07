@@ -33,36 +33,40 @@
         ]]>
     </string>
     <string name="number_not_match_filter">電話番号%sはフィルタ%sに一致しません。スキップします。</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        現在、これはドイツ語圏のユーザー向けですが、グローバル展開の可能性があります。<br>
+        <font color="#ffa500"><b>現在、テストAPIでテスト中です。次のリリースv4.0で本番APIに移行します。</b></font><br>
         <br>
-        ウェブサイト：<a href="https://phoneblock.net">https://phoneblock.net</a>
+        <font color="#ffa500"><b>テストアカウントと本番アカウントは互換性がありません。後で本番環境に切り替えた後、再度登録してください。</b></font><br>
+        <br>
+        現在、これは<b>ドイツ</b>のユーザー向けであり、グローバル展開の可能性があります。<br>
+        <br>
+        ウェブサイト：<a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>
-    <string name="action_filter_query_result">フィルタクエリ結果</string>
+    <string name="action_filter_query_result">スパムフィルタ</string>
     <string name="help_action_filter_query_result">
         <![CDATA[
-        前のステップで識別されたすべてのスパム番号を含む<u>電話番号リスト</u>を生成します。
+        前の手順で特定されたスパム番号を含む<u>電話番号リスト</u>を生成し、データベースにインポートする準備をします。
         ]]>
     </string>
     <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        <a href="https://phoneblock.net">https://phoneblock.net</a>でアカウントを登録して、ユーザー名とパスワードを取得してください。その後、下記に入力してください。<br>
+        <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>でアカウントを登録して、ユーザー名とパスワードを取得してください。その後、下記に入力してください。<br>
         <br>
-        形式は以下のようになります。<br>
-        - ユーザー名:<br>
+        以下のようになります。<br>
+        - ユーザー名：<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - パスワード:<br>
+        - パスワード：<br>
          &emsp; xxxxxxxxxxxxxxxxxxxx
         ]]>
     </string>
     <string name="username">ユーザー名</string>
     <string name="password">パスワード</string>
-    <string name="auto_detect_cc_permission">国番号の自動検出には、READ_PHONE_STATE権限が必要です。</string>
+    <string name="auto_detect_cc_permission">国番号を検出するには、READ_PHONE_STATE権限が必要です。</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>左にスワイプ</b></font>して削除します。<br>

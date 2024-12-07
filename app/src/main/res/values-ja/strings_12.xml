@@ -39,14 +39,15 @@
         番号が識別されると、この正規表現を使用してそのカテゴリ（テレマーケティング、フィッシングなど）が抽出されます。
         ]]>
     </string>
-    <string name="action_parse_query_result">照会結果の解析</string>
+    <string name="action_parse_query_result">結果を解析</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        HTTP結果を解析します。結果に特定の正規表現パターンが含まれている場合、番号は迷惑電話として識別されます。<br>
-        あれば、迷惑電話のカテゴリを結果から抽出するために、追加の正規表現パターンが使用されます。
+        照会結果を解析します。結果に特定の正規表現パターンが含まれている場合、番号は迷惑電話として識別されます。<br>
+        <br>
+        迷惑電話のカテゴリを抽出するために、追加の正規表現を使用できます。（オプション）
         ]]>
     </string>
-    <string name="action_parse_incoming_number">着信番号の解析</string>
+    <string name="action_parse_incoming_number">番号を解析</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         着信電話番号は、異なるタグに解析されます。<br>
@@ -63,7 +64,7 @@
         2. <b>12345</b>のような国内番号の場合、設定で国コードを指定するか、アプリで自動的に検出させる必要があります。<br>
         ]]>
     </string>
-    <string name="api_services">APIサービス</string>
+    <string name="query_api">照会API</string>
     <string name="number_filter">番号フィルター</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -88,4 +89,5 @@
     <string name="outside_time_schedule">時間外のためスキップ。</string>
     <string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
     <string name="query">照会</string>
+    <string name="report_api">報告API</string>
 </resources>

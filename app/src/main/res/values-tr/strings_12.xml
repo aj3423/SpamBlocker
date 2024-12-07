@@ -39,11 +39,12 @@
         Bir numara tanımlandıktan sonra, bu regex kategorisini (telepazarlama, kimlik avı vb.) çıkarmak için kullanılır.
         ]]>
     </string>
-    <string name="action_parse_query_result">Sorgu Sonucunu Ayrıştır</string>
+    <string name="action_parse_query_result">Sonucu Ayrıştır</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        HTTP sonucunu ayrıştırın, sonuçta belirli bir regex deseni içeriyorsa numara spam olarak tanımlanacaktır.<br>
-        Varsa, spam kategorisini sonuçtan çıkarmak için ek bir regex deseni kullanılacaktır.
+        Sorgu sonucunu ayrıştırın, sonuçta belirli bir regex deseni varsa numara spam olarak tanımlanacaktır.<br>
+        <br>
+        Spam kategorisini çıkarmak için ekstra bir regex kullanılabilir. (isteğe bağlı)
         ]]>
     </string>
     <string name="action_parse_incoming_number">Gelen Numarayı Ayrıştır</string>
@@ -63,7 +64,7 @@
         2. <b>12345</b> gibi yerel numara için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
         ]]>
     </string>
-    <string name="api_services">API Hizmetleri</string>
+    <string name="query_api">Sorgu API\'sı</string>
     <string name="number_filter">Numara Filtresi</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -88,4 +89,5 @@
     <string name="outside_time_schedule">Zaman çizelgesinin dışında, atla.</string>
     <string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
     <string name="query">Sorgu</string>
+    <string name="report_api">Rapor API\'sı</string>
 </resources>

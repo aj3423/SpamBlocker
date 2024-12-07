@@ -1,0 +1,40 @@
+<resources>
+    <string name="auto_report">Relatório Automático</string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Relatar automaticamente um número bloqueado para todos os endpoints da API em chamadas recebidas.<br>
+        <br>
+        Existe um buffer de tempo de uma hora antes de um número ser relatado. Se o número se repetir ou tiver sido discado de volta dentro deste buffer de tempo, ele é considerado não spam e não será relatado.<br>
+        <br>
+        Apenas números bloqueados por estes tipos <font color="#03DAC5"><b>serão</b></font> relatados:<br>
+        - <font color="#6ed0ff"><b>Não Contato</b></font>(modo exclusivo de contatos)<br>
+        - <font color="#6ed0ff"><b>Atestado STIR</b></font><br>
+        - <font color="#6ed0ff"><b>Expressão Regular de Número</b></font>
+        - <font color="#6ed0ff"><b>Expressão Regular de Conteúdo de SMS</b></font><br>
+        <br>
+        Números bloqueados pelos seguintes tipos <font color="#fa7f71"><b>não serão</b></font> relatados:<br>
+        - <font color="#6ed0ff"><b>Consulta Instantânea</b></font>, evitando que o número do endpoint da API seja vazado para seus concorrentes.<br>
+        - <font color="#6ed0ff"><b>Banco de Dados de Spam</b></font>, eles provavelmente foram importados de endpoints da API.<br>
+        - <font color="#6ed0ff"><b>Expressão Regular de Contato, Expressão Regular de Grupo de Contato</b></font><br>
+        - <font color="#6ed0ff"><b>Modo Reunião</b></font><br>
+        - <font color="#6ed0ff"><b>Teste Global</b></font><br>
+        <br>
+        Números aprovados <font color="#fa7f71"><b>não serão</b></font> relatados.
+        ]]>
+    </string>
+    <string name="http_method">Método</string>
+    <string name="http_post_body">Corpo da Requisição</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Tags suportadas:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">Por favor, insira informações de autorização válidas.</string>
+    <string name="delay">Atraso</string>
+    <string name="report_number_require_call_log_permission">
+        Para evitar relatórios incorretos de chamadas repetidas ou números rediscados,
+        o relatório de números requer permissão do registro de chamadas.
+    </string>
+</resources>

@@ -44,7 +44,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_WORK_UUID = "work_uuid"
 
         // ---- api table ----
-        const val TABLE_API = "api"
+        const val TABLE_API_QUERY = "api_query"
+        const val TABLE_API_REPORT = "api_report"
 
         // ---- call table ----
         const val TABLE_CALL = "call"
@@ -105,9 +106,18 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         )
         db.execSQL("CREATE INDEX IF NOT EXISTS index_peer ON $TABLE_SPAM($COLUMN_PEER)")
 
-        // api
+        // api query
         db.execSQL(
-            "CREATE TABLE IF NOT EXISTS $TABLE_API (" +
+            "CREATE TABLE IF NOT EXISTS $TABLE_API_QUERY (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_DESC TEXT, " +
+                    "$COLUMN_ACTIONS TEXT, " +
+                    "$COLUMN_ENABLED INTEGER" +
+                    ")"
+        )
+        // api report
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_API_REPORT (" +
                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_DESC TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +

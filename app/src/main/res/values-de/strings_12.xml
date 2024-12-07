@@ -39,14 +39,15 @@
         Sobald eine Nummer identifiziert wurde, wird dieser Regex verwendet, um ihre Kategorie (Telemarketing, Phishing usw.) zu extrahieren.
         ]]>
     </string>
-    <string name="action_parse_query_result">Abfrageergebnis parsen</string>
+    <string name="action_parse_query_result">Ergebnis parsen</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        Parsen des HTTP-Ergebnisses; die Nummer wird als Spam identifiziert, wenn das Ergebnis ein bestimmtes Regex-Muster enthält.<br>
-        Ein zusätzliches Regex-Muster wird verwendet, um die Spam-Kategorie aus dem Ergebnis zu extrahieren, falls vorhanden.
+        Das Abfrageergebnis parsen. Die Nummer wird als Spam identifiziert, wenn das Ergebnis ein bestimmtes Regex-Muster enthält.<br>
+        <br>
+        Ein zusätzliches Regex kann verwendet werden, um die Spam-Kategorie zu extrahieren (optional).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Eingehende Nummer parsen</string>
+    <string name="action_parse_incoming_number">Nummer parsen</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         Die eingehende Rufnummer wird in verschiedene Tags aufgeteilt:<br>
@@ -63,7 +64,7 @@
         2. Für inländische Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die App diese automatisch erkennen lassen.<br>
         ]]>
     </string>
-    <string name="api_services">API-Dienste</string>
+    <string name="query_api">Abfrage-API</string>
     <string name="number_filter">Nummernfilter</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -88,4 +89,5 @@
     <string name="outside_time_schedule">Außerhalb des Zeitplans, überspringen.</string>
     <string name="android_ver_lower_than_11">Android-Version ist niedriger als 11, überspringen.</string>
     <string name="query">Abfrage</string>
+    <string name="report_api">Melde-API</string>
 </resources>

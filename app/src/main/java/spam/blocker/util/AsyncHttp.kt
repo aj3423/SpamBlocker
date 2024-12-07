@@ -3,28 +3,27 @@ package spam.blocker.util
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.future.future
 import kotlinx.coroutines.launch
+import spam.blocker.service.bot.HTTP_GET
+import spam.blocker.service.bot.HTTP_POST
+import java.io.OutputStreamWriter
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.concurrent.CompletableFuture
-import java.util.concurrent.TimeUnit
 
 
 data class HttpResult(
     val statusCode: Int? = null,
     val bytes: ByteArray? = null,
     val exception: String? = null,
-) {
-    fun succeeded(): Boolean {
-        return statusCode == 200
-    }
-}
+)
+
 
 // An discardable `HttpURLConnection`.
 fun asyncHttpRequest(
     urlString: String,
     headersMap: Map<String, String> = mapOf(),
+    method: Int = HTTP_GET,
+    postBody: String = "",
     scope: CoroutineScope = CoroutineScope(IO),
 ) : Channel<HttpResult> {
 
@@ -32,29 +31,36 @@ fun asyncHttpRequest(
 
     scope.launch {
 
-        var connection: HttpURLConnection? = null
+        var conn: HttpURLConnection? = null
 
         try {
-            connection = URL(urlString).openConnection() as HttpURLConnection
+            conn = URL(urlString).openConnection() as HttpURLConnection
 
             headersMap.forEach { (key, value) ->
-                connection.setRequestProperty(key, value)
+                conn.setRequestProperty(key, value)
             }
 
-            connection.connect()
+            // Send POST data
+            if (method == HTTP_POST) {
+                conn.requestMethod = "POST"
+                conn.doOutput = true
+                val wr = OutputStreamWriter(conn.outputStream)
+                wr.write(postBody)
+                wr.flush()
+            }
 
-            if (connection.responseCode == HttpURLConnection.HTTP_OK) {
-                val bytes = connection.inputStream.use { it.readBytes() }
+            if (conn.responseCode == HttpURLConnection.HTTP_OK) {
+                val bytes = conn.inputStream.use { it.readBytes() }
                 channel.send(
                     HttpResult(
-                        statusCode = connection.responseCode,
+                        statusCode = conn.responseCode,
                         bytes = bytes,
                     )
                 )
             } else {
                 channel.send(
                     HttpResult(
-                        statusCode = connection.responseCode,
+                        statusCode = conn.responseCode,
                     )
                 )
             }
@@ -65,7 +71,7 @@ fun asyncHttpRequest(
                 )
             )
         } finally {
-            connection?.disconnect()
+            conn?.disconnect()
         }
     }
     return channel

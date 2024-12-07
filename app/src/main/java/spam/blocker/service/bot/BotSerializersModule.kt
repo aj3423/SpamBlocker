@@ -11,6 +11,7 @@ val botModule = SerializersModule {
         subclass(Daily::class)
         subclass(Weekly::class)
         subclass(Periodically::class)
+        subclass(Delay::class)
     }
     polymorphic(IAction::class) {
         subclass(CleanupHistory::class)
@@ -31,8 +32,9 @@ val botModule = SerializersModule {
         subclass(EnableWorkflow::class)
         subclass(EnableApp::class)
         subclass(ParseQueryResult::class)
-        subclass(FilterQueryResult::class)
+        subclass(FilterSpamResult::class)
         subclass(ParseIncomingNumber::class)
+        subclass(ReportNumber::class)
     }
 }
 

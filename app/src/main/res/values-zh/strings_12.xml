@@ -39,14 +39,15 @@
         识别号码后，将使用此正则表达式提取其类别（电话推销、钓鱼等）。
         ]]>
     </string>
-    <string name="action_parse_query_result">解析查询结果</string>
+    <string name="action_parse_query_result">解析结果</string>
     <string name="help_action_parse_query_result">
         <![CDATA[
-        解析HTTP结果，如果结果包含特定正则表达式模式，则号码将被识别为垃圾号码。<br>
-        如果存在，则将使用额外的正则表达式模式从结果中提取垃圾邮件类别。
+        解析查询结果，如果结果包含特定正则表达式模式，则号码将被识别为骚扰号码。<br>
+        <br>
+        可以使用额外的正则表达式来提取骚扰类别。（可选）
         ]]>
     </string>
-    <string name="action_parse_incoming_number">解析来电号码</string>
+    <string name="action_parse_incoming_number">解析号码</string>
     <string name="help_action_parse_incoming_number">
         <![CDATA[
         将来电号码解析成不同的标签：<br>
@@ -63,7 +64,7 @@
         2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家代码，或者让应用程序自动检测。<br>
         ]]>
     </string>
-    <string name="api_services">API服务</string>
+    <string name="query_api">查询API</string>
     <string name="number_filter">号码过滤器</string>
     <string name="help_number_filter">
         <![CDATA[
@@ -88,4 +89,5 @@
     <string name="outside_time_schedule">不在时间范围内，跳过。</string>
     <string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
     <string name="query">查询</string>
+    <string name="report_api">举报API</string>
 </resources>

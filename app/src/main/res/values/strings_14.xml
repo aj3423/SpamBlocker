@@ -1,0 +1,41 @@
+<resources>
+    <string name="auto_report">Auto Report</string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Auto report a blocked number to all API endpoints on incoming calls.<br>
+        <br>
+        There is a one-hour time buffer before a number is reported. If the number repeats or has been dialed
+        back within this time buffer, it\'s considered non-spam and will not be reported.<br>
+        <br>
+        Only numbers blocked by these types <font color="#03DAC5"><b>will</b></font> be reported:<br>
+        - <font color="#6ed0ff"><b>Non-Contact</b></font>(contacts exclusive mode)<br>
+        - <font color="#6ed0ff"><b>STIR Attestation</b></font><br>
+        - <font color="#6ed0ff"><b>Number Regex</b></font>
+        - <font color="#6ed0ff"><b>SMS Content Regex</b></font><br>
+        <br>
+        Numbers blocked by following types <font color="#fa7f71"><b>will not</b></font> be reported:<br>
+        - <font color="#6ed0ff"><b>Instant Query</b></font>, preventing the API endpoint\'s number from being leaked to their competitors.<br>
+        - <font color="#6ed0ff"><b>Spam Database</b></font>, they are likely to have been imported from API endpoints.<br>
+        - <font color="#6ed0ff"><b>Contact Regex, Contact Group Regex</b></font><br>
+        - <font color="#6ed0ff"><b>Meeting Mode</b></font><br>
+        - <font color="#6ed0ff"><b>Global testing</b></font><br>
+        <br>
+        Passed numbers <font color="#fa7f71"><b>will not</b></font> be reported.
+        ]]>
+    </string>
+    <string name="report_number_require_call_log_permission">
+        To prevent misreporting of repeated calls or dialed-back numbers,
+        reporting number requires call log permission.
+    </string>
+    <string name="http_method">Method</string>
+    <string name="http_post_body">Post Body</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Tags supported:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">Please input valid authorization information.</string>
+    <string name="delay">Delay</string>
+</resources>

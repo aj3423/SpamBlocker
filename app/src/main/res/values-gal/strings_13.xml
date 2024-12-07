@@ -33,37 +33,41 @@
         ]]>
     </string>
     <string name="number_not_match_filter">O número %s non coincide co filtro %s, omitido.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Actualmente, é para usuarios <translate>alemáns</translate>, con potencial para expansión global.<br>
+        <font color="#ffa500"><b>Actualmente en fase de probas coa API de probas, pasará á API de produción na seguinte versión v4.0.<b></font><br>
         <br>
-        Sitio web: <a href="https://phoneblock.net">https://phoneblock.net</a>
+        <font color="#ffa500"><b>As contas de probas e de produción non son compatibles, rexístrese de novo despois de cambiar á produción máis tarde.<b></font><br>
+        <br>
+        Actualmente, é para usuarios de <b>Alemaña</b>, con potencial para a expansión global.<br>
+        <br>
+        Sitio web: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">O límite de tempo de selección de chamadas é de 5 segundos, cun búfer de %s ms pola imprecisión das funcións de tempo, o límite de tempo total é realmente de %s ms. Os pasos previos custaron %s ms, non queda tempo suficiente, omitir.</string>
-    <string name="action_filter_query_result">Resultado da consulta de filtro</string>
+    <string name="action_filter_query_result">Filtrar Spam</string>
     <string name="help_action_filter_query_result">
         <![CDATA[
-        Xerar unha <u>lista de números</u> que conteña todos os números spam que foron identificados no paso anterior.
+        Xerar unha <translate>lista de números</translate> que conteña o número spam identificado no paso anterior, e listo para ser importado á base de datos.
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Rexístrese nunha conta en <a href="https://phoneblock.net">https://phoneblock.net</a>
+        Rexistre unha conta en <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
         para obter o seu nome de usuario e contrasinal. Despois, enchézaos a continuación.<br>
         <br>
         Deberían parecerse a:<br>
-        - nome de usuario:<br>
+        - Nome de usuario:<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - contrasinal:<br>
+        - Contrasinal:<br>
          &emsp; xxxxxxxxxxxxxxxxxxxx
         ]]>
     </string>
     <string name="username">nome de usuario</string>
     <string name="password">contrasinal</string>
-    <string name="auto_detect_cc_permission">A detección automática do código de país require o permiso READ_PHONE_STATE.</string>
+    <string name="auto_detect_cc_permission">Necesítase o permiso READ_PHONE_STATE para detectar o código de país.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Desliza cara á esquerda</b></font> para eliminalo.<br>

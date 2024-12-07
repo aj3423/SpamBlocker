@@ -56,7 +56,6 @@ fun BotHeader(
         ) { configJson ->
             val newBot = botJson.decodeFromString<Bot>(configJson).copy(
                 id = 0,
-                enabled = false,
                 workUUID = UUID.randomUUID().toString(),
             )
 
