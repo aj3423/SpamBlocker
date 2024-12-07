@@ -1,7 +1,6 @@
 package spam.blocker.ui.setting.api
 
 import android.content.Context
-import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.db.Api
 import spam.blocker.service.bot.FilterSpamResult

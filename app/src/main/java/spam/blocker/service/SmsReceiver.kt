@@ -1,6 +1,5 @@
 package spam.blocker.service
 
-import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -10,10 +9,9 @@ import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
-import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
-import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.checker.Checker
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts

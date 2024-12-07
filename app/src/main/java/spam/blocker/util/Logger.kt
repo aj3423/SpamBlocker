@@ -8,7 +8,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DarkOrange
-import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.SkyBlue
 
 // For showing detailed execution steps when testing Workflows

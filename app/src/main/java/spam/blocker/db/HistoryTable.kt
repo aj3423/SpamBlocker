@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import androidx.core.database.getIntOrNull
-import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
 import spam.blocker.util.Now
 

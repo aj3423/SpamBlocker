@@ -19,14 +19,14 @@ import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_OFF_TIME
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_RECENT_APP

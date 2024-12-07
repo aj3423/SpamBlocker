@@ -30,7 +30,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
 import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.RegexRule
@@ -57,7 +56,6 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.RegexOptions
 
 

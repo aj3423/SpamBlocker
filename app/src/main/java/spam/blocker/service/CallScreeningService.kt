@@ -24,8 +24,8 @@ import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.ReportNumber
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.serialize
-import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.checker.Checker
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts

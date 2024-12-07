@@ -33,7 +33,6 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Launcher
-import spam.blocker.util.SharedPref.HistoryOptions
 import spam.blocker.util.Util
 
 @OptIn(ExperimentalFoundationApi::class)
