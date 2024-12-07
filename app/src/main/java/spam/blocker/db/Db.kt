@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 31
+        const val DB_VERSION = 32
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -217,6 +217,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 31) && (oldVersion < 31)) {
             db.execSQL("DELETE FROM $TABLE_CALL")
             db.execSQL("DELETE FROM $TABLE_SMS")
+        }
+        if ((newVersion >= 32) && (oldVersion < 32)) {
+            onCreate(db)
         }
     }
 }
