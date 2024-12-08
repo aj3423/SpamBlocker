@@ -40,7 +40,7 @@ fun String.resolveNumberTag(
         .replace("{cc}", cc ?: "")
         .replace("{domestic}", domestic ?: "")
         .replace("{number}", fullNumber ?: ((cc?:"") + (domestic?:"")))
-        .replace("{origin_number}", rawNumber!!.replace(" ", ""))
+        .replace("{origin_number}", rawNumber?.replace(" ", "") ?: "")
 }
 
 fun String.resolveBase64Tag(): String {
