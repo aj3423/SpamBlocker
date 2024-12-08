@@ -52,4 +52,27 @@
         Campo obrigatório <b>pattern</b> ausente no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
         ]]>
     </string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Relatar automaticamente um número bloqueado para todos os endpoints da API em chamadas recebidas.<br>
+        <br>
+        Há um buffer de tempo de uma hora antes de um número ser relatado. Se o número se repetir ou tiver sido discado novamente dentro deste buffer de tempo, ele é considerado não spam e não será relatado.<br>
+        <br>
+        Apenas números bloqueados por estes tipos <font color="#03DAC5"><b>serão</b></font> relatados:<br>
+        - <font color="#6ed0ff"><b>Não Contato</b></font>(exclusivo)<br>
+        - <font color="#6ed0ff"><b>Autenticação STIR</b></font><br>
+        - <font color="#6ed0ff"><b>Expressão Regular de Número</b></font><br>
+        - <font color="#6ed0ff"><b>Expressão Regular de Conteúdo SMS</b></font><br>
+        <br>
+        Números bloqueados pelos seguintes tipos <font color="#fa7f71"><b>não serão</b></font> relatados:<br>
+        - <font color="#6ed0ff"><b>Consulta Instantânea</b></font>, evitando que o número do endpoint da API seja vazado para seus concorrentes.<br>
+        - <font color="#6ed0ff"><b>Banco de Dados de Spam</b></font>, eles provavelmente foram importados de endpoints da API.<br>
+        - <font color="#6ed0ff"><b>Expressão Regular de Contato, Expressão Regular de Grupo de Contato</b></font><br>
+        - <font color="#6ed0ff"><b>Modo Reunião</b></font><br>
+        - <font color="#6ed0ff"><b>Teste global</b></font><br>
+        <br>
+        Números aprovados <font color="#fa7f71"><b>não serão</b></font> relatados.
+        ]]>
+    </string>
+    <string name="auto_report">Relatório Automático</string>
 </resources>

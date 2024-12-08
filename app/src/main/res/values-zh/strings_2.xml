@@ -52,4 +52,27 @@
         .csv 文件中缺少必需的字段 <b>pattern</b>，请查看气球工具提示以获取详细说明。
         ]]>
     </string>
+    <string name="help_auto_report">
+        <![CDATA[
+        在来电时自动将被阻止的号码举报给所有 API 端点。<br>
+        <br>
+        号码被举报前有一小时的缓冲时间。如果号码在缓冲时间内重复出现或被回拨，则会被认为是非垃圾邮件，不会被举报。<br>
+        <br>
+        只有以下类型的被阻止号码<font color="#03DAC5"><b>将会</b></font>被举报：<br>
+        - <font color="#6ed0ff"><b>非联系人</b></font>(排除)<br>
+        - <font color="#6ed0ff"><b>STIR 认证</b></font><br>
+        - <font color="#6ed0ff"><b>号码正则表达式</b></font><br>
+        - <font color="#6ed0ff"><b>短信内容正则表达式</b></font><br>
+        <br>
+        以下类型的被阻止号码<font color="#fa7f71"><b>不会</b></font>被举报：<br>
+        - <font color="#6ed0ff"><b>即时查询</b></font>，防止 API 端点的号码泄露给竞争对手。<br>
+        - <font color="#6ed0ff"><b>垃圾邮件数据库</b></font>，它们很可能已从 API 端点导入。<br>
+        - <font color="#6ed0ff"><b>联系人正则表达式，联系人组正则表达式</b></font><br>
+        - <font color="#6ed0ff"><b>会议模式</b></font><br>
+        - <font color="#6ed0ff"><b>全局测试</b></font><br>
+        <br>
+        通过的号码<font color="#fa7f71"><b>不会</b></font>被举报。
+        ]]>
+    </string>
+    <string name="auto_report">自动举报</string>
 </resources>

@@ -85,7 +85,7 @@ class SmsReceiver : BroadcastReceiver() {
                 ctx, R.drawable.ic_sms_blocked,
                 title = showName,
                 body = messageBody,
-                importance = r.getImportance(),
+                importance = r.getSpamImportance(isCall = false),
                 color = Salmon,
                 intent = intent,
                 toCopy = toCopy,

@@ -1,27 +1,4 @@
 <resources>
-    <string name="auto_report">自动举报</string>
-    <string name="help_auto_report">
-        <![CDATA[
-        来电时自动将被阻止的号码举报到所有API端点。<br>
-        <br>
-        举报号码前有一小时的缓冲时间。如果号码重复出现或在此缓冲时间内被回拨，则被视为非垃圾电话，不会被举报。<br>
-        <br>
-        只有通过以下类型阻止的号码<font color="#03DAC5"><b>才会</b></font>被举报：<br>
-        - <font color="#6ed0ff"><b>非联系人</b></font>(仅联系人模式)<br>
-        - <font color="#6ed0ff"><b>STIR认证</b></font><br>
-        - <font color="#6ed0ff"><b>号码正则表达式</b></font><br>
-        - <font color="#6ed0ff"><b>短信内容正则表达式</b></font><br>
-        <br>
-        通过以下类型阻止的号码<font color="#fa7f71"><b>不会</b></font>被举报：<br>
-        - <font color="#6ed0ff"><b>即时查询</b></font>，防止API端点的号码泄露给竞争对手。<br>
-        - <font color="#6ed0ff"><b>垃圾电话数据库</b></font>，这些号码很可能已从API端点导入。<br>
-        - <font color="#6ed0ff"><b>联系人正则表达式，联系人组正则表达式</b></font><br>
-        - <font color="#6ed0ff"><b>会议模式</b></font><br>
-        - <font color="#6ed0ff"><b>全局测试</b></font><br>
-        <br>
-        已通过的号码<font color="#fa7f71"><b>不会</b></font>被举报。
-        ]]>
-    </string>
     <string name="http_method">方法</string>
     <string name="http_post_body">POST正文</string>
     <string name="help_http_post_body">

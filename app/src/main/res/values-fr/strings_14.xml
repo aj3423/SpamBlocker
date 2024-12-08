@@ -1,27 +1,4 @@
 <resources>
-    <string name="auto_report">Rapport automatique</string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Signaler automatiquement un numéro bloqué à toutes les API lors des appels entrants.<br>
-        <br>
-        Il y a un délai d\'une heure avant qu\'un numéro ne soit signalé. Si le numéro est répété ou a été rappelé dans ce délai, il est considéré comme non-spam et ne sera pas signalé.<br>
-        <br>
-        Seuls les numéros bloqués par ces types <font color="#03DAC5"><b>le seront</b></font>:<br>
-        - <font color="#6ed0ff"><b>Hors Contacts</b></font>(mode contacts exclusif)<br>
-        - <font color="#6ed0ff"><b>Attestation STIR</b></font><br>
-        - <font color="#6ed0ff"><b>Expression régulière de numéro</b></font>
-        - <font color="#6ed0ff"><b>Expression régulière de contenu SMS</b></font><br>
-        <br>
-        Les numéros bloqués par les types suivants <font color="#fa7f71"><b>ne le seront pas</b></font>:<br>
-        - <font color="#6ed0ff"><b>Requête instantanée</b></font>, empêchant la fuite du numéro de l\'API vers ses concurrents.<br>
-        - <font color="#6ed0ff"><b>Base de données de spam</b></font>, ils ont probablement été importés depuis des API.<br>
-        - <font color="#6ed0ff"><b>Expression régulière de contact, Expression régulière de groupe de contact</b></font><br>
-        - <font color="#6ed0ff"><b>Mode réunion</b></font><br>
-        - <font color="#6ed0ff"><b>Tests globaux</b></font><br>
-        <br>
-        Les numéros validés <font color="#fa7f71"><b>ne seront pas</b></font> signalés.
-        ]]>
-    </string>
     <string name="http_method">Méthode</string>
     <string name="http_post_body">Corps de la requête POST</string>
     <string name="help_http_post_body">

@@ -146,7 +146,7 @@ class CallScreeningService : CallScreeningService() {
         }
     }
 
-    private fun showNotification(ctx: Context, r: ICheckResult, rawNumber: String) {
+    private fun showSpamNotification(ctx: Context, r: ICheckResult, rawNumber: String) {
         // click the notification to launch this app
         val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
             putExtra("type", "call")
@@ -162,7 +162,7 @@ class CallScreeningService : CallScreeningService() {
             R.drawable.ic_call_blocked,
             title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
             body = r.resultSummary(ctx),
-            importance = r.getImportance(),
+            importance = r.getSpamImportance(isCall = true),
             color = Salmon,
             intent = intent,
             toCopy = toCopy
@@ -227,7 +227,7 @@ class CallScreeningService : CallScreeningService() {
             logd(String.format("Reject call %s", rawNumber))
 
             // 2. Show notification
-            showNotification(ctx, r, rawNumber)
+            showSpamNotification(ctx, r, rawNumber)
 
             // 3. Report spam number
             reportNumber(ctx, r, rawNumber, callDetails)

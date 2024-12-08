@@ -52,4 +52,27 @@
         .csv ファイルに必須フィールド <b>pattern</b> がありません。詳細については、吹き出しツールチップを確認してください。
         ]]>
     </string>
+    <string name="help_auto_report">
+        <![CDATA[
+        着信時にブロックされた番号をすべてのAPIエンドポイントに自動報告します。<br>
+        <br>
+        番号が報告されるまで1時間の時刻バッファがあります。この時間バッファ内で番号が繰り返されたり、ダイヤルバックされたりした場合、迷惑電話とはみなされず、報告されません。<br>
+        <br>
+        以下のタイプでブロックされた番号のみ<font color="#03DAC5"><b>報告</b></font>されます。<br>
+        - <font color="#6ed0ff"><b>非連絡先</b></font>(排他的)<br>
+        - <font color="#6ed0ff"><b>STIR認証</b></font><br>
+        - <font color="#6ed0ff"><b>番号正規表現</b></font><br>
+        - <font color="#6ed0ff"><b>SMS本文正規表現</b></font><br>
+        <br>
+        以下のタイプでブロックされた番号は<font color="#fa7f71"><b>報告されません</b></font>。<br>
+        - <font color="#6ed0ff"><b>インスタントクエリ</b></font>、APIエンドポイントの番号が競合他社に漏洩するのを防ぎます。<br>
+        - <font color="#6ed0ff"><b>迷惑電話データベース</b></font>、APIエンドポイントからインポートされた可能性が高いです。<br>
+        - <font color="#6ed0ff"><b>連絡先正規表現、連絡先グループ正規表現</b></font><br>
+        - <font color="#6ed0ff"><b>会議モード</b></font><br>
+        - <font color="#6ed0ff"><b>グローバルテスト</b></font><br>
+        <br>
+        許可された番号は<font color="#fa7f71"><b>報告されません</b></font>。
+        ]]>
+    </string>
+    <string name="auto_report">自動レポート</string>
 </resources>

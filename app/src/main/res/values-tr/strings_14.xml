@@ -1,27 +1,4 @@
 <resources>
-    <string name="auto_report">Otomatik Raporlama</string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Gelen aramalarda engellenen numarayı tüm API uç noktalarına otomatik olarak raporlayın.<br>
-        <br>
-        Bir numaranın raporlanmadan önce bir saatlik bir zaman tamponu vardır. Numara tekrarlanırsa veya bu zaman tamponu içinde geri aranırsa, spam olarak kabul edilmez ve raporlanmaz.<br>
-        <br>
-        Yalnızca şu türler tarafından engellenen numaralar <font color="#03DAC5"><b>raporlanacaktır</b></font>:<br>
-        - <font color="#6ed0ff"><b>Kişi Dışı</b></font>(yalnızca kişiler modu)<br>
-        - <font color="#6ed0ff"><b>STIR Onaylaması</b></font><br>
-        - <font color="#6ed0ff"><b>Numara Regex</b></font>
-        - <font color="#6ed0ff"><b>SMS İçerik Regex</b></font><br>
-        <br>
-        Aşağıdaki türler tarafından engellenen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>:<br>
-        - <font color="#6ed0ff"><b>Anlık Sorgu</b></font>, API uç noktasının numarasının rakiplerine sızmasını önler.<br>
-        - <font color="#6ed0ff"><b>Spam Veritabanı</b></font>, büyük olasılıkla API uç noktalarından içe aktarılmışlardır.<br>
-        - <font color="#6ed0ff"><b>Kişi Regex, Kişi Grubu Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Toplantı Modu</b></font><br>
-        - <font color="#6ed0ff"><b>Genel test</b></font><br>
-        <br>
-        Geçen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>.
-        ]]>
-    </string>
     <string name="http_method">Yöntem</string>
     <string name="http_post_body">Gönderi Gövdesi</string>
     <string name="help_http_post_body">

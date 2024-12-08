@@ -47,6 +47,7 @@ import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.util.AppInfo
+import spam.blocker.util.Notification
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.HistoryOptions
@@ -122,10 +123,12 @@ interface ICheckResult {
         return BlockType(ctx).getType()
     }
 
-    fun getImportance(): Int {
-        return Def.DEF_SPAM_IMPORTANCE
+    fun getSpamImportance(isCall: Boolean): Int {
+        return if (isCall)
+            Notification.defaultSpamCallImportance
+        else
+            Notification.defaultSpamSMSImportance
     }
-
 }
 
 class ByDefault(
@@ -338,11 +341,11 @@ class ByRegexRule(
             super.getBlockType(ctx) // fallback to global setting
     }
 
-    override fun getImportance(): Int {
+    override fun getSpamImportance(isCall: Boolean): Int {
         return if (rule != null)
             rule.importance // per rule setting
         else
-            super.getImportance() // fallback to global setting
+            super.getSpamImportance(isCall) // fallback to global setting
     }
 
     @Composable

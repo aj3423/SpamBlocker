@@ -52,4 +52,27 @@
         Champ obligatoire manquant <b>pattern</b> dans le fichier .csv, consultez l\'info-bulle pour une explication détaillée.
         ]]>
     </string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Signaler automatiquement un numéro bloqué à tous les points de terminaison de l\'API lors des appels entrants.<br>
+        <br>
+        Il existe une période tampon d\'une heure avant qu\'un numéro ne soit signalé. Si le numéro se répète ou a été rappelé dans cette période tampon, il est considéré comme non indésirable et ne sera pas signalé.<br>
+        <br>
+        Seuls les numéros bloqués par ces types <font color="#03DAC5"><b>le seront</b></font> : <br>
+        - <font color="#6ed0ff"><b>Non-Contact</b></font>(exclusif)<br>
+        - <font color="#6ed0ff"><b>Attestation STIR</b></font><br>
+        - <font color="#6ed0ff"><b>Expression régulière de numéro</b></font><br>
+        - <font color="#6ed0ff"><b>Expression régulière de contenu SMS</b></font><br>
+        <br>
+        Les numéros bloqués par les types suivants <font color="#fa7f71"><b>ne le seront pas</b></font> : <br>
+        - <font color="#6ed0ff"><b>Requête instantanée</b></font>, empêchant le numéro du point de terminaison de l\'API d\'être divulgué à ses concurrents.<br>
+        - <font color="#6ed0ff"><b>Base de données indésirables</b></font>, ils ont probablement été importés à partir de points de terminaison d\'API.<br>
+        - <font color="#6ed0ff"><b>Expression régulière de contact, expression régulière de groupe de contacts</b></font><br>
+        - <font color="#6ed0ff"><b>Mode réunion</b></font><br>
+        - <font color="#6ed0ff"><b>Tests globaux</b></font><br>
+        <br>
+        Les numéros autorisés <font color="#fa7f71"><b>ne seront pas</b></font> signalés.
+        ]]>
+    </string>
+    <string name="auto_report">Rapport automatique</string>
 </resources>

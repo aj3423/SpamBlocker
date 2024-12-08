@@ -52,4 +52,27 @@
         Falta el campo requerido <b>patrón</b> en el archivo .csv, consulte la información sobre herramientas del globo para obtener una explicación detallada.
         ]]>
     </string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Informar automáticamente un número bloqueado a todos los puntos finales de la API en llamadas entrantes.<br>
+        <br>
+        Hay un búfer de tiempo de una hora antes de que se informe un número. Si el número se repite o se ha marcado de nuevo dentro de este búfer de tiempo, se considera que no es spam y no se informará.<br>
+        <br>
+        Solo los números bloqueados por estos tipos <font color="#03DAC5"><b>serán</b></font> reportados:<br>
+        - <font color="#6ed0ff"><b>No Contacto</b></font>(exclusivo)<br>
+        - <font color="#6ed0ff"><b>Atestación STIR</b></font><br>
+        - <font color="#6ed0ff"><b>Expr. Reg. Número</b></font><br>
+        - <font color="#6ed0ff"><b>Expr. Reg. Cont. SMS</b></font><br>
+        <br>
+        Los números bloqueados por los siguientes tipos <font color="#fa7f71"><b>no serán</b></font> reportados:<br>
+        - <font color="#6ed0ff"><b>Consulta Instantánea</b></font>, evitando que el número del punto final de la API se filtre a sus competidores.<br>
+        - <font color="#6ed0ff"><b>Base de Datos de Spam</b></font>, es probable que se hayan importado desde los puntos finales de la API.<br>
+        - <font color="#6ed0ff"><b>Expr. Reg. Contacto, Expr. Reg. Grupo Contacto</b></font><br>
+        - <font color="#6ed0ff"><b>Modo Reunión</b></font><br>
+        - <font color="#6ed0ff"><b>Pruebas Globales</b></font><br>
+        <br>
+        Los números aprobados <font color="#fa7f71"><b>no serán</b></font> reportados.
+        ]]>
+    </string>
+    <string name="auto_report">Informe automático</string>
 </resources>

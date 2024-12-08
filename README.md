@@ -67,7 +67,7 @@ It works without replacing your default call/SMS app.
 
 # Privacy
  - For offline features
-   No data collection.
+ No data collection.
  - For Online features:
    The API endpoints will see your IP address and the reported number.
    If you don't use the online features, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147), or download the offline version from the release page.

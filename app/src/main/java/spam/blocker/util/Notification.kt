@@ -4,6 +4,11 @@ package spam.blocker.util
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
+import android.app.NotificationManager.IMPORTANCE_HIGH
+import android.app.NotificationManager.IMPORTANCE_LOW
+import android.app.NotificationManager.IMPORTANCE_MIN
+import android.app.NotificationManager.IMPORTANCE_NONE
 import android.app.PendingIntent
 import android.app.TaskStackBuilder
 import android.content.Context
@@ -12,19 +17,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.NotificationCompat
 import spam.blocker.R
+import spam.blocker.def.Def
 import spam.blocker.service.CopyToClipboardReceiver
 import kotlin.random.Random
 
 
 object Notification {
+    // A workaround for disabling default spam notifications completely(in system settings)
+    const val defaultSpamCallImportance = -1
+    const val defaultSpamSMSImportance = -2
 
     fun channelId(importance: Int): String {
         return when (importance) {
+            defaultSpamCallImportance -> "Default spam call"
+            defaultSpamSMSImportance -> "Default spam SMS"
+
             0 -> "None"
             1 -> "Shade"
             2 -> "StatusBar+Shade"
             3 -> "Sound+StatusBar+Shade"
             4 -> "Heads-up+Sound+StatusBar+Shade"
+
             else -> ""
         }
     }
@@ -51,24 +64,26 @@ object Notification {
             val manager =
                 ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
 
-            fun create(importance: Int) {
-                val chId = channelId(importance)
-                val channel = NotificationChannel(chId, chId, importance)
+            fun create(id: String, importance: Int) {
+                val channel = NotificationChannel(id, id, importance)
                 manager.createNotificationChannel(channel)
             }
 
-            create(NotificationManager.IMPORTANCE_HIGH)
-            create(NotificationManager.IMPORTANCE_DEFAULT)
-            create(NotificationManager.IMPORTANCE_LOW)
-            create(NotificationManager.IMPORTANCE_MIN)
-            create(NotificationManager.IMPORTANCE_NONE)
+            create(channelId(IMPORTANCE_HIGH), IMPORTANCE_HIGH) // 4
+            create(channelId(IMPORTANCE_DEFAULT), IMPORTANCE_DEFAULT) // 3
+            create(channelId(IMPORTANCE_LOW), IMPORTANCE_LOW) // 2
+            create(channelId(IMPORTANCE_MIN), IMPORTANCE_MIN) // 1
+            create(channelId(IMPORTANCE_NONE), IMPORTANCE_NONE) // 0
+
+            create(channelId(defaultSpamCallImportance), Def.DEF_SPAM_IMPORTANCE) // -1
+            create(channelId(defaultSpamSMSImportance), Def.DEF_SPAM_IMPORTANCE) // -2
 
             created = true
         }
     }
 
     private fun shouldSilent(importance: Int): Boolean {
-        return importance <= NotificationManager.IMPORTANCE_LOW
+        return importance <= IMPORTANCE_LOW
     }
 
     // different notification id generates different dropdown items

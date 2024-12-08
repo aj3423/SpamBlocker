@@ -1,27 +1,4 @@
 <resources>
-    <string name="auto_report">Automatischer Bericht</string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Automatischer Bericht einer blockierten Nummer an alle API-Endpunkte bei eingehenden Anrufen.<br>
-        <br>
-        Es gibt einen einstündigen Zeitpuffer, bevor eine Nummer gemeldet wird. Wenn die Nummer wiederholt wird oder innerhalb dieses Zeitpuffers zurückgerufen wurde, wird sie als kein Spam betrachtet und nicht gemeldet.<br>
-        <br>
-        Nur Nummern, die durch diese Typen <font color="#03DAC5"><b>geblockt werden</b></font>, werden gemeldet:<br>
-        - <font color="#6ed0ff"><b>Nicht-Kontakt</b></font>(Kontakte-exklusiver Modus)<br>
-        - <font color="#6ed0ff"><b>STIR-Attestierung</b></font><br>
-        - <font color="#6ed0ff"><b>Nummern-Regex</b></font><br>
-        - <font color="#6ed0ff"><b>SMS-Inhalts-Regex</b></font><br>
-        <br>
-        Nummern, die durch folgende Typen <font color="#fa7f71"><b>nicht geblockt werden</b></font>, werden nicht gemeldet:<br>
-        - <font color="#6ed0ff"><b>Sofortabfrage</b></font>, um zu verhindern, dass die Nummer des API-Endpunkts an Wettbewerber weitergegeben wird.<br>
-        - <font color="#6ed0ff"><b>Spam-Datenbank</b></font>, diese wurden wahrscheinlich von API-Endpunkten importiert.<br>
-        - <font color="#6ed0ff"><b>Kontakt-Regex, Kontaktgruppen-Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Besprechungsmodus</b></font><br>
-        - <font color="#6ed0ff"><b>Globales Testen</b></font><br>
-        <br>
-        Weitergeleitete Nummern <font color="#fa7f71"><b>werden nicht</b></font> gemeldet.
-        ]]>
-    </string>
     <string name="http_method">Methode</string>
     <string name="http_post_body">Post-Body</string>
     <string name="help_http_post_body">
