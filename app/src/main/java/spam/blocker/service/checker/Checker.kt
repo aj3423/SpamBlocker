@@ -19,6 +19,9 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.QueryResult
 import spam.blocker.service.bot.executeAll
+import spam.blocker.ui.theme.LightMagenta
+import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.util.A
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Permissions
@@ -31,6 +34,7 @@ import spam.blocker.util.SharedPref.SpamDB
 import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
+import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
 
@@ -60,10 +64,12 @@ class Checker { // for namespace only
         override fun check(): ICheckResult? {
             val logger = cCtx.logger
             val callDetails = cCtx.callDetails
-
             logger?.info(
                 ctx.getString(R.string.checking_template)
-                    .format(ctx.getString(R.string.emergency_call))
+                    .formatAnnotated(
+                        ctx.getString(R.string.emergency_call).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
             if (callDetails == null) {// there is no callDetail when testing
                 logger?.debug(ctx.getString(R.string.skip_for_testing))
@@ -103,7 +109,10 @@ class Checker { // for namespace only
 
             logger?.info(
                 ctx.getString(R.string.checking_template)
-                    .format(ctx.getString(R.string.stir_attestation))
+                    .formatAnnotated(
+                        ctx.getString(R.string.stir_attestation).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             // STIR only works >= Android 11
@@ -170,7 +179,11 @@ class Checker { // for namespace only
                 return null
 
             logger?.info(
-                ctx.getString(R.string.checking_template).format(ctx.getString(R.string.database))
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.database).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val exists = SpamTable.numberExists(ctx, rawNumber) ||
@@ -207,7 +220,11 @@ class Checker { // for namespace only
                 return null
             }
             logger?.info(
-                ctx.getString(R.string.checking_template).format(ctx.getString(R.string.contacts))
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.contacts).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val contact = Contacts.findContactByRawNumber(ctx, rawNumber)
@@ -254,7 +271,10 @@ class Checker { // for namespace only
             }
             logger?.info(
                 ctx.getString(R.string.checking_template)
-                    .format(ctx.getString(R.string.repeated_call))
+                    .formatAnnotated(
+                        ctx.getString(R.string.repeated_call).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val times = spf.getTimes()
@@ -336,7 +356,10 @@ class Checker { // for namespace only
 
             logger?.info(
                 ctx.getString(R.string.checking_template)
-                    .format(ctx.getString(R.string.dialed_number))
+                    .formatAnnotated(
+                        ctx.getString(R.string.dialed_number).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val durationDays = spf.getDays()
@@ -385,7 +408,11 @@ class Checker { // for namespace only
                 return null
             }
             logger?.info(
-                ctx.getString(R.string.checking_template).format(ctx.getString(R.string.off_time))
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.off_time).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val stHour = spf.getStartHour()
@@ -426,7 +453,10 @@ class Checker { // for namespace only
 
             logger?.info(
                 ctx.getString(R.string.checking_template)
-                    .format(ctx.getString(R.string.recent_apps))
+                    .formatAnnotated(
+                        ctx.getString(R.string.recent_apps).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val spf = RecentApps(ctx)
@@ -457,7 +487,7 @@ class Checker { // for namespace only
                         ctx.getString(R.string.allowed_by)
                             .format(ctx.getString(R.string.recent_apps)) + ": ${intersection.first()}"
                     )
-                    return ByRecentApp( pkgName = intersection.first() )
+                    return ByRecentApp(pkgName = intersection.first())
                 }
             }
             return null
@@ -477,7 +507,11 @@ class Checker { // for namespace only
             val logger = cCtx.logger
 
             logger?.info(
-                ctx.getString(R.string.checking_template).format(ctx.getString(R.string.in_meeting))
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.in_meeting).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
             )
 
             val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
@@ -497,7 +531,7 @@ class Checker { // for namespace only
                     ctx.getString(R.string.blocked_by)
                         .format(ctx.getString(R.string.in_meeting)) + ": $appInMeeting"
                 )
-                return ByMeetingMode( pkgName = appInMeeting )
+                return ByMeetingMode(pkgName = appInMeeting)
             }
             return null
         }
@@ -520,7 +554,13 @@ class Checker { // for namespace only
             if (apis.isEmpty())
                 return null
 
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.instant_query)))
+            logger?.info(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.instant_query).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
 
             // The call screening time limit is 5 seconds, with a 500ms buffer for
             //  the inaccuracy of System.currentTimeMillis(), the total time limit
@@ -530,8 +570,11 @@ class Checker { // for namespace only
             val buffer = 500
             val timeLeft = 5000 - buffer - alreadyCost
             if (timeLeft <= 0) {
-                logger?.warn(ctx.getString(R.string.not_enough_time_left).format(
-                    "$buffer", "${5000-buffer}", "$alreadyCost"))
+                logger?.warn(
+                    ctx.getString(R.string.not_enough_time_left).format(
+                        "$buffer", "${5000 - buffer}", "$alreadyCost"
+                    )
+                )
                 return null
             }
 
@@ -571,9 +614,15 @@ class Checker { // for namespace only
                 winnerApi!! // If it's determined, the winnerApi must exist
 
                 if (result.isSpam)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi.summary()}>")
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.instant_query)) + " <${winnerApi.summary()}>"
+                    )
                 else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.instant_query)) + " <${winnerApi.summary()}>")
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.instant_query)) + " <${winnerApi.summary()}>"
+                    )
 
                 return ByApiQuery(
                     type = if (result.isSpam) Def.RESULT_BLOCKED_BY_API_QUERY else Def.RESULT_ALLOWED_BY_API_QUERY,
@@ -610,7 +659,13 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
+            logger?.info(
+                (ctx.getString(R.string.checking_template)+ ": ${numberRule.summary()}")
+                    .formatAnnotated(
+                        ctx.getString(R.string.number_rule).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
 
             // 2. check regex
             val opts = Util.flagsToRegexOptions(numberRule.patternFlags)
@@ -625,9 +680,15 @@ class Checker { // for namespace only
                 val block = numberRule.isBlacklist
 
                 if (block)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}"
+                    )
                 else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}")
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}"
+                    )
 
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER,
@@ -657,7 +718,13 @@ class Checker { // for namespace only
             if (!Permissions.isContactsPermissionGranted(ctx)) {
                 return null
             }
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}")
+            logger?.info(
+                (ctx.getString(R.string.checking_template) + ": ${rule.summary()}")
+                    .formatAnnotated(
+                        ctx.getString(R.string.contact_rule).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
 
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(rule.schedule)) {
@@ -674,9 +741,15 @@ class Checker { // for namespace only
                     val block = rule.isBlacklist
 
                     if (block)
-                        logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}")
+                        logger?.error(
+                            ctx.getString(R.string.blocked_by)
+                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}"
+                        )
                     else
-                        logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}")
+                        logger?.success(
+                            ctx.getString(R.string.allowed_by)
+                                .format(ctx.getString(R.string.contact_rule)) + ": ${rule.summary()}"
+                        )
 
                     return ByRegexRule(
                         type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX,
@@ -707,7 +780,13 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}")
+            logger?.info(
+                (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")
+                    .formatAnnotated(
+                        ctx.getString(R.string.contact_group).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
 
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(rule.schedule)) {
@@ -724,9 +803,15 @@ class Checker { // for namespace only
                     val block = rule.isBlacklist
 
                     if (block)
-                        logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}")
+                        logger?.error(
+                            ctx.getString(R.string.blocked_by)
+                                .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
+                        )
                     else
-                        logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}")
+                        logger?.success(
+                            ctx.getString(R.string.allowed_by)
+                                .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
+                        )
 
                     return ByRegexRule(
                         type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP,
@@ -757,7 +842,13 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            logger?.info(ctx.getString(R.string.checking_template).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
+            logger?.info(
+                (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")
+                    .formatAnnotated(
+                        ctx.getString(R.string.content_rule).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
 
             // 1. check time schedule
             if (TimeSchedule.dissatisfyNow(rule.schedule)) {
@@ -800,9 +891,15 @@ class Checker { // for namespace only
                 val block = rule.isBlacklist
 
                 if (block)
-                    logger?.error(ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}"
+                    )
                 else
-                    logger?.success(ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}")
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.content_rule)) + ": ${rule.summary()}"
+                    )
 
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT,

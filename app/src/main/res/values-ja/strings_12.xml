@@ -82,7 +82,7 @@
         &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
-    <string name="checking_template">確認中: %s</string>
+    <string name="checking_template">チェック中：%s、優先度：%s</string>
     <string name="skip_for_testing">テストのためスキップ。</string>
     <string name="allowed_by">許可: %s</string>
     <string name="blocked_by">ブロック: %s</string>

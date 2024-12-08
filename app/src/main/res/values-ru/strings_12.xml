@@ -83,7 +83,7 @@
         &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
-    <string name="checking_template">Проверка: %s</string>
+    <string name="checking_template">Проверка: %s, приоритет: %s</string>
     <string name="skip_for_testing">Пропустить для тестирования.</string>
     <string name="allowed_by">Разрешено: %s</string>
     <string name="blocked_by">Заблокировано: %s</string>

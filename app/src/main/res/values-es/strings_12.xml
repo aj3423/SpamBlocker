@@ -83,7 +83,7 @@
         &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
-    <string name="checking_template">Comprobando: %s</string>
+    <string name="checking_template">Comprobando: %s, prioridad: %s</string>
     <string name="skip_for_testing">Omitir para pruebas.</string>
     <string name="allowed_by">Permitido por: %s</string>
     <string name="blocked_by">Bloqueado por: %s</string>

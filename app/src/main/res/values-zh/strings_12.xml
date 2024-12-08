@@ -82,7 +82,7 @@
         &ensp; <font color="#03DAC5"><b>.*</b></font>
         ]]>
     </string>
-    <string name="checking_template">正在检查：%s</string>
+    <string name="checking_template">正在检查：%s，优先级：%s</string>
     <string name="skip_for_testing">跳过测试。</string>
     <string name="allowed_by">允许于：%s</string>
     <string name="blocked_by">阻止于：%s</string>
