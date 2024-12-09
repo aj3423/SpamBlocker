@@ -14,4 +14,20 @@
     </string>
     <string name="missing_credentials">Please input valid authorization information.</string>
     <string name="delay">Delay</string>
+    <string name="exclude_services">Exclude Services</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Some apps run extra foreground services, input the service names here to exclude them.<br>
+        <br>
+        To find a service name:<br>
+        &emsp; 1. Activate the service in that app.<br>
+        &emsp; 2. All activated service names will appear here.<br>
+        <br>
+        For example, if a service name is com.app.<b>FGCalling</b>.Service, you can simply
+        input <b>FGCalling</b> to exclude it.
+        <br>
+        You can enter multiple names, separated by commas.
+        ]]>
+    </string>
+    <string name="running_services">Running Services</string>
 </resources>

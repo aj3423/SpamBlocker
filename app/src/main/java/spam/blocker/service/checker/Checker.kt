@@ -36,6 +36,7 @@ import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
+import spam.blocker.util.loge
 import spam.blocker.util.race
 
 class CheckContext(
@@ -516,14 +517,24 @@ class Checker { // for namespace only
 
             val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
 
+            /* Each item in the list can contain
+             - the package name only
+             - or package name followed by ":" and a list of excluded classes
+             */
+            val appInfos = spf.getList()
 
-            val apps = spf.getList()
-
-            val eventsMap = Permissions.getAppsEvents(ctx, apps.toSet())
+            val eventsMap = Permissions.getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
 
             // Check if any app is running a foreground service
-            val appInMeeting = apps.firstOrNull {
-                Permissions.isForegroundServiceRunning(eventsMap[it])
+            val appInMeeting = appInfos.firstOrNull {
+                val runningServiceNames = Permissions.listRunningForegroundServiceNames(
+                    appEvents = eventsMap[it.pkgName],
+                )
+                val exclusions = it.exclusions
+
+                runningServiceNames.any { serviceName ->
+                    !exclusions.any { serviceName.contains(it) }
+                }
             }
 
             if (appInMeeting != null) {
@@ -531,7 +542,7 @@ class Checker { // for namespace only
                     ctx.getString(R.string.blocked_by)
                         .format(ctx.getString(R.string.in_meeting)) + ": $appInMeeting"
                 )
-                return ByMeetingMode(pkgName = appInMeeting)
+                return ByMeetingMode(pkgName = appInMeeting.pkgName)
             }
             return null
         }

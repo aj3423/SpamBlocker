@@ -13,4 +13,19 @@
     <string name="report_number_require_call_log_permission">
         繰り返し発信された番号や折り返し発信された番号の誤った報告を防ぐため、番号の報告には通話履歴の権限が必要です。
     </string>
+    <string name="exclude_services">除外サービス</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        一部のアプリは追加のフォアグラウンドサービスを実行します。それらを除外するには、ここにサービス名を入力してください。<br>
+        <br>
+        サービス名を見つけるには：<br>
+        &emsp; 1. そのアプリでサービスをアクティブにします。<br>
+        &emsp; 2. アクティブ化されたすべてのサービス名がここに表示されます。<br>
+        <br>
+        たとえば、サービス名がcom.app.<b>FGCalling</b>.Serviceの場合、<b>FGCalling</b>と入力するだけで除外できます。
+        <br>
+        複数の名前を入力できます（カンマで区切ります）。
+        ]]>
+    </string>
+    <string name="running_services">実行中のサービス</string>
 </resources>

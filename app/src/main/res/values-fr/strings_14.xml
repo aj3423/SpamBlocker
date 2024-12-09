@@ -14,4 +14,20 @@
         Pour éviter les faux signalements d\'appels répétés ou rappelés,
         le signalement d\'un numéro nécessite l\'autorisation d\'accès à l\'historique des appels.
     </string>
+    <string name="exclude_services">Exclure les services</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Certaines applications exécutent des services d\'arrière-plan supplémentaires. Saisissez ici les noms des services à exclure.<br>
+        <br>
+        Pour trouver le nom d\'un service :<br>
+        &emsp; 1. Activez le service dans l\'application.<br>
+        &emsp; 2. Tous les noms des services activés apparaîtront ici.<br>
+        <br>
+        Par exemple, si le nom d\'un service est com.app.<b>FGCalling</b>.Service, vous pouvez simplement
+        saisir <b>FGCalling</b> pour l\'exclure.
+        <br>
+        Vous pouvez saisir plusieurs noms, séparés par des virgules.
+        ]]>
+    </string>
+    <string name="running_services">Services en cours d\'exécution</string>
 </resources>

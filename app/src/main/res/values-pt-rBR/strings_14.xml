@@ -14,4 +14,19 @@
         Para evitar relatórios incorretos de chamadas repetidas ou números rediscados,
         o relatório de números requer permissão do registro de chamadas.
     </string>
+    <string name="exclude_services">Excluir Serviços</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Alguns aplicativos executam serviços em primeiro plano extras, insira os nomes dos serviços aqui para excluí-los.<br>
+        <br>
+        Para encontrar um nome de serviço:<br>
+        &emsp; 1. Ative o serviço naquele aplicativo.<br>
+        &emsp; 2. Todos os nomes de serviços ativados aparecerão aqui.<br>
+        <br>
+        Por exemplo, se o nome de um serviço for com.app.<b>FGCalling</b>.Service, você pode simplesmente inserir <b>FGCalling</b> para excluí-lo.
+        <br>
+        Você pode inserir vários nomes, separados por vírgulas.
+        ]]>
+    </string>
+    <string name="running_services">Serviços em execução</string>
 </resources>

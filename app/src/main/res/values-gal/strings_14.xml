@@ -14,4 +14,20 @@
         Para evitar informes erróneos de chamadas repetidas ou números remarcados,
         informar o número require permiso do rexistro de chamadas.
     </string>
+    <string name="exclude_services">Excluír Servizos</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Algunhas aplicacións executan servizos en primeiro plano adicionais, introduza os nomes dos servizos aquí para excluílos.<br>
+        <br>
+        Para atopar un nome de servizo:<br>
+        &emsp; 1. Active o servizo na aplicación.<br>
+        &emsp; 2. Aparecerán aquí todos os nomes dos servizos activados.<br>
+        <br>
+        Por exemplo, se o nome dun servizo é com.app.<b>FGCalling</b>.Service, simplemente pode
+        introducir <b>FGCalling</b> para excluílo.
+        <br>
+        Pode introducir varios nomes, separados por comas.
+        ]]>
+    </string>
+    <string name="running_services">Servizos en execución</string>
 </resources>

@@ -14,4 +14,19 @@
         Tekrarlanan aramaların veya geri aranan numaraların yanlış raporlanmasını önlemek için,
         numara raporlaması arama günlüğü iznine ihtiyaç duyar.
     </string>
+    <string name="exclude_services">Hizmetleri Hariç Tut</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Bazı uygulamalar ek ön plan hizmetleri çalıştırır, bunları hariç tutmak için hizmet adlarını buraya girin.<br>
+        <br>
+        Bir hizmet adını bulmak için:<br>
+        &emsp; 1. Uygulamada hizmeti etkinleştirin.<br>
+        &emsp; 2. Tüm etkinleştirilmiş hizmet adları burada görünecektir.<br>
+        <br>
+        Örneğin, bir hizmet adı com.app.<b>FGCalling</b>.Service ise, onu hariç tutmak için sadece <b>FGCalling</b> girebilirsiniz.
+        <br>
+        Virgülle ayırarak birden fazla ad girebilirsiniz.
+        ]]>
+    </string>
+    <string name="running_services">Çalışan Hizmetler</string>
 </resources>

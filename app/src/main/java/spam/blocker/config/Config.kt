@@ -19,6 +19,7 @@ import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.Contact
 import spam.blocker.util.SharedPref.Dialed
 import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.SharedPref.MeetingAppInfo
 import spam.blocker.util.SharedPref.MeetingMode
 import spam.blocker.util.SharedPref.OffTime
 import spam.blocker.util.SharedPref.RecentAppInfo
@@ -290,36 +291,36 @@ class OffTime {
 
 @Serializable
 class RecentApps {
-    val list = mutableListOf<String>() // [pkg.a, pkg.b@20, pkg.c]
+    val list = mutableListOf<RecentAppInfo>() // [pkg.a, pkg.b@20, pkg.c]
     var inXMin = 0
     fun load(ctx: Context) {
         val spf = RecentApps(ctx)
         list.clear()
-        list.addAll(spf.getList().map { it.toString() })
+        list.addAll(spf.getList())
         inXMin = spf.getDefaultMin()
     }
 
     fun apply(ctx: Context) {
         val spf = RecentApps(ctx)
-        spf.setList(list.map { RecentAppInfo.fromString(it) })
+        spf.setList(list)
         spf.setDefaultMin(inXMin)
     }
 }
 
 @Serializable
 class MeetingMode {
-    val list = mutableListOf<String>() // [pkg.a, pkg.b@20, pkg.c]
+    val list = mutableListOf<MeetingAppInfo>() // [pkg.a, pkg.b@20, pkg.c]
     var priority = 20
     fun load(ctx: Context) {
         val spf = MeetingMode(ctx)
         list.clear()
-        list.addAll(spf.getList().map { it })
+        list.addAll(spf.getList())
         priority = spf.getPriority()
     }
 
     fun apply(ctx: Context) {
         val spf = MeetingMode(ctx)
-        spf.setList(list.map { it })
+        spf.setList(list)
         spf.setPriority(priority)
     }
 }

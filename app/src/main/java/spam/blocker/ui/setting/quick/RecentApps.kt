@@ -94,7 +94,6 @@ fun AppChooserIcon(
 
 @Composable
 fun <T> PopupChooseApps(
-    ctx: Context,
     popupTrigger: MutableState<Boolean>,
 
     finder: (String) -> T?,
@@ -103,6 +102,8 @@ fun <T> PopupChooseApps(
 
     onCheckChange: Lambda2<String, Boolean>,
 ) {
+    val ctx = LocalContext.current
+
     // popup for choosing apps
     PopupDialog(
         trigger = popupTrigger,
@@ -223,21 +224,20 @@ fun RecentApps() {
     val buttonPopupTrigger = rememberSaveable { mutableStateOf(false) }
     val appsPopupTrigger = rememberSaveable { mutableStateOf(false) }
 
-    val enabledPkgs = remember {
+    val enabledAppInfos = remember {
         mutableStateListOf<RecentAppInfo>()
     }
 
     SideEffect {
         clearUninstalledRecentApps(ctx)
-        enabledPkgs.clear()
-        enabledPkgs.addAll(spf.getList())
+        enabledAppInfos.clear()
+        enabledAppInfos.addAll(spf.getList())
     }
 
     PopupChooseApps(
-        ctx = ctx,
         popupTrigger = appsPopupTrigger,
         finder = { pkgName ->
-            enabledPkgs.find { it.pkgName == pkgName }
+            enabledAppInfos.find { it.pkgName == pkgName }
         },
         onCheckChange = { pkgName, isChecked ->
             if (isChecked) {
@@ -245,14 +245,14 @@ fun RecentApps() {
                 RecentApps(ctx).addPackage(pkgName)
 
                 // 2. trigger recompose
-                enabledPkgs.add(RecentAppInfo(pkgName))
+                enabledAppInfos.add(RecentAppInfo(pkgName))
             } else {
                 // 1. remove from SharedPref
                 RecentApps(ctx).removePackage(pkgName)
 
                 // 2. trigger recompose
-                enabledPkgs.removeAt(
-                    enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+                enabledAppInfos.removeAt(
+                    enabledAppInfos.indexOfFirst { it.pkgName == pkgName }
                 )
             }
         },
@@ -277,14 +277,14 @@ fun RecentApps() {
                                         val pkgName = recentAppInfo.pkgName
 
                                         val i =
-                                            enabledPkgs.indexOfFirst { it.pkgName == pkgName }
+                                            enabledAppInfos.indexOfFirst { it.pkgName == pkgName }
 
                                         // 1. update gui
-                                        enabledPkgs[i] =
+                                        enabledAppInfos[i] =
                                             RecentAppInfo(pkgName, newValue)
 
                                         // 2. save to SharedPref
-                                        RecentApps(ctx).setList(enabledPkgs)
+                                        RecentApps(ctx).setList(enabledAppInfos)
                                     })
                             }
                         }
@@ -317,7 +317,7 @@ fun RecentApps() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End,
             ) {
-                if (enabledPkgs.isNotEmpty() && Permissions.isUsagePermissionGranted(ctx)) {
+                if (enabledAppInfos.isNotEmpty() && Permissions.isUsagePermissionGranted(ctx)) {
                     GreyButton(
                         label = "${defaultInXMin.value} ${Str(R.string.min)}",
                     ) {
@@ -332,7 +332,7 @@ fun RecentApps() {
                             appsPopupTrigger.value = true
                         },
                 ) {
-                    items(enabledPkgs) {
+                    items(enabledAppInfos) {
                         DrawableImage(
                             AppInfo.fromPackage(ctx, it.pkgName).icon,
                             modifier = M

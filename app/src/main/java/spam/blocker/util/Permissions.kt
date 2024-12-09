@@ -85,14 +85,15 @@ object Permissions {
     }
 
     fun isFileReadPermissionGranted(ctx: Context): Boolean {
-        return if(Build.VERSION.SDK_INT == Def.ANDROID_10) {
+        return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
             isPermissionGranted(ctx, Manifest.permission.READ_EXTERNAL_STORAGE)
         } else {
             Environment.isExternalStorageManager()
         }
     }
+
     fun isFileWritePermissionGranted(ctx: Context): Boolean {
-        return if(Build.VERSION.SDK_INT == Def.ANDROID_10) {
+        return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
             isPermissionGranted(ctx, Manifest.permission.WRITE_EXTERNAL_STORAGE)
         } else {
             Environment.isExternalStorageManager()
@@ -161,9 +162,9 @@ object Permissions {
     fun getAppsEvents(
         ctx: Context,
         pkgNames: Set<String>,
-        withinMillis: Long = 24 * 3600 * 1000,
-    ): Map<String, List<Int>> {
-        val ret = mutableMapOf<String, MutableList<Int>>()
+        withinMillis: Long = 24 * 3600 * 1000, // last 24 hours
+    ): Map<String, List<UsageEvents.Event>> {
+        val ret = mutableMapOf<String, MutableList<UsageEvents.Event>>()
 
         val usageStatsManager =
             ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
@@ -176,23 +177,30 @@ object Permissions {
 
             val pkg = event.packageName
             if (pkgNames.contains(pkg)) {
-                ret.getOrPut(pkg) { mutableListOf() }.add(event.eventType)
+                ret.getOrPut(pkg) { mutableListOf() }.add(event)
             }
         }
         return ret
     }
 
-    // It checks if the app events contains FOREGROUND_SERVICE_START but no following FOREGROUND_SERVICE_STOP,
-    //   which means the video or audio is started and not stopped yet.
-    fun isForegroundServiceRunning(appEvents: List<Int>?): Boolean {
-        val lastStart = appEvents?.lastIndexOf(UsageEvents.Event.FOREGROUND_SERVICE_START)
-        return if (lastStart == null || lastStart == -1) {
-            // There's never been any foreground service started.
-            false
-        } else {
-            // If there isn't a STOP after the START.
-            !appEvents.drop(lastStart).contains(UsageEvents.Event.FOREGROUND_SERVICE_STOP)
-        }
+    // List all foreground service names that have started but not stopped yet.
+    fun listRunningForegroundServiceNames(
+        appEvents: List<UsageEvents.Event>?,
+    ): List<String> {
+
+        val startedServices = mutableMapOf<String, Boolean>()
+        appEvents
+            ?.filter {
+                it.eventType == UsageEvents.Event.FOREGROUND_SERVICE_START
+                        || it.eventType == UsageEvents.Event.FOREGROUND_SERVICE_STOP
+            }
+            ?.forEach {
+                // Set to `true` if it's START, set to `false` if it's STOP
+                startedServices[it.className] =
+                    it.eventType == UsageEvents.Event.FOREGROUND_SERVICE_START
+            }
+
+        return startedServices.filterValues { it  }.keys.toList()
     }
 
     fun getPackagesHoldingPermissions(
@@ -237,13 +245,13 @@ object Permissions {
             null,
             null
         )?.use {
-            if(it.moveToFirst()) {
+            if (it.moveToFirst()) {
                 do {
                     val calledNumber = it.getString(0)
-                    if(phoneNumber.isSame(calledNumber)) {
+                    if (phoneNumber.isSame(calledNumber)) {
                         ret += it.getInt(1)
                     }
-                } while(it.moveToNext())
+                } while (it.moveToNext())
             }
         }
         return ret

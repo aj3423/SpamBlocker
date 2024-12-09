@@ -2,6 +2,7 @@ package spam.blocker.util.SharedPref
 
 import android.content.Context
 import android.content.SharedPreferences
+import kotlinx.serialization.Serializable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
 import spam.blocker.def.Def.HISTORY_TTL_NEVER_EXPIRE
@@ -278,6 +279,7 @@ class BlockType(ctx: Context) : SharedPref(ctx) {
         return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE)
     }
 }
+@Serializable
 data class RecentAppInfo(
     val pkgName: String,
     val duration: Int? = null
@@ -339,26 +341,74 @@ class RecentApps(ctx: Context) : SharedPref(ctx) {
     }
 }
 
+/*
+Each item is: package name followed by a list of banned foreground service names, which
+ is separated by a ;
+E.g.:
+ com.pkg.A
+ com.pkg.B@fgServiceName1;fgServiceName2
+
+They will be concatenated into a string with separator, and saved in the shared pref.
+E.g.:
+ com.pkg.A,com.pkg.B@fgServiceName1;fgServiceName2
+ */
+@Serializable
+data class MeetingAppInfo(
+    val pkgName: String,
+    val exclusions: List<String> = listOf()
+) {
+    override fun toString(): String {
+        return if (exclusions.isEmpty()) {
+            pkgName
+        } else {
+            "$pkgName@${exclusions.joinToString(";")}"
+        }
+    }
+    companion object {
+        fun fromString(str: String) : MeetingAppInfo {
+            return if (!str.contains("@"))
+                MeetingAppInfo(
+                    pkgName = str,
+                )
+            else
+                MeetingAppInfo(
+                    pkgName = str.substringBefore("@"),
+                    exclusions = str.substringAfter("@").split(";").filter { it.isNotEmpty() }
+                )
+        }
+    }
+}
 class MeetingMode(ctx: Context) : SharedPref(ctx) {
-    fun getList(): List<String> {
+    fun getList(): List<MeetingAppInfo> {
         val s = readString(Def.SETTING_MEETING_APPS, "")
 
         if (s == "")
             return listOf()
 
-        return s.split(",")
+        val x = s.split(",").map {
+            MeetingAppInfo.fromString(it)
+        }
+        return x
     }
-    fun setList(list: List<String>) {
-        writeString(Def.SETTING_MEETING_APPS, list.joinToString(","))
+    fun setList(list: List<MeetingAppInfo>) {
+        val x = list.joinToString(",") {
+            it.toString()
+        }
+        writeString(Def.SETTING_MEETING_APPS, x)
     }
     fun addPackage(pkgToAdd: String) {
         val l = getList().toMutableList()
-        l.add(pkgToAdd)
+        l.add(MeetingAppInfo(pkgToAdd))
         setList(l)
     }
     fun removePackage(pkgToRemove: String) {
         val l = getList().toMutableList()
-        l.remove(pkgToRemove)
+        val index = l.indexOfFirst {
+            it.pkgName == pkgToRemove
+        }
+        if (index != -1) {
+            l.removeAt(index)
+        }
         setList(l)
     }
     fun getPriority() : Int {
