@@ -30,4 +30,42 @@
         ]]>
     </string>
     <string name="running_services">Services en cours d\'exécution</string>
+    <string name="report_number">Signaler un numéro</string>
+    <string-array name="spam_categories">
+        <item>Numéro valide</item>
+        <item>Fraude</item>
+        <item>Marketing</item>
+        <item>Sondage</item>
+        <item>Politique</item>
+        <item>Autres spams</item>
+    </string-array>
+    <string name="action_category_config">Config. Catégorie</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Seules les catégories de spams suivantes sont prises en charge ; toute autre catégorie de l\'API doit être mappée à l\'une d\'elles.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Signaler comme numéro valide, pas un spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; Type de spam par défaut, utilisé lorsqu\'aucune des catégories ci-dessus ne s\'applique.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        La catégorie %s n\'est pas configurée dans l\'action %s ; veuillez la configurer dans la configuration de l\'API (si l\'API prend en charge cette catégorie).
+    </string>
+    <string name="fallback_category">Catégorie par défaut</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        Lors d\'un signalement manuel comme catégorie spécifique, telle que « Politique », et si l\'API ne prend pas en charge cette catégorie,
+        elle utilisera cette valeur par défaut. <br>
+        <br>
+        Si cette valeur n\'est pas configurée, le numéro ne sera pas signalé à l\'API lorsqu\'elle tentera de revenir à cette valeur.
+        ]]>
+    </string>
 </resources>

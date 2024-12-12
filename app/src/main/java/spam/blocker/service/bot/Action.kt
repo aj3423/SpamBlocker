@@ -57,6 +57,7 @@ val apiActions = listOf(
     ParseQueryResult(),
     FilterSpamResult(),
     ImportToSpamDB(),
+    CategoryConfig()
 )
 
 
@@ -81,7 +82,7 @@ data class ActionContext(
     // for bot only
     var workTag: String? = null,
 
-    // for api only
+    // ---- for api only ----
     // Set by the caller before executing the actions, it will be read by Action `ParseIncomingNumber`
     var rawNumber: String? = null,
     // The action `ParseIncomingNumber` will parse the rawNumber and fill these values,
@@ -90,8 +91,15 @@ data class ActionContext(
     var cc: String? = null, // "1"
     var domestic: String? = null, // "2223334444"
     var fullNumber: String? = null, // "12223334444"
-    // The check result by the first api that successfully identified the number
-    var racingResult: Any? = null,
+    // The spam category, used when reporting.
+    //  tagCategory will be converted to realCategory in Action CategoryConfig, and will then be used in http request
+    var tagCategory: String? = null,
+    var realCategory: String? = null,
+    // set by HttpDownload, used by ImportToSpamDB as detailInfo
+    var httpUrl: String? = null,
+    // The check result by the first api that successfully identified the number,
+    //  for Checker usage only, not for Actions
+    var racingResult: ApiQueryResult? = null,
 )
 
 interface IAction {

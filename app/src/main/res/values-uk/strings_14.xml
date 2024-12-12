@@ -28,4 +28,42 @@
         ]]>
     </string>
     <string name="running_services">Запущені служби</string>
+    <string name="report_number">Повідомити про номер</string>
+    <string-array name="spam_categories">
+        <item>Допустимий номер</item>
+        <item>Шахрайство</item>
+        <item>Маркетинг</item>
+        <item>Опитування</item>
+        <item>Політика</item>
+        <item>Інший спам</item>
+    </string-array>
+    <string name="action_category_config">Налаштування категорій</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Підтримуються лише такі категорії спаму. Будь-яка інша категорія з API повинна бути відображена на одну з них.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Повідомляти як допустимий номер, не спам.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; Запасний тип спаму, використовується, якщо жодна з наведених вище категорій не підходить.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        Категорія %s не налаштована в дії %s, будь ласка, налаштуйте її в налаштуваннях API (якщо API підтримує цю категорію).
+    </string>
+    <string name="fallback_category">Запасна категорія</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        При ручному повідомленні як конкретної категорії, наприклад, "Політика", і якщо API не підтримує цю категорію,
+        він повернеться до цього значення за замовчуванням. <br>
+        <br>
+        Якщо це значення не налаштоване, номер не буде повідомлено API, коли він спробує повернутися до нього.
+        ]]>
+    </string>
 </resources>

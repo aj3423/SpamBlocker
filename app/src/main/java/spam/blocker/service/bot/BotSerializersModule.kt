@@ -35,6 +35,7 @@ val botModule = SerializersModule {
         subclass(FilterSpamResult::class)
         subclass(ParseIncomingNumber::class)
         subclass(ReportNumber::class)
+        subclass(CategoryConfig::class)
     }
 }
 

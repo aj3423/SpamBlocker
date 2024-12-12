@@ -17,7 +17,6 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
-import spam.blocker.service.bot.QueryResult
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.SkyBlue
@@ -36,7 +35,6 @@ import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
-import spam.blocker.util.loge
 import spam.blocker.util.race
 
 class CheckContext(
@@ -187,14 +185,14 @@ class Checker { // for namespace only
                     )
             )
 
-            val exists = SpamTable.numberExists(ctx, rawNumber) ||
-                    SpamTable.numberExists(ctx, Util.clearNumber(rawNumber))
+            val record = SpamTable.findByNumber(ctx, rawNumber) ?:
+                    SpamTable.findByNumber(ctx, Util.clearNumber(rawNumber))
 
-            if (exists) {
+            if (record != null) {
                 logger?.error(
                     ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.database))
                 )
-                return BySpamDb()
+                return BySpamDb(matchedNumber = record.peer)
             }
             return null
         }
@@ -589,8 +587,8 @@ class Checker { // for namespace only
                 return null
             }
 
-            // Run all apis simultaneously, get the first non-null result, which is determined,
-            //  and return that result immediately without waiting for others to finish.
+            // Run all apis simultaneously, get the first non-null result, which means "determined",
+            //  and return that result immediately and kill other threads.
             var (winnerApi, result) = race(
                 competitors = apis,
                 timeoutMillis = timeLeft,
@@ -608,8 +606,8 @@ class Checker { // for namespace only
                                 null
                             }
 
-                            val result = aCtx.racingResult as QueryResult
-                            if (result.determined) {
+                            val result = aCtx.racingResult
+                            if (result?.determined == true) {
                                 result
                             } else {
                                 null
@@ -637,11 +635,10 @@ class Checker { // for namespace only
 
                 return ByApiQuery(
                     type = if (result.isSpam) Def.RESULT_BLOCKED_BY_API_QUERY else Def.RESULT_ALLOWED_BY_API_QUERY,
-                    extraInfo = ApiQueryExtraInfo(
-                        apiId = winnerApi.id,
+                    detail = ApiQueryResultDetail(
                         apiSummary = winnerApi.summary(),
-                        category = result.category,
-                        serverEcho = result.serverEcho!!,
+                        apiDomain = winnerApi.domain()!!,
+                        queryResult = result,
                     )
                 )
             }

@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 32
+        const val DB_VERSION = 33
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -32,8 +32,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
 
         // ---- spam table ----
         const val TABLE_SPAM = "spam"
-//        COLUMN_PEER = "peer"
-//        COLUMN_TIME = "time"
+        const val COLUMN_REASON_EXTRA = "reason_extra"
 
         // ---- bot table ----
         const val TABLE_BOT = "bot"
@@ -101,6 +100,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
             "CREATE TABLE IF NOT EXISTS $TABLE_SPAM (" +
                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_PEER TEXT UNIQUE, " +
+                    "$COLUMN_REASON INTEGER, " +
+                    "$COLUMN_REASON_EXTRA TEXT, " +
                     "$COLUMN_TIME INTEGER " +
                     ")"
         )
@@ -213,13 +214,19 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 30) && (oldVersion < 30)) {
             onCreate(db)
         }
-        // 2. and the history api records are incompatible.
+        // 2. the history api records are incompatible, delete all of them
         if ((newVersion >= 31) && (oldVersion < 31)) {
             db.execSQL("DELETE FROM $TABLE_CALL")
             db.execSQL("DELETE FROM $TABLE_SMS")
         }
+        // 3. fix "no such table: api_query"
         if ((newVersion >= 32) && (oldVersion < 32)) {
             onCreate(db)
+        }
+        // 4. add column to spam db (reason, reasonDetail)
+        if ((newVersion >= 33) && (oldVersion < 33)) {
+            db.execSQL("ALTER TABLE $TABLE_SPAM ADD COLUMN $COLUMN_REASON INTEGER")
+            db.execSQL("ALTER TABLE $TABLE_SPAM ADD COLUMN $COLUMN_REASON_EXTRA TEXT")
         }
     }
 }

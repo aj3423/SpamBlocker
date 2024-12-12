@@ -60,6 +60,13 @@ val PermissiveJson =  Json {
     encodeDefaults = true
     ignoreUnknownKeys = true
 }
+val PermissivePrettyJson =  Json {
+    prettyPrint = true
+
+    encodeDefaults = true
+    ignoreUnknownKeys = true
+}
+
 
 object Util {
 
@@ -491,7 +498,10 @@ object Util {
     }
 
     // extract "abc" from "https://www.abc.com/...."
-    fun extractDomainName(url: String): String? {
+    fun domainFromUrl(url: String?): String? {
+        if (url == null)
+            return null
+
         return try {
             val uri = Uri.parse(url)
             val host = uri.host ?: return null

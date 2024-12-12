@@ -3,16 +3,36 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.Context
 import android.database.Cursor
+import androidx.core.database.getIntOrNull
+import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
+import spam.blocker.db.Db.Companion.COLUMN_ID
 import spam.blocker.db.Db.Companion.COLUMN_PEER
+import spam.blocker.db.Db.Companion.COLUMN_REASON
+import spam.blocker.db.Db.Companion.COLUMN_REASON_EXTRA
 import spam.blocker.db.Db.Companion.COLUMN_TIME
 import spam.blocker.db.Db.Companion.TABLE_SPAM
+
+enum class ImportDbReason {
+    Manually,
+    ByAPI
+}
+fun intToImportDbReason(i: Int?): ImportDbReason {
+    return when (i) {
+        1 -> ImportDbReason.ByAPI
+        else -> ImportDbReason.Manually
+    }
+}
 
 @Serializable
 data class SpamNumber(
     val id: Long = 0,
     val peer: String = "",
     val time: Long = 0,
+    val importReason: ImportDbReason = ImportDbReason.Manually,
+    // when importReason is
+    // - ByAPI, this value is the domain name
+    val importReasonExtra: String? = null,
 )
 
 object SpamTable {
@@ -27,9 +47,12 @@ object SpamTable {
         return try {
             for (number in numbers) {
                 db.execSQL(
-                    "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME)" +
-                            " VALUES ('${number.peer}', ${number.time})" +
-                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET $COLUMN_TIME = ${number.time}"
+                    "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)" +
+                            " VALUES ('${number.peer}', ${number.time}, ${number.importReason.ordinal}, '${number.importReasonExtra}')" +
+                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET" +
+                            " $COLUMN_TIME = ${number.time}, " +
+                            " $COLUMN_REASON = ${number.importReason.ordinal}," +
+                            " $COLUMN_REASON_EXTRA = '${number.importReasonExtra}'"
                 )
             }
             db.setTransactionSuccessful()
@@ -48,16 +71,21 @@ object SpamTable {
     @SuppressLint("Range")
     private fun ruleFromCursor(it: Cursor): SpamNumber {
         return SpamNumber(
-            id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
-            peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER)),
-            time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME)),
+            id = it.getLong(it.getColumnIndex(COLUMN_ID)),
+            peer = it.getString(it.getColumnIndex(COLUMN_PEER)),
+            time = it.getLong(it.getColumnIndex(COLUMN_TIME)),
+            importReason = intToImportDbReason(it.getIntOrNull(it.getColumnIndex(COLUMN_REASON))),
+            importReasonExtra = it.getStringOrNull(it.getColumnIndex(COLUMN_REASON_EXTRA)) ,
         )
     }
 
     fun listAll(
         ctx: Context,
+        additionalSql: String? = null
     ): List<SpamNumber> {
-        val sql = "SELECT * FROM ${Db.TABLE_SPAM}"
+        var sql = "SELECT * FROM $TABLE_SPAM"
+
+        additionalSql?.let { sql += it }
 
         val ret: MutableList<SpamNumber> = mutableListOf()
 
@@ -78,30 +106,21 @@ object SpamTable {
         pattern: String,
         limit: Int = 10,
     ): List<SpamNumber> {
-        val sql = "SELECT * FROM $TABLE_SPAM WHERE $COLUMN_PEER LIKE '%$pattern%' LIMIT $limit"
-
-        val ret: MutableList<SpamNumber> = mutableListOf()
-
-        val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery(sql, null)
-        cursor.use {
-            if (it.moveToFirst()) {
-                do {
-                    ret += ruleFromCursor(it)
-                } while (it.moveToNext())
-            }
-            return ret
-        }
+        return listAll(
+            ctx,
+            additionalSql = " WHERE $COLUMN_PEER LIKE '%$pattern%' LIMIT $limit"
+        )
     }
 
-    fun numberExists(ctx: Context, number: String): Boolean {
-        val db = Db.getInstance(ctx).readableDatabase
-
-        val cursor =
-            db.rawQuery("SELECT * FROM ${Db.TABLE_SPAM} WHERE ${Db.COLUMN_PEER} = '$number'", null)
-
-        return cursor.use {
-            it.moveToFirst()
+    fun findByNumber(ctx: Context, number: String): SpamNumber? {
+        val records = listAll(
+            ctx,
+            additionalSql = " WHERE $COLUMN_PEER = '$number'"
+        )
+        return if (records.isEmpty()) {
+            null
+        } else {
+            records[0]
         }
     }
 

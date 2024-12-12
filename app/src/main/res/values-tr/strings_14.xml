@@ -29,4 +29,42 @@
         ]]>
     </string>
     <string name="running_services">Çalışan Hizmetler</string>
+    <string name="report_number">Numarayı Bildir</string>
+    <string-array name="spam_categories">
+        <item>Geçerli Numara</item>
+        <item>Sahtekarlık</item>
+        <item>Pazarlama</item>
+        <item>Anket</item>
+        <item>Siyasi</item>
+        <item>Diğer Spam</item>
+    </string-array>
+    <string name="action_category_config">Kategori Yapılandırması</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Yalnızca aşağıdaki spam kategorileri desteklenir, API\'den gelen diğer tüm kategoriler bunlardan birine eşleştirilmelidir.<br>
+        <br>
+         - <font color="#03DAC5"><b>{geçerli}</b></font><br>
+        &ensp; Geçerli numara olarak bildirin, spam değil.<br>
+        <br>
+         - <font color="#fa7f71"><b>{sahtekarlık}</b></font><br>
+         - <font color="#fa7f71"><b>{pazarlama}</b></font><br>
+         - <font color="#fa7f71"><b>{anket}</b></font><br>
+         - <font color="#fa7f71"><b>{siyasi}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{diğer}</b></font><br>
+        &ensp; Yukarıdaki kategorilerden hiçbiri uygulanmadığında kullanılan yedek spam türü.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        %s kategorisi %s eyleminde yapılandırılmadı, lütfen API yapılandırmasında yapılandırın (API bu kategoriyi destekliyorsa).
+    </string>
+    <string name="fallback_category">Yedek Kategori</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        "Siyasi" gibi belirli bir kategori olarak manuel olarak bildirirken ve API bu kategoriyi desteklemiyorsa,
+        bu varsayılan değere geri dönecektir. <br>
+        <br>
+        Bu değer yapılandırılmamışsa, geri dönmeye çalıştığında numara API\'ye bildirilmeyecektir.
+        ]]>
+    </string>
 </resources>

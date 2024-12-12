@@ -30,4 +30,42 @@
         ]]>
     </string>
     <string name="running_services">Laufende Dienste</string>
+    <string name="report_number">Nummer melden</string>
+    <string-array name="spam_categories">
+        <item>Gültige Nummer</item>
+        <item>Betrug</item>
+        <item>Marketing</item>
+        <item>Umfrage</item>
+        <item>Politik</item>
+        <item>Sonstige Spam-Anrufe</item>
+    </string-array>
+    <string name="action_category_config">Kategorie Konfiguration</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Es werden nur die folgenden Spam-Kategorien unterstützt. Alle anderen Kategorien aus der API sollten einer dieser Kategorien zugeordnet werden.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Als gültige Nummer melden, kein Spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; Der Standard-Spam-Typ, der verwendet wird, wenn keine der oben genannten Kategorien zutrifft.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        Kategorie %s ist in Aktion %s nicht konfiguriert. Bitte konfigurieren Sie sie in der API-Konfiguration (wenn die API diese Kategorie unterstützt).
+    </string>
+    <string name="fallback_category">Standardkategorie</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        Wenn manuell als bestimmte Kategorie, z. B. "Politisch", gemeldet wird und die API diese Kategorie nicht unterstützt,
+        wird auf diesen Standardwert zurückgegriffen. <br>
+        <br>
+        Wenn dieser Wert nicht konfiguriert ist, wird die Nummer nicht an die API gemeldet, wenn versucht wird, darauf zurückzugreifen.
+        ]]>
+    </string>
 </resources>

@@ -30,4 +30,42 @@
         ]]>
     </string>
     <string name="running_services">Servizos en execución</string>
+    <string name="report_number">Denunciar número</string>
+    <string-array name="spam_categories">
+        <item>Número Válido</item>
+        <item>Fraude</item>
+        <item>Marketing</item>
+        <item>Enquisa</item>
+        <item>Político</item>
+        <item>Outro Spam</item>
+    </string-array>
+    <string name="action_category_config">Configuración de Categoría</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Só se admiten as seguintes categorías de spam, calquera outra categoría da API debe asignarse a unha delas.<br>
+        <br>
+         - <font color="#03DAC5"><b>{válido}</b></font><br>
+        &ensp; Denunciar como número válido, non spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraude}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{enquisa}</b></font><br>
+         - <font color="#fa7f71"><b>{político}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{outro}</b></font><br>
+        &ensp; O tipo de spam por defecto, usado cando non se aplica ningunha das categorías anteriores.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        A categoría %s non está configurada na acción %s, configúrea na configuración da API (se a API admite esta categoría).
+    </string>
+    <string name="fallback_category">Categoría por Defecto</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        Ao denunciar manualmente como unha categoría específica, como "Político", e se a API non admite esa categoría,
+        volverá a este valor predeterminado. <br>
+        <br>
+        Se este valor non está configurado, o número non se denunciará á API cando intente volver a el.
+        ]]>
+    </string>
 </resources>

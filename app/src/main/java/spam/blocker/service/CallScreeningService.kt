@@ -7,37 +7,28 @@ import android.telecom.Call.Details
 import android.telecom.CallScreeningService
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
-import spam.blocker.BuildConfig
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import spam.blocker.Events
-import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
 import spam.blocker.def.Def.HISTORY_TTL_DISABLED
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
-import spam.blocker.service.bot.Delay
-import spam.blocker.service.bot.MyWorkManager
-import spam.blocker.service.bot.ReportNumber
-import spam.blocker.service.bot.Time
-import spam.blocker.service.bot.serialize
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
+import spam.blocker.service.reporting.reportSpam
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
-import spam.blocker.util.Permissions
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.SharedPref.HistoryOptions
 import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
 import spam.blocker.util.logd
-import java.util.UUID
 
 fun Details.getRawNumber(): String {
     var rawNumber = ""
@@ -153,7 +144,7 @@ class CallScreeningService : CallScreeningService() {
             putExtra("blocked", true)
         }.setAction("action_call")
 
-        val toCopy = Checker.Companion.checkQuickCopy(
+        val toCopy = Checker.checkQuickCopy(
             ctx, rawNumber, null, true, true
         )
 
@@ -167,48 +158,6 @@ class CallScreeningService : CallScreeningService() {
             intent = intent,
             toCopy = toCopy
         )
-    }
-
-    private fun reportNumber(ctx: Context, r: ICheckResult, rawNumber: String, callDetails: Details?) {
-        // 1. Skip if no reporting api is enabled
-        val anyApiEnabled = G.apiReportVM.table.listAll(ctx).any { it.enabled }
-        if (!anyApiEnabled)
-            return
-
-        // 2. Skip if it isn't blocked by local filters
-        val isBlockedByLocalFilter = listOf(
-            RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR,
-            RESULT_BLOCKED_BY_NUMBER, RESULT_BLOCKED_BY_CONTENT,
-        ).contains(r.type)
-        if (!isBlockedByLocalFilter)
-            return
-
-        // 3. Skip if call log permission is disabled, it's necessary for checking
-        //  if the call is repeated or allowed later.
-        val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
-        if (!canReadCalls)
-            return
-
-        // 4. Skip for global testing, unless developing
-        val isTesting = callDetails == null
-        val isDev = BuildConfig.DEBUG // developing
-        if (isDev || !isTesting) {
-            MyWorkManager.schedule(
-                ctx,
-                scheduleConfig = Delay(
-                    if (isDev)
-                        Time(min = 1) // debug: 1 min
-                    else
-                        Time(hour = Def.NUMBER_REPORTING_BUFFER_HOURS.toInt()) // release: 1 hour
-                ).serialize(),
-                actionsConfig = listOf(
-                    ReportNumber(
-                        rawNumber = rawNumber
-                    )
-                ).serialize(),
-                workTag = UUID.randomUUID().toString(),
-            )
-        }
     }
 
     fun processCall(
@@ -226,11 +175,14 @@ class CallScreeningService : CallScreeningService() {
         if (r.shouldBlock()) {
             logd(String.format("Reject call %s", rawNumber))
 
-            // 2. Show notification
-            showSpamNotification(ctx, r, rawNumber)
+            CoroutineScope(IO).launch {
 
-            // 3. Report spam number
-            reportNumber(ctx, r, rawNumber, callDetails)
+                // 2. Show notification
+                showSpamNotification(ctx, r, rawNumber)
+
+                // 3. Report spam number
+                reportSpam(ctx, r, rawNumber, isTesting = callDetails == null)
+            }
         }
 
         return r

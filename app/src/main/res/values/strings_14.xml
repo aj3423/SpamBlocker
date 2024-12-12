@@ -1,4 +1,5 @@
 <resources>
+    <string name="report_number">Report Number</string>
     <string name="report_number_require_call_log_permission">
         To prevent misreporting of repeated calls or dialed-back numbers,
         reporting number requires call log permission.
@@ -30,4 +31,41 @@
         ]]>
     </string>
     <string name="running_services">Running Services</string>
+    <string-array name="spam_categories">
+        <item>Valid Number</item>
+        <item>Fraud</item>
+        <item>Marketing</item>
+        <item>Survey</item>
+        <item>Political</item>
+        <item>Other Spam</item>
+    </string-array>
+    <string name="action_category_config">Category Config</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Only the following spam categories are supported, any other category from the API should be mapped to one of them.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Report as valid number, not a spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; The fallback spam type, used when none of the above categories apply.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        Category %s is not configured in action %s, please configure it in the API configuration(if the API supports this category).
+    </string>
+    <string name="fallback_category">Fallback Category</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        When manually reporting as a specific category, such as \"Political\", and if the API doesn\'t support that category,
+        it will fall back to this default value. <br>
+        <br>
+        If this value is not configured, the number will not be reported to the API when it attempts to fall back to it.
+        ]]>
+    </string>
 </resources>

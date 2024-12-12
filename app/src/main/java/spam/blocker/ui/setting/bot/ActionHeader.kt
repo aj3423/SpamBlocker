@@ -25,6 +25,7 @@ import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.SettingRow
+import spam.blocker.ui.setting.api.tagOther
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
@@ -52,7 +53,7 @@ fun TestActionButton(
     var logStr = remember { mutableStateOf(buildAnnotatedString {}) }
 
     // Log output dialog
-    val logTrigger = rememberSaveable { mutableStateOf(false) }
+    val logTrigger = remember { mutableStateOf(false) }
     PopupDialog(
         trigger = logTrigger,
     ) {
@@ -70,7 +71,8 @@ fun TestActionButton(
             withContext(IO) {
                 val aCtx = ActionContext(
                     logger = TextLogger(logStr, C),
-                    rawNumber = rawNumber
+                    rawNumber = rawNumber,
+                    tagCategory = tagOther,
                 )
                 actions.executeAll(ctx, aCtx)
             }

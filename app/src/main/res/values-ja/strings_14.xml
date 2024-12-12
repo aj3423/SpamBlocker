@@ -28,4 +28,41 @@
         ]]>
     </string>
     <string name="running_services">実行中のサービス</string>
+    <string name="report_number">番号を報告</string>
+    <string-array name="spam_categories">
+        <item>有効な番号</item>
+        <item>詐欺</item>
+        <item>マーケティング</item>
+        <item>アンケート</item>
+        <item>政治関連</item>
+        <item>その他迷惑電話</item>
+    </string-array>
+    <string name="action_category_config">カテゴリ設定</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        サポートされている迷惑電話カテゴリは次のとおりです。APIからのその他のカテゴリは、これらのいずれかにマッピングする必要があります。<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; 有効な番号として報告し、迷惑電話ではありません。<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; 上記のいずれのカテゴリにも該当しない場合に使用される、フォールバック迷惑電話の種類です。<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        カテゴリ %s はアクション %s で設定されていません。API 設定で設定してください（API がこのカテゴリをサポートしている場合）。
+    </string>
+    <string name="fallback_category">フォールバックカテゴリ</string>
+    <string name="help_fallback_category">
+        <![CDATA[
+        <translate>「政治関連」など、特定のカテゴリとして手動で報告する場合、API がそのカテゴリをサポートしていないと、このデフォルト値にフォールバックします。</translate><br>
+        <br>
+        <translate>この値が設定されていない場合、フォールバックを試行する際に、番号はAPIに報告されません。</translate>
+        ]]>
+    </string>
 </resources>

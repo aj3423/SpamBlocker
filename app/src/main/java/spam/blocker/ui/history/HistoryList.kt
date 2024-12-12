@@ -144,6 +144,7 @@ fun HistoryList(
                         )
                     ) {
                         HistoryCard(
+                            forType = vm.forType,
                             record = record,
                             modifier = M
                                 .combinedClickable(

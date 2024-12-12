@@ -12,8 +12,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.JsonObject
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
@@ -41,6 +43,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
+import spam.blocker.service.bot.ApiQueryResult
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.DrawableImage
@@ -49,6 +52,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Notification
 import spam.blocker.util.PermissiveJson
+import spam.blocker.util.PermissivePrettyJson
 import spam.blocker.util.SharedPref.BlockType
 import spam.blocker.util.SharedPref.HistoryOptions
 
@@ -65,7 +69,7 @@ fun AppIcon(pkgName: String) {
     )
 }
 @Composable
-fun ExtraInfo(text: String, maxLines: Int) {
+fun ExtraInfoWithDivider(text: String, maxLines: Int) {
     val C = LocalPalette.current
 
     if(text.isNotEmpty() && maxLines > 0) {
@@ -87,6 +91,7 @@ fun ExtraInfo(text: String, maxLines: Int) {
     }
 }
 
+
 interface ICheckResult {
     val type: Int
 
@@ -103,12 +108,16 @@ interface ICheckResult {
             overflow = TextOverflow.Ellipsis,
         )
     }
-    // A detailed information that is displayed in the history card when it's expanded.
+
+    // It will be displayed in the history card when it's expanded.
+    // 1. Show "Report Number" button
+    // 2. Show detailed information
     // E.g.:
     //  - the ApiQuery will show full server response
     //  - the SMS rule will show full sms content.
     @Composable
-    fun ExtraInfo(expanded: Boolean) {}
+    fun ExtraInfo(expanded: Boolean) {
+    }
 
     fun shouldBlock(): Boolean {
         return Def.isBlocked(type)
@@ -234,9 +243,15 @@ class ByOffTime(
 
 class BySpamDb(
     override val type: Int = RESULT_BLOCKED_BY_SPAM_DB,
+    // Because it checks both rawNumber and clearNumber(rawNumber), this value stores the matched one,
+    //  for later reporting purpose.
+    val matchedNumber: String,
 ) : ICheckResult {
     override fun resultSummary(ctx: Context): String {
         return ctx.getString(R.string.database)
+    }
+    override fun reasonToDb(): String {
+        return matchedNumber
     }
 }
 
@@ -275,35 +290,46 @@ class BySTIR(
 
 // This will be serialized to a json and saved as the HistoryTable.reason
 @Serializable
-data class ApiQueryExtraInfo(
-    val apiId: Long,
-    val apiSummary: String,
-    val category: String?,
-    val serverEcho: String,
+@SerialName("ApiQueryResultDetail")
+data class ApiQueryResultDetail(
+    val apiSummary: String, // apiSummary and category will be displayed on history card(2st row)
+    val apiDomain: String, // for later reporting
+
+    val queryResult: ApiQueryResult, // the result of Action ApiQuery
 )
 
 class ByApiQuery(
     override val type: Int,
-    val extraInfo: ApiQueryExtraInfo,
+    val detail: ApiQueryResultDetail,
 ) : ICheckResult {
     @Composable
     override fun ExtraInfo(expanded: Boolean) {
-        if (expanded) {
-            ExtraInfo(
-                text = extraInfo.serverEcho,
+        if (!expanded) {
+            return
+        }
+        val echo = detail.queryResult.serverEcho
+        if (echo != null) {
+            // pretty format the json
+            val prettyEcho = try {
+                PermissivePrettyJson.encodeToString(PermissiveJson.decodeFromString<JsonObject>(echo))
+            } catch (_: Exception) {
+                echo
+            }
+            ExtraInfoWithDivider(
+                text = prettyEcho,
                 maxLines = 20,
             )
         }
     }
 
     override fun reasonToDb(): String {
-        return PermissiveJson.encodeToString(extraInfo)
+        return PermissiveJson.encodeToString(detail)
     }
 
     override fun resultSummary(ctx: Context): String {
-        return ctx.getString(R.string.query) + ": " + extraInfo.apiSummary +
-                if (extraInfo.category?.isNotEmpty() == true)
-                    " (${extraInfo.category})"
+        return ctx.getString(R.string.query) + ": " + detail.apiSummary +
+                if (detail.queryResult.category?.isNotEmpty() == true)
+                    " (${detail.queryResult.category})"
                 else
                     ""
     }
@@ -355,7 +381,7 @@ class ByRegexRule(
             RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
                 if (extraInfo.smsContent != null) {
                     val initialSmsRows = HistoryOptions(ctx).getInitialSmsRowCount()
-                    ExtraInfo(
+                    ExtraInfoWithDivider(
                         text = extraInfo.smsContent,
                         maxLines = if (expanded) Int.MAX_VALUE else initialSmsRows,
                     )
@@ -401,9 +427,9 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_REPEATED -> ByRepeatedCall(result)
         RESULT_ALLOWED_BY_DIALED -> ByDialedNumber(result)
         RESULT_ALLOWED_BY_OFF_TIME -> ByOffTime(result)
-        RESULT_BLOCKED_BY_SPAM_DB -> BySpamDb(result)
+        RESULT_BLOCKED_BY_SPAM_DB -> BySpamDb(result, matchedNumber = reason)
         RESULT_BLOCKED_BY_API_QUERY, RESULT_ALLOWED_BY_API_QUERY -> {
-            val extraInfo = PermissiveJson.decodeFromString<ApiQueryExtraInfo>(reason)
+            val extraInfo = PermissiveJson.decodeFromString<ApiQueryResultDetail>(reason)
             ByApiQuery(result, extraInfo)
         }
 

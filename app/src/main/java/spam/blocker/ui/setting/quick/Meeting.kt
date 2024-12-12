@@ -30,7 +30,6 @@ import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LightMagenta
-import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton

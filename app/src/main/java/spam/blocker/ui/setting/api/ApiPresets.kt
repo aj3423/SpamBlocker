@@ -3,6 +3,8 @@ package spam.blocker.ui.setting.api
 import android.content.Context
 import spam.blocker.R
 import spam.blocker.db.Api
+import spam.blocker.db.ImportDbReason
+import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.FilterSpamResult
 import spam.blocker.service.bot.HTTP_POST
 import spam.blocker.service.bot.HttpDownload
@@ -17,6 +19,7 @@ import spam.blocker.util.resolveBase64Tag
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
+import kotlin.collections.mapOf
 
 
 data class AuthConfig(
@@ -29,6 +32,31 @@ data class AuthConfig(
     // For validating if the user has input the correct auth credentials.
     val validator: (List<String>) -> Boolean,
 )
+
+const val tagCategory = "{category}"
+
+const val tagValid = "{valid}"
+const val tagOther = "{other}"
+const val tagFraud = "{fraud}"
+const val tagMarketing = "{marketing}"
+const val tagSurvey = "{survey}"
+const val tagPolitical = "{political}"
+
+// Only add to this, don't modify existing items
+// When adding items to this map, make sure to add to R.array.spam_categories as well.
+fun spamCategoryNamesMap(ctx: Context): Map<String, String> {
+    val array = ctx.resources.getStringArray(R.array.spam_categories)
+    return mapOf(
+        tagValid to array[0],
+
+        tagFraud to array[1],
+        tagMarketing to array[2],
+        tagSurvey to array[3],
+        tagPolitical to array[4],
+
+        tagOther to array[5], // the last one, it's also ordered on UI
+    )
+}
 
 data class ApiPreset(
     val tooltipId: Int,
@@ -55,30 +83,30 @@ val authConfig_PhoneBlock = AuthConfig(
         R.string.password,
     ),
     tooltipId = R.string.help_api_preset_phoneblock_authorization,
-    preProcessor = { actions, tags ->
+    preProcessor = { actions, formValues ->
         // replace the {username}, {password} in HttpDownload.header
         actions.find { it is HttpDownload }?.let {
             val http = it as HttpDownload
             http.header = http.header
-                .replace("{username}", tags[0])
-                .replace("{password}", tags[1])
+                .replace("{username}", formValues[0])
+                .replace("{password}", formValues[1])
                 .resolveBase64Tag()
         }
     },
     validator = {
         val username = it[0]
         val password = it[1]
-        if(!isUUID(username))
-            return@AuthConfig false
+        if (!isUUID(username))
+            false
+
         try {
             b64Decode(password).size == 16
-            return@AuthConfig true
+            true
         } catch (_: Exception) {
-            return@AuthConfig false
+            false
         }
     }
 )
-
 val ApiQueryPresets = listOf<ApiPreset>(
     // PhoneBlock
     ApiPreset(
@@ -95,7 +123,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     HttpDownload(
                         url =
 //                        if (BuildConfig.DEBUG)
-                            "https://phoneblock.net/pb-test/api/num/00{cc}{domestic}"
+                        "https://phoneblock.net/pb-test/api/num/00{cc}{domestic}"
 //                        else
 //                            "https://phoneblock.net/phoneblock/api/num/00{cc}{domestic}"
                         ,
@@ -106,7 +134,9 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         categorySig = "\"rating\":\"(.+?)\"",
                     ),
                     FilterSpamResult(),
-                    ImportToSpamDB(),
+                    ImportToSpamDB(
+                        importReason = ImportDbReason.ByAPI,
+                    ),
                 )
             )
         }
@@ -126,10 +156,20 @@ val ApiReportPresets = listOf<ApiPreset>(
                     ParseIncomingNumber(
                         numberFilter = ".*",
                     ),
+                    CategoryConfig(
+                        map = mapOf(
+                            tagValid to "A_LEGITIMATE",
+                            tagOther to "B_MISSED",
+                            tagSurvey to "D_POLL",
+                            tagMarketing to "E_ADVERTISING",
+                            tagPolitical to "E_ADVERTISING",
+                            tagFraud to "G_FRAUD",
+                        )
+                    ),
                     HttpDownload(
                         url =
 //                        if (BuildConfig.DEBUG) {
-                            "https://phoneblock.net/pb-test/api/rate"
+                        "https://phoneblock.net/pb-test/api/rate"
 //                        } else {
 //                            "https://phoneblock.net/phoneblock/api/rate"
 //                        }
@@ -137,14 +177,14 @@ val ApiReportPresets = listOf<ApiPreset>(
                         header = "Authorization: Basic {base64({username}:{password})}",
                         method = HTTP_POST,
 
-                        // rating number format: "+33123456789",
+                        // rating number format: "+3312345",
                         body = """
                             {
                                 "phone": "00{cc}{domestic}",
-                                "rating": "B_MISSED"
+                                "rating": "{category}"
                             }
                         """.trimIndent()
-                    ),
+                    )
                 )
             )
         }

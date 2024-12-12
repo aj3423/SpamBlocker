@@ -2,7 +2,6 @@ package spam.blocker.service.bot
 
 import android.Manifest
 import android.content.Context
-import android.provider.CallLog.Calls
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,15 +30,20 @@ import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
+import spam.blocker.db.ImportDbReason
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
+import spam.blocker.db.listReportableAPIs
 import spam.blocker.db.reScheduleBot
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.setting.api.tagCategory
+import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Pink80
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
@@ -59,6 +63,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.A
 import spam.blocker.util.AdbLogger
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
@@ -67,14 +72,15 @@ import spam.blocker.util.CountryCode
 import spam.blocker.util.IPermission
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions
 import spam.blocker.util.PermissiveJson
-import spam.blocker.util.PhoneNumber
+import spam.blocker.util.PermissivePrettyJson
 import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
+import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
 import spam.blocker.util.asyncHttpRequest
+import spam.blocker.util.formatAnnotated
 import spam.blocker.util.logi
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
@@ -192,9 +198,11 @@ open class HttpDownload(
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val startTime = System.currentTimeMillis()
 
-        val success = try {
+        var resolvedUrl: String? = null
+
+        return try {
             // 1. Url
-            val resolvedUrl = url
+            resolvedUrl = url
                 .resolveTimeTags()
                 .resolveNumberTag(
                     cc = aCtx.cc,
@@ -202,6 +210,7 @@ open class HttpDownload(
                     fullNumber = aCtx.fullNumber,
                     rawNumber = aCtx.rawNumber,
                 )
+                .replace(tagCategory, aCtx.realCategory ?: "")
             aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
 
             // 2. Headers map
@@ -210,7 +219,7 @@ open class HttpDownload(
                 aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: $key -> $value")
             }
 
-            // 3. body
+            // 3. post body
             val resolvedBody = body
                 .resolveNumberTag(
                     cc = aCtx.cc,
@@ -218,12 +227,13 @@ open class HttpDownload(
                     fullNumber = aCtx.fullNumber,
                     rawNumber = aCtx.rawNumber,
                 )
+                .replace(tagCategory, aCtx.realCategory ?: "")
             if (method == HTTP_POST){
                 aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: $resolvedBody")
             }
 
 
-            // 3. Send request
+            // 4. Send request
             val resultChannel = asyncHttpRequest(
                 scope = aCtx.scope,
                 urlString = resolvedUrl,
@@ -232,7 +242,7 @@ open class HttpDownload(
                 postBody = resolvedBody,
             )
 
-            // 4. Get response
+            // 5. Get response
             val result = aCtx.scope.async {
                 resultChannel.receiveCatching()
             }.await().getOrNull()
@@ -260,9 +270,10 @@ open class HttpDownload(
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
             false
+        } finally {
+            // Save the url for following actions(ImportToSpamDb)
+            aCtx.httpUrl = url
         }
-
-        return success
     }
 
     override fun label(ctx: Context): String {
@@ -573,8 +584,6 @@ class ReadFile(
 
     @Composable
     override fun Summary() {
-        val ctx = LocalContext.current
-
         SummaryLabel("$dir/$filename")
     }
 
@@ -901,7 +910,10 @@ output: null
  */
 @Serializable
 @SerialName("ImportToSpamDB")
-class ImportToSpamDB : IPermissiveAction {
+class ImportToSpamDB(
+    // This is for internal app use, not displayed on GUI
+    val importReason: ImportDbReason = ImportDbReason.Manually,
+) : IPermissiveAction {
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
@@ -910,7 +922,14 @@ class ImportToSpamDB : IPermissiveAction {
             val now = System.currentTimeMillis()
 
             val numbers = rules.map {
-                SpamNumber(peer = (it as RegexRule).pattern, time = now)
+                SpamNumber(
+                    peer = (it as RegexRule).pattern,
+                    time = now,
+                    importReason = importReason,
+                    // when import after API query, log the api domain for future reporting
+                    importReasonExtra = if(importReason == ImportDbReason.ByAPI)
+                        domainFromUrl(aCtx.httpUrl) else null,
+                )
             }
 
             if (numbers.isNotEmpty()) {
@@ -1704,7 +1723,11 @@ class ParseIncomingNumber(
     }
 }
 
-data class QueryResult(
+// The return value of the Action ParseQueryResult,
+//  and it will be saved along with other information in HistoryTable.
+@Serializable
+@SerialName("ApiQueryResult")
+data class ApiQueryResult(
     val determined: Boolean = false,
     // These values are only useful when determined == true
     val isSpam: Boolean = false,
@@ -1781,7 +1804,7 @@ class ParseQueryResult(
             aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
         }
 
-        val result = QueryResult(
+        val result = ApiQueryResult(
             determined = determined,
             isSpam = isNegative == true,
             category = category,
@@ -1896,12 +1919,12 @@ class ParseQueryResult(
     }
 }
 
+// Generate a List<RegexRule> for next step ImportToSpamDB
 @Serializable
 @SerialName("FilterSpamResult")
 class FilterSpamResult() : IPermissiveAction {
-
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as QueryResult
+        val input = aCtx.lastOutput as ApiQueryResult
 
         aCtx.lastOutput = if (input.determined && input.isSpam) {
             listOf(
@@ -1947,12 +1970,97 @@ class FilterSpamResult() : IPermissiveAction {
     }
 }
 
+// Spam category config, for reporting number.
+@Serializable
+@SerialName("CategoryConfig")
+class CategoryConfig(
+    // e.g.:
+    //  {
+    //    "{fraud}" to "G_FRAUD",
+    //    "{advertising}" to "E_ADVERTISING",
+    //    ...
+    //  }
+    var map: Map<String, String> = mapOf()
+) : IPermissiveAction {
+
+    // It gets the ActionContext.tagCategory tag and fill the ActionContext.realCategory
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        // 1. check it in the map config
+        var realCategoryStr = map[aCtx.tagCategory]
+
+        if (realCategoryStr == null) {
+            aCtx.logger?.warn(
+                ctx.getString(R.string.missing_category).formatAnnotated(
+                    aCtx.tagCategory!!.A(DodgeBlue),
+                    ctx.getString(R.string.action_category_config).A(Pink80)
+                )
+            )
+            return false
+        }
+
+        // 2. save it in ActionContext, it will be used in the next http Action
+        aCtx.realCategory = realCategoryStr
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_category_config)
+    }
+
+    @Composable
+    override fun Summary() {
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_category_config)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(iconId = R.drawable.ic_category)
+    }
+
+    @Composable
+    override fun Options() {
+        var jsonStr by remember { mutableStateOf(PermissivePrettyJson.encodeToString(map)) }
+        StrInputBox(
+            text = jsonStr,
+            label = { Text(Str(R.string.action_category_config)) },
+            leadingIconId = R.drawable.ic_category,
+            placeholder = { DimGreyLabel("""
+                {
+                  "{marketing}": "gym",
+                  "{other}": "bitcoin",
+                  ...
+                }
+            """.trimIndent()) },
+            helpTooltip = Str(R.string.help_action_category_config) ,
+            onValueChange = { newVal ->
+                try {
+                    map = PermissiveJson.decodeFromString(newVal)
+                    jsonStr = newVal
+                } catch (_: Exception) {}
+            }
+        )
+    }
+}
+
 // Report number to all api endpoints.
 // (For internal app usage only.)
 @Serializable
 @SerialName("ReportNumber")
 class ReportNumber(
-    val rawNumber: String
+    val rawNumber: String,
+    val asTagCategory: String,
+    val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IPermissiveAction {
     override fun missingPermissions(ctx: Context): List<IPermission> {
         return listOf(
@@ -1961,47 +2069,23 @@ class ReportNumber(
         )
     }
 
-    private fun isAllowedLater(ctx: Context) : Boolean {
-        // 1. check if the number is repeated or dialed
-        val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
-        if (!canReadCalls)
-            return false
-
-        val phoneNumber = PhoneNumber(ctx, rawNumber)
-        val incoming = Permissions.getHistoryCallsByNumber(
-            ctx, phoneNumber, Def.DIRECTION_INCOMING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
-        )
-        val outgoing = Permissions.getHistoryCallsByNumber(
-            ctx, phoneNumber, Def.DIRECTION_OUTGOING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
-        )
-        val isAllowedLater = (incoming + outgoing).any {
-            listOf(
-                Calls.INCOMING_TYPE,
-                Calls.OUTGOING_TYPE,
-                Calls.MISSED_TYPE,
-            ).contains(it)
-        }
-        return isAllowedLater
-    }
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        if (isAllowedLater(ctx)) {
-            logi("skip reporting repeated/dialed number: $rawNumber")
-            return false
-        }
+        val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter)
 
-        // 2. report
+        // Report
         val scope = CoroutineScope(IO)
-        val apis = G.apiReportVM.table.listAll(ctx).filter { it.enabled }
         apis.forEach { api ->
             scope.launch {
                 val aCtx = ActionContext(
                     scope = scope,
                     logger = AdbLogger(),
                     rawNumber = rawNumber,
+                    tagCategory = asTagCategory,
                 )
                 val success = api.actions.executeAll(ctx, aCtx)
-                logi("report number $rawNumber to ${api.desc}, success: $success")
+                logi("report number $rawNumber to ${api.summary()}, success: $success")
             }
+            true
         }
 
         return true
