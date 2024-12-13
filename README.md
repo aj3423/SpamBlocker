@@ -32,6 +32,7 @@ It works without replacing your default call/SMS app.
  &ensp; It takes over the SMS notifications, it only filters the notifications, the spam messages will still be present in the SMS app.
    > 💡 Please turn off the notification permission of the default SMS app in system settings, otherwise there will be double SMS notifications.
 
+It's not necessary to leave this app running in the background, you can kill the process after it's configured, if it doesn't work, please refer to [this](https://github.com/aj3423/SpamBlocker/issues/100).
 
 # Features:
 
