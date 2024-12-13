@@ -16,15 +16,14 @@
     <string name="exclude_services">排除服务</string>
     <string name="help_exclude_bg_service">
         <![CDATA[
-        有些应用会运行额外的前台服务，在此输入服务名称以排除它们。<br>
+        有些应用会运行额外的前台服务，在此处添加服务名称以排除它们。<br>
         <br>
         查找服务名称的方法：<br>
         &emsp; 1. 在该应用中激活服务。<br>
         &emsp; 2. 所有已激活的服务名称将显示在此处。<br>
+        &emsp; 3. 点击名称将其添加。<br>
         <br>
-        例如，如果服务名称是com.app.<b>FGCalling</b>.Service，您可以简单地
-        输入<b>FGCalling</b>将其排除。<br>
-        您可以输入多个名称，用逗号分隔。
+        您可以添加多个名称，用逗号分隔。
         ]]>
     </string>
     <string name="running_services">正在运行的服务</string>

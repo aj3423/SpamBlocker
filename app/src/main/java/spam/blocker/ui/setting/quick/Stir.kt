@@ -19,13 +19,13 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.SharedPref.Stir
+import spam.blocker.util.spf
 
 @Composable
 fun Stir() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
-    val spf = Stir(ctx)
+    val spf = spf.Stir(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
     var isExclusive by remember { mutableStateOf(spf.isExclusive()) }

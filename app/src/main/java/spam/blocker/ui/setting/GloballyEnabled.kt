@@ -35,15 +35,15 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 import spam.blocker.util.Util.isDefaultSmsAppNotificationEnabled
+import spam.blocker.util.spf
 
 @Composable
 fun GloballyEnabled() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
-    val spf = Global(ctx)
+    val spf = spf.Global(ctx)
 
     fun checkCallState(): Boolean {
         return spf.isCallEnabled() && Permissions.isCallScreeningEnabled(ctx)
@@ -161,7 +161,7 @@ fun GloballyEnabled() {
                 }
             }
             SwitchBox(G.globallyEnabled.value) { enabled ->
-                Global(ctx).setGloballyEnabled(enabled)
+                spf.setGloballyEnabled(enabled)
                 G.globallyEnabled.value = enabled
             }
         }

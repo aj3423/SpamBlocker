@@ -7,9 +7,9 @@ import android.content.Context.TELECOM_SERVICE
 import android.content.Intent
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
-import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
 import spam.blocker.util.logi
+import spam.blocker.util.spf
 
 class CallStateReceiver : BroadcastReceiver() {
 
@@ -17,7 +17,7 @@ class CallStateReceiver : BroadcastReceiver() {
 
         // `numToBlock` and `lastCalledTime` are set in the CallScreeningService,
         //   they are only set when the call should be blocked by "answer + hang up"
-        val (numToBlock, lastCalledTime) = Temporary(ctx).getLastCallToBlock()
+        val (numToBlock, lastCalledTime) = spf.Temporary(ctx).getLastCallToBlock()
 
         // if the time since the `lastCalledTime` is less than 1 second,
         //   answer the call and hang up

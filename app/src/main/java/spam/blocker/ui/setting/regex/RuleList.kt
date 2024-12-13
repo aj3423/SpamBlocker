@@ -56,7 +56,7 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
-import spam.blocker.util.SharedPref.RegexOptions
+import spam.blocker.util.spf
 
 
 // From:
@@ -89,7 +89,7 @@ fun RuleSettingsPopup(
                 vm.reloadDb(ctx)
         }
     ) {
-        val spf = RegexOptions(ctx)
+        val spf = spf.RegexOptions(ctx)
 
         // max none scroll items: []
         LabeledRow(
@@ -175,7 +175,7 @@ fun RuleList(
 ) {
     val forType = vm.forType
     val ctx = LocalContext.current
-    val spf = RegexOptions(ctx)
+    val spf = spf.RegexOptions(ctx)
     val coroutine = rememberCoroutineScope()
 
     val ruleSettingsTrigger = rememberSaveable { mutableStateOf(false) }

@@ -54,24 +54,29 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Informar automaticamente dun número bloqueado a todos os puntos finais da API en chamadas entrantes.<br>
+        Informar automaticamente un número bloqueado a todos os puntos finais da API en chamadas entrantes.<br>
         <br>
-        Hai un búfer de tempo dunha hora antes de que se informe dun número. Se o número se repite ou se volveu marcar dentro deste búfer de tempo, considérase non spam e non se informará.<br>
+        Hai un búfer de tempo dunha hora antes de que se informe un número. Se o número se permite máis tarde debido a repeticións ou marcado cara atrás dentro deste búfer de tempo, considérase non spam e non se informará.<br>
         <br>
-        Só os números bloqueados por estes tipos <font color="#03DAC5"><b>serán</b></font> informados:<br>
+        <b>1</b>. Os números aprobados <font color="#fa7f71"><b>non</b></font> serán informados.
+        <br>
+        <b>2</b>. Os números que están bloqueados por estes tipos <font color="#03DAC5"><b>serán</b></font> programados para informar:<br>
+        <br>
         - <font color="#6ed0ff"><b>Sen contacto</b></font>(exclusivo)<br>
         - <font color="#6ed0ff"><b>Atestación STIR</b></font><br>
         - <font color="#6ed0ff"><b>Expr. regular de número</b></font><br>
         - <font color="#6ed0ff"><b>Expr. regular de contido SMS</b></font><br>
         <br>
-        Os números bloqueados polos seguintes tipos <font color="#fa7f71"><b>non serán</b></font> informados:<br>
-        - <font color="#6ed0ff"><b>Consulta instantánea</b></font>, impedindo que o número do punto final da API se filtre aos seus competidores.<br>
-        - <font color="#6ed0ff"><b>Base de datos de spam</b></font>, é probable que se importasen desde puntos finais da API.<br>
-        - <font color="#6ed0ff"><b>Expr. regular de contacto, Expr. regular de grupo de contacto</b></font><br>
+        <b>3</b>. Os números que están bloqueados polos seguintes tipos <font color="#fa7f71"><b>non</b></font> serán informados:<br>
+        <br>
+        - <font color="#6ed0ff"><b>Expr. regular de contacto</b></font><br>
+        - <font color="#6ed0ff"><b>Expr. regular de grupo de contactos</b></font><br>
         - <font color="#6ed0ff"><b>Modo reunión</b></font><br>
         - <font color="#6ed0ff"><b>Probas globais</b></font><br>
-        <br>
-        Os números aprobados <font color="#fa7f71"><b>non serán</b></font> informados.
+        - <font color="#6ed0ff"><b>Consulta instantánea</b></font>, evitando que o número do punto final da API sexa filtrado aos seus competidores.<br>
+        &emsp; Unha excepción é que se informará de volta á mesma API para aumentar a súa puntuación. (se está configurada unha API de informes co mesmo dominio)<br>
+        - <font color="#6ed0ff"><b>Base de datos</b></font><br>
+        &emsp; Unha excepción é que, se o número foi engadido orixinalmente por unha consulta API instantánea e máis tarde bloqueado de novo pola base de datos local, só se informará a esa API para aumentar a puntuación. (se está configurada unha API de informes co mesmo dominio)<br>
         ]]>
     </string>
     <string name="auto_report">Informe automático</string>

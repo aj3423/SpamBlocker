@@ -53,8 +53,7 @@ import spam.blocker.util.AppInfo
 import spam.blocker.util.Notification
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
-import spam.blocker.util.SharedPref.BlockType
-import spam.blocker.util.SharedPref.HistoryOptions
+import spam.blocker.util.spf
 
 
 @Composable
@@ -98,7 +97,7 @@ interface ICheckResult {
     // Used in the notification
     fun resultSummary(ctx: Context): String
 
-    // This will be rendered in the history items as the reason.
+    // This will be rendered in the history items as the reason.(2nd row)
     @Composable
     fun ResultSummary(expanded: Boolean) {
         GreyLabel(
@@ -109,7 +108,7 @@ interface ICheckResult {
         )
     }
 
-    // It will be displayed in the history card when it's expanded.
+    // It will be displayed in the history card when expanded.
     // 1. Show "Report Number" button
     // 2. Show detailed information
     // E.g.:
@@ -123,15 +122,17 @@ interface ICheckResult {
         return Def.isBlocked(type)
     }
 
-    // Prepare the content to be saved in database, as the `reason` column
+    // Prepare the content to be saved in database, as the `HistoryTable.reason` column
     fun reasonToDb(): String {
         return ""
     }
 
+    // The default block type when it's not overridden by per rule block type.
     fun getBlockType(ctx: Context): Int {
-        return BlockType(ctx).getType()
+        return spf.BlockType(ctx).getType()
     }
 
+    // The default notification channel for default call/sms, when it's not overridden by per rule type
     fun getSpamImportance(isCall: Boolean): Int {
         return if (isCall)
             Notification.defaultSpamCallImportance
@@ -140,6 +141,7 @@ interface ICheckResult {
     }
 }
 
+// passed by default
 class ByDefault(
     override val type: Int = RESULT_ALLOWED_BY_DEFAULT,
 ) : ICheckResult {
@@ -148,6 +150,7 @@ class ByDefault(
     }
 }
 
+// allowed by emergency call
 class ByEmergency(
     override val type: Int = RESULT_ALLOWED_BY_EMERGENCY,
 ) : ICheckResult {
@@ -156,6 +159,7 @@ class ByEmergency(
     }
 }
 
+// allowed by contact, or blocked by non-contact
 class ByContact(
     override val type: Int,
     private val contactName: String? = null,
@@ -173,6 +177,7 @@ class ByContact(
 }
 
 
+// allowed by recent apps
 class ByRecentApp(
     private val pkgName: String,
     override val type: Int = RESULT_ALLOWED_BY_RECENT_APP,
@@ -195,6 +200,7 @@ class ByRecentApp(
     }
 }
 
+// blocked by meeting mode
 class ByMeetingMode(
     private val pkgName: String,
     override val type: Int = RESULT_BLOCKED_BY_MEETING_MODE,
@@ -217,6 +223,7 @@ class ByMeetingMode(
     }
 }
 
+// allowed by repeated call
 class ByRepeatedCall(
     override val type: Int = RESULT_ALLOWED_BY_REPEATED,
 ) : ICheckResult {
@@ -225,6 +232,7 @@ class ByRepeatedCall(
     }
 }
 
+// allowed by dialed number
 class ByDialedNumber(
     override val type: Int = RESULT_ALLOWED_BY_DIALED,
 ) : ICheckResult {
@@ -233,6 +241,7 @@ class ByDialedNumber(
     }
 }
 
+// allowed by off time
 class ByOffTime(
     override val type: Int = RESULT_ALLOWED_BY_OFF_TIME,
 ) : ICheckResult {
@@ -241,6 +250,7 @@ class ByOffTime(
     }
 }
 
+// blocked by spam db
 class BySpamDb(
     override val type: Int = RESULT_BLOCKED_BY_SPAM_DB,
     // Because it checks both rawNumber and clearNumber(rawNumber), this value stores the matched one,
@@ -255,6 +265,7 @@ class BySpamDb(
     }
 }
 
+// allowed/blocked by stir/shaken
 class BySTIR(
     override val type: Int,
     private val stirResult: Int,
@@ -298,6 +309,7 @@ data class ApiQueryResultDetail(
     val queryResult: ApiQueryResult, // the result of Action ApiQuery
 )
 
+// allowed/blocked by api query
 class ByApiQuery(
     override val type: Int,
     val detail: ApiQueryResultDetail,
@@ -342,6 +354,7 @@ class RegexExtraInfo(
     val smsContent: String? = null,
 )
 
+// allowed/blocked by regex rule
 class ByRegexRule(
     override val type: Int,
     private val rule: RegexRule?, // null: the rule is deleted
@@ -380,7 +393,7 @@ class ByRegexRule(
         when(type) {
             RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
                 if (extraInfo.smsContent != null) {
-                    val initialSmsRows = HistoryOptions(ctx).getInitialSmsRowCount()
+                    val initialSmsRows = spf.HistoryOptions(ctx).getInitialSmsRowCount()
                     ExtraInfoWithDivider(
                         text = extraInfo.smsContent,
                         maxLines = if (expanded) Int.MAX_VALUE else initialSmsRows,

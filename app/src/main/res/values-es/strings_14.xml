@@ -17,16 +17,14 @@
     <string name="exclude_services">Excluir Servicios</string>
     <string name="help_exclude_bg_service">
         <![CDATA[
-        Algunas aplicaciones ejecutan servicios en primer plano adicionales, introduzca los nombres de los servicios aquí para excluirlos.<br>
+        Algunas aplicaciones ejecutan servicios en primer plano adicionales, agregue los nombres de los servicios aquí para excluirlos.<br>
         <br>
         Para encontrar el nombre de un servicio:<br>
         &emsp; 1. Active el servicio en esa aplicación.<br>
         &emsp; 2. Todos los nombres de los servicios activados aparecerán aquí.<br>
+        &emsp; 3. Toque un nombre para agregarlo.<br>
         <br>
-        Por ejemplo, si el nombre de un servicio es com.app.<b>FGCalling</b>.Service, puede simplemente
-        introducir <b>FGCalling</b> para excluirlo.
-        <br>
-        Puede introducir varios nombres, separados por comas.
+        Puede agregar varios nombres, separados por comas.
         ]]>
     </string>
     <string name="running_services">Servicios en ejecución</string>

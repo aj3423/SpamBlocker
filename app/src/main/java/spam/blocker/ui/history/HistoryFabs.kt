@@ -34,7 +34,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.SharedPref.HistoryOptions
+import spam.blocker.util.spf
 
 
 private const val HISTORY_CLEANUP_WORK_TAG = "history_cleanup_work_tag"
@@ -42,7 +42,7 @@ private const val HISTORY_CLEANUP_WORK_TAG = "history_cleanup_work_tag"
 fun reScheduleHistoryCleanup(ctx: Context) {
     MyWorkManager.cancelByTag(ctx, HISTORY_CLEANUP_WORK_TAG)
 
-    val ttl = HistoryOptions(ctx).getTTL()
+    val ttl = spf.HistoryOptions(ctx).getTTL()
     if (ttl > 0) {
         MyWorkManager.schedule(
             ctx,
@@ -65,7 +65,7 @@ fun HistoryFabs(
     vm: HistoryViewModel,
 ) {
     val ctx = LocalContext.current
-    val spf = HistoryOptions(ctx)
+    val spf = spf.HistoryOptions(ctx)
 
     var showPassed by rememberSaveable { mutableStateOf(spf.getShowPassed()) }
     var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }

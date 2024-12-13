@@ -18,16 +18,14 @@
     <string name="exclude_services">Exclude Services</string>
     <string name="help_exclude_bg_service">
         <![CDATA[
-        Some apps run extra foreground services, input the service names here to exclude them.<br>
+        Some apps run extra foreground services, add the service names here to exclude them.<br>
         <br>
         To find a service name:<br>
         &emsp; 1. Activate the service in that app.<br>
         &emsp; 2. All activated service names will appear here.<br>
+        &emsp; 3. Tap a name to add it.<br>
         <br>
-        For example, if a service name is com.app.<b>FGCalling</b>.Service, you can simply
-        input <b>FGCalling</b> to exclude it.
-        <br>
-        You can enter multiple names, separated by commas.
+        You can add multiple names, separated by commas.
         ]]>
     </string>
     <string name="running_services">Running Services</string>
@@ -58,14 +56,5 @@
     </string>
     <string name="missing_category">
         Category %s is not configured in action %s, please configure it in the API configuration(if the API supports this category).
-    </string>
-    <string name="fallback_category">Fallback Category</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        When manually reporting as a specific category, such as \"Political\", and if the API doesn\'t support that category,
-        it will fall back to this default value. <br>
-        <br>
-        If this value is not configured, the number will not be reported to the API when it attempts to fall back to it.
-        ]]>
     </string>
 </resources>

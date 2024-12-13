@@ -54,24 +54,29 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Signaler automatiquement un numéro bloqué à tous les points de terminaison de l\'API lors des appels entrants.<br>
+        Signaler automatiquement un numéro bloqué à toutes les API lors des appels entrants.<br>
         <br>
-        Il existe une période tampon d\'une heure avant qu\'un numéro ne soit signalé. Si le numéro se répète ou a été rappelé dans cette période tampon, il est considéré comme non indésirable et ne sera pas signalé.<br>
+        Il existe une temporisation d\'une heure avant qu\'un numéro ne soit signalé. Si le numéro est autorisé plus tard en raison de répétitions ou de rappels dans cette période, il est considéré comme non-spam et ne sera pas signalé.<br>
         <br>
-        Seuls les numéros bloqués par ces types <font color="#03DAC5"><b>le seront</b></font> : <br>
+        <b>1</b>. Les numéros autorisés <font color="#fa7f71"><b>ne seront pas</b></font> signalés.
+        <br>
+        <b>2</b>. Les numéros bloqués par ces types <font color="#03DAC5"><b>le seront</b></font> : <br>
+        <br>
         - <font color="#6ed0ff"><b>Non-Contact</b></font>(exclusif)<br>
         - <font color="#6ed0ff"><b>Attestation STIR</b></font><br>
         - <font color="#6ed0ff"><b>Expression régulière de numéro</b></font><br>
         - <font color="#6ed0ff"><b>Expression régulière de contenu SMS</b></font><br>
         <br>
-        Les numéros bloqués par les types suivants <font color="#fa7f71"><b>ne le seront pas</b></font> : <br>
-        - <font color="#6ed0ff"><b>Requête instantanée</b></font>, empêchant le numéro du point de terminaison de l\'API d\'être divulgué à ses concurrents.<br>
-        - <font color="#6ed0ff"><b>Base de données indésirables</b></font>, ils ont probablement été importés à partir de points de terminaison d\'API.<br>
-        - <font color="#6ed0ff"><b>Expression régulière de contact, expression régulière de groupe de contacts</b></font><br>
-        - <font color="#6ed0ff"><b>Mode réunion</b></font><br>
-        - <font color="#6ed0ff"><b>Tests globaux</b></font><br>
+        <b>3</b>. Les numéros bloqués par les types suivants <font color="#fa7f71"><b>ne seront pas</b></font> signalés : <br>
         <br>
-        Les numéros autorisés <font color="#fa7f71"><b>ne seront pas</b></font> signalés.
+        - <font color="#6ed0ff"><b>Expression régulière de contact</b></font><br>
+        - <font color="#6ed0ff"><b>Expression régulière de groupe de contacts</b></font><br>
+        - <font color="#6ed0ff"><b>Mode réunion</b></font><br>
+        - <font color="#6ed0ff"><b>Test global</b></font><br>
+        - <font color="#6ed0ff"><b>Requête instantanée</b></font>, empêchant la fuite du numéro du point de terminaison de l\'API vers ses concurrents.<br>
+        &emsp; Une exception est qu\'il sera renvoyé à la même API pour augmenter son score de notation. (si une API de reporting avec le même domaine est configurée)<br>
+        - <font color="#6ed0ff"><b>Base de données</b></font><br>
+        &emsp; Une exception est que, si le numéro a été initialement ajouté par une requête API instantanée et bloqué plus tard par la base de données locale, il ne sera signalé qu\'à cette API pour augmenter le score de notation. (si une API de reporting avec le même domaine est configurée)<br>
         ]]>
     </string>
     <string name="auto_report">Rapport automatique</string>

@@ -19,14 +19,9 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.Now
 import spam.blocker.util.Permissions
 import spam.blocker.util.PhoneNumber
-import spam.blocker.util.SharedPref.Contact
-import spam.blocker.util.SharedPref.Dialed
-import spam.blocker.util.SharedPref.OffTime
-import spam.blocker.util.SharedPref.RecentAppInfo
-import spam.blocker.util.SharedPref.RecentApps
-import spam.blocker.util.SharedPref.RepeatedCall
-import spam.blocker.util.SharedPref.SharedPref
 import spam.blocker.util.Util
+import spam.blocker.util.spf
+import spam.blocker.util.spf.RecentAppInfo
 import java.util.Calendar
 
 
@@ -42,7 +37,7 @@ class RuleTest {
     fun setup() {
         clearAllMocks()
 
-        SharedPref(ctx).clear()
+        spf.SharedPref(ctx).clear()
         NumberRuleTable().clearAll(ctx)
         ContentRuleTable().clearAll(ctx)
     }
@@ -161,7 +156,7 @@ class RuleTest {
     // In Contact > blacklist
     @Test
     fun contact_inclusive() {
-        val spf = Contact(ctx)
+        val spf = spf.Contact(ctx)
         spf.setEnabled(true)
         spf.setExclusive(false)
         mock_contact(A)
@@ -177,7 +172,7 @@ class RuleTest {
     // Non Contact -> block
     @Test
     fun contact_exclusive() {
-        val spf = Contact(ctx)
+        val spf = spf.Contact(ctx)
         spf.setEnabled(true)
         spf.setExclusive(true)
         mock_contact(A)
@@ -195,7 +190,7 @@ class RuleTest {
     // testing repeated call
     @Test
     fun repeated_call() {
-        RepeatedCall(ctx).apply {
+        spf.RepeatedCall(ctx).apply {
             setEnabled(true)
             setTimes(4)
             setInXMin(5)
@@ -242,7 +237,7 @@ class RuleTest {
     // testing dialed
     @Test
     fun dialed() {
-        val spf = Dialed(ctx)
+        val spf = spf.Dialed(ctx)
         val inXdays = 5
         spf.setEnabled(true)
         spf.setDays(inXdays)
@@ -300,7 +295,7 @@ class RuleTest {
 
     @Test
     fun recent_app() {
-        val spf = RecentApps(ctx)
+        val spf = spf.RecentApps(ctx)
         val pkgs = listOf("my.pkg")
         spf.setDefaultMin(5)
         spf.setList(pkgs.map { RecentAppInfo(it) })
@@ -340,7 +335,7 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.type)
 
         // set off-time to (1:00, 2:00)
-        val spf = OffTime(ctx).apply {
+        val spf = spf.OffTime(ctx).apply {
             setEnabled(true)
 
             setStartHour(1)

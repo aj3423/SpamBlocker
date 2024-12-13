@@ -9,7 +9,7 @@ import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
-import spam.blocker.util.SharedPref.RegexOptions
+import spam.blocker.util.spf
 
 open class RuleViewModel(
     val table: RuleTable,
@@ -38,7 +38,7 @@ open class RuleViewModel(
             return
         }
         listCollapsed.value = !listCollapsed.value
-        val spf = RegexOptions(ctx)
+        val spf = spf.RegexOptions(ctx)
         when (forType) {
             Def.ForNumber -> spf.setNumberCollapsed(listCollapsed.value)
             Def.ForSms -> spf.setContentCollapsed(listCollapsed.value)
@@ -47,7 +47,7 @@ open class RuleViewModel(
     }
 
     fun reloadOptions(ctx: Context) {
-        val spf = RegexOptions(ctx)
+        val spf = spf.RegexOptions(ctx)
 
         listCollapsed.value = when (forType) {
             Def.ForNumber -> spf.isNumberCollapsed()

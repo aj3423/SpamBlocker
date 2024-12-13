@@ -18,7 +18,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.util.SharedPref.SharedPref
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -478,7 +477,7 @@ object Util {
 
     // returns `true` if it's the first time
     fun doOnce(ctx: Context, tag: String, doSomething: () -> Unit): Boolean {
-        val spf = SharedPref(ctx)
+        val spf = spf.SharedPref(ctx)
         val alreadyExist = spf.readBoolean(tag, false)
         if (!alreadyExist) {
             spf.writeBoolean(tag, true)

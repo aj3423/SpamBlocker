@@ -16,15 +16,14 @@
     <string name="exclude_services">除外サービス</string>
     <string name="help_exclude_bg_service">
         <![CDATA[
-        一部のアプリは追加のフォアグラウンドサービスを実行します。それらを除外するには、ここにサービス名を入力してください。<br>
+        一部のアプリは追加のフォアグラウンドサービスを実行します。これらのサービス名をここに追加して除外します。<br>
         <br>
-        サービス名を見つけるには：<br>
+        サービス名を確認するには:<br>
         &emsp; 1. そのアプリでサービスをアクティブにします。<br>
         &emsp; 2. アクティブ化されたすべてのサービス名がここに表示されます。<br>
+        &emsp; 3. 名前をタップして追加します。<br>
         <br>
-        たとえば、サービス名がcom.app.<b>FGCalling</b>.Serviceの場合、<b>FGCalling</b>と入力するだけで除外できます。
-        <br>
-        複数の名前を入力できます（カンマで区切ります）。
+        コンマで区切って複数の名前を追加できます。
         ]]>
     </string>
     <string name="running_services">実行中のサービス</string>

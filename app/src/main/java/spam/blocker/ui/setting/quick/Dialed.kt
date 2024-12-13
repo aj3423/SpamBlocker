@@ -20,12 +20,12 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions.isCallLogPermissionGranted
-import spam.blocker.util.SharedPref.Dialed
+import spam.blocker.util.spf
 
 @Composable
 fun Dialed() {
     val ctx = LocalContext.current
-    val spf = Dialed(ctx)
+    val spf = spf.Dialed(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && isCallLogPermissionGranted(ctx)) }
     var inXDay by remember { mutableStateOf<Int?>(spf.getDays()) }

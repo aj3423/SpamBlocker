@@ -11,7 +11,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.Launcher
-import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.spf
 
 // list of language codes: https://github.com/championswimmer/android-locales
 // non-flag emoji: https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement
@@ -34,7 +34,7 @@ object Languages {
 @Composable
 fun Language() {
     val ctx = LocalContext.current
-    val spf = Global(ctx)
+    val spf = spf.Global(ctx)
 
     var currLangCode by remember {
         mutableStateOf(spf.getLanguage())

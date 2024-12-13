@@ -57,23 +57,30 @@
         <![CDATA[
         Auto report a blocked number to all API endpoints on incoming calls.<br>
         <br>
-        There is a one-hour time buffer before a number is reported. If the number repeats or has been dialed
+        There is a one-hour time buffer before a number is reported. If the number is allowed later due to repeats or dialed
         back within this time buffer, it\'s considered non-spam and will not be reported.<br>
         <br>
-        Only numbers blocked by these types <font color="#03DAC5"><b>will</b></font> be reported:<br>
+        <b>1</b>. Passed numbers <font color="#fa7f71"><b>will not</b></font> be reported.
+        <br>
+        <b>2</b>. Numbers that are blocked by these types <font color="#03DAC5"><b>will</b></font> be scheduled to report:<br>
+        <br>
         - <font color="#6ed0ff"><b>Non-Contact</b></font>(exclusive)<br>
         - <font color="#6ed0ff"><b>STIR Attestation</b></font><br>
         - <font color="#6ed0ff"><b>Number Regex</b></font><br>
         - <font color="#6ed0ff"><b>SMS Content Regex</b></font><br>
         <br>
-        Numbers blocked by following types <font color="#fa7f71"><b>will not</b></font> be reported:<br>
-        - <font color="#6ed0ff"><b>Instant Query</b></font>, preventing the API endpoint\'s number from being leaked to their competitors.<br>
-        - <font color="#6ed0ff"><b>Spam Database</b></font>, they are likely to have been imported from API endpoints.<br>
-        - <font color="#6ed0ff"><b>Contact Regex, Contact Group Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Meeting Mode</b></font><br>
-        - <font color="#6ed0ff"><b>Global testing</b></font><br>
+        <b>3</b>. Numbers that are blocked by following types <font color="#fa7f71"><b>will not</b></font> be reported:<br>
         <br>
-        Passed numbers <font color="#fa7f71"><b>will not</b></font> be reported.
+        - <font color="#6ed0ff"><b>Contact Regex</b></font><br>
+        o
+        - <font color="#6ed0ff"><b>Contact Group Regex</b></font><br>
+        - <font color="#6ed0ff"><b>Meeting Mode</b></font><br>
+        - <font color="#6ed0ff"><b>Global Testing</b></font><br>
+        - <font color="#6ed0ff"><b>Instant Query</b></font>, preventing the API endpoint\'s number from being leaked to their competitors.<br>
+        &emsp; One exception is that, it will be reported back to the same API to increase its rating score. (if a reporting API with the same domain is configured)<br>
+        - <font color="#6ed0ff"><b>Database</b></font><br>
+        &emsp; One exception is that, if the number was originally added by an instant API query and later blocked again by
+        the local database, it will be reported only to that API to increase the rating score. (if a reporting API with the same domain is configured)<br>
         ]]>
     </string>
 </resources>

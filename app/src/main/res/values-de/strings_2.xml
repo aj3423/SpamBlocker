@@ -54,24 +54,29 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Automatischer Bericht einer blockierten Nummer an alle API-Endpunkte bei eingehenden Anrufen.<br>
+        Automatische Meldung einer blockierten Nummer an alle API-Endpunkte bei eingehenden Anrufen.<br>
         <br>
-        Es gibt einen einstündigen Puffer, bevor eine Nummer gemeldet wird. Wenn die Nummer wiederholt wird oder innerhalb dieses Zeitpuffers zurückgerufen wurde, wird sie als nicht Spam eingestuft und nicht gemeldet.<br>
+        Es gibt einen einstündigen Zeitpuffer, bevor eine Nummer gemeldet wird. Wenn die Nummer später aufgrund von Wiederholungen oder Rückrufen innerhalb dieses Zeitpuffers zugelassen wird, wird sie als Nicht-Spam betrachtet und nicht gemeldet.<br>
         <br>
-        Nur Nummern, die durch diese Typen <font color="#03DAC5"><b>geblockt</b></font> werden, werden gemeldet:<br>
+        <b>1</b>. Weitergeleitete Nummern werden <font color="#fa7f71"><b>nicht</b></font> gemeldet.
+        <br>
+        <b>2</b>. Nummern, die durch diese Typen blockiert werden <font color="#03DAC5"><b>werden</b></font> zur Meldung eingeplant:<br>
+        <br>
         - <font color="#6ed0ff"><b>Nicht-Kontakt</b></font>(ausschließlich)<br>
         - <font color="#6ed0ff"><b>STIR-Attestierung</b></font><br>
         - <font color="#6ed0ff"><b>Nummern-Regex</b></font><br>
         - <font color="#6ed0ff"><b>SMS-Inhalt-Regex</b></font><br>
         <br>
-        Nummern, die durch folgende Typen <font color="#fa7f71"><b>nicht</b></font> geblockt werden, werden <font color="#fa7f71"><b>nicht</b></font> gemeldet:<br>
-        - <font color="#6ed0ff"><b>Sofortige Abfrage</b></font>, um zu verhindern, dass die Nummer des API-Endpunkts an Wettbewerber weitergegeben wird.<br>
-        - <font color="#6ed0ff"><b>Spam-Datenbank</b></font>, diese wurden wahrscheinlich von API-Endpunkten importiert.<br>
-        - <font color="#6ed0ff"><b>Kontakt-Regex, Kontaktgruppen-Regex</b></font><br>
+        <b>3</b>. Nummern, die durch folgende Typen blockiert werden <font color="#fa7f71"><b>werden nicht</b></font> gemeldet:<br>
+        <br>
+        - <font color="#6ed0ff"><b>Kontakt-Regex</b></font><br>
+        - <font color="#6ed0ff"><b>Kontaktgruppen-Regex</b></font><br>
         - <font color="#6ed0ff"><b>Besprechungsmodus</b></font><br>
         - <font color="#6ed0ff"><b>Globales Testen</b></font><br>
-        <br>
-        Weitergeleitete Nummern <font color="#fa7f71"><b>werden nicht</b></font> gemeldet.
+        - <font color="#6ed0ff"><b>Sofortabfrage</b></font>, um zu verhindern, dass die Nummer des API-Endpunkts an Wettbewerber weitergegeben wird.<br>
+        &emsp; Eine Ausnahme ist, dass sie an dieselbe API zurück gemeldet wird, um deren Bewertung zu erhöhen. (wenn eine Reporting-API mit derselben Domain konfiguriert ist)<br>
+        - <font color="#6ed0ff"><b>Datenbank</b></font><br>
+        &emsp; Eine Ausnahme ist, dass, wenn die Nummer ursprünglich durch eine Instant-API-Abfrage hinzugefügt und später wieder von der lokalen Datenbank blockiert wurde, sie nur an diese API gemeldet wird, um die Bewertung zu erhöhen. (wenn eine Reporting-API mit derselben Domain konfiguriert ist)<br>
         ]]>
     </string>
     <string name="auto_report">Automatischer Bericht</string>

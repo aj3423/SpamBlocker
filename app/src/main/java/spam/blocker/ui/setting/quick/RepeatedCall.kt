@@ -26,13 +26,13 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions.isCallLogPermissionGranted
-import spam.blocker.util.SharedPref.RepeatedCall
+import spam.blocker.util.spf
 
 @Composable
 fun RepeatedCall() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
-    val spf = RepeatedCall(ctx)
+    val spf = spf.RepeatedCall(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && isCallLogPermissionGranted(ctx)) }
     var times by remember { mutableStateOf<Int?>(spf.getTimes()) }

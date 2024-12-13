@@ -17,13 +17,12 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
-import spam.blocker.util.SharedPref.Global
-import spam.blocker.util.SharedPref.HistoryOptions
+import spam.blocker.util.spf
 
 class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, intent: Intent?) {
-        if (!Global(ctx!!).isGloballyEnabled() || !Global(ctx).isSmsEnabled()) {
+        if (!spf.Global(ctx!!).isGloballyEnabled() || !spf.Global(ctx).isSmsEnabled()) {
             return
         }
         val action = intent?.action
@@ -47,7 +46,7 @@ class SmsReceiver : BroadcastReceiver() {
         rawNumber: String,
         messageBody: String
     ): ICheckResult {
-        val spf = HistoryOptions(ctx)
+        val spf = spf.HistoryOptions(ctx)
 
         val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
 

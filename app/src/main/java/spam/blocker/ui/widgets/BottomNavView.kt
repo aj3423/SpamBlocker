@@ -36,7 +36,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.Lambda1
-import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.spf
 import kotlin.math.min
 import kotlin.math.roundToInt
 
@@ -103,7 +103,7 @@ fun BottomBar(vm: BottomBarViewModel) {
         mutableFloatStateOf(0F)
     }
 
-    var currentRoute = remember { Global(ctx).getActiveTab() }
+    var currentRoute = remember { spf.Global(ctx).getActiveTab() }
 
     val density = LocalDensity.current
     Box(

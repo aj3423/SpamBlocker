@@ -46,8 +46,8 @@ import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
+import spam.blocker.util.spf
 
 
 class MainActivity : ComponentActivity() {
@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
         }
 
         val ctx = this
-        val spf = Global(ctx)
+        val spf = spf.Global(ctx)
 
         // language
         Util.setLocale(ctx, spf.getLanguage())
@@ -190,7 +190,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun onTabSelected(route: String) {
-        Global(this).setActiveTab(route)
+        spf.Global(this).setActiveTab(route)
         when (route) {
             Def.CALL_TAB_ROUTE -> Permissions.launcherSetAsCallScreeningApp(null)
             Def.SMS_TAB_ROUTE -> Permissions.requestReceiveSmsPermission(this)
@@ -207,7 +207,7 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("ComposableNaming")
     @Composable
     private fun checkWorkProfile() {
-        val spf = Global(this)
+        val spf = spf.Global(this)
         val alreadyShown by remember { mutableStateOf(spf.hasPromptedForRunningInWorkProfile()) }
         val runningInWorkProf by remember { mutableStateOf(Util.isRunningInWorkProfile(this)) }
 

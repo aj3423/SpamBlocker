@@ -54,24 +54,29 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Gelen aramalarda engellenen numarayı tüm API uç noktalarına otomatik olarak raporla.<br>
+        Gelen aramalarda engellenen numarayı tüm API uç noktalarına otomatik olarak raporlayın.<br>
         <br>
-        Bir numara raporlanmadan önce bir saatlik zaman tamponu vardır. Numara tekrarlanırsa veya bu zaman tamponu içinde geri aranırsa, spam dışı kabul edilir ve raporlanmaz.<br>
+        Bir numara raporlanmadan önce bir saatlik bir zaman tamponu vardır. Bu zaman tamponu içinde tekrarlar veya geri aranırsa numara daha sonra izin verilirse, spam olarak kabul edilmez ve raporlanmaz.<br>
         <br>
-        Yalnızca şu türler tarafından engellenen numaralar <font color="#03DAC5"><b>raporlanacaktır</b></font>:<br>
-        - <font color="#6ed0ff"><b>Kişi Değil</b></font>(hariç tutulan)<br>
+        <b>1</b>. Geçen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>.
+        <br>
+        <b>2</b>. Bu türler tarafından engellenen numaralar <font color="#03DAC5"><b>raporlanacaktır</b></font>:<br>
+        <br>
+        - <font color="#6ed0ff"><b>Kişi Değil</b></font>(hariç tutma)<br>
         - <font color="#6ed0ff"><b>STIR Doğrulaması</b></font><br>
         - <font color="#6ed0ff"><b>Numara Regex</b></font><br>
         - <font color="#6ed0ff"><b>SMS İçerik Regex</b></font><br>
         <br>
-        Aşağıdaki türler tarafından engellenen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>:<br>
-        - <font color="#6ed0ff"><b>Anlık Sorgu</b></font>, API uç noktasının numarasının rakiplerine sızmasını önler.<br>
-        - <font color="#6ed0ff"><b>Spam Veritabanı</b></font>, büyük olasılıkla API uç noktalarından içe aktarılmışlardır.<br>
-        - <font color="#6ed0ff"><b>Kişi Regex, Kişi Grubu Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Toplantı Modu</b></font><br>
-        - <font color="#6ed0ff"><b>Genel test</b></font><br>
+        <b>3</b>. Aşağıdaki türler tarafından engellenen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>:<br>
         <br>
-        Geçen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>.
+        - <font color="#6ed0ff"><b>Kişi Regex</b></font><br>
+        - <font color="#6ed0ff"><b>Kişi Grubu Regex</b></font><br>
+        - <font color="#6ed0ff"><b>Toplantı Modu</b></font><br>
+        - <font color="#6ed0ff"><b>Genel Test</b></font><br>
+        - <font color="#6ed0ff"><b>Anlık Sorgu</b></font>, API uç noktasının numarasının rakiplerine sızmasını engeller.<br>
+        &emsp; Bir istisna şudur ki, puanlama skorunu artırmak için aynı API\'ye geri bildirilecektir. (aynı etki alanına sahip bir raporlama API\'si yapılandırılmışsa)<br>
+        - <font color="#6ed0ff"><b>Veritabanı</b></font><br>
+        &emsp; Bir istisna şudur ki, numara başlangıçta anlık bir API sorgusu tarafından eklenmiş ve daha sonra yerel veritabanı tarafından tekrar engellenmişse, puanlama skorunu artırmak için yalnızca bu API\'ye bildirilecektir. (aynı etki alanına sahip bir raporlama API\'si yapılandırılmışsa)<br>
         ]]>
     </string>
     <string name="auto_report">Otomatik Raporlama</string>

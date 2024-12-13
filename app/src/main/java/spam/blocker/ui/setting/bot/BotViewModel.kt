@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
-import spam.blocker.util.SharedPref.BotOptions
+import spam.blocker.util.spf
 
 class BotViewModel {
     val bots = mutableStateListOf<Bot>()
@@ -18,7 +18,7 @@ class BotViewModel {
         val all = BotTable.listAll(ctx)
         bots.addAll(all)
 
-        listCollapsed.value = BotOptions(ctx).isListCollapsed()
+        listCollapsed.value = spf.BotOptions(ctx).isListCollapsed()
     }
 
     fun toggleCollapse(ctx: Context) {
@@ -28,6 +28,6 @@ class BotViewModel {
         }
 
         listCollapsed.value = !listCollapsed.value
-        BotOptions(ctx).setListCollapsed(listCollapsed.value)
+        spf.BotOptions(ctx).setListCollapsed(listCollapsed.value)
     }
 }

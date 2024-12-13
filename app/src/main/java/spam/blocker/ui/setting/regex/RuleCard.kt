@@ -26,8 +26,8 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.util.SharedPref.RegexOptions
 import spam.blocker.util.hasFlag
+import spam.blocker.util.spf
 
 @Composable
 fun RuleCard(
@@ -37,7 +37,7 @@ fun RuleCard(
 ) {
     val C = LocalPalette.current
     val ctx = LocalContext.current
-    val spf = RegexOptions(ctx)
+    val spf = spf.RegexOptions(ctx)
 
     OutlineCard {
         Row(

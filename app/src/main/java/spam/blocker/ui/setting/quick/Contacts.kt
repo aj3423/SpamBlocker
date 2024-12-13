@@ -17,14 +17,14 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.NormalPermission
 import spam.blocker.util.Permissions.isContactsPermissionGranted
-import spam.blocker.util.SharedPref.Contact
+import spam.blocker.util.spf
 
 @Composable
 fun Contacts() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
-    val spf = Contact(ctx)
+    val spf = spf.Contact(ctx)
 
     fun checkContactState(): Boolean {
         return spf.isEnabled() && isContactsPermissionGranted(ctx)

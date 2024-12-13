@@ -12,12 +12,12 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.util.NormalPermission
-import spam.blocker.util.SharedPref.BlockType
+import spam.blocker.util.spf
 
 @Composable
 fun BlockType() {
     val ctx = LocalContext.current
-    val spf = BlockType(ctx)
+    val spf = spf.BlockType(ctx)
 
     val selected = remember {
         mutableIntStateOf(spf.getType())

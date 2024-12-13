@@ -25,17 +25,12 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Permissions
 import spam.blocker.util.PhoneNumber
-import spam.blocker.util.SharedPref.Contact
-import spam.blocker.util.SharedPref.Dialed
-import spam.blocker.util.SharedPref.RecentApps
-import spam.blocker.util.SharedPref.RepeatedCall
-import spam.blocker.util.SharedPref.SpamDB
-import spam.blocker.util.SharedPref.Stir
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
+import spam.blocker.util.spf
 
 class CheckContext(
     val rawNumber: String,
@@ -52,7 +47,7 @@ interface IChecker {
 
 class Checker { // for namespace only
 
-    class Emergency(
+    private class Emergency(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -89,12 +84,12 @@ class Checker { // for namespace only
         }
     }
 
-    class STIR(
+    private class STIR(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
-            val isExclusive = Stir(ctx).isExclusive()
+            val isExclusive = spf.Stir(ctx).isExclusive()
             return if (isExclusive) 0 else 10
         }
 
@@ -102,7 +97,7 @@ class Checker { // for namespace only
             val logger = cCtx.logger
             val callDetails = cCtx.callDetails
 
-            val spf = Stir(ctx)
+            val spf = spf.Stir(ctx)
             if (!spf.isEnabled())
                 return null
 
@@ -161,7 +156,7 @@ class Checker { // for namespace only
 
     // The "Database" in quick settings.
     // It checks whether the number exists in the spam database.
-    class SpamDB(
+    private class SpamDB(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -173,7 +168,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val enabled = SpamDB(ctx).isEnabled()
+            val enabled = spf.SpamDB(ctx).isEnabled()
             if (!enabled)
                 return null
 
@@ -200,12 +195,12 @@ class Checker { // for namespace only
 
     // The "Contacts" in quick settings.
     // It checks whether the phone number belongs to a contact.
-    class Contact(
+    private class Contact(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
-            val isExclusive = Contact(ctx).isExclusive()
+            val isExclusive = spf.Contact(ctx).isExclusive()
             return if (isExclusive) 0 else 10
         }
 
@@ -213,7 +208,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val spf = Contact(ctx)
+            val spf = spf.Contact(ctx)
 
             if (!spf.isEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
                 return null
@@ -248,7 +243,7 @@ class Checker { // for namespace only
         }
     }
 
-    class RepeatedCall(
+    private class RepeatedCall(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -264,7 +259,7 @@ class Checker { // for namespace only
             val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
             val canReadSMSs = Permissions.isReadSmsPermissionGranted(ctx)
 
-            val spf = RepeatedCall(ctx)
+            val spf = spf.RepeatedCall(ctx)
             if (!spf.isEnabled() || (!canReadCalls && !canReadSMSs)) {
                 return null
             }
@@ -332,7 +327,7 @@ class Checker { // for namespace only
         }
     }
 
-    class Dialed(
+    private class Dialed(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -344,7 +339,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val spf = Dialed(ctx)
+            val spf = spf.Dialed(ctx)
             if (!spf.isEnabled()
                 || (!Permissions.isCallLogPermissionGranted(ctx) && !Permissions.isReadSmsPermissionGranted(
                     ctx
@@ -391,7 +386,7 @@ class Checker { // for namespace only
         }
     }
 
-    class OffTime(
+    private class OffTime(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -402,7 +397,7 @@ class Checker { // for namespace only
         override fun check(): ICheckResult? {
             val logger = cCtx.logger
 
-            val spf = spam.blocker.util.SharedPref.OffTime(ctx)
+            val spf = spf.OffTime(ctx)
             if (!spf.isEnabled()) {
                 return null
             }
@@ -439,7 +434,7 @@ class Checker { // for namespace only
         }
     }
 
-    class RecentApp(
+    private class RecentApp(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -458,7 +453,7 @@ class Checker { // for namespace only
                     )
             )
 
-            val spf = RecentApps(ctx)
+            val spf = spf.RecentApps(ctx)
 
             val defaultDuration = spf.getDefaultMin() // in minutes
 
@@ -493,12 +488,12 @@ class Checker { // for namespace only
         }
     }
 
-    class MeetingMode(
+    private class MeetingMode(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
         override fun priority(): Int {
-            val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
+            val spf = spf.MeetingMode(ctx)
             return spf.getPriority()
         }
 
@@ -513,12 +508,8 @@ class Checker { // for namespace only
                     )
             )
 
-            val spf = spam.blocker.util.SharedPref.MeetingMode(ctx)
+            val spf = spf.MeetingMode(ctx)
 
-            /* Each item in the list can contain
-             - the package name only
-             - or package name followed by ":" and a list of excluded classes
-             */
             val appInfos = spf.getList()
 
             val eventsMap = Permissions.getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
@@ -546,7 +537,7 @@ class Checker { // for namespace only
         }
     }
 
-    class InstantQuery(
+    private class InstantQuery(
         private val ctx: Context,
         private val cCtx: CheckContext,
     ) : IChecker {
@@ -648,7 +639,7 @@ class Checker { // for namespace only
     }
 
     // Check if a number rule matches the incoming number
-    class Number(
+    private class Number(
         private val ctx: Context,
         private val cCtx: CheckContext,
         private val numberRule: RegexRule,
@@ -710,7 +701,7 @@ class Checker { // for namespace only
     }
 
     // The regex flag `Contact`, it matches the contact name instead of the phone number
-    class RegexContact(
+    private class RegexContact(
         private val ctx: Context,
         private val cCtx: CheckContext,
         private val rule: RegexRule
@@ -771,7 +762,7 @@ class Checker { // for namespace only
     }
 
     // The regex flag `Contact Group`, it matches the contact group name instead of the phone number
-    class ContactGroup(
+    private class ContactGroup(
         private val ctx: Context,
         private val cCtx: CheckContext,
         private val rule: RegexRule
@@ -836,7 +827,7 @@ class Checker { // for namespace only
         Check if text message body matches the SMS Content rule,
         the number is also checked when "for particular number" is enabled
      */
-    class Content(
+    private class Content(
         private val ctx: Context,
         private val cCtx: CheckContext,
         private val messageBody: String,

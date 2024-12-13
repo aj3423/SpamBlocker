@@ -10,7 +10,7 @@ import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.SkyBlue
 
-// For showing detailed execution steps when testing Workflows
+// For showing detailed execution steps when testing
 interface ILogger {
     fun debug(message: String)
     fun info(message: String)

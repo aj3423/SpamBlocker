@@ -23,7 +23,8 @@ import kotlin.random.Random
 
 
 object Notification {
-    // A workaround for disabling default spam notifications completely(in system settings)
+    // A workaround for disabling default spam notifications completely by disabling
+    //  notification channels in system settings.
     const val defaultSpamCallImportance = -1
     const val defaultSpamSMSImportance = -2
 

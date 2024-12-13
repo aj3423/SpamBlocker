@@ -7,8 +7,7 @@ import spam.blocker.db.Api
 import spam.blocker.db.ApiTable
 import spam.blocker.db.Db
 import spam.blocker.def.Def
-import spam.blocker.util.SharedPref.ApiQueryOptions
-import spam.blocker.util.SharedPref.ApiReportOptions
+import spam.blocker.util.spf
 
 open class ApiViewModel(
     val table: ApiTable,
@@ -25,9 +24,9 @@ open class ApiViewModel(
         apis.addAll(all)
 
         listCollapsed.value = if (forType == Def.ForApiQuery)
-            ApiQueryOptions(ctx).isListCollapsed()
+            spf.ApiQueryOptions(ctx).isListCollapsed()
         else
-            ApiReportOptions(ctx).isListCollapsed()
+            spf.ApiReportOptions(ctx).isListCollapsed()
     }
 
     fun toggleCollapse(ctx: Context) {
@@ -37,7 +36,7 @@ open class ApiViewModel(
         }
 
         listCollapsed.value = !listCollapsed.value
-        ApiQueryOptions(ctx).setListCollapsed(listCollapsed.value)
+        spf.ApiQueryOptions(ctx).setListCollapsed(listCollapsed.value)
     }
 }
 

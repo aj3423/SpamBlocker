@@ -13,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -42,9 +44,9 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref.MeetingAppInfo
-import spam.blocker.util.SharedPref.MeetingMode
 import spam.blocker.util.Util
+import spam.blocker.util.spf
+import spam.blocker.util.spf.MeetingAppInfo
 
 
 @Composable
@@ -63,7 +65,7 @@ private fun PopupMeetingConfig(
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         priority.value = newValue!!
-                        MeetingMode(ctx).setPriority(newValue)
+                        spf.MeetingMode(ctx).setPriority(newValue)
                     }
                 },
                 label = { Text(Str(R.string.priority)) },
@@ -74,9 +76,9 @@ private fun PopupMeetingConfig(
 
 
 @Composable
-fun Meeting() {
+fun MeetingMode() {
     val ctx = LocalContext.current
-    val spf = MeetingMode(ctx)
+    val spf = spf.MeetingMode(ctx)
 
     val priority = remember { mutableIntStateOf(spf.getPriority()) }
 
@@ -102,26 +104,33 @@ fun Meeting() {
             if (appInfo != null) {
                 val appInfoTrigger = rememberSaveable { mutableStateOf(false) }
 
+                var text by remember {
+                    mutableStateOf(
+                        appInfo.exclusions.joinToString(",")
+                    )
+                }
+
                 PopupDialog(
                     trigger = appInfoTrigger,
+                    onDismiss = {
+                        val pkgName = appInfo.pkgName
+                        val exclusions = text.split(",").filter { it.isNotEmpty() }
+
+                        val i = enabledAppInfos.indexOfFirst { it.pkgName == pkgName }
+
+                        // 1. update gui
+                        enabledAppInfos[i] =
+                            MeetingAppInfo(pkgName, exclusions)
+
+                        // 2. save to SharedPref
+                        spf.setList(enabledAppInfos)
+                    }
                 ) {
                     StrInputBox(
+                        text = text,
                         label = { Text(Str(R.string.exclude_services)) },
                         helpTooltip = Str(R.string.help_exclude_bg_service),
-                        text = appInfo.exclusions.joinToString(","),
-                        onValueChange = {
-                            val pkgName = appInfo.pkgName
-                            val exclusions = it.split(",").filter { it.isNotEmpty() }
-
-                            val i = enabledAppInfos.indexOfFirst { it.pkgName == pkgName }
-
-                            // 1. update gui
-                            enabledAppInfos[i] =
-                                MeetingAppInfo(pkgName, exclusions)
-
-                            // 2. save to SharedPref
-                            MeetingMode(ctx).setList(enabledAppInfos)
-                        }
+                        onValueChange = { text = it }
                     )
 
                     // Label "Running Foreground Services"
@@ -129,8 +138,15 @@ fun Meeting() {
 
                     // The list
                     val services = remember { mutableStateListOf<String>() }
-                    services.forEach {
-                        GreyLabel(it)
+                    services.forEach { serviceName ->
+                        GreyLabel(
+                            serviceName,
+                            modifier = M.clickable { // click service name to append
+                                if (!text.contains(serviceName)) {
+                                    text = if (text.isEmpty()) serviceName else "$text,$serviceName"
+                                }
+                            }
+                        )
                     }
 
                     val coroutineScope = rememberCoroutineScope()
@@ -178,13 +194,13 @@ fun Meeting() {
         onCheckChange = { pkgName, isChecked ->
             if (isChecked) {
                 // 1. add to SharedPref
-                MeetingMode(ctx).addPackage(pkgName)
+                spf.addPackage(pkgName)
 
                 // 2. trigger recompose
                 enabledAppInfos.add(MeetingAppInfo(pkgName))
             } else {
                 // 1. remove from SharedPref
-                MeetingMode(ctx).removePackage(pkgName)
+                spf.removePackage(pkgName)
 
                 // 2. trigger recompose
                 enabledAppInfos.removeAt(
@@ -239,7 +255,7 @@ fun Meeting() {
 
 // Clear uninstalled apps from the meeting apps list
 private fun clearUninstalledMeetingApps(ctx: Context) {
-    val spf = MeetingMode(ctx)
+    val spf = spf.MeetingMode(ctx)
 
     val cleared = spf.getList().filter {
         Util.isPackageInstalled(ctx, it.pkgName)

@@ -24,11 +24,9 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
-import spam.blocker.util.SharedPref.Global
-import spam.blocker.util.SharedPref.HistoryOptions
-import spam.blocker.util.SharedPref.Temporary
 import spam.blocker.util.Util
 import spam.blocker.util.logd
+import spam.blocker.util.spf
 
 fun Details.getRawNumber(): String {
     var rawNumber = ""
@@ -79,7 +77,7 @@ class CallScreeningService : CallScreeningService() {
 
     private fun answerThenHangUp(rawNumber: String, details: Details) {
         // save number and time to shared pref, it will be read soon in CallStateReceiver
-        Temporary(this).setLastCallToBlock(
+        spf.Temporary(this).setLastCallToBlock(
             Util.clearNumber(rawNumber),
             System.currentTimeMillis()
         )
@@ -96,7 +94,7 @@ class CallScreeningService : CallScreeningService() {
         if (details.callDirection != Details.DIRECTION_INCOMING)
             return
 
-        if (!Global(this).isGloballyEnabled() || !Global(this).isCallEnabled()) {
+        if (!spf.Global(this).isGloballyEnabled() || !spf.Global(this).isCallEnabled()) {
             pass(details)
             return
         }
@@ -119,7 +117,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun logToDb(ctx: Context, r: ICheckResult, rawNumber: String) {
-        val isDbLogEnabled = HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
+        val isDbLogEnabled = spf.HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
         val recordId = if (isDbLogEnabled) {
             CallTable().addNewRecord(
                 ctx, HistoryRecord(
@@ -169,7 +167,7 @@ class CallScreeningService : CallScreeningService() {
         // 0. check the number with all rules, get the result
         val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
 
-        // 1. log to db
+        // 1. log result to db
         logToDb(ctx, r, rawNumber)
 
         if (r.shouldBlock()) {

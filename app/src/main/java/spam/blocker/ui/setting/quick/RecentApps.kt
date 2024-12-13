@@ -54,10 +54,10 @@ import spam.blocker.util.AppInfo
 import spam.blocker.util.AppOpsPermission
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Permissions
-import spam.blocker.util.SharedPref.RecentAppInfo
-import spam.blocker.util.SharedPref.RecentApps
 import spam.blocker.util.Util
 import spam.blocker.util.Util.listApps
+import spam.blocker.util.spf
+import spam.blocker.util.spf.RecentAppInfo
 
 @Composable
 fun AppChooserIcon(
@@ -205,7 +205,7 @@ private fun PopupConfig(
                 onValueChange = { newValue, hasError ->
                     if (!hasError) {
                         inXMin.value = newValue
-                        RecentApps(ctx).setDefaultMin(newValue!!)
+                        spf.RecentApps(ctx).setDefaultMin(newValue!!)
                     }
                 },
                 label = { Text(Str(R.string.within_minutes)) },
@@ -217,7 +217,7 @@ private fun PopupConfig(
 @Composable
 fun RecentApps() {
     val ctx = LocalContext.current
-    val spf = RecentApps(ctx)
+    val spf = spf.RecentApps(ctx)
 
     val defaultInXMin = remember { mutableStateOf<Int?>(spf.getDefaultMin()) }
 
@@ -242,13 +242,13 @@ fun RecentApps() {
         onCheckChange = { pkgName, isChecked ->
             if (isChecked) {
                 // 1. add to SharedPref
-                RecentApps(ctx).addPackage(pkgName)
+                spf.addPackage(pkgName)
 
                 // 2. trigger recompose
                 enabledAppInfos.add(RecentAppInfo(pkgName))
             } else {
                 // 1. remove from SharedPref
-                RecentApps(ctx).removePackage(pkgName)
+                spf.removePackage(pkgName)
 
                 // 2. trigger recompose
                 enabledAppInfos.removeAt(
@@ -284,7 +284,7 @@ fun RecentApps() {
                                             RecentAppInfo(pkgName, newValue)
 
                                         // 2. save to SharedPref
-                                        RecentApps(ctx).setList(enabledAppInfos)
+                                        spf.setList(enabledAppInfos)
                                     })
                             }
                         }
@@ -350,7 +350,7 @@ fun RecentApps() {
 
 // Clear uninstalled apps from the recent apps list
 private fun clearUninstalledRecentApps(ctx: Context) {
-    val spf = RecentApps(ctx)
+    val spf = spf.RecentApps(ctx)
 
     val cleared = spf.getList().filter {
         Util.isPackageInstalled(ctx, it.pkgName)

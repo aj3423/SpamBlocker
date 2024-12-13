@@ -74,7 +74,6 @@ import spam.blocker.util.NormalPermission
 import spam.blocker.util.Now
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
-import spam.blocker.util.SharedPref.Global
 import spam.blocker.util.Util
 import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Util.isAlphaNumber
@@ -85,6 +84,7 @@ import spam.blocker.util.logi
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
+import spam.blocker.util.spf
 import spam.blocker.util.toMap
 import spam.blocker.util.toStringMap
 import java.io.BufferedReader
@@ -1543,7 +1543,7 @@ class EnableApp(
 ) : IPermissiveAction {
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        Global(ctx).setGloballyEnabled(enable)
+        spf.Global(ctx).setGloballyEnabled(enable)
         G.globallyEnabled.value = enable
 
         aCtx.logger?.debug("${ctx.getString(R.string.action_enable_app)}: $enable")

@@ -47,8 +47,8 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.SharedPref.SpamDB
 import spam.blocker.util.Util
+import spam.blocker.util.spf
 import java.text.NumberFormat
 
 
@@ -57,7 +57,7 @@ private const val SPAM_DB_CLEANUP_WORK_TAG = "spam_db_cleanup_work_tag"
 fun reScheduleSpamDBCleanup(ctx: Context) {
     MyWorkManager.cancelByTag(ctx, SPAM_DB_CLEANUP_WORK_TAG)
 
-    val ttl = SpamDB(ctx).getTTL()
+    val ttl = spf.SpamDB(ctx).getTTL()
     if (ttl >= 0) {
         MyWorkManager.schedule(
             ctx,
@@ -106,7 +106,7 @@ fun SpamNumCard(
 @Composable
 fun SpamDB() {
     val ctx = LocalContext.current
-    val spf = SpamDB(ctx)
+    val spf = spf.SpamDB(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
     var ttl by remember { mutableIntStateOf(spf.getTTL()) }

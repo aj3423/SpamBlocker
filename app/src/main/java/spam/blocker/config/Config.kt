@@ -15,17 +15,9 @@ import spam.blocker.db.RuleTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.service.bot.botJson
-import spam.blocker.util.SharedPref.BlockType
-import spam.blocker.util.SharedPref.Contact
-import spam.blocker.util.SharedPref.Dialed
-import spam.blocker.util.SharedPref.Global
-import spam.blocker.util.SharedPref.MeetingAppInfo
-import spam.blocker.util.SharedPref.MeetingMode
-import spam.blocker.util.SharedPref.OffTime
-import spam.blocker.util.SharedPref.RecentAppInfo
-import spam.blocker.util.SharedPref.RecentApps
-import spam.blocker.util.SharedPref.RepeatedCall
-import spam.blocker.util.SharedPref.Stir
+import spam.blocker.util.spf
+import spam.blocker.util.spf.MeetingAppInfo
+import spam.blocker.util.spf.RecentAppInfo
 
 
 /*
@@ -38,14 +30,14 @@ class Global {
     var callEnabled = false
     var smsEnabled = false
     fun load(ctx: Context) {
-        val g = Global(ctx)
+        val g = spf.Global(ctx)
         enabled = g.isGloballyEnabled()
         callEnabled = g.isCallEnabled()
         smsEnabled = g.isSmsEnabled()
     }
 
     fun apply(ctx: Context) {
-        Global(ctx).apply {
+        spf.Global(ctx).apply {
             setGloballyEnabled(enabled)
             setCallEnabled(callEnabled)
             setSmsEnabled(smsEnabled)
@@ -63,7 +55,7 @@ class HistoryOptions {
     var initialSmsRowCount = 1
 
     fun load(ctx: Context) {
-        val spf = spam.blocker.util.SharedPref.HistoryOptions(ctx)
+        val spf = spf.HistoryOptions(ctx)
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
 
@@ -73,7 +65,7 @@ class HistoryOptions {
     }
 
     fun apply(ctx: Context) {
-        spam.blocker.util.SharedPref.HistoryOptions(ctx).apply {
+        spf.HistoryOptions(ctx).apply {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
 
@@ -95,7 +87,7 @@ class RegexOptions {
     var listHeightPercentage = 60
 
     fun load(ctx: Context) {
-        val spf = spam.blocker.util.SharedPref.RegexOptions(ctx)
+        val spf = spf.RegexOptions(ctx)
         numberCollapsed = spf.isNumberCollapsed()
         contentCollapsed = spf.isContentCollapsed()
         quickCopyCollapsed = spf.isQuickCopyCollapsed()
@@ -106,7 +98,7 @@ class RegexOptions {
     }
 
     fun apply(ctx: Context) {
-        spam.blocker.util.SharedPref.RegexOptions(ctx).apply {
+        spf.RegexOptions(ctx).apply {
             setNumberCollapsed(numberCollapsed)
             setContentCollapsed(contentCollapsed)
             setQuickCopyCollapsed(quickCopyCollapsed)
@@ -123,12 +115,12 @@ class BotOptions {
     var listCollapsed = false
 
     fun load(ctx: Context) {
-        val spf = spam.blocker.util.SharedPref.BotOptions(ctx)
+        val spf = spf.BotOptions(ctx)
         listCollapsed = spf.isListCollapsed()
     }
 
     fun apply(ctx: Context) {
-        spam.blocker.util.SharedPref.BotOptions(ctx).apply {
+        spf.BotOptions(ctx).apply {
             setListCollapsed(listCollapsed)
         }
     }
@@ -138,11 +130,11 @@ class BotOptions {
 class Theme {
     var type = 0
     fun load(ctx: Context) {
-        type = Global(ctx).getThemeType()
+        type = spf.Global(ctx).getThemeType()
     }
 
     fun apply(ctx: Context) {
-        Global(ctx).setThemeType(type)
+        spf.Global(ctx).setThemeType(type)
     }
 }
 
@@ -150,11 +142,11 @@ class Theme {
 class Language {
     var lang = ""
     fun load(ctx: Context) {
-        lang = Global(ctx).getLanguage()
+        lang = spf.Global(ctx).getLanguage()
     }
 
     fun apply(ctx: Context) {
-        Global(ctx).setLanguage(lang)
+        spf.Global(ctx).setLanguage(lang)
     }
 }
 
@@ -163,13 +155,13 @@ class Contact {
     var enabled = false
     var isExcusive = false
     fun load(ctx: Context) {
-        val spf = Contact(ctx)
+        val spf = spf.Contact(ctx)
         enabled = spf.isEnabled()
         isExcusive = spf.isExclusive()
     }
 
     fun apply(ctx: Context) {
-        val spf = Contact(ctx)
+        val spf = spf.Contact(ctx)
         spf.setEnabled(enabled)
         spf.setExclusive(isExcusive)
     }
@@ -181,14 +173,14 @@ class STIR {
     var isExcusive = false
     var includeUnverified = false
     fun load(ctx: Context) {
-        val spf = Stir(ctx)
+        val spf = spf.Stir(ctx)
         enabled = spf.isEnabled()
         isExcusive = spf.isExclusive()
         includeUnverified = spf.isIncludeUnverified()
     }
 
     fun apply(ctx: Context) {
-        val spf = Stir(ctx)
+        val spf = spf.Stir(ctx)
         spf.setEnabled(enabled)
         spf.setExclusive(isExcusive)
         spf.setIncludeUnverified(includeUnverified)
@@ -199,12 +191,12 @@ class SpamDB {
     var ttl = 90
 
     fun load(ctx: Context) {
-        val spf = spam.blocker.util.SharedPref.SpamDB(ctx)
+        val spf = spf.SpamDB(ctx)
         ttl = spf.getTTL()
     }
 
     fun apply(ctx: Context) {
-        spam.blocker.util.SharedPref.SpamDB(ctx).apply {
+        spf.SpamDB(ctx).apply {
             setTTL(ttl)
         }
     }
@@ -216,14 +208,14 @@ class RepeatedCall {
     var times = 0
     var inXMin = 0
     fun load(ctx: Context) {
-        val spf = RepeatedCall(ctx)
+        val spf = spf.RepeatedCall(ctx)
         enabled = spf.isEnabled()
         times = spf.getTimes()
         inXMin = spf.getInXMin()
     }
 
     fun apply(ctx: Context) {
-        val spf = RepeatedCall(ctx)
+        val spf = spf.RepeatedCall(ctx)
         spf.setEnabled(enabled)
         spf.setTimes(times)
         spf.setInXMin(inXMin)
@@ -235,13 +227,13 @@ class Dialed {
     var enabled = false
     var inXDay = 0
     fun load(ctx: Context) {
-        val spf = Dialed(ctx)
+        val spf = spf.Dialed(ctx)
         enabled = spf.isEnabled()
         inXDay = spf.getDays()
     }
 
     fun apply(ctx: Context) {
-        val spf = Dialed(ctx)
+        val spf = spf.Dialed(ctx)
         spf.setEnabled(enabled)
         spf.setDays(inXDay)
     }
@@ -251,11 +243,11 @@ class Dialed {
 class BlockType {
     var type = 0
     fun load(ctx: Context) {
-        type = BlockType(ctx).getType()
+        type = spf.BlockType(ctx).getType()
     }
 
     fun apply(ctx: Context) {
-        BlockType(ctx).setType(type)
+        spf.BlockType(ctx).setType(type)
     }
 }
 
@@ -267,7 +259,7 @@ class OffTime {
     var etHour = 0
     var etMin = 0
     fun load(ctx: Context) {
-        val spf = OffTime(ctx)
+        val spf = spf.OffTime(ctx)
 
         enabled = spf.isEnabled()
 
@@ -278,7 +270,7 @@ class OffTime {
     }
 
     fun apply(ctx: Context) {
-        OffTime(ctx).apply {
+        spf.OffTime(ctx).apply {
             setEnabled(enabled)
 
             setStartHour(stHour)
@@ -294,14 +286,14 @@ class RecentApps {
     val list = mutableListOf<RecentAppInfo>() // [pkg.a, pkg.b@20, pkg.c]
     var inXMin = 0
     fun load(ctx: Context) {
-        val spf = RecentApps(ctx)
+        val spf = spf.RecentApps(ctx)
         list.clear()
         list.addAll(spf.getList())
         inXMin = spf.getDefaultMin()
     }
 
     fun apply(ctx: Context) {
-        val spf = RecentApps(ctx)
+        val spf = spf.RecentApps(ctx)
         spf.setList(list)
         spf.setDefaultMin(inXMin)
     }
@@ -312,14 +304,14 @@ class MeetingMode {
     val list = mutableListOf<MeetingAppInfo>() // [pkg.a, pkg.b@20, pkg.c]
     var priority = 20
     fun load(ctx: Context) {
-        val spf = MeetingMode(ctx)
+        val spf = spf.MeetingMode(ctx)
         list.clear()
         list.addAll(spf.getList())
         priority = spf.getPriority()
     }
 
     fun apply(ctx: Context) {
-        val spf = MeetingMode(ctx)
+        val spf = spf.MeetingMode(ctx)
         spf.setList(list)
         spf.setPriority(priority)
     }

@@ -13,13 +13,13 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
-import spam.blocker.util.SharedPref.OffTime
 import spam.blocker.util.Util
+import spam.blocker.util.spf
 
 @Composable
 fun OffTime() {
     val ctx = LocalContext.current
-    val spf = OffTime(ctx)
+    val spf = spf.OffTime(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
 

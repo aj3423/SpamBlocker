@@ -56,22 +56,27 @@
         <![CDATA[
         着信時にブロックされた番号をすべてのAPIエンドポイントに自動報告します。<br>
         <br>
-        番号が報告されるまで1時間の時刻バッファがあります。この時間バッファ内で番号が繰り返されたり、ダイヤルバックされたりした場合、迷惑電話とはみなされず、報告されません。<br>
+        番号が報告される前に、1時間のタイムバッファがあります。このタイムバッファ内で、繰り返しまたはダイヤルバックによって番号が後で許可された場合、スパムではないとみなされ、報告されません。<br>
         <br>
-        以下のタイプでブロックされた番号のみ<font color="#03DAC5"><b>報告</b></font>されます。<br>
+        <b>1</b>. 許可された番号は<font color="#fa7f71"><b>報告されません</b></font>。
+        <br>
+        <b>2</b>. 次の種類によってブロックされた番号は<font color="#03DAC5"><b>報告がスケジュールされます</b></font>:<br>
+        <br>
         - <font color="#6ed0ff"><b>非連絡先</b></font>(排他的)<br>
         - <font color="#6ed0ff"><b>STIR認証</b></font><br>
         - <font color="#6ed0ff"><b>番号正規表現</b></font><br>
-        - <font color="#6ed0ff"><b>SMS本文正規表現</b></font><br>
+        - <font color="#6ed0ff"><b>SMS内容正規表現</b></font><br>
         <br>
-        以下のタイプでブロックされた番号は<font color="#fa7f71"><b>報告されません</b></font>。<br>
-        - <font color="#6ed0ff"><b>インスタントクエリ</b></font>、APIエンドポイントの番号が競合他社に漏洩するのを防ぎます。<br>
-        - <font color="#6ed0ff"><b>迷惑電話データベース</b></font>、APIエンドポイントからインポートされた可能性が高いです。<br>
-        - <font color="#6ed0ff"><b>連絡先正規表現、連絡先グループ正規表現</b></font><br>
+        <b>3</b>. 次の種類によってブロックされた番号は<font color="#fa7f71"><b>報告されません</b></font>:<br>
+        <br>
+        - <font color="#6ed0ff"><b>連絡先正規表現</b></font><br>
+        - <font color="#6ed0ff"><b>連絡先グループ正規表現</b></font><br>
         - <font color="#6ed0ff"><b>会議モード</b></font><br>
         - <font color="#6ed0ff"><b>グローバルテスト</b></font><br>
-        <br>
-        許可された番号は<font color="#fa7f71"><b>報告されません</b></font>。
+        - <font color="#6ed0ff"><b>インスタントクエリ</b></font>、APIエンドポイントの番号が競合他社に漏洩するのを防ぎます。<br>
+        &emsp;ただし、同じドメインの報告APIが設定されている場合は、そのAPIに報告して評価スコアを上げる例外があります。<br>
+        - <font color="#6ed0ff"><b>データベース</b></font><br>
+        &emsp;ただし、番号が元々インスタントAPIクエリによって追加され、後でローカルデータベースによって再びブロックされた場合、同じドメインの報告APIが設定されている場合は、そのAPIのみに報告して評価スコアを上げる例外があります。<br>
         ]]>
     </string>
     <string name="auto_report">自動レポート</string>

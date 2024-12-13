@@ -8,12 +8,12 @@ import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.Spinner
-import spam.blocker.util.SharedPref.Global
+import spam.blocker.util.spf
 
 @Composable
 fun Theme() {
     val ctx = LocalContext.current
-    val spf = Global(ctx)
+    val spf = spf.Global(ctx)
 
     val options = remember {
 

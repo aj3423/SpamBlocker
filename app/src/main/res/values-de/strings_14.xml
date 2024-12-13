@@ -17,16 +17,14 @@
     <string name="exclude_services">Dienste ausschließen</string>
     <string name="help_exclude_bg_service">
         <![CDATA[
-        Einige Apps führen zusätzliche Vordergrunddienste aus. Geben Sie hier die Dienstnamen ein, um sie auszuschließen.<br>
+        Einige Apps führen zusätzliche Vordergrunddienste aus. Fügen Sie die Dienstnamen hier hinzu, um sie auszuschließen.<br>
         <br>
         So finden Sie einen Dienstnamen:<br>
         &emsp; 1. Aktivieren Sie den Dienst in der App.<br>
         &emsp; 2. Alle aktivierten Dienstnamen werden hier angezeigt.<br>
+        &emsp; 3. Tippen Sie auf einen Namen, um ihn hinzuzufügen.<br>
         <br>
-        Wenn der Dienstname beispielsweise com.app.<b>FGCalling</b>.Service lautet, können Sie einfach
-        <b>FGCalling</b> eingeben, um ihn auszuschließen.
-        <br>
-        Sie können mehrere Namen eingeben, getrennt durch Kommas.
+        Sie können mehrere Namen hinzufügen, getrennt durch Kommas.
         ]]>
     </string>
     <string name="running_services">Laufende Dienste</string>
