@@ -57,13 +57,4 @@
     <string name="missing_category">
         Kategorie %s ist in Aktion %s nicht konfiguriert. Bitte konfigurieren Sie sie in der API-Konfiguration (wenn die API diese Kategorie unterstützt).
     </string>
-    <string name="fallback_category">Standardkategorie</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        Wenn manuell als bestimmte Kategorie, z. B. "Politisch", gemeldet wird und die API diese Kategorie nicht unterstützt,
-        wird auf diesen Standardwert zurückgegriffen. <br>
-        <br>
-        Wenn dieser Wert nicht konfiguriert ist, wird die Nummer nicht an die API gemeldet, wenn versucht wird, darauf zurückzugreifen.
-        ]]>
-    </string>
 </resources>

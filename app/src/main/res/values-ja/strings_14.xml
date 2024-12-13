@@ -56,12 +56,4 @@
     <string name="missing_category">
         カテゴリ %s はアクション %s で設定されていません。API 設定で設定してください（API がこのカテゴリをサポートしている場合）。
     </string>
-    <string name="fallback_category">フォールバックカテゴリ</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        <translate>「政治関連」など、特定のカテゴリとして手動で報告する場合、API がそのカテゴリをサポートしていないと、このデフォルト値にフォールバックします。</translate><br>
-        <br>
-        <translate>この値が設定されていない場合、フォールバックを試行する際に、番号はAPIに報告されません。</translate>
-        ]]>
-    </string>
 </resources>

@@ -72,7 +72,6 @@
         <b>3</b>. Numbers that are blocked by following types <font color="#fa7f71"><b>will not</b></font> be reported:<br>
         <br>
         - <font color="#6ed0ff"><b>Contact Regex</b></font><br>
-        o
         - <font color="#6ed0ff"><b>Contact Group Regex</b></font><br>
         - <font color="#6ed0ff"><b>Meeting Mode</b></font><br>
         - <font color="#6ed0ff"><b>Global Testing</b></font><br>

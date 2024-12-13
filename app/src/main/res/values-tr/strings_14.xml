@@ -57,13 +57,4 @@
     <string name="missing_category">
         %s kategorisi %s eyleminde yapılandırılmadı, lütfen API yapılandırmasında yapılandırın (API bu kategoriyi destekliyorsa).
     </string>
-    <string name="fallback_category">Yedek Kategori</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        "Siyasi" gibi belirli bir kategori olarak manuel olarak bildirirken ve API bu kategoriyi desteklemiyorsa,
-        bu varsayılan değere geri dönecektir. <br>
-        <br>
-        Bu değer yapılandırılmamışsa, geri dönmeye çalıştığında numara API\'ye bildirilmeyecektir.
-        ]]>
-    </string>
 </resources>

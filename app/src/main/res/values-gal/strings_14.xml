@@ -57,13 +57,4 @@
     <string name="missing_category">
         A categoría %s non está configurada na acción %s, configúrea na configuración da API (se a API admite esta categoría).
     </string>
-    <string name="fallback_category">Categoría por Defecto</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        Ao denunciar manualmente como unha categoría específica, como "Político", e se a API non admite esa categoría,
-        volverá a este valor predeterminado. <br>
-        <br>
-        Se este valor non está configurado, o número non se denunciará á API cando intente volver a el.
-        ]]>
-    </string>
 </resources>

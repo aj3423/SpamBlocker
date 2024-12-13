@@ -57,13 +57,4 @@
     <string name="missing_category">
         A categoria %s não está configurada na ação %s, por favor configure-a na configuração da API (se a API suporta esta categoria).
     </string>
-    <string name="fallback_category">Categoria de Retorno</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        Ao relatar manualmente como uma categoria específica, como "Político", e se a API não suportar essa categoria,
-        ela retornará a este valor padrão. <br>
-        <br>
-        Se este valor não estiver configurado, o número não será relatado à API quando tentar retornar a ele.
-        ]]>
-    </string>
 </resources>

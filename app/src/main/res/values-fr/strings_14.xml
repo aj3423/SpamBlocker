@@ -57,13 +57,4 @@
     <string name="missing_category">
         La catégorie %s n\'est pas configurée dans l\'action %s ; veuillez la configurer dans la configuration de l\'API (si l\'API prend en charge cette catégorie).
     </string>
-    <string name="fallback_category">Catégorie par défaut</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        Lors d\'un signalement manuel comme catégorie spécifique, telle que « Politique », et si l\'API ne prend pas en charge cette catégorie,
-        elle utilisera cette valeur par défaut. <br>
-        <br>
-        Si cette valeur n\'est pas configurée, le numéro ne sera pas signalé à l\'API lorsqu\'elle tentera de revenir à cette valeur.
-        ]]>
-    </string>
 </resources>

@@ -56,13 +56,4 @@
     <string name="missing_category">
         动作 %s 中未配置类别 %s，请在 API 配置中配置它（如果 API 支持此类别）。
     </string>
-    <string name="fallback_category">备用类别</string>
-    <string name="help_fallback_category">
-        <![CDATA[
-        当手动报告为特定类别（例如“政治”）时，如果 API 不支持该类别，
-        它将回退到此默认值。<br>
-        <br>
-        如果未配置此值，则尝试回退到此值时，号码将不会报告给 API。
-        ]]>
-    </string>
 </resources>
