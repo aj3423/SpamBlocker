@@ -1,0 +1,60 @@
+<resources>
+    <string name="report_number">Segnala Numero</string>
+    <string name="report_number_require_call_log_permission">
+        Per evitare segnalazioni errate di chiamate ripetute o numeri richiamati,
+        la segnalazione del numero richiede l\'autorizzazione al registro chiamate.
+    </string>
+    <string name="http_method">Metodo</string>
+    <string name="http_post_body">Corpo Post</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Tag supportati:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">Inserire informazioni di autorizzazione valide.</string>
+    <string name="delay">Ritardo</string>
+    <string name="exclude_services">Escludi Servizi</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Alcune app eseguono servizi in primo piano aggiuntivi, aggiungere i nomi dei servizi qui per escluderli.<br>
+        <br>
+        Per trovare il nome di un servizio:<br>
+        &emsp; 1. Attiva il servizio in quell\'app.<br>
+        &emsp; 2. Tutti i nomi dei servizi attivati appariranno qui.<br>
+        &emsp; 3. Tocca un nome per aggiungerlo.<br>
+        <br>
+        È possibile aggiungere più nomi, separati da virgole.
+        ]]>
+    </string>
+    <string name="running_services">Servizi in Esecuzione</string>
+    <string-array name="spam_categories">
+        <item>Numero Valido</item>
+        <item>Frode</item>
+        <item>Marketing</item>
+        <item>Sondaggio</item>
+        <item>Politica</item>
+        <item>Altro Spam</item>
+    </string-array>
+    <string name="action_category_config">Config. Categorie</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Sono supportate solo le seguenti categorie di spam, qualsiasi altra categoria dall\'API dovrebbe essere mappata a una di esse.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Segnala come numero valido, non spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; Il tipo di spam di fallback, utilizzato quando nessuna delle categorie di cui sopra si applica.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        La categoria %s non è configurata nell\'azione %s, configurarla nella configurazione dell\'API (se l\'API supporta questa categoria).
+    </string>
+</resources>

@@ -17,6 +17,20 @@ import (
 	"google.golang.org/api/option"
 )
 
+var nameMap = map[string]string{
+	`de`:     `German`,
+	`es`:     `Spanish`,
+	`fr`:     `French`,
+	`gal`:    `Galician`,
+	`it`:     `Italian`,
+	`ja`:     `Japanese`,
+	`pt-rBR`: `Brazilian Portuguese`,
+	`ru`:     `Russian`,
+	`tr`:     `Turkish`,
+	`uk`:     `Ukrainian`,
+	`zh`:     `Chinese`,
+}
+
 // -------- flags
 var thread int
 var lang_str string
@@ -40,18 +54,6 @@ var wg sync.WaitGroup
 
 var pool *ants.Pool
 
-var nameMap = map[string]string{
-	`de`:     `German`,
-	`es`:     `Spanish`,
-	`fr`:     `French`,
-	`gal`:    `Galician`,
-	`ja`:     `Japanese`,
-	`pt-rBR`: `Brazilian Portuguese`,
-	`ru`:     `Russian`,
-	`tr`:     `Turkish`,
-	`uk`:     `Ukrainian`,
-	`zh`:     `Chinese`,
-}
 var LANGUAGES []string // [de, es, fr, ...]
 
 func check_lang_param() []string {
@@ -111,7 +113,9 @@ func lang_xmls_dir(lang string) string {
 }
 func write_xml(lang string, xml_fn string, content string) error {
 	escaped := strings.ReplaceAll(content, "'", "\\'")
-	return write_file(lang_xmls_dir(lang)+"/"+xml_fn, escaped)
+	dir := lang_xmls_dir(lang)
+	os.MkdirAll(dir, 0666)
+	return write_file(dir+"/"+xml_fn, escaped)
 }
 func clear_lang_xmls(lang string) {
 	dir := lang_xmls_dir(lang)

@@ -22,6 +22,7 @@ object Languages {
         Pair("es", "🇪🇸"),
         Pair("fr", "🇫🇷"),
         Pair("gal", "🄶🄰🄻"),
+        Pair("it", "🇮🇹"),
         Pair("ja", "🇯🇵"),
         Pair("pt-rBR", "🇧🇷"),
         Pair("ru", "🇷🇺"),

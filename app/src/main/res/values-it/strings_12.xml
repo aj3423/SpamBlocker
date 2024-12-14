@@ -1,0 +1,95 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        Effettua una query online sul numero in arrivo in tempo reale; verranno interrogati simultaneamente più endpoint API.<br>
+        <br>
+        Si applica solo alle chiamate, non ai messaggi SMS.<br>
+        <br>
+        Verra attivata solo se la chiamata supera tutte le altre regole.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorità: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Query Istantanea</string>
+    <string name="query">Query</string>
+    <string name="negative_identifier">Identificatore Negativo</string>
+    <string name="hint_negative_identifier">
+        E.g.: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Il numero verrà identificato come spam se viene trovato questo pattern regex nel risultato.
+    </string>
+    <string name="positive_identifier">Identificatore Positivo</string>
+    <string name="hint_positive_identifier">
+        E.g.: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Il numero verrà identificato come non-spam se viene trovato questo pattern regex nel risultato; è opzionale.<br>
+        <br>
+        Di solito è <b>inutile</b>; alcuni provider API identificano i numeri sconosciuti come non-spam.<br>
+        Usalo solo se l\'API è molto precisa.
+        ]]>
+    </string>
+    <string name="category_identifier">Identificatore Categoria</string>
+    <string name="hint_category_identifier">
+        E.g.: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Opzionale.<br>
+        Una volta identificato un numero, questa regex verrà usata per estrarre la sua categoria (telemarketing, phishing, ecc.).
+        ]]>
+    </string>
+    <string name="action_parse_query_result">Analizza Risultato</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Analizza il risultato della query; il numero verrà identificato come spam se il risultato contiene un particolare pattern regex.<br>
+        <br>
+        Può essere usata una regex aggiuntiva per estrarre la categoria spam (opzionale).
+        ]]>
+    </string>
+    <string name="action_parse_incoming_number">Analizza Numero</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        Il numero di chiamata in arrivo verrà analizzato in diversi tag:<br>
+        <br>
+        %s
+        <br>
+        Questi tag verranno usati per costruire l\'URL HTTP, per esempio:<br>
+        <br>
+        1. Per numeri internazionali come <b>+122222</b>, questi due sono equivalenti:<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Sarà analizzato come:<br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Per numeri nazionali come <b>12345</b>, devi fornire il prefisso internazionale nelle impostazioni o lasciare che l\'app lo rilevi automaticamente.<br>
+        ]]>
+    </string>
+    <string name="query_api">API Query</string>
+    <string name="report_api">API Report</string>
+    <string name="number_filter">Filtro Numero</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Alcuni servizi API supportano solo numeri internazionali, mentre altri solo numeri nazionali.<br>
+        <br>
+        Questa regex filtra i numeri di conseguenza; i numeri in arrivo che non corrispondono a questa regex verranno saltati.<br>
+        <br>
+        - Controlla solo i <b>numeri internazionali</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Controlla solo i <b>numeri nazionali</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Controlla <b>qualsiasi numero</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">Controllo: %s, priorità: %s</string>
+    <string name="skip_for_testing">Salta per test.</string>
+    <string name="allowed_by">Permesso da: %s</string>
+    <string name="blocked_by">Bloccato da: %s</string>
+    <string name="outside_time_schedule">Fuori dalla programmazione, salta.</string>
+    <string name="android_ver_lower_than_11">Versione Android inferiore all\'11, salta.</string>
+</resources>

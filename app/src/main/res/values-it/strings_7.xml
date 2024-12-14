@@ -1,0 +1,45 @@
+<resources>
+    <string name="start_time">Ora di inizio</string>
+    <string name="end_time">Ora di fine</string>
+    <string name="switch_mode">Modalità di commutazione</string>
+    <string name="contact_group">Gruppo di contatti</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>Numero di Telefono</b></font>:<br>
+        &ensp; Modalità predefinita, l\'espressione regolare corrisponderà al numero di telefono.<br>
+        <br>
+        <font color="#00BFFF"><b>Contatti</b></font>:<br>
+        &ensp; L\'espressione regolare corrisponderà al nome del contatto associato al numero in arrivo.<br>
+        &ensp;  - Un esempio d\'uso:<br>
+        &emsp; Blocca tutti i non contatti nel fine settimana con l\'espressione regolare `.*`.<br>
+        <br>
+        <font color="#00BFFF"><b>Gruppo di Contatti</b></font>:<br>
+        &ensp; L\'espressione regolare corrisponderà al nome del gruppo di contatti associato al numero in arrivo,
+                 influenzando tutti i contatti di quel gruppo, quindi non è necessario aggiungerli individualmente,
+                 e non è necessario aggiornarlo nemmeno in caso di cambi di personale.<br>
+        &ensp;  - Un esempio d\'uso:<br>
+        &emsp; Blocca tutti i colleghi nel fine settimana bloccando il gruppo di contatti "lavoro".
+        ]]>
+    </string>
+    <string name="text_too_long">Testo troppo lungo, la modifica è disabilitata</string>
+    <string name="follow_system"><short>Segui Sistema</short></string>
+    <string name="theme">Tema</string>
+    <string-array name="theme_list">
+        <item>Chiaro</item>
+        <item>Scuro</item>
+    </string-array>
+    <string-array name="rule_dropdown_menu">
+        <item>Cerca Regola</item>
+        <item>Clona Regola</item>
+        <item>Elimina Regola</item>
+        <item>Elimina Regole Duplicate</item>
+        <item>Elimina Tutte (%d) Regole</item>
+    </string-array>
+    <string name="confirm_delete_duplicated_rule">Conferma l\'eliminazione di %d Regole duplicate?</string>
+    <string name="duration">Durata</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        Durata individuale per ogni app, se lasciata vuota, si ripiegherà sulla durata globale.
+        ]]>
+    </string>
+</resources>

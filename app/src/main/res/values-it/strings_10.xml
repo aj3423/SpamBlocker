@@ -1,0 +1,50 @@
+<resources>
+    <string name="help_number_rules">
+        <![CDATA[
+        Queste regole si applicano al numero di telefono in arrivo.<br>
+        <br>
+        <font color="#00BFFF"><b> - Relativo all\'interfaccia utente</b></font>:<br>
+        Deseleziona le caselle di controllo per disabilitare la regola, <font color="#fa7f71"><b>scorri a sinistra per eliminarla</b></font>.<br>
+        <br>
+        L\'elenco è <b>visualizzato</b> in ordine decrescente di priorità, descrizione crescente e modello crescente. <br>
+        <br>
+        <font color="#00BFFF"><b> - Ottimizzazione Regex</b></font>:<br>
+        Per semplificare la regex,<br>
+          <font color="#fa7f71"><b>+</b></font>,<br>
+           <font color="#fa7f71"><b>spazi</b></font><br>
+          e <font color="#fa7f71"><b>zeri iniziali</b></font><br>
+          vengono rimossi prima del controllo, ad esempio:<br>
+        &emsp; Tutti questi formati:<br>
+        &emsp;&emsp; 123456789 &emsp;(numero normale)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>spazi</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> iniziale)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefisso nazionale <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(due <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Sono <b>tutti</b> controllati come:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; Quindi la regex <font color="#03DAC5"><b>123.*</b></font> corrisponderebbe a tutti.<br>
+        Questa ottimizzazione del numero può essere <b>disabilitata</b> con il flag regex "Numero grezzo".<br>
+        <br>
+        <font color="#00BFFF"><b> - Alcuni modelli tipici</b></font>:<br>
+        &ensp; - Qualsiasi numero: <font color="#03DAC5"><b>.*</b></font> (la regex .* è equivalente al carattere jolly * in altre app) <br>
+        &ensp; - Numero esatto: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Inizia con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Termina con 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Più corto di 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Più lungo di 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Numero sconosciuto (stringa vuota): <font color="#03DAC5"><b>.{0}</b></font> o <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Corrisponde a uno qualsiasi dei modelli: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
+        &ensp; - Inizia con 400, con prefisso internazionale 11 o meno: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - Importa regole da .csv</b></font>:<br>
+        Premi a lungo il pulsante `Aggiungi` per importare numeri da file .csv, colonne supportate:<br>
+         - <no_translate><b>pattern</b></no_translate>: La regex(<b>required</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Descrizione<br>
+         - <no_translate><b>priority</b></no_translate>: Priorità, predefinito 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Applica a Chiamata), 2(Applica a SMS), 3(entrambi), predefinito 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Blacklist o whitelist. <no_translate>true</no_translate> o <no_translate>false</no_translate>, predefinito <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Tipo di blocco. 0~2 corrispondenti ai 3 tipi di blocco, predefinito 0<br>
+         - <no_translate><b>importance</b></no_translate>: Tipo di notifica. 0~4 corrispondenti ai 5 tipi di notifica, predefinito 2
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,38 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        Quando attivato, tutte le chiamate (e i messaggi) saranno consentite durante questo periodo. Di solito di notte non ci sono chiamate spam. <br>
+        <br>
+        Se l\'ora di inizio è maggiore dell\'ora di fine, ad esempio, 20:00 -> 07:00, significa il periodo dalle 20:00 di sera alle 07:00 del mattino seguente. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorità: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Questi flag modificano il comportamento di corrispondenza dell\'espressione regolare, sono impostati per impostazione predefinita per le nuove regole. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignora maiuscole/minuscole</b></font>:<br>
+            &ensp; Rende la corrispondenza del modello non sensibile alle maiuscole/minuscole, <font color="#03DAC5"><b>a</b></font>
+              corrisponderebbe sia a <font color="#03DAC5"><b>a</b></font> che a <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Punto corrisponde a tutti</b></font>: <br>
+            &ensp; Quando attivato, <font color="#03DAC5"><b>.</b></font> corrisponderà anche ai caratteri di nuova riga (<font color="#03DAC5"><b>\\n</b></font>),
+              questo permette al punto di corrispondere su più righe. <br>
+            &ensp; Caso d\'uso: <br>
+            &emsp;   Corrispondenza messaggio SMS multiriga: <br>
+            &emsp;   <font color="#fa7f71">rivendica il tuo premio: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   con regola: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+            <br>
+            <font color="#00BFFF"><b>Numero grezzo</b></font>: <br>
+            &ensp; Quando attivato, il numero non verrà ottimizzato, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>0 iniziali</b></font> rimarranno, utile per differenziare i numeri nazionali.
+        ]]>
+    </string>
+
+</resources>

@@ -1,0 +1,93 @@
+<resources>
+    <string name="contact_rule">Regola Contatto</string>
+    <string name="directory">Directory</string>
+    <string name="filename">Nome File</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Giorni di Scadenza</string>
+    <string name="column_mapping">Mapping Colonne</string>
+    <string name="include_spam_db">Includi Database Spam</string>
+    <string name="no_config_needed">Nessuna configurazione necessaria</string>
+    <string name="success">Successo</string>
+    <string name="failed">Fallito</string>
+    <string name="running">In Esecuzione</string>
+    <string name="optional">(opzionale)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Test</b></font><br>
+        Queste azioni verranno eseguite immediatamente, per verificare se sono state impostate correttamente,
+        o forse vuoi solo eseguire manualmente questo flusso di lavoro.<br>
+        <br>
+        - <font color="#00BFFF"><b>Nuovo</b></font><br>
+            Crea una nuova azione, è possibile concatenare più azioni per completare un\'attività complessa.<br>
+            I punti verdi o rossi tra gli elementi indicano se sono concatenabili o meno.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Scarica i numeri di telefono spam da
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> ogni giorno lavorativo,
+             e importali nel database spam.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Elimina i record scaduti dal database spam.</string>
+    <string name="help_bot_preset_cleanup_history">Elimina i record di chiamate/SMS scaduti.</string>
+    <string name="help_bot_preset_auto_backup">Esegui il backup di tutte le impostazioni.</string>
+    <string name="everyday">Ogni Giorno</string>
+    <string name="daily">Giornaliero</string>
+    <string name="weekly">Settimanale</string>
+    <string name="periodically">Periodicamente</string>
+    <string name="time">Ora</string>
+    <string name="workdays">Giorni Lavorativi</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Il formato del file di backup è un json compresso gzip, puoi aprirlo e modificarlo con qualsiasi programma di archiviazione.<br>
+        <br>
+        - <font color="#00BFFF"><b>Includi Database Spam</b></font><br>
+        Premi a lungo il pulsante per esportare/importare anche il database spam.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        &ensp; L\'inclusione del database spam nel file di backup aumenterà significativamente le sue dimensioni,
+        poiché il database verrà aggiornato regolarmente, questo di solito non è necessario, a meno che tu non voglia clonarlo
+        su un altro telefono.<br>
+        ]]>
+    </string>
+    <string name="mode">Modalità</string>
+    <string-array name="regex_action_add_mode">
+        <item>Crea</item>
+        <item>Sostituisci</item>
+        <item>Unisci</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Crea</b></font><br>
+        &ensp; Crea sempre una nuova regola regex.<br>
+        <br>
+        - <font color="#00BFFF"><b>Sostituisci</b></font><br>
+        &ensp; Cercherà di trovare una regola esistente che abbia la stessa <b>descrizione</b>. <br>
+        &ensp;&ensp; - Se trovata, verrà sovrascritta.<br>
+        &ensp;&ensp; - Se non trovata, verrà creata una nuova regola, come con <b>Crea</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Unisci</b></font><br>
+        &ensp;- Se esiste una regola con la stessa descrizione, i nuovi numeri verranno uniti ad essa,<br>
+         i numeri duplicati verranno rimossi automaticamente.<br>
+        &ensp;- Se non esiste, verrà creata una nuova regola, come con <b>Crea</b>.<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">Abilita Flusso di Lavoro</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Abilita o disabilita questo flusso di lavoro. Un caso d\'uso sarebbe quello di rendere un flusso di lavoro periodico un flusso di lavoro una tantum.
+        ]]>
+    </string>
+    <string name="action_enable_app">Abilita App</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Abilita o disabilita l\'app. Un caso d\'uso sarebbe quello di disabilitarla temporaneamente e riabilitarla automaticamente dopo un paio d\'ore.
+        ]]>
+    </string>
+
+</resources>

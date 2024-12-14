@@ -1,0 +1,129 @@
+<resources>
+    <string name="crash_title">
+        Spiacente, l\'app si è chiusa in modo anomalo.\n\n
+        Si prega di copiare il contenuto qui sotto e segnalare questo problema su github,
+        rimuovendo eventuali informazioni sensibili prima di inviare la segnalazione.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Dom</item>
+        <item>Lun</item>
+        <item>Mar</item>
+        <item>Mer</item>
+        <item>Gio</item>
+        <item>Ven</item>
+        <item>Sab</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Rifiuta</item>
+        <item>Silenzio</item>
+        <item>Rispondi e riaggancia</item>
+    </string-array>
+
+    <string name="show_passed">Mostra Chiamate Perse</string>
+    <string name="show_blocked">Mostra Bloccate</string>
+
+    <string name="confirm_delete_all_records">Confermi di voler eliminare tutte le registrazioni?</string>
+    <string name="expiry">Scadenza</string>
+    <string name="days">Giorni</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Le registrazioni della cronologia verranno registrate nel database e scadranno dopo N giorni,
+              le registrazioni scadute verranno eliminate automaticamente.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; La registrazione della cronologia è disabilitata, nulla verrà registrato nel database.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Le registrazioni verranno eseguite e non scadranno mai.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Se abilitato, il contenuto degli SMS verrà anche registrato nel database e visualizzato in questo elenco, non verrà registrato nel database se disabilitato.<br>
+        <br>
+        - Se abilitato:<br>
+        &emsp; <b>Tocca</b> per espandere/comprimere il messaggio completo.<br>
+        <br>
+        - Se disabilitato:<br>
+        &emsp; <b>Tocca</b> per aprire la conversazione nell\'app predefinita.
+        ]]>
+    </string>
+
+    <string-array name="history_record_context_menu">
+        <item>Copia numero</item>
+        <item>Aggiungi numero a una nuova regola</item>
+        <item>Aggiungi numero al database</item>
+        <item>Segna tutto come letto</item>
+    </string-array>
+
+    <string-array name="importance_list">
+        <item>Nessuna</item>
+        <item>Tonalità</item>
+        <item>Barra di stato, Tonalità</item>
+        <item>Suono, Barra di stato, Tonalità</item>
+        <item>Suono, Barra di stato, Tonalità, Heads-up</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Esporta come Json</item>
+        <item>Esporta come compresso</item>
+    </string-array>
+
+    <string name="language">Lingua</string>
+    <string name="help_language">
+        <![CDATA[
+            Le traduzioni sono eseguite da Google AI, segnala un problema su github per aggiungere il supporto di una nuova lingua.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Abilita per chiamata</string>
+    <string name="enabled_for_sms">Abilita per SMS</string>
+    <string name="repeated_call">Chiamata ripetuta</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Consenti se la chiamata viene ripetuta entro un periodo di tempo, è probabile che sia importante piuttosto che una chiamata spam. <br>
+        <br>
+        Anche la ricezione di messaggi di testo dallo stesso numero viene contata, questo dipende dal fatto che il permesso READ_SMS sia concesso, che è facoltativo.<br>
+        <br>
+        L\'impostazione predefinita <font color="#03DAC5"><b>1 / 5 Min</b></font> significa che la seconda chiamata entro 5 minuti sarà consentita. <br>
+        <br>
+        Si applica solo alle chiamate, <b>non</b> ai messaggi di testo. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorità: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        L\'interruttore globale, questa app funziona solo quando è attivata,
+        disattivala quando aspetti una chiamata/messaggio particolare. <br>
+        <br>
+        Può anche essere attivata/disattivata dalle <font color="#6ed0ff"><b>Impostazioni rapide a tendina</b></font>.<br>
+        <br>
+        Per gli SMS, questa app si occuperà delle notifiche SMS, si prega di
+        <font color="#fa7f71"><b>disattivare l\'autorizzazione di notifica dell\'app SMS predefinita</b></font> nelle impostazioni di sistema,
+        altrimenti ci saranno doppie notifiche.
+        Filtra solo le notifiche SMS, i messaggi SMS spam saranno comunque presenti nell\'app SMS predefinita.
+        ]]>
+    </string>
+
+    <string name="about">Informazioni</string>
+    <string name="version">Versione</string>
+    <string name="build_time">Ora di compilazione (UTC)</string>
+    <string name="source_code">Codice sorgente</string>
+    <string name="dismiss">Chiudi</string>
+    <string name="warning_running_in_work_profile">
+        Questa app potrebbe non funzionare correttamente all\'interno del profilo di lavoro, installala invece nel profilo principale.
+    </string>
+    <string-array name="import_csv_type">
+        <item>Importa .csv come singola regola</item>
+        <item>Importa .csv come più regole</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Questa app si occuperà di tutte le notifiche SMS,
+        ma l\'autorizzazione di notifica dell\'app SMS predefinita è anche abilitata,
+        disattivala nelle impostazioni di sistema per evitare doppie notifiche SMS.
+    </string>
+    <string name="open_settings">Apri Impostazioni</string>
+    <string name="ignore">Ignora</string>
+</resources>

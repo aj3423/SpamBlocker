@@ -1,0 +1,81 @@
+<resources>
+    <string name="dialed_number"><short>Numero Chiamato</short></string>
+    <string name="find_apps">Trova App</string>
+
+    <string name="confirm_delete_all_rule">Conferma l\'eliminazione di tutte le regole?</string>
+
+    <string name="notification">Notifica</string>
+    <string name="type">Tipo</string>
+    <string name="times">Volte</string>
+    <plurals name="days">
+        <item quantity="one">%d Giorno</item>
+        <item quantity="two">%d Giorni</item>
+        <item quantity="few">%d Giorni</item>
+        <item quantity="many">%d Giorni</item>
+        <item quantity="other">%d Giorni</item>
+    </plurals>
+    <string name="min">Min</string>
+    <string name="within_minutes">Entro Minuti</string>
+    <string name="within_days">Entro Giorni</string>
+    <string name="phone_number">Numero di Telefono</string>
+    <string name="phone_number_abbrev">Numero</string>
+    <string name="sms_content">Contenuto SMS</string>
+    <string name="regex_flags">Flags Regex</string>
+    <string-array name="regex_flags_list">
+        <item>Ignora maiuscole/minuscole</item>
+        <item>Punto corrisponde a qualsiasi carattere</item>
+        <item>Numero grezzo</item>
+    </string-array>
+    <string name="disable_number_optimization">Questa ottimizzazione può essere disabilitata dal flag regex "Numero grezzo".</string>
+    <string name="off_time"><short>tempo di pausa</short></string>
+    <string name="schedule">Programmazione</string>
+    <string name="workday">Giorno lavorativo</string>
+    <string name="weekend">Weekend</string>
+    <string name="entire_day">Giornata intera</string>
+    <string name="block_type">Tipo di blocco</string>
+    <string name="for_particular_number">Per numero</string>
+    <string name="help_for_particular_number">Se abilitato, la regola si applica solo quando corrispondono sia il numero che il contenuto.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rifiuta</b></font>: <br>
+        &ensp; Come premere il pulsante di rifiuto. Funziona completamente in silenzio, il blocco schermo non verrà attivato.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenzio</b></font>: <br>
+        &ensp; Suonerà silenziosamente in background, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
+        <br>
+        &ensp; Può anche aiutare se si verificano ripetute chiamate spam, prolungherà la durata della chiamata, rendendola meno efficiente per gli spammer, potenzialmente scoraggiandoli dal chiamarvi di nuovo.<br>
+        <br>
+        - <font color="#00BFFF"><b>Rispondi e riaggancia</b></font>: <br>
+        &ensp; Per evitare di essere inviati alla segreteria telefonica. Il blocco schermo può essere attivato per un breve periodo,
+         potresti anche sentire un tono di fine chiamata (alcuni telefoni offrono un\'opzione per disattivare questo suono).
+        ]]>
+    </string>
+    <string name="help_dialed">
+        <![CDATA[
+        I numeri composti saranno consentiti.<br>
+        <br>
+        L\'invio di messaggi conta anche, questo funziona solo quando è concessa l\'autorizzazione READ_SMS. <br>
+        <br>
+        L\'impostazione predefinita <font color="#03DAC5"><b>3 Giorni</b></font> significa che se hai composto o inviato messaggi al numero negli ultimi 3 giorni, le chiamate da quel numero saranno consentite.<br>
+        <br>
+        Si applica solo alle chiamate, <b>non</b> ai messaggi di testo. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorità: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Qualsiasi chiamata verrebbe accettata se qualsiasi app nell\'elenco è stata utilizzata di recente.<br>
+        <br>
+        Un caso d\'uso tipico:<br>
+        &emsp; Hai appena ordinato una pizza in PizzaApp, presto ti chiamano per un rimborso perché stanno chiudendo. Quella chiamata verrebbe accettata se PizzaApp è abilitata qui. <br>
+        <br>
+        L\'impostazione predefinita <font color="03DAC5"><b>5 Min</b></font> significa che qualsiasi chiamata verrebbe accettata se una delle app è stata utilizzata entro 5 minuti,
+        per `utilizzata` si intende attivata, disattivata, minimizzata o chiusa. <br>
+        <br>
+        Si applica solo alle chiamate, <b>non</b> ai messaggi di testo. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorità: 10</b></font>
+        ]]>
+    </string>
+</resources>

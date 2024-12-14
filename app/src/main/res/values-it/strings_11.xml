@@ -1,0 +1,57 @@
+<resources>
+    <string name="for_example">Es.:</string>
+    <string name="yesterday">Ieri</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Rifiuta le chiamate durante le videoconferenze online.<br> <br>
+        Verifica se un\'app selezionata sta eseguendo un <b>servizio in primo piano</b>,
+        comunemente utilizzato dalle app di videoconferenza per mantenere attiva la connessione.<br>
+        <br>
+        Si applica sia alle chiamate che ai messaggi.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorità predefinita: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Modalità Riunione</string>
+    <string name="search">Cerca</string>
+    <string name="http_header">Intestazione Http</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Un attributo per riga.
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">Registra SMS</string>
+    <string name="initial_row_count">Numero Righe Iniziali</string>
+    <plurals name="rows">
+        <item quantity="one">%d Riga</item>
+        <item quantity="two">%d Righe</item>
+        <item quantity="few">%d Righe</item>
+        <item quantity="many">%d Righe</item>
+        <item quantity="other">%d Righe</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Soglia Barra di Scorrimento</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Il numero massimo di elementi visualizzabili nell\'elenco prima che appaia una barra di scorrimento.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Altezza Scorrimento</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Quando appare la barra di scorrimento, questo valore rappresenta l\'altezza dell\'elenco come percentuale dello schermo.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Righe Regex Max</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Il numero massimo di righe visualizzate per il testo regex, il testo rimanente verrà troncato e seguito da un\'ellissi.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Righe Descrizione Max</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Il numero massimo di righe visualizzate per il testo della descrizione, il testo rimanente verrà troncato e seguito da un\'ellissi.
+        ]]>
+    </string>
+</resources>

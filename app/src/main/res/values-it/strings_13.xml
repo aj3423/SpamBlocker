@@ -1,0 +1,110 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Pulizia del database della cronologia, eliminazione dei record precedenti all\'istante: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Pulizia del database spam, eliminazione di %s record precedenti all\'istante: %s".
+    </string>
+    <string name="resolved_url">URL risolto: %s</string>
+    <string name="time_cost">Costo tempo: %s millisecondi.</string>
+    <string name="parsed_n_rules">Regole analizzate: %s.</string>
+    <string name="add_n_numbers_to_spam_db">Aggiunta di %s numeri al database spam.</string>
+    <string name="nothing_to_import">Elenco numeri vuoto, niente da importare.</string>
+    <string name="importing_n_numbers">Importazione di %s numeri come regola regex.</string>
+    <string name="create_rule_with_numbers">Creazione regola con %s numeri.</string>
+    <string name="replace_rule_with_desc">Sostituzione della regola con descrizione: %s.</string>
+    <string name="rule_with_desc_not_found">Regola con descrizione %s non trovata.</string>
+    <string name="merging_rule_with_desc">Unisco la regola con descrizione: %s.</string>
+    <string name="regex_count_after_merge">Conteggio regex prima: %s, dopo: %s.</string>
+    <string name="replace_number_from_to">Sostituzione numero da %s a %s.</string>
+    <string name="find_rule_with_desc">Trovati %s regole con descrizione %s.</string>
+    <string name="modify_n_rules">Modifica di %s regole.</string>
+    <string name="number_not_match_filter">Il numero %s non corrisponde al filtro %s, salta.</string>
+    <string name="fail_detect_cc">Impossibile rilevare il codice paese.</string>
+    <string name="identified_as_spam">Identificato come numero spam, categoria: %s.</string>
+    <string name="identified_as_valid">Identificato come numero valido, categoria: %s.</string>
+    <string name="unidentified_number">Numero non identificato.</string>
+    <string name="auto_detect_cc_permission">L\'autorizzazione READ_PHONE_STATE è richiesta per rilevare il codice paese.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Il codice del paese.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; La parte nazionale.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Il numero completo, incluso sia il codice del paese che la parte nazionale, senza + o 0 iniziali.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Il numero originale che può contenere + o 0 iniziali.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; L\'anno, es.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; I numeri a una cifra saranno completati con uno zero iniziale, es.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Questi valori saranno completati senza zero iniziale, es.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        Tag supportati:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        <font color="#ffa500"><b>Attualmente in fase di test con API di test, passerà all\'API di produzione nella prossima versione v4.0.<b></font><br>
+        <br>
+        <font color="#ffa500"><b>Gli account di test e di produzione non sono compatibili,
+        per favore registrati di nuovo dopo il passaggio alla produzione.<b></font><br>
+        <br>
+        Attualmente, è per gli utenti <b>tedeschi</b>, con potenziale espansione globale.<br>
+        <br>
+        Sito web: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        Registra un account su <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        per ottenere il tuo nome utente e password. Quindi, inseriscili di seguito.<br>
+        <br>
+        Dovrebbero assomigliare a:<br>
+        - Nome utente:<br>
+         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
+        - Password:<br>
+         &emsp; xxxxxxxxxxxxxxxxxxxx
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        Il limite di tempo per lo screening delle chiamate è di 5 secondi, con un buffer di %s ms
+        per l\'imprecisione delle funzioni temporali, il limite di tempo totale è in realtà di %s ms.
+        I passaggi precedenti hanno richiesto %s ms, tempo insufficiente, salta.
+    </string>
+    <string name="action_filter_query_result">Filtra Spam</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Genera un <u>elenco di numeri</u> contenente il numero spam identificato dal passaggio precedente, pronto per essere importato nel database.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">Un altro thread è stato annullato.</string>
+    <string name="username">Nome utente</string>
+    <string name="password">Password</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>Scorri a sinistra</b></font> per eliminarlo.<br>
+        <br>
+        La maggior parte degli elementi dell\'interfaccia utente simili a schede in questa app sono associati a gesti di scorrimento,
+        alcuni dei quali supportano anche <font color="#03DAC5"><b>scorrimento a destra</b></font>, ad esempio, le registrazioni della cronologia.
+        ]]>
+    </string>
+    <string name="bug_number">Se questo è un numero valido, segnalalo su github.</string>
+    <string name="skip_alpha_empty_number">Salta numero alfa o vuoto.</string>
+</resources>
