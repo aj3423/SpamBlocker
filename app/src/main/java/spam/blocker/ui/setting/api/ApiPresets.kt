@@ -93,13 +93,13 @@ val authConfig_PhoneBlock = AuthConfig(
                 .resolveBase64Tag()
         }
     },
-    validator = {
+    validator = validator@ {
         val username = it[0]
         val password = it[1]
         if (!isUUID(username))
-            false
+            return@validator false
 
-        try {
+        return@validator try {
             b64Decode(password).size == 16
             true
         } catch (_: Exception) {
