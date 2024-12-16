@@ -5,7 +5,7 @@ junitVersion = "1.2.1"
 kotlin = "2.0.0"
 activityCompose = "1.9.3"
 composeBom = "2024.12.01"
-libphonenumber = "8.13.52"
+#libphonenumber = "8.13.52"
 reorderable = "2.3.3"
 serialization = "1.7.1"
 mockk = "1.13.10"
@@ -17,7 +17,7 @@ junitJupiter = "5.8.2"
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
-libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumber" }
+#libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumber" }
 mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 reorderable = { module = "sh.calvin.reorderable:reorderable", version.ref = "reorderable" }
 serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }

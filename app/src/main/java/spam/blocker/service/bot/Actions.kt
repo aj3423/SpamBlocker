@@ -12,8 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
-import com.google.i18n.phonenumbers.PhoneNumberUtil
-import com.google.i18n.phonenumbers.Phonenumber
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -1648,24 +1646,31 @@ class ParseIncomingNumber(
                 aCtx.logger?.error(ctx.getString(R.string.fail_detect_cc))
                 return false
             }
+
+            // Use libphonenumber to check if the number has no leading + but is actually started with the CC.
+            // e.g.:   3312345, it's actually +3312345 but no leading +
+            // I'm trying to avoid using this library, because it increases the apk by 600kb.
+            // Here, the code assumes all international calls to start with leading +.
+            // If anyone has received number like 3312345, please report on github.
+
             // Not sure if it's possible to have a number start with CC but has no leading `+`,
             //  for instance: 33xxxxxxxx
             // Check the part xxxxxxxx, if it's still a valid number for cc==33,
             //   then the xxxxxxxx is the domestic part.
             // Otherwise, the entire 33xxxxxxxx is a domestic number
-            val rest = clearedNumber.substring(cc.toString().length)
-            val pnUtil = PhoneNumberUtil.getInstance()
-            val n = Phonenumber.PhoneNumber().apply {
-                countryCode = cc
-                nationalNumber = rest.toLong()
-            }
-            if (pnUtil.isValidNumber(n)) { // the number start with CC
-                aCtx.cc = cc.toString()
-                aCtx.domestic = rest
-            } else { // it's simply a domestic number
+//            val rest = clearedNumber.substring(cc.toString().length)
+//            val pnUtil = PhoneNumberUtil.getInstance()
+//            val n = Phonenumber.PhoneNumber().apply {
+//                countryCode = cc
+//                nationalNumber = rest.toLong()
+//            }
+//            if (pnUtil.isValidNumber(n)) { // the number start with CC
+//                aCtx.cc = cc.toString()
+//                aCtx.domestic = rest
+//            } else { // it's simply a domestic number
                 aCtx.cc = cc.toString()
                 aCtx.domestic = clearedNumber
-            }
+//            }
         }
 
         return true
