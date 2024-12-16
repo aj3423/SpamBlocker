@@ -37,6 +37,8 @@ var lang_str string
 
 var filter_str string
 
+var del string
+
 var move string
 var to string
 
@@ -385,6 +387,22 @@ func move_tag(tag string, lang string, to_xml string) func(string) error {
 	}
 }
 
+// -del recent_apps
+func delete_tag(tag string, lang string, _ string) func(string) error {
+	return func(xml_fn string) error {
+
+		src_lines := split_lines(read_xml(lang, xml_fn))
+		found, start, end, _ := extract_tag(src_lines, tag)
+		if found {
+			fmt.Printf("%s  %s\n", lang, xml_fn)
+			cleared := append(src_lines[:start], src_lines[end:]...)
+			write_xml(lang, xml_fn, join_lines(cleared))
+		}
+
+		return nil
+	}
+}
+
 func setup() {
 	for key := range nameMap {
 		LANGUAGES = append(LANGUAGES, key)
@@ -394,11 +412,12 @@ func setup() {
 	RES_DIR = cwd + "/../app/src/main/res"
 
 	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES))
-	flag.StringVar(&filter_str, "filter", "", "")
-	flag.StringVar(&move, "move", "", "")
+	flag.StringVar(&filter_str, "filter", "", "-filter _12.xml")
+	flag.StringVar(&del, "del", "", "-del tag")
+	flag.StringVar(&move, "move", "", "-move tag -to strings_1.xml")
 	flag.StringVar(&to, "to", "", "")
-	flag.BoolVar(&short, "short", false, "")
-	flag.StringVar(&only, "only", "", "")
+	flag.BoolVar(&short, "short", false, "force short, usually used together with -only")
+	flag.StringVar(&only, "only", "", "-only tag")
 	flag.IntVar(&thread, "thread", 3, "")
 	flag.Parse()
 
@@ -409,12 +428,17 @@ func setup() {
 func main() {
 	setup()
 
-	if move != "" { // -move recent_apps -to strings_2.xml
+	if del != "" {
+		languages := append(LANGUAGES, ENGLISH)
+		for _, lang := range languages {
+			walk_lang_xmls(lang, delete_tag(del, lang, to))
+		}
+	} else if move != "" { // -move recent_apps -to strings_2.xml
 		if to == "" {
 			color.HiRed("usage: go run . -move %s -to strings_x.xml", move)
 			return
 		}
-		languages := append(LANGUAGES, "")
+		languages := append(LANGUAGES, ENGLISH)
 		for _, lang := range languages {
 			walk_lang_xmls(lang, move_tag(move, lang, to))
 		}

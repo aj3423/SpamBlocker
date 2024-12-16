@@ -3,11 +3,14 @@ package spam.blocker.service.checker
 import android.content.Context
 import android.telecom.Connection
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -16,8 +19,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.JsonObject
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.HistoryRecord
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
@@ -45,10 +50,14 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.ApiQueryResult
 import spam.blocker.ui.M
+import spam.blocker.ui.history.ReportSpamDialog
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Notification
 import spam.blocker.util.PermissiveJson
@@ -90,32 +99,63 @@ fun ExtraInfoWithDivider(text: String, maxLines: Int) {
     }
 }
 
-
 interface ICheckResult {
     val type: Int
 
     // Used in the notification
-    fun resultSummary(ctx: Context): String
+    fun resultReasonStr(ctx: Context): String
 
     // This will be rendered in the history items as the reason.(2nd row)
     @Composable
-    fun ResultSummary(expanded: Boolean) {
+    fun ResultReason(expanded: Boolean) {
         GreyLabel(
-            text = resultSummary(LocalContext.current),
+            text = resultReasonStr(LocalContext.current),
             fontSize = 16.sp,
-            maxLines = if (expanded) 2 else 1,
+            maxLines = if (expanded) 3 else 1,
             overflow = TextOverflow.Ellipsis,
         )
     }
 
     // It will be displayed in the history card when expanded.
-    // 1. Show "Report Number" button
-    // 2. Show detailed information
-    // E.g.:
-    //  - the ApiQuery will show full server response
-    //  - the SMS rule will show full sms content.
+    //  - show API server response for API query
+    //  - show origin sms content for sms record.
     @Composable
-    fun ExtraInfo(expanded: Boolean) {
+    fun ExpandedContent(forType: Int, record: HistoryRecord) {
+        val ctx = LocalContext.current
+
+        when(forType) {
+            // "Report Number" button
+            Def.ForNumber -> {
+                if (record.expanded) {
+                    val enabledReportApis = remember {
+                        G.apiReportVM.table.listAll(ctx).filter { it.enabled }
+                    }
+                    if (enabledReportApis.isNotEmpty()) {
+                        Spacer(modifier = M.padding(vertical = 4.dp))
+
+                        val reportTrigger = remember { mutableStateOf(false) }
+                        ReportSpamDialog(trigger = reportTrigger, rawNumber = record.peer)
+                        StrokeButton(
+                            label = Str(R.string.report_number),
+                            color = DarkOrange,
+                            modifier = M.padding(bottom = 4.dp)
+                        ) {
+                            reportTrigger.value = true
+                        }
+                    }
+                }
+            }
+            Def.ForSms -> {
+                val smsContent = record.extraInfo
+                if (smsContent != null) {
+                    val initialSmsRows = spf.HistoryOptions(ctx).getInitialSmsRowCount()
+                    ExtraInfoWithDivider(
+                        text = smsContent,
+                        maxLines = if (record.expanded) Int.MAX_VALUE else initialSmsRows,
+                    )
+                }
+            }
+        }
     }
 
     fun shouldBlock(): Boolean {
@@ -145,7 +185,7 @@ interface ICheckResult {
 class ByDefault(
     override val type: Int = RESULT_ALLOWED_BY_DEFAULT,
 ) : ICheckResult {
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.passed_by_default)
     }
 }
@@ -154,7 +194,7 @@ class ByDefault(
 class ByEmergency(
     override val type: Int = RESULT_ALLOWED_BY_EMERGENCY,
 ) : ICheckResult {
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.emergency_call)
     }
 }
@@ -168,7 +208,7 @@ class ByContact(
         return contactName ?: ""
     }
 
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return if (type == RESULT_ALLOWED_BY_CONTACT)
             ctx.getString(R.string.contacts)
         else
@@ -187,14 +227,14 @@ class ByRecentApp(
         return pkgName
     }
 
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.recent_apps)
     }
 
     @Composable
-    override fun ResultSummary(expanded: Boolean) {
+    override fun ResultReason(expanded: Boolean) {
         RowVCenterSpaced(4) {
-            super.ResultSummary(expanded)
+            super.ResultReason(expanded)
             AppIcon(pkgName)
         }
     }
@@ -210,14 +250,14 @@ class ByMeetingMode(
         return pkgName
     }
 
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.in_meeting)
     }
 
     @Composable
-    override fun ResultSummary(expanded: Boolean) {
+    override fun ResultReason(expanded: Boolean) {
         RowVCenterSpaced(4) {
-            super.ResultSummary(expanded)
+            super.ResultReason(expanded)
             AppIcon(pkgName)
         }
     }
@@ -227,7 +267,7 @@ class ByMeetingMode(
 class ByRepeatedCall(
     override val type: Int = RESULT_ALLOWED_BY_REPEATED,
 ) : ICheckResult {
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.repeated_call)
     }
 }
@@ -236,7 +276,7 @@ class ByRepeatedCall(
 class ByDialedNumber(
     override val type: Int = RESULT_ALLOWED_BY_DIALED,
 ) : ICheckResult {
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.dialed_number)
     }
 }
@@ -245,7 +285,7 @@ class ByDialedNumber(
 class ByOffTime(
     override val type: Int = RESULT_ALLOWED_BY_OFF_TIME,
 ) : ICheckResult {
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.off_time)
     }
 }
@@ -257,7 +297,7 @@ class BySpamDb(
     //  for later reporting purpose.
     val matchedNumber: String,
 ) : ICheckResult {
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.database)
     }
     override fun reasonToDb(): String {
@@ -274,7 +314,7 @@ class BySTIR(
         return stirResult.toString()
     }
 
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return when (stirResult) {
             Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${ctx.getString(R.string.stir_attestation)} ${
                 ctx.getString(
@@ -315,10 +355,15 @@ class ByApiQuery(
     val detail: ApiQueryResultDetail,
 ) : ICheckResult {
     @Composable
-    override fun ExtraInfo(expanded: Boolean) {
-        if (!expanded) {
+    override fun ExpandedContent(forType: Int, record: HistoryRecord) {
+        if (!record.expanded) {
             return
         }
+
+        // "Report Number" button
+        super.ExpandedContent(forType, record)
+
+        // Server Echo
         val echo = detail.queryResult.serverEcho
         if (echo != null) {
             // pretty format the json
@@ -338,7 +383,7 @@ class ByApiQuery(
         return PermissiveJson.encodeToString(detail)
     }
 
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.query) + ": " + detail.apiSummary +
                 if (detail.queryResult.category?.isNotEmpty() == true)
                     " (${detail.queryResult.category})"
@@ -347,21 +392,13 @@ class ByApiQuery(
     }
 }
 
-// This will be serialized to a json and saved as the HistoryTable.reason
-@Serializable
-class RegexExtraInfo(
-    val recordId: Long,
-    val smsContent: String? = null,
-)
-
 // allowed/blocked by regex rule
 class ByRegexRule(
     override val type: Int,
     private val rule: RegexRule?, // null: the rule is deleted
-    val extraInfo: RegexExtraInfo,
 ) : ICheckResult {
     override fun reasonToDb(): String {
-        return PermissiveJson.encodeToString(extraInfo)
+        return (rule?.id ?: 0).toString()
     }
 
     private fun ruleSummary(ctx: Context): String {
@@ -387,23 +424,7 @@ class ByRegexRule(
             super.getSpamImportance(isCall) // fallback to global setting
     }
 
-    @Composable
-    override fun ExtraInfo(expanded: Boolean) {
-        val ctx = LocalContext.current
-        when(type) {
-            RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
-                if (extraInfo.smsContent != null) {
-                    val initialSmsRows = spf.HistoryOptions(ctx).getInitialSmsRowCount()
-                    ExtraInfoWithDivider(
-                        text = extraInfo.smsContent,
-                        maxLines = if (expanded) Int.MAX_VALUE else initialSmsRows,
-                    )
-                }
-            }
-        }
-    }
-
-    override fun resultSummary(ctx: Context): String {
+    override fun resultReasonStr(ctx: Context): String {
         val summary = ruleSummary(ctx)
 
         return when (type) {
@@ -449,15 +470,13 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER,
         RESULT_ALLOWED_BY_CONTACT_GROUP, RESULT_BLOCKED_BY_CONTACT_GROUP,
         RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX -> {
-            val resultInfo = PermissiveJson.decodeFromString<RegexExtraInfo>(reason)
-            val rule = NumberRuleTable().findRuleById(ctx, resultInfo.recordId)
-            ByRegexRule(result, rule, resultInfo)
+            val rule = NumberRuleTable().findRuleById(ctx, reason.toLong())
+            ByRegexRule(result, rule)
         }
 
         RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
-            val resultInfo = PermissiveJson.decodeFromString<RegexExtraInfo>(reason)
-            val rule = ContentRuleTable().findRuleById(ctx, resultInfo.recordId)
-            ByRegexRule(result, rule, resultInfo)
+            val rule = ContentRuleTable().findRuleById(ctx, reason.toLong())
+            ByRegexRule(result, rule)
         }
 
         else -> ByDefault(result)

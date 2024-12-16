@@ -73,16 +73,19 @@ fun listReportableAPIs(
     ctx: Context,
     rawNumber: String,
     domainFilter: List<String>?,
+    isManualReport: Boolean = false,
 ): List<Api> {
-    // 1. check if the number is repeated or dialed
-    //  (DO NOT put this to any other places, it must be checked HERE before further execution)
-    val canReadCallLog = Permissions.isCallLogPermissionGranted(ctx)
-    if (!canReadCallLog)
-        return listOf()
+    if (!isManualReport) {
+        // 1. check if the number is repeated or dialed
+        //  (DO NOT put this to any other places, it must be checked HERE before further execution)
+        val canReadCallLog = Permissions.isCallLogPermissionGranted(ctx)
+        if (!canReadCallLog)
+            return listOf()
 
-    if (isNumberAllowedLater(ctx, rawNumber)) {
-        logi("skip reporting repeated/dialed number: $rawNumber")
-        return listOf()
+        if (isNumberAllowedLater(ctx, rawNumber)) {
+            logi("skip reporting repeated/dialed number: $rawNumber")
+            return listOf()
+        }
     }
 
     // 2. List all enabled APIs

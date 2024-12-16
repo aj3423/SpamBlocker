@@ -31,18 +31,15 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.listReportableAPIs
-import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.parseCheckResultFromDb
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid
-import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.FlowRowSpaced
@@ -50,7 +47,6 @@ import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
-import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
 import spam.blocker.util.TextLogger
@@ -96,7 +92,7 @@ fun ReportSpamDialog(
                 ) {
                     reportResult.value = buildAnnotatedString {  } // clear prev result
 
-                    val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null)
+                    val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true)
                     apis.forEach { api ->
                         scope.launch {
                             withContext(IO) {
@@ -170,30 +166,10 @@ fun HistoryCard(
 
                 // Reason Summary
                 val r = parseCheckResultFromDb(ctx, record.result, record.reason)
-                r.ResultSummary(record.expanded)
-
-                // Report Button
-                if (forType == Def.ForNumber && record.expanded) {
-                    val enabledReportApis = remember {
-                        G.apiReportVM.table.listAll(ctx).filter { it.enabled }
-                    }
-                    if (enabledReportApis.isNotEmpty()) {
-                        Spacer(modifier = M.padding(vertical = 4.dp))
-
-                        val reportTrigger = remember { mutableStateOf(false) }
-                        ReportSpamDialog(trigger = reportTrigger, rawNumber = record.peer)
-                        StrokeButton(
-                            label = Str(R.string.report_number),
-                            color = DarkOrange,
-                            modifier = M.padding(bottom = 4.dp)
-                        ) {
-                            reportTrigger.value = true
-                        }
-                    }
-                }
+                r.ResultReason(record.expanded)
 
                 // SMS Content / Api Echo
-                r.ExtraInfo(record.expanded)
+                r.ExpandedContent(forType, record)
             }
 
             // 3. Time / Unread Indicator

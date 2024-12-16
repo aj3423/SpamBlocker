@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 33
+        const val DB_VERSION = 34
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -57,7 +57,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_RESULT = "result" // Int, as RESULT_... below
         const val COLUMN_REASON = "reason" // Long, by which filter id is this blocked/whitelisted
         const val COLUMN_READ = "read" // Boolean
-        const val COLUMN_SMS_CONTENT = "sms_content" // text
+        const val COLUMN_EXTRA_INFO = "extra_info" // text
         const val COLUMN_EXPANDED = "expanded" // Boolean
 
 
@@ -147,7 +147,7 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_RESULT INTEGER, " +
                         "$COLUMN_REASON LONG, " +
                         "$COLUMN_READ INTEGER, " +
-                        "$COLUMN_SMS_CONTENT TEXT, " +
+                        "$COLUMN_EXTRA_INFO TEXT, " +
                         "$COLUMN_EXPANDED INTEGER " +
                         ")"
             )
@@ -193,9 +193,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         }
         // v2.0 introduced displaying sms content in sms history tab.
         if ((newVersion >= 27) && (oldVersion < 27)) {
-            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
+            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_EXTRA_INFO TEXT")
             db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_EXPANDED INTEGER")
-            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_SMS_CONTENT TEXT")
+            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXTRA_INFO TEXT")
             db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXPANDED INTEGER")
         }
 
@@ -227,6 +227,13 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 33) && (oldVersion < 33)) {
             db.execSQL("ALTER TABLE $TABLE_SPAM ADD COLUMN $COLUMN_REASON INTEGER")
             db.execSQL("ALTER TABLE $TABLE_SPAM ADD COLUMN $COLUMN_REASON_EXTRA TEXT")
+        }
+        // 5. add column extraInfo
+        if ((newVersion >= 34) && (oldVersion < 34)) {
+            db.execSQL("DELETE FROM $TABLE_CALL")
+            db.execSQL("DELETE FROM $TABLE_SMS")
+            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_EXTRA_INFO TEXT")
+            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXTRA_INFO TEXT")
         }
     }
 }

@@ -135,7 +135,7 @@ class Checker { // for namespace only
                     val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ret.resultSummary(ctx))
+                            .format(ret.resultReasonStr(ctx))
                     )
                     return ret
                 }
@@ -144,7 +144,7 @@ class Checker { // for namespace only
                     val ret = BySTIR(RESULT_ALLOWED_BY_STIR, stir)
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ret.resultSummary(ctx))
+                            .format(ret.resultReasonStr(ctx))
                     )
                     return ret
                 }
@@ -233,7 +233,7 @@ class Checker { // for namespace only
                     val ret = ByContact(RESULT_BLOCKED_BY_NON_CONTACT)
                     logger?.error(
                         ctx.getString(R.string.blocked_by).format(
-                            ret.resultSummary(ctx)
+                            ret.resultReasonStr(ctx)
                         )
                     )
                     return ret
@@ -692,7 +692,6 @@ class Checker { // for namespace only
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER,
                     rule = numberRule,
-                    extraInfo = RegexExtraInfo(recordId = numberRule.id)
                 )
             }
 
@@ -753,7 +752,6 @@ class Checker { // for namespace only
                     return ByRegexRule(
                         type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_REGEX,
                         rule = rule,
-                        extraInfo = RegexExtraInfo(recordId = rule.id)
                     )
                 }
             }
@@ -815,7 +813,6 @@ class Checker { // for namespace only
                     return ByRegexRule(
                         type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP,
                         rule = rule,
-                        extraInfo = RegexExtraInfo(recordId = rule.id)
                     )
                 }
             }
@@ -903,7 +900,6 @@ class Checker { // for namespace only
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT,
                     rule = rule,
-                    extraInfo = RegexExtraInfo(recordId = rule.id, smsContent = messageBody)
                 )
             }
             return null

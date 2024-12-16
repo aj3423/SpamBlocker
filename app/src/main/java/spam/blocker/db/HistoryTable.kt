@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import androidx.core.database.getIntOrNull
+import androidx.core.database.getStringOrNull
 import spam.blocker.def.Def
 import spam.blocker.util.Now
 
@@ -12,8 +13,16 @@ data class HistoryRecord(
 
     val peer: String = "",
     val time: Long = 0,
-    val result: Int = 0,
+
+    val result: Int = 0, // e.g.: RESULT_ALLOWED_BY_RECENT_APPS
+    // An extra information for the `result`
+    //  e.g.: pkgName for RecentApps, or API server echo for API query
     val reason: String = "",
+
+    // Generic extra information that not limited to any particular `result` type
+    //  e.g. SMS content
+    val extraInfo: String? = null,
+
     val read: Boolean = false,
     val expanded: Boolean = false,
 ) {
@@ -45,6 +54,7 @@ abstract class HistoryTable {
                         result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                         reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                         read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                        extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
                         expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                     )
 
@@ -69,6 +79,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
+        cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         return db.insert(tableName(), null, cv)
     }
@@ -82,6 +93,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
+        cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
         db.insert(tableName(), null, cv)
     }
@@ -123,6 +135,7 @@ abstract class HistoryTable {
                     result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                     reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
                     read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
+                    extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
                     expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
                 )
 

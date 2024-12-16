@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
+import kotlinx.serialization.Serializable
 import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
@@ -18,6 +19,13 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.spf
+
+// This will be serialized to a json and saved as the HistoryTable.reason
+@Serializable
+class SmsRecordInfo(
+    val recordId: Long,
+    val smsContent: String? = null,
+)
 
 class SmsReceiver : BroadcastReceiver() {
 
@@ -59,6 +67,7 @@ class SmsReceiver : BroadcastReceiver() {
                     time = System.currentTimeMillis(),
                     result = r.type,
                     reason = r.reasonToDb(),
+                    extraInfo = if (spf.isLogSmsContentEnabled()) messageBody else null,
                 )
             ) else 0
 

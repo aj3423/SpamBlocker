@@ -150,7 +150,7 @@ class CallScreeningService : CallScreeningService() {
             ctx,
             R.drawable.ic_call_blocked,
             title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
-            body = r.resultSummary(ctx),
+            body = r.resultReasonStr(ctx),
             importance = r.getSpamImportance(isCall = true),
             color = Salmon,
             intent = intent,
