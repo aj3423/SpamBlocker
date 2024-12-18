@@ -1,14 +1,12 @@
 name: Share Regex
 description: Share your regex rules
+title: [Country] Description
 labels: [share regex]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing. Please use the followinng title format: |
-          [Country] Description |
-        For example: |
-          [France] virtual numbers
+        Thanks for sharing.
 
   - type: textarea
     id: detail
