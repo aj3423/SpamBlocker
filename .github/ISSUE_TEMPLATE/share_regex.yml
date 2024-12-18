@@ -1,6 +1,6 @@
 name: Share Regex
 description: Share your regex rules
-title: [Country] Description
+title: <Country> Description
 labels: [share regex]
 body:
   - type: markdown
