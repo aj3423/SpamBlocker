@@ -5,7 +5,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing.
+        Thanks for sharing. Please use the followinng title format: |
+          [Country] Description |
+        For example: |
+          [France] virtual numbers
 
   - type: textarea
     id: detail
@@ -13,13 +16,4 @@ body:
       label: The regex
     validations:
       required: true
-
-  - type: input
-    id: desc
-    attributes:
-      label: Description
-      placeholder: |
-        E.g.: virutal numbers
-    validations:
-      required: false
 
