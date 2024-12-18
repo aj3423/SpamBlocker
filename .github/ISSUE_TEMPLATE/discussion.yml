@@ -5,6 +5,8 @@ body:
 
   - type: textarea
     id: detail
+    attributes:
+      label: ""
     validations:
       required: true
 
