@@ -6,7 +6,7 @@ body:
   - type: textarea
     id: detail
     attributes:
-      label: about what
+      label: Talk about anything
     validations:
       required: true
 
