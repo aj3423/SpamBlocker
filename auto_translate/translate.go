@@ -33,6 +33,7 @@ var nameMap = map[string]string{
 
 // -------- flags
 var thread int
+
 var lang_str string
 
 var filter_str string
@@ -40,6 +41,7 @@ var filter_str string
 var del string
 
 var move string
+
 var to string
 
 var only string
@@ -89,6 +91,7 @@ func read_file(fullpath string) string {
 	}
 	return string(s)
 }
+
 func read_file_lines(fullpath string) []string {
 	return strings.Split(read_file(fullpath), "\n")
 }
@@ -113,12 +116,14 @@ func lang_xmls_dir(lang string) string {
 		return RES_DIR + "/values-" + lang
 	}
 }
+
 func write_xml(lang string, xml_fn string, content string) error {
 	escaped := strings.ReplaceAll(content, "'", "\\'")
 	dir := lang_xmls_dir(lang)
 	os.MkdirAll(dir, 0666)
 	return write_file(dir+"/"+xml_fn, escaped)
 }
+
 func clear_lang_xmls(lang string) {
 	dir := lang_xmls_dir(lang)
 
@@ -251,6 +256,7 @@ func walk_lang_xmls(lang string, operation func(string) error) {
 func split_lines(content string) []string {
 	return strings.Split(content, "\n")
 }
+
 func join_lines(lines []string) string {
 	return strings.Join(lines, "\n")
 }
@@ -306,6 +312,7 @@ func translate_1_xml(lang string, xml_fn string) error {
 	}
 	return e
 }
+
 func lang_translator(target_lang string) func(string) error {
 	return func(xml_fn string) error {
 
@@ -425,6 +432,7 @@ func setup() {
 	pool, _ = ants.NewPool(thread)
 
 }
+
 func main() {
 	setup()
 
