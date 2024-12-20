@@ -42,6 +42,10 @@ function generateWiki(results) {
 		let countrySection = `# ${country}\n`;
 		countrySection += wiki[country].map(item => {
 			const content = trimContent(item.content)
+				// add "    - " before each line
+				.split('\n')
+				.map(line => `    - ${line}`)
+				.join('\n');
 			return `- [${item.description}](${item.link}) by @${item.author}\n\n${content}`
 		}).join('\n\n');
 		return countrySection;

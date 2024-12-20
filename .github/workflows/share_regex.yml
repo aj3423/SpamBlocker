@@ -2,7 +2,7 @@ name: Share regex update wiki
 
 on:
   issues:
-    types: [created, edited, deleted]
+    types: [opened, edited, deleted]
 
 permissions:
   contents: write
