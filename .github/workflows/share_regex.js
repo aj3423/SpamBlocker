@@ -16,6 +16,9 @@ function parseTitle(title) {
 		description: description
 	}
 }
+function contributing() {
+	return "If you want to share your regex here, please fire an issue with the 'share regex' label.\n\n"
+}
 
 // drop frist 2 lines:
 //   ### The Regex
@@ -38,18 +41,19 @@ function generateWiki(results) {
 	let sortedCountries = Object.keys(wiki).sort();
 
 	// Generate Markdown content
-	let markdown = sortedCountries.map(country => {
-		let countrySection = `# ${country}\n`;
-		countrySection += wiki[country].map(item => {
-			const content = trimContent(item.content)
-				// add "    - " before each line
-				.split('\n')
-				.map(line => `    - ${line}`)
-				.join('\n');
-			return `- [${item.description}](${item.link}) by @${item.author}\n\n${content}`
+	let markdown = contributing()
+		+ sortedCountries.map(country => {
+			let countrySection = `# ${country}\n`;
+			countrySection += wiki[country].map(item => {
+				const content = trimContent(item.content)
+					// add "    - " before each line
+					.split('\n')
+					.map(line => `    - ${line}`)
+					.join('\n');
+				return `- [${item.description}](${item.link}) by @${item.author}\n\n${content}`
+			}).join('\n\n');
+			return countrySection;
 		}).join('\n\n');
-		return countrySection;
-	}).join('\n\n');
 
 	fs.writeFileSync('generated.md', markdown);
 
