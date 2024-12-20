@@ -3,10 +3,8 @@
         <![CDATA[
         These rules apply to the incoming phone number.<br>
         <br>
-        <font color="#00BFFF"><b> - UI related</b></font>:<br>
-        Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left to delete</b></font> it.<br>
-        <br>
-        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern. <br>
+        <font color="#00BFFF"><b> - Examples</b></font>:<br>
+        There are some examples on the <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki page</a>.<br>
         <br>
         <font color="#00BFFF"><b> - Regex Optimization</b></font>:<br>
         To simplify the regex,
@@ -44,7 +42,12 @@
          - <no_translate><b>flags</b></no_translate>: 1(Apply to Call), 2(Apply to SMS), 3(both), default 3<br>
          - <no_translate><b>isBlacklist</b></no_translate>: Blacklist or whitelist. <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>: Block type. 0~2 corresponding to the 3 block types, default 0<br>
-         - <no_translate><b>importance</b></no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2
+         - <no_translate><b>importance</b></no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2<br>
+        <br>
+        <font color="#00BFFF"><b> - UI related</b></font>:<br>
+        Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left to delete</b></font> it.<br>
+        <br>
+        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern.
         ]]>
     </string>
 </resources>

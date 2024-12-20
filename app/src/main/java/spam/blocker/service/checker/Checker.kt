@@ -18,7 +18,9 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.executeAll
+import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
+import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.A
 import spam.blocker.util.Contacts
@@ -659,10 +661,11 @@ class Checker { // for namespace only
             }
 
             logger?.info(
-                (ctx.getString(R.string.checking_template)+ ": ${numberRule.summary()}")
+                (ctx.getString(R.string.checking_template)+ ": %s")
                     .formatAnnotated(
                         ctx.getString(R.string.number_rule).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
+                        priority().toString().A(LightMagenta),
+                        numberRule.summary().A(if (numberRule.isBlacklist) Salmon else Emerald),
                     )
             )
 
