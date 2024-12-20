@@ -40,13 +40,14 @@ function generateWiki(results) {
 			let countrySection = `# ${country}\n`;
 			countrySection += wiki[country].map(item => {
 				const content = item.content
-                    .replace("### The regex\n\n", "") // drop the issue template prefix
+                    .replace("### The regex", "") // drop the issue template prefix
+                    .trim()
 
 					// add "    - " before each line
 					.split('\n')
 					.map(line => `    - ${line}`)
 					.join('\n');
-				return `- [${item.description}](${item.link}) <small>(by @${item.author})</small>\n\n${content}`
+				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n${content}`
 			}).join('\n\n');
 			return countrySection;
 		}).join('\n\n');
