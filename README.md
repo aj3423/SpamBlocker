@@ -70,10 +70,15 @@ It's not necessary to leave this app running in the background, you can kill the
  - For offline features
  No data collection.
  - For Online features:
-   The API endpoints will see your IP address and the reported number.
-   If you don't use the online features, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147), or download the offline version from the release page.
+  
+     The API endpoints will see your IP address and the reported number.
+     If you don't use the online features, you can [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147), or download the offline apk from the release page.
  - No communication with other app
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
+ - Apk signing signature:
+
+    `apksigner verify --print-certs SpamBlocker.apk`
+    > 7b1ce727856f3427eab1fadfad6c9730cd4e6ba201661547f009206377dffb58
 
 Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRIVACY%20POLICY.md)
 
