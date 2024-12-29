@@ -61,14 +61,16 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Primarily designed for the German FRITZ!Box, it also works for phone numbers from any other country.<br>
+        Primarily designed for the German FRITZ!Box, it also works for phone numbers from any other countries.<br>
         <br>
-        Website: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Register an account on <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        Register an account on <a href="https://phoneblock.net">https://phoneblock.net</a>
         to get your username and password. Then, fill them in below.<br>
         <br>
         They should look like:<br>

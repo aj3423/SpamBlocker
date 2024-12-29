@@ -36,9 +36,11 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Projetado principalmente para o FRITZ!Box alemão, também funciona para números de telefone de qualquer outro país.<br>
+        Projetado principalmente para o FRITZ!Box alemão, também funciona para números de telefone de outros países.<br>
         <br>
-        Website: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        Site: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">O limite de tempo para triagem de chamadas é de 5 segundos, com um buffer de %s ms para a imprecisão das funções de tempo, o limite de tempo total é de %s ms. As etapas anteriores custaram %s ms, tempo insuficiente, pulando.</string>
@@ -51,7 +53,7 @@
     <string name="another_thread_is_cancelled">Outra thread foi cancelada.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registre uma conta em <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        Cadastre uma conta em <a href="https://phoneblock.net">https://phoneblock.net</a>
         para obter seu nome de usuário e senha. Em seguida, preencha-os abaixo.<br>
         <br>
         Eles devem ser parecidos com:<br>

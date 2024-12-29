@@ -36,9 +36,11 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Deseñado principalmente para a FRITZ!Box alemá, tamén funciona para números de teléfono de calquera outro país.<br>
+        Deseñado principalmente para a FRITZ!Box alemá, tamén funciona para números de teléfono doutros países.<br>
         <br>
-        Sitio web: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        Sitio web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">O límite de tempo de selección de chamadas é de 5 segundos, cun búfer de %s ms pola imprecisión das funcións de tempo, o límite de tempo total é realmente de %s ms. Os pasos previos custaron %s ms, non queda tempo suficiente, omitir.</string>
@@ -51,10 +53,10 @@
     <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Rexístrate nunha conta en <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-        para obter o teu nome de usuario e contrasinal. Despois, enchéos a continuación.<br>
+        Rexístrate nunha conta en <a href="https://phoneblock.net">https://phoneblock.net</a>
+        para obter o teu nome de usuario e contrasinal. Despois, encheos a continuación.<br>
         <br>
-        Deberían parecerse a:<br>
+        Deberían parecerse a isto:<br>
         - Nome de usuario:<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
         - Contrasinal:<br>

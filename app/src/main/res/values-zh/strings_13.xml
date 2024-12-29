@@ -36,9 +36,11 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        主要为德国 FRITZ!Box 设计，也适用于其他国家的电话号码。<br>
+        主要针对德国 FRITZ!Box 设计，也适用于其他国家的电话号码。<br>
         <br>
-        网站：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        网站：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
@@ -51,9 +53,9 @@
     <string name="another_thread_is_cancelled">另一个线程已取消。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        在 <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a> 注册账户以获取用户名和密码。然后，在下方填写。<br>
+        在 <a href="https://phoneblock.net">https://phoneblock.net</a> 注册账号以获取用户名和密码。然后，在下面填写。<br>
         <br>
-        它们应该类似于：<br>
+        它们应该如下所示：<br>
         - 用户名：<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
         - 密码：<br>
