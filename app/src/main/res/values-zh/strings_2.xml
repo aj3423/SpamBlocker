@@ -54,29 +54,49 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        对所有 API 端点自动举报来电号码。<br>
+        在无人为干预的情况下，自动将拦截的号码报告给所有 API 端点，以构建我们针对垃圾电话的众包数据库。<br>
         <br>
-        举报号码前有一小时的缓冲时间。如果号码由于重复或在缓冲时间内回拨而被允许，则被视为非垃圾邮件，不会被举报。<br>
+        <h4>- <font color="#6ed0ff">举报延迟</font></h4><br>
+        拦截来电后，号码将在举报前有一小时的缓冲时间。
+        如果由于重复或在缓冲时间内回拨而稍后允许该号码，
+        则将其视为非垃圾号码，不会被举报。<br>
         <br>
-        <b>1</b>. 通过的号码<font color="#fa7f71"><b>不会</b></font>被举报。
+        <h4>- <font color="#6ed0ff">隐私</font></h4>
         <br>
-        <b>2</b>. 被以下类型阻止的号码<font color="#03DAC5"><b>将</b></font>被安排举报：<br>
+        API 端点将看到您的：<br>
         <br>
-        - <font color="#6ed0ff"><b>非联系人</b></font>(排除)<br>
-        - <font color="#6ed0ff"><b>STIR 认证</b></font><br>
-        - <font color="#6ed0ff"><b>号码正则表达式</b></font><br>
-        - <font color="#6ed0ff"><b>短信内容正则表达式</b></font><br>
+         &ensp; - IP 地址<br>
+         &ensp; - TLS 和 TCP 指纹（这可能会显示您的 Android 版本）<br>
+         &ensp; - 已举报的号码<br>
         <br>
-        <b>3</b>. 被以下类型阻止的号码<font color="#fa7f71"><b>不会</b></font>被举报：<br>
+        不会报告其他任何信息。<br>
         <br>
-        - <font color="#6ed0ff"><b>联系人正则表达式</b></font><br>
-        - <font color="#6ed0ff"><b>联系人分组正则表达式</b></font><br>
-        - <font color="#6ed0ff"><b>会议模式</b></font><br>
-        - <font color="#6ed0ff"><b>全局测试</b></font><br>
-        - <font color="#6ed0ff"><b>即时查询</b></font>，防止 API 端点的号码泄露给竞争对手。<br>
-        &emsp; 一个例外是，它将被报告回相同的 API 以提高其评分。（如果配置了相同域名的报告 API）<br>
-        - <font color="#6ed0ff"><b>数据库</b></font><br>
-        &emsp; 一个例外是，如果号码最初是由即时 API 查询添加的，后来又被本地数据库阻止，则它只会向该 API 报告以提高评分。（如果配置了相同域名的报告 API）<br>
+        <h4>- <font color="#6ed0ff">举报类型</font></h4><br>
+        <h5>1. 它<font color="#fa7f71">不会</font>举报：</h5>
+        <br>
+        - <font color="#fa7f71">已通过的号码</font><br>
+        以及以下被拦截的类型：<br>
+        - <font color="#fa7f71">联系人正则表达式</font><br>
+        - <font color="#fa7f71">联系人组正则表达式</font><br>
+        - <font color="#fa7f71">数据库</font><br>
+        - <font color="#fa7f71">会议模式</font><br>
+        - <font color="#fa7f71">全局测试</font><br>
+        - <font color="#fa7f71">即时查询</font>（防止 API 端点的号码泄露给其他竞争对手）<br>
+        <br>
+        <h5>2. 它<font color="#03DAC5">会</font>举报：</h5>
+        <br>
+        以下被拦截的类型：<br>
+        - <font color="#03DAC5">非联系人</font>(排除)<br>
+        - <font color="#03DAC5">STIR 认证</font><br>
+        - <font color="#03DAC5">号码正则表达式</font><br>
+        - <font color="#03DAC5">短信内容正则表达式</font><br>
+        <br>
+        <h5>3. 例外情况：</h5>
+        <br>
+        - 当它被<font color="#03DAC5">即时查询</font>拦截时，它将被报告回<b>相同的</b> API 以提高号码的评分。
+         例如，当它被 check.com 的 API 查询拦截时，它只会向 check.com 报告，而不会向 others.com 报告。<br>
+        - 当它被<font color="#03DAC5">数据库</font>拦截并且记录最初是由即时 API 查询添加时，
+         出于与上述相同的原因，它只会向<b>相同的</b> API 报告。<br>
         ]]>
     </string>
     <string name="auto_report">自动举报</string>

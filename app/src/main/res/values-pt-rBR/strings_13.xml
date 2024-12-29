@@ -33,18 +33,12 @@
         ]]>
     </string>
     <string name="number_not_match_filter">O número %s não corresponde ao filtro %s, pulando.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>Atualmente em teste com a API de teste, fará a transição para
-        a API de produção na próxima versão v4.0.<b></font><br>
+        Projetado principalmente para o FRITZ!Box alemão, também funciona para números de telefone de qualquer outro país.<br>
         <br>
-        <font color="#ffa500"><b>Contas de teste e produção não são compatíveis,
-        por favor, registre-se novamente após a mudança para produção mais tarde.<b></font><br>
-        <br>
-        Atualmente, é para usuários <b>alemães</b>, com potencial para expansão global.<br>
-        <br>
-        Website: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Website: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">O limite de tempo para triagem de chamadas é de 5 segundos, com um buffer de %s ms para a imprecisão das funções de tempo, o limite de tempo total é de %s ms. As etapas anteriores custaram %s ms, tempo insuficiente, pulando.</string>
@@ -57,10 +51,10 @@
     <string name="another_thread_is_cancelled">Outra thread foi cancelada.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registre uma conta em <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Registre uma conta em <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         para obter seu nome de usuário e senha. Em seguida, preencha-os abaixo.<br>
         <br>
-        Devem ser parecidos com:<br>
+        Eles devem ser parecidos com:<br>
         - Nome de usuário:<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
         - Senha:<br>

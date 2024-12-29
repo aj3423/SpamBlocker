@@ -121,12 +121,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         numberFilter = ".*",
                     ),
                     HttpDownload(
-                        url =
-//                        if (BuildConfig.DEBUG)
-                        "https://phoneblock.net/pb-test/api/num/00{cc}{domestic}"
-//                        else
-//                            "https://phoneblock.net/phoneblock/api/num/00{cc}{domestic}"
-                        ,
+                        url ="https://phoneblock.net/phoneblock/api/num/00{cc}{domestic}",
                         header = "Authorization: Basic {base64({username}:{password})}"
                     ),
                     ParseQueryResult(
@@ -167,13 +162,7 @@ val ApiReportPresets = listOf<ApiPreset>(
                         )
                     ),
                     HttpDownload(
-                        url =
-//                        if (BuildConfig.DEBUG) {
-                        "https://phoneblock.net/pb-test/api/rate"
-//                        } else {
-//                            "https://phoneblock.net/phoneblock/api/rate"
-//                        }
-                        ,
+                        url ="https://phoneblock.net/phoneblock/api/rate",
                         header = "Authorization: Basic {base64({username}:{password})}",
                         method = HTTP_POST,
 

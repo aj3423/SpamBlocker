@@ -33,16 +33,12 @@
         ]]>
     </string>
     <string name="number_not_match_filter">%s numarası %s filtresine uymuyor, atlanıyor.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>Şu anda test API\'si ile test ediliyor, bir sonraki v4.0 sürümünde üretim API\'sine geçecektir.<b></font><br>
+        Öncelikle Alman FRITZ!Box için tasarlanmıştır, ancak diğer ülkelerden gelen telefon numaraları için de çalışır.<br>
         <br>
-        <font color="#ffa500"><b>Test ve üretim hesapları uyumlu değildir, daha sonra üretime geçtikten sonra lütfen tekrar kayıt olun.<b></font><br>
-        <br>
-        Şu anda <b>Alman</b> kullanıcıları içindir, küresel genişleme potansiyeli vardır.<br>
-        <br>
-        Web sitesi: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Web sitesi: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">Çağrı tarama süresi limiti 5 saniyedir, zaman fonksiyonlarının doğruluk hatası için %s ms tampon ile toplam süre limiti aslında %s ms\'dir. Önceki adımlar %s ms sürdü, yeterli zaman kalmadı, atlanıyor.</string>
@@ -55,7 +51,7 @@
     <string name="another_thread_is_cancelled">Başka bir işlem iptal edildi.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Kullanıcı adınızı ve şifrenizi almak için <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a> adresinden hesap kaydedin. Ardından, bunları aşağıya girin.<br>
+        Kullanıcı adınızı ve şifrenizi almak için <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a> adresinde bir hesap kaydedin. Ardından, bunları aşağıya girin.<br>
         <br>
         Şunlara benzemelidir:<br>
         - Kullanıcı adı:<br>

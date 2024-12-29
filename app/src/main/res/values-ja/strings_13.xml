@@ -33,16 +33,12 @@
         ]]>
     </string>
     <string name="number_not_match_filter">電話番号%sはフィルタ%sに一致しません。スキップします。</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>現在、テストAPIでテスト中です。次のリリースv4.0で本番APIに移行します。</b></font><br>
+        主にドイツのFRITZ!Box向けに設計されていますが、他の国の電話番号にも対応しています。<br>
         <br>
-        <font color="#ffa500"><b>テストアカウントと本番アカウントは互換性がありません。後で本番環境に切り替えた後、再度登録してください。</b></font><br>
-        <br>
-        現在、これは<b>ドイツ</b>のユーザー向けであり、グローバル展開の可能性があります。<br>
-        <br>
-        ウェブサイト：<a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        ウェブサイト：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>
@@ -55,7 +51,7 @@
     <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>でアカウントを登録して、ユーザー名とパスワードを取得してください。その後、下記に入力してください。<br>
+        <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>でアカウントを登録して、ユーザー名とパスワードを取得してください。その後、以下に入力してください。<br>
         <br>
         以下のようになります。<br>
         - ユーザー名：<br>

@@ -58,23 +58,17 @@
         %s
         ]]>
     </string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>Currently in testing with testing API, it will transition to
-        the production API in the next release v4.0.<b></font><br>
+        Primarily designed for the German FRITZ!Box, it also works for phone numbers from any other country.<br>
         <br>
-        <font color="#ffa500"><b>Testing and production accounts are not compatible,
-        please register again after switching to production later.<b></font><br>
-        <br>
-        Currently, it\'s for <b>German</b> users, with potential for global expansion.<br>
-        <br>
-        Website: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Website: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Register an account on <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Register an account on <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         to get your username and password. Then, fill them in below.<br>
         <br>
         They should look like:<br>

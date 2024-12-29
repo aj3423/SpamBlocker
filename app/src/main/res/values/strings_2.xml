@@ -55,31 +55,49 @@
     <string name="auto_report">Auto Report</string>
     <string name="help_auto_report">
         <![CDATA[
-        Auto report a blocked number to all API endpoints on incoming calls.<br>
+        Auto report a blocked number to all API endpoints without human interference, to build our crowd-sourced databases against spam calls.<br>
         <br>
-        There is a one-hour time buffer before a number is reported. If the number is allowed later due to repeats or dialed
-        back within this time buffer, it\'s considered non-spam and will not be reported.<br>
+        <h4>- <font color="#6ed0ff">Report delay</font></h4><br>
+        When an incoming call is blocked, there will be a one-hour time buffer before the number is reported.
+        If the number is allowed later due to repeats or dialed back within this time buffer,
+        it\'s considered a non-spam number and will not be reported.<br>
         <br>
-        <b>1</b>. Passed numbers <font color="#fa7f71"><b>will not</b></font> be reported.
+        <h4>- <font color="#6ed0ff">Privacy</font></h4>
         <br>
-        <b>2</b>. Numbers that are blocked by these types <font color="#03DAC5"><b>will</b></font> be scheduled to report:<br>
+        The API endpoints will see your:<br>
         <br>
-        - <font color="#6ed0ff"><b>Non-Contact</b></font>(exclusive)<br>
-        - <font color="#6ed0ff"><b>STIR Attestation</b></font><br>
-        - <font color="#6ed0ff"><b>Number Regex</b></font><br>
-        - <font color="#6ed0ff"><b>SMS Content Regex</b></font><br>
+         &ensp; - IP address<br>
+         &ensp; - Tls and Tcp fingerprints (which may reveal your Android version)<br>
+         &ensp; - The reported number<br>
         <br>
-        <b>3</b>. Numbers that are blocked by following types <font color="#fa7f71"><b>will not</b></font> be reported:<br>
+        Nothing else will be reported.<br>
         <br>
-        - <font color="#6ed0ff"><b>Contact Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Contact Group Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Meeting Mode</b></font><br>
-        - <font color="#6ed0ff"><b>Global Testing</b></font><br>
-        - <font color="#6ed0ff"><b>Instant Query</b></font>, preventing the API endpoint\'s number from being leaked to their competitors.<br>
-        &emsp; One exception is that, it will be reported back to the same API to increase its rating score. (if a reporting API with the same domain is configured)<br>
-        - <font color="#6ed0ff"><b>Database</b></font><br>
-        &emsp; One exception is that, if the number was originally added by an instant API query and later blocked again by
-        the local database, it will be reported only to that API to increase the rating score. (if a reporting API with the same domain is configured)<br>
+        <h4>- <font color="#6ed0ff">Report type</font></h4><br>
+        <h5>1. It <font color="#fa7f71">will not</font> report:</h5>
+        <br>
+        - <font color="#fa7f71">Passed numbers</font><br>
+        And following blocked types:<br>
+        - <font color="#fa7f71">Contact Regex</font><br>
+        - <font color="#fa7f71">Contact Group Regex</font><br>
+        - <font color="#fa7f71">Database</font><br>
+        - <font color="#fa7f71">Meeting Mode</font><br>
+        - <font color="#fa7f71">Global Testing</font><br>
+        - <font color="#fa7f71">Instant Query</font> (to prevent the API endpoint\'s number from being leaked to other competitors)<br>
+        <br>
+        <h5>2. It <font color="#03DAC5">will</font> report:</h5>
+        <br>
+        Following blocked types:<br>
+        - <font color="#03DAC5">Non-Contact</font>(exclusive)<br>
+        - <font color="#03DAC5">STIR Attestation</font><br>
+        - <font color="#03DAC5">Number Regex</font><br>
+        - <font color="#03DAC5">SMS Content Regex</font><br>
+        <br>
+        <h5>3. Exception cases:</h5>
+        <br>
+        - When it\'s blocked by <font color="#03DAC5">Instant Query</font>, it will be reported back to the <b>same</b> API to increase the number\'s rating score.
+         For example, when it\'s blocked by API query from check.com, it will only report to check.com, not to others.com. <br>
+        -  When it\'s blocked by <font color="#03DAC5">Database</font> and the record was originally added by an instant API query,
+         it will be reported only to the <b>same</b> API for the same reason as above.<br>
         ]]>
     </string>
 </resources>

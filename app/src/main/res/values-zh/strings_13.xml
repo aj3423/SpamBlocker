@@ -33,16 +33,12 @@
         ]]>
     </string>
     <string name="number_not_match_filter">号码 %s 与过滤器 %s 不匹配，跳过。</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>目前正在使用测试 API 进行测试，将在下一个版本 v4.0 中切换到生产 API。<b></font><br>
+        主要为德国 FRITZ!Box 设计，也适用于其他国家的电话号码。<br>
         <br>
-        <font color="#ffa500"><b>测试和生产帐户不兼容，以后切换到生产环境后请重新注册。<b></font><br>
-        <br>
-        目前面向<b>德国</b>用户，未来可能扩展到全球。<br>
-        <br>
-        网站：<a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        网站：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">来电筛选时间限制为 5 秒，考虑时间函数精度误差的 %s 毫秒缓冲区，实际总时间限制为 %s 毫秒。之前的步骤耗时 %s 毫秒，剩余时间不足，跳过。</string>
@@ -55,9 +51,9 @@
     <string name="another_thread_is_cancelled">另一个线程已取消。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        在<a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>注册一个账户以获取您的用户名和密码。然后，在下面填写它们。<br>
+        在 <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a> 注册账户以获取用户名和密码。然后，在下方填写。<br>
         <br>
-        它们应该如下所示：<br>
+        它们应该类似于：<br>
         - 用户名：<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
         - 密码：<br>

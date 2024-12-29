@@ -33,16 +33,12 @@
         ]]>
     </string>
     <string name="number_not_match_filter">O número %s non coincide co filtro %s, omitido.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>Actualmente en fase de probas coa API de probas, pasará á API de produción na seguinte versión v4.0.<b></font><br>
+        Deseñado principalmente para a FRITZ!Box alemá, tamén funciona para números de teléfono de calquera outro país.<br>
         <br>
-        <font color="#ffa500"><b>As contas de probas e de produción non son compatibles, rexístrese de novo despois de cambiar á produción máis tarde.<b></font><br>
-        <br>
-        Actualmente, é para usuarios de <b>Alemaña</b>, con potencial para a expansión global.<br>
-        <br>
-        Sitio web: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Sitio web: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">O límite de tempo de selección de chamadas é de 5 segundos, cun búfer de %s ms pola imprecisión das funcións de tempo, o límite de tempo total é realmente de %s ms. Os pasos previos custaron %s ms, non queda tempo suficiente, omitir.</string>
@@ -55,8 +51,8 @@
     <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Rexistre unha conta en <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
-        para obter o seu nome de usuario e contrasinal. Despois, enchézaos a continuación.<br>
+        Rexístrate nunha conta en <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        para obter o teu nome de usuario e contrasinal. Despois, enchéos a continuación.<br>
         <br>
         Deberían parecerse a:<br>
         - Nome de usuario:<br>

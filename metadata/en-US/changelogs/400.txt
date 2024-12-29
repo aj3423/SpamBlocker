@@ -1,0 +1,30 @@
+Breaking changes:
+- All history call/SMS records will be cleared, due to the database upgrade.
+- Now the backup file chooser will only accept ".gz", please rename existing auto-backup files(".bak") to ".gz"
+- Please manually reconfigure Recent Apps and Meeting Mode if you have configured apps individually.
+
+New:
+- Instant Query, check the incoming number online in real-time, it supports any API endpoints.
+  Preset: PhoneBlock(https://phoneblock.net/)
+  - Tap a history call to view the origin API response.
+- Report Number, report blocked numbers to multiple API endpoints.
+  Preset: PhoneBlock(https://phoneblock.net/)
+  - Auto Report, report spam calls without manual intervention.
+  - Manual Report, report answered calls with a more specific category(fraud, marketing...).
+- Verbose testing log, showing detailed steps of each filter's execution, making it easier for troubleshooting.
+
+Fixes:
+- The built-in history cleanup task is only triggered once(workflows not affected).
+
+Improvements:
+- Tapping on any empty area of the rule header will also expand/collapse the rule list.
+- The .csv parser now supports multi-line string (new line character within quotes).
+- MeetingMode can now exclude particular foreground services by their names.
+- Two separated notification channels: "Default spam call" and "Default spam SMS". Use case: disable all call notifications while keep SMS notifications on. 
+
+Language support:
+- Italian
+
+Wiki page 
+- Regex templates:
+  - If you want to share your regex with others, please fire a new "Share Regex" issue, it will be synchronized to the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates) automatically.

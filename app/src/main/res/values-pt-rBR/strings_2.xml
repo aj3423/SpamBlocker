@@ -54,29 +54,49 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Relatar automaticamente um número bloqueado para todos os endpoints da API em chamadas recebidas.<br>
+        Relatar automaticamente um número bloqueado para todos os endpoints da API sem interferência humana, para construir nossos bancos de dados de crowdsourcing contra chamadas de spam.<br>
         <br>
-        Existe um buffer de tempo de uma hora antes de um número ser relatado. Se o número for permitido posteriormente devido a repetições ou retorno da ligação dentro desse buffer de tempo, ele será considerado não spam e não será relatado.<br>
+        <h4>- <font color="#6ed0ff">Atraso no Relatório</font></h4><br>
+        Quando uma chamada recebida é bloqueada, haverá um buffer de tempo de uma hora antes que o número seja relatado.
+        Se o número for permitido posteriormente devido a repetições ou retorno da ligação dentro desse buffer de tempo,
+        ele é considerado um número não spam e não será relatado.<br>
         <br>
-        <b>1</b>. Números aprovados <font color="#fa7f71"><b>não serão</b></font> relatados.
+        <h4>- <font color="#6ed0ff">Privacidade</font></h4>
         <br>
-        <b>2</b>. Números bloqueados por estes tipos <font color="#03DAC5"><b>serão</b></font> programados para relatório:<br>
+        Os endpoints da API verão seu:<br>
         <br>
-        - <font color="#6ed0ff"><b>Não Contato</b></font>(exclusivo)<br>
-        - <font color="#6ed0ff"><b>Autenticação STIR</b></font><br>
-        - <font color="#6ed0ff"><b>Expressão Regular de Número</b></font><br>
-        - <font color="#6ed0ff"><b>Expressão Regular de Conteúdo SMS</b></font><br>
+         &ensp; - Endereço IP<br>
+         &ensp; - Impressões digitais Tls e Tcp (que podem revelar sua versão do Android)<br>
+         &ensp; - O número relatado<br>
         <br>
-        <b>3</b>. Números bloqueados pelos seguintes tipos <font color="#fa7f71"><b>não serão</b></font> relatados:<br>
+        Nada mais será relatado.<br>
         <br>
-        - <font color="#6ed0ff"><b>Expressão Regular de Contato</b></font><br>
-        - <font color="#6ed0ff"><b>Expressão Regular de Grupo de Contatos</b></font><br>
-        - <font color="#6ed0ff"><b>Modo Reunião</b></font><br>
-        - <font color="#6ed0ff"><b>Teste Global</b></font><br>
-        - <font color="#6ed0ff"><b>Consulta Instantânea</b></font>, evitando que o número do endpoint da API seja vazado para seus concorrentes.<br>
-        &emsp; Uma exceção é que ele será relatado de volta à mesma API para aumentar sua pontuação de classificação. (se uma API de relatórios com o mesmo domínio estiver configurada)<br>
-        - <font color="#6ed0ff"><b>Banco de Dados</b></font><br>
-        &emsp; Uma exceção é que, se o número foi adicionado originalmente por uma consulta instantânea da API e posteriormente bloqueado novamente pelo banco de dados local, ele será relatado apenas para essa API para aumentar a pontuação de classificação. (se uma API de relatórios com o mesmo domínio estiver configurada)<br>
+        <h4>- <font color="#6ed0ff">Tipo de Relatório</font></h4><br>
+        <h5>1. Não <font color="#fa7f71">relatará:</font></h5>
+        <br>
+        - <font color="#fa7f71">Números aprovados</font><br>
+        E os seguintes tipos bloqueados:<br>
+        - <font color="#fa7f71">Expressão regular de contato</font><br>
+        - <font color="#fa7f71">Expressão regular de grupo de contatos</font><br>
+        - <font color="#fa7f71">Banco de dados</font><br>
+        - <font color="#fa7f71">Modo de reunião</font><br>
+        - <font color="#fa7f71">Teste global</font><br>
+        - <font color="#fa7f71">Consulta instantânea</font> (para evitar que o número do endpoint da API seja vazado para outros concorrentes)<br>
+        <br>
+        <h5>2. <font color="#03DAC5">Relatará:</font></h5>
+        <br>
+        Os seguintes tipos bloqueados:<br>
+        - <font color="#03DAC5">Não Contato</font>(exclusivo)<br>
+        - <font color="#03DAC5">Autenticação STIR</font><br>
+        - <font color="#03DAC5">Expressão regular de número</font><br>
+        - <font color="#03DAC5">Expressão regular de conteúdo de SMS</font><br>
+        <br>
+        <h5>3. Casos de exceção:</h5>
+        <br>
+        - Quando bloqueado por <font color="#03DAC5">Consulta instantânea</font>, será relatado de volta à mesma API para aumentar a pontuação do número.
+         Por exemplo, quando bloqueado por consulta de API de check.com, ele só reportará para check.com, não para others.com. <br>
+        - Quando bloqueado por <font color="#03DAC5">Banco de dados</font> e o registro foi adicionado originalmente por uma consulta de API instantânea,
+         será relatado apenas para a mesma API pelo mesmo motivo acima.<br>
         ]]>
     </string>
     <string name="auto_report">Relatório Automático</string>

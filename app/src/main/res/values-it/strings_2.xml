@@ -55,29 +55,49 @@
     <string name="auto_report">Segnala Automatico</string>
     <string name="help_auto_report">
         <![CDATA[
-        Segnala automaticamente un numero bloccato a tutti gli endpoint API sulle chiamate in arrivo.<br>
+        Segnala automaticamente un numero bloccato a tutti gli endpoint API senza intervento umano, per costruire i nostri database crowdsourced contro le chiamate spam.<br>
         <br>
-        C\'è un buffer di tempo di un\'ora prima che un numero venga segnalato. Se il numero è consentito in seguito a causa di ripetizioni o richiamate entro questo buffer di tempo, è considerato non spam e non verrà segnalato.<br>
+        <h4>- <font color="#6ed0ff">Ritardo segnalazione</font></h4><br>
+        Quando una chiamata in arrivo viene bloccata, ci sarà un buffer di tempo di un\'ora prima che il numero venga segnalato.
+        Se il numero è consentito in seguito a causa di ripetizioni o richiamate entro questo buffer di tempo,
+        è considerato un numero non spam e non verrà segnalato.<br>
         <br>
-        <b>1</b>. I numeri passati <font color="#fa7f71"><b>non saranno</b></font> segnalati.
+        <h4>- <font color="#6ed0ff">Privacy</font></h4>
         <br>
-        <b>2</b>. I numeri bloccati da questi tipi <font color="#03DAC5"><b>saranno</b></font> programmati per la segnalazione:<br>
+        Gli endpoint API vedranno il tuo:<br>
         <br>
-        - <font color="#6ed0ff"><b>Non Contatti</b></font>(esclusivo)<br>
-        - <font color="#6ed0ff"><b>Attestazione STIR</b></font><br>
-        - <font color="#6ed0ff"><b>Espressione regolare numero</b></font><br>
-        - <font color="#6ed0ff"><b>Espressione regolare contenuto SMS</b></font><br>
+         &ensp; - Indirizzo IP<br>
+         &ensp; - Impronte digitali Tls e Tcp (che potrebbero rivelare la tua versione di Android)<br>
+         &ensp; - Il numero segnalato<br>
         <br>
-        <b>3</b>. I numeri bloccati dai seguenti tipi <font color="#fa7f71"><b>non saranno</b></font> segnalati:<br>
+        Nient\'altro verrà segnalato.<br>
         <br>
-        - <font color="#6ed0ff"><b>Espressione regolare contatto</b></font><br>
-        - <font color="#6ed0ff"><b>Espressione regolare gruppo contatto</b></font><br>
-        - <font color="#6ed0ff"><b>Modalità riunione</b></font><br>
-        - <font color="#6ed0ff"><b>Test globale</b></font><br>
-        - <font color="#6ed0ff"><b>Query istantanea</b></font>, impedendo che il numero dell\'endpoint API venga divulgato ai concorrenti.<br>
-        &emsp; Un\'eccezione è che verrà segnalato allo stesso API per aumentare il suo punteggio di valutazione. (se è configurata un\'API di segnalazione con lo stesso dominio)<br>
-        - <font color="#6ed0ff"><b>Database</b></font><br>
-        &emsp; Un\'eccezione è che, se il numero è stato originariamente aggiunto da una query API istantanea e successivamente bloccato di nuovo dal database locale, verrà segnalato solo a quell\'API per aumentare il punteggio di valutazione. (se è configurata un\'API di segnalazione con lo stesso dominio)<br>
+        <h4>- <font color="#6ed0ff">Tipo di segnalazione</font></h4><br>
+        <h5>1. <font color="#fa7f71">Non</font> segnalerà:</h5>
+        <br>
+        - <font color="#fa7f71">Numeri passati</font><br>
+        E i seguenti tipi bloccati:<br>
+        - <font color="#fa7f71">Espressione regolare contatti</font><br>
+        - <font color="#fa7f71">Espressione regolare gruppo contatti</font><br>
+        - <font color="#fa7f71">Database</font><br>
+        - <font color="#fa7f71">Modalità riunione</font><br>
+        - <font color="#fa7f71">Test globale</font><br>
+        - <font color="#fa7f71">Query istantanea</font> (per impedire che il numero dell\'endpoint API venga divulgato ad altri concorrenti)<br>
+        <br>
+        <h5>2. <font color="#03DAC5">Segnalerà</font>:</h5>
+        <br>
+        I seguenti tipi bloccati:<br>
+        - <font color="#03DAC5">Non contatti</font>(esclusivo)<br>
+        - <font color="#03DAC5">Attestazione STIR</font><br>
+        - <font color="#03DAC5">Espressione regolare numero</font><br>
+        - <font color="#03DAC5">Espressione regolare contenuto SMS</font><br>
+        <br>
+        <h5>3. Casi eccezionali:</h5>
+        <br>
+        - Quando è bloccato da <font color="#03DAC5">Query istantanea</font>, verrà segnalato alla stessa API per aumentare il punteggio del numero.
+         Ad esempio, quando è bloccato da una query API da check.com, verrà segnalato solo a check.com, non ad others.com. <br>
+        - Quando è bloccato da <font color="#03DAC5">Database</font> e il record è stato aggiunto in origine da una query API istantanea,
+         verrà segnalato solo alla stessa API per lo stesso motivo di cui sopra.<br>
         ]]>
     </string>
 </resources>

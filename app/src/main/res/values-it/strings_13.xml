@@ -58,25 +58,20 @@
         %s
         ]]>
     </string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>Attualmente in fase di test con API di test, passerà all\'API di produzione nella prossima versione v4.0.<b></font><br>
+        Principalmente progettato per FRITZ!Box tedesco, funziona anche per numeri di telefono di qualsiasi altro paese.<br>
         <br>
-        <font color="#ffa500"><b>Gli account di test e di produzione non sono compatibili,
-        per favore registrati di nuovo dopo il passaggio alla produzione.<b></font><br>
-        <br>
-        Attualmente, è per gli utenti <b>tedeschi</b>, con potenziale espansione globale.<br>
-        <br>
-        Sito web: <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Sito web: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registra un account su <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
-        per ottenere il tuo nome utente e password. Quindi, inseriscili di seguito.<br>
+        Registrati su <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        per ottenere il tuo nome utente e password. Quindi, inseriscili qui sotto.<br>
         <br>
-        Dovrebbero assomigliare a:<br>
+        Dovrebbero apparire come:<br>
         - Nome utente:<br>
          &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
         - Password:<br>

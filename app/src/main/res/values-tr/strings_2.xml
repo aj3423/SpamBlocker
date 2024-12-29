@@ -54,29 +54,49 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Gelen aramalarda engellenen numarayı tüm API uç noktalarına otomatik olarak raporlayın.<br>
+        Engellenen bir numarayı, spam aramalarına karşı kalabalık kaynaklı veritabanlarımızı oluşturmak için insan müdahalesi olmadan tüm API uç noktalarına otomatik olarak raporlayın.<br>
         <br>
-        Bir numara raporlanmadan önce bir saatlik bir zaman tamponu vardır. Bu zaman tamponu içinde tekrarlar veya geri aranırsa numara daha sonra izin verilirse, spam olarak kabul edilmez ve raporlanmaz.<br>
+        <h4>- <font color="#6ed0ff">Raporlama gecikmesi</font></h4><br>
+        Gelen bir arama engellendiğinde, numara raporlanmadan önce bir saatlik bir zaman tamponu olacaktır.
+        Eğer numara daha sonra tekrarlar veya bu zaman tamponu içinde geri aranırsa,
+        spam olmayan bir numara olarak kabul edilir ve raporlanmaz.<br>
         <br>
-        <b>1</b>. Geçen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>.
+        <h4>- <font color="#6ed0ff">Gizlilik</font></h4>
         <br>
-        <b>2</b>. Bu türler tarafından engellenen numaralar <font color="#03DAC5"><b>raporlanacaktır</b></font>:<br>
+        API uç noktaları şunları görecektir:<br>
         <br>
-        - <font color="#6ed0ff"><b>Kişi Değil</b></font>(hariç tutma)<br>
-        - <font color="#6ed0ff"><b>STIR Doğrulaması</b></font><br>
-        - <font color="#6ed0ff"><b>Numara Regex</b></font><br>
-        - <font color="#6ed0ff"><b>SMS İçerik Regex</b></font><br>
+         &ensp; - IP adresiniz<br>
+         &ensp; - Tls ve Tcp parmak izleri (Android sürümünüzü ortaya çıkarabilir)<br>
+         &ensp; - Raporlanan numara<br>
         <br>
-        <b>3</b>. Aşağıdaki türler tarafından engellenen numaralar <font color="#fa7f71"><b>raporlanmayacaktır</b></font>:<br>
+        Başka hiçbir şey raporlanmayacaktır.<br>
         <br>
-        - <font color="#6ed0ff"><b>Kişi Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Kişi Grubu Regex</b></font><br>
-        - <font color="#6ed0ff"><b>Toplantı Modu</b></font><br>
-        - <font color="#6ed0ff"><b>Genel Test</b></font><br>
-        - <font color="#6ed0ff"><b>Anlık Sorgu</b></font>, API uç noktasının numarasının rakiplerine sızmasını engeller.<br>
-        &emsp; Bir istisna şudur ki, puanlama skorunu artırmak için aynı API\'ye geri bildirilecektir. (aynı etki alanına sahip bir raporlama API\'si yapılandırılmışsa)<br>
-        - <font color="#6ed0ff"><b>Veritabanı</b></font><br>
-        &emsp; Bir istisna şudur ki, numara başlangıçta anlık bir API sorgusu tarafından eklenmiş ve daha sonra yerel veritabanı tarafından tekrar engellenmişse, puanlama skorunu artırmak için yalnızca bu API\'ye bildirilecektir. (aynı etki alanına sahip bir raporlama API\'si yapılandırılmışsa)<br>
+        <h4>- <font color="#6ed0ff">Rapor türü</font></h4><br>
+        <h5>1. <font color="#fa7f71">Raporlamayacak:</font></h5>
+        <br>
+        - <font color="#fa7f71">Geçen numaralar</font><br>
+        Ve aşağıdaki engellenen türler:<br>
+        - <font color="#fa7f71">Kişi Düzenli İfadesi</font><br>
+        - <font color="#fa7f71">Kişi Grubu Düzenli İfadesi</font><br>
+        - <font color="#fa7f71">Veritabanı</font><br>
+        - <font color="#fa7f71">Toplantı Modu</font><br>
+        - <font color="#fa7f71">Genel Test</font><br>
+        - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
+        <br>
+        <h5>2. <font color="#03DAC5">Raporlayacak:</font></h5>
+        <br>
+        Aşağıdaki engellenen türler:<br>
+        - <font color="#03DAC5">Kişi Değil</font>(hariç tutulan)<br>
+        - <font color="#03DAC5">STIR Doğrulaması</font><br>
+        - <font color="#03DAC5">Numara Düzenli İfadesi</font><br>
+        - <font color="#03DAC5">SMS İçerik Düzenli İfadesi</font><br>
+        <br>
+        <h5>3. İstisna durumları:</h5>
+        <br>
+        - <font color="#03DAC5">Anlık Sorgu</font> tarafından engellendiğinde, numaranın derecelendirme puanını artırmak için aynı API\'ye geri bildirilecektir.
+         Örneğin, check.com\'dan API sorgusu tarafından engellendiğinde, yalnızca check.com\'a, others.com\'a değil, rapor edilecektir. <br>
+        - <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve kayıt başlangıçta anlık bir API sorgusu tarafından eklendiğinde,
+         yukarıdakiyle aynı nedenden dolayı yalnızca aynı API\'ye rapor edilecektir.<br>
         ]]>
     </string>
     <string name="auto_report">Otomatik Raporlama</string>

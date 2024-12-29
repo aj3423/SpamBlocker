@@ -54,29 +54,48 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        着信時にブロックされた番号をすべてのAPIエンドポイントに自動報告します。<br>
+        迷惑電話に対するクラウドソーシングデータベースを構築するために、人間の介入なしにブロックされた番号をすべてのAPIエンドポイントに自動的に報告します。<br>
         <br>
-        番号が報告される前に、1時間のタイムバッファがあります。このタイムバッファ内で、繰り返しまたはダイヤルバックによって番号が後で許可された場合、スパムではないとみなされ、報告されません。<br>
+        <h4>- <font color="#6ed0ff">報告遅延</font></h4><br>
+        着信がブロックされると、番号が報告されるまでに1時間のバッファ時間があります。
+        このバッファ時間内に、繰り返しがあったり、折り返し電話があったりして、後で番号が許可された場合、
+        それは迷惑電話ではないと見なされ、報告されません。<br>
         <br>
-        <b>1</b>. 許可された番号は<font color="#fa7f71"><b>報告されません</b></font>。
+        <h4>- <font color="#6ed0ff">プライバシー</font></h4>
         <br>
-        <b>2</b>. 次の種類によってブロックされた番号は<font color="#03DAC5"><b>報告がスケジュールされます</b></font>:<br>
+        APIエンドポイントは次の情報を確認します。<br>
         <br>
-        - <font color="#6ed0ff"><b>非連絡先</b></font>(排他的)<br>
-        - <font color="#6ed0ff"><b>STIR認証</b></font><br>
-        - <font color="#6ed0ff"><b>番号正規表現</b></font><br>
-        - <font color="#6ed0ff"><b>SMS内容正規表現</b></font><br>
+         &ensp; - IPアドレス<br>
+         &ensp; - TLSとTCPフィンガープリント（Androidのバージョンがわかる場合があります）<br>
+         &ensp; - 報告された番号<br>
         <br>
-        <b>3</b>. 次の種類によってブロックされた番号は<font color="#fa7f71"><b>報告されません</b></font>:<br>
+        それ以外の情報は報告されません。<br>
         <br>
-        - <font color="#6ed0ff"><b>連絡先正規表現</b></font><br>
-        - <font color="#6ed0ff"><b>連絡先グループ正規表現</b></font><br>
-        - <font color="#6ed0ff"><b>会議モード</b></font><br>
-        - <font color="#6ed0ff"><b>グローバルテスト</b></font><br>
-        - <font color="#6ed0ff"><b>インスタントクエリ</b></font>、APIエンドポイントの番号が競合他社に漏洩するのを防ぎます。<br>
-        &emsp;ただし、同じドメインの報告APIが設定されている場合は、そのAPIに報告して評価スコアを上げる例外があります。<br>
-        - <font color="#6ed0ff"><b>データベース</b></font><br>
-        &emsp;ただし、番号が元々インスタントAPIクエリによって追加され、後でローカルデータベースによって再びブロックされた場合、同じドメインの報告APIが設定されている場合は、そのAPIのみに報告して評価スコアを上げる例外があります。<br>
+        <h4>- <font color="#6ed0ff">報告タイプ</font></h4><br>
+        <h5>1. <font color="#fa7f71">報告しません</font>：</h5>
+        <br>
+        - <font color="#fa7f71">通過した番号</font><br>
+        および以下のブロックタイプ：<br>
+        - <font color="#fa7f71">連絡先正規表現</font><br>
+        - <font color="#fa7f71">連絡先グループ正規表現</font><br>
+        - <font color="#fa7f71">データベース</font><br>
+        - <font color="#fa7f71">会議モード</font><br>
+        - <font color="#fa7f71">グローバルテスト</font><br>
+        - <font color="#fa7f71">インスタントクエリ</font>（APIエンドポイントの番号が他の競合他社に漏洩するのを防ぐため）<br>
+        <br>
+        <h5>2. <font color="#03DAC5">報告します</font>：</h5>
+        <br>
+        以下のブロックタイプ：<br>
+        - <font color="#03DAC5">非連絡先</font>（排他的）<br>
+        - <font color="#03DAC5">STIR認証</font><br>
+        - <font color="#03DAC5">番号正規表現</font><br>
+        - <font color="#03DAC5">SMSコンテンツ正規表現</font><br>
+        <br>
+        <h5>3. 例外ケース：</h5>
+        <br>
+        - <font color="#03DAC5">インスタントクエリ</font>によってブロックされた場合、番号の評価スコアを高めるために、<b>同じ</b>APIに報告されます。
+         例えば、check.comからのAPIクエリでブロックされた場合、others.comではなくcheck.comのみに報告されます。<br>
+        - <font color="#03DAC5">データベース</font>によってブロックされ、レコードが元々インスタントAPIクエリによって追加された場合、上記と同じ理由で、<b>同じ</b>APIのみに報告されます。<br>
         ]]>
     </string>
     <string name="auto_report">自動レポート</string>

@@ -77,8 +77,13 @@ fun RepeatedCall() {
         helpTooltipId = R.string.help_repeated_call,
         content = {
             if (isEnabled && isCallLogPermissionGranted(ctx)) {
+                val label = if (times == 1) {
+                    "$inXMin ${Str(R.string.min)}"
+                } else {
+                    "$times / $inXMin ${Str(R.string.min)}"
+                }
                 StrokeButton(
-                    label = "$times / $inXMin ${Str(R.string.min)}",
+                    label = label,
                     color = C.textGrey,
                 ) {
                     popupTrigger.value = true

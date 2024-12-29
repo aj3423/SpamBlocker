@@ -33,18 +33,12 @@
         ]]>
     </string>
     <string name="number_not_match_filter">Le numéro %s ne correspond pas au filtre %s, ignoré.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock(Test) 🇩🇪 🌐</no_translate></string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        <font color="#ffa500"><b>Actuellement en test avec l\'API de test, elle passera à
-        l\'API de production lors de la prochaine version v4.0.<b></font><br>
+        Principalement conçu pour la FRITZ!Box allemande, il fonctionne également pour les numéros de téléphone de tous les autres pays.<br>
         <br>
-        <font color="#ffa500"><b>Les comptes de test et de production ne sont pas compatibles,
-        veuillez vous inscrire à nouveau après le passage à la production ultérieurement.<b></font><br>
-        <br>
-        Actuellement, il est destiné aux utilisateurs <b>allemands</b>, avec une expansion mondiale potentielle.<br>
-        <br>
-        Site web : <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
+        Site web : <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>
     </string>
     <string name="not_enough_time_left">La limite de temps de filtrage des appels est de 5 secondes, avec une marge de %s ms pour l\'imprécision des fonctions de temps, la limite de temps totale est en réalité de %s ms. Les étapes précédentes ont coûté %s ms, il ne reste pas assez de temps, ignoré.</string>
@@ -57,8 +51,8 @@
     <string name="another_thread_is_cancelled">Un autre thread est annulé.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Créez un compte sur <a href="https://phoneblock.net/pb-test/api/">https://phoneblock.net/pb-test/api/</a>
-        pour obtenir votre nom d\'utilisateur et votre mot de passe. Ensuite, renseignez-les ci-dessous.<br>
+        Créez un compte sur <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        pour obtenir votre nom d\'utilisateur et votre mot de passe. Ensuite, saisissez-les ci-dessous.<br>
         <br>
         Ils doivent ressembler à :<br>
         - Nom d\'utilisateur :<br>

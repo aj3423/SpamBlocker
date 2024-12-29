@@ -54,29 +54,49 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Signaler automatiquement un numéro bloqué à toutes les API lors des appels entrants.<br>
+        Signaler automatiquement un numéro bloqué à toutes les API sans intervention humaine, pour construire nos bases de données participatives contre les appels indésirables.<br>
         <br>
-        Il existe une temporisation d\'une heure avant qu\'un numéro ne soit signalé. Si le numéro est autorisé plus tard en raison de répétitions ou de rappels dans cette période, il est considéré comme non-spam et ne sera pas signalé.<br>
+        <h4>- <font color="#6ed0ff">Délai de signalement</font></h4><br>
+        Lorsqu\'un appel entrant est bloqué, il y aura un délai d\'une heure avant que le numéro ne soit signalé.
+        Si le numéro est autorisé plus tard en raison de répétitions ou de rappels dans ce délai,
+        il est considéré comme un numéro non indésirable et ne sera pas signalé.<br>
         <br>
-        <b>1</b>. Les numéros autorisés <font color="#fa7f71"><b>ne seront pas</b></font> signalés.
+        <h4>- <font color="#6ed0ff">Confidentialité</font></h4>
         <br>
-        <b>2</b>. Les numéros bloqués par ces types <font color="#03DAC5"><b>le seront</b></font> : <br>
+        Les API verront votre :<br>
         <br>
-        - <font color="#6ed0ff"><b>Non-Contact</b></font>(exclusif)<br>
-        - <font color="#6ed0ff"><b>Attestation STIR</b></font><br>
-        - <font color="#6ed0ff"><b>Expression régulière de numéro</b></font><br>
-        - <font color="#6ed0ff"><b>Expression régulière de contenu SMS</b></font><br>
+         &ensp; - Adresse IP<br>
+         &ensp; - Empreintes Tls et Tcp (qui peuvent révéler votre version Android)<br>
+         &ensp; - Le numéro signalé<br>
         <br>
-        <b>3</b>. Les numéros bloqués par les types suivants <font color="#fa7f71"><b>ne seront pas</b></font> signalés : <br>
+        Rien d\'autre ne sera signalé.<br>
         <br>
-        - <font color="#6ed0ff"><b>Expression régulière de contact</b></font><br>
-        - <font color="#6ed0ff"><b>Expression régulière de groupe de contacts</b></font><br>
-        - <font color="#6ed0ff"><b>Mode réunion</b></font><br>
-        - <font color="#6ed0ff"><b>Test global</b></font><br>
-        - <font color="#6ed0ff"><b>Requête instantanée</b></font>, empêchant la fuite du numéro du point de terminaison de l\'API vers ses concurrents.<br>
-        &emsp; Une exception est qu\'il sera renvoyé à la même API pour augmenter son score de notation. (si une API de reporting avec le même domaine est configurée)<br>
-        - <font color="#6ed0ff"><b>Base de données</b></font><br>
-        &emsp; Une exception est que, si le numéro a été initialement ajouté par une requête API instantanée et bloqué plus tard par la base de données locale, il ne sera signalé qu\'à cette API pour augmenter le score de notation. (si une API de reporting avec le même domaine est configurée)<br>
+        <h4>- <font color="#6ed0ff">Type de rapport</font></h4><br>
+        <h5>1. Il <font color="#fa7f71">ne signalera pas</font> :</h5>
+        <br>
+        - <font color="#fa7f71">Numéros autorisés</font><br>
+        Et les types bloqués suivants :<br>
+        - <font color="#fa7f71">Exprégulière contact</font><br>
+        - <font color="#fa7f71">Exprégulière groupe contact</font><br>
+        - <font color="#fa7f71">Base de données</font><br>
+        - <font color="#fa7f71">Mode réunion</font><br>
+        - <font color="#fa7f71">Test global</font><br>
+        - <font color="#fa7f71">Requête instantanée</font> (pour empêcher la fuite du numéro de l\'API vers d\'autres concurrents)<br>
+        <br>
+        <h5>2. Il <font color="#03DAC5">signalera</font> :</h5>
+        <br>
+        Les types bloqués suivants :<br>
+        - <font color="#03DAC5">Non-contact</font>(exclusif)<br>
+        - <font color="#03DAC5">Attestation STIR</font><br>
+        - <font color="#03DAC5">Exprégulière numéro</font><br>
+        - <font color="#03DAC5">Exprégulière contenu SMS</font><br>
+        <br>
+        <h5>3. Cas exceptionnels :</h5>
+        <br>
+        - Lorsqu\'il est bloqué par <font color="#03DAC5">Requête instantanée</font>, il sera signalé à la <b>même</b> API pour augmenter le score du numéro.
+         Par exemple, lorsqu\'il est bloqué par une requête API de check.com, il ne sera signalé qu\'à check.com, pas à others.com. <br>
+        -  Lorsqu\'il est bloqué par <font color="#03DAC5">Base de données</font> et que l\'enregistrement a été initialement ajouté par une requête API instantanée,
+         il ne sera signalé qu\'à la <b>même</b> API pour la même raison que ci-dessus.<br>
         ]]>
     </string>
     <string name="auto_report">Rapport automatique</string>
