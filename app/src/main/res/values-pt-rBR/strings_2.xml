@@ -76,11 +76,11 @@
         <br>
         - <font color="#fa7f71">Números aprovados</font><br>
         E os seguintes tipos bloqueados:<br>
+        - <font color="#fa7f71">Teste global</font><br>
         - <font color="#fa7f71">Expressão regular de contato</font><br>
         - <font color="#fa7f71">Expressão regular de grupo de contatos</font><br>
         - <font color="#fa7f71">Banco de dados</font><br>
         - <font color="#fa7f71">Modo de reunião</font><br>
-        - <font color="#fa7f71">Teste global</font><br>
         - <font color="#fa7f71">Consulta instantânea</font> (para evitar que o número do endpoint da API seja vazado para outros concorrentes)<br>
         <br>
         <h5>2. <font color="#03DAC5">Relatará:</font></h5>

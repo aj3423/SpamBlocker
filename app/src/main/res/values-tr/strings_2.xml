@@ -76,11 +76,11 @@
         <br>
         - <font color="#fa7f71">Geçen numaralar</font><br>
         Ve aşağıdaki engellenen türler:<br>
+        - <font color="#fa7f71">Genel Test</font><br>
         - <font color="#fa7f71">Kişi Düzenli İfadesi</font><br>
         - <font color="#fa7f71">Kişi Grubu Düzenli İfadesi</font><br>
         - <font color="#fa7f71">Veritabanı</font><br>
         - <font color="#fa7f71">Toplantı Modu</font><br>
-        - <font color="#fa7f71">Genel Test</font><br>
         - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
         <br>
         <h5>2. <font color="#03DAC5">Raporlayacak:</font></h5>

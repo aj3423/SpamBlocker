@@ -76,11 +76,11 @@
         <br>
         - <font color="#fa7f71">Números aprobados</font><br>
         Y los siguientes tipos bloqueados:<br>
+        - <font color="#fa7f71">Prueba global</font><br>
         - <font color="#fa7f71">Expresión regular de contacto</font><br>
         - <font color="#fa7f71">Expresión regular de grupo de contactos</font><br>
         - <font color="#fa7f71">Base de datos</font><br>
         - <font color="#fa7f71">Modo reunión</font><br>
-        - <font color="#fa7f71">Prueba global</font><br>
         - <font color="#fa7f71">Consulta instantánea</font> (para evitar que el número del punto final de la API se filtre a otros competidores)<br>
         <br>
         <h5>2. <font color="#03DAC5">Sí</font> reportará:</h5>

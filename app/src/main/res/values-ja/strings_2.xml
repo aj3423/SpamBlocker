@@ -76,11 +76,11 @@
         <br>
         - <font color="#fa7f71">通過した番号</font><br>
         および以下のブロックタイプ：<br>
+        - <font color="#fa7f71">グローバルテスト</font><br>
         - <font color="#fa7f71">連絡先正規表現</font><br>
         - <font color="#fa7f71">連絡先グループ正規表現</font><br>
         - <font color="#fa7f71">データベース</font><br>
         - <font color="#fa7f71">会議モード</font><br>
-        - <font color="#fa7f71">グローバルテスト</font><br>
         - <font color="#fa7f71">インスタントクエリ</font>（APIエンドポイントの番号が他の競合他社に漏洩するのを防ぐため）<br>
         <br>
         <h5>2. <font color="#03DAC5">報告します</font>：</h5>

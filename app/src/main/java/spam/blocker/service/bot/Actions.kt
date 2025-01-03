@@ -1788,9 +1788,9 @@ class ParseQueryResult(
                         it.groups
                             .drop(1)
                             .filterNotNull()
-                            .first().value
+                            .firstOrNull()?.value
                     }
-                    .filterNot { it.isEmpty() }
+                    .filterNot { it.isNullOrEmpty() }
                     .joinToString(" ")
             }
         }

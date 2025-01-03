@@ -76,11 +76,11 @@
         <br>
         - <font color="#fa7f71">已通过的号码</font><br>
         以及以下被拦截的类型：<br>
+        - <font color="#fa7f71">全局测试</font><br>
         - <font color="#fa7f71">联系人正则表达式</font><br>
         - <font color="#fa7f71">联系人组正则表达式</font><br>
         - <font color="#fa7f71">数据库</font><br>
         - <font color="#fa7f71">会议模式</font><br>
-        - <font color="#fa7f71">全局测试</font><br>
         - <font color="#fa7f71">即时查询</font>（防止 API 端点的号码泄露给其他竞争对手）<br>
         <br>
         <h5>2. 它<font color="#03DAC5">会</font>举报：</h5>

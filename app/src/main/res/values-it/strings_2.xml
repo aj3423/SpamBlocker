@@ -77,11 +77,11 @@
         <br>
         - <font color="#fa7f71">Numeri passati</font><br>
         E i seguenti tipi bloccati:<br>
+        - <font color="#fa7f71">Test globale</font><br>
         - <font color="#fa7f71">Espressione regolare contatti</font><br>
         - <font color="#fa7f71">Espressione regolare gruppo contatti</font><br>
         - <font color="#fa7f71">Database</font><br>
         - <font color="#fa7f71">Modalità riunione</font><br>
-        - <font color="#fa7f71">Test globale</font><br>
         - <font color="#fa7f71">Query istantanea</font> (per impedire che il numero dell\'endpoint API venga divulgato ad altri concorrenti)<br>
         <br>
         <h5>2. <font color="#03DAC5">Segnalerà</font>:</h5>

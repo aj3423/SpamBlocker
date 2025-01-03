@@ -198,7 +198,7 @@ object Util {
         val group = result?.groups
             ?.drop(1) // skip group[0], it's always the entire string
             ?.filterNotNull()
-            ?.first()?.value
+            ?.firstOrNull()?.value
 
         if (v != null && group == null) {
             return v

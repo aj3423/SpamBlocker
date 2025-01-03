@@ -76,11 +76,11 @@
         <br>
         - <font color="#fa7f71">Numéros autorisés</font><br>
         Et les types bloqués suivants :<br>
+        - <font color="#fa7f71">Test global</font><br>
         - <font color="#fa7f71">Exprégulière contact</font><br>
         - <font color="#fa7f71">Exprégulière groupe contact</font><br>
         - <font color="#fa7f71">Base de données</font><br>
         - <font color="#fa7f71">Mode réunion</font><br>
-        - <font color="#fa7f71">Test global</font><br>
         - <font color="#fa7f71">Requête instantanée</font> (pour empêcher la fuite du numéro de l\'API vers d\'autres concurrents)<br>
         <br>
         <h5>2. Il <font color="#03DAC5">signalera</font> :</h5>
