@@ -4,7 +4,7 @@
         Ces règles s\'appliquent au numéro de téléphone entrant.<br>
         <br>
         <font color="#00BFFF"><b> - Exemples</b></font>:<br>
-        Vous trouverez quelques exemples sur la page <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki</a>.<br>
+        Vous trouverez des exemples sur la page <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki</a>.<br>
         <br>
         <font color="#00BFFF"><b> - Optimisation Regex</b></font>:<br>
         Pour simplifier l\'expression régulière,
@@ -14,9 +14,9 @@
           sont supprimés avant la vérification, par exemple :<br>
         &emsp; Tous ces formats :<br>
         &emsp;&emsp; 123456789 &emsp;(numéro régulier)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(avec <font color="#fa7f71"><b>des espaces</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> en tête)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec préfixe national <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(avec <font color="#fa7f71"><b>espaces</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(avec <font color="#fa7f71"><b>+</b></font> au début)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(avec indicatif téléphonique national <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(deux <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp; Ils sont <b>tous</b> vérifiés comme :<br>
         &emsp;&emsp; 123456789 <br>
@@ -28,24 +28,25 @@
         &ensp; - N° exact : <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Commence par 400 : <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Se termine par 123 : <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 chiffres : <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Moins de 5 : <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Plus de 10 : <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Numéro inconnu (chaîne vide) : <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
         &ensp; - Correspond à l\'un des modèles : <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
-        &ensp; - Commence par 400, avec ou sans indicatif 11 : <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Commence par 400, avec ou sans indicatif pays 11 : <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Importation de règles depuis un fichier .csv</b></font>:<br>
         Appuyez longuement sur le bouton `Ajouter` pour importer des numéros depuis un fichier .csv, colonnes prises en charge :<br>
          - <no_translate><b>pattern</b></no_translate>: L\'expression régulière (<b>obligatoire</b>)<br>
          - <no_translate><b>description</b></no_translate>: Description<br>
-         - <no_translate><b>priority</b></no_translate>: Priorité, 1 par défaut<br>
-         - <no_translate><b>flags</b></no_translate>: 1 (Appliquer à l\'appel), 2 (Appliquer aux SMS), 3 (les deux), 3 par défaut<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: Liste noire ou blanche. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, <no_translate>true</no_translate> par défaut<br>
-         - <no_translate><b>blockType</b></no_translate>: Type de blocage. 0~2 correspondant aux 3 types de blocage, 0 par défaut<br>
-         - <no_translate><b>importance</b></no_translate>: Type de notification. 0~4 correspondant aux 5 types de notification, 2 par défaut<br>
+         - <no_translate><b>priority</b></no_translate>: Priorité, par défaut 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1 (Appliquer à l\'appel), 2 (Appliquer aux SMS), 3 (les deux), par défaut 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Liste noire ou liste blanche. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, par défaut <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Type de blocage. 0~2 correspondant aux 3 types de blocage, par défaut 0<br>
+         - <no_translate><b>importance</b></no_translate>: Type de notification. 0~4 correspondant aux 5 types de notification, par défaut 2<br>
         <br>
         <font color="#00BFFF"><b> - Aspects liés à l\'interface utilisateur</b></font>:<br>
-        Décochez les cases à cocher pour désactiver la règle, <font color="#fa7f71"><b>glissez vers la gauche pour la supprimer</b></font>.<br>
+        Désélectionnez les cases à cocher pour désactiver la règle, <font color="#fa7f71"><b>glissez vers la gauche pour la supprimer</b></font>.<br>
         <br>
         La liste est <b>affichée</b> par ordre décroissant de priorité, ordre croissant de description et ordre croissant de modèle.
         ]]>

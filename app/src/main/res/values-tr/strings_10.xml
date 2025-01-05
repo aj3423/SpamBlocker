@@ -4,23 +4,23 @@
         Bu kurallar gelen telefon numarasına uygulanır.<br>
         <br>
         <font color="#00BFFF"><b> - Örnekler</b></font>:<br>
-        <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki sayfasında</a> bazı örnekler bulunmaktadır.<br>
+        <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki sayfasında</a> bazı örnekler vardır.<br>
         <br>
         <font color="#00BFFF"><b> - Regex Optimizasyonu</b></font>:<br>
         Regex\'i basitleştirmek için,<br>
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>boşluklar</b></font>
-          ve <font color="#fa7f71"><b>baştaki sıfırlar</b></font>
-          kontrol edilmeden önce kaldırılır, örneğin:<br>
+          <font color="#fa7f71"><b>+</b></font>,<br>
+           <font color="#fa7f71"><b>boşluklar</b></font><br>
+          ve <font color="#fa7f71"><b>baştaki sıfırlar</b></font><br>
+          kontrol etmeden önce kaldırılır, örneğin:<br>
         &emsp; Tüm bu formatlar:<br>
         &emsp;&emsp; 123456789 &emsp;(normal numara)<br>
         &emsp;&emsp; 1 2345 6789 &emsp;(ile <font color="#fa7f71"><b>boşluklar</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(başında <font color="#fa7f71"><b>+</b></font> ile)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(yerel hat kodu ön eki <font color="#fa7f71"><b>0</b></font> ile)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(yerel ağ ön eki <font color="#fa7f71"><b>0</b></font> ile)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(iki <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Bunların <b>hepsi</b> şu şekilde kontrol edilir:<br>
+        &emsp; Hepsi şu şekilde kontrol edilir:<br>
         &emsp;&emsp; 123456789 <br>
-        &emsp; Bu nedenle <font color="#03DAC5"><b>123.*</b></font> regex\'i bunların hepsiyle eşleşir.<br>
+        &emsp; Bu nedenle <font color="#03DAC5"><b>123.*</b></font> regex\'i hepsini eşleştirir.<br>
         Bu numara optimizasyonu, regex bayrağı "Ham Numara" ile <b>devre dışı</b> bırakılabilir.<br>
         <br>
         <font color="#00BFFF"><b> - Bazı tipik kalıplar</b></font>:<br>
@@ -28,18 +28,19 @@
         &ensp; - Tam numara: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - 400 ile başlayan: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - 123 ile biten: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 haneli: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - 5\'ten kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - 10\'dan uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Bilinmeyen numara (boş dize): <font color="#03DAC5"><b>.{0}</b></font> veya <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Kalıpların herhangi biriyle eşleşir: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
-        &ensp; - 400 ile başlar, 11 ülke kodu ile veya olmadan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Kalıplardan herhangi biriyle eşleşir: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
+        &ensp; - 11\'lik ülke kodu ile veya olmadan 400 ile başlayan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - .csv\'den kural içe aktarımı</b></font>:<br>
         .csv dosyasından numara içe aktarmak için `Ekle` düğmesine uzun basın, desteklenen sütunlar:<br>
          - <no_translate><b>pattern</b></no_translate>: Regex (<b>gerekli</b>)<br>
          - <no_translate><b>description</b></no_translate>: Açıklama<br>
          - <no_translate><b>priority</b></no_translate>: Öncelik, varsayılan 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Aramaya Uygula), 2(SMS\'e Uygula), 3(her ikisi), varsayılan 3<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Aramayı uygula), 2(SMS\'i uygula), 3(her ikisi), varsayılan 3<br>
          - <no_translate><b>isBlacklist</b></no_translate>: Kara liste veya beyaz liste. <no_translate>true</no_translate> veya <no_translate>false</no_translate>, varsayılan <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>: Engelleme türü. 0~2, 3 engelleme türüne karşılık gelir, varsayılan 0<br>
          - <no_translate><b>importance</b></no_translate>: Bildirim türü. 0~4, 5 bildirim türüne karşılık gelir, varsayılan 2<br>
@@ -47,7 +48,7 @@
         <font color="#00BFFF"><b> - Kullanıcı arayüzü ile ilgili</b></font>:<br>
         Kuralı devre dışı bırakmak için onay kutularının işaretini kaldırın, <font color="#fa7f71"><b>sola kaydırarak silin</b></font>.<br>
         <br>
-        Liste, önceliğe göre azalan, açıklamaya göre artan ve kalıba göre artan sırada <b>gösterilir</b>.
+        Liste, önceliğin azalan sırasına, açıklamanın artan sırasına ve kalıbın artan sırasına göre <b>gösterilir</b>.
         ]]>
     </string>
 </resources>

@@ -8,9 +8,9 @@
         <br>
         <font color="#00BFFF"><b> - Optimización Regex</b></font>:<br>
         Para simplificar o regex,<br>
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>espazos</b></font>
-          e <font color="#fa7f71"><b>zeros á esquerda</b></font>
+          <font color="#fa7f71"><b>+</b></font>,<br>
+           <font color="#fa7f71"><b>espazos</b></font><br>
+          e <font color="#fa7f71"><b>ceros á esquerda</b></font><br>
           eliminanse antes da comprobación, por exemplo:<br>
         &emsp; Todos estes formatos:<br>
         &emsp;&emsp; 123456789 &emsp;(número normal)<br>
@@ -21,33 +21,34 @@
         &emsp; Todos eles compróbanse como:<br>
         &emsp;&emsp; 123456789 <br>
         &emsp; Polo tanto, o regex <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos eles.<br>
-        Esta optimización de número pode <b>desactivarse</b> coa bandeira regex "Número bruto".<br>
+        Esta optimización do número pode <short>desactivarse</short> coa bandeira regex "Número en bruto".<br>
         <br>
         <font color="#00BFFF"><b> - Algúns patróns típicos</b></font>:<br>
         &ensp; - Calquera número: <font color="#03DAC5"><b>.*</b></font> (o regex .* é equivalente ao comodín * noutras aplicacións) <br>
         &ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Comeza con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Comeza por 400: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Remata en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 díxitos: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Menor de 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Maior de 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Número descoñecido (cadea baleira): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
         &ensp; - Coincide con calquera dos patróns: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
-        &ensp; - Comeza con 400, con código de país 11 ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Comeza por 400, con código de país 11 ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Importación de regras desde .csv</b></font>:<br>
-        Prema longamente o botón `Engadir` para importar números desde un ficheiro .csv, columnas compatibles:<br>
-         - <no_translate><b>pattern</b></no_translate>: O regex (<b>obrigatorio</b>)<br>
+        Preme longamente o botón `Engadir` para importar números desde un ficheiro .csv, columnas soportadas:<br>
+         - <no_translate><b>pattern</b></no_translate>: O regex(<b>obrigatorio</b>)<br>
          - <no_translate><b>description</b></no_translate>: Descrición<br>
          - <no_translate><b>priority</b></no_translate>: Prioridade, por defecto 1<br>
          - <no_translate><b>flags</b></no_translate>: 1(Aplicar a Chamada), 2(Aplicar a SMS), 3(ambos), por defecto 3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou lista branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondente aos 3 tipos de bloqueo, por defecto 0<br>
-         - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondente aos 5 tipos de notificación, por defecto 2<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondendo aos 3 tipos de bloqueo, por defecto 0<br>
+         - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondendo aos 5 tipos de notificación, por defecto 2<br>
         <br>
         <font color="#00BFFF"><b> - Relacionado coa IU</b></font>:<br>
-        Desmarque as caixas para desactivar a regra, <font color="#fa7f71"><b>deslice cara á esquerda para eliminala</b></font>.<br>
+        Desmarca as caixas para desactivar a regra, <font color="#fa7f71"><b>desliza cara a esquerda para eliminala</b></font>.<br>
         <br>
-        A lista <b>amósase</b> en orde descendente de prioridade, ascendente de descrición e ascendente de patrón.
+        A lista <short>amósase</short> en orde descendente de prioridade, ascendente de descrición e ascendente de patrón.
         ]]>
     </string>
 </resources>

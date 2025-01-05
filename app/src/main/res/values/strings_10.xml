@@ -28,6 +28,7 @@
         &ensp; - Exact number: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Starts with 400: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Ends with 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 digits: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Shorter than 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Longer than 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Unknown number(empty string): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
