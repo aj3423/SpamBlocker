@@ -156,6 +156,24 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         createHistoryTable(TABLE_SMS)
     }
 
+    fun addColumnIfNotExist(
+        db: SQLiteDatabase,
+        tableName: String,
+        columnName: String,
+        columnType: String
+    ) {
+        val cursor = db.rawQuery(
+            "SELECT count(*) FROM pragma_table_info('${tableName}') WHERE name = '$columnName'",
+            arrayOf()
+        )
+        cursor.moveToFirst()
+        val count = cursor.getInt(0)
+        cursor.close()
+
+        if (count == 0) {
+            db.execSQL("ALTER TABLE $tableName ADD COLUMN $columnName $columnType")
+        }
+    }
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         logi("upgrading db $oldVersion -> $newVersion")
 
@@ -225,15 +243,15 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         }
         // 4. add column to spam db (reason, reasonDetail)
         if ((newVersion >= 33) && (oldVersion < 33)) {
-            db.execSQL("ALTER TABLE $TABLE_SPAM ADD COLUMN $COLUMN_REASON INTEGER")
-            db.execSQL("ALTER TABLE $TABLE_SPAM ADD COLUMN $COLUMN_REASON_EXTRA TEXT")
+            addColumnIfNotExist(db, TABLE_SPAM, COLUMN_REASON, "INTEGER")
+            addColumnIfNotExist(db, TABLE_SPAM, COLUMN_REASON_EXTRA, "TEXT")
         }
         // 5. add column extraInfo
         if ((newVersion >= 34) && (oldVersion < 34)) {
             db.execSQL("DELETE FROM $TABLE_CALL")
             db.execSQL("DELETE FROM $TABLE_SMS")
-            db.execSQL("ALTER TABLE $TABLE_CALL ADD COLUMN $COLUMN_EXTRA_INFO TEXT")
-            db.execSQL("ALTER TABLE $TABLE_SMS ADD COLUMN $COLUMN_EXTRA_INFO TEXT")
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_EXTRA_INFO, "TEXT")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_EXTRA_INFO, "TEXT")
         }
     }
 }
