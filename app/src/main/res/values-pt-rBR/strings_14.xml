@@ -60,4 +60,5 @@
     <string name="target_text">Texto Alvo</string>
     <string name="match_found">Correspondência encontrada</string>
     <string name="match_not_found">Correspondência não encontrada</string>
+    <string name="help_test_regex">Para testar se a regex funciona conforme o esperado, ela tentará corresponder a este texto.</string>
 </resources>

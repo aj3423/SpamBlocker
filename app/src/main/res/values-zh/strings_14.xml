@@ -59,4 +59,5 @@
     <string name="target_text">目标文本</string>
     <string name="match_found">匹配成功</string>
     <string name="match_not_found">匹配失败</string>
+    <string name="help_test_regex">测试正则表达式是否按预期工作，它将尝试匹配此文本。</string>
 </resources>

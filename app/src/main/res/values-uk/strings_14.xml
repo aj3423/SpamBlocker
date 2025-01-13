@@ -60,4 +60,5 @@
     <string name="target_text">Текст для пошуку</string>
     <string name="match_found">Знайдено відповідність</string>
     <string name="match_not_found">Відповідність не знайдено</string>
+    <string name="help_test_regex"><translate>Щоб перевірити, чи працює регулярний вираз належним чином, він спробує знайти відповідність цьому тексту.</translate></string>
 </resources>

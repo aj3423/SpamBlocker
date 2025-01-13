@@ -60,4 +60,5 @@
     <string name="target_text">Texto Objetivo</string>
     <string name="match_found">Coincidencia encontrada</string>
     <string name="match_not_found">Coincidencia no encontrada</string>
+    <string name="help_test_regex">Para probar si la expresión regular funciona como se espera, intentará coincidir con este texto.</string>
 </resources>

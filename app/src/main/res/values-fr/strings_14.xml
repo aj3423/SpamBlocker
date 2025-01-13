@@ -60,4 +60,5 @@
     <string name="target_text">Texte cible</string>
     <string name="match_found">Correspondance trouvée</string>
     <string name="match_not_found">Aucune correspondance</string>
+    <string name="help_test_regex">Pour tester si l\'expression régulière fonctionne comme prévu, elle tentera de faire correspondre ce texte.</string>
 </resources>

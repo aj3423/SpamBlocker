@@ -394,6 +394,7 @@ fun TestRegexDialog(
     PopupDialog(
         trigger = trigger,
         buttons = {
+            BalloonQuestionMark(Str(R.string.help_test_regex))
             StrokeButton(
                 label = Str(R.string.test),
                 color = Teal200,

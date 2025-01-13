@@ -59,4 +59,5 @@
     <string name="target_text">ターゲットテキスト</string>
     <string name="match_found">一致が見つかりました</string>
     <string name="match_not_found">一致が見つかりませんでした</string>
+    <string name="help_test_regex">正規表現が期待通りに機能するかどうかをテストするために、このテキストとの照合を試みます。</string>
 </resources>

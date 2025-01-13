@@ -59,4 +59,5 @@
     <string name="target_text">Целевой текст</string>
     <string name="match_found">Найдено совпадение</string>
     <string name="match_not_found">Совпадение не найдено</string>
+    <string name="help_test_regex">Чтобы проверить, работает ли регулярное выражение как ожидалось, оно попытается сопоставить этот текст.</string>
 </resources>

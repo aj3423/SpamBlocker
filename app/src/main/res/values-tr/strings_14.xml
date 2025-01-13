@@ -60,4 +60,5 @@
     <string name="target_text">Hedef Metin</string>
     <string name="match_found">Eşleşme bulundu</string>
     <string name="match_not_found">Eşleşme bulunamadı</string>
+    <string name="help_test_regex">Normal ifadenin beklendiği gibi çalışıp çalışmadığını test etmek için bu metinle eşleşmeyi deneyecektir.</string>
 </resources>

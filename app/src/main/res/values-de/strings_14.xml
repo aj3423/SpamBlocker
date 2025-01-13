@@ -60,4 +60,5 @@
     <string name="target_text">Zieltext</string>
     <string name="match_found">Übereinstimmung gefunden</string>
     <string name="match_not_found">Keine Übereinstimmung gefunden</string>
+    <string name="help_test_regex">Um zu testen, ob der reguläre Ausdruck wie erwartet funktioniert, wird versucht, diesen Text abzugleichen.</string>
 </resources>
