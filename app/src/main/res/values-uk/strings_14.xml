@@ -57,4 +57,7 @@
     <string name="missing_category">
         Категорія %s не налаштована в дії %s, будь ласка, налаштуйте її в налаштуваннях API (якщо API підтримує цю категорію).
     </string>
+    <string name="target_text">Текст для пошуку</string>
+    <string name="match_found">Знайдено відповідність</string>
+    <string name="match_not_found">Відповідність не знайдено</string>
 </resources>

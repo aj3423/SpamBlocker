@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,10 +18,12 @@ import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -46,6 +49,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.theme.Teal200
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
@@ -371,6 +375,64 @@ fun StrInputBox(
     )
 }
 
+val TestRegexString = mutableStateOf("")
+
+@Composable
+fun TestRegexDialog(
+    trigger: MutableState<Boolean>,
+    regexStr: String,
+    regexFlags: Int,
+) {
+    val C = LocalPalette.current
+
+    val result: MutableState<Boolean?> = remember { mutableStateOf(null) }
+
+    fun clearResult() {
+        result.value = null
+    }
+
+    PopupDialog(
+        trigger = trigger,
+        buttons = {
+            StrokeButton(
+                label = Str(R.string.test),
+                color = Teal200,
+                onClick = {
+                    val opts = Util.flagsToRegexOptions(regexFlags)
+                    result.value = regexStr.toRegex(opts).matches(TestRegexString.value)
+                }
+            )
+        },
+    ) {
+        StrInputBox(
+            text = TestRegexString.value,
+            label = {
+                Text(
+                    Str(R.string.target_text),
+                    color = Color.Unspecified
+                )
+            },
+            onValueChange = {
+                TestRegexString.value = it
+                clearResult()
+            },
+            leadingIconId = R.drawable.ic_find_check,
+            maxLines = 10,
+        )
+        if (result.value != null) {
+
+            Text(
+                text = Str(
+                    if (result.value == true)
+                        R.string.match_found else R.string.match_not_found
+                ),
+                color = if (result.value == true)
+                    C.pass else C.block
+            )
+        }
+    }
+}
+
 @Composable
 fun RegexInputBox(
     regexStr: String,
@@ -382,6 +444,7 @@ fun RegexInputBox(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
     helpTooltipId: Int? = null,
+    testable: Boolean = false,
     showFlagsIcon: Boolean = true,
 ) {
     val ctx = LocalContext.current
@@ -497,20 +560,57 @@ fun RegexInputBox(
                 ret
             }
 
-            RowVCenter {
+            // Trailing icons
+            // This is an ugly workaround for adding 10.dp paddingEnd to the trailing icon
+            //  when there are more than 1 icons. Because when there are more than 1 icons,
+            //  the paddingEnd becomes 0, no idea why.
+            var iconCount = 0
+
+            if (showFlagsIcon) iconCount++
+            if (testable) iconCount++
+            if (helpTooltipId != null) iconCount++
+
+            val paddingEnd = if (iconCount > 1) 10 else 0
+
+            RowVCenter(modifier = M.padding(paddingEnd.dp)) {
+                // Testing Tube icon
+                if (testable) {
+                    val trigger = remember { mutableStateOf(false) }
+
+                    if (trigger.value) {
+                        TestRegexDialog(
+                            trigger = trigger,
+                            regexStr = state.text,
+                            regexFlags = regexFlags.intValue,
+                        )
+                    }
+
+                    ResIcon(
+                        R.drawable.ic_tube,
+                        color = Teal200,
+                        modifier = M
+                            .clickable {
+                                trigger.value = true
+                            }
+                            .size(24.dp),
+                    )
+                }
+
                 // flags icon
                 if (showFlagsIcon) {
                     DropdownWrapper(
                         items = dropdownItems,
-                        modifier = M.onGloballyPositioned {
-                            dropdownOffset.value = it.positionOnScreen()
-                        }
+                        modifier = M
+                            .onGloballyPositioned {
+                                dropdownOffset.value = it.positionOnScreen()
+                            }
                     ) { expanded ->
 
                         val imdlc = regexFlags.intValue.toFlagStr()
-                        val clickableModifier = M.clickable {
-                            expanded.value = true
-                        }
+                        val clickableModifier = M
+                            .clickable {
+                                expanded.value = true
+                            }
                         if (imdlc == "") {
                             GreyIcon(
                                 modifier = clickableModifier,
@@ -520,12 +620,15 @@ fun RegexInputBox(
                             Text(
                                 text = imdlc,
                                 color = Color.Magenta,
-                                modifier = clickableModifier,
+                                modifier = clickableModifier
+                                    .defaultMinSize(minWidth = 24.dp)
+                                    .wrapContentWidth(Alignment.CenterHorizontally),
                             )
                         }
                     }
                 }
 
+                // Help question icon
                 helpTooltipId?.let {
                     BalloonQuestionMark(LocalContext.current.getString(it))
                 }

@@ -56,4 +56,7 @@
     <string name="missing_category">
         动作 %s 中未配置类别 %s，请在 API 配置中配置它（如果 API 支持此类别）。
     </string>
+    <string name="target_text">目标文本</string>
+    <string name="match_found">匹配成功</string>
+    <string name="match_not_found">匹配失败</string>
 </resources>

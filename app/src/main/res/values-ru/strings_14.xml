@@ -56,4 +56,7 @@
     <string name="missing_category">
         Категория %s не настроена в действии %s, пожалуйста, настройте её в настройках API (если API поддерживает эту категорию).
     </string>
+    <string name="target_text">Целевой текст</string>
+    <string name="match_found">Найдено совпадение</string>
+    <string name="match_not_found">Совпадение не найдено</string>
 </resources>

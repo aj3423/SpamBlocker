@@ -66,11 +66,14 @@ fun PopupTesting(
     PopupDialog(
         trigger = logTrigger,
     ) {
-        Text(text = logStr.value)
+        Text(
+            text = logStr.value,
+            color = C.textGrey, // the default text color
+        )
     }
 
 
-    fun clearResult() {
+    fun clearPreviousResult() {
         logStr.value = buildAnnotatedString {  }
     }
 
@@ -88,8 +91,8 @@ fun PopupTesting(
         buttons = { // Test Button
 
             StrokeButton(label = Str(R.string.test), color = Teal200) {
+                clearPreviousResult()
                 logTrigger.value = true
-                clearResult()
 
                 val textLogger = TextLogger(logStr, C)
 
@@ -120,7 +123,7 @@ fun PopupTesting(
                     leadingIconId = R.drawable.ic_call,
                     onValueChange = {
                         vm.phone.value = it
-                        clearResult()
+                        clearPreviousResult()
                     },
                 )
                 // SMS content
@@ -131,7 +134,7 @@ fun PopupTesting(
                         leadingIconId = R.drawable.ic_sms,
                         onValueChange = {
                             vm.sms.value = it
-                            clearResult()
+                            clearPreviousResult()
                         }
                     )
                 }

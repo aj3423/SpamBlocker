@@ -315,7 +315,6 @@ object Util {
         return opts
     }
 
-
     private var cacheAppList: List<AppInfo>? = null
     private val lock_1 = Any()
 

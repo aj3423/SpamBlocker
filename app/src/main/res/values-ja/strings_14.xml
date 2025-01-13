@@ -56,4 +56,7 @@
     <string name="missing_category">
         カテゴリ %s はアクション %s で設定されていません。API 設定で設定してください（API がこのカテゴリをサポートしている場合）。
     </string>
+    <string name="target_text">ターゲットテキスト</string>
+    <string name="match_found">一致が見つかりました</string>
+    <string name="match_not_found">一致が見つかりませんでした</string>
 </resources>

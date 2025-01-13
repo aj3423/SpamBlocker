@@ -57,4 +57,7 @@
     <string name="missing_category">
         La categoria %s non è configurata nell\'azione %s, configurarla nella configurazione dell\'API (se l\'API supporta questa categoria).
     </string>
+    <string name="target_text">Testo di Destinazione</string>
+    <string name="match_found">Corrispondenza trovata</string>
+    <string name="match_not_found">Nessuna corrispondenza trovata</string>
 </resources>

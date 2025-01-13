@@ -57,4 +57,7 @@
     <string name="missing_category">
         %s kategorisi %s eyleminde yapılandırılmadı, lütfen API yapılandırmasında yapılandırın (API bu kategoriyi destekliyorsa).
     </string>
+    <string name="target_text">Hedef Metin</string>
+    <string name="match_found">Eşleşme bulundu</string>
+    <string name="match_not_found">Eşleşme bulunamadı</string>
 </resources>

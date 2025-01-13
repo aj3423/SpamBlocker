@@ -336,6 +336,7 @@ fun RuleEditDialog(
                     onFlagsChange = {
                         patternFlags.intValue = it
                     },
+                    testable = true,
                     leadingIcon = if (forType == Def.ForNumber) {
                         { RegexLeadingDropdownIcon(patternFlags) }
                     } else {
@@ -354,11 +355,7 @@ fun RuleEditDialog(
 
                     AnimatedVisibleV(visible = forParticular) {
                         RegexInputBox(
-                            label = {
-                                RegexFieldLabel(
-                                    forType = forType, flags = patternExtraFlags.intValue
-                                )
-                            },
+                            label = { Text(Str(R.string.phone_number)) },
                             regexStr = patternExtra,
                             regexFlags = patternExtraFlags,
                             onRegexStrChange = { newValue, hasErr ->

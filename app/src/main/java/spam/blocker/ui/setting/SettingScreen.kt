@@ -51,6 +51,7 @@ import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
@@ -84,7 +85,8 @@ fun SettingScreen() {
                 visible = !bottomReached,
                 iconId = R.drawable.ic_tube,
                 iconColor = White,
-                bgColor = SkyBlue,
+                iconSize = 36,
+                bgColor = Teal200,
                 modifier = positionModifier
             ) {
                 testingTrigger.value = true

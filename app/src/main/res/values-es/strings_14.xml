@@ -57,4 +57,7 @@
     <string name="missing_category">
         La categoría %s no está configurada en la acción %s, configúrela en la configuración de la API (si la API admite esta categoría).
     </string>
+    <string name="target_text">Texto Objetivo</string>
+    <string name="match_found">Coincidencia encontrada</string>
+    <string name="match_not_found">Coincidencia no encontrada</string>
 </resources>

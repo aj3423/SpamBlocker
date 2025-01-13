@@ -57,4 +57,7 @@
     <string name="missing_category">
         Category %s is not configured in action %s, please configure it in the API configuration(if the API supports this category).
     </string>
+    <string name="target_text">Target Text</string>
+    <string name="match_found">Match found</string>
+    <string name="match_not_found">Match not found</string>
 </resources>
