@@ -211,44 +211,52 @@ fun MeetingMode() {
     )
     PopupMeetingConfig(popupTrigger = buttonPopupTrigger, priority = priority)
 
+    var permissionGranted by remember { mutableStateOf(Permissions.isUsagePermissionGranted(ctx)) }
+
     LabeledRow(
         R.string.in_meeting,
         helpTooltipId = R.string.help_meeting_mode,
         content = {
-            Row(
-                modifier = M.weight(1f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End,
-            ) {
-                // Priority Button
-                if (enabledAppInfos.isNotEmpty() && Permissions.isUsagePermissionGranted(ctx)) {
-                    StrokeButton(
-                        label = "${priority.intValue}",
-                        color = LightMagenta
-                    ) {
-                        buttonPopupTrigger.value = true
-                    }
-                }
-
-                // Recycler list view
-                LazyRow(
-                    modifier = M
-                        .padding(start = 8.dp)
-                        .clickable {
-                            appsPopupTrigger.value = true
-                        },
+            if (permissionGranted) {
+                Row(
+                    modifier = M.weight(1f),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.End,
                 ) {
-                    items(enabledAppInfos) {
-                        DrawableImage(
-                            AppInfo.fromPackage(ctx, it.pkgName).icon,
-                            modifier = M
-                                .size(24.dp)
-                                .padding(horizontal = 2.dp)
-                        )
+                    // Priority Button
+                    if (enabledAppInfos.isNotEmpty()) {
+                        StrokeButton(
+                            label = "${priority.intValue}",
+                            color = LightMagenta
+                        ) {
+                            buttonPopupTrigger.value = true
+                        }
+                    }
+
+                    // Recycler list view
+                    LazyRow(
+                        modifier = M
+                            .padding(start = 8.dp)
+                            .clickable {
+                                appsPopupTrigger.value = true
+                            },
+                    ) {
+                        items(enabledAppInfos) {
+                            DrawableImage(
+                                AppInfo.fromPackage(ctx, it.pkgName).icon,
+                                modifier = M
+                                    .size(24.dp)
+                                    .padding(horizontal = 2.dp)
+                            )
+                        }
                     }
                 }
             }
-            AppChooserIcon(popupTrigger = appsPopupTrigger)
+            AppChooserIcon { granted ->
+                permissionGranted = granted
+                if (granted)
+                    appsPopupTrigger.value = true
+            }
         }
     )
 }

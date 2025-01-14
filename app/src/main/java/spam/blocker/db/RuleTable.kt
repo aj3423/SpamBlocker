@@ -30,6 +30,7 @@ import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.Util.truncate
 import spam.blocker.util.hasFlag
+import spam.blocker.util.regexMatches
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
@@ -58,7 +59,7 @@ data class RegexRule(
     var id: Long = 0,
     var pattern: String = "",
 
-    // for now, this is only used as ParticularNumber
+    // for now, this is only used for ParticularNumber
     var patternExtra: String = "",
 
     @Serializable(with = CompatibleIntSerializer::class)
@@ -83,6 +84,15 @@ data class RegexRule(
             description
         else
             truncate(patternStr(), limit = 40)
+    }
+
+    fun matches(targetStr: String): Boolean {
+        return pattern.regexMatches(targetStr, patternFlags)
+    }
+
+    fun extraMatches(targetStr: String): Boolean {
+        val opts = Util.flagsToRegexOptions(patternExtraFlags)
+        return patternExtra.toRegex(opts).matches(targetStr)
     }
 
     fun isForCall(): Boolean {
@@ -291,10 +301,10 @@ abstract class RuleTable {
         val cursor = db.rawQuery(sql, null)
 
         cursor.use {
-            if (it.moveToFirst()) {
-                return ruleFromCursor(it)
+            return if (it.moveToFirst()) {
+                ruleFromCursor(it)
             } else {
-                return null
+                null
             }
         }
     }
@@ -334,7 +344,7 @@ abstract class RuleTable {
 
         // build where clause
         var whereStr = ""
-        if (where.size > 0) {
+        if (where.isNotEmpty()) {
             whereStr = " WHERE (${where.joinToString(separator = " and ") { "($it)" }})"
         }
 

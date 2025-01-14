@@ -66,6 +66,10 @@ val PermissivePrettyJson =  Json {
     ignoreUnknownKeys = true
 }
 
+fun String.regexMatches(targetStr: String, regexFlags: Int): Boolean {
+    val opts = Util.flagsToRegexOptions(regexFlags)
+    return this.toRegex(opts).matches(targetStr)
+}
 
 object Util {
 

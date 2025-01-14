@@ -81,6 +81,7 @@ import spam.blocker.util.Xml
 import spam.blocker.util.asyncHttpRequest
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.logi
+import spam.blocker.util.regexMatches
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -1298,11 +1299,9 @@ class FindRules(
 ) : IPermissiveAction {
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val opts = Util.flagsToRegexOptions(flags)
-        val patternRegex = pattern.toRegex(opts)
 
         val found = NumberRuleTable().listAll(ctx).filter {
-            patternRegex.matches(it.description)
+            pattern.regexMatches(it.description, flags)
         }
 
         aCtx.logger?.debug(

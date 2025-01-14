@@ -54,6 +54,7 @@ import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
 import spam.blocker.util.hasFlag
+import spam.blocker.util.regexMatches
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
@@ -375,7 +376,7 @@ fun StrInputBox(
     )
 }
 
-val TestRegexString = mutableStateOf("")
+val regexTestString = mutableStateOf("")
 
 @Composable
 fun TestRegexDialog(
@@ -399,14 +400,13 @@ fun TestRegexDialog(
                 label = Str(R.string.test),
                 color = Teal200,
                 onClick = {
-                    val opts = Util.flagsToRegexOptions(regexFlags)
-                    result.value = regexStr.toRegex(opts).matches(TestRegexString.value)
+                    result.value = regexStr.regexMatches(regexTestString.value, regexFlags)
                 }
             )
         },
     ) {
         StrInputBox(
-            text = TestRegexString.value,
+            text = regexTestString.value,
             label = {
                 Text(
                     Str(R.string.target_text),
@@ -414,7 +414,7 @@ fun TestRegexDialog(
                 )
             },
             onValueChange = {
-                TestRegexString.value = it
+                regexTestString.value = it
                 clearResult()
             },
             leadingIconId = R.drawable.ic_find_check,

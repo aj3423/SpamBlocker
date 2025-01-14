@@ -52,6 +52,7 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.AppInfo
 import spam.blocker.util.AppOpsPermission
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Permissions
 import spam.blocker.util.Util
@@ -61,7 +62,7 @@ import spam.blocker.util.spf.RecentAppInfo
 
 @Composable
 fun AppChooserIcon(
-    popupTrigger: MutableState<Boolean>
+    onPermissionCheck: Lambda1<Boolean>,
 ) {
     val ctx = LocalContext.current
 
@@ -83,9 +84,7 @@ fun AppChooserIcon(
                         )
                     )
                 ) { granted ->
-                    if (granted) {
-                        popupTrigger.value = true
-                    }
+                    onPermissionCheck(granted)
                 }
             }
     )
@@ -308,42 +307,50 @@ fun RecentApps() {
     )
     PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = defaultInXMin)
 
+    var permissionGranted by remember { mutableStateOf(Permissions.isUsagePermissionGranted(ctx)) }
+
     LabeledRow(
         R.string.recent_apps,
         helpTooltipId = R.string.help_recent_apps,
         content = {
-            Row(
-                modifier = M.weight(1f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End,
-            ) {
-                if (enabledAppInfos.isNotEmpty() && Permissions.isUsagePermissionGranted(ctx)) {
-                    GreyButton(
-                        label = "${defaultInXMin.value} ${Str(R.string.min)}",
-                    ) {
-                        buttonPopupTrigger.value = true
-                    }
-                }
-                // and the recycler list view
-                LazyRow(
-                    modifier = M
-                        .padding(start = 8.dp)
-                        .clickable {
-                            appsPopupTrigger.value = true
-                        },
+            if (permissionGranted) {
+                Row(
+                    modifier = M.weight(1f),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.End,
                 ) {
-                    items(enabledAppInfos) {
-                        DrawableImage(
-                            AppInfo.fromPackage(ctx, it.pkgName).icon,
-                            modifier = M
-                                .size(24.dp)
-                                .padding(horizontal = 2.dp)
-                        )
+                    if (enabledAppInfos.isNotEmpty()) {
+                        GreyButton(
+                            label = "${defaultInXMin.value} ${Str(R.string.min)}",
+                        ) {
+                            buttonPopupTrigger.value = true
+                        }
+                    }
+                    // and the recycler list view
+                    LazyRow(
+                        modifier = M
+                            .padding(start = 8.dp)
+                            .clickable {
+                                appsPopupTrigger.value = true
+                            },
+                    ) {
+                        items(enabledAppInfos) {
+                            DrawableImage(
+                                AppInfo.fromPackage(ctx, it.pkgName).icon,
+                                modifier = M
+                                    .size(24.dp)
+                                    .padding(horizontal = 2.dp)
+                            )
+                        }
                     }
                 }
             }
 
-            AppChooserIcon(appsPopupTrigger)
+            AppChooserIcon { granted ->
+                permissionGranted = granted
+                if (granted)
+                    appsPopupTrigger.value = true
+            }
         }
     )
 }

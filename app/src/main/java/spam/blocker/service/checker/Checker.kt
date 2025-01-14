@@ -670,7 +670,6 @@ class Checker { // for namespace only
             )
 
             // 2. check regex
-            val opts = Util.flagsToRegexOptions(numberRule.patternFlags)
 
             // check if user enabled the `RawNumber` mode for this regex
             val numberToCheck = if (numberRule.patternFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
@@ -678,7 +677,7 @@ class Checker { // for namespace only
             else
                 Util.clearNumber(rawNumber)
 
-            if (numberRule.pattern.toRegex(opts).matches(numberToCheck)) {
+            if (numberRule.matches(numberToCheck)) {
                 val block = numberRule.isBlacklist
 
                 if (block)
@@ -736,9 +735,8 @@ class Checker { // for namespace only
             // 2. check regex
             val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
             if (contactInfo != null) {
-                val opts = Util.flagsToRegexOptions(rule.patternFlags)
 
-                if (rule.pattern.toRegex(opts).matches(contactInfo.name)) {
+                if (rule.matches(contactInfo.name)) {
                     val block = rule.isBlacklist
 
                     if (block)
@@ -795,29 +793,29 @@ class Checker { // for namespace only
             }
 
             // 2. check regex
-            val groupNames = Contacts.findGroupsByRawNumber(ctx, rawNumber)
-            for (groupName in groupNames) { // is contact
-                val opts = Util.flagsToRegexOptions(rule.patternFlags)
-
-                if (rule.pattern.toRegex(opts).matches(groupName)) {
-                    val block = rule.isBlacklist
-
-                    if (block)
-                        logger?.error(
-                            ctx.getString(R.string.blocked_by)
-                                .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
-                        )
-                    else
-                        logger?.success(
-                            ctx.getString(R.string.allowed_by)
-                                .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
-                        )
-
-                    return ByRegexRule(
-                        type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP,
-                        rule = rule,
-                    )
+            val group = Contacts.findGroupsContainNumber(ctx, rawNumber)
+                .find { groupName ->
+                    rule.matches(groupName)
                 }
+
+            if (group != null) { // found match
+                val block = rule.isBlacklist
+
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
+                    )
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.contact_group)) + ": ${rule.summary()}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP,
+                    rule = rule,
+                )
             }
             return null
         }
@@ -856,37 +854,39 @@ class Checker { // for namespace only
             }
 
             // 2. check regex
-            val opts = Util.flagsToRegexOptions(rule.patternFlags)
-            val optsExtra = Util.flagsToRegexOptions(rule.patternExtraFlags)
-
-            val contentMatches = rule.pattern.toRegex(opts).matches(messageBody)
+            val contentMatches = rule.matches(messageBody)
             val numberToCheck = if (rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
                 rawNumber
             else
                 Util.clearNumber(rawNumber)
 
             // 3. check for particular number
-            val matches = if (rule.patternExtra != "") { // for particular number enabled
-                // if this regex is for matching contact group
+            fun particularMatches(): Boolean {
+                if (rule.patternExtra == "") { // "for particular number" is not enabled
+                    return true
+                }
+
                 val forContactGroup =
                     rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-                if (forContactGroup) {
-                    val anyContactGroupMatches = Contacts.findGroupsByRawNumber(ctx, rawNumber)
-                        .any { groupName ->
-                            rule.patternExtra.toRegex(optsExtra).matches(groupName)
-                        }
-                    contentMatches && anyContactGroupMatches
-                } else {
-                    val particularNumberMatches =
-                        rule.patternExtra.toRegex(optsExtra).matches(numberToCheck)
 
-                    contentMatches && particularNumberMatches
+                val forContact =
+                    rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+
+                return if (forContactGroup) {
+                    Contacts.findGroupsContainNumber(ctx, rawNumber)
+                        .any { groupName ->
+                            rule.extraMatches(groupName)
+                        }
+                } else if (forContact) {
+                    val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
+                    contactInfo != null && rule.extraMatches(contactInfo.name)
+                } else {
+                    // regular number
+                    rule.extraMatches(numberToCheck)
                 }
-            } else {
-                contentMatches
             }
 
-            if (matches) {
+            if (contentMatches && particularMatches()) {
                 val block = rule.isBlacklist
 
                 if (block)

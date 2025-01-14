@@ -82,7 +82,7 @@ object Contacts {
     // Find a list of groups that contain this number,
     // returns the group names
     @SuppressLint("Range")
-    fun findGroupsByRawNumber(ctx: Context, rawNumber: String): List<String> {
+    fun findGroupsContainNumber(ctx: Context, rawNumber: String): List<String> {
         val groupNames = mutableListOf<String>()
 
         if (!Permissions.isContactsPermissionGranted(ctx)) {
