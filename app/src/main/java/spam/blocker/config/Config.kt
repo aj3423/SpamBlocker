@@ -111,6 +111,37 @@ class RegexOptions {
 }
 
 @Serializable
+class CallAlert {
+    var enabled = false
+    var collapsed = false
+    var duration = 0
+    var regexStr = ""
+    var regexFlags = 0
+    var timestamp: Long = 0
+
+    fun load(ctx: Context) {
+        val spf = spf.CallAlert(ctx)
+        enabled = spf.isEnabled()
+        collapsed = spf.isCollapsed()
+        duration = spf.getDuration()
+        regexStr = spf.getRegexStr()
+        regexFlags = spf.getRegexFlags()
+        timestamp = spf.getTimestamp()
+    }
+
+    fun apply(ctx: Context) {
+        spf.CallAlert(ctx).apply {
+            setEnabled(enabled)
+            setCollapsed(collapsed)
+            setDuration(duration)
+            setRegexStr(regexStr)
+            setRegexFlags(regexFlags)
+            setTimestamp(timestamp)
+        }
+    }
+}
+
+@Serializable
 class BotOptions {
     var listCollapsed = false
 
@@ -445,6 +476,7 @@ class Configs {
     val numberRules = NumberRules()
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
+    val callAlert = CallAlert()
 
     val apiQuery = ApiQuery()
     val apiReport = ApiReport()
@@ -473,6 +505,7 @@ class Configs {
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
+        callAlert.load(ctx)
 
         apiQuery.load(ctx)
         apiReport.load(ctx)
@@ -503,6 +536,7 @@ class Configs {
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
+        callAlert.apply(ctx)
 
         apiQuery.apply(ctx)
         apiReport.apply(ctx)

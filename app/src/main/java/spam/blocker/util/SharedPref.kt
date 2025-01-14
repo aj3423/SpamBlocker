@@ -421,4 +421,53 @@ class spf { // for namespace only
         }
     }
 
+    class CallAlert(ctx: Context) : SharedPref(ctx) {
+        fun isEnabled(): Boolean {
+            return readBoolean(Def.SETTING_CALL_ALERT_ENABLED, false)
+        }
+
+        fun setEnabled(enabled: Boolean) {
+            writeBoolean(Def.SETTING_CALL_ALERT_ENABLED, enabled)
+        }
+
+        fun isCollapsed(): Boolean {
+            return readBoolean(Def.SETTING_CALL_ALERT_COLLAPSED, false)
+        }
+
+        fun setCollapsed(enabled: Boolean) {
+            writeBoolean(Def.SETTING_CALL_ALERT_COLLAPSED, enabled)
+        }
+
+        fun getDuration(): Int {
+            return readInt(Def.SETTING_CALL_ALERT_DURATION, 90)
+        }
+
+        fun setDuration(seconds: Int) {
+            writeInt(Def.SETTING_CALL_ALERT_DURATION, seconds)
+        }
+
+        fun getRegexStr(): String {
+            return readString(Def.SETTING_CALL_ALERT_REGEX_STR, "")
+        }
+
+        fun setRegexStr(regex: String) {
+            writeString(Def.SETTING_CALL_ALERT_REGEX_STR, regex)
+        }
+
+        fun getRegexFlags(): Int {
+            return readInt(Def.SETTING_CALL_ALERT_REGEX_FLAGS, Def.DefaultRegexFlags)
+        }
+
+        fun setRegexFlags(flags: Int) {
+            writeInt(Def.SETTING_CALL_ALERT_REGEX_FLAGS, flags)
+        }
+
+        fun getTimestamp(): Long {
+            return readLong(Def.SETTING_CALL_ALERT_TIMESTAMP, 0)
+        }
+
+        fun setTimestamp(timestamp: Long) {
+            writeLong(Def.SETTING_CALL_ALERT_TIMESTAMP, timestamp)
+        }
+    }
 }

@@ -61,4 +61,28 @@
     <string name="match_found">Correspondance trouvée</string>
     <string name="match_not_found">Aucune correspondance</string>
     <string name="help_test_regex">Pour tester si l\'expression régulière fonctionne comme prévu, elle tentera de faire correspondre ce texte.</string>
+    <string name="allow">Autoriser</string>
+    <string name="block">Bloquer</string>
+    <string name="seconds">Secondes</string>
+    <string name="seconds_short">Sec</string>
+    <string name="within_seconds">En quelques secondes</string>
+    <string name="call_alert">Alerte d\'appel</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Certains services vous enverront d\'abord un SMS pour vous informer qu\'un appel est imminent, généralement dans la minute.<br>
+        <br>
+        Par exemple, un SMS comme :<br>
+        &ensp; <font color="#888888">[quelque service] Nous vous appelons pour vous informer…, n\'hésitez pas à répondre.</font><br>
+        <br>
+        Une expression régulière pour ce type de message serait :<br>
+        &ensp; <font color="#03DAC5"><b><translate>.*répondre.*</translate></b></font> <br>
+        <br>
+        Le paramètre par défaut <font color="#03DAC5"><b>120 secondes</b></font> signifie que tous les appels seront
+        autorisés dans les deux minutes suivant la réception de ce message.<br>
+        <br>
+        Cela fonctionne pour les SMS réguliers et les SMS flash (SMS de classe 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        ]]>
+    </string>
 </resources>

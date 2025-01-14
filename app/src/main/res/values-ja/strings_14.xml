@@ -60,4 +60,27 @@
     <string name="match_found">一致が見つかりました</string>
     <string name="match_not_found">一致が見つかりませんでした</string>
     <string name="help_test_regex">正規表現が期待通りに機能するかどうかをテストするために、このテキストとの照合を試みます。</string>
+    <string name="allow">許可</string>
+    <string name="block">ブロック</string>
+    <string name="seconds">秒</string>
+    <string name="seconds_short">秒</string>
+    <string name="within_seconds">以内</string>
+    <string name="call_alert">着信警告</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        一部のサービスでは、電話がかかってくることを知らせるために、通常は1分以内にテキストメッセージが送信されます。<br>
+        <br>
+        たとえば、次のようなSMSメッセージがあります。<br>
+        &ensp; <font color="#888888">[サービス名] お電話します…、お気軽にお答えください。</font><br>
+        <br>
+        このようなメッセージの正規表現は次のようになります。<br>
+        &ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
+        <br>
+        デフォルト設定の<font color="#03DAC5"><b>120秒</b></font>は、そのようなメッセージを受信した後、次の2分間はすべての通話が許可されることを意味します。<br>
+        <br>
+        通常のSMSとフラッシュSMS（クラス0 SMS）の両方で機能します。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順位：10</b></font>
+        ]]>
+    </string>
 </resources>

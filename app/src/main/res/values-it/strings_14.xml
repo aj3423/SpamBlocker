@@ -61,4 +61,28 @@
     <string name="match_found">Corrispondenza trovata</string>
     <string name="match_not_found">Nessuna corrispondenza trovata</string>
     <string name="help_test_regex">Per verificare se l\'espressione regolare funziona come previsto, proverà a confrontare questo testo.</string>
+    <string name="allow">Consenti</string>
+    <string name="block">Blocca</string>
+    <string name="seconds">Secondi</string>
+    <string name="seconds_short">Sec</string>
+    <string name="within_seconds">Entro Secondi</string>
+    <string name="call_alert">Avviso Chiamata</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Alcuni servizi ti invieranno prima un messaggio per informarti che una chiamata è imminente, in genere entro un minuto.<br>
+        <br>
+        Ad esempio, un messaggio SMS come:<br>
+        &ensp; <font color="#888888">[some service] Ti stiamo chiamando per informarti …, sentiti libero di rispondere.</font><br>
+        <br>
+        Un\'espressione regolare per tale messaggio sarebbe:<br>
+        &ensp; <font color="#03DAC5"><b>.*rispondere.*</b></font> <br>
+        <br>
+        L\'impostazione predefinita <font color="#03DAC5"><b>120 Secondi</b></font> significa che tutte le chiamate saranno
+        consentite nei successivi due minuti dopo aver ricevuto tale messaggio.<br>
+        <br>
+        Funziona sia per SMS normali che per SMS flash (SMS di classe 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Priorità: 10</b></font>
+        ]]>
+    </string>
 </resources>

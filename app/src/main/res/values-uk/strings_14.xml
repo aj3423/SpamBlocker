@@ -61,4 +61,28 @@
     <string name="match_found">Знайдено відповідність</string>
     <string name="match_not_found">Відповідність не знайдено</string>
     <string name="help_test_regex"><translate>Щоб перевірити, чи працює регулярний вираз належним чином, він спробує знайти відповідність цьому тексту.</translate></string>
+    <string name="allow">Дозволити</string>
+    <string name="block">Заблокувати</string>
+    <string name="seconds">Секунд</string>
+    <string name="seconds_short">Сек</string>
+    <string name="within_seconds">Протягом секунд</string>
+    <string name="call_alert">Оповіщення про дзвінок</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Деякі служби спочатку надсилатимуть вам SMS, щоб повідомити вас про те, що дзвінок неминучий, як правило, протягом хвилини.<br>
+        <br>
+        Наприклад, SMS-повідомлення типу:<br>
+        &ensp; <font color="#888888">[деяка служба] Ми дзвонимо вам, щоб повідомити …, будь ласка, не соромтеся відповідати.</font><br>
+        <br>
+        Регулярний вираз для такого повідомлення буде:<br>
+        &ensp; <font color="#03DAC5"><b>.*будь ласка.*відповідати.*</b></font> <br>
+        <br>
+        Налаштування за замовчуванням <font color="#03DAC5"><b>120 секунд</b></font> означає, що всі дзвінки будуть
+        дозволені протягом наступних двох хвилин після отримання такого повідомлення.<br>
+        <br>
+        Це працює як для звичайних SMS, так і для flash SMS (SMS класу 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Пріорітет: 10</b></font>
+        ]]>
+    </string>
 </resources>

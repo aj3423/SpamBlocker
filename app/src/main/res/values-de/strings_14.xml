@@ -61,4 +61,27 @@
     <string name="match_found">Übereinstimmung gefunden</string>
     <string name="match_not_found">Keine Übereinstimmung gefunden</string>
     <string name="help_test_regex">Um zu testen, ob der reguläre Ausdruck wie erwartet funktioniert, wird versucht, diesen Text abzugleichen.</string>
+    <string name="allow">Zulassen</string>
+    <string name="block">Blockieren</string>
+    <string name="seconds">Sekunden</string>
+    <string name="seconds_short">Sek</string>
+    <string name="within_seconds">Innerhalb von Sekunden</string>
+    <string name="call_alert">Anrufbenachrichtigung</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Einige Dienste senden Ihnen zuerst eine SMS, um Sie darüber zu informieren, dass ein Anruf bevorsteht, in der Regel innerhalb einer Minute.<br>
+        <br>
+        Beispielsweise eine SMS wie:<br>
+        &ensp; <font color="#888888">[irgendein Dienst] Wir rufen Sie an, um zu informieren…, Sie können gerne antworten.</font><br>
+        <br>
+        Ein regulärer Ausdruck für eine solche Nachricht wäre:<br>
+        &ensp; <font color="#03DAC5"><b>.*bitte.*antworten.*</b></font> <br>
+        <br>
+        Die Standardeinstellung <font color="#03DAC5"><b>120 Sekunden</b></font> bedeutet, dass alle Anrufe in den nächsten zwei Minuten nach Erhalt einer solchen Nachricht zugelassen werden.<br>
+        <br>
+        Es funktioniert sowohl für reguläre SMS als auch für Flash-SMS (Klasse 0 SMS).<br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
 </resources>

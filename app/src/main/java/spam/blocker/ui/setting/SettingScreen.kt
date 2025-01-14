@@ -47,9 +47,11 @@ import spam.blocker.ui.setting.quick.RecentApps
 import spam.blocker.ui.setting.quick.RepeatedCall
 import spam.blocker.ui.setting.quick.SpamDB
 import spam.blocker.ui.setting.quick.Stir
+import spam.blocker.ui.setting.regex.CallAlert
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.setting.regex.RuleSearchBox
+import spam.blocker.ui.setting.regex.RuleViewModel
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
@@ -115,8 +117,8 @@ fun SettingScreen() {
                 // global
                 GloballyEnabled()
 
-                // quick settings
                 if (G.globallyEnabled.value) {
+                    // quick settings
                     Section(
                         title = Str(R.string.quick_settings),
                         horizontalPadding = 8
@@ -133,47 +135,35 @@ fun SettingScreen() {
                             BlockType()
                         }
                     }
+
                     Section(
                         title = Str(R.string.regex_settings),
                         horizontalPadding = 8
                     ) {
                         Column {
-                            // Number Rules
-                            val vm1 = G.NumberRuleVM
-                            LaunchedEffect(true) { vm1.reloadDbAndOptions(ctx) }
+                            // NumberRule / ContentRule / QuickCopy
+                            listOf<RuleViewModel>(
+                                G.NumberRuleVM,
+                                G.ContentRuleVM,
+                                G.QuickCopyRuleVM,
+                            ).forEach { vm ->
+                                LaunchedEffect(true) { vm.reloadDbAndOptions(ctx) }
 
-                            RuleHeader(vm1)
-                            AnimatedVisibleV(!vm1.listCollapsed.value) {
-                                Column {
-                                    RuleSearchBox(vm1)
-                                    RuleList(vm1)
+                                RuleHeader(vm)
+                                AnimatedVisibleV(!vm.listCollapsed.value) {
+                                    Column {
+                                        RuleSearchBox(vm)
+                                        RuleList(vm)
+                                    }
                                 }
                             }
 
-                            // Content Rules
-                            val vm2 = G.ContentRuleVM
-                            LaunchedEffect(true) { vm2.reloadDbAndOptions(ctx) }
-                            RuleHeader(vm2)
-                            AnimatedVisibleV(!vm2.listCollapsed.value) {
-                                Column {
-                                    RuleSearchBox(vm2)
-                                    RuleList(vm2)
-                                }
-                            }
-
-                            // QuickCopy Rules
-                            val vm3 = G.QuickCopyRuleVM
-                            LaunchedEffect(true) { vm3.reloadDbAndOptions(ctx) }
-                            RuleHeader(vm3)
-                            AnimatedVisibleV(!vm3.listCollapsed.value) {
-                                Column {
-                                    RuleSearchBox(vm3)
-                                    RuleList(vm3)
-                                }
-                            }
+                            // Call Alert
+                            CallAlert()
                         }
                     }
 
+                    // Instant Query
                     Section(
                         title = Str(R.string.instant_query),
                         horizontalPadding = 8
@@ -189,6 +179,8 @@ fun SettingScreen() {
                             }
                         }
                     }
+
+                    // Auto Report
                     Section(
                         title = Str(R.string.auto_report),
                         horizontalPadding = 8
@@ -205,6 +197,8 @@ fun SettingScreen() {
                         }
                     }
                 }
+
+                // Automation
                 Section(
                     title = Str(R.string.automation),
                     horizontalPadding = 8
@@ -220,6 +214,8 @@ fun SettingScreen() {
                         }
                     }
                 }
+
+                // Miscellaneous
                 Section(
                     title = Str(R.string.miscellaneous),
                     horizontalPadding = 8

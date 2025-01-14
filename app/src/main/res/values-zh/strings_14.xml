@@ -60,4 +60,27 @@
     <string name="match_found">匹配成功</string>
     <string name="match_not_found">匹配失败</string>
     <string name="help_test_regex">测试正则表达式是否按预期工作，它将尝试匹配此文本。</string>
+    <string name="allow">允许</string>
+    <string name="block">阻止</string>
+    <string name="seconds">秒</string>
+    <string name="seconds_short">秒</string>
+    <string name="within_seconds">在…秒内</string>
+    <string name="call_alert">来电提醒</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        有些服务会先发短信通知您即将有来电，通常在一分钟内。<br>
+        <br>
+        例如，一条类似这样的短信：<br>
+        &ensp; <font color="#888888">[某个服务] 我们正在致电您以告知……，请随时接听。</font><br>
+        <br>
+        此类消息的正则表达式为：<br>
+        &ensp; <font color="#03DAC5"><b><translate>.*请.*接听.*</translate></b></font> <br>
+        <br>
+        默认设置 <font color="#03DAC5"><b>120 秒</b></font> 表示在收到此类消息后接下来的两分钟内所有来电都将被允许。<br>
+        <br>
+        它适用于普通短信和闪信（0 类短信）。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font>
+        ]]>
+    </string>
 </resources>

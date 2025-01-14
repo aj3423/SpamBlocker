@@ -25,6 +25,7 @@ import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.A
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
+import spam.blocker.util.Now
 import spam.blocker.util.Permissions
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.TimeSchedule
@@ -909,6 +910,46 @@ class Checker { // for namespace only
         }
     }
 
+    private class CallAlert(
+        private val ctx: Context,
+        private val cCtx: CheckContext,
+    ) : IChecker {
+        override fun priority(): Int {
+            return 10
+        }
+
+        override fun check(): ICheckResult? {
+            val logger = cCtx.logger
+
+            val spf = spf.CallAlert(ctx)
+            if (!spf.isEnabled()) {
+                return null
+            }
+            logger?.info(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.call_alert).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
+
+            val duration = spf.getDuration().toLong() * 1000 // second * 1000 -> millis
+            val receiveSmsTimestamp = spf.getTimestamp() // the time it received that SMS
+            val expire = receiveSmsTimestamp + duration
+
+            val now = Now.currentMillis()
+
+            if (now < expire) {
+                logger?.success(
+                    ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.call_alert))
+                )
+                return ByCallAlert()
+            }
+
+            return null
+        }
+    }
+
     companion object {
 
         fun checkCall(
@@ -933,6 +974,7 @@ class Checker { // for namespace only
                 MeetingMode(ctx, cCtx),
                 OffTime(ctx, cCtx),
                 InstantQuery(ctx, cCtx),
+                CallAlert(ctx, cCtx)
             )
 
             //  add number rules to checkers

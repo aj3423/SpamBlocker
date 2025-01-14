@@ -58,6 +58,13 @@ object Def {
     const val SETTING_RULE_LIST_HEIGHT_PERCENTAGE = "rule_list_height_percentage"
     const val SETTING_RULE_MAX_REGEX_ROWS = "rule_max_regex_rows"
     const val SETTING_RULE_MAX_DESC_ROWS = "rule_max_description_rows"
+    const val SETTING_CALL_ALERT_ENABLED = "call_alert_enabled"
+    const val SETTING_CALL_ALERT_COLLAPSED = "call_alert_collapsed"
+    const val SETTING_CALL_ALERT_DURATION = "call_alert_duration"
+    const val SETTING_CALL_ALERT_REGEX_STR = "call_alert_regex_str"
+    const val SETTING_CALL_ALERT_REGEX_FLAGS = "call_alert_regex_flags"
+    const val SETTING_CALL_ALERT_TIMESTAMP = "call_alert_timestamp"
+
 
     const val NUMBER_REPORTING_BUFFER_HOURS = 1L // 1 hour
 
@@ -87,6 +94,8 @@ object Def {
     const val RESULT_ALLOWED_BY_CONTACT_GROUP = 101
     const val RESULT_ALLOWED_BY_CONTACT_REGEX = 102
     const val RESULT_ALLOWED_BY_API_QUERY = 103
+    const val RESULT_ALLOWED_BY_CALL_ALERT = 104
+
 
 
     // blocked (10~99)

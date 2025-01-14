@@ -61,4 +61,28 @@
     <string name="match_found">Correspondência encontrada</string>
     <string name="match_not_found">Correspondência não encontrada</string>
     <string name="help_test_regex">Para testar se a regex funciona conforme o esperado, ela tentará corresponder a este texto.</string>
+    <string name="allow">Permitir</string>
+    <string name="block">Bloquear</string>
+    <string name="seconds">Segundos</string>
+    <string name="seconds_short">Seg</string>
+    <string name="within_seconds">Dentro de Segundos</string>
+    <string name="call_alert">Alerta de Chamada</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Alguns serviços enviarão uma mensagem de texto primeiro para informá-lo de que uma chamada está iminente, geralmente em um minuto.<br>
+        <br>
+        Por exemplo, uma mensagem SMS como:<br>
+        &ensp; <font color="#888888">[algum serviço] Estamos ligando para informar …, sinta-se à vontade para atender.</font><br>
+        <br>
+        Uma expressão regular para essa mensagem seria: <br>
+        &ensp; <font color="#03DAC5"><b>.*por favor.*atender.*</b></font> <br>
+        <br>
+        A configuração padrão <font color="#03DAC5"><b>120 Segundos</b></font> significa que todas as chamadas serão
+        permitidas nos próximos dois minutos após receber essa mensagem.<br>
+        <br>
+        Funciona para SMS regulares e SMS flash (SMS classe 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
 </resources>

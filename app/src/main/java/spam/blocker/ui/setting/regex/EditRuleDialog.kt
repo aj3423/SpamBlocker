@@ -462,8 +462,8 @@ fun RuleEditDialog(
                         labelId = R.string.type,
                     ) {
                         val items = listOf(
-                            RadioItem(Str(R.string.whitelist), C.pass),
-                            RadioItem(Str(R.string.blacklist), C.block),
+                            RadioItem(Str(R.string.allow), C.pass),
+                            RadioItem(Str(R.string.block), C.block),
                         )
                         RadioGroup(items = items, selectedIndex = applyToWorB) {
                             applyToWorB = it

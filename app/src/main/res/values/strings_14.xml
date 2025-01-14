@@ -61,5 +61,28 @@
     <string name="match_found">Match found</string>
     <string name="match_not_found">Match not found</string>
     <string name="help_test_regex">To test if the regex works as expected, it will try to match this text.</string>
-
+    <string name="allow">Allow</string>
+    <string name="block">Block</string>
+    <string name="seconds">Seconds</string>
+    <string name="seconds_short">Sec</string>
+    <string name="within_seconds">Within Seconds</string>
+    <string name="call_alert">Call Alert</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Some services will text you first to inform you that a call is imminent, typically within a minute.<br>
+        <br>
+        For example, an SMS message like:<br>
+        &ensp; <font color="#888888">[some service] We are calling you to inform …, please feel free to answer.</font><br>
+        <br>
+        A regex for such message would be: <br>
+        &ensp; <font color="#03DAC5"><b><translate>.*please.*answer.*</translate></b></font> <br>
+        <br>
+        The default setting <font color="#03DAC5"><b>120 Seconds</b></font> means all calls will be
+        allowed in the next two minutes after receiving such message.<br>
+        <br>
+        It works for both regular SMS and flash SMS(class 0 SMS).<br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
+        ]]>
+    </string>
 </resources>

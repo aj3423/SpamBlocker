@@ -27,6 +27,7 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CALL_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
@@ -292,10 +293,10 @@ class ByOffTime(
 
 // blocked by spam db
 class BySpamDb(
-    override val type: Int = RESULT_BLOCKED_BY_SPAM_DB,
     // Because it checks both rawNumber and clearNumber(rawNumber), this value stores the matched one,
     //  for later reporting purpose.
     val matchedNumber: String,
+    override val type: Int = RESULT_BLOCKED_BY_SPAM_DB,
 ) : ICheckResult {
     override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.database)
@@ -447,10 +448,18 @@ class ByRegexRule(
     }
 }
 
+// allowed by call alert
+class ByCallAlert(
+    override val type: Int = RESULT_ALLOWED_BY_CALL_ALERT,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.call_alert)
+    }
+}
 
 fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckResult {
     return when (result) {
-        RESULT_ALLOWED_BY_EMERGENCY -> ByEmergency(result)
+        RESULT_ALLOWED_BY_EMERGENCY -> ByEmergency()
         RESULT_ALLOWED_BY_CONTACT, RESULT_BLOCKED_BY_NON_CONTACT -> ByContact(
             result, reason
         )
@@ -458,10 +467,10 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_ALLOWED_BY_STIR, RESULT_BLOCKED_BY_STIR -> BySTIR(result, reason.toInt())
         RESULT_ALLOWED_BY_RECENT_APP -> ByRecentApp(reason)
         RESULT_BLOCKED_BY_MEETING_MODE -> ByMeetingMode(reason)
-        RESULT_ALLOWED_BY_REPEATED -> ByRepeatedCall(result)
-        RESULT_ALLOWED_BY_DIALED -> ByDialedNumber(result)
-        RESULT_ALLOWED_BY_OFF_TIME -> ByOffTime(result)
-        RESULT_BLOCKED_BY_SPAM_DB -> BySpamDb(result, matchedNumber = reason)
+        RESULT_ALLOWED_BY_REPEATED -> ByRepeatedCall()
+        RESULT_ALLOWED_BY_DIALED -> ByDialedNumber()
+        RESULT_ALLOWED_BY_OFF_TIME -> ByOffTime()
+        RESULT_BLOCKED_BY_SPAM_DB -> BySpamDb(matchedNumber = reason)
         RESULT_BLOCKED_BY_API_QUERY, RESULT_ALLOWED_BY_API_QUERY -> {
             val extraInfo = PermissiveJson.decodeFromString<ApiQueryResultDetail>(reason)
             ByApiQuery(result, extraInfo)
@@ -478,6 +487,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             val rule = ContentRuleTable().findRuleById(ctx, reason.toLong())
             ByRegexRule(result, rule)
         }
+        RESULT_ALLOWED_BY_CALL_ALERT -> ByCallAlert()
 
         else -> ByDefault(result)
     }

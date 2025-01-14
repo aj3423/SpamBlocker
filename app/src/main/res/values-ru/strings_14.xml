@@ -60,4 +60,28 @@
     <string name="match_found">Найдено совпадение</string>
     <string name="match_not_found">Совпадение не найдено</string>
     <string name="help_test_regex">Чтобы проверить, работает ли регулярное выражение как ожидалось, оно попытается сопоставить этот текст.</string>
+    <string name="allow">Разрешить</string>
+    <string name="block">Заблокировать</string>
+    <string name="seconds">Секунд</string>
+    <string name="seconds_short">Сек</string>
+    <string name="within_seconds">В течение секунд</string>
+    <string name="call_alert">Оповещение о звонке</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Некоторые сервисы сначала отправят вам SMS, чтобы сообщить о предстоящем звонке, обычно в течение минуты.<br>
+        <br>
+        Например, SMS-сообщение вида:<br>
+        &ensp; <font color="#888888">[некий сервис] Мы звоним вам, чтобы сообщить …, пожалуйста, ответьте.</font><br>
+        <br>
+        Регулярное выражение для такого сообщения будет:<br>
+        &ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
+        <br>
+        Настройка по умолчанию <font color="#03DAC5"><b>120 Секунд</b></font> означает, что все звонки будут
+        разрешены в течение следующих двух минут после получения такого сообщения.<br>
+        <br>
+        Работает как для обычных SMS, так и для flash SMS (SMS класса 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
 </resources>

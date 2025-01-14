@@ -61,4 +61,27 @@
     <string name="match_found">Eşleşme bulundu</string>
     <string name="match_not_found">Eşleşme bulunamadı</string>
     <string name="help_test_regex">Normal ifadenin beklendiği gibi çalışıp çalışmadığını test etmek için bu metinle eşleşmeyi deneyecektir.</string>
+    <string name="allow">İzin Ver</string>
+    <string name="block">Engelle</string>
+    <string name="seconds">Saniye</string>
+    <string name="seconds_short">Sn</string>
+    <string name="within_seconds">Saniye İçinde</string>
+    <string name="call_alert">Arama Uyarısı</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Bazı hizmetler, size bir aramanın yaklaşmakta olduğunu, genellikle bir dakika içinde, önceden bildirmek için size mesaj gönderecektir.<br>
+        <br>
+        Örneğin, şöyle bir SMS mesajı:<br>
+        &ensp; <font color="#888888">[bazı hizmet] Sizi bilgilendirmek için arıyoruz ..., lütfen cevaplamaktan çekinmeyin.</font><br>
+        <br>
+        Böyle bir mesaj için normal ifade şöyle olacaktır:<br>
+        &ensp; <font color="#03DAC5"><b><translate>.*cevap.*ver.*</translate></b></font> <br>
+        <br>
+        Varsayılan ayar <font color="#03DAC5"><b>120 Saniye</b></font>, böyle bir mesaj aldıktan sonraki iki dakika içinde tüm aramalara izin verileceği anlamına gelir.<br>
+        <br>
+        Hem normal SMS hem de flaş SMS (sınıf 0 SMS) için çalışır.<br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: 10</b></font>
+        ]]>
+    </string>
 </resources>

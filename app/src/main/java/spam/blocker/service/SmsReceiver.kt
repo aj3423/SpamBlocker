@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
-import kotlinx.serialization.Serializable
 import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
@@ -18,14 +17,11 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
+import spam.blocker.util.Now
+import spam.blocker.util.Permissions.isReceiveSmsPermissionGranted
+import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
-// This will be serialized to a json and saved as the HistoryTable.reason
-@Serializable
-class SmsRecordInfo(
-    val recordId: Long,
-    val smsContent: String? = null,
-)
 
 class SmsReceiver : BroadcastReceiver() {
 
@@ -54,28 +50,45 @@ class SmsReceiver : BroadcastReceiver() {
         rawNumber: String,
         messageBody: String
     ): ICheckResult {
-        val spf = spf.HistoryOptions(ctx)
 
         val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
 
-        // 1. log to db
-        val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED
-        val recordId = if (isLogEnabled)
-            SmsTable().addNewRecord(
-                ctx, HistoryRecord(
-                    peer = rawNumber,
-                    time = System.currentTimeMillis(),
-                    result = r.type,
-                    reason = r.reasonToDb(),
-                    extraInfo = if (spf.isLogSmsContentEnabled()) messageBody else null,
-                )
-            ) else 0
+        run {
+            // 1. log to db
+            val spf = spf.HistoryOptions(ctx)
+            val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED
+            val recordId = if (isLogEnabled)
+                SmsTable().addNewRecord(
+                    ctx, HistoryRecord(
+                        peer = rawNumber,
+                        time = System.currentTimeMillis(),
+                        result = r.type,
+                        reason = r.reasonToDb(),
+                        extraInfo = if (spf.isLogSmsContentEnabled()) messageBody else null,
+                    )
+                ) else 0
 
-        // 2. broadcast new sms to add a new item in history page
-        if (isLogEnabled) {
-            Events.onNewSMS.fire(recordId)
+            // 2. broadcast new sms to add a new item in history page
+            if (isLogEnabled) {
+                Events.onNewSMS.fire(recordId)
+            }
         }
 
+        // 3. update CallAlert timestamp to SharedPref if it's enabled
+        run {
+            val spf = spf.CallAlert(ctx)
+            val regex = spf.getRegexStr()
+            if (spf.isEnabled() && isReceiveSmsPermissionGranted(ctx)) {
+                val flags = spf.getRegexFlags()
+                val matches = regex.regexMatches(messageBody, flags)
+                if (matches) {
+                    spf.setTimestamp(Now.currentMillis())
+                }
+            }
+        }
+
+
+        // 4. show notification
         val showName = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber
 
         if (r.shouldBlock()) {

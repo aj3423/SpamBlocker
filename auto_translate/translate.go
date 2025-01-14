@@ -425,7 +425,7 @@ func setup() {
 	flag.StringVar(&to, "to", "", "")
 	flag.BoolVar(&short, "short", false, "force short, usually used together with -only")
 	flag.StringVar(&only, "only", "", "-only tag")
-	flag.IntVar(&thread, "thread", 3, "")
+	flag.IntVar(&thread, "thread", 2, "")
 	flag.Parse()
 
 	wg = sync.WaitGroup{}
