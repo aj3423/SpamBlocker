@@ -107,7 +107,7 @@ fun CallAlert() {
         },
         helpTooltipId = R.string.help_call_alert,
         content = {
-            if (isEnabled && isCallLogPermissionGranted(ctx)) {
+            if (isEnabled) {
                 StrokeButton(
                     label = "$duration ${Str(R.string.seconds_short)}",
                     color = C.textGrey,

@@ -1,0 +1,10 @@
+New:
+- Call Alert, allow all calls after receiving some particular SMS messages, e.g.:
+  > (from ...) We are calling you to inform ..., please feel free to answer.
+
+Fix:
+- Crash on incoming call or text that caused by complex regex patterns.
+- Crash when upgrading from ancient version.
+
+Improvement:
+- Test regex directly in the editing dialog, no more "increase priority + global testing".
