@@ -83,4 +83,5 @@
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">通配符`*`未使用点作为前缀，您的意思是`.*`吗？</string>
 </resources>

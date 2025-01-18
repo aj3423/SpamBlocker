@@ -20,9 +20,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -53,6 +55,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
+import spam.blocker.util.Util.regexWildcardNotSupported
 import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatches
 import spam.blocker.util.setFlag
@@ -88,6 +91,7 @@ private fun InputBox(
     prefix: @Composable (() -> Unit)? = null,
     suffix: @Composable (() -> Unit)? = null,
     supportingTextStr: String? = null,
+    warnings: SnapshotStateList<String> = mutableStateListOf<String>(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -193,9 +197,15 @@ private fun InputBox(
             }
         )
 
+        // Warnings, yellow text
+        val warningList = warnings.toMutableList()
+
         if (exceedsMaxLen) {
+            warningList += Str(R.string.text_too_long)
+        }
+        warningList.forEach {
             Text(
-                text = Str(R.string.text_too_long),
+                text = it,
                 color = Orange,
                 fontSize = 14.sp,
                 lineHeight = 14.sp,
@@ -203,7 +213,7 @@ private fun InputBox(
             )
         }
 
-        // support text
+        // Errors, red text
         if (supportingTextStr != null) {
             Text(
                 text = supportingTextStr,
@@ -461,7 +471,7 @@ fun RegexInputBox(
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
     var lastText by remember(regexStr) { mutableStateOf(regexStr) }
 
-    fun validate(): String? {
+    fun validateError(): String? {
         return Util.validateRegex(
             ctx,
             lastText,
@@ -471,8 +481,23 @@ fun RegexInputBox(
         )
     }
 
+    fun validateWarning(): List<String> {
+
+        var ret = mutableListOf<String>()
+        if (regexWildcardNotSupported(lastText)) {
+            ret += ctx.getString(R.string.waning_using_wildcard_as_regex)
+        }
+        return ret
+    }
+
     var errorStr by remember(lastText) {
-        mutableStateOf(validate())
+        mutableStateOf(validateError())
+    }
+
+    var warnings = remember(lastText) {
+        mutableStateListOf<String>().apply {
+            addAll(validateWarning())
+        }
     }
 
     InputBox(
@@ -485,7 +510,11 @@ fun RegexInputBox(
             lastText = newState.text
 
             if (stringChangedSinceLastInvocation) {
-                errorStr = validate() // update errorStr before callback
+                warnings.apply { // update warnings
+                    clear()
+                    addAll(validateWarning())
+                }
+                errorStr = validateError() // update errorStr before callback
                 onRegexStrChange(lastText, errorStr != null)
             }
         },
@@ -493,6 +522,7 @@ fun RegexInputBox(
         placeholder = placeholder,
         leadingIcon = leadingIcon,
         limitTextLength = true,
+        warnings = warnings,
         supportingTextStr = errorStr,
         singleLine = false,
         maxLines = 10,
@@ -511,7 +541,7 @@ fun RegexInputBox(
 
             // Validate the regex on flags change, it should disappear for `+123` when RawMode is turned on.
             LaunchedEffect(regexFlags.intValue) {
-                errorStr = validate()
+                errorStr = validateError()
             }
 
             val dropdownItems = remember {
@@ -562,7 +592,7 @@ fun RegexInputBox(
             }
 
             // Trailing icons
-            // This is an ugly workaround for adding 10.dp paddingEnd to the trailing icon
+            // This is an ugly workaround for adding 10.dp paddingEnd to the last icon
             //  when there are more than 1 icons. Because when there are more than 1 icons,
             //  the paddingEnd becomes 0, no idea why.
             var iconCount = 0

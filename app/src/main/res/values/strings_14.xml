@@ -85,4 +85,5 @@
         <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">Wildcard `*` is used without a preceding dot, do you mean `.*` ?</string>
 </resources>

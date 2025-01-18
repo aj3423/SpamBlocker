@@ -269,6 +269,15 @@ object Util {
         }
     }
 
+    // The user is using wildcard `*` instead of `.*`, it could be a typo
+    fun regexWildcardNotSupported(
+        regexStr: String,
+    ): Boolean {
+        val regex = Regex("[0-9a-zA-Z]\\*")
+        return regex.containsMatchIn(regexStr)
+    }
+
+    // It returns first found error
     fun validateRegex(
         ctx: Context,
         regexStr: String,

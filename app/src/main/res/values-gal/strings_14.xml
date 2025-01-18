@@ -85,4 +85,5 @@
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">O comodín `*` úsase sen un punto precedente, queres dicir `.*`?</string>
 </resources>

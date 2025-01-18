@@ -84,4 +84,5 @@
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">Platzhalter `*` wird ohne vorangestellten Punkt verwendet, meinen Sie `.*`?</string>
 </resources>

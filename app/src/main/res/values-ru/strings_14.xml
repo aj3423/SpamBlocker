@@ -84,4 +84,5 @@
         <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">Подстановочный знак `*` используется без предшествующей точки, вы имели в виду `.*`?</string>
 </resources>

@@ -85,4 +85,5 @@
         <font color="#ea86ff"><b>Пріорітет: 10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">Використовується символ підстановки `*` без попередньої крапки, ви маєте на увазі `.*`?</string>
 </resources>

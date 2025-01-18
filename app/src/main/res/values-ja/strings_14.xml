@@ -83,4 +83,5 @@
         <font color="#ea86ff"><b>優先順位：10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">ワイルドカード `*` がドットの前に使用されています。`.*` の意図ですか？</string>
 </resources>

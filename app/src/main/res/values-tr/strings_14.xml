@@ -84,4 +84,5 @@
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>
     </string>
+    <string name="waning_using_wildcard_as_regex">Wildcard `*`, öncesinde nokta olmadan kullanıldı, `.*` demek istediniz mi?</string>
 </resources>
