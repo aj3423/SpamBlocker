@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing, the content will be synchronized to the wiki page within a minute.\n
+        Thanks for sharing, the content will be synchronized to the wiki page within a minute.
         If you need to update the content later, just edit this issue.
 
   - type: textarea

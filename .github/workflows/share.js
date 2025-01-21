@@ -17,7 +17,7 @@ function parseTitle(title) {
 	}
 }
 function contributing_tips() {
-	return "If you want to share your regex or workflow here, please fire an issue with the label `share regex/workflow`.\n\n"
+	return "If you'd like to share your regex or workflow here, please create an issue labeled `share regex/workflow`, see [this guide](https://github.com/aj3423/SpamBlocker/issues/249) for instructions.\n\n"
 }
 
 function generateWiki(results) {
