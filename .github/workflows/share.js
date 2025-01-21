@@ -17,7 +17,7 @@ function parseTitle(title) {
 	}
 }
 function contributing_tips() {
-	return "If you want to share your regex or workflow here, please fire an issue with the 'share regex/workflow' label.\n\n"
+	return "If you want to share your regex or workflow here, please fire an issue with the label `share regex/workflow`.\n\n"
 }
 
 function generateWiki(results) {
@@ -41,12 +41,12 @@ function generateWiki(results) {
 			countrySection += wiki[country].map(item => {
 				const content = item.content
 					.replace(/^### The regex.*?\n/, "") // drop the issue template prefix
-					.trim();
+					.trim()
 
-				// add "    - " before each line
-				// .split('\n')
-				// .map(line => `    - ${line}`)
-				// .join('\n');
+					// add "    - " before each line
+					.split('\n')
+					.map(line => `  ${line}`)
+					.join('\n');
 				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n\`\`\`${content}\`\`\``
 			}).join('\n\n');
 			return countrySection;
