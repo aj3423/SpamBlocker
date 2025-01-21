@@ -37,7 +37,7 @@ function generateWiki(results) {
 	// Generate Markdown content
 	let markdown = contributing_tips()
 		+ sortedCountries.map(country => {
-			let countrySection = `# ${country}\n`;
+			let countrySection = `### ${country}\n`;
 			countrySection += wiki[country].map(item => {
 				const content = item.content
 					.replace(/^### The regex.*?\n/, "") // drop the issue template prefix
