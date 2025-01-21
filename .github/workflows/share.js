@@ -16,8 +16,8 @@ function parseTitle(title) {
 		description: description
 	}
 }
-function contributing() {
-	return "If you want to share your regex here, please fire an issue with the 'share regex' label.\n\n"
+function contributing_tips() {
+	return "If you want to share your regex or workflow here, please fire an issue with the 'share regex/workflow' label.\n\n"
 }
 
 function generateWiki(results) {
@@ -35,13 +35,13 @@ function generateWiki(results) {
 	let sortedCountries = Object.keys(wiki).sort();
 
 	// Generate Markdown content
-	let markdown = contributing()
+	let markdown = contributing_tips()
 		+ sortedCountries.map(country => {
 			let countrySection = `# ${country}\n`;
 			countrySection += wiki[country].map(item => {
 				const content = item.content
-                    .replace("### The regex", "") // drop the issue template prefix
-                    .trim()
+					.replace("### The regex/workflow", "") // drop the issue template prefix
+					.trim()
 
 					// add "    - " before each line
 					.split('\n')
@@ -67,9 +67,9 @@ async function run() {
 		const issues = await octokit.rest.issues.listForRepo({
 			owner,
 			repo,
-			labels: 'share regex',
+			labels: 'share regex/workflow',
 			state: 'all', // 'all' includes open and closed issues
-			per_page: 200, // Adjust as needed for the number of issues
+			per_page: 500, // Adjust as needed for the number of issues
 		});
 
 		let results = [];

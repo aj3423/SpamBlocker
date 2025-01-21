@@ -1,7 +1,7 @@
-name: Share Regex
-description: Share your regex rules
+name: Share Regex/Workflow
+description: Share your regex rules or workflows
 title: "[Country] Description"
-labels: [share regex]
+labels: [share regex/workflow]
 body:
   - type: markdown
     attributes:
@@ -11,7 +11,7 @@ body:
   - type: textarea
     id: detail
     attributes:
-      label: "The regex"
+      label: "The regex/workflow"
     validations:
       required: true
 

@@ -1,4 +1,4 @@
-name: Share regex update wiki
+name: Share regex/workflow on wiki
 
 on:
   issues:
@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   collect-issues:
-    if: contains(github.event.issue.labels.*.name, 'share regex')
+    if: contains(github.event.issue.labels.*.name, 'share regex/workflow')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Collection Script
         id: collect
-        run: node .github/workflows/share_regex.js
+        run: node .github/workflows/share.js
         env:
           GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
 
@@ -49,10 +49,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
         run: |
           cd wiki_dir
-          mv ../generated.md ./Regex-Templates.md
+          mv ../generated.md ./Regex-Workflow-Templates.md
           git config --global user.email "actions@github.com"
           git config --global user.name "Github Action"
           git add .
-          git diff-index --quiet HEAD -- || git commit -m "update regex template" 
+          git diff-index --quiet HEAD -- || git commit -m "update template" 
           git push
 
