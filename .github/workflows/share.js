@@ -40,7 +40,7 @@ function generateWiki(results) {
 			let countrySection = `# ${country}\n`;
 			countrySection += wiki[country].map(item => {
 				const content = item.content
-					.replace("### The regex/workflow", "") // drop the issue template prefix
+					.replace(/^### The regex.*?\n/, "") // drop the issue template prefix
 					.trim()
 
 					// add "    - " before each line
