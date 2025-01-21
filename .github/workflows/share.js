@@ -41,13 +41,13 @@ function generateWiki(results) {
 			countrySection += wiki[country].map(item => {
 				const content = item.content
 					.replace(/^### The regex.*?\n/, "") // drop the issue template prefix
-					.trim()
+					.trim();
 
-					// add "    - " before each line
-					.split('\n')
-					.map(line => `  ${line}`)
-					.join('\n');
-				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n\`\`\`${content}\`\`\``
+				// add "    - " before each line
+				// .split('\n')
+				// .map(line => `    - ${line}`)
+				// .join('\n');
+				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n  \`\`\`\n${content}\n   \`\`\``
 			}).join('\n\n');
 			return countrySection;
 		}).join('\n\n');
