@@ -47,7 +47,7 @@ function generateWiki(results) {
 				// .split('\n')
 				// .map(line => `    - ${line}`)
 				// .join('\n');
-				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n  \`\`\`\n${content}\n   \`\`\``
+				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n\`\`\`${content}\`\`\``
 			}).join('\n\n');
 			return countrySection;
 		}).join('\n\n');
