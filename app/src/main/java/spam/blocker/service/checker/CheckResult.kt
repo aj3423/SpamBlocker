@@ -163,6 +163,11 @@ interface ICheckResult {
         return Def.isBlocked(type)
     }
 
+    // For "Answer + Hang up", returns the delay before "Hang Up"
+    fun hangUpDelay(ctx: Context): Int {
+        return spf.BlockType(ctx).getConfig().toIntOrNull() ?: 0
+    }
+
     // Prepare the content to be saved in database, as the `HistoryTable.reason` column
     fun reasonToDb(): String {
         return ""
@@ -416,6 +421,10 @@ class ByRegexRule(
             rule.blockType // per rule setting
         else
             super.getBlockType(ctx) // fallback to global setting
+    }
+
+    override fun hangUpDelay(ctx: Context): Int {
+        return rule?.blockTypeConfig?.toIntOrNull() ?: 0
     }
 
     override fun getSpamImportance(isCall: Boolean): Int {

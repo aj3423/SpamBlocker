@@ -38,16 +38,23 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rifiuta</b></font>: <br>
-        &ensp; Come premere il pulsante di rifiuto. Funziona completamente in silenzio, il blocco schermo non verrà attivato.<br>
+         Stesso risultato del pulsante di rifiuto. Funziona completamente in silenzio, il blocco schermo non verrà attivato.<br>
         <br>
         - <font color="#00BFFF"><b>Silenzio</b></font>: <br>
-        &ensp; Suonerà silenziosamente in background, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
+         Suonerà silenziosamente in background, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
         <br>
-        &ensp; Può anche aiutare se si verificano ripetute chiamate spam, prolungherà la durata della chiamata, rendendola meno efficiente per gli spammer, potenzialmente scoraggiandoli dal chiamarvi di nuovo.<br>
+         Può anche essere utile se si ricevono ripetute chiamate spam, estenderà la durata della chiamata, rendendola meno efficiente per gli spammer, potenzialmente scoraggiandoli dal chiamarvi di nuovo.<br>
         <br>
-        - <font color="#00BFFF"><b>Rispondi e riaggancia</b></font>: <br>
-        &ensp; Per evitare di essere inviati alla segreteria telefonica. Il blocco schermo può essere attivato per un breve periodo,
-         potresti anche sentire un tono di fine chiamata (alcuni telefoni offrono un\'opzione per disattivare questo suono).
+        - <font color="#00BFFF"><b>Riaggancia</b></font>: <br>
+        Rispondi e riaggancia la chiamata per evitare che vada alla segreteria telefonica. <br>
+        <br>
+        <font color="#FFA500">Nota</font> Il blocco schermo potrebbe essere attivato per un breve periodo,
+        potresti anche sentire un tono di fine chiamata (alcuni telefoni offrono un\'opzione per disattivare questo suono). <br>
+        <br>
+        È possibile impostare un <b>ritardo</b> prima di riagganciare la chiamata. Casi d\'uso:<br>
+        1. Per registrare la chiamata, installa un\'app di registrazione delle chiamate e imposta il ritardo a 5 secondi o più.
+          Questo la rende una segreteria telefonica locale (senza il messaggio di richiesta). <br>
+        2. Su alcuni dispositivi, la chiamata potrebbe comunque essere indirizzata alla segreteria telefonica se termina troppo rapidamente. Per evitare ciò, imposta un ritardo di 1-2 secondi.
         ]]>
     </string>
     <string name="help_dialed">
@@ -78,4 +85,5 @@
         <font color="#ea86ff"><b>Priorità: 10</b></font>
         ]]>
     </string>
+    <string name="help_hang_up_delay">Il ritardo prima che la chiamata venga riagganciata.</string>
 </resources>

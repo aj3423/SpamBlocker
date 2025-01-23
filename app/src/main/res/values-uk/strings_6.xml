@@ -16,8 +16,8 @@
 
     <string-array name="block_type_list">
         <item>Відхилити</item>
-        <item>Беззвучно</item>
-        <item>Відповісти+Покласти трубку</item>
+        <item>Заглушити</item>
+        <item>Завершити</item>
     </string-array>
 
     <string name="show_passed">Показати пройдені</string>

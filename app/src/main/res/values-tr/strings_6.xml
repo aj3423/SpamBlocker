@@ -16,8 +16,8 @@
 
     <string-array name="block_type_list">
         <item>Reddet</item>
-        <item>Sessiz</item>
-        <item>Cevapla+Kapat</item>
+        <item>Sessize Al</item>
+        <item>Kapat</item>
     </string-array>
 
     <string name="show_passed">Geçenleri göster</string>

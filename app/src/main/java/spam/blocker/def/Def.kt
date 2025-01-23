@@ -12,6 +12,8 @@ object Def {
     // for block mode: answer + hang-up
     const val LAST_CALLED_TIME = "last_called_time"
     const val LAST_NUMBER_TO_BLOCK = "last_number_to_block"
+    const val LAST_NUMBER_TO_BLOCK_DELAY = "last_number_to_block_delay"
+
 
     const val SETTING_THEME_TYPE = "theme_type"
     const val SETTING_STIR_ENABLED = "stir_enabled"
@@ -28,6 +30,7 @@ object Def {
     const val SETTING_PERMIT_DIALED = "permit_dialed"
     const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
     const val SETTING_BLOCK_TYPE = "block_type"
+    const val SETTING_BLOCK_TYPE_CONFIG = "block_type_config"
     const val SETTING_ENABLE_OFF_TIME = "off_time"
     const val SETTING_OFF_TIME_START_HOUR = "off_time_start_hour"
     const val SETTING_OFF_TIME_START_MIN = "off_time_start_min"

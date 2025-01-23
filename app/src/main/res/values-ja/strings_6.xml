@@ -17,7 +17,7 @@
     <string-array name="block_type_list">
         <item>拒否</item>
         <item>サイレント</item>
-        <item>応答+切る</item>
+        <item>切断</item>
     </string-array>
 
     <string name="show_passed">通過したものを表示</string>

@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 34
+        const val DB_VERSION = 35
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -29,6 +29,8 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_IMPORTANCE = "importance"
         const val COLUMN_SCHEDULE = "schedule"
         const val COLUMN_BLOCK_TYPE = "block_type"
+        const val COLUMN_BLOCK_TYPE_CONFIG = "block_type_config"
+
 
         // ---- spam table ----
         const val TABLE_SPAM = "spam"
@@ -87,7 +89,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_FLAGS INTEGER, " +
                         "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}, " +
                         "$COLUMN_SCHEDULE TEXT DEFAULT '', " +
-                        "$COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.DEF_BLOCK_TYPE}" +
+                        "$COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.DEF_BLOCK_TYPE}, " +
+                        "$COLUMN_BLOCK_TYPE_CONFIG TEXT DEFAULT '' " +
+
                         ")"
             )
         }
@@ -252,6 +256,10 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
             db.execSQL("DELETE FROM $TABLE_SMS")
             addColumnIfNotExist(db, TABLE_CALL, COLUMN_EXTRA_INFO, "TEXT")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_EXTRA_INFO, "TEXT")
+        }
+        // v4.2 added BlockTypeConfig for the answer+hangup delay.
+        if ((newVersion >= 35) && (oldVersion < 35)) {
+            addColumnIfNotExist(db, TABLE_NUMBER_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
         }
     }
 }

@@ -16,8 +16,8 @@
 
     <string-array name="block_type_list">
         <item>Rejeter</item>
-        <item>Silence</item>
-        <item>Répondre + raccrocher</item>
+        <item>Silencieux</item>
+        <item>Raccrocher</item>
     </string-array>
 
     <string name="show_passed">Afficher les appels autorisés</string>

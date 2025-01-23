@@ -75,11 +75,14 @@ class CallScreeningService : CallScreeningService() {
         respondToCall(details, builder.build())
     }
 
-    private fun answerThenHangUp(rawNumber: String, details: Details) {
-        // save number and time to shared pref, it will be read soon in CallStateReceiver
+    private fun answerThenHangUp(rawNumber: String, r: ICheckResult, details: Details) {
+        val now = System.currentTimeMillis()
+
+        val ctx = this
+
+        // save 'number/current time/hang up delay' to shared pref, they will be read soon in CallStateReceiver
         spf.Temporary(this).setLastCallToBlock(
-            Util.clearNumber(rawNumber),
-            System.currentTimeMillis()
+            Util.clearNumber(rawNumber), now, r.hangUpDelay(ctx)
         )
 
         // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
@@ -108,7 +111,7 @@ class CallScreeningService : CallScreeningService() {
 
             when (blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
-                Def.BLOCK_TYPE_ANSWER_AND_HANGUP -> answerThenHangUp(rawNumber, details)
+                Def.BLOCK_TYPE_ANSWER_AND_HANGUP -> answerThenHangUp(rawNumber, r, details)
                 else -> reject(details)
             }
         } else {

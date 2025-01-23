@@ -17,7 +17,7 @@
     <string-array name="block_type_list">
         <item>Rechazar</item>
         <item>Silenciar</item>
-        <item>Contestar+Colgar</item>
+        <item>Colgar</item>
     </string-array>
 
     <string name="show_passed">Mostrar aprobados</string>

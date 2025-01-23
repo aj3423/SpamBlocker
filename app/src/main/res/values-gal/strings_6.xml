@@ -16,8 +16,8 @@
 
     <string-array name="block_type_list">
         <item>Rexeitar</item>
-        <item>Silencio</item>
-        <item>Atender+Colgar</item>
+        <item>Silenciar</item>
+        <item>Colgar</item>
     </string-array>
 
     <string name="show_passed">Mostrar Pasados</string>

@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.TELECOM_SERVICE
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import spam.blocker.util.Util
@@ -13,17 +15,20 @@ import spam.blocker.util.spf
 
 class CallStateReceiver : BroadcastReceiver() {
 
-    private fun shouldBlock(ctx: Context, currNumber: String): Boolean {
-
-        // `numToBlock` and `lastCalledTime` are set in the CallScreeningService,
+    // Don't block calls that are not marked to block in CallScreenService.
+    private fun shouldBlock(ctx: Context, currNumber: String): Pair<Boolean, Int> {
+        // `numToBlock` and `lastCalledTime` are set in CallScreeningService,
         //   they are only set when the call should be blocked by "answer + hang up"
-        val (numToBlock, lastCalledTime) = spf.Temporary(ctx).getLastCallToBlock()
+        val (numToBlock, lastCalledTime, delay) = spf.Temporary(ctx).getLastCallToBlock()
 
-        // if the time since the `lastCalledTime` is less than 1 second,
+        // if the time since the `lastCalledTime` is less than 5 seconds,
         //   answer the call and hang up
         val now = System.currentTimeMillis()
-        val tolerance = 5000 // 5 second
-        return (now - lastCalledTime) < tolerance && numToBlock == Util.clearNumber(currNumber)
+        val tolerance = 5000 // 5 seconds
+        return Pair(
+            (now - lastCalledTime) < tolerance && numToBlock == Util.clearNumber(currNumber),
+            delay
+        )
     }
 
     private fun extractNumber(intent: Intent) : String? {
@@ -41,7 +46,8 @@ class CallStateReceiver : BroadcastReceiver() {
                     val currNumber = extractNumber(intent) ?: return
                     logi("RINGING, num: $currNumber")
 
-                    if (shouldBlock(ctx, currNumber))
+                    val (block, _) = shouldBlock(ctx, currNumber)
+                    if (block)
                         answerCall(ctx)
                 }
 
@@ -50,8 +56,13 @@ class CallStateReceiver : BroadcastReceiver() {
                     val currNumber = extractNumber(intent) ?: return
                     logi("IN CALL, num: $currNumber")
 
-                    if (shouldBlock(ctx, currNumber))
-                        endCall(ctx)
+                    val (block, delay) = shouldBlock(ctx, currNumber)
+
+                    if (block) {
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            endCall(ctx)
+                        }, delay.toLong() * 1000)
+                    }
                 }
             }
         }

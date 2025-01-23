@@ -16,8 +16,8 @@
 
     <string-array name="block_type_list">
         <item>Отклонить</item>
-        <item>Отключить звук</item>
-        <item>Ответить + Сбросить</item>
+        <item>Без звука</item>
+        <item>Сбросить</item>
     </string-array>
 
     <string name="show_passed">Показать пропущенные</string>

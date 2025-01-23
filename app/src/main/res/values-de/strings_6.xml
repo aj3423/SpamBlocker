@@ -15,9 +15,9 @@
     </string-array>
 
     <string-array name="block_type_list">
-        <item>Abweisen</item>
+        <item>Ablehnen</item>
         <item>Stummschalten</item>
-        <item>Annehmen + Auflegen</item>
+        <item>Auflegen</item>
     </string-array>
 
     <string name="show_passed">Zeige durchgelassene</string>

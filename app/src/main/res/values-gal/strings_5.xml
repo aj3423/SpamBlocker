@@ -38,16 +38,23 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rexeitar</b></font>: <br>
-        &ensp; Igual que premer o botón de rexeitar. Funciona completamente en silencio, a pantalla de bloqueo non se activará.<br>
+         Igual que premer o botón de rexeitar. Funciona completamente en silencio, a pantalla de bloqueo non se activará.<br>
         <br>
         - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-        &ensp; Soará en silencio en segundo plano, dando a impresión ao chamador de que non estabas dispoñible e perdiches a chamada. <br>
+         Soará en silencio en segundo plano, dando a impresión á persoa que chama de que non estabas dispoñible e perdiches a chamada. <br>
         <br>
-        &ensp; Tamén pode axudar se tes chamadas spam repetidas, estenderá a duración da chamada, facendo menos eficiente para os spammers, potencialmente desalentándoos de chamarte de novo.<br>
+         Tamén pode axudar se tes chamadas spam repetidas, prolongará a duración da chamada, facendo menos eficiente para os spammers, potencialmente desanimándoos a que volvan chamarte.<br>
         <br>
-        - <font color="#00BFFF"><b>Atender e colgar</b></font>: <br>
-        &ensp; Para evitar ser enviado ao correo de voz. A pantalla de bloqueo pode activarse por un tempo curto,
-         tamén podes escoitar un ton de fin de chamada (algúns teléfonos ofrecen a opción de silenciar este son).
+        - <font color="#00BFFF"><b>Colgar</b></font>: <br>
+        Atender e colgar a chamada para evitar que vaia ao correo de voz. <br>
+        <br>
+        <font color="#FFA500">Nota</font> A pantalla de bloqueo pode activarse durante un curto período,
+        tamén podes escoitar un ton de fin de chamada (algúns teléfonos ofrecen unha opción para silenciar este son). <br>
+        <br>
+        Pódese configurar un <b>atraso</b> antes de colgar a chamada. Casos de uso:<br>
+        1. Para gravar a chamada, instala unha aplicación de gravación de chamadas e establece o atraso en 5 segundos ou máis.
+          Iso convérteo nun correo de voz local (sen a mensaxe de solicitude). <br>
+        2. En algúns dispositivos, a chamada aínda pode dirixirse ao correo de voz se finaliza demasiado rápido. Para evitar isto, establece un atraso de 1-2 segundos.
         ]]>
     </string>
     <string name="help_dialed">
@@ -78,4 +85,5 @@
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
     </string>
+    <string name="help_hang_up_delay">O retardo antes de que se colgue a chamada.</string>
 </resources>

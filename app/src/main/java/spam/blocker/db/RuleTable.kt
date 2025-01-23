@@ -77,6 +77,7 @@ data class RegexRule(
     var importance: Int = Def.DEF_SPAM_IMPORTANCE, // notification importance
     var schedule: String = "",
     var blockType: Int = Def.DEF_BLOCK_TYPE,
+    var blockTypeConfig: String = "", // for block type "Answer+HangUp"
 ) {
 
     fun summary(): String {
@@ -219,6 +220,7 @@ fun newRegexRule(
     importance: Int,
     schedule: String,
     blockType: Int,
+    blockTypeConfig: String,
 ): RegexRule {
     return RegexRule(
         id = id,
@@ -233,6 +235,7 @@ fun newRegexRule(
         importance = importance,
         schedule = schedule,
         blockType = blockType,
+        blockTypeConfig = blockTypeConfig,
     )
 }
 
@@ -273,8 +276,11 @@ abstract class RuleTable {
                 ?: Def.DEF_SPAM_IMPORTANCE,
             schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: "",
             blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
-                ?: Def.DEF_BLOCK_TYPE
-        )
+                ?: Def.DEF_BLOCK_TYPE,
+            blockTypeConfig = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE_CONFIG))
+                ?: "",
+
+            )
     }
 
     @SuppressLint("Range")
@@ -412,6 +418,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
+        cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
 
         return db.insert(tableName(), null, cv)
     }
@@ -431,6 +438,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
+        cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
 
         db.insert(tableName(), null, cv)
     }
@@ -449,6 +457,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_IMPORTANCE, f.importance)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
+        cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
 
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }

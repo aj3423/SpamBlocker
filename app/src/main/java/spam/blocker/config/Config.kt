@@ -273,12 +273,17 @@ class Dialed {
 @Serializable
 class BlockType {
     var type = 0
+    var config = ""
     fun load(ctx: Context) {
-        type = spf.BlockType(ctx).getType()
+        val spf = spf.BlockType(ctx)
+        type = spf.getType()
+        config = spf.getConfig()
     }
 
     fun apply(ctx: Context) {
-        spf.BlockType(ctx).setType(type)
+        val spf = spf.BlockType(ctx)
+        spf.setType(type)
+        spf.setConfig(config)
     }
 }
 

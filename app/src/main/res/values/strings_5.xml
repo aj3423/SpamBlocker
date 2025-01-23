@@ -38,18 +38,26 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Reject</b></font>: <br>
-        &ensp; Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on.<br>
+         Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on.<br>
         <br>
         - <font color="#00BFFF"><b>Silence</b></font>: <br>
-        &ensp; It will ring silently in the background, giving the impression to the caller that you were unavailable and missed the call. <br>
+         It will ring silently in the background, giving the impression to the caller that you were unavailable and missed the call. <br>
         <br>
-        &ensp; It may also help if you are experiencing repeated spam calls, it will extend the call duration, making it less efficient for spammers, potentially discouraging them from calling you again.<br>
+         It may also help if you are experiencing repeated spam calls, it will extend the call duration, making it less efficient for spammers, potentially discouraging them from calling you again.<br>
         <br>
-        - <font color="#00BFFF"><b>Answer and Hang Up</b></font>: <br>
-        &ensp; To avoid being sent to the voicemail. The lockscreen can be turned on for a short while,
-         you might also hear a call end tone(some phones offer an option to mute this sound).
+        - <font color="#00BFFF"><b>Hang Up</b></font>: <br>
+        Answer and hang up the call to prevent it from going to voicemail. <br>
+        <br>
+        <font color="#FFA500">Note</font> The lockscreen can be turned on for a short while,
+        you might also hear a call end tone(some phones offer an option to mute this sound). <br>
+        <br>
+        A <b>delay</b> can be set before hanging up the call. Use cases:<br>
+        1. To record the call, install a call recording app and set the delay to 5 seconds or longer.
+          That makes it a local voicemail(without the prompt message). <br>
+        2. On some devices, the call may still be directed to voicemail if it terminates too quickly. To prevent this, set a 1-2 second delay.
         ]]>
     </string>
+    <string name="help_hang_up_delay">The delay before the call is hung up(in seconds).</string>
     <string name="help_dialed">
         <![CDATA[
         Dialed numbers will be allowed.<br>

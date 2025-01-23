@@ -38,15 +38,22 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Reddet</b></font>: <br>
-        &ensp; Reddet düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
+         Reddet düğmesine basmakla aynı. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
         <br>
         - <font color="#00BFFF"><b>Sessize Al</b></font>: <br>
-        &ensp; Arka planda sessizce çalar, arayana müsait olmadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
+         Arka planda sessizce çalar, arayana müsait olmadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
         <br>
-        &ensp; Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak spamciler için daha az verimli hale getirir ve sizi tekrar aramaktan caydırabilir.<br>
+         Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak istenmeyen arama yapanlar için daha az verimli hale getirir ve sizi tekrar aramaktan vazgeçirmeye yardımcı olabilir.<br>
         <br>
-        - <font color="#00BFFF"><b>Cevapla ve Kapat</b></font>: <br>
-        &ensp; Sesli mesaja yönlendirilmeyi önlemek için. Kilit ekranı kısa bir süre açılabilir, ayrıca bir arama sonu sesi duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar).
+        - <font color="#00BFFF"><b>Kapat</b></font>: <br>
+        Aramayı yanıtlayın ve sesli mesaj kutusuna gitmesini önlemek için kapatın. <br>
+        <br>
+        <font color="#FFA500">Not</font> Kilit ekranı kısa bir süreliğine açılabilir, ayrıca arama bitiş tonunu da duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar). <br>
+        <br>
+        Aramayı kapatmadan önce bir <b>gecikme</b> ayarlanabilir. Kullanım durumları:<br>
+        1. Aramayı kaydetmek için bir arama kaydı uygulaması yükleyin ve gecikmeyi 5 saniye veya daha uzun süre olarak ayarlayın.
+          Bu, onu (uyarı mesajı olmadan) yerel bir sesli mesaj yapar. <br>
+        2. Bazı cihazlarda, çok hızlı sonlandırılırsa arama yine de sesli mesaja yönlendirilebilir. Bunu önlemek için 1-2 saniyelik bir gecikme ayarlayın.
         ]]>
     </string>
     <string name="help_dialed">
@@ -77,4 +84,5 @@
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>
     </string>
+    <string name="help_hang_up_delay">Arama kapatılmadan önceki gecikme.</string>
 </resources>

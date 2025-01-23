@@ -17,7 +17,7 @@
     <string-array name="block_type_list">
         <item>Reject</item>
         <item>Silence</item>
-        <item>Answer+Hang Up</item>
+        <item>Hang Up</item>
     </string-array>
 
     <string name="show_passed">Show Passed</string>

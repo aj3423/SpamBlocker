@@ -17,7 +17,7 @@
     <string-array name="block_type_list">
         <item>Rejeitar</item>
         <item>Silenciar</item>
-        <item>Atender+Desligar</item>
+        <item>Desligar</item>
     </string-array>
 
     <string name="show_passed">Mostrar Liberados</string>

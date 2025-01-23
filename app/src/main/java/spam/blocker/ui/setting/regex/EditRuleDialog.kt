@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -38,6 +39,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
+import spam.blocker.ui.setting.quick.ConfigAnswerAndHangUp
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
@@ -255,6 +257,7 @@ fun RuleEditDialog(
 
     // Block Type
     var blockType by rememberSaveable { mutableIntStateOf(initRule.blockType) }
+    var blockTypeConfig by rememberSaveable { mutableStateOf(initRule.blockTypeConfig) }
 
     // NotificationType
     var notifyType by rememberSaveable { mutableIntStateOf(initRule.importance) }
@@ -315,6 +318,7 @@ fun RuleEditDialog(
                             notifyType,
                             schedule,
                             blockType,
+                            blockTypeConfig,
                         )
                     )
                 }
@@ -514,7 +518,27 @@ fun RuleEditDialog(
                                     )
                                 }
                         }
-                        Spinner(blockTypeLabels, blockType)
+                        RowVCenterSpaced(4) {
+                            if (blockType == Def.BLOCK_TYPE_ANSWER_AND_HANGUP) {
+                                val delay = remember {
+                                    mutableIntStateOf(blockTypeConfig.toIntOrNull() ?: 0)
+                                }
+                                LaunchedEffect(delay.intValue) {
+                                    blockTypeConfig = delay.intValue.toString()
+                                }
+
+                                val popupTrigger = rememberSaveable { mutableStateOf(false) }
+                                ConfigAnswerAndHangUp(popupTrigger, delay)
+
+                                StrokeButton(
+                                    label = "${delay.intValue} ${Str(R.string.seconds_short)}",
+                                    color = C.textGrey,
+                                ) {
+                                    popupTrigger.value = true
+                                }
+                            }
+                            Spinner(blockTypeLabels, blockType)
+                        }
                     }
                 }
 

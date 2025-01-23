@@ -17,7 +17,7 @@
     <string-array name="block_type_list">
         <item>拒绝</item>
         <item>静音</item>
-        <item>接听+挂断</item>
+        <item>挂断</item>
     </string-array>
 
     <string name="show_passed">显示通过</string>

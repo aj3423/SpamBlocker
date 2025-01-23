@@ -17,7 +17,7 @@
     <string-array name="block_type_list">
         <item>Rifiuta</item>
         <item>Silenzio</item>
-        <item>Rispondi e riaggancia</item>
+        <item>Chiudi</item>
     </string-array>
 
     <string name="show_passed">Mostra Chiamate Perse</string>

@@ -64,15 +64,18 @@ class spf { // for namespace only
     }
 
     class Temporary(ctx: Context) : SharedPref(ctx) {
-        fun getLastCallToBlock() : Pair<String, Long> {
-            return Pair(
+        fun getLastCallToBlock(): Triple<String, Long, Int> {
+            return Triple(
                 readString(Def.LAST_NUMBER_TO_BLOCK, ""),
-                readLong(Def.LAST_CALLED_TIME, 0)
+                readLong(Def.LAST_CALLED_TIME, 0),
+                readInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, 0),
             )
         }
-        fun setLastCallToBlock(number: String, timestamp: Long) {
+
+        fun setLastCallToBlock(number: String, timestamp: Long, delay: Int) {
             writeString(Def.LAST_NUMBER_TO_BLOCK, number)
             writeLong(Def.LAST_CALLED_TIME, timestamp)
+            writeInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, delay)
         }
     }
     class Global(ctx: Context) : SharedPref(ctx) {
@@ -277,8 +280,17 @@ class spf { // for namespace only
         fun setType(type: Int) {
             writeInt(Def.SETTING_BLOCK_TYPE, type)
         }
+
         fun getType(): Int {
             return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE)
+        }
+
+        fun setConfig(config: String) {
+            writeString(Def.SETTING_BLOCK_TYPE_CONFIG, config)
+        }
+
+        fun getConfig(): String {
+            return readString(Def.SETTING_BLOCK_TYPE_CONFIG, "")
         }
     }
     @Serializable
