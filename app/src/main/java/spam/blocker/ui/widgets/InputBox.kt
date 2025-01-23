@@ -483,7 +483,7 @@ fun RegexInputBox(
 
     fun validateWarning(): List<String> {
 
-        var ret = mutableListOf<String>()
+        val ret = mutableListOf<String>()
         if (regexWildcardNotSupported(lastText)) {
             ret += ctx.getString(R.string.waning_using_wildcard_as_regex)
         }
@@ -494,7 +494,7 @@ fun RegexInputBox(
         mutableStateOf(validateError())
     }
 
-    var warnings = remember(lastText) {
+    val warnings = remember(lastText) {
         mutableStateListOf<String>().apply {
             addAll(validateWarning())
         }

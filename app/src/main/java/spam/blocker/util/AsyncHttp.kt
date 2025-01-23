@@ -17,6 +17,7 @@ data class HttpResult(
     val exception: String? = null,
 )
 
+const val UA = "User-Agent"
 
 // An discardable `HttpURLConnection`.
 fun asyncHttpRequest(
@@ -38,6 +39,10 @@ fun asyncHttpRequest(
 
             headersMap.forEach { (key, value) ->
                 conn.setRequestProperty(key, value)
+            }
+
+            if (!headersMap.containsKey(UA)) { // Set default UA
+                conn.setRequestProperty(UA, "SpamBlocker")
             }
 
             // Send POST data
