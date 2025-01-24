@@ -35,6 +35,7 @@ import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
+import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.ui.M
 import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
@@ -521,7 +522,7 @@ fun RuleEditDialog(
                         RowVCenterSpaced(4) {
                             if (blockType == Def.BLOCK_TYPE_ANSWER_AND_HANGUP) {
                                 val delay = remember {
-                                    mutableIntStateOf(blockTypeConfig.toIntOrNull() ?: 0)
+                                    mutableIntStateOf(blockTypeConfig.toIntOrNull() ?: DEFAULT_HANG_UP_DELAY)
                                 }
                                 LaunchedEffect(delay.intValue) {
                                     blockTypeConfig = delay.intValue.toString()

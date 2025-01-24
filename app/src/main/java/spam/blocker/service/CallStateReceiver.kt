@@ -14,21 +14,26 @@ import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 class CallStateReceiver : BroadcastReceiver() {
+    private var handler: Handler = Handler(Looper.getMainLooper())
 
     // Don't block calls that are not marked to block in CallScreenService.
-    private fun shouldBlock(ctx: Context, currNumber: String): Pair<Boolean, Int> {
+    private fun shouldBlock(ctx: Context, currNumber: String): Boolean {
         // `numToBlock` and `lastCalledTime` are set in CallScreeningService,
-        //   they are only set when the call should be blocked by "answer + hang up"
-        val (numToBlock, lastCalledTime, delay) = spf.Temporary(ctx).getLastCallToBlock()
+        //   they are only set when the call is blocked by "answer + hang up"
+        val spf = spf.Temporary(ctx)
 
-        // if the time since the `lastCalledTime` is less than 5 seconds,
+        // 1. Check if the number matches
+        val numToBlock = spf.getLastCallToBlock()
+        if (numToBlock != Util.clearNumber(currNumber)) {
+            return false
+        }
+
+        // 2. Check if the time since the `lastCalledTime` is less than 5 seconds,
         //   answer the call and hang up
+        val lastCalledTime = spf.getLastCallTime()
         val now = System.currentTimeMillis()
         val tolerance = 5000 // 5 seconds
-        return Pair(
-            (now - lastCalledTime) < tolerance && numToBlock == Util.clearNumber(currNumber),
-            delay
-        )
+        return (now - lastCalledTime) < tolerance
     }
 
     private fun extractNumber(intent: Intent) : String? {
@@ -36,33 +41,48 @@ class CallStateReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(ctx: Context, intent: Intent) {
+        val spf = spf.Temporary(ctx)
+
         if (intent.action == "android.intent.action.PHONE_STATE") {
 
             val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)
 
             when (state) {
-                // ringing
+                // This is triggered when it starts ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
                     val currNumber = extractNumber(intent) ?: return
                     logi("RINGING, num: $currNumber")
 
-                    val (block, _) = shouldBlock(ctx, currNumber)
+                    val block = shouldBlock(ctx, currNumber)
                     if (block)
                         answerCall(ctx)
                 }
 
-                // call is active(in call)
+                // This is triggered when a call is answered(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                     val currNumber = extractNumber(intent) ?: return
                     logi("IN CALL, num: $currNumber")
 
-                    val (block, delay) = shouldBlock(ctx, currNumber)
+                    val block = shouldBlock(ctx, currNumber)
 
                     if (block) {
-                        Handler(Looper.getMainLooper()).postDelayed({
+                        // Schedule a delayed hang-up task.
+                        val delay = spf.getHangUpDelay().toLong() * 1000
+
+                        handler.postDelayed({
                             endCall(ctx)
-                        }, delay.toLong() * 1000)
+                        }, delay)
                     }
+                }
+
+                // This is triggered when any call ends
+                TelephonyManager.EXTRA_STATE_IDLE -> {
+                    val currNumber = extractNumber(intent) ?: return
+                    logi("IDLE, num: $currNumber")
+
+                    // When the call ends before the hang-up delay, kill the hang-up task,
+                    //  to prevent killing any following calls by mistake.
+                    handler.removeCallbacksAndMessages(null)
                 }
             }
         }

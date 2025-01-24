@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreyIcon16
@@ -111,7 +112,7 @@ fun BlockType() {
 
                 if (selected.intValue == Def.BLOCK_TYPE_ANSWER_AND_HANGUP) {
                     val delay = remember {
-                        mutableIntStateOf(spf.getConfig().toIntOrNull() ?: 0)
+                        mutableIntStateOf(spf.getConfig().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY)
                     }
                     LaunchedEffect(delay.intValue) {
                         spf.setConfig(delay.intValue.toString())

@@ -38,23 +38,24 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Rifiuta</b></font>: <br>
-         Stesso risultato del pulsante di rifiuto. Funziona completamente in silenzio, il blocco schermo non verrà attivato.<br>
+         Come premere il pulsante di rifiuto. Funziona completamente in silenzio, lo schermo di blocco non verrà attivato.<br>
         <br>
         - <font color="#00BFFF"><b>Silenzio</b></font>: <br>
          Suonerà silenziosamente in background, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
         <br>
-         Può anche essere utile se si ricevono ripetute chiamate spam, estenderà la durata della chiamata, rendendola meno efficiente per gli spammer, potenzialmente scoraggiandoli dal chiamarvi di nuovo.<br>
+         Può anche aiutare se si verificano ripetute chiamate spam, prolungherà la durata della chiamata, rendendola meno efficiente per gli spammer, potenzialmente scoraggiandoli dal chiamarli di nuovo.<br>
         <br>
         - <font color="#00BFFF"><b>Riaggancia</b></font>: <br>
-        Rispondi e riaggancia la chiamata per evitare che vada alla segreteria telefonica. <br>
+        Rispondi e riaggancia la chiamata per impedirle di andare alla segreteria telefonica. <br>
         <br>
-        <font color="#FFA500">Nota</font> Il blocco schermo potrebbe essere attivato per un breve periodo,
+        <font color="#FFA500">Nota</font> Lo schermo di blocco può essere acceso per un breve periodo,
         potresti anche sentire un tono di fine chiamata (alcuni telefoni offrono un\'opzione per disattivare questo suono). <br>
         <br>
-        È possibile impostare un <b>ritardo</b> prima di riagganciare la chiamata. Casi d\'uso:<br>
-        1. Per registrare la chiamata, installa un\'app di registrazione delle chiamate e imposta il ritardo a 5 secondi o più.
-          Questo la rende una segreteria telefonica locale (senza il messaggio di richiesta). <br>
-        2. Su alcuni dispositivi, la chiamata potrebbe comunque essere indirizzata alla segreteria telefonica se termina troppo rapidamente. Per evitare ciò, imposta un ritardo di 1-2 secondi.
+        - Il <b>ritardo</b>: <br>
+        &emsp; Per impostazione predefinita, c\'è un ritardo di 1 secondo prima che la chiamata venga riagganciata,
+        per evitare che le chiamate vadano accidentalmente alla segreteria telefonica a causa di una disconnessione rapida.<br>
+        &emsp; Se si desidera registrare le chiamate, installare un\'app di registrazione delle chiamate e impostare il ritardo su 5 secondi o più.
+          Ciò lo rende una segreteria telefonica locale (senza il messaggio di richiesta). <br>
         ]]>
     </string>
     <string name="help_dialed">

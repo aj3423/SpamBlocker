@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import kotlinx.serialization.Serializable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
 import spam.blocker.def.Def.HISTORY_TTL_NEVER_EXPIRE
 
@@ -64,19 +65,13 @@ class spf { // for namespace only
     }
 
     class Temporary(ctx: Context) : SharedPref(ctx) {
-        fun getLastCallToBlock(): Triple<String, Long, Int> {
-            return Triple(
-                readString(Def.LAST_NUMBER_TO_BLOCK, ""),
-                readLong(Def.LAST_CALLED_TIME, 0),
-                readInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, 0),
-            )
-        }
-
-        fun setLastCallToBlock(number: String, timestamp: Long, delay: Int) {
-            writeString(Def.LAST_NUMBER_TO_BLOCK, number)
-            writeLong(Def.LAST_CALLED_TIME, timestamp)
-            writeInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, delay)
-        }
+        // For answer + hang up
+        fun getLastCallToBlock(): String { return readString(Def.LAST_NUMBER_TO_BLOCK, "") }
+        fun setLastCallToBlock(number: String) { writeString(Def.LAST_NUMBER_TO_BLOCK, number) }
+        fun getLastCallTime(): Long { return readLong(Def.LAST_CALLED_TIME, 0) }
+        fun setLastCallTime(timestamp: Long) { return writeLong(Def.LAST_CALLED_TIME, timestamp) }
+        fun getHangUpDelay(): Int { return readInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, DEFAULT_HANG_UP_DELAY) }
+        fun setHangUpDelay(seconds: Int) { return writeInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, seconds) }
     }
     class Global(ctx: Context) : SharedPref(ctx) {
         fun isGloballyEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLED, false) }

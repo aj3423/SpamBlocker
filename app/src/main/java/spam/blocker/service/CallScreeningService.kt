@@ -81,9 +81,11 @@ class CallScreeningService : CallScreeningService() {
         val ctx = this
 
         // save 'number/current time/hang up delay' to shared pref, they will be read soon in CallStateReceiver
-        spf.Temporary(this).setLastCallToBlock(
-            Util.clearNumber(rawNumber), now, r.hangUpDelay(ctx)
-        )
+        spf.Temporary(this).apply {
+            setLastCallToBlock(Util.clearNumber(rawNumber))
+            setLastCallTime(now)
+            setHangUpDelay(r.hangUpDelay(ctx))
+        }
 
         // let it ring silently in the background, it will be answered in the CallStateReceiver immediately
         val builder = CallResponse.Builder().apply {

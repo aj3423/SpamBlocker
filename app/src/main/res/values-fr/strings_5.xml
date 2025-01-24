@@ -40,21 +40,22 @@
         - <font color="#00BFFF"><b>Rejeter</b></font>: <br>
          Identique à appuyer sur le bouton de refus. Cela fonctionne en silence, l\'écran de verrouillage ne sera pas activé.<br>
         <br>
-        - <font color="#00BFFF"><b>Silence</b></font>: <br>
-         La sonnerie se fera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous étiez indisponible et avez manqué l\'appel. <br>
+        - <font color="#00BFFF"><b>Silencieux</b></font>: <br>
+         Il sonnera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous étiez indisponible et avez manqué l\'appel. <br>
         <br>
-         Cela peut également être utile si vous recevez des appels indésirables répétés, cela prolongera la durée de l\'appel, le rendant moins efficace pour les spammeurs, ce qui pourrait les dissuader de vous rappeler.<br>
+         Cela peut également être utile si vous subissez des appels indésirables répétés, cela prolongera la durée de l\'appel, le rendant moins efficace pour les spammeurs, ce qui pourrait les dissuader de vous appeler à nouveau.<br>
         <br>
         - <font color="#00BFFF"><b>Raccrocher</b></font>: <br>
-        Répondre et raccrocher pour empêcher l\'appel d\'aller en messagerie vocale. <br>
+        Répondre et raccrocher pour éviter que l\'appel n\'aille sur la messagerie vocale. <br>
         <br>
-        <font color="#FFA500">Note</font> L\'écran de verrouillage peut être activé pendant un court instant,
-        vous pourriez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour couper ce son). <br>
+        <font color="#FFA500">Remarque</font> L\'écran de verrouillage peut être activé pendant un court instant,
+        vous pouvez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour couper ce son). <br>
         <br>
-        Un <b>délai</b> peut être défini avant de raccrocher. Cas d\'utilisation :<br>
-        1. Pour enregistrer l\'appel, installez une application d\'enregistrement d\'appel et définissez le délai sur 5 secondes ou plus.
+        - Le <b>délai</b> : <br>
+        &emsp; Par défaut, il y a un délai d\'une seconde avant que l\'appel ne soit raccroché,
+        pour éviter que les appels n\'aillent accidentellement sur la messagerie vocale en raison d\'une déconnexion rapide.<br>
+        &emsp; Si vous souhaitez enregistrer des appels, installez une application d\'enregistrement d\'appels et réglez le délai sur 5 secondes ou plus.
           Cela en fait une messagerie vocale locale (sans message d\'invite). <br>
-        2. Sur certains appareils, l\'appel peut toujours être dirigé vers la messagerie vocale s\'il se termine trop rapidement. Pour éviter cela, définissez un délai de 1 à 2 secondes.
         ]]>
     </string>
     <string name="help_dialed">

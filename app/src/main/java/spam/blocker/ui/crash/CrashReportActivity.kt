@@ -73,7 +73,7 @@ class CrashReportActivity : ComponentActivity() {
                         val toReport = remember {
                             val stackTrace = intent.getStringExtra("stackTrace")
 
-                            "android version: ${Build.VERSION.SDK_INT}\n" +
+                            "android code: ${Build.VERSION.SDK_INT}\n" +
                                     "app version: ${BuildConfig.VERSION_NAME}\n" +
                                     "$stackTrace"
                         }

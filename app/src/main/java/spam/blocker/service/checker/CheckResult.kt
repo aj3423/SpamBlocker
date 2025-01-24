@@ -26,6 +26,7 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
+import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CALL_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
@@ -165,7 +166,7 @@ interface ICheckResult {
 
     // For "Answer + Hang up", returns the delay before "Hang Up"
     fun hangUpDelay(ctx: Context): Int {
-        return spf.BlockType(ctx).getConfig().toIntOrNull() ?: 0
+        return spf.BlockType(ctx).getConfig().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
     }
 
     // Prepare the content to be saved in database, as the `HistoryTable.reason` column
@@ -424,7 +425,7 @@ class ByRegexRule(
     }
 
     override fun hangUpDelay(ctx: Context): Int {
-        return rule?.blockTypeConfig?.toIntOrNull() ?: 0
+        return rule?.blockTypeConfig?.toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
     }
 
     override fun getSpamImportance(isCall: Boolean): Int {

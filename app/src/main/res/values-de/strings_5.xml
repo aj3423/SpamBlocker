@@ -38,23 +38,24 @@
     <string name="help_block_type">
         <![CDATA[
         - <font color="#00BFFF"><b>Ablehnen</b></font>: <br>
-         Wie das Drücken der Ablehnungstaste. Es funktioniert völlig geräuschlos, der Sperrbildschirm wird nicht aktiviert.<br>
+         Wie das Drücken der Ablehntaste. Es funktioniert völlig lautlos, der Sperrbildschirm wird nicht aktiviert.<br>
         <br>
         - <font color="#00BFFF"><b>Stummschalten</b></font>: <br>
-         Es klingelt leise im Hintergrund und vermittelt dem Anrufer den Eindruck, dass Sie nicht erreichbar waren und den Anruf verpasst haben. <br>
+         Es klingelt leise im Hintergrund und erweckt beim Anrufer den Eindruck, dass Sie nicht erreichbar waren und den Anruf verpasst haben. <br>
         <br>
-         Dies kann auch hilfreich sein, wenn Sie wiederholt Spam-Anrufe erhalten. Es verlängert die Anrufdauer, wodurch es für Spammer weniger effizient wird und sie möglicherweise davon abgehalten werden, Sie erneut anzurufen.<br>
+         Dies kann auch hilfreich sein, wenn Sie wiederholt Spam-Anrufe erhalten. Es verlängert die Anrufdauer, wodurch es für Spammer weniger effizient wird und diese möglicherweise davon abgehalten werden, Sie erneut anzurufen.<br>
         <br>
         - <font color="#00BFFF"><b>Auflegen</b></font>: <br>
-        Anruf annehmen und auflegen, um zu verhindern, dass er auf die Mailbox geht. <br>
+        Annehmen und auflegen, um zu verhindern, dass der Anruf auf der Mailbox landet. <br>
         <br>
         <font color="#FFA500">Hinweis</font> Der Sperrbildschirm kann für kurze Zeit aktiviert werden,
         Sie hören möglicherweise auch einen Anrufabbruchton (einige Telefone bieten eine Option zum Stummschalten dieses Tons). <br>
         <br>
-        Eine <b>Verzögerung</b> kann eingestellt werden, bevor der Anruf aufgelegt wird. Anwendungsfälle:<br>
-        1. Um den Anruf aufzuzeichnen, installieren Sie eine Anrufaufzeichnungs-App und stellen Sie die Verzögerung auf 5 Sekunden oder länger ein.
+        - Die <b>Verzögerung</b>: <br>
+        &emsp; Standardmäßig gibt es eine 1-Sekunden-Verzögerung, bevor der Anruf aufgelegt wird,
+        um zu verhindern, dass Anrufe aufgrund einer schnellen Trennung versehentlich auf der Mailbox landen.<br>
+        &emsp; Wenn Sie Anrufe aufzeichnen möchten, installieren Sie eine Anrufaufzeichnungs-App und stellen Sie die Verzögerung auf 5 Sekunden oder länger ein.
           Das macht es zu einer lokalen Mailbox (ohne die Eingabeaufforderung). <br>
-        2. Bei einigen Geräten wird der Anruf möglicherweise weiterhin an die Mailbox weitergeleitet, wenn er zu schnell beendet wird. Um dies zu verhindern, legen Sie eine Verzögerung von 1-2 Sekunden fest.
         ]]>
     </string>
     <string name="help_dialed">

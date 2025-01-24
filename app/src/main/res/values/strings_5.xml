@@ -51,10 +51,11 @@
         <font color="#FFA500">Note</font> The lockscreen can be turned on for a short while,
         you might also hear a call end tone(some phones offer an option to mute this sound). <br>
         <br>
-        A <b>delay</b> can be set before hanging up the call. Use cases:<br>
-        1. To record the call, install a call recording app and set the delay to 5 seconds or longer.
+        - The <b>delay</b>: <br>
+        &emsp; By default, there is a 1-second delay before the call is hung up,
+        to prevent calls from accidentally going to voicemail due to rapid disconnection.<br>
+        &emsp; If you want to record calls, install a call recording app and set the delay to 5 seconds or longer.
           That makes it a local voicemail(without the prompt message). <br>
-        2. On some devices, the call may still be directed to voicemail if it terminates too quickly. To prevent this, set a 1-2 second delay.
         ]]>
     </string>
     <string name="help_hang_up_delay">The delay before the call is hung up(in seconds).</string>
