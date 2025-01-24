@@ -46,16 +46,15 @@
          Também pode ajudar se você estiver recebendo chamadas de spam repetidas, pois estenderá a duração da chamada, tornando-a menos eficiente para spammers, potencialmente desencorajando-os a ligar novamente.<br>
         <br>
         - <font color="#00BFFF"><b>Desligar</b></font>: <br>
-        Atender e desligar a chamada para evitar que ela vá para o correio de voz. <br>
+        Atende e desliga a chamada para impedir que ela vá para o correio de voz. <br>
         <br>
         <font color="#FFA500">Nota</font> A tela de bloqueio pode ser ativada por um curto período,
         você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar esse som). <br>
         <br>
         - O <b>atraso</b>: <br>
-        &emsp; Por padrão, há um atraso de 1 segundo antes que a chamada seja desligada,
-        para evitar que chamadas acidentalmente vão para o correio de voz devido à desconexão rápida.<br>
-        &emsp; Se você quiser gravar chamadas, instale um aplicativo de gravação de chamadas e defina o atraso para 5 segundos ou mais.
-          Isso o torna um correio de voz local (sem a mensagem de aviso). <br>
+        &emsp; Por padrão, há um atraso de 1 segundo antes de a chamada ser desligada,
+        para evitar que as chamadas vão acidentalmente para o correio de voz devido à desconexão rápida.<br>
+        &emsp; Se você quiser gravar chamadas, instale um aplicativo de gravação de chamadas e aumente o atraso de acordo.
         ]]>
     </string>
     <string name="help_dialed">

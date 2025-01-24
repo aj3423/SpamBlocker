@@ -54,8 +54,7 @@
         - The <b>delay</b>: <br>
         &emsp; By default, there is a 1-second delay before the call is hung up,
         to prevent calls from accidentally going to voicemail due to rapid disconnection.<br>
-        &emsp; If you want to record calls, install a call recording app and set the delay to 5 seconds or longer.
-          That makes it a local voicemail(without the prompt message). <br>
+        &emsp; If you want to record calls, install a call recording app and increase the delay accordingly.
         ]]>
     </string>
     <string name="help_hang_up_delay">The delay before the call is hung up(in seconds).</string>

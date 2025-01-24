@@ -36,7 +36,10 @@ open class ApiViewModel(
         }
 
         listCollapsed.value = !listCollapsed.value
-        spf.ApiQueryOptions(ctx).setListCollapsed(listCollapsed.value)
+        when(forType) {
+            Def.ForApiQuery -> spf.ApiQueryOptions(ctx).setListCollapsed(listCollapsed.value)
+            Def.ForApiReport -> spf.ApiReportOptions(ctx).setListCollapsed(listCollapsed.value)
+        }
     }
 }
 

@@ -396,10 +396,12 @@ class QuickCopyRules : PatternRules() {
 @Serializable
 class ApiQuery {
     val apis = mutableListOf<Api>()
+    var listCollapsed = false
 
     fun load(ctx: Context) {
         apis.clear()
         apis.addAll(G.apiQueryVM.table.listAll(ctx))
+        listCollapsed = spf.ApiQueryOptions(ctx).isListCollapsed()
     }
 
     fun apply(ctx: Context) {
@@ -408,15 +410,18 @@ class ApiQuery {
         apis.forEach {
             table.addRecordWithId(ctx, it)
         }
+        spf.ApiQueryOptions(ctx).setListCollapsed(listCollapsed)
     }
 }
 @Serializable
 class ApiReport {
     val apis = mutableListOf<Api>()
+    var listCollapsed = false
 
     fun load(ctx: Context) {
         apis.clear()
         apis.addAll(G.apiReportVM.table.listAll(ctx))
+        listCollapsed = spf.ApiReportOptions(ctx).isListCollapsed()
     }
 
     fun apply(ctx: Context) {
@@ -425,6 +430,7 @@ class ApiReport {
         apis.forEach {
             table.addRecordWithId(ctx, it)
         }
+        spf.ApiReportOptions(ctx).setListCollapsed(listCollapsed)
     }
 }
 
@@ -489,6 +495,7 @@ class Configs {
 
     val spamNumbers = SpamNumbers()
 
+    // Read all settings from SharedPref/Database to this object, preparing for saving to file.
     fun load(ctx: Context, includeSpamDB: Boolean = true) {
         global.load(ctx)
         historyOptions.load(ctx)
@@ -520,6 +527,7 @@ class Configs {
             spamNumbers.load(ctx)
     }
 
+    // This object has been full filled, apply the values to SharedPref/Database
     fun apply(ctx: Context, includeSpamDB: Boolean = true) {
         global.apply(ctx)
         historyOptions.apply(ctx)

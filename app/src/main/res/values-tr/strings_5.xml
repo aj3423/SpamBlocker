@@ -46,15 +46,14 @@
          Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak spam gönderenler için daha az verimli hale getirir ve sizi tekrar aramaktan caydırabilir.<br>
         <br>
         - <font color="#00BFFF"><b>Kapat</b></font>: <br>
-        Aramayı cevaplayın ve sesli mesaj kutusuna gitmesini önlemek için kapatın. <br>
+        Aramayı yanıtlayın ve sesli mesaj kutusuna gitmesini önlemek için kapatın. <br>
         <br>
-        <font color="#FFA500">Not</font> Kilit ekranı kısa bir süre açılabilir,
+        <font color="#FFA500">Not</font> Kilit ekranı kısa bir süre için açılabilir,
         ayrıca arama sonu sesi duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar). <br>
         <br>
         - <b>Gecikme</b>: <br>
-        &emsp; Varsayılan olarak, hızlı bağlantı kesilmesi nedeniyle aramaların yanlışlıkla sesli mesaja gitmesini önlemek için arama kapatılmadan önce 1 saniyelik bir gecikme vardır.<br>
-        &emsp; Aramaları kaydetmek istiyorsanız, bir arama kaydı uygulaması yükleyin ve gecikmeyi 5 saniye veya daha uzun süre olarak ayarlayın.
-          Bu, (uyarı mesajı olmadan) yerel bir sesli mesaj yapar. <br>
+        &emsp; Varsayılan olarak, hızlı bağlantı kesilmesi nedeniyle aramaların yanlışlıkla sesli mesaj kutusuna gitmesini önlemek için arama kapatılmadan önce 1 saniyelik bir gecikme vardır.<br>
+        &emsp; Aramaları kaydetmek istiyorsanız, bir arama kaydı uygulaması yükleyin ve gecikmeyi buna göre artırın.
         ]]>
     </string>
     <string name="help_dialed">

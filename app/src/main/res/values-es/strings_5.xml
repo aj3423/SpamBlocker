@@ -41,21 +41,20 @@
          Igual que presionar el botón de rechazar. Funciona completamente en silencio, la pantalla de bloqueo no se activará.<br>
         <br>
         - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-         Sonará silenciosamente en segundo plano, dando la impresión al llamador de que no estaba disponible y perdió la llamada. <br>
+         Sonará silenciosamente en segundo plano, dando la impresión al llamante de que no estaba disponible y perdió la llamada. <br>
         <br>
-         También puede ayudar si está experimentando llamadas de spam repetidas, extenderá la duración de la llamada, haciéndola menos eficiente para los spammers, lo que podría disuadirlos de volver a llamarlo.<br>
+         También puede ayudar si experimenta llamadas spam repetidas, extenderá la duración de la llamada, lo que la hará menos eficiente para los spammers, lo que podría desalentarlos de volver a llamarlo.<br>
         <br>
         - <font color="#00BFFF"><b>Colgar</b></font>: <br>
-        Contestar y colgar la llamada para evitar que vaya al buzón de voz. <br>
+        Contestar y colgar la llamada para evitar que vaya al correo de voz. <br>
         <br>
-        <font color="#FFA500">Nota</font> La pantalla de bloqueo se puede activar por un breve tiempo,
-        también es posible que escuche un tono de finalización de llamada (algunos teléfonos ofrecen una opción para silenciar este sonido). <br>
+        <font color="#FFA500">Nota</font> La pantalla de bloqueo puede activarse por un breve periodo,
+        también puede oír un tono de fin de llamada (algunos teléfonos ofrecen la opción de silenciar este sonido). <br>
         <br>
         - El <b>retraso</b>: <br>
         &emsp; De forma predeterminada, hay un retraso de 1 segundo antes de que se cuelgue la llamada,
-        para evitar que las llamadas vayan accidentalmente al buzón de voz debido a una desconexión rápida.<br>
-        &emsp; Si desea grabar llamadas, instale una aplicación de grabación de llamadas y configure el retraso en 5 segundos o más.
-          Eso lo convierte en un buzón de voz local (sin el mensaje de solicitud). <br>
+        para evitar que las llamadas vayan accidentalmente al correo de voz debido a una desconexión rápida.<br>
+        &emsp; Si desea grabar llamadas, instale una aplicación de grabación de llamadas y aumente el retraso en consecuencia.
         ]]>
     </string>
     <string name="help_dialed">
