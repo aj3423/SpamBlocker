@@ -1,0 +1,4 @@
+Improvement
+- Answer+HangUp delay, use cases:
+  - Call recording, set a 8-seconds delay and install a recording app.
+  - Prevent calls from going to voicemail due to rapid disconnection.
