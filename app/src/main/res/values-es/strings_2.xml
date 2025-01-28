@@ -54,12 +54,12 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Informar automáticamente un número bloqueado a todos los puntos finales de la API sin intervención humana, para construir nuestras bases de datos de crowdsourcing contra llamadas spam.<br>
+        Informar automáticamente un número bloqueado a todos los puntos finales de la API sin intervención humana, para construir nuestras bases de datos de código abierto contra llamadas de spam.<br>
         <br>
-        <h4>- <font color="#6ed0ff">Retraso en el informe</font></h4><br>
+        <h4>- <font color="#6ed0ff">Retraso del informe</font></h4><br>
         Cuando se bloquea una llamada entrante, habrá un búfer de tiempo de una hora antes de que se informe el número.
-        Si el número se permite más tarde debido a repeticiones o marcado dentro de este búfer de tiempo,
-        se considera un número no spam y no se informará.<br>
+        Si el número se permite más tarde debido a repeticiones o devoluciones de llamada dentro de este búfer de tiempo,
+        se considera un número que no es spam y no se informará.<br>
         <br>
         <h4>- <font color="#6ed0ff">Privacidad</font></h4>
         <br>
@@ -67,12 +67,12 @@
         <br>
          &ensp; - Dirección IP<br>
          &ensp; - Huellas dactilares Tls y Tcp (que pueden revelar su versión de Android)<br>
-         &ensp; - El número informado<br>
+         &ensp; - El número informado (incluido su código de país)<br>
         <br>
         No se informará nada más.<br>
         <br>
         <h4>- <font color="#6ed0ff">Tipo de informe</font></h4><br>
-        <h5>1. <font color="#fa7f71">No</font> reportará:</h5>
+        <h5>1. <font color="#fa7f71">No</font> informará:</h5>
         <br>
         - <font color="#fa7f71">Números aprobados</font><br>
         Y los siguientes tipos bloqueados:<br>
@@ -83,18 +83,18 @@
         - <font color="#fa7f71">Modo reunión</font><br>
         - <font color="#fa7f71">Consulta instantánea</font> (para evitar que el número del punto final de la API se filtre a otros competidores)<br>
         <br>
-        <h5>2. <font color="#03DAC5">Sí</font> reportará:</h5>
+        <h5>2. <font color="#03DAC5">Informará:</font></h5>
         <br>
         Los siguientes tipos bloqueados:<br>
         - <font color="#03DAC5">No contacto</font>(exclusivo)<br>
-        - <font color="#03DAC5">Certificación STIR</font><br>
+        - <font color="#03DAC5">Atestación STIR</font><br>
         - <font color="#03DAC5">Expresión regular de número</font><br>
         - <font color="#03DAC5">Expresión regular de contenido de SMS</font><br>
         <br>
         <h5>3. Casos de excepción:</h5>
         <br>
-        - Cuando está bloqueado por <font color="#03DAC5">Consulta instantánea</font>, se informará a la misma API para aumentar la puntuación del número.
-         Por ejemplo, cuando está bloqueado por la consulta de API de check.com, solo se informará a check.com, no a others.com. <br>
+        - Cuando está bloqueado por <font color="#03DAC5">Consulta instantánea</font>, se volverá a informar a la misma API para aumentar la puntuación del número.
+         Por ejemplo, cuando está bloqueado por la consulta de la API de check.com, solo se informará a check.com, no a others.com. <br>
         -  Cuando está bloqueado por <font color="#03DAC5">Base de datos</font> y el registro fue agregado originalmente mediante una consulta de API instantánea,
          se informará solo a la misma API por la misma razón que la anterior.<br>
         ]]>

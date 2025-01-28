@@ -68,7 +68,7 @@
         <br>
          &ensp; - IP address<br>
          &ensp; - Tls and Tcp fingerprints (which may reveal your Android version)<br>
-         &ensp; - The reported number<br>
+         &ensp; - The reported number (including your country code)<br>
         <br>
         Nothing else will be reported.<br>
         <br>

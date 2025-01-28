@@ -604,28 +604,6 @@ fun RegexInputBox(
             val paddingEnd = if (iconCount > 1) 10 else 0
 
             RowVCenter(modifier = M.padding(paddingEnd.dp)) {
-                // Testing Tube icon
-                if (testable) {
-                    val trigger = remember { mutableStateOf(false) }
-
-                    if (trigger.value) {
-                        TestRegexDialog(
-                            trigger = trigger,
-                            regexStr = state.text,
-                            regexFlags = regexFlags.intValue,
-                        )
-                    }
-
-                    ResIcon(
-                        R.drawable.ic_tube,
-                        color = Teal200,
-                        modifier = M
-                            .clickable {
-                                trigger.value = true
-                            }
-                            .size(24.dp),
-                    )
-                }
 
                 // flags icon
                 if (showFlagsIcon) {
@@ -657,6 +635,29 @@ fun RegexInputBox(
                             )
                         }
                     }
+                }
+
+                // Testing Tube icon
+                if (testable) {
+                    val trigger = remember { mutableStateOf(false) }
+
+                    if (trigger.value) {
+                        TestRegexDialog(
+                            trigger = trigger,
+                            regexStr = state.text,
+                            regexFlags = regexFlags.intValue,
+                        )
+                    }
+
+                    ResIcon(
+                        R.drawable.ic_tube,
+                        color = Teal200,
+                        modifier = M
+                            .clickable {
+                                trigger.value = true
+                            }
+                            .size(24.dp),
+                    )
                 }
 
                 // Help question icon

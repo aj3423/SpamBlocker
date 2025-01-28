@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 35
+        const val DB_VERSION = 36
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -260,6 +260,13 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         // v4.2 added BlockTypeConfig for the answer+hangup delay.
         if ((newVersion >= 35) && (oldVersion < 35)) {
             addColumnIfNotExist(db, TABLE_NUMBER_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
+            addColumnIfNotExist(db, TABLE_CONTENT_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
+            addColumnIfNotExist(db, TABLE_QUICK_COPY_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
+        }
+        // v4.3 fix v4.2 forgot to add these
+        if ((newVersion >= 36) && (oldVersion < 36)) {
+            addColumnIfNotExist(db, TABLE_CONTENT_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
+            addColumnIfNotExist(db, TABLE_QUICK_COPY_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
         }
     }
 }

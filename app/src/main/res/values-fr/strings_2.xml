@@ -57,17 +57,17 @@
         Signaler automatiquement un numéro bloqué à toutes les API sans intervention humaine, pour construire nos bases de données participatives contre les appels indésirables.<br>
         <br>
         <h4>- <font color="#6ed0ff">Délai de signalement</font></h4><br>
-        Lorsqu\'un appel entrant est bloqué, il y aura un délai d\'une heure avant que le numéro ne soit signalé.
-        Si le numéro est autorisé plus tard en raison de répétitions ou de rappels dans ce délai,
+        Lorsqu\'un appel entrant est bloqué, il y aura un tampon d\'une heure avant que le numéro ne soit signalé.
+        Si le numéro est autorisé plus tard en raison de répétitions ou de rappel dans ce délai,
         il est considéré comme un numéro non indésirable et ne sera pas signalé.<br>
         <br>
         <h4>- <font color="#6ed0ff">Confidentialité</font></h4>
         <br>
-        Les API verront votre :<br>
+        Les API verront :<br>
         <br>
-         &ensp; - Adresse IP<br>
-         &ensp; - Empreintes Tls et Tcp (qui peuvent révéler votre version Android)<br>
-         &ensp; - Le numéro signalé<br>
+         &ensp; - Votre adresse IP<br>
+         &ensp; - Vos empreintes Tls et Tcp (qui peuvent révéler votre version Android)<br>
+         &ensp; - Le numéro signalé (y compris votre indicatif pays)<br>
         <br>
         Rien d\'autre ne sera signalé.<br>
         <br>
@@ -76,20 +76,20 @@
         <br>
         - <font color="#fa7f71">Numéros autorisés</font><br>
         Et les types bloqués suivants :<br>
-        - <font color="#fa7f71">Test global</font><br>
-        - <font color="#fa7f71">Exprégulière contact</font><br>
-        - <font color="#fa7f71">Exprégulière groupe contact</font><br>
+        - <font color="#fa7f71">Tests globaux</font><br>
+        - <font color="#fa7f71">Expr. régulière contact</font><br>
+        - <font color="#fa7f71">Expr. régulière groupe contact</font><br>
         - <font color="#fa7f71">Base de données</font><br>
         - <font color="#fa7f71">Mode réunion</font><br>
-        - <font color="#fa7f71">Requête instantanée</font> (pour empêcher la fuite du numéro de l\'API vers d\'autres concurrents)<br>
+        - <font color="#fa7f71">Requête instantanée</font> (pour éviter que le numéro de l\'API ne soit divulgué à d\'autres concurrents)<br>
         <br>
         <h5>2. Il <font color="#03DAC5">signalera</font> :</h5>
         <br>
         Les types bloqués suivants :<br>
-        - <font color="#03DAC5">Non-contact</font>(exclusif)<br>
-        - <font color="#03DAC5">Attestation STIR</font><br>
-        - <font color="#03DAC5">Exprégulière numéro</font><br>
-        - <font color="#03DAC5">Exprégulière contenu SMS</font><br>
+        - <font color="#03DAC5">Non-Contact</font>(exclusif)<br>
+        - <font color="#03DAC5">Authentification STIR</font><br>
+        - <font color="#03DAC5">Expr. régulière numéro</font><br>
+        - <font color="#03DAC5">Expr. régulière contenu SMS</font><br>
         <br>
         <h5>3. Cas exceptionnels :</h5>
         <br>
