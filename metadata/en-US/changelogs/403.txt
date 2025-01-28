@@ -1,0 +1,5 @@
+fix
+- Unable to add new SMS rule after upgrading to v4.2
+
+Improvement
+- New regex flag: "Omit Country Code", allowing matching international numbers like `+33111` or `+44111` with simpler regex `111.*` (instead of `(33|44)*111.*`)
