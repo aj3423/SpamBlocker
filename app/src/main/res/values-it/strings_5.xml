@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Numero</string>
     <string name="sms_content">Contenuto SMS</string>
     <string name="regex_flags">Flags Regex</string>
-    <string-array name="regex_flags_list">
-        <item>Ignora maiuscole/minuscole</item>
-        <item>Punto corrisponde a qualsiasi carattere</item>
-        <item>Numero grezzo</item>
-    </string-array>
-    <string name="disable_number_optimization">Questa ottimizzazione può essere disabilitata dal flag regex "Numero grezzo".</string>
     <string name="off_time"><short>tempo di pausa</short></string>
     <string name="schedule">Programmazione</string>
     <string name="workday">Giorno lavorativo</string>

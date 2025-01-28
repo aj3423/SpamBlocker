@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Number</string>
     <string name="sms_content">SMS Content</string>
     <string name="regex_flags">Regex Flags</string>
-    <string-array name="regex_flags_list">
-        <item>Ignore Case</item>
-        <item>Dot Match All</item>
-        <item>Raw Number</item>
-    </string-array>
-    <string name="disable_number_optimization">This optimization can be disabled by the regex flag "Raw Number".</string>
     <string name="off_time"><short>Off Time</short></string>
     <string name="schedule">Schedule</string>
     <string name="workday">Workday</string>

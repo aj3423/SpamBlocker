@@ -11,28 +11,46 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Essas bandeiras alteram o comportamento de correspondência da expressão regular, elas são definidas para novas regras por padrão. <br>
+            Esses sinalizadores alteram o comportamento de correspondência da expressão regular, eles são definidos por padrão para novas regras. <br>
             <br>
 
-            <font color="#00BFFF"><b>Ignorar maiúsculas e minúsculas</b></font>:<br>
-            &ensp; Isso torna a correspondência de padrões insensível a maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Número Bruto</b></font>: <br>
+            &ensp; Quando ativado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font>
+            e <font color="#03DAC5"><b>zeros à esquerda</b></font> permanecerão, útil para diferenciar números domésticos.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Omitir Código do País</b></font>: <br>
+            &ensp; Quando ativado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código do país</font>
+             serão removidos de um número internacional.<br>
+            <br>
+            Por exemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> quanto
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> se tornarão <font color="#03DAC5">12345</font>,
+            isso permite que você use expressões regulares mais simples `123.*` em vez de `(33|44)*123.*` para corresponder a números internacionais.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignorar maiúsculas/minúsculas</b></font>:<br>
+            &ensp; Torna a correspondência de padrões insensível a maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
               corresponderia a <font color="#03DAC5"><b>a</b></font> e <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
-            <font color="#00BFFF"><b>Ponto corresponde a tudo</b></font>: <br>
-            &ensp; Quando habilitado, <font color="#03DAC5"><b>.</b></font> também corresponderá a caracteres de nova linha (<font color="#03DAC5"><b>\\n</b></font>),
+            <font color="#00BFFF"><b>Ponto corresponde a todos</b></font>: <br>
+            &ensp; Quando ativado, <font color="#03DAC5"><b>.</b></font> também corresponderá a caracteres de nova linha (<font color="#03DAC5"><b>\\n</b></font>),
               isso permite que o ponto corresponda a várias linhas. <br>
             &ensp; Caso de uso: <br>
             &emsp;   Corresponder a mensagem SMS multilinha: <br>
-            &emsp;   <font color="#fa7f71">reclame seu prêmio: http://<br>
+            &emsp;   <font color="#fa7f71">receba seu prêmio: http://<br>
             &emsp;   abc.com </font><br>
             &emsp;   com a regra: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-            <font color="#00BFFF"><b>Número Bruto</b></font>: <br>
-            &ensp; Quando habilitado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>zeros à esquerda</b></font> permanecerão, útil para diferenciar números domésticos.
         ]]>
     </string>
 
+    <string-array name="regex_flags_list">
+        <item>Número Bruto</item>
+        <item>Omitir Código do País</item>
+        <item>Ignorar maiúsculas/minúsculas</item>
+        <item>Ponto Corresponde a Todos</item>
+    </string-array>
+    <string name="disable_number_optimization">Essa otimização pode ser desabilitada pela flag regex "Número Bruto".</string>
 </resources>

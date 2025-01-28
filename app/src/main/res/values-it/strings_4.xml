@@ -11,7 +11,21 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Questi flag modificano il comportamento di corrispondenza dell\'espressione regolare, sono impostati per impostazione predefinita per le nuove regole. <br>
+            Questi flag modificano il comportamento di corrispondenza delle espressioni regolari, sono impostati per impostazione predefinita per le nuove regole. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Numero grezzo</b></font>: <br>
+            &ensp; Se abilitato, il numero non verrà ottimizzato, <font color="#03DAC5"><b>+</b></font>
+            e <font color="#03DAC5"><b>gli zeri iniziali</b></font> rimarranno, utile per distinguere i numeri nazionali.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Ometti codice paese</b></font>: <br>
+            &ensp; Se abilitato, il <font color="#fa7f71">+</font> iniziale e il <font color="#fa7f71">codice paese</font>
+             verranno rimossi da un numero internazionale.<br>
+            <br>
+            Ad esempio, sia <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> che
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> diventeranno <font color="#03DAC5">12345</font>,
+            questo consente di utilizzare espressioni regolari più semplici `123.*` invece di `(33|44)*123.*` per corrispondere ai numeri internazionali.<br>
             <br>
 
             <font color="#00BFFF"><b>Ignora maiuscole/minuscole</b></font>:<br>
@@ -19,9 +33,9 @@
               corrisponderebbe sia a <font color="#03DAC5"><b>a</b></font> che a <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
-            <font color="#00BFFF"><b>Punto corrisponde a tutti</b></font>: <br>
-            &ensp; Quando attivato, <font color="#03DAC5"><b>.</b></font> corrisponderà anche ai caratteri di nuova riga (<font color="#03DAC5"><b>\\n</b></font>),
-              questo permette al punto di corrispondere su più righe. <br>
+            <font color="#00BFFF"><b>Punto corrisponde a tutto</b></font>: <br>
+            &ensp; Se abilitato, <font color="#03DAC5"><b>.</b></font> corrisponderà anche ai caratteri di nuova riga (<font color="#03DAC5"><b>\\n</b></font>),
+              questo consente al punto di corrispondere su più righe. <br>
             &ensp; Caso d\'uso: <br>
             &emsp;   Corrispondenza messaggio SMS multiriga: <br>
             &emsp;   <font color="#fa7f71">rivendica il tuo premio: http://<br>
@@ -29,10 +43,14 @@
             &emsp;   con regola: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-            <font color="#00BFFF"><b>Numero grezzo</b></font>: <br>
-            &ensp; Quando attivato, il numero non verrà ottimizzato, <font color="#03DAC5"><b>+</b></font> e <font color="#03DAC5"><b>0 iniziali</b></font> rimarranno, utile per differenziare i numeri nazionali.
         ]]>
     </string>
 
+    <string-array name="regex_flags_list">
+        <item>Numero grezzo</item>
+        <item>Ometti prefisso</item>
+        <item>Ignora maiuscole/minuscole</item>
+        <item>Punto corrisponde a tutto</item>
+    </string-array>
+    <string name="disable_number_optimization">Questa ottimizzazione può essere disabilitata dal flag regex "Numero grezzo".</string>
 </resources>

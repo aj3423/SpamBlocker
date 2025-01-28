@@ -58,6 +58,7 @@ import spam.blocker.util.Util
 import spam.blocker.util.Util.regexWildcardNotSupported
 import spam.blocker.util.hasFlag
 import spam.blocker.util.regexMatches
+import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
@@ -410,7 +411,7 @@ fun TestRegexDialog(
                 label = Str(R.string.test),
                 color = Teal200,
                 onClick = {
-                    result.value = regexStr.regexMatches(regexTestString.value, regexFlags)
+                    result.value = regexStr.regexMatchesNumber(regexTestString.value, regexFlags)
                 }
             )
         },
@@ -533,6 +534,8 @@ fun RegexInputBox(
                 remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) }
             val hasR =
                 remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) }
+            val hasCC =
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_OMIT_CC)) }
 
             // a fix for Tooltip+DropdownMenu
             val dropdownOffset = remember {
@@ -565,21 +568,25 @@ fun RegexInputBox(
                         CheckItem(
                             label = label,
                             state = when (idx) {
-                                0 -> hasI
-                                1 -> hasD
-                                else -> hasR
+                                0 -> hasR
+                                1 -> hasCC
+                                2 -> hasI
+                                else -> hasD // 3
                             },
                             onCheckChange = { checked ->
                                 when (idx) {
-                                    0 -> hasI.value = checked
-                                    1 -> hasD.value = checked
-                                    2 -> hasR.value = checked
+                                    0 -> hasR.value = checked
+                                    1 -> hasCC.value = checked
+                                    2 -> hasI.value = checked
+                                    3 -> hasD.value = checked
                                 }
                                 val newVal = regexFlags.intValue.setFlag(
                                     when (idx) {
-                                        0 -> Def.FLAG_REGEX_IGNORE_CASE
-                                        1 -> Def.FLAG_REGEX_DOT_MATCH_ALL
-                                        else -> Def.FLAG_REGEX_RAW_NUMBER
+                                        0 -> Def.FLAG_REGEX_RAW_NUMBER
+                                        1 -> Def.FLAG_REGEX_OMIT_CC
+
+                                        2 -> Def.FLAG_REGEX_IGNORE_CASE
+                                        else -> Def.FLAG_REGEX_DOT_MATCH_ALL // 3
                                     },
                                     checked
                                 )

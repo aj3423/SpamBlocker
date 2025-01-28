@@ -11,28 +11,45 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Bu bayraklar düzenli ifadenin eşleştirme davranışını değiştirir, varsayılan olarak yeni kurallar için ayarlanırlar. <br>
+            Bu bayraklar, regex\'in eşleşme davranışını değiştirir, varsayılan olarak yeni kurallar için ayarlanırlar. <br>
             <br>
 
-            <font color="#00BFFF"><b>Büyük/küçük harf duyarsızlığı.</b></font>:<br>
-            &ensp; Desen eşlemesini büyük/küçük harf duyarsız hale getirir, <font color="#03DAC5"><b>a</b></font>
-              her ikisini de eşleştirir <font color="#03DAC5"><b>a</b></font> ve <font color="#03DAC5"><b>A</b></font>. <br>
+            <font color="#00BFFF"><b>Ham Numara</b></font>: <br>
+            &ensp; Etkinleştirildiğinde, numara optimize edilmez, <font color="#03DAC5"><b>+</b></font>
+            ve <font color="#03DAC5"><b>baştaki 0\'lar</b></font> kalır, yerel numaraları ayırmak için yararlıdır.<br>
             <br>
 
-            <font color="#00BFFF"><b>Nokta Tümünü Eşleştir</b></font>: <br>
-            &ensp; Etkinleştirildiğinde, <font color="#03DAC5"><b>.</b></font> ki; aynı zamanda satır sonu karakterlerini de eşleşecektir (<font color="#03DAC5"><b>\\n</b></font>),
-              bu, noktanın birden fazla satırda eşleşmesine olanak tanır. <br>
-            &ensp; Kullanım durumu: <br>
-            &emsp;   Çok satırlı SMS mesajını eşleştir: <br>
-            &emsp;   <font color="#fa7f71">ödül kazandınız: http://<br>
+            <font color="#00BFFF"><b>Ülke Kodunu Yoksay</b></font>: <br>
+            &ensp; Etkinleştirildiğinde, baştaki <font color="#fa7f71">+</font> ve <font color="#fa7f71">ülke kodu</font>
+             uluslararası bir numaradan kaldırılacaktır.<br>
+            <br>
+            Örneğin, hem <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> hem de
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> <font color="#03DAC5">12345</font> olacaktır, bu, uluslararası numaralarla eşleşmek için `(33|44)*123.*` yerine daha basit `123.*` regex\'ini kullanmanıza olanak tanır.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Büyük/Küçük Harf Duyarlı Değil</b></font>:<br>
+            &ensp; Desen eşleştirmesini büyük/küçük harfe duyarsız yapar, <font color="#03DAC5"><b>a</b></font>
+              hem <font color="#03DAC5"><b>a</b></font> hem de <font color="#03DAC5"><b>A</b></font> ile eşleşir. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Nokta Hepsini Eşleştir</b></font>: <br>
+            &ensp; Etkinleştirildiğinde, <font color="#03DAC5"><b>.</b></font> ayrıca yeni satır karakterleriyle (<font color="#03DAC5"><b>\\n</b></font>) eşleşir,
+              bu, noktanın birden çok satırda eşleşmesine olanak tanır. <br>
+            &ensp; Kullanım örneği: <br>
+            &emsp;   Çok satırlı SMS mesajıyla eşleşme: <br>
+            &emsp;   <font color="#fa7f71">ödülünüzü talep edin: http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   kural ile: <br>
+            &emsp;   kuralla: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-            <font color="#00BFFF"><b>Ham Numara</b></font>: <br>
-            &ensp; Etkinleştirildiğinde, numara optimize edilmeyecek, <font color="#03DAC5"><b>+</b></font> ve <font color="#03DAC5"><b>öncelikli 0s</b></font> korunacak; bu, yerel numaraları ayırt etmek için faydalıdır.
         ]]>
     </string>
 
+    <string-array name="regex_flags_list">
+        <item>Ham Numara</item>
+        <item>Ülke Kodunu Atla</item>
+        <item>Büyük/Küçük Harf Duyarlı Değil</item>
+        <item>Nokta Hepsini Eşleştir</item>
+    </string-array>
+    <string name="disable_number_optimization">Bu optimizasyon, düzenli ifade bayrağı \'Ham Numara\' ile devre dışı bırakılabilir.</string>
 </resources>

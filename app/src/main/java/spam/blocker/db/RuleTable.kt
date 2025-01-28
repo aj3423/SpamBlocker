@@ -87,6 +87,9 @@ data class RegexRule(
             truncate(patternStr(), limit = 40)
     }
 
+    // This function is only used for matching normal text like sms content or anything other than
+    // phone number, for matching phone number, use the extension String.regexMatchesNumber, it checks
+    //  other regex flags like RawMode.
     fun matches(targetStr: String): Boolean {
         return pattern.regexMatches(targetStr, patternFlags)
     }

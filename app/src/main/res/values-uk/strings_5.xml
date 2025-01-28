@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Номер</string>
     <string name="sms_content">Зміст SMS</string>
     <string name="regex_flags">Прапори Regex</string>
-    <string-array name="regex_flags_list">
-        <item>Ігнорувати регістр</item>
-        <item>Крапка відповідає будь-якому символу</item>
-        <item>Сирий номер</item>
-    </string-array>
-    <string name="disable_number_optimization">Цю оптимізацію можна вимкнути за допомогою прапора Regex "Сирий номер".</string>
     <string name="off_time">Час відключення</string>
     <string name="schedule">Розклад</string>
     <string name="workday">Робочий день</string>

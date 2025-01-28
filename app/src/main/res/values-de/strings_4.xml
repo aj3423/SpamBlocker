@@ -11,28 +11,46 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Diese Flags ändern das Übereinstimmungsverhalten des Regex, sie werden standardmäßig für neue Regeln festgelegt. <br>
+            Diese Flags ändern das Suchverhalten des regulären Ausdrucks, sie werden standardmäßig für neue Regeln gesetzt. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Rohnummer</b></font>: <br>
+            &ensp; Wenn aktiviert, wird die Nummer nicht optimiert, <font color="#03DAC5"><b>+</b></font>
+            und <font color="#03DAC5"><b>führende Nullen</b></font> bleiben erhalten, nützlich zur Unterscheidung von Inlandnummern.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Ländercode auslassen</b></font>: <br>
+            &ensp; Wenn aktiviert, werden die führende <font color="#fa7f71">+</font> und der <font color="#fa7f71">Ländercode</font>
+             von einer internationalen Nummer entfernt.<br>
+            <br>
+            Beispielsweise werden sowohl <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> als auch
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> zu <font color="#03DAC5">12345</font>,
+            so können Sie einen einfacheren regulären Ausdruck `123.*` anstelle von `(33|44)*123.*` verwenden, um internationale Nummern abzugleichen.<br>
             <br>
 
             <font color="#00BFFF"><b>Groß-/Kleinschreibung ignorieren</b></font>:<br>
-            &ensp; Dies macht die Musterübereinstimmung unabhängig von der Groß-/Kleinschreibung, <font color="#03DAC5"><b>a</b></font>
+            &ensp; Dies macht die Musterübereinstimmung nicht mehr Groß-/Kleinschreibung-sensitiv, <font color="#03DAC5"><b>a</b></font>
               würde sowohl <font color="#03DAC5"><b>a</b></font> als auch <font color="#03DAC5"><b>A</b></font> entsprechen. <br>
             <br>
 
-            <font color="#00BFFF"><b>Punkt stimmt alles überein</b></font>: <br>
-            &ensp; Wenn aktiviert, wird <font color="#03DAC5"><b>.</b></font> auch Zeilenumbruchzeichen (<font color="#03DAC5"><b>\\n</b></font>) übereinstimmen,
-              dadurch kann der Punkt über mehrere Zeilen hinweg übereinstimmen. <br>
+            <font color="#00BFFF"><b>Punkt passt auf alle</b></font>: <br>
+            &ensp; Wenn aktiviert, <font color="#03DAC5"><b>.</b></font> wird auch Zeilenumbruchzeichen (<font color="#03DAC5"><b>\\n</b></font>) entsprechen,
+              dies ermöglicht es dem Punkt, über mehrere Zeilen hinweg zu passen. <br>
             &ensp; Anwendungsfall: <br>
             &emsp;   Mehrzeilige SMS-Nachricht abgleichen: <br>
-            &emsp;   <font color="#fa7f71">fordern Sie Ihren Preis an: http://<br>
+            &emsp;   <font color="#fa7f71">Gewinne abholen: http://<br>
             &emsp;   abc.com </font><br>
             &emsp;   mit Regel: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-            <font color="#00BFFF"><b>Rohe Nummer</b></font>: <br>
-            &ensp; Wenn aktiviert, wird die Nummer nicht optimiert, <font color="#03DAC5"><b>+</b></font> und <font color="#03DAC5"><b>führende 0en</b></font> bleiben erhalten, nützlich, um inländische Nummern zu unterscheiden.
         ]]>
     </string>
 
+    <string-array name="regex_flags_list">
+        <item>Rohdaten der Nummer</item>
+        <item>Ländercode auslassen</item>
+        <item>Groß-/Kleinschreibung ignorieren</item>
+        <item>Punkt findet alles</item>
+    </string-array>
+    <string name="disable_number_optimization">Diese Optimierung kann durch den Regex-Flag "Rohzahl" deaktiviert werden.</string>
 </resources>

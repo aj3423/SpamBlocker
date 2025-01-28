@@ -78,7 +78,7 @@ It's not necessary to leave this app running in the background, you can kill the
 
      - IP address
      - TLS and TCP fingerprints (which would reveal your Android version)
-     - The reported number
+     - The reported number(including the country code)
 
    Nothing else.
 

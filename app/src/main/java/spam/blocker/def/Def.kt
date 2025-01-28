@@ -128,14 +128,16 @@ object Def {
     const val FLAG_FOR_PASSED = 1 shl 4
     const val FLAG_FOR_BLOCKED = 1 shl 5
 
-    // regexFlags
+    // regexFlags, max: 1 shl 30
     const val FLAG_REGEX_IGNORE_CASE = 1 shl 0
     const val FLAG_REGEX_MULTILINE = 1 shl 1
     const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
     const val FLAG_REGEX_LITERAL = 1 shl 3
-    const val FLAG_REGEX_RAW_NUMBER = 1 shl 10 // max: 1 shl 30
+    const val FLAG_REGEX_RAW_NUMBER = 1 shl 10
     const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
     const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
+    const val FLAG_REGEX_OMIT_CC = 1 shl 13
+
 
     const val DefaultRegexFlags =  FLAG_REGEX_IGNORE_CASE or FLAG_REGEX_DOT_MATCH_ALL
 
@@ -144,9 +146,10 @@ object Def {
         FLAG_REGEX_MULTILINE to "m",
         FLAG_REGEX_DOT_MATCH_ALL to "d",
         FLAG_REGEX_LITERAL to "l",
-        FLAG_REGEX_RAW_NUMBER to "r",
+        FLAG_REGEX_RAW_NUMBER to "®", // r
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",
+        FLAG_REGEX_OMIT_CC to "🌐",
     )
 
     // inverse means it won't show labels for these flags when they are set

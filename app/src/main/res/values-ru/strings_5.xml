@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Номер</string>
     <string name="sms_content">Текст SMS</string>
     <string name="regex_flags">Флаги Regex</string>
-    <string-array name="regex_flags_list">
-        <item>Игнорировать регистр</item>
-        <item>Точка соответствует всем</item>
-        <item>Исходный номер</item>
-    </string-array>
-    <string name="disable_number_optimization">Эта оптимизация может быть отключена флагом Regex "Исходный номер".</string>
     <string name="off_time">Время отключения</string>
     <string name="schedule">Расписание</string>
     <string name="workday">Рабочий день</string>

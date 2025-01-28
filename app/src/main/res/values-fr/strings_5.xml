@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Numéro</string>
     <string name="sms_content">Contenu du SMS</string>
     <string name="regex_flags">Drapeaux regex</string>
-    <string-array name="regex_flags_list">
-        <item>Ignorer la casse</item>
-        <item>Point correspond à tous</item>
-        <item>Numéro brut</item>
-    </string-array>
-    <string name="disable_number_optimization">Cette optimisation peut être désactivée par le drapeau regex « Numéro brut ». </string>
     <string name="off_time">Heure d’arrêt</string>
     <string name="schedule">Planification</string>
     <string name="workday">Jour ouvrable</string>

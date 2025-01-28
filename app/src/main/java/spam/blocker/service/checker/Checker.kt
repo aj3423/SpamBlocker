@@ -33,6 +33,7 @@ import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
+import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
 
 class CheckContext(
@@ -645,10 +646,10 @@ class Checker { // for namespace only
     private class Number(
         private val ctx: Context,
         private val cCtx: CheckContext,
-        private val numberRule: RegexRule,
+        private val rule: RegexRule,
     ) : IChecker {
         override fun priority(): Int {
-            return numberRule.priority
+            return rule.priority
         }
 
         override fun check(): ICheckResult? {
@@ -656,7 +657,7 @@ class Checker { // for namespace only
             val logger = cCtx.logger
 
             // 1. check time schedule
-            if (TimeSchedule.dissatisfyNow(numberRule.schedule)) {
+            if (TimeSchedule.dissatisfyNow(rule.schedule)) {
                 logger?.debug(ctx.getString(R.string.outside_time_schedule))
                 return null
             }
@@ -666,35 +667,28 @@ class Checker { // for namespace only
                     .formatAnnotated(
                         ctx.getString(R.string.number_rule).A(SkyBlue),
                         priority().toString().A(LightMagenta),
-                        numberRule.summary().A(if (numberRule.isBlacklist) Salmon else Emerald),
+                        rule.summary().A(if (rule.isBlacklist) Salmon else Emerald),
                     )
             )
 
             // 2. check regex
-
-            // check if user enabled the `RawNumber` mode for this regex
-            val numberToCheck = if (numberRule.patternFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
-                rawNumber
-            else
-                Util.clearNumber(rawNumber)
-
-            if (numberRule.matches(numberToCheck)) {
-                val block = numberRule.isBlacklist
+            if (rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)) {
+                val block = rule.isBlacklist
 
                 if (block)
                     logger?.error(
                         ctx.getString(R.string.blocked_by)
-                            .format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}"
+                            .format(ctx.getString(R.string.number_rule)) + ": ${rule.summary()}"
                     )
                 else
                     logger?.success(
                         ctx.getString(R.string.allowed_by)
-                            .format(ctx.getString(R.string.number_rule)) + ": ${numberRule.summary()}"
+                            .format(ctx.getString(R.string.number_rule)) + ": ${rule.summary()}"
                     )
 
                 return ByRegexRule(
                     type = if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER,
-                    rule = numberRule,
+                    rule = rule,
                 )
             }
 
@@ -883,7 +877,7 @@ class Checker { // for namespace only
                     contactInfo != null && rule.extraMatches(contactInfo.name)
                 } else {
                     // regular number
-                    rule.extraMatches(numberToCheck)
+                    rule.patternExtra.regexMatchesNumber(rawNumber, rule.patternExtraFlags)
                 }
             }
 

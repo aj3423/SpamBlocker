@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Número</string>
     <string name="sms_content">Contido do SMS</string>
     <string name="regex_flags">Bandeiras de Regex</string>
-    <string-array name="regex_flags_list">
-        <item>Ignorar Maiúsculas</item>
-        <item>Punto Coincide con Todo</item>
-        <item>Número Crú</item>
-    </string-array>
-    <string name="disable_number_optimization">Esta optimización pódese deshabilitar coa bandeira de regex "Número Crú".</string>
     <string name="off_time">Tempo Fóra</string>
     <string name="schedule">Programación</string>
     <string name="workday">Día Laborable</string>

@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Nummer</string>
     <string name="sms_content">SMS Inhalt</string>
     <string name="regex_flags">Regex Flags</string>
-    <string-array name="regex_flags_list">
-        <item>Groß-/Kleinschreibung ignorieren</item>
-        <item>Punkt passt zu allen</item>
-        <item>Rohzahl</item>
-    </string-array>
-    <string name="disable_number_optimization">Diese Optimierung kann durch den Regex-Flag "Rohzahl" deaktiviert werden.</string>
     <string name="off_time">Auszeit</string>
     <string name="schedule">Zeitplan</string>
     <string name="workday">Arbeitstag</string>

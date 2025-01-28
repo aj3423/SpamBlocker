@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">号码</string>
     <string name="sms_content">短信内容</string>
     <string name="regex_flags">正则表达式标志</string>
-    <string-array name="regex_flags_list">
-        <item>忽略大小写</item>
-        <item>点匹配所有</item>
-        <item>原始号码</item>
-    </string-array>
-    <string name="disable_number_optimization">可以通过正则表达式标志“原始号码”来禁用此优化。</string>
     <string name="off_time">非工作时间</string>
     <string name="schedule">时间安排</string>
     <string name="workday">工作日</string>

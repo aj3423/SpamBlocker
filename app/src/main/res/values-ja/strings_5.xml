@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">番号</string>
     <string name="sms_content">SMS コンテンツ</string>
     <string name="regex_flags">正規表現フラグ</string>
-    <string-array name="regex_flags_list">
-        <item>大文字小文字を区別しない</item>
-        <item>ドットがすべてに一致</item>
-        <item>生番号</item>
-    </string-array>
-    <string name="disable_number_optimization">この最適化は正規表現フラグ「生番号」で無効にできます。</string>
     <string name="off_time">オフ時間</string>
     <string name="schedule">スケジュール</string>
     <string name="workday">平日</string>

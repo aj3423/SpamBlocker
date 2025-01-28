@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Número</string>
     <string name="sms_content">Contenido del SMS</string>
     <string name="regex_flags">Banderas Regex</string>
-    <string-array name="regex_flags_list">
-        <item>Ignorar Mayúsculas/Minúsculas</item>
-        <item>Punto Coincide con Todo</item>
-        <item>Número Bruto</item>
-    </string-array>
-    <string name="disable_number_optimization">Esta optimización puede ser desactivada por la bandera regex "Número Bruto".</string>
     <string name="off_time">Tiempo Apagado</string>
     <string name="schedule">Horario</string>
     <string name="workday">Día Laboral</string>

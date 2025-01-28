@@ -29,6 +29,7 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import java.util.UUID
+import java.util.regex.Pattern
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit
@@ -66,6 +67,25 @@ val PermissivePrettyJson =  Json {
     ignoreUnknownKeys = true
 }
 
+// For matching phone number only, it handles all regex flags like: RawMode/OmitCC
+fun String.regexMatchesNumber(rawNumber: String, regexFlags: Int): Boolean {
+    val toMatch = if(regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) {
+        rawNumber
+    } else if (regexFlags.hasFlag(Def.FLAG_REGEX_OMIT_CC)) {
+        val intn = Util.parseInternationalNumber(rawNumber) // it returns Pair<CC, Phone>?
+        if (intn != null) {
+            intn.second
+        } else {
+            Util.clearNumber(rawNumber)
+        }
+    } else {
+        Util.clearNumber(rawNumber)
+    }
+
+    val opts = Util.flagsToRegexOptions(regexFlags)
+    return this.toRegex(opts).matches(toMatch)
+}
+// For matching anything other than phone number
 fun String.regexMatches(targetStr: String, regexFlags: Int): Boolean {
     val opts = Util.flagsToRegexOptions(regexFlags)
     return this.toRegex(opts).matches(targetStr)
@@ -158,6 +178,29 @@ object Util {
 
         return parts.joinToString(" ")
     }
+
+    fun isInternationalNumber(number: String): Boolean {
+        return "^\\+\\d+$".toRegex().matches(number)
+    }
+
+    fun parseInternationalNumber(rawNumber: String): Pair<String, String>? {
+        if (!isInternationalNumber(rawNumber))
+            return null
+        val number = rawNumber.substring(1)
+
+        val matcher =
+            Pattern.compile("^([17]|2[07]|3[0123469]|4[013456789]|5[12345678]|6[0123456]|8[1246]|9[0123458]|\\d{3})\\d*?(\\d{4,6})$")
+                .matcher(number);
+        if (!matcher.find()) {
+            return null
+        }
+        val cc = matcher.group(1) ?: return null
+
+        val phone = number.substring(cc.length)
+
+        return Pair(cc, phone)
+    }
+
 
     // Check if it only contains:
     //   0-9 space - ( )

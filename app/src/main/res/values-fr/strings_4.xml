@@ -11,28 +11,46 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Ces drapeaux modifient le comportement de correspondance de l\'expression régulière, ils sont définis par défaut pour les nouvelles règles. <br>
+            Ces indicateurs modifient le comportement de correspondance de l\'expression régulière ; ils sont définis par défaut pour les nouvelles règles. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Numéro brut</b></font>: <br>
+            &ensp; Lorsqu\'elle est activée, le numéro ne sera pas optimisé, <font color="#03DAC5"><b>+</b></font>
+            et les <font color="#03DAC5"><b>zéros non significatifs</b></font> resteront, utile pour différencier les numéros nationaux.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignorer l\'indicatif pays</b></font>: <br>
+            &ensp; Lorsqu\'elle est activée, le <font color="#fa7f71">+</font> et l\'<font color="#fa7f71">indicatif pays</font>
+             seront supprimés d\'un numéro international.<br>
+            <br>
+            Par exemple, <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> et
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> deviendront <font color="#03DAC5">12345</font>,
+            ce qui vous permet d\'utiliser une expression régulière plus simple `123.*` au lieu de `(33|44)*123.*` pour faire correspondre les numéros internationaux.<br>
             <br>
 
             <font color="#00BFFF"><b>Ignorer la casse</b></font>:<br>
             &ensp; Cela rend la correspondance de motif insensible à la casse, <font color="#03DAC5"><b>a</b></font>
-              correspondrait à la fois à <font color="#03DAC5"><b>a</b></font> et à <font color="#03DAC5"><b>A</b></font>. <br>
+              correspondra à la fois à <font color="#03DAC5"><b>a</b></font> et à <font color="#03DAC5"><b>A</b></font>. <br>
             <br>
 
             <font color="#00BFFF"><b>Point correspond à tout</b></font>: <br>
-            &ensp; Lorsque cette option est activée, <font color="#03DAC5"><b>.</b></font> correspondra également aux caractères de nouvelle ligne (<font color="#03DAC5"><b>\\n</b></font>),
+            &ensp; Lorsqu\'elle est activée, <font color="#03DAC5"><b>.</b></font> correspondra également aux caractères de nouvelle ligne (<font color="#03DAC5"><b>\\n</b></font>),
               ce qui permet au point de correspondre sur plusieurs lignes. <br>
-            &ensp; Cas d\'utilisation : <br>
-            &emsp;   Correspondance de message SMS multilingue : <br>
-            &emsp;   <font color="#fa7f71">réclamez votre prix : http://<br>
+            &ensp; Cas d\'utilisation : <br>
+            &emsp;   Correspondre à un message SMS multiligne : <br>
+            &emsp;   <font color="#fa7f71">réclamez votre prix : http://<br>
             &emsp;   abc.com </font><br>
-            &emsp;   avec la règle : <br>
+            &emsp;   avec la règle : <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-            <font color="#00BFFF"><b>Numéro brut</b></font>: <br>
-            &ensp; Lorsque cette option est activée, le <short>numéro</short> ne sera pas optimisé, <font color="#03DAC5"><b>+</b></font> et <font color="#03DAC5"><b>les 0s de tête</b></font> resteront, utiles pour différencier les <short>numéros</short> nationaux.
         ]]>
     </string>
 
+    <string-array name="regex_flags_list">
+        <item>Numéro brut</item>
+        <item>Ignorer l\'indicatif</item>
+        <item>Ignorer la casse</item>
+        <item>Point correspond à tout</item>
+    </string-array>
+    <string name="disable_number_optimization">Cette optimisation peut être désactivée par le drapeau regex « Numéro brut ». </string>
 </resources>

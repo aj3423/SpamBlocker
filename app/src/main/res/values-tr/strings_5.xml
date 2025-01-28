@@ -21,12 +21,6 @@
     <string name="phone_number_abbrev">Numara</string>
     <string name="sms_content">SMS İçeriği</string>
     <string name="regex_flags">Düzenli İfade Bayrakları</string>
-    <string-array name="regex_flags_list">
-        <item>Büyük/Küçük Harfe Duyarsız</item>
-        <item>Tümünü Eşleştir</item>
-        <item>Ham Numara</item>
-    </string-array>
-    <string name="disable_number_optimization">Bu optimizasyon, düzenli ifade bayrağı \'Ham Numara\' ile devre dışı bırakılabilir.</string>
     <string name="off_time">Kapalı Zaman</string>
     <string name="schedule">Takvim</string>
     <string name="workday">Çalışma Günü</string>

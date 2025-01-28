@@ -14,6 +14,20 @@
             These flags change the matching behavior of the regex, they are set for new rules by default. <br>
             <br>
 
+            <font color="#00BFFF"><b>Raw Number</b></font>: <br>
+            &ensp; When enabled, the number will not be optimized, <font color="#03DAC5"><b>+</b></font>
+            and <font color="#03DAC5"><b>leading 0s</b></font> will remain, useful for differentiating domestic numbers.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Omit Country Code</b></font>: <br>
+            &ensp; When enabled, the leading <font color="#fa7f71">+</font> and the <font color="#fa7f71">country code</font>
+             will be removed from an international number.<br>
+            <br>
+            For example, both <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> and
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> will become <font color="#03DAC5">12345</font>,
+            this allows you to use simpler regex `123.*` instead of `(33|44)*123.*` to match international numbers.<br>
+            <br>
+
             <font color="#00BFFF"><b>Ignore Case</b></font>:<br>
             &ensp; It makes the pattern matching case-insensitive, <font color="#03DAC5"><b>a</b></font>
               would match both <font color="#03DAC5"><b>a</b></font> and <font color="#03DAC5"><b>A</b></font>. <br>
@@ -29,10 +43,14 @@
             &emsp;   with rule: <br>
             &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
 
-            <br>
-            <font color="#00BFFF"><b>Raw Number</b></font>: <br>
-            &ensp; When enabled, the number will not be optimized, <font color="#03DAC5"><b>+</b></font> and <font color="#03DAC5"><b>leading 0s</b></font> will remain, useful for differentiating domestic numbers.
         ]]>
     </string>
 
+    <string-array name="regex_flags_list">
+        <item>Raw Number</item>
+        <item>Omit Country Code</item>
+        <item>Ignore Case</item>
+        <item>Dot Match All</item>
+    </string-array>
+    <string name="disable_number_optimization">This optimization can be disabled by the regex flag "Raw Number".</string>
 </resources>
