@@ -55,4 +55,18 @@
     </string>
 
     <string name="for_example"><translate>Наприклад:</translate></string>
+    <string name="tags_supported">
+        <![CDATA[
+        Підтримувані теги:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; Для API, які потребують HTTP-аутентифікації. Наприклад:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; буде розпарсовано як:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

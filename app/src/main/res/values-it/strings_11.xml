@@ -54,4 +54,18 @@
         Il numero massimo di righe visualizzate per il testo della descrizione, il testo rimanente verrà troncato e seguito da un\'ellissi.
         ]]>
     </string>
+    <string name="tags_supported">
+        <![CDATA[
+        Tag supportati:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; Per le API che richiedono l\'autenticazione HTTP di base. Ad esempio:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; verrà analizzato come:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

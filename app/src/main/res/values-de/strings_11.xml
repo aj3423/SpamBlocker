@@ -55,4 +55,18 @@
     </string>
 
     <string name="for_example"><translate>Beispiel:</translate></string>
+    <string name="tags_supported">
+        <![CDATA[
+        Unterstützte Tags:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; Für APIs, die HTTP-Basisauthentifizierung benötigen. Beispiel:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; wird analysiert zu:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

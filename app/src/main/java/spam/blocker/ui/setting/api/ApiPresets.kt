@@ -16,6 +16,7 @@ import spam.blocker.util.Algorithm.b64Decode
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util.isUUID
 import spam.blocker.util.resolveBase64Tag
+import spam.blocker.util.resolveBasicAuthTag
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -84,13 +85,12 @@ val authConfig_PhoneBlock = AuthConfig(
     ),
     tooltipId = R.string.help_api_preset_phoneblock_authorization,
     preProcessor = { actions, formValues ->
-        // replace the {username}, {password} in HttpDownload.header
+        // replace the tags in HttpDownload.header
         actions.find { it is HttpDownload }?.let {
             val http = it as HttpDownload
             http.header = http.header
                 .replace("{username}", formValues[0])
                 .replace("{password}", formValues[1])
-                .resolveBase64Tag()
         }
     },
     validator = validator@ {
@@ -122,7 +122,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     ),
                     HttpDownload(
                         url ="https://phoneblock.net/phoneblock/api/num/00{cc}{domestic}",
-                        header = "Authorization: Basic {base64({username}:{password})}"
+                        header = "{basic_auth({username}:{password})}"
                     ),
                     ParseQueryResult(
                         negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE|B_MISSED)",

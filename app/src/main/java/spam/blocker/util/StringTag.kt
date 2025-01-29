@@ -43,6 +43,7 @@ fun String.resolveNumberTag(
         .replace("{origin_number}", rawNumber?.replace(" ", "") ?: "")
 }
 
+// Deprecated by `resolveBasicAuthTag`, for history compatibility only.
 fun String.resolveBase64Tag(): String {
     var ret = this
 
@@ -51,10 +52,28 @@ fun String.resolveBase64Tag(): String {
 
     result?.groups?.size?.let {
         if (it > 1) {
-            val g0 = result.groups[0]!!.value
+            val g0 = result.groups[0]!!.value // the tpl
             val g1 = result.groups[1]!!.value
 
             ret = ret.replace(g0, b64Encode(g1))
+        }
+    }
+    return ret
+}
+
+// Authorization: Basic {base64({username}:{password})}
+fun String.resolveBasicAuthTag(): String {
+    var ret = this
+
+    val tpl ="\\{basic_auth\\((.+?:.+?)\\)\\}" // the tpl
+    val result = tpl.toRegex().find(ret)
+
+    result?.groups?.size?.let {
+        if (it == 2) {
+            val g0 = result.groups[0]!!.value
+            val g1 = result.groups[1]!!.value
+
+            ret = ret.replace(g0, "Authorization: Basic ${b64Encode(g1)}")
         }
     }
     return ret

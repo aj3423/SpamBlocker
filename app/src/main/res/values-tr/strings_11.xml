@@ -54,4 +54,18 @@
     </string>
 
     <string name="for_example">Örneğin:</string>
+    <string name="tags_supported">
+        <![CDATA[
+        Desteklenen Etiketler:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(kullanıcı_adı:şifre)}</b></font><br>
+        &ensp; HTTP temel kimlik doğrulaması gerektiren API\'ler için. Örneğin:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; şu şekilde ayrıştırılır:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

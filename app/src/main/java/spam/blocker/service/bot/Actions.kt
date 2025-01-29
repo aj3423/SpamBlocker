@@ -82,6 +82,8 @@ import spam.blocker.util.asyncHttpRequest
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
+import spam.blocker.util.resolveBase64Tag
+import spam.blocker.util.resolveBasicAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveTimeTags
@@ -190,7 +192,10 @@ open class HttpDownload(
      */
     private fun splitHeader(allHeadersStr: String): Map<String, String> {
         return allHeadersStr.lines().filter { it.trim().isNotEmpty() }.associate { line ->
-            val (key, value) = line.split(":").map { it.trim() }
+            val resolved = line
+                .resolveBasicAuthTag()
+                .resolveBase64Tag()
+            val (key, value) = resolved.split(":").map { it.trim() }
             key to value
         }
     }
@@ -229,7 +234,7 @@ open class HttpDownload(
                     rawNumber = aCtx.rawNumber,
                 )
                 .replace(tagCategory, aCtx.realCategory ?: "")
-            if (method == HTTP_POST){
+            if (method == HTTP_POST) {
                 aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: $resolvedBody")
             }
 
@@ -326,7 +331,9 @@ open class HttpDownload(
             label = { Text(Str(R.string.http_header)) },
             leadingIconId = R.drawable.ic_http_header,
             onValueChange = { header = it },
-            helpTooltip= Str(R.string.help_http_header),
+            helpTooltip = Str(R.string.help_http_header) + "<br>" + Str(R.string.tags_supported) + Str(
+                R.string.auth_tags
+            ),
             placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
         )
 
@@ -350,7 +357,7 @@ open class HttpDownload(
                 label = { Text(Str(R.string.http_post_body)) },
                 leadingIconId = R.drawable.ic_post,
                 onValueChange = { body = it },
-                helpTooltip= Str(R.string.help_http_post_body).format(
+                helpTooltip = Str(R.string.help_http_post_body).format(
                     Str(R.string.number_tags)
                 ),
             )
@@ -928,7 +935,7 @@ class ImportToSpamDB(
                     time = now,
                     importReason = importReason,
                     // when import after API query, log the api domain for future reporting
-                    importReasonExtra = if(importReason == ImportDbReason.ByAPI)
+                    importReasonExtra = if (importReason == ImportDbReason.ByAPI)
                         domainFromUrl(aCtx.httpUrl) else null,
                 )
             }
@@ -1603,8 +1610,10 @@ class ParseIncomingNumber(
 
     override fun missingPermissions(ctx: Context): List<IPermission> {
         return listOf(
-            NormalPermission(Manifest.permission.READ_PHONE_STATE,
-                prompt = ctx.getString(R.string.auto_detect_cc_permission)),
+            NormalPermission(
+                Manifest.permission.READ_PHONE_STATE,
+                prompt = ctx.getString(R.string.auto_detect_cc_permission)
+            ),
         )
     }
 
@@ -2040,19 +2049,24 @@ class CategoryConfig(
             text = jsonStr,
             label = { Text(Str(R.string.action_category_config)) },
             leadingIconId = R.drawable.ic_category,
-            placeholder = { DimGreyLabel("""
+            placeholder = {
+                DimGreyLabel(
+                    """
                 {
                   "{marketing}": "gym",
                   "{other}": "bitcoin",
                   ...
                 }
-            """.trimIndent()) },
-            helpTooltip = Str(R.string.help_action_category_config) ,
+            """.trimIndent()
+                )
+            },
+            helpTooltip = Str(R.string.help_action_category_config),
             onValueChange = { newVal ->
                 try {
                     map = PermissiveJson.decodeFromString(newVal)
                     jsonStr = newVal
-                } catch (_: Exception) {}
+                } catch (_: Exception) {
+                }
             }
         )
     }
@@ -2069,8 +2083,10 @@ class ReportNumber(
 ) : IPermissiveAction {
     override fun missingPermissions(ctx: Context): List<IPermission> {
         return listOf(
-            NormalPermission(Manifest.permission.READ_CALL_LOG,
-                prompt = ctx.getString(R.string.report_number_require_call_log_permission)),
+            NormalPermission(
+                Manifest.permission.READ_CALL_LOG,
+                prompt = ctx.getString(R.string.report_number_require_call_log_permission)
+            ),
         )
     }
 

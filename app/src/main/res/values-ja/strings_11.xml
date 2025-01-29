@@ -55,4 +55,18 @@
     </string>
 
     <string name="for_example">例えば：</string>
+    <string name="tags_supported">
+        <![CDATA[
+        対応タグ：<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; HTTP基本認証が必要なAPI用。例：<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp;は以下のように解析されます：<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>
