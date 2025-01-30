@@ -20,6 +20,7 @@ import (
 var nameMap = map[string]string{
 	`de`:     `German`,
 	`es`:     `Spanish`,
+	`fa`:     `Persian`,
 	`fr`:     `French`,
 	`gal`:    `Galician`,
 	`it`:     `Italian`,

@@ -60,7 +60,12 @@
     <string name="target_text">Target Text</string>
     <string name="match_found">Match found</string>
     <string name="match_not_found">Match not found</string>
-    <string name="help_test_regex">To test if the regex works as expected, it will try to match this text.</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        This is only for testing whether this regex matches a text, excluding other rules.<br>
+        To test against all rules, use the floating testing button in the bottom right corner instead.
+        ]]>
+    </string>
     <string name="allow">Allow</string>
     <string name="block">Block</string>
     <string name="seconds">Seconds</string>

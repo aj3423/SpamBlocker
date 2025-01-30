@@ -1,0 +1,103 @@
+<resources>
+    <string name="contacts">تماس</string>
+    <string name="non_contacts">غیر از مخاطبین</string>
+    <string name="inclusive">شمول</string>
+    <string name="exclusive">اختصاصی</string>
+    <string name="help_contacts">
+        <![CDATA[
+        در صورت فعال بودن، تماس‌ها/پیام‌ها از مخاطبین همیشه مجاز هستند. <br>
+        <br>
+          - <b>شمول</b>: <br>
+              &emsp; شماره‌های غیر مخاطب توسط قوانین دیگر بررسی می‌شوند. <br>
+              &emsp; <font color="#ea86ff"><b>اولویت: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>اختصاصی</b></font>: <br>
+              &emsp; شماره‌های غیر مخاطب <font color="#fa7f71"><b>مسدود</b></font> می‌شوند. <br>
+              &emsp; <font color="#ea86ff"><b>اولویت: 0</b></font> <br>
+        <br>
+        این مورد برای تماس‌ها و پیام‌های SMS اعمال می‌شود.
+        ]]>
+    </string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">شامل تایید نشده‌ها</string>
+    <string name="unverified">تایید نشده</string>
+    <string name="valid">تماس معتبر</string>
+    <string name="spoof">تماس جعلی</string>
+    <string name="help_stir">
+        <![CDATA[
+            تأیید STIR/SHAKEN به <b>Android 11+</b> و <b>پشتیبانی اپراتور</b> نیاز دارد. <br>
+            <br>
+            سه نتیجه تأیید ممکن وجود دارد: <br>
+            <font color="#03DAC5"><b>معتبر</b></font> <br>
+            &emsp; تماس بسیار محتمل است که معتبر باشد، نه جعلی. <br>
+            <font color="#ffa500"><b>تایید نشده</b></font> <br>
+            &emsp; تماس قابل تأیید نیست، یا تأیید STIR پشتیبانی نمی‌شود. <br>
+            <font color="#fa7f71"><b>جعلی</b></font> <br>
+            &emsp; بسیار محتمل است که یک تماس جعلی باشد. <br>
+            <br>
+            <br>
+              - <b>شمول</b>: <br>
+                  &emsp; تماس‌هایی که این بررسی را با شکست مواجه می‌شوند، همچنان توسط قوانین دیگر بررسی می‌شوند. <br>
+                  &emsp; هنگامی که "<b>شامل تایید نشده‌ها</b>" تیک خورده است، تماسی که تایید نشده باشد نیز عبور می‌کند. <br>
+                  &emsp; <font color="#ea86ff"><b>اولویت: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>اختصاصی</b></font>: <br>
+                  &emsp; تماس‌هایی که این بررسی را با شکست مواجه می‌شوند، <font color="#fa7f71"><b>مسدود</b></font> می‌شوند. <br>
+                  &emsp; هنگامی که "<b>شامل تایید نشده‌ها</b>" تیک خورده است، تماسی که تایید نشده باشد نیز مسدود می‌شود. <br>
+                  &emsp; <font color="#ea86ff"><b>اولویت: 0</b></font>
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        فیلد مورد نیاز <b>الگو</b> در فایل .csv وجود ندارد، برای توضیح بیشتر به راهنمای بالون مراجعه کنید.
+        ]]>
+    </string>
+    <string name="auto_report">گزارش خودکار</string>
+    <string name="help_auto_report">
+        <![CDATA[
+        گزارش خودکار شماره مسدود شده به تمام نقاط پایانی API بدون دخالت انسان، برای ساخت پایگاه داده‌های جمع‌آوری شده ما در برابر تماس‌های مزاحم.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">تأخیر در گزارش</font></h4><br>
+        هنگامی که یک تماس ورودی مسدود می‌شود، قبل از گزارش شماره، یک بافر زمانی یک ساعته وجود خواهد داشت.
+        اگر شماره بعداً به دلیل تکرار یا بازگشت مجدد در این بافر زمانی مجاز شود،
+        شماره غیر مزاحم در نظر گرفته می‌شود و گزارش نمی‌شود.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">حریم خصوصی</font></h4>
+        <br>
+        نقاط پایانی API موارد زیر را مشاهده خواهند کرد:<br>
+        <br>
+         &ensp; - آدرس IP<br>
+         &ensp; - اثر انگشت‌های Tls و Tcp (که ممکن است نسخه اندروید شما را نشان دهد)<br>
+         &ensp; - شماره گزارش شده (شامل کد کشور شما)<br>
+        <br>
+        هیچ چیز دیگری گزارش نخواهد شد.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">نوع گزارش</font></h4><br>
+        <h5>1. <font color="#fa7f71">گزارش نخواهد داد:</font></h5>
+        <br>
+        - <font color="#fa7f71">شماره‌های عبوری</font><br>
+        و انواع مسدود شده زیر:<br>
+        - <font color="#fa7f71">آزمایش جهانی</font><br>
+        - <font color="#fa7f71">بیان منظم مخاطبین</font><br>
+        - <font color="#fa7f71">بیان منظم گروه مخاطبین</font><br>
+        - <font color="#fa7f71">پایگاه داده</font><br>
+        - <font color="#fa7f71">حالت جلسه</font><br>
+        - <font color="#fa7f71">پرس و جو فوری</font> (برای جلوگیری از نشت شماره نقطه پایانی API به سایر رقبا)<br>
+        <br>
+        <h5>2. <font color="#03DAC5">گزارش خواهد داد:</font></h5>
+        <br>
+        انواع مسدود شده زیر:<br>
+        - <font color="#03DAC5">غیر از مخاطبین</font>(اختصاصی)<br>
+        - <font color="#03DAC5">تأیید STIR</font><br>
+        - <font color="#03DAC5">بیان منظم شماره</font><br>
+        - <font color="#03DAC5">بیان منظم محتوای SMS</font><br>
+        <br>
+        <h5>3. موارد استثناء:</h5>
+        <br>
+        - هنگامی که توسط <font color="#03DAC5">پرس و جو فوری</font> مسدود می‌شود، برای افزایش امتیاز شماره به همان API گزارش می‌شود.
+         به عنوان مثال، هنگامی که توسط پرس و جو API از check.com مسدود می‌شود، فقط به check.com گزارش می‌دهد، نه به others.com. <br>
+        - هنگامی که توسط <font color="#03DAC5">پایگاه داده</font> مسدود می‌شود و رکورد در ابتدا توسط یک پرس و جو فوری API اضافه شده است،
+         به همان دلیل بالا، فقط به همان API گزارش می‌شود.<br>
+        ]]>
+    </string>
+</resources>

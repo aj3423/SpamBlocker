@@ -60,7 +60,12 @@
     <string name="target_text">Zieltext</string>
     <string name="match_found">Übereinstimmung gefunden</string>
     <string name="match_not_found">Keine Übereinstimmung gefunden</string>
-    <string name="help_test_regex">Um zu testen, ob der reguläre Ausdruck wie erwartet funktioniert, wird versucht, diesen Text abzugleichen.</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Dies dient nur zum Testen, ob dieser reguläre Ausdruck mit einem Text übereinstimmt, wobei andere Regeln ausgeschlossen sind.<br>
+        Um gegen alle Regeln zu testen, verwenden Sie stattdessen die schwebende Testtaste in der unteren rechten Ecke.
+        ]]>
+    </string>
     <string name="allow">Zulassen</string>
     <string name="block">Blockieren</string>
     <string name="seconds">Sekunden</string>

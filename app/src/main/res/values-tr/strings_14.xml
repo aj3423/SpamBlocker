@@ -60,7 +60,12 @@
     <string name="target_text">Hedef Metin</string>
     <string name="match_found">Eşleşme bulundu</string>
     <string name="match_not_found">Eşleşme bulunamadı</string>
-    <string name="help_test_regex">Normal ifadenin beklendiği gibi çalışıp çalışmadığını test etmek için bu metinle eşleşmeyi deneyecektir.</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Bu, yalnızca diğer kuralları hariç tutarak bu düzenli ifadenin bir metinle eşleşip eşleşmediğini test etmek içindir.<br>
+        Tüm kurallara karşı test etmek için, bunun yerine sağ alt köşedeki yüzen test düğmesini kullanın.
+        ]]>
+    </string>
     <string name="allow">İzin Ver</string>
     <string name="block">Engelle</string>
     <string name="seconds">Saniye</string>

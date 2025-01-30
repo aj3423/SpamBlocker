@@ -1,0 +1,66 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        این قوانین برای محتوای پیامک اعمال می‌شوند.<br>
+        <br>
+        <font color="#00BFFF"><b> - برخی الگوهای معمول</b></font>:<br>
+        &ensp; - شامل "کد تایید": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - شامل هر یک از کلمات: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        راهی سریع برای کپی کردن محتوا از پیامک‌ها یا شماره تلفن‌ها، که گرفتن کدهای تایید یا شماره‌های دریافتی را آسان می‌کند.<br>
+        <br>
+        هنگامی که مطابقت دارد، دکمه‌ای مانند <font color="#00BFFF"><b>کپی: 123456</b></font> در اعلان ظاهر می‌شود.<br>
+        <br>
+        یک قانون نمونه برای استخراج کدهای تایید:<br>
+        &emsp; با استفاده از گروه‌های ضبط:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        &emsp; رویکرد دیگر با استفاده از lookaround:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        ]]>
+    </string>
+    <string name="help_apply_to_call_sms">
+        <![CDATA[
+        این قانون را برای تماس، پیامک یا هر دو فعال کنید.<br>
+        برای غیرفعال کردن قانون بدون حذف آن، این کادرهای انتخاب را علامت بزنید.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        هنگامی که <font color="#00BFFF"><b>شماره</b></font> تیک خورده باشد، این قانون محتوا را از شماره ورودی استخراج می‌کند.
+        به عنوان مثال، از <b>(.*)</b> برای کپی کردن شماره تلفن استفاده کنید.<br>
+        <br>
+        هنگامی که <font color="#00BFFF"><b>محتوا</b></font> تیک خورده باشد، این قانون محتوا را از متن پیامک،
+        مانند کدهای تایید، استخراج می‌کند.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        هنگامی که <font color="#03DAC5"><b>عبور کرده</b></font> تیک خورده باشد، این قانون برای تماس‌ها و پیام‌های عبور کرده اعمال می‌شود.<br>
+        <br>
+        هنگامی که <font color="#fa7f71"><b>مسدود شده</b></font> تیک خورده باشد، این قانون برای تماس‌ها و پیام‌های مسدود شده اعمال می‌شود.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        <b>هیچ</b>:<br>&emsp; هیچ اعلانی. <br>
+        <b>سایه</b>:<br>&emsp; سایه اعلان کشویی. <br>
+        <b>نوار وضعیت</b>:<br>&emsp; آیکون کوچک در نوار بالا. <br>
+        <b>صدا</b>:<br>&emsp; صدای اعلان پیش‌فرض. <br>
+        <b>سر بالا</b>:<br>&emsp; پنجره شناور را در بالای صفحه باز کنید.
+        ]]>
+    </string>
+    <string name="title_rule_testing">آزمایش قانون</string>
+    <string name="help_test_rules">
+        <![CDATA[
+        این به بررسی اینکه آیا قوانین طبق انتظار تنظیم شده‌اند کمک می‌کند.<br>
+        <br>
+        این فقط یک شبیه‌سازی است و در واقع یک تماس ورودی (یا پیام متنی) را ظاهر نمی‌کند.<br>
+        <br>
+        نتیجه در اینجا و در گزارش تاریخچه، با اعلان نشان داده می‌شود.
+        ]]>
+    </string>
+
+</resources>

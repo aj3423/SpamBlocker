@@ -60,7 +60,12 @@
     <string name="target_text">Testo di Destinazione</string>
     <string name="match_found">Corrispondenza trovata</string>
     <string name="match_not_found">Nessuna corrispondenza trovata</string>
-    <string name="help_test_regex">Per verificare se l\'espressione regolare funziona come previsto, proverà a confrontare questo testo.</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Questo serve solo per testare se questa regex corrisponde a un testo, escludendo altre regole.<br>
+        Per testare tutte le regole, usa invece il pulsante di test fluttuante nell\'angolo in basso a destra.
+        ]]>
+    </string>
     <string name="allow">Consenti</string>
     <string name="block">Blocca</string>
     <string name="seconds">Secondi</string>

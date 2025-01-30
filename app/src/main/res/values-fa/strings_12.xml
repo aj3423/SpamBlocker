@@ -1,0 +1,94 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        شماره ورودی به صورت بلادرنگ و آنلاین بررسی می‌شود، چندین نقطه پایانی API به طور همزمان مورد پرس‌وجو قرار می‌گیرند.<br>
+        <br>
+        این فقط برای تماس‌ها اعمال می‌شود، نه پیام‌های SMS.<br>
+        <br>
+        فقط زمانی فعال می‌شود که تماس از سایر قوانین عبور کند.<br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">پرس و جوی آنی</string>
+    <string name="query">پرس و جو</string>
+    <string name="negative_identifier">شناسه منفی</string>
+    <string name="hint_negative_identifier">
+        مثال: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        اگر این الگوی عبارت باقاعده در نتیجه یافت شود، به عنوان شماره مزاحم شناسایی می‌شود.
+    </string>
+    <string name="positive_identifier">شناسه مثبت</string>
+    <string name="hint_positive_identifier">
+        مثال: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        اگر این الگوی عبارت باقاعده در نتیجه یافت شود، به عنوان شماره غیر مزاحم شناسایی می‌شود، این مورد اختیاری است.<br>
+        <br>
+        معمولاً این <b>غیر ضروری</b> است، برخی از ارائه دهندگان API شماره‌های ناشناخته را به عنوان غیر مزاحم شناسایی می‌کنند، فقط در صورتی از این مورد استفاده کنید که API واقعاً دقیق باشد.
+        ]]>
+    </string>
+    <string name="category_identifier">شناسه دسته‌بندی</string>
+    <string name="hint_category_identifier">
+        مثال: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        اختیاری.<br>
+        پس از شناسایی یک شماره، از این عبارت باقاعده برای استخراج دسته‌بندی آن (بازاریابی تلفنی، فیشینگ و غیره) استفاده می‌شود.
+        ]]>
+    </string>
+    <string name="action_parse_query_result">تجزیه نتیجه</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        نتیجه پرس و جو را تجزیه می‌کند، اگر نتیجه حاوی یک الگوی عبارت باقاعده خاص باشد، شماره به عنوان مزاحم شناسایی می‌شود.<br>
+        <br>
+        یک عبارت باقاعده اضافی می‌تواند برای استخراج دسته‌بندی مزاحمت استفاده شود. (اختیاری)
+        ]]>
+    </string>
+    <string name="action_parse_incoming_number">تجزیه شماره</string>
+    <string name="help_action_parse_incoming_number">
+        <![CDATA[
+        شماره تماس ورودی به برچسب‌های مختلفی تجزیه می‌شود:<br>
+        <br>
+        %s
+        <br>
+        از این برچسب‌ها برای ساخت URL HTTP استفاده می‌شود، برای مثال:<br>
+        <br>
+        1. برای شماره‌های بین‌المللی مانند <b>+122222</b>، این دو معادل هستند:<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        به این صورت تجزیه می‌شود:<br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. برای شماره‌های داخلی مانند <b>12345</b>، باید کد کشور را در تنظیمات ارائه دهید، یا اجازه دهید برنامه آن را به طور خودکار تشخیص دهد.<br>
+        ]]>
+    </string>
+    <string name="query_api">پرس و جوی API</string>
+    <string name="report_api">گزارش API</string>
+    <string name="number_filter">فیلتر شماره</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        برخی از سرویس‌های API فقط از شماره‌های بین‌المللی پشتیبانی می‌کنند، در حالی که برخی دیگر فقط از شماره‌های داخلی پشتیبانی می‌کنند.<br>
+        <br>
+        این عبارت باقاعده شماره‌ها را بر این اساس فیلتر می‌کند، شماره‌های ورودی که با این عبارت باقاعده مطابقت ندارند، از بررسی حذف می‌شوند.<br>
+        <br>
+        - فقط بررسی <b>شماره‌های بین‌المللی</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - فقط بررسی <b>شماره‌های داخلی</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - بررسی <b>هر شماره</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">بررسی: %s، اولویت: %s</string>
+    <string name="skip_for_testing">برای تست رد می‌شود.</string>
+    <string name="allowed_by">مجاز توسط: %s</string>
+    <string name="blocked_by">مسدود شده توسط: %s</string>
+    <string name="outside_time_schedule">خارج از برنامه زمانی، رد می‌شود.</string>
+    <string name="android_ver_lower_than_11">نسخه اندروید کمتر از 11 است، رد می‌شود.</string>
+</resources>

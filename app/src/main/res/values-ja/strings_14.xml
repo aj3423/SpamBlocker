@@ -59,7 +59,12 @@
     <string name="target_text">ターゲットテキスト</string>
     <string name="match_found">一致が見つかりました</string>
     <string name="match_not_found">一致が見つかりませんでした</string>
-    <string name="help_test_regex">正規表現が期待通りに機能するかどうかをテストするために、このテキストとの照合を試みます。</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        これは、他のルールを除外して、この正規表現がテキストに一致するかどうかをテストするためだけです。<br>
+        すべてのルールに対してテストするには、代わりに右下隅にあるフローティングテストボタンを使用してください。
+        ]]>
+    </string>
     <string name="allow">許可</string>
     <string name="block">ブロック</string>
     <string name="seconds">秒</string>

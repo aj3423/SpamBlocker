@@ -59,7 +59,12 @@
     <string name="target_text">目标文本</string>
     <string name="match_found">匹配成功</string>
     <string name="match_not_found">匹配失败</string>
-    <string name="help_test_regex">测试正则表达式是否按预期工作，它将尝试匹配此文本。</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        这仅用于测试此正则表达式是否与文本匹配，不包括其他规则。<br>
+        要针对所有规则进行测试，请改用右下角的浮动测试按钮。
+        ]]>
+    </string>
     <string name="allow">允许</string>
     <string name="block">阻止</string>
     <string name="seconds">秒</string>

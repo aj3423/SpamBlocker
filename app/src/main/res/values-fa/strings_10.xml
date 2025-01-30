@@ -1,0 +1,54 @@
+<resources>
+    <string name="help_number_rules">
+        <![CDATA[
+        این قوانین در مورد شماره تلفن ورودی اعمال می‌شود.<br>
+        <br>
+        <font color="#00BFFF"><b> - مثال‌ها</b></font>:<br>
+        چند نمونه در <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">صفحه ویکی</a> وجود دارد.<br>
+        <br>
+        <font color="#00BFFF"><b> - بهینه‌سازی عبارت باقاعده</b></font>:<br>
+        برای ساده‌سازی عبارت باقاعده،
+          <font color="#fa7f71"><b>+</b></font>،
+           <font color="#fa7f71"><b>فاصله‌ها</b></font>
+          و <font color="#fa7f71"><b>صفرهای ابتدایی</b></font>
+          قبل از بررسی حذف می‌شوند، برای مثال:<br>
+        &emsp; تمام این فرمت‌ها:<br>
+        &emsp;&emsp; 123456789 &emsp;(شماره معمولی)<br>
+        &emsp;&emsp; 1 2345 6789 &emsp;(با <font color="#fa7f71"><b>فاصله‌ها</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(با <font color="#fa7f71"><b>+</b></font> در ابتدا)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(با پیشوند داخلی <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(دو <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; همه آن‌ها به صورت زیر بررسی می‌شوند:<br>
+        &emsp;&emsp; 123456789 <br>
+        &emsp; بنابراین عبارت باقاعده <font color="#03DAC5"><b>123.*</b></font> با همه آن‌ها مطابقت دارد.<br>
+        این بهینه‌سازی شماره را می‌توان با پرچم عبارت باقاعده "Raw Number" <translate>غیرفعال</translate> کرد.<br>
+        <br>
+        <font color="#00BFFF"><b> - برخی الگوهای معمول</b></font>:<br>
+        &ensp; - هر شماره: <font color="#03DAC5"><b>.*</b></font> (<translate>عبارت باقاعده .* معادل کاراکتر * در برنامه‌های دیگر است</translate>) <br>
+        &ensp; - شماره دقیق: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - با 400 شروع می‌شود: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - با 123 پایان می‌یابد: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 رقم: <font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - کمتر از 5 رقم: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - بیشتر از 10 رقم: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - شماره ناشناخته (رشته خالی): <font color="#03DAC5"><b>.{0}</b></font> یا <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - با هر یک از الگوها مطابقت دارد: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
+        &ensp; - با 400 شروع می‌شود، با کد کشور 11 یا بدون آن: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <font color="#00BFFF"><b> - <short>واردات</short> قوانین از فایل .csv</b></font>:<br>
+        برای <short>وارد کردن</short> شماره‌ها از فایل .csv، دکمه «افزودن» را لمس طولانی کنید، ستون‌های پشتیبانی‌شده:<br>
+         - <no_translate><b>pattern</b></no_translate>: <translate>عبارت باقاعده</translate>(<translate>ضروری</translate>)<br>
+         - <no_translate><b>description</b></no_translate>: <translate>توضیحات</translate><br>
+         - <no_translate><b>priority</b></no_translate>: <translate>اولویت</translate>، پیش‌فرض 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(<translate>اعمال به تماس</translate>)، 2(<translate>اعمال به پیامک</translate>)، 3(<translate>هر دو</translate>)، پیش‌فرض 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: <translate>لیست سیاه یا سفید</translate>. <no_translate>true</no_translate> یا <no_translate>false</no_translate>، پیش‌فرض <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: <translate>نوع مسدودسازی</translate>. 0~2 <translate>مربوط به</translate> 3 <translate>نوع مسدودسازی</translate>، پیش‌فرض 0<br>
+         - <no_translate><b>importance</b></no_translate>: <translate>نوع اعلان</translate>. 0~4 <translate>مربوط به</translate> 5 <translate>نوع اعلان</translate>، پیش‌فرض 2<br>
+        <br>
+        <font color="#00BFFF"><b> - <short>رابط کاربری</short></b></font>:<br>
+        برای غیرفعال کردن قانون، کادرهای انتخاب را علامت بزنید، <font color="#fa7f71"><b>برای حذف آن، به چپ بکشید</b></font>.<br>
+        <br>
+        لیست <translate>به ترتیب نزولی اولویت، صعودی توضیحات و صعودی الگو نمایش داده می‌شود.</translate>
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,93 @@
+<resources>
+    <string name="report_number">گزارش شماره</string>
+    <string name="report_number_require_call_log_permission">
+        برای جلوگیری از گزارش نادرست تماس‌های مکرر یا شماره‌های برگشتی،
+        گزارش شماره نیاز به مجوز لاگ تماس دارد.
+    </string>
+    <string name="http_method">روش</string>
+    <string name="http_post_body">متن ارسال</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        تگ‌های پشتیبانی شده:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">لطفاً اطلاعات احراز هویت معتبر را وارد کنید.</string>
+    <string name="delay">تأخیر</string>
+    <string name="exclude_services">سرویس‌های مستثنی</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        برخی از برنامه‌ها سرویس‌های پیش‌زمینه اضافی را اجرا می‌کنند، نام‌های سرویس را در اینجا اضافه کنید تا آن‌ها را حذف کنید.<br>
+        <br>
+        برای یافتن نام سرویس:<br>
+        &emsp; 1. سرویس را در آن برنامه فعال کنید.<br>
+        &emsp; 2. تمام نام‌های سرویس فعال شده در اینجا ظاهر می‌شوند.<br>
+        &emsp; 3. روی یک نام ضربه بزنید تا آن را اضافه کنید.<br>
+        <br>
+        می‌توانید چندین نام را با کاما از هم جدا کنید.
+        ]]>
+    </string>
+    <string name="running_services">سرویس‌های در حال اجرا</string>
+    <string-array name="spam_categories">
+        <item>شماره معتبر</item>
+        <item>کلاهبرداری</item>
+        <item>بازاریابی</item>
+        <item>نظرسنجی</item>
+        <item>سیاسی</item>
+        <item>تماس‌های مزاحم دیگر</item>
+    </string-array>
+    <string name="action_category_config">تنظیمات دسته</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        فقط دسته‌های تماس‌های مزاحم زیر پشتیبانی می‌شوند، هر دسته دیگری از API باید به یکی از آن‌ها نگاشت شود.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; به عنوان شماره معتبر گزارش دهید، نه یک تماس مزاحم.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; نوع تماس مزاحم پیش‌فرض، زمانی که هیچ یک از دسته‌های بالا اعمال نمی‌شوند.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        دسته %s در اکشن %s پیکربندی نشده است، لطفاً آن را در پیکربندی API پیکربندی کنید (اگر API از این دسته پشتیبانی می‌کند).
+    </string>
+    <string name="target_text">متن هدف</string>
+    <string name="match_found">مطابقت یافت شد</string>
+    <string name="match_not_found">مطابقت یافت نشد</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        این فقط برای آزمایش این است که آیا این عبارت باقاعده با یک متن مطابقت دارد یا خیر، بدون در نظر گرفتن قوانین دیگر.<br>
+        برای آزمایش در برابر همه قوانین، به جای آن از دکمه تست شناور در گوشه پایین سمت راست استفاده کنید.
+        ]]>
+    </string>
+    <string name="allow">اجازه</string>
+    <string name="block">مسدود کردن</string>
+    <string name="seconds">ثانیه</string>
+    <string name="seconds_short">ث</string>
+    <string name="within_seconds">در عرض ثانیه</string>
+    <string name="call_alert">هشدار تماس</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        برخی از سرویس‌ها ابتدا به شما پیامک می‌دهند تا به شما اطلاع دهند که یک تماس قریب الوقوع است، معمولاً در عرض یک دقیقه.<br>
+        <br>
+        به عنوان مثال، یک پیامک مانند:<br>
+        &ensp; <font color="#888888">[سرویس]</font><br>
+        <br>
+        یک عبارت باقاعده برای چنین پیامی عبارت است از:<br>
+        &ensp; <font color="#03DAC5"><b><translate>.*لطفا.*پاسخ.*</translate></b></font> <br>
+        <br>
+        تنظیم پیش‌فرض <font color="#03DAC5"><b>120 ثانیه</b></font> به این معنی است که تمام تماس‌ها در دو دقیقه آینده پس از دریافت چنین پیامی مجاز خواهند بود.<br>
+        <br>
+        برای هر دو پیامک معمولی و پیامک فوری (پیامک کلاس 0) کار می‌کند.<br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">کاراکتر وحشی `*` بدون نقطه قبل از آن استفاده شده است، آیا منظورتان `.*` است؟</string>
+</resources>

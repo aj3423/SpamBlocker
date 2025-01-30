@@ -60,7 +60,12 @@
     <string name="target_text">Texto Objetivo</string>
     <string name="match_found">Coincidencia encontrada</string>
     <string name="match_not_found">Coincidencia no encontrada</string>
-    <string name="help_test_regex">Para probar si la expresión regular funciona como se espera, intentará coincidir con este texto.</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Esto es solo para probar si esta expresión regular coincide con un texto, excluyendo otras reglas.<br>
+        Para probar con todas las reglas, use el botón de prueba flotante en la esquina inferior derecha.
+        ]]>
+    </string>
     <string name="allow">Permitir</string>
     <string name="block">Bloquear</string>
     <string name="seconds">Segundos</string>

@@ -60,7 +60,12 @@
     <string name="target_text">Текст для пошуку</string>
     <string name="match_found">Знайдено відповідність</string>
     <string name="match_not_found">Відповідність не знайдено</string>
-    <string name="help_test_regex"><translate>Щоб перевірити, чи працює регулярний вираз належним чином, він спробує знайти відповідність цьому тексту.</translate></string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Це лише для перевірки того, чи відповідає цей регулярний вираз тексту, виключаючи інші правила.<br>
+        Щоб протестувати всі правила, використовуйте плаваючу кнопку тестування в правому нижньому кутку.
+        ]]>
+    </string>
     <string name="allow">Дозволити</string>
     <string name="block">Заблокувати</string>
     <string name="seconds">Секунд</string>

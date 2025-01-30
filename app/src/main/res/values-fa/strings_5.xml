@@ -1,0 +1,83 @@
+<resources>
+    <string name="dialed_number"><short>شماره گرفته شده</short></string>
+    <string name="find_apps">یافتن برنامه‌ها</string>
+
+    <string name="confirm_delete_all_rule">آیا از حذف همه قوانین مطمئن هستید؟</string>
+
+    <string name="notification">اعلان</string>
+    <string name="type">نوع</string>
+    <string name="times">بارها</string>
+    <plurals name="days">
+        <item quantity="one">%d روز</item>
+        <item quantity="two">%d روز</item>
+        <item quantity="few">%d روز</item>
+        <item quantity="many">%d روز</item>
+        <item quantity="other">%d روز</item>
+    </plurals>
+    <string name="min">دقیقه</string>
+    <string name="within_minutes">در عرض چند دقیقه</string>
+    <string name="within_days">در عرض چند روز</string>
+    <string name="phone_number">شماره تلفن</string>
+    <string name="phone_number_abbrev">شماره</string>
+    <string name="sms_content">محتوای پیامک</string>
+    <string name="regex_flags">پرچم‌های عبارت باقاعده</string>
+    <string name="off_time"><short>زمان خاموش</short></string>
+    <string name="schedule">برنامه</string>
+    <string name="workday">روزهای کاری</string>
+    <string name="weekend">آخر هفته</string>
+    <string name="entire_day">تمام روز</string>
+    <string name="block_type">نوع مسدود سازی</string>
+    <string name="for_particular_number">برای شماره</string>
+    <string name="help_for_particular_number">هنگامی که فعال است، این قانون فقط زمانی اعمال می‌شود که هم شماره و هم محتوا مطابقت داشته باشند.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>رد کردن</b></font>: <br>
+         مشابه فشار دادن دکمه رد کردن است. کاملاً بی‌صدا کار می‌کند، صفحه قفل روشن نمی‌شود.<br>
+        <br>
+        - <font color="#00BFFF"><b>بی‌صدا کردن</b></font>: <br>
+         در پس‌زمینه بی‌صدا زنگ می‌خورد و به تماس‌گیرنده این تصور را می‌دهد که در دسترس نبوده‌اید و تماس را از دست داده‌اید. <br>
+        <br>
+         همچنین ممکن است در صورت مواجهه با تماس‌های اسپم مکرر مفید باشد، مدت زمان تماس را افزایش می‌دهد و آن را برای اسپمرها کم‌بازده‌تر می‌کند و ممکن است آنها را از تماس مجدد با شما منصرف کند.<br>
+        <br>
+        - <font color="#00BFFF"><b>قطع کردن</b></font>: <br>
+        تماس را پاسخ داده و قطع کنید تا از رفتن آن به صندوق پیام جلوگیری شود. <br>
+        <br>
+        <font color="#FFA500">توجه</font> صفحه قفل ممکن است برای مدت کوتاهی روشن شود،
+        همچنین ممکن است صدای پایان تماس را بشنوید (برخی از تلفن‌ها گزینه‌ای برای قطع صدای این صدا ارائه می‌دهند). <br>
+        <br>
+        - <b>تأخیر</b>: <br>
+        &emsp; به طور پیش‌فرض، قبل از قطع تماس، یک تأخیر 1 ثانیه‌ای وجود دارد،
+        تا از رفتن تصادفی تماس‌ها به صندوق پیام به دلیل قطع سریع ارتباط جلوگیری شود.<br>
+        &emsp; اگر می‌خواهید تماس‌ها را ضبط کنید، یک برنامه ضبط تماس نصب کنید و تأخیر را بر این اساس افزایش دهید.
+        ]]>
+    </string>
+    <string name="help_hang_up_delay">تأخیر قبل از قطع تماس (به ثانیه).</string>
+    <string name="help_dialed">
+        <![CDATA[
+        شماره‌های گرفته‌شده مجاز خواهند بود.<br>
+        <br>
+        ارسال پیام نیز محاسبه می‌شود، این فقط زمانی کار می‌کند که مجوز READ_SMS اعطا شود. <br>
+        <br>
+        تنظیم پیش‌فرض <font color="#03DAC5"><b>3 روز</b></font> به این معنی است که اگر در 3 روز گذشته با آن شماره تماس گرفته‌اید یا پیام ارسال کرده‌اید، تماس‌های آن شماره مجاز خواهند بود.<br>
+        <br>
+        فقط برای تماس‌ها اعمال می‌شود، <b>نه</b> برای پیام‌های متنی. <br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        هر تماسی در صورتی عبور می‌کند که هر برنامه‌ای در لیست به تازگی استفاده شده باشد.<br>
+        <br>
+        یک مورد استفاده معمولی:<br>
+        &emsp; شما به تازگی در PizzaApp پیتزا سفارش داده‌اید، به زودی آنها برای بازپرداخت با شما تماس می‌گیرند زیرا در حال تعطیلی هستند. این تماس در صورتی عبور می‌کند که PizzaApp در اینجا فعال باشد. <br>
+        <br>
+        تنظیم پیش‌فرض <font color="03DAC5"><b>5 دقیقه</b></font> به این معنی است که هر تماسی در صورتی عبور می‌کند که هر یک از برنامه‌ها در عرض 5 دقیقه استفاده شده باشند،
+        با «استفاده‌شده» منظور فعال شدن، غیرفعال شدن، کمینه شدن یا حذف شدن است. <br>
+        <br>
+        فقط برای تماس‌ها اعمال می‌شود، <b>نه</b> برای پیام‌های متنی. <br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: 10</b></font>
+        ]]>
+    </string>
+</resources>
