@@ -1,21 +1,21 @@
 <resources>
-    <string name="contacts">تماس</string>
-    <string name="non_contacts">غیر از مخاطبین</string>
-    <string name="inclusive">شمول</string>
-    <string name="exclusive">اختصاصی</string>
+    <string name="contacts">مخاطبین</string>
+    <string name="non_contacts">ناشناس ها</string>
+    <string name="inclusive">همگانی</string>
+    <string name="exclusive">محدود</string>
     <string name="help_contacts">
         <![CDATA[
         در صورت فعال بودن، تماس‌ها/پیام‌ها از مخاطبین همیشه مجاز هستند. <br>
         <br>
-          - <b>شمول</b>: <br>
-              &emsp; شماره‌های غیر مخاطب توسط قوانین دیگر بررسی می‌شوند. <br>
+          - <b>همگانی</b>: <br>
+              &emsp; شماره‌های ناشناس توسط قوانین دیگر بررسی می‌شوند. <br>
               &emsp; <font color="#ea86ff"><b>اولویت: 10</b></font> <br>
           <br>
           - <font color="#fa7f71"><b>اختصاصی</b></font>: <br>
-              &emsp; شماره‌های غیر مخاطب <font color="#fa7f71"><b>مسدود</b></font> می‌شوند. <br>
+              &emsp; شماره‌های ناشناس <font color="#fa7f71"><b>مسدود</b></font> می‌شوند. <br>
               &emsp; <font color="#ea86ff"><b>اولویت: 0</b></font> <br>
         <br>
-        این مورد برای تماس‌ها و پیام‌های SMS اعمال می‌شود.
+        این مورد برای تماس ها و پیام ها اعمال می شود.
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -87,10 +87,10 @@
         <h5>2. <font color="#03DAC5">گزارش خواهد داد:</font></h5>
         <br>
         انواع مسدود شده زیر:<br>
-        - <font color="#03DAC5">غیر از مخاطبین</font>(اختصاصی)<br>
+        - <font color="#03DAC5">ناشناس ها</font>(اختصاصی)<br>
         - <font color="#03DAC5">تأیید STIR</font><br>
         - <font color="#03DAC5">بیان منظم شماره</font><br>
-        - <font color="#03DAC5">بیان منظم محتوای SMS</font><br>
+        - <font color="#03DAC5">بیان منظم محتوای پیام</font><br>
         <br>
         <h5>3. موارد استثناء:</h5>
         <br>
