@@ -11,7 +11,7 @@
               &emsp; شماره‌های ناشناس توسط قوانین دیگر بررسی می‌شوند. <br>
               &emsp; <font color="#ea86ff"><b>اولویت: 10</b></font> <br>
           <br>
-          - <font color="#fa7f71"><b>اختصاصی</b></font>: <br>
+          - <font color="#fa7f71"><b>محدود</b></font>: <br>
               &emsp; شماره‌های ناشناس <font color="#fa7f71"><b>مسدود</b></font> می‌شوند. <br>
               &emsp; <font color="#ea86ff"><b>اولویت: 0</b></font> <br>
         <br>
@@ -41,7 +41,7 @@
                   &emsp; هنگامی که "<b>شامل تایید نشده‌ها</b>" تیک خورده است، تماسی که تایید نشده باشد نیز عبور می‌کند. <br>
                   &emsp; <font color="#ea86ff"><b>اولویت: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>اختصاصی</b></font>: <br>
+              - <font color="#fa7f71"><b>محدود</b></محدود>: <br>
                   &emsp; تماس‌هایی که این بررسی را با شکست مواجه می‌شوند، <font color="#fa7f71"><b>مسدود</b></font> می‌شوند. <br>
                   &emsp; هنگامی که "<b>شامل تایید نشده‌ها</b>" تیک خورده است، تماسی که تایید نشده باشد نیز مسدود می‌شود. <br>
                   &emsp; <font color="#ea86ff"><b>اولویت: 0</b></font>
@@ -87,7 +87,7 @@
         <h5>2. <font color="#03DAC5">گزارش خواهد داد:</font></h5>
         <br>
         انواع مسدود شده زیر:<br>
-        - <font color="#03DAC5">ناشناس ها</font>(اختصاصی)<br>
+        - <font color="#03DAC5">ناشناس ها</font>(محدود)<br>
         - <font color="#03DAC5">تأیید STIR</font><br>
         - <font color="#03DAC5">بیان منظم شماره</font><br>
         - <font color="#03DAC5">بیان منظم محتوای پیام</font><br>
