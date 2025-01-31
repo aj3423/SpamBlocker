@@ -3,24 +3,22 @@
         <![CDATA[
         These rules apply to the incoming phone number.<br>
         <br>
-        <font color="#00BFFF"><b> - Examples</b></font>:<br>
+        <h5><font color="#00BFFF"> - Examples</font></h5>
         There are some examples on the <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki page</a>.<br>
         <br>
-        <font color="#00BFFF"><b> - Regex Optimization</b></font>:<br>
+        <h5><font color="#00BFFF"> - Regex Optimization</font></h5>
         To simplify the regex,
-          <font color="#fa7f71"><b>+</b></font>,
-           <font color="#fa7f71"><b>spaces</b></font>
-          and <font color="#fa7f71"><b>leading zeroes</b></font>
+          <font color="#fa7f71"><b>+</b></font> and <font color="#fa7f71"><b>leading zeroes</b></font>
           are removed before checking, for example:<br>
         &emsp; All these formats:<br>
         &emsp;&emsp; 123456789 &emsp;(regular number)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(with leading <font color="#fa7f71"><b>+</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(with domestic trunk prefix <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
         &emsp; They are <b>all</b> checked as 123456789 and can be matched by <font color="#03DAC5"><b>123.*</b></font><br>
         This number optimization can be <b>disabled</b> with the regex flag "Raw Number".<br>
         <br>
-        <font color="#00BFFF"><b> - Some typical patterns</b></font>:<br>
+        <h5><font color="#00BFFF"> - Some typical patterns</font></h5>
         &ensp; - Any number: <font color="#03DAC5"><b>.*</b></font> (the regex .* is equivalent to the wildcard * in other apps) <br>
         &ensp; - Exact number: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Start with 400: <font color="#03DAC5"><b>400.*</b></font> <br>
@@ -32,7 +30,7 @@
         &ensp; - Match any of the patterns: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
         &ensp; - Start with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <font color="#00BFFF"><b> - Import rules from .csv</b></font>:<br>
+        <h5><font color="#00BFFF"> - Import rules from .csv</font></h5>
         Long press the `Add` button to import numbers from .csv file, columns supported:<br>
          - <no_translate><b>pattern</b></no_translate>: The regex(<b>required</b>)<br>
          - <no_translate><b>description</b></no_translate>: Description<br>
@@ -42,7 +40,7 @@
          - <no_translate><b>blockType</b></no_translate>: Block type. 0~2 corresponding to the 3 block types, default 0<br>
          - <no_translate><b>importance</b></no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2<br>
         <br>
-        <font color="#00BFFF"><b> - UI related</b></font>:<br>
+        <h5><font color="#00BFFF"> - UI related</font></h5>
         Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left to delete</b></font> it.<br>
         <br>
         The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern.
