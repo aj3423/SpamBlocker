@@ -7,46 +7,43 @@
         Hay algunos ejemplos en la <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">página Wiki</a>.<br>
         <br>
         <font color="#00BFFF"><b> - Optimización Regex</b></font>:<br>
-        Para simplificar la regex,<br>
+        Para simplificar la expresión regular,
           <font color="#fa7f71"><b>+</b></font>,
            <font color="#fa7f71"><b>espacios</b></font>
-          y <font color="#fa7f71"><b>ceros a la izquierda</b></font>
+          y <font color="#fa7f71"><b>ceros iniciales</b></font>
           se eliminan antes de la comprobación, por ejemplo:<br>
         &emsp; Todos estos formatos:<br>
         &emsp;&emsp; 123456789 &emsp;(número regular)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(con <font color="#fa7f71"><b>espacios</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(con <font color="#fa7f71"><b>+</b></font> al principio)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(con prefijo nacional <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(con prefijo nacional <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Todos se comprueban como:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; Así que la regex <font color="#03DAC5"><b>123.*</b></font> coincidiría con todos ellos.<br>
-        Esta optimización del número se puede <b>deshabilitar</b> con la bandera regex "Número sin procesar".<br>
+        &emsp; Todos se comprueban como 123456789 y pueden coincidir con <font color="#03DAC5"><b>123.*</b></font><br>
+        Esta optimización del número puede <b>deshabilitarse</b> con la bandera regex "Número sin formato".<br>
         <br>
         <font color="#00BFFF"><b> - Algunos patrones típicos</b></font>:<br>
-        &ensp; - Cualquier número: <font color="#03DAC5"><b>.*</b></font> (la regex .* es equivalente al comodín * en otras apps) <br>
+        &ensp; - Cualquier número: <font color="#03DAC5"><b>.*</b></font> (la expresión regular .* equivale al comodín * en otras aplicaciones) <br>
         &ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Empieza por 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - Termina en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Comienza con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Termina con 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 dígitos: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - Menor de 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - Mayor de 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Menos de 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Más de 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Número desconocido (cadena vacía): <font color="#03DAC5"><b>.{0}</b></font> o <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Coincide con cualquiera de los patrones: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
-        &ensp; - Empieza por 400, con código de país 11 o no: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Coincidencia con cualquiera de los patrones: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - Comienza con 400, con código de país 11 o no: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <font color="#00BFFF"><b> - Importar reglas desde .csv</b></font>:<br>
-        Presione prolongadamente el botón `Añadir` para importar números desde un archivo .csv, columnas compatibles:<br>
-         - <no_translate><b>pattern</b></no_translate>: La regex(<b>obligatorio</b>)<br>
+        <font color="#00BFFF"><b> - Importación de reglas desde .csv</b></font>:<br>
+        Presiona prolongadamente el botón `Agregar` para importar números desde un archivo .csv, columnas compatibles:<br>
+         - <no_translate><b>pattern</b></no_translate>: La expresión regular (<b>obligatorio</b>)<br>
          - <no_translate><b>description</b></no_translate>: Descripción<br>
-         - <no_translate><b>priority</b></no_translate>: Prioridad, predeterminada 1<br>
+         - <no_translate><b>priority</b></no_translate>: Prioridad, predeterminado 1<br>
          - <no_translate><b>flags</b></no_translate>: 1(Aplicar a llamada), 2(Aplicar a SMS), 3(ambas), predeterminado 3<br>
          - <no_translate><b>isBlacklist</b></no_translate>: Lista negra o blanca. <no_translate>true</no_translate> o <no_translate>false</no_translate>, predeterminado <no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondientes a los 3 tipos de bloqueo, predeterminado 0<br>
-         - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondientes a los 5 tipos de notificación, predeterminado 2<br>
+         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondiente a los 3 tipos de bloqueo, predeterminado 0<br>
+         - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondiente a los 5 tipos de notificación, predeterminado 2<br>
         <br>
         <font color="#00BFFF"><b> - Relacionado con la IU</b></font>:<br>
-        Desmarca las casillas para desactivar la regla, <font color="#fa7f71"><b>desliza hacia la izquierda para eliminar</b></font>la.<br>
+        Desmarca las casillas para deshabilitar la regla, <font color="#fa7f71"><b>desliza hacia la izquierda para eliminarla</b></font>.<br>
         <br>
         La lista se <b>muestra</b> en orden descendente de prioridad, descripción ascendente y patrón ascendente.
         ]]>

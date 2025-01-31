@@ -14,25 +14,22 @@
           vor der Prüfung entfernt, zum Beispiel:<br>
         &emsp; Alle diese Formate:<br>
         &emsp;&emsp; 123456789 &emsp;(normale Nummer)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(mit <font color="#fa7f71"><b>Leerzeichen</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(mit führendem <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(mit Landesvorwahl <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(mit führendem <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(mit Landesvorwahl <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(zwei <font color="#fa7f71"><b>0</b></font>en)<br>
-        &emsp; Sie werden <b>alle</b> geprüft als:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; Daher würde der reguläre Ausdruck <font color="#03DAC5"><b>123.*</b></font> alle treffen.<br>
-        Diese Nummernoptimierung kann mit dem Regex-Flag „Rohdaten“ <b>deaktiviert</b> werden.<br>
+        &emsp; Sie werden <b>alle</b> als 123456789 geprüft und können mit <font color="#03DAC5"><b>123.*</b></font> abgeglichen werden.<br>
+        Diese Nummernoptimierung kann mit dem Regex-Flag "Rohdaten" <b>deaktiviert</b> werden.<br>
         <br>
         <font color="#00BFFF"><b> - Einige typische Muster</b></font>:<br>
         &ensp; - Jede Nummer: <font color="#03DAC5"><b>.*</b></font> (der reguläre Ausdruck .* entspricht dem Platzhalter * in anderen Apps) <br>
-        &ensp; - Exakte Nummer: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Genaue Nummer: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Beginnt mit 400: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Endet mit 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 Ziffern: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Kürzer als 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Länger als 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Unbekannte Nummer (leere Zeichenkette): <font color="#03DAC5"><b>.{0}</b></font> oder <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Trifft eines der Muster: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
+        &ensp; - Übereinstimmung mit einem der Muster: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
         &ensp; - Beginnt mit 400, mit oder ohne führender Landesvorwahl 11: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Regeln aus .csv importieren</b></font>:<br>
@@ -40,12 +37,12 @@
          - <no_translate><b>pattern</b></no_translate>: Der reguläre Ausdruck (<b>erforderlich</b>)<br>
          - <no_translate><b>description</b></no_translate>: Beschreibung<br>
          - <no_translate><b>priority</b></no_translate>: Priorität, Standard 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Auf Anruf anwenden), 2(Auf SMS anwenden), 3(beides), Standard 3<br>
+         - <no_translate><b>flags</b></no_translate>: 1 (Auf Anruf anwenden), 2 (Auf SMS anwenden), 3 (beide), Standard 3<br>
          - <no_translate><b>isBlacklist</b></no_translate>: Blacklist oder Whitelist. <no_translate>true</no_translate> oder <no_translate>false</no_translate>, Standard <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>: Blocktyp. 0~2 entsprechend den 3 Blocktypen, Standard 0<br>
          - <no_translate><b>importance</b></no_translate>: Benachrichtigungstyp. 0~4 entsprechend den 5 Benachrichtigungstypen, Standard 2<br>
         <br>
-        <font color="#00BFFF"><b> - Benutzeroberfläche</b></font>:<br>
+        <font color="#00BFFF"><b> - UI-bezogen</b></font>:<br>
         Deaktivieren Sie die Kontrollkästchen, um die Regel zu deaktivieren, <font color="#fa7f71"><b>wischen Sie nach links, um sie zu löschen</b></font>.<br>
         <br>
         Die Liste wird in absteigender Reihenfolge der Priorität, aufsteigender Beschreibung und aufsteigendem Muster <b>angezeigt</b>.

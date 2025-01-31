@@ -14,26 +14,23 @@
           are removed before checking, for example:<br>
         &emsp; All these formats:<br>
         &emsp;&emsp; 123456789 &emsp;(regular number)<br>
-        &emsp;&emsp; 1 2345 6789 &emsp;(with <font color="#fa7f71"><b>spaces</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>12 3456 789 &emsp;(with leading <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>12 345 6789 &emsp;(with domestic trunk prefix <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; They are <b>all</b> checked as:<br>
-        &emsp;&emsp; 123456789 <br>
-        &emsp; So regex <font color="#03DAC5"><b>123.*</b></font> would match all of them.<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(with leading <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(with domestic trunk prefix <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; font color="#fa7f71"><b>00</b></font>123456789 &emsp;(two <font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp; They are <b>all</b> checked as 123456789 and can be matched by <font color="#03DAC5"><b>123.*</b></font><br>
         This number optimization can be <b>disabled</b> with the regex flag "Raw Number".<br>
         <br>
         <font color="#00BFFF"><b> - Some typical patterns</b></font>:<br>
         &ensp; - Any number: <font color="#03DAC5"><b>.*</b></font> (the regex .* is equivalent to the wildcard * in other apps) <br>
         &ensp; - Exact number: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Starts with 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - Ends with 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Start with 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - End with 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 digits: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Shorter than 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Longer than 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - Unknown number(empty string): <font color="#03DAC5"><b>.{0}</b></font> or <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Matches any of the patterns: <font color="#03DAC5"><b>(^$|0123.*|400123.*)</b></font> <br>
-        &ensp; - Starts with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Match any of the patterns: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - Start with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <font color="#00BFFF"><b> - Import rules from .csv</b></font>:<br>
         Long press the `Add` button to import numbers from .csv file, columns supported:<br>
