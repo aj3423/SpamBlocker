@@ -86,6 +86,7 @@ import spam.blocker.util.resolveBase64Tag
 import spam.blocker.util.resolveBasicAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
+import spam.blocker.util.resolveSHA1Tag
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.spf
 import spam.blocker.util.toMap
@@ -217,6 +218,7 @@ open class HttpDownload(
                     rawNumber = aCtx.rawNumber,
                 )
                 .replace(tagCategory, aCtx.realCategory ?: "")
+                .resolveSHA1Tag()
             aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
 
             // 2. Headers map

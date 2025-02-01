@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import android.os.Environment
 import spam.blocker.util.Algorithm.b64Encode
+import spam.blocker.util.Algorithm.sha1
 import java.time.LocalDateTime
 
 fun String.resolveTimeTags(): String {
@@ -56,6 +57,24 @@ fun String.resolveBase64Tag(): String {
             val g1 = result.groups[1]!!.value
 
             ret = ret.replace(g0, b64Encode(g1))
+        }
+    }
+    return ret
+}
+
+// Query by the number's sha1 hash for better privacy (if it's supported by the API).
+fun String.resolveSHA1Tag(): String {
+    var ret = this
+
+    val tpl ="\\{sha1\\((.*?)\\)\\}"
+    val result = tpl.toRegex().find(ret)
+
+    result?.groups?.size?.let {
+        if (it > 1) {
+            val g0 = result.groups[0]!!.value // the tpl
+            val g1 = result.groups[1]!!.value
+
+            ret = ret.replace(g0, sha1(g1.toByteArray()).toHexString().uppercase())
         }
     }
     return ret

@@ -5,8 +5,13 @@ import java.io.BufferedReader
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.InputStreamReader
+import java.security.MessageDigest
 import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
+
+fun ByteArray.toHexString(): String {
+    return joinToString("") { String.format("%02x", it) }
+}
 
 object Algorithm {
 
@@ -41,5 +46,11 @@ object Algorithm {
     }
     fun b64Decode(encoded: String): ByteArray {
         return Base64.decode(encoded, Base64.NO_WRAP)
+    }
+
+    fun sha1(raw: ByteArray): ByteArray {
+        val digest = MessageDigest.getInstance("SHA-1")
+        val hash = digest.digest(raw)
+        return hash
     }
 }

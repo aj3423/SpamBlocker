@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.api
 
 import android.content.Context
+import spam.blocker.BuildConfig
 import spam.blocker.R
 import spam.blocker.db.Api
 import spam.blocker.db.ImportDbReason
@@ -121,7 +122,11 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         numberFilter = ".*",
                     ),
                     HttpDownload(
-                        url ="https://phoneblock.net/phoneblock/api/num/00{cc}{domestic}",
+                        url = if (BuildConfig.DEBUG)
+                            "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}"
+                        else
+                            "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}"
+                        ,
                         header = "{basic_auth({username}:{password})}"
                     ),
                     ParseQueryResult(
@@ -162,11 +167,13 @@ val ApiReportPresets = listOf<ApiPreset>(
                         )
                     ),
                     HttpDownload(
-                        url ="https://phoneblock.net/phoneblock/api/rate",
-                        header = "Authorization: Basic {base64({username}:{password})}",
+                        url = if (BuildConfig.DEBUG)
+                            "https://phoneblock.net/pb-test/api/rate"
+                        else
+                            "https://phoneblock.net/phoneblock/api/rate"
+                        ,
+                        header = "{basic_auth({username}:{password})}",
                         method = HTTP_POST,
-
-                        // rating number format: "+3312345",
                         body = """
                             {
                                 "phone": "00{cc}{domestic}",
