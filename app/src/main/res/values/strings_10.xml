@@ -30,8 +30,19 @@
         &ensp; - Match any of the patterns: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
         &ensp; - Start with 400, with leading country code 11 or not: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
+        <h5><font color="#00BFFF"> - UI related</font></h5>
+        Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left to delete</b></font> it.<br>
+        <br>
+        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern.<br>
+        <br>
         <h5><font color="#00BFFF"> - Import rules from .csv</font></h5>
-        Long press the `Add` button to import numbers from .csv file, columns supported:<br>
+        Long press the `Add` button to import numbers from .csv file.<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         Supported columns:<br>
          - <no_translate><b>pattern</b></no_translate>: The regex(<b>required</b>)<br>
          - <no_translate><b>description</b></no_translate>: Description<br>
          - <no_translate><b>priority</b></no_translate>: Priority, default 1<br>
@@ -39,11 +50,6 @@
          - <no_translate><b>isBlacklist</b></no_translate>: Blacklist or whitelist. <no_translate>true</no_translate> or <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
          - <no_translate><b>blockType</b></no_translate>: Block type. 0~2 corresponding to the 3 block types, default 0<br>
          - <no_translate><b>importance</b></no_translate>: Notification type. 0~4 corresponding to the 5 notification types, default 2<br>
-        <br>
-        <h5><font color="#00BFFF"> - UI related</font></h5>
-        Uncheck the checkboxes to disable the rule, <font color="#fa7f71"><b>swipe left to delete</b></font> it.<br>
-        <br>
-        The list is <b>displayed</b> in descending order of priority, ascending description, and ascending pattern.
         ]]>
     </string>
 </resources>

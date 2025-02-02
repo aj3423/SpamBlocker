@@ -30,9 +30,12 @@ import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
+import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.ImportDbReason
 import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
+import spam.blocker.db.RuleTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
@@ -205,11 +208,9 @@ open class HttpDownload(
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val startTime = System.currentTimeMillis()
 
-        var resolvedUrl: String? = null
-
         return try {
             // 1. Url
-            resolvedUrl = url
+            val resolvedUrl = url
                 .resolveTimeTags()
                 .resolveNumberTag(
                     cc = aCtx.cc,
@@ -762,6 +763,7 @@ class ParseCSV(
         StrInputBox(
             text = columnMapping,
             label = { Text(Str(R.string.column_mapping)) },
+            helpTooltip = Str(R.string.import_csv_columns),
             onValueChange = { columnMapping = it }
         )
     }
@@ -1014,6 +1016,7 @@ class ImportAsRegexRule(
     var priority: Int = 0,
     var isWhitelist: Boolean = false,
     var importType: ImportType = ImportType.Create,
+    var importAs: Int = Def.ForNumber,
 ) : IPermissiveAction {
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -1049,6 +1052,14 @@ class ImportAsRegexRule(
         }
     }
 
+    private fun getTable() : RuleTable {
+        return when (importAs) {
+            Def.ForNumber -> NumberRuleTable()
+            Def.ForSms -> ContentRuleTable()
+            else -> QuickCopyRuleTable()
+        }
+    }
+
     private fun create(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
         // Join numbers to `11|22|33...`
         val combinedPattern = numbers.joinToString("|")
@@ -1064,7 +1075,7 @@ class ImportAsRegexRule(
             priority = priority,
             isBlacklist = !isWhitelist,
         )
-        NumberRuleTable().addNewRule(ctx, newRule)
+        getTable().addNewRule(ctx, newRule)
     }
 
     private fun replace(ctx: Context, aCtx: ActionContext, numbers: List<String>) {
@@ -1073,7 +1084,7 @@ class ImportAsRegexRule(
                 .format(description)
         )
 
-        val table = NumberRuleTable()
+        val table = getTable()
         val oldRules = table.findRuleByDesc(ctx, description)
         if (oldRules.isEmpty()) {
             aCtx.logger?.warn(
@@ -1095,7 +1106,7 @@ class ImportAsRegexRule(
                 .format(description)
         )
 
-        val table = NumberRuleTable()
+        val table = getTable()
         val oldRules = table.findRuleByDesc(ctx, description)
         if (oldRules.isEmpty()) {
             aCtx.logger?.warn(
@@ -1168,6 +1179,29 @@ class ImportAsRegexRule(
                     }
                 }
             )
+            // Import to Number/Content/QuickCopy
+            LabeledRow(R.string.import_as) {
+                var selected by rememberSaveable {
+                    mutableIntStateOf(importAs)
+                }
+
+                val items = listOf(
+                    Str(R.string.number_rule),
+                    Str(R.string.content_rule),
+                    Str(R.string.quick_copy),
+                )
+                Spinner(
+                    items = items.mapIndexed { index, label ->
+                        LabelItem(
+                            label = label,
+                        ) {
+                            selected = index
+                            importAs = index
+                        }
+                    },
+                    selected = selected,
+                )
+            }
             // Type Whitelist/ Blacklist
             LabeledRow(R.string.type) {
                 var applyToWorB by rememberSaveable { mutableIntStateOf(if (isWhitelist) 0 else 1) }
@@ -1299,6 +1333,7 @@ class ConvertNumber(
 /*
 input: None
 output: List<RegexRule>
+use case: auto disable rules: https://github.com/aj3423/SpamBlocker/issues/190
  */
 @Serializable
 @SerialName("FindRules")

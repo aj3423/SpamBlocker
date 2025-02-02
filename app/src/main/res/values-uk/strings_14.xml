@@ -91,4 +91,5 @@
         ]]>
     </string>
     <string name="waning_using_wildcard_as_regex">Використовується символ підстановки `*` без попередньої крапки, ви маєте на увазі `.*`?</string>
+    <string name="import_as">Імпортувати як</string>
 </resources>

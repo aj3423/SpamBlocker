@@ -36,7 +36,9 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Hauptsächlich für die deutsche FRITZ!Box entwickelt, funktioniert es auch für Telefonnummern aus anderen Ländern.<br>
+        Hauptsächlich für die deutsche FRITZ!Box konzipiert, funktioniert es auch für Telefonnummern aus anderen Ländern.<br>
+        <br>
+        Es unterstützt die Abfrage per Hash anstatt der Nummer selbst, was mehr Datenschutz bietet.<br>
         <br>
         Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

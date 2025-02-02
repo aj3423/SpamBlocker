@@ -91,4 +91,5 @@
         ]]>
     </string>
     <string name="waning_using_wildcard_as_regex">Il carattere jolly `*` è usato senza un punto precedente, intendi `.*`?</string>
+    <string name="import_as">Importa Come</string>
 </resources>

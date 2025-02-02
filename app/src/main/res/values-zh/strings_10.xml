@@ -8,42 +8,48 @@
         <br>
         <h5><font color="#00BFFF"> - 正则表达式优化</font></h5>
         为了简化正则表达式，
-          <font color="#fa7f71"><b>+</b></font> 和 <font color="#fa7f71"><b>前导零</b></font>
+          <font color="#fa7f71"><b>+</b></font>和<font color="#fa7f71"><b>前导零</b></font>
           会在检查前被移除，例如：<br>
-        &emsp; 所有这些格式：<br>
+        &emsp;所有这些格式：<br>
         &emsp;&emsp; 123456789 &emsp;(普通号码)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(带前导<font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(带国内长途区号<font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(带有前导<font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(带有国内长途区号<font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(两个<font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; 它们都将被检查为123456789，并且可以被<font color="#03DAC5"><b>123.*</b></font>匹配<br>
-        此号码优化可以通过正则表达式标志“原始号码”来<b>禁用</b>。<br>
+        &emsp;它们都将被检查为123456789，并且可以用<font color="#03DAC5"><b>123.*</b></font>匹配<br>
+        此号码优化功能可以通过正则表达式标志“原始号码”来<b>禁用</b>。<br>
         <br>
         <h5><font color="#00BFFF"> - 一些典型模式</font></h5>
         &ensp; - 任何号码：<font color="#03DAC5"><b>.*</b></font> (正则表达式 .* 等同于其他应用中的通配符 *) <br>
         &ensp; - 精确号码：<font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - 以400开头：<font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - 以123结尾：<font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 7位数：<font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - 7位数字：<font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - 少于5位：<font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - 多于10位：<font color="#03DAC5"><b>.{11,}</b></font> <br>
         &ensp; - 未知号码（空字符串）：<font color="#03DAC5"><b>.{0}</b></font> 或 <font color="#03DAC5"><b>^$</b></font> <br>
         &ensp; - 匹配任何模式：<font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - 以400开头，带或不带国家代码11：<font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
-        <br>
-        <h5><font color="#00BFFF"> - 从.csv导入规则</font></h5>
-        长按`添加`按钮从.csv文件导入号码，支持的列：<br>
-         - <no_translate><b>pattern</b></no_translate>: 正则表达式(<b>必需</b>)<br>
-         - <no_translate><b>description</b></no_translate>: 描述<br>
-         - <no_translate><b>priority</b></no_translate>: 优先级，默认1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(应用于呼叫), 2(应用于短信), 3(两者), 默认3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: 黑名单或白名单。 <no_translate>true</no_translate> 或 <no_translate>false</no_translate>, 默认 <no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: 屏蔽类型。0~2对应3种屏蔽类型，默认0<br>
-         - <no_translate><b>importance</b></no_translate>: 通知类型。0~4对应5种通知类型，默认2<br>
+        &ensp; - 以400开头，带或不带国家区号11：<font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <h5><font color="#00BFFF"> - UI相关</font></h5>
         取消选中复选框以禁用规则，<font color="#fa7f71"><b>向左滑动以删除</b></font>它。<br>
         <br>
-        列表按优先级降序、描述升序和模式升序<b>显示</b>。
+        列表按优先级降序、描述升序和模式升序<b>显示</b>。<br>
+        <br>
+        <h5><font color="#00BFFF"> - 从.csv导入规则</font></h5>
+        长按“添加”按钮即可从.csv文件导入号码。<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         支持的列：<br>
+         - <no_translate><b>pattern</b></no_translate>: 正则表达式(<b>必填</b>)<br>
+         - <no_translate><b>description</b></no_translate>: 描述<br>
+         - <no_translate><b>priority</b></no_translate>: 优先级，默认为1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(应用于呼叫)，2(应用于短信)，3(两者)，默认为3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: 黑名单或白名单。 <no_translate>true</no_translate> 或 <no_translate>false</no_translate>，默认为 <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>:  阻止类型。0~2对应3种阻止类型，默认为0<br>
+         - <no_translate><b>importance</b></no_translate>: 通知类型。0~4对应5种通知类型，默认为2<br>
         ]]>
     </string>
 </resources>

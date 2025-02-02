@@ -34,11 +34,11 @@ fun RuleHeader(
             else -> R.string.quick_copy
         }
     }
-    val helpTooltipId = remember {
+    val helpTooltip = remember {
         when (forType) {
-            Def.ForNumber -> R.string.help_number_rules
-            Def.ForSms -> R.string.help_sms_content_filter
-            else -> R.string.help_quick_copy
+            Def.ForNumber -> ctx.getString(R.string.help_number_rules) + ctx.getString(R.string.import_csv_columns)
+            Def.ForSms -> ctx.getString(R.string.help_sms_content_filter)
+            else -> ctx.getString(R.string.help_quick_copy)
         }
     }
 
@@ -73,7 +73,7 @@ fun RuleHeader(
                 }
             }
         },
-        helpTooltipId = helpTooltipId,
+        helpTooltip = helpTooltip,
     ) {
         if (forType == Def.ForNumber || forType == Def.ForSms) {
             ImportRuleButton(

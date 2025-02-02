@@ -63,6 +63,8 @@
         <![CDATA[
         Primarily designed for the German FRITZ!Box, it also works for phone numbers from any other countries.<br>
         <br>
+        It supports querying by hash instead of the number itself, providing better privacy.<br>
+        <br>
         Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>

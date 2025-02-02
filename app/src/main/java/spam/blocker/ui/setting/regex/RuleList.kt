@@ -94,7 +94,7 @@ fun RuleSettingsPopup(
         // max none scroll items: []
         LabeledRow(
             label = null,
-            helpTooltipId = R.string.help_max_none_scroll_items
+            helpTooltip = Str(R.string.help_max_none_scroll_items)
         ) {
             var max by remember { mutableIntStateOf(spf.getMaxNoneScrollRows()) }
             NumberInputBox(
@@ -113,7 +113,7 @@ fun RuleSettingsPopup(
         // max scroll height: []
         LabeledRow(
             label = null,
-            helpTooltipId = R.string.help_max_scroll_height
+            helpTooltip = Str(R.string.help_max_scroll_height)
         ) {
             var height by remember { mutableIntStateOf(spf.getRuleListHeightPercentage()) }
             NumberInputBox(
@@ -132,7 +132,7 @@ fun RuleSettingsPopup(
         // max regex lines: []
         LabeledRow(
             label = null,
-            helpTooltipId = R.string.help_max_regex_lines
+            helpTooltip = Str(R.string.help_max_regex_lines)
         ) {
             var rows by remember { mutableIntStateOf(spf.getMaxRegexRows()) }
             NumberInputBox(
@@ -151,7 +151,7 @@ fun RuleSettingsPopup(
         // max description lines: []
         LabeledRow(
             label = null,
-            helpTooltipId = R.string.help_max_desc_lines
+            helpTooltip = Str(R.string.help_max_desc_lines)
         ) {
             var rows by remember { mutableIntStateOf(spf.getMaxDescRows()) }
             NumberInputBox(
@@ -185,10 +185,8 @@ fun RuleList(
     val clickedRule = remember { mutableStateOf(RegexRule()) }
 
     // Refresh UI on global events, such as workflow action AddToRegexRule
-    if (forType == Def.ForNumber) {
-        Events.regexRuleUpdated.Listen {
-            vm.reloadDb(ctx)
-        }
+    Events.regexRuleUpdated.Listen {
+        vm.reloadDb(ctx)
     }
 
     if (editRuleTrigger.value) {

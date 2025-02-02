@@ -111,7 +111,7 @@ fun BotHeader(
                 }
             }
         },
-        helpTooltipId = R.string.help_workflows,
+        helpTooltip = Str(R.string.help_workflows),
     ) {
         MenuButton(
             label = Str(R.string.new_),

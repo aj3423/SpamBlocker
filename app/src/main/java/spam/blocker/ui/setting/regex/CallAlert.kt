@@ -104,7 +104,7 @@ fun CallAlert() {
                 }
             }
         },
-        helpTooltipId = R.string.help_call_alert,
+        helpTooltip = Str(R.string.help_call_alert),
         content = {
             if (isEnabled) {
                 StrokeButton(

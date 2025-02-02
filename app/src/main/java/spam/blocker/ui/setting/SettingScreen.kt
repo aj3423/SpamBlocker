@@ -266,12 +266,12 @@ fun SettingLabel(
 
 @Composable
 fun LabeledRow(
-    label: (@Composable () -> Unit)?,
+    label: (@Composable () -> Unit)? = null,
 
     // optional
     modifier: Modifier = Modifier,
     paddingHorizontal: Int = 0,
-    helpTooltipId: Int? = null,
+    helpTooltip: String? = null,
     content: @Composable RowScope.() -> Unit,
 ) {
     SettingRow(
@@ -284,8 +284,9 @@ fun LabeledRow(
             label?.let { it() }
 
             // balloon tooltip
-            if (helpTooltipId != null)
-                BalloonQuestionMark(Str(helpTooltipId))
+            helpTooltip?.let {
+                BalloonQuestionMark(it)
+            }
 
             // rest content
             RowVCenter(
@@ -315,7 +316,7 @@ fun LabeledRow(
         },
         modifier = modifier,
         paddingHorizontal = paddingHorizontal,
-        helpTooltipId = helpTooltipId,
+        helpTooltip = helpTooltipId?.let { Str(it) },
         content = content,
     )
 }

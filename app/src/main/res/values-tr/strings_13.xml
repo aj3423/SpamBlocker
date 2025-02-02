@@ -36,7 +36,9 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        Öncelikle Alman FRITZ!Box için tasarlanmıştır, ancak diğer ülkelerden gelen numaralar için de çalışır.<br>
+        Öncelikle Alman FRITZ!Box için tasarlanmıştır, ancak diğer ülkelerden gelen telefon numaraları için de çalışır.<br>
+        <br>
+        Numaranın kendisi yerine karma ile sorguyu destekler, daha iyi gizlilik sağlar.<br>
         <br>
         Web sitesi: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

@@ -38,7 +38,9 @@
         <![CDATA[
         Principalmente diseñado para el FRITZ!Box alemán, también funciona para números de teléfono de otros países.<br>
         <br>
-        Página web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        Admite consultas por hash en lugar del número en sí, lo que proporciona una mejor privacidad.<br>
+        <br>
+        Sitio web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
         API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
         ]]>

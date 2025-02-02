@@ -206,10 +206,10 @@ fun ApiHeader(
                 }
             }
         },
-        helpTooltipId = if(vm.forType == Def.ForApiQuery)
-            R.string.help_instant_query
+        helpTooltip = if(vm.forType == Def.ForApiQuery)
+            Str(R.string.help_instant_query)
         else
-            R.string.help_auto_report,
+            Str(R.string.help_auto_report),
     ) {
         MenuButton(
             label = Str(R.string.new_),

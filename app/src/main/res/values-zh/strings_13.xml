@@ -36,7 +36,9 @@
     <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
     <string name="help_api_preset_phoneblock">
         <![CDATA[
-        主要针对德国 FRITZ!Box 设计，也适用于其他国家的电话号码。<br>
+        主要为德国 FRITZ!Box 设计，也适用于其他国家/地区的电话号码。<br>
+        <br>
+        它支持使用哈希值而不是号码本身进行查询，从而提供更好的隐私保护。<br>
         <br>
         网站：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>

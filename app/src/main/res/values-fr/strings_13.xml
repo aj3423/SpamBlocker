@@ -38,6 +38,8 @@
         <![CDATA[
         Principalement conçu pour la FRITZ!Box allemande, il fonctionne également pour les numéros de téléphone de tous les autres pays.<br>
         <br>
+        Il prend en charge les requêtes par hachage au lieu du numéro lui-même, offrant ainsi une meilleure confidentialité.<br>
+        <br>
         Site web : <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
         API : <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>

@@ -90,4 +90,5 @@
         ]]>
     </string>
     <string name="waning_using_wildcard_as_regex">Подстановочный знак `*` используется без предшествующей точки, вы имели в виду `.*`?</string>
+    <string name="import_as">Импортировать как</string>
 </resources>
