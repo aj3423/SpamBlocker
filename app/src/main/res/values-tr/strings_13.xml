@@ -55,10 +55,9 @@
     <string name="another_thread_is_cancelled">Başka bir işlem iptal edildi.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. <a href="https://phoneblock.net">https://phoneblock.net</a> adresinden bir hesap kaydedin.<br>
+        1. <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> adresinden hesap oluşturun.<br>
         <br>
-        2. Ayarlar sayfasında: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         "API anahtarı oluştur" düğmesine basın.<br>
+        2. Ayarlar sayfasında: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>, "API anahtarı oluştur" düğmesine basın.<br>
         <br>
         3. Oluşturulan API anahtarını aşağıya girin.
         ]]>

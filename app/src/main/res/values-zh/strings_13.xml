@@ -55,11 +55,11 @@
     <string name="another_thread_is_cancelled">另一个线程已取消。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. 在 <a href="https://phoneblock.net">https://phoneblock.net</a> 注册一个帐户<br>
+        1. 在<a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>注册账户<br>
         <br>
-        2. 在设置页面：<a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>，按下“生成 API 密钥”按钮。<br>
+        2. 在设置页面：<a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>，点击“生成API密钥”按钮。<br>
         <br>
-        3. 在下方填写生成的 API 密钥。
+        3. 在下方填写生成的API密钥。
         ]]>
     </string>
     <string name="username">用户名</string>

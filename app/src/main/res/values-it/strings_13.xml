@@ -72,7 +72,7 @@
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. Registrati su <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        1. Registra un account su <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. Nella pagina delle impostazioni: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
          premi il pulsante "Genera chiave API".<br>

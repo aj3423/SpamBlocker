@@ -55,7 +55,7 @@
     <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. Rexístrate nunha conta en <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        1. Rexístrate nunha conta en <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. Na páxina de configuración: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
          preme o botón "Xerar clave API".<br>

@@ -55,7 +55,7 @@
     <string name="another_thread_is_cancelled">Другой поток отменён.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. Зарегистрируйте аккаунт на <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        1. Зарегистрируйте аккаунт на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. На странице настроек: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
          нажмите кнопку "Generate API key".<br>

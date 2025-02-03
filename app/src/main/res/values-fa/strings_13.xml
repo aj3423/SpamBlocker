@@ -72,11 +72,11 @@
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. در <a href="https://phoneblock.net">https://phoneblock.net</a> حساب کاربری ایجاد کنید<br>
+        1. در <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> حساب کاربری ایجاد کنید<br>
         <br>
         2. در صفحه تنظیمات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>، روی دکمه "Generate API key" کلیک کنید.<br>
         <br>
-        3. کلید API تولید شده را در قسمت زیر وارد کنید.
+        3. کلید API تولید شده را در پایین وارد کنید.
         ]]>
     </string>
     <string name="not_enough_time_left">

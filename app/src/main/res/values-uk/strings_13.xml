@@ -55,7 +55,7 @@
     <string name="another_thread_is_cancelled">Інший потік скасовано.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. Зареєструйте обліковий запис на <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        1. Зареєструйте обліковий запис на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. На сторінці налаштувань: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
          натисніть кнопку "Згенерувати API ключ".<br>

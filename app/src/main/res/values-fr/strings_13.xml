@@ -55,7 +55,7 @@
     <string name="another_thread_is_cancelled">Un autre thread est annulé.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        1. Créez un compte sur <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        1. Créez un compte sur <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. Sur la page des paramètres : <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
          appuyez sur le bouton « Générer une clé API ».<br>
