@@ -93,4 +93,13 @@
     <string name="waning_using_wildcard_as_regex">O comodín `*` úsase sen un punto precedente, queres dicir `.*`?</string>
     <string name="import_as">Importar como</string>
     <string name="api_key">Clave da API</string>
+    <string name="help_mms_support">
+        <![CDATA[
+          Esta aplicación non xestiona MMS nin SMS de grupo (que en realidade son MMS),
+            nunca haberá notificacións para eles porque son spam.<br>
+          <br>
+          Se necesitas soporte MMS, abre unha incidencia en github cun caso de uso.
+        ]]>
+    </string>
+    <string name="mms_support">Soporte MMS</string>
 </resources>

@@ -92,4 +92,13 @@
     <string name="waning_using_wildcard_as_regex">Se usa el comodín `*` sin un punto anterior, ¿quiere decir `.*`?</string>
     <string name="import_as">Importar Como</string>
     <string name="api_key">Clave API</string>
+    <string name="help_mms_support">
+        <![CDATA[
+          Esta aplicación no maneja MMS o SMS grupales (que en realidad es MMS),
+            nunca habrá notificaciones para ellos porque son solo spam.<br>
+          <br>
+          Si necesita soporte MMS, abra un problema en github con un caso de uso.
+        ]]>
+    </string>
+    <string name="mms_support">Soporte MMS</string>
 </resources>

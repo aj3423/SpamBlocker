@@ -92,4 +92,13 @@
     <string name="waning_using_wildcard_as_regex">Подстановочный знак `*` используется без предшествующей точки, вы имели в виду `.*`?</string>
     <string name="import_as">Импортировать как</string>
     <string name="api_key">Ключ API</string>
+    <string name="help_mms_support">
+        <![CDATA[
+          Это приложение не обрабатывает MMS или групповые SMS (которые на самом деле являются MMS),
+            уведомлений о них никогда не будет, потому что они просто спам.<br>
+          <br>
+          Если вам нужна поддержка MMS, пожалуйста, создайте issue на github с описанием случая использования.
+        ]]>
+    </string>
+    <string name="mms_support">Поддержка MMS</string>
 </resources>

@@ -93,4 +93,13 @@
     <string name="waning_using_wildcard_as_regex">Wildcard `*` is used without a preceding dot, do you mean `.*` ?</string>
     <string name="import_as">Import As</string>
     <string name="api_key">API Key</string>
+    <string name="mms_support">MMS support</string>
+    <string name="help_mms_support">
+        <![CDATA[
+          This app doesn\'t handle MMS or group SMS(which is actually MMS),
+            there will never be notifications for them because they are just spam.<br>
+          <br>
+          If you need MMS support, please fire an issue on github with a use case.
+        ]]>
+    </string>
 </resources>

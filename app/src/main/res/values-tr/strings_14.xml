@@ -92,4 +92,13 @@
     <string name="waning_using_wildcard_as_regex">Wildcard `*`, öncesinde nokta olmadan kullanıldı, `.*` demek istediniz mi?</string>
     <string name="import_as">Şu Olarak İçe Aktar</string>
     <string name="api_key">API Anahtarı</string>
+    <string name="help_mms_support">
+        <![CDATA[
+          Bu uygulama MMS veya grup SMS\'ini (ki bu aslında MMS\'dir) işlemez,
+            spam oldukları için bunlar için asla bildirim olmayacaktır.<br>
+          <br>
+          MMS desteğine ihtiyacınız varsa, lütfen github\'da bir kullanım örneği ile bir konu açın.
+        ]]>
+    </string>
+    <string name="mms_support">MMS desteği</string>
 </resources>
