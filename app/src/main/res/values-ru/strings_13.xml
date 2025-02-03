@@ -55,14 +55,12 @@
     <string name="another_thread_is_cancelled">Другой поток отменён.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Зарегистрируйте учётную запись на <a href="https://phoneblock.net">https://phoneblock.net</a>
-        чтобы получить ваше имя пользователя и пароль. Затем введите их ниже.<br>
+        1. Зарегистрируйте аккаунт на <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
-        Они должны выглядеть так:<br>
-        - Имя пользователя:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - Пароль:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. На странице настроек: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         нажмите кнопку "Generate API key".<br>
+        <br>
+        3. Введите сгенерированный API ключ ниже.
         ]]>
     </string>
     <string name="username">Имя пользователя</string>

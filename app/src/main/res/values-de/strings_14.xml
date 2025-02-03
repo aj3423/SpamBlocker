@@ -91,4 +91,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Platzhalter `*` wird ohne vorangestellten Punkt verwendet, meinen Sie `.*`?</string>
     <string name="import_as">Importieren als</string>
+    <string name="api_key">API-Schlüssel</string>
 </resources>

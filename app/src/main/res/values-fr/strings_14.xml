@@ -92,4 +92,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Le caractère générique `*` est utilisé sans point précédent, vouliez-vous dire `.*` ?</string>
     <string name="import_as">Importer comme</string>
+    <string name="api_key">Clé API</string>
 </resources>

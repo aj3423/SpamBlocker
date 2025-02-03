@@ -91,4 +91,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Se usa el comodín `*` sin un punto anterior, ¿quiere decir `.*`?</string>
     <string name="import_as">Importar Como</string>
+    <string name="api_key">Clave API</string>
 </resources>

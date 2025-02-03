@@ -55,13 +55,11 @@
     <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        <a href="https://phoneblock.net">https://phoneblock.net</a>でアカウントを登録して、ユーザー名とパスワードを取得してください。次に、それらを下記に入力します。<br>
+        1. <a href="https://phoneblock.net">https://phoneblock.net</a>でアカウントを登録します。<br>
         <br>
-        以下のようになります。<br>
-        - ユーザー名:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - パスワード:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. 設定ページ：<a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>で、「APIキーを生成」ボタンを押します。<br>
+        <br>
+        3. 生成されたAPIキーを下記に入力します。
         ]]>
     </string>
     <string name="username">ユーザー名</string>

@@ -55,13 +55,12 @@
     <string name="another_thread_is_cancelled">Başka bir işlem iptal edildi.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Kullanıcı adınızı ve şifrenizi almak için <a href="https://phoneblock.net">https://phoneblock.net</a> adresinden bir hesap kaydedin. Daha sonra bunları aşağıya girin.<br>
+        1. <a href="https://phoneblock.net">https://phoneblock.net</a> adresinden bir hesap kaydedin.<br>
         <br>
-        Şu şekilde olmalıdır:<br>
-        - Kullanıcı adı:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - Şifre:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. Ayarlar sayfasında: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         "API anahtarı oluştur" düğmesine basın.<br>
+        <br>
+        3. Oluşturulan API anahtarını aşağıya girin.
         ]]>
     </string>
     <string name="username">kullanıcı adı</string>

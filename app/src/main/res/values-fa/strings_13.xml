@@ -72,13 +72,11 @@
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        برای دریافت نام کاربری و رمز عبور خود، در <a href="https://phoneblock.net">https://phoneblock.net</a> ثبت نام کنید. سپس آن‌ها را در پایین وارد کنید.<br>
+        1. در <a href="https://phoneblock.net">https://phoneblock.net</a> حساب کاربری ایجاد کنید<br>
         <br>
-        آن‌ها باید مانند این باشند:<br>
-        - نام کاربری:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - رمز عبور:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. در صفحه تنظیمات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>، روی دکمه "Generate API key" کلیک کنید.<br>
+        <br>
+        3. کلید API تولید شده را در قسمت زیر وارد کنید.
         ]]>
     </string>
     <string name="not_enough_time_left">

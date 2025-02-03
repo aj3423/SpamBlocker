@@ -55,14 +55,12 @@
     <string name="another_thread_is_cancelled">Otro hilo se canceló.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registra una cuenta en <a href="https://phoneblock.net">https://phoneblock.net</a>
-        para obtener tu nombre de usuario y contraseña. Luego, rellénalos a continuación.<br>
+        1. Registre una cuenta en <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
-        Deberían verse así:<br>
-        - Nombre de usuario:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - Contraseña:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. En la página de configuración: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         pulse el botón "Generar clave API".<br>
+        <br>
+        3. Rellene la clave API generada a continuación.
         ]]>
     </string>
     <string name="username">nombre de usuario</string>

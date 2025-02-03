@@ -55,14 +55,12 @@
     <string name="another_thread_is_cancelled">Інший потік скасовано.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Зареєструйте обліковий запис на <a href="https://phoneblock.net">https://phoneblock.net</a>
-        щоб отримати своє ім\'я користувача та пароль. Потім введіть їх нижче.<br>
+        1. Зареєструйте обліковий запис на <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
-        Вони повинні виглядати так:<br>
-        - Ім\'я користувача:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - Пароль:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. На сторінці налаштувань: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         натисніть кнопку "Згенерувати API ключ".<br>
+        <br>
+        3. Введіть згенерований API ключ нижче.
         ]]>
     </string>
     <string name="username">ім\'я користувача</string>

@@ -90,4 +90,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">ワイルドカード `*` がドットの前に使用されています。`.*` の意図ですか？</string>
     <string name="import_as">インポート先</string>
+    <string name="api_key">APIキー</string>
 </resources>

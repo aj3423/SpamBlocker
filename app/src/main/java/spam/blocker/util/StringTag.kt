@@ -97,3 +97,27 @@ fun String.resolveBasicAuthTag(): String {
     }
     return ret
 }
+
+// Authorization: Bearer API_TOKEN
+fun String.resolveBearerAuthTag(): String {
+    var ret = this
+
+    val tpl ="\\{bearer_auth\\((.+?)\\)\\}" // the tpl
+    val result = tpl.toRegex().find(ret)
+
+    result?.groups?.size?.let {
+        if (it == 2) {
+            val g0 = result.groups[0]!!.value
+            val g1 = result.groups[1]!!.value
+
+            ret = ret.replace(g0, "Authorization: Bearer $g1")
+        }
+    }
+    return ret
+}
+
+fun String.resolveHttpAuthTag(): String {
+    return this
+        .resolveBasicAuthTag()
+        .resolveBearerAuthTag()
+}

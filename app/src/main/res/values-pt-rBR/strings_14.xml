@@ -92,4 +92,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">O caractere curinga `*` está sendo usado sem um ponto precedente, você quis dizer `.*`?</string>
     <string name="import_as">Importar Como</string>
+    <string name="api_key">Chave da API</string>
 </resources>

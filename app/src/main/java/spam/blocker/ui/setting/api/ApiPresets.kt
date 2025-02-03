@@ -13,11 +13,7 @@ import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.ParseIncomingNumber
 import spam.blocker.service.bot.ParseQueryResult
-import spam.blocker.util.Algorithm.b64Decode
 import spam.blocker.util.Lambda2
-import spam.blocker.util.Util.isUUID
-import spam.blocker.util.resolveBase64Tag
-import spam.blocker.util.resolveBasicAuthTag
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -29,7 +25,7 @@ data class AuthConfig(
     // A tooltip for explaining how to obtain the API_KEY
     val tooltipId: Int,
     // Pre-process the actions, e.g.:
-    //  fill the {username}, {password} in HttpDownload.header with user input credentials
+    //  fill the {api_token} in HttpDownload.header with user input credentials
     val preProcessor: Lambda2<List<IAction>, List<String>>,
     // For validating if the user has input the correct auth credentials.
     val validator: (List<String>) -> Boolean,
@@ -62,7 +58,7 @@ fun spamCategoryNamesMap(ctx: Context): Map<String, String> {
 
 data class ApiPreset(
     val tooltipId: Int,
-    // Show a dialog for inputting authorization information(API_KEY/Username/Password).
+    // Show a dialog for inputting authorization information(API_TOKEN/Username/Password).
     val newAuthConfig: () -> AuthConfig?,
     val newApi: (Context) -> Api,
 )
@@ -81,8 +77,7 @@ val defApiReportActions = listOf(
 
 val authConfig_PhoneBlock = AuthConfig(
     formLabels = listOf(
-        R.string.username,
-        R.string.password,
+        R.string.api_key,
     ),
     tooltipId = R.string.help_api_preset_phoneblock_authorization,
     preProcessor = { actions, formValues ->
@@ -90,22 +85,12 @@ val authConfig_PhoneBlock = AuthConfig(
         actions.find { it is HttpDownload }?.let {
             val http = it as HttpDownload
             http.header = http.header
-                .replace("{username}", formValues[0])
-                .replace("{password}", formValues[1])
+                .replace("{api_key}", formValues[0])
         }
     },
     validator = validator@ {
-        val username = it[0]
-        val password = it[1]
-        if (!isUUID(username))
-            return@validator false
-
-        return@validator try {
-            b64Decode(password).size == 16
-            true
-        } catch (_: Exception) {
-            false
-        }
+        val apiKey = it[0]
+        apiKey.startsWith("pbt_")
     }
 )
 val ApiQueryPresets = listOf<ApiPreset>(
@@ -127,7 +112,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         else
                             "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}"
                         ,
-                        header = "{basic_auth({username}:{password})}"
+                        header = "{bearer_auth({api_key})}",
                     ),
                     ParseQueryResult(
                         negativeSig = "(D_POLL|G_FRAUD|E_ADVERTISING|F_GAMBLE|B_MISSED)",
@@ -172,7 +157,7 @@ val ApiReportPresets = listOf<ApiPreset>(
                         else
                             "https://phoneblock.net/phoneblock/api/rate"
                         ,
-                        header = "{basic_auth({username}:{password})}",
+                        header = "{bearer_auth({api_key})}",
                         method = HTTP_POST,
                         body = """
                             {

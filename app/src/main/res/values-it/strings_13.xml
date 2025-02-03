@@ -72,14 +72,12 @@
     </string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Registra un account su <a href="https://phoneblock.net">https://phoneblock.net</a>
-        per ottenere il tuo nome utente e password. Quindi, inseriscili qui sotto.<br>
+        1. Registrati su <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
-        Dovrebbero apparire così:<br>
-        - Nome utente:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - Password:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. Nella pagina delle impostazioni: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         premi il pulsante "Genera chiave API".<br>
+        <br>
+        3. Inserisci la chiave API generata qui sotto.
         ]]>
     </string>
     <string name="not_enough_time_left">

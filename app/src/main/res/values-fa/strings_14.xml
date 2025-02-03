@@ -91,4 +91,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">کاراکتر وحشی `*` بدون نقطه قبل از آن استفاده شده است، آیا منظورتان `.*` است؟</string>
     <string name="import_as">وارد کردن به عنوان</string>
+    <string name="api_key">کلید API</string>
 </resources>

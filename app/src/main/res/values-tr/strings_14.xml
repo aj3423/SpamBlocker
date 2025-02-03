@@ -91,4 +91,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">Wildcard `*`, öncesinde nokta olmadan kullanıldı, `.*` demek istediniz mi?</string>
     <string name="import_as">Şu Olarak İçe Aktar</string>
+    <string name="api_key">API Anahtarı</string>
 </resources>

@@ -55,14 +55,12 @@
     <string name="another_thread_is_cancelled">Outro fío foi cancelado.</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
-        Rexístrate nunha conta en <a href="https://phoneblock.net">https://phoneblock.net</a>
-        para obter o teu nome de usuario e contrasinal. Despois, encheos a continuación.<br>
+        1. Rexístrate nunha conta en <a href="https://phoneblock.net">https://phoneblock.net</a><br>
         <br>
-        Deberían parecerse a isto:<br>
-        - Nome de usuario:<br>
-         &emsp; xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxx<br>
-        - Contrasinal:<br>
-         &emsp; xxxxxxxxxxxxxxxxxxxx
+        2. Na páxina de configuración: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         preme o botón "Xerar clave API".<br>
+        <br>
+        3. Enche a clave API xerada a continuación.
         ]]>
     </string>
     <string name="username">nome de usuario</string>

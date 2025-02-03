@@ -92,4 +92,5 @@
     </string>
     <string name="waning_using_wildcard_as_regex">O comodín `*` úsase sen un punto precedente, queres dicir `.*`?</string>
     <string name="import_as">Importar como</string>
+    <string name="api_key">Clave da API</string>
 </resources>

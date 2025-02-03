@@ -87,6 +87,7 @@ import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.resolveBase64Tag
 import spam.blocker.util.resolveBasicAuthTag
+import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveSHA1Tag
@@ -197,7 +198,7 @@ open class HttpDownload(
     private fun splitHeader(allHeadersStr: String): Map<String, String> {
         return allHeadersStr.lines().filter { it.trim().isNotEmpty() }.associate { line ->
             val resolved = line
-                .resolveBasicAuthTag()
+                .resolveHttpAuthTag()
                 .resolveBase64Tag()
             val (key, value) = resolved.split(":").map { it.trim() }
             key to value
