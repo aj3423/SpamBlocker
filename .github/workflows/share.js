@@ -47,7 +47,12 @@ function generateWiki(results) {
 				// .split('\n')
 				// .map(line => `    - ${line}`)
 				// .join('\n');
-				return `- [${item.description}](${item.link}) *(by @${item.author})*\n\n\`\`\`${content}\`\`\``
+				const title = `- [${item.description}](${item.link}) *(by @${item.author})*\n\n`
+				if (content.includes("\`\`\`")) { // wrap it with ``` ``` when it's not aready wrapped
+					return title + content
+				} else {
+					return title + `\`\`\`${content}\`\`\``
+				}
 			}).join('\n\n');
 			return countrySection;
 		}).join('\n\n');
