@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   collect-issues:
-    if: contains(github.event.issue.labels.*.name, 'share regex/workflow')
+    if: github.event.action == 'deleted' || contains(github.event.issue.labels.*.name, 'share regex/workflow') 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
