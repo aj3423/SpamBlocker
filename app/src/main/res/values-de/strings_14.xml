@@ -92,13 +92,5 @@
     <string name="waning_using_wildcard_as_regex">Platzhalter `*` wird ohne vorangestellten Punkt verwendet, meinen Sie `.*`?</string>
     <string name="import_as">Importieren als</string>
     <string name="api_key">API-Schlüssel</string>
-    <string name="help_mms_support">
-        <![CDATA[
-          Diese App verarbeitet keine MMS oder Gruppen-SMS (was eigentlich MMS ist),
-            es wird niemals Benachrichtigungen dafür geben, da sie nur Spam sind.<br>
-          <br>
-          Wenn Sie MMS-Unterstützung benötigen, melden Sie bitte ein Issue auf GitHub mit einem Anwendungsfall.
-        ]]>
-    </string>
     <string name="mms_support">MMS-Unterstützung</string>
 </resources>

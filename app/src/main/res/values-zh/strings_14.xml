@@ -91,13 +91,5 @@
     <string name="waning_using_wildcard_as_regex">通配符`*`未使用点作为前缀，您的意思是`.*`吗？</string>
     <string name="import_as">导入为</string>
     <string name="api_key">API 密钥</string>
-    <string name="help_mms_support">
-        <![CDATA[
-          此应用不处理 MMS 或群组短信（实际上是 MMS），
-            永远不会有它们的通知，因为它们只是垃圾信息。<br>
-          <br>
-          如果您需要 MMS 支持，请在 github 上提交一个问题并说明用例。
-        ]]>
-    </string>
     <string name="mms_support">MMS 支持</string>
 </resources>

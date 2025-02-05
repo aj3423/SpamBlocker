@@ -92,13 +92,5 @@
     <string name="waning_using_wildcard_as_regex">کاراکتر وحشی `*` بدون نقطه قبل از آن استفاده شده است، آیا منظورتان `.*` است؟</string>
     <string name="import_as">وارد کردن به عنوان</string>
     <string name="api_key">کلید API</string>
-    <string name="help_mms_support">
-        <![CDATA[
-          این برنامه MMS یا پیامک گروهی (که در واقع MMS است) را مدیریت نمی‌کند،
-            هیچوقت اعلانی برای آنها وجود نخواهد داشت زیرا فقط اسپم هستند.<br>
-          <br>
-          اگر به پشتیبانی MMS نیاز دارید، لطفاً در github با ذکر یک مورد استفاده، مسئله را گزارش کنید.
-        ]]>
-    </string>
     <string name="mms_support">پشتیبانی از MMS</string>
 </resources>

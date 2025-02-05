@@ -91,12 +91,5 @@
     <string name="waning_using_wildcard_as_regex">ワイルドカード `*` がドットの前に使用されています。`.*` の意図ですか？</string>
     <string name="import_as">インポート先</string>
     <string name="api_key">APIキー</string>
-    <string name="help_mms_support">
-        <![CDATA[
-          このアプリはMMSやグループSMS（実際にはMMS）を処理しません。単なる迷惑電話であるため、それらに対する通知は決して表示されません。<br>
-          <br>
-          MMSサポートが必要な場合は、ユースケースを記載してgithubで問題を報告してください。
-        ]]>
-    </string>
     <string name="mms_support">MMSサポート</string>
 </resources>

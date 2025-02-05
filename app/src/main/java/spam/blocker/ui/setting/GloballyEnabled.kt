@@ -132,11 +132,6 @@ fun GloballyEnabled() {
                         }
                     })
                 }
-                LabeledRow(
-                    labelId = R.string.mms_support,
-                    helpTooltipId = R.string.help_mms_support,
-                ) {
-                }
             }
         })
 

@@ -93,13 +93,5 @@
     <string name="waning_using_wildcard_as_regex">Il carattere jolly `*` è usato senza un punto precedente, intendi `.*`?</string>
     <string name="import_as">Importa Come</string>
     <string name="api_key">Chiave API</string>
-    <string name="help_mms_support">
-        <![CDATA[
-          Questa app non gestisce MMS o SMS di gruppo (che in realtà è MMS),
-            non ci saranno mai notifiche per loro perché sono solo spam.<br>
-          <br>
-          Se hai bisogno del supporto MMS, apri un\'issue su github con un caso d\'uso.
-        ]]>
-    </string>
     <string name="mms_support">Supporto MMS</string>
 </resources>

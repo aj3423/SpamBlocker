@@ -93,13 +93,5 @@
     <string name="waning_using_wildcard_as_regex">Le caractère générique `*` est utilisé sans point précédent, vouliez-vous dire `.*` ?</string>
     <string name="import_as">Importer comme</string>
     <string name="api_key">Clé API</string>
-    <string name="help_mms_support">
-        <![CDATA[
-          Cette application ne gère pas les MMS ou les SMS de groupe (qui sont en fait des MMS),
-            il n\'y aura jamais de notifications pour eux car ce sont simplement des spams.<br>
-          <br>
-          Si vous avez besoin du support MMS, veuillez signaler un problème sur github avec un cas d\'utilisation.
-        ]]>
-    </string>
     <string name="mms_support">Support MMS</string>
 </resources>
