@@ -17,6 +17,8 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
+import spam.blocker.service.bot.InterceptSms
+import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
@@ -544,6 +546,7 @@ class Checker { // for namespace only
     private class InstantQuery(
         private val ctx: Context,
         private val cCtx: CheckContext,
+        private val smsContent: String? = null, // null: for call
     ) : IChecker {
         override fun priority(): Int {
             return -1
@@ -553,7 +556,16 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            val apis = G.apiQueryVM.table.listAll(ctx).filter { it.enabled }
+            val apis = G.apiQueryVM.table.listAll(ctx)
+                .filter { it.enabled }
+                .filter { // check if the first action is Intercept
+                    it.actions.indexOfFirst { act ->
+                        if (smsContent == null)
+                            act is InterceptCall
+                        else
+                            act is InterceptSms
+                    } == 0
+                }
 
             if (apis.isEmpty())
                 return null
@@ -594,6 +606,7 @@ class Checker { // for namespace only
                                 scope = scope,
                                 logger = logger,
                                 rawNumber = rawNumber,
+                                smsContent = smsContent,
                             )
                             val success = it.actions.executeAll(ctx, aCtx)
 
@@ -1020,7 +1033,8 @@ class Checker { // for namespace only
                 Contact(ctx, cCtx),
                 SpamDB(ctx, cCtx),
                 MeetingMode(ctx, cCtx),
-                OffTime(ctx, cCtx)
+                OffTime(ctx, cCtx),
+                InstantQuery(ctx, cCtx, messageBody),
             )
 
             //  add number rules to checkers

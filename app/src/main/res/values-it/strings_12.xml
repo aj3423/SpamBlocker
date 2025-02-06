@@ -49,14 +49,14 @@
         Può essere usata una regex aggiuntiva per estrarre la categoria spam (opzionale).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analizza Numero</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Intercetta Chiamata</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        Il numero di chiamata in arrivo verrà analizzato in diversi tag:<br>
+        Il numero di telefono in arrivo verrà intercettato e analizzato in diversi tag:<br>
         <br>
         %s
         <br>
-        Questi tag verranno usati per costruire l\'URL HTTP, per esempio:<br>
+        Questi tag verranno utilizzati per costruire l\'URL HTTP, ad esempio:<br>
         <br>
         1. Per numeri internazionali come <b>+122222</b>, questi due sono equivalenti:<br>
         - https://test.com/number=<b>{number}</b><br>
@@ -64,7 +64,8 @@
         Sarà analizzato come:<br>
         https://test.com/number=<b>122222</b><br>
         <br>
-        2. Per numeri nazionali come <b>12345</b>, devi fornire il prefisso internazionale nelle impostazioni o lasciare che l\'app lo rilevi automaticamente.<br>
+        2. Per numeri nazionali come <b>12345</b>, è necessario fornire il prefisso internazionale nelle impostazioni,<br>
+        oppure lasciare che l\'app lo rilevi automaticamente.<br>
         ]]>
     </string>
     <string name="query_api">API Query</string>
@@ -92,4 +93,11 @@
     <string name="blocked_by">Bloccato da: %s</string>
     <string name="outside_time_schedule">Fuori dalla programmazione, salta.</string>
     <string name="android_ver_lower_than_11">Versione Android inferiore all\'11, salta.</string>
+    <string name="action_intercept_sms">Intercetta SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        L\'SMS in arrivo verrà intercettato e il contenuto verrà analizzato nel tag <b>{sms}</b>,<br>
+        che può essere utilizzato dalle azioni successive.
+        ]]>
+    </string>
 </resources>

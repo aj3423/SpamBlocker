@@ -86,11 +86,11 @@ import spam.blocker.util.formatAnnotated
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.resolveBase64Tag
-import spam.blocker.util.resolveBasicAuthTag
 import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
 import spam.blocker.util.resolveSHA1Tag
+import spam.blocker.util.resolveSmsTag
 import spam.blocker.util.resolveTimeTags
 import spam.blocker.util.spf
 import spam.blocker.util.toMap
@@ -237,6 +237,7 @@ open class HttpDownload(
                     fullNumber = aCtx.fullNumber,
                     rawNumber = aCtx.rawNumber,
                 )
+                .resolveSmsTag(aCtx.smsContent)
                 .replace(tagCategory, aCtx.realCategory ?: "")
             if (method == HTTP_POST) {
                 aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: $resolvedBody")
@@ -1639,10 +1640,13 @@ class EnableApp(
 
 
 // This action parses the incoming number and fill the ActionContext with cc/domestic/number,
-//  which will be used in following actions like HttpRequest.
+//  which can be used in following actions like HttpRequest.
 @Serializable
+// The historical name, it should be renamed to `InterceptCall`.
+// If you know how to rename it with history compatibility, please answer here:
+//   https://stackoverflow.com/q/79415650/2219196
 @SerialName("ParseIncomingNumber")
-class ParseIncomingNumber(
+class InterceptCall(
     var numberFilter: String = "",
 ) : IAction {
 
@@ -1724,7 +1728,7 @@ class ParseIncomingNumber(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_parse_incoming_number)
+        return ctx.getString(R.string.action_intercept_call)
     }
 
     @Composable
@@ -1736,7 +1740,7 @@ class ParseIncomingNumber(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_parse_incoming_number).format(
+        return ctx.getString(R.string.help_action_intercept_call).format(
             ctx.getString(R.string.number_tags)
         )
     }
@@ -1772,6 +1776,49 @@ class ParseIncomingNumber(
             },
             onFlagsChange = { }
         )
+    }
+}
+
+
+// This action must be the first action of the workflow.
+@Serializable
+@SerialName("InterceptSms")
+class InterceptSms(
+) : IPermissiveAction {
+    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        // Nothing to do
+        // It just needs to be there, as the first action in the workflow.
+        // Because new SMS will only be checked by such workflows.
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_intercept_sms)
+    }
+
+    @Composable
+    override fun Summary() {}
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_intercept_sms)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon20(iconId = R.drawable.ic_sms)
+    }
+
+    @Composable
+    override fun Options() {
+        NoOptionNeeded()
     }
 }
 

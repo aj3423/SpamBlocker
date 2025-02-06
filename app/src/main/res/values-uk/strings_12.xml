@@ -48,22 +48,22 @@
         Для вилучення категорії спаму можна використовувати додатковий регулярний вираз (необов\'язково).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Розбір номера</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Перехоплення дзвінка</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        Вхідний номер буде розділений на різні теги:<br>
+        Вхідний номер буде перехоплено та розпарсено на різні теги:<br>
         <br>
         %s
         <br>
-        Ці теги будуть використані для побудови URL HTTP, наприклад:<br>
+        Ці теги будуть використані для побудови HTTP-адреси, наприклад:<br>
         <br>
-        1. Для міжнародного номера, як <b>+122222</b>, ці два рівнозначні:<br>
+        1. Для міжнародного номера, наприклад <b>+122222</b>, ці два варіанти еквівалентні:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Буде розпарсено як: https://test.com/number=<b>122222</b><br>
+        Буде розпарсено як:<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
-        2. Для внутрішнього номера, як <b>12345</b>, потрібно вказати код країни в налаштуваннях<br>
-        або дозволити програмі автоматично його визначити.<br>
+        2. Для внутрішнього номера, наприклад <b>12345</b>, потрібно вказати код країни в налаштуваннях або дозволити програмі автоматично його визначити.<br>
         ]]>
     </string>
     <string name="query_api">API запиту</string>
@@ -92,4 +92,11 @@
     <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
     <string name="query">Запит</string>
     <string name="report_api">API звітування</string>
+    <string name="action_intercept_sms">Перехоплення SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        Вхідне SMS буде перехоплено, а вміст розібрано в тег <b>{sms}</b>,<br>
+        який може бути використаний наступними діями.
+        ]]>
+    </string>
 </resources>

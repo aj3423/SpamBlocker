@@ -47,10 +47,10 @@
         Une expression régulière supplémentaire peut être utilisée pour extraire la catégorie d’appel indésirable. (facultatif)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analyser le numéro</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Intercepter l’appel</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        Le numéro d’appel entrant sera analysé en différentes balises :<br>
+        Le numéro d’appel entrant sera intercepté et analysé en différentes balises :<br>
         <br>
         %s
         <br>
@@ -59,7 +59,8 @@
         1. Pour un numéro international comme <b>+122222</b>, ces deux sont équivalents :<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Il sera analysé en : https://test.com/number=<b>122222</b><br>
+        Il sera analysé en :<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
         2. Pour un numéro national comme <b>12345</b>, vous devez fournir le code pays dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
         ]]>
@@ -90,4 +91,10 @@
     <string name="android_ver_lower_than_11">Version Android inférieure à 11, ignorer.</string>
     <string name="query">Requête</string>
     <string name="report_api">API de rapport</string>
+    <string name="action_intercept_sms">Intercepter le SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        Le SMS entrant sera intercepté et son contenu sera analysé dans la balise <b>{sms}</b>, qui peut être utilisée par les actions suivantes.
+        ]]>
+    </string>
 </resources>

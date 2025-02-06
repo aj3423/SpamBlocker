@@ -20,6 +20,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.IAction
+import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.botActions
 import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.executeAll
@@ -39,6 +40,8 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda
 import spam.blocker.util.TextLogger
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
 
 
 @Composable
@@ -62,7 +65,7 @@ fun TestActionButton(
 
     val coroutine = rememberCoroutineScope()
     fun testActions(
-        rawNumber: String? = null,
+        content: String? = null,
     ) {
         logTrigger.value = true
         logStr.value = buildAnnotatedString {} // clear previous log
@@ -71,7 +74,8 @@ fun TestActionButton(
             withContext(IO) {
                 val aCtx = ActionContext(
                     logger = TextLogger(logStr, C),
-                    rawNumber = rawNumber,
+                    rawNumber = content,
+                    smsContent = content,
                     tagCategory = tagOther,
                 )
                 actions.executeAll(ctx, aCtx)
@@ -79,29 +83,40 @@ fun TestActionButton(
         }
     }
 
-    // Input number dialog for InstantQuery
-    val inputNumberTrigger = rememberSaveable { mutableStateOf(false) }
+    var forCall by remember {
+        mutableStateOf(
+            // check if the first action is InterceptCall
+            actions.firstOrNull() is InterceptCall
+        )
+    }
+
+    // Input number/sms dialog for InstantQuery
+    val inputTrigger = rememberSaveable { mutableStateOf(false) }
     PopupDialog(
-        trigger = inputNumberTrigger,
+        trigger = inputTrigger,
         buttons = {
             StrokeButton(label = Str(R.string.ok), color = Teal200) {
-                testActions(G.testingVM.phone.value)
+                testActions(if (forCall) G.testingVM.phone.value else G.testingVM.sms.value)
             }
         }
     ) {
+
         StrInputBox(
-            text = G.testingVM.phone.value,
-            label = { GreyLabel(Str(R.string.phone_number))},
-            placeholder = { DimGreyLabel("+12223334444") },
+            text = if(forCall) G.testingVM.phone.value else G.testingVM.sms.value,
+            label = { GreyLabel(Str(if (forCall) R.string.phone_number else R.string.sms_content))},
+            placeholder = { DimGreyLabel(if (forCall) "+12223334444" else "") },
             onValueChange = {
-                G.testingVM.phone.value = it
+                if (forCall)
+                    G.testingVM.phone.value = it
+                else
+                    G.testingVM.sms.value = it
             }
         )
     }
 
     StrokeButton(label = Str(R.string.test), color = Teal200) {
         if (testingRequireNumber) {
-            inputNumberTrigger.value = true
+            inputTrigger.value = true
         } else {
             testActions()
         }

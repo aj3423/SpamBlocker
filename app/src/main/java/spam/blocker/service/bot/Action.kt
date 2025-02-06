@@ -52,7 +52,8 @@ val botActions = listOf(
 )
 
 val apiActions = listOf(
-    ParseIncomingNumber(),
+    InterceptCall(),
+    InterceptSms(),
     HttpDownload(),
     ParseQueryResult(),
     FilterSpamResult(),
@@ -91,6 +92,7 @@ data class ActionContext(
     var cc: String? = null, // "1"
     var domestic: String? = null, // "2223334444"
     var fullNumber: String? = null, // "12223334444"
+    var smsContent: String? = null,
     // The spam category, used when reporting.
     //  tagCategory will be converted to realCategory in Action CategoryConfig, and will then be used in http request
     var tagCategory: String? = null,

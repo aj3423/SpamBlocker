@@ -47,21 +47,22 @@
         Spam kategorisini çıkarmak için ekstra bir regex kullanılabilir. (isteğe bağlı)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Gelen Numarayı Ayrıştır</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Arayı Kes</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        Gelen arama numarası farklı etiketlere ayrıştırılacaktır:<br>
+        Gelen arama numarası kesintiye uğrayacak ve farklı etiketlere ayrılacaktır:<br>
         <br>
         %s
         <br>
-        Bu etiketler HTTP URL\'sini oluşturmak için kullanılır, örneğin:<br>
+        Bu etiketler HTTP URL\'sini oluşturmak için kullanılacaktır, örneğin:<br>
         <br>
-        1. <b>+122222</b> gibi uluslararası numara için, bunların ikisi eşdeğerdir:<br>
+        1. <b>+122222</b> gibi uluslararası numaralar için, bunlar eşdeğerdir:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Şu şekilde ayrıştırılacaktır: https://test.com/number=<b>122222</b><br>
+        Şu şekilde çözümlenecektir:<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
-        2. <b>12345</b> gibi yerel numara için, ayarlarda ülke kodunu sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
+        2. <b>12345</b> gibi yerel numaralar için, ülke kodunu ayarlar içinde sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
         ]]>
     </string>
     <string name="query_api">Sorgu API\'sı</string>
@@ -90,4 +91,10 @@
     <string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
     <string name="query">Sorgu</string>
     <string name="report_api">Rapor API\'sı</string>
+    <string name="action_intercept_sms">SMS\'i Engelleyin</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        Gelen SMS engellenecek ve içerik <b>{sms}</b> etiketine ayrıştırılacak,<br>bu da sonraki işlemler tarafından kullanılabilir.
+        ]]>
+    </string>
 </resources>

@@ -48,10 +48,10 @@
         یک عبارت باقاعده اضافی می‌تواند برای استخراج دسته‌بندی مزاحمت استفاده شود. (اختیاری)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">تجزیه شماره</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">قطع تماس</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        شماره تماس ورودی به برچسب‌های مختلفی تجزیه می‌شود:<br>
+        شماره تماس ورودی قطع و به برچسب‌های مختلف تجزیه می‌شود:<br>
         <br>
         %s
         <br>
@@ -63,7 +63,7 @@
         به این صورت تجزیه می‌شود:<br>
         https://test.com/number=<b>122222</b><br>
         <br>
-        2. برای شماره‌های داخلی مانند <b>12345</b>، باید کد کشور را در تنظیمات ارائه دهید، یا اجازه دهید برنامه آن را به طور خودکار تشخیص دهد.<br>
+        2. برای شماره‌های داخلی مانند <b>12345</b>، باید کد کشور را در تنظیمات وارد کنید، یا اجازه دهید برنامه آن را به طور خودکار تشخیص دهد.<br>
         ]]>
     </string>
     <string name="query_api">پرس و جوی API</string>
@@ -91,4 +91,10 @@
     <string name="blocked_by">مسدود شده توسط: %s</string>
     <string name="outside_time_schedule">خارج از برنامه زمانی، رد می‌شود.</string>
     <string name="android_ver_lower_than_11">نسخه اندروید کمتر از 11 است، رد می‌شود.</string>
+    <string name="action_intercept_sms">قطع پیامک</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        پیامک ورودی قطع می‌شود و محتوا به برچسب <b>{sms}</b> تجزیه می‌شود، که می‌تواند توسط اقدامات بعدی استفاده شود.
+        ]]>
+    </string>
 </resources>

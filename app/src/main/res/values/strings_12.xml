@@ -49,10 +49,10 @@
         An extra regex can be used to extract the spam category. (optional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Parse Number</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Intercept Call</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        The incoming call number will be parsed into different tags:<br>
+        The incoming call number will be intercepted and parsed into different tags:<br>
         <br>
         %s
         <br>
@@ -66,6 +66,13 @@
         <br>
         2. For domestic number like <b>12345</b>, you need to provide the country code in the settings,
         or let the app detect it automatically.<br>
+        ]]>
+    </string>
+    <string name="action_intercept_sms">Intercept SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        The incoming SMS will be intercepted and the content will parsed into tag <b>{sms}</b>,
+        which can be used in HTTP requests.
         ]]>
     </string>
     <string name="query_api">Query API</string>

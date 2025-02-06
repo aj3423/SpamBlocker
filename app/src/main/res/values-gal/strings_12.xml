@@ -48,10 +48,10 @@
         Pode usarse un regex extra para extraer a categoría de spam. (opcional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analizar número</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Interceptar chamada</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        O número de chamada entrante analizarase en diferentes etiquetas:<br>
+        O número de chamada entrante interceptarase e analizarase en diferentes etiquetas:<br>
         <br>
         %s
         <br>
@@ -60,9 +60,10 @@
         1. Para números internacionais como <b>+122222</b>, estes dous son equivalentes:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Analizarase a: https://test.com/number=<b>122222</b><br>
+        Analizarase a:<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
-        2. Para números nacionais como <b>12345</b>, precisa proporcionar o código do país nas configuracións,<br>
+        2. Para números nacionais como <b>12345</b>, tes que proporcionar o código do país na configuración,<br>
         ou deixar que a aplicación o detecte automaticamente.<br>
         ]]>
     </string>
@@ -92,4 +93,11 @@
     <string name="android_ver_lower_than_11">A versión de Android é inferior a 11, saltando.</string>
     <string name="query">Consulta</string>
     <string name="report_api">API de reporte</string>
+    <string name="action_intercept_sms">Interceptar SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        O SMS entrante será interceptado e o contido analizarase na etiqueta <b>{sms}</b>,<br>
+        que pode ser usada polas seguintes accións.
+        ]]>
+    </string>
 </resources>

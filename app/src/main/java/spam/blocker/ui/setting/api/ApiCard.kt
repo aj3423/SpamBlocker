@@ -34,17 +34,16 @@ fun ApiCard(
             Column(
                 modifier = M.weight(1f)
             ) {
-                // desc
-                GreyLabel(text = api.summary(), fontWeight = FontWeight.SemiBold)
-
                 RowVCenterSpaced(8) {
                     // Green dot
                     if (api.enabled) {
                         GreenDot()
                     }
-                    // first action summary
-                    api.actions.firstOrNull()?.Summary()
+                    // desc
+                    GreyLabel(text = api.summary(), fontWeight = FontWeight.SemiBold)
                 }
+                // first action summary
+                api.actions.firstOrNull()?.Summary()
             }
 
             // action icons

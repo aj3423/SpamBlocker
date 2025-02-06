@@ -11,7 +11,7 @@ import spam.blocker.service.bot.HTTP_POST
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ImportToSpamDB
-import spam.blocker.service.bot.ParseIncomingNumber
+import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.util.Lambda2
 import kotlin.Int
@@ -64,14 +64,14 @@ data class ApiPreset(
 )
 
 val defApiQueryActions = listOf(
-    ParseIncomingNumber(),
+    InterceptCall(),
     HttpDownload(),
     ParseQueryResult(),
     FilterSpamResult(),
     ImportToSpamDB()
 )
 val defApiReportActions = listOf(
-    ParseIncomingNumber(),
+    InterceptCall(),
     HttpDownload(),
 )
 
@@ -103,7 +103,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 desc = ctx.getString(R.string.api_preset_phoneblock),
                 enabled = true,
                 actions = listOf(
-                    ParseIncomingNumber(
+                    InterceptCall(
                         numberFilter = ".*",
                     ),
                     HttpDownload(
@@ -138,7 +138,7 @@ val ApiReportPresets = listOf<ApiPreset>(
                 desc = ctx.getString(R.string.api_preset_phoneblock),
                 enabled = true,
                 actions = listOf(
-                    ParseIncomingNumber(
+                    InterceptCall(
                         numberFilter = ".*",
                     ),
                     CategoryConfig(

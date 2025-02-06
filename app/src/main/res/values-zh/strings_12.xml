@@ -47,21 +47,22 @@
         可以使用额外的正则表达式来提取骚扰类别。（可选）
         ]]>
     </string>
-    <string name="action_parse_incoming_number">解析号码</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">拦截来电</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        将来电号码解析成不同的标签：<br>
+        将拦截来电号码并解析成不同的标签：<br>
         <br>
         %s
         <br>
         这些标签将用于构建HTTP URL，例如：<br>
         <br>
-        1. 对于国际号码，例如<b>+122222</b>，这两个是等效的：<br>
+        1. 对于国际号码，例如<b>+122222</b>，以下两者等效：<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        它将被解析为：https://test.com/number=<b>122222</b><br>
+        它将被解析为：<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
-        2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家代码，或者让应用程序自动检测。<br>
+        2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家代码，或让应用程序自动检测。<br>
         ]]>
     </string>
     <string name="query_api">查询API</string>
@@ -90,4 +91,10 @@
     <string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
     <string name="query">查询</string>
     <string name="report_api">举报API</string>
+    <string name="action_intercept_sms">拦截短信</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        将拦截收到的短信，并将内容解析到标签<b>{sms}</b>中，后续操作可以使用此标签。
+        ]]>
+    </string>
 </resources>

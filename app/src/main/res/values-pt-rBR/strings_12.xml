@@ -48,22 +48,22 @@
         Uma expressão regular extra pode ser usada para extrair a categoria de spam. (opcional)
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Analisar Número</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Interceptar Chamada</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        O número de telefone da chamada recebida será analisado em diferentes tags:<br>
+        O número de telefone da chamada recebida será interceptado e analisado em diferentes tags:<br>
         <br>
         %s
         <br>
-        Estas tags serão usadas para construir a URL HTTP, por exemplo:<br>
+        Essas tags serão usadas para construir a URL HTTP, por exemplo:<br>
         <br>
         1. Para números internacionais como <b>+122222</b>, estes dois são equivalentes:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Será analisado para: https://test.com/number=<b>122222</b><br>
+        Será analisado para:<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
-        2. Para números domésticos como <b>12345</b>, você precisa fornecer o código do país nas configurações,<br>
-        ou deixar o aplicativo detectá-lo automaticamente.<br>
+        2. Para números domésticos como <b>12345</b>, você precisa fornecer o código do país nas configurações ou deixar o aplicativo detectá-lo automaticamente.<br>
         ]]>
     </string>
     <string name="query_api">API de Consulta</string>
@@ -92,4 +92,11 @@
     <string name="android_ver_lower_than_11">Versão do Android inferior a 11, ignorar.</string>
     <string name="query">Consulta</string>
     <string name="report_api">API de Relatório</string>
+    <string name="action_intercept_sms">Interceptar SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        O SMS recebido será interceptado e o conteúdo será analisado na tag <b>{sms}</b>,<br>
+        que pode ser usada pelas ações seguintes.
+        ]]>
+    </string>
 </resources>

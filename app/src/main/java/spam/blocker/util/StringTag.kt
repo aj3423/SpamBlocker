@@ -43,6 +43,12 @@ fun String.resolveNumberTag(
         .replace("{number}", fullNumber ?: ((cc?:"") + (domestic?:"")))
         .replace("{origin_number}", rawNumber?.replace(" ", "") ?: "")
 }
+fun String.resolveSmsTag(
+    smsContent: String? = null,
+): String {
+    return this
+        .replace("{sms}", smsContent ?: "")
+}
 
 // Deprecated by `resolveBasicAuthTag`, for history compatibility only.
 fun String.resolveBase64Tag(): String {

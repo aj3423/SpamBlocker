@@ -47,19 +47,20 @@
         Ein zusätzliches Regex kann verwendet werden, um die Spam-Kategorie zu extrahieren (optional).
         ]]>
     </string>
-    <string name="action_parse_incoming_number">Nummer parsen</string>
-    <string name="help_action_parse_incoming_number">
+    <string name="action_intercept_call">Anruf abfangen</string>
+    <string name="help_action_intercept_call">
         <![CDATA[
-        Die eingehende Rufnummer wird in verschiedene Tags aufgeteilt:<br>
+        Die eingehende Rufnummer wird abgefangen und in verschiedene Tags zerlegt:<br>
         <br>
         %s
         <br>
-        Diese Tags werden verwendet, um die HTTP-URL zu erstellen, z. B.:<br>
+        Diese Tags werden verwendet, um die HTTP-URL zu erstellen, zum Beispiel:<br>
         <br>
         1. Für internationale Nummern wie <b>+122222</b> sind diese beiden äquivalent:<br>
         - https://test.com/number=<b>{number}</b><br>
         - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Es wird geparst zu: https://test.com/number=<b>122222</b><br>
+        Es wird geparst zu:<br>
+        https://test.com/number=<b>122222</b><br>
         <br>
         2. Für inländische Nummern wie <b>12345</b> müssen Sie die Landesvorwahl in den Einstellungen angeben oder die App diese automatisch erkennen lassen.<br>
         ]]>
@@ -90,4 +91,10 @@
     <string name="android_ver_lower_than_11">Android-Version ist niedriger als 11, überspringen.</string>
     <string name="query">Abfrage</string>
     <string name="report_api">Melde-API</string>
+    <string name="action_intercept_sms">SMS abfangen</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        Die eingehende SMS wird abgefangen und der Inhalt wird in das Tag <b>{sms}</b> geparst, das von den folgenden Aktionen verwendet werden kann.
+        ]]>
+    </string>
 </resources>
