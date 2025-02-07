@@ -19,4 +19,12 @@
         4. Anahtarı kopyalamak için "üç nokta"ya basın, ardından aşağıya yazın.
         ]]>
     </string>
+    <string name="spam_sms_prompt_template">
+        Bu SMS mesajını Siyasi, Sahtekarlık, Anket veya Pazarlama olarak kategorize edin.
+        Hiçbiri uygulanmazsa "Geçerli" yanıtını verin, aksi takdirde yalnızca kategoriyi yanıtlayın, başka bir şey yanıtlamayın.
+        SMS mesajı:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(Siyasi|Sahtekarlık|Anket|Pazarlama)</translate></string>
+    <string name="spam_sms_positive_category">Geçerli</string>
 </resources>

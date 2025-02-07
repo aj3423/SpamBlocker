@@ -159,11 +159,11 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}",
                         header = "Content-Type: application/json",
                         method = HTTP_POST,
-                        body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"\n\nCategorize this SMS message as Political, Fraud, Survey, or Marketing.\nIf none applies, answer 'Valid', otherwise, answer the category only, don't answer anything else.\nThe SMS message is:\n{sms}\n\"\n\n\t}]\n  }]\n}\n"
+                        body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"%s\"\n\n\t}]\n  }]\n}\n".format(ctx.getString(R.string.spam_sms_prompt_template))
                 ),
                     ParseQueryResult(
-                        negativeSig = "(Political|Fraud|Survey|Marketing)",
-                        positiveSig = "Valid",
+                        negativeSig = ctx.getString(R.string.spam_sms_negative_category),
+                        positiveSig = ctx.getString(R.string.spam_sms_positive_category),
                         categorySig = "\"text\": \"(.*?)..\"",
                     ),
                 )

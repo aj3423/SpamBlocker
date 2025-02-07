@@ -19,4 +19,12 @@
         4. Press the \"three dots\" to copy the key, then fill it in below.
         ]]>
     </string>
+    <string name="spam_sms_prompt_template">
+        Categorize this SMS message as Political, Fraud, Survey, or Marketing.
+        If none applies, answer \"Valid\", otherwise, answer the category only, don\'t answer anything else.
+        The SMS message is:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(Political|Fraud|Survey|Marketing)</translate></string>
+    <string name="spam_sms_positive_category">Valid</string>
 </resources>

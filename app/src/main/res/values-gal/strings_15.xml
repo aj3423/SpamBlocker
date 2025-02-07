@@ -19,4 +19,12 @@
         4. Preme os "tres puntos" para copiar a clave e, a continuación, enche o campo de abaixo.
         ]]>
     </string>
+    <string name="spam_sms_prompt_template">
+        Categoriza esta mensaxe SMS como Política, Fraude, Enquisa ou Marketing.
+        Se non se aplica ningunha, responde "Válido", doutro xeito, responde só á categoría, non respondas a nada máis.
+        A mensaxe SMS é:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(Política|Fraude|Enquisa|Marketing)</translate></string>
+    <string name="spam_sms_positive_category">Válido</string>
 </resources>

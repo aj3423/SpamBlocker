@@ -19,4 +19,12 @@
         4. 「三点リーダー」を押してキーをコピーし、下記に入力します。
         ]]>
     </string>
+    <string name="spam_sms_prompt_template">
+        このSMSメッセージを政治、詐欺、アンケート、マーケティングのいずれかに分類してください。
+        該当するものがない場合は「有効」と回答してください。それ以外の場合は、カテゴリのみを回答し、他の何も回答しないでください。
+        SMSメッセージは次のとおりです。
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(政治|詐欺|アンケート|マーケティング)</translate></string>
+    <string name="spam_sms_positive_category">有効</string>
 </resources>

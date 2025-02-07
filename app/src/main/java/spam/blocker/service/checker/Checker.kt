@@ -864,10 +864,6 @@ class Checker { // for namespace only
 
             // 2. check regex
             val contentMatches = rule.matches(messageBody)
-            val numberToCheck = if (rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER))
-                rawNumber
-            else
-                Util.clearNumber(rawNumber)
 
             // 3. check for particular number
             fun particularMatches(): Boolean {
