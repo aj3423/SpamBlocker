@@ -1049,7 +1049,7 @@ class Checker { // for namespace only
             }
 
             //  add sms content rules to checkers
-            val contentFilters = ContentRuleTable().listRules(ctx, 0/* doesn't care */)
+            val contentFilters = ContentRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
             checkers += contentFilters.map {
                 Content(ctx, cCtx, messageBody, it)
             }
