@@ -51,12 +51,6 @@
         ]]>
     </string>
 
-    <string-array name="history_record_context_menu">
-        <item>Numarayı kopyala</item>
-        <item>Numarayı yeni bir kurala ekle</item>
-        <item>Numarayı veritabanına ekle</item>
-        <item>Tümünü okundu olarak işaretle</item>
-    </string-array>
 
     <string-array name="importance_list">
         <item>Yok</item>
@@ -126,4 +120,9 @@
     </string>
     <string name="open_settings">Ayarları Aç</string>
     <string name="ignore">Görmezden Gel</string>
+    <string name="remove_db_number">Numarayı spam veritabanından sil</string>
+    <string name="copy_number">Numarayı kopyala</string>
+    <string name="add_num_to_regex_rule">Numarayı regex kuralına ekle</string>
+    <string name="add_num_to_db">Numarayı spam veritabanına ekle</string>
+    <string name="mark_all_as_read">Tümünü okundu olarak işaretle</string>
 </resources>

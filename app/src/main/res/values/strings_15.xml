@@ -1,0 +1,22 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Check the SMS content using Google Gemini AI, it only requires a google account.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Gemini API Key</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Register and login to your Google account: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. Open the API page:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. Press the \"Create API key\" button, scroll down to see the generated key.<br>
+        <br>
+        4. Press the \"three dots\" to copy the key, then fill it in below.
+        ]]>
+    </string>
+</resources>

@@ -17,6 +17,7 @@ import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.RowVCenterSpaced
 
 
+
 @Composable
 fun ApiCard(
     api: Api,
@@ -39,11 +40,12 @@ fun ApiCard(
                     if (api.enabled) {
                         GreenDot()
                     }
-                    // desc
+
+                    // Desc
                     GreyLabel(text = api.summary(), fontWeight = FontWeight.SemiBold)
                 }
                 // first action summary
-                api.actions.firstOrNull()?.Summary()
+//                api.actions.firstOrNull()?.Summary()
             }
 
             // action icons

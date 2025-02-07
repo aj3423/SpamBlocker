@@ -100,4 +100,10 @@
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Pular número alfa ou vazio.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; O conteúdo do SMS.<br>
+        ]]>
+    </string>
 </resources>

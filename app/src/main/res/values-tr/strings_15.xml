@@ -1,0 +1,22 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Google Gemini Yapay Zeka\'sını kullanarak SMS içeriğini kontrol edin, sadece bir Google hesabı gerektirir.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Gemini API Anahtarı</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Google hesabınıza kayıt olun ve giriş yapın: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. API sayfasını açın:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. "API anahtarı oluştur" düğmesine basın, oluşturulan anahtarı görmek için aşağı kaydırın.<br>
+        <br>
+        4. Anahtarı kopyalamak için "üç nokta"ya basın, ardından aşağıya yazın.
+        ]]>
+    </string>
+</resources>

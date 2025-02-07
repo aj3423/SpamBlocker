@@ -98,4 +98,10 @@
         ]]>
     </string>
     <string name="skip_alpha_empty_number">跳过字母或空号码。</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; 短信内容。<br>
+        ]]>
+    </string>
 </resources>

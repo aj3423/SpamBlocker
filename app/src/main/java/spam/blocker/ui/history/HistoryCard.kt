@@ -45,8 +45,10 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
 import spam.blocker.util.TextLogger
@@ -123,6 +125,7 @@ fun ReportSpamDialog(
 fun HistoryCard(
     forType: Int,
     record: HistoryRecord,
+    existInDb: Boolean,
     modifier: Modifier,
 ) {
     val C = LocalPalette.current
@@ -153,16 +156,23 @@ fun HistoryCard(
                 )
             }
 
-            // 2. Number / BlockReason / SMS Content
+            // 2. Db exist indicator / Number / BlockReason / SMS Content
             Column(
                 modifier = M.weight(1f)
             ) {
-                // Number
-                Text(
-                    text = contact?.name ?: record.peer,
-                    color = if (record.isBlocked()) C.block else C.pass,
-                    fontSize = 18.sp
-                )
+                RowVCenterSpaced(4) {
+                    // Db existence indicator
+                    if (existInDb) {
+                        ResIcon(R.drawable.ic_db_delete, modifier = M.size(16.dp), color = Salmon)
+                    }
+
+                    // Number
+                    Text(
+                        text = contact?.name ?: record.peer,
+                        color = if (record.isBlocked()) C.block else C.pass,
+                        fontSize = 18.sp
+                    )
+                }
 
                 // Reason Summary
                 val r = parseCheckResultFromDb(ctx, record.result, record.reason)

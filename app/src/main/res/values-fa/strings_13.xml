@@ -100,4 +100,10 @@
     </string>
     <string name="bug_number">اگر این یک شماره معتبر است، لطفا آن را در github گزارش دهید.</string>
     <string name="skip_alpha_empty_number">رد کردن شماره‌های الفبایی یا خالی.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; محتوای پیام کوتاه.<br>
+        ]]>
+    </string>
 </resources>

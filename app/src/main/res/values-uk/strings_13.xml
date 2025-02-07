@@ -100,4 +100,10 @@
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Пропускаємо альфа- або пустий номер.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; Текст SMS.<br>
+        ]]>
+    </string>
 </resources>

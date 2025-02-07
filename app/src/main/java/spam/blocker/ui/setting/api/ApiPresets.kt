@@ -12,6 +12,7 @@ import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.InterceptCall
+import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.util.Lambda2
 import kotlin.Int
@@ -88,7 +89,7 @@ val authConfig_PhoneBlock = AuthConfig(
                 .replace("{api_key}", formValues[0])
         }
     },
-    validator = validator@ {
+    validator = validator@{
         val apiKey = it[0]
         apiKey.startsWith("pbt_")
     }
@@ -110,8 +111,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         url = if (BuildConfig.DEBUG)
                             "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}"
                         else
-                            "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}"
-                        ,
+                            "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}",
                         header = "{bearer_auth({api_key})}",
                     ),
                     ParseQueryResult(
@@ -125,7 +125,51 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 )
             )
         }
-    )
+    ),
+    // Google Gemini
+    ApiPreset(
+        tooltipId = R.string.help_api_preset_gemini,
+        newAuthConfig = {
+            AuthConfig(
+                formLabels = listOf(
+                    R.string.gemini_api_key,
+                ),
+                tooltipId = R.string.help_api_preset_gemini_authorization,
+                preProcessor = { actions, formValues ->
+                    // replace the tags in HttpDownload.header
+                    actions.find { it is HttpDownload }?.let {
+                        val http = it as HttpDownload
+                        http.url = http.url
+                            .replace("{api_key}", formValues[0])
+                    }
+                },
+                validator = validator@{
+                    val apiKey = it[0]
+                    apiKey.length > 10
+                }
+            )
+        },
+        newApi = { ctx ->
+            Api(
+                desc = ctx.getString(R.string.api_preset_gemini),
+                enabled = true,
+                actions = listOf(
+                    InterceptSms(),
+                    HttpDownload(
+                        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}",
+                        header = "Content-Type: application/json",
+                        method = HTTP_POST,
+                        body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"\n\nCategorize this SMS message as Political, Fraud, Survey, or Marketing.\nIf none applies, answer 'Valid', otherwise, answer the category only, don't answer anything else, don't add an '\\n' at the end.\nThe SMS message is:\n{sms}\n\"\n\n\t}]\n  }]\n}\n"
+                ),
+                    ParseQueryResult(
+                        negativeSig = "(Political|Fraud|Survey|Marketing)",
+                        positiveSig = "Valid",
+                        categorySig = "\"text\": \"(.*?)..\"",
+                    ),
+                )
+            )
+        }
+    ),
 )
 
 val ApiReportPresets = listOf<ApiPreset>(
@@ -155,8 +199,7 @@ val ApiReportPresets = listOf<ApiPreset>(
                         url = if (BuildConfig.DEBUG)
                             "https://phoneblock.net/pb-test/api/rate"
                         else
-                            "https://phoneblock.net/phoneblock/api/rate"
-                        ,
+                            "https://phoneblock.net/phoneblock/api/rate",
                         header = "{bearer_auth({api_key})}",
                         method = HTTP_POST,
                         body = """

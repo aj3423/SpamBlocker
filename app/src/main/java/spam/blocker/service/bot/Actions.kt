@@ -363,7 +363,7 @@ open class HttpDownload(
                 leadingIconId = R.drawable.ic_post,
                 onValueChange = { body = it },
                 helpTooltip = Str(R.string.help_http_post_body).format(
-                    Str(R.string.number_tags)
+                    Str(R.string.number_tags) + "<br>" + Str(R.string.sms_tags)
                 ),
             )
         }

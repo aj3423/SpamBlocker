@@ -51,12 +51,6 @@
         ]]>
     </string>
 
-    <string-array name="history_record_context_menu">
-        <item>Копіювати номер</item>
-        <item>Додати номер до нового правила</item>
-        <item>Додати номер до бази даних</item>
-        <item>Позначити все як прочитане</item>
-    </string-array>
 
     <string-array name="importance_list">
         <item>Немає</item>
@@ -126,4 +120,9 @@
     </string>
     <string name="open_settings">Відкрити налаштування</string>
     <string name="ignore">Ігнорувати</string>
+    <string name="remove_db_number">Видалити номер з бази даних спаму</string>
+    <string name="copy_number">Скопіювати номер</string>
+    <string name="add_num_to_regex_rule">Додати номер до правила регулярного виразу</string>
+    <string name="add_num_to_db">Додати номер до бази даних спаму</string>
+    <string name="mark_all_as_read">Позначити всі як прочитані</string>
 </resources>

@@ -104,4 +104,10 @@
     </string>
     <string name="bug_number">Se questo è un numero valido, segnalalo su github.</string>
     <string name="skip_alpha_empty_number">Salta numero alfa o vuoto.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; Il contenuto dell\'SMS.<br>
+        ]]>
+    </string>
 </resources>

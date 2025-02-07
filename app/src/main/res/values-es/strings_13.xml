@@ -100,4 +100,10 @@
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Omitir número alfabético o vacío.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; El contenido del SMS.<br>
+        ]]>
+    </string>
 </resources>

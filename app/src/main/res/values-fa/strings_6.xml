@@ -51,12 +51,6 @@
         ]]>
     </string>
 
-    <string-array name="history_record_context_menu">
-        <item>کپی شماره</item>
-        <item>افزودن شماره به قانون جدید</item>
-        <item>افزودن شماره به پایگاه داده</item>
-        <item>علامت گذاری همه به عنوان خوانده شده</item>
-    </string-array>
 
     <string-array name="importance_list">
         <item>هیچ</item>
@@ -126,4 +120,9 @@
     </string>
     <string name="open_settings">باز کردن تنظیمات</string>
     <string name="ignore">نادیده گرفتن</string>
+    <string name="remove_db_number">حذف شماره از پایگاه داده اسپم</string>
+    <string name="copy_number">کپی شماره</string>
+    <string name="add_num_to_regex_rule">افزودن شماره به قانون Regex</string>
+    <string name="add_num_to_db">افزودن شماره به پایگاه داده اسپم</string>
+    <string name="mark_all_as_read">علامت‌گذاری همه به عنوان خوانده شده</string>
 </resources>

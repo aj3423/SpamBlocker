@@ -51,12 +51,6 @@
         ]]>
     </string>
 
-    <string-array name="history_record_context_menu">
-        <item>Copiar número</item>
-        <item>Engadir número a unha nova regra</item>
-        <item>Engadir número á base de datos</item>
-        <item>Marcar todo como lido</item>
-    </string-array>
 
     <string-array name="importance_list">
         <item>Ningún</item>
@@ -126,4 +120,9 @@
     </string>
     <string name="open_settings">Abrir configuración</string>
     <string name="ignore">Ignorar</string>
+    <string name="remove_db_number">Eliminar número da base de datos de chamadas non desexadas</string>
+    <string name="copy_number">Copiar número</string>
+    <string name="add_num_to_regex_rule">Engadir número á regra regex</string>
+    <string name="add_num_to_db">Engadir número á base de datos de chamadas non desexadas</string>
+    <string name="mark_all_as_read">Marcar todo como lido</string>
 </resources>

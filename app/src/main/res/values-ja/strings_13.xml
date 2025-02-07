@@ -98,4 +98,10 @@
         ]]>
     </string>
     <string name="skip_alpha_empty_number">英数字または空の番号をスキップします。</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; SMS本文。<br>
+        ]]>
+    </string>
 </resources>

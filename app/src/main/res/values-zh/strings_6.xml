@@ -51,12 +51,6 @@
         ]]>
     </string>
 
-    <string-array name="history_record_context_menu">
-        <item>复制号码</item>
-        <item>将号码添加到新规则</item>
-        <item>将号码添加到数据库</item>
-        <item>标记全部为已读</item>
-    </string-array>
 
     <string-array name="importance_list">
         <item>无</item>
@@ -126,4 +120,9 @@
     </string>
     <string name="open_settings">打开设置</string>
     <string name="ignore">忽略</string>
+    <string name="remove_db_number">从垃圾电话数据库中删除号码</string>
+    <string name="copy_number">复制号码</string>
+    <string name="add_num_to_regex_rule">将号码添加到正则表达式规则</string>
+    <string name="add_num_to_db">将号码添加到垃圾电话数据库</string>
+    <string name="mark_all_as_read">标记全部为已读</string>
 </resources>

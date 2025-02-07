@@ -17,8 +17,8 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
-import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.InterceptCall
+import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
@@ -41,6 +41,7 @@ import spam.blocker.util.spf
 class CheckContext(
     val rawNumber: String,
     val callDetails: Call.Details? = null,
+    val smsContent: String? = null,
     val logger: ILogger? = null,
     val startTimeMillis: Long = System.currentTimeMillis(),
 )
@@ -546,7 +547,7 @@ class Checker { // for namespace only
     private class InstantQuery(
         private val ctx: Context,
         private val cCtx: CheckContext,
-        private val smsContent: String? = null, // null: for call
+        private val forType: Int, // for call or sms
     ) : IChecker {
         override fun priority(): Int {
             return -1
@@ -558,13 +559,13 @@ class Checker { // for namespace only
 
             val apis = G.apiQueryVM.table.listAll(ctx)
                 .filter { it.enabled }
-                .filter { // check if the first action is Intercept
-                    it.actions.indexOfFirst { act ->
-                        if (smsContent == null)
+                .filter { // check if the first action is InterceptCall/InterceptSms
+                    0 == it.actions.indexOfFirst { act ->
+                        if (forType == Def.ForNumber)
                             act is InterceptCall
                         else
                             act is InterceptSms
-                    } == 0
+                    }
                 }
 
             if (apis.isEmpty())
@@ -606,7 +607,7 @@ class Checker { // for namespace only
                                 scope = scope,
                                 logger = logger,
                                 rawNumber = rawNumber,
-                                smsContent = smsContent,
+                                smsContent = cCtx.smsContent,
                             )
                             val success = it.actions.executeAll(ctx, aCtx)
 
@@ -980,7 +981,7 @@ class Checker { // for namespace only
                 RecentApp(ctx, cCtx),
                 MeetingMode(ctx, cCtx),
                 OffTime(ctx, cCtx),
-                InstantQuery(ctx, cCtx),
+                InstantQuery(ctx, cCtx, Def.ForNumber),
                 CallAlert(ctx, cCtx)
             )
 
@@ -1027,6 +1028,7 @@ class Checker { // for namespace only
 
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
+                smsContent = messageBody,
                 logger = logger,
             )
             val checkers = arrayListOf<IChecker>(
@@ -1034,7 +1036,7 @@ class Checker { // for namespace only
                 SpamDB(ctx, cCtx),
                 MeetingMode(ctx, cCtx),
                 OffTime(ctx, cCtx),
-                InstantQuery(ctx, cCtx, messageBody),
+                InstantQuery(ctx, cCtx, Def.ForSms),
             )
 
             //  add number rules to checkers

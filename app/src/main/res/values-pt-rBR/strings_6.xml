@@ -51,12 +51,6 @@
         ]]>
     </string>
 
-    <string-array name="history_record_context_menu">
-        <item>Copiar número</item>
-        <item>Adicionar número a uma nova regra</item>
-        <item>Adicionar número ao banco de dados</item>
-        <item>Marcar tudo como lido</item>
-    </string-array>
 
     <string-array name="importance_list">
         <item>Nenhum</item>
@@ -126,4 +120,9 @@
     </string>
     <string name="open_settings">Abrir configurações</string>
     <string name="ignore">Ignorar</string>
+    <string name="remove_db_number">Excluir número do banco de dados de spam</string>
+    <string name="copy_number">Copiar número</string>
+    <string name="add_num_to_regex_rule">Adicionar número à regra regex</string>
+    <string name="add_num_to_db">Adicionar número ao banco de dados de spam</string>
+    <string name="mark_all_as_read">Marcar tudo como lido</string>
 </resources>

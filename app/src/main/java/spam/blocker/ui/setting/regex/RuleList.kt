@@ -34,7 +34,6 @@ import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.RegexRule
 import spam.blocker.db.ruleTableForType
-import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenHeightDp

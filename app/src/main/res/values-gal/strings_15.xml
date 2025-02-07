@@ -1,0 +1,22 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Comproba o contido dos SMS usando a IA Google Gemini, só precisa dunha conta de Google.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Clave da API Gemini</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Rexístrate e inicia sesión na túa conta de Google: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. Abre a páxina da API:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. Preme o botón "Crear clave API", desprázate cara abaixo para ver a clave xerada.<br>
+        <br>
+        4. Preme os "tres puntos" para copiar a clave e, a continuación, enche o campo de abaixo.
+        ]]>
+    </string>
+</resources>

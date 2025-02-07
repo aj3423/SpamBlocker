@@ -1,0 +1,22 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Google Gemini AIを使用してSMSの内容をチェックします。Googleアカウントのみが必要です。
+        ]]>
+    </string>
+    <string name="gemini_api_key">Gemini APIキー</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Googleアカウントに登録してログインします：<br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. APIページを開きます：<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. 「APIキーの作成」ボタンを押して、下にスクロールして生成されたキーを確認します。<br>
+        <br>
+        4. 「三点リーダー」を押してキーをコピーし、下記に入力します。
+        ]]>
+    </string>
+</resources>

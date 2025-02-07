@@ -37,6 +37,12 @@
         &ensp; The origin number that can contain leading + or 0s.<br>
         ]]>
     </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; The SMS content.<br>
+        ]]>
+    </string>
     <string name="time_tags">
         <![CDATA[
         - <font color="#00BFFF"><b>{year}</b></font><br>

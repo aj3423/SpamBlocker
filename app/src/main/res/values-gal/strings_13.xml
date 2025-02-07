@@ -100,4 +100,10 @@
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Saltar número alfa ou baleiro.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; O contido do SMS.<br>
+        ]]>
+    </string>
 </resources>

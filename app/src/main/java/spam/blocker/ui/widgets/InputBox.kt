@@ -57,7 +57,6 @@ import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
 import spam.blocker.util.Util.regexWildcardNotSupported
 import spam.blocker.util.hasFlag
-import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
