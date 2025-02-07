@@ -103,7 +103,7 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
  - [It stopped working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
  - [Dual SIM support](https://github.com/aj3423/SpamBlocker/issues/169)
- - [Auto delete spam SMS messages](https://github.com/aj3423/SpamBlocker/discussions/164#discussioncomment-11037830)
+ - [Auto delete spam SMS](https://github.com/aj3423/SpamBlocker/issues/274)
 
 # Language support
 
