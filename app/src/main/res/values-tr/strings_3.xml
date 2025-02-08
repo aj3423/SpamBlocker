@@ -1,66 +1,65 @@
 <resources>
-    <string name="help_sms_content_filter">
-        <![CDATA[
-        Bu kurallar SMS içeriğine uygulanır.<br>
-        <br>
-        <font color="#00BFFF"><b> - Bazı tipik Desenler</b></font>:<br>
-        &ensp; - "doğrulama" içeriyorsa: <font color="#03DAC5"><b>.*doğrulama.*</b></font><br>
-        &ensp; - Kelimelerden herhangi birini içeriyorsa: <font color="#03DAC5"><b>.*(polis|hastane|doğrulama).*</b></font>
-        ]]>
-    </string>
-    <string name="help_quick_copy">
-        <![CDATA[
-        SMS mesajlarından veya telefon numaralarından içerik kopyalamanın hızlı bir yolu, doğrulama kodlarını veya gelen numaraları almayı kolaylaştırır.<br>
-        <br>
-        Eşleştiğinde, bildirimde <font color="#00BFFF"><b>Kopyala: 123456</b></font> gibi bir seçenek görünecektir.<br>
-        <br>
-        Doğrulama kodlarını çıkarmak için örnek bir kural:<br>
-        &emsp; Yakalama grubu kullanarak:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Kurallara bakan başka bir yaklaşım:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
-        ]]>
-    </string>
-    <string name="help_apply_to_call_sms">
-        <![CDATA[
-        Bu kuralı Arama, SMS veya her ikisi için etkinleştir.<br>
-        Bu onay kutularını işaretini kaldırarak kuralı silmeden devre dışı bırakın.
-        ]]>
-    </string>
-    <string name="help_apply_to_number_and_message">
-        <![CDATA[
-        <font color="#00BFFF"><b>Numara</b></font> kontrol edildiğinde, bu kural gelen numaradan içerik çıkaracaktır.
-        Örneğin, telefon numarasını kopyalamak için <b>(.*)</b> kullanın.<br>
-        <br>
-        <font color="#00BFFF"><b>İçerik</b></font> kontrol edildiğinde, bu kural SMS mesajı gövdesinden doğrulama kodları gibi
-        içerik çıkaracaktır.
-        ]]>
-    </string>
-    <string name="help_apply_to_passed_and_blocked">
-        <![CDATA[
-        <font color="#03DAC5"><b>Geçti</b></font> kontrol edildiğinde, bu kural geçmiş çağrılara ve mesajlara uygulanacaktır.<br>
-        <br>
-        <font color="#fa7f71"><b>Engellendi</b></font> kontrol edildiğinde, bu kural engellenen çağrılara ve mesajlara uygulanacaktır.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Yok</b>:<br>&emsp; Hiç bildirim yok. <br>
-        <b>Panel</b>:<br>&emsp; Açılır bildirim paneli. <br>
-        <b>Durum Çubuğu</b>:<br>&emsp; Üst çubuktaki küçük simge. <br>
-        <b>Ses</b>:<br>&emsp; Varsayılan bildirim sesi. <br>
-        <b>Pencere</b>:<br>&emsp; Ekranın üstünde kayan bir pencere aç.
-        ]]>
-    </string>
-    <string name="title_rule_testing">Kural Testi</string>
-    <string name="help_test_rules">
-        <![CDATA[
-        Bu, kuralların beklendiği gibi ayarlandığını kontrol etmeye yardımcı olur.<br>
-        <br>
-        Bu sadece bir simülasyondur ve gerçekten gelen bir arama (veya metin mesajı) açmayacaktır.<br>
-        <br>
-        Sonuç burada ve bildirimle birlikte geçmiş kaydında gösterilmektedir.
-        ]]>
-    </string>
-
+<string name="help_sms_content_filter">
+<![CDATA[
+Bu kurallar SMS içeriğine uygulanır.<br>
+<br>
+<font color="#00BFFF"><b> - Bazı tipik Desenler</b></font>:<br>
+&ensp; - "doğrulama" içeriyorsa: <font color="#03DAC5"><b>.*doğrulama.*</b></font><br>
+&ensp; - Kelimelerden herhangi birini içeriyorsa: <font color="#03DAC5"><b>.*(polis|hastane|doğrulama).*</b></font>
+]]>
+</string>
+<string name="help_quick_copy">
+<![CDATA[
+SMS mesajlarından veya telefon numaralarından içerik kopyalamanın hızlı bir yolu, doğrulama kodlarını veya gelen numaraları almayı kolaylaştırır.<br>
+<br>
+Eşleştiğinde, bildirimde <font color="#00BFFF"><b>Kopyala: 123456</b></font> gibi bir seçenek görünecektir.<br>
+<br>
+Doğrulama kodlarını çıkarmak için örnek bir kural:<br>
+&emsp; Yakalama grubu kullanarak:<br>
+&emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+&emsp; Kurallara bakan başka bir yaklaşım:<br>
+&emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+]]>
+</string>
+<string name="help_apply_to_call_sms">
+<![CDATA[
+Bu kuralı Arama, SMS veya her ikisi için etkinleştir.<br>
+Bu onay kutularını işaretini kaldırarak kuralı silmeden devre dışı bırakın.
+]]>
+</string>
+<string name="help_apply_to_number_and_message">
+<![CDATA[
+<font color="#00BFFF"><b>Numara</b></font> kontrol edildiğinde, bu kural gelen numaradan içerik çıkaracaktır.
+Örneğin, telefon numarasını kopyalamak için <b>(.*)</b> kullanın.<br>
+<br>
+<font color="#00BFFF"><b>İçerik</b></font> kontrol edildiğinde, bu kural SMS mesajı gövdesinden doğrulama kodları gibi
+içerik çıkaracaktır.
+]]>
+</string>
+<string name="help_apply_to_passed_and_blocked">
+<![CDATA[
+<font color="#03DAC5"><b>Geçti</b></font> kontrol edildiğinde, bu kural geçmiş çağrılara ve mesajlara uygulanacaktır.<br>
+<br>
+<font color="#fa7f71"><b>Engellendi</b></font> kontrol edildiğinde, bu kural engellenen çağrılara ve mesajlara uygulanacaktır.
+]]>
+</string>
+<string name="help_importance">
+<![CDATA[
+<b>Yok</b>:<br>&emsp; Hiç bildirim yok. <br>
+<b>Panel</b>:<br>&emsp; Açılır bildirim paneli. <br>
+<b>Durum Çubuğu</b>:<br>&emsp; Üst çubuktaki küçük simge. <br>
+<b>Ses</b>:<br>&emsp; Varsayılan bildirim sesi. <br>
+<b>Pencere</b>:<br>&emsp; Ekranın üstünde kayan bir pencere aç.
+]]>
+</string>
+<string name="title_rule_testing">Kural Testi</string>
+<string name="help_test_rules">
+<![CDATA[
+Bu, kuralların beklendiği gibi ayarlandığını kontrol etmeye yardımcı olur.<br>
+<br>
+Bu sadece bir simülasyondur ve gerçekten gelen bir arama (veya metin mesajı) açmayacaktır.<br>
+<br>
+Sonuç burada ve bildirimle birlikte geçmiş kaydında gösterilmektedir.
+]]>
+</string>
 </resources>

@@ -1,55 +1,55 @@
 <resources>
-    <string name="help_number_rules">
-        <![CDATA[
-        Bu kurallar gelen telefon numarasına uygulanır.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Örnekler</font></h5>
-        <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki sayfasında</a> bazı örnekler bulunmaktadır.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Regex Optimizasyonu</font></h5>
-        Regex\'i basitleştirmek için,
-          <font color="#fa7f71"><b>+</b></font> ve <font color="#fa7f71"><b>baştaki sıfırlar</b></font>
-          kontrol edilmeden önce kaldırılır, örneğin:<br>
-        &emsp; Tüm bu formatlar:<br>
-        &emsp;&emsp; 123456789 &emsp;(normal numara)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(başında <font color="#fa7f71"><b>+</b></font> ile)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(yerel şebeke ön eki <font color="#fa7f71"><b>0</b></font> ile)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(iki <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Hepsi 123456789 olarak kontrol edilir ve <font color="#03DAC5"><b>123.*</b></font> ile eşleştirilebilir.<br>
-        Bu numara optimizasyonu, regex bayrağı "Raw Number" ile <b>devre dışı</b> bırakılabilir.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Bazı tipik kalıplar</font></h5>
-        &ensp; - Herhangi bir numara: <font color="#03DAC5"><b>.*</b></font> (regex .* diğer uygulamalardaki joker karakter *\'a eşdeğerdir) <br>
-        &ensp; - Tam numara: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - 400 ile başlayan: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - 123 ile biten: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 7 haneli: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - 5\'ten kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - 10\'dan uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Bilinmeyen numara (boş dize): <font color="#03DAC5"><b>.{0}</b></font> veya <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Kalıplardan herhangi biriyle eşleşen: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - 400 ile başlayan, 11 ülke kodu ile veya olmadan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
-        <br>
-        <h5><font color="#00BFFF"> - UI ile ilgili</font></h5>
-        Kuralı devre dışı bırakmak için onay kutularının işaretini kaldırın, <font color="#fa7f71"><b>sola kaydırarak silin</b></font>.<br>
-        <br>
-        Liste, önceliğin azalan, açıklamanın artan ve kalıbın artan sırasına göre <b>gösterilir</b>.<br>
-        <br>
-        <h5><font color="#00BFFF"> - .csv\'den kurallar içe aktar</font></h5>
-        .csv dosyasından numaraları içe aktarmak için `Ekle` düğmesine uzun basın.<br>
-        <brg>
-        ]]>
-    </string>
-    <string name="import_csv_columns">
-        <![CDATA[
-         Desteklenen sütunlar:<br>
-         - <no_translate><b>pattern</b></no_translate>: Regex (<b>gerekli</b>)<br>
-         - <no_translate><b>description</b></no_translate>: Açıklama<br>
-         - <no_translate><b>priority</b></no_translate>: Öncelik, varsayılan 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Aramaya Uygula), 2(SMS\'e Uygula), 3(her ikisi), varsayılan 3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: Kara liste veya beyaz liste. <no_translate>true</no_translate> veya <no_translate>false</no_translate>, varsayılan <no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: Engelleme türü. 0~2, 3 engelleme türüne karşılık gelir, varsayılan 0<br>
-         - <no_translate><b>importance</b></no_translate>: Bildirim türü. 0~4, 5 bildirim türüne karşılık gelir, varsayılan 2<br>
-        ]]>
-    </string>
+<string name="help_number_rules">
+<![CDATA[
+Bu kurallar gelen telefon numarasına uygulanır.<br>
+<br>
+<h5><font color="#00BFFF"> - Örnekler</font></h5>
+<a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki sayfasında</a> bazı örnekler bulunmaktadır.<br>
+<br>
+<h5><font color="#00BFFF"> - Regex Optimizasyonu</font></h5>
+Regex\'i basitleştirmek için,
+<font color="#fa7f71"><b>+</b></font> ve <font color="#fa7f71"><b>baştaki sıfırlar</b></font>
+kontrol edilmeden önce kaldırılır, örneğin:<br>
+&emsp; Tüm bu formatlar:<br>
+&emsp;&emsp; 123456789 &emsp;(normal numara)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(başında <font color="#fa7f71"><b>+</b></font> ile)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(yerel şebeke ön eki <font color="#fa7f71"><b>0</b></font> ile)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(iki <font color="#fa7f71"><b>0</b></font>)<br>
+&emsp; Hepsi 123456789 olarak kontrol edilir ve <font color="#03DAC5"><b>123.*</b></font> ile eşleştirilebilir.<br>
+Bu numara optimizasyonu, regex bayrağı "Raw Number" ile <b>devre dışı</b> bırakılabilir.<br>
+<br>
+<h5><font color="#00BFFF"> - Bazı tipik kalıplar</font></h5>
+&ensp; - Herhangi bir numara: <font color="#03DAC5"><b>.*</b></font> (regex .* diğer uygulamalardaki joker karakter *\'a eşdeğerdir) <br>
+&ensp; - Tam numara: <font color="#03DAC5"><b>12345</b></font> <br>
+&ensp; - 400 ile başlayan: <font color="#03DAC5"><b>400.*</b></font> <br>
+&ensp; - 123 ile biten: <font color="#03DAC5"><b>.*123</b></font> <br>
+&ensp; - 7 haneli: <font color="#03DAC5"><b>.{7}</b></font> <br>
+&ensp; - 5\'ten kısa: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+&ensp; - 10\'dan uzun: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+&ensp; - Bilinmeyen numara (boş dize): <font color="#03DAC5"><b>.{0}</b></font> veya <font color="#03DAC5"><b>^$</b></font> <br>
+&ensp; - Kalıplardan herhangi biriyle eşleşen: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+&ensp; - 400 ile başlayan, 11 ülke kodu ile veya olmadan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+<br>
+<h5><font color="#00BFFF"> - UI ile ilgili</font></h5>
+Kuralı devre dışı bırakmak için onay kutularının işaretini kaldırın, <font color="#fa7f71"><b>sola kaydırarak silin</b></font>.<br>
+<br>
+Liste, önceliğin azalan, açıklamanın artan ve kalıbın artan sırasına göre <b>gösterilir</b>.<br>
+<br>
+<h5><font color="#00BFFF"> - .csv\'den kurallar içe aktar</font></h5>
+.csv dosyasından numaraları içe aktarmak için `Ekle` düğmesine uzun basın.<br>
+<brg>
+]]>
+</string>
+<string name="import_csv_columns">
+<![CDATA[
+Desteklenen sütunlar:<br>
+- <no_translate><b>pattern</b></no_translate>: Regex (<b>gerekli</b>)<br>
+- <no_translate><b>description</b></no_translate>: Açıklama<br>
+- <no_translate><b>priority</b></no_translate>: Öncelik, varsayılan 1<br>
+- <no_translate><b>flags</b></no_translate>: 1(Aramaya Uygula), 2(SMS\'e Uygula), 3(her ikisi), varsayılan 3<br>
+- <no_translate><b>isBlacklist</b></no_translate>: Kara liste veya beyaz liste. <no_translate>true</no_translate> veya <no_translate>false</no_translate>, varsayılan <no_translate>true</no_translate><br>
+- <no_translate><b>blockType</b></no_translate>: Engelleme türü. 0~2, 3 engelleme türüne karşılık gelir, varsayılan 0<br>
+- <no_translate><b>importance</b></no_translate>: Bildirim türü. 0~4, 5 bildirim türüne karşılık gelir, varsayılan 2<br>
+]]>
+</string>
 </resources>

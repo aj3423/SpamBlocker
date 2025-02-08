@@ -1,100 +1,100 @@
 <resources>
-    <string name="help_instant_query">
-        <![CDATA[
-        Interroge le numéro entrant en ligne en temps réel ; plusieurs points de terminaison d’API seront interrogés simultanément.<br>
-        <br>
-        Cela s’applique uniquement aux appels, pas aux SMS.<br>
-        <br>
-        Cela ne sera déclenché que si l’appel respecte toutes les autres règles.<br>
-        <br>
-        <font color="#ea86ff"><b>Priorité : -1</b></font>
-        ]]>
-    </string>
-    <string name="instant_query">Requête instantanée</string>
-    <string name="negative_identifier">Identificateur négatif</string>
-    <string name="hint_negative_identifier">
-        E.g.: ("valid":false)
-    </string>
-    <string name="help_negative_identifier">
-        Le numéro sera identifié comme spam si ce modèle regex est trouvé dans le résultat.
-    </string>
-    <string name="positive_identifier">Identificateur positif</string>
-    <string name="hint_positive_identifier">
-        E.g.: ("valid":true)
-    </string>
-    <string name="help_positive_identifier">
-        <![CDATA[
-        Le numéro sera identifié comme non-spam si ce motif d’expression régulière est trouvé dans le résultat. Ceci est facultatif.<br>
-        <br>
-        En général, ceci est <b>inutile</b>. Certains fournisseurs d’API identifieront les numéros inconnus comme non-spam. Utilisez ceci uniquement si l’API est vraiment précise.
-        ]]>
-    </string>
-    <string name="category_identifier">Identificateur de catégorie</string>
-    <string name="hint_category_identifier">
-        E.g.: "type":"(.+?)"
-    </string>
-    <string name="help_category_identifier">
-        <![CDATA[
-        Facultatif.<br>
-        Une fois qu’un numéro est identifié, ce regex sera utilisé pour extraire sa catégorie (télémarketing, hameçonnage, etc.).
-        ]]>
-    </string>
-    <string name="action_parse_query_result">Analyser le résultat</string>
-    <string name="help_action_parse_query_result">
-        <![CDATA[
-        Analyser le résultat de la requête ; le numéro sera identifié comme indésirable si le résultat contient un motif d’expression régulière particulier.<br>
-        <br>
-        Une expression régulière supplémentaire peut être utilisée pour extraire la catégorie d’appel indésirable. (facultatif)
-        ]]>
-    </string>
-    <string name="action_intercept_call">Intercepter l’appel</string>
-    <string name="help_action_intercept_call">
-        <![CDATA[
-        Le numéro d’appel entrant sera intercepté et analysé en différentes balises :<br>
-        <br>
-        %s
-        <br>
-        Ces balises seront utilisées pour construire l’URL HTTP, par exemple :<br>
-        <br>
-        1. Pour un numéro international comme <b>+122222</b>, ces deux sont équivalents :<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Il sera analysé en :<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Pour un numéro national comme <b>12345</b>, vous devez fournir le code pays dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
-        ]]>
-    </string>
-    <string name="query_api">API de requête</string>
-    <string name="number_filter">Filtre de numéros</string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Certains services API prennent uniquement en charge les numéros internationaux, tandis que d’autres prennent uniquement en charge les numéros nationaux.<br>
-        <br>
-        Cette expression régulière filtre les numéros en conséquence ; les numéros entrants qui ne correspondent pas à cette expression régulière seront ignorés.<br>
-        <br>
-        - Vérifier uniquement les <b>numéros internationaux</b> :<br>
-        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-        <br>
-        - Vérifier uniquement les <b>numéros nationaux</b> :<br>
-        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-        <br>
-        - Vérifier <b>tous les numéros</b> :<br>
-        &ensp; <font color="#03DAC5"><b>.*</b></font>
-        ]]>
-    </string>
-    <string name="checking_template">Vérification : %s, priorité : %s</string>
-    <string name="skip_for_testing">Ignorer pour les tests.</string>
-    <string name="allowed_by">Autorisé par : %s</string>
-    <string name="blocked_by">Bloqué par : %s</string>
-    <string name="outside_time_schedule">Hors plage horaire, ignorer.</string>
-    <string name="android_ver_lower_than_11">Version Android inférieure à 11, ignorer.</string>
-    <string name="query">Requête</string>
-    <string name="report_api">API de rapport</string>
-    <string name="action_intercept_sms">Intercepter le SMS</string>
-    <string name="help_action_intercept_sms">
-        <![CDATA[
-        Le SMS entrant sera intercepté et son contenu sera analysé dans la balise <b>{sms}</b>, qui peut être utilisée par les actions suivantes.
-        ]]>
-    </string>
+<string name="help_instant_query">
+<![CDATA[
+Interroge le numéro entrant en ligne en temps réel ; plusieurs points de terminaison d’API seront interrogés simultanément.<br>
+<br>
+Cela s’applique uniquement aux appels, pas aux SMS.<br>
+<br>
+Cela ne sera déclenché que si l’appel respecte toutes les autres règles.<br>
+<br>
+<font color="#ea86ff"><b>Priorité : -1</b></font>
+]]>
+</string>
+<string name="instant_query">Requête instantanée</string>
+<string name="negative_identifier">Identificateur négatif</string>
+<string name="hint_negative_identifier">
+E.g.: ("valid":false)
+</string>
+<string name="help_negative_identifier">
+Le numéro sera identifié comme spam si ce modèle regex est trouvé dans le résultat.
+</string>
+<string name="positive_identifier">Identificateur positif</string>
+<string name="hint_positive_identifier">
+E.g.: ("valid":true)
+</string>
+<string name="help_positive_identifier">
+<![CDATA[
+Le numéro sera identifié comme non-spam si ce motif d’expression régulière est trouvé dans le résultat. Ceci est facultatif.<br>
+<br>
+En général, ceci est <b>inutile</b>. Certains fournisseurs d’API identifieront les numéros inconnus comme non-spam. Utilisez ceci uniquement si l’API est vraiment précise.
+]]>
+</string>
+<string name="category_identifier">Identificateur de catégorie</string>
+<string name="hint_category_identifier">
+E.g.: "type":"(.+?)"
+</string>
+<string name="help_category_identifier">
+<![CDATA[
+Facultatif.<br>
+Une fois qu’un numéro est identifié, ce regex sera utilisé pour extraire sa catégorie (télémarketing, hameçonnage, etc.).
+]]>
+</string>
+<string name="action_parse_query_result">Analyser le résultat</string>
+<string name="help_action_parse_query_result">
+<![CDATA[
+Analyser le résultat de la requête ; le numéro sera identifié comme indésirable si le résultat contient un motif d’expression régulière particulier.<br>
+<br>
+Une expression régulière supplémentaire peut être utilisée pour extraire la catégorie d’appel indésirable. (facultatif)
+]]>
+</string>
+<string name="action_intercept_call">Intercepter l’appel</string>
+<string name="help_action_intercept_call">
+<![CDATA[
+Le numéro d’appel entrant sera intercepté et analysé en différentes balises :<br>
+<br>
+%s
+<br>
+Ces balises seront utilisées pour construire l’URL HTTP, par exemple :<br>
+<br>
+1. Pour un numéro international comme <b>+122222</b>, ces deux sont équivalents :<br>
+- https://test.com/number=<b>{number}</b><br>
+- https://test.com/number=<b>{cc}{domestic}</b><br>
+Il sera analysé en :<br>
+https://test.com/number=<b>122222</b><br>
+<br>
+2. Pour un numéro national comme <b>12345</b>, vous devez fournir le code pays dans les paramètres, ou laisser l’application le détecter automatiquement.<br>
+]]>
+</string>
+<string name="query_api">API de requête</string>
+<string name="number_filter">Filtre de numéros</string>
+<string name="help_number_filter">
+<![CDATA[
+Certains services API prennent uniquement en charge les numéros internationaux, tandis que d’autres prennent uniquement en charge les numéros nationaux.<br>
+<br>
+Cette expression régulière filtre les numéros en conséquence ; les numéros entrants qui ne correspondent pas à cette expression régulière seront ignorés.<br>
+<br>
+- Vérifier uniquement les <b>numéros internationaux</b> :<br>
+&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+<br>
+- Vérifier uniquement les <b>numéros nationaux</b> :<br>
+&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+<br>
+- Vérifier <b>tous les numéros</b> :<br>
+&ensp; <font color="#03DAC5"><b>.*</b></font>
+]]>
+</string>
+<string name="checking_template">Vérification : %s, priorité : %s</string>
+<string name="skip_for_testing">Ignorer pour les tests.</string>
+<string name="allowed_by">Autorisé par : %s</string>
+<string name="blocked_by">Bloqué par : %s</string>
+<string name="outside_time_schedule">Hors plage horaire, ignorer.</string>
+<string name="android_ver_lower_than_11">Version Android inférieure à 11, ignorer.</string>
+<string name="query">Requête</string>
+<string name="report_api">API de rapport</string>
+<string name="action_intercept_sms">Intercepter le SMS</string>
+<string name="help_action_intercept_sms">
+<![CDATA[
+Le SMS entrant sera intercepté et son contenu sera analysé dans la balise <b>{sms}</b>, qui peut être utilisée par les actions suivantes.
+]]>
+</string>
 </resources>

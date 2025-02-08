@@ -1,92 +1,88 @@
 <resources>
-    <string name="contact_rule">联系人规则</string>
-    <string name="directory">目录</string>
-    <string name="filename">文件名</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">过期天数</string>
-    <string name="column_mapping">列映射</string>
-    <string name="include_spam_db">包含垃圾电话数据库</string>
-    <string name="no_config_needed">无需配置</string>
-    <string name="success">成功</string>
-    <string name="failed">失败</string>
-    <string name="running">正在运行</string>
-    <string name="optional">(可选)</string>
-
-    <string name="help_action_header">
-        <![CDATA[
-        - <font color="#03DAC5"><b>测试</b></font><br>
-        这些操作将立即执行，用于检查是否设置正确，
-        或者您可能只是想手动运行此工作流程。<br>
-        <br>
-        - <font color="#00BFFF"><b>新建</b></font><br>
-            创建一个新的操作，多个操作可以链接在一起以完成一项复杂的任务。<br>
-            项目之间的绿色或红色点指示它们是否可链接。
-        ]]>
-    </string>
-
-    <string name="help_bot_preset_dnc">
-        <![CDATA[
-            从
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a>
-            每天工作日下载垃圾电话号码，并将它们导入垃圾电话数据库。
-        ]]>
-    </string>
-    <string name="help_bot_preset_cleanup_spam_db">从垃圾电话数据库中删除过期记录。</string>
-    <string name="help_bot_preset_cleanup_history">删除过期的通话/短信记录。</string>
-    <string name="help_bot_preset_auto_backup">备份所有设置。</string>
-    <string name="everyday">每天</string>
-    <string name="daily">每天</string>
-    <string name="weekly">每周</string>
-    <string name="periodically">定期</string>
-    <string name="time">时间</string>
-    <string name="workdays">工作日</string>
-
-    <string name="help_backup">
-        <![CDATA[
-        备份文件格式为gzip压缩的json，您可以使用任何压缩工具打开和编辑它。<br>
-        <br>
-        - <font color="#00BFFF"><b>包含垃圾电话数据库</b></font><br>
-        长按按钮还可以导出/导入垃圾电话数据库。<br>
-        <br>
-        <font color="#ffa500">注意：</font><br>
-        &ensp;在备份文件中包含垃圾电话数据库会大大增加其大小，
-        由于数据库会定期更新，这通常是不必要的，除非您想将其克隆到另一部手机。<br>
-        ]]>
-    </string>
-    <string name="mode">模式</string>
-    <string-array name="regex_action_add_mode">
-        <item>创建</item>
-        <item>替换</item>
-        <item>合并</item>
-    </string-array>
-    <string name="help_regex_action_add_mode">
-        <![CDATA[
-        -<font color="#00BFFF"><b>创建</b></font><br>
-        &ensp; 始终创建一个新的正则表达式规则。<br>
-        <br>
-        - <font color="#00BFFF"><b>替换</b></font><br>
-        &ensp; 它将尝试找到一个具有相同<b>描述</b>的现有规则。 <br>
-        &ensp;&ensp; - 如果找到，它将被覆盖。<br>
-        &ensp;&ensp; - 如果未找到，将创建一个新规则，与<b>创建</b>相同。<br>
-        <br>
-        - <font color="#00BFFF"><b>合并</b></font><br>
-        &ensp;- 如果存在具有相同描述的规则，则新号码将合并到其中，<br>
-         重复的号码将被自动删除。<br>
-        &ensp;- 如果不存在，将创建一个新规则，与<b>创建</b>相同。<br>
-        ]]>
-    </string>
-
-    <string name="action_enable_workflow">启用工作流程</string>
-    <string name="help_action_enable_workflow">
-        <![CDATA[
-        启用或禁用此工作流程。一个用例是将定期工作流程变为一次性工作流程。
-        ]]>
-    </string>
-    <string name="action_enable_app">启用应用</string>
-    <string name="help_action_enable_app">
-        <![CDATA[
-        启用或禁用应用。一个用例是暂时禁用它并在几个小时后自动重新启用它。
-        ]]>
-    </string>
+<string name="contact_rule">联系人规则</string>
+<string name="directory">目录</string>
+<string name="filename">文件名</string>
+<string name="url">URL</string>
+<string name="expiry_days">过期天数</string>
+<string name="column_mapping">列映射</string>
+<string name="include_spam_db">包含垃圾电话数据库</string>
+<string name="no_config_needed">无需配置</string>
+<string name="success">成功</string>
+<string name="failed">失败</string>
+<string name="running">正在运行</string>
+<string name="optional">(可选)</string>
+<string name="help_action_header">
+<![CDATA[
+- <font color="#03DAC5"><b>测试</b></font><br>
+这些操作将立即执行，用于检查是否设置正确，
+或者您可能只是想手动运行此工作流程。<br>
+<br>
+- <font color="#00BFFF"><b>新建</b></font><br>
+创建一个新的操作，多个操作可以链接在一起以完成一项复杂的任务。<br>
+项目之间的绿色或红色点指示它们是否可链接。
+]]>
+</string>
+<string name="help_bot_preset_dnc">
+<![CDATA[
+从
+<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+<no_translate>FTC - Do Not Call</no_translate> </a>
+每天工作日下载垃圾电话号码，并将它们导入垃圾电话数据库。
+]]>
+</string>
+<string name="help_bot_preset_cleanup_spam_db">从垃圾电话数据库中删除过期记录。</string>
+<string name="help_bot_preset_cleanup_history">删除过期的通话/短信记录。</string>
+<string name="help_bot_preset_auto_backup">备份所有设置。</string>
+<string name="everyday">每天</string>
+<string name="daily">每天</string>
+<string name="weekly">每周</string>
+<string name="periodically">定期</string>
+<string name="time">时间</string>
+<string name="workdays">工作日</string>
+<string name="help_backup">
+<![CDATA[
+备份文件格式为gzip压缩的json，您可以使用任何压缩工具打开和编辑它。<br>
+<br>
+- <font color="#00BFFF"><b>包含垃圾电话数据库</b></font><br>
+长按按钮还可以导出/导入垃圾电话数据库。<br>
+<br>
+<font color="#ffa500">注意：</font><br>
+&ensp;在备份文件中包含垃圾电话数据库会大大增加其大小，
+由于数据库会定期更新，这通常是不必要的，除非您想将其克隆到另一部手机。<br>
+]]>
+</string>
+<string name="mode">模式</string>
+<string-array name="regex_action_add_mode">
+<item>创建</item>
+<item>替换</item>
+<item>合并</item>
+</string-array>
+<string name="help_regex_action_add_mode">
+<![CDATA[
+-<font color="#00BFFF"><b>创建</b></font><br>
+&ensp; 始终创建一个新的正则表达式规则。<br>
+<br>
+- <font color="#00BFFF"><b>替换</b></font><br>
+&ensp; 它将尝试找到一个具有相同<b>描述</b>的现有规则。 <br>
+&ensp;&ensp; - 如果找到，它将被覆盖。<br>
+&ensp;&ensp; - 如果未找到，将创建一个新规则，与<b>创建</b>相同。<br>
+<br>
+- <font color="#00BFFF"><b>合并</b></font><br>
+&ensp;- 如果存在具有相同描述的规则，则新号码将合并到其中，<br>
+重复的号码将被自动删除。<br>
+&ensp;- 如果不存在，将创建一个新规则，与<b>创建</b>相同。<br>
+]]>
+</string>
+<string name="action_enable_workflow">启用工作流程</string>
+<string name="help_action_enable_workflow">
+<![CDATA[
+启用或禁用此工作流程。一个用例是将定期工作流程变为一次性工作流程。
+]]>
+</string>
+<string name="action_enable_app">启用应用</string>
+<string name="help_action_enable_app">
+<![CDATA[
+启用或禁用应用。一个用例是暂时禁用它并在几个小时后自动重新启用它。
+]]>
+</string>
 </resources>

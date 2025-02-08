@@ -1,83 +1,81 @@
 <resources>
-    <string name="dialed_number"><short>Número Discado</short></string>
-    <string name="find_apps">Encontrar Apps</string>
-
-    <string name="confirm_delete_all_rule">Confirmar a exclusão de todas as Regras?</string>
-
-    <string name="notification">Notificação</string>
-    <string name="type">Tipo</string>
-    <string name="times">Vezes</string>
-    <plurals name="days">
-        <item quantity="one">%d Dia</item>
-        <item quantity="two">%d Dias</item>
-        <item quantity="few">%d Dias</item>
-        <item quantity="many">%d Dias</item>
-        <item quantity="other">%d Dias</item>
-    </plurals>
-    <string name="min">Min</string>
-    <string name="within_minutes">Dentro de Minutos</string>
-    <string name="within_days">Dentro de Dias</string>
-    <string name="phone_number">Número de Telefone</string>
-    <string name="phone_number_abbrev">Número</string>
-    <string name="sms_content">Conteúdo SMS</string>
-    <string name="regex_flags">Flags Regex</string>
-    <string name="off_time">Horários Indisponíveis</string>
-    <string name="schedule">Cronograma</string>
-    <string name="workday">Dia Útil</string>
-    <string name="weekend">Fim de Semana</string>
-    <string name="entire_day">Dia Inteiro</string>
-    <string name="block_type">Tipo de Bloqueio</string>
-    <string name="for_particular_number">Para o número</string>
-    <string name="help_for_particular_number">Quando habilitado, a regra só se aplica quando o número e o conteúdo correspondem.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
-         Igual a pressionar o botão de recusar. Funciona completamente em silêncio, a tela de bloqueio não será ativada.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-         Toca silenciosamente em segundo plano, dando a impressão ao chamador de que você estava indisponível e perdeu a chamada. <br>
-        <br>
-         Também pode ajudar se você estiver recebendo chamadas de spam repetidas, pois estenderá a duração da chamada, tornando-a menos eficiente para spammers, potencialmente desencorajando-os a ligar novamente.<br>
-        <br>
-        - <font color="#00BFFF"><b>Desligar</b></font>: <br>
-        Atende e desliga a chamada para impedir que ela vá para o correio de voz. <br>
-        <br>
-        <font color="#FFA500">Nota</font> A tela de bloqueio pode ser ativada por um curto período,
-        você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar esse som). <br>
-        <br>
-        - O <b>atraso</b>: <br>
-        &emsp; Por padrão, há um atraso de 1 segundo antes de a chamada ser desligada,
-        para evitar que as chamadas vão acidentalmente para o correio de voz devido à desconexão rápida.<br>
-        &emsp; Se você quiser gravar chamadas, instale um aplicativo de gravação de chamadas e aumente o atraso de acordo.
-        ]]>
-    </string>
-    <string name="help_dialed">
-        <![CDATA[
-        Números discados serão permitidos.<br>
-        <br>
-        Enviar mensagens também conta, isso só funciona quando a permissão READ_SMS é concedida. <br>
-        <br>
-        A configuração padrão <font color="#03DAC5"><b>3 Dias</b></font> significa que se você discou ou enviou mensagens para o número nos últimos 3 dias, as chamadas desse número serão permitidas.<br>
-        <br>
-        Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
-        <br>
-        <font color="#ea86ff"><b>Prioridade: 10</b></font>
-        ]]>
-    </string>
-    <string name="help_recent_apps">
-        <![CDATA[
-        Qualquer chamada seria permitida se qualquer aplicativo na lista tivesse sido usado recentemente.<br>
-        <br>
-        Um caso de uso típico:<br>
-        &emsp; Você acabou de pedir uma pizza no PizzaApp, em breve eles ligam para você para reembolsar porque estão fechando. Essa chamada seria permitida se o PizzaApp estivesse habilitado aqui. <br>
-        <br>
-        A configuração padrão <font color="03DAC5"><b>5 Min</b></font> significa que qualquer chamada seria permitida se qualquer um dos aplicativos tivesse sido usado nos últimos 5 minutos,
-        por `usado` significa ser ativado, desativado, minimizado ou morto. <br>
-        <br>
-        Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
-        <br>
-        <font color="#ea86ff"><b>Prioridade: 10</b></font>
-        ]]>
-    </string>
-    <string name="help_hang_up_delay">O atraso antes que a chamada seja desligada.</string>
+<string name="dialed_number"><short>Número Discado</short></string>
+<string name="find_apps">Encontrar Apps</string>
+<string name="confirm_delete_all_rule">Confirmar a exclusão de todas as Regras?</string>
+<string name="notification">Notificação</string>
+<string name="type">Tipo</string>
+<string name="times">Vezes</string>
+<plurals name="days">
+<item quantity="one">%d Dia</item>
+<item quantity="two">%d Dias</item>
+<item quantity="few">%d Dias</item>
+<item quantity="many">%d Dias</item>
+<item quantity="other">%d Dias</item>
+</plurals>
+<string name="min">Min</string>
+<string name="within_minutes">Dentro de Minutos</string>
+<string name="within_days">Dentro de Dias</string>
+<string name="phone_number">Número de Telefone</string>
+<string name="phone_number_abbrev">Número</string>
+<string name="sms_content">Conteúdo SMS</string>
+<string name="regex_flags">Flags Regex</string>
+<string name="off_time">Horários Indisponíveis</string>
+<string name="schedule">Cronograma</string>
+<string name="workday">Dia Útil</string>
+<string name="weekend">Fim de Semana</string>
+<string name="entire_day">Dia Inteiro</string>
+<string name="block_type">Tipo de Bloqueio</string>
+<string name="for_particular_number">Para o número</string>
+<string name="help_for_particular_number">Quando habilitado, a regra só se aplica quando o número e o conteúdo correspondem.</string>
+<string name="help_block_type">
+<![CDATA[
+- <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
+Igual a pressionar o botão de recusar. Funciona completamente em silêncio, a tela de bloqueio não será ativada.<br>
+<br>
+- <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+Toca silenciosamente em segundo plano, dando a impressão ao chamador de que você estava indisponível e perdeu a chamada. <br>
+<br>
+Também pode ajudar se você estiver recebendo chamadas de spam repetidas, pois estenderá a duração da chamada, tornando-a menos eficiente para spammers, potencialmente desencorajando-os a ligar novamente.<br>
+<br>
+- <font color="#00BFFF"><b>Desligar</b></font>: <br>
+Atende e desliga a chamada para impedir que ela vá para o correio de voz. <br>
+<br>
+<font color="#FFA500">Nota</font> A tela de bloqueio pode ser ativada por um curto período,
+você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar esse som). <br>
+<br>
+- O <b>atraso</b>: <br>
+&emsp; Por padrão, há um atraso de 1 segundo antes de a chamada ser desligada,
+para evitar que as chamadas vão acidentalmente para o correio de voz devido à desconexão rápida.<br>
+&emsp; Se você quiser gravar chamadas, instale um aplicativo de gravação de chamadas e aumente o atraso de acordo.
+]]>
+</string>
+<string name="help_dialed">
+<![CDATA[
+Números discados serão permitidos.<br>
+<br>
+Enviar mensagens também conta, isso só funciona quando a permissão READ_SMS é concedida. <br>
+<br>
+A configuração padrão <font color="#03DAC5"><b>3 Dias</b></font> significa que se você discou ou enviou mensagens para o número nos últimos 3 dias, as chamadas desse número serão permitidas.<br>
+<br>
+Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
+<br>
+<font color="#ea86ff"><b>Prioridade: 10</b></font>
+]]>
+</string>
+<string name="help_recent_apps">
+<![CDATA[
+Qualquer chamada seria permitida se qualquer aplicativo na lista tivesse sido usado recentemente.<br>
+<br>
+Um caso de uso típico:<br>
+&emsp; Você acabou de pedir uma pizza no PizzaApp, em breve eles ligam para você para reembolsar porque estão fechando. Essa chamada seria permitida se o PizzaApp estivesse habilitado aqui. <br>
+<br>
+A configuração padrão <font color="03DAC5"><b>5 Min</b></font> significa que qualquer chamada seria permitida se qualquer um dos aplicativos tivesse sido usado nos últimos 5 minutos,
+por `usado` significa ser ativado, desativado, minimizado ou morto. <br>
+<br>
+Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
+<br>
+<font color="#ea86ff"><b>Prioridade: 10</b></font>
+]]>
+</string>
+<string name="help_hang_up_delay">O atraso antes que a chamada seja desligada.</string>
 </resources>

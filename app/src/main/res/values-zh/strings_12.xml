@@ -1,100 +1,100 @@
 <resources>
-    <string name="help_instant_query">
-        <![CDATA[
-        实时在线查询来电号码，将同时查询多个API端点。<br>
-        <br>
-        仅适用于来电，不适用于短信。<br>
-        <br>
-        只有在来电通过所有其他规则后才会触发。<br>
-        <br>
-        <font color="#ea86ff"><b>优先级：-1</b></font>
-        ]]>
-    </string>
-    <string name="instant_query">即时查询</string>
-    <string name="negative_identifier">负向标识符</string>
-    <string name="hint_negative_identifier">
-        例如：("valid":false)
-    </string>
-    <string name="help_negative_identifier">
-        如果在结果中找到此正则表达式模式，则将其识别为垃圾号码。
-    </string>
-    <string name="positive_identifier">正向标识符</string>
-    <string name="hint_positive_identifier">
-        例如：("valid":true)
-    </string>
-    <string name="help_positive_identifier">
-        <![CDATA[
-        如果在结果中找到此正则表达式模式，则将其识别为非垃圾号码，这是可选的。<br>
-        <br>
-        通常情况下这是<b>不需要的</b>，一些API提供商会将未知号码识别为非垃圾号码，只有在API非常准确的情况下才使用此功能。
-        ]]>
-    </string>
-    <string name="category_identifier">类别标识符</string>
-    <string name="hint_category_identifier">
-        例如："type":"(.+?)"
-    </string>
-    <string name="help_category_identifier">
-        <![CDATA[
-        可选。<br>
-        识别号码后，将使用此正则表达式提取其类别（电话推销、钓鱼等）。
-        ]]>
-    </string>
-    <string name="action_parse_query_result">解析结果</string>
-    <string name="help_action_parse_query_result">
-        <![CDATA[
-        解析查询结果，如果结果包含特定正则表达式模式，则号码将被识别为骚扰号码。<br>
-        <br>
-        可以使用额外的正则表达式来提取骚扰类别。（可选）
-        ]]>
-    </string>
-    <string name="action_intercept_call">拦截来电</string>
-    <string name="help_action_intercept_call">
-        <![CDATA[
-        将拦截来电号码并解析成不同的标签：<br>
-        <br>
-        %s
-        <br>
-        这些标签将用于构建HTTP URL，例如：<br>
-        <br>
-        1. 对于国际号码，例如<b>+122222</b>，以下两者等效：<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        它将被解析为：<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家代码，或让应用程序自动检测。<br>
-        ]]>
-    </string>
-    <string name="query_api">查询API</string>
-    <string name="number_filter">号码过滤器</string>
-    <string name="help_number_filter">
-        <![CDATA[
-        一些API服务只支持国际号码，而一些只支持国内号码。<br>
-        <br>
-        此正则表达式相应地过滤号码，不匹配此正则表达式的来电号码将跳过检查。<br>
-        <br>
-        - 只检查<b>国际号码</b>：<br>
-        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-        <br>
-        - 只检查<b>国内号码</b>：<br>
-        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-        <br>
-        - 检查<b>任何号码</b>：<br>
-        &ensp; <font color="#03DAC5"><b>.*</b></font>
-        ]]>
-    </string>
-    <string name="checking_template">正在检查：%s，优先级：%s</string>
-    <string name="skip_for_testing">跳过测试。</string>
-    <string name="allowed_by">允许于：%s</string>
-    <string name="blocked_by">阻止于：%s</string>
-    <string name="outside_time_schedule">不在时间范围内，跳过。</string>
-    <string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
-    <string name="query">查询</string>
-    <string name="report_api">举报API</string>
-    <string name="action_intercept_sms">拦截短信</string>
-    <string name="help_action_intercept_sms">
-        <![CDATA[
-        将拦截收到的短信，并将内容解析到标签<b>{sms}</b>中，后续操作可以使用此标签。
-        ]]>
-    </string>
+<string name="help_instant_query">
+<![CDATA[
+实时在线查询来电号码，将同时查询多个API端点。<br>
+<br>
+仅适用于来电，不适用于短信。<br>
+<br>
+只有在来电通过所有其他规则后才会触发。<br>
+<br>
+<font color="#ea86ff"><b>优先级：-1</b></font>
+]]>
+</string>
+<string name="instant_query">即时查询</string>
+<string name="negative_identifier">负向标识符</string>
+<string name="hint_negative_identifier">
+例如：("valid":false)
+</string>
+<string name="help_negative_identifier">
+如果在结果中找到此正则表达式模式，则将其识别为垃圾号码。
+</string>
+<string name="positive_identifier">正向标识符</string>
+<string name="hint_positive_identifier">
+例如：("valid":true)
+</string>
+<string name="help_positive_identifier">
+<![CDATA[
+如果在结果中找到此正则表达式模式，则将其识别为非垃圾号码，这是可选的。<br>
+<br>
+通常情况下这是<b>不需要的</b>，一些API提供商会将未知号码识别为非垃圾号码，只有在API非常准确的情况下才使用此功能。
+]]>
+</string>
+<string name="category_identifier">类别标识符</string>
+<string name="hint_category_identifier">
+例如："type":"(.+?)"
+</string>
+<string name="help_category_identifier">
+<![CDATA[
+可选。<br>
+识别号码后，将使用此正则表达式提取其类别（电话推销、钓鱼等）。
+]]>
+</string>
+<string name="action_parse_query_result">解析结果</string>
+<string name="help_action_parse_query_result">
+<![CDATA[
+解析查询结果，如果结果包含特定正则表达式模式，则号码将被识别为骚扰号码。<br>
+<br>
+可以使用额外的正则表达式来提取骚扰类别。（可选）
+]]>
+</string>
+<string name="action_intercept_call">拦截来电</string>
+<string name="help_action_intercept_call">
+<![CDATA[
+将拦截来电号码并解析成不同的标签：<br>
+<br>
+%s
+<br>
+这些标签将用于构建HTTP URL，例如：<br>
+<br>
+1. 对于国际号码，例如<b>+122222</b>，以下两者等效：<br>
+- https://test.com/number=<b>{number}</b><br>
+- https://test.com/number=<b>{cc}{domestic}</b><br>
+它将被解析为：<br>
+https://test.com/number=<b>122222</b><br>
+<br>
+2. 对于国内号码，例如<b>12345</b>，您需要在设置中提供国家代码，或让应用程序自动检测。<br>
+]]>
+</string>
+<string name="query_api">查询API</string>
+<string name="number_filter">号码过滤器</string>
+<string name="help_number_filter">
+<![CDATA[
+一些API服务只支持国际号码，而一些只支持国内号码。<br>
+<br>
+此正则表达式相应地过滤号码，不匹配此正则表达式的来电号码将跳过检查。<br>
+<br>
+- 只检查<b>国际号码</b>：<br>
+&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+<br>
+- 只检查<b>国内号码</b>：<br>
+&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+<br>
+- 检查<b>任何号码</b>：<br>
+&ensp; <font color="#03DAC5"><b>.*</b></font>
+]]>
+</string>
+<string name="checking_template">正在检查：%s，优先级：%s</string>
+<string name="skip_for_testing">跳过测试。</string>
+<string name="allowed_by">允许于：%s</string>
+<string name="blocked_by">阻止于：%s</string>
+<string name="outside_time_schedule">不在时间范围内，跳过。</string>
+<string name="android_ver_lower_than_11">Android版本低于11，跳过。</string>
+<string name="query">查询</string>
+<string name="report_api">举报API</string>
+<string name="action_intercept_sms">拦截短信</string>
+<string name="help_action_intercept_sms">
+<![CDATA[
+将拦截收到的短信，并将内容解析到标签<b>{sms}</b>中，后续操作可以使用此标签。
+]]>
+</string>
 </resources>

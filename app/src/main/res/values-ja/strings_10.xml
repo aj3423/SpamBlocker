@@ -1,55 +1,55 @@
 <resources>
-    <string name="help_number_rules">
-        <![CDATA[
-        これらのルールは、着信電話番号に適用されます。<br>
-        <br>
-        <h5><font color="#00BFFF"> - 例</font></h5>
-        <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wikiページ</a>にいくつかの例があります。<br>
-        <br>
-        <h5><font color="#00BFFF"> - 正規表現の最適化</font></h5>
-        正規表現を簡素化するために、<br>
-          <font color="#fa7f71"><b>+</b></font>と<font color="#fa7f71"><b>先頭のゼロ</b></font><br>
-          は確認前に削除されます。例：<br>
-        &emsp; これらの形式はすべて：<br>
-        &emsp;&emsp; 123456789 &emsp;(通常の番号)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(先頭に<font color="#fa7f71"><b>+</b></font>付き)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(国内市外局番<font color="#fa7f71"><b>0</b></font>付き)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(2つの<font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; これらはすべて123456789としてチェックされ、<font color="#03DAC5"><b>123.*</b></font>で一致させることができます。<br>
-        この電話番号の最適化は、正規表現フラグ「Raw Number」で<b>無効</b>にできます。<br>
-        <br>
-        <h5><font color="#00BFFF"> - 代表的なパターン</font></h5>
-        &ensp; - 任意の番号: <font color="#03DAC5"><b>.*</b></font> (正規表現 .* は他のアプリのワイルドカード * と同等)<br>
-        &ensp; - 正確な番号: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - 400で始まる: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - 123で終わる: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 7桁: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - 5桁より短い: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - 10桁より長い: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - 不明な番号（空文字列）: <font color="#03DAC5"><b>.{0}</b></font> または <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - パターンのいずれかに一致: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - 400で始まり、国番号11が付いている場合と付いていない場合の両方: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
-        <br>
-        <h5><font color="#00BFFF"> - UI関連</font></h5>
-        チェックボックスのチェックを外してルールを無効にし、<font color="#fa7f71"><b>左にスワイプして削除</b></font>します。<br>
-        <br>
-        リストは、優先度の降順、説明の昇順、パターンの昇順で<b>表示</b>されます。<br>
-        <br>
-        <h5><font color="#00BFFF"> - .csvからのルールのインポート</font></h5>
-        「追加」ボタンを長押しして、.csvファイルから番号をインポートします。<br>
-        <brg>
-        ]]>
-    </string>
-    <string name="import_csv_columns">
-        <![CDATA[
-         サポートされている列：<br>
-         - <no_translate><b>pattern</b></no_translate>: 正規表現（<b>必須</b>）<br>
-         - <no_translate><b>description</b></no_translate>: 説明<br>
-         - <no_translate><b>priority</b></no_translate>: 優先順位、デフォルト1<br>
-         - <no_translate><b>flags</b></no_translate>: 1（通話に適用）、2（SMSに適用）、3（両方）、デフォルト3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: ブラックリストまたはホワイトリスト。<no_translate>true</no_translate>または<no_translate>false</no_translate>、デフォルト<no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: ブロックの種類。0～2は3つのブロックの種類に対応、デフォルト0<br>
-         - <no_translate><b>importance</b></no_translate>: 通知の種類。0～4は5つの通知の種類に対応、デフォルト2<br>
-        ]]>
-    </string>
+<string name="help_number_rules">
+<![CDATA[
+これらのルールは、着信電話番号に適用されます。<br>
+<br>
+<h5><font color="#00BFFF"> - 例</font></h5>
+<a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wikiページ</a>にいくつかの例があります。<br>
+<br>
+<h5><font color="#00BFFF"> - 正規表現の最適化</font></h5>
+正規表現を簡素化するために、<br>
+<font color="#fa7f71"><b>+</b></font>と<font color="#fa7f71"><b>先頭のゼロ</b></font><br>
+は確認前に削除されます。例：<br>
+&emsp; これらの形式はすべて：<br>
+&emsp;&emsp; 123456789 &emsp;(通常の番号)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(先頭に<font color="#fa7f71"><b>+</b></font>付き)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(国内市外局番<font color="#fa7f71"><b>0</b></font>付き)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(2つの<font color="#fa7f71"><b>0</b></font>)<br>
+&emsp; これらはすべて123456789としてチェックされ、<font color="#03DAC5"><b>123.*</b></font>で一致させることができます。<br>
+この電話番号の最適化は、正規表現フラグ「Raw Number」で<b>無効</b>にできます。<br>
+<br>
+<h5><font color="#00BFFF"> - 代表的なパターン</font></h5>
+&ensp; - 任意の番号: <font color="#03DAC5"><b>.*</b></font> (正規表現 .* は他のアプリのワイルドカード * と同等)<br>
+&ensp; - 正確な番号: <font color="#03DAC5"><b>12345</b></font> <br>
+&ensp; - 400で始まる: <font color="#03DAC5"><b>400.*</b></font> <br>
+&ensp; - 123で終わる: <font color="#03DAC5"><b>.*123</b></font> <br>
+&ensp; - 7桁: <font color="#03DAC5"><b>.{7}</b></font> <br>
+&ensp; - 5桁より短い: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+&ensp; - 10桁より長い: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+&ensp; - 不明な番号（空文字列）: <font color="#03DAC5"><b>.{0}</b></font> または <font color="#03DAC5"><b>^$</b></font> <br>
+&ensp; - パターンのいずれかに一致: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+&ensp; - 400で始まり、国番号11が付いている場合と付いていない場合の両方: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+<br>
+<h5><font color="#00BFFF"> - UI関連</font></h5>
+チェックボックスのチェックを外してルールを無効にし、<font color="#fa7f71"><b>左にスワイプして削除</b></font>します。<br>
+<br>
+リストは、優先度の降順、説明の昇順、パターンの昇順で<b>表示</b>されます。<br>
+<br>
+<h5><font color="#00BFFF"> - .csvからのルールのインポート</font></h5>
+「追加」ボタンを長押しして、.csvファイルから番号をインポートします。<br>
+<brg>
+]]>
+</string>
+<string name="import_csv_columns">
+<![CDATA[
+サポートされている列：<br>
+- <no_translate><b>pattern</b></no_translate>: 正規表現（<b>必須</b>）<br>
+- <no_translate><b>description</b></no_translate>: 説明<br>
+- <no_translate><b>priority</b></no_translate>: 優先順位、デフォルト1<br>
+- <no_translate><b>flags</b></no_translate>: 1（通話に適用）、2（SMSに適用）、3（両方）、デフォルト3<br>
+- <no_translate><b>isBlacklist</b></no_translate>: ブラックリストまたはホワイトリスト。<no_translate>true</no_translate>または<no_translate>false</no_translate>、デフォルト<no_translate>true</no_translate><br>
+- <no_translate><b>blockType</b></no_translate>: ブロックの種類。0～2は3つのブロックの種類に対応、デフォルト0<br>
+- <no_translate><b>importance</b></no_translate>: 通知の種類。0～4は5つの通知の種類に対応、デフォルト2<br>
+]]>
+</string>
 </resources>

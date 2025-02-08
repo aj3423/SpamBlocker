@@ -1,103 +1,103 @@
 <resources>
-    <string name="contacts">Kontakt</string>
-    <string name="non_contacts">Nicht Kontakt</string>
-    <string name="inclusive">Einschließlich</string>
-    <string name="exclusive">Ausschließlich</string>
-    <string name="help_contacts">
-        <![CDATA[
-        Wenn aktiviert, sind Anrufe/Nachrichten von Kontakten immer erlaubt. <br>
-        <br>
-          - <b>Einschließlich</b>: <br>
-              &emsp; Nicht-Kontakt-Nummern werden anhand anderer Regeln geprüft. <br>
-              &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
-              &emsp; Nicht-Kontakt-Nummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
-        <br>
-        Dies gilt für Anrufe und SMS-Nachrichten.
-        ]]>
-    </string>
-    <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Nicht überprüfte einschließen</string>
-    <string name="unverified">Nicht überprüft</string>
-    <string name="valid">Gültiger Anruf</string>
-    <string name="spoof">Spoof-Anruf</string>
-    <string name="help_stir">
-        <![CDATA[
-            STIR/SHAKEN-Bestätigung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Netzbetreiber</b>. <br>
-            <br>
-            Es gibt drei mögliche Bestätigungsresultate: <br>
-            <font color="#03DAC5"><b>Gültig</b></font> <br>
-            &emsp; Der Anruf ist sehr wahrscheinlich gültig und nicht gefälscht. <br>
-            <font color="#ffa500"><b>Nicht überprüft</b></font> <br>
-            &emsp; Der Anruf kann nicht validiert werden oder STIR-Bestätigung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Spoof</b></font> <br>
-            &emsp; Es ist sehr wahrscheinlich, dass es sich um einen gefälschten Anruf handelt. <br>
-            <br>
-            <br>
-              - <b>Einschließlich</b>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin anhand anderer Regeln geprüft. <br>
-                  &emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch bestehen, wenn er nicht überprüft wurde. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-                  &emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch blockiert werden, wenn er nicht überprüft wurde. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
-        ]]>
-    </string>
-    <string name="failed_to_import_from_csv">
-        <![CDATA[
-        Das benötigte Feld <b>pattern</b> fehlt in der .csv-Datei. Überprüfen Sie die Tooltipp-Info für eine detaillierte Erklärung.
-        ]]>
-    </string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Automatische Meldung einer blockierten Nummer an alle API-Endpunkte ohne menschliches Eingreifen, um unsere gemeinschaftlich erstellten Datenbanken gegen Spam-Anrufe zu erweitern.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Meldeverzögerung</font></h4><br>
-        Wenn ein eingehender Anruf blockiert wird, gibt es einen einstündigen Zeitpuffer, bevor die Nummer gemeldet wird.
-        Wenn die Nummer später aufgrund von Wiederholungen oder Rückrufen innerhalb dieses Zeitpuffers zugelassen wird,
-        gilt sie als Nicht-Spam-Nummer und wird nicht gemeldet.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Datenschutz</font></h4>
-        <br>
-        Die API-Endpunkte sehen Folgendes von Ihnen:<br>
-        <br>
-         &ensp; - IP-Adresse<br>
-         &ensp; - TLS- und TCP-Fingerabdrücke (die möglicherweise Ihre Android-Version offenbaren)<br>
-         &ensp; - Die gemeldete Nummer (einschließlich Ihrer Landesvorwahl)<br>
-        <br>
-        Es werden keine anderen Daten gemeldet.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Meldetyp</font></h4><br>
-        <h5>1. Es <font color="#fa7f71">wird nicht</font> gemeldet:</h5>
-        <br>
-        - <font color="#fa7f71">Zugelassene Nummern</font><br>
-        Und folgende blockierte Typen:<br>
-        - <font color="#fa7f71">Globaler Test</font><br>
-        - <font color="#fa7f71">Kontakt-Regex</font><br>
-        - <font color="#fa7f71">Kontaktgruppen-Regex</font><br>
-        - <font color="#fa7f71">Datenbank</font><br>
-        - <font color="#fa7f71">Besprechungsmodus</font><br>
-        - <font color="#fa7f71">Sofortabfrage</font> (um zu verhindern, dass die Nummer des API-Endpunkts an andere Wettbewerber weitergegeben wird)<br>
-        <br>
-        <h5>2. Es <font color="#03DAC5">wird</font> gemeldet:</h5>
-        <br>
-        Folgende blockierte Typen:<br>
-        - <font color="#03DAC5">Nicht in Kontakten</font>(ausschließlich)<br>
-        - <font color="#03DAC5">STIR-Attestierung</font><br>
-        - <font color="#03DAC5">Nummern-Regex</font><br>
-        - <font color="#03DAC5">SMS-Inhalts-Regex</font><br>
-        <br>
-        <h5>3. Ausnahmefälle:</h5>
-        <br>
-        - Wenn die Nummer durch <font color="#03DAC5">Sofortabfrage</font> blockiert wird, wird sie an dieselbe API zurück gemeldet, um den Bewertungsscore der Nummer zu erhöhen.
-         Wenn sie z. B. durch eine API-Abfrage von check.com blockiert wird, wird sie nur an check.com gemeldet, nicht an others.com. <br>
-        -  Wenn die Nummer durch <font color="#03DAC5">Datenbank</font> blockiert wird und der Eintrag ursprünglich durch eine sofortige API-Abfrage hinzugefügt wurde,
-         wird er aus dem gleichen Grund wie oben nur an dieselbe API gemeldet.<br>
-        ]]>
-    </string>
-    <string name="auto_report">Automatischer Bericht</string>
+<string name="contacts">Kontakt</string>
+<string name="non_contacts">Nicht Kontakt</string>
+<string name="inclusive">Einschließlich</string>
+<string name="exclusive">Ausschließlich</string>
+<string name="help_contacts">
+<![CDATA[
+Wenn aktiviert, sind Anrufe/Nachrichten von Kontakten immer erlaubt. <br>
+<br>
+- <b>Einschließlich</b>: <br>
+&emsp; Nicht-Kontakt-Nummern werden anhand anderer Regeln geprüft. <br>
+&emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
+<br>
+- <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
+&emsp; Nicht-Kontakt-Nummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+&emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
+<br>
+Dies gilt für Anrufe und SMS-Nachrichten.
+]]>
+</string>
+<string name="stir_attestation">STIR</string>
+<string name="stir_include_unverified">Nicht überprüfte einschließen</string>
+<string name="unverified">Nicht überprüft</string>
+<string name="valid">Gültiger Anruf</string>
+<string name="spoof">Spoof-Anruf</string>
+<string name="help_stir">
+<![CDATA[
+STIR/SHAKEN-Bestätigung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Netzbetreiber</b>. <br>
+<br>
+Es gibt drei mögliche Bestätigungsresultate: <br>
+<font color="#03DAC5"><b>Gültig</b></font> <br>
+&emsp; Der Anruf ist sehr wahrscheinlich gültig und nicht gefälscht. <br>
+<font color="#ffa500"><b>Nicht überprüft</b></font> <br>
+&emsp; Der Anruf kann nicht validiert werden oder STIR-Bestätigung wird nicht unterstützt. <br>
+<font color="#fa7f71"><b>Spoof</b></font> <br>
+&emsp; Es ist sehr wahrscheinlich, dass es sich um einen gefälschten Anruf handelt. <br>
+<br>
+<br>
+- <b>Einschließlich</b>: <br>
+&emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin anhand anderer Regeln geprüft. <br>
+&emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch bestehen, wenn er nicht überprüft wurde. <br>
+&emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
+<br>
+- <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
+&emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+&emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch blockiert werden, wenn er nicht überprüft wurde. <br>
+&emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
+]]>
+</string>
+<string name="failed_to_import_from_csv">
+<![CDATA[
+Das benötigte Feld <b>pattern</b> fehlt in der .csv-Datei. Überprüfen Sie die Tooltipp-Info für eine detaillierte Erklärung.
+]]>
+</string>
+<string name="help_auto_report">
+<![CDATA[
+Automatische Meldung einer blockierten Nummer an alle API-Endpunkte ohne menschliches Eingreifen, um unsere gemeinschaftlich erstellten Datenbanken gegen Spam-Anrufe zu erweitern.<br>
+<br>
+<h4>- <font color="#6ed0ff">Meldeverzögerung</font></h4><br>
+Wenn ein eingehender Anruf blockiert wird, gibt es einen einstündigen Zeitpuffer, bevor die Nummer gemeldet wird.
+Wenn die Nummer später aufgrund von Wiederholungen oder Rückrufen innerhalb dieses Zeitpuffers zugelassen wird,
+gilt sie als Nicht-Spam-Nummer und wird nicht gemeldet.<br>
+<br>
+<h4>- <font color="#6ed0ff">Datenschutz</font></h4>
+<br>
+Die API-Endpunkte sehen Folgendes von Ihnen:<br>
+<br>
+&ensp; - IP-Adresse<br>
+&ensp; - TLS- und TCP-Fingerabdrücke (die möglicherweise Ihre Android-Version offenbaren)<br>
+&ensp; - Die gemeldete Nummer (einschließlich Ihrer Landesvorwahl)<br>
+<br>
+Es werden keine anderen Daten gemeldet.<br>
+<br>
+<h4>- <font color="#6ed0ff">Meldetyp</font></h4><br>
+<h5>1. Es <font color="#fa7f71">wird nicht</font> gemeldet:</h5>
+<br>
+- <font color="#fa7f71">Zugelassene Nummern</font><br>
+Und folgende blockierte Typen:<br>
+- <font color="#fa7f71">Globaler Test</font><br>
+- <font color="#fa7f71">Kontakt-Regex</font><br>
+- <font color="#fa7f71">Kontaktgruppen-Regex</font><br>
+- <font color="#fa7f71">Datenbank</font><br>
+- <font color="#fa7f71">Besprechungsmodus</font><br>
+- <font color="#fa7f71">Sofortabfrage</font> (um zu verhindern, dass die Nummer des API-Endpunkts an andere Wettbewerber weitergegeben wird)<br>
+<br>
+<h5>2. Es <font color="#03DAC5">wird</font> gemeldet:</h5>
+<br>
+Folgende blockierte Typen:<br>
+- <font color="#03DAC5">Nicht in Kontakten</font>(ausschließlich)<br>
+- <font color="#03DAC5">STIR-Attestierung</font><br>
+- <font color="#03DAC5">Nummern-Regex</font><br>
+- <font color="#03DAC5">SMS-Inhalts-Regex</font><br>
+<br>
+<h5>3. Ausnahmefälle:</h5>
+<br>
+- Wenn die Nummer durch <font color="#03DAC5">Sofortabfrage</font> blockiert wird, wird sie an dieselbe API zurück gemeldet, um den Bewertungsscore der Nummer zu erhöhen.
+Wenn sie z. B. durch eine API-Abfrage von check.com blockiert wird, wird sie nur an check.com gemeldet, nicht an others.com. <br>
+-  Wenn die Nummer durch <font color="#03DAC5">Datenbank</font> blockiert wird und der Eintrag ursprünglich durch eine sofortige API-Abfrage hinzugefügt wurde,
+wird er aus dem gleichen Grund wie oben nur an dieselbe API gemeldet.<br>
+]]>
+</string>
+<string name="auto_report">Automatischer Bericht</string>
 </resources>

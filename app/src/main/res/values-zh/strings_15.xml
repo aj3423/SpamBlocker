@@ -1,30 +1,30 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
-        <![CDATA[
-        使用Google Gemini AI检查短信内容，只需要一个谷歌帐户。
-        ]]>
-    </string>
-    <string name="gemini_api_key">Gemini API 密钥</string>
-    <string name="help_api_preset_gemini_authorization">
-        <![CDATA[
-        1. 注册并登录您的Google帐户：<br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
-         <br>
-        2. 打开API页面：<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
-        <br>
-        3. 点击“创建API密钥”按钮，向下滚动查看生成的密钥。<br>
-        <br>
-        4. 点击“三个点”复制密钥，然后将其填写在下面。
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        将此短信归类为政治、欺诈、调查或营销。
-        如果都不适用，则回答“有效”，否则只回答类别，不要回答其他任何内容。
-        短信内容是：
-        {sms}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(政治|欺诈|调查|营销)</translate></string>
-    <string name="spam_sms_positive_category">有效</string>
+<string name="api_preset_gemini">Gemini</string>
+<string name="help_api_preset_gemini">
+<![CDATA[
+使用Google Gemini AI检查短信内容，只需要一个谷歌帐户。
+]]>
+</string>
+<string name="gemini_api_key">Gemini API 密钥</string>
+<string name="help_api_preset_gemini_authorization">
+<![CDATA[
+1. 注册并登录您的Google帐户：<br>
+<a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+<br>
+2. 打开API页面：<br>
+<a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+<br>
+3. 点击“创建API密钥”按钮，向下滚动查看生成的密钥。<br>
+<br>
+4. 点击“三个点”复制密钥，然后将其填写在下面。
+]]>
+</string>
+<string name="spam_sms_prompt_template">
+将此短信归类为政治、欺诈、调查或营销。
+如果都不适用，则回答“有效”，否则只回答类别，不要回答其他任何内容。
+短信内容是：
+{sms}
+</string>
+<string name="spam_sms_negative_category"><translate>(政治|欺诈|调查|营销)</translate></string>
+<string name="spam_sms_positive_category">有效</string>
 </resources>

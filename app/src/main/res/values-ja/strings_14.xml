@@ -1,95 +1,95 @@
 <resources>
-    <string name="http_method">メソッド</string>
-    <string name="http_post_body">ポスト本文</string>
-    <string name="help_http_post_body">
-        <![CDATA[
-        サポートされているタグ:<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="missing_credentials">有効な認証情報を入力してください。</string>
-    <string name="delay">遅延</string>
-    <string name="report_number_require_call_log_permission">
-        繰り返し発信された番号や折り返し発信された番号の誤った報告を防ぐため、番号の報告には通話履歴の権限が必要です。
-    </string>
-    <string name="exclude_services">除外サービス</string>
-    <string name="help_exclude_bg_service">
-        <![CDATA[
-        一部のアプリは追加のフォアグラウンドサービスを実行します。これらのサービス名をここに追加して除外します。<br>
-        <br>
-        サービス名を確認するには:<br>
-        &emsp; 1. そのアプリでサービスをアクティブにします。<br>
-        &emsp; 2. アクティブ化されたすべてのサービス名がここに表示されます。<br>
-        &emsp; 3. 名前をタップして追加します。<br>
-        <br>
-        コンマで区切って複数の名前を追加できます。
-        ]]>
-    </string>
-    <string name="running_services">実行中のサービス</string>
-    <string name="report_number">番号を報告</string>
-    <string-array name="spam_categories">
-        <item>有効な番号</item>
-        <item>詐欺</item>
-        <item>マーケティング</item>
-        <item>アンケート</item>
-        <item>政治関連</item>
-        <item>その他迷惑電話</item>
-    </string-array>
-    <string name="action_category_config">カテゴリ設定</string>
-    <string name="help_action_category_config">
-        <![CDATA[
-        サポートされている迷惑電話カテゴリは次のとおりです。APIからのその他のカテゴリは、これらのいずれかにマッピングする必要があります。<br>
-        <br>
-         - <font color="#03DAC5"><b>{valid}</b></font><br>
-        &ensp; 有効な番号として報告し、迷惑電話ではありません。<br>
-        <br>
-         - <font color="#fa7f71"><b>{fraud}</b></font><br>
-         - <font color="#fa7f71"><b>{marketing}</b></font><br>
-         - <font color="#fa7f71"><b>{survey}</b></font><br>
-         - <font color="#fa7f71"><b>{political}</b></font><br>
-        <br>
-         - <font color="#fa7f71"><b>{other}</b></font><br>
-        &ensp; 上記のいずれのカテゴリにも該当しない場合に使用される、フォールバック迷惑電話の種類です。<br>
-        ]]>
-    </string>
-    <string name="missing_category">
-        カテゴリ %s はアクション %s で設定されていません。API 設定で設定してください（API がこのカテゴリをサポートしている場合）。
-    </string>
-    <string name="target_text">ターゲットテキスト</string>
-    <string name="match_found">一致が見つかりました</string>
-    <string name="match_not_found">一致が見つかりませんでした</string>
-    <string name="help_test_regex">
-        <![CDATA[
-        これは、他のルールを除外して、この正規表現がテキストに一致するかどうかをテストするためだけです。<br>
-        すべてのルールに対してテストするには、代わりに右下隅にあるフローティングテストボタンを使用してください。
-        ]]>
-    </string>
-    <string name="allow">許可</string>
-    <string name="block">ブロック</string>
-    <string name="seconds">秒</string>
-    <string name="seconds_short">秒</string>
-    <string name="within_seconds">以内</string>
-    <string name="call_alert">着信警告</string>
-    <string name="help_call_alert">
-        <![CDATA[
-        一部のサービスでは、電話がかかってくることを知らせるために、通常は1分以内にテキストメッセージが送信されます。<br>
-        <br>
-        たとえば、次のようなSMSメッセージがあります。<br>
-        &ensp; <font color="#888888">[サービス名] お電話します…、お気軽にお答えください。</font><br>
-        <br>
-        このようなメッセージの正規表現は次のようになります。<br>
-        &ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
-        <br>
-        デフォルト設定の<font color="#03DAC5"><b>120秒</b></font>は、そのようなメッセージを受信した後、次の2分間はすべての通話が許可されることを意味します。<br>
-        <br>
-        通常のSMSとフラッシュSMS（クラス0 SMS）の両方で機能します。<br>
-        <br>
-        <font color="#ea86ff"><b>優先順位：10</b></font>
-        ]]>
-    </string>
-    <string name="waning_using_wildcard_as_regex">ワイルドカード `*` がドットの前に使用されています。`.*` の意図ですか？</string>
-    <string name="import_as">インポート先</string>
-    <string name="api_key">APIキー</string>
-    <string name="mms_support">MMSサポート</string>
+<string name="http_method">メソッド</string>
+<string name="http_post_body">ポスト本文</string>
+<string name="help_http_post_body">
+<![CDATA[
+サポートされているタグ:<br>
+<br>
+%s
+]]>
+</string>
+<string name="missing_credentials">有効な認証情報を入力してください。</string>
+<string name="delay">遅延</string>
+<string name="report_number_require_call_log_permission">
+繰り返し発信された番号や折り返し発信された番号の誤った報告を防ぐため、番号の報告には通話履歴の権限が必要です。
+</string>
+<string name="exclude_services">除外サービス</string>
+<string name="help_exclude_bg_service">
+<![CDATA[
+一部のアプリは追加のフォアグラウンドサービスを実行します。これらのサービス名をここに追加して除外します。<br>
+<br>
+サービス名を確認するには:<br>
+&emsp; 1. そのアプリでサービスをアクティブにします。<br>
+&emsp; 2. アクティブ化されたすべてのサービス名がここに表示されます。<br>
+&emsp; 3. 名前をタップして追加します。<br>
+<br>
+コンマで区切って複数の名前を追加できます。
+]]>
+</string>
+<string name="running_services">実行中のサービス</string>
+<string name="report_number">番号を報告</string>
+<string-array name="spam_categories">
+<item>有効な番号</item>
+<item>詐欺</item>
+<item>マーケティング</item>
+<item>アンケート</item>
+<item>政治関連</item>
+<item>その他迷惑電話</item>
+</string-array>
+<string name="action_category_config">カテゴリ設定</string>
+<string name="help_action_category_config">
+<![CDATA[
+サポートされている迷惑電話カテゴリは次のとおりです。APIからのその他のカテゴリは、これらのいずれかにマッピングする必要があります。<br>
+<br>
+- <font color="#03DAC5"><b>{valid}</b></font><br>
+&ensp; 有効な番号として報告し、迷惑電話ではありません。<br>
+<br>
+- <font color="#fa7f71"><b>{fraud}</b></font><br>
+- <font color="#fa7f71"><b>{marketing}</b></font><br>
+- <font color="#fa7f71"><b>{survey}</b></font><br>
+- <font color="#fa7f71"><b>{political}</b></font><br>
+<br>
+- <font color="#fa7f71"><b>{other}</b></font><br>
+&ensp; 上記のいずれのカテゴリにも該当しない場合に使用される、フォールバック迷惑電話の種類です。<br>
+]]>
+</string>
+<string name="missing_category">
+カテゴリ %s はアクション %s で設定されていません。API 設定で設定してください（API がこのカテゴリをサポートしている場合）。
+</string>
+<string name="target_text">ターゲットテキスト</string>
+<string name="match_found">一致が見つかりました</string>
+<string name="match_not_found">一致が見つかりませんでした</string>
+<string name="help_test_regex">
+<![CDATA[
+これは、他のルールを除外して、この正規表現がテキストに一致するかどうかをテストするためだけです。<br>
+すべてのルールに対してテストするには、代わりに右下隅にあるフローティングテストボタンを使用してください。
+]]>
+</string>
+<string name="allow">許可</string>
+<string name="block">ブロック</string>
+<string name="seconds">秒</string>
+<string name="seconds_short">秒</string>
+<string name="within_seconds">以内</string>
+<string name="call_alert">着信警告</string>
+<string name="help_call_alert">
+<![CDATA[
+一部のサービスでは、電話がかかってくることを知らせるために、通常は1分以内にテキストメッセージが送信されます。<br>
+<br>
+たとえば、次のようなSMSメッセージがあります。<br>
+&ensp; <font color="#888888">[サービス名] お電話します…、お気軽にお答えください。</font><br>
+<br>
+このようなメッセージの正規表現は次のようになります。<br>
+&ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
+<br>
+デフォルト設定の<font color="#03DAC5"><b>120秒</b></font>は、そのようなメッセージを受信した後、次の2分間はすべての通話が許可されることを意味します。<br>
+<br>
+通常のSMSとフラッシュSMS（クラス0 SMS）の両方で機能します。<br>
+<br>
+<font color="#ea86ff"><b>優先順位：10</b></font>
+]]>
+</string>
+<string name="waning_using_wildcard_as_regex">ワイルドカード `*` がドットの前に使用されています。`.*` の意図ですか？</string>
+<string name="import_as">インポート先</string>
+<string name="api_key">APIキー</string>
+<string name="mms_support">MMSサポート</string>
 </resources>

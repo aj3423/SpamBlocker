@@ -1,66 +1,65 @@
 <resources>
-    <string name="help_sms_content_filter">
-        <![CDATA[
-        Diese Regeln gelten für den SMS-Inhalt.<br>
-        <br>
-        <font color="#00BFFF"><b> - Einige typische Muster</b></font>:<br>
-        &ensp; - Enthält "Verifizierung": <font color="#03DAC5"><b>.*verification.*</b></font><br>
-        &ensp; - Enthält eines der Wörter: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
-        ]]>
-    </string>
-    <string name="help_quick_copy">
-        <![CDATA[
-        Eine schnelle Möglichkeit, Inhalte aus SMS-Nachrichten oder Telefonnummern zu kopieren, damit Sie leicht Verifizierungscodes oder eingehende Nummern erfassen können.<br>
-        <br>
-        Wenn es übereinstimmt, erscheint in der Benachrichtigung eine Schaltfläche wie <font color="#00BFFF"><b>Kopieren: 123456</b></font>.<br>
-        <br>
-        Eine Beispielregel zum Extrahieren von Verifizierungscodes:<br>
-        &emsp; Mithilfe einer Capture-Gruppe:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Ein anderer Ansatz mit Lookaround:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
-        ]]>
-    </string>
-    <string name="help_apply_to_call_sms">
-        <![CDATA[
-        Aktivieren Sie diese Regel für Anrufe, SMS oder beides.<br>
-        Deaktivieren Sie diese Kontrollkästchen, um die Regel zu deaktivieren, ohne sie zu löschen.
-        ]]>
-    </string>
-    <string name="help_apply_to_number_and_message">
-        <![CDATA[
-        Wenn <font color="#00BFFF"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus der eingehenden Nummer.
-        Verwenden Sie beispielsweise <b>(.*)</b>, um die Telefonnummer zu kopieren.<br>
-        <br>
-        Wenn <font color="#00BFFF"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus dem SMS-Nachrichtentext,
-        z. B. Verifizierungscodes.
-        ]]>
-    </string>
-    <string name="help_apply_to_passed_and_blocked">
-        <![CDATA[
-        Wenn <font color="#03DAC5"><b>Weitergeleitet</b></font> aktiviert ist, gilt diese Regel für weitergeleitete Anrufe und Nachrichten.<br>
-        <br>
-        Wenn <font color="#fa7f71"><b>Blockiert</b></font> aktiviert ist, gilt diese Regel für blockierte Anrufe und Nachrichten.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Keine</b>:<br>&emsp; Keine Benachrichtigung.<br>
-        <b>Schatten</b>:<br>&emsp; Die Benachrichtigungsleiste.<br>
-        <b>Statusleiste</b>:<br>&emsp; Das kleine Symbol in der oberen Leiste.<br>
-        <b>Ton</b>:<br>&emsp; Der Standard-Benachrichtigungston.<br>
-        <b>Heads-Up</b>:<br>&emsp; Ein Popup-Fenster oben auf dem Bildschirm anzeigen.
-        ]]>
-    </string>
-    <string name="title_rule_testing">Regeltest</string>
-    <string name="help_test_rules">
-        <![CDATA[
-        Dies hilft zu überprüfen, ob die Regeln wie erwartet eingerichtet sind.<br>
-        <br>
-        Es handelt sich nur um eine Simulation und es wird kein eingehender Anruf (oder eine Textnachricht) tatsächlich angezeigt.<br>
-        <br>
-        Das Ergebnis wird hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
-        ]]>
-    </string>
-
+<string name="help_sms_content_filter">
+<![CDATA[
+Diese Regeln gelten für den SMS-Inhalt.<br>
+<br>
+<font color="#00BFFF"><b> - Einige typische Muster</b></font>:<br>
+&ensp; - Enthält "Verifizierung": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+&ensp; - Enthält eines der Wörter: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
+]]>
+</string>
+<string name="help_quick_copy">
+<![CDATA[
+Eine schnelle Möglichkeit, Inhalte aus SMS-Nachrichten oder Telefonnummern zu kopieren, damit Sie leicht Verifizierungscodes oder eingehende Nummern erfassen können.<br>
+<br>
+Wenn es übereinstimmt, erscheint in der Benachrichtigung eine Schaltfläche wie <font color="#00BFFF"><b>Kopieren: 123456</b></font>.<br>
+<br>
+Eine Beispielregel zum Extrahieren von Verifizierungscodes:<br>
+&emsp; Mithilfe einer Capture-Gruppe:<br>
+&emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+&emsp; Ein anderer Ansatz mit Lookaround:<br>
+&emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+]]>
+</string>
+<string name="help_apply_to_call_sms">
+<![CDATA[
+Aktivieren Sie diese Regel für Anrufe, SMS oder beides.<br>
+Deaktivieren Sie diese Kontrollkästchen, um die Regel zu deaktivieren, ohne sie zu löschen.
+]]>
+</string>
+<string name="help_apply_to_number_and_message">
+<![CDATA[
+Wenn <font color="#00BFFF"><b>Nummer</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus der eingehenden Nummer.
+Verwenden Sie beispielsweise <b>(.*)</b>, um die Telefonnummer zu kopieren.<br>
+<br>
+Wenn <font color="#00BFFF"><b>Inhalt</b></font> aktiviert ist, extrahiert diese Regel Inhalte aus dem SMS-Nachrichtentext,
+z. B. Verifizierungscodes.
+]]>
+</string>
+<string name="help_apply_to_passed_and_blocked">
+<![CDATA[
+Wenn <font color="#03DAC5"><b>Weitergeleitet</b></font> aktiviert ist, gilt diese Regel für weitergeleitete Anrufe und Nachrichten.<br>
+<br>
+Wenn <font color="#fa7f71"><b>Blockiert</b></font> aktiviert ist, gilt diese Regel für blockierte Anrufe und Nachrichten.
+]]>
+</string>
+<string name="help_importance">
+<![CDATA[
+<b>Keine</b>:<br>&emsp; Keine Benachrichtigung.<br>
+<b>Schatten</b>:<br>&emsp; Die Benachrichtigungsleiste.<br>
+<b>Statusleiste</b>:<br>&emsp; Das kleine Symbol in der oberen Leiste.<br>
+<b>Ton</b>:<br>&emsp; Der Standard-Benachrichtigungston.<br>
+<b>Heads-Up</b>:<br>&emsp; Ein Popup-Fenster oben auf dem Bildschirm anzeigen.
+]]>
+</string>
+<string name="title_rule_testing">Regeltest</string>
+<string name="help_test_rules">
+<![CDATA[
+Dies hilft zu überprüfen, ob die Regeln wie erwartet eingerichtet sind.<br>
+<br>
+Es handelt sich nur um eine Simulation und es wird kein eingehender Anruf (oder eine Textnachricht) tatsächlich angezeigt.<br>
+<br>
+Das Ergebnis wird hier und im Verlaufsprotokoll mit Benachrichtigung angezeigt.
+]]>
+</string>
 </resources>

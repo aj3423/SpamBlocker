@@ -1,70 +1,69 @@
 <resources>
-    <string name="for_example">مثال:</string>
-    <string name="yesterday">دیروز</string>
-    <string name="help_meeting_mode">
-        <![CDATA[
-        رد تماس‌ها در طول جلسات آنلاین ویدیویی.<br> <br>
-        این برنامه بررسی می‌کند که آیا هر برنامه انتخاب‌شده‌ای از یک <b>سرویس پیش‌زمینه</b> استفاده می‌کند یا خیر، که معمولاً توسط برنامه‌های ویدئو کنفرانس برای حفظ اتصال زنده استفاده می‌شود.<br>
-        <br>
-        این مورد برای تماس‌ها و پیام‌ها اعمال می‌شود.<br>
-        <br>
-        <font color="#ea86ff"><b>اولویت پیش‌فرض: 20</b></font>
-        ]]>
-    </string>
-    <string name="in_meeting">حالت جلسه</string>
-    <string name="search">جستجو</string>
-    <string name="http_header">هدر HTTP</string>
-    <string name="help_http_header">
-        <![CDATA[
-        یک ویژگی در هر خط.<br>
-        ]]>
-    </string>
-    <string name="tags_supported">
-        <![CDATA[
-        برچسب‌های پشتیبانی‌شده:<br><br>
-        ]]>
-    </string>
-    <string name="auth_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-        &ensp; برای APIهایی که احراز هویت اولیه HTTP نیاز دارند. برای مثال:<br>
-        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-        &ensp; به این صورت تجزیه می‌شود:<br>
-        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-        ]]>
-    </string>
-    <string name="log_sms_content_to_db">ثبت پیامک</string>
-    <string name="initial_row_count">تعداد سطر اولیه</string>
-    <plurals name="rows">
-        <item quantity="one">%d سطر</item>
-        <item quantity="two">%d سطر</item>
-        <item quantity="few">%d سطر</item>
-        <item quantity="many">%d سطر</item>
-        <item quantity="other">%d سطر</item>
-    </plurals>
-
-    <string name="label_max_none_scroll_items">آستانه نوار پیمایش</string>
-    <string name="help_max_none_scroll_items">
-        <![CDATA[
-        حداکثر تعداد آیتم‌هایی که قبل از نمایش نوار پیمایش می‌توانند در لیست نمایش داده شوند.
-        ]]>
-    </string>
-    <string name="label_max_scroll_height">ارتفاع پیمایش</string>
-    <string name="help_max_scroll_height">
-        <![CDATA[
-        هنگامی که نوار پیمایش ظاهر می‌شود، این مقدار ارتفاع لیست را به صورت درصد از صفحه نشان می‌دهد.
-        ]]>
-    </string>
-    <string name="label_max_regex_lines">حداکثر خطوط Regex</string>
-    <string name="help_max_regex_lines">
-        <![CDATA[
-        حداکثر خطوط نمایش برای متن Regex، متن باقی‌مانده قطع می‌شود و با سه نقطه دنبال می‌شود.
-        ]]>
-    </string>
-    <string name="label_max_desc_lines">حداکثر خطوط توضیحات</string>
-    <string name="help_max_desc_lines">
-        <![CDATA[
-        حداکثر خطوط نمایش برای متن توضیحات، متن باقی‌مانده قطع می‌شود و با سه نقطه دنبال می‌شود.
-        ]]>
-    </string>
+<string name="for_example">مثال:</string>
+<string name="yesterday">دیروز</string>
+<string name="help_meeting_mode">
+<![CDATA[
+رد تماس‌ها در طول جلسات آنلاین ویدیویی.<br> <br>
+این برنامه بررسی می‌کند که آیا هر برنامه انتخاب‌شده‌ای از یک <b>سرویس پیش‌زمینه</b> استفاده می‌کند یا خیر، که معمولاً توسط برنامه‌های ویدئو کنفرانس برای حفظ اتصال زنده استفاده می‌شود.<br>
+<br>
+این مورد برای تماس‌ها و پیام‌ها اعمال می‌شود.<br>
+<br>
+<font color="#ea86ff"><b>اولویت پیش‌فرض: 20</b></font>
+]]>
+</string>
+<string name="in_meeting">حالت جلسه</string>
+<string name="search">جستجو</string>
+<string name="http_header">هدر HTTP</string>
+<string name="help_http_header">
+<![CDATA[
+یک ویژگی در هر خط.<br>
+]]>
+</string>
+<string name="tags_supported">
+<![CDATA[
+برچسب‌های پشتیبانی‌شده:<br><br>
+]]>
+</string>
+<string name="auth_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+&ensp; برای APIهایی که احراز هویت اولیه HTTP نیاز دارند. برای مثال:<br>
+&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+&ensp; به این صورت تجزیه می‌شود:<br>
+&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+]]>
+</string>
+<string name="log_sms_content_to_db">ثبت پیامک</string>
+<string name="initial_row_count">تعداد سطر اولیه</string>
+<plurals name="rows">
+<item quantity="one">%d سطر</item>
+<item quantity="two">%d سطر</item>
+<item quantity="few">%d سطر</item>
+<item quantity="many">%d سطر</item>
+<item quantity="other">%d سطر</item>
+</plurals>
+<string name="label_max_none_scroll_items">آستانه نوار پیمایش</string>
+<string name="help_max_none_scroll_items">
+<![CDATA[
+حداکثر تعداد آیتم‌هایی که قبل از نمایش نوار پیمایش می‌توانند در لیست نمایش داده شوند.
+]]>
+</string>
+<string name="label_max_scroll_height">ارتفاع پیمایش</string>
+<string name="help_max_scroll_height">
+<![CDATA[
+هنگامی که نوار پیمایش ظاهر می‌شود، این مقدار ارتفاع لیست را به صورت درصد از صفحه نشان می‌دهد.
+]]>
+</string>
+<string name="label_max_regex_lines">حداکثر خطوط Regex</string>
+<string name="help_max_regex_lines">
+<![CDATA[
+حداکثر خطوط نمایش برای متن Regex، متن باقی‌مانده قطع می‌شود و با سه نقطه دنبال می‌شود.
+]]>
+</string>
+<string name="label_max_desc_lines">حداکثر خطوط توضیحات</string>
+<string name="help_max_desc_lines">
+<![CDATA[
+حداکثر خطوط نمایش برای متن توضیحات، متن باقی‌مانده قطع می‌شود و با سه نقطه دنبال می‌شود.
+]]>
+</string>
 </resources>

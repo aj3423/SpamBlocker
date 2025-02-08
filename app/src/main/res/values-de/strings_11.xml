@@ -1,72 +1,70 @@
 <resources>
-    <string name="yesterday">Gestern</string>
-    <string name="help_meeting_mode">
-        <![CDATA[
-        Anrufe während Online-Videokonferenzen ablehnen.<br> <br>
-        Es wird geprüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
-        der üblicherweise von Videokonferenz-Apps verwendet wird, um die Verbindung aktiv zu halten.<br>
-        <br>
-        Dies gilt sowohl für Anrufe als auch für Nachrichten.<br>
-        <br>
-        <font color="#ea86ff"><b>Standardpriorität: 20</b></font>
-        ]]>
-    </string>
-    <string name="in_meeting">Meeting-Modus</string>
-    <string name="search">Suche</string>
-    <string name="http_header">Http-Header</string>
-    <string name="help_http_header">
-        <![CDATA[
-        Ein Attribut pro Zeile.
-        ]]>
-    </string>
-    <string name="log_sms_content_to_db">SMS protokollieren</string>
-    <string name="initial_row_count">Anfangszeilenanzahl</string>
-    <plurals name="rows">
-        <item quantity="one">%d Zeile</item>
-        <item quantity="two">%d Zeilen</item>
-        <item quantity="few">%d Zeilen</item>
-        <item quantity="many">%d Zeilen</item>
-        <item quantity="other">%d Zeilen</item>
-    </plurals>
-
-    <string name="label_max_none_scroll_items">Scrollbalken-Schwellenwert</string>
-    <string name="help_max_none_scroll_items">
-        <![CDATA[
-        Die maximale Anzahl von Elementen, die in der Liste angezeigt werden können, bevor eine Scrollleiste erscheint.
-        ]]>
-    </string>
-    <string name="label_max_scroll_height">Scrollhöhe</string>
-    <string name="help_max_scroll_height">
-        <![CDATA[
-        Wenn die Scrollleiste erscheint, stellt dieser Wert die Listenhöhe als Prozentsatz des Bildschirms dar.
-        ]]>
-    </string>
-    <string name="label_max_regex_lines">Max. Regex-Zeilen</string>
-    <string name="help_max_regex_lines">
-        <![CDATA[
-        Die maximale Anzahl von Zeilen, die für den Regex-Text angezeigt werden, der restliche Text wird abgeschnitten und mit einem Auslassungspunkt versehen.
-        ]]>
-    </string>
-    <string name="label_max_desc_lines">Max. Beschreibungszeilen</string>
-    <string name="help_max_desc_lines">
-        <![CDATA[
-        Die maximale Anzahl von Zeilen, die für den Beschreibungstext angezeigt werden, der restliche Text wird abgeschnitten und mit einem Auslassungspunkt versehen.
-        ]]>
-    </string>
-
-    <string name="for_example"><translate>Beispiel:</translate></string>
-    <string name="tags_supported">
-        <![CDATA[
-        Unterstützte Tags:<br><br>
-        ]]>
-    </string>
-    <string name="auth_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-        &ensp; Für APIs, die HTTP-Basisauthentifizierung benötigen. Beispiel:<br>
-        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-        &ensp; wird analysiert zu:<br>
-        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-        ]]>
-    </string>
+<string name="yesterday">Gestern</string>
+<string name="help_meeting_mode">
+<![CDATA[
+Anrufe während Online-Videokonferenzen ablehnen.<br> <br>
+Es wird geprüft, ob eine ausgewählte App einen <b>Vordergrunddienst</b> ausführt,
+der üblicherweise von Videokonferenz-Apps verwendet wird, um die Verbindung aktiv zu halten.<br>
+<br>
+Dies gilt sowohl für Anrufe als auch für Nachrichten.<br>
+<br>
+<font color="#ea86ff"><b>Standardpriorität: 20</b></font>
+]]>
+</string>
+<string name="in_meeting">Meeting-Modus</string>
+<string name="search">Suche</string>
+<string name="http_header">Http-Header</string>
+<string name="help_http_header">
+<![CDATA[
+Ein Attribut pro Zeile.
+]]>
+</string>
+<string name="log_sms_content_to_db">SMS protokollieren</string>
+<string name="initial_row_count">Anfangszeilenanzahl</string>
+<plurals name="rows">
+<item quantity="one">%d Zeile</item>
+<item quantity="two">%d Zeilen</item>
+<item quantity="few">%d Zeilen</item>
+<item quantity="many">%d Zeilen</item>
+<item quantity="other">%d Zeilen</item>
+</plurals>
+<string name="label_max_none_scroll_items">Scrollbalken-Schwellenwert</string>
+<string name="help_max_none_scroll_items">
+<![CDATA[
+Die maximale Anzahl von Elementen, die in der Liste angezeigt werden können, bevor eine Scrollleiste erscheint.
+]]>
+</string>
+<string name="label_max_scroll_height">Scrollhöhe</string>
+<string name="help_max_scroll_height">
+<![CDATA[
+Wenn die Scrollleiste erscheint, stellt dieser Wert die Listenhöhe als Prozentsatz des Bildschirms dar.
+]]>
+</string>
+<string name="label_max_regex_lines">Max. Regex-Zeilen</string>
+<string name="help_max_regex_lines">
+<![CDATA[
+Die maximale Anzahl von Zeilen, die für den Regex-Text angezeigt werden, der restliche Text wird abgeschnitten und mit einem Auslassungspunkt versehen.
+]]>
+</string>
+<string name="label_max_desc_lines">Max. Beschreibungszeilen</string>
+<string name="help_max_desc_lines">
+<![CDATA[
+Die maximale Anzahl von Zeilen, die für den Beschreibungstext angezeigt werden, der restliche Text wird abgeschnitten und mit einem Auslassungspunkt versehen.
+]]>
+</string>
+<string name="for_example"><translate>Beispiel:</translate></string>
+<string name="tags_supported">
+<![CDATA[
+Unterstützte Tags:<br><br>
+]]>
+</string>
+<string name="auth_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+&ensp; Für APIs, die HTTP-Basisauthentifizierung benötigen. Beispiel:<br>
+&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+&ensp; wird analysiert zu:<br>
+&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+]]>
+</string>
 </resources>

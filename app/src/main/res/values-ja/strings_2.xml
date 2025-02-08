@@ -1,102 +1,102 @@
 <resources>
-    <string name="contacts">連絡先</string>
-    <string name="non_contacts">非連絡先</string>
-    <string name="inclusive">包含</string>
-    <string name="exclusive">除外</string>
-    <string name="help_contacts">
-        <![CDATA[
-        有効にすると、連絡先からの通話/メッセージは常に許可されます。 <br>
-        <br>
-          - <b>包含</b>: <br>
-              &emsp; 非連絡先番号は、他のルールで確認されます。 <br>
-              &emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>除外</b></font>: <br>
-              &emsp; 非連絡先番号は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
-              &emsp; <font color="#ea86ff"><b>優先順位: 0</b></font> <br>
-        <br>
-        これは、通話とSMSメッセージの両方に適用されます。
-        ]]>
-    </string>
-    <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">未検証を含む</string>
-    <string name="unverified">未検証</string>
-    <string name="valid">有効な通話</string>
-    <string name="spoof">なりすまし通話</string>
-    <string name="help_stir">
-        <![CDATA[
-            STIR/SHAKEN 認証には、<b>Android 11 以降</b>と<b>キャリアのサポート</b>が必要です。 <br>
-            <br>
-            認証には、3 つの結果があります。 <br>
-            <font color="#03DAC5"><b>有効</b></font> <br>
-            &emsp; この通話は、なりすましではなく、有効である可能性が高いです。 <br>
-            <font color="#ffa500"><b>未検証</b></font> <br>
-            &emsp; この通話は検証できません。または、STIR 認証がサポートされていません。 <br>
-            <font color="#fa7f71"><b>なりすまし</b></font> <br>
-            &emsp; この通話は、なりすましである可能性が高いです。 <br>
-            <br>
-            <br>
-              - <b>包含</b>: <br>
-                  &emsp; このチェックに失敗した通話は、他のルールでも確認されます。 <br>
-                  &emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はパスします。 <br>
-                  &emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>除外</b></font>: <br>
-                  &emsp; このチェックに失敗した通話は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
-                  &emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はブロックされます。 <br>
-                  &emsp; <font color="#ea86ff"><b>優先順位: 0</b></font>
-        ]]>
-    </string>
-    <string name="failed_to_import_from_csv">
-        <![CDATA[
-        .csv ファイルに必須フィールド <b>pattern</b> がありません。詳細については、吹き出しツールチップを確認してください。
-        ]]>
-    </string>
-    <string name="help_auto_report">
-        <![CDATA[
-        迷惑電話に対するクラウドソーシングデータベースを構築するために、人間の介入なしにブロックされた電話番号をすべてのAPIエンドポイントに自動報告します。<br>
-        <br>
-        <h4>- <font color="#6ed0ff">報告遅延</font></h4><br>
-        着信がブロックされると、電話番号が報告されるまでに1時間のバッファ時間があります。
-        このバッファ時間内に繰り返し発生したり、折り返し電話があったりして、後で番号が許可された場合、
-        それは迷惑電話ではないとみなされ、報告されません。<br>
-        <br>
-        <h4>- <font color="#6ed0ff">プライバシー</font></h4>
-        <br>
-        APIエンドポイントは、以下の情報を確認します。<br>
-        <br>
-         &ensp; - IPアドレス<br>
-         &ensp; - TlsとTcpフィンガープリント（Androidバージョンがわかる場合があります）<br>
-         &ensp; - 報告された電話番号（国コードを含む）<br>
-        <br>
-        それ以外の情報は報告されません。<br>
-        <br>
-        <h4>- <font color="#6ed0ff">報告タイプ</font></h4><br>
-        <h5>1. <font color="#fa7f71">報告されません</font>：</h5>
-        <br>
-        - <font color="#fa7f71">許可された番号</font><br>
-        および以下のブロックタイプ：<br>
-        - <font color="#fa7f71">グローバルテスト</font><br>
-        - <font color="#fa7f71">連絡先正規表現</font><br>
-        - <font color="#fa7f71">連絡先グループ正規表現</font><br>
-        - <font color="#fa7f71">データベース</font><br>
-        - <font color="#fa7f71">会議モード</font><br>
-        - <font color="#fa7f71">インスタントクエリ</font>（APIエンドポイントの番号が他の競合他社に漏洩するのを防ぐため）<br>
-        <br>
-        <h5>2. <font color="#03DAC5">報告されます</font>：</h5>
-        <br>
-        以下のブロックタイプ：<br>
-        - <font color="#03DAC5">非連絡先</font>（排他的）<br>
-        - <font color="#03DAC5">STIR認証</font><br>
-        - <font color="#03DAC5">電話番号正規表現</font><br>
-        - <font color="#03DAC5">SMS本文正規表現</font><br>
-        <br>
-        <h5>3. 例外ケース：</h5>
-        <br>
-        - <font color="#03DAC5">インスタントクエリ</font>でブロックされた場合、番号の評価スコアを増やすために、<b>同じ</b>APIに報告されます。
-         たとえば、check.comからのAPIクエリでブロックされた場合、others.comではなくcheck.comのみに報告されます。<br>
-        - <font color="#03DAC5">データベース</font>でブロックされ、レコードが元々インスタントAPIクエリによって追加された場合、上記と同じ理由で<b>同じ</b>APIのみに報告されます。<br>
-        ]]>
-    </string>
-    <string name="auto_report">自動レポート</string>
+<string name="contacts">連絡先</string>
+<string name="non_contacts">非連絡先</string>
+<string name="inclusive">包含</string>
+<string name="exclusive">除外</string>
+<string name="help_contacts">
+<![CDATA[
+有効にすると、連絡先からの通話/メッセージは常に許可されます。 <br>
+<br>
+- <b>包含</b>: <br>
+&emsp; 非連絡先番号は、他のルールで確認されます。 <br>
+&emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
+<br>
+- <font color="#fa7f71"><b>除外</b></font>: <br>
+&emsp; 非連絡先番号は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
+&emsp; <font color="#ea86ff"><b>優先順位: 0</b></font> <br>
+<br>
+これは、通話とSMSメッセージの両方に適用されます。
+]]>
+</string>
+<string name="stir_attestation">STIR</string>
+<string name="stir_include_unverified">未検証を含む</string>
+<string name="unverified">未検証</string>
+<string name="valid">有効な通話</string>
+<string name="spoof">なりすまし通話</string>
+<string name="help_stir">
+<![CDATA[
+STIR/SHAKEN 認証には、<b>Android 11 以降</b>と<b>キャリアのサポート</b>が必要です。 <br>
+<br>
+認証には、3 つの結果があります。 <br>
+<font color="#03DAC5"><b>有効</b></font> <br>
+&emsp; この通話は、なりすましではなく、有効である可能性が高いです。 <br>
+<font color="#ffa500"><b>未検証</b></font> <br>
+&emsp; この通話は検証できません。または、STIR 認証がサポートされていません。 <br>
+<font color="#fa7f71"><b>なりすまし</b></font> <br>
+&emsp; この通話は、なりすましである可能性が高いです。 <br>
+<br>
+<br>
+- <b>包含</b>: <br>
+&emsp; このチェックに失敗した通話は、他のルールでも確認されます。 <br>
+&emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はパスします。 <br>
+&emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
+<br>
+- <font color="#fa7f71"><b>除外</b></font>: <br>
+&emsp; このチェックに失敗した通話は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
+&emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はブロックされます。 <br>
+&emsp; <font color="#ea86ff"><b>優先順位: 0</b></font>
+]]>
+</string>
+<string name="failed_to_import_from_csv">
+<![CDATA[
+.csv ファイルに必須フィールド <b>pattern</b> がありません。詳細については、吹き出しツールチップを確認してください。
+]]>
+</string>
+<string name="help_auto_report">
+<![CDATA[
+迷惑電話に対するクラウドソーシングデータベースを構築するために、人間の介入なしにブロックされた電話番号をすべてのAPIエンドポイントに自動報告します。<br>
+<br>
+<h4>- <font color="#6ed0ff">報告遅延</font></h4><br>
+着信がブロックされると、電話番号が報告されるまでに1時間のバッファ時間があります。
+このバッファ時間内に繰り返し発生したり、折り返し電話があったりして、後で番号が許可された場合、
+それは迷惑電話ではないとみなされ、報告されません。<br>
+<br>
+<h4>- <font color="#6ed0ff">プライバシー</font></h4>
+<br>
+APIエンドポイントは、以下の情報を確認します。<br>
+<br>
+&ensp; - IPアドレス<br>
+&ensp; - TlsとTcpフィンガープリント（Androidバージョンがわかる場合があります）<br>
+&ensp; - 報告された電話番号（国コードを含む）<br>
+<br>
+それ以外の情報は報告されません。<br>
+<br>
+<h4>- <font color="#6ed0ff">報告タイプ</font></h4><br>
+<h5>1. <font color="#fa7f71">報告されません</font>：</h5>
+<br>
+- <font color="#fa7f71">許可された番号</font><br>
+および以下のブロックタイプ：<br>
+- <font color="#fa7f71">グローバルテスト</font><br>
+- <font color="#fa7f71">連絡先正規表現</font><br>
+- <font color="#fa7f71">連絡先グループ正規表現</font><br>
+- <font color="#fa7f71">データベース</font><br>
+- <font color="#fa7f71">会議モード</font><br>
+- <font color="#fa7f71">インスタントクエリ</font>（APIエンドポイントの番号が他の競合他社に漏洩するのを防ぐため）<br>
+<br>
+<h5>2. <font color="#03DAC5">報告されます</font>：</h5>
+<br>
+以下のブロックタイプ：<br>
+- <font color="#03DAC5">非連絡先</font>（排他的）<br>
+- <font color="#03DAC5">STIR認証</font><br>
+- <font color="#03DAC5">電話番号正規表現</font><br>
+- <font color="#03DAC5">SMS本文正規表現</font><br>
+<br>
+<h5>3. 例外ケース：</h5>
+<br>
+- <font color="#03DAC5">インスタントクエリ</font>でブロックされた場合、番号の評価スコアを増やすために、<b>同じ</b>APIに報告されます。
+たとえば、check.comからのAPIクエリでブロックされた場合、others.comではなくcheck.comのみに報告されます。<br>
+- <font color="#03DAC5">データベース</font>でブロックされ、レコードが元々インスタントAPIクエリによって追加された場合、上記と同じ理由で<b>同じ</b>APIのみに報告されます。<br>
+]]>
+</string>
+<string name="auto_report">自動レポート</string>
 </resources>

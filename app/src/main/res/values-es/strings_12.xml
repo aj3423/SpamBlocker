@@ -1,101 +1,101 @@
 <resources>
-    <string name="help_instant_query">
-        <![CDATA[
-        Consulta el número entrante en línea en tiempo real; se consultarán varios puntos finales de API simultáneamente.<br>
-        <br>
-        Solo se aplica a llamadas, no a mensajes SMS.<br>
-        <br>
-        Solo se activará cuando la llamada pase todas las demás reglas.<br>
-        <br>
-        <font color="#ea86ff"><b>Prioridad: -1</b></font>
-        ]]>
-    </string>
-    <string name="instant_query">Consulta instantánea</string>
-    <string name="negative_identifier">Identificador negativo</string>
-    <string name="hint_negative_identifier">
-        E.g.: ("valid":false)
-    </string>
-    <string name="help_negative_identifier">
-        Se identificará como número de spam si se encuentra este patrón regex en el resultado.
-    </string>
-    <string name="positive_identifier">Identificador positivo</string>
-    <string name="hint_positive_identifier">
-        E.g.: ("valid":true)
-    </string>
-    <string name="help_positive_identifier">
-        <![CDATA[
-        Se identificará como número no spam si se encuentra este patrón regex en el resultado, es opcional.<br>
-        <br>
-        Por lo general, esto es <b>innecesario</b>, algunos proveedores de API identificarán los números desconocidos como no spam,<br>
-        solo use esto cuando la API sea realmente precisa.
-        ]]>
-    </string>
-    <string name="category_identifier">Identificador de categoría</string>
-    <string name="hint_category_identifier">
-        E.g.: "type":"(.+?)"
-    </string>
-    <string name="help_category_identifier">
-        <![CDATA[
-        Opcional.<br>
-        Una vez que se identifica un número, esta expresión regular se usará para extraer su categoría (telemercadeo, phishing, etc.).
-        ]]>
-    </string>
-    <string name="action_parse_query_result">Analizar resultado</string>
-    <string name="help_action_parse_query_result">
-        <![CDATA[
-        Analiza el resultado de la consulta; el número se identificará como spam si el resultado contiene un patrón regex particular.<br>
-        <br>
-        Se puede usar una expresión regular adicional para extraer la categoría de spam (opcional).
-        ]]>
-    </string>
-    <string name="action_intercept_call">Interceptar llamada</string>
-    <string name="help_action_intercept_call">
-        <![CDATA[
-        El número de llamada entrante se interceptará y analizará en diferentes etiquetas:<br>
-        <br>
-        %s
-        <br>
-        Estas etiquetas se usarán para crear la URL HTTP, por ejemplo:<br>
-        <br>
-        1. Para números internacionales como <b>+122222</b>, estas dos son equivalentes:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Se analizará como:<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Para números nacionales como <b>12345</b>, debe proporcionar el código de país en la configuración o dejar que la aplicación lo detecte automáticamente.<br>
-        ]]>
-    </string>
-    <string name="query_api">API de consulta</string>
-    <string name="number_filter">Filtro de Número</string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Algunos servicios de API solo admiten números internacionales, mientras que otros solo admiten números nacionales.<br>
-        <br>
-        Esta expresión regular filtra los números en consecuencia, los números entrantes que no coinciden con esta expresión regular se omitirán.<br>
-        <br>
-        - Solo comprobar <b>números internacionales</b>:<br>
-        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-        <br>
-        - Solo comprobar <b>números nacionales</b>:<br>
-        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-        <br>
-        - Comprobar <b>cualquier número</b>:<br>
-        &ensp; <font color="#03DAC5"><b>.*</b></font>
-        ]]>
-    </string>
-    <string name="checking_template">Comprobando: %s, prioridad: %s</string>
-    <string name="skip_for_testing">Omitir para pruebas.</string>
-    <string name="allowed_by">Permitido por: %s</string>
-    <string name="blocked_by">Bloqueado por: %s</string>
-    <string name="outside_time_schedule">Fuera del horario, omitir.</string>
-    <string name="android_ver_lower_than_11">La versión de Android es inferior a la 11, omitir.</string>
-    <string name="query">Consulta</string>
-    <string name="report_api">API de reporte</string>
-    <string name="action_intercept_sms">Interceptar SMS</string>
-    <string name="help_action_intercept_sms">
-        <![CDATA[
-        El SMS entrante será interceptado y el contenido se analizará en la etiqueta <b>{sms}</b>, que puede ser utilizada por las siguientes acciones.
-        ]]>
-    </string>
+<string name="help_instant_query">
+<![CDATA[
+Consulta el número entrante en línea en tiempo real; se consultarán varios puntos finales de API simultáneamente.<br>
+<br>
+Solo se aplica a llamadas, no a mensajes SMS.<br>
+<br>
+Solo se activará cuando la llamada pase todas las demás reglas.<br>
+<br>
+<font color="#ea86ff"><b>Prioridad: -1</b></font>
+]]>
+</string>
+<string name="instant_query">Consulta instantánea</string>
+<string name="negative_identifier">Identificador negativo</string>
+<string name="hint_negative_identifier">
+E.g.: ("valid":false)
+</string>
+<string name="help_negative_identifier">
+Se identificará como número de spam si se encuentra este patrón regex en el resultado.
+</string>
+<string name="positive_identifier">Identificador positivo</string>
+<string name="hint_positive_identifier">
+E.g.: ("valid":true)
+</string>
+<string name="help_positive_identifier">
+<![CDATA[
+Se identificará como número no spam si se encuentra este patrón regex en el resultado, es opcional.<br>
+<br>
+Por lo general, esto es <b>innecesario</b>, algunos proveedores de API identificarán los números desconocidos como no spam,<br>
+solo use esto cuando la API sea realmente precisa.
+]]>
+</string>
+<string name="category_identifier">Identificador de categoría</string>
+<string name="hint_category_identifier">
+E.g.: "type":"(.+?)"
+</string>
+<string name="help_category_identifier">
+<![CDATA[
+Opcional.<br>
+Una vez que se identifica un número, esta expresión regular se usará para extraer su categoría (telemercadeo, phishing, etc.).
+]]>
+</string>
+<string name="action_parse_query_result">Analizar resultado</string>
+<string name="help_action_parse_query_result">
+<![CDATA[
+Analiza el resultado de la consulta; el número se identificará como spam si el resultado contiene un patrón regex particular.<br>
+<br>
+Se puede usar una expresión regular adicional para extraer la categoría de spam (opcional).
+]]>
+</string>
+<string name="action_intercept_call">Interceptar llamada</string>
+<string name="help_action_intercept_call">
+<![CDATA[
+El número de llamada entrante se interceptará y analizará en diferentes etiquetas:<br>
+<br>
+%s
+<br>
+Estas etiquetas se usarán para crear la URL HTTP, por ejemplo:<br>
+<br>
+1. Para números internacionales como <b>+122222</b>, estas dos son equivalentes:<br>
+- https://test.com/number=<b>{number}</b><br>
+- https://test.com/number=<b>{cc}{domestic}</b><br>
+Se analizará como:<br>
+https://test.com/number=<b>122222</b><br>
+<br>
+2. Para números nacionales como <b>12345</b>, debe proporcionar el código de país en la configuración o dejar que la aplicación lo detecte automáticamente.<br>
+]]>
+</string>
+<string name="query_api">API de consulta</string>
+<string name="number_filter">Filtro de Número</string>
+<string name="help_number_filter">
+<![CDATA[
+Algunos servicios de API solo admiten números internacionales, mientras que otros solo admiten números nacionales.<br>
+<br>
+Esta expresión regular filtra los números en consecuencia, los números entrantes que no coinciden con esta expresión regular se omitirán.<br>
+<br>
+- Solo comprobar <b>números internacionales</b>:<br>
+&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+<br>
+- Solo comprobar <b>números nacionales</b>:<br>
+&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+<br>
+- Comprobar <b>cualquier número</b>:<br>
+&ensp; <font color="#03DAC5"><b>.*</b></font>
+]]>
+</string>
+<string name="checking_template">Comprobando: %s, prioridad: %s</string>
+<string name="skip_for_testing">Omitir para pruebas.</string>
+<string name="allowed_by">Permitido por: %s</string>
+<string name="blocked_by">Bloqueado por: %s</string>
+<string name="outside_time_schedule">Fuera del horario, omitir.</string>
+<string name="android_ver_lower_than_11">La versión de Android es inferior a la 11, omitir.</string>
+<string name="query">Consulta</string>
+<string name="report_api">API de reporte</string>
+<string name="action_intercept_sms">Interceptar SMS</string>
+<string name="help_action_intercept_sms">
+<![CDATA[
+El SMS entrante será interceptado y el contenido se analizará en la etiqueta <b>{sms}</b>, que puede ser utilizada por las siguientes acciones.
+]]>
+</string>
 </resources>

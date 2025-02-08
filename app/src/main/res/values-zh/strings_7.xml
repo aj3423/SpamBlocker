@@ -1,45 +1,45 @@
 <resources>
-    <string name="start_time">开始时间</string>
-    <string name="end_time">结束时间</string>
-    <string name="switch_mode">切换模式</string>
-    <string name="contact_group">联系人组</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>电话号码</b></font>:<br>
-        &ensp; 默认模式，正则表达式将匹配电话号码。<br>
-        <br>
-        <font color="#00BFFF"><b>联系人</b></font>:<br>
-        &ensp; 正则表达式将匹配与来电号码关联的联系人姓名。<br>
-        &ensp;  - 用例:<br>
-        &emsp; 使用正则表达式 `.*` 在周末屏蔽所有非联系人。<br>
-        <br>
-        <font color="#00BFFF"><b>联系人组</b></font>:<br>
-        &ensp; 正则表达式将匹配与来电号码关联的联系人组名称，
-                 影响该组中的所有联系人，因此您无需单独添加它们，
-                 即使有人员变动也无需更新。<br>
-        &ensp;  - 用例:<br>
-        &emsp; 通过屏蔽“工作”联系人组来屏蔽所有周末的同事。
-        ]]>
-    </string>
-    <string name="text_too_long">文本过长，编辑功能已禁用</string>
-    <string name="follow_system">跟随系统</string>
-    <string name="theme">主题</string>
-    <string-array name="theme_list">
-        <item>浅色</item>
-        <item>深色</item>
-    </string-array>
-    <string-array name="rule_dropdown_menu">
-        <item>搜索规则</item>
-        <item>复制规则</item>
-        <item>删除规则</item>
-        <item>删除重复规则</item>
-        <item>删除所有(%d)规则</item>
-    </string-array>
-    <string name="confirm_delete_duplicated_rule">确认删除%d条重复规则吗？</string>
-    <string name="duration">持续时间</string>
-    <string name="help_recent_apps_individual_duration">
-        <![CDATA[
-        每个应用的单独持续时间，留空时，将回退到全局持续时间。
-        ]]>
-    </string>
+<string name="start_time">开始时间</string>
+<string name="end_time">结束时间</string>
+<string name="switch_mode">切换模式</string>
+<string name="contact_group">联系人组</string>
+<string name="help_number_mode">
+<![CDATA[
+<font color="#00BFFF"><b>电话号码</b></font>:<br>
+&ensp; 默认模式，正则表达式将匹配电话号码。<br>
+<br>
+<font color="#00BFFF"><b>联系人</b></font>:<br>
+&ensp; 正则表达式将匹配与来电号码关联的联系人姓名。<br>
+&ensp;  - 用例:<br>
+&emsp; 使用正则表达式 `.*` 在周末屏蔽所有非联系人。<br>
+<br>
+<font color="#00BFFF"><b>联系人组</b></font>:<br>
+&ensp; 正则表达式将匹配与来电号码关联的联系人组名称，
+影响该组中的所有联系人，因此您无需单独添加它们，
+即使有人员变动也无需更新。<br>
+&ensp;  - 用例:<br>
+&emsp; 通过屏蔽“工作”联系人组来屏蔽所有周末的同事。
+]]>
+</string>
+<string name="text_too_long">文本过长，编辑功能已禁用</string>
+<string name="follow_system">跟随系统</string>
+<string name="theme">主题</string>
+<string-array name="theme_list">
+<item>浅色</item>
+<item>深色</item>
+</string-array>
+<string-array name="rule_dropdown_menu">
+<item>搜索规则</item>
+<item>复制规则</item>
+<item>删除规则</item>
+<item>删除重复规则</item>
+<item>删除所有(%d)规则</item>
+</string-array>
+<string name="confirm_delete_duplicated_rule">确认删除%d条重复规则吗？</string>
+<string name="duration">持续时间</string>
+<string name="help_recent_apps_individual_duration">
+<![CDATA[
+每个应用的单独持续时间，留空时，将回退到全局持续时间。
+]]>
+</string>
 </resources>

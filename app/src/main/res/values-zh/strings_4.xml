@@ -1,56 +1,49 @@
 <resources>
-    <string name="help_off_time">
-        <![CDATA[
-        启用后，在此时间段内所有来电（短信）都将被允许。通常晚上没有垃圾电话。 <br>
-        <br>
-        如果开始时间大于结束时间，例如，20:00 -> 07:00，表示从晚上 20:00 到第二天早上 07:00 的时间段。 <br>
-        <br>
-        <font color="#ea86ff"><b>优先级：10</b></font>
-        ]]>
-    </string>
-
-    <string name="help_regex_flags">
-        <![CDATA[
-            这些标志会更改正则表达式的匹配行为，它们默认情况下会为新规则设置。<br>
-            <br>
-
-            <font color="#00BFFF"><b>原始号码</b></font>：<br>
-            &ensp; 启用后，号码将不会被优化，<font color="#03DAC5"><b>+</b></font>
-            和 <font color="#03DAC5"><b>前导 0</b></font> 将保留，这对于区分国内号码很有用。<br>
-            <br>
-
-            <font color="#00BFFF"><b>忽略国家代码</b></font>：<br>
-            &ensp; 启用后，前导的 <font color="#fa7f71">+</font> 和 <font color="#fa7f71">国家代码</font>
-             将从国际号码中删除。<br>
-            <br>
-            例如，<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> 和
-            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> 都将变为 <font color="#03DAC5">12345</font>，
-            这允许您使用更简单的正则表达式 `123.*` 来代替 `(33|44)*123.*` 来匹配国际号码。<br>
-            <br>
-
-            <font color="#00BFFF"><b>忽略大小写</b></font>：<br>
-            &ensp; 它使模式匹配不区分大小写，<font color="#03DAC5"><b>a</b></font>
-              将同时匹配 <font color="#03DAC5"><b>a</b></font> 和 <font color="#03DAC5"><b>A</b></font>。<br>
-            <br>
-
-            <font color="#00BFFF"><b>点号匹配所有字符</b></font>：<br>
-            &ensp; 启用后，<font color="#03DAC5"><b>.</b></font> 也将匹配换行符 (<font color="#03DAC5"><b>\\n</b></font>)，
-              这允许点号匹配多行。<br>
-            &ensp; 使用案例：<br>
-            &emsp;   匹配多行短信：<br>
-            &emsp;   <font color="#fa7f71">领取您的奖品：http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   使用规则：<br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
-        ]]>
-    </string>
-
-    <string-array name="regex_flags_list">
-        <item>原始号码</item>
-        <item>忽略国家代码</item>
-        <item>忽略大小写</item>
-        <item>点匹配所有</item>
-    </string-array>
-    <string name="disable_number_optimization">可以通过正则表达式标志“原始号码”来禁用此优化。</string>
+<string name="help_off_time">
+<![CDATA[
+启用后，在此时间段内所有来电（短信）都将被允许。通常晚上没有垃圾电话。 <br>
+<br>
+如果开始时间大于结束时间，例如，20:00 -> 07:00，表示从晚上 20:00 到第二天早上 07:00 的时间段。 <br>
+<br>
+<font color="#ea86ff"><b>优先级：10</b></font>
+]]>
+</string>
+<string name="help_regex_flags">
+<![CDATA[
+这些标志会更改正则表达式的匹配行为，它们默认情况下会为新规则设置。<br>
+<br>
+<font color="#00BFFF"><b>原始号码</b></font>：<br>
+&ensp; 启用后，号码将不会被优化，<font color="#03DAC5"><b>+</b></font>
+和 <font color="#03DAC5"><b>前导 0</b></font> 将保留，这对于区分国内号码很有用。<br>
+<br>
+<font color="#00BFFF"><b>忽略国家代码</b></font>：<br>
+&ensp; 启用后，前导的 <font color="#fa7f71">+</font> 和 <font color="#fa7f71">国家代码</font>
+将从国际号码中删除。<br>
+<br>
+例如，<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> 和
+<font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> 都将变为 <font color="#03DAC5">12345</font>，
+这允许您使用更简单的正则表达式 `123.*` 来代替 `(33|44)*123.*` 来匹配国际号码。<br>
+<br>
+<font color="#00BFFF"><b>忽略大小写</b></font>：<br>
+&ensp; 它使模式匹配不区分大小写，<font color="#03DAC5"><b>a</b></font>
+将同时匹配 <font color="#03DAC5"><b>a</b></font> 和 <font color="#03DAC5"><b>A</b></font>。<br>
+<br>
+<font color="#00BFFF"><b>点号匹配所有字符</b></font>：<br>
+&ensp; 启用后，<font color="#03DAC5"><b>.</b></font> 也将匹配换行符 (<font color="#03DAC5"><b>\\n</b></font>)，
+这允许点号匹配多行。<br>
+&ensp; 使用案例：<br>
+&emsp;   匹配多行短信：<br>
+&emsp;   <font color="#fa7f71">领取您的奖品：http://<br>
+&emsp;   abc.com </font><br>
+&emsp;   使用规则：<br>
+&emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+]]>
+</string>
+<string-array name="regex_flags_list">
+<item>原始号码</item>
+<item>忽略国家代码</item>
+<item>忽略大小写</item>
+<item>点匹配所有</item>
+</string-array>
+<string name="disable_number_optimization">可以通过正则表达式标志“原始号码”来禁用此优化。</string>
 </resources>

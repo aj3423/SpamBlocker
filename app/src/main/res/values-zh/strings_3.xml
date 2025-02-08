@@ -1,66 +1,65 @@
 <resources>
-    <string name="help_sms_content_filter">
-        <![CDATA[
-        这些规则适用于短信内容。<br>
-        <br>
-        <font color="#00BFFF"><b> - 一些典型模式</b></font>:<br>
-        &ensp; - 包含 "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
-        &ensp; - 包含以下任何单词： <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
-        ]]>
-    </string>
-    <string name="help_quick_copy">
-        <![CDATA[
-        快速从短信或<translate>电话号码</translate>中复制内容，方便获取验证码或来电号码。<br>
-        <br>
-        匹配后，通知栏中会显示类似 <font color="#00BFFF"><b>Copy: 123456</b></font> 的按钮。<br>
-        <br>
-        提取验证码的示例规则：<br>
-        &emsp; 使用捕获组：<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp; 另一种使用环视的方法：<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
-        ]]>
-    </string>
-    <string name="help_apply_to_call_sms">
-        <![CDATA[
-        为呼叫、短信或两者启用此规则。<br>
-        取消选中这些复选框以禁用规则，而无需删除它。
-        ]]>
-    </string>
-    <string name="help_apply_to_number_and_message">
-        <![CDATA[
-        选中 <font color="#00BFFF"><b>号码</b></font> 时，此规则将从来电号码中提取内容。<br>
-        例如，使用 <b>(.*)</b> 复制电话号码。<br>
-        <br>
-        选中 <font color="#00BFFF"><b>内容</b></font> 时，此规则将从短信内容中提取内容，<br>
-        例如验证码。
-        ]]>
-    </string>
-    <string name="help_apply_to_passed_and_blocked">
-        <![CDATA[
-        选中 <font color="#03DAC5"><b>已通过</b></font> 时，此规则将适用于通过的呼叫和短信。<br>
-        <br>
-        选中 <font color="#fa7f71"><b>已阻止</b></font> 时，此规则将适用于被阻止的呼叫和短信。
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>无</b>:<br>&emsp; 无任何通知。 <br>
-        <b>阴影</b>:<br>&emsp; 下拉通知栏。 <br>
-        <b>状态栏</b>:<br>&emsp; 顶部栏的小图标。 <br>
-        <b>声音</b>:<br>&emsp; 默认通知声音。 <br>
-        <b>浮动通知</b>:<br>&emsp; 在屏幕顶部弹出浮动窗口。
-        ]]>
-    </string>
-    <string name="title_rule_testing">规则测试</string>
-    <string name="help_test_rules">
-        <![CDATA[
-        这有助于检查规则是否按预期设置。<br>
-        <br>
-        这只是一个模拟，不会实际弹出来电（或短信）。<br>
-        <br>
-        结果将显示在此处，以及历史记录日志中，并带有通知。
-        ]]>
-    </string>
-
+<string name="help_sms_content_filter">
+<![CDATA[
+这些规则适用于短信内容。<br>
+<br>
+<font color="#00BFFF"><b> - 一些典型模式</b></font>:<br>
+&ensp; - 包含 "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+&ensp; - 包含以下任何单词： <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
+]]>
+</string>
+<string name="help_quick_copy">
+<![CDATA[
+快速从短信或<translate>电话号码</translate>中复制内容，方便获取验证码或来电号码。<br>
+<br>
+匹配后，通知栏中会显示类似 <font color="#00BFFF"><b>Copy: 123456</b></font> 的按钮。<br>
+<br>
+提取验证码的示例规则：<br>
+&emsp; 使用捕获组：<br>
+&emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+&emsp; 另一种使用环视的方法：<br>
+&emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+]]>
+</string>
+<string name="help_apply_to_call_sms">
+<![CDATA[
+为呼叫、短信或两者启用此规则。<br>
+取消选中这些复选框以禁用规则，而无需删除它。
+]]>
+</string>
+<string name="help_apply_to_number_and_message">
+<![CDATA[
+选中 <font color="#00BFFF"><b>号码</b></font> 时，此规则将从来电号码中提取内容。<br>
+例如，使用 <b>(.*)</b> 复制电话号码。<br>
+<br>
+选中 <font color="#00BFFF"><b>内容</b></font> 时，此规则将从短信内容中提取内容，<br>
+例如验证码。
+]]>
+</string>
+<string name="help_apply_to_passed_and_blocked">
+<![CDATA[
+选中 <font color="#03DAC5"><b>已通过</b></font> 时，此规则将适用于通过的呼叫和短信。<br>
+<br>
+选中 <font color="#fa7f71"><b>已阻止</b></font> 时，此规则将适用于被阻止的呼叫和短信。
+]]>
+</string>
+<string name="help_importance">
+<![CDATA[
+<b>无</b>:<br>&emsp; 无任何通知。 <br>
+<b>阴影</b>:<br>&emsp; 下拉通知栏。 <br>
+<b>状态栏</b>:<br>&emsp; 顶部栏的小图标。 <br>
+<b>声音</b>:<br>&emsp; 默认通知声音。 <br>
+<b>浮动通知</b>:<br>&emsp; 在屏幕顶部弹出浮动窗口。
+]]>
+</string>
+<string name="title_rule_testing">规则测试</string>
+<string name="help_test_rules">
+<![CDATA[
+这有助于检查规则是否按预期设置。<br>
+<br>
+这只是一个模拟，不会实际弹出来电（或短信）。<br>
+<br>
+结果将显示在此处，以及历史记录日志中，并带有通知。
+]]>
+</string>
 </resources>

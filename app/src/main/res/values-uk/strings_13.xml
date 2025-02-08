@@ -1,109 +1,109 @@
 <resources>
-    <string name="cleaning_up_history_db">
-        Очищення історії бази даних, видалення записів до позначки часу: %s.
-    </string>
-    <string name="cleaning_up_spam_db">
-        Очищення спам-бази даних, видалення %s записів до позначки часу: %s.
-    </string>
-    <string name="resolved_url">Розв\'язаний URL: %s.</string>
-    <string name="time_cost">Час виконання: %s мілісекунд.</string>
-    <string name="parsed_n_rules">Розпарсено %s правил.</string>
-    <string name="add_n_numbers_to_spam_db">Додавання %s номерів до спам-бази даних.</string>
-    <string name="nothing_to_import">Список номерів порожній, немає чого імпортувати.</string>
-    <string name="importing_n_numbers">Імпорт %s номерів як правила регулярних виразів.</string>
-    <string name="create_rule_with_numbers">Створення правила з %s номерами.</string>
-    <string name="replace_rule_with_desc">Заміна правила з описом: %s.</string>
-    <string name="rule_with_desc_not_found">Правило з описом %s не знайдено.</string>
-    <string name="merging_rule_with_desc">Злиття правила з описом: %s.</string>
-    <string name="regex_count_after_merge">Кількість регулярних виразів до: %s, після: %s.</string>
-    <string name="replace_number_from_to">Заміна номера з %s на %s.</string>
-    <string name="find_rule_with_desc">Знайдено %s правил з описом %s.</string>
-    <string name="modify_n_rules">Модифікація %s правил.</string>
-    <string name="fail_detect_cc">Не вдалося визначити код країни.</string>
-    <string name="identified_as_spam">Визначено як спам-номер, категорія: %s.</string>
-    <string name="identified_as_valid">Визначено як валідний номер, категорія: %s.</string>
-    <string name="unidentified_number">Невизначений номер.</string>
-    <string name="help_http_url">
-        <![CDATA[
-        Підтримувані теги:<br>
-        <br>
-        %s
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="number_not_match_filter">Номер %s не відповідає фільтру %s, пропускаємо.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-    <string name="help_api_preset_phoneblock">
-        <![CDATA[
-        В основному розроблено для німецького FRITZ!Box, також працює для номерів телефонів з інших країн.<br>
-        <br>
-        Підтримує запити за хешем замість самого номера, забезпечуючи кращу конфіденційність.<br>
-        <br>
-        Вебсайт: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
-        <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-        ]]>
-    </string>
-    <string name="not_enough_time_left">Ліміт часу перевірки дзвінка становить 5 секунд, з буфером %s мс для неточності функцій часу, загальний ліміт часу насправді становить %s мс. Попередні кроки зайняли %s мс, недостатньо часу, пропускаємо.</string>
-    <string name="action_filter_query_result">Фільтрувати спам</string>
-    <string name="help_action_filter_query_result">
-        <![CDATA[
-        Сгенерувати <u>список номерів</u>, що містять спам-номери, ідентифіковані на попередньому кроці, та готові до імпорту до бази даних.
-        ]]>
-    </string>
-    <string name="another_thread_is_cancelled">Інший потік скасовано.</string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Зареєструйте обліковий запис на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. На сторінці налаштувань: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         натисніть кнопку "Згенерувати API ключ".<br>
-        <br>
-        3. Введіть згенерований API ключ нижче.
-        ]]>
-    </string>
-    <string name="username">ім\'я користувача</string>
-    <string name="password">пароль</string>
-    <string name="auto_detect_cc_permission">Для визначення коду країни потрібен дозвіл READ_PHONE_STATE.</string>
-    <string name="suggest_to_swipe">
-        <![CDATA[
-        <font color="#03DAC5"><b>Проведіть пальцем ліворуч</b></font> щоб видалити його.<br>
-        <br>
-        Більшість елементів інтерфейсу у вигляді карток у цьому додатку пов\'язані з жестами проведення пальцем,
-        деякі з яких також підтримують <font color="#03DAC5"><b>проведення пальцем праворуч</b></font>, наприклад, записи історії.
-        ]]>
-    </string>
-    <string name="bug_number">Якщо це дійсний номер, будь ласка, повідомте про це на github.</string>
-    <string name="number_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
-        &ensp; Код країни.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
-        &ensp; Внутрішній номер.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Повний номер, включаючи код країни та внутрішній номер, без провідних + або 0.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; Оригінальний номер, який може містити провідні + або 0.<br>
-        ]]>
-    </string>
-    <string name="time_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; Рік, наприклад: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Однозначні числа будуть доповнені провідним нулем, наприклад:<br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Ці значення будуть доповнені без провідного нуля, наприклад:<br>
-        &emsp; {month}_{day} -> 1_2<br>
-        ]]>
-    </string>
-    <string name="skip_alpha_empty_number">Пропускаємо альфа- або пустий номер.</string>
-    <string name="sms_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{sms}</b></font><br>
-        &ensp; Текст SMS.<br>
-        ]]>
-    </string>
+<string name="cleaning_up_history_db">
+Очищення історії бази даних, видалення записів до позначки часу: %s.
+</string>
+<string name="cleaning_up_spam_db">
+Очищення спам-бази даних, видалення %s записів до позначки часу: %s.
+</string>
+<string name="resolved_url">Розв\'язаний URL: %s.</string>
+<string name="time_cost">Час виконання: %s мілісекунд.</string>
+<string name="parsed_n_rules">Розпарсено %s правил.</string>
+<string name="add_n_numbers_to_spam_db">Додавання %s номерів до спам-бази даних.</string>
+<string name="nothing_to_import">Список номерів порожній, немає чого імпортувати.</string>
+<string name="importing_n_numbers">Імпорт %s номерів як правила регулярних виразів.</string>
+<string name="create_rule_with_numbers">Створення правила з %s номерами.</string>
+<string name="replace_rule_with_desc">Заміна правила з описом: %s.</string>
+<string name="rule_with_desc_not_found">Правило з описом %s не знайдено.</string>
+<string name="merging_rule_with_desc">Злиття правила з описом: %s.</string>
+<string name="regex_count_after_merge">Кількість регулярних виразів до: %s, після: %s.</string>
+<string name="replace_number_from_to">Заміна номера з %s на %s.</string>
+<string name="find_rule_with_desc">Знайдено %s правил з описом %s.</string>
+<string name="modify_n_rules">Модифікація %s правил.</string>
+<string name="fail_detect_cc">Не вдалося визначити код країни.</string>
+<string name="identified_as_spam">Визначено як спам-номер, категорія: %s.</string>
+<string name="identified_as_valid">Визначено як валідний номер, категорія: %s.</string>
+<string name="unidentified_number">Невизначений номер.</string>
+<string name="help_http_url">
+<![CDATA[
+Підтримувані теги:<br>
+<br>
+%s
+<br>
+%s
+]]>
+</string>
+<string name="number_not_match_filter">Номер %s не відповідає фільтру %s, пропускаємо.</string>
+<string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+<string name="help_api_preset_phoneblock">
+<![CDATA[
+В основному розроблено для німецького FRITZ!Box, також працює для номерів телефонів з інших країн.<br>
+<br>
+Підтримує запити за хешем замість самого номера, забезпечуючи кращу конфіденційність.<br>
+<br>
+Вебсайт: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+<br>
+API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+]]>
+</string>
+<string name="not_enough_time_left">Ліміт часу перевірки дзвінка становить 5 секунд, з буфером %s мс для неточності функцій часу, загальний ліміт часу насправді становить %s мс. Попередні кроки зайняли %s мс, недостатньо часу, пропускаємо.</string>
+<string name="action_filter_query_result">Фільтрувати спам</string>
+<string name="help_action_filter_query_result">
+<![CDATA[
+Сгенерувати <u>список номерів</u>, що містять спам-номери, ідентифіковані на попередньому кроці, та готові до імпорту до бази даних.
+]]>
+</string>
+<string name="another_thread_is_cancelled">Інший потік скасовано.</string>
+<string name="help_api_preset_phoneblock_authorization">
+<![CDATA[
+1. Зареєструйте обліковий запис на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+<br>
+2. На сторінці налаштувань: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+натисніть кнопку "Згенерувати API ключ".<br>
+<br>
+3. Введіть згенерований API ключ нижче.
+]]>
+</string>
+<string name="username">ім\'я користувача</string>
+<string name="password">пароль</string>
+<string name="auto_detect_cc_permission">Для визначення коду країни потрібен дозвіл READ_PHONE_STATE.</string>
+<string name="suggest_to_swipe">
+<![CDATA[
+<font color="#03DAC5"><b>Проведіть пальцем ліворуч</b></font> щоб видалити його.<br>
+<br>
+Більшість елементів інтерфейсу у вигляді карток у цьому додатку пов\'язані з жестами проведення пальцем,
+деякі з яких також підтримують <font color="#03DAC5"><b>проведення пальцем праворуч</b></font>, наприклад, записи історії.
+]]>
+</string>
+<string name="bug_number">Якщо це дійсний номер, будь ласка, повідомте про це на github.</string>
+<string name="number_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{cc}</b></font><br>
+&ensp; Код країни.<br>
+- <font color="#00BFFF"><b>{domestic}</b></font><br>
+&ensp; Внутрішній номер.<br>
+- <font color="#00BFFF"><b>{number}</b></font><br>
+&ensp; Повний номер, включаючи код країни та внутрішній номер, без провідних + або 0.<br>
+- <font color="#00BFFF"><b>{origin_number}</b></font><br>
+&ensp; Оригінальний номер, який може містити провідні + або 0.<br>
+]]>
+</string>
+<string name="time_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{year}</b></font><br>
+&ensp; Рік, наприклад: 2024<br>
+- <font color="#00BFFF"><b>{month} {day}</b></font><br>
+&ensp; Однозначні числа будуть доповнені провідним нулем, наприклад:<br>
+&emsp; {month}_{day} -> 01_02<br>
+- <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+&ensp; Ці значення будуть доповнені без провідного нуля, наприклад:<br>
+&emsp; {month}_{day} -> 1_2<br>
+]]>
+</string>
+<string name="skip_alpha_empty_number">Пропускаємо альфа- або пустий номер.</string>
+<string name="sms_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{sms}</b></font><br>
+&ensp; Текст SMS.<br>
+]]>
+</string>
 </resources>

@@ -1,30 +1,30 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
-        <![CDATA[
-        Verifique el contenido del SMS usando Google Gemini AI, solo requiere una cuenta de Google.
-        ]]>
-    </string>
-    <string name="gemini_api_key">Clave de API de Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
-        <![CDATA[
-        1. Regístrese e inicie sesión en su cuenta de Google: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
-         <br>
-        2. Abra la página de la API:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
-        <br>
-        3. Presione el botón "Crear clave de API", desplácese hacia abajo para ver la clave generada.<br>
-        <br>
-        4. Presione los "tres puntos" para copiar la clave y luego complétela a continuación.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Clasifica este mensaje SMS como Político, Fraude, Encuesta o Marketing.
-        Si no aplica ninguno, responde "Válido", de lo contrario, responde solo la categoría, no respondas nada más.
-        El mensaje SMS es:
-        {sms}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Político|Fraude|Encuesta|Marketing)</translate></string>
-    <string name="spam_sms_positive_category">Válido</string>
+<string name="api_preset_gemini">Gemini</string>
+<string name="help_api_preset_gemini">
+<![CDATA[
+Verifique el contenido del SMS usando Google Gemini AI, solo requiere una cuenta de Google.
+]]>
+</string>
+<string name="gemini_api_key">Clave de API de Gemini</string>
+<string name="help_api_preset_gemini_authorization">
+<![CDATA[
+1. Regístrese e inicie sesión en su cuenta de Google: <br>
+<a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+<br>
+2. Abra la página de la API:<br>
+<a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+<br>
+3. Presione el botón "Crear clave de API", desplácese hacia abajo para ver la clave generada.<br>
+<br>
+4. Presione los "tres puntos" para copiar la clave y luego complétela a continuación.
+]]>
+</string>
+<string name="spam_sms_prompt_template">
+Clasifica este mensaje SMS como Político, Fraude, Encuesta o Marketing.
+Si no aplica ninguno, responde "Válido", de lo contrario, responde solo la categoría, no respondas nada más.
+El mensaje SMS es:
+{sms}
+</string>
+<string name="spam_sms_negative_category"><translate>(Político|Fraude|Encuesta|Marketing)</translate></string>
+<string name="spam_sms_positive_category">Válido</string>
 </resources>

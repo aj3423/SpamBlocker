@@ -1,56 +1,49 @@
 <resources>
-    <string name="help_off_time">
-        <![CDATA[
-        در صورت فعال بودن، تمام تماس‌ها (پیام‌ها) در این بازه زمانی مجاز خواهند بود. معمولا در شب تماس‌های مزاحم وجود ندارد. <br>
-        <br>
-        اگر زمان شروع بزرگتر از زمان پایان باشد، مثلا 20:00 -> 07:00، به معنی بازه زمانی از ساعت 20:00 شب تا 7:00 صبح روز بعد است. <br>
-        <br>
-        <font color="#ea86ff"><b>اولویت: 10</b></font>
-        ]]>
-    </string>
-
-    <string name="help_regex_flags">
-        <![CDATA[
-            این پرچم‌ها رفتار تطبیق عبارت باقاعده را تغییر می‌دهند، به طور پیش‌فرض برای قوانین جدید تنظیم می‌شوند. <br>
-            <br>
-
-            <font color="#00BFFF"><b>شماره خام</b></font>: <br>
-            &ensp; در صورت فعال بودن، شماره بهینه سازی نخواهد شد، <font color="#03DAC5"><b>+</b></font>
-            و <font color="#03DAC5"><b>صفرهای ابتدایی</b></font> باقی خواهند ماند، برای تمایز شماره‌های داخلی مفید است.<br>
-            <br>
-
-            <font color="#00BFFF"><b>حذف کد کشور</b></font>: <br>
-            &ensp; در صورت فعال بودن، <font color="#fa7f71">+</font> ابتدایی و <font color="#fa7f71">کد کشور</font>
-             از شماره بین المللی حذف خواهد شد.<br>
-            <br>
-            به عنوان مثال، هر دو <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> و
-            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> به <font color="#03DAC5">12345</font> تبدیل خواهند شد،
-            این به شما امکان می‌دهد از عبارت باقاعده ساده‌تر `123.*` به جای `(33|44)*123.*` برای تطبیق شماره‌های بین المللی استفاده کنید.<br>
-            <br>
-
-            <font color="#00BFFF"><b>نادیده گرفتن حروف بزرگ و کوچک</b></font>:<br>
-            &ensp; تطبیق الگو را نسبت به حروف بزرگ و کوچک بی‌تفاوت می‌کند، <font color="#03DAC5"><b>a</b></font>
-              هم <font color="#03DAC5"><b>a</b></font> و هم <font color="#03DAC5"><b>A</b></font> را تطبیق می‌دهد. <br>
-            <br>
-
-            <font color="#00BFFF"><b>نقطه تطبیق همه</b></font>: <br>
-            &ensp; در صورت فعال بودن، <font color="#03DAC5"><b>.</b></font>  کاراکترهای خط جدید (<font color="#03DAC5"><b>\\n</b></font>) را نیز تطبیق می‌دهد،
-              این به نقطه اجازه می‌دهد تا در چندین خط تطبیق یابد. <br>
-            &ensp; مورد استفاده: <br>
-            &emsp;   تطبیق پیام چند خطی SMS: <br>
-            &emsp;   <font color="#fa7f71">جایزه خود را درخواست کنید: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   با قانون: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
-        ]]>
-    </string>
-
-    <string-array name="regex_flags_list">
-        <item>شماره خام</item>
-        <item>حذف کد کشور</item>
-        <item>نادیده گرفتن حروف بزرگ و کوچک</item>
-        <item>نقطه تطبیق همه</item>
-    </string-array>
-    <string name="disable_number_optimization">این بهینه‌سازی می‌تواند توسط پرچم عبارت باقاعده "شماره خام" غیرفعال شود.</string>
+<string name="help_off_time">
+<![CDATA[
+در صورت فعال بودن، تمام تماس‌ها (پیام‌ها) در این بازه زمانی مجاز خواهند بود. معمولا در شب تماس‌های مزاحم وجود ندارد. <br>
+<br>
+اگر زمان شروع بزرگتر از زمان پایان باشد، مثلا 20:00 -> 07:00، به معنی بازه زمانی از ساعت 20:00 شب تا 7:00 صبح روز بعد است. <br>
+<br>
+<font color="#ea86ff"><b>اولویت: 10</b></font>
+]]>
+</string>
+<string name="help_regex_flags">
+<![CDATA[
+این پرچم‌ها رفتار تطبیق عبارت باقاعده را تغییر می‌دهند، به طور پیش‌فرض برای قوانین جدید تنظیم می‌شوند. <br>
+<br>
+<font color="#00BFFF"><b>شماره خام</b></font>: <br>
+&ensp; در صورت فعال بودن، شماره بهینه سازی نخواهد شد، <font color="#03DAC5"><b>+</b></font>
+و <font color="#03DAC5"><b>صفرهای ابتدایی</b></font> باقی خواهند ماند، برای تمایز شماره‌های داخلی مفید است.<br>
+<br>
+<font color="#00BFFF"><b>حذف کد کشور</b></font>: <br>
+&ensp; در صورت فعال بودن، <font color="#fa7f71">+</font> ابتدایی و <font color="#fa7f71">کد کشور</font>
+از شماره بین المللی حذف خواهد شد.<br>
+<br>
+به عنوان مثال، هر دو <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> و
+<font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> به <font color="#03DAC5">12345</font> تبدیل خواهند شد،
+این به شما امکان می‌دهد از عبارت باقاعده ساده‌تر `123.*` به جای `(33|44)*123.*` برای تطبیق شماره‌های بین المللی استفاده کنید.<br>
+<br>
+<font color="#00BFFF"><b>نادیده گرفتن حروف بزرگ و کوچک</b></font>:<br>
+&ensp; تطبیق الگو را نسبت به حروف بزرگ و کوچک بی‌تفاوت می‌کند، <font color="#03DAC5"><b>a</b></font>
+هم <font color="#03DAC5"><b>a</b></font> و هم <font color="#03DAC5"><b>A</b></font> را تطبیق می‌دهد. <br>
+<br>
+<font color="#00BFFF"><b>نقطه تطبیق همه</b></font>: <br>
+&ensp; در صورت فعال بودن، <font color="#03DAC5"><b>.</b></font>  کاراکترهای خط جدید (<font color="#03DAC5"><b>\\n</b></font>) را نیز تطبیق می‌دهد،
+این به نقطه اجازه می‌دهد تا در چندین خط تطبیق یابد. <br>
+&ensp; مورد استفاده: <br>
+&emsp;   تطبیق پیام چند خطی SMS: <br>
+&emsp;   <font color="#fa7f71">جایزه خود را درخواست کنید: http://<br>
+&emsp;   abc.com </font><br>
+&emsp;   با قانون: <br>
+&emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+]]>
+</string>
+<string-array name="regex_flags_list">
+<item>شماره خام</item>
+<item>حذف کد کشور</item>
+<item>نادیده گرفتن حروف بزرگ و کوچک</item>
+<item>نقطه تطبیق همه</item>
+</string-array>
+<string name="disable_number_optimization">این بهینه‌سازی می‌تواند توسط پرچم عبارت باقاعده "شماره خام" غیرفعال شود.</string>
 </resources>

@@ -1,72 +1,70 @@
 <resources>
-    <string name="yesterday">昨日</string>
-    <string name="help_meeting_mode">
-        <![CDATA[
-        オンラインビデオ会議中に着信を拒否します。<br> <br>
-        選択したアプリが<b>フォアグラウンドサービス</b>を実行しているかどうかを確認します。
-        これは、ビデオ会議アプリが接続を維持するために一般的に使用されます。<br>
-        <br>
-        これは、着信とメッセージの両方に適用されます。<br>
-        <br>
-        <font color="#ea86ff"><b>デフォルトの優先順位: 20</b></font>
-        ]]>
-    </string>
-    <string name="in_meeting">会議モード</string>
-    <string name="search">検索</string>
-    <string name="http_header">HTTPヘッダー</string>
-    <string name="help_http_header">
-        <![CDATA[
-        1行につき1つの属性。
-        ]]>
-    </string>
-    <string name="log_sms_content_to_db">SMSをログに記録</string>
-    <string name="initial_row_count">最初の行数</string>
-    <plurals name="rows">
-        <item quantity="one">%d 行</item>
-        <item quantity="two">%d 行</item>
-        <item quantity="few">%d 行</item>
-        <item quantity="many">%d 行</item>
-        <item quantity="other">%d 行</item>
-    </plurals>
-
-    <string name="label_max_none_scroll_items">スクロールバーのしきい値</string>
-    <string name="help_max_none_scroll_items">
-        <![CDATA[
-        スクロールバーが表示される前にリストに表示できるアイテムの最大数。
-        ]]>
-    </string>
-    <string name="label_max_scroll_height">スクロールの高さ</string>
-    <string name="help_max_scroll_height">
-        <![CDATA[
-        スクロールバーが表示されると、この値はリストの高さを画面のパーセンテージで表します。
-        ]]>
-    </string>
-    <string name="label_max_regex_lines">正規表現の最大行数</string>
-    <string name="help_max_regex_lines">
-        <![CDATA[
-        正規表現テキストの最大表示行数。残りのテキストは切り捨てられ、省略記号が追加されます。
-        ]]>
-    </string>
-    <string name="label_max_desc_lines">説明の最大行数</string>
-    <string name="help_max_desc_lines">
-        <![CDATA[
-        説明テキストの最大表示行数。残りのテキストは切り捨てられ、省略記号が追加されます。
-        ]]>
-    </string>
-
-    <string name="for_example">例えば：</string>
-    <string name="tags_supported">
-        <![CDATA[
-        対応タグ：<br><br>
-        ]]>
-    </string>
-    <string name="auth_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-        &ensp; HTTP基本認証が必要なAPI用。例：<br>
-        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-        &ensp;は以下のように解析されます：<br>
-        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-        ]]>
-    </string>
+<string name="yesterday">昨日</string>
+<string name="help_meeting_mode">
+<![CDATA[
+オンラインビデオ会議中に着信を拒否します。<br> <br>
+選択したアプリが<b>フォアグラウンドサービス</b>を実行しているかどうかを確認します。
+これは、ビデオ会議アプリが接続を維持するために一般的に使用されます。<br>
+<br>
+これは、着信とメッセージの両方に適用されます。<br>
+<br>
+<font color="#ea86ff"><b>デフォルトの優先順位: 20</b></font>
+]]>
+</string>
+<string name="in_meeting">会議モード</string>
+<string name="search">検索</string>
+<string name="http_header">HTTPヘッダー</string>
+<string name="help_http_header">
+<![CDATA[
+1行につき1つの属性。
+]]>
+</string>
+<string name="log_sms_content_to_db">SMSをログに記録</string>
+<string name="initial_row_count">最初の行数</string>
+<plurals name="rows">
+<item quantity="one">%d 行</item>
+<item quantity="two">%d 行</item>
+<item quantity="few">%d 行</item>
+<item quantity="many">%d 行</item>
+<item quantity="other">%d 行</item>
+</plurals>
+<string name="label_max_none_scroll_items">スクロールバーのしきい値</string>
+<string name="help_max_none_scroll_items">
+<![CDATA[
+スクロールバーが表示される前にリストに表示できるアイテムの最大数。
+]]>
+</string>
+<string name="label_max_scroll_height">スクロールの高さ</string>
+<string name="help_max_scroll_height">
+<![CDATA[
+スクロールバーが表示されると、この値はリストの高さを画面のパーセンテージで表します。
+]]>
+</string>
+<string name="label_max_regex_lines">正規表現の最大行数</string>
+<string name="help_max_regex_lines">
+<![CDATA[
+正規表現テキストの最大表示行数。残りのテキストは切り捨てられ、省略記号が追加されます。
+]]>
+</string>
+<string name="label_max_desc_lines">説明の最大行数</string>
+<string name="help_max_desc_lines">
+<![CDATA[
+説明テキストの最大表示行数。残りのテキストは切り捨てられ、省略記号が追加されます。
+]]>
+</string>
+<string name="for_example">例えば：</string>
+<string name="tags_supported">
+<![CDATA[
+対応タグ：<br><br>
+]]>
+</string>
+<string name="auth_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+&ensp; HTTP基本認証が必要なAPI用。例：<br>
+&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+&ensp;は以下のように解析されます：<br>
+&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+]]>
+</string>
 </resources>

@@ -1,30 +1,30 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
-        <![CDATA[
-        Перевірка вмісту SMS за допомогою Google Gemini AI, потрібен лише обліковий запис Google.
-        ]]>
-    </string>
-    <string name="gemini_api_key">Ключ API Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
-        <![CDATA[
-        1. Зареєструйтеся та увійдіть у свій обліковий запис Google: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
-         <br>
-        2. Відкрийте сторінку API:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
-        <br>
-        3. Натисніть кнопку "Створити ключ API", прокрутіть вниз, щоб побачити згенерований ключ.<br>
-        <br>
-        4. Натисніть "три точки", щоб скопіювати ключ, а потім введіть його нижче.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Класифікуйте це SMS-повідомлення як Політичне, Шахрайське, Опитування або Маркетингове.
-        Якщо ніщо не підходить, відповідайте "Валідне", інакше відповідайте лише категорією, нічого більше не відповідайте.
-        Текст SMS-повідомлення:
-        {sms}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Політичне|Шахрайське|Опитування|Маркетингове)</translate></string>
-    <string name="spam_sms_positive_category">Валідне</string>
+<string name="api_preset_gemini">Gemini</string>
+<string name="help_api_preset_gemini">
+<![CDATA[
+Перевірка вмісту SMS за допомогою Google Gemini AI, потрібен лише обліковий запис Google.
+]]>
+</string>
+<string name="gemini_api_key">Ключ API Gemini</string>
+<string name="help_api_preset_gemini_authorization">
+<![CDATA[
+1. Зареєструйтеся та увійдіть у свій обліковий запис Google: <br>
+<a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+<br>
+2. Відкрийте сторінку API:<br>
+<a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+<br>
+3. Натисніть кнопку "Створити ключ API", прокрутіть вниз, щоб побачити згенерований ключ.<br>
+<br>
+4. Натисніть "три точки", щоб скопіювати ключ, а потім введіть його нижче.
+]]>
+</string>
+<string name="spam_sms_prompt_template">
+Класифікуйте це SMS-повідомлення як Політичне, Шахрайське, Опитування або Маркетингове.
+Якщо ніщо не підходить, відповідайте "Валідне", інакше відповідайте лише категорією, нічого більше не відповідайте.
+Текст SMS-повідомлення:
+{sms}
+</string>
+<string name="spam_sms_negative_category"><translate>(Політичне|Шахрайське|Опитування|Маркетингове)</translate></string>
+<string name="spam_sms_positive_category">Валідне</string>
 </resources>

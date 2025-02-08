@@ -1,102 +1,102 @@
 <resources>
-    <string name="help_instant_query">
-        <![CDATA[
-        Онлайн-запит вхідного номера в реальному часі, одночасне звернення до кількох API-кінцевих точок.<br>
-        <br>
-        Стосується лише дзвінків, не SMS-повідомлень.<br>
-        <br>
-        Запускається лише тоді, коли дзвінок проходить усі інші правила.<br>
-        <br>
-        <font color="#ea86ff"><b>Пріоритет: -1</b></font>
-        ]]>
-    </string>
-    <string name="instant_query">Миттєвий запит</string>
-    <string name="negative_identifier">Негативний ідентифікатор</string>
-    <string name="hint_negative_identifier">
-        Напр.: ("valid":false)
-    </string>
-    <string name="help_negative_identifier">
-        Номер буде ідентифіковано як спам, якщо у результаті знайдено цей шаблон регулярного виразу.
-    </string>
-    <string name="positive_identifier">Позитивний ідентифікатор</string>
-    <string name="hint_positive_identifier">
-        Напр.: ("valid":true)
-    </string>
-    <string name="help_positive_identifier">
-        <![CDATA[
-        Номер буде ідентифіковано як не спам, якщо цей шаблон регулярного виразу буде знайдено в результаті, це необов\'язково.<br>
-        <br>
-        Зазвичай це <b>непотрібно</b>, деякі постачальники API ідентифікують невідомі номери як не спам,<br>
-        використовуйте це лише тоді, коли API дійсно точний.
-        ]]>
-    </string>
-    <string name="category_identifier">Ідентифікатор категорії</string>
-    <string name="hint_category_identifier">
-        Напр.: "type":"(.+?)"
-    </string>
-    <string name="help_category_identifier">
-        <![CDATA[
-        Додатково. <br>
-        Після ідентифікації номера цей регулярний вираз буде використано для вилучення його категорії (телемаркетинг, фішинг тощо).
-        ]]>
-    </string>
-    <string name="action_parse_query_result">Розбір результату</string>
-    <string name="help_action_parse_query_result">
-        <![CDATA[
-        Розбір результату запиту, номер буде ідентифіковано як спам, якщо результат містить певний шаблон регулярного виразу.<br>
-        <br>
-        Для вилучення категорії спаму можна використовувати додатковий регулярний вираз (необов\'язково).
-        ]]>
-    </string>
-    <string name="action_intercept_call">Перехоплення дзвінка</string>
-    <string name="help_action_intercept_call">
-        <![CDATA[
-        Вхідний номер буде перехоплено та розпарсено на різні теги:<br>
-        <br>
-        %s
-        <br>
-        Ці теги будуть використані для побудови HTTP-адреси, наприклад:<br>
-        <br>
-        1. Для міжнародного номера, наприклад <b>+122222</b>, ці два варіанти еквівалентні:<br>
-        - https://test.com/number=<b>{number}</b><br>
-        - https://test.com/number=<b>{cc}{domestic}</b><br>
-        Буде розпарсено як:<br>
-        https://test.com/number=<b>122222</b><br>
-        <br>
-        2. Для внутрішнього номера, наприклад <b>12345</b>, потрібно вказати код країни в налаштуваннях або дозволити програмі автоматично його визначити.<br>
-        ]]>
-    </string>
-    <string name="query_api">API запиту</string>
-    <string name="number_filter">Фільтр номерів</string>
-    <string name="help_number_filter">
-        <![CDATA[
-        Деякі API-сервіси підтримують лише міжнародні номери, а деякі лише внутрішні.<br>
-        <br>
-        Цей регулярний вираз фільтрує номери відповідно, вхідні номери, які не відповідають цьому регулярному виразу, будуть пропущені при перевірці.<br>
-        <br>
-        - Перевіряти лише <b>міжнародні номери</b>:<br>
-        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-        <br>
-        - Перевіряти лише <b>внутрішні номери</b>:<br>
-        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-        <br>
-        - Перевіряти <b>будь-який номер</b>:<br>
-        &ensp; <font color="#03DAC5"><b>.*</b></font>
-        ]]>
-    </string>
-    <string name="checking_template">Перевірка: %s, пріоритет: %s</string>
-    <string name="skip_for_testing">Пропустити для тестування.</string>
-    <string name="allowed_by">Дозволено: %s</string>
-    <string name="blocked_by">Заблоковано: %s</string>
-    <string name="outside_time_schedule">За межами графіка, пропущено.</string>
-    <string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
-    <string name="query">Запит</string>
-    <string name="report_api">API звітування</string>
-    <string name="action_intercept_sms">Перехоплення SMS</string>
-    <string name="help_action_intercept_sms">
-        <![CDATA[
-        Вхідне SMS буде перехоплено, а вміст розібрано в тег <b>{sms}</b>,<br>
-        який може бути використаний наступними діями.
-        ]]>
-    </string>
+<string name="help_instant_query">
+<![CDATA[
+Онлайн-запит вхідного номера в реальному часі, одночасне звернення до кількох API-кінцевих точок.<br>
+<br>
+Стосується лише дзвінків, не SMS-повідомлень.<br>
+<br>
+Запускається лише тоді, коли дзвінок проходить усі інші правила.<br>
+<br>
+<font color="#ea86ff"><b>Пріоритет: -1</b></font>
+]]>
+</string>
+<string name="instant_query">Миттєвий запит</string>
+<string name="negative_identifier">Негативний ідентифікатор</string>
+<string name="hint_negative_identifier">
+Напр.: ("valid":false)
+</string>
+<string name="help_negative_identifier">
+Номер буде ідентифіковано як спам, якщо у результаті знайдено цей шаблон регулярного виразу.
+</string>
+<string name="positive_identifier">Позитивний ідентифікатор</string>
+<string name="hint_positive_identifier">
+Напр.: ("valid":true)
+</string>
+<string name="help_positive_identifier">
+<![CDATA[
+Номер буде ідентифіковано як не спам, якщо цей шаблон регулярного виразу буде знайдено в результаті, це необов\'язково.<br>
+<br>
+Зазвичай це <b>непотрібно</b>, деякі постачальники API ідентифікують невідомі номери як не спам,<br>
+використовуйте це лише тоді, коли API дійсно точний.
+]]>
+</string>
+<string name="category_identifier">Ідентифікатор категорії</string>
+<string name="hint_category_identifier">
+Напр.: "type":"(.+?)"
+</string>
+<string name="help_category_identifier">
+<![CDATA[
+Додатково. <br>
+Після ідентифікації номера цей регулярний вираз буде використано для вилучення його категорії (телемаркетинг, фішинг тощо).
+]]>
+</string>
+<string name="action_parse_query_result">Розбір результату</string>
+<string name="help_action_parse_query_result">
+<![CDATA[
+Розбір результату запиту, номер буде ідентифіковано як спам, якщо результат містить певний шаблон регулярного виразу.<br>
+<br>
+Для вилучення категорії спаму можна використовувати додатковий регулярний вираз (необов\'язково).
+]]>
+</string>
+<string name="action_intercept_call">Перехоплення дзвінка</string>
+<string name="help_action_intercept_call">
+<![CDATA[
+Вхідний номер буде перехоплено та розпарсено на різні теги:<br>
+<br>
+%s
+<br>
+Ці теги будуть використані для побудови HTTP-адреси, наприклад:<br>
+<br>
+1. Для міжнародного номера, наприклад <b>+122222</b>, ці два варіанти еквівалентні:<br>
+- https://test.com/number=<b>{number}</b><br>
+- https://test.com/number=<b>{cc}{domestic}</b><br>
+Буде розпарсено як:<br>
+https://test.com/number=<b>122222</b><br>
+<br>
+2. Для внутрішнього номера, наприклад <b>12345</b>, потрібно вказати код країни в налаштуваннях або дозволити програмі автоматично його визначити.<br>
+]]>
+</string>
+<string name="query_api">API запиту</string>
+<string name="number_filter">Фільтр номерів</string>
+<string name="help_number_filter">
+<![CDATA[
+Деякі API-сервіси підтримують лише міжнародні номери, а деякі лише внутрішні.<br>
+<br>
+Цей регулярний вираз фільтрує номери відповідно, вхідні номери, які не відповідають цьому регулярному виразу, будуть пропущені при перевірці.<br>
+<br>
+- Перевіряти лише <b>міжнародні номери</b>:<br>
+&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+<br>
+- Перевіряти лише <b>внутрішні номери</b>:<br>
+&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+<br>
+- Перевіряти <b>будь-який номер</b>:<br>
+&ensp; <font color="#03DAC5"><b>.*</b></font>
+]]>
+</string>
+<string name="checking_template">Перевірка: %s, пріоритет: %s</string>
+<string name="skip_for_testing">Пропустити для тестування.</string>
+<string name="allowed_by">Дозволено: %s</string>
+<string name="blocked_by">Заблоковано: %s</string>
+<string name="outside_time_schedule">За межами графіка, пропущено.</string>
+<string name="android_ver_lower_than_11">Версія Android нижче 11, пропущено.</string>
+<string name="query">Запит</string>
+<string name="report_api">API звітування</string>
+<string name="action_intercept_sms">Перехоплення SMS</string>
+<string name="help_action_intercept_sms">
+<![CDATA[
+Вхідне SMS буде перехоплено, а вміст розібрано в тег <b>{sms}</b>,<br>
+який може бути використаний наступними діями.
+]]>
+</string>
 </resources>

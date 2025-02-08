@@ -1,66 +1,65 @@
 <resources>
-    <string name="help_sms_content_filter">
-        <![CDATA[
-        Estas reglas se aplican al contenido del SMS.<br>
-        <br>
-        <font color="#00BFFF"><b> - Algunos patrones típicos</b></font>:<br>
-        &ensp; - Contiene "verificación": <font color="#03DAC5"><b>.*verificación.*</b></font><br>
-        &ensp; - Contiene cualquiera de las palabras: <font color="#03DAC5"><b>.*(policía|hospital|verificación).*</b></font>
-        ]]>
-    </string>
-    <string name="help_quick_copy">
-        <![CDATA[
-        Una forma rápida de copiar contenido de mensajes SMS o números de teléfono, lo que facilita la captura de códigos de verificación o números entrantes.<br>
-        <br>
-        Cuando coincide, un botón como <font color="#00BFFF"><b>Copiar: 123456</b></font> aparecerá en la notificación.<br>
-        <br>
-        Una regla de muestra para extraer códigos de verificación:<br>
-        &emsp; Usando grupo de captura:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
-        &emsp; Otro enfoque usando lookaround:<br>
-        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
-        ]]>
-    </string>
-    <string name="help_apply_to_call_sms">
-        <![CDATA[
-        Habilita esta regla para llamada, SMS o ambos.<br>
-        Desmarca estas casillas de verificación para deshabilitar la regla sin eliminarla.
-        ]]>
-    </string>
-    <string name="help_apply_to_number_and_message">
-        <![CDATA[
-        Cuando <font color="#00BFFF"><b>Número</b></font> está marcado, esta regla extraerá contenido del número entrante.
-        Por ejemplo, usa <b>(.*)</b> para copiar el número de teléfono.<br>
-        <br>
-        Cuando <font color="#00BFFF"><b>Contenido</b></font> está marcado, esta regla extraerá contenido del cuerpo del mensaje SMS,
-        como códigos de verificación.
-        ]]>
-    </string>
-    <string name="help_apply_to_passed_and_blocked">
-        <![CDATA[
-        Cuando <font color="#03DAC5"><b>Aprobado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes aprobados.<br>
-        <br>
-        Cuando <font color="#fa7f71"><b>Bloqueado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes bloqueados.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Ninguno</b>:<br>&emsp; Sin notificación en absoluto. <br>
-        <b>Sombra</b>:<br>&emsp; La sombra de notificación desplegable. <br>
-        <b>Barra de estado</b>:<br>&emsp; El pequeño icono en la barra superior. <br>
-        <b>Sonido</b>:<br>&emsp; El sonido de notificación predeterminado. <br>
-        <b>Heads-Up</b>:<br>&emsp; Aparecer una ventana flotante en la parte superior de la pantalla.
-        ]]>
-    </string>
-    <string name="title_rule_testing">Prueba de reglas</string>
-    <string name="help_test_rules">
-        <![CDATA[
-        Esto ayuda a verificar si las reglas se establecen como se esperaba.<br>
-        <br>
-        Es solo una simulación y no realmente aparecerá una llamada entrante (o mensaje de texto).<br>
-        <br>
-        El resultado se muestra aquí, y en el historial de registro, con notificación.
-        ]]>
-    </string>
-
+<string name="help_sms_content_filter">
+<![CDATA[
+Estas reglas se aplican al contenido del SMS.<br>
+<br>
+<font color="#00BFFF"><b> - Algunos patrones típicos</b></font>:<br>
+&ensp; - Contiene "verificación": <font color="#03DAC5"><b>.*verificación.*</b></font><br>
+&ensp; - Contiene cualquiera de las palabras: <font color="#03DAC5"><b>.*(policía|hospital|verificación).*</b></font>
+]]>
+</string>
+<string name="help_quick_copy">
+<![CDATA[
+Una forma rápida de copiar contenido de mensajes SMS o números de teléfono, lo que facilita la captura de códigos de verificación o números entrantes.<br>
+<br>
+Cuando coincide, un botón como <font color="#00BFFF"><b>Copiar: 123456</b></font> aparecerá en la notificación.<br>
+<br>
+Una regla de muestra para extraer códigos de verificación:<br>
+&emsp; Usando grupo de captura:<br>
+&emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+&emsp; Otro enfoque usando lookaround:<br>
+&emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+]]>
+</string>
+<string name="help_apply_to_call_sms">
+<![CDATA[
+Habilita esta regla para llamada, SMS o ambos.<br>
+Desmarca estas casillas de verificación para deshabilitar la regla sin eliminarla.
+]]>
+</string>
+<string name="help_apply_to_number_and_message">
+<![CDATA[
+Cuando <font color="#00BFFF"><b>Número</b></font> está marcado, esta regla extraerá contenido del número entrante.
+Por ejemplo, usa <b>(.*)</b> para copiar el número de teléfono.<br>
+<br>
+Cuando <font color="#00BFFF"><b>Contenido</b></font> está marcado, esta regla extraerá contenido del cuerpo del mensaje SMS,
+como códigos de verificación.
+]]>
+</string>
+<string name="help_apply_to_passed_and_blocked">
+<![CDATA[
+Cuando <font color="#03DAC5"><b>Aprobado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes aprobados.<br>
+<br>
+Cuando <font color="#fa7f71"><b>Bloqueado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes bloqueados.
+]]>
+</string>
+<string name="help_importance">
+<![CDATA[
+<b>Ninguno</b>:<br>&emsp; Sin notificación en absoluto. <br>
+<b>Sombra</b>:<br>&emsp; La sombra de notificación desplegable. <br>
+<b>Barra de estado</b>:<br>&emsp; El pequeño icono en la barra superior. <br>
+<b>Sonido</b>:<br>&emsp; El sonido de notificación predeterminado. <br>
+<b>Heads-Up</b>:<br>&emsp; Aparecer una ventana flotante en la parte superior de la pantalla.
+]]>
+</string>
+<string name="title_rule_testing">Prueba de reglas</string>
+<string name="help_test_rules">
+<![CDATA[
+Esto ayuda a verificar si las reglas se establecen como se esperaba.<br>
+<br>
+Es solo una simulación y no realmente aparecerá una llamada entrante (o mensaje de texto).<br>
+<br>
+El resultado se muestra aquí, y en el historial de registro, con notificación.
+]]>
+</string>
 </resources>

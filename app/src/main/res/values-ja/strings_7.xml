@@ -1,45 +1,45 @@
 <resources>
-    <string name="start_time">開始時間</string>
-    <string name="end_time">終了時間</string>
-    <string name="switch_mode">モード切り替え</string>
-    <string name="contact_group">連絡先グループ</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>電話番号</b></font>:<br>
-        &ensp; デフォルトモードでは、正規表現は電話番号と一致します。<br>
-        <br>
-        <font color="#00BFFF"><b>連絡先</b></font>:<br>
-        &ensp; 正規表現は、着信番号に関連付けられた連絡先名と一致します。<br>
-        &ensp;  - ユースケース:<br>
-        &emsp; 週末に連絡先以外のすべてを正規表現`.*`でブロックします。<br>
-        <br>
-        <font color="#00BFFF"><b>連絡先グループ</b></font>:<br>
-        &ensp; 正規表現は、着信番号に関連付けられた連絡先グループ名と一致します。
-                 これにより、そのグループのすべての連絡先に影響が及ぶため、個別に追加する必要がなく、
-                 人事異動があっても更新する必要はありません。<br>
-        &ensp;  - ユースケース:<br>
-        &emsp; 連絡先グループ「仕事」をブロックすることで、週末にすべての同僚をブロックします。
-        ]]>
-    </string>
-    <string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
-    <string name="follow_system"><short>システムに従う</short></string>
-    <string name="theme">テーマ</string>
-    <string-array name="theme_list">
-        <item>ライト</item>
-        <item>ダーク</item>
-    </string-array>
-    <string-array name="rule_dropdown_menu">
-        <item>ルール検索</item>
-        <item>ルール複製</item>
-        <item>ルール削除</item>
-        <item>重複ルールの削除</item>
-        <item>すべてのルール(%d)削除</item>
-    </string-array>
-    <string name="confirm_delete_duplicated_rule">%dの重複したルールを削除しますか?</string>
-    <string name="duration">期間</string>
-    <string name="help_recent_apps_individual_duration">
-        <![CDATA[
-        各アプリの個別の期間。空欄の場合、グローバル期間に戻ります。
-        ]]>
-    </string>
+<string name="start_time">開始時間</string>
+<string name="end_time">終了時間</string>
+<string name="switch_mode">モード切り替え</string>
+<string name="contact_group">連絡先グループ</string>
+<string name="help_number_mode">
+<![CDATA[
+<font color="#00BFFF"><b>電話番号</b></font>:<br>
+&ensp; デフォルトモードでは、正規表現は電話番号と一致します。<br>
+<br>
+<font color="#00BFFF"><b>連絡先</b></font>:<br>
+&ensp; 正規表現は、着信番号に関連付けられた連絡先名と一致します。<br>
+&ensp;  - ユースケース:<br>
+&emsp; 週末に連絡先以外のすべてを正規表現`.*`でブロックします。<br>
+<br>
+<font color="#00BFFF"><b>連絡先グループ</b></font>:<br>
+&ensp; 正規表現は、着信番号に関連付けられた連絡先グループ名と一致します。
+これにより、そのグループのすべての連絡先に影響が及ぶため、個別に追加する必要がなく、
+人事異動があっても更新する必要はありません。<br>
+&ensp;  - ユースケース:<br>
+&emsp; 連絡先グループ「仕事」をブロックすることで、週末にすべての同僚をブロックします。
+]]>
+</string>
+<string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
+<string name="follow_system"><short>システムに従う</short></string>
+<string name="theme">テーマ</string>
+<string-array name="theme_list">
+<item>ライト</item>
+<item>ダーク</item>
+</string-array>
+<string-array name="rule_dropdown_menu">
+<item>ルール検索</item>
+<item>ルール複製</item>
+<item>ルール削除</item>
+<item>重複ルールの削除</item>
+<item>すべてのルール(%d)削除</item>
+</string-array>
+<string name="confirm_delete_duplicated_rule">%dの重複したルールを削除しますか?</string>
+<string name="duration">期間</string>
+<string name="help_recent_apps_individual_duration">
+<![CDATA[
+各アプリの個別の期間。空欄の場合、グローバル期間に戻ります。
+]]>
+</string>
 </resources>

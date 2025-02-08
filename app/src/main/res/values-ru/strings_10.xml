@@ -1,55 +1,55 @@
 <resources>
-    <string name="help_number_rules">
-        <![CDATA[
-        Эти правила применяются к входящему номеру телефона.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Примеры</font></h5>
-        Некоторые примеры приведены на <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">странице Wiki</a>.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Оптимизация Regex</font></h5>
-        Для упрощения регулярного выражения,
-          <font color="#fa7f71"><b>+</b></font> и <font color="#fa7f71"><b>лидирующие нули</b></font>
-          удаляются перед проверкой, например:<br>
-        &emsp; Все эти форматы:<br>
-        &emsp;&emsp; 123456789 &emsp;(обычный номер)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(с ведущим <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(с внутренним кодом сети <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Все они проверяются как 123456789 и могут быть сопоставлены с <font color="#03DAC5"><b>123.*</b></font><br>
-        Эта оптимизация номера может быть <b>отключена</b> с помощью флага regex "Raw Number".<br>
-        <br>
-        <h5><font color="#00BFFF"> - Некоторые типичные шаблоны</font></h5>
-        &ensp; - Любой номер: <font color="#03DAC5"><b>.*</b></font> (регулярное выражение .* эквивалентно подстановочному знаку * в других приложениях) <br>
-        &ensp; - Точный номер: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Начинается с 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - Заканчивается на 123: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 7 цифр: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - Короче 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - Длиннее 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Неизвестный номер (пустая строка): <font color="#03DAC5"><b>.{0}</b></font> или <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Совпадение с любым из шаблонов: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - Начинается с 400, с ведущим кодом страны 11 или без него: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
-        <br>
-        <h5><font color="#00BFFF"> - Связанное с UI</font></h5>
-        Снимите флажки, чтобы отключить правило, <font color="#fa7f71"><b>проведите пальцем влево, чтобы удалить</b></font> его.<br>
-        <br>
-        Список <b>отображается</b> в порядке убывания приоритета, по возрастанию описания и по возрастанию шаблона.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Импорт правил из .csv</font></h5>
-        Нажмите и удерживайте кнопку «Добавить», чтобы импортировать номера из файла .csv.<br>
-        <brg>
-        ]]>
-    </string>
-    <string name="import_csv_columns">
-        <![CDATA[
-         Поддерживаемые столбцы:<br>
-         - <no_translate><b>pattern</b></no_translate>: Регулярное выражение (<b>обязательно</b>)<br>
-         - <no_translate><b>description</b></no_translate>: Описание<br>
-         - <no_translate><b>priority</b></no_translate>: Приоритет, по умолчанию 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Применить к звонку), 2(Применить к SMS), 3(и то, и другое), по умолчанию 3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: Черный или белый список. <no_translate>true</no_translate> или <no_translate>false</no_translate>, по умолчанию <no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: Тип блокировки. 0~2 соответствуют 3 типам блокировки, по умолчанию 0<br>
-         - <no_translate><b>importance</b></no_translate>: Тип уведомления. 0~4 соответствуют 5 типам уведомлений, по умолчанию 2<br>
-        ]]>
-    </string>
+<string name="help_number_rules">
+<![CDATA[
+Эти правила применяются к входящему номеру телефона.<br>
+<br>
+<h5><font color="#00BFFF"> - Примеры</font></h5>
+Некоторые примеры приведены на <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">странице Wiki</a>.<br>
+<br>
+<h5><font color="#00BFFF"> - Оптимизация Regex</font></h5>
+Для упрощения регулярного выражения,
+<font color="#fa7f71"><b>+</b></font> и <font color="#fa7f71"><b>лидирующие нули</b></font>
+удаляются перед проверкой, например:<br>
+&emsp; Все эти форматы:<br>
+&emsp;&emsp; 123456789 &emsp;(обычный номер)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(с ведущим <font color="#fa7f71"><b>+</b></font>)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(с внутренним кодом сети <font color="#fa7f71"><b>0</b></font>)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
+&emsp; Все они проверяются как 123456789 и могут быть сопоставлены с <font color="#03DAC5"><b>123.*</b></font><br>
+Эта оптимизация номера может быть <b>отключена</b> с помощью флага regex "Raw Number".<br>
+<br>
+<h5><font color="#00BFFF"> - Некоторые типичные шаблоны</font></h5>
+&ensp; - Любой номер: <font color="#03DAC5"><b>.*</b></font> (регулярное выражение .* эквивалентно подстановочному знаку * в других приложениях) <br>
+&ensp; - Точный номер: <font color="#03DAC5"><b>12345</b></font> <br>
+&ensp; - Начинается с 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+&ensp; - Заканчивается на 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+&ensp; - 7 цифр: <font color="#03DAC5"><b>.{7}</b></font> <br>
+&ensp; - Короче 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+&ensp; - Длиннее 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+&ensp; - Неизвестный номер (пустая строка): <font color="#03DAC5"><b>.{0}</b></font> или <font color="#03DAC5"><b>^$</b></font> <br>
+&ensp; - Совпадение с любым из шаблонов: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+&ensp; - Начинается с 400, с ведущим кодом страны 11 или без него: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+<br>
+<h5><font color="#00BFFF"> - Связанное с UI</font></h5>
+Снимите флажки, чтобы отключить правило, <font color="#fa7f71"><b>проведите пальцем влево, чтобы удалить</b></font> его.<br>
+<br>
+Список <b>отображается</b> в порядке убывания приоритета, по возрастанию описания и по возрастанию шаблона.<br>
+<br>
+<h5><font color="#00BFFF"> - Импорт правил из .csv</font></h5>
+Нажмите и удерживайте кнопку «Добавить», чтобы импортировать номера из файла .csv.<br>
+<brg>
+]]>
+</string>
+<string name="import_csv_columns">
+<![CDATA[
+Поддерживаемые столбцы:<br>
+- <no_translate><b>pattern</b></no_translate>: Регулярное выражение (<b>обязательно</b>)<br>
+- <no_translate><b>description</b></no_translate>: Описание<br>
+- <no_translate><b>priority</b></no_translate>: Приоритет, по умолчанию 1<br>
+- <no_translate><b>flags</b></no_translate>: 1(Применить к звонку), 2(Применить к SMS), 3(и то, и другое), по умолчанию 3<br>
+- <no_translate><b>isBlacklist</b></no_translate>: Черный или белый список. <no_translate>true</no_translate> или <no_translate>false</no_translate>, по умолчанию <no_translate>true</no_translate><br>
+- <no_translate><b>blockType</b></no_translate>: Тип блокировки. 0~2 соответствуют 3 типам блокировки, по умолчанию 0<br>
+- <no_translate><b>importance</b></no_translate>: Тип уведомления. 0~4 соответствуют 5 типам уведомлений, по умолчанию 2<br>
+]]>
+</string>
 </resources>

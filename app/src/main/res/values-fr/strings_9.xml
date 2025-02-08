@@ -1,93 +1,89 @@
 <resources>
-    <string name="contact_rule">Règle de contact</string>
-    <string name="directory">Répertoire</string>
-    <string name="filename">Nom de fichier</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">Jours d\'expiration</string>
-    <string name="column_mapping">Mappage de colonne</string>
-    <string name="include_spam_db">Inclure la base de données de spam</string>
-    <string name="no_config_needed">Aucune configuration nécessaire</string>
-    <string name="success">Succès</string>
-    <string name="failed">Échec</string>
-    <string name="running">En cours d\'exécution</string>
-    <string name="optional">(facultatif)</string>
-
-    <string name="help_action_header">
-        <![CDATA[
-        - <font color="#03DAC5"><b>Test</b></font><br>
-        Ces actions seront exécutées immédiatement, pour vérifier si elles ont été correctement configurées,
-        ou peut-être que vous voulez simplement exécuter manuellement ce workflow.<br>
-        <br>
-        - <font color="#00BFFF"><b>Nouveau</b></font><br>
-            Créez une nouvelle action, plusieurs actions peuvent être chaînées ensemble pour effectuer une tâche complexe.<br>
-            Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.
-        ]]>
-    </string>
-
-    <string name="help_bot_preset_dnc">
-        <![CDATA[
-            Télécharger les numéros de téléphone de spam à partir de
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> tous les jours ouvrables,
-             et les importer dans la base de données de spam.
-        ]]>
-    </string>
-    <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données de spam.</string>
-    <string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'appels/SMS expirés.</string>
-    <string name="help_bot_preset_auto_backup">Sauvegarder tous les paramètres.</string>
-    <string name="everyday">Tous les jours</string>
-    <string name="daily">Quotidien</string>
-    <string name="weekly">Hebdomadaire</string>
-    <string name="periodically">Périodiquement</string>
-    <string name="time">Heure</string>
-    <string name="workdays">Jours ouvrables</string>
-
-    <string name="help_backup">
-        <![CDATA[
-        Le format du fichier de sauvegarde est un fichier json compressé gzip, vous pouvez l\'ouvrir et le modifier avec n\'importe quel archiveur.<br>
-        <br>
-        - <font color="#00BFFF"><b>Inclure la base de données de spam</b></font><br>
-        Appuyez longuement sur le bouton pour également exporter/importer la base de données de spam.<br>
-        <br>
-        <font color="#ffa500">Remarque :</font><br>
-        &ensp; L\'inclusion de la base de données de spam dans le fichier de sauvegarde augmentera considérablement sa taille,
-        étant donné que la base de données sera mise à jour régulièrement, cela est généralement inutile, sauf si vous souhaitez la cloner
-        sur un autre téléphone.<br>
-        ]]>
-    </string>
-    <string name="mode">Mode</string>
-    <string-array name="regex_action_add_mode">
-        <item>Créer</item>
-        <item>Remplacer</item>
-        <item>Fusionner</item>
-    </string-array>
-    <string name="help_regex_action_add_mode">
-        <![CDATA[
-        -<font color="#00BFFF"><b>Créer</b></font><br>
-        &ensp; Créez toujours une nouvelle règle regex.<br>
-        <br>
-        - <font color="#00BFFF"><b>Remplacer</b></font><br>
-        &ensp; Il essaiera de trouver une règle existante ayant la même <b>description</b>. <br>
-        &ensp;&ensp; - Si elle est trouvée, elle sera remplacée.<br>
-        &ensp;&ensp; - Si elle n\'est pas trouvée, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
-        <br>
-        - <font color="#00BFFF"><b>Fusionner</b></font><br>
-        &ensp;- Si une règle avec la même description existe, les nouveaux numéros seront fusionnés, <br>
-         les numéros dupliqués seront supprimés automatiquement.<br>
-        &ensp;- Si elle n\'existe pas, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
-        ]]>
-    </string>
-
-    <string name="action_enable_workflow">Activer le flux de travail</string>
-    <string name="help_action_enable_workflow">
-        <![CDATA[
-        Activer ou désactiver ce flux de travail. Un cas d\'utilisation serait de faire d\'un flux de travail périodique un flux de travail unique.
-        ]]>
-    </string>
-    <string name="action_enable_app">Activer l\'application</string>
-    <string name="help_action_enable_app">
-        <![CDATA[
-        Activer ou désactiver l\'application. Un cas d\'utilisation serait de la désactiver temporairement et de la réactiver automatiquement après quelques heures.
-        ]]>
-    </string>
+<string name="contact_rule">Règle de contact</string>
+<string name="directory">Répertoire</string>
+<string name="filename">Nom de fichier</string>
+<string name="url">URL</string>
+<string name="expiry_days">Jours d\'expiration</string>
+<string name="column_mapping">Mappage de colonne</string>
+<string name="include_spam_db">Inclure la base de données de spam</string>
+<string name="no_config_needed">Aucune configuration nécessaire</string>
+<string name="success">Succès</string>
+<string name="failed">Échec</string>
+<string name="running">En cours d\'exécution</string>
+<string name="optional">(facultatif)</string>
+<string name="help_action_header">
+<![CDATA[
+- <font color="#03DAC5"><b>Test</b></font><br>
+Ces actions seront exécutées immédiatement, pour vérifier si elles ont été correctement configurées,
+ou peut-être que vous voulez simplement exécuter manuellement ce workflow.<br>
+<br>
+- <font color="#00BFFF"><b>Nouveau</b></font><br>
+Créez une nouvelle action, plusieurs actions peuvent être chaînées ensemble pour effectuer une tâche complexe.<br>
+Ces points verts ou rouges entre les éléments indiquent s\'ils sont chaînables ou non.
+]]>
+</string>
+<string name="help_bot_preset_dnc">
+<![CDATA[
+Télécharger les numéros de téléphone de spam à partir de
+<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+<no_translate>FTC - Do Not Call</no_translate> </a> tous les jours ouvrables,
+et les importer dans la base de données de spam.
+]]>
+</string>
+<string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données de spam.</string>
+<string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'appels/SMS expirés.</string>
+<string name="help_bot_preset_auto_backup">Sauvegarder tous les paramètres.</string>
+<string name="everyday">Tous les jours</string>
+<string name="daily">Quotidien</string>
+<string name="weekly">Hebdomadaire</string>
+<string name="periodically">Périodiquement</string>
+<string name="time">Heure</string>
+<string name="workdays">Jours ouvrables</string>
+<string name="help_backup">
+<![CDATA[
+Le format du fichier de sauvegarde est un fichier json compressé gzip, vous pouvez l\'ouvrir et le modifier avec n\'importe quel archiveur.<br>
+<br>
+- <font color="#00BFFF"><b>Inclure la base de données de spam</b></font><br>
+Appuyez longuement sur le bouton pour également exporter/importer la base de données de spam.<br>
+<br>
+<font color="#ffa500">Remarque :</font><br>
+&ensp; L\'inclusion de la base de données de spam dans le fichier de sauvegarde augmentera considérablement sa taille,
+étant donné que la base de données sera mise à jour régulièrement, cela est généralement inutile, sauf si vous souhaitez la cloner
+sur un autre téléphone.<br>
+]]>
+</string>
+<string name="mode">Mode</string>
+<string-array name="regex_action_add_mode">
+<item>Créer</item>
+<item>Remplacer</item>
+<item>Fusionner</item>
+</string-array>
+<string name="help_regex_action_add_mode">
+<![CDATA[
+-<font color="#00BFFF"><b>Créer</b></font><br>
+&ensp; Créez toujours une nouvelle règle regex.<br>
+<br>
+- <font color="#00BFFF"><b>Remplacer</b></font><br>
+&ensp; Il essaiera de trouver une règle existante ayant la même <b>description</b>. <br>
+&ensp;&ensp; - Si elle est trouvée, elle sera remplacée.<br>
+&ensp;&ensp; - Si elle n\'est pas trouvée, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
+<br>
+- <font color="#00BFFF"><b>Fusionner</b></font><br>
+&ensp;- Si une règle avec la même description existe, les nouveaux numéros seront fusionnés, <br>
+les numéros dupliqués seront supprimés automatiquement.<br>
+&ensp;- Si elle n\'existe pas, une nouvelle règle sera créée, identique à <b>Créer</b>.<br>
+]]>
+</string>
+<string name="action_enable_workflow">Activer le flux de travail</string>
+<string name="help_action_enable_workflow">
+<![CDATA[
+Activer ou désactiver ce flux de travail. Un cas d\'utilisation serait de faire d\'un flux de travail périodique un flux de travail unique.
+]]>
+</string>
+<string name="action_enable_app">Activer l\'application</string>
+<string name="help_action_enable_app">
+<![CDATA[
+Activer ou désactiver l\'application. Un cas d\'utilisation serait de la désactiver temporairement et de la réactiver automatiquement après quelques heures.
+]]>
+</string>
 </resources>

@@ -1,72 +1,70 @@
 <resources>
-    <string name="yesterday">Вчера</string>
-    <string name="help_meeting_mode">
-        <![CDATA[
-        Отклонять звонки во время онлайн-видеоконференций.<br> <br>
-        Проверяет, запущена ли какая-либо выбранная программа в качестве <b>фонового сервиса</b>,
-        что обычно используется видеоконференц-приложениями для поддержания связи.<br>
-        <br>
-        Это относится как к звонкам, так и к сообщениям.<br>
-        <br>
-        <font color="#ea86ff"><b>Стандартный приоритет: 20</b></font>
-        ]]>
-    </string>
-    <string name="in_meeting">Режим собрания</string>
-    <string name="search">Поиск</string>
-    <string name="http_header">Заголовок HTTP</string>
-    <string name="help_http_header">
-        <![CDATA[
-        Один атрибут на строку.
-        ]]>
-    </string>
-    <string name="log_sms_content_to_db">Лог SMS</string>
-    <string name="initial_row_count">Начальное количество строк</string>
-    <plurals name="rows">
-        <item quantity="one">%d строка</item>
-        <item quantity="two">%d строки</item>
-        <item quantity="few">%d строки</item>
-        <item quantity="many">%d строк</item>
-        <item quantity="other">%d строк</item>
-    </plurals>
-
-    <string name="label_max_none_scroll_items">Порог прокрутки</string>
-    <string name="help_max_none_scroll_items">
-        <![CDATA[
-        Максимальное количество элементов, которое может отображаться в списке, прежде чем появится полоса прокрутки.
-        ]]>
-    </string>
-    <string name="label_max_scroll_height">Высота прокрутки</string>
-    <string name="help_max_scroll_height">
-        <![CDATA[
-        Когда появляется полоса прокрутки, это значение представляет собой высоту списка в процентах от экрана.
-        ]]>
-    </string>
-    <string name="label_max_regex_lines">Макс. строк RegEx</string>
-    <string name="help_max_regex_lines">
-        <![CDATA[
-        Максимальное количество строк для отображения текста RegEx, оставшийся текст будет усечен и дополнен многоточием.
-        ]]>
-    </string>
-    <string name="label_max_desc_lines">Макс. строк описания</string>
-    <string name="help_max_desc_lines">
-        <![CDATA[
-        Максимальное количество строк для отображения текста описания, оставшийся текст будет усечен и дополнен многоточием.
-        ]]>
-    </string>
-
-    <string name="for_example">Например:</string>
-    <string name="tags_supported">
-        <![CDATA[
-        Поддерживаемые теги:<br><br>
-        ]]>
-    </string>
-    <string name="auth_tags">
-        <![CDATA[
-        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-        &ensp; Для API, требующих HTTP-авторизацию. Например:<br>
-        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-        &ensp; будет преобразовано в:<br>
-        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-        ]]>
-    </string>
+<string name="yesterday">Вчера</string>
+<string name="help_meeting_mode">
+<![CDATA[
+Отклонять звонки во время онлайн-видеоконференций.<br> <br>
+Проверяет, запущена ли какая-либо выбранная программа в качестве <b>фонового сервиса</b>,
+что обычно используется видеоконференц-приложениями для поддержания связи.<br>
+<br>
+Это относится как к звонкам, так и к сообщениям.<br>
+<br>
+<font color="#ea86ff"><b>Стандартный приоритет: 20</b></font>
+]]>
+</string>
+<string name="in_meeting">Режим собрания</string>
+<string name="search">Поиск</string>
+<string name="http_header">Заголовок HTTP</string>
+<string name="help_http_header">
+<![CDATA[
+Один атрибут на строку.
+]]>
+</string>
+<string name="log_sms_content_to_db">Лог SMS</string>
+<string name="initial_row_count">Начальное количество строк</string>
+<plurals name="rows">
+<item quantity="one">%d строка</item>
+<item quantity="two">%d строки</item>
+<item quantity="few">%d строки</item>
+<item quantity="many">%d строк</item>
+<item quantity="other">%d строк</item>
+</plurals>
+<string name="label_max_none_scroll_items">Порог прокрутки</string>
+<string name="help_max_none_scroll_items">
+<![CDATA[
+Максимальное количество элементов, которое может отображаться в списке, прежде чем появится полоса прокрутки.
+]]>
+</string>
+<string name="label_max_scroll_height">Высота прокрутки</string>
+<string name="help_max_scroll_height">
+<![CDATA[
+Когда появляется полоса прокрутки, это значение представляет собой высоту списка в процентах от экрана.
+]]>
+</string>
+<string name="label_max_regex_lines">Макс. строк RegEx</string>
+<string name="help_max_regex_lines">
+<![CDATA[
+Максимальное количество строк для отображения текста RegEx, оставшийся текст будет усечен и дополнен многоточием.
+]]>
+</string>
+<string name="label_max_desc_lines">Макс. строк описания</string>
+<string name="help_max_desc_lines">
+<![CDATA[
+Максимальное количество строк для отображения текста описания, оставшийся текст будет усечен и дополнен многоточием.
+]]>
+</string>
+<string name="for_example">Например:</string>
+<string name="tags_supported">
+<![CDATA[
+Поддерживаемые теги:<br><br>
+]]>
+</string>
+<string name="auth_tags">
+<![CDATA[
+- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+&ensp; Для API, требующих HTTP-авторизацию. Например:<br>
+&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+&ensp; будет преобразовано в:<br>
+&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+]]>
+</string>
 </resources>

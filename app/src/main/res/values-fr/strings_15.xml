@@ -1,30 +1,30 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
-        <![CDATA[
-        Vérifiez le contenu des SMS à l\'aide de l\'IA Google Gemini. Un compte Google est requis.
-        ]]>
-    </string>
-    <string name="gemini_api_key">Clé API Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
-        <![CDATA[
-        1. Créez un compte Google et connectez-vous : <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
-         <br>
-        2. Ouvrez la page de l\'API :<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
-        <br>
-        3. Appuyez sur le bouton « Créer une clé API », faites défiler vers le bas pour voir la clé générée.<br>
-        <br>
-        4. Appuyez sur les « trois points » pour copier la clé, puis renseignez-la ci-dessous.
-        ]]>
-    </string>
-    <string name="spam_sms_prompt_template">
-        Classez ce SMS comme Politique, Fraude, Sondage ou Marketing.
-        Si aucune catégorie ne s\'applique, répondez « Valide », sinon, répondez uniquement par la catégorie, ne répondez à rien d\'autre.
-        Le SMS est :
-        {sms}
-    </string>
-    <string name="spam_sms_negative_category"><translate>(Politique|Fraude|Sondage|Marketing)</translate></string>
-    <string name="spam_sms_positive_category">Valide</string>
+<string name="api_preset_gemini">Gemini</string>
+<string name="help_api_preset_gemini">
+<![CDATA[
+Vérifiez le contenu des SMS à l\'aide de l\'IA Google Gemini. Un compte Google est requis.
+]]>
+</string>
+<string name="gemini_api_key">Clé API Gemini</string>
+<string name="help_api_preset_gemini_authorization">
+<![CDATA[
+1. Créez un compte Google et connectez-vous : <br>
+<a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+<br>
+2. Ouvrez la page de l\'API :<br>
+<a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+<br>
+3. Appuyez sur le bouton « Créer une clé API », faites défiler vers le bas pour voir la clé générée.<br>
+<br>
+4. Appuyez sur les « trois points » pour copier la clé, puis renseignez-la ci-dessous.
+]]>
+</string>
+<string name="spam_sms_prompt_template">
+Classez ce SMS comme Politique, Fraude, Sondage ou Marketing.
+Si aucune catégorie ne s\'applique, répondez « Valide », sinon, répondez uniquement par la catégorie, ne répondez à rien d\'autre.
+Le SMS est :
+{sms}
+</string>
+<string name="spam_sms_negative_category"><translate>(Politique|Fraude|Sondage|Marketing)</translate></string>
+<string name="spam_sms_positive_category">Valide</string>
 </resources>

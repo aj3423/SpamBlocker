@@ -1,96 +1,96 @@
 <resources>
-    <string name="http_method">Метод</string>
-    <string name="http_post_body">Тело запроса</string>
-    <string name="help_http_post_body">
-        <![CDATA[
-        Поддерживаемые теги:<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="missing_credentials">Пожалуйста, введите действительные учетные данные.</string>
-    <string name="delay">Задержка</string>
-    <string name="report_number_require_call_log_permission">
-        Для предотвращения ложных сообщений о повторных звонках или звонках с возвратом, для отправки отчёта о номере требуется разрешение на доступ к журналу вызовов.
-    </string>
-    <string name="exclude_services">Исключить сервисы</string>
-    <string name="help_exclude_bg_service">
-        <![CDATA[
-        Некоторые приложения запускают дополнительные фоновые службы. Добавьте сюда имена служб, чтобы исключить их.<br>
-        <br>
-        Чтобы найти имя службы:<br>
-        &emsp; 1. Активируйте службу в этом приложении.<br>
-        &emsp; 2. Все активированные имена служб появятся здесь.<br>
-        &emsp; 3. Нажмите на имя, чтобы добавить его.<br>
-        <br>
-        Вы можете добавить несколько имён, разделяя их запятыми.
-        ]]>
-    </string>
-    <string name="running_services">Запущенные сервисы</string>
-    <string name="report_number">Сообщить о номере</string>
-    <string-array name="spam_categories">
-        <item>Допустимый номер</item>
-        <item>Мошенничество</item>
-        <item>Маркетинг</item>
-        <item>Опрос</item>
-        <item>Политика</item>
-        <item>Другой спам</item>
-    </string-array>
-    <string name="action_category_config">Настройка категории</string>
-    <string name="help_action_category_config">
-        <![CDATA[
-        Поддерживаются только следующие категории спама, любые другие категории из API должны быть сопоставлены с одной из них.<br>
-        <br>
-         - <font color="#03DAC5"><b>{valid}</b></font><br>
-        &ensp; Сообщить как допустимый номер, не спам.<br>
-        <br>
-         - <font color="#fa7f71"><b>{fraud}</b></font><br>
-         - <font color="#fa7f71"><b>{marketing}</b></font><br>
-         - <font color="#fa7f71"><b>{survey}</b></font><br>
-         - <font color="#fa7f71"><b>{political}</b></font><br>
-        <br>
-         - <font color="#fa7f71"><b>{other}</b></font><br>
-        &ensp; Резервный тип спама, используемый, если ни одна из вышеперечисленных категорий не подходит.<br>
-        ]]>
-    </string>
-    <string name="missing_category">
-        Категория %s не настроена в действии %s, пожалуйста, настройте её в настройках API (если API поддерживает эту категорию).
-    </string>
-    <string name="target_text">Целевой текст</string>
-    <string name="match_found">Найдено совпадение</string>
-    <string name="match_not_found">Совпадение не найдено</string>
-    <string name="help_test_regex">
-        <![CDATA[
-        Это только для проверки того, соответствует ли это регулярное выражение тексту, исключая другие правила.<br>
-        Чтобы проверить все правила, используйте вместо этого плавающую кнопку тестирования в правом нижнем углу.
-        ]]>
-    </string>
-    <string name="allow">Разрешить</string>
-    <string name="block">Заблокировать</string>
-    <string name="seconds">Секунд</string>
-    <string name="seconds_short">Сек</string>
-    <string name="within_seconds">В течение секунд</string>
-    <string name="call_alert">Оповещение о звонке</string>
-    <string name="help_call_alert">
-        <![CDATA[
-        Некоторые сервисы сначала отправят вам SMS, чтобы сообщить о предстоящем звонке, обычно в течение минуты.<br>
-        <br>
-        Например, SMS-сообщение вида:<br>
-        &ensp; <font color="#888888">[некий сервис] Мы звоним вам, чтобы сообщить …, пожалуйста, ответьте.</font><br>
-        <br>
-        Регулярное выражение для такого сообщения будет:<br>
-        &ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
-        <br>
-        Настройка по умолчанию <font color="#03DAC5"><b>120 Секунд</b></font> означает, что все звонки будут
-        разрешены в течение следующих двух минут после получения такого сообщения.<br>
-        <br>
-        Работает как для обычных SMS, так и для flash SMS (SMS класса 0).<br>
-        <br>
-        <font color="#ea86ff"><b>Приоритет: 10</b></font>
-        ]]>
-    </string>
-    <string name="waning_using_wildcard_as_regex">Подстановочный знак `*` используется без предшествующей точки, вы имели в виду `.*`?</string>
-    <string name="import_as">Импортировать как</string>
-    <string name="api_key">Ключ API</string>
-    <string name="mms_support">Поддержка MMS</string>
+<string name="http_method">Метод</string>
+<string name="http_post_body">Тело запроса</string>
+<string name="help_http_post_body">
+<![CDATA[
+Поддерживаемые теги:<br>
+<br>
+%s
+]]>
+</string>
+<string name="missing_credentials">Пожалуйста, введите действительные учетные данные.</string>
+<string name="delay">Задержка</string>
+<string name="report_number_require_call_log_permission">
+Для предотвращения ложных сообщений о повторных звонках или звонках с возвратом, для отправки отчёта о номере требуется разрешение на доступ к журналу вызовов.
+</string>
+<string name="exclude_services">Исключить сервисы</string>
+<string name="help_exclude_bg_service">
+<![CDATA[
+Некоторые приложения запускают дополнительные фоновые службы. Добавьте сюда имена служб, чтобы исключить их.<br>
+<br>
+Чтобы найти имя службы:<br>
+&emsp; 1. Активируйте службу в этом приложении.<br>
+&emsp; 2. Все активированные имена служб появятся здесь.<br>
+&emsp; 3. Нажмите на имя, чтобы добавить его.<br>
+<br>
+Вы можете добавить несколько имён, разделяя их запятыми.
+]]>
+</string>
+<string name="running_services">Запущенные сервисы</string>
+<string name="report_number">Сообщить о номере</string>
+<string-array name="spam_categories">
+<item>Допустимый номер</item>
+<item>Мошенничество</item>
+<item>Маркетинг</item>
+<item>Опрос</item>
+<item>Политика</item>
+<item>Другой спам</item>
+</string-array>
+<string name="action_category_config">Настройка категории</string>
+<string name="help_action_category_config">
+<![CDATA[
+Поддерживаются только следующие категории спама, любые другие категории из API должны быть сопоставлены с одной из них.<br>
+<br>
+- <font color="#03DAC5"><b>{valid}</b></font><br>
+&ensp; Сообщить как допустимый номер, не спам.<br>
+<br>
+- <font color="#fa7f71"><b>{fraud}</b></font><br>
+- <font color="#fa7f71"><b>{marketing}</b></font><br>
+- <font color="#fa7f71"><b>{survey}</b></font><br>
+- <font color="#fa7f71"><b>{political}</b></font><br>
+<br>
+- <font color="#fa7f71"><b>{other}</b></font><br>
+&ensp; Резервный тип спама, используемый, если ни одна из вышеперечисленных категорий не подходит.<br>
+]]>
+</string>
+<string name="missing_category">
+Категория %s не настроена в действии %s, пожалуйста, настройте её в настройках API (если API поддерживает эту категорию).
+</string>
+<string name="target_text">Целевой текст</string>
+<string name="match_found">Найдено совпадение</string>
+<string name="match_not_found">Совпадение не найдено</string>
+<string name="help_test_regex">
+<![CDATA[
+Это только для проверки того, соответствует ли это регулярное выражение тексту, исключая другие правила.<br>
+Чтобы проверить все правила, используйте вместо этого плавающую кнопку тестирования в правом нижнем углу.
+]]>
+</string>
+<string name="allow">Разрешить</string>
+<string name="block">Заблокировать</string>
+<string name="seconds">Секунд</string>
+<string name="seconds_short">Сек</string>
+<string name="within_seconds">В течение секунд</string>
+<string name="call_alert">Оповещение о звонке</string>
+<string name="help_call_alert">
+<![CDATA[
+Некоторые сервисы сначала отправят вам SMS, чтобы сообщить о предстоящем звонке, обычно в течение минуты.<br>
+<br>
+Например, SMS-сообщение вида:<br>
+&ensp; <font color="#888888">[некий сервис] Мы звоним вам, чтобы сообщить …, пожалуйста, ответьте.</font><br>
+<br>
+Регулярное выражение для такого сообщения будет:<br>
+&ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
+<br>
+Настройка по умолчанию <font color="#03DAC5"><b>120 Секунд</b></font> означает, что все звонки будут
+разрешены в течение следующих двух минут после получения такого сообщения.<br>
+<br>
+Работает как для обычных SMS, так и для flash SMS (SMS класса 0).<br>
+<br>
+<font color="#ea86ff"><b>Приоритет: 10</b></font>
+]]>
+</string>
+<string name="waning_using_wildcard_as_regex">Подстановочный знак `*` используется без предшествующей точки, вы имели в виду `.*`?</string>
+<string name="import_as">Импортировать как</string>
+<string name="api_key">Ключ API</string>
+<string name="mms_support">Поддержка MMS</string>
 </resources>

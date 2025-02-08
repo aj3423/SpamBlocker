@@ -1,91 +1,87 @@
 <resources>
-    <string name="contact_rule">Kontaktregel</string>
-    <string name="directory">Verzeichnis</string>
-    <string name="filename">Dateiname</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">Gültigkeitsdauer (Tage)</string>
-    <string name="column_mapping">Spaltenzuordnung</string>
-    <string name="include_spam_db">Spam-Datenbank einschließen</string>
-    <string name="no_config_needed">Keine Konfiguration erforderlich</string>
-    <string name="success">Erfolg</string>
-    <string name="failed">Fehler</string>
-    <string name="running">Läuft</string>
-    <string name="optional">(optional)</string>
-
-    <string name="help_action_header">
-        <![CDATA[
-        - <font color="#03DAC5"><b>Test</b></font><br>
-        Diese Aktionen werden sofort ausgeführt, um zu überprüfen, ob sie korrekt eingerichtet wurden,
-        oder vielleicht möchten Sie diesen Workflow einfach manuell ausführen.<br>
-        <br>
-        - <font color="#00BFFF"><b>Neu</b></font><br>
-            Eine neue Aktion erstellen, mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe zu erledigen.<br>
-            Die grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie verkettbar sind oder nicht.
-        ]]>
-    </string>
-
-    <string name="help_bot_preset_dnc">
-        <![CDATA[
-            Spam-Telefonnummern von
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> an jedem Werktag herunterladen
-             und in die Spam-Datenbank importieren.
-        ]]>
-    </string>
-    <string name="help_bot_preset_cleanup_spam_db">Abgelaufene Einträge aus der Spam-Datenbank löschen.</string>
-    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufsdatensätze löschen.</string>
-    <string name="help_bot_preset_auto_backup">Alle Einstellungen sichern.</string>
-    <string name="everyday">Täglich</string>
-    <string name="daily">Täglich</string>
-    <string name="weekly">Wöchentlich</string>
-    <string name="periodically">Periodisch</string>
-    <string name="time">Zeit</string>
-    <string name="workdays">Werktage</string>
-
-    <string name="help_backup">
-        <![CDATA[
-        Das Sicherungsdateiformat ist eine gzip-komprimierte JSON-Datei. Sie können sie mit jedem Archivierungsprogramm öffnen und bearbeiten.<br>
-        <br>
-        - <font color="#00BFFF"><b>Spam-Datenbank einschließen</b></font><br>
-        Langer Druck auf die Taste, um auch die Spam-Datenbank zu exportieren/importieren.<br>
-        <br>
-        <font color="#ffa500">Hinweis:</font><br>
-        &ensp; Das Einschließen der Spam-Datenbank in die Sicherungsdatei erhöht deren Größe erheblich. Da die Datenbank regelmäßig aktualisiert wird, ist dies normalerweise nicht notwendig, es sei denn, Sie möchten sie auf ein anderes Telefon klonen.<br>
-        ]]>
-    </string>
-    <string name="mode">Modus</string>
-    <string-array name="regex_action_add_mode">
-        <item>Erstellen</item>
-        <item>Ersetzen</item>
-        <item>Zusammenführen</item>
-    </string-array>
-    <string name="help_regex_action_add_mode">
-        <![CDATA[
-        -<font color="#00BFFF"><b>Erstellen</b></font><br>
-        &ensp; Erstelle immer eine neue Regex-Regel.<br>
-        <br>
-        - <font color="#00BFFF"><b>Ersetzen</b></font><br>
-        &ensp; Es wird versucht, eine bestehende Regel zu finden, die dieselbe <b>Beschreibung</b> hat. <br>
-        &ensp;&ensp; - Wenn gefunden, wird sie überschrieben.<br>
-        &ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
-        <br>
-        - <font color="#00BFFF"><b>Zusammenführen</b></font><br>
-        &ensp;- Wenn eine Regel mit derselben Beschreibung existiert, werden die neuen Nummern in sie zusammengeführt,<br>
-         doppelte Nummern werden automatisch entfernt.<br>
-        &ensp;- Wenn sie nicht existiert, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
-        ]]>
-    </string>
-
-    <string name="action_enable_workflow">Workflow aktivieren</string>
-    <string name="help_action_enable_workflow">
-        <![CDATA[
-        Aktiviere oder deaktiviere diesen Workflow. Ein Anwendungsfall wäre, einen periodischen Workflow zu einem einmaligen Workflow zu machen.
-        ]]>
-    </string>
-    <string name="action_enable_app">App aktivieren</string>
-    <string name="help_action_enable_app">
-        <![CDATA[
-        Aktiviere oder deaktiviere die App. Ein Anwendungsfall wäre, die App vorübergehend zu deaktivieren und sie nach ein paar Stunden automatisch wieder zu aktivieren.
-        ]]>
-    </string>
+<string name="contact_rule">Kontaktregel</string>
+<string name="directory">Verzeichnis</string>
+<string name="filename">Dateiname</string>
+<string name="url">URL</string>
+<string name="expiry_days">Gültigkeitsdauer (Tage)</string>
+<string name="column_mapping">Spaltenzuordnung</string>
+<string name="include_spam_db">Spam-Datenbank einschließen</string>
+<string name="no_config_needed">Keine Konfiguration erforderlich</string>
+<string name="success">Erfolg</string>
+<string name="failed">Fehler</string>
+<string name="running">Läuft</string>
+<string name="optional">(optional)</string>
+<string name="help_action_header">
+<![CDATA[
+- <font color="#03DAC5"><b>Test</b></font><br>
+Diese Aktionen werden sofort ausgeführt, um zu überprüfen, ob sie korrekt eingerichtet wurden,
+oder vielleicht möchten Sie diesen Workflow einfach manuell ausführen.<br>
+<br>
+- <font color="#00BFFF"><b>Neu</b></font><br>
+Eine neue Aktion erstellen, mehrere Aktionen können miteinander verkettet werden, um eine komplexe Aufgabe zu erledigen.<br>
+Die grünen oder roten Punkte zwischen den Elementen zeigen an, ob sie verkettbar sind oder nicht.
+]]>
+</string>
+<string name="help_bot_preset_dnc">
+<![CDATA[
+Spam-Telefonnummern von
+<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+<no_translate>FTC - Do Not Call</no_translate> </a> an jedem Werktag herunterladen
+und in die Spam-Datenbank importieren.
+]]>
+</string>
+<string name="help_bot_preset_cleanup_spam_db">Abgelaufene Einträge aus der Spam-Datenbank löschen.</string>
+<string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufsdatensätze löschen.</string>
+<string name="help_bot_preset_auto_backup">Alle Einstellungen sichern.</string>
+<string name="everyday">Täglich</string>
+<string name="daily">Täglich</string>
+<string name="weekly">Wöchentlich</string>
+<string name="periodically">Periodisch</string>
+<string name="time">Zeit</string>
+<string name="workdays">Werktage</string>
+<string name="help_backup">
+<![CDATA[
+Das Sicherungsdateiformat ist eine gzip-komprimierte JSON-Datei. Sie können sie mit jedem Archivierungsprogramm öffnen und bearbeiten.<br>
+<br>
+- <font color="#00BFFF"><b>Spam-Datenbank einschließen</b></font><br>
+Langer Druck auf die Taste, um auch die Spam-Datenbank zu exportieren/importieren.<br>
+<br>
+<font color="#ffa500">Hinweis:</font><br>
+&ensp; Das Einschließen der Spam-Datenbank in die Sicherungsdatei erhöht deren Größe erheblich. Da die Datenbank regelmäßig aktualisiert wird, ist dies normalerweise nicht notwendig, es sei denn, Sie möchten sie auf ein anderes Telefon klonen.<br>
+]]>
+</string>
+<string name="mode">Modus</string>
+<string-array name="regex_action_add_mode">
+<item>Erstellen</item>
+<item>Ersetzen</item>
+<item>Zusammenführen</item>
+</string-array>
+<string name="help_regex_action_add_mode">
+<![CDATA[
+-<font color="#00BFFF"><b>Erstellen</b></font><br>
+&ensp; Erstelle immer eine neue Regex-Regel.<br>
+<br>
+- <font color="#00BFFF"><b>Ersetzen</b></font><br>
+&ensp; Es wird versucht, eine bestehende Regel zu finden, die dieselbe <b>Beschreibung</b> hat. <br>
+&ensp;&ensp; - Wenn gefunden, wird sie überschrieben.<br>
+&ensp;&ensp; - Wenn nicht gefunden, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
+<br>
+- <font color="#00BFFF"><b>Zusammenführen</b></font><br>
+&ensp;- Wenn eine Regel mit derselben Beschreibung existiert, werden die neuen Nummern in sie zusammengeführt,<br>
+doppelte Nummern werden automatisch entfernt.<br>
+&ensp;- Wenn sie nicht existiert, wird eine neue Regel erstellt, genauso wie bei <b>Erstellen</b>.<br>
+]]>
+</string>
+<string name="action_enable_workflow">Workflow aktivieren</string>
+<string name="help_action_enable_workflow">
+<![CDATA[
+Aktiviere oder deaktiviere diesen Workflow. Ein Anwendungsfall wäre, einen periodischen Workflow zu einem einmaligen Workflow zu machen.
+]]>
+</string>
+<string name="action_enable_app">App aktivieren</string>
+<string name="help_action_enable_app">
+<![CDATA[
+Aktiviere oder deaktiviere die App. Ein Anwendungsfall wäre, die App vorübergehend zu deaktivieren und sie nach ein paar Stunden automatisch wieder zu aktivieren.
+]]>
+</string>
 </resources>

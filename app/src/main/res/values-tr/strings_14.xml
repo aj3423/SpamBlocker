@@ -1,96 +1,96 @@
 <resources>
-    <string name="http_method">Yöntem</string>
-    <string name="http_post_body">Gönderi Gövdesi</string>
-    <string name="help_http_post_body">
-        <![CDATA[
-        Desteklenen etiketler:<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="missing_credentials">Lütfen geçerli yetkilendirme bilgilerini girin.</string>
-    <string name="delay">Gecikme</string>
-    <string name="report_number_require_call_log_permission">
-        Tekrarlanan aramaların veya geri aranan numaraların yanlış raporlanmasını önlemek için,
-        numara raporlaması arama günlüğü iznine ihtiyaç duyar.
-    </string>
-    <string name="exclude_services">Hizmetleri Hariç Tut</string>
-    <string name="help_exclude_bg_service">
-        <![CDATA[
-        Bazı uygulamalar ekstra ön plan hizmetleri çalıştırır, bunları hariç tutmak için hizmet adlarını buraya ekleyin.<br>
-        <br>
-        Bir hizmet adı bulmak için:<br>
-        &emsp; 1. Uygulamada hizmeti etkinleştirin.<br>
-        &emsp; 2. Tüm etkinleştirilmiş hizmet adları burada görünecektir.<br>
-        &emsp; 3. Eklemek için bir adıma dokunun.<br>
-        <br>
-        Virgülle ayırarak birden fazla ad ekleyebilirsiniz.
-        ]]>
-    </string>
-    <string name="running_services">Çalışan Hizmetler</string>
-    <string name="report_number">Numarayı Bildir</string>
-    <string-array name="spam_categories">
-        <item>Geçerli Numara</item>
-        <item>Sahtekarlık</item>
-        <item>Pazarlama</item>
-        <item>Anket</item>
-        <item>Siyasi</item>
-        <item>Diğer Spam</item>
-    </string-array>
-    <string name="action_category_config">Kategori Yapılandırması</string>
-    <string name="help_action_category_config">
-        <![CDATA[
-        Yalnızca aşağıdaki spam kategorileri desteklenir, API\'den gelen diğer tüm kategoriler bunlardan birine eşleştirilmelidir.<br>
-        <br>
-         - <font color="#03DAC5"><b>{geçerli}</b></font><br>
-        &ensp; Geçerli numara olarak bildirin, spam değil.<br>
-        <br>
-         - <font color="#fa7f71"><b>{sahtekarlık}</b></font><br>
-         - <font color="#fa7f71"><b>{pazarlama}</b></font><br>
-         - <font color="#fa7f71"><b>{anket}</b></font><br>
-         - <font color="#fa7f71"><b>{siyasi}</b></font><br>
-        <br>
-         - <font color="#fa7f71"><b>{diğer}</b></font><br>
-        &ensp; Yukarıdaki kategorilerden hiçbiri uygulanmadığında kullanılan yedek spam türü.<br>
-        ]]>
-    </string>
-    <string name="missing_category">
-        %s kategorisi %s eyleminde yapılandırılmadı, lütfen API yapılandırmasında yapılandırın (API bu kategoriyi destekliyorsa).
-    </string>
-    <string name="target_text">Hedef Metin</string>
-    <string name="match_found">Eşleşme bulundu</string>
-    <string name="match_not_found">Eşleşme bulunamadı</string>
-    <string name="help_test_regex">
-        <![CDATA[
-        Bu, yalnızca diğer kuralları hariç tutarak bu düzenli ifadenin bir metinle eşleşip eşleşmediğini test etmek içindir.<br>
-        Tüm kurallara karşı test etmek için, bunun yerine sağ alt köşedeki yüzen test düğmesini kullanın.
-        ]]>
-    </string>
-    <string name="allow">İzin Ver</string>
-    <string name="block">Engelle</string>
-    <string name="seconds">Saniye</string>
-    <string name="seconds_short">Sn</string>
-    <string name="within_seconds">Saniye İçinde</string>
-    <string name="call_alert">Arama Uyarısı</string>
-    <string name="help_call_alert">
-        <![CDATA[
-        Bazı hizmetler, size bir aramanın yaklaşmakta olduğunu, genellikle bir dakika içinde, önceden bildirmek için size mesaj gönderecektir.<br>
-        <br>
-        Örneğin, şöyle bir SMS mesajı:<br>
-        &ensp; <font color="#888888">[bazı hizmet] Sizi bilgilendirmek için arıyoruz ..., lütfen cevaplamaktan çekinmeyin.</font><br>
-        <br>
-        Böyle bir mesaj için normal ifade şöyle olacaktır:<br>
-        &ensp; <font color="#03DAC5"><b><translate>.*cevap.*ver.*</translate></b></font> <br>
-        <br>
-        Varsayılan ayar <font color="#03DAC5"><b>120 Saniye</b></font>, böyle bir mesaj aldıktan sonraki iki dakika içinde tüm aramalara izin verileceği anlamına gelir.<br>
-        <br>
-        Hem normal SMS hem de flaş SMS (sınıf 0 SMS) için çalışır.<br>
-        <br>
-        <font color="#ea86ff"><b>Öncelik: 10</b></font>
-        ]]>
-    </string>
-    <string name="waning_using_wildcard_as_regex">Wildcard `*`, öncesinde nokta olmadan kullanıldı, `.*` demek istediniz mi?</string>
-    <string name="import_as">Şu Olarak İçe Aktar</string>
-    <string name="api_key">API Anahtarı</string>
-    <string name="mms_support">MMS desteği</string>
+<string name="http_method">Yöntem</string>
+<string name="http_post_body">Gönderi Gövdesi</string>
+<string name="help_http_post_body">
+<![CDATA[
+Desteklenen etiketler:<br>
+<br>
+%s
+]]>
+</string>
+<string name="missing_credentials">Lütfen geçerli yetkilendirme bilgilerini girin.</string>
+<string name="delay">Gecikme</string>
+<string name="report_number_require_call_log_permission">
+Tekrarlanan aramaların veya geri aranan numaraların yanlış raporlanmasını önlemek için,
+numara raporlaması arama günlüğü iznine ihtiyaç duyar.
+</string>
+<string name="exclude_services">Hizmetleri Hariç Tut</string>
+<string name="help_exclude_bg_service">
+<![CDATA[
+Bazı uygulamalar ekstra ön plan hizmetleri çalıştırır, bunları hariç tutmak için hizmet adlarını buraya ekleyin.<br>
+<br>
+Bir hizmet adı bulmak için:<br>
+&emsp; 1. Uygulamada hizmeti etkinleştirin.<br>
+&emsp; 2. Tüm etkinleştirilmiş hizmet adları burada görünecektir.<br>
+&emsp; 3. Eklemek için bir adıma dokunun.<br>
+<br>
+Virgülle ayırarak birden fazla ad ekleyebilirsiniz.
+]]>
+</string>
+<string name="running_services">Çalışan Hizmetler</string>
+<string name="report_number">Numarayı Bildir</string>
+<string-array name="spam_categories">
+<item>Geçerli Numara</item>
+<item>Sahtekarlık</item>
+<item>Pazarlama</item>
+<item>Anket</item>
+<item>Siyasi</item>
+<item>Diğer Spam</item>
+</string-array>
+<string name="action_category_config">Kategori Yapılandırması</string>
+<string name="help_action_category_config">
+<![CDATA[
+Yalnızca aşağıdaki spam kategorileri desteklenir, API\'den gelen diğer tüm kategoriler bunlardan birine eşleştirilmelidir.<br>
+<br>
+- <font color="#03DAC5"><b>{geçerli}</b></font><br>
+&ensp; Geçerli numara olarak bildirin, spam değil.<br>
+<br>
+- <font color="#fa7f71"><b>{sahtekarlık}</b></font><br>
+- <font color="#fa7f71"><b>{pazarlama}</b></font><br>
+- <font color="#fa7f71"><b>{anket}</b></font><br>
+- <font color="#fa7f71"><b>{siyasi}</b></font><br>
+<br>
+- <font color="#fa7f71"><b>{diğer}</b></font><br>
+&ensp; Yukarıdaki kategorilerden hiçbiri uygulanmadığında kullanılan yedek spam türü.<br>
+]]>
+</string>
+<string name="missing_category">
+%s kategorisi %s eyleminde yapılandırılmadı, lütfen API yapılandırmasında yapılandırın (API bu kategoriyi destekliyorsa).
+</string>
+<string name="target_text">Hedef Metin</string>
+<string name="match_found">Eşleşme bulundu</string>
+<string name="match_not_found">Eşleşme bulunamadı</string>
+<string name="help_test_regex">
+<![CDATA[
+Bu, yalnızca diğer kuralları hariç tutarak bu düzenli ifadenin bir metinle eşleşip eşleşmediğini test etmek içindir.<br>
+Tüm kurallara karşı test etmek için, bunun yerine sağ alt köşedeki yüzen test düğmesini kullanın.
+]]>
+</string>
+<string name="allow">İzin Ver</string>
+<string name="block">Engelle</string>
+<string name="seconds">Saniye</string>
+<string name="seconds_short">Sn</string>
+<string name="within_seconds">Saniye İçinde</string>
+<string name="call_alert">Arama Uyarısı</string>
+<string name="help_call_alert">
+<![CDATA[
+Bazı hizmetler, size bir aramanın yaklaşmakta olduğunu, genellikle bir dakika içinde, önceden bildirmek için size mesaj gönderecektir.<br>
+<br>
+Örneğin, şöyle bir SMS mesajı:<br>
+&ensp; <font color="#888888">[bazı hizmet] Sizi bilgilendirmek için arıyoruz ..., lütfen cevaplamaktan çekinmeyin.</font><br>
+<br>
+Böyle bir mesaj için normal ifade şöyle olacaktır:<br>
+&ensp; <font color="#03DAC5"><b><translate>.*cevap.*ver.*</translate></b></font> <br>
+<br>
+Varsayılan ayar <font color="#03DAC5"><b>120 Saniye</b></font>, böyle bir mesaj aldıktan sonraki iki dakika içinde tüm aramalara izin verileceği anlamına gelir.<br>
+<br>
+Hem normal SMS hem de flaş SMS (sınıf 0 SMS) için çalışır.<br>
+<br>
+<font color="#ea86ff"><b>Öncelik: 10</b></font>
+]]>
+</string>
+<string name="waning_using_wildcard_as_regex">Wildcard `*`, öncesinde nokta olmadan kullanıldı, `.*` demek istediniz mi?</string>
+<string name="import_as">Şu Olarak İçe Aktar</string>
+<string name="api_key">API Anahtarı</string>
+<string name="mms_support">MMS desteği</string>
 </resources>

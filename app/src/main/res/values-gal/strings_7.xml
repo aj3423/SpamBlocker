@@ -1,45 +1,45 @@
 <resources>
-    <string name="start_time">Hora de Inicio</string>
-    <string name="end_time">Hora de Fin</string>
-    <string name="switch_mode">Cambiar Modo</string>
-    <string name="contact_group">Grupo de Contactos</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>Número de Teléfono</b></font>:<br>
-        &ensp; O modo por defecto, a expresión regular coincidirá co número de teléfono.<br>
-        <br>
-        <font color="#00BFFF"><b>Contactos</b></font>:<br>
-        &ensp; A expresión regular coincidirá co nome do contacto asociado co número de entrada.<br>
-        &ensp;  - Un caso de uso:<br>
-        &emsp; Bloquear todas as chamadas non-contactos no fin de semana con expresión regular `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>Grupo de Contactos</b></font>:<br>
-        &ensp; A expresión regular coincidirá co nome do grupo de contacto asociado co número de entrada,
-                 impactando a todos os contactos dese grupo, polo que non tes que engadirlos individualmente,
-                 e non tes que actualizarlo mesmo cando haxa cambios de persoal.<br>
-        &ensp;  - Un caso de uso:<br>
-        &emsp; Bloquear todos os compañeiros de traballo no fin de semana bloqueando o grupo de contactos "traballo".
-        ]]>
-    </string>
-    <string name="text_too_long">Texto demasiado longo, a edición está desactivada</string>
-    <string name="follow_system"><short>Seguir Sistema</short></string>
-    <string name="theme">Tema</string>
-    <string-array name="theme_list">
-        <item>Claro</item>
-        <item>Escuro</item>
-    </string-array>
-    <string-array name="rule_dropdown_menu">
-        <item>Buscar regra</item>
-        <item>Clonar regra</item>
-        <item>Eliminar regra</item>
-        <item>Eliminar regras duplicadas</item>
-        <item>Eliminar todas (%d) regras</item>
-    </string-array>
-    <string name="confirm_delete_duplicated_rule">Confirma a eliminación de %d Regras duplicadas?</string>
-    <string name="duration">Duración</string>
-    <string name="help_recent_apps_individual_duration">
-        <![CDATA[
-        Duración individual para cada aplicación, cando se deixa en branco, voltará á duración global.
-        ]]>
-    </string>
+<string name="start_time">Hora de Inicio</string>
+<string name="end_time">Hora de Fin</string>
+<string name="switch_mode">Cambiar Modo</string>
+<string name="contact_group">Grupo de Contactos</string>
+<string name="help_number_mode">
+<![CDATA[
+<font color="#00BFFF"><b>Número de Teléfono</b></font>:<br>
+&ensp; O modo por defecto, a expresión regular coincidirá co número de teléfono.<br>
+<br>
+<font color="#00BFFF"><b>Contactos</b></font>:<br>
+&ensp; A expresión regular coincidirá co nome do contacto asociado co número de entrada.<br>
+&ensp;  - Un caso de uso:<br>
+&emsp; Bloquear todas as chamadas non-contactos no fin de semana con expresión regular `.*`.<br>
+<br>
+<font color="#00BFFF"><b>Grupo de Contactos</b></font>:<br>
+&ensp; A expresión regular coincidirá co nome do grupo de contacto asociado co número de entrada,
+impactando a todos os contactos dese grupo, polo que non tes que engadirlos individualmente,
+e non tes que actualizarlo mesmo cando haxa cambios de persoal.<br>
+&ensp;  - Un caso de uso:<br>
+&emsp; Bloquear todos os compañeiros de traballo no fin de semana bloqueando o grupo de contactos "traballo".
+]]>
+</string>
+<string name="text_too_long">Texto demasiado longo, a edición está desactivada</string>
+<string name="follow_system"><short>Seguir Sistema</short></string>
+<string name="theme">Tema</string>
+<string-array name="theme_list">
+<item>Claro</item>
+<item>Escuro</item>
+</string-array>
+<string-array name="rule_dropdown_menu">
+<item>Buscar regra</item>
+<item>Clonar regra</item>
+<item>Eliminar regra</item>
+<item>Eliminar regras duplicadas</item>
+<item>Eliminar todas (%d) regras</item>
+</string-array>
+<string name="confirm_delete_duplicated_rule">Confirma a eliminación de %d Regras duplicadas?</string>
+<string name="duration">Duración</string>
+<string name="help_recent_apps_individual_duration">
+<![CDATA[
+Duración individual para cada aplicación, cando se deixa en branco, voltará á duración global.
+]]>
+</string>
 </resources>

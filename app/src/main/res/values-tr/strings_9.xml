@@ -1,90 +1,87 @@
 <resources>
-    <string name="contact_rule">İletişim Kuralı</string>
-    <string name="directory">Dizin</string>
-    <string name="filename">DosyaAdı</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">Son Kullanım Günleri</string>
-    <string name="column_mapping">Sütun Eşleştirme</string>
-    <string name="include_spam_db">Spam Veritabanını Dahil Et</string>
-    <string name="no_config_needed">Yapılandırma gerekmez</string>
-    <string name="success">Başarılı</string>
-    <string name="failed">Başarısız</string>
-    <string name="running">Çalışıyor</string>
-    <string name="optional">(isteğe bağlı)</string>
-
-    <string name="help_action_header">
-        <![CDATA[
-        - <font color="#03DAC5"><b>Test</b></font><br>
-        Bu eylemler hemen gerçekleştirilecektir, doğru bir şekilde ayarlanıp ayarlanmadığını kontrol etmek için,
-        ya da belki bu iş akışını manuel olarak çalıştırmak istiyorsunuzdur.<br>
-        <br>
-        - <font color="#00BFFF"><b>Yeni</b></font><br>
-            Yeni bir eylem oluşturun, birden fazla eylem bir araya getirilerek karmaşık bir görevi tamamlayabilir.<br>
-            Öğeler arasındaki yeşil veya kırmızı noktalar, bunların engellenebilir olup olmadığını gösterir.
-        ]]>
-    </string>
-
-    <string name="help_bot_preset_dnc">
-        <![CDATA[
-            Spam telefon numaralarını şuradan indir.
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Arama Yapma</no_translate> </a> her iş günü,
-             ve bunları spam veritabanına aktar.
-        ]]>
-    </string>
-    <string name="help_bot_preset_cleanup_spam_db">Spam veritabanından süresi dolmuş kayıtları sil.</string>
-    <string name="help_bot_preset_cleanup_history">Süresi dolmuş arama/SMS kayıtlarını sil.</string>
-    <string name="help_bot_preset_auto_backup">Tüm ayarları yedekle.</string>
-    <string name="everyday">Her gün</string>
-    <string name="daily">Günlük</string>
-    <string name="weekly">Haftalık</string>
-    <string name="periodically">Düzenli olarak</string>
-    <string name="time">Zaman</string>
-    <string name="workdays">İş günleri</string>
-
-    <string name="help_backup">
-        <![CDATA[
-        Yedek dosya formatı gzip sıkıştırılmış bir jsondur, herhangi bir arşivleyici ile açıp düzenleyebilirsiniz.<br>
-        <br>
-        - <font color="#00BFFF"><b>Spam Veritabanını Dahil Et</b></font><br>
-        Spam veritabanını da içe/dışa aktarmak için düğmeye uzun basın.<br>
-        <br>
-        <font color="#ffa500">Not:</font><br>
-        &ensp; Yedek dosyasına spam veritabanını dahil etmek, veritabanının düzenli olarak güncelleneceğinden boyutunu önemli ölçüde artıracaktır, bu genellikle başka bir telefona klonlamak istemediğiniz sürece gereksizdir.<br>
-        ]]>
-    </string>
-    <string name="mode">Mod</string>
-    <string name="help_regex_action_add_mode">
-        <![CDATA[
-        -<font color="#00BFFF"><b>Oluştur</b></font><br>
-        &ensp; Her zaman yeni bir regex kuralı oluşturun.<br>
-        <br>
-        - <font color="#00BFFF"><b>Değiştir</b></font><br>
-        &ensp; Aynı <b>açıklamaya</b> sahip mevcut bir kural bulmaya çalışacaktır. <br>
-        &ensp;&ensp; - Bulunursa, geçersiz hale getirilecektir.<br>
-        &ensp;&ensp; - Bulunmazsa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
-        <br>
-        - <font color="#00BFFF"><b>Birleştir</b></font><br>
-        &ensp;- Aynı açıklamalı bir kural varsa, yeni numaralar ona birleştirilecektir,<br>
-         yinelenen numaralar otomatik olarak kaldırılacaktır.<br>
-        &ensp;- Var yoksa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
-        ]]>
-    </string>
-    <string-array name="regex_action_add_mode">
-        <item>Oluştur</item>
-        <item>Değiştir</item>
-        <item>Birleştir</item>
-    </string-array>
-    <string name="action_enable_workflow">İş Akışını Etkinleştir</string>
-    <string name="help_action_enable_workflow">
-        <![CDATA[
-        Bu iş akışını etkinleştirin veya devre dışı bırakın. Bir kullanım örneği, periyodik bir iş akışını tek seferlik hale getirmek olur.
-        ]]>
-    </string>
-    <string name="action_enable_app">Uygulamayı Etkinleştir</string>
-    <string name="help_action_enable_app">
-        <![CDATA[
-        Uygulamayı etkinleştirin veya devre dışı bırakın. Bir kullanım örneği, geçici olarak devre dışı bırakıp birkaç saat sonra otomatik olarak yeniden etkinleştirmek olur.
-        ]]>
-    </string>
+<string name="contact_rule">İletişim Kuralı</string>
+<string name="directory">Dizin</string>
+<string name="filename">DosyaAdı</string>
+<string name="url">URL</string>
+<string name="expiry_days">Son Kullanım Günleri</string>
+<string name="column_mapping">Sütun Eşleştirme</string>
+<string name="include_spam_db">Spam Veritabanını Dahil Et</string>
+<string name="no_config_needed">Yapılandırma gerekmez</string>
+<string name="success">Başarılı</string>
+<string name="failed">Başarısız</string>
+<string name="running">Çalışıyor</string>
+<string name="optional">(isteğe bağlı)</string>
+<string name="help_action_header">
+<![CDATA[
+- <font color="#03DAC5"><b>Test</b></font><br>
+Bu eylemler hemen gerçekleştirilecektir, doğru bir şekilde ayarlanıp ayarlanmadığını kontrol etmek için,
+ya da belki bu iş akışını manuel olarak çalıştırmak istiyorsunuzdur.<br>
+<br>
+- <font color="#00BFFF"><b>Yeni</b></font><br>
+Yeni bir eylem oluşturun, birden fazla eylem bir araya getirilerek karmaşık bir görevi tamamlayabilir.<br>
+Öğeler arasındaki yeşil veya kırmızı noktalar, bunların engellenebilir olup olmadığını gösterir.
+]]>
+</string>
+<string name="help_bot_preset_dnc">
+<![CDATA[
+Spam telefon numaralarını şuradan indir.
+<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+<no_translate>FTC - Arama Yapma</no_translate> </a> her iş günü,
+ve bunları spam veritabanına aktar.
+]]>
+</string>
+<string name="help_bot_preset_cleanup_spam_db">Spam veritabanından süresi dolmuş kayıtları sil.</string>
+<string name="help_bot_preset_cleanup_history">Süresi dolmuş arama/SMS kayıtlarını sil.</string>
+<string name="help_bot_preset_auto_backup">Tüm ayarları yedekle.</string>
+<string name="everyday">Her gün</string>
+<string name="daily">Günlük</string>
+<string name="weekly">Haftalık</string>
+<string name="periodically">Düzenli olarak</string>
+<string name="time">Zaman</string>
+<string name="workdays">İş günleri</string>
+<string name="help_backup">
+<![CDATA[
+Yedek dosya formatı gzip sıkıştırılmış bir jsondur, herhangi bir arşivleyici ile açıp düzenleyebilirsiniz.<br>
+<br>
+- <font color="#00BFFF"><b>Spam Veritabanını Dahil Et</b></font><br>
+Spam veritabanını da içe/dışa aktarmak için düğmeye uzun basın.<br>
+<br>
+<font color="#ffa500">Not:</font><br>
+&ensp; Yedek dosyasına spam veritabanını dahil etmek, veritabanının düzenli olarak güncelleneceğinden boyutunu önemli ölçüde artıracaktır, bu genellikle başka bir telefona klonlamak istemediğiniz sürece gereksizdir.<br>
+]]>
+</string>
+<string name="mode">Mod</string>
+<string name="help_regex_action_add_mode">
+<![CDATA[
+-<font color="#00BFFF"><b>Oluştur</b></font><br>
+&ensp; Her zaman yeni bir regex kuralı oluşturun.<br>
+<br>
+- <font color="#00BFFF"><b>Değiştir</b></font><br>
+&ensp; Aynı <b>açıklamaya</b> sahip mevcut bir kural bulmaya çalışacaktır. <br>
+&ensp;&ensp; - Bulunursa, geçersiz hale getirilecektir.<br>
+&ensp;&ensp; - Bulunmazsa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
+<br>
+- <font color="#00BFFF"><b>Birleştir</b></font><br>
+&ensp;- Aynı açıklamalı bir kural varsa, yeni numaralar ona birleştirilecektir,<br>
+yinelenen numaralar otomatik olarak kaldırılacaktır.<br>
+&ensp;- Var yoksa, <b>Oluştur</b> ile aynı şekilde yeni bir kural oluşturulacaktır.<br>
+]]>
+</string>
+<string-array name="regex_action_add_mode">
+<item>Oluştur</item>
+<item>Değiştir</item>
+<item>Birleştir</item>
+</string-array>
+<string name="action_enable_workflow">İş Akışını Etkinleştir</string>
+<string name="help_action_enable_workflow">
+<![CDATA[
+Bu iş akışını etkinleştirin veya devre dışı bırakın. Bir kullanım örneği, periyodik bir iş akışını tek seferlik hale getirmek olur.
+]]>
+</string>
+<string name="action_enable_app">Uygulamayı Etkinleştir</string>
+<string name="help_action_enable_app">
+<![CDATA[
+Uygulamayı etkinleştirin veya devre dışı bırakın. Bir kullanım örneği, geçici olarak devre dışı bırakıp birkaç saat sonra otomatik olarak yeniden etkinleştirmek olur.
+]]>
+</string>
 </resources>

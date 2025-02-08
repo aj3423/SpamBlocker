@@ -1,91 +1,87 @@
 <resources>
-    <string name="contact_rule">قانون مخاطب</string>
-    <string name="directory">دایرکتوری</string>
-    <string name="filename">نام فایل</string>
-    <string name="url">URL</string>
-    <string name="expiry_days">روزهای انقضا</string>
-    <string name="column_mapping">نقشه ستون</string>
-    <string name="include_spam_db">شامل پایگاه داده اسپم</string>
-    <string name="no_config_needed">نیازی به پیکربندی نیست</string>
-    <string name="success">موفق</string>
-    <string name="failed">ناموفق</string>
-    <string name="running">در حال اجرا</string>
-    <string name="optional">(اختیاری)</string>
-
-    <string name="help_action_header">
-        <![CDATA[
-        - <font color="#03DAC5"><b>آزمایش</b></font><br>
-        این اقدامات بلافاصله برای بررسی اینکه آیا به درستی تنظیم شده است یا خیر، اجرا می شوند، یا شاید فقط بخواهید این گردش کار را به صورت دستی اجرا کنید.<br>
-        <br>
-        - <font color="#00BFFF"><b>جدید</b></font><br>
-            یک اقدام جدید ایجاد کنید، چندین اقدام را می توان برای تکمیل یک کار پیچیده به هم زنجیر کرد.<br>
-            این نقاط سبز یا قرمز بین اقلام نشان می دهند که آیا آنها قابل زنجیر شدن هستند یا خیر.
-        ]]>
-    </string>
-
-    <string name="help_bot_preset_dnc">
-        <![CDATA[
-            شماره تلفن‌های اسپم را از
-            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> هر روز کاری دانلود کنید،
-             و آنها را به پایگاه داده اسپم وارد کنید.
-        ]]>
-    </string>
-    <string name="help_bot_preset_cleanup_spam_db">رکوردهای منقضی شده را از پایگاه داده اسپم حذف کنید.</string>
-    <string name="help_bot_preset_cleanup_history">سابقه تماس/ پیامک های منقضی شده را حذف کنید.</string>
-    <string name="help_bot_preset_auto_backup">تمام تنظیمات را پشتیبان گیری کنید.</string>
-    <string name="everyday">هر روز</string>
-    <string name="daily">روزانه</string>
-    <string name="weekly">هفتگی</string>
-    <string name="periodically">به طور دوره ای</string>
-    <string name="time">زمان</string>
-    <string name="workdays">روزهای کاری</string>
-
-    <string name="help_backup">
-        <![CDATA[
-        فرمت فایل پشتیبان، یک فایل json فشرده شده با gzip است، می توانید آن را با هر ابزار آرشیو باز و ویرایش کنید.<br>
-        <br>
-        - <font color="#00BFFF"><b>شامل پایگاه داده اسپم</b></font><br>
-        برای صادرات/واردات پایگاه داده اسپم، دکمه را طولانی فشار دهید.<br>
-        <br>
-        <font color="#ffa500">توجه:</font><br>
-        &ensp; شامل کردن پایگاه داده اسپم در فایل پشتیبان، اندازه آن را به طور قابل توجهی افزایش می دهد،
-        از آنجایی که پایگاه داده به طور مرتب به روز می شود، این معمولا ضروری نیست، مگر اینکه بخواهید آن را به تلفن دیگری کپی کنید.<br>
-        ]]>
-    </string>
-    <string name="mode">حالت</string>
-    <string-array name="regex_action_add_mode">
-        <item>ایجاد</item>
-        <item>جایگزینی</item>
-        <item>ادغام</item>
-    </string-array>
-    <string name="help_regex_action_add_mode">
-        <![CDATA[
-        -<font color="#00BFFF"><b>ایجاد</b></font><br>
-        &ensp; همیشه یک قانون عبارت باقاعده جدید ایجاد کنید.<br>
-        <br>
-        - <font color="#00BFFF"><b>جایگزینی</b></font><br>
-        &ensp; سعی می کند قانونی موجود که همان <b>شرح</b> را دارد پیدا کند.<br>
-        &ensp;&ensp; - اگر پیدا شد، بر روی آن نوشته می شود.<br>
-        &ensp;&ensp; - اگر پیدا نشد، یک قانون جدید ایجاد می شود، مانند <b>ایجاد</b>.<br>
-        <br>
-        - <font color="#00BFFF"><b>ادغام</b></font><br>
-        &ensp;- اگر قانونی با همان شرح وجود داشته باشد، شماره های جدید به آن اضافه می شوند،<br>
-         شماره های تکراری به طور خودکار حذف می شوند.<br>
-        &ensp;- اگر وجود نداشته باشد، یک قانون جدید ایجاد می شود، مانند <b>ایجاد</b>.<br>
-        ]]>
-    </string>
-    <string name="action_enable_workflow">فعال کردن گردش کار</string>
-    <string name="help_action_enable_workflow">
-        <![CDATA[
-        فعال یا غیرفعال کردن این گردش کار. یک مورد استفاده این است که یک گردش کار دوره ای را یک باره کنید.
-        ]]>
-    </string>
-    <string name="action_enable_app">فعال کردن برنامه</string>
-    <string name="help_action_enable_app">
-        <![CDATA[
-        فعال یا غیرفعال کردن برنامه. یک مورد استفاده این است که به طور موقت آن را غیرفعال کنید و پس از چند ساعت دوباره به طور خودکار آن را فعال کنید.
-        ]]>
-    </string>
-
+<string name="contact_rule">قانون مخاطب</string>
+<string name="directory">دایرکتوری</string>
+<string name="filename">نام فایل</string>
+<string name="url">URL</string>
+<string name="expiry_days">روزهای انقضا</string>
+<string name="column_mapping">نقشه ستون</string>
+<string name="include_spam_db">شامل پایگاه داده اسپم</string>
+<string name="no_config_needed">نیازی به پیکربندی نیست</string>
+<string name="success">موفق</string>
+<string name="failed">ناموفق</string>
+<string name="running">در حال اجرا</string>
+<string name="optional">(اختیاری)</string>
+<string name="help_action_header">
+<![CDATA[
+- <font color="#03DAC5"><b>آزمایش</b></font><br>
+این اقدامات بلافاصله برای بررسی اینکه آیا به درستی تنظیم شده است یا خیر، اجرا می شوند، یا شاید فقط بخواهید این گردش کار را به صورت دستی اجرا کنید.<br>
+<br>
+- <font color="#00BFFF"><b>جدید</b></font><br>
+یک اقدام جدید ایجاد کنید، چندین اقدام را می توان برای تکمیل یک کار پیچیده به هم زنجیر کرد.<br>
+این نقاط سبز یا قرمز بین اقلام نشان می دهند که آیا آنها قابل زنجیر شدن هستند یا خیر.
+]]>
+</string>
+<string name="help_bot_preset_dnc">
+<![CDATA[
+شماره تلفن‌های اسپم را از
+<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+<no_translate>FTC - Do Not Call</no_translate> </a> هر روز کاری دانلود کنید،
+و آنها را به پایگاه داده اسپم وارد کنید.
+]]>
+</string>
+<string name="help_bot_preset_cleanup_spam_db">رکوردهای منقضی شده را از پایگاه داده اسپم حذف کنید.</string>
+<string name="help_bot_preset_cleanup_history">سابقه تماس/ پیامک های منقضی شده را حذف کنید.</string>
+<string name="help_bot_preset_auto_backup">تمام تنظیمات را پشتیبان گیری کنید.</string>
+<string name="everyday">هر روز</string>
+<string name="daily">روزانه</string>
+<string name="weekly">هفتگی</string>
+<string name="periodically">به طور دوره ای</string>
+<string name="time">زمان</string>
+<string name="workdays">روزهای کاری</string>
+<string name="help_backup">
+<![CDATA[
+فرمت فایل پشتیبان، یک فایل json فشرده شده با gzip است، می توانید آن را با هر ابزار آرشیو باز و ویرایش کنید.<br>
+<br>
+- <font color="#00BFFF"><b>شامل پایگاه داده اسپم</b></font><br>
+برای صادرات/واردات پایگاه داده اسپم، دکمه را طولانی فشار دهید.<br>
+<br>
+<font color="#ffa500">توجه:</font><br>
+&ensp; شامل کردن پایگاه داده اسپم در فایل پشتیبان، اندازه آن را به طور قابل توجهی افزایش می دهد،
+از آنجایی که پایگاه داده به طور مرتب به روز می شود، این معمولا ضروری نیست، مگر اینکه بخواهید آن را به تلفن دیگری کپی کنید.<br>
+]]>
+</string>
+<string name="mode">حالت</string>
+<string-array name="regex_action_add_mode">
+<item>ایجاد</item>
+<item>جایگزینی</item>
+<item>ادغام</item>
+</string-array>
+<string name="help_regex_action_add_mode">
+<![CDATA[
+-<font color="#00BFFF"><b>ایجاد</b></font><br>
+&ensp; همیشه یک قانون عبارت باقاعده جدید ایجاد کنید.<br>
+<br>
+- <font color="#00BFFF"><b>جایگزینی</b></font><br>
+&ensp; سعی می کند قانونی موجود که همان <b>شرح</b> را دارد پیدا کند.<br>
+&ensp;&ensp; - اگر پیدا شد، بر روی آن نوشته می شود.<br>
+&ensp;&ensp; - اگر پیدا نشد، یک قانون جدید ایجاد می شود، مانند <b>ایجاد</b>.<br>
+<br>
+- <font color="#00BFFF"><b>ادغام</b></font><br>
+&ensp;- اگر قانونی با همان شرح وجود داشته باشد، شماره های جدید به آن اضافه می شوند،<br>
+شماره های تکراری به طور خودکار حذف می شوند.<br>
+&ensp;- اگر وجود نداشته باشد، یک قانون جدید ایجاد می شود، مانند <b>ایجاد</b>.<br>
+]]>
+</string>
+<string name="action_enable_workflow">فعال کردن گردش کار</string>
+<string name="help_action_enable_workflow">
+<![CDATA[
+فعال یا غیرفعال کردن این گردش کار. یک مورد استفاده این است که یک گردش کار دوره ای را یک باره کنید.
+]]>
+</string>
+<string name="action_enable_app">فعال کردن برنامه</string>
+<string name="help_action_enable_app">
+<![CDATA[
+فعال یا غیرفعال کردن برنامه. یک مورد استفاده این است که به طور موقت آن را غیرفعال کنید و پس از چند ساعت دوباره به طور خودکار آن را فعال کنید.
+]]>
+</string>
 </resources>

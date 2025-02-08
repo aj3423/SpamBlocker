@@ -1,103 +1,103 @@
 <resources>
-    <string name="contacts">Kişiler</string>
-    <string name="non_contacts">Rehberde Olmayan</string>
-    <string name="inclusive">Dahil</string>
-    <string name="exclusive">Hariç</string>
-    <string name="help_contacts">
-        <![CDATA[
-        Etkinleştirildiğinde, rehberdeki kişilerden gelen aramalar/mesajlar her zaman izinlidir. <br>
-        <br>
-          - <b>Dahil</b>: <br>
-              &emsp; Rehberde olmayan numaralar diğer kurallara göre kontrol edilecektir. <br>
-              &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Hariç</b></font>: <br>
-              &emsp; Rehberde olmayan numaralar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font> <br>
-        <br>
-        Hem aramalar hem de SMS mesajları kabul edilecektir.
-        ]]>
-    </string>
-    <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Doğrulanmamışları Dahil Et</string>
-    <string name="unverified">Doğrulanmamış</string>
-    <string name="valid">Geçerli Arama</string>
-    <string name="spoof">Sahte Arama</string>
-    <string name="help_stir">
-        <![CDATA[
-            STIR/SHAKEN doğrulama <b>Android 11+</b> ve <b>taşıyıcı desteği gerektirir</b>. <br>
-            <br>
-            Üç olası doğrulama sonucu vardır: <br>
-            <font color="#03DAC5"><b>Geçerli</b></font> <br>
-            &emsp; Aramanın geçerli olması çok muhtemeldir, sahte değildir. <br>
-            <font color="#ffa500"><b>Doğrulanmamış</b></font> <br>
-            &emsp; Arama doğrulanamıyor veya STIR doğrulaması desteklenmiyor. <br>
-            <font color="#fa7f71"><b>Sahte</b></font> <br>
-            &emsp; Bunun sahte bir arama olma ihtimali çok yüksektir. <br>
-            <br>
-            <br>
-              - <b>Dahil</b>: <br>
-                  &emsp; Bu kontrolü geçemeyen aramalar, diğer kurallara göre hala kontrol edilecektir. <br>
-                  &emsp;  "<b>Doğrulanmamışları Dahil Et</b>" seçeneği işaretlendiğinde arama doğrulanmamış olsa bile geçecektir. <br>
-                  &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Hariç</b></font>: <br>
-                  &emsp; Bu kontrolü geçemeyen aramalar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
-                  &emsp;  "<b>Doğrulanmamışları Dahil Et</b>" seçeneği işaretlendiğinde, arama doğrulanmamış olsa bile engellenecektir. <br>
-                  &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font>
-        ]]>
-    </string>
-    <string name="failed_to_import_from_csv">
-        <![CDATA[
-        .csv dosyasında gerekli alan <b>şekil</b> eksik, ayrıntılı açıklama için balon ipucunu kontrol edin.
-        ]]>
-    </string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Spam aramalara karşı kitle kaynaklı veritabanlarımızı oluşturmak için, engellenen bir numarayı insan müdahalesi olmadan tüm API uç noktalarına otomatik olarak raporlayın.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Raporlama gecikmesi</font></h4><br>
-        Gelen bir arama engellendiğinde, numara raporlanmadan önce bir saatlik bir zaman tamponu olacaktır.
-        Eğer numara daha sonra tekrarlar veya bu zaman tamponu içinde geri aranırsa,
-        spam olmayan bir numara olarak kabul edilir ve raporlanmaz.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Gizlilik</font></h4>
-        <br>
-        API uç noktaları şunları görecektir:<br>
-        <br>
-         &ensp; - IP adresiniz<br>
-         &ensp; - Tls ve Tcp parmak izleri (Android sürümünüzü ortaya çıkarabilir)<br>
-         &ensp; - Raporlanan numara (ülke kodunuz dahil)<br>
-        <br>
-        Başka hiçbir şey raporlanmayacaktır.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Rapor türü</font></h4><br>
-        <h5>1. <font color="#fa7f71">Raporlamayacak:</font></h5>
-        <br>
-        - <font color="#fa7f71">Geçen numaralar</font><br>
-        Ve aşağıdaki engellenmiş türler:<br>
-        - <font color="#fa7f71">Genel Test</font><br>
-        - <font color="#fa7f71">Kişi Düzenli İfadesi</font><br>
-        - <font color="#fa7f71">Kişi Grubu Düzenli İfadesi</font><br>
-        - <font color="#fa7f71">Veritabanı</font><br>
-        - <font color="#fa7f71">Toplantı Modu</font><br>
-        - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
-        <br>
-        <h5>2. <font color="#03DAC5">Raporlayacak:</font></h5>
-        <br>
-        Aşağıdaki engellenmiş türler:<br>
-        - <font color="#03DAC5">Kişi Değil</font>(hariç tutulan)<br>
-        - <font color="#03DAC5">STIR Doğrulaması</font><br>
-        - <font color="#03DAC5">Numara Düzenli İfadesi</font><br>
-        - <font color="#03DAC5">SMS İçerik Düzenli İfadesi</font><br>
-        <br>
-        <h5>3. İstisna durumları:</h5>
-        <br>
-        - <font color="#03DAC5">Anlık Sorgu</font> tarafından engellendiğinde, numaranın derecelendirme puanını artırmak için aynı API\'ye geri bildirilecektir.
-         Örneğin, check.com\'dan API sorgusu tarafından engellendiğinde, yalnızca check.com\'a, others.com\'a değil rapor edilecektir. <br>
-        - <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve kayıt başlangıçta anlık bir API sorgusu tarafından eklenmişse,
-         yukarıdakiyle aynı nedenden dolayı yalnızca aynı API\'ye rapor edilecektir.<br>
-        ]]>
-    </string>
-    <string name="auto_report">Otomatik Raporlama</string>
+<string name="contacts">Kişiler</string>
+<string name="non_contacts">Rehberde Olmayan</string>
+<string name="inclusive">Dahil</string>
+<string name="exclusive">Hariç</string>
+<string name="help_contacts">
+<![CDATA[
+Etkinleştirildiğinde, rehberdeki kişilerden gelen aramalar/mesajlar her zaman izinlidir. <br>
+<br>
+- <b>Dahil</b>: <br>
+&emsp; Rehberde olmayan numaralar diğer kurallara göre kontrol edilecektir. <br>
+&emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
+<br>
+- <font color="#fa7f71"><b>Hariç</b></font>: <br>
+&emsp; Rehberde olmayan numaralar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
+&emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font> <br>
+<br>
+Hem aramalar hem de SMS mesajları kabul edilecektir.
+]]>
+</string>
+<string name="stir_attestation">STIR</string>
+<string name="stir_include_unverified">Doğrulanmamışları Dahil Et</string>
+<string name="unverified">Doğrulanmamış</string>
+<string name="valid">Geçerli Arama</string>
+<string name="spoof">Sahte Arama</string>
+<string name="help_stir">
+<![CDATA[
+STIR/SHAKEN doğrulama <b>Android 11+</b> ve <b>taşıyıcı desteği gerektirir</b>. <br>
+<br>
+Üç olası doğrulama sonucu vardır: <br>
+<font color="#03DAC5"><b>Geçerli</b></font> <br>
+&emsp; Aramanın geçerli olması çok muhtemeldir, sahte değildir. <br>
+<font color="#ffa500"><b>Doğrulanmamış</b></font> <br>
+&emsp; Arama doğrulanamıyor veya STIR doğrulaması desteklenmiyor. <br>
+<font color="#fa7f71"><b>Sahte</b></font> <br>
+&emsp; Bunun sahte bir arama olma ihtimali çok yüksektir. <br>
+<br>
+<br>
+- <b>Dahil</b>: <br>
+&emsp; Bu kontrolü geçemeyen aramalar, diğer kurallara göre hala kontrol edilecektir. <br>
+&emsp;  "<b>Doğrulanmamışları Dahil Et</b>" seçeneği işaretlendiğinde arama doğrulanmamış olsa bile geçecektir. <br>
+&emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
+<br>
+- <font color="#fa7f71"><b>Hariç</b></font>: <br>
+&emsp; Bu kontrolü geçemeyen aramalar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
+&emsp;  "<b>Doğrulanmamışları Dahil Et</b>" seçeneği işaretlendiğinde, arama doğrulanmamış olsa bile engellenecektir. <br>
+&emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font>
+]]>
+</string>
+<string name="failed_to_import_from_csv">
+<![CDATA[
+.csv dosyasında gerekli alan <b>şekil</b> eksik, ayrıntılı açıklama için balon ipucunu kontrol edin.
+]]>
+</string>
+<string name="help_auto_report">
+<![CDATA[
+Spam aramalara karşı kitle kaynaklı veritabanlarımızı oluşturmak için, engellenen bir numarayı insan müdahalesi olmadan tüm API uç noktalarına otomatik olarak raporlayın.<br>
+<br>
+<h4>- <font color="#6ed0ff">Raporlama gecikmesi</font></h4><br>
+Gelen bir arama engellendiğinde, numara raporlanmadan önce bir saatlik bir zaman tamponu olacaktır.
+Eğer numara daha sonra tekrarlar veya bu zaman tamponu içinde geri aranırsa,
+spam olmayan bir numara olarak kabul edilir ve raporlanmaz.<br>
+<br>
+<h4>- <font color="#6ed0ff">Gizlilik</font></h4>
+<br>
+API uç noktaları şunları görecektir:<br>
+<br>
+&ensp; - IP adresiniz<br>
+&ensp; - Tls ve Tcp parmak izleri (Android sürümünüzü ortaya çıkarabilir)<br>
+&ensp; - Raporlanan numara (ülke kodunuz dahil)<br>
+<br>
+Başka hiçbir şey raporlanmayacaktır.<br>
+<br>
+<h4>- <font color="#6ed0ff">Rapor türü</font></h4><br>
+<h5>1. <font color="#fa7f71">Raporlamayacak:</font></h5>
+<br>
+- <font color="#fa7f71">Geçen numaralar</font><br>
+Ve aşağıdaki engellenmiş türler:<br>
+- <font color="#fa7f71">Genel Test</font><br>
+- <font color="#fa7f71">Kişi Düzenli İfadesi</font><br>
+- <font color="#fa7f71">Kişi Grubu Düzenli İfadesi</font><br>
+- <font color="#fa7f71">Veritabanı</font><br>
+- <font color="#fa7f71">Toplantı Modu</font><br>
+- <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
+<br>
+<h5>2. <font color="#03DAC5">Raporlayacak:</font></h5>
+<br>
+Aşağıdaki engellenmiş türler:<br>
+- <font color="#03DAC5">Kişi Değil</font>(hariç tutulan)<br>
+- <font color="#03DAC5">STIR Doğrulaması</font><br>
+- <font color="#03DAC5">Numara Düzenli İfadesi</font><br>
+- <font color="#03DAC5">SMS İçerik Düzenli İfadesi</font><br>
+<br>
+<h5>3. İstisna durumları:</h5>
+<br>
+- <font color="#03DAC5">Anlık Sorgu</font> tarafından engellendiğinde, numaranın derecelendirme puanını artırmak için aynı API\'ye geri bildirilecektir.
+Örneğin, check.com\'dan API sorgusu tarafından engellendiğinde, yalnızca check.com\'a, others.com\'a değil rapor edilecektir. <br>
+- <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve kayıt başlangıçta anlık bir API sorgusu tarafından eklenmişse,
+yukarıdakiyle aynı nedenden dolayı yalnızca aynı API\'ye rapor edilecektir.<br>
+]]>
+</string>
+<string name="auto_report">Otomatik Raporlama</string>
 </resources>

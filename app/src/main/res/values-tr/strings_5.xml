@@ -1,82 +1,80 @@
 <resources>
-    <string name="dialed_number">Aranan</string>
-    <string name="find_apps">Uygulamaları Bul</string>
-
-    <string name="confirm_delete_all_rule">Tüm Kuralları silmek istediğinizi onaylıyor musunuz?</string>
-
-    <string name="notification">Bildirim</string>
-    <string name="type">Tür</string>
-    <string name="times">Defa</string>
-    <plurals name="days">
-        <item quantity="one">%d Gün</item>
-        <item quantity="two">%d Gün</item>
-        <item quantity="few">%d Gün</item>
-        <item quantity="many">%d Gün</item>
-        <item quantity="other">%d Gün</item>
-    </plurals>
-    <string name="min">Dk.</string>
-    <string name="within_minutes">Dakika İçinde</string>
-    <string name="within_days">Gün İçinde</string>
-    <string name="phone_number">Telefon Numarası</string>
-    <string name="phone_number_abbrev">Numara</string>
-    <string name="sms_content">SMS İçeriği</string>
-    <string name="regex_flags">Düzenli İfade Bayrakları</string>
-    <string name="off_time">Kapalı Zaman</string>
-    <string name="schedule">Takvim</string>
-    <string name="workday">Çalışma Günü</string>
-    <string name="weekend">Hafta Sonu</string>
-    <string name="entire_day">Tüm Gün</string>
-    <string name="block_type">Blok Türü</string>
-    <string name="for_particular_number">Numara için</string>
-    <string name="help_for_particular_number">Açık olduğunda, kural yalnızca hem numara hem de içerik eşleştiğinde uygulanır.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Reddet</b></font>: <br>
-         Reddet düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
-        <br>
-        - <font color="#00BFFF"><b>Sessize Al</b></font>: <br>
-         Arka planda sessizce çalar, arayana müsait olmadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
-        <br>
-         Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak spam gönderenler için daha az verimli hale getirir ve sizi tekrar aramaktan caydırabilir.<br>
-        <br>
-        - <font color="#00BFFF"><b>Kapat</b></font>: <br>
-        Aramayı yanıtlayın ve sesli mesaj kutusuna gitmesini önlemek için kapatın. <br>
-        <br>
-        <font color="#FFA500">Not</font> Kilit ekranı kısa bir süre için açılabilir,
-        ayrıca arama sonu sesi duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar). <br>
-        <br>
-        - <b>Gecikme</b>: <br>
-        &emsp; Varsayılan olarak, hızlı bağlantı kesilmesi nedeniyle aramaların yanlışlıkla sesli mesaj kutusuna gitmesini önlemek için arama kapatılmadan önce 1 saniyelik bir gecikme vardır.<br>
-        &emsp; Aramaları kaydetmek istiyorsanız, bir arama kaydı uygulaması yükleyin ve gecikmeyi buna göre artırın.
-        ]]>
-    </string>
-    <string name="help_dialed">
-        <![CDATA[
-        Aranan numaralara izin verilecektir.<br>
-        <br>
-        Mesaj göndermek de sayılır, bu yalnızca READ_SMS izni verildiğinde çalışır. <br>
-        <br>
-        Varsayılan ayar <font color="#03DAC5"><b>3 Gün</b></font> Eğer son 3 gün içinde o numaraya arama yaptıysanız veya mesaj gönderdiyseniz, o numaradan gelen aramalara izin verileceği anlamına gelir.<br>
-        <br>
-        Sadece aramalar için geçerlidir, metin mesajları için <b>değil</b>. <br>
-        <br>
-        <font color="#ea86ff"><b>Öncelik: 10</b></font>
-        ]]>
-    </string>
-    <string name="help_recent_apps">
-        <![CDATA[
-        Listede yer alan herhangi bir uygulama son zamanlarda kullanıldıysa, herhangi bir arama geçecektir.<br>
-        <br>
-        Tipik bir kullanım durumu:<br>
-        &emsp; PizzaApp\'tan bir pizza siparişi verdiniz, kısa süre sonra kapandıkları için sizi geri ödeme yapmak üzere arıyorlar. Eğer PizzaApp burada etkinse, o arama geçecektir. <br>
-        <br>
-        Varsayılan ayar  <font color="03DAC5"><b>5 Dk.</b></font> Eğer son 5 dakika içinde uygulamalardan herhangi biri kullanıldıysa, herhangi bir aramanın geçeceği anlamına gelir.
-        \'Kullanıldı\' derken, uygulamanın etkinleştirilmesi, devre dışı bırakılması, küçültülmesi veya kapatılması anlamına gelir. <br>
-        <br>
-        Sadece aramalar için geçerlidir, metin mesajları için <b>değil</b>. <br>
-        <br>
-        <font color="#ea86ff"><b>Öncelik: 10</b></font>
-        ]]>
-    </string>
-    <string name="help_hang_up_delay">Arama kapatılmadan önceki gecikme.</string>
+<string name="dialed_number">Aranan</string>
+<string name="find_apps">Uygulamaları Bul</string>
+<string name="confirm_delete_all_rule">Tüm Kuralları silmek istediğinizi onaylıyor musunuz?</string>
+<string name="notification">Bildirim</string>
+<string name="type">Tür</string>
+<string name="times">Defa</string>
+<plurals name="days">
+<item quantity="one">%d Gün</item>
+<item quantity="two">%d Gün</item>
+<item quantity="few">%d Gün</item>
+<item quantity="many">%d Gün</item>
+<item quantity="other">%d Gün</item>
+</plurals>
+<string name="min">Dk.</string>
+<string name="within_minutes">Dakika İçinde</string>
+<string name="within_days">Gün İçinde</string>
+<string name="phone_number">Telefon Numarası</string>
+<string name="phone_number_abbrev">Numara</string>
+<string name="sms_content">SMS İçeriği</string>
+<string name="regex_flags">Düzenli İfade Bayrakları</string>
+<string name="off_time">Kapalı Zaman</string>
+<string name="schedule">Takvim</string>
+<string name="workday">Çalışma Günü</string>
+<string name="weekend">Hafta Sonu</string>
+<string name="entire_day">Tüm Gün</string>
+<string name="block_type">Blok Türü</string>
+<string name="for_particular_number">Numara için</string>
+<string name="help_for_particular_number">Açık olduğunda, kural yalnızca hem numara hem de içerik eşleştiğinde uygulanır.</string>
+<string name="help_block_type">
+<![CDATA[
+- <font color="#00BFFF"><b>Reddet</b></font>: <br>
+Reddet düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
+<br>
+- <font color="#00BFFF"><b>Sessize Al</b></font>: <br>
+Arka planda sessizce çalar, arayana müsait olmadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
+<br>
+Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak spam gönderenler için daha az verimli hale getirir ve sizi tekrar aramaktan caydırabilir.<br>
+<br>
+- <font color="#00BFFF"><b>Kapat</b></font>: <br>
+Aramayı yanıtlayın ve sesli mesaj kutusuna gitmesini önlemek için kapatın. <br>
+<br>
+<font color="#FFA500">Not</font> Kilit ekranı kısa bir süre için açılabilir,
+ayrıca arama sonu sesi duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar). <br>
+<br>
+- <b>Gecikme</b>: <br>
+&emsp; Varsayılan olarak, hızlı bağlantı kesilmesi nedeniyle aramaların yanlışlıkla sesli mesaj kutusuna gitmesini önlemek için arama kapatılmadan önce 1 saniyelik bir gecikme vardır.<br>
+&emsp; Aramaları kaydetmek istiyorsanız, bir arama kaydı uygulaması yükleyin ve gecikmeyi buna göre artırın.
+]]>
+</string>
+<string name="help_dialed">
+<![CDATA[
+Aranan numaralara izin verilecektir.<br>
+<br>
+Mesaj göndermek de sayılır, bu yalnızca READ_SMS izni verildiğinde çalışır. <br>
+<br>
+Varsayılan ayar <font color="#03DAC5"><b>3 Gün</b></font> Eğer son 3 gün içinde o numaraya arama yaptıysanız veya mesaj gönderdiyseniz, o numaradan gelen aramalara izin verileceği anlamına gelir.<br>
+<br>
+Sadece aramalar için geçerlidir, metin mesajları için <b>değil</b>. <br>
+<br>
+<font color="#ea86ff"><b>Öncelik: 10</b></font>
+]]>
+</string>
+<string name="help_recent_apps">
+<![CDATA[
+Listede yer alan herhangi bir uygulama son zamanlarda kullanıldıysa, herhangi bir arama geçecektir.<br>
+<br>
+Tipik bir kullanım durumu:<br>
+&emsp; PizzaApp\'tan bir pizza siparişi verdiniz, kısa süre sonra kapandıkları için sizi geri ödeme yapmak üzere arıyorlar. Eğer PizzaApp burada etkinse, o arama geçecektir. <br>
+<br>
+Varsayılan ayar  <font color="03DAC5"><b>5 Dk.</b></font> Eğer son 5 dakika içinde uygulamalardan herhangi biri kullanıldıysa, herhangi bir aramanın geçeceği anlamına gelir.
+\'Kullanıldı\' derken, uygulamanın etkinleştirilmesi, devre dışı bırakılması, küçültülmesi veya kapatılması anlamına gelir. <br>
+<br>
+Sadece aramalar için geçerlidir, metin mesajları için <b>değil</b>. <br>
+<br>
+<font color="#ea86ff"><b>Öncelik: 10</b></font>
+]]>
+</string>
+<string name="help_hang_up_delay">Arama kapatılmadan önceki gecikme.</string>
 </resources>

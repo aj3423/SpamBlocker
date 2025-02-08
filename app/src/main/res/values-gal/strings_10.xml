@@ -1,55 +1,55 @@
 <resources>
-    <string name="help_number_rules">
-        <![CDATA[
-        Estas regras aplícanse ao número de teléfono entrante.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Exemplos</font></h5>
-        Hai algúns exemplos na páxina <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki</a>.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Optimización Regex</font></h5>
-        Para simplificar a expresión regular,<br>
-          <font color="#fa7f71"><b>+</b></font> e <font color="#fa7f71"><b>ceros á esquerda</b></font>
-          eliminanse antes da comprobación, por exemplo:<br>
-        &emsp; Todos estes formatos:<br>
-        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(con prefixo nacional <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dous <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Todos eles compróbanse como 123456789 e pódense comparar con <font color="#03DAC5"><b>123.*</b></font><br>
-        Esta optimización de número pode <translate>desactivarse</translate> coa bandeira regex "Número bruto".<br>
-        <br>
-        <h5><font color="#00BFFF"> - Algúns patróns típicos</font></h5>
-        &ensp; - Calquera número: <font color="#03DAC5"><b>.*</b></font> (a expresión regular .* é equivalente ao comodín * noutras aplicacións) <br>
-        &ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Comeza con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - Remata en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 7 díxitos: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - Menor de 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - Maior de 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Número descoñecido (cadea baleira): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Coincide con calquera dos patróns: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - Comeza con 400, con código de país 11 ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
-        <br>
-        <h5><font color="#00BFFF"> - Relacionado coa IU</font></h5>
-        Desmarca as caixas para desactivar a regra, <font color="#fa7f71"><b>desliza cara a esquerda para eliminala</b></font>.<br>
-        <br>
-        A lista <short>amósase</short> en orde descendente de prioridade, descrición ascendente e patrón ascendente.<br>
-        <br>
-        <h5><font color="#00BFFF"> - Importar regras desde .csv</font></h5>
-        Preme longamente o botón `Engadir` para importar números desde un ficheiro .csv.<br>
-        <brg>
-        ]]>
-    </string>
-    <string name="import_csv_columns">
-        <![CDATA[
-         Columnas soportadas:<br>
-         - <no_translate><b>pattern</b></no_translate>: A expresión regular (<b>requerido</b>)<br>
-         - <no_translate><b>description</b></no_translate>: Descrición<br>
-         - <no_translate><b>priority</b></no_translate>: Prioridade, por defecto 1<br>
-         - <no_translate><b>flags</b></no_translate>: 1(Aplicar a chamada), 2(Aplicar a SMS), 3(ambas), por defecto 3<br>
-         - <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou lista branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
-         - <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondendo aos 3 tipos de bloqueo, por defecto 0<br>
-         - <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondendo aos 5 tipos de notificación, por defecto 2<br>
-        ]]>
-    </string>
+<string name="help_number_rules">
+<![CDATA[
+Estas regras aplícanse ao número de teléfono entrante.<br>
+<br>
+<h5><font color="#00BFFF"> - Exemplos</font></h5>
+Hai algúns exemplos na páxina <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki</a>.<br>
+<br>
+<h5><font color="#00BFFF"> - Optimización Regex</font></h5>
+Para simplificar a expresión regular,<br>
+<font color="#fa7f71"><b>+</b></font> e <font color="#fa7f71"><b>ceros á esquerda</b></font>
+eliminanse antes da comprobación, por exemplo:<br>
+&emsp; Todos estes formatos:<br>
+&emsp;&emsp; 123456789 &emsp;(número normal)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(con <font color="#fa7f71"><b>+</b></font> inicial)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(con prefixo nacional <font color="#fa7f71"><b>0</b></font>)<br>
+&emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dous <font color="#fa7f71"><b>0</b></font>)<br>
+&emsp; Todos eles compróbanse como 123456789 e pódense comparar con <font color="#03DAC5"><b>123.*</b></font><br>
+Esta optimización de número pode <translate>desactivarse</translate> coa bandeira regex "Número bruto".<br>
+<br>
+<h5><font color="#00BFFF"> - Algúns patróns típicos</font></h5>
+&ensp; - Calquera número: <font color="#03DAC5"><b>.*</b></font> (a expresión regular .* é equivalente ao comodín * noutras aplicacións) <br>
+&ensp; - Número exacto: <font color="#03DAC5"><b>12345</b></font> <br>
+&ensp; - Comeza con 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+&ensp; - Remata en 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+&ensp; - 7 díxitos: <font color="#03DAC5"><b>.{7}</b></font> <br>
+&ensp; - Menor de 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+&ensp; - Maior de 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+&ensp; - Número descoñecido (cadea baleira): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
+&ensp; - Coincide con calquera dos patróns: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+&ensp; - Comeza con 400, con código de país 11 ou non: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+<br>
+<h5><font color="#00BFFF"> - Relacionado coa IU</font></h5>
+Desmarca as caixas para desactivar a regra, <font color="#fa7f71"><b>desliza cara a esquerda para eliminala</b></font>.<br>
+<br>
+A lista <short>amósase</short> en orde descendente de prioridade, descrición ascendente e patrón ascendente.<br>
+<br>
+<h5><font color="#00BFFF"> - Importar regras desde .csv</font></h5>
+Preme longamente o botón `Engadir` para importar números desde un ficheiro .csv.<br>
+<brg>
+]]>
+</string>
+<string name="import_csv_columns">
+<![CDATA[
+Columnas soportadas:<br>
+- <no_translate><b>pattern</b></no_translate>: A expresión regular (<b>requerido</b>)<br>
+- <no_translate><b>description</b></no_translate>: Descrición<br>
+- <no_translate><b>priority</b></no_translate>: Prioridade, por defecto 1<br>
+- <no_translate><b>flags</b></no_translate>: 1(Aplicar a chamada), 2(Aplicar a SMS), 3(ambas), por defecto 3<br>
+- <no_translate><b>isBlacklist</b></no_translate>: Lista negra ou lista branca. <no_translate>true</no_translate> ou <no_translate>false</no_translate>, por defecto <no_translate>true</no_translate><br>
+- <no_translate><b>blockType</b></no_translate>: Tipo de bloqueo. 0~2 correspondendo aos 3 tipos de bloqueo, por defecto 0<br>
+- <no_translate><b>importance</b></no_translate>: Tipo de notificación. 0~4 correspondendo aos 5 tipos de notificación, por defecto 2<br>
+]]>
+</string>
 </resources>
