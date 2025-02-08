@@ -8,15 +8,15 @@
     <string name="gemini_api_key">کلید API Gemini</string>
     <string name="help_api_preset_gemini_authorization">
         <![CDATA[
-        1. در حساب Google خود ثبت نام و وارد شوید: <br>
+        1. در حساب گوگل خود ثبت نام و وارد شوید: <br>
          <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
          <br>
         2. صفحه API را باز کنید:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. دکمه "ایجاد کلید API" را فشار دهید، به پایین اسکرول کنید تا کلید ایجاد شده را ببینید.<br>
+        3. دکمه "ایجاد کلید API" را فشار دهید.<br>
         <br>
-        4. برای کپی کردن کلید، روی "سه نقطه" کلیک کنید و سپس آن را در قسمت پایین وارد کنید.
+        4. کلید را کپی کرده و در پایین وارد کنید.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

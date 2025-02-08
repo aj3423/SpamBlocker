@@ -58,7 +58,7 @@
           with:
             repo_token: "${{ secrets.SYNC_TOKEN }}"
             draft: false
-            automatic_release_tag: "v4.3"
+            automatic_release_tag: "v4.4"
             prerelease: false
             title: ""
             files: |

@@ -54,7 +54,7 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Spam aramalara karşı kitle kaynaklı veritabanlarımızı oluşturmak için, engellenen bir numarayı insan müdahalesi olmadan tüm API uç noktalarına otomatik olarak raporlayın.<br>
+        Engellenen bir numarayı, spam aramalarına karşı kalabalık kaynaklı veritabanlarımızı oluşturmak için insan müdahalesi olmadan tüm API uç noktalarına otomatik olarak raporlayın.<br>
         <br>
         <h4>- <font color="#6ed0ff">Raporlama gecikmesi</font></h4><br>
         Gelen bir arama engellendiğinde, numara raporlanmadan önce bir saatlik bir zaman tamponu olacaktır.
@@ -67,14 +67,15 @@
         <br>
          &ensp; - IP adresiniz<br>
          &ensp; - Tls ve Tcp parmak izleri (Android sürümünüzü ortaya çıkarabilir)<br>
-         &ensp; - Raporlanan numara (ülke kodunuz dahil)<br>
+         &ensp; - Rapor edilen numara (ülke kodunuz dahil)<br>
         <br>
         Başka hiçbir şey raporlanmayacaktır.<br>
         <br>
-        <h4>- <font color="#6ed0ff">Rapor türü</font></h4><br>
+        <h4>- <font color="#6ed0ff">Raporlama türü</font></h4><br>
         <h5>1. <font color="#fa7f71">Raporlamayacak:</font></h5>
         <br>
-        - <font color="#fa7f71">Geçen numaralar</font><br>
+        - <font color="#fa7f71">SMS numaraları veya içerik</font><br>
+        - <font color="#fa7f71">Geçen arama numaraları</font><br>
         Ve aşağıdaki engellenmiş türler:<br>
         - <font color="#fa7f71">Genel Test</font><br>
         - <font color="#fa7f71">Kişi Düzenli İfadesi</font><br>
@@ -83,18 +84,17 @@
         - <font color="#fa7f71">Toplantı Modu</font><br>
         - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
         <br>
-        <h5>2. <font color="#03DAC5">Raporlayacak:</font></h5>
+        <h5>2. <font color="#03DAC5">Sadece raporlayacak:</font></h5>
         <br>
         Aşağıdaki engellenmiş türler:<br>
-        - <font color="#03DAC5">Kişi Değil</font>(hariç tutulan)<br>
+        - <font color="#03DAC5">Kişi Değil</font>(hariç tutma)<br>
         - <font color="#03DAC5">STIR Doğrulaması</font><br>
         - <font color="#03DAC5">Numara Düzenli İfadesi</font><br>
-        - <font color="#03DAC5">SMS İçerik Düzenli İfadesi</font><br>
         <br>
         <h5>3. İstisna durumları:</h5>
         <br>
         - <font color="#03DAC5">Anlık Sorgu</font> tarafından engellendiğinde, numaranın derecelendirme puanını artırmak için aynı API\'ye geri bildirilecektir.
-         Örneğin, check.com\'dan API sorgusu tarafından engellendiğinde, yalnızca check.com\'a, others.com\'a değil rapor edilecektir. <br>
+         Örneğin, check.com\'dan API sorgusu tarafından engellendiğinde, yalnızca check.com\'a, others.com\'a değil, rapor edilecektir. <br>
         - <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve kayıt başlangıçta anlık bir API sorgusu tarafından eklenmişse,
          yukarıdakiyle aynı nedenden dolayı yalnızca aynı API\'ye rapor edilecektir.<br>
         ]]>

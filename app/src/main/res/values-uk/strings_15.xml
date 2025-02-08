@@ -8,15 +8,15 @@
     <string name="gemini_api_key">Ключ API Gemini</string>
     <string name="help_api_preset_gemini_authorization">
         <![CDATA[
-        1. Зареєструйтеся та увійдіть у свій обліковий запис Google: <br>
+        1. Зареєструйтесь та увійдіть у свій обліковий запис Google: <br>
          <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
          <br>
         2. Відкрийте сторінку API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Натисніть кнопку "Створити ключ API", прокрутіть вниз, щоб побачити згенерований ключ.<br>
+        3. Натисніть кнопку "Створити ключ API".<br>
         <br>
-        4. Натисніть "три точки", щоб скопіювати ключ, а потім введіть його нижче.
+        4. Скопіюйте ключ та введіть його нижче.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

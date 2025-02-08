@@ -14,9 +14,9 @@
         2. Откройте страницу API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Нажмите кнопку "Создать ключ API", прокрутите вниз, чтобы увидеть сгенерированный ключ.<br>
+        3. Нажмите кнопку «Создать ключ API».<br>
         <br>
-        4. Нажмите "три точки", чтобы скопировать ключ, затем введите его ниже.
+        4. Скопируйте ключ и вставьте его ниже.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

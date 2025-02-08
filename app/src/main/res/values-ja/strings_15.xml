@@ -14,9 +14,9 @@
         2. APIページを開きます：<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. 「APIキーの作成」ボタンを押して、下にスクロールして生成されたキーを確認します。<br>
+        3. 「APIキーを作成」ボタンを押します。<br>
         <br>
-        4. 「三点リーダー」を押してキーをコピーし、下記に入力します。
+        4. キーをコピーして、下記に入力してください。
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

@@ -8,15 +8,15 @@
     <string name="gemini_api_key">Gemini API 密钥</string>
     <string name="help_api_preset_gemini_authorization">
         <![CDATA[
-        1. 注册并登录您的Google帐户：<br>
+        1. 注册并登录您的Google账户：<br>
          <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
          <br>
         2. 打开API页面：<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. 点击“创建API密钥”按钮，向下滚动查看生成的密钥。<br>
+        3. 点击“创建API密钥”按钮。<br>
         <br>
-        4. 点击“三个点”复制密钥，然后将其填写在下面。
+        4. 复制密钥，然后将其填写在下方。
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

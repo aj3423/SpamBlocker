@@ -107,10 +107,11 @@ private fun scheduleReporting(
         return
 
     // 2. Skip if it isn't blocked by local filters
-    val isBlockedByLocalFilter = listOf(
-        RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR,
-        RESULT_BLOCKED_BY_NUMBER, RESULT_BLOCKED_BY_CONTENT,
-    ).contains(r.type)
+    val isBlockedByLocalFilter = when(r.type) {
+        RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR, RESULT_BLOCKED_BY_NUMBER -> true
+        else -> false
+    }
+
     if (!isBlockedByLocalFilter)
         return
 

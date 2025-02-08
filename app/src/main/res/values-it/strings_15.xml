@@ -11,12 +11,12 @@
         1. Registrati e accedi al tuo account Google: <br>
          <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
          <br>
-        2. Apri la pagina dell\'API:<br>
+        2. Apri la pagina API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Premi il pulsante "Crea chiave API", scorri verso il basso per vedere la chiave generata.<br>
+        3. Premi il pulsante "Crea chiave API".<br>
         <br>
-        4. Premi i "tre puntini" per copiare la chiave, poi inseriscila qui sotto.
+        4. Copia la chiave, poi inseriscila qui sotto.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

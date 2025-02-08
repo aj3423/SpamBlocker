@@ -8,15 +8,15 @@
     <string name="gemini_api_key">Gemini API-Schlüssel</string>
     <string name="help_api_preset_gemini_authorization">
         <![CDATA[
-        1. Registrieren und anmelden bei Ihrem Google-Konto: <br>
+        1. Registrieren und bei Ihrem Google-Konto anmelden: <br>
          <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
          <br>
-        2. API-Seite öffnen:<br>
+        2. Öffnen Sie die API-Seite:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Klicken Sie auf die Schaltfläche "API-Schlüssel erstellen", der generierte Schlüssel wird unten angezeigt.<br>
+        3. Drücken Sie die Schaltfläche „API-Schlüssel erstellen“.<br>
         <br>
-        4. Klicken Sie auf die "drei Punkte", um den Schlüssel zu kopieren und unten einzufügen.
+        4. Kopieren Sie den Schlüssel und geben Sie ihn unten ein.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

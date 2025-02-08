@@ -91,7 +91,7 @@ val authConfig_PhoneBlock = AuthConfig(
                 .replace("{api_key}", formValues[0])
         }
     },
-    validator = validator@{
+    validator = {
         val apiKey = it[0]
         apiKey.startsWith("pbt_")
     }
@@ -145,7 +145,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                             .replace("{api_key}", formValues[0])
                     }
                 },
-                validator = validator@{
+                validator = {
                     val apiKey = it[0]
                     apiKey.length > 10
                 }
@@ -163,7 +163,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         method = HTTP_POST,
                         body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"%s\"\n\n\t}]\n  }]\n}"
                             .format(ctx.getString(R.string.spam_sms_prompt_template).escape())
-                ),
+                    ),
                     ParseQueryResult(
                         negativeSig = ctx.getString(R.string.spam_sms_negative_category),
                         positiveSig = ctx.getString(R.string.spam_sms_positive_category),

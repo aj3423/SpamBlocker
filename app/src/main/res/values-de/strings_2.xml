@@ -54,7 +54,7 @@
     </string>
     <string name="help_auto_report">
         <![CDATA[
-        Automatische Meldung einer blockierten Nummer an alle API-Endpunkte ohne menschliches Eingreifen, um unsere gemeinschaftlich erstellten Datenbanken gegen Spam-Anrufe zu erweitern.<br>
+        Automatische Meldung einer blockierten Nummer an alle API-Endpunkte ohne menschliches Zutun, um unsere gemeinschaftlich erstellten Datenbanken gegen Spam-Anrufe zu erweitern.<br>
         <br>
         <h4>- <font color="#6ed0ff">Meldeverzögerung</font></h4><br>
         Wenn ein eingehender Anruf blockiert wird, gibt es einen einstündigen Zeitpuffer, bevor die Nummer gemeldet wird.
@@ -63,18 +63,19 @@
         <br>
         <h4>- <font color="#6ed0ff">Datenschutz</font></h4>
         <br>
-        Die API-Endpunkte sehen Folgendes von Ihnen:<br>
+        Die API-Endpunkte sehen Ihre:<br>
         <br>
          &ensp; - IP-Adresse<br>
-         &ensp; - TLS- und TCP-Fingerabdrücke (die möglicherweise Ihre Android-Version offenbaren)<br>
+         &ensp; - Tls- und Tcp-Fingerabdrücke (die Ihre Android-Version offenlegen können)<br>
          &ensp; - Die gemeldete Nummer (einschließlich Ihrer Landesvorwahl)<br>
         <br>
-        Es werden keine anderen Daten gemeldet.<br>
+        Nichts anderes wird gemeldet.<br>
         <br>
         <h4>- <font color="#6ed0ff">Meldetyp</font></h4><br>
         <h5>1. Es <font color="#fa7f71">wird nicht</font> gemeldet:</h5>
         <br>
-        - <font color="#fa7f71">Zugelassene Nummern</font><br>
+        - <font color="#fa7f71">SMS-Nummern oder -Inhalte</font><br>
+        - <font color="#fa7f71">Zugelassene Anrufnummern</font><br>
         Und folgende blockierte Typen:<br>
         - <font color="#fa7f71">Globaler Test</font><br>
         - <font color="#fa7f71">Kontakt-Regex</font><br>
@@ -83,19 +84,18 @@
         - <font color="#fa7f71">Besprechungsmodus</font><br>
         - <font color="#fa7f71">Sofortabfrage</font> (um zu verhindern, dass die Nummer des API-Endpunkts an andere Wettbewerber weitergegeben wird)<br>
         <br>
-        <h5>2. Es <font color="#03DAC5">wird</font> gemeldet:</h5>
+        <h5>2. Es <font color="#03DAC5">wird</font> nur gemeldet:</h5>
         <br>
         Folgende blockierte Typen:<br>
-        - <font color="#03DAC5">Nicht in Kontakten</font>(ausschließlich)<br>
+        - <font color="#03DAC5">Kein Kontakt</font>(ausschließlich)<br>
         - <font color="#03DAC5">STIR-Attestierung</font><br>
-        - <font color="#03DAC5">Nummern-Regex</font><br>
-        - <font color="#03DAC5">SMS-Inhalts-Regex</font><br>
+        - <font color="#03DAC5">Nummer-Regex</font><br>
         <br>
         <h5>3. Ausnahmefälle:</h5>
         <br>
-        - Wenn die Nummer durch <font color="#03DAC5">Sofortabfrage</font> blockiert wird, wird sie an dieselbe API zurück gemeldet, um den Bewertungsscore der Nummer zu erhöhen.
-         Wenn sie z. B. durch eine API-Abfrage von check.com blockiert wird, wird sie nur an check.com gemeldet, nicht an others.com. <br>
-        -  Wenn die Nummer durch <font color="#03DAC5">Datenbank</font> blockiert wird und der Eintrag ursprünglich durch eine sofortige API-Abfrage hinzugefügt wurde,
+        - Wenn es durch <font color="#03DAC5">Sofortabfrage</font> blockiert wird, wird es an dieselbe API zurück gemeldet, um den Bewertungsscore der Nummer zu erhöhen.
+         Beispiel: Wenn es durch eine API-Abfrage von check.com blockiert wird, wird es nur an check.com gemeldet, nicht an others.com. <br>
+        -  Wenn es durch <font color="#03DAC5">Datenbank</font> blockiert wird und der Datensatz ursprünglich durch eine sofortige API-Abfrage hinzugefügt wurde,
          wird er aus dem gleichen Grund wie oben nur an dieselbe API gemeldet.<br>
         ]]>
     </string>

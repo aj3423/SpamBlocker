@@ -130,9 +130,9 @@ object MyWorkManager {
             .build()
 
         if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
-            logi("schedule task <${workTag ?: actionsConfig}> after: ${delay.toDaysPart()} days, ${delay.toHoursPart()} hours, ${delay.toMinutesPart()} minutes, ${delay.toSecondsPart()} seconds")
+            logi("schedule task <${workTag}> after: ${delay.toDaysPart()} days, ${delay.toHoursPart()} hours, ${delay.toMinutesPart()} minutes, ${delay.toSecondsPart()} seconds")
         } else {
-            logi("schedule task <${workTag ?: actionsConfig}> after: ${delay.toMillis()} milliseconds")
+            logi("schedule task <${workTag}> after: ${delay.toMillis()} milliseconds")
         }
         WorkManager.getInstance(ctx).enqueue(nextWorkRequest)
 

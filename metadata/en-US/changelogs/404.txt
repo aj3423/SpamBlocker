@@ -1,0 +1,18 @@
+New:
+- SMS API query
+  - Identify SMS using AI, preset: Google Gemini
+
+Fix:
+- SMS regex rule can't be disabled
+
+Improvements:
+- Language support: Persian(fa)
+- PhoneBlock API
+  - Query by hash for better privacy.
+    The number's SHA1 hash will be sent to the server rather than the number itself. 
+    E.g.: query *DF439FA74E14A336F06E2BEE6C26085DA438005C* instead of *+331234567890*.
+    To apply this, delete existing configuration and recreate it. 
+  - It now uses API key instead of username/password. 
+- History log:
+    - Show a red indicator when the number exists in the spam database.
+  - Menu "Add number to database" becomes "Delete from database" when it already exists.

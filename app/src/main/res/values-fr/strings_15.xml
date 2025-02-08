@@ -11,12 +11,12 @@
         1. Créez un compte Google et connectez-vous : <br>
          <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
          <br>
-        2. Ouvrez la page de l\'API :<br>
+        2. Ouvrez la page de l\'API : <br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Appuyez sur le bouton « Créer une clé API », faites défiler vers le bas pour voir la clé générée.<br>
+        3. Appuyez sur le bouton « Créer une clé API ».<br>
         <br>
-        4. Appuyez sur les « trois points » pour copier la clé, puis renseignez-la ci-dessous.
+        4. Copiez la clé, puis renseignez-la ci-dessous.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

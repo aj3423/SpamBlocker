@@ -14,9 +14,9 @@
         2. Abra a página da API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Pressione o botão "Criar chave da API", role para baixo para ver a chave gerada.<br>
+        3. Pressione o botão "Criar chave da API".<br>
         <br>
-        4. Pressione os "três pontos" para copiar a chave e, em seguida, preencha-a abaixo.
+        4. Copie a chave e preencha abaixo.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
