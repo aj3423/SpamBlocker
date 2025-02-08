@@ -1,30 +1,30 @@
 <resources>
-<string name="api_preset_gemini">Gemini</string>
-<string name="help_api_preset_gemini">
-<![CDATA[
-Проверка содержимого SMS с помощью Google Gemini AI, требуется только учётная запись Google.
-]]>
-</string>
-<string name="gemini_api_key">Ключ API Gemini</string>
-<string name="help_api_preset_gemini_authorization">
-<![CDATA[
-1. Зарегистрируйтесь и войдите в свою учётную запись Google: <br>
-<a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
-<br>
-2. Откройте страницу API:<br>
-<a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
-<br>
-3. Нажмите кнопку "Создать ключ API", прокрутите вниз, чтобы увидеть сгенерированный ключ.<br>
-<br>
-4. Нажмите "три точки", чтобы скопировать ключ, затем введите его ниже.
-]]>
-</string>
-<string name="spam_sms_prompt_template">
-Отнесите это SMS-сообщение к категории «Политика», «Мошенничество», «Опрос» или «Маркетинг».
-Если ни одна категория не подходит, ответьте «Действительно», иначе укажите только категорию, ничего больше не отвечая.
-Текст SMS:
-{sms}
-</string>
-<string name="spam_sms_negative_category"><translate>(Политика|Мошенничество|Опрос|Маркетинг)</translate></string>
-<string name="spam_sms_positive_category">Действительно</string>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Проверка содержимого SMS с помощью Google Gemini AI, требуется только учётная запись Google.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Ключ API Gemini</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Зарегистрируйтесь и войдите в свою учётную запись Google: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. Откройте страницу API:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. Нажмите кнопку "Создать ключ API", прокрутите вниз, чтобы увидеть сгенерированный ключ.<br>
+        <br>
+        4. Нажмите "три точки", чтобы скопировать ключ, затем введите его ниже.
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        Отнесите это SMS-сообщение к категории «Политика», «Мошенничество», «Опрос» или «Маркетинг».
+        Если ни одна категория не подходит, ответьте «Действительно», иначе укажите только категорию, ничего больше не отвечая.
+        Текст SMS:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(Политика|Мошенничество|Опрос|Маркетинг)</translate></string>
+    <string name="spam_sms_positive_category">Действительно</string>
 </resources>

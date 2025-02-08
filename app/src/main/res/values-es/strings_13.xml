@@ -1,109 +1,109 @@
 <resources>
-<string name="cleaning_up_history_db">
-Limpiando la base de datos de historial, eliminando registros anteriores a la marca de tiempo: %s.
-</string>
-<string name="cleaning_up_spam_db">
-Limpiando la base de datos de llamadas spam, eliminando %s registros anteriores a la marca de tiempo: %s".
-</string>
-<string name="resolved_url">URL resuelta: %s.</string>
-<string name="time_cost">Tiempo de coste: %s milisegundos.</string>
-<string name="parsed_n_rules">Analizadas %s reglas.</string>
-<string name="add_n_numbers_to_spam_db">Añadiendo %s números a la base de datos de spam.</string>
-<string name="nothing_to_import">La lista de números está vacía, no hay nada que importar.</string>
-<string name="importing_n_numbers">Importando %s números como regla regex.</string>
-<string name="create_rule_with_numbers">Creando regla con %s números.</string>
-<string name="replace_rule_with_desc">Reemplazando la regla con descripción: %s.</string>
-<string name="rule_with_desc_not_found">Regla con descripción %s no encontrada.</string>
-<string name="merging_rule_with_desc">Fusionando la regla con descripción: %s.</string>
-<string name="regex_count_after_merge">Conteo regex antes: %s, después: %s.</string>
-<string name="replace_number_from_to">Reemplazando número de %s a %s.</string>
-<string name="find_rule_with_desc">Encontradas %s reglas con descripción %s.</string>
-<string name="modify_n_rules">Modificando %s reglas.</string>
-<string name="fail_detect_cc">Error al detectar el código de país.</string>
-<string name="identified_as_spam">Identificado como número spam, categoría: %s.</string>
-<string name="identified_as_valid">Identificado como número válido, categoría: %s.</string>
-<string name="unidentified_number">Número no identificado.</string>
-<string name="help_http_url">
-<![CDATA[
-Etiquetas compatibles:<br>
-<br>
-%s
-<br>
-%s
-]]>
-</string>
-<string name="number_not_match_filter">El número %s no coincide con el filtro %s, se omite.</string>
-<string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-<string name="help_api_preset_phoneblock">
-<![CDATA[
-Principalmente diseñado para el FRITZ!Box alemán, también funciona para números de teléfono de otros países.<br>
-<br>
-Admite consultas por hash en lugar del número en sí, lo que proporciona una mejor privacidad.<br>
-<br>
-Sitio web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
-<br>
-API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-]]>
-</string>
-<string name="not_enough_time_left">El límite de tiempo de la identificación de llamadas es de 5 segundos, con un búfer de %s ms para la imprecisión de las funciones de tiempo, el límite de tiempo total es en realidad de %s ms. Los pasos previos costaron %s ms, no queda suficiente tiempo, se omite.</string>
-<string name="action_filter_query_result">Filtrar Spam</string>
-<string name="help_action_filter_query_result">
-<![CDATA[
-Genera una <u>lista de números</u> que contiene el número de spam identificado en el paso anterior, y listo para ser importado a la base de datos.
-]]>
-</string>
-<string name="another_thread_is_cancelled">Otro hilo se canceló.</string>
-<string name="help_api_preset_phoneblock_authorization">
-<![CDATA[
-1. Registra una cuenta en <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-<br>
-2. En la página de configuración: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-pulsa el botón "Generar clave API".<br>
-<br>
-3. Rellena la clave API generada a continuación.
-]]>
-</string>
-<string name="username">nombre de usuario</string>
-<string name="password">contraseña</string>
-<string name="auto_detect_cc_permission">Se requiere el permiso READ_PHONE_STATE para detectar el código de país.</string>
-<string name="suggest_to_swipe">
-<![CDATA[
-<font color="#03DAC5"><b>Desliza hacia la izquierda</b></font> para eliminarlo.<br>
-<br>
-La mayoría de los elementos de IU tipo tarjeta en esta aplicación están asociados con gestos de deslizamiento,
-algunos de los cuales también admiten <font color="#03DAC5"><b>deslizar hacia la derecha</b></font>, por ejemplo, los registros del historial.
-]]>
-</string>
-<string name="bug_number">Si este es un número válido, por favor repórtalo en github.</string>
-<string name="number_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{cc}</b></font><br>
-&ensp; El código de país.<br>
-- <font color="#00BFFF"><b>{domestic}</b></font><br>
-&ensp; La parte nacional.<br>
-- <font color="#00BFFF"><b>{number}</b></font><br>
-&ensp; El número completo, incluyendo el código de país y la parte nacional, sin + o 0s al principio.<br>
-- <font color="#00BFFF"><b>{origin_number}</b></font><br>
-&ensp; El número de origen que puede contener + o 0s al principio.<br>
-]]>
-</string>
-<string name="time_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{year}</b></font><br>
-&ensp; El año, ej.: 2024<br>
-- <font color="#00BFFF"><b>{month} {day}</b></font><br>
-&ensp; Los números de un solo dígito se rellenarán con un cero a la izquierda, ej.: <br>
-&emsp; {month}_{day} -> 01_02<br>
-- <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-&ensp; Estos valores se rellenarán sin cero a la izquierda, ej.: <br>
-&emsp; {month}_{day} -> 1_2<br>
-]]>
-</string>
-<string name="skip_alpha_empty_number">Omitir número alfabético o vacío.</string>
-<string name="sms_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{sms}</b></font><br>
-&ensp; El contenido del SMS.<br>
-]]>
-</string>
+    <string name="cleaning_up_history_db">
+        Limpiando la base de datos de historial, eliminando registros anteriores a la marca de tiempo: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Limpiando la base de datos de llamadas spam, eliminando %s registros anteriores a la marca de tiempo: %s".
+    </string>
+    <string name="resolved_url">URL resuelta: %s.</string>
+    <string name="time_cost">Tiempo de coste: %s milisegundos.</string>
+    <string name="parsed_n_rules">Analizadas %s reglas.</string>
+    <string name="add_n_numbers_to_spam_db">Añadiendo %s números a la base de datos de spam.</string>
+    <string name="nothing_to_import">La lista de números está vacía, no hay nada que importar.</string>
+    <string name="importing_n_numbers">Importando %s números como regla regex.</string>
+    <string name="create_rule_with_numbers">Creando regla con %s números.</string>
+    <string name="replace_rule_with_desc">Reemplazando la regla con descripción: %s.</string>
+    <string name="rule_with_desc_not_found">Regla con descripción %s no encontrada.</string>
+    <string name="merging_rule_with_desc">Fusionando la regla con descripción: %s.</string>
+    <string name="regex_count_after_merge">Conteo regex antes: %s, después: %s.</string>
+    <string name="replace_number_from_to">Reemplazando número de %s a %s.</string>
+    <string name="find_rule_with_desc">Encontradas %s reglas con descripción %s.</string>
+    <string name="modify_n_rules">Modificando %s reglas.</string>
+    <string name="fail_detect_cc">Error al detectar el código de país.</string>
+    <string name="identified_as_spam">Identificado como número spam, categoría: %s.</string>
+    <string name="identified_as_valid">Identificado como número válido, categoría: %s.</string>
+    <string name="unidentified_number">Número no identificado.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Etiquetas compatibles:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="number_not_match_filter">El número %s no coincide con el filtro %s, se omite.</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Principalmente diseñado para el FRITZ!Box alemán, también funciona para números de teléfono de otros países.<br>
+        <br>
+        Admite consultas por hash en lugar del número en sí, lo que proporciona una mejor privacidad.<br>
+        <br>
+        Sitio web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="not_enough_time_left">El límite de tiempo de la identificación de llamadas es de 5 segundos, con un búfer de %s ms para la imprecisión de las funciones de tiempo, el límite de tiempo total es en realidad de %s ms. Los pasos previos costaron %s ms, no queda suficiente tiempo, se omite.</string>
+    <string name="action_filter_query_result">Filtrar Spam</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Genera una <u>lista de números</u> que contiene el número de spam identificado en el paso anterior, y listo para ser importado a la base de datos.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">Otro hilo se canceló.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. Registra una cuenta en <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. En la página de configuración: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         pulsa el botón "Generar clave API".<br>
+        <br>
+        3. Rellena la clave API generada a continuación.
+        ]]>
+    </string>
+    <string name="username">nombre de usuario</string>
+    <string name="password">contraseña</string>
+    <string name="auto_detect_cc_permission">Se requiere el permiso READ_PHONE_STATE para detectar el código de país.</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>Desliza hacia la izquierda</b></font> para eliminarlo.<br>
+        <br>
+        La mayoría de los elementos de IU tipo tarjeta en esta aplicación están asociados con gestos de deslizamiento,
+        algunos de los cuales también admiten <font color="#03DAC5"><b>deslizar hacia la derecha</b></font>, por ejemplo, los registros del historial.
+        ]]>
+    </string>
+    <string name="bug_number">Si este es un número válido, por favor repórtalo en github.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; El código de país.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; La parte nacional.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; El número completo, incluyendo el código de país y la parte nacional, sin + o 0s al principio.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; El número de origen que puede contener + o 0s al principio.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; El año, ej.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Los números de un solo dígito se rellenarán con un cero a la izquierda, ej.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Estos valores se rellenarán sin cero a la izquierda, ej.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="skip_alpha_empty_number">Omitir número alfabético o vacío.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; El contenido del SMS.<br>
+        ]]>
+    </string>
 </resources>

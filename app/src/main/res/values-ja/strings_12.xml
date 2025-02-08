@@ -1,100 +1,100 @@
 <resources>
-<string name="help_instant_query">
-<![CDATA[
-着信番号をオンラインでリアルタイムに照会します。複数のAPIエンドポイントが同時に照会されます。<br>
-<br>
-これは通話にのみ適用され、SMSメッセージには適用されません。<br>
-<br>
-他のすべてのルールをクリアした通話の場合のみトリガーされます。<br>
-<br>
-<font color="#ea86ff"><b>優先度: -1</b></font>
-]]>
-</string>
-<string name="instant_query">瞬時照会</string>
-<string name="negative_identifier">ネガティブ識別子</string>
-<string name="hint_negative_identifier">
-例: ("valid":false)
-</string>
-<string name="help_negative_identifier">
-この正規表現パターンが結果に見つかった場合、迷惑電話番号として識別されます。
-</string>
-<string name="positive_identifier">ポジティブ識別子</string>
-<string name="hint_positive_identifier">
-例: ("valid":true)
-</string>
-<string name="help_positive_identifier">
-<![CDATA[
-この正規表現パターンが結果に見つかった場合、迷惑電話ではないと識別されます。これはオプションです。<br>
-<br>
-通常は<b>不要</b>です。一部のAPIプロバイダーは不明な番号を迷惑電話ではないと識別します。APIが非常に正確な場合にのみ使用してください。
-]]>
-</string>
-<string name="category_identifier">カテゴリ識別子</string>
-<string name="hint_category_identifier">
-例: "type":"(.+?)"
-</string>
-<string name="help_category_identifier">
-<![CDATA[
-任意。<br>
-番号が識別されると、この正規表現を使用してそのカテゴリ（テレマーケティング、フィッシングなど）が抽出されます。
-]]>
-</string>
-<string name="action_parse_query_result">結果を解析</string>
-<string name="help_action_parse_query_result">
-<![CDATA[
-照会結果を解析します。結果に特定の正規表現パターンが含まれている場合、番号は迷惑電話として識別されます。<br>
-<br>
-迷惑電話のカテゴリを抽出するために、追加の正規表現を使用できます。（オプション）
-]]>
-</string>
-<string name="action_intercept_call">通話を傍受</string>
-<string name="help_action_intercept_call">
-<![CDATA[
-着信番号が傍受され、さまざまなタグに解析されます。<br>
-<br>
-%s
-<br>
-これらのタグを使用してHTTP URLが作成されます。例：<br>
-<br>
-1. <b>+122222</b>のような国際番号の場合、これら2つは同等です。<br>
-- https://test.com/number=<b>{number}</b><br>
-- https://test.com/number=<b>{cc}{domestic}</b><br>
-これは次のように解析されます。<br>
-https://test.com/number=<b>122222</b><br>
-<br>
-2. <b>12345</b>のような国内番号の場合、設定で国コードを指定するか、アプリで自動的に検出させる必要があります。<br>
-]]>
-</string>
-<string name="query_api">照会API</string>
-<string name="number_filter">番号フィルター</string>
-<string name="help_number_filter">
-<![CDATA[
-一部のAPIサービスは国際番号のみをサポートし、一部は国内番号のみをサポートします。<br>
-<br>
-この正規表現は番号をそれに応じてフィルタリングします。この正規表現に一致しない着信番号は、チェックがスキップされます。<br>
-<br>
-- <b>国際番号</b>のみチェックします。<br>
-&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-<br>
-- <b>国内番号</b>のみチェックします。<br>
-&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-<br>
-- <b>任意の番号</b>をチェックします。<br>
-&ensp; <font color="#03DAC5"><b>.*</b></font>
-]]>
-</string>
-<string name="checking_template">チェック中：%s、優先度：%s</string>
-<string name="skip_for_testing">テストのためスキップ。</string>
-<string name="allowed_by">許可: %s</string>
-<string name="blocked_by">ブロック: %s</string>
-<string name="outside_time_schedule">時間外のためスキップ。</string>
-<string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
-<string name="query">照会</string>
-<string name="report_api">報告API</string>
-<string name="action_intercept_sms">SMS遮断</string>
-<string name="help_action_intercept_sms">
-<![CDATA[
-受信したSMSが遮断され、その内容は<b>{sms}</b>タグに解析されます。これは、後続のアクションで使用できます。
-]]>
-</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        着信番号をオンラインでリアルタイムに照会します。複数のAPIエンドポイントが同時に照会されます。<br>
+        <br>
+        これは通話にのみ適用され、SMSメッセージには適用されません。<br>
+        <br>
+        他のすべてのルールをクリアした通話の場合のみトリガーされます。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">瞬時照会</string>
+    <string name="negative_identifier">ネガティブ識別子</string>
+    <string name="hint_negative_identifier">
+        例: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        この正規表現パターンが結果に見つかった場合、迷惑電話番号として識別されます。
+    </string>
+    <string name="positive_identifier">ポジティブ識別子</string>
+    <string name="hint_positive_identifier">
+        例: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        この正規表現パターンが結果に見つかった場合、迷惑電話ではないと識別されます。これはオプションです。<br>
+        <br>
+        通常は<b>不要</b>です。一部のAPIプロバイダーは不明な番号を迷惑電話ではないと識別します。APIが非常に正確な場合にのみ使用してください。
+        ]]>
+    </string>
+    <string name="category_identifier">カテゴリ識別子</string>
+    <string name="hint_category_identifier">
+        例: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        任意。<br>
+        番号が識別されると、この正規表現を使用してそのカテゴリ（テレマーケティング、フィッシングなど）が抽出されます。
+        ]]>
+    </string>
+    <string name="action_parse_query_result">結果を解析</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        照会結果を解析します。結果に特定の正規表現パターンが含まれている場合、番号は迷惑電話として識別されます。<br>
+        <br>
+        迷惑電話のカテゴリを抽出するために、追加の正規表現を使用できます。（オプション）
+        ]]>
+    </string>
+    <string name="action_intercept_call">通話を傍受</string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        着信番号が傍受され、さまざまなタグに解析されます。<br>
+        <br>
+        %s
+        <br>
+        これらのタグを使用してHTTP URLが作成されます。例：<br>
+        <br>
+        1. <b>+122222</b>のような国際番号の場合、これら2つは同等です。<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        これは次のように解析されます。<br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. <b>12345</b>のような国内番号の場合、設定で国コードを指定するか、アプリで自動的に検出させる必要があります。<br>
+        ]]>
+    </string>
+    <string name="query_api">照会API</string>
+    <string name="number_filter">番号フィルター</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        一部のAPIサービスは国際番号のみをサポートし、一部は国内番号のみをサポートします。<br>
+        <br>
+        この正規表現は番号をそれに応じてフィルタリングします。この正規表現に一致しない着信番号は、チェックがスキップされます。<br>
+        <br>
+        - <b>国際番号</b>のみチェックします。<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - <b>国内番号</b>のみチェックします。<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - <b>任意の番号</b>をチェックします。<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">チェック中：%s、優先度：%s</string>
+    <string name="skip_for_testing">テストのためスキップ。</string>
+    <string name="allowed_by">許可: %s</string>
+    <string name="blocked_by">ブロック: %s</string>
+    <string name="outside_time_schedule">時間外のためスキップ。</string>
+    <string name="android_ver_lower_than_11">Androidバージョンが11より低いため、スキップ。</string>
+    <string name="query">照会</string>
+    <string name="report_api">報告API</string>
+    <string name="action_intercept_sms">SMS遮断</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        受信したSMSが遮断され、その内容は<b>{sms}</b>タグに解析されます。これは、後続のアクションで使用できます。
+        ]]>
+    </string>
 </resources>

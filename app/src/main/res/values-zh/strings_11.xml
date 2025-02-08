@@ -1,70 +1,72 @@
 <resources>
-<string name="yesterday">昨天</string>
-<string name="help_meeting_mode">
-<![CDATA[
-在在线视频会议期间拒绝来电。<br> <br>
-它会检查您选择的应用是否正在运行<b>前台服务</b>，
-视频会议应用通常会使用此服务来保持连接。<br>
-<br>
-它适用于来电和短信。<br>
-<br>
-<font color="#ea86ff"><b>默认优先级：20</b></font>
-]]>
-</string>
-<string name="in_meeting">会议模式</string>
-<string name="search">搜索</string>
-<string name="http_header">Http Header</string>
-<string name="help_http_header">
-<![CDATA[
-每行一个属性。
-]]>
-</string>
-<string name="log_sms_content_to_db">记录短信</string>
-<string name="initial_row_count">初始行数</string>
-<plurals name="rows">
-<item quantity="one">%d 行</item>
-<item quantity="two">%d 行</item>
-<item quantity="few">%d 行</item>
-<item quantity="many">%d 行</item>
-<item quantity="other">%d 行</item>
-</plurals>
-<string name="label_max_none_scroll_items">滚动条阈值</string>
-<string name="help_max_none_scroll_items">
-<![CDATA[
-列表中显示的项目数目超过此值后，将出现滚动条。
-]]>
-</string>
-<string name="label_max_scroll_height">滚动高度</string>
-<string name="help_max_scroll_height">
-<![CDATA[
-出现滚动条后，此值表示列表高度占屏幕的百分比。
-]]>
-</string>
-<string name="label_max_regex_lines">最大正则表达式行数</string>
-<string name="help_max_regex_lines">
-<![CDATA[
-正则表达式文本的最大显示行数，剩余文本将被截断并在后面添加省略号。
-]]>
-</string>
-<string name="label_max_desc_lines">最大描述行数</string>
-<string name="help_max_desc_lines">
-<![CDATA[
-描述文本的最大显示行数，剩余文本将被截断并在后面添加省略号。
-]]>
-</string>
-<string name="for_example">例如：</string>
-<string name="tags_supported">
-<![CDATA[
-支持的标签：<br><br>
-]]>
-</string>
-<string name="auth_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-&ensp; 对于需要 HTTP 基本身份验证的 API。例如：<br>
-&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-&ensp; 将被解析为：<br>
-&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-]]>
-</string>
+    <string name="yesterday">昨天</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        在在线视频会议期间拒绝来电。<br> <br>
+        它会检查您选择的应用是否正在运行<b>前台服务</b>，
+        视频会议应用通常会使用此服务来保持连接。<br>
+        <br>
+        它适用于来电和短信。<br>
+        <br>
+        <font color="#ea86ff"><b>默认优先级：20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">会议模式</string>
+    <string name="search">搜索</string>
+    <string name="http_header">Http Header</string>
+    <string name="help_http_header">
+        <![CDATA[
+        每行一个属性。
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">记录短信</string>
+    <string name="initial_row_count">初始行数</string>
+    <plurals name="rows">
+        <item quantity="one">%d 行</item>
+        <item quantity="two">%d 行</item>
+        <item quantity="few">%d 行</item>
+        <item quantity="many">%d 行</item>
+        <item quantity="other">%d 行</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">滚动条阈值</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        列表中显示的项目数目超过此值后，将出现滚动条。
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">滚动高度</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        出现滚动条后，此值表示列表高度占屏幕的百分比。
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">最大正则表达式行数</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        正则表达式文本的最大显示行数，剩余文本将被截断并在后面添加省略号。
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">最大描述行数</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        描述文本的最大显示行数，剩余文本将被截断并在后面添加省略号。
+        ]]>
+    </string>
+
+    <string name="for_example">例如：</string>
+    <string name="tags_supported">
+        <![CDATA[
+        支持的标签：<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; 对于需要 HTTP 基本身份验证的 API。例如：<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; 将被解析为：<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

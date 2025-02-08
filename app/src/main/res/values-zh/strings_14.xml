@@ -1,95 +1,95 @@
 <resources>
-<string name="http_method">方法</string>
-<string name="http_post_body">POST正文</string>
-<string name="help_http_post_body">
-<![CDATA[
-支持的标签：<br>
-<br>
-%s
-]]>
-</string>
-<string name="missing_credentials">请输入有效的授权信息。</string>
-<string name="delay">延迟</string>
-<string name="report_number_require_call_log_permission">
-为防止重复呼叫或回拨号码被误报，举报号码需要通话记录权限。
-</string>
-<string name="exclude_services">排除服务</string>
-<string name="help_exclude_bg_service">
-<![CDATA[
-有些应用会运行额外的前台服务，在此处添加服务名称以排除它们。<br>
-<br>
-查找服务名称的方法：<br>
-&emsp; 1. 在该应用中激活服务。<br>
-&emsp; 2. 所有已激活的服务名称将显示在此处。<br>
-&emsp; 3. 点击名称将其添加。<br>
-<br>
-您可以添加多个名称，用逗号分隔。
-]]>
-</string>
-<string name="running_services">正在运行的服务</string>
-<string name="report_number">举报号码</string>
-<string-array name="spam_categories">
-<item>有效号码</item>
-<item>诈骗</item>
-<item>营销</item>
-<item>调查</item>
-<item>政治</item>
-<item>其他垃圾来电</item>
-</string-array>
-<string name="action_category_config">类别配置</string>
-<string name="help_action_category_config">
-<![CDATA[
-仅支持以下垃圾电话类别，API 中的任何其他类别都应映射到其中一个。<br>
-<br>
-- <font color="#03DAC5"><b>{valid}</b></font><br>
-&ensp; 标记为有效号码，而非垃圾电话。<br>
-<br>
-- <font color="#fa7f71"><b>{fraud}</b></font><br>
-- <font color="#fa7f71"><b>{marketing}</b></font><br>
-- <font color="#fa7f71"><b>{survey}</b></font><br>
-- <font color="#fa7f71"><b>{political}</b></font><br>
-<br>
-- <font color="#fa7f71"><b>{other}</b></font><br>
-&ensp; 备用垃圾电话类型，在以上类别均不适用时使用。<br>
-]]>
-</string>
-<string name="missing_category">
-动作 %s 中未配置类别 %s，请在 API 配置中配置它（如果 API 支持此类别）。
-</string>
-<string name="target_text">目标文本</string>
-<string name="match_found">匹配成功</string>
-<string name="match_not_found">匹配失败</string>
-<string name="help_test_regex">
-<![CDATA[
-这仅用于测试此正则表达式是否与文本匹配，不包括其他规则。<br>
-要针对所有规则进行测试，请改用右下角的浮动测试按钮。
-]]>
-</string>
-<string name="allow">允许</string>
-<string name="block">阻止</string>
-<string name="seconds">秒</string>
-<string name="seconds_short">秒</string>
-<string name="within_seconds">在…秒内</string>
-<string name="call_alert">来电提醒</string>
-<string name="help_call_alert">
-<![CDATA[
-有些服务会先发短信通知您即将有来电，通常在一分钟内。<br>
-<br>
-例如，一条类似这样的短信：<br>
-&ensp; <font color="#888888">[某个服务] 我们正在致电您以告知……，请随时接听。</font><br>
-<br>
-此类消息的正则表达式为：<br>
-&ensp; <font color="#03DAC5"><b><translate>.*请.*接听.*</translate></b></font> <br>
-<br>
-默认设置 <font color="#03DAC5"><b>120 秒</b></font> 表示在收到此类消息后接下来的两分钟内所有来电都将被允许。<br>
-<br>
-它适用于普通短信和闪信（0 类短信）。<br>
-<br>
-<font color="#ea86ff"><b>优先级：10</b></font>
-]]>
-</string>
-<string name="waning_using_wildcard_as_regex">通配符`*`未使用点作为前缀，您的意思是`.*`吗？</string>
-<string name="import_as">导入为</string>
-<string name="api_key">API 密钥</string>
-<string name="mms_support">MMS 支持</string>
+    <string name="http_method">方法</string>
+    <string name="http_post_body">POST正文</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        支持的标签：<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">请输入有效的授权信息。</string>
+    <string name="delay">延迟</string>
+    <string name="report_number_require_call_log_permission">
+        为防止重复呼叫或回拨号码被误报，举报号码需要通话记录权限。
+    </string>
+    <string name="exclude_services">排除服务</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        有些应用会运行额外的前台服务，在此处添加服务名称以排除它们。<br>
+        <br>
+        查找服务名称的方法：<br>
+        &emsp; 1. 在该应用中激活服务。<br>
+        &emsp; 2. 所有已激活的服务名称将显示在此处。<br>
+        &emsp; 3. 点击名称将其添加。<br>
+        <br>
+        您可以添加多个名称，用逗号分隔。
+        ]]>
+    </string>
+    <string name="running_services">正在运行的服务</string>
+    <string name="report_number">举报号码</string>
+    <string-array name="spam_categories">
+        <item>有效号码</item>
+        <item>诈骗</item>
+        <item>营销</item>
+        <item>调查</item>
+        <item>政治</item>
+        <item>其他垃圾来电</item>
+    </string-array>
+    <string name="action_category_config">类别配置</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        仅支持以下垃圾电话类别，API 中的任何其他类别都应映射到其中一个。<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; 标记为有效号码，而非垃圾电话。<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; 备用垃圾电话类型，在以上类别均不适用时使用。<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        动作 %s 中未配置类别 %s，请在 API 配置中配置它（如果 API 支持此类别）。
+    </string>
+    <string name="target_text">目标文本</string>
+    <string name="match_found">匹配成功</string>
+    <string name="match_not_found">匹配失败</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        这仅用于测试此正则表达式是否与文本匹配，不包括其他规则。<br>
+        要针对所有规则进行测试，请改用右下角的浮动测试按钮。
+        ]]>
+    </string>
+    <string name="allow">允许</string>
+    <string name="block">阻止</string>
+    <string name="seconds">秒</string>
+    <string name="seconds_short">秒</string>
+    <string name="within_seconds">在…秒内</string>
+    <string name="call_alert">来电提醒</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        有些服务会先发短信通知您即将有来电，通常在一分钟内。<br>
+        <br>
+        例如，一条类似这样的短信：<br>
+        &ensp; <font color="#888888">[某个服务] 我们正在致电您以告知……，请随时接听。</font><br>
+        <br>
+        此类消息的正则表达式为：<br>
+        &ensp; <font color="#03DAC5"><b><translate>.*请.*接听.*</translate></b></font> <br>
+        <br>
+        默认设置 <font color="#03DAC5"><b>120 秒</b></font> 表示在收到此类消息后接下来的两分钟内所有来电都将被允许。<br>
+        <br>
+        它适用于普通短信和闪信（0 类短信）。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">通配符`*`未使用点作为前缀，您的意思是`.*`吗？</string>
+    <string name="import_as">导入为</string>
+    <string name="api_key">API 密钥</string>
+    <string name="mms_support">MMS 支持</string>
 </resources>

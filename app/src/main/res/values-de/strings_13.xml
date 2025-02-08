@@ -1,109 +1,109 @@
 <resources>
-<string name="cleaning_up_history_db">
-Bereinigung der Verlaufsdatenbank, Löschung von Einträgen vor Zeitstempel: %s.
-</string>
-<string name="cleaning_up_spam_db">
-Bereinigung der Spam-Datenbank, Löschung von %s Einträgen vor Zeitstempel: %s.
-</string>
-<string name="resolved_url">Aufgelöste URL: %s.</string>
-<string name="time_cost">Zeitaufwand: %s Millisekunden.</string>
-<string name="parsed_n_rules">%s Regeln analysiert.</string>
-<string name="add_n_numbers_to_spam_db">Hinzufügen von %s Nummern zur Spam-Datenbank.</string>
-<string name="nothing_to_import">Die Nummernliste ist leer, nichts zum Importieren.</string>
-<string name="importing_n_numbers">Importiere %s Nummern als Regex-Regel.</string>
-<string name="create_rule_with_numbers">Erstelle Regel mit %s Nummern.</string>
-<string name="replace_rule_with_desc">Ersetze die Regel mit der Beschreibung: %s.</string>
-<string name="rule_with_desc_not_found">Regel mit Beschreibung %s nicht gefunden.</string>
-<string name="merging_rule_with_desc">Zusammenführen der Regel mit der Beschreibung: %s.</string>
-<string name="regex_count_after_merge">Regex-Anzahl vorher: %s, nachher: %s.</string>
-<string name="replace_number_from_to">Ersetze Nummer von %s nach %s.</string>
-<string name="find_rule_with_desc">%s Regeln mit Beschreibung %s gefunden.</string>
-<string name="modify_n_rules">Ändere %s Regeln.</string>
-<string name="fail_detect_cc">Fehler beim Erkennen der Landesvorwahl.</string>
-<string name="identified_as_spam">Als Spam-Nummer identifiziert, Kategorie: %s.</string>
-<string name="identified_as_valid">Als gültige Nummer identifiziert, Kategorie: %s.</string>
-<string name="unidentified_number">Unbekannte Nummer.</string>
-<string name="help_http_url">
-<![CDATA[
-Unterstützte Tags:<br>
-<br>
-%s
-<br>
-%s
-]]>
-</string>
-<string name="number_not_match_filter">Die Nummer %s passt nicht zum Filter %s, übersprungen.</string>
-<string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-<string name="help_api_preset_phoneblock">
-<![CDATA[
-Hauptsächlich für die deutsche FRITZ!Box konzipiert, funktioniert es auch für Telefonnummern aus anderen Ländern.<br>
-<br>
-Es unterstützt die Abfrage per Hash anstatt der Nummer selbst, was mehr Datenschutz bietet.<br>
-<br>
-Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
-<br>
-API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-]]>
-</string>
-<string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>
-<string name="action_filter_query_result">Spam filtern</string>
-<string name="help_action_filter_query_result">
-<![CDATA[
-Generiert eine <u>Liste von Nummern</u>, die die aus dem vorherigen Schritt identifizierten Spam-Nummern enthält und für den Import in die Datenbank bereit ist.
-]]>
-</string>
-<string name="another_thread_is_cancelled">Ein anderer Thread wurde abgebrochen.</string>
-<string name="help_api_preset_phoneblock_authorization">
-<![CDATA[
-1. Registrieren Sie ein Konto unter <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-<br>
-2. Auf der Einstellungsseite: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-drücken Sie die Schaltfläche "API-Schlüssel generieren".<br>
-<br>
-3. Tragen Sie den generierten API-Schlüssel unten ein.
-]]>
-</string>
-<string name="username">Benutzername</string>
-<string name="password">Passwort</string>
-<string name="auto_detect_cc_permission">Die Berechtigung READ_PHONE_STATE wird benötigt, um die Landesvorwahl zu erkennen.</string>
-<string name="suggest_to_swipe">
-<![CDATA[
-<font color="#03DAC5"><b>Nach links wischen</b></font> zum Löschen.<br>
-<br>
-Die meisten kartenartigen Benutzeroberflächenelemente in dieser App sind mit Wischgesten verknüpft,
-von denen einige auch <font color="#03DAC5"><b>Rechtswischen</b></font> unterstützen, z. B. die Verlaufseinträge.
-]]>
-</string>
-<string name="bug_number">Wenn dies eine gültige Nummer ist, melden Sie sie bitte auf Github.</string>
-<string name="number_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{cc}</b></font><br>
-&ensp; Die Landesvorwahl.<br>
-- <font color="#00BFFF"><b>{domestic}</b></font><br>
-&ensp; Der nationale Teil.<br>
-- <font color="#00BFFF"><b>{number}</b></font><br>
-&ensp; Die vollständige Nummer, inklusive Landesvorwahl und nationalem Teil, ohne führende + oder 0en.<br>
-- <font color="#00BFFF"><b>{origin_number}</b></font><br>
-&ensp; Die ursprüngliche Nummer, kann führende + oder 0en enthalten.<br>
-]]>
-</string>
-<string name="time_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{year}</b></font><br>
-&ensp; Das Jahr, z.B.: 2024<br>
-- <font color="#00BFFF"><b>{month} {day}</b></font><br>
-&ensp; Einstellige Zahlen werden mit einer führenden Null aufgefüllt, z.B.: <br>
-&emsp; {month}_{day} -> 01_02<br>
-- <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-&ensp; Diese Werte werden ohne führende Null aufgefüllt, z.B.: <br>
-&emsp; {month}_{day} -> 1_2<br>
-]]>
-</string>
-<string name="skip_alpha_empty_number">Alpha- oder leere Nummer überspringen.</string>
-<string name="sms_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{sms}</b></font><br>
-&ensp; Der SMS-Inhalt.<br>
-]]>
-</string>
+    <string name="cleaning_up_history_db">
+        Bereinigung der Verlaufsdatenbank, Löschung von Einträgen vor Zeitstempel: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Bereinigung der Spam-Datenbank, Löschung von %s Einträgen vor Zeitstempel: %s.
+    </string>
+    <string name="resolved_url">Aufgelöste URL: %s.</string>
+    <string name="time_cost">Zeitaufwand: %s Millisekunden.</string>
+    <string name="parsed_n_rules">%s Regeln analysiert.</string>
+    <string name="add_n_numbers_to_spam_db">Hinzufügen von %s Nummern zur Spam-Datenbank.</string>
+    <string name="nothing_to_import">Die Nummernliste ist leer, nichts zum Importieren.</string>
+    <string name="importing_n_numbers">Importiere %s Nummern als Regex-Regel.</string>
+    <string name="create_rule_with_numbers">Erstelle Regel mit %s Nummern.</string>
+    <string name="replace_rule_with_desc">Ersetze die Regel mit der Beschreibung: %s.</string>
+    <string name="rule_with_desc_not_found">Regel mit Beschreibung %s nicht gefunden.</string>
+    <string name="merging_rule_with_desc">Zusammenführen der Regel mit der Beschreibung: %s.</string>
+    <string name="regex_count_after_merge">Regex-Anzahl vorher: %s, nachher: %s.</string>
+    <string name="replace_number_from_to">Ersetze Nummer von %s nach %s.</string>
+    <string name="find_rule_with_desc">%s Regeln mit Beschreibung %s gefunden.</string>
+    <string name="modify_n_rules">Ändere %s Regeln.</string>
+    <string name="fail_detect_cc">Fehler beim Erkennen der Landesvorwahl.</string>
+    <string name="identified_as_spam">Als Spam-Nummer identifiziert, Kategorie: %s.</string>
+    <string name="identified_as_valid">Als gültige Nummer identifiziert, Kategorie: %s.</string>
+    <string name="unidentified_number">Unbekannte Nummer.</string>
+    <string name="help_http_url">
+        <![CDATA[
+        Unterstützte Tags:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="number_not_match_filter">Die Nummer %s passt nicht zum Filter %s, übersprungen.</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Hauptsächlich für die deutsche FRITZ!Box konzipiert, funktioniert es auch für Telefonnummern aus anderen Ländern.<br>
+        <br>
+        Es unterstützt die Abfrage per Hash anstatt der Nummer selbst, was mehr Datenschutz bietet.<br>
+        <br>
+        Website: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="not_enough_time_left">Das Zeitlimit für die Anrufprüfung beträgt 5 Sekunden. Mit einem Puffer von %s ms für die Ungenauigkeit von Zeitfunktionen beträgt das Gesamtzeitlimit tatsächlich %s ms. Die vorherigen Schritte dauerten %s ms, nicht genügend Zeit übrig, überspringen.</string>
+    <string name="action_filter_query_result">Spam filtern</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Generiert eine <u>Liste von Nummern</u>, die die aus dem vorherigen Schritt identifizierten Spam-Nummern enthält und für den Import in die Datenbank bereit ist.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">Ein anderer Thread wurde abgebrochen.</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. Registrieren Sie ein Konto unter <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. Auf der Einstellungsseite: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         drücken Sie die Schaltfläche "API-Schlüssel generieren".<br>
+        <br>
+        3. Tragen Sie den generierten API-Schlüssel unten ein.
+        ]]>
+    </string>
+    <string name="username">Benutzername</string>
+    <string name="password">Passwort</string>
+    <string name="auto_detect_cc_permission">Die Berechtigung READ_PHONE_STATE wird benötigt, um die Landesvorwahl zu erkennen.</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>Nach links wischen</b></font> zum Löschen.<br>
+        <br>
+        Die meisten kartenartigen Benutzeroberflächenelemente in dieser App sind mit Wischgesten verknüpft,
+        von denen einige auch <font color="#03DAC5"><b>Rechtswischen</b></font> unterstützen, z. B. die Verlaufseinträge.
+        ]]>
+    </string>
+    <string name="bug_number">Wenn dies eine gültige Nummer ist, melden Sie sie bitte auf Github.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; Die Landesvorwahl.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; Der nationale Teil.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; Die vollständige Nummer, inklusive Landesvorwahl und nationalem Teil, ohne führende + oder 0en.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; Die ursprüngliche Nummer, kann führende + oder 0en enthalten.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; Das Jahr, z.B.: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; Einstellige Zahlen werden mit einer führenden Null aufgefüllt, z.B.: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Diese Werte werden ohne führende Null aufgefüllt, z.B.: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="skip_alpha_empty_number">Alpha- oder leere Nummer überspringen.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; Der SMS-Inhalt.<br>
+        ]]>
+    </string>
 </resources>

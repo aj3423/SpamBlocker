@@ -1,103 +1,103 @@
 <resources>
-<string name="contacts">Contatos</string>
-<string name="non_contacts">Não Contatos</string>
-<string name="inclusive">Inclusivo</string>
-<string name="exclusive">Exclusivo</string>
-<string name="help_contacts">
-<![CDATA[
-Quando ativado, chamadas/mensagens de contatos são sempre permitidas. <br>
-<br>
-- <b>Inclusivo</b>: <br>
-&emsp; Números não salvos nos contatos serão verificados por outras regras. <br>
-&emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
-<br>
-- <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-&emsp; Números não salvos nos contatos serão <font color="#fa7f71"><b>bloqueados</b></font>. <br>
-&emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font> <br>
-<br>
-Isso se aplica a chamadas e mensagens SMS.
-]]>
-</string>
-<string name="stir_attestation">STIR</string>
-<string name="stir_include_unverified">Incluir Não Verificado</string>
-<string name="unverified">Não Verificado</string>
-<string name="valid">Chamada Válida</string>
-<string name="spoof">Chamada Falsa</string>
-<string name="help_stir">
-<![CDATA[
-Atestação STIR/SHAKEN requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
-<br>
-Existem três resultados possíveis de atestação: <br>
-<font color="#03DAC5"><b>Válido</b></font> <br>
-&emsp; A chamada é muito provavelmente válida, não falsificada. <br>
-<font color="#ffa500"><b>Não Verificado</b></font> <br>
-&emsp; A chamada não pode ser validada ou a atestação STIR não é suportada. <br>
-<font color="#fa7f71"><b>Falsa</b></font> <br>
-&emsp; É muito provável que seja uma chamada falsificada. <br>
-<br>
-<br>
-- <b>Inclusivo</b>: <br>
-&emsp; Chamadas que falham nesta verificação ainda serão verificadas por outras regras. <br>
-&emsp; Quando "<b>Incluir Não Verificado</b>" está marcado, uma chamada também passaria se não estivesse verificada. <br>
-&emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
-<br>
-- <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-&emsp; Chamadas que falham nesta verificação serão <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
-&emsp; Quando "<b>Incluir Não Verificado</b>" está marcado, uma chamada também seria bloqueada se não estivesse verificada. <br>
-&emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font>
-]]>
-</string>
-<string name="failed_to_import_from_csv">
-<![CDATA[
-Campo obrigatório <b>pattern</b> ausente no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
-]]>
-</string>
-<string name="help_auto_report">
-<![CDATA[
-Relate automaticamente um número bloqueado a todos os endpoints da API sem interferência humana, para construir nossos bancos de dados de crowdsourcing contra ligações de spam.<br>
-<br>
-<h4>- <font color="#6ed0ff">Atraso no relatório</font></h4><br>
-Quando uma chamada recebida é bloqueada, haverá um buffer de tempo de uma hora antes que o número seja relatado.
-Se o número for permitido posteriormente devido a repetições ou retorno da ligação dentro desse buffer de tempo,
-ele é considerado um número não spam e não será relatado.<br>
-<br>
-<h4>- <font color="#6ed0ff">Privacidade</font></h4>
-<br>
-Os endpoints da API verão seu:<br>
-<br>
-&ensp; - Endereço IP<br>
-&ensp; - Impressões digitais Tls e Tcp (que podem revelar sua versão do Android)<br>
-&ensp; - O número relatado (incluindo seu código de país)<br>
-<br>
-Nada mais será relatado.<br>
-<br>
-<h4>- <font color="#6ed0ff">Tipo de relatório</font></h4><br>
-<h5>1. Não <font color="#fa7f71">irá</font> relatar:</h5>
-<br>
-- <font color="#fa7f71">Números aprovados</font><br>
-E os seguintes tipos bloqueados:<br>
-- <font color="#fa7f71">Teste Global</font><br>
-- <font color="#fa7f71">Expressão Regular de Contato</font><br>
-- <font color="#fa7f71">Expressão Regular de Grupo de Contatos</font><br>
-- <font color="#fa7f71">Banco de Dados</font><br>
-- <font color="#fa7f71">Modo Reunião</font><br>
-- <font color="#fa7f71">Consulta Instantânea</font> (para evitar que o número do endpoint da API seja vazado para outros concorrentes)<br>
-<br>
-<h5>2. <font color="#03DAC5">Irá</font> relatar:</h5>
-<br>
-Os seguintes tipos bloqueados:<br>
-- <font color="#03DAC5">Não Contato</font>(exclusivo)<br>
-- <font color="#03DAC5">Atestado STIR</font><br>
-- <font color="#03DAC5">Expressão Regular de Número</font><br>
-- <font color="#03DAC5">Expressão Regular de Conteúdo de SMS</font><br>
-<br>
-<h5>3. Casos de exceção:</h5>
-<br>
-- Quando bloqueado por <font color="#03DAC5">Consulta Instantânea</font>, será relatado à mesma API para aumentar a pontuação do número.
-Por exemplo, quando bloqueado por consulta da API de check.com, será relatado apenas ao check.com, não a outros.com. <br>
--  Quando bloqueado por <font color="#03DAC5">Banco de Dados</font> e o registro foi originalmente adicionado por uma consulta instantânea da API,
-será relatado apenas à mesma API pelo mesmo motivo acima.<br>
-]]>
-</string>
-<string name="auto_report">Relatório Automático</string>
+    <string name="contacts">Contatos</string>
+    <string name="non_contacts">Não Contatos</string>
+    <string name="inclusive">Inclusivo</string>
+    <string name="exclusive">Exclusivo</string>
+    <string name="help_contacts">
+        <![CDATA[
+        Quando ativado, chamadas/mensagens de contatos são sempre permitidas. <br>
+        <br>
+          - <b>Inclusivo</b>: <br>
+              &emsp; Números não salvos nos contatos serão verificados por outras regras. <br>
+              &emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
+              &emsp; Números não salvos nos contatos serão <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font> <br>
+        <br>
+        Isso se aplica a chamadas e mensagens SMS.
+        ]]>
+    </string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Incluir Não Verificado</string>
+    <string name="unverified">Não Verificado</string>
+    <string name="valid">Chamada Válida</string>
+    <string name="spoof">Chamada Falsa</string>
+    <string name="help_stir">
+        <![CDATA[
+            Atestação STIR/SHAKEN requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
+            <br>
+            Existem três resultados possíveis de atestação: <br>
+            <font color="#03DAC5"><b>Válido</b></font> <br>
+            &emsp; A chamada é muito provavelmente válida, não falsificada. <br>
+            <font color="#ffa500"><b>Não Verificado</b></font> <br>
+            &emsp; A chamada não pode ser validada ou a atestação STIR não é suportada. <br>
+            <font color="#fa7f71"><b>Falsa</b></font> <br>
+            &emsp; É muito provável que seja uma chamada falsificada. <br>
+            <br>
+            <br>
+              - <b>Inclusivo</b>: <br>
+                  &emsp; Chamadas que falham nesta verificação ainda serão verificadas por outras regras. <br>
+                  &emsp; Quando "<b>Incluir Não Verificado</b>" está marcado, uma chamada também passaria se não estivesse verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridade: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
+                  &emsp; Chamadas que falham nesta verificação serão <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
+                  &emsp; Quando "<b>Incluir Não Verificado</b>" está marcado, uma chamada também seria bloqueada se não estivesse verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridade: 0</b></font>
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        Campo obrigatório <b>pattern</b> ausente no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
+        ]]>
+    </string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Relate automaticamente um número bloqueado a todos os endpoints da API sem interferência humana, para construir nossos bancos de dados de crowdsourcing contra ligações de spam.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">Atraso no relatório</font></h4><br>
+        Quando uma chamada recebida é bloqueada, haverá um buffer de tempo de uma hora antes que o número seja relatado.
+        Se o número for permitido posteriormente devido a repetições ou retorno da ligação dentro desse buffer de tempo,
+        ele é considerado um número não spam e não será relatado.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">Privacidade</font></h4>
+        <br>
+        Os endpoints da API verão seu:<br>
+        <br>
+         &ensp; - Endereço IP<br>
+         &ensp; - Impressões digitais Tls e Tcp (que podem revelar sua versão do Android)<br>
+         &ensp; - O número relatado (incluindo seu código de país)<br>
+        <br>
+        Nada mais será relatado.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">Tipo de relatório</font></h4><br>
+        <h5>1. Não <font color="#fa7f71">irá</font> relatar:</h5>
+        <br>
+        - <font color="#fa7f71">Números aprovados</font><br>
+        E os seguintes tipos bloqueados:<br>
+        - <font color="#fa7f71">Teste Global</font><br>
+        - <font color="#fa7f71">Expressão Regular de Contato</font><br>
+        - <font color="#fa7f71">Expressão Regular de Grupo de Contatos</font><br>
+        - <font color="#fa7f71">Banco de Dados</font><br>
+        - <font color="#fa7f71">Modo Reunião</font><br>
+        - <font color="#fa7f71">Consulta Instantânea</font> (para evitar que o número do endpoint da API seja vazado para outros concorrentes)<br>
+        <br>
+        <h5>2. <font color="#03DAC5">Irá</font> relatar:</h5>
+        <br>
+        Os seguintes tipos bloqueados:<br>
+        - <font color="#03DAC5">Não Contato</font>(exclusivo)<br>
+        - <font color="#03DAC5">Atestado STIR</font><br>
+        - <font color="#03DAC5">Expressão Regular de Número</font><br>
+        - <font color="#03DAC5">Expressão Regular de Conteúdo de SMS</font><br>
+        <br>
+        <h5>3. Casos de exceção:</h5>
+        <br>
+        - Quando bloqueado por <font color="#03DAC5">Consulta Instantânea</font>, será relatado à mesma API para aumentar a pontuação do número.
+         Por exemplo, quando bloqueado por consulta da API de check.com, será relatado apenas ao check.com, não a outros.com. <br>
+        -  Quando bloqueado por <font color="#03DAC5">Banco de Dados</font> e o registro foi originalmente adicionado por uma consulta instantânea da API,
+         será relatado apenas à mesma API pelo mesmo motivo acima.<br>
+        ]]>
+    </string>
+    <string name="auto_report">Relatório Automático</string>
 </resources>

@@ -1,109 +1,109 @@
 <resources>
-<string name="cleaning_up_history_db">
-پاک کردن پایگاه داده تاریخچه، حذف سوابق قبل از زمان: %s.
-</string>
-<string name="cleaning_up_spam_db">
-پاک کردن پایگاه داده تماس‌های مزاحم، حذف %s رکورد قبل از زمان: %s.
-</string>
-<string name="resolved_url">آدرس حل شده: %s</string>
-<string name="time_cost">زمان صرف شده: %s میلی ثانیه.</string>
-<string name="parsed_n_rules">%s قوانین تجزیه شدند.</string>
-<string name="add_n_numbers_to_spam_db">اضافه کردن %s شماره به پایگاه داده تماس‌های مزاحم.</string>
-<string name="nothing_to_import">لیست شماره‌ها خالی است، چیزی برای وارد کردن وجود ندارد.</string>
-<string name="importing_n_numbers">وارد کردن %s شماره به عنوان قانون عبارات باقاعده.</string>
-<string name="create_rule_with_numbers">ایجاد قانون با %s شماره.</string>
-<string name="replace_rule_with_desc">جایگزینی قانون با توضیحات: %s.</string>
-<string name="rule_with_desc_not_found">قانون با توضیحات %s یافت نشد.</string>
-<string name="merging_rule_with_desc">ادغام قانون با توضیحات: %s.</string>
-<string name="regex_count_after_merge">تعداد عبارات باقاعده قبل: %s، بعد: %s.</string>
-<string name="replace_number_from_to">جایگزینی شماره از %s به %s.</string>
-<string name="find_rule_with_desc">%s قانون با توضیحات %s یافت شد.</string>
-<string name="modify_n_rules">اصلاح %s قانون.</string>
-<string name="number_not_match_filter">شماره %s با فیلتر %s مطابقت ندارد، رد شد.</string>
-<string name="fail_detect_cc">شناسایی کد کشور ناموفق بود.</string>
-<string name="identified_as_spam">به عنوان شماره مزاحم شناسایی شد، دسته بندی: %s.</string>
-<string name="identified_as_valid">به عنوان شماره معتبر شناسایی شد، دسته بندی: %s.</string>
-<string name="unidentified_number">شماره ناشناخته.</string>
-<string name="auto_detect_cc_permission">برای تشخیص کد کشور، مجوز READ_PHONE_STATE لازم است.</string>
-<string name="number_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{cc}</b></font><br>
-&ensp; کد کشور.<br>
-- <font color="#00BFFF"><b>{domestic}</b></font><br>
-&ensp; بخش داخلی.<br>
-- <font color="#00BFFF"><b>{number}</b></font><br>
-&ensp; شماره کامل، شامل کد کشور و بخش داخلی، بدون + یا 0 در ابتدا.<br>
-- <font color="#00BFFF"><b>{origin_number}</b></font><br>
-&ensp; شماره اصلی که می‌تواند شامل + یا 0 در ابتدا باشد.<br>
-]]>
-</string>
-<string name="time_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{year}</b></font><br>
-&ensp; سال، مثال: 2024<br>
-- <font color="#00BFFF"><b>{month} {day}</b></font><br>
-&ensp; اعداد یک رقمی با صفر در ابتدا پر می‌شوند، مثال:<br>
-&emsp; {month}_{day} -> 01_02<br>
-- <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-&ensp; این مقادیر بدون صفر در ابتدا پر می‌شوند، مثال:<br>
-&emsp; {month}_{day} -> 1_2<br>
-]]>
-</string>
-<string name="help_http_url">
-<![CDATA[
-برچسب‌های پشتیبانی شده:<br>
-<br>
-%s
-<br>
-%s
-]]>
-</string>
-<string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-<string name="help_api_preset_phoneblock">
-<![CDATA[
-در درجه اول برای FRITZ!Box آلمان طراحی شده است، اما برای شماره‌های تلفن از سایر کشورها نیز کار می‌کند.<br>
-<br>
-از پرس‌وجو با هش به جای خود شماره پشتیبانی می‌کند و حریم خصوصی بهتری ارائه می‌دهد.<br>
-<br>
-وب‌سایت: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
-<br>
-API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-]]>
-</string>
-<string name="help_api_preset_phoneblock_authorization">
-<![CDATA[
-1. در <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> حساب کاربری ایجاد کنید<br>
-<br>
-2. در صفحه تنظیمات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>، روی دکمه "Generate API key" کلیک کنید.<br>
-<br>
-3. کلید API تولید شده را در پایین وارد کنید.
-]]>
-</string>
-<string name="not_enough_time_left">
-محدودیت زمانی غربالگری تماس 5 ثانیه است، با بافر %s میلی ثانیه برای عدم دقت توابع زمان، محدودیت زمانی کل در واقع %s میلی ثانیه است. مراحل قبلی %s میلی ثانیه طول کشید، زمان کافی باقی نمانده، رد شد.
-</string>
-<string name="action_filter_query_result">فیلتر تماس‌های مزاحم</string>
-<string name="help_action_filter_query_result">
-<![CDATA[
-ایجاد یک <u>لیست از شماره‌ها</u> شامل شماره‌های مزاحم شناسایی شده از مرحله قبل، و آماده برای وارد کردن به پایگاه داده.
-]]>
-</string>
-<string name="another_thread_is_cancelled">یک رشته دیگر لغو شده است.</string>
-<string name="username">نام کاربری</string>
-<string name="password">رمز عبور</string>
-<string name="suggest_to_swipe">
-<![CDATA[
-برای حذف آن، <font color="#03DAC5"><b>به سمت چپ بکشید</b></font>.<br>
-<br>
-بیشتر عناصر رابط کاربری مانند کارت در این برنامه با حرکات کشیدن مرتبط هستند، برخی از آن‌ها نیز از <font color="#03DAC5"><b>کشیدن به سمت راست</b></font> پشتیبانی می‌کنند، به عنوان مثال، سوابق تاریخچه.
-]]>
-</string>
-<string name="bug_number">اگر این یک شماره معتبر است، لطفا آن را در github گزارش دهید.</string>
-<string name="skip_alpha_empty_number">رد کردن شماره‌های الفبایی یا خالی.</string>
-<string name="sms_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{sms}</b></font><br>
-&ensp; محتوای پیام کوتاه.<br>
-]]>
-</string>
+    <string name="cleaning_up_history_db">
+        پاک کردن پایگاه داده تاریخچه، حذف سوابق قبل از زمان: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        پاک کردن پایگاه داده تماس‌های مزاحم، حذف %s رکورد قبل از زمان: %s.
+    </string>
+    <string name="resolved_url">آدرس حل شده: %s</string>
+    <string name="time_cost">زمان صرف شده: %s میلی ثانیه.</string>
+    <string name="parsed_n_rules">%s قوانین تجزیه شدند.</string>
+    <string name="add_n_numbers_to_spam_db">اضافه کردن %s شماره به پایگاه داده تماس‌های مزاحم.</string>
+    <string name="nothing_to_import">لیست شماره‌ها خالی است، چیزی برای وارد کردن وجود ندارد.</string>
+    <string name="importing_n_numbers">وارد کردن %s شماره به عنوان قانون عبارات باقاعده.</string>
+    <string name="create_rule_with_numbers">ایجاد قانون با %s شماره.</string>
+    <string name="replace_rule_with_desc">جایگزینی قانون با توضیحات: %s.</string>
+    <string name="rule_with_desc_not_found">قانون با توضیحات %s یافت نشد.</string>
+    <string name="merging_rule_with_desc">ادغام قانون با توضیحات: %s.</string>
+    <string name="regex_count_after_merge">تعداد عبارات باقاعده قبل: %s، بعد: %s.</string>
+    <string name="replace_number_from_to">جایگزینی شماره از %s به %s.</string>
+    <string name="find_rule_with_desc">%s قانون با توضیحات %s یافت شد.</string>
+    <string name="modify_n_rules">اصلاح %s قانون.</string>
+    <string name="number_not_match_filter">شماره %s با فیلتر %s مطابقت ندارد، رد شد.</string>
+    <string name="fail_detect_cc">شناسایی کد کشور ناموفق بود.</string>
+    <string name="identified_as_spam">به عنوان شماره مزاحم شناسایی شد، دسته بندی: %s.</string>
+    <string name="identified_as_valid">به عنوان شماره معتبر شناسایی شد، دسته بندی: %s.</string>
+    <string name="unidentified_number">شماره ناشناخته.</string>
+    <string name="auto_detect_cc_permission">برای تشخیص کد کشور، مجوز READ_PHONE_STATE لازم است.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; کد کشور.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; بخش داخلی.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; شماره کامل، شامل کد کشور و بخش داخلی، بدون + یا 0 در ابتدا.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; شماره اصلی که می‌تواند شامل + یا 0 در ابتدا باشد.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; سال، مثال: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; اعداد یک رقمی با صفر در ابتدا پر می‌شوند، مثال:<br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; این مقادیر بدون صفر در ابتدا پر می‌شوند، مثال:<br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        برچسب‌های پشتیبانی شده:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        در درجه اول برای FRITZ!Box آلمان طراحی شده است، اما برای شماره‌های تلفن از سایر کشورها نیز کار می‌کند.<br>
+        <br>
+        از پرس‌وجو با هش به جای خود شماره پشتیبانی می‌کند و حریم خصوصی بهتری ارائه می‌دهد.<br>
+        <br>
+        وب‌سایت: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. در <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> حساب کاربری ایجاد کنید<br>
+        <br>
+        2. در صفحه تنظیمات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>، روی دکمه "Generate API key" کلیک کنید.<br>
+        <br>
+        3. کلید API تولید شده را در پایین وارد کنید.
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        محدودیت زمانی غربالگری تماس 5 ثانیه است، با بافر %s میلی ثانیه برای عدم دقت توابع زمان، محدودیت زمانی کل در واقع %s میلی ثانیه است. مراحل قبلی %s میلی ثانیه طول کشید، زمان کافی باقی نمانده، رد شد.
+    </string>
+    <string name="action_filter_query_result">فیلتر تماس‌های مزاحم</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        ایجاد یک <u>لیست از شماره‌ها</u> شامل شماره‌های مزاحم شناسایی شده از مرحله قبل، و آماده برای وارد کردن به پایگاه داده.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">یک رشته دیگر لغو شده است.</string>
+    <string name="username">نام کاربری</string>
+    <string name="password">رمز عبور</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        برای حذف آن، <font color="#03DAC5"><b>به سمت چپ بکشید</b></font>.<br>
+        <br>
+        بیشتر عناصر رابط کاربری مانند کارت در این برنامه با حرکات کشیدن مرتبط هستند، برخی از آن‌ها نیز از <font color="#03DAC5"><b>کشیدن به سمت راست</b></font> پشتیبانی می‌کنند، به عنوان مثال، سوابق تاریخچه.
+        ]]>
+    </string>
+    <string name="bug_number">اگر این یک شماره معتبر است، لطفا آن را در github گزارش دهید.</string>
+    <string name="skip_alpha_empty_number">رد کردن شماره‌های الفبایی یا خالی.</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; محتوای پیام کوتاه.<br>
+        ]]>
+    </string>
 </resources>

@@ -1,70 +1,72 @@
 <resources>
-<string name="yesterday">Onte</string>
-<string name="help_meeting_mode">
-<![CDATA[
-Rexeitar chamadas durante reunións de vídeo en liña.<br> <br>
-Comproba se calquera aplicación seleccionada está a executar un <b>servizo en primeiro plano</b>,
-o que é comúnmente usado por aplicacións de videoconferencia para manter a conexión activa.<br>
-<br>
-Aplicarase tanto a chamadas como a mensaxes.<br>
-<br>
-<font color="#ea86ff"><b>Prioridade predeterminada: 20</b></font>
-]]>
-</string>
-<string name="in_meeting">Modo de Reunión</string>
-<string name="search">Buscar</string>
-<string name="http_header">Cabecera Http</string>
-<string name="help_http_header">
-<![CDATA[
-Un atributo por liña.
-]]>
-</string>
-<string name="log_sms_content_to_db">Registrar SMS</string>
-<string name="initial_row_count">Contador de Filas Inicial</string>
-<plurals name="rows">
-<item quantity="one">%d Fila</item>
-<item quantity="two">%d Filas</item>
-<item quantity="few">%d Filas</item>
-<item quantity="many">%d Filas</item>
-<item quantity="other">%d Filas</item>
-</plurals>
-<string name="label_max_none_scroll_items">Umbral da Barra de Desprazamento</string>
-<string name="help_max_none_scroll_items">
-<![CDATA[
-O número máximo de elementos que se poden mostrar na lista antes de que apareza unha barra de desprazamento.
-]]>
-</string>
-<string name="label_max_scroll_height">Altura de Desprazamento</string>
-<string name="help_max_scroll_height">
-<![CDATA[
-Cando aparece a barra de desprazamento, este valor representa a altura da lista como un porcentaxe da pantalla.
-]]>
-</string>
-<string name="label_max_regex_lines">Líneas Máximas de Regex</string>
-<string name="help_max_regex_lines">
-<![CDATA[
-As liñas de visualización máximas para o texto regex, o texto restante será truncado e seguido dunha elipse.
-]]>
-</string>
-<string name="label_max_desc_lines">Líneas Máximas de Descrición</string>
-<string name="help_max_desc_lines">
-<![CDATA[
-As liñas de visualización máximas para o texto de descrición, o texto restante será truncado e seguido dunha elipse.
-]]>
-</string>
-<string name="for_example"><translate>Por exemplo:</translate></string>
-<string name="tags_supported">
-<![CDATA[
-Etiquetas soportadas:<br><br>
-]]>
-</string>
-<string name="auth_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{basic_auth(usuario:contrasinal)}</b></font><br>
-&ensp; Para APIs que requiren autenticación HTTP básica. Por exemplo:<br>
-&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-&ensp; será analizado a:<br>
-&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-]]>
-</string>
+    <string name="yesterday">Onte</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Rexeitar chamadas durante reunións de vídeo en liña.<br> <br>
+        Comproba se calquera aplicación seleccionada está a executar un <b>servizo en primeiro plano</b>,
+        o que é comúnmente usado por aplicacións de videoconferencia para manter a conexión activa.<br>
+        <br>
+        Aplicarase tanto a chamadas como a mensaxes.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade predeterminada: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Modo de Reunión</string>
+    <string name="search">Buscar</string>
+    <string name="http_header">Cabecera Http</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Un atributo por liña.
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">Registrar SMS</string>
+    <string name="initial_row_count">Contador de Filas Inicial</string>
+    <plurals name="rows">
+        <item quantity="one">%d Fila</item>
+        <item quantity="two">%d Filas</item>
+        <item quantity="few">%d Filas</item>
+        <item quantity="many">%d Filas</item>
+        <item quantity="other">%d Filas</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Umbral da Barra de Desprazamento</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        O número máximo de elementos que se poden mostrar na lista antes de que apareza unha barra de desprazamento.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Altura de Desprazamento</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Cando aparece a barra de desprazamento, este valor representa a altura da lista como un porcentaxe da pantalla.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Líneas Máximas de Regex</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        As liñas de visualización máximas para o texto regex, o texto restante será truncado e seguido dunha elipse.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Líneas Máximas de Descrición</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        As liñas de visualización máximas para o texto de descrición, o texto restante será truncado e seguido dunha elipse.
+        ]]>
+    </string>
+
+    <string name="for_example"><translate>Por exemplo:</translate></string>
+    <string name="tags_supported">
+        <![CDATA[
+        Etiquetas soportadas:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(usuario:contrasinal)}</b></font><br>
+        &ensp; Para APIs que requiren autenticación HTTP básica. Por exemplo:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; será analizado a:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

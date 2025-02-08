@@ -1,87 +1,91 @@
 <resources>
-<string name="contact_rule">Правило контакта</string>
-<string name="directory">Каталог</string>
-<string name="filename">Имя файла</string>
-<string name="url">URL</string>
-<string name="expiry_days">Срок действия (дней)</string>
-<string name="column_mapping">Сопоставление столбцов</string>
-<string name="include_spam_db">Включить базу данных спама</string>
-<string name="no_config_needed">Настройка не требуется</string>
-<string name="success">Успешно</string>
-<string name="failed">Ошибка</string>
-<string name="running">Выполняется</string>
-<string name="optional">(необязательно)</string>
-<string name="help_action_header">
-<![CDATA[
-- <font color="#03DAC5"><b>Тест</b></font><br>
-Эти действия будут выполнены немедленно, чтобы проверить правильность настройки,
-или, возможно, вы просто хотите вручную запустить этот рабочий процесс.<br>
-<br>
-- <font color="#00BFFF"><b>Новый</b></font><br>
-Создайте новое действие, несколько действий могут быть связаны друг с другом для выполнения сложной задачи.<br>
-Эти зеленые или красные точки между элементами показывают, могут ли они быть связаны или нет.
-]]>
-</string>
-<string name="help_bot_preset_dnc">
-<![CDATA[
-Скачивайте спам-номера телефонов из
-<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-<no_translate>FTC - Do Not Call</no_translate> </a> каждый рабочий день,
-и импортируйте их в базу данных спама.
-]]>
-</string>
-<string name="help_bot_preset_cleanup_spam_db">Удалите устаревшие записи из базы данных спама.</string>
-<string name="help_bot_preset_cleanup_history">Удалите устаревшие записи звонков/SMS.</string>
-<string name="help_bot_preset_auto_backup">Создайте резервную копию всех настроек.</string>
-<string name="everyday">Ежедневно</string>
-<string name="daily">Ежедневно</string>
-<string name="weekly">Еженедельно</string>
-<string name="periodically">Периодически</string>
-<string name="time">Время</string>
-<string name="workdays">Рабочие дни</string>
-<string name="help_backup">
-<![CDATA[
-Формат резервной копии - сжатый gzip json, вы можете открыть и отредактировать его с помощью любого архиватора.<br>
-<br>
-- <font color="#00BFFF"><b>Включить базу спама</b></font><br>
-Длительное нажатие кнопки также экспортирует/импортирует базу спама.<br>
-<br>
-<font color="#ffa500">Примечание:</font><br>
-&ensp; Включение базы спама в резервную копию значительно увеличит её размер, поскольку база регулярно обновляется, это обычно не нужно, если вы не хотите клонировать её на другой телефон.<br>
-]]>
-</string>
-<string name="mode">Режим</string>
-<string-array name="regex_action_add_mode">
-<item>Создать</item>
-<item>Заменить</item>
-<item>Объединить</item>
-</string-array>
-<string name="help_regex_action_add_mode">
-<![CDATA[
--<font color="#00BFFF"><b>Создать</b></font><br>
-&ensp; Всегда создавать новое правило регулярного выражения.<br>
-<br>
-- <font color="#00BFFF"><b>Заменить</b></font><br>
-&ensp; Попробует найти существующее правило с тем же <b>описанием</b>. <br>
-&ensp;&ensp; - Если найдено, оно будет переопределено.<br>
-&ensp;&ensp; - Если не найдено, будет создано новое правило, то же самое, что и <b>Создать</b>.<br>
-<br>
-- <font color="#00BFFF"><b>Объединить</b></font><br>
-&ensp;- Если существует правило с тем же описанием, новые номера будут объединены в него,<br>
-дубликаты будут автоматически удалены.<br>
-&ensp;- Если не существует, будет создано новое правило, то же самое, что и <b>Создать</b>.<br>
-]]>
-</string>
-<string name="action_enable_workflow">Включить рабочий процесс</string>
-<string name="help_action_enable_workflow">
-<![CDATA[
-Включить или отключить этот рабочий процесс. Пример использования: сделать периодический рабочий процесс разовым.
-]]>
-</string>
-<string name="action_enable_app">Включить приложение</string>
-<string name="help_action_enable_app">
-<![CDATA[
-Включить или отключить приложение. Пример использования: временно отключить его и автоматически включить через несколько часов.
-]]>
-</string>
+    <string name="contact_rule">Правило контакта</string>
+    <string name="directory">Каталог</string>
+    <string name="filename">Имя файла</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Срок действия (дней)</string>
+    <string name="column_mapping">Сопоставление столбцов</string>
+    <string name="include_spam_db">Включить базу данных спама</string>
+    <string name="no_config_needed">Настройка не требуется</string>
+    <string name="success">Успешно</string>
+    <string name="failed">Ошибка</string>
+    <string name="running">Выполняется</string>
+    <string name="optional">(необязательно)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Тест</b></font><br>
+        Эти действия будут выполнены немедленно, чтобы проверить правильность настройки,
+        или, возможно, вы просто хотите вручную запустить этот рабочий процесс.<br>
+        <br>
+        - <font color="#00BFFF"><b>Новый</b></font><br>
+            Создайте новое действие, несколько действий могут быть связаны друг с другом для выполнения сложной задачи.<br>
+            Эти зеленые или красные точки между элементами показывают, могут ли они быть связаны или нет.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Скачивайте спам-номера телефонов из
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> каждый рабочий день,
+             и импортируйте их в базу данных спама.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Удалите устаревшие записи из базы данных спама.</string>
+    <string name="help_bot_preset_cleanup_history">Удалите устаревшие записи звонков/SMS.</string>
+    <string name="help_bot_preset_auto_backup">Создайте резервную копию всех настроек.</string>
+    <string name="everyday">Ежедневно</string>
+    <string name="daily">Ежедневно</string>
+    <string name="weekly">Еженедельно</string>
+    <string name="periodically">Периодически</string>
+    <string name="time">Время</string>
+    <string name="workdays">Рабочие дни</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Формат резервной копии - сжатый gzip json, вы можете открыть и отредактировать его с помощью любого архиватора.<br>
+        <br>
+        - <font color="#00BFFF"><b>Включить базу спама</b></font><br>
+        Длительное нажатие кнопки также экспортирует/импортирует базу спама.<br>
+        <br>
+        <font color="#ffa500">Примечание:</font><br>
+        &ensp; Включение базы спама в резервную копию значительно увеличит её размер, поскольку база регулярно обновляется, это обычно не нужно, если вы не хотите клонировать её на другой телефон.<br>
+        ]]>
+    </string>
+    <string name="mode">Режим</string>
+    <string-array name="regex_action_add_mode">
+        <item>Создать</item>
+        <item>Заменить</item>
+        <item>Объединить</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Создать</b></font><br>
+        &ensp; Всегда создавать новое правило регулярного выражения.<br>
+        <br>
+        - <font color="#00BFFF"><b>Заменить</b></font><br>
+        &ensp; Попробует найти существующее правило с тем же <b>описанием</b>. <br>
+        &ensp;&ensp; - Если найдено, оно будет переопределено.<br>
+        &ensp;&ensp; - Если не найдено, будет создано новое правило, то же самое, что и <b>Создать</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Объединить</b></font><br>
+        &ensp;- Если существует правило с тем же описанием, новые номера будут объединены в него,<br>
+         дубликаты будут автоматически удалены.<br>
+        &ensp;- Если не существует, будет создано новое правило, то же самое, что и <b>Создать</b>.<br>
+        ]]>
+    </string>
+
+    <string name="action_enable_workflow">Включить рабочий процесс</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Включить или отключить этот рабочий процесс. Пример использования: сделать периодический рабочий процесс разовым.
+        ]]>
+    </string>
+    <string name="action_enable_app">Включить приложение</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Включить или отключить приложение. Пример использования: временно отключить его и автоматически включить через несколько часов.
+        ]]>
+    </string>
 </resources>

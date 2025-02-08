@@ -1,141 +1,145 @@
 <resources>
-<string name="database">پایگاه داده</string>
-<string name="total">مجموع</string>
-<string name="replace_from">از</string>
-<string name="replace_to">تا</string>
-<string name="regex_pattern">RegEx</string>
-<string name="help_spam_db">
-<![CDATA[
-شماره‌های موجود در این پایگاه داده مسدود خواهند شد.<br>
-<br>
-شما می‌توانید هر پایگاه داده عمومی، یا حتی چندین پایگاه داده را ادغام کنید، همچنین می‌توانید شماره‌ها را از فایل‌های محلی وارد کنید.<br>
-<br>
-بخش "اتوماسیون" در پایین را برای نحوه برنامه‌ریزی یک کار واردات خودکار بررسی کنید.<br>
-<br>
-این مورد هم برای تماس‌ها و هم برای پیام‌های SMS اعمال می‌شود.<br>
-<br>
-<font color="#ea86ff"><b>اولویت: 0</b></font>
-]]>
-</string>
-<string name="help_spam_db_ttl">
-<![CDATA[
-شماره‌های مزاحم در پایگاه داده پس از N روز منقضی می‌شوند، رکوردهای منقضی شده به طور خودکار حذف خواهند شد.<br>
-برای غیرفعال کردن آن را روی -1 تنظیم کنید، بنابراین شماره‌ها هرگز به طور خودکار حذف نمی‌شوند.
-]]>
-</string>
-<string name="customize">سفارشی سازی</string>
-<string name="workflow">جریان کار</string>
-<string name="workflows">جریان‌های کار</string>
-<string name="automation">اتوماسیون</string>
-<string name="help_workflows">
-<![CDATA[
-جریان‌های کار می‌توانند برای اجرای خودکار وظایف، مانند به‌روزرسانی پایگاه داده یا پشتیبان‌گیری خودکار استفاده شوند.<br>
-<br>
-تنظیمات از پیش تعیین‌شده‌ای برای راه‌اندازی سریع وجود دارد، همچنین می‌توانید آن را از ابتدا بسازید یا از پیکربندی json که از کاربران دیگر به اشتراک گذاشته شده است، وارد کنید.<br>
-<br>
-اگر جریان کاری پیدا کردید که می‌تواند به‌طور گسترده استفاده شود و باید به تنظیمات از پیش تعیین‌شده اضافه شود، لطفاً آن را در github گزارش دهید.
-]]>
-</string>
-<string name="manual">دستی</string>
-<string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
-<string name="bot_preset_cleanup_spam_db">پاک‌سازی پایگاه داده مزاحمین</string>
-<string name="bot_preset_cleanup_history">پاک‌سازی تاریخچه</string>
-<string name="bot_preset_auto_backup">پشتیبان‌گیری خودکار</string>
-<string name="action_cleanup_history">پاک کردن تاریخچه</string>
-<string name="action_http_request">درخواست HTTP</string>
-<string name="action_cleanup_spam_db">پاک‌سازی پایگاه داده مزاحمین</string>
-<string name="action_backup_export">خروجی پشتیبان</string>
-<string name="action_backup_import">واردات پشتیبان</string>
-<string name="action_read_file">خواندن فایل</string>
-<string name="action_write_file">نوشتن فایل</string>
-<string name="action_parse_csv">تجزیه CSV</string>
-<string name="action_parse_xml">تجزیه XML</string>
-<string name="action_regex_extract">استخراج RegEx</string>
-<string name="action_import_to_spam_db">وارد کردن به پایگاه داده مزاحمین</string>
-<string name="action_import_as_regex_rule">وارد کردن به‌عنوان قانون RegEx</string>
-<string name="action_convert_number">جایگزینی شماره</string>
-<string name="action_find_rules">یافتن قوانین</string>
-<string name="action_modify_rules">اصلاح قوانین</string>
-<string name="action_modify_rules_placeholder">
-رشته json، برای مثال:\n
-{\n
-"flags": 0, // غیرفعال کردن قانون\n
-"priority": 100,\n
-"blockType": 0\n
-…\n
-}\n
-</string>
-<string name="help_action_http_download">
-<![CDATA[
-دانلود داده‌های HTTP به‌عنوان <u>بایت‌های محتوا</u>
-]]>
-</string>
-<string name="help_action_cleanup_spam_db">حذف شماره‌های منقضی شده از پایگاه داده مزاحمین.</string>
-<string name="help_action_cleanup_history">حذف سوابق تاریخچه منقضی شده.</string>
-<string name="help_action_backup_export">
-<![CDATA[
-خروجی تنظیمات فعلی به <u>بایت‌های محتوا</u>.
-]]>
-</string>
-<string name="help_action_backup_import">
-<![CDATA[
-اعمال تنظیمات از <u>بایت‌های محتوا</u>.
-]]>
-</string>
-<string name="help_action_read_file">
-<![CDATA[
-دریافت <u>بایت‌های محتوا</u> از یک فایل.
-]]>
-</string>
-<string name="help_action_write_file">
-<![CDATA[
-نوشتن <u>بایت‌های محتوا</u> به یک فایل.
-]]>
-</string>
-<string name="help_action_parse_csv">
-<![CDATA[
-تجزیه <u>بایت‌های محتوا</u> csv به <u>لیستی از شماره‌ها</u>
-]]>
-</string>
-<string name="help_action_parse_xml">
-<![CDATA[
-تجزیه <u>بایت‌های محتوا</u> xml با استفاده از <b>xpath</b> و تولید <u>لیستی از شماره‌ها.</u>
-]]>
-</string>
-<string name="help_action_regex_extract">
-<![CDATA[
-استخراج <u>لیستی از شماره‌ها</u> از <u>بایت‌های محتوا</u> با استفاده از regex.
-]]>
-</string>
-<string name="help_action_import_to_spam_db">
-<![CDATA[
-اضافه کردن <u>لیستی از شماره‌ها</u> به پایگاه داده مزاحمین.
-]]>
-</string>
-<string name="help_action_import_as_regex_rule">
-<![CDATA[
-ایجاد یک قانون regex جدید از <u>لیستی از شماره‌ها</u>.
-]]>
-</string>
-<string name="help_action_convert_number">
-<![CDATA[
-تبدیل <u>لیست شماره‌ها</u> به فرمتی که این برنامه از آن استفاده می‌کند.<br>
-<br>
-برای مثال، دو عمل را برای جایگزینی اضافه کنید:<br>
-`<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` به `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-<br>
-&ensp; - جایگزینی `<font color="#fa7f71">(+)</font>` با ``<br>
-&ensp; - جایگزینی `<font color="#fa7f71">(#)</font>` با `<font color="#03DAC5"><b>.</b></font>`<br>
-]]>
-</string>
-<string name="help_action_find_rules">
-<![CDATA[
-یافتن <u>لیستی از قوانین</u> که با توضیحات خاص مطابقت دارند.
-]]>
-</string>
-<string name="help_action_modify_rules">
-<![CDATA[
-تغییر یک یا چند ویژگی برای <u>لیستی از قوانین</u>.
-]]>
-</string>
+    <string name="database">پایگاه داده</string>
+    <string name="total">مجموع</string>
+    <string name="replace_from">از</string>
+    <string name="replace_to">تا</string>
+    <string name="regex_pattern">RegEx</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        شماره‌های موجود در این پایگاه داده مسدود خواهند شد.<br>
+        <br>
+        شما می‌توانید هر پایگاه داده عمومی، یا حتی چندین پایگاه داده را ادغام کنید، همچنین می‌توانید شماره‌ها را از فایل‌های محلی وارد کنید.<br>
+        <br>
+        بخش "اتوماسیون" در پایین را برای نحوه برنامه‌ریزی یک کار واردات خودکار بررسی کنید.<br>
+        <br>
+        این مورد هم برای تماس‌ها و هم برای پیام‌های SMS اعمال می‌شود.<br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        شماره‌های مزاحم در پایگاه داده پس از N روز منقضی می‌شوند، رکوردهای منقضی شده به طور خودکار حذف خواهند شد.<br>
+        برای غیرفعال کردن آن را روی -1 تنظیم کنید، بنابراین شماره‌ها هرگز به طور خودکار حذف نمی‌شوند.
+        ]]>
+    </string>
+    <string name="customize">سفارشی سازی</string>
+    <string name="workflow">جریان کار</string>
+    <string name="workflows">جریان‌های کار</string>
+    <string name="automation">اتوماسیون</string>
+    <string name="help_workflows">
+        <![CDATA[
+        جریان‌های کار می‌توانند برای اجرای خودکار وظایف، مانند به‌روزرسانی پایگاه داده یا پشتیبان‌گیری خودکار استفاده شوند.<br>
+        <br>
+        تنظیمات از پیش تعیین‌شده‌ای برای راه‌اندازی سریع وجود دارد، همچنین می‌توانید آن را از ابتدا بسازید یا از پیکربندی json که از کاربران دیگر به اشتراک گذاشته شده است، وارد کنید.<br>
+        <br>
+        اگر جریان کاری پیدا کردید که می‌تواند به‌طور گسترده استفاده شود و باید به تنظیمات از پیش تعیین‌شده اضافه شود، لطفاً آن را در github گزارش دهید.
+        ]]>
+    </string>
+    <string name="manual">دستی</string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">پاک‌سازی پایگاه داده مزاحمین</string>
+    <string name="bot_preset_cleanup_history">پاک‌سازی تاریخچه</string>
+    <string name="bot_preset_auto_backup">پشتیبان‌گیری خودکار</string>
+
+    <string name="action_cleanup_history">پاک کردن تاریخچه</string>
+    <string name="action_http_request">درخواست HTTP</string>
+    <string name="action_cleanup_spam_db">پاک‌سازی پایگاه داده مزاحمین</string>
+    <string name="action_backup_export">خروجی پشتیبان</string>
+    <string name="action_backup_import">واردات پشتیبان</string>
+    <string name="action_read_file">خواندن فایل</string>
+    <string name="action_write_file">نوشتن فایل</string>
+    <string name="action_parse_csv">تجزیه CSV</string>
+    <string name="action_parse_xml">تجزیه XML</string>
+    <string name="action_regex_extract">استخراج RegEx</string>
+    <string name="action_import_to_spam_db">وارد کردن به پایگاه داده مزاحمین</string>
+    <string name="action_import_as_regex_rule">وارد کردن به‌عنوان قانون RegEx</string>
+    <string name="action_convert_number">جایگزینی شماره</string>
+    <string name="action_find_rules">یافتن قوانین</string>
+    <string name="action_modify_rules">اصلاح قوانین</string>
+    <string name="action_modify_rules_placeholder">
+        رشته json، برای مثال:\n
+        {\n
+        "flags": 0, // غیرفعال کردن قانون\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        دانلود داده‌های HTTP به‌عنوان <u>بایت‌های محتوا</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">حذف شماره‌های منقضی شده از پایگاه داده مزاحمین.</string>
+    <string name="help_action_cleanup_history">حذف سوابق تاریخچه منقضی شده.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        خروجی تنظیمات فعلی به <u>بایت‌های محتوا</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        اعمال تنظیمات از <u>بایت‌های محتوا</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        دریافت <u>بایت‌های محتوا</u> از یک فایل.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        نوشتن <u>بایت‌های محتوا</u> به یک فایل.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        تجزیه <u>بایت‌های محتوا</u> csv به <u>لیستی از شماره‌ها</u>
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        تجزیه <u>بایت‌های محتوا</u> xml با استفاده از <b>xpath</b> و تولید <u>لیستی از شماره‌ها.</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        استخراج <u>لیستی از شماره‌ها</u> از <u>بایت‌های محتوا</u> با استفاده از regex.
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        اضافه کردن <u>لیستی از شماره‌ها</u> به پایگاه داده مزاحمین.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        ایجاد یک قانون regex جدید از <u>لیستی از شماره‌ها</u>.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        تبدیل <u>لیست شماره‌ها</u> به فرمتی که این برنامه از آن استفاده می‌کند.<br>
+        <br>
+        برای مثال، دو عمل را برای جایگزینی اضافه کنید:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` به `12345<font color="#03DAC5"><b>…</b></font>`:<br>
+        <br>
+        &ensp; - جایگزینی `<font color="#fa7f71">(+)</font>` با ``<br>
+        &ensp; - جایگزینی `<font color="#fa7f71">(#)</font>` با `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        یافتن <u>لیستی از قوانین</u> که با توضیحات خاص مطابقت دارند.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        تغییر یک یا چند ویژگی برای <u>لیستی از قوانین</u>.
+        ]]>
+    </string>
 </resources>

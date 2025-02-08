@@ -1,96 +1,96 @@
 <resources>
-<string name="http_method">Methode</string>
-<string name="http_post_body">Post-Body</string>
-<string name="help_http_post_body">
-<![CDATA[
-Unterstützte Tags:<br>
-<br>
-%s
-]]>
-</string>
-<string name="missing_credentials">Bitte geben Sie gültige Autorisierungsinformationen ein.</string>
-<string name="delay">Verzögerung</string>
-<string name="report_number_require_call_log_permission">
-Um eine Fehlmeldung wiederholter oder zurückgewählter Anrufe zu verhindern,
-benötigt die Meldung der Nummer die Berechtigung für Anrufprotokolle.
-</string>
-<string name="exclude_services">Dienste ausschließen</string>
-<string name="help_exclude_bg_service">
-<![CDATA[
-Einige Apps führen zusätzliche Vordergrunddienste aus. Fügen Sie die Dienstnamen hier hinzu, um sie auszuschließen.<br>
-<br>
-So finden Sie einen Dienstnamen:<br>
-&emsp; 1. Aktivieren Sie den Dienst in der App.<br>
-&emsp; 2. Alle aktivierten Dienstnamen werden hier angezeigt.<br>
-&emsp; 3. Tippen Sie auf einen Namen, um ihn hinzuzufügen.<br>
-<br>
-Sie können mehrere Namen hinzufügen, getrennt durch Kommas.
-]]>
-</string>
-<string name="running_services">Laufende Dienste</string>
-<string name="report_number">Nummer melden</string>
-<string-array name="spam_categories">
-<item>Gültige Nummer</item>
-<item>Betrug</item>
-<item>Marketing</item>
-<item>Umfrage</item>
-<item>Politik</item>
-<item>Sonstige Spam-Anrufe</item>
-</string-array>
-<string name="action_category_config">Kategorie Konfiguration</string>
-<string name="help_action_category_config">
-<![CDATA[
-Es werden nur die folgenden Spam-Kategorien unterstützt. Alle anderen Kategorien aus der API sollten einer dieser Kategorien zugeordnet werden.<br>
-<br>
-- <font color="#03DAC5"><b>{valid}</b></font><br>
-&ensp; Als gültige Nummer melden, kein Spam.<br>
-<br>
-- <font color="#fa7f71"><b>{fraud}</b></font><br>
-- <font color="#fa7f71"><b>{marketing}</b></font><br>
-- <font color="#fa7f71"><b>{survey}</b></font><br>
-- <font color="#fa7f71"><b>{political}</b></font><br>
-<br>
-- <font color="#fa7f71"><b>{other}</b></font><br>
-&ensp; Der Standard-Spam-Typ, der verwendet wird, wenn keine der oben genannten Kategorien zutrifft.<br>
-]]>
-</string>
-<string name="missing_category">
-Kategorie %s ist in Aktion %s nicht konfiguriert. Bitte konfigurieren Sie sie in der API-Konfiguration (wenn die API diese Kategorie unterstützt).
-</string>
-<string name="target_text">Zieltext</string>
-<string name="match_found">Übereinstimmung gefunden</string>
-<string name="match_not_found">Keine Übereinstimmung gefunden</string>
-<string name="help_test_regex">
-<![CDATA[
-Dies dient nur zum Testen, ob dieser reguläre Ausdruck mit einem Text übereinstimmt, wobei andere Regeln ausgeschlossen sind.<br>
-Um gegen alle Regeln zu testen, verwenden Sie stattdessen die schwebende Testtaste in der unteren rechten Ecke.
-]]>
-</string>
-<string name="allow">Zulassen</string>
-<string name="block">Blockieren</string>
-<string name="seconds">Sekunden</string>
-<string name="seconds_short">Sek</string>
-<string name="within_seconds">Innerhalb von Sekunden</string>
-<string name="call_alert">Anrufbenachrichtigung</string>
-<string name="help_call_alert">
-<![CDATA[
-Einige Dienste senden Ihnen zuerst eine SMS, um Sie darüber zu informieren, dass ein Anruf bevorsteht, in der Regel innerhalb einer Minute.<br>
-<br>
-Beispielsweise eine SMS wie:<br>
-&ensp; <font color="#888888">[irgendein Dienst] Wir rufen Sie an, um zu informieren…, Sie können gerne antworten.</font><br>
-<br>
-Ein regulärer Ausdruck für eine solche Nachricht wäre:<br>
-&ensp; <font color="#03DAC5"><b>.*bitte.*antworten.*</b></font> <br>
-<br>
-Die Standardeinstellung <font color="#03DAC5"><b>120 Sekunden</b></font> bedeutet, dass alle Anrufe in den nächsten zwei Minuten nach Erhalt einer solchen Nachricht zugelassen werden.<br>
-<br>
-Es funktioniert sowohl für reguläre SMS als auch für Flash-SMS (Klasse 0 SMS).<br>
-<br>
-<font color="#ea86ff"><b>Priorität: 10</b></font>
-]]>
-</string>
-<string name="waning_using_wildcard_as_regex">Platzhalter `*` wird ohne vorangestellten Punkt verwendet, meinen Sie `.*`?</string>
-<string name="import_as">Importieren als</string>
-<string name="api_key">API-Schlüssel</string>
-<string name="mms_support">MMS-Unterstützung</string>
+    <string name="http_method">Methode</string>
+    <string name="http_post_body">Post-Body</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Unterstützte Tags:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">Bitte geben Sie gültige Autorisierungsinformationen ein.</string>
+    <string name="delay">Verzögerung</string>
+    <string name="report_number_require_call_log_permission">
+        Um eine Fehlmeldung wiederholter oder zurückgewählter Anrufe zu verhindern,
+        benötigt die Meldung der Nummer die Berechtigung für Anrufprotokolle.
+    </string>
+    <string name="exclude_services">Dienste ausschließen</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Einige Apps führen zusätzliche Vordergrunddienste aus. Fügen Sie die Dienstnamen hier hinzu, um sie auszuschließen.<br>
+        <br>
+        So finden Sie einen Dienstnamen:<br>
+        &emsp; 1. Aktivieren Sie den Dienst in der App.<br>
+        &emsp; 2. Alle aktivierten Dienstnamen werden hier angezeigt.<br>
+        &emsp; 3. Tippen Sie auf einen Namen, um ihn hinzuzufügen.<br>
+        <br>
+        Sie können mehrere Namen hinzufügen, getrennt durch Kommas.
+        ]]>
+    </string>
+    <string name="running_services">Laufende Dienste</string>
+    <string name="report_number">Nummer melden</string>
+    <string-array name="spam_categories">
+        <item>Gültige Nummer</item>
+        <item>Betrug</item>
+        <item>Marketing</item>
+        <item>Umfrage</item>
+        <item>Politik</item>
+        <item>Sonstige Spam-Anrufe</item>
+    </string-array>
+    <string name="action_category_config">Kategorie Konfiguration</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Es werden nur die folgenden Spam-Kategorien unterstützt. Alle anderen Kategorien aus der API sollten einer dieser Kategorien zugeordnet werden.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Als gültige Nummer melden, kein Spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; Der Standard-Spam-Typ, der verwendet wird, wenn keine der oben genannten Kategorien zutrifft.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        Kategorie %s ist in Aktion %s nicht konfiguriert. Bitte konfigurieren Sie sie in der API-Konfiguration (wenn die API diese Kategorie unterstützt).
+    </string>
+    <string name="target_text">Zieltext</string>
+    <string name="match_found">Übereinstimmung gefunden</string>
+    <string name="match_not_found">Keine Übereinstimmung gefunden</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Dies dient nur zum Testen, ob dieser reguläre Ausdruck mit einem Text übereinstimmt, wobei andere Regeln ausgeschlossen sind.<br>
+        Um gegen alle Regeln zu testen, verwenden Sie stattdessen die schwebende Testtaste in der unteren rechten Ecke.
+        ]]>
+    </string>
+    <string name="allow">Zulassen</string>
+    <string name="block">Blockieren</string>
+    <string name="seconds">Sekunden</string>
+    <string name="seconds_short">Sek</string>
+    <string name="within_seconds">Innerhalb von Sekunden</string>
+    <string name="call_alert">Anrufbenachrichtigung</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Einige Dienste senden Ihnen zuerst eine SMS, um Sie darüber zu informieren, dass ein Anruf bevorsteht, in der Regel innerhalb einer Minute.<br>
+        <br>
+        Beispielsweise eine SMS wie:<br>
+        &ensp; <font color="#888888">[irgendein Dienst] Wir rufen Sie an, um zu informieren…, Sie können gerne antworten.</font><br>
+        <br>
+        Ein regulärer Ausdruck für eine solche Nachricht wäre:<br>
+        &ensp; <font color="#03DAC5"><b>.*bitte.*antworten.*</b></font> <br>
+        <br>
+        Die Standardeinstellung <font color="#03DAC5"><b>120 Sekunden</b></font> bedeutet, dass alle Anrufe in den nächsten zwei Minuten nach Erhalt einer solchen Nachricht zugelassen werden.<br>
+        <br>
+        Es funktioniert sowohl für reguläre SMS als auch für Flash-SMS (Klasse 0 SMS).<br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">Platzhalter `*` wird ohne vorangestellten Punkt verwendet, meinen Sie `.*`?</string>
+    <string name="import_as">Importieren als</string>
+    <string name="api_key">API-Schlüssel</string>
+    <string name="mms_support">MMS-Unterstützung</string>
 </resources>

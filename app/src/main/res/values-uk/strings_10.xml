@@ -1,55 +1,55 @@
 <resources>
-<string name="help_number_rules">
-<![CDATA[
-Ці правила застосовуються до вхідних номерів телефонів.<br>
-<br>
-<h5><font color="#00BFFF"> - Приклади</font></h5>
-Деякі приклади наведені на <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">сторінці Wiki</a>.<br>
-<br>
-<h5><font color="#00BFFF"> - Оптимізація регулярних виразів</font></h5>
-Для спрощення регулярних виразів,<br>
-<font color="#fa7f71"><b>+</b></font> та <font color="#fa7f71"><b>нулі на початку</b></font><br>
-видаляються перед перевіркою, наприклад:<br>
-&emsp; Усі ці формати:<br>
-&emsp;&emsp; 123456789 &emsp;(звичайний номер)<br>
-&emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(з <font color="#fa7f71"><b>+</b></font> на початку)<br>
-&emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(з внутрішнім кодом мережі <font color="#fa7f71"><b>0</b></font>)<br>
-&emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
-&emsp; Вони <b>всі</b> перевіряються як 123456789 і можуть бути узгоджені з <font color="#03DAC5"><b>123.*</b></font><br>
-Цю оптимізацію номерів можна <b>вимкнути</b> за допомогою прапорця регулярного виразу "Raw Number".<br>
-<br>
-<h5><font color="#00BFFF"> - Деякі типові шаблони</font></h5>
-&ensp; - Будь-який номер: <font color="#03DAC5"><b>.*</b></font> (регулярний вираз .* еквівалентний * у інших додатках) <br>
-&ensp; - Точний номер: <font color="#03DAC5"><b>12345</b></font> <br>
-&ensp; - Починається з 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-&ensp; - Закінчується на 123: <font color="#03DAC5"><b>.*123</b></font> <br>
-&ensp; - 7 цифр: <font color="#03DAC5"><b>.{7}</b></font> <br>
-&ensp; - Коротше 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-&ensp; - Довше 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-&ensp; - Невідомий номер (порожній рядок): <font color="#03DAC5"><b>.{0}</b></font> або <font color="#03DAC5"><b>^$</b></font> <br>
-&ensp; - Збігається з будь-яким із шаблонів: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-&ensp; - Починається з 400, з кодом країни 11 або без нього: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
-<br>
-<h5><font color="#00BFFF"> - Пов\'язане з інтерфейсом</font></h5>
-Зніміть прапорці, щоб вимкнути правило, <font color="#fa7f71"><b>проведіть пальцем ліворуч, щоб видалити</b></font> його.<br>
-<br>
-Список <b>відображається</b> у порядку спадання пріоритету, зростання опису та зростання шаблону.<br>
-<br>
-<h5><font color="#00BFFF"> - Імпорт правил з .csv</font></h5>
-Довго натисніть кнопку «Додати», щоб імпортувати номери з файлу .csv.<br>
-<brg>
-]]>
-</string>
-<string name="import_csv_columns">
-<![CDATA[
-Підтримувані стовпці:<br>
-- <no_translate><b>pattern</b></no_translate>: Регулярний вираз (<b>обов\'язково</b>)<br>
-- <no_translate><b>description</b></no_translate>: Опис<br>
-- <no_translate><b>priority</b></no_translate>: Пріоритет, за замовчуванням 1<br>
-- <no_translate><b>flags</b></no_translate>: 1(Застосовувати до дзвінка), 2(Застосовувати до SMS), 3(обидва), за замовчуванням 3<br>
-- <no_translate><b>isBlacklist</b></no_translate>: Чорний або білий список. <no_translate>true</no_translate> або <no_translate>false</no_translate>, за замовчуванням <no_translate>true</no_translate><br>
-- <no_translate><b>blockType</b></no_translate>: Тип блокування. 0~2 відповідає 3 типам блокування, за замовчуванням 0<br>
-- <no_translate><b>importance</b></no_translate>: Тип сповіщення. 0~4 відповідає 5 типам сповіщень, за замовчуванням 2<br>
-]]>
-</string>
+    <string name="help_number_rules">
+        <![CDATA[
+        Ці правила застосовуються до вхідних номерів телефонів.<br>
+        <br>
+        <h5><font color="#00BFFF"> - Приклади</font></h5>
+        Деякі приклади наведені на <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">сторінці Wiki</a>.<br>
+        <br>
+        <h5><font color="#00BFFF"> - Оптимізація регулярних виразів</font></h5>
+        Для спрощення регулярних виразів,<br>
+          <font color="#fa7f71"><b>+</b></font> та <font color="#fa7f71"><b>нулі на початку</b></font><br>
+          видаляються перед перевіркою, наприклад:<br>
+        &emsp; Усі ці формати:<br>
+        &emsp;&emsp; 123456789 &emsp;(звичайний номер)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(з <font color="#fa7f71"><b>+</b></font> на початку)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(з внутрішнім кодом мережі <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(два <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Вони <b>всі</b> перевіряються як 123456789 і можуть бути узгоджені з <font color="#03DAC5"><b>123.*</b></font><br>
+        Цю оптимізацію номерів можна <b>вимкнути</b> за допомогою прапорця регулярного виразу "Raw Number".<br>
+        <br>
+        <h5><font color="#00BFFF"> - Деякі типові шаблони</font></h5>
+        &ensp; - Будь-який номер: <font color="#03DAC5"><b>.*</b></font> (регулярний вираз .* еквівалентний * у інших додатках) <br>
+        &ensp; - Точний номер: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Починається з 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Закінчується на 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 цифр: <font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - Коротше 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Довше 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Невідомий номер (порожній рядок): <font color="#03DAC5"><b>.{0}</b></font> або <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Збігається з будь-яким із шаблонів: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - Починається з 400, з кодом країни 11 або без нього: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <h5><font color="#00BFFF"> - Пов\'язане з інтерфейсом</font></h5>
+        Зніміть прапорці, щоб вимкнути правило, <font color="#fa7f71"><b>проведіть пальцем ліворуч, щоб видалити</b></font> його.<br>
+        <br>
+        Список <b>відображається</b> у порядку спадання пріоритету, зростання опису та зростання шаблону.<br>
+        <br>
+        <h5><font color="#00BFFF"> - Імпорт правил з .csv</font></h5>
+        Довго натисніть кнопку «Додати», щоб імпортувати номери з файлу .csv.<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         Підтримувані стовпці:<br>
+         - <no_translate><b>pattern</b></no_translate>: Регулярний вираз (<b>обов\'язково</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Опис<br>
+         - <no_translate><b>priority</b></no_translate>: Пріоритет, за замовчуванням 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Застосовувати до дзвінка), 2(Застосовувати до SMS), 3(обидва), за замовчуванням 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Чорний або білий список. <no_translate>true</no_translate> або <no_translate>false</no_translate>, за замовчуванням <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Тип блокування. 0~2 відповідає 3 типам блокування, за замовчуванням 0<br>
+         - <no_translate><b>importance</b></no_translate>: Тип сповіщення. 0~4 відповідає 5 типам сповіщень, за замовчуванням 2<br>
+        ]]>
+    </string>
 </resources>

@@ -1,84 +1,88 @@
 <resources>
-<string name="contact_rule">連絡先ルール</string>
-<string name="directory">ディレクトリ</string>
-<string name="filename">ファイル名</string>
-<string name="url">URL</string>
-<string name="expiry_days">有効期限（日）</string>
-<string name="column_mapping">列マッピング</string>
-<string name="include_spam_db">スパムデータベースを含める</string>
-<string name="no_config_needed">設定不要</string>
-<string name="success">成功</string>
-<string name="failed">失敗</string>
-<string name="running">実行中</string>
-<string name="optional">(オプション)</string>
-<string name="help_action_header">
-<![CDATA[
-- <font color="#03DAC5"><b>テスト</b></font><br>
-これらのアクションは、設定が正しく行われているかどうかを確認するために、またはワークフローを手動で実行したい場合に、ただちに実行されます。<br>
-<br>
-- <font color="#00BFFF"><b>新規</b></font><br>
-新しいアクションを作成します。複数のアクションを連結して、複雑なタスクを完了させることができます。<br>
-アイテム間の緑または赤のドットは、連結可能かどうかを示しています。
-]]>
-</string>
-<string name="help_bot_preset_dnc">
-<![CDATA[
-<no_translate>FTC - Do Not Call</no_translate> から、<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-スパム電話番号</a>を毎日ダウンロードして、スパムデータベースにインポートします。
-]]>
-</string>
-<string name="help_bot_preset_cleanup_spam_db">スパムデータベースから期限切れのレコードを削除します。</string>
-<string name="help_bot_preset_cleanup_history">期限切れの通話/SMS履歴レコードを削除します。</string>
-<string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
-<string name="everyday">毎日</string>
-<string name="daily">毎日</string>
-<string name="weekly">毎週</string>
-<string name="periodically">定期的に</string>
-<string name="time">時間</string>
-<string name="workdays">勤務日</string>
-<string name="help_backup">
-<![CDATA[
-バックアップファイル形式はgzip圧縮jsonです。任意のアーカイバで開いて編集できます。<br>
-<br>
-- <font color="#00BFFF"><b>スパムデータベースを含める</b></font><br>
-ボタンを長押しすると、スパムデータベースのエクスポート/インポートも行われます。<br>
-<br>
-<font color="#ffa500">注記：</font><br>
-&ensp; バックアップファイルにスパムデータベースを含めると、ファイルサイズが大幅に増加します。データベースは定期的に更新されるため、通常は不要です。別の電話に複製する場合を除きます。<br>
-]]>
-</string>
-<string name="mode">モード</string>
-<string-array name="regex_action_add_mode">
-<item>作成</item>
-<item>置換</item>
-<item>マージ</item>
-</string-array>
-<string name="help_regex_action_add_mode">
-<![CDATA[
--<font color="#00BFFF"><b>作成</b></font><br>
-&ensp; 常に新しい正規表現ルールを作成します。<br>
-<br>
-- <font color="#00BFFF"><b>置換</b></font><br>
-&ensp; 同じ<b>説明</b>を持つ既存のルールを見つけようとします。<br>
-&ensp;&ensp; - 見つかった場合、上書きされます。<br>
-&ensp;&ensp; - 見つからない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
-<br>
-- <font color="#00BFFF"><b>マージ</b></font><br>
-&ensp;- 同じ説明を持つルールが存在する場合、新しい番号がマージされます。<br>
-重複した番号は自動的に削除されます。<br>
-&ensp;- 存在しない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
-]]>
-</string>
-<string name="action_enable_workflow">ワークフローを有効にする</string>
-<string name="help_action_enable_workflow">
-<![CDATA[
-このワークフローを有効または無効にします。定期的なワークフローをワンタイムにするというユースケースがあります。
-]]>
-</string>
-<string name="action_enable_app">アプリを有効にする</string>
-<string name="help_action_enable_app">
-<![CDATA[
-アプリを有効または無効にします。一時的に無効にして、数時間後に自動的に再有効にするというユースケースがあります。
-]]>
-</string>
+    <string name="contact_rule">連絡先ルール</string>
+    <string name="directory">ディレクトリ</string>
+    <string name="filename">ファイル名</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">有効期限（日）</string>
+    <string name="column_mapping">列マッピング</string>
+    <string name="include_spam_db">スパムデータベースを含める</string>
+    <string name="no_config_needed">設定不要</string>
+    <string name="success">成功</string>
+    <string name="failed">失敗</string>
+    <string name="running">実行中</string>
+    <string name="optional">(オプション)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>テスト</b></font><br>
+        これらのアクションは、設定が正しく行われているかどうかを確認するために、またはワークフローを手動で実行したい場合に、ただちに実行されます。<br>
+        <br>
+        - <font color="#00BFFF"><b>新規</b></font><br>
+            新しいアクションを作成します。複数のアクションを連結して、複雑なタスクを完了させることができます。<br>
+            アイテム間の緑または赤のドットは、連結可能かどうかを示しています。
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            <no_translate>FTC - Do Not Call</no_translate> から、<a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            スパム電話番号</a>を毎日ダウンロードして、スパムデータベースにインポートします。
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから期限切れのレコードを削除します。</string>
+    <string name="help_bot_preset_cleanup_history">期限切れの通話/SMS履歴レコードを削除します。</string>
+    <string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
+    <string name="everyday">毎日</string>
+    <string name="daily">毎日</string>
+    <string name="weekly">毎週</string>
+    <string name="periodically">定期的に</string>
+    <string name="time">時間</string>
+    <string name="workdays">勤務日</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        バックアップファイル形式はgzip圧縮jsonです。任意のアーカイバで開いて編集できます。<br>
+        <br>
+        - <font color="#00BFFF"><b>スパムデータベースを含める</b></font><br>
+        ボタンを長押しすると、スパムデータベースのエクスポート/インポートも行われます。<br>
+        <br>
+        <font color="#ffa500">注記：</font><br>
+        &ensp; バックアップファイルにスパムデータベースを含めると、ファイルサイズが大幅に増加します。データベースは定期的に更新されるため、通常は不要です。別の電話に複製する場合を除きます。<br>
+        ]]>
+    </string>
+    <string name="mode">モード</string>
+    <string-array name="regex_action_add_mode">
+        <item>作成</item>
+        <item>置換</item>
+        <item>マージ</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>作成</b></font><br>
+        &ensp; 常に新しい正規表現ルールを作成します。<br>
+        <br>
+        - <font color="#00BFFF"><b>置換</b></font><br>
+        &ensp; 同じ<b>説明</b>を持つ既存のルールを見つけようとします。<br>
+        &ensp;&ensp; - 見つかった場合、上書きされます。<br>
+        &ensp;&ensp; - 見つからない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
+        <br>
+        - <font color="#00BFFF"><b>マージ</b></font><br>
+        &ensp;- 同じ説明を持つルールが存在する場合、新しい番号がマージされます。<br>
+         重複した番号は自動的に削除されます。<br>
+        &ensp;- 存在しない場合、<b>作成</b>と同じように新しいルールが作成されます。<br>
+        ]]>
+    </string>
+
+    <string name="action_enable_workflow">ワークフローを有効にする</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        このワークフローを有効または無効にします。定期的なワークフローをワンタイムにするというユースケースがあります。
+        ]]>
+    </string>
+    <string name="action_enable_app">アプリを有効にする</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        アプリを有効または無効にします。一時的に無効にして、数時間後に自動的に再有効にするというユースケースがあります。
+        ]]>
+    </string>
 </resources>

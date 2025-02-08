@@ -1,120 +1,128 @@
 <resources>
-<string name="crash_title">
-Извините, приложение вышло из строя.\n\n
-Пожалуйста, скопируйте текст ниже и сообщите об этой проблеме на github,
-удаляя любую конфиденциальную информацию перед отправкой.
-</string>
-<string-array name="short_weekdays">
-<item>Sun</item>
-<item>Mon</item>
-<item>Tue</item>
-<item>Wed</item>
-<item>Thu</item>
-<item>Fri</item>
-<item>Sat</item>
-</string-array>
-<string-array name="block_type_list">
-<item>Отклонить</item>
-<item>Без звука</item>
-<item>Сбросить</item>
-</string-array>
-<string name="show_passed">Показать пропущенные</string>
-<string name="show_blocked">Показать заблокированные</string>
-<string name="confirm_delete_all_records">Подтвердить удаление всех записей?</string>
-<string name="expiry">Срок действия</string>
-<string name="days">Дней</string>
-<string name="help_history_ttl">
-<![CDATA[
-<font color="#00BFFF"><b>> 0</b></font><br>
-&emsp; Записи истории будут записаны в базу данных и истекут через N дней,
-истекшие записи будут удалены автоматически.<br>
-<br>
-<font color="#00BFFF"><b>= 0</b></font><br>
-&emsp; Ведение журнала истории отключено, в базу данных ничего не будет записываться.<br>
-<br>
-<font color="#00BFFF"><b>< 0</b></font><br>
-&emsp; Записи будут записываться и никогда не истекут.
-]]>
-</string>
-<string name="help_log_sms_content">
-<![CDATA[
-При включении содержимое SMS также будет записываться в базу данных и отображаться в этом списке, при отключении оно не будет записываться в базу данных.<br>
-<br>
-- При включении:<br>
-&emsp; <b>Нажмите</b>, чтобы развернуть/свернуть полное сообщение.<br>
-<br>
-- При отключении:<br>
-&emsp; <b>Нажмите</b>, чтобы открыть разговор в стандартном приложении.
-]]>
-</string>
-<string-array name="importance_list">
-<item>Нет</item>
-<item>Шторка</item>
-<item>Строка состояния, Шторка</item>
-<item>Звук, Строка состояния, Шторка</item>
-<item>Звук, Строка состояния, Шторка, Heads-up</item>
-</string-array>
-<string-array name="export_type_list">
-<item>Экспортировать как Json</item>
-<item>Экспортировать как сжатый файл</item>
-</string-array>
-<string name="language">Язык</string>
-<string name="help_language">
-<![CDATA[
-Перевод осуществляется с помощью Google AI, сообщите о проблеме на github для добавления поддержки нового языка.
-]]>
-</string>
-<string name="enabled_for_call">Включить для звонков</string>
-<string name="enabled_for_sms">Включить для SMS</string>
-<string name="repeated_call">Повторный звонок</string>
-<string name="help_repeated_call">
-<![CDATA[
-Разрешить, если звонок повторяется в течение определенного периода времени, скорее всего, это важный звонок, а не спам. <br>
-<br>
-Получение текстового сообщения с того же номера также учитывается, это зависит от того, предоставлено ли разрешение READ_SMS, которое является необязательным.<br>
-<br>
-Настройка по умолчанию <font color="#03DAC5"><b>1 / 5 мин</b></font> означает, что второй звонок в течение 5 минут будет разрешен. <br>
-<br>
-Применяется только к звонкам, <b>не</b> к текстовым сообщениям. <br>
-<br>
-<font color="#ea86ff"><b>Приоритет: 10</b></font>
-]]>
-</string>
-<string name="help_globally_enabled">
-<![CDATA[
-Глобальный переключатель, это приложение работает только при его включении,
-выключите его, если вы ждете какого-либо конкретного звонка/сообщения. <br>
-<br>
-Его также можно переключить из <font color="#6ed0ff"><b>быстрых настроек раскрывающегося списка</b></font>.<br>
-<br>
-Для SMS это приложение будет обрабатывать уведомления SMS, пожалуйста,
-<font color="#fa7f71"><b>отключите разрешение на уведомления стандартного приложения SMS</b></font> в системных настройках,
-в противном случае уведомления будут дублироваться.
-Он только фильтрует уведомления SMS, спам-сообщения SMS по-прежнему будут присутствовать в стандартном приложении SMS.
-]]>
-</string>
-<string name="about">О приложении</string>
-<string name="version">Версия</string>
-<string name="build_time">Время сборки (UTC)</string>
-<string name="source_code">Исходный код</string>
-<string name="dismiss">Закрыть</string>
-<string name="warning_running_in_work_profile">
-Это приложение может работать некорректно в рабочем профиле, установите его в основной профиль.
-</string>
-<string-array name="import_csv_type">
-<item>Импортировать .csv как одно правило</item>
-<item>Импортировать .csv как несколько правил</item>
-</string-array>
-<string name="warning_double_sms">
-Это приложение будет обрабатывать все уведомления SMS,
-но разрешение на уведомления стандартного приложения SMS также включено,
-отключите его в системных настройках, чтобы избежать дублирования уведомлений SMS.
-</string>
-<string name="open_settings">Открыть настройки</string>
-<string name="ignore">Игнорировать</string>
-<string name="remove_db_number">Удалить номер из базы спама</string>
-<string name="copy_number">Скопировать номер</string>
-<string name="add_num_to_regex_rule">Добавить номер в правило регулярного выражения</string>
-<string name="add_num_to_db">Добавить номер в базу спама</string>
-<string name="mark_all_as_read">Пометить все как прочитанные</string>
+    <string name="crash_title">
+        Извините, приложение вышло из строя.\n\n
+        Пожалуйста, скопируйте текст ниже и сообщите об этой проблеме на github,
+        удаляя любую конфиденциальную информацию перед отправкой.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Отклонить</item>
+        <item>Без звука</item>
+        <item>Сбросить</item>
+    </string-array>
+
+    <string name="show_passed">Показать пропущенные</string>
+    <string name="show_blocked">Показать заблокированные</string>
+
+    <string name="confirm_delete_all_records">Подтвердить удаление всех записей?</string>
+    <string name="expiry">Срок действия</string>
+    <string name="days">Дней</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Записи истории будут записаны в базу данных и истекут через N дней,
+              истекшие записи будут удалены автоматически.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; Ведение журнала истории отключено, в базу данных ничего не будет записываться.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Записи будут записываться и никогда не истекут.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        При включении содержимое SMS также будет записываться в базу данных и отображаться в этом списке, при отключении оно не будет записываться в базу данных.<br>
+        <br>
+        - При включении:<br>
+        &emsp; <b>Нажмите</b>, чтобы развернуть/свернуть полное сообщение.<br>
+        <br>
+        - При отключении:<br>
+        &emsp; <b>Нажмите</b>, чтобы открыть разговор в стандартном приложении.
+        ]]>
+    </string>
+
+
+    <string-array name="importance_list">
+        <item>Нет</item>
+        <item>Шторка</item>
+        <item>Строка состояния, Шторка</item>
+        <item>Звук, Строка состояния, Шторка</item>
+        <item>Звук, Строка состояния, Шторка, Heads-up</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Экспортировать как Json</item>
+        <item>Экспортировать как сжатый файл</item>
+    </string-array>
+
+    <string name="language">Язык</string>
+    <string name="help_language">
+        <![CDATA[
+            Перевод осуществляется с помощью Google AI, сообщите о проблеме на github для добавления поддержки нового языка.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Включить для звонков</string>
+    <string name="enabled_for_sms">Включить для SMS</string>
+    <string name="repeated_call">Повторный звонок</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Разрешить, если звонок повторяется в течение определенного периода времени, скорее всего, это важный звонок, а не спам. <br>
+        <br>
+        Получение текстового сообщения с того же номера также учитывается, это зависит от того, предоставлено ли разрешение READ_SMS, которое является необязательным.<br>
+        <br>
+        Настройка по умолчанию <font color="#03DAC5"><b>1 / 5 мин</b></font> означает, что второй звонок в течение 5 минут будет разрешен. <br>
+        <br>
+        Применяется только к звонкам, <b>не</b> к текстовым сообщениям. <br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Глобальный переключатель, это приложение работает только при его включении,
+        выключите его, если вы ждете какого-либо конкретного звонка/сообщения. <br>
+        <br>
+        Его также можно переключить из <font color="#6ed0ff"><b>быстрых настроек раскрывающегося списка</b></font>.<br>
+        <br>
+        Для SMS это приложение будет обрабатывать уведомления SMS, пожалуйста,
+        <font color="#fa7f71"><b>отключите разрешение на уведомления стандартного приложения SMS</b></font> в системных настройках,
+        в противном случае уведомления будут дублироваться.
+        Он только фильтрует уведомления SMS, спам-сообщения SMS по-прежнему будут присутствовать в стандартном приложении SMS.
+        ]]>
+    </string>
+
+    <string name="about">О приложении</string>
+    <string name="version">Версия</string>
+    <string name="build_time">Время сборки (UTC)</string>
+    <string name="source_code">Исходный код</string>
+    <string name="dismiss">Закрыть</string>
+    <string name="warning_running_in_work_profile">
+        Это приложение может работать некорректно в рабочем профиле, установите его в основной профиль.
+    </string>
+    <string-array name="import_csv_type">
+        <item>Импортировать .csv как одно правило</item>
+        <item>Импортировать .csv как несколько правил</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Это приложение будет обрабатывать все уведомления SMS,
+        но разрешение на уведомления стандартного приложения SMS также включено,
+        отключите его в системных настройках, чтобы избежать дублирования уведомлений SMS.
+    </string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="ignore">Игнорировать</string>
+    <string name="remove_db_number">Удалить номер из базы спама</string>
+    <string name="copy_number">Скопировать номер</string>
+    <string name="add_num_to_regex_rule">Добавить номер в правило регулярного выражения</string>
+    <string name="add_num_to_db">Добавить номер в базу спама</string>
+    <string name="mark_all_as_read">Пометить все как прочитанные</string>
 </resources>

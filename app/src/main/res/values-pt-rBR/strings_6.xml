@@ -1,120 +1,128 @@
 <resources>
-<string name="crash_title">
-Desculpe, o aplicativo travou.\n\n
-Por favor, copie o conteúdo abaixo e reporte este problema no github,
-remova quaisquer informações confidenciais antes de relatar.
-</string>
-<string-array name="short_weekdays">
-<item>Dom</item>
-<item>Seg</item>
-<item>Ter</item>
-<item>Qua</item>
-<item>Qui</item>
-<item>Sex</item>
-<item>Sáb</item>
-</string-array>
-<string-array name="block_type_list">
-<item>Rejeitar</item>
-<item>Silenciar</item>
-<item>Desligar</item>
-</string-array>
-<string name="show_passed">Mostrar Liberados</string>
-<string name="show_blocked">Mostrar Bloqueados</string>
-<string name="confirm_delete_all_records">Confirmar a exclusão de todos os registros?</string>
-<string name="expiry">Expiração</string>
-<string name="days">Dias</string>
-<string name="help_history_ttl">
-<![CDATA[
-<font color="#00BFFF"><b>> 0</b></font><br>
-&emsp; Os registros do histórico serão gravados no banco de dados e expirarão após N dias,
-registros expirados serão excluídos automaticamente.<br>
-<br>
-<font color="#00BFFF"><b>= 0</b></font><br>
-&emsp; O registro do histórico está desabilitado, nada será registrado no banco de dados.<br>
-<br>
-<font color="#00BFFF"><b>< 0</b></font><br>
-&emsp; Os registros serão gravados e nunca expirarão.
-]]>
-</string>
-<string name="help_log_sms_content">
-<![CDATA[
-Quando habilitado, o conteúdo do SMS também será registrado no banco de dados e exibido nesta lista, ele não será registrado no banco de dados quando desabilitado.<br>
-<br>
-- Quando habilitado:<br>
-&emsp; <b>Toque</b> para expandir/recolher a mensagem completa.<br>
-<br>
-- Quando desabilitado:<br>
-&emsp; <b>Toque</b> para abrir a conversa no aplicativo padrão.
-]]>
-</string>
-<string-array name="importance_list">
-<item>Nenhum</item>
-<item>Sombra</item>
-<item>Barra de Status, Sombra</item>
-<item>Som, Barra de Status, Sombra</item>
-<item>Som, Barra de Status, Sombra, Cabeçalho</item>
-</string-array>
-<string-array name="export_type_list">
-<item>Exportar como Json</item>
-<item>Exportar como Compactado</item>
-</string-array>
-<string name="language">Idioma</string>
-<string name="help_language">
-<![CDATA[
-As traduções são feitas pelo Google AI, abra um problema no github para adicionar suporte a um novo idioma.
-]]>
-</string>
-<string name="enabled_for_call">Habilitar para Chamada</string>
-<string name="enabled_for_sms">Habilitar para SMS</string>
-<string name="repeated_call">Chamada Repetida</string>
-<string name="help_repeated_call">
-<![CDATA[
-Permitir se a chamada é repetida dentro de um período de tempo, é provável que seja importante em vez de uma ligação de spam. <br>
-<br>
-Receber mensagem de texto do mesmo número também é contado, isso depende se a permissão READ_SMS é concedida, o que é opcional.<br>
-<br>
-A configuração padrão <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que a segunda chamada dentro de 5 minutos será permitida. <br>
-<br>
-Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
-<br>
-<font color="#ea86ff"><b>Prioridade: 10</b></font>
-]]>
-</string>
-<string name="help_globally_enabled">
-<![CDATA[
-O interruptor global, este aplicativo só funciona quando esta opção está ativada,
-desligue-o quando estiver esperando por alguma chamada/mensagem específica. <br>
-<br>
-Também pode ser ativado/desativado no <font color="#6ed0ff"><b>Dropdown Quick Settings</b></font>.<br>
-<br>
-Para SMS, este aplicativo assumirá as notificações de SMS, por favor
-<font color="#fa7f71"><b>desative a permissão de notificação do aplicativo SMS padrão</b></font> nas configurações do sistema,
-caso contrário, haverá notificações duplicadas.
-Ele apenas filtra notificações de SMS, mensagens de SMS de spam ainda estarão presentes no aplicativo SMS padrão.
-]]>
-</string>
-<string name="about">Sobre</string>
-<string name="version">Versão</string>
-<string name="build_time">Tempo de compilação (UTC)</string>
-<string name="source_code">Código-fonte</string>
-<string name="dismiss">Descartar</string>
-<string name="warning_running_in_work_profile">
-Este aplicativo pode não funcionar corretamente dentro do perfil de trabalho, instale-o no perfil principal.
-</string>
-<string-array name="import_csv_type">
-<item>Importar .csv como uma única regra</item>
-<item>Importar .csv como várias regras</item>
-</string-array>
-<string name="warning_double_sms">
-Este aplicativo assumirá todas as notificações de SMS,
-mas a permissão de notificação do aplicativo SMS padrão também está habilitada,
-desative-o nas configurações do sistema para evitar notificações duplicadas de SMS.
-</string>
-<string name="open_settings">Abrir configurações</string>
-<string name="ignore">Ignorar</string>
-<string name="remove_db_number">Excluir número do banco de dados de spam</string>
-<string name="copy_number">Copiar número</string>
-<string name="add_num_to_regex_rule">Adicionar número à regra regex</string>
-<string name="add_num_to_db">Adicionar número ao banco de dados de spam</string>
-<string name="mark_all_as_read">Marcar tudo como lido</string>
+    <string name="crash_title">
+        Desculpe, o aplicativo travou.\n\n
+        Por favor, copie o conteúdo abaixo e reporte este problema no github,
+        remova quaisquer informações confidenciais antes de relatar.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Dom</item>
+        <item>Seg</item>
+        <item>Ter</item>
+        <item>Qua</item>
+        <item>Qui</item>
+        <item>Sex</item>
+        <item>Sáb</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Rejeitar</item>
+        <item>Silenciar</item>
+        <item>Desligar</item>
+    </string-array>
+
+    <string name="show_passed">Mostrar Liberados</string>
+    <string name="show_blocked">Mostrar Bloqueados</string>
+
+    <string name="confirm_delete_all_records">Confirmar a exclusão de todos os registros?</string>
+    <string name="expiry">Expiração</string>
+    <string name="days">Dias</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Os registros do histórico serão gravados no banco de dados e expirarão após N dias,
+              registros expirados serão excluídos automaticamente.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; O registro do histórico está desabilitado, nada será registrado no banco de dados.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Os registros serão gravados e nunca expirarão.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Quando habilitado, o conteúdo do SMS também será registrado no banco de dados e exibido nesta lista, ele não será registrado no banco de dados quando desabilitado.<br>
+        <br>
+        - Quando habilitado:<br>
+        &emsp; <b>Toque</b> para expandir/recolher a mensagem completa.<br>
+        <br>
+        - Quando desabilitado:<br>
+        &emsp; <b>Toque</b> para abrir a conversa no aplicativo padrão.
+        ]]>
+    </string>
+
+
+    <string-array name="importance_list">
+        <item>Nenhum</item>
+        <item>Sombra</item>
+        <item>Barra de Status, Sombra</item>
+        <item>Som, Barra de Status, Sombra</item>
+        <item>Som, Barra de Status, Sombra, Cabeçalho</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Exportar como Json</item>
+        <item>Exportar como Compactado</item>
+    </string-array>
+
+    <string name="language">Idioma</string>
+    <string name="help_language">
+        <![CDATA[
+            As traduções são feitas pelo Google AI, abra um problema no github para adicionar suporte a um novo idioma.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Habilitar para Chamada</string>
+    <string name="enabled_for_sms">Habilitar para SMS</string>
+    <string name="repeated_call">Chamada Repetida</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Permitir se a chamada é repetida dentro de um período de tempo, é provável que seja importante em vez de uma ligação de spam. <br>
+        <br>
+        Receber mensagem de texto do mesmo número também é contado, isso depende se a permissão READ_SMS é concedida, o que é opcional.<br>
+        <br>
+        A configuração padrão <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que a segunda chamada dentro de 5 minutos será permitida. <br>
+        <br>
+        Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        O interruptor global, este aplicativo só funciona quando esta opção está ativada,
+        desligue-o quando estiver esperando por alguma chamada/mensagem específica. <br>
+        <br>
+        Também pode ser ativado/desativado no <font color="#6ed0ff"><b>Dropdown Quick Settings</b></font>.<br>
+        <br>
+        Para SMS, este aplicativo assumirá as notificações de SMS, por favor
+        <font color="#fa7f71"><b>desative a permissão de notificação do aplicativo SMS padrão</b></font> nas configurações do sistema,
+        caso contrário, haverá notificações duplicadas.
+        Ele apenas filtra notificações de SMS, mensagens de SMS de spam ainda estarão presentes no aplicativo SMS padrão.
+        ]]>
+    </string>
+
+    <string name="about">Sobre</string>
+    <string name="version">Versão</string>
+    <string name="build_time">Tempo de compilação (UTC)</string>
+    <string name="source_code">Código-fonte</string>
+    <string name="dismiss">Descartar</string>
+    <string name="warning_running_in_work_profile">
+        Este aplicativo pode não funcionar corretamente dentro do perfil de trabalho, instale-o no perfil principal.
+    </string>
+    <string-array name="import_csv_type">
+        <item>Importar .csv como uma única regra</item>
+        <item>Importar .csv como várias regras</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Este aplicativo assumirá todas as notificações de SMS,
+        mas a permissão de notificação do aplicativo SMS padrão também está habilitada,
+        desative-o nas configurações do sistema para evitar notificações duplicadas de SMS.
+    </string>
+    <string name="open_settings">Abrir configurações</string>
+    <string name="ignore">Ignorar</string>
+    <string name="remove_db_number">Excluir número do banco de dados de spam</string>
+    <string name="copy_number">Copiar número</string>
+    <string name="add_num_to_regex_rule">Adicionar número à regra regex</string>
+    <string name="add_num_to_db">Adicionar número ao banco de dados de spam</string>
+    <string name="mark_all_as_read">Marcar tudo como lido</string>
 </resources>

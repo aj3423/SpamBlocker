@@ -1,107 +1,107 @@
 <resources>
-<string name="cleaning_up_history_db">
-履歴DBのクリーンアップ中、タイムスタンプ%s以前のレコードを削除しています。
-</string>
-<string name="cleaning_up_spam_db">
-スパムDBのクリーンアップ中、タイムスタンプ%s以前の%s件のレコードを削除しています。
-</string>
-<string name="resolved_url">解決済みURL: %s。</string>
-<string name="time_cost">処理時間: %sミリ秒。</string>
-<string name="parsed_n_rules">%s個のルールを解析しました。</string>
-<string name="add_n_numbers_to_spam_db">%s件の電話番号をスパムDBに追加しています。</string>
-<string name="nothing_to_import">電話番号リストが空です。インポートするものがありません。</string>
-<string name="importing_n_numbers">%s件の電話番号を正規表現ルールとしてインポートしています。</string>
-<string name="create_rule_with_numbers">%s件の電話番号でルールを作成しています。</string>
-<string name="replace_rule_with_desc">説明: %s のルールを置き換えています。</string>
-<string name="rule_with_desc_not_found">説明が%sのルールが見つかりません。</string>
-<string name="merging_rule_with_desc">説明: %s のルールをマージしています。</string>
-<string name="regex_count_after_merge">マージ前正規表現数: %s、マージ後: %s。</string>
-<string name="replace_number_from_to">%sから%sへの電話番号の置き換え。</string>
-<string name="find_rule_with_desc">説明が%sのルールを%s件検出しました。</string>
-<string name="modify_n_rules">%s個のルールを変更しています。</string>
-<string name="fail_detect_cc">国番号の検出に失敗しました。</string>
-<string name="identified_as_spam">スパム番号と識別されました。カテゴリ: %s。</string>
-<string name="identified_as_valid">有効な番号と識別されました。カテゴリ: %s。</string>
-<string name="unidentified_number">未識別番号。</string>
-<string name="help_http_url">
-<![CDATA[
-対応タグ:<br>
-<br>
-%s
-<br>
-%s
-]]>
-</string>
-<string name="number_not_match_filter">電話番号%sはフィルタ%sに一致しません。スキップします。</string>
-<string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-<string name="help_api_preset_phoneblock">
-<![CDATA[
-主にドイツのFRITZ!Box向けに設計されていますが、他の国の電話番号にも対応しています。<br>
-<br>
-番号自体ではなくハッシュでクエリを実行できるため、プライバシーが向上します。<br>
-<br>
-ウェブサイト：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
-<br>
-API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-]]>
-</string>
-<string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>
-<string name="action_filter_query_result">スパムフィルタ</string>
-<string name="help_action_filter_query_result">
-<![CDATA[
-前の手順で特定されたスパム番号を含む<u>電話番号リスト</u>を生成し、データベースにインポートする準備をします。
-]]>
-</string>
-<string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
-<string name="help_api_preset_phoneblock_authorization">
-<![CDATA[
-1. <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>でアカウントを登録します。<br>
-<br>
-2. 設定ページ: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>で、「APIキーを生成」ボタンを押します。<br>
-<br>
-3. 生成されたAPIキーを下記に入力します。
-]]>
-</string>
-<string name="username">ユーザー名</string>
-<string name="password">パスワード</string>
-<string name="auto_detect_cc_permission">国番号を検出するには、READ_PHONE_STATE権限が必要です。</string>
-<string name="suggest_to_swipe">
-<![CDATA[
-<font color="#03DAC5"><b>左にスワイプ</b></font>して削除します。<br>
-<br>
-このアプリのほとんどのカードのようなUI要素はスワイプジェスチャに関連付けられており、履歴レコードなど、<font color="#03DAC5"><b>右にスワイプ</b></font>もサポートしているものもあります。
-]]>
-</string>
-<string name="bug_number">有効な番号の場合は、githubで報告してください。</string>
-<string name="number_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{cc}</b></font><br>
-&ensp; 国番号。<br>
-- <font color="#00BFFF"><b>{domestic}</b></font><br>
-&ensp; 国内番号。<br>
-- <font color="#00BFFF"><b>{number}</b></font><br>
-&ensp; 国番号と国内番号を含む電話番号全体（先頭の+または0を除く）。<br>
-- <font color="#00BFFF"><b>{origin_number}</b></font><br>
-&ensp; 先頭に+または0が付いている可能性のある元の電話番号。<br>
-]]>
-</string>
-<string name="time_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{year}</b></font><br>
-&ensp; 年、例：2024<br>
-- <font color="#00BFFF"><b>{month} {day}</b></font><br>
-&ensp; 1桁の数字には先頭に0が追加されます。例：<br>
-&emsp; {month}_{day} -> 01_02<br>
-- <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-&ensp; これらの値には先頭に0は追加されません。例：<br>
-&emsp; {month}_{day} -> 1_2<br>
-]]>
-</string>
-<string name="skip_alpha_empty_number">英数字または空の番号をスキップします。</string>
-<string name="sms_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{sms}</b></font><br>
-&ensp; SMS本文。<br>
-]]>
-</string>
+    <string name="cleaning_up_history_db">
+        履歴DBのクリーンアップ中、タイムスタンプ%s以前のレコードを削除しています。
+    </string>
+    <string name="cleaning_up_spam_db">
+        スパムDBのクリーンアップ中、タイムスタンプ%s以前の%s件のレコードを削除しています。
+    </string>
+    <string name="resolved_url">解決済みURL: %s。</string>
+    <string name="time_cost">処理時間: %sミリ秒。</string>
+    <string name="parsed_n_rules">%s個のルールを解析しました。</string>
+    <string name="add_n_numbers_to_spam_db">%s件の電話番号をスパムDBに追加しています。</string>
+    <string name="nothing_to_import">電話番号リストが空です。インポートするものがありません。</string>
+    <string name="importing_n_numbers">%s件の電話番号を正規表現ルールとしてインポートしています。</string>
+    <string name="create_rule_with_numbers">%s件の電話番号でルールを作成しています。</string>
+    <string name="replace_rule_with_desc">説明: %s のルールを置き換えています。</string>
+    <string name="rule_with_desc_not_found">説明が%sのルールが見つかりません。</string>
+    <string name="merging_rule_with_desc">説明: %s のルールをマージしています。</string>
+    <string name="regex_count_after_merge">マージ前正規表現数: %s、マージ後: %s。</string>
+    <string name="replace_number_from_to">%sから%sへの電話番号の置き換え。</string>
+    <string name="find_rule_with_desc">説明が%sのルールを%s件検出しました。</string>
+    <string name="modify_n_rules">%s個のルールを変更しています。</string>
+    <string name="fail_detect_cc">国番号の検出に失敗しました。</string>
+    <string name="identified_as_spam">スパム番号と識別されました。カテゴリ: %s。</string>
+    <string name="identified_as_valid">有効な番号と識別されました。カテゴリ: %s。</string>
+    <string name="unidentified_number">未識別番号。</string>
+    <string name="help_http_url">
+        <![CDATA[
+        対応タグ:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="number_not_match_filter">電話番号%sはフィルタ%sに一致しません。スキップします。</string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        主にドイツのFRITZ!Box向けに設計されていますが、他の国の電話番号にも対応しています。<br>
+        <br>
+        番号自体ではなくハッシュでクエリを実行できるため、プライバシーが向上します。<br>
+        <br>
+        ウェブサイト：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="not_enough_time_left">通話スクリーニングの時間制限は5秒です。時間関数の不正確さのために%sミリ秒のバッファがあるため、実際は合計%sミリ秒です。前のステップで%sミリ秒かかりました。残りの時間が不足しているため、スキップします。</string>
+    <string name="action_filter_query_result">スパムフィルタ</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        前の手順で特定されたスパム番号を含む<u>電話番号リスト</u>を生成し、データベースにインポートする準備をします。
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>でアカウントを登録します。<br>
+        <br>
+        2. 設定ページ: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>で、「APIキーを生成」ボタンを押します。<br>
+        <br>
+        3. 生成されたAPIキーを下記に入力します。
+        ]]>
+    </string>
+    <string name="username">ユーザー名</string>
+    <string name="password">パスワード</string>
+    <string name="auto_detect_cc_permission">国番号を検出するには、READ_PHONE_STATE権限が必要です。</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>左にスワイプ</b></font>して削除します。<br>
+        <br>
+        このアプリのほとんどのカードのようなUI要素はスワイプジェスチャに関連付けられており、履歴レコードなど、<font color="#03DAC5"><b>右にスワイプ</b></font>もサポートしているものもあります。
+        ]]>
+    </string>
+    <string name="bug_number">有効な番号の場合は、githubで報告してください。</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; 国番号。<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; 国内番号。<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; 国番号と国内番号を含む電話番号全体（先頭の+または0を除く）。<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; 先頭に+または0が付いている可能性のある元の電話番号。<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; 年、例：2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; 1桁の数字には先頭に0が追加されます。例：<br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; これらの値には先頭に0は追加されません。例：<br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="skip_alpha_empty_number">英数字または空の番号をスキップします。</string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; SMS本文。<br>
+        ]]>
+    </string>
 </resources>

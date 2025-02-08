@@ -1,69 +1,71 @@
 <resources>
-<string name="yesterday">Dün</string>
-<string name="help_meeting_mode">
-<![CDATA[
-Çevrimiçi video görüşmeleri sırasında gelen aramaları reddedin.<br> <br>
-Seçilen uygulamalardan herhangi birinin <b>ön plan hizmeti</b> çalıştırıp çalıştırmadığını kontrol eder, bu da genellikle video konferans uygulamaları tarafından bağlantıyı canlı tutmak için kullanılır.<br>
-<br>
-Hem aramalar hem de mesajlar için geçerlidir.<br>
-<br>
-<font color="#ea86ff"><b>Varsayılan Öncelik: 20</b></font>
-]]>
-</string>
-<string name="in_meeting">Toplantı Modu</string>
-<string name="search">Ara</string>
-<string name="http_header">Http Başlığı</string>
-<string name="help_http_header">
-<![CDATA[
-Satır başına bir özellik.
-]]>
-</string>
-<string name="log_sms_content_to_db">SMS Kaydet</string>
-<string name="initial_row_count">Başlangıç Satır Sayısı</string>
-<plurals name="rows">
-<item quantity="one">%d Satır</item>
-<item quantity="two">%d Satır</item>
-<item quantity="few">%d Satır</item>
-<item quantity="many">%d Satır</item>
-<item quantity="other">%d Satır</item>
-</plurals>
-<string name="label_max_none_scroll_items">Kaydırma Çubuğu Eşiği</string>
-<string name="help_max_none_scroll_items">
-<![CDATA[
-Kaydırma çubuğu görünmeden önce listede görüntülenebilecek maksimum öğe sayısı.
-]]>
-</string>
-<string name="label_max_scroll_height">Kaydırma Yüksekliği</string>
-<string name="help_max_scroll_height">
-<![CDATA[
-Kaydırma çubuğu göründüğünde, bu değer listenin ekranın yüzdesi olarak yüksekliğini temsil eder.
-]]>
-</string>
-<string name="label_max_regex_lines">Maksimum Düzenli İfade Satırı</string>
-<string name="help_max_regex_lines">
-<![CDATA[
-Düzenli ifade metni için maksimum görüntüleme satırı, kalan metin kesilecek ve üç nokta ile takip edilecektir.
-]]>
-</string>
-<string name="label_max_desc_lines">Maksimum Açıklama Satırı</string>
-<string name="help_max_desc_lines">
-<![CDATA[
-Açıklama metni için maksimum görüntüleme satırı, kalan metin kesilecek ve üç nokta ile takip edilecektir.
-]]>
-</string>
-<string name="for_example">Örneğin:</string>
-<string name="tags_supported">
-<![CDATA[
-Desteklenen Etiketler:<br><br>
-]]>
-</string>
-<string name="auth_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{basic_auth(kullanıcı_adı:şifre)}</b></font><br>
-&ensp; HTTP temel kimlik doğrulaması gerektiren API\'ler için. Örneğin:<br>
-&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-&ensp; şu şekilde ayrıştırılır:<br>
-&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-]]>
-</string>
+    <string name="yesterday">Dün</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Çevrimiçi video görüşmeleri sırasında gelen aramaları reddedin.<br> <br>
+        Seçilen uygulamalardan herhangi birinin <b>ön plan hizmeti</b> çalıştırıp çalıştırmadığını kontrol eder, bu da genellikle video konferans uygulamaları tarafından bağlantıyı canlı tutmak için kullanılır.<br>
+        <br>
+        Hem aramalar hem de mesajlar için geçerlidir.<br>
+        <br>
+        <font color="#ea86ff"><b>Varsayılan Öncelik: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Toplantı Modu</string>
+    <string name="search">Ara</string>
+    <string name="http_header">Http Başlığı</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Satır başına bir özellik.
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">SMS Kaydet</string>
+    <string name="initial_row_count">Başlangıç Satır Sayısı</string>
+    <plurals name="rows">
+        <item quantity="one">%d Satır</item>
+        <item quantity="two">%d Satır</item>
+        <item quantity="few">%d Satır</item>
+        <item quantity="many">%d Satır</item>
+        <item quantity="other">%d Satır</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Kaydırma Çubuğu Eşiği</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Kaydırma çubuğu görünmeden önce listede görüntülenebilecek maksimum öğe sayısı.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Kaydırma Yüksekliği</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Kaydırma çubuğu göründüğünde, bu değer listenin ekranın yüzdesi olarak yüksekliğini temsil eder.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Maksimum Düzenli İfade Satırı</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Düzenli ifade metni için maksimum görüntüleme satırı, kalan metin kesilecek ve üç nokta ile takip edilecektir.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Maksimum Açıklama Satırı</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Açıklama metni için maksimum görüntüleme satırı, kalan metin kesilecek ve üç nokta ile takip edilecektir.
+        ]]>
+    </string>
+
+    <string name="for_example">Örneğin:</string>
+    <string name="tags_supported">
+        <![CDATA[
+        Desteklenen Etiketler:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(kullanıcı_adı:şifre)}</b></font><br>
+        &ensp; HTTP temel kimlik doğrulaması gerektiren API\'ler için. Örneğin:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; şu şekilde ayrıştırılır:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

@@ -1,70 +1,72 @@
 <resources>
-<string name="yesterday">Hier</string>
-<string name="help_meeting_mode">
-<![CDATA[
-Refuser les appels pendant les vidéoconférences en ligne.<br> <br>
-Il vérifie si une application sélectionnée exécute un <b>service d\'arrière-plan</b>,
-ce qui est souvent utilisé par les applications de vidéoconférence pour maintenir la connexion active.<br>
-<br>
-Cela s\'applique aux appels et aux messages.<br>
-<br>
-<font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
-]]>
-</string>
-<string name="in_meeting">Mode réunion</string>
-<string name="search">Recherche</string>
-<string name="http_header">En-tête HTTP</string>
-<string name="help_http_header">
-<![CDATA[
-Un attribut par ligne.
-]]>
-</string>
-<string name="log_sms_content_to_db">Journaliser les SMS</string>
-<string name="initial_row_count">Nombre de lignes initial</string>
-<plurals name="rows">
-<item quantity="one">%d Ligne</item>
-<item quantity="two">%d Lignes</item>
-<item quantity="few">%d Lignes</item>
-<item quantity="many">%d Lignes</item>
-<item quantity="other">%d Lignes</item>
-</plurals>
-<string name="label_max_none_scroll_items">Seuil de la barre de défilement</string>
-<string name="help_max_none_scroll_items">
-<![CDATA[
-Le nombre maximal d\'éléments pouvant être affichés dans la liste avant qu\'une barre de défilement n\'apparaisse.
-]]>
-</string>
-<string name="label_max_scroll_height">Hauteur de défilement</string>
-<string name="help_max_scroll_height">
-<![CDATA[
-Lorsque la barre de défilement apparaît, cette valeur représente la hauteur de la liste en pourcentage de l\'écran.
-]]>
-</string>
-<string name="label_max_regex_lines">Lignes de regex max</string>
-<string name="help_max_regex_lines">
-<![CDATA[
-Le nombre maximal de lignes d\'affichage pour le texte de regex, le texte restant sera tronqué et suivi d\'une ellipse.
-]]>
-</string>
-<string name="label_max_desc_lines">Lignes de description max</string>
-<string name="help_max_desc_lines">
-<![CDATA[
-Le nombre maximal de lignes d\'affichage pour le texte de description, le texte restant sera tronqué et suivi d\'une ellipse.
-]]>
-</string>
-<string name="for_example">Par exemple :</string>
-<string name="tags_supported">
-<![CDATA[
-Tags supportés :<br><br>
-]]>
-</string>
-<string name="auth_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-&ensp; Pour les API nécessitant une authentification HTTP de base. Par exemple :<br>
-&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-&ensp; sera analysé en :<br>
-&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-]]>
-</string>
+    <string name="yesterday">Hier</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Refuser les appels pendant les vidéoconférences en ligne.<br> <br>
+        Il vérifie si une application sélectionnée exécute un <b>service d\'arrière-plan</b>,
+        ce qui est souvent utilisé par les applications de vidéoconférence pour maintenir la connexion active.<br>
+        <br>
+        Cela s\'applique aux appels et aux messages.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité par défaut : 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Mode réunion</string>
+    <string name="search">Recherche</string>
+    <string name="http_header">En-tête HTTP</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Un attribut par ligne.
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">Journaliser les SMS</string>
+    <string name="initial_row_count">Nombre de lignes initial</string>
+    <plurals name="rows">
+        <item quantity="one">%d Ligne</item>
+        <item quantity="two">%d Lignes</item>
+        <item quantity="few">%d Lignes</item>
+        <item quantity="many">%d Lignes</item>
+        <item quantity="other">%d Lignes</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Seuil de la barre de défilement</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Le nombre maximal d\'éléments pouvant être affichés dans la liste avant qu\'une barre de défilement n\'apparaisse.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Hauteur de défilement</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Lorsque la barre de défilement apparaît, cette valeur représente la hauteur de la liste en pourcentage de l\'écran.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Lignes de regex max</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Le nombre maximal de lignes d\'affichage pour le texte de regex, le texte restant sera tronqué et suivi d\'une ellipse.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Lignes de description max</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Le nombre maximal de lignes d\'affichage pour le texte de description, le texte restant sera tronqué et suivi d\'une ellipse.
+        ]]>
+    </string>
+
+    <string name="for_example">Par exemple :</string>
+    <string name="tags_supported">
+        <![CDATA[
+        Tags supportés :<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; Pour les API nécessitant une authentification HTTP de base. Par exemple :<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; sera analysé en :<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

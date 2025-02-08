@@ -1,97 +1,97 @@
 <resources>
-<string name="http_method">Méthode</string>
-<string name="http_post_body">Corps de la requête POST</string>
-<string name="help_http_post_body">
-<![CDATA[
-Balises supportées:<br>
-<br>
-%s
-]]>
-</string>
-<string name="missing_credentials">Veuillez saisir des informations d\'autorisation valides.</string>
-<string name="delay">Délai</string>
-<string name="report_number_require_call_log_permission">
-Pour éviter les faux signalements d\'appels répétés ou rappelés,
-le signalement d\'un numéro nécessite l\'autorisation d\'accès à l\'historique des appels.
-</string>
-<string name="exclude_services">Exclure les services</string>
-<string name="help_exclude_bg_service">
-<![CDATA[
-Certaines applications exécutent des services d\'arrière-plan supplémentaires. Ajoutez ici les noms des services à exclure.<br>
-<br>
-Pour trouver le nom d\'un service :<br>
-&emsp; 1. Activez le service dans l\'application.<br>
-&emsp; 2. Tous les noms des services activés apparaîtront ici.<br>
-&emsp; 3. Appuyez sur un nom pour l\'ajouter.<br>
-<br>
-Vous pouvez ajouter plusieurs noms, séparés par des virgules.
-]]>
-</string>
-<string name="running_services">Services en cours d\'exécution</string>
-<string name="report_number">Signaler un numéro</string>
-<string-array name="spam_categories">
-<item>Numéro valide</item>
-<item>Fraude</item>
-<item>Marketing</item>
-<item>Sondage</item>
-<item>Politique</item>
-<item>Autres spams</item>
-</string-array>
-<string name="action_category_config">Config. Catégorie</string>
-<string name="help_action_category_config">
-<![CDATA[
-Seules les catégories de spams suivantes sont prises en charge ; toute autre catégorie de l\'API doit être mappée à l\'une d\'elles.<br>
-<br>
-- <font color="#03DAC5"><b>{valid}</b></font><br>
-&ensp; Signaler comme numéro valide, pas un spam.<br>
-<br>
-- <font color="#fa7f71"><b>{fraud}</b></font><br>
-- <font color="#fa7f71"><b>{marketing}</b></font><br>
-- <font color="#fa7f71"><b>{survey}</b></font><br>
-- <font color="#fa7f71"><b>{political}</b></font><br>
-<br>
-- <font color="#fa7f71"><b>{other}</b></font><br>
-&ensp; Type de spam par défaut, utilisé lorsqu\'aucune des catégories ci-dessus ne s\'applique.<br>
-]]>
-</string>
-<string name="missing_category">
-La catégorie %s n\'est pas configurée dans l\'action %s ; veuillez la configurer dans la configuration de l\'API (si l\'API prend en charge cette catégorie).
-</string>
-<string name="target_text">Texte cible</string>
-<string name="match_found">Correspondance trouvée</string>
-<string name="match_not_found">Aucune correspondance</string>
-<string name="help_test_regex">
-<![CDATA[
-Ceci sert uniquement à tester si cette expression régulière correspond à un texte, à l\'exclusion des autres règles.<br>
-Pour tester toutes les règles, utilisez plutôt le bouton de test flottant dans le coin inférieur droit.
-]]>
-</string>
-<string name="allow">Autoriser</string>
-<string name="block">Bloquer</string>
-<string name="seconds">Secondes</string>
-<string name="seconds_short">Sec</string>
-<string name="within_seconds">En quelques secondes</string>
-<string name="call_alert">Alerte d\'appel</string>
-<string name="help_call_alert">
-<![CDATA[
-Certains services vous enverront d\'abord un SMS pour vous informer qu\'un appel est imminent, généralement dans la minute.<br>
-<br>
-Par exemple, un SMS comme :<br>
-&ensp; <font color="#888888">[quelque service] Nous vous appelons pour vous informer…, n\'hésitez pas à répondre.</font><br>
-<br>
-Une expression régulière pour ce type de message serait :<br>
-&ensp; <font color="#03DAC5"><b><translate>.*répondre.*</translate></b></font> <br>
-<br>
-Le paramètre par défaut <font color="#03DAC5"><b>120 secondes</b></font> signifie que tous les appels seront
-autorisés dans les deux minutes suivant la réception de ce message.<br>
-<br>
-Cela fonctionne pour les SMS réguliers et les SMS flash (SMS de classe 0).<br>
-<br>
-<font color="#ea86ff"><b>Priorité : 10</b></font>
-]]>
-</string>
-<string name="waning_using_wildcard_as_regex">Le caractère générique `*` est utilisé sans point précédent, vouliez-vous dire `.*` ?</string>
-<string name="import_as">Importer comme</string>
-<string name="api_key">Clé API</string>
-<string name="mms_support">Support MMS</string>
+    <string name="http_method">Méthode</string>
+    <string name="http_post_body">Corps de la requête POST</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Balises supportées:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">Veuillez saisir des informations d\'autorisation valides.</string>
+    <string name="delay">Délai</string>
+    <string name="report_number_require_call_log_permission">
+        Pour éviter les faux signalements d\'appels répétés ou rappelés,
+        le signalement d\'un numéro nécessite l\'autorisation d\'accès à l\'historique des appels.
+    </string>
+    <string name="exclude_services">Exclure les services</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Certaines applications exécutent des services d\'arrière-plan supplémentaires. Ajoutez ici les noms des services à exclure.<br>
+        <br>
+        Pour trouver le nom d\'un service :<br>
+        &emsp; 1. Activez le service dans l\'application.<br>
+        &emsp; 2. Tous les noms des services activés apparaîtront ici.<br>
+        &emsp; 3. Appuyez sur un nom pour l\'ajouter.<br>
+        <br>
+        Vous pouvez ajouter plusieurs noms, séparés par des virgules.
+        ]]>
+    </string>
+    <string name="running_services">Services en cours d\'exécution</string>
+    <string name="report_number">Signaler un numéro</string>
+    <string-array name="spam_categories">
+        <item>Numéro valide</item>
+        <item>Fraude</item>
+        <item>Marketing</item>
+        <item>Sondage</item>
+        <item>Politique</item>
+        <item>Autres spams</item>
+    </string-array>
+    <string name="action_category_config">Config. Catégorie</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Seules les catégories de spams suivantes sont prises en charge ; toute autre catégorie de l\'API doit être mappée à l\'une d\'elles.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Signaler comme numéro valide, pas un spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; Type de spam par défaut, utilisé lorsqu\'aucune des catégories ci-dessus ne s\'applique.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        La catégorie %s n\'est pas configurée dans l\'action %s ; veuillez la configurer dans la configuration de l\'API (si l\'API prend en charge cette catégorie).
+    </string>
+    <string name="target_text">Texte cible</string>
+    <string name="match_found">Correspondance trouvée</string>
+    <string name="match_not_found">Aucune correspondance</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Ceci sert uniquement à tester si cette expression régulière correspond à un texte, à l\'exclusion des autres règles.<br>
+        Pour tester toutes les règles, utilisez plutôt le bouton de test flottant dans le coin inférieur droit.
+        ]]>
+    </string>
+    <string name="allow">Autoriser</string>
+    <string name="block">Bloquer</string>
+    <string name="seconds">Secondes</string>
+    <string name="seconds_short">Sec</string>
+    <string name="within_seconds">En quelques secondes</string>
+    <string name="call_alert">Alerte d\'appel</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Certains services vous enverront d\'abord un SMS pour vous informer qu\'un appel est imminent, généralement dans la minute.<br>
+        <br>
+        Par exemple, un SMS comme :<br>
+        &ensp; <font color="#888888">[quelque service] Nous vous appelons pour vous informer…, n\'hésitez pas à répondre.</font><br>
+        <br>
+        Une expression régulière pour ce type de message serait :<br>
+        &ensp; <font color="#03DAC5"><b><translate>.*répondre.*</translate></b></font> <br>
+        <br>
+        Le paramètre par défaut <font color="#03DAC5"><b>120 secondes</b></font> signifie que tous les appels seront
+        autorisés dans les deux minutes suivant la réception de ce message.<br>
+        <br>
+        Cela fonctionne pour les SMS réguliers et les SMS flash (SMS de classe 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">Le caractère générique `*` est utilisé sans point précédent, vouliez-vous dire `.*` ?</string>
+    <string name="import_as">Importer comme</string>
+    <string name="api_key">Clé API</string>
+    <string name="mms_support">Support MMS</string>
 </resources>

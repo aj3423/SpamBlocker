@@ -1,102 +1,102 @@
 <resources>
-<string name="help_instant_query">
-<![CDATA[
-Запрос входящего номера онлайн в реальном времени, несколько API-точек будут запрашиваться одновременно.<br>
-<br>
-Применяется только к звонкам, не к SMS-сообщениям.<br>
-<br>
-Будет срабатывать только тогда, когда звонок пройдёт все остальные правила.<br>
-<br>
-<font color="#ea86ff"><b>Приоритет: -1</b></font>
-]]>
-</string>
-<string name="instant_query">Мгновенный запрос</string>
-<string name="negative_identifier">Отрицательный идентификатор</string>
-<string name="hint_negative_identifier">
-Например: ("valid":false)
-</string>
-<string name="help_negative_identifier">
-Номер будет идентифицирован как спам, если эта регулярная маска найдена в результате.
-</string>
-<string name="positive_identifier">Положительный идентификатор</string>
-<string name="hint_positive_identifier">
-Например: ("valid":true)
-</string>
-<string name="help_positive_identifier">
-<![CDATA[
-Номер будет идентифицирован как не спам, если эта регулярная маска найдена в результате, это необязательно.<br>
-<br>
-Обычно это <b>ненужно</b>, некоторые API-провайдеры идентифицируют неизвестные номера как не спам,<br>
-используйте это только если API действительно точен.
-]]>
-</string>
-<string name="category_identifier">Идентификатор категории</string>
-<string name="hint_category_identifier">
-Например: "type":"(.+?)"
-</string>
-<string name="help_category_identifier">
-<![CDATA[
-Необязательно. <br>
-После идентификации номера эта регулярка будет использоваться для извлечения его категории (телемаркетинг, фишинг и т.д.).
-]]>
-</string>
-<string name="action_parse_query_result">Обработать результат</string>
-<string name="help_action_parse_query_result">
-<![CDATA[
-Обработка результата запроса, номер будет идентифицирован как спам, если результат содержит определённую регулярку.<br>
-<br>
-Дополнительная регулярка может использоваться для извлечения категории спама. (необязательно)
-]]>
-</string>
-<string name="action_intercept_call">Перехватить звонок</string>
-<string name="help_action_intercept_call">
-<![CDATA[
-Входящий номер будет перехвачен и разобран на разные теги:<br>
-<br>
-%s
-<br>
-Эти теги будут использоваться для построения HTTP-URL, например:<br>
-<br>
-1. Для международного номера, например <b>+122222</b>, эти два варианта эквивалентны:<br>
-- https://test.com/number=<b>{number}</b><br>
-- https://test.com/number=<b>{cc}{domestic}</b><br>
-Он будет преобразован в:<br>
-https://test.com/number=<b>122222</b><br>
-<br>
-2. Для внутреннего номера, например <b>12345</b>, необходимо указать код страны в настройках или позволить приложению определить его автоматически.<br>
-]]>
-</string>
-<string name="query_api">API запроса</string>
-<string name="number_filter">Фильтр номеров</string>
-<string name="help_number_filter">
-<![CDATA[
-Некоторые API-сервисы поддерживают только международные номера, а некоторые только внутренние.<br>
-<br>
-Это регулярное выражение фильтрует номера соответствующим образом, входящие номера, которые не соответствуют этому регулярному выражению, будут пропущены.<br>
-<br>
-- Проверять только <b>международные номера</b>:<br>
-&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-<br>
-- Проверять только <b>внутренние номера</b>:<br>
-&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-<br>
-- Проверять <b>любые номера</b>:<br>
-&ensp; <font color="#03DAC5"><b>.*</b></font>
-]]>
-</string>
-<string name="checking_template">Проверка: %s, приоритет: %s</string>
-<string name="skip_for_testing">Пропустить для тестирования.</string>
-<string name="allowed_by">Разрешено: %s</string>
-<string name="blocked_by">Заблокировано: %s</string>
-<string name="outside_time_schedule">За пределами расписания, пропуск.</string>
-<string name="android_ver_lower_than_11">Версия Android ниже 11, пропуск.</string>
-<string name="query">Запрос</string>
-<string name="report_api">API отчётов</string>
-<string name="action_intercept_sms">Перехватить SMS</string>
-<string name="help_action_intercept_sms">
-<![CDATA[
-Входящее SMS будет перехвачено, и содержимое будет разобрано в тег <b>{sms}</b>,<br>
-который может быть использован последующими действиями.
-]]>
-</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Запрос входящего номера онлайн в реальном времени, несколько API-точек будут запрашиваться одновременно.<br>
+        <br>
+        Применяется только к звонкам, не к SMS-сообщениям.<br>
+        <br>
+        Будет срабатывать только тогда, когда звонок пройдёт все остальные правила.<br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Мгновенный запрос</string>
+    <string name="negative_identifier">Отрицательный идентификатор</string>
+    <string name="hint_negative_identifier">
+        Например: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Номер будет идентифицирован как спам, если эта регулярная маска найдена в результате.
+    </string>
+    <string name="positive_identifier">Положительный идентификатор</string>
+    <string name="hint_positive_identifier">
+        Например: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Номер будет идентифицирован как не спам, если эта регулярная маска найдена в результате, это необязательно.<br>
+        <br>
+        Обычно это <b>ненужно</b>, некоторые API-провайдеры идентифицируют неизвестные номера как не спам,<br>
+        используйте это только если API действительно точен.
+        ]]>
+    </string>
+    <string name="category_identifier">Идентификатор категории</string>
+    <string name="hint_category_identifier">
+        Например: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Необязательно. <br>
+        После идентификации номера эта регулярка будет использоваться для извлечения его категории (телемаркетинг, фишинг и т.д.).
+        ]]>
+    </string>
+    <string name="action_parse_query_result">Обработать результат</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Обработка результата запроса, номер будет идентифицирован как спам, если результат содержит определённую регулярку.<br>
+        <br>
+        Дополнительная регулярка может использоваться для извлечения категории спама. (необязательно)
+        ]]>
+    </string>
+    <string name="action_intercept_call">Перехватить звонок</string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        Входящий номер будет перехвачен и разобран на разные теги:<br>
+        <br>
+        %s
+        <br>
+        Эти теги будут использоваться для построения HTTP-URL, например:<br>
+        <br>
+        1. Для международного номера, например <b>+122222</b>, эти два варианта эквивалентны:<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Он будет преобразован в:<br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Для внутреннего номера, например <b>12345</b>, необходимо указать код страны в настройках или позволить приложению определить его автоматически.<br>
+        ]]>
+    </string>
+    <string name="query_api">API запроса</string>
+    <string name="number_filter">Фильтр номеров</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Некоторые API-сервисы поддерживают только международные номера, а некоторые только внутренние.<br>
+        <br>
+        Это регулярное выражение фильтрует номера соответствующим образом, входящие номера, которые не соответствуют этому регулярному выражению, будут пропущены.<br>
+        <br>
+        - Проверять только <b>международные номера</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Проверять только <b>внутренние номера</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Проверять <b>любые номера</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">Проверка: %s, приоритет: %s</string>
+    <string name="skip_for_testing">Пропустить для тестирования.</string>
+    <string name="allowed_by">Разрешено: %s</string>
+    <string name="blocked_by">Заблокировано: %s</string>
+    <string name="outside_time_schedule">За пределами расписания, пропуск.</string>
+    <string name="android_ver_lower_than_11">Версия Android ниже 11, пропуск.</string>
+    <string name="query">Запрос</string>
+    <string name="report_api">API отчётов</string>
+    <string name="action_intercept_sms">Перехватить SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        Входящее SMS будет перехвачено, и содержимое будет разобрано в тег <b>{sms}</b>,<br>
+        который может быть использован последующими действиями.
+        ]]>
+    </string>
 </resources>

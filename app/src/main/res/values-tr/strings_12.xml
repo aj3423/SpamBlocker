@@ -1,100 +1,100 @@
 <resources>
-<string name="help_instant_query">
-<![CDATA[
-Gelen numarayı gerçek zamanlı olarak çevrimiçi olarak sorgulayın, birden çok API uç noktası aynı anda sorgulanacaktır.<br>
-<br>
-Yalnızca aramalar için geçerlidir, SMS mesajları için değil.<br>
-<br>
-Yalnızca arama diğer tüm kuralları geçtiğinde tetiklenecektir.<br>
-<br>
-<font color="#ea86ff"><b>Öncelik: -1</b></font>
-]]>
-</string>
-<string name="instant_query">Anında Sorgu</string>
-<string name="negative_identifier">Negatif Tanımlayıcı</string>
-<string name="hint_negative_identifier">
-Örn.: ("valid":false)
-</string>
-<string name="help_negative_identifier">
-Sonuçta bu regex deseni bulunursa spam numarası olarak tanımlanacaktır.
-</string>
-<string name="positive_identifier">Pozitif Tanımlayıcı</string>
-<string name="hint_positive_identifier">
-Örn.: ("valid":true)
-</string>
-<string name="help_positive_identifier">
-<![CDATA[
-Sonuçta bu düzenli ifade kalıbı bulunursa spam olmayan numara olarak tanımlanacaktır, isteğe bağlıdır.<br>
-<br>
-Genellikle <b>gereksizdir</b>, bazı API sağlayıcıları bilinmeyen numaraları spam olmayan olarak tanımlar, yalnızca API gerçekten doğru olduğunda kullanın.
-]]>
-</string>
-<string name="category_identifier">Kategori Tanımlayıcı</string>
-<string name="hint_category_identifier">
-Örn.: "type":"(.+?)"
-</string>
-<string name="help_category_identifier">
-<![CDATA[
-İsteğe bağlı. <br>
-Bir numara tanımlandıktan sonra, bu regex kategorisini (telepazarlama, kimlik avı vb.) çıkarmak için kullanılır.
-]]>
-</string>
-<string name="action_parse_query_result">Sonucu Ayrıştır</string>
-<string name="help_action_parse_query_result">
-<![CDATA[
-Sorgu sonucunu ayrıştırın, sonuçta belirli bir regex deseni varsa numara spam olarak tanımlanacaktır.<br>
-<br>
-Spam kategorisini çıkarmak için ekstra bir regex kullanılabilir. (isteğe bağlı)
-]]>
-</string>
-<string name="action_intercept_call">Arayı Kes</string>
-<string name="help_action_intercept_call">
-<![CDATA[
-Gelen arama numarası kesintiye uğrayacak ve farklı etiketlere ayrılacaktır:<br>
-<br>
-%s
-<br>
-Bu etiketler HTTP URL\'sini oluşturmak için kullanılacaktır, örneğin:<br>
-<br>
-1. <b>+122222</b> gibi uluslararası numaralar için, bunlar eşdeğerdir:<br>
-- https://test.com/number=<b>{number}</b><br>
-- https://test.com/number=<b>{cc}{domestic}</b><br>
-Şu şekilde çözümlenecektir:<br>
-https://test.com/number=<b>122222</b><br>
-<br>
-2. <b>12345</b> gibi yerel numaralar için, ülke kodunu ayarlar içinde sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
-]]>
-</string>
-<string name="query_api">Sorgu API\'sı</string>
-<string name="number_filter">Numara Filtresi</string>
-<string name="help_number_filter">
-<![CDATA[
-Bazı API hizmetleri yalnızca uluslararası numaraları desteklerken, bazıları yalnızca yurtiçi numaraları destekler.<br>
-<br>
-Bu regex, numaraları buna göre filtreler, bu regex ile eşleşmeyen gelen numaralar kontrol edilmeden atlanacaktır.<br>
-<br>
-- Yalnızca <b>uluslararası numaraları</b> kontrol et:<br>
-&ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
-<br>
-- Yalnızca <b>yurtiçi numaraları</b> kontrol et:<br>
-&ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
-<br>
-- <b>Herhangi bir numarayı</b> kontrol et:<br>
-&ensp; <font color="#03DAC5"><b>.*</b></font>
-]]>
-</string>
-<string name="checking_template">Kontrol ediliyor: %s, öncelik: %s</string>
-<string name="skip_for_testing">Test için atla.</string>
-<string name="allowed_by">İzin verildi: %s</string>
-<string name="blocked_by">Engellendi: %s</string>
-<string name="outside_time_schedule">Zaman çizelgesinin dışında, atla.</string>
-<string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
-<string name="query">Sorgu</string>
-<string name="report_api">Rapor API\'sı</string>
-<string name="action_intercept_sms">SMS\'i Engelleyin</string>
-<string name="help_action_intercept_sms">
-<![CDATA[
-Gelen SMS engellenecek ve içerik <b>{sms}</b> etiketine ayrıştırılacak,<br>bu da sonraki işlemler tarafından kullanılabilir.
-]]>
-</string>
+    <string name="help_instant_query">
+        <![CDATA[
+        Gelen numarayı gerçek zamanlı olarak çevrimiçi olarak sorgulayın, birden çok API uç noktası aynı anda sorgulanacaktır.<br>
+        <br>
+        Yalnızca aramalar için geçerlidir, SMS mesajları için değil.<br>
+        <br>
+        Yalnızca arama diğer tüm kuralları geçtiğinde tetiklenecektir.<br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Anında Sorgu</string>
+    <string name="negative_identifier">Negatif Tanımlayıcı</string>
+    <string name="hint_negative_identifier">
+        Örn.: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        Sonuçta bu regex deseni bulunursa spam numarası olarak tanımlanacaktır.
+    </string>
+    <string name="positive_identifier">Pozitif Tanımlayıcı</string>
+    <string name="hint_positive_identifier">
+        Örn.: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Sonuçta bu düzenli ifade kalıbı bulunursa spam olmayan numara olarak tanımlanacaktır, isteğe bağlıdır.<br>
+        <br>
+        Genellikle <b>gereksizdir</b>, bazı API sağlayıcıları bilinmeyen numaraları spam olmayan olarak tanımlar, yalnızca API gerçekten doğru olduğunda kullanın.
+        ]]>
+    </string>
+    <string name="category_identifier">Kategori Tanımlayıcı</string>
+    <string name="hint_category_identifier">
+        Örn.: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        İsteğe bağlı. <br>
+        Bir numara tanımlandıktan sonra, bu regex kategorisini (telepazarlama, kimlik avı vb.) çıkarmak için kullanılır.
+        ]]>
+    </string>
+    <string name="action_parse_query_result">Sonucu Ayrıştır</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Sorgu sonucunu ayrıştırın, sonuçta belirli bir regex deseni varsa numara spam olarak tanımlanacaktır.<br>
+        <br>
+        Spam kategorisini çıkarmak için ekstra bir regex kullanılabilir. (isteğe bağlı)
+        ]]>
+    </string>
+    <string name="action_intercept_call">Arayı Kes</string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        Gelen arama numarası kesintiye uğrayacak ve farklı etiketlere ayrılacaktır:<br>
+        <br>
+        %s
+        <br>
+        Bu etiketler HTTP URL\'sini oluşturmak için kullanılacaktır, örneğin:<br>
+        <br>
+        1. <b>+122222</b> gibi uluslararası numaralar için, bunlar eşdeğerdir:<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        Şu şekilde çözümlenecektir:<br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. <b>12345</b> gibi yerel numaralar için, ülke kodunu ayarlar içinde sağlamanız veya uygulamanın otomatik olarak algılamasına izin vermeniz gerekir.<br>
+        ]]>
+    </string>
+    <string name="query_api">Sorgu API\'sı</string>
+    <string name="number_filter">Numara Filtresi</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Bazı API hizmetleri yalnızca uluslararası numaraları desteklerken, bazıları yalnızca yurtiçi numaraları destekler.<br>
+        <br>
+        Bu regex, numaraları buna göre filtreler, bu regex ile eşleşmeyen gelen numaralar kontrol edilmeden atlanacaktır.<br>
+        <br>
+        - Yalnızca <b>uluslararası numaraları</b> kontrol et:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Yalnızca <b>yurtiçi numaraları</b> kontrol et:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - <b>Herhangi bir numarayı</b> kontrol et:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">Kontrol ediliyor: %s, öncelik: %s</string>
+    <string name="skip_for_testing">Test için atla.</string>
+    <string name="allowed_by">İzin verildi: %s</string>
+    <string name="blocked_by">Engellendi: %s</string>
+    <string name="outside_time_schedule">Zaman çizelgesinin dışında, atla.</string>
+    <string name="android_ver_lower_than_11">Android sürümü 11\'den düşük, atla.</string>
+    <string name="query">Sorgu</string>
+    <string name="report_api">Rapor API\'sı</string>
+    <string name="action_intercept_sms">SMS\'i Engelleyin</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        Gelen SMS engellenecek ve içerik <b>{sms}</b> etiketine ayrıştırılacak,<br>bu da sonraki işlemler tarafından kullanılabilir.
+        ]]>
+    </string>
 </resources>

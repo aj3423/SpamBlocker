@@ -49,8 +49,6 @@ var only string
 
 var short bool
 
-var trim bool
-
 // -------- flags end
 
 const ENGLISH = ""
@@ -61,7 +59,7 @@ var wg sync.WaitGroup
 
 var pool *ants.Pool
 
-var LANGUAGES_TO_TRANSLATE []string // [de, es, fr, ...]
+var LANGUAGES []string // [de, es, fr, ...]
 
 func check_lang_param() []string {
 	if len(lang_str) == 0 {
@@ -69,12 +67,12 @@ func check_lang_param() []string {
 	}
 	var languages []string
 	if lang_str == "all" {
-		languages = LANGUAGES_TO_TRANSLATE
+		languages = LANGUAGES
 	} else {
 		languages = strings.Split(lang_str, ",")
 	}
 	for _, lang := range languages {
-		if !slices.Contains(LANGUAGES_TO_TRANSLATE, lang) {
+		if !slices.Contains(LANGUAGES, lang) {
 			panic("language " + lang + " not supported yet")
 		}
 	}
@@ -120,12 +118,7 @@ func lang_xmls_dir(lang string) string {
 	}
 }
 
-func write_xml(lang string, xml_fn string, lines []string) error {
-	var trimed_lines = lines
-	if lang != ENGLISH {
-		trimed_lines = trim_lines(lines)
-	}
-	content := join_lines(trimed_lines)
+func write_xml(lang string, xml_fn string, content string) error {
 	escaped := strings.ReplaceAll(content, "'", "\\'")
 	dir := lang_xmls_dir(lang)
 	os.MkdirAll(dir, 0666)
@@ -286,7 +279,7 @@ func translate_1_xml(lang string, xml_fn string) error {
 	if e == nil {
 		color.HiWhite("done %s %s", lang, color.HiGreenString(xml_fn))
 		if only == "" { // replace entire xml
-			write_xml(lang, xml_fn, split_lines(translated))
+			write_xml(lang, xml_fn, translated)
 		} else { // only replace the specific tag
 			v_only := strings.Split(only, ",")
 			for _, target := range v_only {
@@ -306,14 +299,14 @@ func translate_1_xml(lang string, xml_fn string) error {
 						start1,
 						matched_translated_lines,
 					)
-					write_xml(lang, xml_fn, new_lines)
+					write_xml(lang, xml_fn, join_lines(new_lines))
 				} else {
 					new_lines := insert_lines_at(
 						origin_lines,
 						len(origin_lines)-1,
 						matched_translated_lines,
 					)
-					write_xml(lang, xml_fn, new_lines)
+					write_xml(lang, xml_fn, join_lines(new_lines))
 				}
 			}
 		}
@@ -391,33 +384,12 @@ func move_tag(tag string, lang string, to_xml string) func(string) error {
 			// insert the matched_lines at the line before last line
 			new_lines := insert_lines_at(dest_lines, penultimate, matched_lines)
 
-			write_xml(lang, to_xml, new_lines)
+			write_xml(lang, to_xml, join_lines(new_lines))
 
 			// 2. remove from source xml
 			cleared := append(src_lines[:start], src_lines[end:]...)
-			write_xml(lang, xml_fn, cleared)
+			write_xml(lang, xml_fn, join_lines(cleared))
 		}
-
-		return nil
-	}
-}
-
-func trim_lines(lines []string) []string {
-	new_lines := []string{}
-	for _, line := range lines {
-		trimed_line := strings.TrimSpace(line)
-		if trimed_line != "" {
-			new_lines = append(new_lines, trimed_line)
-		}
-	}
-	return new_lines
-}
-
-func trim_file(lang string) func(string) error {
-	return func(xml_fn string) error {
-		src_lines := split_lines(read_xml(lang, xml_fn))
-		new_lines := trim_lines(src_lines)
-		write_xml(lang, xml_fn, new_lines)
 
 		return nil
 	}
@@ -432,7 +404,7 @@ func delete_tag(tag string, lang string, _ string) func(string) error {
 		if found {
 			fmt.Printf("%s  %s\n", lang, xml_fn)
 			cleared := append(src_lines[:start], src_lines[end:]...)
-			write_xml(lang, xml_fn, cleared)
+			write_xml(lang, xml_fn, join_lines(cleared))
 		}
 
 		return nil
@@ -441,21 +413,20 @@ func delete_tag(tag string, lang string, _ string) func(string) error {
 
 func setup() {
 	for key := range nameMap {
-		LANGUAGES_TO_TRANSLATE = append(LANGUAGES_TO_TRANSLATE, key)
+		LANGUAGES = append(LANGUAGES, key)
 	}
 
 	cwd, _ := os.Getwd()
 	RES_DIR = cwd + "/../app/src/main/res"
 
-	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES_TO_TRANSLATE))
+	flag.StringVar(&lang_str, "lang", "", fmt.Sprintf("Required, available languages: %v", LANGUAGES))
 	flag.StringVar(&filter_str, "filter", "", "-filter _12.xml")
 	flag.StringVar(&del, "del", "", "-del tag")
 	flag.StringVar(&move, "move", "", "-move tag -to strings_1.xml")
 	flag.StringVar(&to, "to", "", "")
 	flag.BoolVar(&short, "short", false, "force short, usually used together with -only")
-	flag.StringVar(&only, "only", "", "-only _tag_")
+	flag.StringVar(&only, "only", "", "-only tag")
 	flag.IntVar(&thread, "thread", 3, "")
-	flag.BoolVar(&trim, "trim", false, "trim the leading spaces")
 	flag.Parse()
 
 	wg = sync.WaitGroup{}
@@ -467,7 +438,7 @@ func main() {
 	setup()
 
 	if del != "" {
-		languages := append(LANGUAGES_TO_TRANSLATE, ENGLISH)
+		languages := append(LANGUAGES, ENGLISH)
 		for _, lang := range languages {
 			walk_lang_xmls(lang, delete_tag(del, lang, to))
 		}
@@ -476,18 +447,16 @@ func main() {
 			color.HiRed("usage: go run . -move %s -to strings_x.xml", move)
 			return
 		}
-		languages := append(LANGUAGES_TO_TRANSLATE, ENGLISH)
+		languages := append(LANGUAGES, ENGLISH)
 		for _, lang := range languages {
 			walk_lang_xmls(lang, move_tag(move, lang, to))
-		}
-	} else if trim {
-		languages := check_lang_param()
-		for _, lang := range languages {
-			walk_lang_xmls(lang, trim_file(lang))
 		}
 	} else { // translate
 		languages := check_lang_param()
 		for _, target_lang := range languages {
+			// if filter_str == "" {
+			// clear_lang_xmls(lang)
+			// }
 			walk_lang_xmls(ENGLISH, lang_translator(target_lang))
 		}
 	}

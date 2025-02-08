@@ -1,120 +1,128 @@
 <resources>
-<string name="crash_title">
-Es tut uns leid, die App ist abgestürzt.\n\n
-Bitte kopieren Sie den Inhalt unten und melden Sie dieses Problem auf Github,
-entfernen Sie alle sensiblen Informationen, bevor Sie sie melden.
-</string>
-<string-array name="short_weekdays">
-<item>Sun</item>
-<item>Mon</item>
-<item>Tue</item>
-<item>Wed</item>
-<item>Thu</item>
-<item>Fri</item>
-<item>Sat</item>
-</string-array>
-<string-array name="block_type_list">
-<item>Ablehnen</item>
-<item>Stummschalten</item>
-<item>Auflegen</item>
-</string-array>
-<string name="show_passed">Zeige durchgelassene</string>
-<string name="show_blocked">Zeige blockierte</string>
-<string name="confirm_delete_all_records">Bestätigen Sie, dass Sie alle Datensätze löschen möchten?</string>
-<string name="expiry">Ablauf</string>
-<string name="days">Tage</string>
-<string name="help_history_ttl">
-<![CDATA[
-<font color="#00BFFF"><b>> 0</b></font><br>
-&emsp; Die Verlaufsdatensätze werden in der Datenbank protokolliert und verfallen nach N Tagen,
-abgelaufene Datensätze werden automatisch gelöscht.<br>
-<br>
-<font color="#00BFFF"><b>= 0</b></font><br>
-&emsp; Die Verlaufsprotokollierung ist deaktiviert, es wird nichts in der Datenbank protokolliert.<br>
-<br>
-<font color="#00BFFF"><b>< 0</b></font><br>
-&emsp; Die Datensätze werden protokolliert und verfallen nie.
-]]>
-</string>
-<string name="help_log_sms_content">
-<![CDATA[
-Wenn aktiviert, wird der SMS-Inhalt ebenfalls in der Datenbank protokolliert und in dieser Liste angezeigt, er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.<br>
-<br>
-- Wenn aktiviert:<br>
-&emsp; <b>Tippen</b> Sie, um die vollständige Nachricht zu erweitern/einzuklappen.<br>
-<br>
-- Wenn deaktiviert:<br>
-&emsp; <b>Tippen</b> Sie, um die Konversation in der Standard-App zu öffnen.
-]]>
-</string>
-<string-array name="importance_list">
-<item>Keine</item>
-<item>Schatten</item>
-<item>Statusleiste, Schatten</item>
-<item>Ton, Statusleiste, Schatten</item>
-<item>Ton, Statusleiste, Schatten, Heads-up</item>
-</string-array>
-<string-array name="export_type_list">
-<item>Als Json exportieren</item>
-<item>Als Komprimiertes exportieren</item>
-</string-array>
-<string name="language">Sprache</string>
-<string name="help_language">
-<![CDATA[
-Übersetzungen erfolgen durch Google AI, melden Sie ein Problem auf Github, um eine neue Sprachunterstützung hinzuzufügen.
-]]>
-</string>
-<string name="enabled_for_call">Für Anruf aktivieren</string>
-<string name="enabled_for_sms">Für SMS aktivieren</string>
-<string name="repeated_call">Wiederholter Anruf</string>
-<string name="help_repeated_call">
-<![CDATA[
-Zulassen, wenn der Anruf innerhalb einer bestimmten Zeit wiederholt wird, ist es wahrscheinlich wichtiger als ein Spam-Anruf. <br>
-<br>
-Der Empfang von Textnachrichten von der gleichen Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung READ_SMS erteilt wurde, die optional ist.<br>
-<br>
-Die Standardeinstellung <font color="#03DAC5"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
-<br>
-Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
-<br>
-<font color="#ea86ff"><b>Priorität: 10</b></font>
-]]>
-</string>
-<string name="help_globally_enabled">
-<![CDATA[
-Der globale Schalter, diese App funktioniert nur, wenn dieser aktiviert ist,
-schalten Sie ihn aus, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
-<br>
-Er kann auch über die <font color="#6ed0ff"><b>Dropdown-Schnell-Einstellungen</b></font> umgeschaltet werden.<br>
-<br>
-Für SMS übernimmt diese App die SMS-Benachrichtigungen, bitte
-<font color="#fa7f71"><b>deaktivieren Sie die Benachrichtigungserlaubnis der Standard-SMS-App</b></font> in den Systemeinstellungen,
-sonst gibt es doppelte Benachrichtigungen.
-Sie filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden.
-]]>
-</string>
-<string name="about">Über</string>
-<string name="version">Version</string>
-<string name="build_time">Build-Zeit (UTC)</string>
-<string name="source_code">Quellcode</string>
-<string name="dismiss">Schließen</string>
-<string name="warning_running_in_work_profile">
-Diese App funktioniert möglicherweise nicht ordnungsgemäß innerhalb des Arbeitsprofils. Installieren Sie sie stattdessen im Hauptprofil.
-</string>
-<string-array name="import_csv_type">
-<item>Importiere .csv als einzelne Regel</item>
-<item>Importiere .csv als mehrere Regeln</item>
-</string-array>
-<string name="warning_double_sms">
-Diese App übernimmt alle SMS-Benachrichtigungen,
-aber die Benachrichtigungserlaubnis der Standard-SMS-App ist auch aktiviert,
-deaktivieren Sie sie in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
-</string>
-<string name="open_settings">Einstellungen öffnen</string>
-<string name="ignore">Ignorieren</string>
-<string name="remove_db_number">Nummer aus Spam-Datenbank löschen</string>
-<string name="copy_number">Nummer kopieren</string>
-<string name="add_num_to_regex_rule">Nummer zu Regex-Regel hinzufügen</string>
-<string name="add_num_to_db">Nummer zur Spam-Datenbank hinzufügen</string>
-<string name="mark_all_as_read">Alle als gelesen markieren</string>
+    <string name="crash_title">
+        Es tut uns leid, die App ist abgestürzt.\n\n
+        Bitte kopieren Sie den Inhalt unten und melden Sie dieses Problem auf Github,
+        entfernen Sie alle sensiblen Informationen, bevor Sie sie melden.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Ablehnen</item>
+        <item>Stummschalten</item>
+        <item>Auflegen</item>
+    </string-array>
+
+    <string name="show_passed">Zeige durchgelassene</string>
+    <string name="show_blocked">Zeige blockierte</string>
+
+    <string name="confirm_delete_all_records">Bestätigen Sie, dass Sie alle Datensätze löschen möchten?</string>
+    <string name="expiry">Ablauf</string>
+    <string name="days">Tage</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Die Verlaufsdatensätze werden in der Datenbank protokolliert und verfallen nach N Tagen,
+              abgelaufene Datensätze werden automatisch gelöscht.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; Die Verlaufsprotokollierung ist deaktiviert, es wird nichts in der Datenbank protokolliert.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Die Datensätze werden protokolliert und verfallen nie.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Wenn aktiviert, wird der SMS-Inhalt ebenfalls in der Datenbank protokolliert und in dieser Liste angezeigt, er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.<br>
+        <br>
+        - Wenn aktiviert:<br>
+        &emsp; <b>Tippen</b> Sie, um die vollständige Nachricht zu erweitern/einzuklappen.<br>
+        <br>
+        - Wenn deaktiviert:<br>
+        &emsp; <b>Tippen</b> Sie, um die Konversation in der Standard-App zu öffnen.
+        ]]>
+    </string>
+
+
+    <string-array name="importance_list">
+        <item>Keine</item>
+        <item>Schatten</item>
+        <item>Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten</item>
+        <item>Ton, Statusleiste, Schatten, Heads-up</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Als Json exportieren</item>
+        <item>Als Komprimiertes exportieren</item>
+    </string-array>
+
+    <string name="language">Sprache</string>
+    <string name="help_language">
+        <![CDATA[
+            Übersetzungen erfolgen durch Google AI, melden Sie ein Problem auf Github, um eine neue Sprachunterstützung hinzuzufügen.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Für Anruf aktivieren</string>
+    <string name="enabled_for_sms">Für SMS aktivieren</string>
+    <string name="repeated_call">Wiederholter Anruf</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Zulassen, wenn der Anruf innerhalb einer bestimmten Zeit wiederholt wird, ist es wahrscheinlich wichtiger als ein Spam-Anruf. <br>
+        <br>
+        Der Empfang von Textnachrichten von der gleichen Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung READ_SMS erteilt wurde, die optional ist.<br>
+        <br>
+        Die Standardeinstellung <font color="#03DAC5"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
+        <br>
+        Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Der globale Schalter, diese App funktioniert nur, wenn dieser aktiviert ist,
+        schalten Sie ihn aus, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
+        <br>
+        Er kann auch über die <font color="#6ed0ff"><b>Dropdown-Schnell-Einstellungen</b></font> umgeschaltet werden.<br>
+        <br>
+        Für SMS übernimmt diese App die SMS-Benachrichtigungen, bitte
+        <font color="#fa7f71"><b>deaktivieren Sie die Benachrichtigungserlaubnis der Standard-SMS-App</b></font> in den Systemeinstellungen,
+        sonst gibt es doppelte Benachrichtigungen.
+        Sie filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden.
+        ]]>
+    </string>
+
+    <string name="about">Über</string>
+    <string name="version">Version</string>
+    <string name="build_time">Build-Zeit (UTC)</string>
+    <string name="source_code">Quellcode</string>
+    <string name="dismiss">Schließen</string>
+    <string name="warning_running_in_work_profile">
+        Diese App funktioniert möglicherweise nicht ordnungsgemäß innerhalb des Arbeitsprofils. Installieren Sie sie stattdessen im Hauptprofil.
+    </string>
+    <string-array name="import_csv_type">
+        <item>Importiere .csv als einzelne Regel</item>
+        <item>Importiere .csv als mehrere Regeln</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Diese App übernimmt alle SMS-Benachrichtigungen,
+        aber die Benachrichtigungserlaubnis der Standard-SMS-App ist auch aktiviert,
+        deaktivieren Sie sie in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
+    </string>
+    <string name="open_settings">Einstellungen öffnen</string>
+    <string name="ignore">Ignorieren</string>
+    <string name="remove_db_number">Nummer aus Spam-Datenbank löschen</string>
+    <string name="copy_number">Nummer kopieren</string>
+    <string name="add_num_to_regex_rule">Nummer zu Regex-Regel hinzufügen</string>
+    <string name="add_num_to_db">Nummer zur Spam-Datenbank hinzufügen</string>
+    <string name="mark_all_as_read">Alle als gelesen markieren</string>
 </resources>

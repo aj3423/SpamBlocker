@@ -1,70 +1,72 @@
 <resources>
-<string name="yesterday">Ontem</string>
-<string name="help_meeting_mode">
-<![CDATA[
-Recusar chamadas durante videochamadas online.<br> <br>
-Ele verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
-que é comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
-<br>
-Ele se aplica a chamadas e mensagens.<br>
-<br>
-<font color="#ea86ff"><b>Prioridade Padrão: 20</b></font>
-]]>
-</string>
-<string name="in_meeting">Modo Reunião</string>
-<string name="search">Pesquisar</string>
-<string name="http_header">Cabeçalho Http</string>
-<string name="help_http_header">
-<![CDATA[
-Um atributo por linha.
-]]>
-</string>
-<string name="log_sms_content_to_db">Registrar SMS</string>
-<string name="initial_row_count">Contagem Inicial de Linhas</string>
-<plurals name="rows">
-<item quantity="one">%d Linha</item>
-<item quantity="two">%d Linhas</item>
-<item quantity="few">%d Linhas</item>
-<item quantity="many">%d Linhas</item>
-<item quantity="other">%d Linhas</item>
-</plurals>
-<string name="label_max_none_scroll_items">Limiar da Barra de Rolagem</string>
-<string name="help_max_none_scroll_items">
-<![CDATA[
-O número máximo de itens que podem ser exibidos na lista antes que uma barra de rolagem apareça.
-]]>
-</string>
-<string name="label_max_scroll_height">Altura da Rolagem</string>
-<string name="help_max_scroll_height">
-<![CDATA[
-Quando a barra de rolagem aparece, esse valor representa a altura da lista como uma porcentagem da tela.
-]]>
-</string>
-<string name="label_max_regex_lines">Linhas Máximas de Regex</string>
-<string name="help_max_regex_lines">
-<![CDATA[
-O número máximo de linhas de exibição para o texto regex, o texto restante será truncado e seguido por reticências.
-]]>
-</string>
-<string name="label_max_desc_lines">Linhas Máximas de Descrição</string>
-<string name="help_max_desc_lines">
-<![CDATA[
-O número máximo de linhas de exibição para o texto da descrição, o texto restante será truncado e seguido por reticências.
-]]>
-</string>
-<string name="for_example">Por exemplo:</string>
-<string name="tags_supported">
-<![CDATA[
-Tags suportadas:<br><br>
-]]>
-</string>
-<string name="auth_tags">
-<![CDATA[
-- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
-&ensp; Para APIs que exigem autenticação básica HTTP. Por exemplo:<br>
-&emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
-&ensp; será analisado para:<br>
-&emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
-]]>
-</string>
+    <string name="yesterday">Ontem</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Recusar chamadas durante videochamadas online.<br> <br>
+        Ele verifica se algum aplicativo selecionado está executando um <b>serviço em primeiro plano</b>,
+        que é comumente usado por aplicativos de videoconferência para manter a conexão ativa.<br>
+        <br>
+        Ele se aplica a chamadas e mensagens.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade Padrão: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Modo Reunião</string>
+    <string name="search">Pesquisar</string>
+    <string name="http_header">Cabeçalho Http</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Um atributo por linha.
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">Registrar SMS</string>
+    <string name="initial_row_count">Contagem Inicial de Linhas</string>
+    <plurals name="rows">
+        <item quantity="one">%d Linha</item>
+        <item quantity="two">%d Linhas</item>
+        <item quantity="few">%d Linhas</item>
+        <item quantity="many">%d Linhas</item>
+        <item quantity="other">%d Linhas</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Limiar da Barra de Rolagem</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        O número máximo de itens que podem ser exibidos na lista antes que uma barra de rolagem apareça.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Altura da Rolagem</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Quando a barra de rolagem aparece, esse valor representa a altura da lista como uma porcentagem da tela.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Linhas Máximas de Regex</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        O número máximo de linhas de exibição para o texto regex, o texto restante será truncado e seguido por reticências.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Linhas Máximas de Descrição</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        O número máximo de linhas de exibição para o texto da descrição, o texto restante será truncado e seguido por reticências.
+        ]]>
+    </string>
+
+    <string name="for_example">Por exemplo:</string>
+    <string name="tags_supported">
+        <![CDATA[
+        Tags suportadas:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; Para APIs que exigem autenticação básica HTTP. Por exemplo:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; será analisado para:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
 </resources>

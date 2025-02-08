@@ -1,30 +1,30 @@
 <resources>
-<string name="api_preset_gemini">Gemini</string>
-<string name="help_api_preset_gemini">
-<![CDATA[
-Überprüfung des SMS-Inhalts mit Google Gemini KI, benötigt nur ein Google-Konto.
-]]>
-</string>
-<string name="gemini_api_key">Gemini API-Schlüssel</string>
-<string name="help_api_preset_gemini_authorization">
-<![CDATA[
-1. Registrieren und anmelden bei Ihrem Google-Konto: <br>
-<a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
-<br>
-2. API-Seite öffnen:<br>
-<a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
-<br>
-3. Klicken Sie auf die Schaltfläche "API-Schlüssel erstellen", der generierte Schlüssel wird unten angezeigt.<br>
-<br>
-4. Klicken Sie auf die "drei Punkte", um den Schlüssel zu kopieren und unten einzufügen.
-]]>
-</string>
-<string name="spam_sms_prompt_template">
-Kategorisieren Sie diese SMS-Nachricht als Politisch, Betrug, Umfrage oder Marketing.
-Wenn nichts zutrifft, antworten Sie mit "Gültig", andernfalls antworten Sie nur mit der Kategorie, antworten Sie sonst nichts.
-Die SMS-Nachricht lautet:
-{sms}
-</string>
-<string name="spam_sms_negative_category"><translate>(Politisch|Betrug|Umfrage|Marketing)</translate></string>
-<string name="spam_sms_positive_category">Gültig</string>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Überprüfung des SMS-Inhalts mit Google Gemini KI, benötigt nur ein Google-Konto.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Gemini API-Schlüssel</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Registrieren und anmelden bei Ihrem Google-Konto: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. API-Seite öffnen:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. Klicken Sie auf die Schaltfläche "API-Schlüssel erstellen", der generierte Schlüssel wird unten angezeigt.<br>
+        <br>
+        4. Klicken Sie auf die "drei Punkte", um den Schlüssel zu kopieren und unten einzufügen.
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        Kategorisieren Sie diese SMS-Nachricht als Politisch, Betrug, Umfrage oder Marketing.
+        Wenn nichts zutrifft, antworten Sie mit "Gültig", andernfalls antworten Sie nur mit der Kategorie, antworten Sie sonst nichts.
+        Die SMS-Nachricht lautet:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(Politisch|Betrug|Umfrage|Marketing)</translate></string>
+    <string name="spam_sms_positive_category">Gültig</string>
 </resources>
