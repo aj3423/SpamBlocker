@@ -37,7 +37,14 @@ typealias Lambda2<A, B> = (A, B) -> Unit
 typealias Lambda3<A, B, C> = (A, B, C) -> Unit
 typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
-
+fun String.escape(): String {
+    return this
+        .replace("\\", "\\\\")
+        .replace("\"", "\\\"")
+        .replace("\n", "\\n")
+        .replace("\r", "\\r")
+        .replace("\t", "\\t")
+}
 // parse json -> map
 private fun toValue(element: Any) = when (element) {
     JSONObject.NULL -> null

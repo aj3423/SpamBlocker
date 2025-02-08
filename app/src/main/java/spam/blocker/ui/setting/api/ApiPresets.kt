@@ -15,6 +15,8 @@ import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.util.Lambda2
+import spam.blocker.util.Util
+import spam.blocker.util.escape
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -159,7 +161,8 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}",
                         header = "Content-Type: application/json",
                         method = HTTP_POST,
-                        body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"%s\"\n\n\t}]\n  }]\n}\n".format(ctx.getString(R.string.spam_sms_prompt_template))
+                        body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"%s\"\n\n\t}]\n  }]\n}"
+                            .format(ctx.getString(R.string.spam_sms_prompt_template).escape())
                 ),
                     ParseQueryResult(
                         negativeSig = ctx.getString(R.string.spam_sms_negative_category),
