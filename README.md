@@ -11,6 +11,7 @@ Table of Contents
    * [Screenshot](#screenshot)
    * [How it works](#how-it-works)
    * [Features](#features)
+   * [Limitations](#limitations)
    * [Permissions](#permissions)
    * [Privacy](#privacy)
    * [Support](#support)
@@ -52,6 +53,12 @@ It's not necessary to leave this app running in the background, you can kill the
 | Report Spam                   | Automatically or manually report the number to build our crowd-sourced databases, protecting others and yourself.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates) for examples.<br><br>Some typical patterns:<br> - Any number: `.*` (the regex `.*` is equivalent to the wildcard `*` in other apps) <br> - Exact number: `12345` <br> - Start with 400: `400.*` <br> - End with 123: `.*123` <br> - 7 digits: `.{7}` <br> - Shorter than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Unknown number (it's actually empty text): `.{0}` or `^$`<br>  - Contain word "verification": `.*verification.*` <br> - Contain any of the words: `.*(police\|hospital\|verification).*` <br> - Start with 400, with leading country code 11 or not: `(?:11)?400.*` <br>- Extract verification code from SMS message: `code.*?(\d+)` |
 
+
+# Limitations 
+- Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/274)
+- Dual SIM support: [Waiting for Google](https://github.com/aj3423/SpamBlocker/issues/169)
+- MMS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/266#issuecomment-2646302132)
+- Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
 
 # Permissions 
 
@@ -102,8 +109,6 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
  - [How does the "Priority" work, how to always block a particular number regardless of any other rules](https://github.com/aj3423/SpamBlocker/issues/166)
  - [It stopped working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
- - [Dual SIM support](https://github.com/aj3423/SpamBlocker/issues/169)
- - [Auto delete spam SMS](https://github.com/aj3423/SpamBlocker/issues/274)
 
 # Language support
 
