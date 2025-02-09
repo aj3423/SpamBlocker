@@ -363,12 +363,12 @@ class ByApiQuery(
 ) : ICheckResult {
     @Composable
     override fun ExpandedContent(forType: Int, record: HistoryRecord) {
+        // "Report Number" button / show top line of SMS content
+        super.ExpandedContent(forType, record)
+
         if (!record.expanded) {
             return
         }
-
-        // "Report Number" button
-        super.ExpandedContent(forType, record)
 
         // Server Echo
         val echo = detail.queryResult.serverEcho
