@@ -27,4 +27,6 @@
     </string>
     <string name="spam_sms_negative_category"><translate>(Political|Fraud|Survey|Marketing)</translate></string>
     <string name="spam_sms_positive_category">Valid</string>
+    <string name="last_log">Last Log</string>
+    <string name="executed_at">Executed at:</string>
 </resources>

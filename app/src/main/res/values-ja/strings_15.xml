@@ -27,4 +27,6 @@
     </string>
     <string name="spam_sms_negative_category"><translate>(政治|詐欺|アンケート|マーケティング)</translate></string>
     <string name="spam_sms_positive_category">有効</string>
+    <string name="last_log">最終ログ</string>
+    <string name="executed_at">実行日時：</string>
 </resources>

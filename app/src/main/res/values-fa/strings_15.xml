@@ -27,4 +27,6 @@
     </string>
     <string name="spam_sms_negative_category"><translate>(سیاسی|کلاهبرداری|نظرسنجی|بازاریابی)</translate></string>
     <string name="spam_sms_positive_category">معتبر</string>
+    <string name="last_log">آخرین لاگ</string>
+    <string name="executed_at">اجرا شده در:</string>
 </resources>

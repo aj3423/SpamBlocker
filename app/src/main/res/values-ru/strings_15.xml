@@ -27,4 +27,6 @@
     </string>
     <string name="spam_sms_negative_category"><translate>(Политика|Мошенничество|Опрос|Маркетинг)</translate></string>
     <string name="spam_sms_positive_category">Действительно</string>
+    <string name="last_log">Последний лог</string>
+    <string name="executed_at">Выполнено в:</string>
 </resources>

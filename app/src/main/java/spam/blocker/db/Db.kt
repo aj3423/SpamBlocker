@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 36
+        const val DB_VERSION = 37
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -43,6 +43,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_ACTIONS = "actions"
         const val COLUMN_ENABLED = "enabled"
         const val COLUMN_WORK_UUID = "work_uuid"
+        const val COLUMN_LAST_LOG = "last_log"
+        const val COLUMN_LAST_LOG_TIME = "last_log_time"
+
 
         // ---- api table ----
         const val TABLE_API_QUERY = "api_query"
@@ -137,7 +140,9 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                     "$COLUMN_SCHEDULE TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
-                    "$COLUMN_WORK_UUID TEXT UNIQUE" +
+                    "$COLUMN_WORK_UUID TEXT UNIQUE, " +
+                    "$COLUMN_LAST_LOG TEXT, " +
+                    "$COLUMN_LAST_LOG_TIME INTEGER " +
                     ")"
         )
 
@@ -267,6 +272,11 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 36) && (oldVersion < 36)) {
             addColumnIfNotExist(db, TABLE_CONTENT_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
             addColumnIfNotExist(db, TABLE_QUICK_COPY_RULE, COLUMN_BLOCK_TYPE_CONFIG, "TEXT")
+        }
+        // v4.5 added last log for bots
+        if ((newVersion >= 37) && (oldVersion < 37)) {
+            addColumnIfNotExist(db, TABLE_BOT, COLUMN_LAST_LOG, "TEXT")
+            addColumnIfNotExist(db, TABLE_BOT, COLUMN_LAST_LOG_TIME, "INTEGER")
         }
     }
 }

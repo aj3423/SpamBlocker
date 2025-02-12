@@ -27,4 +27,6 @@
     </string>
     <string name="spam_sms_negative_category"><translate>(Siyasi|Sahtekarlık|Anket|Pazarlama)</translate></string>
     <string name="spam_sms_positive_category">Geçerli</string>
+    <string name="last_log">Son Günlük</string>
+    <string name="executed_at">Çalıştırıldı:</string>
 </resources>

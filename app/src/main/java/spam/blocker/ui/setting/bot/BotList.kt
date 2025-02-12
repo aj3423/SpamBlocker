@@ -4,9 +4,11 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
@@ -18,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
@@ -34,6 +37,7 @@ import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.CustomItem
 import spam.blocker.ui.widgets.DividerItem
@@ -43,10 +47,16 @@ import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SnackBar
+import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.PermissiveJson
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
+import spam.blocker.util.applyAnnotatedMarkups
+import spam.blocker.util.formatAnnotated
 import java.time.Duration
 import java.time.Instant
 
@@ -95,6 +105,31 @@ fun CountdownMenuItem(bot: Bot) {
     }
 }
 
+@Composable
+fun BotLog(
+    trigger: MutableState<Boolean>,
+    logJson: String,
+    logTime: Long,
+) {
+    val ctx = LocalContext.current
+
+    val annotatedLog = remember {
+        val logger = PermissiveJson.decodeFromString<SaveableLogger>(logJson)
+        logger.text.applyAnnotatedMarkups(logger.markups)
+    }
+
+
+    PopupDialog(
+        trigger = trigger,
+    ) {
+        Text(
+            text = "${Str(R.string.executed_at)} ${Util.formatTime(ctx, logTime)}\n\n"
+                .formatAnnotated(annotatedLog),
+            color = LocalPalette.current.textGrey,
+        )
+    }
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BotList() {
@@ -102,16 +137,15 @@ fun BotList() {
     val vm = G.botVM
     val coroutineScope = rememberCoroutineScope()
 
-
     // workflow actions may update bots
     Events.botUpdated.Listen {
         vm.reload(ctx)
     }
 
-    val editTrigger = rememberSaveable { mutableStateOf(false) }
-
     var clickedIndex by rememberSaveable { mutableIntStateOf(-1) }
 
+    // Edit
+    val editTrigger = rememberSaveable { mutableStateOf(false) }
     if (editTrigger.value) {
         EditBotDialog(
             trigger = editTrigger,
@@ -126,6 +160,18 @@ fun BotList() {
         )
     }
 
+    // View Log
+    val logTrigger = rememberSaveable { mutableStateOf(false) }
+    if (logTrigger.value) {
+        val log = BotTable.getLastLog(ctx, vm.bots[clickedIndex].workUUID)!!
+        BotLog(
+            trigger = logTrigger,
+            logJson = log.first,
+            logTime = log.second,
+        )
+    }
+
+    // Export
     val exportTrigger = remember { mutableStateOf(false) }
     if (exportTrigger.value) {
         ConfigExportDialog(
@@ -142,9 +188,11 @@ fun BotList() {
     }
 
     val labels = listOf(
+        ctx.getString(R.string.last_log),
         ctx.getString(R.string.export),
     )
     val icons = listOf(
+        R.drawable.ic_log,
         R.drawable.ic_backup_export,
     )
     labels.forEachIndexed { menuIndex, label ->
@@ -153,9 +201,8 @@ fun BotList() {
             icon = { GreyIcon20(icons[menuIndex]) }
         ) {
             when (menuIndex) {
-                0 -> { // export
-                    exportTrigger.value = true
-                }
+                0 -> { logTrigger.value = true } // View log
+                1 -> { exportTrigger.value = true } // Export
             }
         }
     }

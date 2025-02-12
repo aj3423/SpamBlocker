@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import androidx.core.database.getIntOrNull
+import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
 import spam.blocker.service.bot.IAction
@@ -24,6 +25,8 @@ data class Bot(
     val actions: List<IAction> = listOf(),
     val enabled: Boolean = false,
     val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag
+    val lastLog: String = "",
+    val lastLogTime: Long = 0,
 )
 
 
@@ -69,6 +72,8 @@ object BotTable {
                         actions = actions,
                         enabled = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_ENABLED)) == 1,
                         workUUID = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_WORK_UUID)) ?: "",
+                        lastLog = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_LAST_LOG)) ?: "",
+                        lastLogTime = it.getLongOrNull(it.getColumnIndex(Db.COLUMN_LAST_LOG_TIME)) ?: 0,
                     )
 
                     ret += rec
@@ -86,6 +91,8 @@ object BotTable {
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
         cv.put(Db.COLUMN_WORK_UUID, r.workUUID)
+        cv.put(Db.COLUMN_LAST_LOG, r.lastLog)
+        cv.put(Db.COLUMN_LAST_LOG_TIME, r.lastLogTime)
         return db.insert(Db.TABLE_BOT, null, cv)
     }
 
@@ -98,6 +105,8 @@ object BotTable {
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
         cv.put(Db.COLUMN_WORK_UUID, r.workUUID)
+        cv.put(Db.COLUMN_LAST_LOG, r.lastLog)
+        cv.put(Db.COLUMN_LAST_LOG_TIME, r.lastLogTime)
         db.insert(Db.TABLE_BOT, null, cv)
     }
 
@@ -109,8 +118,25 @@ object BotTable {
         cv.put(Db.COLUMN_ACTIONS, r.actions.serialize())
         cv.put(Db.COLUMN_ENABLED, if (r.enabled) 1 else 0)
 //        cv.put(Db.COLUMN_WORK_UUID, r.workUUID) // UUID never changes
+        // no need to update log
 
         return db.update(Db.TABLE_BOT, cv, "${Db.COLUMN_ID} = $id", null) >= 0
+    }
+
+    // These log getter/setter functions will be called repeatedly without refreshing bot list
+    // Return: Pair<logJson, logTime>
+    fun getLastLog(ctx: Context, workUUID: String): Pair<String, Long>? {
+        val bot = findByWorkUuid(ctx, workUUID)
+        return bot?.let {
+            Pair(bot.lastLog, bot.lastLogTime)
+        }
+    }
+    fun setLastLog(ctx: Context, workUUID: String, log: String): Boolean {
+        val db = Db.getInstance(ctx).writableDatabase
+        val cv = ContentValues()
+        cv.put(Db.COLUMN_LAST_LOG, log)
+        cv.put(Db.COLUMN_LAST_LOG_TIME, System.currentTimeMillis())
+        return db.update(Db.TABLE_BOT, cv, "${Db.COLUMN_WORK_UUID} = '$workUUID'", null) >= 0
     }
 
     fun deleteById(ctx: Context, id: Long): Boolean {

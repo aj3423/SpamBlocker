@@ -27,4 +27,6 @@
     </string>
     <string name="spam_sms_negative_category"><translate>(Політичне|Шахрайське|Опитування|Маркетингове)</translate></string>
     <string name="spam_sms_positive_category">Валідне</string>
+    <string name="last_log">Останній лог</string>
+    <string name="executed_at">Виконано о:</string>
 </resources>

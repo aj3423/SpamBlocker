@@ -11,6 +11,7 @@ import androidx.work.WorkerParameters
 import spam.blocker.db.BotTable
 import spam.blocker.def.Def
 import spam.blocker.util.AdbLogger
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
 import spam.blocker.util.logd
 import spam.blocker.util.logi
@@ -42,11 +43,17 @@ class MyWorker(
 
         logi("execute actions: ${actions.map { it.label(ctx) }}")
 
+        val logger = SaveableLogger()
+        val workTag = getWorkTag()
+
         val aCtx = ActionContext(
-            logger = AdbLogger(),
-            workTag = getWorkTag(),
+            logger = logger,
+            workTag = workTag,
         )
         actions.executeAll(ctx, aCtx)
+
+        // The logger is now full filled with annotated string chunk, save it to db.
+        BotTable.setLastLog(ctx, workTag, logger.serialize())
     }
 
     private fun getWorkTag(): String {
