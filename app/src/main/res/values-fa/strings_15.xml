@@ -29,4 +29,5 @@
     <string name="spam_sms_positive_category">معتبر</string>
     <string name="last_log">آخرین لاگ</string>
     <string name="executed_at">اجرا شده در:</string>
+    <string name="not_executed_yet">هنوز اجرا نشده</string>
 </resources>

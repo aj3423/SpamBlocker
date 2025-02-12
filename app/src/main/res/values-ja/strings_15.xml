@@ -29,4 +29,5 @@
     <string name="spam_sms_positive_category">有効</string>
     <string name="last_log">最終ログ</string>
     <string name="executed_at">実行日時：</string>
+    <string name="not_executed_yet">まだ実行されていません</string>
 </resources>

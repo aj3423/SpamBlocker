@@ -15,6 +15,7 @@ import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
 import spam.blocker.util.logd
 import spam.blocker.util.logi
+import spam.blocker.util.spf
 import java.util.concurrent.TimeUnit
 
 // The Android built-in WorkManager doesn't support schedule like: "at 00:00:00 every day",
@@ -31,11 +32,21 @@ class MyWorker(
 ) : Worker(ctx, workerParams) {
 
     override fun doWork(): Result {
+        // This ctx is different than the main context, need to set locale explicitly,
+        //  otherwise all strings will follow the system default language.
+        setLocale()
+
         scheduleNext()
 
         runActions()
 
         return Result.success()
+    }
+
+    private fun setLocale() {
+        val spf = spf.Global(ctx)
+        // language
+        Util.setLocale(ctx, spf.getLanguage())
     }
 
     private fun runActions() {

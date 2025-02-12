@@ -29,4 +29,5 @@
     <string name="spam_sms_positive_category">Válido</string>
     <string name="last_log">Último rexistro</string>
     <string name="executed_at">Executado en:</string>
+    <string name="not_executed_yet">Aínda non executado</string>
 </resources>

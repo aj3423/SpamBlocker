@@ -29,4 +29,5 @@
     <string name="spam_sms_positive_category">Geçerli</string>
     <string name="last_log">Son Günlük</string>
     <string name="executed_at">Çalıştırıldı:</string>
+    <string name="not_executed_yet">Henüz çalıştırılmadı</string>
 </resources>

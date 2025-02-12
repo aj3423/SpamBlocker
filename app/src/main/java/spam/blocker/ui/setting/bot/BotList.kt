@@ -20,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers.IO
@@ -52,6 +53,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.A
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
@@ -114,8 +116,12 @@ fun BotLog(
     val ctx = LocalContext.current
 
     val annotatedLog = remember {
-        val logger = PermissiveJson.decodeFromString<SaveableLogger>(logJson)
-        logger.text.applyAnnotatedMarkups(logger.markups)
+        try {
+            val logger = PermissiveJson.decodeFromString<SaveableLogger>(logJson)
+            logger.text.applyAnnotatedMarkups(logger.markups)
+        } catch (_: Exception) {
+            AnnotatedString("")
+        }
     }
 
 
@@ -123,8 +129,12 @@ fun BotLog(
         trigger = trigger,
     ) {
         Text(
-            text = "${Str(R.string.executed_at)} ${Util.formatTime(ctx, logTime)}\n\n"
-                .formatAnnotated(annotatedLog),
+            text = if (logTime == 0L) {
+                Str(R.string.not_executed_yet).A()
+            } else {
+                "${Str(R.string.executed_at)} ${Util.formatTime(ctx, logTime)}\n\n"
+                    .formatAnnotated(annotatedLog)
+            },
             color = LocalPalette.current.textGrey,
         )
     }

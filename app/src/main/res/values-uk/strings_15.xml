@@ -29,4 +29,5 @@
     <string name="spam_sms_positive_category">Валідне</string>
     <string name="last_log">Останній лог</string>
     <string name="executed_at">Виконано о:</string>
+    <string name="not_executed_yet">Ще не виконано</string>
 </resources>

@@ -29,4 +29,5 @@
     <string name="spam_sms_positive_category">Действительно</string>
     <string name="last_log">Последний лог</string>
     <string name="executed_at">Выполнено в:</string>
+    <string name="not_executed_yet">Ещё не выполнено</string>
 </resources>
