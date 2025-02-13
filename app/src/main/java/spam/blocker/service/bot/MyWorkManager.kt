@@ -10,7 +10,6 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import spam.blocker.db.BotTable
 import spam.blocker.def.Def
-import spam.blocker.util.AdbLogger
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
 import spam.blocker.util.logd

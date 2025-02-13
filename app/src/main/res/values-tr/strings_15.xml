@@ -30,4 +30,13 @@
     <string name="last_log">Son Günlük</string>
     <string name="executed_at">Çalıştırıldı:</string>
     <string name="not_executed_yet">Henüz çalıştırılmadı</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Numaranın spam veritabanında olup olmadığını veya herhangi bir regex kuralıyla eşleşip eşleşmediğini belirtmek için numaranın önünde simgeler gösterin.<br>
+        <br>
+        <font color="#ffa500">Not:</font><br>
+        Veritabanı çok büyük olduğunda veya çok fazla regex kuralı olduğunda bu, performansı etkileyebilir.
+        ]]>
+    </string>
+    <string name="show_indicator">Bayrakları Göster</string>
 </resources>

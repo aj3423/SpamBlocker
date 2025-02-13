@@ -2,6 +2,7 @@ package spam.blocker.ui.history
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
@@ -18,6 +19,7 @@ open class HistoryViewModel(
     val table: HistoryTable,
 ) : ViewModel() {
     val records = mutableStateListOf<HistoryRecord>()
+    val showIndicator = mutableStateOf(false)
 
     fun reload(ctx: Context) {
         records.clear()
@@ -25,6 +27,8 @@ open class HistoryViewModel(
         val spf = spf.HistoryOptions(ctx)
         val showPassed = spf.getShowPassed()
         val showBlocked = spf.getShowBlocked()
+
+        showIndicator.value = spf.getShowIndicator()
 
         records.addAll(table.listRecords(ctx).filter {
             (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())

@@ -45,7 +45,6 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -110,7 +109,6 @@ fun ReportSpamDialog(
                             }
                         }
                     }
-
                 }
             }
         }
@@ -125,7 +123,7 @@ fun ReportSpamDialog(
 fun HistoryCard(
     forType: Int,
     record: HistoryRecord,
-    existInDb: Boolean,
+    indicators: Indicators?,
     modifier: Modifier,
 ) {
     val C = LocalPalette.current
@@ -161,9 +159,10 @@ fun HistoryCard(
                 modifier = M.weight(1f)
             ) {
                 RowVCenterSpaced(4) {
-                    // Db existence indicator
-                    if (existInDb) {
-                        ResIcon(R.drawable.ic_db_delete, modifier = M.size(16.dp), color = Salmon)
+                    // Db/Rule existence indicators
+                    indicators?.let {
+                        if (it.any())
+                            IndicatorIcons(indicators)
                     }
 
                     // Number

@@ -30,4 +30,13 @@
     <string name="last_log">Letztes Protokoll</string>
     <string name="executed_at">Ausgeführt am:</string>
     <string name="not_executed_yet">Noch nicht ausgeführt</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Zeigen Sie Symbole vor der Nummer an, um anzugeben, ob sie in der Spam-Datenbank vorhanden ist oder mit einer Regex-Regel übereinstimmt.<br>
+        <br>
+        <font color="#ffa500">Hinweis:</font><br>
+        Dies kann die Leistung beeinträchtigen, wenn die Datenbank zu groß ist oder zu viele Regex-Regeln vorhanden sind.
+        ]]>
+    </string>
+    <string name="show_indicator"><short>Zeige Flags</short></string>
 </resources>

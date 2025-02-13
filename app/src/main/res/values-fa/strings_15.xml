@@ -30,4 +30,13 @@
     <string name="last_log">آخرین لاگ</string>
     <string name="executed_at">اجرا شده در:</string>
     <string name="not_executed_yet">هنوز اجرا نشده</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        نمادها را قبل از شماره نمایش دهید تا نشان دهد آیا در پایگاه داده پیام های اسپم وجود دارد یا خیر، یا آیا با هر قانون regex مطابقت دارد یا خیر.<br>
+        <br>
+        <font color="#ffa500">توجه:</font><br>
+        این می تواند بر عملکرد تأثیر بگذارد زمانی که پایگاه داده خیلی بزرگ باشد یا قوانین regex زیادی وجود داشته باشد.
+        ]]>
+    </string>
+    <string name="show_indicator">نمایش پرچم ها</string>
 </resources>

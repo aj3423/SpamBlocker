@@ -49,6 +49,7 @@ class Global {
 class HistoryOptions {
     var showPassed = true
     var showBlocked = true
+    var showIndicator = true
 
     var ttl = -1
     var logSmsContent = false
@@ -58,6 +59,7 @@ class HistoryOptions {
         val spf = spf.HistoryOptions(ctx)
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
+        showIndicator = spf.getShowIndicator()
 
         ttl = spf.getTTL()
         logSmsContent = spf.isLogSmsContentEnabled()
@@ -68,6 +70,7 @@ class HistoryOptions {
         spf.HistoryOptions(ctx).apply {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
+            setShowIndicator(showIndicator)
 
             setTTL(ttl)
             setLogSmsContentEnabled(logSmsContent)

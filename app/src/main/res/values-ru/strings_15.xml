@@ -30,4 +30,13 @@
     <string name="last_log">Последний лог</string>
     <string name="executed_at">Выполнено в:</string>
     <string name="not_executed_yet">Ещё не выполнено</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Показывать значки перед номером, чтобы указать, существует ли он в базе данных спама, или соответствует ли он какому-либо правилу регулярного выражения.<br>
+        <br>
+        <font color="#ffa500">Примечание:</font><br>
+        Это может повлиять на производительность, если база данных слишком велика или существует слишком много правил регулярных выражений.
+        ]]>
+    </string>
+    <string name="show_indicator">Показывать флаги</string>
 </resources>

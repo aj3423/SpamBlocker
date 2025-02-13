@@ -30,4 +30,13 @@
     <string name="last_log">Last Log</string>
     <string name="executed_at">Executed at:</string>
     <string name="not_executed_yet">Not executed yet</string>
+    <string name="show_indicator">Show Flags</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Show icons before the number to indicate whether it exists in the spam database, or does it match any regex rule.<br>
+        <br>
+        <font color="#ffa500">Note:</font><br>
+        This can impact the performance when the database is too large or there are too many regex rules.
+        ]]>
+    </string>
 </resources>

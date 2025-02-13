@@ -30,4 +30,13 @@
     <string name="last_log">最終ログ</string>
     <string name="executed_at">実行日時：</string>
     <string name="not_executed_yet">まだ実行されていません</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        番号の前にアイコンを表示して、スパムデータベースに存在するか、または正規表現ルールに一致するかを示します。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        データベースが大きすぎるか、正規表現ルールが多すぎると、パフォーマンスに影響を与える可能性があります。
+        ]]>
+    </string>
+    <string name="show_indicator">フラグを表示</string>
 </resources>

@@ -11,7 +11,6 @@ import spam.blocker.db.SpamTable
 import spam.blocker.db.listReportableAPIs
 import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB

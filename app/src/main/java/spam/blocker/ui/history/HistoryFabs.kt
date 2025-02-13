@@ -69,6 +69,8 @@ fun HistoryFabs(
 
     var showPassed by rememberSaveable { mutableStateOf(spf.getShowPassed()) }
     var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }
+    var showIndicator by rememberSaveable { mutableStateOf(spf.getShowIndicator()) }
+
     var historyTTL by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
     var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
     var rows by rememberSaveable { mutableStateOf<Int?>(spf.getInitialSmsRowCount()) }
@@ -146,12 +148,24 @@ fun HistoryFabs(
                     vm.reload(ctx)
                 })
             }
+            HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
+
+            LabeledRow(
+                labelId = R.string.show_indicator,
+                helpTooltipId = R.string.help_show_indicator,
+            ) {
+                SwitchBox(checked = showIndicator, onCheckedChange = { isOn ->
+                    showIndicator = isOn
+                    spf.setShowIndicator(isOn)
+                    vm.showIndicator.value = isOn
+                })
+            }
         })
 
     RowVCenterSpaced(space = 8, modifier = modifier) {
         Fab(
             visible = visible,
-            iconId = R.drawable.ic_display_filter,
+            iconId = R.drawable.ic_settings,
             bgColor = SkyBlue
         ) {
             settingPopupTrigger.value = true

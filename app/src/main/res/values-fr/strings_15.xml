@@ -30,4 +30,13 @@
     <string name="last_log">Dernier journal</string>
     <string name="executed_at">Exécuté le :</string>
     <string name="not_executed_yet">Pas encore exécuté</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Afficher des icônes devant le numéro pour indiquer s\'il existe dans la base de données de spam ou s\'il correspond à une règle regex.<br>
+        <br>
+        <font color="#ffa500">Remarque :</font><br>
+        Cela peut avoir un impact sur les performances lorsque la base de données est trop volumineuse ou qu\'il existe trop de règles regex.
+        ]]>
+    </string>
+    <string name="show_indicator">Afficher les drapeaux</string>
 </resources>

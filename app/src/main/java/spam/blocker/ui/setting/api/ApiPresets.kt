@@ -15,7 +15,6 @@ import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.util.Lambda2
-import spam.blocker.util.Util
 import spam.blocker.util.escape
 import kotlin.Int
 import kotlin.String

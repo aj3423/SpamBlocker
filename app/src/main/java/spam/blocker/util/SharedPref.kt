@@ -141,6 +141,8 @@ class spf { // for namespace only
         fun setShowPassed(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_PASSED, enabled) }
         fun getShowBlocked(): Boolean { return readBoolean(Def.SETTING_SHOW_BLOCKED, true) }
         fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
+        fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, true) }
+        fun setShowIndicator(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_INDICATOR, enabled) }
 
         // TimeToLive for history records:
         // -1: history records never expire, will not be auto deleted

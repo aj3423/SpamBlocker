@@ -30,4 +30,13 @@
     <string name="last_log">最近日志</string>
     <string name="executed_at">执行于：</string>
     <string name="not_executed_yet">尚未执行</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        在号码前显示图标，以指示它是否存在于垃圾号码数据库中，或者它是否与任何正则表达式规则匹配。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        当数据库太大或正则表达式规则太多时，这会影响性能。
+        ]]>
+    </string>
+    <string name="show_indicator">显示标记</string>
 </resources>

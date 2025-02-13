@@ -46,6 +46,7 @@ object Def {
     const val SETTING_SMS_ENABLED = "sms_enable"
     const val SETTING_SHOW_PASSED = "show_passed"
     const val SETTING_SHOW_BLOCKED = "show_blocked"
+    const val SETTING_SHOW_INDICATOR = "show_indicator"
     const val SETTING_HISTORY_TTL = "history_ttl"
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
     const val SETTING_INITIAL_SMS_ROW_COUNT = "initial_sms_row_count"

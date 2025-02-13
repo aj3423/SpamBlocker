@@ -30,6 +30,7 @@ import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.RegexRule
@@ -322,6 +323,9 @@ fun RuleEditDialog(
                             blockTypeConfig,
                         )
                     )
+
+                    // fire event to update the UI
+                    Events.regexRuleUpdated.fire()
                 }
             )
         },
