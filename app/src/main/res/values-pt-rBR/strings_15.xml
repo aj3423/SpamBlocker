@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">Mostrar Sinalizadores</string>
+    <string name="enable_for_mms">Habilitar para MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        As mensagens MMS geralmente são spam, é desnecessário habilitar, a menos que você realmente as use.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        Mensagens em grupo são MMS, não SMS.<br>
+        <br>
+        O MMS será tratado como SMS, apenas o conteúdo do texto será processado,
+        outros conteúdos multimídia, como imagem e áudio, são ignorados.<br>
+        <br>
+        Duas permissões são necessárias: RECEIVE_MMS e READ_SMS
+        ]]>
+    </string>
 </resources>

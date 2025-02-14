@@ -12,7 +12,6 @@ import spam.blocker.db.BotTable
 import spam.blocker.def.Def
 import spam.blocker.util.SaveableLogger
 import spam.blocker.util.Util
-import spam.blocker.util.logd
 import spam.blocker.util.logi
 import spam.blocker.util.spf
 import java.util.concurrent.TimeUnit
@@ -128,7 +127,7 @@ object MyWorkManager {
         // `null` means no need to run anymore, e.g.: Delay(one-off schedule)
         val delay = schedule.nextOccurrence()
         if (delay == null) {
-            logd("skip finished task: $scheduleConfig")
+            logi("skip finished task: $scheduleConfig")
             return false
         }
 

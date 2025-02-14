@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">显示标记</string>
+    <string name="enable_for_mms">启用 MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        彩信通常是垃圾信息，除非您实际使用它们，否则没有必要启用。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        群组消息是彩信，而不是短信。<br>
+        <br>
+        彩信将被视为短信，只会处理文本内容，
+        其他多媒体内容（如图像和音频）将被忽略。<br>
+        <br>
+        需要两个权限：RECEIVE_MMS 和 READ_SMS
+        ]]>
+    </string>
 </resources>

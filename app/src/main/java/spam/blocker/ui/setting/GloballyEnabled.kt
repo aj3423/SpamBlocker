@@ -26,6 +26,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
@@ -53,8 +54,17 @@ fun GloballyEnabled() {
         return spf.isSmsEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)
     }
 
+    fun checkMmsState(): Boolean {
+        return checkSmsState()
+                && spf.isMmsEnabled()
+                && Permissions.isReceiveMmsPermissionGranted(ctx)
+                && Permissions.isReadSmsPermissionGranted(ctx)
+    }
+
     var callEnabled by remember { mutableStateOf(checkCallState()) }
     var smsEnabled by remember { mutableStateOf(checkSmsState()) }
+    var mmsEnabled by remember { mutableStateOf(checkMmsState()) }
+
 
     val doubleSmsWarningTrigger = remember(smsEnabled) { mutableStateOf(false) }
     if (doubleSmsWarningTrigger.value) {
@@ -113,7 +123,6 @@ fun GloballyEnabled() {
                     })
                 }
 
-
                 LabeledRow(labelId = R.string.enabled_for_sms) {
                     SwitchBox(checked = smsEnabled, onCheckedChange = { isTurningOn ->
                         if (isTurningOn) {
@@ -131,6 +140,33 @@ fun GloballyEnabled() {
                             smsEnabled = checkSmsState()
                         }
                     })
+                }
+
+                AnimatedVisibleV(smsEnabled) {
+                    LabeledRow(
+                        labelId = R.string.enable_for_mms,
+                        helpTooltipId = R.string.help_enable_for_mms,
+                    ) {
+                        SwitchBox(checked = mmsEnabled, onCheckedChange = { isTurningOn ->
+                            if (isTurningOn) {
+                                G.permissionChain.ask(
+                                    ctx,
+                                    listOf(
+                                        NormalPermission(Manifest.permission.READ_SMS),
+                                        NormalPermission(Manifest.permission.RECEIVE_MMS),
+                                    )
+                                ) { granted ->
+                                    if (granted) {
+                                        spf.setMmsEnabled(true)
+                                        mmsEnabled = checkMmsState()
+                                    }
+                                }
+                            } else {
+                                spf.setMmsEnabled(false)
+                                mmsEnabled = checkMmsState()
+                            }
+                        })
+                    }
                 }
             }
         })

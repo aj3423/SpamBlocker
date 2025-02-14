@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">Afficher les drapeaux</string>
+    <string name="enable_for_mms">Activer pour les MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        Les messages MMS sont généralement des spams, il est inutile de les activer sauf si vous les utilisez réellement.<br>
+        <br>
+        <font color="#ffa500">Remarque :</font><br>
+        Les messages de groupe sont des MMS, pas des SMS.<br>
+        <br>
+        Les MMS seront traités comme des SMS, seul le contenu textuel sera traité,
+        les autres contenus multimédias comme les images et l\'audio sont ignorés.<br>
+        <br>
+        Deux autorisations sont requises : RECEIVE_MMS et READ_SMS
+        ]]>
+    </string>
 </resources>

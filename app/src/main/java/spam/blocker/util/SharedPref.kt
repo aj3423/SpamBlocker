@@ -81,6 +81,8 @@ class spf { // for namespace only
         fun setCallEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CALL_ENABLED, enabled) }
         fun isSmsEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_ENABLED, true) }
         fun setSmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_ENABLED, enabled) }
+        fun isMmsEnabled(): Boolean { return readBoolean(Def.SETTING_MMS_ENABLED, true) }
+        fun setMmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_MMS_ENABLED, enabled) }
 
         fun getThemeType(): Int { return readInt(Def.SETTING_THEME_TYPE, 0) }
         fun setThemeType(type: Int) { writeInt(Def.SETTING_THEME_TYPE, type) }
@@ -141,7 +143,7 @@ class spf { // for namespace only
         fun setShowPassed(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_PASSED, enabled) }
         fun getShowBlocked(): Boolean { return readBoolean(Def.SETTING_SHOW_BLOCKED, true) }
         fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
-        fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, true) }
+        fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, false) }
         fun setShowIndicator(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_INDICATOR, enabled) }
 
         // TimeToLive for history records:

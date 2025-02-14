@@ -23,13 +23,13 @@ import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
 
-class SmsReceiver : BroadcastReceiver() {
+open class SmsReceiver : BroadcastReceiver() {
 
-    override fun onReceive(ctx: Context?, intent: Intent?) {
-        if (!spf.Global(ctx!!).isGloballyEnabled() || !spf.Global(ctx).isSmsEnabled()) {
+    override fun onReceive(ctx: Context, intent: Intent) {
+        if (!spf.Global(ctx).isGloballyEnabled() || !spf.Global(ctx).isSmsEnabled()) {
             return
         }
-        val action = intent?.action
+        val action = intent.action
         if (action != Telephony.Sms.Intents.SMS_RECEIVED_ACTION) {
             return
         }
@@ -39,7 +39,6 @@ class SmsReceiver : BroadcastReceiver() {
         // phone and delivered together.
         val messageBody = messages.fold("") { acc, it -> acc + it.messageBody }
         val rawNumber = messages[0].originatingAddress!!
-        // logd("onReceive sms from $rawNumber: $messageBody")
 
         processSms(ctx, logger = null, rawNumber, messageBody)
     }

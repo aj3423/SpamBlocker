@@ -25,7 +25,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Util
-import spam.blocker.util.logd
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 fun Details.getRawNumber(): String {
@@ -176,7 +176,7 @@ class CallScreeningService : CallScreeningService() {
         logToDb(ctx, r, rawNumber)
 
         if (r.shouldBlock()) {
-            logd(String.format("Reject call %s", rawNumber))
+            logi(String.format("Reject call %s", rawNumber))
 
             CoroutineScope(IO).launch {
 

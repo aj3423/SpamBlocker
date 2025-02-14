@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">フラグを表示</string>
+    <string name="enable_for_mms">MMSを有効にする</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        MMSメッセージは通常スパムです。実際に使用しない限り、有効にする必要はありません。<br>
+        <br>
+        <font color="#ffa500">注：</font><br>
+        グループメッセージはSMSではなく、MMSです。<br>
+        <br>
+        MMSはSMSとして扱われ、テキストコンテンツのみが処理されます。
+        画像やオーディオなどの他のマルチメディアコンテンツは無視されます。<br>
+        <br>
+        2つの権限が必要です：RECEIVE_MMSとREAD_SMS
+        ]]>
+    </string>
 </resources>

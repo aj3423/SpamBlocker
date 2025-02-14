@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">نمایش پرچم ها</string>
+    <string name="enable_for_mms">فعال کردن برای MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        پیام های MMS معمولاً هرزنامه هستند، نیازی به فعال بودن نیست مگر اینکه واقعاً از آنها استفاده کنید.<br>
+        <br>
+        <font color="#ffa500">توجه:</font><br>
+        پیام های گروهی MMS هستند، نه SMS.<br>
+        <br>
+        MMS به عنوان SMS در نظر گرفته می شود، فقط محتوای متنی پردازش می شود،
+        سایر محتوای چندرسانه ای مانند تصویر و صدا نادیده گرفته می شوند.<br>
+        <br>
+        دو مجوز مورد نیاز است: RECEIVE_MMS و READ_SMS
+        ]]>
+    </string>
 </resources>

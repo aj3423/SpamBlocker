@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">Bayrakları Göster</string>
+    <string name="enable_for_mms">MMS için Etkinleştir</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        MMS mesajları genellikle spam\'dir, gerçekten kullanmadığınız sürece etkinleştirilmesi gereksizdir.<br>
+        <br>
+        <font color="#ffa500">Not:</font><br>
+        Grup mesajları SMS değil, MMS\'dir.<br>
+        <br>
+        MMS, SMS olarak ele alınacaktır, yalnızca metin içeriği işlenecektir,
+        resim ve ses gibi diğer multimedya içerikleri yoksayılır.<br>
+        <br>
+        İki izin gereklidir: RECEIVE_MMS ve READ_SMS
+        ]]>
+    </string>
 </resources>

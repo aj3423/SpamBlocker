@@ -107,6 +107,9 @@ object Permissions {
     fun isReceiveSmsPermissionGranted(ctx: Context): Boolean {
         return isPermissionGranted(ctx, Manifest.permission.RECEIVE_SMS)
     }
+    fun isReceiveMmsPermissionGranted(ctx: Context): Boolean {
+        return isPermissionGranted(ctx, Manifest.permission.RECEIVE_MMS)
+    }
 
     fun isCallLogPermissionGranted(ctx: Context): Boolean {
         return isPermissionGranted(ctx, Manifest.permission.READ_CALL_LOG)

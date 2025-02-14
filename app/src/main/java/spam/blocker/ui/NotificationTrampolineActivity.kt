@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import spam.blocker.util.Launcher
 import spam.blocker.util.Notification
-import spam.blocker.util.logd
 
 class NotificationTrampolineActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,11 +12,8 @@ class NotificationTrampolineActivity : ComponentActivity() {
         val type = intent!!.getStringExtra("type")
         val blocked = intent.getBooleanExtra("blocked", false)
 
-        // The action is not used, but it must exist in the Intent,
-        // otherwise the intent will be overridden by the next notification
-        val action = intent.action
-
-        logd("notification clicked, type: $type, blocked: $blocked, action: $action")
+//        val action = intent.action
+//        logi("notification clicked, type: $type, blocked: $blocked, action: $action")
 
         when (type) {
             "sms" -> {

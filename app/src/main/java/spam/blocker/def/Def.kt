@@ -44,6 +44,7 @@ object Def {
     const val SETTING_ENABLED = "globally_enable"
     const val SETTING_CALL_ENABLED = "call_enable"
     const val SETTING_SMS_ENABLED = "sms_enable"
+    const val SETTING_MMS_ENABLED = "mms_enable"
     const val SETTING_SHOW_PASSED = "show_passed"
     const val SETTING_SHOW_BLOCKED = "show_blocked"
     const val SETTING_SHOW_INDICATOR = "show_indicator"

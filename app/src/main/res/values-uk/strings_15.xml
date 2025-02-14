@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator">Показувати позначки</string>
+    <string name="enable_for_mms">Увімкнути для MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        MMS-повідомлення зазвичай є спамом, їх не потрібно вмикати, якщо ви їх насправді не використовуєте.<br>
+        <br>
+        <font color="#ffa500">Примітка:</font><br>
+        Групові повідомлення - це MMS, а не SMS.<br>
+        <br>
+        MMS буде оброблятися як SMS, оброблятиметься лише текстовий вміст,
+        інший мультимедійний вміст, такий як зображення та аудіо, ігнорується.<br>
+        <br>
+        Потрібні два дозволи: RECEIVE_MMS та READ_SMS
+        ]]>
+    </string>
 </resources>

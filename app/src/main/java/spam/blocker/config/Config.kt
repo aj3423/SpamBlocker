@@ -29,11 +29,14 @@ class Global {
     var enabled = false
     var callEnabled = false
     var smsEnabled = false
+    var mmsEnabled = false
+
     fun load(ctx: Context) {
         val g = spf.Global(ctx)
         enabled = g.isGloballyEnabled()
         callEnabled = g.isCallEnabled()
         smsEnabled = g.isSmsEnabled()
+        mmsEnabled = g.isMmsEnabled()
     }
 
     fun apply(ctx: Context) {
@@ -41,6 +44,7 @@ class Global {
             setGloballyEnabled(enabled)
             setCallEnabled(callEnabled)
             setSmsEnabled(smsEnabled)
+            setMmsEnabled(mmsEnabled)
         }
     }
 }

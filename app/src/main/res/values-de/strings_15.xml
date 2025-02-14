@@ -39,4 +39,18 @@
         ]]>
     </string>
     <string name="show_indicator"><short>Zeige Flags</short></string>
+    <string name="enable_for_mms">Für MMS aktivieren</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        MMS-Nachrichten sind normalerweise Spam. Es ist unnötig, sie zu aktivieren, es sei denn, Sie verwenden sie tatsächlich.<br>
+        <br>
+        <font color="#ffa500">Hinweis:</font><br>
+        Gruppennachrichten sind MMS, keine SMS.<br>
+        <br>
+        MMS wird wie SMS behandelt, nur Textinhalte werden verarbeitet,
+        andere Multimedia-Inhalte wie Bilder und Audio werden ignoriert.<br>
+        <br>
+        Zwei Berechtigungen sind erforderlich: RECEIVE_MMS und READ_SMS
+        ]]>
+    </string>
 </resources>
