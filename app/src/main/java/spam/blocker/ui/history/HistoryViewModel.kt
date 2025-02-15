@@ -2,7 +2,6 @@ package spam.blocker.ui.history
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord

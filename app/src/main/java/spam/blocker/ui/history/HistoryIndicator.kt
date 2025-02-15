@@ -21,7 +21,6 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.service.checker.ByRegexRule
-import spam.blocker.service.checker.BySpamDb
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.toNumberChecker
@@ -29,8 +28,6 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.util.logd
-import spam.blocker.util.spf
 
 data class Indicator(
     val type: Int, // same as CheckResult.type, e.g.: RESULT_BLOCKED_BY_SPAM_DB

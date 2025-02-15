@@ -16,13 +16,19 @@ function parseTitle(title) {
 		description: description
 	}
 }
-function contributing_tips() {
-	return "If you'd like to share your regex or workflow here, please create an issue labeled `share regex/workflow`, see [this guide](https://github.com/aj3423/SpamBlocker/issues/249) for instructions.\n\n"
+function contributing_tips(contributers) {
+	let distinct = [...new Set(contributers)]
+	let cs = distinct.sort().map(name => {
+		return `*[${'@' + name}](https://github.com/${name})*`
+	}).join(', ')
+	return `This page is contributed by: ${cs} \n
+If you'd like to share your regex/workflow here, please check [this guide](https://github.com/aj3423/SpamBlocker/issues/249).\n\n`
 }
 
 function generateWiki(results) {
 	var wiki = {}
 
+	let contributers = []
 	for (const r of results) {
 		// r: country description content link author
 
@@ -30,14 +36,15 @@ function generateWiki(results) {
 			wiki[r.country] = []
 		}
 		wiki[r.country].push(r);
+		contributers.push(r.author)
 	}
 
 	let sortedCountries = Object.keys(wiki).sort();
 
 	// Generate Markdown content
-	let markdown = contributing_tips()
+	let markdown = contributing_tips(contributers)
 		+ sortedCountries.map(country => {
-			let countrySection = `### ${country}\n`;
+			let countrySection = `## ${country}\n`;
 			countrySection += wiki[country].map(item => {
 				const content = item.content
 					.replace(/^### The regex.*?\n/, "") // drop the issue template prefix
@@ -47,11 +54,11 @@ function generateWiki(results) {
 				// .split('\n')
 				// .map(line => `    - ${line}`)
 				// .join('\n');
-				const title = `- [${item.description}](${item.link}) *(by @${item.author})*\n\n`
+				const title = `#### [${item.description}](${item.link})\n`
 				if (content.includes("\`\`\`")) { // wrap it with ``` ``` when it's not aready wrapped
 					return title + content
 				} else {
-					return title + `\`\`\`${content}\`\`\``
+					return title + `\`\`\`\n${content}\n\`\`\``
 				}
 			}).join('\n\n');
 			return countrySection;
@@ -102,3 +109,4 @@ async function run() {
 (async () => {
 	await run();
 })();
+
