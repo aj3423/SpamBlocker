@@ -48,7 +48,7 @@
         Group messages are MMS, not SMS.<br>
         <br>
         MMS will be treated as SMS, only text content will be processed,
-        other multimedia content like image and audio are ignored.<br>
+        multimedia content, such as image and audio, will be ignored.<br>
         <br>
         Two permissions are required: RECEIVE_MMS and READ_SMS
         ]]>

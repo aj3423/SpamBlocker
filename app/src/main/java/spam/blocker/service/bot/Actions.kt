@@ -925,6 +925,7 @@ output: null
 @Serializable
 @SerialName("ImportToSpamDB")
 class ImportToSpamDB(
+    // Only presets can use ImportDbReason.ByAPI
     // This is for internal app use, not displayed on GUI
     val importReason: ImportDbReason = ImportDbReason.Manually,
 ) : IPermissiveAction {

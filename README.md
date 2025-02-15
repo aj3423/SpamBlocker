@@ -57,7 +57,6 @@ It's not necessary to leave this app running in the background, you can kill the
 # Limitations 
 - Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/274)
 - Dual SIM support: [Waiting for Google](https://github.com/aj3423/SpamBlocker/issues/169)
-- MMS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/266#issuecomment-2646302132)
 - Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
 
 # Permissions 
@@ -66,10 +65,10 @@ It's not necessary to leave this app running in the background, you can kill the
 |-----------------------------------------------------------------------------------|------------------------------------------------------------------------|
 | INTERNET                                                                          | For database downloading / instant query / number reporting            | 
 | MANAGE_EXTERNAL_STORAGE (Android 11+)<br>READ/WRITE_EXTERNAL_STORAGE (Android 10) | For file access from automated workflow                                | 
-| ANSWER_PHONE_CALLS                                                                | Reject, Answer and Hang-up calls                                       |
+| ANSWER_PHONE_CALLS                                                                | Reject, answer and hang-up calls                                       |
 | POST_NOTIFICATIONS                                                                | Show notifications                                                     |
 | READ_CONTACTS                                                                     | For matching contacts                                                  |
-| RECEIVE_SMS                                                                       | For receiving new messages                                             |
+| RECEIVE_SMS / RECEIVE_MMS                                                         | For receiving new messages                                             |
 | READ_CALL_LOG<br>READ_SMS                                                         | For checking if a call is repeated                                     |
 | PACKAGE_USAGE_STATS                                                               | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                                                                  | For BlockMode: Answer+Hang-up (monitor ringing state)                  |

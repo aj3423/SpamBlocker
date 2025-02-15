@@ -15,7 +15,7 @@ import spam.blocker.db.Db.Companion.TABLE_SPAM
 
 enum class ImportDbReason {
     Manually,
-    ByAPI
+    ByAPI, // Only used by presets
 }
 fun intToImportDbReason(i: Int?): ImportDbReason {
     return when (i) {

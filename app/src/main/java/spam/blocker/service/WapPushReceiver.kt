@@ -65,9 +65,9 @@ class WapPushReceiver : SmsReceiver() {
 
         // This notification only indicates there is an MMS message, Android will send another
         // request to download the actual MMS media. At this moment, the media
-        // doesn't exist in the database yet, use a loop to check it every n seconds.
-        (0 until 20).any { // retry for 1 minute
-            Thread.sleep(3000)
+        // doesn't exist in the database yet, use a loop to check it every 1 second.
+        (0 until 60).any { // retry for 1 minute
+            Thread.sleep(1000)
 
             val messageBody = retrieveText(ctx, transactionId)
 

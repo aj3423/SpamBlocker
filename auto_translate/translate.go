@@ -23,6 +23,7 @@ var nameMap = map[string]string{
 	`fa`:     `Persian`,
 	`fr`:     `French`,
 	`gal`:    `Galician`,
+	`in`:     `Indonesian`,
 	`it`:     `Italian`,
 	`ja`:     `Japanese`,
 	`pt-rBR`: `Brazilian Portuguese`,
