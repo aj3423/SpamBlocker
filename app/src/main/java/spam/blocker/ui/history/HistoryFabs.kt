@@ -138,14 +138,14 @@ fun HistoryFabs(
                 SwitchBox(checked = showPassed, onCheckedChange = { isOn ->
                     showPassed = isOn
                     spf.setShowPassed(isOn)
-                    vm.reload(ctx)
+                    G.showHistoryPassed.value = isOn
                 })
             }
             LabeledRow(labelId = R.string.show_blocked) {
                 SwitchBox(checked = showBlocked, onCheckedChange = { isOn ->
                     showBlocked = isOn
                     spf.setShowBlocked(isOn)
-                    vm.reload(ctx)
+                    G.showHistoryBlocked.value = isOn
                 })
             }
             HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
@@ -157,7 +157,7 @@ fun HistoryFabs(
                 SwitchBox(checked = showIndicator, onCheckedChange = { isOn ->
                     showIndicator = isOn
                     spf.setShowIndicator(isOn)
-                    vm.showIndicator.value = isOn
+                    G.showHistoryIndicator.value = showIndicator
                 })
             }
         })

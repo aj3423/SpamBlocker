@@ -123,7 +123,7 @@ fun ReportSpamDialog(
 fun HistoryCard(
     forType: Int,
     record: HistoryRecord,
-    indicators: Indicators?,
+    indicators: Indicators,
     modifier: Modifier,
 ) {
     val C = LocalPalette.current
@@ -160,10 +160,8 @@ fun HistoryCard(
             ) {
                 RowVCenterSpaced(4) {
                     // Db/Rule existence indicators
-                    indicators?.let {
-                        if (it.any())
-                            IndicatorIcons(indicators)
-                    }
+                    if(indicators.isNotEmpty())
+                        IndicatorIcons(indicators)
 
                     // Number
                     Text(

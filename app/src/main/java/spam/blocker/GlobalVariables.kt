@@ -1,5 +1,6 @@
 package spam.blocker
 
+import android.content.Context
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.MutableState
@@ -17,12 +18,15 @@ import spam.blocker.ui.setting.regex.NumberRuleViewModel
 import spam.blocker.ui.setting.regex.QuickCopyRuleViewModel
 import spam.blocker.ui.widgets.BottomBarViewModel
 import spam.blocker.util.PermissionChain
+import spam.blocker.util.spf
 
 @Immutable
 object G {
     val globallyEnabled : MutableState<Boolean> = mutableStateOf(false)
-
     val themeType : MutableIntState  = mutableIntStateOf(0)
+    val showHistoryIndicator : MutableState<Boolean> = mutableStateOf(false)
+    val showHistoryPassed : MutableState<Boolean> = mutableStateOf(false)
+    val showHistoryBlocked : MutableState<Boolean> = mutableStateOf(false)
 
     val callVM : CallViewModel = CallViewModel()
     val smsVM : SmsViewModel = SmsViewModel()
@@ -39,5 +43,19 @@ object G {
     val testingVM : TestingViewModel = TestingViewModel()
 
     val permissionChain = PermissionChain()
+
+    fun initialize(ctx: Context) {
+        run {
+            val spf = spf.Global(ctx)
+            globallyEnabled.value = spf.isGloballyEnabled()
+            themeType.intValue = spf.getThemeType()
+        }
+        run {
+            val spf = spf.HistoryOptions(ctx)
+            showHistoryIndicator.value = spf.getShowIndicator()
+            showHistoryPassed.value = spf.getShowPassed()
+            showHistoryBlocked.value = spf.getShowBlocked()
+        }
+    }
 }
 

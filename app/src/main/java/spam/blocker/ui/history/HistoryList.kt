@@ -12,9 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
@@ -24,6 +28,8 @@ import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Launcher
+import spam.blocker.util.logd
+import spam.blocker.util.spf
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -36,20 +42,30 @@ fun HistoryList(
 
     val coroutineScope = rememberCoroutineScope()
 
+    LaunchedEffect(G.showHistoryPassed.value, G.showHistoryBlocked.value) {
+        vm.reload(ctx)
+    }
+
+    // Just a short alias, that G.xxx it too long
+    var showIndicator by remember(G.showHistoryIndicator.value) {
+        mutableStateOf(G.showHistoryIndicator.value)
+    }
+
     LazyScrollbar(state = lazyState) {
-        IndicatorsWrapper(vm) { indicatorChecker, onIndicatorRefresh ->
+        IndicatorsWrapper(vm) { indicatorChecker, forceRefreshIndicators ->
             LazyColumn(
                 state = lazyState,
                 verticalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)
             ) {
                 itemsIndexed(items = vm.records, key = { _, it -> it.id }) { index, record ->
-                    val indicators = remember { mutableStateOf<Indicators?>(null) }
+                    val indicators = remember { mutableStateOf(listOf<Indicator>()) }
 
-                    LaunchedEffect(record.id, vm.showIndicator.value, onIndicatorRefresh) {
-                        indicators.value = if (vm.showIndicator.value)
+                    LaunchedEffect(record.id, showIndicator, forceRefreshIndicators) {
+                        indicators.value = if (showIndicator)
                             indicatorChecker(record.peer, record.extraInfo)
-                        else null
+                        else
+                            listOf()
                     }
 
                     HistoryContextMenuWrapper(vm, index, indicators) { contextMenuExpanded ->

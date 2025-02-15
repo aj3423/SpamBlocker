@@ -402,7 +402,7 @@ class ByApiQuery(
 // allowed/blocked by regex rule
 class ByRegexRule(
     override val type: Int,
-    private val rule: RegexRule?, // null: the rule is deleted
+    val rule: RegexRule?, // null: the rule is deleted
 ) : ICheckResult {
     override fun reasonToDb(): String {
         return (rule?.id ?: 0).toString()

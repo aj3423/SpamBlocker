@@ -72,8 +72,7 @@ class MainActivity : ComponentActivity() {
         // language
         Util.setLocale(ctx, spf.getLanguage())
 
-        G.globallyEnabled.value = spf.isGloballyEnabled()
-        G.themeType.intValue = spf.getThemeType()
+        G.initialize(ctx)
 
         val lastTab = spf.getActiveTab()
 
@@ -115,9 +114,6 @@ class MainActivity : ComponentActivity() {
         )
 
         Permissions.initLauncherSetAsCallScreeningApp(this)
-
-        G.callVM.reload(ctx)
-        G.smsVM.reload(ctx)
 
         setContent {
             val isDarkTheme = when (G.themeType.intValue) {

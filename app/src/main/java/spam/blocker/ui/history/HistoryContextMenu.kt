@@ -8,11 +8,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.SpamTable
 import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.ui.setting.regex.RuleEditDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
@@ -25,7 +27,7 @@ import spam.blocker.util.Util
 fun HistoryContextMenuWrapper(
     vm: HistoryViewModel,
     index: Int,
-    indicators: MutableState<Indicators?>,
+    indicators: MutableState<Indicators>,
     content: @Composable (MutableState<Boolean>) -> Unit,
 ) {
     val ctx = LocalContext.current
@@ -94,12 +96,11 @@ fun HistoryContextMenuWrapper(
                         } else {
                             SpamTable.add(ctx, record.peer)
                         }
+                        Events.spamDbUpdated.fire()
+                        // No need to toggle the Indicators,
+                        //   because this event will force a list refresh
+
                         numberInDb = !numberInDb
-                        indicators.value?.let {
-                            indicators.value = indicators.value!!.copy(
-                                inDb = !indicators.value!!.inDb
-                            )
-                        }
                     }
 
                     3 -> { // mark all as read
