@@ -1,0 +1,97 @@
+<resources>
+    <string name="report_number">Laporkan Nomor</string>
+    <string name="report_number_require_call_log_permission">
+        Untuk mencegah kesalahan pelaporan dari panggilan berulang atau nomor yang dihubungi kembali,
+        pelaporan nomor memerlukan izin log panggilan.
+    </string>
+    <string name="http_method">Metode</string>
+    <string name="http_post_body">Post Body</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Tag yang didukung:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="missing_credentials">Masukkan informasi otorisasi yang valid.</string>
+    <string name="delay">Penundaan</string>
+    <string name="exclude_services">Kecualikan Layanan</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Beberapa aplikasi menjalankan layanan latar depan tambahan, tambahkan nama layanan di sini untuk mengecualikannya.<br>
+        <br>
+        Untuk menemukan nama layanan:<br>
+        &emsp; 1. Mengaktifkan layanan di aplikasi tersebut.<br>
+        &emsp; 2. Semua nama layanan yang diaktifkan akan muncul di sini.<br>
+        &emsp; 3. Ketuk nama untuk menambahkannya.<br>
+        <br>
+        Anda dapat menambahkan beberapa nama, dipisahkan dengan koma.
+        ]]>
+    </string>
+    <string name="running_services">Layanan yang Berjalan</string>
+    <string-array name="spam_categories">
+        <item>Nomor Sah</item>
+        <item>Penipuan</item>
+        <item>Pemasaran</item>
+        <item>Survei</item>
+        <item>Politik</item>
+        <item>Spam Lain</item>
+    </string-array>
+    <string name="action_category_config">Konfigurasi Kategori</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Hanya kategori spam berikut ini yang didukung, kategori lain dari API harus dipetakan ke salah satunya.<br>
+        <br>
+         - <font color="#03DAC5"><b>{sah}</b></font><br>
+        &ensp; Laporkan sebagai nomor yang sah, bukan spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{penipuan}</b></font><br>
+         - <font color="#fa7f71"><b>{pemasaran}</b></font><br>
+         - <font color="#fa7f71"><b>{survei}</b></font><br>
+         - <font color="#fa7f71"><b>{politik}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{lainnya}</b></font><br>
+        &ensp; Jenis spam cadangan, digunakan ketika tidak ada kategori di atas yang berlaku.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        Kategori %s tidak dikonfigurasi dalam tindakan %s, silakan konfigurasikan dalam konfigurasi API (jika API mendukung kategori ini).
+    </string>
+    <string name="target_text">Teks Target</string>
+    <string name="match_found">Kecocokan ditemukan</string>
+    <string name="match_not_found">Kecocokan tidak ditemukan</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Ini hanya untuk menguji apakah regex ini cocok dengan teks, tidak termasuk aturan lain.<br>
+        Untuk menguji semua aturan, gunakan tombol pengujian mengambang di sudut kanan bawah sebagai gantinya.
+        ]]>
+    </string>
+    <string name="allow">Izinkan</string>
+    <string name="block">Blokir</string>
+    <string name="seconds">Detik</string>
+    <string name="seconds_short">Dtk</string>
+    <string name="within_seconds">Dalam hitungan detik</string>
+    <string name="call_alert">Panggilan Peringatan</string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Beberapa layanan akan mengirim SMS terlebih dahulu untuk memberi tahu Anda bahwa panggilan akan segera datang, biasanya dalam waktu satu menit.<br>
+        <br>
+        Misalnya, pesan SMS seperti:<br>
+        &ensp; <font color="#888888">[beberapa layanan] Kami menghubungi Anda untuk menginformasikan ...,  mohon menjawab.</font><br>
+        <br>
+        Regex untuk pesan tersebut adalah: <br>
+        &ensp; <font color="#03DAC5"><b><translate>.*mohon.*menjawab.*</translate></b></font> <br>
+        <br>
+        Pengaturan default <font color="#03DAC5"><b>120 Detik</b></font> berarti semua panggilan akan
+        diizinkan dalam dua menit berikutnya setelah menerima pesan tersebut.<br>
+        <br>
+        Dapat digunakan untuk SMS biasa dan SMS kilat (SMS kelas 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">Wildcard `*` digunakan tanpa titik yang mendahului titik sebelumnya, Apakah maksud Anda `.*` ?</string>
+    <string name="import_as">Impor Sebagai</string>
+    <string name="api_key">Kunci API</string>
+    <string name="mms_support">Dukungan MMS</string>
+</resources>

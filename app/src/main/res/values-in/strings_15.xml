@@ -1,0 +1,56 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Periksa konten SMS menggunakan Google Gemini AI, hanya membutuhkan akun Google.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Gemini API Key</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Daftar dan masuk ke akun Google Anda: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. Buka halaman API:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. Tekan tombol \"Buat Kunci API\" .<br>
+        <br>
+        4. Salin kunci tersebut, kemudian isikan di bawah ini.
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        Kategorikan pesan SMS ini sebagai Politik, Penipuan, Survei, atau Pemasaran.
+        Jika tidak ada, jawablah \"Sah\", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
+        Pesan SMS-nya adalah:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(Politik|Penipuan|Survei|Pemasaran)</translate></string>
+    <string name="spam_sms_positive_category">Sah</string>
+    <string name="last_log">Catatan Terakhir</string>
+    <string name="executed_at">Dijalankan pada:</string>
+    <string name="not_executed_yet">Belum dijalankan</string>
+    <string name="show_indicator">Tampilkan Tanda</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Tampilkan ikon sebelum nomor untuk menunjukkan apakah nomor tersebut ada di basis data spam, atau apakah nomor tersebut cocok dengan aturan regex.<br>
+        <br>
+        <font color="#ffa500">Catatan:</font><br>
+        Hal ini dapat berdampak pada performa ketika basis data terlalu besar atau terdapat terlalu banyak aturan regex.
+        ]]>
+    </string>
+    <string name="enable_for_mms">Aktifkan untuk MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        Pesan MMS biasanya merupakan spam, tidak perlu diaktifkan kecuali jika Anda benar-benar menggunakannya.<br>
+        <br>
+        <font color="#ffa500">Catatan:</font><br>
+        Pesan grup adalah MMS, bukan SMS.<br>
+        <br>
+        MMS akan diperlakukan sebagai SMS, hanya isi teks yang akan diproses,
+        isi multimedia lain seperti gambar dan audio diabaikan.<br>
+        <br>
+        Diperlukan dua izin: MENERIMA_MMS dan MEMBACA_SMS
+        ]]>
+    </string>
+</resources>

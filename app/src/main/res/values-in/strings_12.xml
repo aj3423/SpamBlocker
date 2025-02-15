@@ -1,0 +1,103 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        Meminta nomor yang masuk secara online dalam waktu sebenarnya, beberapa titik akhir API akan diminta secara bersamaan.<br>
+        <br>
+        Ini hanya berlaku untuk panggilan, bukan untuk pesan SMS.<br>
+        <br>
+        Ini hanya akan terpicu ketika panggilan lolos dari semua aturan lainnya.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">Permintaan Instan</string>
+    <string name="query">Permintaan</string>
+    <string name="negative_identifier">Pengenal Negatif</string>
+    <string name="hint_negative_identifier">
+        Contoh: (\"sah\":false)
+    </string>
+    <string name="help_negative_identifier">
+        Ini akan diidentifikasi sebagai nomor spam jika pola regex ini ditemukan dalam hasil.
+    </string>
+    <string name="positive_identifier">Pengenal Positif</string>
+    <string name="hint_positive_identifier">
+        Contoh: (\"sah\":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        Ini akan diidentifikasi sebagai nomor non-spam jika pola regex ini ditemukan dalam hasil, ini opsional.<br>
+        <br>
+        Biasanya ini <b>tidak diperlukan</b>, beberapa penyedia API akan mengidentifikasi nomor yang tidak dikenal sebagai bukan spam,
+        hanya gunakan ini ketika API benar-benar akurat.
+        ]]>
+    </string>
+    <string name="category_identifier">Pengenal Kategori</string>
+    <string name="hint_category_identifier">
+        Contoh: \"jenis\":\"(.+?)\"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Opsional. <br>
+        Setelah nomor diidentifikasi, regex ini akan digunakan untuk mengekstrak kategorinya (telemarketing, memancing, dll).
+        ]]>
+    </string>
+    <string name="action_parse_query_result">Urai Hasil</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Mengurai hasil permintaan, nomor akan diidentifikasi sebagai spam jika hasilnya mengandung pola regex tertentu.<br>
+        <br>
+        Regex tambahan dapat digunakan untuk mengekstrak kategori spam. (opsional)
+        ]]>
+    </string>
+    <string name="action_intercept_call">Mencegat Panggilan</string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        Nomor panggilan masuk akan dicegat dan diuraikan menjadi beberapa tag yang berbeda:<br>
+        <br>
+        %s
+        <br>
+        Tag-tag ini akan digunakan untuk membangun URL HTTP, misalnya:<br>
+        <br>
+        1. Untuk nomor internasional seperti <b>+122222</b>, keduanya sama:<br>
+        - https://test.com/number=<b>{nomor}</b><br>
+        - https://test.com/number=<b>{kode negara}{domestik}</b><br>
+        Ini akan diuraikan menjadi: <br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Untuk nomor domestik seperti <b>12345</b>, Anda perlu memberikan kode negara dalam pengaturan,
+        atau biarkan aplikasi mendeteksinya secara otomatis.<br>
+        ]]>
+    </string>
+    <string name="action_intercept_sms">Mencegat SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        SMS yang masuk akan dicegat dan isinya akan diuraikan menjadi tag <b>{sms}</b>,
+        yang dapat digunakan dalam permintaan HTTP.
+        ]]>
+    </string>
+    <string name="query_api">Permintaan API</string>
+    <string name="report_api">Laporkan API</string>
+    <string name="number_filter">Penyaring Nomor</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Beberapa layanan API hanya mendukung nomor internasional, sementara beberapa layanan lainnya hanya mendukung nomor domestik.<br>
+        <br>
+        Regex ini menyaring angka yang sesuai, angka masuk yang tidak sesuai dengan regex ini akan dilewatkan pemeriksaannya.<br>
+        <br>
+        - Hanya memeriksa <b>nomor-nomor internasional</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Hanya memeriksa <b>nomor-nomor domestik</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Periksa <b>angka apa pun</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">Memeriksa: %s, prioritas: %s</string>
+    <string name="skip_for_testing">Lewati untuk pengujian.</string>
+    <string name="allowed_by">Diizinkan oleh: %s</string>
+    <string name="blocked_by">Diblokir oleh: %s</string>
+    <string name="outside_time_schedule">Di luar jadwal waktu, lewati.</string>
+    <string name="android_ver_lower_than_11">Versi Android lebih rendah dari 11, lewati.</string>
+</resources>

@@ -1,0 +1,66 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        Aturan ini berlaku untuk isi SMS.<br>
+        <br>
+        <font color="#00BFFF"><b> - Beberapa pola umum</b></font>:<br>
+        &ensp; - Berisi "verifikasi": <font color="#03DAC5"><b>.*verifikasi.*</b></font><br>
+        &ensp; - Berisi salah satu kata: <font color="#03DAC5"><b>.*(polisi|rumah sakit|verifikasi).*</b></font>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        Cara cepat untuk menyalin isi dari pesan SMS atau nomor telepon, sehingga mudah untuk mengambil kode verifikasi atau nomor masuk.<br>
+        <br>
+        Jika sudah cocok, tombol seperti <font color="#00BFFF"><b>Salin: 123456</b></font> akan muncul di notifikasi.<br>
+        <br>
+        Contoh aturan untuk mengambil kode verifikasi:<br>
+        &emsp; Menggunakan grup pengambilan:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>kode.*?(\\d+) </b></font><br>
+        &emsp; Cara lain dengan menggunakan metode pencarian:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=kode.{0,3})\\d+</b></font>
+        ]]>
+    </string>
+    <string name="help_apply_to_call_sms">
+        <![CDATA[
+        Aktifkan aturan ini untuk Panggilan, SMS, atau keduanya.<br>
+        Hapus centang pada kotak centang ini untuk menonaktifkan aturan tanpa menghapusnya.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        Ketika <font color="#00BFFF"><b>Nomor</b></font> dicentang, aturan ini akan mengambil isi dari nomor yang masuk.
+        Misalnya, gunakan <b>(.*)</b> untuk menyalin nomor telepon<br>
+        <br>
+        Ketika <font color="#00BFFF"><b>Isi</b></font> dicentang, aturan ini akan mengekstrak konten dari badan pesan SMS,
+        seperti kode verifikasi.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        Ketika <font color="#03DAC5"><b>Lolos</b></font> dicentang, aturan ini akan berlaku untuk panggilan dan pesan yang diteruskan.<br>
+        <br>
+        Ketika <font color="#fa7f71"><b>Diblokir</b></font> dicentang, aturan ini akan berlaku untuk panggilan dan pesan yang diblokir.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        <b>Tidak ada</b>:<br>&emsp; Tidak ada notifikasi sama sekali. <br>
+        <b>Bayangan</b>:<br>&emsp; Dropdown bayangan notifikasi. <br>
+        <b>Bilah Status</b>:<br>&emsp; Ikon kecil di bilah atas. <br>
+        <b>Suara</b>:<br>&emsp; Suara notifikasi default. <br>
+        <b>Heads-Up</b>:<br>&emsp; Munculkan jendela mengambang di bagian atas layar.
+        ]]>
+    </string>
+    <string name="title_rule_testing">Pengujian Aturan</string>
+    <string name="help_test_rules">
+        <![CDATA[
+        Hal ini membantu untuk memeriksa apakah aturan yang ditetapkan sudah sesuai dengan yang diharapkan.<br>
+        <br>
+        Ini hanyalah simulasi dan tidak akan benar-benar memunculkan panggilan masuk (atau pesan teks).<br>
+        <br>
+        Hasilnya ditampilkan di sini, dan dalam log riwayat, dengan pemberitahuan.
+        ]]>
+    </string>
+
+</resources>

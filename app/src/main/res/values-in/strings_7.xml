@@ -1,0 +1,45 @@
+<resources>
+    <string name="start_time">Waktu Mulai</string>
+    <string name="end_time">Waktu Akhir</string>
+    <string name="switch_mode">Mode Peralihan</string>
+    <string name="contact_group">Grup Kontak</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>Nomor Telepon</b></font>:<br>
+        &ensp; Mode default, regex akan mencocokkan nomor telepon.<br>
+        <br>
+        <font color="#00BFFF"><b>Kontak</b></font>:<br>
+        &ensp; Regex akan mencocokkan nama kontak yang terkait dengan nomor yang masuk.<br>
+        &ensp;  - Kasus penggunaan:<br>
+        &emsp; Blokir semua non-kontak di akhir pekan dengan regex `.*`.<br>
+        <br>
+        <font color="#00BFFF"><b>Grup Kontak</b></font>:<br>
+        &ensp; Regex akan mencocokkan nama grup kontak yang terkait dengan nomor yang masuk,
+                 berdampak pada semua kontak di grup tersebut, jadi Anda tidak perlu menambahkannya satu per satu,
+                 dan tidak perlu memperbaruinya meskipun ada perubahan anggota.<br>
+        &ensp;  - Kasus penggunaan:<br>
+        &emsp; Blokir semua rekan kerja di akhir pekan dengan memblokir grup kontak "kerja".
+        ]]>
+    </string>
+    <string name="text_too_long">Teks terlalu panjang, pengubahan dinonaktifkan</string>
+    <string name="follow_system"><short>Ikuti Sistem</short></string>
+    <string name="theme">Tema</string>
+    <string-array name="theme_list">
+        <item>Terang</item>
+        <item>Gelap</item>
+    </string-array>
+    <string-array name="rule_dropdown_menu">
+        <item>Aturan Pencarian</item>
+        <item>Aturan Penggandaan</item>
+        <item>Aturan Penghapusan</item>
+        <item>Hapus Aturan yang Diduplikasi</item>
+        <item>Hapus Semua(%d) Aturan</item>
+    </string-array>
+    <string name="confirm_delete_duplicated_rule">Konfirmasi untuk menghapus %d Aturan yang diduplikasi?</string>
+    <string name="duration">Durasi</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        Durasi terpisah untuk setiap aplikasi, bila dibiarkan kosong, akan kembali ke durasi global.
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,103 @@
+<resources>
+    <string name="contacts">Kontak</string>
+    <string name="non_contacts">Non Kontak</string>
+    <string name="inclusive">Inklusif</string>
+    <string name="exclusive">Eksklusif</string>
+    <string name="help_contacts">
+        <![CDATA[
+        Jika diaktifkan, panggilan/pesan dari kontak selalu diizinkan. <br>
+        <br>
+          - <b>Inklusif</b>: <br>
+              &emsp; Nomor non-kontak akan diperiksa dengan aturan lain. <br>
+              &emsp; <font color="#ea86ff"><b>Prioritas: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>Eksklusif</b></font>: <br>
+              &emsp; Nomor non-kontak akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
+              &emsp; <font color="#ea86ff"><b>Prioritas: 0</b></font> <br>
+        <br>
+        Ini berlaku untuk panggilan dan pesan SMS.
+        ]]>
+    </string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Sertakan yang Tidak diverifikasi</string>
+    <string name="unverified">Tidak diverifikasi</string>
+    <string name="valid">Panggilan yang sah</string>
+    <string name="spoof">Panggilan palsu</string>
+    <string name="help_stir">
+        <![CDATA[
+            Pengesahan STIR/SHAKEN membutuhkan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
+            <br>
+            Ada tiga kemungkinan hasil pengesahan: <br>
+            <font color="#03DAC5"><b>Sah</b></font> <br>
+            &emsp; Panggilan tersebut sangat mungkin sah, tidak dipalsukan. <br>
+            <font color="#ffa500"><b>Tidak diverifikasi</b></font> <br>
+            &emsp; Panggilan tidak dapat disahkan, atau pengesahan STIR tidak didukung. <br>
+            <font color="#fa7f71"><b>Palsu</b></font> <br>
+            &emsp; Kemungkinan besar ini adalah panggilan palsu. <br>
+            <br>
+            <br>
+              - <b>Inklusif</b>: <br>
+                  &emsp; Panggilan yang gagal dalam pemeriksaan ini akan tetap diperiksa oleh aturan lain. <br>
+                  &emsp; Ketika "<b>Sertakan yang Tidak diverifikasi</b>" dicentang, panggilan juga akan lolos jika tidak diverifikasi. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioritas: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Eksklusif</b></font>: <br>
+                  &emsp; Panggilan yang gagal dalam pemeriksaan ini akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
+                  &emsp; Ketika "<b>Sertakan yang Tidak diverifikasi</b>" dicentang, panggilan juga akan diblokir jika tidak diverifikasi. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioritas: 0</b></font>
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        Kolom yang harus diisi tidak ada <b>pattern</b> di dalam berkas .csv, periksa keterangan alat pada balon untuk penjelasan rinci.
+        ]]>
+    </string>
+    <string name="auto_report">Lapor Otomatis</string>
+    <string name="help_auto_report">
+        <![CDATA[
+        Laporkan secara otomatis nomor yang diblokir ke semua titik akhir API tanpa campur tangan pengguna, untuk membangun basis data bersumber daya massal kami terhadap panggilan spam.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">Penundaan laporan</font></h4><br>
+        Ketika panggilan masuk diblokir, akan ada jeda waktu selama satu jam sebelum nomor tersebut dilaporkan.
+		Jika nomor tersebut diizinkan karena panggilan berulang atau dihubungi kembali dalam rentang waktu ini,
+        nomor tersebut dianggap sebagai nomor bukan spam dan tidak akan dilaporkan.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">Privasi</font></h4>
+        <br>
+        Titik akhir API akan melihat data Anda yang berupa:<br>
+        <br>
+         &ensp; - Alamat IP<br>
+         &ensp; - Sidik jari Tls dan Tcp (yang dapat menampilkan versi Android Anda)<br>
+         &ensp; - Nomor yang dilaporkan (termasuk kode negara Anda)<br>
+        <br>
+        Tidak ada lagi yang akan dilaporkan.<br>
+        <br>
+        <h4>- <font color="#6ed0ff">Jenis laporan</font></h4><br>
+        <h5>1. Ini <font color="#fa7f71">Tidak akan</font> melaporkan:</h5>
+        <br>
+        - <font color="#fa7f71">Nomor SMS atau isinya</font><br>
+        - <font color="#fa7f71">Nomor panggilan yang diteruskan</font><br>
+        Dan berikut jenis yang diblokir:<br>
+        - <font color="#fa7f71">Pengujian Global</font><br>
+        - <font color="#fa7f71">Kontak Regex</font><br>
+        - <font color="#fa7f71">Kontak Grup Regex</font><br>
+        - <font color="#fa7f71">Basis data</font><br>
+        - <font color="#fa7f71">Mode Rapat</font><br>
+        - <font color="#fa7f71">Permintaan Instan</font> untuk mencegah nomor titik akhir API bocor ke pesaing lain)<br>
+        <br>
+        <h5>2. Ini <font color="#03DAC5">hanya</font> akan melaporkan:</h5>
+        <br>
+        Berikut jening yang diblokir:<br>
+        - <font color="#03DAC5">Non-kontak</font>(exclusive)<br>
+        - <font color="#03DAC5">Pengesahan STIR</font><br>
+        - <font color="#03DAC5">Nomor Regex</font><br>
+        <br>
+        <h5>3. Kasus pengecualian:</h5>
+        <br>
+        - Saat diblokir oleh <font color="#03DAC5">Permintaan Instan</font>, akan dilaporkan kembali ke API <b>yang sama</b> untuk meningkatkan skor peringkat nomor tersebut.
+         Misalnya, ketika diblokir oleh kueri API dari check.com, maka hanya akan dilaporkan ke check.com, bukan ke others.com. <br>
+        -  Ketika diblokir oleh <font color="#03DAC5">Basis data</font> dan catatan tersebut pada awalnya ditambahkan oleh kueri API instan,
+         hanya akan dilaporkan kepada API <b>yang sama</b> untuk alasan yang sama seperti di atas.<br>
+        ]]>
+    </string>
+</resources>
