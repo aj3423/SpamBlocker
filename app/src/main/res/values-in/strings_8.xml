@@ -1,0 +1,145 @@
+<resources>
+    <string name="database">Basis Data</string>
+    <string name="total">Total</string>
+    <string name="replace_from">Dari</string>
+    <string name="replace_to">Ke</string>
+    <string name="regex_pattern">RegEx</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        Nomor-nomor dalam basis data ini akan diblokir.<br>
+        <br>
+        Anda dapat menggabungkan basis data publik apa pun, atau bahkan beberapa basis data, Anda juga dapat mengimpor nomor dari berkas lokal.<br>
+        <br>
+        Lihat bagian "Otomatisasi" di bawah ini untuk mengetahui cara menjadwalkan tugas impor secara otomatis.<br>
+        <br>
+        Ini berlaku untuk panggilan dan pesan SMS.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        Nomor spam dalam basis data akan kadaluarsa setelah N hari, catatan yang kadaluarsa akan dihapus secara otomatis.<br>
+        Atur ke -1 untuk menonaktifkannya, sehingga nomor tidak akan pernah dihapus secara otomatis.
+        ]]>
+    </string>
+    <string name="customize">Sesuaikan</string>
+    <string name="workflow">Alur kerja</string>
+    <string name="workflows">Alur kerja</string>
+    <string name="automation">Otomatisasi</string>
+    <string name="help_workflows">
+        <![CDATA[
+        Alur kerja dapat digunakan untuk menjalankan tugas secara otomatis, seperti memperbarui basis data, atau pencadangan otomatis.<br>
+        <br>
+        Ada preset untuk pengaturan cepat, Anda juga bisa membuatnya dari awal, atau mengimpor dari konfigurasi json yang dibagikan dari pengguna lain.<br>
+        <br>
+        Jika Anda menemukan alur kerja yang dapat digunakan secara luas dan harus ditambahkan ke preset, silakan laporkan di github.
+        ]]>
+    </string>
+    <string name="manual">Manual</string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">Pembersihan Basis Data Spam</string>
+    <string name="bot_preset_cleanup_history">Pembersihan Riwayat</string>
+    <string name="bot_preset_auto_backup">Cadangkan Otomatis</string>
+
+    <string name="action_cleanup_history">Bersihkan Riwayat</string>
+    <string name="action_http_request">Permintaan HTTP</string>
+    <string name="action_cleanup_spam_db">Bersihkan Basis Data Spam</string>
+    <string name="action_backup_export">Ekspor Cadangan</string>
+    <string name="action_backup_import">Impor Cadangan</string>
+    <string name="action_read_file">Baca Berkas </string>
+    <string name="action_write_file">Tulis Berkas</string>
+    <string name="action_parse_csv">Urai CSV</string>
+    <string name="action_parse_xml">Urai XML</string>
+    <string name="action_regex_extract">Ekstrak Regex</string>
+    <string name="action_import_to_spam_db">Impor ke Basis Data Spam</string>
+    <string name="action_import_as_regex_rule">Impor sebagai Aturan Regex</string>
+    <string name="action_convert_number">Ganti Nomor</string>
+    <string name="action_find_rules">Temukan Aturan</string>
+    <string name="action_modify_rules">Modifikasi Aturan</string>
+    <string name="action_modify_rules_placeholder">
+        String json, misalnya:\n
+        {\n
+        "flags": 0, // Nonaktifkan aturan\n
+        "prioritas": 100,\n
+        "JenisPemblokiran": 0\n
+        …\n
+        }\n
+    </string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        Data unduh HTTP sebagai <u>byte isi</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">Hapus nomor kedaluwarsa dari basis data spam.</string>
+    <string name="help_action_cleanup_history">Hapus catatan riwayat kadaluwarsa </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Ekspor pengaturan saat ini ke <u>byte isi</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Terapkan pengaturan dari <u>byte isi</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Ambil <u>byte isi</u> dari berkas.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Tulis <u>byte isi</u> ke berkas.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Urai <u>byte isi</u> csv ke <u>daftar nomor</u>
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Urai <u>bye isi</u> xml menggunakan <b>xpath</b> dan hasilkan <u>daftar nomor.</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Ekstrak <u>daftar nomor</u> dari <u>byte isi</u> menggunakan regex.
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Tambahkan <u>daftar nomor</u> ke basis data spam.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Hasilkan aturan regex baru dari <u>daftar nomor</u>.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        Konversi <u>daftar nomor</u> ke format yang digunakan aplikasi ini.<br>
+        <br>
+        Misalnya, tambahkan dua tindakan untuk mengganti:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` ke `12345<font color="#03DAC5"><b>…</b></font>`:<br>
+        <br>
+        &ensp; - Ganti `<font color="#fa7f71">(+)</font>` ke ``<br>
+        &ensp; - Ganti `<font color="#fa7f71">(#)</font>` ke `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Temukan <u>daftar aturan</u> yang sesuai dengan deskripsi tertentu.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Ubah satu atau beberapa atribut untuk <u>daftar aturan</u>.
+        ]]>
+    </string>
+</resources>

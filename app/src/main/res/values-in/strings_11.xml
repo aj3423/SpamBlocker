@@ -1,0 +1,71 @@
+<resources>
+    <string name="for_example">Contoh:</string>
+    <string name="yesterday">Kemarin</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Tolak panggilan selama rapat video online.<br> <br>
+        Ini memeriksa apakah ada aplikasi yang dipilih sedang menjalankan <b>layanan latar depan</b>,
+        yang umumnya digunakan oleh aplikasi konferensi video untuk menjaga sambungan tetap menyala.<br>
+        <br>
+        Ini berlaku untuk panggilan dan pesan.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas Default: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Mode Rapat</string>
+    <string name="search">Cari</string>
+    <string name="http_header">Header Http</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Satu atribut per baris.<br>
+        ]]>
+    </string>
+    <string name="tags_supported">
+        <![CDATA[
+        Tag yang didukung:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{autentikasi_dasar(username:password)}</b></font><br>
+        &ensp; Untuk API yang memerlukan autentikasi dasar HTTP. Sebagai contoh:<br>
+        &emsp; <font color="#888888">{autentikasi_dasar(111:222)}</font><br>
+        &ensp; akan diuraikan menjadi:<br>
+        &emsp; <font color="#888888">Otorisasi: Dasar MTExOjIyMg== </font><br>
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">Mencatat SMS</string>
+    <string name="initial_row_count">Jumlah Baris Awal</string>
+    <plurals name="rows">
+        <item quantity="one">%d Baris</item>
+        <item quantity="two">%d Baris</item>
+        <item quantity="few">%d Baris</item>
+        <item quantity="many">%d Baris</item>
+        <item quantity="other">%d Baris</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Ambang Batas Bilah Gulir</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        Jumlah maksimum item yang dapat ditampilkan dalam daftar sebelum bilah gulir muncul.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Tinggi Gulir</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Apabila bilah gulir muncul, nilai ini mewakili tinggi daftar sebagai persentase layar.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Garis Regex Maksimal</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        Baris tampilan maksimum untuk teks regex, teks yang tersisa akan terpotong dan diikuti dengan elipsis.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Garis Deskripsi Maksimal</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        Baris tampilan maksimum untuk teks deskripsi, teks yang tersisa akan terpotong dan diikuti dengan elipsis.
+        ]]>
+    </string>
+</resources>

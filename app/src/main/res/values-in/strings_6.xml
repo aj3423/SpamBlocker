@@ -1,0 +1,126 @@
+<resources>
+    <string name="crash_title">
+        Maaf, aplikasi mengalami masalah.\n\n
+        Silakan salin isian di bawah ini dan laporkan masalah ini di github,
+        hapus informasi sensitif apa pun sebelum melaporkan.
+    </string>
+    <string-array name="short_weekdays">
+        <item>Minggu</item>
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Tolak</item>
+        <item>Hening</item>
+        <item>Tutup</item>
+    </string-array>
+
+    <string name="show_passed">Tampilkan yang Lolos</string>
+    <string name="show_blocked">Tampilkan yang Diblokir</string>
+
+    <string name="confirm_delete_all_records">Konfirmasi untuk menghapus semua Rekaman?</string>
+    <string name="expiry">Kadaluwarsa</string>
+    <string name="days">Hari</string>
+    <string name="help_history_ttl">
+        <![CDATA[
+            <font color="#00BFFF"><b>> 0</b></font><br>
+            &emsp; Catatan riwayat akan dicatat dalam basis data dan akan kedaluwarsa setelah N hari,
+              catatan yang kadaluwarsa akan dihapus secara otomatis.<br>
+            <br>
+            <font color="#00BFFF"><b>= 0</b></font><br>
+            &emsp; Pencatatan riwayat dinonaktifkan, tidak ada yang akan dicatat dalam database.<br>
+            <br>
+            <font color="#00BFFF"><b>< 0</b></font><br>
+            &emsp; Catatan akan dicatat dan tidak akan pernah kadaluwarsa.
+        ]]>
+    </string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Jika diaktifkan, isi SMS juga akan masuk ke dalam basis data dan ditampilkan dalam daftar ini, namun tidak akan masuk ke dalam basis data jika dinonaktifkan.<br>
+        <br>
+        - Jika diaktifkan:<br>
+        &emsp; <b>Ketuk</b> untuk memperluas/memperkecil pesan keseluruhan.<br>
+        <br>
+        - Jika dinonaktifkan:<br>
+        &emsp; <b>Ketuk</b> untuk membuka percakapan di aplikasi default.
+        ]]>
+    </string>
+    <string name="copy_number">Salin nomor</string>
+    <string name="add_num_to_regex_rule">Tambahkan nomor ke aturan regex</string>
+    <string name="add_num_to_db">Tambahkan nomor ke basis data spam</string>
+    <string name="mark_all_as_read">Tandai semua telah dibaca</string>
+    <string name="remove_db_number">Hapus nomor dari basis data spam</string>
+    <string-array name="importance_list">
+        <item>Tidak ada</item>
+        <item>Berbayang</item>
+        <item>Bilah Status, Berbayang</item>
+        <item>Suara, Bilah Status, Berbayang</item>
+        <item>Suara, Bilah Status, Berbayang, Mengambang</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Ekspor sebagai Json</item>
+        <item>Ekspor sebagai Terkompresi</item>
+    </string-array>
+
+    <string name="language">Bahasa</string>
+    <string name="help_language">
+        <![CDATA[
+            Translations are done by Google AI, fire an issue on github for adding a new language support.
+        ]]>
+    </string>
+    <string name="enabled_for_call">Aktifkan untuk Panggilan</string>
+    <string name="enabled_for_sms">Aktifkan untuk SMS</string>
+    <string name="repeated_call">Panggilan Berulang</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Izinkan jika panggilan diulang dalam jangka waktu tertentu, kemungkinan besar panggilan tersebut penting dan bukan panggilan spam. <br>
+        <br>
+        Menerima pesan teks dari nomor yang sama juga dihitung, hal ini tergantung pada apakah izin MEMBACA_SMS diberikan, yang bersifat opsional.<br>
+        <br>
+        Pengaturan default <font color="#03DAC5"><b>1 / 5 Menit</b></font> berarti panggilan kedua dalam waktu 5 menit akan diizinkan. <br>
+        <br>
+        Hanya berlaku untuk panggilan, <b>bukan</b> untuk pesan teks. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        Tombol global, aplikasi ini hanya berfungsi apabila tombol ini diaktifkan,
+        matikan ketika Anda sedang menunggu panggilan/pesan tertentu. <br>
+        <br>
+        Ini juga dapat diubah dari menu <font color="#6ed0ff"><b>Dropdown Pengaturan Cepat</b></font>.<br>
+        <br>
+        Untuk SMS, aplikasi ini akan mengambil alih notifikasi SMS, mohon
+        <font color="#fa7f71"><b>mematikan izin notifikasi dari aplikasi SMS default</b></font> di pengaturan sistem,
+        jika tidak, akan ada notifikasi ganda.
+        Ini hanya menyaring notifikasi SMS, pesan SMS spam akan tetap ada di aplikasi SMS default.
+        ]]>
+    </string>
+
+    <string name="about">Tentang</string>
+    <string name="version">Versi</string>
+    <string name="build_time">Waktu Dibangun (UTC)</string>
+    <string name="source_code">Kode Sumber</string>
+    <string name="dismiss">Singkirkan</string>
+    <string name="warning_running_in_work_profile">
+        Aplikasi ini mungkin tidak berfungsi dengan benar dalam profil kerja, silakan pasang di profil utama.
+    </string>
+    <string-array name="import_csv_type">
+        <item>Impor .csv sebagai aturan tunggal</item>
+        <item>Impor .csv sebagai banyak aturan</item>
+    </string-array>
+    <string name="warning_double_sms">
+        Aplikasi ini akan mengambil alih semua notifikasi SMS,
+        tetapi izin notifikasi dari aplikasi SMS default juga diaktifkan,
+        harap nonaktifkan di pengaturan sistem untuk mencegah notifikasi SMS ganda.
+    </string>
+    <string name="open_settings">Buka Pengaturan</string>
+    <string name="ignore">Abaikan</string>
+</resources>

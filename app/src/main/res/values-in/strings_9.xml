@@ -1,0 +1,92 @@
+<resources>
+    <string name="contact_rule">Aturan Kontak</string>
+    <string name="directory">Direktori</string>
+    <string name="filename">Nama berkas</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Hari Kadaluarsa</string>
+    <string name="column_mapping">Pemetaan Kolom</string>
+    <string name="include_spam_db">Sertakan Basis Data Spam</string>
+    <string name="no_config_needed">Tidak perlu konfigurasi</string>
+    <string name="success">Sukses</string>
+    <string name="failed">Gagal</string>
+    <string name="running">Sedang berjalan</string>
+    <string name="optional">(opsional)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Tes</b></font><br>
+        Tindakan ini akan segera diterapkan, untuk memeriksa apakah sudah diatur dengan benar,
+        atau mungkin Anda hanya ingin menjalankan alur kerja ini secara manual.<br>
+        <br>
+        - <font color="#00BFFF"><b>Baru</b></font><br>
+            Buat tindakan baru, berbagai tindakan dapat dirangkai untuk menyelesaikan tugas yang kompleks.<br>
+            Titik-titik hijau atau merah di antara item menunjukkan apakah item tersebut dapat dihubungkan atau tidak.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Unduh nomor telepon spam dari
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> setiap hari kerja,
+             dan mengimpornya ke basis data spam.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Hapus catatan kadaluarsa dari basis data spam.</string>
+    <string name="help_bot_preset_cleanup_history">Hapus riwayat panggilan/SMS yang sudah kadaluarsa.</string>
+    <string name="help_bot_preset_auto_backup">Cadangkan semua pengaturan.</string>
+    <string name="everyday">Setiap hari</string>
+    <string name="daily">Harian</string>
+    <string name="weekly">Mingguan</string>
+    <string name="periodically">Secara berkala</string>
+    <string name="time">Waktu</string>
+    <string name="workdays">Hari kerja</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        Format berkas cadangan adalah json terkompresi gzip, Anda dapat membuka dan mengubahnya dengan pengarsip apa pun.<br>
+        <br>
+        - <font color="#00BFFF"><b>Sertakan Basis Data Spam</b></font><br>
+        Tekan lama tombol untuk mengekspor/mengimpor basis data spam.<br>
+        <br>
+        <font color="#ffa500">Catatan:</font><br>
+        &ensp; Menyertakan basis data spam dalam berkas cadangan akan memperbesar ukurannya secara signifikan,
+        karena basis data akan diperbarui secara teratur, hal ini biasanya tidak diperlukan, kecuali jika Anda ingin mengkloningnya ke telepon lain.<br>
+        ]]>
+    </string>
+    <string name="mode">Mode</string>
+    <string-array name="regex_action_add_mode">
+        <item>Buat</item>
+        <item>Ganti</item>
+        <item>Gabungkan</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Buat</b></font><br>
+        &ensp; Selalu buat aturan regex baru.<br>
+        <br>
+        - <font color="#00BFFF"><b>Ganti</b></font><br>
+        &ensp; Ini akan mencoba menemukan aturan yang sudah ada dan memiliki <b>deskripsi yang sama</b>. <br>
+        &ensp;&ensp; - Jika ditemukan, maka akan ditimpa.<br>
+        &ensp;&ensp; - Jika tidak ditemukan, aturan baru akan dibuat, sama seperti aturan <b>Baru</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Gabungkan</b></font><br>
+        &ensp;- Jika ada aturan dengan deskripsi yang sama, nomor baru akan digabungkan ke dalamnya,<br>
+         nomor yang digandakan akan dihapus secara otomatis.<br>
+        &ensp;- Jika tidak ada, aturan baru akan dibuat, sama seperti aturan <b>Baru</b>.<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">Enable Workflow</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Aktifkan atau nonaktifkan alur kerja ini. Contoh penggunaannya adalah membuat alur kerja periodik menjadi satu kali.
+        ]]>
+    </string>
+    <string name="action_enable_app">Aktifkan Aplikasi</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Aktifkan atau nonaktifkan aplikasi. Contoh penggunaannya adalah menonaktifkan sementara dan mengaktifkannya kembali secara otomatis setelah beberapa jam.
+        ]]>
+    </string>
+
+</resources>

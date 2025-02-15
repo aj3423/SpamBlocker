@@ -1,0 +1,55 @@
+<resources>
+    <string name="help_number_rules">
+        <![CDATA[
+        Aturan ini berlaku untuk nomor telepon yang masuk.<br>
+        <br>
+        <h5><font color="#00BFFF"> - Contoh</font></h5>
+        Ada beberapa contoh di <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">halaman Wiki</a>.<br>
+        <br>
+        <h5><font color="#00BFFF"> - Optimalisasi Regex</font></h5>
+        Untuk menyederhanakan regex,
+          <font color="#fa7f71"><b>+</b></font> dan <font color="#fa7f71"><b>awalan nol</b></font>
+          dihapus sebelum memeriksa, misalnya:<br>
+        &emsp; Semua format tersebut:<br>
+        &emsp;&emsp; 123456789 &emsp;(nomor reguler)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(dengan awalan <font color="#fa7f71"><b>+</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(dengan awalan induk domestik <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dua <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Mereka <b>semua</b> diperiksa sebagai 123456789 dan dapat dicocokkan dengan <font color="#03DAC5"><b>123.*</b></font><br>
+        Pengoptimalan nomor ini dapat <b>dinonaktifkan</b> dengan tanda regex "Nomor Mentah".<br>
+        <br>
+        <h5><font color="#00BFFF"> - Beberapa pola umum</font></h5>
+        &ensp; - Nomor apa pun: <font color="#03DAC5"><b>.*</b></font> (regex .* sama dengan wildcard * dalam aplikasi lain) <br>
+        &ensp; - Nomor pasti: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Dimulai dengan 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - End with 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 digit: <font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - Lebih pendek dari 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - Lebih panjang dari 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - Nomor tidak dikenal (string kosong): <font color="#03DAC5"><b>.{0}</b></font> atau <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Sesuaikan dengan salah satu pola: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - Dimulai dengan 400, dengan awalan kode negara 11 or bukan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <h5><font color="#00BFFF"> - Terkait dengan UI</font></h5>
+        Hapus centang pada kotak centang untuk menonaktifkan aturan, <font color="#fa7f71"><b>geser ke kiri untuk menghapusnya</b></font>.<br>
+        <br>
+        Daftarnya <b>ditampilkan</b> dalam urutan prioritas yang menurun, deskripsi yang menaik, dan pola yang menaik.<br>
+        <br>
+        <h5><font color="#00BFFF"> - Impor aturan dari .csv</font></h5>
+        Tekan lama tombol `Tambahkan` untuk mengimpor nomor dari berkas .csv.<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         Kolom yang didukung:<br>
+         - <no_translate><b>pattern</b></no_translate>: Regex(<b>diperlukan</b>)<br>
+         - <no_translate><b>description</b></no_translate>: Deskripsi<br>
+         - <no_translate><b>priority</b></no_translate>: Prioritas, default 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(Terapkan ke Panggilan), 2(Terapkan ke SMS), 3(keduanya), default 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: Daftar hitam atau daftar putih. <no_translate>true</no_translate> atau <no_translate>false</no_translate>, default <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: Jenis blokir. 0~2 sesuai dengan 3 jenis blok, default 0<br>
+         - <no_translate><b>importance</b></no_translate>: Jenis notifikasi. 0~4 sesuai dengan 5 jenis notifikasi, default 2<br>
+        ]]>
+    </string>
+</resources>

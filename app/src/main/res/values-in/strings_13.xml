@@ -1,0 +1,113 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Membersihkan db riwayat, menghapus catatan sebelum tanda waktu: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Membersihkan db spam, menghapus %s catatan sebelum tanda waktu: %s".
+    </string>
+    <string name="resolved_url">Url terselesaikan: %s</string>
+    <string name="time_cost">Membutuhkan waktu: %s milidetik.</string>
+    <string name="parsed_n_rules">%s Aturan diuraikan.</string>
+    <string name="add_n_numbers_to_spam_db">Menambahkan %s nomor ke db spam.</string>
+    <string name="nothing_to_import">Daftar nomor kosong, tidak ada yang perlu diimpor.</string>
+    <string name="importing_n_numbers">Mengimpor %s nomor sebagai aturan regex.</string>
+    <string name="create_rule_with_numbers">Membuat aturan dengan %s nomor.</string>
+    <string name="replace_rule_with_desc">Mengganti aturan dengan deskripsi: %s.</string>
+    <string name="rule_with_desc_not_found">Aturan dengan deskripsi %s tidak ditemukan.</string>
+    <string name="merging_rule_with_desc">Menggabungkan aturan dengan deskripsi: %s.</string>
+    <string name="regex_count_after_merge">Hitungan regex sebelum: %s, sesudah: %s.</string>
+    <string name="replace_number_from_to">Mengganti nomor dari %s ke %s.</string>
+    <string name="find_rule_with_desc">Ditemukan %s aturan dengan deskripsi %s.</string>
+    <string name="modify_n_rules">Memodifikasi %s aturan.</string>
+    <string name="number_not_match_filter">Nomor %s tidak cocok dengan filter %s, lewati.</string>
+    <string name="fail_detect_cc">Gagal mendeteksi kode negara.</string>
+    <string name="identified_as_spam">Diidentifikasi sebagai nomor spam, kategori: %s.</string>
+    <string name="identified_as_valid">Diidentifikasi sebagai nomor yang sah, kategori: %s.</string>
+    <string name="unidentified_number">Nomor tidak dikenal.</string>
+    <string name="auto_detect_cc_permission">Izin READ_PHONE_STATE diperlukan untuk mendeteksi kode negara.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{kode negara}</b></font><br>
+        &ensp; Kode negara.<br>
+        - <font color="#00BFFF"><b>{domestik}</b></font><br>
+        &ensp; Bagian domestik.<br>
+        - <font color="#00BFFF"><b>{nomor}</b></font><br>
+        &ensp; Nomor lengkap, termasuk kode negara dan bagian domestik, tanpa tanda + atau 0 di depan.<br>
+        - <font color="#00BFFF"><b>{nomor_asal}</b></font><br>
+        &ensp; Nomor asal yang dapat berisi + atau 0 di depan.<br>
+        ]]>
+    </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; Isi SMS.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{tahun}</b></font><br>
+        &ensp; Tahun, contoh: 2024<br>
+        - <font color="#00BFFF"><b>{bulan} {hari}</b></font><br>
+        &ensp; Angka satu digit akan diisi dengan nol di depan, contoh: <br>
+        &emsp; {bulan}_{hari} -> 01_02<br>
+        - <font color="#00BFFF"><b>{index_bulan} {index_hari}</b></font><br>
+        &ensp; Nilai-nilai ini akan diisi tanpa nol di depan, contoh: <br>
+        &emsp; {bulan}_{hari} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        Tag yang didukung:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Dirancang terutama untuk FRITZ!Box Jerman, ini juga dapat digunakan dengan nomor telepon dari negara lain.<br>
+        <br>
+        Mendukung permintaan dengan hash dan bukan nomor itu sendiri, memberikan privasi yang lebih baik.<br>
+        <br>
+        Situs web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. Daftar akun di <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. Pada halaman pengaturan: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         tekan tombol \"Hasilkan kunci API\".<br>
+        <br>
+        3. Isi kunci API yang dihasilkan di bawah ini.
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        Batas waktu penyaringan panggilan adalah 5 detik, dengan buffer %s ms
+        untuk ketidakakuratan fungsi waktu, batas waktu total sebenarnya adalah %s ms.
+        Langkah-langkah sebelumnya memerlukan waktu %s ms, tidak cukup waktu yang tersisa, lewati.
+    </string>
+    <string name="action_filter_query_result">Penyaring Spam</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Hasilkan <u>daftar nomor</u> berisi nomor spam yang diidentifikasi dari langkah sebelumnya, dan siap untuk diimpor ke basis data.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">Utas lain dibatalkan.</string>>
+    <string name="username">Nama pengguna</string>>
+    <string name="password">Kata sandi</string>>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>Geser ke kiri</b></font> untuk menghapusnya.<br>
+        <br>
+        Sebagian besar elemen UI seperti kartu dalam aplikasi ini dikaitkan dengan gerakan mengusap,
+        beberapa di antaranya juga mendukung <font color="#03DAC5"><b>menggesek ke kanan</b></font>, sebagai contoh catatan riwayat.
+        ]]>
+    </string>>
+    <string name="bug_number">Jika ini adalah nomor yang sah, silakan laporkan di github.</string>>
+    <string name="skip_alpha_empty_number">Lewati alfa atau nomor kosong.</string>>
+</resources>

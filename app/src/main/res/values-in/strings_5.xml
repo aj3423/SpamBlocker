@@ -1,0 +1,83 @@
+<resources>
+    <string name="dialed_number"><short>Nomor yang Dihubungi</short></string>
+    <string name="find_apps">Temukan Aplikasi</string>
+
+    <string name="confirm_delete_all_rule">Konfirmasi untuk menghapus Semua Aturan?</string>
+
+    <string name="notification">Notifikasi</string>
+    <string name="type">Jenis</string>
+    <string name="times">Waktu</string>
+    <plurals name="days">
+        <item quantity="one">%d Hari</item>
+        <item quantity="two">%d Hari</item>
+        <item quantity="few">%d Hari</item>
+        <item quantity="many">%d Hari</item>
+        <item quantity="other">%d Hari</item>
+    </plurals>
+    <string name="min">Menit</string>
+    <string name="within_minutes">Dalam beberapa menit</string>
+    <string name="within_days">Dalam beberapa hari</string>
+    <string name="phone_number">Nomor Telepon</string>
+    <string name="phone_number_abbrev">Nomor</string>
+    <string name="sms_content">Isi SMS</string>
+    <string name="regex_flags">Tanda Regex</string>
+    <string name="off_time"><short>Waktu Off</short></string>
+    <string name="schedule">Jadwal</string>
+    <string name="workday">Hari Kerja</string>
+    <string name="weekend">Akhir Pekan</string>
+    <string name="entire_day">Sepanjang Hari</string>
+    <string name="block_type">Jenis Blokir</string>
+    <string name="for_particular_number">Untuk nomor</string>
+    <string name="help_for_particular_number">Apabila diaktifkan, aturan ini hanya berlaku apabila nomor dan isinya cocok.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Tolak</b></font>: <br>
+         Sama seperti menekan tombol tolak. Ini bekerja sepenuhnya tanpa suara, layar kunci tidak akan dinyalakan.<br>
+        <br>
+        - <font color="#00BFFF"><b>Hening</b></font>: <br>
+         Ini akan berdering tanpa suara di latar belakang, memberikan kesan kepada penelepon bahwa Anda sedang tidak tersedia dan tidak menjawab panggilan. <br>
+        <br>
+         Ini juga dapat membantu jika Anda mengalami panggilan spam berulang kali, ini akan memperpanjang durasi panggilan, sehingga kurang efisien bagi para spammer, yang berpotensi membuat mereka enggan untuk menghubungi Anda lagi.<br>
+        <br>
+        - <font color="#00BFFF"><b>Tutup</b></font>: <br>
+        Jawab dan tutup panggilan agar tidak masuk ke pesan suara. <br>
+        <br>
+        <font color="#FFA500">Catatan</font> Layar kunci dapat dinyalakan untuk sementara waktu,
+        Anda mungkin juga akan mendengar nada akhir panggilan (beberapa telepon menawarkan opsi untuk mematikan suara ini). <br>
+        <br>
+        - <b>Penundaan</b>: <br>
+        &emsp; Secara default, ada penundaan 1 detik sebelum panggilan ditutup,
+        untuk mencegah panggilan masuk ke pesan suara secara tidak sengaja karena terputus dengan cepat.<br>
+        &emsp; Jika Anda ingin merekam panggilan, pasang aplikasi perekaman panggilan dan tingkatkan penundaan yang sesuai.
+        ]]>
+    </string>
+    <string name="help_hang_up_delay">Penundaan sebelum panggilan ditutup (dalam detik).</string>
+    <string name="help_dialed">
+        <![CDATA[
+        Nomor yang dihubungi akan diizinkan.<br>
+        <br>
+        Mengirim pesan juga dihitung, ini hanya berfungsi ketika izin MEMBACA_SMS diberikan. <br>
+        <br>
+        Pengaturan default <font color="#03DAC5"><b>3 Hari</b></font> berarti jika Anda telah melakukan panggilan atau mengirim pesan ke nomor tersebut dalam 3 hari terakhir, panggilan dari nomor tersebut akan diizinkan.<br>
+        <br>
+        Hanya berlaku untuk panggilan, <b>tidak</b> untuk pesan teks <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Panggilan apa pun akan lolos jika ada aplikasi apa pun dalam daftar yang baru saja digunakan.<br>
+        <br>
+        Kasus penggunaan yang umum:<br>
+        &emsp; Anda baru saja memesan pizza di PizzaApp, kemudian mereka menelepon Anda untuk mengembalikan uang Anda karena mereka akan tutup. Panggilan itu akan lolos jika PizzaApp diaktifkan di sini. <br>
+        <br>
+        Pengaturan default <font color="03DAC5"><b>5 Menit</b></font> berarti setiap panggilan akan lolos jika salah satu aplikasi telah digunakan dalam waktu 5 menit,
+        dengan `digunakan` berarti diaktifkan, dinonaktifkan, diminimalkan, atau dimatikan. <br>
+        <br>
+        Hanya berlaku untuk panggilan, <b>tidak</b> untuk pesan teks <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
+</resources>

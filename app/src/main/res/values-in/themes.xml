@@ -1,0 +1,4 @@
+<resources>
+    <style name="Theme.SpamBlocker" parent="android:Theme.Material.NoActionBar" />
+</resources>
+
