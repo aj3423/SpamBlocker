@@ -50,18 +50,20 @@
 
         # 2.1. move the signed apk to ./
         - name: move the apk
-          run: mv app/build/outputs/apk/release/app-release.apk ./app-release-without-internet-permission.apk
+          run: mv app/build/outputs/apk/release/app-release.apk ./app-release.without-internet-permission.apk
 
         # 3. publish release
-        - name: Publish new release tag
-          uses: "marvinpinto/action-automatic-releases@latest"
+        - name: Release
+          uses: softprops/action-gh-release@v2
           with:
-            repo_token: "${{ secrets.SYNC_TOKEN }}"
-            draft: false
-            automatic_release_tag: "v4.4"
             prerelease: false
-            title: ""
+            token: "${{ secrets.SYNC_TOKEN }}"
+            preserve_order: true
             files: |
               app-release.apk
-              app-release-without-internet-permission.apk
+              app-release.without-internet-permission.apk
               debug.symbol.tar.gz
+            tag_name: "v4.5"
+            body_path: "${{ github.workspace }}/metadata/en-US/changelogs/405.txt"
+
+

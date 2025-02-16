@@ -53,7 +53,7 @@ class Global {
 class HistoryOptions {
     var showPassed = true
     var showBlocked = true
-    var showIndicator = true
+    var showIndicator = false
 
     var ttl = -1
     var logSmsContent = false

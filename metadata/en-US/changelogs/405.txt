@@ -1,0 +1,12 @@
+New:
+- MMS support
+  - Text content only, multimedia content is ignored.
+  - Available in the top "Enable" setting dialog, disabled by default.
+
+Improvements:
+- Workflow
+  - Added last run log in context menu
+- History log
+  - Show multiple icons before the number to indicate if it exists in database/regex rule, ordered by priority, disabled by default
+- Language support:
+  - Indonesian(in), thanks to @cyberboh
