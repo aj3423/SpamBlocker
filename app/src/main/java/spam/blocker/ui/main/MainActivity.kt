@@ -115,6 +115,9 @@ class MainActivity : ComponentActivity() {
 
         Permissions.initLauncherSetAsCallScreeningApp(this)
 
+        G.callVM.reload(ctx)
+        G.smsVM.reload(ctx)
+
         setContent {
             val isDarkTheme = when (G.themeType.intValue) {
                 1 -> false
