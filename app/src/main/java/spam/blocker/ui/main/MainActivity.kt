@@ -115,6 +115,7 @@ class MainActivity : ComponentActivity() {
 
         Permissions.initLauncherSetAsCallScreeningApp(this)
 
+        // Load all records to show unread indicators in the bottom bar.
         G.callVM.reload(ctx)
         G.smsVM.reload(ctx)
 

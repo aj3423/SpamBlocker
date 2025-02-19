@@ -1,0 +1,2 @@
+Fix:
+- The unread count indicator on the bottom bar does not appear at startup
