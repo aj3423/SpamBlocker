@@ -70,7 +70,7 @@
     <string name="language">Bahasa</string>
     <string name="help_language">
         <![CDATA[
-            Translations are done by Google AI, fire an issue on github for adding a new language support.
+            Terjemahan dilakukan oleh Google AI, sampaikan masalah di github untuk menambahkan dukungan bahasa baru.
         ]]>
     </string>
     <string name="enabled_for_call">Aktifkan untuk Panggilan</string>
