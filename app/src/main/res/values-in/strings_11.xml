@@ -31,7 +31,7 @@
         &ensp; Untuk API yang memerlukan autentikasi dasar HTTP. Sebagai contoh:<br>
         &emsp; <font color="#888888">{autentikasi_dasar(111:222)}</font><br>
         &ensp; akan diuraikan menjadi:<br>
-        &emsp; <font color="#888888">Otorisasi: Dasar MTExOjIyMg== </font><br>
+        &emsp; <font color="#888888">Autentikasi: Dasar MTExOjIyMg== </font><br>
         ]]>
     </string>
     <string name="log_sms_content_to_db">Mencatat SMS</string>
