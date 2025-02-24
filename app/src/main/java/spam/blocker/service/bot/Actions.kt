@@ -1336,7 +1336,7 @@ class ConvertNumber(
 
 /*
 input: None
-output: List<RegexRule>
+output: Map<forType, List<RegexRule>>
 use case: auto disable rules: https://github.com/aj3423/SpamBlocker/issues/190
  */
 @Serializable
@@ -1348,29 +1348,21 @@ class FindRules(
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // foundPair is Pair<tableIndex, List<RegexRule>>?
-        val foundPair = listOf<RuleTable>(
-            NumberRuleTable(),
-            ContentRuleTable(),
-            QuickCopyRuleTable()
+        val map = listOf(
+            Def.ForNumber, Def.ForSms, Def.ForQuickCopy
         )
-            .withIndex()
-            .firstNotNullOfOrNull {
-                val found = it.value.listAll(ctx).filter {
+            .associateWith {
+                ruleTableForType(it).listAll(ctx).filter {
                     pattern.regexMatches(it.description, flags)
                 }
-                if(found.isEmpty())
-                    null
-                else
-                    Pair(it.index, found)
             }
 
         aCtx.logger?.debug(
             ctx.getString(R.string.find_rule_with_desc)
-                .format("${foundPair?.second?.size ?: 0}", pattern)
+                .format("${map.values.sumOf { it.size }}", pattern)
         )
 
-        aCtx.forType = foundPair?.first ?: 0
-        aCtx.lastOutput = foundPair?.second ?: listOf<RegexRule>()
+        aCtx.lastOutput = map
         return true
     }
 
@@ -1430,7 +1422,7 @@ class FindRules(
 }
 
 /*
-input: List<RegexRule>
+input: Map<forType, List<RegexRule>>
 output: none
  */
 @Serializable
@@ -1439,29 +1431,31 @@ class ModifyRules(
     var config: String = "",
 ) : IPermissiveAction {
 
+    @Suppress("UNCHECKED_CAST")
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val rules = aCtx.lastOutput as List<*>
+        val rulesMap = aCtx.lastOutput as Map<Int, List<RegexRule>>
 
         aCtx.logger?.debug(
             ctx.getString(R.string.modify_n_rules)
-                .format("${rules.size}")
+                .format("${rulesMap.values.sumOf { it.size} }")
         )
 
-        val table = ruleTableForType(aCtx.forType)
-
         try {
-            rules.forEach {
-                val origin = it as RegexRule
-                val strOrigin = PermissiveJson.encodeToString(origin)
-                val mapOrigin = JSONObject(strOrigin).toMap()
+            val mapConfig = JSONObject(config).toMap()
 
-                val mapConfig = JSONObject(config).toMap()
+            rulesMap.forEach { (forType, ruleList) ->
+                val table = ruleTableForType(forType)
 
-                val mapModified = mapOrigin + mapConfig // override with mapModify
+                ruleList.forEach { rule ->
+                    val strOrigin = PermissiveJson.encodeToString(rule)
+                    val mapOrigin = JSONObject(strOrigin).toMap()
 
-                val newRule =
-                    PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
-                table.updateRuleById(ctx, origin.id, newRule)
+                    val mapModified = mapOrigin + mapConfig // override with mapModify
+
+                    val newRule =
+                        PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
+                    table.updateRuleById(ctx, rule.id, newRule)
+                }
             }
         } catch (e: Exception) {
             aCtx.logger?.error("$e")

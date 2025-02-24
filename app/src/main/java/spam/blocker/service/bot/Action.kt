@@ -102,9 +102,6 @@ data class ActionContext(
     // The check result by the first api that successfully identified the number,
     //  for Checker usage only, not for Actions
     var racingResult: ApiQueryResult? = null,
-
-    // Used in FindRules + ModifyRules
-    var forType: Int = Def.ForNumber,
 )
 
 interface IAction {
