@@ -41,6 +41,7 @@ import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.db.listReportableAPIs
 import spam.blocker.db.reScheduleBot
+import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
@@ -1055,7 +1056,7 @@ class ImportAsRegexRule(
         }
     }
 
-    private fun getTable() : RuleTable {
+    private fun getTable(): RuleTable {
         return when (importAs) {
             Def.ForNumber -> NumberRuleTable()
             Def.ForSms -> ContentRuleTable()
@@ -1346,17 +1347,30 @@ class FindRules(
 ) : IPermissiveAction {
 
     override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-
-        val found = NumberRuleTable().listAll(ctx).filter {
-            pattern.regexMatches(it.description, flags)
-        }
+        // foundPair is Pair<tableIndex, List<RegexRule>>?
+        val foundPair = listOf<RuleTable>(
+            NumberRuleTable(),
+            ContentRuleTable(),
+            QuickCopyRuleTable()
+        )
+            .withIndex()
+            .firstNotNullOfOrNull {
+                val found = it.value.listAll(ctx).filter {
+                    pattern.regexMatches(it.description, flags)
+                }
+                if(found.isEmpty())
+                    null
+                else
+                    Pair(it.index, found)
+            }
 
         aCtx.logger?.debug(
             ctx.getString(R.string.find_rule_with_desc)
-                .format("${found.size}", pattern)
+                .format("${foundPair?.second?.size ?: 0}", pattern)
         )
 
-        aCtx.lastOutput = found
+        aCtx.forType = foundPair?.first ?: 0
+        aCtx.lastOutput = foundPair?.second ?: listOf<RegexRule>()
         return true
     }
 
@@ -1433,6 +1447,8 @@ class ModifyRules(
                 .format("${rules.size}")
         )
 
+        val table = ruleTableForType(aCtx.forType)
+
         try {
             rules.forEach {
                 val origin = it as RegexRule
@@ -1445,7 +1461,7 @@ class ModifyRules(
 
                 val newRule =
                     PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
-                NumberRuleTable().updateRuleById(ctx, origin.id, newRule)
+                table.updateRuleById(ctx, origin.id, newRule)
             }
         } catch (e: Exception) {
             aCtx.logger?.error("$e")
@@ -1798,7 +1814,8 @@ class InterceptSms(
     }
 
     @Composable
-    override fun Summary() {}
+    override fun Summary() {
+    }
 
     override fun tooltip(ctx: Context): String {
         return ctx.getString(R.string.help_action_intercept_sms)

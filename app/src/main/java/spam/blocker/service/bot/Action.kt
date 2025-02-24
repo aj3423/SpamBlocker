@@ -102,6 +102,9 @@ data class ActionContext(
     // The check result by the first api that successfully identified the number,
     //  for Checker usage only, not for Actions
     var racingResult: ApiQueryResult? = null,
+
+    // Used in FindRules + ModifyRules
+    var forType: Int = Def.ForNumber,
 )
 
 interface IAction {
@@ -273,7 +276,7 @@ fun List<IAction>.executeAll(
 
     // Run until any action fails
     val anyError = runBlocking {
-        aCtx.scope.async{
+        aCtx.scope.async {
             self.any {
                 val succeeded = try {
                     it.execute(ctx, aCtx)
