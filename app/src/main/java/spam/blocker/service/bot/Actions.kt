@@ -84,6 +84,7 @@ import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
 import spam.blocker.util.asyncHttpRequest
 import spam.blocker.util.formatAnnotated
+import spam.blocker.util.httpRequest
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.resolveBase64Tag
@@ -113,7 +114,7 @@ fun NoOptionNeeded() {
 class CleanupHistory(
     var expiry: Int = 90 // days
 ) : IPermissiveAction {
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
@@ -207,7 +208,7 @@ open class HttpDownload(
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val startTime = System.currentTimeMillis()
 
         return try {
@@ -244,20 +245,14 @@ open class HttpDownload(
                 aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: $resolvedBody")
             }
 
-
             // 4. Send request
-            val resultChannel = asyncHttpRequest(
+            val result = httpRequest(
                 scope = aCtx.scope,
                 urlString = resolvedUrl,
                 headersMap = headersMap,
                 method = method,
                 postBody = resolvedBody,
             )
-
-            // 5. Get response
-            val result = aCtx.scope.async {
-                resultChannel.receiveCatching()
-            }.await().getOrNull()
 
             aCtx.logger?.info(
                 ctx.getString(R.string.time_cost)
@@ -378,7 +373,7 @@ class CleanupSpamDB(
     var expiry: Int = 1 // days
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val now = Now.currentMillis()
         val expireTimeMs = now - expiry.toLong() * 24 * 3600 * 1000
 
@@ -444,7 +439,7 @@ class CleanupSpamDB(
 class BackupExport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Generate config data bytes
         val curr = Configs()
         curr.load(ctx, includeSpamDB)
@@ -506,7 +501,7 @@ class BackupExport(
 class BackupImport(
     var includeSpamDB: Boolean = false
 ) : IPermissiveAction {
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         try {
@@ -575,7 +570,7 @@ class ReadFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val path = dir.resolvePathTags()
 
         val fn = filename.resolveTimeTags()
@@ -642,7 +637,7 @@ class WriteFile(
     var filename: String = "",
 ) : IFileAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         val path = dir.resolvePathTags()
@@ -713,7 +708,7 @@ class ParseCSV(
     var columnMapping: String = "{}"
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         return try {
@@ -782,7 +777,7 @@ class ParseXML(
     var xpath: String = ""
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         return try {
@@ -847,7 +842,7 @@ class RegexExtract(
     var regexFlags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         return try {
@@ -931,7 +926,7 @@ class ImportToSpamDB(
     val importReason: ImportDbReason = ImportDbReason.Manually,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
         return try {
@@ -1023,7 +1018,7 @@ class ImportAsRegexRule(
     var importAs: Int = Def.ForNumber,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
         return try {
@@ -1253,7 +1248,7 @@ class ConvertNumber(
     var to: String = "",
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // List<RegexRule>
 
         aCtx.logger?.debug(
@@ -1346,7 +1341,7 @@ class FindRules(
     var flags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // foundPair is Pair<tableIndex, List<RegexRule>>?
         val map = listOf(
             Def.ForNumber, Def.ForSms, Def.ForQuickCopy
@@ -1432,7 +1427,7 @@ class ModifyRules(
 ) : IPermissiveAction {
 
     @Suppress("UNCHECKED_CAST")
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rulesMap = aCtx.lastOutput as Map<Int, List<RegexRule>>
 
         aCtx.logger?.debug(
@@ -1517,7 +1512,7 @@ class EnableWorkflow(
     var enable: Boolean = false,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val workTag = aCtx.workTag
 
         aCtx.logger?.debug("${label(ctx)}: $workTag")
@@ -1598,7 +1593,7 @@ class EnableApp(
     var enable: Boolean = true,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         spf.Global(ctx).setGloballyEnabled(enable)
         G.globallyEnabled.value = enable
 
@@ -1670,7 +1665,7 @@ class InterceptCall(
         )
     }
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // The `rawNumber` is set by the workflow caller before it's executed.
         val rawNumber = aCtx.rawNumber!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
@@ -1796,7 +1791,7 @@ class InterceptCall(
 @SerialName("InterceptSms")
 class InterceptSms(
 ) : IPermissiveAction {
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // Nothing to do
         // It just needs to be there, as the first action in the workflow.
         // Because new SMS will only be checked by such workflows.
@@ -1859,7 +1854,7 @@ class ParseQueryResult(
     var categoryFlags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ByteArray
 
         val html = String(input)
@@ -2034,7 +2029,7 @@ class ParseQueryResult(
 @Serializable
 @SerialName("FilterSpamResult")
 class FilterSpamResult() : IPermissiveAction {
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val input = aCtx.lastOutput as ApiQueryResult
 
         aCtx.lastOutput = if (input.determined && input.isSpam) {
@@ -2095,7 +2090,7 @@ class CategoryConfig(
 ) : IPermissiveAction {
 
     // It gets the ActionContext.tagCategory tag and fill the ActionContext.realCategory
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         // 1. check it in the map config
         var realCategoryStr = map[aCtx.tagCategory]
 
@@ -2187,7 +2182,7 @@ class ReportNumber(
         )
     }
 
-    override suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter)
 
         // Report

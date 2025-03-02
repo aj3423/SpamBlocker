@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Introduza información de autorización válida.</string>
+    <string name="invalid_auth_credentials">Introduza información de autorización válida.</string>
     <string name="delay">Retraso</string>
     <string name="report_number_require_call_log_permission">
         Para evitar informes erróneos de chamadas repetidas ou números remarcados,

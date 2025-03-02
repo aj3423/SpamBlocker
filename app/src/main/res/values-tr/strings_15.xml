@@ -53,4 +53,6 @@
         İki izin gereklidir: RECEIVE_MMS ve READ_SMS
         ]]>
     </string>
+    <string name="unknown_error">Bilinmeyen hata.</string>
+    <string name="checking_auth_credential">Yetkilendirme kimlik bilgileri kontrol ediliyor.</string>
 </resources>

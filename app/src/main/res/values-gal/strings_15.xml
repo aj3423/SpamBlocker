@@ -53,4 +53,6 @@
         Requírense dous permisos: RECEIVE_MMS e READ_SMS
         ]]>
     </string>
+    <string name="unknown_error">Erro descoñecido.</string>
+    <string name="checking_auth_credential">Comprobando as credenciais de autorización.</string>
 </resources>

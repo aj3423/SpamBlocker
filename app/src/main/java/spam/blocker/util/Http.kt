@@ -2,8 +2,11 @@ package spam.blocker.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import spam.blocker.BuildConfig
 import spam.blocker.service.bot.HTTP_GET
 import spam.blocker.service.bot.HTTP_POST
 import java.io.OutputStreamWriter
@@ -24,7 +27,7 @@ fun asyncHttpRequest(
     urlString: String,
     headersMap: Map<String, String> = mapOf(),
     method: Int = HTTP_GET,
-    postBody: String = "",
+    postBody: String? = null,
     scope: CoroutineScope = CoroutineScope(IO),
 ) : Channel<HttpResult> {
 
@@ -42,7 +45,7 @@ fun asyncHttpRequest(
             }
 
             if (!headersMap.containsKey(UA)) { // Set default UA
-                conn.setRequestProperty(UA, "SpamBlocker")
+                conn.setRequestProperty(UA, "SpamBlocker/${BuildConfig.VERSION_NAME}")
             }
 
             // Send POST data
@@ -50,7 +53,7 @@ fun asyncHttpRequest(
                 conn.requestMethod = "POST"
                 conn.doOutput = true
                 val wr = OutputStreamWriter(conn.outputStream)
-                wr.write(postBody)
+                wr.write(postBody ?: "")
                 wr.flush()
             }
 
@@ -80,4 +83,29 @@ fun asyncHttpRequest(
         }
     }
     return channel
+}
+
+// A blocking http request.
+// Return null means unknown error.
+fun httpRequest(
+    urlString: String,
+    headersMap: Map<String, String> = mapOf(),
+    method: Int = HTTP_GET,
+    postBody: String? = null,
+    scope: CoroutineScope = CoroutineScope(IO),
+) : HttpResult? {
+
+    return runBlocking {
+        val resultChannel = asyncHttpRequest(
+            scope = scope,
+            urlString = urlString,
+            headersMap = headersMap,
+            method = method,
+            postBody = postBody,
+        )
+
+        scope.async {
+            resultChannel.receiveCatching()
+        }.await().getOrNull()
+    }
 }

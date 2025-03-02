@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Bitte geben Sie gültige Autorisierungsinformationen ein.</string>
+    <string name="invalid_auth_credentials">Bitte geben Sie gültige Autorisierungsinformationen ein.</string>
     <string name="delay">Verzögerung</string>
     <string name="report_number_require_call_log_permission">
         Um eine Fehlmeldung wiederholter oder zurückgewählter Anrufe zu verhindern,

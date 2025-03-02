@@ -27,6 +27,8 @@ fun ConfigImportDialog(
         var succeeded by remember { mutableStateOf(false) }
 
         val importResultTrigger = remember { mutableStateOf(false) }
+        var errorText by remember { mutableStateOf("") }
+
         PopupDialog(
             trigger = importResultTrigger,
             onDismiss = { trigger.value = false }, // close import dialog
@@ -43,7 +45,7 @@ fun ConfigImportDialog(
                             R.string.imported_successfully
                         else
                             R.string.import_fail
-                    ),
+                    ) + if (succeeded) "" else "\n" + errorText,
                     color = LocalPalette.current.textGrey,
                     fontWeight = FontWeight.SemiBold,
                 )
@@ -60,7 +62,8 @@ fun ConfigImportDialog(
                         succeeded = try {
                             applyContent(text)
                             true
-                        } catch (_: Exception) {
+                        } catch (e: Exception) {
+                            errorText = e.message.toString()
                             false
                         }
                         importResultTrigger.value = true

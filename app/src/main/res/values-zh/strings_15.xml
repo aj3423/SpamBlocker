@@ -53,4 +53,6 @@
         需要两个权限：RECEIVE_MMS 和 READ_SMS
         ]]>
     </string>
+    <string name="unknown_error">未知错误。</string>
+    <string name="checking_auth_credential">正在检查授权凭据。</string>
 </resources>

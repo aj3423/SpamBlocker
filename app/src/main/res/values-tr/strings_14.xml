@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Lütfen geçerli yetkilendirme bilgilerini girin.</string>
+    <string name="invalid_auth_credentials">Lütfen geçerli yetkilendirme bilgilerini girin.</string>
     <string name="delay">Gecikme</string>
     <string name="report_number_require_call_log_permission">
         Tekrarlanan aramaların veya geri aranan numaraların yanlış raporlanmasını önlemek için,

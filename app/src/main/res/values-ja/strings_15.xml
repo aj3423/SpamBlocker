@@ -53,4 +53,6 @@
         2つの権限が必要です：RECEIVE_MMSとREAD_SMS
         ]]>
     </string>
+    <string name="unknown_error">不明なエラー。</string>
+    <string name="checking_auth_credential">認証情報を確認しています。</string>
 </resources>

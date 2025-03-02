@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">请输入有效的授权信息。</string>
+    <string name="invalid_auth_credentials">请输入有效的授权信息。</string>
     <string name="delay">延迟</string>
     <string name="report_number_require_call_log_permission">
         为防止重复呼叫或回拨号码被误报，举报号码需要通话记录权限。

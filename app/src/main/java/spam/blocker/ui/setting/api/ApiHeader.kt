@@ -4,10 +4,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import spam.blocker.R
 import spam.blocker.db.Api
 import spam.blocker.def.Def
@@ -15,6 +20,7 @@ import spam.blocker.service.bot.botJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingLabel
+import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
@@ -44,6 +50,7 @@ fun ApiAuthConfigDialog(
     onOk: Lambda,
 ) {
     val ctx = LocalContext.current
+    val C = LocalPalette.current
 
     // All attributes
     val formFields = remember {
@@ -52,17 +59,15 @@ fun ApiAuthConfigDialog(
         }
     }
 
-    val errorTrigger = remember { mutableStateOf(false) }
+    var errStr by remember { mutableStateOf<String?>(null) }
+    val resultTrigger = remember { mutableStateOf(false) }
+
     PopupDialog(
-        trigger = errorTrigger,
+        trigger = resultTrigger,
     ) {
         Text(
-            text = Str(R.string.missing_credentials),
-            color = Salmon,
-//            fontSize = fontSize,
-//            fontWeight = fontWeight,
-//            maxLines = maxLines,
-//            overflow = overflow,
+            text = errStr ?: Str(R.string.checking_auth_credential),
+            color = if (errStr == null) C.textGrey else Salmon,
         )
     }
 
@@ -71,16 +76,21 @@ fun ApiAuthConfigDialog(
         buttons = {
             // OK button
             StrokeButton(label = Str(R.string.ok), color = Teal200) {
-                val isValid = authConfig.validator(
-                    formFields.map { it.value }
-                )
-                if (isValid) {
-                    // Replace the api_key in the http request.
-                    authConfig.preProcessor(api.actions, formFields.map { it.value })
-                    trigger.value = false
-                    onOk()
-                } else {
-                    errorTrigger.value = true
+                resultTrigger.value = true
+
+                CoroutineScope(IO).launch {
+                    authConfig.validator(
+                        ctx, formFields.map { it.value },
+                    ) { err ->
+                        errStr = err
+                        if (err == null) { // valid
+                            resultTrigger.value = false
+                            // Replace the api_key in the http request.
+                            authConfig.preProcessor(api.actions, formFields.map { it.value })
+                            trigger.value = false
+                            onOk()
+                        }
+                    }
                 }
             }
         }
@@ -197,7 +207,7 @@ fun ApiHeader(
         label = {
             RowVCenterSpaced(4) {
                 SettingLabel(
-                    labelId = if(vm.forType == Def.ForApiQuery) R.string.query_api else R.string.report_api,
+                    labelId = if (vm.forType == Def.ForApiQuery) R.string.query_api else R.string.report_api,
                 )
                 if (vm.listCollapsed.value) {
                     GreyIcon16(
@@ -206,7 +216,7 @@ fun ApiHeader(
                 }
             }
         },
-        helpTooltip = if(vm.forType == Def.ForApiQuery)
+        helpTooltip = if (vm.forType == Def.ForApiQuery)
             Str(R.string.help_instant_query)
         else
             Str(R.string.help_auto_report),

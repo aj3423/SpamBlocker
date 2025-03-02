@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">有効な認証情報を入力してください。</string>
+    <string name="invalid_auth_credentials">有効な認証情報を入力してください。</string>
     <string name="delay">遅延</string>
     <string name="report_number_require_call_log_permission">
         繰り返し発信された番号や折り返し発信された番号の誤った報告を防ぐため、番号の報告には通話履歴の権限が必要です。

@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Пожалуйста, введите действительные учетные данные.</string>
+    <string name="invalid_auth_credentials">Пожалуйста, введите действительные учетные данные.</string>
     <string name="delay">Задержка</string>
     <string name="report_number_require_call_log_permission">
         Для предотвращения ложных сообщений о повторных звонках или звонках с возвратом, для отправки отчёта о номере требуется разрешение на доступ к журналу вызовов.

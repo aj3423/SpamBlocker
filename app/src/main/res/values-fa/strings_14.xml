@@ -13,7 +13,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">لطفاً اطلاعات احراز هویت معتبر را وارد کنید.</string>
+    <string name="invalid_auth_credentials">لطفاً اطلاعات احراز هویت معتبر را وارد کنید.</string>
     <string name="delay">تأخیر</string>
     <string name="exclude_services">سرویس‌های مستثنی</string>
     <string name="help_exclude_bg_service">

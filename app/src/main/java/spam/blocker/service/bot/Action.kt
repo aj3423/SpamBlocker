@@ -108,7 +108,7 @@ interface IAction {
     // When it succeeds, it returns: <true, output>
     //   the output will be used as the input `param` for the next Action
     // When it fails, it returns: <false, errorReasonString>
-    suspend fun execute(ctx: Context, aCtx: ActionContext): Boolean
+    fun execute(ctx: Context, aCtx: ActionContext): Boolean
 
     // It returns a list of missing permissions.
     fun missingPermissions(ctx: Context): List<IPermission>

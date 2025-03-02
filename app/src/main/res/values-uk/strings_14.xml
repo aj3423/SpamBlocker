@@ -8,7 +8,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Будь ласка, введіть коректні дані авторизації.</string>
+    <string name="invalid_auth_credentials">Будь ласка, введіть коректні дані авторизації.</string>
     <string name="delay">Затримка</string>
     <string name="report_number_require_call_log_permission">
         Для запобігання помилковим звітам про повторні дзвінки або передзвонені номери,

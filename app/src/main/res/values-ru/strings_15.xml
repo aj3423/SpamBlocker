@@ -53,4 +53,6 @@
         Требуются два разрешения: RECEIVE_MMS и READ_SMS
         ]]>
     </string>
+    <string name="unknown_error"><translate>Неизвестная ошибка.</translate></string>
+    <string name="checking_auth_credential">Проверка учетных данных авторизации.</string>
 </resources>

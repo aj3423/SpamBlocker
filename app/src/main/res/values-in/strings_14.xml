@@ -13,7 +13,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Masukkan informasi otorisasi yang valid.</string>
+    <string name="invalid_auth_credentials">Masukkan informasi otorisasi yang valid.</string>
     <string name="delay">Penundaan</string>
     <string name="exclude_services">Kecualikan Layanan</string>
     <string name="help_exclude_bg_service">

@@ -7,6 +7,7 @@ import spam.blocker.db.Api
 import spam.blocker.db.ImportDbReason
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.FilterSpamResult
+import spam.blocker.service.bot.HTTP_GET
 import spam.blocker.service.bot.HTTP_POST
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.IAction
@@ -14,8 +15,12 @@ import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ParseQueryResult
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
+import spam.blocker.util.Lambda3
 import spam.blocker.util.escape
+import spam.blocker.util.httpRequest
+import spam.blocker.util.resolveBearerTag
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -30,7 +35,7 @@ data class AuthConfig(
     //  fill the {api_token} in HttpDownload.header with user input credentials
     val preProcessor: Lambda2<List<IAction>, List<String>>,
     // For validating if the user has input the correct auth credentials.
-    val validator: (List<String>) -> Boolean,
+    val validator: Lambda3<Context, List<String>, Lambda1<String?>>,
 )
 
 const val tagCategory = "{category}"
@@ -90,9 +95,31 @@ val authConfig_PhoneBlock = AuthConfig(
                 .replace("{api_key}", formValues[0])
         }
     },
-    validator = {
-        val apiKey = it[0]
-        apiKey.startsWith("pbt_")
+    validator = { ctx, fieldValues, callback ->
+        val apiKey = fieldValues[0]
+
+        val result = httpRequest(
+            urlString = if (BuildConfig.DEBUG)
+                "https://phoneblock.net/pb-test/api/test"
+            else
+                "https://phoneblock.net/phoneblock/api/test",
+            headersMap = mapOf("Authorization" to "{bearer_auth($apiKey)}".resolveBearerTag()),
+            method = HTTP_GET,
+        )
+
+        callback(
+            if (result == null) {
+                ctx.getString(R.string.unknown_error)
+            } else {
+                when (result.statusCode) {
+                    200 -> null
+                    401 -> ctx.getString(R.string.invalid_auth_credentials)
+                    else -> {
+                        result.exception ?: ""
+                    }
+                }
+            }
+        )
     }
 )
 val ApiQueryPresets = listOf<ApiPreset>(
@@ -144,9 +171,8 @@ val ApiQueryPresets = listOf<ApiPreset>(
                             .replace("{api_key}", formValues[0])
                     }
                 },
-                validator = {
-                    val apiKey = it[0]
-                    apiKey.length > 10
+                validator = { ctx, fieldValues, callback ->
+                    callback(null)
                 }
             )
         },

@@ -53,4 +53,6 @@
         Потрібні два дозволи: RECEIVE_MMS та READ_SMS
         ]]>
     </string>
+    <string name="unknown_error">Невідома помилка.</string>
+    <string name="checking_auth_credential">Перевірка облікових даних авторизації.</string>
 </resources>

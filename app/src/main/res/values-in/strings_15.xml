@@ -14,14 +14,14 @@
         2. Buka halaman API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Tekan tombol \"Buat Kunci API\" .<br>
+        3. Tekan tombol "Buat Kunci API" .<br>
         <br>
         4. Salin kunci tersebut, kemudian isikan di bawah ini.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Kategorikan pesan SMS ini sebagai Politik, Penipuan, Survei, atau Pemasaran.
-        Jika tidak ada, jawablah \"Sah\", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
+        Jika tidak ada, jawablah "Sah", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
         Pesan SMS-nya adalah:
         {sms}
     </string>
@@ -53,4 +53,6 @@
         Diperlukan dua izin: MENERIMA_MMS dan MEMBACA_SMS
         ]]>
     </string>
+    <string name="unknown_error">Kesalahan tidak diketahui.</string>
+    <string name="checking_auth_credential">Memeriksa kredensial otorisasi.</string>
 </resources>

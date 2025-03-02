@@ -13,7 +13,7 @@
         %s
         ]]>
     </string>
-    <string name="missing_credentials">Please input valid authorization information.</string>
+    <string name="invalid_auth_credentials">Please input valid authorization information.</string>
     <string name="delay">Delay</string>
     <string name="exclude_services">Exclude Services</string>
     <string name="help_exclude_bg_service">

@@ -53,4 +53,6 @@
         Zwei Berechtigungen sind erforderlich: RECEIVE_MMS und READ_SMS
         ]]>
     </string>
+    <string name="unknown_error">Unbekannter Fehler.</string>
+    <string name="checking_auth_credential">Überprüfe Autorisierungsdaten.</string>
 </resources>

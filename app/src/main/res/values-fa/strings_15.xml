@@ -53,4 +53,6 @@
         دو مجوز مورد نیاز است: RECEIVE_MMS و READ_SMS
         ]]>
     </string>
+    <string name="unknown_error">خطای ناشناخته.</string>
+    <string name="checking_auth_credential">در حال بررسی اعتبار مجوز.</string>
 </resources>
