@@ -48,6 +48,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_MEETING_MODE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_BOMBING
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.ApiQueryResult
@@ -467,6 +468,15 @@ class ByCallAlert(
     }
 }
 
+// blocked by sms bombing
+class BySmsBombing(
+    override val type: Int = RESULT_BLOCKED_BY_SMS_BOMBING,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.sms_bombing)
+    }
+}
+
 fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckResult {
     return when (result) {
         RESULT_ALLOWED_BY_EMERGENCY -> ByEmergency()
@@ -498,6 +508,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             ByRegexRule(result, rule)
         }
         RESULT_ALLOWED_BY_CALL_ALERT -> ByCallAlert()
+        RESULT_BLOCKED_BY_SMS_BOMBING -> BySmsBombing()
 
         else -> ByDefault(result)
     }

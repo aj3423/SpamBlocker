@@ -69,7 +69,13 @@ object Def {
     const val SETTING_CALL_ALERT_REGEX_STR = "call_alert_regex_str"
     const val SETTING_CALL_ALERT_REGEX_FLAGS = "call_alert_regex_flags"
     const val SETTING_CALL_ALERT_TIMESTAMP = "call_alert_timestamp"
-
+    const val SETTING_SMS_BOMBING_ENABLED = "sms_bombing_enabled"
+    const val SETTING_SMS_BOMBING_COLLAPSED = "sms_bombing_collapsed"
+    const val SETTING_SMS_BOMBING_INTERVAL = "sms_bombing_interval"
+    const val SETTING_SMS_BOMBING_REGEX_STR = "sms_bombing_regex_str"
+    const val SETTING_SMS_BOMBING_REGEX_FLAGS = "sms_bombing_regex_flags"
+    const val SETTING_SMS_BOMBING_TIMESTAMP = "sms_bombing_timestamp"
+    const val SETTING_SMS_BOMBING_LOCKSCREEN_PROTECT_ENABLED = "sms_bombing_lockscreen_protect_enabled"
 
     const val NUMBER_REPORTING_BUFFER_HOURS = 1L // 1 hour
 
@@ -113,6 +119,8 @@ object Def {
     const val RESULT_BLOCKED_BY_SPAM_DB = 16
     const val RESULT_BLOCKED_BY_MEETING_MODE = 17
     const val RESULT_BLOCKED_BY_API_QUERY = 18
+    const val RESULT_BLOCKED_BY_SMS_BOMBING = 19
+
 
     fun isBlocked(result: Int): Boolean {
         return result in 10..99

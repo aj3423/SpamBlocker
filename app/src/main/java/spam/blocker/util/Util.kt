@@ -2,6 +2,7 @@ package spam.blocker.util
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
@@ -571,5 +572,10 @@ object Util {
         } catch (_: Exception) {
             null
         }
+    }
+
+    fun isDeviceLocked(ctx: Context): Boolean {
+        val keyguardManager = ctx.getSystemService(Context.KEYGUARD_SERVICE) as? KeyguardManager
+        return keyguardManager?.isKeyguardLocked == true
     }
 }

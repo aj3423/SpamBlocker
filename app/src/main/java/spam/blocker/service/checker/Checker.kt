@@ -36,6 +36,7 @@ import spam.blocker.util.Util
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
+import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
 
@@ -953,6 +954,64 @@ class Checker { // for namespace only
         }
     }
 
+    private class SmsBombing(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return 20
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val logger = cCtx.logger
+
+            val spf = spf.SmsBombing(ctx)
+            if (!spf.isEnabled()) {
+                return null
+            }
+            logger?.info(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.sms_bombing).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
+
+            // 1. check if regex matches
+            val regex = spf.getRegexStr()
+            val flags = spf.getRegexFlags()
+            val matches = regex.regexMatches(cCtx.smsContent!!, flags)
+            if (!matches) {
+                return null
+            }
+
+            var blockIt = false
+            // 2. check if lockscreen protect on
+            if (spf.isLockScreenProtectEnabled() && Util.isDeviceLocked(ctx)) {
+                blockIt = true
+            }
+
+            // 3. check if within interval
+            val now = Now.currentMillis()
+            val lastBombTime = spf.getTimestamp()
+            val interval = spf.getInterval() // in seconds
+
+            if (lastBombTime + interval*1000 > now) {
+                blockIt = true
+            }
+
+            // 4. save the last bomb time
+            spf.setTimestamp(Now.currentMillis())
+
+            if (blockIt) {
+                logger?.error(
+                    ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.sms_bombing))
+                )
+                return BySmsBombing()
+            }
+            return null
+        }
+    }
+
     companion object {
 
         fun checkCallWithCheckers(
@@ -1064,6 +1123,7 @@ class Checker { // for namespace only
                 SpamDB(ctx),
                 MeetingMode(ctx),
                 OffTime(ctx),
+                SmsBombing(ctx),
                 InstantQuery(ctx, Def.ForSms),
             )
 

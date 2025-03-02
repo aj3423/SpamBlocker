@@ -55,4 +55,38 @@
     </string>
     <string name="unknown_error">Erro desconhecido.</string>
     <string name="checking_auth_credential">Verificando credenciais de autorização.</string>
+    <string name="sms_bombing">Bombardeio de SMS</string>
+    <string name="help_sms_bombing">
+        <![CDATA[
+        Anti Bombardeio de SMS.<br>
+        <br>
+        Impede fluxos massivos e contínuos de mensagens SMS, que geralmente são compostas principalmente
+          de verificações de OTP (senha única).<br>
+        <br>
+        Por exemplo, mensagens SMS como:<br>
+        &ensp; <font color="#888888">Seu OTP é: 1234.</font><br>
+        &ensp; <font color="#888888">Este é o seu código de verificação: 1234.</font><br>
+        &ensp; <font color="#888888">1234 é o seu código de validação.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Regex de conteúdo</font></h5>
+        Este recurso se aplica apenas a mensagens que correspondem a este regex, um regex típico seria: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Intervalo</font></h5>
+        Se uma mensagem OTP subsequente chegar dentro desse intervalo de tempo, ela será considerada
+          parte do ataque de bombardeio e será bloqueada.<br>
+        (padrão: 30 segundos)<br>
+        <br>
+        Isso bloqueará todos os bombardeios seguintes, exceto o primeiro.<br>
+        <br>
+        <h5><font color="#00BFFF">- Proteger tela de bloqueio</font></h5>
+        Ative isso para bloquear todos os bombardeios no modo de tela de bloqueio, incluindo o primeiro. <br>
+        <br>
+        Normalmente, sua tela deve ter sido desbloqueada enquanto espera por um código de verificação.
+        Quando essas mensagens chegam enquanto o dispositivo está no modo de tela de bloqueio, é provável que sejam bombardeios.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protect">Proteção da tela de bloqueio</string>
 </resources>

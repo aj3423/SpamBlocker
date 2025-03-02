@@ -41,33 +41,22 @@ import spam.blocker.util.spf
 
 
 @Composable
-fun CallAlert() {
+fun SmsBombing() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
-    val spf = spf.CallAlert(ctx)
+    val spf = spf.SmsBombing(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)) }
-    var duration by remember { mutableIntStateOf(spf.getDuration()) }
+    var duration by remember { mutableIntStateOf(spf.getInterval()) }
     var regexStr by remember { mutableStateOf(spf.getRegexStr()) }
     var regexFlags = remember { mutableIntStateOf(spf.getRegexFlags()) }
+    var isLockscreenProtect by remember { mutableStateOf(spf.isLockScreenProtectEnabled()) }
 
     // Edit Duration Dialog
     val editTrigger = rememberSaveable { mutableStateOf(false) }
     PopupDialog(
         trigger = editTrigger,
     ) {
-        NumberInputBox(
-            intValue = duration,
-
-            label = { Text(Str(R.string.within_seconds), color = Color.Unspecified) },
-            onValueChange = { newVal, hasErr ->
-                if (newVal != null) {
-                    duration = newVal
-                    spf.setDuration(duration)
-                }
-            },
-            leadingIconId = R.drawable.ic_duration,
-        )
         RegexInputBox(
             label = { Text(Str(R.string.sms_content_pattern)) },
             regexStr = regexStr,
@@ -85,6 +74,23 @@ fun CallAlert() {
             testable = true,
             leadingIcon = { GreyIcon18(R.drawable.ic_open_msg) }
         )
+        NumberInputBox(
+            intValue = duration,
+            label = { Text(Str(R.string.within_seconds), color = Color.Unspecified) },
+            onValueChange = { newVal, hasErr ->
+                if (newVal != null) {
+                    duration = newVal
+                    spf.setInterval(duration)
+                }
+            },
+            leadingIconId = R.drawable.ic_duration,
+        )
+        LabeledRow(R.string.lockscreen_protect) {
+            SwitchBox(isLockscreenProtect) { isTurningOn ->
+                spf.setLockScreenProtectEnabled(isTurningOn)
+                isLockscreenProtect = isTurningOn
+            }
+        }
     }
 
     var collapsed by remember { mutableStateOf(spf.isCollapsed()) }
@@ -96,7 +102,7 @@ fun CallAlert() {
         },
         label = {
             RowVCenterSpaced(4) {
-                SettingLabel(R.string.call_alert)
+                SettingLabel(R.string.sms_bombing)
                 if (collapsed) {
                     GreyIcon16(
                         iconId = R.drawable.ic_dropdown_arrow,
@@ -104,7 +110,7 @@ fun CallAlert() {
                 }
             }
         },
-        helpTooltip = Str(R.string.help_call_alert),
+        helpTooltip = Str(R.string.help_sms_bombing),
         content = {
             if (isEnabled) {
                 StrokeButton(
@@ -148,7 +154,7 @@ fun CallAlert() {
                 // Regex
                 Text(
                     text = regexStr,
-                    color = C.textGreen,
+                    color = C.block,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
                     modifier = M.padding(top = 2.dp),

@@ -55,4 +55,38 @@
     </string>
     <string name="unknown_error">Unbekannter Fehler.</string>
     <string name="checking_auth_credential">Überprüfe Autorisierungsdaten.</string>
+    <string name="sms_bombing">SMS-Bombardierung</string>
+    <string name="help_sms_bombing">
+        <![CDATA[
+        Anti-SMS-Bombardierung.<br>
+        <br>
+        Verhindere massive, kontinuierliche Fluten von SMS-Nachrichten, die sich oft hauptsächlich
+          aus OTP-Verifizierungen (One-Time Password) zusammensetzen.<br>
+        <br>
+        Zum Beispiel SMS-Nachrichten wie:<br>
+        &ensp; <font color="#888888">Dein OTP ist: 1234.</font><br>
+        &ensp; <font color="#888888">Dies ist dein Verifizierungscode: 1234.</font><br>
+        &ensp; <font color="#888888">1234 ist dein Validierungscode.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Inhalts-Regex</font></h5>
+        Diese Funktion gilt nur für Nachrichten, die mit dieser Regex übereinstimmen. Eine typische Regex wäre: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Intervall</font></h5>
+        Wenn eine nachfolgende OTP-Nachricht innerhalb dieses Zeitintervalls eintrifft, wird sie als
+          Teil des Bombardierungsangriffs betrachtet und blockiert.<br>
+        (Standard: 30 Sekunden)<br>
+        <br>
+        Dies blockiert alle folgenden Bomben, mit Ausnahme der ersten.<br>
+        <br>
+        <h5><font color="#00BFFF">- Sperrbildschirmschutz</font></h5>
+        Aktiviere dies, um alle Bomben im Sperrbildschirmmodus zu blockieren, einschließlich der ersten. <br>
+        <br>
+        Normalerweise sollte dein Bildschirm entsperrt sein, während du auf einen Verifizierungscode wartest.
+        Wenn solche Nachrichten eintreffen, während sich das Gerät im Sperrbildschirmmodus befindet, handelt es sich wahrscheinlich um Bomben.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protect">Sperrbildschirmschutz</string>
 </resources>

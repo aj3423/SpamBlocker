@@ -77,7 +77,7 @@ open class SmsReceiver : BroadcastReceiver() {
         run {
             val spf = spf.CallAlert(ctx)
             val regex = spf.getRegexStr()
-            if (spf.isEnabled() && isReceiveSmsPermissionGranted(ctx)) {
+            if (spf.isEnabled()) {
                 val flags = spf.getRegexFlags()
                 val matches = regex.regexMatches(messageBody, flags)
                 if (matches) {

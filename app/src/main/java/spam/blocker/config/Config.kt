@@ -147,6 +147,39 @@ class CallAlert {
         }
     }
 }
+@Serializable
+class SmsBombing {
+    var enabled = false
+    var collapsed = false
+    var duration = 0
+    var regexStr = ""
+    var regexFlags = 0
+    var timestamp: Long = 0
+    var lockscreenProtect = true
+
+    fun load(ctx: Context) {
+        val spf = spf.SmsBombing(ctx)
+        enabled = spf.isEnabled()
+        collapsed = spf.isCollapsed()
+        duration = spf.getInterval()
+        regexStr = spf.getRegexStr()
+        regexFlags = spf.getRegexFlags()
+        timestamp = spf.getTimestamp()
+        lockscreenProtect = spf.isLockScreenProtectEnabled()
+    }
+
+    fun apply(ctx: Context) {
+        spf.SmsBombing(ctx).apply {
+            setEnabled(enabled)
+            setCollapsed(collapsed)
+            setInterval(duration)
+            setRegexStr(regexStr)
+            setRegexFlags(regexFlags)
+            setTimestamp(timestamp)
+            setLockScreenProtectEnabled(lockscreenProtect)
+        }
+    }
+}
 
 @Serializable
 class BotOptions {
@@ -495,6 +528,7 @@ class Configs {
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
     val callAlert = CallAlert()
+    val smsBombing = SmsBombing()
 
     val apiQuery = ApiQuery()
     val apiReport = ApiReport()
@@ -525,6 +559,7 @@ class Configs {
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
         callAlert.load(ctx)
+        smsBombing.load(ctx)
 
         apiQuery.load(ctx)
         apiReport.load(ctx)
@@ -557,6 +592,7 @@ class Configs {
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
         callAlert.apply(ctx)
+        smsBombing.apply(ctx)
 
         apiQuery.apply(ctx)
         apiReport.apply(ctx)

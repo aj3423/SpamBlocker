@@ -55,4 +55,37 @@
     </string>
     <string name="unknown_error">未知错误。</string>
     <string name="checking_auth_credential">正在检查授权凭据。</string>
+    <string name="sms_bombing">短信轰炸</string>
+    <string name="help_sms_bombing">
+        <![CDATA[
+        反短信轰炸。<br>
+        <br>
+        防止大量、连续的短信洪水，这些短信通常主要由 OTP（一次性密码）验证组成。<br>
+        <br>
+        例如，短信消息如下：<br>
+        &ensp; <font color="#888888">您的 OTP 是：1234。</font><br>
+        &ensp; <font color="#888888">这是您的验证码：1234。</font><br>
+        &ensp; <font color="#888888">1234 是您的验证码。</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 内容正则表达式</font></h5>
+        此功能仅适用于与此正则表达式匹配的消息，一个典型的正则表达式是： <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 间隔</font></h5>
+        如果在此时间间隔内收到后续 OTP 消息，则将其视为
+          轰炸攻击的一部分，将被阻止。<br>
+        （默认值：30 秒）<br>
+        <br>
+        这将阻止所有后续炸弹，除了第一个。<br>
+        <br>
+        <h5><font color="#00BFFF">- 锁屏保护</font></h5>
+        启用此选项可阻止锁屏模式下的所有炸弹，包括第一个。 <br>
+        <br>
+        通常，在等待验证码时，您的屏幕应该已解锁。
+        当设备处于锁定屏幕模式时收到此类消息时，它们很可能是炸弹。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protect">锁屏保护</string>
 </resources>

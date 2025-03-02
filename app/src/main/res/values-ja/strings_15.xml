@@ -55,4 +55,36 @@
     </string>
     <string name="unknown_error">不明なエラー。</string>
     <string name="checking_auth_credential">認証情報を確認しています。</string>
+    <string name="sms_bombing">SMS爆撃</string>
+    <string name="help_sms_bombing">
+        <![CDATA[
+        SMS爆撃対策。<br>
+        <br>
+        OTP（ワンタイムパスワード）検証で主に構成されるSMSメッセージの大規模かつ継続的な洪水を防ぎます。<br>
+        <br>
+        たとえば、次のようなSMSメッセージ：<br>
+        &ensp; <font color="#888888">あなたのOTPは：1234です。</font><br>
+        &ensp; <font color="#888888">これはあなたの認証コードです：1234。</font><br>
+        &ensp; <font color="#888888">1234はあなたの検証コードです。</font><br>
+        <br>
+        <h5><font color="#00BFFF">- コンテンツの正規表現</font></h5>
+        この機能は、この正規表現に一致するメッセージにのみ適用されます。典型的な正規表現は次のようになります：<br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 間隔</font></h5>
+        後続のOTPメッセージがこの時間間隔内に到着した場合、爆撃攻撃の一部と見なされ、ブロックされます。<br>
+        （デフォルト：30秒）<br>
+        <br>
+        これにより、最初のメッセージを除く、後続のすべての爆撃がブロックされます。<br>
+        <br>
+        <h5><font color="#00BFFF">- ロックスクリーン保護</font></h5>
+        これを有効にすると、最初のメッセージを含む、ロックスクリーンモードのすべての爆撃がブロックされます。<br>
+        <br>
+        通常、認証コードを待っている間、画面はロック解除されているはずです。
+        デバイスがロックスクリーンモードの場合にそのようなメッセージが到着した場合、それらは爆撃である可能性があります。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度：20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protect">ロックスクリーン保護</string>
 </resources>

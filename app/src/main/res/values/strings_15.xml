@@ -55,4 +55,38 @@
     </string>
     <string name="unknown_error">Unknown error.</string>
     <string name="checking_auth_credential">Checking authorization credentials.</string>
+    <string name="sms_bombing">SMS Bombing</string>
+    <string name="help_sms_bombing">
+        <![CDATA[
+        Anti SMS Bombing.<br>
+        <br>
+        Prevent massive, continuous floods of SMS messages, which are often composed primarily
+          of OTP (One-Time Password) verifications.<br>
+        <br>
+        For example, SMS messages like:<br>
+        &ensp; <font color="#888888">Your OTP is: 1234.</font><br>
+        &ensp; <font color="#888888">This is your verification code: 1234.</font><br>
+        &ensp; <font color="#888888">1234 is your validation code.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Content regex</font></h5>
+        This feature applies only to messages that match this regex, a typical regex would be: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Interval</font></h5>
+        If a subsequent OTP message arrives within this time interval, it is considered
+          part of the bombing attack and will be blocked.<br>
+        (default: 30 seconds)<br>
+        <br>
+        This will block all following bombs, except for the first one.<br>
+        <br>
+        <h5><font color="#00BFFF">- Lockscreen protect</font></h5>
+        Enable this to block all bombs in lockscreen mode, including the first one. <br>
+        <br>
+        Usually, your screen should have been unlocked while waiting for a verification code.
+        When such messages arrive while the device is in lockscreen mode, they are likely to be bombs.<br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protect">Lockscreen protect</string>
 </resources>

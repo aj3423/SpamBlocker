@@ -55,4 +55,38 @@
     </string>
     <string name="unknown_error">Error desconocido.</string>
     <string name="checking_auth_credential">Verificando las credenciales de autorización.</string>
+    <string name="sms_bombing">Bombardeo de SMS</string>
+    <string name="help_sms_bombing">
+        <![CDATA[
+        Anti Bombardeo de SMS.<br>
+        <br>
+        Previene inundaciones masivas y continuas de mensajes SMS, que a menudo se componen principalmente
+          de verificaciones de OTP (contraseña de un solo uso).<br>
+        <br>
+        Por ejemplo, mensajes SMS como:<br>
+        &ensp; <font color="#888888">Su OTP es: 1234.</font><br>
+        &ensp; <font color="#888888">Este es su código de verificación: 1234.</font><br>
+        &ensp; <font color="#888888">1234 es su código de validación.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Regex de contenido</font></h5>
+        Esta función solo se aplica a los mensajes que coinciden con esta expresión regular, una expresión regular típica sería: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Intervalo</font></h5>
+        Si un mensaje OTP subsiguiente llega dentro de este intervalo de tiempo, se considera
+          parte del ataque de bombardeo y se bloqueará.<br>
+        (predeterminado: 30 segundos)<br>
+        <br>
+        Esto bloqueará todas las bombas siguientes, excepto la primera.<br>
+        <br>
+        <h5><font color="#00BFFF">- Protección de la pantalla de bloqueo</font></h5>
+        Habilite esto para bloquear todas las bombas en el modo de pantalla de bloqueo, incluida la primera. <br>
+        <br>
+        Por lo general, su pantalla debería haberse desbloqueado mientras espera un código de verificación.
+        Cuando tales mensajes llegan mientras el dispositivo está en modo de pantalla de bloqueo, es probable que sean bombas.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protect">Proteger pantalla bloqueo</string>
 </resources>
