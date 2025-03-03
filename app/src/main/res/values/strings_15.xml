@@ -94,8 +94,9 @@
             When disabled, history records will not be logged in the local database and will not be displayed here.<br>
             <br>
             <font color="#00BFFF"><b>Expiry</b></font><br>
-            &emsp; When logging is enabled, history records will expire after N days, expired records will be deleted automatically.
+            &emsp; When enabled, history records will expire after N days, expired records will be deleted automatically.
         ]]>
     </string>
-    <string name="enable_history_logging">Log History</string>
+    <string name="never_expire"><short>Never Expire</short></string>
+    <string name="enable_history_logging">Log</string>
 </resources>

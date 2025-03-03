@@ -89,11 +89,12 @@
     <string name="lockscreen_protect"><translate>محافظت از صفحه قفل</translate></string>
     <string name="help_history_logging">
         <![CDATA[
-            وقتی غیرفعال شود، سوابق تاریخچه در پایگاه داده محلی ثبت نمی شوند و در اینجا نمایش داده نمی شوند.<br>
+            هنگامی که غیرفعال باشد، سوابق تاریخچه در پایگاه داده محلی ثبت نمی شوند و در اینجا نمایش داده نمی شوند.<br>
             <br>
             <font color="#00BFFF"><b>انقضا</b></font><br>
-            &emsp; وقتی ثبت وقایع فعال باشد، سوابق تاریخچه پس از N روز منقضی می شوند، سوابق منقضی شده به طور خودکار حذف می شوند.
+            &emsp; هنگامی که فعال باشد، سوابق تاریخچه پس از N روز منقضی می شوند، سوابق منقضی شده به طور خودکار حذف می شوند.
         ]]>
     </string>
-    <string name="enable_history_logging">ثبت تاریخچه</string>
+    <string name="enable_history_logging"><short>ثبت</short></string>
+    <string name="never_expire"><short>هرگز منقضی نشو</short></string>
 </resources>

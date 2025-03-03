@@ -93,8 +93,9 @@
             禁用后，历史记录将不会记录在本地数据库中，也不会在此处显示。<br>
             <br>
             <font color="#00BFFF"><b>有效期</b></font><br>
-            &emsp; 启用日志记录后，历史记录将在 N 天后过期，过期的记录将被自动删除。
+            &emsp; 启用后，历史记录将在 N 天后过期，过期的记录将自动删除。
         ]]>
     </string>
-    <string name="enable_history_logging">记录历史</string>
+    <string name="enable_history_logging">记录</string>
+    <string name="never_expire"><short>永不过期</short></string>
 </resources>

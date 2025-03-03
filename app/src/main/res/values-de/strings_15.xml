@@ -93,9 +93,10 @@
         <![CDATA[
             Wenn deaktiviert, werden Verlaufseinträge nicht in der lokalen Datenbank protokolliert und hier nicht angezeigt.<br>
             <br>
-            <font color="#00BFFF"><b>Ablauf</b></font><br>
-            &emsp; Wenn die Protokollierung aktiviert ist, laufen Verlaufseinträge nach N Tagen ab, abgelaufene Einträge werden automatisch gelöscht.
+            <font color="#00BFFF"><b>Expiry</b></font><br>
+            &emsp; Wenn aktiviert, laufen Verlaufseinträge nach N Tagen ab, abgelaufene Einträge werden automatisch gelöscht.
         ]]>
     </string>
-    <string name="enable_history_logging">Verlauf protokollieren</string>
+    <string name="enable_history_logging">Protokoll</string>
+    <string name="never_expire"><short>Nie</short></string>
 </resources>

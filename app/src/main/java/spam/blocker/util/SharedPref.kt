@@ -147,9 +147,11 @@ class spf { // for namespace only
 
         fun isLoggingEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, getTTLOld() != 0) }
         fun setLoggingEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, enabled) }
+        fun isExpiryEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, getTTLOld() != -1) }
+        fun setExpiryEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, enabled) }
         fun getTTLOld(): Int { return readInt(Def.SETTING_HISTORY_TTL, -1) } // -1: never expire, 0: disable logging. For history compatibility
         fun setTTLOld(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
-        fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL_DAYS, 14) } // 14 days
+        fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL_DAYS, if(getTTLOld() > 0) { getTTLOld() } else { 14 }) } // 14 days
         fun setTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL_DAYS, days) }
 
         fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }

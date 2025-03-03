@@ -48,6 +48,7 @@ object Def {
     const val SETTING_SHOW_PASSED = "show_passed"
     const val SETTING_SHOW_BLOCKED = "show_blocked"
     const val SETTING_HISTORY_LOGGING_ENABLED = "history_logging_enabled"
+    const val SETTING_HISTORY_EXPIRY_ENABLED = "history_expiry_enabled"
     const val SETTING_SHOW_INDICATOR = "show_indicator"
     const val SETTING_HISTORY_TTL = "history_ttl" // for history compatibility only
     const val SETTING_HISTORY_TTL_DAYS = "history_ttl_days"

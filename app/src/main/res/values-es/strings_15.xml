@@ -91,11 +91,12 @@
     <string name="lockscreen_protect">Proteger pantalla bloqueo</string>
     <string name="help_history_logging">
         <![CDATA[
-            Cuando está desactivado, los registros del historial no se registrarán en la base de datos local y no se mostrarán aquí.<br>
+            Cuando está deshabilitado, los registros del historial no se registrarán en la base de datos local y no se mostrarán aquí.<br>
             <br>
             <font color="#00BFFF"><b>Caducidad</b></font><br>
-            &emsp; Cuando el registro está habilitado, los registros del historial caducarán después de N días, los registros caducados se eliminarán automáticamente.
+            &emsp; Cuando está habilitado, los registros del historial caducarán después de N días, los registros caducados se eliminarán automáticamente.
         ]]>
     </string>
-    <string name="enable_history_logging">Registrar historial</string>
+    <string name="enable_history_logging">Registrar</string>
+    <string name="never_expire"><short>Nunca caduca</short></string>
 </resources>

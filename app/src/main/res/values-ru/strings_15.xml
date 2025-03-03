@@ -91,11 +91,12 @@
     <string name="lockscreen_protect">Защита экрана блокировки</string>
     <string name="help_history_logging">
         <![CDATA[
-            <translate>При отключении записи истории не будут регистрироваться в локальной базе данных и не будут отображаться здесь.</translate><br>
+            Когда эта функция отключена, записи истории не будут регистрироваться в локальной базе данных и не будут отображаться здесь.<br>
             <br>
-            <font color="#00BFFF"><b><translate>Срок действия</translate></b></font><br>
-            &emsp; <translate>Когда ведение журнала включено, записи истории истекают через N дней, просроченные записи удаляются автоматически.</translate>
+            <font color="#00BFFF"><b>Срок действия</b></font><br>
+            &emsp; Если эта функция включена, срок действия записей истории истечет через N дней, устаревшие записи будут удалены автоматически.
         ]]>
     </string>
-    <string name="enable_history_logging"><translate>Вести журнал истории</translate></string>
+    <string name="enable_history_logging"><translate>Журнал</translate></string>
+    <string name="never_expire"><short>Никогда</short></string>
 </resources>

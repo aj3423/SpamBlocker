@@ -46,9 +46,10 @@ fun reScheduleHistoryCleanup(ctx: Context) {
     val spf = spf.HistoryOptions(ctx)
 
     val loggingEnabled = spf.isLoggingEnabled()
+    val expiryEnabled = spf.isExpiryEnabled()
     val ttl = spf.getTTL()
 
-    if (loggingEnabled && ttl >= 0) {
+    if (loggingEnabled && expiryEnabled && ttl >= 0) {
         MyWorkManager.schedule(
             ctx,
             scheduleConfig = Daily().serialize(),
@@ -73,6 +74,7 @@ fun HistoryFabs(
     var showIndicator by rememberSaveable { mutableStateOf(spf.getShowIndicator()) }
 
     var loggingEnabled by remember { mutableStateOf(spf.isLoggingEnabled()) }
+    var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled()) }
     var ttl by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
     var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
     var rows by rememberSaveable { mutableStateOf<Int?>(spf.getInitialSmsRowCount()) }
@@ -96,22 +98,38 @@ fun HistoryFabs(
                             reScheduleHistoryCleanup(ctx)
                         }
                     ) {
+                        // Expiry Enabled
+                        LabeledRow(R.string.expiry) {
+                            SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
+                                spf.setExpiryEnabled(isOn)
+                                expiryEnabled = isOn
+                            })
+                        }
+
                         // Expiry days
-                        NumberInputBox(
-                            intValue = ttl,
-                            onValueChange = { newValue, hasError ->
-                                if (!hasError) {
-                                    ttl = newValue!!
-                                    spf.setTTL(newValue)
-                                }
-                            },
-                            label = { Text(Str(R.string.days)) },
-                            leadingIconId = R.drawable.ic_recycle_bin,
-                        )
+                        if (expiryEnabled) {
+                            NumberInputBox(
+                                intValue = ttl,
+                                onValueChange = { newValue, hasError ->
+                                    if (!hasError) {
+                                        ttl = newValue!!
+                                        spf.setTTL(newValue)
+                                    }
+                                },
+                                label = { Text(Str(R.string.days)) },
+                                leadingIconId = R.drawable.ic_recycle_bin,
+                            )
+                        }
                     }
 
-                    val days = ctx.resources.getQuantityString(R.plurals.days, ttl, ttl)
-                    GreyButton(label = days) { trigger.value = true }
+                    // Button
+                    GreyButton(
+                        label = if (expiryEnabled) {
+                            ctx.resources.getQuantityString(R.plurals.days, ttl, ttl)
+                        } else {
+                            Str(R.string.never_expire)
+                        }
+                    ) { trigger.value = true }
                 }
 
                 // Enabled

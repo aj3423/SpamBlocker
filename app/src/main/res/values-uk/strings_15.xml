@@ -55,7 +55,7 @@
     </string>
     <string name="unknown_error">Невідома помилка.</string>
     <string name="checking_auth_credential">Перевірка облікових даних авторизації.</string>
-    <string name="sms_bombing">SMS Bombing</string>
+    <string name="sms_bombing">SMS-бомбардування</string>
     <string name="help_sms_bombing">
         <![CDATA[
         Захист від SMS-бомбардування.<br>
@@ -94,8 +94,9 @@
             Якщо вимкнено, записи історії не будуть реєструватися в локальній базі даних і не відображатимуться тут.<br>
             <br>
             <font color="#00BFFF"><b>Термін дії</b></font><br>
-            &emsp; Коли ведення журналу ввімкнено, термін дії записів історії закінчиться через N днів, записи, термін дії яких закінчився, буде автоматично видалено.
+            &emsp; Якщо ввімкнено, термін дії записів історії закінчиться через N днів, записи з вичерпаним терміном дії будуть видалені автоматично.
         ]]>
     </string>
-    <string name="enable_history_logging">Записувати історію</string>
+    <string name="enable_history_logging">Журнал</string>
+    <string name="never_expire"><short>Не закінчується</short></string>
 </resources>

@@ -91,11 +91,12 @@
     <string name="lockscreen_protect">Protezione schermata di blocco</string>
     <string name="help_history_logging">
         <![CDATA[
-            Quando disabilitato, i record della cronologia non verranno registrati nel database locale e non verranno visualizzati qui.<br>
+            Quando è disabilitato, i record della cronologia non verranno registrati nel database locale e non verranno visualizzati qui.<br>
             <br>
             <font color="#00BFFF"><b>Scadenza</b></font><br>
-            &emsp; Quando la registrazione è abilitata, i record della cronologia scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.
+            &emsp; Quando è abilitato, i record della cronologia scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.
         ]]>
     </string>
-    <string name="enable_history_logging">Registra cronologia</string>
+    <string name="enable_history_logging">Log</string>
+    <string name="never_expire"><short>Mai</short></string>
 </resources>
