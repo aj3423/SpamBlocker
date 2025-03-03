@@ -89,4 +89,13 @@
         ]]>
     </string>
     <string name="lockscreen_protect">Защита экрана блокировки</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            <translate>При отключении записи истории не будут регистрироваться в локальной базе данных и не будут отображаться здесь.</translate><br>
+            <br>
+            <font color="#00BFFF"><b><translate>Срок действия</translate></b></font><br>
+            &emsp; <translate>Когда ведение журнала включено, записи истории истекают через N дней, просроченные записи удаляются автоматически.</translate>
+        ]]>
+    </string>
+    <string name="enable_history_logging"><translate>Вести журнал истории</translate></string>
 </resources>

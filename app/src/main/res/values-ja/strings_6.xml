@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">すべてのレコードを削除してもよろしいですか？</string>
     <string name="expiry">有効期限</string>
     <string name="days">日</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; 履歴レコードはデータベースに記録され、N日後に期限切れになります。\n
-            期限切れのレコードは自動的に削除されます。<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; 履歴ログは無効になっており、データベースには何も記録されません。<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; レコードは記録され、期限切れになることはありません。
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         有効にした場合、SMSの内容もデータベースに記録され、このリストに表示されます。\n

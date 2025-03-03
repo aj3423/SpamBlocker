@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Bestätigen Sie, dass Sie alle Datensätze löschen möchten?</string>
     <string name="expiry">Ablauf</string>
     <string name="days">Tage</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Die Verlaufsdatensätze werden in der Datenbank protokolliert und verfallen nach N Tagen,
-              abgelaufene Datensätze werden automatisch gelöscht.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; Die Verlaufsprotokollierung ist deaktiviert, es wird nichts in der Datenbank protokolliert.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Die Datensätze werden protokolliert und verfallen nie.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Wenn aktiviert, wird der SMS-Inhalt ebenfalls in der Datenbank protokolliert und in dieser Liste angezeigt, er wird nicht in der Datenbank protokolliert, wenn er deaktiviert ist.<br>

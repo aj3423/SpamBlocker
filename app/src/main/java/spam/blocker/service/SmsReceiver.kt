@@ -9,7 +9,6 @@ import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
-import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.NotificationTrampolineActivity
@@ -55,7 +54,7 @@ open class SmsReceiver : BroadcastReceiver() {
         run {
             // 1. log to db
             val spf = spf.HistoryOptions(ctx)
-            val isLogEnabled = spf.getTTL() != HISTORY_TTL_DISABLED
+            val isLogEnabled = spf.isLoggingEnabled()
             val recordId = if (isLogEnabled)
                 SmsTable().addNewRecord(
                     ctx, HistoryRecord(

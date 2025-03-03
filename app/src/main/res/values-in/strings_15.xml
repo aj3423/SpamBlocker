@@ -89,4 +89,13 @@
         ]]>
     </string>
     <string name="lockscreen_protect">Perlindungan Layar Kunci</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            Jika dinonaktifkan, catatan riwayat tidak akan dicatat dalam database lokal dan tidak akan ditampilkan di sini.<br>
+            <br>
+            <font color="#00BFFF"><b>Kedaluwarsa</b></font><br>
+            &emsp; Ketika pencatatan diaktifkan, catatan riwayat akan kedaluwarsa setelah N hari, catatan yang kedaluwarsa akan dihapus secara otomatis.
+        ]]>
+    </string>
+    <string name="enable_history_logging">Catat riwayat</string>
 </resources>

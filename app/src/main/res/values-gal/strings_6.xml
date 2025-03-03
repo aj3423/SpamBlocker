@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Confirmar eliminar todos os rexistros?</string>
     <string name="expiry">Caducidade</string>
     <string name="days">Días</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Os rexistros do historial serán rexistrados na base de datos e caducarán despois de N días,
-              os rexistros caducados serán eliminados automaticamente.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; O rexistro do historial está desactivado, nada se rexistrará na base de datos.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Os rexistros serán rexistrados e nunca caducarán.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Cando está habilitado, o contido do SMS tamén se rexistrará na base de datos e se mostrará nesta lista, non se rexistrará na base de datos cando estea desactivado.<br>

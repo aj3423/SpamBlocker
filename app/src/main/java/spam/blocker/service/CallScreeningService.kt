@@ -15,7 +15,6 @@ import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
-import spam.blocker.def.Def.HISTORY_TTL_DISABLED
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.reportSpam
@@ -122,7 +121,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun logToDb(ctx: Context, r: ICheckResult, rawNumber: String) {
-        val isDbLogEnabled = spf.HistoryOptions(ctx).getTTL() != HISTORY_TTL_DISABLED
+        val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
         val recordId = if (isDbLogEnabled) {
             CallTable().addNewRecord(
                 ctx, HistoryRecord(

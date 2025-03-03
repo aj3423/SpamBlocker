@@ -54,7 +54,7 @@ class HistoryOptions {
     var showPassed = true
     var showBlocked = true
     var showIndicator = false
-
+    var loggingEnabled = true
     var ttl = -1
     var logSmsContent = false
     var initialSmsRowCount = 1
@@ -64,7 +64,7 @@ class HistoryOptions {
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
         showIndicator = spf.getShowIndicator()
-
+        loggingEnabled = spf.isLoggingEnabled()
         ttl = spf.getTTL()
         logSmsContent = spf.isLogSmsContentEnabled()
         initialSmsRowCount = spf.getInitialSmsRowCount()
@@ -75,7 +75,7 @@ class HistoryOptions {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
             setShowIndicator(showIndicator)
-
+            setLoggingEnabled(loggingEnabled)
             setTTL(ttl)
             setLogSmsContentEnabled(logSmsContent)
             setInitialSmsRowCount(initialSmsRowCount)

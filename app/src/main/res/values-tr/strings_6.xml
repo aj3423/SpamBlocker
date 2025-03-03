@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Tüm kayıtları silmek için onaylıyor musunuz?</string>
     <string name="expiry">Son kullanma tarihi</string>
     <string name="days">Günler</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Tarih kayıtları veritabanına kaydedilecek ve N gün sonra süresi dolacaktır,
-              Süresi dolmuş kayıtlar otomatik olarak silinecektir.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; Geçmiş kaydı devre dışı bırakıldı, veritabanına hiçbir şey kaydedilmeyecektir.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Kayıtlar kaydedilecek ve asla süresi dolmayacaktır.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Açık olduğunda, SMS içeriği de veritabanına kaydedilecek ve bu listede görüntülenecektir; kapalı olduğunda ise veritabanına kaydedilmeyecektir.<br>

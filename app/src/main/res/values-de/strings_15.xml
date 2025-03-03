@@ -89,4 +89,13 @@
         ]]>
     </string>
     <string name="lockscreen_protect">Sperrbildschirmschutz</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            Wenn deaktiviert, werden Verlaufseinträge nicht in der lokalen Datenbank protokolliert und hier nicht angezeigt.<br>
+            <br>
+            <font color="#00BFFF"><b>Ablauf</b></font><br>
+            &emsp; Wenn die Protokollierung aktiviert ist, laufen Verlaufseinträge nach N Tagen ab, abgelaufene Einträge werden automatisch gelöscht.
+        ]]>
+    </string>
+    <string name="enable_history_logging">Verlauf protokollieren</string>
 </resources>

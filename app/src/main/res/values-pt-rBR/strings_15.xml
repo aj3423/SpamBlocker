@@ -89,4 +89,13 @@
         ]]>
     </string>
     <string name="lockscreen_protect">Proteção da tela de bloqueio</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            Quando desativado, os registros de histórico não serão registrados no banco de dados local e não serão exibidos aqui.<br>
+            <br>
+            <font color="#00BFFF"><b>Expiração</b></font><br>
+            &emsp; Quando o registro está ativado, os registros de histórico expirarão após N dias, os registros expirados serão excluídos automaticamente.
+        ]]>
+    </string>
+    <string name="enable_history_logging">Registrar histórico</string>
 </resources>

@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Подтвердить удаление всех записей?</string>
     <string name="expiry">Срок действия</string>
     <string name="days">Дней</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Записи истории будут записаны в базу данных и истекут через N дней,
-              истекшие записи будут удалены автоматически.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; Ведение журнала истории отключено, в базу данных ничего не будет записываться.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Записи будут записываться и никогда не истекут.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         При включении содержимое SMS также будет записываться в базу данных и отображаться в этом списке, при отключении оно не будет записываться в базу данных.<br>

@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">¿Confirmar para eliminar todos los registros?</string>
     <string name="expiry">Caducidad</string>
     <string name="days">Días</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Los registros de historial se registrarán en la base de datos y expirarán después de N días,
-              los registros expirados se eliminarán automáticamente.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; El registro del historial está desactivado, nada se registrará en la base de datos.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Los registros se registrarán y nunca expirarán.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Cuando esté habilitado, el contenido del SMS también se registrará en la base de datos y se mostrará en esta lista, no se registrará en la base de datos cuando esté deshabilitado.<br>

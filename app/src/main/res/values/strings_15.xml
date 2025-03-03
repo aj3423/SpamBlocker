@@ -14,14 +14,14 @@
         2. Open the API page:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Press the \"Create API key\" button.<br>
+        3. Press the "Create API key" button.<br>
         <br>
         4. Copy the key, then fill it in below.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Categorize this SMS message as Political, Fraud, Survey, or Marketing.
-        If none applies, answer \"Valid\", otherwise, answer the category only, don\'t answer anything else.
+        If none applies, answer "Valid", otherwise, answer the category only, don\'t answer anything else.
         The SMS message is:
         {sms}
     </string>
@@ -89,4 +89,13 @@
         ]]>
     </string>
     <string name="lockscreen_protect">Lockscreen protect</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            When disabled, history records will not be logged in the local database and will not be displayed here.<br>
+            <br>
+            <font color="#00BFFF"><b>Expiry</b></font><br>
+            &emsp; When logging is enabled, history records will expire after N days, expired records will be deleted automatically.
+        ]]>
+    </string>
+    <string name="enable_history_logging">Log History</string>
 </resources>

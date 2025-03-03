@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Confirmar a exclusão de todos os registros?</string>
     <string name="expiry">Expiração</string>
     <string name="days">Dias</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Os registros do histórico serão gravados no banco de dados e expirarão após N dias,
-              registros expirados serão excluídos automaticamente.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; O registro do histórico está desabilitado, nada será registrado no banco de dados.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Os registros serão gravados e nunca expirarão.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Quando habilitado, o conteúdo do SMS também será registrado no banco de dados e exibido nesta lista, ele não será registrado no banco de dados quando desabilitado.<br>

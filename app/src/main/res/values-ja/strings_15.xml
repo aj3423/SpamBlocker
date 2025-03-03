@@ -87,4 +87,13 @@
         ]]>
     </string>
     <string name="lockscreen_protect">ロックスクリーン保護</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            無効にすると、履歴レコードはローカルデータベースに記録されず、ここには表示されません。<br>
+            <br>
+            <font color="#00BFFF"><b>有効期限</b></font><br>
+            &emsp; ロギングが有効になっている場合、履歴レコードはN日後に期限切れになり、期限切れのレコードは自動的に削除されます。
+        ]]>
+    </string>
+    <string name="enable_history_logging">履歴を記録</string>
 </resources>

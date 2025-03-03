@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
     <string name="expiry">Expiry</string>
     <string name="days">Days</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; The history records will be logged in database and will expire after N days,
-              expired records will be deleted automatically.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; The history logging is disabled, nothing will be logged in the database.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; The records will be logged and will never expire.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         When enabled, the SMS content will also be logged in the database and displayed in this list, it will not be logged in database when disabled.<br>

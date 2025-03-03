@@ -24,6 +24,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
@@ -42,18 +43,18 @@ private const val HISTORY_CLEANUP_WORK_TAG = "history_cleanup_work_tag"
 fun reScheduleHistoryCleanup(ctx: Context) {
     MyWorkManager.cancelByTag(ctx, HISTORY_CLEANUP_WORK_TAG)
 
-    val ttl = spf.HistoryOptions(ctx).getTTL()
-    if (ttl > 0) {
+    val spf = spf.HistoryOptions(ctx)
+
+    val loggingEnabled = spf.isLoggingEnabled()
+    val ttl = spf.getTTL()
+
+    if (loggingEnabled && ttl >= 0) {
         MyWorkManager.schedule(
             ctx,
             scheduleConfig = Daily().serialize(),
             actionsConfig = listOf(CleanupHistory(ttl)).serialize(),
             workTag = HISTORY_CLEANUP_WORK_TAG
         )
-    } else if (ttl == 0) {
-        // no logging, no need to cleanup
-    } else {
-        // logging + never expire, no need to cleanup
     }
 }
 
@@ -71,7 +72,8 @@ fun HistoryFabs(
     var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }
     var showIndicator by rememberSaveable { mutableStateOf(spf.getShowIndicator()) }
 
-    var historyTTL by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
+    var loggingEnabled by remember { mutableStateOf(spf.isLoggingEnabled()) }
+    var ttl by rememberSaveable { mutableIntStateOf(spf.getTTL()) }
     var logSmsContent by rememberSaveable { mutableStateOf(spf.isLogSmsContentEnabled()) }
     var rows by rememberSaveable { mutableStateOf<Int?>(spf.getInitialSmsRowCount()) }
 
@@ -81,24 +83,44 @@ fun HistoryFabs(
         trigger = settingPopupTrigger,
         popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 500),
         content = {
-            // TTL
+            // Logging enabled / TTL
             LabeledRow(
-                labelId = R.string.expiry,
-                helpTooltipId = R.string.help_history_ttl
+                labelId = R.string.enable_history_logging,
+                helpTooltipId = R.string.help_history_logging
             ) {
-                NumberInputBox(
-                    intValue = historyTTL,
-                    onValueChange = { newValue, hasError ->
-                        if (!hasError) {
-                            historyTTL = newValue!!
-                            spf.setTTL(newValue)
-
+                if (loggingEnabled) {
+                    val trigger = remember { mutableStateOf(false) }
+                    PopupDialog(
+                        trigger = trigger,
+                        onDismiss = {
                             reScheduleHistoryCleanup(ctx)
                         }
-                    },
-                    label = { Text(Str(R.string.days)) },
-                    leadingIconId = R.drawable.ic_recycle_bin,
-                )
+                    ) {
+                        // Expiry days
+                        NumberInputBox(
+                            intValue = ttl,
+                            onValueChange = { newValue, hasError ->
+                                if (!hasError) {
+                                    ttl = newValue!!
+                                    spf.setTTL(newValue)
+                                }
+                            },
+                            label = { Text(Str(R.string.days)) },
+                            leadingIconId = R.drawable.ic_recycle_bin,
+                        )
+                    }
+
+                    val days = ctx.resources.getQuantityString(R.plurals.days, ttl, ttl)
+                    GreyButton(label = days) { trigger.value = true }
+                }
+
+                // Enabled
+                SwitchBox(checked = loggingEnabled, onCheckedChange = { isOn ->
+                    spf.setLoggingEnabled(isOn)
+                    loggingEnabled = isOn
+
+                    reScheduleHistoryCleanup(ctx)
+                })
             }
 
             // Log SMS Content

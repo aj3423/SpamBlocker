@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">确认要删除所有记录吗？</string>
     <string name="expiry">过期</string>
     <string name="days">天</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; 历史记录将被记录到数据库中，并在N天后过期，
-              过期记录将自动删除。 <br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; 历史记录日志已禁用，数据库中不会记录任何内容。 <br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; 记录将被记录并且永远不会过期。
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         启用后，短信内容也将记录在数据库中并显示在此列表中，禁用后将不会记录在数据库中。 <br>

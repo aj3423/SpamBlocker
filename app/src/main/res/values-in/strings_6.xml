@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Konfirmasi untuk menghapus semua Rekaman?</string>
     <string name="expiry">Kadaluwarsa</string>
     <string name="days">Hari</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Catatan riwayat akan dicatat dalam basis data dan akan kedaluwarsa setelah N hari,
-              catatan yang kadaluwarsa akan dihapus secara otomatis.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; Pencatatan riwayat dinonaktifkan, tidak ada yang akan dicatat dalam database.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Catatan akan dicatat dan tidak akan pernah kadaluwarsa.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Jika diaktifkan, isi SMS juga akan masuk ke dalam basis data dan ditampilkan dalam daftar ini, namun tidak akan masuk ke dalam basis data jika dinonaktifkan.<br>

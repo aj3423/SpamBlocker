@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Confirmer la suppression de tous les enregistrements ?</string>
     <string name="expiry">Expiration</string>
     <string name="days">Jours</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Les enregistrements de l\'historique seront enregistrés dans la base de données et expireront après N jours,
-              les enregistrements expirés seront supprimés automatiquement.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; La journalisation de l\'historique est désactivée, rien ne sera enregistré dans la base de données.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Les enregistrements seront consignés et n\'expireront jamais.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Lorsque cette option est activée, le contenu des SMS sera également enregistré dans la base de données et affiché dans cette liste, il ne sera pas enregistré dans la base de données lorsqu\'elle est désactivée.<br>

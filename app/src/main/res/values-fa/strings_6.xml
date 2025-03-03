@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">آیا از حذف همه سوابق مطمئن هستید؟</string>
     <string name="expiry">انقضا</string>
     <string name="days">روز</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; سوابق تاریخچه در پایگاه داده ثبت می‌شوند و پس از N روز منقضی می‌شوند،
-              سوابق منقضی شده به طور خودکار حذف می‌شوند.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; ثبت تاریخچه غیرفعال است، هیچ چیزی در پایگاه داده ثبت نمی‌شود.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; سوابق ثبت می‌شوند و هرگز منقضی نمی‌شوند.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         در صورت فعال بودن، محتوای پیامک نیز در پایگاه داده ثبت و در این لیست نمایش داده می‌شود، در غیر این صورت در پایگاه داده ثبت نمی‌شود.<br>

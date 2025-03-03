@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Підтвердити видалення всіх записів?</string>
     <string name="expiry">Термін дії</string>
     <string name="days">Дні</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Записи історії будуть записані в базу даних і закінчать дію через N днів,
-              записи, термін дії яких минув, будуть автоматично видалені.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; Ведення журналу історії вимкнено, нічого не буде записано в базу даних.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Записи будуть записані і ніколи не закінчать дію.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Якщо ввімкнено, вміст SMS також буде записано в базу даних і відображено в цьому списку, його не буде записано в базу даних, якщо вимкнено.<br>

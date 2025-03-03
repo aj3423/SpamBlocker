@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
-import spam.blocker.def.Def.HISTORY_TTL_NEVER_EXPIRE
 
 class spf { // for namespace only
 
@@ -146,12 +145,12 @@ class spf { // for namespace only
         fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, false) }
         fun setShowIndicator(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_INDICATOR, enabled) }
 
-        // TimeToLive for history records:
-        // -1: history records never expire, will not be auto deleted
-        // 0: history logging is completely disabled
-        // > 0: records will be deleted after x days
-        fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL, HISTORY_TTL_NEVER_EXPIRE) } // -1: never expire
-        fun setTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
+        fun isLoggingEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, getTTLOld() != 0) }
+        fun setLoggingEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, enabled) }
+        fun getTTLOld(): Int { return readInt(Def.SETTING_HISTORY_TTL, -1) } // -1: never expire, 0: disable logging. For history compatibility
+        fun setTTLOld(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
+        fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL_DAYS, 14) } // 14 days
+        fun setTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL_DAYS, days) }
 
         fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }
         fun setLogSmsContentEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_LOG_SMS_CONTENT, enabled) }

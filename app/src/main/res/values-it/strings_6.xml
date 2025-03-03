@@ -26,19 +26,6 @@
     <string name="confirm_delete_all_records">Confermi di voler eliminare tutte le registrazioni?</string>
     <string name="expiry">Scadenza</string>
     <string name="days">Giorni</string>
-    <string name="help_history_ttl">
-        <![CDATA[
-            <font color="#00BFFF"><b>> 0</b></font><br>
-            &emsp; Le registrazioni della cronologia verranno registrate nel database e scadranno dopo N giorni,
-              le registrazioni scadute verranno eliminate automaticamente.<br>
-            <br>
-            <font color="#00BFFF"><b>= 0</b></font><br>
-            &emsp; La registrazione della cronologia è disabilitata, nulla verrà registrato nel database.<br>
-            <br>
-            <font color="#00BFFF"><b>< 0</b></font><br>
-            &emsp; Le registrazioni verranno eseguite e non scadranno mai.
-        ]]>
-    </string>
     <string name="help_log_sms_content">
         <![CDATA[
         Se abilitato, il contenuto degli SMS verrà anche registrato nel database e visualizzato in questo elenco, non verrà registrato nel database se disabilitato.<br>
