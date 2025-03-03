@@ -20,8 +20,9 @@
     </string>
     <string name="help_spam_db_ttl">
         <![CDATA[
-        Nomor spam dalam basis data akan kadaluarsa setelah N hari, catatan yang kadaluarsa akan dihapus secara otomatis.<br>
-        Atur ke -1 untuk menonaktifkannya, sehingga nomor tidak akan pernah dihapus secara otomatis.
+        Nomor spam di basis data akan kedaluwarsa setelah N hari, catatan yang kedaluwarsa akan dihapus secara otomatis.<br>
+        <br>
+        Ketika dinonaktifkan, nomor tidak akan pernah dihapus secara otomatis.
         ]]>
     </string>
     <string name="customize">Sesuaikan</string>

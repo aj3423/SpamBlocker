@@ -12,7 +12,7 @@
         ]]>
     </string>
     <string name="in_meeting">حالت جلسه</string>
-    <string name="search">جستجو</string>
+    <string name="search_number"><translate>جستجوی شماره</translate></string>
     <string name="http_header">هدر HTTP</string>
     <string name="help_http_header">
         <![CDATA[

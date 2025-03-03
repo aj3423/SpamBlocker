@@ -20,8 +20,9 @@
     </string>
     <string name="help_spam_db_ttl">
         <![CDATA[
-        I numeri spam nel database scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.<br>
-        Impostarlo su -1 per disabilitarlo, in modo che i numeri non vengano mai eliminati automaticamente.
+        I numeri di spam nel database scadranno dopo N giorni, i record scaduti verranno eliminati automaticamente.<br>
+        <br>
+        Quando disabilitato, i numeri non verranno mai eliminati automaticamente.
         ]]>
     </string>
     <string name="customize">Personalizza</string>

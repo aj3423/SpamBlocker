@@ -32,6 +32,7 @@ import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.serialize
 import spam.blocker.ui.M
+import spam.blocker.ui.history.reScheduleHistoryCleanup
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
@@ -57,8 +58,13 @@ private const val SPAM_DB_CLEANUP_WORK_TAG = "spam_db_cleanup_work_tag"
 fun reScheduleSpamDBCleanup(ctx: Context) {
     MyWorkManager.cancelByTag(ctx, SPAM_DB_CLEANUP_WORK_TAG)
 
-    val ttl = spf.SpamDB(ctx).getTTL()
-    if (ttl >= 0) {
+    val spf = spf.SpamDB(ctx)
+
+    val isEnabled = spf.isEnabled()
+    val expiryEnabled = spf.isExpiryEnabled()
+    val ttl = spf.getTTL()
+
+    if (isEnabled && expiryEnabled && ttl >= 0) {
         MyWorkManager.schedule(
             ctx,
             scheduleConfig = Daily().serialize(),
@@ -109,11 +115,11 @@ fun SpamDB() {
     val spf = spf.SpamDB(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
+    var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled()) }
     var ttl by remember { mutableIntStateOf(spf.getTTL()) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
     var total by remember { mutableIntStateOf(SpamTable.count(ctx)) }
-
 
     // Refresh UI on global events, such as workflow action AddToSpamDB and ClearSpamDB
     Events.spamDbUpdated.Listen {
@@ -139,6 +145,7 @@ fun SpamDB() {
     PopupDialog(
         trigger = popupTrigger,
         onDismiss = {
+            spf.setExpiryEnabled(expiryEnabled)
             spf.setTTL(ttl)
             reScheduleSpamDBCleanup(ctx)
         }
@@ -155,28 +162,44 @@ fun SpamDB() {
                 }
             }
 
-            // Expiry: [90]
             LabeledRow(
                 labelId = R.string.expiry,
-                helpTooltipId = R.string.help_spam_db_ttl
+                helpTooltipId = R.string.help_spam_db_ttl,
             ) {
-                NumberInputBox(
-                    intValue = ttl,
-                    label = { Text(Str(R.string.days)) },
-                    onValueChange = { newVal, hasError ->
-                        if (!hasError) {
-                            ttl = newVal!!
+                val trigger = remember { mutableStateOf(false) }
+                PopupDialog(trigger = trigger) {
+                    // Expiry: 90 days
+                    NumberInputBox(
+                        intValue = ttl,
+                        label = { Text(Str(R.string.days)) },
+                        onValueChange = { newVal, hasError ->
+                            if (!hasError) {
+                                ttl = newVal!!
+                            }
                         }
-                    }
-                )
+                    )
+                }
+
+                if (expiryEnabled) {
+                    // Button
+                    GreyButton(
+                        label = ctx.resources.getQuantityString(R.plurals.days, ttl, ttl),
+                    ) { trigger.value = true }
+                }
+
+                // Expiry Enabled
+                SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
+                    expiryEnabled = isOn
+                })
             }
+
 
             // Search list
             var keyword by remember { mutableStateOf("") }
             val listState = remember { mutableStateListOf<SpamNumber>() }
 
             StrInputBox(
-                label = { GreyLabel(text = Str(strId = R.string.search)) },
+                label = { GreyLabel(text = Str(strId = R.string.search_number)) },
                 text = keyword,
                 leadingIconId = R.drawable.ic_find,
                 onValueChange = {

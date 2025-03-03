@@ -12,7 +12,7 @@
         ]]>
     </string>
     <string name="in_meeting">会议模式</string>
-    <string name="search">搜索</string>
+    <string name="search_number"><translate>搜索号码</translate></string>
     <string name="http_header">Http Header</string>
     <string name="help_http_header">
         <![CDATA[

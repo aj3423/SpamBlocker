@@ -21,7 +21,8 @@
     <string name="help_spam_db_ttl">
         <![CDATA[
         Spam-Nummern in der Datenbank laufen nach N Tagen ab, abgelaufene Datensätze werden automatisch gelöscht.<br>
-        Stellen Sie es auf -1 ein, um es zu deaktivieren, sodass die Nummern niemals automatisch gelöscht werden.
+        <br>
+        Wenn diese Option deaktiviert ist, werden Nummern nie automatisch gelöscht.
         ]]>
     </string>
     <string name="customize">Anpassen</string>

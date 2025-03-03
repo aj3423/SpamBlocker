@@ -20,8 +20,9 @@
     </string>
     <string name="help_spam_db_ttl">
         <![CDATA[
-        Veritabanındaki istenmeyen arama numaraları N gün sonra süresi dolacak, süresi dolmuş kayıtlar otomatik olarak silinecektir.<br>
-        Devre dışı bırakmak için -1 olarak ayarlayın, böylece numaralar asla otomatik olarak silinmez.
+        Veritabanındaki spam numaraları N gün sonra sona erecek, süresi dolan kayıtlar otomatik olarak silinecektir.<br>
+        <br>
+        Devre dışı bırakıldığında, numaralar asla otomatik olarak silinmez.
         ]]>
     </string>
     <string name="customize">Özelleştir</string>

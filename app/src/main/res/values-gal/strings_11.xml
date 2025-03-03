@@ -12,7 +12,7 @@
         ]]>
     </string>
     <string name="in_meeting">Modo de Reunión</string>
-    <string name="search">Buscar</string>
+    <string name="search_number"><translate>Buscar número</translate></string>
     <string name="http_header">Cabecera Http</string>
     <string name="help_http_header">
         <![CDATA[

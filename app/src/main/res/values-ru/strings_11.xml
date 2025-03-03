@@ -12,7 +12,7 @@
         ]]>
     </string>
     <string name="in_meeting">Режим собрания</string>
-    <string name="search">Поиск</string>
+    <string name="search_number"><translate>Поиск номера</translate></string>
     <string name="http_header">Заголовок HTTP</string>
     <string name="help_http_header">
         <![CDATA[

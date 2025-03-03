@@ -11,7 +11,7 @@
         ]]>
     </string>
     <string name="in_meeting">Toplantı Modu</string>
-    <string name="search">Ara</string>
+    <string name="search_number">Numara Ara</string>
     <string name="http_header">Http Başlığı</string>
     <string name="help_http_header">
         <![CDATA[

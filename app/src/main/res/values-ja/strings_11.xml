@@ -12,7 +12,7 @@
         ]]>
     </string>
     <string name="in_meeting">会議モード</string>
-    <string name="search">検索</string>
+    <string name="search_number"><translate>番号を検索</translate></string>
     <string name="http_header">HTTPヘッダー</string>
     <string name="help_http_header">
         <![CDATA[

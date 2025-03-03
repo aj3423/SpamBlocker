@@ -262,15 +262,21 @@ class STIR {
 }
 @Serializable
 class SpamDB {
+    var enabled = false
+    var expiryEnabled = true
     var ttl = 90
 
     fun load(ctx: Context) {
         val spf = spf.SpamDB(ctx)
+        enabled = spf.isEnabled()
+        expiryEnabled = spf.isExpiryEnabled()
         ttl = spf.getTTL()
     }
 
     fun apply(ctx: Context) {
         spf.SpamDB(ctx).apply {
+            setEnabled(enabled)
+            setExpiryEnabled(expiryEnabled)
             setTTL(ttl)
         }
     }

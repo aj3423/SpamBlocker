@@ -21,7 +21,8 @@
     <string name="help_spam_db_ttl">
         <![CDATA[
         Los números de spam en la base de datos caducarán después de N días, los registros caducados se eliminarán automáticamente.<br>
-        Configúrelo en -1 para deshabilitarlo, por lo que los números nunca se eliminarán automáticamente.
+        <br>
+        Cuando está desactivado, los números nunca se eliminarán automáticamente.
         ]]>
     </string>
     <string name="customize">Personalizar</string>

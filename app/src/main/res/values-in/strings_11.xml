@@ -13,7 +13,7 @@
         ]]>
     </string>
     <string name="in_meeting">Mode Rapat</string>
-    <string name="search">Cari</string>
+    <string name="search_number"><translate>Cari Nomor</translate></string>
     <string name="http_header">Header Http</string>
     <string name="help_http_header">
         <![CDATA[
