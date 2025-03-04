@@ -58,9 +58,9 @@
     <string name="sms_bomb"><short>Bombardement SMS</short></string>
     <string name="help_sms_bomb">
         <![CDATA[
-        Anti-bombardement de SMS.<br>
+        Anti-bombardement SMS.<br>
         <br>
-        Empêchez les flux massifs et continus de messages SMS, qui sont souvent composés principalement
+        Empêcher les inondations massives et continues de messages SMS, qui sont souvent composés principalement
           de vérifications OTP (mot de passe à usage unique).<br>
         <br>
         Par exemple, les messages SMS comme :<br>
@@ -68,27 +68,27 @@
         &ensp; <font color="#888888">Voici votre code de vérification : 1234.</font><br>
         &ensp; <font color="#888888">1234 est votre code de validation.</font><br>
         <br>
-        <h5><font color="#00BFFF">- Regex de contenu</font></h5>
+        <h5><font color="#00BFFF">- Regex du contenu</font></h5>
         Cette fonctionnalité s\'applique uniquement aux messages qui correspondent à cette regex, une regex typique serait : <br>
         <font color="#fa7f71">.*(otp|code).*</font><br>
         <br>
         <h5><font color="#00BFFF">- Intervalle</font></h5>
-        Si un message OTP ultérieur arrive dans cet intervalle de temps, il est considéré comme
-          faisant partie de l\'attaque de bombardement et sera bloqué.<br>
+        Si un message OTP ultérieur arrive dans cet intervalle de temps, il est considéré
+          comme faisant partie de l\'attaque de bombardement et sera bloqué.<br>
         (par défaut : 30 secondes)<br>
         <br>
         Cela bloquera toutes les bombes suivantes, à l\'exception de la première.<br>
         <br>
         <h5><font color="#00BFFF">- Protection de l\'écran de verrouillage</font></h5>
-        Activez ceci pour bloquer toutes les bombes en mode écran de verrouillage, y compris la première. <br>
+        Activez cette option pour bloquer toutes les bombes en mode écran de verrouillage, y compris la première. <br>
         <br>
-        Habituellement, votre écran aurait dû être déverrouillé lors de l\'attente d\'un code de vérification.
-        Lorsque de tels messages arrivent lorsque l\'appareil est en mode écran de verrouillage, ils sont susceptibles d\'être des bombes.<br>
+        Habituellement, votre écran devrait avoir été déverrouillé en attendant un code de vérification.
+        Lorsque de tels messages arrivent alors que l\'appareil est en mode écran de verrouillage, il est probable que ce soient des bombes.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protect">Protection de l\'écran de verrouillage</string>
+    <string name="lockscreen_protection"><short>Écran verrouillé</short></string>
     <string name="help_history_logging">
         <![CDATA[
             Lorsqu\'elle est désactivée, les enregistrements d\'historique ne seront pas enregistrés dans la base de données locale et ne seront pas affichés ici.<br>

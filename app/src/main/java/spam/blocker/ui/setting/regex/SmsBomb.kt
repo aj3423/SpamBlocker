@@ -50,7 +50,7 @@ fun SmsBomb() {
     var duration by remember { mutableIntStateOf(spf.getInterval()) }
     var regexStr by remember { mutableStateOf(spf.getRegexStr()) }
     var regexFlags = remember { mutableIntStateOf(spf.getRegexFlags()) }
-    var isLockscreenProtect by remember { mutableStateOf(spf.isLockScreenProtectEnabled()) }
+    var isLockscreenProtection by remember { mutableStateOf(spf.isLockScreenProtectionEnabled()) }
 
     // Edit Duration Dialog
     val editTrigger = rememberSaveable { mutableStateOf(false) }
@@ -85,10 +85,10 @@ fun SmsBomb() {
             },
             leadingIconId = R.drawable.ic_duration,
         )
-        LabeledRow(R.string.lockscreen_protect) {
-            SwitchBox(isLockscreenProtect) { isTurningOn ->
-                spf.setLockScreenProtectEnabled(isTurningOn)
-                isLockscreenProtect = isTurningOn
+        LabeledRow(R.string.lockscreen_protection) {
+            SwitchBox(isLockscreenProtection) { isTurningOn ->
+                spf.setLockScreenProtectionEnabled(isTurningOn)
+                isLockscreenProtection = isTurningOn
             }
         }
     }

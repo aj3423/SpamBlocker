@@ -58,9 +58,9 @@
     <string name="sms_bomb">Bom SMS</string>
     <string name="help_sms_bomb">
         <![CDATA[
-        Anti Bombardir SMS.<br>
+        Anti Bom SMS.<br>
         <br>
-        Mencegah banjir pesan SMS yang besar dan berkelanjutan, yang seringkali sebagian besar terdiri
+        Mencegah banjir pesan SMS massal dan berkelanjutan, yang sering kali sebagian besar terdiri
           dari verifikasi OTP (Kata Sandi Sekali Pakai).<br>
         <br>
         Misalnya, pesan SMS seperti:<br>
@@ -74,21 +74,21 @@
         <br>
         <h5><font color="#00BFFF">- Interval</font></h5>
         Jika pesan OTP berikutnya tiba dalam interval waktu ini, itu dianggap
-          bagian dari serangan bombardir dan akan diblokir.<br>
+          bagian dari serangan bom dan akan diblokir.<br>
         (default: 30 detik)<br>
         <br>
-        Ini akan memblokir semua bom berikut, kecuali yang pertama.<br>
+        Ini akan memblokir semua bom berikutnya, kecuali yang pertama.<br>
         <br>
-        <h5><font color="#00BFFF">- Perlindungan layar kunci</font></h5>
+        <h5><font color="#00BFFF">- Perlindungan Layar Kunci</font></h5>
         Aktifkan ini untuk memblokir semua bom dalam mode layar kunci, termasuk yang pertama. <br>
         <br>
         Biasanya, layar Anda seharusnya sudah tidak terkunci saat menunggu kode verifikasi.
-        Ketika pesan-pesan seperti itu tiba saat perangkat dalam mode layar kunci, kemungkinan besar itu adalah bom.<br>
+        Ketika pesan seperti itu tiba saat perangkat dalam mode layar kunci, kemungkinan besar itu adalah bom.<br>
         <br>
         <font color="#ea86ff"><b>Prioritas: 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protect">Perlindungan Layar Kunci</string>
+    <string name="lockscreen_protection"><short>Kunci layar</short></string>
     <string name="help_history_logging">
         <![CDATA[
             Saat dinonaktifkan, catatan riwayat tidak akan dicatat di database lokal dan tidak akan ditampilkan di sini.<br>

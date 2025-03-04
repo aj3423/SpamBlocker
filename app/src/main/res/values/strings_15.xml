@@ -79,7 +79,7 @@
         <br>
         This will block all following bombs, except for the first one.<br>
         <br>
-        <h5><font color="#00BFFF">- Lockscreen protect</font></h5>
+        <h5><font color="#00BFFF">- Lockscreen protection</font></h5>
         Enable this to block all bombs in lockscreen mode, including the first one. <br>
         <br>
         Usually, your screen should have been unlocked while waiting for a verification code.
@@ -88,7 +88,7 @@
         <font color="#ea86ff"><b>Priority: 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protect">Lockscreen protect</string>
+    <string name="lockscreen_protection"><short>Lockscreen protection</short></string>
     <string name="help_history_logging">
         <![CDATA[
             When disabled, history records will not be logged in the local database and will not be displayed here.<br>

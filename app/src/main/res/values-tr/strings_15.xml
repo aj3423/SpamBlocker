@@ -60,33 +60,33 @@
         <![CDATA[
         SMS Bombardımanı Koruması.<br>
         <br>
-        Öncelikle OTP (Tek Kullanımlık Şifre) doğrulamalarından oluşan büyük, sürekli SMS mesajı akışlarını önleyin.<br>
+        Özellikle OTP (Tek Kullanımlık Şifre) doğrulamalarından oluşan büyük, sürekli SMS mesajı akınlarını önleyin.<br>
         <br>
-        Örneğin, şu gibi SMS mesajları:<br>
+        Örneğin, aşağıdaki gibi SMS mesajları:<br>
         &ensp; <font color="#888888">OTP\'niz: 1234.</font><br>
         &ensp; <font color="#888888">Doğrulama kodunuz: 1234.</font><br>
-        &ensp; <font color="#888888">1234, doğrulama kodunuzdur.</font><br>
+        &ensp; <font color="#888888">1234 doğrulama kodunuzdur.</font><br>
         <br>
         <h5><font color="#00BFFF">- İçerik regex</font></h5>
-        Bu özellik yalnızca bu regex ile eşleşen mesajlara uygulanır, tipik bir regex şöyle olabilir:<br>
+        Bu özellik yalnızca bu regex ile eşleşen mesajlara uygulanır, tipik bir regex şöyle olacaktır: <br>
         <font color="#fa7f71">.*(otp|code).*</font><br>
         <br>
         <h5><font color="#00BFFF">- Aralık</font></h5>
         Bu zaman aralığında sonraki bir OTP mesajı gelirse, bombardıman saldırısının bir parçası olarak kabul edilir ve engellenir.<br>
         (varsayılan: 30 saniye)<br>
         <br>
-        Bu, ilk mesaj hariç, sonraki tüm bombardımanları engelleyecektir.<br>
+        Bu, ilk mesaj hariç, sonraki tüm bombaları engelleyecektir.<br>
         <br>
         <h5><font color="#00BFFF">- Kilit ekranı koruması</font></h5>
-        İlk mesaj da dahil olmak üzere tüm bombardımanları kilit ekranı modunda engellemek için bunu etkinleştirin.<br>
+        İlk mesaj dahil olmak üzere, kilit ekranı modundaki tüm bombaları engellemek için bunu etkinleştirin. <br>
         <br>
         Genellikle, bir doğrulama kodu beklerken ekranınızın kilidi açılmış olmalıdır.
-        Bu tür mesajlar cihaz kilit ekranı modundayken gelirse, bombardıman olma olasılıkları yüksektir.<br>
+        Bu tür mesajlar cihaz kilit ekranı modundayken gelirse, büyük olasılıkla bomba mesajlardır.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protect">Kilit ekranı koruması</string>
+    <string name="lockscreen_protection">Kilit ekranı koruması</string>
     <string name="help_history_logging">
         <![CDATA[
             Devre dışı bırakıldığında, geçmiş kayıtları yerel veritabanına kaydedilmeyecek ve burada görüntülenmeyecektir.<br>

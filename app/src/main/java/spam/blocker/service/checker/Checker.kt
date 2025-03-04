@@ -986,7 +986,7 @@ class Checker { // for namespace only
 
             var blockIt = false
             // 2. check if lockscreen protect on
-            if (spf.isLockScreenProtectEnabled() && Util.isDeviceLocked(ctx)) {
+            if (spf.isLockScreenProtectionEnabled() && Util.isDeviceLocked(ctx)) {
                 blockIt = true
             }
 

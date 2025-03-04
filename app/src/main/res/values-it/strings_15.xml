@@ -60,7 +60,7 @@
         <![CDATA[
         Anti SMS Bombing.<br>
         <br>
-        Impedisce inondazioni massicce e continue di messaggi SMS, che sono spesso composti principalmente
+        Previene inondazioni massicce e continue di messaggi SMS, che sono spesso composti principalmente
           da verifiche OTP (One-Time Password).<br>
         <br>
         Ad esempio, messaggi SMS come:<br>
@@ -68,27 +68,27 @@
         &ensp; <font color="#888888">Questo è il tuo codice di verifica: 1234.</font><br>
         &ensp; <font color="#888888">1234 è il tuo codice di validazione.</font><br>
         <br>
-        <h5><font color="#00BFFF">- Regex contenuto</font></h5>
+        <h5><font color="#00BFFF">- Regex del contenuto</font></h5>
         Questa funzione si applica solo ai messaggi che corrispondono a questa regex, una regex tipica sarebbe: <br>
         <font color="#fa7f71">.*(otp|code).*</font><br>
         <br>
         <h5><font color="#00BFFF">- Intervallo</font></h5>
-        Se un successivo messaggio OTP arriva entro questo intervallo di tempo, viene considerato
-          parte dell\'attacco di bombing e verrà bloccato.<br>
+        Se un successivo messaggio OTP arriva entro questo intervallo di tempo, è considerato
+          parte dell\'attacco di bombing e sarà bloccato.<br>
         (predefinito: 30 secondi)<br>
         <br>
-        Questo bloccherà tutte le bombe successive, ad eccezione della prima.<br>
+        Questo bloccherà tutte le bombe successive, tranne la prima.<br>
         <br>
-        <h5><font color="#00BFFF">- Protezione schermata di blocco</font></h5>
-        Abilita questa opzione per bloccare tutte le bombe in modalità schermata di blocco, inclusa la prima. <br>
+        <h5><font color="#00BFFF">- Protezione Lockscreen</font></h5>
+        Abilita questo per bloccare tutte le bombe in modalità lockscreen, inclusa la prima. <br>
         <br>
-        Di solito, lo schermo dovrebbe essere stato sbloccato durante l\'attesa di un codice di verifica.
-        Quando tali messaggi arrivano mentre il dispositivo è in modalità schermata di blocco, è probabile che siano bombe.<br>
+        Solitamente, il tuo schermo dovrebbe essere stato sbloccato mentre aspetti un codice di verifica.
+        Quando tali messaggi arrivano mentre il dispositivo è in modalità lockscreen, è probabile che siano bombe.<br>
         <br>
         <font color="#ea86ff"><b>Priorità: 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protect">Protezione schermata di blocco</string>
+    <string name="lockscreen_protection">Protezione schermo blocco</string>
     <string name="help_history_logging">
         <![CDATA[
             Quando è disabilitato, i record della cronologia non verranno registrati nel database locale e non verranno visualizzati qui.<br>

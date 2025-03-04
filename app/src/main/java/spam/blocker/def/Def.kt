@@ -80,7 +80,7 @@ object Def {
     const val SETTING_SMS_BOMB_REGEX_STR = "sms_bomb_regex_str"
     const val SETTING_SMS_BOMB_REGEX_FLAGS = "sms_bomb_regex_flags"
     const val SETTING_SMS_BOMB_TIMESTAMP = "sms_bomb_timestamp"
-    const val SETTING_SMS_BOMB_LOCKSCREEN_PROTECT_ENABLED = "sms_bomb_lockscreen_protect_enabled"
+    const val SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED = "sms_bomb_lockscreen_protection_enabled"
 
     const val NUMBER_REPORTING_BUFFER_HOURS = 1L // 1 hour
 

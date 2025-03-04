@@ -58,10 +58,10 @@
     <string name="sms_bomb"><short>SMS-Bombe</short></string>
     <string name="help_sms_bomb">
         <![CDATA[
-        Anti-SMS-Bombardierung.<br>
+        Anti-SMS-Bombardement.<br>
         <br>
-        Verhindere massive, kontinuierliche Fluten von SMS-Nachrichten, die sich oft hauptsächlich
-          aus OTP-Verifizierungen (One-Time Password) zusammensetzen.<br>
+        Verhindere massive, kontinuierliche Fluten von SMS-Nachrichten, die oft hauptsächlich aus
+          OTP-Verifizierungen (One-Time Password) bestehen.<br>
         <br>
         Zum Beispiel SMS-Nachrichten wie:<br>
         &ensp; <font color="#888888">Dein OTP ist: 1234.</font><br>
@@ -73,8 +73,8 @@
         <font color="#fa7f71">.*(otp|code).*</font><br>
         <br>
         <h5><font color="#00BFFF">- Intervall</font></h5>
-        Wenn eine nachfolgende OTP-Nachricht innerhalb dieses Zeitintervalls eintrifft, wird sie als
-          Teil des Bombardierungsangriffs betrachtet und blockiert.<br>
+        Wenn eine nachfolgende OTP-Nachricht innerhalb dieses Zeitintervalls eintrifft, wird dies als
+          Teil des Bombardements betrachtet und wird blockiert.<br>
         (Standard: 30 Sekunden)<br>
         <br>
         Dies blockiert alle folgenden Bomben, mit Ausnahme der ersten.<br>
@@ -88,7 +88,7 @@
         <font color="#ea86ff"><b>Priorität: 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protect">Sperrbildschirmschutz</string>
+    <string name="lockscreen_protection"><short>Sperrbildschirm</short></string>
     <string name="help_history_logging">
         <![CDATA[
             Wenn deaktiviert, werden Verlaufseinträge nicht in der lokalen Datenbank protokolliert und hier nicht angezeigt.<br>

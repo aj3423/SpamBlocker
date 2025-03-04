@@ -158,7 +158,7 @@ class SmsBomb {
     var regexStr = ""
     var regexFlags = 0
     var timestamp: Long = 0
-    var lockscreenProtect = true
+    var lockscreenProtection = true
 
     fun load(ctx: Context) {
         val spf = spf.SmsBomb(ctx)
@@ -168,7 +168,7 @@ class SmsBomb {
         regexStr = spf.getRegexStr()
         regexFlags = spf.getRegexFlags()
         timestamp = spf.getTimestamp()
-        lockscreenProtect = spf.isLockScreenProtectEnabled()
+        lockscreenProtection = spf.isLockScreenProtectionEnabled()
     }
 
     fun apply(ctx: Context) {
@@ -179,7 +179,7 @@ class SmsBomb {
             setRegexStr(regexStr)
             setRegexFlags(regexFlags)
             setTimestamp(timestamp)
-            setLockScreenProtectEnabled(lockscreenProtect)
+            setLockScreenProtectionEnabled(lockscreenProtection)
         }
     }
 }

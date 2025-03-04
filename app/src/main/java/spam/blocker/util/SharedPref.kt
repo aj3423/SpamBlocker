@@ -533,12 +533,12 @@ class spf { // for namespace only
             writeLong(Def.SETTING_SMS_BOMB_TIMESTAMP, timestamp)
         }
 
-        fun isLockScreenProtectEnabled(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECT_ENABLED, true)
+        fun isLockScreenProtectionEnabled(): Boolean {
+            return readBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED, true)
         }
 
-        fun setLockScreenProtectEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECT_ENABLED, enabled)
+        fun setLockScreenProtectionEnabled(enabled: Boolean) {
+            writeBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED, enabled)
         }
     }
 }
