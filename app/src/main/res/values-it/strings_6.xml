@@ -101,9 +101,11 @@
         <item>Importa .csv come più regole</item>
     </string-array>
     <string name="warning_double_sms">
-        Questa app si occuperà di tutte le notifiche SMS,
-        ma l\'autorizzazione di notifica dell\'app SMS predefinita è anche abilitata,
-        disattivala nelle impostazioni di sistema per evitare doppie notifiche SMS.
+        Questa app prenderà il controllo di tutte le notifiche SMS,
+        ma anche l\'app SMS predefinita mostrerà le notifiche SMS. Per evitare doppie notifiche,
+        disabilita la sua autorizzazione di notifica nelle impostazioni di sistema.\n
+        \n
+        ⚠️ RCS non è supportato.
     </string>
     <string name="open_settings">Apri Impostazioni</string>
     <string name="ignore">Ignora</string>

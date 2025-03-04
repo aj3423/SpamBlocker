@@ -102,8 +102,10 @@
     </string-array>
     <string name="warning_double_sms">
         Diese App übernimmt alle SMS-Benachrichtigungen,
-        aber die Benachrichtigungserlaubnis der Standard-SMS-App ist auch aktiviert,
-        deaktivieren Sie sie in den Systemeinstellungen, um doppelte SMS-Benachrichtigungen zu vermeiden.
+        aber die Standard-SMS-App zeigt auch SMS-Benachrichtigungen an. Um doppelte Benachrichtigungen zu verhindern,
+        deaktivieren Sie bitte die Benachrichtigungsberechtigung in den Systemeinstellungen.\n
+        \n
+        ⚠️ RCS wird nicht unterstützt.
     </string>
     <string name="open_settings">Einstellungen öffnen</string>
     <string name="ignore">Ignorieren</string>

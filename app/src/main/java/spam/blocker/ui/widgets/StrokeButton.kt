@@ -87,7 +87,7 @@ fun StrokeButton(
         shape = shape,
         onClick = onClick
     ) {
-        RowVCenterSpaced(2) {
+        RowVCenterSpaced(4) {
             icon?.let { it() }
             label?.let {
                 Text(
@@ -174,14 +174,17 @@ fun Spinner(
     items: List<LabelItem>,
     selected: Int,
     modifier: Modifier = Modifier,
-    displayType: SpinnerType = SpinnerType.Label,
+    displayType: SpinnerType = SpinnerType.Label, // show label/icon/both
     color: Color = LocalPalette.current.textGrey,
 ) {
     DropdownWrapper(
         items = items,
     ) { expanded ->
         FooterButton(
-            label = if (displayType == SpinnerType.Label) items[selected].label else null,
+            label = when (displayType) {
+                SpinnerType.Label, SpinnerType.IconLabel -> items[selected].label
+                else -> null
+            },
             icon = when (displayType) {
                 SpinnerType.Icon, SpinnerType.IconLabel -> {
                     {

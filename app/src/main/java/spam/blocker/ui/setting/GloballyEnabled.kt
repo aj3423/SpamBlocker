@@ -27,10 +27,12 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
+import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
@@ -83,7 +85,11 @@ fun GloballyEnabled() {
                 }
             },
         ) {
-            GreyLabel(ctx.resources.getString(R.string.warning_double_sms))
+            RowVCenter {
+                GreyLabel(ctx.getString(R.string.warning_double_sms))
+
+                BalloonQuestionMark(ctx.getString(R.string.help_rcs_message))
+            }
         }
     }
     // Show warnings `onResume`
@@ -168,6 +174,11 @@ fun GloballyEnabled() {
                         })
                     }
                 }
+                LabeledRow(
+                    labelId = R.string.rcs_message,
+                    helpTooltipId = R.string.help_rcs_message,
+                    color = C.disabled,
+                ) {}
             }
         })
 

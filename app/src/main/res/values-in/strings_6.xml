@@ -105,8 +105,10 @@
     </string-array>
     <string name="warning_double_sms">
         Aplikasi ini akan mengambil alih semua notifikasi SMS,
-        tetapi izin notifikasi dari aplikasi SMS default juga diaktifkan,
-        harap nonaktifkan di pengaturan sistem untuk mencegah notifikasi SMS ganda.
+        tetapi aplikasi SMS default juga akan menampilkan notifikasi SMS. Untuk mencegah notifikasi ganda,
+        silakan nonaktifkan izin notifikasinya di pengaturan sistem.\n
+        \n
+        ⚠️ RCS tidak didukung.
     </string>
     <string name="open_settings">Buka Pengaturan</string>
     <string name="ignore">Abaikan</string>

@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging">Journal</string>
     <string name="never_expire"><short>Jamais</short></string>
+    <string name="rcs_message">Message RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS n\'est pas pris en charge.<br>
+            <br>
+            Bien qu\'il s\'agisse d\'un protocole standard, RCS est implémenté différemment par chaque application de messagerie.<br>
+            <br>
+            Une solution consiste à passer aux SMS.
+        ]]>
+    </string>
 </resources>

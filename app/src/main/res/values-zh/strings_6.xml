@@ -101,9 +101,7 @@
         <item>将 .csv 导入为多个规则</item>
     </string-array>
     <string name="warning_double_sms">
-        此应用程序将接管所有短信通知，
-        但是默认短信应用程序的通知权限也已启用，
-        请在系统设置中禁用它以防止双重短信通知。
+        <translate>此应用程序将接管所有短信通知，但默认短信应用程序也会显示短信通知。 为了防止重复通知，请在系统设置中禁用其通知权限。\n\n⚠️ 不支持RCS。</translate>
     </string>
     <string name="open_settings">打开设置</string>
     <string name="ignore">忽略</string>

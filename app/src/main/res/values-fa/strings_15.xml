@@ -97,4 +97,14 @@
     </string>
     <string name="enable_history_logging"><short>ثبت</short></string>
     <string name="never_expire"><short>هرگز منقضی نشو</short></string>
+    <string name="rcs_message">پیام RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS پشتیبانی نمی شود.<br>
+            <br>
+            علیرغم اینکه یک پروتکل استاندارد است، RCS توسط هر برنامه پیام رسانی به طور متفاوتی پیاده سازی می شود.<br>
+            <br>
+            راه حل این است که به SMS بروید.
+        ]]>
+    </string>
 </resources>

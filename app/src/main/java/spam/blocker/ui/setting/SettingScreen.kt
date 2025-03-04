@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
@@ -256,6 +257,7 @@ fun SettingRow(
 fun SettingLabel(
     labelId: Int,
     modifier: Modifier = Modifier,
+    color: Color? = null,
 ) {
     Text(
         text = stringResource(id = labelId),
@@ -263,7 +265,7 @@ fun SettingLabel(
         maxLines = 1,
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
-        color = SkyBlue,
+        color = color ?: SkyBlue,
     )
 }
 
@@ -309,13 +311,14 @@ fun LabeledRow(
 
     // optional
     modifier: Modifier = Modifier,
+    color: Color? = null,
     paddingHorizontal: Int = 0,
     helpTooltipId: Int? = null,
     content: @Composable RowScope.() -> Unit,
 ) {
     LabeledRow(
         label = {
-            SettingLabel(labelId)
+            SettingLabel(labelId, color = color)
         },
         modifier = modifier,
         paddingHorizontal = paddingHorizontal,

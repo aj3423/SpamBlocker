@@ -17,7 +17,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions.isReceiveSmsPermissionGranted
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 

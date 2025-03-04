@@ -97,4 +97,14 @@
     </string>
     <string name="enable_history_logging"><translate>ログ</translate></string>
     <string name="never_expire"><short>期限なし</short></string>
+    <string name="rcs_message">RCSメッセージ</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCSはサポートされていません。<br>
+            <br>
+            標準プロトコルであるにもかかわらず、RCSは各メッセージングアプリによって異なる方法で実装されています。<br>
+            <br>
+            回避策はSMSに切り替えることです。
+        ]]>
+    </string>
 </resources>

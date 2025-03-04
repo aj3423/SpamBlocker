@@ -102,8 +102,10 @@
     </string-array>
     <string name="warning_double_sms">
         Este aplicativo assumirá todas as notificações de SMS,
-        mas a permissão de notificação do aplicativo SMS padrão também está habilitada,
-        desative-o nas configurações do sistema para evitar notificações duplicadas de SMS.
+        mas o aplicativo SMS padrão também mostrará notificações de SMS. Para evitar notificações duplas,
+        desative sua permissão de notificação nas configurações do sistema.\n
+        \n
+        ⚠️ RCS não é suportado.
     </string>
     <string name="open_settings">Abrir configurações</string>
     <string name="ignore">Ignorar</string>

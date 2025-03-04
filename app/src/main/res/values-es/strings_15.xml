@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging">Registrar</string>
     <string name="never_expire"><short>Nunca caduca</short></string>
+    <string name="rcs_message">Mensaje RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS no es compatible.<br>
+            <br>
+            A pesar de ser un protocolo estándar, RCS es implementado de manera diferente por cada aplicación de mensajería.<br>
+            <br>
+            Una solución es cambiar a SMS.
+        ]]>
+    </string>
 </resources>

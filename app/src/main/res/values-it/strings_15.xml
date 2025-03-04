@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging">Log</string>
     <string name="never_expire"><short>Mai</short></string>
+    <string name="rcs_message">Messaggio RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS non è supportato.<br>
+            <br>
+            Nonostante sia un protocollo standard, RCS è implementato in modo diverso da ogni app di messaggistica.<br>
+            <br>
+            Una soluzione alternativa è passare agli SMS.
+        ]]>
+    </string>
 </resources>

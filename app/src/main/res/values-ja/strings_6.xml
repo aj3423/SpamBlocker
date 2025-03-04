@@ -108,9 +108,11 @@
         <item>.csvを複数のルールとしてインポート</item>
     </string-array>
     <string name="warning_double_sms">
-        このアプリはすべてのSMS通知をオーバーライドします。\n
-        ただし、デフォルトのSMSアプリの通知権限も有効になっているため、\n
-        システム設定で無効にして、SMS通知の重複を防いでください。
+        このアプリはすべてのSMS通知を引き継ぎますが、
+        デフォルトのSMSアプリもSMS通知を表示します。通知の重複を防ぐために、
+        システム設定で通知権限を無効にしてください。\n
+        \n
+        ⚠️ RCSはサポートされていません。
     </string>
     <string name="open_settings">設定を開く</string>
     <string name="ignore">無視</string>

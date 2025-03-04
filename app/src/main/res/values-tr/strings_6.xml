@@ -101,9 +101,11 @@
         <item>.csv\'yi birden fazla kural olarak içe aktar</item>
     </string-array>
     <string name="warning_double_sms">
-        Bu uygulama tüm SMS bildirimlerini devralacaktır,
-        fakat varsayılan SMS uygulamasının bildirim izni de etkinse,
-        lütfen çift SMS bildirimlerini önlemek için sistem ayarlarında devre dışı bırakın.
+        Bu uygulama tüm SMS bildirimlerini devralacak,
+        ancak varsayılan SMS uygulaması da SMS bildirimlerini gösterecektir. Çift bildirimleri önlemek için,
+        lütfen sistem ayarlarında bildirim iznini devre dışı bırakın.\n
+        \n
+        ⚠️ RCS desteklenmiyor.
     </string>
     <string name="open_settings">Ayarları Aç</string>
     <string name="ignore">Görmezden Gel</string>

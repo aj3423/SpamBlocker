@@ -99,4 +99,14 @@
     </string>
     <string name="never_expire"><short>Never Expire</short></string>
     <string name="enable_history_logging">Log</string>
+    <string name="rcs_message">RCS Message</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS is not supported.<br>
+            <br>
+            Despite being a standard protocol, RCS is implemented differently by each messaging app.<br>
+            <br>
+            A workaround is to switch to SMS.
+        ]]>
+    </string>
 </resources>

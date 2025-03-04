@@ -105,8 +105,10 @@
     </string-array>
     <string name="warning_double_sms">
         This app will take over all SMS notifications,
-        but the notification permission of the default SMS app is also enabled,
-        please disable it in system settings to prevent double SMS notifications.
+        but the default SMS app will also show SMS notifications. To prevent double notifications,
+        please disable its notification permission in the system settings.\n
+        \n
+        ⚠️ RCS is not supported.
     </string>
     <string name="open_settings">Open Settings</string>
     <string name="ignore">Ignore</string>

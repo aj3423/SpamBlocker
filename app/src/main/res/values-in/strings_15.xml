@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging">Log</string>
     <string name="never_expire"><short>Tdk Kedaluwarsa</short></string>
+    <string name="rcs_message">Pesan RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS tidak didukung.<br>
+            <br>
+            Meskipun merupakan protokol standar, RCS diimplementasikan secara berbeda oleh setiap aplikasi perpesanan.<br>
+            <br>
+            Solusinya adalah beralih ke SMS.
+        ]]>
+    </string>
 </resources>

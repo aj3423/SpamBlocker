@@ -32,7 +32,6 @@ import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.serialize
 import spam.blocker.ui.M
-import spam.blocker.ui.history.reScheduleHistoryCleanup
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon

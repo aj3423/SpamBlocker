@@ -97,4 +97,14 @@
     </string>
     <string name="enable_history_logging">Kaydet</string>
     <string name="never_expire"><short>Asla Sona Ermez</short></string>
+    <string name="rcs_message">RCS Mesajı</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS desteklenmiyor.<br>
+            <br>
+            Standart bir protokol olmasına rağmen, RCS her mesajlaşma uygulaması tarafından farklı şekilde uygulanmaktadır.<br>
+            <br>
+            Bir çözüm, SMS\'e geçmektir.
+        ]]>
+    </string>
 </resources>

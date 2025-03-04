@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging"><translate>Журнал</translate></string>
     <string name="never_expire"><short>Никогда</short></string>
+    <string name="rcs_message">RCS-сообщение</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS не поддерживается.<br>
+            <br>
+            Несмотря на то, что это стандартный протокол, RCS реализован по-разному в каждом приложении для обмена сообщениями.<br>
+            <br>
+            Обходной путь - переключиться на SMS.
+        ]]>
+    </string>
 </resources>

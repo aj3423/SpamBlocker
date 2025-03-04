@@ -98,4 +98,14 @@
     </string>
     <string name="enable_history_logging">记录</string>
     <string name="never_expire"><short>永不过期</short></string>
+    <string name="rcs_message">RCS 消息</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            不支持 RCS。<br>
+            <br>
+            尽管 RCS 是一种标准协议，但每款消息应用对它的实现方式都不同。<br>
+            <br>
+            一种解决方法是切换到短信。
+        ]]>
+    </string>
 </resources>

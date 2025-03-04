@@ -18,7 +18,6 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -82,7 +81,6 @@ import spam.blocker.util.Util
 import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
-import spam.blocker.util.asyncHttpRequest
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.httpRequest
 import spam.blocker.util.logi

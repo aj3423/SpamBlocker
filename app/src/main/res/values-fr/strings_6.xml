@@ -102,8 +102,10 @@
     </string-array>
     <string name="warning_double_sms">
         Cette application prendra en charge toutes les notifications SMS,
-        mais l\'autorisation de notification de l\'application SMS par défaut est également activée,
-        veuillez la désactiver dans les paramètres système pour éviter les notifications SMS doubles.
+        mais l\'application SMS par défaut affichera également les notifications SMS. Pour éviter les doubles notifications,
+        veuillez désactiver son autorisation de notification dans les paramètres du système.\n
+        \n
+        ⚠️ RCS n\'est pas pris en charge.
     </string>
     <string name="open_settings">Ouvrir les paramètres</string>
     <string name="ignore">Ignorer</string>

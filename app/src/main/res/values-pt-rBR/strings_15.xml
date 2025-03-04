@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging">Registar</string>
     <string name="never_expire"><short>Nunca Expira</short></string>
+    <string name="rcs_message">Mensagem RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            O RCS não é suportado.<br>
+            <br>
+            Apesar de ser um protocolo padrão, o RCS é implementado de forma diferente por cada aplicativo de mensagens.<br>
+            <br>
+            Uma solução alternativa é mudar para SMS.
+        ]]>
+    </string>
 </resources>

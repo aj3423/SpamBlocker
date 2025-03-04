@@ -101,9 +101,11 @@
         <item>Importar .csv como varias regras</item>
     </string-array>
     <string name="warning_double_sms">
-        Esta aplicación se encargará de todas as notificacións SMS,
-        pero o permiso de notificación da aplicación SMS predeterminada tamén está activado,
-        desactívao nas configuracións do sistema para evitar notificacións SMS duplicadas.
+        Esta aplicación farase cargo de todas as notificacións de SMS,
+        pero a aplicación de SMS predeterminada tamén mostrará notificacións de SMS. Para evitar notificacións dobres,
+        desactiva o seu permiso de notificación na configuración do sistema.\n
+        \n
+        ⚠️ RCS non é compatible.
     </string>
     <string name="open_settings">Abrir configuración</string>
     <string name="ignore">Ignorar</string>

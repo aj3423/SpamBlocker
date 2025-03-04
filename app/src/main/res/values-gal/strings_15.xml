@@ -99,4 +99,14 @@
     </string>
     <string name="enable_history_logging"><translate>Rexistrar</translate></string>
     <string name="never_expire"><short>Nunca caduca</short></string>
+    <string name="rcs_message">Mensaxe RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS non é compatible.<br>
+            <br>
+            A pesar de ser un protocolo estándar, RCS é implementado de xeito diferente por cada aplicación de mensaxería.<br>
+            <br>
+            Unha solución é cambiar a SMS.
+        ]]>
+    </string>
 </resources>
