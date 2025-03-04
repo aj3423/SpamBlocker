@@ -66,12 +66,11 @@ fun Button(
     }
 }
 
-
 @Composable
 fun StrokeButton(
-    label: String,
+    label: String? = null,
     color: Color,
-
+    icon: (@Composable () -> Unit)? = null,
     modifier: Modifier = Modifier,
     onLongClick: Lambda? = null,
     shape: RoundedCornerShape = RoundedCornerShape(4.dp),
@@ -88,9 +87,14 @@ fun StrokeButton(
         shape = shape,
         onClick = onClick
     ) {
-        Text(
-            text = label, color = color, maxLines = 1, overflow = TextOverflow.Ellipsis
-        )
+        RowVCenterSpaced(2) {
+            icon?.let { it() }
+            label?.let {
+                Text(
+                    text = label, color = color, maxLines = 1, overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
     }
 }
 
@@ -112,7 +116,10 @@ fun GreyButton(
 
 @Composable
 fun FooterButton(
-    label: String, color: Color, footerIconId: Int,
+    label: String? = null,
+    color: Color,
+    footerIconId: Int,
+    icon: (@Composable () -> Unit)? = null,
     modifier: Modifier = Modifier,
     footerSize: Int,
     footerOffset: Pair<Int, Int>,
@@ -124,6 +131,7 @@ fun FooterButton(
     ) {
         StrokeButton(
             label = label,
+            icon = icon,
             color = color,
             modifier = modifier,
             onClick = onClick,
@@ -155,6 +163,10 @@ fun LongPressButton(
     )
 }
 
+enum class SpinnerType {
+    Label, Icon, IconLabel,
+}
+
 // Button with a small triangle sign at the bottom right,
 //  the label always follows the selected item
 @Composable
@@ -162,13 +174,22 @@ fun Spinner(
     items: List<LabelItem>,
     selected: Int,
     modifier: Modifier = Modifier,
+    displayType: SpinnerType = SpinnerType.Label,
     color: Color = LocalPalette.current.textGrey,
 ) {
     DropdownWrapper(
         items = items,
     ) { expanded ->
         FooterButton(
-            label = items[selected].label,
+            label = if (displayType == SpinnerType.Label) items[selected].label else null,
+            icon = when (displayType) {
+                SpinnerType.Icon, SpinnerType.IconLabel -> {
+                    {
+                        items[selected].icon!!()
+                    }
+                }
+                else -> null
+            },
             color = color,
             modifier = modifier,
             footerOffset = Pair(-4, -4),
@@ -179,6 +200,7 @@ fun Spinner(
         }
     }
 }
+
 
 // Button with a small triangle sign at the bottom right,
 //  has a fixed label.

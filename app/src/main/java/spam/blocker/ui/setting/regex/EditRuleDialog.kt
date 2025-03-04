@@ -51,6 +51,7 @@ import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -63,6 +64,7 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.SpinnerType
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -556,7 +558,7 @@ fun RuleEditDialog(
                         val icons = remember {
                             // list.map{} doesn't support returning @Composable...
                             listOf<(@Composable () -> Unit)?>(
-                                null,
+                                { GreyIcon18(R.drawable.ic_notification_off) },
                                 { GreyIcon16(R.drawable.ic_shade) },
                                 { GreyIcon16(R.drawable.ic_statusbar_shade) },
                                 {
@@ -588,7 +590,7 @@ fun RuleEditDialog(
                                     )
                                 }
                         }
-                        Spinner(notifyTypeLabels, notifyType)
+                        Spinner(notifyTypeLabels, notifyType, displayType = SpinnerType.Icon)
                     }
                 }
 
