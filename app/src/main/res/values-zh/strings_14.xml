@@ -70,7 +70,7 @@
     <string name="seconds">秒</string>
     <string name="seconds_short">秒</string>
     <string name="within_seconds">在…秒内</string>
-    <string name="call_alert">来电提醒</string>
+    <string name="call_alert"><short>来电提醒</short></string>
     <string name="help_call_alert">
         <![CDATA[
         有些服务会先发短信通知您即将有来电，通常在一分钟内。<br>

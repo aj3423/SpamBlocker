@@ -50,6 +50,10 @@ var only string
 
 var short bool
 
+var abbrev bool
+
+var verb bool
+
 // -------- flags end
 
 const ENGLISH = ""
@@ -143,20 +147,26 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	GeminiToken := os.Getenv("GeminiToken")
 
 	var use_short string
-	if short {
+	if short || abbrev {
 		use_short = "Use extream short translation. "
+		if abbrev {
+			use_short += "Use abbreviation if possible. "
+		}
 	} else {
 		use_short = "If the content contains tags <short> and </short>, always translate the text in between with extream short translations. "
 	}
+	prompt_template := "Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. " +
+		"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. " +
+		"If the content contains tags <translate> and </translate>, always translate the text in between. " +
+		"If the content contains tags <no_translate> and </no_translate>, keep it as it is. " +
+		use_short +
+		"show me the raw result only:\n" +
+		"%s"
+	if verb {
+		color.HiMagenta(prompt_template)
+	}
 	prompt := fmt.Sprintf(
-		"Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. "+
-			"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. "+
-			"If the content contains tags <translate> and </translate>, always translate the text in between. "+
-			"If the content contains tags <no_translate> and </no_translate>, keep it as it is. "+
-			use_short+
-			"show me the raw result only:\n"+
-			"%s",
-		lang, nameMap[lang], content_to_translate)
+		prompt_template, lang, nameMap[lang], content_to_translate)
 
 	ctx := context.Background()
 
@@ -427,6 +437,8 @@ func setup() {
 	flag.StringVar(&move, "move", "", "-move tag -to strings_1.xml")
 	flag.StringVar(&to, "to", "", "")
 	flag.BoolVar(&short, "short", false, "force short, usually used together with -only")
+	flag.BoolVar(&abbrev, "abbrev", false, "force abberv, usually used together with -only")
+	flag.BoolVar(&verb, "verb", false, "show prompt")
 	flag.StringVar(&only, "only", "", "-only tag")
 	flag.IntVar(&thread, "thread", 3, "")
 	flag.Parse()

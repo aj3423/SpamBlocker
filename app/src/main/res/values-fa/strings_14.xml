@@ -71,7 +71,7 @@
     <string name="seconds">ثانیه</string>
     <string name="seconds_short">ث</string>
     <string name="within_seconds">در عرض ثانیه</string>
-    <string name="call_alert">هشدار تماس</string>
+    <string name="call_alert"><short>هشدار تماس</short></string>
     <string name="help_call_alert">
         <![CDATA[
         برخی از سرویس‌ها ابتدا به شما پیامک می‌دهند تا به شما اطلاع دهند که یک تماس قریب الوقوع است، معمولاً در عرض یک دقیقه.<br>

@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error">Erreur inconnue.</string>
     <string name="checking_auth_credential">Vérification des informations d\'authentification.</string>
-    <string name="sms_bombing">Bombardement de SMS</string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb"><short>Bombardement SMS</short></string>
+    <string name="help_sms_bomb">
         <![CDATA[
         Anti-bombardement de SMS.<br>
         <br>

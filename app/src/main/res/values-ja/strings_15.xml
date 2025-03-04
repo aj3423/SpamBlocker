@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error">不明なエラー。</string>
     <string name="checking_auth_credential">認証情報を確認しています。</string>
-    <string name="sms_bombing">SMS爆撃</string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb"><short>SMS爆撃</short></string>
+    <string name="help_sms_bomb">
         <![CDATA[
         SMS爆撃対策。<br>
         <br>

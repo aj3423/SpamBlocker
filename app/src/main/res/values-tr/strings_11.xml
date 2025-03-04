@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">Dün</string>
+    <string name="yesterday_abbrev">Dün</string>
     <string name="help_meeting_mode">
         <![CDATA[
         Çevrimiçi video görüşmeleri sırasında gelen aramaları reddedin.<br> <br>

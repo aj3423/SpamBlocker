@@ -71,7 +71,7 @@
     <string name="seconds">Detik</string>
     <string name="seconds_short">Dtk</string>
     <string name="within_seconds">Dalam hitungan detik</string>
-    <string name="call_alert">Panggilan Peringatan</string>
+    <string name="call_alert">Peringatan Panggilan</string>
     <string name="help_call_alert">
         <![CDATA[
         Beberapa layanan akan mengirim SMS terlebih dahulu untuk memberi tahu Anda bahwa panggilan akan segera datang, biasanya dalam waktu satu menit.<br>

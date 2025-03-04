@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">昨天</string>
+    <string name="yesterday_abbrev">昨天</string>
     <string name="help_meeting_mode">
         <![CDATA[
         在在线视频会议期间拒绝来电。<br> <br>

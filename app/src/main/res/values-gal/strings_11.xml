@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">Onte</string>
+    <string name="yesterday_abbrev">Onte</string>
     <string name="help_meeting_mode">
         <![CDATA[
         Rexeitar chamadas durante reunións de vídeo en liña.<br> <br>

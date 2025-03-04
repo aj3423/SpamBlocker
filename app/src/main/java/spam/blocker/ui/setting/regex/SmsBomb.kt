@@ -41,10 +41,10 @@ import spam.blocker.util.spf
 
 
 @Composable
-fun SmsBombing() {
+fun SmsBomb() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
-    val spf = spf.SmsBombing(ctx)
+    val spf = spf.SmsBomb(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)) }
     var duration by remember { mutableIntStateOf(spf.getInterval()) }
@@ -102,7 +102,7 @@ fun SmsBombing() {
         },
         label = {
             RowVCenterSpaced(4) {
-                SettingLabel(R.string.sms_bombing)
+                SettingLabel(R.string.sms_bomb)
                 if (collapsed) {
                     GreyIcon16(
                         iconId = R.drawable.ic_dropdown_arrow,
@@ -110,7 +110,7 @@ fun SmsBombing() {
                 }
             }
         },
-        helpTooltip = Str(R.string.help_sms_bombing),
+        helpTooltip = Str(R.string.help_sms_bomb),
         content = {
             if (isEnabled) {
                 StrokeButton(

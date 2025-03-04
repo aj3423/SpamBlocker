@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error">Kesalahan tidak diketahui.</string>
     <string name="checking_auth_credential">Memeriksa kredensial otorisasi.</string>
-    <string name="sms_bombing">SMS Bombing</string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb">Bom SMS</string>
+    <string name="help_sms_bomb">
         <![CDATA[
         Anti Bombardir SMS.<br>
         <br>

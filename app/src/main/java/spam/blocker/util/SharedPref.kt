@@ -484,61 +484,61 @@ class spf { // for namespace only
         }
     }
 
-    class SmsBombing(ctx: Context) : SharedPref(ctx) {
+    class SmsBomb(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMBING_ENABLED, false)
+            return readBoolean(Def.SETTING_SMS_BOMB_ENABLED, false)
         }
 
         fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMBING_ENABLED, enabled)
+            writeBoolean(Def.SETTING_SMS_BOMB_ENABLED, enabled)
         }
 
         fun isCollapsed(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMBING_COLLAPSED, false)
+            return readBoolean(Def.SETTING_SMS_BOMB_COLLAPSED, false)
         }
 
         fun setCollapsed(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMBING_COLLAPSED, enabled)
+            writeBoolean(Def.SETTING_SMS_BOMB_COLLAPSED, enabled)
         }
 
         fun getInterval(): Int {
-            return readInt(Def.SETTING_SMS_BOMBING_INTERVAL, 30)
+            return readInt(Def.SETTING_SMS_BOMB_INTERVAL, 30)
         }
 
         fun setInterval(seconds: Int) {
-            writeInt(Def.SETTING_SMS_BOMBING_INTERVAL, seconds)
+            writeInt(Def.SETTING_SMS_BOMB_INTERVAL, seconds)
         }
 
         fun getRegexStr(): String {
-            return readString(Def.SETTING_SMS_BOMBING_REGEX_STR, "")
+            return readString(Def.SETTING_SMS_BOMB_REGEX_STR, "")
         }
 
         fun setRegexStr(regex: String) {
-            writeString(Def.SETTING_SMS_BOMBING_REGEX_STR, regex)
+            writeString(Def.SETTING_SMS_BOMB_REGEX_STR, regex)
         }
 
         fun getRegexFlags(): Int {
-            return readInt(Def.SETTING_SMS_BOMBING_REGEX_FLAGS, Def.DefaultRegexFlags)
+            return readInt(Def.SETTING_SMS_BOMB_REGEX_FLAGS, Def.DefaultRegexFlags)
         }
 
         fun setRegexFlags(flags: Int) {
-            writeInt(Def.SETTING_SMS_BOMBING_REGEX_FLAGS, flags)
+            writeInt(Def.SETTING_SMS_BOMB_REGEX_FLAGS, flags)
         }
 
         fun getTimestamp(): Long {
-            return readLong(Def.SETTING_SMS_BOMBING_TIMESTAMP, 0)
+            return readLong(Def.SETTING_SMS_BOMB_TIMESTAMP, 0)
         }
 
         fun setTimestamp(timestamp: Long) {
-            writeLong(Def.SETTING_SMS_BOMBING_TIMESTAMP, timestamp)
+            writeLong(Def.SETTING_SMS_BOMB_TIMESTAMP, timestamp)
         }
 
         fun isLockScreenProtectEnabled(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMBING_LOCKSCREEN_PROTECT_ENABLED, true)
+            return readBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECT_ENABLED, true)
         }
 
         fun setLockScreenProtectEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMBING_LOCKSCREEN_PROTECT_ENABLED, enabled)
+            writeBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECT_ENABLED, enabled)
         }
     }
 }

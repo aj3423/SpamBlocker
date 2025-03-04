@@ -69,7 +69,7 @@ class MainActivity : ComponentActivity() {
         val ctx = this
         val spf = spf.Global(ctx)
 
-        // language
+        // languageu
         Util.setLocale(ctx, spf.getLanguage())
 
         G.initialize(ctx)

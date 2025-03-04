@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">Ontem</string>
+    <string name="yesterday_abbrev">Ontem</string>
     <string name="help_meeting_mode">
         <![CDATA[
         Recusar chamadas durante videochamadas online.<br> <br>

@@ -954,7 +954,7 @@ class Checker { // for namespace only
         }
     }
 
-    private class SmsBombing(
+    private class SmsBomb(
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
@@ -964,14 +964,14 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
-            val spf = spf.SmsBombing(ctx)
+            val spf = spf.SmsBomb(ctx)
             if (!spf.isEnabled()) {
                 return null
             }
             logger?.info(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
-                        ctx.getString(R.string.sms_bombing).A(SkyBlue),
+                        ctx.getString(R.string.sms_bomb).A(SkyBlue),
                         priority().toString().A(LightMagenta)
                     )
             )
@@ -1004,9 +1004,9 @@ class Checker { // for namespace only
 
             if (blockIt) {
                 logger?.error(
-                    ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.sms_bombing))
+                    ctx.getString(R.string.blocked_by).format(ctx.getString(R.string.sms_bomb))
                 )
-                return BySmsBombing()
+                return BySmsBomb()
             }
             return null
         }
@@ -1123,7 +1123,7 @@ class Checker { // for namespace only
                 SpamDB(ctx),
                 MeetingMode(ctx),
                 OffTime(ctx),
-                SmsBombing(ctx),
+                SmsBomb(ctx),
                 InstantQuery(ctx, Def.ForSms),
             )
 

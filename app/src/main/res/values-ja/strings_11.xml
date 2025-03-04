@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">昨日</string>
+    <string name="yesterday_abbrev">昨日</string>
     <string name="help_meeting_mode">
         <![CDATA[
         オンラインビデオ会議中に着信を拒否します。<br> <br>

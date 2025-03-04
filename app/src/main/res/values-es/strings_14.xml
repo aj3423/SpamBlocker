@@ -71,7 +71,7 @@
     <string name="seconds">Segundos</string>
     <string name="seconds_short">Seg</string>
     <string name="within_seconds">Dentro de Segundos</string>
-    <string name="call_alert">Alerta de Llamada</string>
+    <string name="call_alert"><short>Alerta Llamada</short></string>
     <string name="help_call_alert">
         <![CDATA[
         Algunos servicios le enviarán un mensaje de texto primero para informarle que una llamada es inminente, generalmente dentro de un minuto.<br>

@@ -151,7 +151,7 @@ class CallAlert {
     }
 }
 @Serializable
-class SmsBombing {
+class SmsBomb {
     var enabled = false
     var collapsed = false
     var duration = 0
@@ -161,7 +161,7 @@ class SmsBombing {
     var lockscreenProtect = true
 
     fun load(ctx: Context) {
-        val spf = spf.SmsBombing(ctx)
+        val spf = spf.SmsBomb(ctx)
         enabled = spf.isEnabled()
         collapsed = spf.isCollapsed()
         duration = spf.getInterval()
@@ -172,7 +172,7 @@ class SmsBombing {
     }
 
     fun apply(ctx: Context) {
-        spf.SmsBombing(ctx).apply {
+        spf.SmsBomb(ctx).apply {
             setEnabled(enabled)
             setCollapsed(collapsed)
             setInterval(duration)
@@ -537,7 +537,7 @@ class Configs {
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
     val callAlert = CallAlert()
-    val smsBombing = SmsBombing()
+    val smsBomb = SmsBomb()
 
     val apiQuery = ApiQuery()
     val apiReport = ApiReport()
@@ -568,7 +568,7 @@ class Configs {
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
         callAlert.load(ctx)
-        smsBombing.load(ctx)
+        smsBomb.load(ctx)
 
         apiQuery.load(ctx)
         apiReport.load(ctx)
@@ -601,7 +601,7 @@ class Configs {
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
         callAlert.apply(ctx)
-        smsBombing.apply(ctx)
+        smsBomb.apply(ctx)
 
         apiQuery.apply(ctx)
         apiReport.apply(ctx)

@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error">未知错误。</string>
     <string name="checking_auth_credential">正在检查授权凭据。</string>
-    <string name="sms_bombing">短信轰炸</string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb">短信炸弹</string>
+    <string name="help_sms_bomb">
         <![CDATA[
         反短信轰炸。<br>
         <br>

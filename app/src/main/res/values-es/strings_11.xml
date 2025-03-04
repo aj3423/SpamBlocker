@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">Ayer</string>
+    <string name="yesterday_abbrev">Ayer</string>
     <string name="help_meeting_mode">
         <![CDATA[
         Rechazar llamadas durante las videoconferencias en línea.<br> <br>

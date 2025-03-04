@@ -70,7 +70,7 @@
     <string name="seconds">Секунд</string>
     <string name="seconds_short">Сек</string>
     <string name="within_seconds">В течение секунд</string>
-    <string name="call_alert">Оповещение о звонке</string>
+    <string name="call_alert">Увед. о вызове</string>
     <string name="help_call_alert">
         <![CDATA[
         Некоторые сервисы сначала отправят вам SMS, чтобы сообщить о предстоящем звонке, обычно в течение минуты.<br>

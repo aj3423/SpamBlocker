@@ -1,6 +1,6 @@
 <resources>
     <string name="for_example">Contoh:</string>
-    <string name="yesterday">Kemarin</string>
+    <string name="yesterday_abbrev">Kemarin</string>
     <string name="help_meeting_mode">
         <![CDATA[
         Tolak panggilan selama rapat video online.<br> <br>

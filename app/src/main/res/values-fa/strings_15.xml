@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error">خطای ناشناخته.</string>
     <string name="checking_auth_credential">در حال بررسی اعتبار مجوز.</string>
-    <string name="sms_bombing">بمباران پیامکی</string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb"><short>بمباران پیامکی</short></string>
+    <string name="help_sms_bomb">
         <![CDATA[
         مقابله با <translate>بمباران پیامکی</translate>.<br>
         <br>

@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error">Bilinmeyen hata.</string>
     <string name="checking_auth_credential">Yetkilendirme kimlik bilgileri kontrol ediliyor.</string>
-    <string name="sms_bombing"><translate>SMS Bombardımanı</translate></string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb"><short>SMS Bombası</short></string>
+    <string name="help_sms_bomb">
         <![CDATA[
         SMS Bombardımanı Koruması.<br>
         <br>

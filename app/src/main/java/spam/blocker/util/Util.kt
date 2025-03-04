@@ -158,7 +158,7 @@ object Util {
         return if (isToday(timestamp)) {
             hourMin(timestamp)
         } else if (isYesterday(timestamp)) {
-            ctx.getString(R.string.yesterday) + "\n" + hourMin(timestamp)
+            ctx.getString(R.string.yesterday_abbrev) + "\n" + hourMin(timestamp)
         } else if (isWithinAWeek(timestamp)) {
             dayOfWeekString(ctx, timestamp) + "\n" + hourMin(timestamp)
         } else {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="yesterday">Вчера</string>
+    <string name="yesterday_abbrev">Вчера</string>
     <string name="help_meeting_mode">
         <![CDATA[
         Отклонять звонки во время онлайн-видеоконференций.<br> <br>

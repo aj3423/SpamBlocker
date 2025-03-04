@@ -71,7 +71,7 @@
     <string name="seconds">Секунд</string>
     <string name="seconds_short">Сек</string>
     <string name="within_seconds">Протягом секунд</string>
-    <string name="call_alert">Оповіщення про дзвінок</string>
+    <string name="call_alert">спов. про дзв.</string>
     <string name="help_call_alert">
         <![CDATA[
         Деякі служби спочатку надсилатимуть вам SMS, щоб повідомити вас про те, що дзвінок неминучий, як правило, протягом хвилини.<br>

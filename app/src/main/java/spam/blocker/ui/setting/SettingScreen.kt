@@ -53,7 +53,7 @@ import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.setting.regex.RuleViewModel
-import spam.blocker.ui.setting.regex.SmsBombing
+import spam.blocker.ui.setting.regex.SmsBomb
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
@@ -162,8 +162,8 @@ fun SettingScreen() {
 
                             // Call Alert
                             CallAlert()
-                            // SMS Bombing
-                            SmsBombing()
+                            // SMS Bomb
+                            SmsBomb()
                         }
                     }
 

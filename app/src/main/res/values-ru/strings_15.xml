@@ -55,8 +55,8 @@
     </string>
     <string name="unknown_error"><translate>Неизвестная ошибка.</translate></string>
     <string name="checking_auth_credential">Проверка учетных данных авторизации.</string>
-    <string name="sms_bombing">SMS-бомбинг</string>
-    <string name="help_sms_bombing">
+    <string name="sms_bomb"><short>SMS Бомбер</short></string>
+    <string name="help_sms_bomb">
         <![CDATA[
         Защита от SMS-бомбинга.<br>
         <br>
