@@ -1,0 +1,8 @@
+New
+- Anti SMS bombing
+  Prevent massive continuous OTP messages.
+
+Improvements
+- History and spam-database expiry 
+  Settings like <0 =0 >0 are changed to "no-log/never-expire/expiry-days"
+- workflow action ModifyRules now supports all rules.(for remote configuring for seniors)
