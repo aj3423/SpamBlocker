@@ -219,7 +219,7 @@ fun ApiHeader(
         helpTooltip = if (vm.forType == Def.ForApiQuery)
             Str(R.string.help_instant_query)
         else
-            Str(R.string.help_auto_report),
+            Str(R.string.help_report_number),
     ) {
         MenuButton(
             label = Str(R.string.new_),

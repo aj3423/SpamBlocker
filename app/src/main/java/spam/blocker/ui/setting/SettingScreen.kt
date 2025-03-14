@@ -184,9 +184,9 @@ fun SettingScreen() {
                         }
                     }
 
-                    // Auto Report
+                    // Report Number
                     Section(
-                        title = Str(R.string.auto_report),
+                        title = Str(R.string.report_number),
                         horizontalPadding = 8
                     ) {
                         Column(

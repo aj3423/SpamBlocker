@@ -52,48 +52,5 @@
         .csv ファイルに必須フィールド <b>pattern</b> がありません。詳細については、吹き出しツールチップを確認してください。
         ]]>
     </string>
-    <string name="help_auto_report">
-        <![CDATA[
-        迷惑電話に対するクラウドソーシングデータベースを構築するために、人間の介入なしにブロックされた番号をすべてのAPIエンドポイントに自動的に報告します。<br>
-        <br>
-        <h4>- <font color="#6ed0ff">報告遅延</font></h4><br>
-        着信がブロックされると、番号が報告されるまでに1時間のバッファ時間があります。このバッファ時間内に、繰り返しまたは折り返しにより番号が許可された場合、迷惑番号とはみなされず、報告されません。<br>
-        <br>
-        <h4>- <font color="#6ed0ff">プライバシー</font></h4>
-        <br>
-        APIエンドポイントは次の情報を確認します。<br>
-        <br>
-         &ensp; - IPアドレス<br>
-         &ensp; - TlsおよびTcpフィンガープリント（Androidバージョンがわかる場合があります）<br>
-         &ensp; - 報告された番号（国コードを含む）<br>
-        <br>
-        それ以外の情報は報告されません。<br>
-        <br>
-        <h4>- <font color="#6ed0ff">報告タイプ</font></h4><br>
-        <h5>1. <font color="#fa7f71">報告しません</font>：</h5>
-        <br>
-        - <font color="#fa7f71">SMS番号またはコンテンツ</font><br>
-        - <font color="#fa7f71">通過した通話番号</font><br>
-        および以下のブロックタイプ：<br>
-        - <font color="#fa7f71">グローバルテスト</font><br>
-        - <font color="#fa7f71">連絡先正規表現</font><br>
-        - <font color="#fa7f71">連絡先グループ正規表現</font><br>
-        - <font color="#fa7f71">データベース</font><br>
-        - <font color="#fa7f71">会議モード</font><br>
-        - <font color="#fa7f71">インスタントクエリ</font>（APIエンドポイントの番号が他の競合他社に漏洩するのを防ぐため）<br>
-        <br>
-        <h5>2. <font color="#03DAC5">報告します</font>：</h5>
-        <br>
-        以下のブロックタイプ：<br>
-        - <font color="#03DAC5">非連絡先</font>（排他的）<br>
-        - <font color="#03DAC5">STIR認証</font><br>
-        - <font color="#03DAC5">番号正規表現</font><br>
-        <br>
-        <h5>3. 例外ケース：</h5>
-        <br>
-        - <font color="#03DAC5">インスタントクエリ</font>でブロックされた場合、番号の評価スコアを高めるために、<b>同じ</b>APIに報告されます。 例えば、check.comからのAPIクエリでブロックされた場合、others.comではなくcheck.comのみに報告されます。<br>
-        - <font color="#03DAC5">データベース</font>でブロックされ、その記録がもともとインスタントAPIクエリによって追加された場合、上記と同じ理由で<b>同じ</b>APIのみに報告されます。<br>
-        ]]>
-    </string>
     <string name="auto_report">自動レポート</string>
 </resources>

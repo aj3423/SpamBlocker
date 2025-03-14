@@ -54,6 +54,8 @@ var abbrev bool
 
 var verb bool
 
+var new_file string
+
 // -------- flags end
 
 const ENGLISH = ""
@@ -441,6 +443,7 @@ func setup() {
 	flag.BoolVar(&verb, "verb", false, "show prompt")
 	flag.StringVar(&only, "only", "", "-only tag")
 	flag.IntVar(&thread, "thread", 3, "")
+	flag.StringVar(&new_file, "new_file", "", "")
 	flag.Parse()
 
 	wg = sync.WaitGroup{}
@@ -455,6 +458,15 @@ func main() {
 		languages := append(LANGUAGES, ENGLISH)
 		for _, lang := range languages {
 			walk_lang_xmls(lang, delete_tag(del, lang, to))
+		}
+	} else if new_file != "" {
+
+		// create new empty file with:
+		// <resources>
+		// </resources>
+		languages := append(LANGUAGES, ENGLISH)
+		for _, lang := range languages {
+			write_file(lang_xmls_dir(lang)+"/"+new_file, "<resources>\n</resources>")
 		}
 	} else if move != "" { // -move recent_apps -to strings_2.xml
 		if to == "" {

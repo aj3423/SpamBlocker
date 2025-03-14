@@ -52,52 +52,5 @@
         Campo obrigatório <b>pattern</b> ausente no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
         ]]>
     </string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Relatar automaticamente um número bloqueado para todos os endpoints da API sem interferência humana, para construir nossos bancos de dados de crowdsourcing contra chamadas de spam.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Atraso no relatório</font></h4><br>
-        Quando uma chamada recebida é bloqueada, haverá um buffer de tempo de uma hora antes que o número seja relatado.
-        Se o número for permitido posteriormente devido a repetições ou retorno de ligação dentro deste buffer de tempo,
-        ele é considerado um número não spam e não será relatado.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Privacidade</font></h4>
-        <br>
-        Os endpoints da API verão seu:<br>
-        <br>
-         &ensp; - Endereço IP<br>
-         &ensp; - Impressões digitais Tls e Tcp (que podem revelar sua versão do Android)<br>
-         &ensp; - O número relatado (incluindo seu código de país)<br>
-        <br>
-        Nada mais será relatado.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Tipo de relatório</font></h4><br>
-        <h5>1. Não <font color="#fa7f71">irá</font> relatar:</h5>
-        <br>
-        - <font color="#fa7f71">Números ou conteúdo de SMS</font><br>
-        - <font color="#fa7f71">Números de chamada aprovados</font><br>
-        E os seguintes tipos bloqueados:<br>
-        - <font color="#fa7f71">Teste Global</font><br>
-        - <font color="#fa7f71">Expressão Regular de Contato</font><br>
-        - <font color="#fa7f71">Expressão Regular de Grupo de Contato</font><br>
-        - <font color="#fa7f71">Banco de Dados</font><br>
-        - <font color="#fa7f71">Modo de Reunião</font><br>
-        - <font color="#fa7f71">Consulta Instantânea</font> (para evitar que o número do endpoint da API seja vazado para outros concorrentes)<br>
-        <br>
-        <h5>2. Somente <font color="#03DAC5">irá</font> relatar:</h5>
-        <br>
-        Os seguintes tipos bloqueados:<br>
-        - <font color="#03DAC5">Não Contato</font>(exclusivo)<br>
-        - <font color="#03DAC5">Autenticação STIR</font><br>
-        - <font color="#03DAC5">Expressão Regular de Número</font><br>
-        <br>
-        <h5>3. Casos de exceção:</h5>
-        <br>
-        - Quando bloqueado por <font color="#03DAC5">Consulta Instantânea</font>, será relatado de volta à mesma API para aumentar a pontuação do número.
-         Por exemplo, quando bloqueado por consulta de API de check.com, ele só reportará para check.com, não para others.com. <br>
-        - Quando bloqueado por <font color="#03DAC5">Banco de Dados</font> e o registro foi adicionado originalmente por uma consulta de API instantânea,
-         será relatado apenas para a mesma API pelo mesmo motivo acima.<br>
-        ]]>
-    </string>
     <string name="auto_report">Relatório Automático</string>
 </resources>

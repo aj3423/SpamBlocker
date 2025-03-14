@@ -52,52 +52,5 @@
         Falta o campo obrigatorio <b>pattern</b> no ficheiro .csv, consulta o consello do globo para unha explicación detallada.
         ]]>
     </string>
-    <string name="help_auto_report">
-        <![CDATA[
-        Informar automaticamente un número bloqueado a todos os puntos finais da API sen interferencia humana, para construír as nosas bases de datos de orixe colectiva contra chamadas de spam.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Retraso do informe</font></h4><br>
-        Cando se bloquea unha chamada entrante, haberá un tampón de tempo dunha hora antes de que se informe o número.
-        Se o número se permite máis tarde debido a repeticións ou se marca de novo dentro deste tampón de tempo,
-        considérase un número non spam e non se informará.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Privacidade</font></h4>
-        <br>
-        Os puntos finais da API verán o seu:<br>
-        <br>
-         &ensp; - Enderezo IP<br>
-         &ensp; - Huellas dixitais Tls e Tcp (que poden revelar a súa versión de Android)<br>
-         &ensp; - O número informado (incluído o seu código de país)<br>
-        <br>
-        Non se informará nada máis.<br>
-        <br>
-        <h4>- <font color="#6ed0ff">Tipo de informe</font></h4><br>
-        <h5>1. <font color="#fa7f71">Non</font> informará:</h5>
-        <br>
-        - <font color="#fa7f71">Números ou contido SMS</font><br>
-        - <font color="#fa7f71">Números de chamada aprobados</font><br>
-        E os seguintes tipos bloqueados:<br>
-        - <font color="#fa7f71">Probas globais</font><br>
-        - <font color="#fa7f71">Expr. regular contacto</font><br>
-        - <font color="#fa7f71">Expr. regular grupo contacto</font><br>
-        - <font color="#fa7f71">Base de datos</font><br>
-        - <font color="#fa7f71">Modo reunión</font><br>
-        - <font color="#fa7f71">Consulta instantánea</font> (para evitar que o número do punto final da API se filtre a outros competidores)<br>
-        <br>
-        <h5>2. Só <font color="#03DAC5">informará</font>:</h5>
-        <br>
-        Os seguintes tipos bloqueados:<br>
-        - <font color="#03DAC5">Sen contacto</font>(exclusivo)<br>
-        - <font color="#03DAC5">Atestación STIR</font><br>
-        - <font color="#03DAC5">Expr. regular número</font><br>
-        <br>
-        <h5>3. Casos de excepción:</h5>
-        <br>
-        - Cando está bloqueado por <font color="#03DAC5">Consulta instantánea</font>, informarase de volta á mesma API para aumentar a puntuación do número.
-         Por exemplo, cando está bloqueado pola consulta da API de check.com, só se informará a check.com, non a others.com. <br>
-        - Cando está bloqueado por <font color="#03DAC5">Base de datos</font> e o rexistro foi engadido orixinalmente por unha consulta instantánea da API,
-         só se informará á mesma API pola mesma razón que a anterior.<br>
-        ]]>
-    </string>
     <string name="auto_report">Informe automático</string>
 </resources>

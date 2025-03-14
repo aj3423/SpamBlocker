@@ -1,0 +1,54 @@
+<resources>
+    <string name="help_report_number">
+        <![CDATA[
+        APIs configured here will be used for both auto-reporting and manual-reporting.<br>
+        <br>
+        <h4><font color="#00BFFF">- Privacy</font></h4>
+        The API endpoints will see your:<br>
+        <br>
+         &ensp; - IP address<br>
+         &ensp; - TLS and TCP fingerprints (which may reveal your Android version)<br>
+         &ensp; - The reported number (including your country code)<br>
+        <br>
+        Nothing else will be reported.<br>
+        <br>
+        <h4><font color="#00BFFF">- Manual reporting</font></h4>
+		If any API is enabled here, tap a number in the call history, there will be a report button.<br>
+		<br>
+		The number will be reported to <b>all</b> APIs.<br>
+		<br>
+        <h4><font color="#00BFFF">- Auto reporting</font></h4>
+		<font color="#6ED0ff"><b>Report delay</b></font><br>
+        When a call is blocked, there will be a one-hour time buffer before it\'s reported.
+        If the number is allowed later due to repeats or dialed back within this time buffer,
+        it\'s considered a non-spam number and the reporting will be cancelled.<br>
+        <br>
+		<font color="#6ED0ff"><b>Report type</b></font><br>
+		1. It <font color="#fa7f71"><b>will not</b></font> report:<br>
+        <br>
+        - <font color="#fa7f71">SMS numbers or content</font><br>
+        - <font color="#fa7f71">Allowed numbers</font><br>
+        - <font color="#fa7f71">Global Testing</font><br>
+        And following blocked types:<br>
+        - <font color="#fa7f71">Contact Regex</font><br>
+        - <font color="#fa7f71">Contact Group Regex</font><br>
+        - <font color="#fa7f71">Database</font><br>
+        - <font color="#fa7f71">Meeting Mode</font><br>
+        - <font color="#fa7f71">Instant Query</font> (to prevent the API endpoint\'s number from being leaked to other competitors)<br>
+        <br>
+		2. It <font color="#03DAC5"><b>will</b></font> report numbers blocked by:<br>
+        <br>
+        - <font color="#03DAC5">Non-Contact</font>(exclusive)<br>
+        - <font color="#03DAC5">STIR Attestation</font><br>
+        - <font color="#03DAC5">Number Regex</font><br>
+        <br>
+		3. Exception cases:<br>
+        <br>
+        - When it\'s blocked by <font color="#03DAC5">Instant Query</font>, it will be reported back to the <b>same</b> API to increase the number\'s rating score.
+         For example, when it\'s blocked by API query from check.com, it will only report to check.com, not to others.com. <br>
+		<br>
+        -  When it\'s blocked by <font color="#03DAC5">Database</font> and the record was originally added by an instant API query,
+         it will be reported only to the <b>same</b> API for the same reason as above.<br>
+        ]]>
+    </string>
+</resources>
