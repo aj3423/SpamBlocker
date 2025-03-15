@@ -183,7 +183,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 actions = listOf(
                     InterceptSms(),
                     HttpDownload(
-                        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}",
+                        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
                         header = "Content-Type: application/json",
                         method = HTTP_POST,
                         body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"%s\"\n\n\t}]\n  }]\n}"
