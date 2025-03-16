@@ -52,5 +52,4 @@
         .csv 文件中缺少必需的字段 <b>pattern</b>，请查看气球工具提示以获取详细说明。
         ]]>
     </string>
-    <string name="auto_report">自动举报</string>
 </resources>

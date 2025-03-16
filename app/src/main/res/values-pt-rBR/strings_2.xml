@@ -52,5 +52,4 @@
         Campo obrigatório <b>pattern</b> ausente no arquivo .csv, verifique a dica de ferramenta do balão para uma explicação detalhada.
         ]]>
     </string>
-    <string name="auto_report">Relatório Automático</string>
 </resources>

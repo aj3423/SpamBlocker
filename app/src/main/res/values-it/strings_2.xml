@@ -52,5 +52,4 @@
         Campo obbligatorio mancante <b>pattern</b> nel file .csv, controlla il tooltip per una spiegazione dettagliata.
         ]]>
     </string>
-    <string name="auto_report">Segnala Automatico</string>
 </resources>

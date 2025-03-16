@@ -52,5 +52,4 @@
         .csv ファイルに必須フィールド <b>pattern</b> がありません。詳細については、吹き出しツールチップを確認してください。
         ]]>
     </string>
-    <string name="auto_report">自動レポート</string>
 </resources>

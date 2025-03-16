@@ -52,5 +52,4 @@
         Das benötigte Feld <b>pattern</b> fehlt in der .csv-Datei. Überprüfen Sie die Tooltipp-Info für eine detaillierte Erklärung.
         ]]>
     </string>
-    <string name="auto_report">Automatischer Bericht</string>
 </resources>

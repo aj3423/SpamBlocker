@@ -52,5 +52,4 @@
         Falta el campo requerido <b>patrón</b> en el archivo .csv, consulte la información sobre herramientas del globo para obtener una explicación detallada.
         ]]>
     </string>
-    <string name="auto_report">Informe automático</string>
 </resources>

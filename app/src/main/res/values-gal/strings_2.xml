@@ -52,5 +52,4 @@
         Falta o campo obrigatorio <b>pattern</b> no ficheiro .csv, consulta o consello do globo para unha explicación detallada.
         ]]>
     </string>
-    <string name="auto_report">Informe automático</string>
 </resources>
