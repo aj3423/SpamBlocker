@@ -16,6 +16,7 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
+import spam.blocker.util.Notification.Type
 import spam.blocker.util.Now
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
@@ -100,11 +101,11 @@ open class SmsReceiver : BroadcastReceiver() {
             )
 
             Notification.show(
-                ctx, R.drawable.ic_sms_blocked,
+                ctx,
+                type = Type.SPAM_SMS,
                 title = showName,
                 body = messageBody,
                 importance = r.getSpamImportance(isCall = false),
-                color = Salmon,
                 intent = intent,
                 toCopy = toCopy,
             )
@@ -125,11 +126,11 @@ open class SmsReceiver : BroadcastReceiver() {
             )
 
             Notification.show(
-                ctx, R.drawable.ic_sms_pass,
+                ctx,
+                type = Type.VALID_SMS,
                 title = showName,
                 body = messageBody,
                 importance = IMPORTANCE_HIGH,
-                color = null,
                 intent = intent,
                 toCopy = toCopy,
             )

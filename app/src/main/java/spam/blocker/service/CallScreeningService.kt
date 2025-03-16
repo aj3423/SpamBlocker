@@ -23,6 +23,7 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
+import spam.blocker.util.Notification.Type
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import spam.blocker.util.spf
@@ -152,11 +153,10 @@ class CallScreeningService : CallScreeningService() {
 
         Notification.show(
             ctx,
-            R.drawable.ic_call_blocked,
+            type = Type.SPAM_CALL,
             title = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber,
             body = r.resultReasonStr(ctx),
             importance = r.getSpamImportance(isCall = true),
-            color = Salmon,
             intent = intent,
             toCopy = toCopy
         )

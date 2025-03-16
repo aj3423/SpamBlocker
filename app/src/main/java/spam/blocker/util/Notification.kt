@@ -19,6 +19,7 @@ import androidx.core.app.NotificationCompat
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.service.CopyToClipboardReceiver
+import spam.blocker.ui.theme.Salmon
 import kotlin.random.Random
 
 
@@ -27,6 +28,37 @@ object Notification {
     //  notification channels in system settings.
     const val defaultSpamCallImportance = -1
     const val defaultSpamSMSImportance = -2
+
+    const val SPAM_CALL_GROUP = "spam_call"
+    const val SPAM_SMS_GROUP = "spam_sms"
+
+    enum class Type {
+        VALID_SMS, SPAM_SMS, SPAM_CALL
+    }
+
+    fun iconId(type: Type): Int {
+        return when (type) {
+            Type.VALID_SMS -> R.drawable.ic_sms_pass
+            Type.SPAM_SMS -> R.drawable.ic_sms_blocked
+            Type.SPAM_CALL -> R.drawable.ic_call_blocked
+        }
+    }
+
+    fun groupName(type: Type): String? {
+        return when (type) {
+            Type.VALID_SMS -> null
+            Type.SPAM_SMS -> SPAM_SMS_GROUP
+            Type.SPAM_CALL -> SPAM_CALL_GROUP
+        }
+    }
+
+    fun color(type: Type): Color? {
+        return when (type) {
+            Type.VALID_SMS -> null
+            Type.SPAM_SMS -> Salmon
+            Type.SPAM_CALL -> Salmon
+        }
+    }
 
     fun channelId(importance: Int): String {
         return when (importance) {
@@ -89,16 +121,17 @@ object Notification {
 
     // different notification id generates different dropdown items
     fun show(
-        ctx: Context, iconId: Int, title: String, body: String, importance: Int, color: Color?,
+        ctx: Context, type: Type, title: String, body: String, importance: Int,
         intent: Intent, // notification clicking handler
-
-        toCopy: List<String> = listOf()
+        toCopy: List<String> = listOf(),
     ) {
         createChannelsOnce(ctx)
 
         val chId = channelId(importance) // 5 importance level <-> 5 channel id
         val notificationId = System.currentTimeMillis().toInt()
         val builder = NotificationCompat.Builder(ctx, chId)
+
+        val icon = iconId(type)
 
         // Use different requestCode for every pendingIntent, otherwise the
         //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
@@ -109,23 +142,27 @@ object Notification {
             addNextIntentWithParentStack(intent)
             getPendingIntent(
                 requestCode,
-                PendingIntent.FLAG_UPDATE_CURRENT or
-                        PendingIntent.FLAG_IMMUTABLE
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         }
         builder
             .setAutoCancel(true)
             .setChannelId(chId)
-            .setSmallIcon(iconId)
+            .setSmallIcon(icon)
             .setContentTitle(title)
             .setContentText(body)
             .setSilent(shouldSilent(importance))
             .setContentIntent(pendingIntent)
+            .apply {
+                val group = groupName(type)
+                group?.let { setGroup(it) }
 
-        if (color != null) {
-            builder.setColorized(true)
-            builder.setColor(color.toArgb())
-        }
+                val clr = color(type)
+                if (clr != null) {
+                    builder.setColorized(true)
+                    builder.setColor(clr.toArgb())
+                }
+            }
 
 
         // copy buttons
@@ -149,6 +186,25 @@ object Notification {
         val manager =
             ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
         manager.notify(notificationId, notification)
+
+        // group
+        when (type) {
+            Type.SPAM_CALL, Type.SPAM_SMS -> {
+                val name = groupName(type)
+                val group = NotificationCompat.Builder(ctx, chId)
+                    .setChannelId(chId)
+                    .setSmallIcon(iconId(type))
+                    .setContentTitle(title)
+                    .setContentText(body)
+                    .setColor(Salmon.toArgb())
+                    .setSilent(shouldSilent(importance))
+                    .setGroup(name)
+                    .setGroupSummary(true)
+                manager.notify(type.ordinal, group.build())
+            }
+
+            else -> {}
+        }
     }
 
     fun cancelById(ctx: Context, notificationId: Int) {
