@@ -30,8 +30,7 @@ data class SpamNumber(
     val peer: String = "",
     val time: Long = 0,
     val importReason: ImportDbReason = ImportDbReason.Manually,
-    // when importReason is
-    // - ByAPI, this value is the domain name
+    // when importReason is ByAPI, this value is the domain name
     val importReasonExtra: String? = null,
 )
 
@@ -46,13 +45,23 @@ object SpamTable {
         db.beginTransaction()
         return try {
             for (number in numbers) {
+                val sqlStr =
+//                    if (Build.VERSION.SDK_INT > ANDROID_10) {
+//
+//                    "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)" +
+//                            " VALUES ('${number.peer}', ${number.time}, ${number.importReason.ordinal}, '${number.importReasonExtra}')" +
+//                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET" +
+//                            " $COLUMN_TIME = ${number.time}, " +
+//                            " $COLUMN_REASON = ${number.importReason.ordinal}," +
+//                            " $COLUMN_REASON_EXTRA = '${number.importReasonExtra}'"
+//
+//                } else { // Android 10 doesn't support `ON CONFLICT`, use `INSERT OR REPLACE` instead
+                    "INSERT OR REPLACE INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)" +
+                    "VALUES ('${number.peer}', ${number.time}, ${number.importReason.ordinal}, '${number.importReasonExtra}')"
+//                }
+
                 db.execSQL(
-                    "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)" +
-                            " VALUES ('${number.peer}', ${number.time}, ${number.importReason.ordinal}, '${number.importReasonExtra}')" +
-                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET" +
-                            " $COLUMN_TIME = ${number.time}, " +
-                            " $COLUMN_REASON = ${number.importReason.ordinal}," +
-                            " $COLUMN_REASON_EXTRA = '${number.importReasonExtra}'"
+                    sqlStr
                 )
             }
             db.setTransactionSuccessful()
