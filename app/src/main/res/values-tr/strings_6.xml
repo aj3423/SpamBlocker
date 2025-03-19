@@ -4,7 +4,7 @@
         Lütfen aşağıdaki içeriği kopyalayın ve bu sorunu GitHub\'da bildirin,
         raporlamadan önce hassas bilgileri kaldırın.
     </string>
-    <string-array name="short_weekdays">
+    <string-array name="weekdays_abbrev">
         <item>Paz</item>
         <item>Pzt</item>
         <item>Sal</item>

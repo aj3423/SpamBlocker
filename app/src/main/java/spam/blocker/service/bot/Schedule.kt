@@ -251,7 +251,7 @@ class Weekly(
         if (days == Weekend)
             return ctx.getString(R.string.weekend) + " " + time.summary()
 
-        val labels = ctx.resources.getStringArray(R.array.short_weekdays) // 0-6: Sun-Sat
+        val labels = ctx.resources.getStringArray(R.array.weekdays_abbrev) // 0-6: Sun-Sat
         val daySummary = days.joinToString(", ") {
             if (it.value == 7) labels[0] else labels[it.value]
         }

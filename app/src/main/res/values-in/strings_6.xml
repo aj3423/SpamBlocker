@@ -4,7 +4,7 @@
         Silakan salin isian di bawah ini dan laporkan masalah ini di github,
         hapus informasi sensitif apa pun sebelum melaporkan.
     </string>
-    <string-array name="short_weekdays">
+    <string-array name="weekdays_abbrev">
         <item>Minggu</item>
         <item>Senin</item>
         <item>Selasa</item>

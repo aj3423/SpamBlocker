@@ -34,7 +34,7 @@ class TimeSchedule {
     }
 
     fun toDisplayStr(ctx: Context): String {
-        val labels = ctx.resources.getStringArray(R.array.short_weekdays)
+        val labels = ctx.resources.getStringArray(R.array.weekdays_abbrev)
         val days = weekdays.sorted()
 
         val rangeStr = Util.timeRangeStr(ctx, startHour, startMin, endHour, endMin)

@@ -4,7 +4,7 @@
         لطفاً محتوای زیر را کپی کرده و این مشکل را در گیت‌هاب گزارش دهید،
         قبل از گزارش، هرگونه اطلاعات حساس را حذف کنید.
     </string>
-    <string-array name="short_weekdays">
+    <string-array name="weekdays_abbrev">
         <item>یکشنبه</item>
         <item>دوشنبه</item>
         <item>سه شنبه</item>

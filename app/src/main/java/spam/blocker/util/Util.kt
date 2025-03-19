@@ -142,7 +142,7 @@ object Util {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = timestamp
         val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-        val daysArray = ctx.resources.getStringArray(R.array.short_weekdays).asList()
+        val daysArray = ctx.resources.getStringArray(R.array.weekdays_abbrev).asList()
         return daysArray[dayOfWeek - 1]
     }
 

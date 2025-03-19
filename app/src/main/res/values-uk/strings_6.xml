@@ -4,7 +4,7 @@
         Будь ласка, скопіюйте текст нижче та повідомте про цю проблему на github,
         перед звітуванням видаліть будь-яку конфіденційну інформацію.
     </string>
-    <string-array name="short_weekdays">
+    <string-array name="weekdays_abbrev">
         <item>Нд</item>
         <item>Пн</item>
         <item>Вт</item>

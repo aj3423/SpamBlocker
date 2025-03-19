@@ -4,7 +4,7 @@
         Si prega di copiare il contenuto qui sotto e segnalare questo problema su github,
         rimuovendo eventuali informazioni sensibili prima di inviare la segnalazione.
     </string>
-    <string-array name="short_weekdays">
+    <string-array name="weekdays_abbrev">
         <item>Dom</item>
         <item>Lun</item>
         <item>Mar</item>

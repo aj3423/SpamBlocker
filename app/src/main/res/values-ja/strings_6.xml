@@ -4,14 +4,14 @@
         以下の内容をコピーしてgithubでこの問題を報告してください。\n
         報告する前に、機密情報を取り除いてください。
     </string>
-    <string-array name="short_weekdays">
-        <item>Sun</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
-        <item>Sat</item>
+    <string-array name="weekdays_abbrev">
+        <item><short>日</short></item>
+        <item><short>月</short></item>
+        <item><short>火</short></item>
+        <item><short>水</short></item>
+        <item><short>木</short></item>
+        <item><short>金</short></item>
+        <item><short>土</short></item>
     </string-array>
 
     <string-array name="block_type_list">

@@ -4,14 +4,14 @@
         请复制以下内容并将其提交到github上，
         在报告之前请删除任何敏感信息。
     </string>
-    <string-array name="short_weekdays">
-        <item>Sun</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
-        <item>Sat</item>
+    <string-array name="weekdays_abbrev">
+        <item>周日</item>
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
     </string-array>
 
     <string-array name="block_type_list">

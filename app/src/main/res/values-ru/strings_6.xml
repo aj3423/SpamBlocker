@@ -4,14 +4,14 @@
         Пожалуйста, скопируйте текст ниже и сообщите об этой проблеме на github,
         удаляя любую конфиденциальную информацию перед отправкой.
     </string>
-    <string-array name="short_weekdays">
-        <item>Sun</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
-        <item>Sat</item>
+    <string-array name="weekdays_abbrev">
+        <item><translate>Вс</translate></item>
+        <item><translate>Пн</translate></item>
+        <item><translate>Вт</translate></item>
+        <item><translate>Ср</translate></item>
+        <item><translate>Чт</translate></item>
+        <item><translate>Пт</translate></item>
+        <item><translate>Сб</translate></item>
     </string-array>
 
     <string-array name="block_type_list">

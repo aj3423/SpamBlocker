@@ -34,7 +34,7 @@ fun WeekdayPicker1(
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         val C = LocalPalette.current
-        val labels = LocalContext.current.resources.getStringArray(R.array.short_weekdays)
+        val labels = LocalContext.current.resources.getStringArray(R.array.weekdays_abbrev)
 
         labels.forEachIndexed { index, label ->
             val selected = selectedDays.contains(index + 1)
@@ -84,7 +84,7 @@ fun WeekdayPicker2(
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         val C = LocalPalette.current
-        val labels = LocalContext.current.resources.getStringArray(R.array.short_weekdays)
+        val labels = LocalContext.current.resources.getStringArray(R.array.weekdays_abbrev)
 
         labels.forEachIndexed { index, label ->
             val selected = selectedDays.map {
