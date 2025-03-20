@@ -98,7 +98,7 @@ fun SettingScreen() {
             if (G.globallyEnabled.value) {
                 Fab(
                     visible = !bottomReached,
-                    text = if (alsoShowText) "Testing" else null,
+                    text = if (alsoShowText) ctx.getString(R.string.title_rule_testing) else null,
                     iconId = R.drawable.ic_tube,
                     iconColor = White,
                     iconSize = 36,
