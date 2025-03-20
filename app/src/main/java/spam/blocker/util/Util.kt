@@ -38,6 +38,10 @@ typealias Lambda2<A, B> = (A, B) -> Unit
 typealias Lambda3<A, B, C> = (A, B, C) -> Unit
 typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
+val Context.isFreshInstall get() = with(packageManager.getPackageInfo(packageName, 0)) {
+    firstInstallTime == lastUpdateTime
+}
+
 fun String.escape(): String {
     return this
         .replace("\\", "\\\\")

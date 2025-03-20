@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -65,6 +66,8 @@ import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
+import spam.blocker.util.isFreshInstall
+import spam.blocker.util.spf
 
 const val SettingRowMinHeight = 40
 
@@ -83,17 +86,30 @@ fun SettingScreen() {
         }
     }
 
+    // Show text "Testing" on the testing tube icon, and hide this text once it's clicked.
+    val spf = spf.Global(ctx)
+    var alsoShowText by remember {
+        mutableStateOf(
+            ctx.isFreshInstall && !spf.isTestingIconClicked()
+        )
+    }
     FabWrapper(
         fabRow = { positionModifier ->
-            Fab(
-                visible = !bottomReached,
-                iconId = R.drawable.ic_tube,
-                iconColor = White,
-                iconSize = 36,
-                bgColor = Teal200,
-                modifier = positionModifier
-            ) {
-                testingTrigger.value = true
+            if (G.globallyEnabled.value) {
+                Fab(
+                    visible = !bottomReached,
+                    text = if (alsoShowText) "Testing" else null,
+                    iconId = R.drawable.ic_tube,
+                    iconColor = White,
+                    iconSize = 36,
+                    bgColor = Teal200,
+                    modifier = positionModifier
+                ) {
+                    testingTrigger.value = true
+
+                    spf.setTestingIconClicked(true)
+                    alsoShowText = false
+                }
             }
         }
     ) {
