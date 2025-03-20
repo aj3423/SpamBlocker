@@ -1,0 +1,8 @@
+Fix
+- Import csv to spam db doesn't work on Android 10
+
+Enhancement
+- Spam notifications are now grouped together
+
+Maintenance
+- Bump preset API Gemini to 2.0-flash
