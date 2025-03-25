@@ -11,7 +11,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.Events
-import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
@@ -19,7 +18,6 @@ import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.reportSpam
 import spam.blocker.ui.NotificationTrampolineActivity
-import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
@@ -95,7 +93,23 @@ class CallScreeningService : CallScreeningService() {
         respondToCall(details, builder.build())
     }
 
+    // Save the timestamp for the feature "Emergency"
+    private fun updateOutgoingEmergencyTimestamp(details: Details) {
+        val spf = spf.EmergencySituation(this)
+        val extraNumbers = spf.getExtraNumbers()
+        val rawNumber = details.getRawNumber()
+        if (Util.isEmergencyNumber(this, rawNumber) || extraNumbers.contains(rawNumber)) {
+            logi("save ecc outgoing")
+            spf.setTimestamp(System.currentTimeMillis())
+        }
+    }
     override fun onScreenCall(details: Details) {
+        // Outgoing
+        if (details.callDirection == Details.DIRECTION_OUTGOING) {
+            updateOutgoingEmergencyTimestamp(details)
+        }
+
+        // Incoming
         if (details.callDirection != Details.DIRECTION_INCOMING)
             return
 

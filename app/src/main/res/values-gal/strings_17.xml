@@ -1,0 +1,37 @@
+<resources>
+    <string name="emergency">Emerxencia</string>
+    <string name="help_emergency_situation">
+        <![CDATA[
+        Permitir todas as chamadas despois de marcar un número de emerxencia.<br>
+        <br>
+        <h5><font color="#00BFFF">- Duración</font></h5>
+        A configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que se permitirán todas as chamadas
+        nos próximos 120 minutos despois de marcar un número de emerxencia.<br>
+        <br>
+        <h5><font color="#00BFFF">- Comprobar STIR</font></h5>
+         - Cando está desactivado, permitirase todas as chamadas.<br>
+         - Cando está activado, non se permitirán as chamadas que fallen na certificación STIR, só se permitirán as chamadas "Válidas" e "Sen verificar".<br>
+        <br>
+        <h5><font color="#00BFFF">- Números adicionais</font></h5>
+        Marcar calquera número desta lista tamén activará esta función.<br>
+        <br>
+        Non é necesario engadir números como o 911 aquí, porque Android inclúe unha lista de números de emerxencia integrada
+        para cada país (por exemplo: policía, bombeiros, ambulancia).<br>
+        <br>
+        Separa os números con comas, como:<br>
+        &ensp; <font color="#888888">111, 222, 3333</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Restablecer</font></h5>
+        Prema este botón para restablecer esta función se se activou por erro ou durante as probas.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: Máxima</b></font>
+        ]]>
+    </string>
+    <string name="reset">Restablecer</string>
+    <string name="status">Estado</string>
+    <string name="inactive">Inactivo</string>
+    <string name="confirm_reset">Confirmar restablecer?</string>
+    <string name="check_stir_attestation">Comprobar STIR</string>
+    <string name="additional_numbers">Números adicionais</string>
+    <string name="emergency_situation">Situación de Urxencia</string>
+</resources>

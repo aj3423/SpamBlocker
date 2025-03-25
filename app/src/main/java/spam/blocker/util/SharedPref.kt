@@ -114,6 +114,46 @@ class spf { // for namespace only
         }
     }
 
+    class EmergencySituation(ctx: Context) : SharedPref(ctx) {
+        fun isEnabled(): Boolean {
+            return readBoolean(Def.SETTING_EMERGENCY_ENABLED, false)
+        }
+        fun setEnabled(enabled: Boolean) {
+            writeBoolean(Def.SETTING_EMERGENCY_ENABLED, enabled)
+        }
+        fun isCollapsed(): Boolean {
+            return readBoolean(Def.SETTING_EMERGENCY_COLLAPSED, false)
+        }
+        fun setCollapsed(collapsed: Boolean) {
+            writeBoolean(Def.SETTING_EMERGENCY_COLLAPSED, collapsed)
+        }
+        fun isStirEnabled() : Boolean {
+            return readBoolean(Def.SETTING_EMERGENCY_STIR_ENABLED, false)
+        }
+        fun setStirEnabled(enabled: Boolean) {
+            writeBoolean(Def.SETTING_EMERGENCY_STIR_ENABLED, enabled)
+        }
+        fun getDuration() : Int {
+            return readInt(Def.SETTING_EMERGENCY_DURATION, 120) // 120 minutes
+        }
+        fun setDuration(duration: Int) {
+            writeInt(Def.SETTING_EMERGENCY_DURATION, duration)
+        }
+        fun getExtraNumbers() : List<String> {
+            return readString(Def.SETTING_EMERGENCY_EXTRA_NUMBERS, "")
+                .split(",").map { it.trim() }.filter { it.isNotEmpty() }
+        }
+        fun setExtraNumbers(numbers: List<String>) {
+            writeString(Def.SETTING_EMERGENCY_EXTRA_NUMBERS, numbers.joinToString(","))
+        }
+        fun getTimestamp(): Long {
+            return readLong(Def.SETTING_EMERGENCY_LAST_TIMESTAMP, 0)
+        }
+        fun setTimestamp(timestamp: Long) {
+            writeLong(Def.SETTING_EMERGENCY_LAST_TIMESTAMP, timestamp)
+        }
+    }
+
     class RegexOptions(ctx: Context) : SharedPref(ctx) {
         fun isNumberCollapsed(): Boolean { return readBoolean(Def.SETTING_NUMBER_RULE_COLLAPSED, false) }
         fun setNumberCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_NUMBER_RULE_COLLAPSED, enabled) }

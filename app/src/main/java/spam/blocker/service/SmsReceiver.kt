@@ -6,13 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
 import spam.blocker.Events
-import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.NotificationTrampolineActivity
-import spam.blocker.ui.theme.Salmon
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification

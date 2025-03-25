@@ -43,7 +43,7 @@
     <string name="miscellaneous">Разное</string>
     <string name="quick_settings">Быстрые настройки</string>
     <string name="regex_settings">Настройки Regex</string>
-    <string name="backup">Резервное копирование</string>
+    <string name="backup">бэкап</string>
     <string name="import_">Импорт</string>
     <string name="imported">Импортировано</string>
     <string name="export">Экспорт</string>

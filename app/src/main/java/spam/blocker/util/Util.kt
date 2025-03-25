@@ -13,6 +13,7 @@ import android.os.UserManager
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.provider.Telephony
+import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
 import kotlinx.serialization.json.Json
 import org.json.JSONArray
@@ -457,6 +458,10 @@ object Util {
         }
     }
 
+    fun isEmergencyNumber(ctx: Context, rawNumber: String) : Boolean {
+        val telephonyManager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        return telephonyManager.isEmergencyNumber(rawNumber)
+    }
     fun setLocale(ctx: Context, languageCode: String) {
         val locale = if (languageCode == "")
             Locale.getDefault()

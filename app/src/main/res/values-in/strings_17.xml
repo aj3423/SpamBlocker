@@ -1,0 +1,37 @@
+<resources>
+    <string name="emergency">Darurat</string>
+    <string name="help_emergency_situation">
+        <![CDATA[
+        Izinkan semua panggilan setelah menelepon nomor darurat.<br>
+        <br>
+        <h5><font color="#00BFFF">- Durasi</font></h5>
+        Pengaturan default <font color="#03DAC5"><b>120 Menit</b></font> berarti semua panggilan akan diizinkan
+        dalam 120 menit berikutnya setelah menelepon nomor darurat.<br>
+        <br>
+        <h5><font color="#00BFFF">- Periksa STIR</font></h5>
+         - Jika dinonaktifkan, semua panggilan akan diizinkan.<br>
+         - Jika diaktifkan, panggilan yang gagal dalam pengesahan STIR tidak akan diizinkan, hanya panggilan "Valid" dan "Tidak Terverifikasi" yang akan diizinkan.<br>
+        <br>
+        <h5><font color="#00BFFF">- Nomor Tambahan</font></h5>
+        Menelepon nomor apa pun dalam daftar ini juga akan memicu fitur ini.<br>
+        <br>
+        Tidak perlu menambahkan nomor seperti 911 di sini secara eksplisit, karena Android menyertakan daftar nomor
+        darurat bawaan untuk setiap negara (misalnya: polisi, pemadam kebakaran, ambulans).<br>
+        <br>
+        Pisahkan nomor dengan koma, seperti:<br>
+        &ensp; <font color="#888888">111, 222, 3333</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Reset</font></h5>
+        Tekan tombol ini untuk mereset fitur ini jika terpicu karena kesalahan atau selama pengujian.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: Maks</b></font>
+        ]]>
+    </string>
+    <string name="reset">Atur Ulang</string>
+    <string name="status">Status</string>
+    <string name="inactive">Tidak Aktif</string>
+    <string name="confirm_reset">Konfirmasi atur ulang?</string>
+    <string name="check_stir_attestation">Periksa STIR</string>
+    <string name="additional_numbers">Nomor Tambahan</string>
+    <string name="emergency_situation">Situasi Darurat</string>
+</resources>

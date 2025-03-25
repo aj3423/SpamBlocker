@@ -35,7 +35,8 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_CALL
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_SITUATION
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_OFF_TIME
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_RECENT_APP
@@ -198,12 +199,21 @@ class ByDefault(
     }
 }
 
-// allowed by emergency call
-class ByEmergency(
-    override val type: Int = RESULT_ALLOWED_BY_EMERGENCY,
+// allowed by emergency incoming call
+class ByEmergencyCall(
+    override val type: Int = RESULT_ALLOWED_BY_EMERGENCY_CALL,
 ) : ICheckResult {
     override fun resultReasonStr(ctx: Context): String {
         return ctx.getString(R.string.emergency_call)
+    }
+}
+
+// allowed by the Emergency in quick settings
+class ByEmergencySituation(
+    override val type: Int = RESULT_ALLOWED_BY_EMERGENCY_SITUATION,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.emergency_situation)
     }
 }
 
@@ -479,7 +489,9 @@ class BySmsBomb(
 
 fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckResult {
     return when (result) {
-        RESULT_ALLOWED_BY_EMERGENCY -> ByEmergency()
+        RESULT_ALLOWED_BY_EMERGENCY_CALL -> ByEmergencyCall()
+        RESULT_ALLOWED_BY_EMERGENCY_SITUATION -> ByEmergencySituation()
+
         RESULT_ALLOWED_BY_CONTACT, RESULT_BLOCKED_BY_NON_CONTACT -> ByContact(
             result, reason
         )

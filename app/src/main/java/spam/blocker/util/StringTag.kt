@@ -29,6 +29,14 @@ fun String.resolvePathTags(): String {
             "{Downloads}",
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
         )
+        .replace(
+            "{Documents}",
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).absolutePath
+        )
+        .replace(
+            "{sdcard}",
+            Environment.getExternalStorageDirectory().absolutePath
+        )
 }
 
 fun String.resolveNumberTag(

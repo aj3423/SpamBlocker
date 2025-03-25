@@ -16,6 +16,12 @@ object Def {
     const val DEFAULT_HANG_UP_DELAY = 1 // second
 
     const val SETTING_THEME_TYPE = "theme_type"
+    const val SETTING_EMERGENCY_ENABLED = "emergency_enabled"
+    const val SETTING_EMERGENCY_COLLAPSED = "emergency_collapsed"
+    const val SETTING_EMERGENCY_STIR_ENABLED = "emergency_stir_enabled"
+    const val SETTING_EMERGENCY_EXTRA_NUMBERS = "emergency_extra_numbers"
+    const val SETTING_EMERGENCY_DURATION = "emergency_duration"
+    const val SETTING_EMERGENCY_LAST_TIMESTAMP = "emergency_last_timestamp"
     const val SETTING_STIR_ENABLED = "stir_enabled"
     const val SETTING_STIR_EXCLUSIVE = "stir_exclusive"
     const val SETTING_STIR_INCLUDE_UNVERIFIED = "stir_include_unverified"
@@ -103,12 +109,14 @@ object Def {
     const val RESULT_ALLOWED_BY_CONTENT = 6
     const val RESULT_ALLOWED_BY_DIALED = 7
     const val RESULT_ALLOWED_BY_OFF_TIME = 8
-    const val RESULT_ALLOWED_BY_EMERGENCY = 9
+    const val RESULT_ALLOWED_BY_EMERGENCY_CALL = 9
     const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
     const val RESULT_ALLOWED_BY_CONTACT_GROUP = 101
     const val RESULT_ALLOWED_BY_CONTACT_REGEX = 102
     const val RESULT_ALLOWED_BY_API_QUERY = 103
     const val RESULT_ALLOWED_BY_CALL_ALERT = 104
+    const val RESULT_ALLOWED_BY_EMERGENCY_SITUATION = 105
+
 
 
 

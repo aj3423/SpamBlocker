@@ -69,7 +69,9 @@ fun RegexRule.toNumberChecker(
 
 class Checker { // for namespace only
 
-    private class Emergency(
+    // This checks if the incoming call is from an emergency number.
+    // It's always enabled, there is no setting entry for this.
+    private class EmergencyCall(
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
@@ -93,15 +95,65 @@ class Checker { // for namespace only
 
             if (callDetails.hasProperty(Call.Details.PROPERTY_EMERGENCY_CALLBACK_MODE)
                 || callDetails.hasProperty(Call.Details.PROPERTY_NETWORK_IDENTIFIED_EMERGENCY_CALL)
+                || Util.isEmergencyNumber(ctx, cCtx.rawNumber)
             ) {
                 logger?.success(
                     ctx.getString(R.string.allowed_by)
                         .format(ctx.getString(R.string.emergency_call))
                 )
-                return ByEmergency()
+                return ByEmergencyCall()
             }
 
             return null
+        }
+    }
+
+    // This is the `Emergency` in Quick Settings, it allows all calls after calling an emergency number.
+    private class EmergencySituation(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return Int.MAX_VALUE
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val spf = spf.EmergencySituation(ctx)
+            if (!spf.isEnabled())
+                return null
+
+            val logger = cCtx.logger
+            val callDetails = cCtx.callDetails
+            logger?.info(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.emergency_situation).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
+
+            // 1. check time
+            val lastEccCallTime: Long = spf.getTimestamp()
+            val duration: Long = (spf.getDuration() * 60 * 1000).toLong()
+            val now = System.currentTimeMillis()
+            if (lastEccCallTime + duration < now) {
+                return null
+            }
+
+            // 2. check STIR
+            val isStirEnabled = spf.isStirEnabled()
+            if (isStirEnabled && callDetails != null) { // only check for real call, there is no `callDetails` when testing
+                val stir = callDetails.callerNumberVerificationStatus
+                val fail = stir == Connection.VERIFICATION_STATUS_FAILED
+                if (fail) {
+                    return null
+                }
+            }
+
+            logger?.success(
+                ctx.getString(R.string.allowed_by)
+                    .format(ctx.getString(R.string.emergency_situation))
+            )
+            return ByEmergencySituation()
         }
     }
 
@@ -1055,7 +1107,8 @@ class Checker { // for namespace only
         ): ICheckResult {
 
             val checkers = arrayListOf(
-                Emergency(ctx),
+                EmergencyCall(ctx),
+                EmergencySituation(ctx),
                 STIR(ctx),
                 SpamDB(ctx),
                 Contact(ctx),

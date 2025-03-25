@@ -1,0 +1,37 @@
+<resources>
+    <string name="emergency"><translate>Urgence</translate></string>
+    <string name="help_emergency_situation">
+        <![CDATA[
+        Autoriser tous les appels après avoir composé un numéro d\'urgence.<br>
+        <br>
+        <h5><font color="#00BFFF">- Durée</font></h5>
+        Le paramètre par défaut <font color="#03DAC5"><b>120 Min</b></font> signifie que tous les appels seront autorisés
+        dans les 120 prochaines minutes après avoir composé un numéro d\'urgence.<br>
+        <br>
+        <h5><font color="#00BFFF">- Vérifier STIR</font></h5>
+         - Lorsqu\'il est désactivé, tous les appels seront autorisés.<br>
+         - Lorsqu\'il est activé, les appels échouant à l\'attestation STIR ne seront pas autorisés, seuls les appels "Valides" et "Non vérifiés" seront autorisés.<br>
+        <br>
+        <h5><font color="#00BFFF">- Numéros Additionnels</font></h5>
+        Composer n\'importe quel numéro de cette liste déclenchera également cette fonctionnalité.<br>
+        <br>
+        Il n\'est pas nécessaire d\'ajouter explicitement des numéros comme le 112 ici, car Android inclut une liste intégrée
+        des numéros d\'urgence pour chaque pays (par exemple: police, pompiers, ambulance).<br>
+        <br>
+        Séparez les numéros par des virgules, tels que:<br>
+        &ensp; <font color="#888888">111, 222, 3333</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Réinitialiser</font></h5>
+        Appuyez sur ce bouton pour réinitialiser cette fonctionnalité si elle a été déclenchée par erreur ou pendant les tests.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité: Maximale</b></font>
+        ]]>
+    </string>
+    <string name="reset">Réinitialiser</string>
+    <string name="status">État</string>
+    <string name="inactive">Inactif</string>
+    <string name="confirm_reset">Confirmer la réinitialisation ?</string>
+    <string name="check_stir_attestation">Vérifier STIR</string>
+    <string name="additional_numbers">Numéros Additionnels</string>
+    <string name="emergency_situation">Situation d\'urgence</string>
+</resources>
