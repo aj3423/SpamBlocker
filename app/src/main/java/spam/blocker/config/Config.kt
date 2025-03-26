@@ -192,6 +192,37 @@ class SmsBomb {
 }
 
 @Serializable
+class EmergencySituation {
+    var enabled = false
+    var stirEnabled = false
+    var collapsed = false
+    var duration = 0
+    var extraNumbers = listOf<String>()
+    var timestamp: Long = 0
+
+    fun load(ctx: Context) {
+        val spf = spf.EmergencySituation(ctx)
+        enabled = spf.isEnabled()
+        stirEnabled = spf.isStirEnabled()
+        collapsed = spf.isCollapsed()
+        duration = spf.getDuration()
+        extraNumbers = spf.getExtraNumbers()
+        timestamp = spf.getTimestamp()
+    }
+
+    fun apply(ctx: Context) {
+        spf.EmergencySituation(ctx).apply {
+            setEnabled(enabled)
+            setStirEnabled(stirEnabled)
+            setCollapsed(collapsed)
+            setDuration(duration)
+            setExtraNumbers(extraNumbers)
+            setTimestamp(timestamp)
+        }
+    }
+}
+
+@Serializable
 class BotOptions {
     var listCollapsed = false
 
@@ -544,6 +575,7 @@ class Configs {
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
     val callAlert = CallAlert()
+    val emergency = EmergencySituation()
     val smsBomb = SmsBomb()
 
     val apiQuery = ApiQuery()
@@ -575,6 +607,7 @@ class Configs {
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
         callAlert.load(ctx)
+        emergency.load(ctx)
         smsBomb.load(ctx)
 
         apiQuery.load(ctx)
@@ -608,6 +641,7 @@ class Configs {
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
         callAlert.apply(ctx)
+        emergency.apply(ctx)
         smsBomb.apply(ctx)
 
         apiQuery.apply(ctx)

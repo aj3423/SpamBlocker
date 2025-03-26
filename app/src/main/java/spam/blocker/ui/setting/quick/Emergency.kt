@@ -120,7 +120,7 @@ fun EmergencySituation() {
                 }
 
                 // STIR Check
-                LabeledRow(labelId = R.string.stir_attestation) {
+                LabeledRow(labelId = R.string.check_stir_attestation) {
                     SwitchBox(isStirEnabled) { isTurningOn ->
                         isStirEnabled = isTurningOn
                     }
