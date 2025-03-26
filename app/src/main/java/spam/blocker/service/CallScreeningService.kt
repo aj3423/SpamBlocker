@@ -68,7 +68,7 @@ class CallScreeningService : CallScreeningService() {
             setSkipNotification(true)
             setDisallowCall(true)
 
-            setSilenceCall(true)
+//            setSilenceCall(true)
         }
         respondToCall(details, builder.build())
     }
