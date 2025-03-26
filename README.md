@@ -1,9 +1,15 @@
 # SpamBlocker
 Android Call/SMS blocker. (Android 10+)
 
-<img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9d44afe7-2524-4b34-8bf3-ba285200bb5c" height="90">  [<img src="https://github.com/user-attachments/assets/8757c78c-b0d5-4b8a-9adb-934d8a758e9e"
-     alt="Get it on F-Droid"
-     height="70">](https://f-droid.org/packages/spam.blocker/)  
+<p>
+  <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/9d44afe7-2524-4b34-8bf3-ba285200bb5c" alt="SpamBlocker" height="90" />
+  <a href="https://f-droid.org/packages/spam.blocker">
+    <img src="https://github.com/user-attachments/assets/8757c78c-b0d5-4b8a-9adb-934d8a758e9e" alt="Get it on F-Droid" height="70" />
+  </a>
+  <a href="https://github.com/ImranR98/Obtainium"> 
+    <img src="https://raw.githubusercontent.com/ImranR98/Obtainium/main/assets/graphics/badge_obtainium.png" alt="Get it on Obtainium" height="70" />
+  </a>
+</p>
 
 
 Table of Contents
