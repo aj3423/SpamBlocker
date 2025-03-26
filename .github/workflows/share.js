@@ -25,6 +25,9 @@ function contributing_tips(contributers) {
 If you'd like to share your regex/workflow here, please check [this guide](https://github.com/aj3423/SpamBlocker/issues/249).\n\n`
 }
 
+function content_contains_table(content) {
+	return content.split('\n').some(line => line.trim().startsWith('|'));
+}
 function generateWiki(results) {
 	var wiki = {}
 
@@ -56,6 +59,8 @@ function generateWiki(results) {
 				// .join('\n');
 				const title = `#### [${item.description}](${item.link})\n`
 				if (content.includes("\`\`\`")) { // wrap it with ``` ``` when it's not aready wrapped
+					return title + content
+				} else if (content_contains_table(content)) {
 					return title + content
 				} else {
 					return title + `\`\`\`\n${content}\n\`\`\``
