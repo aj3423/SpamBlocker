@@ -181,7 +181,7 @@ fun EmergencySituation() {
             }
         }
     )
-    if (isEnabled && !collapsed) {
+    if (isEnabled && !collapsed && extraNumbers.isNotBlank()) {
         OutlineCard {
             Row(
                 modifier = M
