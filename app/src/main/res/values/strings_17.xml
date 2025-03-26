@@ -3,7 +3,7 @@
     <string name="emergency_situation">Emergency Situation</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Allow all calls after dialing an emergency number.<br>
+        After dialing an emergency number, allow all incoming calls for a period of time.<br>
         <br>
         <h5><font color="#00BFFF">- Duration</font></h5>
         The default setting <font color="#03DAC5"><b>120 Min</b></font> means all calls will be allowed
@@ -34,4 +34,19 @@
     <string name="confirm_reset">Confirm to reset?</string>
     <string name="check_stir_attestation">Check STIR</string>
     <string name="additional_numbers">Additional Numbers</string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        The external storage directory, same as: <br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        Same as: <br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        Same as: <br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
 </resources>

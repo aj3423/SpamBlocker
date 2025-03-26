@@ -617,6 +617,7 @@ class ReadFile(
             StrInputBox(
                 text = dir,
                 label = { Text(Str(R.string.directory)) },
+                helpTooltip = Str(R.string.tags_supported) + Str(R.string.path_tags),
                 onValueChange = { dir = it }
             )
             StrInputBox(
@@ -684,6 +685,7 @@ class WriteFile(
             StrInputBox(
                 text = dir,
                 label = { Text(Str(R.string.directory)) },
+                helpTooltip = Str(R.string.tags_supported) + Str(R.string.path_tags),
                 onValueChange = { dir = it }
             )
             StrInputBox(

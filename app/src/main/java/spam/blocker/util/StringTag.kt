@@ -26,7 +26,11 @@ fun String.resolveTimeTags(): String {
 fun String.resolvePathTags(): String {
     return this
         .replace(
-            "{Downloads}",
+            "{Download}",
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
+        )
+        .replace(
+            "{Downloads}", // for history compatibility
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
         )
         .replace(

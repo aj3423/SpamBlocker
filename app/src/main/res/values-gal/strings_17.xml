@@ -2,27 +2,27 @@
     <string name="emergency">Emerxencia</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Permitir todas as chamadas despois de marcar un número de emerxencia.<br>
+        Despois de marcar un número de emerxencia, permite todas as chamadas entrantes durante un período de tempo.<br>
         <br>
         <h5><font color="#00BFFF">- Duración</font></h5>
-        A configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que se permitirán todas as chamadas
+        A configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que todas as chamadas estarán permitidas
         nos próximos 120 minutos despois de marcar un número de emerxencia.<br>
         <br>
         <h5><font color="#00BFFF">- Comprobar STIR</font></h5>
-         - Cando está desactivado, permitirase todas as chamadas.<br>
-         - Cando está activado, non se permitirán as chamadas que fallen na certificación STIR, só se permitirán as chamadas "Válidas" e "Sen verificar".<br>
+         - Cando está desactivado, todas as chamadas estarán permitidas.<br>
+         - Cando está activado, as chamadas que non superen a certificación STIR non estarán permitidas, só se permitirán as chamadas "Válidas" e "Sen verificar".<br>
         <br>
         <h5><font color="#00BFFF">- Números adicionais</font></h5>
         Marcar calquera número desta lista tamén activará esta función.<br>
         <br>
-        Non é necesario engadir números como o 911 aquí, porque Android inclúe unha lista de números de emerxencia integrada
-        para cada país (por exemplo: policía, bombeiros, ambulancia).<br>
+        Non fai falta engadir números explícitamente como o 911 aquí, porque Android inclúe unha lista de números
+        de emerxencia incorporada para cada país (por exemplo: policía, bombeiros, ambulancia).<br>
         <br>
         Separa os números con comas, como:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Restablecer</font></h5>
-        Prema este botón para restablecer esta función se se activou por erro ou durante as probas.<br>
+        Preme este botón para restablecer esta función se se activou por erro ou durante a proba.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: Máxima</b></font>
         ]]>
@@ -34,4 +34,19 @@
     <string name="check_stir_attestation">Comprobar STIR</string>
     <string name="additional_numbers">Números adicionais</string>
     <string name="emergency_situation">Situación de Urxencia</string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        <translate>O directorio de almacenamento externo, igual que: </translate><br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        <translate>Igual que: </translate><br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        <translate>Igual que: </translate><br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
 </resources>

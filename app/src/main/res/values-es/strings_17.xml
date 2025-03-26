@@ -2,29 +2,27 @@
     <string name="emergency"><translate>Emergencia</translate></string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Permitir todas las llamadas tras marcar un número de emergencia.<br>
+        <translate>Después de marcar un número de emergencia, permita todas las llamadas entrantes durante un período de tiempo.</translate><br>
         <br>
-        <h5><font color="#00BFFF">- Duración</font></h5>
-        La configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que todas las llamadas se permitirán
-        en los próximos 120 minutos después de marcar un número de emergencia.<br>
+        <h5><font color="#00BFFF"><translate>- Duración</translate></font></h5>
+        <translate>La configuración predeterminada</translate> <font color="#03DAC5"><b>120 Min</b></font> <translate>significa que todas las llamadas se permitirán en los próximos 120 minutos después de marcar un número de emergencia.</translate><br>
         <br>
-        <h5><font color="#00BFFF">- Verificar STIR</font></h5>
-         - Cuando está desactivado, todas las llamadas serán permitidas.<br>
-         - Cuando está habilitado, las llamadas que fallan en la certificación STIR no serán permitidas, sólo las llamadas "Válidas" y "No verificadas" serán permitidas.<br>
+        <h5><font color="#00BFFF"><translate>- Comprobar STIR</translate></font></h5>
+         <translate>- Cuando está desactivado, todas las llamadas se permitirán.</translate><br>
+         <translate>- Cuando está habilitado, las llamadas que fallen en la certificación STIR no se permitirán, solo se permitirán las llamadas "Válidas" y "No Verificadas".</translate><br>
         <br>
-        <h5><font color="#00BFFF">- Números Adicionales</font></h5>
-        Marcar cualquier número en esta lista también activará esta función.<br>
+        <h5><font color="#00BFFF"><translate>- Números Adicionales</translate></font></h5>
+        <translate>Marcar cualquier número en esta lista también activará esta función.</translate><br>
         <br>
-        No es necesario añadir explícitamente números como el 911 aquí, porque Android incluye una lista de
-        números de emergencia incorporada para cada país (por ejemplo: policía, bomberos, ambulancia).<br>
+        <translate>No es necesario agregar explícitamente números como el 911 aquí, porque Android incluye una lista de números de emergencia incorporada para cada país (por ejemplo: policía, bomberos, ambulancia).</translate><br>
         <br>
-        Separe los números con comas, como:<br>
+        <translate>Separe los números con comas, como:</translate><br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF">- Resetear</font></h5>
-        Presione este botón para resetear esta función si fue activada por error o durante las pruebas.<br>
+        <h5><font color="#00BFFF"><translate>- Reiniciar</translate></font></h5>
+        <translate>Presione este botón para reiniciar esta función si se activó por error o durante las pruebas.</translate><br>
         <br>
-        <font color="#ea86ff"><b>Prioridad: Máxima</b></font>
+        <font color="#ea86ff"><b><translate>Prioridad: Máxima</translate></b></font>
         ]]>
     </string>
     <string name="reset">Restablecer</string>
@@ -34,4 +32,19 @@
     <string name="check_stir_attestation">Check STIR</string>
     <string name="additional_numbers">Additional Numbers</string>
     <string name="emergency_situation">Situación de emergencia</string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        El directorio de almacenamiento externo, igual que: <br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        Igual que: <br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        Igual que: <br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
 </resources>

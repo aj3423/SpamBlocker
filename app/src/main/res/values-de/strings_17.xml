@@ -2,15 +2,15 @@
     <string name="emergency">Notfall</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Erlaube alle Anrufe nach dem Wählen einer Notrufnummer.<br>
+        Nach dem Wählen einer Notrufnummer, erlaube alle eingehenden Anrufe für einen bestimmten Zeitraum.<br>
         <br>
         <h5><font color="#00BFFF">- Dauer</font></h5>
         Die Standardeinstellung <font color="#03DAC5"><b>120 Min</b></font> bedeutet, dass alle Anrufe erlaubt sind
         in den nächsten 120 Minuten nach dem Wählen einer Notrufnummer.<br>
         <br>
-        <h5><font color="#00BFFF">- STIR prüfen</font></h5>
+        <h5><font color="#00BFFF">- STIR überprüfen</font></h5>
          - Wenn deaktiviert, werden alle Anrufe zugelassen.<br>
-         - Wenn aktiviert, werden Anrufe, die die STIR-Zertifizierung nicht bestehen, nicht zugelassen, nur "Gültige" und "Ungeprüfte" Anrufe werden zugelassen.<br>
+         - Wenn aktiviert, werden Anrufe, die die STIR-Bestätigung nicht bestehen, nicht zugelassen, nur "Gültige" und "Ungeprüfte" Anrufe werden zugelassen.<br>
         <br>
         <h5><font color="#00BFFF">- Zusätzliche Nummern</font></h5>
         Das Wählen einer beliebigen Nummer in dieser Liste löst ebenfalls diese Funktion aus.<br>
@@ -22,7 +22,7 @@
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Zurücksetzen</font></h5>
-        Drücken Sie diese Taste, um diese Funktion zurückzusetzen, wenn sie versehentlich oder während des Tests ausgelöst wurde.<br>
+        Drücken Sie diese Taste, um diese Funktion zurückzusetzen, wenn sie versehentlich oder während des Testens ausgelöst wurde.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: Max</b></font>
         ]]>
@@ -34,4 +34,19 @@
     <string name="check_stir_attestation">STIR prüfen</string>
     <string name="additional_numbers">Zusätzliche Nummern</string>
     <string name="emergency_situation">Notfallsituation</string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        Das externe Speicherverzeichnis, dasselbe wie: <br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        Dasselbe wie: <br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        Dasselbe wie: <br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
 </resources>

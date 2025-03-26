@@ -2,27 +2,27 @@
     <string name="emergency">緊急事態</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        緊急番号ダイヤル後、すべての通話を許可。<br>
+        緊急番号にダイヤルした後、一定期間、すべての着信を許可します。<br>
         <br>
         <h5><font color="#00BFFF">- 期間</font></h5>
-        デフォルト設定の<font color="#03DAC5"><b>120分</b></font>は、緊急番号ダイヤル後120分間、すべての通話が許可されることを意味します。<br>
+        デフォルト設定の <font color="#03DAC5"><b>120分</b></font> は、緊急番号にダイヤルした後、次の120分間、すべての通話を許可することを意味します。<br>
         <br>
-        <h5><font color="#00BFFF">- STIR確認</font></h5>
-         - 無効の場合、すべての通話が許可されます。<br>
-         - 有効の場合、STIR認証に失敗した通話は許可されず、「有効」および「未検証」の通話のみが許可されます。<br>
+        <h5><font color="#00BFFF">- STIRの確認</font></h5>
+         - 無効にすると、すべての通話が許可されます。<br>
+         - 有効にすると、STIR認証に失敗した通話は許可されず、「有効」および「未検証」の通話のみが許可されます。<br>
         <br>
         <h5><font color="#00BFFF">- 追加番号</font></h5>
-        このリストの番号にダイヤルしても、この機能がトリガーされます。<br>
+        このリストの番号にダイヤルすると、この機能もトリガーされます。<br>
         <br>
-        911などの番号を明示的に追加する必要はありません。Androidには、各国向けの組み込みの緊急番号リスト（例：警察、消防、救急車）が含まれているためです。<br>
+        911のような番号を明示的にここに追加する必要はありません。Androidには、国ごとに組み込みの緊急番号リスト（例：警察、消防、救急車）が含まれているためです。<br>
         <br>
-        番号はカンマで区切ります。例：<br>
+        番号はカンマで区切ってください。例：<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- リセット</font></h5>
         誤って、またはテスト中にこの機能がトリガーされた場合は、このボタンを押してリセットしてください。<br>
         <br>
-        <font color="#ea86ff"><b>優先度：最大</b></font>
+        <font color="#ea86ff"><b>優先度: 最大</b></font>
         ]]>
     </string>
     <string name="reset">リセット</string>
@@ -32,4 +32,19 @@
     <string name="check_stir_attestation">STIR確認</string>
     <string name="additional_numbers">追加番号</string>
     <string name="emergency_situation">緊急事態</string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        <translate>外部ストレージディレクトリ</translate>。次の<translate>パス</translate>と同じです: <br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        <translate>次と同じ</translate>: <br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        <translate>次と同じ</translate>: <br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
 </resources>
