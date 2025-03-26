@@ -1,0 +1,146 @@
+<resources>
+    <string name="database">Base de dades</string>
+    <string name="total">Total</string>
+    <string name="replace_from">Des de</string>
+    <string name="replace_to">A</string>
+    <string name="regex_pattern">RegEx</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        Els números d\'aquesta base de dades es bloquejaran.<br>
+        <br>
+        Podeu integrar qualsevol base de dades pública, o fins i tot múltiples bases de dades, també podeu importar números des de fitxers locals.<br>
+        <br>
+        Consulteu la secció "Automatització" a continuació per saber com programar una tasca d\'importació automàtica.<br>
+        <br>
+        S\'aplica tant a trucades com a missatges SMS.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        Els números de correu brossa a la base de dades caducaran després de N dies, els registres caducats s\'eliminaran automàticament.<br>
+        <br>
+        Quan està desactivat, els números no s\'eliminaran mai automàticament.
+        ]]>
+    </string>
+    <string name="customize">Personalitzar</string>
+    <string name="workflow">Flux de treball</string>
+    <string name="workflows">Fluxos de treball</string>
+    <string name="automation">Automatització</string>
+    <string name="help_workflows">
+        <![CDATA[
+        Els fluxos de treball es poden utilitzar per executar tasques automàticament, com ara actualitzar la base de dades o fer còpies de seguretat automàtiques.<br>
+        <br>
+        Hi ha preajustos per a una configuració ràpida, també podeu crear-lo des de zero o importar-lo des d\'una configuració json que comparteixen altres usuaris.<br>
+        <br>
+        Si trobeu algun flux de treball que es pugui utilitzar àmpliament i s\'hagi d\'afegir als preajustos, informeu-ho a github.
+        ]]>
+    </string>
+    <string name="manual">Manual</string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">Neteja de la base de dades de correu brossa</string>
+    <string name="bot_preset_cleanup_history">Neteja de l\'historial</string>
+    <string name="bot_preset_auto_backup">Còpia de seguretat automàtica</string>
+
+    <string name="action_cleanup_history">Netejar l\'historial</string>
+    <string name="action_http_request">Sol·licitud HTTP</string>
+    <string name="action_cleanup_spam_db">Netejar la base de dades de correu brossa</string>
+    <string name="action_backup_export">Exportació de còpia de seguretat</string>
+    <string name="action_backup_import">Importació de còpia de seguretat</string>
+    <string name="action_read_file">Llegir fitxer</string>
+    <string name="action_write_file">Escriure fitxer</string>
+    <string name="action_parse_csv">Analitzar CSV</string>
+    <string name="action_parse_xml">Analitzar XML</string>
+    <string name="action_regex_extract">Extreure RegEx</string>
+    <string name="action_import_to_spam_db">Importar a la base de dades de correu brossa</string>
+    <string name="action_import_as_regex_rule">Importar com a regla RegEx</string>
+    <string name="action_convert_number">Substituir número</string>
+    <string name="action_find_rules">Cercar regles</string>
+    <string name="action_modify_rules">Modificar regles</string>
+    <string name="action_modify_rules_placeholder">
+        Una cadena json, per exemple:\n
+        {\n
+        "flags": 0, // Desactiva la regla\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        Dades de descàrrega HTTP com a <u>bytes de contingut</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">Elimina els números caducats de la base de dades de correu brossa.</string>
+    <string name="help_action_cleanup_history">Elimina els registres d\'historial caducats.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Exporta la configuració actual a <u>bytes de contingut</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Aplica la configuració des de <u>bytes de contingut</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Obteniu els <u>bytes de contingut</u> d\'un fitxer.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Escriu <u>bytes de contingut</u> a un fitxer.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Analitza els <u>bytes de contingut</u> csv a una <u>llista de números</u>
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Analitza els <u>bytes de contingut</u> xml utilitzant <b>xpath</b> i genera una <u>llista de números.</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Extreu una <u>llista de números</u> de <u>bytes de contingut</u> mitjançant regex.
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Afegeix una <u>llista de números</u> a la base de dades de correu brossa.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Genera una nova regla regex a partir d\'una <u>llista de números</u>.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        Converteix la <u>llista de números</u> al format que utilitza aquesta aplicació.<br>
+        <br>
+        Per exemple, afegiu dues accions per substituir:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a `12345<font color="#03DAC5"><b>…</b></font>`:<br>
+        <br>
+        &ensp; - Substitueix `<font color="#fa7f71">(+)</font>` a ``<br>
+        &ensp; - Substitueix `<font color="#fa7f71">(#)</font>` a `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Troba una <u>llista de regles</u> que coincideixin amb una descripció específica.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Canvia un o diversos atributs per a una <u>llista de regles</u>.
+        ]]>
+    </string>
+</resources>

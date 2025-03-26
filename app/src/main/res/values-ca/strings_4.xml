@@ -1,0 +1,56 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        Quan està activat, totes les trucades (missatges) es permetran durant aquest període de temps. Normalment no hi ha trucades de correu brossa a la nit. <br>
+        <br>
+        Si l\'hora d\'inici és posterior a l\'hora de finalització, per exemple, 20:00 -> 07:00, significa el període des de les 20:00 del vespre fins a les 07:00 del matí següent. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            Aquests marcadors canvien el comportament de concordança de l\'expressió regular, estan configurats per a les regles noves per defecte. <br>
+            <br>
+
+            <font color="#00BFFF"><b>Número Bruta</b></font>: <br>
+            &ensp; Quan està activat, el número no s\'optimitzarà, <font color="#03DAC5"><b>+</b></font>
+            i <font color="#03DAC5"><b>els 0s inicials</b></font> romandran, útil per diferenciar els números nacionals.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Ometre el codi de país</b></font>: <br>
+            &ensp; Quan està activat, el <font color="#fa7f71">+</font> inicial i el <font color="#fa7f71">codi de país</font>
+             s\'eliminaran d\'un número internacional.<br>
+            <br>
+            Per exemple, tant <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> com
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> es convertiran en <font color="#03DAC5">12345</font>,
+            això us permet utilitzar expressions regulars més senzilles `123.*` en lloc de `(33|44)*123.*` per fer coincidir els números internacionals.<br>
+            <br>
+
+            <font color="#00BFFF"><b>Ignorar la distinció entre majúscules i minúscules</b></font>:<br>
+            &ensp; Fa que la concordança de patrons no distingeixi entre majúscules i minúscules, <font color="#03DAC5"><b>a</b></font>
+              coincidiria tant amb <font color="#03DAC5"><b>a</b></font> com amb <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>El punt coincideix amb tot</b></font>: <br>
+            &ensp; Quan està activat, <font color="#03DAC5"><b>.</b></font> també coincidirà amb caràcters de nova línia (<font color="#03DAC5"><b>\\n</b></font>),
+              això permet que el punt coincideixi en diverses línies. <br>
+            &ensp; Cas d\'ús: <br>
+            &emsp;   Coincideix amb el missatge SMS multilínea: <br>
+            &emsp;   <font color="#fa7f71">reclami el seu premi: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   amb la regla: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+        ]]>
+    </string>
+
+    <string-array name="regex_flags_list">
+        <item>Número Bruta</item>
+        <item>Ometre el codi de país</item>
+        <item>Ignorar la distinció entre majúscules i minúscules</item>
+        <item>El punt coincideix amb tot</item>
+    </string-array>
+    <string name="disable_number_optimization">Aquesta optimització es pot desactivar amb el indicador d\'expressió regular "Número Bruta".</string>
+</resources>

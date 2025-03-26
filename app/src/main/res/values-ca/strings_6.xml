@@ -1,0 +1,116 @@
+<resources>
+    <string name="crash_title">
+        <translate>Ho sentim, l\'aplicació s\'ha tancat inesperadament.\n\n
+        Si us plau, copia el contingut següent i informa d\'aquest problema a github,
+        elimina qualsevol informació sensible abans d\'informar.</translate>
+    </string>
+    <string-array name="weekdays_abbrev">
+        <item>Dg</item>
+        <item>Dl</item>
+        <item>Dt</item>
+        <item>Dc</item>
+        <item>Dj</item>
+        <item>Dv</item>
+        <item>Ds</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>Rebutjar</item>
+        <item>Silenciar</item>
+        <item>Penjar</item>
+    </string-array>
+
+    <string name="show_passed"><translate>Mostra els superats</translate></string>
+    <string name="show_blocked"><translate>Mostra els bloquejats</translate></string>
+
+    <string name="confirm_delete_all_records"><translate>Confirma que vols suprimir tots els registres?</translate></string>
+    <string name="expiry"><translate>Caducitat</translate></string>
+    <string name="days"><translate>Dies</translate></string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        Quan estigui activat, el contingut del SMS també es registrarà a la base de dades i es mostrarà en aquesta llista, no es registrarà a la base de dades quan estigui desactivat.<br>
+        <br>
+        - Quan estigui activat:<br>
+        &emsp; <b>Toca</b> per expandir/contraure el missatge complet.<br>
+        <br>
+        - Quan estigui desactivat:<br>
+        &emsp; <b>Toca</b> per obrir la conversa a l\'aplicació predeterminada.
+        ]]>
+    </string>
+    <string name="copy_number"><translate>Copia el número</translate></string>
+    <string name="add_num_to_regex_rule"><translate>Afegeix el número a la regla regex</translate></string>
+    <string name="add_num_to_db"><translate>Afegeix el número a la base de dades de correu brossa</translate></string>
+    <string name="mark_all_as_read"><translate>Marca-ho tot com a llegit</translate></string>
+    <string name="remove_db_number"><translate>Suprimeix el número de la base de dades de correu brossa</translate></string>
+    <string-array name="importance_list">
+        <item>Cap</item>
+        <item>Ombra</item>
+        <item>Barra d\'estat, Ombra</item>
+        <item>So, Barra d\'estat, Ombra</item>
+        <item>So, Barra d\'estat, Ombra, Cap amunt</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>Exporta com a Json</item>
+        <item>Exporta com a comprimit</item>
+    </string-array>
+
+    <string name="language"><translate>Idioma</translate></string>
+    <string name="help_language">
+        <![CDATA[
+            Les traduccions les fa Google AI, planteja un problema a github per afegir un nou suport d\'idioma.
+        ]]>
+    </string>
+    <string name="enabled_for_call"><translate>Activa per a trucades</translate></string>
+    <string name="enabled_for_sms"><translate>Activa per a SMS</translate></string>
+    <string name="repeated_call"><translate>Trucada repetida</translate></string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        Permet si la trucada es repeteix en un període de temps, és probable que sigui important en lloc d\'una trucada brossa. <br>
+        <br>
+        També es compta la recepció de missatges de text del mateix número, això depèn de si es concedeix el permís READ_SMS, que és opcional.<br>
+        <br>
+        La configuració predeterminada <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que es permetrà la segona trucada en 5 minuts. <br>
+        <br>
+        Només s\'aplica a les trucades, <b>no</b> als missatges de text. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        L\'interruptor global, aquesta aplicació només funciona quan està activat,
+        desactiva\'l quan estiguis esperant alguna trucada/missatge en particular. <br>
+        <br>
+        També es pot activar des de la <font color="#6ed0ff"><b>Configuració ràpida desplegable</b></font>.<br>
+        <br>
+        Per als SMS, aquesta aplicació es farà càrrec de les notificacions SMS, si us plau
+        <font color="#fa7f71"><b>desactiva el permís de notificació de l\'aplicació SMS predeterminada</b></font> a la configuració del sistema,
+        en cas contrari, hi haurà notificacions dobles.
+        Només filtra les notificacions SMS, els missatges SMS brossa encara estaran presents a l\'aplicació SMS predeterminada.
+        ]]>
+    </string>
+
+    <string name="about"><translate>Quant a</translate></string>
+    <string name="version"><translate>Versió</translate></string>
+    <string name="build_time"><translate>Temps de construcció (UTC)</translate></string>
+    <string name="source_code"><translate>Codi font</translate></string>
+    <string name="dismiss"><translate>Descarta</translate></string>
+    <string name="warning_running_in_work_profile">
+        <translate>És possible que aquesta aplicació no funcioni correctament dins del perfil de treball, instal·la-la al perfil principal en canvi.</translate>
+    </string>
+    <string-array name="import_csv_type">
+        <item>Importa .csv com a una única regla</item>
+        <item>Importa .csv com a múltiples regles</item>
+    </string-array>
+    <string name="warning_double_sms">
+        <translate>Aquesta aplicació es farà càrrec de totes les notificacions SMS,
+        però l\'aplicació SMS predeterminada també mostrarà les notificacions SMS. Per evitar notificacions dobles,
+        desactiva el seu permís de notificació a la
+        configuració del sistema.\n
+        \n
+        ⚠️ No s\'admet RCS.</translate>
+    </string>
+    <string name="open_settings"><translate>Obre la configuració</translate></string>
+    <string name="ignore"><translate>Ignora</translate></string>
+</resources>

@@ -1,0 +1,103 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        Consulta el número entrant en línia en temps real; es consultaran diversos punts finals de l\'API simultàniament.<br>
+        <br>
+        Només s\'aplica a les trucades, no als missatges SMS.<br>
+        <br>
+        Només s\'activarà quan la trucada superi totes les altres regles.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query"><translate>Consulta instantània</translate></string>
+    <string name="query"><translate>Consulta</translate></string>
+    <string name="negative_identifier"><translate>Identificador negatiu</translate></string>
+    <string name="hint_negative_identifier">
+        E.g.: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        <translate>S\'identificarà com a número de correu brossa si es troba aquest patró regex al resultat.</translate>
+    </string>
+    <string name="positive_identifier"><translate>Identificador positiu</translate></string>
+    <string name="hint_positive_identifier">
+        E.g.: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        S\'identificarà com a número no brossa si es troba aquest patró regex al resultat; és opcional.<br>
+        <br>
+        Normalment, això és <b>innecessari</b>, alguns proveïdors d\'API identificaran els números desconeguts com a no brossa,
+        només utilitzeu-ho quan l\'API sigui realment precisa.
+        ]]>
+    </string>
+    <string name="category_identifier"><translate>Identificador de categoria</translate></string>
+    <string name="hint_category_identifier">
+        E.g.: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        Opcional. <br>
+        Un cop s\'ha identificat un número, aquesta expressió regular s\'utilitzarà per extreure la seva categoria (telemàrqueting, pesca, etc.).
+        ]]>
+    </string>
+    <string name="action_parse_query_result"><translate>Analitzar el resultat</translate></string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        Analitza el resultat de la consulta, el número s\'identificarà com a correu brossa si el resultat conté un patró regex determinat.<br>
+        <br>
+        Es pot utilitzar una expressió regular addicional per extreure la categoria de correu brossa (opcional).
+        ]]>
+    </string>
+    <string name="action_intercept_call"><translate>Interceptar trucada</translate></string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        El número de trucada entrant serà interceptat i analitzat en diferents etiquetes:<br>
+        <br>
+        %s
+        <br>
+        Aquestes etiquetes s\'utilitzaran per construir l\'URL HTTP, per exemple:<br>
+        <br>
+        1. Per a un número internacional com <b>+122222</b>, aquests dos són equivalents:<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        S\'analitzarà a: <br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. Per a un número nacional com <b>12345</b>, heu de proporcionar el codi de país a la configuració,
+        o deixar que l\'aplicació el detecti automàticament.<br>
+        ]]>
+    </string>
+    <string name="action_intercept_sms"><translate>Interceptar SMS</translate></string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        L\'SMS entrant serà interceptat i el contingut s\'analitzarà a l\'etiqueta <b>{sms}</b>,
+        que es pot utilitzar a les sol·licituds HTTP.
+        ]]>
+    </string>
+    <string name="query_api"><translate>API de consulta</translate></string>
+    <string name="report_api"><translate>API d\'informes</translate></string>
+    <string name="number_filter"><translate>Filtre de número</translate></string>
+    <string name="help_number_filter">
+        <![CDATA[
+        Alguns serveis API només admeten números internacionals, mentre que d\'altres només admeten números nacionals.<br>
+        <br>
+        Aquesta expressió regular filtra els números en conseqüència; els números entrants que no coincideixen amb aquesta expressió regular s\'ometran de la comprovació.<br>
+        <br>
+        - Només comprova els <b>números internacionals</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - Només comprova els <b>números nacionals</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - Comprova <b>qualsevol número</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template"><translate>Comprovant: %s, prioritat: %s</translate></string>
+    <string name="skip_for_testing"><translate>Omet per a la prova.</translate></string>
+    <string name="allowed_by"><translate>Permès per: %s</translate></string>
+    <string name="blocked_by"><translate>Bloquejat per: %s</translate></string>
+    <string name="outside_time_schedule"><translate>Fora de l\'horari, omet.</translate></string>
+    <string name="android_ver_lower_than_11"><translate>La versió d\'Android és inferior a 11, omet.</translate></string>
+</resources>

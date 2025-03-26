@@ -1,0 +1,112 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        Comprova el contingut dels SMS utilitzant Google Gemini AI, només requereix un compte de Google.
+        ]]>
+    </string>
+    <string name="gemini_api_key">Clau API de Gemini</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. Registra\'t i inicia sessió al teu compte de Google: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. Obre la pàgina de l\'API:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. Prem el botó "Create API key" (Crea la clau API).<br>
+        <br>
+        4. Copia la clau i, a continuació, emplena-la a continuació.
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        Classifica aquest missatge SMS com a Polític, Frau, Enquesta o Màrqueting.
+        Si no s\'aplica cap, respon "Vàlid", en cas contrari, respon només la categoria, no responguis res més.
+        El missatge SMS és:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category">(Political|Fraud|Survey|Marketing)</string>
+    <string name="spam_sms_positive_category">Vàlid</string>
+    <string name="last_log">Últim registre</string>
+    <string name="executed_at">Executat a:</string>
+    <string name="not_executed_yet">Encara no s\'ha executat</string>
+    <string name="show_indicator">Mostra els indicadors</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        Mostra icones abans del número per indicar si existeix a la base de dades de correu brossa o si coincideix amb alguna regla d\'expressió regular.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        Això pot afectar el rendiment quan la base de dades és massa gran o hi ha massa regles d\'expressió regular.
+        ]]>
+    </string>
+    <string name="enable_for_mms">Activa per a MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        Els missatges MMS solen ser correu brossa, no cal activar-los tret que els facis servir realment.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        Els missatges de grup són MMS, no SMS.<br>
+        <br>
+        Els MMS es tractaran com a SMS, només es processarà el contingut de text,
+        el contingut multimèdia, com ara imatges i àudio, s\'ignorarà.<br>
+        <br>
+        Es necessiten dos permisos: RECEIVE_MMS i READ_SMS
+        ]]>
+    </string>
+    <string name="unknown_error">Error desconegut.</string>
+    <string name="checking_auth_credential">S\'estan comprovant les credencials d\'autorització.</string>
+    <string name="sms_bomb"><short>Bombardeig SMS</short></string>
+    <string name="help_sms_bomb">
+        <![CDATA[
+        Anti-bombardeig d\'SMS.<br>
+        <br>
+        Evita inundacions massives i contínues de missatges SMS, que sovint es componen principalment
+          de verificacions OTP (contrasenya d\'un sol ús).<br>
+        <br>
+        Per exemple, missatges SMS com:<br>
+        &ensp; <font color="#888888">El vostre OTP és: 1234.</font><br>
+        &ensp; <font color="#888888">Aquest és el vostre codi de verificació: 1234.</font><br>
+        &ensp; <font color="#888888">1234 és el vostre codi de validació.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Expressió regular del contingut</font></h5>
+        Aquesta funció només s\'aplica als missatges que coincideixen amb aquesta expressió regular; una expressió regular típica seria: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Interval</font></h5>
+        Si arriba un missatge OTP posterior dins d\'aquest interval de temps, es considera
+          part de l\'atac de bombardeig i es bloquejarà.<br>
+        (per defecte: 30 segons)<br>
+        <br>
+        Això bloquejarà tots els bombardeigs següents, excepte el primer.<br>
+        <br>
+        <h5><font color="#00BFFF">- Protecció de la pantalla de bloqueig</font></h5>
+        Activa això per bloquejar tots els bombardeigs en el mode de pantalla de bloqueig, inclòs el primer. <br>
+        <br>
+        Normalment, la pantalla hauria d\'estar desbloquejada mentre s\'espera un codi de verificació.
+        Quan aquests missatges arriben mentre el dispositiu està en mode de pantalla de bloqueig, és probable que siguin bombardeigs.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protection"><short>Protecció pantalla bloqueig</short></string>
+    <string name="help_history_logging">
+        <![CDATA[
+            Quan està desactivat, els registres d\'historial no es registraran a la base de dades local i no es mostraran aquí.<br>
+            <br>
+            <font color="#00BFFF"><b>Caducitat</b></font><br>
+            &emsp; Quan està activat, els registres d\'historial caducaran després de N dies; els registres caducats s\'eliminaran automàticament.
+        ]]>
+    </string>
+    <string name="never_expire"><short>No caduca mai</short></string>
+    <string name="enable_history_logging">Registre</string>
+    <string name="rcs_message">Missatge RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS no és compatible.<br>
+            <br>
+            Tot i ser un protocol estàndard, RCS està implementat de manera diferent per cada aplicació de missatgeria.<br>
+            <br>
+            Una solució alternativa és canviar a SMS.
+        ]]>
+    </string>
+</resources>

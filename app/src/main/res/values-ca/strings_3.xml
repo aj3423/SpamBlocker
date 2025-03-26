@@ -1,0 +1,66 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        Aquestes regles s\'apliquen al contingut dels SMS.<br>
+        <br>
+        <font color="#00BFFF"><b> - Alguns patrons típics</b></font>:<br>
+        &ensp; - Conté "verificació": <font color="#03DAC5"><b>.*verificació.*</b></font><br>
+        &ensp; - Conté alguna de les paraules: <font color="#03DAC5"><b>.*(policia|hospital|verificació).*</b></font>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        Una manera ràpida de copiar contingut de missatges SMS o números de telèfon, facilitant la presa de codis de verificació o números entrants.<br>
+        <br>
+        Quan coincideix, apareixerà un botó com <font color="#00BFFF"><b>Copia: 123456</b></font> a la notificació.<br>
+        <br>
+        Una regla d\'exemple per extreure codis de verificació:<br>
+        &emsp; Utilitzant un grup de captura:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        &emsp; Un altre enfocament utilitzant lookaround:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        ]]>
+    </string>
+    <string name="help_apply_to_call_sms">
+        <![CDATA[
+        Activa aquesta regla per a trucades, SMS o ambdós.<br>
+        Desmarca aquestes caselles per desactivar la regla sense suprimir-la.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        Quan <font color="#00BFFF"><b>Número</b></font> està marcat, aquesta regla extraurà el contingut del número entrant.
+        Per exemple, utilitza <b>(.*)</b> per copiar el número de telèfon.<br>
+        <br>
+        Quan <font color="#00BFFF"><b>Contingut</b></font> està marcat, aquesta regla extraurà el contingut del cos del missatge SMS,
+        com ara codis de verificació.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        Quan <font color="#03DAC5"><b>Permès</b></font> està marcat, aquesta regla s\'aplicarà a les trucades i els missatges permesos.<br>
+        <br>
+        Quan <font color="#fa7f71"><b>Bloquejat</b></font> està marcat, aquesta regla s\'aplicarà a les trucades i els missatges bloquejats.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        <b>Cap</b>:<br>&emsp; Sense cap notificació. <br>
+        <b>Ombra</b>:<br>&emsp; La cortina de notificacions desplegable. <br>
+        <b>Barra d\'estat</b>:<br>&emsp; La petita icona a la barra superior. <br>
+        <b>So</b>:<br>&emsp; El so de notificació per defecte. <br>
+        <b>Cap visible</b>:<br>&emsp; Obre una finestra flotant a la part superior de la pantalla.
+        ]]>
+    </string>
+    <string name="title_rule_testing">Prova de la regla</string>
+    <string name="help_test_rules">
+        <![CDATA[
+        Això ajuda a comprovar si les regles estan configurades com s\'esperava.<br>
+        <br>
+        És només una simulació i no apareixerà realment una trucada entrant (o un missatge de text).<br>
+        <br>
+        El resultat es mostra aquí, i al registre d\'historial, amb notificació.
+        ]]>
+    </string>
+
+</resources>

@@ -1,0 +1,71 @@
+<resources>
+    <string name="for_example">P. ex.:</string>
+    <string name="yesterday_abbrev">Ahir.</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        Rebutja les trucades durant les reunions de vídeo en línia.<br> <br>
+        Comprova si alguna aplicació seleccionada està executant un <b>servei en primer pla</b>,
+        que s\'utilitza habitualment per les aplicacions de videoconferència per mantenir la connexió activa.<br>
+        <br>
+        S\'aplica tant a les trucades com als missatges.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat predeterminada: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">Mode Reunió</string>
+    <string name="search_number">Cerca un número</string>
+    <string name="http_header">Capçalera Http</string>
+    <string name="help_http_header">
+        <![CDATA[
+        Un atribut per línia.<br>
+        ]]>
+    </string>
+    <string name="tags_supported">
+        <![CDATA[
+        Etiquetes admeses:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; Per a APIs que requereixen autenticació bàsica HTTP. Per exemple:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; es transformarà a:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">Registra SMS</string>
+    <string name="initial_row_count">Recompte de files inicial</string>
+    <plurals name="rows">
+        <item quantity="one">%d Fila</item>
+        <item quantity="two">%d Files</item>
+        <item quantity="few">%d Files</item>
+        <item quantity="many">%d Files</item>
+        <item quantity="other">%d Files</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">Llindar de la barra de desplaçament</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        El nombre màxim d\'elements que es poden mostrar a la llista abans que aparegui una barra de desplaçament.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">Alçada del desplaçament</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        Quan apareix la barra de desplaçament, aquest valor representa l\'alçada de la llista com a percentatge de la pantalla.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">Màx. línies Regex</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        El nombre màxim de línies de visualització per al text regex; el text restant es truncarà i anirà seguit de punts suspensius.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">Màx. línies de descripció</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        El nombre màxim de línies de visualització per al text de la descripció; el text restant es truncarà i anirà seguit de punts suspensius.
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,97 @@
+<resources>
+    <string name="report_number">Informar d\'un número</string>
+    <string name="report_number_require_call_log_permission">
+        Per evitar informar erròniament de trucades repetides o números als quals s\'ha tornat a trucar,
+        informar d\'un número requereix permís del registre de trucades.
+    </string>
+    <string name="http_method">Mètode</string>
+    <string name="http_post_body">Cos de la publicació</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        Etiquetes admeses:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="invalid_auth_credentials">Si us plau, introduïu informació d\'autorització vàlida.</string>
+    <string name="delay">Retard</string>
+    <string name="exclude_services">Exclou Serveis</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        Algunes aplicacions executen serveis de primer pla addicionals, afegiu els noms del servei aquí per excloure\'ls.<br>
+        <br>
+        Per trobar un nom de servei:<br>
+        &emsp; 1. Activeu el servei en aquesta aplicació.<br>
+        &emsp; 2. Tots els noms de servei activats apareixeran aquí.<br>
+        &emsp; 3. Toqueu un nom per afegir-lo.<br>
+        <br>
+        Podeu afegir diversos noms, separats per comes.
+        ]]>
+    </string>
+    <string name="running_services">Serveis en execució</string>
+    <string-array name="spam_categories">
+        <item>Número vàlid</item>
+        <item>Frau</item>
+        <item>Màrqueting</item>
+        <item>Enquesta</item>
+        <item>Polític</item>
+        <item>Altre Spam</item>
+    </string-array>
+    <string name="action_category_config">Configuració de la categoria</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        Només s\'admeten les següents categories de spam, qualsevol altra categoria de l\'API s\'ha de assignar a una d\'elles.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; Informar com a número vàlid, no com a spam.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; El tipus de spam de reserva, que s\'utilitza quan no s\'aplica cap de les categories anteriors.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        La categoria %s no està configurada a l\'acció %s, si us plau, configureu-la a la configuració de l\'API (si l\'API admet aquesta categoria).
+    </string>
+    <string name="target_text">Text objectiu</string>
+    <string name="match_found">Coincidència trobada</string>
+    <string name="match_not_found">No s\'ha trobat cap coincidència</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        Això només serveix per provar si aquesta expressió regular coincideix amb un text, excloent altres regles.<br>
+        Per provar amb totes les regles, utilitzeu el botó de prova flotant a l\'extrem inferior dret.
+        ]]>
+    </string>
+    <string name="allow">Permetre</string>
+    <string name="block">Bloquejar</string>
+    <string name="seconds">Segons</string>
+    <string name="seconds_short"><short>Seg</short></string>
+    <string name="within_seconds">En segons</string>
+    <string name="call_alert"><short>Alerta de trucada</short></string>
+    <string name="help_call_alert">
+        <![CDATA[
+        Alguns serveis us enviaran un missatge de text primer per informar-vos que una trucada és imminent, normalment en un minut.<br>
+        <br>
+        Per exemple, un missatge SMS com:<br>
+        &ensp; <font color="#888888">[algun servei] Us truquem per informar …, si us plau, no dubteu a respondre.</font><br>
+        <br>
+        Una expressió regular per a aquest missatge seria: <br>
+        &ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
+        <br>
+        La configuració predeterminada <font color="#03DAC5"><b>120 Segons</b></font> significa que totes les trucades seran
+        permès en els propers dos minuts després de rebre aquest missatge.<br>
+        <br>
+        Funciona tant per a SMS normals com per a SMS flash (SMS de classe 0).<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">S\'utilitza el comodí `*` sense un punt anterior, vols dir `.*`?</string>
+    <string name="import_as">Importa com a</string>
+    <string name="api_key">Clau API</string>
+    <string name="mms_support">Suport MMS</string>
+</resources>

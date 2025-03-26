@@ -17,6 +17,7 @@ import spam.blocker.util.spf
 // non-flag emoji: https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement
 object Languages {
     val map = sortedMapOf(
+        Pair("ca", "🄲🄰"),
         Pair("de", "🇩🇪"),
         Pair("en", "🇬🇧"),
         Pair("es", "🇪🇸"),

@@ -1,0 +1,93 @@
+<resources>
+    <string name="contact_rule">Regla de contacte</string>
+    <string name="directory">Directori</string>
+    <string name="filename">Nom de fitxer</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">Dies de caducitat</string>
+    <string name="column_mapping">Assignació de columnes</string>
+    <string name="include_spam_db">Incloure la base de dades de correu brossa</string>
+    <string name="no_config_needed">No es necessita cap configuració</string>
+    <string name="success">Èxit</string>
+    <string name="failed">Error</string>
+    <string name="running">S\'està executant</string>
+    <string name="optional">(opcional)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>Prova</b></font><br>
+        Aquestes accions s\'executaran immediatament, per comprovar si s\'han configurat correctament,
+        o potser només vols executar manualment aquest flux de treball.<br>
+        <br>
+        - <font color="#00BFFF"><b>Nou</b></font><br>
+            Crea una nova acció, es poden encadenar diverses accions per completar una tasca complexa.<br>
+            Aquests punts verds o vermells entre elements indiquen si es poden encadenar o no.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            Descarregueu números de telèfon de correu brossa de
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> cada dia laborable,
+             i importeu-los a la base de dades de correu brossa.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">Suprimiu els registres caducats de la base de dades de correu brossa.</string>
+    <string name="help_bot_preset_cleanup_history">Suprimiu els registres d\'historial de trucades/SMS caducats.</string>
+    <string name="help_bot_preset_auto_backup">Còpia de seguretat de tots els paràmetres.</string>
+    <string name="everyday">Cada dia</string>
+    <string name="daily">Diàriament</string>
+    <string name="weekly">Setmanalment</string>
+    <string name="periodically">Periòdicament</string>
+    <string name="time">Hora</string>
+    <string name="workdays">Dies laborables</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        El format del fitxer de còpia de seguretat és un json comprimit gzip, podeu obrir-lo i editar-lo amb qualsevol archivador.<br>
+        <br>
+        - <font color="#00BFFF"><b>Incloure la base de dades de correu brossa</b></font><br>
+        Manteniu premut el botó per exportar/importar també la base de dades de correu brossa.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        &ensp; Incloure la base de dades de correu brossa al fitxer de còpia de seguretat augmentarà significativament la seva mida,
+        ja que la base de dades s\'actualitzarà regularment, això sol ser innecessari, tret que vulgueu clonar-la
+        a un altre telèfon.<br>
+        ]]>
+    </string>
+    <string name="mode">Mode</string>
+    <string-array name="regex_action_add_mode">
+        <item>Crea</item>
+        <item>Substitueix</item>
+        <item>Combina</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>Crea</b></font><br>
+        &ensp; Crea sempre una regla regex nova.<br>
+        <br>
+        - <font color="#00BFFF"><b>Substitueix</b></font><br>
+        &ensp; Intentarà trobar una regla existent que tingui la mateixa <b>descripció</b>. <br>
+        &ensp;&ensp; - Si es troba, se sobreescriurà.<br>
+        &ensp;&ensp; - Si no es troba, es crearà una regla nova, igual que amb l\'opció <b>Crea</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>Combina</b></font><br>
+        &ensp;- Si existeix una regla amb la mateixa descripció, els nous números s\'hi combinaran,<br>
+         els números duplicats se suprimiran automàticament.<br>
+        &ensp;- Si no existeix, es crearà una regla nova, igual que amb l\'opció <b>Crea</b>.<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">Activa el flux de treball</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        Activa o desactiva aquest flux de treball. Un cas d\'ús seria fer que un flux de treball periòdic es converteixi en puntual.
+        ]]>
+    </string>
+    <string name="action_enable_app">Activa l\'aplicació</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        Activa o desactiva l\'aplicació. Un cas d\'ús seria desactivar-la temporalment i tornar-la a activar automàticament al cap d\'unes hores.
+        ]]>
+    </string>
+
+</resources>

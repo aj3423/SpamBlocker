@@ -1,0 +1,83 @@
+<resources>
+    <string name="dialed_number"><short>Número trucat</short></string>
+    <string name="find_apps">Trobar aplicacions</string>
+
+    <string name="confirm_delete_all_rule">Confirmeu que voleu suprimir totes les regles?</string>
+
+    <string name="notification">Notificació</string>
+    <string name="type">Tipus</string>
+    <string name="times">Vegades</string>
+    <plurals name="days">
+        <item quantity="one">%d dia</item>
+        <item quantity="two">%d dies</item>
+        <item quantity="few">%d dies</item>
+        <item quantity="many">%d dies</item>
+        <item quantity="other">%d dies</item>
+    </plurals>
+    <string name="min">Min</string>
+    <string name="within_minutes">En pocs minuts</string>
+    <string name="within_days">En pocs dies</string>
+    <string name="phone_number">Número de telèfon</string>
+    <string name="phone_number_abbrev">Número</string>
+    <string name="sms_content">Contingut del SMS</string>
+    <string name="regex_flags">Indicadors Regex</string>
+    <string name="off_time"><short>Temps lliure</short></string>
+    <string name="schedule">Programació</string>
+    <string name="workday">Dia laborable</string>
+    <string name="weekend">Cap de setmana</string>
+    <string name="entire_day">Tot el dia</string>
+    <string name="block_type">Tipus de bloqueig</string>
+    <string name="for_particular_number">Per al número</string>
+    <string name="help_for_particular_number">Quan està activat, la regla només s\'aplica quan coincideixen el número i el contingut.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rebutjar</b></font>: <br>
+         Igual que prémer el botó de declinar. Funciona completament en silenci, el bloqueig de pantalla no s\'activarà.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+         Sonarà en silenci en segon pla, donant la impressió a la persona que truca que no està disponible i ha perdut la trucada. <br>
+        <br>
+         També pot ajudar si experimenta trucades de correu brossa repetides, allargarà la durada de la trucada, fent-la menys eficient per als remitents de correu brossa, cosa que podria desanimar-los a tornar-vos a trucar.<br>
+        <br>
+        - <font color="#00BFFF"><b>Penjar</b></font>: <br>
+        Contesta i penja la trucada per evitar que vagi al correu de veu. <br>
+        <br>
+        <font color="#FFA500">Nota</font> El bloqueig de pantalla es pot activar durant un temps breu,
+        també és possible que sentiu un to de final de trucada (alguns telèfons ofereixen una opció per silenciar aquest so). <br>
+        <br>
+        - El <b>retard</b>: <br>
+        &emsp; Per defecte, hi ha un retard d\'1 segon abans que la trucada es pengi,
+        per evitar que les trucades vagin accidentalment al correu de veu a causa d\'una desconnexió ràpida.<br>
+        &emsp; Si voleu gravar trucades, instal·leu una aplicació de gravació de trucades i augmenteu el retard en conseqüència.
+        ]]>
+    </string>
+    <string name="help_hang_up_delay">El retard abans que es pengi la trucada (en segons).</string>
+    <string name="help_dialed">
+        <![CDATA[
+        Es permetran els números marcats.<br>
+        <br>
+        L\'enviament de missatges també compta, això només funciona quan es concedeix el permís READ_SMS. <br>
+        <br>
+        La configuració per defecte <font color="#03DAC5"><b>3 Dies</b></font> significa que si heu marcat o enviat missatges al número en els darrers 3 dies, es permetran les trucades des d\'aquest número.<br>
+        <br>
+        Només s\'aplica a les trucades, <b>no</b> als missatges de text. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        Qualsevol trucada passaria si s\'ha utilitzat alguna aplicació de la llista recentment.<br>
+        <br>
+        Un cas d\'ús típic:<br>
+        &emsp; Acabeu de demanar una pizza a PizzaApp, aviat us truquen per reemborsar-vos perquè estan tancant. Aquesta trucada passaria si PizzaApp està habilitada aquí. <br>
+        <br>
+        La configuració per defecte <font color="03DAC5"><b>5 Min</b></font> significa que qualsevol trucada passaria si alguna de les aplicacions s\'ha utilitzat en 5 minuts,
+        per `utilitzat` vol dir que s\'ha activat, desactivat, minimitzat o eliminat. <br>
+        <br>
+        Només s\'aplica a les trucades, <b>no</b> als missatges de text. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+</resources>

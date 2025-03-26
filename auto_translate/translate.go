@@ -18,6 +18,7 @@ import (
 )
 
 var nameMap = map[string]string{
+	`ca`:     `Catalan`,
 	`de`:     `German`,
 	`es`:     `Spanish`,
 	`fa`:     `Persian`,
@@ -215,14 +216,17 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 
 	ret := sb.String()
 
+	// color.HiMagenta(ret)
 	// skip the first line: <?xml version="1.0" encoding="utf-8"?>
 	if strings.HasPrefix(ret, "<?xml version=") {
 		index := strings.IndexByte(ret, '\n')
 		ret = ret[index+1:]
+		// color.HiYellow(ret)
 	}
 	if strings.HasPrefix(ret, "```xml") {
 		lines := split_lines(ret)
-		ret = join_lines(lines[1 : len(lines)-2]) // the last line must be ```
+		ret = join_lines(lines[1 : len(lines)-1]) // the last line must be ```
+		// color.HiRed(ret)
 	}
 
 	if !strings.HasPrefix(ret, "<resources>") {

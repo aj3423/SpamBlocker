@@ -1,0 +1,113 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        Netejant la base de dades de l\'historial, suprimint els registres anteriors a la marca de temps: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        Netejant la base de dades de correu brossa, suprimint %s registres anteriors a la marca de temps: %s".
+    </string>
+    <string name="resolved_url">URL resolta: %s</string>
+    <string name="time_cost">Temps emprat: %s mil·lisegons.</string>
+    <string name="parsed_n_rules">Analitzades %s regles.</string>
+    <string name="add_n_numbers_to_spam_db">S\'estan afegint %s números a la base de dades de correu brossa.</string>
+    <string name="nothing_to_import">La llista de números està buida, no hi ha res per importar.</string>
+    <string name="importing_n_numbers">S\'estan important %s números com a regla regex.</string>
+    <string name="create_rule_with_numbers">Creant regla amb %s números.</string>
+    <string name="replace_rule_with_desc">Substituint la regla per la descripció: %s.</string>
+    <string name="rule_with_desc_not_found">No s\'ha trobat cap regla amb la descripció %s.</string>
+    <string name="merging_rule_with_desc">Combinant la regla amb la descripció: %s.</string>
+    <string name="regex_count_after_merge">Nombre de regex abans: %s, després: %s.</string>
+    <string name="replace_number_from_to">Substituint el número de %s a %s.</string>
+    <string name="find_rule_with_desc">S\'han trobat %s regles amb la descripció %s.</string>
+    <string name="modify_n_rules">Modificant %s regles.</string>
+    <string name="number_not_match_filter">El número %s no coincideix amb el filtre %s, s\'omet.</string>
+    <string name="fail_detect_cc">No s\'ha pogut detectar el codi de país.</string>
+    <string name="identified_as_spam">Identificat com a número de correu brossa, categoria: %s.</string>
+    <string name="identified_as_valid">Identificat com a número vàlid, categoria: %s.</string>
+    <string name="unidentified_number">Número no identificat.</string>
+    <string name="auto_detect_cc_permission">Es requereix el permís READ_PHONE_STATE per detectar el codi de país.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; El codi de país.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; La part nacional.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; El número complet, incloent-hi tant el codi de país com la part nacional, sense el + o 0 inicial.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; El número d\'origen que pot contenir + o 0 inicial. <br>
+        ]]>
+    </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; El contingut del SMS.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; L\'any, per exemple: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; El número d\'un sol dígit s\'omplirà amb un zero inicial, per exemple: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; Aquests valors s\'ompliran sense un zero inicial, per exemple: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        Etiquetes admeses:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        Dissenyat principalment per al FRITZ!Box alemany, també funciona amb números de telèfon d\'altres països.<br>
+        <br>
+        Admet consultes per hash en comptes del número en si, proporcionant una millor privacitat.<br>
+        <br>
+        Lloc web: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. Registreu un compte a <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. A la pàgina de configuració: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         premeu el botó "Genera clau API".<br>
+        <br>
+        3. Introduïu la clau API generada a continuació.
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        El límit de temps per al filtratge de trucades és de 5 segons, amb un buffer de %s ms
+        per a la imprecisió de les funcions de temps, el límit de temps total és en realitat de %s ms.
+        Els passos anteriors han costat %s ms, no queda temps suficient, s\'omet.
+    </string>
+    <string name="action_filter_query_result">Filtrar Correu Brossa</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Genera una <u>llista de números</u> que conté el número de correu brossa identificat al pas anterior i està a punt per ser importat a la base de dades.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">Un altre fil s\'ha cancel·lat.</string>>
+    <string name="username">Nom d\'usuari</string>>
+    <string name="password">Contrasenya</string>>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>Llisca cap a l\'esquerra</b></font> per suprimir-lo.<br>
+        <br>
+        La majoria d\'elements de la interfície d\'usuari semblants a targetes d\'aquesta aplicació estan associats a gestos de lliscament,
+        alguns dels quals també admeten <font color="#03DAC5"><b>lliscament cap a la dreta</b></font>, per exemple, els registres de l\'historial.
+        ]]>
+    </string>>
+    <string name="bug_number">Si aquest és un número vàlid, informa\'l a github.</string>>
+    <string name="skip_alpha_empty_number">Omet el número alfanumèric o buit.</string>>
+</resources>
