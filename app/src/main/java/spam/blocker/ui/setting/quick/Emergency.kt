@@ -142,7 +142,7 @@ fun EmergencySituation() {
                 StrInputBox(
                     text = extraNumbers,
                     label = { Text(Str(R.string.additional_numbers)) },
-                    placeholder = { DimGreyLabel("123, 456, 6789") },
+                    placeholder = { DimGreyLabel("000, 123, ...") },
                     leadingIconId = R.drawable.ic_number_sign,
                     onValueChange = { extraNumbers = it }
                 )
@@ -159,7 +159,7 @@ fun EmergencySituation() {
         label = {
             RowVCenterSpaced(4) {
                 SettingLabel(R.string.emergency)
-                if (collapsed) {
+                if (isEnabled && collapsed && extraNumbers.isNotBlank()) {
                     GreyIcon16(
                         iconId = R.drawable.ic_dropdown_arrow,
                     )

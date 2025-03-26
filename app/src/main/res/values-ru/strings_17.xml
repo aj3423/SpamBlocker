@@ -49,4 +49,5 @@
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
+    <string name="no_sms_receive_permission">Нет разрешения на получение SMS</string>
 </resources>

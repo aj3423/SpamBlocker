@@ -1,5 +1,6 @@
 package spam.blocker.ui.history
 
+import android.Manifest
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -17,6 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import spam.blocker.G
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.DarkOrange
@@ -26,6 +29,8 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Permissions
 import spam.blocker.util.Util
 import spam.blocker.R
+import spam.blocker.util.NormalPermission
+import spam.blocker.util.spf
 
 
 @Composable
@@ -55,23 +60,39 @@ fun HistoryScreen(
         }
     ) {
         Column {
-            // for SMS tab, show warning at top if permission is not granted
-            if (vm.forType == Def.ForSms) {
-                val hasPermission by remember {
-                    mutableStateOf(
-                        Permissions.isReceiveSmsPermissionGranted(
-                            ctx
+            when (vm.forType) {
+                Def.ForNumber -> Permissions.launcherSetAsCallScreeningApp(null)
+                Def.ForSms -> {
+                    val smsEnabled = spf.Global(ctx).isSmsEnabled()
+
+                    // Show a warning at the top if SMS is enabled but no permission.
+                    var enabledButNoPermission by remember {
+                        mutableStateOf(
+                            smsEnabled && !Permissions.isReceiveSmsPermissionGranted(
+                                ctx
+                            )
                         )
-                    )
-                }
-                if (!hasPermission) {
-                    Text(
-                        text = Str(R.string.no_sms_receive_permission),
-                        color = DarkOrange,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = M.padding(10.dp, 16.dp, 10.dp, 4.dp)
-                    )
+                    }
+                    if (smsEnabled) {
+                        G.permissionChain.ask(
+                            ctx,
+                            listOf(
+                                NormalPermission(Manifest.permission.RECEIVE_SMS),
+                            )
+                        ) { granted ->
+                            enabledButNoPermission = !granted
+                        }
+                    }
+
+                    if (enabledButNoPermission) {
+                        Text(
+                            text = Str(R.string.no_sms_receive_permission),
+                            color = DarkOrange,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = M.padding(10.dp, 16.dp, 10.dp, 4.dp)
+                        )
+                    }
                 }
             }
 

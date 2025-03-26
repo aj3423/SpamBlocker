@@ -47,4 +47,5 @@
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
+    <string name="no_sms_receive_permission">未授予短信接收权限</string>
 </resources>

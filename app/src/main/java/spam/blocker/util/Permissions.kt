@@ -26,9 +26,6 @@ import androidx.core.content.ContextCompat
 import spam.blocker.def.Def
 
 object Permissions {
-    fun requestReceiveSmsPermission(activity: ComponentActivity) {
-        activity.requestPermissions(arrayOf(Manifest.permission.RECEIVE_SMS), 0)
-    }
 
     fun isCallScreeningEnabled(ctx: Context): Boolean {
         val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager

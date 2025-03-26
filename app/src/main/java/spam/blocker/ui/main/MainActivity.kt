@@ -77,8 +77,13 @@ class MainActivity : ComponentActivity() {
         val lastTab = spf.getActiveTab()
 
         G.bottomBarVM = BottomBarViewModel(
-            onTabSelected = { this.onTabSelected(it) },
-            onTabReSelected = { this.onTabReSelected(it) },
+            onTabSelected = { spf.setActiveTab(it) },
+            onTabReSelected = {
+                when (it) {
+                    Def.CALL_TAB_ROUTE -> Launcher.launchCallApp(this)
+                    Def.SMS_TAB_ROUTE -> Launcher.launchSMSApp(this)
+                }
+            },
             tabItems = listOf(
                 TabItem(
                     route = Def.CALL_TAB_ROUTE,
@@ -186,21 +191,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-        }
-    }
-
-    private fun onTabSelected(route: String) {
-        spf.Global(this).setActiveTab(route)
-        when (route) {
-            Def.CALL_TAB_ROUTE -> Permissions.launcherSetAsCallScreeningApp(null)
-            Def.SMS_TAB_ROUTE -> Permissions.requestReceiveSmsPermission(this)
-        }
-    }
-
-    private fun onTabReSelected(route: String) {
-        when (route) {
-            Def.CALL_TAB_ROUTE -> Launcher.launchCallApp(this)
-            Def.SMS_TAB_ROUTE -> Launcher.launchSMSApp(this)
         }
     }
 
