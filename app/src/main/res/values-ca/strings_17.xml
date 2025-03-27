@@ -3,27 +3,30 @@
     <string name="emergency_situation">Situació d\'emergència</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Després de marcar un número d\'emergència, permet totes les trucades entrants durant un període de temps.<br>
+        Després de marcar un número d\'emergència, permet totes les trucades entrants durant un temps.<br>
         <br>
         <h5><font color="#00BFFF">- Durada</font></h5>
-        La configuració per defecte <font color="#03DAC5"><b>120 min</b></font> significa que totes les trucades es permetran
+        La configuració predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que es permetran totes les trucades
         en els propers 120 minuts després de marcar un número d\'emergència.<br>
         <br>
         <h5><font color="#00BFFF">- Comprova STIR</font></h5>
-         - Quan està desactivat, totes les trucades es permetran.<br>
-         - Quan està activat, les trucades que fallin l\'atestació STIR no es permetran, només es permetran les trucades "vàlides" i "sense verificar".<br>
+         - Quan està desactivat, es permetran totes les trucades.<br>
+         - Quan està activat, les trucades que fallin l\'atestació STIR no es permetran, només es permetran les trucades "Vàlides" i "No verificades".<br>
         <br>
         <h5><font color="#00BFFF">- Números addicionals</font></h5>
         Marcar qualsevol número d\'aquesta llista també activarà aquesta funció.<br>
         <br>
-        No cal afegir explícitament números com el 112 aquí, perquè Android inclou una llista integrada
-        de números d\'emergència per a cada país (p. ex.: policia, bombers, ambulància).<br>
+        No cal afegir explícitament números com el 911 aquí, perquè Android inclou un número d\'emergència integrat
+        llista per a cada país (per exemple: policia, bombers, ambulància).<br>
         <br>
-        Separa els números amb comes, com ara:<br>
+        Separeu els números amb comes, com ara:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF">- Restableix</font></h5>
+        <h5><font color="#00BFFF">- Restablir</font></h5>
         Premeu aquest botó per restablir aquesta funció si s\'ha activat per error o durant les proves.<br>
+        <br>
+        <h5><font color="#00BFFF">- Prova</font></h5>
+        Simuleu una trucada sortint per provar si aquest número és un número d\'emergència.<br>
         <br>
         <font color="#ea86ff"><b>Prioritat: Màxima</b></font>
         ]]>
@@ -31,23 +34,24 @@
     <string name="reset">Restablir</string>
     <string name="status">Estat</string>
     <string name="inactive">Inactiu</string>
-    <string name="confirm_reset">Confirmeu que voleu restablir?</string>
+    <string name="confirm_reset">Confirma restablir?</string>
     <string name="check_stir_attestation">Comprova STIR</string>
     <string name="additional_numbers">Números addicionals</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
-        El directori d\'emmagatzematge extern, el mateix que:<br>
+        El directori d\'emmagatzematge extern, el mateix que: <br>
         <font color="#888888">/storage/emulated/0</font><br>
         <br>
         <font color="#00BFFF"><b>{Download}</b></font><br>
-        El mateix que:<br>
+        El mateix que: <br>
         <font color="#888888">{sdcard}/Download</font><br>
         <br>
         <font color="#00BFFF"><b>{Documents}</b></font><br>
-        El mateix que:<br>
+        El mateix que: <br>
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
-    <string name="no_sms_receive_permission">Permís de recepció de SMS no concedit</string>
+    <string name="call_to_number">Al número</string>
+    <string name="call_to">Trucar a</string>
 </resources>

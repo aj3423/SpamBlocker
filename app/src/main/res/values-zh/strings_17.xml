@@ -1,26 +1,30 @@
 <resources>
-    <string name="emergency"><translate>紧急情况</translate></string>
+    <string name="emergency">紧急</string>
+    <string name="emergency_situation">紧急情况</string>
     <string name="help_emergency_situation">
         <![CDATA[
         拨打紧急电话后，允许所有来电一段时间。<br>
         <br>
-        <h5><font color="#00BFFF">- 持续时间</font></h5>
-        默认设置 <font color="#03DAC5"><b>120 分钟</b></font> 表示在拨打紧急电话后的 120 分钟内，将允许所有来电。<br>
+        <h5><font color="#00BFFF">- 时长</font></h5>
+        默认设置 <font color="#03DAC5"><b>120 分钟</b></font> 表示在拨打紧急电话后的 120 分钟内，所有来电都将被允许。<br>
         <br>
-        <h5><font color="#00BFFF">- 检查 STIR</font></h5>
-         - 禁用时，将允许所有来电。<br>
-         - 启用后，未通过 STIR 认证的来电将被阻止，仅允许“有效”和“未验证”的来电。<br>
+        <h5><font color="#00BFFF">- 检查STIR</font></h5>
+         - 禁用时，允许所有来电。<br>
+         - 启用后，STIR验证失败的呼叫将不被允许，只允许“有效”和“未验证”的呼叫。<br>
         <br>
         <h5><font color="#00BFFF">- 附加号码</font></h5>
-        拨打此列表中的任何号码也将触发此功能。<br>
+        拨打此列表中的任何号码也会触发此功能。<br>
         <br>
-        无需在此处明确添加 911 之类的号码，因为 Android 包括每个国家/地区的内置紧急号码列表（例如：警察、消防、救护车）。<br>
+        无需在此处显式添加 911 等号码，因为 Android 包含每个国家/地区的内置紧急号码列表（例如：警察、消防、救护车）。<br>
         <br>
         用逗号分隔号码，例如：<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- 重置</font></h5>
         如果因错误或在测试期间触发了此功能，请按此按钮重置此功能。<br>
+        <br>
+        <h5><font color="#00BFFF">- 测试</font></h5>
+        模拟一个呼出电话，测试该号码是否为紧急号码。<br>
         <br>
         <font color="#ea86ff"><b>优先级：最高</b></font>
         ]]>
@@ -31,21 +35,21 @@
     <string name="confirm_reset">确认重置？</string>
     <string name="check_stir_attestation">检查STIR</string>
     <string name="additional_numbers">附加号码</string>
-    <string name="emergency_situation">紧急情况</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
-        外部存储目录，与以下路径相同： <br>
+        外部存储目录，与以下目录相同： <br>
         <font color="#888888">/storage/emulated/0</font><br>
         <br>
         <font color="#00BFFF"><b>{Download}</b></font><br>
-        与以下路径相同： <br>
+        与以下目录相同： <br>
         <font color="#888888">{sdcard}/Download</font><br>
         <br>
         <font color="#00BFFF"><b>{Documents}</b></font><br>
-        与以下路径相同： <br>
+        与以下目录相同： <br>
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
-    <string name="no_sms_receive_permission">未授予短信接收权限</string>
+    <string name="call_to_number">呼叫号码</string>
+    <string name="call_to">呼叫至</string>
 </resources>

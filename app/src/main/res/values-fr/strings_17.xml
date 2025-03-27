@@ -1,51 +1,57 @@
 <resources>
-    <string name="emergency"><translate>Urgence</translate></string>
+    <string name="emergency">Urgence</string>
+    <string name="emergency_situation">Situation d\'urgence</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        <translate>Après avoir composé un numéro d\'urgence, autorisez tous les appels entrants pendant une période donnée.</translate><br>
+        Après avoir composé un numéro d\'urgence, autorisez tous les appels entrants pendant un certain temps.<br>
         <br>
-        <h5><font color="#00BFFF"><translate>- Durée</translate></font></h5>
-        <translate>Le paramètre par défaut</translate> <font color="#03DAC5"><b>120 Min</b></font> <translate>signifie que tous les appels seront autorisés dans les 120 prochaines minutes après avoir composé un numéro d\'urgence.</translate><br>
+        <h5><font color="#00BFFF">- Durée</font></h5>
+        Le réglage par défaut <font color="#03DAC5"><b>120 Min</b></font> signifie que tous les appels seront autorisés
+        dans les 120 prochaines minutes après avoir composé un numéro d\'urgence.<br>
         <br>
-        <h5><font color="#00BFFF"><translate>- Vérifier STIR</translate></font></h5>
-         <translate>- Lorsqu\'il est désactivé, tous les appels seront autorisés.</translate><br>
-         <translate>- Lorsqu\'il est activé, les appels qui échouent à l\'attestation STIR ne seront pas autorisés, seuls les appels "Valides" et "Non vérifiés" seront autorisés.</translate><br>
+        <h5><font color="#00BFFF">- Vérifier STIR</font></h5>
+         - Lorsqu\'il est désactivé, tous les appels seront autorisés.<br>
+         - Lorsqu\'il est activé, les appels échouant à l\'attestation STIR ne seront pas autorisés, seuls les appels "Valides" et "Non vérifiés" seront autorisés.<br>
         <br>
-        <h5><font color="#00BFFF"><translate>- Numéros supplémentaires</translate></font></h5>
-        <translate>Composer n\'importe quel numéro dans cette liste déclenchera également cette fonctionnalité.</translate><br>
+        <h5><font color="#00BFFF">- Numéros supplémentaires</font></h5>
+        Composer n\'importe quel numéro dans cette liste déclenchera également cette fonctionnalité.<br>
         <br>
-        <translate>Il n\'est pas nécessaire d\'ajouter explicitement des numéros comme le 112 ici, car Android inclut une liste de numéros d\'urgence intégrée pour chaque pays (par exemple : police, pompiers, ambulance).</translate><br>
+        Il n\'est pas nécessaire d\'ajouter explicitement des numéros comme le 112 ici, car Android inclut une liste intégrée
+        de numéros d\'urgence pour chaque pays (par exemple : police, pompiers, ambulance).<br>
         <br>
-        <translate>Séparez les numéros par des virgules, par exemple :</translate><br>
+        Séparez les numéros par des virgules, par exemple :<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF"><translate>- Réinitialiser</translate></font></h5>
-        <translate>Appuyez sur ce bouton pour réinitialiser cette fonctionnalité si elle a été déclenchée par erreur ou pendant les tests.</translate><br>
+        <h5><font color="#00BFFF">- Réinitialiser</font></h5>
+        Appuyez sur ce bouton pour réinitialiser cette fonctionnalité si elle a été déclenchée par erreur ou pendant les tests.<br>
         <br>
-        <font color="#ea86ff"><b><translate>Priorité : Maximale</translate></b></font>
+        <h5><font color="#00BFFF">- Tester</font></h5>
+        Simulez un appel sortant pour vérifier si ce numéro est un numéro d\'urgence.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : Max</b></font>
         ]]>
     </string>
     <string name="reset">Réinitialiser</string>
-    <string name="status">État</string>
+    <string name="status">Statut</string>
     <string name="inactive">Inactif</string>
     <string name="confirm_reset">Confirmer la réinitialisation ?</string>
     <string name="check_stir_attestation">Vérifier STIR</string>
-    <string name="additional_numbers">Numéros Additionnels</string>
-    <string name="emergency_situation">Situation d\'urgence</string>
+    <string name="additional_numbers">Numéros supplémentaires</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
-        <translate>Le répertoire de stockage externe, identique à : </translate><br>
+        Le répertoire de stockage externe, identique à : <br>
         <font color="#888888">/storage/emulated/0</font><br>
         <br>
         <font color="#00BFFF"><b>{Download}</b></font><br>
-        <translate>Identique à : </translate><br>
+        Identique à : <br>
         <font color="#888888">{sdcard}/Download</font><br>
         <br>
         <font color="#00BFFF"><b>{Documents}</b></font><br>
-        <translate>Identique à : </translate><br>
+        Identique à : <br>
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
-    <string name="no_sms_receive_permission">Autorisation de réception SMS non accordée</string>
+    <string name="call_to_number">Vers numéro</string>
+    <string name="call_to">Appeler</string>
 </resources>

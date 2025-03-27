@@ -61,18 +61,12 @@ fun HistoryScreen(
     ) {
         Column {
             when (vm.forType) {
-                Def.ForNumber -> Permissions.launcherSetAsCallScreeningApp(null)
+                Def.ForNumber -> {
+                    Permissions.launcherSetAsCallScreeningApp(null)
+                }
                 Def.ForSms -> {
                     val smsEnabled = spf.Global(ctx).isSmsEnabled()
 
-                    // Show a warning at the top if SMS is enabled but no permission.
-                    var enabledButNoPermission by remember {
-                        mutableStateOf(
-                            smsEnabled && !Permissions.isReceiveSmsPermissionGranted(
-                                ctx
-                            )
-                        )
-                    }
                     if (smsEnabled) {
                         G.permissionChain.ask(
                             ctx,
@@ -80,18 +74,7 @@ fun HistoryScreen(
                                 NormalPermission(Manifest.permission.RECEIVE_SMS),
                             )
                         ) { granted ->
-                            enabledButNoPermission = !granted
                         }
-                    }
-
-                    if (enabledButNoPermission) {
-                        Text(
-                            text = Str(R.string.no_sms_receive_permission),
-                            color = DarkOrange,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            modifier = M.padding(10.dp, 16.dp, 10.dp, 4.dp)
-                        )
                     }
                 }
             }

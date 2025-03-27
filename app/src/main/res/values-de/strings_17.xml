@@ -1,28 +1,32 @@
 <resources>
     <string name="emergency">Notfall</string>
+    <string name="emergency_situation">Notfallsituation</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Nach dem Wählen einer Notrufnummer, erlaube alle eingehenden Anrufe für einen bestimmten Zeitraum.<br>
+        Nach dem Wählen einer Notrufnummer, erlaube alle eingehenden Anrufe für eine bestimmte Zeit.<br>
         <br>
         <h5><font color="#00BFFF">- Dauer</font></h5>
-        Die Standardeinstellung <font color="#03DAC5"><b>120 Min</b></font> bedeutet, dass alle Anrufe erlaubt sind
-        in den nächsten 120 Minuten nach dem Wählen einer Notrufnummer.<br>
+        Die Standardeinstellung <font color="#03DAC5"><b>120 Min</b></font> bedeutet, dass alle Anrufe
+        in den nächsten 120 Minuten nach dem Wählen einer Notrufnummer erlaubt sind.<br>
         <br>
-        <h5><font color="#00BFFF">- STIR überprüfen</font></h5>
+        <h5><font color="#00BFFF">- STIR prüfen</font></h5>
          - Wenn deaktiviert, werden alle Anrufe zugelassen.<br>
-         - Wenn aktiviert, werden Anrufe, die die STIR-Bestätigung nicht bestehen, nicht zugelassen, nur "Gültige" und "Ungeprüfte" Anrufe werden zugelassen.<br>
+         - Wenn aktiviert, werden Anrufe, die die STIR-Bestätigung nicht bestehen, nicht zugelassen, nur "Valid" und "Unverified" Anrufe werden zugelassen.<br>
         <br>
         <h5><font color="#00BFFF">- Zusätzliche Nummern</font></h5>
         Das Wählen einer beliebigen Nummer in dieser Liste löst ebenfalls diese Funktion aus.<br>
         <br>
         Es ist nicht erforderlich, hier explizit Nummern wie 911 hinzuzufügen, da Android eine integrierte
-        Notrufnummernliste für jedes Land enthält (z. B.: Polizei, Feuerwehr, Krankenwagen).<br>
+        Notrufnummerliste für jedes Land enthält (z.B.: Polizei, Feuerwehr, Krankenwagen).<br>
         <br>
-        Trennen Sie die Nummern durch Kommas, z. B.:<br>
+        Trennen Sie die Nummern durch Kommas, wie zum Beispiel:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Zurücksetzen</font></h5>
         Drücken Sie diese Taste, um diese Funktion zurückzusetzen, wenn sie versehentlich oder während des Testens ausgelöst wurde.<br>
+        <br>
+        <h5><font color="#00BFFF">- Testen</font></h5>
+        Simulieren Sie einen abgehenden Anruf, um zu testen, ob diese Nummer eine Notrufnummer ist.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: Max</b></font>
         ]]>
@@ -33,21 +37,21 @@
     <string name="confirm_reset">Zurücksetzen bestätigen?</string>
     <string name="check_stir_attestation">STIR prüfen</string>
     <string name="additional_numbers">Zusätzliche Nummern</string>
-    <string name="emergency_situation">Notfallsituation</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
-        Das externe Speicherverzeichnis, dasselbe wie: <br>
+        Das externe Speicherverzeichnis, identisch mit: <br>
         <font color="#888888">/storage/emulated/0</font><br>
         <br>
         <font color="#00BFFF"><b>{Download}</b></font><br>
-        Dasselbe wie: <br>
+        Identisch mit: <br>
         <font color="#888888">{sdcard}/Download</font><br>
         <br>
         <font color="#00BFFF"><b>{Documents}</b></font><br>
-        Dasselbe wie: <br>
+        Identisch mit: <br>
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
-    <string name="no_sms_receive_permission">SMS-Empfangsberechtigung nicht erteilt</string>
+    <string name="call_to_number">An Nummer</string>
+    <string name="call_to">Anrufen</string>
 </resources>

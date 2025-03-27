@@ -1,22 +1,23 @@
 <resources>
     <string name="emergency">Emerxencia</string>
+    <string name="emergency_situation">Situación de Emerxencia</string>
     <string name="help_emergency_situation">
         <![CDATA[
         Despois de marcar un número de emerxencia, permite todas as chamadas entrantes durante un período de tempo.<br>
         <br>
         <h5><font color="#00BFFF">- Duración</font></h5>
-        A configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que todas as chamadas estarán permitidas
+        A configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que todas as chamadas serán permitidas
         nos próximos 120 minutos despois de marcar un número de emerxencia.<br>
         <br>
-        <h5><font color="#00BFFF">- Comprobar STIR</font></h5>
-         - Cando está desactivado, todas as chamadas estarán permitidas.<br>
-         - Cando está activado, as chamadas que non superen a certificación STIR non estarán permitidas, só se permitirán as chamadas "Válidas" e "Sen verificar".<br>
+        <h5><font color="#00BFFF">- Verificar STIR</font></h5>
+         - Cando está desactivado, permitiránse todas as chamadas.<br>
+         - Cando está activado, non se permitirán as chamadas que fallen na certificación STIR, só se permitirán as chamadas "Válidas" e "Non verificadas".<br>
         <br>
         <h5><font color="#00BFFF">- Números adicionais</font></h5>
         Marcar calquera número desta lista tamén activará esta función.<br>
         <br>
-        Non fai falta engadir números explícitamente como o 911 aquí, porque Android inclúe unha lista de números
-        de emerxencia incorporada para cada país (por exemplo: policía, bombeiros, ambulancia).<br>
+        Non é necesario engadir números explícitamente como o 911 aquí, porque Android inclúe un
+        lista de números de emerxencia integrada para cada país (por exemplo: policía, bombeiros, ambulancia).<br>
         <br>
         Separa os números con comas, como:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
@@ -24,30 +25,33 @@
         <h5><font color="#00BFFF">- Restablecer</font></h5>
         Preme este botón para restablecer esta función se se activou por erro ou durante a proba.<br>
         <br>
+        <h5><font color="#00BFFF">- Proba</font></h5>
+        Simula unha chamada saínte para probar se ese número é un número de emerxencia.<br>
+        <br>
         <font color="#ea86ff"><b>Prioridade: Máxima</b></font>
         ]]>
     </string>
     <string name="reset">Restablecer</string>
     <string name="status">Estado</string>
     <string name="inactive">Inactivo</string>
-    <string name="confirm_reset">Confirmar restablecer?</string>
-    <string name="check_stir_attestation">Comprobar STIR</string>
+    <string name="confirm_reset">Confirmar o restablecemento?</string>
+    <string name="check_stir_attestation">Verificar STIR</string>
     <string name="additional_numbers">Números adicionais</string>
-    <string name="emergency_situation">Situación de Urxencia</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
-        <translate>O directorio de almacenamento externo, igual que: </translate><br>
+        O directorio de almacenamento externo, igual que: <br>
         <font color="#888888">/storage/emulated/0</font><br>
         <br>
         <font color="#00BFFF"><b>{Download}</b></font><br>
-        <translate>Igual que: </translate><br>
+        Igual que: <br>
         <font color="#888888">{sdcard}/Download</font><br>
         <br>
         <font color="#00BFFF"><b>{Documents}</b></font><br>
-        <translate>Igual que: </translate><br>
+        Igual que: <br>
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
-    <string name="no_sms_receive_permission"><translate>Permiso de recepción de SMS non concedido</translate></string>
+    <string name="call_to_number">A número</string>
+    <string name="call_to">Chamar a</string>
 </resources>

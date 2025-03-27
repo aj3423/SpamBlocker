@@ -1,22 +1,23 @@
 <resources>
-    <string name="emergency">Аварийнаяc</string>
+    <string name="emergency">Чрезвычайная ситуация</string>
+    <string name="emergency_situation">Чрезвычайная ситуация</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        После набора номера экстренной службы разрешить все входящие вызовы в течение определенного периода времени.<br>
+        После набора номера экстренной службы разрешить все входящие вызовы в течение определенного времени.<br>
         <br>
         <h5><font color="#00BFFF">- Длительность</font></h5>
-        Настройка по умолчанию <font color="#03DAC5"><b>120 Мин</b></font> означает, что все вызовы будут разрешены
+        Настройка по умолчанию <font color="#03DAC5"><b>120 мин</b></font> означает, что все вызовы будут разрешены
         в течение следующих 120 минут после набора номера экстренной службы.<br>
         <br>
         <h5><font color="#00BFFF">- Проверка STIR</font></h5>
          - Если отключено, все вызовы будут разрешены.<br>
-         - Если включено, вызовы, не прошедшие аттестацию STIR, не будут разрешены, будут разрешены только вызовы "Действительные" и "Неподтвержденные".<br>
+         - Если включено, вызовы, не прошедшие проверку STIR, не будут разрешены, будут разрешены только вызовы "Действительные" и "Непроверенные".<br>
         <br>
         <h5><font color="#00BFFF">- Дополнительные номера</font></h5>
         Набор любого номера из этого списка также активирует эту функцию.<br>
         <br>
-        Нет необходимости явно добавлять сюда такие номера, как 911, потому что Android включает встроенный
-        список экстренных номеров для каждой страны (например: полиция, пожарная служба, скорая помощь).<br>
+        Нет необходимости явно добавлять сюда такие номера, как 911, поскольку Android включает встроенный
+        список номеров экстренных служб для каждой страны (например, полиция, пожарная служба, скорая помощь).<br>
         <br>
         Разделяйте номера запятыми, например:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
@@ -24,30 +25,33 @@
         <h5><font color="#00BFFF">- Сброс</font></h5>
         Нажмите эту кнопку, чтобы сбросить эту функцию, если она была активирована по ошибке или во время тестирования.<br>
         <br>
-        <font color="#ea86ff"><b>Приоритет: Максимальный</b></font>
+        <h5><font color="#00BFFF">- Тест</font></h5>
+        Смоделируйте исходящий вызов, чтобы проверить, является ли этот номер номером экстренной службы.<br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: Макс.</b></font>
         ]]>
     </string>
     <string name="reset">Сброс</string>
     <string name="status">Статус</string>
-    <string name="inactive">Неактивен</string>
+    <string name="inactive">Неактивно</string>
     <string name="confirm_reset">Подтвердить сброс?</string>
-    <string name="check_stir_attestation">Проверка STIR</string>
+    <string name="check_stir_attestation">Проверить STIR</string>
     <string name="additional_numbers">Доп. номера</string>
-    <string name="emergency_situation">Чрезвычайная ситуация</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
-        Каталог внешнего хранилища, то же самое, что: <br>
+        Каталог внешнего хранилища, как: <br>
         <font color="#888888">/storage/emulated/0</font><br>
         <br>
         <font color="#00BFFF"><b>{Download}</b></font><br>
-        То же, что: <br>
+        Как: <br>
         <font color="#888888">{sdcard}/Download</font><br>
         <br>
         <font color="#00BFFF"><b>{Documents}</b></font><br>
-        То же, что: <br>
+        Как: <br>
         <font color="#888888">{sdcard}/Documents</font>
         ]]>
     </string>
-    <string name="no_sms_receive_permission">Нет разрешения на получение SMS</string>
+    <string name="call_to_number">На номер</string>
+    <string name="call_to">Звонок на</string>
 </resources>
