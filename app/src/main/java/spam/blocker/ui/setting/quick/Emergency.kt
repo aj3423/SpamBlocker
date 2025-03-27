@@ -24,13 +24,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
+import spam.blocker.service.CallScreeningService
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.DimGreyLabel
-import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
@@ -81,17 +82,36 @@ fun EmergencySituation() {
         GreyLabel(Str(R.string.confirm_reset))
     }
 
-    // popup
+    // Test popup
+    var callToNumber by rememberSaveable { mutableStateOf("") }
+    val testTrigger = rememberSaveable { mutableStateOf(false) }
+    PopupDialog(
+        trigger = testTrigger,
+        buttons = {
+            StrokeButton(label = Str(R.string.call_to), color = Teal200) {
+                CallScreeningService.updateOutgoingEmergencyTimestamp(ctx, callToNumber)
+                timeLeft = calcTimeLeft()
+            }
+        }
+    ) {
+        StrInputBox(
+            text = callToNumber,
+            label = { Text(Str(R.string.call_to_number)) },
+            placeholder = { DimGreyLabel("911") },
+            leadingIconId = R.drawable.ic_dial_pad,
+            onValueChange = { callToNumber = it }
+        )
+    }
+
+    // Config popup
     val configTrigger = rememberSaveable { mutableStateOf(false) }
 
     PopupDialog(
         trigger = configTrigger,
-        onDismiss = {
-            spf.setDuration(duration)
-            spf.setStirEnabled(isStirEnabled)
-            spf.setExtraNumbers(
-                extraNumbers.split(",").map { it.trim() }.filter { it.isNotEmpty() }
-            )
+        buttons = {
+            StrokeButton(label = Str(R.string.test), color = Teal200) {
+                testTrigger.value = true
+            }
         },
         content = {
             // Re-calculate the time left when the config dialog popups.
@@ -114,7 +134,7 @@ fun EmergencySituation() {
                         fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = M.width(16.dp))
-                    StrokeButton(label = Str(R.string.reset), color = Salmon) {
+                    StrokeButton(label = Str(R.string.reset), color = if (timeLeft > 0) Salmon else C.disabled) {
                         resetConfirm.value = true
                     }
                 }
@@ -123,6 +143,7 @@ fun EmergencySituation() {
                 LabeledRow(labelId = R.string.check_stir_attestation) {
                     SwitchBox(isStirEnabled) { isTurningOn ->
                         isStirEnabled = isTurningOn
+                        spf.setStirEnabled(isStirEnabled)
                     }
                 }
 
@@ -132,6 +153,7 @@ fun EmergencySituation() {
                     onValueChange = { newValue, hasError ->
                         if (!hasError) {
                             duration = newValue!!
+                            spf.setDuration(duration)
                         }
                     },
                     label = { Text(Str(R.string.within_minutes)) },
@@ -144,7 +166,13 @@ fun EmergencySituation() {
                     label = { Text(Str(R.string.additional_numbers)) },
                     placeholder = { DimGreyLabel("000, 123, ...") },
                     leadingIconId = R.drawable.ic_number_sign,
-                    onValueChange = { extraNumbers = it }
+                    onValueChange = {
+                        extraNumbers = it
+
+                        spf.setExtraNumbers(
+                            extraNumbers.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                        )
+                    }
                 )
             }
         }
@@ -169,8 +197,9 @@ fun EmergencySituation() {
         helpTooltip = Str(R.string.help_emergency_situation),
         content = {
             if (isEnabled) {
-                GreyButton(
+                StrokeButton(
                     label = "$duration ${Str(R.string.min)}${if (isStirEnabled) "" else " (?)"}",
+                    color = if (timeLeft > 0) C.enabled else C.textGrey
                 ) {
                     configTrigger.value = true
                 }
@@ -181,6 +210,8 @@ fun EmergencySituation() {
             }
         }
     )
+
+    // Extra Numbers
     if (isEnabled && !collapsed && extraNumbers.isNotBlank()) {
         OutlineCard {
             Row(

@@ -46,6 +46,18 @@ fun Details.getRawNumber(): String {
 
 class CallScreeningService : CallScreeningService() {
 
+    companion object {
+        // Save the timestamp for the feature "Emergency"
+        fun updateOutgoingEmergencyTimestamp(ctx: Context, rawNumber: String) {
+            val spf = spf.EmergencySituation(ctx)
+            val extraNumbers = spf.getExtraNumbers()
+            if (Util.isEmergencyNumber(ctx, rawNumber) || extraNumbers.contains(rawNumber)) {
+                logi("save ecc outgoing")
+                spf.setTimestamp(System.currentTimeMillis())
+            }
+        }
+    }
+
     private fun pass(details: Details) {
         val builder = CallResponse.Builder()
         respondToCall(details, builder.build())
@@ -93,20 +105,11 @@ class CallScreeningService : CallScreeningService() {
         respondToCall(details, builder.build())
     }
 
-    // Save the timestamp for the feature "Emergency"
-    private fun updateOutgoingEmergencyTimestamp(details: Details) {
-        val spf = spf.EmergencySituation(this)
-        val extraNumbers = spf.getExtraNumbers()
-        val rawNumber = details.getRawNumber()
-        if (Util.isEmergencyNumber(this, rawNumber) || extraNumbers.contains(rawNumber)) {
-            logi("save ecc outgoing")
-            spf.setTimestamp(System.currentTimeMillis())
-        }
-    }
+
     override fun onScreenCall(details: Details) {
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
-            updateOutgoingEmergencyTimestamp(details)
+            updateOutgoingEmergencyTimestamp(this, details.getRawNumber())
         }
 
         // Incoming

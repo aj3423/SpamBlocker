@@ -25,6 +25,9 @@
         <h5><font color="#00BFFF">- Reset</font></h5>
         Press this button to reset this feature if it was triggered by mistake or during testing.<br>
         <br>
+        <h5><font color="#00BFFF">- Test</font></h5>
+        It will simulate an outgoing call, to test if that number is an emergency number.<br>
+        <br>
         <font color="#ea86ff"><b>Priority: Max</b></font>
         ]]>
     </string>
@@ -50,4 +53,6 @@
         ]]>
     </string>
     <string name="no_sms_receive_permission">SMS receiving permission not granted</string>
+    <string name="call_to_number">To Number</string>
+    <string name="call_to">Call To</string>
 </resources>
