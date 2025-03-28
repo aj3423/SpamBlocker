@@ -3,30 +3,30 @@
     <string name="emergency_situation">緊急事態</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        緊急番号にダイヤルした後、一定時間、すべての着信を許可します。<br>
+        緊急番号への発信後、一定時間、すべての着信を許可します。<br>
         <br>
-        <h5><font color="#00BFFF">- 継続時間</font></h5>
-        デフォルト設定の <font color="#03DAC5"><b>120分</b></font> は、緊急番号にダイヤルした後、次の120分間はすべての通話が許可されることを意味します。<br>
+        <h5><font color="#00BFFF">- Duration (時間)</font></h5>
+        デフォルト設定の<font color="#03DAC5"><b>120 分</b></font> は、緊急番号発信後120分間、すべての着信を許可することを意味します。<br>
         <br>
-        <h5><font color="#00BFFF">- STIRを確認</font></h5>
-         - 無効にすると、すべての通話が許可されます。UIの `(?)` は、チェックされていないことを示します。<br>
-         - 有効にすると、STIR認証に失敗した通話は許可されず、「有効」および「未確認」の通話のみが許可されます。<br>
+        <h5><font color="#00BFFF">- Check STIR (STIR確認)</font></h5>
+         - 無効の場合、すべての着信が許可されます。<br>
+         - 有効の場合、STIR認証に失敗した着信は許可されず、「Valid (有効)」および「Unverified (未検証)」の着信のみが許可されます。<br>
         <br>
-        <h5><font color="#00BFFF">- 追加番号</font></h5>
-        このリストの番号にダイヤルすると、この機能もトリガーされます。<br>
+        <h5><font color="#00BFFF">- Additional Numbers (追加番号)</font></h5>
+        このリストの番号に発信すると、この機能がトリガーされます。<br>
         <br>
-        Androidには、国ごとに組み込みの緊急番号リスト（警察、消防、救急車など）が含まれているため、911のような番号を明示的に追加する必要はありません。<br>
+        Androidには各国の緊急番号リスト（例：警察、消防、救急車）が組み込まれているため、911などの番号を明示的に追加する必要はありません。<br>
         <br>
         番号はカンマで区切ってください。例：<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF">- リセット</font></h5>
-        誤ってトリガーされた場合、またはテスト中にこの機能をリセットするには、このボタンを押してください。<br>
+        <h5><font color="#00BFFF">- Reset (リセット)</font></h5>
+        誤って、またはテスト中にこの機能がトリガーされた場合は、このボタンを押してリセットしてください。<br>
         <br>
-        <h5><font color="#00BFFF">- テスト</font></h5>
-        その番号が緊急番号であるかどうかをテストするために、発信通話をシミュレートします。<br>
+        <h5><font color="#00BFFF">- Test (テスト)</font></h5>
+        発信をシミュレートして、その番号が緊急番号かどうかをテストします。<br>
         <br>
-        <font color="#ea86ff"><b>優先度：最大</b></font>
+        <font color="#ea86ff"><b>Priority: Max (優先度：最大)</b></font>
         ]]>
     </string>
     <string name="reset">リセット</string>

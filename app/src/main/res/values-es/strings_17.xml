@@ -3,31 +3,32 @@
     <string name="emergency_situation">Situación de Emergencia</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        <translate>Después de marcar un número de emergencia, permite todas las llamadas entrantes durante un período de tiempo.</translate><br>
+        Después de marcar un número de emergencia, permite todas las llamadas entrantes durante un tiempo.<br>
         <br>
-        <h5><font color="#00BFFF">- <translate>Duración</translate></font></h5>
-        <translate>La configuración predeterminada</translate> <font color="#03DAC5"><b>120 Min</b></font> <translate>significa que todas las llamadas se permitirán
-        en los próximos 120 minutos después de marcar un número de emergencia.</translate><br>
+        <h5><font color="#00BFFF">- Duración</font></h5>
+        La configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que todas las llamadas serán permitidas
+        en los próximos 120 minutos después de marcar un número de emergencia.<br>
         <br>
-        <h5><font color="#00BFFF">- <translate>Comprobar STIR</translate></font></h5>
-         - <translate>Cuando está desactivado, todas las llamadas se permitirán. El `(?)` en la interfaz de usuario indica que no está marcado.</translate><br>
-         - <translate>Cuando está habilitado, las llamadas que fallan en la atestación STIR no se permitirán, solo se permitirán las llamadas "Válidas" y "No verificadas".</translate><br>
+        <h5><font color="#00BFFF">- Verificar STIR</font></h5>
+         - Cuando está desactivado, todas las llamadas serán permitidas.<br>
+         - Cuando está activado, las llamadas que fallen en la certificación STIR no serán permitidas, solo las llamadas "Válidas" y "No verificadas" serán permitidas.<br>
         <br>
-        <h5><font color="#00BFFF">- <translate>Números adicionales</translate></font></h5>
-        <translate>Marcar cualquier número en esta lista también activará esta función.</translate><br>
+        <h5><font color="#00BFFF">- Números Adicionales</font></h5>
+        Marcar cualquier número en esta lista también activará esta función.<br>
         <br>
-        <translate>No es necesario agregar explícitamente números como el 911 aquí, porque Android incluye una lista de números de emergencia incorporada para cada país (por ejemplo: policía, bomberos, ambulancia).</translate><br>
+        No es necesario agregar explícitamente números como el 911 aquí, porque Android incluye una lista incorporada
+        de números de emergencia para cada país (por ejemplo: policía, bomberos, ambulancia).<br>
         <br>
-        <translate>Separe los números con comas, como:</translate><br>
+        Separe los números con comas, como:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF">- <translate>Restablecer</translate></font></h5>
-        <translate>Presione este botón para restablecer esta función si se activó por error o durante las pruebas.</translate><br>
+        <h5><font color="#00BFFF">- Restablecer</font></h5>
+        Presione este botón para restablecer esta función si se activó por error o durante la prueba.<br>
         <br>
-        <h5><font color="#00BFFF">- <translate>Prueba</translate></font></h5>
-        <translate>Simule una llamada saliente para probar si ese número es un número de emergencia.</translate><br>
+        <h5><font color="#00BFFF">- Probar</font></h5>
+        Simule una llamada saliente para probar si ese número es un número de emergencia.<br>
         <br>
-        <font color="#ea86ff"><b><translate>Prioridad: Máxima</translate></b></font>
+        <font color="#ea86ff"><b>Prioridad: Máxima</b></font>
         ]]>
     </string>
     <string name="reset">Restablecer</string>

@@ -3,30 +3,30 @@
     <string name="emergency_situation">Situación de Emerxencia</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Despois de marcar un número de emerxencia, permita todas as chamadas entrantes durante un período de tempo.<br>
+        Despois de marcar un número de emerxencia, permite todas as chamadas entrantes durante un período de tempo.<br>
         <br>
         <h5><font color="#00BFFF">- Duración</font></h5>
         A configuración predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que todas as chamadas serán permitidas
         nos próximos 120 minutos despois de marcar un número de emerxencia.<br>
         <br>
-        <h5><font color="#00BFFF">- Comprobar STIR</font></h5>
-         - Cando está desactivado, todas as chamadas serán permitidas. O `(?)` na IU indica que non está comprobado.<br>
-         - Cando está activado, as chamadas que non superen a certificación STIR non se permitirán, só se permitirán as chamadas "Válidas" e "Non verificadas".<br>
+        <h5><font color="#00BFFF">- Verificar STIR</font></h5>
+         - Cando está desactivado, permitiránse todas as chamadas.<br>
+         - Cando está activado, non se permitirán as chamadas que fallen na certificación STIR, só se permitirán as chamadas "Válidas" e "Non verificadas".<br>
         <br>
         <h5><font color="#00BFFF">- Números adicionais</font></h5>
         Marcar calquera número desta lista tamén activará esta función.<br>
         <br>
-        Non é necesario engadir números como o 911 aquí explícitamente, porque Android inclúe un
+        Non é necesario engadir números explícitamente como o 911 aquí, porque Android inclúe un
         lista de números de emerxencia integrada para cada país (por exemplo: policía, bombeiros, ambulancia).<br>
         <br>
-        Separe os números con comas, como:<br>
+        Separa os números con comas, como:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Restablecer</font></h5>
-        Prema este botón para restablecer esta función se se activou por erro ou durante as probas.<br>
+        Preme este botón para restablecer esta función se se activou por erro ou durante a proba.<br>
         <br>
-        <h5><font color="#00BFFF">- Probar</font></h5>
-        Simule unha chamada saínte para probar se ese número é un número de emerxencia.<br>
+        <h5><font color="#00BFFF">- Proba</font></h5>
+        Simula unha chamada saínte para probar se ese número é un número de emerxencia.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: Máxima</b></font>
         ]]>

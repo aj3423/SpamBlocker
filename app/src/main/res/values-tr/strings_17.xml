@@ -3,17 +3,17 @@
     <string name="emergency_situation">Acil Durum</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Bir acil durum numarasını aradıktan sonra, belirli bir süre boyunca tüm gelen aramaların gelmesine izin verin.<br>
+        Acil bir numara çevirdikten sonra, belirli bir süre boyunca tüm gelen çağrılara izin verin.<br>
         <br>
         <h5><font color="#00BFFF">- Süre</font></h5>
-        Varsayılan ayar <font color="#03DAC5"><b>120 Dakika</b></font>, bir acil durum numarası arandıktan sonraki 120 dakika içinde tüm aramalara izin verileceği anlamına gelir.<br>
+        Varsayılan ayar <font color="#03DAC5"><b>120 Dakika</b></font>, acil bir numara çevirdikten sonraki 120 dakika içinde tüm çağrılara izin verileceği anlamına gelir.<br>
         <br>
-        <h5><font color="#00BFFF">- STIR\'i Kontrol Et</font></h5>
-         - Devre dışı bırakıldığında, tüm aramalara izin verilir. Arayüzdeki `(?)` işaretli olmaması gerektiğini gösterir.<br>
-         - Etkinleştirildiğinde, STIR onayı başarısız olan aramalara izin verilmez, yalnızca "Geçerli" ve "Doğrulanmamış" aramalara izin verilir.<br>
+        <h5><font color="#00BFFF">- STIR\'ı Kontrol Et</font></h5>
+         - Devre dışı bırakıldığında, tüm çağrılara izin verilir.<br>
+         - Etkinleştirildiğinde, STIR onayı başarısız olan çağrılara izin verilmez, yalnızca "Geçerli" ve "Doğrulanmamış" çağrılara izin verilir.<br>
         <br>
         <h5><font color="#00BFFF">- Ek Numaralar</font></h5>
-        Bu listedeki herhangi bir numarayı aramak da bu özelliği tetikleyecektir.<br>
+        Bu listedeki herhangi bir numarayı çevirmek de bu özelliği tetikleyecektir.<br>
         <br>
         Buraya 911 gibi numaraları açıkça eklemeye gerek yoktur, çünkü Android her ülke için yerleşik bir acil durum numarası listesi içerir (örneğin: polis, itfaiye, ambulans).<br>
         <br>
@@ -21,12 +21,12 @@
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Sıfırla</font></h5>
-        Yanlışlıkla veya test sırasında tetiklenirse bu özelliği sıfırlamak için bu düğmeye basın.<br>
+        Yanlışlıkla veya test sırasında tetiklenmişse, bu özelliği sıfırlamak için bu düğmeye basın.<br>
         <br>
         <h5><font color="#00BFFF">- Test</font></h5>
         Bu numaranın acil durum numarası olup olmadığını test etmek için giden bir aramayı simüle edin.<br>
         <br>
-        <font color="#ea86ff"><b>Öncelik: Maksimum</b></font>
+        <font color="#ea86ff"><b>Öncelik: Maks</b></font>
         ]]>
     </string>
     <string name="reset">Sıfırla</string>

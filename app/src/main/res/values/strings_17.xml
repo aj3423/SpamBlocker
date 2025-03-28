@@ -10,7 +10,7 @@
         in the next 120 minutes after dialing an emergency number.<br>
         <br>
         <h5><font color="#00BFFF">- Check STIR</font></h5>
-         - When disabled, all calls will be allowed. The `(?)` on the UI indicates it\'s not checked.<br>
+         - When disabled, all calls will be allowed.<br>
          - When enabled, calls fail STIR attestation will not be allowed, only "Valid" and "Unverified" calls will be allowed.<br>
         <br>
         <h5><font color="#00BFFF">- Additional Numbers</font></h5>

@@ -3,29 +3,30 @@
     <string name="emergency_situation">Notfallsituation</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Nach dem Wählen einer Notrufnummer, erlaube für eine gewisse Zeit alle eingehenden Anrufe.<br>
+        Nach dem Wählen einer Notrufnummer, erlaube alle eingehenden Anrufe für eine bestimmte Zeit.<br>
         <br>
         <h5><font color="#00BFFF">- Dauer</font></h5>
-        Die Standardeinstellung <font color="#03DAC5"><b>120 Min</b></font> bedeutet, dass alle Anrufe in den nächsten 120 Minuten nach dem Wählen einer Notrufnummer zugelassen werden.<br>
+        Die Standardeinstellung <font color="#03DAC5"><b>120 Min</b></font> bedeutet, dass alle Anrufe
+        in den nächsten 120 Minuten nach dem Wählen einer Notrufnummer erlaubt sind.<br>
         <br>
-        <h5><font color="#00BFFF">- STIR überprüfen</font></h5>
-         - Wenn deaktiviert, werden alle Anrufe zugelassen. Das `(?)` auf der Benutzeroberfläche zeigt an, dass es nicht geprüft wird.<br>
+        <h5><font color="#00BFFF">- STIR prüfen</font></h5>
+         - Wenn deaktiviert, werden alle Anrufe zugelassen.<br>
          - Wenn aktiviert, werden Anrufe, die die STIR-Bestätigung nicht bestehen, nicht zugelassen, nur "Valid" und "Unverified" Anrufe werden zugelassen.<br>
         <br>
         <h5><font color="#00BFFF">- Zusätzliche Nummern</font></h5>
         Das Wählen einer beliebigen Nummer in dieser Liste löst ebenfalls diese Funktion aus.<br>
         <br>
-        Es ist nicht erforderlich, Nummern wie 911 hier explizit hinzuzufügen, da Android eine integrierte
-        Notrufnummernliste für jedes Land enthält (z. B. Polizei, Feuerwehr, Krankenwagen).<br>
+        Es ist nicht erforderlich, hier explizit Nummern wie 911 hinzuzufügen, da Android eine integrierte
+        Notrufnummerliste für jedes Land enthält (z.B.: Polizei, Feuerwehr, Krankenwagen).<br>
         <br>
         Trennen Sie die Nummern durch Kommas, wie zum Beispiel:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Zurücksetzen</font></h5>
-        Drücken Sie diese Schaltfläche, um diese Funktion zurückzusetzen, wenn sie versehentlich oder während des Testens ausgelöst wurde.<br>
+        Drücken Sie diese Taste, um diese Funktion zurückzusetzen, wenn sie versehentlich oder während des Testens ausgelöst wurde.<br>
         <br>
         <h5><font color="#00BFFF">- Testen</font></h5>
-        Simulieren Sie einen ausgehenden Anruf, um zu testen, ob diese Nummer eine Notrufnummer ist.<br>
+        Simulieren Sie einen abgehenden Anruf, um zu testen, ob diese Nummer eine Notrufnummer ist.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: Max</b></font>
         ]]>

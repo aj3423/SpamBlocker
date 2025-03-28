@@ -25,26 +25,26 @@
     <string name="spoof">なりすまし通話</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN認証には、<b>Android 11+</b> および<b>キャリアのサポート</b>が必要です。<br>
+            STIR/SHAKEN 認証には、<b>Android 11 以降</b>と<b>キャリアのサポート</b>が必要です。 <br>
             <br>
-            認証結果には、次の3つの可能性があります:<br>
+            認証には、3 つの結果があります。 <br>
             <font color="#03DAC5"><b>有効</b></font> <br>
-            &emsp; この通話は有効である可能性が非常に高く、なりすましではありません。<br>
+            &emsp; この通話は、なりすましではなく、有効である可能性が高いです。 <br>
             <font color="#ffa500"><b>未検証</b></font> <br>
-            &emsp; この通話は検証できないか、STIR認証がサポートされていません。<br>
+            &emsp; この通話は検証できません。または、STIR 認証がサポートされていません。 <br>
             <font color="#fa7f71"><b>なりすまし</b></font> <br>
-            &emsp; これは、なりすましの通話である可能性が非常に高いです。<br>
+            &emsp; この通話は、なりすましである可能性が高いです。 <br>
             <br>
             <br>
               - <b>包含</b>: <br>
-                  &emsp; このチェックに失敗した通話も、他のルールによってチェックされます。<br>
-                  &emsp; 「<b>未検証を含める</b>」がオンになっている場合、通話が未検証の場合も許可され、UIに「(?)」が表示されます。<br>
-                  &emsp; <font color="#ea86ff"><b>優先度: 10</b></font> <br>
+                  &emsp; このチェックに失敗した通話は、他のルールでも確認されます。 <br>
+                  &emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はパスします。 <br>
+                  &emsp; <font color="#ea86ff"><b>優先順位: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>除外</b></font>: <br>
-                  &emsp; このチェックに失敗した通話は<font color="#fa7f71"><b>ブロック</b></font>されます。<br>
-                  &emsp; 「<b>未検証を含める</b>」がオンになっている場合、通話が未検証の場合もブロックされます。<br>
-                  &emsp; <font color="#ea86ff"><b>優先度: 0</b></font>
+                  &emsp; このチェックに失敗した通話は <font color="#fa7f71"><b>ブロック</b></font>されます。 <br>
+                  &emsp; 「<b>未検証を含む</b>」がチェックされている場合は、未検証の場合も通話はブロックされます。 <br>
+                  &emsp; <font color="#ea86ff"><b>優先順位: 0</b></font>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

@@ -25,25 +25,25 @@
     <string name="spoof">伪造呼叫</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。<br>
+            STIR/SHAKEN 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。 <br>
             <br>
-            有三种可能的认证结果：<br>
+            有三种可能的认证结果： <br>
             <font color="#03DAC5"><b>有效</b></font> <br>
-            &emsp; 该呼叫很可能有效，不是欺骗性的。<br>
+            &emsp; 呼叫很可能是有效的，没有被伪造。 <br>
             <font color="#ffa500"><b>未验证</b></font> <br>
-            &emsp; 无法验证该呼叫，或不支持 STIR 认证。<br>
-            <font color="#fa7f71"><b>欺骗</b></font> <br>
-            &emsp; 该呼叫很可能是欺骗性的。<br>
+            &emsp; 无法验证呼叫，或者不支持 STIR 认证。 <br>
+            <font color="#fa7f71"><b>伪造</b></font> <br>
+            &emsp; 很可能是一个伪造的呼叫。 <br>
             <br>
             <br>
               - <b>包含</b>: <br>
-                  &emsp; 未通过此检查的呼叫仍将由其他规则检查。<br>
-                  &emsp; 如果选中“<b>包含未验证的</b>”，则未验证的呼叫也会通过，并且界面上会显示“(?)"。<br>
+                  &emsp; 未通过此检查的呼叫仍将由其他规则检查。 <br>
+                  &emsp; 当选中“<b>包含未验证</b>”时，如果呼叫未经验证，也会通过。 <br>
                   &emsp; <font color="#ea86ff"><b>优先级：10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>排除</b></font>: <br>
-                  &emsp; 未通过此检查的呼叫将被<font color="#fa7f71"><b>阻止</b></font>。<br>
-                  &emsp; 如果选中“<b>包含未验证的</b>”，则未验证的呼叫也会被阻止。<br>
+                  &emsp; 未通过此检查的呼叫将被 <font color="#fa7f71"><b>阻止</b></font>。 <br>
+                  &emsp; 当选中“<b>包含未验证</b>”时，如果呼叫未经验证，也会被阻止。 <br>
                   &emsp; <font color="#ea86ff"><b>优先级：0</b></font>
         ]]>
     </string>

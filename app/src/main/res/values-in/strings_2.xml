@@ -25,25 +25,25 @@
     <string name="spoof">Panggilan palsu</string>
     <string name="help_stir">
         <![CDATA[
-            Atestasi STIR/SHAKEN membutuhkan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
+            Pengesahan STIR/SHAKEN membutuhkan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
             <br>
-            Ada tiga kemungkinan hasil atestasi: <br>
-            <font color="#03DAC5"><b>Valid</b></font> <br>
-            &emsp; Panggilan sangat mungkin valid, bukan palsu. <br>
-            <font color="#ffa500"><b>Belum Terverifikasi</b></font> <br>
-            &emsp; Panggilan tidak dapat divalidasi, atau atestasi STIR tidak didukung. <br>
+            Ada tiga kemungkinan hasil pengesahan: <br>
+            <font color="#03DAC5"><b>Sah</b></font> <br>
+            &emsp; Panggilan tersebut sangat mungkin sah, tidak dipalsukan. <br>
+            <font color="#ffa500"><b>Tidak diverifikasi</b></font> <br>
+            &emsp; Panggilan tidak dapat disahkan, atau pengesahan STIR tidak didukung. <br>
             <font color="#fa7f71"><b>Palsu</b></font> <br>
-            &emsp; Sangat mungkin itu adalah panggilan palsu. <br>
+            &emsp; Kemungkinan besar ini adalah panggilan palsu. <br>
             <br>
             <br>
               - <b>Inklusif</b>: <br>
-                  &emsp; Panggilan yang gagal pemeriksaan ini akan tetap diperiksa oleh aturan lain. <br>
-                  &emsp; Ketika "<b>Sertakan yang Belum Terverifikasi</b>" dicentang, panggilan juga akan lolos jika belum terverifikasi, dan akan ada tanda `(?)` di UI.<br>
+                  &emsp; Panggilan yang gagal dalam pemeriksaan ini akan tetap diperiksa oleh aturan lain. <br>
+                  &emsp; Ketika "<b>Sertakan yang Tidak diverifikasi</b>" dicentang, panggilan juga akan lolos jika tidak diverifikasi. <br>
                   &emsp; <font color="#ea86ff"><b>Prioritas: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Eksklusif</b></font>: <br>
-                  &emsp; Panggilan yang gagal pemeriksaan ini akan di-<font color="#fa7f71"><b>blokir</b></font>. <br>
-                  &emsp; Ketika "<b>Sertakan yang Belum Terverifikasi</b>" dicentang, panggilan juga akan diblokir jika belum terverifikasi. <br>
+                  &emsp; Panggilan yang gagal dalam pemeriksaan ini akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
+                  &emsp; Ketika "<b>Sertakan yang Tidak diverifikasi</b>" dicentang, panggilan juga akan diblokir jika tidak diverifikasi. <br>
                   &emsp; <font color="#ea86ff"><b>Prioritas: 0</b></font>
         ]]>
     </string>

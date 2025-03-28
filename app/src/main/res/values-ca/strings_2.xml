@@ -25,25 +25,25 @@
     <string name="spoof">Trucada falsa</string>
     <string name="help_stir">
         <![CDATA[
-            L\'atestació STIR/SHAKEN requereix <b>Android 11+</b> i <b>suport de l\'operador</b>. <br>
+            L\'atestació STIR/SHAKEN requereix <b>Android 11+</b> i <b>compatibilitat amb l\'operador</b>. <br>
             <br>
-            Hi ha tres possibles resultats d\'atestació: <br>
+            Hi ha tres resultats d\'atestació possibles: <br>
             <font color="#03DAC5"><b>Vàlid</b></font> <br>
-            &emsp; És molt probable que la trucada sigui vàlida, no suplantada. <br>
-            <font color="#ffa500"><b>Sense verificar</b></font> <br>
-            &emsp; No es pot validar la trucada, o l\'atestació STIR no és compatible. <br>
-            <font color="#fa7f71"><b>Suplantació</b></font> <br>
-            &emsp; És molt probable que sigui una trucada suplantada. <br>
+            &emsp; És molt probable que la trucada sigui vàlida i no falsificada. <br>
+            <font color="#ffa500"><b>No verificat</b></font> <br>
+            &emsp; La trucada no es pot validar o l\'atestació STIR no és compatible. <br>
+            <font color="#fa7f71"><b>Fals</b></font> <br>
+            &emsp; És molt probable que sigui una trucada falsificada. <br>
             <br>
             <br>
               - <b>Inclusiu</b>: <br>
-                  &emsp; Les trucades que fallin aquesta comprovació encara es comprovaran amb altres regles. <br>
-                  &emsp; Quan "<b>Incloure sense verificar</b>" està marcat, una trucada també passaria si no està verificada, i hi haurà un `(?)` a la IU.<br>
+                  &emsp; Les trucades que no superin aquesta comprovació encara es comprovaran amb altres regles. <br>
+                  &emsp; Quan "<b>Incloure No verificat</b>" està marcat, una trucada també s\'aprovaria si no està verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioritat: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusiu</b></font>: <br>
-                  &emsp; Les trucades que fallin aquesta comprovació seran <font color="#fa7f71"><b>bloquejades</b></font>. <br>
-                  &emsp; Quan "<b>Incloure sense verificar</b>" està marcat, una trucada també es bloquejaria si no està verificada. <br>
+                  &emsp; Les trucades que no superin aquesta comprovació seran <font color="#fa7f71"><b>bloquejades</b></font>. <br>
+                  &emsp; Quan "<b>Incloure No verificat</b>" està marcat, una trucada també es bloquejaria si no està verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioritat: 0</b></font>
         ]]>
     </string>
