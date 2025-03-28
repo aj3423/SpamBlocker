@@ -1,42 +1,42 @@
 <resources>
     <string name="help_number_rules">
         <![CDATA[
-        Estas regras se aplicam ao número de telefone recebido.<br>
+        As regras de número se aplicam tanto ao número da chamada recebida quanto ao número do SMS.<br>
         <br>
         <h5><font color="#00BFFF"> - Exemplos</font></h5>
-        Há alguns exemplos na <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">página Wiki</a>.<br>
+        Existem alguns exemplos na <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">página Wiki</a>.<br>
         <br>
         <h5><font color="#00BFFF"> - Otimização de Regex</font></h5>
-        Para simplificar a regex,<br>
+        Para simplificar a regex,
           <font color="#fa7f71"><b>+</b></font> e <font color="#fa7f71"><b>zeros à esquerda</b></font>
           são removidos antes da verificação, por exemplo:<br>
         &emsp; Todos esses formatos:<br>
-        &emsp;&emsp; 123456789 &emsp;(número regular)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(com <font color="#fa7f71"><b>+</b></font> inicial)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(com prefixo de tronco doméstico <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; 123456789 &emsp;(número normal)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(com <font color="#fa7f71"><b>+</b></font> à esquerda)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(com prefixo de código de área nacional <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dois <font color="#fa7f71"><b>0</b></font>s)<br>
-        &emsp; Eles são <b>todos</b> verificados como 123456789 e podem ser correspondidos por <font color="#03DAC5"><b>123.*</b></font><br>
-        Essa otimização de número pode ser <b>desabilitada</b> com a flag de regex "Número Bruto".<br>
+        &emsp; Eles são <b>todos</b> verificados como 123456789 e podem ser combinados por <font color="#03DAC5"><b>123.*</b></font><br>
+        Essa otimização de número pode ser <b>desativada</b> com a flag regex `Raw Number`.<br>
         <br>
         <h5><font color="#00BFFF"> - Alguns padrões típicos</font></h5>
-        &ensp; - Qualquer número: <font color="#03DAC5"><b>.*</b></font> (a regex .* é equivalente ao curinga * em outros aplicativos) <br>
+        &ensp; - Qualquer número: <font color="#03DAC5"><b>.*</b></font> (a regex .* é equivalente ao curinga * em outros apps) <br>
         &ensp; - Número exato: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Começa com 400: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Termina com 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 dígitos: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Menor que 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Maior que 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Número desconhecido (string vazia): <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Corresponde a qualquer um dos padrões: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - Começa com 400, com código de país inicial 11 ou não: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Número Desconhecido/Privado/Vazio: <font color="#03DAC5"><b>.{0}</b></font> ou <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Corresponder a qualquer um dos padrões: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - Começar com 400, com código de país 11 ou não: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <h5><font color="#00BFFF"> - Relacionado à IU</font></h5>
+        <h5><font color="#00BFFF"> - Relacionado à interface do usuário</font></h5>
         Desmarque as caixas de seleção para desativar a regra, <font color="#fa7f71"><b>deslize para a esquerda para excluir</b></font>.<br>
         <br>
         A lista é <b>exibida</b> em ordem decrescente de prioridade, descrição crescente e padrão crescente.<br>
         <br>
         <h5><font color="#00BFFF"> - Importar regras de .csv</font></h5>
-        Pressione longamente o botão `Adicionar` para importar números do arquivo .csv.<br>
+        Pressione e segure o botão `Add` para importar números de um arquivo .csv.<br>
         <brg>
         ]]>
     </string>

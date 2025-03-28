@@ -1,42 +1,42 @@
 <resources>
     <string name="help_number_rules">
         <![CDATA[
-        Aturan ini berlaku untuk nomor telepon yang masuk.<br>
+        Aturan nomor berlaku untuk nomor panggilan masuk dan nomor SMS.<br>
         <br>
         <h5><font color="#00BFFF"> - Contoh</font></h5>
         Ada beberapa contoh di <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">halaman Wiki</a>.<br>
         <br>
         <h5><font color="#00BFFF"> - Optimalisasi Regex</font></h5>
         Untuk menyederhanakan regex,
-          <font color="#fa7f71"><b>+</b></font> dan <font color="#fa7f71"><b>awalan nol</b></font>
-          dihapus sebelum memeriksa, misalnya:<br>
-        &emsp; Semua format tersebut:<br>
-        &emsp;&emsp; 123456789 &emsp;(nomor reguler)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(dengan awalan <font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(dengan awalan induk domestik <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dua <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; Mereka <b>semua</b> diperiksa sebagai 123456789 dan dapat dicocokkan dengan <font color="#03DAC5"><b>123.*</b></font><br>
-        Pengoptimalan nomor ini dapat <b>dinonaktifkan</b> dengan tanda regex "Nomor Mentah".<br>
+          <font color="#fa7f71"><b>+</b></font> dan <font color="#fa7f71"><b>angka nol di depan</b></font>
+          dihapus sebelum diperiksa, contohnya:<br>
+        &emsp; Semua format ini:<br>
+        &emsp;&emsp; 123456789 &emsp;(nomor biasa)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(dengan <font color="#fa7f71"><b>+</b></font> di depan)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(dengan awalan trunk domestik <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dua angka <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; Mereka <b>semua</b> diperiksa sebagai 123456789 dan dapat dicocokkan oleh <font color="#03DAC5"><b>123.*</b></font><br>
+        Optimalisasi nomor ini dapat <b>dinonaktifkan</b> dengan flag regex `Raw Number`.<br>
         <br>
         <h5><font color="#00BFFF"> - Beberapa pola umum</font></h5>
-        &ensp; - Nomor apa pun: <font color="#03DAC5"><b>.*</b></font> (regex .* sama dengan wildcard * dalam aplikasi lain) <br>
-        &ensp; - Nomor pasti: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - Dimulai dengan 400: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - End with 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - Nomor apa pun: <font color="#03DAC5"><b>.*</b></font> (regex .* setara dengan wildcard * di aplikasi lain) <br>
+        &ensp; - Nomor persis: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - Mulai dengan 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - Berakhir dengan 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 digit: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Lebih pendek dari 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Lebih panjang dari 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Nomor tidak dikenal (string kosong): <font color="#03DAC5"><b>.{0}</b></font> atau <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - Sesuaikan dengan salah satu pola: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - Dimulai dengan 400, dengan awalan kode negara 11 or bukan: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Nomor Tidak Dikenal/Pribadi/Kosong: <font color="#03DAC5"><b>.{0}</b></font> atau <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Cocokkan salah satu pola: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - Mulai dengan 400, dengan kode negara 11 di depan atau tidak: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <h5><font color="#00BFFF"> - Terkait dengan UI</font></h5>
-        Hapus centang pada kotak centang untuk menonaktifkan aturan, <font color="#fa7f71"><b>geser ke kiri untuk menghapusnya</b></font>.<br>
+        <h5><font color="#00BFFF"> - Terkait UI</font></h5>
+        Hapus centang pada kotak centang untuk menonaktifkan aturan, <font color="#fa7f71"><b>geser ke kiri untuk menghapus</b></font> nya.<br>
         <br>
-        Daftarnya <b>ditampilkan</b> dalam urutan prioritas yang menurun, deskripsi yang menaik, dan pola yang menaik.<br>
+        Daftar <b>ditampilkan</b> dalam urutan prioritas menurun, deskripsi menaik, dan pola menaik.<br>
         <br>
         <h5><font color="#00BFFF"> - Impor aturan dari .csv</font></h5>
-        Tekan lama tombol `Tambahkan` untuk mengimpor nomor dari berkas .csv.<br>
+        Tekan lama tombol `Tambah` untuk mengimpor nomor dari file .csv.<br>
         <brg>
         ]]>
     </string>

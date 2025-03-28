@@ -33,7 +33,7 @@
     <string name="status">状態</string>
     <string name="inactive">無効</string>
     <string name="confirm_reset">リセットしますか？</string>
-    <string name="check_stir_attestation">STIR確認</string>
+    <string name="check_stir_attestation">STIR確認（？）</string>
     <string name="additional_numbers">追加番号</string>
     <string name="path_tags">
         <![CDATA[

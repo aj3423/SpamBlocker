@@ -35,7 +35,7 @@
     <string name="status">Статус</string>
     <string name="inactive">Неактивний</string>
     <string name="confirm_reset">Підтвердити скидання?</string>
-    <string name="check_stir_attestation">Перевірка STIR</string>
+    <string name="check_stir_attestation"><translate>Перевірка STIR (?)</translate></string>
     <string name="additional_numbers">Додаткові номери</string>
     <string name="path_tags">
         <![CDATA[

@@ -19,7 +19,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Nicht überprüfte einschließen</string>
+    <string name="stir_include_unverified"><translate>Ungeprüfte einschließen (?)</translate></string>
     <string name="unverified">Nicht überprüft</string>
     <string name="valid">Gültiger Anruf</string>
     <string name="spoof">Spoof-Anruf</string>

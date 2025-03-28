@@ -1,42 +1,42 @@
 <resources>
     <string name="help_number_rules">
         <![CDATA[
-        این قوانین در مورد شماره تلفن ورودی اعمال می‌شوند.<br>
+        قوانین شماره هم برای شماره تماس ورودی و هم شماره پیامک اعمال می شود.<br>
         <br>
-        <h5><font color="#00BFFF"> - مثال‌ها</font></h5>
+        <h5><font color="#00BFFF"> - مثال ها</font></h5>
         چند مثال در <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">صفحه ویکی</a> وجود دارد.<br>
         <br>
-        <h5><font color="#00BFFF"> - بهینه‌سازی عبارت‌های باقاعده</font></h5>
-        برای ساده‌سازی عبارت‌های باقاعده،
-          <font color="#fa7f71"><b>+</b></font> و <font color="#fa7f71"><b>صفرهای پیشرو</b></font>
-          قبل از بررسی حذف می‌شوند، برای مثال:<br>
-        &emsp; همه این فرمت‌ها:<br>
+        <h5><font color="#00BFFF"> - بهینه سازی Regex</font></h5>
+        برای ساده کردن regex،
+          <font color="#fa7f71"><b>+</b></font> و <font color="#fa7f71"><b>صفرهای ابتدایی</b></font>
+          قبل از بررسی حذف می شوند، برای مثال:<br>
+        &emsp; همه این فرمت ها:<br>
         &emsp;&emsp; 123456789 &emsp;(شماره معمولی)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(با <font color="#fa7f71"><b>+</b></font> پیشرو)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(با پیشوند داخلی <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(با <font color="#fa7f71"><b>+</b></font> ابتدایی)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(با پیش شماره داخلی <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(دو <font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; همه آنها به عنوان 123456789 بررسی می‌شوند و می‌توانند با <font color="#03DAC5"><b>123.*</b></font> مطابقت داشته باشند<br>
-        این بهینه‌سازی شماره را می‌توان با پرچم عبارت باقاعده "شماره خام" <translate>غیرفعال</translate> کرد.<br>
+        &emsp; <b>همه</b> آنها به صورت 123456789 بررسی می شوند و می توانند توسط <font color="#03DAC5"><b>123.*</b></font> مطابقت داده شوند<br>
+        این بهینه سازی شماره می تواند با پرچم regex `Raw Number` <b>غیرفعال</b> شود.<br>
         <br>
-        <h5><font color="#00BFFF"> - برخی الگوهای معمولی</font></h5>
-        &ensp; - هر شماره: <font color="#03DAC5"><b>.*</b></font> (عبارت باقاعده .* معادل کاراکترهای wildcard * در برنامه‌های دیگر است) <br>
+        <h5><font color="#00BFFF"> - برخی الگوهای معمول</font></h5>
+        &ensp; - هر شماره: <font color="#03DAC5"><b>.*</b></font> (regex .* معادل wildcard * در سایر برنامه ها است) <br>
         &ensp; - شماره دقیق: <font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - با 400 شروع می‌شود: <font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - با 123 پایان می‌یابد: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - شروع با 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - پایان با 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 رقم: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - کوتاه‌تر از 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - بلندتر از 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - شماره ناشناخته (رشته خالی): <font color="#03DAC5"><b>.{0}</b></font> یا <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - با هر یک از الگوها مطابقت دارد: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - با 400 شروع می‌شود، با کد کشور پیشرو 11 یا بدون آن: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - کوتاه تر از 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - طولانی تر از 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - شماره ناشناخته/خصوصی/خالی: <font color="#03DAC5"><b>.{0}</b></font> یا <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - مطابقت با هر یک از الگوها: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - شروع با 400، با پیش شماره کشور 11 یا بدون آن: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <h5><font color="#00BFFF"> - مربوط به رابط کاربری</font></h5>
-        برای غیرفعال کردن قانون، کادرهای انتخاب را بردارید، <font color="#fa7f71"><b>برای حذف آن را به چپ بکشید</b></font>.<br>
+        <h5><font color="#00BFFF"> - مرتبط با رابط کاربری</font></h5>
+        برای غیرفعال کردن قانون، علامت چک باکس ها را بردارید، <font color="#fa7f71"><b>برای حذف به چپ بکشید</b></font>.<br>
         <br>
-        لیست <short>به ترتیب اولویت نزولی، توضیحات صعودی و الگوی صعودی نمایش داده می‌شود.</short><br>
+        لیست به ترتیب نزولی اولویت، توضیحات صعودی و الگوی صعودی <b>نمایش داده می شود</b>.<br>
         <br>
-        <h5><font color="#00BFFF"> - وارد کردن قوانین از فایل .csv</font></h5>
-        برای وارد کردن شماره‌ها از فایل .csv،  <translate>روی دکمه‌ی «افزودن» لمس طولانی کنید.</translate><br>
+        <h5><font color="#00BFFF"> - وارد کردن قوانین از .csv</font></h5>
+        دکمه `Add` را طولانی فشار دهید تا شماره ها از فایل .csv وارد شوند.<br>
         <brg>
         ]]>
     </string>

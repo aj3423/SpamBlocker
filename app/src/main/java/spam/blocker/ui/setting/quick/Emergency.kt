@@ -91,6 +91,7 @@ fun EmergencySituation() {
             StrokeButton(label = Str(R.string.call_to), color = Teal200) {
                 CallScreeningService.updateOutgoingEmergencyTimestamp(ctx, callToNumber)
                 timeLeft = calcTimeLeft()
+                testTrigger.value = false
             }
         }
     ) {

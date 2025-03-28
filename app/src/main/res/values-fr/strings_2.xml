@@ -19,7 +19,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Inclure non vérifiés</string>
+    <string name="stir_include_unverified">Inclure non vérifiés (?)</string>
     <string name="unverified">Non vérifié</string>
     <string name="valid">Appel valide</string>
     <string name="spoof">Appel falsifié</string>

@@ -33,7 +33,7 @@
     <string name="status">Durum</string>
     <string name="inactive">Etkin Değil</string>
     <string name="confirm_reset">Sıfırlamayı onayla?</string>
-    <string name="check_stir_attestation">STIR\'ı Kontrol Et</string>
+    <string name="check_stir_attestation">STIR Onayını Kontrol Et (?)</string>
     <string name="additional_numbers">Ek Numaralar</string>
     <string name="path_tags">
         <![CDATA[

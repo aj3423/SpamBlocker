@@ -19,7 +19,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Doğrulanmamışları Dahil Et</string>
+    <string name="stir_include_unverified">Doğrulanmamış Olanları Dahil Et (?)</string>
     <string name="unverified">Doğrulanmamış</string>
     <string name="valid">Geçerli Arama</string>
     <string name="spoof">Sahte Arama</string>

@@ -35,7 +35,7 @@
     <string name="status">Estado</string>
     <string name="inactive">Inactivo</string>
     <string name="confirm_reset">¿Confirmar restablecer?</string>
-    <string name="check_stir_attestation">Verificar STIR</string>
+    <string name="check_stir_attestation">Verificar STIR (?)</string>
     <string name="additional_numbers">Números Adicionales</string>
     <string name="path_tags">
         <![CDATA[

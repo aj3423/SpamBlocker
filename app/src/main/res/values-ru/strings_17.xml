@@ -35,7 +35,7 @@
     <string name="status">Статус</string>
     <string name="inactive">Неактивно</string>
     <string name="confirm_reset">Подтвердить сброс?</string>
-    <string name="check_stir_attestation">Проверить STIR</string>
+    <string name="check_stir_attestation">Проверять STIR (?)</string>
     <string name="additional_numbers">Доп. номера</string>
     <string name="path_tags">
         <![CDATA[

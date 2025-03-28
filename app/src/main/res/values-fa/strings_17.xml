@@ -33,7 +33,7 @@
     <string name="status">وضعیت</string>
     <string name="inactive">غیرفعال</string>
     <string name="confirm_reset">بازنشانی تایید شود؟</string>
-    <string name="check_stir_attestation">بررسی STIR</string>
+    <string name="check_stir_attestation">بررسی گواهی STIR (?)</string>
     <string name="additional_numbers">شماره های اضافی</string>
     <string name="path_tags">
         <![CDATA[

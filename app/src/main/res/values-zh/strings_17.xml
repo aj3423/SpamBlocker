@@ -33,7 +33,7 @@
     <string name="status">状态</string>
     <string name="inactive">未激活</string>
     <string name="confirm_reset">确认重置？</string>
-    <string name="check_stir_attestation">检查STIR</string>
+    <string name="check_stir_attestation">检查 STIR (?)</string>
     <string name="additional_numbers">附加号码</string>
     <string name="path_tags">
         <![CDATA[

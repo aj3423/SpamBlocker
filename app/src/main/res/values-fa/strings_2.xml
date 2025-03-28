@@ -19,7 +19,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">شامل تایید نشده‌ها</string>
+    <string name="stir_include_unverified">شامل تایید نشده‌ها شود؟</string>
     <string name="unverified">تایید نشده</string>
     <string name="valid">تماس معتبر</string>
     <string name="spoof">تماس جعلی</string>

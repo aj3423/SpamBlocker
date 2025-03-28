@@ -1,42 +1,42 @@
 <resources>
     <string name="help_number_rules">
         <![CDATA[
-        这些规则适用于来电号码。<br>
+        <translate>号码规则同时适用于来电号码和短信号码。</translate><br>
         <br>
-        <h5><font color="#00BFFF"> - 示例</font></h5>
-        在<a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki页面</a>上有一些示例。<br>
+        <h5><font color="#00BFFF"> - <translate>示例</translate></font></h5>
+        <translate>在</translate> <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki page</a> <translate>页面上有一些示例</translate>。<br>
         <br>
-        <h5><font color="#00BFFF"> - 正则表达式优化</font></h5>
-        为了简化正则表达式，
-          <font color="#fa7f71"><b>+</b></font>和<font color="#fa7f71"><b>前导零</b></font>
-          会在检查前被移除，例如：<br>
-        &emsp;所有这些格式：<br>
-        &emsp;&emsp; 123456789 &emsp;(普通号码)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(带有前导<font color="#fa7f71"><b>+</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(带有国内长途区号<font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(两个<font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp;它们都将被检查为123456789，并且可以用<font color="#03DAC5"><b>123.*</b></font>匹配<br>
-        此号码优化功能可以通过正则表达式标志“原始号码”来<b>禁用</b>。<br>
+        <h5><font color="#00BFFF"> - <translate>正则表达式优化</translate></font></h5>
+        <translate>为了简化正则表达式，</translate>
+          <font color="#fa7f71"><b>+</b></font> <translate>和</translate> <font color="#fa7f71"><b>前导零</b></font>
+          <translate>在检查之前会被删除，例如：</translate><br>
+        &emsp; <translate>所有这些格式：</translate><br>
+        &emsp;&emsp; 123456789 &emsp;<translate>(普通号码)</translate><br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;<translate>(带有前导</translate> <font color="#fa7f71"><b>+</b></font><translate>)</translate><br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;<translate>(带有国内长途区号前缀</translate> <font color="#fa7f71"><b>0</b></font><translate>)</translate><br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;<translate>(两个</translate> <font color="#fa7f71"><b>0</b></font><translate>)</translate><br>
+        &emsp; <translate>它们</translate><b><translate>都</translate></b><translate>被检查为</translate> 123456789 <translate>，并且可以通过</translate> <font color="#03DAC5"><b>123.*</b></font> <translate>进行匹配</translate><br>
+        <translate>可以使用正则表达式标志</translate> `Raw Number` <b><translate>禁用</translate></b><translate>此号码优化</translate>。<br>
         <br>
-        <h5><font color="#00BFFF"> - 一些典型模式</font></h5>
-        &ensp; - 任何号码：<font color="#03DAC5"><b>.*</b></font> (正则表达式 .* 等同于其他应用中的通配符 *) <br>
-        &ensp; - 精确号码：<font color="#03DAC5"><b>12345</b></font> <br>
-        &ensp; - 以400开头：<font color="#03DAC5"><b>400.*</b></font> <br>
-        &ensp; - 以123结尾：<font color="#03DAC5"><b>.*123</b></font> <br>
-        &ensp; - 7位数字：<font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - 少于5位：<font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - 多于10位：<font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - 未知号码（空字符串）：<font color="#03DAC5"><b>.{0}</b></font> 或 <font color="#03DAC5"><b>^$</b></font> <br>
-        &ensp; - 匹配任何模式：<font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - 以400开头，带或不带国家区号11：<font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <h5><font color="#00BFFF"> - <translate>一些典型的模式</translate></font></h5>
+        &ensp; - <translate>任何号码：</translate> <font color="#03DAC5"><b>.*</b></font> (<translate>正则表达式</translate> .* <translate>相当于其他应用中的通配符</translate> *) <br>
+        &ensp; - <translate>精确号码：</translate> <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - <translate>以</translate> 400 <translate>开头：</translate> <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - <translate>以</translate> 123 <translate>结尾：</translate> <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 <translate>位数字：</translate> <font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - <translate>短于</translate> 5 <translate>位：</translate> <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - <translate>长于</translate> 10 <translate>位：</translate> <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - <translate>未知</translate>/<translate>私密</translate>/<translate>空号码：</translate> <font color="#03DAC5"><b>.{0}</b></font> <translate>或</translate> <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - <translate>匹配任何模式：</translate> <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - <translate>以</translate> 400 <translate>开头，带有前导国家代码</translate> 11 <translate>或不带：</translate> <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
-        <h5><font color="#00BFFF"> - UI相关</font></h5>
-        取消选中复选框以禁用规则，<font color="#fa7f71"><b>向左滑动以删除</b></font>它。<br>
+        <h5><font color="#00BFFF"> - UI <translate>相关</translate></font></h5>
+        <translate>取消选中复选框以禁用该规则，</translate> <font color="#fa7f71"><b><translate>向左滑动以删除</translate></b></font> <translate>它</translate>。<br>
         <br>
-        列表按优先级降序、描述升序和模式升序<b>显示</b>。<br>
+        <translate>该列表按优先级降序、描述升序和模式升序</translate><b><translate>显示</translate></b>。<br>
         <br>
-        <h5><font color="#00BFFF"> - 从.csv导入规则</font></h5>
-        长按“添加”按钮即可从.csv文件导入号码。<br>
+        <h5><font color="#00BFFF"> - <translate>从</translate> .csv <translate>导入规则</translate></font></h5>
+        <translate>长按“添加”按钮从</translate> .csv <translate>文件导入号码</translate>。<br>
         <brg>
         ]]>
     </string>

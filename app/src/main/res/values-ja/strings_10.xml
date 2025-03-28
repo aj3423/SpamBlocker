@@ -1,42 +1,42 @@
 <resources>
     <string name="help_number_rules">
         <![CDATA[
-        これらのルールは、着信電話番号に適用されます。<br>
+        番号ルールは、着信番号とSMS番号の両方に適用されます。<br>
         <br>
         <h5><font color="#00BFFF"> - 例</font></h5>
-        <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wikiページ</a>にいくつかの例があります。<br>
+        いくつかの例は、<a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wikiページ</a>にあります。<br>
         <br>
         <h5><font color="#00BFFF"> - 正規表現の最適化</font></h5>
-        正規表現を簡素化するために、<br>
-          <font color="#fa7f71"><b>+</b></font>と<font color="#fa7f71"><b>先頭のゼロ</b></font><br>
-          は確認前に削除されます。例：<br>
-        &emsp; これらの形式はすべて：<br>
+        正規表現を簡素化するために、
+          <font color="#fa7f71"><b>+</b></font> と <font color="#fa7f71"><b>先頭のゼロ</b></font>
+          はチェック前に削除されます。例：<br>
+        &emsp; 次のすべての形式:<br>
         &emsp;&emsp; 123456789 &emsp;(通常の番号)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(先頭に<font color="#fa7f71"><b>+</b></font>付き)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(国内市外局番<font color="#fa7f71"><b>0</b></font>付き)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(2つの<font color="#fa7f71"><b>0</b></font>)<br>
-        &emsp; これらはすべて123456789としてチェックされ、<font color="#03DAC5"><b>123.*</b></font>で一致させることができます。<br>
-        この電話番号の最適化は、正規表現フラグ「Raw Number」で<b>無効</b>にできます。<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(国内の市外局番のプレフィックス<font color="#fa7f71"><b>0</b></font>付き)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(2つの<font color="#fa7f71"><b>0</b></font>s)<br>
+        &emsp; これらは<b>すべて</b>123456789としてチェックされ、<font color="#03DAC5"><b>123.*</b></font> で一致させることができます<br>
+        この番号の最適化は、正規表現フラグ `Raw Number` で<b>無効</b>にできます。<br>
         <br>
-        <h5><font color="#00BFFF"> - 代表的なパターン</font></h5>
-        &ensp; - 任意の番号: <font color="#03DAC5"><b>.*</b></font> (正規表現 .* は他のアプリのワイルドカード * と同等)<br>
+        <h5><font color="#00BFFF"> - いくつかの典型的なパターン</font></h5>
+        &ensp; - 任意の番号: <font color="#03DAC5"><b>.*</b></font> (正規表現 .* は、他のアプリのワイルドカード * と同等です) <br>
         &ensp; - 正確な番号: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - 400で始まる: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - 123で終わる: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7桁: <font color="#03DAC5"><b>.{7}</b></font> <br>
-        &ensp; - 5桁より短い: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
-        &ensp; - 10桁より長い: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - 不明な番号（空文字列）: <font color="#03DAC5"><b>.{0}</b></font> または <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - 5より短い: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - 10より長い: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - 不明/非通知/空の番号: <font color="#03DAC5"><b>.{0}</b></font> または <font color="#03DAC5"><b>^$</b></font> <br>
         &ensp; - パターンのいずれかに一致: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - 400で始まり、国番号11が付いている場合と付いていない場合の両方: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - 400で始まり、先頭に国コード11が付いているかどうか: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <h5><font color="#00BFFF"> - UI関連</font></h5>
-        チェックボックスのチェックを外してルールを無効にし、<font color="#fa7f71"><b>左にスワイプして削除</b></font>します。<br>
+        ルールを無効にするにはチェックボックスをオフにし、<font color="#fa7f71"><b>左にスワイプして削除</b></font>します。<br>
         <br>
-        リストは、優先度の降順、説明の昇順、パターンの昇順で<b>表示</b>されます。<br>
+        リストは優先度の降順、説明の昇順、パターンの昇順で<b>表示</b>されます。<br>
         <br>
-        <h5><font color="#00BFFF"> - .csvからのルールのインポート</font></h5>
-        「追加」ボタンを長押しして、.csvファイルから番号をインポートします。<br>
+        <h5><font color="#00BFFF"> - .csvからルールをインポート</font></h5>
+        `追加` ボタンを長押しして、.csvファイルから番号をインポートします。<br>
         <brg>
         ]]>
     </string>

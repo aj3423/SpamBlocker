@@ -1,42 +1,42 @@
 <resources>
     <string name="help_number_rules">
         <![CDATA[
-        Aquestes regles s\'apliquen al número de telèfon entrant.<br>
+        Les regles de números s\'apliquen tant al número de la trucada entrant com al número del SMS.<br>
         <br>
         <h5><font color="#00BFFF"> - Exemples</font></h5>
         Hi ha alguns exemples a la <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">pàgina Wiki</a>.<br>
         <br>
-        <h5><font color="#00BFFF"> - Optimització Regex</font></h5>
+        <h5><font color="#00BFFF"> - Optimització de Regex</font></h5>
         Per simplificar l\'expressió regular,
           <font color="#fa7f71"><b>+</b></font> i <font color="#fa7f71"><b>els zeros inicials</b></font>
           s\'eliminen abans de comprovar, per exemple:<br>
         &emsp; Tots aquests formats:<br>
         &emsp;&emsp; 123456789 &emsp;(número normal)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(amb el signe <font color="#fa7f71"><b>+</b></font> al davant)<br>
-        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(amb el prefix troncal domèstic <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(amb <font color="#fa7f71"><b>+</b></font> inicial)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(amb prefix de tronc nacional <font color="#fa7f71"><b>0</b></font>)<br>
         &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(dos <font color="#fa7f71"><b>0</b></font>s)<br>
         &emsp; <b>Tots</b> es comproven com a 123456789 i es poden coincidir amb <font color="#03DAC5"><b>123.*</b></font><br>
-        Aquesta optimització de número es pot <b>desactivar</b> amb el senyal d\'expressió regular "Número Raw".<br>
+        Aquesta optimització del número es pot <b>desactivar</b> amb el flag regex `Raw Number`.<br>
         <br>
         <h5><font color="#00BFFF"> - Alguns patrons típics</font></h5>
-        &ensp; - Qualsevol número: <font color="#03DAC5"><b>.*</b></font> (l\'expressió regular .* és equivalent al comodí * en altres aplicacions) <br>
+        &ensp; - Qualsevol número: <font color="#03DAC5"><b>.*</b></font> (l\'expressió regular .* és equivalent al caràcter comodí * en altres aplicacions) <br>
         &ensp; - Número exacte: <font color="#03DAC5"><b>12345</b></font> <br>
         &ensp; - Comença amb 400: <font color="#03DAC5"><b>400.*</b></font> <br>
         &ensp; - Acaba amb 123: <font color="#03DAC5"><b>.*123</b></font> <br>
         &ensp; - 7 dígits: <font color="#03DAC5"><b>.{7}</b></font> <br>
         &ensp; - Més curt que 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
         &ensp; - Més llarg que 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
-        &ensp; - Número desconegut (cadena buida): <font color="#03DAC5"><b>.{0}</b></font> o <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - Número desconegut/privat/buit: <font color="#03DAC5"><b>.{0}</b></font> o <font color="#03DAC5"><b>^$</b></font> <br>
         &ensp; - Coincideix amb qualsevol dels patrons: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
-        &ensp; - Comença amb 400, amb el prefix del codi de país 11 o no: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        &ensp; - Comença amb 400, amb el codi de país 11 o no: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
         <br>
         <h5><font color="#00BFFF"> - Relacionat amb la IU</font></h5>
-        Desmarqueu les caselles de selecció per desactivar la regla, <font color="#fa7f71"><b>llisca cap a l\'esquerra per suprimir-la</b></font>.<br>
+        Desmarqueu les caselles de selecció per desactivar la regla, <font color="#fa7f71"><b>llisqueu cap a l\'esquerra per suprimir</b></font>.<br>
         <br>
         La llista es <b>mostra</b> en ordre descendent de prioritat, descripció ascendent i patró ascendent.<br>
         <br>
         <h5><font color="#00BFFF"> - Importa regles des de .csv</font></h5>
-        Premeu llargament el botó "Afegeix" per importar números des d\'un fitxer .csv.<br>
+        Mantingueu premut el botó `Afegeix` per importar números des del fitxer .csv.<br>
         <brg>
         ]]>
     </string>
