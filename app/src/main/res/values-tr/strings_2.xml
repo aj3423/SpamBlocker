@@ -25,25 +25,25 @@
     <string name="spoof">Sahte Arama</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN doğrulama <b>Android 11+</b> ve <b>taşıyıcı desteği gerektirir</b>. <br>
+            STIR/SHAKEN tasdiki için <b>Android 11+</b> ve <b>operatör desteği</b> gereklidir. <br>
             <br>
-            Üç olası doğrulama sonucu vardır: <br>
+            Üç olası tasdik sonucu vardır: <br>
             <font color="#03DAC5"><b>Geçerli</b></font> <br>
-            &emsp; Aramanın geçerli olması çok muhtemeldir, sahte değildir. <br>
+            &emsp; Aramanın sahte olmadığı, geçerli olma olasılığı çok yüksek. <br>
             <font color="#ffa500"><b>Doğrulanmamış</b></font> <br>
-            &emsp; Arama doğrulanamıyor veya STIR doğrulaması desteklenmiyor. <br>
+            &emsp; Arama doğrulanamıyor veya STIR tasdiki desteklenmiyor. <br>
             <font color="#fa7f71"><b>Sahte</b></font> <br>
-            &emsp; Bunun sahte bir arama olma ihtimali çok yüksektir. <br>
+            &emsp; Sahte bir arama olma olasılığı çok yüksek. <br>
             <br>
             <br>
-              - <b>Dahil</b>: <br>
-                  &emsp; Bu kontrolü geçemeyen aramalar, diğer kurallara göre hala kontrol edilecektir. <br>
-                  &emsp;  "<b>Doğrulanmamışları Dahil Et</b>" seçeneği işaretlendiğinde arama doğrulanmamış olsa bile geçecektir. <br>
+              - <b>Kapsayıcı</b>: <br>
+                  &emsp; Bu kontrolde başarısız olan aramalar yine de diğer kurallarla kontrol edilecektir. <br>
+                  &emsp; "<b>Doğrulanmamış Olanları Dahil Et</b>" işaretlendiğinde, arama doğrulanmamışsa da geçer ve kullanıcı arayüzünde `(?)` işareti bulunur.<br>
                   &emsp; <font color="#ea86ff"><b>Öncelik: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Hariç</b></font>: <br>
-                  &emsp; Bu kontrolü geçemeyen aramalar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
-                  &emsp;  "<b>Doğrulanmamışları Dahil Et</b>" seçeneği işaretlendiğinde, arama doğrulanmamış olsa bile engellenecektir. <br>
+              - <font color="#fa7f71"><b>Dışlayıcı</b></font>: <br>
+                  &emsp; Bu kontrolde başarısız olan aramalar <font color="#fa7f71"><b>engellenecektir</b></font>. <br>
+                  &emsp; "<b>Doğrulanmamış Olanları Dahil Et</b>" işaretlendiğinde, bir arama doğrulanmamışsa da engellenecektir. <br>
                   &emsp; <font color="#ea86ff"><b>Öncelik: 0</b></font>
         ]]>
     </string>

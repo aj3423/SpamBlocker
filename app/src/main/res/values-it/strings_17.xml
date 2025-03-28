@@ -3,30 +3,29 @@
     <string name="emergency_situation">Situazione di emergenza</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Dopo aver composto un numero di emergenza, consenti tutte le chiamate in entrata per un periodo di tempo.<br>
+        Dopo aver composto un numero di emergenza, consenti tutte le chiamate in entrata per un determinato periodo di tempo.<br>
         <br>
         <h5><font color="#00BFFF">- Durata</font></h5>
         L\'impostazione predefinita <font color="#03DAC5"><b>120 Min</b></font> significa che tutte le chiamate saranno consentite
         nei prossimi 120 minuti dopo aver composto un numero di emergenza.<br>
         <br>
         <h5><font color="#00BFFF">- Controlla STIR</font></h5>
-         - Quando disabilitato, tutte le chiamate saranno consentite.<br>
-         - Quando abilitato, le chiamate che falliscono l\'attestazione STIR non saranno consentite, solo le chiamate "Valide" e "Non verificate" saranno consentite.<br>
+         - Quando è disabilitato, tutte le chiamate saranno consentite. Il `(?)` sull\'interfaccia utente indica che non è selezionato.<br>
+         - Quando è abilitato, le chiamate che non superano l\'attestazione STIR non saranno consentite, saranno consentite solo le chiamate "Valide" e "Non verificate".<br>
         <br>
-        <h5><font color="#00BFFF">- Numeri Aggiuntivi</font></h5>
-        Comporre qualsiasi numero in questa lista attiverà anche questa funzione.<br>
+        <h5><font color="#00BFFF">- Numeri aggiuntivi</font></h5>
+        Componendo qualsiasi numero in questo elenco verrà attivata anche questa funzione.<br>
         <br>
-        Non è necessario aggiungere esplicitamente numeri come 911 qui, perché Android include un numero di emergenza integrato
-        elenco per ogni paese (es: polizia, vigili del fuoco, ambulanza).<br>
+        Non è necessario aggiungere esplicitamente numeri come 112 qui, perché Android include un elenco di numeri di emergenza integrato per ciascun paese (ad esempio: polizia, vigili del fuoco, ambulanza).<br>
         <br>
-        Separa i numeri con virgole, come ad esempio:<br>
+        Separare i numeri con virgole, come ad esempio:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF">- Reset</font></h5>
-        Premi questo pulsante per resettare questa funzione se è stata attivata per errore o durante i test.<br>
+        <h5><font color="#00BFFF">- Reimposta</font></h5>
+        Premere questo pulsante per ripristinare questa funzione se è stata attivata per errore o durante il test.<br>
         <br>
         <h5><font color="#00BFFF">- Test</font></h5>
-        Simula una chiamata in uscita per testare se quel numero è un numero di emergenza.<br>
+        Simula una chiamata in uscita per verificare se quel numero è un numero di emergenza.<br>
         <br>
         <font color="#ea86ff"><b>Priorità: Massima</b></font>
         ]]>

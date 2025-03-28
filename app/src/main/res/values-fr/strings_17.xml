@@ -10,25 +10,25 @@
         dans les 120 prochaines minutes après avoir composé un numéro d\'urgence.<br>
         <br>
         <h5><font color="#00BFFF">- Vérifier STIR</font></h5>
-         - Lorsqu\'il est désactivé, tous les appels seront autorisés.<br>
-         - Lorsqu\'il est activé, les appels échouant à l\'attestation STIR ne seront pas autorisés, seuls les appels "Valides" et "Non vérifiés" seront autorisés.<br>
+         - Lorsque cette option est désactivée, tous les appels seront autorisés. Le `(?)` sur l\'interface utilisateur indique qu\'elle n\'est pas cochée.<br>
+         - Lorsque cette option est activée, les appels qui échouent à l\'attestation STIR ne seront pas autorisés, seuls les appels "Valides" et "Non vérifiés" seront autorisés.<br>
         <br>
-        <h5><font color="#00BFFF">- Numéros supplémentaires</font></h5>
-        Composer n\'importe quel numéro dans cette liste déclenchera également cette fonctionnalité.<br>
+        <h5><font color="#00BFFF">- Numéros Supplémentaires</font></h5>
+        Composer n\'importe quel numéro de cette liste déclenchera également cette fonctionnalité.<br>
         <br>
-        Il n\'est pas nécessaire d\'ajouter explicitement des numéros comme le 112 ici, car Android inclut une liste intégrée
+        Pas besoin d\'ajouter explicitement des numéros comme le 112 ici, car Android inclut une liste intégrée
         de numéros d\'urgence pour chaque pays (par exemple : police, pompiers, ambulance).<br>
         <br>
-        Séparez les numéros par des virgules, par exemple :<br>
+        Séparez les numéros par des virgules, comme ceci :<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
         <h5><font color="#00BFFF">- Réinitialiser</font></h5>
         Appuyez sur ce bouton pour réinitialiser cette fonctionnalité si elle a été déclenchée par erreur ou pendant les tests.<br>
         <br>
         <h5><font color="#00BFFF">- Tester</font></h5>
-        Simulez un appel sortant pour vérifier si ce numéro est un numéro d\'urgence.<br>
+        Simuler un appel sortant pour tester si ce numéro est un numéro d\'urgence.<br>
         <br>
-        <font color="#ea86ff"><b>Priorité : Max</b></font>
+        <font color="#ea86ff"><b>Priorité : Maximale</b></font>
         ]]>
     </string>
     <string name="reset">Réinitialiser</string>

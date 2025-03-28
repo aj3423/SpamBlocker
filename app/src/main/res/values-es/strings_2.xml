@@ -25,25 +25,25 @@
     <string name="spoof">Llamada Falsificada</string>
     <string name="help_stir">
         <![CDATA[
-            La atestación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
+            La certificación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
             <br>
-            Hay tres posibles resultados de atestación: <br>
+            Hay tres posibles resultados de certificación: <br>
             <font color="#03DAC5"><b>Válido</b></font> <br>
             &emsp; Es muy probable que la llamada sea válida, no falsificada. <br>
             <font color="#ffa500"><b>No Verificado</b></font> <br>
-            &emsp; No se puede validar la llamada, o STIR no es compatible. <br>
-            <font color="#fa7f71"><b>Falsificado</b></font> <br>
-            &emsp; Es muy probable que sea una llamada falsificada. <br>
+            &emsp; No se puede validar la llamada, o la certificación STIR no es compatible. <br>
+            <font color="#fa7f71"><b>Falsa</b></font> <br>
+            &emsp; Es muy probable que sea una llamada falsa. <br>
             <br>
             <br>
               - <b>Inclusivo</b>: <br>
-                  &emsp; Las llamadas que no superan esta verificación se seguirán comprobando con otras reglas. <br>
-                  &emsp; Cuando se marca "<b>Incluir No Verificado</b>", una llamada también se aprobará si no está verificada. <br>
+                  &emsp; Las llamadas que fallan esta verificación aún serán verificadas por otras reglas. <br>
+                  &emsp; Cuando "<b>Incluir No Verificado</b>" está marcado, una llamada también pasaría si no está verificada, y habrá un `(?)` en la IU.<br>
                   &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no superan esta verificación se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
-                  &emsp; Cuando se marca "<b>Incluir No Verificado</b>", una llamada también se bloqueará si no está verificada. <br>
+                  &emsp; Las llamadas que fallan esta verificación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
+                  &emsp; Cuando "<b>Incluir No Verificado</b>" está marcado, una llamada también se bloquearía si no está verificada. <br>
                   &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
         ]]>
     </string>

@@ -3,21 +3,21 @@
     <string name="emergency_situation">Situació d\'emergència</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Després de marcar un número d\'emergència, permet totes les trucades entrants durant un temps.<br>
+        Després de marcar un número d\'emergència, permetre totes les trucades entrants durant un període de temps.<br>
         <br>
         <h5><font color="#00BFFF">- Durada</font></h5>
-        La configuració predeterminada <font color="#03DAC5"><b>120 Min</b></font> significa que es permetran totes les trucades
+        La configuració per defecte <font color="#03DAC5"><b>120 Min</b></font> significa que totes les trucades seran permeses
         en els propers 120 minuts després de marcar un número d\'emergència.<br>
         <br>
-        <h5><font color="#00BFFF">- Comprova STIR</font></h5>
-         - Quan està desactivat, es permetran totes les trucades.<br>
-         - Quan està activat, les trucades que fallin l\'atestació STIR no es permetran, només es permetran les trucades "Vàlides" i "No verificades".<br>
+        <h5><font color="#00BFFF">- Comprovar STIR</font></h5>
+         - Quan està desactivat, es permetran totes les trucades. El `(?)` a la IU indica que no està marcat.<br>
+         - Quan està activat, les trucades que fallin l\'acreditació STIR no es permetran, només es permetran les trucades "Vàlides" i "Sense verificar".<br>
         <br>
         <h5><font color="#00BFFF">- Números addicionals</font></h5>
         Marcar qualsevol número d\'aquesta llista també activarà aquesta funció.<br>
         <br>
-        No cal afegir explícitament números com el 911 aquí, perquè Android inclou un número d\'emergència integrat
-        llista per a cada país (per exemple: policia, bombers, ambulància).<br>
+        No cal afegir explícitament números com el 911 aquí, perquè Android inclou una llista de números d\'emergència integrada
+        per a cada país (per exemple: policia, bombers, ambulància).<br>
         <br>
         Separeu els números amb comes, com ara:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>

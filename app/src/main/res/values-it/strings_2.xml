@@ -29,21 +29,21 @@
             <br>
             Ci sono tre possibili risultati di attestazione: <br>
             <font color="#03DAC5"><b>Valido</b></font> <br>
-            &emsp; La chiamata è molto probabilmente valida, non falsificata. <br>
+            &emsp; È molto probabile che la chiamata sia valida, non falsificata. <br>
             <font color="#ffa500"><b>Non Verificato</b></font> <br>
-            &emsp; La chiamata non può essere validata, o l\'attestazione STIR non è supportata. <br>
-            <font color="#fa7f71"><b>Falsificato</b></font> <br>
-            &emsp; È molto probabilmente una chiamata falsificata. <br>
+            &emsp; La chiamata non può essere validata oppure l\'attestazione STIR non è supportata. <br>
+            <font color="#fa7f71"><b>Spoof</b></font> <br>
+            &emsp; È molto probabile che si tratti di una chiamata falsificata. <br>
             <br>
             <br>
               - <b>Inclusivo</b>: <br>
-                  &emsp; Le chiamate che non superano questo controllo saranno comunque controllate da altre regole. <br>
-                  &emsp; Quando "<b>Includi Non Verificati</b>" è selezionato, una chiamata passerebbe anche se non verificata. <br>
+                  &emsp; Le chiamate che non superano questo controllo verranno comunque controllate da altre regole. <br>
+                  &emsp; Quando "<b>Includi Non Verificati</b>" è selezionato, una chiamata passerà anche se non è verificata e ci sarà un `(?)` sull\'interfaccia utente.<br>
                   &emsp; <font color="#ea86ff"><b>Priorità: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Esclusivo</b></font>: <br>
-                  &emsp; Le chiamate che non superano questo controllo saranno <font color="#fa7f71"><b>bloccate</b></font>. <br>
-                  &emsp; Quando "<b>Includi Non Verificati</b>" è selezionato, una chiamata verrebbe anche bloccata se non verificata. <br>
+                  &emsp; Le chiamate che non superano questo controllo verranno <font color="#fa7f71"><b>bloccate</b></font>. <br>
+                  &emsp; Quando "<b>Includi Non Verificati</b>" è selezionato, una chiamata verrebbe bloccata anche se non è verificata. <br>
                   &emsp; <font color="#ea86ff"><b>Priorità: 0</b></font>
         ]]>
     </string>

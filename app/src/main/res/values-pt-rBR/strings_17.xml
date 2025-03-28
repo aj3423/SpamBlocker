@@ -3,29 +3,28 @@
     <string name="emergency_situation">Situação de Emergência</string>
     <string name="help_emergency_situation">
         <![CDATA[
-        Após discar um número de emergência, permita todas as chamadas recebidas por um período de tempo.<br>
+        Depois de discar um número de emergência, permita todas as chamadas recebidas por um período de tempo.<br>
         <br>
         <h5><font color="#00BFFF">- Duração</font></h5>
         A configuração padrão <font color="#03DAC5"><b>120 Min</b></font> significa que todas as chamadas serão permitidas
         nos próximos 120 minutos após discar um número de emergência.<br>
         <br>
         <h5><font color="#00BFFF">- Verificar STIR</font></h5>
-         - Quando desativado, todas as chamadas serão permitidas.<br>
-         - Quando ativado, as chamadas que falharem na comprovação STIR não serão permitidas, apenas chamadas "Válidas" e "Não Verificadas" serão permitidas.<br>
+         - Quando desativado, todas as chamadas serão permitidas. O `(?)` na interface do usuário indica que não está verificado.<br>
+         - Quando ativado, chamadas que falham na comprovação STIR não serão permitidas, apenas chamadas "Válidas" e "Não verificadas" serão permitidas.<br>
         <br>
         <h5><font color="#00BFFF">- Números Adicionais</font></h5>
         Discar qualquer número nesta lista também acionará este recurso.<br>
         <br>
-        Não é necessário adicionar números como 911 aqui, porque o Android inclui um número de emergência interno
-        lista de números de emergência para cada país (por exemplo: polícia, bombeiros, ambulância).<br>
+        Não é necessário adicionar explicitamente números como 190 aqui, porque o Android inclui uma lista de números de emergência integrada para cada país (por exemplo: polícia, bombeiros, ambulância).<br>
         <br>
         Separe os números com vírgulas, como:<br>
         &ensp; <font color="#888888">111, 222, 3333</font><br>
         <br>
-        <h5><font color="#00BFFF">- Reset</font></h5>
+        <h5><font color="#00BFFF">- Resetar</font></h5>
         Pressione este botão para redefinir este recurso se ele foi acionado por engano ou durante o teste.<br>
         <br>
-        <h5><font color="#00BFFF">- Teste</font></h5>
+        <h5><font color="#00BFFF">- Testar</font></h5>
         Simule uma chamada de saída para testar se esse número é um número de emergência.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: Máxima</b></font>

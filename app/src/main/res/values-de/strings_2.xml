@@ -25,25 +25,25 @@
     <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN-Bestätigung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Netzbetreiber</b>. <br>
+            Die STIR/SHAKEN-Zertifizierung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Mobilfunkanbieter</b>. <br>
             <br>
-            Es gibt drei mögliche Bestätigungsresultate: <br>
+            Es gibt drei mögliche Zertifizierungsergebnisse: <br>
             <font color="#03DAC5"><b>Gültig</b></font> <br>
             &emsp; Der Anruf ist sehr wahrscheinlich gültig und nicht gefälscht. <br>
-            <font color="#ffa500"><b>Nicht überprüft</b></font> <br>
-            &emsp; Der Anruf kann nicht validiert werden oder STIR-Bestätigung wird nicht unterstützt. <br>
+            <font color="#ffa500"><b>Unbestätigt</b></font> <br>
+            &emsp; Der Anruf kann nicht validiert werden oder die STIR-Zertifizierung wird nicht unterstützt. <br>
             <font color="#fa7f71"><b>Spoof</b></font> <br>
-            &emsp; Es ist sehr wahrscheinlich, dass es sich um einen gefälschten Anruf handelt. <br>
+            &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf. <br>
             <br>
             <br>
-              - <b>Einschließlich</b>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin anhand anderer Regeln geprüft. <br>
-                  &emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch bestehen, wenn er nicht überprüft wurde. <br>
+              - <b>Inklusiv</b>: <br>
+                  &emsp; Anrufe, die diese Überprüfung nicht bestehen, werden weiterhin durch andere Regeln überprüft. <br>
+                  &emsp; Wenn "<b>Unbestätigte einbeziehen</b>" aktiviert ist, wird ein Anruf auch dann zugelassen, wenn er unbestätigt ist, und es wird ein `(?)` auf der Benutzeroberfläche angezeigt.<br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-                  &emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch blockiert werden, wenn er nicht überprüft wurde. <br>
+              - <font color="#fa7f71"><b>Exklusiv</b></font>: <br>
+                  &emsp; Anrufe, die diese Überprüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+                  &emsp; Wenn "<b>Unbestätigte einbeziehen</b>" aktiviert ist, wird ein Anruf auch dann blockiert, wenn er unbestätigt ist. <br>
                   &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
         ]]>
     </string>
