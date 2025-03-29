@@ -70,7 +70,7 @@ fun Stir() {
                 StrokeButton(
                     label = Str(
                         strId = if (isExclusive) R.string.exclusive else R.string.inclusive
-                    ) + if (includeUnverified) " (?)" else "",
+                    ) + if (includeUnverified) " (*)" else "",
                     color = if (isExclusive) Salmon else C.textGrey,
                 ) {
                     popupTrigger.value = true

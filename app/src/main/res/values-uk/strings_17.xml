@@ -1,5 +1,5 @@
 <resources>
-    <string name="emergency">Екстрений виклик</string>
+    <string name="emergency">Аварійна</string>
     <string name="emergency_situation">Екстрена ситуація</string>
     <string name="help_emergency_situation">
         <![CDATA[

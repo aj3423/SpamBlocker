@@ -19,7 +19,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">包含未验证的号码(?)</string>
+    <string name="stir_include_unverified">包含未验证的 (*)</string>
     <string name="unverified">未验证</string>
     <string name="valid">有效呼叫</string>
     <string name="spoof">伪造呼叫</string>
