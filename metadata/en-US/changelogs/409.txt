@@ -1,0 +1,6 @@
+New
+- Emergency mode:
+  Allow all calls for a period of time after dialing an emergency number.
+
+Language support:
+- Catalan(ca)
