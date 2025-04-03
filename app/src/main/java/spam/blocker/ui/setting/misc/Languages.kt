@@ -1,13 +1,11 @@
 package spam.blocker.ui.setting.misc
 
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -31,6 +29,7 @@ class Lang(
 )
 
 val languages = listOf(
+    Lang("ar", null, R.drawable.ic_flag_arabic),
     Lang("ca", null, R.drawable.ic_flag_catalan),
     Lang("de", "🇩🇪"),
     Lang("en", "🇬🇧"),

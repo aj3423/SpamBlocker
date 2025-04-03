@@ -1,0 +1,112 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        تحقق من محتوى الرسائل النصية باستخدام Google Gemini AI، يتطلب فقط حساب Google.
+        ]]>
+    </string>
+    <string name="gemini_api_key">مفتاح Gemini API</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. سجل الدخول إلى حسابك في Google أو أنشئ حسابًا: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. افتح صفحة API: <br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. اضغط على زر "إنشاء مفتاح API".<br>
+        <br>
+        4. انسخ المفتاح، ثم املأه أدناه.
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        صنف هذه الرسالة النصية القصيرة على أنها سياسية أو احتيالية أو استطلاع أو تسويقية.
+        إذا لم ينطبق أي منها، فأجب بـ "صالح"، وإلا فأجب بالفئة فقط، ولا تجب على أي شيء آخر.
+        الرسالة النصية القصيرة هي:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category">(سياسية|احتيالية|استطلاع|تسويقية)</string>
+    <string name="spam_sms_positive_category">صالح</string>
+    <string name="last_log">آخر سجل</string>
+    <string name="executed_at">تم التنفيذ في:</string>
+    <string name="not_executed_yet">لم يتم تنفيذه بعد</string>
+    <string name="show_indicator">إظهار العلامات</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        إظهار الرموز قبل الرقم للإشارة إلى ما إذا كان موجودًا في قاعدة بيانات الرسائل غير المرغوب فيها، أو ما إذا كان يطابق أي قاعدة regex.<br>
+        <br>
+        <font color="#ffa500">ملاحظة:</font><br>
+        يمكن أن يؤثر ذلك على الأداء عندما تكون قاعدة البيانات كبيرة جدًا أو كان هناك الكثير من قواعد regex.
+        ]]>
+    </string>
+    <string name="enable_for_mms">تمكين لـ MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        عادة ما تكون رسائل MMS غير مرغوب فيها، ولا داعي لتمكينها ما لم تستخدمها بالفعل.<br>
+        <br>
+        <font color="#ffa500">ملاحظة:</font><br>
+        رسائل المجموعة هي MMS وليست SMS.<br>
+        <br>
+        سيتم التعامل مع MMS على أنها SMS، وسيتم معالجة المحتوى النصي فقط،
+        سيتم تجاهل محتوى الوسائط المتعددة، مثل الصور والصوت.<br>
+        <br>
+        مطلوب إذنين: RECEIVE_MMS و READ_SMS
+        ]]>
+    </string>
+    <string name="unknown_error">خطأ غير معروف.</string>
+    <string name="checking_auth_credential">جارٍ التحقق من بيانات اعتماد التفويض.</string>
+    <string name="sms_bomb">وابل رسائل</string>
+    <string name="help_sms_bomb">
+        <![CDATA[
+        مكافحة وابل الرسائل النصية القصيرة.<br>
+        <br>
+        منع الفيضانات الهائلة والمستمرة من الرسائل النصية القصيرة، والتي تتكون غالبًا بشكل أساسي
+          من عمليات التحقق من كلمة المرور لمرة واحدة (OTP).<br>
+        <br>
+        على سبيل المثال، الرسائل النصية القصيرة مثل:<br>
+        &ensp; <font color="#888888">كلمة المرور لمرة واحدة الخاصة بك هي: 1234.</font><br>
+        &ensp; <font color="#888888">رمز التحقق الخاص بك هو: 1234.</font><br>
+        &ensp; <font color="#888888">1234 هو رمز التحقق الخاص بك.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Content regex</font></h5>
+        تنطبق هذه الميزة فقط على الرسائل التي تطابق هذا regex، سيكون regex النموذجي هو: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Interval</font></h5>
+        إذا وصلت رسالة OTP لاحقة خلال هذا الفاصل الزمني، فسيتم اعتبارها
+          جزءًا من هجوم القصف وسيتم حظرها.<br>
+        (افتراضي: 30 ثانية)<br>
+        <br>
+        سيؤدي ذلك إلى حظر جميع القنابل التالية، باستثناء القنبلة الأولى.<br>
+        <br>
+        <h5><font color="#00BFFF">- Lockscreen protection</font></h5>
+        قم بتمكين هذا لحظر جميع القنابل في وضع قفل الشاشة، بما في ذلك القنبلة الأولى. <br>
+        <br>
+        عادةً، يجب إلغاء قفل شاشتك أثناء انتظار رمز التحقق.
+        عندما تصل مثل هذه الرسائل أثناء وجود الجهاز في وضع قفل الشاشة، فمن المحتمل أن تكون قنابل.<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protection">حماية قفل الشاشة</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            عند التعطيل، لن يتم تسجيل سجلات المحفوظات في قاعدة البيانات المحلية ولن يتم عرضها هنا.<br>
+            <br>
+            <font color="#00BFFF"><b>انتهاء الصلاحية</b></font><br>
+            &emsp; عند التمكين، ستنتهي صلاحية سجلات المحفوظات بعد N يومًا، وسيتم حذف السجلات منتهية الصلاحية تلقائيًا.
+        ]]>
+    </string>
+    <string name="never_expire">لا تنتهي صلاحيته أبدًا</string>
+    <string name="enable_history_logging">تسجيل</string>
+    <string name="rcs_message">رسالة RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS غير مدعوم.<br>
+            <br>
+            على الرغم من كونه بروتوكولًا قياسيًا، إلا أن RCS يتم تنفيذه بشكل مختلف بواسطة كل تطبيق مراسلة.<br>
+            <br>
+            الحل البديل هو التبديل إلى الرسائل النصية القصيرة.
+        ]]>
+    </string>
+</resources>

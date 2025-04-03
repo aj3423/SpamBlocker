@@ -1,0 +1,113 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        تنظيف قاعدة بيانات السجل، حذف السجلات قبل الطابع الزمني: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        تنظيف قاعدة بيانات الرسائل المزعجة، حذف %s سجلات قبل الطابع الزمني: %s".
+    </string>
+    <string name="resolved_url">عنوان URL المُحلَّل: %s</string>
+    <string name="time_cost">الوقت المستغرق: %s مللي ثانية.</string>
+    <string name="parsed_n_rules">تم تحليل %s من القواعد.</string>
+    <string name="add_n_numbers_to_spam_db">إضافة %s أرقام إلى قاعدة بيانات الرسائل المزعجة.</string>
+    <string name="nothing_to_import">قائمة الأرقام فارغة، لا يوجد شيء للاستيراد.</string>
+    <string name="importing_n_numbers">استيراد %s أرقام كقاعدة تعبير عادي.</string>
+    <string name="create_rule_with_numbers">إنشاء قاعدة تحتوي على %s أرقام.</string>
+    <string name="replace_rule_with_desc">استبدال القاعدة بالوصف: %s.</string>
+    <string name="rule_with_desc_not_found">القاعدة بالوصف %s غير موجودة.</string>
+    <string name="merging_rule_with_desc">دمج القاعدة مع الوصف: %s.</string>
+    <string name="regex_count_after_merge">عدد التعبيرات العادية قبل: %s، بعد: %s.</string>
+    <string name="replace_number_from_to">استبدال الرقم من %s إلى %s.</string>
+    <string name="find_rule_with_desc">تم العثور على %s قواعد بالوصف %s.</string>
+    <string name="modify_n_rules">تعديل %s قواعد.</string>
+    <string name="number_not_match_filter">الرقم %s لا يتطابق مع الفلتر %s، تخطي.</string>
+    <string name="fail_detect_cc">فشل اكتشاف رمز البلد.</string>
+    <string name="identified_as_spam">تم تحديده كرقم رسائل مزعجة، الفئة: %s.</string>
+    <string name="identified_as_valid">تم تحديده كرقم صالح، الفئة: %s.</string>
+    <string name="unidentified_number">رقم غير محدد.</string>
+    <string name="auto_detect_cc_permission">إذن READ_PHONE_STATE مطلوب لاكتشاف رمز البلد.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; رمز البلد.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; الجزء المحلي.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; الرقم الكامل، بما في ذلك رمز البلد والجزء المحلي، بدون علامة + أو أصفار بادئة.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; الرقم الأصلي الذي يمكن أن يحتوي على علامة + أو أصفار بادئة.<br>
+        ]]>
+    </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; محتوى الرسالة النصية القصيرة.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; السنة، على سبيل المثال: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; سيتم إضافة صفر بادئة إلى الرقم المكون من رقم واحد، على سبيل المثال: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; سيتم إضافة هذه القيم بدون صفر بادئة، على سبيل المثال: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        العلامات المدعومة:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        تم تصميمه في الأساس لصندوق FRITZ!Box الألماني، ولكنه يعمل أيضًا مع أرقام الهواتف من أي دولة أخرى.<br>
+        <br>
+        يدعم الاستعلام عن طريق التجزئة بدلاً من الرقم نفسه، مما يوفر خصوصية أفضل.<br>
+        <br>
+        الموقع الإلكتروني: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        واجهة برمجة التطبيقات: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. سجل حسابًا على <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. في صفحة الإعدادات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         اضغط على زر "Generate API key".<br>
+        <br>
+        3. املأ مفتاح API الذي تم إنشاؤه أدناه.
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        الحد الزمني لفحص المكالمات هو 5 ثوانٍ، مع %s مللي ثانية كوقت احتياطي
+        لعدم دقة وظائف الوقت، والحد الزمني الكلي هو في الواقع %s مللي ثانية.
+        كلفت الخطوات السابقة %s مللي ثانية، لم يتبق وقت كافٍ، تخطي.
+    </string>
+    <string name="action_filter_query_result">تصفية الرسائل المزعجة</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        أنشئ <u>قائمة أرقام</u> تحتوي على رقم الرسائل المزعجة الذي تم تحديده من الخطوة السابقة، وجاهز للاستيراد إلى قاعدة البيانات.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">تم إلغاء سلسلة رسائل أخرى.</string>>
+    <string name="username">اسم المستخدم</string>>
+    <string name="password">كلمة المرور</string>>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>اسحب لليسار</b></font> لحذفه.<br>
+        <br>
+        ترتبط معظم عناصر واجهة المستخدم الشبيهة بالبطاقات في هذا التطبيق بإيماءات التمرير،
+        يدعم بعضها أيضًا <font color="#03DAC5"><b>السحب لليمين</b></font>، على سبيل المثال، سجلات المحفوظات.
+        ]]>
+    </string>>
+    <string name="bug_number">إذا كان هذا رقمًا صالحًا، فيرجى الإبلاغ عنه على github.</string>>
+    <string name="skip_alpha_empty_number">تخطي الرقم الأبجدي أو الفارغ.</string>>
+</resources>

@@ -1,0 +1,55 @@
+<resources>
+    <string name="help_number_rules">
+        <![CDATA[
+        تنطبق قواعد الأرقام على كل من رقم المكالمة الواردة ورقم الرسائل النصية القصيرة.<br>
+        <br>
+        <h5><font color="#00BFFF"> - أمثلة</font></h5>
+        توجد بعض الأمثلة على <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">صفحة Wiki</a>.<br>
+        <br>
+        <h5><font color="#00BFFF"> - تحسين Regex</font></h5>
+        لتبسيط regex،
+          <font color="#fa7f71"><b>+</b></font> و <font color="#fa7f71"><b>الأصفار البادئة</b></font>
+          تتم إزالتها قبل التحقق، على سبيل المثال:<br>
+        &emsp; كل هذه التنسيقات:<br>
+        &emsp;&emsp; 123456789 &emsp;(رقم عادي)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(مع <font color="#fa7f71"><b>+</b></font> بادئة)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(مع بادئة الجذع المحلية <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(صفرين <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp; يتم التحقق من <b>كلها</b> كـ 123456789 ويمكن مطابقتها بواسطة <font color="#03DAC5"><b>123.*</b></font><br>
+        يمكن <b>تعطيل</b> تحسين الرقم هذا باستخدام علامة regex `Raw Number`.<br>
+        <br>
+        <h5><font color="#00BFFF"> - بعض الأنماط النموذجية</font></h5>
+        &ensp; - أي رقم: <font color="#03DAC5"><b>.*</b></font> (regex .* يعادل حرف البدل * في تطبيقات أخرى) <br>
+        &ensp; - رقم دقيق: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - يبدأ بـ 400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - ينتهي بـ 123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 أرقام: <font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - أقصر من 5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - أطول من 10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - رقم غير معروف/خاص/فارغ: <font color="#03DAC5"><b>.{0}</b></font> أو <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - تطابق أي من الأنماط: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - ابدأ بـ 400، مع رمز البلد 11 بادئًا أم لا: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <h5><font color="#00BFFF"> - متعلق بواجهة المستخدم</font></h5>
+        ألغ تحديد مربعات الاختيار لتعطيل القاعدة، <font color="#fa7f71"><b>اسحب لليسار للحذف</b></font> .<br>
+        <br>
+        يتم <b>عرض</b> القائمة بترتيب تنازلي للأولوية، ووصف تصاعدي، ونمط تصاعدي.<br>
+        <br>
+        <h5><font color="#00BFFF"> - استيراد القواعد من .csv</font></h5>
+        اضغط لفترة طويلة على زر "إضافة" لاستيراد الأرقام من ملف .csv.<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         الأعمدة المدعومة:<br>
+         - <no_translate><b>pattern</b></no_translate>: Regex (<b>مطلوب</b>)<br>
+         - <no_translate><b>description</b></no_translate>: الوصف<br>
+         - <no_translate><b>priority</b></no_translate>: الأولوية، الافتراضي 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1 (تطبيق على المكالمات)، 2 (تطبيق على الرسائل النصية القصيرة)، 3 (كلاهما)، الافتراضي 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: القائمة السوداء أو القائمة البيضاء. <no_translate>true</no_translate> أو <no_translate>false</no_translate>، الافتراضي <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: نوع الحظر. 0~2 تتوافق مع أنواع الحظر الثلاثة، الافتراضي 0<br>
+         - <no_translate><b>importance</b></no_translate>: نوع الإشعار. 0~4 تتوافق مع أنواع الإشعارات الخمسة، الافتراضي 2<br>
+        ]]>
+    </string>
+</resources>

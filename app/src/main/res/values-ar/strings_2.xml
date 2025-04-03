@@ -1,0 +1,55 @@
+<resources>
+    <string name="contacts">جهات الاتصال</string>
+    <string name="non_contacts">جهات غير مسجلة</string>
+    <string name="inclusive">شامل</string>
+    <string name="exclusive">حصري</string>
+    <string name="help_contacts">
+        <![CDATA[
+        عند التفعيل، سيتم السماح دائمًا بالمكالمات/الرسائل من جهات الاتصال. <br>
+        <br>
+          - <b>شامل</b>: <br>
+              &emsp; سيتم فحص الأرقام غير المسجلة بواسطة قواعد أخرى. <br>
+              &emsp; <font color="#ea86ff"><b>الأولوية: 10</b></font> <br>
+          <br>
+          - <font color="#fa7f71"><b>حصري</b></font>: <br>
+              &emsp; سيتم <font color="#fa7f71"><b>حظر</b></font> الأرقام غير المسجلة. <br>
+              &emsp; <font color="#ea86ff"><b>الأولوية: 0</b></font> <br>
+        <br>
+        ينطبق على كل من المكالمات والرسائل النصية القصيرة.
+        ]]>
+    </string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">تضمين غير المتحقق منه (*)</string>
+    <string name="unverified">غير مُتحقق منه</string>
+    <string name="valid">مكالمة صحيحة</string>
+    <string name="spoof">مكالمة احتيالية</string>
+    <string name="help_stir">
+        <![CDATA[
+            يتطلب إثبات STIR/SHAKEN نظام <b>Android 11+</b> و <b>دعم شركة الاتصالات</b>. <br>
+            <br>
+            هناك ثلاث نتائج إثبات محتملة: <br>
+            <font color="#03DAC5"><b>صالح</b></font> <br>
+            &emsp; من المرجح جدًا أن تكون المكالمة صحيحة، وليست احتيالية. <br>
+            <font color="#ffa500"><b>غير مُتحقق منه</b></font> <br>
+            &emsp; لا يمكن التحقق من صحة المكالمة، أو أن إثبات STIR غير مدعوم. <br>
+            <font color="#fa7f71"><b>احتيال</b></font> <br>
+            &emsp; من المرجح جدًا أن تكون المكالمة احتيالية. <br>
+            <br>
+            <br>
+              - <b>شامل</b>: <br>
+                  &emsp; المكالمات التي تفشل في هذا الفحص ستظل تخضع للفحص بواسطة قواعد أخرى. <br>
+                  &emsp; عند تحديد "<b>تضمين غير المتحقق منه</b>"، ستنجح المكالمة أيضًا إذا لم يتم التحقق منها. <br>
+                  &emsp; <font color="#ea86ff"><b>الأولوية: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>حصري</b></font>: <br>
+                  &emsp; سيتم <font color="#fa7f71"><b>حظر</b></font> المكالمات التي تفشل في هذا الفحص. <br>
+                  &emsp; عند تحديد "<b>تضمين غير المتحقق منه</b>"، سيتم أيضًا حظر المكالمة إذا لم يتم التحقق منها. <br>
+                  &emsp; <font color="#ea86ff"><b>الأولوية: 0</b></font>
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        الحقل المطلوب <b>pattern</b> مفقود في ملف .csv، تحقق من تلميح البالون للحصول على شرح مفصل.
+        ]]>
+    </string>
+</resources>

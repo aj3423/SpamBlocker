@@ -1,0 +1,93 @@
+<resources>
+    <string name="contact_rule">قاعدة جهة الاتصال</string>
+    <string name="directory">دليل</string>
+    <string name="filename">اسم الملف</string>
+    <string name="url">عنوان URL</string>
+    <string name="expiry_days">أيام الصلاحية</string>
+    <string name="column_mapping">تخطيط الأعمدة</string>
+    <string name="include_spam_db">تضمين قاعدة بيانات الرسائل غير المرغوب فيها</string>
+    <string name="no_config_needed">لا يلزم أي تكوين</string>
+    <string name="success">نجاح</string>
+    <string name="failed">فشل</string>
+    <string name="running">قيد التشغيل</string>
+    <string name="optional">(اختياري)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>اختبار</b></font><br>
+        سيتم تنفيذ هذه الإجراءات على الفور، للتحقق مما إذا تم تعيينها بشكل صحيح،
+        أو ربما تريد فقط تشغيل سير العمل هذا يدويًا.<br>
+        <br>
+        - <font color="#00BFFF"><b>جديد</b></font><br>
+            إنشاء إجراء جديد، يمكن ربط إجراءات متعددة معًا لإكمال مهمة معقدة.<br>
+            تشير النقاط الخضراء أو الحمراء بين العناصر إلى ما إذا كانت قابلة للربط أم لا.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            تنزيل أرقام هواتف الرسائل غير المرغوب فيها من
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> كل يوم عمل،
+             واستيرادها إلى قاعدة بيانات الرسائل غير المرغوب فيها.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">حذف السجلات منتهية الصلاحية من قاعدة بيانات الرسائل غير المرغوب فيها.</string>
+    <string name="help_bot_preset_cleanup_history">حذف سجلات المكالمات/الرسائل النصية القصيرة منتهية الصلاحية.</string>
+    <string name="help_bot_preset_auto_backup">نسخ احتياطي لجميع الإعدادات.</string>
+    <string name="everyday">يوميا</string>
+    <string name="daily">يومي</string>
+    <string name="weekly">أسبوعي</string>
+    <string name="periodically">بشكل دوري</string>
+    <string name="time">وقت</string>
+    <string name="workdays">أيام العمل</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        تنسيق ملف النسخ الاحتياطي هو json مضغوط بـ gzip، يمكنك فتحه وتعديله بأي برنامج أرشفة.<br>
+        <br>
+        - <font color="#00BFFF"><b>تضمين قاعدة بيانات الرسائل غير المرغوب فيها</b></font><br>
+        اضغط لفترة طويلة على الزر لتصدير/استيراد قاعدة بيانات الرسائل غير المرغوب فيها أيضًا.<br>
+        <br>
+        <font color="#ffa500">ملاحظة:</font><br>
+        &ensp; سيؤدي تضمين قاعدة بيانات الرسائل غير المرغوب فيها في ملف النسخ الاحتياطي إلى زيادة حجمه بشكل كبير،
+        نظرًا لأن قاعدة البيانات سيتم تحديثها بانتظام، فإن هذا عادة ما يكون غير ضروري، إلا إذا كنت تريد استنساخها
+        إلى هاتف آخر.<br>
+        ]]>
+    </string>
+    <string name="mode">الوضع</string>
+    <string-array name="regex_action_add_mode">
+        <item>إنشاء</item>
+        <item>استبدال</item>
+        <item>دمج</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>إنشاء</b></font><br>
+        &ensp; قم دائمًا بإنشاء قاعدة تعبير عادي جديدة.<br>
+        <br>
+        - <font color="#00BFFF"><b>استبدال</b></font><br>
+        &ensp; سيحاول العثور على قاعدة موجودة لها نفس <b>الوصف</b>. <br>
+        &ensp;&ensp; - إذا تم العثور عليها، فسيتم تجاوزها.<br>
+        &ensp;&ensp; - إذا لم يتم العثور عليها، فسيتم إنشاء قاعدة جديدة، تمامًا مثل <b>إنشاء</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>دمج</b></font><br>
+        &ensp;- إذا كانت هناك قاعدة بنفس الوصف، فسيتم دمج الأرقام الجديدة فيها،<br>
+         ستتم إزالة الأرقام المكررة تلقائيًا.<br>
+        &ensp;- إذا لم يكن موجودًا، فسيتم إنشاء قاعدة جديدة، تمامًا مثل <b>إنشاء</b>.<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">تمكين سير العمل</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        تمكين أو تعطيل سير العمل هذا. يمكن أن يكون أحد حالات الاستخدام هو جعل سير العمل الدوري يصبح لمرة واحدة.
+        ]]>
+    </string>
+    <string name="action_enable_app">تمكين التطبيق</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        تمكين أو تعطيل التطبيق. يمكن أن يكون أحد حالات الاستخدام هو تعطيله مؤقتًا وإعادة تمكينه تلقائيًا بعد بضع ساعات.
+        ]]>
+    </string>
+
+</resources>

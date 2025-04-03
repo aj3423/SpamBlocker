@@ -1,0 +1,116 @@
+<resources>
+    <string name="crash_title">
+        عذرًا، تعطل التطبيق.\n\n
+        يرجى نسخ المحتوى أدناه والإبلاغ عن هذه المشكلة على GitHub،
+        قم بإزالة أي معلومات حساسة قبل الإبلاغ.
+    </string>
+    <string-array name="weekdays_abbrev">
+        <item>الأحد</item>
+        <item>الاثنين</item>
+        <item>الثلاثاء</item>
+        <item>الأربعاء</item>
+        <item>الخميس</item>
+        <item>الجمعة</item>
+        <item>السبت</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>رفض</item>
+        <item>صمت</item>
+        <item>قطع الاتصال</item>
+    </string-array>
+
+    <string name="show_passed">إظهار المكالمات المارة</string>
+    <string name="show_blocked">إظهار المكالمات المحظورة</string>
+
+    <string name="confirm_delete_all_records">هل أنت متأكد من حذف جميع السجلات؟</string>
+    <string name="expiry">انتهاء الصلاحية</string>
+    <string name="days">أيام</string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        عند التمكين، سيتم أيضًا تسجيل محتوى الرسائل القصيرة في قاعدة البيانات وعرضه في هذه القائمة، ولن يتم تسجيله في قاعدة البيانات عند التعطيل.<br>
+        <br>
+        - عند التمكين:<br>
+        &emsp; <b>اضغط</b> لتوسيع/طي الرسالة الكاملة.<br>
+        <br>
+        - عند التعطيل:<br>
+        &emsp; <b>اضغط</b> لفتح المحادثة في التطبيق الافتراضي.
+        ]]>
+    </string>
+    <string name="copy_number">نسخ الرقم</string>
+    <string name="add_num_to_regex_rule">إضافة الرقم إلى قاعدة التعبير النمطي</string>
+    <string name="add_num_to_db">إضافة الرقم إلى قاعدة بيانات الرسائل المزعجة</string>
+    <string name="mark_all_as_read">تعليم الكل كمقروء</string>
+    <string name="remove_db_number">حذف الرقم من قاعدة بيانات الرسائل المزعجة</string>
+    <string-array name="importance_list">
+        <item>لا شيء</item>
+        <item>تظليل</item>
+        <item>شريط الحالة، تظليل</item>
+        <item>صوت، شريط الحالة، تظليل</item>
+        <item>صوت، شريط الحالة، تظليل، إشعار عائم</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>تصدير كـ Json</item>
+        <item>تصدير كمضغوط</item>
+    </string-array>
+
+    <string name="language">اللغة</string>
+    <string name="help_language">
+        <![CDATA[
+            تتم الترجمات بواسطة Google AI، أرسل مشكلة على github لإضافة دعم لغة جديدة.
+        ]]>
+    </string>
+    <string name="enabled_for_call">تمكين للمكالمات</string>
+    <string name="enabled_for_sms">تمكين للرسائل القصيرة</string>
+    <string name="repeated_call">مكالمة متكررة</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        السماح إذا تكررت المكالمة خلال فترة زمنية معينة، فمن المحتمل أن تكون مهمة وليست مكالمة مزعجة. <br>
+        <br>
+        يتم أيضًا احتساب تلقي رسالة نصية من نفس الرقم، وهذا يعتمد على ما إذا كان إذن READ_SMS ممنوحًا، وهو أمر اختياري.<br>
+        <br>
+        الإعداد الافتراضي <font color="#03DAC5"><b>1 / 5 دقائق</b></font> يعني السماح بالمكالمة الثانية في غضون 5 دقائق. <br>
+        <br>
+        ينطبق فقط على المكالمات، <b>وليس</b> على الرسائل النصية. <br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        المفتاح العام، لا يعمل هذا التطبيق إلا عند تشغيله،
+        أطفئه عندما تكون في انتظار مكالمة/رسالة معينة. <br>
+        <br>
+        يمكن أيضًا تبديله من <font color="#6ed0ff"><b>الإعدادات السريعة في القائمة المنسدلة</b></font>.<br>
+        <br>
+        بالنسبة للرسائل القصيرة، سيتولى هذا التطبيق إشعارات الرسائل القصيرة، يرجى
+        <font color="#fa7f71"><b>إيقاف تشغيل إذن الإشعارات لتطبيق الرسائل القصيرة الافتراضي</b></font> في إعدادات النظام،
+        وإلا سيكون هناك إشعارات مزدوجة.
+        يقوم فقط بتصفية إشعارات الرسائل القصيرة، وستظل رسائل SMS غير المرغوب فيها موجودة في تطبيق SMS الافتراضي.
+        ]]>
+    </string>
+
+    <string name="about">حول</string>
+    <string name="version">الإصدار</string>
+    <string name="build_time">وقت الإنشاء (UTC)</string>
+    <string name="source_code">كود المصدر</string>
+    <string name="dismiss">رفض</string>
+    <string name="warning_running_in_work_profile">
+        قد لا يعمل هذا التطبيق بشكل صحيح داخل ملف تعريف العمل، يرجى تثبيته في الملف الشخصي الرئيسي بدلاً من ذلك.
+    </string>
+    <string-array name="import_csv_type">
+        <item>استيراد .csv كقاعدة واحدة</item>
+        <item>استيراد .csv كقواعد متعددة</item>
+    </string-array>
+    <string name="warning_double_sms">
+        سيتولى هذا التطبيق جميع إشعارات الرسائل القصيرة،
+        لكن تطبيق الرسائل القصيرة الافتراضي سيعرض أيضًا إشعارات الرسائل القصيرة. لمنع الإشعارات المزدوجة،
+        يرجى تعطيل إذن الإشعارات الخاص به في
+        إعدادات النظام.\n
+        \n
+        ⚠️ RCS غير مدعوم.
+    </string>
+    <string name="open_settings">فتح الإعدادات</string>
+    <string name="ignore">تجاهل</string>
+</resources>

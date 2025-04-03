@@ -1,0 +1,103 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        <translate>الاستعلام عن الرقم الوارد عبر الإنترنت في الوقت الفعلي، سيتم الاستعلام عن نقاط نهاية واجهة برمجة التطبيقات المتعددة في وقت واحد.</translate><br>
+        <br>
+        <translate>ينطبق فقط على المكالمات، وليس على الرسائل النصية القصيرة.</translate><br>
+        <br>
+        <translate>سيتم تشغيله فقط عندما تجتاز المكالمة جميع القواعد الأخرى.</translate><br>
+        <br>
+        <font color="#ea86ff"><b><translate>الأولوية: -1</translate></b></font>
+        ]]>
+    </string>
+    <string name="instant_query"><translate>استعلام فوري</translate></string>
+    <string name="query"><translate>استعلام</translate></string>
+    <string name="negative_identifier"><translate>معرف سلبي</translate></string>
+    <string name="hint_negative_identifier">
+        <translate>مثال: ("valid":false)</translate>
+    </string>
+    <string name="help_negative_identifier">
+        <translate>سيتم تحديده كرقم رسائل مزعجة إذا تم العثور على نمط regex هذا في النتيجة.</translate>
+    </string>
+    <string name="positive_identifier"><translate>معرف إيجابي</translate></string>
+    <string name="hint_positive_identifier">
+        <translate>مثال: ("valid":true)</translate>
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        <translate>سيتم تحديده كرقم غير مزعج إذا تم العثور على نمط regex هذا في النتيجة، وهو اختياري.</translate><br>
+        <br>
+        <translate>عادةً ما يكون هذا <b>غير ضروري</b>، حيث سيقوم بعض مزودي واجهة برمجة التطبيقات بتحديد الأرقام غير المعروفة على أنها غير مزعجة،</translate>
+        <translate>استخدم هذا فقط عندما تكون واجهة برمجة التطبيقات دقيقة حقًا.</translate>
+        ]]>
+    </string>
+    <string name="category_identifier"><translate>معرف الفئة</translate></string>
+    <string name="hint_category_identifier">
+        <translate>مثال: "type":"(.+?)"</translate>
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        <translate>اختياري.</translate> <br>
+        <translate>بمجرد تحديد الرقم، سيتم استخدام regex هذا لاستخراج فئته (التسويق عبر الهاتف، الاحتيال، إلخ).</translate>
+        ]]>
+    </string>
+    <string name="action_parse_query_result"><translate>تحليل النتيجة</translate></string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        <translate>قم بتحليل نتيجة الاستعلام، وسيتم تحديد الرقم على أنه رسالة مزعجة إذا كانت النتيجة تحتوي على نمط regex معين.</translate><br>
+        <br>
+        <translate>يمكن استخدام regex إضافي لاستخراج فئة الرسائل المزعجة. (اختياري)</translate>
+        ]]>
+    </string>
+    <string name="action_intercept_call"><translate>حظر المكالمة</translate></string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        <translate>سيتم اعتراض رقم المكالمة الواردة وتحليله إلى علامات مختلفة:</translate><br>
+        <br>
+        %s
+        <br>
+        <translate>سيتم استخدام هذه العلامات لإنشاء عنوان URL لـ HTTP، على سبيل المثال:</translate><br>
+        <br>
+        <translate>1. بالنسبة للرقم الدولي مثل <b>+122222</b>، هذان متكافئان:</translate><br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        <translate>سيتم تحليله إلى:</translate> <br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        <translate>2. بالنسبة للرقم المحلي مثل <b>12345</b>، تحتاج إلى توفير رمز البلد في الإعدادات،</translate>
+        <translate>أو السماح للتطبيق باكتشافه تلقائيًا.</translate><br>
+        ]]>
+    </string>
+    <string name="action_intercept_sms"><translate>حظر الرسائل القصيرة</translate></string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        <translate>سيتم اعتراض الرسائل القصيرة الواردة وسيتم تحليل المحتوى إلى علامة <b>{sms}</b>،</translate>
+        <translate>والتي يمكن استخدامها في طلبات HTTP.</translate>
+        ]]>
+    </string>
+    <string name="query_api"><translate>واجهة برمجة تطبيقات الاستعلام</translate></string>
+    <string name="report_api"><translate>واجهة برمجة تطبيقات الإبلاغ</translate></string>
+    <string name="number_filter"><translate>تصفية الأرقام</translate></string>
+    <string name="help_number_filter">
+        <![CDATA[
+        <translate>تدعم بعض خدمات واجهة برمجة التطبيقات الأرقام الدولية فقط، بينما يدعم البعض الآخر الأرقام المحلية فقط.</translate><br>
+        <br>
+        <translate>يقوم هذا regex بتصفية الأرقام وفقًا لذلك، وسيتم تخطي فحص الأرقام الواردة التي لا تتطابق مع regex هذا.</translate><br>
+        <br>
+        <translate>- تحقق فقط من <b>الأرقام الدولية</b>:</translate><br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        <translate>- تحقق فقط من <b>الأرقام المحلية</b>:</translate><br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        <translate>- تحقق من <b>أي رقم</b>:</translate><br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template"><translate>التحقق: %s، الأولوية: %s</translate></string>
+    <string name="skip_for_testing"><translate>تخطى للاختبار.</translate></string>
+    <string name="allowed_by"><translate>مسموح به من قبل: %s</translate></string>
+    <string name="blocked_by"><translate>محظور من قبل: %s</translate></string>
+    <string name="outside_time_schedule"><translate>خارج الجدول الزمني، تخطي.</translate></string>
+    <string name="android_ver_lower_than_11"><translate>إصدار Android أقل من 11، تخطي.</translate></string>
+</resources>

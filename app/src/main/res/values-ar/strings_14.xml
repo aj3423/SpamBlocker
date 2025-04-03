@@ -1,0 +1,97 @@
+<resources>
+    <string name="report_number">الإبلاغ عن الرقم</string>
+    <string name="report_number_require_call_log_permission">
+        لمنع الإبلاغ الخاطئ عن المكالمات المتكررة أو الأرقام التي تمت معاودة الاتصال بها،
+        يتطلب الإبلاغ عن الرقم إذن سجل المكالمات.
+    </string>
+    <string name="http_method">الطريقة</string>
+    <string name="http_post_body">نص Post</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        العلامات المدعومة:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="invalid_auth_credentials">الرجاء إدخال معلومات ترخيص صالحة.</string>
+    <string name="delay">تأخير</string>
+    <string name="exclude_services">استبعاد الخدمات</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        تقوم بعض التطبيقات بتشغيل خدمات إضافية تعمل في المقدمة، أضف أسماء الخدمات هنا لاستبعادها.<br>
+        <br>
+        للعثور على اسم خدمة:<br>
+        &emsp; 1. قم بتنشيط الخدمة في هذا التطبيق.<br>
+        &emsp; 2. ستظهر جميع أسماء الخدمات التي تم تنشيطها هنا.<br>
+        &emsp; 3. انقر فوق اسم لإضافته.<br>
+        <br>
+        يمكنك إضافة أسماء متعددة، مفصولة بفواصل.
+        ]]>
+    </string>
+    <string name="running_services">الخدمات قيد التشغيل</string>
+    <string-array name="spam_categories">
+        <item>رقم صالح</item>
+        <item>احتيال</item>
+        <item>تسويق</item>
+        <item>استطلاع</item>
+        <item>سياسي</item>
+        <item>رسائل غير مرغوب فيها أخرى</item>
+    </string-array>
+    <string name="action_category_config">تكوين الفئة</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        يتم دعم فئات الرسائل غير المرغوب فيها التالية فقط، يجب تعيين أي فئة أخرى من واجهة برمجة التطبيقات (API) إلى إحدى هذه الفئات.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; الإبلاغ كرقم صالح، وليس رسائل غير مرغوب فيها.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; النوع الاحتياطي للرسائل غير المرغوب فيها، يستخدم عندما لا تنطبق أي من الفئات المذكورة أعلاه.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        لم يتم تكوين الفئة %s في الإجراء %s، يرجى تكوينها في تكوين واجهة برمجة التطبيقات (API) (إذا كانت واجهة برمجة التطبيقات (API) تدعم هذه الفئة).
+    </string>
+    <string name="target_text">النص المستهدف</string>
+    <string name="match_found">تم العثور على تطابق</string>
+    <string name="match_not_found">لم يتم العثور على تطابق</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        هذا فقط لاختبار ما إذا كانت هذه العبارة العادية تطابق نصًا، باستثناء القواعد الأخرى.<br>
+        لاختبار جميع القواعد، استخدم زر الاختبار العائم في الزاوية اليمنى السفلية بدلاً من ذلك.
+        ]]>
+    </string>
+    <string name="allow">السماح</string>
+    <string name="block">حظر</string>
+    <string name="seconds">ثواني</string>
+    <string name="seconds_short">ثا</string>
+    <string name="within_seconds">في غضون ثوان</string>
+    <string name="call_alert"><short>تنبيه المكالمة</short></string>
+    <string name="help_call_alert">
+        <![CDATA[
+        سترسل لك بعض الخدمات رسالة نصية أولاً لإعلامك بأن مكالمة وشيكة، عادةً في غضون دقيقة.<br>
+        <br>
+        على سبيل المثال، رسالة SMS مثل:<br>
+        &ensp; <font color="#888888">[بعض الخدمات] نتصل بك لإعلامك بـ ...، لا تتردد في الرد.</font><br>
+        <br>
+        ستكون العبارة العادية لمثل هذه الرسالة هي: <br>
+        &ensp; <font color="#03DAC5"><b><translate>.*الرجاء.*الرد.*</translate></b></font> <br>
+        <br>
+        الإعداد الافتراضي <font color="#03DAC5"><b>120 ثانية</b></font> يعني أن جميع المكالمات سيتم
+        السماح بها في الدقيقتين التاليتين بعد تلقي هذه الرسالة.<br>
+        <br>
+        إنه يعمل لكل من الرسائل النصية القصيرة العادية والرسائل النصية القصيرة الفلاش (الرسائل النصية القصيرة من الفئة 0).<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">يتم استخدام حرف البدل `*` بدون نقطة سابقة، هل تقصد `.*`؟</string>
+    <string name="import_as">استيراد كـ</string>
+    <string name="api_key">مفتاح API</string>
+    <string name="mms_support">دعم MMS</string>
+</resources>

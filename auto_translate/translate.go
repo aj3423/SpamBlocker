@@ -18,6 +18,7 @@ import (
 )
 
 var nameMap = map[string]string{
+	`ar`:     `Arabic`,
 	`ca`:     `Catalan`,
 	`de`:     `German`,
 	`es`:     `Spanish`,

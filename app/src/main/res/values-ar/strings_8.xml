@@ -1,0 +1,146 @@
+<resources>
+    <string name="database">قاعدة البيانات</string>
+    <string name="total">المجموع</string>
+    <string name="replace_from">من</string>
+    <string name="replace_to">إلى</string>
+    <string name="regex_pattern">RegEx</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        سيتم حظر الأرقام الموجودة في قاعدة البيانات هذه.<br>
+        <br>
+        يمكنك دمج أي قاعدة بيانات عامة، أو حتى قواعد بيانات متعددة، ويمكنك أيضًا استيراد أرقام من الملفات المحلية.<br>
+        <br>
+        تحقق من قسم "التشغيل الآلي" أدناه لمعرفة كيفية جدولة مهمة استيراد تلقائي.<br>
+        <br>
+        ينطبق على كل من المكالمات ورسائل SMS.<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        ستنتهي صلاحية أرقام الرسائل غير المرغوب فيها في قاعدة البيانات بعد N يومًا، وستحذف السجلات منتهية الصلاحية تلقائيًا.<br>
+        <br>
+        عند تعطيل هذا الخيار، لن تحذف الأرقام تلقائيًا أبدًا.
+        ]]>
+    </string>
+    <string name="customize">تخصيص</string>
+    <string name="workflow">سير العمل</string>
+    <string name="workflows">مسارات العمل</string>
+    <string name="automation">أتمتة</string>
+    <string name="help_workflows">
+        <![CDATA[
+        يمكن استخدام مهام سير العمل لتشغيل المهام تلقائيًا، مثل تحديث قاعدة البيانات أو النسخ الاحتياطي التلقائي.<br>
+        <br>
+        توجد إعدادات مسبقة للإعداد السريع، ويمكنك أيضًا إنشاؤها من البداية، أو استيرادها من تكوين json تتم مشاركته من مستخدمين آخرين.<br>
+        <br>
+        إذا وجدت أي سير عمل يمكن استخدامه على نطاق واسع ويجب إضافته إلى الإعدادات المسبقة، فيرجى الإبلاغ عنه على github.
+        ]]>
+    </string>
+    <string name="manual">يدوي</string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">تنظيف قاعدة بيانات الرسائل غير المرغوب فيها</string>
+    <string name="bot_preset_cleanup_history">تنظيف السجل</string>
+    <string name="bot_preset_auto_backup">نسخ احتياطي تلقائي</string>
+
+    <string name="action_cleanup_history">تنظيف السجل</string>
+    <string name="action_http_request">طلب HTTP</string>
+    <string name="action_cleanup_spam_db">تنظيف قاعدة بيانات الرسائل غير المرغوب فيها</string>
+    <string name="action_backup_export">تصدير النسخ الاحتياطي</string>
+    <string name="action_backup_import">استيراد النسخ الاحتياطي</string>
+    <string name="action_read_file">قراءة ملف</string>
+    <string name="action_write_file">كتابة ملف</string>
+    <string name="action_parse_csv">تحليل CSV</string>
+    <string name="action_parse_xml">تحليل XML</string>
+    <string name="action_regex_extract">استخراج Regex</string>
+    <string name="action_import_to_spam_db">استيراد إلى قاعدة بيانات الرسائل غير المرغوب فيها</string>
+    <string name="action_import_as_regex_rule">الاستيراد كقاعدة Regex</string>
+    <string name="action_convert_number">استبدال الرقم</string>
+    <string name="action_find_rules">البحث عن القواعد</string>
+    <string name="action_modify_rules">تعديل القواعد</string>
+    <string name="action_modify_rules_placeholder">
+        سلسلة json، على سبيل المثال:\n
+        {\n
+        "flags": 0, // تعطيل القاعدة\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        تنزيل بيانات HTTP كـ <u>وحدات بايت للمحتوى</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">حذف الأرقام منتهية الصلاحية من قاعدة بيانات الرسائل غير المرغوب فيها.</string>
+    <string name="help_action_cleanup_history">حذف سجلات السجل منتهية الصلاحية.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        تصدير الإعدادات الحالية إلى <u>وحدات بايت للمحتوى</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        تطبيق الإعدادات من <u>وحدات بايت للمحتوى</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        الحصول على <u>وحدات بايت للمحتوى</u> من ملف.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        كتابة <u>وحدات بايت للمحتوى</u> إلى ملف.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        تحليل <u>وحدات بايت محتوى</u> CSV إلى <u>قائمة أرقام</u>
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        تحليل <u>وحدات بايت محتوى</u> xml باستخدام <b>xpath</b> وإنشاء <u>قائمة أرقام.</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        استخراج <u>قائمة أرقام</u> من <u>وحدات بايت للمحتوى</u> باستخدام regex.
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        إضافة <u>قائمة أرقام</u> إلى قاعدة بيانات الرسائل غير المرغوب فيها.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        إنشاء قاعدة regex جديدة من <u>قائمة أرقام</u>.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        تحويل <u>قائمة الأرقام</u> إلى التنسيق الذي يستخدمه هذا التطبيق.<br>
+        <br>
+        على سبيل المثال، أضف إجراءين للاستبدال:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` إلى `12345<font color="#03DAC5"><b>…</b></font>`:<br>
+        <br>
+        &ensp; - استبدال `<font color="#fa7f71">(+)</font>` إلى ``<br>
+        &ensp; - استبدال `<font color="#fa7f71">(#)</font>` إلى `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        ابحث عن <u>قائمة بالقواعد</u> التي تطابق وصفًا محددًا.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        تغيير واحد أو أكثر من السمات لـ <u>قائمة القواعد</u>.
+        ]]>
+    </string>
+</resources>

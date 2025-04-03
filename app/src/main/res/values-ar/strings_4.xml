@@ -1,0 +1,56 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        عند التمكين، سيتم السماح بجميع المكالمات (الرسائل) خلال هذه الفترة الزمنية. عادة لا توجد مكالمات مزعجة في الليل. <br>
+        <br>
+        إذا كان وقت البدء أكبر من وقت الانتهاء، على سبيل المثال، 20:00 -> 07:00، فهذا يعني الفترة من 20:00 مساءً إلى 07:00 صباح اليوم التالي. <br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            تغيّر هذه العلامات سلوك المطابقة للتعبير النمطي (regex)، ويتم تعيينها للقواعد الجديدة افتراضيًا. <br>
+            <br>
+
+            <font color="#00BFFF"><b>رقم خام</b></font>: <br>
+            &ensp; عند التمكين، لن يتم تحسين الرقم، <font color="#03DAC5"><b>+</b></font>
+            و <font color="#03DAC5"><b>الأصفار البادئة</b></font> ستبقى، مفيدة لتمييز الأرقام المحلية.<br>
+            <br>
+
+            <font color="#00BFFF"><b>إزالة رمز الدولة</b></font>: <br>
+            &ensp; عند التمكين، سيتم إزالة <font color="#fa7f71">+</font> و <font color="#fa7f71">رمز الدولة</font> البادئين
+             من الرقم الدولي.<br>
+            <br>
+            على سبيل المثال، كل من <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> و
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> سيصبح <font color="#03DAC5">12345</font>،
+            وهذا يسمح لك باستخدام تعبير نمطي أبسط `123.*` بدلاً من `(33|44)*123.*` لمطابقة الأرقام الدولية.<br>
+            <br>
+
+            <font color="#00BFFF"><b>تجاهل حالة الأحرف</b></font>:<br>
+            &ensp; يجعل مطابقة النمط غير حساسة لحالة الأحرف، <font color="#03DAC5"><b>a</b></font>
+              ستطابق كلاً من <font color="#03DAC5"><b>a</b></font> و <font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>تطابق النقطة مع الكل</b></font>: <br>
+            &ensp; عند التمكين، <font color="#03DAC5"><b>.</b></font> ستطابق أيضًا أحرف السطر الجديد (<font color="#03DAC5"><b>\\n</b></font>)،
+              وهذا يسمح للنقطة بالمطابقة عبر أسطر متعددة. <br>
+            &ensp; حالة الاستخدام: <br>
+            &emsp;   مطابقة رسالة SMS متعددة الأسطر: <br>
+            &emsp;   <font color="#fa7f71">claim your prize: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   with rule: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+        ]]>
+    </string>
+
+    <string-array name="regex_flags_list">
+        <item>رقم خام</item>
+        <item>إزالة رمز الدولة</item>
+        <item>تجاهل حالة الأحرف</item>
+        <item>تطابق النقطة مع الكل</item>
+    </string-array>
+    <string name="disable_number_optimization">يمكن تعطيل هذا التحسين بواسطة علامة التعبير النمطي "رقم خام".</string>
+</resources>

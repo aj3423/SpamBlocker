@@ -1,0 +1,57 @@
+<resources>
+    <string name="emergency">حالة طوارئ</string>
+    <string name="emergency_situation">حالة طوارئ</string>
+    <string name="help_emergency_situation">
+        <![CDATA[
+        بعد الاتصال برقم طوارئ، اسمح بجميع المكالمات الواردة لفترة من الوقت.<br>
+        <br>
+        <h5><font color="#00BFFF">- المدة</font></h5>
+        الإعداد الافتراضي <font color="#03DAC5"><b>120 دقيقة</b></font> يعني السماح بجميع المكالمات
+        في الـ 120 دقيقة التالية بعد الاتصال برقم طوارئ.<br>
+        <br>
+        <h5><font color="#00BFFF">- التحقق من STIR</font></h5>
+         - عند التعطيل، سيتم السماح بجميع المكالمات.<br>
+         - عند التفعيل، لن يتم السماح بالمكالمات التي تفشل في مصادقة STIR، وسيتم السماح فقط بالمكالمات "الصحيحة" و "غير المؤكدة".<br>
+        <br>
+        <h5><font color="#00BFFF">- أرقام إضافية</font></h5>
+        سيؤدي الاتصال بأي رقم في هذه القائمة أيضًا إلى تشغيل هذه الميزة.<br>
+        <br>
+        لا حاجة لإضافة أرقام مثل 911 هنا بشكل صريح، لأن Android يتضمن قائمة أرقام طوارئ مدمجة
+        لكل بلد (مثل: الشرطة، والإطفاء، والإسعاف).<br>
+        <br>
+        افصل بين الأرقام بفواصل، مثل:<br>
+        &ensp; <font color="#888888">111, 222, 3333</font><br>
+        <br>
+        <h5><font color="#00BFFF">- إعادة تعيين</font></h5>
+        اضغط على هذا الزر لإعادة تعيين هذه الميزة إذا تم تشغيلها عن طريق الخطأ أو أثناء الاختبار.<br>
+        <br>
+        <h5><font color="#00BFFF">- اختبار</font></h5>
+        قم بمحاكاة مكالمة صادرة لاختبار ما إذا كان هذا الرقم هو رقم طوارئ.<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: قصوى</b></font>
+        ]]>
+    </string>
+    <string name="reset"><translate>إعادة تعيين</translate></string>
+    <string name="status"><translate>الحالة</translate></string>
+    <string name="inactive"><translate>غير نشط</translate></string>
+    <string name="confirm_reset"><translate>تأكيد إعادة التعيين؟</translate></string>
+    <string name="check_stir_attestation"><translate>التحقق من STIR (?)</translate></string>
+    <string name="additional_numbers"><translate>أرقام إضافية</translate></string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        دليل التخزين الخارجي، نفس: <br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        نفس: <br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        نفس: <br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
+    <string name="call_to_number"><translate>للرقم</translate></string>
+    <string name="call_to"><translate>اتصل بـ</translate></string>
+</resources>

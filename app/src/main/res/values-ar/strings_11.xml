@@ -1,0 +1,74 @@
+<resources>
+    <string name="for_example"><translate>مثال:</translate></string>
+    <string name="yesterday_abbrev"><translate>أمس.</translate></string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        <translate>رفض المكالمات أثناء اجتماعات الفيديو عبر الإنترنت.<br> <br>
+        يتحقق مما إذا كان أي تطبيق محدد يشغل <b>خدمة في المقدمة</b>،
+        والتي تستخدمها تطبيقات مؤتمرات الفيديو بشكل شائع للحفاظ على الاتصال حيويًا.<br>
+        <br>
+        ينطبق على كل من المكالمات والرسائل.<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية الافتراضية: 20</b></font></translate>
+        ]]>
+    </string>
+    <string name="in_meeting"><translate>وضع الاجتماع</translate></string>
+    <string name="search_number"><translate>بحث عن رقم</translate></string>
+    <string name="http_header">Http Header</string>
+    <string name="help_http_header">
+        <![CDATA[
+        <translate>سمة واحدة لكل سطر.<br>
+        </translate>
+        ]]>
+    </string>
+    <string name="tags_supported">
+        <![CDATA[
+        <translate>العلامات المدعومة:<br><br>
+        </translate>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        <translate>- <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; واجهات برمجة التطبيقات التي تتطلب مصادقة HTTP الأساسية. على سبيل المثال:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; سيتم تحليله إلى:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        </translate>
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db"><translate>تسجيل الرسائل القصيرة</translate></string>
+    <string name="initial_row_count"><translate>عدد الصفوف الأولي</translate></string>
+    <plurals name="rows">
+        <item quantity="one"><translate>%d صف</translate></item>
+        <item quantity="two"><translate>%d صفوف</translate></item>
+        <item quantity="few"><translate>%d صفوف</translate></item>
+        <item quantity="many"><translate>%d صفوف</translate></item>
+        <item quantity="other"><translate>%d صفوف</translate></item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items"><translate>حد تمرير الشريط</translate></string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        <translate>الحد الأقصى لعدد العناصر التي يمكن عرضها في القائمة قبل ظهور شريط التمرير.</translate>
+        ]]>
+    </string>
+    <string name="label_max_scroll_height"><translate>ارتفاع التمرير</translate></string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        <translate>عند ظهور شريط التمرير، تمثل هذه القيمة ارتفاع القائمة كنسبة مئوية من الشاشة.</translate>
+        ]]>
+    </string>
+    <string name="label_max_regex_lines"><translate>الحد الأقصى لعدد أسطر Regex</translate></string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        <translate>الحد الأقصى لعدد أسطر العرض لنص regex، سيتم اقتطاع النص المتبقي ويتبعه علامة حذف.</translate>
+        ]]>
+    </string>
+    <string name="label_max_desc_lines"><translate>الحد الأقصى لعدد أسطر الوصف</translate></string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        <translate>الحد الأقصى لعدد أسطر العرض لنص الوصف، سيتم اقتطاع النص المتبقي ويتبعه علامة حذف.</translate>
+        ]]>
+    </string>
+</resources>

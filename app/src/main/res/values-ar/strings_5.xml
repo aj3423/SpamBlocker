@@ -1,0 +1,83 @@
+<resources>
+    <string name="dialed_number"><short>رقم الاتصال</short></string>
+    <string name="find_apps">البحث عن تطبيقات</string>
+
+    <string name="confirm_delete_all_rule">تأكيد حذف جميع القواعد؟</string>
+
+    <string name="notification">إشعار</string>
+    <string name="type">النوع</string>
+    <string name="times">مرات</string>
+    <plurals name="days">
+        <item quantity="one">%d يوم</item>
+        <item quantity="two">%d يومين</item>
+        <item quantity="few">%d أيام</item>
+        <item quantity="many">%d يومًا</item>
+        <item quantity="other">%d يوم</item>
+    </plurals>
+    <string name="min">دقيقة</string>
+    <string name="within_minutes">خلال دقائق</string>
+    <string name="within_days">خلال أيام</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="phone_number_abbrev">رقم</string>
+    <string name="sms_content">محتوى الرسالة النصية</string>
+    <string name="regex_flags">علامات Regex</string>
+    <string name="off_time"><short>وقت الإيقاف</short></string>
+    <string name="schedule">جدول</string>
+    <string name="workday">يوم عمل</string>
+    <string name="weekend">عطلة نهاية الأسبوع</string>
+    <string name="entire_day">كامل اليوم</string>
+    <string name="block_type">نوع الحظر</string>
+    <string name="for_particular_number">للرقم</string>
+    <string name="help_for_particular_number">عند التمكين، تنطبق القاعدة فقط عندما يتطابق كل من الرقم والمحتوى.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>رفض</b></font>: <br>
+         نفس الضغط على زر الرفض. إنه يعمل بصمت تام، ولن يتم تشغيل شاشة القفل.<br>
+        <br>
+        - <font color="#00BFFF"><b>صامت</b></font>: <br>
+         سوف يرن بصمت في الخلفية، مما يعطي المتصل انطباعًا بأنك غير متاح وفاتتك المكالمة. <br>
+        <br>
+         قد يساعد أيضًا إذا كنت تعاني من مكالمات مزعجة متكررة، فسوف يمدد مدة المكالمة، مما يجعلها أقل كفاءة بالنسبة للمرسلين غير المرغوب فيهم، مما قد يثنيهم عن الاتصال بك مرة أخرى.<br>
+        <br>
+        - <font color="#00BFFF"><b>قطع الاتصال</b></font>: <br>
+        أجب وقم بإنهاء المكالمة لمنعها من الانتقال إلى البريد الصوتي. <br>
+        <br>
+        <font color="#FFA500">ملاحظة</font> يمكن تشغيل شاشة القفل لفترة قصيرة،
+        قد تسمع أيضًا نغمة نهاية المكالمة (توفر بعض الهواتف خيارًا لكتم هذا الصوت). <br>
+        <br>
+        - الـ <b>تأخير</b>: <br>
+        &emsp; بشكل افتراضي، هناك تأخير لمدة ثانية واحدة قبل قطع المكالمة،
+        لمنع المكالمات من الانتقال عن طريق الخطأ إلى البريد الصوتي بسبب الانقطاع السريع.<br>
+        &emsp; إذا كنت ترغب في تسجيل المكالمات، فقم بتثبيت تطبيق تسجيل المكالمات وزيادة التأخير وفقًا لذلك.
+        ]]>
+    </string>
+    <string name="help_hang_up_delay">التأخير قبل قطع المكالمة (بالثواني).</string>
+    <string name="help_dialed">
+        <![CDATA[
+        سيتم السماح بالأرقام التي تم الاتصال بها.<br>
+        <br>
+        إرسال الرسائل يعتبر أيضًا، وهذا يعمل فقط عند منح إذن READ_SMS. <br>
+        <br>
+        الإعداد الافتراضي <font color="#03DAC5"><b>3 أيام</b></font> يعني أنه إذا قمت بالاتصال أو إرسال رسائل إلى الرقم خلال الأيام الثلاثة الماضية، فسيتم السماح بالمكالمات من هذا الرقم.<br>
+        <br>
+        ينطبق فقط على المكالمات، <b>ليس</b> على الرسائل النصية. <br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        ستمر أي مكالمة إذا تم استخدام أي تطبيق في القائمة مؤخرًا.<br>
+        <br>
+        حالة استخدام نموذجية:<br>
+        &emsp; لقد طلبت للتو بيتزا في PizzaApp، وسرعان ما اتصلوا بك لاسترداد الأموال لأنهم سيغلقون. ستمر هذه المكالمة إذا تم تمكين PizzaApp هنا. <br>
+        <br>
+        الإعداد الافتراضي <font color="03DAC5"><b>5 دقائق</b></font> يعني أن أي مكالمة ستمر إذا تم استخدام أي من التطبيقات في غضون 5 دقائق،
+        بمعنى "مستخدم" يعني إما التنشيط أو إلغاء التنشيط أو التصغير أو الإنهاء. <br>
+        <br>
+        ينطبق فقط على المكالمات، <b>ليس</b> على الرسائل النصية. <br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
+</resources>
