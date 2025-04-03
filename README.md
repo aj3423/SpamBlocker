@@ -62,7 +62,7 @@ It's not necessary to leave this app running in the background, you can kill the
 
 # Limitations 
 - Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/274)
-- Dual SIM support: [Waiting for Google](https://github.com/aj3423/SpamBlocker/issues/169)
+- Dual SIM support: ["Won't fix" by Google](https://github.com/aj3423/SpamBlocker/issues/169#issuecomment-2774535866)
 - Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
 - RCS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/308#issuecomment-2692269430)
 
