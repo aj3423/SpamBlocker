@@ -265,7 +265,7 @@ open class HttpDownload(
                 aCtx.logger?.debug(echo)
                 true
             } else {
-                aCtx.logger?.error("HTTP: <${result?.statusCode}>: $echo")
+                aCtx.logger?.error("HTTP: <${result?.statusCode}>, $echo, ${result?.exception}")
                 false
             }
 
