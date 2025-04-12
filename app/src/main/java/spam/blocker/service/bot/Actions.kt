@@ -1915,15 +1915,17 @@ class ParseQueryResult(
             aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
         }
 
-
-        val result = ApiQueryResult(
-            determined = determined,
-            isSpam = isNegative == true,
-            category = category,
-            serverEcho = html,
-        )
-        aCtx.lastOutput = result
-        aCtx.racingResult = result
+        // Only update the racingResult when it's the first `ParseQueryResult` or determined.
+        if (determined || aCtx.racingResult == null) {
+            val result = ApiQueryResult(
+                determined = determined,
+                isSpam = isNegative == true,
+                category = category,
+                serverEcho = html,
+            )
+            aCtx.lastOutput = result
+            aCtx.racingResult = result
+        }
 
         return true
     }
