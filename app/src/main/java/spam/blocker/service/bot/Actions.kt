@@ -1855,7 +1855,12 @@ class ParseQueryResult(
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val input = aCtx.lastOutput as ByteArray
+        var input = if (aCtx.lastOutput is ByteArray) {
+            aCtx.lastOutput as ByteArray
+        } else {
+            aCtx.lastParsedQueryData!!
+        }
+        aCtx.lastParsedQueryData = input // Save for following `ParseQueryResult` actions
 
         val html = String(input)
 
@@ -1910,6 +1915,7 @@ class ParseQueryResult(
             aCtx.logger?.debug(ctx.getString(R.string.unidentified_number))
         }
 
+
         val result = ApiQueryResult(
             determined = determined,
             isSpam = isNegative == true,
@@ -1918,6 +1924,7 @@ class ParseQueryResult(
         )
         aCtx.lastOutput = result
         aCtx.racingResult = result
+
         return true
     }
 
@@ -1954,7 +1961,7 @@ class ParseQueryResult(
     }
 
     override fun inputParamType(): List<ParamType> {
-        return listOf(ParamType.ByteArray)
+        return listOf(ParamType.ByteArray, ParamType.InstantQueryResult)
     }
 
     override fun outputParamType(): List<ParamType> {

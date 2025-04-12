@@ -102,6 +102,11 @@ data class ActionContext(
     // The check result by the first api that successfully identified the number,
     //  for Checker usage only, not for Actions
     var racingResult: ApiQueryResult? = null,
+
+    // Save the input data bytes for `ParseQueryResult`, so they can be chained together
+    //  to simulate the "priority" of positive/negative identifiers.
+    //  (e.g.: add two `ParseQueryResult` actions, one for positive, one for negative)
+    var lastParsedQueryData: ByteArray? = null,
 )
 
 interface IAction {
