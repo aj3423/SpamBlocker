@@ -19,6 +19,7 @@ import android.os.Environment
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
+import android.provider.Telephony
 import android.provider.Telephony.Sms
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
@@ -181,6 +182,38 @@ object Permissions {
             }
         }
         return ret
+    }
+
+    fun isAppInForeground(ctx: Context, targetPackageName: String): Boolean {
+        val usageStatsManager = ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager?
+            ?: return false // Usage stats service not available
+
+        val now = System.currentTimeMillis()
+        // Query stats for a short period (e.g., last 10 seconds)
+        // Adjust the interval as needed, but keep it short for efficiency.
+        val usageStatsList = usageStatsManager.queryUsageStats(
+            UsageStatsManager.INTERVAL_DAILY,
+            now - 1000 * 10, // 10 seconds ago
+            now
+        )
+
+        if (usageStatsList == null || usageStatsList.isEmpty()) {
+            return false
+        }
+
+        // Sort stats by last time used in descending order
+        usageStatsList.sortByDescending { it.lastTimeUsed }
+
+        // The first element in the sorted list is the most recently used app
+        val mostRecentApp = usageStatsList[0]
+
+        // Check if the most recently used app's package name matches the target
+        return mostRecentApp.packageName == targetPackageName
+    }
+
+    fun isSmsAppInForeground(ctx: Context) : Boolean {
+        val defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(ctx)
+        return isAppInForeground(ctx, defaultSmsApp)
     }
 
     // List all foreground service names that have started but not stopped yet.

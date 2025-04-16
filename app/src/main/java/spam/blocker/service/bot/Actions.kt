@@ -1937,9 +1937,11 @@ class ParseQueryResult(
     @Composable
     override fun Summary() {
         RowVCenterSpaced(4) {
-            RowVCenter {
-                GreyIcon16(R.drawable.ic_no)
-                SummaryLabel(negativeSig)
+            if (negativeSig.isNotEmpty()) {
+                RowVCenter {
+                    GreyIcon16(R.drawable.ic_no)
+                    SummaryLabel(negativeSig)
+                }
             }
 
             if (positiveSig.isNotEmpty()) {

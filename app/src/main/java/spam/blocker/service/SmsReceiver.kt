@@ -14,8 +14,10 @@ import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
+import spam.blocker.util.Notification.IMPORTANCE_HIGH_MUTED
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Now
+import spam.blocker.util.Permissions
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
@@ -128,7 +130,10 @@ open class SmsReceiver : BroadcastReceiver() {
                 type = Type.VALID_SMS,
                 title = showName,
                 body = messageBody,
-                importance = IMPORTANCE_HIGH,
+                importance = if (Permissions.isSmsAppInForeground(ctx))
+                    IMPORTANCE_HIGH_MUTED
+                else
+                    IMPORTANCE_HIGH,
                 intent = intent,
                 toCopy = toCopy,
             )

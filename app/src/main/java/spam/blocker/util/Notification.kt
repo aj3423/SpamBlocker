@@ -26,8 +26,10 @@ import kotlin.random.Random
 object Notification {
     // A workaround for disabling default spam notifications completely by disabling
     //  notification channels in system settings.
-    const val defaultSpamCallImportance = -1
-    const val defaultSpamSMSImportance = -2
+    const val IMPORTANCE_DEFAULT_SPAM_CALL = -1
+    const val IMPORTANCE_DEFAULT_SPAM_SMS = -2
+    // Mute the sound when actively texting(while the default SMS app is in the foreground)
+    const val IMPORTANCE_HIGH_MUTED = 100
 
     const val SPAM_CALL_GROUP = "spam_call"
     const val SPAM_SMS_GROUP = "spam_sms"
@@ -62,14 +64,16 @@ object Notification {
 
     fun channelId(importance: Int): String {
         return when (importance) {
-            defaultSpamCallImportance -> "Default spam call"
-            defaultSpamSMSImportance -> "Default spam SMS"
+            IMPORTANCE_DEFAULT_SPAM_CALL -> "Default spam call"
+            IMPORTANCE_DEFAULT_SPAM_SMS -> "Default spam SMS"
 
-            0 -> "None"
-            1 -> "Shade"
-            2 -> "StatusBar+Shade"
-            3 -> "Sound+StatusBar+Shade"
-            4 -> "Heads-up+Sound+StatusBar+Shade"
+            IMPORTANCE_NONE -> "None"
+            IMPORTANCE_MIN -> "Shade"
+            IMPORTANCE_LOW -> "StatusBar+Shade"
+            IMPORTANCE_DEFAULT -> "Sound+StatusBar+Shade"
+            IMPORTANCE_HIGH -> "Heads-up+Sound+StatusBar+Shade"
+
+            IMPORTANCE_HIGH_MUTED -> "Heads-up+StatusBar+Shade"
 
             else -> ""
         }
@@ -97,10 +101,17 @@ object Notification {
             val manager =
                 ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
 
-            fun create(id: String, importance: Int) {
-                val channel = NotificationChannel(id, id, importance)
+            fun create(id: String, importance: Int, mute: Boolean = false) {
+                val channel = NotificationChannel(id, id, importance).apply {
+                    if (mute) {
+                        setSound(null, null)
+                    }
+                }
+
                 manager.createNotificationChannel(channel)
             }
+
+            create(channelId(IMPORTANCE_HIGH_MUTED), IMPORTANCE_HIGH, mute = true) // 100
 
             create(channelId(IMPORTANCE_HIGH), IMPORTANCE_HIGH) // 4
             create(channelId(IMPORTANCE_DEFAULT), IMPORTANCE_DEFAULT) // 3
@@ -108,8 +119,8 @@ object Notification {
             create(channelId(IMPORTANCE_MIN), IMPORTANCE_MIN) // 1
             create(channelId(IMPORTANCE_NONE), IMPORTANCE_NONE) // 0
 
-            create(channelId(defaultSpamCallImportance), Def.DEF_SPAM_IMPORTANCE) // -1
-            create(channelId(defaultSpamSMSImportance), Def.DEF_SPAM_IMPORTANCE) // -2
+            create(channelId(IMPORTANCE_DEFAULT_SPAM_CALL), Def.DEF_SPAM_IMPORTANCE) // -1
+            create(channelId(IMPORTANCE_DEFAULT_SPAM_SMS), Def.DEF_SPAM_IMPORTANCE) // -2
 
             created = true
         }

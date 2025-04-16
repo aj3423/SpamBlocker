@@ -184,9 +184,9 @@ interface ICheckResult {
     // The default notification channel for default call/sms, when it's not overridden by per rule type
     fun getSpamImportance(isCall: Boolean): Int {
         return if (isCall)
-            Notification.defaultSpamCallImportance
+            Notification.IMPORTANCE_DEFAULT_SPAM_CALL
         else
-            Notification.defaultSpamSMSImportance
+            Notification.IMPORTANCE_DEFAULT_SPAM_SMS
     }
 }
 
