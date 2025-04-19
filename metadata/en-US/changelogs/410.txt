@@ -1,0 +1,2 @@
+Language support:
+- Arab(ar)
