@@ -204,7 +204,7 @@ fun SpamDB() {
                 onValueChange = {
                     keyword = it
                     listState.clear()
-                    listState.addAll(SpamTable.search(ctx, keyword, 5))
+                    listState.addAll(SpamTable.search(ctx, keyword, 20))
                 }
             )
 
