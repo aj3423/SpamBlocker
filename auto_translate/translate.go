@@ -152,12 +152,12 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 
 	var use_short string
 	if short || abbrev {
-		use_short = "Use extream short translation. "
+		use_short = "Use extreme short translation. "
 		if abbrev {
 			use_short += "Use abbreviation if possible. "
 		}
 	} else {
-		use_short = "If the content contains tags <short> and </short>, always translate the text in between with extream short translations. "
+		use_short = "If the content contains tags <short> and </short>, always translate the text in between with extreme short translations. "
 	}
 	prompt_template := "Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. " +
 		"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. " +
