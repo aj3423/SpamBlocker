@@ -125,7 +125,7 @@ Languages are translated using Gemini AI([golang script](https://github.com/aj34
  - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)
 
 # Some ideas
- - [On-chain database](https://github.com/aj3423/SpamBlocker/issues/340)
+ - [A decentralized database](https://github.com/aj3423/SpamBlocker/issues/340)
 
 # Donate
 
