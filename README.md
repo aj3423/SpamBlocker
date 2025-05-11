@@ -24,6 +24,7 @@ Table of Contents
    * [FAQ](#faq)
    * [Language Support](#language-support)
    * [Contributing](#contributing)
+   * [Some ideas](#some-ideas)
    * [Donate](#donate)
 
 # Screenshot
@@ -122,6 +123,9 @@ Languages are translated using Gemini AI([golang script](https://github.com/aj34
 
 # Contributing
  - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)
+
+# Some ideas
+ - [On-chain database](https://github.com/aj3423/SpamBlocker/issues/340)
 
 # Donate
 
