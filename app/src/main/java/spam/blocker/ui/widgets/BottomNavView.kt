@@ -1,11 +1,9 @@
 package spam.blocker.ui.widgets
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +13,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,17 +24,16 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.theme.White
 import spam.blocker.util.Lambda1
 import spam.blocker.util.spf
 import kotlin.math.min
@@ -56,7 +55,7 @@ data class TabItem(
     // Use a State for each tab instead.
     val isSelected: MutableState<Boolean>,
 
-    val badge: (@Composable BoxScope.() -> Unit)? = null,
+    val badgeText: () -> String?,
 
     val content: @Composable () -> Unit,
 )
@@ -66,32 +65,6 @@ data class BottomBarViewModel(
     val onTabSelected: Lambda1<String>,
     val onTabReSelected: Lambda1<String>
 )
-
-// Add a badge indicator to the top right of an Icon
-@Composable
-fun BoxScope.Badge(count: Int) {
-    if (count > 0) {
-        Box(
-            modifier = M
-                .align(Alignment.TopEnd)
-                .offset(x = 10.dp, y = (-4).dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Canvas(
-                modifier = M.size(16.dp)
-            ) {
-                drawCircle(color = Salmon, radius = size.minDimension / 2)
-            }
-            Text(
-                text = count.toString(),
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = 11.sp,
-                modifier = M.offset(y = 1.dp),
-            )
-        }
-    }
-}
 
 @Composable
 fun BottomBar(vm: BottomBarViewModel) {
@@ -157,7 +130,20 @@ fun BottomBar(vm: BottomBarViewModel) {
                                 }
                             }
                     ) {
-                        Box {
+                        val badgeText = tab.badgeText()
+
+                        BadgedBox(
+                            badge = {
+                                badgeText?.let {
+                                    Badge(
+                                        containerColor = Salmon,
+                                        contentColor = White
+                                    ) {
+                                        Text(text = badgeText)
+                                    }
+                                }
+                            }
+                        ) {
                             // icon
                             ResIcon(
                                 iconId = tab.icon,
@@ -166,10 +152,8 @@ fun BottomBar(vm: BottomBarViewModel) {
                                     .offset(y = 4.dp),
                                 color = if (tab.isSelected.value) SkyBlue else C.textGrey
                             )
-                            // badge
-
-                            tab.badge?.invoke(this)
                         }
+
                         // label
                         Text(
                             text = tab.label,

@@ -32,7 +32,6 @@ import spam.blocker.ui.setting.SettingScreen
 import spam.blocker.ui.theme.AppTheme
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.MayaBlue
-import spam.blocker.ui.widgets.Badge
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
 import spam.blocker.ui.widgets.GreyLabel
@@ -90,8 +89,9 @@ class MainActivity : ComponentActivity() {
                     label = ctx.resources.getString(R.string.call),
                     icon = R.drawable.ic_call,
                     isSelected = mutableStateOf(lastTab == Def.CALL_TAB_ROUTE),
-                    badge = {
-                        Badge(count = G.callVM.records.count { !it.read })
+                    badgeText = {
+                        val unreadCount = G.callVM.records.count { !it.read }
+                        if (unreadCount == 0) null else "$unreadCount"
                     }
                 ) {
                     HistoryScreen(G.callVM)
@@ -101,8 +101,9 @@ class MainActivity : ComponentActivity() {
                     label = ctx.resources.getString(R.string.sms),
                     icon = R.drawable.ic_sms,
                     isSelected = mutableStateOf(lastTab == Def.SMS_TAB_ROUTE),
-                    badge = {
-                        Badge(count = G.smsVM.records.count { !it.read })
+                    badgeText = {
+                        val unreadCount = G.smsVM.records.count { !it.read }
+                        if (unreadCount == 0) null else "$unreadCount"
                     },
                 ) {
                     HistoryScreen(G.smsVM)
@@ -111,7 +112,8 @@ class MainActivity : ComponentActivity() {
                     route = Def.SETTING_TAB_ROUTE,
                     label = ctx.resources.getString(R.string.setting),
                     icon = R.drawable.ic_settings,
-                    isSelected = mutableStateOf(lastTab == Def.SETTING_TAB_ROUTE)
+                    isSelected = mutableStateOf(lastTab == Def.SETTING_TAB_ROUTE),
+                    badgeText = { null },
                 ) {
                     SettingScreen()
                 }

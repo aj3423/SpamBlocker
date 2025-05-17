@@ -20,7 +20,6 @@ import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.executeAll
-import spam.blocker.service.checker.Checker.Content
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon

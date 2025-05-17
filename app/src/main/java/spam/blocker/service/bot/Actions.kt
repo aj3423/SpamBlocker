@@ -100,7 +100,6 @@ import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
 import java.net.HttpURLConnection
-import kotlin.collections.drop
 
 @Composable
 fun NoOptionNeeded() {

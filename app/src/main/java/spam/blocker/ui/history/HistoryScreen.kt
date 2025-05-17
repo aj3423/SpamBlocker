@@ -1,35 +1,18 @@
 package spam.blocker.ui.history
 
 import android.Manifest
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.def.Def
-import spam.blocker.ui.M
-import spam.blocker.ui.theme.DarkOrange
-import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.FabWrapper
-import spam.blocker.ui.widgets.Str
-import spam.blocker.util.Permissions
-import spam.blocker.util.Util
-import spam.blocker.R
 import spam.blocker.util.NormalPermission
+import spam.blocker.util.Permissions
 import spam.blocker.util.spf
 
 

@@ -21,10 +21,6 @@ import spam.blocker.util.Lambda3
 import spam.blocker.util.escape
 import spam.blocker.util.httpRequest
 import spam.blocker.util.resolveBearerTag
-import kotlin.Int
-import kotlin.String
-import kotlin.collections.List
-import kotlin.collections.mapOf
 
 
 data class AuthConfig(

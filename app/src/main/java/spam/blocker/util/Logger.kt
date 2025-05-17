@@ -16,7 +16,6 @@ import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SilverGrey
 import spam.blocker.ui.theme.SkyBlue
-import kotlin.text.substring
 
 // For showing detailed execution steps when testing
 interface ILogger {

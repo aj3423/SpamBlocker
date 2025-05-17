@@ -38,7 +38,6 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda
-import kotlin.Boolean
 
 // This dialog makes it easier for user to input API_KEY rather than manually editing
 //  the tags in http url/header.
