@@ -18,6 +18,9 @@ import spam.blocker.util.Notification.IMPORTANCE_HIGH_MUTED
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Now
 import spam.blocker.util.Permissions
+import spam.blocker.util.Permissions.isSmsAppInForeground
+import spam.blocker.util.Util
+import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
@@ -130,7 +133,7 @@ open class SmsReceiver : BroadcastReceiver() {
                 type = Type.VALID_SMS,
                 title = showName,
                 body = messageBody,
-                importance = if (Permissions.isSmsAppInForeground(ctx))
+                importance = if (!isDeviceLocked(ctx) && isSmsAppInForeground(ctx))
                     IMPORTANCE_HIGH_MUTED
                 else
                     IMPORTANCE_HIGH,
