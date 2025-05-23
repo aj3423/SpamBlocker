@@ -9,6 +9,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
+import android.os.PowerManager
 import android.os.UserManager
 import android.provider.OpenableColumns
 import android.provider.Settings
@@ -583,8 +584,19 @@ object Util {
         }
     }
 
+    // Device is considered in lockscreen mode if:
+    // 1. Screen is off
+    // 2. Screen is on but requires PIN/passcode/... to unlock
     fun isDeviceLocked(ctx: Context): Boolean {
-        val keyguardManager = ctx.getSystemService(Context.KEYGUARD_SERVICE) as? KeyguardManager
-        return keyguardManager?.isKeyguardLocked == true
+        val keyguardManager = ctx.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        val powerManager = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+
+        // Check if the screen is off
+        val isScreenOff = !powerManager.isInteractive
+
+        // Check if the device is locked (requires authentication)
+        val isDeviceLocked = keyguardManager.isDeviceLocked
+
+        return isScreenOff || isDeviceLocked
     }
 }
