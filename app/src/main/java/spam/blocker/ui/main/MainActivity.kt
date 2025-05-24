@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
         if (BuildConfig.DEBUG) {
             debug(this)
 
-            // Detect resource leak
+            // Detect resource leak, such as missing sqlite.close()
             Class.forName("dalvik.system.CloseGuard")
                 .getMethod("setEnabled", Boolean::class.javaPrimitiveType)
                 .invoke(null, true)

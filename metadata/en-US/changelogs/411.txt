@@ -1,0 +1,3 @@
+Fix:
+- Unread badge UI broken with large number. 
+- No SMS notification sound in lockscreen if the SMS app is in the foreground.
