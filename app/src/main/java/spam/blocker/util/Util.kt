@@ -97,7 +97,11 @@ fun String.regexMatchesNumber(rawNumber: String, regexFlags: Int): Boolean {
     }
 
     val opts = Util.flagsToRegexOptions(regexFlags)
-    return this.toRegex(opts).matches(toMatch)
+    return try {
+        this.toRegex(opts).matches(toMatch)
+    } catch (_: Exception) {
+        false
+    }
 }
 // For matching anything other than phone number
 fun String.regexMatches(targetStr: String, regexFlags: Int): Boolean {
