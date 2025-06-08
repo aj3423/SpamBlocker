@@ -54,4 +54,15 @@
     </string>
     <string name="call_to_number">To Number</string>
     <string name="call_to">Call To</string>
+    <string name="push_alert">Push Alert</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        TODO...
+        ]]>
+    </string>
+    <string name="notification_content">Notification Content</string>
+    <string name="app">App</string>
+    <string name="choose">Choose</string>
+    <string name="notification_access">Notification Access</string>
+    <string name="usage_statistics">Usage Statistics</string>
 </resources>

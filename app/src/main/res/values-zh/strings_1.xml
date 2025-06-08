@@ -51,7 +51,16 @@
     <string name="imported_successfully">导入成功</string>
     <string name="import_fail">导入失败</string>
     <string name="go_to_setting">前往设置</string>
-    <string name="prompt_go_to_usage_permission_setting">该功能需要以下权限：\n\n `使用情况统计信息`\n\n 您需要在系统设置中手动启用该权限。\n\n 打开设置页面？ </string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        <translate>此功能需要权限:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        必须在系统设置中手动启用。<br>
+        打开该设置页面?</translate>
+        ]]>
+    </string>
     <string name="emergency_call">紧急呼叫</string>
     <string name="label_contact_filter">联系人过滤</string>
     <string name="label_number_rules">号码规则</string>

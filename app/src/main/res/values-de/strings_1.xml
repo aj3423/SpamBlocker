@@ -51,7 +51,16 @@
     <string name="imported_successfully">Erfolgreich importiert</string>
     <string name="import_fail">Import fehlgeschlagen</string>
     <string name="go_to_setting">Zu den Einstellungen gehen</string>
-    <string name="prompt_go_to_usage_permission_setting">Diese Funktion erfordert die Berechtigung:\n\n `Verwendungsstatistiken`\n\nDiese muss in den Systemeinstellungen manuell aktiviert werden.\n\n Die Einstellungsseite öffnen?</string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        Für diese Funktion ist eine Berechtigung erforderlich:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        Sie muss manuell in den Systemeinstellungen aktiviert werden.<br>
+        Einstellungen öffnen?
+        ]]>
+    </string>
     <string name="emergency_call">Notruf</string>
     <string name="label_contact_filter">Kontaktfilter</string>
     <string name="label_number_rules">Telefonnummern-Regeln</string>

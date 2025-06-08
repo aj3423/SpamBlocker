@@ -9,7 +9,7 @@ import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
 
 class spf { // for namespace only
 
-    open class SharedPref(private val ctx: Context) {
+    open class SharedPref(ctx: Context) {
         private val prefs: SharedPreferences = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
         companion object {
@@ -89,69 +89,35 @@ class spf { // for namespace only
         fun getLanguage(): String { return readString(Def.SETTING_LANGUAGE, "") }
         fun setLanguage(lang: String) { writeString(Def.SETTING_LANGUAGE, lang) }
 
-        fun isTestingIconClicked(): Boolean {
-            return readBoolean(Def.SETTING_TESTING_ICON_CLICKED, false)
-        }
-        fun setTestingIconClicked(clicked: Boolean = true) {
-            writeBoolean(Def.SETTING_TESTING_ICON_CLICKED, clicked)
-        }
+        fun isTestingIconClicked(): Boolean { return readBoolean(Def.SETTING_TESTING_ICON_CLICKED, false) }
+        fun setTestingIconClicked(clicked: Boolean = true) { writeBoolean(Def.SETTING_TESTING_ICON_CLICKED, clicked) }
 
         // Settings below will not be backed up
         fun getActiveTab(): String { return readString(Def.SETTING_ACTIVE_TAB, "setting") }
         fun setActiveTab(tab: String) { writeString(Def.SETTING_ACTIVE_TAB, tab) }
 
-        fun hasPromptedForRunningInWorkProfile(): Boolean {
-            return readBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, false)
-        }
-        fun setPromptedForRunningInWorkProfile() {
-            writeBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, true)
-        }
-        fun isDoubleSMSWarningDismissed(): Boolean {
-            return readBoolean(Def.SETTING_WARN_DOUBLE_SMS, false)
-        }
-        fun dismissDoubleSMSWarning() {
-            writeBoolean(Def.SETTING_WARN_DOUBLE_SMS, true)
-        }
+        fun hasPromptedForRunningInWorkProfile(): Boolean { return readBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, false) }
+        fun setPromptedForRunningInWorkProfile() { writeBoolean(Def.SETTING_WARN_RUNNING_IN_WORK_PROFILE_ONCE, true) }
+        fun isDoubleSMSWarningDismissed(): Boolean { return readBoolean(Def.SETTING_WARN_DOUBLE_SMS, false) }
+        fun dismissDoubleSMSWarning() { writeBoolean(Def.SETTING_WARN_DOUBLE_SMS, true) }
     }
 
     class EmergencySituation(ctx: Context) : SharedPref(ctx) {
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_EMERGENCY_ENABLED, false)
-        }
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_EMERGENCY_ENABLED, enabled)
-        }
-        fun isCollapsed(): Boolean {
-            return readBoolean(Def.SETTING_EMERGENCY_COLLAPSED, false)
-        }
-        fun setCollapsed(collapsed: Boolean) {
-            writeBoolean(Def.SETTING_EMERGENCY_COLLAPSED, collapsed)
-        }
-        fun isStirEnabled() : Boolean {
-            return readBoolean(Def.SETTING_EMERGENCY_STIR_ENABLED, false)
-        }
-        fun setStirEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_EMERGENCY_STIR_ENABLED, enabled)
-        }
-        fun getDuration() : Int {
-            return readInt(Def.SETTING_EMERGENCY_DURATION, 120) // 120 minutes
-        }
-        fun setDuration(duration: Int) {
-            writeInt(Def.SETTING_EMERGENCY_DURATION, duration)
-        }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_EMERGENCY_ENABLED, false) }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_EMERGENCY_ENABLED, enabled) }
+        fun isCollapsed(): Boolean { return readBoolean(Def.SETTING_EMERGENCY_COLLAPSED, false) }
+        fun setCollapsed(collapsed: Boolean) { writeBoolean(Def.SETTING_EMERGENCY_COLLAPSED, collapsed) }
+        fun isStirEnabled() : Boolean { return readBoolean(Def.SETTING_EMERGENCY_STIR_ENABLED, false) }
+        fun setStirEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_EMERGENCY_STIR_ENABLED, enabled) }
+        fun getDuration() : Int { return readInt(Def.SETTING_EMERGENCY_DURATION, 120/*Min*/) }
+        fun setDuration(duration: Int) { writeInt(Def.SETTING_EMERGENCY_DURATION, duration) }
         fun getExtraNumbers() : List<String> {
             return readString(Def.SETTING_EMERGENCY_EXTRA_NUMBERS, "")
                 .split(",").map { it.trim() }.filter { it.isNotEmpty() }
         }
-        fun setExtraNumbers(numbers: List<String>) {
-            writeString(Def.SETTING_EMERGENCY_EXTRA_NUMBERS, numbers.joinToString(","))
-        }
-        fun getTimestamp(): Long {
-            return readLong(Def.SETTING_EMERGENCY_LAST_TIMESTAMP, 0)
-        }
-        fun setTimestamp(timestamp: Long) {
-            writeLong(Def.SETTING_EMERGENCY_LAST_TIMESTAMP, timestamp)
-        }
+        fun setExtraNumbers(numbers: List<String>) { writeString(Def.SETTING_EMERGENCY_EXTRA_NUMBERS, numbers.joinToString(","))}
+        fun getTimestamp(): Long { return readLong(Def.SETTING_EMERGENCY_LAST_TIMESTAMP, 0) }
+        fun setTimestamp(timestamp: Long) { writeLong(Def.SETTING_EMERGENCY_LAST_TIMESTAMP, timestamp) }
     }
 
     class RegexOptions(ctx: Context) : SharedPref(ctx) {
@@ -209,29 +175,16 @@ class spf { // for namespace only
 
 
     class Stir(ctx: Context) : SharedPref(ctx) {
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_STIR_ENABLED, false)
-        }
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_STIR_ENABLED, enabled)
-        }
-        fun isExclusive() : Boolean {
-            return readBoolean(Def.SETTING_STIR_EXCLUSIVE, false)
-        }
-        fun setExclusive(exclusive: Boolean) {
-            writeBoolean(Def.SETTING_STIR_EXCLUSIVE, exclusive)
-        }
-        fun isIncludeUnverified() : Boolean {
-            return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false)
-        }
-        fun setIncludeUnverified(include: Boolean) {
-            writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include)
-        }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_STIR_ENABLED, false) }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_STIR_ENABLED, enabled) }
+        fun isExclusive() : Boolean { return readBoolean(Def.SETTING_STIR_EXCLUSIVE, false) }
+        fun setExclusive(exclusive: Boolean) { writeBoolean(Def.SETTING_STIR_EXCLUSIVE, exclusive) }
+        fun isIncludeUnverified() : Boolean { return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false) }
+        fun setIncludeUnverified(include: Boolean) { writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include) }
     }
     class SpamDB(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_SPAM_DB_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SPAM_DB_ENABLED, enabled) }
-
         fun isExpiryEnabled(): Boolean { return readBoolean(Def.SETTING_SPAM_DB_EXPIRY_ENABLED, getTTLOld() != -1) }
         fun setExpiryEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SPAM_DB_EXPIRY_ENABLED, enabled) }
         fun getTTL(): Int { return readInt(Def.SETTING_SPAM_DB_TTL_DAYS, if(getTTLOld() >= 0) { getTTLOld() } else { DEFAULT_SPAM_DB_TTL }) } // 90 days
@@ -240,106 +193,45 @@ class spf { // for namespace only
         fun setTTLOld(days: Int) { writeInt(Def.SETTING_SPAM_DB_TTL, days) }
     }
     class Contact(ctx: Context) : SharedPref(ctx) {
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_CONTACT_ENABLED, false)
-        }
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_CONTACT_ENABLED, enabled)
-        }
-        fun isExclusive() : Boolean {
-            return readBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, false)
-        }
-        fun setExclusive(exclusive: Boolean) {
-            writeBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, exclusive)
-        }
-        fun toggleExclusive() {
-            setExclusive(!isExclusive())
-        }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_CONTACT_ENABLED, false) }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CONTACT_ENABLED, enabled) }
+        fun isExclusive() : Boolean { return readBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, false) }
+        fun setExclusive(exclusive: Boolean) { writeBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, exclusive) }
+        fun toggleExclusive() { setExclusive(!isExclusive()) }
     }
     class RepeatedCall(ctx: Context) : SharedPref(ctx) {
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_PERMIT_REPEATED, enabled)
-        }
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_PERMIT_REPEATED, false)
-        }
-        fun getTimes(): Int {
-            return readInt(Def.SETTING_REPEATED_TIMES, 1)
-        }
-        fun setTimes(times: Int ) {
-            writeInt(Def.SETTING_REPEATED_TIMES, times)
-        }
-        fun getInXMin(): Int {
-            return readInt(Def.SETTING_REPEATED_IN_X_MIN, 5)
-        }
-        fun setInXMin(inXMin: Int) {
-            writeInt(Def.SETTING_REPEATED_IN_X_MIN, inXMin)
-        }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_REPEATED, enabled) }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_REPEATED, false) }
+        fun getTimes(): Int { return readInt(Def.SETTING_REPEATED_TIMES, 1) }
+        fun setTimes(times: Int ) { writeInt(Def.SETTING_REPEATED_TIMES, times) }
+        fun getInXMin(): Int { return readInt(Def.SETTING_REPEATED_IN_X_MIN, 5) }
+        fun setInXMin(inXMin: Int) { writeInt(Def.SETTING_REPEATED_IN_X_MIN, inXMin) }
     }
 
     class Dialed(ctx: Context) : SharedPref(ctx) {
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_PERMIT_DIALED, enabled)
-        }
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_PERMIT_DIALED, false)
-        }
-        fun getDays(): Int {
-            return readInt(Def.SETTING_DIALED_IN_X_DAY, 3)
-        }
-        fun setDays(inXDay: Int) {
-            writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay)
-        }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_DIALED, enabled) }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_DIALED, false) }
+        fun getDays(): Int { return readInt(Def.SETTING_DIALED_IN_X_DAY, 3) }
+        fun setDays(inXDay: Int) { writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay) }
     }
 
     class OffTime(ctx: Context) : SharedPref(ctx) {
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_ENABLE_OFF_TIME, false)
-        }
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_ENABLE_OFF_TIME, enabled)
-        }
-        fun setStartHour(hour: Int) {
-            writeInt(Def.SETTING_OFF_TIME_START_HOUR, hour)
-        }
-        fun setStartMin(min: Int) {
-            writeInt(Def.SETTING_OFF_TIME_START_MIN, min)
-        }
-        fun setEndHour(hour: Int) {
-            writeInt(Def.SETTING_OFF_TIME_END_HOUR, hour)
-        }
-        fun setEndMin(min: Int) {
-            writeInt(Def.SETTING_OFF_TIME_END_MIN, min)
-        }
-        fun getStartHour(): Int {
-            return readInt(Def.SETTING_OFF_TIME_START_HOUR, 0)
-        }
-        fun getStartMin(): Int {
-            return readInt(Def.SETTING_OFF_TIME_START_MIN, 0)
-        }
-        fun getEndHour(): Int {
-            return readInt(Def.SETTING_OFF_TIME_END_HOUR, 0)
-        }
-        fun getEndMin(): Int {
-            return readInt(Def.SETTING_OFF_TIME_END_MIN, 0)
-        }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLE_OFF_TIME, false) }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_ENABLE_OFF_TIME, enabled) }
+        fun setStartHour(hour: Int) { writeInt(Def.SETTING_OFF_TIME_START_HOUR, hour) }
+        fun setStartMin(min: Int) { writeInt(Def.SETTING_OFF_TIME_START_MIN, min) }
+        fun setEndHour(hour: Int) { writeInt(Def.SETTING_OFF_TIME_END_HOUR, hour) }
+        fun setEndMin(min: Int) { writeInt(Def.SETTING_OFF_TIME_END_MIN, min) }
+        fun getStartHour(): Int { return readInt(Def.SETTING_OFF_TIME_START_HOUR, 0) }
+        fun getStartMin(): Int { return readInt(Def.SETTING_OFF_TIME_START_MIN, 0) }
+        fun getEndHour(): Int { return readInt(Def.SETTING_OFF_TIME_END_HOUR, 0) }
+        fun getEndMin(): Int { return readInt(Def.SETTING_OFF_TIME_END_MIN, 0) }
     }
     class BlockType(ctx: Context) : SharedPref(ctx) {
-        fun setType(type: Int) {
-            writeInt(Def.SETTING_BLOCK_TYPE, type)
-        }
-
-        fun getType(): Int {
-            return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE)
-        }
-
-        fun setConfig(config: String) {
-            writeString(Def.SETTING_BLOCK_TYPE_CONFIG, config)
-        }
-
-        fun getConfig(): String {
-            return readString(Def.SETTING_BLOCK_TYPE_CONFIG, "")
-        }
+        fun setType(type: Int) { writeInt(Def.SETTING_BLOCK_TYPE, type) }
+        fun getType(): Int { return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE) }
+        fun setConfig(config: String) { writeString(Def.SETTING_BLOCK_TYPE_CONFIG, config) }
+        fun getConfig(): String { return readString(Def.SETTING_BLOCK_TYPE_CONFIG, "") }
     }
     @Serializable
     data class RecentAppInfo(
@@ -473,119 +365,51 @@ class spf { // for namespace only
             }
             setList(l)
         }
-        fun getPriority() : Int {
-            return readInt(Def.SETTING_MEETING_MODE_PRIORITY, 20)
-        }
-        fun setPriority(priority : Int) {
-            writeInt(Def.SETTING_MEETING_MODE_PRIORITY, priority)
-        }
+        fun getPriority() : Int { return readInt(Def.SETTING_MEETING_MODE_PRIORITY, 20) }
+        fun setPriority(priority : Int) { writeInt(Def.SETTING_MEETING_MODE_PRIORITY, priority) }
     }
 
-    class CallAlert(ctx: Context) : SharedPref(ctx) {
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_CALL_ALERT_ENABLED, false)
-        }
+    class SmsAlert(ctx: Context) : SharedPref(ctx) {
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_ALERT_ENABLED, false) }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_ALERT_ENABLED, enabled) }
+        fun isCollapsed(): Boolean { return readBoolean(Def.SETTING_SMS_ALERT_COLLAPSED, false) }
+        fun setCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_ALERT_COLLAPSED, enabled) }
+        fun getDuration(): Int { return readInt(Def.SETTING_SMS_ALERT_DURATION, 90) }
+        fun setDuration(seconds: Int) { writeInt(Def.SETTING_SMS_ALERT_DURATION, seconds) }
+        fun getRegexStr(): String { return readString(Def.SETTING_SMS_ALERT_REGEX_STR, "") }
+        fun setRegexStr(regex: String) { writeString(Def.SETTING_SMS_ALERT_REGEX_STR, regex) }
+        fun getRegexFlags(): Int { return readInt(Def.SETTING_SMS_ALERT_REGEX_FLAGS, Def.DefaultRegexFlags) }
+        fun setRegexFlags(flags: Int) { writeInt(Def.SETTING_SMS_ALERT_REGEX_FLAGS, flags) }
+        fun getTimestamp(): Long { return readLong(Def.SETTING_SMS_ALERT_TIMESTAMP, 0) }
+        fun setTimestamp(timestamp: Long) { writeLong(Def.SETTING_SMS_ALERT_TIMESTAMP, timestamp) }
+    }
 
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_CALL_ALERT_ENABLED, enabled)
-        }
+    class PushAlert(ctx: Context) : SharedPref(ctx) {
+        fun isCollapsed(): Boolean { return readBoolean(Def.SETTING_PUSH_ALERT_COLLAPSED, false) }
+        fun setCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_PUSH_ALERT_COLLAPSED, enabled) }
 
-        fun isCollapsed(): Boolean {
-            return readBoolean(Def.SETTING_CALL_ALERT_COLLAPSED, false)
-        }
-
-        fun setCollapsed(enabled: Boolean) {
-            writeBoolean(Def.SETTING_CALL_ALERT_COLLAPSED, enabled)
-        }
-
-        fun getDuration(): Int {
-            return readInt(Def.SETTING_CALL_ALERT_DURATION, 90)
-        }
-
-        fun setDuration(seconds: Int) {
-            writeInt(Def.SETTING_CALL_ALERT_DURATION, seconds)
-        }
-
-        fun getRegexStr(): String {
-            return readString(Def.SETTING_CALL_ALERT_REGEX_STR, "")
-        }
-
-        fun setRegexStr(regex: String) {
-            writeString(Def.SETTING_CALL_ALERT_REGEX_STR, regex)
-        }
-
-        fun getRegexFlags(): Int {
-            return readInt(Def.SETTING_CALL_ALERT_REGEX_FLAGS, Def.DefaultRegexFlags)
-        }
-
-        fun setRegexFlags(flags: Int) {
-            writeInt(Def.SETTING_CALL_ALERT_REGEX_FLAGS, flags)
-        }
-
-        fun getTimestamp(): Long {
-            return readLong(Def.SETTING_CALL_ALERT_TIMESTAMP, 0)
-        }
-
-        fun setTimestamp(timestamp: Long) {
-            writeLong(Def.SETTING_CALL_ALERT_TIMESTAMP, timestamp)
-        }
+        fun getPkgName(): String { return readString(Def.SETTING_PUSH_ALERT_PKG_NAME, "") }
+        fun setPkgName(pkgName: String) { writeString(Def.SETTING_PUSH_ALERT_PKG_NAME, pkgName) }
+        fun getBody(): String { return readString(Def.SETTING_PUSH_ALERT_BODY, "") }
+        fun setBody(body: String) { writeString(Def.SETTING_PUSH_ALERT_BODY, body) }
+        fun getExpireTime(): Long { return readLong(Def.SETTING_PUSH_ALERT_EXPIRE_TIME, 0) }
+        fun setExpireTime(timestamp: Long) { writeLong(Def.SETTING_PUSH_ALERT_EXPIRE_TIME, timestamp) }
     }
 
     class SmsBomb(ctx: Context) : SharedPref(ctx) {
-        fun isEnabled(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMB_ENABLED, false)
-        }
-
-        fun setEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMB_ENABLED, enabled)
-        }
-
-        fun isCollapsed(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMB_COLLAPSED, false)
-        }
-
-        fun setCollapsed(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMB_COLLAPSED, enabled)
-        }
-
-        fun getInterval(): Int {
-            return readInt(Def.SETTING_SMS_BOMB_INTERVAL, 30)
-        }
-
-        fun setInterval(seconds: Int) {
-            writeInt(Def.SETTING_SMS_BOMB_INTERVAL, seconds)
-        }
-
-        fun getRegexStr(): String {
-            return readString(Def.SETTING_SMS_BOMB_REGEX_STR, "")
-        }
-
-        fun setRegexStr(regex: String) {
-            writeString(Def.SETTING_SMS_BOMB_REGEX_STR, regex)
-        }
-
-        fun getRegexFlags(): Int {
-            return readInt(Def.SETTING_SMS_BOMB_REGEX_FLAGS, Def.DefaultRegexFlags)
-        }
-
-        fun setRegexFlags(flags: Int) {
-            writeInt(Def.SETTING_SMS_BOMB_REGEX_FLAGS, flags)
-        }
-
-        fun getTimestamp(): Long {
-            return readLong(Def.SETTING_SMS_BOMB_TIMESTAMP, 0)
-        }
-
-        fun setTimestamp(timestamp: Long) {
-            writeLong(Def.SETTING_SMS_BOMB_TIMESTAMP, timestamp)
-        }
-
-        fun isLockScreenProtectionEnabled(): Boolean {
-            return readBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED, true)
-        }
-
-        fun setLockScreenProtectionEnabled(enabled: Boolean) {
-            writeBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED, enabled)
-        }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_BOMB_ENABLED, false) }
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_BOMB_ENABLED, enabled) }
+        fun isCollapsed(): Boolean { return readBoolean(Def.SETTING_SMS_BOMB_COLLAPSED, false) }
+        fun setCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_BOMB_COLLAPSED, enabled) }
+        fun getInterval(): Int { return readInt(Def.SETTING_SMS_BOMB_INTERVAL, 30) }
+        fun setInterval(seconds: Int) { writeInt(Def.SETTING_SMS_BOMB_INTERVAL, seconds) }
+        fun getRegexStr(): String { return readString(Def.SETTING_SMS_BOMB_REGEX_STR, "") }
+        fun setRegexStr(regex: String) { writeString(Def.SETTING_SMS_BOMB_REGEX_STR, regex) }
+        fun getRegexFlags(): Int { return readInt(Def.SETTING_SMS_BOMB_REGEX_FLAGS, Def.DefaultRegexFlags) }
+        fun setRegexFlags(flags: Int) { writeInt(Def.SETTING_SMS_BOMB_REGEX_FLAGS, flags) }
+        fun getTimestamp(): Long { return readLong(Def.SETTING_SMS_BOMB_TIMESTAMP, 0) }
+        fun setTimestamp(timestamp: Long) { writeLong(Def.SETTING_SMS_BOMB_TIMESTAMP, timestamp) }
+        fun isLockScreenProtectionEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED, true) }
+        fun setLockScreenProtectionEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_BOMB_LOCKSCREEN_PROTECTION_ENABLED, enabled) }
     }
 }

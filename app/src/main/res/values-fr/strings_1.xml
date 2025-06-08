@@ -51,7 +51,16 @@
     <string name="imported_successfully">Importé avec succès</string>
     <string name="import_fail">Échec de l\'importation</string>
     <string name="go_to_setting">Aller aux paramètres</string>
-    <string name="prompt_go_to_usage_permission_setting">Cette fonctionnalité nécessite une autorisation :\n\n`Statistiques d\'utilisation`\n\nElle doit être activée manuellement dans les paramètres système.\n\nOuvrir la page des paramètres ?</string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        Cette fonctionnalité nécessite l\'autorisation :<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        Elle doit être activée manuellement dans les paramètres système.<br>
+        Ouvrir cette page de paramètres ?
+        ]]>
+    </string>
     <string name="emergency_call">Appel d\'urgence</string>
     <string name="label_contact_filter">Filtre des contacts</string>
     <string name="label_number_rules">Règles de numéros</string>

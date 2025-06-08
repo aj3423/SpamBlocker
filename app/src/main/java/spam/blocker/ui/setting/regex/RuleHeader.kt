@@ -18,8 +18,6 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 
-// The row:
-//   "Number Rule"       [Add] [Test]
 @Composable
 fun RuleHeader(
     vm: RuleViewModel,

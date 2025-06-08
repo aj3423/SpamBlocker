@@ -50,11 +50,14 @@ import spam.blocker.ui.setting.quick.RecentApps
 import spam.blocker.ui.setting.quick.RepeatedCall
 import spam.blocker.ui.setting.quick.SpamDB
 import spam.blocker.ui.setting.quick.Stir
-import spam.blocker.ui.setting.regex.CallAlert
+import spam.blocker.ui.setting.regex.PushAlertHeader
+import spam.blocker.ui.setting.regex.PushAlertList
+import spam.blocker.ui.setting.regex.PushAlertViewModel
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.setting.regex.RuleViewModel
+import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
@@ -178,8 +181,16 @@ fun SettingScreen() {
                                 }
                             }
 
-                            // Call Alert
-                            CallAlert()
+                            // Push Alert
+                            LaunchedEffect(true) { PushAlertViewModel.reloadDbAndOptions(ctx) }
+                            PushAlertHeader()
+                            AnimatedVisibleV(!PushAlertViewModel.listCollapsed.value) {
+                                PushAlertList()
+                            }
+
+                            // SMS Alert
+                            SmsAlert()
+
                             // SMS Bomb
                             SmsBomb()
                         }

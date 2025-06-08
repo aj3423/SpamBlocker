@@ -51,7 +51,16 @@
     <string name="imported_successfully">Імпортовано успішно</string>
     <string name="import_fail">Не вдалося імпортувати</string>
     <string name="go_to_setting">Перейти до налаштувань</string>
-    <string name="prompt_go_to_usage_permission_setting">Для цієї функції потрібен дозвіл:\n\n `Статистика використання`\n\nЙого потрібно ввімкнути вручну в системних налаштуваннях.\n\n Відкрити сторінку налаштувань?</string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        Для цієї функції потрібен дозвіл:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        Його потрібно ввімкнути вручну в налаштуваннях системи.<br>
+        Відкрити сторінку налаштувань?
+        ]]>
+    </string>
     <string name="emergency_call">Терміновий дзвінок</string>
     <string name="label_contact_filter">Фільтр контактів</string>
     <string name="label_number_rules">Правила номерів</string>

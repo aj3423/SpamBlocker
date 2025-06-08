@@ -71,8 +71,8 @@
     <string name="seconds">Saniye</string>
     <string name="seconds_short">Sn</string>
     <string name="within_seconds">Saniye İçinde</string>
-    <string name="call_alert"><short>Arama Uyarısı</short></string>
-    <string name="help_call_alert">
+    <string name="sms_alert"><short>SMS Uyarısı</short></string>
+    <string name="help_sms_alert">
         <![CDATA[
         Bazı hizmetler, size bir aramanın yaklaşmakta olduğunu, genellikle bir dakika içinde, önceden bildirmek için size mesaj gönderecektir.<br>
         <br>

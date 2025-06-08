@@ -51,7 +51,16 @@
     <string name="imported_successfully">Importado con éxito</string>
     <string name="import_fail">Fallo ao importar</string>
     <string name="go_to_setting">Ir á configuración</string>
-    <string name="prompt_go_to_usage_permission_setting">Esta función require permiso:\n\n `Estatísticas de uso`\n\nTen que ser habilitado manualmente en Configuración do Sistema.\n\n Abrir esa páxina de configuración? </string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        Esta función require permiso:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        Ten que activarse manualmente na configuración do sistema.<br>
+        Abrir esa páxina de configuración?
+        ]]>
+    </string>
     <string name="emergency_call">Chamada de emerxencia</string>
     <string name="label_contact_filter">Filtro de contacto</string>
     <string name="label_number_rules">Regras de número</string>

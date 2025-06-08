@@ -2,13 +2,13 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.Intent
+import android.provider.Settings
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -19,6 +19,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Util.doOnce
@@ -76,6 +77,19 @@ class AppOpsPermission(
     }
 )
 
+// For permissions AccessNotifications only
+class AccessNotificationsPermission(
+    isOptional: Boolean = false,
+    prompt: String? = null,
+) : IntentPermission(
+    isOptional = isOptional,
+    prompt = prompt,
+    intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS),
+    isGrantedChecker = { ctx ->
+        Permissions.isAccessNotificationPermissionGranted(ctx)
+    }
+)
+
 /*
     Convenient class for asking for multiple permissions,
 
@@ -111,7 +125,7 @@ class PermissionChain(
             PopupDialog(
                 trigger = popupTrigger,
                 content = {
-                    Text(curr.prompt!!, color = LocalPalette.current.textGrey)
+                    HtmlText(curr.prompt!!, color = LocalPalette.current.textGrey)
                 },
                 buttons = {
                     GreyButton("cancel") {

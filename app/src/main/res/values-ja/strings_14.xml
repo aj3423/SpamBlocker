@@ -70,8 +70,8 @@
     <string name="seconds">秒</string>
     <string name="seconds_short">秒</string>
     <string name="within_seconds">以内</string>
-    <string name="call_alert"><short>電話通知</short></string>
-    <string name="help_call_alert">
+    <string name="sms_alert"><short>SMS警告</short></string>
+    <string name="help_sms_alert">
         <![CDATA[
         一部のサービスでは、電話がかかってくることを知らせるために、通常は1分以内にテキストメッセージが送信されます。<br>
         <br>

@@ -966,7 +966,7 @@ class Checker { // for namespace only
         }
     }
 
-    private class CallAlert(
+    private class PushAlert(
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
@@ -976,14 +976,57 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
-            val spf = spf.CallAlert(ctx)
+            val spf = spf.PushAlert(ctx)
+            if (!Permissions.isAccessNotificationPermissionGranted(ctx)) {
+                return null
+            }
+            logger?.info(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.push_alert).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
+
+            // Following information is updated by NotificationListenerService
+            val pkgName = spf.getPkgName()
+            val body = spf.getBody()
+            val expireTime: Long = spf.getExpireTime() // millis
+
+            val now = System.currentTimeMillis()
+
+            if (now < expireTime) {
+                logger?.success(
+                    ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.push_alert))
+                )
+                return ByPushAlert(detail = PushAlertDetail(
+                    pkgName = pkgName,
+                    body = body,
+                ))
+            }
+
+            return null
+        }
+    }
+
+    private class SmsAlert(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return 10
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val logger = cCtx.logger
+
+            val spf = spf.SmsAlert(ctx)
             if (!spf.isEnabled()) {
                 return null
             }
             logger?.info(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
-                        ctx.getString(R.string.call_alert).A(SkyBlue),
+                        ctx.getString(R.string.sms_alert).A(SkyBlue),
                         priority().toString().A(LightMagenta)
                     )
             )
@@ -996,9 +1039,9 @@ class Checker { // for namespace only
 
             if (now < expire) {
                 logger?.success(
-                    ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.call_alert))
+                    ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.sms_alert))
                 )
-                return ByCallAlert()
+                return BySmsAlert()
             }
 
             return null
@@ -1117,7 +1160,8 @@ class Checker { // for namespace only
                 MeetingMode(ctx),
                 OffTime(ctx),
                 InstantQuery(ctx, Def.ForNumber),
-                CallAlert(ctx)
+                PushAlert(ctx),
+                SmsAlert(ctx)
             )
 
             //  add number rules to checkers

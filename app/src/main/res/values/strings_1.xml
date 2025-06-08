@@ -51,7 +51,16 @@
     <string name="imported_successfully">Imported successfully</string>
     <string name="import_fail">Failed to import</string>
     <string name="go_to_setting">Go to Setting</string>
-    <string name="prompt_go_to_usage_permission_setting">This feature requires permission:\n\n `Usage Statistics`\n\nIt has to be manually enabled in System Settings.\n\n Open that setting page? </string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        This feature requires permission:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        It has to be manually enabled in System Settings.<br>
+        Open that setting page?
+        ]]>
+    </string>
     <string name="emergency_call">Emergency Call</string>
     <string name="label_contact_filter">Contact Filter</string>
     <string name="label_number_rules">Number Rules</string>

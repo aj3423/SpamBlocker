@@ -41,10 +41,10 @@ import spam.blocker.util.spf
 
 
 @Composable
-fun CallAlert() {
+fun SmsAlert() {
     val ctx = LocalContext.current
     val C = LocalPalette.current
-    val spf = spf.CallAlert(ctx)
+    val spf = spf.SmsAlert(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)) }
     var duration by remember { mutableIntStateOf(spf.getDuration()) }
@@ -96,7 +96,7 @@ fun CallAlert() {
         },
         label = {
             RowVCenterSpaced(4) {
-                SettingLabel(R.string.call_alert)
+                SettingLabel(R.string.sms_alert)
                 if (collapsed) {
                     GreyIcon16(
                         iconId = R.drawable.ic_dropdown_arrow,
@@ -104,7 +104,7 @@ fun CallAlert() {
                 }
             }
         },
-        helpTooltip = Str(R.string.help_call_alert),
+        helpTooltip = Str(R.string.help_sms_alert),
         content = {
             if (isEnabled) {
                 StrokeButton(

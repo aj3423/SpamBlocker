@@ -56,6 +56,9 @@ object Events {
     // An event triggered when regex rule list is updated, maybe triggered by Workflow
     val regexRuleUpdated = Event()
 
+    // An event triggered when push alert list is updated
+    val pushAlertUpdated = Event()
+
     // An event triggered when one or multiple Bot is updated, maybe triggered by Workflow
     val botUpdated = Event()
 

@@ -4,8 +4,30 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.ui.widgets.DrawableImage
+
+@Composable
+fun AppIcon(
+    pkgName: String,
+    modifier: Modifier = Modifier,
+) {
+    val ctx = LocalContext.current
+
+    DrawableImage(
+        AppInfo.fromPackage(ctx, pkgName).icon,
+        modifier = modifier
+            .size(24.dp)
+            .padding(start = 2.dp)
+    )
+}
 
 @Immutable
 class AppInfo {

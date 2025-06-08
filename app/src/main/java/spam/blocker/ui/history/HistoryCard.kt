@@ -175,7 +175,7 @@ fun HistoryCard(
                 val r = parseCheckResultFromDb(ctx, record.result, record.reason)
                 r.ResultReason(record.expanded)
 
-                // SMS Content / Api Echo
+                // Report Number / SMS Content
                 r.ExpandedContent(forType, record)
             }
 

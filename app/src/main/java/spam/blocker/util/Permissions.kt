@@ -19,6 +19,7 @@ import android.os.Environment
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
+import android.provider.Settings.Secure
 import android.provider.Telephony
 import android.provider.Telephony.Sms
 import androidx.activity.ComponentActivity
@@ -119,6 +120,13 @@ object Permissions {
 
     fun isReadSmsPermissionGranted(ctx: Context): Boolean {
         return isPermissionGranted(ctx, Manifest.permission.READ_SMS)
+    }
+
+    fun isAccessNotificationPermissionGranted(context: Context): Boolean {
+        return Secure.getString(
+            context.applicationContext.contentResolver,
+            "enabled_notification_listeners"
+        ).contains(context.applicationContext.packageName)
     }
 
     fun isAppOpsPermissionGranted(ctx: Context, permission: String): Boolean {

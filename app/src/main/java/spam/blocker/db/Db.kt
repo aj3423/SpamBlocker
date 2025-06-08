@@ -9,7 +9,7 @@ import spam.blocker.util.logi
 class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 37
+        const val DB_VERSION = 38
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -35,6 +35,13 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         // ---- spam table ----
         const val TABLE_SPAM = "spam"
         const val COLUMN_REASON_EXTRA = "reason_extra"
+
+        // ---- push alert table ----
+        const val TABLE_PUSH_ALERT = "push_alert"
+        const val COLUMN_PKG_NAME = "package_name"
+        const val COLUMN_BODY = "body"
+        const val COLUMN_BODY_FLAGS = "body_flags"
+        const val COLUMN_DURATION = "duration"
 
         // ---- bot table ----
         const val TABLE_BOT = "bot"
@@ -113,6 +120,19 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                     ")"
         )
         db.execSQL("CREATE INDEX IF NOT EXISTS index_peer ON $TABLE_SPAM($COLUMN_PEER)")
+
+        // push alert database
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_PUSH_ALERT (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_ENABLED INTEGER, " +
+                    "$COLUMN_PKG_NAME TEXT, " +
+                    "$COLUMN_BODY TEXT, " +
+                    "$COLUMN_BODY_FLAGS INTEGER, " +
+                    "$COLUMN_DURATION INTEGER " +
+                    ")"
+        )
+        db.execSQL("CREATE INDEX IF NOT EXISTS index_pkg_name ON $TABLE_PUSH_ALERT($COLUMN_PKG_NAME)")
 
         // api query
         db.execSQL(
@@ -277,6 +297,10 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         if ((newVersion >= 37) && (oldVersion < 37)) {
             addColumnIfNotExist(db, TABLE_BOT, COLUMN_LAST_LOG, "TEXT")
             addColumnIfNotExist(db, TABLE_BOT, COLUMN_LAST_LOG_TIME, "INTEGER")
+        }
+        // v4.12 added push alert
+        if ((newVersion >= 38) && (oldVersion < 38)) {
+            onCreate(db)
         }
     }
 }

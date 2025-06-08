@@ -51,7 +51,16 @@
     <string name="imported_successfully">Berhasil Diimpor</string>
     <string name="import_fail">Gagal Diimpor</string>
     <string name="go_to_setting">Ke Pengaturan</string>
-    <string name="prompt_go_to_usage_permission_setting">Fitur ini memerlukan perizinan:\n\n `Statistik Penggunaan`\n\nFitur ini harus diaktifkan secara manual di Pengaturan Sistem.\n\n Buka halaman Pengaturan? </string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        Fitur ini membutuhkan izin:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        Izin harus diaktifkan secara manual di Pengaturan Sistem.<br>
+        Buka halaman pengaturan tersebut?
+        ]]>
+    </string>
     <string name="emergency_call">Panggilan Darurat</string>
     <string name="label_contact_filter">Saring Kontak</string>
     <string name="label_number_rules">Peraturan Nomor</string>

@@ -80,7 +80,8 @@ fun AppChooserIcon(
                         AppOpsPermission(
                             AppOpsManager.OPSTR_GET_USAGE_STATS,
                             intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
-                            prompt = ctx.getString(R.string.prompt_go_to_usage_permission_setting)
+                            prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
+                                .format(ctx.getString(R.string.usage_statistics))
                         )
                     )
                 ) { granted ->
@@ -95,6 +96,10 @@ fun AppChooserIcon(
 fun <T> PopupChooseApps(
     popupTrigger: MutableState<Boolean>,
 
+    // Return
+    //  - true: app is checked and ordered at top
+    //  - false: app is checked
+    //  - null: app is not checked
     finder: (String) -> T?,
 
     extra: (@Composable (T?) -> Unit)? = null,

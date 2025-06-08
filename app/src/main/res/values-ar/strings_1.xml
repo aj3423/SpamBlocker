@@ -51,7 +51,16 @@
     <string name="imported_successfully">تم الاستيراد بنجاح</string>
     <string name="import_fail">فشل الاستيراد</string>
     <string name="go_to_setting">اذهب إلى الإعدادات</string>
-    <string name="prompt_go_to_usage_permission_setting">تتطلب هذه الميزة إذنًا:\n\n `إحصائيات الاستخدام`\n\nيجب تمكينه يدويًا في إعدادات النظام.\n\n هل تريد فتح صفحة الإعدادات؟ </string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        هذه الميزة تتطلب إذنًا:<br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        يجب تمكينه يدويًا في إعدادات النظام.<br>
+        فتح صفحة الإعدادات هذه؟
+        ]]>
+    </string>
     <string name="emergency_call">مكالمة طوارئ</string>
     <string name="label_contact_filter">تصفية جهات الاتصال</string>
     <string name="label_number_rules">قواعد الأرقام</string>

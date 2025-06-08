@@ -1,6 +1,7 @@
 package spam.blocker.config
 
 import android.content.Context
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import spam.blocker.G
@@ -128,7 +129,8 @@ class RegexOptions {
 }
 
 @Serializable
-class CallAlert {
+@SerialName("CallAlert") // for historical reason, previously it's named "CallAlert"
+class SmsAlert {
     var enabled = false
     var collapsed = false
     var duration = 0
@@ -137,7 +139,7 @@ class CallAlert {
     var timestamp: Long = 0
 
     fun load(ctx: Context) {
-        val spf = spf.CallAlert(ctx)
+        val spf = spf.SmsAlert(ctx)
         enabled = spf.isEnabled()
         collapsed = spf.isCollapsed()
         duration = spf.getDuration()
@@ -147,7 +149,7 @@ class CallAlert {
     }
 
     fun apply(ctx: Context) {
-        spf.CallAlert(ctx).apply {
+        spf.SmsAlert(ctx).apply {
             setEnabled(enabled)
             setCollapsed(collapsed)
             setDuration(duration)
@@ -574,7 +576,7 @@ class Configs {
     val numberRules = NumberRules()
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
-    val callAlert = CallAlert()
+    val smsAlert = SmsAlert()
     val emergency = EmergencySituation()
     val smsBomb = SmsBomb()
 
@@ -606,7 +608,7 @@ class Configs {
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
-        callAlert.load(ctx)
+        smsAlert.load(ctx)
         emergency.load(ctx)
         smsBomb.load(ctx)
 
@@ -640,7 +642,7 @@ class Configs {
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
-        callAlert.apply(ctx)
+        smsAlert.apply(ctx)
         emergency.apply(ctx)
         smsBomb.apply(ctx)
 

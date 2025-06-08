@@ -1,16 +1,16 @@
 [versions]
-agp = "8.9.1"
+agp = "8.9.3"
 espressoCore = "3.6.1"
 junitVersion = "1.2.1"
 kotlin = "2.0.0"
 activityCompose = "1.10.1"
-composeBom = "2025.04.00"
+composeBom = "2025.06.00"
 libphonenumber = "8.13.52"
 reorderable = "2.3.3"
 serialization = "1.7.1"
 mockk = "1.13.10"
 lazycolumnscrollbar = "2.2.0"
-workRuntimeKtx = "2.10.0"
+workRuntimeKtx = "2.10.1"
 junitJupiter = "5.8.2"
 
 [libraries]

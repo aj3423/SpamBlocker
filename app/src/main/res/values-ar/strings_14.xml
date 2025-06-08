@@ -71,8 +71,8 @@
     <string name="seconds">ثواني</string>
     <string name="seconds_short">ثا</string>
     <string name="within_seconds">في غضون ثوان</string>
-    <string name="call_alert"><short>تنبيه المكالمة</short></string>
-    <string name="help_call_alert">
+    <string name="sms_alert"><short>تنبيه SMS</short></string>
+    <string name="help_sms_alert">
         <![CDATA[
         سترسل لك بعض الخدمات رسالة نصية أولاً لإعلامك بأن مكالمة وشيكة، عادةً في غضون دقيقة.<br>
         <br>

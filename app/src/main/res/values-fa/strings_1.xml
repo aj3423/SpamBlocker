@@ -51,7 +51,16 @@
     <string name="imported_successfully">با موفقیت وارد شد</string>
     <string name="import_fail">وارد کردن ناموفق</string>
     <string name="go_to_setting">رفتن به تنظیمات</string>
-    <string name="prompt_go_to_usage_permission_setting">این ویژگی به مجوز زیر نیاز دارد:\n\n `آمار استفاده`\n\nباید به صورت دستی در تنظیمات سیستم فعال شود.\n\nآیا می‌خواهید صفحه تنظیمات را باز کنید؟</string>
+    <string name="prompt_go_to_permission_setting">
+        <![CDATA[
+        <translate>این ویژگی به مجوز نیاز دارد:</translate><br>
+        <br>
+        <font color="#00BFFF">%s</font><br>
+        <br>
+        <translate>باید به صورت دستی در تنظیمات سیستم فعال شود.</translate><br>
+        <translate>صفحه تنظیمات را باز کنم؟</translate>
+        ]]>
+    </string>
     <string name="emergency_call">تماس اضطراری</string>
     <string name="label_contact_filter">فیلتر مخاطبین</string>
     <string name="label_number_rules">قوانین شماره</string>

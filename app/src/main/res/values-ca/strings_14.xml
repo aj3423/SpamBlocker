@@ -71,8 +71,8 @@
     <string name="seconds">Segons</string>
     <string name="seconds_short"><short>Seg</short></string>
     <string name="within_seconds">En segons</string>
-    <string name="call_alert"><short>Alerta de trucada</short></string>
-    <string name="help_call_alert">
+    <string name="sms_alert"><short>Alerta SMS</short></string>
+    <string name="help_sms_alert">
         <![CDATA[
         Alguns serveis us enviaran un missatge de text primer per informar-vos que una trucada és imminent, normalment en un minut.<br>
         <br>

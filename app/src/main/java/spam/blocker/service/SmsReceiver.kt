@@ -17,9 +17,7 @@ import spam.blocker.util.Notification
 import spam.blocker.util.Notification.IMPORTANCE_HIGH_MUTED
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions
 import spam.blocker.util.Permissions.isSmsAppInForeground
-import spam.blocker.util.Util
 import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
@@ -75,9 +73,9 @@ open class SmsReceiver : BroadcastReceiver() {
             }
         }
 
-        // 3. update CallAlert timestamp to SharedPref if it's enabled
+        // 3. update SmsAlert timestamp to SharedPref if it's enabled
         run {
-            val spf = spf.CallAlert(ctx)
+            val spf = spf.SmsAlert(ctx)
             val regex = spf.getRegexStr()
             if (spf.isEnabled()) {
                 val flags = spf.getRegexFlags()
