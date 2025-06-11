@@ -22,7 +22,7 @@ data class PushAlertRecord(
     val pkgName: String = "",
     val body: String = "",
     var bodyFlags: Int = Def.DefaultRegexFlags,
-    val duration: Int = 0,
+    val duration: Int = 1,
 ) {
     fun isValid(): Boolean {
         return pkgName != "" && body != "" && duration > 0
@@ -99,12 +99,6 @@ object PushAlertTable {
             }
             return ret
         }
-    }
-    fun listForPackage(
-        ctx: Context,
-        pkgName: String,
-    ): List<PushAlertRecord> {
-        return listAll(ctx, " WHERE $COLUMN_PKG_NAME = '$pkgName' AND $COLUMN_ENABLED = 1")
     }
 
     fun clearAll(ctx: Context) {

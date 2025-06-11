@@ -54,4 +54,38 @@
     </string>
     <string name="call_to_number">Vers numéro</string>
     <string name="call_to">Appeler</string>
+    <string name="push_alert">Alerte push</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        Après avoir reçu des notifications spécifiques, autorisez tous les appels entrants pendant une période définie.<br>
+        <br>
+        Un cas d\'utilisation typique :<br>
+        &ensp; Quand une application de commande de nourriture affiche une notification comme :<br>
+        &emsp; Titre : <font color="#888888">Mise à jour de commande :</font><br>
+        &emsp; Corps : <font color="#888888">Votre commande a été prise par le livreur…</font><br>
+        &ensp; Le livreur pourra alors vous appeler pour confirmer les détails.<br>
+        <br>
+        <font color="#ffa500"><b>Remarque :</b></font> Cela nécessite la permission <b>Accessibilité</b>,
+        certains appareils révoqueront cette permission après la mise à jour de l\'application. Vous devrez la
+        réactiver manuellement après la mise à jour.<br>
+        <br>
+        <h5><font color="#00BFFF">- Application</font></h5>
+        Correspond uniquement aux notifications de cette application.<br>
+        <br>
+        <h5><font color="#00BFFF">- Contenu de la notification</font></h5>
+        Cette expression régulière correspondra <b>à la fois au titre et au corps de la notification</b>.<br>
+        Exemple pour le cas d\'utilisation ci-dessus :<br>
+        &emsp; <font color="#03DAC5">mise à jour de commande.*prise par le livreur.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Durée</font></h5>
+        Spécifié en minutes.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">Contenu de la notification</string>
+    <string name="app">Application</string>
+    <string name="choose">Choisir</string>
+    <string name="accessibility">Accessibilité</string>
+    <string name="usage_statistics">Statistiques d\'utilisation</string>
 </resources>

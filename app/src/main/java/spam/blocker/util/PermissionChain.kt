@@ -77,18 +77,31 @@ class AppOpsPermission(
     }
 )
 
-// For permissions AccessNotifications only
-class AccessNotificationsPermission(
+// For Accessibility only
+class AccessibilityPermission(
     isOptional: Boolean = false,
     prompt: String? = null,
 ) : IntentPermission(
     isOptional = isOptional,
     prompt = prompt,
-    intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS),
+    intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS),
     isGrantedChecker = { ctx ->
-        Permissions.isAccessNotificationPermissionGranted(ctx)
+        Permissions.isAccessibilityPermissionGranted(ctx)
     }
 )
+
+// For permissions AccessNotifications only
+//class AccessNotificationsPermission(
+//    isOptional: Boolean = false,
+//    prompt: String? = null,
+//) : IntentPermission(
+//    isOptional = isOptional,
+//    prompt = prompt,
+//    intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS),
+//    isGrantedChecker = { ctx ->
+//        Permissions.isAccessNotificationPermissionGranted(ctx)
+//    }
+//)
 
 /*
     Convenient class for asking for multiple permissions,

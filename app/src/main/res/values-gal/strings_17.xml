@@ -54,4 +54,38 @@
     </string>
     <string name="call_to_number">A número</string>
     <string name="call_to">Chamar a</string>
+    <string name="push_alert">Alerta push</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        Despois de recibir notificacións específicas, permite todas as chamadas entrantes durante un período determinado.<br>
+        <br>
+        Un caso de uso típico:<br>
+        &ensp; Cando a aplicación de pedidos de comida mostra unha notificación como:<br>
+        &emsp; Título: <font color="#888888"><translate>Actualización do pedido:</translate></font><br>
+        &emsp; Corpo: <font color="#888888"><translate>O teu pedido foi recollido polo condutor…</translate></font><br>
+        &ensp; O condutor pode entón chamarte para confirmar os detalles.<br>
+        <br>
+        <font color="#ffa500"><b>Nota:</b></font> Requírese permiso de <b>Accesibilidade</b>,
+        algúns dispositivos revocarán este permiso despois de que a aplicación se actualice. Deberás
+        volvelo habilitar manualmente despois da actualización.<br>
+        <br>
+        <h5><font color="#00BFFF">- Aplicación</font></h5>
+        Coincide só coas notificacións desta aplicación.<br>
+        <br>
+        <h5><font color="#00BFFF">- Contido da notificación</font></h5>
+        Esta expresión regular coincidirá tanto co título como co corpo da notificación.<br>
+        Exemplo para o caso de uso anterior:<br>
+        &emsp; <font color="#03DAC5"><translate>actualización do pedido.*recollido polo condutor.*</translate></font><br>
+        <br>
+        <h5><font color="#00BFFF">- Duración</font></h5>
+        Especificado en minutos.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">Contido da notificación</string>
+    <string name="app">Aplicación</string>
+    <string name="choose">Escoller</string>
+    <string name="accessibility">Accesibilidade</string>
+    <string name="usage_statistics">Estatísticas de uso</string>
 </resources>

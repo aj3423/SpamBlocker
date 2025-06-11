@@ -52,4 +52,36 @@
     </string>
     <string name="call_to_number">شماره تماس</string>
     <string name="call_to">تماس با</string>
+    <string name="push_alert">هشدار اعلان</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        پس از دریافت اعلان‌های خاص، تمامی تماس‌های ورودی برای مدت زمان مشخصی مجاز خواهند بود.<br>
+        <br>
+        یک مورد استفاده معمول:<br>
+        &ensp; هنگامی که برنامه سفارش غذا اعلانی شبیه به این نشان می‌دهد:<br>
+        &emsp; عنوان: <font color="#888888">به‌روزرسانی سفارش:</font><br>
+        &emsp; متن: <font color="#888888">سفارش شما توسط راننده دریافت شده است...</font><br>
+        &ensp; سپس راننده ممکن است برای تأیید جزئیات با شما تماس بگیرد.<br>
+        <br>
+        <font color="#ffa500"><b>توجه:</b></font> این ویژگی نیاز به دسترسی <b>"قابلیت دسترسی" (Accessibility)</b> دارد؛ برخی دستگاه‌ها ممکن است این دسترسی را پس از به‌روزرسانی برنامه لغو کنند. شما باید پس از به‌روزرسانی، آن را به صورت دستی دوباره فعال کنید.<br>
+        <br>
+        <h5><font color="#00BFFF">- برنامه</font></h5>
+        فقط با اعلان‌های این برنامه مطابقت دارد.<br>
+        <br>
+        <h5><font color="#00BFFF">- محتوای اعلان</font></h5>
+        این عبارت با قاعده (regex) با <b>عنوان و متن اعلان</b> هر دو مطابقت خواهد داشت.<br>
+        مثال برای مورد استفاده بالا:<br>
+        &emsp; <font color="#03DAC5">به‌روزرسانی سفارش.*توسط راننده دریافت شده.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- مدت زمان</font></h5>
+        بر حسب دقیقه مشخص شده است.<br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">محتوای اعلان</string>
+    <string name="app">برنامه</string>
+    <string name="choose">انتخاب</string>
+    <string name="accessibility">قابلیت دسترسی</string>
+    <string name="usage_statistics">آمار استفاده</string>
 </resources>

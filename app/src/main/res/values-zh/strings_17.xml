@@ -52,4 +52,36 @@
     </string>
     <string name="call_to_number">呼叫号码</string>
     <string name="call_to">呼叫至</string>
+    <string name="push_alert">推送提醒</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        收到特定通知后，在设定的时间内允许所有来电。<br>
+        <br>
+        典型用例：<br>
+        &ensp; 当外卖应用显示如下通知时：<br>
+        &emsp; 标题： <font color="#888888">订单更新：</font><br>
+        &emsp; 内容： <font color="#888888">您的订单已被司机取走…</font><br>
+        &ensp; 司机随后可能会打电话给您确认详情。<br>
+        <br>
+        <font color="#ffa500"><b>注意：</b></font> 这需要<b>辅助功能</b>权限，某些设备在应用更新后会撤销此权限。您需要在更新后手动重新启用它。<br>
+        <br>
+        <h5><font color="#00BFFF">- 应用</font></h5>
+        仅匹配来自此应用的通知。<br>
+        <br>
+        <h5><font color="#00BFFF">- 通知内容</font></h5>
+        此正则表达式将匹配<b>通知标题和内容</b>。<br>
+        上述用例的示例：<br>
+        &emsp; <font color="#03DAC5">订单更新.*司机取走.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 持续时长</font></h5>
+        以分钟为单位。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级：10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">通知内容</string>
+    <string name="app">应用</string>
+    <string name="choose">选择</string>
+    <string name="accessibility">辅助功能</string>
+    <string name="usage_statistics">使用情况统计</string>
 </resources>

@@ -54,4 +54,38 @@
     </string>
     <string name="call_to_number">Al número</string>
     <string name="call_to">Trucar a</string>
+    <string name="push_alert">Alerta de notificació</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        Després de rebre notificacions específiques, permetre totes les trucades entrants durant un període determinat.<br>
+        <br>
+        Un cas d\'ús típic:<br>
+        &ensp; Quan una aplicació de comanda de menjar mostra una notificació com:<br>
+        &emsp; Títol: <font color="#888888">Actualització de la comanda:</font><br>
+        &emsp; Cos: <font color="#888888">La teva comanda ha estat recollida pel conductor…</font><br>
+        &ensp; El conductor pot llavors trucar-te per confirmar els detalls.<br>
+        <br>
+        <font color="#ffa500"><b>Nota:</b></font> Requereix el permís d\'<b>Accessibilitat</b>,
+        alguns dispositius revocaran aquest permís després d\'actualitzar l\'aplicació. Haureu de tornar-lo a activar manualment
+        després d\'actualitzar.<br>
+        <br>
+        <h5><font color="#00BFFF">- Aplicació</font></h5>
+        Només coincideix amb les notificacions d\'aquesta aplicació.<br>
+        <br>
+        <h5><font color="#00BFFF">- Contingut de la notificació</font></h5>
+        Aquesta expressió regular coincidirà amb <b>tant el títol com el cos de la notificació</b>.<br>
+        Exemple per al cas d\'ús anterior:<br>
+        &emsp; <font color="#03DAC5">actualització comanda.*recollida per conductor.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Durada</font></h5>
+        Especificat en minuts.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">Contingut de la notificació</string>
+    <string name="app">Aplicació</string>
+    <string name="choose">Triar</string>
+    <string name="accessibility">Accessibilitat</string>
+    <string name="usage_statistics">Estadístiques d\'ús</string>
 </resources>

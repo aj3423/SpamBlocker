@@ -27,11 +27,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
+import spam.blocker.service.resetPushAlertCache
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingLabel
@@ -55,11 +55,12 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.AccessNotificationsPermission
+import spam.blocker.util.AccessibilityPermission
 import spam.blocker.util.AppIcon
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permissions
 import spam.blocker.util.spf
+
 
 object PushAlertViewModel {
     val records = mutableStateListOf<PushAlertRecord>()
@@ -86,7 +87,7 @@ object PushAlertViewModel {
         val spf = spf.PushAlert(ctx)
 
         // always collapse when no permission
-        listCollapsed.value = !Permissions.isAccessNotificationPermissionGranted(ctx)
+        listCollapsed.value = !Permissions.isAccessibilityPermissionGranted(ctx)
                 || spf.isCollapsed()
     }
 
@@ -134,6 +135,7 @@ fun PushAlertEditDialog(
         },
         onCheckChange = { pkg, isChecked ->
             pkgName = if (isChecked) pkg else ""
+            chooseAppTrigger.value = false
         },
     )
 
@@ -149,9 +151,9 @@ fun PushAlertEditDialog(
                     G.permissionChain.ask(
                         ctx,
                         listOf(
-                            AccessNotificationsPermission(
+                            AccessibilityPermission(
                                 prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
-                                    .format(ctx.getString(R.string.notification_access))
+                                    .format(ctx.getString(R.string.accessibility))
                             )
                         )
                     ) { granted ->
@@ -169,8 +171,8 @@ fun PushAlertEditDialog(
                                 )
                             )
 
-                            // fire event to update the UI
-                            Events.pushAlertUpdated.fire()
+                            // Clear the cache in service.
+                            resetPushAlertCache()
                         }
                     }
                 }
@@ -259,16 +261,21 @@ fun PushAlertHeader() {
 
     LabeledRow(
         modifier = M.clickable{
-            G.permissionChain.ask(
-                ctx,
-                listOf(
-                    AccessNotificationsPermission(
-                        prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
-                            .format(ctx.getString(R.string.notification_access))
+
+            if (Permissions.isAccessibilityPermissionGranted(ctx)) { // accessibility not enabled
+                G.permissionChain.ask(
+                    ctx,
+                    listOf(
+                        AccessibilityPermission(
+                            prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
+                                .format(ctx.getString(R.string.accessibility))
+                        )
                     )
-                )
-            ) { granted ->
-                if (granted) vm.toggleCollapse(ctx)
+                ) { granted ->
+                    if (granted) vm.toggleCollapse(ctx)
+                }
+            } else {
+                vm.toggleCollapse(ctx)
             }
         },
         label = {

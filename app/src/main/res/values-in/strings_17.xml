@@ -54,4 +54,38 @@
     </string>
     <string name="call_to_number">Ke Nomor</string>
     <string name="call_to">Panggil Ke</string>
+    <string name="push_alert">Notifikasi Dorong</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        Setelah menerima notifikasi tertentu, izinkan semua panggilan masuk untuk periode waktu yang ditentukan.<br>
+        <br>
+        Kasus penggunaan umum:<br>
+        &ensp; Ketika aplikasi pemesanan makanan menampilkan notifikasi seperti:<br>
+        &emsp; Judul: <font color="#888888">Pembaruan Pesanan:</font><br>
+        &emsp; Isi: <font color="#888888">Pesanan Anda telah diambil oleh pengemudi…</font><br>
+        &ensp; Pengemudi mungkin kemudian menghubungi Anda untuk mengonfirmasi detail.<br>
+        <br>
+        <font color="#ffa500"><b>Catatan:</b></font> Membutuhkan izin <b>Aksesibilitas</b>,
+        beberapa perangkat akan mencabut izin ini setelah aplikasi diperbarui. Anda perlu mengaktifkannya kembali secara manual
+        setelah pembaruan.<br>
+        <br>
+        <h5><font color="#00BFFF">- Aplikasi</font></h5>
+        Cocokkan notifikasi dari aplikasi ini saja.<br>
+        <br>
+        <h5><font color="#00BFFF">- Konten Notifikasi</font></h5>
+        Regex ini akan mencocokkan <b>judul dan isi notifikasi</b>.<br>
+        Contoh untuk kasus penggunaan di atas:<br>
+        &emsp; <font color="#03DAC5">pembaruan pesanan.*diambil oleh pengemudi.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Durasi</font></h5>
+        Ditentukan dalam menit.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">Konten Notifikasi</string>
+    <string name="app">Aplikasi</string>
+    <string name="choose">Pilih</string>
+    <string name="accessibility">Aksesibilitas</string>
+    <string name="usage_statistics">Statistik Penggunaan</string>
 </resources>

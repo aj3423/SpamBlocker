@@ -54,4 +54,38 @@
     </string>
     <string name="call_to_number"><translate>للرقم</translate></string>
     <string name="call_to"><translate>اتصل بـ</translate></string>
+    <string name="push_alert">تنبيه دفع</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        بعد تلقي إشعارات محددة، اسمح بجميع المكالمات الواردة لفترة محددة.<br>
+        <br>
+        حالة استخدام نموذجية:<br>
+        &ensp; عندما يعرض تطبيق طلب الطعام إشعاراً مثل:<br>
+        &emsp; العنوان: <font color="#888888">تحديث الطلب:</font><br>
+        &emsp; المحتوى: <font color="#888888">طلبك قد استلمه السائق...</font><br>
+        &ensp; قد يقوم السائق بعد ذلك بالاتصال بك لتأكيد التفاصيل.<br>
+        <br>
+        <font color="#ffa500"><b>ملاحظة:</b></font> يتطلب إذن <b>الوصول (Accessibility)</b>،
+        بعض الأجهزة ستلغي هذا الإذن بعد تحديث التطبيق. تحتاج إلى إعادة تمكينه يدوياً
+        بعد التحديث.<br>
+        <br>
+        <h5><font color="#00BFFF">- التطبيق</font></h5>
+        يطابق الإشعارات من هذا التطبيق فقط.<br>
+        <br>
+        <h5><font color="#00BFFF">- محتوى الإشعار</font></h5>
+        هذا التعبير العادي سيطابق <b>كلاً من عنوان الإشعار ومحتواه</b>.<br>
+        مثال لحالة الاستخدام أعلاه:<br>
+        &emsp; <font color="#03DAC5">تحديث الطلب.*استلمه السائق.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- المدة</font></h5>
+        محددة بالدقائق.<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">محتوى الإشعار</string>
+    <string name="app">التطبيق</string>
+    <string name="choose">اختيار</string>
+    <string name="accessibility">الوصول</string>
+    <string name="usage_statistics">إحصائيات الاستخدام</string>
 </resources>

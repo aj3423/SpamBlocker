@@ -54,4 +54,36 @@
     </string>
     <string name="call_to_number">An Nummer</string>
     <string name="call_to">Anrufen</string>
+    <string name="push_alert">Push-Benachrichtigung</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        Nach Erhalt spezifischer Benachrichtigungen werden alle eingehenden Anrufe für einen festgelegten Zeitraum zugelassen.<br>
+        <br>
+        Ein typischer Anwendungsfall:<br>
+        &ensp; Wenn eine Essensbestell-App eine Benachrichtigung anzeigt wie:<br>
+        &emsp; Titel: <font color="#888888">Bestellaktualisierung:</font><br>
+        &emsp; Body: <font color="#888888">Ihre Bestellung wurde vom Fahrer abgeholt …</font><br>
+        &ensp; Der Fahrer ruft Sie dann möglicherweise an, um Details zu bestätigen.<br>
+        <br>
+        <font color="#ffa500"><b>Hinweis:</b></font> Es erfordert <b>Barrierefreiheit</b>-Berechtigung. Einige Geräte entziehen diese Berechtigung nach dem App-Update. Sie müssen sie nach dem Update manuell wieder aktivieren.<br>
+        <br>
+        <h5><font color="#00BFFF">- App</font></h5>
+        Passt nur Benachrichtigungen dieser App an.<br>
+        <br>
+        <h5><font color="#00BFFF">- Benachrichtigungsinhalt</font></h5>
+        Dieser Regex passt sowohl den <b>Benachrichtigungstitel als auch den -text</b> an.<br>
+        Beispiel für den oben genannten Anwendungsfall:<br>
+        &emsp; <font color="#03DAC5">Bestellaktualisierung.*vom Fahrer abgeholt.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Dauer</font></h5>
+        In Minuten angegeben.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">Benachrichtigungsinhalt</string>
+    <string name="app">App</string>
+    <string name="choose">Auswählen</string>
+    <string name="accessibility">Barrierefreiheit</string>
+    <string name="usage_statistics">Nutzungsstatistiken</string>
 </resources>

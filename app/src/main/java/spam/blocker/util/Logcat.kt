@@ -2,7 +2,7 @@ package spam.blocker.util
 
 import android.util.Log
 
-const val TAG = "11111"
+const val TAG = "SpamBlocker"
 
 fun logd(str: String) {
     Log.d(TAG, str)

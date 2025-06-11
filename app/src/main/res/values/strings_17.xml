@@ -57,12 +57,35 @@
     <string name="push_alert">Push Alert</string>
     <string name="help_push_alert">
         <![CDATA[
-        TODO...
+        After receiving specific notifications, allow all incoming calls for a set period.<br>
+        <br>
+        A typical use case:<br>
+        &ensp; When food ordering app shows a notification like:<br>
+        &emsp; Title: <font color="#888888"><translate>Order Update:</translate></font><br>
+        &emsp; Body: <font color="#888888"><translate>Your order has been taken by driver …</translate></font><br>
+        &ensp; The driver may then call you to confirm details.<br>
+        <br>
+        <font color="#ffa500"><b>Note:</b></font> It requires <b>Accessibility</b> permission,
+        some devices will revoke this permission after the app is updated. You need to manually
+        re-enable it after updating.<br>
+        <br>
+        <h5><font color="#00BFFF">- App</font></h5>
+        Matches notifications from this app only.<br>
+        <br>
+        <h5><font color="#00BFFF">- Notification Content</font></h5>
+        This regex will match <b>both the notification title and body</b>.<br>
+        Example for the above use case:<br>
+        &emsp; <font color="#03DAC5"><translate>order update.*taken by driver.*</translate></font><br>
+        <br>
+        <h5><font color="#00BFFF">- Duration</font></h5>
+        Specified in minutes.<br>
+        <br>
+        <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>
     </string>
     <string name="notification_content">Notification Content</string>
     <string name="app">App</string>
     <string name="choose">Choose</string>
-    <string name="notification_access">Notification Access</string>
+    <string name="accessibility">Accessibility</string>
     <string name="usage_statistics">Usage Statistics</string>
 </resources>

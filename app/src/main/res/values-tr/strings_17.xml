@@ -52,4 +52,38 @@
     </string>
     <string name="call_to_number">Numaraya Çağrı</string>
     <string name="call_to">Ara</string>
+    <string name="push_alert">Anlık Bildirim Uyarısı</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        Belirli bildirimler alındıktan sonra, belirli bir süre tüm gelen aramalara izin verin.<br>
+        <br>
+        Tipik bir kullanım durumu:<br>
+        &ensp; Yemek siparişi uygulaması şöyle bir bildirim gösterdiğinde:<br>
+        &emsp; Başlık: <font color="#888888">Sipariş Güncellemesi:</font><br>
+        &emsp; Gövde: <font color="#888888">Siparişiniz sürücü tarafından alındı…</font><br>
+        &ensp; Sürücü daha sonra detayları onaylamak için sizi arayabilir.<br>
+        <br>
+        <font color="#ffa500"><b>Not:</b></font> <b>Erişilebilirlik</b> izni gereklidir,
+        bazı cihazlar uygulama güncellendikten sonra bu izni iptal edecektir. Güncellemeden sonra manuel olarak
+        yeniden etkinleştirmeniz gerekir.<br>
+        <br>
+        <h5><font color="#00BFFF">- Uygulama</font></h5>
+        Yalnızca bu uygulamadan gelen bildirimlerle eşleşir.<br>
+        <br>
+        <h5><font color="#00BFFF">- Bildirim İçeriği</font></h5>
+        Bu regex <b>hem bildirim başlığı hem de gövdesiyle</b> eşleşecektir.<br>
+        Yukarıdaki kullanım durumu için örnek:<br>
+        &emsp; <font color="#03DAC5">sipariş güncellemesi.*sürücü tarafından alındı.*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- Süre</font></h5>
+        Dakika cinsinden belirtilmiştir.<br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: 10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">Bildirim İçeriği</string>
+    <string name="app">Uygulama</string>
+    <string name="choose">Seç</string>
+    <string name="accessibility">Erişilebilirlik</string>
+    <string name="usage_statistics">Kullanım İstatistikleri</string>
 </resources>

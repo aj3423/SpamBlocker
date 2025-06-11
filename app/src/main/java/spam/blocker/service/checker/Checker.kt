@@ -974,12 +974,14 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val logger = cCtx.logger
-
-            val spf = spf.PushAlert(ctx)
-            if (!Permissions.isAccessNotificationPermissionGranted(ctx)) {
+            if (!Permissions.isAccessibilityPermissionGranted(ctx)) {
                 return null
             }
+
+            val spf = spf.PushAlert(ctx)
+
+            val logger = cCtx.logger
+
             logger?.info(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
@@ -988,7 +990,7 @@ class Checker { // for namespace only
                     )
             )
 
-            // Following information is updated by NotificationListenerService
+            // Following information is updated by NotificationMonitorService when receiving notifications.
             val pkgName = spf.getPkgName()
             val body = spf.getBody()
             val expireTime: Long = spf.getExpireTime() // millis

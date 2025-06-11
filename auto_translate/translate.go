@@ -180,7 +180,7 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	}
 	defer client.Close()
 
-	model := client.GenerativeModel("gemini-2.0-flash")
+	model := client.GenerativeModel("gemini-2.5-flash-preview-05-20")
 	// model := client.GenerativeModel("gemini-2.0-flash-lite-preview-02-05")
 
 	// max is 8192 for gemini-v1.5-flash (8192 by default)
