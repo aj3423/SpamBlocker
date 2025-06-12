@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.quick
 
-import android.Manifest
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,8 +17,8 @@ import spam.blocker.ui.widgets.PluralStr
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions.isCallLogPermissionGranted
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 @Composable
@@ -27,7 +26,7 @@ fun Dialed() {
     val ctx = LocalContext.current
     val spf = spf.Dialed(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && isCallLogPermissionGranted(ctx)) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
     var inXDay by remember { mutableStateOf<Int?>(spf.getDays()) }
 
     // popup
@@ -53,7 +52,7 @@ fun Dialed() {
         R.string.dialed_number,
         helpTooltipId = R.string.help_dialed,
         content = {
-            if (isEnabled && isCallLogPermissionGranted(ctx)) {
+            if (isEnabled && Permission.callLog.isGranted) {
                 GreyButton(
                     label = PluralStr(inXDay!!, R.plurals.days),
                 ) {
@@ -65,9 +64,9 @@ fun Dialed() {
                     G.permissionChain.ask(
                         ctx,
                         listOf(
-                            NormalPermission(Manifest.permission.READ_CALL_LOG),
-                            NormalPermission(Manifest.permission.READ_PHONE_STATE, true),
-                            NormalPermission(Manifest.permission.READ_SMS, true)
+                            PermissionWrapper(Permission.callLog),
+                            PermissionWrapper(Permission.phoneState, isOptional =  true),
+                            PermissionWrapper(Permission.readSMS, isOptional = true)
                         )
                     ) { granted ->
                         if (granted) {

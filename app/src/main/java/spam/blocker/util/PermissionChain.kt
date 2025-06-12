@@ -1,11 +1,7 @@
 package spam.blocker.util
 
 import android.content.Context
-import android.content.Intent
-import android.provider.Settings
-import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -22,86 +18,18 @@ import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.util.Permission.launcherNormal
+import spam.blocker.util.Permission.launcherProtected
 import spam.blocker.util.Util.doOnce
 
 
-abstract class IPermission {
-    abstract val name: String
-    abstract val isOptional: Boolean
-    abstract fun isGranted(ctx: Context): Boolean
+class PermissionWrapper(
+    val perm: Permission.Type,
 
-    // Show a prompt dialog before asking for permission, explaining for why it's required
-    abstract val prompt: String?
-}
-
-open class NormalPermission(
-    override val name: String,
-    override val isOptional: Boolean = false,
-    override val prompt: String? = null
-) : IPermission() {
-    override fun isGranted(ctx: Context): Boolean {
-        return Permissions.isPermissionGranted(ctx, name)
-    }
-}
-
-// For those permissions that will launch an Intent Activity, such as UsageStats and AllFileAccess
-open class IntentPermission(
-    override val isOptional: Boolean = false,
-    override val prompt: String? = null,
-
-    // intent for opening system setting page
-    val intent: Intent,
-    val isGrantedChecker: (ctx: Context) -> Boolean,
-) : IPermission() {
-
-    override val name: String
-        get() = intent.action!!
-
-    override fun isGranted(ctx: Context): Boolean {
-        return isGrantedChecker(ctx)
-    }
-}
-
-// For permissions like UsageStats
-class AppOpsPermission(
-    override val name: String,
-    intent: Intent,
-    isOptional: Boolean = false,
-    prompt: String? = null,
-) : IntentPermission(
-    isOptional = isOptional,
-    prompt = prompt,
-    intent = intent,
-    isGrantedChecker = { ctx ->
-        Permissions.isAppOpsPermissionGranted(ctx, name)
-    }
+    val isOptional: Boolean = false,
+    // Show a prompt dialog before asking for this permission, explaining for why it's required
+    val prompt: String? = null,
 )
-
-// For Accessibility only
-class AccessibilityPermission(
-    isOptional: Boolean = false,
-    prompt: String? = null,
-) : IntentPermission(
-    isOptional = isOptional,
-    prompt = prompt,
-    intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS),
-    isGrantedChecker = { ctx ->
-        Permissions.isAccessibilityPermissionGranted(ctx)
-    }
-)
-
-// For permissions AccessNotifications only
-//class AccessNotificationsPermission(
-//    isOptional: Boolean = false,
-//    prompt: String? = null,
-//) : IntentPermission(
-//    isOptional = isOptional,
-//    prompt = prompt,
-//    intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS),
-//    isGrantedChecker = { ctx ->
-//        Permissions.isAccessNotificationPermissionGranted(ctx)
-//    }
-//)
 
 /*
     Convenient class for asking for multiple permissions,
@@ -112,20 +40,12 @@ class AccessibilityPermission(
 
     Must be created during the creation of the fragment
  */
-class PermissionChain(
-) {
-    // for non-protected permission, e.g.: CALL_LOG
-    private lateinit var launcherNormal: ManagedActivityResultLauncher<String, Boolean>
-
-    // for protected permission, e.g.: USAGE_STATS
-    private lateinit var launcherProtected: ManagedActivityResultLauncher<Intent, ActivityResult>
-
-
+class PermissionChain() {
     // final callback
     private lateinit var onResult: (Boolean) -> Unit
 
-    private lateinit var currList: MutableList<IPermission>
-    private lateinit var curr: IPermission
+    private lateinit var currList: MutableList<PermissionWrapper>
+    private lateinit var curr: PermissionWrapper
 
     private lateinit var popupTrigger: MutableState<Boolean>
 
@@ -149,7 +69,7 @@ class PermissionChain(
 
                     StrokeButton("ok", Teal200) {
                         popupTrigger.value = false
-                        handle()
+                        handle(ctx)
                     }
                 }
             )
@@ -158,6 +78,9 @@ class PermissionChain(
         launcherNormal = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestPermission()
         ) { isGranted ->
+            // Update the global permission
+            curr.perm.onResult(isGranted)
+
             if (isGranted || curr.isOptional) {
                 checkNext(ctx)
             } else {
@@ -166,9 +89,22 @@ class PermissionChain(
         }
 
         launcherProtected = rememberLauncherForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
+            contract = ActivityResultContracts.StartActivityForResult()
         ) { _ ->
-            val isGranted = curr.isGranted(ctx)
+            // The app process will be killed when the "all file access" is granted and then revoked
+            //   (by turning on the permission switch in system settings and then immediately turn it off).
+            // After returning back to this app, android will launch a new process, but these
+            //   lateinit variables haven't been initialized in the new process, which leads to a crash.
+            // So check it first, if it's uninitialized, ignore and return.
+            if (!::curr.isInitialized) {
+                return@rememberLauncherForActivityResult
+            }
+
+            val isGranted = curr.perm.check(ctx)
+
+            // Update the global permission
+            curr.perm.onResult(isGranted)
+
             if (isGranted || curr.isOptional) {
                 checkNext(ctx)
             } else {
@@ -179,7 +115,7 @@ class PermissionChain(
 
     fun ask(
         ctx: Context,
-        permissions: List<IPermission>,
+        permissions: List<PermissionWrapper>,
         onResult: (Boolean) -> Unit
     ) {
         this.onResult = onResult
@@ -196,14 +132,14 @@ class PermissionChain(
         curr = currList.first()
         currList.removeAt(0)
 
-        if (curr.isGranted(ctx)) { // already granted
+        if (curr.perm.isGranted) { // already granted
             checkNext(ctx)
             return
         }
 
         if (curr.isOptional) {
-            val isFirstTime = doOnce(ctx, "ask_once_${curr.name}") {
-                handleCurrPermission()
+            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm.name()}") {
+                handleCurrPermission(ctx)
             }
             if (!isFirstTime) {
                 checkNext(ctx)
@@ -211,24 +147,19 @@ class PermissionChain(
             return
         }
 
-        handleCurrPermission()
+        handleCurrPermission(ctx)
     }
 
-    private fun handleCurrPermission() {
+    private fun handleCurrPermission(ctx: Context) {
         if (curr.prompt == null) {
-            handle()
+            handle(ctx)
         } else { // show prompt dialog
             popupTrigger.value = true
         }
     }
 
-    private fun handle() {
-        if (curr is IntentPermission) {
-            val protected = curr as IntentPermission
-            launcherProtected.launch(protected.intent)
-        } else {
-            launcherNormal.launch(curr.name)
-        }
+    private fun handle(ctx: Context) {
+        curr.perm.ask(ctx)
     }
 }
 

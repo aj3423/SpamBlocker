@@ -301,11 +301,12 @@ fun SettingLabel(
 @Composable
 fun LabeledRow(
     label: (@Composable () -> Unit)? = null,
-
-    // optional
     modifier: Modifier = Modifier,
+    // Padding indentation for labels in Section Group
     paddingHorizontal: Int = 0,
+    // Show the question icon or not
     helpTooltip: String? = null,
+    // items on the right side, e.g.: "New" button
     content: @Composable RowScope.() -> Unit,
 ) {
     SettingRow(

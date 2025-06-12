@@ -6,7 +6,6 @@ import android.content.Context
 import android.view.accessibility.AccessibilityEvent
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
-import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
@@ -22,7 +21,7 @@ fun resetPushAlertCache() {
 // to prevent database access on every notification.
 private fun ensureCache(ctx: Context) {
     if (cache == null) {
-        logi("rebuild push alert cache")
+//        logi("rebuild push alert cache")
         cache = hashMapOf()
         val records = PushAlertTable.listAll(ctx)
             .filter {
@@ -37,7 +36,7 @@ private fun ensureCache(ctx: Context) {
 
 class NotificationMonitorService : AccessibilityService() {
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        logi("accessibility event: $event")
+//        logi("accessibility event: $event")
         if (event.eventType != AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED)
             return
 
@@ -61,7 +60,7 @@ class NotificationMonitorService : AccessibilityService() {
         if (recs == null)
             return
 
-        logi("found pkg match: $pkgName, records size: ${recs.size}")
+//        logi("found pkg match: $pkgName, records size: ${recs.size}")
 
         // Keep all records that match the notification content
         val records = recs.filter {
@@ -76,7 +75,7 @@ class NotificationMonitorService : AccessibilityService() {
             it.duration
         }
 
-        logi("push alert match, regex = ${max.body}, duration: ${max.duration}")
+//        logi("push alert match, regex = ${max.body}, duration: ${max.duration}")
 
         val spf = spf.PushAlert(this)
 
@@ -94,7 +93,7 @@ class NotificationMonitorService : AccessibilityService() {
     }
 
     override fun onServiceConnected() {
-        logi("on connected")
+//        logi("on connected")
         super.onServiceConnected()
     }
 

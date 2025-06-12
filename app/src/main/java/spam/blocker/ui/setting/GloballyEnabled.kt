@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting
 
-import android.Manifest
 import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -36,8 +35,8 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.Util
 import spam.blocker.util.Util.isDefaultSmsAppNotificationEnabled
 import spam.blocker.util.spf
@@ -49,18 +48,18 @@ fun GloballyEnabled() {
     val spf = spf.Global(ctx)
 
     fun checkCallState(): Boolean {
-        return spf.isCallEnabled() && Permissions.isCallScreeningEnabled(ctx)
+        return spf.isCallEnabled() && Permission.isCallScreeningEnabled(ctx)
     }
 
     fun checkSmsState(): Boolean {
-        return spf.isSmsEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)
+        return spf.isSmsEnabled() && Permission.receiveSMS.isGranted
     }
 
     fun checkMmsState(): Boolean {
         return checkSmsState()
                 && spf.isMmsEnabled()
-                && Permissions.isReceiveMmsPermissionGranted(ctx)
-                && Permissions.isReadSmsPermissionGranted(ctx)
+                && Permission.receiveMMS.isGranted
+                && Permission.readSMS.isGranted
     }
 
     var callEnabled by remember { mutableStateOf(checkCallState()) }
@@ -116,7 +115,7 @@ fun GloballyEnabled() {
                 LabeledRow(labelId = R.string.enabled_for_call) {
                     SwitchBox(checked = callEnabled, onCheckedChange = { isTurningOn ->
                         if (isTurningOn) {
-                            Permissions.launcherSetAsCallScreeningApp { granted ->
+                            Permission.launcherSetAsCallScreeningApp { granted ->
                                 if (granted) {
                                     spf.setCallEnabled(true)
                                     callEnabled = checkCallState()
@@ -134,7 +133,7 @@ fun GloballyEnabled() {
                         if (isTurningOn) {
                             G.permissionChain.ask(
                                 ctx,
-                                listOf(NormalPermission(Manifest.permission.RECEIVE_SMS))
+                                listOf(PermissionWrapper(Permission.receiveSMS))
                             ) { granted ->
                                 if (granted) {
                                     spf.setSmsEnabled(true)
@@ -158,8 +157,8 @@ fun GloballyEnabled() {
                                 G.permissionChain.ask(
                                     ctx,
                                     listOf(
-                                        NormalPermission(Manifest.permission.READ_SMS),
-                                        NormalPermission(Manifest.permission.RECEIVE_MMS),
+                                        PermissionWrapper(Permission.readSMS),
+                                        PermissionWrapper(Permission.receiveMMS),
                                     )
                                 ) { granted ->
                                     if (granted) {

@@ -27,7 +27,7 @@ import spam.blocker.service.checker.BySpamDb
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.setting.api.tagOther
 import spam.blocker.util.AdbLogger
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
 import java.util.UUID
 
 fun reportSpam(
@@ -116,7 +116,7 @@ private fun scheduleReporting(
 
     // 3. Skip if call log permission is disabled, it's necessary for checking
     //  if the call is repeated or allowed later.
-    val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
+    val canReadCalls = Permission.callLog.isGranted
     if (!canReadCalls)
         return
 

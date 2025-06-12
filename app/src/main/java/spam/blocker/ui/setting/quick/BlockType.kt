@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.quick
 
-import android.Manifest
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,7 +24,8 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.NormalPermission
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 @Composable
@@ -82,9 +82,9 @@ fun BlockType() {
                             G.permissionChain.ask(
                                 ctx,
                                 listOf(
-                                    NormalPermission(Manifest.permission.READ_PHONE_STATE),
-                                    NormalPermission(Manifest.permission.READ_CALL_LOG),
-                                    NormalPermission(Manifest.permission.ANSWER_PHONE_CALLS)
+                                    PermissionWrapper(Permission.phoneState),
+                                    PermissionWrapper(Permission.callLog),
+                                    PermissionWrapper(Permission.answerCalls)
                                 )
                             ) { granted ->
                                 if (granted) {

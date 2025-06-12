@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.regex
 
-import android.Manifest
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -72,7 +71,8 @@ import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.ui.widgets.WeekdayPicker1
 import spam.blocker.util.Lambda1
-import spam.blocker.util.NormalPermission
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.addFlag
@@ -123,7 +123,7 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                     1, 2 -> { // Contact Mode, Contact Group Mode
                         G.permissionChain.ask(
                             ctx,
-                            listOf(NormalPermission(Manifest.permission.READ_CONTACTS))
+                            listOf(PermissionWrapper(Permission.contacts))
                         ) { granted ->
                             if (granted) {
                                 when (index) {
@@ -509,9 +509,9 @@ fun RuleEditDialog(
                                                     G.permissionChain.ask(
                                                         ctx,
                                                         listOf(
-                                                            NormalPermission(Manifest.permission.READ_PHONE_STATE),
-                                                            NormalPermission(Manifest.permission.READ_CALL_LOG),
-                                                            NormalPermission(Manifest.permission.ANSWER_PHONE_CALLS)
+                                                            PermissionWrapper(Permission.phoneState),
+                                                            PermissionWrapper(Permission.callLog),
+                                                            PermissionWrapper(Permission.answerCalls)
                                                         )
                                                     ) { granted ->
                                                         if (granted) {

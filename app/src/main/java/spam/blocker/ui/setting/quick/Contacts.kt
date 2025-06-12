@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.quick
 
-import android.Manifest
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,8 +14,8 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions.isContactsPermissionGranted
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 @Composable
@@ -27,7 +26,7 @@ fun Contacts() {
     val spf = spf.Contact(ctx)
 
     fun checkContactState(): Boolean {
-        return spf.isEnabled() && isContactsPermissionGranted(ctx)
+        return spf.isEnabled() && Permission.contacts.isGranted
     }
 
     var isTurnedOn by remember { mutableStateOf(checkContactState()) }
@@ -53,7 +52,7 @@ fun Contacts() {
                 if (isTurningOn) {
                     G.permissionChain.ask(
                         ctx,
-                        listOf(NormalPermission(Manifest.permission.READ_CONTACTS))
+                        listOf(PermissionWrapper(Permission.contacts))
                     ) { granted ->
                         if (granted) {
                             spf.setEnabled(true)

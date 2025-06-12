@@ -14,28 +14,177 @@ import android.content.ServiceConnection
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.IBinder
 import android.os.Process
 import android.provider.CallLog.Calls
+import android.provider.Settings
 import android.provider.Settings.Secure
 import android.provider.Settings.SettingNotFoundException
 import android.provider.Telephony
 import android.provider.Telephony.Sms
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.ManagedActivityResultLauncher
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import spam.blocker.def.Def
 
-object Permissions {
+object Permission {
+    // These two launchers will be initialized in PermissionChain.kt.
+    // for non-protected permission, e.g.: CALL_LOG
+    lateinit var launcherNormal: ManagedActivityResultLauncher<String, Boolean>
+
+    // for protected permission, e.g.: USAGE_STATS
+    lateinit var launcherProtected: ManagedActivityResultLauncher<Intent, ActivityResult>
+
+
+    abstract class Type {
+        var isGranted by mutableStateOf(false)
+
+        // For saving in shared prefs as `ask_once_$name`
+        abstract fun name(): String
+        // Check if this permission has been granted.
+        abstract fun check(ctx: Context) : Boolean
+        // Show a system dialog asking for this permission, or go to corresponding system settings.
+        abstract fun ask(ctx: Context)
+        // After a permission is granted or revoked, this callback function will be called.
+        abstract fun onResult(isGranted: Boolean)
+    }
+
+    // Regular permissions like file_read/contacts/receive_sms
+    open class Regular(
+        val name: String,
+    ) : Type() {
+        override fun name(): String { return name }
+        override fun check(ctx: Context): Boolean {
+            return ContextCompat.checkSelfPermission(ctx, name) == PERMISSION_GRANTED
+        }
+        override fun ask(ctx: Context) { launcherNormal.launch(name) }
+        override fun onResult(granted: Boolean) { isGranted = granted }
+    }
+    // All Regular permissions
+    class Contacts(): Regular(Manifest.permission.READ_CONTACTS)
+    class ReceiveSMS: Regular(Manifest.permission.RECEIVE_SMS)
+    class ReceiveMMS: Regular(Manifest.permission.RECEIVE_MMS)
+    class AnswerCalls: Regular(Manifest.permission.ANSWER_PHONE_CALLS)
+    class CallLog: Regular(Manifest.permission.READ_CALL_LOG)
+    class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE)
+    class ReadSMS: Regular(Manifest.permission.READ_SMS)
+    open class FileAccess(name: String): Regular(name) {
+        override fun check(ctx: Context): Boolean {
+            return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
+                super.check(ctx)
+            } else {
+                Environment.isExternalStorageManager()
+            }
+        }
+        override fun ask(ctx: Context) {
+            if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
+                super.ask(ctx)
+            } else {
+                launcherProtected.launch(
+                    Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                        .apply {
+                            data = Uri.fromParts("package", ctx.packageName, null)
+                        }
+                )
+            }
+        }
+
+        override fun onResult(granted: Boolean) {
+            super.onResult(granted)
+            // On android 11+, read/write share same permission: ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION,
+            // if any is granted, grant the other as well.
+            if (Build.VERSION.SDK_INT > Def.ANDROID_10) {
+                fileWrite.isGranted = granted
+                fileRead.isGranted = granted
+            }
+        }
+    }
+    class FileRead(): FileAccess(Manifest.permission.READ_EXTERNAL_STORAGE)
+    class FileWrite(): FileAccess(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+    // It will launch an Intent for asking the permission.
+    open class AskByIntent(
+        val intent: Intent,
+    ) : Type() {
+        override fun name(): String { return intent.action!! }
+        override fun check(ctx: Context): Boolean {
+            throw Exception("unimplemented AskByIntent.check")
+            return false
+        }
+        override fun ask(ctx: Context) { launcherProtected.launch(intent) }
+        // The param only indicates whether this Intent was displayed correctly, call the `check()`
+        //  to get if this permission is granted or not.
+        override fun onResult(granted: Boolean) { isGranted = granted }
+    }
+    // AppOps permissions
+    open class AppOps(
+        val name: String,
+        intent: Intent,
+    ) : AskByIntent(intent) {
+        override fun check(ctx: Context): Boolean {
+            val appOps = ctx.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+            val mode = appOps.unsafeCheckOpNoThrow(
+                name,
+                Process.myUid(),
+                ctx.packageName
+            )
+            return (mode == AppOpsManager.MODE_ALLOWED)
+        }
+    }
+    class UsageStats: AppOps(
+        name = AppOpsManager.OPSTR_GET_USAGE_STATS,
+        intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+    )
+
+    class Accessibility: AskByIntent(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)) {
+        override fun check(ctx: Context): Boolean {
+            return try {
+                val enabled = Secure.getInt(
+                    ctx.contentResolver,
+                    Secure.ACCESSIBILITY_ENABLED
+                )
+                enabled != 0
+            } catch (_: SettingNotFoundException) {
+                false
+            }
+        }
+    }
+
+
+    val fileRead = FileRead()
+    val fileWrite = FileWrite()
+    val contacts = Contacts()
+    val receiveSMS = ReceiveSMS()
+    val receiveMMS = ReceiveMMS()
+    val answerCalls = AnswerCalls()
+    val callLog = CallLog()
+    val phoneState = PhoneState()
+    val readSMS = ReadSMS()
+    val accessibility = Accessibility()
+    val usageStats = UsageStats()
+
+    // Initialized once when process starts (in App.kt)
+    fun init(ctx: Context) {
+        listOf(fileRead, fileWrite, contacts, receiveSMS, receiveMMS, callLog, phoneState, readSMS, accessibility, usageStats)
+            .forEach {
+                it.isGranted = it.check(ctx)
+            }
+    }
 
     fun isCallScreeningEnabled(ctx: Context): Boolean {
         val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager
         return roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
     }
 
-    // must be initialized in MainActivity
+    // initialized once in MainActivity
     lateinit var launcherSetAsCallScreeningApp: Lambda1<Lambda1<Boolean>?>
 
     fun initLauncherSetAsCallScreeningApp(activity: ComponentActivity) {
@@ -75,84 +224,6 @@ object Permissions {
             mServiceConnection,
             Activity.BIND_AUTO_CREATE
         )
-    }
-
-    fun isPermissionGranted(ctx: Context, permission: String): Boolean {
-        val ret = ContextCompat.checkSelfPermission(
-            ctx, permission
-        ) == PERMISSION_GRANTED
-        return ret
-    }
-
-    fun isFileReadPermissionGranted(ctx: Context): Boolean {
-        return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
-            isPermissionGranted(ctx, Manifest.permission.READ_EXTERNAL_STORAGE)
-        } else {
-            Environment.isExternalStorageManager()
-        }
-    }
-
-    fun isFileWritePermissionGranted(ctx: Context): Boolean {
-        return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
-            isPermissionGranted(ctx, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        } else {
-            Environment.isExternalStorageManager()
-        }
-    }
-
-    fun isContactsPermissionGranted(ctx: Context): Boolean {
-        return isPermissionGranted(ctx, Manifest.permission.READ_CONTACTS)
-    }
-
-    fun isReceiveSmsPermissionGranted(ctx: Context): Boolean {
-        return isPermissionGranted(ctx, Manifest.permission.RECEIVE_SMS)
-    }
-    fun isReceiveMmsPermissionGranted(ctx: Context): Boolean {
-        return isPermissionGranted(ctx, Manifest.permission.RECEIVE_MMS)
-    }
-
-    fun isCallLogPermissionGranted(ctx: Context): Boolean {
-        return isPermissionGranted(ctx, Manifest.permission.READ_CALL_LOG)
-    }
-
-    fun isPhoneStatePermissionGranted(ctx: Context): Boolean {
-        return isPermissionGranted(ctx, Manifest.permission.READ_PHONE_STATE)
-    }
-
-    fun isReadSmsPermissionGranted(ctx: Context): Boolean {
-        return isPermissionGranted(ctx, Manifest.permission.READ_SMS)
-    }
-
-    fun isAccessibilityPermissionGranted(ctx: Context): Boolean {
-        return try {
-            val enabled = Secure.getInt(
-                ctx.contentResolver,
-                Secure.ACCESSIBILITY_ENABLED
-            )
-            enabled != 0
-        } catch (_: SettingNotFoundException) {
-            false
-        }
-    }
-//    fun isAccessNotificationPermissionGranted(context: Context): Boolean {
-//        return Secure.getString(
-//            context.applicationContext.contentResolver,
-//            "enabled_notification_listeners"
-//        ).contains(context.applicationContext.packageName)
-//    }
-
-    fun isAppOpsPermissionGranted(ctx: Context, permission: String): Boolean {
-        val appOps = ctx.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
-        val mode = appOps.unsafeCheckOpNoThrow(
-            permission,
-            Process.myUid(),
-            ctx.packageName
-        )
-        return (mode == AppOpsManager.MODE_ALLOWED)
-    }
-
-    fun isUsagePermissionGranted(ctx: Context): Boolean {
-        return isAppOpsPermissionGranted(ctx, AppOpsManager.OPSTR_GET_USAGE_STATS)
     }
 
     fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
@@ -352,4 +423,5 @@ object Permissions {
         }
         return count
     }
+
 }

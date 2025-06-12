@@ -44,7 +44,7 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
 import spam.blocker.util.Util
 import spam.blocker.util.spf
 
@@ -120,7 +120,7 @@ class MainActivity : ComponentActivity() {
             )
         )
 
-        Permissions.initLauncherSetAsCallScreeningApp(this)
+        Permission.initLauncherSetAsCallScreeningApp(this)
 
         // Load all records to show unread indicators in the bottom bar.
         G.callVM.reload(ctx)

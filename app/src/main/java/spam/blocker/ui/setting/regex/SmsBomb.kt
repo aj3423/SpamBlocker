@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.regex
 
-import android.Manifest
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,8 +34,8 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 
@@ -46,7 +45,7 @@ fun SmsBomb() {
     val C = LocalPalette.current
     val spf = spf.SmsBomb(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permissions.isReceiveSmsPermissionGranted(ctx)) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.receiveSMS.isGranted) }
     var duration by remember { mutableIntStateOf(spf.getInterval()) }
     var regexStr by remember { mutableStateOf(spf.getRegexStr()) }
     var regexFlags = remember { mutableIntStateOf(spf.getRegexFlags()) }
@@ -125,7 +124,7 @@ fun SmsBomb() {
                     G.permissionChain.ask(
                         ctx,
                         listOf(
-                            NormalPermission(Manifest.permission.RECEIVE_SMS)
+                            PermissionWrapper(Permission.receiveSMS)
                         )
                     ) { granted ->
                         if (granted) {

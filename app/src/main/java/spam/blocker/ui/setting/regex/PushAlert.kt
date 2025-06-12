@@ -55,10 +55,10 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.AccessibilityPermission
 import spam.blocker.util.AppIcon
 import spam.blocker.util.Lambda1
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 
@@ -87,7 +87,7 @@ object PushAlertViewModel {
         val spf = spf.PushAlert(ctx)
 
         // always collapse when no permission
-        listCollapsed.value = !Permissions.isAccessibilityPermissionGranted(ctx)
+        listCollapsed.value = !Permission.accessibility.isGranted
                 || spf.isCollapsed()
     }
 
@@ -151,8 +151,9 @@ fun PushAlertEditDialog(
                     G.permissionChain.ask(
                         ctx,
                         listOf(
-                            AccessibilityPermission(
-                                prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
+                            PermissionWrapper(
+                                Permission.accessibility,
+                                prompt =  ctx.getString(R.string.prompt_go_to_permission_setting)
                                     .format(ctx.getString(R.string.accessibility))
                             )
                         )
@@ -261,21 +262,17 @@ fun PushAlertHeader() {
 
     LabeledRow(
         modifier = M.clickable{
-
-            if (Permissions.isAccessibilityPermissionGranted(ctx)) { // accessibility not enabled
-                G.permissionChain.ask(
-                    ctx,
-                    listOf(
-                        AccessibilityPermission(
-                            prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
-                                .format(ctx.getString(R.string.accessibility))
-                        )
+            G.permissionChain.ask(
+                ctx,
+                listOf(
+                    PermissionWrapper(
+                        Permission.accessibility,
+                        prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
+                            .format(ctx.getString(R.string.accessibility))
                     )
-                ) { granted ->
-                    if (granted) vm.toggleCollapse(ctx)
-                }
-            } else {
-                vm.toggleCollapse(ctx)
+                )
+            ) { granted ->
+                if (granted) vm.toggleCollapse(ctx)
             }
         },
         label = {

@@ -1,6 +1,5 @@
 package spam.blocker.ui.history
 
-import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
@@ -11,8 +10,8 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.def.Def
 import spam.blocker.ui.widgets.FabWrapper
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 
@@ -45,7 +44,7 @@ fun HistoryScreen(
         Column {
             when (vm.forType) {
                 Def.ForNumber -> {
-                    Permissions.launcherSetAsCallScreeningApp(null)
+                    Permission.launcherSetAsCallScreeningApp(null)
                 }
                 Def.ForSms -> {
                     val smsEnabled = spf.Global(ctx).isSmsEnabled()
@@ -54,7 +53,7 @@ fun HistoryScreen(
                         G.permissionChain.ask(
                             ctx,
                             listOf(
-                                NormalPermission(Manifest.permission.RECEIVE_SMS),
+                                PermissionWrapper(Permission.receiveSMS),
                             )
                         ) { granted ->
                         }

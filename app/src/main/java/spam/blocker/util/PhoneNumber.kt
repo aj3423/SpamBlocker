@@ -53,7 +53,7 @@ class PhoneNumber(private val ctx: Context, private val rawNumber: String) {
             }
         }
         // Determine the country for each of the SIM cards:
-        if (Permissions.isPhoneStatePermissionGranted(ctx)) {
+        if (Permission.phoneState.isGranted) {
             val subscription = ctx.getSystemService<SubscriptionManager>()
             subscription?.activeSubscriptionInfoList?.forEach { sub ->
                 codes += sub.countryIso

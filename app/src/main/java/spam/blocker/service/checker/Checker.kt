@@ -28,7 +28,7 @@ import spam.blocker.util.A
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
@@ -279,7 +279,7 @@ class Checker { // for namespace only
 
             val spf = spf.Contact(ctx)
 
-            if (!spf.isEnabled() or !Permissions.isContactsPermissionGranted(ctx)) {
+            if (!spf.isEnabled() or !Permission.contacts.isGranted) {
                 return null
             }
             logger?.info(
@@ -324,8 +324,8 @@ class Checker { // for namespace only
             val logger = cCtx.logger
             val isTesting = cCtx.callDetails == null
 
-            val canReadCalls = Permissions.isCallLogPermissionGranted(ctx)
-            val canReadSMSs = Permissions.isReadSmsPermissionGranted(ctx)
+            val canReadCalls = Permission.callLog.isGranted
+            val canReadSMSs = Permission.readSMS.isGranted
 
             val spf = spf.RepeatedCall(ctx)
             if (!spf.isEnabled() || (!canReadCalls && !canReadSMSs)) {
@@ -347,7 +347,7 @@ class Checker { // for namespace only
             val phoneNumber = PhoneNumber(ctx, rawNumber)
 
             // count Calls from real call history
-            var nCalls = Permissions.getHistoryCallsByNumber(
+            var nCalls = Permission.getHistoryCallsByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_INCOMING,
@@ -365,7 +365,7 @@ class Checker { // for namespace only
             }
 
             // count SMSs from real SMS history
-            var nSMSs = Permissions.countHistorySMSByNumber(
+            var nSMSs = Permission.countHistorySMSByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_INCOMING,
@@ -408,9 +408,7 @@ class Checker { // for namespace only
 
             val spf = spf.Dialed(ctx)
             if (!spf.isEnabled()
-                || (!Permissions.isCallLogPermissionGranted(ctx) && !Permissions.isReadSmsPermissionGranted(
-                    ctx
-                ))
+                || (!Permission.callLog.isGranted && !Permission.readSMS.isGranted)
             ) {
                 return null
             }
@@ -429,13 +427,13 @@ class Checker { // for namespace only
 
             // repeated count of call/sms, sms also counts
             val phoneNumber = PhoneNumber(ctx, rawNumber)
-            val nCalls = Permissions.getHistoryCallsByNumber(
+            val nCalls = Permission.getHistoryCallsByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_OUTGOING,
                 durationMillis
             ).size
-            val nSMSs = Permissions.countHistorySMSByNumber(
+            val nSMSs = Permission.countHistorySMSByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_OUTGOING,
@@ -537,7 +535,7 @@ class Checker { // for namespace only
             }
 
             for ((duration, appList) in aggregation) {
-                val usedApps = Permissions.listUsedAppWithinXSecond(ctx, duration * 60)
+                val usedApps = Permission.listUsedAppWithinXSecond(ctx, duration * 60)
 
                 val intersection = appList.toList().intersect(usedApps.toSet())
 
@@ -576,11 +574,11 @@ class Checker { // for namespace only
 
             val appInfos = spf.getList()
 
-            val eventsMap = Permissions.getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
+            val eventsMap = Permission.getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
 
             // Check if any app is running a foreground service
             val appInMeeting = appInfos.firstOrNull {
-                val runningServiceNames = Permissions.listRunningForegroundServiceNames(
+                val runningServiceNames = Permission.listRunningForegroundServiceNames(
                     appEvents = eventsMap[it.pkgName],
                 )
                 val exclusions = it.exclusions
@@ -778,7 +776,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            if (!Permissions.isContactsPermissionGranted(ctx)) {
+            if (!Permission.contacts.isGranted) {
                 return null
             }
             logger?.info(
@@ -836,7 +834,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            if (!Permissions.isContactsPermissionGranted(ctx)) {
+            if (!Permission.contacts.isGranted) {
                 return null
             }
 
@@ -974,7 +972,7 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            if (!Permissions.isAccessibilityPermissionGranted(ctx)) {
+            if (!Permission.accessibility.isGranted) {
                 return null
             }
 

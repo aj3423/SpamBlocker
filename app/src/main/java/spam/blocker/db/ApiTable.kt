@@ -13,7 +13,7 @@ import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.logi
@@ -47,10 +47,10 @@ data class Api(
 
 private fun isNumberAllowedLater(ctx: Context, rawNumber: String) : Boolean {
     val phoneNumber = PhoneNumber(ctx, rawNumber)
-    val incoming = Permissions.getHistoryCallsByNumber(
+    val incoming = Permission.getHistoryCallsByNumber(
         ctx, phoneNumber, Def.DIRECTION_INCOMING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
     )
-    val outgoing = Permissions.getHistoryCallsByNumber(
+    val outgoing = Permission.getHistoryCallsByNumber(
         ctx, phoneNumber, Def.DIRECTION_OUTGOING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
     )
     val isAllowedLater = (incoming + outgoing).any {
@@ -78,7 +78,7 @@ fun listReportableAPIs(
     if (!isManualReport) {
         // 1. check if the number is repeated or dialed
         //  (DO NOT put this to any other places, it must be checked HERE before further execution)
-        val canReadCallLog = Permissions.isCallLogPermissionGranted(ctx)
+        val canReadCallLog = Permission.callLog.isGranted
         if (!canReadCallLog)
             return listOf()
 

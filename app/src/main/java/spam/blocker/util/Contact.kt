@@ -36,7 +36,7 @@ data class ContactInfo(
 
 object Contacts {
     fun findContactByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
-        if (!Permissions.isContactsPermissionGranted(ctx)) {
+        if (!Permission.contacts.isGranted) {
             return null
         }
 
@@ -85,7 +85,7 @@ object Contacts {
     fun findGroupsContainNumber(ctx: Context, rawNumber: String): List<String> {
         val groupNames = mutableListOf<String>()
 
-        if (!Permissions.isContactsPermissionGranted(ctx)) {
+        if (!Permission.contacts.isGranted) {
             return groupNames
         }
 

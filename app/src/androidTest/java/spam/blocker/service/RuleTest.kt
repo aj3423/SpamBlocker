@@ -17,7 +17,7 @@ import spam.blocker.service.checker.Checker
 import spam.blocker.util.ContactInfo
 import spam.blocker.util.Contacts
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.Util
 import spam.blocker.util.spf
@@ -84,8 +84,8 @@ class RuleTest {
             name = "Mock_contact_$rawNumber"
         )
 
-        mockkObject(Permissions)
-        every { Permissions.isContactsPermissionGranted(ctx) } returns true
+        mockkObject(Permission)
+        every { Permission.isContactsPermissionGranted(ctx) } returns true
 
         mockkObject(Contacts)
         every { Contacts.findContactByRawNumber(ctx, any()) } answers {
@@ -98,11 +98,11 @@ class RuleTest {
     }
 
     private fun mock_call_permission_granted() {
-        every { Permissions.isCallLogPermissionGranted(any()) } returns true
+        every { Permission.callLog(any()) } returns true
     }
 
     private fun mock_sms_permission_granted() {
-        every { Permissions.isReadSmsPermissionGranted(any()) } returns true
+        every { Permission.readSMS(any()) } returns true
     }
 
     private fun mock_calls(
@@ -112,7 +112,7 @@ class RuleTest {
         atTimeMillis: Long
     ) {
         val number = PhoneNumber(ctx, rawNumber)
-        every { Permissions.getHistoryCallsByNumber(any(), number, direction, any()) } answers {
+        every { Permission.getHistoryCallsByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -130,7 +130,7 @@ class RuleTest {
         atTimeMillis: Long
     ) {
         val number = PhoneNumber(ctx, rawNumber)
-        every { Permissions.countHistorySMSByNumber(any(), number, direction, any()) } answers {
+        every { Permission.countHistorySMSByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -196,7 +196,7 @@ class RuleTest {
             setInXMin(5)
         }
 
-        mockkObject(Permissions)
+        mockkObject(Permission)
         mock_call_permission_granted()
         mock_sms_permission_granted()
 
@@ -242,7 +242,7 @@ class RuleTest {
         spf.setEnabled(true)
         spf.setDays(inXdays)
 
-        mockkObject(Permissions)
+        mockkObject(Permission)
         mock_call_permission_granted()
         mock_sms_permission_granted()
 
@@ -284,8 +284,8 @@ class RuleTest {
     }
 
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
-        mockkObject(Permissions)
-        every { Permissions.listUsedAppWithinXSecond(ctx, any()) } answers {
+        mockkObject(Permission)
+        every { Permission.listUsedAppWithinXSecond(ctx, any()) } answers {
             if (Now.currentMillis() < expire)
                 pkgs
             else

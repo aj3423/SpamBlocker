@@ -43,7 +43,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.AppInfo
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
 import spam.blocker.util.Util
 import spam.blocker.util.spf
 import spam.blocker.util.spf.MeetingAppInfo
@@ -155,14 +155,14 @@ fun MeetingMode() {
                             withContext(IO) {
                                 while (true) {
 
-                                    val eventsMap = Permissions.getAppsEvents(
+                                    val eventsMap = Permission.getAppsEvents(
                                         ctx,
                                         listOf(appInfo.pkgName).toSet()
                                     )
 
                                     services.clear()
                                     services.addAll(
-                                        Permissions.listRunningForegroundServiceNames(
+                                        Permission.listRunningForegroundServiceNames(
                                             appEvents = eventsMap[appInfo.pkgName],
                                         )
                                     )
@@ -211,13 +211,11 @@ fun MeetingMode() {
     )
     PopupMeetingConfig(popupTrigger = buttonPopupTrigger, priority = priority)
 
-    var permissionGranted by remember { mutableStateOf(Permissions.isUsagePermissionGranted(ctx)) }
-
     LabeledRow(
         R.string.in_meeting,
         helpTooltipId = R.string.help_meeting_mode,
         content = {
-            if (permissionGranted) {
+            if (Permission.usageStats.isGranted) {
                 Row(
                     modifier = M.weight(1f),
                     verticalAlignment = Alignment.CenterVertically,
@@ -253,7 +251,7 @@ fun MeetingMode() {
                 }
             }
             AppChooserIcon { granted ->
-                permissionGranted = granted
+                Permission.usageStats.isGranted = granted
                 if (granted)
                     appsPopupTrigger.value = true
             }

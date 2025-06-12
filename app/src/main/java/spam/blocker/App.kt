@@ -11,18 +11,25 @@ import spam.blocker.service.resetPushAlertCache
 import spam.blocker.ui.crash.CrashReportActivity
 import spam.blocker.ui.history.reScheduleHistoryCleanup
 import spam.blocker.ui.setting.quick.reScheduleSpamDBCleanup
+import spam.blocker.util.Permission
 import java.io.PrintWriter
 import java.io.StringWriter
 import kotlin.system.exitProcess
 
 class App : Application() {
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
+    override fun onCreate() {
+        super.onCreate()
 
         // Bind events here instead of in MainActivity, to prevent it from being called multiple times.
         listenToConfigImport()
         listenToNewCallSMS()
         listenToHistoryCleanup()
+
+        // Initialize permissions
+        Permission.init(this)
+    }
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
 
         // Set the default uncaught exception handler
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
@@ -30,6 +37,7 @@ class App : Application() {
         }
     }
 
+    // Show crash report dialog when app crashes.
     private fun handleUncaughtException(thread: Thread, throwable: Throwable) {
         throwable.printStackTrace()
 
@@ -52,9 +60,11 @@ class App : Application() {
     }
 
 
-    // Re-schedule all tasks after backup-import.
-    // The Launcher.selfRestart will launch another MainActivity, which causes events being
-    // triggered twice, so bind events here instead of in the MainActivity to prevent double triggering.
+    // After a backup-import, do:
+    // - Re-schedule all tasks
+    //    (The Launcher.selfRestart will launch another MainActivity, which causes events being
+    //    triggered twice, so bind events here instead of in the MainActivity to prevent double triggering.)
+    // - Clear PushAlert cache
     private fun listenToConfigImport() {
         Events.configImported.listen {
             // cancel all

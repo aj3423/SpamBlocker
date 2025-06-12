@@ -1,12 +1,6 @@
 package spam.blocker.service.bot
 
-import android.Manifest
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.os.Build
-import android.os.Environment
-import android.provider.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.saveable.Saver
@@ -19,12 +13,9 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
-import spam.blocker.def.Def
 import spam.blocker.util.ILogger
-import spam.blocker.util.IPermission
-import spam.blocker.util.IntentPermission
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
 //  - implement it in Actions.kt
@@ -116,7 +107,7 @@ interface IAction {
     fun execute(ctx: Context, aCtx: ActionContext): Boolean
 
     // It returns a list of missing permissions.
-    fun missingPermissions(ctx: Context): List<IPermission>
+    fun missingPermissions(ctx: Context): List<PermissionWrapper>
 
     // The display name of this action
     fun label(ctx: Context): String
@@ -143,7 +134,7 @@ interface IAction {
 
 // Actions that don't require any permission
 interface IPermissiveAction : IAction {
-    override fun missingPermissions(ctx: Context): List<IPermission> {
+    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf()
     }
 }
@@ -158,30 +149,15 @@ interface IPermissiveAction : IAction {
 
 // Actions that require file read/write permissions
 interface IFileAction : IAction {
-    override fun missingPermissions(ctx: Context): List<IPermission> {
-        if (Permissions.isFileReadPermissionGranted(ctx) &&
-            Permissions.isFileWritePermissionGranted(ctx)
-        ) {
-            return listOf()
-        } else {
-            return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
-                listOf(
-                    NormalPermission(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    NormalPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                )
-            } else {
-                listOf(
-                    IntentPermission(
-                        intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
-                            .apply {
-                                data = Uri.fromParts("package", ctx.packageName, null)
-                            }
-                    ) {
-                        Environment.isExternalStorageManager()
-                    }
-                )
-            }
-        }
+    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
+        val ret = mutableListOf<PermissionWrapper>()
+
+        if (!Permission.fileRead.isGranted)
+            ret.add(PermissionWrapper(Permission.fileRead))
+        if (!Permission.fileWrite.isGranted)
+            ret.add(PermissionWrapper(Permission.fileWrite))
+
+        return ret
     }
 }
 

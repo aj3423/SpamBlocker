@@ -1,9 +1,6 @@
 package spam.blocker.ui.setting.quick
 
-import android.app.AppOpsManager
 import android.content.Context
-import android.content.Intent
-import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -51,18 +48,20 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.AppInfo
-import spam.blocker.util.AppOpsPermission
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
-import spam.blocker.util.Permissions
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.Util
 import spam.blocker.util.Util.listApps
 import spam.blocker.util.spf
 import spam.blocker.util.spf.RecentAppInfo
 
+
+// The blue ">" icon for RecentApps/MeetingMode
 @Composable
 fun AppChooserIcon(
-    onPermissionCheck: Lambda1<Boolean>,
+    callback: Lambda1<Boolean>,
 ) {
     val ctx = LocalContext.current
 
@@ -77,15 +76,14 @@ fun AppChooserIcon(
                 G.permissionChain.ask(
                     ctx,
                     listOf(
-                        AppOpsPermission(
-                            AppOpsManager.OPSTR_GET_USAGE_STATS,
-                            intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS),
-                            prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
+                        PermissionWrapper(
+                            Permission.usageStats,
+                            prompt =  ctx.getString(R.string.prompt_go_to_permission_setting)
                                 .format(ctx.getString(R.string.usage_statistics))
                         )
                     )
                 ) { granted ->
-                    onPermissionCheck(granted)
+                    callback(granted)
                 }
             }
     )
@@ -312,13 +310,11 @@ fun RecentApps() {
     )
     PopupConfig(ctx = ctx, popupTrigger = buttonPopupTrigger, inXMin = defaultInXMin)
 
-    var permissionGranted by remember { mutableStateOf(Permissions.isUsagePermissionGranted(ctx)) }
-
     LabeledRow(
         R.string.recent_apps,
         helpTooltipId = R.string.help_recent_apps,
         content = {
-            if (permissionGranted) {
+            if (Permission.usageStats.isGranted) {
                 Row(
                     modifier = M.weight(1f),
                     verticalAlignment = Alignment.CenterVertically,
@@ -352,7 +348,7 @@ fun RecentApps() {
             }
 
             AppChooserIcon { granted ->
-                permissionGranted = granted
+                Permission.usageStats.isGranted = granted
                 if (granted)
                     appsPopupTrigger.value = true
             }

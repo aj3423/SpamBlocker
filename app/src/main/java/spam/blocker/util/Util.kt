@@ -398,7 +398,7 @@ object Util {
             if (cacheAppList == null) {
                 val pm = ctx.packageManager
 
-                val packageInfos = Permissions.getPackagesHoldingPermissions(
+                val packageInfos = Permission.getPackagesHoldingPermissions(
                     pm,
                     arrayOf(Manifest.permission.INTERNET)
                 )

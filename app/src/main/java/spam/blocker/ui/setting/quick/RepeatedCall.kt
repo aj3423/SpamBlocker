@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.quick
 
-import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -24,8 +23,8 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.NormalPermission
-import spam.blocker.util.Permissions.isCallLogPermissionGranted
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 @Composable
@@ -34,7 +33,7 @@ fun RepeatedCall() {
     val C = LocalPalette.current
     val spf = spf.RepeatedCall(ctx)
 
-    var isEnabled by remember { mutableStateOf(spf.isEnabled() && isCallLogPermissionGranted(ctx)) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
     var times by remember { mutableStateOf<Int?>(spf.getTimes()) }
     var inXMin by remember { mutableStateOf<Int?>(spf.getInXMin()) }
 
@@ -76,7 +75,7 @@ fun RepeatedCall() {
         R.string.repeated_call,
         helpTooltipId = R.string.help_repeated_call,
         content = {
-            if (isEnabled && isCallLogPermissionGranted(ctx)) {
+            if (isEnabled && Permission.callLog.isGranted) {
                 val label = if (times == 1) {
                     "$inXMin ${Str(R.string.min)}"
                 } else {
@@ -94,9 +93,9 @@ fun RepeatedCall() {
                     G.permissionChain.ask(
                         ctx,
                         listOf(
-                            NormalPermission(Manifest.permission.READ_CALL_LOG),
-                            NormalPermission(Manifest.permission.READ_PHONE_STATE, true),
-                            NormalPermission(Manifest.permission.READ_SMS, true)
+                            PermissionWrapper(Permission.callLog),
+                            PermissionWrapper(Permission.phoneState, isOptional = true),
+                            PermissionWrapper(Permission.readSMS, isOptional = true)
                         )
                     ) { granted ->
                         if (granted) {

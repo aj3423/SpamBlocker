@@ -1,6 +1,5 @@
 package spam.blocker.service.bot
 
-import android.Manifest
 import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -72,9 +71,9 @@ import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.CSVParser
 import spam.blocker.util.CountryCode
-import spam.blocker.util.IPermission
-import spam.blocker.util.NormalPermission
 import spam.blocker.util.Now
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
 import spam.blocker.util.Util
@@ -1655,10 +1654,10 @@ class InterceptCall(
     var numberFilter: String = "",
 ) : IAction {
 
-    override fun missingPermissions(ctx: Context): List<IPermission> {
+    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(
-            NormalPermission(
-                Manifest.permission.READ_PHONE_STATE,
+            PermissionWrapper(
+                Permission.phoneState,
                 prompt = ctx.getString(R.string.auto_detect_cc_permission)
             ),
         )
@@ -2183,10 +2182,10 @@ class ReportNumber(
     val asTagCategory: String,
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IPermissiveAction {
-    override fun missingPermissions(ctx: Context): List<IPermission> {
+    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(
-            NormalPermission(
-                Manifest.permission.READ_CALL_LOG,
+            PermissionWrapper(
+                Permission.callLog,
                 prompt = ctx.getString(R.string.report_number_require_call_log_permission)
             ),
         )

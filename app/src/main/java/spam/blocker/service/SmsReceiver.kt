@@ -17,7 +17,7 @@ import spam.blocker.util.Notification
 import spam.blocker.util.Notification.IMPORTANCE_HIGH_MUTED
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Now
-import spam.blocker.util.Permissions.isSmsAppInForeground
+import spam.blocker.util.Permission.isSmsAppInForeground
 import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
