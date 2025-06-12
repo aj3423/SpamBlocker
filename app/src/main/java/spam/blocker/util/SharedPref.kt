@@ -77,11 +77,11 @@ class spf { // for namespace only
         fun isGloballyEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLED, false) }
         fun setGloballyEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_ENABLED, enabled) }
         fun toggleGloballyEnabled() { writeBoolean(Def.SETTING_ENABLED, !isGloballyEnabled()) }
-        fun isCallEnabled(): Boolean { return readBoolean(Def.SETTING_CALL_ENABLED, true) }
+        fun isCallEnabled(): Boolean { return readBoolean(Def.SETTING_CALL_ENABLED, false) }
         fun setCallEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CALL_ENABLED, enabled) }
-        fun isSmsEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_ENABLED, true) }
+        fun isSmsEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_ENABLED, false) }
         fun setSmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_ENABLED, enabled) }
-        fun isMmsEnabled(): Boolean { return readBoolean(Def.SETTING_MMS_ENABLED, true) }
+        fun isMmsEnabled(): Boolean { return readBoolean(Def.SETTING_MMS_ENABLED, false) }
         fun setMmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_MMS_ENABLED, enabled) }
 
         fun getThemeType(): Int { return readInt(Def.SETTING_THEME_TYPE, 0) }

@@ -10,6 +10,8 @@ import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.PushAlertRecord
+import spam.blocker.db.PushAlertTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
@@ -36,13 +38,13 @@ class Global {
     var isTestingIconClicked = false
 
     fun load(ctx: Context) {
-        val g = spf.Global(ctx)
-        enabled = g.isGloballyEnabled()
-        callEnabled = g.isCallEnabled()
-        smsEnabled = g.isSmsEnabled()
-        mmsEnabled = g.isMmsEnabled()
+        val spf = spf.Global(ctx)
+        enabled = spf.isGloballyEnabled()
+        callEnabled = spf.isCallEnabled()
+        smsEnabled = spf.isSmsEnabled()
+        mmsEnabled = spf.isMmsEnabled()
 
-        isTestingIconClicked = g.isTestingIconClicked()
+        isTestingIconClicked = spf.isTestingIconClicked()
     }
 
     fun apply(ctx: Context) {
@@ -124,6 +126,24 @@ class RegexOptions {
             setMaxRegexRows(maxRegexRows)
             setMaxDescRows(maxDescRows)
             setRuleListHeightPercentage(listHeightPercentage)
+        }
+    }
+}
+
+@Serializable
+ class PushAlert {
+    val rules = mutableListOf<PushAlertRecord>()
+
+    fun load(ctx: Context) {
+        rules.clear()
+        rules.addAll(PushAlertTable.listAll(ctx))
+    }
+
+    fun apply(ctx: Context) {
+        val tbl = PushAlertTable
+        tbl.clearAll(ctx)
+        rules.forEach {
+            tbl.addWithId(ctx, it)
         }
     }
 }
@@ -576,6 +596,7 @@ class Configs {
     val numberRules = NumberRules()
     val contentRules = ContentRules()
     val quickCopyRules = QuickCopyRules()
+    val pushAlert = PushAlert()
     val smsAlert = SmsAlert()
     val emergency = EmergencySituation()
     val smsBomb = SmsBomb()
@@ -608,6 +629,7 @@ class Configs {
         numberRules.load(ctx)
         contentRules.load(ctx)
         quickCopyRules.load(ctx)
+        pushAlert.load(ctx)
         smsAlert.load(ctx)
         emergency.load(ctx)
         smsBomb.load(ctx)
@@ -642,6 +664,7 @@ class Configs {
         numberRules.apply(ctx)
         contentRules.apply(ctx)
         quickCopyRules.apply(ctx)
+        pushAlert.apply(ctx)
         smsAlert.apply(ctx)
         emergency.apply(ctx)
         smsBomb.apply(ctx)
