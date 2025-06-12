@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
+import androidx.core.content.edit
 
 class spf { // for namespace only
 
@@ -20,42 +21,42 @@ class spf { // for namespace only
             return prefs.getString(key, defaultValue) ?: defaultValue
         }
         fun writeString(key: String, value: String) {
-            val editor = prefs.edit()
-            editor.putString(key, value)
-            editor.apply()
+            prefs.edit() {
+                putString(key, value)
+            }
         }
 
         fun readInt(key: String, defaultValue: Int): Int {
             return prefs.getInt(key, defaultValue)
         }
         fun writeInt(key: String, value: Int) {
-            val editor = prefs.edit()
-            editor.putInt(key, value)
-            editor.apply()
+            prefs.edit() {
+                putInt(key, value)
+            }
         }
 
         fun readLong(key: String, defaultValue: Long): Long {
             return prefs.getLong(key, defaultValue)
         }
         fun writeLong(key: String, value: Long) {
-            val editor = prefs.edit()
-            editor.putLong(key, value)
-            editor.apply()
+            prefs.edit() {
+                putLong(key, value)
+            }
         }
 
         fun readBoolean(key: String, defaultValue: Boolean): Boolean {
             return prefs.getBoolean(key, defaultValue)
         }
         fun writeBoolean(key: String, value: Boolean) {
-            val editor = prefs.edit()
-            editor.putBoolean(key, value)
-            editor.apply()
+            prefs.edit() {
+                putBoolean(key, value)
+            }
         }
 
         fun clear() {
-            val editor = prefs.edit()
-            editor.clear()
-            editor.apply()
+            prefs.edit() {
+                clear()
+            }
         }
 //    fun exists(): Boolean {
 //        val file = File(ctx.filesDir, "$PREFS_NAME.xml")
@@ -163,7 +164,7 @@ class spf { // for namespace only
         fun isExpiryEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, getTTLOld() != -1) }
         fun setExpiryEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, enabled) }
         fun getTTLOld(): Int { return readInt(Def.SETTING_HISTORY_TTL, -1) } // -1: never expire, 0: disable logging. For history compatibility
-        fun setTTLOld(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
+//        fun setTTLOld(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
         fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL_DAYS, if(getTTLOld() > 0) { getTTLOld() } else { 14 }) } // 14 days
         fun setTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL_DAYS, days) }
 
@@ -190,7 +191,7 @@ class spf { // for namespace only
         fun getTTL(): Int { return readInt(Def.SETTING_SPAM_DB_TTL_DAYS, if(getTTLOld() >= 0) { getTTLOld() } else { DEFAULT_SPAM_DB_TTL }) } // 90 days
         fun setTTL(days: Int) { writeInt(Def.SETTING_SPAM_DB_TTL_DAYS, days) }
         fun getTTLOld(): Int { return readInt(Def.SETTING_SPAM_DB_TTL, DEFAULT_SPAM_DB_TTL) } // -1: never expire, >=0: n days
-        fun setTTLOld(days: Int) { writeInt(Def.SETTING_SPAM_DB_TTL, days) }
+//        fun setTTLOld(days: Int) { writeInt(Def.SETTING_SPAM_DB_TTL, days) }
     }
     class Contact(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_CONTACT_ENABLED, false) }

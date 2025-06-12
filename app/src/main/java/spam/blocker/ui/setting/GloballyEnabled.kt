@@ -48,7 +48,7 @@ fun GloballyEnabled() {
     val spf = spf.Global(ctx)
 
     fun checkCallState(): Boolean {
-        return spf.isCallEnabled() && Permission.isCallScreeningEnabled(ctx)
+        return spf.isCallEnabled() && Permission.callScreening.isGranted
     }
 
     fun checkSmsState(): Boolean {
@@ -115,7 +115,12 @@ fun GloballyEnabled() {
                 LabeledRow(labelId = R.string.enabled_for_call) {
                     SwitchBox(checked = callEnabled, onCheckedChange = { isTurningOn ->
                         if (isTurningOn) {
-                            Permission.launcherSetAsCallScreeningApp { granted ->
+                            G.permissionChain.ask(
+                                ctx,
+                                listOf(
+                                    PermissionWrapper(Permission.callScreening),
+                                )
+                            ) { granted ->
                                 if (granted) {
                                     spf.setCallEnabled(true)
                                     callEnabled = checkCallState()

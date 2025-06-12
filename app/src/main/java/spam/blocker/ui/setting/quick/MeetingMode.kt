@@ -45,6 +45,8 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Permission
 import spam.blocker.util.Util
+import spam.blocker.util.Util.getAppsEvents
+import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.spf
 import spam.blocker.util.spf.MeetingAppInfo
 
@@ -155,14 +157,14 @@ fun MeetingMode() {
                             withContext(IO) {
                                 while (true) {
 
-                                    val eventsMap = Permission.getAppsEvents(
+                                    val eventsMap = getAppsEvents(
                                         ctx,
                                         listOf(appInfo.pkgName).toSet()
                                     )
 
                                     services.clear()
                                     services.addAll(
-                                        Permission.listRunningForegroundServiceNames(
+                                        listRunningForegroundServiceNames(
                                             appEvents = eventsMap[appInfo.pkgName],
                                         )
                                     )

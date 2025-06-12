@@ -44,7 +44,13 @@ fun HistoryScreen(
         Column {
             when (vm.forType) {
                 Def.ForNumber -> {
-                    Permission.launcherSetAsCallScreeningApp(null)
+                    G.permissionChain.ask(
+                        ctx,
+                        listOf(
+                            PermissionWrapper(Permission.callScreening),
+                        )
+                    ) { granted ->
+                    }
                 }
                 Def.ForSms -> {
                     val smsEnabled = spf.Global(ctx).isSmsEnabled()

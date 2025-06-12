@@ -16,6 +16,7 @@ import spam.blocker.service.bot.serialize
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.Util.domainFromUrl
+import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.logi
 
 
@@ -47,10 +48,10 @@ data class Api(
 
 private fun isNumberAllowedLater(ctx: Context, rawNumber: String) : Boolean {
     val phoneNumber = PhoneNumber(ctx, rawNumber)
-    val incoming = Permission.getHistoryCallsByNumber(
+    val incoming = getHistoryCallsByNumber(
         ctx, phoneNumber, Def.DIRECTION_INCOMING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
     )
-    val outgoing = Permission.getHistoryCallsByNumber(
+    val outgoing = getHistoryCallsByNumber(
         ctx, phoneNumber, Def.DIRECTION_OUTGOING, Def.NUMBER_REPORTING_BUFFER_HOURS * 3600 * 1000
     )
     val isAllowedLater = (incoming + outgoing).any {

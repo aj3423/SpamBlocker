@@ -1655,12 +1655,15 @@ class InterceptCall(
 ) : IAction {
 
     override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
-        return listOf(
-            PermissionWrapper(
-                Permission.phoneState,
-                prompt = ctx.getString(R.string.auto_detect_cc_permission)
-            ),
-        )
+        return if (Permission.phoneState.isGranted)
+            listOf()
+        else
+            listOf(
+                PermissionWrapper(
+                    Permission.phoneState,
+                    prompt = ctx.getString(R.string.auto_detect_cc_permission)
+                ),
+            )
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -2183,12 +2186,15 @@ class ReportNumber(
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IPermissiveAction {
     override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
-        return listOf(
-            PermissionWrapper(
-                Permission.callLog,
-                prompt = ctx.getString(R.string.report_number_require_call_log_permission)
-            ),
-        )
+        return if (Permission.callLog.isGranted)
+            listOf()
+        else
+            listOf(
+                PermissionWrapper(
+                    Permission.callLog,
+                    prompt = ctx.getString(R.string.report_number_require_call_log_permission)
+                ),
+            )
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {

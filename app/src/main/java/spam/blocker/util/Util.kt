@@ -3,17 +3,23 @@ package spam.blocker.util
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.KeyguardManager
+import android.app.usage.UsageEvents
+import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
 import android.os.UserManager
+import android.provider.CallLog.Calls
 import android.provider.OpenableColumns
 import android.provider.Settings
 import android.provider.Telephony
+import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
 import kotlinx.serialization.json.Json
@@ -33,6 +39,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern
+import kotlin.collections.sortByDescending
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit
@@ -398,7 +405,7 @@ object Util {
             if (cacheAppList == null) {
                 val pm = ctx.packageManager
 
-                val packageInfos = Permission.getPackagesHoldingPermissions(
+                val packageInfos = getPackagesHoldingPermissions(
                     pm,
                     arrayOf(Manifest.permission.INTERNET)
                 )
@@ -603,4 +610,204 @@ object Util {
 
         return isScreenOff || isDeviceLocked
     }
+
+
+    fun listUsedAppWithinXSecond(ctx: Context, sec: Int): List<String> {
+        val mapApps = mutableMapOf<String, Boolean>()
+
+        val usageStatsManager =
+            ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val currentTime = Now.currentMillis()
+        val events = usageStatsManager.queryEvents(currentTime - sec * 1000, currentTime)
+
+        while (events.hasNextEvent()) {
+            val event = UsageEvents.Event()
+            events.getNextEvent(event)
+
+            if (event.eventType == UsageEvents.Event.ACTIVITY_RESUMED ||
+                event.eventType == UsageEvents.Event.ACTIVITY_PAUSED ||
+                event.eventType == UsageEvents.Event.ACTIVITY_STOPPED
+            ) {
+                mapApps[event.packageName] = true
+            }
+        }
+
+        return mapApps.keys.toList()
+    }
+
+    // Get all events of a list of apps.
+    // Returns a Map<pkgName, List<Event>>
+    fun getAppsEvents(
+        ctx: Context,
+        pkgNames: Set<String>,
+        withinMillis: Long = 24 * 3600 * 1000, // last 24 hours
+    ): Map<String, List<UsageEvents.Event>> {
+        val ret = mutableMapOf<String, MutableList<UsageEvents.Event>>()
+
+        val usageStatsManager =
+            ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager
+        val currentTime = Now.currentMillis()
+        val events = usageStatsManager.queryEvents(currentTime - withinMillis, currentTime)
+
+        while (events.hasNextEvent()) {
+            val event = UsageEvents.Event()
+            events.getNextEvent(event)
+
+            val pkg = event.packageName
+            if (pkgNames.contains(pkg)) {
+                ret.getOrPut(pkg) { mutableListOf() }.add(event)
+            }
+        }
+        return ret
+    }
+
+    fun isAppInForeground(ctx: Context, targetPackageName: String): Boolean {
+        val usageStatsManager = ctx.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager?
+            ?: return false // Usage stats service not available
+
+        val now = System.currentTimeMillis()
+        // Query stats for a short period (e.g., last 10 seconds)
+        // Adjust the interval as needed, but keep it short for efficiency.
+        val usageStatsList = usageStatsManager.queryUsageStats(
+            UsageStatsManager.INTERVAL_DAILY,
+            now - 1000 * 10, // 10 seconds ago
+            now
+        )
+
+        if (usageStatsList == null || usageStatsList.isEmpty()) {
+            return false
+        }
+
+        // Sort stats by last time used in descending order
+        usageStatsList.sortByDescending { it.lastTimeUsed }
+
+        // The first element in the sorted list is the most recently used app
+        val mostRecentApp = usageStatsList[0]
+
+        // Check if the most recently used app's package name matches the target
+        return mostRecentApp.packageName == targetPackageName
+    }
+
+    fun isSmsAppInForeground(ctx: Context) : Boolean {
+        val defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(ctx)
+        return isAppInForeground(ctx, defaultSmsApp)
+    }
+
+    // List all foreground service names that have started but not stopped yet.
+    fun listRunningForegroundServiceNames(
+        appEvents: List<UsageEvents.Event>?,
+    ): List<String> {
+
+        val startedServices = mutableMapOf<String, Boolean>()
+        appEvents
+            ?.filter {
+                it.eventType == UsageEvents.Event.FOREGROUND_SERVICE_START
+                        || it.eventType == UsageEvents.Event.FOREGROUND_SERVICE_STOP
+            }
+            ?.forEach {
+                // Set to `true` if it's START, set to `false` if it's STOP
+                startedServices[it.className] =
+                    it.eventType == UsageEvents.Event.FOREGROUND_SERVICE_START
+            }
+
+        return startedServices.filterValues { it  }.keys.toList()
+    }
+
+    fun getPackagesHoldingPermissions(
+        pm: PackageManager,
+        permissions: Array<String>
+    ): List<PackageInfo> {
+        return if (Build.VERSION.SDK_INT >= Def.ANDROID_14) {
+            pm.getPackagesHoldingPermissions(
+                permissions,
+                PackageManager.PackageInfoFlags.of(0L)
+            )
+        } else {
+            pm.getPackagesHoldingPermissions(permissions, 0)
+        }
+    }
+
+    fun getHistoryCallsByNumber(
+        ctx: Context,
+        phoneNumber: PhoneNumber,
+        direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
+        withinMillis: Long
+    ): List<Int> {
+        val selection = mutableListOf(
+            "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
+        )
+
+        if (direction == Def.DIRECTION_INCOMING) {
+            selection.add(
+                "${Calls.TYPE} IN (${Calls.INCOMING_TYPE}, ${Calls.MISSED_TYPE}, ${Calls.VOICEMAIL_TYPE}, ${Calls.REJECTED_TYPE}, ${Calls.BLOCKED_TYPE}, ${Calls.ANSWERED_EXTERNALLY_TYPE})"
+            )
+        } else {
+            selection.add(
+                "${Calls.TYPE} = ${Calls.OUTGOING_TYPE}"
+            )
+        }
+
+        var ret = listOf<Int>()
+        ctx.contentResolver.query(
+            Calls.CONTENT_URI,
+            arrayOf(Calls.NUMBER, Calls.TYPE),
+            selection.joinToString(" AND "),
+            null,
+            null
+        )?.use {
+            if (it.moveToFirst()) {
+                do {
+                    val calledNumber = it.getString(0)
+                    if (phoneNumber.isSame(calledNumber)) {
+                        ret += it.getInt(1)
+                    }
+                } while (it.moveToNext())
+            }
+        }
+        return ret
+    }
+
+    fun countHistorySMSByNumber(
+        ctx: Context,
+        phoneNumber: PhoneNumber,
+        direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
+        withinMillis: Long
+    ): Int {
+        val selection = mutableListOf(
+            "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
+        )
+
+        if (direction == Def.DIRECTION_INCOMING) {
+            selection.add(
+                "${Sms.TYPE} = ${Sms.MESSAGE_TYPE_INBOX}"
+            )
+        } else {
+            selection.add(
+                "${Sms.TYPE} IN (${Sms.MESSAGE_TYPE_SENT}, ${Sms.MESSAGE_TYPE_OUTBOX}, ${Sms.MESSAGE_TYPE_FAILED})"
+            )
+        }
+
+        var count = 0
+        try {
+            ctx.contentResolver.query(
+                Sms.CONTENT_URI,
+                arrayOf(Sms.ADDRESS),
+                selection.joinToString(" AND "),
+                null,
+                null
+            )?.use {
+                if (it.moveToFirst()) {
+                    do {
+                        val messagedNumber = it.getString(0)
+                        if (phoneNumber.isSame(messagedNumber)) {
+                            count++
+                        }
+                    } while (it.moveToNext())
+                }
+            }
+        } catch (ignore: Exception) {
+        }
+        return count
+    }
+
 }

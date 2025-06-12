@@ -32,6 +32,11 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
+import spam.blocker.util.Util.countHistorySMSByNumber
+import spam.blocker.util.Util.getAppsEvents
+import spam.blocker.util.Util.getHistoryCallsByNumber
+import spam.blocker.util.Util.listRunningForegroundServiceNames
+import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
 import spam.blocker.util.race
@@ -347,7 +352,7 @@ class Checker { // for namespace only
             val phoneNumber = PhoneNumber(ctx, rawNumber)
 
             // count Calls from real call history
-            var nCalls = Permission.getHistoryCallsByNumber(
+            var nCalls = getHistoryCallsByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_INCOMING,
@@ -365,7 +370,7 @@ class Checker { // for namespace only
             }
 
             // count SMSs from real SMS history
-            var nSMSs = Permission.countHistorySMSByNumber(
+            var nSMSs = countHistorySMSByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_INCOMING,
@@ -427,13 +432,13 @@ class Checker { // for namespace only
 
             // repeated count of call/sms, sms also counts
             val phoneNumber = PhoneNumber(ctx, rawNumber)
-            val nCalls = Permission.getHistoryCallsByNumber(
+            val nCalls = getHistoryCallsByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_OUTGOING,
                 durationMillis
             ).size
-            val nSMSs = Permission.countHistorySMSByNumber(
+            val nSMSs = countHistorySMSByNumber(
                 ctx,
                 phoneNumber,
                 Def.DIRECTION_OUTGOING,
@@ -535,7 +540,7 @@ class Checker { // for namespace only
             }
 
             for ((duration, appList) in aggregation) {
-                val usedApps = Permission.listUsedAppWithinXSecond(ctx, duration * 60)
+                val usedApps = listUsedAppWithinXSecond(ctx, duration * 60)
 
                 val intersection = appList.toList().intersect(usedApps.toSet())
 
@@ -574,11 +579,11 @@ class Checker { // for namespace only
 
             val appInfos = spf.getList()
 
-            val eventsMap = Permission.getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
+            val eventsMap = getAppsEvents(ctx, appInfos.map { it.pkgName }.toSet())
 
             // Check if any app is running a foreground service
             val appInMeeting = appInfos.firstOrNull {
-                val runningServiceNames = Permission.listRunningForegroundServiceNames(
+                val runningServiceNames = listRunningForegroundServiceNames(
                     appEvents = eventsMap[it.pkgName],
                 )
                 val exclusions = it.exclusions

@@ -18,27 +18,25 @@ import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.Permission.launcherNormal
-import spam.blocker.util.Permission.launcherProtected
+import spam.blocker.util.PermissionLauncher.launcherProtected
+import spam.blocker.util.PermissionLauncher.launcherRegular
 import spam.blocker.util.Util.doOnce
 
 
 class PermissionWrapper(
-    val perm: Permission.Type,
+    val perm: PermissionType.Basic,
 
     val isOptional: Boolean = false,
-    // Show a prompt dialog before asking for this permission, explaining for why it's required
+    // Show a prompt dialog before asking for this permission, explaining why it's required
     val prompt: String? = null,
 )
 
 /*
     Convenient class for asking for multiple permissions,
 
-    callback is triggered with param:
+    A callback is triggered with param:
     - true: all required permissions are granted
     - false: at least one of required permissions failed.
-
-    Must be created during the creation of the fragment
  */
 class PermissionChain() {
     // final callback
@@ -49,6 +47,7 @@ class PermissionChain() {
 
     private lateinit var popupTrigger: MutableState<Boolean>
 
+    // Prepare UI elements, initialized once in MainActivity
     @Composable
     fun Compose() {
         val ctx = LocalContext.current
@@ -75,11 +74,11 @@ class PermissionChain() {
             )
         }
 
-        launcherNormal = rememberLauncherForActivityResult(
+        launcherRegular = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestPermission()
         ) { isGranted ->
             // Update the global permission
-            curr.perm.onResult(isGranted)
+            curr.perm.onResult(ctx, isGranted)
 
             if (isGranted || curr.isOptional) {
                 checkNext(ctx)
@@ -103,7 +102,7 @@ class PermissionChain() {
             val isGranted = curr.perm.check(ctx)
 
             // Update the global permission
-            curr.perm.onResult(isGranted)
+            curr.perm.onResult(ctx, isGranted)
 
             if (isGranted || curr.isOptional) {
                 checkNext(ctx)
@@ -138,16 +137,16 @@ class PermissionChain() {
         }
 
         if (curr.isOptional) {
-            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm.name()}") {
+            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm.name(ctx)}") {
                 handleCurrPermission(ctx)
             }
             if (!isFirstTime) {
                 checkNext(ctx)
             }
             return
+        } else {
+            handleCurrPermission(ctx)
         }
-
-        handleCurrPermission(ctx)
     }
 
     private fun handleCurrPermission(ctx: Context) {
