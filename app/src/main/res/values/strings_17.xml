@@ -71,6 +71,8 @@
         some devices will revoke this permission after the app is updated. You need to manually
         re-enable it after updating.<br>
         <br>
+        If the label turns <font color="#ffa500">orange</font>, it indicates permissions are missing, likely caused by an upgrade.<br>
+        <br>
         <h5><font color="#00BFFF">- App</font></h5>
         Matches notifications from this app only.<br>
         <br>

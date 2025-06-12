@@ -54,28 +54,30 @@
     </string>
     <string name="call_to_number">Ke Nomor</string>
     <string name="call_to">Panggil Ke</string>
-    <string name="push_alert">Notifikasi Push</string>
+    <string name="push_alert">Notifikasi Dorong</string>
     <string name="help_push_alert">
         <![CDATA[
-        Setelah menerima notifikasi tertentu, izinkan semua panggilan masuk untuk periode waktu yang ditentukan.<br>
+        Setelah menerima notifikasi tertentu, izinkan semua panggilan masuk untuk jangka waktu yang ditentukan.<br>
         <br>
-        Contoh kasus penggunaan umum:<br>
+        Kasus penggunaan umum:<br>
         &ensp; Saat ada notifikasi seperti:<br>
         &emsp; Judul: <font color="#888888">Pembaruan Pesanan:</font><br>
-        &emsp; Isi: <font color="#888888">Pesanan Anda telah diambil oleh pengemudi …</font><br>
-        &ensp; Pengemudi mungkin akan menghubungi Anda untuk mengonfirmasi detail.<br>
+        &emsp; Isi: <font color="#888888">Pesanan Anda telah diambil oleh pengemudi…</font><br>
+        &ensp; Pengemudi mungkin akan menelepon Anda untuk mengonfirmasi detail.<br>
         <br>
         <font color="#ffa500"><b>Catatan:</b></font> <br>
         1. <b>Pengoptimalan Baterai</b> untuk aplikasi ini harus dinonaktifkan.<br>
-        2. Ini memerlukan izin <b>Aksesibilitas</b>,
+        2. Memerlukan izin <b>Aksesibilitas</b>,
         beberapa perangkat akan mencabut izin ini setelah aplikasi diperbarui. Anda perlu
         mengaktifkannya kembali secara manual setelah pembaruan.<br>
         <br>
+        Jika label berubah <font color="#ffa500">oranye</font>, itu menunjukkan izin tidak ada, kemungkinan disebabkan oleh peningkatan.<br>
+        <br>
         <h5><font color="#00BFFF">- Aplikasi</font></h5>
-        Hanya cocok dengan notifikasi dari aplikasi ini.<br>
+        Mencocokkan notifikasi hanya dari aplikasi ini.<br>
         <br>
         <h5><font color="#00BFFF">- Konten Notifikasi</font></h5>
-        Regex ini akan mencocokkan <b>judul dan isi notifikasi</b>.<br>
+        Regex ini akan mencocokkan <b>baik judul maupun isi notifikasi</b>.<br>
         Contoh untuk kasus penggunaan di atas:<br>
         &emsp; <font color="#03DAC5">pembaruan pesanan.*diambil oleh pengemudi.*</font><br>
         <br>

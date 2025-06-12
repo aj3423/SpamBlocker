@@ -54,30 +54,30 @@
     </string>
     <string name="call_to_number">A número</string>
     <string name="call_to">Chamar a</string>
-    <string name="push_alert">Alerta Push</string>
+    <string name="push_alert">Alerta push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Despois de recibir notificacións específicas, permitir todas as chamadas entrantes durante un período de tempo determinado.<br>
+        Despois de recibir notificacións específicas, permite todas as chamadas entrantes durante un período establecido.<br>
         <br>
         Un caso de uso típico:<br>
         &ensp; Cando hai unha notificación como:<br>
         &emsp; Título: <font color="#888888">Actualización do pedido:</font><br>
-        &emsp; Corpo: <font color="#888888">O teu pedido foi recollido polo condutor...</font><br>
-        &ensp; O condutor pode entón chamarte para confirmar os detalles.<br>
+        &emsp; Corpo: <font color="#888888">O teu pedido foi recollido polo repartidor...</font><br>
+        &ensp; O repartidor pode entón chamarte para confirmar os detalles.<br>
         <br>
         <font color="#ffa500"><b>Nota:</b></font> <br>
-        1. <b>Optimización da batería</b> para esta aplicación debe estar deshabilitada.<br>
-        2. Require o permiso de <b>Accesibilidade</b>,
-        algúns dispositivos revocarán este permiso despois de que a aplicación sexa actualizada. Debes volvelo a habilitar manualmente
-        despois da actualización.<br>
+        1. A <b>Optimización da batería</b> para esta aplicación debe estar desactivada.<br>
+        2. Require permiso de <b>Accesibilidade</b>; algúns dispositivos revocarán este permiso despois de actualizar a aplicación. Debes volvelo activar manualmente despois da actualización.<br>
+        <br>
+        Se a etiqueta se pon <font color="#ffa500">laranxa</font>, indica que faltan permisos, probablemente debido a unha actualización.<br>
         <br>
         <h5><font color="#00BFFF">- Aplicación</font></h5>
         Coincide só coas notificacións desta aplicación.<br>
         <br>
-        <h5><font color="#00BFFF">- Contido da Notificación</font></h5>
+        <h5><font color="#00BFFF">- Contido da notificación</font></h5>
         Esta expresión regular coincidirá <b>tanto co título como co corpo da notificación</b>.<br>
         Exemplo para o caso de uso anterior:<br>
-        &emsp; <font color="#03DAC5">actualización do pedido.*recollido polo condutor.*</font><br>
+        &emsp; <font color="#03DAC5">actualización do pedido.*recibido polo repartidor.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Duración</font></h5>
         Especificado en minutos.<br>
@@ -85,7 +85,7 @@
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
     </string>
-    <string name="notification_content">Contido da Notificación</string>
+    <string name="notification_content">Contido da notificación</string>
     <string name="app">Aplicación</string>
     <string name="choose">Escoller</string>
     <string name="accessibility">Accesibilidade</string>

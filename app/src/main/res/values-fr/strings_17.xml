@@ -60,24 +60,26 @@
         Après avoir reçu des notifications spécifiques, autoriser tous les appels entrants pendant une période définie.<br>
         <br>
         Un cas d\'utilisation typique :<br>
-        &ensp; Lorsqu\'il y a une notification telle que :<br>
+        &ensp; Lorsqu\'il y a une notification comme :<br>
         &emsp; Titre : <font color="#888888">Mise à jour de commande :</font><br>
-        &emsp; Corps : <font color="#888888">Votre commande a été prise en charge par le chauffeur…</font><br>
-        &ensp; Le chauffeur peut alors vous appeler pour confirmer les détails.<br>
+        &emsp; Corps : <font color="#888888">Votre commande a été prise en charge par le livreur…</font><br>
+        &ensp; Le livreur peut alors vous appeler pour confirmer les détails.<br>
         <br>
         <font color="#ffa500"><b>Remarque :</b></font> <br>
-        1. <b>L\'optimisation de la batterie</b> pour cette application doit être désactivée.<br>
+        1. L\'<b>Optimisation de la batterie</b> pour cette application doit être désactivée.<br>
         2. Elle nécessite l\'autorisation d\'<b>Accessibilité</b>,
-        certains appareils révoqueront cette autorisation après la mise à jour de l\'application. Vous devrez la
+        certains appareils révoqueront cette permission après la mise à jour de l\'application. Vous devrez la
         réactiver manuellement après la mise à jour.<br>
         <br>
+        Si l\'étiquette devient <font color="#ffa500">orange</font>, cela indique que des autorisations sont manquantes, probablement causées par une mise à jour.<br>
+        <br>
         <h5><font color="#00BFFF">- Application</font></h5>
-        Correspond uniquement aux notifications de cette application.<br>
+        Correspond aux notifications de cette application uniquement.<br>
         <br>
         <h5><font color="#00BFFF">- Contenu de la notification</font></h5>
-        Cette regex correspondra à la fois au <b>titre et au corps de la notification</b>.<br>
+        Cette expression régulière correspondra <b>à la fois au titre et au corps de la notification</b>.<br>
         Exemple pour le cas d\'utilisation ci-dessus :<br>
-        &emsp; <font color="#03DAC5">mise à jour de commande.*prise en charge par le chauffeur.*</font><br>
+        &emsp; <font color="#03DAC5">mise à jour de commande.*prise en charge par le livreur.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Durée</font></h5>
         Spécifié en minutes.<br>

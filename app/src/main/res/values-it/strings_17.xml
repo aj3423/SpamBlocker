@@ -62,21 +62,23 @@
         Un caso d\'uso tipico:<br>
         &ensp; Quando c\'è una notifica come:<br>
         &emsp; Titolo: <font color="#888888">Aggiornamento Ordine:</font><br>
-        &emsp; Corpo: <font color="#888888">Il tuo ordine è stato preso dal conducente...</font><br>
+        &emsp; Corpo: <font color="#888888">Il tuo ordine è stato preso dal conducente…</font><br>
         &ensp; Il conducente potrebbe quindi chiamarti per confermare i dettagli.<br>
         <br>
         <font color="#ffa500"><b>Nota:</b></font> <br>
-        1. <b>Ottimizzazione Batteria</b> per questa app deve essere disabilitata.<br>
+        1. L\'<b>ottimizzazione della batteria</b> per questa app deve essere disabilitata.<br>
         2. Richiede il permesso di <b>Accessibilità</b>;
-        alcuni dispositivi revocheranno questo permesso dopo l\'aggiornamento dell\'app. È necessario
-        riabilitarlo manualmente dopo l\'aggiornamento.<br>
+        alcuni dispositivi revocheranno questo permesso dopo l\'aggiornamento dell\'app. È necessario riabilitarlo manualmente
+        dopo l\'aggiornamento.<br>
+        <br>
+        Se l\'etichetta diventa <font color="#ffa500">arancione</font>, indica che mancano i permessi, probabilmente a causa di un aggiornamento.<br>
         <br>
         <h5><font color="#00BFFF">- App</font></h5>
         Corrisponde solo alle notifiche di questa app.<br>
         <br>
         <h5><font color="#00BFFF">- Contenuto Notifica</font></h5>
-        Questa regex corrisponderà <b>sia al titolo che al corpo della notifica</b>.<br>
-        Esempio per il caso d\'uso sopra:<br>
+        Questa regex corrisponderà a <b>sia al titolo che al corpo della notifica</b>.<br>
+        Esempio per il caso d\'uso precedente:<br>
         &emsp; <font color="#03DAC5">aggiornamento ordine.*preso dal conducente.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Durata</font></h5>
@@ -89,5 +91,5 @@
     <string name="app">App</string>
     <string name="choose">Scegli</string>
     <string name="accessibility">Accessibilità</string>
-    <string name="usage_statistics">Statistiche di Utilizzo</string>
+    <string name="usage_statistics">Statistiche utilizzo</string>
 </resources>

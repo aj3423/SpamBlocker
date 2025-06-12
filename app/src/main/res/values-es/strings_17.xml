@@ -57,7 +57,7 @@
     <string name="push_alert">Alerta Push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período establecido.<br>
+        Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período de tiempo establecido.<br>
         <br>
         Un caso de uso típico:<br>
         &ensp; Cuando hay una notificación como:<br>
@@ -67,15 +67,17 @@
         <br>
         <font color="#ffa500"><b>Nota:</b></font> <br>
         1. La <b>Optimización de Batería</b> para esta aplicación debe estar deshabilitada.<br>
-        2. Requiere permiso de <b>Accesibilidad</b>;
-        algunos dispositivos revocarán este permiso después de actualizar la aplicación. Necesitará
-        volver a habilitarlo manualmente después de la actualización.<br>
+        2. Requiere permiso de <b>Accesibilidad</b>,
+        algunos dispositivos revocarán este permiso después de que la aplicación se actualice. Deberá
+        volver a habilitarlo manualmente después de actualizar.<br>
+        <br>
+        Si la etiqueta se vuelve <font color="#ffa500">naranja</font>, indica que faltan permisos, probablemente debido a una actualización.<br>
         <br>
         <h5><font color="#00BFFF">- Aplicación</font></h5>
-        Coincide con las notificaciones solo de esta aplicación.<br>
+        Coincide solo con las notificaciones de esta aplicación.<br>
         <br>
         <h5><font color="#00BFFF">- Contenido de la Notificación</font></h5>
-        Esta expresión regular coincidirá <b>tanto con el título como con el cuerpo de la notificación</b>.<br>
+        Esta expresión regular coincidirá con <b>tanto el título como el cuerpo de la notificación</b>.<br>
         Ejemplo para el caso de uso anterior:<br>
         &emsp; <font color="#03DAC5">actualización de pedido.*recogido por conductor.*</font><br>
         <br>
