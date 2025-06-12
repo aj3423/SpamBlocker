@@ -64,7 +64,7 @@ fun Stir() {
 
     LabeledRow(
         R.string.stir_attestation,
-        helpTooltipId = R.string.help_stir,
+        helpTooltip = Str(R.string.help_stir),
         content = {
             if (isEnabled) {
                 StrokeButton(

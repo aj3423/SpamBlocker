@@ -54,28 +54,30 @@
     </string>
     <string name="call_to_number">A numero</string>
     <string name="call_to">Chiama a</string>
-    <string name="push_alert">Avviso push</string>
+    <string name="push_alert">Avviso Push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Dopo aver ricevuto notifiche specifiche, consenti tutte le chiamate in entrata per un periodo prestabilito.<br>
+        Dopo aver ricevuto notifiche specifiche, consenti tutte le chiamate in entrata per un periodo stabilito.<br>
         <br>
         Un caso d\'uso tipico:<br>
-        &ensp; Quando un\'app per l\'ordinazione di cibo mostra una notifica come:<br>
+        &ensp; Quando c\'è una notifica come:<br>
         &emsp; Titolo: <font color="#888888">Aggiornamento Ordine:</font><br>
-        &emsp; Corpo: <font color="#888888">Il tuo ordine è stato preso dal corriere …</font><br>
-        &ensp; Il corriere potrebbe poi chiamarti per confermare i dettagli.<br>
+        &emsp; Corpo: <font color="#888888">Il tuo ordine è stato preso dal conducente...</font><br>
+        &ensp; Il conducente potrebbe quindi chiamarti per confermare i dettagli.<br>
         <br>
-        <font color="#ffa500"><b>Nota:</b></font> Richiede il permesso di <b>Accessibilità</b>,
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        1. <b>Ottimizzazione Batteria</b> per questa app deve essere disabilitata.<br>
+        2. Richiede il permesso di <b>Accessibilità</b>;
         alcuni dispositivi revocheranno questo permesso dopo l\'aggiornamento dell\'app. È necessario
         riabilitarlo manualmente dopo l\'aggiornamento.<br>
         <br>
         <h5><font color="#00BFFF">- App</font></h5>
-        Corrisponde alle notifiche solo da questa app.<br>
+        Corrisponde solo alle notifiche di questa app.<br>
         <br>
         <h5><font color="#00BFFF">- Contenuto Notifica</font></h5>
-        Questa espressione regolare corrisponderà a <b>sia il titolo che il corpo della notifica</b>.<br>
+        Questa regex corrisponderà <b>sia al titolo che al corpo della notifica</b>.<br>
         Esempio per il caso d\'uso sopra:<br>
-        &emsp; <font color="#03DAC5">aggiornamento ordine.*preso dal corriere.*</font><br>
+        &emsp; <font color="#03DAC5">aggiornamento ordine.*preso dal conducente.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Durata</font></h5>
         Specificato in minuti.<br>
@@ -87,5 +89,5 @@
     <string name="app">App</string>
     <string name="choose">Scegli</string>
     <string name="accessibility">Accessibilità</string>
-    <string name="usage_statistics">Statistiche di utilizzo</string>
+    <string name="usage_statistics">Statistiche di Utilizzo</string>
 </resources>

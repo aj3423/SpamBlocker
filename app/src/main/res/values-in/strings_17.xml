@@ -54,23 +54,25 @@
     </string>
     <string name="call_to_number">Ke Nomor</string>
     <string name="call_to">Panggil Ke</string>
-    <string name="push_alert">Notifikasi Dorong</string>
+    <string name="push_alert">Notifikasi Push</string>
     <string name="help_push_alert">
         <![CDATA[
         Setelah menerima notifikasi tertentu, izinkan semua panggilan masuk untuk periode waktu yang ditentukan.<br>
         <br>
-        Kasus penggunaan umum:<br>
-        &ensp; Ketika aplikasi pemesanan makanan menampilkan notifikasi seperti:<br>
+        Contoh kasus penggunaan umum:<br>
+        &ensp; Saat ada notifikasi seperti:<br>
         &emsp; Judul: <font color="#888888">Pembaruan Pesanan:</font><br>
-        &emsp; Isi: <font color="#888888">Pesanan Anda telah diambil oleh pengemudi…</font><br>
-        &ensp; Pengemudi mungkin kemudian menghubungi Anda untuk mengonfirmasi detail.<br>
+        &emsp; Isi: <font color="#888888">Pesanan Anda telah diambil oleh pengemudi …</font><br>
+        &ensp; Pengemudi mungkin akan menghubungi Anda untuk mengonfirmasi detail.<br>
         <br>
-        <font color="#ffa500"><b>Catatan:</b></font> Membutuhkan izin <b>Aksesibilitas</b>,
-        beberapa perangkat akan mencabut izin ini setelah aplikasi diperbarui. Anda perlu mengaktifkannya kembali secara manual
-        setelah pembaruan.<br>
+        <font color="#ffa500"><b>Catatan:</b></font> <br>
+        1. <b>Pengoptimalan Baterai</b> untuk aplikasi ini harus dinonaktifkan.<br>
+        2. Ini memerlukan izin <b>Aksesibilitas</b>,
+        beberapa perangkat akan mencabut izin ini setelah aplikasi diperbarui. Anda perlu
+        mengaktifkannya kembali secara manual setelah pembaruan.<br>
         <br>
         <h5><font color="#00BFFF">- Aplikasi</font></h5>
-        Cocokkan notifikasi dari aplikasi ini saja.<br>
+        Hanya cocok dengan notifikasi dari aplikasi ini.<br>
         <br>
         <h5><font color="#00BFFF">- Konten Notifikasi</font></h5>
         Regex ini akan mencocokkan <b>judul dan isi notifikasi</b>.<br>

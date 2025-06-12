@@ -359,7 +359,7 @@ fun RuleEditDialog(
                 if (forType == Def.ForSms) {
                     LabeledRow(
                         labelId = R.string.for_particular_number,
-                        helpTooltipId = R.string.help_for_particular_number,
+                        helpTooltip = Str(R.string.help_for_particular_number),
                     ) {
                         SwitchBox(checked = forParticular) { forParticular = it }
                     }
@@ -411,7 +411,7 @@ fun RuleEditDialog(
                 // For Call/SMS
                 LabeledRow(
                     labelId = R.string.apply_to,
-                    helpTooltipId = R.string.help_apply_to_call_sms,
+                    helpTooltip = Str(R.string.help_apply_to_call_sms),
                 ) {
                     FlowRowSpaced(10) {
                         if (forType != Def.ForSms) {
@@ -432,7 +432,7 @@ fun RuleEditDialog(
                 if (forType == Def.ForQuickCopy) {
                     LabeledRow(
                         labelId = R.string.apply_to,
-                        helpTooltipId = R.string.help_apply_to_number_and_message,
+                        helpTooltip = Str(R.string.help_apply_to_number_and_message),
                     ) {
                         FlowRowSpaced(10) {
                             CheckBox(
@@ -451,7 +451,7 @@ fun RuleEditDialog(
                 if (forType == Def.ForQuickCopy) {
                     LabeledRow(
                         labelId = R.string.apply_to,
-                        helpTooltipId = R.string.help_apply_to_passed_and_blocked,
+                        helpTooltip = Str(R.string.help_apply_to_passed_and_blocked),
                     ) {
                         FlowRowSpaced(10) {
                             CheckBox(
@@ -553,7 +553,7 @@ fun RuleEditDialog(
                 AnimatedVisibleV(visible = forType != Def.ForQuickCopy && applyToWorB == 1) {
                     LabeledRow(
                         labelId = R.string.notification,
-                        helpTooltipId = R.string.help_importance,
+                        helpTooltip = Str(R.string.help_importance),
                     ) {
                         val icons = remember {
                             // list.map{} doesn't support returning @Composable...

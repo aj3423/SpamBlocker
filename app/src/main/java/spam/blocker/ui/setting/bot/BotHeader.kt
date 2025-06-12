@@ -13,15 +13,12 @@ import spam.blocker.db.BotTable
 import spam.blocker.service.bot.botJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.ConfigImportDialog
 import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.GreyIcon
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
-import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import java.util.UUID
 
@@ -98,19 +95,10 @@ fun BotHeader(
     }
 
     LabeledRow(
+        labelId = R.string.workflows,
         modifier = M.clickable{ vm.toggleCollapse(ctx) },
-        label = {
-            RowVCenterSpaced(4) {
-                SettingLabel(
-                    labelId = R.string.workflows,
-                )
-                if (vm.listCollapsed.value) {
-                    GreyIcon16(
-                        iconId = R.drawable.ic_dropdown_arrow,
-                    )
-                }
-            }
-        },
+        isCollapsed = vm.listCollapsed.value,
+        toggleCollapse = { vm.toggleCollapse(ctx) },
         helpTooltip = Str(R.string.help_workflows),
     ) {
         MenuButton(

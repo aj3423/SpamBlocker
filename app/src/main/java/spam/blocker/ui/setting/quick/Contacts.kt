@@ -35,7 +35,7 @@ fun Contacts() {
 
     LabeledRow(
         R.string.allow_contact,
-        helpTooltipId = R.string.help_contacts,
+        helpTooltip = Str(R.string.help_contacts),
         content = {
             if (isTurnedOn) {
                 StrokeButton(

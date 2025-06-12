@@ -60,22 +60,23 @@
         Após receber notificações específicas, permita todas as chamadas recebidas por um período definido.<br>
         <br>
         Um caso de uso típico:<br>
-        &ensp; Quando um aplicativo de entrega de comida mostra uma notificação como:<br>
+        &ensp; Quando houver uma notificação como:<br>
         &emsp; Título: <font color="#888888">Atualização do Pedido:</font><br>
-        &emsp; Corpo: <font color="#888888">Seu pedido foi aceito pelo motorista …</font><br>
-        &ensp; O motorista poderá então ligar para você para confirmar os detalhes.<br>
+        &emsp; Corpo: <font color="#888888">Seu pedido foi retirado pelo motorista…</font><br>
+        &ensp; O motorista pode então ligar para você para confirmar detalhes.<br>
         <br>
-        <font color="#ffa500"><b>Nota:</b></font> Requer permissão de <b>Acessibilidade</b>;
-        alguns dispositivos revogam esta permissão após a atualização do aplicativo. Você precisará
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        1. A <b>Otimização de Bateria</b> para este aplicativo deve ser desativada.<br>
+        2. Requer permissão de <b>Acessibilidade</b>; alguns dispositivos revogarão esta permissão após a atualização do aplicativo. Você precisa
         reativá-la manualmente após a atualização.<br>
         <br>
         <h5><font color="#00BFFF">- Aplicativo</font></h5>
         Corresponde apenas a notificações deste aplicativo.<br>
         <br>
         <h5><font color="#00BFFF">- Conteúdo da Notificação</font></h5>
-        Esta expressão regular corresponderá <b>tanto ao título quanto ao corpo da notificação</b>.<br>
+        Esta regex corresponderá <b>tanto ao título quanto ao corpo da notificação</b>.<br>
         Exemplo para o caso de uso acima:<br>
-        &emsp; <font color="#03DAC5">atualização do pedido.*aceito pelo motorista.*</font><br>
+        &emsp; <font color="#03DAC5">atualização do pedido.*retirado pelo motorista.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Duração</font></h5>
         Especificado em minutos.<br>

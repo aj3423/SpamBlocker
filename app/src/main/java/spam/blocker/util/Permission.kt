@@ -1,36 +1,32 @@
 package spam.blocker.util
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AppOpsManager
 import android.app.role.RoleManager
-import android.app.usage.UsageEvents
-import android.app.usage.UsageStatsManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Context.ROLE_SERVICE
 import android.content.Intent
 import android.content.ServiceConnection
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.IBinder
+import android.os.PowerManager
 import android.os.Process
-import android.provider.CallLog.Calls
 import android.provider.Settings
 import android.provider.Settings.Secure
 import android.provider.Settings.SettingNotFoundException
-import android.provider.Telephony
-import android.provider.Telephony.Sms
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.result.ActivityResult
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import spam.blocker.def.Def
 import spam.blocker.util.Permission.fileRead
 import spam.blocker.util.Permission.fileWrite
@@ -38,6 +34,7 @@ import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
 import spam.blocker.util.PermissionType.Accessibility
 import spam.blocker.util.PermissionType.AnswerCalls
+import spam.blocker.util.PermissionType.BatteryUnRestricted
 import spam.blocker.util.PermissionType.CallLog
 import spam.blocker.util.PermissionType.CallScreening
 import spam.blocker.util.PermissionType.Contacts
@@ -127,7 +124,9 @@ object PermissionType {
         override fun ask(ctx: Context) { launcherProtected.launch(launcherIntent(ctx)) }
         // The param only indicates whether this Intent was displayed correctly, call the `check()`
         //  to get if this permission is granted or not.
-        override fun onResult(ctx: Context, granted: Boolean) { isGranted = granted }
+        override fun onResult(ctx: Context, granted: Boolean) {
+            isGranted = granted
+        }
     }
     // AppOps permissions
     open class AppOps(
@@ -166,6 +165,27 @@ object PermissionType {
             } catch (_: SettingNotFoundException) {
                 false
             }
+        }
+    }
+    class BatteryUnRestricted: LaunchByIntent() {
+        @SuppressLint("BatteryLife")
+        override fun launcherIntent(ctx: Context): Intent {
+            return Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
+                data = "package:${ctx.packageName}".toUri()
+            }
+        }
+
+        override fun check(ctx: Context): Boolean {
+            // This only checks if it's "Unrestricted", not including "Optimized"
+            val powerManager = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+            val unRestricted = powerManager.isIgnoringBatteryOptimizations(ctx.packageName)
+            return unRestricted
+
+            // This works for both "Unrestricted" and "Optimized",
+            // but there is a 5 seconds delay for this to take effect, can't use this.
+//            val activityManager = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+//            val isRestricted =  activityManager.isBackgroundRestricted
+//            return !isRestricted
         }
     }
 
@@ -223,6 +243,7 @@ object Permission {
     val readSMS = ReadSMS()
     val accessibility = Accessibility()
     val usageStats = UsageStats()
+    val batteryUnRestricted = BatteryUnRestricted()
 
     // Initialized once when process starts (in App.kt)
     fun init(ctx: Context) {
@@ -239,6 +260,7 @@ object Permission {
             readSMS,
             accessibility,
             usageStats,
+            batteryUnRestricted,
         ).forEach { permission ->
             permission.isGranted = permission.check(ctx)
         }

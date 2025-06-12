@@ -73,7 +73,7 @@ fun RepeatedCall() {
 
     LabeledRow(
         R.string.repeated_call,
-        helpTooltipId = R.string.help_repeated_call,
+        helpTooltip = Str(R.string.help_repeated_call),
         content = {
             if (isEnabled && Permission.callLog.isGranted) {
                 val label = if (times == 1) {

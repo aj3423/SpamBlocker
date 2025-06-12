@@ -39,7 +39,6 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 import java.util.regex.Pattern
-import kotlin.collections.sortByDescending
 
 typealias Lambda = () -> Unit
 typealias Lambda1<A> = (A) -> Unit

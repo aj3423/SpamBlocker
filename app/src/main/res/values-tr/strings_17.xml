@@ -52,31 +52,31 @@
     </string>
     <string name="call_to_number">Numaraya Çağrı</string>
     <string name="call_to">Ara</string>
-    <string name="push_alert">Anlık Bildirim Uyarısı</string>
+    <string name="push_alert">Bildirim Uyarısı</string>
     <string name="help_push_alert">
         <![CDATA[
-        Belirli bildirimler alındıktan sonra, belirli bir süre tüm gelen aramalara izin verin.<br>
+        Belirli bildirimleri aldıktan sonra, belirli bir süre boyunca tüm gelen aramalara izin verin.<br>
         <br>
         Tipik bir kullanım durumu:<br>
-        &ensp; Yemek siparişi uygulaması şöyle bir bildirim gösterdiğinde:<br>
+        &ensp; Şuna benzer bir bildirim geldiğinde:<br>
         &emsp; Başlık: <font color="#888888">Sipariş Güncellemesi:</font><br>
-        &emsp; Gövde: <font color="#888888">Siparişiniz sürücü tarafından alındı…</font><br>
-        &ensp; Sürücü daha sonra detayları onaylamak için sizi arayabilir.<br>
+        &emsp; İçerik: <font color="#888888">Siparişiniz sürücü tarafından alındı…</font><br>
+        &ensp; Sürücü daha sonra ayrıntıları doğrulamak için sizi arayabilir.<br>
         <br>
-        <font color="#ffa500"><b>Not:</b></font> <b>Erişilebilirlik</b> izni gereklidir,
-        bazı cihazlar uygulama güncellendikten sonra bu izni iptal edecektir. Güncellemeden sonra manuel olarak
-        yeniden etkinleştirmeniz gerekir.<br>
+        <font color="#ffa500"><b>Not:</b></font> <br>
+        1. Bu uygulama için <b>Pil Optimizasyonu</b> devre dışı bırakılmalıdır.<br>
+        2. <b>Erişilebilirlik</b> izni gereklidir, bazı cihazlar uygulama güncellendikten sonra bu izni iptal edebilir. Güncellemeden sonra manuel olarak yeniden etkinleştirmeniz gerekir.<br>
         <br>
         <h5><font color="#00BFFF">- Uygulama</font></h5>
-        Yalnızca bu uygulamadan gelen bildirimlerle eşleşir.<br>
+        Yalnızca bu uygulamadan gelen bildirimleri eşleştirir.<br>
         <br>
         <h5><font color="#00BFFF">- Bildirim İçeriği</font></h5>
-        Bu regex <b>hem bildirim başlığı hem de gövdesiyle</b> eşleşecektir.<br>
+        Bu regex hem <b>bildirim başlığı hem de içeriği</b> ile eşleşecektir.<br>
         Yukarıdaki kullanım durumu için örnek:<br>
-        &emsp; <font color="#03DAC5">sipariş güncellemesi.*sürücü tarafından alındı.*</font><br>
+        &emsp; <font color="#03DAC5">sipariş güncelleme.*sürücü tarafından alındı.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Süre</font></h5>
-        Dakika cinsinden belirtilmiştir.<br>
+        Dakika olarak belirtilmiştir.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>

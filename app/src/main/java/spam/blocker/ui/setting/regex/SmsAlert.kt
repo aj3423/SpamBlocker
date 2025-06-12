@@ -22,15 +22,13 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RegexInputBox
-import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
@@ -89,19 +87,11 @@ fun SmsAlert() {
     var collapsed by remember { mutableStateOf(spf.isCollapsed()) }
 
     LabeledRow(
-        modifier = M.clickable{
+        labelId = R.string.sms_alert,
+        isCollapsed = collapsed,
+        toggleCollapse = {
             collapsed = !collapsed
             spf.setCollapsed(collapsed)
-        },
-        label = {
-            RowVCenterSpaced(4) {
-                SettingLabel(R.string.sms_alert)
-                if (collapsed) {
-                    GreyIcon16(
-                        iconId = R.drawable.ic_dropdown_arrow,
-                    )
-                }
-            }
         },
         helpTooltip = Str(R.string.help_sms_alert),
         content = {
@@ -134,7 +124,7 @@ fun SmsAlert() {
         }
     )
 
-    if (isEnabled && !collapsed) {
+    AnimatedVisibleV (isEnabled && !collapsed) {
         OutlineCard {
             Row(
                 modifier = M

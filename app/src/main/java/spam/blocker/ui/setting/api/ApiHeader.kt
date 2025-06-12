@@ -19,7 +19,6 @@ import spam.blocker.def.Def
 import spam.blocker.service.bot.botJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
@@ -29,12 +28,10 @@ import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.FormField
 import spam.blocker.ui.widgets.FormInputField
 import spam.blocker.ui.widgets.GreyIcon
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda
@@ -202,19 +199,10 @@ fun ApiHeader(
     }
 
     LabeledRow(
+        labelId = if (vm.forType == Def.ForApiQuery) R.string.query_api else R.string.report_api,
         modifier = M.clickable { vm.toggleCollapse(ctx) },
-        label = {
-            RowVCenterSpaced(4) {
-                SettingLabel(
-                    labelId = if (vm.forType == Def.ForApiQuery) R.string.query_api else R.string.report_api,
-                )
-                if (vm.listCollapsed.value) {
-                    GreyIcon16(
-                        iconId = R.drawable.ic_dropdown_arrow,
-                    )
-                }
-            }
-        },
+        isCollapsed = vm.listCollapsed.value,
+        toggleCollapse = { vm.toggleCollapse(ctx) },
         helpTooltip = if (vm.forType == Def.ForApiQuery)
             Str(R.string.help_instant_query)
         else

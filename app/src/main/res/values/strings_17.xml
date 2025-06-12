@@ -60,12 +60,14 @@
         After receiving specific notifications, allow all incoming calls for a set period.<br>
         <br>
         A typical use case:<br>
-        &ensp; When food ordering app shows a notification like:<br>
+        &ensp; When there is a notification like:<br>
         &emsp; Title: <font color="#888888"><translate>Order Update:</translate></font><br>
         &emsp; Body: <font color="#888888"><translate>Your order has been taken by driver …</translate></font><br>
         &ensp; The driver may then call you to confirm details.<br>
         <br>
-        <font color="#ffa500"><b>Note:</b></font> It requires <b>Accessibility</b> permission,
+        <font color="#ffa500"><b>Note:</b></font> <br>
+        1. <b>Battery Optimization</b> for this app must be disabled.<br>
+        2. It requires <b>Accessibility</b> permission,
         some devices will revoke this permission after the app is updated. You need to manually
         re-enable it after updating.<br>
         <br>

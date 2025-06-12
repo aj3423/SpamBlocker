@@ -105,7 +105,7 @@ fun BlockType() {
 
     LabeledRow(
         R.string.block_type,
-        helpTooltipId = R.string.help_block_type,
+        helpTooltip = Str(R.string.help_block_type),
         content = {
             val C = LocalPalette.current
             RowVCenterSpaced(4) {

@@ -163,7 +163,7 @@ fun SpamDB() {
 
             LabeledRow(
                 labelId = R.string.expiry,
-                helpTooltipId = R.string.help_spam_db_ttl,
+                helpTooltip = Str(R.string.help_spam_db_ttl),
             ) {
                 val trigger = remember { mutableStateOf(false) }
                 PopupDialog(trigger = trigger) {
@@ -231,7 +231,7 @@ fun SpamDB() {
 
     LabeledRow(
         R.string.database,
-        helpTooltipId = R.string.help_spam_db,
+        helpTooltip = Str(R.string.help_spam_db),
         content = {
             if (isEnabled) {
                 GreyButton(

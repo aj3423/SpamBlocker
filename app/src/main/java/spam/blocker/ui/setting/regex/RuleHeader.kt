@@ -11,10 +11,7 @@ import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.SkyBlue
-import spam.blocker.ui.widgets.GreyIcon16
-import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 
@@ -58,19 +55,10 @@ fun RuleHeader(
     }
 
     LabeledRow(
+        labelId = labelId,
         modifier = M.clickable{ vm.toggleCollapse(ctx) },
-        label = {
-            RowVCenterSpaced(4) {
-                SettingLabel(
-                    labelId = labelId
-                )
-                if (vm.listCollapsed.value) {
-                    GreyIcon16(
-                        iconId = R.drawable.ic_dropdown_arrow,
-                    )
-                }
-            }
-        },
+        isCollapsed = vm.listCollapsed.value,
+        toggleCollapse = { vm.toggleCollapse(ctx) },
         helpTooltip = helpTooltip,
     ) {
         if (forType == Def.ForNumber || forType == Def.ForSms) {

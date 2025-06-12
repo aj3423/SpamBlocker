@@ -50,7 +50,7 @@ fun Dialed() {
 
     LabeledRow(
         R.string.dialed_number,
-        helpTooltipId = R.string.help_dialed,
+        helpTooltip = Str(R.string.help_dialed),
         content = {
             if (isEnabled && Permission.callLog.isGranted) {
                 GreyButton(

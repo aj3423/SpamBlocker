@@ -59,6 +59,7 @@ import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.setting.regex.RuleViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White
@@ -66,10 +67,12 @@ import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.FabWrapper
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
+import spam.blocker.util.Lambda
 import spam.blocker.util.isFreshInstall
 import spam.blocker.util.spf
 
@@ -298,25 +301,63 @@ fun SettingLabel(
     )
 }
 
+// This is used in SettingScreen
 @Composable
 fun LabeledRow(
-    label: (@Composable () -> Unit)? = null,
+    labelId: Int?,
     modifier: Modifier = Modifier,
+    color: Color? = null,
+
     // Padding indentation for labels in Section Group
     paddingHorizontal: Int = 0,
+
     // Show the question icon or not
     helpTooltip: String? = null,
-    // items on the right side, e.g.: "New" button
+
+    // Show a down arrow to indicate the content below is collapsed
+    // - null: it's not collapsable
+    // - true/false: if it's collapsed or not
+    isCollapsed: Boolean? = false,
+    toggleCollapse: Lambda? = null,
+
+    // Show gray label if this feature is enabled but the permission is not granted
+    // - null: the content doesn't need any permission
+    // - true/false: is permission granted or not
+    missingPermission: Boolean = false,
+
+    // Items on the right side, e.g.: "New" button
     content: @Composable RowScope.() -> Unit,
 ) {
+
     SettingRow(
-        modifier = modifier.padding(horizontal = paddingHorizontal.dp),
+        modifier = modifier
+            .clickable {
+                // 1. expand/collapse
+                if (toggleCollapse != null)
+                    toggleCollapse()
+            }
+            .padding(horizontal = paddingHorizontal.dp),
     ) {
         RowVCenter(
             modifier = M.wrapContentWidth()
         ) {
             // label
-            label?.let { it() }
+            if (labelId != null) {
+                SettingLabel(
+                    labelId,
+                    color = if (missingPermission)
+                        DarkOrange
+                    else
+                        color
+                )
+            }
+
+            // collapsed indicator
+            if (isCollapsed == true) {
+                GreyIcon16(
+                    iconId = R.drawable.ic_dropdown_arrow,
+                )
+            }
 
             // balloon tooltip
             helpTooltip?.let {
@@ -332,28 +373,5 @@ fun LabeledRow(
             }
         }
     }
-}
-
-// This is used in SettingScreen
-@Composable
-fun LabeledRow(
-    labelId: Int,
-
-    // optional
-    modifier: Modifier = Modifier,
-    color: Color? = null,
-    paddingHorizontal: Int = 0,
-    helpTooltipId: Int? = null,
-    content: @Composable RowScope.() -> Unit,
-) {
-    LabeledRow(
-        label = {
-            SettingLabel(labelId, color = color)
-        },
-        modifier = modifier,
-        paddingHorizontal = paddingHorizontal,
-        helpTooltip = helpTooltipId?.let { Str(it) },
-        content = content,
-    )
 }
 

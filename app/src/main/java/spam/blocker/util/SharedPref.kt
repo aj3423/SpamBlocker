@@ -2,11 +2,11 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import kotlinx.serialization.Serializable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
-import androidx.core.content.edit
 
 class spf { // for namespace only
 

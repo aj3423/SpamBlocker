@@ -92,7 +92,7 @@ fun RuleSettingsPopup(
 
         // max none scroll items: []
         LabeledRow(
-            label = null,
+            labelId = null,
             helpTooltip = Str(R.string.help_max_none_scroll_items)
         ) {
             var max by remember { mutableIntStateOf(spf.getMaxNoneScrollRows()) }
@@ -111,7 +111,7 @@ fun RuleSettingsPopup(
 
         // max scroll height: []
         LabeledRow(
-            label = null,
+            labelId = null,
             helpTooltip = Str(R.string.help_max_scroll_height)
         ) {
             var height by remember { mutableIntStateOf(spf.getRuleListHeightPercentage()) }
@@ -130,7 +130,7 @@ fun RuleSettingsPopup(
 
         // max regex lines: []
         LabeledRow(
-            label = null,
+            labelId = null,
             helpTooltip = Str(R.string.help_max_regex_lines)
         ) {
             var rows by remember { mutableIntStateOf(spf.getMaxRegexRows()) }
@@ -149,7 +149,7 @@ fun RuleSettingsPopup(
 
         // max description lines: []
         LabeledRow(
-            label = null,
+            labelId = null,
             helpTooltip = Str(R.string.help_max_desc_lines)
         ) {
             var rows by remember { mutableIntStateOf(spf.getMaxDescRows()) }

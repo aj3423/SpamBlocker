@@ -52,7 +52,9 @@ fun GloballyEnabled() {
     }
 
     fun checkSmsState(): Boolean {
-        return spf.isSmsEnabled() && Permission.receiveSMS.isGranted
+        return spf.isSmsEnabled() &&
+                Permission.batteryUnRestricted.isGranted &&
+                Permission.receiveSMS.isGranted
     }
 
     fun checkMmsState(): Boolean {
@@ -138,7 +140,10 @@ fun GloballyEnabled() {
                         if (isTurningOn) {
                             G.permissionChain.ask(
                                 ctx,
-                                listOf(PermissionWrapper(Permission.receiveSMS))
+                                listOf(
+                                    PermissionWrapper(Permission.batteryUnRestricted),
+                                    PermissionWrapper(Permission.receiveSMS)
+                                )
                             ) { granted ->
                                 if (granted) {
                                     spf.setSmsEnabled(true)
@@ -155,13 +160,14 @@ fun GloballyEnabled() {
                 AnimatedVisibleV(smsEnabled) {
                     LabeledRow(
                         labelId = R.string.enable_for_mms,
-                        helpTooltipId = R.string.help_enable_for_mms,
+                        helpTooltip = Str(R.string.help_enable_for_mms),
                     ) {
                         SwitchBox(checked = mmsEnabled, onCheckedChange = { isTurningOn ->
                             if (isTurningOn) {
                                 G.permissionChain.ask(
                                     ctx,
                                     listOf(
+                                        PermissionWrapper(Permission.batteryUnRestricted),
                                         PermissionWrapper(Permission.readSMS),
                                         PermissionWrapper(Permission.receiveMMS),
                                     )
@@ -180,7 +186,7 @@ fun GloballyEnabled() {
                 }
                 LabeledRow(
                     labelId = R.string.rcs_message,
-                    helpTooltipId = R.string.help_rcs_message,
+                    helpTooltip = Str(R.string.help_rcs_message),
                     color = C.disabled,
                 ) {}
             }
@@ -189,7 +195,7 @@ fun GloballyEnabled() {
     LabeledRow(
         R.string.enable,
         paddingHorizontal = 22,
-        helpTooltipId = R.string.help_globally_enabled,
+        helpTooltip = Str(R.string.help_globally_enabled),
         content = {
             if (G.globallyEnabled.value) {
 

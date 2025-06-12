@@ -55,28 +55,30 @@
     <string name="push_alert">プッシュ通知アラート</string>
     <string name="help_push_alert">
         <![CDATA[
-        特定の通知を受信した後、設定された期間、すべての着信を許可します。<br>
+        特定の通知を受け取った後、設定された期間、すべての着信を許可します。<br>
         <br>
-        典型的な使用例：<br>
-        &ensp; フードデリバリーアプリが次のような通知を表示する場合：<br>
-        &emsp; タイトル： <font color="#888888"><translate>注文の更新:</translate></font><br>
-        &emsp; 本文： <font color="#888888"><translate>ご注文はドライバーによって受け取られました…</translate></font><br>
-        &ensp; その後、ドライバーが詳細を確認するために電話をかけてくる場合があります。<br>
+        一般的な使用例:<br>
+        &ensp; 以下のような通知がある場合:<br>
+        &emsp; タイトル: <font color="#888888">注文の更新:</font><br>
+        &emsp; 本文: <font color="#888888">ご注文はドライバーが受け取りました…</font><br>
+        &ensp; その後、ドライバーが詳細を確認するために電話をかける場合があります。<br>
         <br>
-        <font color="#ffa500"><b>注：</b></font> <b>ユーザー補助</b>権限が必要です。一部のデバイスでは、アプリの更新後にこの権限が取り消される場合があります。更新後に手動で再有効化する必要があります。<br>
+        <font color="#ffa500"><b>注:</b></font> <br>
+        1. このアプリの<b>バッテリー最適化</b>は無効にする必要があります。<br>
+        2. <b>ユーザー補助</b>の権限が必要です。一部のデバイスでは、アプリの更新後にこの権限が取り消される場合があります。更新後、手動で再有効化する必要があります。<br>
         <br>
         <h5><font color="#00BFFF">- アプリ</font></h5>
-        このアプリからの通知のみを照合します。<br>
+        このアプリからの通知のみに一致します。<br>
         <br>
         <h5><font color="#00BFFF">- 通知内容</font></h5>
-        この正規表現は、<b>通知のタイトルと本文の両方</b>に一致します。<br>
-        上記のユースケースの例：<br>
-        &emsp; <font color="#03DAC5"><translate>注文の更新.*ドライバーによって受け取られました.*</translate></font><br>
+        この正規表現は、通知のタイトルと本文の両方に一致します。<br>
+        上記の使用例:<br>
+        &emsp; <font color="#03DAC5">注文の更新.*ドライバーが受け取りました.*</font><br>
         <br>
         <h5><font color="#00BFFF">- 期間</font></h5>
         分単位で指定します。<br>
         <br>
-        <font color="#ea86ff"><b>優先度：10</b></font>
+        <font color="#ea86ff"><b>優先度: 10</b></font>
         ]]>
     </string>
     <string name="notification_content">通知内容</string>

@@ -1212,7 +1212,10 @@ class ImportAsRegexRule(
                 }
             }
             // Type Create/Replace/Merge
-            LabeledRow(R.string.mode, helpTooltipId = R.string.help_regex_action_add_mode) {
+            LabeledRow(
+                R.string.mode,
+                helpTooltip = Str(R.string.help_regex_action_add_mode),
+            ) {
                 var selected by rememberSaveable {
                     mutableIntStateOf(ImportType.entries.indexOf(importType))
                 }

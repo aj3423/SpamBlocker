@@ -60,14 +60,16 @@
         Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período establecido.<br>
         <br>
         Un caso de uso típico:<br>
-        &ensp; Cuando la aplicación de pedidos de comida muestra una notificación como:<br>
+        &ensp; Cuando hay una notificación como:<br>
         &emsp; Título: <font color="#888888">Actualización de Pedido:</font><br>
-        &emsp; Cuerpo: <font color="#888888">Su pedido ha sido recogido por el conductor...</font><br>
+        &emsp; Cuerpo: <font color="#888888">Su pedido ha sido recogido por el conductor…</font><br>
         &ensp; El conductor podría llamarle para confirmar detalles.<br>
         <br>
-        <font color="#ffa500"><b>Nota:</b></font> Requiere el permiso de <b>Accesibilidad</b>;
-        algunos dispositivos revocarán este permiso después de que la aplicación se actualice. Necesitará
-        volver a activarlo manualmente después de la actualización.<br>
+        <font color="#ffa500"><b>Nota:</b></font> <br>
+        1. La <b>Optimización de Batería</b> para esta aplicación debe estar deshabilitada.<br>
+        2. Requiere permiso de <b>Accesibilidad</b>;
+        algunos dispositivos revocarán este permiso después de actualizar la aplicación. Necesitará
+        volver a habilitarlo manualmente después de la actualización.<br>
         <br>
         <h5><font color="#00BFFF">- Aplicación</font></h5>
         Coincide con las notificaciones solo de esta aplicación.<br>
@@ -75,7 +77,7 @@
         <h5><font color="#00BFFF">- Contenido de la Notificación</font></h5>
         Esta expresión regular coincidirá <b>tanto con el título como con el cuerpo de la notificación</b>.<br>
         Ejemplo para el caso de uso anterior:<br>
-        &emsp; <font color="#03DAC5">actualización de pedido.*recogido por el conductor.*</font><br>
+        &emsp; <font color="#03DAC5">actualización de pedido.*recogido por conductor.*</font><br>
         <br>
         <h5><font color="#00BFFF">- Duración</font></h5>
         Especificado en minutos.<br>

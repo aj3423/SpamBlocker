@@ -193,7 +193,7 @@ fun ImportButton() {
 fun BackupRestore() {
     LabeledRow(
         R.string.backup,
-        helpTooltipId = R.string.help_backup,
+        helpTooltip = Str(R.string.help_backup),
         content = {
             FlowRowSpaced(8) {
                 ExportButton()

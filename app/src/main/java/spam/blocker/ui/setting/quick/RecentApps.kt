@@ -268,7 +268,7 @@ fun RecentApps() {
                         content = {
                             LabeledRow(
                                 labelId = R.string.duration,
-                                helpTooltipId = R.string.help_recent_apps_individual_duration
+                                helpTooltip = Str(R.string.help_recent_apps_individual_duration)
                             ) {
                                 NumberInputBox(
                                     intValue = recentAppInfo.duration,
@@ -312,7 +312,7 @@ fun RecentApps() {
 
     LabeledRow(
         R.string.recent_apps,
-        helpTooltipId = R.string.help_recent_apps,
+        helpTooltip = Str(R.string.help_recent_apps),
         content = {
             if (Permission.usageStats.isGranted) {
                 Row(

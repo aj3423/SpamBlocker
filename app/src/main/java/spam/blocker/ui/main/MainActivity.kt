@@ -44,7 +44,6 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.ui.widgets.TabItem
 import spam.blocker.util.Launcher
-import spam.blocker.util.Permission
 import spam.blocker.util.Util
 import spam.blocker.util.spf
 

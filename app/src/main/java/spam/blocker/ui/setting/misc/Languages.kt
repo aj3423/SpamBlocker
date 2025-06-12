@@ -16,6 +16,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Spinner
 import spam.blocker.ui.widgets.SpinnerType
+import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Launcher
 import spam.blocker.util.spf
 
@@ -88,7 +89,7 @@ fun Language() {
 
     LabeledRow(
         R.string.language,
-        helpTooltipId = R.string.help_language,
+        helpTooltip = Str(R.string.help_language),
         content = {
             Spinner(
                 items,

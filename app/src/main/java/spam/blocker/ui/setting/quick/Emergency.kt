@@ -27,17 +27,15 @@ import spam.blocker.R
 import spam.blocker.service.CallScreeningService
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.setting.SettingLabel
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -179,21 +177,12 @@ fun EmergencySituation() {
         }
     )
 
-
     LabeledRow(
-        modifier = M.clickable{
+        labelId = R.string.emergency,
+        isCollapsed = collapsed && extraNumbers.isNotBlank(),
+        toggleCollapse = {
             collapsed = !collapsed
             spf.setCollapsed(collapsed)
-        },
-        label = {
-            RowVCenterSpaced(4) {
-                SettingLabel(R.string.emergency)
-                if (isEnabled && collapsed && extraNumbers.isNotBlank()) {
-                    GreyIcon16(
-                        iconId = R.drawable.ic_dropdown_arrow,
-                    )
-                }
-            }
         },
         helpTooltip = Str(R.string.help_emergency_situation),
         content = {
@@ -213,7 +202,7 @@ fun EmergencySituation() {
     )
 
     // Extra Numbers
-    if (isEnabled && !collapsed && extraNumbers.isNotBlank()) {
+    AnimatedVisibleV (isEnabled && !collapsed && extraNumbers.isNotBlank()) {
         OutlineCard {
             Row(
                 modifier = M

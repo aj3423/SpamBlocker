@@ -87,7 +87,7 @@ fun HistoryFabs(
             // Logging enabled / TTL
             LabeledRow(
                 labelId = R.string.enable_history_logging,
-                helpTooltipId = R.string.help_history_logging
+                helpTooltip = Str(R.string.help_history_logging)
             ) {
                 if (loggingEnabled) {
                     val trigger = remember { mutableStateOf(false) }
@@ -144,7 +144,7 @@ fun HistoryFabs(
             if (vm.forType == Def.ForSms) {
                 LabeledRow(
                     labelId = R.string.log_sms_content_to_db,
-                    helpTooltipId = R.string.help_log_sms_content
+                    helpTooltip = Str(R.string.help_log_sms_content)
                 ) {
                     val trigger = remember { mutableStateOf(false) }
                     PopupDialog(trigger = trigger) {
@@ -191,7 +191,7 @@ fun HistoryFabs(
 
             LabeledRow(
                 labelId = R.string.show_indicator,
-                helpTooltipId = R.string.help_show_indicator,
+                helpTooltip = Str(R.string.help_show_indicator),
             ) {
                 SwitchBox(checked = showIndicator, onCheckedChange = { isOn ->
                     showIndicator = isOn

@@ -215,7 +215,7 @@ fun MeetingMode() {
 
     LabeledRow(
         R.string.in_meeting,
-        helpTooltipId = R.string.help_meeting_mode,
+        helpTooltip = Str(R.string.help_meeting_mode),
         content = {
             if (Permission.usageStats.isGranted) {
                 Row(

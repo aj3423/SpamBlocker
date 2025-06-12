@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.TimeRangePicker
 import spam.blocker.util.Util
@@ -47,7 +48,7 @@ fun OffTime() {
     }
     LabeledRow(
         R.string.off_time,
-        helpTooltipId = R.string.help_off_time,
+        helpTooltip = Str(R.string.help_off_time),
         content = {
             if (isEnabled) {
                 GreyButton(
