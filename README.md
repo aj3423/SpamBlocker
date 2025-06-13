@@ -18,6 +18,7 @@ Android Call/SMS blocker. (Android 10+)
 
 Table of Contents
 =================
+   * [Help wanted](#help-wanted)
    * [Screenshot](#screenshot)
    * [How it works](#how-it-works)
    * [Features](#features)
@@ -31,6 +32,9 @@ Table of Contents
    * [Some ideas](#some-ideas)
    * [Donate](#donate)
 
+# Help wanted
+ - [Is it possible to monitor all notifications in lockscreen without using foreground services?](https://github.com/aj3423/SpamBlocker/issues/350#issuecomment-2968961694)
+ 
 # Screenshot
 | Call / SMS  | Report spam  | Setting  | Notification  |
 |-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
