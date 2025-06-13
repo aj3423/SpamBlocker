@@ -147,7 +147,7 @@ fun PushAlertEditDialog(
                     G.permissionChain.ask(
                         ctx,
                         listOf(
-                            PermissionWrapper(Permission.batteryUnRestricted),
+                            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
                             PermissionWrapper(
                                 Permission.accessibility,
                                 prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
@@ -265,8 +265,7 @@ fun PushAlertHeader() {
     val missingPermission = remember {
         derivedStateOf {
             val validRecords = vm.records.filter { it.enabled && it.isValid() }
-            val anyProblem = validRecords.isNotEmpty() &&
-                    (!Permission.batteryUnRestricted.isGranted || !Permission.accessibility.isGranted)
+            val anyProblem = validRecords.isNotEmpty() && !Permission.accessibility.isGranted
             mutableStateOf(anyProblem)
         }
     }

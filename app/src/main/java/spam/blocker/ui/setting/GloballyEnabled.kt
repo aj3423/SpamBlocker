@@ -53,7 +53,6 @@ fun GloballyEnabled() {
 
     fun checkSmsState(): Boolean {
         return spf.isSmsEnabled() &&
-                Permission.batteryUnRestricted.isGranted &&
                 Permission.receiveSMS.isGranted
     }
 
@@ -141,7 +140,8 @@ fun GloballyEnabled() {
                             G.permissionChain.ask(
                                 ctx,
                                 listOf(
-                                    PermissionWrapper(Permission.batteryUnRestricted),
+                                    // isOptional because some might prefer "Optimized" than "Unrestricted"
+                                    PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
                                     PermissionWrapper(Permission.receiveSMS)
                                 )
                             ) { granted ->
@@ -167,7 +167,7 @@ fun GloballyEnabled() {
                                 G.permissionChain.ask(
                                     ctx,
                                     listOf(
-                                        PermissionWrapper(Permission.batteryUnRestricted),
+                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
                                         PermissionWrapper(Permission.readSMS),
                                         PermissionWrapper(Permission.receiveMMS),
                                     )

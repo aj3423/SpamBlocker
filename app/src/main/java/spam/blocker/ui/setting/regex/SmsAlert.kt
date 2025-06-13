@@ -108,6 +108,7 @@ fun SmsAlert() {
                     G.permissionChain.ask(
                         ctx,
                         listOf(
+                            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
                             PermissionWrapper(Permission.receiveSMS)
                         )
                     ) { granted ->
