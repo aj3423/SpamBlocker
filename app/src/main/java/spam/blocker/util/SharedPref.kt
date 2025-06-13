@@ -385,18 +385,6 @@ class spf { // for namespace only
         fun setTimestamp(timestamp: Long) { writeLong(Def.SETTING_SMS_ALERT_TIMESTAMP, timestamp) }
     }
 
-    class PushAlert(ctx: Context) : SharedPref(ctx) {
-        fun isCollapsed(): Boolean { return readBoolean(Def.SETTING_PUSH_ALERT_COLLAPSED, false) }
-        fun setCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_PUSH_ALERT_COLLAPSED, enabled) }
-
-        fun getPkgName(): String { return readString(Def.SETTING_PUSH_ALERT_PKG_NAME, "") }
-        fun setPkgName(pkgName: String) { writeString(Def.SETTING_PUSH_ALERT_PKG_NAME, pkgName) }
-        fun getBody(): String { return readString(Def.SETTING_PUSH_ALERT_BODY, "") }
-        fun setBody(body: String) { writeString(Def.SETTING_PUSH_ALERT_BODY, body) }
-        fun getExpireTime(): Long { return readLong(Def.SETTING_PUSH_ALERT_EXPIRE_TIME, 0) }
-        fun setExpireTime(timestamp: Long) { writeLong(Def.SETTING_PUSH_ALERT_EXPIRE_TIME, timestamp) }
-    }
-
     class SmsBomb(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_SMS_BOMB_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SMS_BOMB_ENABLED, enabled) }

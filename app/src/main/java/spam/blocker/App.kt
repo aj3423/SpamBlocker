@@ -7,7 +7,6 @@ import spam.blocker.db.BotTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.service.bot.MyWorkManager
-import spam.blocker.service.resetPushAlertCache
 import spam.blocker.ui.crash.CrashReportActivity
 import spam.blocker.ui.history.reScheduleHistoryCleanup
 import spam.blocker.ui.setting.quick.reScheduleSpamDBCleanup
@@ -64,7 +63,6 @@ class App : Application() {
     // - Re-schedule all tasks
     //    (The Launcher.selfRestart will launch another MainActivity, which causes events being
     //    triggered twice, so bind events here instead of in the MainActivity to prevent double triggering.)
-    // - Clear PushAlert cache
     private fun listenToConfigImport() {
         Events.configImported.listen {
             // cancel all
@@ -81,9 +79,6 @@ class App : Application() {
             bots.forEach {
                 reScheduleBot(this, it)
             }
-
-            // Clear PushAlert cache
-            resetPushAlertCache()
         }
     }
 

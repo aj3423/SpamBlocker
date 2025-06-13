@@ -81,10 +81,6 @@ object Def {
     const val SETTING_SMS_ALERT_REGEX_STR = "call_alert_regex_str"
     const val SETTING_SMS_ALERT_REGEX_FLAGS = "call_alert_regex_flags"
     const val SETTING_SMS_ALERT_TIMESTAMP = "call_alert_timestamp"
-    const val SETTING_PUSH_ALERT_COLLAPSED = "push_alert_collapsed"
-    const val SETTING_PUSH_ALERT_EXPIRE_TIME = "push_alert_expire_time"
-    const val SETTING_PUSH_ALERT_PKG_NAME = "push_alert_pkg_name"
-    const val SETTING_PUSH_ALERT_BODY = "push_alert_body"
     const val SETTING_SMS_BOMB_ENABLED = "sms_bomb_enabled"
     const val SETTING_SMS_BOMB_COLLAPSED = "sms_bomb_collapsed"
     const val SETTING_SMS_BOMB_INTERVAL = "sms_bomb_interval"
@@ -120,10 +116,6 @@ object Def {
     const val RESULT_ALLOWED_BY_API_QUERY = 103
     const val RESULT_ALLOWED_BY_SMS_ALERT = 104
     const val RESULT_ALLOWED_BY_EMERGENCY_SITUATION = 105
-    const val RESULT_ALLOWED_BY_PUSH_ALERT = 106
-
-
-
 
 
     // blocked (10~99)

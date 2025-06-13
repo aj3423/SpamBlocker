@@ -37,7 +37,6 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_CALL
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_SITUATION
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_OFF_TIME
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_PUSH_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_RECENT_APP
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_REPEATED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_ALERT
@@ -57,7 +56,6 @@ import spam.blocker.ui.M
 import spam.blocker.ui.history.ReportSpamDialog
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
@@ -458,40 +456,6 @@ class ByRegexRule(
     }
 }
 
-// This will be serialized to a json and saved as the HistoryTable.reason
-@Serializable
-@SerialName("PushAlertDetail")
-data class PushAlertDetail(
-    val pkgName: String,
-    val body: String,
-)
-// allowed by push alert
-class ByPushAlert(
-    override val type: Int = RESULT_ALLOWED_BY_PUSH_ALERT,
-    val detail: PushAlertDetail,
-) : ICheckResult {
-    override fun resultReasonStr(ctx: Context): String {
-        return ctx.getString(R.string.push_alert)
-    }
-    override fun reasonToDb(): String {
-        return PermissiveJson.encodeToString(detail)
-    }
-    @Composable
-    override fun ResultReason(expanded: Boolean) {
-        RowVCenterSpaced(4) {
-            super.ResultReason(expanded)
-            AppIcon(detail.pkgName)
-        }
-    }
-    @Composable
-    override fun ExpandedContent(forType: Int, record: HistoryRecord) {
-        Column {
-            super.ExpandedContent(forType, record)
-            if (record.expanded)
-                DimGreyLabel(detail.body)
-        }
-    }
-}
 
 // allowed by sms alert
 class BySmsAlert(
@@ -543,10 +507,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             val rule = ContentRuleTable().findRuleById(ctx, reason.toLong())
             ByRegexRule(result, rule)
         }
-        RESULT_ALLOWED_BY_PUSH_ALERT -> {
-            val detail = PermissiveJson.decodeFromString<PushAlertDetail>(reason)
-            ByPushAlert(detail = detail)
-        }
+
         RESULT_ALLOWED_BY_SMS_ALERT -> BySmsAlert()
         RESULT_BLOCKED_BY_SMS_BOMB -> BySmsBomb()
 

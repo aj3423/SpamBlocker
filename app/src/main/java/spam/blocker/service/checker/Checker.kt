@@ -969,51 +969,6 @@ class Checker { // for namespace only
         }
     }
 
-    private class PushAlert(
-        private val ctx: Context,
-    ) : IChecker {
-        override fun priority(): Int {
-            return 10
-        }
-
-        override fun check(cCtx: CheckContext): ICheckResult? {
-            if (!Permission.accessibility.isGranted) {
-                return null
-            }
-
-            val spf = spf.PushAlert(ctx)
-
-            val logger = cCtx.logger
-
-            logger?.info(
-                ctx.getString(R.string.checking_template)
-                    .formatAnnotated(
-                        ctx.getString(R.string.push_alert).A(SkyBlue),
-                        priority().toString().A(LightMagenta)
-                    )
-            )
-
-            // Following information is updated by NotificationMonitorService when receiving notifications.
-            val pkgName = spf.getPkgName()
-            val body = spf.getBody()
-            val expireTime: Long = spf.getExpireTime() // millis
-
-            val now = System.currentTimeMillis()
-
-            if (now < expireTime) {
-                logger?.success(
-                    ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.push_alert))
-                )
-                return ByPushAlert(detail = PushAlertDetail(
-                    pkgName = pkgName,
-                    body = body,
-                ))
-            }
-
-            return null
-        }
-    }
-
     private class SmsAlert(
         private val ctx: Context,
     ) : IChecker {
@@ -1165,7 +1120,6 @@ class Checker { // for namespace only
                 MeetingMode(ctx),
                 OffTime(ctx),
                 InstantQuery(ctx, Def.ForNumber),
-                PushAlert(ctx),
                 SmsAlert(ctx)
             )
 

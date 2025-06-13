@@ -52,41 +52,5 @@
     </string>
     <string name="call_to_number">شماره تماس</string>
     <string name="call_to">تماس با</string>
-    <string name="push_alert">هشدار پوش</string>
-    <string name="help_push_alert">
-        <![CDATA[
-        پس از دریافت اعلان‌های خاص، تمام تماس‌های ورودی را برای یک دوره زمانی مشخص مجاز کنید.<br>
-        <br>
-        یک مورد استفاده معمول:<br>
-        &ensp; هنگامی که یک اعلان مانند:<br>
-        &emsp; عنوان: <font color="#888888">به‌روزرسانی سفارش:</font><br>
-        &emsp; متن: <font color="#888888">سفارش شما توسط راننده دریافت شده است...</font><br>
-        &ensp; راننده ممکن است سپس با شما تماس بگیرد تا جزئیات را تأیید کند.<br>
-        <br>
-        <font color="#ffa500"><b>توجه:</b></font> <br>
-        1. <b>بهینه‌سازی باتری</b> برای این برنامه باید غیرفعال شود.<br>
-        2. نیاز به اجازه <b>دسترس‌پذیری</b> دارد،
-        برخی دستگاه‌ها پس از به‌روزرسانی برنامه این اجازه را لغو می‌کنند. شما باید پس از به‌روزرسانی آن را به صورت دستی دوباره فعال کنید.<br>
-        <br>
-        اگر برچسب به رنگ <font color="#ffa500">نارنجی</font> درآمد، نشان‌دهنده نبود مجوزها است که احتمالاً به دلیل یک ارتقاء رخ داده است.<br>
-        <br>
-        <h5><font color="#00BFFF">- برنامه</font></h5>
-        فقط اعلان‌های این برنامه را مطابقت می‌دهد.<br>
-        <br>
-        <h5><font color="#00BFFF">- محتوای اعلان</font></h5>
-        این عبارت باقاعده <b>هم عنوان و هم متن اعلان</b> را مطابقت می‌دهد.<br>
-        مثال برای مورد استفاده بالا:<br>
-        &emsp; <font color="#03DAC5">به‌روزرسانی سفارش.*دریافت شده توسط راننده.*</font><br>
-        <br>
-        <h5><font color="#00BFFF">- مدت زمان</font></h5>
-        بر حسب دقیقه مشخص شده است.<br>
-        <br>
-        <font color="#ea86ff"><b>اولویت: 10</b></font>
-        ]]>
-    </string>
-    <string name="notification_content">محتوای اعلان</string>
-    <string name="app">برنامه</string>
-    <string name="choose">انتخاب</string>
-    <string name="accessibility">دسترس‌پذیری</string>
     <string name="usage_statistics">آمار استفاده</string>
 </resources>

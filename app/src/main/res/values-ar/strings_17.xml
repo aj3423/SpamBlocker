@@ -54,42 +54,5 @@
     </string>
     <string name="call_to_number"><translate>للرقم</translate></string>
     <string name="call_to"><translate>اتصل بـ</translate></string>
-    <string name="push_alert">تنبيه فوري</string>
-    <string name="help_push_alert">
-        <![CDATA[
-        بعد تلقي إشعارات محددة، اسمح بجميع المكالمات الواردة لفترة محددة.<br>
-        <br>
-        حالة استخدام نموذجية:<br>
-        &ensp; عندما يكون هناك إشعار مثل:<br>
-        &emsp; العنوان: <font color="#888888"><translate>تحديث الطلب:</translate></font><br>
-        &emsp; النص: <font color="#888888"><translate>تم استلام طلبك من قبل السائق…</translate></font><br>
-        &ensp; قد يتصل بك السائق بعد ذلك لتأكيد التفاصيل.<br>
-        <br>
-        <font color="#ffa500"><b>ملاحظة:</b></font> <br>
-        1. يجب تعطيل <b>تحسين البطارية</b> لهذا التطبيق.<br>
-        2. يتطلب إذن <b>إمكانية الوصول</b>،
-        بعض الأجهزة ستلغي هذا الإذن بعد تحديث التطبيق. تحتاج إلى
-        إعادة تمكينه يدويًا بعد التحديث.<br>
-        <br>
-        إذا تحول الملصق إلى اللون <font color="#ffa500">البرتقالي</font>، فهذا يشير إلى فقدان الأذونات، ومن المحتمل أن يكون السبب هو الترقية.<br>
-        <br>
-        <h5><font color="#00BFFF">- التطبيق</font></h5>
-        يطابق الإشعارات من هذا التطبيق فقط.<br>
-        <br>
-        <h5><font color="#00BFFF">- محتوى الإشعار</font></h5>
-        سيتطابق هذا النمط (regex) مع <b>كل من عنوان الإشعار ونصه</b>.<br>
-        مثال لحالة الاستخدام أعلاه:<br>
-        &emsp; <font color="#03DAC5"><translate>تحديث الطلب.*استلمها السائق.*</translate></font><br>
-        <br>
-        <h5><font color="#00BFFF">- المدة</font></h5>
-        محددة بالدقائق.<br>
-        <br>
-        <font color="#ea86ff"><b>الأولوية: 10</b></font>
-        ]]>
-    </string>
-    <string name="notification_content">محتوى الإشعار</string>
-    <string name="app">التطبيق</string>
-    <string name="choose">اختيار</string>
-    <string name="accessibility">إمكانية الوصول</string>
     <string name="usage_statistics">إحصائيات الاستخدام</string>
 </resources>

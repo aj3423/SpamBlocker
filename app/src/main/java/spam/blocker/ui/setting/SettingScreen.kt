@@ -50,9 +50,6 @@ import spam.blocker.ui.setting.quick.RecentApps
 import spam.blocker.ui.setting.quick.RepeatedCall
 import spam.blocker.ui.setting.quick.SpamDB
 import spam.blocker.ui.setting.quick.Stir
-import spam.blocker.ui.setting.regex.PushAlertHeader
-import spam.blocker.ui.setting.regex.PushAlertList
-import spam.blocker.ui.setting.regex.PushAlertViewModel
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
 import spam.blocker.ui.setting.regex.RuleSearchBox
@@ -182,13 +179,6 @@ fun SettingScreen() {
                                         RuleList(vm)
                                     }
                                 }
-                            }
-
-                            // Push Alert
-                            LaunchedEffect(true) { PushAlertViewModel.reloadDbAndOptions(ctx) }
-                            PushAlertHeader()
-                            AnimatedVisibleV(!PushAlertViewModel.listCollapsed.value) {
-                                PushAlertList()
                             }
 
                             // SMS Alert
