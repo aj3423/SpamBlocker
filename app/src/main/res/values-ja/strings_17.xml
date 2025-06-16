@@ -52,40 +52,39 @@
     </string>
     <string name="call_to_number">発信先番号</string>
     <string name="call_to">発信先</string>
-    <string name="push_alert">プッシュアラート</string>
+    <string name="push_alert">プッシュ通知アラート</string>
     <string name="help_push_alert">
         <![CDATA[
-        特定の通知を受信した後、設定された期間、すべての着信通話を許可します。<br>
+        特定の通知を受信した後、設定された期間、すべての着信を許可します。<br>
         <br>
-        典型的な使用例：<br>
-        &ensp; 次のような通知がある場合：<br>
-        &emsp; タイトル：<font color="#888888">注文更新：</font><br>
-        &emsp; 本文：<font color="#888888">ご注文はドライバーが受け取りました...</font><br>
-        &ensp; その後、ドライバーが詳細確認のために電話をかける場合があります。<br>
+        一般的な使用例：<br>
+        &ensp; 以下のような通知がある場合：<br>
+        &emsp; タイトル： <font color="#888888">注文更新：</font><br>
+        &emsp; 本文： <font color="#888888">注文はドライバーが引き取りました…</font><br>
+        &ensp; その後、ドライバーから詳細確認の電話がかかってくる場合があります。<br>
         <br>
-        <font color="#ffa500"><b>注：</b></font> <br>
-        1. このアプリの<b>バッテリーの最適化</b>は無効にする必要があります。<br>
-        2. <b>ユーザー補助</b>権限が必要です。一部のデバイスでは、アプリの更新後にこの権限が取り消される場合があります。更新後に手動で再有効化する必要があります。<br>
+        <b>必要な権限：</b> <br>
+        1. バッテリー最適化（制限なしまたは最適化）<br>
+        2. 通知アクセス<br>
         <br>
-        ラベルが<font color="#ffa500">オレンジ色</font>になった場合、権限が不足していることを示しており、おそらくアップグレードが原因です。<br>
+        オプション：<br>
         <br>
-        <h5><font color="#00BFFF">- アプリ</font></h5>
-        このアプリからの通知のみに一致します。<br>
+        <h6><font color="#00BFFF">- アプリ</font></h6>
+        このアプリからの通知のみを確認します。<br>
         <br>
-        <h5><font color="#00BFFF">- 通知内容</font></h5>
+        <h6><font color="#00BFFF">- 通知内容</font></h6>
         この正規表現は、<b>通知のタイトルと本文の両方</b>に一致します。<br>
-        上記のユースケースの例：<br>
-        &emsp; <font color="#03DAC5">注文更新.*ドライバーが受け取りました.*</font><br>
+        上記の使用例の例：<br>
+        &emsp; <font color="#03DAC5">注文更新.*ドライバーが引き取りました.*</font><br>
         <br>
-        <h5><font color="#00BFFF">- 期間</font></h5>
-        分単位で指定します。<br>
+        <h6><font color="#00BFFF">- 期間</font></h6>
+        通話はこの期間中に許可されます（分単位で指定）。<br>
         <br>
-        <font color="#ea86ff"><b>優先度: 10</b></font>
+        <font color="#ea86ff"><b>優先度：10</b></font>
         ]]>
     </string>
     <string name="notification_content">通知内容</string>
     <string name="app">アプリ</string>
     <string name="choose">選択</string>
-    <string name="accessibility">ユーザー補助</string>
     <string name="usage_statistics">使用状況の統計</string>
 </resources>

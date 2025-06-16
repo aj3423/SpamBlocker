@@ -57,32 +57,30 @@
     <string name="push_alert">Alerta Push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período de tiempo establecido.<br>
+        Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período determinado.<br>
         <br>
         Un caso de uso típico:<br>
         &ensp; Cuando hay una notificación como:<br>
-        &emsp; Título: <font color="#888888">Actualización de Pedido:</font><br>
-        &emsp; Cuerpo: <font color="#888888">Su pedido ha sido recogido por el conductor…</font><br>
+        &emsp; Título: <font color="#888888">Actualización de pedido:</font><br>
+        &emsp; Cuerpo: <font color="#888888">Su pedido ha sido recogido por el conductor...</font><br>
         &ensp; El conductor podría llamarle para confirmar detalles.<br>
         <br>
-        <font color="#ffa500"><b>Nota:</b></font> <br>
-        1. La <b>Optimización de Batería</b> para esta aplicación debe estar deshabilitada.<br>
-        2. Requiere permiso de <b>Accesibilidad</b>,
-        algunos dispositivos revocarán este permiso después de que la aplicación se actualice. Deberá
-        volver a habilitarlo manualmente después de actualizar.<br>
+        <b>Permisos requeridos:</b> <br>
+        1. Optimización de batería (sin restricciones u optimizada)<br>
+        2. Acceso a notificaciones<br>
         <br>
-        Si la etiqueta se vuelve <font color="#ffa500">naranja</font>, indica que faltan permisos, probablemente debido a una actualización.<br>
+        Opciones:<br>
         <br>
-        <h5><font color="#00BFFF">- Aplicación</font></h5>
-        Coincide solo con las notificaciones de esta aplicación.<br>
+        <h6><font color="#00BFFF">- Aplicación</font></h6>
+        Solo verificará las notificaciones de esta aplicación.<br>
         <br>
-        <h5><font color="#00BFFF">- Contenido de la Notificación</font></h5>
-        Esta expresión regular coincidirá con <b>tanto el título como el cuerpo de la notificación</b>.<br>
-        Ejemplo para el caso de uso anterior:<br>
+        <h6><font color="#00BFFF">- Contenido de la Notificación</font></h6>
+        Esta expresión regular coincidirá con <b>el título y el cuerpo de la notificación</b>.<br>
+        Un ejemplo para el caso de uso anterior:<br>
         &emsp; <font color="#03DAC5">actualización de pedido.*recogido por conductor.*</font><br>
         <br>
-        <h5><font color="#00BFFF">- Duración</font></h5>
-        Especificado en minutos.<br>
+        <h6><font color="#00BFFF">- Duración</font></h6>
+        Se permitirán llamadas durante este período, especificado en minutos.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
@@ -90,6 +88,5 @@
     <string name="notification_content">Contenido de la Notificación</string>
     <string name="app">Aplicación</string>
     <string name="choose">Elegir</string>
-    <string name="accessibility">Accesibilidad</string>
     <string name="usage_statistics">Estadísticas de Uso</string>
 </resources>

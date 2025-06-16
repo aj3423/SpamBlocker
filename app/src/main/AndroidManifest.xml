@@ -75,6 +75,7 @@
                 <action android:name="android.telecom.CallScreeningService" />
             </intent-filter>
         </service>
+
         <service
             android:name=".service.Tile"
             android:exported="true"
@@ -87,17 +88,12 @@
         </service>
 
         <service
-            android:name=".service.NotificationMonitorService"
-            android:enabled="true"
+            android:name=".service.NotificationListenerService"
             android:exported="true"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
+                <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility_service_config" />
         </service>
 
         <receiver

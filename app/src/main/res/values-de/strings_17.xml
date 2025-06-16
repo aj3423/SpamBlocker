@@ -57,30 +57,30 @@
     <string name="push_alert">Push-Benachrichtigung</string>
     <string name="help_push_alert">
         <![CDATA[
-        Nach Erhalt spezifischer Benachrichtigungen alle eingehenden Anrufe für einen festgelegten Zeitraum zulassen.<br>
+        Nach Erhalt spezifischer Benachrichtigungen werden alle eingehenden Anrufe für einen festgelegten Zeitraum zugelassen.<br>
         <br>
-        Ein typischer Anwendungsfall:<br>
-        &ensp; Wenn eine Benachrichtigung wie diese vorliegt:<br>
+        Ein typisches Anwendungsbeispiel:<br>
+        &ensp; Wenn es eine Benachrichtigung gibt wie:<br>
         &emsp; Titel: <font color="#888888">Bestellaktualisierung:</font><br>
-        &emsp; Inhalt: <font color="#888888">Ihre Bestellung wurde vom Fahrer entgegengenommen …</font><br>
-        &ensp; Der Fahrer könnte Sie dann anrufen, um Details zu bestätigen.<br>
+        &emsp; Inhalt: <font color="#888888">Ihre Bestellung wurde von Fahrer … entgegengenommen</font><br>
+        &ensp; Der Fahrer ruft Sie möglicherweise dann an, um Details zu bestätigen.<br>
         <br>
-        <font color="#ffa500"><b>Hinweis:</b></font> <br>
-        1. Die <b>Akku-Optimierung</b> für diese App muss deaktiviert sein.<br>
-        2. Es erfordert die <b>Bedienungshilfen</b>-Berechtigung; einige Geräte widerrufen diese Berechtigung nach einem App-Update. Sie müssen sie nach dem Update manuell wieder aktivieren.<br>
+        <b>Erforderliche Berechtigungen:</b> <br>
+        1. Akku-Optimierung (uneingeschränkt oder optimiert)<br>
+        2. Benachrichtigungszugriff<br>
         <br>
-        Wenn die Bezeichnung <font color="#ffa500">orange</font> wird, deutet dies auf fehlende Berechtigungen hin, wahrscheinlich durch ein Upgrade verursacht.<br>
+        Optionen:<br>
         <br>
-        <h5><font color="#00BFFF">- App</font></h5>
-        Passt nur Benachrichtigungen dieser App ab.<br>
+        <h6><font color="#00BFFF">- App</font></h6>
+        Es werden nur Benachrichtigungen dieser App geprüft.<br>
         <br>
-        <h5><font color="#00BFFF">- Benachrichtigungsinhalt</font></h5>
-        Dieser Regex gleicht <b>sowohl den Benachrichtigungstitel als auch den -inhalt</b> ab.<br>
-        Beispiel für den oben genannten Anwendungsfall:<br>
-        &emsp; <font color="#03DAC5">bestellaktualisierung.*vom fahrer entgegengenommen.*</font><br>
+        <h6><font color="#00BFFF">- Benachrichtigungsinhalt</font></h6>
+        Dieser Regex stimmt mit <b>sowohl dem Benachrichtigungstitel als auch dem Inhalt</b> überein.<br>
+        Ein Beispiel für den obigen Anwendungsfall:<br>
+        &emsp; <font color="#03DAC5">Bestellaktualisierung.*entgegengenommen von Fahrer.*</font><br>
         <br>
-        <h5><font color="#00BFFF">- Dauer</font></h5>
-        In Minuten angegeben.<br>
+        <h6><font color="#00BFFF">- Dauer</font></h6>
+        Anrufe werden während dieses Zeitraums zugelassen, angegeben in Minuten.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
@@ -88,6 +88,5 @@
     <string name="notification_content">Benachrichtigungsinhalt</string>
     <string name="app">App</string>
     <string name="choose">Auswählen</string>
-    <string name="accessibility">Bedienungshilfen</string>
     <string name="usage_statistics">Nutzungsstatistiken</string>
 </resources>

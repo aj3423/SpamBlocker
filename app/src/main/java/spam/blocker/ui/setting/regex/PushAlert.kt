@@ -12,14 +12,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -148,11 +146,7 @@ fun PushAlertEditDialog(
                         ctx,
                         listOf(
                             PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
-                            PermissionWrapper(
-                                Permission.accessibility,
-                                prompt = ctx.getString(R.string.prompt_go_to_permission_setting)
-                                    .format(ctx.getString(R.string.accessibility))
-                            )
+                            PermissionWrapper(Permission.notificationAccess)
                         )
                     ) { granted ->
                         if (granted) {
@@ -257,25 +251,11 @@ fun PushAlertHeader() {
         )
     }
 
-    // Show the "Push Alert" in orange instead of blue if:
-    //  1. Some valid records are enabled, indicating it's expected to work.
-    //  2. Any permission is missing.
-    // Because this accessibility permission will be revoked automatically on app upgrade,
-    //  it's very easy to be missed after upgrading.
-    val missingPermission = remember {
-        derivedStateOf {
-            val validRecords = vm.records.filter { it.enabled && it.isValid() }
-            val anyProblem = validRecords.isNotEmpty() && !Permission.accessibility.isGranted
-            mutableStateOf(anyProblem)
-        }
-    }
-
     LabeledRow(
         labelId = R.string.push_alert,
         helpTooltip = Str(R.string.help_push_alert),
         isCollapsed = vm.listCollapsed.value,
         toggleCollapse = { vm.toggleCollapse(ctx) },
-        missingPermission = missingPermission.value.value,
     ) {
         StrokeButton(
             label = Str(R.string.new_),

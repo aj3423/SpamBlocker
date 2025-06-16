@@ -52,33 +52,33 @@
     </string>
     <string name="call_to_number">Numaraya Çağrı</string>
     <string name="call_to">Ara</string>
-    <string name="push_alert">Anlık Bildirim Uyarısı</string>
+    <string name="push_alert">Bildirim Uyarısı</string>
     <string name="help_push_alert">
         <![CDATA[
-        Belirli bildirimler alındıktan sonra, belirlenen bir süre boyunca tüm gelen aramalara izin verin.<br>
+        Belirli bildirimler alındıktan sonra, gelen tüm aramalara belirlenen bir süre boyunca izin verin.<br>
         <br>
         Tipik bir kullanım durumu:<br>
-        &ensp; Şuna benzer bir bildirim olduğunda:<br>
+        &ensp; Şu şekilde bir bildirim olduğunda:<br>
         &emsp; Başlık: <font color="#888888">Sipariş Güncellemesi:</font><br>
-        &emsp; Gövde: <font color="#888888">Siparişiniz sürücü tarafından teslim alındı…</font><br>
-        &ensp; Sürücü daha sonra ayrıntıları doğrulamak için sizi arayabilir.<br>
+        &emsp; İçerik: <font color="#888888">Siparişiniz sürücü tarafından alındı…</font><br>
+        &ensp; Sürücü daha sonra detayları onaylamak için sizi arayabilir.<br>
         <br>
-        <font color="#ffa500"><b>Not:</b></font> <br>
-        1. <b>Pil Optimizasyonu</b> bu uygulama için devre dışı bırakılmalıdır.<br>
-        2. <b>Erişilebilirlik</b> izni gerektirir, bazı cihazlar uygulama güncellendikten sonra bu izni iptal edebilir. Güncellemeden sonra manuel olarak yeniden etkinleştirmeniz gerekir.<br>
+        <b>Gerekli izinler:</b> <br>
+        1. Pil optimizasyonu (kısıtlanmamış veya optimize edilmiş)<br>
+        2. Bildirim Erişimi<br>
         <br>
-        Etiket <font color="#ffa500">turuncu</font> olursa, izinlerin eksik olduğunu gösterir, bu durum büyük olasılıkla bir yükseltmeden kaynaklanmıştır.<br>
+        Seçenekler:<br>
         <br>
-        <h5><font color="#00BFFF">- Uygulama</font></h5>
-        Yalnızca bu uygulamadan gelen bildirimlerle eşleşir.<br>
+        <h6><font color="#00BFFF">- Uygulama</font></h6>
+        Yalnızca bu uygulamadan gelen bildirimleri kontrol edecektir.<br>
         <br>
-        <h5><font color="#00BFFF">- Bildirim İçeriği</font></h5>
-        Bu regex, <b>hem bildirim başlığı hem de gövdesi</b> ile eşleşecektir.<br>
-        Yukarıdaki kullanım durumu için örnek:<br>
-        &emsp; <font color="#03DAC5">sipariş güncellemesi.*sürücü tarafından teslim alındı.*</font><br>
+        <h6><font color="#00BFFF">- Bildirim İçeriği</font></h6>
+        Bu regex <b>hem bildirim başlığını hem de içeriğini</b> eşleştirecektir.<br>
+        Yukarıdaki kullanım durumu için bir örnek:<br>
+        &emsp; <font color="#03DAC5">sipariş güncellemesi.*sürücü tarafından alındı.*</font><br>
         <br>
-        <h5><font color="#00BFFF">- Süre</font></h5>
-        Dakika olarak belirtilir.<br>
+        <h6><font color="#00BFFF">- Süre</font></h6>
+        Bu süre zarfında, dakika olarak belirtilen aramalara izin verilecektir.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>
@@ -86,6 +86,5 @@
     <string name="notification_content">Bildirim İçeriği</string>
     <string name="app">Uygulama</string>
     <string name="choose">Seç</string>
-    <string name="accessibility">Erişilebilirlik</string>
     <string name="usage_statistics">Kullanım İstatistikleri</string>
 </resources>

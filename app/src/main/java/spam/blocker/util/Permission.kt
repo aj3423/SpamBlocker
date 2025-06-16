@@ -19,7 +19,6 @@ import android.os.PowerManager
 import android.os.Process
 import android.provider.Settings
 import android.provider.Settings.Secure
-import android.provider.Settings.SettingNotFoundException
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.result.ActivityResult
 import androidx.compose.runtime.getValue
@@ -32,7 +31,6 @@ import spam.blocker.util.Permission.fileRead
 import spam.blocker.util.Permission.fileWrite
 import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
-import spam.blocker.util.PermissionType.Accessibility
 import spam.blocker.util.PermissionType.AnswerCalls
 import spam.blocker.util.PermissionType.BatteryUnRestricted
 import spam.blocker.util.PermissionType.CallLog
@@ -40,6 +38,7 @@ import spam.blocker.util.PermissionType.CallScreening
 import spam.blocker.util.PermissionType.Contacts
 import spam.blocker.util.PermissionType.FileRead
 import spam.blocker.util.PermissionType.FileWrite
+import spam.blocker.util.PermissionType.NotificationAccess
 import spam.blocker.util.PermissionType.PhoneState
 import spam.blocker.util.PermissionType.ReadSMS
 import spam.blocker.util.PermissionType.ReceiveMMS
@@ -151,22 +150,55 @@ object PermissionType {
         intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
     )
 
-    class Accessibility: LaunchByIntent() {
+    class NotificationAccess: LaunchByIntent() {
         override fun launcherIntent(ctx: Context): Intent {
-            return Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+            return Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
         }
+
         override fun check(ctx: Context): Boolean {
-            return try {
-                val enabled = Secure.getInt(
-                    ctx.contentResolver,
-                    Secure.ACCESSIBILITY_ENABLED
-                )
-                enabled != 0
-            } catch (_: SettingNotFoundException) {
-                false
-            }
+            return Secure.getString(
+                ctx.applicationContext.contentResolver,
+                "enabled_notification_listeners"
+            ).contains(ctx.applicationContext.packageName)
         }
     }
+//    class ExactAlarm: LaunchByIntent() {
+//        override fun launcherIntent(ctx: Context): Intent {
+//            return if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
+//                Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+//            } else {
+//                return Intent()
+//            }
+//        }
+//
+//        override fun check(ctx: Context): Boolean {
+//            val alarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//
+//            // Check if the app can schedule exact alarms (Android 12+)
+//            return if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
+//                alarmManager.canScheduleExactAlarms()
+//            } else {
+//                true // Permission not required on Android 11 or below
+//            }
+//        }
+//    }
+//    class Accessibility: LaunchByIntent() {
+//        override fun launcherIntent(ctx: Context): Intent {
+//            return Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+//        }
+//        override fun check(ctx: Context): Boolean {
+//            return try {
+//                val enabled = Secure.getInt(
+//                    ctx.contentResolver,
+//                    Secure.ACCESSIBILITY_ENABLED
+//                )
+//                enabled != 0
+//            } catch (_: SettingNotFoundException) {
+//                false
+//            }
+//        }
+//    }
+    // This permission should always be optional because "Optimized" also works, not necessary to be "Unrestricted".
     class BatteryUnRestricted: LaunchByIntent() {
         @SuppressLint("BatteryLife")
         override fun launcherIntent(ctx: Context): Intent {
@@ -241,9 +273,10 @@ object Permission {
     val callLog = CallLog()
     val phoneState = PhoneState()
     val readSMS = ReadSMS()
-    val accessibility = Accessibility()
+    val notificationAccess = NotificationAccess()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
+//    val exactAlarm = ExactAlarm()
 
     // Initialized once when process starts (in App.kt)
     fun init(ctx: Context) {
@@ -258,9 +291,10 @@ object Permission {
             callLog,
             phoneState,
             readSMS,
-            accessibility,
+            notificationAccess,
             usageStats,
             batteryUnRestricted,
+//            exactAlarm,
         ).forEach { permission ->
             permission.isGranted = permission.check(ctx)
         }

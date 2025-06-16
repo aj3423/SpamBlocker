@@ -55,7 +55,7 @@ It's not necessary to leave this app running in the background, you can kill the
 | STIR/SHAKEN                   | STIR/SHAKEN attestation |
 | Repeated                      | Whether it's been calling repeatedly|
 | Dialed                        | Whether you have dialed the number  |
-| Push Alert | Allow calls after receiving notifications from other apps, e.g.: "Your order has been taken by driver ...", the driver may then contact you. | 
+| Push Alert                    | Allow calls after receiving notifications from other apps, e.g.: "Your order has been taken by driver ...", the driver may then contact you. | 
 | SMS Alert                     | Allow calls after receiving SMS messages like: "[From ...] We are calling to inform ..., please feel free to answer." | 
 | Recent Apps                   | Allow calls if some apps have been used recently.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund. |
 | Meeting Mode                  | Decline calls during online video meetings. |
@@ -85,8 +85,8 @@ It's not necessary to leave this app running in the background, you can kill the
 | READ_CALL_LOG<br>READ_SMS                                                         | For checking if a call is repeated                                     |
 | PACKAGE_USAGE_STATS                                                               | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                                                                  | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
-| REQUEST_IGNORE_BATTERY_OPTIMIZATIONS                                              | For it to keep working in the background                               |
-| ACCESSIBILITY                                                                     | For feature: Push Alert (receiving notifications from other apps)      |
+| REQUEST_IGNORE_BATTERY_OPTIMIZATIONS                                              | For it to keep working after being swiped and killed                   |
+| NOTIFICATION_ACCESS                                                               | For feature: Push Alert (receiving notifications from other apps)      |
 
 # Privacy
  - For offline features

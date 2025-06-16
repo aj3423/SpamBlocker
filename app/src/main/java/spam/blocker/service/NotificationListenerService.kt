@@ -1,24 +1,26 @@
 package spam.blocker.service
 
-import android.accessibilityservice.AccessibilityService
-import android.app.Notification
+import android.content.BroadcastReceiver
 import android.content.Context
-import android.view.accessibility.AccessibilityEvent
+import android.content.Intent
+import android.content.IntentFilter
+import android.service.notification.NotificationListenerService
+import android.service.notification.StatusBarNotification
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
+import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
-
+// A map of:
+//   <packageName, listOf PushAlertRecord>
+// to prevent database access on every notification.
 private var cache: HashMap<String, MutableList<PushAlertRecord>>? = null
 
 fun resetPushAlertCache() {
     cache = null
 }
 
-// Build a map of:
-//   <packageName, listOf PushAlertRecord>
-// to prevent database access on every notification.
 private fun ensureCache(ctx: Context) {
     if (cache == null) {
 //        logi("rebuild push alert cache")
@@ -34,21 +36,17 @@ private fun ensureCache(ctx: Context) {
     }
 }
 
-class NotificationMonitorService : AccessibilityService() {
-    override fun onAccessibilityEvent(event: AccessibilityEvent) {
-//        logi("accessibility event: $event")
-        if (event.eventType != AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED)
-            return
+class NotificationListenerService : NotificationListenerService() {
+    override fun onNotificationPosted(sbn: StatusBarNotification) {
+        super.onNotificationPosted(sbn)
 
-        val pd = event.parcelableData
-        if (pd == null)
-            return
+        val pkgName = sbn.packageName
+        val postTime = sbn.postTime
 
-        val extras = (pd as? Notification)?.extras
+        val extras = sbn.notification.extras
         if (extras == null)
             return
 
-        val pkgName = event.packageName.toString()
         val title = extras.getString("android.title", "")
         val text = extras.getString("android.text", "")
         val body = listOf(title, text).joinToString("\n").trim()
@@ -59,8 +57,6 @@ class NotificationMonitorService : AccessibilityService() {
         val recs = cache?.get(pkgName)
         if (recs == null)
             return
-
-//        logi("found pkg match: $pkgName, records size: ${recs.size}")
 
         // Keep all records that match the notification content
         val records = recs.filter {
@@ -75,15 +71,16 @@ class NotificationMonitorService : AccessibilityService() {
             it.duration
         }
 
-//        logi("push alert match, regex = ${max.body}, duration: ${max.duration}")
 
         val spf = spf.PushAlert(this)
 
         // Ignore if the new expire time is less than the previous time
         val prevExpireTime = spf.getExpireTime()
-        val newExpireTime = System.currentTimeMillis() + max.duration.toLong() * 60 * 1000
+        val newExpireTime = postTime + max.duration.toLong() * 60 * 1000
         if (newExpireTime <= prevExpireTime)
             return
+
+//        logi("push alert update, regex = ${max.body}, content: $body, expire: $newExpireTime")
 
         spf.apply {
             setPkgName(pkgName)
@@ -91,11 +88,4 @@ class NotificationMonitorService : AccessibilityService() {
             setExpireTime(newExpireTime)
         }
     }
-
-    override fun onServiceConnected() {
-//        logi("on connected")
-        super.onServiceConnected()
-    }
-
-    override fun onInterrupt() { }
 }

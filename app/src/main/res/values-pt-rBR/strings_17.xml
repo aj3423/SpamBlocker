@@ -57,32 +57,30 @@
     <string name="push_alert">Alerta Push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Após receber notificações específicas, permita todas as chamadas recebidas por um período definido.<br>
+        Após receber notificações específicas, permitir todas as chamadas recebidas por um período determinado.<br>
         <br>
         Um caso de uso típico:<br>
-        &ensp; Quando houver uma notificação como:<br>
+        &ensp; Quando há uma notificação como:<br>
         &emsp; Título: <font color="#888888">Atualização do Pedido:</font><br>
-        &emsp; Corpo: <font color="#888888">Seu pedido foi pego pelo motorista…</font><br>
+        &emsp; Corpo: <font color="#888888">Seu pedido foi retirado pelo motorista…</font><br>
         &ensp; O motorista pode então ligar para você para confirmar detalhes.<br>
         <br>
-        <font color="#ffa500"><b>Observação:</b></font> <br>
-        1. A <b>Otimização de Bateria</b> para este aplicativo deve estar desativada.<br>
-        2. Requer permissão de <b>Acessibilidade</b>,
-        alguns dispositivos revogarão esta permissão após a atualização do aplicativo. Você precisa
-        reativá-la manualmente após a atualização.<br>
+        <b>Permissões necessárias:</b> <br>
+        1. Otimização de bateria (irrestrita ou otimizada)<br>
+        2. Acesso à Notificação<br>
         <br>
-        Se o rótulo ficar <font color="#ffa500">laranja</font>, indica que as permissões estão faltando, provavelmente devido a uma atualização.<br>
+        Opções:<br>
         <br>
-        <h5><font color="#00BFFF">- Aplicativo</font></h5>
-        Corresponde a notificações apenas deste aplicativo.<br>
+        <h6><font color="#00BFFF">- App</font></h6>
+        Verificará apenas notificações deste app.<br>
         <br>
-        <h5><font color="#00BFFF">- Conteúdo da Notificação</font></h5>
-        Esta regex corresponderá a <b>tanto o título quanto o corpo da notificação</b>.<br>
-        Exemplo para o caso de uso acima:<br>
-        &emsp; <font color="#03DAC5">atualização do pedido.*pelo motorista.*</font><br>
+        <h6><font color="#00BFFF">- Conteúdo da Notificação</font></h6>
+        Esta regex corresponderá <b>tanto ao título quanto ao corpo da notificação</b>.<br>
+        Um exemplo para o caso de uso acima:<br>
+        &emsp; <font color="#03DAC5">atualização de pedido.*retirado pelo motorista.*</font><br>
         <br>
-        <h5><font color="#00BFFF">- Duração</font></h5>
-        Especificado em minutos.<br>
+        <h6><font color="#00BFFF">- Duração</font></h6>
+        As chamadas serão permitidas durante este período, especificado em minutos.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
@@ -90,6 +88,5 @@
     <string name="notification_content">Conteúdo da Notificação</string>
     <string name="app">Aplicativo</string>
     <string name="choose">Escolher</string>
-    <string name="accessibility">Acessibilidade</string>
     <string name="usage_statistics">Estatísticas de Uso</string>
 </resources>

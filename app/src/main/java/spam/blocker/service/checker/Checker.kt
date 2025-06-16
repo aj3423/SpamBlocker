@@ -1,14 +1,24 @@
 package spam.blocker.service.checker
 
+import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.os.Build
+import android.os.SystemClock
 import android.telecom.Call
 import android.telecom.Connection
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.PushAlertTable
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
@@ -39,6 +49,8 @@ import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
+import spam.blocker.util.loge
+import spam.blocker.util.logi
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
@@ -977,11 +989,17 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            if (!Permission.accessibility.isGranted) {
+            if (!Permission.notificationAccess.isGranted) {
                 return null
             }
 
-            val spf = spf.PushAlert(ctx)
+            // Skip if no valid rule is set.
+            val enabled = PushAlertTable.listAll(ctx).any {
+                it.enabled && it.isValid()
+            }
+            if (!enabled) {
+                return null
+            }
 
             val logger = cCtx.logger
 
@@ -992,6 +1010,13 @@ class Checker { // for namespace only
                         priority().toString().A(LightMagenta)
                     )
             )
+
+            // Sleep 500ms for the `NotificationListenerService` to process all buffered notifications
+            runBlocking(IO) {
+                delay(500)
+            }
+
+            val spf = spf.PushAlert(ctx)
 
             // Following information is updated by NotificationMonitorService when receiving notifications.
             val pkgName = spf.getPkgName()

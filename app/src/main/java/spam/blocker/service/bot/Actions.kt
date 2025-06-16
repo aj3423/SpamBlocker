@@ -1654,7 +1654,7 @@ class EnableApp(
 //   https://stackoverflow.com/q/79415650/2219196
 @SerialName("ParseIncomingNumber")
 class InterceptCall(
-    var numberFilter: String = "",
+    var numberFilter: String = ".*",
 ) : IAction {
 
     override fun missingPermissions(ctx: Context): List<PermissionWrapper> {

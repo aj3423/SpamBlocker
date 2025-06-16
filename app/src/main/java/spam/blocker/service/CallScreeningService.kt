@@ -8,8 +8,13 @@ import android.telecom.CallScreeningService
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import spam.blocker.Events
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
@@ -52,7 +57,6 @@ class CallScreeningService : CallScreeningService() {
             val spf = spf.EmergencySituation(ctx)
             val extraNumbers = spf.getExtraNumbers()
             if (Util.isEmergencyNumber(ctx, rawNumber) || extraNumbers.contains(rawNumber)) {
-                logi("save ecc outgoing")
                 spf.setTimestamp(System.currentTimeMillis())
             }
         }
@@ -80,7 +84,7 @@ class CallScreeningService : CallScreeningService() {
             setSkipNotification(true)
             setDisallowCall(true)
 
-//            setSilenceCall(true)
+//            setSilenceCall(true) // no need
         }
         respondToCall(details, builder.build())
     }
@@ -105,8 +109,12 @@ class CallScreeningService : CallScreeningService() {
         respondToCall(details, builder.build())
     }
 
-
     override fun onScreenCall(details: Details) {
+        CoroutineScope(IO).launch {
+            doScreenCall(details)
+        }
+    }
+    private fun doScreenCall(details: Details) {
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
             updateOutgoingEmergencyTimestamp(this, details.getRawNumber())
@@ -192,8 +200,6 @@ class CallScreeningService : CallScreeningService() {
         logToDb(ctx, r, rawNumber)
 
         if (r.shouldBlock()) {
-            logi(String.format("Reject call %s", rawNumber))
-
             CoroutineScope(IO).launch {
 
                 // 2. Show notification

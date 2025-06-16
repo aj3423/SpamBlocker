@@ -54,35 +54,33 @@
     </string>
     <string name="call_to_number">Vers numéro</string>
     <string name="call_to">Appeler</string>
-    <string name="push_alert">Alerte Push</string>
+    <string name="push_alert">Alerte push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Après avoir reçu des notifications spécifiques, autoriser tous les appels entrants pendant une période définie.<br>
+        Après avoir reçu des notifications spécifiques, autorisez tous les appels entrants pendant une période définie.<br>
         <br>
         Un cas d\'utilisation typique :<br>
         &ensp; Lorsqu\'il y a une notification comme :<br>
         &emsp; Titre : <font color="#888888">Mise à jour de commande :</font><br>
-        &emsp; Corps : <font color="#888888">Votre commande a été prise en charge par le livreur…</font><br>
-        &ensp; Le livreur peut alors vous appeler pour confirmer les détails.<br>
+        &emsp; Corps : <font color="#888888">Votre commande a été prise par le chauffeur…</font><br>
+        &ensp; Le chauffeur peut alors vous appeler pour confirmer les détails.<br>
         <br>
-        <font color="#ffa500"><b>Remarque :</b></font> <br>
-        1. L\'<b>Optimisation de la batterie</b> pour cette application doit être désactivée.<br>
-        2. Elle nécessite l\'autorisation d\'<b>Accessibilité</b>,
-        certains appareils révoqueront cette permission après la mise à jour de l\'application. Vous devrez la
-        réactiver manuellement après la mise à jour.<br>
+        <b>Autorisations requises :</b> <br>
+        1. Optimisation de la batterie (illimitée ou optimisée)<br>
+        2. Accès aux notifications<br>
         <br>
-        Si l\'étiquette devient <font color="#ffa500">orange</font>, cela indique que des autorisations sont manquantes, probablement causées par une mise à jour.<br>
+        Options :<br>
         <br>
-        <h5><font color="#00BFFF">- Application</font></h5>
-        Correspond aux notifications de cette application uniquement.<br>
+        <h6><font color="#00BFFF">- Application</font></h6>
+        Il ne vérifiera que les notifications de cette application.<br>
         <br>
-        <h5><font color="#00BFFF">- Contenu de la notification</font></h5>
-        Cette expression régulière correspondra <b>à la fois au titre et au corps de la notification</b>.<br>
-        Exemple pour le cas d\'utilisation ci-dessus :<br>
-        &emsp; <font color="#03DAC5">mise à jour de commande.*prise en charge par le livreur.*</font><br>
+        <h6><font color="#00BFFF">- Contenu de la notification</font></h6>
+        Cette expression régulière correspondra à la fois au <b>titre et au corps de la notification</b>.<br>
+        Un exemple pour le cas d\'utilisation ci-dessus :<br>
+        &emsp; <font color="#03DAC5">mise à jour de commande.*prise par le chauffeur.*</font><br>
         <br>
-        <h5><font color="#00BFFF">- Durée</font></h5>
-        Spécifié en minutes.<br>
+        <h6><font color="#00BFFF">- Durée</font></h6>
+        Les appels seront autorisés pendant cette période, spécifiée en minutes.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
@@ -90,6 +88,5 @@
     <string name="notification_content">Contenu de la notification</string>
     <string name="app">Application</string>
     <string name="choose">Choisir</string>
-    <string name="accessibility">Accessibilité</string>
     <string name="usage_statistics">Statistiques d\'utilisation</string>
 </resources>
