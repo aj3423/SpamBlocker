@@ -1011,7 +1011,8 @@ class Checker { // for namespace only
                     )
             )
 
-            // Sleep 500ms for the `NotificationListenerService` to process all buffered notifications
+            // Sleep 500ms for the `NotificationListenerService` to process all buffered notifications,
+            //  see "PushAlert.kt" for a detailed explanation.
             runBlocking(IO) {
                 delay(500)
             }

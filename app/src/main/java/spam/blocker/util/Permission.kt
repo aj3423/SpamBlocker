@@ -112,7 +112,7 @@ object PermissionType {
     class FileRead(): FileAccess(Manifest.permission.READ_EXTERNAL_STORAGE)
     class FileWrite(): FileAccess(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-    // It will launch an Intent for asking the permission.
+    // It will launch an Intent when asking for the permission.
     abstract class LaunchByIntent() : Basic() {
         abstract fun launcherIntent(ctx: Context): Intent
         override fun name(ctx: Context): String { return launcherIntent(ctx).action!! }
@@ -198,7 +198,7 @@ object PermissionType {
 //            }
 //        }
 //    }
-    // This permission should always be optional because "Optimized" also works, not necessary to be "Unrestricted".
+    // This permission should always be optional because "Optimized" also works, not necessarily to be "Unrestricted".
     class BatteryUnRestricted: LaunchByIntent() {
         @SuppressLint("BatteryLife")
         override fun launcherIntent(ctx: Context): Intent {
@@ -214,7 +214,7 @@ object PermissionType {
             return unRestricted
 
             // This works for both "Unrestricted" and "Optimized",
-            // but there is a 5 seconds delay for this to take effect, can't use this.
+            // but there is a 5-second delay for this to take effect, can't use this.
 //            val activityManager = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
 //            val isRestricted =  activityManager.isBackgroundRestricted
 //            return !isRestricted
@@ -276,7 +276,6 @@ object Permission {
     val notificationAccess = NotificationAccess()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
-//    val exactAlarm = ExactAlarm()
 
     // Initialized once when process starts (in App.kt)
     fun init(ctx: Context) {
@@ -294,7 +293,6 @@ object Permission {
             notificationAccess,
             usageStats,
             batteryUnRestricted,
-//            exactAlarm,
         ).forEach { permission ->
             permission.isGranted = permission.check(ctx)
         }

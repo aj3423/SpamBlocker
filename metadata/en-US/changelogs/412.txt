@@ -1,0 +1,11 @@
+New:
+- Push Alert
+  Allow calls after receiving push notifications from other apps. Use case: 
+  - A notification like: "Your order has been taken by driver ..."
+    The driver may then call you to confirm details.
+
+Fix:
+- Crash when testing with invalid regex
+
+Change:
+- "Call Alert" is renamed to "SMS Alert"

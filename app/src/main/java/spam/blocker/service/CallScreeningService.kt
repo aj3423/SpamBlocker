@@ -110,6 +110,9 @@ class CallScreeningService : CallScreeningService() {
     }
 
     override fun onScreenCall(details: Details) {
+        // With this coroutine, this function returns immediately without blocking the whole process.
+        // So other services will get executed simultaneously.
+        // Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
         CoroutineScope(IO).launch {
             doScreenCall(details)
         }
