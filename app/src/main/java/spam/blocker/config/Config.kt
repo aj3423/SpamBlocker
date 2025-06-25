@@ -324,12 +324,14 @@ class STIR {
 class SpamDB {
     var enabled = false
     var expiryEnabled = true
+    var priority = 0
     var ttl = 90
 
     fun load(ctx: Context) {
         val spf = spf.SpamDB(ctx)
         enabled = spf.isEnabled()
         expiryEnabled = spf.isExpiryEnabled()
+        priority = spf.getPriority()
         ttl = spf.getTTL()
     }
 
@@ -337,6 +339,7 @@ class SpamDB {
         spf.SpamDB(ctx).apply {
             setEnabled(enabled)
             setExpiryEnabled(expiryEnabled)
+            setPriority(priority)
             setTTL(ttl)
         }
     }
