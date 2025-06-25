@@ -7,15 +7,15 @@
 
     <string name="help_spam_db">
         <![CDATA[
-        Bu veritabanındaki numaralar engellenecektir.<br>
+        Bu veritabanındaki telefon numaraları engellenecektir.<br>
         <br>
-        Herhangi bir kamu veritabanını veya birden fazla veritabanını entegre edebilir, ayrıca yerel dosyalardan numaraları da içe aktarabilirsiniz.<br>
+        Herhangi bir genel veritabanını veya birden fazla veritabanını entegre edebilir, ayrıca yerel dosyalardan telefon numaraları aktarabilirsiniz.<br>
         <br>
-        Otomatik içe aktarma görevini nasıl planlayacağınızı öğrenmek için aşağıdaki "Otomasyon" bölümünü kontrol edin.<br>
+        Otomatik içe aktarma görevini nasıl planlayacağınızı öğrenmek için aşağıdaki "Otomasyon" bölümünü inceleyin.<br>
         <br>
-        Bu, hem aramalar hem de SMS mesajları için geçerlidir.<br>
+        Hem aramalar hem de SMS mesajları için geçerlidir.<br>
         <br>
-        <font color="#ea86ff"><b>Öncelik: 0</b></font>
+        <font color="#ea86ff"><b>Varsayılan Öncelik: 0</b></font>
         ]]>
     </string>
     <string name="help_spam_db_ttl">

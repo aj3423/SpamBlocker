@@ -248,7 +248,7 @@ class Checker { // for namespace only
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
-            return 0
+            return spf.SpamDB(ctx).getPriority()
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {

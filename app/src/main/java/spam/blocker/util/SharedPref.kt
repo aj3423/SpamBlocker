@@ -188,6 +188,8 @@ class spf { // for namespace only
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SPAM_DB_ENABLED, enabled) }
         fun isExpiryEnabled(): Boolean { return readBoolean(Def.SETTING_SPAM_DB_EXPIRY_ENABLED, getTTLOld() != -1) }
         fun setExpiryEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_SPAM_DB_EXPIRY_ENABLED, enabled) }
+        fun getPriority(): Int { return readInt(Def.SETTING_SPAM_DB_PRIORITY, 0) }
+        fun setPriority(priority: Int) { writeInt(Def.SETTING_SPAM_DB_PRIORITY, priority) }
         fun getTTL(): Int { return readInt(Def.SETTING_SPAM_DB_TTL_DAYS, if(getTTLOld() >= 0) { getTTLOld() } else { DEFAULT_SPAM_DB_TTL }) } // 90 days
         fun setTTL(days: Int) { writeInt(Def.SETTING_SPAM_DB_TTL_DAYS, days) }
         fun getTTLOld(): Int { return readInt(Def.SETTING_SPAM_DB_TTL, DEFAULT_SPAM_DB_TTL) } // -1: never expire, >=0: n days

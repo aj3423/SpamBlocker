@@ -9,13 +9,13 @@
         <![CDATA[
         Els números d\'aquesta base de dades es bloquejaran.<br>
         <br>
-        Podeu integrar qualsevol base de dades pública, o fins i tot múltiples bases de dades, també podeu importar números des de fitxers locals.<br>
+        Podeu integrar qualsevol base de dades pública, o fins i tot diverses bases de dades; també podeu importar números des de fitxers locals.<br>
         <br>
         Consulteu la secció "Automatització" a continuació per saber com programar una tasca d\'importació automàtica.<br>
         <br>
-        S\'aplica tant a trucades com a missatges SMS.<br>
+        S\'aplica tant a les trucades com als missatges SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Prioritat: 0</b></font>
+        <font color="#ea86ff"><b>Prioritat predeterminada: 0</b></font>
         ]]>
     </string>
     <string name="help_spam_db_ttl">

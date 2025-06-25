@@ -7,15 +7,15 @@
 
     <string name="help_spam_db">
         <![CDATA[
-        Números nesse banco de dados serão bloqueados.<br>
+        Os números nesta base de dados serão bloqueados.<br>
         <br>
-        Você pode integrar qualquer banco de dados público, ou até mesmo vários bancos de dados, você também pode importar números de arquivos locais.<br>
+        Você pode integrar qualquer banco de dados público, ou até múltiplos bancos de dados, você também pode importar números de arquivos locais.<br>
         <br>
         Verifique a seção "Automação" abaixo para saber como agendar uma tarefa de importação automática.<br>
         <br>
         Aplica-se a chamadas e mensagens SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Prioridade: 0</b></font>
+        <font color="#ea86ff"><b>Prioridade Padrão: 0</b></font>
         ]]>
     </string>
     <string name="help_spam_db_ttl">

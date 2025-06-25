@@ -9,13 +9,13 @@
         <![CDATA[
         Nomor-nomor dalam basis data ini akan diblokir.<br>
         <br>
-        Anda dapat menggabungkan basis data publik apa pun, atau bahkan beberapa basis data, Anda juga dapat mengimpor nomor dari berkas lokal.<br>
+        Anda dapat mengintegrasikan basis data publik apa pun, atau bahkan beberapa basis data, Anda juga dapat mengimpor nomor dari berkas lokal.<br>
         <br>
-        Lihat bagian "Otomatisasi" di bawah ini untuk mengetahui cara menjadwalkan tugas impor secara otomatis.<br>
+        Lihat bagian "Otomatisasi" di bawah untuk cara menjadwalkan tugas impor otomatis.<br>
         <br>
         Ini berlaku untuk panggilan dan pesan SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Prioritas: 0</b></font>
+        <font color="#ea86ff"><b>Prioritas Default: 0</b></font>
         ]]>
     </string>
     <string name="help_spam_db_ttl">

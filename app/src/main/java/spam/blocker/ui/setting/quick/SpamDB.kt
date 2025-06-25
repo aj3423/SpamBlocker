@@ -116,6 +116,7 @@ fun SpamDB() {
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
     var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled()) }
     var ttl by remember { mutableIntStateOf(spf.getTTL()) }
+    var priority by remember { mutableIntStateOf(spf.getPriority()) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
     var total by remember { mutableIntStateOf(SpamTable.count(ctx)) }
@@ -191,6 +192,19 @@ fun SpamDB() {
                     expiryEnabled = isOn
                 })
             }
+
+            // Priority
+            NumberInputBox(
+                intValue = priority,
+                onValueChange = { newValue, hasError ->
+                    if (!hasError) {
+                        priority = newValue!!
+                        spf.setPriority(newValue)
+                    }
+                },
+                label = { Text(Str(R.string.priority)) },
+                leadingIconId = R.drawable.ic_priority,
+            )
 
 
             // Search list

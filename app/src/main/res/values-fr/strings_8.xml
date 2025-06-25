@@ -7,15 +7,15 @@
 
     <string name="help_spam_db">
         <![CDATA[
-        Les numéros dans cette base de données seront bloqués.<br>
+        Les numéros de téléphone de cette base de données seront bloqués.<br>
         <br>
-        Vous pouvez intégrer n\'importe quelle base de données publique, ou même plusieurs bases de données, vous pouvez également importer des numéros à partir de fichiers locaux.<br>
+        Vous pouvez intégrer n\'importe quelle base de données publique, ou même plusieurs bases de données, vous pouvez également importer des numéros de téléphone à partir de fichiers locaux.<br>
         <br>
-        Consultez la section "Automatisation" ci-dessous pour savoir comment planifier une tâche d\'importation automatique.<br>
+        Consultez la section "Automatisation" ci-dessous pour savoir comment planifier une tâche d\'auto-importation.<br>
         <br>
         Cela s\'applique aux appels et aux messages SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 0</b></font>
+        <font color="#ea86ff"><b>Priorité par défaut : 0</b></font>
         ]]>
     </string>
     <string name="help_spam_db_ttl">

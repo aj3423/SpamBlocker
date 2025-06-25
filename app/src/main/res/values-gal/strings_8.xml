@@ -9,13 +9,13 @@
         <![CDATA[
         Os números nesta base de datos serán bloqueados.<br>
         <br>
-        Podes integrar calquera base de datos pública, ou incluso varias bases de datos, tamén podes importar números de arquivos locais.<br>
+        Podes integrar calquera base de datos pública, ou mesmo múltiples bases de datos; tamén podes importar números desde ficheiros locais.<br>
         <br>
-        Consulta a sección "Automatización" a continuación para saber como programar unha tarefa de importación automática.<br>
+        Consulta a sección "Automatización" a continuación para saber como programar unha tarefa de autoimportación.<br>
         <br>
-        Aplicase tanto ás chamadas como ás mensaxes SMS.<br>
+        Aplícase tanto a chamadas como a mensaxes SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Prioridade: 0</b></font>
+        <font color="#ea86ff"><b>Prioridade predeterminada: 0</b></font>
         ]]>
     </string>
     <string name="help_spam_db_ttl">

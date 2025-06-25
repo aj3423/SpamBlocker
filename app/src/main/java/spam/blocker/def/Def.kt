@@ -64,6 +64,7 @@ object Def {
     const val SETTING_SPAM_DB_ENABLED = "spam_db_enabled"
     const val SETTING_SPAM_DB_EXPIRY_ENABLED = "spam_db_expiry_enabled"
     const val SETTING_SPAM_DB_TTL = "spam_db_ttl" // for history compatibility only
+    const val SETTING_SPAM_DB_PRIORITY = "spam_db_priority"
     const val SETTING_SPAM_DB_TTL_DAYS = "spam_db_ttl_days"
     const val SETTING_NUMBER_RULE_COLLAPSED = "number_rule_collapsed"
     const val SETTING_CONTENT_RULE_COLLAPSED = "content_rule_collapsed"
