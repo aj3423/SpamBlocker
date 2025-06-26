@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">自动复制</string>
+    <string name="help_auto_copy">自动将内容复制到剪贴板，无需点击通知中的“复制”按钮。</string>
+</resources>

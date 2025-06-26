@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Copia Automática</string>
+    <string name="help_auto_copy">Copiar automáticamente el contenido al portapapeles sin necesidad de tocar el botón "Copiar" en la notificación.</string>
+</resources>

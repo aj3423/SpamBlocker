@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">نسخ تلقائي</string>
+    <string name="help_auto_copy">نسخ المحتوى تلقائيًا إلى الحافظة دون الحاجة إلى النقر على زر "نسخ" في الإشعار.</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Auto-Kopieren</string>
+    <string name="help_auto_copy">Kopiert den Inhalt automatisch in die Zwischenablage, ohne auf die Schaltfläche „Kopieren“ in der Benachrichtigung tippen zu müssen.</string>
+</resources>

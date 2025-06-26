@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Copie automatique</string>
+    <string name="help_auto_copy">Copie automatiquement le contenu dans le presse-papiers sans avoir besoin d\'appuyer sur le bouton "Copier" dans la notification.</string>
+</resources>

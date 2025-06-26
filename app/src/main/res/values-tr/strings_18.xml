@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Otomatik Kopyala</string>
+    <string name="help_auto_copy">İçeriği bildirimdeki "Kopyala" düğmesine dokunmaya gerek kalmadan otomatik olarak panoya kopyala.</string>
+</resources>

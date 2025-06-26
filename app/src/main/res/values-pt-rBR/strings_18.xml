@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Cópia Automática</string>
+    <string name="help_auto_copy">Copia automaticamente o conteúdo para a área de transferência sem precisar tocar no botão "Copiar" na notificação.</string>
+</resources>

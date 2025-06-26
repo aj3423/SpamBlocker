@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Copia automatica</string>
+    <string name="help_auto_copy">Copia automaticamente il contenuto negli appunti senza dover toccare il pulsante "Copia" nella notifica.</string>
+</resources>

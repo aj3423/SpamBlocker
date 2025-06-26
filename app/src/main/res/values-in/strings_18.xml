@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Salin Otomatis</string>
+    <string name="help_auto_copy">Salin otomatis konten ke papan klip tanpa perlu mengetuk tombol "Salin" di notifikasi.</string>
+</resources>

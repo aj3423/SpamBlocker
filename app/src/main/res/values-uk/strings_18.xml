@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Автокопіювання</string>
+    <string name="help_auto_copy">Автоматично копіювати вміст у буфер обміну без необхідності натискати кнопку "Копіювати" у сповіщенні.</string>
+</resources>

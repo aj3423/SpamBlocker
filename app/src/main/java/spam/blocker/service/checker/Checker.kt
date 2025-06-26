@@ -10,8 +10,10 @@ import android.os.Build
 import android.os.SystemClock
 import android.telecom.Call
 import android.telecom.Connection
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import spam.blocker.G
 import spam.blocker.R
@@ -35,6 +37,7 @@ import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.util.A
+import spam.blocker.util.Clipboard
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Now
@@ -1288,6 +1291,12 @@ class Checker { // for namespace only
                 it.priority
             }.fold(mutableListOf()) { acc, it ->
 
+                fun autoCopy(text: String) {
+                    if (it.flags.hasFlag(Def.FLAG_AUTO_COPY)) {
+                        CoroutineScope(IO).launch { Clipboard.copy(ctx, text) }
+                    }
+                }
+
                 val opts = Util.flagsToRegexOptions(it.patternFlags)
                 val regex = it.pattern.toRegex(opts)
 
@@ -1301,13 +1310,17 @@ class Checker { // for namespace only
                         Util.clearNumber(rawNumber)
 
                     val extracted = Util.extractString(regex, numberToCheck)
-                    if (extracted != null)
+                    if (extracted != null) {
                         acc.add(extracted)
+                        autoCopy(extracted)
+                    }
                 }
                 if (forContent && messageBody != null) {
                     val extracted = Util.extractString(regex, messageBody)
-                    if (extracted != null)
+                    if (extracted != null) {
                         acc.add(extracted)
+                        autoCopy(extracted)
+                    }
                 }
                 acc
             }

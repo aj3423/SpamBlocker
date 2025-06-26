@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Còpia Automàtica</string>
+    <string name="help_auto_copy">Copia automàticament el contingut al porta-retalls sense necessitat de tocar el botó «Copia» a la notificació.</string>
+</resources>

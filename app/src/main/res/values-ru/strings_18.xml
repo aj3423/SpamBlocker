@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">Автокопирование</string>
+    <string name="help_auto_copy">Автоматически копировать содержимое в буфер обмена без необходимости нажимать кнопку «Копировать» в уведомлении.</string>
+</resources>

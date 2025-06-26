@@ -155,6 +155,8 @@ object Def {
     const val FLAG_FOR_CONTENT = 1 shl 3
     const val FLAG_FOR_PASSED = 1 shl 4
     const val FLAG_FOR_BLOCKED = 1 shl 5
+    const val FLAG_AUTO_COPY = 1 shl 6
+
 
     // regexFlags, max: 1 shl 30
     const val FLAG_REGEX_IGNORE_CASE = 1 shl 0

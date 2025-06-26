@@ -1,0 +1,4 @@
+<resources>
+    <string name="auto_copy">自動コピー</string>
+    <string name="help_auto_copy">通知の「コピー」ボタンをタップすることなく、内容を自動的にクリップボードにコピーします。</string>
+</resources>

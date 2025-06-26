@@ -255,6 +255,9 @@ fun RuleEditDialog(
     var applyToPassed by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_PASSED)) }
     var applyToBlocked by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_FOR_BLOCKED)) }
 
+    // Auto copy OPT codes
+    var autoCopy by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_AUTO_COPY)) }
+
     // Whitelist or Blacklist
     // selected index
     var applyToWorB by rememberSaveable { mutableIntStateOf(if (initRule.isWhitelist()) 0 else 1) }
@@ -298,6 +301,7 @@ fun RuleEditDialog(
                     flags = flags.setFlag(Def.FLAG_FOR_CONTENT, applyToContent)
                     flags = flags.setFlag(Def.FLAG_FOR_PASSED, applyToPassed)
                     flags = flags.setFlag(Def.FLAG_FOR_BLOCKED, applyToBlocked)
+                    flags = flags.setFlag(Def.FLAG_AUTO_COPY, autoCopy)
 
                     val schedule = TimeSchedule().apply {
                         enabled = schEnabled
@@ -463,6 +467,21 @@ fun RuleEditDialog(
                                 checked = applyToBlocked,
                                 label = { Text(Str(R.string.blocked), color = C.block) },
                                 onCheckChange = { applyToBlocked = it })
+                        }
+                    }
+                }
+
+                // For Auto Copy
+                if (forType == Def.ForQuickCopy) {
+                    LabeledRow(
+                        labelId = R.string.auto_copy,
+                        helpTooltip = Str(R.string.help_auto_copy),
+                    ) {
+                        FlowRowSpaced(10) {
+                            CheckBox(
+                                checked = autoCopy,
+                                onCheckChange = { autoCopy = it },
+                            )
                         }
                     }
                 }
