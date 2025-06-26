@@ -1,5 +1,5 @@
 <resources>
-    <string name="emergency">Аварийная</string>
+    <string name="emergency">Экстренное</string>
     <string name="emergency_situation">Чрезвычайная ситуация</string>
     <string name="help_emergency_situation">
         <![CDATA[
@@ -11,7 +11,7 @@
         <br>
         <h5><font color="#00BFFF">- Проверка STIR</font></h5>
          - Если отключено, все вызовы будут разрешены.<br>
-         - Если включено, вызовы, не прошедшие проверку STIR, не будут разрешены, будут разрешены только вызовы "Действительные" и "Непроверенные".<br>
+         - Если включено, вызовы, не прошедшие аттестацию STIR, не будут разрешены, будут разрешены только "Надёжные" и "Непроверенные" вызовы.<br>
         <br>
         <h5><font color="#00BFFF">- Дополнительные номера</font></h5>
         Набор любого номера из этого списка также активирует эту функцию.<br>
@@ -36,7 +36,7 @@
     <string name="inactive">Неактивно</string>
     <string name="confirm_reset">Подтвердить сброс?</string>
     <string name="check_stir_attestation">Проверять STIR (?)</string>
-    <string name="additional_numbers">Доп. номера</string>
+    <string name="additional_numbers">Дополнительные номера</string>
     <string name="path_tags">
         <![CDATA[
         <font color="#00BFFF"><b>{sdcard}</b></font><br>
@@ -74,7 +74,7 @@
         <h6><font color="#00BFFF">- Приложение</font></h6>
         Будет проверять уведомления только от этого приложения.<br>
         <br>
-        <h6><font color="#00BFFF">- Содержимое уведомления</font></h6>
+        <h6><font color="#00BFFF">- Содержание уведомления</font></h6>
         Это регулярное выражение будет соответствовать <b>как заголовку, так и телу уведомления</b>.<br>
         Пример для описанного выше сценария:<br>
         &emsp; <font color="#03DAC5">обновление заказа.*принят водителем.*</font><br>
@@ -85,7 +85,7 @@
         <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
-    <string name="notification_content">Содержание уведомления</string>
+    <string name="notification_content">Содержимое уведомления</string>
     <string name="app">Приложение</string>
     <string name="choose">Выбрать</string>
     <string name="usage_statistics">Статистика использования</string>

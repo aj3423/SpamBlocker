@@ -2,16 +2,16 @@
     <string name="crash_title">
         Извините, приложение вышло из строя.\n\n
         Пожалуйста, скопируйте текст ниже и сообщите об этой проблеме на github,
-        удаляя любую конфиденциальную информацию перед отправкой.
+        удалите любую конфиденциальную информацию перед отправкой.
     </string>
     <string-array name="weekdays_abbrev">
-        <item><translate>Вс</translate></item>
-        <item><translate>Пн</translate></item>
-        <item><translate>Вт</translate></item>
-        <item><translate>Ср</translate></item>
-        <item><translate>Чт</translate></item>
-        <item><translate>Пт</translate></item>
-        <item><translate>Сб</translate></item>
+        <item>Вс</item>
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
     </string-array>
 
     <string-array name="block_type_list">
@@ -28,7 +28,7 @@
     <string name="days">Дней</string>
     <string name="help_log_sms_content">
         <![CDATA[
-        При включении содержимое SMS также будет записываться в базу данных и отображаться в этом списке, при отключении оно не будет записываться в базу данных.<br>
+        При включении содержание SMS также будет записываться в базу данных и отображаться в этом списке, при отключении оно не будет записываться в базу данных.<br>
         <br>
         - При включении:<br>
         &emsp; <b>Нажмите</b>, чтобы развернуть/свернуть полное сообщение.<br>
@@ -37,14 +37,17 @@
         &emsp; <b>Нажмите</b>, чтобы открыть разговор в стандартном приложении.
         ]]>
     </string>
-
-
+    <string name="copy_number">Скопировать номер</string>
+    <string name="add_num_to_regex_rule">Добавить номер в правило регулярного выражения</string>
+    <string name="add_num_to_db">Добавить номер в базу спама</string>
+    <string name="mark_all_as_read">Пометить все как прочитанные</string>
+    <string name="remove_db_number">Удалить номер из базы спама</string>
     <string-array name="importance_list">
         <item>Нет</item>
         <item>Шторка</item>
         <item>Строка состояния, Шторка</item>
         <item>Звук, Строка состояния, Шторка</item>
-        <item>Звук, Строка состояния, Шторка, Heads-up</item>
+        <item>Звук, Строка состояния, Шторка, Подними голову</item>
     </string-array>
     <string-array name="export_type_list">
         <item>Экспортировать как Json</item>
@@ -101,17 +104,12 @@
         <item>Импортировать .csv как несколько правил</item>
     </string-array>
     <string name="warning_double_sms">
-        <translate>Это приложение возьмет на себя все SMS-уведомления,
+        Это приложение возьмет на себя все SMS-уведомления,
         но стандартное приложение для SMS также будет показывать SMS-уведомления. Чтобы предотвратить двойные уведомления,
         отключите разрешение на уведомления в настройках системы.\n
         \n
-        ⚠️ RCS не поддерживается.</translate>
+        ⚠️ RCS не поддерживается.
     </string>
     <string name="open_settings">Открыть настройки</string>
     <string name="ignore">Игнорировать</string>
-    <string name="remove_db_number">Удалить номер из базы спама</string>
-    <string name="copy_number">Скопировать номер</string>
-    <string name="add_num_to_regex_rule">Добавить номер в правило регулярного выражения</string>
-    <string name="add_num_to_db">Добавить номер в базу спама</string>
-    <string name="mark_all_as_read">Пометить все как прочитанные</string>
 </resources>

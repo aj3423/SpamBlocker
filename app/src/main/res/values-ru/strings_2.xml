@@ -18,7 +18,7 @@
         Применяется как к звонкам, так и к SMS-сообщениям.
         ]]>
     </string>
-    <string name="stir_attestation">STIR</string>
+    <string name="stir_attestation">Аттестация STIR</string>
     <string name="stir_include_unverified">Включить Непроверенные (*)</string>
     <string name="unverified">Не проверенный</string>
     <string name="valid">Достоверный звонок</string>

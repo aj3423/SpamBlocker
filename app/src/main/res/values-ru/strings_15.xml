@@ -2,7 +2,7 @@
     <string name="api_preset_gemini">Gemini</string>
     <string name="help_api_preset_gemini">
         <![CDATA[
-        Проверка содержимого SMS с помощью Google Gemini AI, требуется только учётная запись Google.
+        Проверка содержания SMS с помощью Google Gemini AI, требуется только учётная запись Google.
         ]]>
     </string>
     <string name="gemini_api_key">Ключ API Gemini</string>
@@ -21,15 +21,16 @@
     </string>
     <string name="spam_sms_prompt_template">
         Отнесите это SMS-сообщение к категории «Политика», «Мошенничество», «Опрос» или «Маркетинг».
-        Если ни одна категория не подходит, ответьте «Действительно», иначе укажите только категорию, ничего больше не отвечая.
+        Если ни одна категория не подходит, ответьте «Надёжный», иначе укажите только категорию, ничего больше не отвечая.
         Текст SMS:
         {sms}
     </string>
-    <string name="spam_sms_negative_category"><translate>(Политика|Мошенничество|Опрос|Маркетинг)</translate></string>
-    <string name="spam_sms_positive_category">Действительно</string>
+    <string name="spam_sms_negative_category">(Политика|Мошенничество|Опрос|Маркетинг)</string>
+    <string name="spam_sms_positive_category">Надёжный</string>
     <string name="last_log">Последний лог</string>
     <string name="executed_at">Выполнено в:</string>
-    <string name="not_executed_yet">Ещё не выполнено</string>
+    <string name="not_executed_yet">Ещё не выполнялось</string>
+    <string name="show_indicator">Показывать флаги</string>
     <string name="help_show_indicator">
         <![CDATA[
         Показывать значки перед номером, чтобы указать, существует ли он в базе данных спама, или соответствует ли он какому-либо правилу регулярного выражения.<br>
@@ -38,7 +39,6 @@
         Это может повлиять на производительность, если база данных слишком велика или существует слишком много правил регулярных выражений.
         ]]>
     </string>
-    <string name="show_indicator">Показывать флаги</string>
     <string name="enable_for_mms">Включить для MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
@@ -47,15 +47,15 @@
         <font color="#ffa500">Примечание:</font><br>
         Групповые сообщения являются MMS, а не SMS.<br>
         <br>
-        MMS будет обрабатываться как SMS, будет обрабатываться только текстовое содержимое,
-        другое мультимедийное содержимое, такое как изображения и аудио, будет игнорироваться.<br>
+        MMS будет рассматриваться как SMS, будет обрабатываться только текстовое содержание,
+        мультимедийное содержание, такое как изображения и аудио, будет игнорироваться.<br>
         <br>
         Требуются два разрешения: RECEIVE_MMS и READ_SMS
         ]]>
     </string>
-    <string name="unknown_error"><translate>Неизвестная ошибка.</translate></string>
-    <string name="checking_auth_credential">Проверка учетных данных авторизации.</string>
-    <string name="sms_bomb"><short>SMS Бомбер</short></string>
+    <string name="unknown_error">Неизвестная ошибка.</string>
+    <string name="checking_auth_credential">Проверка учётных данных авторизации.</string>
+    <string name="sms_bomb"><short>SMS-бомбер</short></string>
     <string name="help_sms_bomb">
         <![CDATA[
         Защита от SMS-бомбардировки.<br>
@@ -68,8 +68,8 @@
         &ensp; <font color="#888888">Это ваш код подтверждения: 1234.</font><br>
         &ensp; <font color="#888888">1234 - ваш код подтверждения.</font><br>
         <br>
-        <h5><font color="#00BFFF">- Regex контента</font></h5>
-        Эта функция применяется только к сообщениям, которые соответствуют этому regex, типичный regex будет: <br>
+        <h5><font color="#00BFFF">- Регулярное выражение содержания</font></h5>
+        Эта функция применяется только к сообщениям, которые соответствуют этому регулярному выражению, типичным регулярным выражением будет: <br>
         <font color="#fa7f71">.*(otp|code).*</font><br>
         <br>
         <h5><font color="#00BFFF">- Интервал</font></h5>
@@ -83,12 +83,12 @@
         Включите это, чтобы заблокировать все бомбы в режиме экрана блокировки, включая первую. <br>
         <br>
         Обычно ваш экран должен быть разблокирован, пока вы ждете код подтверждения.
-        Когда такие сообщения приходят, когда устройство находится в режиме экрана блокировки, они, вероятно, являются бомбами.<br>
+        Когда такие сообщения приходят, пока устройство находится в режиме экрана блокировки, они, вероятно, являются бомбами.<br>
         <br>
         <font color="#ea86ff"><b>Приоритет: 20</b></font>
         ]]>
     </string>
-    <string name="lockscreen_protection"><short>Защита экрана</short></string>
+    <string name="lockscreen_protection"><short>Защита экрана блокировки</short></string>
     <string name="help_history_logging">
         <![CDATA[
             Когда эта функция отключена, записи истории не будут регистрироваться в локальной базе данных и не будут отображаться здесь.<br>
@@ -97,8 +97,8 @@
             &emsp; Если эта функция включена, срок действия записей истории истечет через N дней, устаревшие записи будут удалены автоматически.
         ]]>
     </string>
-    <string name="enable_history_logging"><translate>Журнал</translate></string>
-    <string name="never_expire"><short>Никогда</short></string>
+    <string name="never_expire"><short>Бессрочно</short></string>
+    <string name="enable_history_logging">Лог</string>
     <string name="rcs_message">RCS-сообщение</string>
     <string name="help_rcs_message">
         <![CDATA[
