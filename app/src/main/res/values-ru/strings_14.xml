@@ -1,4 +1,9 @@
 <resources>
+    <string name="report_number">Сообщить о номере</string>
+    <string name="report_number_require_call_log_permission">
+        Для предотвращения ложных сообщений о повторных звонках или звонках с возвратом, 
+        для отправки отчёта о номере требуется разрешение на доступ к журналу вызовов.
+    </string>
     <string name="http_method">Метод</string>
     <string name="http_post_body">Тело запроса</string>
     <string name="help_http_post_body">
@@ -10,9 +15,6 @@
     </string>
     <string name="invalid_auth_credentials">Пожалуйста, введите действительные учетные данные.</string>
     <string name="delay">Задержка</string>
-    <string name="report_number_require_call_log_permission">
-        Для предотвращения ложных сообщений о повторных звонках или звонках с возвратом, для отправки отчёта о номере требуется разрешение на доступ к журналу вызовов.
-    </string>
     <string name="exclude_services">Исключить сервисы</string>
     <string name="help_exclude_bg_service">
         <![CDATA[
@@ -27,9 +29,8 @@
         ]]>
     </string>
     <string name="running_services">Запущенные сервисы</string>
-    <string name="report_number">Сообщить о номере</string>
     <string-array name="spam_categories">
-        <item>Допустимый номер</item>
+        <item>Надёжный номер</item>
         <item>Мошенничество</item>
         <item>Маркетинг</item>
         <item>Опрос</item>
@@ -42,7 +43,7 @@
         Поддерживаются только следующие категории спама, любые другие категории из API должны быть сопоставлены с одной из них.<br>
         <br>
          - <font color="#03DAC5"><b>{valid}</b></font><br>
-        &ensp; Сообщить как допустимый номер, не спам.<br>
+        &ensp; Сообщить, что номер надёжный, не спам.<br>
         <br>
          - <font color="#fa7f71"><b>{fraud}</b></font><br>
          - <font color="#fa7f71"><b>{marketing}</b></font><br>
@@ -81,7 +82,7 @@
         Регулярное выражение для такого сообщения будет:<br>
         &ensp; <font color="#03DAC5"><b>.*please.*answer.*</b></font> <br>
         <br>
-        Настройка по умолчанию <font color="#03DAC5"><b>120 Секунд</b></font> означает, что все звонки будут
+        Настройка по умолчанию <font color="#03DAC5"><b>120 секунд</b></font> означает, что все звонки будут
         разрешены в течение следующих двух минут после получения такого сообщения.<br>
         <br>
         Работает как для обычных SMS, так и для flash SMS (SMS класса 0).<br>

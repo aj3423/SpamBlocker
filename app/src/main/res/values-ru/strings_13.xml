@@ -3,78 +3,28 @@
         Очистка истории БД, удаление записей до метки времени: %s.
     </string>
     <string name="cleaning_up_spam_db">
-        Очистка спам-БД, удаление %s записей до метки времени: %s.
+        Очистка базы спама, удаление %s записей до метки времени: %s.
     </string>
-    <string name="resolved_url">Resolved url: %s.</string>
+    <string name="resolved_url">Разрешенный адрес ресурса: %s.</string>
     <string name="time_cost">Время выполнения: %s миллисекунд.</string>
     <string name="parsed_n_rules">Обработано %s правил.</string>
-    <string name="add_n_numbers_to_spam_db">Добавление %s номеров в спам-базу данных.</string>
+    <string name="add_n_numbers_to_spam_db">Добавление %s номеров в базу спама.</string>
     <string name="nothing_to_import">Список номеров пуст, импортировать нечего.</string>
     <string name="importing_n_numbers">Импорт %s номеров как правил регулярных выражений.</string>
     <string name="create_rule_with_numbers">Создание правила с %s номерами.</string>
     <string name="replace_rule_with_desc">Замена правила с описанием: %s.</string>
     <string name="rule_with_desc_not_found">Правило с описанием %s не найдено.</string>
     <string name="merging_rule_with_desc">Объединение правила с описанием: %s.</string>
-    <string name="regex_count_after_merge">Количество regexp до: %s, после: %s.</string>
+    <string name="regex_count_after_merge">Количество регулярных выражений до: %s, после: %s.</string>
     <string name="replace_number_from_to">Замена номера с %s на %s.</string>
     <string name="find_rule_with_desc">Найдено %s правил с описанием %s.</string>
     <string name="modify_n_rules">Изменение %s правил.</string>
+    <string name="number_not_match_filter">Номер %s не соответствует фильтру %s, пропуск.</string>
     <string name="fail_detect_cc">Не удалось определить код страны.</string>
     <string name="identified_as_spam">Определено как спам-номер, категория: %s.</string>
-    <string name="identified_as_valid">Определено как валидный номер, категория: %s.</string>
+    <string name="identified_as_valid">Определено как надёжный номер, категория: %s.</string>
     <string name="unidentified_number">Неизвестный номер.</string>
-    <string name="help_http_url">
-        <![CDATA[
-        Поддерживаемые теги:<br>
-        <br>
-        %s
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="number_not_match_filter">Номер %s не соответствует фильтру %s, пропускаем.</string>
-    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
-    <string name="help_api_preset_phoneblock">
-        <![CDATA[
-        В первую очередь предназначен для немецкого FRITZ!Box, но также работает для номеров из других стран.<br>
-        <br>
-        Поддерживает запрос по хэшу вместо самого номера, обеспечивая лучшую конфиденциальность.<br>
-        <br>
-        Веб-сайт: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
-        <br>
-        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
-        ]]>
-    </string>
-    <string name="not_enough_time_left">Лимит времени проверки вызова составляет 5 секунд, с буфером %s мс для неточности функций времени, общий лимит времени составляет %s мс. Предыдущие шаги заняли %s мс, времени не достаточно, пропускаем.</string>
-    <string name="action_filter_query_result">Фильтр спама</string>
-    <string name="help_action_filter_query_result">
-        <![CDATA[
-        Создать <u>список номеров</u>, содержащий спам-номера, определенные на предыдущем шаге, и готовые к импорту в базу данных.
-        ]]>
-    </string>
-    <string name="another_thread_is_cancelled">Другой поток отменён.</string>
-    <string name="help_api_preset_phoneblock_authorization">
-        <![CDATA[
-        1. Зарегистрируйте аккаунт на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
-        <br>
-        2. На странице настроек: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         нажмите кнопку "Generate API key".<br>
-        <br>
-        3. Введите сгенерированный API ключ ниже.
-        ]]>
-    </string>
-    <string name="username">Имя пользователя</string>
-    <string name="password">Пароль</string>
     <string name="auto_detect_cc_permission">Для определения кода страны требуется разрешение READ_PHONE_STATE.</string>
-    <string name="suggest_to_swipe">
-        <![CDATA[
-        <font color="#03DAC5"><b>Смахните влево</b></font> для удаления.<br>
-        <br>
-        Большинство элементов интерфейса в стиле карточек в этом приложении связаны с жестами смахивания,
-        некоторые из которых также поддерживают <font color="#03DAC5"><b>смахивание вправо</b></font>, например, записи истории.
-        ]]>
-    </string>
-    <string name="bug_number">Если это валидный номер, пожалуйста, сообщите об этом на github.</string>
     <string name="number_tags">
         <![CDATA[
         - <font color="#00BFFF"><b>{cc}</b></font><br>
@@ -85,6 +35,12 @@
         &ensp; Полный номер, включая код страны и внутреннюю часть, без ведущих + или 0.<br>
         - <font color="#00BFFF"><b>{origin_number}</b></font><br>
         &ensp; Исходный номер, может содержать ведущие + или 0.<br>
+        ]]>
+    </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; Содержание SMS.<br>
         ]]>
     </string>
     <string name="time_tags">
@@ -99,11 +55,59 @@
         &emsp; {month}_{day} -> 1_2<br>
         ]]>
     </string>
-    <string name="skip_alpha_empty_number">Пропуск буквенных или пустых номеров.</string>
-    <string name="sms_tags">
+    <string name="help_http_url">
         <![CDATA[
-        - <font color="#00BFFF"><b>{sms}</b></font><br>
-        &ensp; Содержание SMS.<br>
+        Поддерживаемые теги:<br>
+        <br>
+        %s
+        <br>
+        %s
         ]]>
     </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        В первую очередь предназначен для немецкого FRITZ!Box, но также работает для номеров из других стран.<br>
+        <br>
+        Поддерживает запрос по хэшу вместо самого номера, обеспечивая лучшую конфиденциальность.<br>
+        <br>
+        Веб-сайт: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. Зарегистрируйте аккаунт на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. На странице настроек: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
+         нажмите кнопку \"Generate API key\".<br>
+        <br>
+        3. Введите сгенерированный ключ API ниже.
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        Лимит времени проверки вызова составляет 5 секунд, с буфером %s мс 
+        для неточности функций времени, общий лимит времени составляет %s мс. 
+        Предыдущие шаги заняли %s мс, времени не достаточно, пропуск.
+    </string>
+    <string name="action_filter_query_result">Фильтр спама</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        Создать <u>список номеров</u>, содержащий спам-номера, определенные на предыдущем шаге, и готовые к импорту в базу данных.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">Другой поток отменён.</string>
+    <string name="username">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>Смахните влево</b></font> для удаления.<br>
+        <br>
+        Большинство элементов интерфейса в стиле карточек в этом приложении связаны с жестами смахивания,
+        некоторые из которых также поддерживают <font color="#03DAC5"><b>смахивание вправо</b></font>, например, записи истории.
+        ]]>
+    </string>
+    <string name="bug_number">Если это надёжный номер, пожалуйста, сообщите об этом на github.</string>
+    <string name="skip_alpha_empty_number">Пропуск буквенных или пустых номеров.</string>
 </resources>

@@ -8,11 +8,11 @@
     <string name="type">Тип</string>
     <string name="times">Раз</string>
     <plurals name="days">
-        <item quantity="one">%d День</item>
-        <item quantity="two">%d Дня</item>
-        <item quantity="few">%d Дня</item>
-        <item quantity="many">%d Дней</item>
-        <item quantity="other">%d Дней</item>
+        <item quantity="one">%d день</item>
+        <item quantity="two">%d дня</item>
+        <item quantity="few">%d дня</item>
+        <item quantity="many">%d дней</item>
+        <item quantity="other">%d дней</item>
     </plurals>
     <string name="min">Мин</string>
     <string name="within_minutes">В течение минут</string>
@@ -51,6 +51,7 @@
         &emsp; Если вы хотите записывать звонки, установите приложение для записи звонков и увеличьте задержку соответственно.
         ]]>
     </string>
+    <string name="help_hang_up_delay">Задержка перед окончанием вызова (в секундах).</string>
     <string name="help_dialed">
         <![CDATA[
         Набранные номера будут разрешены.<br>
@@ -79,5 +80,4 @@
         <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
-    <string name="help_hang_up_delay">Задержка перед окончанием вызова.</string>
 </resources>

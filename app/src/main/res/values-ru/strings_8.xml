@@ -3,7 +3,7 @@
     <string name="total">Всего</string>
     <string name="replace_from">От</string>
     <string name="replace_to">До</string>
-    <string name="regex_pattern">RegEx</string>
+    <string name="regex_pattern">Шаблон регулярного выражения</string>
 
     <string name="help_spam_db">
         <![CDATA[
@@ -11,7 +11,7 @@
         <br>
         Вы можете интегрировать любую публичную базу данных или даже несколько баз данных, а также импортировать номера из локальных файлов.<br>
         <br>
-        В разделе "Автоматизация" ниже вы найдете информацию о том, как запланировать задачу автоматического импорта.<br>
+        Проверьте раздел "Автоматизация" ниже, чтобы запланировать задачу автоматического импорта.<br>
         <br>
         Это применяется как к звонкам, так и к SMS-сообщениям.<br>
         <br>
@@ -33,7 +33,7 @@
         <![CDATA[
         Рабочие процессы можно использовать для автоматического запуска задач, таких как обновление базы данных или автоматическое резервное копирование.<br>
         <br>
-        Существуют предустановки для быстрой настройки, вы также можете создать его с нуля или импортировать из конфигурации json, которая была совместно использована другими пользователями.<br>
+        Существуют предустановки для быстрой настройки, вы также можете создать его с нуля или импортировать из конфигурации json, которой поделились другие пользователи.<br>
         <br>
         Если вы нашли какой-либо рабочий процесс, который может широко использоваться и должен быть добавлен в предустановки, сообщите об этом на github.
         ]]>
@@ -58,10 +58,21 @@
     <string name="action_import_to_spam_db">Импорт в базу данных спама</string>
     <string name="action_import_as_regex_rule">Импортировать как правило регулярного выражения</string>
     <string name="action_convert_number">Заменить номер</string>
+    <string name="action_find_rules">Найти правила</string>
+    <string name="action_modify_rules">Изменить правила</string>
+    <string name="action_modify_rules_placeholder">
+        Строка json, например:\n
+        {\n
+        "flags": 0, // Отключить правило\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
 
     <string name="help_action_http_download">
         <![CDATA[
-        HTTP загрузка данных как <u>байты контента</u>
+        HTTP-загрузка данных в виде <u>байтов содержимого</u>
         ]]>
     </string>
     <string name="help_action_cleanup_spam_db">Удалить просроченные номера из базы данных спама.</string>
@@ -93,7 +104,7 @@
     </string>
     <string name="help_action_parse_xml">
         <![CDATA[
-        Разбор <u>байтов содержимого</u> xml с помощью <b>xpath</b> и генерация <u>списка номеров.</u>
+        Разбор <u>байтов содержимого</u> xml с помощью <b>xpath</b> и создание <u>списка номеров.</u>
         ]]>
     </string>
     <string name="help_action_regex_extract">
@@ -121,17 +132,7 @@
         &ensp; - Заменить `<font color="#fa7f71">(+)</font>` на ``<br>
         &ensp; - Заменить `<font color="#fa7f71">(#)</font>` на `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
-    </string>
-    <string name="action_find_rules">Найти правила</string>
-    <string name="action_modify_rules">Изменить правила</string>
-    <string name="action_modify_rules_placeholder">
-        Строка json, например:\n
-        {\n
-        "flags": 0, // Отключить правило\n
-        "priority": 100,\n
-        "blockType": 0\n
-        …\n
-        }\n
+    
     </string>
     <string name="help_action_find_rules">
         <![CDATA[
