@@ -57,15 +57,21 @@
     <string name="push_alert">Alerta de notificació</string>
     <string name="help_push_alert">
         <![CDATA[
-        Després de rebre notificacions específiques, permetre totes les trucades entrants durant un període determinat.<br>
+        Després de rebre notificacions específiques, permet totes les trucades entrants durant un període determinat.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        Aquesta funció no funciona en alguns dispositius, si totes les trucades passen després d\'activar aquesta funció,
+        és probable que el dispositiu no sigui compatible; si us plau, elimineu tots els registres d\'Alertes Push o revoqueu el
+        permís d\'<b>Accés a notificacions</b>: <br>
+        <font color="#888888">Configuració del sistema -> Aplicacions -> Accés especial -> Accés a notificacions</font><br>
         <br>
         Un cas d\'ús típic:<br>
-        &ensp; Quan hi ha una notificació com:<br>
-        &emsp; Títol: <font color="#888888"><translate>Actualització de la comanda:</translate></font><br>
-        &emsp; Cos: <font color="#888888"><translate>La vostra comanda ha estat recollida pel conductor…</translate></font><br>
-        &ensp; El conductor pot trucar-vos llavors per confirmar els detalls.<br>
+        &ensp; Quan hi ha una notificació com ara:<br>
+        &emsp; Títol: <font color="#888888">Actualització de la comanda:</font><br>
+        &emsp; Cos: <font color="#888888">La teva comanda ha estat recollida pel conductor…</font><br>
+        &ensp; El conductor podria trucar-te per confirmar els detalls.<br>
         <br>
-        <b>Permisos necessaris:</b> <br>
+        <b>Permisos requerits:</b> <br>
         1. Optimització de la bateria (sense restriccions o optimitzada)<br>
         2. Accés a notificacions<br>
         <br>
@@ -77,10 +83,10 @@
         <h6><font color="#00BFFF">- Contingut de la notificació</font></h6>
         Aquesta expressió regular coincidirà amb <b>el títol i el cos de la notificació</b>.<br>
         Un exemple per al cas d\'ús anterior:<br>
-        &emsp; <font color="#03DAC5"><translate>actualització de la comanda.*recollida pel conductor.*</translate></font><br>
+        &emsp; <font color="#03DAC5">actualització comanda.*recollida per conductor.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Durada</font></h6>
-        Es permetran les trucades durant aquest període, especificat en minuts.<br>
+        Les trucades es permetran durant aquest període, especificat en minuts.<br>
         <br>
         <font color="#ea86ff"><b>Prioritat: 10</b></font>
         ]]>

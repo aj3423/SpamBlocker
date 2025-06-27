@@ -57,17 +57,21 @@
     <string name="push_alert">Alerta push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Despois de recibir notificacións específicas, permite todas as chamadas entrantes durante un período de tempo determinado.<br>
+        Despois de recibir notificacións específicas, permite todas as chamadas entrantes durante un período establecido.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        Esta función non funciona nalgúns dispositivos; se todas as chamadas pasan despois de activar esta función, é probable que o dispositivo non sexa compatible. Por favor, elimine todos os rexistros de Alerta de notificación ou revogue o permiso de <b>Acceso a notificacións</b>: <br>
+        <font color="#888888">System Settings -> Apps -> Special access -> Notification Access</font><br>
         <br>
         Un caso de uso típico:<br>
-        &ensp; Cando haxa unha notificación como:<br>
+        &ensp; Cando hai unha notificación como:<br>
         &emsp; Título: <font color="#888888">Actualización de pedido:</font><br>
         &emsp; Corpo: <font color="#888888">O teu pedido foi recollido polo condutor…</font><br>
-        &ensp; O condutor pode entón chamarche para confirmar os detalles.<br>
+        &ensp; O condutor pode entón chamarte para confirmar os detalles.<br>
         <br>
         <b>Permisos requiridos:</b> <br>
         1. Optimización da batería (sen restricións ou optimizada)<br>
-        2. Acceso ás notificacións<br>
+        2. Acceso a notificacións<br>
         <br>
         Opcións:<br>
         <br>
@@ -75,12 +79,12 @@
         Só comprobará as notificacións desta aplicación.<br>
         <br>
         <h6><font color="#00BFFF">- Contido da notificación</font></h6>
-        Esta expresión regular coincidirá con <b>o título e o corpo da notificación</b>.<br>
+        Esta expresión regular coincidirá co título e o corpo da notificación.<br>
         Un exemplo para o caso de uso anterior:<br>
         &emsp; <font color="#03DAC5">actualización de pedido.*recollido polo condutor.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Duración</font></h6>
-        As chamadas permitiranse durante este período, especificado en minutos.<br>
+        Permitiranse as chamadas durante este período, especificado en minutos.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>

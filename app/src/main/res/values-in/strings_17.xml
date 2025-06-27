@@ -59,14 +59,20 @@
         <![CDATA[
         Setelah menerima notifikasi tertentu, izinkan semua panggilan masuk untuk jangka waktu yang ditentukan.<br>
         <br>
+        <font color="#ffa500">Catatan:</font><br>
+        Fitur ini tidak berfungsi di beberapa perangkat, jika semua panggilan lolos setelah mengaktifkan fitur ini,
+        perangkat kemungkinan tidak didukung, harap hapus semua catatan Notifikasi Dorong atau cabut izin
+        <b>Akses Notifikasi</b>: <br>
+        <font color="#888888">Setelan Sistem -> Aplikasi -> Akses khusus -> Akses Notifikasi</font><br>
+        <br>
         Contoh kasus penggunaan umum:<br>
         &ensp; Ketika ada notifikasi seperti:<br>
         &emsp; Judul: <font color="#888888">Pembaruan Pesanan:</font><br>
         &emsp; Isi: <font color="#888888">Pesanan Anda telah diambil oleh pengemudi…</font><br>
-        &ensp; Pengemudi kemudian dapat menelepon Anda untuk mengonfirmasi detail.<br>
+        &ensp; Pengemudi mungkin akan menghubungi Anda untuk mengonfirmasi detail.<br>
         <br>
         <b>Izin yang diperlukan:</b> <br>
-        1. Optimalisasi baterai (tidak dibatasi atau dioptimalkan)<br>
+        1. Optimasi baterai (tidak terbatas atau dioptimalkan)<br>
         2. Akses Notifikasi<br>
         <br>
         Opsi:<br>

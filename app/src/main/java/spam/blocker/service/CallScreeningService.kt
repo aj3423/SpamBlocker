@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import spam.blocker.Events
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
+import spam.blocker.db.PushAlertTable
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
@@ -22,6 +23,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.Type
+import spam.blocker.util.Permission
 import spam.blocker.util.Util
 import spam.blocker.util.spf
 
@@ -104,10 +106,15 @@ class CallScreeningService : CallScreeningService() {
     }
 
     override fun onScreenCall(details: Details) {
-        // With this coroutine, this function returns immediately without blocking the whole process.
-        // So other services will get executed simultaneously.
-        // Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
-        CoroutineScope(IO).launch {
+        // 1. With this coroutine, this function returns immediately without blocking the whole process.
+        //   So other services will get executed simultaneously.
+        //   Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
+        // 2. On some phones, calls will be bypassed because of this coroutine, so disable it by default.
+        if (Permission.notificationAccess.isGranted && PushAlertTable.listAll(this).isNotEmpty()) {
+            CoroutineScope(IO).launch {
+                doScreenCall(details)
+            }
+        } else {
             doScreenCall(details)
         }
     }

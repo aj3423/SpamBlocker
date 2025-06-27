@@ -59,25 +59,31 @@
         <![CDATA[
         Após receber notificações específicas, permitir todas as chamadas recebidas por um período determinado.<br>
         <br>
+        <font color="#ffa500">Nota:</font><br>
+        Este recurso não funciona em alguns dispositivos; se todas as chamadas forem permitidas após ativar este recurso,
+        o dispositivo provavelmente não é suportado. Por favor, remova todos os registros de Alerta Push ou revogue a
+        permissão de <b>Acesso a Notificações</b>: <br>
+        <font color="#888888">Configurações do Sistema -> Aplicativos -> Acesso especial -> Acesso a Notificações</font><br>
+        <br>
         Um caso de uso típico:<br>
         &ensp; Quando há uma notificação como:<br>
         &emsp; Título: <font color="#888888">Atualização do Pedido:</font><br>
         &emsp; Corpo: <font color="#888888">Seu pedido foi retirado pelo motorista…</font><br>
-        &ensp; O motorista pode então ligar para você para confirmar detalhes.<br>
+        &ensp; O motorista pode então ligar para você para confirmar os detalhes.<br>
         <br>
         <b>Permissões necessárias:</b> <br>
         1. Otimização de bateria (irrestrita ou otimizada)<br>
-        2. Acesso à Notificação<br>
+        2. Acesso a Notificações<br>
         <br>
         Opções:<br>
         <br>
-        <h6><font color="#00BFFF">- App</font></h6>
-        Verificará apenas notificações deste app.<br>
+        <h6><font color="#00BFFF">- Aplicativo</font></h6>
+        Ele verificará apenas as notificações deste aplicativo.<br>
         <br>
         <h6><font color="#00BFFF">- Conteúdo da Notificação</font></h6>
         Esta regex corresponderá <b>tanto ao título quanto ao corpo da notificação</b>.<br>
         Um exemplo para o caso de uso acima:<br>
-        &emsp; <font color="#03DAC5">atualização de pedido.*retirado pelo motorista.*</font><br>
+        &emsp; <font color="#03DAC5">atualização do pedido.*retirado pelo motorista.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Duração</font></h6>
         As chamadas serão permitidas durante este período, especificado em minutos.<br>

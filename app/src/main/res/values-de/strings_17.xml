@@ -59,11 +59,17 @@
         <![CDATA[
         Nach Erhalt spezifischer Benachrichtigungen werden alle eingehenden Anrufe für einen festgelegten Zeitraum zugelassen.<br>
         <br>
-        Ein typisches Anwendungsbeispiel:<br>
-        &ensp; Wenn es eine Benachrichtigung gibt wie:<br>
+        <font color="#ffa500">Hinweis:</font><br>
+        Diese Funktion funktioniert nicht auf einigen Geräten. Wenn nach Aktivierung dieser Funktion alle Anrufe durchgelassen werden,
+        wird das Gerät wahrscheinlich nicht unterstützt. Bitte entfernen Sie alle Push-Benachrichtigungs-Einträge oder widerrufen Sie die
+        Berechtigung <b>Benachrichtigungszugriff</b>: <br>
+        <font color="#888888">Systemeinstellungen -> Apps -> Spezieller Zugriff -> Benachrichtigungszugriff</font><br>
+        <br>
+        Ein typischer Anwendungsfall:<br>
+        &ensp; Bei einer Benachrichtigung wie:<br>
         &emsp; Titel: <font color="#888888">Bestellaktualisierung:</font><br>
-        &emsp; Inhalt: <font color="#888888">Ihre Bestellung wurde von Fahrer … entgegengenommen</font><br>
-        &ensp; Der Fahrer ruft Sie möglicherweise dann an, um Details zu bestätigen.<br>
+        &emsp; Text: <font color="#888888">Ihre Bestellung wurde vom Fahrer übernommen …</font><br>
+        &ensp; Der Fahrer könnte Sie dann anrufen, um Details zu bestätigen.<br>
         <br>
         <b>Erforderliche Berechtigungen:</b> <br>
         1. Akku-Optimierung (uneingeschränkt oder optimiert)<br>
@@ -75,9 +81,9 @@
         Es werden nur Benachrichtigungen dieser App geprüft.<br>
         <br>
         <h6><font color="#00BFFF">- Benachrichtigungsinhalt</font></h6>
-        Dieser Regex stimmt mit <b>sowohl dem Benachrichtigungstitel als auch dem Inhalt</b> überein.<br>
-        Ein Beispiel für den obigen Anwendungsfall:<br>
-        &emsp; <font color="#03DAC5">Bestellaktualisierung.*entgegengenommen von Fahrer.*</font><br>
+        Dieser Regex gleicht <b>sowohl den Benachrichtigungstitel als auch den Text</b> ab.<br>
+        Ein Beispiel für den oben genannten Anwendungsfall:<br>
+        &emsp; <font color="#03DAC5">Bestellaktualisierung.*vom Fahrer übernommen.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Dauer</font></h6>
         Anrufe werden während dieses Zeitraums zugelassen, angegeben in Minuten.<br>

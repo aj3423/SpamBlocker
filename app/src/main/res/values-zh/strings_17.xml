@@ -55,30 +55,34 @@
     <string name="push_alert">推送提醒</string>
     <string name="help_push_alert">
         <![CDATA[
-        收到特定通知后，在设定时间内允许所有来电。<br>
+        收到特定通知后，在设定的时间内允许所有来电。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        此功能在某些设备上可能不起作用，如果启用此功能后所有来电都被允许通过，则您的设备可能不支持此功能，请删除所有推送提醒记录或撤销<b>通知访问</b>权限： <br>
+        <font color="#888888">系统设置 -> 应用 -> 特殊应用权限 -> 通知访问</font><br>
         <br>
         典型用例：<br>
-        &ensp; 当有以下通知时：<br>
+        &ensp; 当有类似通知时：<br>
         &emsp; 标题：<font color="#888888">订单更新：</font><br>
-        &emsp; 正文：<font color="#888888">您的订单已被司机取走…</font><br>
-        &ensp; 司机随后可能会致电您确认详细信息。<br>
+        &emsp; 内容：<font color="#888888">您的订单已被司机取走……</font><br>
+        &ensp; 司机随后可能会致电您以确认详细信息。<br>
         <br>
         <b>所需权限：</b> <br>
-        1. 电池优化（无限制或优化）<br>
-        2. 通知访问权限<br>
+        1. 电池优化（无限制或已优化）<br>
+        2. 通知访问<br>
         <br>
         选项：<br>
         <br>
         <h6><font color="#00BFFF">- 应用</font></h6>
-        它将只检查来自此应用的通知。<br>
+        它将仅检查此应用的通知。<br>
         <br>
         <h6><font color="#00BFFF">- 通知内容</font></h6>
-        此正则表达式将同时匹配<b>通知标题和正文</b>。<br>
-        上述用例的示例：<br>
-        &emsp; <font color="#03DAC5">订单更新.*已被司机取走.*</font><br>
+        此正则表达式将匹配<b>通知标题和内容</b>。<br>
+        上述用例示例：<br>
+        &emsp; <font color="#03DAC5">订单更新.*司机已取走.*</font><br>
         <br>
         <h6><font color="#00BFFF">- 持续时间</font></h6>
-        在此期间内允许来电，以分钟为单位。<br>
+        在此期间，将允许来电，以分钟为单位指定。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>

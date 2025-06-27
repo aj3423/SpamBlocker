@@ -57,7 +57,13 @@
     <string name="push_alert">Avviso Push</string>
     <string name="help_push_alert">
         <![CDATA[
-        Dopo aver ricevuto notifiche specifiche, consenti tutte le chiamate in arrivo per un periodo stabilito.<br>
+        Dopo aver ricevuto notifiche specifiche, consenti tutte le chiamate in arrivo per un periodo predefinito.<br>
+        <br>
+        <font color="#ffa500">Nota:</font><br>
+        Questa funzione non funziona su alcuni dispositivi, se tutte le chiamate vengono passate dopo aver abilitato questa funzione,
+        il dispositivo probabilmente non è supportato. Si prega di rimuovere tutti i record di Avviso Push o revocare il permesso di
+        <b>Accesso Notifiche</b>: <br>
+        <font color="#888888">Impostazioni di sistema -> App -> Accesso speciale -> Accesso notifiche</font><br>
         <br>
         Un caso d\'uso tipico:<br>
         &ensp; Quando c\'è una notifica come:<br>
@@ -66,17 +72,17 @@
         &ensp; Il corriere potrebbe quindi chiamarti per confermare i dettagli.<br>
         <br>
         <b>Permessi richiesti:</b> <br>
-        1. Ottimizzazione batteria (senza restrizioni o ottimizzata)<br>
+        1. Ottimizzazione batteria (illimitata o ottimizzata)<br>
         2. Accesso Notifiche<br>
         <br>
         Opzioni:<br>
         <br>
         <h6><font color="#00BFFF">- App</font></h6>
-        Controlla solo le notifiche di questa app.<br>
+        Controllerà solo le notifiche di questa app.<br>
         <br>
         <h6><font color="#00BFFF">- Contenuto Notifica</font></h6>
-        Questa regex corrisponderà a <b>sia il titolo che il corpo della notifica</b>.<br>
-        Un esempio per il caso d\'uso sopra:<br>
+        Questa espressione regolare corrisponderà a <b>sia il titolo che il corpo della notifica</b>.<br>
+        Un esempio per il caso d\'uso precedente:<br>
         &emsp; <font color="#03DAC5">aggiornamento ordine.*preso dal corriere.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Durata</font></h6>

@@ -59,6 +59,12 @@
         <![CDATA[
         After receiving specific notifications, allow all incoming calls for a set period.<br>
         <br>
+        <font color="#ffa500">Note:</font><br>
+        This feature does not work on some devices, if all calls are passed after enabling this feature,
+        the device likely unsupported, please remove all Push Alert records or revoke the
+        <b>Notification Access</b> permission: <br>
+        <font color="#888888">System Settings -> Apps -> Special access -> Notification Access</font><br>
+        <br>
         A typical use case:<br>
         &ensp; When there is a notification like:<br>
         &emsp; Title: <font color="#888888"><translate>Order Update:</translate></font><br>

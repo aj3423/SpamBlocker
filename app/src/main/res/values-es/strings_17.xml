@@ -59,11 +59,17 @@
         <![CDATA[
         Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período determinado.<br>
         <br>
+        <font color="#ffa500">Nota:</font><br>
+        Esta función no funciona en algunos dispositivos; si todas las llamadas se permiten después de habilitarla,
+        es probable que el dispositivo no sea compatible. Por favor, elimine todos los registros de Alerta Push o revoque el
+        permiso de <no_translate><b>Notification Access</b></no_translate>: <br>
+        <font color="#888888">Ajustes del sistema -> Aplicaciones -> Acceso especial -> Acceso a notificaciones</font><br>
+        <br>
         Un caso de uso típico:<br>
         &ensp; Cuando hay una notificación como:<br>
-        &emsp; Título: <font color="#888888">Actualización de pedido:</font><br>
-        &emsp; Cuerpo: <font color="#888888">Su pedido ha sido recogido por el conductor...</font><br>
-        &ensp; El conductor podría llamarle para confirmar detalles.<br>
+        &emsp; Título: <font color="#888888"><translate>Actualización de pedido:</translate></font><br>
+        &emsp; Cuerpo: <font color="#888888"><translate>Tu pedido ha sido recogido por el conductor…</translate></font><br>
+        &ensp; El conductor puede entonces llamarte para confirmar los detalles.<br>
         <br>
         <b>Permisos requeridos:</b> <br>
         1. Optimización de batería (sin restricciones u optimizada)<br>
@@ -72,15 +78,15 @@
         Opciones:<br>
         <br>
         <h6><font color="#00BFFF">- Aplicación</font></h6>
-        Solo verificará las notificaciones de esta aplicación.<br>
+        Solo verificará notificaciones de esta aplicación.<br>
         <br>
         <h6><font color="#00BFFF">- Contenido de la Notificación</font></h6>
         Esta expresión regular coincidirá con <b>el título y el cuerpo de la notificación</b>.<br>
         Un ejemplo para el caso de uso anterior:<br>
-        &emsp; <font color="#03DAC5">actualización de pedido.*recogido por conductor.*</font><br>
+        &emsp; <font color="#03DAC5"><translate>actualización de pedido.*recogido por conductor.*</translate></font><br>
         <br>
         <h6><font color="#00BFFF">- Duración</font></h6>
-        Se permitirán llamadas durante este período, especificado en minutos.<br>
+        Las llamadas serán permitidas durante este período, especificado en minutos.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>

@@ -59,14 +59,20 @@
         <![CDATA[
         Après avoir reçu des notifications spécifiques, autorisez tous les appels entrants pendant une période définie.<br>
         <br>
+        <font color="#ffa500">Remarque :</font><br>
+        Cette fonction ne fonctionne pas sur certains appareils. Si tous les appels sont autorisés après l\'activation de cette fonction,
+        l\'appareil n\'est probablement pas pris en charge. Veuillez supprimer tous les enregistrements d\'alerte push ou révoquer l\'autorisation
+        <b>Accès aux notifications</b> : <br>
+        <font color="#888888">Paramètres système -> Applications -> Accès spécial -> Accès aux notifications</font><br>
+        <br>
         Un cas d\'utilisation typique :<br>
-        &ensp; Lorsqu\'il y a une notification comme :<br>
+        &ensp; Quand il y a une notification telle que :<br>
         &emsp; Titre : <font color="#888888">Mise à jour de commande :</font><br>
-        &emsp; Corps : <font color="#888888">Votre commande a été prise par le chauffeur…</font><br>
-        &ensp; Le chauffeur peut alors vous appeler pour confirmer les détails.<br>
+        &emsp; Corps : <font color="#888888">Votre commande a été prise en charge par le chauffeur…</font><br>
+        &ensp; Le chauffeur pourrait ensuite vous appeler pour confirmer les détails.<br>
         <br>
         <b>Autorisations requises :</b> <br>
-        1. Optimisation de la batterie (illimitée ou optimisée)<br>
+        1. Optimisation de la batterie (sans restriction ou optimisée)<br>
         2. Accès aux notifications<br>
         <br>
         Options :<br>
@@ -77,7 +83,7 @@
         <h6><font color="#00BFFF">- Contenu de la notification</font></h6>
         Cette expression régulière correspondra à la fois au <b>titre et au corps de la notification</b>.<br>
         Un exemple pour le cas d\'utilisation ci-dessus :<br>
-        &emsp; <font color="#03DAC5">mise à jour de commande.*prise par le chauffeur.*</font><br>
+        &emsp; <font color="#03DAC5">mise à jour de commande.*prise en charge par le chauffeur.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Durée</font></h6>
         Les appels seront autorisés pendant cette période, spécifiée en minutes.<br>

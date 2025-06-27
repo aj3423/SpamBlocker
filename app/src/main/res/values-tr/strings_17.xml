@@ -55,13 +55,17 @@
     <string name="push_alert">Bildirim Uyarısı</string>
     <string name="help_push_alert">
         <![CDATA[
-        Belirli bildirimler alındıktan sonra, gelen tüm aramalara belirlenen bir süre boyunca izin verin.<br>
+        Belirli bildirimleri aldıktan sonra, belirli bir süre boyunca tüm gelen çağrılara izin verin.<br>
         <br>
-        Tipik bir kullanım durumu:<br>
-        &ensp; Şu şekilde bir bildirim olduğunda:<br>
+        <font color="#ffa500">Not:</font><br>
+        Bu özellik bazı cihazlarda çalışmaz, bu özelliği etkinleştirdikten sonra tüm aramalar geçiyorsa, cihaz muhtemelen desteklenmiyor demektir, lütfen tüm Bildirim Uyarısı kayıtlarını kaldırın veya <b>Bildirim Erişimi</b> iznini iptal edin: <br>
+        <font color="#888888">Sistem Ayarları -> Uygulamalar -> Özel erişim -> Bildirim Erişimi</font><br>
+        <br>
+        Tipik bir kullanım senaryosu:<br>
+        &ensp; Şuna benzer bir bildirim olduğunda:<br>
         &emsp; Başlık: <font color="#888888">Sipariş Güncellemesi:</font><br>
         &emsp; İçerik: <font color="#888888">Siparişiniz sürücü tarafından alındı…</font><br>
-        &ensp; Sürücü daha sonra detayları onaylamak için sizi arayabilir.<br>
+        &ensp; Sürücü daha sonra ayrıntıları doğrulamak için sizi arayabilir.<br>
         <br>
         <b>Gerekli izinler:</b> <br>
         1. Pil optimizasyonu (kısıtlanmamış veya optimize edilmiş)<br>
@@ -70,15 +74,15 @@
         Seçenekler:<br>
         <br>
         <h6><font color="#00BFFF">- Uygulama</font></h6>
-        Yalnızca bu uygulamadan gelen bildirimleri kontrol edecektir.<br>
+        Sadece bu uygulamadan gelen bildirimleri kontrol edecektir.<br>
         <br>
         <h6><font color="#00BFFF">- Bildirim İçeriği</font></h6>
-        Bu regex <b>hem bildirim başlığını hem de içeriğini</b> eşleştirecektir.<br>
-        Yukarıdaki kullanım durumu için bir örnek:<br>
+        Bu regex <b>hem bildirim başlığı hem de içeriği</b> ile eşleşecektir.<br>
+        Yukarıdaki kullanım senaryosu için bir örnek:<br>
         &emsp; <font color="#03DAC5">sipariş güncellemesi.*sürücü tarafından alındı.*</font><br>
         <br>
         <h6><font color="#00BFFF">- Süre</font></h6>
-        Bu süre zarfında, dakika olarak belirtilen aramalara izin verilecektir.<br>
+        Aramalara bu süre boyunca, dakikalar cinsinden belirtilen şekilde izin verilecektir.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>
