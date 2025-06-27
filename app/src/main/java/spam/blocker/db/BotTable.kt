@@ -7,6 +7,8 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
+import spam.blocker.R
+import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager
@@ -15,6 +17,7 @@ import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
+import spam.blocker.util.Permission
 import java.util.UUID
 
 @Serializable
@@ -27,7 +30,34 @@ data class Bot(
     val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag
     val lastLog: String = "",
     val lastLogTime: Long = 0,
-)
+) {
+
+    // This is shown as the Bot summary on main UI
+    // 3 types: Scheduled / Manual / CalendarEvent
+    fun triggerType(ctx: Context): String {
+        val isScheduled = enabled && schedule != null
+        return if (isScheduled) {
+            schedule.summary(ctx)
+        } else {
+            val isCalendarEvent = actions.first() is CalendarEvent
+
+            ctx.getString(
+                if (isCalendarEvent)
+                    R.string.calendar_event
+                else
+                    R.string.manual
+            )
+        }
+    }
+    fun isActivated(ctx: Context): Boolean {
+        val isScheduled = enabled && schedule != null
+
+        if (isScheduled)
+            return true
+        val isCalendarEvent = actions.first() is CalendarEvent
+        return isCalendarEvent && Permission.calendar.isGranted
+    }
+}
 
 
 // It returns the new workUUID if it's enabled

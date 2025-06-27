@@ -125,7 +125,7 @@
     <string name="action_find_rules">Rechercher des règles</string>
     <string name="action_modify_rules">Modifier les règles</string>
     <string name="action_modify_rules_placeholder">
-        Une chaîne json, par exemple :\n
+        Une chaîne JSON, par exemple :\n
         {\n
         "flags": 0, // Désactiver la règle\n
         "priority": 100,\n

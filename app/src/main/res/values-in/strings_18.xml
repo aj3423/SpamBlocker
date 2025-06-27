@@ -1,4 +1,33 @@
 <resources>
     <string name="auto_copy">Salin Otomatis</string>
     <string name="help_auto_copy">Salin otomatis konten ke papan klip tanpa perlu mengetuk tombol "Salin" di notifikasi.</string>
+    <string name="calendar_event">Acara Kalender</string>
+    <string name="event_title">Judul Acara</string>
+    <string name="rule_updated_temporarily">Aturan Regex %s diubah sementara karena acara kalender %s: %s</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Mengubah aturan sementara berdasarkan acara kalender, perubahan diterapkan sementara tanpa mengubah konfigurasi.<br>
+        <br>
+        Tindakan ini harus menjadi yang pertama dalam alur kerja, alur kerja semacam itu akan secara otomatis terpicu oleh panggilan masuk.<br>
+        <br>
+        <b>Contoh kasus penggunaan</b>:<br>
+        &ensp; <font color="#888888">Seorang pekerja shift bekerja shift pagi dari jam 7 pagi hingga 10 pagi selama dua hari,
+          kemudian shift malam dari jam 7 malam hingga 10 malam selama dua hari berikutnya.<br>
+        &ensp; Beberapa aturan harus dinonaktifkan atau diaktifkan selama jam kerja.</font><<br>
+        <br>
+        Contoh pengaturan:<br>
+        - <b>1</b>. Di aplikasi kalender, buat acara kalender <font color="#888888">kerja</font> untuk semua jam kerja.<br>
+        - <b>2</b>. Buat aturan regex.<br>
+        &emsp; deskripsi: <font color="#888888">bekerja</font><br>
+        - <b>3</b>. Buat alur kerja:<br>
+        &ensp; - <b>Acara Kalender</b><br>
+         &emsp;&emsp; judul acara: <font color="#888888">kerja</font><br>
+        &ensp; - <b>Temukan Aturan</b><br>
+         &emsp;&emsp; deskripsi: <font color="#888888">bekerja</font><br>
+        &ensp; - <b>Ubah Aturan</b><br>
+         &emsp;&emsp; konfigurasi: <font color="#888888">{ "flags": 0 }</font> (ini akan menonaktifkan aturan)<br>
+        <br>
+         &emsp;&emsp; (Mendukung beberapa <b>Temukan Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
+        ]]>
+    </string>
 </resources>

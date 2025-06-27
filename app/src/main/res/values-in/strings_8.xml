@@ -61,11 +61,11 @@
     <string name="action_find_rules">Temukan Aturan</string>
     <string name="action_modify_rules">Modifikasi Aturan</string>
     <string name="action_modify_rules_placeholder">
-        String json, misalnya:\n
+        String JSON, contoh:\n
         {\n
         "flags": 0, // Nonaktifkan aturan\n
-        "prioritas": 100,\n
-        "JenisPemblokiran": 0\n
+        "priority": 100,\n
+        "blockType": 0\n
         …\n
         }\n
     </string>

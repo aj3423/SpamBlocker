@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
@@ -46,23 +45,21 @@ fun BotCard(
 
                 // schedule
                 RowVCenter {
-                    val isScheduled = bot.enabled && bot.schedule != null
-
                     // Green active dot
-                    if (isScheduled) {
+                    if (bot.isActivated(ctx)) {
                         RowVCenterSpaced(8) {
+                            // Green dot
                             GreenDot()
 
-                            GreyIcon16(bot.schedule!!.iconId())
+                            // Schedule icon
+                            if (bot.enabled && bot.schedule != null)
+                                GreyIcon16(bot.schedule.iconId())
                         }
                     }
 
+                    // Trigger type:  Scheduled / Manual / CalendarEvent
                     GreyLabel(
-                        text = if (isScheduled) {
-                            bot.schedule!!.summary(ctx)
-                        } else {
-                            ctx.getString(R.string.manual)
-                        },
+                        text = bot.triggerType(ctx),
                         modifier = M.padding(start = 10.dp)
                     )
                 }

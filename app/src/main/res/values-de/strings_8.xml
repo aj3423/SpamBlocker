@@ -125,7 +125,7 @@
     <string name="action_find_rules">Regeln finden</string>
     <string name="action_modify_rules">Regeln ändern</string>
     <string name="action_modify_rules_placeholder">
-        Eine JSON-Zeichenkette, zum Beispiel:\n
+        Ein JSON-String, zum Beispiel:\n
         {\n
         "flags": 0, // Regel deaktivieren\n
         "priority": 100,\n

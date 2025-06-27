@@ -61,13 +61,13 @@
     <string name="action_find_rules">Найти правила</string>
     <string name="action_modify_rules">Изменить правила</string>
     <string name="action_modify_rules_placeholder">
-        Строка json, например:\n
-        {\n
-        "flags": 0, // Отключить правило\n
-        "priority": 100,\n
-        "blockType": 0\n
-        …\n
-        }\n
+        Строка json, например:
+        {
+        "flags": 0, // Отключить правило
+        "priority": 100,
+        "blockType": 0
+        …
+        }
     </string>
 
     <string name="help_action_http_download">

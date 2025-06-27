@@ -125,9 +125,9 @@
     <string name="action_find_rules">Знайти правила</string>
     <string name="action_modify_rules">Змінити правила</string>
     <string name="action_modify_rules_placeholder">
-        Рядок JSON, наприклад:\n
+        Рядок JSON, наприклад:
         {\n
-        "flags": 0, // Відключити правило\n
+        "flags": 0, // Disable the rule\n
         "priority": 100,\n
         "blockType": 0\n
         …\n

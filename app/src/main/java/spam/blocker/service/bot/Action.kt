@@ -40,6 +40,7 @@ val botActions = listOf(
     BackupImport(),
     EnableWorkflow(),
     EnableApp(),
+    CalendarEvent(),
 )
 
 val apiActions = listOf(

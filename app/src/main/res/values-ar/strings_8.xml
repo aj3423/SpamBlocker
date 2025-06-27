@@ -61,13 +61,13 @@
     <string name="action_find_rules">البحث عن القواعد</string>
     <string name="action_modify_rules">تعديل القواعد</string>
     <string name="action_modify_rules_placeholder">
-        سلسلة json، على سبيل المثال:\n
-        {\n
-        "flags": 0, // تعطيل القاعدة\n
-        "priority": 100,\n
-        "blockType": 0\n
-        …\n
-        }\n
+        سلسلة JSON، على سبيل المثال:
+        {
+        "flags": 0, // تعطيل القاعدة
+        "priority": 100,
+        "blockType": 0
+        …
+        }
     </string>
 
     <string name="help_action_http_download">

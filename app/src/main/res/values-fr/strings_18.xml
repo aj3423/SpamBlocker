@@ -1,4 +1,33 @@
 <resources>
     <string name="auto_copy">Copie automatique</string>
     <string name="help_auto_copy">Copie automatiquement le contenu dans le presse-papiers sans avoir besoin d\'appuyer sur le bouton "Copier" dans la notification.</string>
+    <string name="calendar_event">Événement Calendrier</string>
+    <string name="event_title">Titre de l\'événement</string>
+    <string name="rule_updated_temporarily">La règle Regex %s est temporairement modifiée en raison de l\'événement de calendrier %s : %s</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Modifiez temporairement les règles en fonction des événements du calendrier, les changements sont appliqués temporairement sans altérer la configuration.<br>
+        <br>
+        Cette action doit être la première du flux de travail, un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
+        <br>
+        <b>Un cas d\'utilisation</b> :<br>
+        &ensp; <font color="#888888">Un travailleur posté travaille de jour de 7h à 10h pendant deux jours,
+          puis de nuit de 19h à 22h pendant les deux jours suivants.<br>
+        &ensp; Certaines règles doivent être désactivées ou activées pendant les heures de travail.</font><<br>
+        <br>
+        Un exemple de configuration :<br>
+        - <b>1</b>. Dans l\'application calendrier, créez des événements de calendrier <font color="#888888">work</font> pour toutes les heures de travail.<br>
+        - <b>2</b>. Créez une règle regex.<br>
+        &emsp; description : <font color="#888888">working</font><br>
+        - <b>3</b>. Créez un flux de travail :<br>
+        &ensp; - <b>Événement Calendrier</b><br>
+         &emsp;&emsp; titre de l\'événement : <font color="#888888">work</font><br>
+        &ensp; - <b>Trouver des Règles</b><br>
+         &emsp;&emsp; description : <font color="#888888">working</font><br>
+        &ensp; - <b>Modifier des Règles</b><br>
+         &emsp;&emsp; configuration : <font color="#888888">{ "flags": 0 }</font> (cela désactivera la règle)<br>
+        <br>
+         &emsp;&emsp; (Cela supporte plusieurs <b>Trouver des Règles</b> et <b>Modifier des Règles</b> ici)<br>
+        ]]>
+    </string>
 </resources>

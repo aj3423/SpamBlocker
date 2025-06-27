@@ -125,13 +125,13 @@
     <string name="action_find_rules">Encontrar regras</string>
     <string name="action_modify_rules">Modificar regras</string>
     <string name="action_modify_rules_placeholder">
-        Unha cadea json, por exemplo:\n
-        {\n
-        "flags": 0, // Desactivar a regra\n
-        "priority": 100,\n
-        "blockType": 0\n
-        …\n
-        }\n
+        Unha cadea JSON, por exemplo:
+        {
+        "flags": 0, // Disable the rule
+        "priority": 100,
+        "blockType": 0
+        …
+        }
     </string>
     <string name="help_action_find_rules">
         <![CDATA[

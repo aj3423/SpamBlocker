@@ -1,4 +1,33 @@
 <resources>
     <string name="auto_copy">Auto Copy</string>
     <string name="help_auto_copy">Automatically copy the content to the clipboard without needing to tap the \"Copy\" button in the notification.</string>
+    <string name="calendar_event">Calendar Event</string>
+    <string name="event_title">Event Title</string>
+    <string name="rule_updated_temporarily">Regex rule %s is temporarily modified due to calendar event %s: %s</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Temporarily modify rules based on calendar events, changes are applied temporarily without altering the configuration.<br>
+        <br>
+        This action must be the first in the workflow, such a workflow will be automatically triggered by an incoming call.<br>
+        <br>
+        <b>A use case</b>:<br>
+        &ensp; <font color="#888888">A shift worker works the day shift from 7 AM to 10 AM for two days,
+          then the night shift from 7 PM to 10 PM for the next two days.<br>
+        &ensp; Some rules must be disabled or enabled during working hours.</font><<br>
+        <br>
+        A sample setup:<br>
+        - <b>1</b>. In the calendar app, create calendar events <font color="#888888">work</font> for all working hours.<br>
+        - <b>2</b>. Create a regex rule.<br>
+        &emsp; description: <font color="#888888">working</font><br>
+        - <b>3</b>. Create a workflow:<br>
+        &ensp; - <b>Calendar Event</b><br>
+         &emsp;&emsp; event title: <font color="#888888">work</font><br>
+        &ensp; - <b>Find Rules</b><br>
+         &emsp;&emsp; description: <font color="#888888">working</font><br>
+        &ensp; - <b>Modify Rules</b><br>
+         &emsp;&emsp; config: <font color="#888888">{ \"flags\": 0 }</font> (this will disable the rule)<br>
+        <br>
+         &emsp;&emsp; (It supports multiple <b>Find Rules</b> and <b>Modify Rules</b> here)<br>
+        ]]>
+    </string>
 </resources>

@@ -8,13 +8,8 @@ import android.telecom.CallScreeningService
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import spam.blocker.Events
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
@@ -28,7 +23,6 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Util
-import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 fun Details.getRawNumber(): String {

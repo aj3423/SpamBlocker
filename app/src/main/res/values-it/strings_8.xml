@@ -63,7 +63,7 @@
     <string name="action_modify_rules_placeholder">
         Una stringa json, ad esempio:\n
         {\n
-        "flags": 0, // Disabilita la regola\n
+        "flags": 0, // Disable the rule\n
         "priority": 100,\n
         "blockType": 0\n
         …\n

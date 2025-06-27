@@ -1,4 +1,33 @@
 <resources>
     <string name="auto_copy">Copia Automática</string>
     <string name="help_auto_copy">Copiar automaticamente o contido ao portapapeis sen ter que tocar o botón "Copiar" na notificación.</string>
+    <string name="calendar_event">Evento do Calendario</string>
+    <string name="event_title">Título do Evento</string>
+    <string name="rule_updated_temporarily">A regra Regex %s foi modificada temporalmente debido ao evento do calendario %s: %s</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Modifica temporalmente as regras en función dos eventos do calendario; os cambios aplícanse de xeito temporal sen alterar a configuración.<br>
+        <br>
+        Esta acción debe ser a primeira no fluxo de traballo; un fluxo de traballo así activarase automaticamente por unha chamada entrante.<br>
+        <br>
+        <b>Un caso de uso</b>:<br>
+        &ensp; <font color="#888888">Un traballador por quendas traballa na quenda de día de 7 AM a 10 AM durante dous días,
+          e despois na quenda de noite de 7 PM a 10 PM durante os dous días seguintes.<br>
+        &ensp; Algunhas regras deben ser desactivadas ou activadas durante o horario laboral.</font><<br>
+        <br>
+        Unha configuración de exemplo:<br>
+        - <b>1</b>. Na aplicación de calendario, crea eventos de calendario <font color="#888888">traballo</font> para todas as horas de traballo.<br>
+        - <b>2</b>. Crea unha regra regex.<br>
+        &emsp; descrición: <font color="#888888">traballando</font><br>
+        - <b>3</b>. Crea un fluxo de traballo:<br>
+        &ensp; - <b>Evento do Calendario</b><br>
+         &emsp;&emsp; título do evento: <font color="#888888">traballo</font><br>
+        &ensp; - <b>Atopar Regras</b><br>
+         &emsp;&emsp; descrición: <font color="#888888">traballando</font><br>
+        &ensp; - <b>Modificar Regras</b><br>
+         &emsp;&emsp; configuración: <font color="#888888">{ "flags": 0 }</font> (isto desactivará a regra)<br>
+        <br>
+         &emsp;&emsp; (Soporta múltiples <b>Atopar Regras</b> e <b>Modificar Regras</b> aquí)<br>
+        ]]>
+    </string>
 </resources>

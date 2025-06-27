@@ -1370,7 +1370,7 @@ class FindRules(
     override fun Summary() {
         val ctx = LocalContext.current
 
-        SummaryLabel("${ctx.getString(R.string.description)}: $pattern")
+        SummaryLabel(pattern)
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2187,7 +2187,7 @@ class ReportNumber(
     val rawNumber: String,
     val asTagCategory: String,
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
-) : IPermissiveAction {
+) : IAction {
     override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
         return if (Permission.callLog.isGranted)
             listOf()
@@ -2248,5 +2248,74 @@ class ReportNumber(
 
     @Composable
     override fun Options() {
+    }
+}
+
+// Continue or terminate the workflow according to current calendar event.
+@Serializable
+class CalendarEvent(
+    var eventTitle: String = "",
+    var eventTitleFlags: Int = Def.DefaultRegexFlags,
+) : IAction {
+    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
+        return if (Permission.calendar.isGranted)
+            listOf()
+        else
+            listOf(PermissionWrapper(Permission.calendar))
+    }
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (!Permission.calendar.isGranted)
+            return false
+
+        val ongoingEvents = Util.ongoingCalendarEvents(ctx)
+        return ongoingEvents.any { it ->
+            eventTitle.regexMatches(it, eventTitleFlags)
+        }
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.calendar_event)
+    }
+
+    @Composable
+    override fun Summary() {
+        SummaryLabel(eventTitle)
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_calendar_event)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_calendar)
+    }
+
+    @Composable
+    override fun Options() {
+        val flags = remember { mutableIntStateOf(eventTitleFlags) }
+        RegexInputBox(
+            regexStr = eventTitle,
+            label = { Text(Str(R.string.event_title)) },
+            regexFlags = flags,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    eventTitle = newVal
+                }
+            },
+            onFlagsChange = {
+                flags.intValue = it
+                eventTitleFlags = it
+            }
+        )
     }
 }

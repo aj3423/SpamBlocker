@@ -33,6 +33,7 @@ import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
 import spam.blocker.util.PermissionType.AnswerCalls
 import spam.blocker.util.PermissionType.BatteryUnRestricted
+import spam.blocker.util.PermissionType.Calendar
 import spam.blocker.util.PermissionType.CallLog
 import spam.blocker.util.PermissionType.CallScreening
 import spam.blocker.util.PermissionType.Contacts
@@ -71,13 +72,14 @@ object PermissionType {
         override fun onResult(ctx: Context, granted: Boolean) { isGranted = granted }
     }
     // All Regular permissions
-    class Contacts(): Regular(Manifest.permission.READ_CONTACTS)
+    class Contacts: Regular(Manifest.permission.READ_CONTACTS)
     class ReceiveSMS: Regular(Manifest.permission.RECEIVE_SMS)
     class ReceiveMMS: Regular(Manifest.permission.RECEIVE_MMS)
     class AnswerCalls: Regular(Manifest.permission.ANSWER_PHONE_CALLS)
     class CallLog: Regular(Manifest.permission.READ_CALL_LOG)
     class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE)
     class ReadSMS: Regular(Manifest.permission.READ_SMS)
+    class Calendar: Regular(Manifest.permission.READ_CALENDAR)
     open class FileAccess(name: String): Regular(name) {
         override fun check(ctx: Context): Boolean {
             return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
@@ -273,6 +275,7 @@ object Permission {
     val callLog = CallLog()
     val phoneState = PhoneState()
     val readSMS = ReadSMS()
+    val calendar = Calendar()
     val notificationAccess = NotificationAccess()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
@@ -290,6 +293,7 @@ object Permission {
             callLog,
             phoneState,
             readSMS,
+            calendar,
             notificationAccess,
             usageStats,
             batteryUnRestricted,

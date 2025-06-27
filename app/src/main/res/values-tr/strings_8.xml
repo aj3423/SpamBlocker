@@ -125,13 +125,13 @@
     <string name="action_find_rules">Kuralları Bul</string>
     <string name="action_modify_rules">Kuralları Değiştir</string>
     <string name="action_modify_rules_placeholder">
-        Örneğin bir json dizesi:\n
-        {\n
-        "flags": 0, // Kuralı devre dışı bırak\n
-        "priority": 100,\n
-        "blockType": 0\n
-        …\n
-        }\n
+        Bir JSON dizisi, örneğin:
+        {
+        "flags": 0, // Kuralı devre dışı bırak
+        "priority": 100,
+        "blockType": 0
+        ...
+        }
     </string>
     <string name="help_action_find_rules">
         <![CDATA[

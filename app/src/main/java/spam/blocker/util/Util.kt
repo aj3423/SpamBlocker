@@ -11,10 +11,12 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
 import android.os.UserManager
+import android.provider.CalendarContract
 import android.provider.CallLog.Calls
 import android.provider.OpenableColumns
 import android.provider.Settings
@@ -809,4 +811,52 @@ object Util {
         return count
     }
 
+    fun ongoingCalendarEvents(ctx: Context) : List<String> {
+        if (!Permission.calendar.isGranted)
+            return listOf()
+        val contentResolver = ctx.contentResolver
+        val currentTime = System.currentTimeMillis()
+        val timeBuffer = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
+
+        // Define the projection (columns to retrieve)
+        val projection = arrayOf(
+//            CalendarContract.Events._ID,
+            CalendarContract.Events.TITLE,
+            CalendarContract.Events.DTSTART,
+            CalendarContract.Events.DTEND
+        )
+
+        // Query events within a time range (e.g., from now to 24 hours ago/forward)
+        val selection = "${CalendarContract.Events.DTSTART} <= ? AND ${CalendarContract.Events.DTEND} >= ?"
+        val selectionArgs = arrayOf(
+            (currentTime + timeBuffer).toString(),
+            (currentTime - timeBuffer).toString()
+        )
+
+        val cursor: Cursor? = contentResolver.query(
+            CalendarContract.Events.CONTENT_URI,
+            projection,
+            selection,
+            selectionArgs,
+            null
+        )
+
+        // List to store ongoing events
+        val ongoingEvents = mutableListOf<String>()
+
+        cursor?.use {
+            while (it.moveToNext()) {
+//                val eventId = it.getLong(it.getColumnIndexOrThrow(CalendarContract.Events._ID))
+                val title = it.getString(it.getColumnIndexOrThrow(CalendarContract.Events.TITLE))
+                val startTime = it.getLong(it.getColumnIndexOrThrow(CalendarContract.Events.DTSTART))
+                val endTime = it.getLong(it.getColumnIndexOrThrow(CalendarContract.Events.DTEND))
+
+                // Check if current time is between startTime and endTime
+                if (currentTime in startTime..endTime) {
+                    ongoingEvents.add(title)
+                }
+            }
+        }
+        return ongoingEvents
+    }
 }

@@ -22,6 +22,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
+import spam.blocker.service.checker.Checker.CalendarEventForwardCheck
 import spam.blocker.service.checker.IChecker
 import spam.blocker.service.checker.toNumberChecker
 import spam.blocker.ui.M
@@ -92,17 +93,17 @@ fun IndicatorsWrapper(
     // load from tables and generate ICheckers
     fun loadNumberCheckers(): List<IChecker> {
         return if (showIndicator) {
-            NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL).map {
+            NumberRuleTable().listAll(ctx).map {
                 it.toNumberChecker(ctx)
-            }
+            } + listOf(CalendarEventForwardCheck(ctx))
         } else listOf()
     }
 
     fun loadContentCheckers(): List<IChecker> {
         return if (showIndicator && vm.forType == Def.ForSms) {
-            ContentRuleTable().listRules(ctx, Def.FLAG_FOR_SMS).map {
+            ContentRuleTable().listAll(ctx).map {
                 Checker.Content(ctx, it)
-            }
+            } + listOf(CalendarEventForwardCheck(ctx))
         } else listOf()
     }
 

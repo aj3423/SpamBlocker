@@ -125,9 +125,9 @@
     <string name="action_find_rules">Buscar reglas</string>
     <string name="action_modify_rules">Modificar reglas</string>
     <string name="action_modify_rules_placeholder">
-        Una cadena json, por ejemplo:\n
+        Una cadena JSON, por ejemplo:\n
         {\n
-        "flags": 0, // Deshabilitar la regla\n
+        "flags": 0, // Desactivar la regla\n
         "priority": 100,\n
         "blockType": 0\n
         …\n

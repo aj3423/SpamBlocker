@@ -125,7 +125,7 @@
     <string name="action_find_rules">查找规则</string>
     <string name="action_modify_rules">修改规则</string>
     <string name="action_modify_rules_placeholder">
-        一个 json 字符串，例如：\n
+        一个JSON字符串，例如：\n
         {\n
         "flags": 0, // 禁用规则\n
         "priority": 100,\n

@@ -332,33 +332,11 @@ abstract class RuleTable {
 
     // The returned list is ordered by:
     //   Priority desc -> Description desc -> Regex pattern desc
-    fun listAll(ctx: Context): List<RegexRule> {
-        return listRules(ctx, Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL)
-    }
-
-    fun listRules(
+    fun listAll(
         ctx: Context,
-        flagCallSms: Int
     ): List<RegexRule> {
-        val where = arrayListOf<String>()
-
-        // call/sms
-        val sms = flagCallSms.hasFlag(Def.FLAG_FOR_SMS)
-        val call = flagCallSms.hasFlag(Def.FLAG_FOR_CALL)
-        if (sms and !call) {
-            where.add("(${Db.COLUMN_FLAGS} & ${Def.FLAG_FOR_SMS}) = ${Def.FLAG_FOR_SMS}")
-        } else if (call and !sms) {
-            where.add("(${Db.COLUMN_FLAGS} & ${Def.FLAG_FOR_CALL}) = ${Def.FLAG_FOR_CALL}")
-        }
-
-        // build where clause
-        var whereStr = ""
-        if (where.isNotEmpty()) {
-            whereStr = " WHERE (${where.joinToString(separator = " and ") { "($it)" }})"
-        }
-
         val sql =
-            "SELECT * FROM ${tableName()} $whereStr ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
+            "SELECT * FROM ${tableName()} ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
 
         return listByFilter(ctx, sql)
     }

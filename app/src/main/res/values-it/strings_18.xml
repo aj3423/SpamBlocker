@@ -1,4 +1,33 @@
 <resources>
     <string name="auto_copy">Copia automatica</string>
     <string name="help_auto_copy">Copia automaticamente il contenuto negli appunti senza dover toccare il pulsante "Copia" nella notifica.</string>
+    <string name="calendar_event">Evento del calendario</string>
+    <string name="event_title">Titolo evento</string>
+    <string name="rule_updated_temporarily">La regola regex %s è temporaneamente modificata a causa dell\'evento del calendario %s: %s</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Modifica temporaneamente le regole in base agli eventi del calendario, le modifiche vengono applicate temporaneamente senza alterare la configurazione.<br>
+        <br>
+        Questa azione deve essere la prima nel flusso di lavoro; tale flusso di lavoro verrà attivato automaticamente da una chiamata in arrivo.<br>
+        <br>
+        <b>Un caso d\'uso</b>:<br>
+        &ensp; <font color="#888888">Un lavoratore a turni svolge il turno diurno dalle 7 alle 10 per due giorni,
+          poi il turno notturno dalle 19 alle 22 per i due giorni successivi.<br>
+        &ensp; Alcune regole devono essere disabilitate o abilitate durante l\'orario di lavoro.</font><<br>
+        <br>
+        Un esempio di configurazione:<br>
+        - <b>1</b>. Nell\'app del calendario, crea eventi del calendario <font color="#888888">lavoro</font> per tutte le ore lavorative.<br>
+        - <b>2</b>. Crea una regola regex.<br>
+        &emsp; descrizione: <font color="#888888">lavoro</font><br>
+        - <b>3</b>. Crea un flusso di lavoro:<br>
+        &ensp; - <b>Evento del calendario</b><br>
+         &emsp;&emsp; titolo evento: <font color="#888888">lavoro</font><br>
+        &ensp; - <b>Trova regole</b><br>
+         &emsp;&emsp; descrizione: <font color="#888888">lavoro</font><br>
+        &ensp; - <b>Modifica regole</b><br>
+         &emsp;&emsp; configurazione: <font color="#888888">{ "flags": 0 }</font> (questo disabiliterà la regola)<br>
+        <br>
+         &emsp;&emsp; (Supporta più <b>Trova regole</b> e <b>Modifica regole</b> qui)<br>
+        ]]>
+    </string>
 </resources>

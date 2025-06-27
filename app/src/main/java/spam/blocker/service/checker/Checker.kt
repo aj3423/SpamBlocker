@@ -1,13 +1,7 @@
 package spam.blocker.service.checker
 
-import android.annotation.SuppressLint
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
-import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.os.Build
-import android.os.SystemClock
 import android.telecom.Call
 import android.telecom.Connection
 import kotlinx.coroutines.CoroutineScope
@@ -15,8 +9,12 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.encodeToString
+import org.json.JSONObject
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.Bot
+import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
@@ -29,9 +27,13 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
+import spam.blocker.service.bot.CalendarEvent
+import spam.blocker.service.bot.FindRules
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
+import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.executeAll
+import spam.blocker.ui.theme.DimGrey
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
@@ -42,6 +44,7 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
+import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
@@ -52,12 +55,11 @@ import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
-import spam.blocker.util.loge
-import spam.blocker.util.logi
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
+import spam.blocker.util.toMap
 
 class CheckContext(
     val rawNumber: String,
@@ -65,6 +67,7 @@ class CheckContext(
     val smsContent: String? = null,
     val logger: ILogger? = null,
     val startTimeMillis: Long = System.currentTimeMillis(),
+    val checkers: List<IChecker>,
 )
 
 
@@ -730,22 +733,43 @@ class Checker { // for namespace only
         }
     }
 
-    // Check if a number rule matches the incoming number
-    class Number(
-        private val ctx: Context,
-        private val rule: RegexRule,
+    open class RegexRuleChecker(
+        val ctx: Context,
+        var rule: RegexRule,
     ) : IChecker {
         override fun priority(): Int {
             return rule.priority
         }
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            throw Exception("unimplemented RegexRuleChecker.check()")
+            return null
+        }
 
+        fun preCheck(cCtx: CheckContext): Boolean {
+            // 0. check if the rule is enabled (has FLAG_FOR_CALL for call, or FLAG_FOR_SMS for sms)
+            val isForSMS = cCtx.smsContent != null
+            if (!rule.flags.hasFlag(if (isForSMS) Def.FLAG_FOR_SMS else Def.FLAG_FOR_CALL)) {
+                return false
+            }
+            // 1. check time schedule
+            if (TimeSchedule.dissatisfyNow(rule.schedule)) {
+                cCtx.logger?.debug(ctx.getString(R.string.outside_time_schedule))
+                return false
+            }
+            return true
+        }
+    }
+
+    // Check if a number rule matches the incoming number
+    class Number(
+        ctx: Context,
+        rule: RegexRule,
+    ) : RegexRuleChecker(ctx, rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            // 1. check time schedule
-            if (TimeSchedule.dissatisfyNow(rule.schedule)) {
-                logger?.debug(ctx.getString(R.string.outside_time_schedule))
+            if (!preCheck(cCtx)) {
                 return null
             }
 
@@ -785,13 +809,9 @@ class Checker { // for namespace only
 
     // The regex flag `Contact`, it matches the contact name instead of the phone number
     class RegexContact(
-        private val ctx: Context,
-        private val rule: RegexRule
-    ) : IChecker {
-        override fun priority(): Int {
-            return rule.priority
-        }
-
+        ctx: Context,
+        rule: RegexRule
+    ) : RegexRuleChecker(ctx, rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
@@ -799,6 +819,11 @@ class Checker { // for namespace only
             if (!Permission.contacts.isGranted) {
                 return null
             }
+
+            if (!preCheck(cCtx)) {
+                return null
+            }
+
             logger?.info(
                 (ctx.getString(R.string.checking_template) + ": ${rule.summary()}")
                     .formatAnnotated(
@@ -806,12 +831,6 @@ class Checker { // for namespace only
                         priority().toString().A(LightMagenta)
                     )
             )
-
-            // 1. check time schedule
-            if (TimeSchedule.dissatisfyNow(rule.schedule)) {
-                logger?.debug(ctx.getString(R.string.outside_time_schedule))
-                return null
-            }
 
             // 2. check regex
             val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
@@ -843,18 +862,18 @@ class Checker { // for namespace only
 
     // The regex flag `Contact Group`, it matches the contact group name instead of the phone number
     class ContactGroup(
-        private val ctx: Context,
-        private val rule: RegexRule
-    ) : IChecker {
-        override fun priority(): Int {
-            return rule.priority
-        }
-
+        ctx: Context,
+        rule: RegexRule
+    ) : RegexRuleChecker(ctx, rule) {
         override fun check(cCtx: CheckContext): ICheckResult? {
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
             if (!Permission.contacts.isGranted) {
+                return null
+            }
+
+            if (!preCheck(cCtx)) {
                 return null
             }
 
@@ -865,12 +884,6 @@ class Checker { // for namespace only
                         priority().toString().A(LightMagenta)
                     )
             )
-
-            // 1. check time schedule
-            if (TimeSchedule.dissatisfyNow(rule.schedule)) {
-                logger?.debug(ctx.getString(R.string.outside_time_schedule))
-                return null
-            }
 
             // 2. check regex
             val group = Contacts.findGroupsContainNumber(ctx, rawNumber)
@@ -1140,6 +1153,91 @@ class Checker { // for namespace only
         }
     }
 
+    // This will be executed before other checkers, it modifies other rules before they are executed.
+    // For example, if an calendar event "work"(7am-7pm) is occurring and the current time is 8am(working),
+    //   it will
+    class CalendarEventForwardCheck(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return Int.MAX_VALUE
+        }
+
+        fun executeBotActions(cCtx: CheckContext, eventTitle: String, bot: Bot) {
+            val logger = cCtx.logger
+
+            val actions = bot.actions
+
+            var i = 1 // skip the first action CalendarEvent
+            while (i in actions.indices) {
+                // FindRules + ModifyRules
+                if (actions[i] is FindRules && actions.getOrNull(i+1) is ModifyRules) {
+                    val find = actions[i] as FindRules
+                    val modify = actions[i+1] as ModifyRules
+
+                    cCtx.checkers
+                        // Keep all that rule.description matches FindRules.pattern
+                        .filter {
+                            it is RegexRuleChecker &&
+                                    find.pattern.regexMatches(it.rule.description, find.flags)
+                        }
+                        // Modify each rule with ModifyRules
+                        .forEach {
+                            val rule = (it as RegexRuleChecker).rule
+
+                            val mapConfig = JSONObject(modify.config).toMap()
+
+                            val strOrigin = PermissiveJson.encodeToString(rule)
+                            val mapOrigin = JSONObject(strOrigin).toMap()
+
+                            val mapModified = mapOrigin + mapConfig // override with mapModify
+
+                            val newRule =
+                                PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
+
+                            logger?.warn(
+                                ctx.getString(R.string.rule_updated_temporarily)
+                                    .formatAnnotated(
+                                        rule.description.A(SkyBlue),
+                                        eventTitle.A(SkyBlue),
+                                        modify.config.A(DimGrey)
+                                    )
+                            )
+                            it.rule = newRule
+                        }
+                    i++
+                }
+                i++
+            }
+        }
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val bots = BotTable.listAll(ctx).filter {
+                it.actions.first() is CalendarEvent
+            }
+            if (bots.isEmpty()) // No calendar workflow enabled
+                return null
+
+            val ongoingEvents = Util.ongoingCalendarEvents(ctx)
+            if (ongoingEvents.isEmpty()) // No calendar event currently occurring
+                return null
+
+            ongoingEvents.forEach { eventTitle ->
+                bots
+                    // only keep those that match this eventTitle
+                    .filter {
+                        val ce = it.actions[0] as CalendarEvent
+                        ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
+                    }
+                    .forEach {
+                        executeBotActions(cCtx, eventTitle, it)
+                    }
+            }
+
+            // this is not a checker, it's just a pre-processor, always return null
+            return null
+        }
+    }
+
     companion object {
 
         fun checkCallWithCheckers(
@@ -1153,6 +1251,7 @@ class Checker { // for namespace only
                 rawNumber = rawNumber,
                 callDetails = callDetails,
                 logger = logger,
+                checkers = checkers,
             )
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
@@ -1185,6 +1284,7 @@ class Checker { // for namespace only
             val checkers = arrayListOf(
                 EmergencyCall(ctx),
                 EmergencySituation(ctx),
+                CalendarEventForwardCheck(ctx),
                 STIR(ctx),
                 SpamDB(ctx),
                 Contact(ctx),
@@ -1199,7 +1299,7 @@ class Checker { // for namespace only
             )
 
             //  add number rules to checkers
-            val rules = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_CALL)
+            val rules = NumberRuleTable().listAll(ctx)
             checkers += rules.map {
                 it.toNumberChecker(ctx)
             }
@@ -1219,6 +1319,7 @@ class Checker { // for namespace only
                 rawNumber = rawNumber,
                 smsContent = messageBody,
                 logger = logger,
+                checkers = checkers,
             )
 
             // sort by priority desc
@@ -1249,6 +1350,7 @@ class Checker { // for namespace only
             messageBody: String
         ): ICheckResult {
             val checkers = arrayListOf<IChecker>(
+                CalendarEventForwardCheck(ctx),
                 Contact(ctx),
                 SpamDB(ctx),
                 MeetingMode(ctx),
@@ -1258,13 +1360,13 @@ class Checker { // for namespace only
             )
 
             //  add number rules to checkers
-            val numberRules = NumberRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
+            val numberRules = NumberRuleTable().listAll(ctx)
             checkers += numberRules.map {
                 it.toNumberChecker(ctx)
             }
 
             //  add sms content rules to checkers
-            val contentFilters = ContentRuleTable().listRules(ctx, Def.FLAG_FOR_SMS)
+            val contentFilters = ContentRuleTable().listAll(ctx)
             checkers += contentFilters.map {
                 Content(ctx, it)
             }

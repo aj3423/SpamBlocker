@@ -1,14 +1,10 @@
 package spam.blocker.service
 
-import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
-import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 

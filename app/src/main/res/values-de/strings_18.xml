@@ -1,4 +1,33 @@
 <resources>
     <string name="auto_copy">Auto-Kopieren</string>
     <string name="help_auto_copy">Kopiert den Inhalt automatisch in die Zwischenablage, ohne auf die Schaltfläche „Kopieren“ in der Benachrichtigung tippen zu müssen.</string>
+    <string name="calendar_event">Kalenderereignis</string>
+    <string name="event_title">Ereignistitel</string>
+    <string name="rule_updated_temporarily">Regex-Regel %s wurde aufgrund des Kalenderereignisses %s temporär geändert: %s</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Regeln basierend auf Kalenderereignissen temporär ändern, Änderungen werden temporär angewendet, ohne die Konfiguration zu verändern.<br>
+        <br>
+        Diese Aktion muss die erste im Workflow sein, ein solcher Workflow wird durch einen eingehenden Anruf automatisch ausgelöst.<br>
+        <br>
+        <b>Ein Anwendungsfall</b>:<br>
+        &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage lang die Tagschicht von 7 bis 10 Uhr,
+          dann die nächsten zwei Tage die Nachtschicht von 19 bis 22 Uhr.<br>
+        &ensp; Einige Regeln müssen während der Arbeitszeiten deaktiviert oder aktiviert werden.</font><<br>
+        <br>
+        Ein Beispiel-Setup:<br>
+        - <b>1</b>. Erstellen Sie in der Kalender-App Kalenderereignisse <font color="#888888">Arbeit</font> für alle Arbeitszeiten.<br>
+        - <b>2</b>. Erstellen Sie eine Regex-Regel.<br>
+        &emsp; Beschreibung: <font color="#888888">Arbeiten</font><br>
+        - <b>3</b>. Erstellen Sie einen Workflow:<br>
+        &ensp; - <b>Kalenderereignis</b><br>
+         &emsp;&emsp; Ereignistitel: <font color="#888888">Arbeit</font><br>
+        &ensp; - <b>Regeln finden</b><br>
+         &emsp;&emsp; Beschreibung: <font color="#888888">Arbeiten</font><br>
+        &ensp; - <b>Regeln ändern</b><br>
+         &emsp;&emsp; Konfiguration: <font color="#888888">{ "flags": 0 }</font> (dies deaktiviert die Regel)<br>
+        <br>
+         &emsp;&emsp; (Es werden hier mehrere <b>Regeln finden</b> und <b>Regeln ändern</b> unterstützt)<br>
+        ]]>
+    </string>
 </resources>
