@@ -1,0 +1,71 @@
+<resources>
+    <string name="for_example">לדוגמה:</string>
+    <string name="yesterday_abbrev">אתמול.</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        דחה שיחות במהלך פגישות וידאו מקוונות.<br> <br>
+        הוא בודק אם אפליקציה נבחרת כלשהי מריצה <b>שירות בחזית</b>,
+        המשמש בדרך כלל על ידי יישומי ועידת וידאו כדי לשמור על החיבור פעיל.<br>
+        <br>
+        זה חל הן על שיחות והן על הודעות.<br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות ברירת מחדל: 20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">מצב פגישה</string>
+    <string name="search_number">חפש מספר</string>
+    <string name="http_header">כותרת HTTP</string>
+    <string name="help_http_header">
+        <![CDATA[
+        תכונה אחת לשורה.<br>
+        ]]>
+    </string>
+    <string name="tags_supported">
+        <![CDATA[
+        תגיות נתמכות:<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; עבור ממשקי API הדורשים אימות בסיסי HTTP. לדוגמה:<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; ייפורס ל:<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">תיעוד SMS</string>
+    <string name="initial_row_count">מספר שורות התחלתי</string>
+    <plurals name="rows">
+        <item quantity="one">%d שורה</item>
+        <item quantity="two">%d שורות</item>
+        <item quantity="few">%d שורות</item>
+        <item quantity="many">%d שורות</item>
+        <item quantity="other">%d שורות</item>
+    </plurals>
+
+    <string name="label_max_none_scroll_items">סף סרגל גלילה</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        המספר המרבי של פריטים שניתן להציג ברשימה לפני שסרגל גלילה יופיע.
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">גובה גלילה</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        כאשר סרגל הגלילה מופיע, ערך זה מייצג את גובה הרשימה כאחוז מהמסך.
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">שורות Regex מקסימליות</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        שורות התצוגה המקסימליות עבור טקסט ה-regex, טקסט שנותר ייקצר ויבוא אחריו שלוש נקודות.
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">שורות תיאור מקסימליות</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        שורות התצוגה המקסימליות עבור טקסט התיאור, טקסט שנותר ייקצר ויבוא אחריו שלוש נקודות.
+        ]]>
+    </string>
+</resources>

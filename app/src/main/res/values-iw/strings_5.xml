@@ -1,0 +1,83 @@
+<resources>
+    <string name="dialed_number"><short>חויג</short></string>
+    <string name="find_apps">מצא אפליקציות</string>
+
+    <string name="confirm_delete_all_rule">לאשר מחיקת כל הכללים?</string>
+
+    <string name="notification">התראה</string>
+    <string name="type">סוג</string>
+    <string name="times">פעמים</string>
+    <plurals name="days">
+        <item quantity="one">%d יום</item>
+        <item quantity="two">%d ימים</item>
+        <item quantity="few">%d ימים</item>
+        <item quantity="many">%d ימים</item>
+        <item quantity="other">%d ימים</item>
+    </plurals>
+    <string name="min">דק׳</string>
+    <string name="within_minutes">בתוך דקות</string>
+    <string name="within_days">בתוך ימים</string>
+    <string name="phone_number">מספר טלפון</string>
+    <string name="phone_number_abbrev">מספר</string>
+    <string name="sms_content">תוכן הודעת SMS</string>
+    <string name="regex_flags">דגלי Regex</string>
+    <string name="off_time"><short>כיבוי</short></string>
+    <string name="schedule">לוח זמנים</string>
+    <string name="workday">יום עבודה</string>
+    <string name="weekend">סוף שבוע</string>
+    <string name="entire_day">כל היום</string>
+    <string name="block_type">סוג חסימה</string>
+    <string name="for_particular_number">למספר מסוים</string>
+    <string name="help_for_particular_number">כשאפשרות זו מופעלת, הכלל חל רק כאשר גם המספר וגם התוכן תואמים.</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>דחייה</b></font>: <br>
+         זהה ללחיצה על כפתור הדחייה. פועל בשקט מוחלט, מסך הנעילה לא יידלק.<br>
+        <br>
+        - <font color="#00BFFF"><b>השתקה</b></font>: <br>
+         השיחה תצלצל בשקט ברקע, ותיתן למתקשר את הרושם שלא היית זמין ופספסת את השיחה. <br>
+        <br>
+         זה עשוי גם לעזור אם אתם חווים שיחות ספאם חוזרות, זה יאריך את משך השיחה, מה שיהפוך אותה לפחות יעילה עבור שולחי הספאם, ואולי ירתיע אותם מלהתקשר אליכם שוב.<br>
+        <br>
+        - <font color="#00BFFF"><b>ניתוק</b></font>: <br>
+        ענה ונתק את השיחה כדי למנוע ממנה לעבור לתא קולי. <br>
+        <br>
+        <font color="#FFA500">הערה</font> מסך הנעילה עשוי להידלק לזמן קצר,
+        אתה עשוי גם לשמוע צליל סיום שיחה (חלק מהטלפונים מציעים אפשרות להשתיק צליל זה). <br>
+        <br>
+        - ה<b>השהיה</b>: <br>
+        &emsp; כברירת מחדל, קיימת השהיה של שנייה אחת לפני ניתוק השיחה,
+        כדי למנוע משיחות לעבור בטעות לתא קולי עקב ניתוק מהיר.<br>
+        &emsp; אם ברצונך להקליט שיחות, התקן אפליקציית הקלטת שיחות והגדל את ההשהיה בהתאם.
+        ]]>
+    </string>
+    <string name="help_hang_up_delay">ההשהיה לפני ניתוק השיחה (בשניות).</string>
+    <string name="help_dialed">
+        <![CDATA[
+        מספרים מחויגים יאושרו.<br>
+        <br>
+        שליחת הודעה גם נספרת, זה פועל רק כאשר ניתנה הרשאת READ_SMS. <br>
+        <br>
+        הגדרת ברירת המחדל <font color="#03DAC5"><b>3 ימים</b></font> פירושה שאם חייגת או שלחת הודעות למספר ב-3 הימים האחרונים, שיחות מאותו מספר יאושרו.<br>
+        <br>
+        חל רק על שיחות, <b>לא</b> על הודעות טקסט. <br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        כל שיחה תעבור אם אפליקציה כלשהי ברשימה שימשה לאחרונה.<br>
+        <br>
+        מקרה שימוש טיפוסי:<br>
+        &emsp; הזמנתם פיצה באפליקציית פיצה, ומיד הם מתקשרים אליכם כדי להחזיר לכם כסף כי הם נסגרים. שיחה זו תעבור אם אפליקציית פיצה מופעלת כאן. <br>
+        <br>
+        הגדרת ברירת המחדל <font color="03DAC5"><b>5 דק\'</b></font> פירושה שכל שיחה תעבור אם אחת מהאפליקציות שימשה בתוך 5 דקות,
+        `שימשה` פירושה הפעלה, ביטול הפעלה, מיזעור או סגירה. <br>
+        <br>
+        חל רק על שיחות, <b>לא</b> על הודעות טקסט. <br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 10</b></font>
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,97 @@
+<resources>
+    <string name="report_number">דיווח על מספר</string>
+    <string name="report_number_require_call_log_permission">
+        כדי למנוע דיווח שגוי של שיחות חוזרות או מספרים שחויגו בחזרה,
+        דיווח מספר דורש הרשאת יומן שיחות.
+    </string>
+    <string name="http_method">שיטה</string>
+    <string name="http_post_body">גוף בקשה</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        תגיות נתמכות:<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="invalid_auth_credentials">אנא הכנס פרטי הרשאה חוקיים.</string>
+    <string name="delay">השהיה</string>
+    <string name="exclude_services">החרג שירותים</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        אפליקציות מסוימות מפעילות שירותי חזית נוספים, הוסף כאן את שמות השירותים כדי להחריג אותם.<br>
+        <br>
+        כדי למצוא שם שירות:<br>
+        &emsp; 1. הפעל את השירות באפליקציה זו.<br>
+        &emsp; 2. כל שמות השירותים המופעלים יופיעו כאן.<br>
+        &emsp; 3. הקש על שם כדי להוסיף אותו.<br>
+        <br>
+        באפשרותך להוסיף מספר שמות, מופרדים בפסיקים.
+        ]]>
+    </string>
+    <string name="running_services">שירותים פועלים</string>
+    <string-array name="spam_categories">
+        <item>מספר תקין</item>
+        <item>הונאה</item>
+        <item>שיווק</item>
+        <item>סקר</item>
+        <item>פוליטי</item>
+        <item>ספאם אחר</item>
+    </string-array>
+    <string name="action_category_config">תצורת קטגוריה</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        רק קטגוריות הספאם הבאות נתמכות, כל קטגוריה אחרת מה-API צריכה להיות ממופה לאחת מהן.<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; דווח כמספר תקין, לא כספאם.<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; סוג הספאם החלופי, המשמש כאשר אף אחת מהקטגוריות הנ"ל אינה חלה.<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        קטגוריה %s אינה מוגדרת בפעולה %s, אנא הגדר אותה בתצורת ה-API (אם ה-API תומך בקטגוריה זו).
+    </string>
+    <string name="target_text">טקסט יעד</string>
+    <string name="match_found">התאמה נמצאה</string>
+    <string name="match_not_found">התאמה לא נמצאה</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        זה מיועד רק לבדיקה האם ביטוי רגולרי זה מתאים לטקסט, למעט כללים אחרים.<br>
+        כדי לבדוק מול כל הכללים, השתמש במקום זאת בלחצן הבדיקה הצף שבפינה הימנית התחתונה.
+        ]]>
+    </string>
+    <string name="allow">אפשר</string>
+    <string name="block">חסום</string>
+    <string name="seconds">שניות</string>
+    <string name="seconds_short">שנ\'</string>
+    <string name="within_seconds">תוך שניות</string>
+    <string name="sms_alert">התראת סמס</string>
+    <string name="help_sms_alert">
+        <![CDATA[
+        שירותים מסוימים ישלחו לך הודעת טקסט תחילה כדי להודיע לך על שיחה צפויה, בדרך כלל בתוך דקה.<br>
+        <br>
+        לדוגמה, הודעת SMS כזו:<br>
+        &ensp; <font color="#888888">[שירות מסוים] אנו מתקשרים אליך כדי להודיע ..., אנא הרגש חופשי לענות.</font><br>
+        <br>
+        ביטוי רגולרי עבור הודעה כזו יהיה: <br>
+        &ensp; <font color="#03DAC5"><b>.*אנא.*ענה.*</b></font> <br>
+        <br>
+        ההגדרה הסטנדרטית <font color="#03DAC5"><b>120 שניות</b></font> פירושה שכל השיחות יאושרו
+        בשתי הדקות הבאות לאחר קבלת הודעה כזו.<br>
+        <br>
+        זה עובד גם עבור SMS רגיל וגם עבור SMS פלאש (SMS מסוג 0).<br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">תו כללי `*` משמש ללא נקודה קודמת, האם התכוונת ל-`.*` ?</string>
+    <string name="import_as">ייבא כ-</string>
+    <string name="api_key">מפתח API</string>
+    <string name="mms_support">תמיכת MMS</string>
+</resources>

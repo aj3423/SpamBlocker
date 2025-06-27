@@ -1,0 +1,55 @@
+<resources>
+    <string name="help_number_rules">
+        <![CDATA[
+        כללי המספר חלים הן על מספר השיחה הנכנסת והן על מספר ה-SMS.<br>
+        <br>
+        <h5><font color="#00BFFF"> - דוגמאות</font></h5>
+        ישנן כמה דוגמאות ב<a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">דף הוויקי</a>.<br>
+        <br>
+        <h5><font color="#00BFFF"> - אופטימיזציית Regex</font></h5>
+        כדי לפשט את ה-regex,
+          <font color="#fa7f71"><b>+</b></font> ו<font color="#fa7f71"><b>אפסים מובילים</b></font>
+          מוסרים לפני הבדיקה, לדוגמה:<br>
+        &emsp; כל הפורמטים הללו:<br>
+        &emsp;&emsp; 123456789 &emsp;(מספר רגיל)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;(עם <font color="#fa7f71"><b>+</b></font> מוביל)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;(עם קידומת חיוג ארצית <font color="#fa7f71"><b>0</b></font>)<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;(שני <font color="#fa7f71"><b>0</b></font>ים)<br>
+        &emsp; כולם <b>נבדקים</b> כמספר 123456789 וניתן להתאימם באמצעות <font color="#03DAC5"><b>123.*</b></font><br>
+        אופטימיזציית מספר זו ניתנת ל<b>ביטול</b> עם דגל ה-regex `Raw Number`.<br>
+        <br>
+        <h5><font color="#00BFFF"> - כמה תבניות אופייניות</font></h5>
+        &ensp; - כל מספר: <font color="#03DAC5"><b>.*</b></font> (ה-regex .* שווה ערך לתו הכללי * באפליקציות אחרות) <br>
+        &ensp; - מספר מדויק: <font color="#03DAC5"><b>12345</b></font> <br>
+        &ensp; - מתחיל ב-400: <font color="#03DAC5"><b>400.*</b></font> <br>
+        &ensp; - מסתיים ב-123: <font color="#03DAC5"><b>.*123</b></font> <br>
+        &ensp; - 7 ספרות: <font color="#03DAC5"><b>.{7}</b></font> <br>
+        &ensp; - קצר מ-5: <font color="#03DAC5"><b>.{0,4}</b></font> <br>
+        &ensp; - ארוך מ-10: <font color="#03DAC5"><b>.{11,}</b></font> <br>
+        &ensp; - מספר לא ידוע/פרטי/ריק: <font color="#03DAC5"><b>.{0}</b></font> או <font color="#03DAC5"><b>^$</b></font> <br>
+        &ensp; - התאמה לאחת מהתבניות: <font color="#03DAC5"><b>(12.*|.*89)</b></font> <br>
+        &ensp; - מתחיל ב-400, עם קידומת מדינה 11 או בלעדיה: <font color="#03DAC5"><b>(?:11)?400.*</b></font> <br>
+        <br>
+        <h5><font color="#00BFFF"> - קשור לממשק המשתמש</font></h5>
+        בטל סימון בתיבות הסימון כדי להשבית את הכלל, <font color="#fa7f71"><b>החלק שמאלה כדי למחוק</b></font> אותו.<br>
+        <br>
+        הרשימה <b>מוצגת</b> בסדר עדיפות יורד, תיאור עולה ותבנית עולה.<br>
+        <br>
+        <h5><font color="#00BFFF"> - ייבוא כללים מקובץ .csv</font></h5>
+        לחץ לחיצה ארוכה על כפתור ה\'הוספה\' כדי לייבא מספרים מקובץ .csv.<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         עמודות נתמכות:<br>
+         - <no_translate><b>pattern</b></no_translate>: ה-regex (<b>חובה</b>)<br>
+         - <no_translate><b>description</b></no_translate>: תיאור<br>
+         - <no_translate><b>priority</b></no_translate>: עדיפות, ברירת מחדל 1<br>
+         - <no_translate><b>flags</b></no_translate>: 1(חל על שיחה), 2(חל על SMS), 3(שניהם), ברירת מחדל 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>: רשימה שחורה או לבנה. <no_translate>true</no_translate> או <no_translate>false</no_translate>, ברירת מחדל <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>: סוג חסימה. 0~2 מתאים ל-3 סוגי החסימה, ברירת מחדל 0<br>
+         - <no_translate><b>importance</b></no_translate>: סוג התראה. 0~4 מתאים ל-5 סוגי ההתראות, ברירת מחדל 2<br>
+        ]]>
+    </string>
+</resources>

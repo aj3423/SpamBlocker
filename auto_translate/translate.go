@@ -27,6 +27,7 @@ var nameMap = map[string]string{
 	`gal`:    `Galician`,
 	`in`:     `Indonesian`,
 	`it`:     `Italian`,
+	`iw`:     `Hebrew`,
 	`ja`:     `Japanese`,
 	`pt-rBR`: `Brazilian Portuguese`,
 	`ru`:     `Russian`,
@@ -200,7 +201,7 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	fmt.Println()
 
 	if resp.UsageMetadata.CandidatesTokenCount >= 2048 {
-		return "", errors.New("CandidatesTokenCount reached 2048, preferably < 1800, split the xml")
+		color.HiYellow("CandidatesTokenCount reached 2048, preferably < 1800, split the xml")
 	}
 
 	sb := &strings.Builder{}

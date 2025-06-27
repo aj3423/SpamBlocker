@@ -1,0 +1,146 @@
+<resources>
+    <string name="database">מסד נתונים</string>
+    <string name="total">סה"כ</string>
+    <string name="replace_from">מאת</string>
+    <string name="replace_to">אל</string>
+    <string name="regex_pattern">רג\'קס</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        מספרים במסד נתונים זה ייחסמו.<br>
+        <br>
+        באפשרותך לשלב כל מסד נתונים ציבורי, או אפילו מספר מסדי נתונים, וכן לייבא מספרים מקבצים מקומיים.<br>
+        <br>
+        עיין בסעיף "אוטומציה" למטה כדי ללמוד כיצד לתזמן משימת ייבוא אוטומטי.<br>
+        <br>
+        זה חל גם על שיחות וגם על הודעות SMS.<br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        מספרי ספאם במסד הנתונים יפוגו לאחר N ימים, רשומות שפג תוקפן יימחקו אוטומטית.<br>
+        <br>
+        כאשר מושבת, מספרים לעולם לא יימחקו אוטומטית.
+        ]]>
+    </string>
+    <string name="customize">התאמה אישית</string>
+    <string name="workflow">זרימת עבודה</string>
+    <string name="workflows">זרימות עבודה</string>
+    <string name="automation">אוטומציה</string>
+    <string name="help_workflows">
+        <![CDATA[
+        זרימות עבודה יכולות לשמש להפעלת משימות אוטומטית, כגון עדכון מסד נתונים, או גיבוי אוטומטי.<br>
+        <br>
+        קיימים הגדרות קבועות מראש להתקנה מהירה, באפשרותך גם לבנות אותה מאפס, או לייבא מתצורת JSON ששותפה ממשתמשים אחרים.<br>
+        <br>
+        אם תמצא זרימת עבודה כלשהי שיכולה להיות בשימוש נרחב וכדאי להוסיף אותה להגדרות הקבועות מראש, אנא דווח על כך ב-GitHub.
+        ]]>
+    </string>
+    <string name="manual">ידני</string>
+
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">ניקוי מסד נתוני ספאם</string>
+    <string name="bot_preset_cleanup_history">ניקוי היסטוריה</string>
+    <string name="bot_preset_auto_backup">גיבוי אוטומטי</string>
+
+    <string name="action_cleanup_history">נקה היסטוריה</string>
+    <string name="action_http_request">בקשת HTTP</string>
+    <string name="action_cleanup_spam_db">ניקוי מסד נתוני ספאם</string>
+    <string name="action_backup_export">ייצוא גיבוי</string>
+    <string name="action_backup_import">ייבוא גיבוי</string>
+    <string name="action_read_file">קרא קובץ</string>
+    <string name="action_write_file">כתוב קובץ</string>
+    <string name="action_parse_csv">נתח CSV</string>
+    <string name="action_parse_xml">נתח XML</string>
+    <string name="action_regex_extract">חילוץ רג\'קס</string>
+    <string name="action_import_to_spam_db">ייבוא למסד נתוני ספאם</string>
+    <string name="action_import_as_regex_rule">ייבוא ככלל רג\'קס</string>
+    <string name="action_convert_number">החלף מספר</string>
+    <string name="action_find_rules">מצא כללים</string>
+    <string name="action_modify_rules">שנה כללים</string>
+    <string name="action_modify_rules_placeholder">
+        מחרוזת JSON, לדוגמה:\n
+        {\n
+        "flags": 0, // השבת את הכלל\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+
+    <string name="help_action_http_download">
+        <![CDATA[
+        הורדת נתוני HTTP כ<u>בתים של תוכן</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">מחק מספרים שפג תוקפם ממסד נתוני הספאם.</string>
+    <string name="help_action_cleanup_history">מחק רשומות היסטוריה שפג תוקפן.</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        ייצא את ההגדרות הנוכחיות ל<u>בתים של תוכן</u>.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        החל הגדרות מ<u>בתים של תוכן</u>.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        קבל את <u>הבתים של התוכן</u> מקובץ.
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        כתוב <u>בתים של תוכן</u> לקובץ.
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        נתח <u>בתים של תוכן</u> בפורמט CSV ל<u>רשימת מספרים</u>
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        נתח <u>בתים של תוכן</u> בפורמט XML באמצעות <b>xpath</b> וצור <u>רשימת מספרים.</u>
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        חלץ <u>רשימת מספרים</u> מ<u>בתים של תוכן</u> באמצעות רג\'קס.
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        הוסף <u>רשימת מספרים</u> למסד נתוני הספאם.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        צור כלל רג\'קס חדש מ<u>רשימת מספרים</u>.
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        המר את <u>רשימת המספרים</u> לפורמט שבו משתמשת אפליקציה זו.<br>
+        <br>
+        לדוגמה, הוסף שתי פעולות כדי להחליף:<br>
+        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` ל-`12345<font color="#03DAC5"><b>…</b></font>`:<br>
+        <br>
+        &ensp; - החלף `<font color="#fa7f71">(+)</font>` ב-``<br>
+        &ensp; - החלף `<font color="#fa7f71">(#)</font>` ב-<font color="#03DAC5"><b>.</b></font><br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        מצא <u>רשימת כללים</u> התואמת תיאור ספציפי.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        שנה מאפיין אחד או יותר עבור <u>רשימת כללים</u>.
+        ]]>
+    </string>
+</resources>

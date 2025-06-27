@@ -1,0 +1,111 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        מנקה בסיס נתונים של היסטוריה, מוחק רשומות לפני חותמת זמן: %s.
+    </string>
+    <string name="cleaning_up_spam_db">
+        מנקה בסיס נתונים של ספאם, מוחק %s רשומות לפני חותמת זמן: %s.
+    </string>
+    <string name="resolved_url">כתובת URL נפתרה: %s</string>
+    <string name="time_cost">זמן שלוקח: %s מילישניות.</string>
+    <string name="parsed_n_rules">נותחו %s כללים.</string>
+    <string name="add_n_numbers_to_spam_db">מוסיף %s מספרים לבסיס נתוני ספאם.</string>
+    <string name="nothing_to_import">רשימת המספרים ריקה, אין מה לייבא.</string>
+    <string name="importing_n_numbers">מייבא %s מספרים ככלל רגולרי.</string>
+    <string name="create_rule_with_numbers">יוצר כלל עם %s מספרים.</string>
+    <string name="replace_rule_with_desc">מחליף את הכלל עם התיאור: %s.</string>
+    <string name="rule_with_desc_not_found">כלל עם התיאור %s לא נמצא.</string>
+    <string name="merging_rule_with_desc">ממזג את הכלל עם התיאור: %s.</string>
+    <string name="regex_count_after_merge">מספר ביטויים רגולריים לפני: %s, אחרי: %s.</string>
+    <string name="replace_number_from_to">מחליף מספר מ-%s ל-%s.</string>
+    <string name="find_rule_with_desc">נמצאו %s כללים עם התיאור %s.</string>
+    <string name="modify_n_rules">משנה %s כללים.</string>
+    <string name="number_not_match_filter">המספר %s אינו תואם את המסנן %s, מדלג.</string>
+    <string name="fail_detect_cc">נכשלה זיהוי קידומת מדינה.</string>
+    <string name="identified_as_spam">זוהה כמספר ספאם, קטגוריה: %s.</string>
+    <string name="identified_as_valid">זוהה כמספר חוקי, קטגוריה: %s.</string>
+    <string name="unidentified_number">מספר לא מזוהה.</string>
+    <string name="auto_detect_cc_permission">ההרשאה READ_PHONE_STATE נדרשת לזיהוי קידומת מדינה.</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; קידומת המדינה.<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; החלק המקומי.<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; המספר המלא, כולל קידומת מדינה וחלק מקומי, ללא + או 0 מובילים.<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; המספר המקורי שיכול להכיל + או 0 מובילים.<br>
+        ]]>
+    </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; תוכן ההודעה.<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{year}</b></font><br>
+        &ensp; השנה, למשל: 2024<br>
+        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
+        &ensp; מספר חד-ספרתי ירופד באפס מוביל, למשל: <br>
+        &emsp; {month}_{day} -> 01_02<br>
+        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
+        &ensp; ערכים אלה ירופדו ללא אפס מוביל, למשל: <br>
+        &emsp; {month}_{day} -> 1_2<br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        תגיות נתמכות:<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        מיועד בעיקר עבור FRITZ!Box הגרמני, אך עובד גם עם מספרי טלפון מכל מדינה אחרת.<br>
+        <br>
+        הוא תומך בשליפה לפי גיבוב במקום המספר עצמו, מה שמספק פרטיות טובה יותר.<br>
+        <br>
+        אתר אינטרנט: <a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API: <a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. רשום חשבון ב- <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
+        <br>
+        2. בדף ההגדרות: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>, לחץ על הכפתור "צור מפתח API".<br>
+        <br>
+        3. מלא את מפתח ה-API שנוצר למטה.
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        מגבלת זמן סינון השיחות היא 5 שניות, עם חיץ של %s אלפיות שניה לאי דיוק של פונקציות זמן, מגבלת הזמן הכוללת היא למעשה %s אלפיות שניה.
+        השלבים הקודמים עלו %s אלפיות שניה, לא נשאר מספיק זמן, מדלג.
+    </string>
+    <string name="action_filter_query_result">סנן ספאם</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        צור <u>רשימת מספרים</u> המכילה את מספר הספאם שזוהה מהשלב הקודם, ומוכנה לייבוא למסד הנתונים.
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">שרשור אחר בוטל.</string>
+    <string name="username">שם משתמש</string>
+    <string name="password">סיסמה</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>החלק שמאלה</b></font> כדי למחוק.<br>
+        <br>
+        רוב רכיבי ממשק המשתמש דמויי כרטיס באפליקציה זו קשורים למחוות החלקה,
+        חלקם תומכים גם ב-<font color="#03DAC5"><b>החלקה ימינה</b></font>, לדוגמה, רשומות ההיסטוריה.
+        ]]>
+    </string>
+    <string name="bug_number">אם זהו מספר תקין, אנא דווחו על כך ב-GitHub.</string>
+    <string name="skip_alpha_empty_number">דלג על מספר אלפביתי או ריק.</string>
+</resources>

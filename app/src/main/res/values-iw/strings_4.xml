@@ -1,0 +1,56 @@
+<resources>
+    <string name="help_off_time">
+        <![CDATA[
+        כאשר מופעל, כל השיחות (הודעות) יאושרו בתקופה זו. בדרך כלל אין שיחות ספאם בלילה. <br>
+        <br>
+        אם שעת ההתחלה גדולה משעת הסיום, לדוגמה, 20:00 -> 07:00, הכוונה היא לתקופה מ-20:00 בערב עד 07:00 בבוקר למחרת. <br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_regex_flags">
+        <![CDATA[
+            דגלים אלה משנים את התנהגות ההתאמה של הביטוי הרגולרי, הם מוגדרים עבור כללים חדשים כברירת מחדל. <br>
+            <br>
+
+            <font color="#00BFFF"><b>מספר גולמי</b></font>: <br>
+            &ensp; כאשר מופעל, מספר הטלפון לא יעבור אופטימיזציה, <font color="#03DAC5"><b>+</b></font>
+            ו-<font color="#03DAC5"><b>אפסים מובילים</b></font> יישארו, שימושי להבחנה בין מספרי טלפון מקומיים.<br>
+            <br>
+
+            <font color="#00BFFF"><b>השמט קוד מדינה</b></font>: <br>
+            &ensp; כאשר מופעל, הסימן <font color="#fa7f71">+</font> המוביל ו-<font color="#fa7f71">קוד המדינה</font>
+             יוסרו ממספר טלפון בינלאומי.<br>
+            <br>
+            לדוגמה, גם <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> וגם
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> יהפכו ל-<font color="#03DAC5">12345</font>,
+            זה מאפשר לך להשתמש בביטוי רגולרי פשוט יותר `123.*` במקום `(33|44)*123.*` להתאמה למספרי טלפון בינלאומיים.<br>
+            <br>
+
+            <font color="#00BFFF"><b>התעלם מגודל אותיות</b></font>:<br>
+            &ensp; זה הופך את התאמת התבנית ללא תלויה בגודל אותיות, <font color="#03DAC5"><b>a</b></font>
+              יתאים גם ל-<font color="#03DAC5"><b>a</b></font> וגם ל-<font color="#03DAC5"><b>A</b></font>. <br>
+            <br>
+
+            <font color="#00BFFF"><b>נקודה מתאימה הכל</b></font>: <br>
+            &ensp; כאשר מופעל, <font color="#03DAC5"><b>.</b></font> יתאים גם לתווי ירידת שורה (<font color="#03DAC5"><b>\\n</b></font>),
+              זה מאפשר לנקודה להתאים על פני מספר שורות. <br>
+            &ensp; מקרה שימוש: <br>
+            &emsp;   התאמת הודעת SMS מרובת שורות: <br>
+            &emsp;   <font color="#fa7f71">claim your prize: http://<br>
+            &emsp;   abc.com </font><br>
+            &emsp;   עם הכלל: <br>
+            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
+
+        ]]>
+    </string>
+
+    <string-array name="regex_flags_list">
+        <item>מספר גולמי</item>
+        <item>השמט קוד מדינה</item>
+        <item>התעלם מגודל אותיות</item>
+        <item>נקודה מתאימה הכל</item>
+    </string-array>
+    <string name="disable_number_optimization">ניתן לבטל אופטימיזציה זו באמצעות דגל הביטוי הרגולרי "מספר גולמי".</string>
+</resources>

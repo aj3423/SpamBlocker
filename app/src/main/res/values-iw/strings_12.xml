@@ -1,0 +1,103 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        שאילתת המספר הנכנס אונליין בזמן אמת, מספר נקודות קצה של API יישאלו בו-זמנית.<br>
+        <br>
+        זה חל רק על שיחות, לא על הודעות SMS.<br>
+        <br>
+        זה יופעל רק כאשר השיחה עוברת את כל הכללים האחרים.<br>
+        <br>
+        <font color="#ea86ff"><b>קדימות: -1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">שאילתה מיידית</string>
+    <string name="query">שאילתה</string>
+    <string name="negative_identifier">מזהה שלילי</string>
+    <string name="hint_negative_identifier">
+        דוגמה: ("valid":false)
+    </string>
+    <string name="help_negative_identifier">
+        הוא יזוהה כמספר ספאם אם תבנית Regex זו תימצא בתוצאה.
+    </string>
+    <string name="positive_identifier">מזהה חיובי</string>
+    <string name="hint_positive_identifier">
+        דוגמה: ("valid":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        הוא יזוהה כמספר שאינו ספאם אם תבנית Regex זו תימצא בתוצאה, זה אופציונלי.<br>
+        <br>
+        בדרך כלל זה <b>מיותר</b>, חלק מספקי ה-API יזהו מספרים לא ידועים כלא ספאם,
+        השתמש בזה רק כאשר ה-API מדויק באמת.
+        ]]>
+    </string>
+    <string name="category_identifier">מזהה קטגוריה</string>
+    <string name="hint_category_identifier">
+        דוגמה: "type":"(.+?)"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        אופציונלי. <br>
+        ברגע שמספר מזוהה, Regex זה ישמש לחילוץ הקטגוריה שלו (שיווק טלפוני, פישינג וכו\').
+        ]]>
+    </string>
+    <string name="action_parse_query_result">ניתוח תוצאה</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        נתח את תוצאת השאילתה, המספר יזוהה כספאם אם התוצאה מכילה תבנית Regex מסוימת.<br>
+        <br>
+        ניתן להשתמש ב-Regex נוסף לחילוץ קטגוריית הספאם. (אופציונלי)
+        ]]>
+    </string>
+    <string name="action_intercept_call">יירוט שיחה</string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        מספר השיחה הנכנסת ייורט וינותח לתגיות שונות:<br>
+        <br>
+        %s
+        <br>
+        תגיות אלו ישמשו לבניית כתובת ה-HTTP, לדוגמה:<br>
+        <br>
+        1. למספר בינלאומי כמו <b>+122222</b>, שני אלה שקולים:<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        זה ינותח ל: <br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. למספר מקומי כמו <b>12345</b>, עליך לספק את קידומת המדינה בהגדרות,
+        או לתת לאפליקציה לזהות אותו אוטומטית.<br>
+        ]]>
+    </string>
+    <string name="action_intercept_sms">יירוט SMS</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        ה-SMS הנכנס ייורט והתוכן ינותח לתגית <b>{sms}</b>,
+        אשר יכול לשמש בבקשות HTTP.
+        ]]>
+    </string>
+    <string name="query_api">API לשאילתה</string>
+    <string name="report_api">API לדיווח</string>
+    <string name="number_filter">מסנן מספרים</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        שירותי API מסוימים תומכים רק במספרים בינלאומיים, בעוד שאחרים תומכים רק במספרים מקומיים.<br>
+        <br>
+        Regex זה מסנן מספרים בהתאם, מספרים נכנסים שאינם תואמים ל-Regex זה ידלגו על הבדיקה.<br>
+        <br>
+        - בדוק רק <b>מספרים בינלאומיים</b>:<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - בדוק רק <b>מספרים מקומיים</b>:<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - בדוק <b>כל מספר</b>:<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">בודק: %s, קדימות: %s</string>
+    <string name="skip_for_testing">דלג לבדיקה.</string>
+    <string name="allowed_by">מותר על ידי: %s</string>
+    <string name="blocked_by">נחסם על ידי: %s</string>
+    <string name="outside_time_schedule">מחוץ ללוח זמנים, דלג.</string>
+    <string name="android_ver_lower_than_11">גרסת אנדרואיד נמוכה מ-11, דלג.</string>
+</resources>

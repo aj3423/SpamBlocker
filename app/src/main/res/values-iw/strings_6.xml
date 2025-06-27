@@ -1,0 +1,115 @@
+<resources>
+    <string name="crash_title">
+        מצטערים, האפליקציה קרסה.\n\n
+        אנא העתק את התוכן למטה ודווח על בעיה זו ב-GitHub,
+        הסר כל מידע רגיש לפני הדיווח.
+    </string>
+    <string-array name="weekdays_abbrev">
+        <item>א׳</item>
+        <item>ב׳</item>
+        <item>ג׳</item>
+        <item>ד׳</item>
+        <item>ה׳</item>
+        <item>ו׳</item>
+        <item>שבת</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>דחייה</item>
+        <item>השתקה</item>
+        <item>ניתוק</item>
+    </string-array>
+
+    <string name="show_passed">הצג עברו</string>
+    <string name="show_blocked">הצג חסומים</string>
+
+    <string name="confirm_delete_all_records">האם לאשר מחיקת כל הרשומות?</string>
+    <string name="expiry">תפוגה</string>
+    <string name="days">ימים</string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        כאשר מופעל, תוכן ההודעות יירשם גם במסד הנתונים ויוצג ברשימה זו, הוא לא יירשם במסד הנתונים כאשר מושבת.<br>
+        <br>
+        - כאשר מופעל:<br>
+        &emsp; <b>הקש</b> כדי להרחיב/לכווץ את ההודעה המלאה.<br>
+        <br>
+        - כאשר מושבת:<br>
+        &emsp; <b>הקש</b> כדי לפתוח את השיחה באפליקציית ברירת המחדל.
+        ]]>
+    </string>
+    <string name="copy_number">העתק מספר</string>
+    <string name="add_num_to_regex_rule">הוסף מספר לחוק Regex</string>
+    <string name="add_num_to_db">הוסף מספר למאגר נתוני ספאם</string>
+    <string name="mark_all_as_read">סמן הכל כנקרא</string>
+    <string name="remove_db_number">מחק מספר ממאגר נתוני ספאם</string>
+    <string-array name="importance_list">
+        <item>ללא</item>
+        <item>צל</item>
+        <item>שורת מצב, צל</item>
+        <item>צליל, שורת מצב, צל</item>
+        <item>צליל, שורת מצב, צל, קופץ</item>
+    </string-array>
+    <string-array name="export_type_list">
+        <item>ייצא כ-Json</item>
+        <item>ייצא כדחוס</item>
+    </string-array>
+
+    <string name="language">שפה</string>
+    <string name="help_language">
+        <![CDATA[
+            התרגומים בוצעו על ידי Google AI, פתח בעיה ב-GitHub לבקשת תמיכה בשפה חדשה.
+        ]]>
+    </string>
+    <string name="enabled_for_call">הפעל לשיחות</string>
+    <string name="enabled_for_sms">הפעל להודעות</string>
+    <string name="repeated_call">שיחה חוזרת</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        אפשר אם השיחה חוזרת בתוך פרק זמן מסוים, סביר להניח שהיא חשובה ולא שיחת ספאם. <br>
+        <br>
+        קבלת הודעת טקסט מאותו מספר נחשבת גם היא, זה תלוי אם הרשאת READ_SMS ניתנה, שהיא אופציונלית.<br>
+        <br>
+        הגדרת ברירת המחדל <font color="#03DAC5"><b>1 / 5 דקות</b></font> פירושה שהשיחה השנייה בתוך 5 דקות תאושר. <br>
+        <br>
+        חל רק על שיחות, <b>לא</b> על הודעות טקסט. <br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        המתג הגלובלי, האפליקציה הזו פועלת רק כשהוא מופעל,
+        כבה אותו כשאתה ממתין לשיחה/הודעה ספציפית. <br>
+        <br>
+        ניתן להפעיל/לבטל אותו גם מה<font color="#6ed0ff"><b>הגדרות מהירות בתפריט הנפתח</b></font>.<br>
+        <br>
+        עבור הודעות, אפליקציה זו תיקח אחריות על התראות ה-SMS, אנא
+        <font color="#fa7f71"><b>כבה את הרשאת ההתראות של אפליקציית ה-SMS ברירת המחדל</b></font> בהגדרות המערכת,
+        אחרת יהיו התראות כפולות.
+        היא מסננת רק התראות SMS, הודעות ספאם SMS עדיין יהיו נוכחות באפליקציית ה-SMS ברירת המחדל.
+        ]]>
+    </string>
+
+    <string name="about">אודות</string>
+    <string name="version">גרסה</string>
+    <string name="build_time">זמן בנייה (UTC)</string>
+    <string name="source_code">קוד מקור</string>
+    <string name="dismiss">בטל</string>
+    <string name="warning_running_in_work_profile">
+        אפליקציה זו עלולה לא לעבוד כראוי בפרופיל עבודה, אנא התקן אותה בפרופיל הראשי במקום.
+    </string>
+    <string-array name="import_csv_type">
+        <item>ייבא קובץ .csv כחוק יחיד</item>
+        <item>ייבא קובץ .csv כמספר חוקים</item>
+    </string-array>
+    <string name="warning_double_sms">
+        אפליקציה זו תיקח אחריות על כל התראות ה-SMS,
+        אך אפליקציית ה-SMS המוגדרת כברירת מחדל גם תציג התראות SMS. כדי למנוע התראות כפולות,
+        אנא השבת את הרשאת ההתראות שלה בהגדרות המערכת.\n
+        \n
+        ⚠️ RCS אינו נתמך.
+    </string>
+    <string name="open_settings">פתח הגדרות</string>
+    <string name="ignore">התעלם</string>
+</resources>

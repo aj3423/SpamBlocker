@@ -40,6 +40,7 @@ val languages = listOf(
     Lang("gal", null, R.drawable.ic_flag_galician),
     Lang("in", "🇮🇩"),
     Lang("it", "🇮🇹"),
+    Lang("iw", "🇮🇱"),
     Lang("ja", "🇯🇵"),
     Lang("pt-rBR", "🇧🇷"),
     Lang("ru", "🇷🇺"),

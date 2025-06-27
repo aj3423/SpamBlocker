@@ -1,0 +1,92 @@
+<resources>
+    <string name="contact_rule">כלל איש קשר</string>
+    <string name="directory">תיקייה</string>
+    <string name="filename">שם קובץ</string>
+    <string name="url">URL</string>
+    <string name="expiry_days">ימי תפוגה</string>
+    <string name="column_mapping">מיפוי עמודות</string>
+    <string name="include_spam_db">כלול מסד נתוני ספאם</string>
+    <string name="no_config_needed">אין צורך בהגדרה</string>
+    <string name="success">הצלחה</string>
+    <string name="failed">נכשל</string>
+    <string name="running">פועל</string>
+    <string name="optional">(אופציונלי)</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>בדיקה</b></font><br>
+        פעולות אלה יבוצעו באופן מיידי, כדי לבדוק אם הן הוגדרו נכון,
+        או שאולי תרצה להפעיל זרימת עבודה זו באופן ידני.<br>
+        <br>
+        - <font color="#00BFFF"><b>חדש</b></font><br>
+            צור פעולה חדשה, ניתן לשרשר פעולות מרובות יחד כדי להשלים משימה מורכבת.<br>
+            הנקודות הירוקות או האדומות בין הפריטים מציינות אם ניתן לשרשר אותן או לא.
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            הורד מספרי טלפון של ספאם מ-
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate> </a> בכל יום עבודה,
+             וייבא אותם למסד נתוני הספאם.
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">מחק רשומות שפג תוקפן ממסד נתוני הספאם.</string>
+    <string name="help_bot_preset_cleanup_history">מחק רשומות היסטוריית שיחות/הודעות SMS שפג תוקפן.</string>
+    <string name="help_bot_preset_auto_backup">גבה את כל ההגדרות.</string>
+    <string name="everyday">כל יום</string>
+    <string name="daily">יומי</string>
+    <string name="weekly">שבועי</string>
+    <string name="periodically">מעת לעת</string>
+    <string name="time">שעה</string>
+    <string name="workdays">ימי עבודה</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        פורמט קובץ הגיבוי הוא JSON דחוס ב-gzip, ניתן לפתוח ולערוך אותו באמצעות כל כלי ארכיון.<br>
+        <br>
+        - <font color="#00BFFF"><b>כלול מסד נתוני ספאם</b></font><br>
+        לחץ לחיצה ארוכה על הכפתור כדי לייצא/לייבא גם את מסד נתוני הספאם.<br>
+        <br>
+        <font color="#ffa500">הערה:</font><br>
+        &ensp; הכללת מסד נתוני הספאם בקובץ הגיבוי תגדיל משמעותית את גודלו,
+        מכיוון שהמסד יתעדכן באופן קבוע, זה בדרך כלל מיותר, אלא אם כן ברצונך לשכפל אותו לטלפון אחר.<br>
+        ]]>
+    </string>
+    <string name="mode">מצב</string>
+    <string-array name="regex_action_add_mode">
+        <item>צור</item>
+        <item>החלף</item>
+        <item>מזג</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        -<font color="#00BFFF"><b>צור</b></font><br>
+        &ensp; צור תמיד כלל ביטוי רגולרי חדש.<br>
+        <br>
+        - <font color="#00BFFF"><b>החלף</b></font><br>
+        &ensp; הוא ינסה למצוא כלל קיים בעל אותו <b>תיאור</b>. <br>
+        &ensp;&ensp; - אם נמצא, הוא יוחלף.<br>
+        &ensp;&ensp; - אם לא נמצא, כלל חדש ייווצר, בדומה ל<b>צור</b>.<br>
+        <br>
+        - <font color="#00BFFF"><b>מזג</b></font><br>
+        &ensp;- אם קיים כלל עם אותו תיאור, המספרים החדשים ימוזגו לתוכו,<br>
+         מספרים כפולים יוסרו אוטומטית.<br>
+        &ensp;- אם לא קיים, כלל חדש ייווצר, בדומה ל<b>צור</b>.<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">הפעל זרימת עבודה</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        הפעל או השבת זרימת עבודה זו. מקרה שימוש יכול להיות הפיכת זרימת עבודה תקופתית לחד פעמית.
+        ]]>
+    </string>
+    <string name="action_enable_app">הפעל יישום</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        הפעל או השבת את היישום. מקרה שימוש יכול להיות השבתה זמנית שלו והפעלה אוטומטית מחדש לאחר מספר שעות.
+        ]]>
+    </string>
+
+</resources>

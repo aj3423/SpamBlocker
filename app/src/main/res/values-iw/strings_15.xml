@@ -1,0 +1,112 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        בדוק את תוכן ה-SMS באמצעות Google Gemini AI, זה דורש רק חשבון גוגל.
+        ]]>
+    </string>
+    <string name="gemini_api_key">מפתח API של Gemini</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. הירשם והיכנס לחשבון Google שלך: <br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. פתח את דף ה-API:<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. לחץ על כפתור "צור מפתח API".<br>
+        <br>
+        4. העתק את המפתח, ולאחר מכן מלא אותו למטה.
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        קטלג הודעת SMS זו כפוליטית, הונאה, סקר, או שיווק.
+        אם אף אחד לא מתאים, ענה "תקין", אחרת, ענה על הקטגוריה בלבד, אל תענה על שום דבר אחר.
+        הודעת ה-SMS היא:
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category">(פוליטי|הונאה|סקר|שיווק)</string>
+    <string name="spam_sms_positive_category">תקין</string>
+    <string name="last_log">יומן אחרון</string>
+    <string name="executed_at">בוצע ב:</string>
+    <string name="not_executed_yet">טרם בוצע</string>
+    <string name="show_indicator">הצג דגלים</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        הצג אייקונים לפני המספר כדי לציין אם הוא קיים במסד הנתונים של הספאם, או אם הוא תואם לאיזושהי כלל ביטוי רגולרי.<br>
+        <br>
+        <font color="#ffa500">הערה:</font><br>
+        זה יכול להשפיע על הביצועים כאשר מסד הנתונים גדול מדי או שיש יותר מדי כללי ביטוי רגולרי.
+        ]]>
+    </string>
+    <string name="enable_for_mms">הפעל עבור MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        הודעות MMS הן בדרך כלל ספאם, אין צורך להפעיל אותן אלא אם כן אתה באמת משתמש בהן.<br>
+        <br>
+        <font color="#ffa500">הערה:</font><br>
+        הודעות קבוצתיות הן MMS, לא SMS.<br>
+        <br>
+        MMS יטופל כ-SMS, רק תוכן טקסט יעובד,
+        תוכן מולטימדיה, כגון תמונה ושמע, יתעלם.<br>
+        <br>
+        נדרשות שתי הרשאות: RECEIVE_MMS ו-READ_SMS
+        ]]>
+    </string>
+    <string name="unknown_error">שגיאה לא ידועה.</string>
+    <string name="checking_auth_credential">בדיקת אישורי הרשאה.</string>
+    <string name="sms_bomb">פצצת SMS</string>
+    <string name="help_sms_bomb">
+        <![CDATA[
+        נגד הפצצת SMS.<br>
+        <br>
+        מנע הצפות המוניות ורציפות של הודעות SMS, אשר מורכבות לרוב בעיקר
+          מאימותי OTP (סיסמה חד-פעמית).<br>
+        <br>
+        לדוגמה, הודעות SMS כגון:<br>
+        &ensp; <font color="#888888">ה-OTP שלך הוא: 1234.</font><br>
+        &ensp; <font color="#888888">זהו קוד האימות שלך: 1234.</font><br>
+        &ensp; <font color="#888888">1234 הוא קוד האימות שלך.</font><br>
+        <br>
+        <h5><font color="#00BFFF">- ביטוי רגולרי לתוכן</font></h5>
+        תכונה זו חלה רק על הודעות התואמות לביטוי רגולרי זה, ביטוי רגולרי אופייני יהיה: <br>
+        <font color="#fa7f71">.*(otp|code).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- מרווח</font></h5>
+        אם הודעת OTP עוקבת מגיעה בתוך מרווח זמן זה, היא נחשבת
+          לחלק מהתקפת ההפצצה ותיחסם.<br>
+        (ברירת מחדל: 30 שניות)<br>
+        <br>
+        פעולה זו תחסום את כל ההפצצות הבאות, למעט הראשונה.<br>
+        <br>
+        <h5><font color="#00BFFF">- הגנת מסך נעילה</font></h5>
+        הפעל זאת כדי לחסום את כל ההפצצות במצב מסך נעילה, כולל הראשונה. <br>
+        <br>
+        בדרך כלל, המסך שלך אמור להיות לא נעול בזמן המתנה לקוד אימות.
+        כאשר הודעות כאלה מגיעות בזמן שהמכשיר נמצא במצב מסך נעילה, סביר להניח שהן הפצצות.<br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protection">הגנת מסך נעילה</string>
+    <string name="help_history_logging">
+        <![CDATA[
+            כאשר מושבת, רשומות היסטוריה לא יתועדו במסד הנתונים המקומי ולא יוצגו כאן.<br>
+            <br>
+            <font color="#00BFFF"><b>תפוגה</b></font><br>
+            &emsp; כאשר מופעל, רשומות היסטוריה יפוגו לאחר N ימים, רשומות שפגו ימחקו אוטומטית.
+        ]]>
+    </string>
+    <string name="never_expire">לעולם לא יפוג</string>
+    <string name="enable_history_logging">יומן</string>
+    <string name="rcs_message">הודעת RCS</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            RCS אינו נתמך.<br>
+            <br>
+            למרות היותו פרוטוקול סטנדרטי, RCS מיושם באופן שונה על ידי כל אפליקציית הודעות.<br>
+            <br>
+            פתרון עוקף הוא לעבור ל-SMS.
+        ]]>
+    </string>
+</resources>

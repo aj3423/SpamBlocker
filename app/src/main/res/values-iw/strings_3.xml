@@ -1,0 +1,66 @@
+<resources>
+    <string name="help_sms_content_filter">
+        <![CDATA[
+        כללים אלה חלים על תוכן ה-SMS.<br>
+        <br>
+        <font color="#00BFFF"><b> - דפוסים אופייניים</b></font>:<br>
+        &ensp; - מכיל "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - מכיל אחת מהמילים: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
+        ]]>
+    </string>
+    <string name="help_quick_copy">
+        <![CDATA[
+        דרך מהירה להעתיק תוכן מהודעות SMS או ממספרי טלפון, מה שמקל על לכידת קודי אימות או מספרים נכנסים.<br>
+        <br>
+        כאשר יש התאמה, כפתור כמו <font color="#00BFFF"><b>העתק: 123456</b></font> יופיע בהתראה.<br>
+        <br>
+        כלל לדוגמה לחילוץ קודי אימות:<br>
+        &emsp; שימוש בקבוצת לכידה:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>code.*?(\\d+) </b></font><br>
+        &emsp; גישה נוספת באמצעות lookaround:<br>
+        &emsp;&emsp; <font color="#03DAC5"><b>(?&lt;=code.{0,3})\\d+</b></font>
+        ]]>
+    </string>
+    <string name="help_apply_to_call_sms">
+        <![CDATA[
+        הפעל כלל זה עבור שיחות, SMS, או שניהם.<br>
+        בטל סימון תיבות אלה כדי להשבית את הכלל מבלי למחוק אותו.
+        ]]>
+    </string>
+    <string name="help_apply_to_number_and_message">
+        <![CDATA[
+        כאשר <font color="#00BFFF"><b>מספר</b></font> מסומן, כלל זה יחלץ תוכן מהמספר הנכנס.
+        לדוגמה, השתמש ב-<b>(.*)</b> כדי להעתיק את מספר הטלפון.<br>
+        <br>
+        כאשר <font color="#00BFFF"><b>תוכן</b></font> מסומן, כלל זה יחלץ תוכן מגוף הודעת ה-SMS,
+        כגון קודי אימות.
+        ]]>
+    </string>
+    <string name="help_apply_to_passed_and_blocked">
+        <![CDATA[
+        כאשר <font color="#03DAC5"><b>עברו</b></font> מסומן, כלל זה יחול על שיחות והודעות שעברו.<br>
+        <br>
+        כאשר <font color="#fa7f71"><b>נחסמו</b></font> מסומן, כלל זה יחול על שיחות והודעות שנחסמו.
+        ]]>
+    </string>
+    <string name="help_importance">
+        <![CDATA[
+        <b>ללא</b>:<br>&emsp; אין התראה כלל. <br>
+        <b>וילון</b>:<br>&emsp; וילון ההתראות הנפתח. <br>
+        <b>שורת מצב</b>:<br>&emsp; הסמל הקטן שבסרגל העליון. <br>
+        <b>צליל</b>:<br>&emsp; צליל ההתראה המוגדר כברירת מחדל. <br>
+        <b>קופצת</b>:<br>&emsp; חלון צף קופץ בחלק העליון של המסך.
+        ]]>
+    </string>
+    <string name="title_rule_testing">בדיקת כללים</string>
+    <string name="help_test_rules">
+        <![CDATA[
+        זה עוזר לבדוק אם הכללים מוגדרים כצפוי.<br>
+        <br>
+        זוהי רק הדמיה ולא תופיע באמת שיחה נכנסת (או הודעת טקסט).<br>
+        <br>
+        התוצאה מוצגת כאן, ובלוג ההיסטוריה, עם התראה.
+        ]]>
+    </string>
+
+</resources>
