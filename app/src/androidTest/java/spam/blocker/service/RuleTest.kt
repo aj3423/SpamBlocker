@@ -85,7 +85,7 @@ class RuleTest {
         )
 
         mockkObject(Permission)
-        every { Permission.isContactsPermissionGranted(ctx) } returns true
+        every { Permission.contacts.isGranted } returns true
 
         mockkObject(Contacts)
         every { Contacts.findContactByRawNumber(ctx, any()) } answers {
@@ -98,11 +98,11 @@ class RuleTest {
     }
 
     private fun mock_call_permission_granted() {
-        every { Permission.callLog(any()) } returns true
+        every { Permission.callLog.isGranted } returns true
     }
 
     private fun mock_sms_permission_granted() {
-        every { Permission.readSMS(any()) } returns true
+        every { Permission.readSMS.isGranted } returns true
     }
 
     private fun mock_calls(
@@ -112,7 +112,7 @@ class RuleTest {
         atTimeMillis: Long
     ) {
         val number = PhoneNumber(ctx, rawNumber)
-        every { Permission.getHistoryCallsByNumber(any(), number, direction, any()) } answers {
+        every { Util.getHistoryCallsByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -130,7 +130,7 @@ class RuleTest {
         atTimeMillis: Long
     ) {
         val number = PhoneNumber(ctx, rawNumber)
-        every { Permission.countHistorySMSByNumber(any(), number, direction, any()) } answers {
+        every { Util.countHistorySMSByNumber(any(), number, direction, any()) } answers {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
@@ -197,6 +197,7 @@ class RuleTest {
         }
 
         mockkObject(Permission)
+        mockkObject(Util)
         mock_call_permission_granted()
         mock_sms_permission_granted()
 
@@ -243,6 +244,7 @@ class RuleTest {
         spf.setDays(inXdays)
 
         mockkObject(Permission)
+        mockkObject(Util)
         mock_call_permission_granted()
         mock_sms_permission_granted()
 
@@ -285,7 +287,7 @@ class RuleTest {
 
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
         mockkObject(Permission)
-        every { Permission.listUsedAppWithinXSecond(ctx, any()) } answers {
+        every { Util.listUsedAppWithinXSecond(ctx, any()) } answers {
             if (Now.currentMillis() < expire)
                 pkgs
             else
