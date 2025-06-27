@@ -37,7 +37,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <!-- for sms, disable battery optimization -->
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+<!--    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>-->
 
     <!-- for workflow action: Calendar Event -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
