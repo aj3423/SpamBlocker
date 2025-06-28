@@ -1212,7 +1212,7 @@ class Checker { // for namespace only
         }
         override fun check(cCtx: CheckContext): ICheckResult? {
             val bots = BotTable.listAll(ctx).filter {
-                it.actions.first() is CalendarEvent
+                it.actions.firstOrNull() is CalendarEvent
             }
             if (bots.isEmpty()) // No calendar workflow enabled
                 return null
