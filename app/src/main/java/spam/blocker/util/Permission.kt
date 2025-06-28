@@ -66,7 +66,10 @@ object PermissionType {
     ) : Basic() {
         override fun name(ctx: Context): String { return name }
         override fun check(ctx: Context): Boolean {
-            return ContextCompat.checkSelfPermission(ctx, name) == PERMISSION_GRANTED
+            logi("checking permission: $name")
+            val ret = ContextCompat.checkSelfPermission(ctx, name) == PERMISSION_GRANTED
+            logi("permission $name granted: $ret")
+            return ret
         }
         override fun ask(ctx: Context) { launcherRegular.launch(name) }
         override fun onResult(ctx: Context, granted: Boolean) { isGranted = granted }
@@ -82,11 +85,15 @@ object PermissionType {
     class Calendar: Regular(Manifest.permission.READ_CALENDAR)
     open class FileAccess(name: String): Regular(name) {
         override fun check(ctx: Context): Boolean {
-            return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
+            logi("checking permission: file")
+
+            val ret = if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
                 super.check(ctx)
             } else {
                 Environment.isExternalStorageManager()
             }
+            logi("permission file granted: $ret")
+            return ret
         }
         override fun ask(ctx: Context) {
             if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
@@ -138,12 +145,15 @@ object PermissionType {
             return intent
         }
         override fun check(ctx: Context): Boolean {
+            logi("checking permission: $name")
             val appOps = ctx.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
             val mode = appOps.unsafeCheckOpNoThrow(
                 name,
                 Process.myUid(),
                 ctx.packageName
             )
+            logi("permission $name granted: ${mode == AppOpsManager.MODE_ALLOWED}")
+
             return (mode == AppOpsManager.MODE_ALLOWED)
         }
     }
@@ -158,10 +168,14 @@ object PermissionType {
         }
 
         override fun check(ctx: Context): Boolean {
-            return Secure.getString(
+            logi("checking permission: notification_access")
+
+            val ret = Secure.getString(
                 ctx.applicationContext.contentResolver,
                 "enabled_notification_listeners"
             ).contains(ctx.applicationContext.packageName)
+            logi("permission notification_access granted: $ret")
+            return ret
         }
     }
 //    class ExactAlarm: LaunchByIntent() {
@@ -210,9 +224,12 @@ object PermissionType {
         }
 
         override fun check(ctx: Context): Boolean {
+            logi("checking permission: battery_unrestricted")
+
             // This only checks if it's "Unrestricted", not including "Optimized"
             val powerManager = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
             val unRestricted = powerManager.isIgnoringBatteryOptimizations(ctx.packageName)
+            logi("permission battery_unrestricted granted: $unRestricted")
             return unRestricted
 
             // This works for both "Unrestricted" and "Optimized",
@@ -230,8 +247,11 @@ object PermissionType {
             return intent
         }
         override fun check(ctx: Context): Boolean {
+            logi("check permission: call_screening")
             val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager
-            return roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
+            val ret = roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING)
+            logi("permission call_screening granted: $ret")
+            return ret
         }
 
         override fun onResult(ctx: Context, granted: Boolean) {
