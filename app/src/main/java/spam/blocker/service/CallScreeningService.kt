@@ -109,14 +109,16 @@ class CallScreeningService : CallScreeningService() {
         // 1. With this coroutine, this function returns immediately without blocking the whole process.
         //   So other services will get executed simultaneously.
         //   Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
-        // 2. On some phones, calls will be bypassed because of this coroutine, so disable it by default.
-        if (Permission.notificationAccess.isGranted && PushAlertTable.listAll(this).isNotEmpty()) {
+
+        // 2. On some phones, calls will be bypassed because of this coroutine,
+        //   not sure if it's caused by this, so disable it by default.
+//        if (Permission.notificationAccess.isGranted && PushAlertTable.listAll(this).isNotEmpty()) {
             CoroutineScope(IO).launch {
                 doScreenCall(details)
             }
-        } else {
-            doScreenCall(details)
-        }
+//        } else {
+//            doScreenCall(details)
+//        }
     }
     private fun doScreenCall(details: Details) {
         // Outgoing

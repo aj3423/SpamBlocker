@@ -43,16 +43,10 @@ import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
-import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DodgeBlue
-import spam.blocker.ui.theme.Grey424242
-import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Pink80
-import spam.blocker.ui.theme.SilverGrey
-import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.ui.theme.Teal700
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
