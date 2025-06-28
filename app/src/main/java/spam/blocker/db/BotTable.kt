@@ -39,7 +39,7 @@ data class Bot(
         return if (isScheduled) {
             schedule.summary(ctx)
         } else {
-            val isCalendarEvent = actions.first() is CalendarEvent
+            val isCalendarEvent = actions.firstOrNull() is CalendarEvent
 
             ctx.getString(
                 if (isCalendarEvent)
@@ -54,7 +54,7 @@ data class Bot(
 
         if (isScheduled)
             return true
-        val isCalendarEvent = actions.first() is CalendarEvent
+        val isCalendarEvent = actions.firstOrNull() is CalendarEvent
         return isCalendarEvent && Permission.calendar.isGranted
     }
 }
