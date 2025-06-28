@@ -27,7 +27,7 @@
         &ensp; - <b>Modify Rules</b><br>
          &emsp;&emsp; config: <font color="#888888">{ \"flags\": 0 }</font> (this will disable the rule)<br>
         <br>
-         &emsp;&emsp; (It supports multiple <b>Find Rules</b> and <b>Modify Rules</b> here)<br>
+        &ensp; (It supports multiple <b>Find Rules</b> and <b>Modify Rules</b> here)<br>
         ]]>
     </string>
 </resources>

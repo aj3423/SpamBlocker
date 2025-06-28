@@ -27,7 +27,7 @@
         &ensp; - <b>修改规则</b><br>
          &emsp;&emsp; 配置：<font color="#888888">{ "flags": 0 }</font> (这将禁用该规则)<br>
         <br>
-         &emsp;&emsp; (此处支持多个<b>查找规则</b>和<b>修改规则</b>)<br>
+        &ensp; (此处支持多个<b>查找规则</b>和<b>修改规则</b>)<br>
         ]]>
     </string>
 </resources>

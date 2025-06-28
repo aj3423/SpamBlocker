@@ -27,7 +27,7 @@
         &ensp; - <b>Modificar Reglas</b><br>
          &emsp;&emsp; configuración: <font color="#888888">{ "flags": 0 }</font> (esto deshabilitará la regla)<br>
         <br>
-         &emsp;&emsp; (Aquí admite múltiples <b>Buscar Reglas</b> y <b>Modificar Reglas</b>)<br>
+        &ensp; (Aquí admite múltiples <b>Buscar Reglas</b> y <b>Modificar Reglas</b>)<br>
         ]]>
     </string>
 </resources>

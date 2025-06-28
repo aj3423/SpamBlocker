@@ -27,7 +27,7 @@
         &ensp; - <b>Ubah Aturan</b><br>
          &emsp;&emsp; konfigurasi: <font color="#888888">{ "flags": 0 }</font> (ini akan menonaktifkan aturan)<br>
         <br>
-         &emsp;&emsp; (Mendukung beberapa <b>Temukan Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
+        &ensp; (Mendukung beberapa <b>Temukan Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
         ]]>
     </string>
 </resources>

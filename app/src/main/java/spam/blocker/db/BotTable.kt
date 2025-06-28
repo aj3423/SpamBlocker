@@ -3,6 +3,11 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
@@ -17,6 +22,12 @@ import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
+import spam.blocker.ui.M
+import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon18
+import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.util.Permission
 import java.util.UUID
 
@@ -34,19 +45,38 @@ data class Bot(
 
     // This is shown as the Bot summary on main UI
     // 3 types: Scheduled / Manual / CalendarEvent
-    fun triggerType(ctx: Context): String {
-        val isScheduled = enabled && schedule != null
-        return if (isScheduled) {
-            schedule.summary(ctx)
-        } else {
-            val isCalendarEvent = actions.firstOrNull() is CalendarEvent
+    @Composable
+    fun TriggerType(modifier: Modifier) {
+        val ctx = LocalContext.current
 
-            ctx.getString(
-                if (isCalendarEvent)
-                    R.string.calendar_event
-                else
-                    R.string.manual
+        // Scheduled
+        val isScheduled = enabled && schedule != null
+        if (isScheduled) {
+            GreyLabel(
+                text = schedule.summary(ctx),
+                modifier = modifier
             )
+        } else {
+            val firstAction = actions.firstOrNull()
+            val isCalendarEvent = firstAction is CalendarEvent
+
+            // Calendar Event
+            if (isCalendarEvent) {
+                RowVCenterSpaced(2, modifier = modifier) {
+                    GreyIcon18(R.drawable.ic_call)
+                    GreyIcon18(R.drawable.ic_calendar)
+                    GreyLabel(
+                        text = firstAction.eventTitle,
+                        modifier = M.padding(start = 4.dp)
+                    )
+                }
+            } else {
+                // Manual
+                GreyLabel(
+                    text = ctx.getString(R.string.manual),
+                    modifier = modifier
+                )
+            }
         }
     }
     fun isActivated(ctx: Context): Boolean {

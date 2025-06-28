@@ -58,10 +58,8 @@ fun BotCard(
                     }
 
                     // Trigger type:  Scheduled / Manual / CalendarEvent
-                    GreyLabel(
-                        text = bot.triggerType(ctx),
-                        modifier = M.padding(start = 10.dp)
-                    )
+                    bot.TriggerType(M.padding(start = 10.dp))
+
                 }
             }
 

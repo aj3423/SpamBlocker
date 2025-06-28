@@ -27,7 +27,7 @@
         &ensp; - <b>Kuralları Değiştir</b><br>
          &emsp;&emsp; yapılandırma: <font color="#888888">{ "flags": 0 }</font> (bu kuralı devre dışı bırakacaktır)<br>
         <br>
-         &emsp;&emsp; (Burada birden fazla <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> destekler)<br>
+        &ensp; (Burada birden fazla <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> destekler)<br>
         ]]>
     </string>
 </resources>

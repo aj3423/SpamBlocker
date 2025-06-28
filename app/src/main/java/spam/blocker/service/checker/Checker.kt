@@ -33,6 +33,7 @@ import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.executeAll
+import spam.blocker.service.checker.Checker.CalendarEventForwardCheck
 import spam.blocker.ui.theme.DimGrey
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
@@ -89,6 +90,40 @@ fun RegexRule.toNumberChecker(
         Checker.Number(ctx, this)
 }
 
+// These classes are also `IChecker`, will be added to the checkers list. But they have
+//  higher priorities and will get executed before other checkers. In this way, they can
+//  temporary modify other checkers, e.g.: disable a regex rule.
+object ForwardCheckers {
+
+    // Return a list of workflows that match currently ongoing calendar events.
+    fun allCalendarEvent(ctx: Context): List<CalendarEventForwardCheck> {
+        val bots = BotTable.listAll(ctx).filter {
+            it.actions.firstOrNull() is CalendarEvent
+        }
+        if (bots.isEmpty()) // No calendar workflow enabled
+            return listOf()
+
+        val ongoingEvents = Util.ongoingCalendarEvents(ctx)
+        if (ongoingEvents.isEmpty()) // No calendar event currently occurring
+            return listOf()
+
+        var ret = mutableListOf<CalendarEventForwardCheck>()
+
+        ongoingEvents.forEach { eventTitle ->
+            ret += bots
+                // only keep bots that match this eventTitle
+                .filter {
+                    val ce = it.actions[0] as CalendarEvent
+                    ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
+                }
+                .map {
+                    CalendarEventForwardCheck(ctx, it, eventTitle)
+                }
+        }
+        return ret
+    }
+
+}
 class Checker { // for namespace only
 
     // This checks if the incoming call is from an emergency number.
@@ -1154,16 +1189,18 @@ class Checker { // for namespace only
     }
 
     // This will be executed before other checkers, it modifies other rules before they are executed.
-    // For example, if an calendar event "work"(7am-7pm) is occurring and the current time is 8am(working),
-    //   it will
+    // For example, if there's a calendar event "work"(7am-7pm) and currently it's 8am, the event is
+    //  ongoing, so it will run actions like `Modify Rules`.
     class CalendarEventForwardCheck(
         private val ctx: Context,
+        private val bot: Bot,
+        private val eventTitle: String,
     ) : IChecker {
         override fun priority(): Int {
             return Int.MAX_VALUE
         }
 
-        fun executeBotActions(cCtx: CheckContext, eventTitle: String, bot: Bot) {
+        override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
             val actions = bot.actions
@@ -1208,29 +1245,6 @@ class Checker { // for namespace only
                     i++
                 }
                 i++
-            }
-        }
-        override fun check(cCtx: CheckContext): ICheckResult? {
-            val bots = BotTable.listAll(ctx).filter {
-                it.actions.firstOrNull() is CalendarEvent
-            }
-            if (bots.isEmpty()) // No calendar workflow enabled
-                return null
-
-            val ongoingEvents = Util.ongoingCalendarEvents(ctx)
-            if (ongoingEvents.isEmpty()) // No calendar event currently occurring
-                return null
-
-            ongoingEvents.forEach { eventTitle ->
-                bots
-                    // only keep those that match this eventTitle
-                    .filter {
-                        val ce = it.actions[0] as CalendarEvent
-                        ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
-                    }
-                    .forEach {
-                        executeBotActions(cCtx, eventTitle, it)
-                    }
             }
 
             // this is not a checker, it's just a pre-processor, always return null
@@ -1284,7 +1298,6 @@ class Checker { // for namespace only
             val checkers = arrayListOf(
                 EmergencyCall(ctx),
                 EmergencySituation(ctx),
-                CalendarEventForwardCheck(ctx),
                 STIR(ctx),
                 SpamDB(ctx),
                 Contact(ctx),
@@ -1298,11 +1311,14 @@ class Checker { // for namespace only
                 SmsAlert(ctx)
             )
 
-            //  add number rules to checkers
+            // Add number rules to checkers
             val rules = NumberRuleTable().listAll(ctx)
             checkers += rules.map {
                 it.toNumberChecker(ctx)
             }
+
+            // Add all forward checkers
+            checkers += ForwardCheckers.allCalendarEvent(ctx)
 
             return checkCallWithCheckers(
                 ctx, logger, rawNumber, callDetails, checkers)
@@ -1350,7 +1366,6 @@ class Checker { // for namespace only
             messageBody: String
         ): ICheckResult {
             val checkers = arrayListOf<IChecker>(
-                CalendarEventForwardCheck(ctx),
                 Contact(ctx),
                 SpamDB(ctx),
                 MeetingMode(ctx),
@@ -1370,6 +1385,9 @@ class Checker { // for namespace only
             checkers += contentFilters.map {
                 Content(ctx, it)
             }
+
+            // Add all forward checkers
+            checkers += ForwardCheckers.allCalendarEvent(ctx)
 
             return checkSmsWithCheckers(
                 ctx, logger, rawNumber, messageBody, checkers
