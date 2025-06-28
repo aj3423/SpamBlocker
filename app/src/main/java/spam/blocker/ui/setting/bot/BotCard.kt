@@ -59,7 +59,6 @@ fun BotCard(
 
                     // Trigger type:  Scheduled / Manual / CalendarEvent
                     bot.TriggerType(M.padding(start = 10.dp))
-
                 }
             }
 

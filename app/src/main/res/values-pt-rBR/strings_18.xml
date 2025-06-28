@@ -30,4 +30,18 @@
         &ensp; (Suporta múltiplas <b>Encontrar Regras</b> e <b>Modificar Regras</b> aqui)<br>
         ]]>
     </string>
+    <string name="sms_event">Evento SMS</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Isso será acionado automaticamente em mensagens SMS recebidas antes que sejam rastreadas.<br>
+        <br>
+        Esta ação deve ser a primeira no fluxo de trabalho.<br>
+        <br>
+        Isso pode ser encadeado com outras ações como <b>Encontrar Regras</b> e <b>Modificar Regras</b>.<br>
+        - Se o número do SMS e o conteúdo corresponderem, o fluxo de trabalho continuará a ser executado.<br>
+        - Caso contrário, o fluxo de trabalho será encerrado.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">Evento SMS %s foi acionado.</string>
+    <string name="use_global_testing_instead">Use o teste global em vez disso.</string>
 </resources>

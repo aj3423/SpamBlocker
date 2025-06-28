@@ -30,4 +30,18 @@
         &ensp; (Es werden hier mehrere <b>Regeln finden</b> und <b>Regeln ändern</b> unterstützt)<br>
         ]]>
     </string>
+    <string name="sms_event">SMS-Ereignis</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Dies wird bei eingehenden SMS-Nachrichten automatisch ausgelöst, bevor diese gefiltert werden.<br>
+        <br>
+        Diese Aktion muss die erste im Workflow sein.<br>
+        <br>
+        Dies kann mit anderen Aktionen wie <b>Regeln finden</b> und <b>Regeln ändern</b> verkettet werden.<br>
+        - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Workflow weiter ausgeführt.<br>
+        - Andernfalls wird der Workflow beendet.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">SMS-Ereignis %s wurde ausgelöst.</string>
+    <string name="use_global_testing_instead">Verwenden Sie stattdessen den globalen Test.</string>
 </resources>

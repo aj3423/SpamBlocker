@@ -24,6 +24,8 @@ import spam.blocker.util.PermissionWrapper
 
 val botActions = listOf(
     HttpDownload(),
+    CalendarEvent(),
+    SmsEvent(),
     ImportToSpamDB(),
     CleanupSpamDB(),
     ImportAsRegexRule(),
@@ -40,7 +42,6 @@ val botActions = listOf(
     BackupImport(),
     EnableWorkflow(),
     EnableApp(),
-    CalendarEvent(),
 )
 
 val apiActions = listOf(
@@ -108,7 +109,7 @@ interface IAction {
     fun execute(ctx: Context, aCtx: ActionContext): Boolean
 
     // It returns a list of missing permissions.
-    fun missingPermissions(ctx: Context): List<PermissionWrapper>
+    fun requiredPermissions(ctx: Context): List<PermissionWrapper>
 
     // The display name of this action
     fun label(ctx: Context): String
@@ -135,7 +136,7 @@ interface IAction {
 
 // Actions that don't require any permission
 interface IPermissiveAction : IAction {
-    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf()
     }
 }
@@ -150,7 +151,7 @@ interface IPermissiveAction : IAction {
 
 // Actions that require file read/write permissions
 interface IFileAction : IAction {
-    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         val ret = mutableListOf<PermissionWrapper>()
 
         if (!Permission.fileRead.isGranted)

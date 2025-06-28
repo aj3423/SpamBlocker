@@ -30,4 +30,18 @@
         &ensp; (Cela supporte plusieurs <b>Trouver des Règles</b> et <b>Modifier des Règles</b> ici)<br>
         ]]>
     </string>
+    <string name="sms_event">Événement SMS</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Cela sera automatiquement déclenché lors des messages SMS entrants avant qu\'ils ne soient filtrés.<br>
+        <br>
+        Cette action doit être la première dans le flux de travail.<br>
+        <br>
+        Ceci peut être enchaîné avec d\'autres actions comme <b>Trouver des règles</b> et <b>Modifier des règles</b>.<br>
+        - Si le numéro SMS et le contenu correspondent, le flux de travail continuera à s\'exécuter.<br>
+        - Sinon, le flux de travail se terminera.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">L\'événement SMS %s est déclenché.</string>
+    <string name="use_global_testing_instead">Utilisez plutôt le test global.</string>
 </resources>

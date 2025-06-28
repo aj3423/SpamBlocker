@@ -30,4 +30,18 @@
         &ensp; (Burada birden fazla <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> destekler)<br>
         ]]>
     </string>
+    <string name="sms_event">SMS Etkinliği</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Bu, gelen SMS mesajları taranmadan önce otomatik olarak tetiklenecektir.<br>
+        <br>
+        Bu eylem iş akışındaki ilk eylem olmalıdır.<br>
+        <br>
+        Bu, <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> gibi diğer eylemlerle zincirlenebilir.<br>
+        - SMS numarası ve içeriği eşleşirse, iş akışı yürütülmeye devam edecektir.<br>
+        - Aksi takdirde, iş akışı sonlanacaktır.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">SMS etkinliği %s tetiklendi.</string>
+    <string name="use_global_testing_instead">Bunun yerine genel testi kullanın.</string>
 </resources>

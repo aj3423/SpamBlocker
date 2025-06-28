@@ -29,4 +29,18 @@
         &ensp; (ここでは複数の<b>ルールを検索</b>および<b>ルールを変更</b>をサポートしています)<br>
         ]]>
     </string>
+    <string name="sms_event">SMSイベント</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        これは着信SMSメッセージがスクリーニングされる前に自動的にトリガーされます。<br>
+        <br>
+        このアクションはワークフローの最初のステップでなければなりません。<br>
+        <br>
+        これは、<b>ルールを検索</b>や<b>ルールを変更</b>などの他のアクションと連携させることができます。<br>
+        - SMSの電話番号と内容が一致する場合、ワークフローは実行を継続します。<br>
+        - それ以外の場合、ワークフローは終了します。<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">SMSイベント %s がトリガーされました。</string>
+    <string name="use_global_testing_instead">代わりにグローバルテストを使用してください。</string>
 </resources>

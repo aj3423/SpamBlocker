@@ -30,4 +30,18 @@
         &ensp; (זה תומך במספר <b>מצא כללים</b> ו-<b>שנה כללים</b> כאן)<br>
         ]]>
     </string>
+    <string name="sms_event">אירוע SMS</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        זה יופעל אוטומטית בהודעות SMS נכנסות לפני שהן נבדקות.<br>
+        <br>
+        פעולה זו חייבת להיות הראשונה בתהליך העבודה.<br>
+        <br>
+        ניתן לשרשר זאת עם פעולות אחרות כמו <b>מצא כללים</b> ו-<b>שנה כללים</b>.<br>
+        - אם מספר ה-SMS והתוכן תואמים, תהליך העבודה ימשיך לפעול.<br>
+        - אחרת, תהליך העבודה יסתיים.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">אירוע SMS %s הופעל.</string>
+    <string name="use_global_testing_instead">השתמש בבדיקה הגלובלית במקום.</string>
 </resources>

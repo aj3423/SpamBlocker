@@ -43,9 +43,16 @@ import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
+import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DodgeBlue
+import spam.blocker.ui.theme.Grey424242
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Pink80
+import spam.blocker.ui.theme.SilverGrey
+import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.theme.Teal700
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyIcon
@@ -1657,16 +1664,13 @@ class InterceptCall(
     var numberFilter: String = ".*",
 ) : IAction {
 
-    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
-        return if (Permission.phoneState.isGranted)
-            listOf()
-        else
-            listOf(
-                PermissionWrapper(
-                    Permission.phoneState,
-                    prompt = ctx.getString(R.string.auto_detect_cc_permission)
-                ),
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(
+            PermissionWrapper(
+                Permission.phoneState,
+                prompt = ctx.getString(R.string.auto_detect_cc_permission)
             )
+        )
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -2188,16 +2192,13 @@ class ReportNumber(
     val asTagCategory: String,
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IAction {
-    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
-        return if (Permission.callLog.isGranted)
-            listOf()
-        else
-            listOf(
-                PermissionWrapper(
-                    Permission.callLog,
-                    prompt = ctx.getString(R.string.report_number_require_call_log_permission)
-                ),
-            )
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(
+            PermissionWrapper(
+                Permission.callLog,
+                prompt = ctx.getString(R.string.report_number_require_call_log_permission)
+            ),
+        )
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -2251,17 +2252,14 @@ class ReportNumber(
     }
 }
 
-// Continue or terminate the workflow according to current calendar event.
+// Continue or terminate the workflow according to ongoing calendar event.
 @Serializable
 class CalendarEvent(
     var eventTitle: String = "",
     var eventTitleFlags: Int = Def.DefaultRegexFlags,
 ) : IAction {
-    override fun missingPermissions(ctx: Context): List<PermissionWrapper> {
-        return if (Permission.calendar.isGranted)
-            listOf()
-        else
-            listOf(PermissionWrapper(Permission.calendar))
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(PermissionWrapper(Permission.calendar))
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -2315,6 +2313,114 @@ class CalendarEvent(
             onFlagsChange = {
                 flags.intValue = it
                 eventTitleFlags = it
+            }
+        )
+    }
+}
+
+// This will be triggered on receiving SMS messages
+@Serializable
+class SmsEvent(
+    var number: String = "",
+    var numberFlags: Int = Def.DefaultRegexFlags,
+    var content: String = "",
+    var contentFlags: Int = Def.DefaultRegexFlags,
+) : IAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(
+            PermissionWrapper(Permission.receiveSMS),
+            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+        )
+    }
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (!Permission.receiveSMS.isGranted)
+            return false
+
+        val rawNumber = aCtx.rawNumber
+        val smsContent = aCtx.smsContent
+
+        // It's testing in the workflow dialog
+        if (rawNumber == null || smsContent == null) {
+            aCtx.logger?.error(ctx.getString(R.string.use_global_testing_instead))
+            return false
+        }
+
+        if (!number.regexMatches(rawNumber, numberFlags)) {
+            return false
+        }
+        if (!content.regexMatches(smsContent, contentFlags)) {
+            return false
+        }
+
+        aCtx.logger?.warn(
+            ctx.getString(R.string.sms_event_triggered)
+                .formatAnnotated(
+                    "$content <- $number".A(Teal200)
+                )
+        )
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.sms_event)
+    }
+
+    @Composable
+    override fun Summary() {
+        SummaryLabel("$content <- $number")
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_sms_event)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon20(R.drawable.ic_sms)
+    }
+
+    @Composable
+    override fun Options() {
+        val flagsNumber = remember { mutableIntStateOf(numberFlags) }
+        RegexInputBox(
+            regexStr = number,
+            label = { Text(Str(R.string.phone_number)) },
+            regexFlags = flagsNumber,
+            placeholder = { DimGreyLabel(".*") },
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    number = newVal
+                }
+            },
+            onFlagsChange = {
+                flagsNumber.intValue = it
+                numberFlags = it
+            }
+        )
+        val flagsContent = remember { mutableIntStateOf(contentFlags) }
+        RegexInputBox(
+            regexStr = content,
+            label = { Text(Str(R.string.sms_content)) },
+            regexFlags = flagsContent,
+            placeholder = { DimGreyLabel(".*") },
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    content = newVal
+                }
+            },
+            onFlagsChange = {
+                flagsContent.intValue = it
+                contentFlags = it
             }
         )
     }

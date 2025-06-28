@@ -30,4 +30,18 @@
         &ensp; (Mendukung beberapa <b>Temukan Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
         ]]>
     </string>
+    <string name="sms_event">Acara SMS</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Ini akan secara otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
+        <br>
+        Tindakan ini harus menjadi yang pertama dalam alur kerja.<br>
+        <br>
+        Ini dapat digabungkan dengan tindakan lain seperti <b>Temukan Aturan</b> dan <b>Ubah Aturan</b>.<br>
+        - Jika nomor SMS dan konten cocok, alur kerja akan terus dieksekusi.<br>
+        - Jika tidak, alur kerja akan berakhir.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">Acara SMS %s terpicu.</string>
+    <string name="use_global_testing_instead">Gunakan pengujian global sebagai gantinya.</string>
 </resources>

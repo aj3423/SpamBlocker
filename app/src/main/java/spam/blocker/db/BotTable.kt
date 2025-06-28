@@ -17,20 +17,20 @@ import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager
+import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
 import spam.blocker.ui.M
-import spam.blocker.ui.widgets.GreyIcon
-import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.util.Permission
 import java.util.UUID
 
+// The name "Workflow" is too long, so it's named "Bot" instead.
 @Serializable
 data class Bot(
     val id: Long = 0,
@@ -44,7 +44,7 @@ data class Bot(
 ) {
 
     // This is shown as the Bot summary on main UI
-    // 3 types: Scheduled / Manual / CalendarEvent
+    // 3 types: Scheduled / Manual / CalendarEvent / SmsEvent
     @Composable
     fun TriggerType(modifier: Modifier) {
         val ctx = LocalContext.current
@@ -58,15 +58,22 @@ data class Bot(
             )
         } else {
             val firstAction = actions.firstOrNull()
-            val isCalendarEvent = firstAction is CalendarEvent
 
             // Calendar Event
-            if (isCalendarEvent) {
+            if (firstAction is CalendarEvent) {
                 RowVCenterSpaced(2, modifier = modifier) {
                     GreyIcon18(R.drawable.ic_call)
                     GreyIcon18(R.drawable.ic_calendar)
                     GreyLabel(
                         text = firstAction.eventTitle,
+                        modifier = M.padding(start = 4.dp)
+                    )
+                }
+            } else if (firstAction is SmsEvent) {
+                RowVCenterSpaced(2, modifier = modifier) {
+                    GreyIcon18(R.drawable.ic_sms)
+                    GreyLabel(
+                        text = "${firstAction.content} <- ${firstAction.number}",
                         modifier = M.padding(start = 4.dp)
                     )
                 }

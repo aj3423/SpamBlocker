@@ -8,7 +8,7 @@
         <![CDATA[
         Temporarily modify rules based on calendar events, changes are applied temporarily without altering the configuration.<br>
         <br>
-        This action must be the first in the workflow, such a workflow will be automatically triggered by an incoming call.<br>
+        This action must be the first one in the workflow, such a workflow will be automatically triggered by an incoming call.<br>
         <br>
         <b>A use case</b>:<br>
         &ensp; <font color="#888888">A shift worker works the day shift from 7 AM to 10 AM for two days,
@@ -30,4 +30,18 @@
         &ensp; (It supports multiple <b>Find Rules</b> and <b>Modify Rules</b> here)<br>
         ]]>
     </string>
+    <string name="sms_event">SMS Event</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        This will be automatically triggered on incoming SMS messages before they are screened.<br>
+        <br>
+        This action must be the first one in the workflow.<br>
+        <br>
+        This can be chained with other actions like <b>Find Rules</b> and <b>Modify Rules</b>.<br>
+        - If the SMS number and content match, the workflow will keep executing.<br>
+        - Otherwise, the workflow will terminate.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">SMS event %s is triggered.</string>
+    <string name="use_global_testing_instead">Use the global testing instead.</string>
 </resources>

@@ -30,4 +30,18 @@
         &ensp; (Supporta più <b>Trova regole</b> e <b>Modifica regole</b> qui)<br>
         ]]>
     </string>
+    <string name="sms_event">Evento SMS</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Questo verrà attivato automaticamente sui messaggi SMS in arrivo prima che vengano esaminati.<br>
+        <br>
+        Questa azione deve essere la prima nel flusso di lavoro.<br>
+        <br>
+        Questo può essere concatenato con altre azioni come <b>Trova Regole</b> e <b>Modifica Regole</b>.<br>
+        - Se il numero di telefono SMS e il contenuto corrispondono, il flusso di lavoro continuerà l\'esecuzione.<br>
+        - Altrimenti, il flusso di lavoro terminerà.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">L\'evento SMS %s è attivato.</string>
+    <string name="use_global_testing_instead">Usa invece il test globale.</string>
 </resources>

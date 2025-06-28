@@ -30,4 +30,18 @@
         &ensp; (Admet múltiples <b>Troba Regles</b> i <b>Modifica Regles</b> aquí)<br>
         ]]>
     </string>
+    <string name="sms_event">Esdeveniment SMS</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        Això s\'activarà automàticament amb els missatges SMS entrants abans que siguin filtrats.<br>
+        <br>
+        Aquesta acció ha de ser la primera en el flux de treball.<br>
+        <br>
+        Això es pot encadenar amb altres accions com <b>Troba Regles</b> i <b>Modifica Regles</b>.<br>
+        - Si el número de SMS i el contingut coincideixen, el flux de treball continuarà executant-se.<br>
+        - En cas contrari, el flux de treball finalitzarà.<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">L\'esdeveniment SMS %s s\'ha activat.</string>
+    <string name="use_global_testing_instead">Fes servir les proves globals en lloc d\'això.</string>
 </resources>

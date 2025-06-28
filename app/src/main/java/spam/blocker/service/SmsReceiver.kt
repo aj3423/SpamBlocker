@@ -6,8 +6,12 @@ import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
 import spam.blocker.Events
+import spam.blocker.db.BotTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.SmsTable
+import spam.blocker.service.bot.ActionContext
+import spam.blocker.service.bot.SmsEvent
+import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.NotificationTrampolineActivity
@@ -43,12 +47,33 @@ open class SmsReceiver : BroadcastReceiver() {
         processSms(ctx, logger = null, rawNumber, messageBody)
     }
 
+    // Run all workflows that have `SMS Event` as the first action
+    fun triggerSmsEventWorkflows(
+        ctx: Context,
+        logger: ILogger?,
+        rawNumber: String,
+        messageBody: String,
+    ) {
+        BotTable.listAll(ctx)
+            .filter { it.actions.firstOrNull() is SmsEvent }
+            .forEach {
+                val aCtx = ActionContext(
+                    logger = logger,
+                    rawNumber = rawNumber,
+                    smsContent = messageBody,
+                )
+                it.actions.executeAll(ctx, aCtx)
+            }
+    }
+
     fun processSms(
         ctx: Context,
         logger: ILogger?,
         rawNumber: String,
         messageBody: String
     ): ICheckResult {
+
+        triggerSmsEventWorkflows(ctx, logger, rawNumber, messageBody)
 
         val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
 
