@@ -37,7 +37,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <!-- for sms, disable battery optimization -->
-<!--    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>-->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
 
     <!-- for workflow action: Calendar Event -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
@@ -90,14 +90,14 @@
             </intent-filter>
         </service>
 
-<!--        <service-->
-<!--            android:name=".service.NotificationListenerService"-->
-<!--            android:exported="true"-->
-<!--            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.service.notification.NotificationListenerService" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
+        <service
+            android:name=".service.NotificationListenerService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name=".service.CallStateReceiver"
