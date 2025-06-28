@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AppOpsManager
+import android.app.NotificationManager
 import android.app.role.RoleManager
 import android.content.ComponentName
 import android.content.Context
@@ -27,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import spam.blocker.def.Def
+import spam.blocker.service.NotificationListenerService
 import spam.blocker.util.Permission.fileRead
 import spam.blocker.util.Permission.fileWrite
 import spam.blocker.util.PermissionLauncher.launcherProtected
@@ -170,10 +172,16 @@ object PermissionType {
         override fun check(ctx: Context): Boolean {
             logi("checking permission: notification_access")
 
-            val ret = Secure.getString(
-                ctx.applicationContext.contentResolver,
-                "enabled_notification_listeners"
-            ).contains(ctx.applicationContext.packageName)
+            // This approach will crash on some devices: getString() can return null
+//            val ret = Secure.getString(
+//                ctx.applicationContext.contentResolver,
+//                "enabled_notification_listeners"
+//            )?.contains(ctx.applicationContext.packageName) == true
+
+            val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val ret = notificationManager.isNotificationListenerAccessGranted(
+                ComponentName(ctx, NotificationListenerService::class.java)
+            )
             logi("permission notification_access granted: $ret")
             return ret
         }
