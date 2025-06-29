@@ -85,6 +85,7 @@ import spam.blocker.util.formatAnnotated
 import spam.blocker.util.httpRequest
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
+import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.resolveBase64Tag
 import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
@@ -2340,7 +2341,7 @@ class SmsEvent(
             return false
         }
 
-        if (!number.regexMatches(rawNumber, numberFlags)) {
+        if (!number.regexMatchesNumber(rawNumber, numberFlags)) {
             return false
         }
         if (!content.regexMatches(smsContent, contentFlags)) {
