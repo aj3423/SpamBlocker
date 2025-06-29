@@ -2,6 +2,7 @@ package spam.blocker.service.bot
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,7 +11,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import kotlinx.coroutines.CancellationException
@@ -41,6 +44,7 @@ import spam.blocker.db.listReportableAPIs
 import spam.blocker.db.reScheduleBot
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
+import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
 import spam.blocker.ui.theme.DodgeBlue
@@ -49,6 +53,7 @@ import spam.blocker.ui.theme.Pink80
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
+import spam.blocker.ui.widgets.GreenDot
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
@@ -2250,15 +2255,29 @@ class ReportNumber(
 // Continue or terminate the workflow according to ongoing calendar event.
 @Serializable
 class CalendarEvent(
+    var enabled: Boolean = true,
     var eventTitle: String = "",
     var eventTitleFlags: Int = Def.DefaultRegexFlags,
 ) : IAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(PermissionWrapper(Permission.calendar))
     }
-
+    fun isActivated(): Boolean {
+        return enabled && Permission.calendar.isGranted
+    }
+    @Composable
+    fun TriggerType(modifier: Modifier) {
+        RowVCenterSpaced(2, modifier = modifier) {
+            GreyIcon18(R.drawable.ic_call)
+            GreyIcon18(R.drawable.ic_calendar)
+            GreyLabel(
+                text = eventTitle,
+                modifier = M.padding(start = 4.dp)
+            )
+        }
+    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        if (!Permission.calendar.isGranted)
+        if (!Permission.calendar.isGranted || !enabled)
             return false
 
         val ongoingEvents = Util.ongoingCalendarEvents(ctx)
@@ -2273,7 +2292,13 @@ class CalendarEvent(
 
     @Composable
     override fun Summary() {
-        SummaryLabel(eventTitle)
+        RowVCenterSpaced(8) {
+            // Green dot
+            if (enabled) {
+                GreenDot()
+            }
+            SummaryLabel(eventTitle)
+        }
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2295,6 +2320,16 @@ class CalendarEvent(
 
     @Composable
     override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
         val flags = remember { mutableIntStateOf(eventTitleFlags) }
         RegexInputBox(
             regexStr = eventTitle,
@@ -2316,6 +2351,7 @@ class CalendarEvent(
 // This will be triggered on receiving SMS messages
 @Serializable
 class SmsEvent(
+    var enabled: Boolean = true,
     var number: String = "",
     var numberFlags: Int = Def.DefaultRegexFlags,
     var content: String = "",
@@ -2328,8 +2364,22 @@ class SmsEvent(
         )
     }
 
+    @Composable
+    fun TriggerType(modifier: Modifier) {
+        RowVCenterSpaced(2, modifier = modifier) {
+            GreyIcon18(R.drawable.ic_sms)
+            GreyLabel(
+                text = "$content <- $number",
+                modifier = M.padding(start = 4.dp)
+            )
+        }
+    }
+    fun isActivated(): Boolean {
+        return enabled && Permission.receiveSMS.isGranted
+    }
+
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        if (!Permission.receiveSMS.isGranted)
+        if (!Permission.receiveSMS.isGranted || !enabled)
             return false
 
         val rawNumber = aCtx.rawNumber
@@ -2364,7 +2414,13 @@ class SmsEvent(
 
     @Composable
     override fun Summary() {
-        SummaryLabel("$content <- $number")
+        RowVCenterSpaced(8) {
+            // Green dot
+            if (enabled) {
+                GreenDot()
+            }
+            SummaryLabel("$content <- $number")
+        }
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2386,6 +2442,16 @@ class SmsEvent(
 
     @Composable
     override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
         val flagsNumber = remember { mutableIntStateOf(numberFlags) }
         RegexInputBox(
             regexStr = number,

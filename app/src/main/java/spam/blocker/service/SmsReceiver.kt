@@ -55,7 +55,10 @@ open class SmsReceiver : BroadcastReceiver() {
         messageBody: String,
     ) {
         BotTable.listAll(ctx)
-            .filter { it.actions.firstOrNull() is SmsEvent }
+            .filter {
+                val firstAction = it.actions.firstOrNull()
+                firstAction is SmsEvent && firstAction.isActivated()
+            }
             .forEach {
                 val aCtx = ActionContext(
                     logger = logger,

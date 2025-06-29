@@ -477,12 +477,7 @@ fun RuleEditDialog(
                         labelId = R.string.auto_copy,
                         helpTooltip = Str(R.string.help_auto_copy),
                     ) {
-                        FlowRowSpaced(10) {
-                            CheckBox(
-                                checked = autoCopy,
-                                onCheckChange = { autoCopy = it },
-                            )
-                        }
+                        SwitchBox(checked = autoCopy) { autoCopy = it }
                     }
                 }
 

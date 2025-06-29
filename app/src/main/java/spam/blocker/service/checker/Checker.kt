@@ -98,7 +98,8 @@ object ForwardCheckers {
     // Return a list of workflows that match currently ongoing calendar events.
     fun allCalendarEvent(ctx: Context): List<CalendarEventForwardCheck> {
         val bots = BotTable.listAll(ctx).filter {
-            it.actions.firstOrNull() is CalendarEvent
+            val firstAction = it.actions.firstOrNull()
+            firstAction is CalendarEvent && firstAction.isActivated()
         }
         if (bots.isEmpty()) // No calendar workflow enabled
             return listOf()

@@ -61,22 +61,9 @@ data class Bot(
 
             // Calendar Event
             if (firstAction is CalendarEvent) {
-                RowVCenterSpaced(2, modifier = modifier) {
-                    GreyIcon18(R.drawable.ic_call)
-                    GreyIcon18(R.drawable.ic_calendar)
-                    GreyLabel(
-                        text = firstAction.eventTitle,
-                        modifier = M.padding(start = 4.dp)
-                    )
-                }
+                firstAction.TriggerType(modifier)
             } else if (firstAction is SmsEvent) {
-                RowVCenterSpaced(2, modifier = modifier) {
-                    GreyIcon18(R.drawable.ic_sms)
-                    GreyLabel(
-                        text = "${firstAction.content} <- ${firstAction.number}",
-                        modifier = M.padding(start = 4.dp)
-                    )
-                }
+                firstAction.TriggerType(modifier)
             } else {
                 // Manual
                 GreyLabel(
@@ -91,8 +78,14 @@ data class Bot(
 
         if (isScheduled)
             return true
-        val isCalendarEvent = actions.firstOrNull() is CalendarEvent
-        return isCalendarEvent && Permission.calendar.isGranted
+
+        val firstAction = actions.firstOrNull()
+        if (firstAction is CalendarEvent) {
+            return firstAction.isActivated()
+        } else if (firstAction is SmsEvent) {
+            return firstAction.isActivated()
+        }
+        return false // manually trigger
     }
 }
 
