@@ -42,6 +42,9 @@
     <!-- for workflow action: Calendar Event -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
 
+    <!-- for reporting bugs(dump adb log) -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
     <application
         android:name=".App"
         android:requestLegacyExternalStorage="true"

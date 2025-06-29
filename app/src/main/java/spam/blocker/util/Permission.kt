@@ -81,6 +81,7 @@ object PermissionType {
     class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE)
     class ReadSMS: Regular(Manifest.permission.READ_SMS)
     class Calendar: Regular(Manifest.permission.READ_CALENDAR)
+
     open class FileAccess(name: String): Regular(name) {
         override fun check(ctx: Context): Boolean {
             return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
@@ -289,6 +290,7 @@ object Permission {
     val notificationAccess = NotificationAccess()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
+
 
     // Initialized once when process starts (in App.kt)
     fun init(ctx: Context) {
