@@ -140,9 +140,9 @@ fun GloballyEnabled() {
                             G.permissionChain.ask(
                                 ctx,
                                 listOf(
+                                    PermissionWrapper(Permission.receiveSMS),
                                     // isOptional because some might prefer "Optimized" than "Unrestricted"
                                     PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
-                                    PermissionWrapper(Permission.receiveSMS)
                                 )
                             ) { granted ->
                                 if (granted) {
@@ -167,10 +167,10 @@ fun GloballyEnabled() {
                                 G.permissionChain.ask(
                                     ctx,
                                     listOf(
-                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
-                                        PermissionWrapper(Permission.readSMS),
                                         PermissionWrapper(Permission.receiveMMS),
-                                    )
+                                        PermissionWrapper(Permission.readSMS),
+                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+                                        )
                                 ) { granted ->
                                     if (granted) {
                                         spf.setMmsEnabled(true)

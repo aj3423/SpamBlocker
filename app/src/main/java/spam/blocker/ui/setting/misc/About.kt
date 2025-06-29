@@ -9,9 +9,11 @@ import spam.blocker.R
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.HtmlText
+import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.ui.widgets.rememberFileWriteChooser
+import spam.blocker.util.Algorithm.compressString
 
 const val repo = "https://github.com/aj3423/SpamBlocker"
 
@@ -36,11 +38,25 @@ fun About() {
             )
         }
 
-        StrokeButton(
+        val fileWriter = rememberFileWriteChooser()
+        fileWriter.Compose()
+
+        LongPressButton(
             label = Str(R.string.about),
             color = SkyBlue,
-        ) {
-            popupTrigger.value = true
-        }
+            footerIconId = null,
+            onClick = {
+                popupTrigger.value = true
+            },
+            onLongClick = {
+                val fn = "SpamBlocker.log.gz"
+                val content = compressString(Logcat.collect())
+
+                fileWriter.popup(
+                    filename = fn,
+                    content = content,
+                )
+            },
+        )
     }
 }

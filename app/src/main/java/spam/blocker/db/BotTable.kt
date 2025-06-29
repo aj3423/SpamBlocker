@@ -3,11 +3,9 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
@@ -23,11 +21,7 @@ import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.serialize
-import spam.blocker.ui.M
-import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.util.Permission
 import java.util.UUID
 
 // The name "Workflow" is too long, so it's named "Bot" instead.

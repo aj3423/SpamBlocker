@@ -151,16 +151,30 @@ fun FooterButton(
 
 @Composable
 fun LongPressButton(
-    label: String, color: Color,
+    label: String,
+    color: Color,
+    footerIconId: Int? = R.drawable.ic_time_slot,
     onClick: Lambda,
     onLongClick: Lambda,
 ) {
-    FooterButton(
-        label = label, color = color, footerIconId = R.drawable.ic_time_slot,
-        footerSize = 9, footerOffset = Pair(-3, -3),
-        onClick = onClick,
-        onLongClick = onLongClick,
-    )
+    if (footerIconId == null) {
+        StrokeButton(
+            label = label,
+            color = color,
+            onClick = onClick,
+            onLongClick = onLongClick,
+        )
+    } else {
+        FooterButton(
+            label = label,
+            color = color,
+            footerIconId = footerIconId,
+            footerSize = 9,
+            footerOffset = Pair(-3, -3),
+            onClick = onClick,
+            onLongClick = onLongClick,
+        )
+    }
 }
 
 enum class SpinnerType {

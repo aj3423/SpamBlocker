@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 import spam.blocker.Events
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
-import spam.blocker.db.PushAlertTable
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
@@ -23,7 +22,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.Type
-import spam.blocker.util.Permission
 import spam.blocker.util.Util
 import spam.blocker.util.spf
 

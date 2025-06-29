@@ -37,7 +37,6 @@ import spam.blocker.ui.setting.api.ApiReportPresets
 import spam.blocker.ui.setting.bot.BotHeader
 import spam.blocker.ui.setting.bot.BotList
 import spam.blocker.ui.setting.misc.About
-import spam.blocker.ui.setting.misc.AdbLog
 import spam.blocker.ui.setting.misc.BackupRestore
 import spam.blocker.ui.setting.misc.Language
 import spam.blocker.ui.setting.misc.Theme
@@ -151,7 +150,6 @@ fun SettingScreen() {
                     ) {
                         Column {
                             Contacts()
-                            AdbLog()
                             Stir()
                             SpamDB()
                             RepeatedCall()

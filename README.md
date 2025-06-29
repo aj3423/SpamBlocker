@@ -81,12 +81,13 @@ It's not necessary to leave this app running in the background, you can kill the
 | ANSWER_PHONE_CALLS                                                                | Reject, answer and hang-up calls                                       |
 | POST_NOTIFICATIONS                                                                | Show notifications                                                     |
 | READ_CONTACTS                                                                     | For matching contacts                                                  |
-| RECEIVE_SMS / RECEIVE_MMS                                                         | For receiving new messages                                             |
-| READ_CALL_LOG<br>READ_SMS                                                         | For checking if a call is repeated                                     |
+| RECEIVE_SMS / RECEIVE_MMS                                                         | For SMS notification screening                                         |
+| READ_CALL_LOG<br>READ_SMS                                                         | For allowing repeated call                                             |
 | PACKAGE_USAGE_STATS                                                               | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                                                                  | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
 | REQUEST_IGNORE_BATTERY_OPTIMIZATIONS                                              | For it to keep working after being swiped and killed                   |
 | NOTIFICATION_ACCESS                                                               | For feature: Push Alert (receiving notifications from other apps)      |
+| READ_LOG                                                                          | For reporting bugs with logcat messages                                |   
 
 # Privacy
  - For offline features
