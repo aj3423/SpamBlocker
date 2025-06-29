@@ -32,8 +32,8 @@ android {
         applicationId = "spam.blocker"
         minSdk = 29
         targetSdk = 35
-        versionCode = 412
-        versionName = "4.12"
+        versionCode = 413
+        versionName = "4.13"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -1,0 +1,29 @@
+Fix:
+- App hangs at startup. (on some devices)
+
+Help wanted:
+- On some devices, calls are always allowed, the app doesn't work at all.
+  If you are experiencing this issue, please check:
+  https://github.com/aj3423/SpamBlocker/issues/362#issuecomment-3016385834
+
+New:
+- Workflow actions:
+  - Calendar Event
+    On incoming calls, temporarily adjust rules according to ongoing calendar events. 
+    - Use case:
+       Someone works 7AM-10AM for two days, then 2PM-5PM for the next two,
+       some rules need to be disabled during those working hours.
+  - SMS Event
+    An action that will be triggered on incoming SMS messages.
+    - Use case:
+       For shift workers that receive oncall/offcall SMS notifications,
+       this can help to toggle rules automatically.
+
+Improvements:
+- Spam Database
+  - Customizable priority
+- Quick Copy
+  - "Auto Copy" to clipboard (optional)
+
+Language support:
+- Hebrew (iw)
