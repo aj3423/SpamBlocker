@@ -25,6 +25,7 @@ import spam.blocker.util.Notification
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Permission
 import spam.blocker.util.Util
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 fun Details.getRawNumber(): String {
@@ -59,11 +60,13 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun pass(details: Details) {
+        logi("pass call")
         val builder = CallResponse.Builder()
         respondToCall(details, builder.build())
     }
 
     private fun reject(details: Details) {
+        logi("reject call")
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
             setSkipNotification(true)
@@ -75,6 +78,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun silence(details: Details) {
+        logi("silence call")
         val builder = CallResponse.Builder().apply {
             setSkipCallLog(false)
             setSkipNotification(true)
@@ -86,6 +90,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun answerThenHangUp(rawNumber: String, r: ICheckResult, details: Details) {
+        logi("answer + hangup")
         val now = System.currentTimeMillis()
 
         val ctx = this
@@ -106,6 +111,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     override fun onScreenCall(details: Details) {
+        logi("onScreenCall")
         // 1. With this coroutine, this function returns immediately without blocking the whole process.
         //   So other services will get executed simultaneously.
         //   Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
@@ -114,32 +120,42 @@ class CallScreeningService : CallScreeningService() {
         //   not sure if it's caused by this, so disable it by default.
 //        if (Permission.notificationAccess.isGranted && PushAlertTable.listAll(this).isNotEmpty()) {
             CoroutineScope(IO).launch {
+                logi("coroutine start")
                 doScreenCall(details)
+                logi("coroutine end")
             }
 //        } else {
 //            doScreenCall(details)
 //        }
     }
     private fun doScreenCall(details: Details) {
+        logi("doScreenCall")
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
+            logi("outgoing")
             updateOutgoingEmergencyTimestamp(this, details.getRawNumber())
         }
 
         // Incoming
-        if (details.callDirection != Details.DIRECTION_INCOMING)
+        if (details.callDirection != Details.DIRECTION_INCOMING) {
+            logi("not incoming call")
             return
+        }
 
         if (!spf.Global(this).isGloballyEnabled() || !spf.Global(this).isCallEnabled()) {
+            logi("not globally enabled or not enabled for call")
             pass(details)
             return
         }
 
         val rawNumber = details.getRawNumber()
 
+        logi("processCall")
         val r = processCall(this, null, rawNumber, details)
+        logi("processCall done")
 
         if (r.shouldBlock()) {
+            logi("should block")
             val blockType = r.getBlockType(this) // reject / silence / answer+hangup
 
             when (blockType) {
@@ -148,11 +164,13 @@ class CallScreeningService : CallScreeningService() {
                 else -> reject(details)
             }
         } else {
+            logi("should pass")
             pass(details)
         }
     }
 
     private fun logToDb(ctx: Context, r: ICheckResult, rawNumber: String) {
+        logi("log to db")
         val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
         val recordId = if (isDbLogEnabled) {
             CallTable().addNewRecord(
@@ -199,18 +217,23 @@ class CallScreeningService : CallScreeningService() {
         rawNumber: String,
         callDetails: Details? = null, // it's null when testing
     ): ICheckResult {
+        logi("start processing call")
         // 0. check the number with all rules, get the result
         val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
+        logi("done checkCall()")
 
         // 1. log result to db
         logToDb(ctx, r, rawNumber)
 
         if (r.shouldBlock()) {
+            logi("should block..")
             CoroutineScope(IO).launch {
+                logi("1. show notification")
 
                 // 2. Show notification
                 showSpamNotification(ctx, r, rawNumber)
 
+                logi("2. report spam")
                 // 3. Report spam number
                 reportSpam(ctx, r, rawNumber, isTesting = callDetails == null)
             }
