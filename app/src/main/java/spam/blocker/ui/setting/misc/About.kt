@@ -12,6 +12,7 @@ import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.Algorithm.compressString
 
@@ -41,10 +42,9 @@ fun About() {
         val fileWriter = rememberFileWriteChooser()
         fileWriter.Compose()
 
-        LongPressButton(
+        StrokeButton(
             label = Str(R.string.about),
             color = SkyBlue,
-            footerIconId = null,
             onClick = {
                 popupTrigger.value = true
             },

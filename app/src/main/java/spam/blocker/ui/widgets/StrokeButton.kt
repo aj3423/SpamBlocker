@@ -153,28 +153,19 @@ fun FooterButton(
 fun LongPressButton(
     label: String,
     color: Color,
-    footerIconId: Int? = R.drawable.ic_time_slot,
+    footerIconId: Int = R.drawable.ic_time_slot,
     onClick: Lambda,
     onLongClick: Lambda,
 ) {
-    if (footerIconId == null) {
-        StrokeButton(
-            label = label,
-            color = color,
-            onClick = onClick,
-            onLongClick = onLongClick,
-        )
-    } else {
-        FooterButton(
-            label = label,
-            color = color,
-            footerIconId = footerIconId,
-            footerSize = 9,
-            footerOffset = Pair(-3, -3),
-            onClick = onClick,
-            onLongClick = onLongClick,
-        )
-    }
+    FooterButton(
+        label = label,
+        color = color,
+        footerIconId = footerIconId,
+        footerSize = 9,
+        footerOffset = Pair(-3, -3),
+        onClick = onClick,
+        onLongClick = onLongClick,
+    )
 }
 
 enum class SpinnerType {
@@ -205,6 +196,7 @@ fun Spinner(
                         items[selected].icon?.let { it() }
                     }
                 }
+
                 else -> null
             },
             color = color,
