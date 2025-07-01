@@ -141,7 +141,7 @@ fun GloballyEnabled() {
                                 ctx,
                                 listOf(
                                     // isOptional because some might prefer "Optimized" than "Unrestricted"
-                                    PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+//                                    PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
                                     PermissionWrapper(Permission.receiveSMS)
                                 )
                             ) { granted ->
@@ -167,7 +167,7 @@ fun GloballyEnabled() {
                                 G.permissionChain.ask(
                                     ctx,
                                     listOf(
-                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+//                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
                                         PermissionWrapper(Permission.readSMS),
                                         PermissionWrapper(Permission.receiveMMS),
                                     )

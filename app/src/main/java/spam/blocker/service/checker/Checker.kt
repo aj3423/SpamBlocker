@@ -1041,9 +1041,9 @@ class Checker { // for namespace only
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            if (!Permission.notificationAccess.isGranted) {
-                return null
-            }
+//            if (!Permission.notificationAccess.isGranted) {
+//                return null
+//            }
 
             // Skip if no valid rule is set.
             val enabled = PushAlertTable.listAll(ctx).any {

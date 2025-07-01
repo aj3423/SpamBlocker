@@ -2260,10 +2260,11 @@ class CalendarEvent(
     var eventTitleFlags: Int = Def.DefaultRegexFlags,
 ) : IAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
-        return listOf(PermissionWrapper(Permission.calendar))
+        return listOf()
+//        return listOf(PermissionWrapper(Permission.calendar))
     }
     fun isActivated(): Boolean {
-        return enabled && Permission.calendar.isGranted
+        return enabled // && Permission.calendar.isGranted
     }
     @Composable
     fun TriggerType(modifier: Modifier) {
@@ -2277,7 +2278,7 @@ class CalendarEvent(
         }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        if (!Permission.calendar.isGranted || !enabled)
+        if (!enabled)
             return false
 
         val ongoingEvents = Util.ongoingCalendarEvents(ctx)
@@ -2360,7 +2361,7 @@ class SmsEvent(
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(
             PermissionWrapper(Permission.receiveSMS),
-            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+//            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
         )
     }
 

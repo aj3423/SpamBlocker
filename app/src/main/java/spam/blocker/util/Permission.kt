@@ -27,20 +27,20 @@ import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import spam.blocker.def.Def
-import spam.blocker.service.NotificationListenerService
+//import spam.blocker.service.NotificationListenerService
 import spam.blocker.util.Permission.fileRead
 import spam.blocker.util.Permission.fileWrite
 import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
 import spam.blocker.util.PermissionType.AnswerCalls
-import spam.blocker.util.PermissionType.BatteryUnRestricted
-import spam.blocker.util.PermissionType.Calendar
+//import spam.blocker.util.PermissionType.BatteryUnRestricted
+//import spam.blocker.util.PermissionType.Calendar
 import spam.blocker.util.PermissionType.CallLog
 import spam.blocker.util.PermissionType.CallScreening
 import spam.blocker.util.PermissionType.Contacts
 import spam.blocker.util.PermissionType.FileRead
 import spam.blocker.util.PermissionType.FileWrite
-import spam.blocker.util.PermissionType.NotificationAccess
+//import spam.blocker.util.PermissionType.NotificationAccess
 import spam.blocker.util.PermissionType.PhoneState
 import spam.blocker.util.PermissionType.ReadSMS
 import spam.blocker.util.PermissionType.ReceiveMMS
@@ -80,7 +80,7 @@ object PermissionType {
     class CallLog: Regular(Manifest.permission.READ_CALL_LOG)
     class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE)
     class ReadSMS: Regular(Manifest.permission.READ_SMS)
-    class Calendar: Regular(Manifest.permission.READ_CALENDAR)
+//    class Calendar: Regular(Manifest.permission.READ_CALENDAR)
 
     open class FileAccess(name: String): Regular(name) {
         override fun check(ctx: Context): Boolean {
@@ -155,25 +155,25 @@ object PermissionType {
         intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
     )
 
-    class NotificationAccess: LaunchByIntent() {
-        override fun launcherIntent(ctx: Context): Intent {
-            return Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-        }
-
-        override fun check(ctx: Context): Boolean {
-
-            // This approach will crash on some devices: getString() can return null
-//            val ret = Secure.getString(
-//                ctx.applicationContext.contentResolver,
-//                "enabled_notification_listeners"
-//            )?.contains(ctx.applicationContext.packageName) == true
-
-            val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            return notificationManager.isNotificationListenerAccessGranted(
-                ComponentName(ctx, NotificationListenerService::class.java)
-            )
-        }
-    }
+//    class NotificationAccess: LaunchByIntent() {
+//        override fun launcherIntent(ctx: Context): Intent {
+//            return Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+//        }
+//
+//        override fun check(ctx: Context): Boolean {
+//
+//            // This approach will crash on some devices: getString() can return null
+////            val ret = Secure.getString(
+////                ctx.applicationContext.contentResolver,
+////                "enabled_notification_listeners"
+////            )?.contains(ctx.applicationContext.packageName) == true
+//
+//            val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//            return notificationManager.isNotificationListenerAccessGranted(
+//                ComponentName(ctx, NotificationListenerService::class.java)
+//            )
+//        }
+//    }
 //    class ExactAlarm: LaunchByIntent() {
 //        override fun launcherIntent(ctx: Context): Intent {
 //            return if (Build.VERSION.SDK_INT >= Def.ANDROID_12) {
@@ -211,28 +211,28 @@ object PermissionType {
 //        }
 //    }
     // This permission should always be optional because "Optimized" also works, not necessarily to be "Unrestricted".
-    class BatteryUnRestricted: LaunchByIntent() {
-        @SuppressLint("BatteryLife")
-        override fun launcherIntent(ctx: Context): Intent {
-            return Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
-                data = "package:${ctx.packageName}".toUri()
-            }
-        }
-
-        override fun check(ctx: Context): Boolean {
-
-            // This only checks if it's "Unrestricted", not including "Optimized"
-            val powerManager = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
-            val unRestricted = powerManager.isIgnoringBatteryOptimizations(ctx.packageName)
-            return unRestricted
-
-            // This works for both "Unrestricted" and "Optimized",
-            // but there is a 5-second delay for this to take effect, can't use this.
-//            val activityManager = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-//            val isRestricted =  activityManager.isBackgroundRestricted
-//            return !isRestricted
-        }
-    }
+//    class BatteryUnRestricted: LaunchByIntent() {
+//        @SuppressLint("BatteryLife")
+//        override fun launcherIntent(ctx: Context): Intent {
+//            return Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
+//                data = "package:${ctx.packageName}".toUri()
+//            }
+//        }
+//
+//        override fun check(ctx: Context): Boolean {
+//
+//            // This only checks if it's "Unrestricted", not including "Optimized"
+//            val powerManager = ctx.getSystemService(Context.POWER_SERVICE) as PowerManager
+//            val unRestricted = powerManager.isIgnoringBatteryOptimizations(ctx.packageName)
+//            return unRestricted
+//
+//            // This works for both "Unrestricted" and "Optimized",
+//            // but there is a 5-second delay for this to take effect, can't use this.
+////            val activityManager = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+////            val isRestricted =  activityManager.isBackgroundRestricted
+////            return !isRestricted
+//        }
+//    }
 
     class CallScreening: LaunchByIntent() {
         override fun launcherIntent(ctx: Context): Intent {
@@ -286,10 +286,10 @@ object Permission {
     val callLog = CallLog()
     val phoneState = PhoneState()
     val readSMS = ReadSMS()
-    val calendar = Calendar()
-    val notificationAccess = NotificationAccess()
+//    val calendar = Calendar()
+//    val notificationAccess = NotificationAccess()
     val usageStats = UsageStats()
-    val batteryUnRestricted = BatteryUnRestricted()
+//    val batteryUnRestricted = BatteryUnRestricted()
 
 
     // Initialized once when process starts (in App.kt)
@@ -305,10 +305,10 @@ object Permission {
             callLog,
             phoneState,
             readSMS,
-            calendar,
-            notificationAccess,
+//            calendar,
+//            notificationAccess,
             usageStats,
-            batteryUnRestricted,
+//            batteryUnRestricted,
         ).forEach { permission ->
             permission.isGranted = permission.check(ctx)
         }

@@ -165,8 +165,8 @@ fun PushAlertEditDialog(
                             //  but not `Restricted`, otherwise it would stop working after a reboot.
                             // The `isOptional = true` here doesn't mean this permission is optional,
                             //  it means it can be manually set to `Optimized` by the user.
-                            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
-                            PermissionWrapper(Permission.notificationAccess)
+//                            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+//                            PermissionWrapper(Permission.notificationAccess)
                         )
                     ) { granted ->
                         if (granted) {

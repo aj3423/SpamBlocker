@@ -812,8 +812,8 @@ object Util {
     }
 
     fun ongoingCalendarEvents(ctx: Context) : List<String> {
-        if (!Permission.calendar.isGranted)
-            return listOf()
+//        if (!Permission.calendar.isGranted)
+//            return listOf()
         val contentResolver = ctx.contentResolver
         val currentTime = System.currentTimeMillis()
         val timeBuffer = 24 * 60 * 60 * 1000 // 24 hours in milliseconds

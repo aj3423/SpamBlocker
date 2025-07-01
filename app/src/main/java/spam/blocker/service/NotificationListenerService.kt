@@ -32,56 +32,56 @@ private fun ensureCache(ctx: Context) {
     }
 }
 
-class NotificationListenerService : NotificationListenerService() {
-    override fun onNotificationPosted(sbn: StatusBarNotification) {
-        super.onNotificationPosted(sbn)
-
-        val pkgName = sbn.packageName
-        val postTime = sbn.postTime
-
-        val extras = sbn.notification.extras
-        if (extras == null)
-            return
-
-        val title = extras.getString("android.title", "")
-        val text = extras.getString("android.text", "")
-        val body = listOf(title, text).joinToString("\n").trim()
-
-        ensureCache(this)
-
-        // All records for this package name
-        val recs = cache?.get(pkgName)
-        if (recs == null)
-            return
-
-        // Keep all records that match the notification content
-        val records = recs.filter {
-            it.body.regexMatches(body, it.bodyFlags)
-        }
-
-        if (records.isEmpty())
-            return
-
-        // Get the record with max duration
-        var max = records.maxBy {
-            it.duration
-        }
-
-
-        val spf = spf.PushAlert(this)
-
-        // Ignore if the new expire time is less than the previous time
-        val prevExpireTime = spf.getExpireTime()
-        val newExpireTime = postTime + max.duration.toLong() * 60 * 1000
-        if (newExpireTime <= prevExpireTime)
-            return
-
-//        logi("push alert update, regex = ${max.body}, content: $body, expire: $newExpireTime")
-
-        spf.apply {
-            setPkgName(pkgName)
-            setBody(body)
-            setExpireTime(newExpireTime)
-        }
-    }
-}
+//class NotificationListenerService : NotificationListenerService() {
+//    override fun onNotificationPosted(sbn: StatusBarNotification) {
+//        super.onNotificationPosted(sbn)
+//
+//        val pkgName = sbn.packageName
+//        val postTime = sbn.postTime
+//
+//        val extras = sbn.notification.extras
+//        if (extras == null)
+//            return
+//
+//        val title = extras.getString("android.title", "")
+//        val text = extras.getString("android.text", "")
+//        val body = listOf(title, text).joinToString("\n").trim()
+//
+//        ensureCache(this)
+//
+//        // All records for this package name
+//        val recs = cache?.get(pkgName)
+//        if (recs == null)
+//            return
+//
+//        // Keep all records that match the notification content
+//        val records = recs.filter {
+//            it.body.regexMatches(body, it.bodyFlags)
+//        }
+//
+//        if (records.isEmpty())
+//            return
+//
+//        // Get the record with max duration
+//        var max = records.maxBy {
+//            it.duration
+//        }
+//
+//
+//        val spf = spf.PushAlert(this)
+//
+//        // Ignore if the new expire time is less than the previous time
+//        val prevExpireTime = spf.getExpireTime()
+//        val newExpireTime = postTime + max.duration.toLong() * 60 * 1000
+//        if (newExpireTime <= prevExpireTime)
+//            return
+//
+////        logi("push alert update, regex = ${max.body}, content: $body, expire: $newExpireTime")
+//
+//        spf.apply {
+//            setPkgName(pkgName)
+//            setBody(body)
+//            setExpireTime(newExpireTime)
+//        }
+//    }
+//}
