@@ -26,6 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.service.NotificationListenerService
 import spam.blocker.util.Permission.fileRead
@@ -33,6 +34,7 @@ import spam.blocker.util.Permission.fileWrite
 import spam.blocker.util.PermissionLauncher.launcherProtected
 import spam.blocker.util.PermissionLauncher.launcherRegular
 import spam.blocker.util.PermissionType.AnswerCalls
+import spam.blocker.util.PermissionType.Basic
 import spam.blocker.util.PermissionType.BatteryUnRestricted
 import spam.blocker.util.PermissionType.Calendar
 import spam.blocker.util.PermissionType.CallLog
@@ -53,6 +55,9 @@ object PermissionType {
 
         // For saving in shared prefs as `ask_once_$name`
         abstract fun name(ctx: Context): String
+        // "Read File", "Call Screening", ...
+        abstract var descId: Int
+        fun desc(ctx: Context): String { return ctx.getString(descId) }
         // Check if this permission has been granted.
         abstract fun check(ctx: Context) : Boolean
         // Show a system dialog asking for this permission, or go to corresponding system settings.
@@ -64,6 +69,7 @@ object PermissionType {
     // Regular permissions like file_read/contacts/receive_sms
     open class Regular(
         val name: String,
+        override var descId: Int,
     ) : Basic() {
         override fun name(ctx: Context): String { return name }
         override fun check(ctx: Context): Boolean {
@@ -72,17 +78,23 @@ object PermissionType {
         override fun ask(ctx: Context) { launcherRegular.launch(name) }
         override fun onResult(ctx: Context, granted: Boolean) { isGranted = granted }
     }
-    // All Regular permissions
-    class Contacts: Regular(Manifest.permission.READ_CONTACTS)
-    class ReceiveSMS: Regular(Manifest.permission.RECEIVE_SMS)
-    class ReceiveMMS: Regular(Manifest.permission.RECEIVE_MMS)
-    class AnswerCalls: Regular(Manifest.permission.ANSWER_PHONE_CALLS)
-    class CallLog: Regular(Manifest.permission.READ_CALL_LOG)
-    class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE)
-    class ReadSMS: Regular(Manifest.permission.READ_SMS)
-    class Calendar: Regular(Manifest.permission.READ_CALENDAR)
 
-    open class FileAccess(name: String): Regular(name) {
+    // ---------------------------------------
+    // WARNING:
+    // Never rename these class names, they are used to recover permissions after a backup restore.
+    // ---------------------------------------
+
+    // All Regular permissions
+    class Contacts: Regular(Manifest.permission.READ_CONTACTS, R.string.perm_contacts)
+    class ReceiveSMS: Regular(Manifest.permission.RECEIVE_SMS, R.string.perm_receive_sms)
+    class ReceiveMMS: Regular(Manifest.permission.RECEIVE_MMS, R.string.perm_receive_mms)
+    class AnswerCalls: Regular(Manifest.permission.ANSWER_PHONE_CALLS, R.string.perm_answer_calls)
+    class CallLog: Regular(Manifest.permission.READ_CALL_LOG, R.string.perm_call_logs)
+    class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE, R.string.perm_phone_state)
+    class ReadSMS: Regular(Manifest.permission.READ_SMS, R.string.perm_read_sms)
+    class Calendar: Regular(Manifest.permission.READ_CALENDAR, R.string.perm_read_calendar)
+
+    open class FileAccess(name: String, descId: Int): Regular(name, descId) {
         override fun check(ctx: Context): Boolean {
             return if (Build.VERSION.SDK_INT == Def.ANDROID_10) {
                 super.check(ctx)
@@ -113,8 +125,8 @@ object PermissionType {
             }
         }
     }
-    class FileRead(): FileAccess(Manifest.permission.READ_EXTERNAL_STORAGE)
-    class FileWrite(): FileAccess(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    class FileRead(): FileAccess(Manifest.permission.READ_EXTERNAL_STORAGE, R.string.perm_file_read)
+    class FileWrite(): FileAccess(Manifest.permission.WRITE_EXTERNAL_STORAGE, R.string.perm_file_write)
 
     // It will launch an Intent when asking for the permission.
     abstract class LaunchByIntent() : Basic() {
@@ -134,6 +146,7 @@ object PermissionType {
     // AppOps permissions
     open class AppOps(
         val name: String,
+        override var descId: Int,
         val intent: Intent,
     ) : LaunchByIntent() {
         override fun launcherIntent(ctx: Context): Intent {
@@ -152,10 +165,13 @@ object PermissionType {
     }
     class UsageStats: AppOps(
         name = AppOpsManager.OPSTR_GET_USAGE_STATS,
+        descId = R.string.perm_usage_stats,
         intent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
     )
 
-    class NotificationAccess: LaunchByIntent() {
+    class NotificationAccess(
+        override var descId: Int = R.string.perm_notification_access
+    ): LaunchByIntent() {
         override fun launcherIntent(ctx: Context): Intent {
             return Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
         }
@@ -211,7 +227,9 @@ object PermissionType {
 //        }
 //    }
     // This permission should always be optional because "Optimized" also works, not necessarily to be "Unrestricted".
-    class BatteryUnRestricted: LaunchByIntent() {
+    class BatteryUnRestricted(
+        override var descId: Int = R.string.perm_battery_unrestricted
+    ): LaunchByIntent() {
         @SuppressLint("BatteryLife")
         override fun launcherIntent(ctx: Context): Intent {
             return Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
@@ -234,7 +252,9 @@ object PermissionType {
         }
     }
 
-    class CallScreening: LaunchByIntent() {
+    class CallScreening(
+        override var descId: Int = R.string.perm_call_screening
+    ): LaunchByIntent() {
         override fun launcherIntent(ctx: Context): Intent {
             val roleManager = ctx.getSystemService(ROLE_SERVICE) as RoleManager
             val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING)
@@ -291,10 +311,8 @@ object Permission {
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
 
-
-    // Initialized once when process starts (in App.kt)
-    fun init(ctx: Context) {
-        listOf(
+    fun all(): List<Basic> {
+        return listOf(
             callScreening,
             fileRead,
             fileWrite,
@@ -309,7 +327,15 @@ object Permission {
             notificationAccess,
             usageStats,
             batteryUnRestricted,
-        ).forEach { permission ->
+        )
+    }
+
+    fun allEnabled() : List<Basic> {
+        return all().filter { it.isGranted }
+    }
+    // Initialized once when process starts (in App.kt)
+    fun init(ctx: Context) {
+        all().forEach { permission ->
             permission.isGranted = permission.check(ctx)
         }
     }

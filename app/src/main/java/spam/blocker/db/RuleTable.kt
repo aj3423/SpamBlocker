@@ -103,6 +103,14 @@ data class RegexRule(
         return flags.hasFlag(Def.FLAG_FOR_CALL)
     }
 
+    fun isForSms(): Boolean {
+        return flags.hasFlag(Def.FLAG_FOR_SMS)
+    }
+
+    fun isWhitelist(): Boolean {
+        return !isBlacklist
+    }
+
     fun patternStr(): String {
         return if (patternExtra != "")
             "${truncate(pattern)}   <-   $patternExtra"
@@ -182,14 +190,6 @@ data class RegexRule(
                 }
             }
         }
-    }
-
-    fun isForSms(): Boolean {
-        return flags.hasFlag(Def.FLAG_FOR_SMS)
-    }
-
-    fun isWhitelist(): Boolean {
-        return !isBlacklist
     }
 
     companion object {

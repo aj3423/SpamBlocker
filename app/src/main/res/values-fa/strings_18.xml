@@ -1,47 +1,63 @@
 <resources>
     <string name="auto_copy">کپی خودکار</string>
-    <string name="help_auto_copy">محتوا به صورت خودکار در کلیپ‌بورد کپی می‌شود بدون نیاز به لمس دکمه "کپی" در اعلان.</string>
+    <string name="help_auto_copy">محتوا به صورت خودکار بدون نیاز به لمس دکمه «کپی» در اعلان، در کلیپ‌بورد کپی می‌شود.</string>
     <string name="calendar_event">رویداد تقویم</string>
     <string name="event_title">عنوان رویداد</string>
-    <string name="rule_updated_temporarily">قانون Regex %s به دلیل رویداد تقویم %s به طور موقت تغییر کرده است: %s</string>
+    <string name="rule_updated_temporarily">قانون Regex %s به دلیل رویداد تقویم %s به طور موقت تغییر یافته است: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        قوانین را بر اساس رویدادهای تقویم به طور موقت تغییر دهید، تغییرات به طور موقت و بدون تغییر پیکربندی اعمال می‌شوند.<br>
+        قوانین را به طور موقت بر اساس رویدادهای تقویم تغییر دهید؛ تغییرات بدون دستکاری پیکربندی، به طور موقت اعمال می‌شوند.<br>
         <br>
-        این اقدام باید اولین قدم در جریان کار باشد، چنین جریان کاری به طور خودکار توسط یک تماس ورودی فعال می‌شود.<br>
+        این عمل باید اولین مورد در جریان کار باشد، چنین جریان کاری به طور خودکار توسط یک تماس ورودی فعال می‌شود.<br>
         <br>
         <b>یک مورد استفاده</b>:<br>
-        &ensp; <font color="#888888">یک کارگر شیفتی به مدت دو روز شیفت روز را از 7 صبح تا 10 صبح کار می‌کند،
-          سپس به مدت دو روز بعدی شیفت شب را از 7 عصر تا 10 شب کار می‌کند.<br>
-        &ensp; برخی از قوانین باید در طول ساعات کاری غیرفعال یا فعال شوند.</font><<br>
+        &ensp; <font color="#888888">یک کارگر شیفتی به مدت دو روز، شیفت روز را از ۷ صبح تا ۱۰ صبح کار می‌کند،
+          سپس برای دو روز بعد، شیفت شب را از ۷ عصر تا ۱۰ عصر کار می‌کند.<br>
+        &ensp; برخی از قوانین باید در ساعات کاری غیرفعال یا فعال شوند.</font><<br>
         <br>
-        یک تنظیمات نمونه:<br>
+        یک تنظیم نمونه:<br>
         - <b>1</b>. در برنامه تقویم، رویدادهای تقویم <font color="#888888">کار</font> را برای تمام ساعات کاری ایجاد کنید.<br>
-        - <b>2</b>. یک قانون regex ایجاد کنید.<br>
-        &emsp; توضیحات: <font color="#888888">کاری</font><br>
+        - <b>2</b>. یک قانون Regex ایجاد کنید.<br>
+        &emsp; توضیحات: <font color="#888888">در حال کار</font><br>
         - <b>3</b>. یک جریان کار ایجاد کنید:<br>
         &ensp; - <b>رویداد تقویم</b><br>
          &emsp;&emsp; عنوان رویداد: <font color="#888888">کار</font><br>
-        &ensp; - <b>پیدا کردن قوانین</b><br>
-         &emsp;&emsp; توضیحات: <font color="#888888">کاری</font><br>
-        &ensp; - <b>تغییر قوانین</b><br>
+        &ensp; - <b>یافتن قوانین</b><br>
+         &emsp;&emsp; توضیحات: <font color="#888888">در حال کار</font><br>
+        &ensp; - <b>ویرایش قوانین</b><br>
          &emsp;&emsp; پیکربندی: <font color="#888888">{ "flags": 0 }</font> (این قانون را غیرفعال می‌کند)<br>
         <br>
-        &ensp; (اینجا از چندین <b>پیدا کردن قوانین</b> و <b>تغییر قوانین</b> پشتیبانی می‌کند)<br>
+        &ensp; (اینجا از چندین <b>یافتن قوانین</b> و <b>ویرایش قوانین</b> پشتیبانی می‌کند)<br>
         ]]>
     </string>
     <string name="sms_event">رویداد پیامک</string>
     <string name="help_sms_event">
         <![CDATA[
-        این به طور خودکار با پیامک‌های ورودی قبل از بررسی فعال می‌شود.<br>
+        این به صورت خودکار بر روی پیام‌های ورودی SMS قبل از بررسی آنها فعال می‌شود.<br>
         <br>
-        این عمل باید اولین عمل در گردش کار باشد.<br>
+        این عمل باید اولین مورد در جریان کار باشد.<br>
         <br>
-        این می‌تواند با اعمال دیگر مانند <b>یافتن قوانین</b> و <b>اصلاح قوانین</b> مرتبط شود.<br>
-        - اگر شماره پیامک و محتوا مطابقت داشته باشند، گردش کار به اجرا ادامه خواهد داد.<br>
-        - در غیر این صورت، گردش کار خاتمه می‌یابد.<br>
+        این را می‌توان با اقدامات دیگری مانند <b>یافتن قوانین</b> و <b>ویرایش قوانین</b> ترکیب کرد.<br>
+        - اگر شماره پیامک و محتوا مطابقت داشته باشند، جریان کار ادامه خواهد یافت.<br>
+        - در غیر این صورت، جریان کار خاتمه می‌یابد.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">رویداد پیامک %s فعال شد.</string>
     <string name="use_global_testing_instead">به جای آن از آزمایش سراسری استفاده کنید.</string>
+    <string name="missing_permissions">مجوزهای زیر قبلاً اعطا شده بودند اما در حال حاضر موجود نیستند:</string>
+    <string name="grant_permissions">اعطای مجوزها</string>
+    <string name="perm_call_screening">فیلتر تماس</string>
+    <string name="perm_file_read">خواندن فایل</string>
+    <string name="perm_file_write">نوشتن فایل</string>
+    <string name="perm_contacts">مخاطبین</string>
+    <string name="perm_receive_sms">دریافت پیامک</string>
+    <string name="perm_receive_mms">دریافت MMS</string>
+    <string name="perm_answer_calls">پاسخ به تماس‌ها</string>
+    <string name="perm_call_logs">گزارش تماس‌ها</string>
+    <string name="perm_phone_state">وضعیت تلفن</string>
+    <string name="perm_read_sms">خواندن پیامک</string>
+    <string name="perm_read_calendar">خواندن تقویم</string>
+    <string name="perm_notification_access">دسترسی به اعلان‌ها</string>
+    <string name="perm_usage_stats">آمار مصرف</string>
+    <string name="perm_battery_unrestricted">باتری بدون محدودیت</string>
 </resources>

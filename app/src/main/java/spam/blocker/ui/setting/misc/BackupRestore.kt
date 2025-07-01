@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -11,25 +12,32 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import spam.blocker.Events
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FlowRowSpaced
+import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
+import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.ui.widgets.rememberFileWriteChooser
 import spam.blocker.util.Algorithm.b64Decode
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Launcher
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionType
+import spam.blocker.util.PermissionWrapper
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -90,6 +98,7 @@ fun ImportButton() {
 
     var succeeded by remember { mutableStateOf(false) }
     val resultTrigger = rememberSaveable { mutableStateOf(false) }
+    var prevPermissions by remember { mutableStateOf("") }
 
     if (resultTrigger.value) {
         PopupDialog(
@@ -111,6 +120,43 @@ fun ImportButton() {
                     color = LocalPalette.current.textGrey,
                     fontWeight = FontWeight.SemiBold,
                 )
+                if (succeeded && prevPermissions.isNotEmpty()) {
+
+                    val prevNames = prevPermissions
+                        .split(",")
+                        .filter { it.isNotEmpty() }
+
+                    val missingPermissions = Permission.all()
+                        // all previous permissions
+                        .filter {
+                            prevNames.contains(it::class.java.simpleName)
+                        }
+                        // not granted
+                        .filter {
+                            !it.isGranted
+                        }
+                        // map to Wrapper
+                        .map {
+                            PermissionWrapper(it)
+                        }
+                    if (missingPermissions.isNotEmpty()) {
+                        Text(
+                            text = Str(R.string.missing_permissions),
+                            color = DarkOrange,
+                        )
+
+                        missingPermissions.forEach {
+                            GreyLabel(it.perm.desc(ctx))
+                        }
+
+                        StrokeButton(
+                            label = Str(R.string.grant_permissions),
+                            color = Teal200,
+                        ) {
+                            G.permissionChain.ask(ctx, missingPermissions) { }
+                        }
+                    }
+                }
             },
             onDismiss = {
                 if (succeeded)
@@ -130,6 +176,7 @@ fun ImportButton() {
                 val newCfg = Configs.createFromJson(str)
                 newCfg.apply(ctx, includeSpamDB)
 
+                prevPermissions = newCfg.permissions.allEnabledNames
                 succeeded = true
                 resultTrigger.value = true
 

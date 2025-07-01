@@ -1,46 +1,62 @@
 <resources>
     <string name="auto_copy">自動コピー</string>
-    <string name="help_auto_copy">通知の「コピー」ボタンをタップすることなく、内容を自動的にクリップボードにコピーします。</string>
+    <string name="help_auto_copy">通知の「コピー」ボタンをタップする必要なく、コンテンツを自動的にクリップボードにコピーします。</string>
     <string name="calendar_event">カレンダーイベント</string>
     <string name="event_title">イベントタイトル</string>
-    <string name="rule_updated_temporarily">正規表現ルール %s は、カレンダーイベント %s: %s のため一時的に変更されました。</string>
+    <string name="rule_updated_temporarily">正規表現ルール %s は、カレンダーイベント %s: %s により一時的に変更されました。</string>
     <string name="help_calendar_event">
         <![CDATA[
-        カレンダーイベントに基づいてルールを一時的に変更します。変更は設定を変更することなく一時的に適用されます。<br>
+        カレンダーイベントに基づいて一時的にルールを変更します。変更は設定を変更することなく一時的に適用されます。<br>
         <br>
-        このアクションはワークフローの最初に配置する必要があります。このようなワークフローは着信時に自動的にトリガーされます。<br>
+        このアクションはワークフローの最初である必要があります。このようなワークフローは着信時に自動的にトリガーされます。<br>
         <br>
         <b>使用例</b>:<br>
-        &ensp; <font color="#888888">シフト勤務者が2日間、午前7時から午前10時まで日勤し、その後2日間、午後7時から午後10時まで夜勤します。<br>
-        &ensp; 勤務時間中に一部のルールを無効または有効にする必要があります。</font><<br>
+        &ensp; <font color="#888888">シフト勤務者が2日間午前7時から午前10時まで日勤し、その後2日間午後7時から午後10時まで夜勤する場合を想定します。<br>
+        &ensp; 勤務時間中は一部のルールを無効または有効にする必要があります。</font><<br>
         <br>
         設定例:<br>
-        - <b>1</b>. カレンダーアプリで、すべての勤務時間についてカレンダーイベント <font color="#888888">work</font> を作成します。<br>
+        - <b>1</b>. カレンダーアプリで、すべての勤務時間に対してカレンダーイベント <font color="#888888">work</font> を作成します。<br>
         - <b>2</b>. 正規表現ルールを作成します。<br>
         &emsp; 説明: <font color="#888888">working</font><br>
         - <b>3</b>. ワークフローを作成します。<br>
         &ensp; - <b>カレンダーイベント</b><br>
          &emsp;&emsp; イベントタイトル: <font color="#888888">work</font><br>
-        &ensp; - <b>ルールを検索</b><br>
+        &ensp; - <b>ルール検索</b><br>
          &emsp;&emsp; 説明: <font color="#888888">working</font><br>
-        &ensp; - <b>ルールを変更</b><br>
+        &ensp; - <b>ルール変更</b><br>
          &emsp;&emsp; 設定: <font color="#888888">{ "flags": 0 }</font> (これによりルールが無効になります)<br>
         <br>
-        &ensp; (ここでは複数の<b>ルールを検索</b>および<b>ルールを変更</b>をサポートしています)<br>
+        &ensp; (ここでは複数の<b>ルール検索</b>と<b>ルール変更</b>をサポートしています)<br>
         ]]>
     </string>
     <string name="sms_event">SMSイベント</string>
     <string name="help_sms_event">
         <![CDATA[
-        これは着信SMSメッセージがスクリーニングされる前に自動的にトリガーされます。<br>
+        これは、着信SMSメッセージがスクリーニングされる前に自動的にトリガーされます。<br>
         <br>
-        このアクションはワークフローの最初のステップでなければなりません。<br>
+        このアクションはワークフローの最初である必要があります。<br>
         <br>
-        これは、<b>ルールを検索</b>や<b>ルールを変更</b>などの他のアクションと連携させることができます。<br>
-        - SMSの電話番号と内容が一致する場合、ワークフローは実行を継続します。<br>
-        - それ以外の場合、ワークフローは終了します。<br>
+        これは、<b>ルール検索</b>や<b>ルール変更</b>などの他のアクションと連結できます。<br>
+        - SMS番号とコンテンツが一致する場合、ワークフローは実行を継続します。<br>
+        - そうでない場合、ワークフローは終了します。<br>
         ]]>
     </string>
     <string name="sms_event_triggered">SMSイベント %s がトリガーされました。</string>
     <string name="use_global_testing_instead">代わりにグローバルテストを使用してください。</string>
+    <string name="missing_permissions">以下の権限は以前付与されていましたが、現在不足しています:</string>
+    <string name="grant_permissions">権限を付与する</string>
+    <string name="perm_call_screening">通話スクリーニング</string>
+    <string name="perm_file_read">ファイルの読み取り</string>
+    <string name="perm_file_write">ファイルの書き込み</string>
+    <string name="perm_contacts">連絡先</string>
+    <string name="perm_receive_sms">SMSの受信</string>
+    <string name="perm_receive_mms">MMSの受信</string>
+    <string name="perm_answer_calls">通話に応答</string>
+    <string name="perm_call_logs">通話履歴</string>
+    <string name="perm_phone_state">電話の状態</string>
+    <string name="perm_read_sms">SMSの読み取り</string>
+    <string name="perm_read_calendar">カレンダーの読み取り</string>
+    <string name="perm_notification_access">通知アクセス</string>
+    <string name="perm_usage_stats">使用状況の統計</string>
+    <string name="perm_battery_unrestricted">バッテリー制限なし</string>
 </resources>

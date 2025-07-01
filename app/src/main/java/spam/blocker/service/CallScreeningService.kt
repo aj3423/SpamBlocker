@@ -23,6 +23,7 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.Type
 import spam.blocker.util.Util
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 fun Details.getRawNumber(): String {
@@ -104,6 +105,7 @@ class CallScreeningService : CallScreeningService() {
     }
 
     override fun onScreenCall(details: Details) {
+        logi("onScreenCall() invoked by Android")
         // 1. With this coroutine, this function returns immediately without blocking the whole process.
         //   So other services will get executed simultaneously.
         //   Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
@@ -128,6 +130,7 @@ class CallScreeningService : CallScreeningService() {
         if (details.callDirection != Details.DIRECTION_INCOMING)
             return
 
+        logi("Screening incoming call")
         if (!spf.Global(this).isGloballyEnabled() || !spf.Global(this).isCallEnabled()) {
             pass(details)
             return

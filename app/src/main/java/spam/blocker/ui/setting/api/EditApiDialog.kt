@@ -68,9 +68,9 @@ fun EditApiDialog(
                 enabled = !anyError,
                 onClick = {
                     // Gather all required permissions for all actions
-                    val missingPermissions = actions.map { it.requiredPermissions(ctx) }.flatten()
+                    val requiredPermissions = actions.map { it.requiredPermissions(ctx) }.flatten()
 
-                    G.permissionChain.ask(ctx, missingPermissions) { isGranted ->
+                    G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
                         if (isGranted) {
                             trigger.value = false
 

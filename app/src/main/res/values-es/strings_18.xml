@@ -1,19 +1,19 @@
 <resources>
-    <string name="auto_copy">Copia Automática</string>
-    <string name="help_auto_copy">Copiar automáticamente el contenido al portapapeles sin necesidad de tocar el botón "Copiar" en la notificación.</string>
+    <string name="auto_copy">Copia automática</string>
+    <string name="help_auto_copy">Copia automáticamente el contenido al portapapeles sin necesidad de tocar el botón "Copiar" en la notificación.</string>
     <string name="calendar_event">Evento de Calendario</string>
     <string name="event_title">Título del Evento</string>
-    <string name="rule_updated_temporarily">La regla regex %s ha sido modificada temporalmente debido al evento de calendario %s: %s</string>
+    <string name="rule_updated_temporarily">La regla Regex %s se ha modificado temporalmente debido al evento de calendario %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporalmente las reglas basándose en eventos de calendario, los cambios se aplican de forma temporal sin alterar la configuración.<br>
+        Modifica temporalmente las reglas basándose en eventos del calendario; los cambios se aplican de forma temporal sin alterar la configuración.<br>
         <br>
-        Esta acción debe ser la primera en el flujo de trabajo, dicho flujo de trabajo se activará automáticamente por una llamada entrante.<br>
+        Esta acción debe ser la primera en el flujo de trabajo; dicho flujo de trabajo se activará automáticamente con una llamada entrante.<br>
         <br>
         <b>Un caso de uso</b>:<br>
         &ensp; <font color="#888888">Un trabajador por turnos trabaja el turno de día de 7 AM a 10 AM durante dos días,
           luego el turno de noche de 7 PM a 10 PM durante los dos días siguientes.<br>
-        &ensp; Algunas reglas deben ser deshabilitadas o habilitadas durante las horas de trabajo.</font><<br>
+        &ensp; Algunas reglas deben deshabilitarse o habilitarse durante las horas de trabajo.</font><<br>
         <br>
         Una configuración de ejemplo:<br>
         - <b>1</b>. En la aplicación de calendario, crea eventos de calendario <font color="#888888">trabajo</font> para todas las horas de trabajo.<br>
@@ -27,21 +27,37 @@
         &ensp; - <b>Modificar Reglas</b><br>
          &emsp;&emsp; configuración: <font color="#888888">{ "flags": 0 }</font> (esto deshabilitará la regla)<br>
         <br>
-        &ensp; (Aquí admite múltiples <b>Buscar Reglas</b> y <b>Modificar Reglas</b>)<br>
+        &ensp; (Soporta múltiples <b>Buscar Reglas</b> y <b>Modificar Reglas</b> aquí)<br>
         ]]>
     </string>
-    <string name="sms_event">Evento SMS</string>
+    <string name="sms_event">Evento de SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Esto se activará automáticamente en los mensajes SMS entrantes antes de que sean filtrados.<br>
+        Esto se activará automáticamente con los mensajes SMS entrantes antes de que sean filtrados.<br>
         <br>
         Esta acción debe ser la primera en el flujo de trabajo.<br>
         <br>
-        Esto se puede encadenar con otras acciones como <b>Encontrar Reglas</b> y <b>Modificar Reglas</b>.<br>
-        - Si el número SMS y el contenido coinciden, el flujo de trabajo seguirá ejecutándose.<br>
+        Esto se puede encadenar con otras acciones como <b>Buscar Reglas</b> y <b>Modificar Reglas</b>.<br>
+        - Si el número de SMS y el contenido coinciden, el flujo de trabajo continuará ejecutándose.<br>
         - De lo contrario, el flujo de trabajo terminará.<br>
         ]]>
     </string>
-    <string name="sms_event_triggered">Evento SMS %s activado.</string>
-    <string name="use_global_testing_instead">Usar la prueba global en su lugar.</string>
+    <string name="sms_event_triggered">El evento de SMS %s se ha activado.</string>
+    <string name="use_global_testing_instead">Usa las pruebas globales en su lugar.</string>
+    <string name="missing_permissions">Los siguientes permisos fueron concedidos previamente pero actualmente faltan:</string>
+    <string name="grant_permissions">Conceder Permisos</string>
+    <string name="perm_call_screening">Filtrado de Llamadas</string>
+    <string name="perm_file_read">Lectura de Archivos</string>
+    <string name="perm_file_write">Escritura de Archivos</string>
+    <string name="perm_contacts">Contactos</string>
+    <string name="perm_receive_sms">Recibir SMS</string>
+    <string name="perm_receive_mms">Recibir MMS</string>
+    <string name="perm_answer_calls">Responder Llamadas</string>
+    <string name="perm_call_logs">Registros de Llamadas</string>
+    <string name="perm_phone_state">Estado del Teléfono</string>
+    <string name="perm_read_sms">Leer SMS</string>
+    <string name="perm_read_calendar">Leer Calendario</string>
+    <string name="perm_notification_access">Acceso a Notificaciones</string>
+    <string name="perm_usage_stats">Estadísticas de Uso</string>
+    <string name="perm_battery_unrestricted">Batería Sin Restricciones</string>
 </resources>

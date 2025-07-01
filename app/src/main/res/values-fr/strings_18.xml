@@ -1,18 +1,18 @@
 <resources>
     <string name="auto_copy">Copie automatique</string>
-    <string name="help_auto_copy">Copie automatiquement le contenu dans le presse-papiers sans avoir besoin d\'appuyer sur le bouton "Copier" dans la notification.</string>
-    <string name="calendar_event">Événement Calendrier</string>
+    <string name="help_auto_copy">Copie automatiquement le contenu dans le presse-papiers sans avoir à appuyer sur le bouton "Copier" dans la notification.</string>
+    <string name="calendar_event">Événement du calendrier</string>
     <string name="event_title">Titre de l\'événement</string>
     <string name="rule_updated_temporarily">La règle Regex %s est temporairement modifiée en raison de l\'événement de calendrier %s : %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifiez temporairement les règles en fonction des événements du calendrier, les changements sont appliqués temporairement sans altérer la configuration.<br>
+        Modifie temporairement les règles en fonction des événements du calendrier, les modifications sont appliquées temporairement sans altérer la configuration.<br>
         <br>
-        Cette action doit être la première du flux de travail, un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
+        Cette action doit être la première dans le flux de travail, un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
         <br>
         <b>Un cas d\'utilisation</b> :<br>
         &ensp; <font color="#888888">Un travailleur posté travaille de jour de 7h à 10h pendant deux jours,
-          puis de nuit de 19h à 22h pendant les deux jours suivants.<br>
+          puis de nuit de 19h à 22h les deux jours suivants.<br>
         &ensp; Certaines règles doivent être désactivées ou activées pendant les heures de travail.</font><<br>
         <br>
         Un exemple de configuration :<br>
@@ -20,28 +20,44 @@
         - <b>2</b>. Créez une règle regex.<br>
         &emsp; description : <font color="#888888">working</font><br>
         - <b>3</b>. Créez un flux de travail :<br>
-        &ensp; - <b>Événement Calendrier</b><br>
+        &ensp; - <b>Événement du calendrier</b><br>
          &emsp;&emsp; titre de l\'événement : <font color="#888888">work</font><br>
-        &ensp; - <b>Trouver des Règles</b><br>
+        &ensp; - <b>Trouver les règles</b><br>
          &emsp;&emsp; description : <font color="#888888">working</font><br>
-        &ensp; - <b>Modifier des Règles</b><br>
-         &emsp;&emsp; configuration : <font color="#888888">{ "flags": 0 }</font> (cela désactivera la règle)<br>
+        &ensp; - <b>Modifier les règles</b><br>
+         &emsp;&emsp; config : <font color="#888888">{ "flags": 0 }</font> (cela désactivera la règle)<br>
         <br>
-        &ensp; (Cela supporte plusieurs <b>Trouver des Règles</b> et <b>Modifier des Règles</b> ici)<br>
+        &ensp; (Il prend en charge plusieurs actions <b>Trouver les règles</b> et <b>Modifier les règles</b> ici)<br>
         ]]>
     </string>
     <string name="sms_event">Événement SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Cela sera automatiquement déclenché lors des messages SMS entrants avant qu\'ils ne soient filtrés.<br>
+        Ceci sera automatiquement déclenché lors de la réception de messages SMS avant qu\'ils ne soient filtrés.<br>
         <br>
         Cette action doit être la première dans le flux de travail.<br>
         <br>
-        Ceci peut être enchaîné avec d\'autres actions comme <b>Trouver des règles</b> et <b>Modifier des règles</b>.<br>
-        - Si le numéro SMS et le contenu correspondent, le flux de travail continuera à s\'exécuter.<br>
+        Ceci peut être enchaîné avec d\'autres actions comme <b>Trouver les règles</b> et <b>Modifier les règles</b>.<br>
+        - Si le numéro de téléphone SMS et le contenu correspondent, le flux de travail continuera à s\'exécuter.<br>
         - Sinon, le flux de travail se terminera.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">L\'événement SMS %s est déclenché.</string>
     <string name="use_global_testing_instead">Utilisez plutôt le test global.</string>
+    <string name="missing_permissions">Les autorisations suivantes étaient précédemment accordées mais sont actuellement manquantes :</string>
+    <string name="grant_permissions">Accorder les autorisations</string>
+    <string name="perm_call_screening">Filtrage des appels</string>
+    <string name="perm_file_read">Lecture de fichiers</string>
+    <string name="perm_file_write">Écriture de fichiers</string>
+    <string name="perm_contacts">Contacts</string>
+    <string name="perm_receive_sms">Recevoir des SMS</string>
+    <string name="perm_receive_mms">Recevoir des MMS</string>
+    <string name="perm_answer_calls">Répondre aux appels</string>
+    <string name="perm_call_logs">Journaux d\'appels</string>
+    <string name="perm_phone_state">État du téléphone</string>
+    <string name="perm_read_sms">Lire les SMS</string>
+    <string name="perm_read_calendar">Lire le calendrier</string>
+    <string name="perm_notification_access">Accès aux notifications</string>
+    <string name="perm_usage_stats">Statistiques d\'utilisation</string>
+    <string name="perm_battery_unrestricted">Batterie illimitée</string>
 </resources>

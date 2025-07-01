@@ -1,23 +1,23 @@
 <resources>
     <string name="auto_copy">Cópia Automática</string>
-    <string name="help_auto_copy">Copia automaticamente o conteúdo para a área de transferência sem precisar tocar no botão "Copiar" na notificação.</string>
+    <string name="help_auto_copy">Copia automaticamente o conteúdo para a área de transferência sem a necessidade de tocar no botão "Copiar" na notificação.</string>
     <string name="calendar_event">Evento de Calendário</string>
     <string name="event_title">Título do Evento</string>
-    <string name="rule_updated_temporarily">Regra Regex %s foi temporariamente modificada devido ao evento de calendário %s: %s</string>
+    <string name="rule_updated_temporarily">A regra de Regex %s é temporariamente modificada devido ao evento de calendário %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporariamente as regras com base em eventos de calendário, as alterações são aplicadas temporariamente sem alterar a configuração.<br>
+        Modifica temporariamente regras com base em eventos de calendário, as alterações são aplicadas temporariamente sem alterar a configuração.<br>
         <br>
-        Esta ação deve ser a primeira no fluxo de trabalho, tal fluxo de trabalho será automaticamente acionado por uma chamada recebida.<br>
+        Esta ação deve ser a primeira no fluxo de trabalho; tal fluxo de trabalho será acionado automaticamente por uma chamada recebida.<br>
         <br>
         <b>Um caso de uso</b>:<br>
-        &ensp; <font color="#888888">Um trabalhador de turno trabalha no turno diurno das 7h às 10h por dois dias,
-          depois no turno noturno das 19h às 22h pelos próximos dois dias.<br>
-        &ensp; Algumas regras devem ser desativadas ou ativadas durante o horário de trabalho.</font><<br>
+        &ensp; <font color="#888888">Um trabalhador de turnos trabalha no turno diurno das 7h às 10h por dois dias,
+          e depois no turno noturno das 19h às 22h pelos próximos dois dias.<br>
+        &ensp; Algumas regras devem ser desabilitadas ou habilitadas durante o horário de trabalho.</font><<br>
         <br>
         Uma configuração de exemplo:<br>
-        - <b>1</b>. No aplicativo de calendário, crie eventos de calendário <font color="#888888">trabalho</font> para todas as horas de trabalho.<br>
-        - <b>2</b>. Crie uma regra regex.<br>
+        - <b>1</b>. No aplicativo de calendário, crie eventos de calendário <font color="#888888">trabalho</font> para todos os horários de trabalho.<br>
+        - <b>2</b>. Crie uma regra de regex.<br>
         &emsp; descrição: <font color="#888888">trabalhando</font><br>
         - <b>3</b>. Crie um fluxo de trabalho:<br>
         &ensp; - <b>Evento de Calendário</b><br>
@@ -25,12 +25,12 @@
         &ensp; - <b>Encontrar Regras</b><br>
          &emsp;&emsp; descrição: <font color="#888888">trabalhando</font><br>
         &ensp; - <b>Modificar Regras</b><br>
-         &emsp;&emsp; configuração: <font color="#888888">{ "flags": 0 }</font> (isso desativará a regra)<br>
+         &emsp;&emsp; config: <font color="#888888">{ "flags": 0 }</font> (isso desativará a regra)<br>
         <br>
-        &ensp; (Suporta múltiplas <b>Encontrar Regras</b> e <b>Modificar Regras</b> aqui)<br>
+        &ensp; (Suporta múltiplas ações <b>Encontrar Regras</b> e <b>Modificar Regras</b> aqui)<br>
         ]]>
     </string>
-    <string name="sms_event">Evento SMS</string>
+    <string name="sms_event">Evento de SMS</string>
     <string name="help_sms_event">
         <![CDATA[
         Isso será acionado automaticamente em mensagens SMS recebidas antes que sejam rastreadas.<br>
@@ -42,6 +42,22 @@
         - Caso contrário, o fluxo de trabalho será encerrado.<br>
         ]]>
     </string>
-    <string name="sms_event_triggered">Evento SMS %s foi acionado.</string>
+    <string name="sms_event_triggered">O evento de SMS %s foi acionado.</string>
     <string name="use_global_testing_instead">Use o teste global em vez disso.</string>
+    <string name="missing_permissions">As seguintes permissões foram concedidas anteriormente, mas estão atualmente ausentes:</string>
+    <string name="grant_permissions">Conceder Permissões</string>
+    <string name="perm_call_screening">Triagem de Chamadas</string>
+    <string name="perm_file_read">Leitura de Arquivo</string>
+    <string name="perm_file_write">Escrita de Arquivo</string>
+    <string name="perm_contacts">Contatos</string>
+    <string name="perm_receive_sms">Receber SMS</string>
+    <string name="perm_receive_mms">Receber MMS</string>
+    <string name="perm_answer_calls">Atender Chamadas</string>
+    <string name="perm_call_logs">Registros de Chamadas</string>
+    <string name="perm_phone_state">Estado do Telefone</string>
+    <string name="perm_read_sms">Ler SMS</string>
+    <string name="perm_read_calendar">Ler Calendário</string>
+    <string name="perm_notification_access">Acesso à Notificação</string>
+    <string name="perm_usage_stats">Estatísticas de Uso</string>
+    <string name="perm_battery_unrestricted">Bateria Sem Restrições</string>
 </resources>

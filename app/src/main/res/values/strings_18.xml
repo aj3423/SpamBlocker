@@ -44,4 +44,20 @@
     </string>
     <string name="sms_event_triggered">SMS event %s is triggered.</string>
     <string name="use_global_testing_instead">Use the global testing instead.</string>
+    <string name="missing_permissions">Following permissions were previously granted but are currently missing:</string>
+    <string name="grant_permissions">Grant Permissions</string>
+    <string name="perm_call_screening">Call Screening</string>
+    <string name="perm_file_read">File Read</string>
+    <string name="perm_file_write">File Write</string>
+    <string name="perm_contacts">Contacts</string>
+    <string name="perm_receive_sms">Receive SMS</string>
+    <string name="perm_receive_mms">Receive MMS</string>
+    <string name="perm_answer_calls">Answer Calls</string>
+    <string name="perm_call_logs">Call Logs</string>
+    <string name="perm_phone_state">Phone State</string>
+    <string name="perm_read_sms">Read SMS</string>
+    <string name="perm_read_calendar">Read Calendar</string>
+    <string name="perm_notification_access">Notification Access</string>
+    <string name="perm_usage_stats">Usage Stats</string>
+    <string name="perm_battery_unrestricted">Battery Unrestricted</string>
 </resources>

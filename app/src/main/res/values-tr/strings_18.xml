@@ -1,22 +1,22 @@
 <resources>
     <string name="auto_copy">Otomatik Kopyala</string>
-    <string name="help_auto_copy">İçeriği bildirimdeki "Kopyala" düğmesine dokunmaya gerek kalmadan otomatik olarak panoya kopyala.</string>
+    <string name="help_auto_copy">İçeriği bildirimdeki "Kopyala" düğmesine dokunmaya gerek kalmadan otomatik olarak panoya kopyalar.</string>
     <string name="calendar_event">Takvim Etkinliği</string>
     <string name="event_title">Etkinlik Başlığı</string>
-    <string name="rule_updated_temporarily">Takvim etkinliği %s nedeniyle regex kuralı %s geçici olarak değiştirildi: %s</string>
+    <string name="rule_updated_temporarily">Takvim etkinliği %s nedeniyle Regex kuralı %s geçici olarak değiştirildi: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Takvim etkinliklerine göre kuralları geçici olarak değiştirir, yapılandırmayı değiştirmeden geçici olarak uygulanır.<br>
+        Takvim etkinliklerine göre kuralları geçici olarak değiştirir, değişiklikler yapılandırmayı değiştirmeden geçici olarak uygulanır.<br>
         <br>
-        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir arama ile otomatik olarak tetiklenir.<br>
+        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir arama ile otomatik olarak tetiklenecektir.<br>
         <br>
-        <b>Bir kullanım örneği</b>:<br>
-        &ensp; <font color="#888888">Bir vardiyalı çalışan, iki gün boyunca sabah 7\'den sabah 10\'a kadar gündüz vardiyasında,
-          sonraki iki gün boyunca akşam 7\'den akşam 10\'a kadar gece vardiyasında çalışır.<br>
+        <b>Bir kullanım durumu</b>:<br>
+        &ensp; <font color="#888888">Vardiyalı bir işçi iki gün boyunca sabah 7\'den 10\'a kadar gündüz vardiyasında,
+          sonraki iki gün boyunca ise akşam 7\'den 10\'a kadar gece vardiyasında çalışır.<br>
         &ensp; Bazı kurallar çalışma saatleri içinde devre dışı bırakılmalı veya etkinleştirilmelidir.</font><<br>
         <br>
         Örnek bir kurulum:<br>
-        - <b>1</b>. Takvim uygulamasında, tüm çalışma saatleri için <font color="#888888">iş</font> takvim etkinlikleri oluşturun.<br>
+        - <b>1</b>. Takvim uygulamasında takvim etkinlikleri <font color="#888888">iş</font> tüm çalışma saatleri için oluşturun.<br>
         - <b>2</b>. Bir regex kuralı oluşturun.<br>
         &emsp; açıklama: <font color="#888888">çalışıyor</font><br>
         - <b>3</b>. Bir iş akışı oluşturun:<br>
@@ -27,7 +27,7 @@
         &ensp; - <b>Kuralları Değiştir</b><br>
          &emsp;&emsp; yapılandırma: <font color="#888888">{ "flags": 0 }</font> (bu kuralı devre dışı bırakacaktır)<br>
         <br>
-        &ensp; (Burada birden fazla <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> destekler)<br>
+        &ensp; (Burada birden fazla <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> desteklenir)<br>
         ]]>
     </string>
     <string name="sms_event">SMS Etkinliği</string>
@@ -39,9 +39,25 @@
         <br>
         Bu, <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> gibi diğer eylemlerle zincirlenebilir.<br>
         - SMS numarası ve içeriği eşleşirse, iş akışı yürütülmeye devam edecektir.<br>
-        - Aksi takdirde, iş akışı sonlanacaktır.<br>
+        - Aksi takdirde, iş akışı sonlandırılacaktır.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">SMS etkinliği %s tetiklendi.</string>
-    <string name="use_global_testing_instead">Bunun yerine genel testi kullanın.</string>
+    <string name="use_global_testing_instead">Bunun yerine genel test özelliğini kullanın.</string>
+    <string name="missing_permissions">Aşağıdaki izinler daha önce verilmişti ancak şu anda eksik:</string>
+    <string name="grant_permissions">İzinleri Ver</string>
+    <string name="perm_call_screening">Çağrı Tarama</string>
+    <string name="perm_file_read">Dosya Okuma</string>
+    <string name="perm_file_write">Dosya Yazma</string>
+    <string name="perm_contacts">Kişiler</string>
+    <string name="perm_receive_sms">SMS Al</string>
+    <string name="perm_receive_mms">MMS Al</string>
+    <string name="perm_answer_calls">Çağrıları Yanıtla</string>
+    <string name="perm_call_logs">Çağrı Kayıtları</string>
+    <string name="perm_phone_state">Telefon Durumu</string>
+    <string name="perm_read_sms">SMS Oku</string>
+    <string name="perm_read_calendar">Takvim Oku</string>
+    <string name="perm_notification_access">Bildirim Erişimi</string>
+    <string name="perm_usage_stats">Kullanım İstatistikleri</string>
+    <string name="perm_battery_unrestricted">Pil Kısıtlamasız</string>
 </resources>

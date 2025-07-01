@@ -3,45 +3,61 @@
     <string name="help_auto_copy">自动将内容复制到剪贴板，无需点击通知中的“复制”按钮。</string>
     <string name="calendar_event">日历事件</string>
     <string name="event_title">事件标题</string>
-    <string name="rule_updated_temporarily">正则表达式规则 %s 因日历事件 %s 而暂时修改：%s</string>
+    <string name="rule_updated_temporarily">正则表达式规则 %s 因日历事件 %s：%s 而临时修改。</string>
     <string name="help_calendar_event">
         <![CDATA[
-        根据日历事件临时修改规则，更改是临时应用的，不会更改配置。<br>
+        根据日历事件临时修改规则，更改是临时应用的，不会改变配置。<br>
         <br>
-        此操作必须是工作流程中的第一个，此类工作流程将由来电自动触发。<br>
+        此操作必须是工作流中的第一个操作，此类工作流将由来电自动触发。<br>
         <br>
-        <b>一个用例</b>：<br>
-        &ensp; <font color="#888888">一名倒班工人，先上两天白班（上午 7 点到上午 10 点），
-          再上两天夜班（晚上 7 点到晚上 10 点）。<br>
-        &ensp; 在工作时间，某些规则必须被禁用或启用。</font><<br>
+        <b>一个使用案例</b>：<br>
+        &ensp; <font color="#888888">一个轮班工人白天从上午7点到上午10点工作两天，
+          然后晚上从晚上7点到晚上10点工作两天。<br>
+        &ensp; 某些规则必须在工作时间内禁用或启用。</font><<br>
         <br>
         一个示例设置：<br>
         - <b>1</b>. 在日历应用中，为所有工作时间创建日历事件 <font color="#888888">工作</font>。<br>
-        - <b>2</b>. 创建正则表达式规则。<br>
-        &emsp; 描述：<font color="#888888">工作中</font><br>
-        - <b>3</b>. 创建工作流程：<br>
+        - <b>2</b>. 创建一个正则表达式规则。<br>
+        &emsp; 描述： <font color="#888888">工作时间</font><br>
+        - <b>3</b>. 创建一个工作流：<br>
         &ensp; - <b>日历事件</b><br>
-         &emsp;&emsp; 事件标题：<font color="#888888">工作</font><br>
+         &emsp;&emsp; 事件标题： <font color="#888888">工作</font><br>
         &ensp; - <b>查找规则</b><br>
-         &emsp;&emsp; 描述：<font color="#888888">工作中</font><br>
+         &emsp;&emsp; 描述： <font color="#888888">工作时间</font><br>
         &ensp; - <b>修改规则</b><br>
-         &emsp;&emsp; 配置：<font color="#888888">{ "flags": 0 }</font> (这将禁用该规则)<br>
+         &emsp;&emsp; 配置： <font color="#888888">{ "flags": 0 }</font>（这将禁用该规则）<br>
         <br>
-        &ensp; (此处支持多个<b>查找规则</b>和<b>修改规则</b>)<br>
+        &ensp; （此处支持多个<b>查找规则</b>和<b>修改规则</b>）<br>
         ]]>
     </string>
     <string name="sms_event">短信事件</string>
     <string name="help_sms_event">
         <![CDATA[
-        这将在收到的短信被筛选之前自动触发。<br>
+        这将在传入短信被筛选之前自动触发。<br>
         <br>
-        此操作必须是工作流程中的第一个。<br>
+        此操作必须是工作流中的第一个操作。<br>
         <br>
-        这可以与 <b>查找规则</b> 和 <b>修改规则</b> 等其他操作链接使用。<br>
-        - 如果短信号码和内容匹配，工作流程将继续执行。<br>
-        - 否则，工作流程将终止。<br>
+        这可以与其他操作（如<b>查找规则</b>和<b>修改规则</b>）链式连接。<br>
+        - 如果短信电话号码和内容匹配，工作流将继续执行。<br>
+        - 否则，工作流将终止。<br>
         ]]>
     </string>
     <string name="sms_event_triggered">短信事件 %s 已触发。</string>
-    <string name="use_global_testing_instead">请改用全局测试。</string>
+    <string name="use_global_testing_instead">请使用全局测试。</string>
+    <string name="missing_permissions">以下权限之前已授予，但目前缺失：</string>
+    <string name="grant_permissions">授予权限</string>
+    <string name="perm_call_screening">来电筛选</string>
+    <string name="perm_file_read">文件读取</string>
+    <string name="perm_file_write">文件写入</string>
+    <string name="perm_contacts">联系人</string>
+    <string name="perm_receive_sms">接收短信</string>
+    <string name="perm_receive_mms">接收彩信</string>
+    <string name="perm_answer_calls">接听电话</string>
+    <string name="perm_call_logs">通话记录</string>
+    <string name="perm_phone_state">电话状态</string>
+    <string name="perm_read_sms">读取短信</string>
+    <string name="perm_read_calendar">读取日历</string>
+    <string name="perm_notification_access">通知访问权限</string>
+    <string name="perm_usage_stats">使用情况统计</string>
+    <string name="perm_battery_unrestricted">电池无限制</string>
 </resources>

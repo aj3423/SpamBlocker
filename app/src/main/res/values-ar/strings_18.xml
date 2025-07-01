@@ -6,42 +6,31 @@
     <string name="rule_updated_temporarily">تم تعديل قاعدة التعبير النمطي %s مؤقتًا بسبب حدث التقويم %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        تعديل القواعد مؤقتًا بناءً على أحداث التقويم، يتم تطبيق التغييرات مؤقتًا دون تغيير التكوين.<br>
-        <br>
-        يجب أن يكون هذا الإجراء هو الأول في سير العمل، وسيتم تشغيل سير العمل هذا تلقائيًا عند مكالمة واردة.<br>
-        <br>
-        <b>حالة استخدام</b>:<br>
-        &ensp; <font color="#888888">يعمل عامل المناوبات نوبة نهارية من 7 صباحًا إلى 10 صباحًا لمدة يومين،
-          ثم نوبة ليلية من 7 مساءً إلى 10 مساءً لليومين التاليين.<br>
-        &ensp; يجب تعطيل أو تفعيل بعض القواعد خلال ساعات العمل.</font><<br>
-        <br>
-        إعداد نموذجي:<br>
-        - <b>1</b>. في تطبيق التقويم، أنشئ أحداث تقويم <font color="#888888">عمل</font> لجميع ساعات العمل.<br>
-        - <b>2</b>. أنشئ قاعدة تعبير نمطي.<br>
-        &emsp; الوصف: <font color="#888888">عمل</font><br>
-        - <b>3</b>. أنشئ سير عمل:<br>
-        &ensp; - <b>حدث التقويم</b><br>
-         &emsp;&emsp; عنوان الحدث: <font color="#888888">عمل</font><br>
-        &ensp; - <b>البحث عن قواعد</b><br>
-         &emsp;&emsp; الوصف: <font color="#888888">عمل</font><br>
-        &ensp; - <b>تعديل القواعد</b><br>
-         &emsp;&emsp; التكوين: <font color="#888888">{ "flags": 0 }</font> (هذا سيعطل القاعدة)<br>
-        <br>
-        &ensp; (يدعم هذا خيارات متعددة لـ <b>البحث عن قواعد</b> و <b>تعديل القواعد</b> هنا)<br>
+        تعديل القواعد مؤقتًا بناءً على أحداث التقويم، يتم تطبيق التغييرات مؤقتًا دون تعديل التكوين.<br><br>يجب أن يكون هذا الإجراء هو الأول في سير العمل، وسيتم تشغيل سير العمل هذا تلقائيًا بواسطة مكالمة واردة.<br><br><b>حالة استخدام</b>:<br>&ensp; <font color="#888888">عامل بنظام المناوبات يعمل في نوبة النهار من الساعة 7 صباحًا حتى 10 صباحًا لمدة يومين، ثم نوبة الليل من الساعة 7 مساءً حتى 10 مساءً لليومين التاليين.<br>&ensp; يجب تعطيل أو تمكين بعض القواعد خلال ساعات العمل.</font><<br><br>إعداد نموذجي:<br>- <b>1</b>. في تطبيق التقويم، قم بإنشاء أحداث تقويم <font color="#888888">عمل</font> لجميع ساعات العمل.<br>- <b>2</b>. قم بإنشاء قاعدة تعبير نمطي.<br>&emsp; الوصف: <font color="#888888">عمل</font><br>- <b>3</b>. قم بإنشاء سير عمل:<br>&ensp; - <b>حدث التقويم</b><br>&emsp;&emsp; عنوان الحدث: <font color="#888888">عمل</font><br>&ensp; - <b>البحث عن القواعد</b><br>&emsp;&emsp; الوصف: <font color="#888888">عمل</font><br>&ensp; - <b>تعديل القواعد</b><br>&emsp;&emsp; التكوين: <font color="#888888">{ "flags": 0 }</font> (سيؤدي هذا إلى تعطيل القاعدة)<br><br>&ensp; (يدعم هذا الخيار عدة <b>البحث عن القواعد</b> و <b>تعديل القواعد</b> هنا)
         ]]>
     </string>
-    <string name="sms_event">حدث الرسائل القصيرة</string>
+    <string name="sms_event">حدث الرسائل النصية</string>
     <string name="help_sms_event">
         <![CDATA[
-        سيتم تشغيل هذا تلقائيًا عند وصول رسائل SMS قبل فحصها.<br>
-        <br>
-        يجب أن يكون هذا الإجراء هو الأول في سير العمل.<br>
-        <br>
-        يمكن ربط هذا بإجراءات أخرى مثل <b>البحث عن القواعد</b> و<b>تعديل القواعد</b>.<br>
-        - إذا تطابق رقم SMS والمحتوى، فسيستمر سير العمل في التنفيذ.<br>
-        - وإلا، فسينتهي سير العمل.<br>
+        سيتم تشغيل هذا تلقائيًا عند وصول رسائل SMS قبل فحصها.<br><br>يجب أن يكون هذا الإجراء هو الأول في سير العمل.<br><br>يمكن ربط هذا بإجراءات أخرى مثل <b>البحث عن القواعد</b> و <b>تعديل القواعد</b>.<br>- إذا تطابق رقم الرسالة النصية ومحتواها، فسيستمر سير العمل في التنفيذ.<br>- وإلا، فسينتهي سير العمل.<br>
         ]]>
     </string>
-    <string name="sms_event_triggered">تم تشغيل حدث الرسائل القصيرة %s.</string>
+    <string name="sms_event_triggered">تم تشغيل حدث الرسائل النصية %s.</string>
     <string name="use_global_testing_instead">استخدم الاختبار العام بدلاً من ذلك.</string>
+    <string name="missing_permissions">الأذونات التالية مُنحت سابقًا ولكنها مفقودة حاليًا:</string>
+    <string name="grant_permissions">منح الأذونات</string>
+    <string name="perm_call_screening">فحص المكالمات</string>
+    <string name="perm_file_read">قراءة الملفات</string>
+    <string name="perm_file_write">كتابة الملفات</string>
+    <string name="perm_contacts">جهات الاتصال</string>
+    <string name="perm_receive_sms">استلام الرسائل النصية</string>
+    <string name="perm_receive_mms">استلام رسائل الوسائط المتعددة</string>
+    <string name="perm_answer_calls">الرد على المكالمات</string>
+    <string name="perm_call_logs">سجلات المكالمات</string>
+    <string name="perm_phone_state">حالة الهاتف</string>
+    <string name="perm_read_sms">قراءة الرسائل النصية</string>
+    <string name="perm_read_calendar">قراءة التقويم</string>
+    <string name="perm_notification_access">الوصول إلى الإشعارات</string>
+    <string name="perm_usage_stats">إحصائيات الاستخدام</string>
+    <string name="perm_battery_unrestricted">البطارية غير مقيدة</string>
 </resources>

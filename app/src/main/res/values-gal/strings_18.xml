@@ -1,47 +1,63 @@
 <resources>
     <string name="auto_copy">Copia Automática</string>
-    <string name="help_auto_copy">Copiar automaticamente o contido ao portapapeis sen ter que tocar o botón "Copiar" na notificación.</string>
-    <string name="calendar_event">Evento do Calendario</string>
+    <string name="help_auto_copy">Copia automaticamente o contido ao portapapeis sen necesidade de tocar o botón "Copiar" na notificación.</string>
+    <string name="calendar_event">Evento de Calendario</string>
     <string name="event_title">Título do Evento</string>
-    <string name="rule_updated_temporarily">A regra Regex %s foi modificada temporalmente debido ao evento do calendario %s: %s</string>
+    <string name="rule_updated_temporarily">A regra de expresión regular %s está temporalmente modificada debido ao evento de calendario %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporalmente as regras en función dos eventos do calendario; os cambios aplícanse de xeito temporal sen alterar a configuración.<br>
+        Modifica temporalmente as regras baseándose en eventos de calendario; os cambios aplícanse de forma temporal sen alterar a configuración.<br>
         <br>
-        Esta acción debe ser a primeira no fluxo de traballo; un fluxo de traballo así activarase automaticamente por unha chamada entrante.<br>
+        Esta acción debe ser a primeira no fluxo de traballo; dito fluxo de traballo activarase automaticamente por unha chamada entrante.<br>
         <br>
         <b>Un caso de uso</b>:<br>
         &ensp; <font color="#888888">Un traballador por quendas traballa na quenda de día de 7 AM a 10 AM durante dous días,
-          e despois na quenda de noite de 7 PM a 10 PM durante os dous días seguintes.<br>
-        &ensp; Algunhas regras deben ser desactivadas ou activadas durante o horario laboral.</font><<br>
+          despois na quenda de noite de 7 PM a 10 PM durante os dous días seguintes.<br>
+        &ensp; Algunhas regras deben ser deshabilitadas ou habilitadas durante as horas de traballo.</font><<br>
         <br>
         Unha configuración de exemplo:<br>
         - <b>1</b>. Na aplicación de calendario, crea eventos de calendario <font color="#888888">traballo</font> para todas as horas de traballo.<br>
-        - <b>2</b>. Crea unha regra regex.<br>
-        &emsp; descrición: <font color="#888888">traballando</font><br>
+        - <b>2</b>. Crea unha regra de expresión regular.<br>
+        &emsp; descrición: <font color="#888888">traballo</font><br>
         - <b>3</b>. Crea un fluxo de traballo:<br>
-        &ensp; - <b>Evento do Calendario</b><br>
+        &ensp; - <b>Evento de Calendario</b><br>
          &emsp;&emsp; título do evento: <font color="#888888">traballo</font><br>
-        &ensp; - <b>Atopar Regras</b><br>
-         &emsp;&emsp; descrición: <font color="#888888">traballando</font><br>
+        &ensp; - <b>Buscar Regras</b><br>
+         &emsp;&emsp; descrición: <font color="#888888">traballo</font><br>
         &ensp; - <b>Modificar Regras</b><br>
-         &emsp;&emsp; configuración: <font color="#888888">{ "flags": 0 }</font> (isto desactivará a regra)<br>
+         &emsp;&emsp; configuración: <font color="#888888">{ "flags": 0 }</font> (isto deshabilitará a regra)<br>
         <br>
-        &ensp; (Soporta múltiples <b>Atopar Regras</b> e <b>Modificar Regras</b> aquí)<br>
+        &ensp; (Soporta múltiples <b>Buscar Regras</b> e <b>Modificar Regras</b> aquí)<br>
         ]]>
     </string>
-    <string name="sms_event">Evento SMS</string>
+    <string name="sms_event">Evento de SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Isto activarase automaticamente coas mensaxes SMS entrantes antes de que sexan filtradas.<br>
+        Isto activarase automaticamente en mensaxes SMS entrantes antes de que sexan filtradas.<br>
         <br>
         Esta acción debe ser a primeira no fluxo de traballo.<br>
         <br>
         Isto pódese encadear con outras accións como <b>Buscar Regras</b> e <b>Modificar Regras</b>.<br>
-        - Se o número de teléfono SMS e o contido coinciden, o fluxo de traballo continuará executándose.<br>
-        - En caso contrario, o fluxo de traballo terminará.<br>
+        - Se o número de SMS e o contido coinciden, o fluxo de traballo seguirá executándose.<br>
+        - En caso contrario, o fluxo de traballo finalizará.<br>
         ]]>
     </string>
-    <string name="sms_event_triggered">O evento SMS %s activouse.</string>
-    <string name="use_global_testing_instead">Usa a proba global no seu lugar.</string>
+    <string name="sms_event_triggered">O evento de SMS %s activouse.</string>
+    <string name="use_global_testing_instead">Usa as probas globais no seu lugar.</string>
+    <string name="missing_permissions">Os seguintes permisos foron concedidos previamente pero están actualmente ausentes:</string>
+    <string name="grant_permissions">Conceder Permisos</string>
+    <string name="perm_call_screening">Filtrado de Chamadas</string>
+    <string name="perm_file_read">Lectura de Ficheiros</string>
+    <string name="perm_file_write">Escritura de Ficheiros</string>
+    <string name="perm_contacts">Contactos</string>
+    <string name="perm_receive_sms">Recibir SMS</string>
+    <string name="perm_receive_mms">Recibir MMS</string>
+    <string name="perm_answer_calls">Contestar Chamadas</string>
+    <string name="perm_call_logs">Rexistro de Chamadas</string>
+    <string name="perm_phone_state">Estado do Teléfono</string>
+    <string name="perm_read_sms">Ler SMS</string>
+    <string name="perm_read_calendar">Ler Calendario</string>
+    <string name="perm_notification_access">Acceso a Notificacións</string>
+    <string name="perm_usage_stats">Estatísticas de Uso</string>
+    <string name="perm_battery_unrestricted">Batería sen Restricións</string>
 </resources>

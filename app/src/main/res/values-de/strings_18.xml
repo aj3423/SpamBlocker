@@ -1,25 +1,25 @@
 <resources>
     <string name="auto_copy">Auto-Kopieren</string>
-    <string name="help_auto_copy">Kopiert den Inhalt automatisch in die Zwischenablage, ohne auf die Schaltfläche „Kopieren“ in der Benachrichtigung tippen zu müssen.</string>
+    <string name="help_auto_copy">Inhalte automatisch in die Zwischenablage kopieren, ohne auf die Schaltfläche „Kopieren“ in der Benachrichtigung tippen zu müssen.</string>
     <string name="calendar_event">Kalenderereignis</string>
     <string name="event_title">Ereignistitel</string>
-    <string name="rule_updated_temporarily">Regex-Regel %s wurde aufgrund des Kalenderereignisses %s temporär geändert: %s</string>
+    <string name="rule_updated_temporarily">Die Regex-Regel %s wurde aufgrund des Kalenderereignisses %s temporär geändert: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Regeln basierend auf Kalenderereignissen temporär ändern, Änderungen werden temporär angewendet, ohne die Konfiguration zu verändern.<br>
+        Regeln temporär basierend auf Kalenderereignissen ändern; Änderungen werden temporär angewendet, ohne die Konfiguration zu verändern.<br>
         <br>
-        Diese Aktion muss die erste im Workflow sein, ein solcher Workflow wird durch einen eingehenden Anruf automatisch ausgelöst.<br>
+        Diese Aktion muss die erste im Arbeitsablauf sein; ein solcher Arbeitsablauf wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
         <br>
         <b>Ein Anwendungsfall</b>:<br>
         &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage lang die Tagschicht von 7 bis 10 Uhr,
-          dann die nächsten zwei Tage die Nachtschicht von 19 bis 22 Uhr.<br>
-        &ensp; Einige Regeln müssen während der Arbeitszeiten deaktiviert oder aktiviert werden.</font><<br>
+          dann zwei Tage lang die Nachtschicht von 19 bis 22 Uhr.<br>
+        &ensp; Einige Regeln müssen während der Arbeitszeit deaktiviert oder aktiviert werden.</font><<br>
         <br>
         Ein Beispiel-Setup:<br>
         - <b>1</b>. Erstellen Sie in der Kalender-App Kalenderereignisse <font color="#888888">Arbeit</font> für alle Arbeitszeiten.<br>
         - <b>2</b>. Erstellen Sie eine Regex-Regel.<br>
         &emsp; Beschreibung: <font color="#888888">Arbeiten</font><br>
-        - <b>3</b>. Erstellen Sie einen Workflow:<br>
+        - <b>3</b>. Erstellen Sie einen Arbeitsablauf:<br>
         &ensp; - <b>Kalenderereignis</b><br>
          &emsp;&emsp; Ereignistitel: <font color="#888888">Arbeit</font><br>
         &ensp; - <b>Regeln finden</b><br>
@@ -27,21 +27,37 @@
         &ensp; - <b>Regeln ändern</b><br>
          &emsp;&emsp; Konfiguration: <font color="#888888">{ "flags": 0 }</font> (dies deaktiviert die Regel)<br>
         <br>
-        &ensp; (Es werden hier mehrere <b>Regeln finden</b> und <b>Regeln ändern</b> unterstützt)<br>
+        &ensp; (Es unterstützt hier mehrere <b>Regeln finden</b> und <b>Regeln ändern</b>.)<br>
         ]]>
     </string>
     <string name="sms_event">SMS-Ereignis</string>
     <string name="help_sms_event">
         <![CDATA[
-        Dies wird bei eingehenden SMS-Nachrichten automatisch ausgelöst, bevor diese gefiltert werden.<br>
+        Dies wird automatisch bei eingehenden SMS-Nachrichten ausgelöst, bevor sie überprüft werden.<br>
         <br>
-        Diese Aktion muss die erste im Workflow sein.<br>
+        Diese Aktion muss die erste im Arbeitsablauf sein.<br>
         <br>
         Dies kann mit anderen Aktionen wie <b>Regeln finden</b> und <b>Regeln ändern</b> verkettet werden.<br>
-        - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Workflow weiter ausgeführt.<br>
-        - Andernfalls wird der Workflow beendet.<br>
+        - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Arbeitsablauf weiter ausgeführt.<br>
+        - Andernfalls wird der Arbeitsablauf beendet.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">SMS-Ereignis %s wurde ausgelöst.</string>
-    <string name="use_global_testing_instead">Verwenden Sie stattdessen den globalen Test.</string>
+    <string name="use_global_testing_instead">Verwenden Sie stattdessen die globale Testfunktion.</string>
+    <string name="missing_permissions">Folgende Berechtigungen wurden zuvor erteilt, fehlen aber derzeit:</string>
+    <string name="grant_permissions">Berechtigungen erteilen</string>
+    <string name="perm_call_screening">Anruf-Filterung</string>
+    <string name="perm_file_read">Datei lesen</string>
+    <string name="perm_file_write">Datei schreiben</string>
+    <string name="perm_contacts">Kontakte</string>
+    <string name="perm_receive_sms">SMS empfangen</string>
+    <string name="perm_receive_mms">MMS empfangen</string>
+    <string name="perm_answer_calls">Anrufe annehmen</string>
+    <string name="perm_call_logs">Anrufprotokolle</string>
+    <string name="perm_phone_state">Telefonstatus</string>
+    <string name="perm_read_sms">SMS lesen</string>
+    <string name="perm_read_calendar">Kalender lesen</string>
+    <string name="perm_notification_access">Benachrichtigungszugriff</string>
+    <string name="perm_usage_stats">Nutzungsstatistiken</string>
+    <string name="perm_battery_unrestricted">Uneingeschränkte Akkunutzung</string>
 </resources>

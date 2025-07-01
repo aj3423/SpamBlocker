@@ -1,47 +1,63 @@
 <resources>
     <string name="auto_copy">Автокопіювання</string>
-    <string name="help_auto_copy">Автоматично копіювати вміст у буфер обміну без необхідності натискати кнопку "Копіювати" у сповіщенні.</string>
+    <string name="help_auto_copy">Автоматично копіювати вміст до буфера обміну без необхідності натискати кнопку «Копіювати» у сповіщенні.</string>
     <string name="calendar_event">Подія календаря</string>
     <string name="event_title">Назва події</string>
-    <string name="rule_updated_temporarily">Регулярне правило %s тимчасово змінено через подію календаря %s: %s</string>
+    <string name="rule_updated_temporarily">Правило регулярного виразу %s тимчасово змінено через подію календаря %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
         Тимчасово змінюйте правила на основі подій календаря, зміни застосовуються тимчасово без зміни конфігурації.<br>
         <br>
-        Ця дія має бути першою в робочому процесі, такий робочий процес буде автоматично запущений вхідним дзвінком.<br>
+        Ця дія має бути першою у робочому процесі, такий робочий процес буде автоматично запускатися при вхідному дзвінку.<br>
         <br>
-        <b>Приклад використання</b>:<br>
-        &ensp; <font color="#888888">Змінний працівник працює в денну зміну з 7:00 до 10:00 протягом двох днів,
-          потім у нічну зміну з 19:00 до 22:00 протягом наступних двох днів.<br>
-        &ensp; Деякі правила повинні бути вимкнені або ввімкнені протягом робочих годин.</font><<br>
+        <b>Варіант використання</b>:<br>
+        &ensp; <font color="#888888">Працівник зі змінним графіком працює денну зміну з 7:00 до 10:00 протягом двох днів,
+          потім нічну зміну з 19:00 до 22:00 протягом наступних двох днів.<br>
+        &ensp; Деякі правила мають бути вимкнені або увімкнені в робочі години.</font><<br>
         <br>
         Приклад налаштування:<br>
-        - <b>1</b>. У програмі календаря створіть події календаря <font color="#888888">робота</font> для всіх робочих годин.<br>
-        - <b>2</b>. Створіть регулярне правило.<br>
-        &emsp; опис: <font color="#888888">робота</font><br>
+        - <b>1</b>. У програмі календаря створіть події календаря <font color="#888888">work</font> для всіх робочих годин.<br>
+        - <b>2</b>. Створіть правило регулярного виразу.<br>
+        &emsp; опис: <font color="#888888">working</font><br>
         - <b>3</b>. Створіть робочий процес:<br>
         &ensp; - <b>Подія календаря</b><br>
-         &emsp;&emsp; назва події: <font color="#888888">робота</font><br>
+         &emsp;&emsp; назва події: <font color="#888888">work</font><br>
         &ensp; - <b>Знайти правила</b><br>
-         &emsp;&emsp; опис: <font color="#888888">робота</font><br>
+         &emsp;&emsp; опис: <font color="#888888">working</font><br>
         &ensp; - <b>Змінити правила</b><br>
          &emsp;&emsp; конфігурація: <font color="#888888">{ "flags": 0 }</font> (це вимкне правило)<br>
         <br>
-        &ensp; (Підтримує кілька <b>Знайти правила</b> та <b>Змінити правила</b> тут)<br>
+        &ensp; (Тут підтримується кілька <b>Знайти правила</b> та <b>Змінити правила</b>)<br>
         ]]>
     </string>
-    <string name="sms_event">SMS-подія</string>
+    <string name="sms_event">Подія SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Ця дія буде автоматично запущена при вхідних SMS-повідомленнях до їх перевірки.<br>
+        Це автоматично спрацьовуватиме при вхідних SMS-повідомленнях до їх перевірки.<br>
         <br>
-        Ця дія має бути першою в робочому процесі.<br>
+        Ця дія має бути першою у робочому процесі.<br>
         <br>
-        Її можна поєднати з іншими діями, такими як <b>Знайти правила</b> та <b>Змінити правила</b>.<br>
+        Це можна поєднати з іншими діями, такими як <b>Знайти правила</b> та <b>Змінити правила</b>.<br>
         - Якщо номер SMS та вміст збігаються, робочий процес продовжить виконання.<br>
-        - В іншому випадку робочий процес буде завершено.<br>
+        - В іншому випадку, робочий процес буде припинено.<br>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMS-подію %s запущено.</string>
-    <string name="use_global_testing_instead">Використовуйте глобальне тестування замість цього.</string>
+    <string name="sms_event_triggered">Подія SMS %s спрацьовує.</string>
+    <string name="use_global_testing_instead">Використовуйте замість цього глобальне тестування.</string>
+    <string name="missing_permissions">Наступні дозволи були раніше надані, але наразі відсутні:</string>
+    <string name="grant_permissions">Надати дозволи</string>
+    <string name="perm_call_screening">Фільтрація дзвінків</string>
+    <string name="perm_file_read">Читання файлів</string>
+    <string name="perm_file_write">Запис файлів</string>
+    <string name="perm_contacts">Контакти</string>
+    <string name="perm_receive_sms">Отримання SMS</string>
+    <string name="perm_receive_mms">Отримання MMS</string>
+    <string name="perm_answer_calls">Відповідь на дзвінки</string>
+    <string name="perm_call_logs">Журнали дзвінків</string>
+    <string name="perm_phone_state">Стан телефону</string>
+    <string name="perm_read_sms">Читати SMS</string>
+    <string name="perm_read_calendar">Читати календар</string>
+    <string name="perm_notification_access">Доступ до сповіщень</string>
+    <string name="perm_usage_stats">Статистика використання</string>
+    <string name="perm_battery_unrestricted">Батарея без обмежень</string>
 </resources>

@@ -1,33 +1,33 @@
 <resources>
     <string name="auto_copy">Copia automatica</string>
     <string name="help_auto_copy">Copia automaticamente il contenuto negli appunti senza dover toccare il pulsante "Copia" nella notifica.</string>
-    <string name="calendar_event">Evento del calendario</string>
-    <string name="event_title">Titolo evento</string>
-    <string name="rule_updated_temporarily">La regola regex %s è temporaneamente modificata a causa dell\'evento del calendario %s: %s</string>
+    <string name="calendar_event">Evento Calendario</string>
+    <string name="event_title">Titolo Evento</string>
+    <string name="rule_updated_temporarily">La regola Regex %s è stata temporaneamente modificata a causa dell\'evento del calendario %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
         Modifica temporaneamente le regole in base agli eventi del calendario, le modifiche vengono applicate temporaneamente senza alterare la configurazione.<br>
         <br>
-        Questa azione deve essere la prima nel flusso di lavoro; tale flusso di lavoro verrà attivato automaticamente da una chiamata in arrivo.<br>
+        Questa azione deve essere la prima nel flusso di lavoro, un tale flusso di lavoro verrà attivato automaticamente da una chiamata in arrivo.<br>
         <br>
         <b>Un caso d\'uso</b>:<br>
-        &ensp; <font color="#888888">Un lavoratore a turni svolge il turno diurno dalle 7 alle 10 per due giorni,
+        &ensp; <font color="#888888">Un lavoratore a turni lavora il turno diurno dalle 7 alle 10 per due giorni,
           poi il turno notturno dalle 19 alle 22 per i due giorni successivi.<br>
-        &ensp; Alcune regole devono essere disabilitate o abilitate durante l\'orario di lavoro.</font><<br>
+        &ensp; Alcune regole devono essere disattivate o attivate durante l\'orario di lavoro.</font><<br>
         <br>
-        Un esempio di configurazione:<br>
-        - <b>1</b>. Nell\'app del calendario, crea eventi del calendario <font color="#888888">lavoro</font> per tutte le ore lavorative.<br>
+        Una configurazione di esempio:<br>
+        - <b>1</b>. Nell\'app del calendario, crea eventi del calendario <font color="#888888">work</font> per tutte le ore lavorative.<br>
         - <b>2</b>. Crea una regola regex.<br>
-        &emsp; descrizione: <font color="#888888">lavoro</font><br>
+        &emsp; descrizione: <font color="#888888">working</font><br>
         - <b>3</b>. Crea un flusso di lavoro:<br>
-        &ensp; - <b>Evento del calendario</b><br>
-         &emsp;&emsp; titolo evento: <font color="#888888">lavoro</font><br>
-        &ensp; - <b>Trova regole</b><br>
-         &emsp;&emsp; descrizione: <font color="#888888">lavoro</font><br>
-        &ensp; - <b>Modifica regole</b><br>
-         &emsp;&emsp; configurazione: <font color="#888888">{ "flags": 0 }</font> (questo disabiliterà la regola)<br>
+        &ensp; - <b>Evento Calendario</b><br>
+         &emsp;&emsp; titolo evento: <font color="#888888">work</font><br>
+        &ensp; - <b>Trova Regole</b><br>
+         &emsp;&emsp; descrizione: <font color="#888888">working</font><br>
+        &ensp; - <b>Modifica Regole</b><br>
+         &emsp;&emsp; config: <font color="#888888">{ "flags": 0 }</font> (questo disattiverà la regola)<br>
         <br>
-        &ensp; (Supporta più <b>Trova regole</b> e <b>Modifica regole</b> qui)<br>
+        &ensp; (Supporta più <b>Trova Regole</b> e <b>Modifica Regole</b> qui)<br>
         ]]>
     </string>
     <string name="sms_event">Evento SMS</string>
@@ -38,10 +38,26 @@
         Questa azione deve essere la prima nel flusso di lavoro.<br>
         <br>
         Questo può essere concatenato con altre azioni come <b>Trova Regole</b> e <b>Modifica Regole</b>.<br>
-        - Se il numero di telefono SMS e il contenuto corrispondono, il flusso di lavoro continuerà l\'esecuzione.<br>
+        - Se il numero SMS e il contenuto corrispondono, il flusso di lavoro continuerà l\'esecuzione.<br>
         - Altrimenti, il flusso di lavoro terminerà.<br>
         ]]>
     </string>
-    <string name="sms_event_triggered">L\'evento SMS %s è attivato.</string>
+    <string name="sms_event_triggered">L\'evento SMS %s è stato attivato.</string>
     <string name="use_global_testing_instead">Usa invece il test globale.</string>
+    <string name="missing_permissions">Le seguenti autorizzazioni erano state precedentemente concesse ma sono attualmente mancanti:</string>
+    <string name="grant_permissions">Concedi Autorizzazioni</string>
+    <string name="perm_call_screening">Filtro Chiamate</string>
+    <string name="perm_file_read">Lettura File</string>
+    <string name="perm_file_write">Scrittura File</string>
+    <string name="perm_contacts">Contatti</string>
+    <string name="perm_receive_sms">Ricevi SMS</string>
+    <string name="perm_receive_mms">Ricevi MMS</string>
+    <string name="perm_answer_calls">Rispondi a Chiamate</string>
+    <string name="perm_call_logs">Registri Chiamate</string>
+    <string name="perm_phone_state">Stato Telefono</string>
+    <string name="perm_read_sms">Leggi SMS</string>
+    <string name="perm_read_calendar">Leggi Calendario</string>
+    <string name="perm_notification_access">Accesso Notifiche</string>
+    <string name="perm_usage_stats">Statistiche Utilizzo</string>
+    <string name="perm_battery_unrestricted">Batteria Illimitata</string>
 </resources>

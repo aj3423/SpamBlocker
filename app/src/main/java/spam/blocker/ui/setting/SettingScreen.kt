@@ -320,11 +320,6 @@ fun LabeledRow(
     isCollapsed: Boolean? = false,
     toggleCollapse: Lambda? = null,
 
-    // Show gray label if this feature is enabled but the permission is not granted
-    // - null: the content doesn't need any permission
-    // - true/false: is permission granted or not
-    missingPermission: Boolean = false,
-
     // Items on the right side, e.g.: "New" button
     content: @Composable RowScope.() -> Unit,
 ) {
@@ -345,10 +340,7 @@ fun LabeledRow(
             if (labelId != null) {
                 SettingLabel(
                     labelId,
-                    color = if (missingPermission)
-                        DarkOrange
-                    else
-                        color
+                    color = color
                 )
             }
 

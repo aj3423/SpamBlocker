@@ -1,18 +1,18 @@
 <resources>
     <string name="auto_copy">Salin Otomatis</string>
-    <string name="help_auto_copy">Salin otomatis konten ke papan klip tanpa perlu mengetuk tombol "Salin" di notifikasi.</string>
+    <string name="help_auto_copy">Menyalin konten secara otomatis ke papan klip tanpa perlu menekan tombol "Salin" di notifikasi.</string>
     <string name="calendar_event">Acara Kalender</string>
     <string name="event_title">Judul Acara</string>
-    <string name="rule_updated_temporarily">Aturan Regex %s diubah sementara karena acara kalender %s: %s</string>
+    <string name="rule_updated_temporarily">Aturan regex %s diubah sementara karena acara kalender %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
         Mengubah aturan sementara berdasarkan acara kalender, perubahan diterapkan sementara tanpa mengubah konfigurasi.<br>
         <br>
-        Tindakan ini harus menjadi yang pertama dalam alur kerja, alur kerja semacam itu akan secara otomatis terpicu oleh panggilan masuk.<br>
+        Tindakan ini harus menjadi yang pertama dalam alur kerja, alur kerja tersebut akan otomatis terpicu oleh panggilan masuk.<br>
         <br>
         <b>Contoh kasus penggunaan</b>:<br>
-        &ensp; <font color="#888888">Seorang pekerja shift bekerja shift pagi dari jam 7 pagi hingga 10 pagi selama dua hari,
-          kemudian shift malam dari jam 7 malam hingga 10 malam selama dua hari berikutnya.<br>
+        &ensp; <font color="#888888">Seorang pekerja shift bekerja shift pagi dari jam 7 pagi sampai 10 pagi selama dua hari,
+          kemudian shift malam dari jam 7 malam sampai 10 malam selama dua hari berikutnya.<br>
         &ensp; Beberapa aturan harus dinonaktifkan atau diaktifkan selama jam kerja.</font><<br>
         <br>
         Contoh pengaturan:<br>
@@ -22,26 +22,42 @@
         - <b>3</b>. Buat alur kerja:<br>
         &ensp; - <b>Acara Kalender</b><br>
          &emsp;&emsp; judul acara: <font color="#888888">kerja</font><br>
-        &ensp; - <b>Temukan Aturan</b><br>
+        &ensp; - <b>Cari Aturan</b><br>
          &emsp;&emsp; deskripsi: <font color="#888888">bekerja</font><br>
         &ensp; - <b>Ubah Aturan</b><br>
          &emsp;&emsp; konfigurasi: <font color="#888888">{ "flags": 0 }</font> (ini akan menonaktifkan aturan)<br>
         <br>
-        &ensp; (Mendukung beberapa <b>Temukan Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
+        &ensp; (Ini mendukung beberapa <b>Cari Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
         ]]>
     </string>
     <string name="sms_event">Acara SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Ini akan secara otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
+        Ini akan otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
         <br>
         Tindakan ini harus menjadi yang pertama dalam alur kerja.<br>
         <br>
-        Ini dapat digabungkan dengan tindakan lain seperti <b>Temukan Aturan</b> dan <b>Ubah Aturan</b>.<br>
-        - Jika nomor SMS dan konten cocok, alur kerja akan terus dieksekusi.<br>
+        Ini dapat digabungkan dengan tindakan lain seperti <b>Cari Aturan</b> dan <b>Ubah Aturan</b>.<br>
+        - Jika nomor SMS dan konten cocok, alur kerja akan terus berjalan.<br>
         - Jika tidak, alur kerja akan berakhir.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">Acara SMS %s terpicu.</string>
-    <string name="use_global_testing_instead">Gunakan pengujian global sebagai gantinya.</string>
+    <string name="use_global_testing_instead">Gunakan pengujian global saja.</string>
+    <string name="missing_permissions">Izin berikut sebelumnya telah diberikan namun saat ini hilang:</string>
+    <string name="grant_permissions">Berikan Izin</string>
+    <string name="perm_call_screening">Penyaringan Panggilan</string>
+    <string name="perm_file_read">Baca Berkas</string>
+    <string name="perm_file_write">Tulis Berkas</string>
+    <string name="perm_contacts">Kontak</string>
+    <string name="perm_receive_sms">Terima SMS</string>
+    <string name="perm_receive_mms">Terima MMS</string>
+    <string name="perm_answer_calls">Jawab Panggilan</string>
+    <string name="perm_call_logs">Log Panggilan</string>
+    <string name="perm_phone_state">Status Telepon</string>
+    <string name="perm_read_sms">Baca SMS</string>
+    <string name="perm_read_calendar">Baca Kalender</string>
+    <string name="perm_notification_access">Akses Notifikasi</string>
+    <string name="perm_usage_stats">Statistik Penggunaan</string>
+    <string name="perm_battery_unrestricted">Baterai Tidak Dibatasi</string>
 </resources>

@@ -1,31 +1,31 @@
 <resources>
-    <string name="auto_copy">Còpia Automàtica</string>
-    <string name="help_auto_copy">Copia automàticament el contingut al porta-retalls sense necessitat de tocar el botó «Copia» a la notificació.</string>
-    <string name="calendar_event">Esdeveniment del Calendari</string>
+    <string name="auto_copy">Còpia automàtica</string>
+    <string name="help_auto_copy">Copia automàticament el contingut al porta-retalls sense necessitat de tocar el botó "Copia" a la notificació.</string>
+    <string name="calendar_event">Esdeveniment de Calendari</string>
     <string name="event_title">Títol de l\'Esdeveniment</string>
-    <string name="rule_updated_temporarily">La regla de regex %s es modifica temporalment a causa de l\'esdeveniment del calendari %s: %s</string>
+    <string name="rule_updated_temporarily">La regla de regex %s es modifica temporalment a causa de l\'esdeveniment de calendari %s: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporalment les regles basant-se en esdeveniments del calendari; els canvis s\'apliquen temporalment sense alterar la configuració.<br>
+        Modifica temporalment les regles basant-se en esdeveniments de calendari, els canvis s\'apliquen temporalment sense alterar la configuració.<br>
         <br>
-        Aquesta acció ha de ser la primera en el flux de treball; un flux de treball d\'aquest tipus s\'activarà automàticament per una trucada entrant.<br>
+        Aquesta acció ha de ser la primera del flux de treball, i aquest flux de treball s\'activarà automàticament amb una trucada entrant.<br>
         <br>
         <b>Un cas d\'ús</b>:<br>
-        &ensp; <font color="#888888">Un treballador a torns fa el torn de dia de 7 AM a 10 AM durant dos dies,
-          i després el torn de nit de 7 PM a 10 PM els dos dies següents.<br>
-        &ensp; Algunes regles s\'han de deshabilitar o habilitar durant les hores de treball.</font><<br>
+        &ensp; <font color="#888888">Un treballador a torns fa el torn de dia de 7 a 10 del matí durant dos dies,
+          després el torn de nit de 7 a 10 de la tarda durant els dos dies següents.<br>
+        &ensp; Algunes regles s\'han de desactivar o activar durant l\'horari laboral.</font><<br>
         <br>
         Una configuració d\'exemple:<br>
-        - <b>1</b>. A l\'aplicació de calendari, crea esdeveniments de calendari <font color="#888888">work</font> per a totes les hores de treball.<br>
+        - <b>1</b>. A l\'aplicació de calendari, crea esdeveniments de calendari <font color="#888888">feina</font> per a totes les hores de treball.<br>
         - <b>2</b>. Crea una regla de regex.<br>
-        &emsp; descripció: <font color="#888888">working</font><br>
+        &emsp; descripció: <font color="#888888">treballant</font><br>
         - <b>3</b>. Crea un flux de treball:<br>
-        &ensp; - <b>Esdeveniment del Calendari</b><br>
-         &emsp;&emsp; títol de l\'esdeveniment: <font color="#888888">work</font><br>
+        &ensp; - <b>Esdeveniment de Calendari</b><br>
+         &emsp;&emsp; títol de l\'esdeveniment: <font color="#888888">feina</font><br>
         &ensp; - <b>Troba Regles</b><br>
-         &emsp;&emsp; descripció: <font color="#888888">working</font><br>
+         &emsp;&emsp; descripció: <font color="#888888">treballant</font><br>
         &ensp; - <b>Modifica Regles</b><br>
-         &emsp;&emsp; configuració: <font color="#888888">{ "flags": 0 }</font> (això deshabilitarà la regla)<br>
+         &emsp;&emsp; configuració: <font color="#888888">{ "flags": 0 }</font> (això desactivarà la regla)<br>
         <br>
         &ensp; (Admet múltiples <b>Troba Regles</b> i <b>Modifica Regles</b> aquí)<br>
         ]]>
@@ -33,15 +33,31 @@
     <string name="sms_event">Esdeveniment SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Això s\'activarà automàticament amb els missatges SMS entrants abans que siguin filtrats.<br>
+        S\'activarà automàticament en missatges SMS entrants abans que siguin filtrats.<br>
         <br>
-        Aquesta acció ha de ser la primera en el flux de treball.<br>
+        Aquesta acció ha de ser la primera del flux de treball.<br>
         <br>
-        Això es pot encadenar amb altres accions com <b>Troba Regles</b> i <b>Modifica Regles</b>.<br>
+        Es pot encadenar amb altres accions com <b>Troba Regles</b> i <b>Modifica Regles</b>.<br>
         - Si el número de SMS i el contingut coincideixen, el flux de treball continuarà executant-se.<br>
         - En cas contrari, el flux de treball finalitzarà.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">L\'esdeveniment SMS %s s\'ha activat.</string>
-    <string name="use_global_testing_instead">Fes servir les proves globals en lloc d\'això.</string>
+    <string name="use_global_testing_instead">Fes servir les proves globals en lloc d\'aquestes.</string>
+    <string name="missing_permissions">Els permisos següents es van concedir prèviament però actualment no estan disponibles:</string>
+    <string name="grant_permissions">Concedeix Permisos</string>
+    <string name="perm_call_screening">Filtrat de Trucades</string>
+    <string name="perm_file_read">Lectura de Fitxers</string>
+    <string name="perm_file_write">Escriptura de Fitxers</string>
+    <string name="perm_contacts">Contactes</string>
+    <string name="perm_receive_sms">Rebre SMS</string>
+    <string name="perm_receive_mms">Rebre MMS</string>
+    <string name="perm_answer_calls">Respondre Trucades</string>
+    <string name="perm_call_logs">Registres de Trucades</string>
+    <string name="perm_phone_state">Estat del Telèfon</string>
+    <string name="perm_read_sms">Llegir SMS</string>
+    <string name="perm_read_calendar">Llegir Calendari</string>
+    <string name="perm_notification_access">Accés a Notificacions</string>
+    <string name="perm_usage_stats">Estadístiques d\'Ús</string>
+    <string name="perm_battery_unrestricted">Bateria sense Restriccions</string>
 </resources>
