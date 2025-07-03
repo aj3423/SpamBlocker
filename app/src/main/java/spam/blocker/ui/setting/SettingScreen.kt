@@ -59,7 +59,6 @@ import spam.blocker.ui.setting.regex.RuleSearchBox
 import spam.blocker.ui.setting.regex.RuleViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
-import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.theme.White

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -36,7 +35,6 @@ import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Launcher
 import spam.blocker.util.Permission
-import spam.blocker.util.PermissionType
 import spam.blocker.util.PermissionWrapper
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

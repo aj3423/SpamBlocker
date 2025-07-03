@@ -53,8 +53,6 @@ object PermissionType {
     abstract class Basic {
         var isGranted by mutableStateOf(false)
 
-        // For saving in shared prefs as `ask_once_$name`
-        abstract fun name(ctx: Context): String
         // "Read File", "Call Screening", ...
         abstract var descId: Int
         fun desc(ctx: Context): String { return ctx.getString(descId) }
@@ -71,7 +69,6 @@ object PermissionType {
         val name: String,
         override var descId: Int,
     ) : Basic() {
-        override fun name(ctx: Context): String { return name }
         override fun check(ctx: Context): Boolean {
             return ContextCompat.checkSelfPermission(ctx, name) == PERMISSION_GRANTED
         }
@@ -131,7 +128,6 @@ object PermissionType {
     // It will launch an Intent when asking for the permission.
     abstract class LaunchByIntent() : Basic() {
         abstract fun launcherIntent(ctx: Context): Intent
-        override fun name(ctx: Context): String { return launcherIntent(ctx).action!! }
         override fun check(ctx: Context): Boolean {
             throw Exception("unimplemented AskByIntent.check")
             return false

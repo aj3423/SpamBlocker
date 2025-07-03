@@ -101,7 +101,7 @@ class PermissionChain() {
 
             val isGranted = curr.perm.check(ctx)
 
-            // Update the global permission
+            // Call the result callback
             curr.perm.onResult(ctx, isGranted)
 
             if (isGranted || curr.isOptional) {
@@ -137,7 +137,7 @@ class PermissionChain() {
         }
 
         if (curr.isOptional) {
-            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm.name(ctx)}") {
+            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm::class.java.simpleName}") {
                 handleCurrPermission(ctx)
             }
             if (!isFirstTime) {

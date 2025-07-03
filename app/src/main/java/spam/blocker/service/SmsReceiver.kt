@@ -23,6 +23,7 @@ import spam.blocker.util.Notification.Type
 import spam.blocker.util.Now
 import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.Util.isSmsAppInForeground
+import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
@@ -30,6 +31,8 @@ import spam.blocker.util.spf
 open class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
+        logi("Received SMS")
+
         if (!spf.Global(ctx).isGloballyEnabled() || !spf.Global(ctx).isSmsEnabled()) {
             return
         }

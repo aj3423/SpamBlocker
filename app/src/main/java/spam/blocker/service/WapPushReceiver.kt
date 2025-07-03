@@ -22,7 +22,7 @@ object MimeTypes {
 class WapPushReceiver : SmsReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
-        logi("WapPush received...")
+        logi("Received WapPush")
 
         val spf = spf.Global(ctx)
         if (!spf.isGloballyEnabled() || !spf.isSmsEnabled() || !spf.isMmsEnabled()) {

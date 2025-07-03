@@ -9,7 +9,6 @@ import spam.blocker.R
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.HtmlText
-import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton

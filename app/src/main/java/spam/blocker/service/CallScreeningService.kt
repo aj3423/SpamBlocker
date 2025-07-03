@@ -106,20 +106,14 @@ class CallScreeningService : CallScreeningService() {
 
     override fun onScreenCall(details: Details) {
         logi("onScreenCall() invoked by Android")
-        // 1. With this coroutine, this function returns immediately without blocking the whole process.
+        // With this coroutine, this function returns immediately without blocking the whole process.
         //   So other services will get executed simultaneously.
         //   Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
-
-        // 2. On some phones, calls will be bypassed because of this coroutine,
-        //   not sure if it's caused by this, so disable it by default.
-//        if (Permission.notificationAccess.isGranted && PushAlertTable.listAll(this).isNotEmpty()) {
-            CoroutineScope(IO).launch {
-                doScreenCall(details)
-            }
-//        } else {
-//            doScreenCall(details)
-//        }
+        CoroutineScope(IO).launch {
+            doScreenCall(details)
+        }
     }
+
     private fun doScreenCall(details: Details) {
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
@@ -130,7 +124,6 @@ class CallScreeningService : CallScreeningService() {
         if (details.callDirection != Details.DIRECTION_INCOMING)
             return
 
-        logi("Screening incoming call")
         if (!spf.Global(this).isGloballyEnabled() || !spf.Global(this).isCallEnabled()) {
             pass(details)
             return
@@ -200,6 +193,8 @@ class CallScreeningService : CallScreeningService() {
         rawNumber: String,
         callDetails: Details? = null, // it's null when testing
     ): ICheckResult {
+        logi("Process incoming call")
+
         // 0. check the number with all rules, get the result
         val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
 
