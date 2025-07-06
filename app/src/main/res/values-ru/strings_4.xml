@@ -52,5 +52,5 @@
         <item>Без учёта регистра</item>
         <item>Точка соответствует всему</item>
     </string-array>
-    <string name="disable_number_optimization">Эта оптимизация может быть отключена флагом Regex "Исходный номер".</string>
+    <string name="disable_number_optimization">Эта оптимизация может быть отключена флагом регулярного выражения "Исходный номер".</string>
 </resources>
