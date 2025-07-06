@@ -60,4 +60,22 @@
     <string name="perm_notification_access">Benachrichtigungszugriff</string>
     <string name="perm_usage_stats">Nutzungsstatistiken</string>
     <string name="perm_battery_unrestricted">Uneingeschränkte Akkunutzung</string>
+    <string name="include_sms">SMS einschließen</string>
+    <string name="minimal_duration">Minimale Dauer</string>
+    <string name="answered_number">Angenommen</string>
+    <string name="help_answered">
+        <![CDATA[
+        Anrufe von zuvor angenommenen Nummern zulassen.<br>
+        <br>
+        <b>Optionen:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- Innerhalb von Tagen</font></h6>
+        Anrufe, die vor <font color="cyan">3 Tagen</font> stattfanden, werden ignoriert.<br>
+        <br>
+        <h6><font color="#00BFFF">- Minimale Dauer</font></h6>
+        Anrufe, die weniger als <font color="cyan">15 Sekunden</font> dauerten, werden ignoriert.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorität: 10</b></font>
+        ]]>
+    </string>
 </resources>

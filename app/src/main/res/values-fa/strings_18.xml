@@ -60,4 +60,22 @@
     <string name="perm_notification_access">دسترسی به اعلان‌ها</string>
     <string name="perm_usage_stats">آمار مصرف</string>
     <string name="perm_battery_unrestricted">باتری بدون محدودیت</string>
+    <string name="include_sms">شامل پیامک</string>
+    <string name="minimal_duration">حداقل مدت زمان</string>
+    <string name="answered_number">پاسخ‌داده</string>
+    <string name="help_answered">
+        <![CDATA[
+        اجازه دادن به تماس‌ها از شماره‌های قبلاً پاسخ داده شده.<br>
+        <br>
+        <b>گزینه‌ها:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- در مدت روزها</font></h6>
+        تماس‌هایی که قبل از <font color="cyan">3 روز</font> اتفاق افتاده‌اند نادیده گرفته می‌شوند.<br>
+        <br>
+        <h6><font color="#00BFFF">- حداقل مدت زمان</font></h6>
+        تماس‌هایی که کمتر از <font color="cyan">15 ثانیه</font> طول کشیده‌اند نادیده گرفته می‌شوند.<br>
+        <br>
+        <font color="#ea86ff"><b>اولویت: 10</b></font>
+        ]]>
+    </string>
 </resources>

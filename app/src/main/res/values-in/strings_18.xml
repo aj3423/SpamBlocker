@@ -60,4 +60,22 @@
     <string name="perm_notification_access">Akses Notifikasi</string>
     <string name="perm_usage_stats">Statistik Penggunaan</string>
     <string name="perm_battery_unrestricted">Baterai Tidak Dibatasi</string>
+    <string name="include_sms">Sertakan SMS</string>
+    <string name="minimal_duration">Durasi Minimal</string>
+    <string name="answered_number">Nomor Dijawab</string>
+    <string name="help_answered">
+        <![CDATA[
+        Izinkan panggilan dari nomor yang sebelumnya dijawab.<br>
+        <br>
+        <b>Opsi:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- Dalam Hari</font></h6>
+        Panggilan yang terjadi sebelum <font color="cyan">3 hari</font> diabaikan.<br>
+        <br>
+        <h6><font color="#00BFFF">- Durasi Minimal</font></h6>
+        Panggilan yang berlangsung kurang dari <font color="cyan">15 detik</font> diabaikan.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
 </resources>

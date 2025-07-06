@@ -40,6 +40,7 @@ import spam.blocker.ui.setting.misc.About
 import spam.blocker.ui.setting.misc.BackupRestore
 import spam.blocker.ui.setting.misc.Language
 import spam.blocker.ui.setting.misc.Theme
+import spam.blocker.ui.setting.quick.Answered
 import spam.blocker.ui.setting.quick.BlockType
 import spam.blocker.ui.setting.quick.Contacts
 import spam.blocker.ui.setting.quick.Dialed
@@ -153,6 +154,7 @@ fun SettingScreen() {
                             SpamDB()
                             RepeatedCall()
                             Dialed()
+                            Answered()
                             RecentApps()
                             MeetingMode()
                             OffTime()

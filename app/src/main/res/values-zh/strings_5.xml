@@ -53,15 +53,17 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        拨号号码将被允许。<br>
+        允许来自已拨号码的呼叫。<br>
         <br>
-        发送消息也计入，这只有在授予 READ_SMS 权限时才有效。<br>
+        <b>选项:</b><br>
         <br>
-        默认设置 <font color="#03DAC5"><b>3 天</b></font> 表示如果您在过去 3 天内拨打过或发送过消息给该号码，来自该号码的呼叫将被允许。<br>
+        <h6><font color="#00BFFF">- 天数内</font></h6>
+        <font color="cyan">3天</font>前发生的呼叫将被忽略。<br>
         <br>
-        仅适用于呼叫，<b>不</b>适用于短信。<br>
+        <h6><font color="#00BFFF">- 包含短信</font></h6>
+        启用后，向该号码发送短信也算在内。<br>
         <br>
-        <font color="#ea86ff"><b>优先级：10</b></font>
+        <font color="#ea86ff"><b>优先级: 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">

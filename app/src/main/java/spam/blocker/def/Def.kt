@@ -34,7 +34,11 @@ object Def {
     const val SETTING_RECENT_APP_IN_X_MIN = "recent_app_in_x_min"
     const val SETTING_MEETING_MODE_PRIORITY = "meeting_mode_priority"
     const val SETTING_PERMIT_DIALED = "permit_dialed"
+    const val SETTING_PERMIT_DIALED_BY_SMS = "permit_dialed_by_sms"
     const val SETTING_DIALED_IN_X_DAY = "dialed_in_x_day"
+    const val SETTING_PERMIT_ANSWERED = "permit_answered"
+    const val SETTING_ANSWERED_MIN_DURATION = "answered_min_duration"
+    const val SETTING_ANSWERED_IN_X_DAY = "answered_in_x_day"
     const val SETTING_BLOCK_TYPE = "block_type"
     const val SETTING_BLOCK_TYPE_CONFIG = "block_type_config"
     const val SETTING_ENABLE_OFF_TIME = "off_time"
@@ -122,8 +126,7 @@ object Def {
     const val RESULT_ALLOWED_BY_SMS_ALERT = 104
     const val RESULT_ALLOWED_BY_EMERGENCY_SITUATION = 105
     const val RESULT_ALLOWED_BY_PUSH_ALERT = 106
-
-
+    const val RESULT_ALLOWED_BY_ANSWERED = 107
 
 
 

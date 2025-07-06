@@ -54,13 +54,15 @@
     <string name="help_hang_up_delay">Penundaan sebelum panggilan ditutup (dalam detik).</string>
     <string name="help_dialed">
         <![CDATA[
-        Nomor yang dihubungi akan diizinkan.<br>
+        Izinkan panggilan dari nomor yang sebelumnya pernah dihubungi.<br>
         <br>
-        Mengirim pesan juga dihitung, ini hanya berfungsi ketika izin MEMBACA_SMS diberikan. <br>
+        <b>Opsi:</b><br>
         <br>
-        Pengaturan default <font color="#03DAC5"><b>3 Hari</b></font> berarti jika Anda telah melakukan panggilan atau mengirim pesan ke nomor tersebut dalam 3 hari terakhir, panggilan dari nomor tersebut akan diizinkan.<br>
+        <h6><font color="#00BFFF">- Dalam Hari</font></h6>
+        Panggilan yang terjadi sebelum <font color="cyan">3 hari</font> akan diabaikan.<br>
         <br>
-        Hanya berlaku untuk panggilan, <b>tidak</b> untuk pesan teks <br>
+        <h6><font color="#00BFFF">- Sertakan SMS</font></h6>
+        Ketika diaktifkan, mengirim SMS ke nomor tersebut juga diperhitungkan.<br>
         <br>
         <font color="#ea86ff"><b>Prioritas: 10</b></font>
         ]]>

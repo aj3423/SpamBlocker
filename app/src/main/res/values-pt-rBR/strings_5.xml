@@ -53,13 +53,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Números discados serão permitidos.<br>
+        Permitir chamadas de números discados anteriormente.<br>
         <br>
-        Enviar mensagens também conta, isso só funciona quando a permissão READ_SMS é concedida. <br>
+        <b>Opções:</b><br>
         <br>
-        A configuração padrão <font color="#03DAC5"><b>3 Dias</b></font> significa que se você discou ou enviou mensagens para o número nos últimos 3 dias, as chamadas desse número serão permitidas.<br>
+        <h6><font color="#00BFFF">- Em Dias</font></h6>
+        Chamadas que ocorreram antes de <font color="cyan">3 dias</font> são ignoradas.<br>
         <br>
-        Aplica-se apenas a chamadas, <b>não</b> a mensagens de texto. <br>
+        <h6><font color="#00BFFF">- Incluir SMS</font></h6>
+        Quando ativado, o envio de mensagens para esse número também conta.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>

@@ -59,4 +59,22 @@
     <string name="perm_notification_access">通知アクセス</string>
     <string name="perm_usage_stats">使用状況の統計</string>
     <string name="perm_battery_unrestricted">バッテリー制限なし</string>
+    <string name="include_sms">SMSを含める</string>
+    <string name="minimal_duration">最小通話時間</string>
+    <string name="answered_number">応答番号</string>
+    <string name="help_answered">
+        <![CDATA[
+        以前に応答した電話番号からの通話を許可します。<br>
+        <br>
+        <b>オプション:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- 日数以内</font></h6>
+        <font color="cyan">3日</font>より前に発生した通話は無視されます。<br>
+        <br>
+        <h6><font color="#00BFFF">- 最小通話時間</font></h6>
+        <font color="cyan">15秒</font>未満の通話は無視されます。<br>
+        <br>
+        <font color="#ea86ff"><b>優先度: 10</b></font>
+        ]]>
+    </string>
 </resources>

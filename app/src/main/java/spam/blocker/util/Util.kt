@@ -727,13 +727,17 @@ object Util {
             pm.getPackagesHoldingPermissions(permissions, 0)
         }
     }
-
+    class CallInfo(
+        val rawNumber: String,
+        val type: Int, // answered, missed, ...
+        val duration: Long, // in seconds
+    )
     fun getHistoryCallsByNumber(
         ctx: Context,
         phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
-    ): List<Int> {
+    ): List<CallInfo> {
         val selection = mutableListOf(
             "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
         )
@@ -748,10 +752,14 @@ object Util {
             )
         }
 
-        var ret = listOf<Int>()
+        val ret = mutableListOf<CallInfo>()
         ctx.contentResolver.query(
             Calls.CONTENT_URI,
-            arrayOf(Calls.NUMBER, Calls.TYPE),
+            arrayOf(
+                Calls.NUMBER,
+                Calls.TYPE,
+                Calls.DURATION,
+            ),
             selection.joinToString(" AND "),
             null,
             null
@@ -760,7 +768,11 @@ object Util {
                 do {
                     val calledNumber = it.getString(0)
                     if (phoneNumber.isSame(calledNumber)) {
-                        ret += it.getInt(1)
+                        ret += CallInfo(
+                            rawNumber = calledNumber,
+                            type = it.getInt(1),
+                            duration = it.getLong(2)
+                        )
                     }
                 } while (it.moveToNext())
             }

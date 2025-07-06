@@ -53,15 +53,17 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Les numéros composés seront autorisés. <br>
+        Autoriser les appels provenant de numéros précédemment composés.<br>
         <br>
-        L’envoi de messages est également pris en compte, cela ne fonctionne que lorsque l’autorisation READ_SMS est accordée. <br>
+        <b>Options :</b><br>
         <br>
-        Le paramètre par défaut <font color="#03DAC5"><b>3 jours</b></font> signifie que si vous avez composé le numéro ou lui avez envoyé des messages au cours des 3 derniers jours, les appels de ce numéro seront autorisés. <br>
+        <h6><font color="#00BFFF">- Dans les jours</font></h6>
+        Les appels qui ont eu lieu avant <font color="cyan">3 jours</font> sont ignorés.<br>
         <br>
-        Ne s’applique qu’aux appels, <b>pas</b> aux messages texte. <br>
+        <h6><font color="#00BFFF">- Inclure les SMS</font></h6>
+        Lorsqu\'activé, l\'envoi de SMS à ce numéro est également pris en compte.<br>
         <br>
-        <font color="#ea86ff"><b>Priorité : 10</b></font>
+        <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">

@@ -466,11 +466,8 @@ class Checker { // for namespace only
             val logger = cCtx.logger
 
             val spf = spf.Dialed(ctx)
-            if (!spf.isEnabled()
-                || (!Permission.callLog.isGranted && !Permission.readSMS.isGranted)
-            ) {
+            if (!spf.isEnabled())
                 return null
-            }
 
             logger?.info(
                 ctx.getString(R.string.checking_template)
@@ -480,6 +477,7 @@ class Checker { // for namespace only
                     )
             )
 
+            val smsEnabled = spf.isSmsEnabled()
             val durationDays = spf.getDays()
 
             val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
@@ -492,12 +490,15 @@ class Checker { // for namespace only
                 Def.DIRECTION_OUTGOING,
                 durationMillis
             ).size
-            val nSMSs = countHistorySMSByNumber(
-                ctx,
-                phoneNumber,
-                Def.DIRECTION_OUTGOING,
-                durationMillis
-            )
+            val nSMSs = if (smsEnabled)
+                countHistorySMSByNumber(
+                    ctx,
+                    phoneNumber,
+                    Def.DIRECTION_OUTGOING,
+                    durationMillis
+                )
+            else
+                0
             logger?.debug("${ctx.getString(R.string.call)}: $nCalls, ${ctx.getString(R.string.sms)}: $nSMSs")
 
             if (nCalls + nSMSs > 0) {
@@ -505,6 +506,57 @@ class Checker { // for namespace only
                     ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.dialed_number))
                 )
                 return ByDialedNumber()
+            }
+            return null
+        }
+    }
+
+    private class Answered(
+        private val ctx: Context,
+    ) : IChecker {
+        override fun priority(): Int {
+            return 10
+        }
+
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val rawNumber = cCtx.rawNumber
+            val logger = cCtx.logger
+
+            val spf = spf.Answered(ctx)
+            if (!spf.isEnabled())
+                return null
+
+            logger?.info(
+                ctx.getString(R.string.checking_template)
+                    .formatAnnotated(
+                        ctx.getString(R.string.answered_number).A(SkyBlue),
+                        priority().toString().A(LightMagenta)
+                    )
+            )
+
+            val minDuration = spf.getMinDuration()
+            val durationDays = spf.getDays()
+
+            val durationMillis = durationDays.toLong() * 24 * 3600 * 1000
+
+            // repeated count of call/sms, sms also counts
+            val phoneNumber = PhoneNumber(ctx, rawNumber)
+            val nCalls = getHistoryCallsByNumber(
+                ctx,
+                phoneNumber,
+                Def.DIRECTION_INCOMING,
+                durationMillis
+            ).filter {
+                it.duration >= minDuration
+            }.size
+
+            logger?.debug("${ctx.getString(R.string.call)}: $nCalls")
+
+            if (nCalls > 0) {
+                logger?.success(
+                    ctx.getString(R.string.allowed_by).format(ctx.getString(R.string.answered_number))
+                )
+                return ByAnsweredNumber()
             }
             return null
         }
@@ -1304,6 +1356,7 @@ class Checker { // for namespace only
                 Contact(ctx),
                 RepeatedCall(ctx),
                 Dialed(ctx),
+                Answered(ctx),
                 RecentApp(ctx),
                 MeetingMode(ctx),
                 OffTime(ctx),

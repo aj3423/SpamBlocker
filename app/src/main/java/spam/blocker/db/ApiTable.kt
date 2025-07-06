@@ -59,7 +59,7 @@ private fun isNumberAllowedLater(ctx: Context, rawNumber: String) : Boolean {
             Calls.INCOMING_TYPE,
             Calls.OUTGOING_TYPE,
             Calls.MISSED_TYPE,
-        ).contains(it)
+        ).contains(it.type)
     }
     return isAllowedLater
 }

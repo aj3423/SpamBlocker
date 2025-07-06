@@ -94,8 +94,10 @@ fun RepeatedCall() {
                         ctx,
                         listOf(
                             PermissionWrapper(Permission.callLog),
+                            PermissionWrapper(Permission.readSMS, isOptional = true),
+                            // For matching different SIM country codes when using multiple SIM cards,
+                            //  for frequent international travellers.
                             PermissionWrapper(Permission.phoneState, isOptional = true),
-                            PermissionWrapper(Permission.readSMS, isOptional = true)
                         )
                     ) { granted ->
                         if (granted) {

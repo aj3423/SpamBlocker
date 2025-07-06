@@ -33,4 +33,22 @@
     <string name="perm_notification_access">الوصول إلى الإشعارات</string>
     <string name="perm_usage_stats">إحصائيات الاستخدام</string>
     <string name="perm_battery_unrestricted">البطارية غير مقيدة</string>
+    <string name="include_sms">تضمين الرسائل القصيرة</string>
+    <string name="minimal_duration">الحد الأدنى للمدة</string>
+    <string name="answered_number"><short>رقم مجاب</short></string>
+    <string name="help_answered">
+        <![CDATA[
+        السماح بالمكالمات من الأرقام التي تم الرد عليها مسبقًا.<br>
+        <br>
+        <b>الخيارات:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- خلال أيام</font></h6>
+        يتم تجاهل المكالمات التي حدثت قبل <font color="cyan">3 أيام</font>.<br>
+        <br>
+        <h6><font color="#00BFFF">- الحد الأدنى للمدة</font></h6>
+        يتم تجاهل المكالمات التي استمرت أقل من <font color="cyan">15 ثانية</font>.<br>
+        <br>
+        <font color="#ea86ff"><b>الأولوية: 10</b></font>
+        ]]>
+    </string>
 </resources>

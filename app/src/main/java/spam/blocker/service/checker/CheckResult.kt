@@ -26,6 +26,7 @@ import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_ANSWERED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP
@@ -288,6 +289,15 @@ class ByDialedNumber(
     }
 }
 
+// allowed by answered number
+class ByAnsweredNumber(
+    override val type: Int = RESULT_ALLOWED_BY_ANSWERED,
+) : ICheckResult {
+    override fun resultReasonStr(ctx: Context): String {
+        return ctx.getString(R.string.answered_number)
+    }
+}
+
 // allowed by off time
 class ByOffTime(
     override val type: Int = RESULT_ALLOWED_BY_OFF_TIME,
@@ -525,6 +535,7 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
         RESULT_BLOCKED_BY_MEETING_MODE -> ByMeetingMode(reason)
         RESULT_ALLOWED_BY_REPEATED -> ByRepeatedCall()
         RESULT_ALLOWED_BY_DIALED -> ByDialedNumber()
+        RESULT_ALLOWED_BY_ANSWERED -> ByAnsweredNumber()
         RESULT_ALLOWED_BY_OFF_TIME -> ByOffTime()
         RESULT_BLOCKED_BY_SPAM_DB -> BySpamDb(matchedNumber = reason)
         RESULT_BLOCKED_BY_API_QUERY, RESULT_ALLOWED_BY_API_QUERY -> {

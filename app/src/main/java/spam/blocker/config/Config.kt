@@ -373,16 +373,39 @@ class RepeatedCall : IConfig {
 @Serializable
 class Dialed : IConfig {
     var enabled = false
+    var smsEnabled = false
     var inXDay = 0
     override fun load(ctx: Context) {
         val spf = spf.Dialed(ctx)
         enabled = spf.isEnabled()
+        smsEnabled = spf.isSmsEnabled()
         inXDay = spf.getDays()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Dialed(ctx)
         spf.setEnabled(enabled)
+        spf.setSmsEnabled(smsEnabled)
+        spf.setDays(inXDay)
+    }
+}
+
+@Serializable
+class Answered : IConfig {
+    var enabled = false
+    var minDuration = 0
+    var inXDay = 0
+    override fun load(ctx: Context) {
+        val spf = spf.Answered(ctx)
+        enabled = spf.isEnabled()
+        minDuration = spf.getMinDuration()
+        inXDay = spf.getDays()
+    }
+
+    override fun apply(ctx: Context) {
+        val spf = spf.Answered(ctx)
+        spf.setEnabled(enabled)
+        spf.setMinDuration(minDuration)
         spf.setDays(inXDay)
     }
 }
@@ -608,6 +631,7 @@ class Configs {
     val spamDB = SpamDB()
     val repeatedCall = RepeatedCall()
     val dialed = Dialed()
+    val answered = Answered()
     val recentApps = RecentApps()
     val meetingMode = MeetingMode()
     val blockType = BlockType()
@@ -643,6 +667,7 @@ class Configs {
             spamDB,
             repeatedCall,
             dialed,
+            answered,
             recentApps,
             meetingMode,
             blockType,

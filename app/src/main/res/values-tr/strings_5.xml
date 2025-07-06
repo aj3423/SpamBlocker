@@ -52,13 +52,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Aranan numaralara izin verilecektir.<br>
+        Daha önce aranmış numaralardan gelen aramalara izin ver.<br>
         <br>
-        Mesaj göndermek de sayılır, bu yalnızca READ_SMS izni verildiğinde çalışır. <br>
+        <b>Seçenekler:</b><br>
         <br>
-        Varsayılan ayar <font color="#03DAC5"><b>3 Gün</b></font> Eğer son 3 gün içinde o numaraya arama yaptıysanız veya mesaj gönderdiyseniz, o numaradan gelen aramalara izin verileceği anlamına gelir.<br>
+        <h6><font color="#00BFFF">- Gün İçinde</font></h6>
+        <font color="cyan">3 günden</font> önce gerçekleşen aramalar göz ardı edilir.<br>
         <br>
-        Sadece aramalar için geçerlidir, metin mesajları için <b>değil</b>. <br>
+        <h6><font color="#00BFFF">- SMS Dahil Et</font></h6>
+        Etkinleştirildiğinde, o numaraya SMS göndermek de sayılır.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>

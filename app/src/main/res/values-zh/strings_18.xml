@@ -60,4 +60,22 @@
     <string name="perm_notification_access">通知访问权限</string>
     <string name="perm_usage_stats">使用情况统计</string>
     <string name="perm_battery_unrestricted">电池无限制</string>
+    <string name="include_sms">包括短信</string>
+    <string name="minimal_duration">最短持续时间</string>
+    <string name="answered_number"><short>已接号码</short></string>
+    <string name="help_answered">
+        <![CDATA[
+        允许来自之前已接听号码的呼叫。<br>
+        <br>
+        <b>选项:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- 天数内</font></h6>
+        <font color="cyan">3 天</font>之前发生的呼叫将被忽略。<br>
+        <br>
+        <h6><font color="#00BFFF">- 最短持续时间</font></h6>
+        持续时间少于 <font color="cyan">15 秒</font>的呼叫将被忽略。<br>
+        <br>
+        <font color="#ea86ff"><b>优先级: 10</b></font>
+        ]]>
+    </string>
 </resources>

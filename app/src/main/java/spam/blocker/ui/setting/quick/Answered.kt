@@ -23,12 +23,12 @@ import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 @Composable
-fun Dialed() {
+fun Answered() {
     val ctx = LocalContext.current
-    val spf = spf.Dialed(ctx)
+    val spf = spf.Answered(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
-    var smsEnabled by remember { mutableStateOf(spf.isSmsEnabled() && Permission.readSMS.isGranted) }
+    var minDuration by remember { mutableIntStateOf(spf.getMinDuration()) }
     var inXDay by remember { mutableIntStateOf(spf.getDays()) }
 
     // popup
@@ -48,36 +48,26 @@ fun Dialed() {
                 label = { Text(Str(R.string.within_days)) },
                 leadingIconId = R.drawable.ic_duration,
             )
-            LabeledRow(
-                R.string.include_sms,
-                content = {
-                    SwitchBox(smsEnabled) { isTurningOn ->
-                        if (isTurningOn) {
-                            G.permissionChain.ask(
-                                ctx,
-                                listOf(PermissionWrapper(Permission.readSMS))
-                            ) { granted ->
-                                if (granted) {
-                                    spf.setSmsEnabled(true)
-                                    smsEnabled = true
-                                }
-                            }
-                        } else {
-                            spf.setSmsEnabled(false)
-                            smsEnabled = false
-                        }
+            NumberInputBox(
+                intValue = minDuration,
+                onValueChange = { newValue, hasError ->
+                    if (!hasError) {
+                        minDuration = newValue!!
+                        spf.setMinDuration(newValue)
                     }
-                }
+                },
+                label = { Text(Str(R.string.minimal_duration)) },
+                leadingIconId = R.drawable.ic_duration,
             )
         })
 
     LabeledRow(
-        R.string.dialed_number,
-        helpTooltip = Str(R.string.help_dialed),
+        R.string.answered_number,
+        helpTooltip = Str(R.string.help_answered),
         content = {
             if (isEnabled && Permission.callLog.isGranted) {
                 GreyButton(
-                    label = PluralStr(inXDay!!, R.plurals.days),
+                    label = PluralStr(inXDay, R.plurals.days),
                 ) {
                     popupTrigger.value = true
                 }

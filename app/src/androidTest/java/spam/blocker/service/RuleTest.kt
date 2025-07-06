@@ -20,6 +20,7 @@ import spam.blocker.util.Now
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.Util
+import spam.blocker.util.Util.CallInfo
 import spam.blocker.util.spf
 import spam.blocker.util.spf.RecentAppInfo
 import java.util.Calendar
@@ -116,7 +117,7 @@ class RuleTest {
             val withinMillis = lastArg<Long>()
             val mockNow = Now.currentMillis()
             if (atTimeMillis in mockNow - withinMillis..mockNow) {
-                List<Int>(repeatedTimes) {0}
+                List<CallInfo>(repeatedTimes) { CallInfo(rawNumber = rawNumber, type = 0, duration = 20)}
             } else {
                 listOf()
             }

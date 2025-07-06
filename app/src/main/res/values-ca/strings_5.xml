@@ -54,13 +54,15 @@
     <string name="help_hang_up_delay">El retard abans que es pengi la trucada (en segons).</string>
     <string name="help_dialed">
         <![CDATA[
-        Es permetran els números marcats.<br>
+        Permet trucades de números marcats prèviament.<br>
         <br>
-        L\'enviament de missatges també compta, això només funciona quan es concedeix el permís READ_SMS. <br>
+        <b>Opcions:</b><br>
         <br>
-        La configuració per defecte <font color="#03DAC5"><b>3 Dies</b></font> significa que si heu marcat o enviat missatges al número en els darrers 3 dies, es permetran les trucades des d\'aquest número.<br>
+        <h6><font color="#00BFFF">- Dins de dies</font></h6>
+        Les trucades que van tenir lloc abans de <font color="cyan">3 dies</font> s\'ignoren.<br>
         <br>
-        Només s\'aplica a les trucades, <b>no</b> als missatges de text. <br>
+        <h6><font color="#00BFFF">- Incloure SMS</font></h6>
+        Quan està activat, enviar missatges a aquest número també compta.<br>
         <br>
         <font color="#ea86ff"><b>Prioritat: 10</b></font>
         ]]>

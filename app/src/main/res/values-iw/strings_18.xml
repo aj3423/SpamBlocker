@@ -60,4 +60,22 @@
     <string name="perm_notification_access">גישה להתראות</string>
     <string name="perm_usage_stats">סטטיסטיקות שימוש</string>
     <string name="perm_battery_unrestricted">סוללה ללא הגבלה</string>
+    <string name="include_sms">כלול SMS</string>
+    <string name="minimal_duration">משך מינימלי</string>
+    <string name="answered_number"><short>מספר נענה</short></string>
+    <string name="help_answered">
+        <![CDATA[
+        אפשר שיחות ממספרים שנענו בעבר.<br>
+        <br>
+        <b>אפשרויות:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- בתוך ימים</font></h6>
+        שיחות שהתרחשו לפני <font color="cyan">3 ימים</font> מתעלמות.<br>
+        <br>
+        <h6><font color="#00BFFF">- משך מינימלי</font></h6>
+        שיחות שנמשכו פחות מ-<font color="cyan">15 שניות</font> מתעלמות.<br>
+        <br>
+        <font color="#ea86ff"><b>עדיפות: 10</b></font>
+        ]]>
+    </string>
 </resources>

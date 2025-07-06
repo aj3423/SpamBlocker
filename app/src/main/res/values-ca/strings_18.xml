@@ -60,4 +60,22 @@
     <string name="perm_notification_access">Accés a Notificacions</string>
     <string name="perm_usage_stats">Estadístiques d\'Ús</string>
     <string name="perm_battery_unrestricted">Bateria sense Restriccions</string>
+    <string name="include_sms">Incloure SMS</string>
+    <string name="minimal_duration">Durada Mínima</string>
+    <string name="answered_number">Núm. respost</string>
+    <string name="help_answered">
+        <![CDATA[
+        Permet trucades de números prèviament atesos.<br>
+        <br>
+        <b>Opcions:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- Dins de Dies</font></h6>
+        Les trucades que van ocórrer fa més de <font color="cyan">3 dies</font> s\'ignoren.<br>
+        <br>
+        <h6><font color="#00BFFF">- Durada Mínima</font></h6>
+        Les trucades que van durar menys de <font color="cyan">15 segons</font> s\'ignoren.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
 </resources>

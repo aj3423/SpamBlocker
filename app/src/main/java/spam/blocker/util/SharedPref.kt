@@ -214,6 +214,17 @@ class spf { // for namespace only
     class Dialed(ctx: Context) : SharedPref(ctx) {
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_DIALED, enabled) }
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_DIALED, false) }
+        fun setSmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_DIALED_BY_SMS, enabled) }
+        fun isSmsEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_DIALED_BY_SMS, true) }
+        fun getDays(): Int { return readInt(Def.SETTING_DIALED_IN_X_DAY, 3) }
+        fun setDays(inXDay: Int) { writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay) }
+    }
+
+    class Answered(ctx: Context) : SharedPref(ctx) {
+        fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_ANSWERED, enabled) }
+        fun isEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_ANSWERED, false) }
+        fun getMinDuration(): Int { return readInt(Def.SETTING_ANSWERED_MIN_DURATION, 15) }
+        fun setMinDuration(minDuration: Int) { writeInt(Def.SETTING_ANSWERED_MIN_DURATION, minDuration) }
         fun getDays(): Int { return readInt(Def.SETTING_DIALED_IN_X_DAY, 3) }
         fun setDays(inXDay: Int) { writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay) }
     }

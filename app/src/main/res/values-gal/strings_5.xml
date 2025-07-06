@@ -53,13 +53,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Os números marcados permitiranse.<br>
+        Permitir chamadas de números marcados previamente.<br>
         <br>
-        Enviar mensaxes tamén conta, isto só funciona cando se concede o permiso READ_SMS.<br>
+        <b>Opcións:</b><br>
         <br>
-        A configuración predeterminada <font color="#03DAC5"><b>3 Días</b></font> significa que se marcaste ou enviaches mensaxes ao número nos últimos 3 días, as chamadas dese número permitiranse.<br>
+        <h6><font color="#00BFFF">- Dentro de Días</font></h6>
+        As chamadas que ocorreron antes de <font color="cyan">3 días</font> son ignoradas.<br>
         <br>
-        Só se aplica a chamadas, <b>non</b> a mensaxes de texto.<br>
+        <h6><font color="#00BFFF">- Incluír SMS</font></h6>
+        Cando está activado, enviar mensaxes de texto a ese número tamén conta.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>

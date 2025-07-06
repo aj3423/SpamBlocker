@@ -53,13 +53,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Gewählte Nummern werden zugelassen.<br>
+        Anrufe von zuvor gewählten Nummern zulassen.<br>
         <br>
-        Das Senden von Nachrichten zählt ebenfalls, dies funktioniert nur, wenn die Berechtigung READ_SMS erteilt wird. <br>
+        <b>Optionen:</b><br>
         <br>
-        Die Standardeinstellung <font color="#03DAC5"><b>3 Tage</b></font> bedeutet, dass Anrufe von dieser Nummer zugelassen werden, wenn Sie innerhalb der letzten 3 Tage die Nummer gewählt oder Nachrichten an diese gesendet haben.<br>
+        <h6><font color="#00BFFF">- Innerhalb von Tagen</font></h6>
+        Anrufe, die vor <font color="cyan">3 Tagen</font> stattfanden, werden ignoriert.<br>
         <br>
-        Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
+        <h6><font color="#00BFFF">- SMS einschließen</font></h6>
+        Wenn aktiviert, zählt auch das Senden einer SMS an diese Nummer.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>

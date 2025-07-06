@@ -60,4 +60,22 @@
     <string name="perm_notification_access">Acceso a Notificaciones</string>
     <string name="perm_usage_stats">Estadísticas de Uso</string>
     <string name="perm_battery_unrestricted">Batería Sin Restricciones</string>
+    <string name="include_sms">Incluir SMS</string>
+    <string name="minimal_duration">Duración Mínima</string>
+    <string name="answered_number">Núm. Respondido</string>
+    <string name="help_answered">
+        <![CDATA[
+        Permitir llamadas de números respondidos previamente.<br>
+        <br>
+        <b>Opciones:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- Dentro de Días</font></h6>
+        Llamadas que ocurrieron antes de <font color="cyan">3 días</font> se ignoran.<br>
+        <br>
+        <h6><font color="#00BFFF">- Duración Mínima</font></h6>
+        Llamadas que duraron menos de <font color="cyan">15 segundos</font> se ignoran.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad: 10</b></font>
+        ]]>
+    </string>
 </resources>

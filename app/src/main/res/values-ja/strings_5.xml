@@ -51,15 +51,17 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        発信した番号は許可されます。<br>
+        以前に発信した番号からの通話を許可します。<br>
         <br>
-        メッセージを送信する場合もカウントされます。これは、READ_SMS権限が付与されている場合にのみ機能します。 <br>
+        <b>オプション:</b><br>
         <br>
-        デフォルト設定は<font color="#03DAC5"><b>3 日</b></font>です。つまり、過去 3 日以内に番号に発信したりメッセージを送信したりした場合、その番号からの通話は許可されます。 <br>
+        <h6><font color="#00BFFF">- 日以内</font></h6>
+        3日以上前に発生した通話は無視されます。<br>
         <br>
-        通話にのみ適用され、<b>テキストメッセージ</b>には適用されません。 <br>
+        <h6><font color="#00BFFF">- SMSを含める</font></h6>
+        有効にすると、その番号へのテキストメッセージもカウントされます。<br>
         <br>
-        <font color="#ea86ff"><b>優先順位: 10</b></font>
+        <font color="#ea86ff"><b>優先度: 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">

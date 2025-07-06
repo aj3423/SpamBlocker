@@ -53,13 +53,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        I numeri composti saranno consentiti.<br>
+        Consenti chiamate da numeri precedentemente composti.<br>
         <br>
-        L\'invio di messaggi conta anche, questo funziona solo quando è concessa l\'autorizzazione READ_SMS. <br>
+        <b>Opzioni:</b><br>
         <br>
-        L\'impostazione predefinita <font color="#03DAC5"><b>3 Giorni</b></font> significa che se hai composto o inviato messaggi al numero negli ultimi 3 giorni, le chiamate da quel numero saranno consentite.<br>
+        <h6><font color="#00BFFF">- Entro Giorni</font></h6>
+        Le chiamate avvenute prima di <font color="cyan">3 giorni</font> vengono ignorate.<br>
         <br>
-        Si applica solo alle chiamate, <b>non</b> ai messaggi di testo. <br>
+        <h6><font color="#00BFFF">- Includi SMS</font></h6>
+        Se abilitato, anche l\'invio di messaggi a quel numero conta.<br>
         <br>
         <font color="#ea86ff"><b>Priorità: 10</b></font>
         ]]>

@@ -60,4 +60,22 @@
     <string name="perm_notification_access">Bildirim Erişimi</string>
     <string name="perm_usage_stats">Kullanım İstatistikleri</string>
     <string name="perm_battery_unrestricted">Pil Kısıtlamasız</string>
+    <string name="include_sms">SMS Dahil Et</string>
+    <string name="minimal_duration">Minimum Süre</string>
+    <string name="answered_number">Cevaplanan Numara</string>
+    <string name="help_answered">
+        <![CDATA[
+        Önceden yanıtlanan numaralardan gelen çağrılara izin ver.<br>
+        <br>
+        <b>Seçenekler:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- Gün İçinde</font></h6>
+        <font color="cyan">3 gün</font> öncesine kadar gerçekleşen çağrılar yoksayılır.<br>
+        <br>
+        <h6><font color="#00BFFF">- Minimum Süre</font></h6>
+        <font color="cyan">15 saniyeden</font> daha kısa süren çağrılar yoksayılır.<br>
+        <br>
+        <font color="#ea86ff"><b>Öncelik: 10</b></font>
+        ]]>
+    </string>
 </resources>

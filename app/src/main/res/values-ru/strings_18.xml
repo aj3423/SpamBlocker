@@ -60,4 +60,22 @@
     <string name="perm_notification_access">Доступ к уведомлениям</string>
     <string name="perm_usage_stats">Статистика использования</string>
     <string name="perm_battery_unrestricted">Без ограничений батареи</string>
+    <string name="include_sms">Включить SMS</string>
+    <string name="minimal_duration">Минимальная продолжительность</string>
+    <string name="answered_number">Отвеченные</string>
+    <string name="help_answered">
+        <![CDATA[
+        Разрешать звонки с номеров, на которые ранее были ответы.<br>
+        <br>
+        <b>Опции:</b><br>
+        <br>
+        <h6><font color="#00BFFF">- В течение дней</font></h6>
+        Звонки, поступившие до <font color="cyan">3 дней</font>, игнорируются.<br>
+        <br>
+        <h6><font color="#00BFFF">- Минимальная продолжительность</font></h6>
+        Звонки длительностью менее <font color="cyan">15 секунд</font> игнорируются.<br>
+        <br>
+        <font color="#ea86ff"><b>Приоритет: 10</b></font>
+        ]]>
+    </string>
 </resources>
