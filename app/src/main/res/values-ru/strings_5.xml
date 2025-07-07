@@ -14,13 +14,13 @@
         <item quantity="many">%d дней</item>
         <item quantity="other">%d дней</item>
     </plurals>
-    <string name="min">Мин</string>
+    <string name="min">мин</string>
     <string name="within_minutes">В течение минут</string>
     <string name="within_days">В течение дней</string>
     <string name="phone_number">Номер телефона</string>
     <string name="phone_number_abbrev">Номер</string>
     <string name="sms_content">Текст SMS</string>
-    <string name="regex_flags">Флаги Regex</string>
+    <string name="regex_flags">Флаги рег. выражения</string>
     <string name="off_time">Время отключения</string>
     <string name="schedule">Расписание</string>
     <string name="workday">Рабочий день</string>

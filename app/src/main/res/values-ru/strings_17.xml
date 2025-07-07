@@ -1,5 +1,5 @@
 <resources>
-    <string name="emergency">Экстренное</string>
+    <string name="emergency">Экстренные службы</string>
     <string name="emergency_situation">Чрезвычайная ситуация</string>
     <string name="help_emergency_situation">
         <![CDATA[
@@ -9,7 +9,7 @@
         Настройка по умолчанию <font color="#03DAC5"><b>120 мин</b></font> означает, что все вызовы будут разрешены
         в течение следующих 120 минут после набора номера экстренной службы.<br>
         <br>
-        <h5><font color="#00BFFF">- Проверка STIR</font></h5>
+        <h5><font color="#00BFFF">- Аттестация STIR</font></h5>
          - Если отключено, все вызовы будут разрешены.<br>
          - Если включено, вызовы, не прошедшие аттестацию STIR, не будут разрешены, будут разрешены только "Надёжные" и "Непроверенные" вызовы.<br>
         <br>
@@ -35,7 +35,7 @@
     <string name="status">Статус</string>
     <string name="inactive">Неактивно</string>
     <string name="confirm_reset">Подтвердить сброс?</string>
-    <string name="check_stir_attestation">Проверять STIR (?)</string>
+    <string name="check_stir_attestation">Проверять аттестацию STIR (?)</string>
     <string name="additional_numbers">Дополнительные номера</string>
     <string name="path_tags">
         <![CDATA[
@@ -80,7 +80,7 @@
         <h6><font color="#00BFFF">- Приложение</font></h6>
         Будут проверяться только уведомления от этого приложения.<br>
         <br>
-        <h6><font color="#00BFFF">- Содержимое уведомления</font></h6>
+        <h6><font color="#00BFFF">- Содержание уведомления</font></h6>
         Это регулярное выражение будет соответствовать <b>как заголовку, так и тексту уведомления</b>.<br>
         Пример для вышеупомянутого случая использования:<br>
         &emsp; <font color="#03DAC5">обновление заказа.*передан водителю.*</font><br>
@@ -91,7 +91,7 @@
         <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
-    <string name="notification_content">Содержимое уведомления</string>
+    <string name="notification_content">Содержание уведомления</string>
     <string name="app">Приложение</string>
     <string name="choose">Выбрать</string>
     <string name="usage_statistics">Статистика использования</string>
