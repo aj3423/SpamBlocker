@@ -127,9 +127,9 @@
     <string name="action_modify_rules_placeholder">
         一个JSON字符串，例如：\n
         {\n
-        "flags": 0, // 禁用规则\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // 禁用此规则\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

@@ -1,6 +1,6 @@
 <resources>
     <string name="database">מסד נתונים</string>
-    <string name="total">סה"כ</string>
+    <string name="total">סה\"כ</string>
     <string name="replace_from">מאת</string>
     <string name="replace_to">אל</string>
     <string name="regex_pattern">רג\'קס</string>
@@ -11,7 +11,7 @@
         <br>
         באפשרותך לשלב כל מסד נתונים ציבורי, או אפילו מספר מסדי נתונים, וכן לייבא מספרים מקבצים מקומיים.<br>
         <br>
-        עיין בסעיף "אוטומציה" למטה כדי ללמוד כיצד לתזמן משימת ייבוא אוטומטי.<br>
+        עיין בסעיף \"אוטומציה\" למטה כדי ללמוד כיצד לתזמן משימת ייבוא אוטומטי.<br>
         <br>
         זה חל גם על שיחות וגם על הודעות SMS.<br>
         <br>
@@ -61,13 +61,13 @@
     <string name="action_find_rules">מצא כללים</string>
     <string name="action_modify_rules">שנה כללים</string>
     <string name="action_modify_rules_placeholder">
-        מחרוזת JSON, לדוגמה:\n
-        {\n
-        "flags": 0, // השבת את הכלל\n
-        "priority": 100,\n
-        "blockType": 0\n
-        …\n
-        }\n
+        מחרוזת JSON, לדוגמה:
+        {
+        \"flags\": 0, // השבת את הכלל
+        \"priority\": 100,
+        \"blockType\": 0
+        …
+        }
     </string>
 
     <string name="help_action_http_download">

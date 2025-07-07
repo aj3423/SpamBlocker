@@ -14,14 +14,14 @@
     <string name="query">Query</string>
     <string name="negative_identifier">Identificatore Negativo</string>
     <string name="hint_negative_identifier">
-        E.g.: ("valid":false)
+        Es.: (\"valido\":false)
     </string>
     <string name="help_negative_identifier">
         Il numero verrà identificato come spam se viene trovato questo pattern regex nel risultato.
     </string>
     <string name="positive_identifier">Identificatore Positivo</string>
     <string name="hint_positive_identifier">
-        E.g.: ("valid":true)
+        Es.: (\"valido\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -33,7 +33,7 @@
     </string>
     <string name="category_identifier">Identificatore Categoria</string>
     <string name="hint_category_identifier">
-        E.g.: "type":"(.+?)"
+        Es.: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

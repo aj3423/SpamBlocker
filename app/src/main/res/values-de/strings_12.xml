@@ -13,14 +13,14 @@
     <string name="instant_query">Sofortige Abfrage</string>
     <string name="negative_identifier">Negativer Identifier</string>
     <string name="hint_negative_identifier">
-        Z. B.: ("valid":false)
+        Z.B.: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         Wenn dieses Regex-Muster im Ergebnis gefunden wird, wird die Nummer als Spam-Nummer identifiziert.
     </string>
     <string name="positive_identifier">Positiver Identifier</string>
     <string name="hint_positive_identifier">
-        Z. B.: ("valid":true)
+        Z.B.: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -31,7 +31,7 @@
     </string>
     <string name="category_identifier">Kategorie-Identifier</string>
     <string name="hint_category_identifier">
-        Z. B.: "type":"(.+?)"
+        Z.B.: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

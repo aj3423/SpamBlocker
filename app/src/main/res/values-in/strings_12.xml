@@ -14,14 +14,14 @@
     <string name="query">Permintaan</string>
     <string name="negative_identifier">Pengenal Negatif</string>
     <string name="hint_negative_identifier">
-        Contoh: (\"sah\":false)
+        Contoh: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         Ini akan diidentifikasi sebagai nomor spam jika pola regex ini ditemukan dalam hasil.
     </string>
     <string name="positive_identifier">Pengenal Positif</string>
     <string name="hint_positive_identifier">
-        Contoh: (\"sah\":true)
+        Contoh: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -33,7 +33,7 @@
     </string>
     <string name="category_identifier">Pengenal Kategori</string>
     <string name="hint_category_identifier">
-        Contoh: \"jenis\":\"(.+?)\"
+        Contoh: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

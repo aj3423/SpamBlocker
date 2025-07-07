@@ -13,14 +13,14 @@
     <string name="instant_query">瞬時照会</string>
     <string name="negative_identifier">ネガティブ識別子</string>
     <string name="hint_negative_identifier">
-        例: ("valid":false)
+        例: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         この正規表現パターンが結果に見つかった場合、迷惑電話番号として識別されます。
     </string>
     <string name="positive_identifier">ポジティブ識別子</string>
     <string name="hint_positive_identifier">
-        例: ("valid":true)
+        例: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -31,7 +31,7 @@
     </string>
     <string name="category_identifier">カテゴリ識別子</string>
     <string name="hint_category_identifier">
-        例: "type":"(.+?)"
+        例: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

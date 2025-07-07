@@ -14,14 +14,14 @@
     <string name="query">پرس و جو</string>
     <string name="negative_identifier">شناسه منفی</string>
     <string name="hint_negative_identifier">
-        مثال: ("valid":false)
+        مثال: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         اگر این الگوی عبارت باقاعده در نتیجه یافت شود، به عنوان شماره مزاحم شناسایی می‌شود.
     </string>
     <string name="positive_identifier">شناسه مثبت</string>
     <string name="hint_positive_identifier">
-        مثال: ("valid":true)
+        مثال: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -32,7 +32,7 @@
     </string>
     <string name="category_identifier">شناسه دسته‌بندی</string>
     <string name="hint_category_identifier">
-        مثال: "type":"(.+?)"
+        مثال: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

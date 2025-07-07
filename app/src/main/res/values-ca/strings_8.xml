@@ -11,7 +11,7 @@
         <br>
         Podeu integrar qualsevol base de dades pública, o fins i tot diverses bases de dades; també podeu importar números des de fitxers locals.<br>
         <br>
-        Consulteu la secció "Automatització" a continuació per saber com programar una tasca d\'importació automàtica.<br>
+        Consulteu la secció \"Automatització\" a continuació per saber com programar una tasca d\'importació automàtica.<br>
         <br>
         S\'aplica tant a les trucades com als missatges SMS.<br>
         <br>
@@ -63,9 +63,9 @@
     <string name="action_modify_rules_placeholder">
         Una cadena JSON, per exemple:\n
         {\n
-        "flags": 0, // Desactivar la regla\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Desactivar la regla\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

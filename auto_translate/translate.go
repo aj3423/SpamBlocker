@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 	"sync"
@@ -128,8 +129,24 @@ func lang_xmls_dir(lang string) string {
 	}
 }
 
+func escape_quotes(xmlString string) string {
+	re := regexp.MustCompile(`<!\[CDATA\[|]]>|<[^>]*>|\\"|\\'|"|'`)
+
+	return re.ReplaceAllStringFunc(xmlString, func(match string) string {
+		switch match {
+		case `"`:
+			return `\"`
+		case `'`:
+			return `\'`
+		default:
+			return match
+		}
+	})
+}
+
 func write_xml(lang string, xml_fn string, content string) error {
-	escaped := strings.ReplaceAll(content, "'", "\\'")
+	// escaped := strings.ReplaceAll(content, "'", "\\'")
+	escaped := escape_quotes(content)
 	dir := lang_xmls_dir(lang)
 	os.MkdirAll(dir, 0666)
 	return write_file(dir+"/"+xml_fn, escaped)
@@ -164,8 +181,9 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. " +
 		"If the content contains tags <translate> and </translate>, always translate the text in between. " +
 		"If the content contains tags <no_translate> and </no_translate>, keep it as it is. " +
+		`Don't remove the \n. ` +
 		use_short +
-		"show me the raw result only:\n" +
+		"Show me the raw result only:\n" +
 		"%s"
 	if verb {
 		color.HiMagenta(prompt_template)
@@ -181,8 +199,7 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 	}
 	defer client.Close()
 
-	model := client.GenerativeModel("gemini-2.5-flash-preview-05-20")
-	// model := client.GenerativeModel("gemini-2.0-flash-lite-preview-02-05")
+	model := client.GenerativeModel("gemini-2.5-flash")
 
 	// max is 8192 for gemini-v1.5-flash (8192 by default)
 	// but actually it's only 2048...

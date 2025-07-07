@@ -11,7 +11,7 @@
         <br>
         Herhangi bir genel veritabanını veya birden fazla veritabanını entegre edebilir, ayrıca yerel dosyalardan telefon numaraları aktarabilirsiniz.<br>
         <br>
-        Otomatik içe aktarma görevini nasıl planlayacağınızı öğrenmek için aşağıdaki "Otomasyon" bölümünü inceleyin.<br>
+        Otomatik içe aktarma görevini nasıl planlayacağınızı öğrenmek için aşağıdaki \"Otomasyon\" bölümünü inceleyin.<br>
         <br>
         Hem aramalar hem de SMS mesajları için geçerlidir.<br>
         <br>
@@ -125,13 +125,13 @@
     <string name="action_find_rules">Kuralları Bul</string>
     <string name="action_modify_rules">Kuralları Değiştir</string>
     <string name="action_modify_rules_placeholder">
-        Bir JSON dizisi, örneğin:
-        {
-        "flags": 0, // Kuralı devre dışı bırak
-        "priority": 100,
-        "blockType": 0
-        ...
-        }
+        Bir JSON dizesi, örneğin:\n
+        {\n
+        \"flags\": 0, // Kuralı devre dışı bırak\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
+        …\n
+        }\n
     </string>
     <string name="help_action_find_rules">
         <![CDATA[

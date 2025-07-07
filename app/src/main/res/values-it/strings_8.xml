@@ -11,7 +11,7 @@
         <br>
         Puoi integrare qualsiasi database pubblico, o anche più database, puoi anche importare numeri da file locali.<br>
         <br>
-        Controlla la sezione "Automazione" di seguito per sapere come pianificare un\'attività di importazione automatica.<br>
+        Controlla la sezione \"Automazione\" di seguito per sapere come pianificare un\'attività di importazione automatica.<br>
         <br>
         Si applica sia alle chiamate che ai messaggi SMS.<br>
         <br>
@@ -61,11 +61,11 @@
     <string name="action_find_rules">Trova Regole</string>
     <string name="action_modify_rules">Modifica Regole</string>
     <string name="action_modify_rules_placeholder">
-        Una stringa json, ad esempio:\n
+        Una stringa json, per esempio:\n
         {\n
-        "flags": 0, // Disable the rule\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Disabilita la regola\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

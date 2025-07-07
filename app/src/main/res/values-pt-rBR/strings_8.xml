@@ -11,7 +11,7 @@
         <br>
         Você pode integrar qualquer banco de dados público, ou até múltiplos bancos de dados, você também pode importar números de arquivos locais.<br>
         <br>
-        Verifique a seção "Automação" abaixo para saber como agendar uma tarefa de importação automática.<br>
+        Verifique a seção \"Automação\" abaixo para saber como agendar uma tarefa de importação automática.<br>
         <br>
         Aplica-se a chamadas e mensagens SMS.<br>
         <br>
@@ -127,9 +127,9 @@
     <string name="action_modify_rules_placeholder">
         Uma string JSON, por exemplo:\n
         {\n
-        "flags": 0, // Desabilitar a regra\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Desativar a regra\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

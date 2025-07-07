@@ -11,7 +11,7 @@
         <br>
         Puede integrar cualquier base de datos pública, o incluso varias bases de datos; también puede importar números desde archivos locales.<br>
         <br>
-        Consulte la sección "Automatización" a continuación para saber cómo programar una tarea de autoimportación.<br>
+        Consulte la sección \"Automatización\" a continuación para saber cómo programar una tarea de autoimportación.<br>
         <br>
         Se aplica tanto a las llamadas como a los mensajes SMS.<br>
         <br>
@@ -127,9 +127,9 @@
     <string name="action_modify_rules_placeholder">
         Una cadena JSON, por ejemplo:\n
         {\n
-        "flags": 0, // Desactivar la regla\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Deshabilitar la regla\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

@@ -13,14 +13,14 @@
     <string name="instant_query">Anında Sorgu</string>
     <string name="negative_identifier">Negatif Tanımlayıcı</string>
     <string name="hint_negative_identifier">
-        Örn.: ("valid":false)
+        Örn.: (\"geçerli\":yanlış)
     </string>
     <string name="help_negative_identifier">
         Sonuçta bu regex deseni bulunursa spam numarası olarak tanımlanacaktır.
     </string>
     <string name="positive_identifier">Pozitif Tanımlayıcı</string>
     <string name="hint_positive_identifier">
-        Örn.: ("valid":true)
+        Örn.: (\"geçerli\":doğru)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -31,7 +31,7 @@
     </string>
     <string name="category_identifier">Kategori Tanımlayıcı</string>
     <string name="hint_category_identifier">
-        Örn.: "type":"(.+?)"
+        Örn.: \"tür\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

@@ -61,11 +61,11 @@
     <string name="action_find_rules">یافتن قوانین</string>
     <string name="action_modify_rules">اصلاح قوانین</string>
     <string name="action_modify_rules_placeholder">
-        یک رشته JSON، برای مثال:\n
+        یک رشته json، برای مثال:\n
         {\n
-        "flags": 0, // غیرفعال کردن قانون\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // غیرفعال کردن قانون\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

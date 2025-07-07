@@ -14,14 +14,14 @@
     <string name="query"><translate>Consulta</translate></string>
     <string name="negative_identifier"><translate>Identificador negatiu</translate></string>
     <string name="hint_negative_identifier">
-        E.g.: ("valid":false)
+        Ex.: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         <translate>S\'identificarà com a número de correu brossa si es troba aquest patró regex al resultat.</translate>
     </string>
     <string name="positive_identifier"><translate>Identificador positiu</translate></string>
     <string name="hint_positive_identifier">
-        E.g.: ("valid":true)
+        Ex.: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -33,7 +33,7 @@
     </string>
     <string name="category_identifier"><translate>Identificador de categoria</translate></string>
     <string name="hint_category_identifier">
-        E.g.: "type":"(.+?)"
+        Ex.: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

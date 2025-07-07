@@ -11,7 +11,7 @@
         <br>
         Sie können jede öffentliche Datenbank, oder sogar mehrere Datenbanken, integrieren. Sie können auch Nummern aus lokalen Dateien importieren.<br>
         <br>
-        Sehen Sie im Abschnitt "Automatisierung" unten nach, wie Sie eine automatische Importaufgabe planen können.<br>
+        Sehen Sie im Abschnitt \"Automatisierung\" unten nach, wie Sie eine automatische Importaufgabe planen können.<br>
         <br>
         Dies gilt sowohl für Anrufe als auch für SMS-Nachrichten.<br>
         <br>
@@ -127,11 +127,11 @@
     <string name="action_modify_rules_placeholder">
         Ein JSON-String, zum Beispiel:\n
         {\n
-        "flags": 0, // Regel deaktivieren\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Regel deaktivieren\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
-        }\n
+        }
     </string>
     <string name="help_action_find_rules">
         <![CDATA[

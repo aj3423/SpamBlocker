@@ -11,7 +11,7 @@
         <br>
         Vous pouvez intégrer n\'importe quelle base de données publique, ou même plusieurs bases de données, vous pouvez également importer des numéros de téléphone à partir de fichiers locaux.<br>
         <br>
-        Consultez la section "Automatisation" ci-dessous pour savoir comment planifier une tâche d\'auto-importation.<br>
+        Consultez la section \"Automatisation\" ci-dessous pour savoir comment planifier une tâche d\'auto-importation.<br>
         <br>
         Cela s\'applique aux appels et aux messages SMS.<br>
         <br>
@@ -125,11 +125,11 @@
     <string name="action_find_rules">Rechercher des règles</string>
     <string name="action_modify_rules">Modifier les règles</string>
     <string name="action_modify_rules_placeholder">
-        Une chaîne JSON, par exemple :\n
+        Une chaîne json, par exemple :\n
         {\n
-        "flags": 0, // Désactiver la règle\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Disable the rule\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

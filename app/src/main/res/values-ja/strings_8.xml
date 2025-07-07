@@ -125,13 +125,13 @@
     <string name="action_find_rules">ルールの検索</string>
     <string name="action_modify_rules">ルールの変更</string>
     <string name="action_modify_rules_placeholder">
-        JSON文字列の例：
-        {
-        "flags": 0, // ルールを無効にする
-        "priority": 100,
-        "blockType": 0
-        …
-        }
+        JSON文字列の例:\n
+        {\n
+        \"flags\": 0, // ルールを無効にする\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
+        …\n
+        }\n
     </string>
     <string name="help_action_find_rules">
         <![CDATA[

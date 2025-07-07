@@ -14,14 +14,14 @@
     <string name="query">שאילתה</string>
     <string name="negative_identifier">מזהה שלילי</string>
     <string name="hint_negative_identifier">
-        דוגמה: ("valid":false)
+        לדוגמה: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         הוא יזוהה כמספר ספאם אם תבנית Regex זו תימצא בתוצאה.
     </string>
     <string name="positive_identifier">מזהה חיובי</string>
     <string name="hint_positive_identifier">
-        דוגמה: ("valid":true)
+        לדוגמה: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -33,7 +33,7 @@
     </string>
     <string name="category_identifier">מזהה קטגוריה</string>
     <string name="hint_category_identifier">
-        דוגמה: "type":"(.+?)"
+        לדוגמה: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

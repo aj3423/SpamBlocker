@@ -11,7 +11,7 @@
         <br>
         Podes integrar calquera base de datos pública, ou mesmo múltiples bases de datos; tamén podes importar números desde ficheiros locais.<br>
         <br>
-        Consulta a sección "Automatización" a continuación para saber como programar unha tarefa de autoimportación.<br>
+        Consulta a sección \"Automatización\" a continuación para saber como programar unha tarefa de autoimportación.<br>
         <br>
         Aplícase tanto a chamadas como a mensaxes SMS.<br>
         <br>
@@ -125,13 +125,13 @@
     <string name="action_find_rules">Encontrar regras</string>
     <string name="action_modify_rules">Modificar regras</string>
     <string name="action_modify_rules_placeholder">
-        Unha cadea JSON, por exemplo:
-        {
-        "flags": 0, // Disable the rule
-        "priority": 100,
-        "blockType": 0
-        …
-        }
+        Unha cadea json, por exemplo:\n
+        {\n
+        \"flags\": 0, // Disable the rule\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
+        …\n
+        }\n
     </string>
     <string name="help_action_find_rules">
         <![CDATA[

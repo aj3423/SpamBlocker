@@ -11,7 +11,7 @@
         <br>
         Anda dapat mengintegrasikan basis data publik apa pun, atau bahkan beberapa basis data, Anda juga dapat mengimpor nomor dari berkas lokal.<br>
         <br>
-        Lihat bagian "Otomatisasi" di bawah untuk cara menjadwalkan tugas impor otomatis.<br>
+        Lihat bagian \"Otomatisasi\" di bawah untuk cara menjadwalkan tugas impor otomatis.<br>
         <br>
         Ini berlaku untuk panggilan dan pesan SMS.<br>
         <br>
@@ -61,11 +61,11 @@
     <string name="action_find_rules">Temukan Aturan</string>
     <string name="action_modify_rules">Modifikasi Aturan</string>
     <string name="action_modify_rules_placeholder">
-        String JSON, contoh:\n
+        Sebuah string JSON, contoh:\n
         {\n
-        "flags": 0, // Nonaktifkan aturan\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // Nonaktifkan aturan\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

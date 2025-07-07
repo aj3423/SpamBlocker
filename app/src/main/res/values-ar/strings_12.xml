@@ -14,14 +14,14 @@
     <string name="query"><translate>استعلام</translate></string>
     <string name="negative_identifier"><translate>معرف سلبي</translate></string>
     <string name="hint_negative_identifier">
-        <translate>مثال: ("valid":false)</translate>
+        مثال: (\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         <translate>سيتم تحديده كرقم رسائل مزعجة إذا تم العثور على نمط regex هذا في النتيجة.</translate>
     </string>
     <string name="positive_identifier"><translate>معرف إيجابي</translate></string>
     <string name="hint_positive_identifier">
-        <translate>مثال: ("valid":true)</translate>
+        مثال: (\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -33,7 +33,7 @@
     </string>
     <string name="category_identifier"><translate>معرف الفئة</translate></string>
     <string name="hint_category_identifier">
-        <translate>مثال: "type":"(.+?)"</translate>
+        مثال: \"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

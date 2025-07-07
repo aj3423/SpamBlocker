@@ -13,14 +13,14 @@
     <string name="instant_query">Consulta Instantânea</string>
     <string name="negative_identifier">Identificador Negativo</string>
     <string name="hint_negative_identifier">
-        E.g.: ("valid":false)
+        Ex.: (\"válido\":falso)
     </string>
     <string name="help_negative_identifier">
         Será identificado como número de spam se este padrão regex for encontrado no resultado.
     </string>
     <string name="positive_identifier">Identificador Positivo</string>
     <string name="hint_positive_identifier">
-        E.g.: ("valid":true)
+        Ex.: (\"válido\":verdadeiro)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -32,7 +32,7 @@
     </string>
     <string name="category_identifier">Identificador de Categoria</string>
     <string name="hint_category_identifier">
-        E.g.: "type":"(.+?)"
+        Ex.: \"tipo\":\"(.+)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[

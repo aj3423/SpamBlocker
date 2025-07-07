@@ -13,14 +13,14 @@
     <string name="instant_query">即时查询</string>
     <string name="negative_identifier">负向标识符</string>
     <string name="hint_negative_identifier">
-        例如：("valid":false)
+        例如：(\"valid\":false)
     </string>
     <string name="help_negative_identifier">
         如果在结果中找到此正则表达式模式，则将其识别为垃圾号码。
     </string>
     <string name="positive_identifier">正向标识符</string>
     <string name="hint_positive_identifier">
-        例如：("valid":true)
+        例如：(\"valid\":true)
     </string>
     <string name="help_positive_identifier">
         <![CDATA[
@@ -31,7 +31,7 @@
     </string>
     <string name="category_identifier">类别标识符</string>
     <string name="hint_category_identifier">
-        例如："type":"(.+?)"
+        例如：\"type\":\"(.+?)\"
     </string>
     <string name="help_category_identifier">
         <![CDATA[
