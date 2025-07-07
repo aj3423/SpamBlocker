@@ -58,10 +58,10 @@
         <b>Options :</b><br>
         <br>
         <h6><font color="#00BFFF">- Dans les jours</font></h6>
-        Les appels qui ont eu lieu avant <font color="cyan">3 jours</font> sont ignorés.<br>
+        Les appels qui ont eu lieu avant <font color="cyan">%s jours</font> sont ignorés.<br>
         <br>
         <h6><font color="#00BFFF">- Inclure les SMS</font></h6>
-        Lorsqu\'activé, l\'envoi de SMS à ce numéro est également pris en compte.<br>
+        Lorsque cette option est activée, l\'envoi de SMS à ce numéro compte également.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>

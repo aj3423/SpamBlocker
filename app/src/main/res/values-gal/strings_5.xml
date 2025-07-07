@@ -57,11 +57,11 @@
         <br>
         <b>Opcións:</b><br>
         <br>
-        <h6><font color="#00BFFF">- Dentro de Días</font></h6>
-        As chamadas que ocorreron antes de <font color="cyan">3 días</font> son ignoradas.<br>
+        <h6><font color="#00BFFF">- Dentro de días</font></h6>
+        As chamadas que ocorreron antes de <font color="cyan">%s días</font> ignóranse.<br>
         <br>
         <h6><font color="#00BFFF">- Incluír SMS</font></h6>
-        Cando está activado, enviar mensaxes de texto a ese número tamén conta.<br>
+        Cando está activada, enviar mensaxes de texto a ese número tamén conta.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>

@@ -65,13 +65,15 @@
     <string name="repeated_call">Panggilan Berulang</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Izinkan jika panggilan diulang dalam jangka waktu tertentu, kemungkinan besar panggilan tersebut penting dan bukan panggilan spam. <br>
+        Izinkan jika panggilan diulang dalam periode waktu tertentu, kemungkinan itu panggilan penting daripada panggilan spam. <br>
         <br>
-        Menerima pesan teks dari nomor yang sama juga dihitung, hal ini tergantung pada apakah izin MEMBACA_SMS diberikan, yang bersifat opsional.<br>
+        <b>Opsi:</b><br>
         <br>
-        Pengaturan default <font color="#03DAC5"><b>1 / 5 Menit</b></font> berarti panggilan kedua dalam waktu 5 menit akan diizinkan. <br>
+        <h6><font color="#00BFFF">- Frekuensi</h6>
+        Pengaturan default <font color="#03DAC5"><b>1 / 5 Menit</b></font> berarti panggilan kedua dalam 5 menit akan diizinkan. <br>
         <br>
-        Hanya berlaku untuk panggilan, <b>bukan</b> untuk pesan teks. <br>
+        <h6><font color="#00BFFF">- Sertakan SMS</font></h6>
+        Ketika diaktifkan, menerima pesan SMS dari nomor tersebut juga dihitung.<br>
         <br>
         <font color="#ea86ff"><b>Prioritas: 10</b></font>
         ]]>

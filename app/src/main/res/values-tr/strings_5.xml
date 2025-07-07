@@ -52,12 +52,12 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Daha önce aranmış numaralardan gelen aramalara izin ver.<br>
+        Daha önce aranan numaralardan gelen çağrılara izin ver.<br>
         <br>
         <b>Seçenekler:</b><br>
         <br>
-        <h6><font color="#00BFFF">- Gün İçinde</font></h6>
-        <font color="cyan">3 günden</font> önce gerçekleşen aramalar göz ardı edilir.<br>
+        <h6><font color="#00BFFF">- Günler İçinde</font></h6>
+        <font color="cyan">%s günden</font> önce gerçekleşen çağrılar yok sayılır.<br>
         <br>
         <h6><font color="#00BFFF">- SMS Dahil Et</font></h6>
         Etkinleştirildiğinde, o numaraya SMS göndermek de sayılır.<br>

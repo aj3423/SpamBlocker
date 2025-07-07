@@ -34,6 +34,7 @@ fun RepeatedCall() {
     val spf = spf.RepeatedCall(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
+    var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled() && Permission.readSMS.isGranted) }
     var times by remember { mutableStateOf<Int?>(spf.getTimes()) }
     var inXMin by remember { mutableStateOf<Int?>(spf.getInXMin()) }
 
@@ -68,8 +69,30 @@ fun RepeatedCall() {
                     label = @Composable { Text(Str(R.string.within_minutes)) },
                     leadingIconId = R.drawable.ic_duration,
                 )
+                LabeledRow(
+                    R.string.include_sms,
+                    content = {
+                        SwitchBox(smsEnabled) { isTurningOn ->
+                            if (isTurningOn) {
+                                G.permissionChain.ask(
+                                    ctx,
+                                    listOf(PermissionWrapper(Permission.readSMS))
+                                ) { granted ->
+                                    if (granted) {
+                                        spf.setSmsEnabled(true)
+                                        smsEnabled = true
+                                    }
+                                }
+                            } else {
+                                spf.setSmsEnabled(false)
+                                smsEnabled = false
+                            }
+                        }
+                    }
+                )
             }
-        })
+        }
+    )
 
     LabeledRow(
         R.string.repeated_call,
@@ -94,7 +117,6 @@ fun RepeatedCall() {
                         ctx,
                         listOf(
                             PermissionWrapper(Permission.callLog),
-                            PermissionWrapper(Permission.readSMS, isOptional = true),
                             // For matching different SIM country codes when using multiple SIM cards,
                             //  for frequent international travellers.
                             PermissionWrapper(Permission.phoneState, isOptional = true),

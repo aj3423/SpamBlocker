@@ -54,14 +54,14 @@
     <string name="help_hang_up_delay">Задержка перед окончанием вызова (в секундах).</string>
     <string name="help_dialed">
         <![CDATA[
-        Разрешать звонки с ранее набранных номеров.<br>
+        Разрешить звонки с ранее набранных номеров.<br>
         <br>
         <b>Опции:</b><br>
         <br>
         <h6><font color="#00BFFF">- В течение дней</font></h6>
-        Звонки, которые произошли до <font color="cyan">3 дней</font>, игнорируются.<br>
+        Звонки, произошедшие до <font color="cyan">%s дней</font>, игнорируются.<br>
         <br>
-        <h6><font color="#00BFFF">- Включать SMS</font></h6>
+        <h6><font color="#00BFFF">- Включить SMS</font></h6>
         Если включено, отправка SMS на этот номер также учитывается.<br>
         <br>
         <font color="#ea86ff"><b>Приоритет: 10</b></font>

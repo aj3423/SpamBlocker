@@ -58,7 +58,7 @@
         <b>Optionen:</b><br>
         <br>
         <h6><font color="#00BFFF">- Innerhalb von Tagen</font></h6>
-        Anrufe, die vor <font color="cyan">3 Tagen</font> stattfanden, werden ignoriert.<br>
+        Anrufe, die vor <font color="cyan">%s Tagen</font> getätigt wurden, werden ignoriert.<br>
         <br>
         <h6><font color="#00BFFF">- SMS einschließen</font></h6>
         Wenn aktiviert, zählt auch das Senden einer SMS an diese Nummer.<br>

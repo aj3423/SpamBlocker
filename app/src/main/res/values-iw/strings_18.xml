@@ -65,17 +65,23 @@
     <string name="answered_number"><short>מספר נענה</short></string>
     <string name="help_answered">
         <![CDATA[
-        אפשר שיחות ממספרים שנענו בעבר.<br>
+        אפשר שיחות ממספרים שענית עליהם בעבר.<br>
+        <br>
+        <h6><font color="#ffa500">אזהרה</font></h6>
+        %s<br>
         <br>
         <b>אפשרויות:</b><br>
         <br>
         <h6><font color="#00BFFF">- בתוך ימים</font></h6>
-        שיחות שהתרחשו לפני <font color="cyan">3 ימים</font> מתעלמות.<br>
+        שיחות שהתרחשו לפני <font color="cyan">%d ימים</font> מתעלמים מהן.<br>
         <br>
         <h6><font color="#00BFFF">- משך מינימלי</font></h6>
-        שיחות שנמשכו פחות מ-<font color="cyan">15 שניות</font> מתעלמות.<br>
+        שיחות שנמשכו פחות מ-<font color="cyan">%d שניות</font> מתעלמים מהן.<br>
         <br>
         <font color="#ea86ff"><b>עדיפות: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">אין להפעיל תכונה זו עבור קשישים או כל מי שפחות מסוגל לזהות שיחות הונאה, מכיוון שזה עלול לחשוף אותם לשיחות הונאה חוזרות ונשנות.</string>
+    <string name="acknowledged">הבנתי</string>
+    <string name="warning">אזהרה</string>
 </resources>

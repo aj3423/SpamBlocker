@@ -38,17 +38,23 @@
     <string name="answered_number"><short>رقم مجاب</short></string>
     <string name="help_answered">
         <![CDATA[
-        السماح بالمكالمات من الأرقام التي تم الرد عليها مسبقًا.<br>
+        السماح بالمكالمات من الأرقام التي تم الرد عليها سابقًا.<br>
+        <br>
+        <h6><font color="#ffa500">تحذير</font></h6>
+        %s<br>
         <br>
         <b>الخيارات:</b><br>
         <br>
         <h6><font color="#00BFFF">- خلال أيام</font></h6>
-        يتم تجاهل المكالمات التي حدثت قبل <font color="cyan">3 أيام</font>.<br>
+        يتم تجاهل المكالمات التي حدثت قبل <font color="cyan">%d أيام</font>.<br>
         <br>
-        <h6><font color="#00BFFF">- الحد الأدنى للمدة</font></h6>
-        يتم تجاهل المكالمات التي استمرت أقل من <font color="cyan">15 ثانية</font>.<br>
+        <h6><font color="#00BFFF">- المدة الدنيا</font></h6>
+        يتم تجاهل المكالمات التي استمرت أقل من <font color="cyan">%d ثانية</font>.<br>
         <br>
         <font color="#ea86ff"><b>الأولوية: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">لا تمكّن هذه الميزة لكبار السن أو أي شخص أقل قدرة على تحديد المكالمات الاحتيالية، حيث قد يعرضهم ذلك لمكالمات احتيالية متكررة.</string>
+    <string name="acknowledged">تم الإقرار</string>
+    <string name="warning">تحذير</string>
 </resources>

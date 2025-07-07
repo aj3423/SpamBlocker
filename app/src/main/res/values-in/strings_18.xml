@@ -65,17 +65,23 @@
     <string name="answered_number">Nomor Dijawab</string>
     <string name="help_answered">
         <![CDATA[
-        Izinkan panggilan dari nomor yang sebelumnya dijawab.<br>
+        Izinkan panggilan dari nomor yang sebelumnya telah dijawab.<br>
+        <br>
+        <h6><font color="#ffa500">Peringatan</font></h6>
+        %s<br>
         <br>
         <b>Opsi:</b><br>
         <br>
         <h6><font color="#00BFFF">- Dalam Hari</font></h6>
-        Panggilan yang terjadi sebelum <font color="cyan">3 hari</font> diabaikan.<br>
+        Panggilan yang terjadi sebelum <font color="cyan">%d hari</font> diabaikan.<br>
         <br>
         <h6><font color="#00BFFF">- Durasi Minimal</font></h6>
-        Panggilan yang berlangsung kurang dari <font color="cyan">15 detik</font> diabaikan.<br>
+        Panggilan yang berlangsung kurang dari <font color="cyan">%d detik</font> diabaikan.<br>
         <br>
         <font color="#ea86ff"><b>Prioritas: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Jangan aktifkan fitur ini untuk lansia atau siapa pun yang kurang mampu mengidentifikasi panggilan penipuan, karena ini dapat membuat mereka terpapar panggilan penipuan berulang.</string>
+    <string name="acknowledged">Dimengerti</string>
+    <string name="warning">Peringatan</string>
 </resources>

@@ -53,15 +53,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        Permitir llamadas de números marcados previamente.<br>
+        Permitir llamadas de números previamente marcados.<br>
         <br>
         <b>Opciones:</b><br>
         <br>
-        <h6><font color="#00BFFF">- Dentro de Días</font></h6>
-        Las llamadas que ocurrieron antes de <font color="cyan">3 días</font> son ignoradas.<br>
+        <h6><font color="#00BFFF">- En Días</font></h6>
+        Se ignoran las llamadas que ocurrieron antes de <font color="cyan">%s días</font>.<br>
         <br>
         <h6><font color="#00BFFF">- Incluir SMS</font></h6>
-        Cuando está activado, enviar un SMS a ese número también cuenta.<br>
+        Cuando está activada, enviar mensajes de texto a ese número también cuenta.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>

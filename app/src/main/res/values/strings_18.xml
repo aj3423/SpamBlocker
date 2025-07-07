@@ -67,15 +67,21 @@
         <![CDATA[
         Allow calls from previously answered numbers.<br>
         <br>
+        <h6><font color="#ffa500">Warning</font></h6>
+        %s<br>
+        <br>
         <b>Options:</b><br>
         <br>
         <h6><font color="#00BFFF">- Within Days</font></h6>
-        Calls that occurred before <font color="cyan">3 days</font> are ignored.<br>
+        Calls that occurred before <font color="cyan">%d days</font> are ignored.<br>
         <br>
         <h6><font color="#00BFFF">- Minimal Duration</font></h6>
-        Calls lasted less than <font color="cyan">15 seconds</font> are ignored.<br>
+        Calls lasted less than <font color="cyan">%d seconds</font> are ignored.<br>
         <br>
         <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Do not enable this feature for seniors or anyone less capable of identifying fraudulent calls, as this could expose them to repeated fraudulent calls.</string>
+    <string name="acknowledged">Acknowledged</string>
+    <string name="warning">Warning</string>
 </resources>

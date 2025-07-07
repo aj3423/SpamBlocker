@@ -62,13 +62,15 @@
     <string name="repeated_call">Chamada repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permitir se a chamada se repete nun período de tempo, é probable que sexa importante en vez dunha chamada spam. <br>
+        Permitir se a chamada se repite nun período de tempo; é probable que sexa importante en lugar de ser unha chamada de spam.<br>
         <br>
-        Recibir unha mensaxe de texto do mesmo número tamén se conta, isto depende de se o permiso READ_SMS está concedido, que é opcional.<br>
+        <b>Opcións:</b><br>
         <br>
-        A configuración predeterminada <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que a segunda chamada dentro dos 5 minutos se permitirá. <br>
+        <h6><font color="#00BFFF">- Frecuencia</h6>
+        A configuración predeterminada <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que a segunda chamada dentro de 5 minutos será permitida.<br>
         <br>
-        Só se aplica ás chamadas, <b>non</b> ás mensaxes de texto. <br>
+        <h6><font color="#00BFFF">- Incluír SMS</font></h6>
+        Cando está activado, tamén conta a recepción de mensaxes SMS dese número.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>

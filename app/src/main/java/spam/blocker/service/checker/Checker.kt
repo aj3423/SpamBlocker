@@ -400,6 +400,7 @@ class Checker { // for namespace only
 
             val times = spf.getTimes()
             val durationMinutes = spf.getInXMin()
+            val smsEnabled = spf.isSmsEnabled()
 
             val durationMillis = durationMinutes.toLong() * 60 * 1000
 
@@ -424,18 +425,24 @@ class Checker { // for namespace only
             }
 
             // count SMSs from real SMS history
-            var nSMSs = countHistorySMSByNumber(
-                ctx,
-                phoneNumber,
-                Def.DIRECTION_INCOMING,
-                durationMillis
-            )
-            if (isTesting) { // try local db
-                val nSMSsTesting = SmsTable().countRepeatedRecordsWithinSeconds(
+            var nSMSs = if(smsEnabled)
+                countHistorySMSByNumber(
                     ctx,
-                    rawNumber,
-                    durationMinutes * 60
+                    phoneNumber,
+                    Def.DIRECTION_INCOMING,
+                    durationMillis
                 )
+            else
+                0
+            if (isTesting) { // try local db
+                val nSMSsTesting = if (smsEnabled)
+                    SmsTable().countRepeatedRecordsWithinSeconds(
+                        ctx,
+                        rawNumber,
+                        durationMinutes * 60
+                    )
+                else
+                    0
                 if (nSMSs < nSMSsTesting)
                     nSMSs = nSMSsTesting
             }

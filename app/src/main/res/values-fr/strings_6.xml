@@ -62,13 +62,15 @@
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Autoriser si l\'appel est répété dans un délai donné, il est probable qu\'il soit important plutôt qu\'un appel indésirable. <br>
+        Autoriser si l\'appel est répété dans un certain laps de temps, il est susceptible d\'être important plutôt qu\'un appel spam. <br>
         <br>
-        La réception d\'un SMS du même numéro est également prise en compte, cela dépend de l\'octroi de l\'autorisation READ_SMS, qui est facultative.<br>
+        <b>Options :</b><br>
         <br>
-        Le paramètre par défaut <font color="#03DAC5"><b>1 / 5 Min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
+        <h6><font color="#00BFFF">- Fréquence</h6>
+        Le réglage par défaut <font color="#03DAC5"><b>1 / 5 min</b></font> signifie que le deuxième appel dans les 5 minutes sera autorisé. <br>
         <br>
-        Ne s\'applique qu\'aux appels, <b>pas</b> aux SMS. <br>
+        <h6><font color="#00BFFF">- Inclure les SMS</font></h6>
+        Lorsqu\'activé, la réception de messages SMS de ce numéro compte également.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>

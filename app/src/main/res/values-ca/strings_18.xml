@@ -65,17 +65,23 @@
     <string name="answered_number">Núm. respost</string>
     <string name="help_answered">
         <![CDATA[
-        Permet trucades de números prèviament atesos.<br>
+        Permetre trucades de números de telèfon prèviament contestats.<br>
+        <br>
+        <h6><font color="#ffa500">Avís</font></h6>
+        %s<br>
         <br>
         <b>Opcions:</b><br>
         <br>
         <h6><font color="#00BFFF">- Dins de Dies</font></h6>
-        Les trucades que van ocórrer fa més de <font color="cyan">3 dies</font> s\'ignoren.<br>
+        Les trucades que van tenir lloc abans de <font color="cyan">%d dies</font> s\'ignoren.<br>
         <br>
         <h6><font color="#00BFFF">- Durada Mínima</font></h6>
-        Les trucades que van durar menys de <font color="cyan">15 segons</font> s\'ignoren.<br>
+        Les trucades que van durar menys de <font color="cyan">%d segons</font> s\'ignoren.<br>
         <br>
         <font color="#ea86ff"><b>Prioritat: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">No activeu aquesta funció per a la gent gran o qualsevol persona amb menys capacitat per identificar trucades fraudulentes, ja que això els podria exposar a trucades fraudulentes repetides.</string>
+    <string name="acknowledged">Reconegut</string>
+    <string name="warning">Avís</string>
 </resources>

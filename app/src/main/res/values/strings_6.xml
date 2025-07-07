@@ -67,11 +67,13 @@
         <![CDATA[
         Allow if the call is repeated within a period of time, it is likely to be important rather than a spam call. <br>
         <br>
-        Receiving text message from the same number is also counted, this depends on whether the READ_SMS permission is granted, which is optional.<br>
+        <b>Options:</b><br>
         <br>
+        <h6><font color="#00BFFF">- Frequency</h6>
         The default setting <font color="#03DAC5"><b>1 / 5 Min</b></font> means the second call within 5 minutes will be allowed. <br>
         <br>
-        Only applies to calls, <b>not</b> to text messages. <br>
+        <h6><font color="#00BFFF">- Include SMS</font></h6>
+        When enabled, receiving SMS messages from that number also counts.<br>
         <br>
         <font color="#ea86ff"><b>Priority: 10</b></font>
         ]]>

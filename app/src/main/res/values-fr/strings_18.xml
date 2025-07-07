@@ -67,15 +67,21 @@
         <![CDATA[
         Autoriser les appels provenant de numéros précédemment répondus.<br>
         <br>
+        <h6><font color="#ffa500">Avertissement</font></h6>
+        %s<br>
+        <br>
         <b>Options :</b><br>
         <br>
         <h6><font color="#00BFFF">- Dans les jours</font></h6>
-        Les appels qui ont eu lieu avant <font color="cyan">3 jours</font> sont ignorés.<br>
+        Les appels qui ont eu lieu avant <font color="cyan">%d jours</font> sont ignorés.<br>
         <br>
         <h6><font color="#00BFFF">- Durée minimale</font></h6>
-        Les appels de moins de <font color="cyan">15 secondes</font> sont ignorés.<br>
+        Les appels d\'une durée inférieure à <font color="cyan">%d secondes</font> sont ignorés.<br>
         <br>
         <font color="#ea86ff"><b>Priorité : 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">N\'activez pas cette fonction pour les personnes âgées ou toute personne moins apte à identifier les appels frauduleux, car cela pourrait les exposer à des appels frauduleux répétés.</string>
+    <string name="acknowledged">Reconnu</string>
+    <string name="warning">Avertissement</string>
 </resources>

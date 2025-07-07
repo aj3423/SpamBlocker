@@ -65,17 +65,23 @@
     <string name="answered_number">Отвеченные</string>
     <string name="help_answered">
         <![CDATA[
-        Разрешать звонки с номеров, на которые ранее были ответы.<br>
+        Разрешать звонки с номеров, на которые ранее был дан ответ.<br>
         <br>
-        <b>Опции:</b><br>
+        <h6><font color="#ffa500">Внимание</font></h6>
+        %s<br>
+        <br>
+        <b>Параметры:</b><br>
         <br>
         <h6><font color="#00BFFF">- В течение дней</font></h6>
-        Звонки, поступившие до <font color="cyan">3 дней</font>, игнорируются.<br>
+        Звонки, произошедшие до <font color="cyan">%d дней</font>, игнорируются.<br>
         <br>
-        <h6><font color="#00BFFF">- Минимальная продолжительность</font></h6>
-        Звонки длительностью менее <font color="cyan">15 секунд</font> игнорируются.<br>
+        <h6><font color="#00BFFF">- Минимальная длительность</font></h6>
+        Звонки длительностью менее <font color="cyan">%d секунд</font> игнорируются.<br>
         <br>
         <font color="#ea86ff"><b>Приоритет: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Не включайте эту функцию для пожилых людей или тех, кто менее способен распознавать мошеннические звонки, так как это может подвергнуть их повторным мошенническим звонкам.</string>
+    <string name="acknowledged">Подтверждено</string>
+    <string name="warning">Предупреждение</string>
 </resources>

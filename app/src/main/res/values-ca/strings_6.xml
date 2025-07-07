@@ -65,13 +65,15 @@
     <string name="repeated_call"><translate>Trucada repetida</translate></string>
     <string name="help_repeated_call">
         <![CDATA[
-        Permet si la trucada es repeteix en un període de temps, és probable que sigui important en lloc d\'una trucada brossa. <br>
+        Permet si la trucada es repeteix dins d\'un període de temps; és probable que sigui important en lloc d\'una trucada de spam. <br>
         <br>
-        També es compta la recepció de missatges de text del mateix número, això depèn de si es concedeix el permís READ_SMS, que és opcional.<br>
+        <b>Opcions:</b><br>
         <br>
-        La configuració predeterminada <font color="#03DAC5"><b>1 / 5 Min</b></font> significa que es permetrà la segona trucada en 5 minuts. <br>
+        <h6><font color="#00BFFF">- Freqüència</h6>
+        La configuració predeterminada <font color="#03DAC5"><b>1 / 5 minuts</b></font> significa que es permetrà la segona trucada en 5 minuts. <br>
         <br>
-        Només s\'aplica a les trucades, <b>no</b> als missatges de text. <br>
+        <h6><font color="#00BFFF">- Incloure SMS</font></h6>
+        Quan estigui activat, també es comptabilitzen els SMS rebuts d\'aquest número.<br>
         <br>
         <font color="#ea86ff"><b>Prioritat: 10</b></font>
         ]]>

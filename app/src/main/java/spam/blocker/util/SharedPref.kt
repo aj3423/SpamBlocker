@@ -205,6 +205,8 @@ class spf { // for namespace only
     class RepeatedCall(ctx: Context) : SharedPref(ctx) {
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_REPEATED, enabled) }
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_REPEATED, false) }
+        fun setSmsEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_REPEATED_BY_SMS, enabled) }
+        fun isSmsEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_REPEATED_BY_SMS, true) }
         fun getTimes(): Int { return readInt(Def.SETTING_REPEATED_TIMES, 1) }
         fun setTimes(times: Int ) { writeInt(Def.SETTING_REPEATED_TIMES, times) }
         fun getInXMin(): Int { return readInt(Def.SETTING_REPEATED_IN_X_MIN, 5) }
@@ -221,12 +223,14 @@ class spf { // for namespace only
     }
 
     class Answered(ctx: Context) : SharedPref(ctx) {
+        fun setWarningAcknowledged(acknowledged: Boolean) { writeBoolean(Def.SETTING_ANSWERED_WARNING_ACKNOWLEDGED, acknowledged) }
+        fun isWarningAcknowledged(): Boolean { return readBoolean(Def.SETTING_ANSWERED_WARNING_ACKNOWLEDGED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_ANSWERED, enabled) }
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_PERMIT_ANSWERED, false) }
         fun getMinDuration(): Int { return readInt(Def.SETTING_ANSWERED_MIN_DURATION, 15) }
         fun setMinDuration(minDuration: Int) { writeInt(Def.SETTING_ANSWERED_MIN_DURATION, minDuration) }
-        fun getDays(): Int { return readInt(Def.SETTING_DIALED_IN_X_DAY, 3) }
-        fun setDays(inXDay: Int) { writeInt(Def.SETTING_DIALED_IN_X_DAY, inXDay) }
+        fun getDays(): Int { return readInt(Def.SETTING_ANSWERED_IN_X_DAY, 3) }
+        fun setDays(inXDay: Int) { writeInt(Def.SETTING_ANSWERED_IN_X_DAY, inXDay) }
     }
 
     class OffTime(ctx: Context) : SharedPref(ctx) {

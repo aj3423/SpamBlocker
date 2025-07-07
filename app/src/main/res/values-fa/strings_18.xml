@@ -65,17 +65,23 @@
     <string name="answered_number">پاسخ‌داده</string>
     <string name="help_answered">
         <![CDATA[
-        اجازه دادن به تماس‌ها از شماره‌های قبلاً پاسخ داده شده.<br>
+        اجازه تماس از شماره‌هایی که قبلاً پاسخ داده شده‌اند.<br>
+        <br>
+        <h6><font color="#ffa500">هشدار</font></h6>
+        %s<br>
         <br>
         <b>گزینه‌ها:</b><br>
         <br>
         <h6><font color="#00BFFF">- در مدت روزها</font></h6>
-        تماس‌هایی که قبل از <font color="cyan">3 روز</font> اتفاق افتاده‌اند نادیده گرفته می‌شوند.<br>
+        تماس‌هایی که قبل از <font color="cyan">%d روز</font> رخ داده‌اند نادیده گرفته می‌شوند.<br>
         <br>
         <h6><font color="#00BFFF">- حداقل مدت زمان</font></h6>
-        تماس‌هایی که کمتر از <font color="cyan">15 ثانیه</font> طول کشیده‌اند نادیده گرفته می‌شوند.<br>
+        تماس‌هایی که کمتر از <font color="cyan">%d ثانیه</font> طول کشیده‌اند نادیده گرفته می‌شوند.<br>
         <br>
         <font color="#ea86ff"><b>اولویت: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">این قابلیت را برای سالمندان یا هر کسی که توانایی کمتری در شناسایی تماس‌های کلاهبرداری دارد، فعال نکنید، زیرا این می‌تواند آن‌ها را در معرض تماس‌های کلاهبرداری مکرر قرار دهد.</string>
+    <string name="acknowledged">تایید شد</string>
+    <string name="warning">هشدار</string>
 </resources>

@@ -59,7 +59,7 @@
         <b>אפשרויות:</b><br>
         <br>
         <h6><font color="#00BFFF">- בתוך ימים</font></h6>
-        שיחות שהתרחשו לפני <font color="cyan">3 ימים</font> מתעלמות.<br>
+        שיחות שהתרחשו לפני <font color="cyan">%s ימים</font> מתעלמות.<br>
         <br>
         <h6><font color="#00BFFF">- כלול הודעות SMS</font></h6>
         כאשר מופעל, שליחת הודעה למספר זה גם נחשבת.<br>

@@ -58,8 +58,8 @@
         <br>
         <b>Opcions:</b><br>
         <br>
-        <h6><font color="#00BFFF">- Dins de dies</font></h6>
-        Les trucades que van tenir lloc abans de <font color="cyan">3 dies</font> s\'ignoren.<br>
+        <h6><font color="#00BFFF">- En Dies</font></h6>
+        Les trucades que van ocórrer abans de <font color="cyan">%s dies</font> són ignorades.<br>
         <br>
         <h6><font color="#00BFFF">- Incloure SMS</font></h6>
         Quan està activat, enviar missatges a aquest número també compta.<br>

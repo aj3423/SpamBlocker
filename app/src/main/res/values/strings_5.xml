@@ -1,9 +1,7 @@
 <resources>
     <string name="dialed_number"><short>Dialed Number</short></string>
     <string name="find_apps">Find Apps</string>
-
     <string name="confirm_delete_all_rule">Confirm to delete All Rules?</string>
-
     <string name="notification">Notification</string>
     <string name="type">Type</string>
     <string name="times">Times</string>
@@ -59,7 +57,7 @@
         <b>Options:</b><br>
         <br>
         <h6><font color="#00BFFF">- Within Days</font></h6>
-        Calls that occurred before <font color="cyan">3 days</font> are ignored.<br>
+        Calls that occurred before <font color="cyan">%s days</font> are ignored.<br>
         <br>
         <h6><font color="#00BFFF">- Include SMS</font></h6>
         When enabled, texting that number also counts.<br>

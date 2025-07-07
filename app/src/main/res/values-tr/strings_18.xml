@@ -65,17 +65,23 @@
     <string name="answered_number">Cevaplanan Numara</string>
     <string name="help_answered">
         <![CDATA[
-        Önceden yanıtlanan numaralardan gelen çağrılara izin ver.<br>
+        Önceden cevaplanmış numaralardan gelen çağrılara izin verin.<br>
+        <br>
+        <h6><font color="#ffa500">Uyarı</font></h6>
+        %s<br>
         <br>
         <b>Seçenekler:</b><br>
         <br>
         <h6><font color="#00BFFF">- Gün İçinde</font></h6>
-        <font color="cyan">3 gün</font> öncesine kadar gerçekleşen çağrılar yoksayılır.<br>
+        <font color="cyan">%d gün</font> öncesinde gerçekleşen çağrılar yoksayılır.<br>
         <br>
         <h6><font color="#00BFFF">- Minimum Süre</font></h6>
-        <font color="cyan">15 saniyeden</font> daha kısa süren çağrılar yoksayılır.<br>
+        <font color="cyan">%d saniyeden</font> az süren çağrılar yoksayılır.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Bu özelliği yaşlılar veya sahte aramaları tanımlama yeteneği daha az olan kişiler için etkinleştirmeyin, zira bu onları tekrarlanan sahte aramalara maruz bırakabilir.</string>
+    <string name="acknowledged">Onaylandı</string>
+    <string name="warning">Uyarı</string>
 </resources>

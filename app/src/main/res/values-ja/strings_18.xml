@@ -64,17 +64,23 @@
     <string name="answered_number">応答番号</string>
     <string name="help_answered">
         <![CDATA[
-        以前に応答した電話番号からの通話を許可します。<br>
+        以前応答した電話番号からの通話を許可します。<br>
+        <br>
+        <h6><font color="#ffa500">警告</font></h6>
+        %s<br>
         <br>
         <b>オプション:</b><br>
         <br>
-        <h6><font color="#00BFFF">- 日数以内</font></h6>
-        <font color="cyan">3日</font>より前に発生した通話は無視されます。<br>
+        <h6><font color="#00BFFF">- 日以内</font></h6>
+        <font color="cyan">%d日</font>より前に発生した通話は無視されます。<br>
         <br>
-        <h6><font color="#00BFFF">- 最小通話時間</font></h6>
-        <font color="cyan">15秒</font>未満の通話は無視されます。<br>
+        <h6><font color="#00BFFF">- 最小期間</font></h6>
+        <font color="cyan">%d秒</font>未満の通話は無視されます。<br>
         <br>
         <font color="#ea86ff"><b>優先度: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">この機能は、高齢者や詐欺電話を識別する能力が低い人には有効にしないでください。これにより、詐欺電話が繰り返し着信する可能性があります。</string>
+    <string name="acknowledged">確認済み</string>
+    <string name="warning">警告</string>
 </resources>

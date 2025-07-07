@@ -51,15 +51,15 @@
     </string>
     <string name="help_dialed">
         <![CDATA[
-        以前に発信した番号からの通話を許可します。<br>
+        以前に発信したことのある番号からの通話を許可します。<br>
         <br>
         <b>オプション:</b><br>
         <br>
         <h6><font color="#00BFFF">- 日以内</font></h6>
-        3日以上前に発生した通話は無視されます。<br>
+        <font color="cyan">%s日</font>より前に発生した通話は無視されます。<br>
         <br>
         <h6><font color="#00BFFF">- SMSを含める</font></h6>
-        有効にすると、その番号へのテキストメッセージもカウントされます。<br>
+        有効にすると、その番号へのテキストメッセージ送信も含まれます。<br>
         <br>
         <font color="#ea86ff"><b>優先度: 10</b></font>
         ]]>

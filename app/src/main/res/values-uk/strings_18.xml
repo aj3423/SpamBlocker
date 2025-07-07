@@ -65,17 +65,23 @@
     <string name="answered_number">Відповідений номер</string>
     <string name="help_answered">
         <![CDATA[
-        Дозволити дзвінки від раніше відповілих номерів.<br>
+        Дозволити дзвінки з номерів, на які раніше відповідали.<br>
         <br>
-        <b>Опції:</b><br>
+        <h6><font color="#ffa500">Увага</font></h6>
+        %s<br>
+        <br>
+        <b>Параметри:</b><br>
         <br>
         <h6><font color="#00BFFF">- Протягом днів</font></h6>
-        Дзвінки, що відбулися до <font color="cyan">3 днів</font> тому, ігноруються.<br>
+        Дзвінки, що відбулися раніше, ніж <font color="cyan">%d днів</font>, ігноруються.<br>
         <br>
         <h6><font color="#00BFFF">- Мінімальна тривалість</font></h6>
-        Дзвінки тривалістю менше <font color="cyan">15 секунд</font> ігноруються.<br>
+        Дзвінки тривалістю менше <font color="cyan">%d секунд</font> ігноруються.<br>
         <br>
         <font color="#ea86ff"><b>Пріоритет: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Не вмикайте цю функцію для людей похилого віку або тих, хто менш здатен ідентифікувати шахрайські дзвінки, оскільки це може наразити їх на повторні шахрайські дзвінки.</string>
+    <string name="acknowledged">Підтверджено</string>
+    <string name="warning">Попередження</string>
 </resources>

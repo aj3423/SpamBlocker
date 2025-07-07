@@ -65,17 +65,23 @@
     <string name="answered_number">Núm. Respondido</string>
     <string name="help_answered">
         <![CDATA[
-        Permitir llamadas de números respondidos previamente.<br>
+        Permitir llamadas de números previamente contestados.<br>
+        <br>
+        <h6><font color="#ffa500">Advertencia</font></h6>
+        %s<br>
         <br>
         <b>Opciones:</b><br>
         <br>
-        <h6><font color="#00BFFF">- Dentro de Días</font></h6>
-        Llamadas que ocurrieron antes de <font color="cyan">3 días</font> se ignoran.<br>
+        <h6><font color="#00BFFF">- Dentro de días</font></h6>
+        Las llamadas que ocurrieron antes de <font color="cyan">%d días</font> son ignoradas.<br>
         <br>
-        <h6><font color="#00BFFF">- Duración Mínima</font></h6>
-        Llamadas que duraron menos de <font color="cyan">15 segundos</font> se ignoran.<br>
+        <h6><font color="#00BFFF">- Duración mínima</font></h6>
+        Las llamadas que duraron menos de <font color="cyan">%d segundos</font> son ignoradas.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">No habilite esta función para personas mayores o cualquier persona menos capaz de identificar llamadas fraudulentas, ya que esto podría exponerlas a repetidas llamadas fraudulentas.</string>
+    <string name="acknowledged">Entendido</string>
+    <string name="warning">Advertencia</string>
 </resources>

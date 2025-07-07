@@ -62,13 +62,15 @@
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Zulassen, wenn der Anruf innerhalb einer bestimmten Zeit wiederholt wird, ist es wahrscheinlich wichtiger als ein Spam-Anruf. <br>
+        Zulassen, wenn der Anruf innerhalb eines Zeitraums wiederholt wird, da dies eher wichtig als ein Spam-Anruf ist. <br>
         <br>
-        Der Empfang von Textnachrichten von der gleichen Nummer wird ebenfalls gezählt. Dies hängt davon ab, ob die Berechtigung READ_SMS erteilt wurde, die optional ist.<br>
+        <b>Optionen:</b><br>
         <br>
+        <h6><font color="#00BFFF">- Häufigkeit</h6>
         Die Standardeinstellung <font color="#03DAC5"><b>1 / 5 Min</b></font> bedeutet, dass der zweite Anruf innerhalb von 5 Minuten zugelassen wird. <br>
         <br>
-        Gilt nur für Anrufe, <b>nicht</b> für Textnachrichten. <br>
+        <h6><font color="#00BFFF">- SMS einbeziehen</font></h6>
+        Wenn aktiviert, zählt auch der Empfang von SMS-Nachrichten von dieser Nummer.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>

@@ -62,13 +62,15 @@
     <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
-        如果电话在一段时间内重复，则很可能很重要而不是垃圾电话。 <br>
+        如果电话在短时间内重复呼入，则允许其通过，这很可能是一个重要的电话而非骚扰电话。 <br>
         <br>
-        从同一个号码接收短信也被计算在内，这取决于是否授予了 READ_SMS 权限，这是可选的。 <br>
+        <b>选项：</b><br>
         <br>
-        默认设置 <font color="#03DAC5"><b>1 / 5 分钟</b></font> 表示 5 分钟内的第二次通话将被允许。 <br>
+        <h6><font color="#00BFFF">- 频率</font></h6>
+        默认设置 <font color="#03DAC5"><b>1 次 / 5 分钟</b></font> 表示在 5 分钟内的第二次来电将被允许通过。 <br>
         <br>
-        仅适用于电话，<b>不</b>适用于短信。 <br>
+        <h6><font color="#00BFFF">- 包含短信</font></h6>
+        启用时，接收来自该电话号码的短信也将计入。<br>
         <br>
         <font color="#ea86ff"><b>优先级：10</b></font>
         ]]>

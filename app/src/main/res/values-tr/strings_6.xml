@@ -62,13 +62,15 @@
     <string name="repeated_call">Tekrarlanan Arama</string>
     <string name="help_repeated_call">
         <![CDATA[
-        Belirli bir süre içinde arama tekrarlanırsa, bunun muhtemelen önemli bir arama olduğu, spam araması olma olasılığından daha yüksektir. <br>
+        Çağrı belirli bir süre içinde tekrarlanırsa izin verin, bu bir spam çağrısından ziyade önemli olabilir. <br>
         <br>
-        Aynı numaradan gelen metin mesajları da sayılmaktadır; bu, READ_SMS izninin verilmesine bağlıdır, bu izin isteğe bağlıdır.<br>
+        <b>Seçenekler:</b><br>
         <br>
-        Varsayılan ayar <font color="#03DAC5"><b>1 / 5 Dk.</b></font>dır. Bu 5 dakika içinde yapılan ikinci aramanın izin verileceği anlamına gelir. <br>
+        <h6><font color="#00BFFF">- Frekans</h6>
+        Varsayılan ayar <font color="#03DAC5"><b>1 / 5 Dakika</b></font>, 5 dakika içinde ikinci çağrıya izin verileceği anlamına gelir. <br>
         <br>
-        Sadece aramalar için geçerlidir, <b>not</b> metin mesajları için geçerli değildir. <br>
+        <h6><font color="#00BFFF">- SMS Dahil Et</font></h6>
+        Etkinleştirildiğinde, o numaradan SMS mesajları almak da sayılır.<br>
         <br>
         <font color="#ea86ff"><b>Öncelik: 10</b></font>
         ]]>

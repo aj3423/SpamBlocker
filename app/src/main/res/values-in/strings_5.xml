@@ -59,10 +59,10 @@
         <b>Opsi:</b><br>
         <br>
         <h6><font color="#00BFFF">- Dalam Hari</font></h6>
-        Panggilan yang terjadi sebelum <font color="cyan">3 hari</font> akan diabaikan.<br>
+        Panggilan yang terjadi sebelum <font color="cyan">%s hari</font> akan diabaikan.<br>
         <br>
         <h6><font color="#00BFFF">- Sertakan SMS</font></h6>
-        Ketika diaktifkan, mengirim SMS ke nomor tersebut juga diperhitungkan.<br>
+        Saat diaktifkan, SMS ke nomor tersebut juga dihitung.<br>
         <br>
         <font color="#ea86ff"><b>Prioritas: 10</b></font>
         ]]>

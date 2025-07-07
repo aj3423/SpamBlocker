@@ -54,17 +54,17 @@
     <string name="help_hang_up_delay">تأخیر قبل از قطع تماس (به ثانیه).</string>
     <string name="help_dialed">
         <![CDATA[
-        اجازه دادن تماس‌ها از شماره‌های قبلاً شماره‌گیری شده.<br>
+        اجازه تماس از شماره‌های قبلاً گرفته شده.<br>
         <br>
         <b>گزینه‌ها:</b><br>
         <br>
         <h6><font color="#00BFFF">- در عرض چند روز</font></h6>
-        تماس‌هایی که قبل از <font color="cyan">۳ روز</font> رخ داده‌اند، نادیده گرفته می‌شوند.<br>
+        تماس‌هایی که قبل از <font color="cyan">%s روز</font> رخ داده‌اند، نادیده گرفته می‌شوند.<br>
         <br>
-        <h6><font color="#00BFFF">- شامل پیامک‌ها</font></h6>
-        هنگام فعال بودن، ارسال پیامک به آن شماره نیز محسوب می‌شود.<br>
+        <h6><font color="#00BFFF">- شامل پیامک</font></h6>
+        در صورت فعال بودن، ارسال پیامک به آن شماره نیز محسوب می‌شود.<br>
         <br>
-        <font color="#ea86ff"><b>اولویت: ۱۰</b></font>
+        <font color="#ea86ff"><b>اولویت: 10</b></font>
         ]]>
     </string>
     <string name="help_recent_apps">

@@ -67,15 +67,21 @@
         <![CDATA[
         Anrufe von zuvor angenommenen Nummern zulassen.<br>
         <br>
+        <h6><font color="#ffa500">Warnung</font></h6>
+        %s<br>
+        <br>
         <b>Optionen:</b><br>
         <br>
         <h6><font color="#00BFFF">- Innerhalb von Tagen</font></h6>
-        Anrufe, die vor <font color="cyan">3 Tagen</font> stattfanden, werden ignoriert.<br>
+        Anrufe, die vor <font color="cyan">%d Tagen</font> stattfanden, werden ignoriert.<br>
         <br>
         <h6><font color="#00BFFF">- Minimale Dauer</font></h6>
-        Anrufe, die weniger als <font color="cyan">15 Sekunden</font> dauerten, werden ignoriert.<br>
+        Anrufe, die weniger als <font color="cyan">%d Sekunden</font> dauerten, werden ignoriert.<br>
         <br>
         <font color="#ea86ff"><b>Priorität: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Aktivieren Sie diese Funktion nicht für Senioren oder Personen, die weniger in der Lage sind, betrügerische Anrufe zu identifizieren, da dies sie wiederholten betrügerischen Anrufen aussetzen könnte.</string>
+    <string name="acknowledged">Bestätigt</string>
+    <string name="warning">Warnung</string>
 </resources>

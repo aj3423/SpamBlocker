@@ -58,10 +58,10 @@
         <b>Opzioni:</b><br>
         <br>
         <h6><font color="#00BFFF">- Entro Giorni</font></h6>
-        Le chiamate avvenute prima di <font color="cyan">3 giorni</font> vengono ignorate.<br>
+        Le chiamate avvenute prima di <font color="cyan">%s giorni</font> vengono ignorate.<br>
         <br>
         <h6><font color="#00BFFF">- Includi SMS</font></h6>
-        Se abilitato, anche l\'invio di messaggi a quel numero conta.<br>
+        Se abilitato, anche l\'invio di SMS a quel numero conta.<br>
         <br>
         <font color="#ea86ff"><b>Priorità: 10</b></font>
         ]]>

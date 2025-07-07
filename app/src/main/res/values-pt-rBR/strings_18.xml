@@ -67,15 +67,21 @@
         <![CDATA[
         Permitir chamadas de números atendidos anteriormente.<br>
         <br>
+        <h6><font color="#ffa500">Aviso</font></h6>
+        %s<br>
+        <br>
         <b>Opções:</b><br>
         <br>
         <h6><font color="#00BFFF">- Dentro de Dias</font></h6>
-        Chamadas que ocorreram antes de <font color="cyan">3 dias</font> são ignoradas.<br>
+        Chamadas que ocorreram antes de <font color="cyan">%d dias</font> são ignoradas.<br>
         <br>
         <h6><font color="#00BFFF">- Duração Mínima</font></h6>
-        Chamadas com duração inferior a <font color="cyan">15 segundos</font> são ignoradas.<br>
+        Chamadas com duração inferior a <font color="cyan">%d segundos</font> são ignoradas.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Não ative este recurso para idosos ou qualquer pessoa menos capaz de identificar chamadas fraudulentas, pois isso pode expô-los a chamadas fraudulentas repetidas.</string>
+    <string name="acknowledged">Reconhecido</string>
+    <string name="warning">Aviso</string>
 </resources>

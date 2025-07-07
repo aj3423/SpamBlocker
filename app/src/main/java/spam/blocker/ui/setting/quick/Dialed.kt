@@ -2,6 +2,7 @@ package spam.blocker.ui.setting.quick
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +29,7 @@ fun Dialed() {
     val spf = spf.Dialed(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.callLog.isGranted) }
-    var smsEnabled by remember { mutableStateOf(spf.isSmsEnabled() && Permission.readSMS.isGranted) }
+    var smsEnabled by remember(Permission.readSMS.isGranted) { mutableStateOf(spf.isSmsEnabled() && Permission.readSMS.isGranted) }
     var inXDay by remember { mutableIntStateOf(spf.getDays()) }
 
     // popup
@@ -71,9 +72,17 @@ fun Dialed() {
             )
         })
 
+    // Balloon text
+    val balloonTooltip by remember {
+        derivedStateOf {
+            ctx.getString(R.string.help_dialed)
+                .format(inXDay)
+        }
+    }
+
     LabeledRow(
         R.string.dialed_number,
-        helpTooltip = Str(R.string.help_dialed),
+        helpTooltip = balloonTooltip,
         content = {
             if (isEnabled && Permission.callLog.isGranted) {
                 GreyButton(

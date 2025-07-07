@@ -392,11 +392,13 @@ class Dialed : IConfig {
 
 @Serializable
 class Answered : IConfig {
+    var warningAcknowledged = false
     var enabled = false
     var minDuration = 0
     var inXDay = 0
     override fun load(ctx: Context) {
         val spf = spf.Answered(ctx)
+        warningAcknowledged = spf.isWarningAcknowledged()
         enabled = spf.isEnabled()
         minDuration = spf.getMinDuration()
         inXDay = spf.getDays()
@@ -404,6 +406,7 @@ class Answered : IConfig {
 
     override fun apply(ctx: Context) {
         val spf = spf.Answered(ctx)
+        spf.setWarningAcknowledged(warningAcknowledged)
         spf.setEnabled(enabled)
         spf.setMinDuration(minDuration)
         spf.setDays(inXDay)

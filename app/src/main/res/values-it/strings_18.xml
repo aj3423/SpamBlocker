@@ -67,15 +67,21 @@
         <![CDATA[
         Consenti chiamate da numeri a cui hai risposto in precedenza.<br>
         <br>
+        <h6><font color="#ffa500">Avviso</font></h6>
+        %s<br>
+        <br>
         <b>Opzioni:</b><br>
         <br>
         <h6><font color="#00BFFF">- Entro Giorni</font></h6>
-        Le chiamate avvenute prima di <font color="cyan">3 giorni</font> vengono ignorate.<br>
+        Le chiamate avvenute prima di <font color="cyan">%d giorni</font> vengono ignorate.<br>
         <br>
         <h6><font color="#00BFFF">- Durata Minima</font></h6>
-        Le chiamate durate meno di <font color="cyan">15 secondi</font> vengono ignorate.<br>
+        Le chiamate durate meno di <font color="cyan">%d secondi</font> vengono ignorate.<br>
         <br>
         <font color="#ea86ff"><b>Priorità: 10</b></font>
         ]]>
     </string>
+    <string name="answered_warning">Non abilitare questa funzione per anziani o per chiunque sia meno in grado di identificare le chiamate fraudolente, in quanto ciò potrebbe esporli a ripetute chiamate fraudolente.</string>
+    <string name="acknowledged">Riconosciuto</string>
+    <string name="warning">Avviso</string>
 </resources>
