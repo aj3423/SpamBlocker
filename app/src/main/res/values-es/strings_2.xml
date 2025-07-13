@@ -1,21 +1,25 @@
 <resources>
     <string name="contacts">Contacto</string>
     <string name="non_contacts">No Contacto</string>
-    <string name="inclusive">Inclusivo</string>
-    <string name="exclusive">Exclusivo</string>
+    <string name="lenient">Flexible</string>
+    <string name="strict">Estricto</string>
     <string name="help_contacts">
         <![CDATA[
-        Cuando está habilitado, las llamadas/mensajes de los contactos siempre están permitidos. <br>
+        Permitir números de contacto. <br>
         <br>
-          - <b>Inclusivo</b>: <br>
-              &emsp; Los números que no son de contacto se verificarán con otras reglas. <br>
-              &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-              &emsp; Los números que no son de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font> <br>
+        Se aplica tanto a llamadas como a mensajes. <br>
         <br>
-        Se aplica a las llamadas y los mensajes SMS.
+        <b>Opciones:</b><br>
+        <br>
+        - <b>Flexible</b>: <br>
+            &emsp; - Se permitirán los números de contacto. <br>
+            &emsp; - Los números que no sean de contacto serán verificados por otras reglas. <br>
+            &emsp; <font color="#ea86ff"><b>Prioridad por defecto: 10</b></font> <br>
+        <br>
+        - <font color="#fa7f71"><b>Estricto</b></font>: <br>
+            &emsp; - Se permitirán los números de contacto. <br>
+            &emsp; - Los números que no sean de contacto serán <font color="#fa7f71"><b>bloqueados</b></font>. <br>
+            &emsp; <font color="#ea86ff"><b>Prioridad por defecto: 0</b></font> <br>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -25,28 +29,41 @@
     <string name="spoof">Llamada Falsificada</string>
     <string name="help_stir">
         <![CDATA[
-            La atestación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
+            La atestación STIR/SHAKEN requiere <b>Android 11+</b> y <b>compatibilidad con el operador</b>. <br>
             <br>
             Hay tres posibles resultados de atestación: <br>
-            <font color="#03DAC5"><b>Válido</b></font> <br>
-            &emsp; Es muy probable que la llamada sea válida, no falsificada. <br>
-            <font color="#ffa500"><b>No Verificado</b></font> <br>
-            &emsp; No se puede validar la llamada, o STIR no es compatible. <br>
-            <font color="#fa7f71"><b>Falsificado</b></font> <br>
-            &emsp; Es muy probable que sea una llamada falsificada. <br>
+            <font color="#03DAC5"><b>Válida</b></font> <br>
+              &emsp; Es muy probable que la llamada sea válida, no suplantada. <br>
+            <font color="#ffa500"><b>No verificada</b></font> <br>
+              &emsp; La llamada no pudo ser validada, o la atestación STIR no es compatible. <br>
+            <font color="#fa7f71"><b>Fraudulenta</b></font> <br>
+              &emsp; Es muy probable que sea una llamada fraudulenta. <br>
             <br>
             <br>
-              - <b>Inclusivo</b>: <br>
-                  &emsp; Las llamadas que no superan esta verificación se seguirán comprobando con otras reglas. <br>
-                  &emsp; Cuando se marca "<b>Incluir No Verificado</b>", una llamada también se aprobará si no está verificada. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad: 10</b></font> <br>
+            <b>Opciones:</b><br>
+            <br>
+              - <b>Flexible</b>: <br>
+                  &emsp; - Las llamadas que pasen esta verificación serán permitidas. <br>
+                  &emsp; - Las llamadas que fallen esta verificación seguirán siendo verificadas por otras reglas. <br>
+                  &emsp; - Cuando \"<b>Incluir no verificadas</b>\" esté marcado, una llamada también pasará si no está verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridad por defecto: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Exclusivo</b></font>: <br>
-                  &emsp; Las llamadas que no superan esta verificación se <font color="#fa7f71"><b>bloquearán</b></font>. <br>
-                  &emsp; Cuando se marca "<b>Incluir No Verificado</b>", una llamada también se bloqueará si no está verificada. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad: 0</b></font>
-        ]]>
-    </string>
+              - <font color="#fa7f71"><b>Estricto</b></font>: <br>
+                  &emsp; - Las llamadas que pasen esta verificación serán permitidas. <br>
+                  &emsp; - Las llamadas que fallen esta verificación serán <font color="#fa7f71"><b>bloqueadas</b></font>. <br>
+                  &emsp; - Cuando \"<b>Incluir no verificadas</b>\" esté marcado, una llamada también será bloqueada si no está verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridad por defecto: 0</b></font> <br>
+            <br>
+            <br>
+            Un <b>caso de uso</b> para personalizar las prioridades:<br>
+            <br>
+            1. Permitir siempre contactos. <br>
+              &emsp; - Contactos (Flexible), prioridad <font color="#ea86ff">12</font> <br>
+            2. Bloquear llamadas que fallen STIR, incluso si se repiten. <br>
+              &emsp; - STIR (Estricto), prioridad <font color="#ea86ff">11</font> <br>
+            3. Permitir llamadas que se repitan. <br>
+              &emsp; - Llamada Repetida, prioridad <font color="#ea86ff">10</font> <br>
+        ]]>   </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Falta el campo requerido <b>patrón</b> en el archivo .csv, consulte la información sobre herramientas del globo para obtener una explicación detallada.

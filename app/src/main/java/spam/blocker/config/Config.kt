@@ -293,16 +293,22 @@ class Language : IConfig {
 class Contact : IConfig {
     var enabled = false
     var isExcusive = false
+    var permissivePriority = 0
+    var strictPriority = 0
     override fun load(ctx: Context) {
         val spf = spf.Contact(ctx)
         enabled = spf.isEnabled()
-        isExcusive = spf.isExclusive()
+        isExcusive = spf.isStrict()
+        permissivePriority = spf.getLenientPriority()
+        strictPriority = spf.getStrictPriority()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Contact(ctx)
         spf.setEnabled(enabled)
-        spf.setExclusive(isExcusive)
+        spf.setStrict(isExcusive)
+        spf.setLenientPriority(permissivePriority)
+        spf.setStrictPriority(strictPriority)
     }
 }
 
@@ -311,18 +317,24 @@ class STIR : IConfig {
     var enabled = false
     var isExcusive = false
     var includeUnverified = false
+    var lenientPriority = 0
+    var strictPriority = 0
     override fun load(ctx: Context) {
         val spf = spf.Stir(ctx)
         enabled = spf.isEnabled()
-        isExcusive = spf.isExclusive()
+        isExcusive = spf.isStrict()
         includeUnverified = spf.isIncludeUnverified()
+        lenientPriority = spf.getLenientPriority()
+        strictPriority = spf.getStrictPriority()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Stir(ctx)
         spf.setEnabled(enabled)
-        spf.setExclusive(isExcusive)
+        spf.setStrict(isExcusive)
         spf.setIncludeUnverified(includeUnverified)
+        spf.setLenientPriority(lenientPriority)
+        spf.setStrictPriority(strictPriority)
     }
 }
 @Serializable

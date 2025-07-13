@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.quick
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -13,11 +14,14 @@ import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
-import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.spf
 
@@ -28,8 +32,10 @@ fun Stir() {
     val spf = spf.Stir(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
-    var isExclusive by remember { mutableStateOf(spf.isExclusive()) }
+    var isStrict by remember { mutableStateOf(spf.isStrict()) }
     var includeUnverified by remember { mutableStateOf(spf.isIncludeUnverified()) }
+    var priLenient by remember { mutableIntStateOf(spf.getLenientPriority()) }
+    var priStrict by remember { mutableIntStateOf(spf.getStrictPriority()) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -39,18 +45,13 @@ fun Stir() {
             Column {
                 LabeledRow(labelId = R.string.type) {
                     val items = listOf(
-                        RadioItem(Str(R.string.inclusive), color = C.textGrey),
-                        RadioItem(Str(R.string.exclusive), color = Salmon),
+                        RadioItem(Str(R.string.lenient), color = C.textGrey),
+                        RadioItem(Str(R.string.strict), color = Salmon),
                     )
 
-                    var selected by remember(isExclusive) {
-                        mutableIntStateOf(if (isExclusive) 1 else 0)
-                    }
-
-                    RadioGroup(items = items, selectedIndex = selected) { clickedIdx ->
-                        selected = clickedIdx
-                        isExclusive = clickedIdx == 1
-                        spf.setExclusive(isExclusive)
+                    RadioGroup(items = items, selectedIndex = if (isStrict) 1 else 0) { clickedIdx ->
+                        isStrict = clickedIdx == 1
+                        spf.setStrict(isStrict)
                     }
                 }
                 LabeledRow(labelId = R.string.stir_include_unverified) {
@@ -59,19 +60,57 @@ fun Stir() {
                         spf.setIncludeUnverified(isTurningOn)
                     })
                 }
+                if (isStrict) {
+                    NumberInputBox(
+                        intValue = priStrict,
+                        onValueChange = { newValue, hasError ->
+                            if (!hasError) {
+                                priStrict = newValue!!
+                                spf.setStrictPriority(newValue)
+                            }
+                        },
+                        label = { Text(Str(R.string.priority)) },
+                        leadingIconId = R.drawable.ic_priority,
+                    )
+                } else {
+                    NumberInputBox(
+                        intValue = priLenient,
+                        onValueChange = { newValue, hasError ->
+                            if (!hasError) {
+                                priLenient = newValue!!
+                                spf.setLenientPriority(newValue)
+                            }
+                        },
+                        label = { Text(Str(R.string.priority)) },
+                        leadingIconId = R.drawable.ic_priority,
+                    )
+                }
             }
-        })
+        }
+    )
 
     LabeledRow(
         R.string.stir_attestation,
         helpTooltip = Str(R.string.help_stir),
         content = {
             if (isEnabled) {
-                StrokeButton(
-                    label = Str(
-                        strId = if (isExclusive) R.string.exclusive else R.string.inclusive
-                    ) + if (includeUnverified) " (*)" else "",
-                    color = if (isExclusive) Salmon else C.textGrey,
+                Button(
+                    content = {
+                        RowVCenterSpaced(6) {
+                            Text(
+                                text = Str(
+                                    strId = if (isStrict) R.string.strict else R.string.lenient
+                                ) + if (includeUnverified) " (*)" else "",
+                                color = if (isStrict) Salmon else C.textGrey,
+                            )
+                            if (isStrict && priStrict != 0) {
+                                PriorityLabel(priStrict)
+                            }
+                            if (!isStrict && priLenient != 10) {
+                                PriorityLabel(priLenient)
+                            }
+                        }
+                    },
                 ) {
                     popupTrigger.value = true
                 }

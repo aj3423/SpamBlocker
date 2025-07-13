@@ -9,7 +9,7 @@
     <string name="pattern_contain_invisible_characters">S\'han trobat caràcters invisibles</string>
     <string name="pattern_contain_leading_zeroes">No cal afegir el 0 inicial, s\'eliminarà abans de comprovar.</string>
     <string name="pattern_contain_leading_plus">No cal afegir el + inicial, s\'eliminarà abans de comprovar.</string>
-    <string name="check_balloon_for_explanation">Consulteu l\'ajuda de les "Regles del número" per obtenir una explicació detallada.</string>
+    <string name="check_balloon_for_explanation">Consulteu l\'ajuda de les \"Regles del número\" per obtenir una explicació detallada.</string>
     <string name="invalid_number">Número invàlid</string>
     <string name="description">Descripció</string>
     <string name="apply_to_call">Aplica a Trucada</string>

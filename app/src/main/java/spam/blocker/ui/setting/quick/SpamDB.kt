@@ -35,13 +35,16 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -248,11 +251,20 @@ fun SpamDB() {
         helpTooltip = Str(R.string.help_spam_db),
         content = {
             if (isEnabled) {
-                GreyButton(
-                    label = NumberFormat.getInstance().format(total),
-                ) {
-                    popupTrigger.value = true
-                }
+                Button(
+                    content = {
+                        RowVCenterSpaced(4) {
+                            GreyLabel(NumberFormat.getInstance().format(total))
+
+                            if (priority != 0) {
+                                PriorityLabel(priority)
+                            }
+                        }
+                    },
+                    onClick = {
+                        popupTrigger.value = true
+                    }
+                )
             }
             SwitchBox(isEnabled) { isTurningOn ->
                 spf.setEnabled(isTurningOn)

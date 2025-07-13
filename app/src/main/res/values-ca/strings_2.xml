@@ -1,21 +1,25 @@
 <resources>
     <string name="contacts">Contacte</string>
     <string name="non_contacts">No contacte</string>
-    <string name="inclusive">Inclusiu</string>
-    <string name="exclusive">Exclusiu</string>
+    <string name="lenient">Flexible</string>
+    <string name="strict">Estricte</string>
     <string name="help_contacts">
         <![CDATA[
-        Quan està activat, sempre es permeten les trucades/missatges dels contactes. <br>
+        Permet els números de contacte. <br>
         <br>
-          - <b>Inclusiu</b>: <br>
-              &emsp; Els números que no són contactes es comprovaran amb altres regles. <br>
-              &emsp; <font color="#ea86ff"><b>Prioritat: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Exclusiu</b></font>: <br>
-              &emsp; Els números que no són contactes seran <font color="#fa7f71"><b>bloquejats</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Prioritat: 0</b></font> <br>
+        S\'aplica tant a les trucades com als missatges. <br>
         <br>
-        S\'aplica tant a les trucades com als missatges SMS.
+        <b>Opcions:</b><br>
+        <br>
+        - <b>Flexible</b>: <br>
+            &emsp; - Els números de contacte seran permesos. <br>
+            &emsp; - Els números que no són contacte seran verificats per altres regles. <br>
+            &emsp; <font color="#ea86ff"><b>Prioritat per defecte: 10</b></font> <br>
+        <br>
+        - <font color="#fa7f71"><b>Estricte</b></font>: <br>
+            &emsp; - Els números de contacte seran permesos. <br>
+            &emsp; - Els números que no són contacte seran <font color="#fa7f71"><b>bloquejats</b></font>. <br>
+            &emsp; <font color="#ea86ff"><b>Prioritat per defecte: 0</b></font> <br>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -25,28 +29,41 @@
     <string name="spoof">Trucada falsa</string>
     <string name="help_stir">
         <![CDATA[
-            L\'atestació STIR/SHAKEN requereix <b>Android 11+</b> i <b>compatibilitat amb l\'operador</b>. <br>
+            L\'atestació STIR/SHAKEN requereix <b>Android 11+</b> i <b>suport de l\'operador</b>. <br>
             <br>
-            Hi ha tres resultats d\'atestació possibles: <br>
+            Hi ha tres possibles resultats d\'atestació: <br>
             <font color="#03DAC5"><b>Vàlid</b></font> <br>
-            &emsp; És molt probable que la trucada sigui vàlida i no falsificada. <br>
+              &emsp; La trucada és molt probable que sigui vàlida, no suplantada. <br>
             <font color="#ffa500"><b>No verificat</b></font> <br>
-            &emsp; La trucada no es pot validar o l\'atestació STIR no és compatible. <br>
-            <font color="#fa7f71"><b>Fals</b></font> <br>
-            &emsp; És molt probable que sigui una trucada falsificada. <br>
+              &emsp; La trucada no es pot validar, o l\'atestació STIR no és compatible. <br>
+            <font color="#fa7f71"><b>Suplantada</b></font> <br>
+              &emsp; És molt probable que sigui una trucada suplantada. <br>
             <br>
             <br>
-              - <b>Inclusiu</b>: <br>
-                  &emsp; Les trucades que no superin aquesta comprovació encara es comprovaran amb altres regles. <br>
-                  &emsp; Quan "<b>Incloure No verificat</b>" està marcat, una trucada també s\'aprovaria si no està verificada. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritat: 10</b></font> <br>
+            <b>Opcions:</b><br>
+            <br>
+              - <b>Flexible</b>: <br>
+                  &emsp; - Les trucades que superin aquesta verificació seran permeses. <br>
+                  &emsp; - Les trucades que no superin aquesta verificació encara seran comprovades per altres regles. <br>
+                  &emsp; - Quan s\'activa \"<b>Incloure No verificats</b>\", una trucada també passarà si no està verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioritat per defecte: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Exclusiu</b></font>: <br>
-                  &emsp; Les trucades que no superin aquesta comprovació seran <font color="#fa7f71"><b>bloquejades</b></font>. <br>
-                  &emsp; Quan "<b>Incloure No verificat</b>" està marcat, una trucada també es bloquejaria si no està verificada. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritat: 0</b></font>
-        ]]>
-    </string>
+              - <font color="#fa7f71"><b>Estricte</b></font>: <br>
+                  &emsp; - Les trucades que superin aquesta verificació seran permeses. <br>
+                  &emsp; - Les trucades que no superin aquesta verificació seran <font color="#fa7f71"><b>bloquejades</b></font>. <br>
+                  &emsp; - Quan s\'activa \"<b>Incloure No verificats</b>\", una trucada també serà bloquejada si no està verificada. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioritat per defecte: 0</b></font> <br>
+            <br>
+            <br>
+            Un <b>cas d\'ús</b> per personalitzar les prioritats:<br>
+            <br>
+            1. Permetre sempre els contactes. <br>
+              &emsp; - Contactes(Flexible), prioritat <font color="#ea86ff">12</font> <br>
+            2. Bloquejar trucades que fallen STIR, encara que es repeteixin. <br>
+              &emsp; - STIR(Estricte), prioritat <font color="#ea86ff">11</font> <br>
+            3. Permetre trucades que es repeteixen. <br>
+              &emsp; - Trucada repetida, prioritat <font color="#ea86ff">10</font> <br>
+        ]]>   </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Falta el camp obligatori <b>pattern</b> al fitxer .csv, consulteu l\'ajuda emergent per obtenir una explicació detallada.

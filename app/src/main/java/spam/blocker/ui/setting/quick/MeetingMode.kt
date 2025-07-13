@@ -31,17 +31,17 @@ import kotlinx.coroutines.withContext
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
-import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.AppInfo
 import spam.blocker.util.Permission
 import spam.blocker.util.Util
@@ -225,9 +225,10 @@ fun MeetingMode() {
                 ) {
                     // Priority Button
                     if (enabledAppInfos.isNotEmpty()) {
-                        StrokeButton(
-                            label = "${priority.intValue}",
-                            color = LightMagenta
+                        Button(
+                            content = {
+                                PriorityLabel(priority.intValue)
+                            },
                         ) {
                             buttonPopupTrigger.value = true
                         }

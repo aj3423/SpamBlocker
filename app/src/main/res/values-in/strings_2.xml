@@ -1,21 +1,25 @@
 <resources>
     <string name="contacts">Kontak</string>
     <string name="non_contacts">Non Kontak</string>
-    <string name="inclusive">Inklusif</string>
-    <string name="exclusive">Eksklusif</string>
+    <string name="lenient">Leluasa</string>
+    <string name="strict">Ketat</string>
     <string name="help_contacts">
         <![CDATA[
-        Jika diaktifkan, panggilan/pesan dari kontak selalu diizinkan. <br>
+        Izinkan nomor kontak. <br>
         <br>
-          - <b>Inklusif</b>: <br>
-              &emsp; Nomor non-kontak akan diperiksa dengan aturan lain. <br>
-              &emsp; <font color="#ea86ff"><b>Prioritas: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Eksklusif</b></font>: <br>
-              &emsp; Nomor non-kontak akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Prioritas: 0</b></font> <br>
+        Ini berlaku untuk panggilan dan pesan. <br>
         <br>
-        Ini berlaku untuk panggilan dan pesan SMS.
+        <b>Pilihan:</b><br>
+        <br>
+        - <b>Leluasa</b>: <br>
+            &emsp; - Nomor kontak akan diizinkan. <br>
+            &emsp; - Nomor bukan kontak akan diperiksa oleh aturan lain. <br>
+            &emsp; <font color="#ea86ff"><b>Prioritas Default: 10</b></font> <br>
+        <br>
+        - <font color="#fa7f71"><b>Ketat</b></font>: <br>
+            &emsp; - Nomor kontak akan diizinkan. <br>
+            &emsp; - Nomor bukan kontak akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
+            &emsp; <font color="#ea86ff"><b>Prioritas Default: 0</b></font> <br>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -25,28 +29,41 @@
     <string name="spoof">Panggilan palsu</string>
     <string name="help_stir">
         <![CDATA[
-            Pengesahan STIR/SHAKEN membutuhkan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
+            Atestasi STIR/SHAKEN memerlukan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
             <br>
-            Ada tiga kemungkinan hasil pengesahan: <br>
-            <font color="#03DAC5"><b>Sah</b></font> <br>
-            &emsp; Panggilan tersebut sangat mungkin sah, tidak dipalsukan. <br>
-            <font color="#ffa500"><b>Tidak diverifikasi</b></font> <br>
-            &emsp; Panggilan tidak dapat disahkan, atau pengesahan STIR tidak didukung. <br>
+            Ada tiga kemungkinan hasil atestasi: <br>
+            <font color="#03DAC5"><b>Valid</b></font> <br>
+              &emsp; Panggilan kemungkinan besar valid, bukan palsu. <br>
+            <font color="#ffa500"><b>Belum Terverifikasi</b></font> <br>
+              &emsp; Panggilan tidak dapat divalidasi, atau atestasi STIR tidak didukung. <br>
             <font color="#fa7f71"><b>Palsu</b></font> <br>
-            &emsp; Kemungkinan besar ini adalah panggilan palsu. <br>
+              &emsp; Sangat mungkin ini adalah panggilan palsu. <br>
             <br>
             <br>
-              - <b>Inklusif</b>: <br>
-                  &emsp; Panggilan yang gagal dalam pemeriksaan ini akan tetap diperiksa oleh aturan lain. <br>
-                  &emsp; Ketika "<b>Sertakan yang Tidak diverifikasi</b>" dicentang, panggilan juga akan lolos jika tidak diverifikasi. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritas: 10</b></font> <br>
+            <b>Pilihan:</b><br>
+            <br>
+              - <b>Leluasa</b>: <br>
+                  &emsp; - Panggilan yang lolos pemeriksaan ini akan diizinkan. <br>
+                  &emsp; - Panggilan yang gagal dalam pemeriksaan ini akan tetap diperiksa oleh aturan lain. <br>
+                  &emsp; - Saat \"<b>Sertakan Belum Terverifikasi</b>\" dicentang, panggilan juga akan lolos jika belum terverifikasi. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioritas Default: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Eksklusif</b></font>: <br>
-                  &emsp; Panggilan yang gagal dalam pemeriksaan ini akan <font color="#fa7f71"><b>diblokir</b></font>. <br>
-                  &emsp; Ketika "<b>Sertakan yang Tidak diverifikasi</b>" dicentang, panggilan juga akan diblokir jika tidak diverifikasi. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritas: 0</b></font>
-        ]]>
-    </string>
+              - <font color="#fa7f71"><b>Ketat</b></font>: <br>
+                  &emsp; - Panggilan yang lolos pemeriksaan ini akan diizinkan. <br>
+                  &emsp; - Panggilan yang gagal dalam pemeriksaan ini akan <b>diblokir</b>. <br>
+                  &emsp; - Saat \"<b>Sertakan Belum Terverifikasi</b>\" dicentang, panggilan juga akan diblokir jika belum terverifikasi. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioritas Default: 0</b></font> <br>
+            <br>
+            <br>
+            Sebuah <b>kasus penggunaan</b> untuk menyesuaikan prioritas:<br>
+            <br>
+            1. Selalu izinkan kontak. <br>
+              &emsp; - Kontak(Leluasa), prioritas <font color="#ea86ff">12</font> <br>
+            2. Blokir panggilan yang gagal STIR, bahkan jika mereka berulang. <br>
+              &emsp; - STIR(Ketat), prioritas <font color="#ea86ff">11</font> <br>
+            3. Izinkan panggilan yang berulang. <br>
+              &emsp; - Panggilan Berulang, prioritas <font color="#ea86ff">10</font> <br>
+        ]]>   </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Kolom yang harus diisi tidak ada <b>pattern</b> di dalam berkas .csv, periksa keterangan alat pada balon untuk penjelasan rinci.

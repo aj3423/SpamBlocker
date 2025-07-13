@@ -178,10 +178,14 @@ class spf { // for namespace only
     class Stir(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_STIR_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_STIR_ENABLED, enabled) }
-        fun isExclusive() : Boolean { return readBoolean(Def.SETTING_STIR_EXCLUSIVE, false) }
-        fun setExclusive(exclusive: Boolean) { writeBoolean(Def.SETTING_STIR_EXCLUSIVE, exclusive) }
+        fun isStrict() : Boolean { return readBoolean(Def.SETTING_STIR_STRICT, false) }
+        fun setStrict(exclusive: Boolean) { writeBoolean(Def.SETTING_STIR_STRICT, exclusive) }
         fun isIncludeUnverified() : Boolean { return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false) }
         fun setIncludeUnverified(include: Boolean) { writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include) }
+        fun getLenientPriority() : Int { return readInt(Def.SETTING_STIR_LENIENT_PRIORITY, 10) }
+        fun setLenientPriority(priority : Int) { writeInt(Def.SETTING_STIR_LENIENT_PRIORITY, priority) }
+        fun getStrictPriority() : Int { return readInt(Def.SETTING_STIR_STRICT_PRIORITY, 0) }
+        fun setStrictPriority(priority : Int) { writeInt(Def.SETTING_STIR_STRICT_PRIORITY, priority) }
     }
     class SpamDB(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_SPAM_DB_ENABLED, false) }
@@ -198,9 +202,12 @@ class spf { // for namespace only
     class Contact(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_CONTACT_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CONTACT_ENABLED, enabled) }
-        fun isExclusive() : Boolean { return readBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, false) }
-        fun setExclusive(exclusive: Boolean) { writeBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, exclusive) }
-        fun toggleExclusive() { setExclusive(!isExclusive()) }
+        fun isStrict() : Boolean { return readBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, false) }
+        fun setStrict(exclusive: Boolean) { writeBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, exclusive) }
+        fun getLenientPriority() : Int { return readInt(Def.SETTING_CONTACTS_LENIENT_PRIORITY, 10) }
+        fun setLenientPriority(priority : Int) { writeInt(Def.SETTING_CONTACTS_LENIENT_PRIORITY, priority) }
+        fun getStrictPriority() : Int { return readInt(Def.SETTING_CONTACTS_STRICT_PRIORITY, 0) }
+        fun setStrictPriority(priority : Int) { writeInt(Def.SETTING_CONTACTS_STRICT_PRIORITY, priority) }
     }
     class RepeatedCall(ctx: Context) : SharedPref(ctx) {
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_PERMIT_REPEATED, enabled) }

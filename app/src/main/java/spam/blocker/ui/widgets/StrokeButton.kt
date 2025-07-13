@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,20 +34,20 @@ import spam.blocker.util.Lambda
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Button(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
+    content: @Composable RowScope.() -> Unit,
+    modifier: Modifier = Modifier.height(26.dp),
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
-    color: Color = Color.Unspecified,
-    shape: Shape = ButtonDefaults.shape,
-    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
-    content: @Composable RowScope.() -> Unit
+    borderColor: Color = LocalPalette.current.textGrey,
+    shape: Shape = RoundedCornerShape(4.dp),
+    contentPadding: PaddingValues = PaddingValues(12.dp, 0.dp),
+    onClick: () -> Unit,
 ) {
     Box(
         modifier = modifier
             .border(
                 width = 2.dp,
-                color = color,
+                color = borderColor,
                 shape = shape
             )
 
@@ -65,6 +64,7 @@ fun Button(
         }
     }
 }
+
 
 @Composable
 fun StrokeButton(
@@ -83,19 +83,20 @@ fun StrokeButton(
         enabled = enabled,
         onLongClick = onLongClick,
         contentPadding = contentPadding,
-        color = color,
+        borderColor = color,
         shape = shape,
-        onClick = onClick
-    ) {
-        RowVCenterSpaced(4) {
-            icon?.let { it() }
-            label?.let {
-                Text(
-                    text = label, color = color, maxLines = 1, overflow = TextOverflow.Ellipsis
-                )
+        onClick = onClick,
+        content = {
+            RowVCenterSpaced(4) {
+                icon?.let { it() }
+                label?.let {
+                    Text(
+                        text = label, color = color, maxLines = 1, overflow = TextOverflow.Ellipsis
+                    )
+                }
             }
         }
-    }
+    )
 }
 
 @Composable

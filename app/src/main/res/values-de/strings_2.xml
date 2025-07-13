@@ -1,21 +1,25 @@
 <resources>
     <string name="contacts">Kontakt</string>
     <string name="non_contacts">Nicht Kontakt</string>
-    <string name="inclusive">Einschließlich</string>
-    <string name="exclusive">Ausschließlich</string>
+    <string name="lenient">Kulanz</string>
+    <string name="strict">Streng</string>
     <string name="help_contacts">
         <![CDATA[
-        Wenn aktiviert, sind Anrufe/Nachrichten von Kontakten immer erlaubt. <br>
+        Kontaktnummern zulassen. <br>
         <br>
-          - <b>Einschließlich</b>: <br>
-              &emsp; Nicht-Kontakt-Nummern werden anhand anderer Regeln geprüft. <br>
-              &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
-              &emsp; Nicht-Kontakt-Nummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font> <br>
+        Dies gilt sowohl für Anrufe als auch für Nachrichten. <br>
         <br>
-        Dies gilt für Anrufe und SMS-Nachrichten.
+        <b>Optionen:</b><br>
+        <br>
+        - <b>Kulanz</b>: <br>
+            &emsp; - Kontaktnummern werden zugelassen. <br>
+            &emsp; - Nicht-Kontaktnummern werden durch andere Regeln geprüft. <br>
+            &emsp; <font color="#ea86ff"><b>Standardpriorität: 10</b></font> <br>
+        <br>
+        - <font color="#fa7f71"><b>Streng</b></font>: <br>
+            &emsp; - Kontaktnummern werden zugelassen. <br>
+            &emsp; - Nicht-Kontaktnummern werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+            &emsp; <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -25,28 +29,41 @@
     <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN-Bestätigung erfordert <b>Android 11+</b> und <b>Unterstützung durch den Netzbetreiber</b>. <br>
+            STIR/SHAKEN-Bescheinigung erfordert <b>Android 11+</b> und <b>Netzbetreiberunterstützung</b>. <br>
             <br>
-            Es gibt drei mögliche Bestätigungsresultate: <br>
+            Es gibt drei mögliche Bescheinigungsergebnisse: <br>
             <font color="#03DAC5"><b>Gültig</b></font> <br>
-            &emsp; Der Anruf ist sehr wahrscheinlich gültig und nicht gefälscht. <br>
-            <font color="#ffa500"><b>Nicht überprüft</b></font> <br>
-            &emsp; Der Anruf kann nicht validiert werden oder STIR-Bestätigung wird nicht unterstützt. <br>
+              &emsp; Der Anruf ist sehr wahrscheinlich gültig, nicht gefälscht. <br>
+            <font color="#ffa500"><b>Unverifiziert</b></font> <br>
+              &emsp; Der Anruf kann nicht validiert werden, oder die STIR-Bescheinigung wird nicht unterstützt. <br>
             <font color="#fa7f71"><b>Spoof</b></font> <br>
-            &emsp; Es ist sehr wahrscheinlich, dass es sich um einen gefälschten Anruf handelt. <br>
+              &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf (Spoof-Anruf). <br>
             <br>
             <br>
-              - <b>Einschließlich</b>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden weiterhin anhand anderer Regeln geprüft. <br>
-                  &emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch bestehen, wenn er nicht überprüft wurde. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorität: 10</b></font> <br>
+            <b>Optionen:</b><br>
+            <br>
+              - <b>Kulanz</b>: <br>
+                  &emsp; - Anrufe, die diese Prüfung bestehen, werden zugelassen. <br>
+                  &emsp; - Anrufe, die diese Prüfung nicht bestehen, werden weiterhin von anderen Regeln geprüft. <br>
+                  &emsp; - Wenn „<b>Unverifizierte einschließen</b>“ aktiviert ist, wird ein Anruf auch zugelassen, wenn er unverifiziert ist. <br>
+                  &emsp; <font color="#ea86ff"><b>Standardpriorität: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Ausschließlich</b></font>: <br>
-                  &emsp; Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
-                  &emsp; Wenn "<b>Nicht überprüfte einschließen</b>" aktiviert ist, würde ein Anruf auch blockiert werden, wenn er nicht überprüft wurde. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorität: 0</b></font>
-        ]]>
-    </string>
+              - <font color="#fa7f71"><b>Streng</b></font>: <br>
+                  &emsp; - Anrufe, die diese Prüfung bestehen, werden zugelassen. <br>
+                  &emsp; - Anrufe, die diese Prüfung nicht bestehen, werden <font color="#fa7f71"><b>blockiert</b></font>. <br>
+                  &emsp; - Wenn „<b>Unverifizierte einschließen</b>“ aktiviert ist, wird ein Anruf auch blockiert, wenn er unverifiziert ist. <br>
+                  &emsp; <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
+            <br>
+            <br>
+            Ein <b>Anwendungsfall</b> zum Anpassen der Prioritäten:<br>
+            <br>
+            1. Kontakte immer zulassen. <br>
+              &emsp; - Kontakte (Kulanz), Priorität <font color="#ea86ff">12</font> <br>
+            2. Anrufe blockieren, die STIR nicht bestehen, selbst wenn sie sich wiederholen. <br>
+              &emsp; - STIR (Streng), Priorität <font color="#ea86ff">11</font> <br>
+            3. Wiederholte Anrufe zulassen. <br>
+              &emsp; - Wiederholter Anruf, Priorität <font color="#ea86ff">10</font> <br>
+        ]]>   </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Das benötigte Feld <b>pattern</b> fehlt in der .csv-Datei. Überprüfen Sie die Tooltipp-Info für eine detaillierte Erklärung.

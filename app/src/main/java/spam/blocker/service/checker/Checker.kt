@@ -219,8 +219,12 @@ class Checker { // for namespace only
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
-            val isExclusive = spf.Stir(ctx).isExclusive()
-            return if (isExclusive) 0 else 10
+            val spf = spf.Stir(ctx)
+            val isStrict = spf.isStrict()
+            return if (isStrict)
+                spf.getStrictPriority()
+            else
+                spf.getLenientPriority()
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
@@ -251,7 +255,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            val exclusive = spf.isExclusive()
+            val exclusive = spf.isStrict()
             val includeUnverified = spf.isIncludeUnverified()
 
             val stir = callDetails.callerNumberVerificationStatus
@@ -328,8 +332,12 @@ class Checker { // for namespace only
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
-            val isExclusive = spf.Contact(ctx).isExclusive()
-            return if (isExclusive) 0 else 10
+            val spf = spf.Contact(ctx)
+            val isStrict = spf.isStrict()
+            return if (isStrict)
+                spf.getStrictPriority()
+            else
+                spf.getLenientPriority()
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
@@ -357,7 +365,7 @@ class Checker { // for namespace only
                 )
                 return ByContact(Def.RESULT_ALLOWED_BY_CONTACT, contact.name)
             } else { // not contact
-                if (spf.isExclusive()) {
+                if (spf.isStrict()) {
                     val ret = ByContact(RESULT_BLOCKED_BY_NON_CONTACT)
                     logger?.error(
                         ctx.getString(R.string.blocked_by).format(

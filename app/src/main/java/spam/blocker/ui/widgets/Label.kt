@@ -1,5 +1,6 @@
 package spam.blocker.ui.widgets
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -7,8 +8,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import spam.blocker.R
+import spam.blocker.ui.M
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Priority
 
 @Composable
 fun GreyLabel(
@@ -30,6 +36,7 @@ fun GreyLabel(
         overflow = overflow,
     )
 }
+
 @Composable
 fun SummaryLabel(
     text: String,
@@ -58,4 +65,14 @@ fun DimGreyLabel(
         fontSize = fontSize,
         fontWeight = fontWeight,
     )
+}
+
+@Composable
+fun PriorityLabel(
+    priority: Int,
+) {
+    RowVCenter {
+        ResIcon(R.drawable.ic_priority, color = Priority, modifier = M.size(14.dp))
+        Text(text = "$priority", color = LightMagenta)
+    }
 }

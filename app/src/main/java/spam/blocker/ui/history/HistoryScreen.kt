@@ -7,12 +7,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import spam.blocker.G
-import spam.blocker.def.Def
 import spam.blocker.ui.widgets.FabWrapper
-import spam.blocker.util.Permission
-import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.spf
 
 
 @Composable
@@ -42,35 +37,6 @@ fun HistoryScreen(
         }
     ) {
         Column {
-            when (vm.forType) {
-                Def.ForNumber -> {
-                    val callEnabled = spf.Global(ctx).isCallEnabled()
-
-                    if (callEnabled) {
-                        G.permissionChain.ask(
-                            ctx,
-                            listOf(
-                                PermissionWrapper(Permission.callScreening),
-                            )
-                        ) { granted ->
-                        }
-                    }
-                }
-                Def.ForSms -> {
-                    val smsEnabled = spf.Global(ctx).isSmsEnabled()
-
-                    if (smsEnabled) {
-                        G.permissionChain.ask(
-                            ctx,
-                            listOf(
-                                PermissionWrapper(Permission.receiveSMS),
-                            )
-                        ) { granted ->
-                        }
-                    }
-                }
-            }
-
             HistoryList(
                 lazyState = listState,
                 vm = vm,

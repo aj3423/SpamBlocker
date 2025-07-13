@@ -1,21 +1,25 @@
 <resources>
     <string name="contacts">איש קשר</string>
     <string name="non_contacts">שאינו איש קשר</string>
-    <string name="inclusive">כולל</string>
-    <string name="exclusive">בלעדי</string>
+    <string name="lenient">רך</string>
+    <string name="strict">קפדני</string>
     <string name="help_contacts">
         <![CDATA[
-        כאשר מופעל, שיחות/הודעות מאנשי קשר תמיד מותרות. <br>
+        אפשר מספרי אנשי קשר. <br>
         <br>
-          - <b>כולל</b>: <br>
-              &emsp; מספרים שאינם אנשי קשר ייבדקו על ידי כללים אחרים. <br>
-              &emsp; <font color="#ea86ff"><b>עדיפות: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>בלעדי</b></font>: <br>
-              &emsp; מספרים שאינם אנשי קשר <font color="#fa7f71"><b>ייחסמו</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>עדיפות: 0</b></font> <br>
+        זה חל גם על שיחות וגם על הודעות. <br>
         <br>
-        זה חל הן על שיחות והן על הודעות SMS.
+        <b>אפשרויות:</b><br>
+        <br>
+        - <b>רך</b>: <br>
+            &emsp; - מספרי אנשי קשר יאופשרו. <br>
+            &emsp; - מספרי שאינם אנשי קשר ייבדקו על ידי כללים אחרים. <br>
+            &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 10</b></font> <br>
+        <br>
+        - <font color="#fa7f71"><b>קפדני</b></font>: <br>
+            &emsp; - מספרי אנשי קשר יאופשרו. <br>
+            &emsp; - מספרי שאינם אנשי קשר <font color="#fa7f71"><b>ייחסמו</b></font>. <br>
+            &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font> <br>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -25,28 +29,41 @@
     <string name="spoof">שיחת התחזות</string>
     <string name="help_stir">
         <![CDATA[
-            אימות STIR/SHAKEN דורש <b>אנדרואיד 11+</b> ו<b>תמיכת ספקית</b>. <br>
+            אימות STIR/SHAKEN דורש <b>אנדרואיד 11+</b> ו<b>תמיכת ספק</b>. <br>
             <br>
             ישנן שלוש תוצאות אימות אפשריות: <br>
             <font color="#03DAC5"><b>תקין</b></font> <br>
-            &emsp; השיחה סבירה מאוד להיות תקינה, לא מזויפת. <br>
+              &emsp; השיחה סבירה מאוד להיות תקינה, לא מזויפת. <br>
             <font color="#ffa500"><b>לא מאומת</b></font> <br>
-            &emsp; לא ניתן לאמת את השיחה, או שאימות STIR אינו נתמך. <br>
-            <font color="#fa7f71"><b>התחזות</b></font> <br>
-            &emsp; סבירה מאוד להיות שיחת התחזות. <br>
+              &emsp; השיחה לא ניתנת לאימות, או שאימות STIR אינו נתמך. <br>
+            <font color="#fa7f71"><b>זיוף</b></font> <br>
+              &emsp; סביר מאוד שזו שיחה מזויפת. <br>
             <br>
             <br>
-              - <b>כולל</b>: <br>
-                  &emsp; שיחות שנכשלו בבדיקה זו עדיין ייבדקו על ידי כללים אחרים. <br>
-                  &emsp; כאשר "<b>כלול לא מאומתים</b>" מסומן, שיחה תעבור גם אם היא לא מאומתת. <br>
-                  &emsp; <font color="#ea86ff"><b>עדיפות: 10</b></font> <br>
+            <b>אפשרויות:</b><br>
+            <br>
+              - <b>רך</b>: <br>
+                  &emsp; - שיחות שעוברות בדיקה זו יאופשרו. <br>
+                  &emsp; - שיחות שנכשלות בבדיקה זו עדיין ייבדקו על ידי כללים אחרים. <br>
+                  &emsp; - כאשר \"<b>כלול לא מאומת</b>\" מסומן, שיחה תעבור גם אם היא לא מאומתת. <br>
+                  &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>בלעדי</b></font>: <br>
-                  &emsp; שיחות שנכשלו בבדיקה זו <font color="#fa7f71"><b>ייחסמו</b></font>. <br>
-                  &emsp; כאשר "<b>כלול לא מאומתים</b>" מסומן, שיחה תיחסם גם אם היא לא מאומתת. <br>
-                  &emsp; <font color="#ea86ff"><b>עדיפות: 0</b></font>
-        ]]>
-    </string>
+              - <font color="#fa7f71"><b>קפדני</b></font>: <br>
+                  &emsp; - שיחות שעוברות בדיקה זו יאופשרו. <br>
+                  &emsp; - שיחות שנכשלות בבדיקה זו <font color="#fa7f71"><b>ייחסמו</b></font>. <br>
+                  &emsp; - כאשר \"<b>כלול לא מאומת</b>\" מסומן, שיחה תיחסם גם אם היא לא מאומתת. <br>
+                  &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font> <br>
+            <br>
+            <br>
+            <b>מקרה שימוש</b> להתאמה אישית של העדיפויות:<br>
+            <br>
+            1. אפשר תמיד אנשי קשר. <br>
+              &emsp; - אנשי קשר (רך), עדיפות <font color="#ea86ff">12</font> <br>
+            2. חסום שיחות שנכשלות ב-STIR, גם אם הן חוזרות. <br>
+              &emsp; - STIR (קפדני), עדיפות <font color="#ea86ff">11</font> <br>
+            3. אפשר שיחות שחוזרות על עצמן. <br>
+              &emsp; - שיחה חוזרת, עדיפות <font color="#ea86ff">10</font> <br>
+        ]]>   </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         שדה חובה <b>pattern</b> חסר בקובץ ה-csv, בדוק את תיאור ההסבר המפורט בבועת הטיפ.

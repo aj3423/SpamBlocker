@@ -1,21 +1,25 @@
 <resources>
     <string name="contacts">Contatti</string>
     <string name="non_contacts">Non Contatti</string>
-    <string name="inclusive">Inclusivo</string>
-    <string name="exclusive">Esclusivo</string>
+    <string name="lenient">Tollerante</string>
+    <string name="strict">Rigoroso</string>
     <string name="help_contacts">
         <![CDATA[
-        Se attivato, le chiamate/i messaggi dai contatti sono sempre consentiti. <br>
+        Consenti i numeri di telefono dei contatti. <br>
         <br>
-          - <b>Inclusivo</b>: <br>
-              &emsp; I numeri non in rubrica saranno controllati da altre regole. <br>
-              &emsp; <font color="#ea86ff"><b>Priorità: 10</b></font> <br>
-          <br>
-          - <font color="#fa7f71"><b>Esclusivo</b></font>: <br>
-              &emsp; I numeri non in rubrica saranno <font color="#fa7f71"><b>bloccati</b></font>. <br>
-              &emsp; <font color="#ea86ff"><b>Priorità: 0</b></font> <br>
+        Si applica sia alle chiamate che ai messaggi. <br>
         <br>
-        Si applica sia alle chiamate che agli SMS.
+        <b>Opzioni:</b><br>
+        <br>
+        - <b>Tollerante</b>: <br>
+            &emsp; - I numeri di telefono dei contatti saranno consentiti. <br>
+            &emsp; - I numeri di telefono non-contatto saranno verificati da altre regole. <br>
+            &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 10</b></font> <br>
+        <br>
+        - <font color="#fa7f71"><b>Rigoroso</b></font>: <br>
+            &emsp; - I numeri di telefono dei contatti saranno consentiti. <br>
+            &emsp; - I numeri di telefono non-contatto saranno <font color="#fa7f71"><b>bloccati</b></font>. <br>
+            &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 0</b></font> <br>
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
@@ -29,24 +33,37 @@
             <br>
             Ci sono tre possibili risultati di attestazione: <br>
             <font color="#03DAC5"><b>Valido</b></font> <br>
-            &emsp; La chiamata è molto probabilmente valida, non falsificata. <br>
+              &emsp; La chiamata è molto probabilmente valida, non falsificata. <br>
             <font color="#ffa500"><b>Non Verificato</b></font> <br>
-            &emsp; La chiamata non può essere validata, o l\'attestazione STIR non è supportata. <br>
-            <font color="#fa7f71"><b>Falsificato</b></font> <br>
-            &emsp; È molto probabilmente una chiamata falsificata. <br>
+              &emsp; La chiamata non può essere convalidata, o l\'attestazione STIR non è supportata. <br>
+            <font color="#fa7f71"><b>Falsificata</b></font> <br>
+              &emsp; È molto probabilmente una chiamata falsificata. <br>
             <br>
             <br>
-              - <b>Inclusivo</b>: <br>
-                  &emsp; Le chiamate che non superano questo controllo saranno comunque controllate da altre regole. <br>
-                  &emsp; Quando "<b>Includi Non Verificati</b>" è selezionato, una chiamata passerebbe anche se non verificata. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorità: 10</b></font> <br>
+            <b>Opzioni:</b><br>
+            <br>
+              - <b>Tollerante</b>: <br>
+                  &emsp; - Le chiamate che superano questo controllo saranno consentite. <br>
+                  &emsp; - Le chiamate che falliscono questo controllo saranno comunque verificate da altre regole. <br>
+                  &emsp; - Quando \"<b>Includi Non Verificati</b>\" è selezionato, una chiamata passerà anche se non è verificata. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>Esclusivo</b></font>: <br>
-                  &emsp; Le chiamate che non superano questo controllo saranno <font color="#fa7f71"><b>bloccate</b></font>. <br>
-                  &emsp; Quando "<b>Includi Non Verificati</b>" è selezionato, una chiamata verrebbe anche bloccata se non verificata. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorità: 0</b></font>
-        ]]>
-    </string>
+              - <font color="#fa7f71"><b>Rigoroso</b></font>: <br>
+                  &emsp; - Le chiamate che superano questo controllo saranno consentite. <br>
+                  &emsp; - Le chiamate che falliscono questo controllo saranno <font color="#fa7f71"><b>bloccate</b></font>. <br>
+                  &emsp; - Quando \"<b>Includi Non Verificati</b>\" è selezionato, una chiamata verrà bloccata anche se non è verificata. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 0</b></font> <br>
+            <br>
+            <br>
+            Un <b>caso d\'uso</b> per personalizzare le priorità:<br>
+            <br>
+            1. Consenti sempre i contatti. <br>
+              &emsp; - Contatti(Tollerante), priorità <font color="#ea86ff">12</font> <br>
+            2. Blocca le chiamate che falliscono STIR, anche se si ripetono. <br>
+              &emsp; - STIR(Rigoroso), priorità <font color="#ea86ff">11</font> <br>
+            3. Consenti le chiamate che si ripetono. <br>
+              &emsp; - Chiamata Ripetuta, priorità <font color="#ea86ff">10</font> <br>
+        ]]>   </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         Campo obbligatorio mancante <b>pattern</b> nel file .csv, controlla il tooltip per una spiegazione dettagliata.

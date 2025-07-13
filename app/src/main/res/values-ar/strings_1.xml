@@ -9,7 +9,7 @@
     <string name="pattern_contain_invisible_characters">تم العثور على أحرف غير مرئية</string>
     <string name="pattern_contain_leading_zeroes">لا حاجة لإضافة 0 في البداية، سيتم إزالتها قبل التحقق.</string>
     <string name="pattern_contain_leading_plus">لا حاجة لإضافة + في البداية، سيتم إزالتها قبل التحقق.</string>
-    <string name="check_balloon_for_explanation">تحقق من تعليمات "قواعد الأرقام" للحصول على شرح مفصل.</string>
+    <string name="check_balloon_for_explanation">تحقق من تعليمات \"قواعد الأرقام\" للحصول على شرح مفصل.</string>
     <string name="invalid_number">رقم غير صالح</string>
     <string name="description">الوصف</string>
     <string name="apply_to_call">تطبيق على المكالمة</string>

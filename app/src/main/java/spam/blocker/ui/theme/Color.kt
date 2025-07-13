@@ -43,5 +43,6 @@ val Black111111 = Color(0xff111111)
 val Black2d2d2d = Color(0xff2d2d2d)
 val RaisinBlack  = Color(0xff201f25)
 val LightMagenta = Color(0xffea86ff)
+val Priority = LightMagenta
 
 

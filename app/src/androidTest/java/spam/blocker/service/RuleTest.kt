@@ -156,10 +156,10 @@ class RuleTest {
 
     // In Contact > blacklist
     @Test
-    fun contact_inclusive() {
+    fun contact_permissive() {
         val spf = spf.Contact(ctx)
         spf.setEnabled(true)
-        spf.setExclusive(false)
+        spf.setStrict(false)
         mock_contact(A)
         add_number_rule(build_rule(".*", "", 1, true, Def.FLAG_FOR_CALL))
 
@@ -172,10 +172,10 @@ class RuleTest {
 
     // Non Contact -> block
     @Test
-    fun contact_exclusive() {
+    fun contact_strict() {
         val spf = spf.Contact(ctx)
         spf.setEnabled(true)
-        spf.setExclusive(true)
+        spf.setStrict(true)
         mock_contact(A)
 
         // contact: pass
