@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        Interroge le numéro entrant en ligne en temps réel ; plusieurs points de terminaison d’API seront interrogés simultanément.<br>
+        Interrogez le numéro entrant en ligne en temps réel. <br>
         <br>
-        Cela s’applique uniquement aux appels, pas aux SMS.<br>
+        Plusieurs points d\'accès API seront interrogés simultanément, le premier résultat reçu étant utilisé et tous les résultats ultérieurs ignorés. <br>
         <br>
-        Cela ne sera déclenché que si l’appel respecte toutes les autres règles.<br>
+        Cela s\'applique uniquement aux appels, pas aux messages SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Priorité : -1</b></font>
+        Il a la priorité la plus basse par défaut, ce qui signifie qu\'il ne sera déclenché que lorsque l\'appel passe toutes les autres règles.<br>
+        <br>
+        <font color="#ea86ff"><b>Priorité par défaut : -1</b></font>
         ]]>
     </string>
     <string name="instant_query">Requête instantanée</string>

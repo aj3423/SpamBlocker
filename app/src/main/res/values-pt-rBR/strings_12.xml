@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        Consulta o número de telefone recebido online em tempo real; vários endpoints de API serão consultados simultaneamente.<br>
+        Consultar o número de entrada online em tempo real. <br>
+        <br>
+        Múltiplos endpoints de API serão consultados simultaneamente, com o primeiro resultado recebido sendo usado e todos os resultados posteriores ignorados. <br>
         <br>
         Aplica-se apenas a chamadas, não a mensagens SMS.<br>
         <br>
-        Será acionado somente quando a chamada passar por todas as outras regras.<br>
+        Por padrão, tem a prioridade mais baixa, o que significa que só será acionado quando a chamada passar por todas as outras regras.<br>
         <br>
-        <font color="#ea86ff"><b>Prioridade: -1</b></font>
+        <font color="#ea86ff"><b>Prioridade Padrão: -1</b></font>
         ]]>
     </string>
     <string name="instant_query">Consulta Instantânea</string>

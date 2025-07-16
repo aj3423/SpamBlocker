@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        Consulta o número entrante en liña en tempo real, consultarase simultaneamente varias API.<br>
+        Consultar o número entrante en liña en tempo real. <br>
         <br>
-        Só se aplica ás chamadas, non aos SMS.<br>
+        Múltiples puntos finais da API serán consultados simultaneamente, utilizándose o primeiro resultado recibido e ignorándose todos os posteriores. <br>
         <br>
-        Só se activará cando a chamada pase todas as outras regras.<br>
+        Só se aplica ás chamadas, non ás mensaxes SMS.<br>
         <br>
-        <font color="#ea86ff"><b>Prioridade: -1</b></font>
+        Ten a prioridade máis baixa por defecto, o que significa que só se activará cando a chamada pase todas as outras regras.<br>
+        <br>
+        <font color="#ea86ff"><b>Prioridade por defecto: -1</b></font>
         ]]>
     </string>
     <string name="instant_query">Consulta instantánea</string>

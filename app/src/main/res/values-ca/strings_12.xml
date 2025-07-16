@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        Consulta el número entrant en línia en temps real; es consultaran diversos punts finals de l\'API simultàniament.<br>
+        Consulta el número entrant en línia en temps real. <br>
+        <br>
+        Es consultaran simultàniament múltiples punts finals d\'API, utilitzant el primer resultat rebut i ignorant tots els resultats posteriors. <br>
         <br>
         Només s\'aplica a les trucades, no als missatges SMS.<br>
         <br>
-        Només s\'activarà quan la trucada superi totes les altres regles.<br>
+        Té la prioritat més baixa per defecte, el que significa que només s\'activarà quan la trucada passi totes les altres regles.<br>
         <br>
-        <font color="#ea86ff"><b>Prioritat: -1</b></font>
+        <font color="#ea86ff"><b>Default Priority: -1</b></font>
         ]]>
     </string>
     <string name="instant_query"><translate>Consulta instantània</translate></string>

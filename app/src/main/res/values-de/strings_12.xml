@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        Sucht die eingehende Nummer in Echtzeit online ab; mehrere API-Endpunkte werden gleichzeitig abgefragt.<br>
+        Fragt die eingehende Nummer online in Echtzeit ab. <br>
         <br>
-        Dies gilt nur für Anrufe, nicht für SMS-Nachrichten.<br>
+        Mehrere API-Endpunkte werden gleichzeitig abgefragt, wobei das erste erhaltene Ergebnis verwendet und alle späteren Ergebnisse ignoriert werden. <br>
         <br>
-        Es wird nur ausgelöst, wenn der Anruf alle anderen Regeln besteht.<br>
+        Es gilt nur für Anrufe, nicht für SMS-Nachrichten.<br>
         <br>
-        <font color="#ea86ff"><b>Priorität: -1</b></font>
+        Es hat standardmäßig die niedrigste Priorität, was bedeutet, dass es nur ausgelöst wird, wenn der Anruf alle anderen Regeln erfüllt.<br>
+        <br>
+        <font color="#ea86ff"><b>Standardpriorität: -1</b></font>
         ]]>
     </string>
     <string name="instant_query">Sofortige Abfrage</string>

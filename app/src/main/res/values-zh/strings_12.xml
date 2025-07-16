@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        实时在线查询来电号码，将同时查询多个API端点。<br>
+        实时在线查询来电号码。<br>
+        <br>
+        多个API端点将同时查询，以第一个收到的结果为准，后续结果将被忽略。<br>
         <br>
         仅适用于来电，不适用于短信。<br>
         <br>
-        只有在来电通过所有其他规则后才会触发。<br>
+        默认优先级最低，这意味着它只会在来电通过所有其他规则后才会被触发。<br>
         <br>
-        <font color="#ea86ff"><b>优先级：-1</b></font>
+        <font color="#ea86ff"><b>默认优先级：-1</b></font>
         ]]>
     </string>
     <string name="instant_query">即时查询</string>

@@ -1,13 +1,15 @@
 <resources>
     <string name="help_instant_query">
         <![CDATA[
-        Gelen numarayı gerçek zamanlı olarak çevrimiçi olarak sorgulayın, birden çok API uç noktası aynı anda sorgulanacaktır.<br>
+        Gelen numarayı gerçek zamanlı olarak çevrimiçi sorgula. <br>
         <br>
-        Yalnızca aramalar için geçerlidir, SMS mesajları için değil.<br>
+        Birden fazla API uç noktası aynı anda sorgulanacak, ilk alınan sonuç kullanılacak ve sonraki tüm sonuçlar göz ardı edilecek. <br>
         <br>
-        Yalnızca arama diğer tüm kuralları geçtiğinde tetiklenecektir.<br>
+        Yalnızca aramalara uygulanır, SMS mesajlarına değil.<br>
         <br>
-        <font color="#ea86ff"><b>Öncelik: -1</b></font>
+        Varsayılan olarak en düşük önceliğe sahiptir, yani yalnızca arama diğer tüm kuralları geçtiğinde tetiklenecektir.<br>
+        <br>
+        <font color="#ea86ff"><b>Varsayılan Öncelik: -1</b></font>
         ]]>
     </string>
     <string name="instant_query">Anında Sorgu</string>
