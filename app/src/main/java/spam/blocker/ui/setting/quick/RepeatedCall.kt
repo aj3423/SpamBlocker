@@ -52,7 +52,7 @@ fun RepeatedCall() {
                             spf.setTimes(newValue!!)
                         }
                     },
-                    label = @Composable { Text(Str(R.string.times)) },
+                    labelId = R.string.times,
                     leadingIconId = R.drawable.ic_repeat,
                 )
 
@@ -66,7 +66,7 @@ fun RepeatedCall() {
                             spf.setInXMin(newValue)
                         }
                     },
-                    label = @Composable { Text(Str(R.string.within_minutes)) },
+                    labelId = R.string.within_minutes,
                     leadingIconId = R.drawable.ic_duration,
                 )
                 LabeledRow(

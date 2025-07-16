@@ -155,7 +155,7 @@ fun EmergencySituation() {
                             spf.setDuration(duration)
                         }
                     },
-                    label = { Text(Str(R.string.within_minutes)) },
+                    labelId = R.string.within_minutes,
                     leadingIconId = R.drawable.ic_duration,
                 )
 

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -243,7 +244,7 @@ fun PushAlertEditDialog(
                         if (newVal != null)
                             duration = newVal
                     },
-                    leadingIconId = R.drawable.ic_duration,
+                    leadingIcon = { ResIcon(R.drawable.ic_duration, modifier = M.size(18.dp)) },
                 )
             }
         }

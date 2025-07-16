@@ -115,7 +115,7 @@ fun HistoryFabs(
                                         spf.setTTL(newValue)
                                     }
                                 },
-                                label = { Text(Str(R.string.days)) },
+                                labelId = R.string.days,
                                 leadingIconId = R.drawable.ic_recycle_bin,
                             )
                         }

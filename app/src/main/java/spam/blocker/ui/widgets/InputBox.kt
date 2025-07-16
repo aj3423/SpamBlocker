@@ -47,6 +47,7 @@ import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Salmon
@@ -234,8 +235,8 @@ fun NumberInputBox(
     allowEmpty: Boolean = false,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
-    leadingIconId: Int? = null,
-    helpTooltipId: Int? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    helpTooltip: @Composable (() -> Unit)? = null,
 ) {
     // Code learned from the built-in BasicTextField.kt
     var state by remember {
@@ -285,9 +286,7 @@ fun NumberInputBox(
         },
         label = label,
         placeholder = placeholder,
-        leadingIcon = leadingIconId?.let {
-            { ResIcon(iconId = it, modifier = M.size(18.dp)) }
-        },
+        leadingIcon = leadingIcon,
         supportingTextStr = if (hasError) Str(R.string.invalid_number) else null,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
@@ -303,14 +302,42 @@ fun NumberInputBox(
                         }
                     )
                 }
-                helpTooltipId?.let {
-                    BalloonQuestionMark(LocalContext.current.getString(it))
-                }
+                helpTooltip?.let { it() }
             }
         }
     )
 }
 
+@Composable
+fun NumberInputBox(
+    intValue: Int?,
+    modifier: Modifier = Modifier,
+    onValueChange: (Int?, Boolean) -> Unit,
+    allowEmpty: Boolean = false,
+    labelId: Int? = null,
+    placeholder: @Composable (() -> Unit)? = null,
+    leadingIconId: Int? = null,
+    helpTooltipId: Int? = null,
+) {
+    NumberInputBox(
+        intValue = intValue,
+        modifier = modifier,
+        onValueChange = onValueChange,
+        allowEmpty = allowEmpty,
+        label = if (labelId == null) null else { { Text(Str(labelId)) } },
+        placeholder = placeholder,
+        leadingIcon = {
+            leadingIconId?.let {
+                ResIcon(iconId = it, modifier = M.size(18.dp))
+            }
+        },
+        helpTooltip = {
+            helpTooltipId?.let {
+                BalloonQuestionMark(LocalContext.current.getString(it))
+            }
+        },
+    )
+}
 
 @Composable
 fun StrInputBox(
@@ -671,6 +698,25 @@ fun RegexInputBox(
                     BalloonQuestionMark(LocalContext.current.getString(it))
                 }
             }
+        }
+    )
+}
+
+@Composable
+fun PriorityBox(
+    priority: Int,
+    onValueChange: (Int?, Boolean) -> Unit,
+) {
+    NumberInputBox(
+        intValue = priority,
+        onValueChange = onValueChange,
+        label = { Text(Str(R.string.priority)) },
+        leadingIcon = {
+            ResIcon(
+                iconId = R.drawable.ic_priority,
+                color = LightMagenta,
+                modifier = M.size(18.dp)
+            )
         }
     )
 }

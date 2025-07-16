@@ -42,6 +42,7 @@ import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -197,17 +198,12 @@ fun SpamDB() {
             }
 
             // Priority
-            NumberInputBox(
-                intValue = priority,
-                onValueChange = { newValue, hasError ->
-                    if (!hasError) {
-                        priority = newValue!!
-                        spf.setPriority(newValue)
-                    }
-                },
-                label = { Text(Str(R.string.priority)) },
-                leadingIconId = R.drawable.ic_priority,
-            )
+            PriorityBox(priority) { newValue, hasError ->
+                if (!hasError) {
+                    priority = newValue!!
+                    spf.setPriority(newValue)
+                }
+            }
 
 
             // Search list

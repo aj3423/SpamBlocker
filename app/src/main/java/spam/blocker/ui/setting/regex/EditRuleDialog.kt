@@ -57,6 +57,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
+import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
@@ -400,17 +401,11 @@ fun RuleEditDialog(
                 )
 
                 // Priority
-                NumberInputBox(
-                    intValue = priority,
-
-                    label = { Text(Str(R.string.priority), color = Color.Unspecified) },
-                    onValueChange = { newVal, hasErr ->
-                        priorityError = hasErr
-                        if (newVal != null)
-                            priority = newVal
-                    },
-                    leadingIconId = R.drawable.ic_priority,
-                )
+                PriorityBox(priority) { newVal, hasErr ->
+                    priorityError = hasErr
+                    if (newVal != null)
+                        priority = newVal
+                }
 
                 // For Call/SMS
                 LabeledRow(

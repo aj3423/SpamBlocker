@@ -17,6 +17,7 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
@@ -61,29 +62,19 @@ fun Stir() {
                     })
                 }
                 if (isStrict) {
-                    NumberInputBox(
-                        intValue = priStrict,
-                        onValueChange = { newValue, hasError ->
-                            if (!hasError) {
-                                priStrict = newValue!!
-                                spf.setStrictPriority(newValue)
-                            }
-                        },
-                        label = { Text(Str(R.string.priority)) },
-                        leadingIconId = R.drawable.ic_priority,
-                    )
+                    PriorityBox(priStrict) { newValue, hasError ->
+                        if (!hasError) {
+                            priStrict = newValue!!
+                            spf.setStrictPriority(newValue)
+                        }
+                    }
                 } else {
-                    NumberInputBox(
-                        intValue = priLenient,
-                        onValueChange = { newValue, hasError ->
-                            if (!hasError) {
-                                priLenient = newValue!!
-                                spf.setLenientPriority(newValue)
-                            }
-                        },
-                        label = { Text(Str(R.string.priority)) },
-                        leadingIconId = R.drawable.ic_priority,
-                    )
+                    PriorityBox(priLenient) { newValue, hasError ->
+                        if (!hasError) {
+                            priLenient = newValue!!
+                            spf.setLenientPriority(newValue)
+                        }
+                    }
                 }
             }
         }

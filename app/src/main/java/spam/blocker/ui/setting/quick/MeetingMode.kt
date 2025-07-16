@@ -39,6 +39,7 @@ import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
@@ -62,18 +63,14 @@ private fun PopupMeetingConfig(
     PopupDialog(
         trigger = popupTrigger,
         content = {
-            NumberInputBox(
-                intValue = priority.value,
-                onValueChange = { newValue, hasError ->
-                    if (!hasError) {
-                        priority.value = newValue!!
-                        spf.MeetingMode(ctx).setPriority(newValue)
-                    }
-                },
-                label = { Text(Str(R.string.priority)) },
-                leadingIconId = R.drawable.ic_priority,
-            )
-        })
+            PriorityBox(priority.value) { newValue, hasError ->
+                if (!hasError) {
+                    priority.value = newValue!!
+                    spf.MeetingMode(ctx).setPriority(newValue)
+                }
+            }
+        }
+    )
 }
 
 

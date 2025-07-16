@@ -18,6 +18,7 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
@@ -36,11 +37,7 @@ fun Contacts() {
 
     val spf = spf.Contact(ctx)
 
-    fun checkContactState(): Boolean {
-        return spf.isEnabled() && Permission.contacts.isGranted
-    }
-
-    var isTurnedOn by remember { mutableStateOf(checkContactState()) }
+    var isEnabled by remember { mutableStateOf(spf.isEnabled() && Permission.contacts.isGranted) }
     var isStrict by remember { mutableStateOf(spf.isStrict()) }
     var priLenient by remember { mutableIntStateOf(spf.getLenientPriority()) }
     var priStrict by remember { mutableIntStateOf(spf.getStrictPriority()) }
@@ -65,29 +62,20 @@ fun Contacts() {
                 }
 
                 if (isStrict) {
-                    NumberInputBox(
-                        intValue = priStrict,
-                        onValueChange = { newValue, hasError ->
-                            if (!hasError) {
-                                priStrict = newValue!!
-                                spf.setStrictPriority(newValue)
-                            }
-                        },
-                        label = { Text(Str(R.string.priority)) },
-                        leadingIconId = R.drawable.ic_priority,
-                    )
+                    PriorityBox(priStrict) { newValue, hasError ->
+                        if (!hasError) {
+                            priStrict = newValue!!
+                            spf.setStrictPriority(newValue)
+                        }
+                    }
+
                 } else {
-                    NumberInputBox(
-                        intValue = priLenient,
-                        onValueChange = { newValue, hasError ->
-                            if (!hasError) {
-                                priLenient = newValue!!
-                                spf.setLenientPriority(newValue)
-                            }
-                        },
-                        label = { Text(Str(R.string.priority)) },
-                        leadingIconId = R.drawable.ic_priority,
-                    )
+                    PriorityBox(priLenient)  { newValue, hasError ->
+                        if (!hasError) {
+                            priLenient = newValue!!
+                            spf.setLenientPriority(newValue)
+                        }
+                    }
                 }
             }
         }
@@ -97,7 +85,7 @@ fun Contacts() {
         R.string.allow_contact,
         helpTooltip = ctx.getString(R.string.help_contacts),
         content = {
-            if (isTurnedOn) {
+            if (isEnabled) {
                 Button(
                     content = {
                         RowVCenterSpaced(6) {
@@ -119,7 +107,7 @@ fun Contacts() {
                     popupTrigger.value = true
                 }
             }
-            SwitchBox(isTurnedOn) { isTurningOn ->
+            SwitchBox(isEnabled) { isTurningOn ->
                 if (isTurningOn) {
                     G.permissionChain.ask(
                         ctx,
@@ -127,12 +115,12 @@ fun Contacts() {
                     ) { granted ->
                         if (granted) {
                             spf.setEnabled(true)
-                            isTurnedOn = true
+                            isEnabled = true
                         }
                     }
                 } else {
                     spf.setEnabled(false)
-                    isTurnedOn = false
+                    isEnabled = false
                 }
             }
         }

@@ -43,7 +43,7 @@ fun ConfigAnswerAndHangUp(
                         delay.intValue = newValue
                     }
                 },
-                label = @Composable { Text(Str(R.string.delay)) },
+                labelId = R.string.delay,
                 leadingIconId = R.drawable.ic_duration,
                 helpTooltipId = R.string.help_hang_up_delay
             )

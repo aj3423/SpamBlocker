@@ -61,6 +61,7 @@ import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
+import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
@@ -1174,15 +1175,11 @@ class ImportAsRegexRule(
                 label = { Text(Str(R.string.description)) },
                 onValueChange = { description = it }
             )
-            NumberInputBox(
-                intValue = priority,
-                label = { Text(Str(R.string.priority)) },
-                onValueChange = { newVal, hasError ->
-                    if (!hasError) {
-                        priority = newVal!!
-                    }
+            PriorityBox(priority) { newVal, hasError ->
+                if (!hasError) {
+                    priority = newVal!!
                 }
-            )
+            }
             // Import to Number/Content/QuickCopy
             LabeledRow(R.string.import_as) {
                 var selected by rememberSaveable {

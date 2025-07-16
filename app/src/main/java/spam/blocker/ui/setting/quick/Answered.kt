@@ -51,7 +51,7 @@ fun Answered() {
                         spf.setDays(newValue)
                     }
                 },
-                label = { Text(Str(R.string.within_days)) },
+                labelId = R.string.within_days,
                 leadingIconId = R.drawable.ic_duration,
             )
             NumberInputBox(
@@ -62,7 +62,7 @@ fun Answered() {
                         spf.setMinDuration(newValue)
                     }
                 },
-                label = { Text(Str(R.string.minimal_duration)) },
+                labelId = R.string.minimal_duration,
                 leadingIconId = R.drawable.ic_duration,
             )
         }

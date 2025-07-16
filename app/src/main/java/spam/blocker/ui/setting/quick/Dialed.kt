@@ -46,7 +46,7 @@ fun Dialed() {
                         spf.setDays(newValue)
                     }
                 },
-                label = { Text(Str(R.string.within_days)) },
+                labelId = R.string.within_days,
                 leadingIconId = R.drawable.ic_duration,
             )
             LabeledRow(

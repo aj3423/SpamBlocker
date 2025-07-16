@@ -210,7 +210,7 @@ private fun PopupConfig(
                         spf.RecentApps(ctx).setDefaultMin(newValue!!)
                     }
                 },
-                label = { Text(Str(R.string.within_minutes)) },
+                labelId = R.string.within_minutes,
                 leadingIconId = R.drawable.ic_duration,
             )
         })
@@ -273,7 +273,7 @@ fun RecentApps() {
                                 NumberInputBox(
                                     intValue = recentAppInfo.duration,
                                     allowEmpty = true,
-                                    label = { Text(Str(R.string.min)) },
+                                    labelId = R.string.min,
                                     leadingIconId = R.drawable.ic_duration,
                                     onValueChange = { newValue, hasError ->
                                         val pkgName = recentAppInfo.pkgName

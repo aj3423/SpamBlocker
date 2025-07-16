@@ -73,7 +73,7 @@ fun SmsBomb() {
         )
         NumberInputBox(
             intValue = duration,
-            label = { Text(Str(R.string.within_seconds), color = Color.Unspecified) },
+            labelId = R.string.within_seconds,
             onValueChange = { newVal, hasErr ->
                 if (newVal != null) {
                     duration = newVal
