@@ -31,9 +31,6 @@ object Notification {
     // Mute the sound when actively texting(while the default SMS app is in the foreground)
     const val IMPORTANCE_HIGH_MUTED = 100
 
-    const val SPAM_CALL_GROUP = "spam_call"
-    const val SPAM_SMS_GROUP = "spam_sms"
-
     enum class Type {
         VALID_SMS, SPAM_SMS, SPAM_CALL
     }
@@ -48,13 +45,13 @@ object Notification {
 
     fun groupName(type: Type): String? {
         return when (type) {
-            Type.VALID_SMS -> null
-            Type.SPAM_SMS -> SPAM_SMS_GROUP
-            Type.SPAM_CALL -> SPAM_CALL_GROUP
+            Type.VALID_SMS -> "valid_sms"
+            Type.SPAM_SMS -> "spam_sms"
+            Type.SPAM_CALL -> "spam_call"
         }
     }
 
-    fun color(type: Type): Color? {
+    fun getColor(type: Type): Color? {
         return when (type) {
             Type.VALID_SMS -> null
             Type.SPAM_SMS -> Salmon
@@ -168,10 +165,10 @@ object Notification {
                 val group = groupName(type)
                 group?.let { setGroup(it) }
 
-                val clr = color(type)
-                if (clr != null) {
+                val c = getColor(type)
+                if (c != null) {
                     builder.setColorized(true)
-                    builder.setColor(clr.toArgb())
+                    builder.setColor(c.toArgb())
                 }
             }
 
@@ -199,34 +196,32 @@ object Notification {
         manager.notify(notificationId, notification)
 
         // group
-        when (type) {
-            Type.SPAM_CALL, Type.SPAM_SMS -> {
-                val name = groupName(type)
-                val group = NotificationCompat.Builder(ctx, chId)
-                    .setChannelId(chId)
-                    .setSmallIcon(iconId(type))
-                    .setContentTitle(title)
-                    .setContentText(body)
-                    .setColor(Salmon.toArgb())
-                    .setSilent(shouldSilent(importance))
-                    .setGroup(name)
-                    .setGroupSummary(true)
-                manager.notify(type.ordinal, group.build())
-            }
-
-            else -> {}
+        run {
+            val name = groupName(type)
+            val group = NotificationCompat.Builder(ctx, chId)
+                .setChannelId(chId)
+                .setSmallIcon(iconId(type))
+                .setContentTitle(title)
+                .setContentText(body)
+                .setSilent(shouldSilent(importance))
+                .setGroup(name)
+                .setGroupSummary(true)
+                .apply {
+                    getColor(type)?.let {
+                        setColor(it.toArgb())
+                    }
+                }
+            manager.notify(type.ordinal, group.build())
         }
     }
 
     fun cancelById(ctx: Context, notificationId: Int) {
-        val manager =
-            ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
+        val manager = ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
         manager.cancel(notificationId)
     }
 
     fun cancelAll(ctx: Context) {
-        val manager =
-            ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
+        val manager = ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
         manager.cancelAll()
     }
 }
