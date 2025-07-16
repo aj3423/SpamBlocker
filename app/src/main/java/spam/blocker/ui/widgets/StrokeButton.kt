@@ -24,6 +24,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
 
@@ -35,7 +36,7 @@ import spam.blocker.util.Lambda
 @Composable
 fun Button(
     content: @Composable RowScope.() -> Unit,
-    modifier: Modifier = Modifier.height(26.dp),
+    modifier: Modifier = M.height(26.dp),
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
     borderColor: Color = LocalPalette.current.textGrey,

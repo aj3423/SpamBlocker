@@ -1,54 +1,54 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        API, налаштовані тут, використовуватимуться як для автоматичного, так і для ручного звітування.<br>
+        API, налаштовані тут, будуть використовуватися як для автоматичного, так і для ручного звітування.<br>
         <br>
-        <h4><font color="#00BFFF">- <translate>Конфіденційність</translate></font></h4>
-        API endpoints побачать ваші:<br>
+        <h4><font color="#00BFFF">- Конфіденційність</font></h4>
+        Кінцеві точки API бачитимуть ваші:<br>
         <br>
-         &ensp; - IP <translate>адреса</translate><br>
-         &ensp; - TLS <translate>і</translate> TCP <translate>відбитки</translate> (які можуть виявити вашу версію Android)<br>
-         &ensp; - <translate>Номер</translate>, <translate>про який повідомляється</translate> (включаючи ваш код країни)<br>
+         &ensp; - IP-адресу<br>
+         &ensp; - Відбитки TLS та TCP (що може розкрити вашу версію Android)<br>
+         &ensp; - Номер, про який повідомляється (включаючи код вашої країни)<br>
         <br>
-        <translate>Більше нічого не буде повідомлено</translate>.<br>
+        Більше нічого не буде повідомлятися.<br>
         <br>
-        <h4><font color="#00BFFF">- <translate>Ручне звітування</translate></font></h4>
-		<translate>Якщо будь-який</translate> API <translate>тут активовано, торкніться номера в історії викликів, там буде кнопка звіту</translate>.<br>
+        <h4><font color="#00BFFF">- Ручне звітування</font></h4>
+		Якщо будь-який API увімкнено тут, торкніться номера в історії дзвінків, з\'явиться кнопка повідомлення.<br>
 		<br>
-		<translate>Про</translate> <translate>номер</translate> <translate>буде повідомлено у </translate><b><translate>всі</translate></b> API.<br>
+		Номер буде повідомлено <b>всім</b> API.<br>
 		<br>
-        <h4><font color="#00BFFF">- <translate>Автоматичне звітування</translate></font></h4>
-		<font color="#6ED0ff"><b><translate>Затримка звіту</translate></b></font><br>
-        <translate>Коли виклик заблоковано, буде годинний часовий буфер, перш ніж про нього буде повідомлено</translate>.
-        <translate>Якщо номер дозволено пізніше через повтори або передзвонено протягом цього часового буфера,
-        він вважається номером, який не є спамом, і звітування буде скасовано</translate>.<br>
+        <h4><font color="#00BFFF">- Автоматичне звітування</font></h4>
+		<font color="#6ED0ff"><b>Затримка звітування</b></font><br>
+        Коли дзвінок заблоковано, буде годинний буфер часу, перш ніж про нього буде повідомлено.
+        Якщо номер буде дозволено пізніше через повтори або якщо на нього наберуть номер протягом цього буфера часу,
+        він вважається номером, що не є спамом, і звітність буде скасовано.<br>
         <br>
-		<font color="#6ED0ff"><b><translate>Тип звіту</translate></b></font><br>
-		1. <translate>Він</translate> <font color="#fa7f71"><b><translate>не буде</translate></b></font> <translate>повідомляти</translate>:<br>
+		<font color="#6ED0ff"><b>Тип звітування</b></font><br>
+		1. <font color="#fa7f71"><b>Не буде</b></font> повідомляти:<br>
         <br>
-        - <font color="#fa7f71">SMS <translate>номери</translate> <translate>або контент</translate></font><br>
-        - <font color="#fa7f71"><translate>Дозволені номери</translate></font><br>
-        - <font color="#fa7f71">Global Testing</font><br>
-        <translate>І наступні заблоковані типи</translate>:<br>
-        - <font color="#fa7f71">Contact Regex</font><br>
-        - <font color="#fa7f71">Contact Group Regex</font><br>
-        - <font color="#fa7f71"><translate>База даних</translate></font><br>
-        - <font color="#fa7f71">Meeting Mode</font><br>
-        - <font color="#fa7f71">Instant Query</font> (<translate>щоб запобігти витоку номера кінцевої точки</translate> API <translate>іншим конкурентам</translate>)<br>
+        - <font color="#fa7f71">SMS-номери або вміст</font><br>
+        - <font color="#fa7f71">Дозволені номери</font><br>
+        - <font color="#fa7f71">Глобальне тестування</font><br>
+        Та наступні заблоковані типи:<br>
+        - <font color="#fa7f71">Регулярний вираз контакту</font><br>
+        - <font color="#fa7f71">Регулярний вираз групи контактів</font><br>
+        - <font color="#fa7f71">База даних</font><br>
+        - <font color="#fa7f71">Режим зустрічі</font><br>
+        - <font color="#fa7f71">Миттєвий запит</font> (щоб запобігти витоку номера кінцевої точки API до інших конкурентів)<br>
         <br>
-		2. <translate>Він</translate> <font color="#03DAC5"><b><translate>буде</translate></b></font> <translate>повідомляти про номери, заблоковані</translate>:<br>
+		2. <font color="#03DAC5"><b>Буде</b></font> повідомляти номери, заблоковані за допомогою:<br>
         <br>
-        - <font color="#03DAC5">Non-Contact</font>(exclusive)<br>
-        - <font color="#03DAC5">STIR Attestation</font><br>
-        - <font color="#03DAC5">Number Regex</font><br>
+        - <font color="#03DAC5">Неконтакт</font>(Суворий)<br>
+        - <font color="#03DAC5">Атестація STIR</font><br>
+        - <font color="#03DAC5">Регулярний вираз номера</font><br>
         <br>
-		3. <translate>Виняткові випадки</translate>:<br>
+		3. Виняткові випадки:<br>
         <br>
-        - <translate>Коли його заблоковано за допомогою</translate> <font color="#03DAC5">Instant Query</font>, <translate>про нього буде повідомлено</translate> <b><translate>тому ж</translate></b> API, <translate>щоб збільшити оцінку номера</translate>.
-         <translate>Наприклад, коли його заблоковано запитом</translate> API <translate>від</translate> check.com, <translate>він повідомлятиметься лише до</translate> check.com, <translate>а не до</translate> others.com. <br>
+        - Коли дзвінок заблоковано <font color="#03DAC5">Миттєвим запитом</font>, він буде повідомлений назад до <b>того ж</b> API для підвищення рейтингу номера.
+         Наприклад, якщо дзвінок заблоковано запитом API від check.com, про нього буде повідомлено лише check.com, а не others.com. <br>
 		<br>
-        -  <translate>Коли його заблоковано за допомогою</translate> <font color="#03DAC5"><translate>База даних</translate></font> <translate>і запис був спочатку доданий запитом</translate> instant API,
-         <translate>про нього буде повідомлено лише</translate> <b><translate>тому ж</translate></b> API <translate>з тієї ж причини, що й вище</translate>.<br>
+        -  Коли дзвінок заблоковано <font color="#03DAC5">Базою даних</font>, і запис був спочатку доданий миттєвим запитом API,
+         про нього буде повідомлено лише <b>тому ж</b> API з тієї ж причини, що й вище.<br>
         ]]>
     </string>
 </resources>

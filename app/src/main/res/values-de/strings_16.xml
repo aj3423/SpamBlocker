@@ -1,54 +1,54 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        Hier konfigurierte APIs werden sowohl für die automatische als auch für die manuelle Meldung verwendet.<br>
+        Hier konfigurierte APIs werden sowohl für die automatische Meldung als auch für die manuelle Meldung verwendet.<br>
         <br>
         <h4><font color="#00BFFF">- Datenschutz</font></h4>
-        Die API-Endpunkte sehen Folgendes:<br>
+        Die API-Endpunkte sehen Ihre:<br>
         <br>
-         &ensp; - Ihre IP-Adresse<br>
-         &ensp; - TLS- und TCP-Fingerabdrücke (die Ihre Android-Version offenlegen können)<br>
-         &ensp; - Die gemeldete Nummer (einschließlich Ihrer Landesvorwahl)<br>
+         &ensp; - IP-Adresse<br>
+         &ensp; - TLS- und TCP-Fingerabdrücke (die Ihre Android-Version offenbaren können)<br>
+         &ensp; - Die gemeldete Rufnummer (einschließlich Ihrer Ländervorwahl)<br>
         <br>
-        Es wird nichts anderes gemeldet.<br>
+        Nichts anderes wird gemeldet.<br>
         <br>
         <h4><font color="#00BFFF">- Manuelle Meldung</font></h4>
-		Wenn hier eine API aktiviert ist, tippen Sie auf eine Nummer im Anrufverlauf. Es gibt eine Meldeschaltfläche.<br>
+		Wenn hier eine API aktiviert ist, tippen Sie auf eine Rufnummer im Anrufverlauf, dort wird ein Melden-Button angezeigt.<br>
 		<br>
-		Die Nummer wird an <b>alle</b> APIs gemeldet.<br>
+		Die Rufnummer wird an <b>alle</b> APIs gemeldet.<br>
 		<br>
         <h4><font color="#00BFFF">- Automatische Meldung</font></h4>
 		<font color="#6ED0ff"><b>Meldeverzögerung</b></font><br>
-        Wenn ein Anruf blockiert wird, gibt es einen einstündigen Puffer, bevor er gemeldet wird.
-        Wenn die Nummer später aufgrund von Wiederholungen oder Rückrufen innerhalb dieses Zeitpuffers zugelassen wird,
-        wird dies als Nicht-Spam-Nummer betrachtet und die Meldung wird abgebrochen.<br>
+        Wenn ein Anruf blockiert wird, gibt es einen einstündigen Zeitpuffer, bevor er gemeldet wird.
+        Wenn die Rufnummer später aufgrund von Wiederholungen oder eines Rückrufs innerhalb dieses Zeitpuffers zugelassen wird,
+        wird sie als Nicht-Spam-Rufnummer betrachtet und die Meldung wird abgebrochen.<br>
         <br>
-		<font color="#6ED0ff"><b>Meldetyp</b></font><br>
-		1. Es wird <font color="#fa7f71"><b>nicht</b></font> gemeldet:<br>
+		<font color="#6ED0ff"><b>Meldungsart</b></font><br>
+		1. Es <font color="#fa7f71"><b>wird nicht</b></font> gemeldet:<br>
         <br>
-        - <font color="#fa7f71">SMS-Nummern oder -Inhalte</font><br>
-        - <font color="#fa7f71">Zugelassene Nummern</font><br>
-        - <font color="#fa7f71">Globales Testen</font><br>
+        - <font color="#fa7f71">SMS-Rufnummern oder -Inhalte</font><br>
+        - <font color="#fa7f71">Zugelassene Rufnummern</font><br>
+        - <font color="#fa7f71">Globaler Test</font><br>
         Und folgende blockierte Typen:<br>
         - <font color="#fa7f71">Kontakt-Regex</font><br>
         - <font color="#fa7f71">Kontaktgruppen-Regex</font><br>
         - <font color="#fa7f71">Datenbank</font><br>
-        - <font color="#fa7f71">Meeting-Modus</font><br>
-        - <font color="#fa7f71">Sofortabfrage</font> (um zu verhindern, dass die Nummer des API-Endpunkts an andere Wettbewerber weitergegeben wird)<br>
+        - <font color="#fa7f71">Besprechungsmodus</font><br>
+        - <font color="#fa7f71">Sofortabfrage</font> (um zu verhindern, dass die Rufnummer des API-Endpunkts an andere Wettbewerber weitergegeben wird)<br>
         <br>
-		2. Es <font color="#03DAC5"><b>werden</b></font> Nummern gemeldet, die blockiert wurden durch:<br>
+		2. Es <font color="#03DAC5"><b>wird</b></font> Rufnummern gemeldet, die blockiert wurden durch:<br>
         <br>
-        - <font color="#03DAC5">Nicht-Kontakt</font>(exklusiv)<br>
-        - <font color="#03DAC5">STIR-Beglaubigung</font><br>
-        - <font color="#03DAC5">Nummern-Regex</font><br>
+        - <font color="#03DAC5">Nicht-Kontakt</font>(Streng)<br>
+        - <font color="#03DAC5">STIR-Attestierung</font><br>
+        - <font color="#03DAC5">Rufnummern-Regex</font><br>
         <br>
 		3. Ausnahmefälle:<br>
         <br>
-        - Wenn es durch <font color="#03DAC5">Sofortabfrage</font> blockiert wird, wird es an dieselbe API zurückgemeldet, um die Bewertung der Nummer zu erhöhen.
-         Wenn es beispielsweise durch eine API-Abfrage von check.com blockiert wird, wird es nur an check.com gemeldet, nicht an others.com. <br>
+        - Wenn sie durch <font color="#03DAC5">Sofortabfrage</font> blockiert wird, wird sie an dieselbe API zurückgemeldet, um die Bewertungszahl der Rufnummer zu erhöhen.
+         Wenn sie beispielsweise durch eine API-Abfrage von check.com blockiert wird, meldet sie nur an check.com, nicht an others.com. <br>
 		<br>
-        - Wenn es durch <font color="#03DAC5">Datenbank</font> blockiert wird und der Eintrag ursprünglich durch eine sofortige API-Abfrage hinzugefügt wurde,
-         wird er aus dem gleichen Grund wie oben nur an dieselbe API gemeldet.<br>
+        -  Wenn sie durch <font color="#03DAC5">Datenbank</font> blockiert wird und der Eintrag ursprünglich durch eine sofortige API-Abfrage hinzugefügt wurde,
+         wird sie aus demselben Grund wie oben nur an dieselbe API gemeldet.<br>
         ]]>
     </string>
 </resources>

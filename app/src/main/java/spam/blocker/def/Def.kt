@@ -31,7 +31,7 @@ object Def {
     const val SETTING_CONTACT_ENABLED = "contacts_permitted"
     const val SETTING_CONTACTS_LENIENT_PRIORITY = "contacts_lenient_priority"
     const val SETTING_CONTACTS_STRICT_PRIORITY = "contacts_strict_priority"
-    const val SETTING_CONTACTS_EXCLUSIVE = "contacts_exclusive"
+    const val SETTING_CONTACTS_STRICT = "contacts_exclusive"
     const val SETTING_PERMIT_REPEATED = "permit_repeated"
     const val SETTING_PERMIT_REPEATED_BY_SMS = "permit_repeated_by_sms"
     const val SETTING_REPEATED_TIMES = "repeated_times"

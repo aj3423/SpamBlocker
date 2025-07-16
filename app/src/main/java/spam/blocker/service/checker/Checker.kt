@@ -255,7 +255,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            val exclusive = spf.isStrict()
+            val strict = spf.isStrict()
             val includeUnverified = spf.isIncludeUnverified()
 
             val stir = callDetails.callerNumberVerificationStatus
@@ -264,7 +264,7 @@ class Checker { // for namespace only
             val unverified = stir == Connection.VERIFICATION_STATUS_NOT_VERIFIED
             val fail = stir == Connection.VERIFICATION_STATUS_FAILED
 
-            if (exclusive) {
+            if (strict) {
                 if (fail || (includeUnverified && unverified)) {
                     val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
                     logger?.error(

@@ -1,54 +1,54 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        此处配置的API将用于自动举报和手动举报。<br>
+        在此处配置的API将用于自动举报和手动举报。<br>
         <br>
         <h4><font color="#00BFFF">- 隐私</font></h4>
-        API端点将看到您的：<br>
+        API端点将看到您的信息：<br>
         <br>
          &ensp; - IP地址<br>
-         &ensp; - TLS和TCP指纹（可能会泄露您的Android版本）<br>
+         &ensp; - TLS和TCP指纹（可能会揭示您的Android版本）<br>
          &ensp; - 被举报的号码（包括您的国家代码）<br>
         <br>
-        不会举报任何其他信息。<br>
+        不会报告其他任何信息。<br>
         <br>
         <h4><font color="#00BFFF">- 手动举报</font></h4>
-		如果在此处启用了任何API，请在通话记录中点击一个号码，将出现一个举报按钮。<br>
+		如果此处启用了任何API，点击通话记录中的一个号码，将会出现一个举报按钮。<br>
 		<br>
-		该号码将举报给<b>所有</b>API。<br>
+		该号码将被举报给<b>所有</b>API。<br>
 		<br>
         <h4><font color="#00BFFF">- 自动举报</font></h4>
 		<font color="#6ED0ff"><b>举报延迟</b></font><br>
-        当一个电话被阻止时，会有一个小时的时间缓冲期，然后才会进行举报。
-        如果该号码之后由于重复或在此时间缓冲期内回拨而被允许，
-        则它被认为是非垃圾号码，举报将被取消。<br>
+        当一个通话被拦截后，会有一个一小时的缓冲时间才会进行举报。
+        如果在此缓冲时间内，该号码因重复来电或回拨而被允许，
+        则该号码被视为非垃圾电话号码，举报将被取消。<br>
         <br>
 		<font color="#6ED0ff"><b>举报类型</b></font><br>
-		1. 它<font color="#fa7f71"><b>不会</b></font>举报：<br>
+		1. <font color="#fa7f71"><b>不会</b></font>举报：<br>
         <br>
         - <font color="#fa7f71">短信号码或内容</font><br>
         - <font color="#fa7f71">允许的号码</font><br>
-        - <font color="#fa7f71">全局测试</font><br>
-        以及以下阻止类型：<br>
-        - <font color="#fa7f71">联系人正则</font><br>
-        - <font color="#fa7f71">联系人组正则</font><br>
+        - <font color="#fa7f71">全球测试</font><br>
+        以及以下拦截类型：<br>
+        - <font color="#fa7f71">联系人正则表达式</font><br>
+        - <font color="#fa7f71">联系人群组正则表达式</font><br>
         - <font color="#fa7f71">数据库</font><br>
         - <font color="#fa7f71">会议模式</font><br>
-        - <font color="#fa7f71">即时查询</font>（以防止API端点的号码泄露给其他竞争对手）<br>
+        - <font color="#fa7f71">即时查询</font>（防止API端点号码泄露给其他竞争对手）<br>
         <br>
-		2. 它<font color="#03DAC5"><b>会</b></font>举报以下方式阻止的号码：<br>
+		2. <font color="#03DAC5"><b>会</b></font>举报被以下方式拦截的号码：<br>
         <br>
-        - <font color="#03DAC5">非联系人</font>（独占）<br>
-        - <font color="#03DAC5">STIR认证</font><br>
-        - <font color="#03DAC5">号码正则</font><br>
+        - <font color="#03DAC5">非联系人</font>(严格模式)<br>
+        - <font color="#03DAC5">STIR证明</font><br>
+        - <font color="#03DAC5">号码正则表达式</font><br>
         <br>
-		3. 例外情况：<br>
+		3. 特殊情况：<br>
         <br>
-        - 当它被<font color="#03DAC5">即时查询</font>阻止时，它将被报告回<b>相同的</b>API，以提高号码的评分。
-         例如，当它被check.com的API查询阻止时，它将只报告给check.com，而不是others.com。<br>
+        - 当号码被<font color="#03DAC5">即时查询</font>拦截时，它将回传给<b>相同的</b>API以增加该号码的评分。
+         例如，当它被来自check.com的API查询拦截时，只会报告给check.com，而不会报告给others.com。<br>
 		<br>
-        - 当它被<font color="#03DAC5">数据库</font>阻止，并且该记录最初是通过即时API查询添加的，
-         它将仅报告给<b>相同的</b>API，原因与上述相同。<br>
+        - 当号码被<font color="#03DAC5">数据库</font>拦截，并且该记录最初是通过即时API查询添加的，
+         出于与上述相同的原因，它将仅报告给<b>相同的</b>API。<br>
         ]]>
     </string>
 </resources>

@@ -6,30 +6,30 @@
         <h4><font color="#00BFFF">- Privasi</font></h4>
         Titik akhir API akan melihat:<br>
         <br>
-         &ensp; - Alamat IP Anda<br>
+         &ensp; - Alamat IP<br>
          &ensp; - Sidik jari TLS dan TCP (yang mungkin mengungkapkan versi Android Anda)<br>
          &ensp; - Nomor yang dilaporkan (termasuk kode negara Anda)<br>
         <br>
         Tidak ada hal lain yang akan dilaporkan.<br>
         <br>
-        <h4><font color="#00BFFF">- Pelaporan Manual</font></h4>
-		Jika ada API yang diaktifkan di sini, ketuk sebuah nomor di riwayat panggilan, akan ada tombol laporan.<br>
+        <h4><font color="#00BFFF">- Pelaporan manual</font></h4>
+		Jika ada API yang diaktifkan di sini, ketuk nomor di riwayat panggilan, akan ada tombol lapor.<br>
 		<br>
 		Nomor tersebut akan dilaporkan ke <b>semua</b> API.<br>
 		<br>
-        <h4><font color="#00BFFF">- Pelaporan Otomatis</font></h4>
-		<font color="#6ED0ff"><b>Penundaan Pelaporan</b></font><br>
-        Ketika sebuah panggilan diblokir, akan ada jeda waktu satu jam sebelum dilaporkan.
-        Jika nomor tersebut diizinkan kemudian karena pengulangan atau dipanggil balik dalam jeda waktu ini,
-        itu dianggap sebagai nomor bukan spam dan pelaporan akan dibatalkan.<br>
+        <h4><font color="#00BFFF">- Pelaporan otomatis</font></h4>
+		<font color="#6ED0ff"><b>Penundaan pelaporan</b></font><br>
+        Ketika panggilan diblokir, akan ada jeda waktu satu jam sebelum dilaporkan.
+        Jika nomor tersebut diizinkan nanti karena panggilan berulang atau dihubungi kembali dalam jeda waktu ini,
+        itu dianggap nomor non-spam dan pelaporan akan dibatalkan.<br>
         <br>
-		<font color="#6ED0ff"><b>Jenis Laporan</b></font><br>
+		<font color="#6ED0ff"><b>Jenis laporan</b></font><br>
 		1. Ini <font color="#fa7f71"><b>tidak akan</b></font> melaporkan:<br>
         <br>
         - <font color="#fa7f71">Nomor atau konten SMS</font><br>
         - <font color="#fa7f71">Nomor yang diizinkan</font><br>
         - <font color="#fa7f71">Pengujian Global</font><br>
-        Dan jenis pemblokiran berikut:<br>
+        Dan jenis yang diblokir berikut:<br>
         - <font color="#fa7f71">Regex Kontak</font><br>
         - <font color="#fa7f71">Regex Grup Kontak</font><br>
         - <font color="#fa7f71">Basis Data</font><br>
@@ -38,17 +38,17 @@
         <br>
 		2. Ini <font color="#03DAC5"><b>akan</b></font> melaporkan nomor yang diblokir oleh:<br>
         <br>
-        - <font color="#03DAC5">Bukan Kontak</font>(eksklusif)<br>
+        - <font color="#03DAC5">Bukan Kontak</font>(Ketrict)<br>
         - <font color="#03DAC5">Atestasi STIR</font><br>
         - <font color="#03DAC5">Regex Nomor</font><br>
         <br>
 		3. Kasus pengecualian:<br>
         <br>
-        - Ketika diblokir oleh <font color="#03DAC5">Kueri Instan</font>, itu akan dilaporkan kembali ke API <b>yang sama</b> untuk meningkatkan skor peringkat nomor tersebut.
-         Misalnya, ketika diblokir oleh kueri API dari check.com, itu hanya akan melaporkan ke check.com, bukan ke others.com. <br>
+        - Ketika diblokir oleh <font color="#03DAC5">Kueri Instan</font>, ini akan dilaporkan kembali ke API yang <b>sama</b> untuk meningkatkan skor peringkat nomor tersebut.
+         Misalnya, ketika diblokir oleh kueri API dari check.com, ini hanya akan melaporkan ke check.com, bukan ke others.com. <br>
 		<br>
-        -  Ketika diblokir oleh <font color="#03DAC5">Basis Data</font> dan catatan awalnya ditambahkan oleh kueri API instan,
-         itu akan dilaporkan hanya ke API <b>yang sama</b> untuk alasan yang sama seperti di atas.<br>
+        -  Ketika diblokir oleh <font color="#03DAC5">Basis Data</font> dan catatan aslinya ditambahkan oleh kueri API instan,
+         ini akan dilaporkan hanya ke API yang <b>sama</b> untuk alasan yang sama seperti di atas.<br>
         ]]>
     </string>
 </resources>

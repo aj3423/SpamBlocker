@@ -102,7 +102,8 @@ fun Contacts() {
                                 PriorityLabel(priLenient)
                             }
                         }
-                    }
+                    },
+                    borderColor = if (isStrict) Salmon else C.textGrey
                 ) {
                     popupTrigger.value = true
                 }

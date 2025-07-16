@@ -181,7 +181,7 @@ class spf { // for namespace only
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_STIR_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_STIR_ENABLED, enabled) }
         fun isStrict() : Boolean { return readBoolean(Def.SETTING_STIR_STRICT, false) }
-        fun setStrict(exclusive: Boolean) { writeBoolean(Def.SETTING_STIR_STRICT, exclusive) }
+        fun setStrict(strict: Boolean) { writeBoolean(Def.SETTING_STIR_STRICT, strict) }
         fun isIncludeUnverified() : Boolean { return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false) }
         fun setIncludeUnverified(include: Boolean) { writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include) }
         fun getLenientPriority() : Int { return readInt(Def.SETTING_STIR_LENIENT_PRIORITY, 10) }
@@ -204,8 +204,8 @@ class spf { // for namespace only
     class Contact(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_CONTACT_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CONTACT_ENABLED, enabled) }
-        fun isStrict() : Boolean { return readBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, false) }
-        fun setStrict(exclusive: Boolean) { writeBoolean(Def.SETTING_CONTACTS_EXCLUSIVE, exclusive) }
+        fun isStrict() : Boolean { return readBoolean(Def.SETTING_CONTACTS_STRICT, false) }
+        fun setStrict(strict: Boolean) { writeBoolean(Def.SETTING_CONTACTS_STRICT, strict) }
         fun getLenientPriority() : Int { return readInt(Def.SETTING_CONTACTS_LENIENT_PRIORITY, 10) }
         fun setLenientPriority(priority : Int) { writeInt(Def.SETTING_CONTACTS_LENIENT_PRIORITY, priority) }
         fun getStrictPriority() : Int { return readInt(Def.SETTING_CONTACTS_STRICT_PRIORITY, 0) }

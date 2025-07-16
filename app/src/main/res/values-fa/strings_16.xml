@@ -1,54 +1,54 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        APIs configured here will be used for both auto-reporting and manual-reporting.<br>
+        APIهای پیکربندی شده در اینجا هم برای گزارش‌دهی خودکار و هم برای گزارش‌دهی دستی استفاده خواهند شد.<br>
         <br>
-        <h4><font color="#00BFFF">- <translate>حریم خصوصی</translate></font></h4>
-        <translate>APIهایی که اینجا پیکربندی شده‌اند موارد زیر را خواهند دید:</translate><br>
+        <h4><font color="#00BFFF">- حریم خصوصی</font></h4>
+        نقاط پایانی API موارد زیر را مشاهده خواهند کرد:<br>
         <br>
-         &ensp; - <translate>آدرس آی‌پی شما</translate><br>
-         &ensp; - <translate>اثر انگشت‌های TLS و TCP (که ممکن است نسخه اندروید شما را فاش کند)</translate><br>
-         &ensp; - <translate>شماره گزارش شده (شامل کد کشور شما)</translate><br>
+         &ensp; - آدرس IP<br>
+         &ensp; - اثر انگشت TLS و TCP (که ممکن است نسخه اندروید شما را فاش کند)<br>
+         &ensp; - شماره گزارش شده (شامل کد کشور شما)<br>
         <br>
-        <translate>هیچ چیز دیگری گزارش نخواهد شد.</translate><br>
+        هیچ چیز دیگری گزارش نخواهد شد.<br>
         <br>
-        <h4><font color="#00BFFF">- <translate>گزارش دستی</translate></font></h4>
-		<translate>اگر هر API اینجا فعال باشد، روی یک شماره در تاریخچه تماس ضربه بزنید، یک دکمه گزارش وجود خواهد داشت.</translate><br>
+        <h4><font color="#00BFFF">- گزارش‌دهی دستی</font></h4>
+		اگر هر API در اینجا فعال باشد، با ضربه زدن روی یک شماره در سابقه تماس، یک دکمه گزارش مشاهده خواهید کرد.<br>
 		<br>
-		<translate>این شماره به </translate><b>all</b><translate> APIها گزارش خواهد شد.</translate><br>
+		شماره به <b>تمام</b> APIها گزارش خواهد شد.<br>
 		<br>
-        <h4><font color="#00BFFF">- <translate>گزارش خودکار</translate></font></h4>
-		<font color="#6ED0ff"><b><translate>تاخیر گزارش</translate></b></font><br>
-        <translate>هنگامی که یک تماس مسدود می‌شود، یک بافر زمانی یک ساعته قبل از گزارش آن وجود خواهد داشت.
-        اگر این شماره بعداً به دلیل تکرار یا تماس مجدد در این بافر زمانی مجاز شود،
-        به عنوان یک شماره غیر اسپم در نظر گرفته می‌شود و گزارش لغو می‌شود.</translate><br>
+        <h4><font color="#00BFFF">- گزارش‌دهی خودکار</font></h4>
+		<font color="#6ED0ff"><b>تاخیر در گزارش</b></font><br>
+        وقتی یک تماس مسدود می‌شود، یک ساعت فرصت (بافر زمانی) قبل از گزارش آن وجود خواهد داشت.
+        اگر شماره بعداً به دلیل تکرار یا شماره‌گیری مجدد در این بافر زمانی مجاز شناخته شود،
+        آن شماره، شماره‌ای غیر اسپم محسوب شده و گزارش‌دهی لغو خواهد شد.<br>
         <br>
-		<font color="#6ED0ff"><b><translate>نوع گزارش</translate></b></font><br>
-		1. <translate>این </translate><font color="#fa7f71"><b>will not</b></font><translate> گزارش:</translate><br>
+		<font color="#6ED0ff"><b>نوع گزارش</b></font><br>
+		1. موارد زیر را <font color="#fa7f71"><b>گزارش نخواهد کرد</b></font>:<br>
         <br>
-        - <font color="#fa7f71"><translate>شماره‌ها یا محتوای پیامک</translate></font><br>
-        - <font color="#fa7f71"><translate>شماره‌های مجاز</translate></font><br>
-        - <font color="#fa7f71"><translate>تست جهانی</translate></font><br>
-        <translate>و انواع مسدود شده زیر:</translate><br>
-        - <font color="#fa7f71"><translate>عبارت با قاعده مخاطب</translate></font><br>
-        - <font color="#fa7f71"><translate>عبارت با قاعده گروه مخاطب</translate></font><br>
-        - <font color="#fa7f71"><translate>پایگاه داده</translate></font><br>
-        - <font color="#fa7f71"><translate>حالت جلسه</translate></font><br>
-        - <font color="#fa7f71"><translate>پرس و جو فوری</translate></font> (<translate>برای جلوگیری از درز شماره API endpoint به سایر رقبا</translate>)<br>
+        - <font color="#fa7f71">شماره‌ها یا محتوای پیامک</font><br>
+        - <font color="#fa7f71">شماره‌های مجاز</font><br>
+        - <font color="#fa7f71">تست جهانی</font><br>
+        و انواع مسدود شده زیر:<br>
+        - <font color="#fa7f71">عبارت منظم مخاطب</font><br>
+        - <font color="#fa7f71">عبارت منظم گروه مخاطب</font><br>
+        - <font color="#fa7f71">پایگاه داده</font><br>
+        - <font color="#fa7f71">حالت جلسه</font><br>
+        - <font color="#fa7f71">جستجوی فوری</font> (برای جلوگیری از فاش شدن شماره نقطه پایانی API به سایر رقبا)<br>
         <br>
-		2. <translate>این </translate><font color="#03DAC5"><b>will</b></font><translate> گزارش شماره‌های مسدود شده توسط:</translate><br>
+		2. شماره‌های مسدود شده توسط موارد زیر را <font color="#03DAC5"><b>گزارش خواهد کرد</b></font>:<br>
         <br>
-        - <font color="#03DAC5"><translate>غیر مخاطب</translate></font>(exclusive)<br>
-        - <font color="#03DAC5"><translate>تایید STIR</translate></font><br>
-        - <font color="#03DAC5"><translate>عبارت با قاعده شماره</translate></font><br>
+        - <font color="#03DAC5">غیر مخاطب</font>(سختگیرانه)<br>
+        - <font color="#03DAC5">تایید STIR</font><br>
+        - <font color="#03DAC5">عبارت منظم شماره</font><br>
         <br>
-		3. <translate>موارد استثنا:</translate><br>
+		3. موارد استثنا:<br>
         <br>
-        - <translate>هنگامی که توسط </translate><font color="#03DAC5"><translate>پرس و جو فوری</translate></font><translate> مسدود می‌شود، به </translate><b>same</b> API <translate>برای افزایش امتیاز رتبه‌بندی شماره گزارش می‌شود.</translate>
-         <translate>به عنوان مثال، هنگامی که توسط پرس و جو API از check.com مسدود می‌شود، فقط به check.com گزارش می‌شود، نه به others.com.</translate> <br>
+        - هنگامی که توسط <font color="#03DAC5">جستجوی فوری</font> مسدود شود، برای افزایش امتیاز رتبه‌بندی شماره، به همان <b>API</b> گزارش داده خواهد شد.
+         برای مثال، وقتی توسط جستجوی API از check.com مسدود شود، فقط به check.com گزارش خواهد شد، نه به others.com. <br>
 		<br>
-        -  <translate>هنگامی که توسط </translate><font color="#03DAC5"><translate>پایگاه داده</translate></font><translate> مسدود می‌شود و رکورد در اصل توسط یک پرس و جو API فوری اضافه شده است،
-         فقط به </translate><b>same</b> API <translate>به همان دلیلی که در بالا ذکر شد، گزارش می‌شود.</translate><br>
+        - هنگامی که توسط <font color="#03DAC5">پایگاه داده</font> مسدود شود و رکورد آن در ابتدا توسط یک جستجوی API فوری اضافه شده باشد،
+         فقط به <b>همان</b> API به همان دلیل بالا گزارش خواهد شد.<br>
         ]]>
     </string>
 </resources>
