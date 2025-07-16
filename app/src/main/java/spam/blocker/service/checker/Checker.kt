@@ -730,7 +730,7 @@ class Checker { // for namespace only
         private val forType: Int, // for call or sms
     ) : IChecker {
         override fun priority(): Int {
-            return -1
+            return spf.ApiQueryOptions(ctx).getPriority()
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
@@ -848,7 +848,7 @@ class Checker { // for namespace only
             return null
         }
 
-        fun preCheck(cCtx: CheckContext): Boolean {
+        fun ifEnabled(cCtx: CheckContext): Boolean {
             // 0. check if the rule is enabled (has FLAG_FOR_CALL for call, or FLAG_FOR_SMS for sms)
             val isForSMS = cCtx.smsContent != null
             if (!rule.flags.hasFlag(if (isForSMS) Def.FLAG_FOR_SMS else Def.FLAG_FOR_CALL)) {
@@ -872,7 +872,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            if (!preCheck(cCtx)) {
+            if (!ifEnabled(cCtx)) {
                 return null
             }
 
@@ -923,7 +923,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            if (!preCheck(cCtx)) {
+            if (!ifEnabled(cCtx)) {
                 return null
             }
 
@@ -976,7 +976,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            if (!preCheck(cCtx)) {
+            if (!ifEnabled(cCtx)) {
                 return null
             }
 
@@ -1022,9 +1022,9 @@ class Checker { // for namespace only
         the number is also checked when "for particular number" is enabled
      */
     class Content(
-        private val ctx: Context,
-        private val rule: RegexRule
-    ) : IChecker {
+        ctx: Context,
+        rule: RegexRule
+    ) : RegexRuleChecker(ctx, rule) {
         override fun priority(): Int {
             return rule.priority
         }
@@ -1033,6 +1033,10 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val smsContent = cCtx.smsContent!!
             val logger = cCtx.logger
+
+            if (!ifEnabled(cCtx)) {
+                return null
+            }
 
             logger?.info(
                 (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")

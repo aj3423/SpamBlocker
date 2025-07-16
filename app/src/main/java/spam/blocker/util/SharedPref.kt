@@ -145,6 +145,8 @@ class spf { // for namespace only
     class ApiQueryOptions(ctx: Context) : SharedPref(ctx) {
         fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_QUERY_LIST_COLLAPSED, false) }
         fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_API_QUERY_LIST_COLLAPSED, enabled) }
+        fun getPriority(): Int { return readInt(Def.SETTING_API_QUERY_PRIORITY, -1) }
+        fun setPriority(priority: Int) { writeInt(Def.SETTING_API_QUERY_PRIORITY, priority) }
     }
     class ApiReportOptions(ctx: Context) : SharedPref(ctx) {
         fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_REPORT_LIST_COLLAPSED, false) }

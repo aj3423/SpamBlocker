@@ -552,11 +552,14 @@ class QuickCopyRules : PatternRules() {
 class ApiQuery : IConfig {
     val apis = mutableListOf<Api>()
     var listCollapsed = false
+    var priority = -1
 
     override fun load(ctx: Context) {
         apis.clear()
         apis.addAll(G.apiQueryVM.table.listAll(ctx))
-        listCollapsed = spf.ApiQueryOptions(ctx).isListCollapsed()
+        val spf = spf.ApiQueryOptions(ctx)
+        listCollapsed = spf.isListCollapsed()
+        priority = spf.getPriority()
     }
 
     override fun apply(ctx: Context) {
@@ -565,7 +568,10 @@ class ApiQuery : IConfig {
         apis.forEach {
             table.addRecordWithId(ctx, it)
         }
-        spf.ApiQueryOptions(ctx).setListCollapsed(listCollapsed)
+        spf.ApiQueryOptions(ctx).apply {
+            setListCollapsed(listCollapsed)
+            setPriority(priority)
+        }
     }
 }
 @Serializable

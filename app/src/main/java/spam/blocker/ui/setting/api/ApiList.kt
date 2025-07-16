@@ -1,9 +1,11 @@
 package spam.blocker.ui.setting.api
 
+import android.hardware.lights.Light
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
@@ -13,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -21,14 +24,19 @@ import spam.blocker.R
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.widgets.ConfigExportDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
+import spam.blocker.ui.widgets.PopupDialog
+import spam.blocker.ui.widgets.PriorityBox
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.spf
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -63,13 +71,34 @@ fun ApiList(vm: ApiViewModel) {
         )
     }
 
+    val spf = spf.ApiQueryOptions(ctx)
+    val priorityTrigger = remember { mutableStateOf(false) }
+    PopupDialog(priorityTrigger) {
+        var apiPriority by remember { mutableIntStateOf(spf.getPriority()) }
+        PriorityBox(apiPriority) { newValue, hasError ->
+            if (!hasError) {
+                apiPriority = newValue!!
+                spf.setPriority(apiPriority)
+            }
+        }
+    }
+
+    // Context Menu
     val contextMenuItems = mutableListOf<IMenuItem>(
+        // Export
         LabelItem(
             label = ctx.getString(R.string.export),
             icon = { GreyIcon20(R.drawable.ic_backup_export) }
         ) {
             exportTrigger.value = true
         },
+        // Priority
+        LabelItem(
+            label = ctx.getString(R.string.priority),
+            icon = { ResIcon(R.drawable.ic_priority, modifier = M.size(18.dp), color = LightMagenta) }
+        ) {
+            priorityTrigger.value = true
+        }
     )
 
     Column(
