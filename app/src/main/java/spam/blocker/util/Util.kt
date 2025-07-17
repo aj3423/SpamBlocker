@@ -766,7 +766,9 @@ object Util {
         )?.use {
             if (it.moveToFirst()) {
                 do {
+                    logi("it: $it")
                     val calledNumber = it.getString(0)
+                    logi("calledNumber: $calledNumber, phoneNumber: $phoneNumber")
                     if (phoneNumber.isSame(calledNumber)) {
                         ret += CallInfo(
                             rawNumber = calledNumber,
