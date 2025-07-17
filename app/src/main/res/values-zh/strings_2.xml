@@ -7,18 +7,18 @@
         <![CDATA[
         允许联系人号码。<br>
         <br>
-        它适用于通话和消息。<br>
+        适用于电话和短信。<br>
         <br>
         <b>选项：</b><br>
         <br>
-        - <b>宽松</b>：<br>
-            &emsp; - 允许联系人号码。<br>
+        - <b>宽松</b>: <br>
+            &emsp; - 联系人号码将被允许。<br>
             &emsp; - 非联系人号码将由其他规则检查。<br>
             &emsp; <font color="#ea86ff"><b>默认优先级：10</b></font> <br>
         <br>
-        - <font color="#fa7f71"><b>严格</b></font>：<br>
-            &emsp; - 允许联系人号码。<br>
-            &emsp; - 非联系人号码将被<font color="#fa7f71"><b>阻止</b></font>。<br>
+        - <font color="#fa7f71"><b>严格</b></font>: <br>
+            &emsp; - 联系人号码将被允许。<br>
+            &emsp; - 非联系人号码将被<font color="#fa7f71"><b>拦截</b></font>。<br>
             &emsp; <font color="#ea86ff"><b>默认优先级：0</b></font> <br>
         ]]>
     </string>
@@ -31,39 +31,40 @@
         <![CDATA[
             STIR/SHAKEN 认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。<br>
             <br>
-            可能有三种认证结果：<br>
+            有三种可能的认证结果：<br>
             <font color="#03DAC5"><b>有效</b></font> <br>
-              &emsp; 该通话很可能是有效的，不是伪造的。<br>
+              &emsp; 该呼叫很可能是有效的，并非伪造。<br>
             <font color="#ffa500"><b>未验证</b></font> <br>
-              &emsp; 该通话无法验证，或不支持 STIR 认证。<br>
+              &emsp; 呼叫无法验证，或不支持 STIR 认证。<br>
             <font color="#fa7f71"><b>伪造</b></font> <br>
-              &emsp; 很可能是伪造的通话。<br>
+              &emsp; 这很可能是一个伪造呼叫。<br>
             <br>
             <br>
             <b>选项：</b><br>
             <br>
-              - <b>宽松</b>：<br>
-                  &emsp; - 通过此检查的通话将被允许。<br>
-                  &emsp; - 未通过此检查的通话仍将由其他规则检查。<br>
-                  &emsp; - 当勾选“<b>包含未验证的</b>”时，如果通话未经验证，它也将通过。<br>
+              - <b>宽松</b>: <br>
+                  &emsp; - <font color="#03DAC5"><b>有效</b></font>呼叫将被允许。<br>
+                  &emsp; - <font color="#fa7f71"><b>伪造</b></font>呼叫仍将由其他规则检查。<br>
+                  &emsp; - 勾选<b>包含未验证</b>时，<font color="#ffa500"><b>未验证</b></font>呼叫也将被允许。<br>
                   &emsp; <font color="#ea86ff"><b>默认优先级：10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>严格</b></font>：<br>
-                  &emsp; - 通过此检查的通话将被允许。<br>
-                  &emsp; - 未通过此检查的通话将被<font color="#fa7f71"><b>阻止</b></font>。<br>
-                  &emsp; - 当勾选“<b>包含未验证的</b>”时，如果通话未经验证，它也将被阻止。<br>
+              - <font color="#fa7f71"><b>严格</b></font>: <br>
+                  &emsp; - <font color="#03DAC5"><b>有效</b></font>呼叫将被允许。<br>
+                  &emsp; - <font color="#fa7f71"><b>伪造</b></font>呼叫将被拦截。<br>
+                  &emsp; - 勾选“<b>包含未验证</b>”时，<font color="#ffa500"><b>未验证</b></font>呼叫也将被拦截。<br>
                   &emsp; <font color="#ea86ff"><b>默认优先级：0</b></font> <br>
             <br>
             <br>
-            一个自定义优先级的<b>用例</b>：<br>
+            自定义优先级的一个<b>用例</b>：<br>
             <br>
             1. 始终允许联系人。<br>
               &emsp; - 联系人(宽松)，优先级 <font color="#ea86ff">12</font> <br>
-            2. 阻止未通过STIR检查的通话，即使它们重复。<br>
+            2. 拦截 STIR 认证失败的呼叫，即使它们是重复呼叫。<br>
               &emsp; - STIR(严格)，优先级 <font color="#ea86ff">11</font> <br>
-            3. 允许重复的通话。<br>
-              &emsp; - 重复通话，优先级 <font color="#ea86ff">10</font> <br>
-        ]]>   </string>
+            3. 允许重复呼叫。<br>
+              &emsp; - 重复呼叫，优先级 <font color="#ea86ff">10</font> <br>
+        ]]>
+    </string>
     <string name="failed_to_import_from_csv">
         <![CDATA[
         .csv 文件中缺少必需的字段 <b>pattern</b>，请查看气球工具提示以获取详细说明。

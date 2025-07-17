@@ -60,23 +60,6 @@ import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
-/*
-  How it works:
-
-- This feature relies on `NotificationListenerService`.
-- In doze mode(screen is off), notifications will not be pushed to `NotificationListenerService`,
- they are cached and will be delivered to the service when the screen is turned on.
-- On an incoming call, the OS invokes `CallScreeningService.onScreenCall()`, which "activates" the app process.
-- This in turn activates the `NotificationListenerService`, the OS will push all cached notifications to it.
-- The execution order of `CallScreeningService` and `NotificationListenerService` is unpredictable, e.g.:
-  1. `NotificationListenerService` receives notification 1
-  2. `CallScreeningService` executes  <----  this blocks the whole process, following steps will not get executed before this returns.
-  3. `NotificationListenerService` receives notification 2, 3...
-
-- To solve this, make `CallScreeningService` asynchronous using a coroutine and delay it by 500ms,
-  so that all notifications would've been processed during this period.
-*/
-
 object PushAlertViewModel {
     val records = mutableStateListOf<PushAlertRecord>()
     val listCollapsed = mutableStateOf(false)

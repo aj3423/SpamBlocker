@@ -108,7 +108,7 @@ class CallScreeningService : CallScreeningService() {
         logi("onScreenCall() invoked by Android")
         // With this coroutine, this function returns immediately without blocking the whole process.
         //   So other services will get executed simultaneously.
-        //   Feature "Push Alert" relies on this, see "PushAlert.kt" for details.
+        //   Feature "Push Alert" relies on this, see "NotificationListenerService.kt" for details.
         CoroutineScope(IO).launch {
             doScreenCall(details)
         }

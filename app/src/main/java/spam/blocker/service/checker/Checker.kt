@@ -653,7 +653,7 @@ class Checker { // for namespace only
             //    5  -> [pkg.a,pkg.c], // 5 is the default duration
             //    20 -> [pkg.b],
             //  }
-            //  So it only queries db for two times: 5 min and 20 min.
+            //  So it only queries db twice: for 5 min and 20 min.
             val aggregation = spf.getList().groupBy {
                 it.duration ?: defaultDuration
             }.mapValues { (_, values) ->
@@ -776,7 +776,7 @@ class Checker { // for namespace only
             }
 
             // Run all apis simultaneously, get the first non-null result, which means "determined",
-            //  and return that result immediately and kill other threads.
+            //  return that result immediately and kill other threads.
             var (winnerApi, result) = race(
                 competitors = apis,
                 timeoutMillis = timeLeft,
@@ -1046,16 +1046,10 @@ class Checker { // for namespace only
                     )
             )
 
-            // 1. check time schedule
-            if (TimeSchedule.dissatisfyNow(rule.schedule)) {
-                logger?.debug(ctx.getString(R.string.outside_time_schedule))
-                return null
-            }
-
-            // 2. check regex
+            // 1. check regex
             val contentMatches = rule.matches(smsContent)
 
-            // 3. check for particular number
+            // 2. check for particular number
             fun particularMatches(): Boolean {
                 if (rule.patternExtra == "") { // "for particular number" is not enabled
                     return true
@@ -1135,7 +1129,7 @@ class Checker { // for namespace only
             )
 
             // Sleep 500ms for the `NotificationListenerService` to process all buffered notifications,
-            //  see "PushAlert.kt" for a detailed explanation.
+            //  see "NotificationListenerService.kt" for a detailed explanation.
             runBlocking(IO) {
                 delay(500)
             }
