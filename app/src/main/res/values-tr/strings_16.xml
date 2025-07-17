@@ -8,47 +8,47 @@
         <br>
          &ensp; - IP adresi<br>
          &ensp; - TLS ve TCP parmak izleri (Android sürümünüzü ortaya çıkarabilir)<br>
-         &ensp; - Bildirilen telefon numarası (ülke kodunuz dahil)<br>
+         &ensp; - Raporlanan numara (ülke kodunuz dahil)<br>
         <br>
         Başka hiçbir şey raporlanmayacaktır.<br>
         <br>
         <h4><font color="#00BFFF">- Manuel raporlama</font></h4>
-		Burada herhangi bir API etkinleştirilirse, arama geçmişinde bir telefon numarasına dokunduğunuzda bir raporlama düğmesi belirecektir.<br>
+		Burada herhangi bir API etkinse, çağrı geçmişindeki bir numaraya dokunun, bir raporlama düğmesi olacaktır.<br>
 		<br>
-		Telefon numarası <b>tüm</b> API\'lere raporlanacaktır.<br>
+		Numara <b>tüm</b> API\'lere raporlanacaktır.<br>
 		<br>
         <h4><font color="#00BFFF">- Otomatik raporlama</font></h4>
 		<font color="#6ED0ff"><b>Raporlama gecikmesi</b></font><br>
-        Bir arama engellendiğinde, raporlanmadan önce bir saatlik bir zaman arabelleği olacaktır.
-        Telefon numarası daha sonra tekrarlar nedeniyle veya bu zaman aralığında geri arandığında izin verilirse,
-        spam olmayan bir telefon numarası olarak kabul edilir ve raporlama iptal edilir.<br>
+        Bir çağrı engellendiğinde, raporlanmadan önce bir saatlik bir zaman arabelleği olacaktır.
+        Eğer numara bu zaman arabelleği içinde tekrarlar nedeniyle veya geri aranarak daha sonra izin verilirse,
+        spam olmayan bir numara olarak kabul edilir ve raporlama iptal edilir.<br>
         <br>
 		<font color="#6ED0ff"><b>Raporlama türü</b></font><br>
 		1. Şunları <font color="#fa7f71"><b>raporlamaz</b></font>:<br>
         <br>
-        - <font color="#fa7f71">SMS telefon numaraları veya içeriği</font><br>
-        - <font color="#fa7f71">İzin verilen telefon numaraları</font><br>
-        - <font color="#fa7f71">Küresel Test</font><br>
+        - <font color="#fa7f71">SMS numaraları veya içeriği</font><br>
+        - <font color="#fa7f71">İzin verilen numaralar</font><br>
+        - <font color="#fa7f71">Test</font><br>
         Ve aşağıdaki engellenen türler:<br>
         - <font color="#fa7f71">Kişi Regex</font><br>
         - <font color="#fa7f71">Kişi Grubu Regex</font><br>
         - <font color="#fa7f71">Veritabanı</font><br>
         - <font color="#fa7f71">Toplantı Modu</font><br>
-        - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının telefon numarasının diğer rakiplere sızdırılmasını önlemek için)<br>
+        - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
         <br>
-		2. Şunlar tarafından engellenen telefon numaralarını <font color="#03DAC5"><b>raporlar</b></font>:<br>
+		2. Şunlar tarafından engellenen numaraları <font color="#03DAC5"><b>raporlar</b></font>:<br>
         <br>
         - <font color="#03DAC5">Kişi Olmayan</font>(Katı)<br>
-        - <font color="#03DAC5">STIR Onayı</font><br>
-        - <font color="#03DAC5">Telefon Numarası Regex</font><br>
+        - <font color="#03DAC5">STIR Doğrulama</font><br>
+        - <font color="#03DAC5">Numara Regex</font><br>
         <br>
 		3. İstisna durumlar:<br>
         <br>
-        - <font color="#03DAC5">Anlık Sorgu</font> ile engellendiğinde, telefon numarasının puanını artırmak için <b>aynı</b> API\'ye geri raporlanacaktır.
-         Örneğin, check.com\'dan gelen API sorgusu ile engellendiğinde, sadece check.com\'a raporlanır, others.com\'a değil. <br>
+        - <font color="#03DAC5">Anlık Sorgu</font> tarafından engellendiğinde, numaranın derecelendirme puanını artırmak için <b>aynı</b> API\'ye geri raporlanacaktır.
+         Örneğin, check.com\'dan gelen API sorgusu tarafından engellendiğinde, yalnızca check.com\'a raporlanır, others.com\'a değil. <br>
 		<br>
-        -  <font color="#03DAC5">Veritabanı</font> ile engellendiğinde ve kayıt başlangıçta bir anlık API sorgusu ile eklendiğinde,
-         yukarıdaki aynı nedenle sadece <b>aynı</b> API\'ye raporlanacaktır.<br>
+        -  <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve kayıt başlangıçta anlık bir API sorgusuyla eklendiğinde,
+         yukarıdaki aynı nedenden dolayı yalnızca <b>aynı</b> API\'ye raporlanacaktır.<br>
         ]]>
     </string>
 </resources>

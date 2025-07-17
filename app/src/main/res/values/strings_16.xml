@@ -28,7 +28,7 @@
         <br>
         - <font color="#fa7f71">SMS numbers or content</font><br>
         - <font color="#fa7f71">Allowed numbers</font><br>
-        - <font color="#fa7f71">Global Testing</font><br>
+        - <font color="#fa7f71">Testing</font><br>
         And following blocked types:<br>
         - <font color="#fa7f71">Contact Regex</font><br>
         - <font color="#fa7f71">Contact Group Regex</font><br>

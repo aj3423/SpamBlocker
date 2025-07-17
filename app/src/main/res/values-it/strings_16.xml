@@ -4,51 +4,51 @@
         Le API configurate qui verranno utilizzate sia per la segnalazione automatica che manuale.<br>
         <br>
         <h4><font color="#00BFFF">- Privacy</font></h4>
-        Gli endpoint delle API vedranno il tuo:<br>
+        Gli endpoint API vedranno il tuo/la tua:<br>
         <br>
-         &ensp; - Indirizzo IP<br>
-         &ensp; - Impronte digitali TLS e TCP (che potrebbero rivelare la tua versione Android)<br>
-         &ensp; - Il numero segnalato (incluso il tuo prefisso internazionale)<br>
+         &ensp; - indirizzo IP<br>
+         &ensp; - impronte digitali TLS e TCP (che potrebbero rivelare la tua versione Android)<br>
+         &ensp; - Il numero di telefono segnalato (incluso il tuo prefisso internazionale)<br>
         <br>
         Nient\'altro verrà segnalato.<br>
         <br>
         <h4><font color="#00BFFF">- Segnalazione manuale</font></h4>
-		Se una qualsiasi API è abilitata qui, tocca un numero nella cronologia chiamate, ci sarà un pulsante di segnalazione.<br>
+		Se qui è abilitata un\'API, tocca un numero di telefono nella cronologia delle chiamate, ci sarà un pulsante di segnalazione.<br>
 		<br>
-		Il numero verrà segnalato a <b>tutte</b> le API.<br>
+		Il numero di telefono verrà segnalato a <b>tutte</b> le API.<br>
 		<br>
         <h4><font color="#00BFFF">- Segnalazione automatica</font></h4>
-		<font color="#6ED0ff"><b>Ritardo di segnalazione</b></font><br>
-        Quando una chiamata è bloccata, ci sarà un buffer di tempo di un\'ora prima che venga segnalata.
-        Se il numero viene successivamente consentito a causa di ripetizioni o richiamato entro questo buffer di tempo,
-        è considerato un numero non spam e la segnalazione verrà annullata.<br>
+		<font color="#6ED0ff"><b>Ritardo segnalazione</b></font><br>
+        Quando una chiamata viene bloccata, ci sarà un intervallo di un\'ora prima che venga segnalata.
+        Se il numero di telefono viene consentito in seguito a causa di ripetizioni o richiamato entro questo intervallo di tempo,
+        è considerato un numero non-spam e la segnalazione verrà annullata.<br>
         <br>
 		<font color="#6ED0ff"><b>Tipo di segnalazione</b></font><br>
 		1. <font color="#fa7f71"><b>Non</b></font> segnalerà:<br>
         <br>
-        - <font color="#fa7f71">Numeri o contenuti SMS</font><br>
-        - <font color="#fa7f71">Numeri consentiti</font><br>
-        - <font color="#fa7f71">Test globale</font><br>
+        - <font color="#fa7f71">Numeri di telefono SMS o contenuti</font><br>
+        - <font color="#fa7f71">Numeri di telefono consentiti</font><br>
+        - <font color="#fa7f71">Test</font><br>
         E i seguenti tipi bloccati:<br>
         - <font color="#fa7f71">Regex Contatto</font><br>
-        - <font color="#fa7f71">Regex Gruppo Contatto</font><br>
+        - <font color="#fa7f71">Regex Gruppo Contatti</font><br>
         - <font color="#fa7f71">Database</font><br>
         - <font color="#fa7f71">Modalità Riunione</font><br>
-        - <font color="#fa7f71">Query Istantanea</font> (per evitare che il numero dell\'endpoint API venga divulgato ad altri concorrenti)<br>
+        - <font color="#fa7f71">Query Istantanea</font> (per impedire che il numero di telefono dell\'endpoint API venga divulgato ad altri concorrenti)<br>
         <br>
-		2. <font color="#03DAC5"><b>Segnalerà</b></font> i numeri bloccati da:<br>
+		2. <font color="#03DAC5"><b>Segnalerà</b></font> i numeri di telefono bloccati da:<br>
         <br>
-        - <font color="#03DAC5">Non-Contatto</font> (Stretto)<br>
+        - <font color="#03DAC5">Non-Contatto</font>(Stretto)<br>
         - <font color="#03DAC5">Attestazione STIR</font><br>
-        - <font color="#03DAC5">Regex Numero</font><br>
+        - <font color="#03DAC5">Regex Numeri di telefono</font><br>
         <br>
-		3. Casi di eccezione:<br>
+		3. Casi eccezionali:<br>
         <br>
-        - Quando è bloccato da <font color="#03DAC5">Query Istantanea</font>, verrà segnalato alla <b>stessa</b> API per aumentare il punteggio di valutazione del numero.
+        - Quando è bloccato da <font color="#03DAC5">Query Istantanea</font>, verrà segnalato alla <b>stessa</b> API per aumentare il punteggio di valutazione del numero di telefono.
          Ad esempio, quando è bloccato da una query API da check.com, segnalerà solo a check.com, non a others.com. <br>
 		<br>
-        -  Quando è bloccato da <font color="#03DAC5">Database</font> e il record è stato originariamente aggiunto da una query API istantanea,
-         verrà segnalato solo alla <b>stessa</b> API per la stessa ragione di cui sopra.<br>
+        - Quando è bloccato da <font color="#03DAC5">Database</font> e il record è stato originariamente aggiunto da una query API istantanea,
+         verrà segnalato solo alla <b>stessa</b> API per lo stesso motivo di cui sopra.<br>
         ]]>
     </string>
 </resources>

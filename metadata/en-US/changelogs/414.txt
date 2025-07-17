@@ -1,0 +1,21 @@
+New:
+- Feature "Answered Numbers"
+  Allow calls that recently answered.
+
+Fix:
+- App crash when receiving MMS without text content
+- SMS rules cannot be disabled
+
+Improvements:
+- Customizable priority for "Contacts", "STIR" and "Instant Query"
+  - Use case:
+    Always allow contacts and block calls that fail STIR or are marked as spam by API, even if they repeat.
+      Contacts(priority 13), STIR/Strict(12), InstantQuery(11) RepeatedCall(10)
+- Prompt to grant all previous permissions after backup restore.
+  (applies only to new backup files)
+- New option "Include SMS" for "Dialed Number" and "Repeated Call" 
+  (previously hardcoded and cannot be disabled)
+- Valid SMS notifications are grouped together.
+
+Changes:
+- "Inclusive/Exclusive" are now "Lenient/Strict".

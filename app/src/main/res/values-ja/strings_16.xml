@@ -1,16 +1,16 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        ここで設定されたAPIは、自動報告と手動報告の両方に使用されます。<br>
+        ここに設定されたAPIは、自動報告と手動報告の両方に使用されます。<br>
         <br>
         <h4><font color="#00BFFF">- プライバシー</font></h4>
-        APIエンドポイントは以下を認識します：<br>
+        APIエンドポイントは以下の情報を取得します。<br>
         <br>
          &ensp; - IPアドレス<br>
-         &ensp; - TLSおよびTCPフィンガープリント（Androidのバージョンが判明する場合があります）<br>
+         &ensp; - TLSおよびTCPフィンガープリント（これによりAndroidのバージョンが判明する場合があります）<br>
          &ensp; - 報告された電話番号（国コードを含む）<br>
         <br>
-        他の何も報告されません。<br>
+        これ以外の情報は報告されません。<br>
         <br>
         <h4><font color="#00BFFF">- 手動報告</font></h4>
 		ここでAPIが有効になっている場合、通話履歴の電話番号をタップすると、報告ボタンが表示されます。<br>
@@ -19,36 +19,32 @@
 		<br>
         <h4><font color="#00BFFF">- 自動報告</font></h4>
 		<font color="#6ED0ff"><b>報告遅延</b></font><br>
-        通話がブロックされた場合、報告されるまでに1時間の時間的猶予があります。
-        この猶予期間内に、繰り返しの着信や折り返しによって電話番号が後で許可された場合、
-        それは迷惑電話ではないと見なされ、報告はキャンセルされます。<br>
+        着信がブロックされた際、報告されるまでに1時間の猶予期間があります。この猶予期間内に、繰り返しの着信や折り返し発信によってその電話番号が許可された場合、迷惑電話ではないと判断され、報告はキャンセルされます。<br>
         <br>
-		<font color="#6ED0ff"><b>報告タイプ</b></font><br>
-		1. 以下は<font color="#fa7f71"><b>報告されません</b></font>：<br>
+		<font color="#6ED0ff"><b>報告の種類</b></font><br>
+		1. 以下の情報は<font color="#fa7f71"><b>報告されません</b></font>:<br>
         <br>
-        - <font color="#fa7f71">SMS電話番号またはコンテンツ</font><br>
+        - <font color="#fa7f71">SMSの電話番号または内容</font><br>
         - <font color="#fa7f71">許可された電話番号</font><br>
-        - <font color="#fa7f71">グローバルテスト</font><br>
-        および以下のブロックされたタイプ：<br>
+        - <font color="#fa7f71">テスト</font><br>
+        および以下のブロックされた種類:<br>
         - <font color="#fa7f71">連絡先正規表現</font><br>
         - <font color="#fa7f71">連絡先グループ正規表現</font><br>
         - <font color="#fa7f71">データベース</font><br>
         - <font color="#fa7f71">会議モード</font><br>
         - <font color="#fa7f71">インスタントクエリ</font>（APIエンドポイントの電話番号が他の競合他社に漏洩するのを防ぐため）<br>
         <br>
-		2. 以下によってブロックされた電話番号は<font color="#03DAC5"><b>報告されます</b></font>：<br>
+		2. 以下の方法でブロックされた電話番号は<font color="#03DAC5"><b>報告されます</b></font>:<br>
         <br>
-        - <font color="#03DAC5">非連絡先</font>（厳格）<br>
-        - <font color="#03DAC5">STIR認証</font><br>
+        - <font color="#03DAC5">非連絡先</font>(厳格)<br>
+        - <font color="#03DAC5">STIRアテステーション</font><br>
         - <font color="#03DAC5">電話番号正規表現</font><br>
         <br>
-		3. 例外ケース：<br>
+		3. 例外:<br>
         <br>
-        - <font color="#03DAC5">インスタントクエリ</font>によってブロックされた場合、その電話番号の評価スコアを上げるために、<b>同じ</b>APIに報告されます。
-         例えば、check.comからのAPIクエリによってブロックされた場合、check.comにのみ報告され、others.comには報告されません。<br>
+        - <font color="#03DAC5">インスタントクエリ</font>によってブロックされた場合、その電話番号の評価スコアを上げるために<b>同じ</b>APIに報告されます。例えば、check.comからのAPIクエリによってブロックされた場合、others.comではなくcheck.comにのみ報告されます。<br>
 		<br>
-        -  <font color="#03DAC5">データベース</font>によってブロックされ、その記録が元々インスタントAPIクエリによって追加された場合、
-         上記と同じ理由で<b>同じ</b>APIにのみ報告されます。<br>
+        -  <font color="#03DAC5">データベース</font>によってブロックされ、その記録が元々インスタントAPIクエリによって追加されたものである場合、上記と同じ理由で<b>同じ</b>APIにのみ報告されます。<br>
         ]]>
     </string>
 </resources>
