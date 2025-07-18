@@ -767,15 +767,18 @@ object Util {
             if (it.moveToFirst()) {
                 do {
                     logi("it: $it")
-                    val calledNumber = it?.getString(0)
+                    val calledNumber = it.getString(0)
                     logi("calledNumber: $calledNumber, phoneNumber: $phoneNumber")
-//                    if (phoneNumber.isSame(calledNumber)) {
-//                        ret += CallInfo(
-//                            rawNumber = calledNumber,
-//                            type = it.getInt(1),
-//                            duration = it.getLong(2)
-//                        )
-//                    }
+                    if (phoneNumber.isSame(calledNumber)) {
+                        logi("isSame")
+                        ret += CallInfo(
+                            rawNumber = calledNumber,
+                            type = it.getInt(1),
+                            duration = it.getLong(2)
+                        )
+                    } else {
+                        logi("not the same")
+                    }
                 } while (it.moveToNext())
             }
         }
