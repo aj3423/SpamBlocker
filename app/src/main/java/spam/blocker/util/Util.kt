@@ -24,6 +24,7 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
+import androidx.core.database.getStringOrNull
 import kotlinx.serialization.json.Json
 import org.json.JSONArray
 import org.json.JSONObject
@@ -766,13 +767,15 @@ object Util {
         )?.use {
             if (it.moveToFirst()) {
                 do {
-                    val calledNumber = it.getString(0)
-                    if (phoneNumber.isSame(calledNumber)) {
-                        ret += CallInfo(
-                            rawNumber = calledNumber,
-                            type = it.getInt(1),
-                            duration = it.getLong(2)
-                        )
+                    val calledNumber = it.getStringOrNull(0)
+                    if (calledNumber != null) {
+                        if (phoneNumber.isSame(calledNumber)) {
+                            ret += CallInfo(
+                                rawNumber = calledNumber,
+                                type = it.getInt(1),
+                                duration = it.getLong(2)
+                            )
+                        }
                     }
                 } while (it.moveToNext())
             }
