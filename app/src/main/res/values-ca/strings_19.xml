@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Esdeveniment de Trucada</string>
+    <string name="call_event_is_triggered">L\'esdeveniment de trucada %s s\'ha activat.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Preprocessa el número de trucada entrant abans que sigui comprovat per les regles, fent possible modificar les regles al moment.<br>
+        <br>
+        Aquesta acció ha de ser la primera del flux de treball; un flux de treball com aquest s\'activarà automàticament amb una trucada entrant.<br>
+        <br>
+        <font color="#00BFFF"><b>Configuració típica d\'un flux de treball:</b></font><br>
+        - <b>Esdeveniment de Trucada</b> <br>
+        - <b>Modificar Número</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Modificar Número</string>
+    <string name="modify_number_template">El número entrant %s ha estat modificat a %s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Modifica el número de trucada entrant abans que sigui comprovat per les regles.<br>
+        <br>
+        <font color="#00BFFF"><b>Un cas d\'ús</b>:</font><br>
+        &ensp; Alguns operadors de xarxa mòbil admeten números duals per a la mateixa targeta SIM, afegint dígits inicials addicionals al número secundari.<br>
+        &ensp;   Per exemple: 3312345679 pot convertir-se en <font color="#888888">123</font>3312345679. <br>
+        &ensp; El <font color="#888888">123</font> inicial s\'ha d\'eliminar abans de ser comprovat. <br>
+        <br>
+        <font color="#00BFFF"><b>Una configuració típica:</b></font> <br>
+        - <b>Esdeveniment de Trucada</b> <br>
+        - <b>Substituir Número</b> <br>
+        &emsp; de: <font color="#888888">^123</font> <br>
+        &emsp; a: <font color="#888888">deixar buit</fonts> <br>
+        ]]>
+    </string>
+</resources>

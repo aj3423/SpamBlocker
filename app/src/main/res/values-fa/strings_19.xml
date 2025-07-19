@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">رویداد تماس</string>
+    <string name="call_event_is_triggered">رویداد تماس %s فعال شد.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        شماره ورودی را قبل از اینکه توسط قوانین بررسی شود، پیش‌پردازش می‌کند و امکان تغییر قوانین را در لحظه فراهم می‌آورد.<br>
+        <br>
+        این عمل باید اولین مورد در گردش کار باشد؛ چنین گردش کاری به‌طور خودکار با تماس ورودی فعال می‌شود.<br>
+        <br>
+        <font color="#00BFFF"><b>یک تنظیمات گردش کار معمول:</b></font><br>
+        - <b>رویداد تماس</b> <br>
+        - <b>تغییر شماره</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">تغییر شماره</string>
+    <string name="modify_number_template">شماره ورودی %s به %s تغییر یافت.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        شماره تماس ورودی را قبل از اینکه توسط قوانین بررسی شود، تغییر دهید.<br>
+        <br>
+        <font color="#00BFFF"><b>یک مورد استفاده</b>:</font><br>
+        &ensp; برخی از اپراتورهای شبکه تلفن همراه از دو شماره برای یک سیم‌کارت پشتیبانی می‌کنند؛ آن‌ها ارقام پیشرو اضافی را به شماره ثانویه اضافه می‌کنند.<br>
+        &ensp;   به عنوان مثال: 3312345679 ممکن است به <font color="#888888">123</font>3312345679 تبدیل شود. <br>
+        &ensp; <font color="#888888">123</font> پیشرو باید قبل از بررسی حذف شود. <br>
+        <br>
+        <font color="#00BFFF"><b>یک تنظیمات معمول:</b></font> <br>
+        - <b>رویداد تماس</b> <br>
+        - <b>جایگزینی شماره</b> <br>
+        &emsp; از: <font color="#888888">^123</font> <br>
+        &emsp; به: <font color="#888888">خالی بگذارید</fonts> <br>
+        ]]>
+    </string>
+</resources>

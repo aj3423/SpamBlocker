@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.quick
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -17,7 +16,6 @@ import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PluralStr
 import spam.blocker.ui.widgets.PopupDialog
-import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper

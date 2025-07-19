@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Anrufereignis</string>
+    <string name="call_event_is_triggered">Anrufereignis %s wird ausgelöst.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Verarbeiten Sie die eingehende Nummer vorab, bevor sie von den Regeln überprüft wird, was es ermöglicht, Regeln spontan zu ändern.<br>
+        <br>
+        Diese Aktion muss die erste im Workflow sein; ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
+        <br>
+        <font color="#00BFFF"><b>Ein typischer Workflow-Aufbau:</b></font><br>
+        - <b>Anrufereignis</b> <br>
+        - <b>Nummer ändern</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Nummer ändern</string>
+    <string name="modify_number_template">Die eingehende Nummer %s wird zu %s geändert.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Ändern Sie die eingehende Anrufnummer, bevor sie von den Regeln überprüft wird.<br>
+        <br>
+        <font color="#00BFFF"><b>Ein Anwendungsfall</b>:</font><br>
+        &ensp; Einige Mobilfunkanbieter unterstützen Dual-Nummern für dieselbe SIM-Karte; sie fügen der sekundären Nummer zusätzliche führende Ziffern hinzu.<br>
+        &ensp;   Zum Beispiel: 3312345679 kann zu <font color="#888888">123</font>3312345679 werden. <br>
+        &ensp; Die führende <font color="#888888">123</font> muss entfernt werden, bevor sie überprüft wird. <br>
+        <br>
+        <font color="#00BFFF"><b>Ein typischer Aufbau:</b></font> <br>
+        - <b>Anrufereignis</b> <br>
+        - <b>Nummer ersetzen</b> <br>
+        &emsp; von: <font color="#888888">^123</font> <br>
+        &emsp; zu: <font color="#888888">leer lassen</fonts> <br>
+        ]]>
+    </string>
+</resources>

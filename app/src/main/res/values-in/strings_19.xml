@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Peristiwa Panggilan</string>
+    <string name="call_event_is_triggered">Peristiwa panggilan %s dipicu.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Pra-proses nomor telepon masuk sebelum diperiksa oleh aturan, sehingga memungkinkan untuk memodifikasi aturan dengan cepat.<br>
+        <br>
+        Tindakan ini harus menjadi yang pertama dalam alur kerja, alur kerja semacam itu akan secara otomatis dipicu oleh panggilan masuk.<br>
+        <br>
+        <font color="#00BFFF"><b>Pengaturan alur kerja umum:</b></font><br>
+        - <b>Peristiwa Panggilan</b> <br>
+        - <b>Modifikasi Nomor Telepon</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Modifikasi Nomor Telepon</string>
+    <string name="modify_number_template">Nomor telepon masuk %s dimodifikasi menjadi %s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Modifikasi nomor telepon panggilan masuk sebelum diperiksa oleh aturan.<br>
+        <br>
+        <font color="#00BFFF"><b>Kasus penggunaan</b>:</font><br>
+        &ensp; Beberapa operator jaringan seluler mendukung dua nomor telepon untuk kartu SIM yang sama, mereka menambahkan digit awal tambahan ke nomor telepon sekunder.<br>
+        &ensp;   Contoh: 3312345679 dapat menjadi <font color="#888888">123</font>3312345679. <br>
+        &ensp; Angka awal <font color="#888888">123</font> perlu dihapus sebelum diperiksa. <br>
+        <br>
+        <font color="#00BFFF"><b>Pengaturan umum:</b></font> <br>
+        - <b>Peristiwa Panggilan</b> <br>
+        - <b>Ganti Nomor Telepon</b> <br>
+        &emsp; dari: <font color="#888888">^123</font> <br>
+        &emsp; ke: <font color="#888888">biarkan kosong</fonts> <br>
+        ]]>
+    </string>
+</resources>

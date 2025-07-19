@@ -1,19 +1,19 @@
 <resources>
     <string name="auto_copy">Cópia Automática</string>
-    <string name="help_auto_copy">Copia automaticamente o conteúdo para a área de transferência sem a necessidade de tocar no botão "Copiar" na notificação.</string>
+    <string name="help_auto_copy">Copia automaticamente o conteúdo para a área de transferência sem a necessidade de tocar no botão \"Copiar\" na notificação.</string>
     <string name="calendar_event">Evento de Calendário</string>
     <string name="event_title">Título do Evento</string>
-    <string name="rule_updated_temporarily">A regra de Regex %s é temporariamente modificada devido ao evento de calendário %s: %s</string>
+    <string name="rule_updated_temporarily">Regra de Regex %s foi temporariamente modificada para: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporariamente regras com base em eventos de calendário, as alterações são aplicadas temporariamente sem alterar a configuração.<br>
+        Modifica temporariamente regras com base em eventos de calendário; as alterações são aplicadas temporariamente sem alterar a configuração.<br>
         <br>
         Esta ação deve ser a primeira no fluxo de trabalho; tal fluxo de trabalho será acionado automaticamente por uma chamada recebida.<br>
         <br>
         <b>Um caso de uso</b>:<br>
         &ensp; <font color="#888888">Um trabalhador de turnos trabalha no turno diurno das 7h às 10h por dois dias,
-          e depois no turno noturno das 19h às 22h pelos próximos dois dias.<br>
-        &ensp; Algumas regras devem ser desabilitadas ou habilitadas durante o horário de trabalho.</font><<br>
+          depois no turno noturno das 19h às 22h pelos próximos dois dias.<br>
+        &ensp; Algumas regras devem ser desativadas ou ativadas durante o horário de trabalho.</font><<br>
         <br>
         Uma configuração de exemplo:<br>
         - <b>1</b>. No aplicativo de calendário, crie eventos de calendário <font color="#888888">trabalho</font> para todos os horários de trabalho.<br>
@@ -25,7 +25,7 @@
         &ensp; - <b>Encontrar Regras</b><br>
          &emsp;&emsp; descrição: <font color="#888888">trabalhando</font><br>
         &ensp; - <b>Modificar Regras</b><br>
-         &emsp;&emsp; config: <font color="#888888">{ "flags": 0 }</font> (isso desativará a regra)<br>
+         &emsp;&emsp; configuração: <font color="#888888">{ \"flags\": 0 }</font> (isso desativará a regra)<br>
         <br>
         &ensp; (Suporta múltiplas ações <b>Encontrar Regras</b> e <b>Modificar Regras</b> aqui)<br>
         ]]>
@@ -84,4 +84,6 @@
     <string name="answered_warning">Não ative este recurso para idosos ou qualquer pessoa menos capaz de identificar chamadas fraudulentas, pois isso pode expô-los a chamadas fraudulentas repetidas.</string>
     <string name="acknowledged">Reconhecido</string>
     <string name="warning">Aviso</string>
+    <string name="calendar_event_is_triggered">O evento de calendário %s foi acionado.</string>
+    <string name="rule_updated">Regra Regex %s foi modificada para: %s</string>
 </resources>

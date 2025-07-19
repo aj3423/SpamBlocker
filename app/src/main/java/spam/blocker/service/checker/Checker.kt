@@ -9,8 +9,6 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.encodeToString
-import org.json.JSONObject
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
@@ -28,13 +26,14 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
-import spam.blocker.service.bot.FindRules
+import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
-import spam.blocker.service.bot.ModifyRules
+import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.executeAll
-import spam.blocker.service.checker.Checker.CalendarEventForwardCheck
-import spam.blocker.ui.theme.DimGrey
+import spam.blocker.service.checker.Checker.CalendarEventPreprocessor
+import spam.blocker.service.checker.Checker.CallPreprocessor
+import spam.blocker.service.checker.Checker.SmsPreprocessor
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
@@ -45,7 +44,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
-import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PhoneNumber
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
@@ -60,10 +58,9 @@ import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
-import spam.blocker.util.toMap
 
 class CheckContext(
-    val rawNumber: String,
+    var rawNumber: String,
     val callDetails: Call.Details? = null,
     val smsContent: String? = null,
     val logger: ILogger? = null,
@@ -92,11 +89,32 @@ fun RegexRule.toNumberChecker(
 
 // These classes are also `IChecker`, will be added to the checkers list. But they have
 //  higher priorities and will get executed before other checkers. In this way, they can
-//  temporary modify other checkers, e.g.: disable a regex rule.
-object ForwardCheckers {
+//  temporary modify other checkers, e.g.: disable a regex rule on the fly.
+object Preprocessors {
+    fun call(ctx: Context): List<CallPreprocessor> {
+        return BotTable.listAll(ctx)
+            .filter {
+                val firstAction = it.actions.firstOrNull()
+                firstAction is CallEvent && firstAction.isActivated()
+            }
+            .map {
+                CallPreprocessor(ctx, it)
+            }
+    }
+
+    fun sms(ctx: Context): List<SmsPreprocessor> {
+        return BotTable.listAll(ctx)
+            .filter {
+                val firstAction = it.actions.firstOrNull()
+                firstAction is SmsEvent && firstAction.isActivated()
+            }
+            .map {
+                SmsPreprocessor(ctx, it)
+            }
+    }
 
     // Return a list of workflows that match currently ongoing calendar events.
-    fun allCalendarEvent(ctx: Context): List<CalendarEventForwardCheck> {
+    fun calendarEvent(ctx: Context): List<CalendarEventPreprocessor> {
         val bots = BotTable.listAll(ctx).filter {
             val firstAction = it.actions.firstOrNull()
             firstAction is CalendarEvent && firstAction.isActivated()
@@ -108,7 +126,7 @@ object ForwardCheckers {
         if (ongoingEvents.isEmpty()) // No calendar event currently occurring
             return listOf()
 
-        var ret = mutableListOf<CalendarEventForwardCheck>()
+        var ret = mutableListOf<CalendarEventPreprocessor>()
 
         ongoingEvents.forEach { eventTitle ->
             ret += bots
@@ -118,7 +136,7 @@ object ForwardCheckers {
                     ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
                 }
                 .map {
-                    CalendarEventForwardCheck(ctx, it, eventTitle)
+                    CalendarEventPreprocessor(ctx, it, eventTitle)
                 }
         }
         return ret
@@ -139,7 +157,7 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
             val callDetails = cCtx.callDetails
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.emergency_call).A(SkyBlue),
@@ -181,7 +199,7 @@ class Checker { // for namespace only
 
             val logger = cCtx.logger
             val callDetails = cCtx.callDetails
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.emergency_situation).A(SkyBlue),
@@ -235,7 +253,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled())
                 return null
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.stir_attestation).A(SkyBlue),
@@ -305,7 +323,7 @@ class Checker { // for namespace only
             if (!enabled)
                 return null
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.database).A(SkyBlue),
@@ -349,7 +367,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled() or !Permission.contacts.isGranted) {
                 return null
             }
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.contacts).A(SkyBlue),
@@ -398,7 +416,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled() || (!canReadCalls && !canReadSMSs)) {
                 return null
             }
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.repeated_call).A(SkyBlue),
@@ -484,7 +502,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled())
                 return null
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.dialed_number).A(SkyBlue),
@@ -541,7 +559,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled())
                 return null
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.answered_number).A(SkyBlue),
@@ -591,7 +609,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled()) {
                 return null
             }
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.off_time).A(SkyBlue),
@@ -634,7 +652,7 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.recent_apps).A(SkyBlue),
@@ -688,7 +706,7 @@ class Checker { // for namespace only
         override fun check(cCtx: CheckContext): ICheckResult? {
             val logger = cCtx.logger
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.in_meeting).A(SkyBlue),
@@ -751,7 +769,7 @@ class Checker { // for namespace only
             if (apis.isEmpty())
                 return null
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.instant_query).A(SkyBlue),
@@ -876,7 +894,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(
+            logger?.debug(
                 (ctx.getString(R.string.checking_template)+ ": %s")
                     .formatAnnotated(
                         ctx.getString(R.string.number_rule).A(SkyBlue),
@@ -927,7 +945,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(
+            logger?.debug(
                 (ctx.getString(R.string.checking_template) + ": ${rule.summary()}")
                     .formatAnnotated(
                         ctx.getString(R.string.contact_rule).A(SkyBlue),
@@ -980,7 +998,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(
+            logger?.debug(
                 (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")
                     .formatAnnotated(
                         ctx.getString(R.string.contact_group).A(SkyBlue),
@@ -1038,7 +1056,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            logger?.info(
+            logger?.debug(
                 (ctx.getString(R.string.checking_template)+ ": ${rule.summary()}")
                     .formatAnnotated(
                         ctx.getString(R.string.content_rule).A(SkyBlue),
@@ -1120,7 +1138,7 @@ class Checker { // for namespace only
 
             val logger = cCtx.logger
 
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.push_alert).A(SkyBlue),
@@ -1171,7 +1189,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled()) {
                 return null
             }
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.sms_alert).A(SkyBlue),
@@ -1210,7 +1228,7 @@ class Checker { // for namespace only
             if (!spf.isEnabled()) {
                 return null
             }
-            logger?.info(
+            logger?.debug(
                 ctx.getString(R.string.checking_template)
                     .formatAnnotated(
                         ctx.getString(R.string.sms_bomb).A(SkyBlue),
@@ -1257,66 +1275,74 @@ class Checker { // for namespace only
     // This will be executed before other checkers, it modifies other rules before they are executed.
     // For example, if there's a calendar event "work"(7am-7pm) and currently it's 8am, the event is
     //  ongoing, so it will run actions like `Modify Rules`.
-    class CalendarEventForwardCheck(
-        private val ctx: Context,
-        private val bot: Bot,
-        private val eventTitle: String,
-    ) : IChecker {
+    open class Preprocessor : IChecker {
         override fun priority(): Int {
-            return Int.MAX_VALUE
+            return Int.MAX_VALUE - 1
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
-            val logger = cCtx.logger
+            return null
+        }
+    }
+    class CalendarEventPreprocessor(
+        private val ctx: Context,
+        private val bot: Bot,
+        private val eventTitle: String,
+    ) : Preprocessor() {
 
-            val actions = bot.actions
-
-            var i = 1 // skip the first action CalendarEvent
-            while (i in actions.indices) {
-                // FindRules + ModifyRules
-                if (actions[i] is FindRules && actions.getOrNull(i+1) is ModifyRules) {
-                    val find = actions[i] as FindRules
-                    val modify = actions[i+1] as ModifyRules
-
-                    cCtx.checkers
-                        // Keep all that rule.description matches FindRules.pattern
-                        .filter {
-                            it is RegexRuleChecker &&
-                                    find.pattern.regexMatches(it.rule.description, find.flags)
-                        }
-                        // Modify each rule with ModifyRules
-                        .forEach {
-                            val rule = (it as RegexRuleChecker).rule
-
-                            val mapConfig = JSONObject(modify.config).toMap()
-
-                            val strOrigin = PermissiveJson.encodeToString(rule)
-                            val mapOrigin = JSONObject(strOrigin).toMap()
-
-                            val mapModified = mapOrigin + mapConfig // override with mapModify
-
-                            val newRule =
-                                PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
-
-                            logger?.warn(
-                                ctx.getString(R.string.rule_updated_temporarily)
-                                    .formatAnnotated(
-                                        rule.description.A(SkyBlue),
-                                        eventTitle.A(SkyBlue),
-                                        modify.config.A(DimGrey)
-                                    )
-                            )
-                            it.rule = newRule
-                        }
-                    i++
-                }
-                i++
-            }
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val aCtx = ActionContext(
+                logger = cCtx.logger,
+                rawNumber = cCtx.rawNumber,
+                smsContent = cCtx.smsContent,
+                cCtx = cCtx,
+                isInMemory = true,
+            )
+            bot.actions.executeAll(ctx, aCtx)
 
             // this is not a checker, it's just a pre-processor, always return null
             return null
         }
     }
+
+    // This will be executed before other checkers, it modifies the incoming number before it's checked.
+    class CallPreprocessor(
+        private val ctx: Context,
+        private val bot: Bot,
+    ) : Preprocessor() {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val aCtx = ActionContext(
+                logger = cCtx.logger,
+                rawNumber = cCtx.rawNumber,
+                smsContent = cCtx.smsContent,
+                cCtx = cCtx,
+            )
+            bot.actions.executeAll(ctx, aCtx)
+
+            // this is not a checker, it's just a pre-processor, always return null
+            return null
+        }
+    }
+
+    // This will be executed before other checkers, it modifies the incoming number before it's checked.
+    class SmsPreprocessor(
+        private val ctx: Context,
+        private val bot: Bot,
+    ) : Preprocessor() {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val aCtx = ActionContext(
+                logger = cCtx.logger,
+                rawNumber = cCtx.rawNumber,
+                smsContent = cCtx.smsContent,
+                cCtx = cCtx,
+            )
+            bot.actions.executeAll(ctx, aCtx)
+
+            // this is not a checker, it's just a pre-processor, always return null
+            return null
+        }
+    }
+
 
     companion object {
 
@@ -1384,8 +1410,9 @@ class Checker { // for namespace only
                 it.toNumberChecker(ctx)
             }
 
-            // Add all forward checkers
-            checkers += ForwardCheckers.allCalendarEvent(ctx)
+            // Add all pre-processors
+            checkers += Preprocessors.calendarEvent(ctx)
+            checkers += Preprocessors.call(ctx)
 
             return checkCallWithCheckers(
                 ctx, logger, rawNumber, callDetails, checkers)
@@ -1453,8 +1480,9 @@ class Checker { // for namespace only
                 Content(ctx, it)
             }
 
-            // Add all forward checkers
-            checkers += ForwardCheckers.allCalendarEvent(ctx)
+            // Add all pre-processors
+            checkers += Preprocessors.calendarEvent(ctx)
+            checkers += Preprocessors.sms(ctx)
 
             return checkSmsWithCheckers(
                 ctx, logger, rawNumber, messageBody, checkers

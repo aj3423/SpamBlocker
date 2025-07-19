@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">حدث المكالمة</string>
+    <string name="call_event_is_triggered">حدث المكالمة %s تم تشغيله.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        معالجة الرقم الوارد مسبقًا قبل التحقق منه بواسطة القواعد، مما يتيح إمكانية تعديل القواعد أثناء التنفيذ.<br>
+        <br>
+        يجب أن يكون هذا الإجراء هو الأول في سير العمل، وسيتم تشغيل سير العمل هذا تلقائيًا بواسطة مكالمة واردة.<br>
+        <br>
+        <font color="#00BFFF"><b>إعداد سير عمل نموذجي:</b></font><br>
+        - <b>حدث المكالمة</b> <br>
+        - <b>تعديل الرقم</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">تعديل الرقم</string>
+    <string name="modify_number_template">تم تعديل الرقم الوارد %s إلى %s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        تعديل رقم المكالمة الواردة قبل التحقق منه بواسطة القواعد.<br>
+        <br>
+        <font color="#00BFFF"><b>حالة استخدام</b>:</font><br>
+        &ensp; يدعم بعض مشغلي شبكات الهاتف المحمول الأرقام المزدوجة لنفس بطاقة SIM، حيث يضيفون أرقامًا بادئة إضافية إلى الرقم الثانوي.<br>
+        &ensp;   على سبيل المثال: 3312345679 قد يصبح <font color="#888888">123</font>3312345679. <br>
+        &ensp; يجب إزالة البادئة <font color="#888888">123</font> قبل التحقق منها. <br>
+        <br>
+        <font color="#00BFFF"><b>إعداد نموذجي:</b></font> <br>
+        - <b>حدث المكالمة</b> <br>
+        - <b>استبدال الرقم</b> <br>
+        &emsp; من: <font color="#888888">^123</font> <br>
+        &emsp; إلى: <font color="#888888">اتركه فارغًا</fonts> <br>
+        ]]>
+    </string>
+</resources>

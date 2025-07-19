@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Call Event</string>
+    <string name="call_event_is_triggered">Call event %s is triggered.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Preprocess the incoming number before it\'s checked by the rules, making it possible to modify rules on the fly.<br>
+        <br>
+        This action must be the first one in the workflow, such a workflow will be automatically triggered by an incoming call.<br>
+        <br>
+        <font color="#00BFFF"><b>A typical workflow setup:</b></font><br>
+        - <b>Call Event</b> <br>
+        - <b>Modify Number</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Modify Number</string>
+    <string name="modify_number_template">The incoming number %s is modified to %s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Modify the incoming call number before it\'s checked by the rules.<br>
+        <br>
+        <font color="#00BFFF"><b>A use case</b>:</font><br>
+        &ensp; Some mobile network operators support dual numbers for the same SIM card, they add extra leading digits to the secondary number.<br>
+        &ensp;   For example: 3312345679 may become <font color="#888888">123</font>3312345679. <br>
+        &ensp; The leading <font color="#888888">123</font> needs to be removed before it\'s checked. <br>
+        <br>
+        <font color="#00BFFF"><b>A typical setup:</b></font> <br>
+        - <b>Call Event</b> <br>
+        - <b>Replace Number</b> <br>
+        &emsp; from: <font color="#888888">^123</font> <br>
+        &emsp; to: <font color="#888888">leave as empty</fonts> <br>
+        ]]>
+    </string>
+</resources>

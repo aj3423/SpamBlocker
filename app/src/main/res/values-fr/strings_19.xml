@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Événement d\'appel</string>
+    <string name="call_event_is_triggered">L\'événement d\'appel %s est déclenché.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Traiter le numéro d\'appel entrant avant qu\'il ne soit vérifié par les règles, rendant possible la modification des règles à la volée.<br>
+        <br>
+        Cette action doit être la première du flux de travail, un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
+        <br>
+        <font color="#00BFFF"><b>Configuration typique du flux de travail :</b></font><br>
+        - <b>Événement d\'appel</b> <br>
+        - <b>Modifier le numéro</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Modifier le numéro</string>
+    <string name="modify_number_template">Le numéro entrant %s est modifié en %s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Modifier le numéro d\'appel entrant avant qu\'il ne soit vérifié par les règles.<br>
+        <br>
+        <font color="#00BFFF"><b>Un cas d\'utilisation</b> :</font><br>
+        &ensp; Certains opérateurs de réseau mobile prennent en charge les numéros doubles pour la même carte SIM, ils ajoutent des chiffres supplémentaires au début du numéro secondaire.<br>
+        &ensp;   Par exemple : 3312345679 peut devenir <font color="#888888">123</font>3312345679. <br>
+        &ensp; Le préfixe <font color="#888888">123</font> doit être supprimé avant la vérification. <br>
+        <br>
+        <font color="#00BFFF"><b>Configuration typique :</b></font> <br>
+        - <b>Événement d\'appel</b> <br>
+        - <b>Remplacer le numéro</b> <br>
+        &emsp; de : <font color="#888888">^123</font> <br>
+        &emsp; à : <font color="#888888">laisser vide</fonts> <br>
+        ]]>
+    </string>
+</resources>

@@ -44,9 +44,12 @@ import spam.blocker.db.listReportableAPIs
 import spam.blocker.db.reScheduleBot
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
+import spam.blocker.service.checker.Checker
+import spam.blocker.service.checker.Checker.RegexRuleChecker
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
+import spam.blocker.ui.theme.DimGrey
 import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Pink80
@@ -92,6 +95,7 @@ import spam.blocker.util.httpRequest
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
+import spam.blocker.util.regexReplace
 import spam.blocker.util.resolveBase64Tag
 import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
@@ -1346,7 +1350,33 @@ class FindRules(
     var flags: Int = Def.DefaultRegexFlags,
 ) : IPermissiveAction {
 
+    // This is used in CalendarPreprocessor.
+    // Rules have been loaded into memory as List<Checker.RegexRule>
+    fun findInMemory(ctx: Context, aCtx: ActionContext) : Boolean {
+        val cCtx = aCtx.cCtx!!
+
+        val map = listOf(
+            Def.ForNumber, Def.ForSms,
+        ).associateWith { type ->
+            cCtx.checkers.filter {
+                if (type == Def.ForNumber)
+                    it is RegexRuleChecker && it !is Checker.Content
+                else
+                    it is Checker.Content
+            }.map {
+                (it as RegexRuleChecker).rule
+            }
+        }
+
+        aCtx.lastOutput = map
+
+        return true
+    }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (aCtx.isInMemory) {
+            return findInMemory(ctx, aCtx)
+        }
+
         // foundPair is Pair<tableIndex, List<RegexRule>>?
         val map = listOf(
             Def.ForNumber, Def.ForSms, Def.ForQuickCopy
@@ -1359,7 +1389,7 @@ class FindRules(
 
         aCtx.logger?.debug(
             ctx.getString(R.string.find_rule_with_desc)
-                .format("${map.values.sumOf { it.size }}", pattern)
+                .formatAnnotated("${map.values.sumOf { it.size }}".A(Teal200), pattern.A(DimGrey))
         )
 
         aCtx.lastOutput = map
@@ -1431,8 +1461,51 @@ class ModifyRules(
     var config: String = "",
 ) : IPermissiveAction {
 
+    fun modifyInMemory(ctx: Context, aCtx: ActionContext): Boolean {
+        val rulesMap = aCtx.lastOutput as Map<Int, List<RegexRule>>
+
+        val cCtx = aCtx.cCtx!!
+
+        val mapConfig = JSONObject(config).toMap()
+
+        rulesMap.forEach { (forType, ruleList) ->
+
+            cCtx.checkers.filter {
+                if (forType == Def.ForNumber)
+                    it is RegexRuleChecker && it !is Checker.Content
+                else
+                    it is Checker.Content
+            }.filter { checker ->
+                ruleList.any { it.id == (checker as RegexRuleChecker).rule.id }
+            }.forEach {
+                val rule = (it as RegexRuleChecker).rule
+
+                val strOrigin = PermissiveJson.encodeToString(rule)
+                val mapOrigin = JSONObject(strOrigin).toMap()
+
+                val mapModified = mapOrigin + mapConfig // override with mapModify
+
+                val newRule = PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
+
+                aCtx.logger?.debug(
+                    ctx.getString(R.string.rule_updated_temporarily)
+                        .formatAnnotated(
+                            rule.summary().A(Teal200),
+                            config.A(DimGrey)
+                        )
+                )
+                it.rule = newRule
+            }
+        }
+
+        return true
+    }
     @Suppress("UNCHECKED_CAST")
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (aCtx.isInMemory) {
+            return modifyInMemory(ctx, aCtx)
+        }
+
         val rulesMap = aCtx.lastOutput as Map<Int, List<RegexRule>>
 
         aCtx.logger?.debug(
@@ -1455,6 +1528,14 @@ class ModifyRules(
                     val newRule =
                         PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
                     table.updateRuleById(ctx, rule.id, newRule)
+
+                    aCtx.logger?.debug(
+                        ctx.getString(R.string.rule_updated)
+                            .formatAnnotated(
+                                rule.summary().A(Teal200),
+                                config.A(DimGrey)
+                            )
+                    )
                 }
             }
         } catch (e: Exception) {
@@ -1649,7 +1730,7 @@ class EnableApp(
     }
 }
 
-
+// For "API Query" only, not for Workflows.
 // This action parses the incoming number and fill the ActionContext with cc/domestic/number,
 //  which can be used in following actions like HttpRequest.
 @Serializable
@@ -2265,7 +2346,7 @@ class CalendarEvent(
     @Composable
     fun TriggerType(modifier: Modifier) {
         RowVCenterSpaced(2, modifier = modifier) {
-            GreyIcon18(R.drawable.ic_call)
+            GreyIcon18(R.drawable.ic_incoming)
             GreyIcon18(R.drawable.ic_calendar)
             GreyLabel(
                 text = eventTitle,
@@ -2278,9 +2359,18 @@ class CalendarEvent(
             return false
 
         val ongoingEvents = Util.ongoingCalendarEvents(ctx)
-        return ongoingEvents.any { it ->
+        val triggered = ongoingEvents.any { it ->
             eventTitle.regexMatches(it, eventTitleFlags)
         }
+        if (triggered) {
+            aCtx.logger?.warn(
+                ctx.getString(R.string.calendar_event_is_triggered)
+                    .formatAnnotated(
+                        eventTitle.A(Teal200)
+                    )
+            )
+        }
+        return triggered
     }
 
     override fun label(ctx: Context): String {
@@ -2349,9 +2439,9 @@ class CalendarEvent(
 @Serializable
 class SmsEvent(
     var enabled: Boolean = true,
-    var number: String = "",
+    var number: String = ".*",
     var numberFlags: Int = Def.DefaultRegexFlags,
-    var content: String = "",
+    var content: String = ".*",
     var contentFlags: Int = Def.DefaultRegexFlags,
 ) : IAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
@@ -2376,9 +2466,6 @@ class SmsEvent(
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        if (!Permission.receiveSMS.isGranted || !enabled)
-            return false
-
         val rawNumber = aCtx.rawNumber
         val smsContent = aCtx.smsContent
 
@@ -2387,6 +2474,9 @@ class SmsEvent(
             aCtx.logger?.error(ctx.getString(R.string.use_global_testing_instead))
             return false
         }
+
+        if (!Permission.receiveSMS.isGranted || !enabled)
+            return false
 
         if (!number.regexMatchesNumber(rawNumber, numberFlags)) {
             return false
@@ -2479,6 +2569,199 @@ class SmsEvent(
             onFlagsChange = {
                 flagsContent.intValue = it
                 contentFlags = it
+            }
+        )
+    }
+}
+
+
+// Workflows that contain this preprocessor will be executed before checking the number.
+@Serializable
+class CallEvent(
+    var enabled : Boolean = true,
+    var number: String = ".*",
+    var numberFlags: Int = Def.DefaultRegexFlags,
+) : IPermissiveAction {
+    @Composable
+    fun TriggerType(modifier: Modifier) {
+        RowVCenterSpaced(2, modifier = modifier) {
+            GreyIcon18(R.drawable.ic_incoming)
+        }
+    }
+    fun isActivated(): Boolean {
+        return enabled && Permission.callScreening.isGranted
+    }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val rawNumber = aCtx.rawNumber
+
+        // It's testing in the workflow dialog
+        if (rawNumber == null) {
+            aCtx.logger?.error(ctx.getString(R.string.use_global_testing_instead))
+            return false
+        }
+        if (!enabled) {
+            return false
+        }
+
+        if (!number.regexMatchesNumber(rawNumber, numberFlags)) {
+            return false
+        }
+
+        aCtx.logger?.warn(
+            ctx.getString(R.string.call_event_is_triggered)
+                .formatAnnotated(
+                    number.A(Teal200)
+                )
+        )
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.call_event)
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(8) {
+            // Green dot
+            if (enabled) {
+                GreenDot()
+            }
+            SummaryLabel(number)
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_call_event)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_incoming)
+    }
+
+    @Composable
+    override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
+        val flagsNumber = remember { mutableIntStateOf(numberFlags) }
+        RegexInputBox(
+            regexStr = number,
+            label = { Text(Str(R.string.phone_number)) },
+            leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
+            regexFlags = flagsNumber,
+            placeholder = { DimGreyLabel(".*") },
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    number = newVal
+                }
+            },
+            onFlagsChange = {
+                flagsNumber.intValue = it
+                numberFlags = it
+            }
+        )
+    }
+}
+
+// Modify the incoming number before screening.
+// Use case: Some MNO provide services that allow a secondary number for the same SIM card. For number
+//  3377777777, the secondary number can be "1113377777777" (with an extra prefix 111),
+//  the prefix 111 needs to be removed.
+@Serializable
+class ModifyNumber(
+    var from: String = "",
+    var fromFlags: Int = Def.DefaultRegexFlags,
+    var to: String = "",
+) : IPermissiveAction {
+
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val cCtx = aCtx.cCtx!!
+
+        val before = cCtx.rawNumber
+        val after = before.regexReplace(from, to, fromFlags)
+
+        if (before != after) {
+            cCtx.rawNumber = after
+
+            aCtx.logger?.warn(
+                ctx.getString(R.string.modify_number_template)
+                    .formatAnnotated(
+                        before.A(DimGrey),
+                        after.A(DimGrey)
+                    )
+            )
+        }
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.action_modify_number)
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(8) {
+            SummaryLabel("$from -> $to")
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_action_modify_number)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_replace)
+    }
+
+    @Composable
+    override fun Options() {
+        val fromFlagsState = remember { mutableIntStateOf(fromFlags) }
+        RegexInputBox(
+            regexStr = from,
+            label = { Text(Str(R.string.replace_from)) },
+            regexFlags = fromFlagsState,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    from = newVal
+                }
+            },
+            onFlagsChange = {
+                fromFlagsState.intValue = it
+                fromFlags = it
+            }
+        )
+        StrInputBox(
+            text = to,
+            label = { Text(Str(R.string.replace_to)) },
+            onValueChange = {
+                to = it
             }
         )
     }

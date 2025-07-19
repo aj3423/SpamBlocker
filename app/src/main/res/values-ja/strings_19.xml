@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">通話イベント</string>
+    <string name="call_event_is_triggered">通話イベント%sがトリガーされました。</string>
+    <string name="help_call_event">
+        <![CDATA[
+        着信番号がルールによって確認される前に前処理を行い、ルールをその場で変更できるようにします。<br>
+        <br>
+        このアクションはワークフローの最初のアクションである必要があり、このようなワークフローは着信によって自動的にトリガーされます。<br>
+        <br>
+        <font color="#00BFFF"><b>一般的なワークフローの設定：</b></font><br>
+        - <b>通話イベント</b> <br>
+        - <b>番号変更</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">番号変更</string>
+    <string name="modify_number_template">着信番号%sは%sに変更されました。</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        着信番号がルールによって確認される前に変更します。<br>
+        <br>
+        <font color="#00BFFF"><b>ユースケース：</b></font><br>
+        &ensp; 一部の携帯電話事業者は、同じSIMカードでデュアル番号をサポートしており、副番号に余分な先頭桁を追加します。<br>
+        &ensp;   例：3312345679が<font color="#888888">123</font>3312345679になることがあります。<br>
+        &ensp; 先頭の<font color="#888888">123</font>は、確認される前に削除する必要があります。<br>
+        <br>
+        <font color="#00BFFF"><b>一般的な設定：</b></font> <br>
+        - <b>通話イベント</b> <br>
+        - <b>番号置換</b> <br>
+        &emsp; から: <font color="#888888">^123</font> <br>
+        &emsp; へ: <font color="#888888">空のままにする</fonts> <br>
+        ]]>
+    </string>
+</resources>

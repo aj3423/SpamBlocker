@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Çağrı Olayı</string>
+    <string name="call_event_is_triggered">Çağrı olayı %s tetiklendi.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Gelen telefon numarasını kurallar tarafından kontrol edilmeden önce ön işleme tabi tutar, böylece kuralları anında değiştirmek mümkün olur.<br>
+        <br>
+        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir çağrı tarafından otomatik olarak tetiklenecektir.<br>
+        <br>
+        <font color="#00BFFF"><b>Tipik bir iş akışı kurulumu:</b></font><br>
+        - <b>Çağrı Olayı</b> <br>
+        - <b>Numarayı Düzenle</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Numarayı Düzenle</string>
+    <string name="modify_number_template">Gelen telefon numarası %s, %s olarak düzenlendi.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Gelen çağrı telefon numarasını, kurallar tarafından kontrol edilmeden önce düzenleyin.<br>
+        <br>
+        <font color="#00BFFF"><b>Bir kullanım durumu</b>:</font><br>
+        &ensp; Bazı mobil şebeke operatörleri aynı SIM kart için çift telefon numarasını destekler, ikincil numaraya fazladan ön ek basamakları eklerler.<br>
+        &ensp;   Örneğin: 3312345679, <font color="#888888">123</font>3312345679 olabilir. <br>
+        &ensp; Öndeki <font color="#888888">123</font>\'ün kontrol edilmeden önce kaldırılması gerekir. <br>
+        <br>
+        <font color="#00BFFF"><b>Tipik bir kurulum:</b></font> <br>
+        - <b>Çağrı Olayı</b> <br>
+        - <b>Numarayı Değiştir</b> <br>
+        &emsp; kaynak: <font color="#888888">^123</font> <br>
+        &emsp; hedef: <font color="#888888">boş bırakın</font> <br>
+        ]]>
+    </string>
+</resources>

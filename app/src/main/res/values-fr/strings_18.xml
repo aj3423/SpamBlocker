@@ -1,33 +1,33 @@
 <resources>
     <string name="auto_copy">Copie automatique</string>
-    <string name="help_auto_copy">Copie automatiquement le contenu dans le presse-papiers sans avoir à appuyer sur le bouton "Copier" dans la notification.</string>
+    <string name="help_auto_copy">Copie automatiquement le contenu dans le presse-papiers sans avoir à appuyer sur le bouton \"Copier\" dans la notification.</string>
     <string name="calendar_event">Événement du calendrier</string>
     <string name="event_title">Titre de l\'événement</string>
-    <string name="rule_updated_temporarily">La règle Regex %s est temporairement modifiée en raison de l\'événement de calendrier %s : %s</string>
+    <string name="rule_updated_temporarily">La règle Regex %s est temporairement modifiée en : %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifie temporairement les règles en fonction des événements du calendrier, les modifications sont appliquées temporairement sans altérer la configuration.<br>
+        Modifie temporairement les règles en fonction des événements du calendrier, les changements sont appliqués temporairement sans altérer la configuration.<br>
         <br>
         Cette action doit être la première dans le flux de travail, un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
         <br>
         <b>Un cas d\'utilisation</b> :<br>
-        &ensp; <font color="#888888">Un travailleur posté travaille de jour de 7h à 10h pendant deux jours,
-          puis de nuit de 19h à 22h les deux jours suivants.<br>
+        &ensp; <font color="#888888">Un travailleur posté travaille le jour de 7h à 10h pendant deux jours,
+          puis la nuit de 19h à 22h pendant les deux jours suivants.<br>
         &ensp; Certaines règles doivent être désactivées ou activées pendant les heures de travail.</font><<br>
         <br>
         Un exemple de configuration :<br>
-        - <b>1</b>. Dans l\'application calendrier, créez des événements de calendrier <font color="#888888">work</font> pour toutes les heures de travail.<br>
+        - <b>1</b>. Dans l\'application calendrier, créez des événements de calendrier <font color="#888888">travail</font> pour toutes les heures de travail.<br>
         - <b>2</b>. Créez une règle regex.<br>
-        &emsp; description : <font color="#888888">working</font><br>
+        &emsp; description : <font color="#888888">travail</font><br>
         - <b>3</b>. Créez un flux de travail :<br>
         &ensp; - <b>Événement du calendrier</b><br>
-         &emsp;&emsp; titre de l\'événement : <font color="#888888">work</font><br>
-        &ensp; - <b>Trouver les règles</b><br>
-         &emsp;&emsp; description : <font color="#888888">working</font><br>
+         &emsp;&emsp; titre de l\'événement : <font color="#888888">travail</font><br>
+        &ensp; - <b>Rechercher des règles</b><br>
+         &emsp;&emsp; description : <font color="#888888">travail</font><br>
         &ensp; - <b>Modifier les règles</b><br>
-         &emsp;&emsp; config : <font color="#888888">{ "flags": 0 }</font> (cela désactivera la règle)<br>
+         &emsp;&emsp; config : <font color="#888888">{ \"flags\": 0 }</font> (cela désactivera la règle)<br>
         <br>
-        &ensp; (Il prend en charge plusieurs actions <b>Trouver les règles</b> et <b>Modifier les règles</b> ici)<br>
+        &ensp; (Cela prend en charge plusieurs <b>Rechercher des règles</b> et <b>Modifier les règles</b> ici)<br>
         ]]>
     </string>
     <string name="sms_event">Événement SMS</string>
@@ -84,4 +84,6 @@
     <string name="answered_warning">N\'activez pas cette fonction pour les personnes âgées ou toute personne moins apte à identifier les appels frauduleux, car cela pourrait les exposer à des appels frauduleux répétés.</string>
     <string name="acknowledged">Reconnu</string>
     <string name="warning">Avertissement</string>
+    <string name="calendar_event_is_triggered">L\'événement du calendrier %s est déclenché.</string>
+    <string name="rule_updated">La règle Regex %s est modifiée en : %s</string>
 </resources>

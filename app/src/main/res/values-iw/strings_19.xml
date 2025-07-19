@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">אירוע שיחה</string>
+    <string name="call_event_is_triggered">אירוע שיחה %s הופעל.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        עבד מראש את המספר הנכנס לפני שהוא נבדק על ידי הכללים, מה שמאפשר לשנות כללים תוך כדי תנועה.<br>
+        <br>
+        פעולה זו חייבת להיות הראשונה בתהליך העבודה, תהליך עבודה כזה יופעל אוטומטית על ידי שיחה נכנסת.<br>
+        <br>
+        <font color="#00BFFF"><b>הגדרת תהליך עבודה טיפוסית:</b></font><br>
+        - <b>אירוע שיחה</b> <br>
+        - <b>שינוי מספר</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">שינוי מספר</string>
+    <string name="modify_number_template">המספר הנכנס %s שונה ל-%s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        שנה את מספר השיחה הנכנסת לפני שהוא נבדק על ידי הכללים.<br>
+        <br>
+        <font color="#00BFFF"><b>מקרה שימוש</b>:</font><br>
+        &ensp; חלק ממפעילי הרשת הסלולרית תומכים במספרים כפולים לאותו כרטיס SIM, הם מוסיפים ספרות מובילות נוספות למספר המשני.<br>
+        &ensp;   לדוגמה: 3312345679 עשוי להפוך ל-<font color="#888888">123</font>3312345679. <br>
+        &ensp; ה-<font color="#888888">123</font> המובילים צריכים להיות מוסרים לפני הבדיקה. <br>
+        <br>
+        <font color="#00BFFF"><b>הגדרה טיפוסית:</b></font> <br>
+        - <b>אירוע שיחה</b> <br>
+        - <b>החלף מספר</b> <br>
+        &emsp; מ-: <font color="#888888">^123</font> <br>
+        &emsp; אל: <font color="#888888">השאר ריק</font> <br>
+        ]]>
+    </string>
+</resources>

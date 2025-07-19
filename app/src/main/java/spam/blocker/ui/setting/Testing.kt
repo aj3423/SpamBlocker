@@ -33,7 +33,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.TextLogger
+import spam.blocker.util.JetpackTextLogger
 
 
 class TestingViewModel {
@@ -94,7 +94,7 @@ fun PopupTesting(
                 clearPreviousResult()
                 logTrigger.value = true
 
-                val textLogger = TextLogger(logStr, C)
+                val textLogger = JetpackTextLogger(logStr, C)
 
                 coroutine.launch {
                     withContext(IO) {

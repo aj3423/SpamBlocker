@@ -37,7 +37,6 @@ import spam.blocker.ui.widgets.DrawableImage
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyLabel
-import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel

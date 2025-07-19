@@ -1,33 +1,33 @@
 <resources>
     <string name="auto_copy">Otomatik Kopyala</string>
-    <string name="help_auto_copy">İçeriği bildirimdeki "Kopyala" düğmesine dokunmaya gerek kalmadan otomatik olarak panoya kopyalar.</string>
+    <string name="help_auto_copy">İçeriği bildirimdeki \"Kopyala\" düğmesine dokunmaya gerek kalmadan otomatik olarak panoya kopyalar.</string>
     <string name="calendar_event">Takvim Etkinliği</string>
     <string name="event_title">Etkinlik Başlığı</string>
-    <string name="rule_updated_temporarily">Takvim etkinliği %s nedeniyle Regex kuralı %s geçici olarak değiştirildi: %s</string>
+    <string name="rule_updated_temporarily">Regex kuralı %s geçici olarak değiştirildi: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Takvim etkinliklerine göre kuralları geçici olarak değiştirir, değişiklikler yapılandırmayı değiştirmeden geçici olarak uygulanır.<br>
+        Takvim etkinliklerine göre kuralları geçici olarak değiştirir, değişiklikler yapılandırmayı bozmadan geçici olarak uygulanır.<br>
         <br>
-        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir arama ile otomatik olarak tetiklenecektir.<br>
+        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir arama tarafından otomatik olarak tetiklenecektir.<br>
         <br>
         <b>Bir kullanım durumu</b>:<br>
-        &ensp; <font color="#888888">Vardiyalı bir işçi iki gün boyunca sabah 7\'den 10\'a kadar gündüz vardiyasında,
-          sonraki iki gün boyunca ise akşam 7\'den 10\'a kadar gece vardiyasında çalışır.<br>
+        &ensp; <font color="#888888">Vardiyalı bir işçi iki gün boyunca sabah 7\'den sabah 10\'a kadar gündüz vardiyasında,
+          sonraki iki gün boyunca akşam 7\'den akşam 10\'a kadar gece vardiyasında çalışır.<br>
         &ensp; Bazı kurallar çalışma saatleri içinde devre dışı bırakılmalı veya etkinleştirilmelidir.</font><<br>
         <br>
         Örnek bir kurulum:<br>
-        - <b>1</b>. Takvim uygulamasında takvim etkinlikleri <font color="#888888">iş</font> tüm çalışma saatleri için oluşturun.<br>
+        - <b>1</b>. Takvim uygulamasında, tüm çalışma saatleri için <font color="#888888">iş</font> takvim etkinlikleri oluşturun.<br>
         - <b>2</b>. Bir regex kuralı oluşturun.<br>
-        &emsp; açıklama: <font color="#888888">çalışıyor</font><br>
+        &emsp; açıklama: <font color="#888888">çalışma</font><br>
         - <b>3</b>. Bir iş akışı oluşturun:<br>
         &ensp; - <b>Takvim Etkinliği</b><br>
          &emsp;&emsp; etkinlik başlığı: <font color="#888888">iş</font><br>
         &ensp; - <b>Kuralları Bul</b><br>
-         &emsp;&emsp; açıklama: <font color="#888888">çalışıyor</font><br>
+         &emsp;&emsp; açıklama: <font color="#888888">çalışma</font><br>
         &ensp; - <b>Kuralları Değiştir</b><br>
-         &emsp;&emsp; yapılandırma: <font color="#888888">{ "flags": 0 }</font> (bu kuralı devre dışı bırakacaktır)<br>
+         &emsp;&emsp; yapılandırma: <font color="#888888">{ \"flags\": 0 }</font> (bu kuralı devre dışı bırakacaktır)<br>
         <br>
-        &ensp; (Burada birden fazla <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> desteklenir)<br>
+        &ensp; (Burada birden çok <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> destekler)<br>
         ]]>
     </string>
     <string name="sms_event">SMS Etkinliği</string>
@@ -84,4 +84,6 @@
     <string name="answered_warning">Bu özelliği yaşlılar veya sahte aramaları tanımlama yeteneği daha az olan kişiler için etkinleştirmeyin, zira bu onları tekrarlanan sahte aramalara maruz bırakabilir.</string>
     <string name="acknowledged">Onaylandı</string>
     <string name="warning">Uyarı</string>
+    <string name="calendar_event_is_triggered">Takvim etkinliği %s tetiklendi.</string>
+    <string name="rule_updated">Regex kuralı %s şu şekilde değiştirildi: %s</string>
 </resources>

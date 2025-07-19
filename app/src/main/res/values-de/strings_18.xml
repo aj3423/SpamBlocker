@@ -3,31 +3,31 @@
     <string name="help_auto_copy">Inhalte automatisch in die Zwischenablage kopieren, ohne auf die Schaltfläche „Kopieren“ in der Benachrichtigung tippen zu müssen.</string>
     <string name="calendar_event">Kalenderereignis</string>
     <string name="event_title">Ereignistitel</string>
-    <string name="rule_updated_temporarily">Die Regex-Regel %s wurde aufgrund des Kalenderereignisses %s temporär geändert: %s</string>
+    <string name="rule_updated_temporarily">Regex-Regel %s wird vorübergehend geändert zu: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Regeln temporär basierend auf Kalenderereignissen ändern; Änderungen werden temporär angewendet, ohne die Konfiguration zu verändern.<br>
+        Regeln basierend auf Kalenderereignissen temporär ändern, Änderungen werden vorübergehend angewendet, ohne die Konfiguration zu ändern.<br>
         <br>
-        Diese Aktion muss die erste im Arbeitsablauf sein; ein solcher Arbeitsablauf wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
+        Diese Aktion muss die erste im Workflow sein, ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
         <br>
         <b>Ein Anwendungsfall</b>:<br>
-        &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage lang die Tagschicht von 7 bis 10 Uhr,
-          dann zwei Tage lang die Nachtschicht von 19 bis 22 Uhr.<br>
-        &ensp; Einige Regeln müssen während der Arbeitszeit deaktiviert oder aktiviert werden.</font><<br>
+        &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage lang die Tagschicht von 7 Uhr morgens bis 10 Uhr morgens,
+          dann die nächsten zwei Tage die Nachtschicht von 19 Uhr abends bis 22 Uhr abends.<br>
+        &ensp; Einige Regeln müssen während der Arbeitszeiten deaktiviert oder aktiviert werden.</font><<br>
         <br>
         Ein Beispiel-Setup:<br>
         - <b>1</b>. Erstellen Sie in der Kalender-App Kalenderereignisse <font color="#888888">Arbeit</font> für alle Arbeitszeiten.<br>
         - <b>2</b>. Erstellen Sie eine Regex-Regel.<br>
-        &emsp; Beschreibung: <font color="#888888">Arbeiten</font><br>
-        - <b>3</b>. Erstellen Sie einen Arbeitsablauf:<br>
+        &emsp; Beschreibung: <font color="#888888">Arbeit</font><br>
+        - <b>3</b>. Erstellen Sie einen Workflow:<br>
         &ensp; - <b>Kalenderereignis</b><br>
          &emsp;&emsp; Ereignistitel: <font color="#888888">Arbeit</font><br>
         &ensp; - <b>Regeln finden</b><br>
-         &emsp;&emsp; Beschreibung: <font color="#888888">Arbeiten</font><br>
+         &emsp;&emsp; Beschreibung: <font color="#888888">Arbeit</font><br>
         &ensp; - <b>Regeln ändern</b><br>
-         &emsp;&emsp; Konfiguration: <font color="#888888">{ "flags": 0 }</font> (dies deaktiviert die Regel)<br>
+         &emsp;&emsp; Konfiguration: <font color="#888888">{ \"flags\": 0 }</font> (dies wird die Regel deaktivieren)<br>
         <br>
-        &ensp; (Es unterstützt hier mehrere <b>Regeln finden</b> und <b>Regeln ändern</b>.)<br>
+        &ensp; (Hier werden mehrere <b>Regeln finden</b> und <b>Regeln ändern</b> unterstützt)<br>
         ]]>
     </string>
     <string name="sms_event">SMS-Ereignis</string>
@@ -84,4 +84,6 @@
     <string name="answered_warning">Aktivieren Sie diese Funktion nicht für Senioren oder Personen, die weniger in der Lage sind, betrügerische Anrufe zu identifizieren, da dies sie wiederholten betrügerischen Anrufen aussetzen könnte.</string>
     <string name="acknowledged">Bestätigt</string>
     <string name="warning">Warnung</string>
+    <string name="calendar_event_is_triggered">Kalenderereignis %s wird ausgelöst.</string>
+    <string name="rule_updated">Regex-Regel %s wurde geändert in: %s</string>
 </resources>

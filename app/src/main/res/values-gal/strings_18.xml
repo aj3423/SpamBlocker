@@ -1,19 +1,19 @@
 <resources>
     <string name="auto_copy">Copia Automática</string>
-    <string name="help_auto_copy">Copia automaticamente o contido ao portapapeis sen necesidade de tocar o botón "Copiar" na notificación.</string>
+    <string name="help_auto_copy">Copia automaticamente o contido ao portapapeis sen necesidade de tocar o botón \"Copiar\" na notificación.</string>
     <string name="calendar_event">Evento de Calendario</string>
     <string name="event_title">Título do Evento</string>
-    <string name="rule_updated_temporarily">A regra de expresión regular %s está temporalmente modificada debido ao evento de calendario %s: %s</string>
+    <string name="rule_updated_temporarily">A regra de expresión regular %s modifícase temporalmente a: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporalmente as regras baseándose en eventos de calendario; os cambios aplícanse de forma temporal sen alterar a configuración.<br>
+        Modifica temporalmente as regras baseándose en eventos de calendario, os cambios aplícanse temporalmente sen alterar a configuración.<br>
         <br>
-        Esta acción debe ser a primeira no fluxo de traballo; dito fluxo de traballo activarase automaticamente por unha chamada entrante.<br>
+        Esta acción debe ser a primeira no fluxo de traballo, tal fluxo de traballo activarase automaticamente por unha chamada entrante.<br>
         <br>
         <b>Un caso de uso</b>:<br>
         &ensp; <font color="#888888">Un traballador por quendas traballa na quenda de día de 7 AM a 10 AM durante dous días,
-          despois na quenda de noite de 7 PM a 10 PM durante os dous días seguintes.<br>
-        &ensp; Algunhas regras deben ser deshabilitadas ou habilitadas durante as horas de traballo.</font><<br>
+          e despois na quenda de noite de 7 PM a 10 PM durante os dous días seguintes.<br>
+        &ensp; Algunhas regras deben ser desactivadas ou activadas durante o horario de traballo.</font><<br>
         <br>
         Unha configuración de exemplo:<br>
         - <b>1</b>. Na aplicación de calendario, crea eventos de calendario <font color="#888888">traballo</font> para todas as horas de traballo.<br>
@@ -25,9 +25,9 @@
         &ensp; - <b>Buscar Regras</b><br>
          &emsp;&emsp; descrición: <font color="#888888">traballo</font><br>
         &ensp; - <b>Modificar Regras</b><br>
-         &emsp;&emsp; configuración: <font color="#888888">{ "flags": 0 }</font> (isto deshabilitará a regra)<br>
+         &emsp;&emsp; configuración: <font color="#888888">{ \"flags\": 0 }</font> (isto desactivará a regra)<br>
         <br>
-        &ensp; (Soporta múltiples <b>Buscar Regras</b> e <b>Modificar Regras</b> aquí)<br>
+        &ensp; (Aquí admite múltiples <b>Buscar Regras</b> e <b>Modificar Regras</b>)<br>
         ]]>
     </string>
     <string name="sms_event">Evento de SMS</string>
@@ -84,4 +84,6 @@
     <string name="answered_warning">Non habilite esta función para persoas maiores ou calquera persoa con menor capacidade para identificar chamadas fraudulentas, xa que isto podería expoñelos a repetidas chamadas fraudulentas.</string>
     <string name="acknowledged">Recoñecido</string>
     <string name="warning">Advertencia</string>
+    <string name="calendar_event_is_triggered">Activouse o evento de calendario %s.</string>
+    <string name="rule_updated">A regra Regex %s modificouse a: %s</string>
 </resources>

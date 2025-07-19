@@ -75,8 +75,8 @@ class AdbLogger : ILogger {
     }
 }
 
-// It appends text to a `MutableState<AnnotatedString>` that used by a Text()
-class TextLogger(
+// It appends text to a `MutableState<AnnotatedString>` that used by a `@Composable Text()`
+class JetpackTextLogger(
     private val text: MutableState<AnnotatedString>,
     private val palette: CustomColorsPalette,
 ) : ILogger {
@@ -109,19 +109,21 @@ class TextLogger(
         output(message, palette.block)
     }
 
-    private fun outputAnnotated(message: AnnotatedString) {
+    private fun outputAnnotated(message: AnnotatedString, color: Color) {
         text.value = buildAnnotatedString {
             append(text.value) // Append the existing text
-            append(message)
-            append("\n")
+            withStyle(style = SpanStyle(color = color)) {
+                append(message)
+                append("\n")
+            }
         }
     }
 
-    override fun debug(message: AnnotatedString) = outputAnnotated(message)
-    override fun info(message: AnnotatedString) = outputAnnotated(message)
-    override fun warn(message: AnnotatedString) = outputAnnotated(message)
-    override fun success(message: AnnotatedString) = outputAnnotated(message)
-    override fun error(message: AnnotatedString) = outputAnnotated(message)
+    override fun debug(message: AnnotatedString) = outputAnnotated(message, palette.textGrey)
+    override fun info(message: AnnotatedString) = outputAnnotated(message, SkyBlue)
+    override fun warn(message: AnnotatedString) = outputAnnotated(message, DarkOrange)
+    override fun success(message: AnnotatedString) = outputAnnotated(message, palette.pass)
+    override fun error(message: AnnotatedString) = outputAnnotated(message, palette.block)
 }
 
 @Serializable
@@ -131,21 +133,21 @@ data class Markup(
     val color : Int,
 )
 
-// Create an AnnotatedString from `text` and `markups`
+// Create an AnnotatedString from text and markups
 fun String.applyAnnotatedMarkups(markups: List<Markup>): AnnotatedString {
-    val builder = AnnotatedString.Builder()
-
-    for (markup in markups) {
-        builder.append(
-            this.substring(markup.start, markup.end).A(Color(markup.color))
-        )
+    return buildAnnotatedString {
+        append(this@applyAnnotatedMarkups)
+        markups.forEach { markup ->
+            addStyle(
+                style = SpanStyle(color = Color(markup.color)),
+                start = markup.start,
+                end = markup.end
+            )
+        }
     }
-    return builder.toAnnotatedString()
 }
 
-
-// A serializable class that can be saved and restored,
-//   for saving the logs of workflow runs to database.
+// Serializable logger class
 @Serializable
 data class SaveableLogger(
     var text: String = "",
@@ -155,9 +157,9 @@ data class SaveableLogger(
         val start = text.length
         text += message + "\n"
         val end = text.length
-
         markups += Markup(start, end, color.toArgb())
     }
+
     override fun debug(message: String) {
         add(message, SilverGrey)
     }
@@ -177,16 +179,20 @@ data class SaveableLogger(
     override fun error(message: String) {
         add(message, Salmon)
     }
+
     private fun addAnnotated(message: AnnotatedString) {
+        val startOffset = text.length
         text += message.text + "\n"
         message.spanStyles.forEach { span ->
-            val start = span.start
-            val end = span.end
-            val color = span.item.color.toArgb()
-
-            markups += Markup(start, end, color)
+            val start = startOffset + span.start
+            val end = startOffset + span.end
+            val color = span.item.color
+            if (color != Color.Unspecified) {
+                markups += Markup(start, end, color.toArgb())
+            }
         }
     }
+
     override fun debug(message: AnnotatedString) = addAnnotated(message)
     override fun info(message: AnnotatedString) = addAnnotated(message)
     override fun warn(message: AnnotatedString) = addAnnotated(message)
@@ -196,9 +202,11 @@ data class SaveableLogger(
     fun serialize(): String {
         return Json.encodeToString(this)
     }
+
     companion object {
-        fun parse(jsonStr: String) : SaveableLogger {
-            return PermissiveJson.decodeFromString<SaveableLogger>(jsonStr)
+        private val PermissiveJson = Json { ignoreUnknownKeys = true }
+        fun parse(jsonStr: String): SaveableLogger {
+            return PermissiveJson.decodeFromString(jsonStr)
         }
     }
 }

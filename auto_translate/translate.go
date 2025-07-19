@@ -465,7 +465,7 @@ func setup() {
 	flag.BoolVar(&abbrev, "abbrev", false, "force abberv, usually used together with -only")
 	flag.BoolVar(&verb, "verb", false, "show prompt")
 	flag.StringVar(&only, "only", "", "-only tag")
-	flag.IntVar(&thread, "thread", 3, "")
+	flag.IntVar(&thread, "thread", 2, "")
 	flag.StringVar(&new_file, "new_file", "", "")
 	flag.Parse()
 

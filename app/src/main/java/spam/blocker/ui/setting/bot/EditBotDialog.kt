@@ -39,6 +39,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 
 
@@ -46,6 +47,7 @@ import spam.blocker.util.Lambda1
 fun EditBotDialog(
     trigger: MutableState<Boolean>,
     onSave: Lambda1<Bot>,
+    onDismiss: Lambda,
     initial: Bot,
 ) {
     if (!trigger.value) {
@@ -67,6 +69,7 @@ fun EditBotDialog(
     PopupDialog(
         trigger = trigger,
         popupSize = PopupSize(percentage = 0.9f, minWidth = 340, maxWidth = 600),
+        onDismiss = onDismiss,
         buttons = {
             StrokeButton(
                 label = Str(R.string.save),

@@ -50,7 +50,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
-import spam.blocker.util.TextLogger
+import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import androidx.compose.foundation.Image as ComposeImage
@@ -99,7 +99,7 @@ fun ReportSpamDialog(
                             withContext(IO) {
                                 val aCtx = ActionContext(
                                     scope = scope,
-                                    logger = TextLogger(reportResult, C),
+                                    logger = JetpackTextLogger(reportResult, C),
                                     rawNumber = rawNumber,
                                     tagCategory = keyTag,
                                 )

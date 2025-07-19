@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">通话事件</string>
+    <string name="call_event_is_triggered">通话事件 %s 已触发。</string>
+    <string name="help_call_event">
+        <![CDATA[
+        在号码被规则检查之前对其进行预处理，从而可以即时修改规则。<br>
+        <br>
+        此操作必须是工作流中的第一个，此类工作流将在有来电时自动触发。<br>
+        <br>
+        <font color="#00BFFF"><b>典型工作流设置：</b></font><br>
+        - <b>通话事件</b> <br>
+        - <b>修改号码</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">修改号码</string>
+    <string name="modify_number_template">来电号码 %s 已修改为 %s。</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        在来电号码被规则检查之前对其进行修改。<br>
+        <br>
+        <font color="#00BFFF"><b>用例</b>：</font><br>
+        &ensp; 某些移动网络运营商支持同一张SIM卡上的双号码，他们会给次要号码添加额外的开头数字。<br>
+        &ensp;   例如：3312345679 可能会变成 <font color="#888888">123</font>3312345679。<br>
+        &ensp; 开头的 <font color="#888888">123</font> 需要在检查前被移除。<br>
+        <br>
+        <font color="#00BFFF"><b>典型设置：</b></font> <br>
+        - <b>通话事件</b> <br>
+        - <b>替换号码</b> <br>
+        &emsp; 从: <font color="#888888">^123</font> <br>
+        &emsp; 到: <font color="#888888">留空</font> <br>
+        ]]>
+    </string>
+</resources>

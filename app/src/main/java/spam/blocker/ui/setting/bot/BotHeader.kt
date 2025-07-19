@@ -23,7 +23,7 @@ import spam.blocker.ui.widgets.Str
 import java.util.UUID
 
 // The row:
-//   "Number Rule"       [Add] [Test]
+//         ? [Test] [New]
 @Composable
 fun BotHeader(
     vm: BotViewModel,
@@ -36,6 +36,7 @@ fun BotHeader(
         EditBotDialog(
             trigger = addTrigger,
             initial = initialBotToEdit.value,
+            onDismiss = { G.botVM.reload(ctx) },
             onSave = { newBot ->
                 // 1. add to db
                 BotTable.addNewRecord(ctx, newBot)

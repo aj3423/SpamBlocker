@@ -12,6 +12,7 @@ import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
 import spam.blocker.R
 import spam.blocker.service.bot.CalendarEvent
+import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.MyWorkManager
@@ -37,8 +38,10 @@ data class Bot(
     val lastLogTime: Long = 0,
 ) {
 
+    // TODO: refactor this ..
+
     // This is shown as the Bot summary on main UI
-    // 3 types: Scheduled / Manual / CalendarEvent / SmsEvent
+    // 3 types: Scheduled / Manual / CalendarEvent / SmsEvent / Call_or_SMS
     @Composable
     fun TriggerType(modifier: Modifier) {
         val ctx = LocalContext.current
@@ -57,6 +60,8 @@ data class Bot(
             if (firstAction is CalendarEvent) {
                 firstAction.TriggerType(modifier)
             } else if (firstAction is SmsEvent) {
+                firstAction.TriggerType(modifier)
+            } else if (firstAction is CallEvent) {
                 firstAction.TriggerType(modifier)
             } else {
                 // Manual
@@ -77,6 +82,8 @@ data class Bot(
         if (firstAction is CalendarEvent) {
             return firstAction.isActivated()
         } else if (firstAction is SmsEvent) {
+            return firstAction.isActivated()
+        } else if (firstAction is CallEvent) {
             return firstAction.isActivated()
         }
         return false // manually trigger

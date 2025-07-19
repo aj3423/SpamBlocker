@@ -13,6 +13,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
+import spam.blocker.service.checker.CheckContext
 import spam.blocker.util.ILogger
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
@@ -24,13 +25,15 @@ import spam.blocker.util.PermissionWrapper
 
 val botActions = listOf(
     HttpDownload(),
-    CalendarEvent(),
     SmsEvent(),
+    CallEvent(),
+    CalendarEvent(),
     ImportToSpamDB(),
     CleanupSpamDB(),
     ImportAsRegexRule(),
     FindRules(),
     ModifyRules(),
+    ModifyNumber(),
     ReadFile(),
     WriteFile(),
     ParseCSV(),
@@ -100,6 +103,12 @@ data class ActionContext(
     //  to simulate the "priority" of positive/negative identifiers.
     //  (e.g.: add two `ParseQueryResult` actions, one for positive, one for negative)
     var lastParsedQueryData: ByteArray? = null,
+
+    // For altering rules on the fly, e.g. temporarily enable a rule for some ongoing calendar event.
+    // Changes happens in memory and won't persist to the configuration.
+    var cCtx: CheckContext? = null,
+    var isInMemory: Boolean = false,
+
 )
 
 interface IAction {

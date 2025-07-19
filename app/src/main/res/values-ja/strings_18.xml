@@ -3,30 +3,30 @@
     <string name="help_auto_copy">通知の「コピー」ボタンをタップする必要なく、コンテンツを自動的にクリップボードにコピーします。</string>
     <string name="calendar_event">カレンダーイベント</string>
     <string name="event_title">イベントタイトル</string>
-    <string name="rule_updated_temporarily">正規表現ルール %s は、カレンダーイベント %s: %s により一時的に変更されました。</string>
+    <string name="rule_updated_temporarily">正規表現ルール %s は一時的に %s に変更されました</string>
     <string name="help_calendar_event">
         <![CDATA[
-        カレンダーイベントに基づいて一時的にルールを変更します。変更は設定を変更することなく一時的に適用されます。<br>
+        カレンダーイベントに基づいてルールを一時的に変更します。変更は設定を変更することなく一時的に適用されます。<br>
         <br>
-        このアクションはワークフローの最初である必要があります。このようなワークフローは着信時に自動的にトリガーされます。<br>
+        このアクションはワークフローの最初のものである必要があります。このようなワークフローは着信によって自動的にトリガーされます。<br>
         <br>
-        <b>使用例</b>:<br>
-        &ensp; <font color="#888888">シフト勤務者が2日間午前7時から午前10時まで日勤し、その後2日間午後7時から午後10時まで夜勤する場合を想定します。<br>
+        <b>ユースケース</b>:<br>
+        &ensp; <font color="#888888">シフト勤務者が、2日間は午前7時から午前10時までの日勤、その後2日間は午後7時から午後10時までの夜勤で働きます。<br>
         &ensp; 勤務時間中は一部のルールを無効または有効にする必要があります。</font><<br>
         <br>
         設定例:<br>
         - <b>1</b>. カレンダーアプリで、すべての勤務時間に対してカレンダーイベント <font color="#888888">work</font> を作成します。<br>
         - <b>2</b>. 正規表現ルールを作成します。<br>
         &emsp; 説明: <font color="#888888">working</font><br>
-        - <b>3</b>. ワークフローを作成します。<br>
+        - <b>3</b>. ワークフローを作成します:<br>
         &ensp; - <b>カレンダーイベント</b><br>
          &emsp;&emsp; イベントタイトル: <font color="#888888">work</font><br>
-        &ensp; - <b>ルール検索</b><br>
+        &ensp; - <b>ルールを検索</b><br>
          &emsp;&emsp; 説明: <font color="#888888">working</font><br>
-        &ensp; - <b>ルール変更</b><br>
-         &emsp;&emsp; 設定: <font color="#888888">{ "flags": 0 }</font> (これによりルールが無効になります)<br>
+        &ensp; - <b>ルールを変更</b><br>
+         &emsp;&emsp; 設定: <font color="#888888">{ \"flags\": 0 }</font> (これによりルールが無効になります)<br>
         <br>
-        &ensp; (ここでは複数の<b>ルール検索</b>と<b>ルール変更</b>をサポートしています)<br>
+        &ensp; (ここでは複数の<b>ルールを検索</b>と<b>ルールを変更</b>をサポートしています)<br>
         ]]>
     </string>
     <string name="sms_event">SMSイベント</string>
@@ -83,4 +83,6 @@
     <string name="answered_warning">この機能は、高齢者や詐欺電話を識別する能力が低い人には有効にしないでください。これにより、詐欺電話が繰り返し着信する可能性があります。</string>
     <string name="acknowledged">確認済み</string>
     <string name="warning">警告</string>
+    <string name="calendar_event_is_triggered">カレンダーイベント %s がトリガーされました。</string>
+    <string name="rule_updated">正規表現ルール %s が %s に変更されました。</string>
 </resources>

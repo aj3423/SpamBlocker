@@ -40,8 +40,8 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
+import spam.blocker.util.JetpackTextLogger
 import spam.blocker.util.Lambda
-import spam.blocker.util.TextLogger
 
 
 @Composable
@@ -73,7 +73,7 @@ fun TestActionButton(
         coroutine.launch {
             withContext(IO) {
                 val aCtx = ActionContext(
-                    logger = TextLogger(logStr, C),
+                    logger = JetpackTextLogger(logStr, C),
                     rawNumber = content,
                     smsContent = content,
                     tagCategory = tagOther,
@@ -152,9 +152,9 @@ fun ActionHeader(
     availableActions: List<IAction> = botActions,
     testingRequireNumber: Boolean = false,
 ) {
-    val trigger = remember { mutableStateOf(false) }
+    val newTrigger = remember { mutableStateOf(false) }
     PopupDialog(
-        trigger = trigger,
+        trigger = newTrigger,
     ) {
         availableActions.map { action ->
             ActionPresetCard(
@@ -162,7 +162,7 @@ fun ActionHeader(
                 onClick = {
                     val newAction = action.clone()
                     currentActions.add(newAction)
-                    trigger.value = false
+                    newTrigger.value = false
                 }
             )
         }
@@ -188,7 +188,7 @@ fun ActionHeader(
                 label = Str(R.string.new_),
                 color = SkyBlue,
             ) {
-                trigger.value = true
+                newTrigger.value = true
             }
         }
     }

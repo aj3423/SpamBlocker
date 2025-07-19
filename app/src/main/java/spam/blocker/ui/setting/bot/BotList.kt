@@ -159,6 +159,7 @@ fun BotList() {
         EditBotDialog(
             trigger = editTrigger,
             initial = vm.bots[clickedIndex],
+            onDismiss = { vm.reload(ctx) },
             onSave = { updatedBot ->
                 // 1. update in db
                 BotTable.updateById(ctx, updatedBot.id, updatedBot)

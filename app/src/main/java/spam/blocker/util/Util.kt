@@ -118,6 +118,15 @@ fun String.regexMatches(targetStr: String, regexFlags: Int): Boolean {
     return this.toRegex(opts).matches(targetStr)
 }
 
+fun String.regexReplace(
+    from: String,
+    to: String,
+    regexFlags: Int
+): String {
+    val opts = Util.flagsToRegexOptions(regexFlags)
+    return from.toRegex(opts).replace(this, to)
+}
+
 object Util {
 
     fun fullDateString(timestamp: Long): String {

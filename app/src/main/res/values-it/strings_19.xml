@@ -1,0 +1,33 @@
+<resources>
+    <string name="call_event">Evento Chiamata</string>
+    <string name="call_event_is_triggered">L\'evento chiamata %s è stato attivato.</string>
+    <string name="help_call_event">
+        <![CDATA[
+        Pre-elabora il numero in entrata prima che venga controllato dalle regole, rendendo possibile modificare le regole al volo.<br>
+        <br>
+        Questa azione deve essere la prima nel flusso di lavoro; un tale flusso di lavoro verrà attivato automaticamente da una chiamata in entrata.<br>
+        <br>
+        <font color="#00BFFF"><b>Una tipica configurazione del flusso di lavoro:</b></font><br>
+        - <b>Evento Chiamata</b> <br>
+        - <b>Modifica Numero</b> <br>
+        ]]>
+    </string>
+    <string name="action_modify_number">Modifica Numero</string>
+    <string name="modify_number_template">Il numero in entrata %s è stato modificato in %s.</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        Modifica il numero di chiamata in entrata prima che venga controllato dalle regole.<br>
+        <br>
+        <font color="#00BFFF"><b>Un caso d\'uso</b>:</font><br>
+        &ensp; Alcuni operatori di rete mobile supportano doppi numeri per la stessa scheda SIM, aggiungono cifre iniziali extra al numero secondario.<br>
+        &ensp;   Ad esempio: 3312345679 potrebbe diventare <font color="#888888">123</font>3312345679. <br>
+        &ensp; Le cifre iniziali <font color="#888888">123</font> devono essere rimosse prima che il numero venga controllato. <br>
+        <br>
+        <font color="#00BFFF"><b>Una configurazione tipica:</b></font> <br>
+        - <b>Evento Chiamata</b> <br>
+        - <b>Sostituisci Numero</b> <br>
+        &emsp; da: <font color="#888888">^123</font> <br>
+        &emsp; a: <font color="#888888">lasciare vuoto</fonts> <br>
+        ]]>
+    </string>
+</resources>

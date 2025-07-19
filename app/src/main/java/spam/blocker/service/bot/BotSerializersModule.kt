@@ -39,6 +39,8 @@ val botModule = SerializersModule {
         subclass(CategoryConfig::class)
         subclass(CalendarEvent::class)
         subclass(SmsEvent::class)
+        subclass(CallEvent::class)
+        subclass(ModifyNumber::class)
     }
 }
 
