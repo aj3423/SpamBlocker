@@ -29,6 +29,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.util.spf
 
 data class Indicator(
     val type: Int, // same as CheckResult.type, e.g.: RESULT_BLOCKED_BY_SPAM_DB
@@ -77,7 +78,7 @@ fun IndicatorIcons(indicators: Indicators) {
 fun IndicatorsWrapper(
     vm: HistoryViewModel,
     content: @Composable (
-            (number: String?, smsContent: String?) -> Indicators,
+            (number: String, smsContent: String?) -> Indicators,
             Boolean,
     ) -> Unit,
 ) {
@@ -120,60 +121,86 @@ fun IndicatorsWrapper(
         onRefresh = !onRefresh // refresh all records
     }
 
-    fun check(number: String?, smsContent: String?): Indicators {
+    fun check(number: String, smsContent: String?): Indicators {
         return buildList {
-            // 1. exist in spam db?
-            number?.let {
+            // 1. Number exist in spam db?
+            run {
                 if (SpamTable.findByNumber(ctx, number) != null) {
                     add(
-                        Indicator(type = RESULT_BLOCKED_BY_SPAM_DB, priority = 0)
+                        Indicator(type = RESULT_BLOCKED_BY_SPAM_DB, priority = spf.SpamDB(ctx).getPriority())
                     )
                 }
             }
 
-            // 2. exist in number rule?
-            number?.let {
-                val checkResult = Checker.checkCallWithCheckers(
-                    ctx = ctx,
-                    logger = null,
-                    rawNumber = number,
-                    checkers = numberCheckers,
-                )
-                val resultType = checkResult.type
+            if (vm.forType == Def.ForNumber) { // in Call Tab
+                // 2. Check if the call number matches any Number Rule?
+                run {
+                    val checkResult = Checker.checkCallWithCheckers(
+                        ctx = ctx,
+                        logger = null,
+                        rawNumber = number,
+                        checkers = numberCheckers,
+                    )
+                    val resultType = checkResult.type
 
-                when (resultType) {
-                    RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> {
-                        add(
-                            Indicator(
-                                type = resultType,
-                                priority = (checkResult as ByRegexRule).rule?.priority
-                                    ?: -1, // -1: rule deleted
+                    when (resultType) {
+                        RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> {
+                            add(
+                                Indicator(
+                                    type = resultType,
+                                    priority = (checkResult as ByRegexRule).rule?.priority
+                                        ?: -1, // -1: rule deleted
+                                )
                             )
-                        )
+                        }
                     }
                 }
-            }
+            } else { // in SMS Tab
 
-            // 3. exist in SMS content rule?
-            smsContent?.let {
-                val checkResult = Checker.checkSmsWithCheckers(
-                    ctx = ctx,
-                    logger = null,
-                    rawNumber = number ?: "",
-                    messageBody = smsContent,
-                    checkers = contentCheckers,
-                )
-                val resultType = checkResult.type
+                // 2. Check if the sms number matches any Number Rule?
+                run {
+                    val checkResult = Checker.checkSmsWithCheckers(
+                        ctx = ctx,
+                        logger = null,
+                        rawNumber = number,
+                        messageBody = smsContent ?: "",
+                        checkers = numberCheckers,
+                    )
+                    val resultType = checkResult.type
 
-                when (checkResult.type) {
-                    RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
-                        add(
-                            Indicator(
-                                type = resultType,
-                                priority = (checkResult as ByRegexRule).rule?.priority
-                                    ?: -1, // -1: rule deleted
+                    when (resultType) {
+                        RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> {
+                            add(
+                                Indicator(
+                                    type = resultType,
+                                    priority = (checkResult as ByRegexRule).rule?.priority
+                                        ?: -1, // -1: rule deleted
+                                )
                             )
-                        )
+                        }
+                    }
+                }
+                // 3. Check if the SMS matches any Number Rule or Content Rule?
+                run {
+                    val checkResult = Checker.checkSmsWithCheckers(
+                        ctx = ctx,
+                        logger = null,
+                        rawNumber = number,
+                        messageBody = smsContent ?: "",
+                        checkers = contentCheckers,
+                    )
+                    val resultType = checkResult.type
+
+                    when (checkResult.type) {
+                        RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
+                            add(
+                                Indicator(
+                                    type = resultType,
+                                    priority = (checkResult as ByRegexRule).rule?.priority
+                                        ?: -1, // -1: rule deleted
+                                )
+                            )
+                        }
                     }
                 }
             }
