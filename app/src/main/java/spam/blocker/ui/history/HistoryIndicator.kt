@@ -159,7 +159,7 @@ fun IndicatorsWrapper(
                 val checkResult = Checker.checkSmsWithCheckers(
                     ctx = ctx,
                     logger = null,
-                    rawNumber = "",
+                    rawNumber = number ?: "",
                     messageBody = smsContent,
                     checkers = contentCheckers,
                 )
