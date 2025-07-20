@@ -31,9 +31,6 @@ import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.executeAll
-import spam.blocker.service.checker.Checker.CalendarEventPreprocessor
-import spam.blocker.service.checker.Checker.CallPreprocessor
-import spam.blocker.service.checker.Checker.SmsPreprocessor
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
@@ -87,34 +84,58 @@ fun RegexRule.toNumberChecker(
         Checker.Number(ctx, this)
 }
 
-// These classes are also `IChecker`, will be added to the checkers list. But they have
-//  higher priorities and will get executed before other checkers. In this way, they can
-//  temporary modify other checkers, e.g.: disable a regex rule on the fly.
+// A pre-processor is simply a WorkflowRunner, it's also an `IChecker` and will be added to the
+//   checkers list. But they have higher priorities and will get executed before other checkers.
+// In this way, they can temporary modify other checkers, e.g.: disable a regex rule on the fly
+//   without modifying the configuration.
 object Preprocessors {
-    fun call(ctx: Context): List<CallPreprocessor> {
+
+    // Run a workflow.
+    open class WorkflowRunner(
+        val ctx: Context,
+        val bot: Bot,
+    ) : IChecker {
+        override fun priority(): Int {
+            // To make sure it's executed before all other rules.
+            return Int.MAX_VALUE - 1
+        }
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val aCtx = ActionContext(
+                logger = cCtx.logger,
+                rawNumber = cCtx.rawNumber,
+                smsContent = cCtx.smsContent,
+                cCtx = cCtx,
+            )
+            bot.actions.executeAll(ctx, aCtx)
+
+            return null
+        }
+    }
+    // Collect all `Call Event` that defined in Workflow section.
+    fun call(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val firstAction = it.actions.firstOrNull()
                 firstAction is CallEvent && firstAction.isActivated()
             }
             .map {
-                CallPreprocessor(ctx, it)
+                WorkflowRunner(ctx, it)
             }
     }
-
-    fun sms(ctx: Context): List<SmsPreprocessor> {
+    // Collect all `SMS Event` that defined in Workflow section.
+    fun sms(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val firstAction = it.actions.firstOrNull()
                 firstAction is SmsEvent && firstAction.isActivated()
             }
             .map {
-                SmsPreprocessor(ctx, it)
+                WorkflowRunner(ctx, it)
             }
     }
 
-    // Return a list of workflows that match currently ongoing calendar events.
-    fun calendarEvent(ctx: Context): List<CalendarEventPreprocessor> {
+    // Collect all `Calendar Event` that defined in Workflow section.
+    fun calendarEvent(ctx: Context): List<WorkflowRunner> {
         val bots = BotTable.listAll(ctx).filter {
             val firstAction = it.actions.firstOrNull()
             firstAction is CalendarEvent && firstAction.isActivated()
@@ -126,7 +147,7 @@ object Preprocessors {
         if (ongoingEvents.isEmpty()) // No calendar event currently occurring
             return listOf()
 
-        var ret = mutableListOf<CalendarEventPreprocessor>()
+        var ret = mutableListOf<WorkflowRunner>()
 
         ongoingEvents.forEach { eventTitle ->
             ret += bots
@@ -136,7 +157,7 @@ object Preprocessors {
                     ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
                 }
                 .map {
-                    CalendarEventPreprocessor(ctx, it, eventTitle)
+                    WorkflowRunner(ctx, it)
                 }
         }
         return ret
@@ -662,7 +683,7 @@ class Checker { // for namespace only
 
             val spf = spf.RecentApps(ctx)
 
-            val defaultDuration = spf.getDefaultMin() // in minutes
+            val duration = spf.getInXMin() // in minutes
 
             // To avoid querying db for each app, aggregate them by duration, like:
             //  pkg.a,pkg.b@20,pkg.c
@@ -673,7 +694,7 @@ class Checker { // for namespace only
             //  }
             //  So it only queries db twice: for 5 min and 20 min.
             val aggregation = spf.getList().groupBy {
-                it.duration ?: defaultDuration
+                it.duration ?: duration
             }.mapValues { (_, values) ->
                 values.map { it.pkgName }
             }
@@ -798,7 +819,7 @@ class Checker { // for namespace only
             var (winnerApi, result) = race(
                 competitors = apis,
                 timeoutMillis = timeLeft,
-                runner = {
+                runner = { api ->
                     { scope ->
                         try {
                             val aCtx = ActionContext(
@@ -807,7 +828,7 @@ class Checker { // for namespace only
                                 rawNumber = rawNumber,
                                 smsContent = cCtx.smsContent,
                             )
-                            val success = it.actions.executeAll(ctx, aCtx)
+                            val success = api.actions.executeAll(ctx, aCtx)
 
                             if (!success) {
                                 null
@@ -1272,77 +1293,6 @@ class Checker { // for namespace only
         }
     }
 
-    // This will be executed before other checkers, it modifies other rules before they are executed.
-    // For example, if there's a calendar event "work"(7am-7pm) and currently it's 8am, the event is
-    //  ongoing, so it will run actions like `Modify Rules`.
-    open class Preprocessor : IChecker {
-        override fun priority(): Int {
-            return Int.MAX_VALUE - 1
-        }
-
-        override fun check(cCtx: CheckContext): ICheckResult? {
-            return null
-        }
-    }
-    class CalendarEventPreprocessor(
-        private val ctx: Context,
-        private val bot: Bot,
-        private val eventTitle: String,
-    ) : Preprocessor() {
-
-        override fun check(cCtx: CheckContext): ICheckResult? {
-            val aCtx = ActionContext(
-                logger = cCtx.logger,
-                rawNumber = cCtx.rawNumber,
-                smsContent = cCtx.smsContent,
-                cCtx = cCtx,
-                isInMemory = true,
-            )
-            bot.actions.executeAll(ctx, aCtx)
-
-            // this is not a checker, it's just a pre-processor, always return null
-            return null
-        }
-    }
-
-    // This will be executed before other checkers, it modifies the incoming number before it's checked.
-    class CallPreprocessor(
-        private val ctx: Context,
-        private val bot: Bot,
-    ) : Preprocessor() {
-        override fun check(cCtx: CheckContext): ICheckResult? {
-            val aCtx = ActionContext(
-                logger = cCtx.logger,
-                rawNumber = cCtx.rawNumber,
-                smsContent = cCtx.smsContent,
-                cCtx = cCtx,
-            )
-            bot.actions.executeAll(ctx, aCtx)
-
-            // this is not a checker, it's just a pre-processor, always return null
-            return null
-        }
-    }
-
-    // This will be executed before other checkers, it modifies the incoming number before it's checked.
-    class SmsPreprocessor(
-        private val ctx: Context,
-        private val bot: Bot,
-    ) : Preprocessor() {
-        override fun check(cCtx: CheckContext): ICheckResult? {
-            val aCtx = ActionContext(
-                logger = cCtx.logger,
-                rawNumber = cCtx.rawNumber,
-                smsContent = cCtx.smsContent,
-                cCtx = cCtx,
-            )
-            bot.actions.executeAll(ctx, aCtx)
-
-            // this is not a checker, it's just a pre-processor, always return null
-            return null
-        }
-    }
-
 
     companion object {
 
@@ -1375,6 +1325,7 @@ class Checker { // for namespace only
                 return result
             }
 
+            // The call passed all rules.
             logger?.success(ctx.getString(R.string.passed_by_default))
             // pass by default
             return ByDefault()
@@ -1448,6 +1399,7 @@ class Checker { // for namespace only
                 return result
             }
 
+            // The SMS message passed all rules.
             logger?.success(ctx.getString(R.string.passed_by_default))
 
             // pass by default

@@ -480,13 +480,13 @@ class RecentApps : IConfig {
         val spf = spf.RecentApps(ctx)
         list.clear()
         list.addAll(spf.getList())
-        inXMin = spf.getDefaultMin()
+        inXMin = spf.getInXMin()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.RecentApps(ctx)
         spf.setList(list)
-        spf.setDefaultMin(inXMin)
+        spf.setInXMin(inXMin)
     }
 }
 

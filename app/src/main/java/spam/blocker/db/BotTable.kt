@@ -38,10 +38,10 @@ data class Bot(
     val lastLogTime: Long = 0,
 ) {
 
-    // TODO: refactor this ..
+    // TODO: refactor this .. later
 
-    // This is shown as the Bot summary on main UI
-    // 3 types: Scheduled / Manual / CalendarEvent / SmsEvent / Call_or_SMS
+    // This is displayed as the summary(the second row) in a bot card.
+    // types: Scheduled / Manual / CalendarEvent / SmsEvent / CallEvent
     @Composable
     fun TriggerType(modifier: Modifier) {
         val ctx = LocalContext.current

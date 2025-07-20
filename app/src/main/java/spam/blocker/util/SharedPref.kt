@@ -314,10 +314,10 @@ class spf { // for namespace only
             }
             setList(l)
         }
-        fun getDefaultMin() : Int {
+        fun getInXMin() : Int {
             return readInt(Def.SETTING_RECENT_APP_IN_X_MIN, 5)
         }
-        fun setDefaultMin(inXMin : Int) {
+        fun setInXMin(inXMin : Int) {
             writeInt(Def.SETTING_RECENT_APP_IN_X_MIN, inXMin)
         }
     }

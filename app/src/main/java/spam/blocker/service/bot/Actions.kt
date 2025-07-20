@@ -2370,6 +2370,9 @@ class CalendarEvent(
                     )
             )
         }
+        // Calendar Events modifies rules temporarily.
+        aCtx.isInMemory = true
+
         return triggered
     }
 
@@ -2581,11 +2584,20 @@ class CallEvent(
     var enabled : Boolean = true,
     var number: String = ".*",
     var numberFlags: Int = Def.DefaultRegexFlags,
-) : IPermissiveAction {
+) : IAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(
+            PermissionWrapper(Permission.callScreening),
+        )
+    }
     @Composable
     fun TriggerType(modifier: Modifier) {
         RowVCenterSpaced(2, modifier = modifier) {
             GreyIcon18(R.drawable.ic_incoming)
+            GreyLabel(
+                text = number,
+                modifier = M.padding(start = 4.dp)
+            )
         }
     }
     fun isActivated(): Boolean {

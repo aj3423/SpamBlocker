@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger
 // return:
 //   Pair(
 //     the winner, one of the competitors
-//     the first non-null value
+//     the first non-null value as the result
 //   )
 @Suppress("UNCHECKED_CAST")
 private suspend fun <C, R> racing(

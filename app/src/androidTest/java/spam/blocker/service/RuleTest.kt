@@ -300,7 +300,7 @@ class RuleTest {
     fun recent_app() {
         val spf = spf.RecentApps(ctx)
         val pkgs = listOf("my.pkg")
-        spf.setDefaultMin(5)
+        spf.setInXMin(5)
         spf.setList(pkgs.map { RecentAppInfo(it) })
 
         // block all number

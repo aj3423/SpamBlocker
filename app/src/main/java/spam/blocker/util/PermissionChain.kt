@@ -91,9 +91,9 @@ class PermissionChain() {
             contract = ActivityResultContracts.StartActivityForResult()
         ) { _ ->
             // The app process will be killed when the "all file access" is granted and then revoked
-            //   (by turning on the permission switch in system settings and then immediately turn it off).
+            //   (by turning on the permission switch in system settings and then immediately turned off).
             // After returning back to this app, android will launch a new process, but these
-            //   lateinit variables haven't been initialized in the new process, which leads to a crash.
+            //   `lateinit` variables haven't been initialized in the new process, which leads to a crash.
             // So check it first, if it's uninitialized, ignore and return.
             if (!::curr.isInitialized) {
                 return@rememberLauncherForActivityResult
