@@ -156,7 +156,7 @@ class RuleTest {
 
     // In Contact > blacklist
     @Test
-    fun contact_permissive() {
+    fun contact_lenient() {
         val spf = spf.Contact(ctx)
         spf.setEnabled(true)
         spf.setStrict(false)

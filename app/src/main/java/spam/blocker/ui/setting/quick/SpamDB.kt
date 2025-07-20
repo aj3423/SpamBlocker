@@ -257,6 +257,7 @@ fun SpamDB() {
                             }
                         }
                     },
+                    borderColor = Salmon,
                     onClick = {
                         popupTrigger.value = true
                     }
