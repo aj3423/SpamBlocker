@@ -32,10 +32,32 @@
     <string name="not_executed_yet">Pas encore exécuté</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Afficher des icônes devant le numéro pour indiquer s\'il existe dans la base de données de spam ou s\'il correspond à une règle regex.<br>
+        Affichez des icônes avant le numéro de téléphone pour indiquer s\'il existe dans la base de données des numéros indésirables ou s\'il y a une règle d\'expression régulière qui le correspond. <br>
         <br>
-        <font color="#ffa500">Remarque :</font><br>
-        Cela peut avoir un impact sur les performances lorsque la base de données est trop volumineuse ou qu\'il existe trop de règles regex.
+        D\'un coup d\'œil, vous pouvez vérifier sans effort si les enregistrements d\'historique sont couverts par les règles, vous n\'avez donc pas besoin de les tester individuellement. <br>
+        <br>
+        <font color="#ffa500">Note :</font><br>
+        Cela peut impacter les performances lorsqu\'il y a trop de règles d\'expression régulière. <br>
+        <br>
+        <b>Exemples :</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - La première icône verte de numéro indique que ce numéro sera autorisé par une règle de numéro. <br>
+        &ensp; - La deuxième icône rouge de SMS indique que ce contenu SMS sera bloqué par une règle de contenu. <br>
+        &ensp; - La troisième icône rouge de base de données indique que ce numéro existe dans la base de données des numéros indésirables. <br>
+        <br>
+        Ces icônes sont organisées par <font color="#ea86ff"><b>priorité</b></font>, la <b>première</b> icône indique
+        le résultat global. Cette règle de numéro a une priorité plus élevée, le message SMS sera finalement autorisé par celle-ci.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Il sera autorisé par une règle de contenu. <br>
+        &ensp; - Il sera bloqué par une règle de numéro. <br>
+        &ensp; - Il existe dans la base de données des numéros indésirables. <br>
+        <br>
+        La <b>première</b> icône indique que le message sera finalement autorisé par la règle de contenu.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Aucune règle de numéro ne le correspond, seulement une règle SMS et la base de données. Et il sera bloqué par une règle SMS.<br>
         ]]>
     </string>
     <string name="show_indicator">Afficher les drapeaux</string>

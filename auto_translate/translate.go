@@ -112,12 +112,30 @@ func write_file(fullpath string, data string) error {
 	return os.WriteFile(fullpath, []byte(data), 0666)
 }
 
+// unescape_quotes unescapes \" and \' in the input string, ignoring content within XML tags (<...>).
+func unescape_quotes(xmlString string) string {
+	// Match XML tags, CDATA sections, or escaped quotes
+	re := regexp.MustCompile(`<!\[CDATA\[|]]>|<[^>]*>|\\"|\\'`)
+
+	return re.ReplaceAllStringFunc(xmlString, func(match string) string {
+		switch match {
+		case `\"`:
+			return `"`
+		case `\'`:
+			return `'`
+		default:
+			// Return XML tags, CDATA, or other matches unchanged
+			return match
+		}
+	})
+}
+
 func read_xml(lang string, xml_fn string) string {
 	src_file := lang_xmls_dir(lang) + "/" + xml_fn
-
 	content := read_file(src_file)
-	content = strings.ReplaceAll(content, `\'`, `'`)
-	content = strings.ReplaceAll(content, `\"`, `"`)
+
+	content = unescape_quotes(content)
+
 	return strings.TrimSpace(content)
 }
 
@@ -145,7 +163,6 @@ func escape_quotes(xmlString string) string {
 }
 
 func write_xml(lang string, xml_fn string, content string) error {
-	// escaped := strings.ReplaceAll(content, "'", "\\'")
 	escaped := escape_quotes(content)
 	dir := lang_xmls_dir(lang)
 	os.MkdirAll(dir, 0666)

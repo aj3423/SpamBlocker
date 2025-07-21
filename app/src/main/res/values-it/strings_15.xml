@@ -14,14 +14,14 @@
         2. Apri la pagina API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Premi il pulsante "Crea chiave API".<br>
+        3. Premi il pulsante \"Crea chiave API\".<br>
         <br>
         4. Copia la chiave, poi inseriscila qui sotto.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Categorizza questo messaggio SMS come Politico, Frode, Sondaggio o Marketing.
-        Se nessuna categoria si applica, rispondi "Valido", altrimenti, rispondi solo con la categoria, non aggiungere altro.
+        Se nessuna categoria si applica, rispondi \"Valido\", altrimenti, rispondi solo con la categoria, non aggiungere altro.
         Il messaggio SMS è:
         {sms}
     </string>
@@ -32,10 +32,32 @@
     <string name="not_executed_yet">Non ancora eseguito</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Mostra icone prima del numero per indicare se esiste nel database di spam o se corrisponde a una regola regex.<br>
+        Mostra icone prima del numero per indicare se esiste nel database spam o se c\'è una regola regex che lo corrisponde. <br>
+        <br>
+        A colpo d\'occhio, puoi verificare facilmente se i record della cronologia sono coperti dalle regole, quindi non hai bisogno di testarli individualmente. <br>
         <br>
         <font color="#ffa500">Nota:</font><br>
-        Questo può influire sulle prestazioni quando il database è troppo grande o ci sono troppe regole regex.
+        Questo può influire sulle prestazioni quando ci sono troppe regole regex. <br>
+        <br>
+        <b>Esempi:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - La prima icona verde del numero indica che questo numero sarà consentito da una regola numerica. <br>
+        &ensp; - La seconda icona rossa SMS indica che questo contenuto SMS sarà bloccato da una regola di contenuto. <br>
+        &ensp; - La terza icona rossa del database indica che questo numero esiste nel database dei numeri spam. <br>
+        <br>
+        Queste icone sono disposte per <font color="#ea86ff"><b>priorità</b></font>, la <b>prima</b> icona indica
+        il risultato complessivo. Quella regola numerica ha una priorità più alta, il messaggio SMS sarà infine consentito da essa.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Sarà consentito da una regola di contenuto. <br>
+        &ensp; - Sarà bloccato da una regola numerica. <br>
+        &ensp; - esiste nel database dei numeri spam. <br>
+        <br>
+        La <b>prima</b> icona indica che il messaggio sarà infine consentito dalla regola di contenuto.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Nessuna regola numerica lo corrisponde, solo regola SMS e database. E sarà bloccato da una regola SMS.<br>
         ]]>
     </string>
     <string name="show_indicator">Mostra Indicatori</string>

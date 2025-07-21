@@ -14,14 +14,14 @@
         2. API sayfasını açın:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. "API anahtarı oluştur" düğmesine basın.<br>
+        3. \"API anahtarı oluştur\" düğmesine basın.<br>
         <br>
         4. Anahtarı kopyalayın ve aşağıya yapıştırın.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Bu SMS mesajını Siyasi, Sahtekarlık, Anket veya Pazarlama olarak kategorize edin.
-        Hiçbiri uygulanmazsa "Geçerli" yanıtını verin, aksi takdirde yalnızca kategoriyi yanıtlayın, başka bir şey yanıtlamayın.
+        Hiçbiri uygulanmazsa \"Geçerli\" yanıtını verin, aksi takdirde yalnızca kategoriyi yanıtlayın, başka bir şey yanıtlamayın.
         SMS mesajı:
         {sms}
     </string>
@@ -32,10 +32,31 @@
     <string name="not_executed_yet">Henüz çalıştırılmadı</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Numaranın spam veritabanında olup olmadığını veya herhangi bir regex kuralıyla eşleşip eşleşmediğini belirtmek için numaranın önünde simgeler gösterin.<br>
+        Numaranın spam veritabanında olup olmadığını veya eşleşen bir regex kuralı olup olmadığını belirtmek için numaranın önünde simgeleri gösterin. <br>
+        <br>
+        Hızlıca bakarak, geçmiş kayıtlarının kurallar tarafından kapsanıp kapsanmadığını zahmetsizce doğrulayabilir, böylece her birini tek tek test etmenize gerek kalmaz. <br>
         <br>
         <font color="#ffa500">Not:</font><br>
-        Veritabanı çok büyük olduğunda veya çok fazla regex kuralı olduğunda bu, performansı etkileyebilir.
+        Çok fazla regex kuralı olduğunda bu, performansı etkileyebilir. <br>
+        <br>
+        <b>Örnekler:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - İlk yeşil numara simgesi, bu telefon numarasının bir numara kuralı tarafından izin verileceğini belirtir. <br>
+        &ensp; - İkinci kırmızı SMS simgesi, bu SMS içeriğinin bir içerik kuralı tarafından engelleneceğini belirtir. <br>
+        &ensp; - Üçüncü kırmızı veritabanı simgesi, bu telefon numarasının spam telefon numarası veritabanında bulunduğunu belirtir. <br>
+        <br>
+        Bu simgeler <font color="#ea86ff"><b>önceliğe</b></font> göre sıralanır, <b>ilk</b> simge genel sonucu gösterir. Bu telefon numarası kuralı daha yüksek bir önceliğe sahiptir, SMS mesajına nihayetinde bu kural tarafından izin verilecektir.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Bir içerik kuralı tarafından izin verilecektir. <br>
+        &ensp; - Bir numara kuralı tarafından engellenecektir. <br>
+        &ensp; - spam telefon numarası veritabanında bulunur. <br>
+        <br>
+        <b>İlk</b> simge, mesajın nihayetinde içerik kuralı tarafından izin verileceğini belirtir.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Hiçbir numara kuralı eşleşmiyor, sadece SMS kuralı ve veritabanı. Ve bir SMS kuralı tarafından engellenecek.<br>
         ]]>
     </string>
     <string name="show_indicator">Bayrakları Göster</string>

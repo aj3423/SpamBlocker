@@ -14,14 +14,14 @@
         2. Obre la pàgina de l\'API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Prem el botó "Create API key" (Crea la clau API).<br>
+        3. Prem el botó \"Create API key\" (Crea la clau API).<br>
         <br>
         4. Copia la clau i, a continuació, emplena-la a continuació.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Classifica aquest missatge SMS com a Polític, Frau, Enquesta o Màrqueting.
-        Si no s\'aplica cap, respon "Vàlid", en cas contrari, respon només la categoria, no responguis res més.
+        Si no s\'aplica cap, respon \"Vàlid\", en cas contrari, respon només la categoria, no responguis res més.
         El missatge SMS és:
         {sms}
     </string>
@@ -33,10 +33,32 @@
     <string name="show_indicator">Mostra els indicadors</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Mostra icones abans del número per indicar si existeix a la base de dades de correu brossa o si coincideix amb alguna regla d\'expressió regular.<br>
+        Mostra icones abans del número per indicar si existeix a la base de dades de correu brossa o si hi ha alguna regla de regex que hi coincideixi. <br>
+        <br>
+        A simple vista, pots verificar sense esforç si els registres de l\'historial estan coberts per les regles, de manera que no cal que els provis individualment. <br>
         <br>
         <font color="#ffa500">Nota:</font><br>
-        Això pot afectar el rendiment quan la base de dades és massa gran o hi ha massa regles d\'expressió regular.
+        Això pot afectar el rendiment quan hi ha massa regles de regex. <br>
+        <br>
+        <b>Exemples:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - La primera icona de número verd indica que aquest número serà permès per una regla de número. <br>
+        &ensp; - La segona icona de SMS vermella indica que aquest contingut de SMS serà bloquejat per una regla de contingut. <br>
+        &ensp; - La tercera icona de base de dades vermella indica que aquest número existeix a la base de dades de números de correu brossa. <br>
+        <br>
+        Aquestes icones estan ordenades per <font color="#ea86ff"><b>prioritat</b></font>; la <b>primera</b> icona indica
+        el resultat general. Aquesta regla de número té una prioritat més alta, el missatge SMS finalment serà permès per ella.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Serà permès per una regla de contingut. <br>
+        &ensp; - Serà bloquejat per una regla de número. <br>
+        &ensp; - Existeix a la base de dades de números de correu brossa. <br>
+        <br>
+        La <b>primera</b> icona indica que el missatge finalment serà permès per la regla de contingut.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Cap regla de número hi coincideix, només la regla de SMS i la base de dades. I serà bloquejat per una regla de SMS.<br>
         ]]>
     </string>
     <string name="enable_for_mms">Activa per a MMS</string>

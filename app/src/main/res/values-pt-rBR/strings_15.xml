@@ -14,14 +14,14 @@
         2. Abra a página da API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Pressione o botão "Criar chave da API".<br>
+        3. Pressione o botão \"Criar chave da API\".<br>
         <br>
         4. Copie a chave e preencha abaixo.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Classifique esta mensagem de SMS como Política, Fraude, Pesquisa ou Marketing.
-        Se nenhuma das opções se aplicar, responda "Válido", caso contrário, responda apenas com a categoria, não responda nada mais.
+        Se nenhuma das opções se aplicar, responda \"Válido\", caso contrário, responda apenas com a categoria, não responda nada mais.
         A mensagem de SMS é:
         {sms}
     </string>
@@ -32,10 +32,33 @@
     <string name="not_executed_yet">Ainda não executado</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Mostre ícones antes do número para indicar se ele existe no banco de dados de spam ou se corresponde a alguma regra regex.<br>
+        Mostre ícones antes do número para indicar se ele existe no banco de dados de spam ou se há alguma regra de expressão regular que o corresponda. <br>
         <br>
-        <font color="#ffa500">Observação:</font><br>
-        Isso pode impactar o desempenho quando o banco de dados é muito grande ou há muitas regras regex.
+        Num relance rápido, você pode verificar sem esforço se os registros do histórico são cobertos pelas regras, para que você não precise testá-los individualmente. <br>
+        <br>
+
+        <font color="#ffa500">Nota:</font><br>
+        Isso pode impactar o desempenho quando há muitas regras de expressão regular. <br>
+        <br>
+        <b>Exemplos:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - O primeiro ícone verde de número indica que este número será permitido por uma regra de número. <br>
+        &ensp; - O segundo ícone vermelho de SMS indica que este conteúdo de SMS será bloqueado por uma regra de conteúdo. <br>
+        &ensp; - O terceiro ícone vermelho de banco de dados indica que este número existe no banco de dados de números de spam. <br>
+        <br>
+        Esses ícones são organizados por <font color="#ea86ff"><b>prioridade</b></font>, o <b>primeiro</b> ícone indica
+        o resultado geral. Essa regra de número tem uma prioridade maior, a mensagem SMS será eventualmente permitida por ela.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Será permitido por uma regra de conteúdo. <br>
+        &ensp; - Será bloqueado por uma regra de número. <br>
+        &ensp; - existe no banco de dados de números de spam. <br>
+        <br>
+        O <b>primeiro</b> ícone indica que a mensagem será eventualmente permitida pela regra de conteúdo.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Nenhuma regra de número o corresponde, apenas regra de SMS e banco de dados. E será bloqueado por uma regra de SMS.<br>
         ]]>
     </string>
     <string name="show_indicator">Mostrar Sinalizadores</string>

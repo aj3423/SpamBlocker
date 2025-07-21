@@ -32,6 +32,7 @@ const val BalloonCornerRadius = 6
 const val BalloonBorderWidthDark = 0.2
 const val BalloonBorderWidthLight = 0.6
 
+// For embedding images, see HtmlText.kt
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BalloonWrapper(

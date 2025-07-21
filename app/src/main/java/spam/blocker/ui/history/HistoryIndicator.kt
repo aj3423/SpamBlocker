@@ -180,7 +180,7 @@ fun IndicatorsWrapper(
                         }
                     }
                 }
-                // 3. Check if the SMS matches any Number Rule or Content Rule?
+                // 3. Check if the SMS matches any Content Rule?
                 run {
                     val checkResult = Checker.checkSmsWithCheckers(
                         ctx = ctx,

@@ -21,7 +21,7 @@
     </string>
     <string name="spam_sms_prompt_template">
         Kategorisieren Sie diese SMS-Nachricht als Politisch, Betrug, Umfrage oder Marketing.
-        Wenn nichts zutrifft, antworten Sie mit "Gültig", andernfalls antworten Sie nur mit der Kategorie, antworten Sie sonst nichts.
+        Wenn nichts zutrifft, antworten Sie mit \"Gültig\", andernfalls antworten Sie nur mit der Kategorie, antworten Sie sonst nichts.
         Die SMS-Nachricht lautet:
         {sms}
     </string>
@@ -32,10 +32,33 @@
     <string name="not_executed_yet">Noch nicht ausgeführt</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Zeigen Sie Symbole vor der Nummer an, um anzugeben, ob sie in der Spam-Datenbank vorhanden ist oder mit einer Regex-Regel übereinstimmt.<br>
+        Symbole vor der Telefonnummer anzeigen, um anzuzeigen, ob sie in der Spam-Datenbank vorhanden ist oder ob eine Regex-Regel zutrifft. <br>
         <br>
+        Auf einen Blick können Sie mühelos überprüfen, ob die Verlaufsaufzeichnungen von den Regeln abgedeckt sind, sodass Sie sie nicht einzeln testen müssen. <br>
+        <br>
+
         <font color="#ffa500">Hinweis:</font><br>
-        Dies kann die Leistung beeinträchtigen, wenn die Datenbank zu groß ist oder zu viele Regex-Regeln vorhanden sind.
+        Dies kann die Leistung beeinträchtigen, wenn es zu viele Regex-Regeln gibt. <br>
+        <br>
+        <b>Beispiele:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - Das erste grüne Telefonnummern-Symbol zeigt an, dass diese Telefonnummer durch eine Telefonnummern-Regel zugelassen wird. <br>
+        &ensp; - Das zweite rote SMS-Symbol zeigt an, dass dieser SMS-Inhalt durch eine Inhaltsregel blockiert wird. <br>
+        &ensp; - Das dritte rote Datenbank-Symbol zeigt an, dass diese Telefonnummer in der Spam-Telefonnummern-Datenbank vorhanden ist. <br>
+        <br>
+        Diese Symbole sind nach <font color="#ea86ff"><b>Priorität</b></font> angeordnet, das <b>erste</b> Symbol zeigt
+        das Gesamtergebnis an. Diese Telefonnummern-Regel hat eine höhere Priorität, die SMS-Nachricht wird letztendlich dadurch zugelassen.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Sie wird durch eine Inhaltsregel zugelassen. <br>
+        &ensp; - Sie wird durch eine Telefonnummern-Regel blockiert. <br>
+        &ensp; - Sie ist in der Spam-Telefonnummern-Datenbank vorhanden. <br>
+        <br>
+        Das <b>erste</b> Symbol zeigt an, dass die Nachricht letztendlich durch die Inhaltsregel zugelassen wird.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Keine Telefonnummern-Regel passt, nur SMS-Regel und Datenbank. Und sie wird durch eine SMS-Regel blockiert.<br>
         ]]>
     </string>
     <string name="show_indicator"><short>Zeige Flags</short></string>

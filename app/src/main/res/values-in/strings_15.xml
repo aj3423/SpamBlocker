@@ -14,14 +14,14 @@
         2. Buka halaman API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Tekan tombol "Buat Kunci API" .<br>
+        3. Tekan tombol \"Buat Kunci API\" .<br>
         <br>
         4. Salin kunci tersebut, kemudian isikan di bawah ini.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Kategorikan pesan SMS ini sebagai Politik, Penipuan, Survei, atau Pemasaran.
-        Jika tidak ada, jawablah "Sah", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
+        Jika tidak ada, jawablah \"Sah\", jika tidak, jawablah kategorinya saja, jangan menjawab apa pun.
         Pesan SMS-nya adalah:
         {sms}
     </string>
@@ -33,10 +33,33 @@
     <string name="show_indicator">Tampilkan Tanda</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Tampilkan ikon sebelum nomor untuk menunjukkan apakah nomor tersebut ada di basis data spam, atau apakah nomor tersebut cocok dengan aturan regex.<br>
+        Tampilkan ikon sebelum nomor untuk menunjukkan apakah nomor tersebut ada di database spam atau ada aturan regex yang cocok dengannya. <br>
         <br>
+        Sekilas, Anda dapat dengan mudah memverifikasi apakah catatan riwayat tercakup oleh aturan, jadi Anda tidak perlu mengujinya satu per satu. <br>
+        <br>
+
         <font color="#ffa500">Catatan:</font><br>
-        Hal ini dapat berdampak pada performa ketika basis data terlalu besar atau terdapat terlalu banyak aturan regex.
+        Ini dapat memengaruhi kinerja jika ada terlalu banyak aturan regex. <br>
+        <br>
+        <b>Contoh:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - Ikon nomor hijau pertama menunjukkan nomor ini akan diizinkan oleh aturan nomor. <br>
+        &ensp; - Ikon SMS merah kedua menunjukkan konten SMS ini akan diblokir oleh aturan konten. <br>
+        &ensp; - Ikon database merah ketiga menunjukkan nomor ini ada di database nomor spam. <br>
+        <br>
+        Ikon-ikon ini disusun berdasarkan <font color="#ea86ff"><b>prioritas</b></font>, ikon <b>pertama</b> menunjukkan
+        hasil keseluruhan. Aturan nomor tersebut memiliki prioritas lebih tinggi, pesan SMS pada akhirnya akan diizinkan olehnya.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Itu akan diizinkan oleh aturan konten. <br>
+        &ensp; - Itu akan diblokir oleh aturan nomor. <br>
+        &ensp; - itu ada di database nomor spam. <br>
+        <br>
+        Ikon <b>pertama</b> menunjukkan pesan pada akhirnya akan diizinkan oleh aturan konten.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Tidak ada aturan nomor yang cocok dengannya, hanya aturan SMS dan database. Dan itu akan diblokir oleh aturan SMS.<br>
         ]]>
     </string>
     <string name="enable_for_mms">Aktifkan untuk MMS</string>

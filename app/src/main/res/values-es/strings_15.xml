@@ -14,14 +14,14 @@
         2. Abre la página de la API:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Pulsa el botón "Crear clave API".<br>
+        3. Pulsa el botón \"Crear clave API\".<br>
         <br>
         4. Copia la clave y luego complétala a continuación.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Clasifica este mensaje SMS como Político, Fraude, Encuesta o Marketing.
-        Si no aplica ninguno, responde "Válido", de lo contrario, responde solo la categoría, no respondas nada más.
+        Si no aplica ninguno, responde \"Válido\", de lo contrario, responde solo la categoría, no respondas nada más.
         El mensaje SMS es:
         {sms}
     </string>
@@ -32,10 +32,32 @@
     <string name="not_executed_yet">Aún no ejecutado</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Muestra iconos antes del número para indicar si existe en la base de datos de spam, o si coincide con alguna regla regex.<br>
+        Muestre iconos antes del número para indicar si existe en la base de datos de spam o si hay alguna regla de expresión regular que coincida. <br>
+        <br>
+        De un vistazo rápido, puede verificar sin esfuerzo si los registros del historial están cubiertos por las reglas, para que no necesite probarlos individualmente. <br>
         <br>
         <font color="#ffa500">Nota:</font><br>
-        Esto puede afectar el rendimiento cuando la base de datos es demasiado grande o hay demasiadas reglas regex.
+        Esto puede afectar el rendimiento cuando hay demasiadas reglas de expresión regular. <br>
+        <br>
+        <b>Ejemplos:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - El primer icono de número verde indica que este número será permitido por una regla de número. <br>
+        &ensp; - El segundo icono de SMS rojo indica que este contenido SMS será bloqueado por una regla de contenido. <br>
+        &ensp; - El tercer icono de base de datos rojo indica que este número existe en la base de datos de números spam. <br>
+        <br>
+        Estos iconos están organizados por <font color="#ea86ff"><b>prioridad</b></font>, el <b>primer</b> icono indica
+        el resultado general. Esa regla de número tiene una prioridad más alta, el mensaje SMS eventualmente será permitido por ella.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - Será permitido por una regla de contenido. <br>
+        &ensp; - Será bloqueado por una regla de número. <br>
+        &ensp; - Existe en la base de datos de números spam. <br>
+        <br>
+        El <b>primer</b> icono indica que el mensaje eventualmente será permitido por la regla de contenido.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        Ninguna regla de número coincide, solo la regla de SMS y la base de datos. Y será bloqueado por una regla de SMS.<br>
         ]]>
     </string>
     <string name="show_indicator">Mostrar indicadores</string>

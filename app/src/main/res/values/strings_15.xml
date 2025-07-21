@@ -33,10 +33,32 @@
     <string name="show_indicator">Show Flags</string>
     <string name="help_show_indicator">
         <![CDATA[
-        Show icons before the number to indicate whether it exists in the spam database, or does it match any regex rule.<br>
+        Show icons before the number to indicate whether it exists in the spam database or is there any regex rule that matches it. <br>
+        <br>
+        At a quick glance, you can effortlessly verify if the history records are covered by the rules, so you don\'t need to test them individually. <br>
         <br>
         <font color="#ffa500">Note:</font><br>
-        This can impact the performance when the database is too large or there are too many regex rules.
+        This can impact the performance when there are too many regex rules. <br>
+        <br>
+        <b>Examples:</b> <br>
+        <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
+        &ensp; - The first green number icon indicates this number will be allowed by a number rule. <br>
+        &ensp; - The second red SMS icon indicates this SMS content will be blocked by a content rule. <br>
+        &ensp; - The third red database icon indicates this number exists in the spam number database. <br>
+        <br>
+        These icons are arranged by <font color="#ea86ff"><b>priority</b></font>, the <b>first</b> icon indicates
+        the overall result. That number rule has a higher priority, the SMS message will eventually be allowed by it.<br>
+        <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
+        &ensp; - It will be allowed by a content rule. <br>
+        &ensp; - It will be blocked by a number rule. <br>
+        &ensp; - it exists in the spam number database. <br>
+        <br>
+        The <b>first</b> icon indicates the message will eventually be allowed by the content rule.<br>
+        <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
+        No number rule matches it, only SMS rule and database. And it will be blocked by an SMS rule.<br>
         ]]>
     </string>
     <string name="enable_for_mms">Enable for MMS</string>
