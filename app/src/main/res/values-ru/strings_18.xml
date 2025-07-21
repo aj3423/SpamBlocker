@@ -62,7 +62,7 @@
     <string name="perm_battery_unrestricted">Без ограничений батареи</string>
     <string name="include_sms">Включить SMS</string>
     <string name="minimal_duration">Минимальная продолжительность</string>
-    <string name="answered_number">Отвеченные</string>
+    <string name="answered_number">Отвеченные номера</string>
     <string name="help_answered">
         <![CDATA[
         Разрешать звонки с номеров, на которые ранее был дан ответ.<br>

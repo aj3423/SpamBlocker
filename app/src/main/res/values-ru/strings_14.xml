@@ -13,7 +13,7 @@
         %s
         ]]>
     </string>
-    <string name="invalid_auth_credentials">Пожалуйста, введите действительные учетные данные.</string>
+    <string name="invalid_auth_credentials">Пожалуйста, введите достоверные учетные данные.</string>
     <string name="delay">Задержка</string>
     <string name="exclude_services">Исключить сервисы</string>
     <string name="help_exclude_bg_service">
