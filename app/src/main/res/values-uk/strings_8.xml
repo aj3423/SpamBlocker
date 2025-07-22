@@ -78,12 +78,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Отримати <u>байти вмісту</u> з файлу.
+        Отримати <u>байти вмісту</u> з файлу. <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5"><b>шляху</b></font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5"><b>імені файлу</b></font>: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Записати <u>байти вмісту</u> у файл.
+        Записати <u>байти вмісту</u> у файл. <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5"><b>шляху</b></font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5"><b>імені файлу</b></font>: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

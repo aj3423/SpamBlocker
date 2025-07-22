@@ -3,7 +3,7 @@
         تنظيف قاعدة بيانات السجل، حذف السجلات قبل الطابع الزمني: %s.
     </string>
     <string name="cleaning_up_spam_db">
-        تنظيف قاعدة بيانات الرسائل المزعجة، حذف %s سجلات قبل الطابع الزمني: %s".
+        تنظيف قاعدة بيانات الرسائل المزعجة، حذف %s سجلات قبل الطابع الزمني: %s\".
     </string>
     <string name="resolved_url">عنوان URL المُحلَّل: %s</string>
     <string name="time_cost">الوقت المستغرق: %s مللي ثانية.</string>
@@ -45,14 +45,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; السنة، على سبيل المثال: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; سيتم إضافة صفر بادئة إلى الرقم المكون من رقم واحد، على سبيل المثال: <br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; سيتم إضافة هذه القيم بدون صفر بادئة، على سبيل المثال: <br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; سيتم حشو الأرقام المكونة من رقم واحد بصفر بادئ، مثال: <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; يصبح <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; هذه القيم لن يتم حشوها، مثال: <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; يصبح <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; يمكن استخدام هذه القيم لمحاكاة جدول تدوير، على سبيل المثال: <br>
+        &emsp; <font color="#888888">إجراء نسخ احتياطية يومية والاحتفاظ بأحدث سبعة نسخ احتياطية فقط.</font> <br>
         ]]>
     </string>
     <string name="help_http_url">
@@ -81,7 +98,7 @@
         1. سجل حسابًا على <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. في صفحة الإعدادات: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         اضغط على زر "Generate API key".<br>
+         اضغط على زر \"Generate API key\".<br>
         <br>
         3. املأ مفتاح API الذي تم إنشاؤه أدناه.
         ]]>

@@ -58,7 +58,7 @@
         1. Registrieren Sie ein Konto unter <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. Auf der Einstellungsseite: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         drücken Sie die Schaltfläche "API-Schlüssel generieren".<br>
+         drücken Sie die Schaltfläche \"API-Schlüssel generieren\".<br>
         <br>
         3. Tragen Sie den generierten API-Schlüssel unten ein.
         ]]>
@@ -89,14 +89,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; Das Jahr, z.B.: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Einstellige Zahlen werden mit einer führenden Null aufgefüllt, z.B.: <br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Diese Werte werden ohne führende Null aufgefüllt, z.B.: <br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; Einzellne Ziffern werden mit einer führenden Null aufgefüllt, z.B.: <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; wird zu <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; Diese Werte werden nicht aufgefüllt, z.B.: <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; wird zu <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; Diese können verwendet werden, um einen Rotationsplan zu simulieren, zum Beispiel: <br>
+        &emsp; <font color="#888888">Tägliche Sicherungen durchführen und nur die sieben aktuellsten Sicherungen aufbewahren.</font> <br>
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Alpha- oder leere Nummer überspringen.</string>

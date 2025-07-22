@@ -78,12 +78,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        ファイルから<u>コンテンツバイト</u>を取得します。
+        ファイルから<u>コンテンツバイト</u>を取得します。<br>
+        <br>
+        サポートされている<font color="#03DAC5"><b>パス</b></font>タグ：<br>
+        <br>
+        %s <br>
+        <br>
+        サポートされている<font color="#03DAC5"><b>ファイル名</b></font>タグ：<br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        <u>コンテンツバイト</u>をファイルに書き込みます。
+        <u>コンテンツバイト</u>をファイルに書き込みます。<br>
+        <br>
+        サポートされている<font color="#03DAC5"><b>パス</b></font>タグ：<br>
+        <br>
+        %s <br>
+        <br>
+        サポートされている<font color="#03DAC5"><b>ファイル名</b></font>タグ：<br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

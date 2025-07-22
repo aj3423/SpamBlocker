@@ -89,12 +89,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Obteniu els <u>bytes de contingut</u> d\'un fitxer.
+        Obtenir els <u>bytes de contingut</u> d\'un fitxer. <br>
+        <br>
+        Etiquetes de <font color="#03DAC5"><b>ruta</b></font> admeses: <br>
+        <br>
+        %s <br>
+        <br>
+        Etiquetes de <font color="#03DAC5"><b>nom de fitxer</b></font> admeses: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Escriu <u>bytes de contingut</u> a un fitxer.
+        Escriure <u>bytes de contingut</u> a un fitxer. <br>
+        <br>
+        Etiquetes de <font color="#03DAC5"><b>ruta</b></font> admeses: <br>
+        <br>
+        %s <br>
+        <br>
+        Etiquetes de <font color="#03DAC5"><b>nom de fitxer</b></font> admeses: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

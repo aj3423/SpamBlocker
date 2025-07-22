@@ -78,12 +78,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Bir dosyadan <u>içerik baytlarını</u> al.
+        Bir dosyadan <u>içerik baytlarını</u> al. <br>
+        <br>
+        Desteklenen <font color="#03DAC5"><b>yol</b></font> etiketleri: <br>
+        <br>
+        %s <br>
+        <br>
+        Desteklenen <font color="#03DAC5"><b>dosya adı</b></font> etiketleri: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Bir dosyaya <u>içerik baytlarını</u> yaz.
+        <u>İçerik baytlarını</u> bir dosyaya yaz. <br>
+        <br>
+        Desteklenen <font color="#03DAC5"><b>yol</b></font> etiketleri: <br>
+        <br>
+        %s <br>
+        <br>
+        Desteklenen <font color="#03DAC5"><b>dosya adı</b></font> etiketleri: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

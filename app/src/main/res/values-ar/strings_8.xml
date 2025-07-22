@@ -89,12 +89,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        الحصول على <u>وحدات بايت للمحتوى</u> من ملف.
+        الحصول على <u>بايتات المحتوى</u> من ملف. <br>
+        <br>
+        علامات <font color="#03DAC5"><b>المسار</b></font> المدعومة: <br>
+        <br>
+        %s <br>
+        <br>
+        علامات <font color="#03DAC5"><b>اسم الملف</b></font> المدعومة: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        كتابة <u>وحدات بايت للمحتوى</u> إلى ملف.
+        كتابة <u>بايتات المحتوى</u> إلى ملف. <br>
+        <br>
+        علامات <font color="#03DAC5"><b>المسار</b></font> المدعومة: <br>
+        <br>
+        %s <br>
+        <br>
+        علامات <font color="#03DAC5"><b>اسم الملف</b></font> المدعومة: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

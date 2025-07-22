@@ -55,7 +55,6 @@ fun Contacts() {
 
                     RadioGroup(items = items, selectedIndex = if (isStrict) 1 else 0) { clickedIdx ->
                         isStrict = clickedIdx == 1
-                        logi("isStrict: $isStrict")
                         spf.setStrict(isStrict)
                     }
                 }

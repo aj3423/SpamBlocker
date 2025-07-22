@@ -605,7 +605,10 @@ class ReadFile(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_read_file)
+        return ctx.getString(R.string.help_action_read_file).format(
+            ctx.getString(R.string.path_tags),
+            ctx.getString(R.string.time_tags)
+        )
     }
 
     override fun inputParamType(): List<ParamType> {
@@ -673,7 +676,10 @@ class WriteFile(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_write_file)
+        return ctx.getString(R.string.help_action_write_file).format(
+            ctx.getString(R.string.path_tags),
+            ctx.getString(R.string.time_tags)
+        )
     }
 
     override fun inputParamType(): List<ParamType> {

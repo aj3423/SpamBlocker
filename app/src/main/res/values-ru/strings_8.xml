@@ -89,12 +89,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Получить <u>байты содержимого</u> из файла.
+        Получить <u>байты содержимого</u> из файла. <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5"><b>пути</b></font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5"><b>имени файла</b></font>: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Записать <u>байты содержимого</u> в файл.
+        Записать <u>байты содержимого</u> в файл. <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5"><b>пути</b></font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5"><b>имени файла</b></font>: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

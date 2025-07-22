@@ -45,14 +45,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; The year, e.g.: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Single-digit number will be padded with leading zero, e.g.: <br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; These values will be padded without leading zero, e.g.: <br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; Single-digit number will be padded with a leading zero, e.g.: <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; becomes <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; These values will not be padded, e.g.: <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; becomes <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; These can be used to simulate a rotation schedule, for instance: <br>
+        &emsp; <font color="#888888">Perform daily backups and only keep the seven most recent backups.</font> <br>
         ]]>
     </string>
     <string name="help_http_url">

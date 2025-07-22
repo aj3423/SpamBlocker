@@ -45,14 +45,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; השנה, למשל: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; מספר חד-ספרתי ירופד באפס מוביל, למשל: <br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; ערכים אלה ירופדו ללא אפס מוביל, למשל: <br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; מספרים בעלי ספרה אחת יקבלו ריפוד של אפס מוביל, לדוגמה: <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; הופך ל- <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; ערכים אלה לא יקבלו ריפוד, לדוגמה: <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; הופך ל- <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; אלה יכולים לשמש לדימוי לוח זמנים סיבובי, לדוגמה: <br>
+        &emsp; <font color="#888888">בצע גיבויים יומיים ושמור רק את שבעת הגיבויים האחרונים.</font> <br>
         ]]>
     </string>
     <string name="help_http_url">
@@ -80,7 +97,7 @@
         <![CDATA[
         1. רשום חשבון ב- <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
-        2. בדף ההגדרות: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>, לחץ על הכפתור "צור מפתח API".<br>
+        2. בדף ההגדרות: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>, לחץ על הכפתור \"צור מפתח API\".<br>
         <br>
         3. מלא את מפתח ה-API שנוצר למטה.
         ]]>

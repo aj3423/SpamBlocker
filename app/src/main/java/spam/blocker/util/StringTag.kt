@@ -21,6 +21,11 @@ fun String.resolveTimeTags(): String {
         .replace("{hour_index}", now.hour.toString())
         .replace("{minute_index}", now.minute.toString())
         .replace("{second_index}", now.second.toString())
+
+        .replace("{day_of_week}", now.dayOfWeek.toString())
+        .replace("{day_of_week_index}", now.dayOfWeek.value.toString())
+
+
 }
 
 fun String.resolvePathTags(): String {

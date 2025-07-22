@@ -89,12 +89,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        קבל את <u>הבתים של התוכן</u> מקובץ.
+        קבל את <u>בתים של תוכן</u> מקובץ. <br>
+        <br>
+        תגי <font color="#03DAC5"><b>נתיב</b></font> נתמכים: <br>
+        <br>
+        %s <br>
+        <br>
+        תגי <font color="#03DAC5"><b>שם קובץ</b></font> נתמכים: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        כתוב <u>בתים של תוכן</u> לקובץ.
+        כתוב <u>בתים של תוכן</u> לקובץ. <br>
+        <br>
+        תגי <font color="#03DAC5"><b>נתיב</b></font> נתמכים: <br>
+        <br>
+        %s <br>
+        <br>
+        תגי <font color="#03DAC5"><b>שם קובץ</b></font> נתמכים: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

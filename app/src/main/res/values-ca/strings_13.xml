@@ -3,7 +3,7 @@
         Netejant la base de dades de l\'historial, suprimint els registres anteriors a la marca de temps: %s.
     </string>
     <string name="cleaning_up_spam_db">
-        Netejant la base de dades de correu brossa, suprimint %s registres anteriors a la marca de temps: %s".
+        Netejant la base de dades de correu brossa, suprimint %s registres anteriors a la marca de temps: %s\".
     </string>
     <string name="resolved_url">URL resolta: %s</string>
     <string name="time_cost">Temps emprat: %s mil·lisegons.</string>
@@ -45,14 +45,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; L\'any, per exemple: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; El número d\'un sol dígit s\'omplirà amb un zero inicial, per exemple: <br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Aquests valors s\'ompliran sense un zero inicial, per exemple: <br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; Els números d\'un sol dígit s\'emplenaran amb un zero inicial, per exemple: <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; esdevé <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; Aquests valors no s\'emplenaran, per exemple: <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; esdevé <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; Aquests es poden utilitzar per simular un calendari de rotació, per exemple: <br>
+        &emsp; <font color="#888888">Realitzar còpies de seguretat diàries i només conservar les set còpies de seguretat més recents.</font> <br>
         ]]>
     </string>
     <string name="help_http_url">
@@ -81,7 +98,7 @@
         1. Registreu un compte a <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. A la pàgina de configuració: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         premeu el botó "Genera clau API".<br>
+         premeu el botó \"Genera clau API\".<br>
         <br>
         3. Introduïu la clau API generada a continuació.
         ]]>

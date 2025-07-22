@@ -89,12 +89,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Ambil <u>byte isi</u> dari berkas.
+        Dapatkan <u>byte konten</u> dari berkas. <br>
+        <br>
+        Tag <font color="#03DAC5"><b>jalur</b></font> yang didukung: <br>
+        <br>
+        %s <br>
+        <br>
+        Tag <font color="#03DAC5"><b>nama berkas</b></font> yang didukung: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Tulis <u>byte isi</u> ke berkas.
+        Tulis <u>byte konten</u> ke berkas. <br>
+        <br>
+        Tag <font color="#03DAC5"><b>jalur</b></font> yang didukung: <br>
+        <br>
+        %s <br>
+        <br>
+        Tag <font color="#03DAC5"><b>nama berkas</b></font> yang didukung: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

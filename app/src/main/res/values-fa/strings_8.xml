@@ -89,12 +89,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        دریافت <u>بایت‌های محتوا</u> از یک فایل.
+        دریافت <u>بایت‌های محتوا</u> از یک فایل. <br>
+        <br>
+        تگ‌های <font color="#03DAC5"><b>مسیر</b></font> پشتیبانی شده: <br>
+        <br>
+        %s <br>
+        <br>
+        تگ‌های <font color="#03DAC5"><b>نام فایل</b></font> پشتیبانی شده: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        نوشتن <u>بایت‌های محتوا</u> به یک فایل.
+        نوشتن <u>بایت‌های محتوا</u> در یک فایل. <br>
+        <br>
+        تگ‌های <font color="#03DAC5"><b>مسیر</b></font> پشتیبانی شده: <br>
+        <br>
+        %s <br>
+        <br>
+        تگ‌های <font color="#03DAC5"><b>نام فایل</b></font> پشتیبانی شده: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

@@ -78,12 +78,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Obtenir les <u>octets de contenu</u> à partir d\'un fichier.
+        Obtenir les <u>octets de contenu</u> d\'un fichier. <br>
+        <br>
+        Balises <font color="#03DAC5"><b>chemin</b></font> prises en charge : <br>
+        <br>
+        %s <br>
+        <br>
+        Balises <font color="#03DAC5"><b>nom de fichier</b></font> prises en charge : <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Écrire des <u>octets de contenu</u> dans un fichier.
+        Écrire des <u>octets de contenu</u> dans un fichier. <br>
+        <br>
+        Balises <font color="#03DAC5"><b>chemin</b></font> prises en charge : <br>
+        <br>
+        %s <br>
+        <br>
+        Balises <font color="#03DAC5"><b>nom de fichier</b></font> prises en charge : <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

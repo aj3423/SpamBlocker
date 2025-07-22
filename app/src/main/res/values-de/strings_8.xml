@@ -78,12 +78,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        Laden Sie die <u>Inhaltsbytes</u> aus einer Datei.
+        Die <u>Inhaltsbytes</u> aus einer Datei abrufen. <br>
+        <br>
+        Unterstützte <font color="#03DAC5"><b>Pfad</b></font>-Tags: <br>
+        <br>
+        %s <br>
+        <br>
+        Unterstützte <font color="#03DAC5"><b>Dateinamen</b></font>-Tags: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        Schreiben Sie <u>Inhaltsbytes</u> in eine Datei.
+        <u>Inhaltsbytes</u> in eine Datei schreiben. <br>
+        <br>
+        Unterstützte <font color="#03DAC5"><b>Pfad</b></font>-Tags: <br>
+        <br>
+        %s <br>
+        <br>
+        Unterstützte <font color="#03DAC5"><b>Dateinamen</b></font>-Tags: <br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

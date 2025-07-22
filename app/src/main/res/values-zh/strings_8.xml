@@ -78,12 +78,28 @@
     </string>
     <string name="help_action_read_file">
         <![CDATA[
-        从文件获取<u>内容字节</u>。
+        从文件中获取<u>内容字节</u>。<br>
+        <br>
+        支持的<font color="#03DAC5"><b>路径</b></font>标签：<br>
+        <br>
+        %s <br>
+        <br>
+        支持的<font color="#03DAC5"><b>文件名</b></font>标签：<br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_write_file">
         <![CDATA[
-        将<u>内容字节</u>写入文件。
+        将<u>内容字节</u>写入文件。<br>
+        <br>
+        支持的<font color="#03DAC5"><b>路径</b></font>标签：<br>
+        <br>
+        %s <br>
+        <br>
+        支持的<font color="#03DAC5"><b>文件名</b></font>标签：<br>
+        <br>
+        %s
         ]]>
     </string>
     <string name="help_action_parse_csv">

@@ -89,14 +89,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; L\'année, par ex. : 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; Les nombres à un seul chiffre seront complétés par un zéro en tête, par ex. :<br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Ces valeurs seront complétées sans zéro en tête, par ex. :<br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; Les nombres à un chiffre seront complétés par un zéro initial, ex : <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; devient <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; Ces valeurs ne seront pas complétées, ex : <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; devient <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; Ceux-ci peuvent être utilisés pour simuler un horaire de rotation, par exemple : <br>
+        &emsp; <font color="#888888">Effectuer des sauvegardes quotidiennes et ne conserver que les sept sauvegardes les plus récentes.</font> <br>
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Ignorer les numéros alphabétiques ou vides.</string>

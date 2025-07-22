@@ -3,7 +3,7 @@
         Pulizia del database della cronologia, eliminazione dei record precedenti all\'istante: %s.
     </string>
     <string name="cleaning_up_spam_db">
-        Pulizia del database spam, eliminazione di %s record precedenti all\'istante: %s".
+        Pulizia del database spam, eliminazione di %s record precedenti all\'istante: %s\".
     </string>
     <string name="resolved_url">URL risolto: %s</string>
     <string name="time_cost">Costo tempo: %s millisecondi.</string>
@@ -39,14 +39,31 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{year}</b></font><br>
-        &ensp; L\'anno, es.: 2024<br>
-        - <font color="#00BFFF"><b>{month} {day}</b></font><br>
-        &ensp; I numeri a una cifra saranno completati con uno zero iniziale, es.: <br>
-        &emsp; {month}_{day} -> 01_02<br>
-        - <font color="#00BFFF"><b>{month_index} {day_index}</b></font><br>
-        &ensp; Questi valori saranno completati senza zero iniziale, es.: <br>
-        &emsp; {month}_{day} -> 1_2<br>
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; I numeri a singola cifra verranno riempiti con uno zero iniziale, ad esempio: <br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; diventa <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; Questi valori non verranno riempiti, ad esempio: <br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; diventa <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; Questi possono essere usati per simulare un programma di rotazione, ad esempio: <br>
+        &emsp; <font color="#888888">Esegui backup giornalieri e conserva solo i sette backup più recenti.</font> <br>
         ]]>
     </string>
     <string name="help_http_url">
@@ -75,7 +92,7 @@
         1. Registra un account su <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>
         <br>
         2. Nella pagina delle impostazioni: <a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>,
-         premi il pulsante "Genera chiave API".<br>
+         premi il pulsante \"Genera chiave API\".<br>
         <br>
         3. Inserisci la chiave API generata qui sotto.
         ]]>
