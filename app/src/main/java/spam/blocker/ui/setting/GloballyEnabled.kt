@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -27,11 +29,14 @@ import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
+import spam.blocker.ui.widgets.Button
+import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
@@ -198,23 +203,23 @@ fun GloballyEnabled() {
         helpTooltip = Str(R.string.help_globally_enabled),
         content = {
             if (G.globallyEnabled.value) {
-
-                Box(modifier = M
-                    .clickable {
-                        popupTrigger.value = true
-                    }) {
-                    Row {
-                        ResImage(
-                            R.drawable.ic_call,
-                            if (callEnabled) C.enabled else C.disabled,
-                            M.padding(end = 4.dp)
-                        )
-                        ResImage(
-                            R.drawable.ic_sms,
-                            if (smsEnabled) C.enabled else C.disabled,
-                            M.padding(end = 16.dp)
-                        )
+                Button(
+                    content = {
+                        RowVCenterSpaced(4) {
+                            ResImage(
+                                R.drawable.ic_call,
+                                if (callEnabled) C.enabled else C.disabled,
+                                M.size(20.dp)
+                            )
+                            ResImage(
+                                R.drawable.ic_sms,
+                                if (smsEnabled) C.enabled else C.disabled,
+                                M.size(20.dp)
+                            )
+                        }
                     }
+                ) {
+                    popupTrigger.value = true
                 }
             }
             SwitchBox(G.globallyEnabled.value) { enabled ->

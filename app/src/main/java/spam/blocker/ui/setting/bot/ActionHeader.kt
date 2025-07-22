@@ -67,18 +67,25 @@ fun TestActionButton(
     fun testActions(
         content: String? = null,
     ) {
-        logTrigger.value = true
-        logStr.value = buildAnnotatedString {} // clear previous log
+        // Gather all required permissions for all actions
+        val requiredPermissions = actions.map { it.requiredPermissions(ctx) }.flatten()
 
-        coroutine.launch {
-            withContext(IO) {
-                val aCtx = ActionContext(
-                    logger = JetpackTextLogger(logStr, C),
-                    rawNumber = content,
-                    smsContent = content,
-                    tagCategory = tagOther,
-                )
-                actions.executeAll(ctx, aCtx)
+        G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
+            if (isGranted) {
+                logTrigger.value = true
+                logStr.value = buildAnnotatedString {} // clear previous log
+
+                coroutine.launch {
+                    withContext(IO) {
+                        val aCtx = ActionContext(
+                            logger = JetpackTextLogger(logStr, C),
+                            rawNumber = content,
+                            smsContent = content,
+                            tagCategory = tagOther,
+                        )
+                        actions.executeAll(ctx, aCtx)
+                    }
+                }
             }
         }
     }

@@ -226,7 +226,7 @@ fun MeetingMode() {
                             content = {
                                 PriorityLabel(priority.intValue)
                             },
-                            borderColor = Salmon
+//                            borderColor = Salmon
                         ) {
                             buttonPopupTrigger.value = true
                         }

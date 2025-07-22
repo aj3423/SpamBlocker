@@ -101,7 +101,7 @@ fun Stir() {
                             }
                         }
                     },
-                    borderColor = if (isStrict) Salmon else C.textGrey
+//                    borderColor = if (isStrict) Salmon else C.textGrey
                 ) {
                     popupTrigger.value = true
                 }
