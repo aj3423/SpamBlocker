@@ -29,9 +29,7 @@
     <string name="apply_to">Terapkan ke</string>
     <string name="Delete">Hapus</string>
     <string name="undelete">Batal Hapus</string>
-    <string name="passed">Lolos</string>
     <string name="passed_by_default">Lolos secara default</string>
-    <string name="blocked">Diblokir</string>
     <string name="from">Dari</string>
     <string name="copy">Salin</string>
     <string name="copied_to_clipboard">`%s` tersalin ke papan klip.</string>

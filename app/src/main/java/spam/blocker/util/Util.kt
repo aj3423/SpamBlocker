@@ -49,9 +49,7 @@ typealias Lambda2<A, B> = (A, B) -> Unit
 typealias Lambda3<A, B, C> = (A, B, C) -> Unit
 typealias Lambda4<A, B, C, D> = (A, B, C, D) -> Unit
 
-val Context.isFreshInstall get() = with(packageManager.getPackageInfo(packageName, 0)) {
-    firstInstallTime == lastUpdateTime
-}
+
 
 fun String.escape(): String {
     return this
@@ -128,6 +126,15 @@ fun String.regexReplace(
 }
 
 object Util {
+
+    fun <T>inRange(index: Int, list: List<T>) : Boolean {
+        return index >= 0 && index < list.size
+    }
+    fun isFreshInstall(ctx: Context) : Boolean {
+        return with(ctx.packageManager.getPackageInfo(ctx.packageName, 0)) {
+            firstInstallTime == lastUpdateTime
+        }
+    }
 
     fun fullDateString(timestamp: Long): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd\nHH:mm", Locale.getDefault())

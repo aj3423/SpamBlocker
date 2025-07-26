@@ -46,6 +46,7 @@ import spam.blocker.ui.setting.quick.Contacts
 import spam.blocker.ui.setting.quick.Dialed
 import spam.blocker.ui.setting.quick.EmergencySituation
 import spam.blocker.ui.setting.quick.MeetingMode
+import spam.blocker.ui.setting.quick.Notification
 import spam.blocker.ui.setting.quick.OffTime
 import spam.blocker.ui.setting.quick.RecentApps
 import spam.blocker.ui.setting.quick.RepeatedCall
@@ -73,7 +74,7 @@ import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Lambda
-import spam.blocker.util.isFreshInstall
+import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.spf
 
 const val SettingRowMinHeight = 40
@@ -97,7 +98,7 @@ fun SettingScreen() {
     val spf = spf.Global(ctx)
     var alsoShowText by remember {
         mutableStateOf(
-            ctx.isFreshInstall && !spf.isTestingIconClicked()
+            isFreshInstall(ctx) && !spf.isTestingIconClicked()
         )
     }
     FabWrapper(
@@ -160,6 +161,7 @@ fun SettingScreen() {
                             OffTime()
                             EmergencySituation()
                             BlockType()
+                            Notification()
                         }
                     }
 

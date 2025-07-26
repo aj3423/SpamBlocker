@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>Aucun</item>
-        <item>Ombre</item>
-        <item>Barre d\'état, Ombre</item>
-        <item>Son, Barre d\'état, Ombre</item>
-        <item>Son, Barre d\'état, Ombre, Notification contextuelle</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Exporter en Json</item>
         <item>Exporter compressé</item>

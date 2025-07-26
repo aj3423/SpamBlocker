@@ -22,6 +22,8 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.HistoryRecord
+import spam.blocker.db.Notification.Channel
+import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
@@ -64,9 +66,11 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.AppIcon
-import spam.blocker.util.Notification
+import spam.blocker.util.Notification.ShowType
+import spam.blocker.util.Notification.missingChannel
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 
@@ -172,11 +176,22 @@ interface ICheckResult {
     }
 
     // The default notification channel for default call/sms, when it's not overridden by per rule type
-    fun getSpamImportance(isCall: Boolean): Int {
-        return if (isCall)
-            Notification.IMPORTANCE_DEFAULT_SPAM_CALL
-        else
-            Notification.IMPORTANCE_DEFAULT_SPAM_SMS
+    fun getNotificationChannel(ctx: Context, showType: ShowType): Channel {
+
+        logi("showType: $showType")
+
+        val spf = spf.Notification(ctx)
+
+        val channelId = when (showType) {
+            ShowType.SPAM_CALL -> spf.getSpamCallChannelId()
+            ShowType.SPAM_SMS -> spf.getSpamSmsChannelId()
+            ShowType.VALID_SMS -> spf.getValidSmsChannelId()
+        }
+
+        val channel = ChannelTable.findByChannelId(ctx, channelId)
+            ?: missingChannel(ctx, channelId)
+
+        return channel
     }
 }
 
@@ -428,21 +443,21 @@ class ByRegexRule(
     }
 
     override fun getBlockType(ctx: Context): Int {
-        return if (rule != null)
-            rule.blockType // per rule setting
-        else
-            super.getBlockType(ctx) // fallback to global setting
+        return rule?.blockType // per rule setting
+            ?: super.getBlockType(ctx) // fallback to global setting
     }
 
     override fun hangUpDelay(ctx: Context): Int {
         return rule?.blockTypeConfig?.toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
     }
 
-    override fun getSpamImportance(isCall: Boolean): Int {
-        return if (rule != null)
-            rule.importance // per rule setting
-        else
-            super.getSpamImportance(isCall) // fallback to global setting
+    override fun getNotificationChannel(ctx: Context, showType: ShowType): Channel {
+        if (rule == null) { // rule deleted?
+            return super.getNotificationChannel(ctx, showType) // fallback to global setting
+        }
+
+        return ChannelTable.findByChannelId(ctx, rule.channel)
+            ?: missingChannel(ctx, rule.channel)
     }
 
     override fun resultReasonStr(ctx: Context): String {

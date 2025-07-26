@@ -30,4 +30,99 @@
         &emsp; zu: <font color="#888888">leer lassen</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">Gesperrt</string>
+    <string name="allowed">Durchgelassen</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Deaktiviert, überhaupt keine Benachrichtigung. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Erscheint in der Statusleiste und im Benachrichtigungsfeld. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Spielt einen Ton ab. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Erscheint als Heads-up-Pop-up.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Während aktiver SMS-Chats können Benachrichtigungstöne störend sein und werden stummgeschaltet. <br>
+        <br>
+        Als aktiver Chat gilt, wenn der Bildschirm entsperrt ist und die SMS-App im Vordergrund ist.
+        ]]>
+    </string>
+    <string name="none">Keine</string>
+    <string name="low">Niedrig</string>
+    <string name="high">Hoch</string>
+    <string name="sms_chat">SMS-Chat</string>
+    <string name="call_channel">Anrufkanal</string>
+    <string name="sms_channel">SMS-Kanal</string>
+    <string name="missing_notification_channel">Fehlender Benachrichtigungskanal: %s</string>
+    <string name="channel_id">Kanal-ID</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        Diese ID wird in den Systemeinstellungen als Benachrichtigungskanal angezeigt. <br>
+        <br>
+        Einmal erstellt, kann die ID nicht mehr bearbeitet werden.
+        ]]>
+    </string>
+    <string name="channel_importance">Wichtigkeit</string>
+    <string name="channel_group">Kanalgruppe</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Wenn leer gelassen, werden Benachrichtigungen automatisch in drei Kategorien gruppiert:<br>
+        <br>
+        - Spam-Anruf <br>
+        - Spam-SMS <br>
+        - Gültige SMS <br>
+        <br>
+        Wenn eine Gruppe angegeben ist, werden sie separat gruppiert.
+        ]]>
+    </string>
+    <string name="mute">Stummschalten</string>
+    <string name="sound">Ton</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Einschränkung</b></font><br>
+        Aufgrund der Android-Einschränkung kann der Benachrichtigungston nur beim Erstellen eines neuen Kanals eingestellt werden; einmal erstellt, kann er nicht mehr geändert werden. <br>
+        <br>
+        <font color="#03DAC5"><b>Problemumgehungen</b></font><br>
+        1. Lösche den Kanal und erstelle einen neuen mit einer anderen Kanal-ID. <br>
+        &emsp; Es funktioniert nicht, wenn sie dieselbe Kanal-ID haben, da Android den gelöschten Kanal einfach \"wiederherstellt\" anstatt einen neuen zu erstellen. <br>
+        2. Manuelles Ändern des Kanalsounds in den Systemeinstellungen: <br>
+        &emsp; - Langes Tippen auf das App-Symbol <br>
+        &emsp; - App-Info <br>
+        &emsp; - Benachrichtigungen <br>
+        &emsp; - Benachrichtigungskategorien <br>
+        &emsp; - Tippe auf diesen Kanal und ändere den Ton <br>
+        <br>
+        <b>Benutzerdefinierter Ton</b><br>
+        Sie können benutzerdefinierte Klingeltöne in den Systemeinstellungen importieren und diese dann in der App auswählen.<br>
+        ]]>
+    </string>
+    <string name="default_">Standard</string>
+    <string name="select_notification_sound">Benachrichtigungston auswählen</string>
+    <string name="unknown">Unbekannt</string>
+    <string name="icon_color">Symbolfarbe</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        Der ARGB-Farbwert, dargestellt im Dezimalformat. <br>
+        <br>
+        Leer lassen für automatische Farbauswahl. <br>
+        <br>
+        Zum Beispiel:<br>
+        Der Dezimalwert von <font color="#FF0000">0xFF0000</font> ist <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Löschen bestätigen?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Einen neuen Benachrichtigungskanal erstellen. <br>
+        <br>
+        <font color="#03DAC5"><b>Langes Tippen</b></font> auf einen Benachrichtigungskanal in dieser Dropdown-Liste zum Bearbeiten.
+        ]]>
+    </string>
 </resources>

@@ -9,6 +9,8 @@ import spam.blocker.db.Api
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.Notification.Channel
+import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
@@ -18,6 +20,8 @@ import spam.blocker.db.RuleTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.service.bot.botJson
+import spam.blocker.util.Notification.createChannel
+import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Permission
 import spam.blocker.util.spf
 import spam.blocker.util.spf.MeetingAppInfo
@@ -442,6 +446,45 @@ class BlockType : IConfig {
     }
 }
 
+
+
+@Serializable
+class Notification : IConfig {
+    var spamCallChannel = ""
+    var spamSmsChannel = ""
+    var validSmsChannel = ""
+    var activeSmsChatChannel = ""
+
+    val channels = mutableListOf<Channel>()
+
+    override fun load(ctx: Context) {
+        val spf = spf.Notification(ctx)
+        spamCallChannel = spf.getSpamCallChannelId()
+        spamSmsChannel = spf.getSpamSmsChannelId()
+        validSmsChannel = spf.getValidSmsChannelId()
+        activeSmsChatChannel = spf.getActiveSmsChatChannelId()
+        channels.clear()
+        channels.addAll(ChannelTable.listAll(ctx))
+    }
+
+    override fun apply(ctx: Context) {
+        // 1. spf
+        spf.Notification(ctx).apply {
+            setSpamCallChannelId(spamCallChannel)
+            setSpamSmsChannelId(spamSmsChannel)
+            setValidSmsChannelId(validSmsChannel)
+            setActiveSmsChatChannelId(activeSmsChatChannel)
+        }
+        // 2. Table and System channels
+        ChannelTable.clearAll(ctx)
+        deleteAllChannels(ctx)
+        channels.forEach {
+            ChannelTable.add(ctx, it)
+            createChannel(ctx, it)
+        }
+    }
+}
+
 @Serializable
 class OffTime : IConfig {
     var enabled = false
@@ -656,6 +699,7 @@ class Configs {
     val recentApps = RecentApps()
     val meetingMode = MeetingMode()
     val blockType = BlockType()
+    val notification = Notification()
     val offTime = OffTime()
 
     val numberRules = NumberRules()
@@ -692,6 +736,7 @@ class Configs {
             recentApps,
             meetingMode,
             blockType,
+            notification,
             offTime,
 
             numberRules,

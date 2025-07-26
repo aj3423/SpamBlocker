@@ -30,4 +30,99 @@
         &emsp; до: <font color="#888888">залишити порожнім</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">Заблоковано</string>
+    <string name="allowed">Пройшло</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Вимкнено, сповіщень немає взагалі. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        З\'являється в рядку стану та шторці сповіщень. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Відтворює звук. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        З\'являється як спливаюче вікно.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Під час активних SMS-чатів звуки сповіщень можуть дратувати та вимикаються. <br>
+        <br>
+        Активним чатом вважається, коли екран розблоковано, а SMS-додаток знаходиться на передньому плані.
+        ]]>
+    </string>
+    <string name="none">Немає</string>
+    <string name="low">Низький</string>
+    <string name="high">Високий</string>
+    <string name="sms_chat">SMS-чат</string>
+    <string name="call_channel">Канал викликів</string>
+    <string name="sms_channel">SMS-канал</string>
+    <string name="missing_notification_channel">Відсутній канал сповіщень: %s</string>
+    <string name="channel_id">Ідентифікатор каналу</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        Цей ідентифікатор відображатиметься в системних налаштуваннях як канал сповіщень. <br>
+        <br>
+        Після створення ідентифікатор не можна редагувати.
+        ]]>
+    </string>
+    <string name="channel_importance">Важливість</string>
+    <string name="channel_group">Група каналів</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Якщо залишити порожнім, сповіщення автоматично групуються за трьома категоріями:<br>
+        <br>
+        - Спам-дзвінок <br>
+        - Спам-SMS <br>
+        - Дійсний SMS <br>
+        <br>
+        Якщо вказана група, вони будуть згруповані окремо.
+        ]]>
+    </string>
+    <string name="mute">Без звуку</string>
+    <string name="sound">Звук</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Обмеження</b></font><br>
+        Через обмеження Android, звук сповіщення можна встановити лише при створенні нового каналу; після його створення він не може бути змінений. <br>
+        <br>
+        <font color="#03DAC5"><b>Обхідні шляхи</b></font><br>
+        1. Видаліть канал і створіть новий з іншим ідентифікатором каналу. <br>
+        &emsp; Це не спрацює, якщо вони мають однаковий ідентифікатор каналу, оскільки Android просто \"відновить\" видалений канал замість створення нового. <br>
+        2. Вручну змініть звук каналу в системних налаштуваннях: <br>
+        &emsp; - Довге натискання на іконку додатка <br>
+        &emsp; - Інформація про додаток <br>
+        &emsp; - Сповіщення <br>
+        &emsp; - Категорії сповіщень <br>
+        &emsp; - Натисніть на цей канал і змініть звук <br>
+        <br>
+        <b>Власний звук</b><br>
+        Ви можете імпортувати власні мелодії дзвінка в системних налаштуваннях, а потім вибрати їх у додатку.<br>
+        ]]>
+    </string>
+    <string name="default_">За замовчуванням</string>
+    <string name="select_notification_sound">Виберіть звук сповіщення</string>
+    <string name="unknown">Невідомий</string>
+    <string name="icon_color">Колір значка</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        Значення кольору ARGB, представлене в десятковому форматі. <br>
+        <br>
+        Залиште порожнім для автоматичного вибору кольорів. <br>
+        <br>
+        Наприклад:<br>
+        Десяткове значення <font color="#FF0000">0xFF0000</font> дорівнює <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Підтвердити видалення?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Створити новий канал сповіщень. <br>
+        <br>
+        <font color="#03DAC5"><b>Довге натискання</b></font> на канал сповіщень у цьому випадаючому списку для його редагування.
+        ]]>
+    </string>
 </resources>

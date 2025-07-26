@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>هیچ</item>
-        <item>سایه</item>
-        <item>نوار وضعیت، سایه</item>
-        <item>صدا، نوار وضعیت، سایه</item>
-        <item>صدا، نوار وضعیت، سایه، اعلان سر بالا</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>خروجی به صورت Json</item>
         <item>خروجی به صورت فشرده</item>

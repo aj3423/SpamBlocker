@@ -30,4 +30,101 @@
         &emsp; ke: <font color="#888888">biarkan kosong</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">Diblokir</string>
+    <string name="allowed">Lolos</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Dinonaktifkan, tidak ada notifikasi sama sekali. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Muncul di bilah status dan tirai notifikasi. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Memutar suara. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Muncul sebagai pop-up heads-up.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Selama obrolan SMS aktif, suara notifikasi mungkin mengganggu dan dibisukan. <br>
+        <br>
+        Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS berada di latar depan.
+        ]]>
+    </string>
+    <string name="none">Tidak Ada</string>
+    <string name="low">Rendah</string>
+    <string name="high">Tinggi</string>
+    <string name="sms_chat">Obrolan SMS</string>
+    <string name="call_channel">Saluran Panggilan</string>
+    <string name="sms_channel">Saluran SMS</string>
+    <string name="missing_notification_channel">Saluran notifikasi tidak ditemukan: %s</string>
+    <string name="channel_id">ID Saluran</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        ID ini akan muncul di pengaturan sistem sebagai saluran notifikasi. <br>
+        <br>
+        Setelah dibuat, ID tidak dapat diubah.
+        ]]>
+    </string>
+    <string name="channel_importance">Kepentingan</string>
+    <string name="channel_group">Grup Saluran</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Jika dibiarkan kosong, notifikasi akan otomatis dikelompokkan menjadi tiga kategori:<br>
+        <br>
+        - Panggilan spam <br>
+        - SMS spam <br>
+        - SMS Valid <br>
+        <br>
+        Jika grup ditentukan, mereka akan dikelompokkan secara terpisah.
+        ]]>
+    </string>
+    <string name="mute">Bisukan</string>
+    <string name="sound">Suara</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Batasan</b></font><br>
+        Karena batasan Android, suara notifikasi hanya dapat diatur saat membuat saluran baru,
+         setelah dibuat, tidak dapat dimodifikasi. <br>
+        <br>
+        <font color="#03DAC5"><b>Solusi</b></font><br>
+        1. Hapus saluran, buat yang baru dengan ID saluran yang berbeda. <br>
+        &emsp; Ini tidak akan berfungsi jika memiliki ID saluran yang sama, karena Android hanya akan \"memulihkan\"
+         saluran yang dihapus tersebut alih-alih membuat yang baru. <br>
+        2. Ubah suara saluran secara manual di pengaturan sistem: <br>
+        &emsp; - Tekan lama ikon aplikasi <br>
+        &emsp; - Info Aplikasi <br>
+        &emsp; - Notifikasi <br>
+        &emsp; - Kategori notifikasi <br>
+        &emsp; - Ketuk saluran tersebut dan ubah suara <br>
+        <br>
+        <b>Suara Kustom</b><br>
+        Anda dapat mengimpor nada dering kustom di pengaturan sistem, lalu memilihnya di aplikasi.<br>
+        ]]>
+    </string>
+    <string name="default_">Bawaan</string>
+    <string name="select_notification_sound">Pilih suara notifikasi</string>
+    <string name="unknown">Tidak Dikenal</string>
+    <string name="icon_color">Warna Ikon</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        Nilai warna ARGB, direpresentasikan dalam format desimal. <br>
+        <br>
+        Biarkan kosong untuk pemilihan warna otomatis. <br>
+        <br>
+        Contoh:<br>
+        Nilai desimal dari <font color="#FF0000">0xFF0000</font> adalah <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Konfirmasi untuk menghapus?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Buat saluran notifikasi baru. <br>
+        <br>
+        <font color="#03DAC5"><b>Tekan lama</b></font> saluran notifikasi dalam daftar dropdown ini untuk mengeditnya.
+        ]]>
+    </string>
 </resources>

@@ -9,7 +9,7 @@
         <br>
         <font color="#00BFFF"><b>A typical workflow setup:</b></font><br>
         - <b>Call Event</b> <br>
-        - <b>Modify Number</b> <br>
+        - <b>Modify Number</b>
         ]]>
     </string>
     <string name="action_modify_number">Modify Number</string>
@@ -27,7 +27,104 @@
         - <b>Call Event</b> <br>
         - <b>Replace Number</b> <br>
         &emsp; from: <font color="#888888">^123</font> <br>
-        &emsp; to: <font color="#888888">leave as empty</fonts> <br>
+        &emsp; to: <font color="#888888">leave as empty</fonts>
+        ]]>
+    </string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Disabled, no notification at all. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Appears in the status bar and notification shade. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Plays a sound. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Appears as a heads-up pop-up.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        During active SMS chats, notification sounds may be annoying and are muted. <br>
+        <br>
+        It\'s considered active chatting when the screen is unlocked and the SMS app is in the foreground.
+        ]]>
+    </string>
+    <string name="none">None</string>
+    <string name="low">Low</string>
+    <string name="high">High</string>
+    <string name="sms_chat">SMS Chat</string>
+    <string name="blocked">Blocked</string>
+    <string name="allowed">Allowed</string>
+    <string name="call_channel">Call Channel</string>
+    <string name="sms_channel">SMS Channel</string>
+    <string name="missing_notification_channel">Missing notification channel: %s</string>
+    <string name="channel_id">Channel ID</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        This ID will appear in system settings as the notification channel. <br>
+        <br>
+        Once created, the ID cannot be edited.
+        ]]>
+    </string>
+    <string name="channel_importance">Importance</string>
+    <string name="channel_group">Channel Group</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        When left empty, notifications are automatically grouped into three categories:<br>
+        <br>
+        - Spam call <br>
+        - Spam SMS <br>
+        - Valid SMS <br>
+        <br>
+        If a group is specified, they will be grouped separately.
+        ]]>
+    </string>
+    <string name="mute">Mute</string>
+    <string name="sound">Sound</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Limitation</b></font><br>
+        Due to the Android restriction, the notification sound can only be set when creating a new channel,
+         once it\'s created, it cannot be modified. <br>
+        <br>
+        <font color="#03DAC5"><b>Workarounds</b></font><br>
+        1. Delete the channel create a new one with a different channel id. <br>
+        &emsp; It won\'t work if they have the same channel id, as Android will simply \"recover\"
+         that deleted channel instead of creating a new one. <br>
+        2. Manually modify the channel sound in system settings: <br>
+        &emsp; - Long tap the app icon <br>
+        &emsp; - App Info <br>
+        &emsp; - Notifications <br>
+        &emsp; - Notification categories <br>
+        &emsp; - Tap that channel and modify the sound <br>
+        <br>
+        <b>Custom Sound</b><br>
+        You can import custom ringtones in the system settings, then select them in the app.<br>
+        ]]>
+    </string>
+    <string name="default_">Default</string>
+    <string name="select_notification_sound">Select notification sound</string>
+    <string name="unknown">Unknown</string>
+    <string name="icon_color">Icon Color</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        The ARGB color value, represented in decimal format. <br>
+        <br>
+        Leave it empty for auto choosing colors. <br>
+        <br>
+        For example:<br>
+        The decimal value of <font color="#FF0000">0xFF0000</font> is <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Confirm to delete?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Create a new notification channel. <br>
+        <br>
+        <font color="#03DAC5"><b>Long tap</b></font> a notification channel in this dropdown list to edit it.
         ]]>
     </string>
 </resources>

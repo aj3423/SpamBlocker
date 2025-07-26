@@ -29,9 +29,7 @@
     <string name="apply_to">Anwenden</string>
     <string name="Delete">Löschen</string>
     <string name="undelete">Wiederherstellen</string>
-    <string name="passed">Durchgelassen</string>
     <string name="passed_by_default">Standardmäßig durchgelassen</string>
-    <string name="blocked">Gesperrt</string>
     <string name="from">Von</string>
     <string name="copy">Kopieren</string>
     <string name="copied_to_clipboard">`%s` in die Zwischenablage kopiert.</string>

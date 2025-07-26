@@ -29,9 +29,7 @@
     <string name="apply_to">Applica a</string>
     <string name="Delete">Cancella</string>
     <string name="undelete">Ripristino</string>
-    <string name="passed">Passato</string>
     <string name="passed_by_default">Passato per impostazione predefinita</string>
-    <string name="blocked">Blocca</string>
     <string name="from">Da</string>
     <string name="copy">Copia</string>
     <string name="copied_to_clipboard">Copiato `%s` negli appunti.</string>

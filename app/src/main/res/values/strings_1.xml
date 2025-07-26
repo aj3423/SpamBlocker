@@ -29,9 +29,7 @@
     <string name="apply_to">Apply to</string>
     <string name="Delete">Delete</string>
     <string name="undelete">Undelete</string>
-    <string name="passed">Passed</string>
     <string name="passed_by_default">Passed by default</string>
-    <string name="blocked">Blocked</string>
     <string name="from">From</string>
     <string name="copy">Copy</string>
     <string name="copied_to_clipboard">Copied `%s` to clipboard.</string>

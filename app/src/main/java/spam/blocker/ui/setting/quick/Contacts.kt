@@ -26,7 +26,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 @Composable

@@ -25,8 +25,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
+import spam.blocker.util.Util.inRange
 
 
 // The built-in Button is based on Surface, which has a minimal width as 48dp,
@@ -119,12 +121,15 @@ fun GreyButton(
 @Composable
 fun FooterButton(
     label: String? = null,
-    color: Color,
-    footerIconId: Int,
+    color: Color = LocalPalette.current.textGrey,
     icon: (@Composable () -> Unit)? = null,
     modifier: Modifier = Modifier,
+
+    footerIconId: Int,
     footerSize: Int,
-    footerOffset: Pair<Int, Int>,
+    footerColor: Color = color,
+    footerOffset: Pair<Int, Int> = Pair(-3, -3),
+
     onLongClick: Lambda? = null,
     onClick: Lambda,
 ) {
@@ -139,10 +144,11 @@ fun FooterButton(
             onClick = onClick,
             onLongClick = onLongClick,
         )
+
         Icon(
             imageVector = ImageVector.vectorResource(footerIconId),
             contentDescription = "",
-            tint = color,
+            tint = footerColor,
             modifier = Modifier
                 .size(footerSize.dp)
                 .align(Alignment.BottomEnd)
@@ -183,29 +189,42 @@ fun Spinner(
     modifier: Modifier = Modifier,
     displayType: SpinnerType = SpinnerType.Label, // show label/icon/both
     color: Color = LocalPalette.current.textGrey,
+    warning: (@Composable () -> Unit)? = {
+        ResIcon(R.drawable.ic_question, color = DarkOrange, modifier = M.size(18.dp))
+    },
+    footerOffset: Pair<Int, Int> = Pair(-4, -4),
+    footerSize: Int = 6,
+    footerIconId: Int = R.drawable.ic_spinner_arrow,
+    onLongClick: Lambda? = null,
 ) {
     DropdownWrapper(
         items = items,
     ) { expanded ->
         FooterButton(
-            label = when (displayType) {
-                SpinnerType.Label, SpinnerType.IconLabel -> items[selected].label
-                else -> null
-            },
-            icon = when (displayType) {
-                SpinnerType.Icon, SpinnerType.IconLabel -> {
-                    {
-                        items[selected].icon?.let { it() }
+            label = if (!inRange(selected, items))
+                null
+            else
+                when (displayType) {
+                    SpinnerType.Label, SpinnerType.IconLabel -> items[selected].label
+                    else -> null
+                },
+            icon = if (!inRange(selected, items))
+                warning
+            else
+                when (displayType) {
+                    SpinnerType.Icon, SpinnerType.IconLabel -> {
+                        {
+                            items[selected].icon?.let { it() }
+                        }
                     }
-                }
-
-                else -> null
-            },
+                    else -> null
+                },
             color = color,
             modifier = modifier,
-            footerOffset = Pair(-4, -4),
-            footerSize = 6,
-            footerIconId = R.drawable.spinner_arrow,
+            onLongClick = onLongClick,
+            footerOffset = footerOffset,
+            footerSize = footerSize,
+            footerIconId = footerIconId,
         ) {
             expanded.value = true
         }
@@ -229,7 +248,7 @@ fun MenuButton(
             modifier = modifier,
             footerOffset = Pair(-4, -4),
             footerSize = 6,
-            footerIconId = R.drawable.spinner_arrow,
+            footerIconId = R.drawable.ic_spinner_arrow,
         ) {
             expanded.value = true
         }

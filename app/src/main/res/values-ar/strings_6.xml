@@ -42,13 +42,6 @@
     <string name="add_num_to_db">إضافة الرقم إلى قاعدة بيانات الرسائل المزعجة</string>
     <string name="mark_all_as_read">تعليم الكل كمقروء</string>
     <string name="remove_db_number">حذف الرقم من قاعدة بيانات الرسائل المزعجة</string>
-    <string-array name="importance_list">
-        <item>لا شيء</item>
-        <item>تظليل</item>
-        <item>شريط الحالة، تظليل</item>
-        <item>صوت، شريط الحالة، تظليل</item>
-        <item>صوت، شريط الحالة، تظليل، إشعار عائم</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>تصدير كـ Json</item>
         <item>تصدير كمضغوط</item>

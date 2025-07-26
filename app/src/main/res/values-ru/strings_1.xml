@@ -29,9 +29,7 @@
     <string name="apply_to">Применить к</string>
     <string name="Delete">Удалить</string>
     <string name="undelete">Восстановить</string>
-    <string name="passed">Пропущен</string>
     <string name="passed_by_default">Пропущен по умолчанию</string>
-    <string name="blocked">Заблокирован</string>
     <string name="from">От</string>
     <string name="copy">Копировать</string>
     <string name="copied_to_clipboard">`%s` скопирован в буфер обмена.</string>

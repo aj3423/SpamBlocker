@@ -29,9 +29,7 @@
     <string name="apply_to">Appliquer à</string>
     <string name="Delete">Supprimer</string>
     <string name="undelete">Restaurer</string>
-    <string name="passed">Passé</string>
     <string name="passed_by_default">Passé par défaut</string>
-    <string name="blocked">Bloqué</string>
     <string name="from">De</string>
     <string name="copy">Copier</string>
     <string name="copied_to_clipboard">`%s` copié dans le presse-papiers.</string>

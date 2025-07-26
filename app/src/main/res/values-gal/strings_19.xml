@@ -30,4 +30,100 @@
         &emsp; a: <font color="#888888">deixar baleiro</font> <br>
         ]]>
     </string>
+    <string name="blocked">Bloqueado</string>
+    <string name="allowed">Pasado</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Desactivado, sen ningunha notificación. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Aparece na barra de estado e na sombra de notificacións. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Reproduce un son. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Aparece como unha ventá emerxente flotante.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Durante as conversas de SMS activas, os sons de notificación poden ser molestos e siléncianse. <br>
+        <br>
+        Considérase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está en primeiro plano.
+        ]]>
+    </string>
+    <string name="none">Ningún</string>
+    <string name="low">Baixa</string>
+    <string name="high">Alta</string>
+    <string name="sms_chat">Chat de SMS</string>
+    <string name="call_channel">Canle de Chamada</string>
+    <string name="sms_channel">Canle de SMS</string>
+    <string name="missing_notification_channel">Canle de notificacións ausente: %s</string>
+    <string name="channel_id">ID da Canle</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        Este ID aparecerá na configuración do sistema como a canle de notificacións. <br>
+        <br>
+        Unha vez creado, o ID non se pode editar.
+        ]]>
+    </string>
+    <string name="channel_importance">Importancia</string>
+    <string name="channel_group">Grupo de Canles</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Cando se deixa baleiro, as notificacións agrúpanse automaticamente en tres categorías:<br>
+        <br>
+        - Chamada de spam <br>
+        - SMS de spam <br>
+        - SMS válidos <br>
+        <br>
+        Se se especifica un grupo, agruparanse por separado.
+        ]]>
+    </string>
+    <string name="mute">Silenciar</string>
+    <string name="sound">Son</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Limitación</b></font><br>
+        Debido á restrición de Android, o son de notificación só se pode configurar ao crear unha nova canle; unha vez creada, non se pode modificar. <br>
+        <br>
+        <font color="#03DAC5"><b>Solucións</b></font><br>
+        1. Eliminar a canle e crear unha nova cun ID de canle diferente. <br>
+        &emsp; Non funcionará se teñen o mesmo ID de canle, xa que Android simplemente \"recuperará\"
+         esa canle eliminada en lugar de crear unha nova. <br>
+        2. Modificar manualmente o son da canle na configuración do sistema: <br>
+        &emsp; - Premer longamente a icona da aplicación <br>
+        &emsp; - Información da aplicación <br>
+        &emsp; - Notificacións <br>
+        &emsp; - Categorías de notificacións <br>
+        &emsp; - Tocar esa canle e modificar o son <br>
+        <br>
+        <b>Son Personalizado</b><br>
+        Podes importar tons de chamada personalizados na configuración do sistema, e despois seleccionalos na aplicación.<br>
+        ]]>
+    </string>
+    <string name="default_">Predeterminado</string>
+    <string name="select_notification_sound">Seleccionar son de notificación</string>
+    <string name="unknown">Descoñecido</string>
+    <string name="icon_color">Cor da Icona</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        O valor de cor ARGB, representado en formato decimal. <br>
+        <br>
+        Deixar baleiro para a selección automática de cores. <br>
+        <br>
+        Por exemplo:<br>
+        O valor decimal de <font color="#FF0000">0xFF0000</font> é <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Confirmar eliminación?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Crear unha nova canle de notificacións. <br>
+        <br>
+        <font color="#03DAC5"><b>Manter premido</b></font> unha canle de notificacións nesta lista despregable para editala.
+        ]]>
+    </string>
 </resources>

@@ -30,4 +30,99 @@
         &emsp; a: <font color="#888888">deixar buit</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">Bloquejat</string>
+    <string name="allowed">Aprovat</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Desactivat, cap notificació. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Apareix a la barra d\'estat i a la cortina de notificacions. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Reprodueix un so. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Apareix com una finestra emergent heads-up.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Durant les converses de SMS actives, els sons de notificació poden ser molestos i es silencien. <br>
+        <br>
+        Es considera conversa activa quan la pantalla està desbloquejada i l\'aplicació de SMS està en primer pla.
+        ]]>
+    </string>
+    <string name="none">Cap</string>
+    <string name="low">Baixa</string>
+    <string name="high">Alta</string>
+    <string name="sms_chat">Xat de SMS</string>
+    <string name="call_channel">Canal de trucada</string>
+    <string name="sms_channel">Canal de SMS</string>
+    <string name="missing_notification_channel">Canal de notificació absent: %s</string>
+    <string name="channel_id">ID del canal</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        Aquest ID apareixerà a la configuració del sistema com a canal de notificació. <br>
+        <br>
+        Un cop creat, l\'ID no es pot editar.
+        ]]>
+    </string>
+    <string name="channel_importance">Importància</string>
+    <string name="channel_group">Grup de canal</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Quan es deixa buit, les notificacions s\'agrupen automàticament en tres categories:<br>
+        <br>
+        - Trucada de spam <br>
+        - SMS de spam <br>
+        - SMS vàlid <br>
+        <br>
+        Si s\'especifica un grup, s\'agruparan per separat.
+        ]]>
+    </string>
+    <string name="mute">Silenciar</string>
+    <string name="sound">So</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Limitació</b></font><br>
+        A causa de la restricció d\'Android, el so de notificació només es pot configurar en crear un nou canal; un cop creat, no es pot modificar. <br>
+        <br>
+        <font color="#03DAC5"><b>Solucions</b></font><br>
+        1. Suprimeix el canal i crea\'n un de nou amb un ID de canal diferent. <br>
+        &emsp; No funcionarà si tenen el mateix ID de canal, ja que Android simplement \"recuperarà\" el canal eliminat en lloc de crear-ne un de nou. <br>
+        2. Modifica manualment el so del canal a la configuració del sistema: <br>
+        &emsp; - Mantén premuda la icona de l\'aplicació <br>
+        &emsp; - Informació de l\'aplicació <br>
+        &emsp; - Notificacions <br>
+        &emsp; - Categories de notificació <br>
+        &emsp; - Toca aquest canal i modifica el so <br>
+        <br>
+        <b>So personalitzat</b><br>
+        Pots importar tons de trucada personalitzats a la configuració del sistema i seleccionar-los a l\'aplicació.<br>
+        ]]>
+    </string>
+    <string name="default_">Per defecte</string>
+    <string name="select_notification_sound">Selecciona so de notificació</string>
+    <string name="unknown">Desconegut</string>
+    <string name="icon_color">Color de la icona</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        El valor de color ARGB, representat en format decimal. <br>
+        <br>
+        Deixa-ho buit per a la selecció automàtica de colors. <br>
+        <br>
+        Per exemple:<br>
+        El valor decimal de <font color="#FF0000">0xFF0000</font> és <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Confirmar eliminació?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Crea un nou canal de notificació. <br>
+        <br>
+        <font color="#03DAC5"><b>Mantén premut</b></font> un canal de notificació en aquesta llista desplegable per editar-lo.
+        ]]>
+    </string>
 </resources>

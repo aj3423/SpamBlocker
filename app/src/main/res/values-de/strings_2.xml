@@ -29,39 +29,39 @@
     <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN-Attestierung erfordert <b>Android 11+</b> und <b>Mobilfunkanbieter-Unterstützung</b>. <br>
+            STIR/SHAKEN-Attestierung erfordert <b>Android 11+</b> und <b>Netzbetreiberunterstützung</b>. <br>
             <br>
             Es gibt drei mögliche Attestierungsergebnisse: <br>
             <font color="#03DAC5"><b>Gültig</b></font> <br>
               &emsp; Der Anruf ist sehr wahrscheinlich gültig, nicht gefälscht. <br>
             <font color="#ffa500"><b>Nicht verifiziert</b></font> <br>
               &emsp; Der Anruf kann nicht validiert werden, oder die STIR-Attestierung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Betrug</b></font> <br>
-              &emsp; Es ist sehr wahrscheinlich ein Betrugsanruf. <br>
+            <font color="#fa7f71"><b>Gefälscht</b></font> <br>
+              &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf. <br>
             <br>
             <br>
             <b>Optionen:</b><br>
             <br>
               - <b>Nachsichtig</b>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Gültige</b></font> Anrufe werden zugelassen. <br>
-                  &emsp; - <font color="#fa7f71"><b>Betrugsanrufe</b></font> werden weiterhin von anderen Regeln überprüft. <br>
-                  &emsp; - Wenn <b>Nicht verifizierte einschließen</b> aktiviert ist, werden <font color="#ffa500"><b>nicht verifizierte</b></font> Anrufe ebenfalls zugelassen. <br>
+                  &emsp; - <font color="#03DAC5"><b>Gültige</b></font> Anrufe werden erlaubt. <br>
+                  &emsp; - <font color="#fa7f71"><b>Gefälschte</b></font> Anrufe werden weiterhin von anderen Regeln überprüft. <br>
+                  &emsp; - Wenn <b>Nicht verifizierte einschließen</b> aktiviert ist, werden auch <font color="#ffa500"><b>nicht verifizierte</b></font> Anrufe erlaubt. <br>
                   &emsp; <font color="#ea86ff"><b>Standardpriorität: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Streng</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Gültige</b></font> Anrufe werden zugelassen. <br>
-                  &emsp; - <font color="#fa7f71"><b>Betrugsanrufe</b></font> werden blockiert. <br>
-                  &emsp; - Wenn \"<b>Nicht verifizierte einschließen</b>\" aktiviert ist, werden <font color="#ffa500"><b>nicht verifizierte</b></font> Anrufe ebenfalls blockiert. <br>
+                  &emsp; - <font color="#03DAC5"><b>Gültige</b></font> Anrufe werden von anderen Regeln überprüft. <br>
+                  &emsp; - <font color="#fa7f71"><b>Gefälschte</b></font> Anrufe werden blockiert. <br>
+                  &emsp; - Wenn \"<b>Nicht verifizierte einschließen</b>\" aktiviert ist, werden auch <font color="#ffa500"><b>nicht verifizierte</b></font> Anrufe blockiert. <br>
                   &emsp; <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
             <br>
             <br>
             Ein <b>Anwendungsfall</b> zum Anpassen der Prioritäten:<br>
             <br>
-            1. Kontakte immer zulassen. <br>
+            1. Kontakte immer erlauben. <br>
               &emsp; - Kontakte (Nachsichtig), Priorität <font color="#ea86ff">12</font> <br>
-            2. Anrufe blockieren, die STIR nicht bestehen, auch wenn sie sich wiederholen. <br>
+            2. Anrufe blockieren, die bei STIR fehlschlagen, selbst wenn sie sich wiederholen. <br>
               &emsp; - STIR (Streng), Priorität <font color="#ea86ff">11</font> <br>
-            3. Anrufe zulassen, die sich wiederholen. <br>
+            3. Sich wiederholende Anrufe erlauben. <br>
               &emsp; - Wiederholter Anruf, Priorität <font color="#ea86ff">10</font> <br>
         ]]>
     </string>

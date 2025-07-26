@@ -40,6 +40,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
+import spam.blocker.ui.setting.quick.ChannelPicker
 import spam.blocker.ui.setting.quick.ConfigAnswerAndHangUp
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
@@ -50,7 +51,6 @@ import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
-import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -63,7 +63,6 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Spinner
-import spam.blocker.ui.widgets.SpinnerType
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -170,7 +169,7 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                 modifier = M.size(18.dp)
             )
             Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.spinner_arrow),
+                imageVector = ImageVector.vectorResource(R.drawable.ic_spinner_arrow),
                 contentDescription = "",
                 tint = C.textGrey,
                 modifier = Modifier
@@ -267,7 +266,7 @@ fun RuleEditDialog(
     var blockTypeConfig by rememberSaveable { mutableStateOf(initRule.blockTypeConfig) }
 
     // NotificationType
-    var notifyType by rememberSaveable { mutableIntStateOf(initRule.importance) }
+    var channelId by rememberSaveable { mutableStateOf(initRule.channel) }
 
     // Schedule
     val sch = remember { TimeSchedule.parseFromStr(initRule.schedule) }
@@ -323,7 +322,7 @@ fun RuleEditDialog(
                             priority,
                             applyToWorB == 1,
                             flags,
-                            notifyType,
+                            channelId,
                             schedule,
                             blockType,
                             blockTypeConfig,
@@ -454,7 +453,7 @@ fun RuleEditDialog(
                         FlowRowSpaced(10) {
                             CheckBox(
                                 checked = applyToPassed,
-                                label = { Text(Str(R.string.passed), color = C.pass) },
+                                label = { Text(Str(R.string.allowed), color = C.pass) },
                                 onCheckChange = { applyToPassed = it },
                             )
                             CheckBox(
@@ -561,44 +560,13 @@ fun RuleEditDialog(
                 AnimatedVisibleV(visible = forType != Def.ForQuickCopy && applyToWorB == 1) {
                     LabeledRow(
                         labelId = R.string.notification,
-                        helpTooltip = Str(R.string.help_importance),
+                        helpTooltip = Str(R.string.help_notification),
                     ) {
-                        val icons = remember {
-                            // list.map{} doesn't support returning @Composable...
-                            listOf<(@Composable () -> Unit)?>(
-                                { GreyIcon18(R.drawable.ic_notification_off) },
-                                { GreyIcon16(R.drawable.ic_shade) },
-                                { GreyIcon16(R.drawable.ic_statusbar_shade) },
-                                {
-                                    RowVCenterSpaced(2) {
-                                        GreyIcon16(R.drawable.ic_bell_ringing)
-                                        GreyIcon16(R.drawable.ic_statusbar_shade)
-                                    }
-                                },
-                                {
-                                    RowVCenterSpaced(2) {
-                                        GreyIcon16(R.drawable.ic_bell_ringing)
-                                        GreyIcon16(R.drawable.ic_statusbar_shade)
-                                        GreyIcon16(R.drawable.ic_heads_up)
-                                    }
-                                }
-                            )
+                        ChannelPicker(
+                            channelId
+                        ) { index, ch ->
+                            channelId = ch.channelId
                         }
-
-                        val notifyTypeLabels = remember {
-                            ctx.resources.getStringArray(R.array.importance_list)
-                                .mapIndexed { index, label ->
-                                    LabelItem(
-                                        label = label,
-                                        icon = icons[index],
-                                        onClick = {
-                                            notifyType = index
-                                            true
-                                        }
-                                    )
-                                }
-                        }
-                        Spinner(notifyTypeLabels, notifyType, displayType = SpinnerType.Icon)
                     }
                 }
 

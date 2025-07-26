@@ -3,13 +3,21 @@ package spam.blocker.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
+import spam.blocker.util.Notification.deleteAllChannels
+import spam.blocker.util.Notification.ensureBuiltInChannels
+import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.logi
 
-class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+class Db private constructor(
+    val ctx: Context
+) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 38
+        const val DB_VERSION = 39
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -31,6 +39,14 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         const val COLUMN_BLOCK_TYPE = "block_type"
         const val COLUMN_BLOCK_TYPE_CONFIG = "block_type_config"
 
+        // ---- notification channel table ----
+        const val TABLE_NOTIFICATION_CHANNEL = "notification_channel"
+        const val COLUMN_CHANNEL_ID = "channel_id"
+        const val COLUMN_ICON = "icon"
+        const val COLUMN_ICON_COLOR = "icon_color"
+        const val COLUMN_GROUP = "grouping"
+        const val COLUMN_MUTE = "mute"
+        const val COLUMN_SOUND = "sound"
 
         // ---- spam table ----
         const val TABLE_SPAM = "spam"
@@ -97,17 +113,35 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
                         "$COLUMN_PRIORITY INTEGER, " +
                         "$COLUMN_IS_BLACK INTEGER, " +
                         "$COLUMN_FLAGS INTEGER, " +
-                        "$COLUMN_IMPORTANCE INTEGER DEFAULT ${Def.DEF_SPAM_IMPORTANCE}, " +
+                        "$COLUMN_CHANNEL_ID TEXT DEFAULT ${Def.DEF_SPAM_CHANNEL}, " +
                         "$COLUMN_SCHEDULE TEXT DEFAULT '', " +
                         "$COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.DEF_BLOCK_TYPE}, " +
                         "$COLUMN_BLOCK_TYPE_CONFIG TEXT DEFAULT '' " +
-
                         ")"
             )
         }
         createPatternTable(TABLE_NUMBER_RULE)
         createPatternTable(TABLE_CONTENT_RULE)
         createPatternTable(TABLE_QUICK_COPY_RULE)
+
+        // notification channel database
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS $TABLE_NOTIFICATION_CHANNEL (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_CHANNEL_ID TEXT UNIQUE, " +
+                    "$COLUMN_IMPORTANCE INTEGER, " +
+                    "$COLUMN_MUTE INTEGER, " +
+                    "$COLUMN_SOUND TEXT, " +
+                    "$COLUMN_ICON TEXT, " +
+                    "$COLUMN_ICON_COLOR INTEGER, " +
+                    "$COLUMN_GROUP TEXT " +
+                    ")"
+        )
+        db.execSQL("CREATE INDEX IF NOT EXISTS index_channel_id ON $TABLE_NOTIFICATION_CHANNEL($COLUMN_CHANNEL_ID)")
+
+        if (isFreshInstall(ctx)) {
+            ensureBuiltInChannels(ctx, db)
+        }
 
         // spam database
         db.execSQL(
@@ -301,6 +335,40 @@ class Db private constructor(context: Context) : SQLiteOpenHelper(context, DB_NA
         // v4.12 added push alert
         if ((newVersion >= 38) && (oldVersion < 38)) {
             onCreate(db)
+        }
+        // v4.15 added custom notification
+        if ((newVersion >= 39) && (oldVersion < 39)) {
+            onCreate(db)
+            // 1. delete all previous channels
+            deleteAllChannels(ctx)
+            // 2. create 4 built-in channels
+            ensureBuiltInChannels(ctx, db)
+
+            // Upgrade old column `importance` -> `channel`
+            // 3. add column `channel`
+            addColumnIfNotExist(db, TABLE_NUMBER_RULE, COLUMN_CHANNEL_ID, "TEXT")
+            addColumnIfNotExist(db, TABLE_CONTENT_RULE, COLUMN_CHANNEL_ID, "TEXT")
+
+            // 4. Migrate data from `importance` to `channel`
+            db.execSQL("""
+                    UPDATE $TABLE_NUMBER_RULE
+                    SET $COLUMN_CHANNEL_ID = CASE
+                        WHEN $COLUMN_IMPORTANCE = 0 THEN '$CHANNEL_NONE'
+                        WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_BLOCKED'
+                        ELSE '$CHANNEL_ALLOWED'
+                    END
+                """.trimIndent())
+            db.execSQL("""
+                    UPDATE $TABLE_CONTENT_RULE
+                    SET $COLUMN_CHANNEL_ID = CASE
+                        WHEN $COLUMN_IMPORTANCE = 0 THEN '$CHANNEL_NONE'
+                        WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_BLOCKED'
+                        ELSE '$CHANNEL_ALLOWED'
+                    END
+                """.trimIndent())
+
+            // 5. Drop old column `importance`
+            // Nope, just ignore it, there's no `DROP COLUMN` in sqlite.
         }
     }
 }

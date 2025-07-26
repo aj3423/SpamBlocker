@@ -42,13 +42,6 @@
     <string name="add_num_to_db">Add number to spam database</string>
     <string name="mark_all_as_read">Mark all as read</string>
     <string name="remove_db_number">Delete number from spam database</string>
-    <string-array name="importance_list">
-        <item>None</item>
-        <item>Shade</item>
-        <item>StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade</item>
-        <item>Sound, StatusBar, Shade, Heads-up</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Export as Json</item>
         <item>Export as Compressed</item>

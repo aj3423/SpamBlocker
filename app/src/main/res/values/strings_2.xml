@@ -49,7 +49,7 @@
                   &emsp; <font color="#ea86ff"><b>Default Priority: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Strict</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Valid</b></font> calls will be allowed. <br>
+                  &emsp; - <font color="#03DAC5"><b>Valid</b></font> calls will be checked by other rules. <br>
                   &emsp; - <font color="#fa7f71"><b>Spoof</b></font> calls will be blocked. <br>
                   &emsp; - When "<b>Include Unverified</b>" is checked, <font color="#ffa500"><b>Unverified</b></font> calls will also be blocked. <br>
                   &emsp; <font color="#ea86ff"><b>Default Priority: 0</b></font> <br>

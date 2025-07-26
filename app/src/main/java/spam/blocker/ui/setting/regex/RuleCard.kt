@@ -1,6 +1,5 @@
 package spam.blocker.ui.setting.regex
 
-import android.app.NotificationManager
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,9 +16,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
+import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.ui.M
+import spam.blocker.ui.setting.quick.ChannelIcons
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreyIcon16
@@ -116,18 +117,8 @@ fun RuleCard(
 
                     // [NotifyType]
                     RowVCenterSpaced(space = 2) {
-                        if (rule.isBlacklist && rule.importance >= NotificationManager.IMPORTANCE_DEFAULT) {
-                            GreyIcon16(iconId = R.drawable.ic_bell_ringing)
-                        }
-                        if (rule.isBlacklist && rule.importance == NotificationManager.IMPORTANCE_HIGH) {
-                            GreyIcon16(iconId = R.drawable.ic_heads_up)
-                        }
-                        if (rule.isBlacklist && rule.importance == NotificationManager.IMPORTANCE_MIN) {
-                            GreyIcon16(iconId = R.drawable.ic_shade)
-                        }
-                        if (rule.isBlacklist && rule.importance >= NotificationManager.IMPORTANCE_LOW) {
-                            GreyIcon16( iconId = R.drawable.ic_statusbar_shade )
-                        }
+                        val ch = ChannelTable.findByChannelId(ctx, rule.channel)
+                        ChannelIcons(ch?.importance, ch?.mute)
                     }
 
                     // [Priority]

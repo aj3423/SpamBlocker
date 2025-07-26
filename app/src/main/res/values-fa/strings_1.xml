@@ -29,9 +29,7 @@
     <string name="apply_to">اعمال به</string>
     <string name="Delete">حذف</string>
     <string name="undelete">لغو حذف</string>
-    <string name="passed">عبور کرده</string>
     <string name="passed_by_default">به طور پیش فرض عبور کرده</string>
-    <string name="blocked">مسدود شده</string>
     <string name="from">از</string>
     <string name="copy">کپی</string>
     <string name="copied_to_clipboard">`%s` به حافظه کپی شد.</string>

@@ -326,9 +326,11 @@ fun NumberInputBox(
         allowEmpty = allowEmpty,
         label = if (labelId == null) null else { { Text(Str(labelId)) } },
         placeholder = placeholder,
-        leadingIcon = {
-            leadingIconId?.let {
-                ResIcon(iconId = it, modifier = M.size(18.dp))
+        leadingIcon = if (leadingIconId == null ) {
+            null
+        } else {
+            {
+                ResIcon(iconId = leadingIconId, modifier = M.size(18.dp))
             }
         },
         helpTooltip = {
@@ -348,6 +350,7 @@ fun StrInputBox(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
     helpTooltip: String? = null,
+    enabled: Boolean = true,
 
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
@@ -374,6 +377,7 @@ fun StrInputBox(
     InputBox(
         value = state,
         modifier = modifier,
+        enabled = enabled,
         onValueChange = { newState ->
             state = newState
 
@@ -394,7 +398,7 @@ fun StrInputBox(
         keyboardOptions = KeyboardOptions(),
         trailingIcon = {
             RowVCenter {
-                if (lastText.isNotEmpty()) {
+                if (lastText.isNotEmpty() && enabled) {
                     GreyIcon16(
                         R.drawable.ic_clear,
                         modifier = M.clickable{

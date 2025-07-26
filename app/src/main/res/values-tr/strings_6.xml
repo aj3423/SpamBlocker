@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>Yok</item>
-        <item>Bildirim Paneli</item>
-        <item>Durum Çubuğu, Bildirim Paneli</item>
-        <item>Ses, Durum Çubuğu, Bildirim Paneli</item>
-        <item>Ses, Durum Çubuğu, Bildirim Paneli, Kayan Pencere</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>JSON olarak Dışa Aktar</item>
         <item>Sıkıştırılmış Olarak Dışa Aktar</item>

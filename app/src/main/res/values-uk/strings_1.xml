@@ -29,9 +29,7 @@
     <string name="apply_to">Застосувати до</string>
     <string name="Delete">Видалити</string>
     <string name="undelete">Відновити</string>
-    <string name="passed">Пройшло</string>
     <string name="passed_by_default">Пройшло за замовчуванням</string>
-    <string name="blocked">Заблоковано</string>
     <string name="from">Від</string>
     <string name="copy">Копіювати</string>
     <string name="copied_to_clipboard">Скопійовано `%s` в буфер обміну.</string>

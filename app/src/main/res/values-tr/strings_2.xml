@@ -33,25 +33,25 @@
             <br>
             Üç olası tasdik sonucu vardır: <br>
             <font color="#03DAC5"><b>Geçerli</b></font> <br>
-              &emsp; Aramanın büyük olasılıkla geçerli olduğu, sahte olmadığı anlamına gelir. <br>
+              &emsp; Aramanın geçerli olması, sahte olmaması çok muhtemeldir. <br>
             <font color="#ffa500"><b>Doğrulanmamış</b></font> <br>
-              &emsp; Arama doğrulanamadı veya STIR tasdiki desteklenmiyor. <br>
+              &emsp; Çağrı doğrulanamıyor veya STIR tasdiki desteklenmiyor. <br>
             <font color="#fa7f71"><b>Sahte</b></font> <br>
-              &emsp; Büyük olasılıkla sahte bir aramadır. <br>
+              &emsp; Sahte bir çağrı olması çok muhtemeldir. <br>
             <br>
             <br>
             <b>Seçenekler:</b><br>
             <br>
               - <b>Esnek</b>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Geçerli</b></font> aramalara izin verilir. <br>
-                  &emsp; - <font color="#fa7f71"><b>Sahte</b></font> aramalar diğer kurallar tarafından kontrol edilir. <br>
-                  &emsp; - <b>Doğrulanmamış Olanları Dahil Et</b> işaretliyse, <font color="#ffa500"><b>Doğrulanmamış</b></font> aramalara da izin verilir. <br>
+                  &emsp; - <font color="#03DAC5"><b>Geçerli</b></font> çağrılara izin verilecektir. <br>
+                  &emsp; - <font color="#fa7f71"><b>Sahte</b></font> çağrılar hala diğer kurallarca kontrol edilecektir. <br>
+                  &emsp; - <b>Doğrulanmamışları Dahil Et</b> işaretliyse, <font color="#ffa500"><b>Doğrulanmamış</b></font> çağrılara da izin verilecektir. <br>
                   &emsp; <font color="#ea86ff"><b>Varsayılan Öncelik: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Katı</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Geçerli</b></font> aramalara izin verilir. <br>
-                  &emsp; - <font color="#fa7f71"><b>Sahte</b></font> aramalar engellenir. <br>
-                  &emsp; - \"<b>Doğrulanmamış Olanları Dahil Et</b>\" işaretliyse, <font color="#ffa500"><b>Doğrulanmamış</b></font> aramalar da engellenir. <br>
+                  &emsp; - <font color="#03DAC5"><b>Geçerli</b></font> çağrılar diğer kurallarca kontrol edilecektir. <br>
+                  &emsp; - <font color="#fa7f71"><b>Sahte</b></font> çağrılar engellenecektir. <br>
+                  &emsp; - \"<b>Doğrulanmamışları Dahil Et</b>\" işaretliyse, <font color="#ffa500"><b>Doğrulanmamış</b></font> çağrılar da engellenecektir. <br>
                   &emsp; <font color="#ea86ff"><b>Varsayılan Öncelik: 0</b></font> <br>
             <br>
             <br>
@@ -59,10 +59,10 @@
             <br>
             1. Kişilere her zaman izin ver. <br>
               &emsp; - Kişiler(Esnek), öncelik <font color="#ea86ff">12</font> <br>
-            2. STIR doğrulamasını geçemeyen aramaları, tekrarlansa bile engelle. <br>
+            2. STIR\'ı geçemeyen aramaları tekrar etseler bile engelle. <br>
               &emsp; - STIR(Katı), öncelik <font color="#ea86ff">11</font> <br>
-            3. Tekrarlayan aramalara izin ver. <br>
-              &emsp; - Tekrarlayan Arama, öncelik <font color="#ea86ff">10</font> <br>
+            3. Tekrar eden aramalara izin ver. <br>
+              &emsp; - Tekrarlayan Çağrı, öncelik <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

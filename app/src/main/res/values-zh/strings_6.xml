@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>无</item>
-        <item>阴影</item>
-        <item>状态栏，阴影</item>
-        <item>声音，状态栏，阴影</item>
-        <item>声音，状态栏，阴影，悬浮通知</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>导出为 Json</item>
         <item>导出为压缩文件</item>

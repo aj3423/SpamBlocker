@@ -1,7 +1,7 @@
 package spam.blocker.ui.widgets
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -57,6 +57,7 @@ class LabelItem(
     val tooltip: String? = null,
     val selected: Boolean = false,
     val dismissOnClick: Boolean = true,
+    val onLongClick: Lambda1<MutableState<Boolean>>? = null, // param: menuExpandedState
     val onClick: Lambda1<MutableState<Boolean>>? = null, // param: menuExpandedState
 ) : IMenuItem {
     @Composable
@@ -70,18 +71,22 @@ class LabelItem(
                 text = label,
                 modifier = M
                     .weight(1f)
-                    .let { baseModifier->
-                        if (onClick != null) {
-                            baseModifier.clickable {
-                                onClick!!(menuExpandedState)
-                                if (dismissOnClick) {
-                                    menuExpandedState.value = false
-                                }
+                    .combinedClickable(
+                        onClick = {
+                            onClick?.let {
+                                it(menuExpandedState)
                             }
-                        } else {
-                            baseModifier
+                            if (dismissOnClick) {
+                                menuExpandedState.value = false
+                            }
+                        },
+                        onLongClick = {
+
+                            onLongClick?.let {
+                                it(menuExpandedState)
+                            }
                         }
-                    },
+                    ),
                 fontWeight = if (selected) FontWeight.Bold else null,
             )
             tooltip?.let {

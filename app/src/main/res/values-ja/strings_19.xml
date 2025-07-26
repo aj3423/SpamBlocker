@@ -30,4 +30,99 @@
         &emsp; へ: <font color="#888888">空のままにする</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">ブロック</string>
+    <string name="allowed">通過</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        無効、通知は一切ありません。 <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        ステータスバーと通知シェードに表示されます。 <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        サウンドを再生します。 <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        ヘッドアップポップアップとして表示されます。
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        アクティブなSMSチャット中、通知音は煩わしく、ミュートされます。 <br>
+        <br>
+        画面がロック解除されており、SMSアプリがフォアグラウンドにある場合、アクティブなチャットとみなされます。
+        ]]>
+    </string>
+    <string name="none">なし</string>
+    <string name="low">低</string>
+    <string name="high">高</string>
+    <string name="sms_chat">SMSチャット</string>
+    <string name="call_channel">通話チャンネル</string>
+    <string name="sms_channel">SMSチャンネル</string>
+    <string name="missing_notification_channel">通知チャンネルがありません: %s</string>
+    <string name="channel_id">チャンネルID</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        このIDは、システム設定で通知チャンネルとして表示されます。 <br>
+        <br>
+        一度作成すると、このIDは編集できません。
+        ]]>
+    </string>
+    <string name="channel_importance">重要度</string>
+    <string name="channel_group">チャンネルグループ</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        空のままにすると、通知は自動的に次の3つのカテゴリに分類されます:<br>
+        <br>
+        - スパム通話 <br>
+        - スパムSMS <br>
+        - 有効なSMS <br>
+        <br>
+        グループが指定されている場合、それらは個別にグループ化されます。
+        ]]>
+    </string>
+    <string name="mute">ミュート</string>
+    <string name="sound">サウンド</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>制限</b></font><br>
+        Androidの制限により、通知音は新しいチャンネル作成時にのみ設定でき、一度作成されると変更できません。 <br>
+        <br>
+        <font color="#03DAC5"><b>回避策</b></font><br>
+        1. チャンネルを削除し、異なるチャンネルIDで新しいものを作成します。 <br>
+        &emsp; 同じチャンネルIDの場合、Androidは新しいものを作成する代わりに削除されたチャンネルを「復元」するため、機能しません。 <br>
+        2. システム設定でチャンネルサウンドを手動で変更します: <br>
+        &emsp; - アプリアイコンを長押し <br>
+        &emsp; - アプリ情報 <br>
+        &emsp; - 通知 <br>
+        &emsp; - 通知カテゴリ <br>
+        &emsp; - そのチャンネルをタップしてサウンドを変更 <br>
+        <br>
+        <b>カスタムサウンド</b><br>
+        システム設定でカスタム着信音をインポートし、アプリで選択できます。<br>
+        ]]>
+    </string>
+    <string name="default_">デフォルト</string>
+    <string name="select_notification_sound">通知音を選択</string>
+    <string name="unknown">不明</string>
+    <string name="icon_color">アイコンの色</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        10進形式で表されたARGB色値。 <br>
+        <br>
+        色を自動選択する場合は空のままにしてください。 <br>
+        <br>
+        例:<br>
+        <font color="#FF0000">0xFF0000</font>の10進値は<b>16711680</b>です。
+        ]]>
+    </string>
+    <string name="confirm_to_delete">削除を確認しますか？</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        新しい通知チャンネルを作成します。 <br>
+        <br>
+        このドロップダウンリストの通知チャンネルを<font color="#03DAC5"><b>長押し</b></font>して編集します。
+        ]]>
+    </string>
 </resources>

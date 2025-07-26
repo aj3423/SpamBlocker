@@ -42,13 +42,6 @@
     <string name="add_num_to_db">Tambahkan nomor ke basis data spam</string>
     <string name="mark_all_as_read">Tandai semua telah dibaca</string>
     <string name="remove_db_number">Hapus nomor dari basis data spam</string>
-    <string-array name="importance_list">
-        <item>Tidak ada</item>
-        <item>Berbayang</item>
-        <item>Bilah Status, Berbayang</item>
-        <item>Suara, Bilah Status, Berbayang</item>
-        <item>Suara, Bilah Status, Berbayang, Mengambang</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Ekspor sebagai Json</item>
         <item>Ekspor sebagai Terkompresi</item>

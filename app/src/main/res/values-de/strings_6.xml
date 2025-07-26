@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>Keine</item>
-        <item>Schatten</item>
-        <item>Statusleiste, Schatten</item>
-        <item>Ton, Statusleiste, Schatten</item>
-        <item>Ton, Statusleiste, Schatten, Heads-up</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Als Json exportieren</item>
         <item>Als Komprimiertes exportieren</item>

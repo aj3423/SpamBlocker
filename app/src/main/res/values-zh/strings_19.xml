@@ -30,4 +30,99 @@
         &emsp; 到: <font color="#888888">留空</font> <br>
         ]]>
     </string>
+    <string name="blocked">已拦截</string>
+    <string name="allowed">已通过</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        已禁用，完全没有通知。 <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        出现在状态栏和通知抽屉中。 <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        播放声音。 <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        显示为浮动通知。
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        在活跃的短信聊天期间，通知声音可能令人烦恼，因此会被静音。 <br>
+        <br>
+        当屏幕解锁且短信应用在前台时，即被视为活跃聊天。
+        ]]>
+    </string>
+    <string name="none">无</string>
+    <string name="low">低</string>
+    <string name="high">高</string>
+    <string name="sms_chat">短信聊天</string>
+    <string name="call_channel">呼叫频道</string>
+    <string name="sms_channel">短信频道</string>
+    <string name="missing_notification_channel">缺少通知频道：%s</string>
+    <string name="channel_id">频道ID</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        此ID将在系统设置中显示为通知频道。 <br>
+        <br>
+        一旦创建，此ID无法编辑。
+        ]]>
+    </string>
+    <string name="channel_importance">重要性</string>
+    <string name="channel_group">频道组</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        留空时，通知会自动分为三类：<br>
+        <br>
+        - 垃圾来电 <br>
+        - 垃圾短信 <br>
+        - 有效短信 <br>
+        <br>
+        如果指定了组，它们将单独分组。
+        ]]>
+    </string>
+    <string name="mute">静音</string>
+    <string name="sound">声音</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>限制</b></font><br>
+        由于Android限制，通知声音只能在新频道创建时设置，一旦创建，就无法修改。 <br>
+        <br>
+        <font color="#03DAC5"><b>解决方法</b></font><br>
+        1. 删除频道，创建一个新的，使用不同的频道ID。 <br>
+        &emsp; 如果它们有相同的频道ID，此方法将不起作用，因为Android只会“恢复”已删除的频道，而不是创建一个新的。 <br>
+        2. 在系统设置中手动修改频道声音： <br>
+        &emsp; - 长按应用图标 <br>
+        &emsp; - 应用信息 <br>
+        &emsp; - 通知 <br>
+        &emsp; - 通知类别 <br>
+        &emsp; - 点击该频道并修改声音 <br>
+        <br>
+        <b>自定义声音</b><br>
+        您可以在系统设置中导入自定义铃声，然后在应用中选择它们。<br>
+        ]]>
+    </string>
+    <string name="default_">默认</string>
+    <string name="select_notification_sound">选择通知声音</string>
+    <string name="unknown">未知</string>
+    <string name="icon_color">图标颜色</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        ARGB颜色值，以十进制格式表示。 <br>
+        <br>
+        留空表示自动选择颜色。 <br>
+        <br>
+        例如：<br>
+        <font color="#FF0000">0xFF0000</font>的十进制值为<b>16711680</b>。
+        ]]>
+    </string>
+    <string name="confirm_to_delete">确认删除？</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        创建新的通知频道。 <br>
+        <br>
+        <font color="#03DAC5"><b>长按</b></font>此下拉列表中的通知频道以进行编辑。
+        ]]>
+    </string>
 </resources>

@@ -11,6 +11,7 @@ import spam.blocker.service.resetPushAlertCache
 import spam.blocker.ui.crash.CrashReportActivity
 import spam.blocker.ui.history.reScheduleHistoryCleanup
 import spam.blocker.ui.setting.quick.reScheduleSpamDBCleanup
+import spam.blocker.util.Notification
 import spam.blocker.util.Permission
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -27,6 +28,9 @@ class App : Application() {
 
         // Initialize permissions
         Permission.init(this)
+        Notification.ensureBuiltInChannels(this)
+
+        G.initialize(this)
     }
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)

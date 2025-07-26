@@ -70,8 +70,6 @@ class MainActivity : ComponentActivity() {
         // language
         Util.setLocale(ctx, spf.getLanguage())
 
-        G.initialize(ctx)
-
         val lastTab = spf.getActiveTab()
 
         G.bottomBarVM = BottomBarViewModel(

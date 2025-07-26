@@ -30,4 +30,99 @@
         &emsp; à : <font color="#888888">laisser vide</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">Bloqué</string>
+    <string name="allowed">Passé</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Désactivé, aucune notification du tout. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Apparaît dans la barre d\'état et le panneau de notifications. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Joue un son. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Apparaît sous forme de pop-up flottante.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Pendant les discussions SMS actives, les sons de notification peuvent être gênants et sont mis en sourdine. <br>
+        <br>
+        Une discussion est considérée comme active lorsque l\'écran est déverrouillé et que l\'application SMS est au premier plan.
+        ]]>
+    </string>
+    <string name="none">Aucun</string>
+    <string name="low">Faible</string>
+    <string name="high">Élevé</string>
+    <string name="sms_chat">Chat SMS</string>
+    <string name="call_channel">Canal d\'appel</string>
+    <string name="sms_channel">Canal SMS</string>
+    <string name="missing_notification_channel">Canal de notification manquant : %s</string>
+    <string name="channel_id">ID du canal</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        Cet ID apparaîtra dans les paramètres système comme canal de notification. <br>
+        <br>
+        Une fois créé, l\'ID ne peut pas être modifié.
+        ]]>
+    </string>
+    <string name="channel_importance">Importance</string>
+    <string name="channel_group">Groupe de canaux</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Lorsqu\'il est vide, les notifications sont automatiquement regroupées en trois catégories :<br>
+        <br>
+        - Appel indésirable <br>
+        - SMS indésirable <br>
+        - SMS valide <br>
+        <br>
+        Si un groupe est spécifié, ils seront regroupés séparément.
+        ]]>
+    </string>
+    <string name="mute">Muet</string>
+    <string name="sound">Son</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Limitation</b></font><br>
+        En raison des restrictions d\'Android, le son de notification ne peut être défini qu\'à la création d\'un nouveau canal ; une fois créé, il ne peut plus être modifié. <br>
+        <br>
+        <font color="#03DAC5"><b>Solutions de contournement</b></font><br>
+        1. Supprimez le canal et créez-en un nouveau avec un ID de canal différent. <br>
+        &emsp; Cela ne fonctionnera pas s\'ils ont le même ID de canal, car Android « récupérera » simplement ce canal supprimé au lieu d\'en créer un nouveau. <br>
+        2. Modifiez manuellement le son du canal dans les paramètres système : <br>
+        &emsp; - Appuyez longuement sur l\'icône de l\'application <br>
+        &emsp; - Infos sur l\'application <br>
+        &emsp; - Notifications <br>
+        &emsp; - Catégories de notifications <br>
+        &emsp; - Appuyez sur ce canal et modifiez le son <br>
+        <br>
+        <b>Son personnalisé</b><br>
+        Vous pouvez importer des sonneries personnalisées dans les paramètres système, puis les sélectionner dans l\'application.<br>
+        ]]>
+    </string>
+    <string name="default_">Par défaut</string>
+    <string name="select_notification_sound">Sélectionner le son de notification</string>
+    <string name="unknown">Inconnu</string>
+    <string name="icon_color">Couleur de l\'icône</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        La valeur de couleur ARGB, représentée au format décimal. <br>
+        <br>
+        Laissez-le vide pour le choix automatique des couleurs. <br>
+        <br>
+        Par exemple :<br>
+        La valeur décimale de <font color="#FF0000">0xFF0000</font> est <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Confirmer la suppression ?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Créer un nouveau canal de notification. <br>
+        <br>
+        <font color="#03DAC5"><b>Appuyez longuement</b></font> sur un canal de notification dans cette liste déroulante pour le modifier.
+        ]]>
+    </string>
 </resources>

@@ -30,4 +30,99 @@
         &emsp; به: <font color="#888888">خالی بگذارید</fonts> <br>
         ]]>
     </string>
+    <string name="blocked">مسدود شده</string>
+    <string name="allowed">عبور کرده</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        غیرفعال، هیچ اعلانی نمایش داده نمی‌شود. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        در نوار وضعیت و کشوی اعلان‌ها ظاهر می‌شود. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        صدایی پخش می‌کند. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        به صورت یک پنجره بازشونده (heads-up) ظاهر می‌شود.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        در طول چت‌های فعال پیامکی، صداهای اعلان ممکن است آزاردهنده باشند و قطع می‌شوند. <br>
+        <br>
+        هنگامی که صفحه قفل نیست و برنامه پیامک در پیش‌زمینه قرار دارد، چت فعال محسوب می‌شود.
+        ]]>
+    </string>
+    <string name="none">هیچ‌کدام</string>
+    <string name="low">کم</string>
+    <string name="high">زیاد</string>
+    <string name="sms_chat">گفتگوی پیامکی</string>
+    <string name="call_channel">کانال تماس</string>
+    <string name="sms_channel">کانال پیامک</string>
+    <string name="missing_notification_channel">کانال اعلان یافت نشد: %s</string>
+    <string name="channel_id">شناسه کانال</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        این شناسه به عنوان کانال اعلان در تنظیمات سیستم نمایش داده خواهد شد. <br>
+        <br>
+        پس از ایجاد، این شناسه قابل ویرایش نیست.
+        ]]>
+    </string>
+    <string name="channel_importance">اهمیت</string>
+    <string name="channel_group">گروه کانال</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        اگر خالی گذاشته شود، اعلان‌ها به طور خودکار در سه دسته گروه‌بندی می‌شوند:<br>
+        <br>
+        - تماس ناخواسته <br>
+        - پیامک ناخواسته <br>
+        - پیامک معتبر <br>
+        <br>
+        اگر گروهی مشخص شود، آن‌ها به صورت جداگانه گروه‌بندی خواهند شد.
+        ]]>
+    </string>
+    <string name="mute">بی‌صدا</string>
+    <string name="sound">صدا</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>محدودیت</b></font><br>
+        به دلیل محدودیت اندروید، صدای اعلان تنها هنگام ایجاد کانال جدید قابل تنظیم است؛ پس از ایجاد، قابل تغییر نیست. <br>
+        <br>
+        <font color="#03DAC5"><b>راه حل‌ها</b></font><br>
+        1. کانال را حذف کرده و یک کانال جدید با شناسه کانال متفاوت ایجاد کنید. <br>
+        &emsp; اگر شناسه کانال یکسان باشد، کار نخواهد کرد، زیرا اندروید به سادگی کانال حذف شده را «بازیابی» می‌کند به جای ایجاد یک کانال جدید. <br>
+        2. صدای کانال را به صورت دستی در تنظیمات سیستم تغییر دهید: <br>
+        &emsp; - روی آیکون برنامه فشار طولانی دهید <br>
+        &emsp; - اطلاعات برنامه <br>
+        &emsp; - اعلان‌ها <br>
+        &emsp; - دسته‌های اعلان <br>
+        &emsp; - روی آن کانال ضربه بزنید و صدا را تغییر دهید <br>
+        <br>
+        <b>صدای سفارشی</b><br>
+        می‌توانید آهنگ‌های زنگ سفارشی را در تنظیمات سیستم وارد کنید، سپس آن‌ها را در برنامه انتخاب کنید.<br>
+        ]]>
+    </string>
+    <string name="default_">پیش‌فرض</string>
+    <string name="select_notification_sound">انتخاب صدای اعلان</string>
+    <string name="unknown">ناشناس</string>
+    <string name="icon_color">رنگ آیکون</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        مقدار رنگ ARGB، نمایش داده شده در قالب اعشاری. <br>
+        <br>
+        برای انتخاب خودکار رنگ‌ها، آن را خالی بگذارید. <br>
+        <br>
+        برای مثال:<br>
+        مقدار اعشاری <font color="#FF0000">0xFF0000</font> برابر است با <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">تأیید حذف؟</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        یک کانال اعلان جدید ایجاد کنید. <br>
+        <br>
+        برای ویرایش یک کانال اعلان، روی آن در این لیست کشویی <font color="#03DAC5"><b>فشار طولانی</b></font> دهید.
+        ]]>
+    </string>
 </resources>

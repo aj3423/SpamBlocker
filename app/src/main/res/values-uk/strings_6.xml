@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>Немає</item>
-        <item>Затінення</item>
-        <item>Рядок стану, затінення</item>
-        <item>Звук, рядок стану, затінення</item>
-        <item>Звук, рядок стану, затінення, спливаюче вікно</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Експортувати як Json</item>
         <item>Експортувати як стиснутий</item>

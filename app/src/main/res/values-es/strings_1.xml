@@ -29,9 +29,7 @@
     <string name="apply_to">Aplicar a</string>
     <string name="Delete">Eliminar</string>
     <string name="undelete">Deshacer eliminación</string>
-    <string name="passed">Pasado</string>
     <string name="passed_by_default">Pasado por defecto</string>
-    <string name="blocked">Bloqueado</string>
     <string name="from">De</string>
     <string name="copy">Copiar</string>
     <string name="copied_to_clipboard">Se copió `%s` al portapapeles.</string>

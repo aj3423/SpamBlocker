@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import kotlinx.serialization.Serializable
+import spam.blocker.db.Notification.CHANNEL_ACTIVE_SMS_CHAT
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
@@ -260,6 +263,18 @@ class spf { // for namespace only
         fun setConfig(config: String) { writeString(Def.SETTING_BLOCK_TYPE_CONFIG, config) }
         fun getConfig(): String { return readString(Def.SETTING_BLOCK_TYPE_CONFIG, "") }
     }
+
+    class Notification(ctx: Context) : SharedPref(ctx) {
+        fun getSpamCallChannelId(): String { return readString(Def.SETTING_CHANNEL_SPAM_CALL, CHANNEL_BLOCKED) }
+        fun setSpamCallChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_SPAM_CALL, channelId) }
+        fun getSpamSmsChannelId(): String { return readString(Def.SETTING_CHANNEL_SPAM_SMS, CHANNEL_BLOCKED) }
+        fun setSpamSmsChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_SPAM_SMS, channelId) }
+        fun getValidSmsChannelId(): String { return readString(Def.SETTING_CHANNEL_VALID_SMS, CHANNEL_ALLOWED) }
+        fun setValidSmsChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_VALID_SMS, channelId) }
+        fun getActiveSmsChatChannelId(): String { return readString(Def.SETTING_CHANNEL_ACTIVE_SMS_CHAT, CHANNEL_ACTIVE_SMS_CHAT) }
+        fun setActiveSmsChatChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_ACTIVE_SMS_CHAT, channelId) }
+    }
+
     @Serializable
     data class RecentAppInfo(
         val pkgName: String,

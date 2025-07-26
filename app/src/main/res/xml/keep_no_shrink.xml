@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_bell_mute,@drawable/ic_statusbar_shade,@drawable/ic_bell_ringing,@drawable/ic_heads_up,@drawable/ic_bell_ringing,@drawable/ic_history_indicator_1,@drawable/ic_history_indicator_2,@drawable/ic_history_indicator_3" />

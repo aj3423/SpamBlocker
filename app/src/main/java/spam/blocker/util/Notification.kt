@@ -4,147 +4,187 @@ package spam.blocker.util
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
-import android.app.NotificationManager.IMPORTANCE_MIN
 import android.app.NotificationManager.IMPORTANCE_NONE
 import android.app.PendingIntent
 import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
+import android.media.AudioAttributes
+import android.net.Uri
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.NotificationCompat
+import androidx.core.net.toUri
+import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.def.Def
+import spam.blocker.db.Db
+import spam.blocker.db.Notification.CHANNEL_ACTIVE_SMS_CHAT
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_NONE
+import spam.blocker.db.Notification.Channel
+import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.service.CopyToClipboardReceiver
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.Salmon
 import kotlin.random.Random
 
 
 object Notification {
-    // A workaround for disabling default spam notifications completely by disabling
-    //  notification channels in system settings.
-    const val IMPORTANCE_DEFAULT_SPAM_CALL = -1
-    const val IMPORTANCE_DEFAULT_SPAM_SMS = -2
-    // Mute the sound when actively texting(while the default SMS app is in the foreground)
-    const val IMPORTANCE_HIGH_MUTED = 100
-
-    enum class Type {
+    enum class ShowType {
         VALID_SMS, SPAM_SMS, SPAM_CALL
     }
 
-    fun iconId(type: Type): Int {
-        return when (type) {
-            Type.VALID_SMS -> R.drawable.ic_sms_pass
-            Type.SPAM_SMS -> R.drawable.ic_sms_blocked
-            Type.SPAM_CALL -> R.drawable.ic_call_blocked
+    fun refreshChannels(ctx: Context) {
+        G.notificationChannels.apply {
+            clear()
+            addAll(ChannelTable.listAll(ctx))
         }
     }
-
-    fun groupName(type: Type): String? {
-        return when (type) {
-            Type.VALID_SMS -> "valid_sms"
-            Type.SPAM_SMS -> "spam_sms"
-            Type.SPAM_CALL -> "spam_call"
+    fun deleteAllChannels(ctx: Context) {
+        val mgr = manager(ctx)
+        mgr.getNotificationChannels().forEach {
+            mgr.deleteNotificationChannel(it.id)
         }
     }
+    fun createChannel(ctx: Context, channel: Channel) {
+        // 1. delete it first
+        deleteChannel(ctx, channel.channelId)
 
-    fun getColor(type: Type): Color? {
-        return when (type) {
-            Type.VALID_SMS -> null
-            Type.SPAM_SMS -> Salmon
-            Type.SPAM_CALL -> Salmon
+        // 2. create
+        val c = NotificationChannel(
+            channel.channelId, channel.channelId, channel.importance
+        ).apply {
+            if (channel.mute) {
+                setSound(null, null)
+            } else if (channel.sound.isNotEmpty()) {
+                val attr = AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .build()
+                logi("set sound: ${channel.sound.toUri()}")
+                setSound(channel.sound.toUri(), attr)
+            }
         }
+        manager(ctx).createNotificationChannel(c)
     }
-
-    fun channelId(importance: Int): String {
-        return when (importance) {
-            IMPORTANCE_DEFAULT_SPAM_CALL -> "Default spam call"
-            IMPORTANCE_DEFAULT_SPAM_SMS -> "Default spam SMS"
-
-            IMPORTANCE_NONE -> "None"
-            IMPORTANCE_MIN -> "Shade"
-            IMPORTANCE_LOW -> "StatusBar+Shade"
-            IMPORTANCE_DEFAULT -> "Sound+StatusBar+Shade"
-            IMPORTANCE_HIGH -> "Heads-up+Sound+StatusBar+Shade"
-
-            IMPORTANCE_HIGH_MUTED -> "Heads-up+StatusBar+Shade"
-
-            else -> ""
-        }
+    fun deleteChannel(ctx: Context, channelId: String) {
+        val mgr = manager(ctx)
+        mgr.deleteNotificationChannel(channelId)
     }
-
-    private var created = false
 
     /*
-    from: https://developer.android.com/develop/ui/views/notifications/channels
-
-        IMPORTANCE_HIGH:
-            Makes a sound and appears as a heads-up notification.
-        IMPORTANCE_DEFAULT:
-            Makes a sound.
-        IMPORTANCE_LOW:
-            Makes no sound.
-        IMPORTANCE_MIN:
-            Makes no sound and doesn't appear in the status bar.
-        IMPORTANCE_NONE:
-            Makes no sound and doesn't appear in the status bar or shade.
-     */
-    @Synchronized
-    fun createChannelsOnce(ctx: Context) {
-        if (!created) {
-            val manager =
-                ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
-
-            fun create(id: String, importance: Int, mute: Boolean = false) {
-                val channel = NotificationChannel(id, id, importance).apply {
-                    if (mute) {
-                        setSound(null, null)
-                    }
-                }
-
-                manager.createNotificationChannel(channel)
+        0 IMPORTANCE_NONE   -> "None"
+        2 IMPORTANCE_LOW    -> "StatusBar+Shade"
+        4 IMPORTANCE_HIGH   -> "Heads-up+Sound+StatusBar+Shade"
+    */
+    fun builtInChannels() : List<Channel> {
+        return listOf(
+            Channel(channelId = CHANNEL_NONE, importance = IMPORTANCE_NONE),
+            Channel(channelId = CHANNEL_BLOCKED, importance = IMPORTANCE_LOW),
+            Channel(channelId = CHANNEL_ALLOWED, importance = IMPORTANCE_HIGH),
+            Channel(channelId = CHANNEL_ACTIVE_SMS_CHAT, importance = IMPORTANCE_HIGH, mute = true),
+        )
+    }
+    fun isBuiltInChannel(channelId: String) : Boolean {
+        return listOf(
+            CHANNEL_NONE, CHANNEL_ALLOWED, CHANNEL_BLOCKED, CHANNEL_ACTIVE_SMS_CHAT
+        )
+            .contains(channelId)
+    }
+    // Init the table at first launch, or upgrade 4.14 -> 4.15
+    fun ensureBuiltInChannels(
+        ctx: Context,
+        db: SQLiteDatabase? = Db.getInstance(ctx).writableDatabase
+    ) {
+        val existing = manager(ctx).notificationChannels.map { it.id }
+        builtInChannels().forEach { ch ->
+            val alreadyExist = existing.contains(ch.channelId)
+            if (!alreadyExist) {
+                // 1. add to db
+                ChannelTable.add(ctx, ch, db)
+                // 2. create the notification channel
+                createChannel(ctx, ch)
             }
-
-            create(channelId(IMPORTANCE_HIGH_MUTED), IMPORTANCE_HIGH, mute = true) // 100
-
-            create(channelId(IMPORTANCE_HIGH), IMPORTANCE_HIGH) // 4
-            create(channelId(IMPORTANCE_DEFAULT), IMPORTANCE_DEFAULT) // 3
-            create(channelId(IMPORTANCE_LOW), IMPORTANCE_LOW) // 2
-            create(channelId(IMPORTANCE_MIN), IMPORTANCE_MIN) // 1
-            create(channelId(IMPORTANCE_NONE), IMPORTANCE_NONE) // 0
-
-            create(channelId(IMPORTANCE_DEFAULT_SPAM_CALL), Def.DEF_SPAM_IMPORTANCE) // -1
-            create(channelId(IMPORTANCE_DEFAULT_SPAM_SMS), Def.DEF_SPAM_IMPORTANCE) // -2
-
-            created = true
         }
     }
 
-    private fun shouldSilent(importance: Int): Boolean {
-        return importance <= IMPORTANCE_LOW
+    fun manager(ctx: Context) : NotificationManager {
+        return ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
     }
 
-    // different notification id generates different dropdown items
+    // Show orange warning when the channel is missing, could've been deleted.
+    fun missingChannel(ctx: Context, channelId: String) : Channel {
+        return Channel(
+            channelId = CHANNEL_ALLOWED,
+            importance = IMPORTANCE_HIGH,
+            iconColor = DarkOrange.toArgb(),
+        )
+    }
+
+    fun autoIcon(ctx: Context, channel: Channel, showType: ShowType) : Int {
+        return if (channel.icon.isNotEmpty())
+            ctx.resources.getIdentifier(channel.icon, "drawable", ctx.packageName)
+        else
+            when(showType) {
+                ShowType.SPAM_SMS -> R.drawable.ic_sms_blocked
+                ShowType.SPAM_CALL -> R.drawable.ic_call_blocked
+                ShowType.VALID_SMS -> R.drawable.ic_sms_pass
+            }
+    }
+
+    fun autoGroup(channel: Channel) : String {
+        return if (channel.group.isNotEmpty())
+            channel.group
+        else
+            // name doesn't matter as long as they are different
+            channel.channelId
+    }
+    fun autoColor(channel: Channel, showType: ShowType) : Int {
+        return channel.iconColor
+            ?: when(showType) {
+                ShowType.SPAM_CALL -> Salmon.toArgb()
+                ShowType.SPAM_SMS -> Salmon.toArgb()
+                ShowType.VALID_SMS -> Color.Unspecified.toArgb()
+            }
+    }
+    fun autoSound(channel: Channel) : Uri? {
+        return if (channel.sound.isEmpty())
+            null
+        else
+            channel.sound.toUri()
+    }
+
     fun show(
-        ctx: Context, type: Type, title: String, body: String, importance: Int,
+        ctx: Context,
+        showType: ShowType,
+        channel: Channel,
+        title: String,
+        body: String,
         intent: Intent, // notification clicking handler
         toCopy: List<String> = listOf(),
     ) {
-        createChannelsOnce(ctx)
+        logi("show in channel: $channel")
 
-        val chId = channelId(importance) // 5 importance level <-> 5 channel id
+        val chId = channel.channelId // 5 importance level <-> 5 channel id
         val notificationId = System.currentTimeMillis().toInt()
         val builder = NotificationCompat.Builder(ctx, chId)
 
-        val icon = iconId(type)
 
         // Use different requestCode for every pendingIntent, otherwise the
         //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
         //   its action button disabled
         val requestCode = Random.nextInt()
+
+        val shouldSilent = channel.shouldSilent()
+        val icon = autoIcon(ctx, channel, showType)
+        val group = autoGroup(channel)
+        val iconColor = autoColor(channel, showType)
+        val sound = autoSound(channel)
+        logi("sound: $sound")
 
         val pendingIntent = TaskStackBuilder.create(ctx).run {
             addNextIntentWithParentStack(intent)
@@ -156,21 +196,15 @@ object Notification {
         builder
             .setAutoCancel(true)
             .setChannelId(chId)
-            .setSmallIcon(icon)
             .setContentTitle(title)
             .setContentText(body)
-            .setSilent(shouldSilent(importance))
+            .setSilent(shouldSilent)
             .setContentIntent(pendingIntent)
-            .apply {
-                val group = groupName(type)
-                group?.let { setGroup(it) }
-
-                val c = getColor(type)
-                if (c != null) {
-                    builder.setColorized(true)
-                    builder.setColor(c.toArgb())
-                }
-            }
+            .setGroup(group)
+            .setSmallIcon(icon)
+            .setColorized(true)
+            .setColor(iconColor)
+            .setSound(sound)
 
 
         // copy buttons
@@ -191,27 +225,27 @@ object Notification {
 
         val notification = builder.build()
 
-        val manager =
-            ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
-        manager.notify(notificationId, notification)
+        val mgr = manager(ctx)
+        mgr.notify(notificationId, notification)
 
         // group
         run {
-            val name = groupName(type)
-            val group = NotificationCompat.Builder(ctx, chId)
+            val groupBuilder = NotificationCompat.Builder(ctx, chId)
                 .setChannelId(chId)
-                .setSmallIcon(iconId(type))
+                .setSmallIcon(icon)
                 .setContentTitle(title)
                 .setContentText(body)
-                .setSilent(shouldSilent(importance))
-                .setGroup(name)
+                .setSilent(shouldSilent)
+                .setGroup(group)
                 .setGroupSummary(true)
-                .apply {
-                    getColor(type)?.let {
-                        setColor(it.toArgb())
-                    }
-                }
-            manager.notify(type.ordinal, group.build())
+                .setColorized(true)
+                .setColor(iconColor)
+                .setSound(sound)
+
+            // Use the same id for a group, otherwise, when swiping left to
+            // remove the notification group, previous notifications will appear again.
+            val id = group.hashCode()
+            mgr.notify(id, groupBuilder.build())
         }
     }
 

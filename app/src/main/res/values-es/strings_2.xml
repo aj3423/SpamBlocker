@@ -33,33 +33,33 @@
             <br>
             Hay tres posibles resultados de atestación: <br>
             <font color="#03DAC5"><b>Válida</b></font> <br>
-              &emsp; La llamada es muy probable que sea válida, no suplantada. <br>
-            <font color="#ffa500"><b>Sin Verificar</b></font> <br>
+              &emsp; Es muy probable que la llamada sea válida, no fraudulenta. <br>
+            <font color="#ffa500"><b>No Verificada</b></font> <br>
               &emsp; La llamada no pudo ser validada, o la atestación STIR no es compatible. <br>
-            <font color="#fa7f71"><b>Suplantada</b></font> <br>
-              &emsp; Es muy probable que sea una llamada suplantada. <br>
+            <font color="#fa7f71"><b>Fraudulenta</b></font> <br>
+              &emsp; Es muy probable que sea una llamada fraudulenta. <br>
             <br>
             <br>
             <b>Opciones:</b><br>
             <br>
-              - <b>Flexible</b>: <br>
-                  &emsp; - Se permitirán las llamadas <font color="#03DAC5"><b>Válidas</b></font>. <br>
-                  &emsp; - Las llamadas <font color="#fa7f71"><b>Suplantadas</b></font> aún serán verificadas por otras reglas. <br>
-                  &emsp; - Cuando se marca <b>Incluir Sin Verificar</b>, también se permitirán las llamadas <font color="#ffa500"><b>Sin Verificar</b></font>. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad por defecto: 10</b></font> <br>
+              - <b>Tolerante</b>: <br>
+                  &emsp; - Las llamadas <font color="#03DAC5"><b>Válidas</b></font> serán permitidas. <br>
+                  &emsp; - Las llamadas <font color="#fa7f71"><b>Fraudulentas</b></font> seguirán siendo revisadas por otras reglas. <br>
+                  &emsp; - Cuando <b>Incluir No Verificados</b> esté marcado, las llamadas <font color="#ffa500"><b>No Verificadas</b></font> también serán permitidas. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridad Predeterminada: 10</b></font> <br>
               <br>
               - <font color="#fa7f71"><b>Estricto</b></font>: <br>
-                  &emsp; - Se permitirán las llamadas <font color="#03DAC5"><b>Válidas</b></font>. <br>
-                  &emsp; - Las llamadas <font color="#fa7f71"><b>Suplantadas</b></font> serán bloqueadas. <br>
-                  &emsp; - Cuando se marca \"<b>Incluir Sin Verificar</b>\", también se bloquearán las llamadas <font color="#ffa500"><b>Sin Verificar</b></font>. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad por defecto: 0</b></font> <br>
+                  &emsp; - Las llamadas <font color="#03DAC5"><b>Válidas</b></font> serán revisadas por otras reglas. <br>
+                  &emsp; - Las llamadas <font color="#fa7f71"><b>Fraudulentas</b></font> serán bloqueadas. <br>
+                  &emsp; - Cuando \"<b>Incluir No Verificados</b>\" esté marcado, las llamadas <font color="#ffa500"><b>No Verificadas</b></font> también serán bloqueadas. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridad Predeterminada: 0</b></font> <br>
             <br>
             <br>
             Un <b>caso de uso</b> para personalizar las prioridades:<br>
             <br>
-            1. Permitir siempre contactos. <br>
-              &emsp; - Contactos(Flexible), prioridad <font color="#ea86ff">12</font> <br>
-            2. Bloquear llamadas que fallan STIR, incluso si se repiten. <br>
+            1. Siempre permitir contactos. <br>
+              &emsp; - Contactos(Tolerante), prioridad <font color="#ea86ff">12</font> <br>
+            2. Bloquear llamadas que fallen STIR, incluso si se repiten. <br>
               &emsp; - STIR(Estricto), prioridad <font color="#ea86ff">11</font> <br>
             3. Permitir llamadas que se repiten. <br>
               &emsp; - Llamada Repetida, prioridad <font color="#ea86ff">10</font> <br>

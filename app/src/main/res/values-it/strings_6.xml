@@ -39,13 +39,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>Nessuna</item>
-        <item>Tonalità</item>
-        <item>Barra di stato, Tonalità</item>
-        <item>Suono, Barra di stato, Tonalità</item>
-        <item>Suono, Barra di stato, Tonalità, Heads-up</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Esporta come Json</item>
         <item>Esporta come compresso</item>

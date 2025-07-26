@@ -29,9 +29,7 @@
     <string name="apply_to">Uygula</string>
     <string name="Delete">Sil</string>
     <string name="undelete">Silinmemiş</string>
-    <string name="passed">Geçti</string>
     <string name="passed_by_default">Varsayılan olarak geçti</string>
-    <string name="blocked">Engellendi</string>
     <string name="from">Tarafından</string>
     <string name="copy">Kopyala</string>
     <string name="copied_to_clipboard">Panoya `%s` kopyalandı.</string>

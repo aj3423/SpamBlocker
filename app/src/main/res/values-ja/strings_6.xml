@@ -40,13 +40,6 @@
     </string>
 
 
-    <string-array name="importance_list">
-        <item>なし</item>
-        <item>シェード</item>
-        <item>ステータスバー、シェード</item>
-        <item>サウンド、ステータスバー、シェード</item>
-        <item>サウンド、ステータスバー、シェード、ヘッドアップ</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Jsonとしてエクスポート</item>
         <item>圧縮してエクスポート</item>

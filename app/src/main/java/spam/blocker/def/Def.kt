@@ -1,6 +1,6 @@
 package spam.blocker.def
 
-import android.app.NotificationManager
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
 
 object Def {
 
@@ -16,6 +16,10 @@ object Def {
     const val DEFAULT_HANG_UP_DELAY = 1 // second
 
     const val SETTING_THEME_TYPE = "theme_type"
+    const val SETTING_CHANNEL_SPAM_CALL = "channel_spam_call"
+    const val SETTING_CHANNEL_SPAM_SMS = "channel_spam_sms"
+    const val SETTING_CHANNEL_VALID_SMS = "channel_valid_sms"
+    const val SETTING_CHANNEL_ACTIVE_SMS_CHAT = "channel_active_sms_chat"
     const val SETTING_EMERGENCY_ENABLED = "emergency_enabled"
     const val SETTING_EMERGENCY_COLLAPSED = "emergency_collapsed"
     const val SETTING_EMERGENCY_STIR_ENABLED = "emergency_stir_enabled"
@@ -113,7 +117,9 @@ object Def {
     const val BLOCK_TYPE_SILENCE = 1
     const val BLOCK_TYPE_ANSWER_AND_HANGUP = 2
 
-    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
+//    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
+    const val DEF_SPAM_CHANNEL = CHANNEL_BLOCKED
+
     const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT
 
     // allowed (1~9, 100+)

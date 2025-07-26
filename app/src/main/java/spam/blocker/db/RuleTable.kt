@@ -1,6 +1,7 @@
 package spam.blocker.db
 
 import android.annotation.SuppressLint
+import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -13,14 +14,26 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.sp
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.JsonTransformingSerializer
+import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.json.jsonPrimitive
 import org.json.JSONObject
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
@@ -41,7 +54,7 @@ A deserializer that allows both format for history compatibility.
 
 Maybe this can be removed later(after 2026).
  */
-object CompatibleIntSerializer : JsonTransformingSerializer<Int>(Int.serializer()) {
+object CompatibleFlagSerializer : JsonTransformingSerializer<Int>(Int.serializer()) {
     override fun transformDeserialize(element: JsonElement): JsonElement {
         return when (element) {
             is JsonPrimitive -> element // Case where the value is a direct integer
@@ -54,6 +67,37 @@ object CompatibleIntSerializer : JsonTransformingSerializer<Int>(Int.serializer(
     }
 }
 
+// v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
+object CompatibleChannelSerializer : KSerializer<String> {
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("channel", PrimitiveKind.STRING)
+
+    override fun serialize(encoder: Encoder, value: String) {
+        encoder.encodeString(value)
+    }
+
+    override fun deserialize(decoder: Decoder): String {
+        val jsonDecoder = decoder as? JsonDecoder
+            ?: throw SerializationException("This serializer can only be used with JSON")
+
+        val element = jsonDecoder.decodeJsonElement()
+        return when {
+            // Handle new format: channel as String
+            element is JsonPrimitive && element.isString -> element.content
+            // Handle old format: importance as Int in parent object
+            element is JsonObject && element.containsKey("importance") -> {
+                val importance = element["importance"]?.jsonPrimitive?.intOrNull ?: IMPORTANCE_HIGH
+                when (importance) {
+                    0 -> CHANNEL_NONE
+                    1,2 -> CHANNEL_BLOCKED
+                    else -> CHANNEL_ALLOWED
+                }
+            }
+            // Fallback to default
+            else -> Def.DEF_SPAM_CHANNEL
+        }
+    }
+}
+
 @Serializable
 data class RegexRule(
     var id: Long = 0,
@@ -62,19 +106,21 @@ data class RegexRule(
     // for now, this is only used for ParticularNumber
     var patternExtra: String = "",
 
-    @Serializable(with = CompatibleIntSerializer::class)
+    @Serializable(with = CompatibleFlagSerializer::class)
     var patternFlags: Int = Def.DefaultRegexFlags,
-    @Serializable(with = CompatibleIntSerializer::class)
+    @Serializable(with = CompatibleFlagSerializer::class)
     var patternExtraFlags: Int = Def.DefaultRegexFlags,
 
     var description: String = "",
     var priority: Int = 1,
     var isBlacklist: Boolean = true,
 
-    @Serializable(with = CompatibleIntSerializer::class)
+    @Serializable(with = CompatibleFlagSerializer::class)
     var flags: Int = Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL, // it applies to SMS or Call or both
 
-    var importance: Int = Def.DEF_SPAM_IMPORTANCE, // notification importance
+    @Serializable(with = CompatibleChannelSerializer::class)
+    var channel: String = Def.DEF_SPAM_CHANNEL, // notification channel
+
     var schedule: String = "",
     var blockType: Int = Def.DEF_BLOCK_TYPE,
     var blockTypeConfig: String = "", // for block type "Answer+HangUp"
@@ -220,7 +266,7 @@ fun newRegexRule(
     priority: Int,
     isBlacklist: Boolean,
     flags: Int,
-    importance: Int,
+    channel: String,
     schedule: String,
     blockType: Int,
     blockTypeConfig: String,
@@ -235,7 +281,7 @@ fun newRegexRule(
         priority = priority,
         isBlacklist = isBlacklist,
         flags = flags,
-        importance = importance,
+        channel = channel,
         schedule = schedule,
         blockType = blockType,
         blockTypeConfig = blockTypeConfig,
@@ -275,8 +321,8 @@ abstract class RuleTable {
             priority = it.getInt(it.getColumnIndex(Db.COLUMN_PRIORITY)),
             isBlacklist = it.getInt(it.getColumnIndex(Db.COLUMN_IS_BLACK)) == 1,
             flags = it.getInt(it.getColumnIndex(Db.COLUMN_FLAGS)),
-            importance = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_IMPORTANCE))
-                ?: Def.DEF_SPAM_IMPORTANCE,
+            channel = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_CHANNEL_ID))
+                ?: Def.DEF_SPAM_CHANNEL,
             schedule = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_SCHEDULE)) ?: "",
             blockType = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE))
                 ?: Def.DEF_BLOCK_TYPE,
@@ -396,7 +442,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAGS, f.flags)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
-        cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+        cv.put(Db.COLUMN_CHANNEL_ID, f.channel)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
@@ -416,7 +462,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAGS, f.flags)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
-        cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+        cv.put(Db.COLUMN_CHANNEL_ID, f.channel)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
@@ -435,7 +481,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_PRIORITY, f.priority)
         cv.put(Db.COLUMN_FLAGS, f.flags)
         cv.put(Db.COLUMN_IS_BLACK, if (f.isBlacklist) 1 else 0)
-        cv.put(Db.COLUMN_IMPORTANCE, f.importance)
+        cv.put(Db.COLUMN_CHANNEL_ID, f.channel)
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)

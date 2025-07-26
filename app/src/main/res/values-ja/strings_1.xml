@@ -29,9 +29,7 @@
     <string name="apply_to">適用先</string>
     <string name="Delete">削除</string>
     <string name="undelete">元に戻す</string>
-    <string name="passed">通過</string>
     <string name="passed_by_default">デフォルトで通過</string>
-    <string name="blocked">ブロック</string>
     <string name="from">送信元</string>
     <string name="copy">コピー</string>
     <string name="copied_to_clipboard">`%s` をクリップボードにコピーしました。</string>

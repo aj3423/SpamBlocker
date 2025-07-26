@@ -29,9 +29,7 @@
     <string name="apply_to">החל על</string>
     <string name="Delete">מחק</string>
     <string name="undelete">שחזר</string>
-    <string name="passed">עבר</string>
     <string name="passed_by_default">עבר כברירת מחדל</string>
-    <string name="blocked">נחסם</string>
     <string name="from">מאת</string>
     <string name="copy">העתק</string>
     <string name="copied_to_clipboard">הועתק %s ללוח.</string>

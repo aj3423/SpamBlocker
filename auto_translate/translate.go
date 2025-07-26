@@ -11,6 +11,7 @@ import (
 	"slices"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/fatih/color"
 	"github.com/google/generative-ai-go/genai"
@@ -432,17 +433,24 @@ func move_tag(tag string, lang string, to_xml string) func(string) error {
 		src_lines := split_lines(read_xml(lang, xml_fn))
 		found, start, end, matched_lines := extract_tag(src_lines, tag)
 		if found {
-			// 1. add to dest xml
-			dest_lines := split_lines(read_xml(lang, to_xml))
-			penultimate := len(dest_lines) - 1
-			// insert the matched_lines at the line before last line
-			new_lines := insert_lines_at(dest_lines, penultimate, matched_lines)
+			go func() {
+				// if the tag is moved immediately, e.g. from strings_1.xml to strings_10.xml,
+				// strings_10.xml will be processed again, so delay 2 second, the loop should've ended.
+				time.Sleep(2 * time.Second)
 
-			write_xml(lang, to_xml, join_lines(new_lines))
+				color.HiGreen("moving tag <%s> lang <%s> from %s to %s", tag, lang, xml_fn, to_xml)
+				// 1. add to dest xml
+				dest_lines := split_lines(read_xml(lang, to_xml))
+				penultimate := len(dest_lines) - 1
+				// insert the matched_lines at the line before last line
+				new_lines := insert_lines_at(dest_lines, penultimate, matched_lines)
 
-			// 2. remove from source xml
-			cleared := append(src_lines[:start], src_lines[end:]...)
-			write_xml(lang, xml_fn, join_lines(cleared))
+				write_xml(lang, to_xml, join_lines(new_lines))
+
+				// 2. remove from source xml
+				cleared := append(src_lines[:start], src_lines[end:]...)
+				write_xml(lang, xml_fn, join_lines(cleared))
+			}()
 		}
 
 		return nil
@@ -517,6 +525,7 @@ func main() {
 		for _, lang := range languages {
 			walk_lang_xmls(lang, move_tag(move, lang, to))
 		}
+		time.Sleep(3 * time.Second) // move_tag is async, wait for it to finish
 	} else { // translate
 		languages := check_lang_param()
 		for _, target_lang := range languages {

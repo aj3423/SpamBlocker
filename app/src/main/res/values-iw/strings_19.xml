@@ -30,4 +30,99 @@
         &emsp; אל: <font color="#888888">השאר ריק</font> <br>
         ]]>
     </string>
+    <string name="blocked">נחסם</string>
+    <string name="allowed">עבר</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        מושבת, ללא התראות כלל. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        מופיע בשורת המצב ובפאנל ההתראות. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        משמיע צליל. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        מופיע כהודעה קופצת.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        במהלך שיחות SMS פעילות, צלילי התראות עלולים להיות מעצבנים ומושתקים. <br>
+        <br>
+        שיחה נחשבת פעילה כאשר המסך אינו נעול ואפליקציית ה-SMS נמצאת בחזית.
+        ]]>
+    </string>
+    <string name="none">ללא</string>
+    <string name="low">נמוכה</string>
+    <string name="high">גבוהה</string>
+    <string name="sms_chat">צ\'אט SMS</string>
+    <string name="call_channel">ערוץ שיחות</string>
+    <string name="sms_channel">ערוץ SMS</string>
+    <string name="missing_notification_channel">ערוץ התראות חסר: %s</string>
+    <string name="channel_id">מזהה ערוץ</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        מזהה זה יופיע בהגדרות המערכת כערוץ התראות. <br>
+        <br>
+        לאחר יצירתו, לא ניתן לערוך את המזהה.
+        ]]>
+    </string>
+    <string name="channel_importance">חשיבות</string>
+    <string name="channel_group">קבוצת ערוץ</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        כאשר נשאר ריק, התראות מקובצות אוטומטית לשלוש קטגוריות:<br>
+        <br>
+        - שיחת ספאם <br>
+        - SMS ספאם <br>
+        - SMS תקין <br>
+        <br>
+        אם קבוצה מצוינת, הן יקובצו בנפרד.
+        ]]>
+    </string>
+    <string name="mute">השתק</string>
+    <string name="sound">צליל</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>הגבלה</b></font><br>
+        בשל מגבלת אנדרואיד, צליל ההתראה ניתן להגדרה רק בעת יצירת ערוץ חדש; לאחר יצירתו, לא ניתן לשנותו. <br>
+        <br>
+        <font color="#03DAC5"><b>פתרונות עוקפים</b></font><br>
+        1. מחק את הערוץ וצור חדש עם מזהה ערוץ שונה. <br>
+        &emsp; זה לא יעבוד אם יש להם את אותו מזהה ערוץ, מכיוון שאנדרואיד פשוט \'ישחזר\' את הערוץ שנמחק במקום ליצור חדש. <br>
+        2. שנה ידנית את צליל הערוץ בהגדרות המערכת: <br>
+        &emsp; - לחיצה ארוכה על אייקון האפליקציה <br>
+        &emsp; - פרטי אפליקציה <br>
+        &emsp; - התראות <br>
+        &emsp; - קטגוריות התראות <br>
+        &emsp; - הקש על הערוץ ושנה את הצליל <br>
+        <br>
+        <b>צליל מותאם אישית</b><br>
+        באפשרותך לייבא צלצולים מותאמים אישית בהגדרות המערכת, ולאחר מכן לבחור אותם באפליקציה.<br>
+        ]]>
+    </string>
+    <string name="default_">ברירת מחדל</string>
+    <string name="select_notification_sound">בחר צליל התראה</string>
+    <string name="unknown">לא ידוע</string>
+    <string name="icon_color">צבע אייקון</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        ערך צבע ARGB, מיוצג בפורמט עשרוני. <br>
+        <br>
+        השאר ריק לבחירה אוטומטית של צבעים. <br>
+        <br>
+        לדוגמה:<br>
+        הערך העשרוני של <font color="#FF0000">0xFF0000</font> הוא <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">לאשר מחיקה?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        צור ערוץ התראות חדש. <br>
+        <br>
+        <font color="#03DAC5"><b>לחיצה ארוכה</b></font> על ערוץ התראות ברשימה הנפתחת הזו כדי לערוך אותו.
+        ]]>
+    </string>
 </resources>

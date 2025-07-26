@@ -29,9 +29,7 @@
     <string name="apply_to">تطبيق على</string>
     <string name="Delete">حذف</string>
     <string name="undelete">إلغاء الحذف</string>
-    <string name="passed">تم الاجتياز</string>
     <string name="passed_by_default">تم الاجتياز بشكل افتراضي</string>
-    <string name="blocked">تم الحظر</string>
     <string name="from">من</string>
     <string name="copy">نسخ</string>
     <string name="copied_to_clipboard">تم نسخ `%s` إلى الحافظة.</string>

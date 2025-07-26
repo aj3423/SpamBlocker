@@ -1,12 +1,12 @@
 package spam.blocker.service
 
-import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
 import spam.blocker.Events
 import spam.blocker.db.HistoryRecord
+import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.SmsTable
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
@@ -14,8 +14,8 @@ import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
-import spam.blocker.util.Notification.IMPORTANCE_HIGH_MUTED
-import spam.blocker.util.Notification.Type
+import spam.blocker.util.Notification.ShowType
+import spam.blocker.util.Notification.missingChannel
 import spam.blocker.util.Now
 import spam.blocker.util.Util.isDeviceLocked
 import spam.blocker.util.Util.isSmsAppInForeground
@@ -106,10 +106,10 @@ open class SmsReceiver : BroadcastReceiver() {
 
             Notification.show(
                 ctx,
-                type = Type.SPAM_SMS,
+                showType = ShowType.SPAM_SMS,
+                channel = r.getNotificationChannel(ctx, showType = ShowType.SPAM_SMS),
                 title = showName,
                 body = messageBody,
-                importance = r.getSpamImportance(isCall = false),
                 intent = intent,
                 toCopy = toCopy,
             )
@@ -129,15 +129,23 @@ open class SmsReceiver : BroadcastReceiver() {
                 ctx, rawNumber, messageBody, false, false
             )
 
+
+            // silence it when actively SMS chat
+            val isActiveSmsChat = !isDeviceLocked(ctx) && isSmsAppInForeground(ctx)
+
             Notification.show(
                 ctx,
-                type = Type.VALID_SMS,
+                showType = ShowType.VALID_SMS,
+                channel = if (isActiveSmsChat) {
+                    val activeChannelId = spf.Notification(ctx).getActiveSmsChatChannelId()
+
+                    ChannelTable.findByChannelId(ctx, activeChannelId)
+                        ?: missingChannel(ctx, activeChannelId)
+                } else {
+                    r.getNotificationChannel(ctx, ShowType.VALID_SMS)
+                },
                 title = showName,
                 body = messageBody,
-                importance = if (!isDeviceLocked(ctx) && isSmsAppInForeground(ctx))
-                    IMPORTANCE_HIGH_MUTED
-                else
-                    IMPORTANCE_HIGH,
                 intent = intent,
                 toCopy = toCopy,
             )

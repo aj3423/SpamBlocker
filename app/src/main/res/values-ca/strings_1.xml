@@ -29,9 +29,7 @@
     <string name="apply_to">Aplica a</string>
     <string name="Delete">Suprimeix</string>
     <string name="undelete">Recupera</string>
-    <string name="passed">Aprovat</string>
     <string name="passed_by_default">Aprovat per defecte</string>
-    <string name="blocked">Bloquejat</string>
     <string name="from">De</string>
     <string name="copy">Copia</string>
     <string name="copied_to_clipboard">S\'ha copiat `%s` al porta-retalls.</string>

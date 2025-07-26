@@ -30,4 +30,99 @@
         &emsp; до: <font color="#888888">оставить пустым</font> <br>
         ]]>
     </string>
+    <string name="blocked">Заблокирован</string>
+    <string name="allowed">Пропущен</string>
+    <string name="help_notification">
+        <![CDATA[
+        <img src=\'ic_bell_mute\'/> <br>
+        Отключено, уведомлений нет. <br>
+        <br>
+        <img src=\'ic_statusbar_shade\'/> <br>
+        Появляется в строке состояния и шторке уведомлений. <br>
+        <br>
+        <img src=\'ic_bell_ringing\'/> <br>
+        Воспроизводит звук. <br>
+        <br>
+        <img src=\'ic_heads_up\'/> <br>
+        Появляется как всплывающее уведомление.
+        ]]>
+    </string>
+    <string name="help_active_sms_chat">
+        <![CDATA[
+        Во время активных SMS-чатов звуки уведомлений могут раздражать и заглушаются. <br>
+        <br>
+        Активным чатом считается ситуация, когда экран разблокирован и SMS-приложение находится на переднем плане.
+        ]]>
+    </string>
+    <string name="none">Нет</string>
+    <string name="low">Низкая</string>
+    <string name="high">Высокая</string>
+    <string name="sms_chat">SMS-чат</string>
+    <string name="call_channel">Канал звонков</string>
+    <string name="sms_channel">Канал SMS</string>
+    <string name="missing_notification_channel">Отсутствует канал уведомлений: %s</string>
+    <string name="channel_id">ID канала</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        Этот ID будет отображаться в системных настройках как канал уведомлений. <br>
+        <br>
+        После создания ID не может быть изменен.
+        ]]>
+    </string>
+    <string name="channel_importance">Важность</string>
+    <string name="channel_group">Группа каналов</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        Если оставить пустым, уведомления автоматически группируются по трем категориям:<br>
+        <br>
+        - Spam call <br>
+        - Spam SMS <br>
+        - Действительное SMS <br>
+        <br>
+        Если указана группа, они будут сгруппированы отдельно.
+        ]]>
+    </string>
+    <string name="mute">Без звука</string>
+    <string name="sound">Звук</string>
+    <string name="help_sound">
+        <![CDATA[
+        <font color="#ffa500"><b>Ограничение</b></font><br>
+        Из-за ограничений Android звук уведомления можно установить только при создании нового канала; после его создания изменить его невозможно. <br>
+        <br>
+        <font color="#03DAC5"><b>Обходные пути</b></font><br>
+        1. Удалите канал и создайте новый с другим ID канала. <br>
+        &emsp; Это не сработает, если у них одинаковый ID канала, так как Android просто «восстановит» удаленный канал вместо создания нового. <br>
+        2. Вручную измените звук канала в системных настройках: <br>
+        &emsp; - Длительное нажатие на иконку приложения <br>
+        &emsp; - О приложении <br>
+        &emsp; - Уведомления <br>
+        &emsp; - Категории уведомлений <br>
+        &emsp; - Нажмите на этот канал и измените звук <br>
+        <br>
+        <b>Пользовательский звук</b><br>
+        Вы можете импортировать пользовательские рингтоны в системные настройки, затем выбрать их в приложении.<br>
+        ]]>
+    </string>
+    <string name="default_">По умолчанию</string>
+    <string name="select_notification_sound">Выберите звук уведомления</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="icon_color">Цвет иконки</string>
+    <string name="help_icon_color">
+        <![CDATA[
+        Значение цвета ARGB, представленное в десятичном формате. <br>
+        <br>
+        Оставьте пустым для автоматического выбора цветов. <br>
+        <br>
+        Например:<br>
+        Десятичное значение <font color="#FF0000">0xFF0000</font> — <b>16711680</b>.
+        ]]>
+    </string>
+    <string name="confirm_to_delete">Подтвердить удаление?</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        Создать новый канал уведомлений. <br>
+        <br>
+        <font color="#03DAC5"><b>Длительное нажатие</b></font> на канал уведомлений в этом выпадающем списке, чтобы отредактировать его.
+        ]]>
+    </string>
 </resources>

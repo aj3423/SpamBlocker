@@ -42,13 +42,6 @@
     <string name="add_num_to_db">Добавить номер в базу спама</string>
     <string name="mark_all_as_read">Пометить все как прочитанные</string>
     <string name="remove_db_number">Удалить номер из базы спама</string>
-    <string-array name="importance_list">
-        <item>Нет</item>
-        <item>Шторка</item>
-        <item>Строка состояния, Шторка</item>
-        <item>Звук, Строка состояния, Шторка</item>
-        <item>Звук, Строка состояния, Шторка, Подними голову</item>
-    </string-array>
     <string-array name="export_type_list">
         <item>Экспортировать как Json</item>
         <item>Экспортировать как сжатый файл</item>

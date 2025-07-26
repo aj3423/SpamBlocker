@@ -32,37 +32,37 @@
             אימות STIR/SHAKEN דורש <b>אנדרואיד 11+</b> ו<b>תמיכת ספק</b>. <br>
             <br>
             ישנן שלוש תוצאות אימות אפשריות: <br>
-            <font color="#03DAC5"><b>תקין</b></font> <br>
-              &emsp; השיחה ככל הנראה תקינה, ולא מזויפת. <br>
-            <font color="#ffa500"><b>לא מאומת</b></font> <br>
-              &emsp; השיחה לא ניתנת לאימות, או שאימות STIR אינו נתמך. <br>
+            <font color="#03DAC5"><b>תקינה</b></font> <br>
+              &emsp; סביר מאוד שהשיחה תקינה, לא מזויפת. <br>
+            <font color="#ffa500"><b>לא מאומתת</b></font> <br>
+              &emsp; לא ניתן לאמת את השיחה, או שאימות STIR אינו נתמך. <br>
             <font color="#fa7f71"><b>התחזות</b></font> <br>
               &emsp; סביר מאוד שמדובר בשיחת התחזות. <br>
             <br>
             <br>
             <b>אפשרויות:</b><br>
             <br>
-              - <b>מתירני</b>: <br>
+              - <b>מקל</b>: <br>
                   &emsp; - שיחות <font color="#03DAC5"><b>תקינות</b></font> יאושרו. <br>
                   &emsp; - שיחות <font color="#fa7f71"><b>התחזות</b></font> עדיין ייבדקו על ידי כללים אחרים. <br>
                   &emsp; - כאשר <b>כלול לא מאומת</b> מסומן, שיחות <font color="#ffa500"><b>לא מאומתות</b></font> יאושרו גם הן. <br>
-                  &emsp; <font color="#ea86ff"><b>קדימות ברירת מחדל: 10</b></font> <br>
+                  &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 10</b></font> <br>
               <br>
-              - <font color="#fa7f71"><b>קפדני</b></font>: <br>
-                  &emsp; - שיחות <font color="#03DAC5"><b>תקינות</b></font> יאושרו. <br>
+              - <font color="#fa7f71"><b>מחמיר</b></font>: <br>
+                  &emsp; - שיחות <font color="#03DAC5"><b>תקינות</b></font> ייבדקו על ידי כללים אחרים. <br>
                   &emsp; - שיחות <font color="#fa7f71"><b>התחזות</b></font> ייחסמו. <br>
                   &emsp; - כאשר \"<b>כלול לא מאומת</b>\" מסומן, שיחות <font color="#ffa500"><b>לא מאומתות</b></font> ייחסמו גם הן. <br>
-                  &emsp; <font color="#ea86ff"><b>קדימות ברירת מחדל: 0</b></font> <br>
+                  &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font> <br>
             <br>
             <br>
-            <b>מקרה שימוש</b> להתאמה אישית של הקדימויות:<br>
+            <b>מקרה שימוש</b> להתאמה אישית של העדיפויות:<br>
             <br>
-            1. תמיד אפשר אנשי קשר. <br>
-              &emsp; - אנשי קשר (מתירני), קדימות <font color="#ea86ff">12</font> <br>
-            2. חסום שיחות שנכשלו באימות STIR, גם אם הן חוזרות על עצמן. <br>
-              &emsp; - STIR (קפדני), קדימות <font color="#ea86ff">11</font> <br>
+            1. אפשר תמיד אנשי קשר. <br>
+              &emsp; - אנשי קשר (מקל), עדיפות <font color="#ea86ff">12</font> <br>
+            2. חסום שיחות שנכשלו ב-STIR, גם אם הן חוזרות על עצמן. <br>
+              &emsp; - STIR (מחמיר), עדיפות <font color="#ea86ff">11</font> <br>
             3. אפשר שיחות שחוזרות על עצמן. <br>
-              &emsp; - שיחה חוזרת, קדימות <font color="#ea86ff">10</font> <br>
+              &emsp; - שיחה חוזרת, עדיפות <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

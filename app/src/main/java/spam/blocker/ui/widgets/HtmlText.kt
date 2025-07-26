@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
+import androidx.core.text.parseAsHtml
 import spam.blocker.ui.theme.LocalPalette
 
 /*
@@ -41,12 +42,11 @@ fun HtmlText(
             }
         },
         update = { textView ->
-            textView.text = HtmlCompat.fromHtml(
-                html,
-                HtmlCompat.FROM_HTML_MODE_COMPACT,
-                object : Html.ImageGetter {
+            textView.text =
+                html.parseAsHtml(HtmlCompat.FROM_HTML_MODE_COMPACT, object : Html.ImageGetter {
                     override fun getDrawable(source: String?): Drawable? {
-                        val resourceId = ctx.resources.getIdentifier(source, "drawable", ctx.packageName)
+                        val resourceId =
+                            ctx.resources.getIdentifier(source, "drawable", ctx.packageName)
                         return if (resourceId != 0) {
                             ctx.resources.getDrawable(resourceId, null).apply {
                                 setBounds(0, 0, intrinsicWidth, intrinsicHeight)
@@ -55,9 +55,7 @@ fun HtmlText(
                             null
                         }
                     }
-                },
-                null
-            )
+                })
         }
     )
 }
