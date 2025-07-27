@@ -51,7 +51,7 @@ class CallStateReceiver : BroadcastReceiver() {
                 // This is triggered when it starts ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
                     val currNumber = extractNumber(intent) ?: return
-                    logi("RINGING, num: $currNumber")
+                    logi("RINGING")
 
                     val block = shouldBlock(ctx, currNumber)
                     if (block)
@@ -61,7 +61,7 @@ class CallStateReceiver : BroadcastReceiver() {
                 // This is triggered when a call is answered(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                     val currNumber = extractNumber(intent) ?: return
-                    logi("IN CALL, num: $currNumber")
+                    logi("IN CALL")
 
                     val block = shouldBlock(ctx, currNumber)
 

@@ -22,6 +22,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.HistoryRecord
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable

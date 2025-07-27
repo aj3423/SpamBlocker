@@ -38,6 +38,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.ui.LaunchedEffectOnlyOnChange
 import spam.blocker.ui.M
 import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
@@ -576,7 +577,7 @@ fun RuleEditDialog(
                 ) {
                     // Auto change the current channelId to "Allow" or "Block" when user select `whitelist/blacklist`
                     // Don't change if it's a custom channel.
-                    LaunchedEffect(whiteOrBlack) {
+                    LaunchedEffectOnlyOnChange(whiteOrBlack) {
                         if (whiteOrBlack == 0 && channelId == CHANNEL_BLOCKED) {
                             channelId = CHANNEL_ALLOWED
                         }

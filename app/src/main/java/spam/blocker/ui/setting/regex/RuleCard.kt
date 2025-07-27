@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.RegexRule
@@ -116,10 +117,8 @@ fun RuleCard(
                 RowVCenterSpaced(space = 8) {
 
                     // [NotifyType]
-                    RowVCenterSpaced(space = 2) {
-                        val ch = ChannelTable.findByChannelId(ctx, rule.channel)
-                        ChannelIcons(ch?.importance, ch?.mute)
-                    }
+                    val ch = G.notificationChannels.find { it.channelId == rule.channel }
+                    ChannelIcons(ch?.importance, ch?.mute)
 
                     // [Priority]
                     ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))
