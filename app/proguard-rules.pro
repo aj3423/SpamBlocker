@@ -21,4 +21,3 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class spam.blocker.config.* { *; }
--keep resources drawable/ic_call
