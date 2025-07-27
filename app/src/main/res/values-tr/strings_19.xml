@@ -87,11 +87,13 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Kısıtlama</b></font><br>
-        Android kısıtlaması nedeniyle, bildirim sesi yalnızca yeni bir kanal oluşturulurken ayarlanabilir, oluşturulduktan sonra değiştirilemez. <br>
+        Android kısıtlaması nedeniyle, bildirim sesi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
+         oluşturulduktan sonra değiştirilemez. <br>
         <br>
         <font color="#03DAC5"><b>Geçici Çözümler</b></font><br>
         1. Kanalı silin ve farklı bir kanal kimliğiyle yeni bir tane oluşturun. <br>
-        &emsp; Aynı kanal kimliğine sahipseler bu işe yaramaz, çünkü Android yeni bir tane oluşturmak yerine silinen kanalı basitçe \"kurtarır\". <br>
+        &emsp; Aynı kanal kimliğine sahip olmaları durumunda çalışmayacaktır, çünkü Android yeni bir tane oluşturmak yerine
+         silinen kanalı \"geri yükleyecektir\". <br>
         2. Kanal sesini sistem ayarlarında manuel olarak değiştirin: <br>
         &emsp; - Uygulama simgesine uzun basın <br>
         &emsp; - Uygulama Bilgisi <br>
@@ -100,7 +102,8 @@
         &emsp; - O kanala dokunun ve sesi değiştirin <br>
         <br>
         <b>Özel Ses</b><br>
-        Sistem ayarlarından özel zil sesleri içe aktarabilir, ardından bunları uygulamada seçebilirsiniz.<br>
+        Bazı telefonlar özel zil seslerinin uygulama aracılığıyla doğrudan içe aktarılmasına izin verir. 
+        Diğerleri için, sistem ayarları aracılığıyla içe aktarın ve ardından uygulamada seçin. <br>
         ]]>
     </string>
     <string name="default_">Varsayılan</string>

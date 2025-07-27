@@ -32,6 +32,8 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
@@ -259,7 +261,7 @@ fun RuleEditDialog(
 
     // Whitelist or Blacklist
     // selected index
-    var applyToWorB by rememberSaveable { mutableIntStateOf(if (initRule.isWhitelist()) 0 else 1) }
+    var whiteOrBlack by rememberSaveable { mutableIntStateOf(if (initRule.isWhitelist()) 0 else 1) }
 
     // Block Type
     var blockType by rememberSaveable { mutableIntStateOf(initRule.blockType) }
@@ -320,7 +322,7 @@ fun RuleEditDialog(
                             patternExtraFlags.intValue,
                             description,
                             priority,
-                            applyToWorB == 1,
+                            whiteOrBlack == 1,
                             flags,
                             channelId,
                             schedule,
@@ -483,14 +485,14 @@ fun RuleEditDialog(
                             RadioItem(Str(R.string.allow), C.pass),
                             RadioItem(Str(R.string.block), C.block),
                         )
-                        RadioGroup(items = items, selectedIndex = applyToWorB) {
-                            applyToWorB = it
+                        RadioGroup(items = items, selectedIndex = whiteOrBlack) {
+                            whiteOrBlack = it
                         }
                     }
                 }
 
                 // Block Type
-                AnimatedVisibleV(visible = forType == Def.ForNumber && applyToWorB == 1) {
+                AnimatedVisibleV(visible = forType == Def.ForNumber && whiteOrBlack == 1) {
                     LabeledRow(labelId = R.string.block_type) {
                         val icons = remember {
                             listOf<@Composable () -> Unit>(
@@ -557,7 +559,32 @@ fun RuleEditDialog(
                 }
 
                 // Notification Type
-                AnimatedVisibleV(visible = forType != Def.ForQuickCopy && applyToWorB == 1) {
+                AnimatedVisibleV(
+                    visible = when (forType) {
+                        Def.ForNumber -> {
+                            if (whiteOrBlack == 0) {
+                                applyToSms
+                            } else {
+                                true
+                            }
+                        }
+                        Def.ForSms -> {
+                            true
+                        }
+                        else -> false
+                    }
+                ) {
+                    // Auto change the current channelId to "Allow" or "Block" when user select `whitelist/blacklist`
+                    // Don't change if it's a custom channel.
+                    LaunchedEffect(whiteOrBlack) {
+                        if (whiteOrBlack == 0 && channelId == CHANNEL_BLOCKED) {
+                            channelId = CHANNEL_ALLOWED
+                        }
+                        if (whiteOrBlack == 1 && channelId == CHANNEL_ALLOWED) {
+                            channelId = CHANNEL_BLOCKED
+                        }
+                    }
+
                     LabeledRow(
                         labelId = R.string.notification,
                         helpTooltip = Str(R.string.help_notification),

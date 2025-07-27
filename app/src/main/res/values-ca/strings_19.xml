@@ -87,20 +87,20 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitació</b></font><br>
-        A causa de la restricció d\'Android, el so de notificació només es pot configurar en crear un nou canal; un cop creat, no es pot modificar. <br>
+        A causa de la restricció d\'Android, el so de la notificació només es pot configurar en crear un nou canal; un cop creat, no es pot modificar. <br>
         <br>
         <font color="#03DAC5"><b>Solucions</b></font><br>
-        1. Suprimeix el canal i crea\'n un de nou amb un ID de canal diferent. <br>
+        1. Suprimiu el canal i creeu-ne un de nou amb un ID de canal diferent. <br>
         &emsp; No funcionarà si tenen el mateix ID de canal, ja que Android simplement \"recuperarà\" el canal eliminat en lloc de crear-ne un de nou. <br>
-        2. Modifica manualment el so del canal a la configuració del sistema: <br>
-        &emsp; - Mantén premuda la icona de l\'aplicació <br>
+        2. Modifiqueu manualment el so del canal a la configuració del sistema: <br>
+        &emsp; - Manteniu premuda la icona de l\'aplicació <br>
         &emsp; - Informació de l\'aplicació <br>
         &emsp; - Notificacions <br>
         &emsp; - Categories de notificació <br>
-        &emsp; - Toca aquest canal i modifica el so <br>
+        &emsp; - Toqueu aquest canal i modifiqueu el so <br>
         <br>
         <b>So personalitzat</b><br>
-        Pots importar tons de trucada personalitzats a la configuració del sistema i seleccionar-los a l\'aplicació.<br>
+        Alguns telèfons permeten la importació directa de tons de trucada personalitzats mitjançant l\'aplicació. Per a d\'altres, importeu-los mitjançant la configuració del sistema i, a continuació, seleccioneu-los a l\'aplicació. <br>
         ]]>
     </string>
     <string name="default_">Per defecte</string>

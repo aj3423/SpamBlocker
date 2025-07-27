@@ -89,19 +89,20 @@
         <font color="#ffa500"><b>Limitación</b></font><br>
         Debido a la restricción de Android, el sonido de notificación solo se puede establecer al crear un nuevo canal; una vez creado, no se puede modificar. <br>
         <br>
-        <font color="#03DAC5"><b>Soluciones alternativas</b></font><br>
-        1. Elimine el canal y cree uno nuevo con un ID de canal diferente. <br>
-        &emsp; No funcionará si tienen el mismo ID de canal, ya que Android simplemente \"recuperará\"
+        <font color="#03DAC5"><b>Soluciones</b></font><br>
+        1. Elimina el canal y crea uno nuevo con una ID de canal diferente. <br>
+        &emsp; No funcionará si tienen la misma ID de canal, ya que Android simplemente \"recuperará\"
          ese canal eliminado en lugar de crear uno nuevo. <br>
-        2. Modifique manualmente el sonido del canal en la configuración del sistema: <br>
-        &emsp; - Mantenga pulsado el icono de la aplicación <br>
+        2. Modifica manualmente el sonido del canal en la configuración del sistema: <br>
+        &emsp; - Mantén pulsado el icono de la aplicación <br>
         &emsp; - Información de la aplicación <br>
         &emsp; - Notificaciones <br>
         &emsp; - Categorías de notificación <br>
-        &emsp; - Toque ese canal y modifique el sonido <br>
+        &emsp; - Toca ese canal y modifica el sonido <br>
         <br>
         <b>Sonido Personalizado</b><br>
-        Puede importar tonos de llamada personalizados en la configuración del sistema y luego seleccionarlos en la aplicación.<br>
+        Algunos teléfonos permiten la importación directa de tonos de llamada personalizados a través de la aplicación.
+        Para otros, impórtalos a través de la configuración del sistema y luego selecciónalo en la aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>

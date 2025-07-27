@@ -88,21 +88,22 @@
         <![CDATA[
         <font color="#ffa500"><b>Batasan</b></font><br>
         Karena batasan Android, suara notifikasi hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, tidak dapat dimodifikasi. <br>
+         setelah dibuat, tidak dapat diubah. <br>
         <br>
         <font color="#03DAC5"><b>Solusi</b></font><br>
         1. Hapus saluran, buat yang baru dengan ID saluran yang berbeda. <br>
-        &emsp; Ini tidak akan berfungsi jika memiliki ID saluran yang sama, karena Android hanya akan \"memulihkan\"
-         saluran yang dihapus tersebut alih-alih membuat yang baru. <br>
+        &emsp; Tidak akan berhasil jika memiliki ID saluran yang sama, karena Android hanya akan \"memulihkan\"
+         saluran yang dihapus itu alih-alih membuat yang baru. <br>
         2. Ubah suara saluran secara manual di pengaturan sistem: <br>
-        &emsp; - Tekan lama ikon aplikasi <br>
+        &emsp; - Ketuk lama ikon aplikasi <br>
         &emsp; - Info Aplikasi <br>
         &emsp; - Notifikasi <br>
-        &emsp; - Kategori notifikasi <br>
-        &emsp; - Ketuk saluran tersebut dan ubah suara <br>
+        &emsp; - Kategori Notifikasi <br>
+        &emsp; - Ketuk saluran tersebut dan ubah suaranya <br>
         <br>
         <b>Suara Kustom</b><br>
-        Anda dapat mengimpor nada dering kustom di pengaturan sistem, lalu memilihnya di aplikasi.<br>
+        Beberapa ponsel mengizinkan impor langsung nada dering kustom melalui aplikasi.
+        Untuk yang lain, impor melalui pengaturan sistem lalu pilih di aplikasi. <br>
         ]]>
     </string>
     <string name="default_">Bawaan</string>

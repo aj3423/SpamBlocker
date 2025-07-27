@@ -2,20 +2,28 @@ package spam.blocker.ui.setting.api
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import spam.blocker.R
 import spam.blocker.db.Api
 import spam.blocker.ui.M
+import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.widgets.GreenDot
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.NonLazyGrid
 import spam.blocker.ui.widgets.OutlineCard
+import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-
+import spam.blocker.util.spf
 
 
 @Composable
@@ -23,6 +31,8 @@ fun ApiCard(
     api: Api,
     modifier: Modifier,
 ) {
+    val ctx = LocalContext.current
+
     OutlineCard(
         containerBg = MaterialTheme.colorScheme.background
     ) {
@@ -46,6 +56,18 @@ fun ApiCard(
                 }
                 // first action summary
 //                api.actions.firstOrNull()?.Summary()
+            }
+
+            // [Priority]
+            RowVCenterSpaced(6) {
+                val priority = spf.ApiQueryOptions(ctx).getPriority()
+                ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))
+                Text(
+                    text = "$priority",
+                    color = LightMagenta,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 14.sp,
+                )
             }
 
             // action icons

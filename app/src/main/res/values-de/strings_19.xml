@@ -87,20 +87,20 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Einschränkung</b></font><br>
-        Aufgrund der Android-Einschränkung kann der Benachrichtigungston nur beim Erstellen eines neuen Kanals eingestellt werden; einmal erstellt, kann er nicht mehr geändert werden. <br>
+        Aufgrund einer Android-Einschränkung kann der Benachrichtigungston nur beim Erstellen eines neuen Kanals festgelegt werden; einmal erstellt, kann er nicht mehr geändert werden. <br>
         <br>
         <font color="#03DAC5"><b>Problemumgehungen</b></font><br>
-        1. Lösche den Kanal und erstelle einen neuen mit einer anderen Kanal-ID. <br>
-        &emsp; Es funktioniert nicht, wenn sie dieselbe Kanal-ID haben, da Android den gelöschten Kanal einfach \"wiederherstellt\" anstatt einen neuen zu erstellen. <br>
-        2. Manuelles Ändern des Kanalsounds in den Systemeinstellungen: <br>
+        1. Löschen Sie den Kanal und erstellen Sie einen neuen mit einer anderen Kanal-ID. <br>
+        &emsp; Dies funktioniert nicht, wenn sie dieselbe Kanal-ID haben, da Android den gelöschten Kanal einfach \"wiederherstellt\", anstatt einen neuen zu erstellen. <br>
+        2. Ändern Sie den Kanalton manuell in den Systemeinstellungen: <br>
         &emsp; - Langes Tippen auf das App-Symbol <br>
         &emsp; - App-Info <br>
         &emsp; - Benachrichtigungen <br>
         &emsp; - Benachrichtigungskategorien <br>
-        &emsp; - Tippe auf diesen Kanal und ändere den Ton <br>
+        &emsp; - Tippen Sie auf diesen Kanal und ändern Sie den Ton <br>
         <br>
         <b>Benutzerdefinierter Ton</b><br>
-        Sie können benutzerdefinierte Klingeltöne in den Systemeinstellungen importieren und diese dann in der App auswählen.<br>
+        Einige Telefone ermöglichen den direkten Import benutzerdefinierter Klingeltöne über die App. Bei anderen erfolgt der Import über die Systemeinstellungen und anschließend die Auswahl in der App. <br>
         ]]>
     </string>
     <string name="default_">Standard</string>

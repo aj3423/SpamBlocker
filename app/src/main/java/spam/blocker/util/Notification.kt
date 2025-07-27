@@ -111,11 +111,6 @@ object Notification {
             }
         }
     }
-
-    fun manager(ctx: Context) : NotificationManager {
-        return ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
-    }
-
     // Show orange warning when the channel is missing, could've been deleted.
     fun missingChannel(ctx: Context, channelId: String) : Channel {
         return Channel(
@@ -123,6 +118,22 @@ object Notification {
             importance = IMPORTANCE_HIGH,
             iconColor = DarkOrange.toArgb(),
         )
+    }
+
+    fun manager(ctx: Context) : NotificationManager {
+        return ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
+    }
+
+    fun cancelById(ctx: Context, notificationId: Int) {
+        manager(ctx).cancel(notificationId)
+    }
+
+    fun isChannelDisabled(ctx: Context, channelId: String) : Boolean {
+        val channel = manager(ctx).getNotificationChannel(channelId)
+        return channel?.importance == IMPORTANCE_NONE
+    }
+    fun cancelAll(ctx: Context) {
+        manager(ctx).cancelAll()
     }
 
     fun autoIcon(ctx: Context, channel: Channel, showType: ShowType) : Int {
@@ -136,12 +147,14 @@ object Notification {
             }
     }
 
-    fun autoGroup(channel: Channel) : String {
-        return if (channel.group.isNotEmpty())
+    fun autoGroup(channel: Channel, showType: ShowType) : String {
+        return if (channel.group.isNotEmpty()) {
+            // when `group` is specified, use it
             channel.group
-        else
-            // name doesn't matter as long as they are different
-            channel.channelId
+        } else {
+            // when `group` is not specified, auto group by showType
+            showType.toString()
+        }
     }
     fun autoColor(channel: Channel, showType: ShowType) : Int {
         return channel.iconColor
@@ -167,12 +180,10 @@ object Notification {
         intent: Intent, // notification clicking handler
         toCopy: List<String> = listOf(),
     ) {
-        logi("show in channel: $channel")
 
         val chId = channel.channelId // 5 importance level <-> 5 channel id
         val notificationId = System.currentTimeMillis().toInt()
         val builder = NotificationCompat.Builder(ctx, chId)
-
 
         // Use different requestCode for every pendingIntent, otherwise the
         //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
@@ -181,10 +192,9 @@ object Notification {
 
         val shouldSilent = channel.shouldSilent()
         val icon = autoIcon(ctx, channel, showType)
-        val group = autoGroup(channel)
+        val group = autoGroup(channel, showType)
         val iconColor = autoColor(channel, showType)
         val sound = autoSound(channel)
-        logi("sound: $sound")
 
         val pendingIntent = TaskStackBuilder.create(ctx).run {
             addNextIntentWithParentStack(intent)
@@ -247,15 +257,5 @@ object Notification {
             val id = group.hashCode()
             mgr.notify(id, groupBuilder.build())
         }
-    }
-
-    fun cancelById(ctx: Context, notificationId: Int) {
-        val manager = ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
-        manager.cancel(notificationId)
-    }
-
-    fun cancelAll(ctx: Context) {
-        val manager = ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
-        manager.cancelAll()
     }
 }

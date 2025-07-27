@@ -102,7 +102,8 @@
         &emsp; - Tap that channel and modify the sound <br>
         <br>
         <b>Custom Sound</b><br>
-        You can import custom ringtones in the system settings, then select them in the app.<br>
+        Some phones allow direct import of custom ringtones via the app.
+        For others, import through system settings and then select it in the app. <br>
         ]]>
     </string>
     <string name="default_">Default</string>

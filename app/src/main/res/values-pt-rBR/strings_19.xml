@@ -89,18 +89,18 @@
         <font color="#ffa500"><b>Limitação</b></font><br>
         Devido à restrição do Android, o som de notificação só pode ser definido ao criar um novo canal; uma vez criado, não pode ser modificado. <br>
         <br>
-        <font color="#03DAC5"><b>Soluções alternativas</b></font><br>
+        <font color="#03DAC5"><b>Soluções</b></font><br>
         1. Exclua o canal e crie um novo com um ID de canal diferente. <br>
-        &emsp; Não funcionará se tiverem o mesmo ID de canal, pois o Android simplesmente \"recuperará\" aquele canal excluído em vez de criar um novo. <br>
+        &emsp; Não funcionará se tiverem o mesmo ID de canal, pois o Android simplesmente \"recuperará\" o canal excluído em vez de criar um novo. <br>
         2. Modifique manualmente o som do canal nas configurações do sistema: <br>
         &emsp; - Toque e segure o ícone do aplicativo <br>
-        &emsp; - Informações do Aplicativo <br>
+        &emsp; - Informações do aplicativo <br>
         &emsp; - Notificações <br>
-        &emsp; - Categorias de Notificação <br>
-        &emsp; - Toque no canal e modifique o som <br>
+        &emsp; - Categorias de notificação <br>
+        &emsp; - Toque nesse canal e modifique o som <br>
         <br>
         <b>Som Personalizado</b><br>
-        Você pode importar toques personalizados nas configurações do sistema e, em seguida, selecioná-los no aplicativo.<br>
+        Alguns telefones permitem a importação direta de toques personalizados pelo aplicativo. Para outros, importe pelas configurações do sistema e selecione-o no aplicativo. <br>
         ]]>
     </string>
     <string name="default_">Padrão</string>

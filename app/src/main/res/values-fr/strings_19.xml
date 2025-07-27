@@ -87,20 +87,20 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitation</b></font><br>
-        En raison des restrictions d\'Android, le son de notification ne peut être défini qu\'à la création d\'un nouveau canal ; une fois créé, il ne peut plus être modifié. <br>
+        En raison de la restriction Android, le son de notification ne peut être défini que lors de la création d\'un nouveau canal ; une fois créé, il ne peut pas être modifié.<br>
         <br>
         <font color="#03DAC5"><b>Solutions de contournement</b></font><br>
-        1. Supprimez le canal et créez-en un nouveau avec un ID de canal différent. <br>
-        &emsp; Cela ne fonctionnera pas s\'ils ont le même ID de canal, car Android « récupérera » simplement ce canal supprimé au lieu d\'en créer un nouveau. <br>
+        1. Supprimez le canal et créez-en un nouveau avec un ID de canal différent.<br>
+        &emsp; Cela ne fonctionnera pas s\'ils ont le même ID de canal, car Android se contentera de \"récupérer\" ce canal supprimé au lieu d\'en créer un nouveau.<br>
         2. Modifiez manuellement le son du canal dans les paramètres système : <br>
         &emsp; - Appuyez longuement sur l\'icône de l\'application <br>
-        &emsp; - Infos sur l\'application <br>
+        &emsp; - Informations sur l\'application <br>
         &emsp; - Notifications <br>
         &emsp; - Catégories de notifications <br>
         &emsp; - Appuyez sur ce canal et modifiez le son <br>
         <br>
         <b>Son personnalisé</b><br>
-        Vous pouvez importer des sonneries personnalisées dans les paramètres système, puis les sélectionner dans l\'application.<br>
+        Certains téléphones permettent l\'importation directe de sonneries personnalisées via l\'application. Pour d\'autres, importez via les paramètres système puis sélectionnez-la dans l\'application.<br>
         ]]>
     </string>
     <string name="default_">Par défaut</string>

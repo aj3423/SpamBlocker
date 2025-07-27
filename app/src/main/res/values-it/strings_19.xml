@@ -87,22 +87,21 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitazione</b></font><br>
-        A causa delle restrizioni di Android, il suono di notifica può essere impostato solo durante la creazione di un nuovo canale,
-         una volta creato, non può essere modificato. <br>
+        A causa delle restrizioni di Android, il suono di notifica può essere impostato solo al momento della creazione di un nuovo canale; una volta creato, non può essere modificato.<br>
         <br>
         <font color="#03DAC5"><b>Soluzioni alternative</b></font><br>
-        1. Elimina il canale e creane uno nuovo con un ID canale diverso. <br>
-        &emsp; Non funzionerà se hanno lo stesso ID canale, poiché Android si limiterà a \"recuperare\"
-         quel canale eliminato invece di crearne uno nuovo. <br>
-        2. Modifica manualmente il suono del canale nelle impostazioni di sistema: <br>
-        &emsp; - Tieni premuto l\'icona dell\'app <br>
-        &emsp; - Info app <br>
-        &emsp; - Notifiche <br>
-        &emsp; - Categorie di notifica <br>
-        &emsp; - Tocca quel canale e modifica il suono <br>
+        1. Elimina il canale e creane uno nuovo con un ID canale diverso.<br>
+        &emsp; Non funzionerà se hanno lo stesso ID canale, poiché Android si limiterà a \"recuperare\" quel canale eliminato invece di crearne uno nuovo.<br>
+        2. Modifica manualmente il suono del canale nelle impostazioni di sistema:<br>
+        &emsp; - Tieni premuta l\'icona dell\'app<br>
+        &emsp; - Info app<br>
+        &emsp; - Notifiche<br>
+        &emsp; - Categorie di notifica<br>
+        &emsp; - Tocca quel canale e modifica il suono<br>
         <br>
         <b>Suono personalizzato</b><br>
-        Puoi importare suonerie personalizzate nelle impostazioni di sistema, quindi selezionarle nell\'app.<br>
+        Alcuni telefoni consentono l\'importazione diretta di suonerie personalizzate tramite l\'app.
+        Per altri, importa tramite le impostazioni di sistema e poi selezionalo nell\'app.<br>
         ]]>
     </string>
     <string name="default_">Predefinito</string>

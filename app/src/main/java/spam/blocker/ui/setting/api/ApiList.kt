@@ -18,6 +18,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import kotlinx.serialization.encodeToString
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
@@ -77,6 +78,7 @@ fun ApiList(vm: ApiViewModel) {
             if (!hasError) {
                 apiPriority = newValue!!
                 spf.setPriority(apiPriority)
+                G.apiQueryVM.reloadDb(ctx)
             }
         }
     }

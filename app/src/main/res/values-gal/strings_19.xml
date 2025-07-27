@@ -87,21 +87,20 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitación</b></font><br>
-        Debido á restrición de Android, o son de notificación só se pode configurar ao crear unha nova canle; unha vez creada, non se pode modificar. <br>
+        Debido á restrición de Android, o son da notificación só se pode configurar ao crear unha nova canle; unha vez creada, non se pode modificar. <br>
         <br>
         <font color="#03DAC5"><b>Solucións</b></font><br>
         1. Eliminar a canle e crear unha nova cun ID de canle diferente. <br>
-        &emsp; Non funcionará se teñen o mesmo ID de canle, xa que Android simplemente \"recuperará\"
-         esa canle eliminada en lugar de crear unha nova. <br>
+        &emsp; Non funcionará se teñen o mesmo ID de canle, xa que Android simplemente \"recuperará\" esa canle eliminada en lugar de crear unha nova. <br>
         2. Modificar manualmente o son da canle na configuración do sistema: <br>
-        &emsp; - Premer longamente a icona da aplicación <br>
+        &emsp; - Manteña premido a icona da aplicación <br>
         &emsp; - Información da aplicación <br>
         &emsp; - Notificacións <br>
         &emsp; - Categorías de notificacións <br>
-        &emsp; - Tocar esa canle e modificar o son <br>
+        &emsp; - Toca esa canle e modifica o son <br>
         <br>
         <b>Son Personalizado</b><br>
-        Podes importar tons de chamada personalizados na configuración do sistema, e despois seleccionalos na aplicación.<br>
+        Algúns teléfonos permiten a importación directa de tons de chamada personalizados a través da aplicación. Para outros, importe a través da configuración do sistema e logo seleccióneo na aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>

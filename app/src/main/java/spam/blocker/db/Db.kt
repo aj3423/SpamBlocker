@@ -9,8 +9,10 @@ import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Notification.ensureBuiltInChannels
+import spam.blocker.util.Notification.isChannelDisabled
 import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.logi
+import spam.blocker.util.spf
 
 class Db private constructor(
     val ctx: Context
@@ -339,6 +341,16 @@ class Db private constructor(
         // v4.15 added custom notification
         if ((newVersion >= 39) && (oldVersion < 39)) {
             onCreate(db)
+
+            // 0. Set the default Call/SMS channel to `None` if the previous channels
+            //   are disabled in system settings
+            if(isChannelDisabled(ctx, "Default spam call")) {
+                spf.Notification(ctx).setSpamCallChannelId(CHANNEL_NONE)
+            }
+            if(isChannelDisabled(ctx, "Default spam SMS")) {
+                spf.Notification(ctx).setSpamSmsChannelId(CHANNEL_NONE)
+            }
+
             // 1. delete all previous channels
             deleteAllChannels(ctx)
             // 2. create 4 built-in channels
@@ -367,8 +379,15 @@ class Db private constructor(
                     END
                 """.trimIndent())
 
-            // 5. Drop old column `importance`
+            // 5. Force update all `whitelist` rules, previously their `importance` are ignored,
+            //   now they should be set to channel `Allowed`
+            db.execSQL("UPDATE $TABLE_NUMBER_RULE SET $COLUMN_CHANNEL_ID = '$CHANNEL_ALLOWED' WHERE $COLUMN_IS_BLACK IS NOT 1;")
+            db.execSQL("UPDATE $TABLE_CONTENT_RULE SET $COLUMN_CHANNEL_ID = '$CHANNEL_ALLOWED' WHERE $COLUMN_IS_BLACK IS NOT 1;")
+
+            // 6. Drop old column `importance`
             // Nope, just ignore it, there's no `DROP COLUMN` in sqlite.
+
+
         }
     }
 }
