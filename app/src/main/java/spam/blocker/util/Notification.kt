@@ -12,12 +12,16 @@ import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Icon
 import android.media.AudioAttributes
 import android.net.Uri
 import android.provider.Settings
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.NotificationCompat
+import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import spam.blocker.G
 import spam.blocker.R
@@ -160,15 +164,21 @@ object Notification {
         manager(ctx).cancelAll()
     }
 
-    fun autoIcon(ctx: Context, channel: Channel, showType: ShowType) : Int {
-        return if (channel.icon.isNotEmpty())
-            ctx.resources.getIdentifier(channel.icon, "drawable", ctx.packageName)
-        else
-            when(showType) {
-                ShowType.SPAM_SMS -> R.drawable.ic_sms_blocked
-                ShowType.SPAM_CALL -> R.drawable.ic_call_blocked
-                ShowType.VALID_SMS -> R.drawable.ic_sms_pass
-            }
+    fun defaultIcon(showType: ShowType): Int {
+        return when(showType) {
+            ShowType.SPAM_SMS -> R.drawable.ic_sms_blocked
+            ShowType.SPAM_CALL -> R.drawable.ic_call_blocked
+            ShowType.VALID_SMS -> R.drawable.ic_sms_pass
+        }
+    }
+    // returns Int or IconCompat
+    fun autoIcon(channel: Channel, showType: ShowType) : Any {
+        if (channel.icon == null) {
+            return defaultIcon(showType)
+        }
+
+        return IconCompat.createWithBitmap(
+            BitmapFactory.decodeByteArray(channel.icon, 0, channel.icon.size))
     }
 
     fun autoGroup(channel: Channel, showType: ShowType) : String {
@@ -214,7 +224,7 @@ object Notification {
         val requestCode = Random.nextInt()
 
         val shouldSilent = channel.shouldSilent()
-        val icon = autoIcon(ctx, channel, showType)
+        val icon = autoIcon(channel, showType)
         val group = autoGroup(channel, showType)
         val iconColor = autoColor(channel, showType)
         val sound = autoSound(channel)
@@ -236,11 +246,17 @@ object Notification {
             .setSilent(shouldSilent)
             .setContentIntent(pendingIntent)
             .setGroup(group)
-            .setSmallIcon(icon)
             .setColorized(true)
             .setColor(iconColor)
             .setSound(sound)
             .setLights(channel.ledColor, 1000, 1000)
+            .apply {
+                if (icon is Int) {
+                    setSmallIcon(icon)
+                } else {
+                    setSmallIcon(icon as IconCompat)
+                }
+            }
 
 
         // copy buttons
@@ -268,7 +284,6 @@ object Notification {
         run {
             val groupBuilder = NotificationCompat.Builder(ctx, chId)
                 .setChannelId(chId)
-                .setSmallIcon(icon)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setSilent(shouldSilent)
@@ -278,6 +293,13 @@ object Notification {
                 .setColor(iconColor)
                 .setSound(sound)
                 .setLights(channel.ledColor, 1000, 1000)
+                .apply {
+                    if (icon is Int) {
+                        setSmallIcon(icon)
+                    } else {
+                        setSmallIcon(icon as IconCompat)
+                    }
+                }
 
             // Use the same id for a group, otherwise, when swiping left to
             // remove the notification group, previous notifications will appear again.

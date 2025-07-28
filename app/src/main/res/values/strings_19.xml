@@ -137,4 +137,6 @@
         The decimal value of <font color="#FF0000">0xFF0000</font> is <b>16711680</b>.
         ]]>
     </string>
+    <string name="icon">Icon</string>
+    <string name="automatic">Auto</string>
 </resources>

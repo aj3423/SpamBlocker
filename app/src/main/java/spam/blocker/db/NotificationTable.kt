@@ -8,6 +8,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.compose.ui.graphics.toArgb
+import androidx.core.database.getBlobOrNull
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
@@ -45,7 +46,7 @@ object Notification {
         val group: String = "", // "" == Auto (depends on channelId and call/sms)
         val mute : Boolean = false, // for active SMS chat
         var sound: String = "", // "" for default sound
-        val icon: String = "", // The resource name, e.g. "ic_call_blocked". "" == Auto choose call/sms icon
+        val icon: ByteArray? = null, // icon bytes, null == Auto choose call/sms icon
         val iconColor: Int? = null, // ARGB, Salmon for block, Unspecified for allowed. "" == Auto choose
         val led: Boolean = false,
         val ledColor: Int = SkyBlue.toArgb(),
@@ -62,6 +63,40 @@ object Notification {
                 CHANNEL_ACTIVE_SMS_CHAT -> ctx.getString(R.string.sms_chat)
                 else -> channelId
             }
+        }
+
+        override fun equals(other: Any?): Boolean {
+            if (this === other) return true
+            if (javaClass != other?.javaClass) return false
+
+            other as Channel
+
+            if (id != other.id) return false
+            if (importance != other.importance) return false
+            if (mute != other.mute) return false
+            if (iconColor != other.iconColor) return false
+            if (led != other.led) return false
+            if (ledColor != other.ledColor) return false
+            if (channelId != other.channelId) return false
+            if (group != other.group) return false
+            if (sound != other.sound) return false
+            if (!icon.contentEquals(other.icon)) return false
+
+            return true
+        }
+
+        override fun hashCode(): Int {
+            var result = id.hashCode()
+            result = 31 * result + importance
+            result = 31 * result + mute.hashCode()
+            result = 31 * result + (iconColor ?: 0)
+            result = 31 * result + led.hashCode()
+            result = 31 * result + ledColor
+            result = 31 * result + channelId.hashCode()
+            result = 31 * result + group.hashCode()
+            result = 31 * result + sound.hashCode()
+            result = 31 * result + (icon?.contentHashCode() ?: 0)
+            return result
         }
     }
 
@@ -112,12 +147,19 @@ object Notification {
                         $COLUMN_CHANNEL_ID, $COLUMN_IMPORTANCE, $COLUMN_MUTE, $COLUMN_SOUND, 
                         $COLUMN_ICON, $COLUMN_ICON_COLOR, $COLUMN_GROUP, $COLUMN_LED, $COLUMN_LED_COLOR
                     )
-                    VALUES
-                    (
-                        '${ch.channelId}', ${ch.importance}, ${if(ch.mute) 1 else 0}, '${ch.sound}',
-                        '${ch.icon}', ${ch.iconColor}, '${ch.group}', ${if(ch.led) 1 else 0}, ${ch.ledColor}
-                    )
-                """.trimIndent()
+                    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )
+                """.trimIndent(),
+                arrayOf(
+                    ch.channelId,               // String
+                    ch.importance,              // Int
+                    if (ch.mute) 1 else 0,      // Int (boolean as 1 or 0)
+                    ch.sound,                   // String
+                    ch.icon,                    // ByteArray (BLOB)
+                    ch.iconColor,               // Int
+                    ch.group,                   // String
+                    if (ch.led) 1 else 0,       // Int (boolean as 1 or 0)
+                    ch.ledColor                 // Int
+                )
             )
         }
 
@@ -129,7 +171,7 @@ object Notification {
                 importance = it.getInt(it.getColumnIndex(COLUMN_IMPORTANCE)),
                 mute = it.getIntOrNull(it.getColumnIndex(COLUMN_MUTE)) == 1,
                 sound = it.getStringOrNull(it.getColumnIndex(COLUMN_SOUND)) ?: "",
-                icon = it.getStringOrNull(it.getColumnIndex(COLUMN_ICON)) ?: "",
+                icon = it.getBlobOrNull(it.getColumnIndex(COLUMN_ICON)),
                 iconColor = it.getIntOrNull(it.getColumnIndex(COLUMN_ICON_COLOR)),
                 group = it.getStringOrNull(it.getColumnIndex(COLUMN_GROUP)) ?: "",
                 led = it.getIntOrNull(it.getColumnIndex(COLUMN_LED)) == 1,

@@ -3,7 +3,11 @@ package spam.blocker.ui.setting.quick
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.NotificationManager.IMPORTANCE_NONE
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Icon
 import android.os.Build
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.VerticalDivider
@@ -18,12 +22,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.LifecycleResumeEffect
+import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.config.Configs
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
@@ -54,6 +62,9 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.getRingtoneName
+import spam.blocker.ui.widgets.rememberFileReadChooser
+import spam.blocker.util.Algorithm.b64Decode
+import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.createChannel
@@ -64,6 +75,8 @@ import spam.blocker.util.Notification.reloadChannels
 import spam.blocker.util.Util.isDefaultSmsAppNotificationEnabled
 import spam.blocker.util.logi
 import spam.blocker.util.spf
+import androidx.compose.foundation.Image as ComposeImage
+
 
 @Composable
 fun ChannelIcons(
@@ -110,7 +123,7 @@ fun EditChannelDialog(
     var mute by remember { mutableStateOf(initChannel.mute) }
     var sound by remember { mutableStateOf(initChannel.sound) }
     var soundName by remember(sound) { mutableStateOf(getRingtoneName(ctx, sound.toUri())) }
-    var icon by remember { mutableStateOf<String>(initChannel.icon) }
+    var icon by remember { mutableStateOf(initChannel.icon) }
     var iconColor by remember { mutableStateOf<Int?>(initChannel.iconColor) }
     var led by remember { mutableStateOf(initChannel.led) }
     var ledColor by remember { mutableIntStateOf(initChannel.ledColor) }
@@ -301,6 +314,44 @@ fun EditChannelDialog(
                                     openChannelSettings(ctx, chId)
                                 }
                             }
+                        }
+                    }
+                }
+            }
+
+            // Icon
+            LabeledRow(R.string.icon) {
+                val fileReader = rememberFileReadChooser()
+                fileReader.Compose()
+                fun choose() {
+                    fileReader.popup(
+                        mimeTypes = arrayOf("image/*")
+                    ) { _, raw ->
+                        if (raw == null)
+                            return@popup
+
+                        icon = raw
+                    }
+                }
+
+                if (icon == null) {
+                    // Auto Icon button
+                    GreyButton(Str(R.string.automatic)) {
+                        choose()
+                    }
+                } else {
+                    RowVCenterSpaced(6) {
+                        // Icon image
+                        ComposeImage(
+                            BitmapFactory.decodeByteArray(icon, 0, icon!!.size).asImageBitmap(),
+                            "",
+                            modifier = M.size(30.dp).clickable {
+                                choose()
+                            }
+                        )
+                        // Clear icon
+                        GreyButton(Str(R.string.clear)) {
+                            icon = null
                         }
                     }
                 }
