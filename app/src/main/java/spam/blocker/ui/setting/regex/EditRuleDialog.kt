@@ -493,7 +493,9 @@ fun RuleEditDialog(
                 }
 
                 // Block Type
-                AnimatedVisibleV(visible = forType == Def.ForNumber && whiteOrBlack == 1) {
+                AnimatedVisibleV(
+                    visible = forType == Def.ForNumber && whiteOrBlack == 1 && applyToCall
+                ) {
                     LabeledRow(labelId = R.string.block_type) {
                         val icons = remember {
                             listOf<@Composable () -> Unit>(

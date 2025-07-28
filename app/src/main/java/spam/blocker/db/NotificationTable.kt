@@ -40,7 +40,7 @@ object Notification {
         // optional
         val group: String = "", // "" == Auto (depends on channelId and call/sms)
         val mute : Boolean = false, // for active SMS chat
-        val sound: String = "", // "" for default sound
+        var sound: String = "", // "" for default sound
         val icon: String = "", // The resource name, e.g. "ic_call_blocked". "" == Auto choose call/sms icon
         val iconColor: Int? = null, // ARGB, Salmon for block, Unspecified for allowed. "" == Auto choose
     ) {

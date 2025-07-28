@@ -14,6 +14,7 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.media.AudioAttributes
 import android.net.Uri
+import android.provider.Settings
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.NotificationCompat
@@ -38,7 +39,8 @@ object Notification {
         VALID_SMS, SPAM_SMS, SPAM_CALL
     }
 
-    fun refreshChannels(ctx: Context) {
+    // reload from db
+    fun reloadChannels(ctx: Context) {
         G.notificationChannels.apply {
             clear()
             addAll(ChannelTable.listAll(ctx))
@@ -95,7 +97,7 @@ object Notification {
         )
             .contains(channelId)
     }
-    // Init the table at first launch, or upgrade 4.14 -> 4.15
+    // Init the table at first launch and when upgrading from 4.14 to 4.15
     fun ensureBuiltInChannels(
         ctx: Context,
         db: SQLiteDatabase? = Db.getInstance(ctx).writableDatabase
@@ -124,10 +126,28 @@ object Notification {
         return ctx.getSystemService(Activity.NOTIFICATION_SERVICE) as NotificationManager
     }
 
+    // User might have changed the channel sound in system settings, synchronize all channels
+    //  with database and the G.notificationChannels.
+    fun syncSystemChannels(ctx: Context) {
+        val mgr = manager(ctx)
+        ChannelTable.listAll(ctx).forEach { chTable ->
+            val chSys = mgr.getNotificationChannel(chTable.channelId)
+            if ((chSys.sound?.toString() ?: "") != chTable.sound) {
+                ChannelTable.updateById(ctx, chTable.id, chTable.apply { sound = (chSys.sound?.toString() ?: "") })
+            }
+        }
+    }
+
     fun cancelById(ctx: Context, notificationId: Int) {
         manager(ctx).cancel(notificationId)
     }
 
+    fun openChannelSettings(ctx: Context, channelId: String) {
+        val intent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
+        intent.putExtra(Settings.EXTRA_APP_PACKAGE, ctx.packageName)
+        intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId)
+        ctx.startActivity(intent)
+    }
     fun isChannelDisabled(ctx: Context, channelId: String) : Boolean {
         val channel = manager(ctx).getNotificationChannel(channelId)
         return channel?.importance == IMPORTANCE_NONE

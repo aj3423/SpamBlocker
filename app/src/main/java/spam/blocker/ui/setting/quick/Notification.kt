@@ -3,10 +3,12 @@ package spam.blocker.ui.setting.quick
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.NotificationManager.IMPORTANCE_NONE
+import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -19,11 +21,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.Notification.CHANNEL_ACTIVE_SMS_CHAT
+import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
+import spam.blocker.db.NumberRuleTable
+import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.DarkOrange
@@ -32,8 +37,10 @@ import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.FooterButton
+import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
@@ -51,7 +58,11 @@ import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.createChannel
 import spam.blocker.util.Notification.isBuiltInChannel
-import spam.blocker.util.Notification.refreshChannels
+import spam.blocker.util.Notification.manager
+import spam.blocker.util.Notification.openChannelSettings
+import spam.blocker.util.Notification.reloadChannels
+import spam.blocker.util.Util.isDefaultSmsAppNotificationEnabled
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 @Composable
@@ -98,7 +109,7 @@ fun EditChannelDialog(
     var group by remember { mutableStateOf(initChannel.group) }
     var mute by remember { mutableStateOf(initChannel.mute) }
     var sound by remember { mutableStateOf(initChannel.sound) }
-    var soundName by remember { mutableStateOf(getRingtoneName(ctx, sound.toUri())) }
+    var soundName by remember(sound) { mutableStateOf(getRingtoneName(ctx, sound.toUri())) }
     var icon by remember { mutableStateOf<String>(initChannel.icon) }
     var iconColor by remember { mutableStateOf<Int?>(initChannel.iconColor) }
 
@@ -122,12 +133,29 @@ fun EditChannelDialog(
                         StrokeButton(label = Str(R.string.delete), color = Salmon) {
                             Notification.deleteChannel(ctx, chId)
                             ChannelTable.deleteByChannelId(ctx, chId)
-                            refreshChannels(ctx)
+                            reloadChannels(ctx)
                             deleteConfirm.value = false
                             editTrigger.value = false
                         }
                     }
                 ) {
+                    // Show a warning: this channel is currently used by following rules...
+                    val usedByRules = (NumberRuleTable().listAll(ctx) + ContentRuleTable().listAll(ctx))
+                        .filter { it.channel == chId }
+                        .map { ctx.getString(R.string.regex_pattern) + " " + it.summary() }
+                        .toMutableList()
+                    val spf = spf.Notification(ctx)
+                    if (spf.getSpamCallChannelId() == chId) {
+                        usedByRules += ctx.getString(R.string.call)
+                    }
+                    if (spf.getSpamSmsChannelId() == chId || spf.getValidSmsChannelId() == chId) {
+                        usedByRules += ctx.getString(R.string.sms)
+                    }
+                    if (usedByRules.isNotEmpty()) {
+                        HtmlText(ctx.getString(R.string.warning_delete_channel)
+                            .format(usedByRules.joinToString ("<br>")))
+                    }
+
                     GreyLabel(Str(R.string.confirm_to_delete))
                 }
                 StrokeButton(
@@ -158,7 +186,7 @@ fun EditChannelDialog(
                     // 2. update db
                     ChannelTable.addOrReplace(ctx, newCh)
                     // 3. refresh the channel list
-                    refreshChannels(ctx)
+                    reloadChannels(ctx)
 
                     editTrigger.value = false
                 }
@@ -230,30 +258,43 @@ fun EditChannelDialog(
                     RingtonePicker(soundTrigger) { uri, name ->
                         uri?.let {
                             sound = uri
-                            soundName = getRingtoneName(ctx, sound.toUri())
                         }
                     }
                     // Mute
-                    LabeledRow(R.string.mute) {
+                    LabeledRow(
+                        R.string.mute,
+                        helpTooltip = Str(R.string.help_mute_channel),
+                    ) {
                         SwitchBox(mute) { isTurningOn ->
                             mute = isTurningOn
                         }
                     }
+
+
                     // Sound
+                    // Sync with system sound, user might have manually changed it in system settings
+                    LifecycleResumeEffect(true) {
+                        sound = manager(ctx).getNotificationChannel(chId)?.sound?.toString() ?: ""
+
+                        onPauseOrDispose { }
+                    }
+
                     AnimatedVisibleV(!mute) {
                         LabeledRow(
                             labelId = R.string.sound,
                             helpTooltip = Str(R.string.help_sound),
                         ) {
-                            StrokeButton(
+                            GreyButton(
                                 if (sound.isEmpty())
                                     ctx.getString(R.string.default_)
                                 else
                                     soundName,
-                                color = C.textGrey,
-                                enabled = isCreatingNewChannel,
                             ) {
-                                soundTrigger.value = true
+                                if (isCreatingNewChannel) {
+                                    soundTrigger.value = true
+                                } else {
+                                    openChannelSettings(ctx, chId)
+                                }
                             }
                         }
                     }

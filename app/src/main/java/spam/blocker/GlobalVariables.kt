@@ -21,6 +21,7 @@ import spam.blocker.ui.setting.regex.ContentRuleViewModel
 import spam.blocker.ui.setting.regex.NumberRuleViewModel
 import spam.blocker.ui.setting.regex.QuickCopyRuleViewModel
 import spam.blocker.ui.widgets.BottomBarViewModel
+import spam.blocker.util.Notification.syncSystemChannels
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionChain
 import spam.blocker.util.spf
@@ -54,6 +55,7 @@ object G {
     val permissionChain = PermissionChain()
 
     fun initialize(ctx: Context) {
+        // Global switches
         run {
             val spf = spf.Global(ctx)
             globallyEnabled.value = spf.isGloballyEnabled()
@@ -61,13 +63,18 @@ object G {
             smsEnabled.value = spf.isSmsEnabled() && Permission.receiveSMS.isGranted
             themeType.intValue = spf.getThemeType()
         }
+
+        // History options
         run {
             val spf = spf.HistoryOptions(ctx)
             showHistoryIndicator.value = spf.getShowIndicator()
             showHistoryPassed.value = spf.getShowPassed()
             showHistoryBlocked.value = spf.getShowBlocked()
         }
+
+        // Notifications
         run {
+            syncSystemChannels(ctx)
             notificationChannels.clear()
             notificationChannels.addAll(ChannelTable.listAll(ctx))
         }

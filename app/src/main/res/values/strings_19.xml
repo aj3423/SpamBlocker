@@ -84,18 +84,7 @@
         <![CDATA[
         <font color="#ffa500"><b>Limitation</b></font><br>
         Due to the Android restriction, the notification sound can only be set when creating a new channel,
-         once it\'s created, it cannot be modified. <br>
-        <br>
-        <font color="#03DAC5"><b>Workarounds</b></font><br>
-        1. Delete the channel create a new one with a different channel id. <br>
-        &emsp; It won\'t work if they have the same channel id, as Android will simply \"recover\"
-         that deleted channel instead of creating a new one. <br>
-        2. Manually modify the channel sound in system settings: <br>
-        &emsp; - Long tap the app icon <br>
-        &emsp; - App Info <br>
-        &emsp; - Notifications <br>
-        &emsp; - Notification categories <br>
-        &emsp; - Tap that channel and modify the sound <br>
+         once it\'s created, it can only be modified in system settings. <br>
         <br>
         <b>Custom Sound</b><br>
         Some phones allow direct import of custom ringtones via the app.
@@ -122,6 +111,20 @@
         Create a new notification channel. <br>
         <br>
         <font color="#03DAC5"><b>Long tap</b></font> a notification channel in this dropdown list to edit it.
+        ]]>
+    </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        This channel is currently used by following rules. <br>
+        <br>
+        %s<br>
+        <br>
+        Make sure to update them after deleting this channel. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        The notification channel will be silenced by force, even if it\'s configured as high importance.
         ]]>
     </string>
 </resources>

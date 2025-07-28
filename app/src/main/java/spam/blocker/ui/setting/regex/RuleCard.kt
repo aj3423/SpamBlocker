@@ -89,7 +89,7 @@ fun RuleCard(
                                 GreyIcon16(iconId = R.drawable.ic_open_msg)
                         }
                     }
-                    if (forType == Def.ForNumber && rule.isBlacklist) {
+                    if (forType == Def.ForNumber && rule.isBlacklist && rule.isForCall()) {
                         // [BlockType]
                         when (rule.blockType) {
                             0 -> GreyIcon16( iconId = R.drawable.ic_call_blocked )
