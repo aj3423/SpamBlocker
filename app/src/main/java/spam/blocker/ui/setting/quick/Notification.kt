@@ -112,6 +112,9 @@ fun EditChannelDialog(
     var soundName by remember(sound) { mutableStateOf(getRingtoneName(ctx, sound.toUri())) }
     var icon by remember { mutableStateOf<String>(initChannel.icon) }
     var iconColor by remember { mutableStateOf<Int?>(initChannel.iconColor) }
+    var led by remember { mutableStateOf(initChannel.led) }
+    var ledColor by remember { mutableIntStateOf(initChannel.ledColor) }
+
 
     val isCreatingNewChannel by remember { mutableStateOf(initChannel.channelId == "") }
     val isBuiltin by remember(chId) { mutableStateOf(isBuiltInChannel(chId)) }
@@ -180,6 +183,8 @@ fun EditChannelDialog(
                         sound = sound,
                         icon = icon,
                         iconColor = iconColor,
+                        led = led,
+                        ledColor = ledColor,
                     )
                     // 1. create notification channel
                     createChannel(ctx, newCh)
@@ -193,7 +198,6 @@ fun EditChannelDialog(
             }
         }
     ) {
-
         Column {
             // Channel Id
             StrInputBox(
@@ -270,11 +274,12 @@ fun EditChannelDialog(
                         }
                     }
 
-
                     // Sound
                     // Sync with system sound, user might have manually changed it in system settings
                     LifecycleResumeEffect(true) {
-                        sound = manager(ctx).getNotificationChannel(chId)?.sound?.toString() ?: ""
+                        if (!isCreatingNewChannel) {
+                            sound = manager(ctx).getNotificationChannel(chId)?.sound?.toString() ?: ""
+                        }
 
                         onPauseOrDispose { }
                     }
@@ -313,6 +318,29 @@ fun EditChannelDialog(
                 labelId = R.string.icon_color,
                 helpTooltipId = R.string.help_icon_color
             )
+
+            // LED
+            LabeledRow(
+                R.string.led,
+            ) {
+                SwitchBox(led) { isTurningOn ->
+                    led = isTurningOn
+                }
+            }
+            // LED Color
+            AnimatedVisibleV(led) {
+                NumberInputBox(
+                    intValue = ledColor,
+                    allowEmpty = true,
+                    onValueChange = { newValue, hasError ->
+                        if (!hasError && newValue != null) {
+                            ledColor = newValue
+                        }
+                    },
+                    labelId = R.string.led_color,
+                    helpTooltipId = R.string.help_led_color
+                )
+            }
         }
     }
 }

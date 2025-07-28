@@ -49,6 +49,8 @@ class Db private constructor(
         const val COLUMN_GROUP = "grouping"
         const val COLUMN_MUTE = "mute"
         const val COLUMN_SOUND = "sound"
+        const val COLUMN_LED = "led"
+        const val COLUMN_LED_COLOR = "led_color"
 
         // ---- spam table ----
         const val TABLE_SPAM = "spam"
@@ -136,6 +138,8 @@ class Db private constructor(
                     "$COLUMN_SOUND TEXT, " +
                     "$COLUMN_ICON TEXT, " +
                     "$COLUMN_ICON_COLOR INTEGER, " +
+                    "$COLUMN_LED INTEGER, " +
+                    "$COLUMN_LED_COLOR INTEGER, " +
                     "$COLUMN_GROUP TEXT " +
                     ")"
         )

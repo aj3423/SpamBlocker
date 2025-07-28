@@ -31,6 +31,7 @@ import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.service.CopyToClipboardReceiver
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.Salmon
+import spam.blocker.ui.theme.SkyBlue
 import kotlin.random.Random
 
 
@@ -67,8 +68,11 @@ object Notification {
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                     .build()
-                logi("set sound: ${channel.sound.toUri()}")
                 setSound(channel.sound.toUri(), attr)
+            }
+            if (channel.led) {
+                enableLights(true)
+                lightColor = channel.ledColor
             }
         }
         manager(ctx).createNotificationChannel(c)
@@ -203,7 +207,6 @@ object Notification {
 
         val chId = channel.channelId // 5 importance level <-> 5 channel id
         val notificationId = System.currentTimeMillis().toInt()
-        val builder = NotificationCompat.Builder(ctx, chId)
 
         // Use different requestCode for every pendingIntent, otherwise the
         //   previous pendingIntent will be canceled by FLAG_CANCEL_CURRENT, which causes
@@ -223,6 +226,8 @@ object Notification {
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
         }
+
+        val builder = NotificationCompat.Builder(ctx, chId)
         builder
             .setAutoCancel(true)
             .setChannelId(chId)
@@ -235,6 +240,7 @@ object Notification {
             .setColorized(true)
             .setColor(iconColor)
             .setSound(sound)
+            .setLights(channel.ledColor, 1000, 1000)
 
 
         // copy buttons
@@ -271,6 +277,7 @@ object Notification {
                 .setColorized(true)
                 .setColor(iconColor)
                 .setSound(sound)
+                .setLights(channel.ledColor, 1000, 1000)
 
             // Use the same id for a group, otherwise, when swiping left to
             // remove the notification group, previous notifications will appear again.

@@ -7,6 +7,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import androidx.compose.ui.graphics.toArgb
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
@@ -17,9 +18,12 @@ import spam.blocker.db.Db.Companion.COLUMN_ICON
 import spam.blocker.db.Db.Companion.COLUMN_ICON_COLOR
 import spam.blocker.db.Db.Companion.COLUMN_ID
 import spam.blocker.db.Db.Companion.COLUMN_IMPORTANCE
+import spam.blocker.db.Db.Companion.COLUMN_LED
+import spam.blocker.db.Db.Companion.COLUMN_LED_COLOR
 import spam.blocker.db.Db.Companion.COLUMN_MUTE
 import spam.blocker.db.Db.Companion.COLUMN_SOUND
 import spam.blocker.db.Db.Companion.TABLE_NOTIFICATION_CHANNEL
+import spam.blocker.ui.theme.SkyBlue
 
 
 object Notification {
@@ -43,6 +47,8 @@ object Notification {
         var sound: String = "", // "" for default sound
         val icon: String = "", // The resource name, e.g. "ic_call_blocked". "" == Auto choose call/sms icon
         val iconColor: Int? = null, // ARGB, Salmon for block, Unspecified for allowed. "" == Auto choose
+        val led: Boolean = false,
+        val ledColor: Int = SkyBlue.toArgb(),
     ) {
 
         fun shouldSilent(): Boolean {
@@ -72,6 +78,9 @@ object Notification {
             cv.put(COLUMN_ICON, ch.icon)
             cv.put(COLUMN_ICON_COLOR, ch.iconColor)
             cv.put(COLUMN_GROUP, ch.group)
+            cv.put(COLUMN_LED, ch.led)
+            cv.put(COLUMN_LED_COLOR, ch.ledColor)
+
             return wdb.insert(TABLE_NOTIFICATION_CHANNEL, null, cv)
         }
 
@@ -86,6 +95,8 @@ object Notification {
             cv.put(COLUMN_ICON, ch.icon)
             cv.put(COLUMN_ICON_COLOR, ch.iconColor)
             cv.put(COLUMN_GROUP, ch.group)
+            cv.put(COLUMN_LED, ch.led)
+            cv.put(COLUMN_LED_COLOR, ch.ledColor)
 
             return db.update(TABLE_NOTIFICATION_CHANNEL, cv, "$COLUMN_ID = $id", null) >= 0
         }
@@ -99,12 +110,12 @@ object Notification {
                     INSERT OR REPLACE INTO $TABLE_NOTIFICATION_CHANNEL 
                     (
                         $COLUMN_CHANNEL_ID, $COLUMN_IMPORTANCE, $COLUMN_MUTE, $COLUMN_SOUND, 
-                        $COLUMN_ICON, $COLUMN_ICON_COLOR, $COLUMN_GROUP
+                        $COLUMN_ICON, $COLUMN_ICON_COLOR, $COLUMN_GROUP, $COLUMN_LED, $COLUMN_LED_COLOR
                     )
                     VALUES
                     (
                         '${ch.channelId}', ${ch.importance}, ${if(ch.mute) 1 else 0}, '${ch.sound}',
-                        '${ch.icon}', ${ch.iconColor}, '${ch.group}'
+                        '${ch.icon}', ${ch.iconColor}, '${ch.group}', ${if(ch.led) 1 else 0}, ${ch.ledColor}
                     )
                 """.trimIndent()
             )
@@ -121,6 +132,8 @@ object Notification {
                 icon = it.getStringOrNull(it.getColumnIndex(COLUMN_ICON)) ?: "",
                 iconColor = it.getIntOrNull(it.getColumnIndex(COLUMN_ICON_COLOR)),
                 group = it.getStringOrNull(it.getColumnIndex(COLUMN_GROUP)) ?: "",
+                led = it.getIntOrNull(it.getColumnIndex(COLUMN_LED)) == 1,
+                ledColor = it.getIntOrNull(it.getColumnIndex(COLUMN_LED_COLOR)) ?: SkyBlue.toArgb()
             )
         }
 

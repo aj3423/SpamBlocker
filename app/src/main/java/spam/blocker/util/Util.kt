@@ -755,6 +755,10 @@ object Util {
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
     ): List<CallInfo> {
+        if (!Permission.callLog.isGranted) { // required for querying content resolver Calls.CONTENT_URI
+            return listOf()
+        }
+
         val selection = mutableListOf(
             "${Calls.DATE} >= ${System.currentTimeMillis() - withinMillis}"
         )
