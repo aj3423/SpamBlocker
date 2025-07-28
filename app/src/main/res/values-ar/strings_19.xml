@@ -34,73 +34,71 @@
     <string name="allowed">تم الاجتياز</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        معطل، لا توجد إشعارات على الإطلاق. <br>
+        توجد أربع قنوات إشعارات مدمجة: <br>
+        <font color="#00BFFF"><b>لا شيء</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; لا يوجد إشعار على الإطلاق. <br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        يظهر في شريط الحالة وستارة الإشعارات. <br>
+        <font color="#00BFFF"><b>محظور</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; يظهر في شريط الحالة، ودرج الإشعارات. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        يشغل صوتًا. <br>
+        <font color="#00BFFF"><b>مسموح به</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكنوافذ منبثقة مع صوت. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        يظهر كإشعار منبثق.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        أثناء الدردشات النشطة عبر الرسائل القصيرة، قد تكون أصوات الإشعارات مزعجة ويتم كتمها. <br>
-        <br>
-        تعتبر دردشة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل القصيرة في المقدمة.
+        <font color="#00BFFF"><b>دردشة الرسائل النصية القصيرة</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; نفس <b>المسموح به</b> ولكن بدون صوت، حيث قد يكون الصوت مزعجًا أثناء الدردشات النشطة. <br>
+        &ensp; تعتبر دردشة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل النصية القصيرة في المقدمة. <br>
         ]]>
     </string>
     <string name="none">لا شيء</string>
     <string name="low">منخفض</string>
     <string name="high">مرتفع</string>
-    <string name="sms_chat">دردشة الرسائل القصيرة</string>
+    <string name="sms_chat">دردشة الرسائل النصية القصيرة</string>
     <string name="call_channel">قناة المكالمات</string>
-    <string name="sms_channel">قناة الرسائل القصيرة</string>
-    <string name="missing_notification_channel">قناة الإشعارات مفقودة: %s</string>
+    <string name="sms_channel">قناة الرسائل النصية القصيرة</string>
+    <string name="missing_notification_channel">قناة إشعار مفقودة: %s</string>
     <string name="channel_id">معرّف القناة</string>
     <string name="help_channel_id">
         <![CDATA[
-        سيظهر هذا المعرف في إعدادات النظام كقناة إشعارات. <br>
+        سيظهر هذا المعرّف في إعدادات النظام كقناة إشعارات. <br>
         <br>
-        بمجرد إنشائه، لا يمكن تعديل المعرف.
+        بمجرد الإنشاء، لا يمكن تعديل المعرّف.
         ]]>
     </string>
     <string name="channel_importance">الأهمية</string>
-    <string name="channel_group">مجموعة القناة</string>
+    <string name="channel_group">مجموعة القنوات</string>
     <string name="help_channel_group">
         <![CDATA[
-        عند تركه فارغًا، يتم تجميع الإشعارات تلقائيًا في ثلاث فئات:<br>
+        عند تركه فارغًا، يتم تجميع الإشعارات تلقائيًا إلى ثلاث فئات:<br>
         <br>
-        - مكالمة مزعجة <br>
-        - رسالة قصيرة مزعجة <br>
-        - رسالة قصيرة صالحة <br>
+        - مكالمة احتيالية <br>
+        - رسائل نصية احتيالية <br>
+        - رسائل نصية صالحة <br>
         <br>
         إذا تم تحديد مجموعة، فسيتم تجميعها بشكل منفصل.
         ]]>
     </string>
     <string name="mute">كتم الصوت</string>
-    <string name="sound">صوت</string>
+    <string name="sound">الصوت</string>
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>قيود</b></font><br>
-        بسبب قيود Android، لا يمكن تعيين صوت الإشعار إلا عند إنشاء قناة جديدة، وبمجرد إنشائها، لا يمكن تعديلها. <br>
+        بسبب قيود نظام أندرويد، لا يمكن تعيين صوت الإشعار إلا عند إنشاء قناة جديدة،
+         بمجرد إنشائها، لا يمكن تعديله. <br>
         <br>
         <font color="#03DAC5"><b>حلول بديلة</b></font><br>
-        1. احذف القناة وأنشئ واحدة جديدة بمعرف قناة مختلف. <br>
-        &emsp; لن يعمل ذلك إذا كان لديهم نفس معرف القناة، حيث سيقوم Android ببساطة \"باستعادة\" تلك القناة المحذوفة بدلاً من إنشاء قناة جديدة. <br>
-        2. قم بتعديل صوت القناة يدويًا في إعدادات النظام: <br>
-        &emsp; - الضغط المطول على أيقونة التطبيق <br>
+        1. احذف القناة وأنشئ واحدة جديدة بمعرّف قناة مختلف. <br>
+        &emsp; لن يعمل إذا كان لديهما نفس معرّف القناة، حيث سيقوم أندرويد ببساطة \"باستعادة\"
+         تلك القناة المحذوفة بدلاً من إنشاء قناة جديدة. <br>
+        2. تعديل صوت القناة يدويًا في إعدادات النظام: <br>
+        &emsp; - الضغط مطولاً على أيقونة التطبيق <br>
         &emsp; - معلومات التطبيق <br>
         &emsp; - الإشعارات <br>
         &emsp; - فئات الإشعارات <br>
         &emsp; - انقر على تلك القناة وقم بتعديل الصوت <br>
         <br>
         <b>صوت مخصص</b><br>
-        تسمح بعض الهواتف بالاستيراد المباشر للنغمات المخصصة عبر التطبيق. أما بالنسبة للبعض الآخر، فيتم الاستيراد من خلال إعدادات النظام ثم تحديدها في التطبيق. <br>
+        تسمح بعض الهواتف بالاستيراد المباشر لنغمات رنين مخصصة عبر التطبيق.
+        بالنسبة للآخرين، قم بالاستيراد من خلال إعدادات النظام ثم حددها في التطبيق. <br>
         ]]>
     </string>
     <string name="default_">افتراضي</string>
@@ -120,9 +118,9 @@
     <string name="confirm_to_delete">تأكيد الحذف؟</string>
     <string name="help_create_notification_channel">
         <![CDATA[
-        إنشاء قناة إشعارات جديدة. <br>
+        إنشاء قناة إشعار جديدة. <br>
         <br>
-        <font color="#03DAC5"><b>الضغط المطول</b></font> على قناة إشعارات في هذه القائمة المنسدلة لتعديلها.
+        <font color="#03DAC5"><b>اضغط مطولاً</b></font> على قناة إشعار في هذه القائمة المنسدلة لتعديلها.
         ]]>
     </string>
 </resources>

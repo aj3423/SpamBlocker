@@ -34,29 +34,24 @@
     <string name="allowed">Passé</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        Désactivé, aucune notification du tout. <br>
+        Il existe quatre canaux de notification intégrés : <br>
+        <font color="#00BFFF"><b>Aucun</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Aucune notification du tout. <br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        Apparaît dans la barre d\'état et le panneau de notifications. <br>
+        <font color="#00BFFF"><b>Bloqué</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Apparaît dans la barre d\'état, le tiroir de notifications. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        Joue un son. <br>
+        <font color="#00BFFF"><b>Autorisé</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Apparaît dans la barre d\'état, le tiroir de notifications, et comme pop-up flottant avec un son. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        Apparaît sous forme de pop-up flottante.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        Pendant les discussions SMS actives, les sons de notification peuvent être gênants et sont mis en sourdine. <br>
-        <br>
-        Une discussion est considérée comme active lorsque l\'écran est déverrouillé et que l\'application SMS est au premier plan.
+        <font color="#00BFFF"><b>Chat SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Identique à <b>Autorisé</b> mais sans le son, car le son peut être gênant pendant les chats actifs. <br>
+        &ensp; On considère qu\'il s\'agit d\'un chat actif lorsque l\'écran est déverrouillé et que l\'application SMS est au premier plan. <br>
         ]]>
     </string>
     <string name="none">Aucun</string>
     <string name="low">Faible</string>
-    <string name="high">Élevé</string>
+    <string name="high">Élevée</string>
     <string name="sms_chat">Chat SMS</string>
     <string name="call_channel">Canal d\'appel</string>
     <string name="sms_channel">Canal SMS</string>
@@ -73,11 +68,11 @@
     <string name="channel_group">Groupe de canaux</string>
     <string name="help_channel_group">
         <![CDATA[
-        Lorsqu\'il est vide, les notifications sont automatiquement regroupées en trois catégories :<br>
+        Lorsqu\'il est laissé vide, les notifications sont automatiquement regroupées en trois catégories :<br>
         <br>
-        - Appel indésirable <br>
-        - SMS indésirable <br>
-        - SMS valide <br>
+        - Appel spam <br>
+        - SMS spam <br>
+        - SMS valides <br>
         <br>
         Si un groupe est spécifié, ils seront regroupés séparément.
         ]]>
@@ -87,20 +82,23 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitation</b></font><br>
-        En raison de la restriction Android, le son de notification ne peut être défini que lors de la création d\'un nouveau canal ; une fois créé, il ne peut pas être modifié.<br>
+        En raison de la restriction Android, le son de notification ne peut être défini qu\' lors de la création d\'un nouveau canal,
+         une fois créé, il ne peut plus être modifié. <br>
         <br>
         <font color="#03DAC5"><b>Solutions de contournement</b></font><br>
-        1. Supprimez le canal et créez-en un nouveau avec un ID de canal différent.<br>
-        &emsp; Cela ne fonctionnera pas s\'ils ont le même ID de canal, car Android se contentera de \"récupérer\" ce canal supprimé au lieu d\'en créer un nouveau.<br>
-        2. Modifiez manuellement le son du canal dans les paramètres système : <br>
-        &emsp; - Appuyez longuement sur l\'icône de l\'application <br>
-        &emsp; - Informations sur l\'application <br>
+        1. Supprimer le canal et en créer un nouveau avec un ID de canal différent. <br>
+        &emsp; Cela ne fonctionnera pas s\'ils ont le même ID de canal, car Android va simplement « récupérer »
+         ce canal supprimé au lieu d\'en créer un nouveau. <br>
+        2. Modifier manuellement le son du canal dans les paramètres système : <br>
+        &emsp; - Appuyer longuement sur l\'icône de l\'application <br>
+        &emsp; - Infos sur l\'application <br>
         &emsp; - Notifications <br>
-        &emsp; - Catégories de notifications <br>
-        &emsp; - Appuyez sur ce canal et modifiez le son <br>
+        &emsp; - Catégories de notification <br>
+        &emsp; - Appuyer sur ce canal et modifier le son <br>
         <br>
         <b>Son personnalisé</b><br>
-        Certains téléphones permettent l\'importation directe de sonneries personnalisées via l\'application. Pour d\'autres, importez via les paramètres système puis sélectionnez-la dans l\'application.<br>
+        Certains téléphones permettent l\'importation directe de sonneries personnalisées via l\'application.
+        Pour d\'autres, importez via les paramètres système puis sélectionnez-la dans l\'application. <br>
         ]]>
     </string>
     <string name="default_">Par défaut</string>
@@ -111,7 +109,7 @@
         <![CDATA[
         La valeur de couleur ARGB, représentée au format décimal. <br>
         <br>
-        Laissez-le vide pour le choix automatique des couleurs. <br>
+        Laisser vide pour un choix automatique des couleurs. <br>
         <br>
         Par exemple :<br>
         La valeur décimale de <font color="#FF0000">0xFF0000</font> est <b>16711680</b>.
@@ -122,7 +120,7 @@
         <![CDATA[
         Créer un nouveau canal de notification. <br>
         <br>
-        <font color="#03DAC5"><b>Appuyez longuement</b></font> sur un canal de notification dans cette liste déroulante pour le modifier.
+        <font color="#03DAC5"><b>Appuyer longuement</b></font> sur un canal de notification dans cette liste déroulante pour le modifier.
         ]]>
     </string>
 </resources>

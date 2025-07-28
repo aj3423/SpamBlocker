@@ -34,34 +34,29 @@
     <string name="allowed">Passato</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        Disabilitato, nessuna notifica.<br>
+        Ci sono quattro canali di notifica predefiniti: <br>
+        <font color="#00BFFF"><b>Nessuno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Nessuna notifica. <br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        Appare nella barra di stato e nel pannello delle notifiche.<br>
+        <font color="#00BFFF"><b>Bloccato</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Appare nella barra di stato, tendina delle notifiche. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        Riproduce un suono.<br>
+        <font color="#00BFFF"><b>Permesso</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Appare nella barra di stato, tendina delle notifiche e come pop-up a comparsa con un suono. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        Appare come un pop-up heads-up.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        Durante le chat SMS attive, i suoni delle notifiche potrebbero essere fastidiosi e vengono silenziati. <br>
-        <br>
-        È considerata chat attiva quando lo schermo è sbloccato e l\'app SMS è in primo piano.
+        <font color="#00BFFF"><b>Chat SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Uguale a <b>Permesso</b> ma senza suono, poiché il suono potrebbe essere fastidioso durante le chat attive. <br>
+        &ensp; È considerata chat attiva quando lo schermo è sbloccato e l\'app SMS è in primo piano. <br>
         ]]>
     </string>
     <string name="none">Nessuno</string>
     <string name="low">Bassa</string>
     <string name="high">Alta</string>
     <string name="sms_chat">Chat SMS</string>
-    <string name="call_channel">Canale chiamate</string>
+    <string name="call_channel">Canale Chiamate</string>
     <string name="sms_channel">Canale SMS</string>
     <string name="missing_notification_channel">Canale di notifica mancante: %s</string>
-    <string name="channel_id">ID canale</string>
+    <string name="channel_id">ID Canale</string>
     <string name="help_channel_id">
         <![CDATA[
         Questo ID apparirà nelle impostazioni di sistema come canale di notifica. <br>
@@ -70,10 +65,10 @@
         ]]>
     </string>
     <string name="channel_importance">Importanza</string>
-    <string name="channel_group">Gruppo canale</string>
+    <string name="channel_group">Gruppo Canale</string>
     <string name="help_channel_group">
         <![CDATA[
-        Quando lasciato vuoto, le notifiche vengono automaticamente raggruppate in tre categorie:<br>
+        Se lasciato vuoto, le notifiche vengono automaticamente raggruppate in tre categorie:<br>
         <br>
         - Chiamate spam <br>
         - SMS spam <br>
@@ -87,43 +82,45 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitazione</b></font><br>
-        A causa delle restrizioni di Android, il suono di notifica può essere impostato solo al momento della creazione di un nuovo canale; una volta creato, non può essere modificato.<br>
+        A causa delle restrizioni di Android, il suono delle notifiche può essere impostato solo quando si crea un nuovo canale;
+         una volta creato, non può essere modificato. <br>
         <br>
         <font color="#03DAC5"><b>Soluzioni alternative</b></font><br>
-        1. Elimina il canale e creane uno nuovo con un ID canale diverso.<br>
-        &emsp; Non funzionerà se hanno lo stesso ID canale, poiché Android si limiterà a \"recuperare\" quel canale eliminato invece di crearne uno nuovo.<br>
-        2. Modifica manualmente il suono del canale nelle impostazioni di sistema:<br>
-        &emsp; - Tieni premuta l\'icona dell\'app<br>
-        &emsp; - Info app<br>
-        &emsp; - Notifiche<br>
-        &emsp; - Categorie di notifica<br>
-        &emsp; - Tocca quel canale e modifica il suono<br>
+        1. Elimina il canale e creane uno nuovo con un ID canale diverso. <br>
+        &emsp; Non funzionerà se hanno lo stesso ID canale, poiché Android si limiterà a \"recuperare\"
+         quel canale eliminato invece di crearne uno nuovo. <br>
+        2. Modifica manualmente il suono del canale nelle impostazioni di sistema: <br>
+        &emsp; - Tocca e tieni premuto l\'icona dell\'app <br>
+        &emsp; - Info app <br>
+        &emsp; - Notifiche <br>
+        &emsp; - Categorie di notifica <br>
+        &emsp; - Tocca quel canale e modifica il suono <br>
         <br>
-        <b>Suono personalizzato</b><br>
+        <b>Suono Personalizzato</b><br>
         Alcuni telefoni consentono l\'importazione diretta di suonerie personalizzate tramite l\'app.
-        Per altri, importa tramite le impostazioni di sistema e poi selezionalo nell\'app.<br>
+        Per altri, importa tramite le impostazioni di sistema e poi selezionalo nell\'app. <br>
         ]]>
     </string>
     <string name="default_">Predefinito</string>
     <string name="select_notification_sound">Seleziona suono notifica</string>
     <string name="unknown">Sconosciuto</string>
-    <string name="icon_color">Colore icona</string>
+    <string name="icon_color">Colore Icona</string>
     <string name="help_icon_color">
         <![CDATA[
-        Il valore di colore ARGB, rappresentato in formato decimale. <br>
+        Il valore colore ARGB, rappresentato in formato decimale. <br>
         <br>
-        Lascia vuoto per la scelta automatica dei colori. <br>
+        Lascia vuoto per la selezione automatica dei colori. <br>
         <br>
-        Ad esempio:<br>
+        Per esempio:<br>
         Il valore decimale di <font color="#FF0000">0xFF0000</font> è <b>16711680</b>.
         ]]>
     </string>
-    <string name="confirm_to_delete">Confermi di eliminare?</string>
+    <string name="confirm_to_delete">Confermi l\'eliminazione?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Crea un nuovo canale di notifica. <br>
         <br>
-        <font color="#03DAC5"><b>Tieni premuto</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
+        <font color="#03DAC5"><b>Tocca a lungo</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
         ]]>
     </string>
 </resources>

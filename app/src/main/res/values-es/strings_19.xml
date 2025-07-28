@@ -34,39 +34,34 @@
     <string name="allowed">Pasado</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        Desactivado, sin ninguna notificación. <br>
+        Hay cuatro canales de notificación incorporados: <br>
+        <font color="#00BFFF"><b>Ninguno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Ninguna notificación.<br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        Aparece en la barra de estado y en la sombra de notificaciones. <br>
+        <font color="#00BFFF"><b>Bloqueado</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Aparece en la barra de estado, panel de notificaciones. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        Reproduce un sonido. <br>
+        <font color="#00BFFF"><b>Permitido</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Aparece en la barra de estado, panel de notificaciones y como ventana emergente (heads-up) con sonido. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        Aparece como una notificación emergente.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        Durante los chats SMS activos, los sonidos de notificación pueden ser molestos y se silencian. <br>
-        <br>
-        Se considera chat activo cuando la pantalla está desbloqueada y la aplicación de SMS está en primer plano.
+        <font color="#00BFFF"><b>Chat de SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Igual que <b>Permitido</b> pero sin sonido, ya que el sonido puede ser molesto durante chats activos. <br>
+        &ensp; Se considera chat activo cuando la pantalla está desbloqueada y la aplicación de SMS está en primer plano. <br>
         ]]>
     </string>
     <string name="none">Ninguno</string>
     <string name="low">Baja</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Chat SMS</string>
-    <string name="call_channel">Canal de Llamada</string>
+    <string name="sms_chat">Chat de SMS</string>
+    <string name="call_channel">Canal de Llamadas</string>
     <string name="sms_channel">Canal de SMS</string>
-    <string name="missing_notification_channel">Falta canal de notificación: %s</string>
+    <string name="missing_notification_channel">Falta el canal de notificación: %s</string>
     <string name="channel_id">ID de Canal</string>
     <string name="help_channel_id">
         <![CDATA[
-        Este ID aparecerá en la configuración del sistema como el canal de notificación. <br>
+        Esta ID aparecerá en la configuración del sistema como el canal de notificación. <br>
         <br>
-        Una vez creado, el ID no se puede editar.
+        Una vez creada, la ID no se puede editar.
         ]]>
     </string>
     <string name="channel_importance">Importancia</string>
@@ -77,7 +72,7 @@
         <br>
         - Llamada spam <br>
         - SMS spam <br>
-        - SMS válidos <br>
+        - SMS válido <br>
         <br>
         Si se especifica un grupo, se agruparán por separado.
         ]]>
@@ -87,22 +82,20 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitación</b></font><br>
-        Debido a la restricción de Android, el sonido de notificación solo se puede establecer al crear un nuevo canal; una vez creado, no se puede modificar. <br>
+        Debido a la restricción de Android, el sonido de la notificación solo se puede establecer al crear un nuevo canal; una vez creado, no se puede modificar. <br>
         <br>
         <font color="#03DAC5"><b>Soluciones</b></font><br>
-        1. Elimina el canal y crea uno nuevo con una ID de canal diferente. <br>
-        &emsp; No funcionará si tienen la misma ID de canal, ya que Android simplemente \"recuperará\"
-         ese canal eliminado en lugar de crear uno nuevo. <br>
-        2. Modifica manualmente el sonido del canal en la configuración del sistema: <br>
-        &emsp; - Mantén pulsado el icono de la aplicación <br>
+        1. Eliminar el canal y crear uno nuevo con una ID de canal diferente. <br>
+        &emsp; No funcionará si tienen la misma ID de canal, ya que Android simplemente \"recuperará\" ese canal eliminado en lugar de crear uno nuevo. <br>
+        2. Modificar manualmente el sonido del canal en la configuración del sistema: <br>
+        &emsp; - Mantener pulsado el icono de la aplicación <br>
         &emsp; - Información de la aplicación <br>
         &emsp; - Notificaciones <br>
         &emsp; - Categorías de notificación <br>
-        &emsp; - Toca ese canal y modifica el sonido <br>
+        &emsp; - Tocar ese canal y modificar el sonido <br>
         <br>
         <b>Sonido Personalizado</b><br>
-        Algunos teléfonos permiten la importación directa de tonos de llamada personalizados a través de la aplicación.
-        Para otros, impórtalos a través de la configuración del sistema y luego selecciónalo en la aplicación. <br>
+        Algunos teléfonos permiten la importación directa de tonos de llamada personalizados a través de la aplicación. Para otros, importar a través de la configuración del sistema y luego seleccionarlo en la aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>
@@ -113,18 +106,18 @@
         <![CDATA[
         El valor de color ARGB, representado en formato decimal. <br>
         <br>
-        Deje vacío para la selección automática de colores. <br>
+        Dejar vacío para la selección automática de colores. <br>
         <br>
         Por ejemplo:<br>
         El valor decimal de <font color="#FF0000">0xFF0000</font> es <b>16711680</b>.
         ]]>
     </string>
-    <string name="confirm_to_delete">¿Confirmar para eliminar?</string>
+    <string name="confirm_to_delete">¿Confirmar eliminación?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Crear un nuevo canal de notificación. <br>
         <br>
-        <font color="#03DAC5"><b>Mantenga pulsado</b></font> un canal de notificación en esta lista desplegable para editarlo.
+        <font color="#03DAC5"><b>Mantén pulsado</b></font> un canal de notificación en esta lista desplegable para editarlo.
         ]]>
     </string>
 </resources>

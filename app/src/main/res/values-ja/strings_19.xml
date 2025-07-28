@@ -34,49 +34,44 @@
     <string name="allowed">通過</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        無効、通知は一切ありません。 <br>
+        4つの組み込み通知チャネルがあります： <br>
+        <font color="#00BFFF"><b>なし</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; 全く通知されません。<br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        ステータスバーと通知シェードに表示されます。 <br>
+        <font color="#00BFFF"><b>ブロック済み</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; ステータスバー、通知シェードに表示されます。<br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        サウンドを再生します。 <br>
+        <font color="#00BFFF"><b>許可済み</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; ステータスバー、通知シェード、およびサウンド付きのヘッドアップポップアップとして表示されます。<br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        ヘッドアップポップアップとして表示されます。
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        アクティブなSMSチャット中、通知音は煩わしく、ミュートされます。 <br>
-        <br>
-        画面がロック解除されており、SMSアプリがフォアグラウンドにある場合、アクティブなチャットとみなされます。
+        <font color="#00BFFF"><b>SMSチャット</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; <b>許可済み</b>と同じですが、アクティブなチャット中にサウンドが煩わしい場合があるため、サウンドはありません。<br>
+        &ensp; 画面がロック解除され、SMSアプリがフォアグラウンドにある場合、アクティブなチャットと見なされます。<br>
         ]]>
     </string>
     <string name="none">なし</string>
     <string name="low">低</string>
     <string name="high">高</string>
     <string name="sms_chat">SMSチャット</string>
-    <string name="call_channel">通話チャンネル</string>
-    <string name="sms_channel">SMSチャンネル</string>
-    <string name="missing_notification_channel">通知チャンネルがありません: %s</string>
-    <string name="channel_id">チャンネルID</string>
+    <string name="call_channel">通話チャネル</string>
+    <string name="sms_channel">SMSチャネル</string>
+    <string name="missing_notification_channel">通知チャネルがありません: %s</string>
+    <string name="channel_id">チャネルID</string>
     <string name="help_channel_id">
         <![CDATA[
-        このIDは、システム設定で通知チャンネルとして表示されます。 <br>
+        このIDはシステム設定で通知チャネルとして表示されます。<br>
         <br>
-        一度作成すると、このIDは編集できません。
+        作成後、IDは編集できません。
         ]]>
     </string>
     <string name="channel_importance">重要度</string>
-    <string name="channel_group">チャンネルグループ</string>
+    <string name="channel_group">チャネルグループ</string>
     <string name="help_channel_group">
         <![CDATA[
-        空のままにすると、通知は自動的に次の3つのカテゴリに分類されます:<br>
+        空のままにすると、通知は自動的に3つのカテゴリにグループ化されます：<br>
         <br>
-        - スパム通話 <br>
-        - スパムSMS <br>
+        - 迷惑電話 <br>
+        - 迷惑SMS <br>
         - 有効なSMS <br>
         <br>
         グループが指定されている場合、それらは個別にグループ化されます。
@@ -87,20 +82,23 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>制限事項</b></font><br>
-        Androidの制限により、通知音は新しいチャンネル作成時にのみ設定でき、一度作成されると変更できません。<br>
+        Androidの制限により、通知音は新しいチャネルを作成するときにのみ設定でき、
+         一度作成されると変更できません。<br>
         <br>
         <font color="#03DAC5"><b>回避策</b></font><br>
-        1. チャンネルを削除し、異なるチャンネルIDで新しいものを作成します。<br>
-        &emsp; 同じチャンネルIDを持つ場合、Androidは新しいものを作成する代わりに削除されたチャンネルを「復元」するため、機能しません。<br>
-        2. システム設定でチャンネルサウンドを手動で変更します：<br>
-        &emsp; - アプリアイコンを長押し<br>
-        &emsp; - アプリ情報<br>
-        &emsp; - 通知<br>
-        &emsp; - 通知カテゴリ<br>
-        &emsp; - そのチャンネルをタップしてサウンドを変更<br>
+        1. チャネルを削除し、異なるチャネルIDで新しいチャネルを作成します。<br>
+        &emsp; 同じチャネルIDの場合、Androidは削除されたチャネルを「回復」するだけで、
+         新しいチャネルを作成しないため、機能しません。<br>
+        2. システム設定でチャネルサウンドを手動で変更します：<br>
+        &emsp; - アプリアイコンを長押し <br>
+        &emsp; - アプリ情報 <br>
+        &emsp; - 通知 <br>
+        &emsp; - 通知カテゴリ <br>
+        &emsp; - そのチャネルをタップしてサウンドを変更 <br>
         <br>
         <b>カスタムサウンド</b><br>
-        一部の電話では、アプリを介してカスタム着信音を直接インポートできます。その他の場合は、システム設定を介してインポートし、アプリで選択します。<br>
+        一部の電話では、アプリを介してカスタム着信音を直接インポートできます。
+        それ以外の電話では、システム設定を介してインポートし、アプリで選択します。<br>
         ]]>
     </string>
     <string name="default_">デフォルト</string>
@@ -109,20 +107,20 @@
     <string name="icon_color">アイコンの色</string>
     <string name="help_icon_color">
         <![CDATA[
-        10進形式で表されたARGB色値。 <br>
+        10進形式で表現されたARGBカラー値。<br>
         <br>
-        色を自動選択する場合は空のままにしてください。 <br>
+        自動で色を選択するには空のままにします。<br>
         <br>
-        例:<br>
-        <font color="#FF0000">0xFF0000</font>の10進値は<b>16711680</b>です。
+        例：<br>
+        <font color="#FF0000">0xFF0000</font> の10進値は <b>16711680</b> です。
         ]]>
     </string>
     <string name="confirm_to_delete">削除を確認しますか？</string>
     <string name="help_create_notification_channel">
         <![CDATA[
-        新しい通知チャンネルを作成します。 <br>
+        新しい通知チャネルを作成します。<br>
         <br>
-        このドロップダウンリストの通知チャンネルを<font color="#03DAC5"><b>長押し</b></font>して編集します。
+        このドロップダウンリストの通知チャネルを<font color="#03DAC5"><b>長押し</b></font>して編集します。
         ]]>
     </string>
 </resources>

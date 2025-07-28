@@ -34,33 +34,28 @@
     <string name="allowed">Aprovat</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        Desactivat, cap notificació. <br>
+        Hi ha quatre canals de notificació integrats: <br>
+        <font color="#00BFFF"><b>Cap</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Cap notificació en absolut. <br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        Apareix a la barra d\'estat i a la cortina de notificacions. <br>
+        <font color="#00BFFF"><b>Blocat</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Apareix a la barra d\'estat, ombra de notificacions. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        Reprodueix un so. <br>
+        <font color="#00BFFF"><b>Permès</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Apareix a la barra d\'estat, ombra de notificacions i com a finestra emergent amb so. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        Apareix com una finestra emergent heads-up.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        Durant les converses de SMS actives, els sons de notificació poden ser molestos i es silencien. <br>
-        <br>
-        Es considera conversa activa quan la pantalla està desbloquejada i l\'aplicació de SMS està en primer pla.
+        <font color="#00BFFF"><b>Xat SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Igual que <b>Permès</b> però sense so, ja que el so pot ser molest durant els xats actius. <br>
+        &ensp; Es considera xat actiu quan la pantalla està desbloquejada i l\'aplicació de SMS està en primer pla. <br>
         ]]>
     </string>
     <string name="none">Cap</string>
     <string name="low">Baixa</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Xat de SMS</string>
-    <string name="call_channel">Canal de trucada</string>
+    <string name="sms_chat">Xat SMS</string>
+    <string name="call_channel">Canal de trucades</string>
     <string name="sms_channel">Canal de SMS</string>
-    <string name="missing_notification_channel">Canal de notificació absent: %s</string>
+    <string name="missing_notification_channel">Falta el canal de notificació: %s</string>
     <string name="channel_id">ID del canal</string>
     <string name="help_channel_id">
         <![CDATA[
@@ -70,13 +65,13 @@
         ]]>
     </string>
     <string name="channel_importance">Importància</string>
-    <string name="channel_group">Grup de canal</string>
+    <string name="channel_group">Grup del canal</string>
     <string name="help_channel_group">
         <![CDATA[
-        Quan es deixa buit, les notificacions s\'agrupen automàticament en tres categories:<br>
+        Si es deixa buit, les notificacions s\'agrupen automàticament en tres categories:<br>
         <br>
-        - Trucada de spam <br>
-        - SMS de spam <br>
+        - Trucada spam <br>
+        - SMS spam <br>
         - SMS vàlid <br>
         <br>
         Si s\'especifica un grup, s\'agruparan per separat.
@@ -87,24 +82,27 @@
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Limitació</b></font><br>
-        A causa de la restricció d\'Android, el so de la notificació només es pot configurar en crear un nou canal; un cop creat, no es pot modificar. <br>
+        A causa de la restricció d\'Android, el so de la notificació només es pot configurar en crear un nou canal,
+         un cop creat, no es pot modificar. <br>
         <br>
         <font color="#03DAC5"><b>Solucions</b></font><br>
-        1. Suprimiu el canal i creeu-ne un de nou amb un ID de canal diferent. <br>
-        &emsp; No funcionarà si tenen el mateix ID de canal, ja que Android simplement \"recuperarà\" el canal eliminat en lloc de crear-ne un de nou. <br>
-        2. Modifiqueu manualment el so del canal a la configuració del sistema: <br>
-        &emsp; - Manteniu premuda la icona de l\'aplicació <br>
+        1. Elimina el canal i crea un de nou amb un ID de canal diferent. <br>
+        &emsp; No funcionarà si tenen el mateix ID de canal, ja que Android simplement \"recuperarà\"
+         aquest canal eliminat en lloc de crear-ne un de nou. <br>
+        2. Modifica manualment el so del canal a la configuració del sistema: <br>
+        &emsp; - Mantén premuda la icona de l\'aplicació <br>
         &emsp; - Informació de l\'aplicació <br>
         &emsp; - Notificacions <br>
-        &emsp; - Categories de notificació <br>
-        &emsp; - Toqueu aquest canal i modifiqueu el so <br>
+        &emsp; - Categories de notificacions <br>
+        &emsp; - Toca aquest canal i modifica el so <br>
         <br>
         <b>So personalitzat</b><br>
-        Alguns telèfons permeten la importació directa de tons de trucada personalitzats mitjançant l\'aplicació. Per a d\'altres, importeu-los mitjançant la configuració del sistema i, a continuació, seleccioneu-los a l\'aplicació. <br>
+        Alguns telèfons permeten la importació directa de tons de trucada personalitzats a través de l\'aplicació.
+        Per a d\'altres, importa\'l a través de la configuració del sistema i després selecciona\'l a l\'aplicació. <br>
         ]]>
     </string>
     <string name="default_">Per defecte</string>
-    <string name="select_notification_sound">Selecciona so de notificació</string>
+    <string name="select_notification_sound">Selecciona el so de notificació</string>
     <string name="unknown">Desconegut</string>
     <string name="icon_color">Color de la icona</string>
     <string name="help_icon_color">

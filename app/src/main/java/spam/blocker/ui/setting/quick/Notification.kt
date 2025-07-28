@@ -302,10 +302,6 @@ fun ChannelPicker(
                     icon = {
                         ChannelIcons(channel.importance, channel.mute)
                     },
-                    tooltip = if (channel.channelId == CHANNEL_ACTIVE_SMS_CHAT) {
-                        ctx.getString(R.string.help_active_sms_chat)
-                    } else
-                        null,
                     onClick = {
                         onSelected(index, channel)
                     },

@@ -34,31 +34,26 @@
     <string name="allowed">Geçti</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        Devre dışı, hiçbir bildirim yok. <br>
+        Dört adet yerleşik bildirim kanalı bulunmaktadır: <br>
+        <font color="#00BFFF"><b>Yok</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Hiç bildirim yok. <br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        Durum çubuğunda ve bildirim gölgesinde görünür. <br>
+        <font color="#00BFFF"><b>Engellendi</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Durum çubuğunda, bildirim gölgesinde görünür. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        Bir ses çalar. <br>
+        <font color="#00BFFF"><b>İzin Verildi</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Durum çubuğunda, bildirim gölgesinde ve sesli bir heads-up pop-up olarak görünür. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        Üst bildirim (heads-up) açılır penceresi olarak görünür.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        Aktif SMS sohbetleri sırasında, bildirim sesleri rahatsız edici olabilir ve sessize alınır. <br>
-        <br>
-        Ekranın kilidi açık ve SMS uygulaması ön plandayken aktif sohbet olarak kabul edilir.
+        <font color="#00BFFF"><b>SMS Sohbeti</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; <b>İzin Verildi</b> ile aynıdır ancak ses olmadan, çünkü ses aktif sohbetler sırasında rahatsız edici olabilir. <br>
+        &ensp; Ekran kilidi açık olduğunda ve SMS uygulaması ön planda olduğunda aktif sohbet olarak kabul edilir. <br>
         ]]>
     </string>
     <string name="none">Yok</string>
     <string name="low">Düşük</string>
     <string name="high">Yüksek</string>
     <string name="sms_chat">SMS Sohbeti</string>
-    <string name="call_channel">Çağrı Kanalı</string>
+    <string name="call_channel">Arama Kanalı</string>
     <string name="sms_channel">SMS Kanalı</string>
     <string name="missing_notification_channel">Eksik bildirim kanalı: %s</string>
     <string name="channel_id">Kanal Kimliği</string>
@@ -75,8 +70,8 @@
         <![CDATA[
         Boş bırakıldığında, bildirimler otomatik olarak üç kategoriye ayrılır:<br>
         <br>
-        - İstenmeyen çağrı <br>
-        - İstenmeyen SMS <br>
+        - Spam arama <br>
+        - Spam SMS <br>
         - Geçerli SMS <br>
         <br>
         Bir grup belirtilirse, ayrı ayrı gruplandırılırlar.
@@ -86,15 +81,14 @@
     <string name="sound">Ses</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Kısıtlama</b></font><br>
+        <font color="#ffa500"><b>Sınırlama</b></font><br>
         Android kısıtlaması nedeniyle, bildirim sesi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
          oluşturulduktan sonra değiştirilemez. <br>
         <br>
         <font color="#03DAC5"><b>Geçici Çözümler</b></font><br>
         1. Kanalı silin ve farklı bir kanal kimliğiyle yeni bir tane oluşturun. <br>
-        &emsp; Aynı kanal kimliğine sahip olmaları durumunda çalışmayacaktır, çünkü Android yeni bir tane oluşturmak yerine
-         silinen kanalı \"geri yükleyecektir\". <br>
-        2. Kanal sesini sistem ayarlarında manuel olarak değiştirin: <br>
+        &emsp; Aynı kanal kimliğine sahipseler çalışmayacaktır, çünkü Android yeni bir tane oluşturmak yerine silinen kanalı basitçe \"geri yükleyecektir\". <br>
+        2. Kanal sesini sistem ayarlarından manuel olarak değiştirin: <br>
         &emsp; - Uygulama simgesine uzun basın <br>
         &emsp; - Uygulama Bilgisi <br>
         &emsp; - Bildirimler <br>
@@ -102,22 +96,22 @@
         &emsp; - O kanala dokunun ve sesi değiştirin <br>
         <br>
         <b>Özel Ses</b><br>
-        Bazı telefonlar özel zil seslerinin uygulama aracılığıyla doğrudan içe aktarılmasına izin verir. 
+        Bazı telefonlar, uygulama aracılığıyla özel zil seslerinin doğrudan içe aktarılmasına izin verir.
         Diğerleri için, sistem ayarları aracılığıyla içe aktarın ve ardından uygulamada seçin. <br>
         ]]>
     </string>
     <string name="default_">Varsayılan</string>
-    <string name="select_notification_sound">Bildirim sesi seçin</string>
+    <string name="select_notification_sound">Bildirim sesini seç</string>
     <string name="unknown">Bilinmeyen</string>
     <string name="icon_color">Simge Rengi</string>
     <string name="help_icon_color">
         <![CDATA[
-        ARGB renk değeri, ondalık formatta temsil edilir. <br>
+        ARGB renk değeri, ondalık biçimde temsil edilir. <br>
         <br>
-        Renklerin otomatik seçimi için boş bırakın. <br>
+        Renklerin otomatik seçilmesi için boş bırakın. <br>
         <br>
         Örneğin:<br>
-        <font color="#FF0000">0xFF0000</font> ondalık değeri <b>16711680</b>\'dir.
+        <font color="#FF0000">0xFF0000</font> değerinin ondalık karşılığı <b>16711680</b>\'dir.
         ]]>
     </string>
     <string name="confirm_to_delete">Silmeyi onayla?</string>
@@ -125,7 +119,7 @@
         <![CDATA[
         Yeni bir bildirim kanalı oluşturun. <br>
         <br>
-        Bu açılır listedeki bir bildirim kanalına <font color="#03DAC5"><b>uzun basarak</b></font> düzenleyin.
+        Bu açılır listedeki bir bildirim kanalına <font color="#03DAC5"><b>uzun basın</b></font> düzenlemek için.
         ]]>
     </string>
 </resources>

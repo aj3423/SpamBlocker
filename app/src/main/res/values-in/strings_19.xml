@@ -34,24 +34,19 @@
     <string name="allowed">Lolos</string>
     <string name="help_notification">
         <![CDATA[
-        <img src=\'ic_bell_mute\'/> <br>
-        Dinonaktifkan, tidak ada notifikasi sama sekali. <br>
+        Ada empat saluran notifikasi bawaan: <br>
+        <font color="#00BFFF"><b>Tidak Ada</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Tidak ada notifikasi sama sekali. <br>
         <br>
-        <img src=\'ic_statusbar_shade\'/> <br>
-        Muncul di bilah status dan tirai notifikasi. <br>
+        <font color="#00BFFF"><b>Diblokir</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Muncul di bilah status, naungan notifikasi. <br>
         <br>
-        <img src=\'ic_bell_ringing\'/> <br>
-        Memutar suara. <br>
+        <font color="#00BFFF"><b>Diizinkan</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Muncul di bilah status, naungan notifikasi, dan sebagai pop-up heads-up dengan suara. <br>
         <br>
-        <img src=\'ic_heads_up\'/> <br>
-        Muncul sebagai pop-up heads-up.
-        ]]>
-    </string>
-    <string name="help_active_sms_chat">
-        <![CDATA[
-        Selama obrolan SMS aktif, suara notifikasi mungkin mengganggu dan dibisukan. <br>
-        <br>
-        Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS berada di latar depan.
+        <font color="#00BFFF"><b>Obrolan SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Sama seperti <b>Diizinkan</b> tetapi tanpa suara, karena suara mungkin mengganggu selama obrolan aktif. <br>
+        &ensp; Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS berada di latar depan. <br>
         ]]>
     </string>
     <string name="none">Tidak Ada</string>
@@ -60,49 +55,49 @@
     <string name="sms_chat">Obrolan SMS</string>
     <string name="call_channel">Saluran Panggilan</string>
     <string name="sms_channel">Saluran SMS</string>
-    <string name="missing_notification_channel">Saluran notifikasi tidak ditemukan: %s</string>
+    <string name="missing_notification_channel">Saluran notifikasi hilang: %s</string>
     <string name="channel_id">ID Saluran</string>
     <string name="help_channel_id">
         <![CDATA[
         ID ini akan muncul di pengaturan sistem sebagai saluran notifikasi. <br>
         <br>
-        Setelah dibuat, ID tidak dapat diubah.
+        Setelah dibuat, ID tidak dapat diedit.
         ]]>
     </string>
-    <string name="channel_importance">Kepentingan</string>
+    <string name="channel_importance">Prioritas</string>
     <string name="channel_group">Grup Saluran</string>
     <string name="help_channel_group">
         <![CDATA[
-        Jika dibiarkan kosong, notifikasi akan otomatis dikelompokkan menjadi tiga kategori:<br>
+        Jika dibiarkan kosong, notifikasi secara otomatis dikelompokkan ke dalam tiga kategori:<br>
         <br>
-        - Panggilan spam <br>
-        - SMS spam <br>
+        - Spam panggilan <br>
+        - Spam SMS <br>
         - SMS Valid <br>
         <br>
         Jika grup ditentukan, mereka akan dikelompokkan secara terpisah.
         ]]>
     </string>
-    <string name="mute">Bisukan</string>
+    <string name="mute">Senyap</string>
     <string name="sound">Suara</string>
     <string name="help_sound">
         <![CDATA[
         <font color="#ffa500"><b>Batasan</b></font><br>
         Karena batasan Android, suara notifikasi hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, tidak dapat diubah. <br>
+         setelah dibuat, tidak dapat dimodifikasi. <br>
         <br>
         <font color="#03DAC5"><b>Solusi</b></font><br>
         1. Hapus saluran, buat yang baru dengan ID saluran yang berbeda. <br>
-        &emsp; Tidak akan berhasil jika memiliki ID saluran yang sama, karena Android hanya akan \"memulihkan\"
-         saluran yang dihapus itu alih-alih membuat yang baru. <br>
+        &emsp; Ini tidak akan berfungsi jika memiliki ID saluran yang sama, karena Android hanya akan \"memulihkan\"
+         saluran yang dihapus tersebut daripada membuat yang baru. <br>
         2. Ubah suara saluran secara manual di pengaturan sistem: <br>
-        &emsp; - Ketuk lama ikon aplikasi <br>
+        &emsp; - Tekan lama ikon aplikasi <br>
         &emsp; - Info Aplikasi <br>
         &emsp; - Notifikasi <br>
-        &emsp; - Kategori Notifikasi <br>
-        &emsp; - Ketuk saluran tersebut dan ubah suaranya <br>
+        &emsp; - Kategori notifikasi <br>
+        &emsp; - Ketuk saluran tersebut dan ubah suara <br>
         <br>
         <b>Suara Kustom</b><br>
-        Beberapa ponsel mengizinkan impor langsung nada dering kustom melalui aplikasi.
+        Beberapa ponsel memungkinkan impor langsung nada dering kustom melalui aplikasi.
         Untuk yang lain, impor melalui pengaturan sistem lalu pilih di aplikasi. <br>
         ]]>
     </string>
@@ -125,7 +120,7 @@
         <![CDATA[
         Buat saluran notifikasi baru. <br>
         <br>
-        <font color="#03DAC5"><b>Tekan lama</b></font> saluran notifikasi dalam daftar dropdown ini untuk mengeditnya.
+        <font color="#03DAC5"><b>Tekan lama</b></font> saluran notifikasi di daftar dropdown ini untuk mengeditnya.
         ]]>
     </string>
 </resources>

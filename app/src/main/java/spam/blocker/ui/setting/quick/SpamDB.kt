@@ -250,7 +250,7 @@ fun SpamDB() {
                 Button(
                     content = {
                         RowVCenterSpaced(4) {
-                            GreyLabel(NumberFormat.getInstance().format(total))
+                            Text(NumberFormat.getInstance().format(total), color = Salmon)
 
                             if (priority != 0) {
                                 PriorityLabel(priority)
