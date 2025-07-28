@@ -1,5 +1,6 @@
 package spam.blocker.util
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -46,5 +47,11 @@ object Launcher {
         val intent = Intent(ctx, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         ctx.startActivity(intent)
+
+        // without killing itself, notifications will stop working after a backup restore
+        if (ctx is Activity) {
+            ctx.finish()
+        }
+        Runtime.getRuntime().exit(0)
     }
 }

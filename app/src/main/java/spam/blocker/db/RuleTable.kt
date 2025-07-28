@@ -68,6 +68,7 @@ object CompatibleFlagSerializer : JsonTransformingSerializer<Int>(Int.serializer
 }
 
 // v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
+// (Remove this after 2027-01-01)
 object CompatibleChannelSerializer : KSerializer<String> {
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("channel", PrimitiveKind.STRING)
 

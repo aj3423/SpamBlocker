@@ -7,9 +7,11 @@ import kotlinx.serialization.Serializable
 import spam.blocker.db.Notification.CHANNEL_ACTIVE_SMS_CHAT
 import spam.blocker.db.Notification.CHANNEL_ALLOWED
 import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
+import spam.blocker.util.Notification.isChannelDisabled
 
 class spf { // for namespace only
 
@@ -265,13 +267,37 @@ class spf { // for namespace only
     }
 
     class Notification(ctx: Context) : SharedPref(ctx) {
-        fun getSpamCallChannelId(): String { return readString(Def.SETTING_CHANNEL_SPAM_CALL, CHANNEL_BLOCKED) }
+        fun getSpamCallChannelId(): String {
+            val ret = readString(Def.SETTING_CHANNEL_SPAM_CALL, CHANNEL_BLOCKED)
+            if (ret.isNotEmpty()) {
+                return ret
+            }
+            return CHANNEL_BLOCKED // history compatible (remove after 2027-01-01)
+        }
         fun setSpamCallChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_SPAM_CALL, channelId) }
-        fun getSpamSmsChannelId(): String { return readString(Def.SETTING_CHANNEL_SPAM_SMS, CHANNEL_BLOCKED) }
+        fun getSpamSmsChannelId(): String {
+            val ret = readString(Def.SETTING_CHANNEL_SPAM_SMS, CHANNEL_BLOCKED)
+            if (ret.isNotEmpty()) {
+                return ret
+            }
+            return CHANNEL_BLOCKED // history compatible (remove after 2027-01-01)
+        }
         fun setSpamSmsChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_SPAM_SMS, channelId) }
-        fun getValidSmsChannelId(): String { return readString(Def.SETTING_CHANNEL_VALID_SMS, CHANNEL_ALLOWED) }
+        fun getValidSmsChannelId(): String {
+            val ret = readString(Def.SETTING_CHANNEL_VALID_SMS, CHANNEL_ALLOWED)
+            if (ret.isNotEmpty()) {
+                return ret
+            }
+            return CHANNEL_ALLOWED // history compatible (remove after 2027-01-01)
+        }
         fun setValidSmsChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_VALID_SMS, channelId) }
-        fun getActiveSmsChatChannelId(): String { return readString(Def.SETTING_CHANNEL_ACTIVE_SMS_CHAT, CHANNEL_ACTIVE_SMS_CHAT) }
+        fun getActiveSmsChatChannelId(): String {
+            val ret = readString(Def.SETTING_CHANNEL_ACTIVE_SMS_CHAT, CHANNEL_ACTIVE_SMS_CHAT)
+            if (ret.isNotEmpty()) {
+                return ret
+            }
+            return CHANNEL_ACTIVE_SMS_CHAT // history compatible (remove after 2027-01-01)
+        }
         fun setActiveSmsChatChannelId(channelId: String) { writeString(Def.SETTING_CHANNEL_ACTIVE_SMS_CHAT, channelId) }
     }
 
