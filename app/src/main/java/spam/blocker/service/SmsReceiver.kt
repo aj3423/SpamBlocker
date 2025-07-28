@@ -29,11 +29,14 @@ open class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(ctx: Context, intent: Intent) {
         logi("Received SMS")
 
+        logi("isGloballyEnabled: ${spf.Global(ctx).isGloballyEnabled()}")
+        logi("isSmsEnabled: ${spf.Global(ctx).isSmsEnabled()}")
         if (!spf.Global(ctx).isGloballyEnabled() || !spf.Global(ctx).isSmsEnabled()) {
             return
         }
         val action = intent.action
         if (action != Telephony.Sms.Intents.SMS_RECEIVED_ACTION) {
+            logi("wrong action: $action")
             return
         }
         val messages = Telephony.Sms.Intents.getMessagesFromIntent(intent)
@@ -52,8 +55,11 @@ open class SmsReceiver : BroadcastReceiver() {
         rawNumber: String,
         messageBody: String
     ): ICheckResult {
+        logi("process Sms")
 
         val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
+
+        logi("check result: ${r.type}")
 
         run {
             // 1. log to history db
@@ -72,7 +78,10 @@ open class SmsReceiver : BroadcastReceiver() {
 
             // 2. broadcast new sms to add a new item in history page
             if (isLogEnabled) {
+                logi("log to db")
                 Events.onNewSMS.fire(recordId)
+            } else {
+                logi("log not enabled")
             }
         }
 
@@ -93,6 +102,7 @@ open class SmsReceiver : BroadcastReceiver() {
         // 4. show notification
         val showName = Contacts.findContactByRawNumber(ctx, rawNumber)?.name ?: rawNumber
 
+        logi("notification isBlock: ${r.shouldBlock()}")
         if (r.shouldBlock()) {
 
             val intent = Intent(ctx, NotificationTrampolineActivity::class.java).apply {
