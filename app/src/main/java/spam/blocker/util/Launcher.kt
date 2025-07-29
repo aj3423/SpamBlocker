@@ -1,12 +1,10 @@
 package spam.blocker.util
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.provider.Telephony
-import spam.blocker.ui.main.MainActivity
 import androidx.core.net.toUri
+import spam.blocker.ui.main.MainActivity
 
 object Launcher {
 

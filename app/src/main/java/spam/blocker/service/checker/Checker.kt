@@ -22,7 +22,6 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent

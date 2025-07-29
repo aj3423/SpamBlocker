@@ -113,7 +113,7 @@ data class RegexRule(
     var patternExtraFlags: Int = Def.DefaultRegexFlags,
 
     var description: String = "",
-    var priority: Int = 1,
+    var priority: Int = 0,
     var isBlacklist: Boolean = true,
 
     @Serializable(with = CompatibleFlagSerializer::class)

@@ -241,7 +241,7 @@ fun NumberInputBox(
     helpTooltip: @Composable (() -> Unit)? = null,
 ) {
     // Code learned from the built-in BasicTextField.kt
-    var state by remember {
+    var state by remember(intValue) {
         mutableStateOf(
             TextFieldValue(text = intValue?.toString() ?: "")
         )

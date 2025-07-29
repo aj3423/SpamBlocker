@@ -5,15 +5,11 @@ import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.NotificationManager.IMPORTANCE_NONE
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Icon
-import android.os.Build
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -26,18 +22,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.LifecycleResumeEffect
-import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.config.Configs
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable
-import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.DarkOrange
@@ -45,7 +37,6 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
-import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FooterButton
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
@@ -65,8 +56,6 @@ import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
 import spam.blocker.ui.widgets.getRingtoneName
 import spam.blocker.ui.widgets.rememberFileReadChooser
-import spam.blocker.util.Algorithm.b64Decode
-import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.createChannel
@@ -74,8 +63,6 @@ import spam.blocker.util.Notification.isBuiltInChannel
 import spam.blocker.util.Notification.manager
 import spam.blocker.util.Notification.openChannelSettings
 import spam.blocker.util.Notification.reloadChannels
-import spam.blocker.util.Util.isDefaultSmsAppNotificationEnabled
-import spam.blocker.util.logi
 import spam.blocker.util.spf
 import androidx.compose.foundation.Image as ComposeImage
 

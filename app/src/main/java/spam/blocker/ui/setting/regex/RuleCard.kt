@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.ui.M

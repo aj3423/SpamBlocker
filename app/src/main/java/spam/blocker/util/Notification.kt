@@ -25,8 +25,8 @@ import androidx.core.net.toUri
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Db
-import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_HIGH
+import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_MEDIUM
 import spam.blocker.db.Notification.CHANNEL_NONE

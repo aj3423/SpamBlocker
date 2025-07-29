@@ -261,7 +261,7 @@ fun RuleEditDialog(
     var autoCopy by rememberSaveable { mutableStateOf(initRule.flags.hasFlag(Def.FLAG_AUTO_COPY)) }
 
     // Whitelist or Blacklist
-    // selected index
+    // selected index, 0 == whitelist, 1 == blacklist
     var whiteOrBlack by rememberSaveable { mutableIntStateOf(if (initRule.isWhitelist()) 0 else 1) }
 
     // Block Type
@@ -402,6 +402,16 @@ fun RuleEditDialog(
                 )
 
                 // Priority
+                // Auto change the priority to 1 or 0 when user select `whitelist/blacklist`
+                // Don't change if it's other values.
+                LaunchedEffectOnlyOnChange(whiteOrBlack) {
+                    if (whiteOrBlack == 0 && priority == 0) {
+                        priority = 1
+                    }
+                    if (whiteOrBlack == 1 && priority == 1) {
+                        priority = 0
+                    }
+                }
                 PriorityBox(priority) { newVal, hasErr ->
                     priorityError = hasErr
                     if (newVal != null)
