@@ -123,4 +123,32 @@
         <font color="#03DAC5"><b>Appuyer longuement</b></font> sur un canal de notification dans cette liste déroulante pour le modifier.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Ce canal est actuellement utilisé par les règles suivantes. <br>
+        <br>
+        %s<br>
+        <br>
+        Assurez-vous de les mettre à jour après la suppression de ce canal. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        Le canal de notification sera forcé au silence, même s\'il est configuré comme étant d\'importance élevée.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">Couleur LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        La valeur de couleur ARGB, représentée au format décimal. <br>
+        Par exemple :<br>
+        La valeur décimale de <font color="#FF0000">0xFF0000</font> est <b>16711680</b>.
+        <br>
+        La couleur ne peut être définie qu\'à la création d\'un nouveau canal,
+         une fois créé, elle ne peut être modifiée que dans les paramètres système. <br>
+        ]]>
+    </string>
+    <string name="icon">Icône</string>
+    <string name="automatic">Auto</string>
 </resources>

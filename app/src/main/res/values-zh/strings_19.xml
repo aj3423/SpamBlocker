@@ -120,4 +120,31 @@
         <font color="#03DAC5"><b>长按</b></font>此下拉列表中的通知渠道以进行编辑。
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        此渠道目前被以下规则使用。<br>
+        <br>
+        %s<br>
+        <br>
+        删除此渠道后，请务必更新它们。<br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        通知渠道将被强制静音，即使其设置为高重要性。
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">LED颜色</string>
+    <string name="help_led_color">
+        <![CDATA[
+        ARGB颜色值，以十进制格式表示。<br>
+        例如：<br>
+        <font color="#FF0000">0xFF0000</font> 的十进制值为 <b>16711680</b>。
+        <br>
+        颜色只能在创建新渠道时设置，一旦创建，只能在系统设置中修改。<br>
+        ]]>
+    </string>
+    <string name="icon">图标</string>
+    <string name="automatic">自动</string>
 </resources>

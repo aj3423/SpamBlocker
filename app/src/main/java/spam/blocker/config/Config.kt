@@ -1,14 +1,31 @@
 package spam.blocker.config
 
+import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.content.Context
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonDecoder
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.json.jsonPrimitive
 import spam.blocker.G
 import spam.blocker.db.Api
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
+import spam.blocker.db.CompatibleFlagSerializer
 import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.Notification.CHANNEL_ALLOWED
+import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable
@@ -19,6 +36,7 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
+import spam.blocker.def.Def
 import spam.blocker.service.bot.botJson
 import spam.blocker.util.Notification.createChannel
 import spam.blocker.util.Notification.deleteAllChannels
@@ -316,29 +334,40 @@ class Contact : IConfig {
     }
 }
 
+
 @Serializable
 class STIR : IConfig {
     var enabled = false
-    var isExcusive = false
+
+    // The @Transient annotation ensures isExcusive is not serialized in new data,
+    //   but it can still be deserialized from old backups.
+    @Transient var isExcusive: Boolean? = null
+
     var includeUnverified = false
-    var lenientPriority = 0
     var strictPriority = 0
+
+    // v4.15 removed `isExcusive`, use this class for history compatibility.
+    // Disable Unverified if `isExcusive` exists and its value is 0 (as the old Lenient).
+    // (Remove this `init` and `isExcusive` after 2027-01-01)
+    init {
+        if (isExcusive == false) {
+            includeUnverified = false
+        }
+        isExcusive = null // Clear isExcusive after migration
+    }
+
     override fun load(ctx: Context) {
         val spf = spf.Stir(ctx)
         enabled = spf.isEnabled()
-        isExcusive = spf.isStrict()
         includeUnverified = spf.isIncludeUnverified()
-        lenientPriority = spf.getLenientPriority()
-        strictPriority = spf.getStrictPriority()
+        strictPriority = spf.getPriority()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Stir(ctx)
         spf.setEnabled(enabled)
-        spf.setStrict(isExcusive)
         spf.setIncludeUnverified(includeUnverified)
-        spf.setLenientPriority(lenientPriority)
-        spf.setStrictPriority(strictPriority)
+        spf.setPriority(strictPriority)
     }
 }
 @Serializable

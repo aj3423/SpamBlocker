@@ -123,4 +123,31 @@
         <font color="#03DAC5"><b>Tippen und halten</b></font> Sie einen Benachrichtigungskanal in dieser Dropdown-Liste, um ihn zu bearbeiten.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Dieser Kanal wird derzeit von folgenden Regeln verwendet. <br>
+        <br>
+        %s<br>
+        <br>
+        Stellen Sie sicher, diese nach dem Löschen dieses Kanals zu aktualisieren. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        Der Benachrichtigungskanal wird zwangsweise stummgeschaltet, selbst wenn er als hohe Wichtigkeit konfiguriert ist.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">LED-Farbe</string>
+    <string name="help_led_color">
+        <![CDATA[
+        Der ARGB-Farbwert, dargestellt im Dezimalformat. <br>
+        Zum Beispiel:<br>
+        Der Dezimalwert von <font color="#FF0000">0xFF0000</font> ist <b>16711680</b>.
+        <br>
+        Die Farbe kann nur beim Erstellen eines neuen Kanals eingestellt werden. Sobald er erstellt wurde, kann er nur in den Systemeinstellungen geändert werden. <br>
+        ]]>
+    </string>
+    <string name="icon">Symbol</string>
+    <string name="automatic">Auto</string>
 </resources>

@@ -120,4 +120,32 @@
         <font color="#03DAC5"><b>Mantén pulsado</b></font> un canal de notificación en esta lista desplegable para editarlo.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Este canal está siendo utilizado actualmente por las siguientes reglas. <br>
+        <br>
+        %s<br>
+        <br>
+        Asegúrese de actualizarlas después de eliminar este canal. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        El canal de notificación será silenciado a la fuerza, incluso si está configurado con alta importancia.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">Color del LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        El valor de color ARGB, representado en formato decimal. <br>
+        Por ejemplo:<br>
+        El valor decimal de <font color="#FF0000">0xFF0000</font> es <b>16711680</b>.
+        <br>
+        El color solo se puede establecer al crear un nuevo canal;
+         una vez creado, solo se puede modificar en la configuración del sistema. <br>
+        ]]>
+    </string>
+    <string name="icon">Icono</string>
+    <string name="automatic">Automático</string>
 </resources>

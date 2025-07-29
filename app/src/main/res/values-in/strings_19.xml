@@ -123,4 +123,32 @@
         <font color="#03DAC5"><b>Tekan lama</b></font> saluran notifikasi di daftar dropdown ini untuk mengeditnya.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Saluran ini sedang digunakan oleh aturan berikut. <br>
+        <br>
+        %s<br>
+        <br>
+        Pastikan untuk memperbarui aturan tersebut setelah menghapus saluran ini. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        Saluran notifikasi akan dibisukan secara paksa, meskipun dikonfigurasi sebagai prioritas tinggi.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">Warna LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        Nilai warna ARGB, direpresentasikan dalam format desimal. <br>
+        Contoh:<br>
+        Nilai desimal dari <font color="#FF0000">0xFF0000</font> adalah <b>16711680</b>.
+        <br>
+        Warna hanya dapat diatur saat membuat saluran baru,
+         setelah dibuat, warna hanya dapat diubah di pengaturan sistem. <br>
+        ]]>
+    </string>
+    <string name="icon">Ikon</string>
+    <string name="automatic">Otomatis</string>
 </resources>

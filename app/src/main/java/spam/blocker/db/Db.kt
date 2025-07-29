@@ -391,7 +391,6 @@ class Db private constructor(
             // 6. Drop old column `importance`
             // Nope, just ignore it, there's no `DROP COLUMN` in sqlite.
 
-
         }
     }
 }

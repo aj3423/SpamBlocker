@@ -120,4 +120,32 @@
         <font color="#03DAC5"><b>לחיצה ארוכה</b></font> על ערוץ התראה ברשימה הנפתחת הזו כדי לערוך אותו.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        ערוץ זה משמש כרגע על ידי הכללים הבאים. <br>
+        <br>
+        %s<br>
+        <br>
+        ודא שאתה מעדכן אותם לאחר מחיקת ערוץ זה. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        ערוץ ההתראות יושתק בכוח, גם אם הוא מוגדר כבעל חשיבות גבוהה.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">צבע LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        ערך צבע ARGB, מיוצג בפורמט עשרוני. <br>
+        לדוגמה:<br>
+        הערך העשרוני של <font color="#FF0000">0xFF0000</font> הוא <b>16711680</b>.
+        <br>
+        הצבע יכול להיות מוגדר רק בעת יצירת ערוץ חדש,
+         לאחר יצירתו, ניתן לשנותו רק בהגדרות המערכת. <br>
+        ]]>
+    </string>
+    <string name="icon">סמל</string>
+    <string name="automatic">אוטומטי</string>
 </resources>

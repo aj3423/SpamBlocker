@@ -123,4 +123,32 @@
         <font color="#03DAC5"><b>Tocca a lungo</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Questo canale è attualmente utilizzato dalle seguenti regole. <br>
+        <br>
+        %s<br>
+        <br>
+        Assicurati di aggiornarle dopo aver eliminato questo canale. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        Il canale di notifica verrà silenziato forzatamente, anche se configurato con alta importanza.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">Colore LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        Il valore del colore ARGB, rappresentato in formato decimale. <br>
+        Ad esempio:<br>
+        Il valore decimale di <font color="#FF0000">0xFF0000</font> è <b>16711680</b>.
+        <br>
+        Il colore può essere impostato solo quando si crea un nuovo canale,
+         una volta creato, può essere modificato solo nelle impostazioni di sistema. <br>
+        ]]>
+    </string>
+    <string name="icon">Icona</string>
+    <string name="automatic">Auto</string>
 </resources>

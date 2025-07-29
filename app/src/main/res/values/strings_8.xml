@@ -31,20 +31,44 @@
     <string name="automation">Automation</string>
     <string name="help_workflows">
         <![CDATA[
-        Workflows can be used to run tasks automatically, such as updating database, or auto backup.<br>
+        Workflows can be used to run tasks automatically, it can be triggered by schedule or events. <br>
         <br>
-        There are presets for a quick setup, you can also build it from scratch, or import from a json configuration that shared from other users.<br>
+        There are presets for a quick setup, you can also build it from scratch, or import from a json that shared from other users.<br>
         <br>
-        If you find any workflow that could be widely used and should be added to the presets, please report it on github.
+        <b>Triggers:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Schedule</b></font> <br>
+        Triggered at specific date and time. <br>
+        <br>
+        Use case: <br>
+        &ensp; - Auto backup everyday and only keep backups for 7 days. <br>
+        &ensp; - Auto download spam numbers from the FTC-DNC registry everyday. <br>
+        <br>
+        <font color="#00BFFF"><b>Calendar Event</b></font> <br>
+        Triggered if a call is received during specific calendar events. <br>
+        <br>
+        Use case: <br>
+        &ensp; - During the calendar event \"work\", temporarily disable rule \"mute boss\". <br>
+        <br>
+        <font color="#00BFFF"><b>Call Event</b></font> <br>
+        Triggered upon an incoming call. <br>
+        <br>
+        Use case: <br>
+        &ensp; - Remove extra leading characters from the phone number before screening,
+          as some carriers support dual numbers on a single SIM card. <br>
+        <br>
+        <font color="#00BFFF"><b>SMS Event</b></font> <br>
+        Triggered upon an incoming sms. <br>
+        <br>
+        Use case: <br>
+        &ensp; - Toggle some rules after receiving on-call or off-call SMS. <br>
         ]]>
     </string>
     <string name="manual">Manual</string>
-
     <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">Spam Database Cleanup</string>
     <string name="bot_preset_cleanup_history">History Cleanup</string>
     <string name="bot_preset_auto_backup">Auto Backup</string>
-
     <string name="action_cleanup_history">Clean up History</string>
     <string name="action_http_request">HTTP Request</string>
     <string name="action_cleanup_spam_db">Cleanup Spam Database</string>

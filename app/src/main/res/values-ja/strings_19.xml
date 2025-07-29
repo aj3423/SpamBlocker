@@ -123,4 +123,31 @@
         このドロップダウンリストの通知チャネルを<font color="#03DAC5"><b>長押し</b></font>して編集します。
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        このチャンネルは現在、以下のルールで使用されています。 <br>
+        <br>
+        %s<br>
+        <br>
+        このチャンネルを削除した後、必ず更新してください。 <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        通知チャンネルは、重要度が高く設定されていても、強制的にミュートされます。
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">LEDの色</string>
+    <string name="help_led_color">
+        <![CDATA[
+        10進形式で表されたARGBカラー値。 <br>
+        例：<br>
+        <font color="#FF0000">0xFF0000</font>の10進値は<b>16711680</b>です。
+        <br>
+        色は新しいチャンネルを作成する際にのみ設定でき、一度作成されるとシステム設定でのみ変更できます。 <br>
+        ]]>
+    </string>
+    <string name="icon">アイコン</string>
+    <string name="automatic">自動</string>
 </resources>

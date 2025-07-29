@@ -123,4 +123,32 @@
         <font color="#03DAC5"><b>Mantén premido</b></font> unha canle de notificación nesta lista despregable para editala.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Esta canle está sendo utilizada actualmente polas seguintes regras. <br>
+        <br>
+        %s<br>
+        <br>
+        Asegúrate de actualizalas despois de eliminar esta canle. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        A canle de notificacións será silenciada á forza, aínda que estea configurada como de alta importancia.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">Cor do LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        O valor de cor ARGB, representado en formato decimal. <br>
+        Por exemplo:<br>
+        O valor decimal de <font color="#FF0000">0xFF0000</font> é <b>16711680</b>.
+        <br>
+        A cor só se pode configurar ao crear unha nova canle;
+         unha vez creada, só se pode modificar na configuración do sistema. <br>
+        ]]>
+    </string>
+    <string name="icon">Icona</string>
+    <string name="automatic">Automático</string>
 </resources>

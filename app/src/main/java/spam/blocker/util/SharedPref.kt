@@ -7,11 +7,9 @@ import kotlinx.serialization.Serializable
 import spam.blocker.db.Notification.CHANNEL_ACTIVE_SMS_CHAT
 import spam.blocker.db.Notification.CHANNEL_ALLOWED
 import spam.blocker.db.Notification.CHANNEL_BLOCKED
-import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.DEFAULT_SPAM_DB_TTL
-import spam.blocker.util.Notification.isChannelDisabled
 
 class spf { // for namespace only
 
@@ -185,14 +183,10 @@ class spf { // for namespace only
     class Stir(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_STIR_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_STIR_ENABLED, enabled) }
-        fun isStrict() : Boolean { return readBoolean(Def.SETTING_STIR_STRICT, false) }
-        fun setStrict(strict: Boolean) { writeBoolean(Def.SETTING_STIR_STRICT, strict) }
         fun isIncludeUnverified() : Boolean { return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false) }
         fun setIncludeUnverified(include: Boolean) { writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include) }
-        fun getLenientPriority() : Int { return readInt(Def.SETTING_STIR_LENIENT_PRIORITY, 10) }
-        fun setLenientPriority(priority : Int) { writeInt(Def.SETTING_STIR_LENIENT_PRIORITY, priority) }
-        fun getStrictPriority() : Int { return readInt(Def.SETTING_STIR_STRICT_PRIORITY, 0) }
-        fun setStrictPriority(priority : Int) { writeInt(Def.SETTING_STIR_STRICT_PRIORITY, priority) }
+        fun getPriority() : Int { return readInt(Def.SETTING_STIR_PRIORITY, 0) }
+        fun setPriority(priority : Int) { writeInt(Def.SETTING_STIR_PRIORITY, priority) }
     }
     class SpamDB(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_SPAM_DB_ENABLED, false) }

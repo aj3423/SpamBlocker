@@ -31,11 +31,37 @@
     <string name="automation">Automação</string>
     <string name="help_workflows">
         <![CDATA[
-        Fluxos de trabalho podem ser usados para executar tarefas automaticamente, como atualizar o banco de dados ou fazer backup automático.<br>
+        Fluxos de trabalho podem ser usados para executar tarefas automaticamente, eles podem ser acionados por agendamento ou eventos. <br>
         <br>
-        Existem predefinições para uma configuração rápida, você também pode construir do zero ou importar de uma configuração json compartilhada por outros usuários.<br>
+        Existem predefinições para uma configuração rápida, você também pode construí-lo do zero ou importar de um JSON compartilhado por outros usuários.<br>
         <br>
-        Se você encontrar algum fluxo de trabalho que possa ser amplamente usado e deve ser adicionado às predefinições, relate-o no github.
+        <b>Gatilhos:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Agendamento</b></font> <br>
+        Acionado em data e hora específicas. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Backup automático diário, mantendo backups por apenas 7 dias. <br>
+        &ensp; - Download automático de números de spam do registro FTC-DNC diariamente. <br>
+        <br>
+        <font color="#00BFFF"><b>Evento de Calendário</b></font> <br>
+        Acionado se uma chamada for recebida durante eventos de calendário específicos. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Durante o evento de calendário \"trabalho\", desativar temporariamente a regra \"silenciar chefe\". <br>
+        <br>
+        <font color="#00BFFF"><b>Evento de Chamada</b></font> <br>
+        Acionado ao receber uma chamada. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Remover caracteres extras do início do número de telefone antes da triagem,
+          pois algumas operadoras suportam números duplos em um único cartão SIM. <br>
+        <br>
+        <font color="#00BFFF"><b>Evento de SMS</b></font> <br>
+        Acionado ao receber um SMS. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Ativar/desativar algumas regras após receber SMS de plantão ou fora de plantão. <br>
         ]]>
     </string>
     <string name="manual">Manual</string>

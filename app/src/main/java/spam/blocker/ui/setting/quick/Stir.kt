@@ -18,8 +18,6 @@ import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.PriorityLabel
-import spam.blocker.ui.widgets.RadioGroup
-import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.SwitchBox
@@ -32,10 +30,8 @@ fun Stir() {
     val spf = spf.Stir(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
-    var isStrict by remember { mutableStateOf(spf.isStrict()) }
     var includeUnverified by remember { mutableStateOf(spf.isIncludeUnverified()) }
-    var priLenient by remember { mutableIntStateOf(spf.getLenientPriority()) }
-    var priStrict by remember { mutableIntStateOf(spf.getStrictPriority()) }
+    var priority by remember { mutableIntStateOf(spf.getPriority()) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
 
@@ -43,36 +39,16 @@ fun Stir() {
         trigger = popupTrigger,
         content = {
             Column {
-                LabeledRow(labelId = R.string.type) {
-                    val items = listOf(
-                        RadioItem(Str(R.string.lenient), color = C.textGrey),
-                        RadioItem(Str(R.string.strict), color = Salmon),
-                    )
-
-                    RadioGroup(items = items, selectedIndex = if (isStrict) 1 else 0) { clickedIdx ->
-                        isStrict = clickedIdx == 1
-                        spf.setStrict(isStrict)
-                    }
-                }
                 LabeledRow(labelId = R.string.stir_include_unverified) {
                     SwitchBox(checked = includeUnverified, onCheckedChange = { isTurningOn ->
                         includeUnverified = isTurningOn
                         spf.setIncludeUnverified(isTurningOn)
                     })
                 }
-                if (isStrict) {
-                    PriorityBox(priStrict) { newValue, hasError ->
-                        if (!hasError) {
-                            priStrict = newValue!!
-                            spf.setStrictPriority(newValue)
-                        }
-                    }
-                } else {
-                    PriorityBox(priLenient) { newValue, hasError ->
-                        if (!hasError) {
-                            priLenient = newValue!!
-                            spf.setLenientPriority(newValue)
-                        }
+                PriorityBox(priority) { newValue, hasError ->
+                    if (!hasError) {
+                        priority = newValue!!
+                        spf.setPriority(newValue)
                     }
                 }
             }
@@ -89,15 +65,12 @@ fun Stir() {
                         RowVCenterSpaced(6) {
                             Text(
                                 text = Str(
-                                    strId = if (isStrict) R.string.strict else R.string.lenient
-                                ) + if (includeUnverified) " (*)" else "",
-                                color = if (isStrict) Salmon else C.textGrey,
+                                    if (includeUnverified) R.string.strict else R.string.lenient
+                                ),
+                                color = Salmon,
                             )
-                            if (isStrict && priStrict != 0) {
-                                PriorityLabel(priStrict)
-                            }
-                            if (!isStrict && priLenient != 10) {
-                                PriorityLabel(priLenient)
+                            if (priority != 0) {
+                                PriorityLabel(priority)
                             }
                         }
                     },

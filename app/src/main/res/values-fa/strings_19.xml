@@ -120,4 +120,32 @@
         برای ویرایش یک کانال اعلان در این لیست کشویی، روی آن <font color="#03DAC5"><b>ضربه طولانی</b></font> بزنید.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        این کانال در حال حاضر توسط قوانین زیر استفاده می‌شود. <br>
+        <br>
+        %s<br>
+        <br>
+        مطمئن شوید که پس از حذف این کانال، آن‌ها را به‌روز کنید. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        کانال اعلان به‌زور بی‌صدا خواهد شد، حتی اگر با اهمیت بالا پیکربندی شده باشد.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">رنگ LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        مقدار رنگ ARGB، به فرمت اعشاری. <br>
+        برای مثال:<br>
+        مقدار اعشاری <font color="#FF0000">0xFF0000</font> برابر است با <b>16711680</b>.
+        <br>
+        رنگ فقط هنگام ایجاد کانال جدید قابل تنظیم است؛
+         پس از ایجاد، فقط در تنظیمات سیستم قابل تغییر است. <br>
+        ]]>
+    </string>
+    <string name="icon">آیکون</string>
+    <string name="automatic">خودکار</string>
 </resources>

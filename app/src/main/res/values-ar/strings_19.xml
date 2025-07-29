@@ -123,4 +123,32 @@
         <font color="#03DAC5"><b>اضغط مطولاً</b></font> على قناة إشعار في هذه القائمة المنسدلة لتعديلها.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        تُستخدم هذه القناة حاليًا بواسطة القواعد التالية. <br>
+        <br>
+        %s<br>
+        <br>
+        تأكد من تحديثها بعد حذف هذه القناة. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        سيتم كتم صوت قناة الإشعارات بالقوة، حتى لو تم تكوينها كذات أهمية عالية.
+        ]]>
+    </string>
+    <string name="led">مؤشر LED</string>
+    <string name="led_color">لون مؤشر LED</string>
+    <string name="help_led_color">
+        <![CDATA[
+        قيمة لون ARGB، ممثلة بالصيغة العشرية. <br>
+        على سبيل المثال:<br>
+        القيمة العشرية لـ <font color="#FF0000">0xFF0000</font> هي <b>16711680</b>.
+        <br>
+        يمكن تعيين اللون فقط عند إنشاء قناة جديدة،
+         وبمجرد إنشائها، لا يمكن تعديله إلا في إعدادات النظام. <br>
+        ]]>
+    </string>
+    <string name="icon">أيقونة</string>
+    <string name="automatic">تلقائي</string>
 </resources>

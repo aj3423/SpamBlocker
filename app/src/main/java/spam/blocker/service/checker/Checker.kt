@@ -258,12 +258,7 @@ class Checker { // for namespace only
         private val ctx: Context,
     ) : IChecker {
         override fun priority(): Int {
-            val spf = spf.Stir(ctx)
-            val isStrict = spf.isStrict()
-            return if (isStrict)
-                spf.getStrictPriority()
-            else
-                spf.getLenientPriority()
+            return spf.Stir(ctx).getPriority()
         }
 
         override fun check(cCtx: CheckContext): ICheckResult? {
@@ -294,33 +289,20 @@ class Checker { // for namespace only
                 return null
             }
 
-            val strict = spf.isStrict()
             val includeUnverified = spf.isIncludeUnverified()
 
             val stir = callDetails.callerNumberVerificationStatus
 
-            val pass = stir == Connection.VERIFICATION_STATUS_PASSED
             val unverified = stir == Connection.VERIFICATION_STATUS_NOT_VERIFIED
             val fail = stir == Connection.VERIFICATION_STATUS_FAILED
 
-            if (strict) {
-                if (fail || (includeUnverified && unverified)) {
-                    val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
-                    logger?.error(
-                        ctx.getString(R.string.blocked_by)
-                            .format(ret.resultReasonStr(ctx))
-                    )
-                    return ret
-                }
-            } else {
-                if (pass || (includeUnverified && unverified)) {
-                    val ret = BySTIR(RESULT_ALLOWED_BY_STIR, stir)
-                    logger?.success(
-                        ctx.getString(R.string.allowed_by)
-                            .format(ret.resultReasonStr(ctx))
-                    )
-                    return ret
-                }
+            if (fail || (includeUnverified && unverified)) {
+                val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
+                logger?.error(
+                    ctx.getString(R.string.blocked_by)
+                        .format(ret.resultReasonStr(ctx))
+                )
+                return ret
             }
 
             return null

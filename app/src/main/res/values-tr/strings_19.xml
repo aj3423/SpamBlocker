@@ -122,4 +122,32 @@
         Bu açılır listedeki bir bildirim kanalına <font color="#03DAC5"><b>uzun basın</b></font> düzenlemek için.
         ]]>
     </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        Bu kanal şu anda aşağıdaki kurallar tarafından kullanılmaktadır. <br>
+        <br>
+        %s<br>
+        <br>
+        Bu kanalı sildikten sonra bunları güncellemeyi unutmayın. <br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        Bildirim kanalı, yüksek önemde yapılandırılmış olsa bile zorla sessize alınacaktır.
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">LED Rengi</string>
+    <string name="help_led_color">
+        <![CDATA[
+        ARGB renk değeri, ondalık biçimde temsil edilir. <br>
+        Örneğin:<br>
+        <font color="#FF0000">0xFF0000</font>\'in ondalık değeri <b>16711680</b>\'dir.
+        <br>
+        Renk yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
+         oluşturulduktan sonra yalnızca sistem ayarlarında değiştirilebilir. <br>
+        ]]>
+    </string>
+    <string name="icon">Simge</string>
+    <string name="automatic">Otomatik</string>
 </resources>

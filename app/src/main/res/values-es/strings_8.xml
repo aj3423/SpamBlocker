@@ -31,11 +31,37 @@
     <string name="automation">Automatización</string>
     <string name="help_workflows">
         <![CDATA[
-        Los flujos de trabajo se pueden utilizar para ejecutar tareas automáticamente, como la actualización de la base de datos o la copia de seguridad automática.<br>
+        Los flujos de trabajo se pueden utilizar para ejecutar tareas automáticamente, pueden activarse por programación o por eventos. <br>
         <br>
-        Hay preajustes para una configuración rápida, también puedes construirlo desde cero, o importarlo desde una configuración json que se comparte desde otros usuarios.<br>
+        Hay preajustes para una configuración rápida, también puede construirlo desde cero o importarlo desde un json compartido por otros usuarios.<br>
         <br>
-        Si encuentras algún flujo de trabajo que podría ser ampliamente utilizado y debería añadirse a los preajustes, por favor, repórtalo en github.
+        <b>Activadores:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Programación</b></font> <br>
+        Se activa en una fecha y hora específicas. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Copia de seguridad automática diaria y conservar las copias de seguridad solo durante 7 días. <br>
+        &ensp; - Descarga automática diaria de números de spam del registro FTC-DNC. <br>
+        <br>
+        <font color="#00BFFF"><b>Evento de Calendario</b></font> <br>
+        Se activa si se recibe una llamada durante eventos de calendario específicos. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Durante el evento de calendario \"trabajo\", deshabilitar temporalmente la regla \"silenciar jefe\". <br>
+        <br>
+        <font color="#00BFFF"><b>Evento de Llamada</b></font> <br>
+        Se activa al recibir una llamada entrante. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Eliminar caracteres iniciales adicionales del número de teléfono antes de la detección,
+          ya que algunos operadores admiten números duales en una sola tarjeta SIM. <br>
+        <br>
+        <font color="#00BFFF"><b>Evento de SMS</b></font> <br>
+        Se activa al recibir un SMS entrante. <br>
+        <br>
+        Caso de uso: <br>
+        &ensp; - Alternar algunas reglas después de recibir SMS de guardia o fuera de guardia. <br>
         ]]>
     </string>
     <string name="manual">Manual</string>
