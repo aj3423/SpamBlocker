@@ -23,9 +23,6 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Sertakan Belum Terverifikasi (*)</string>
-    <string name="unverified">Tidak diverifikasi</string>
-    <string name="valid">Panggilan yang sah</string>
     <string name="spoof">Panggilan palsu</string>
     <string name="help_stir">
         <![CDATA[

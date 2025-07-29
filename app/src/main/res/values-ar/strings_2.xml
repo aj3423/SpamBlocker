@@ -23,9 +23,6 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">تضمين غير المتحقق منه (*)</string>
-    <string name="unverified">غير مُتحقق منه</string>
-    <string name="valid">مكالمة صحيحة</string>
     <string name="spoof">مكالمة احتيالية</string>
     <string name="help_stir">
         <![CDATA[

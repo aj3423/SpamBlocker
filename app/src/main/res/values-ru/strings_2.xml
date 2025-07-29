@@ -23,9 +23,6 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Включить Непроверенные (*)</string>
-    <string name="unverified">Не проверенный</string>
-    <string name="valid">Достоверный звонок</string>
     <string name="spoof">Поддельный звонок</string>
     <string name="help_stir">
         <![CDATA[

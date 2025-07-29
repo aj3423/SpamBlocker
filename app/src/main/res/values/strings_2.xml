@@ -23,9 +23,6 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Include Unverified (*)</string>
-    <string name="unverified">Unverified</string>
-    <string name="valid">Valid Call</string>
     <string name="spoof">Spoof Call</string>
     <string name="help_stir">
         <![CDATA[

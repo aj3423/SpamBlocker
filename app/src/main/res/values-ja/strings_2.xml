@@ -23,9 +23,6 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">未検証を含める (*)</string>
-    <string name="unverified">未検証</string>
-    <string name="valid">有効な通話</string>
     <string name="spoof">なりすまし通話</string>
     <string name="help_stir">
         <![CDATA[

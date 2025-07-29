@@ -23,9 +23,6 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Incluír Sen Verificar (*)</string>
-    <string name="unverified">Non verificado</string>
-    <string name="valid">Chamada válida</string>
     <string name="spoof">Chamada fraudulenta</string>
     <string name="help_stir">
         <![CDATA[
