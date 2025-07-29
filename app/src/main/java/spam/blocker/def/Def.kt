@@ -1,6 +1,6 @@
 package spam.blocker.def
 
-import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_LOW
 
 object Def {
 
@@ -118,7 +118,7 @@ object Def {
     const val BLOCK_TYPE_ANSWER_AND_HANGUP = 2
 
 //    const val DEF_SPAM_IMPORTANCE = NotificationManager.IMPORTANCE_LOW
-    const val DEF_SPAM_CHANNEL = CHANNEL_BLOCKED
+    const val DEF_SPAM_CHANNEL = CHANNEL_LOW
 
     const val DEF_BLOCK_TYPE = BLOCK_TYPE_REJECT
 

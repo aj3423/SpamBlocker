@@ -4,6 +4,7 @@ package spam.blocker.util
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.NotificationManager.IMPORTANCE_NONE
@@ -24,9 +25,10 @@ import androidx.core.net.toUri
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Db
-import spam.blocker.db.Notification.CHANNEL_ACTIVE_SMS_CHAT
-import spam.blocker.db.Notification.CHANNEL_ALLOWED
-import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_HIGH_MUTED
+import spam.blocker.db.Notification.CHANNEL_HIGH
+import spam.blocker.db.Notification.CHANNEL_LOW
+import spam.blocker.db.Notification.CHANNEL_MEDIUM
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
@@ -84,21 +86,23 @@ object Notification {
     }
 
     /*
-        0 IMPORTANCE_NONE   -> "None"
-        2 IMPORTANCE_LOW    -> "StatusBar+Shade"
-        4 IMPORTANCE_HIGH   -> "Heads-up+Sound+StatusBar+Shade"
+        0 IMPORTANCE_NONE    -> "None"
+        2 IMPORTANCE_LOW     -> "StatusBar+Shade"
+        3 IMPORTANCE_DEFAULT -> "Sound+StatusBar+Shade" (no heads-up)
+        4 IMPORTANCE_HIGH    -> "Heads-up+Sound+StatusBar+Shade"
     */
     fun builtInChannels() : List<Channel> {
         return listOf(
             Channel(channelId = CHANNEL_NONE, importance = IMPORTANCE_NONE),
-            Channel(channelId = CHANNEL_BLOCKED, importance = IMPORTANCE_LOW),
-            Channel(channelId = CHANNEL_ALLOWED, importance = IMPORTANCE_HIGH),
-            Channel(channelId = CHANNEL_ACTIVE_SMS_CHAT, importance = IMPORTANCE_HIGH, mute = true),
+            Channel(channelId = CHANNEL_LOW, importance = IMPORTANCE_LOW),
+            Channel(channelId = CHANNEL_MEDIUM, importance = IMPORTANCE_DEFAULT),
+            Channel(channelId = CHANNEL_HIGH, importance = IMPORTANCE_HIGH),
+            Channel(channelId = CHANNEL_HIGH_MUTED, importance = IMPORTANCE_HIGH, mute = true),
         )
     }
     fun isBuiltInChannel(channelId: String) : Boolean {
         return listOf(
-            CHANNEL_NONE, CHANNEL_ALLOWED, CHANNEL_BLOCKED, CHANNEL_ACTIVE_SMS_CHAT
+            CHANNEL_NONE, CHANNEL_LOW, CHANNEL_MEDIUM, CHANNEL_HIGH, CHANNEL_HIGH_MUTED
         )
             .contains(channelId)
     }
@@ -119,9 +123,9 @@ object Notification {
         }
     }
     // Show orange warning when the channel is missing, could've been deleted.
-    fun missingChannel(ctx: Context, channelId: String) : Channel {
+    fun missingChannel() : Channel {
         return Channel(
-            channelId = CHANNEL_ALLOWED,
+            channelId = CHANNEL_HIGH,
             importance = IMPORTANCE_HIGH,
             iconColor = DarkOrange.toArgb(),
         )

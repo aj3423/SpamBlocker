@@ -31,8 +31,8 @@ import kotlinx.serialization.json.JsonTransformingSerializer
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import org.json.JSONObject
-import spam.blocker.db.Notification.CHANNEL_ALLOWED
-import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_HIGH
+import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.ui.theme.CustomColorsPalette
@@ -89,8 +89,8 @@ object CompatibleChannelSerializer : KSerializer<String> {
                 val importance = element["importance"]?.jsonPrimitive?.intOrNull ?: IMPORTANCE_HIGH
                 when (importance) {
                     0 -> CHANNEL_NONE
-                    1,2 -> CHANNEL_BLOCKED
-                    else -> CHANNEL_ALLOWED
+                    1,2 -> CHANNEL_LOW
+                    else -> CHANNEL_HIGH
                 }
             }
             // Fallback to default

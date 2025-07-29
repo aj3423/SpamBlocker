@@ -22,7 +22,6 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.HistoryRecord
-import spam.blocker.db.Notification.CHANNEL_ALLOWED
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable
@@ -190,7 +189,7 @@ interface ICheckResult {
         }
 
         val channel = ChannelTable.findByChannelId(ctx, channelId)
-            ?: missingChannel(ctx, channelId)
+            ?: missingChannel()
 
         return channel
     }
@@ -458,7 +457,7 @@ class ByRegexRule(
         }
 
         return ChannelTable.findByChannelId(ctx, rule.channel)
-            ?: missingChannel(ctx, rule.channel)
+            ?: missingChannel()
     }
 
     override fun resultReasonStr(ctx: Context): String {

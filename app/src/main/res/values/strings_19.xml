@@ -37,20 +37,26 @@
         <font color="#00BFFF"><b>None</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; No notification at all. <br>
         <br>
-        <font color="#00BFFF"><b>Blocked</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        <font color="#00BFFF"><b>Low</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; Appears in the status bar and notification shade. <br>
         <br>
-        <font color="#00BFFF"><b>Allowed</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Medium</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Appears in the status bar and notification shade with a sound. <br>
+        <br>
+        <font color="#00BFFF"><b>High</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Appears in the status bar, notification shade, and as heads-up pop-up with a sound. <br>
         <br>
-        <font color="#00BFFF"><b>SMS Chat</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Same as <b>Allowed</b> but without the sound, as the sound may be annoying during active chats. <br>
-        &ensp; It\'s considered active chatting when the screen is unlocked and the SMS app is in the foreground. <br>
+        <font color="#00BFFF"><b>High Muted</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; It\'s similar to <b>High</b> but mutes the sound. <br>
+        &ensp; It\'s ideal for active SMS chats where continuous sounds might be disruptive. <br>
+          It\'s considered active chat when the screen is unlocked and the SMS app is open in the foreground. <br>
         ]]>
     </string>
     <string name="none">None</string>
     <string name="low">Low</string>
+    <string name="medium">Medium</string>
     <string name="high">High</string>
+    <string name="high_muted">High Muted</string>
     <string name="sms_chat">SMS Chat</string>
     <string name="blocked">Blocked</string>
     <string name="allowed">Allowed</string>
@@ -66,6 +72,12 @@
         ]]>
     </string>
     <string name="channel_importance">Importance</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        The importance can only be set when creating a new channel,
+         once it\'s created, it can only be modified in system settings. <br>
+        ]]>
+    </string>
     <string name="channel_group">Channel Group</string>
     <string name="help_channel_group">
         <![CDATA[
@@ -82,8 +94,7 @@
     <string name="sound">Sound</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Limitation</b></font><br>
-        Due to the Android restriction, the notification sound can only be set when creating a new channel,
+        The sound can only be set when creating a new channel,
          once it\'s created, it can only be modified in system settings. <br>
         <br>
         <b>Custom Sound</b><br>

@@ -34,24 +34,29 @@
     <string name="allowed">עבר</string>
     <string name="help_notification">
         <![CDATA[
-        ישנם ארבעה ערוצי התראות מובנים: <br>
+        קיימים ארבעה ערוצי התראות מובנים: <br>
+        <br>
         <font color="#00BFFF"><b>ללא</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; אין התראה בכלל. <br>
+        &ensp; ללא כל התראה. <br>
         <br>
-        <font color="#00BFFF"><b>חסום</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; מופיע בשורת המצב, וילון ההתראות. <br>
+        <font color="#00BFFF"><b>נמוך</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; מופיע בשורת המצב ובצל התראות. <br>
         <br>
-        <font color="#00BFFF"><b>מאושר</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; מופיע בשורת המצב, וילון ההתראות, וכחלון קופץ ראשי עם צליל. <br>
+        <font color="#00BFFF"><b>בינוני</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; מופיע בשורת המצב ובצל התראות עם צליל. <br>
         <br>
-        <font color="#00BFFF"><b>צ\'אט SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; זהה ל<b>מאושר</b> אך ללא הצליל, שכן הצליל עשוי להיות מעצבן במהלך צ\'אטים פעילים. <br>
-        &ensp; זה נחשב צ\'אט פעיל כאשר המסך פתוח ואפליקציית ה-SMS נמצאת בחזית. <br>
+        <font color="#00BFFF"><b>גבוה</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; מופיע בשורת המצב, בצל התראות, ובקופץ Heads-up עם צליל. <br>
+        <br>
+        <font color="#00BFFF"><b>גבוה מושתק</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; דומה ל-<b>גבוה</b> אך משתיק את הצליל. <br>
+        &ensp; אידיאלי לצ\'אטים פעילים ב-SMS שבהם צלילים מתמשכים עלולים להפריע. <br>
+          הוא נחשב צ\'אט פעיל כאשר המסך לא נעול ואפליקציית ה-SMS פתוחה בחזית. <br>
         ]]>
     </string>
     <string name="none">ללא</string>
     <string name="low">נמוך</string>
-    <string name="high">גבוה</string>
+    <string name="high">גבוהה</string>
     <string name="sms_chat">צ\'אט SMS</string>
     <string name="call_channel">ערוץ שיחות</string>
     <string name="sms_channel">ערוץ SMS</string>
@@ -81,21 +86,12 @@
     <string name="sound">צליל</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>הגבלה</b></font><br>
-        בשל הגבלת אנדרואיד, צליל ההתראה יכול להיקבע רק בעת יצירת ערוץ חדש, לאחר יצירתו, לא ניתן לשנות אותו. <br>
-        <br>
-        <font color="#03DAC5"><b>פתרונות עוקפים</b></font><br>
-        1. מחק את הערוץ וצור חדש עם מזהה ערוץ שונה. <br>
-        &emsp; זה לא יעבוד אם יש להם את אותו מזהה ערוץ, שכן אנדרואיד פשוט \"ישחזר\" את הערוץ שנמחק במקום ליצור חדש. <br>
-        2. שנה ידנית את צליל הערוץ בהגדרות המערכת: <br>
-        &emsp; - לחיצה ארוכה על אייקון האפליקציה <br>
-        &emsp; - פרטי אפליקציה <br>
-        &emsp; - התראות <br>
-        &emsp; - קטגוריות התראה <br>
-        &emsp; - הקש על הערוץ ושנה את הצליל <br>
+        ניתן להגדיר את הצליל רק בעת יצירת ערוץ חדש,
+         לאחר יצירתו, ניתן לשנות אותו רק בהגדרות המערכת. <br>
         <br>
         <b>צליל מותאם אישית</b><br>
-        חלק מהטלפונים מאפשרים ייבוא ישיר של רינגטונים מותאמים אישית דרך האפליקציה. באחרים, ייבא דרך הגדרות המערכת ולאחר מכן בחר אותו באפליקציה. <br>
+        חלק מהטלפונים מאפשרים ייבוא ישיר של צלצולים מותאמים אישית דרך האפליקציה.
+        באחרים, יש לייבא דרך הגדרות המערכת ולאחר מכן לבחור אותו באפליקציה. <br>
         ]]>
     </string>
     <string name="default_">ברירת מחדל</string>
@@ -148,4 +144,12 @@
     </string>
     <string name="icon">סמל</string>
     <string name="automatic">אוטומטי</string>
+    <string name="medium">בינונית</string>
+    <string name="high_muted">גבוהה (מושתקת)</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        ניתן להגדיר את החשיבות רק בעת יצירת ערוץ חדש,
+         לאחר יצירתו, ניתן לשנות אותה רק בהגדרות המערכת. <br>
+        ]]>
+    </string>
 </resources>

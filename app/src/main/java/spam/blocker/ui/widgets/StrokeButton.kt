@@ -46,11 +46,13 @@ fun Button(
     contentPadding: PaddingValues = PaddingValues(12.dp, 0.dp),
     onClick: () -> Unit,
 ) {
+    val C = LocalPalette.current
+
     Box(
         modifier = modifier
             .border(
                 width = 2.dp,
-                color = borderColor,
+                color = if (enabled) borderColor else C.disabled,
                 shape = shape
             )
 
@@ -107,12 +109,14 @@ fun GreyButton(
     label: String,
     // optional
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     onClick: Lambda,
 ) {
     StrokeButton(
         label = label,
         color = LocalPalette.current.textGrey,
         modifier = modifier,
+        enabled = enabled,
         onClick = onClick,
     )
 }
@@ -124,6 +128,7 @@ fun FooterButton(
     color: Color = LocalPalette.current.textGrey,
     icon: (@Composable () -> Unit)? = null,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
 
     footerIconId: Int,
     footerSize: Int,
@@ -133,6 +138,8 @@ fun FooterButton(
     onLongClick: Lambda? = null,
     onClick: Lambda,
 ) {
+    val C = LocalPalette.current
+
     Box(
         modifier = modifier.wrapContentSize()
     ) {
@@ -142,13 +149,14 @@ fun FooterButton(
             color = color,
             modifier = modifier,
             onClick = onClick,
+            enabled = enabled,
             onLongClick = onLongClick,
         )
 
         Icon(
             imageVector = ImageVector.vectorResource(footerIconId),
             contentDescription = "",
-            tint = footerColor,
+            tint = if (enabled) footerColor else C.disabled,
             modifier = Modifier
                 .size(footerSize.dp)
                 .align(Alignment.BottomEnd)
@@ -187,6 +195,7 @@ fun Spinner(
     items: List<LabelItem>,
     selected: Int,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     displayType: SpinnerType = SpinnerType.Label, // show label/icon/both
     color: Color = LocalPalette.current.textGrey,
     warning: (@Composable () -> Unit)? = {
@@ -221,6 +230,7 @@ fun Spinner(
                 },
             color = color,
             modifier = modifier,
+            enabled = enabled,
             onLongClick = onLongClick,
             footerOffset = footerOffset,
             footerSize = footerSize,

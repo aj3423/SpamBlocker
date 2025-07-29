@@ -35,18 +35,23 @@
     <string name="help_notification">
         <![CDATA[
         Ada empat saluran notifikasi bawaan: <br>
+        <br>
         <font color="#00BFFF"><b>Tidak Ada</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Tidak ada notifikasi sama sekali. <br>
         <br>
-        <font color="#00BFFF"><b>Diblokir</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Muncul di bilah status, naungan notifikasi. <br>
+        <font color="#00BFFF"><b>Rendah</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Muncul di bilah status dan panel notifikasi. <br>
         <br>
-        <font color="#00BFFF"><b>Diizinkan</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Muncul di bilah status, naungan notifikasi, dan sebagai pop-up heads-up dengan suara. <br>
+        <font color="#00BFFF"><b>Sedang</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Muncul di bilah status dan panel notifikasi dengan suara. <br>
         <br>
-        <font color="#00BFFF"><b>Obrolan SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Sama seperti <b>Diizinkan</b> tetapi tanpa suara, karena suara mungkin mengganggu selama obrolan aktif. <br>
-        &ensp; Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS berada di latar depan. <br>
+        <font color="#00BFFF"><b>Tinggi</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Muncul di bilah status, panel notifikasi, dan sebagai pop-up heads-up dengan suara. <br>
+        <br>
+        <font color="#00BFFF"><b>Tinggi Senyap</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Mirip dengan <b>Tinggi</b> tetapi membisukan suara. <br>
+        &ensp; Ideal untuk obrolan SMS aktif di mana suara yang terus-menerus dapat mengganggu. <br>
+          Dianggap obrolan aktif saat layar tidak terkunci dan aplikasi SMS terbuka di latar depan. <br>
         ]]>
     </string>
     <string name="none">Tidak Ada</string>
@@ -81,20 +86,8 @@
     <string name="sound">Suara</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Batasan</b></font><br>
-        Karena batasan Android, suara notifikasi hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, tidak dapat dimodifikasi. <br>
-        <br>
-        <font color="#03DAC5"><b>Solusi</b></font><br>
-        1. Hapus saluran, buat yang baru dengan ID saluran yang berbeda. <br>
-        &emsp; Ini tidak akan berfungsi jika memiliki ID saluran yang sama, karena Android hanya akan \"memulihkan\"
-         saluran yang dihapus tersebut daripada membuat yang baru. <br>
-        2. Ubah suara saluran secara manual di pengaturan sistem: <br>
-        &emsp; - Tekan lama ikon aplikasi <br>
-        &emsp; - Info Aplikasi <br>
-        &emsp; - Notifikasi <br>
-        &emsp; - Kategori notifikasi <br>
-        &emsp; - Ketuk saluran tersebut dan ubah suara <br>
+        Suara hanya dapat diatur saat membuat saluran baru,
+         setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
         <br>
         <b>Suara Kustom</b><br>
         Beberapa ponsel memungkinkan impor langsung nada dering kustom melalui aplikasi.
@@ -151,4 +144,12 @@
     </string>
     <string name="icon">Ikon</string>
     <string name="automatic">Otomatis</string>
+    <string name="medium">Sedang</string>
+    <string name="high_muted">Tinggi Dibisukan</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        Prioritas hanya dapat diatur saat membuat saluran baru,
+         setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
+        ]]>
+    </string>
 </resources>

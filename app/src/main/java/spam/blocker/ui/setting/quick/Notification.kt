@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.quick
 
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.NotificationManager.IMPORTANCE_NONE
@@ -44,6 +45,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.FooterButton
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
@@ -91,6 +93,14 @@ fun ChannelIcons(
         when(importance) {
             IMPORTANCE_NONE -> ResIcon(iconId = R.drawable.ic_bell_mute, modifier = M.size(16.dp), color = color)
             IMPORTANCE_LOW -> ResIcon(iconId = R.drawable.ic_statusbar_shade, modifier = M.size(16.dp), color = color)
+            IMPORTANCE_DEFAULT -> {
+                RowVCenterSpaced(2) {
+                    if (!mute!!) {
+                        ResIcon(R.drawable.ic_bell_ringing, modifier = M.size(16.dp), color = color)
+                    }
+                    ResIcon(R.drawable.ic_statusbar_shade, modifier = M.size(16.dp), color = color)
+                }
+            }
             IMPORTANCE_HIGH -> {
                 RowVCenterSpaced(2) {
                     if (!mute!!) {
@@ -222,6 +232,7 @@ fun EditChannelDialog(
                     if (sysCh != null) {
                         sound = sysCh.sound.toString()
                         ledColor = sysCh.lightColor
+                        importance = sysCh.importance
                     }
                 }
 
@@ -255,13 +266,14 @@ fun EditChannelDialog(
             // Importance
             val ids = remember {
                 listOf(
-                    IMPORTANCE_NONE, IMPORTANCE_LOW, IMPORTANCE_HIGH
+                    IMPORTANCE_NONE, IMPORTANCE_LOW, IMPORTANCE_DEFAULT, IMPORTANCE_HIGH
                 )
             }
             val names = remember {
                 listOf(
                     ctx.getString(R.string.none),
                     ctx.getString(R.string.low),
+                    ctx.getString(R.string.medium),
                     ctx.getString(R.string.high)
                 )
             }
@@ -277,11 +289,22 @@ fun EditChannelDialog(
                     }
                 }
             }
-            LabeledRow(R.string.channel_importance) {
-                Spinner(
-                    items = importanceItems,
-                    selected = ids.indexOf(importance),
-                )
+            LabeledRow(
+                labelId = R.string.channel_importance,
+                helpTooltip = Str(R.string.help_channel_importance)
+            ) {
+                RowVCenterSpaced(6) {
+                    Spinner(
+                        items = importanceItems,
+                        selected = ids.indexOf(importance),
+                        enabled = isCreatingNewChannel,
+                    )
+                    if (!isCreatingNewChannel) {
+                        ResIcon(R.drawable.ic_note, modifier = M.clickable {
+                            openChannelSettings(ctx, chId)
+                        })
+                    }
+                }
             }
 
             // Mute + Sound
@@ -310,16 +333,20 @@ fun EditChannelDialog(
                             labelId = R.string.sound,
                             helpTooltip = Str(R.string.help_sound),
                         ) {
-                            GreyButton(
-                                if (sound.isEmpty())
-                                    ctx.getString(R.string.default_)
-                                else
-                                    soundName,
-                            ) {
-                                if (isCreatingNewChannel) {
+                            RowVCenterSpaced(6) {
+                                GreyButton(
+                                    if (sound.isEmpty())
+                                        ctx.getString(R.string.default_)
+                                    else
+                                        soundName,
+                                    enabled = isCreatingNewChannel,
+                                ) {
                                     soundTrigger.value = true
-                                } else {
-                                    openChannelSettings(ctx, chId)
+                                }
+                                if (!isCreatingNewChannel) {
+                                    ResIcon(R.drawable.ic_note, modifier = M.clickable {
+                                        openChannelSettings(ctx, chId)
+                                    })
                                 }
                             }
                         }

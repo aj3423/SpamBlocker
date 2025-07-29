@@ -3,8 +3,8 @@ package spam.blocker.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import spam.blocker.db.Notification.CHANNEL_ALLOWED
-import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_HIGH
+import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.util.Notification.deleteAllChannels
@@ -370,23 +370,23 @@ class Db private constructor(
                     UPDATE $TABLE_NUMBER_RULE
                     SET $COLUMN_CHANNEL_ID = CASE
                         WHEN $COLUMN_IMPORTANCE = 0 THEN '$CHANNEL_NONE'
-                        WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_BLOCKED'
-                        ELSE '$CHANNEL_ALLOWED'
+                        WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_LOW'
+                        ELSE '$CHANNEL_HIGH'
                     END
                 """.trimIndent())
             db.execSQL("""
                     UPDATE $TABLE_CONTENT_RULE
                     SET $COLUMN_CHANNEL_ID = CASE
                         WHEN $COLUMN_IMPORTANCE = 0 THEN '$CHANNEL_NONE'
-                        WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_BLOCKED'
-                        ELSE '$CHANNEL_ALLOWED'
+                        WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_LOW'
+                        ELSE '$CHANNEL_HIGH'
                     END
                 """.trimIndent())
 
             // 5. Force update all `whitelist` rules, previously their `importance` are ignored,
             //   now they should be set to channel `Allowed`
-            db.execSQL("UPDATE $TABLE_NUMBER_RULE SET $COLUMN_CHANNEL_ID = '$CHANNEL_ALLOWED' WHERE $COLUMN_IS_BLACK IS NOT 1;")
-            db.execSQL("UPDATE $TABLE_CONTENT_RULE SET $COLUMN_CHANNEL_ID = '$CHANNEL_ALLOWED' WHERE $COLUMN_IS_BLACK IS NOT 1;")
+            db.execSQL("UPDATE $TABLE_NUMBER_RULE SET $COLUMN_CHANNEL_ID = '$CHANNEL_HIGH' WHERE $COLUMN_IS_BLACK IS NOT 1;")
+            db.execSQL("UPDATE $TABLE_CONTENT_RULE SET $COLUMN_CHANNEL_ID = '$CHANNEL_HIGH' WHERE $COLUMN_IS_BLACK IS NOT 1;")
 
             // 6. Drop old column `importance`
             // Nope, just ignore it, there's no `DROP COLUMN` in sqlite.

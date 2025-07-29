@@ -34,19 +34,24 @@
     <string name="allowed">通過</string>
     <string name="help_notification">
         <![CDATA[
-        4つの組み込み通知チャネルがあります： <br>
+        4つの組み込み通知チャネルがあります: <br>
+        <br>
         <font color="#00BFFF"><b>なし</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; 全く通知されません。<br>
+        &ensp; 通知は一切ありません。 <br>
         <br>
-        <font color="#00BFFF"><b>ブロック済み</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; ステータスバー、通知シェードに表示されます。<br>
+        <font color="#00BFFF"><b>低</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; ステータスバーと通知シェードに表示されます。 <br>
         <br>
-        <font color="#00BFFF"><b>許可済み</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; ステータスバー、通知シェード、およびサウンド付きのヘッドアップポップアップとして表示されます。<br>
+        <font color="#00BFFF"><b>中</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; ステータスバーと通知シェードに音付きで表示されます。 <br>
         <br>
-        <font color="#00BFFF"><b>SMSチャット</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; <b>許可済み</b>と同じですが、アクティブなチャット中にサウンドが煩わしい場合があるため、サウンドはありません。<br>
-        &ensp; 画面がロック解除され、SMSアプリがフォアグラウンドにある場合、アクティブなチャットと見なされます。<br>
+        <font color="#00BFFF"><b>高</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; ステータスバー、通知シェード、およびヘッドアップポップアップとして音付きで表示されます。 <br>
+        <br>
+        <font color="#00BFFF"><b>高 (ミュート)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; <b>高</b>に似ていますが、音がミュートされます。 <br>
+        &ensp; 連続した音が邪魔になる可能性のあるアクティブなSMSチャットに最適です。 <br>
+          画面がロック解除され、SMSアプリがフォアグラウンドで開いている場合、アクティブなチャットと見なされます。 <br>
         ]]>
     </string>
     <string name="none">なし</string>
@@ -81,24 +86,10 @@
     <string name="sound">サウンド</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>制限事項</b></font><br>
-        Androidの制限により、通知音は新しいチャネルを作成するときにのみ設定でき、
-         一度作成されると変更できません。<br>
-        <br>
-        <font color="#03DAC5"><b>回避策</b></font><br>
-        1. チャネルを削除し、異なるチャネルIDで新しいチャネルを作成します。<br>
-        &emsp; 同じチャネルIDの場合、Androidは削除されたチャネルを「回復」するだけで、
-         新しいチャネルを作成しないため、機能しません。<br>
-        2. システム設定でチャネルサウンドを手動で変更します：<br>
-        &emsp; - アプリアイコンを長押し <br>
-        &emsp; - アプリ情報 <br>
-        &emsp; - 通知 <br>
-        &emsp; - 通知カテゴリ <br>
-        &emsp; - そのチャネルをタップしてサウンドを変更 <br>
+        サウンドは新しいチャネルを作成するときにのみ設定でき、一度作成されると、システム設定でのみ変更できます。 <br>
         <br>
         <b>カスタムサウンド</b><br>
-        一部の電話では、アプリを介してカスタム着信音を直接インポートできます。
-        それ以外の電話では、システム設定を介してインポートし、アプリで選択します。<br>
+        一部の電話では、アプリを介してカスタム着信音を直接インポートできます。その他の場合は、システム設定を介してインポートし、アプリで選択してください。 <br>
         ]]>
     </string>
     <string name="default_">デフォルト</string>
@@ -150,4 +141,11 @@
     </string>
     <string name="icon">アイコン</string>
     <string name="automatic">自動</string>
+    <string name="medium">中</string>
+    <string name="high_muted">高 (ミュート)</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        重要度は新しいチャネルを作成するときにのみ設定でき、一度作成されると、システム設定でのみ変更できます。 <br>
+        ]]>
+    </string>
 </resources>

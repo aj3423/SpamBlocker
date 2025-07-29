@@ -35,18 +35,23 @@
     <string name="help_notification">
         <![CDATA[
         Hai catro canles de notificación incorporados: <br>
+        <br>
         <font color="#00BFFF"><b>Ningún</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Ningunha notificación en absoluto. <br>
+        &ensp; Sen notificación algunha. <br>
         <br>
-        <font color="#00BFFF"><b>Bloqueado</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Aparece na barra de estado, sombra de notificacións. <br>
+        <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Aparece na barra de estado e na sombra de notificacións. <br>
         <br>
-        <font color="#00BFFF"><b>Permitido</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece na barra de estado, sombra de notificacións e como notificación emerxente con son. <br>
+        <font color="#00BFFF"><b>Media</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Aparece na barra de estado e na sombra de notificacións cun son. <br>
         <br>
-        <font color="#00BFFF"><b>SMS Chat</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Igual que <b>Permitido</b> pero sen son, xa que o son pode ser molesto durante os chats activos. <br>
-        &ensp; Considérase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está en primeiro plano. <br>
+        <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente de aviso cun son. <br>
+        <br>
+        <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; É similar a <b>Alta</b> pero silencia o son. <br>
+        &ensp; É ideal para chats SMS activos onde os sons continuos poderían ser perturbadores. <br>
+          Considerase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está aberta en primeiro plano. <br>
         ]]>
     </string>
     <string name="none">Ningún</string>
@@ -81,24 +86,12 @@
     <string name="sound">Son</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Limitación</b></font><br>
-        Debido á restrición de Android, o son da notificación só se pode configurar ao crear unha nova canle,
-         unha vez creada, non se pode modificar. <br>
-        <br>
-        <font color="#03DAC5"><b>Solucións alternativas</b></font><br>
-        1. Eliminar a canle e crear unha nova cun ID de canle diferente. <br>
-        &emsp; Non funcionará se teñen o mesmo ID de canle, xa que Android simplemente \"recuperará\"
-         esa canle eliminada en lugar de crear unha nova. <br>
-        2. Modificar manualmente o son da canle na configuración do sistema: <br>
-        &emsp; - Mantén premido a icona da aplicación <br>
-        &emsp; - Información da Aplicación <br>
-        &emsp; - Notificacións <br>
-        &emsp; - Categorías de notificación <br>
-        &emsp; - Toca esa canle e modifica o son <br>
+        O son só se pode establecer ao crear unha nova canle;
+         unha vez creada, só se pode modificar na configuración do sistema. <br>
         <br>
         <b>Son Personalizado</b><br>
         Algúns teléfonos permiten a importación directa de tons de chamada personalizados a través da aplicación.
-        Para outros, importa a través da configuración do sistema e despois selecciómao na aplicación. <br>
+        Para outros, importe a través da configuración do sistema e despois selecciónelo na aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>
@@ -151,4 +144,12 @@
     </string>
     <string name="icon">Icona</string>
     <string name="automatic">Automático</string>
+    <string name="medium">Media</string>
+    <string name="high_muted">Alta silenciada</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        A importancia só se pode establecer ao crear unha nova canle;
+         unha vez creada, só se pode modificar na configuración do sistema. <br>
+        ]]>
+    </string>
 </resources>

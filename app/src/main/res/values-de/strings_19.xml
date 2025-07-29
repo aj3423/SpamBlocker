@@ -35,18 +35,23 @@
     <string name="help_notification">
         <![CDATA[
         Es gibt vier integrierte Benachrichtigungskanäle: <br>
+        <br>
         <font color="#00BFFF"><b>Keine</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Überhaupt keine Benachrichtigung. <br>
         <br>
-        <font color="#00BFFF"><b>Blockiert</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Erscheint in der Statusleiste, Benachrichtigungsleiste. <br>
+        <font color="#00BFFF"><b>Niedrig</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsfeld. <br>
         <br>
-        <font color="#00BFFF"><b>Erlaubt</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Erscheint in der Statusleiste, Benachrichtigungsleiste und als Heads-up-Pop-up mit Ton. <br>
+        <font color="#00BFFF"><b>Mittel</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsfeld mit Ton. <br>
         <br>
-        <font color="#00BFFF"><b>SMS-Chat</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Gleich wie <b>Erlaubt</b>, aber ohne Ton, da der Ton während aktiver Chats störend sein kann. <br>
-        &ensp; Es wird als aktiver Chat betrachtet, wenn der Bildschirm entsperrt ist und die SMS-App im Vordergrund ist. <br>
+        <font color="#00BFFF"><b>Hoch</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Erscheint in der Statusleiste, im Benachrichtigungsfeld und als Heads-up-Pop-up mit Ton. <br>
+        <br>
+        <font color="#00BFFF"><b>Hoch (stumm)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Es ist ähnlich wie <b>Hoch</b>, aber stummgeschaltet. <br>
+        &ensp; Ideal für aktive SMS-Chats, wo kontinuierliche Töne störend sein könnten. <br>
+          Als aktiver Chat gilt es, wenn der Bildschirm entsperrt und die SMS-App im Vordergrund geöffnet ist. <br>
         ]]>
     </string>
     <string name="none">Keine</string>
@@ -81,24 +86,12 @@
     <string name="sound">Ton</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Einschränkung</b></font><br>
-        Aufgrund der Android-Einschränkung kann der Benachrichtigungston nur beim Erstellen eines neuen Kanals festgelegt werden;
-         ist er einmal erstellt, kann er nicht mehr geändert werden. <br>
-        <br>
-        <font color="#03DAC5"><b>Problemumgehungen</b></font><br>
-        1. Löschen Sie den Kanal und erstellen Sie einen neuen mit einer anderen Kanal-ID. <br>
-        &emsp; Es funktioniert nicht, wenn sie dieselbe Kanal-ID haben, da Android den gelöschten Kanal einfach „wiederherstellt“,
-         anstatt einen neuen zu erstellen. <br>
-        2. Ändern Sie den Kanalton manuell in den Systemeinstellungen: <br>
-        &emsp; - Langes Tippen auf das App-Symbol <br>
-        &emsp; - App-Info <br>
-        &emsp; - Benachrichtigungen <br>
-        &emsp; - Benachrichtigungskategorien <br>
-        &emsp; - Tippen Sie auf diesen Kanal und ändern Sie den Ton <br>
+        Der Ton kann nur beim Erstellen eines neuen Kanals festgelegt werden;
+         einmal erstellt, kann er nur in den Systemeinstellungen geändert werden. <br>
         <br>
         <b>Benutzerdefinierter Ton</b><br>
-        Einige Telefone ermöglichen den direkten Import benutzerdefinierter Klingeltöne über die App.
-        Bei anderen erfolgt der Import über die Systemeinstellungen und anschließend die Auswahl in der App. <br>
+        Einige Telefone erlauben den direkten Import benutzerdefinierter Klingeltöne über die App.
+        Bei anderen erfolgt der Import über die Systemeinstellungen und die Auswahl dann in der App. <br>
         ]]>
     </string>
     <string name="default_">Standard</string>
@@ -150,4 +143,12 @@
     </string>
     <string name="icon">Symbol</string>
     <string name="automatic">Auto</string>
+    <string name="medium">Mittel</string>
+    <string name="high_muted">Hoch (stummgeschaltet)</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        Die Wichtigkeit kann nur beim Erstellen eines neuen Kanals festgelegt werden;
+         einmal erstellt, kann sie nur in den Systemeinstellungen geändert werden. <br>
+        ]]>
+    </string>
 </resources>

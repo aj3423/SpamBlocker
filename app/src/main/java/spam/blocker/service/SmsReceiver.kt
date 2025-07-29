@@ -141,7 +141,7 @@ open class SmsReceiver : BroadcastReceiver() {
                     val activeChannelId = spf.Notification(ctx).getActiveSmsChatChannelId()
 
                     ChannelTable.findByChannelId(ctx, activeChannelId)
-                        ?: missingChannel(ctx, activeChannelId)
+                        ?: missingChannel()
                 } else {
                     r.getNotificationChannel(ctx, ShowType.VALID_SMS)
                 },

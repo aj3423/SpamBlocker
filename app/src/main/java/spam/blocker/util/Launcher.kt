@@ -6,11 +6,12 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Telephony
 import spam.blocker.ui.main.MainActivity
+import androidx.core.net.toUri
 
 object Launcher {
 
     fun launchCallApp(ctx: Context) {
-        ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("content://call_log/calls")))
+        ctx.startActivity(Intent(Intent.ACTION_VIEW, "content://call_log/calls".toUri()))
     }
 
     fun launchSMSApp(ctx: Context) {
@@ -26,7 +27,7 @@ object Launcher {
 
     fun openCallConversation(ctx: Context, phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:$phoneNumber")
+            data = "tel:$phoneNumber".toUri()
         }
         if (intent.resolveActivity(ctx.packageManager) != null) {
             ctx.startActivity(intent)
@@ -35,7 +36,7 @@ object Launcher {
 
     fun openSMSConversation(ctx: Context, smsto: String?) {
 
-        val smsUri = Uri.parse("smsto:$smsto")
+        val smsUri = "smsto:$smsto".toUri()
         // val smsIntent = Intent(Intent.ACTION_VIEW, smsUri) // this popups dialog for choosing an app
         val smsIntent = Intent(Intent.ACTION_SENDTO, smsUri) // this doesn't popup that dialog
         smsIntent.addCategory(Intent.CATEGORY_DEFAULT)
@@ -49,9 +50,9 @@ object Launcher {
         ctx.startActivity(intent)
 
         // without killing itself, notifications will stop working after a backup restore
-        if (ctx is Activity) {
-            ctx.finish()
-        }
-        Runtime.getRuntime().exit(0)
+//        if (ctx is Activity) {
+//            ctx.finish()
+//        }
+//        Runtime.getRuntime().exit(0)
     }
 }

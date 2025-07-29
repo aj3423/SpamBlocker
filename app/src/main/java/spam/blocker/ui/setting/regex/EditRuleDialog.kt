@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.Notification.CHANNEL_ALLOWED
-import spam.blocker.db.Notification.CHANNEL_BLOCKED
+import spam.blocker.db.Notification.CHANNEL_HIGH
+import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
@@ -580,11 +580,11 @@ fun RuleEditDialog(
                     // Auto change the current channelId to "Allow" or "Block" when user select `whitelist/blacklist`
                     // Don't change if it's a custom channel.
                     LaunchedEffectOnlyOnChange(whiteOrBlack) {
-                        if (whiteOrBlack == 0 && channelId == CHANNEL_BLOCKED) {
-                            channelId = CHANNEL_ALLOWED
+                        if (whiteOrBlack == 0 && channelId == CHANNEL_LOW) {
+                            channelId = CHANNEL_HIGH
                         }
-                        if (whiteOrBlack == 1 && channelId == CHANNEL_ALLOWED) {
-                            channelId = CHANNEL_BLOCKED
+                        if (whiteOrBlack == 1 && channelId == CHANNEL_HIGH) {
+                            channelId = CHANNEL_LOW
                         }
                     }
 

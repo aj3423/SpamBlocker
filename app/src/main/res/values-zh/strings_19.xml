@@ -35,18 +35,23 @@
     <string name="help_notification">
         <![CDATA[
         有四个内置通知渠道： <br>
+        <br>
         <font color="#00BFFF"><b>无</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; 完全没有通知。 <br>
         <br>
-        <font color="#00BFFF"><b>已阻止</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; 显示在状态栏、通知抽屉中。 <br>
+        <font color="#00BFFF"><b>低</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; 出现在状态栏和通知抽屉中。 <br>
         <br>
-        <font color="#00BFFF"><b>已允许</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; 显示在状态栏、通知抽屉中，并作为带有声音的浮动通知弹出。 <br>
+        <font color="#00BFFF"><b>中</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; 带声音地出现在状态栏和通知抽屉中。 <br>
         <br>
-        <font color="#00BFFF"><b>短信聊天</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; 与<b>已允许</b>相同，但没有声音，因为在活跃聊天时声音可能会很烦人。 <br>
-        &ensp; 当屏幕解锁且短信应用在前台时，被视为活跃聊天。 <br>
+        <font color="#00BFFF"><b>高</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; 带声音地出现在状态栏、通知抽屉和浮动通知中。 <br>
+        <br>
+        <font color="#00BFFF"><b>高（静音）</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; 它与<b>高</b>类似，但会静音。 <br>
+        &ensp; 非常适合活跃的短信聊天，因为持续的声音可能会造成干扰。 <br>
+          当屏幕解锁且短信应用在前台打开时，被认为是活跃聊天。 <br>
         ]]>
     </string>
     <string name="none">无</string>
@@ -81,21 +86,12 @@
     <string name="sound">声音</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>限制</b></font><br>
-        由于安卓系统的限制，通知声音只能在新渠道创建时设置，一旦创建，就无法修改。 <br>
-        <br>
-        <font color="#03DAC5"><b>变通方法</b></font><br>
-        1. 删除渠道，然后创建一个新的、具有不同渠道ID的渠道。 <br>
-        &emsp; 如果它们有相同的渠道ID，这将不起作用，因为安卓只会“恢复”已删除的渠道，而不是创建一个新的。 <br>
-        2. 在系统设置中手动修改渠道声音： <br>
-        &emsp; - 长按应用图标 <br>
-        &emsp; - 应用信息 <br>
-        &emsp; - 通知 <br>
-        &emsp; - 通知类别 <br>
-        &emsp; - 点击该渠道并修改声音 <br>
+        声音只能在新通道创建时设置，
+         一旦创建，只能在系统设置中修改。 <br>
         <br>
         <b>自定义声音</b><br>
-        一些手机允许通过应用直接导入自定义铃声。对于其他手机，请通过系统设置导入，然后在应用中选择。 <br>
+        某些手机允许通过应用直接导入自定义铃声。
+        对于其他手机，请通过系统设置导入，然后在应用中选择。 <br>
         ]]>
     </string>
     <string name="default_">默认</string>
@@ -147,4 +143,12 @@
     </string>
     <string name="icon">图标</string>
     <string name="automatic">自动</string>
+    <string name="medium">中</string>
+    <string name="high_muted">高（静音）</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        重要性只能在新通道创建时设置，
+         一旦创建，只能在系统设置中修改。 <br>
+        ]]>
+    </string>
 </resources>

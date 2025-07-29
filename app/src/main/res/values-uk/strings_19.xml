@@ -34,24 +34,29 @@
     <string name="allowed">Пройшло</string>
     <string name="help_notification">
         <![CDATA[
-        Існує чотири вбудовані канали сповіщень: <br>
-        <font color="#00BFFF"><b>Жодне</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Жодних сповіщень взагалі. <br>
+        Є чотири вбудовані канали сповіщень: <br>
         <br>
-        <font color="#00BFFF"><b>Заблоковано</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; З\'являється в рядку стану, шторці сповіщень. <br>
+        <font color="#00BFFF"><b>Немає</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Жодного сповіщення. <br>
         <br>
-        <font color="#00BFFF"><b>Дозволено</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Низький</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; З\'являється в рядку стану та шторці сповіщень. <br>
+        <br>
+        <font color="#00BFFF"><b>Середній</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; З\'являється в рядку стану та шторці сповіщень зі звуком. <br>
+        <br>
+        <font color="#00BFFF"><b>Високий</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; З\'являється в рядку стану, шторці сповіщень та як спливаюче сповіщення зі звуком. <br>
         <br>
-        <font color="#00BFFF"><b>SMS-чат</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Те саме, що й <b>Дозволено</b>, але без звуку, оскільки звук може бути дратівливим під час активних чатів. <br>
-        &ensp; Активним чатом вважається ситуація, коли екран розблоковано, а додаток SMS знаходиться на передньому плані. <br>
+        <font color="#00BFFF"><b>Високий без звуку</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Схоже на <b>Високий</b>, але вимикає звук. <br>
+        &ensp; Ідеально підходить для активних чатів SMS, де постійні звуки можуть заважати. <br>
+          Вважається активним чатом, коли екран розблоковано, а додаток SMS відкрито на передньому плані. <br>
         ]]>
     </string>
     <string name="none">Жодне</string>
     <string name="low">Низька</string>
-    <string name="high">Висока</string>
+    <string name="high">Високий</string>
     <string name="sms_chat">SMS-чат</string>
     <string name="call_channel">Канал викликів</string>
     <string name="sms_channel">Канал SMS</string>
@@ -81,24 +86,12 @@
     <string name="sound">Звук</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Обмеження</b></font><br>
-        Через обмеження Android звук сповіщення можна встановити лише під час створення нового каналу;
-         після його створення його не можна змінити. <br>
+        Звук можна встановити лише під час створення нового каналу;
+         після його створення його можна змінити лише в системних налаштуваннях. <br>
         <br>
-        <font color="#03DAC5"><b>Обхідні шляхи</b></font><br>
-        1. Видаліть канал, створіть новий з іншим ідентифікатором каналу. <br>
-        &emsp; Це не спрацює, якщо вони мають однаковий ідентифікатор каналу, оскільки Android просто \"відновить\"
-         той видалений канал замість створення нового. <br>
-        2. Вручну змініть звук каналу в системних налаштуваннях: <br>
-        &emsp; - Довго натисніть на іконку програми <br>
-        &emsp; - Інформація про програму <br>
-        &emsp; - Сповіщення <br>
-        &emsp; - Категорії сповіщень <br>
-        &emsp; - Натисніть на цей канал і змініть звук <br>
-        <br>
-        <b>Власний звук</b><br>
-        Деякі телефони дозволяють прямий імпорт власних мелодій через програму.
-        Для інших - імпортуйте через системні налаштування, а потім виберіть його в програмі. <br>
+        <b>Спеціальний звук</b><br>
+        Деякі телефони дозволяють прямий імпорт власних мелодій через додаток.
+        Для інших – імпортуйте через системні налаштування, а потім виберіть його в додатку. <br>
         ]]>
     </string>
     <string name="default_">За замовчуванням</string>
@@ -151,4 +144,12 @@
     </string>
     <string name="icon">Іконка</string>
     <string name="automatic">Авто</string>
+    <string name="medium">Середній</string>
+    <string name="high_muted">Високий (без звуку)</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        Важливість можна встановити лише під час створення нового каналу;
+         після його створення її можна змінити лише в системних налаштуваннях. <br>
+        ]]>
+    </string>
 </resources>

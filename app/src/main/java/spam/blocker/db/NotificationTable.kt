@@ -31,9 +31,10 @@ object Notification {
 
     // Built-in channel Ids, in system settings.
     const val CHANNEL_NONE = "None"
-    const val CHANNEL_ALLOWED = "Allowed"
-    const val CHANNEL_BLOCKED = "Blocked"
-    const val CHANNEL_ACTIVE_SMS_CHAT = "Active SMS Chat"
+    const val CHANNEL_LOW = "Low"
+    const val CHANNEL_MEDIUM = "Medium"
+    const val CHANNEL_HIGH = "High"
+    const val CHANNEL_HIGH_MUTED = "High Muted"
 
     @Serializable
     data class Channel(
@@ -58,9 +59,10 @@ object Notification {
         fun displayName(ctx: Context) : String {
             return when(channelId) {
                 CHANNEL_NONE -> ctx.getString(R.string.none)
-                CHANNEL_BLOCKED -> ctx.getString(R.string.blocked)
-                CHANNEL_ALLOWED -> ctx.getString(R.string.allowed)
-                CHANNEL_ACTIVE_SMS_CHAT -> ctx.getString(R.string.sms_chat)
+                CHANNEL_LOW -> ctx.getString(R.string.low)
+                CHANNEL_MEDIUM -> ctx.getString(R.string.medium)
+                CHANNEL_HIGH -> ctx.getString(R.string.high)
+                CHANNEL_HIGH_MUTED -> ctx.getString(R.string.high_muted)
                 else -> channelId
             }
         }

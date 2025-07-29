@@ -34,19 +34,24 @@
     <string name="allowed">Aprovat</string>
     <string name="help_notification">
         <![CDATA[
-        Hi ha quatre canals de notificació integrats: <br>
+        Hi ha quatre canals de notificació incorporats: <br>
+        <br>
         <font color="#00BFFF"><b>Cap</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Cap notificació en absolut. <br>
+        &ensp; Cap notificació. <br>
         <br>
-        <font color="#00BFFF"><b>Blocat</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Apareix a la barra d\'estat, ombra de notificacions. <br>
+        <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Apareix a la barra de notificacions i al panell de notificacions. <br>
         <br>
-        <font color="#00BFFF"><b>Permès</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Apareix a la barra d\'estat, ombra de notificacions i com a finestra emergent amb so. <br>
+        <font color="#00BFFF"><b>Mitjana</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Apareix a la barra de notificacions i al panell de notificacions amb so. <br>
         <br>
-        <font color="#00BFFF"><b>Xat SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Igual que <b>Permès</b> però sense so, ja que el so pot ser molest durant els xats actius. <br>
-        &ensp; Es considera xat actiu quan la pantalla està desbloquejada i l\'aplicació de SMS està en primer pla. <br>
+        <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Apareix a la barra de notificacions, al panell de notificacions i com a finestra emergent amb so. <br>
+        <br>
+        <font color="#00BFFF"><b>Alta (silenciada)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; És similar a <b>Alta</b>, però silencia el so. <br>
+        &ensp; És ideal per a xats SMS actius on els sons continus podrien ser molestos. <br>
+          Es considera xat actiu quan la pantalla està desbloquejada i l\'aplicació de SMS està oberta en primer pla. <br>
         ]]>
     </string>
     <string name="none">Cap</string>
@@ -81,24 +86,12 @@
     <string name="sound">So</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Limitació</b></font><br>
-        A causa de la restricció d\'Android, el so de la notificació només es pot configurar en crear un nou canal,
-         un cop creat, no es pot modificar. <br>
-        <br>
-        <font color="#03DAC5"><b>Solucions</b></font><br>
-        1. Elimina el canal i crea un de nou amb un ID de canal diferent. <br>
-        &emsp; No funcionarà si tenen el mateix ID de canal, ja que Android simplement \"recuperarà\"
-         aquest canal eliminat en lloc de crear-ne un de nou. <br>
-        2. Modifica manualment el so del canal a la configuració del sistema: <br>
-        &emsp; - Mantén premuda la icona de l\'aplicació <br>
-        &emsp; - Informació de l\'aplicació <br>
-        &emsp; - Notificacions <br>
-        &emsp; - Categories de notificacions <br>
-        &emsp; - Toca aquest canal i modifica el so <br>
+        El so només es pot establir en crear un nou canal;
+         un cop creat, només es pot modificar a la configuració del sistema. <br>
         <br>
         <b>So personalitzat</b><br>
-        Alguns telèfons permeten la importació directa de tons de trucada personalitzats a través de l\'aplicació.
-        Per a d\'altres, importa\'l a través de la configuració del sistema i després selecciona\'l a l\'aplicació. <br>
+        Alguns telèfons permeten la importació directa de tons de trucada personalitzats mitjançant l\'aplicació.
+        Per a altres, importeu-los a través de la configuració del sistema i, a continuació, seleccioneu-los a l\'aplicació. <br>
         ]]>
     </string>
     <string name="default_">Per defecte</string>
@@ -151,4 +144,12 @@
     </string>
     <string name="icon">Icona</string>
     <string name="automatic">Automàtic</string>
+    <string name="medium">Mitjana</string>
+    <string name="high_muted">Alta silenciada</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        La importància només es pot establir en crear un nou canal;
+         un cop creat, només es pot modificar a la configuració del sistema. <br>
+        ]]>
+    </string>
 </resources>

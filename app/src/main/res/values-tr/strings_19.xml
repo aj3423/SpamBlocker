@@ -35,18 +35,23 @@
     <string name="help_notification">
         <![CDATA[
         Dört adet yerleşik bildirim kanalı bulunmaktadır: <br>
-        <font color="#00BFFF"><b>Yok</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        <br>
+        <font color="#00BFFF"><b>Hiçbiri</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Hiç bildirim yok. <br>
         <br>
-        <font color="#00BFFF"><b>Engellendi</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Durum çubuğunda, bildirim gölgesinde görünür. <br>
+        <font color="#00BFFF"><b>Düşük</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Durum çubuğunda ve bildirim gölgesinde görünür. <br>
         <br>
-        <font color="#00BFFF"><b>İzin Verildi</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Durum çubuğunda, bildirim gölgesinde ve sesli bir heads-up pop-up olarak görünür. <br>
+        <font color="#00BFFF"><b>Orta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Durum çubuğunda ve bildirim gölgesinde sesli olarak görünür. <br>
         <br>
-        <font color="#00BFFF"><b>SMS Sohbeti</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; <b>İzin Verildi</b> ile aynıdır ancak ses olmadan, çünkü ses aktif sohbetler sırasında rahatsız edici olabilir. <br>
-        &ensp; Ekran kilidi açık olduğunda ve SMS uygulaması ön planda olduğunda aktif sohbet olarak kabul edilir. <br>
+        <font color="#00BFFF"><b>Yüksek</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Durum çubuğunda, bildirim gölgesinde ve baş üstü açılır pencere olarak sesli görünür. <br>
+        <br>
+        <font color="#00BFFF"><b>Yüksek (Sessiz)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; <b>Yüksek</b> ile benzerdir ancak sesi kapatır. <br>
+        &ensp; Sürekli seslerin rahatsız edici olabileceği aktif SMS sohbetleri için idealdir. <br>
+          Ekranın kilidi açık ve SMS uygulaması ön planda açık olduğunda aktif sohbet olarak kabul edilir. <br>
         ]]>
     </string>
     <string name="none">Yok</string>
@@ -81,22 +86,11 @@
     <string name="sound">Ses</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Sınırlama</b></font><br>
-        Android kısıtlaması nedeniyle, bildirim sesi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
-         oluşturulduktan sonra değiştirilemez. <br>
-        <br>
-        <font color="#03DAC5"><b>Geçici Çözümler</b></font><br>
-        1. Kanalı silin ve farklı bir kanal kimliğiyle yeni bir tane oluşturun. <br>
-        &emsp; Aynı kanal kimliğine sahipseler çalışmayacaktır, çünkü Android yeni bir tane oluşturmak yerine silinen kanalı basitçe \"geri yükleyecektir\". <br>
-        2. Kanal sesini sistem ayarlarından manuel olarak değiştirin: <br>
-        &emsp; - Uygulama simgesine uzun basın <br>
-        &emsp; - Uygulama Bilgisi <br>
-        &emsp; - Bildirimler <br>
-        &emsp; - Bildirim kategorileri <br>
-        &emsp; - O kanala dokunun ve sesi değiştirin <br>
+        Ses yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
+         oluşturulduktan sonra yalnızca sistem ayarlarında değiştirilebilir. <br>
         <br>
         <b>Özel Ses</b><br>
-        Bazı telefonlar, uygulama aracılığıyla özel zil seslerinin doğrudan içe aktarılmasına izin verir.
+        Bazı telefonlar özel zil seslerinin uygulama aracılığıyla doğrudan içe aktarılmasına izin verir.
         Diğerleri için, sistem ayarları aracılığıyla içe aktarın ve ardından uygulamada seçin. <br>
         ]]>
     </string>
@@ -150,4 +144,12 @@
     </string>
     <string name="icon">Simge</string>
     <string name="automatic">Otomatik</string>
+    <string name="medium">Orta</string>
+    <string name="high_muted">Yüksek (Sessiz)</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        Önem düzeyi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
+         oluşturulduktan sonra yalnızca sistem ayarlarında değiştirilebilir. <br>
+        ]]>
+    </string>
 </resources>

@@ -34,19 +34,24 @@
     <string name="allowed">Pasado</string>
     <string name="help_notification">
         <![CDATA[
-        Hay cuatro canales de notificación incorporados: <br>
+        Hay cuatro canales de notificación integrados: <br>
+        <br>
         <font color="#00BFFF"><b>Ninguno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Ninguna notificación.<br>
+        &ensp; Ninguna notificación en absoluto. <br>
         <br>
-        <font color="#00BFFF"><b>Bloqueado</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Aparece en la barra de estado, panel de notificaciones. <br>
+        <font color="#00BFFF"><b>Baja</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Aparece en la barra de estado y en la cortina de notificaciones. <br>
         <br>
-        <font color="#00BFFF"><b>Permitido</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece en la barra de estado, panel de notificaciones y como ventana emergente (heads-up) con sonido. <br>
+        <font color="#00BFFF"><b>Media</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Aparece en la barra de estado y en la cortina de notificaciones con sonido. <br>
         <br>
-        <font color="#00BFFF"><b>Chat de SMS</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Igual que <b>Permitido</b> pero sin sonido, ya que el sonido puede ser molesto durante chats activos. <br>
-        &ensp; Se considera chat activo cuando la pantalla está desbloqueada y la aplicación de SMS está en primer plano. <br>
+        <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Aparece en la barra de estado, la cortina de notificaciones y como ventana emergente (heads-up) con sonido. <br>
+        <br>
+        <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Es similar a <b>Alta</b> pero silencia el sonido. <br>
+        &ensp; Es ideal para chats SMS activos donde los sonidos continuos podrían ser disruptivos. <br>
+          Se considera chat activo cuando la pantalla está desbloqueada y la aplicación de SMS está abierta en primer plano. <br>
         ]]>
     </string>
     <string name="none">Ninguno</string>
@@ -81,21 +86,12 @@
     <string name="sound">Sonido</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>Limitación</b></font><br>
-        Debido a la restricción de Android, el sonido de la notificación solo se puede establecer al crear un nuevo canal; una vez creado, no se puede modificar. <br>
-        <br>
-        <font color="#03DAC5"><b>Soluciones</b></font><br>
-        1. Eliminar el canal y crear uno nuevo con una ID de canal diferente. <br>
-        &emsp; No funcionará si tienen la misma ID de canal, ya que Android simplemente \"recuperará\" ese canal eliminado en lugar de crear uno nuevo. <br>
-        2. Modificar manualmente el sonido del canal en la configuración del sistema: <br>
-        &emsp; - Mantener pulsado el icono de la aplicación <br>
-        &emsp; - Información de la aplicación <br>
-        &emsp; - Notificaciones <br>
-        &emsp; - Categorías de notificación <br>
-        &emsp; - Tocar ese canal y modificar el sonido <br>
+        El sonido solo se puede establecer al crear un nuevo canal;
+         una vez creado, solo se puede modificar en la configuración del sistema. <br>
         <br>
         <b>Sonido Personalizado</b><br>
-        Algunos teléfonos permiten la importación directa de tonos de llamada personalizados a través de la aplicación. Para otros, importar a través de la configuración del sistema y luego seleccionarlo en la aplicación. <br>
+        Algunos teléfonos permiten la importación directa de tonos de llamada personalizados a través de la aplicación.
+        Para otros, impórtelos a través de la configuración del sistema y luego selecciónelos en la aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>
@@ -148,4 +144,12 @@
     </string>
     <string name="icon">Icono</string>
     <string name="automatic">Automático</string>
+    <string name="medium">Media</string>
+    <string name="high_muted">Alta Silenciada</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        La importancia solo se puede establecer al crear un nuevo canal;
+         una vez creado, solo se puede modificar en la configuración del sistema. <br>
+        ]]>
+    </string>
 </resources>

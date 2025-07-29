@@ -35,18 +35,23 @@
     <string name="help_notification">
         <![CDATA[
         توجد أربع قنوات إشعارات مدمجة: <br>
+        <br>
         <font color="#00BFFF"><b>لا شيء</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; لا يوجد إشعار على الإطلاق. <br>
         <br>
-        <font color="#00BFFF"><b>محظور</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; يظهر في شريط الحالة، ودرج الإشعارات. <br>
+        <font color="#00BFFF"><b>منخفض</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; يظهر في شريط الحالة ودرج الإشعارات. <br>
         <br>
-        <font color="#00BFFF"><b>مسموح به</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>متوسط</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; يظهر في شريط الحالة ودرج الإشعارات مع صوت. <br>
+        <br>
+        <font color="#00BFFF"><b>عالي</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكنوافذ منبثقة مع صوت. <br>
         <br>
-        <font color="#00BFFF"><b>دردشة الرسائل النصية القصيرة</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; نفس <b>المسموح به</b> ولكن بدون صوت، حيث قد يكون الصوت مزعجًا أثناء الدردشات النشطة. <br>
-        &ensp; تعتبر دردشة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل النصية القصيرة في المقدمة. <br>
+        <font color="#00BFFF"><b>عالي مكتوم</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; يشبه <b>عالي</b> ولكنه يكتم الصوت. <br>
+        &ensp; مثالي للمحادثات النشطة عبر الرسائل النصية القصيرة حيث قد تكون الأصوات المستمرة مزعجة. <br>
+          تعتبر المحادثة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل النصية مفتوحًا في المقدمة. <br>
         ]]>
     </string>
     <string name="none">لا شيء</string>
@@ -81,24 +86,12 @@
     <string name="sound">الصوت</string>
     <string name="help_sound">
         <![CDATA[
-        <font color="#ffa500"><b>قيود</b></font><br>
-        بسبب قيود نظام أندرويد، لا يمكن تعيين صوت الإشعار إلا عند إنشاء قناة جديدة،
-         بمجرد إنشائها، لا يمكن تعديله. <br>
-        <br>
-        <font color="#03DAC5"><b>حلول بديلة</b></font><br>
-        1. احذف القناة وأنشئ واحدة جديدة بمعرّف قناة مختلف. <br>
-        &emsp; لن يعمل إذا كان لديهما نفس معرّف القناة، حيث سيقوم أندرويد ببساطة \"باستعادة\"
-         تلك القناة المحذوفة بدلاً من إنشاء قناة جديدة. <br>
-        2. تعديل صوت القناة يدويًا في إعدادات النظام: <br>
-        &emsp; - الضغط مطولاً على أيقونة التطبيق <br>
-        &emsp; - معلومات التطبيق <br>
-        &emsp; - الإشعارات <br>
-        &emsp; - فئات الإشعارات <br>
-        &emsp; - انقر على تلك القناة وقم بتعديل الصوت <br>
+        لا يمكن تعيين الصوت إلا عند إنشاء قناة جديدة،
+         وبمجرد إنشائها، لا يمكن تعديله إلا في إعدادات النظام. <br>
         <br>
         <b>صوت مخصص</b><br>
-        تسمح بعض الهواتف بالاستيراد المباشر لنغمات رنين مخصصة عبر التطبيق.
-        بالنسبة للآخرين، قم بالاستيراد من خلال إعدادات النظام ثم حددها في التطبيق. <br>
+        تسمح بعض الهواتف بالاستيراد المباشر لنغمات الرنين المخصصة عبر التطبيق.
+        بالنسبة للبعض الآخر، قم بالاستيراد عبر إعدادات النظام ثم حددها في التطبيق. <br>
         ]]>
     </string>
     <string name="default_">افتراضي</string>
@@ -151,4 +144,12 @@
     </string>
     <string name="icon">أيقونة</string>
     <string name="automatic">تلقائي</string>
+    <string name="medium">متوسط</string>
+    <string name="high_muted">مرتفع (صامت)</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        لا يمكن تعيين الأهمية إلا عند إنشاء قناة جديدة،
+         وبمجرد إنشائها، لا يمكن تعديلها إلا في إعدادات النظام. <br>
+        ]]>
+    </string>
 </resources>
