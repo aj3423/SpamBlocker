@@ -212,6 +212,23 @@ fun EditChannelDialog(
         }
     ) {
         Column {
+            // Sync sound/ledColor with system channel, user might have manually changed it in system settings.
+            // Don't sync other attributes, as they are supposed to be edited within this app,
+            //  sound and ledColor can only be modified in system settings.
+            LifecycleResumeEffect(true) {
+                // Do not sync when creating a new channel
+                if (!isCreatingNewChannel) {
+                    val sysCh = manager(ctx).getNotificationChannel(chId)
+                    if (sysCh != null) {
+                        sound = sysCh.sound.toString()
+                        ledColor = sysCh.lightColor
+                    }
+                }
+
+                onPauseOrDispose { }
+            }
+
+
             // Channel Id
             StrInputBox(
                 label = { GreyLabel(Str(R.string.channel_id)) },
@@ -288,19 +305,6 @@ fun EditChannelDialog(
                     }
 
                     // Sound
-                    // Sync with system channel, user might have manually changed it in system settings
-                    LifecycleResumeEffect(true) {
-                        if (!isCreatingNewChannel) {
-                            val sysCh = manager(ctx).getNotificationChannel(chId)
-                            if (sysCh != null) {
-                                sound = sysCh.sound.toString()
-                                ledColor = sysCh.lightColor
-                            }
-                        }
-
-                        onPauseOrDispose { }
-                    }
-
                     AnimatedVisibleV(!mute) {
                         LabeledRow(
                             labelId = R.string.sound,
@@ -385,19 +389,29 @@ fun EditChannelDialog(
                     led = isTurningOn
                 }
             }
+
             // LED Color
             AnimatedVisibleV(led) {
-                NumberInputBox(
-                    intValue = ledColor,
-                    allowEmpty = true,
-                    onValueChange = { newValue, hasError ->
-                        if (!hasError && newValue != null) {
-                            ledColor = newValue
-                        }
-                    },
-                    labelId = R.string.led_color,
-                    helpTooltipId = R.string.help_led_color
-                )
+                RowVCenterSpaced(6) {
+                    NumberInputBox(
+                        intValue = ledColor,
+                        allowEmpty = true,
+                        modifier = M.weight(1f),
+                        onValueChange = { newValue, hasError ->
+                            if (!hasError && newValue != null) {
+                                ledColor = newValue
+                            }
+                        },
+                        enabled = isCreatingNewChannel,
+                        labelId = R.string.led_color,
+                        helpTooltipId = R.string.help_led_color
+                    )
+                    if (!isCreatingNewChannel) {
+                        ResIcon(R.drawable.ic_note, modifier = M.clickable {
+                            openChannelSettings(ctx, chId)
+                        })
+                    }
+                }
             }
         }
     }

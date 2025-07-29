@@ -5,6 +5,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -65,7 +66,7 @@ import spam.blocker.util.toFlagStr
 
 // Code copied from OutlinedInputBox, modifications:
 //  - reduce height:
-//      defaultMinSize( minWidth = 2000.dp, minHeight = 36.dp, ),
+//      defaultMinSize( minHeight = 36.dp ),
 //  - reduce the content padding-top:
 //      contentPadding = PaddingValues( 16.dp, 12.dp ),
 
@@ -145,8 +146,8 @@ private fun InputBox(
             else
                 value,
             modifier = M
+                .fillMaxWidth()
                 .defaultMinSize(
-                    minWidth = 2000.dp, // use a large value, it wil be shrunk automatically
                     minHeight = 36.dp, // 36 is enough
                 ),
             onValueChange = onValueChange,
@@ -232,6 +233,7 @@ fun NumberInputBox(
     intValue: Int?,
     modifier: Modifier = Modifier,
     onValueChange: (Int?, Boolean) -> Unit,
+    enabled: Boolean = true,
     allowEmpty: Boolean = false,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -287,12 +289,13 @@ fun NumberInputBox(
         label = label,
         placeholder = placeholder,
         leadingIcon = leadingIcon,
+        enabled = enabled,
         supportingTextStr = if (hasError) Str(R.string.invalid_number) else null,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
         trailingIcon = {
             RowVCenter {
-                if (lastText.isNotEmpty()) {
+                if (lastText.isNotEmpty() && enabled) {
                     GreyIcon16(
                         R.drawable.ic_clear,
                         modifier = M.clickable{
@@ -313,6 +316,7 @@ fun NumberInputBox(
     intValue: Int?,
     modifier: Modifier = Modifier,
     onValueChange: (Int?, Boolean) -> Unit,
+    enabled: Boolean = true,
     allowEmpty: Boolean = false,
     labelId: Int? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -323,6 +327,7 @@ fun NumberInputBox(
         intValue = intValue,
         modifier = modifier,
         onValueChange = onValueChange,
+        enabled = enabled,
         allowEmpty = allowEmpty,
         label = if (labelId == null) null else { { Text(Str(labelId)) } },
         placeholder = placeholder,

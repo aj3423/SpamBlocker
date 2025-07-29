@@ -132,9 +132,11 @@
     <string name="help_led_color">
         <![CDATA[
         The ARGB color value, represented in decimal format. <br>
-        <br>
         For example:<br>
         The decimal value of <font color="#FF0000">0xFF0000</font> is <b>16711680</b>.
+        <br>
+        The color can only be set when creating a new channel,
+         once it\'s created, it can only be modified in system settings. <br>
         ]]>
     </string>
     <string name="icon">Icon</string>
