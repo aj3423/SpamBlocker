@@ -59,12 +59,6 @@
         <![CDATA[
         Após receber notificações específicas, permitir todas as chamadas recebidas por um período determinado.<br>
         <br>
-        <font color="#ffa500">Nota:</font><br>
-        Este recurso não funciona em alguns dispositivos; se todas as chamadas forem permitidas após ativar este recurso,
-        o dispositivo provavelmente não é suportado. Por favor, remova todos os registros de Alerta Push ou revogue a
-        permissão de <b>Acesso a Notificações</b>: <br>
-        <font color="#888888">Configurações do Sistema -> Aplicativos -> Acesso especial -> Acesso a Notificações</font><br>
-        <br>
         Um caso de uso típico:<br>
         &ensp; Quando há uma notificação como:<br>
         &emsp; Título: <font color="#888888">Atualização do Pedido:</font><br>

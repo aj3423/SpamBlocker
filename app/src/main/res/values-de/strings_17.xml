@@ -59,12 +59,6 @@
         <![CDATA[
         Nach Erhalt spezifischer Benachrichtigungen werden alle eingehenden Anrufe für einen festgelegten Zeitraum zugelassen.<br>
         <br>
-        <font color="#ffa500">Hinweis:</font><br>
-        Diese Funktion funktioniert nicht auf einigen Geräten. Wenn nach Aktivierung dieser Funktion alle Anrufe durchgelassen werden,
-        wird das Gerät wahrscheinlich nicht unterstützt. Bitte entfernen Sie alle Push-Benachrichtigungs-Einträge oder widerrufen Sie die
-        Berechtigung <b>Benachrichtigungszugriff</b>: <br>
-        <font color="#888888">Systemeinstellungen -> Apps -> Spezieller Zugriff -> Benachrichtigungszugriff</font><br>
-        <br>
         Ein typischer Anwendungsfall:<br>
         &ensp; Bei einer Benachrichtigung wie:<br>
         &emsp; Titel: <font color="#888888">Bestellaktualisierung:</font><br>

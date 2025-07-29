@@ -59,12 +59,6 @@
         <![CDATA[
         Después de recibir notificaciones específicas, permitir todas las llamadas entrantes por un período determinado.<br>
         <br>
-        <font color="#ffa500">Nota:</font><br>
-        Esta función no funciona en algunos dispositivos; si todas las llamadas se permiten después de habilitarla,
-        es probable que el dispositivo no sea compatible. Por favor, elimine todos los registros de Alerta Push o revoque el
-        permiso de <no_translate><b>Notification Access</b></no_translate>: <br>
-        <font color="#888888">Ajustes del sistema -> Aplicaciones -> Acceso especial -> Acceso a notificaciones</font><br>
-        <br>
         Un caso de uso típico:<br>
         &ensp; Cuando hay una notificación como:<br>
         &emsp; Título: <font color="#888888"><translate>Actualización de pedido:</translate></font><br>

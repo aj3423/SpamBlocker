@@ -59,10 +59,6 @@
         <![CDATA[
         Despois de recibir notificacións específicas, permite todas as chamadas entrantes durante un período establecido.<br>
         <br>
-        <font color="#ffa500">Nota:</font><br>
-        Esta función non funciona nalgúns dispositivos; se todas as chamadas pasan despois de activar esta función, é probable que o dispositivo non sexa compatible. Por favor, elimine todos os rexistros de Alerta de notificación ou revogue o permiso de <b>Acceso a notificacións</b>: <br>
-        <font color="#888888">System Settings -> Apps -> Special access -> Notification Access</font><br>
-        <br>
         Un caso de uso típico:<br>
         &ensp; Cando hai unha notificación como:<br>
         &emsp; Título: <font color="#888888">Actualización de pedido:</font><br>

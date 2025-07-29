@@ -59,12 +59,6 @@
         <![CDATA[
         Després de rebre notificacions específiques, permet totes les trucades entrants durant un període determinat.<br>
         <br>
-        <font color="#ffa500">Nota:</font><br>
-        Aquesta funció no funciona en alguns dispositius, si totes les trucades passen després d\'activar aquesta funció,
-        és probable que el dispositiu no sigui compatible; si us plau, elimineu tots els registres d\'Alertes Push o revoqueu el
-        permís d\'<b>Accés a notificacions</b>: <br>
-        <font color="#888888">Configuració del sistema -> Aplicacions -> Accés especial -> Accés a notificacions</font><br>
-        <br>
         Un cas d\'ús típic:<br>
         &ensp; Quan hi ha una notificació com ara:<br>
         &emsp; Títol: <font color="#888888">Actualització de la comanda:</font><br>

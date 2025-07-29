@@ -59,12 +59,6 @@
         <![CDATA[
         Setelah menerima notifikasi tertentu, izinkan semua panggilan masuk untuk jangka waktu yang ditentukan.<br>
         <br>
-        <font color="#ffa500">Catatan:</font><br>
-        Fitur ini tidak berfungsi di beberapa perangkat, jika semua panggilan lolos setelah mengaktifkan fitur ini,
-        perangkat kemungkinan tidak didukung, harap hapus semua catatan Notifikasi Dorong atau cabut izin
-        <b>Akses Notifikasi</b>: <br>
-        <font color="#888888">Setelan Sistem -> Aplikasi -> Akses khusus -> Akses Notifikasi</font><br>
-        <br>
         Contoh kasus penggunaan umum:<br>
         &ensp; Ketika ada notifikasi seperti:<br>
         &emsp; Judul: <font color="#888888">Pembaruan Pesanan:</font><br>

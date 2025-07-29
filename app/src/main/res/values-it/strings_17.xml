@@ -59,12 +59,6 @@
         <![CDATA[
         Dopo aver ricevuto notifiche specifiche, consenti tutte le chiamate in arrivo per un periodo predefinito.<br>
         <br>
-        <font color="#ffa500">Nota:</font><br>
-        Questa funzione non funziona su alcuni dispositivi, se tutte le chiamate vengono passate dopo aver abilitato questa funzione,
-        il dispositivo probabilmente non è supportato. Si prega di rimuovere tutti i record di Avviso Push o revocare il permesso di
-        <b>Accesso Notifiche</b>: <br>
-        <font color="#888888">Impostazioni di sistema -> App -> Accesso speciale -> Accesso notifiche</font><br>
-        <br>
         Un caso d\'uso tipico:<br>
         &ensp; Quando c\'è una notifica come:<br>
         &emsp; Titolo: <font color="#888888">Aggiornamento Ordine:</font><br>

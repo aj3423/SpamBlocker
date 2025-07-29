@@ -59,12 +59,6 @@
         <![CDATA[
         بعد تلقي إشعارات محددة، اسمح بجميع المكالمات الواردة لفترة محددة.<br>
         <br>
-        <font color="#ffa500">ملاحظة:</font><br>
-        لا تعمل هذه الميزة على بعض الأجهزة، إذا تم تمرير جميع المكالمات بعد تمكين هذه الميزة،
-        فمن المحتمل أن الجهاز غير مدعوم، يرجى إزالة جميع سجلات Push Alert أو إلغاء
-        إذن <b>Notification Access</b>: <br>
-        <font color="#888888">System Settings -> Apps -> Special access -> Notification Access</font><br>
-        <br>
         حالة استخدام نموذجية:<br>
         &ensp; عند وجود إشعار مثل:<br>
         &emsp; العنوان: <font color="#888888">تحديث الطلب:</font><br>

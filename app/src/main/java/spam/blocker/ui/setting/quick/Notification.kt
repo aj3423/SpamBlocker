@@ -288,10 +288,14 @@ fun EditChannelDialog(
                     }
 
                     // Sound
-                    // Sync with system sound, user might have manually changed it in system settings
+                    // Sync with system channel, user might have manually changed it in system settings
                     LifecycleResumeEffect(true) {
                         if (!isCreatingNewChannel) {
-                            sound = manager(ctx).getNotificationChannel(chId)?.sound?.toString() ?: ""
+                            val sysCh = manager(ctx).getNotificationChannel(chId)
+                            if (sysCh != null) {
+                                sound = sysCh.sound.toString()
+                                ledColor = sysCh.lightColor
+                            }
                         }
 
                         onPauseOrDispose { }
@@ -325,7 +329,10 @@ fun EditChannelDialog(
                 fileReader.Compose()
                 fun choose() {
                     fileReader.popup(
-                        mimeTypes = arrayOf("image/*")
+                        mimeTypes = arrayOf(
+                            "image/png", "image/jpeg", "image/x-icon", "image/vnd.microsoft.icon",
+                            "image/bmp", "mage/x-bmp"
+                        )
                     ) { _, raw ->
                         if (raw == null)
                             return@popup

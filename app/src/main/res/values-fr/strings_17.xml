@@ -59,12 +59,6 @@
         <![CDATA[
         Après avoir reçu des notifications spécifiques, autorisez tous les appels entrants pendant une période définie.<br>
         <br>
-        <font color="#ffa500">Remarque :</font><br>
-        Cette fonction ne fonctionne pas sur certains appareils. Si tous les appels sont autorisés après l\'activation de cette fonction,
-        l\'appareil n\'est probablement pas pris en charge. Veuillez supprimer tous les enregistrements d\'alerte push ou révoquer l\'autorisation
-        <b>Accès aux notifications</b> : <br>
-        <font color="#888888">Paramètres système -> Applications -> Accès spécial -> Accès aux notifications</font><br>
-        <br>
         Un cas d\'utilisation typique :<br>
         &ensp; Quand il y a une notification telle que :<br>
         &emsp; Titre : <font color="#888888">Mise à jour de commande :</font><br>

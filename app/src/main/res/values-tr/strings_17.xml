@@ -57,10 +57,6 @@
         <![CDATA[
         Belirli bildirimleri aldıktan sonra, belirli bir süre boyunca tüm gelen çağrılara izin verin.<br>
         <br>
-        <font color="#ffa500">Not:</font><br>
-        Bu özellik bazı cihazlarda çalışmaz, bu özelliği etkinleştirdikten sonra tüm aramalar geçiyorsa, cihaz muhtemelen desteklenmiyor demektir, lütfen tüm Bildirim Uyarısı kayıtlarını kaldırın veya <b>Bildirim Erişimi</b> iznini iptal edin: <br>
-        <font color="#888888">Sistem Ayarları -> Uygulamalar -> Özel erişim -> Bildirim Erişimi</font><br>
-        <br>
         Tipik bir kullanım senaryosu:<br>
         &ensp; Şuna benzer bir bildirim olduğunda:<br>
         &emsp; Başlık: <font color="#888888">Sipariş Güncellemesi:</font><br>

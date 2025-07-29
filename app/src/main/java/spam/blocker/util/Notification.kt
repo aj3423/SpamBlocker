@@ -12,9 +12,7 @@ import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Icon
 import android.media.AudioAttributes
 import android.net.Uri
 import android.provider.Settings
@@ -35,7 +33,6 @@ import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.service.CopyToClipboardReceiver
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.Salmon
-import spam.blocker.ui.theme.SkyBlue
 import kotlin.random.Random
 
 
@@ -140,8 +137,21 @@ object Notification {
         val mgr = manager(ctx)
         ChannelTable.listAll(ctx).forEach { chTable ->
             val chSys = mgr.getNotificationChannel(chTable.channelId)
+            var soundChanged = false
+            var ledColorChanged = false
+            
             if ((chSys.sound?.toString() ?: "") != chTable.sound) {
-                ChannelTable.updateById(ctx, chTable.id, chTable.apply { sound = (chSys.sound?.toString() ?: "") })
+                soundChanged = true
+            }
+            if (chSys.lightColor != chTable.ledColor) {
+                ledColorChanged = true
+            }
+            if (soundChanged || ledColorChanged) {
+                val chUpdated = chTable.apply {
+                    sound = (chSys.sound?.toString() ?: "")
+                    ledColor = chSys.lightColor
+                }
+                ChannelTable.updateById(ctx, chUpdated.id, chUpdated)
             }
         }
     }
