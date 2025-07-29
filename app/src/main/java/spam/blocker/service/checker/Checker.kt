@@ -289,14 +289,12 @@ class Checker { // for namespace only
                 return null
             }
 
-            val includeUnverified = spf.isIncludeUnverified()
 
             val stir = callDetails.callerNumberVerificationStatus
 
-            val unverified = stir == Connection.VERIFICATION_STATUS_NOT_VERIFIED
             val fail = stir == Connection.VERIFICATION_STATUS_FAILED
 
-            if (fail || (includeUnverified && unverified)) {
+            if (fail) {
                 val ret = BySTIR(Def.RESULT_BLOCKED_BY_STIR, stir)
                 logger?.error(
                     ctx.getString(R.string.blocked_by)

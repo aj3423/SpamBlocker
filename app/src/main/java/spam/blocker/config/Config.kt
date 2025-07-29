@@ -320,35 +320,17 @@ class Contact : IConfig {
 @Serializable
 class STIR : IConfig {
     var enabled = false
-
-    // The @Transient annotation ensures isExcusive is not serialized in new data,
-    //   but it can still be deserialized from old backups.
-    @Transient var isExcusive: Boolean? = null
-
-    var includeUnverified = false
     var strictPriority = 0
-
-    // v4.15 removed `isExcusive`, use this class for history compatibility.
-    // Disable Unverified if `isExcusive` exists and its value is 0 (as the old Lenient).
-    // (Remove this `init` and `isExcusive` after 2027-01-01)
-    init {
-        if (isExcusive == false) {
-            includeUnverified = false
-        }
-        isExcusive = null // Clear isExcusive after migration
-    }
 
     override fun load(ctx: Context) {
         val spf = spf.Stir(ctx)
         enabled = spf.isEnabled()
-        includeUnverified = spf.isIncludeUnverified()
         strictPriority = spf.getPriority()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.Stir(ctx)
         spf.setEnabled(enabled)
-        spf.setIncludeUnverified(includeUnverified)
         spf.setPriority(strictPriority)
     }
 }

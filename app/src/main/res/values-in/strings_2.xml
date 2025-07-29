@@ -29,38 +29,18 @@
     <string name="spoof">Panggilan palsu</string>
     <string name="help_stir">
         <![CDATA[
-            Verifikasi STIR/SHAKEN memerlukan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
+            Ini memblokir panggilan yang gagal atestasi STIR/SHAKEN, yang berarti panggilan tersebut sangat mungkin adalah panggilan palsu. <br>
             <br>
-            Ada tiga kemungkinan hasil verifikasi: <br>
-            <font color="#03DAC5"><b>Valid</b></font> <br>
-              &emsp; Panggilan ini kemungkinan besar valid, bukan penipuan. <br>
-            <font color="#ffa500"><b>Tidak Terverifikasi</b></font> <br>
-              &emsp; Panggilan ini tidak dapat divalidasi, atau verifikasi STIR tidak didukung. <br>
-            <font color="#fa7f71"><b>Penipuan</b></font> <br>
-              &emsp; Ini kemungkinan besar adalah panggilan penipuan. <br>
+            Atestasi STIR/SHAKEN memerlukan <b>Android 11+</b> dan <b>dukungan operator</b>. <br>
             <br>
-            <br>
-            <b>Opsi:</b><br>
-            <br>
-              - <b>Fleksibel</b>: <br>
-                  &emsp; - Panggilan <font color="#03DAC5"><b>Valid</b></font> akan diizinkan. <br>
-                  &emsp; - Panggilan <font color="#fa7f71"><b>Penipuan</b></font> akan tetap diperiksa oleh aturan lain. <br>
-                  &emsp; - Saat <b>Sertakan Tidak Terverifikasi</b> dicentang, panggilan <font color="#ffa500"><b>Tidak Terverifikasi</b></font> juga akan diizinkan. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritas Default: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Ketat</b></font>: <br>
-                  &emsp; - Panggilan <font color="#03DAC5"><b>Valid</b></font> akan diperiksa oleh aturan lain. <br>
-                  &emsp; - Panggilan <font color="#fa7f71"><b>Penipuan</b></font> akan diblokir. <br>
-                  &emsp; - Saat \"<b>Sertakan Tidak Terverifikasi</b>\" dicentang, panggilan <font color="#ffa500"><b>Tidak Terverifikasi</b></font> juga akan diblokir. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritas Default: 0</b></font> <br>
-            <br>
+            <font color="#ea86ff"><b>Prioritas Default: 0</b></font> <br>
             <br>
             Sebuah <b>kasus penggunaan</b> untuk menyesuaikan prioritas:<br>
             <br>
             1. Selalu izinkan kontak. <br>
-              &emsp; - Kontak (Fleksibel), prioritas <font color="#ea86ff">12</font> <br>
-            2. Blokir panggilan yang gagal STIR, bahkan jika berulang. <br>
-              &emsp; - STIR (Ketat), prioritas <font color="#ea86ff">11</font> <br>
+              &emsp; - Kontak (Longgar), prioritas <font color="#ea86ff">12</font> <br>
+            2. Blokir panggilan yang gagal STIR, meskipun mereka berulang. <br>
+              &emsp; - STIR, prioritas <font color="#ea86ff">11</font> <br>
             3. Izinkan panggilan yang berulang. <br>
               &emsp; - Panggilan Berulang, prioritas <font color="#ea86ff">10</font> <br>
         ]]>

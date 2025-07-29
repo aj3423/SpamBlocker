@@ -348,23 +348,9 @@ class BySTIR(
 
     override fun resultReasonStr(ctx: Context): String {
         return when (stirResult) {
-            Connection.VERIFICATION_STATUS_NOT_VERIFIED -> "${ctx.getString(R.string.stir_attestation)} ${
-                ctx.getString(
-                    R.string.unverified
-                )
-            }"
-
-            Connection.VERIFICATION_STATUS_PASSED -> "${ctx.getString(R.string.stir_attestation)} ${
-                ctx.getString(
-                    R.string.valid
-                )
-            }"
-
-            Connection.VERIFICATION_STATUS_FAILED -> "${ctx.getString(R.string.stir_attestation)} ${
-                ctx.getString(
+            Connection.VERIFICATION_STATUS_FAILED -> "${ctx.getString(R.string.stir_attestation)} ${ctx.getString(
                     R.string.spoof
-                )
-            }"
+                )}"
 
             else -> ctx.getString(R.string.stir_attestation)
         }

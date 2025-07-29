@@ -26,11 +26,9 @@ import spam.blocker.util.spf
 @Composable
 fun Stir() {
     val ctx = LocalContext.current
-    val C = LocalPalette.current
     val spf = spf.Stir(ctx)
 
     var isEnabled by remember { mutableStateOf(spf.isEnabled()) }
-    var includeUnverified by remember { mutableStateOf(spf.isIncludeUnverified()) }
     var priority by remember { mutableIntStateOf(spf.getPriority()) }
 
     val popupTrigger = rememberSaveable { mutableStateOf(false) }
@@ -39,12 +37,6 @@ fun Stir() {
         trigger = popupTrigger,
         content = {
             Column {
-                LabeledRow(labelId = R.string.stir_include_unverified) {
-                    SwitchBox(checked = includeUnverified, onCheckedChange = { isTurningOn ->
-                        includeUnverified = isTurningOn
-                        spf.setIncludeUnverified(isTurningOn)
-                    })
-                }
                 PriorityBox(priority) { newValue, hasError ->
                     if (!hasError) {
                         priority = newValue!!
@@ -60,21 +52,12 @@ fun Stir() {
         helpTooltip = Str(R.string.help_stir),
         content = {
             if (isEnabled) {
+                // Priority Button
                 Button(
                     content = {
-                        RowVCenterSpaced(6) {
-                            Text(
-                                text = Str(
-                                    if (includeUnverified) R.string.strict else R.string.lenient
-                                ),
-                                color = Salmon,
-                            )
-                            if (priority != 0) {
-                                PriorityLabel(priority)
-                            }
-                        }
+                        PriorityLabel(priority)
                     },
-//                    borderColor = if (isStrict) Salmon else C.textGrey
+    //                            borderColor = Salmon
                 ) {
                     popupTrigger.value = true
                 }

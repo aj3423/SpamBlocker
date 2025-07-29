@@ -183,8 +183,6 @@ class spf { // for namespace only
     class Stir(ctx: Context) : SharedPref(ctx) {
         fun isEnabled(): Boolean { return readBoolean(Def.SETTING_STIR_ENABLED, false) }
         fun setEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_STIR_ENABLED, enabled) }
-        fun isIncludeUnverified() : Boolean { return readBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, false) }
-        fun setIncludeUnverified(include: Boolean) { writeBoolean(Def.SETTING_STIR_INCLUDE_UNVERIFIED, include) }
         fun getPriority() : Int { return readInt(Def.SETTING_STIR_PRIORITY, 0) }
         fun setPriority(priority : Int) { writeInt(Def.SETTING_STIR_PRIORITY, priority) }
     }

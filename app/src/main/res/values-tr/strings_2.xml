@@ -29,40 +29,20 @@
     <string name="spoof">Sahte Arama</string>
     <string name="help_stir">
         <![CDATA[
+            STIR/SHAKEN tasdikini geçemeyen aramaları engeller, bu da onların büyük olasılıkla sahte çağrılar olduğu anlamına gelir. <br>
+            <br>
             STIR/SHAKEN tasdiki <b>Android 11+</b> ve <b>operatör desteği</b> gerektirir. <br>
             <br>
-            Üç olası tasdik sonucu vardır: <br>
-            <font color="#03DAC5"><b>Geçerli</b></font> <br>
-              &emsp; Aramanın geçerli olması, sahte olmaması çok muhtemeldir. <br>
-            <font color="#ffa500"><b>Doğrulanmamış</b></font> <br>
-              &emsp; Çağrı doğrulanamıyor veya STIR tasdiki desteklenmiyor. <br>
-            <font color="#fa7f71"><b>Sahte</b></font> <br>
-              &emsp; Sahte bir çağrı olması çok muhtemeldir. <br>
+            <font color="#ea86ff"><b>Varsayılan Öncelik: 0</b></font> <br>
             <br>
-            <br>
-            <b>Seçenekler:</b><br>
-            <br>
-              - <b>Esnek</b>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Geçerli</b></font> çağrılara izin verilecektir. <br>
-                  &emsp; - <font color="#fa7f71"><b>Sahte</b></font> çağrılar hala diğer kurallarca kontrol edilecektir. <br>
-                  &emsp; - <b>Doğrulanmamışları Dahil Et</b> işaretliyse, <font color="#ffa500"><b>Doğrulanmamış</b></font> çağrılara da izin verilecektir. <br>
-                  &emsp; <font color="#ea86ff"><b>Varsayılan Öncelik: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Katı</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Geçerli</b></font> çağrılar diğer kurallarca kontrol edilecektir. <br>
-                  &emsp; - <font color="#fa7f71"><b>Sahte</b></font> çağrılar engellenecektir. <br>
-                  &emsp; - \"<b>Doğrulanmamışları Dahil Et</b>\" işaretliyse, <font color="#ffa500"><b>Doğrulanmamış</b></font> çağrılar da engellenecektir. <br>
-                  &emsp; <font color="#ea86ff"><b>Varsayılan Öncelik: 0</b></font> <br>
-            <br>
-            <br>
-            Öncelikleri özelleştirmek için bir <b>kullanım durumu</b>:<br>
+            Önceliği özelleştirmek için bir <b>kullanım senaryosu</b>:<br>
             <br>
             1. Kişilere her zaman izin ver. <br>
-              &emsp; - Kişiler(Esnek), öncelik <font color="#ea86ff">12</font> <br>
-            2. STIR\'ı geçemeyen aramaları tekrar etseler bile engelle. <br>
-              &emsp; - STIR(Katı), öncelik <font color="#ea86ff">11</font> <br>
-            3. Tekrar eden aramalara izin ver. <br>
-              &emsp; - Tekrarlayan Çağrı, öncelik <font color="#ea86ff">10</font> <br>
+              &emsp; - Kişiler(Hoşgörülü), öncelik <font color="#ea86ff">12</font> <br>
+            2. Tekrarlansa bile STIR\'ı geçemeyen çağrıları engelle. <br>
+              &emsp; - STIR, öncelik <font color="#ea86ff">11</font> <br>
+            3. Tekrarlayan çağrılara izin ver. <br>
+              &emsp; - Tekrarlanan Çağrı, öncelik <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

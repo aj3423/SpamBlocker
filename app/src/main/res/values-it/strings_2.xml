@@ -29,40 +29,20 @@
     <string name="spoof">Chiamata Falsificata</string>
     <string name="help_stir">
         <![CDATA[
+            Blocca le chiamate che non superano l\'attestazione STIR/SHAKEN, il che significa che sono molto probabilmente chiamate spoofing. <br>
+            <br>
             L\'attestazione STIR/SHAKEN richiede <b>Android 11+</b> e <b>il supporto dell\'operatore</b>. <br>
             <br>
-            Ci sono tre possibili risultati di attestazione: <br>
-            <font color="#03DAC5"><b>Valida</b></font> <br>
-              &emsp; La chiamata è molto probabilmente valida, non falsificata. <br>
-            <font color="#ffa500"><b>Non Verificata</b></font> <br>
-              &emsp; La chiamata non può essere convalidata, o l\'attestazione STIR non è supportata. <br>
-            <font color="#fa7f71"><b>Spoofing</b></font> <br>
-              &emsp; È molto probabilmente una chiamata spoofing. <br>
+            <font color="#ea86ff"><b>Priorità predefinita: 0</b></font> <br>
             <br>
-            <br>
-            <b>Opzioni:</b><br>
-            <br>
-              - <b>Tollerante</b>: <br>
-                  &emsp; - Le chiamate <font color="#03DAC5"><b>Valide</b></font> saranno consentite. <br>
-                  &emsp; - Le chiamate <font color="#fa7f71"><b>Spoofing</b></font> saranno comunque controllate da altre regole. <br>
-                  &emsp; - Quando <b>Includi Non Verificati</b> è selezionato, anche le chiamate <font color="#ffa500"><b>Non Verificate</b></font> saranno consentite. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Rigido</b></font>: <br>
-                  &emsp; - Le chiamate <font color="#03DAC5"><b>Valide</b></font> saranno controllate da altre regole. <br>
-                  &emsp; - Le chiamate <font color="#fa7f71"><b>Spoofing</b></font> saranno bloccate. <br>
-                  &emsp; - Quando \"<b>Includi Non Verificati</b>\" è selezionato, anche le chiamate <font color="#ffa500"><b>Non Verificate</b></font> saranno bloccate. <br>
-                  &emsp; <font color="#ea86ff"><b>Priorità Predefinita: 0</b></font> <br>
-            <br>
-            <br>
-            Un <b>caso d\'uso</b> per personalizzare le priorità:<br>
+            Un <b>caso d\'uso</b> per personalizzare la priorità:<br>
             <br>
             1. Consenti sempre i contatti. <br>
-              &emsp; - Contatti(Tollerante), priorità <font color="#ea86ff">12</font> <br>
+              &emsp; - Contatti (Morbido), priorità <font color="#ea86ff">12</font> <br>
             2. Blocca le chiamate che non superano STIR, anche se si ripetono. <br>
-              &emsp; - STIR(Rigido), priorità <font color="#ea86ff">11</font> <br>
+              &emsp; - STIR, priorità <font color="#ea86ff">11</font> <br>
             3. Consenti le chiamate che si ripetono. <br>
-              &emsp; - Chiamata Ripetuta, priorità <font color="#ea86ff">10</font> <br>
+              &emsp; - Chiamata ripetuta, priorità <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

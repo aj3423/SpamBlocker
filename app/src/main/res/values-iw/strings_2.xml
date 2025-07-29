@@ -29,38 +29,18 @@
     <string name="spoof">שיחת התחזות</string>
     <string name="help_stir">
         <![CDATA[
+            הוא חוסם שיחות שנכשלות באימות STIR/SHAKEN, מה שאומר שהן ככל הנראה שיחות התחזות. <br>
+            <br>
             אימות STIR/SHAKEN דורש <b>אנדרואיד 11+</b> ו<b>תמיכת ספק</b>. <br>
             <br>
-            ישנן שלוש תוצאות אימות אפשריות: <br>
-            <font color="#03DAC5"><b>תקינה</b></font> <br>
-              &emsp; סביר מאוד שהשיחה תקינה, לא מזויפת. <br>
-            <font color="#ffa500"><b>לא מאומתת</b></font> <br>
-              &emsp; לא ניתן לאמת את השיחה, או שאימות STIR אינו נתמך. <br>
-            <font color="#fa7f71"><b>התחזות</b></font> <br>
-              &emsp; סביר מאוד שמדובר בשיחת התחזות. <br>
+            <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font> <br>
             <br>
-            <br>
-            <b>אפשרויות:</b><br>
-            <br>
-              - <b>מקל</b>: <br>
-                  &emsp; - שיחות <font color="#03DAC5"><b>תקינות</b></font> יאושרו. <br>
-                  &emsp; - שיחות <font color="#fa7f71"><b>התחזות</b></font> עדיין ייבדקו על ידי כללים אחרים. <br>
-                  &emsp; - כאשר <b>כלול לא מאומת</b> מסומן, שיחות <font color="#ffa500"><b>לא מאומתות</b></font> יאושרו גם הן. <br>
-                  &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>מחמיר</b></font>: <br>
-                  &emsp; - שיחות <font color="#03DAC5"><b>תקינות</b></font> ייבדקו על ידי כללים אחרים. <br>
-                  &emsp; - שיחות <font color="#fa7f71"><b>התחזות</b></font> ייחסמו. <br>
-                  &emsp; - כאשר \"<b>כלול לא מאומת</b>\" מסומן, שיחות <font color="#ffa500"><b>לא מאומתות</b></font> ייחסמו גם הן. <br>
-                  &emsp; <font color="#ea86ff"><b>עדיפות ברירת מחדל: 0</b></font> <br>
-            <br>
-            <br>
-            <b>מקרה שימוש</b> להתאמה אישית של העדיפויות:<br>
+            <b>מקרה שימוש</b> להתאמה אישית של העדיפות:<br>
             <br>
             1. אפשר תמיד אנשי קשר. <br>
-              &emsp; - אנשי קשר (מקל), עדיפות <font color="#ea86ff">12</font> <br>
-            2. חסום שיחות שנכשלו ב-STIR, גם אם הן חוזרות על עצמן. <br>
-              &emsp; - STIR (מחמיר), עדיפות <font color="#ea86ff">11</font> <br>
+              &emsp; - אנשי קשר (מתירני), עדיפות <font color="#ea86ff">12</font> <br>
+            2. חסום שיחות שנכשלות ב-STIR, גם אם הן חוזרות על עצמן. <br>
+              &emsp; - STIR, עדיפות <font color="#ea86ff">11</font> <br>
             3. אפשר שיחות שחוזרות על עצמן. <br>
               &emsp; - שיחה חוזרת, עדיפות <font color="#ea86ff">10</font> <br>
         ]]>
