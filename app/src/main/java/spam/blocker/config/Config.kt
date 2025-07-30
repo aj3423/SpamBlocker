@@ -686,7 +686,7 @@ class Permissions : IConfig {
 
     override fun load(ctx: Context) {
         allEnabledNames = Permission.allEnabled()
-            .joinToString(",") { it::class.java.simpleName }
+            .joinToString(",") { it::class.java.simpleName.substringAfterLast('$') }
     }
 
     override fun apply(ctx: Context) { }

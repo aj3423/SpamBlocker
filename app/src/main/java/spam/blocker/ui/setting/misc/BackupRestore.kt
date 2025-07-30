@@ -127,7 +127,7 @@ fun ImportButton() {
                     val missingPermissions = Permission.all()
                         // all previous permissions
                         .filter {
-                            prevNames.contains(it::class.java.simpleName)
+                            prevNames.contains(it::class.java.simpleName.substringAfterLast('$'))
                         }
                         // not granted
                         .filter {

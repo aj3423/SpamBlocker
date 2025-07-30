@@ -137,7 +137,7 @@ class PermissionChain() {
         }
 
         if (curr.isOptional) {
-            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm::class.java.simpleName}") {
+            val isFirstTime = doOnce(ctx, "ask_once_${curr.perm::class.java.simpleName.substringAfterLast('$')}") {
                 handleCurrPermission(ctx)
             }
             if (!isFirstTime) {
