@@ -221,7 +221,7 @@ fun EditChannelDialog(
                 if (!isCreatingNewChannel) {
                     val sysCh = manager(ctx).getNotificationChannel(chId)
                     if (sysCh != null) {
-                        sound = sysCh.sound.toString()
+                        sound = sysCh.sound?.toString() ?: ""
                         led = sysCh.shouldShowLights()
                         ledColor = sysCh.lightColor
                         importance = sysCh.importance
@@ -391,20 +391,14 @@ fun EditChannelDialog(
 
             LabeledRow(
                 R.string.icon_color,
-                helpTooltip = Str(R.string.help_icon_color)
             ) {
                 RowVCenterSpaced(4) {
                     ColorPickerButton(
                         color = iconColor,
                         defaultText = Str(R.string.automatic),
+                        clearable = true,
                     ) {
                         iconColor = it
-                    }
-                    if (iconColor != null) {
-                        // Clear icon
-                        GreyButton(Str(R.string.clear)) {
-                            iconColor = null
-                        }
                     }
                 }
             }
@@ -429,7 +423,9 @@ fun EditChannelDialog(
                             color = ledColor,
                             enabled = isCreatingNewChannel,
                         ) {
-                            ledColor = it
+                            it?.let {
+                                ledColor = it
+                            }
                         }
 
                         if (!isCreatingNewChannel) {

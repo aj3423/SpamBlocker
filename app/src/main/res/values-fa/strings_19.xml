@@ -31,39 +31,39 @@
         ]]>
     </string>
     <string name="blocked">مسدود شده</string>
-    <string name="allowed">عبور کرده</string>
+    <string name="allowed">مجاز</string>
     <string name="help_notification">
         <![CDATA[
         چهار کانال اعلان داخلی وجود دارد: <br>
         <br>
         <font color="#00BFFF"><b>هیچ‌کدام</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; اصلاً اعلانی نیست. <br>
+        &ensp; هیچ اعلانی نمایش داده نمی‌شود. <br>
         <br>
         <font color="#00BFFF"><b>کم</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; در نوار وضعیت و کشوی اعلان ظاهر می‌شود. <br>
+        &ensp; در نوار وضعیت و پنل اعلان‌ها ظاهر می‌شود. <br>
         <br>
         <font color="#00BFFF"><b>متوسط</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; در نوار وضعیت و کشوی اعلان همراه با صدا ظاهر می‌شود. <br>
+        &ensp; در نوار وضعیت و پنل اعلان‌ها با صدا ظاهر می‌شود. <br>
         <br>
-        <font color="#00BFFF"><b>زیاد</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; در نوار وضعیت، کشوی اعلان و به صورت پاپ‌آپ Heads-up همراه با صدا ظاهر می‌شود. <br>
+        <font color="#00BFFF"><b>بالا</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; در نوار وضعیت، پنل اعلان‌ها، و به صورت پاپ‌آپ سرصفحه با صدا ظاهر می‌شود. <br>
         <br>
-        <font color="#00BFFF"><b>زیاد (بی‌صدا)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; شبیه به <b>زیاد</b> است اما صدا را قطع می‌کند. <br>
-        &ensp; برای چت‌های پیامکی فعال که صداهای مداوم ممکن است مزاحم باشند، ایده‌آل است. <br>
+        <font color="#00BFFF"><b>بالا (بی‌صدا)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; مشابه <b>بالا</b> است اما صدا را قطع می‌کند. <br>
+        &ensp; برای چت‌های فعال پیامک که صداهای مداوم ممکن است مزاحم باشند، ایده‌آل است. <br>
           هنگامی که صفحه قفل نیست و برنامه پیامک در پیش‌زمینه باز است، چت فعال در نظر گرفته می‌شود. <br>
         ]]>
     </string>
     <string name="none">هیچ‌کدام</string>
     <string name="low">کم</string>
-    <string name="high">زیاد</string>
-    <string name="sms_chat">چت پیامک</string>
+    <string name="high">بالا</string>
+    <string name="sms_chat">گفتگوی پیامک</string>
     <string name="call_channel">کانال تماس</string>
     <string name="sms_channel">کانال پیامک</string>
     <string name="channel_id">شناسه کانال</string>
     <string name="help_channel_id">
         <![CDATA[
-        این شناسه در تنظیمات سیستم به عنوان کانال اعلان ظاهر خواهد شد. <br>
+        این شناسه در تنظیمات سیستم به عنوان کانال اعلان نمایش داده می‌شود. <br>
         <br>
         پس از ایجاد، شناسه قابل ویرایش نیست.
         ]]>
@@ -72,24 +72,24 @@
     <string name="channel_group">گروه کانال</string>
     <string name="help_channel_group">
         <![CDATA[
-        هنگامی که خالی گذاشته شود، اعلان‌ها به طور خودکار در سه دسته گروه‌بندی می‌شوند:<br>
+        اگر خالی بماند، اعلان‌ها به طور خودکار در سه دسته گروه‌بندی می‌شوند:<br>
         <br>
-        - تماس‌های ناخواسته <br>
-        - پیامک‌های ناخواسته <br>
-        - پیامک‌های معتبر <br>
+        - تماس اسپم <br>
+        - پیامک اسپم <br>
+        - پیامک معتبر <br>
         <br>
-        اگر یک گروه مشخص شود، آنها به صورت جداگانه گروه‌بندی خواهند شد.
+        اگر گروهی مشخص شود، آنها به طور جداگانه گروه‌بندی خواهند شد.
         ]]>
     </string>
     <string name="mute">بی‌صدا</string>
     <string name="sound">صدا</string>
     <string name="help_sound">
         <![CDATA[
-        صدا را فقط می‌توان هنگام ایجاد یک کانال جدید تنظیم کرد؛
-         پس از ایجاد، فقط در تنظیمات سیستم قابل تغییر است. <br>
+        صدا فقط هنگام ایجاد یک کانال جدید قابل تنظیم است؛
+         پس از ایجاد، فقط در تنظیمات سیستم قابل اصلاح است. <br>
         <br>
         <b>صدای سفارشی</b><br>
-        برخی گوشی‌ها امکان وارد کردن مستقیم آهنگ‌های زنگ سفارشی از طریق برنامه را می‌دهند.
+        برخی گوشی‌ها امکان وارد کردن مستقیم آهنگ‌های زنگ سفارشی را از طریق برنامه می‌دهند.
         برای سایرین، از طریق تنظیمات سیستم وارد کنید و سپس آن را در برنامه انتخاب کنید. <br>
         ]]>
     </string>
@@ -97,22 +97,12 @@
     <string name="select_notification_sound">انتخاب صدای اعلان</string>
     <string name="unknown">ناشناس</string>
     <string name="icon_color">رنگ آیکون</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        مقدار رنگ ARGB، نمایش داده شده در قالب اعشاری. <br>
-        <br>
-        برای انتخاب خودکار رنگ‌ها، آن را خالی بگذارید. <br>
-        <br>
-        به عنوان مثال:<br>
-        مقدار اعشاری <font color="#FF0000">0xFF0000</font> برابر است با <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">تأیید حذف؟</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         یک کانال اعلان جدید ایجاد کنید. <br>
         <br>
-        برای ویرایش یک کانال اعلان در این لیست کشویی، روی آن <font color="#03DAC5"><b>ضربه طولانی</b></font> بزنید.
+        برای ویرایش، روی یک کانال اعلان در این لیست کشویی <font color="#03DAC5"><b>طولانی فشار دهید</b></font>.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -121,34 +111,31 @@
         <br>
         %s<br>
         <br>
-        مطمئن شوید که پس از حذف این کانال، آن‌ها را به‌روز کنید. <br>
+        مطمئن شوید که پس از حذف این کانال، آنها را به روز کنید. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        کانال اعلان به‌زور بی‌صدا خواهد شد، حتی اگر با اهمیت بالا پیکربندی شده باشد.
+        کانال اعلان به زور بی‌صدا خواهد شد، حتی اگر با اهمیت بالا پیکربندی شده باشد.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">رنگ LED</string>
     <string name="help_led_color">
         <![CDATA[
-        مقدار رنگ ARGB، به فرمت اعشاری. <br>
-        برای مثال:<br>
-        مقدار اعشاری <font color="#FF0000">0xFF0000</font> برابر است با <b>16711680</b>.
-        <br>
-        رنگ فقط هنگام ایجاد کانال جدید قابل تنظیم است؛
-         پس از ایجاد، فقط در تنظیمات سیستم قابل تغییر است. <br>
+        رنگ چراغ فقط هنگام ایجاد یک کانال جدید قابل تنظیم است؛
+         پس از ایجاد، فقط در تنظیمات سیستم قابل اصلاح است. <br>
         ]]>
     </string>
     <string name="icon">آیکون</string>
     <string name="automatic">خودکار</string>
     <string name="medium">متوسط</string>
-    <string name="high_muted">زیاد (بی‌صدا)</string>
+    <string name="high_muted">بالا (بی‌صدا)</string>
     <string name="help_channel_importance">
         <![CDATA[
-        اهمیت را فقط می‌توان هنگام ایجاد یک کانال جدید تنظیم کرد؛
-         پس از ایجاد، فقط در تنظیمات سیستم قابل تغییر است. <br>
+        اهمیت فقط هنگام ایجاد یک کانال جدید قابل تنظیم است؛
+         پس از ایجاد، فقط در تنظیمات سیستم قابل اصلاح است. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">برای ویرایش دستی روی متن ARGB ضربه بزنید.</string>
 </resources>

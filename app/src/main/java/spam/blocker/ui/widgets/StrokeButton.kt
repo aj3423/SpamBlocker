@@ -30,6 +30,8 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
 import spam.blocker.util.Util.inRange
 
+const val BUTTON_CORNER_RADIUS = 4
+const val BUTTON_H_PADDING = 12
 
 // The built-in Button is based on Surface, which has a minimal width as 48dp,
 //  as: minimumInteractiveComponentSize
@@ -42,8 +44,8 @@ fun Button(
     onLongClick: Lambda? = null,
     enabled: Boolean = true,
     borderColor: Color = LocalPalette.current.textGrey,
-    shape: Shape = RoundedCornerShape(4.dp),
-    contentPadding: PaddingValues = PaddingValues(12.dp, 0.dp),
+    shape: Shape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+    contentPadding: PaddingValues = PaddingValues(BUTTON_H_PADDING.dp, 0.dp),
     onClick: () -> Unit,
 ) {
     val C = LocalPalette.current
@@ -78,8 +80,8 @@ fun StrokeButton(
     icon: (@Composable () -> Unit)? = null,
     modifier: Modifier = Modifier,
     onLongClick: Lambda? = null,
-    shape: RoundedCornerShape = RoundedCornerShape(4.dp),
-    contentPadding: PaddingValues = PaddingValues(12.dp, 0.dp),
+    shape: RoundedCornerShape = RoundedCornerShape(BUTTON_CORNER_RADIUS.dp),
+    contentPadding: PaddingValues = PaddingValues(BUTTON_H_PADDING.dp, 0.dp),
     enabled: Boolean = true,
     onClick: Lambda,
 ) {

@@ -31,22 +31,22 @@
         ]]>
     </string>
     <string name="blocked">Bloqueado</string>
-    <string name="allowed">Aprovado</string>
+    <string name="allowed">Permitido</string>
     <string name="help_notification">
         <![CDATA[
-        Existem quatro canais de notificação integrados: <br>
+        Existem quatro canais de notificação embutidos: <br>
         <br>
-        <font color="#00BFFF"><b>Nenhuma</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        <font color="#00BFFF"><b>Nenhum</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Nenhuma notificação. <br>
         <br>
         <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Aparece na barra de status e na sombra de notificações. <br>
+        &ensp; Aparece na barra de status e na sombra de notificação. <br>
         <br>
         <font color="#00BFFF"><b>Média</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Aparece na barra de status e na sombra de notificações com som. <br>
+        &ensp; Aparece na barra de status e na sombra de notificação com som. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece na barra de status, na sombra de notificações e como pop-up de aviso com som. <br>
+        &ensp; Aparece na barra de status, sombra de notificação e como pop-up de heads-up com som. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; É semelhante a <b>Alta</b>, mas silencia o som. <br>
@@ -69,10 +69,10 @@
         ]]>
     </string>
     <string name="channel_importance">Importância</string>
-    <string name="channel_group">Grupo do Canal</string>
+    <string name="channel_group">Grupo de Canal</string>
     <string name="help_channel_group">
         <![CDATA[
-        Quando deixado em branco, as notificações são automaticamente agrupadas em três categorias:<br>
+        Quando deixado vazio, as notificações são automaticamente agrupadas em três categorias:<br>
         <br>
         - Chamada de spam <br>
         - SMS de spam <br>
@@ -85,28 +85,18 @@
     <string name="sound">Som</string>
     <string name="help_sound">
         <![CDATA[
-        O som só pode ser definido ao criar um novo canal;
+        O som só pode ser definido ao criar um novo canal,
          uma vez criado, só pode ser modificado nas configurações do sistema. <br>
         <br>
         <b>Som Personalizado</b><br>
         Alguns telefones permitem a importação direta de toques personalizados via aplicativo.
-        Para outros, importe pelas configurações do sistema e depois selecione no aplicativo. <br>
+        Para outros, importe através das configurações do sistema e depois selecione-o no aplicativo. <br>
         ]]>
     </string>
     <string name="default_">Padrão</string>
     <string name="select_notification_sound">Selecionar som de notificação</string>
     <string name="unknown">Desconhecido</string>
     <string name="icon_color">Cor do Ícone</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        O valor da cor ARGB, representado em formato decimal. <br>
-        <br>
-        Deixe em branco para escolha automática de cores. <br>
-        <br>
-        Por exemplo:<br>
-        O valor decimal de <font color="#FF0000">0xFF0000</font> é <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">Confirmar exclusão?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
@@ -117,7 +107,7 @@
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Este canal está sendo usado pelas seguintes regras. <br>
+        Este canal está sendo usado atualmente pelas seguintes regras. <br>
         <br>
         %s<br>
         <br>
@@ -126,29 +116,26 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        O canal de notificação será silenciado à força, mesmo que esteja configurado como alta importância.
+        O canal de notificação será silenciado à força, mesmo que esteja configurado com alta importância.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">Cor do LED</string>
     <string name="help_led_color">
         <![CDATA[
-        O valor da cor ARGB, representado em formato decimal. <br>
-        Por exemplo:<br>
-        O valor decimal de <font color="#FF0000">0xFF0000</font> é <b>16711680</b>.
-        <br>
-        A cor só pode ser definida ao criar um novo canal;
+        A cor da luz só pode ser definida ao criar um novo canal,
          uma vez criado, só pode ser modificada nas configurações do sistema. <br>
         ]]>
     </string>
     <string name="icon">Ícone</string>
     <string name="automatic">Automático</string>
     <string name="medium">Média</string>
-    <string name="high_muted">Alta Silenciosa</string>
+    <string name="high_muted">Alta Silenciada</string>
     <string name="help_channel_importance">
         <![CDATA[
-        A importância só pode ser definida ao criar um novo canal;
+        A importância só pode ser definida ao criar um novo canal,
          uma vez criado, só pode ser modificada nas configurações do sistema. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">Toque no texto ARGB para editá-lo manualmente.</string>
 </resources>

@@ -31,7 +31,7 @@
         ]]>
     </string>
     <string name="blocked">Diblokir</string>
-    <string name="allowed">Lolos</string>
+    <string name="allowed">Diizinkan</string>
     <string name="help_notification">
         <![CDATA[
         Ada empat saluran notifikasi bawaan: <br>
@@ -46,12 +46,12 @@
         &ensp; Muncul di bilah status dan panel notifikasi dengan suara. <br>
         <br>
         <font color="#00BFFF"><b>Tinggi</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Muncul di bilah status, panel notifikasi, dan sebagai pop-up heads-up dengan suara. <br>
+        &ensp; Muncul di bilah status, panel notifikasi, dan sebagai pop-up notifikasi mengambang dengan suara. <br>
         <br>
-        <font color="#00BFFF"><b>Tinggi Senyap</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Tinggi Dibisukan</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Mirip dengan <b>Tinggi</b> tetapi membisukan suara. <br>
-        &ensp; Ideal untuk obrolan SMS aktif di mana suara yang terus-menerus dapat mengganggu. <br>
-          Dianggap obrolan aktif saat layar tidak terkunci dan aplikasi SMS terbuka di latar depan. <br>
+        &ensp; Ideal untuk obrolan SMS aktif di mana suara terus-menerus dapat mengganggu. <br>
+          Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS terbuka di latar depan. <br>
         ]]>
     </string>
     <string name="none">Tidak Ada</string>
@@ -68,20 +68,20 @@
         Setelah dibuat, ID tidak dapat diedit.
         ]]>
     </string>
-    <string name="channel_importance">Prioritas</string>
+    <string name="channel_importance">Kepentingan</string>
     <string name="channel_group">Grup Saluran</string>
     <string name="help_channel_group">
         <![CDATA[
-        Jika dibiarkan kosong, notifikasi secara otomatis dikelompokkan ke dalam tiga kategori:<br>
+        Jika dibiarkan kosong, notifikasi akan otomatis dikelompokkan menjadi tiga kategori:<br>
         <br>
-        - Spam panggilan <br>
-        - Spam SMS <br>
+        - Panggilan spam <br>
+        - SMS spam <br>
         - SMS Valid <br>
         <br>
         Jika grup ditentukan, mereka akan dikelompokkan secara terpisah.
         ]]>
     </string>
-    <string name="mute">Senyap</string>
+    <string name="mute">Bisukan</string>
     <string name="sound">Suara</string>
     <string name="help_sound">
         <![CDATA[
@@ -97,48 +97,34 @@
     <string name="select_notification_sound">Pilih suara notifikasi</string>
     <string name="unknown">Tidak Dikenal</string>
     <string name="icon_color">Warna Ikon</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        Nilai warna ARGB, direpresentasikan dalam format desimal. <br>
-        <br>
-        Biarkan kosong untuk pemilihan warna otomatis. <br>
-        <br>
-        Contoh:<br>
-        Nilai desimal dari <font color="#FF0000">0xFF0000</font> adalah <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">Konfirmasi untuk menghapus?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Buat saluran notifikasi baru. <br>
         <br>
-        <font color="#03DAC5"><b>Tekan lama</b></font> saluran notifikasi di daftar dropdown ini untuk mengeditnya.
+        <font color="#03DAC5"><b>Ketuk lama</b></font> saluran notifikasi dalam daftar drop-down ini untuk mengeditnya.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Saluran ini sedang digunakan oleh aturan berikut. <br>
+        Saluran ini saat ini digunakan oleh aturan berikut. <br>
         <br>
         %s<br>
         <br>
-        Pastikan untuk memperbarui aturan tersebut setelah menghapus saluran ini. <br>
+        Pastikan untuk memperbarui aturan setelah menghapus saluran ini. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        Saluran notifikasi akan dibisukan secara paksa, meskipun dikonfigurasi sebagai prioritas tinggi.
+        Saluran notifikasi akan dibisukan secara paksa, meskipun dikonfigurasi sebagai kepentingan tinggi.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">Warna LED</string>
     <string name="help_led_color">
         <![CDATA[
-        Nilai warna ARGB, direpresentasikan dalam format desimal. <br>
-        Contoh:<br>
-        Nilai desimal dari <font color="#FF0000">0xFF0000</font> adalah <b>16711680</b>.
-        <br>
-        Warna hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, warna hanya dapat diubah di pengaturan sistem. <br>
+        Warna cahaya hanya dapat diatur saat membuat saluran baru,
+         setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
         ]]>
     </string>
     <string name="icon">Ikon</string>
@@ -147,8 +133,9 @@
     <string name="high_muted">Tinggi Dibisukan</string>
     <string name="help_channel_importance">
         <![CDATA[
-        Prioritas hanya dapat diatur saat membuat saluran baru,
+        Kepentingan hanya dapat diatur saat membuat saluran baru,
          setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">Ketuk teks ARGB untuk mengeditnya secara manual.</string>
 </resources>

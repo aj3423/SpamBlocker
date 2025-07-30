@@ -16,13 +16,12 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.runtime.Composable
@@ -58,25 +57,27 @@ import androidx.core.graphics.createBitmap
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
-import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
-import spam.blocker.util.logi
 
+private const val AREA_WIDTH = 260 // .dp
 
 @Composable
 fun ColorPickerButton(
     color: Int?,
     defaultText: String? = null,
     defaultColor: Int = Color.White.toArgb(),
+    clearable: Boolean = false,
     enabled: Boolean = true,
-    onSelect: Lambda1<Int>
+    onSelect: Lambda1<Int?>
 ) {
     val trigger = remember { mutableStateOf(false) }
 
     ColorPickerPopup(
         trigger = trigger,
         initColor = color ?: defaultColor,
+        clearable = clearable,
         onSelect = onSelect,
     )
 
@@ -85,7 +86,9 @@ fun ColorPickerButton(
         label = if (color == null) defaultText else null,
         color = C.textGrey,
         enabled = enabled,
-        contentPadding = PaddingValues(horizontal = if (color == null) 12.dp else 0.dp, vertical = 0.dp),
+        contentPadding = PaddingValues(
+            horizontal = if (color == null) BUTTON_H_PADDING.dp else 0.dp, vertical = 0.dp
+        ),
         icon = if (color == null) {
             null
         } else {
@@ -94,6 +97,7 @@ fun ColorPickerButton(
                     modifier = Modifier
                         .fillMaxHeight()
                         .width(60.dp)
+                        .clip(RoundedCornerShape(BUTTON_CORNER_RADIUS.dp))
                         .background(Color(color))
                 )
             }
@@ -106,7 +110,8 @@ fun ColorPickerButton(
 fun ColorPickerPopup(
     trigger: MutableState<Boolean>,
     initColor: Int,
-    onSelect: Lambda1<Int>,
+    clearable: Boolean = false,
+    onSelect: Lambda1<Int?>,
 ) {
     if (!trigger.value)
         return
@@ -121,12 +126,24 @@ fun ColorPickerPopup(
     PopupDialog(
         trigger = trigger,
         buttons = {
-            StrokeButton(
-                label = Str(R.string.save),
-                color = Teal200
-            ) {
-                onSelect((a shl 24) + rgb)
-                trigger.value = false
+            RowVCenterSpaced(8) {
+                if (clearable) {
+
+                    StrokeButton(
+                        label = Str(R.string.clear),
+                        color = Salmon
+                    ) {
+                        onSelect(null)
+                        trigger.value = false
+                    }
+                }
+                StrokeButton(
+                    label = Str(R.string.save),
+                    color = Teal200
+                ) {
+                    onSelect((a shl 24) + rgb)
+                    trigger.value = false
+                }
             }
         }
     ) {
@@ -145,10 +162,12 @@ fun ColorPickerPopup(
             }
         }
 
-        val hsv = remember(rgb) {
+        val hsv by remember(rgb) {
             val hsvArray = floatArrayOf(0f, 0f, 0f)
             AndroidColor.colorToHSV(rgb, hsvArray)
-            Triple(hsvArray[0], hsvArray[1], hsvArray[2])
+            mutableStateOf(
+                Triple(hsvArray[0], hsvArray[1], hsvArray[2])
+            )
         }
 
         // Top panel
@@ -164,31 +183,36 @@ fun ColorPickerPopup(
         }
 
         // Bottom preview area
-        Box(
-            modifier = Modifier
-                .size(100.dp)
-                .background(argbColor),
-            contentAlignment = Alignment.Center
-        ) {
-            BasicTextField(
-                value = colorString,
-                onValueChange = {
-                    colorString = it
-                },
-                textStyle = TextStyle(
-                    textAlign = TextAlign.Center,
-                    fontSize = 18.sp,
-                    color = argbColor.contrastColor()
-                ),
+        RowVCenterSpaced(2) {
+            Spacer(modifier = M.width(32.dp)) // make the Box below horizontally centered...
 
+            Box(
                 modifier = Modifier
-                    .height(200.dp)
-                    .background(argbColor)
-                    .wrapContentHeight(align = Alignment.CenterVertically)
-            )
+                    .size(100.dp)
+                    .background(argbColor),
+                contentAlignment = Alignment.Center
+            ) {
+                BasicTextField(
+                    value = colorString,
+                    onValueChange = {
+                        colorString = it
+                    },
+                    textStyle = TextStyle(
+                        textAlign = TextAlign.Center,
+                        fontSize = 18.sp,
+                        color = argbColor.contrastColor()
+                    ),
+
+                    modifier = Modifier
+                        .height(200.dp)
+                        .background(argbColor)
+                        .wrapContentHeight(align = Alignment.CenterVertically)
+                )
+            }
+
+            BalloonQuestionMark(Str(R.string.tap_text_to_edit_color))
         }
     }
-
 }
 
 fun String.parseColorString(): Pair<Int, Int>? {
@@ -233,7 +257,7 @@ fun HueBar(
     Canvas(
         modifier = Modifier
             .height(40.dp)
-            .width(300.dp)
+            .width(AREA_WIDTH.dp)
             .clip(RoundedCornerShape(50))
             .emitDragGesture(interactionSource)
     ) {
@@ -346,9 +370,9 @@ fun SatValPanel(
 
     Canvas(
         modifier = Modifier
-            .size(300.dp)
+            .size(AREA_WIDTH.dp)
             .emitDragGesture(interactionSource)
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(6.dp))
     ) {
         val cornerRadius = 12.dp.toPx()
         val satValSize = size

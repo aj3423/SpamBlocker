@@ -30,49 +30,49 @@
         &emsp; へ: <font color="#888888">空のままにする</fonts> <br>
         ]]>
     </string>
-    <string name="blocked">ブロック</string>
-    <string name="allowed">通過</string>
+    <string name="blocked">ブロック済み</string>
+    <string name="allowed">許可済み</string>
     <string name="help_notification">
         <![CDATA[
-        4つの組み込み通知チャネルがあります: <br>
+        組み込みの通知チャンネルは4つあります: <br>
         <br>
         <font color="#00BFFF"><b>なし</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; 通知は一切ありません。 <br>
+        &ensp; 通知は全くありません。 <br>
         <br>
         <font color="#00BFFF"><b>低</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; ステータスバーと通知シェードに表示されます。 <br>
         <br>
         <font color="#00BFFF"><b>中</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; ステータスバーと通知シェードに音付きで表示されます。 <br>
+        &ensp; ステータスバーと通知シェードにサウンド付きで表示されます。 <br>
         <br>
         <font color="#00BFFF"><b>高</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; ステータスバー、通知シェード、およびヘッドアップポップアップとして音付きで表示されます。 <br>
+        &ensp; ステータスバー、通知シェード、およびヘッドアップポップアップとしてサウンド付きで表示されます。 <br>
         <br>
-        <font color="#00BFFF"><b>高 (ミュート)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; <b>高</b>に似ていますが、音がミュートされます。 <br>
-        &ensp; 連続した音が邪魔になる可能性のあるアクティブなSMSチャットに最適です。 <br>
-          画面がロック解除され、SMSアプリがフォアグラウンドで開いている場合、アクティブなチャットと見なされます。 <br>
+        <font color="#00BFFF"><b>高（ミュート）</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; 高に似ていますが、サウンドをミュートします。 <br>
+        &ensp; 継続的なサウンドが邪魔になる可能性のあるアクティブなSMSチャットに最適です。 <br>
+          画面がロック解除されており、SMSアプリがフォアグラウンドで開いている場合、アクティブなチャットと見なされます。 <br>
         ]]>
     </string>
     <string name="none">なし</string>
     <string name="low">低</string>
     <string name="high">高</string>
     <string name="sms_chat">SMSチャット</string>
-    <string name="call_channel">通話チャネル</string>
-    <string name="sms_channel">SMSチャネル</string>
-    <string name="channel_id">チャネルID</string>
+    <string name="call_channel">通話チャンネル</string>
+    <string name="sms_channel">SMSチャンネル</string>
+    <string name="channel_id">チャンネルID</string>
     <string name="help_channel_id">
         <![CDATA[
-        このIDはシステム設定で通知チャネルとして表示されます。<br>
+        このIDは、システム設定で通知チャンネルとして表示されます。 <br>
         <br>
-        作成後、IDは編集できません。
+        一度作成されると、IDは編集できません。
         ]]>
     </string>
     <string name="channel_importance">重要度</string>
-    <string name="channel_group">チャネルグループ</string>
+    <string name="channel_group">チャンネルグループ</string>
     <string name="help_channel_group">
         <![CDATA[
-        空のままにすると、通知は自動的に3つのカテゴリにグループ化されます：<br>
+        空のままにすると、通知は自動的に3つのカテゴリにグループ化されます:<br>
         <br>
         - 迷惑電話 <br>
         - 迷惑SMS <br>
@@ -85,32 +85,24 @@
     <string name="sound">サウンド</string>
     <string name="help_sound">
         <![CDATA[
-        サウンドは新しいチャネルを作成するときにのみ設定でき、一度作成されると、システム設定でのみ変更できます。 <br>
+        サウンドは新しいチャンネルを作成するときにのみ設定でき、
+         一度作成されるとシステム設定でのみ変更できます。 <br>
         <br>
         <b>カスタムサウンド</b><br>
-        一部の電話では、アプリを介してカスタム着信音を直接インポートできます。その他の場合は、システム設定を介してインポートし、アプリで選択してください。 <br>
+        一部の電話では、アプリ経由でカスタム着信音を直接インポートできます。
+        他の電話では、システム設定からインポートし、その後アプリで選択してください。 <br>
         ]]>
     </string>
     <string name="default_">デフォルト</string>
     <string name="select_notification_sound">通知音を選択</string>
     <string name="unknown">不明</string>
     <string name="icon_color">アイコンの色</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        10進形式で表現されたARGBカラー値。<br>
-        <br>
-        自動で色を選択するには空のままにします。<br>
-        <br>
-        例：<br>
-        <font color="#FF0000">0xFF0000</font> の10進値は <b>16711680</b> です。
-        ]]>
-    </string>
     <string name="confirm_to_delete">削除を確認しますか？</string>
     <string name="help_create_notification_channel">
         <![CDATA[
-        新しい通知チャネルを作成します。<br>
+        新しい通知チャンネルを作成します。 <br>
         <br>
-        このドロップダウンリストの通知チャネルを<font color="#03DAC5"><b>長押し</b></font>して編集します。
+        <font color="#03DAC5"><b>長押し</b></font>して、このドロップダウンリストの通知チャンネルを編集します。
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -124,27 +116,26 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        通知チャンネルは、重要度が高く設定されていても、強制的にミュートされます。
+        通知チャンネルは、重要度が高く設定されている場合でも、強制的にミュートされます。
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">LEDの色</string>
     <string name="help_led_color">
         <![CDATA[
-        10進形式で表されたARGBカラー値。 <br>
-        例：<br>
-        <font color="#FF0000">0xFF0000</font>の10進値は<b>16711680</b>です。
-        <br>
-        色は新しいチャンネルを作成する際にのみ設定でき、一度作成されるとシステム設定でのみ変更できます。 <br>
+        ライトの色は新しいチャンネルを作成するときにのみ設定でき、
+         一度作成されるとシステム設定でのみ変更できます。 <br>
         ]]>
     </string>
     <string name="icon">アイコン</string>
     <string name="automatic">自動</string>
     <string name="medium">中</string>
-    <string name="high_muted">高 (ミュート)</string>
+    <string name="high_muted">高（ミュート）</string>
     <string name="help_channel_importance">
         <![CDATA[
-        重要度は新しいチャネルを作成するときにのみ設定でき、一度作成されると、システム設定でのみ変更できます。 <br>
+        重要度は新しいチャンネルを作成するときにのみ設定でき、
+         一度作成されるとシステム設定でのみ変更できます。 <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">ARGBテキストをタップして手動で編集します。</string>
 </resources>

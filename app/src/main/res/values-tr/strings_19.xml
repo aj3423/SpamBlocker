@@ -31,27 +31,27 @@
         ]]>
     </string>
     <string name="blocked">Engellendi</string>
-    <string name="allowed">Geçti</string>
+    <string name="allowed">İzin Verildi</string>
     <string name="help_notification">
         <![CDATA[
         Dört adet yerleşik bildirim kanalı bulunmaktadır: <br>
         <br>
-        <font color="#00BFFF"><b>Hiçbiri</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        <font color="#00BFFF"><b>Yok</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Hiç bildirim yok. <br>
         <br>
         <font color="#00BFFF"><b>Düşük</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; Durum çubuğunda ve bildirim gölgesinde görünür. <br>
         <br>
         <font color="#00BFFF"><b>Orta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Durum çubuğunda ve bildirim gölgesinde sesli olarak görünür. <br>
+        &ensp; Durum çubuğunda ve bildirim gölgesinde sesle birlikte görünür. <br>
         <br>
         <font color="#00BFFF"><b>Yüksek</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Durum çubuğunda, bildirim gölgesinde ve baş üstü açılır pencere olarak sesli görünür. <br>
+        &ensp; Durum çubuğunda, bildirim gölgesinde ve bildirim penceresi olarak sesle birlikte görünür. <br>
         <br>
         <font color="#00BFFF"><b>Yüksek (Sessiz)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; <b>Yüksek</b> ile benzerdir ancak sesi kapatır. <br>
         &ensp; Sürekli seslerin rahatsız edici olabileceği aktif SMS sohbetleri için idealdir. <br>
-          Ekranın kilidi açık ve SMS uygulaması ön planda açık olduğunda aktif sohbet olarak kabul edilir. <br>
+          Ekranın kilidi açıkken ve SMS uygulaması ön planda açıkken aktif sohbet olarak kabul edilir. <br>
         ]]>
     </string>
     <string name="none">Yok</string>
@@ -74,8 +74,8 @@
         <![CDATA[
         Boş bırakıldığında, bildirimler otomatik olarak üç kategoriye ayrılır:<br>
         <br>
-        - Spam arama <br>
-        - Spam SMS <br>
+        - İstenmeyen arama <br>
+        - İstenmeyen SMS <br>
         - Geçerli SMS <br>
         <br>
         Bir grup belirtilirse, ayrı ayrı gruplandırılırlar.
@@ -94,25 +94,15 @@
         ]]>
     </string>
     <string name="default_">Varsayılan</string>
-    <string name="select_notification_sound">Bildirim sesini seç</string>
-    <string name="unknown">Bilinmeyen</string>
+    <string name="select_notification_sound">Bildirim sesini seçin</string>
+    <string name="unknown">Bilinmiyor</string>
     <string name="icon_color">Simge Rengi</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        ARGB renk değeri, ondalık biçimde temsil edilir. <br>
-        <br>
-        Renklerin otomatik seçilmesi için boş bırakın. <br>
-        <br>
-        Örneğin:<br>
-        <font color="#FF0000">0xFF0000</font> değerinin ondalık karşılığı <b>16711680</b>\'dir.
-        ]]>
-    </string>
     <string name="confirm_to_delete">Silmeyi onayla?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Yeni bir bildirim kanalı oluşturun. <br>
         <br>
-        Bu açılır listedeki bir bildirim kanalına <font color="#03DAC5"><b>uzun basın</b></font> düzenlemek için.
+        Bu açılır listedeki bir bildirim kanalına düzenlemek için <font color="#03DAC5"><b>uzun basın</b></font>.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -126,18 +116,14 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        Bildirim kanalı, yüksek önemde yapılandırılmış olsa bile zorla sessize alınacaktır.
+        Bildirim kanalı, yüksek önemde yapılandırılmış olsa bile zorla susturulacaktır.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">LED Rengi</string>
     <string name="help_led_color">
         <![CDATA[
-        ARGB renk değeri, ondalık biçimde temsil edilir. <br>
-        Örneğin:<br>
-        <font color="#FF0000">0xFF0000</font>\'in ondalık değeri <b>16711680</b>\'dir.
-        <br>
-        Renk yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
+        Işık rengi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
          oluşturulduktan sonra yalnızca sistem ayarlarında değiştirilebilir. <br>
         ]]>
     </string>
@@ -147,8 +133,9 @@
     <string name="high_muted">Yüksek (Sessiz)</string>
     <string name="help_channel_importance">
         <![CDATA[
-        Önem düzeyi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
+        Önem derecesi yalnızca yeni bir kanal oluşturulurken ayarlanabilir,
          oluşturulduktan sonra yalnızca sistem ayarlarında değiştirilebilir. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">ARGB metnine dokunarak manuel olarak düzenleyin.</string>
 </resources>

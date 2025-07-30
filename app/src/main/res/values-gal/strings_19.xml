@@ -31,13 +31,13 @@
         ]]>
     </string>
     <string name="blocked">Bloqueado</string>
-    <string name="allowed">Pasado</string>
+    <string name="allowed">Permitido</string>
     <string name="help_notification">
         <![CDATA[
-        Hai catro canles de notificación incorporados: <br>
+        Existen catro canles de notificación incorporadas: <br>
         <br>
-        <font color="#00BFFF"><b>Ningún</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Sen notificación algunha. <br>
+        <font color="#00BFFF"><b>Ningunha</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Ningunha notificación en absoluto. <br>
         <br>
         <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; Aparece na barra de estado e na sombra de notificacións. <br>
@@ -46,18 +46,18 @@
         &ensp; Aparece na barra de estado e na sombra de notificacións cun son. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente de aviso cun son. <br>
+        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente cun son. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; É similar a <b>Alta</b> pero silencia o son. <br>
-        &ensp; É ideal para chats SMS activos onde os sons continuos poderían ser perturbadores. <br>
-          Considerase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está aberta en primeiro plano. <br>
+        &ensp; É ideal para chats SMS activos onde os sons continuos poderían ser disruptivos. <br>
+          Considérase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está aberta en primeiro plano. <br>
         ]]>
     </string>
-    <string name="none">Ningún</string>
+    <string name="none">Ningunha</string>
     <string name="low">Baixa</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Chat de SMS</string>
+    <string name="sms_chat">Chat SMS</string>
     <string name="call_channel">Canle de Chamada</string>
     <string name="sms_channel">Canle de SMS</string>
     <string name="channel_id">ID da Canle</string>
@@ -74,8 +74,8 @@
         <![CDATA[
         Cando se deixa baleiro, as notificacións agrúpanse automaticamente en tres categorías:<br>
         <br>
-        - Chamada de spam <br>
-        - SMS de spam <br>
+        - Chamada spam <br>
+        - SMS spam <br>
         - SMS válidos <br>
         <br>
         Se se especifica un grupo, agruparanse por separado.
@@ -90,29 +90,19 @@
         <br>
         <b>Son Personalizado</b><br>
         Algúns teléfonos permiten a importación directa de tons de chamada personalizados a través da aplicación.
-        Para outros, importe a través da configuración do sistema e despois selecciónelo na aplicación. <br>
+        Para outros, importe a través da configuración do sistema e despois selecciónao na aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>
     <string name="select_notification_sound">Seleccionar son de notificación</string>
     <string name="unknown">Descoñecido</string>
     <string name="icon_color">Cor da Icona</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        O valor da cor ARGB, representado en formato decimal. <br>
-        <br>
-        Déixao baleiro para a elección automática de cores. <br>
-        <br>
-        Por exemplo:<br>
-        O valor decimal de <font color="#FF0000">0xFF0000</font> é <b>16711680</b>.
-        ]]>
-    </string>
-    <string name="confirm_to_delete">Confirmar eliminación?</string>
+    <string name="confirm_to_delete">Confirmar para eliminar?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Crear unha nova canle de notificación. <br>
         <br>
-        <font color="#03DAC5"><b>Mantén premido</b></font> unha canle de notificación nesta lista despregable para editala.
+        <font color="#03DAC5"><b>Toca e mantén premido</b></font> unha canle de notificación nesta lista despregable para editala.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -126,29 +116,26 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        A canle de notificacións será silenciada á forza, aínda que estea configurada como de alta importancia.
+        A canle de notificación silenciarase á forza, aínda que estea configurada con alta importancia.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">Cor do LED</string>
     <string name="help_led_color">
         <![CDATA[
-        O valor de cor ARGB, representado en formato decimal. <br>
-        Por exemplo:<br>
-        O valor decimal de <font color="#FF0000">0xFF0000</font> é <b>16711680</b>.
-        <br>
-        A cor só se pode configurar ao crear unha nova canle;
+        A cor da luz só se pode establecer ao crear unha nova canle;
          unha vez creada, só se pode modificar na configuración do sistema. <br>
         ]]>
     </string>
     <string name="icon">Icona</string>
     <string name="automatic">Automático</string>
     <string name="medium">Media</string>
-    <string name="high_muted">Alta silenciada</string>
+    <string name="high_muted">Alta Silenciada</string>
     <string name="help_channel_importance">
         <![CDATA[
         A importancia só se pode establecer ao crear unha nova canle;
          unha vez creada, só se pode modificar na configuración do sistema. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">Toca o texto ARGB para editalo manualmente.</string>
 </resources>

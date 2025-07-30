@@ -30,33 +30,33 @@
         &emsp; אל: <font color="#888888">השאר ריק</font> <br>
         ]]>
     </string>
-    <string name="blocked">נחסם</string>
-    <string name="allowed">עבר</string>
+    <string name="blocked">חסום</string>
+    <string name="allowed">מאושר</string>
     <string name="help_notification">
         <![CDATA[
-        קיימים ארבעה ערוצי התראות מובנים: <br>
+        קיימים ארבעה ערוצי התראה מובנים: <br>
         <br>
         <font color="#00BFFF"><b>ללא</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; ללא כל התראה. <br>
         <br>
         <font color="#00BFFF"><b>נמוך</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; מופיע בשורת המצב ובצל התראות. <br>
+        &ensp; מופיע בשורת המצב וילון ההתראות. <br>
         <br>
         <font color="#00BFFF"><b>בינוני</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; מופיע בשורת המצב ובצל התראות עם צליל. <br>
+        &ensp; מופיע בשורת המצב וילון ההתראות עם צליל. <br>
         <br>
         <font color="#00BFFF"><b>גבוה</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; מופיע בשורת המצב, בצל התראות, ובקופץ Heads-up עם צליל. <br>
+        &ensp; מופיע בשורת המצב, וילון ההתראות, וכחלון קופץ ראשי עם צליל. <br>
         <br>
-        <font color="#00BFFF"><b>גבוה מושתק</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; דומה ל-<b>גבוה</b> אך משתיק את הצליל. <br>
-        &ensp; אידיאלי לצ\'אטים פעילים ב-SMS שבהם צלילים מתמשכים עלולים להפריע. <br>
-          הוא נחשב צ\'אט פעיל כאשר המסך לא נעול ואפליקציית ה-SMS פתוחה בחזית. <br>
+        <font color="#00BFFF"><b>גבוה ומושתק</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; דומה ל<b>גבוה</b> אך משתיק את הצליל. <br>
+        &ensp; אידיאלי לצ\'אטים פעילים של SMS שבהם צלילים רצופים עלולים להפריע. <br>
+          נחשב לצ\'אט פעיל כאשר המסך לא נעול ואפליקציית ה-SMS פתוחה בחזית. <br>
         ]]>
     </string>
     <string name="none">ללא</string>
     <string name="low">נמוך</string>
-    <string name="high">גבוהה</string>
+    <string name="high">גבוה</string>
     <string name="sms_chat">צ\'אט SMS</string>
     <string name="call_channel">ערוץ שיחות</string>
     <string name="sms_channel">ערוץ SMS</string>
@@ -69,10 +69,10 @@
         ]]>
     </string>
     <string name="channel_importance">חשיבות</string>
-    <string name="channel_group">קבוצת ערוץ</string>
+    <string name="channel_group">קבוצת ערוצים</string>
     <string name="help_channel_group">
         <![CDATA[
-        כאשר נותר ריק, התראות מקובצות אוטומטית לשלוש קטגוריות:<br>
+        כאשר השדה נשאר ריק, התראות מקובצות אוטומטית לשלוש קטגוריות:<br>
         <br>
         - שיחת ספאם <br>
         - SMS ספאם <br>
@@ -85,8 +85,8 @@
     <string name="sound">צליל</string>
     <string name="help_sound">
         <![CDATA[
-        ניתן להגדיר את הצליל רק בעת יצירת ערוץ חדש,
-         לאחר יצירתו, ניתן לשנות אותו רק בהגדרות המערכת. <br>
+        הצליל ניתן להגדרה רק בעת יצירת ערוץ חדש,
+         לאחר יצירתו, ניתן לשנותו רק בהגדרות המערכת. <br>
         <br>
         <b>צליל מותאם אישית</b><br>
         חלק מהטלפונים מאפשרים ייבוא ישיר של צלצולים מותאמים אישית דרך האפליקציה.
@@ -97,27 +97,17 @@
     <string name="select_notification_sound">בחר צליל התראה</string>
     <string name="unknown">לא ידוע</string>
     <string name="icon_color">צבע אייקון</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        ערך צבע ARGB, מיוצג בפורמט עשרוני. <br>
-        <br>
-        השאר ריק לבחירה אוטומטית של צבעים. <br>
-        <br>
-        לדוגמה:<br>
-        הערך העשרוני של <font color="#FF0000">0xFF0000</font> הוא <b>16711680</b>.
-        ]]>
-    </string>
-    <string name="confirm_to_delete">אשר מחיקה?</string>
+    <string name="confirm_to_delete">לאשר מחיקה?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         צור ערוץ התראות חדש. <br>
         <br>
-        <font color="#03DAC5"><b>לחיצה ארוכה</b></font> על ערוץ התראה ברשימה הנפתחת הזו כדי לערוך אותו.
+        <font color="#03DAC5"><b>לחיצה ארוכה</b></font> על ערוץ התראות ברשימה הנפתחת זו כדי לערוך אותו.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        ערוץ זה משמש כרגע על ידי הכללים הבאים. <br>
+        ערוץ זה נמצא בשימוש על ידי הכללים הבאים. <br>
         <br>
         %s<br>
         <br>
@@ -129,26 +119,23 @@
         ערוץ ההתראות יושתק בכוח, גם אם הוא מוגדר כבעל חשיבות גבוהה.
         ]]>
     </string>
-    <string name="led">LED</string>
-    <string name="led_color">צבע LED</string>
+    <string name="led">לד</string>
+    <string name="led_color">צבע לד</string>
     <string name="help_led_color">
         <![CDATA[
-        ערך צבע ARGB, מיוצג בפורמט עשרוני. <br>
-        לדוגמה:<br>
-        הערך העשרוני של <font color="#FF0000">0xFF0000</font> הוא <b>16711680</b>.
-        <br>
-        הצבע יכול להיות מוגדר רק בעת יצירת ערוץ חדש,
+        צבע האור ניתן להגדרה רק בעת יצירת ערוץ חדש,
          לאחר יצירתו, ניתן לשנותו רק בהגדרות המערכת. <br>
         ]]>
     </string>
-    <string name="icon">סמל</string>
+    <string name="icon">אייקון</string>
     <string name="automatic">אוטומטי</string>
-    <string name="medium">בינונית</string>
-    <string name="high_muted">גבוהה (מושתקת)</string>
+    <string name="medium">בינוני</string>
+    <string name="high_muted">גבוה ומושתק</string>
     <string name="help_channel_importance">
         <![CDATA[
-        ניתן להגדיר את החשיבות רק בעת יצירת ערוץ חדש,
-         לאחר יצירתו, ניתן לשנות אותה רק בהגדרות המערכת. <br>
+        חשיבות הערוץ ניתנת להגדרה רק בעת יצירת ערוץ חדש,
+         לאחר יצירתו, ניתן לשנותה רק בהגדרות המערכת. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">הקש על טקסט ה-ARGB כדי לערוך אותו ידנית.</string>
 </resources>

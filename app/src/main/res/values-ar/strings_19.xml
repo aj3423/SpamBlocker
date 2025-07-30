@@ -30,14 +30,14 @@
         &emsp; إلى: <font color="#888888">اتركه فارغًا</fonts> <br>
         ]]>
     </string>
-    <string name="blocked">تم الحظر</string>
-    <string name="allowed">تم الاجتياز</string>
+    <string name="blocked">محظور</string>
+    <string name="allowed">مسموح به</string>
     <string name="help_notification">
         <![CDATA[
         توجد أربع قنوات إشعارات مدمجة: <br>
         <br>
         <font color="#00BFFF"><b>لا شيء</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; لا يوجد إشعار على الإطلاق. <br>
+        &ensp; لا توجد إشعارات على الإطلاق. <br>
         <br>
         <font color="#00BFFF"><b>منخفض</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; يظهر في شريط الحالة ودرج الإشعارات. <br>
@@ -46,37 +46,37 @@
         &ensp; يظهر في شريط الحالة ودرج الإشعارات مع صوت. <br>
         <br>
         <font color="#00BFFF"><b>عالي</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكنوافذ منبثقة مع صوت. <br>
+        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكنافذة منبثقة مع صوت. <br>
         <br>
-        <font color="#00BFFF"><b>عالي مكتوم</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>عالي (صامت)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; يشبه <b>عالي</b> ولكنه يكتم الصوت. <br>
-        &ensp; مثالي للمحادثات النشطة عبر الرسائل النصية القصيرة حيث قد تكون الأصوات المستمرة مزعجة. <br>
-          تعتبر المحادثة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل النصية مفتوحًا في المقدمة. <br>
+        &ensp; إنه مثالي لمحادثات الرسائل النصية النشطة حيث قد تكون الأصوات المستمرة مزعجة. <br>
+          تُعتبر المحادثة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل النصية مفتوحًا في المقدمة. <br>
         ]]>
     </string>
     <string name="none">لا شيء</string>
     <string name="low">منخفض</string>
-    <string name="high">مرتفع</string>
-    <string name="sms_chat">دردشة الرسائل النصية القصيرة</string>
+    <string name="high">عالي</string>
+    <string name="sms_chat">دردشة الرسائل النصية</string>
     <string name="call_channel">قناة المكالمات</string>
-    <string name="sms_channel">قناة الرسائل النصية القصيرة</string>
-    <string name="channel_id">معرّف القناة</string>
+    <string name="sms_channel">قناة الرسائل النصية</string>
+    <string name="channel_id">معرف القناة</string>
     <string name="help_channel_id">
         <![CDATA[
-        سيظهر هذا المعرّف في إعدادات النظام كقناة إشعارات. <br>
+        سيظهر هذا المعرف في إعدادات النظام كقناة للإشعارات. <br>
         <br>
-        بمجرد الإنشاء، لا يمكن تعديل المعرّف.
+        بمجرد إنشائه، لا يمكن تعديل المعرف.
         ]]>
     </string>
     <string name="channel_importance">الأهمية</string>
     <string name="channel_group">مجموعة القنوات</string>
     <string name="help_channel_group">
         <![CDATA[
-        عند تركه فارغًا، يتم تجميع الإشعارات تلقائيًا إلى ثلاث فئات:<br>
+        عند تركه فارغًا، يتم تجميع الإشعارات تلقائيًا في ثلاث فئات:<br>
         <br>
-        - مكالمة احتيالية <br>
-        - رسائل نصية احتيالية <br>
-        - رسائل نصية صالحة <br>
+        - مكالمة مزعجة <br>
+        - رسالة نصية مزعجة <br>
+        - رسالة نصية صالحة <br>
         <br>
         إذا تم تحديد مجموعة، فسيتم تجميعها بشكل منفصل.
         ]]>
@@ -89,24 +89,14 @@
          وبمجرد إنشائها، لا يمكن تعديله إلا في إعدادات النظام. <br>
         <br>
         <b>صوت مخصص</b><br>
-        تسمح بعض الهواتف بالاستيراد المباشر لنغمات الرنين المخصصة عبر التطبيق.
-        بالنسبة للبعض الآخر، قم بالاستيراد عبر إعدادات النظام ثم حددها في التطبيق. <br>
+        تتيح بعض الهواتف استيراد نغمات رنين مخصصة مباشرة عبر التطبيق.
+        بالنسبة للآخرين، قم بالاستيراد عبر إعدادات النظام ثم حدده في التطبيق. <br>
         ]]>
     </string>
     <string name="default_">افتراضي</string>
     <string name="select_notification_sound">تحديد صوت الإشعار</string>
     <string name="unknown">غير معروف</string>
     <string name="icon_color">لون الأيقونة</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        قيمة لون ARGB، ممثلة بالصيغة العشرية. <br>
-        <br>
-        اتركه فارغًا للاختيار التلقائي للألوان. <br>
-        <br>
-        على سبيل المثال:<br>
-        القيمة العشرية لـ <font color="#FF0000">0xFF0000</font> هي <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">تأكيد الحذف؟</string>
     <string name="help_create_notification_channel">
         <![CDATA[
@@ -117,7 +107,7 @@
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        تُستخدم هذه القناة حاليًا بواسطة القواعد التالية. <br>
+        هذه القناة مستخدمة حاليًا بواسطة القواعد التالية. <br>
         <br>
         %s<br>
         <br>
@@ -126,29 +116,26 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        سيتم كتم صوت قناة الإشعارات بالقوة، حتى لو تم تكوينها كذات أهمية عالية.
+        سيتم إسكات قناة الإشعارات بالقوة، حتى لو تم تكوينها بأهمية عالية.
         ]]>
     </string>
     <string name="led">مؤشر LED</string>
     <string name="led_color">لون مؤشر LED</string>
     <string name="help_led_color">
         <![CDATA[
-        قيمة لون ARGB، ممثلة بالصيغة العشرية. <br>
-        على سبيل المثال:<br>
-        القيمة العشرية لـ <font color="#FF0000">0xFF0000</font> هي <b>16711680</b>.
-        <br>
-        يمكن تعيين اللون فقط عند إنشاء قناة جديدة،
+        لا يمكن تعيين لون الضوء إلا عند إنشاء قناة جديدة،
          وبمجرد إنشائها، لا يمكن تعديله إلا في إعدادات النظام. <br>
         ]]>
     </string>
     <string name="icon">أيقونة</string>
     <string name="automatic">تلقائي</string>
     <string name="medium">متوسط</string>
-    <string name="high_muted">مرتفع (صامت)</string>
+    <string name="high_muted">عالي (صامت)</string>
     <string name="help_channel_importance">
         <![CDATA[
         لا يمكن تعيين الأهمية إلا عند إنشاء قناة جديدة،
          وبمجرد إنشائها، لا يمكن تعديلها إلا في إعدادات النظام. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">انقر على نص ARGB لتعديله يدويًا.</string>
 </resources>

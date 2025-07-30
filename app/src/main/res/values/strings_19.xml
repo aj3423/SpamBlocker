@@ -74,7 +74,7 @@
     <string name="help_channel_importance">
         <![CDATA[
         The importance can only be set when creating a new channel,
-         once it\'s created, it can only be modified in system settings. <br>
+         once created, it can only be modified in system settings. <br>
         ]]>
     </string>
     <string name="channel_group">Channel Group</string>
@@ -94,7 +94,7 @@
     <string name="help_sound">
         <![CDATA[
         The sound can only be set when creating a new channel,
-         once it\'s created, it can only be modified in system settings. <br>
+         once created, it can only be modified in system settings. <br>
         <br>
         <b>Custom Sound</b><br>
         Some phones allow direct import of custom ringtones via the app.
@@ -105,16 +105,6 @@
     <string name="select_notification_sound">Select notification sound</string>
     <string name="unknown">Unknown</string>
     <string name="icon_color">Icon Color</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        The ARGB color value, represented in decimal format. <br>
-        <br>
-        Leave it empty for auto choosing colors. <br>
-        <br>
-        For example:<br>
-        The decimal value of <font color="#FF0000">0xFF0000</font> is <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">Confirm to delete?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
@@ -141,14 +131,11 @@
     <string name="led_color">LED Color</string>
     <string name="help_led_color">
         <![CDATA[
-        The ARGB color value, represented in decimal format. <br>
-        For example:<br>
-        The decimal value of <font color="#FF0000">0xFF0000</font> is <b>16711680</b>.
-        <br>
-        The color can only be set when creating a new channel,
-         once it\'s created, it can only be modified in system settings. <br>
+        The light color can only be set when creating a new channel,
+         once created, it can only be modified in system settings. <br>
         ]]>
     </string>
     <string name="icon">Icon</string>
     <string name="automatic">Auto</string>
+    <string name="tap_text_to_edit_color">Tap the ARGB text to manually edit it.</string>
 </resources>

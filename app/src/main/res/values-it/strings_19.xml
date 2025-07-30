@@ -30,13 +30,13 @@
         &emsp; a: <font color="#888888">lasciare vuoto</fonts> <br>
         ]]>
     </string>
-    <string name="blocked">Blocca</string>
-    <string name="allowed">Passato</string>
+    <string name="blocked">Bloccato</string>
+    <string name="allowed">Consentito</string>
     <string name="help_notification">
         <![CDATA[
-        Ci sono quattro canali di notifica integrati: <br>
+        Ci sono quattro canali di notifica predefiniti: <br>
         <br>
-        <font color="#00BFFF"><b>Nessuna</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        <font color="#00BFFF"><b>Nessuno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Nessuna notifica. <br>
         <br>
         <font color="#00BFFF"><b>Bassa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
@@ -49,8 +49,8 @@
         &ensp; Appare nella barra di stato, nel pannello delle notifiche e come pop-up heads-up con un suono. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenziata</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; È simile ad <b>Alta</b> ma silenzia il suono. <br>
-        &ensp; È ideale per chat SMS attive dove i suoni continui potrebbero essere fastidiosi. <br>
+        &ensp; È simile a <b>Alta</b> ma silenzia il suono. <br>
+        &ensp; È ideale per le chat SMS attive dove i suoni continui potrebbero essere fastidiosi. <br>
           È considerata chat attiva quando lo schermo è sbloccato e l\'app SMS è aperta in primo piano. <br>
         ]]>
     </string>
@@ -58,7 +58,7 @@
     <string name="low">Bassa</string>
     <string name="high">Alta</string>
     <string name="sms_chat">Chat SMS</string>
-    <string name="call_channel">Canale Chiamate</string>
+    <string name="call_channel">Canale Chiamata</string>
     <string name="sms_channel">Canale SMS</string>
     <string name="channel_id">ID Canale</string>
     <string name="help_channel_id">
@@ -81,38 +81,28 @@
         Se viene specificato un gruppo, verranno raggruppati separatamente.
         ]]>
     </string>
-    <string name="mute">Silenzioso</string>
+    <string name="mute">Silenzia</string>
     <string name="sound">Suono</string>
     <string name="help_sound">
         <![CDATA[
-        Il suono può essere impostato solo durante la creazione di un nuovo canale;
+        Il suono può essere impostato solo quando si crea un nuovo canale;
          una volta creato, può essere modificato solo nelle impostazioni di sistema. <br>
         <br>
         <b>Suono Personalizzato</b><br>
         Alcuni telefoni consentono l\'importazione diretta di suonerie personalizzate tramite l\'app.
-        Per altri, importa tramite le impostazioni di sistema e poi selezionalo nell\'app. <br>
+        Per altri, importare tramite le impostazioni di sistema e poi selezionarlo nell\'app. <br>
         ]]>
     </string>
     <string name="default_">Predefinito</string>
-    <string name="select_notification_sound">Seleziona suono notifica</string>
+    <string name="select_notification_sound">Seleziona suono di notifica</string>
     <string name="unknown">Sconosciuto</string>
     <string name="icon_color">Colore Icona</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        Il valore colore ARGB, rappresentato in formato decimale. <br>
-        <br>
-        Lascia vuoto per la selezione automatica dei colori. <br>
-        <br>
-        Per esempio:<br>
-        Il valore decimale di <font color="#FF0000">0xFF0000</font> è <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">Confermi l\'eliminazione?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Crea un nuovo canale di notifica. <br>
         <br>
-        <font color="#03DAC5"><b>Tocca a lungo</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
+        <font color="#03DAC5"><b>Tieni premuto</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -133,22 +123,19 @@
     <string name="led_color">Colore LED</string>
     <string name="help_led_color">
         <![CDATA[
-        Il valore del colore ARGB, rappresentato in formato decimale. <br>
-        Ad esempio:<br>
-        Il valore decimale di <font color="#FF0000">0xFF0000</font> è <b>16711680</b>.
-        <br>
-        Il colore può essere impostato solo quando si crea un nuovo canale,
+        Il colore della luce può essere impostato solo quando si crea un nuovo canale;
          una volta creato, può essere modificato solo nelle impostazioni di sistema. <br>
         ]]>
     </string>
     <string name="icon">Icona</string>
-    <string name="automatic">Auto</string>
+    <string name="automatic">Automatico</string>
     <string name="medium">Media</string>
     <string name="high_muted">Alta Silenziata</string>
     <string name="help_channel_importance">
         <![CDATA[
-        L\'importanza può essere impostata solo durante la creazione di un nuovo canale;
+        L\'importanza può essere impostata solo quando si crea un nuovo canale;
          una volta creato, può essere modificata solo nelle impostazioni di sistema. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">Tocca il testo ARGB per modificarlo manualmente.</string>
 </resources>

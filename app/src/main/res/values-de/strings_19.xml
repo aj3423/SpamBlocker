@@ -30,28 +30,28 @@
         &emsp; zu: <font color="#888888">leer lassen</fonts> <br>
         ]]>
     </string>
-    <string name="blocked">Gesperrt</string>
-    <string name="allowed">Durchgelassen</string>
+    <string name="blocked">Blockiert</string>
+    <string name="allowed">Erlaubt</string>
     <string name="help_notification">
         <![CDATA[
         Es gibt vier integrierte Benachrichtigungskanäle: <br>
         <br>
         <font color="#00BFFF"><b>Keine</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Überhaupt keine Benachrichtigung. <br>
+        &ensp; Keine Benachrichtigung überhaupt. <br>
         <br>
         <font color="#00BFFF"><b>Niedrig</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsfeld. <br>
+        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsbereich. <br>
         <br>
         <font color="#00BFFF"><b>Mittel</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsfeld mit Ton. <br>
+        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsbereich mit Ton. <br>
         <br>
         <font color="#00BFFF"><b>Hoch</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Erscheint in der Statusleiste, im Benachrichtigungsfeld und als Heads-up-Pop-up mit Ton. <br>
+        &ensp; Erscheint in der Statusleiste, im Benachrichtigungsbereich und als Heads-up-Pop-up mit Ton. <br>
         <br>
         <font color="#00BFFF"><b>Hoch (stumm)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Es ist ähnlich wie <b>Hoch</b>, aber stummgeschaltet. <br>
-        &ensp; Ideal für aktive SMS-Chats, wo kontinuierliche Töne störend sein könnten. <br>
-          Als aktiver Chat gilt es, wenn der Bildschirm entsperrt und die SMS-App im Vordergrund geöffnet ist. <br>
+        &ensp; Es ähnelt <b>Hoch</b>, schaltet aber den Ton stumm. <br>
+        &ensp; Es ist ideal für aktive SMS-Chats, bei denen kontinuierliche Töne störend sein könnten. <br>
+          Als aktiver Chat gilt es, wenn der Bildschirm entsperrt ist und die SMS-App im Vordergrund geöffnet ist. <br>
         ]]>
     </string>
     <string name="none">Keine</string>
@@ -65,7 +65,7 @@
         <![CDATA[
         Diese ID wird in den Systemeinstellungen als Benachrichtigungskanal angezeigt. <br>
         <br>
-        Nach der Erstellung kann die ID nicht bearbeitet werden.
+        Einmal erstellt, kann die ID nicht mehr bearbeitet werden.
         ]]>
     </string>
     <string name="channel_importance">Wichtigkeit</string>
@@ -78,10 +78,10 @@
         - Spam-SMS <br>
         - Gültige SMS <br>
         <br>
-        Wird eine Gruppe angegeben, werden sie separat gruppiert.
+        Wenn eine Gruppe angegeben ist, werden sie separat gruppiert.
         ]]>
     </string>
-    <string name="mute">Stumm</string>
+    <string name="mute">Stummschalten</string>
     <string name="sound">Ton</string>
     <string name="help_sound">
         <![CDATA[
@@ -90,29 +90,19 @@
         <br>
         <b>Benutzerdefinierter Ton</b><br>
         Einige Telefone erlauben den direkten Import benutzerdefinierter Klingeltöne über die App.
-        Bei anderen erfolgt der Import über die Systemeinstellungen und die Auswahl dann in der App. <br>
+        Bei anderen muss der Import über die Systemeinstellungen erfolgen und dann in der App ausgewählt werden. <br>
         ]]>
     </string>
     <string name="default_">Standard</string>
     <string name="select_notification_sound">Benachrichtigungston auswählen</string>
     <string name="unknown">Unbekannt</string>
     <string name="icon_color">Symbolfarbe</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        Der ARGB-Farbwert, im Dezimalformat dargestellt. <br>
-        <br>
-        Leer lassen für automatische Farbwahl. <br>
-        <br>
-        Zum Beispiel:<br>
-        Der Dezimalwert von <font color="#FF0000">0xFF0000</font> ist <b>16711680</b>.
-        ]]>
-    </string>
     <string name="confirm_to_delete">Löschen bestätigen?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Einen neuen Benachrichtigungskanal erstellen. <br>
         <br>
-        <font color="#03DAC5"><b>Tippen und halten</b></font> Sie einen Benachrichtigungskanal in dieser Dropdown-Liste, um ihn zu bearbeiten.
+        <font color="#03DAC5"><b>Langes Tippen</b></font> einen Benachrichtigungskanal in dieser Dropdown-Liste, um ihn zu bearbeiten.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -121,7 +111,7 @@
         <br>
         %s<br>
         <br>
-        Stellen Sie sicher, diese nach dem Löschen dieses Kanals zu aktualisieren. <br>
+        Stellen Sie sicher, dass Sie diese nach dem Löschen dieses Kanals aktualisieren. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
@@ -133,21 +123,19 @@
     <string name="led_color">LED-Farbe</string>
     <string name="help_led_color">
         <![CDATA[
-        Der ARGB-Farbwert, dargestellt im Dezimalformat. <br>
-        Zum Beispiel:<br>
-        Der Dezimalwert von <font color="#FF0000">0xFF0000</font> ist <b>16711680</b>.
-        <br>
-        Die Farbe kann nur beim Erstellen eines neuen Kanals eingestellt werden. Sobald er erstellt wurde, kann er nur in den Systemeinstellungen geändert werden. <br>
+        Die Lichtfarbe kann nur beim Erstellen eines neuen Kanals festgelegt werden;
+         einmal erstellt, kann sie nur in den Systemeinstellungen geändert werden. <br>
         ]]>
     </string>
     <string name="icon">Symbol</string>
-    <string name="automatic">Auto</string>
+    <string name="automatic">Automatisch</string>
     <string name="medium">Mittel</string>
-    <string name="high_muted">Hoch (stummgeschaltet)</string>
+    <string name="high_muted">Hoch (stumm)</string>
     <string name="help_channel_importance">
         <![CDATA[
         Die Wichtigkeit kann nur beim Erstellen eines neuen Kanals festgelegt werden;
          einmal erstellt, kann sie nur in den Systemeinstellungen geändert werden. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">Tippen Sie auf den ARGB-Text, um ihn manuell zu bearbeiten.</string>
 </resources>

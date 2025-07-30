@@ -31,27 +31,27 @@
         ]]>
     </string>
     <string name="blocked">Bloquejat</string>
-    <string name="allowed">Aprovat</string>
+    <string name="allowed">Permès</string>
     <string name="help_notification">
         <![CDATA[
-        Hi ha quatre canals de notificació incorporats: <br>
+        Hi ha quatre canals de notificació integrats: <br>
         <br>
         <font color="#00BFFF"><b>Cap</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Cap notificació. <br>
         <br>
         <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Apareix a la barra de notificacions i al panell de notificacions. <br>
+        &ensp; Apareix a la barra d\'estat i a la pantalla de notificacions. <br>
         <br>
         <font color="#00BFFF"><b>Mitjana</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Apareix a la barra de notificacions i al panell de notificacions amb so. <br>
+        &ensp; Apareix a la barra d\'estat i a la pantalla de notificacions amb un so. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Apareix a la barra de notificacions, al panell de notificacions i com a finestra emergent amb so. <br>
+        &ensp; Apareix a la barra d\'estat, a la pantalla de notificacions i com a finestra emergent amb so. <br>
         <br>
-        <font color="#00BFFF"><b>Alta (silenciada)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Alta silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; És similar a <b>Alta</b>, però silencia el so. <br>
         &ensp; És ideal per a xats SMS actius on els sons continus podrien ser molestos. <br>
-          Es considera xat actiu quan la pantalla està desbloquejada i l\'aplicació de SMS està oberta en primer pla. <br>
+          Es considera un xat actiu quan la pantalla està desbloquejada i l\'aplicació d\'SMS està oberta en primer pla. <br>
         ]]>
     </string>
     <string name="none">Cap</string>
@@ -59,7 +59,7 @@
     <string name="high">Alta</string>
     <string name="sms_chat">Xat SMS</string>
     <string name="call_channel">Canal de trucades</string>
-    <string name="sms_channel">Canal de SMS</string>
+    <string name="sms_channel">Canal d\'SMS</string>
     <string name="channel_id">ID del canal</string>
     <string name="help_channel_id">
         <![CDATA[
@@ -69,14 +69,14 @@
         ]]>
     </string>
     <string name="channel_importance">Importància</string>
-    <string name="channel_group">Grup del canal</string>
+    <string name="channel_group">Grup de canals</string>
     <string name="help_channel_group">
         <![CDATA[
-        Si es deixa buit, les notificacions s\'agrupen automàticament en tres categories:<br>
+        Quan es deixa buit, les notificacions s\'agrupen automàticament en tres categories:<br>
         <br>
-        - Trucada spam <br>
-        - SMS spam <br>
-        - SMS vàlid <br>
+        - Trucada de spam <br>
+        - SMS de spam <br>
+        - SMS vàlids <br>
         <br>
         Si s\'especifica un grup, s\'agruparan per separat.
         ]]>
@@ -85,29 +85,19 @@
     <string name="sound">So</string>
     <string name="help_sound">
         <![CDATA[
-        El so només es pot establir en crear un nou canal;
+        El so només es pot configurar en crear un nou canal;
          un cop creat, només es pot modificar a la configuració del sistema. <br>
         <br>
         <b>So personalitzat</b><br>
         Alguns telèfons permeten la importació directa de tons de trucada personalitzats mitjançant l\'aplicació.
-        Per a altres, importeu-los a través de la configuració del sistema i, a continuació, seleccioneu-los a l\'aplicació. <br>
+        Per a d\'altres, importa\'l mitjançant la configuració del sistema i després selecciona\'l a l\'aplicació. <br>
         ]]>
     </string>
     <string name="default_">Per defecte</string>
-    <string name="select_notification_sound">Selecciona el so de notificació</string>
+    <string name="select_notification_sound">Seleccionar so de notificació</string>
     <string name="unknown">Desconegut</string>
     <string name="icon_color">Color de la icona</string>
-    <string name="help_icon_color">
-        <![CDATA[
-        El valor de color ARGB, representat en format decimal. <br>
-        <br>
-        Deixa-ho buit per a la selecció automàtica de colors. <br>
-        <br>
-        Per exemple:<br>
-        El valor decimal de <font color="#FF0000">0xFF0000</font> és <b>16711680</b>.
-        ]]>
-    </string>
-    <string name="confirm_to_delete">Confirmar eliminació?</string>
+    <string name="confirm_to_delete">Confirmar supressió?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Crea un nou canal de notificació. <br>
@@ -126,18 +116,14 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        El canal de notificació es silenciarà per força, fins i tot si està configurat com d\'alta importància.
+        El canal de notificacions serà silenciat per força, fins i tot si està configurat com a d\'alta importància.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">Color del LED</string>
     <string name="help_led_color">
         <![CDATA[
-        El valor de color ARGB, representat en format decimal. <br>
-        Per exemple:<br>
-        El valor decimal de <font color="#FF0000">0xFF0000</font> és <b>16711680</b>.
-        <br>
-        El color només es pot configurar en crear un nou canal;
+        El color de la llum només es pot configurar en crear un nou canal;
          un cop creat, només es pot modificar a la configuració del sistema. <br>
         ]]>
     </string>
@@ -147,8 +133,9 @@
     <string name="high_muted">Alta silenciada</string>
     <string name="help_channel_importance">
         <![CDATA[
-        La importància només es pot establir en crear un nou canal;
+        La importància només es pot configurar en crear un nou canal;
          un cop creat, només es pot modificar a la configuració del sistema. <br>
         ]]>
     </string>
+    <string name="tap_text_to_edit_color">Toca el text ARGB per editar-lo manualment.</string>
 </resources>
