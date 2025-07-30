@@ -26,18 +26,38 @@
     <string name="spoof">Spoof Call</string>
     <string name="help_stir">
         <![CDATA[
-            It blocks calls that fail STIR/SHAKEN attestation, meaning they are very likely spoofed calls. <br>
-            <br>
             STIR/SHAKEN attestation requires <b>Android 11+</b> and <b>carrier support</b>. <br>
             <br>
-            <font color="#ea86ff"><b>Default Priority: 0</b></font> <br>
+            There are three possible attestation results: <br>
+            <font color="#03DAC5"><b>Valid</b></font> <br>
+              &emsp; The call is very likely to be valid, not spoofed. <br>
+            <font color="#ffa500"><b>Unverified</b></font> <br>
+              &emsp; The call is not able to be validated, or STIR attestation is not supported. <br>
+            <font color="#fa7f71"><b>Spoof</b></font> <br>
+              &emsp; It is very likely to be a spoofed call. <br>
             <br>
-            A <b>use case</b> for customizing the priority:<br>
+            <br>
+            <b>Options:</b><br>
+            <br>
+              - <b>Lenient</b>: <br>
+                  &emsp; - <font color="#03DAC5"><b>Valid</b></font> calls will be allowed. <br>
+                  &emsp; - <font color="#fa7f71"><b>Spoof</b></font> calls will still be checked by other rules. <br>
+                  &emsp; - When <b>Include Unverified</b> is checked, <font color="#ffa500"><b>Unverified</b></font> calls will also be allowed. <br>
+                  &emsp; <font color="#ea86ff"><b>Default Priority: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Strict</b></font>: <br>
+                  &emsp; - <font color="#03DAC5"><b>Valid</b></font> calls will be checked by other rules. <br>
+                  &emsp; - <font color="#fa7f71"><b>Spoof</b></font> calls will be blocked. <br>
+                  &emsp; - When "<b>Include Unverified</b>" is checked, <font color="#ffa500"><b>Unverified</b></font> calls will also be blocked. <br>
+                  &emsp; <font color="#ea86ff"><b>Default Priority: 0</b></font> <br>
+            <br>
+            <br>
+            A <b>use case</b> for customizing the priorities:<br>
             <br>
             1. Always allow contacts. <br>
               &emsp; - Contacts(Lenient), priority <font color="#ea86ff">12</font> <br>
             2. Block calls fail STIR, even if they repeat. <br>
-              &emsp; - STIR, priority <font color="#ea86ff">11</font> <br>
+              &emsp; - STIR(Strict), priority <font color="#ea86ff">11</font> <br>
             3. Allow calls that repeat. <br>
               &emsp; - Repeated Call, priority <font color="#ea86ff">10</font> <br>
         ]]>

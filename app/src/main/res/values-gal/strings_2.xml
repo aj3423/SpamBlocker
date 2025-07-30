@@ -26,19 +26,39 @@
     <string name="spoof">Chamada fraudulenta</string>
     <string name="help_stir">
         <![CDATA[
-            Bloquea as chamadas que fallan a certificación STIR/SHAKEN, o que significa que son moi probablemente chamadas suplantadas. <br>
-            <br>
             A certificación STIR/SHAKEN require <b>Android 11+</b> e <b>soporte do operador</b>. <br>
             <br>
-            <font color="#ea86ff"><b>Prioridade Predeterminada: 0</b></font> <br>
+            Hai tres resultados posibles de certificación: <br>
+            <font color="#03DAC5"><b>Válida</b></font> <br>
+              &emsp; É moi probable que a chamada sexa válida, non suplantada. <br>
+            <font color="#ffa500"><b>Non Verificada</b></font> <br>
+              &emsp; A chamada non pode ser validada, ou a certificación STIR non é compatible. <br>
+            <font color="#fa7f71"><b>Suplantación</b></font> <br>
+              &emsp; É moi probable que sexa unha chamada suplantada. <br>
             <br>
-            Un <b>caso de uso</b> para personalizar a prioridade:<br>
             <br>
-            1. Permitir sempre contactos. <br>
-              &emsp; - Contactos (Tolerante), prioridade <font color="#ea86ff">12</font> <br>
-            2. Bloquear chamadas que fallen STIR, mesmo se se repiten. <br>
-              &emsp; - STIR, prioridade <font color="#ea86ff">11</font> <br>
-            3. Permitir chamadas que se repiten. <br>
+            <b>Opcións:</b><br>
+            <br>
+              - <b>Indulgente</b>: <br>
+                  &emsp; - As chamadas <font color="#03DAC5"><b>Válidas</b></font> permitiranse. <br>
+                  &emsp; - As chamadas de <font color="#fa7f71"><b>Suplantación</b></font> aínda serán verificadas por outras regras. <br>
+                  &emsp; - Cando se marque <b>Incluír Non Verificadas</b>, as chamadas <font color="#ffa500"><b>Non Verificadas</b></font> tamén se permitirán. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridade Predeterminada: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Estrito</b></font>: <br>
+                  &emsp; - As chamadas <font color="#03DAC5"><b>Válidas</b></font> serán verificadas por outras regras. <br>
+                  &emsp; - As chamadas de <font color="#fa7f71"><b>Suplantación</b></font> serán bloqueadas. <br>
+                  &emsp; - Cando se marque \"<b>Incluír Non Verificadas</b>\", as chamadas <font color="#ffa500"><b>Non Verificadas</b></font> tamén serán bloqueadas. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridade Predeterminada: 0</b></font> <br>
+            <br>
+            <br>
+            Un <b>caso de uso</b> para personalizar as prioridades:<br>
+            <br>
+            1. Permitir sempre os contactos. <br>
+              &emsp; - Contactos (Indulgente), prioridade <font color="#ea86ff">12</font> <br>
+            2. Bloquear chamadas que fallen STIR, aínda que se repitan. <br>
+              &emsp; - STIR (Estrito), prioridade <font color="#ea86ff">11</font> <br>
+            3. Permitir chamadas que se repitan. <br>
               &emsp; - Chamada Repetida, prioridade <font color="#ea86ff">10</font> <br>
         ]]>
     </string>

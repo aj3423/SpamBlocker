@@ -26,18 +26,38 @@
     <string name="spoof">Chamada Falsa</string>
     <string name="help_stir">
         <![CDATA[
-            Bloqueia chamadas que falham na atestação STIR/SHAKEN, o que significa que são muito provavelmente chamadas falsificadas. <br>
+            A certificação STIR/SHAKEN requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
             <br>
-            A atestação STIR/SHAKEN requer <b>Android 11+</b> e <b>suporte da operadora</b>. <br>
+            Existem três resultados de certificação possíveis: <br>
+            <font color="#03DAC5"><b>Válida</b></font> <br>
+              &emsp; A chamada é muito provavelmente válida, não forjada. <br>
+            <font color="#ffa500"><b>Não Verificada</b></font> <br>
+              &emsp; A chamada não pode ser validada, ou a certificação STIR não é suportada. <br>
+            <font color="#fa7f71"><b>Falsa</b></font> <br>
+              &emsp; É muito provável que seja uma chamada falsa. <br>
             <br>
-            <font color="#ea86ff"><b>Prioridade Padrão: 0</b></font> <br>
             <br>
-            Um <b>caso de uso</b> para personalizar a prioridade:<br>
+            <b>Opções:</b><br>
+            <br>
+              - <b>Flexível</b>: <br>
+                  &emsp; - Chamadas <font color="#03DAC5"><b>Válidas</b></font> serão permitidas. <br>
+                  &emsp; - Chamadas <font color="#fa7f71"><b>Falsas</b></font> ainda serão verificadas por outras regras. <br>
+                  &emsp; - Quando \"<b>Incluir Não Verificado</b>\" estiver marcado, chamadas <font color="#ffa500"><b>Não Verificadas</b></font> também serão permitidas. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridade Padrão: 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Rigoroso</b></font>: <br>
+                  &emsp; - Chamadas <font color="#03DAC5"><b>Válidas</b></font> serão verificadas por outras regras. <br>
+                  &emsp; - Chamadas <font color="#fa7f71"><b>Falsas</b></font> serão bloqueadas. <br>
+                  &emsp; - Quando \"<b>Incluir Não Verificado</b>\" estiver marcado, chamadas <font color="#ffa500"><b>Não Verificadas</b></font> também serão bloqueadas. <br>
+                  &emsp; <font color="#ea86ff"><b>Prioridade Padrão: 0</b></font> <br>
+            <br>
+            <br>
+            Um <b>caso de uso</b> para personalizar as prioridades:<br>
             <br>
             1. Sempre permitir contatos. <br>
-              &emsp; - Contatos(Permissivo), prioridade <font color="#ea86ff">12</font> <br>
+              &emsp; - Contatos (Flexível), prioridade <font color="#ea86ff">12</font> <br>
             2. Bloquear chamadas que falham no STIR, mesmo que se repitam. <br>
-              &emsp; - STIR, prioridade <font color="#ea86ff">11</font> <br>
+              &emsp; - STIR (Rigoroso), prioridade <font color="#ea86ff">11</font> <br>
             3. Permitir chamadas que se repetem. <br>
               &emsp; - Chamada Repetida, prioridade <font color="#ea86ff">10</font> <br>
         ]]>

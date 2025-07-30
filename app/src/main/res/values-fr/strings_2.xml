@@ -26,18 +26,38 @@
     <string name="spoof">Appel falsifié</string>
     <string name="help_stir">
         <![CDATA[
-            Il bloque les appels qui échouent à l\'attestation STIR/SHAKEN, ce qui signifie qu\'il s\'agit très probablement d\'appels frauduleux. <br>
-            <br>
             L\'attestation STIR/SHAKEN nécessite <b>Android 11+</b> et le <b>support de l\'opérateur</b>. <br>
             <br>
-            <font color="#ea86ff"><b>Priorité par défaut : 0</b></font> <br>
+            Il existe trois résultats d\'attestation possibles : <br>
+            <font color="#03DAC5"><b>Valide</b></font> <br>
+              &emsp; L\'appel est très probablement valide, non falsifié. <br>
+            <font color="#ffa500"><b>Non vérifié</b></font> <br>
+              &emsp; L\'appel ne peut pas être validé, ou l\'attestation STIR n\'est pas prise en charge. <br>
+            <font color="#fa7f71"><b>Falsifié</b></font> <br>
+              &emsp; Il est très probable qu\'il s\'agisse d\'un appel falsifié. <br>
             <br>
-            Un <b>cas d\'utilisation</b> pour personnaliser la priorité :<br>
+            <br>
+            <b>Options :</b><br>
+            <br>
+              - <b>Tolérant</b> : <br>
+                  &emsp; - Les appels <font color="#03DAC5"><b>valides</b></font> seront autorisés. <br>
+                  &emsp; - Les appels <font color="#fa7f71"><b>falsifiés</b></font> seront toujours vérifiés par d\'autres règles. <br>
+                  &emsp; - Lorsque l\'option <b>Inclure les non vérifiés</b> est cochée, les appels <font color="#ffa500"><b>non vérifiés</b></font> seront également autorisés. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorité par défaut : 10</b></font> <br>
+              <br>
+              - <font color="#fa7f71"><b>Strict</b></font> : <br>
+                  &emsp; - Les appels <font color="#03DAC5"><b>valides</b></font> seront vérifiés par d\'autres règles. <br>
+                  &emsp; - Les appels <font color="#fa7f71"><b>falsifiés</b></font> seront bloqués. <br>
+                  &emsp; - Lorsque \"<b>Inclure les non vérifiés</b>\" est cochée, les appels <font color="#ffa500"><b>non vérifiés</b></font> seront également bloqués. <br>
+                  &emsp; <font color="#ea86ff"><b>Priorité par défaut : 0</b></font> <br>
+            <br>
+            <br>
+            Un <b>cas d\'utilisation</b> pour personnaliser les priorités :<br>
             <br>
             1. Toujours autoriser les contacts. <br>
-              &emsp; - Contacts (Souple), priorité <font color="#ea86ff">12</font> <br>
+              &emsp; - Contacts (Tolérant), priorité <font color="#ea86ff">12</font> <br>
             2. Bloquer les appels qui échouent STIR, même s\'ils se répètent. <br>
-              &emsp; - STIR, priorité <font color="#ea86ff">11</font> <br>
+              &emsp; - STIR (Strict), priorité <font color="#ea86ff">11</font> <br>
             3. Autoriser les appels qui se répètent. <br>
               &emsp; - Appel répété, priorité <font color="#ea86ff">10</font> <br>
         ]]>
