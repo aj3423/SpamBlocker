@@ -115,8 +115,6 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Un altre fil s\'ha cancel·lat.</string>>
-    <string name="username">Nom d\'usuari</string>>
-    <string name="password">Contrasenya</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Llisca cap a l\'esquerra</b></font> per suprimir-lo.<br>

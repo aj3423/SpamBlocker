@@ -62,8 +62,6 @@
         3. 生成されたAPIキーを下記に入力します。
         ]]>
     </string>
-    <string name="username">ユーザー名</string>
-    <string name="password">パスワード</string>
     <string name="auto_detect_cc_permission">国番号を検出するには、READ_PHONE_STATE権限が必要です。</string>
     <string name="suggest_to_swipe">
         <![CDATA[

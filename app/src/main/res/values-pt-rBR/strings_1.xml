@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">Consulte a ajuda das `Regras de Número` para obter uma explicação detalhada.</string>
     <string name="invalid_number">Número inválido</string>
     <string name="description">Descrição</string>
-    <string name="apply_to_call">Aplicar à Chamada</string>
-    <string name="apply_to_sms">Aplicar ao SMS</string>
-    <string name="title_add_rule">Nova Regra</string>
-    <string name="title_edit_rule">Editar Regra</string>
     <string name="new_">Novo</string>
     <string name="delete">Excluir</string>
     <string name="clear">Limpar</string>
@@ -27,28 +23,22 @@
     <string name="priority">Prioridade</string>
     <string name="deleted_filter">(regra excluída)</string>
     <string name="apply_to">Aplicar a</string>
-    <string name="Delete">Excluir</string>
     <string name="undelete">Desfazer exclusão</string>
     <string name="passed_by_default">Aprovado por padrão</string>
-    <string name="from">De</string>
     <string name="copy">Copiar</string>
-    <string name="copied_to_clipboard">`%s` copiado para a área de transferência.</string>
     <string name="quick_copy">Cópia Rápida</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancelar</string>
     <string name="miscellaneous">Diversos</string>
     <string name="quick_settings">Configurações Rápidas</string>
     <string name="regex_settings">Configurações de Expressões Regulares</string>
     <string name="backup">Backup</string>
     <string name="import_">Importar</string>
-    <string name="imported">Importado</string>
     <string name="export">Exportar</string>
     <string name="config_text">Texto de Configuração</string>
     <string name="imported_successfully">Importado com sucesso</string>
     <string name="import_fail">Falha na importação</string>
-    <string name="go_to_setting">Ir para Configuração</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Este recurso requer permissão:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">Chamada de Emergência</string>
-    <string name="label_contact_filter">Filtro de Contatos</string>
     <string name="label_number_rules">Regras de Número</string>
     <string name="label_content_rules">Regras de Mensagem</string>
     <string name="recent_apps"><short>Aplicativos Recentes</short></string>

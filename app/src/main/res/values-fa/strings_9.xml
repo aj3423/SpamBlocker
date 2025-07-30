@@ -7,9 +7,6 @@
     <string name="column_mapping">نقشه ستون</string>
     <string name="include_spam_db">شامل پایگاه داده اسپم</string>
     <string name="no_config_needed">نیازی به پیکربندی نیست</string>
-    <string name="success">موفق</string>
-    <string name="failed">ناموفق</string>
-    <string name="running">در حال اجرا</string>
     <string name="optional">(اختیاری)</string>
 
     <string name="help_action_header">

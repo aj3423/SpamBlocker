@@ -4,7 +4,7 @@
         これらのルールはSMSコンテンツに適用されます。<br>
         <br>
         <font color="#00BFFF"><b> - 典型的なパターン</b></font>:<br>
-        &ensp; - "verification"を含む: <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - \"verification\"を含む: <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - 以下のいずれかの単語を含む: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -40,15 +40,6 @@
         <font color="#03DAC5"><b>通過</b></font>がチェックされている場合、このルールは通過した通話とメッセージに適用されます。<br>
         <br>
         <font color="#fa7f71"><b>ブロック</b></font>がチェックされている場合、このルールはブロックされた通話とメッセージに適用されます。
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>なし</b>:<br>&emsp; 通知は一切ありません。 <br>
-        <b>シェード</b>:<br>&emsp; ドロップダウン通知シェード。 <br>
-        <b>ステータスバー</b>:<br>&emsp; 上部のバーにある小さなアイコン。 <br>
-        <b>サウンド</b>:<br>&emsp; デフォルトの通知音。 <br>
-        <b>ヘッドアップ</b>:<br>&emsp; 画面の上部にフロートウィンドウを表示します。
         ]]>
     </string>
     <string name="title_rule_testing">ルールテスト</string>

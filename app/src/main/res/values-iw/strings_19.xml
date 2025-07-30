@@ -60,7 +60,6 @@
     <string name="sms_chat">צ\'אט SMS</string>
     <string name="call_channel">ערוץ שיחות</string>
     <string name="sms_channel">ערוץ SMS</string>
-    <string name="missing_notification_channel">ערוץ התראה חסר: %s</string>
     <string name="channel_id">מזהה ערוץ</string>
     <string name="help_channel_id">
         <![CDATA[

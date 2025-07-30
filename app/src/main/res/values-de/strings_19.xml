@@ -60,7 +60,6 @@
     <string name="sms_chat">SMS-Chat</string>
     <string name="call_channel">Anrufkanal</string>
     <string name="sms_channel">SMS-Kanal</string>
-    <string name="missing_notification_channel">Fehlender Benachrichtigungskanal: %s</string>
     <string name="channel_id">Kanal-ID</string>
     <string name="help_channel_id">
         <![CDATA[

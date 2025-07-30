@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Consenti</string>
     <string name="block">Blocca</string>
-    <string name="seconds">Secondi</string>
     <string name="seconds_short">Sec</string>
     <string name="within_seconds">Entro Secondi</string>
     <string name="sms_alert"><short>Avviso SMS</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">Il carattere jolly `*` è usato senza un punto precedente, intendi `.*`?</string>
     <string name="import_as">Importa Come</string>
     <string name="api_key">Chiave API</string>
-    <string name="mms_support">Supporto MMS</string>
 </resources>

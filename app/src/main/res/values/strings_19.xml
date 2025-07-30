@@ -62,7 +62,6 @@
     <string name="allowed">Allowed</string>
     <string name="call_channel">Call Channel</string>
     <string name="sms_channel">SMS Channel</string>
-    <string name="missing_notification_channel">Missing notification channel: %s</string>
     <string name="channel_id">Channel ID</string>
     <string name="help_channel_id">
         <![CDATA[

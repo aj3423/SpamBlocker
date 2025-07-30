@@ -63,8 +63,6 @@
         3. Введіть згенерований API ключ нижче.
         ]]>
     </string>
-    <string name="username">ім\'я користувача</string>
-    <string name="password">пароль</string>
     <string name="auto_detect_cc_permission">Для визначення коду країни потрібен дозвіл READ_PHONE_STATE.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

@@ -29,40 +29,26 @@
     <string name="spoof">伪造呼叫</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN认证需要<b>Android 11+</b>和<b>运营商支持</b>。 <br>
-            <br>
-            有三种可能的认证结果： <br>
-            <font color="#03DAC5"><b>有效</b></font> <br>
-              &emsp; 该呼叫很可能是有效的，未被伪造。 <br>
-            <font color="#ffa500"><b>未验证</b></font> <br>
-              &emsp; 该呼叫无法验证，或不支持STIR认证。 <br>
-            <font color="#fa7f71"><b>欺骗</b></font> <br>
-              &emsp; 这很可能是一个欺骗呼叫。 <br>
-            <br>
-            <br>
-            <b>选项：</b><br>
-            <br>
-              - <b>宽松</b>: <br>
-                  &emsp; - <font color="#03DAC5"><b>有效</b></font>呼叫将被允许。 <br>
-                  &emsp; - <font color="#fa7f71"><b>欺骗</b></font>呼叫仍将由其他规则检查。 <br>
-                  &emsp; - 当勾选<b>包含未验证</b>时，<font color="#ffa500"><b>未验证</b></font>呼叫也将被允许。 <br>
-                  &emsp; <font color="#ea86ff"><b>默认优先级：10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>严格</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>有效</b></font>呼叫将由其他规则检查。 <br>
-                  &emsp; - <font color="#fa7f71"><b>欺骗</b></font>呼叫将被阻止。 <br>
-                  &emsp; - 当勾选“<b>包含未验证</b>”时，<font color="#ffa500"><b>未验证</b></font>呼叫也将被阻止。 <br>
-                  &emsp; <font color="#ea86ff"><b>默认优先级：0</b></font> <br>
-            <br>
-            <br>
-            自定义优先级的<b>用例</b>：<br>
-            <br>
-            1. 总是允许联系人。 <br>
-              &emsp; - 联系人(宽松)，优先级 <font color="#ea86ff">12</font> <br>
-            2. 阻止STIR认证失败的呼叫，即使它们重复。 <br>
-              &emsp; - STIR(严格)，优先级 <font color="#ea86ff">11</font> <br>
-            3. 允许重复的呼叫。 <br>
-              &emsp; - 重复呼叫，优先级 <font color="#ea86ff">10</font> <br>
+        它会阻止未通过STIR/SHAKEN认证的呼叫，这表明它们很可能是伪造的诈骗电话。<br>
+        <br>
+        STIR/SHAKEN认证需要 <b>Android 11+</b> 和 <b>运营商支持</b>。<br>
+        <br>
+        <b>选项:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>包含未验证</b></font> <br>
+        启用后，未验证的呼叫也将被阻止。这意味着呼叫无法被验证，或者运营商或您的设备不支持STIR认证。<br>
+        <b>用例</b>: <br>
+        &ensp; 对于强制执行STIR认证的地区，未经验证的号码很可能是垃圾电话。<br>
+        <br>
+        <font color="#ea86ff"><b>默认优先级: 0</b></font> <br>
+        自定义优先级的<b>用例</b>:<br>
+        <br>
+        1. 始终允许联系人。<br>
+          &emsp; - 联系人（宽松），优先级 <font color="#ea86ff">12</font> <br>
+        2. 阻止未通过STIR认证的呼叫，即使它们重复出现。<br>
+          &emsp; - STIR，优先级 <font color="#ea86ff">11</font> <br>
+        3. 允许重复出现的呼叫。<br>
+          &emsp; - 重复呼叫，优先级 <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

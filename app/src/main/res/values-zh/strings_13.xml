@@ -62,8 +62,6 @@
         3. 在下方填写生成的API密钥。
         ]]>
     </string>
-    <string name="username">用户名</string>
-    <string name="password">密码</string>
     <string name="auto_detect_cc_permission">检测国家代码需要 READ_PHONE_STATE 权限。</string>
     <string name="suggest_to_swipe">
         <![CDATA[

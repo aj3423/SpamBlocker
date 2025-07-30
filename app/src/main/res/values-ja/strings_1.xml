@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">詳細については、`番号ルール` のヘルプを確認してください。</string>
     <string name="invalid_number">無効な番号</string>
     <string name="description">説明</string>
-    <string name="apply_to_call">発信に適用</string>
-    <string name="apply_to_sms">SMS に適用</string>
-    <string name="title_add_rule">新しいルール</string>
-    <string name="title_edit_rule">ルールの編集</string>
     <string name="new_">新規</string>
     <string name="delete">削除</string>
     <string name="clear">クリア</string>
@@ -27,28 +23,22 @@
     <string name="priority">優先順位</string>
     <string name="deleted_filter">(削除されたルール)</string>
     <string name="apply_to">適用先</string>
-    <string name="Delete">削除</string>
     <string name="undelete">元に戻す</string>
     <string name="passed_by_default">デフォルトで通過</string>
-    <string name="from">送信元</string>
     <string name="copy">コピー</string>
-    <string name="copied_to_clipboard">`%s` をクリップボードにコピーしました。</string>
     <string name="quick_copy">クイックコピー</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="ok">OK</string>
-    <string name="cancel">キャンセル</string>
     <string name="miscellaneous">その他</string>
     <string name="quick_settings">クイック設定</string>
     <string name="regex_settings">正規表現設定</string>
     <string name="backup">バックアップ</string>
     <string name="import_">インポート</string>
-    <string name="imported">インポート済み</string>
     <string name="export">エクスポート</string>
     <string name="config_text">設定テキスト</string>
     <string name="imported_successfully">インポートが正常に完了しました。</string>
     <string name="import_fail">インポートに失敗しました。</string>
-    <string name="go_to_setting">設定へ移動</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         この機能には権限が必要です:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">緊急通話</string>
-    <string name="label_contact_filter">連絡先フィルター</string>
     <string name="label_number_rules">番号ルール</string>
     <string name="label_content_rules">メッセージルール</string>
     <string name="recent_apps"><short>最近のアプリ</short></string>

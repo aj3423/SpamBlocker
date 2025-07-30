@@ -4,7 +4,7 @@
         כללים אלה חלים על תוכן ה-SMS.<br>
         <br>
         <font color="#00BFFF"><b> - דפוסים אופייניים</b></font>:<br>
-        &ensp; - מכיל "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - מכיל \"verification\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - מכיל אחת מהמילים: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         כאשר <font color="#03DAC5"><b>עברו</b></font> מסומן, כלל זה יחול על שיחות והודעות שעברו.<br>
         <br>
         כאשר <font color="#fa7f71"><b>נחסמו</b></font> מסומן, כלל זה יחול על שיחות והודעות שנחסמו.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>ללא</b>:<br>&emsp; אין התראה כלל. <br>
-        <b>וילון</b>:<br>&emsp; וילון ההתראות הנפתח. <br>
-        <b>שורת מצב</b>:<br>&emsp; הסמל הקטן שבסרגל העליון. <br>
-        <b>צליל</b>:<br>&emsp; צליל ההתראה המוגדר כברירת מחדל. <br>
-        <b>קופצת</b>:<br>&emsp; חלון צף קופץ בחלק העליון של המסך.
         ]]>
     </string>
     <string name="title_rule_testing">בדיקת כללים</string>

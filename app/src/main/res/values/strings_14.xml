@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Allow</string>
     <string name="block">Block</string>
-    <string name="seconds">Seconds</string>
     <string name="seconds_short">Sec</string>
     <string name="within_seconds">Within Seconds</string>
     <string name="sms_alert"><short>SMS Alert</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">Wildcard `*` is used without a preceding dot, do you mean `.*` ?</string>
     <string name="import_as">Import As</string>
     <string name="api_key">API Key</string>
-    <string name="mms_support">MMS support</string>
 </resources>

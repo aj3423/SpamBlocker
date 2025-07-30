@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">Per una spiegazione dettagliata, consultare la guida delle `Regole sui numeri`.</string>
     <string name="invalid_number">Numero non valido</string>
     <string name="description">Descrizione</string>
-    <string name="apply_to_call">Applica a chiamata</string>
-    <string name="apply_to_sms">Applica a SMS</string>
-    <string name="title_add_rule">Nuova regola</string>
-    <string name="title_edit_rule">Edita regola</string>
     <string name="new_">Nuovo</string>
     <string name="delete">Cancella</string>
     <string name="clear">Pulisci</string>
@@ -27,28 +23,22 @@
     <string name="priority">Priorità</string>
     <string name="deleted_filter">(cancella regola)</string>
     <string name="apply_to">Applica a</string>
-    <string name="Delete">Cancella</string>
     <string name="undelete">Ripristino</string>
     <string name="passed_by_default">Passato per impostazione predefinita</string>
-    <string name="from">Da</string>
     <string name="copy">Copia</string>
-    <string name="copied_to_clipboard">Copiato `%s` negli appunti.</string>
     <string name="quick_copy">Copia rapida</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancella</string>
     <string name="miscellaneous">Varie</string>
     <string name="quick_settings">Impostazioni veloci</string>
     <string name="regex_settings">Impostazioni regex</string>
     <string name="backup">Backup</string>
     <string name="import_">Importa</string>
-    <string name="imported">Importato</string>
     <string name="export">Esporta</string>
     <string name="config_text">Prova configurazione</string>
     <string name="imported_successfully">Importato con successo</string>
     <string name="import_fail">Importazione fallita</string>
-    <string name="go_to_setting">Vai alla impostazione</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Questa funzionalità richiede l\'autorizzazione:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">Chiamata di emergenza</string>
-    <string name="label_contact_filter">Filtro contatto</string>
     <string name="label_number_rules">Regole del numero</string>
     <string name="number_rule">Regola numero</string>
     <string name="label_content_rules">Regole del messaggio</string>

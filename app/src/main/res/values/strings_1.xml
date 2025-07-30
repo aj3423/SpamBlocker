@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">Check the help of the `Number Rules` for a detailed explanation.</string>
     <string name="invalid_number">Invalid number</string>
     <string name="description">Description</string>
-    <string name="apply_to_call">Apply to Call</string>
-    <string name="apply_to_sms">Apply to SMS</string>
-    <string name="title_add_rule">New Rule</string>
-    <string name="title_edit_rule">Edit Rule</string>
     <string name="new_">New</string>
     <string name="delete">Delete</string>
     <string name="clear">Clear</string>
@@ -27,28 +23,22 @@
     <string name="priority">Priority</string>
     <string name="deleted_filter">(deleted rule)</string>
     <string name="apply_to">Apply to</string>
-    <string name="Delete">Delete</string>
     <string name="undelete">Undelete</string>
     <string name="passed_by_default">Passed by default</string>
-    <string name="from">From</string>
     <string name="copy">Copy</string>
-    <string name="copied_to_clipboard">Copied `%s` to clipboard.</string>
     <string name="quick_copy">Quick Copy</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
     <string name="miscellaneous">Miscellaneous</string>
     <string name="quick_settings">Quick Settings</string>
     <string name="regex_settings">Regex Settings</string>
     <string name="backup">Backup</string>
     <string name="import_">Import</string>
-    <string name="imported">Imported</string>
     <string name="export">Export</string>
     <string name="config_text">Configuration Text</string>
     <string name="imported_successfully">Imported successfully</string>
     <string name="import_fail">Failed to import</string>
-    <string name="go_to_setting">Go to Setting</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         This feature requires permission:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">Emergency Call</string>
-    <string name="label_contact_filter">Contact Filter</string>
     <string name="label_number_rules">Number Rules</string>
     <string name="number_rule">Number Rule</string>
     <string name="label_content_rules">Message Rules</string>

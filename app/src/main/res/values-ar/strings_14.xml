@@ -68,7 +68,6 @@
     </string>
     <string name="allow">السماح</string>
     <string name="block">حظر</string>
-    <string name="seconds">ثواني</string>
     <string name="seconds_short">ثا</string>
     <string name="within_seconds">في غضون ثوان</string>
     <string name="sms_alert"><short>تنبيه SMS</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">يتم استخدام حرف البدل `*` بدون نقطة سابقة، هل تقصد `.*`؟</string>
     <string name="import_as">استيراد كـ</string>
     <string name="api_key">مفتاح API</string>
-    <string name="mms_support">دعم MMS</string>
 </resources>

@@ -42,10 +42,6 @@
     <string name="add_num_to_db">إضافة الرقم إلى قاعدة بيانات الرسائل المزعجة</string>
     <string name="mark_all_as_read">تعليم الكل كمقروء</string>
     <string name="remove_db_number">حذف الرقم من قاعدة بيانات الرسائل المزعجة</string>
-    <string-array name="export_type_list">
-        <item>تصدير كـ Json</item>
-        <item>تصدير كمضغوط</item>
-    </string-array>
 
     <string name="language">اللغة</string>
     <string name="help_language">
@@ -88,7 +84,6 @@
 
     <string name="about">حول</string>
     <string name="version">الإصدار</string>
-    <string name="build_time">وقت الإنشاء (UTC)</string>
     <string name="source_code">كود المصدر</string>
     <string name="dismiss">رفض</string>
     <string name="warning_running_in_work_profile">
@@ -107,5 +102,4 @@
         ⚠️ RCS غير مدعوم.
     </string>
     <string name="open_settings">فتح الإعدادات</string>
-    <string name="ignore">تجاهل</string>
 </resources>

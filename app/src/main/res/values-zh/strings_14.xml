@@ -67,7 +67,6 @@
     </string>
     <string name="allow">允许</string>
     <string name="block">阻止</string>
-    <string name="seconds">秒</string>
     <string name="seconds_short">秒</string>
     <string name="within_seconds">在…秒内</string>
     <string name="sms_alert"><short>短信提醒</short></string>
@@ -91,5 +90,4 @@
     <string name="waning_using_wildcard_as_regex">通配符`*`未使用点作为前缀，您的意思是`.*`吗？</string>
     <string name="import_as">导入为</string>
     <string name="api_key">API 密钥</string>
-    <string name="mms_support">MMS 支持</string>
 </resources>

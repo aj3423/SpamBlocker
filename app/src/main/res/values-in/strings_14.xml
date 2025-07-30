@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Izinkan</string>
     <string name="block">Blokir</string>
-    <string name="seconds">Detik</string>
     <string name="seconds_short">Dtk</string>
     <string name="within_seconds">Dalam hitungan detik</string>
     <string name="sms_alert"><short>Prt. SMS</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">Wildcard `*` digunakan tanpa titik yang mendahului titik sebelumnya, Apakah maksud Anda `.*` ?</string>
     <string name="import_as">Impor Sebagai</string>
     <string name="api_key">Kunci API</string>
-    <string name="mms_support">Dukungan MMS</string>
 </resources>

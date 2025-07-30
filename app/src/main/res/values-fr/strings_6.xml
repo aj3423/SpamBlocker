@@ -39,10 +39,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>Exporter en Json</item>
-        <item>Exporter compressé</item>
-    </string-array>
 
     <string name="language">Langue</string>
     <string name="help_language">
@@ -85,7 +81,6 @@
 
     <string name="about">À propos</string>
     <string name="version">Version</string>
-    <string name="build_time">Heure de compilation (UTC)</string>
     <string name="source_code">Code source</string>
     <string name="dismiss">Rejeter</string>
     <string name="warning_running_in_work_profile">
@@ -103,7 +98,6 @@
         ⚠️ RCS n\'est pas pris en charge.
     </string>
     <string name="open_settings">Ouvrir les paramètres</string>
-    <string name="ignore">Ignorer</string>
     <string name="remove_db_number">Supprimer le numéro de la base de données de spams</string>
     <string name="copy_number">Copier le numéro</string>
     <string name="add_num_to_regex_rule">Ajouter le numéro à la règle regex</string>

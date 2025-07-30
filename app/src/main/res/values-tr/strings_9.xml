@@ -7,9 +7,6 @@
     <string name="column_mapping">Sütun Eşleştirme</string>
     <string name="include_spam_db">Spam Veritabanını Dahil Et</string>
     <string name="no_config_needed">Yapılandırma gerekmez</string>
-    <string name="success">Başarılı</string>
-    <string name="failed">Başarısız</string>
-    <string name="running">Çalışıyor</string>
     <string name="optional">(isteğe bağlı)</string>
 
     <string name="help_action_header">

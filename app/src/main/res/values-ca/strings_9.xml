@@ -7,9 +7,6 @@
     <string name="column_mapping">Assignació de columnes</string>
     <string name="include_spam_db">Incloure la base de dades de correu brossa</string>
     <string name="no_config_needed">No es necessita cap configuració</string>
-    <string name="success">Èxit</string>
-    <string name="failed">Error</string>
-    <string name="running">S\'està executant</string>
     <string name="optional">(opcional)</string>
 
     <string name="help_action_header">

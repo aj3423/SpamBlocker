@@ -60,7 +60,6 @@
     <string name="sms_chat">Xat SMS</string>
     <string name="call_channel">Canal de trucades</string>
     <string name="sms_channel">Canal de SMS</string>
-    <string name="missing_notification_channel">Falta el canal de notificació: %s</string>
     <string name="channel_id">ID del canal</string>
     <string name="help_channel_id">
         <![CDATA[

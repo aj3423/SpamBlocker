@@ -115,8 +115,6 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">تم إلغاء سلسلة رسائل أخرى.</string>>
-    <string name="username">اسم المستخدم</string>>
-    <string name="password">كلمة المرور</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>اسحب لليسار</b></font> لحذفه.<br>

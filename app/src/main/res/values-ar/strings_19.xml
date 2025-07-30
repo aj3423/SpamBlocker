@@ -60,7 +60,6 @@
     <string name="sms_chat">دردشة الرسائل النصية القصيرة</string>
     <string name="call_channel">قناة المكالمات</string>
     <string name="sms_channel">قناة الرسائل النصية القصيرة</string>
-    <string name="missing_notification_channel">قناة إشعار مفقودة: %s</string>
     <string name="channel_id">معرّف القناة</string>
     <string name="help_channel_id">
         <![CDATA[

@@ -106,8 +106,6 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">یک رشته دیگر لغو شده است.</string>
-    <string name="username">نام کاربری</string>
-    <string name="password">رمز عبور</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         برای حذف آن، <font color="#03DAC5"><b>به سمت چپ بکشید</b></font>.<br>

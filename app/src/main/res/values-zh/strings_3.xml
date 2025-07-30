@@ -4,7 +4,7 @@
         这些规则适用于短信内容。<br>
         <br>
         <font color="#00BFFF"><b> - 一些典型模式</b></font>:<br>
-        &ensp; - 包含 "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - 包含 \"verification\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - 包含以下任何单词： <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         选中 <font color="#03DAC5"><b>已通过</b></font> 时，此规则将适用于通过的呼叫和短信。<br>
         <br>
         选中 <font color="#fa7f71"><b>已阻止</b></font> 时，此规则将适用于被阻止的呼叫和短信。
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>无</b>:<br>&emsp; 无任何通知。 <br>
-        <b>阴影</b>:<br>&emsp; 下拉通知栏。 <br>
-        <b>状态栏</b>:<br>&emsp; 顶部栏的小图标。 <br>
-        <b>声音</b>:<br>&emsp; 默认通知声音。 <br>
-        <b>浮动通知</b>:<br>&emsp; 在屏幕顶部弹出浮动窗口。
         ]]>
     </string>
     <string name="title_rule_testing">规则测试</string>

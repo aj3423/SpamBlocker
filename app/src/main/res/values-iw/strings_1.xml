@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">בדוק את העזרה של \'כללי מספרים\' להסבר מפורט.</string>
     <string name="invalid_number">מספר לא חוקי</string>
     <string name="description">תיאור</string>
-    <string name="apply_to_call">החל על שיחה</string>
-    <string name="apply_to_sms">החל על SMS</string>
-    <string name="title_add_rule">כלל חדש</string>
-    <string name="title_edit_rule">ערוך כלל</string>
     <string name="new_">חדש</string>
     <string name="delete">מחק</string>
     <string name="clear">נקה</string>
@@ -27,28 +23,22 @@
     <string name="priority">עדיפות</string>
     <string name="deleted_filter">(כלל שנמחק)</string>
     <string name="apply_to">החל על</string>
-    <string name="Delete">מחק</string>
     <string name="undelete">שחזר</string>
     <string name="passed_by_default">עבר כברירת מחדל</string>
-    <string name="from">מאת</string>
     <string name="copy">העתק</string>
-    <string name="copied_to_clipboard">הועתק %s ללוח.</string>
     <string name="quick_copy">העתקה מהירה</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="ok">אישור</string>
-    <string name="cancel">ביטול</string>
     <string name="miscellaneous">שונות</string>
     <string name="quick_settings">הגדרות מהירות</string>
     <string name="regex_settings">הגדרות ביטוי רגולרי</string>
     <string name="backup">גיבוי</string>
     <string name="import_">ייבוא</string>
-    <string name="imported">יובא</string>
     <string name="export">ייצוא</string>
     <string name="config_text">טקסט תצורה</string>
     <string name="imported_successfully">יובא בהצלחה</string>
     <string name="import_fail">הייבוא נכשל</string>
-    <string name="go_to_setting">עבור להגדרות</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         תכונה זו דורשת הרשאה:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">שיחת חירום</string>
-    <string name="label_contact_filter">מסנן אנשי קשר</string>
     <string name="label_number_rules">כללי מספרים</string>
     <string name="number_rule">כלל מספר</string>
     <string name="label_content_rules">כללי הודעות</string>

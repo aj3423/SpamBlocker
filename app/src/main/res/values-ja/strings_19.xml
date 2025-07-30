@@ -60,7 +60,6 @@
     <string name="sms_chat">SMSチャット</string>
     <string name="call_channel">通話チャネル</string>
     <string name="sms_channel">SMSチャネル</string>
-    <string name="missing_notification_channel">通知チャネルがありません: %s</string>
     <string name="channel_id">チャネルID</string>
     <string name="help_channel_id">
         <![CDATA[

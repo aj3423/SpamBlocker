@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
+import spam.blocker.util.logi
 
 @Composable
 fun RingtonePicker(
@@ -66,7 +67,6 @@ fun getRingtoneName(ctx: Context, uri: Uri): String {
             }
         }
     } catch (e: Exception) {
-        e.printStackTrace()
         null
     } ?: ctx.getString(R.string.unknown)
 }

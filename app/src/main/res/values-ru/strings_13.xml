@@ -115,8 +115,6 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Другой поток отменён.</string>
-    <string name="username">Имя пользователя</string>
-    <string name="password">Пароль</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Смахните влево</b></font> для удаления.<br>

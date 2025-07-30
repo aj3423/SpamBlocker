@@ -4,7 +4,7 @@
         Diese Regeln gelten für den SMS-Inhalt.<br>
         <br>
         <font color="#00BFFF"><b> - Einige typische Muster</b></font>:<br>
-        &ensp; - Enthält "Verifizierung": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Enthält \"Verifizierung\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - Enthält eines der Wörter: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         Wenn <font color="#03DAC5"><b>Weitergeleitet</b></font> aktiviert ist, gilt diese Regel für weitergeleitete Anrufe und Nachrichten.<br>
         <br>
         Wenn <font color="#fa7f71"><b>Blockiert</b></font> aktiviert ist, gilt diese Regel für blockierte Anrufe und Nachrichten.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Keine</b>:<br>&emsp; Keine Benachrichtigung.<br>
-        <b>Schatten</b>:<br>&emsp; Die Benachrichtigungsleiste.<br>
-        <b>Statusleiste</b>:<br>&emsp; Das kleine Symbol in der oberen Leiste.<br>
-        <b>Ton</b>:<br>&emsp; Der Standard-Benachrichtigungston.<br>
-        <b>Heads-Up</b>:<br>&emsp; Ein Popup-Fenster oben auf dem Bildschirm anzeigen.
         ]]>
     </string>
     <string name="title_rule_testing">Regeltest</string>

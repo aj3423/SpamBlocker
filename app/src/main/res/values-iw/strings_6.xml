@@ -42,10 +42,6 @@
     <string name="add_num_to_db">הוסף מספר למאגר נתוני ספאם</string>
     <string name="mark_all_as_read">סמן הכל כנקרא</string>
     <string name="remove_db_number">מחק מספר ממאגר נתוני ספאם</string>
-    <string-array name="export_type_list">
-        <item>ייצא כ-Json</item>
-        <item>ייצא כדחוס</item>
-    </string-array>
 
     <string name="language">שפה</string>
     <string name="help_language">
@@ -88,7 +84,6 @@
 
     <string name="about">אודות</string>
     <string name="version">גרסה</string>
-    <string name="build_time">זמן בנייה (UTC)</string>
     <string name="source_code">קוד מקור</string>
     <string name="dismiss">בטל</string>
     <string name="warning_running_in_work_profile">
@@ -106,5 +101,4 @@
         ⚠️ RCS אינו נתמך.
     </string>
     <string name="open_settings">פתח הגדרות</string>
-    <string name="ignore">התעלם</string>
 </resources>

@@ -39,10 +39,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>导出为 Json</item>
-        <item>导出为压缩文件</item>
-    </string-array>
 
     <string name="language">语言</string>
     <string name="help_language">
@@ -85,7 +81,6 @@
 
     <string name="about">关于</string>
     <string name="version">版本</string>
-    <string name="build_time">构建时间 (UTC)</string>
     <string name="source_code">源代码</string>
     <string name="dismiss">关闭</string>
     <string name="warning_running_in_work_profile">
@@ -99,7 +94,6 @@
         <translate>此应用程序将接管所有短信通知，但默认短信应用程序也会显示短信通知。 为了防止重复通知，请在系统设置中禁用其通知权限。\n\n⚠️ 不支持RCS。</translate>
     </string>
     <string name="open_settings">打开设置</string>
-    <string name="ignore">忽略</string>
     <string name="remove_db_number">从垃圾电话数据库中删除号码</string>
     <string name="copy_number">复制号码</string>
     <string name="add_num_to_regex_rule">将号码添加到正则表达式规则</string>

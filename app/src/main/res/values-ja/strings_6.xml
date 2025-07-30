@@ -40,10 +40,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>Jsonとしてエクスポート</item>
-        <item>圧縮してエクスポート</item>
-    </string-array>
 
     <string name="language">言語</string>
     <string name="help_language">
@@ -89,7 +85,6 @@
 
     <string name="about">このアプリについて</string>
     <string name="version">バージョン</string>
-    <string name="build_time">ビルド時間(UTC)</string>
     <string name="source_code">ソースコード</string>
     <string name="dismiss">閉じる</string>
     <string name="warning_running_in_work_profile">
@@ -108,7 +103,6 @@
         ⚠️ RCSはサポートされていません。
     </string>
     <string name="open_settings">設定を開く</string>
-    <string name="ignore">無視</string>
     <string name="remove_db_number">迷惑電話データベースから番号を削除</string>
     <string name="copy_number">番号をコピー</string>
     <string name="add_num_to_regex_rule">正規表現ルールに番号を追加</string>

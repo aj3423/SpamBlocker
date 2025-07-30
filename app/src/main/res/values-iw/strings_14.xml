@@ -51,7 +51,7 @@
          - <font color="#fa7f71"><b>{political}</b></font><br>
         <br>
          - <font color="#fa7f71"><b>{other}</b></font><br>
-        &ensp; סוג הספאם החלופי, המשמש כאשר אף אחת מהקטגוריות הנ"ל אינה חלה.<br>
+        &ensp; סוג הספאם החלופי, המשמש כאשר אף אחת מהקטגוריות הנ\"ל אינה חלה.<br>
         ]]>
     </string>
     <string name="missing_category">
@@ -68,7 +68,6 @@
     </string>
     <string name="allow">אפשר</string>
     <string name="block">חסום</string>
-    <string name="seconds">שניות</string>
     <string name="seconds_short">שנ\'</string>
     <string name="within_seconds">תוך שניות</string>
     <string name="sms_alert">התראת סמס</string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">תו כללי `*` משמש ללא נקודה קודמת, האם התכוונת ל-`.*` ?</string>
     <string name="import_as">ייבא כ-</string>
     <string name="api_key">מפתח API</string>
-    <string name="mms_support">תמיכת MMS</string>
 </resources>

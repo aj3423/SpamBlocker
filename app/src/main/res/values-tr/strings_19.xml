@@ -60,7 +60,6 @@
     <string name="sms_chat">SMS Sohbeti</string>
     <string name="call_channel">Arama Kanalı</string>
     <string name="sms_channel">SMS Kanalı</string>
-    <string name="missing_notification_channel">Eksik bildirim kanalı: %s</string>
     <string name="channel_id">Kanal Kimliği</string>
     <string name="help_channel_id">
         <![CDATA[

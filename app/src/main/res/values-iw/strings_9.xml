@@ -7,9 +7,6 @@
     <string name="column_mapping">מיפוי עמודות</string>
     <string name="include_spam_db">כלול מסד נתוני ספאם</string>
     <string name="no_config_needed">אין צורך בהגדרה</string>
-    <string name="success">הצלחה</string>
-    <string name="failed">נכשל</string>
-    <string name="running">פועל</string>
     <string name="optional">(אופציונלי)</string>
 
     <string name="help_action_header">

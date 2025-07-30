@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Zulassen</string>
     <string name="block">Blockieren</string>
-    <string name="seconds">Sekunden</string>
     <string name="seconds_short">Sek</string>
     <string name="within_seconds">Innerhalb von Sekunden</string>
     <string name="sms_alert"><short>SMS Alarm</short></string>
@@ -92,5 +91,4 @@
     <string name="waning_using_wildcard_as_regex">Platzhalter `*` wird ohne vorangestellten Punkt verwendet, meinen Sie `.*`?</string>
     <string name="import_as">Importieren als</string>
     <string name="api_key">API-Schlüssel</string>
-    <string name="mms_support">MMS-Unterstützung</string>
 </resources>

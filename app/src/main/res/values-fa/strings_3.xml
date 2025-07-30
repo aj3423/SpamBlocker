@@ -4,7 +4,7 @@
         این قوانین برای محتوای پیامک اعمال می‌شوند.<br>
         <br>
         <font color="#00BFFF"><b> - برخی الگوهای معمول</b></font>:<br>
-        &ensp; - شامل "کد تایید": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - شامل \"کد تایید\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - شامل هر یک از کلمات: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         هنگامی که <font color="#03DAC5"><b>عبور کرده</b></font> تیک خورده باشد، این قانون برای تماس‌ها و پیام‌های عبور کرده اعمال می‌شود.<br>
         <br>
         هنگامی که <font color="#fa7f71"><b>مسدود شده</b></font> تیک خورده باشد، این قانون برای تماس‌ها و پیام‌های مسدود شده اعمال می‌شود.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>هیچ</b>:<br>&emsp; هیچ اعلانی. <br>
-        <b>سایه</b>:<br>&emsp; سایه اعلان کشویی. <br>
-        <b>نوار وضعیت</b>:<br>&emsp; آیکون کوچک در نوار بالا. <br>
-        <b>صدا</b>:<br>&emsp; صدای اعلان پیش‌فرض. <br>
-        <b>سر بالا</b>:<br>&emsp; پنجره شناور را در بالای صفحه باز کنید.
         ]]>
     </string>
     <string name="title_rule_testing">آزمایش قانون</string>

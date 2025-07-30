@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Разрешить</string>
     <string name="block">Заблокировать</string>
-    <string name="seconds">Секунд</string>
     <string name="seconds_short">Сек</string>
     <string name="within_seconds">В течение секунд</string>
     <string name="sms_alert"><short>SMS-оповещение</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">Подстановочный знак `*` используется без предшествующей точки, вы имели в виду `.*`?</string>
     <string name="import_as">Импортировать как</string>
     <string name="api_key">Ключ API</string>
-    <string name="mms_support">Поддержка MMS</string>
 </resources>

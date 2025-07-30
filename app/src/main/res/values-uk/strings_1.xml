@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">Перегляньте довідку `Правила номерів` для детального пояснення.</string>
     <string name="invalid_number">Недійсний номер</string>
     <string name="description">Опис</string>
-    <string name="apply_to_call">Застосувати до дзвінка</string>
-    <string name="apply_to_sms">Застосувати до SMS</string>
-    <string name="title_add_rule">Нове правило</string>
-    <string name="title_edit_rule">Редагувати правило</string>
     <string name="new_">Нове</string>
     <string name="delete">Видалити</string>
     <string name="clear">Очистити</string>
@@ -27,28 +23,22 @@
     <string name="priority">Пріоритет</string>
     <string name="deleted_filter">(видалене правило)</string>
     <string name="apply_to">Застосувати до</string>
-    <string name="Delete">Видалити</string>
     <string name="undelete">Відновити</string>
     <string name="passed_by_default">Пройшло за замовчуванням</string>
-    <string name="from">Від</string>
     <string name="copy">Копіювати</string>
-    <string name="copied_to_clipboard">Скопійовано `%s` в буфер обміну.</string>
     <string name="quick_copy">Швидке копіювання</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="ok">OK</string>
-    <string name="cancel">Скасувати</string>
     <string name="miscellaneous">Різне</string>
     <string name="quick_settings">Швидкі налаштування</string>
     <string name="regex_settings">Налаштування регулярних виразів</string>
     <string name="backup">резервна копія</string>
     <string name="import_">Імпорт</string>
-    <string name="imported">Імпортовано</string>
     <string name="export">Експорт</string>
     <string name="config_text">Текст конфігурації</string>
     <string name="imported_successfully">Імпортовано успішно</string>
     <string name="import_fail">Не вдалося імпортувати</string>
-    <string name="go_to_setting">Перейти до налаштувань</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Для цієї функції потрібен дозвіл:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">Терміновий дзвінок</string>
-    <string name="label_contact_filter">Фільтр контактів</string>
     <string name="label_number_rules">Правила номерів</string>
     <string name="label_content_rules">Правила повідомлень</string>
     <string name="recent_apps"><short>Останні програми</short></string>

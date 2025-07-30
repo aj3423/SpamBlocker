@@ -7,9 +7,6 @@
     <string name="column_mapping">Spaltenzuordnung</string>
     <string name="include_spam_db">Spam-Datenbank einschließen</string>
     <string name="no_config_needed">Keine Konfiguration erforderlich</string>
-    <string name="success">Erfolg</string>
-    <string name="failed">Fehler</string>
-    <string name="running">Läuft</string>
     <string name="optional">(optional)</string>
 
     <string name="help_action_header">

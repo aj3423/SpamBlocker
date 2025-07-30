@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Permitir</string>
     <string name="block">Bloquear</string>
-    <string name="seconds">Segundos</string>
     <string name="seconds_short">Seg</string>
     <string name="within_seconds">Dentro de Segundos</string>
     <string name="sms_alert"><short>Alerta SMS</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">O caractere curinga `*` está sendo usado sem um ponto precedente, você quis dizer `.*`?</string>
     <string name="import_as">Importar Como</string>
     <string name="api_key">Chave da API</string>
-    <string name="mms_support">Suporte a MMS</string>
 </resources>

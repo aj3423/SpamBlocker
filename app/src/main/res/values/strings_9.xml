@@ -7,9 +7,6 @@
     <string name="column_mapping">Column Mapping</string>
     <string name="include_spam_db">Include Spam Database</string>
     <string name="no_config_needed">No configuration needed</string>
-    <string name="success">Success</string>
-    <string name="failed">Failed</string>
-    <string name="running">Running</string>
     <string name="optional">(optional)</string>
 
     <string name="help_action_header">

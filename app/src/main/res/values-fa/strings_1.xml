@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">برای توضیحات بیشتر، راهنمای `قوانین شماره` را بررسی کنید.</string>
     <string name="invalid_number">شماره نامعتبر</string>
     <string name="description">توضیحات</string>
-    <string name="apply_to_call">اعمال به تماس</string>
-    <string name="apply_to_sms">اعمال به پیامک</string>
-    <string name="title_add_rule">قانون جدید</string>
-    <string name="title_edit_rule">ویرایش قانون</string>
     <string name="new_">جدید</string>
     <string name="delete">حذف</string>
     <string name="clear">پاک کردن</string>
@@ -27,28 +23,22 @@
     <string name="priority">اولویت</string>
     <string name="deleted_filter">(قانون حذف شده)</string>
     <string name="apply_to">اعمال به</string>
-    <string name="Delete">حذف</string>
     <string name="undelete">لغو حذف</string>
     <string name="passed_by_default">به طور پیش فرض عبور کرده</string>
-    <string name="from">از</string>
     <string name="copy">کپی</string>
-    <string name="copied_to_clipboard">`%s` به حافظه کپی شد.</string>
     <string name="quick_copy">کپی سریع</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="ok">باشه</string>
-    <string name="cancel">لغو</string>
     <string name="miscellaneous">متفرقه</string>
     <string name="quick_settings">تنظیمات سریع</string>
     <string name="regex_settings">تنظیمات عبارت منظم</string>
     <string name="backup">پشتیبان گیری</string>
     <string name="import_">وارد کردن</string>
-    <string name="imported">وارد شده</string>
     <string name="export">خروجی</string>
     <string name="config_text">متن پیکربندی</string>
     <string name="imported_successfully">با موفقیت وارد شد</string>
     <string name="import_fail">وارد کردن ناموفق</string>
-    <string name="go_to_setting">رفتن به تنظیمات</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         <translate>این ویژگی به مجوز نیاز دارد:</translate><br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">تماس اضطراری</string>
-    <string name="label_contact_filter">فیلتر مخاطبین</string>
     <string name="label_number_rules">قوانین شماره</string>
     <string name="number_rule">قانون شماره</string>
     <string name="label_content_rules">قوانین پیام</string>

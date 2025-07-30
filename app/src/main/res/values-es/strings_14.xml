@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Permitir</string>
     <string name="block">Bloquear</string>
-    <string name="seconds">Segundos</string>
     <string name="seconds_short">Seg</string>
     <string name="within_seconds">Dentro de Segundos</string>
     <string name="sms_alert"><short>Alerta SMS</short></string>
@@ -92,5 +91,4 @@
     <string name="waning_using_wildcard_as_regex">Se usa el comodín `*` sin un punto anterior, ¿quiere decir `.*`?</string>
     <string name="import_as">Importar Como</string>
     <string name="api_key">Clave API</string>
-    <string name="mms_support">Soporte MMS</string>
 </resources>

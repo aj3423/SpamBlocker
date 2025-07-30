@@ -4,7 +4,7 @@
         These rules apply to the SMS content.<br>
         <br>
         <font color="#00BFFF"><b> - Some typical patterns</b></font>:<br>
-        &ensp; - Contains "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Contains \"verification\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - Contains any of the words: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         When <font color="#03DAC5"><b>Passed</b></font> is checked, this rule will apply to passed calls and messages.<br>
         <br>
         When <font color="#fa7f71"><b>Blocked</b></font> is checked, this rule will apply to blocked calls and messages.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>None</b>:<br>&emsp; No notification at all. <br>
-        <b>Shade</b>:<br>&emsp; The dropdown notification shade. <br>
-        <b>StatusBar</b>:<br>&emsp; The small icon in the top bar. <br>
-        <b>Sound</b>:<br>&emsp; The default notification sound. <br>
-        <b>Heads-Up</b>:<br>&emsp; Popup a floating window on the top of the screen.
         ]]>
     </string>
     <string name="title_rule_testing">Rule Testing</string>

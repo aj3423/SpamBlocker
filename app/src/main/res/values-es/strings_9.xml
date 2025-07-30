@@ -7,9 +7,6 @@
     <string name="column_mapping">Mapeo de columnas</string>
     <string name="include_spam_db">Incluir base de datos de spam</string>
     <string name="no_config_needed">No se necesita configuración</string>
-    <string name="success">Éxito</string>
-    <string name="failed">Fallido</string>
-    <string name="running">En ejecución</string>
     <string name="optional">(opcional)</string>
 
     <string name="help_action_header">

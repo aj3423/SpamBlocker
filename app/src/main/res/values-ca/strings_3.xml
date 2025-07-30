@@ -4,7 +4,7 @@
         Aquestes regles s\'apliquen al contingut dels SMS.<br>
         <br>
         <font color="#00BFFF"><b> - Alguns patrons típics</b></font>:<br>
-        &ensp; - Conté "verificació": <font color="#03DAC5"><b>.*verificació.*</b></font><br>
+        &ensp; - Conté \"verificació\": <font color="#03DAC5"><b>.*verificació.*</b></font><br>
         &ensp; - Conté alguna de les paraules: <font color="#03DAC5"><b>.*(policia|hospital|verificació).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         Quan <font color="#03DAC5"><b>Permès</b></font> està marcat, aquesta regla s\'aplicarà a les trucades i els missatges permesos.<br>
         <br>
         Quan <font color="#fa7f71"><b>Bloquejat</b></font> està marcat, aquesta regla s\'aplicarà a les trucades i els missatges bloquejats.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Cap</b>:<br>&emsp; Sense cap notificació. <br>
-        <b>Ombra</b>:<br>&emsp; La cortina de notificacions desplegable. <br>
-        <b>Barra d\'estat</b>:<br>&emsp; La petita icona a la barra superior. <br>
-        <b>So</b>:<br>&emsp; El so de notificació per defecte. <br>
-        <b>Cap visible</b>:<br>&emsp; Obre una finestra flotant a la part superior de la pantalla.
         ]]>
     </string>
     <string name="title_rule_testing">Prova de la regla</string>

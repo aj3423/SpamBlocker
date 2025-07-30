@@ -4,7 +4,7 @@
         Aturan ini berlaku untuk isi SMS.<br>
         <br>
         <font color="#00BFFF"><b> - Beberapa pola umum</b></font>:<br>
-        &ensp; - Berisi "verifikasi": <font color="#03DAC5"><b>.*verifikasi.*</b></font><br>
+        &ensp; - Berisi \"verifikasi\": <font color="#03DAC5"><b>.*verifikasi.*</b></font><br>
         &ensp; - Berisi salah satu kata: <font color="#03DAC5"><b>.*(polisi|rumah sakit|verifikasi).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         Ketika <font color="#03DAC5"><b>Lolos</b></font> dicentang, aturan ini akan berlaku untuk panggilan dan pesan yang diteruskan.<br>
         <br>
         Ketika <font color="#fa7f71"><b>Diblokir</b></font> dicentang, aturan ini akan berlaku untuk panggilan dan pesan yang diblokir.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Tidak ada</b>:<br>&emsp; Tidak ada notifikasi sama sekali. <br>
-        <b>Bayangan</b>:<br>&emsp; Dropdown bayangan notifikasi. <br>
-        <b>Bilah Status</b>:<br>&emsp; Ikon kecil di bilah atas. <br>
-        <b>Suara</b>:<br>&emsp; Suara notifikasi default. <br>
-        <b>Heads-Up</b>:<br>&emsp; Munculkan jendela mengambang di bagian atas layar.
         ]]>
     </string>
     <string name="title_rule_testing">Pengujian Aturan</string>

@@ -29,40 +29,27 @@
     <string name="spoof">Llamada Falsificada</string>
     <string name="help_stir">
         <![CDATA[
-            La atestación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
-            <br>
-            Hay tres posibles resultados de atestación: <br>
-            <font color="#03DAC5"><b>Válida</b></font> <br>
-              &emsp; Es muy probable que la llamada sea válida, no fraudulenta. <br>
-            <font color="#ffa500"><b>No Verificada</b></font> <br>
-              &emsp; La llamada no pudo ser validada, o la atestación STIR no es compatible. <br>
-            <font color="#fa7f71"><b>Fraudulenta</b></font> <br>
-              &emsp; Es muy probable que sea una llamada fraudulenta. <br>
-            <br>
-            <br>
-            <b>Opciones:</b><br>
-            <br>
-              - <b>Tolerante</b>: <br>
-                  &emsp; - Las llamadas <font color="#03DAC5"><b>Válidas</b></font> serán permitidas. <br>
-                  &emsp; - Las llamadas <font color="#fa7f71"><b>Fraudulentas</b></font> seguirán siendo revisadas por otras reglas. <br>
-                  &emsp; - Cuando <b>Incluir No Verificados</b> esté marcado, las llamadas <font color="#ffa500"><b>No Verificadas</b></font> también serán permitidas. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad Predeterminada: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Estricto</b></font>: <br>
-                  &emsp; - Las llamadas <font color="#03DAC5"><b>Válidas</b></font> serán revisadas por otras reglas. <br>
-                  &emsp; - Las llamadas <font color="#fa7f71"><b>Fraudulentas</b></font> serán bloqueadas. <br>
-                  &emsp; - Cuando \"<b>Incluir No Verificados</b>\" esté marcado, las llamadas <font color="#ffa500"><b>No Verificadas</b></font> también serán bloqueadas. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioridad Predeterminada: 0</b></font> <br>
-            <br>
-            <br>
-            Un <b>caso de uso</b> para personalizar las prioridades:<br>
-            <br>
-            1. Siempre permitir contactos. <br>
-              &emsp; - Contactos(Tolerante), prioridad <font color="#ea86ff">12</font> <br>
-            2. Bloquear llamadas que fallen STIR, incluso si se repiten. <br>
-              &emsp; - STIR(Estricto), prioridad <font color="#ea86ff">11</font> <br>
-            3. Permitir llamadas que se repiten. <br>
-              &emsp; - Llamada Repetida, prioridad <font color="#ea86ff">10</font> <br>
+        Bloquea las llamadas que no superan la certificación STIR/SHAKEN, indicando que es muy probable que sean suplantadas. <br>
+        <br>
+        La certificación STIR/SHAKEN requiere <b>Android 11+</b> y <b>soporte del operador</b>. <br>
+        <br>
+        <b>Opciones:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Incluir No Verificados</b></font> <br>
+        Cuando está habilitado, las llamadas no verificadas también serán bloqueadas. Esto significa que la llamada no puede ser validada,
+          o que el operador o su dispositivo no son compatibles con la certificación STIR. <br>
+        <b>Caso de uso</b>: <br>
+        &ensp; En un lugar donde se aplica la certificación STIR, es probable que un número no verificado sea spam. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioridad Predeterminada: 0</b></font> <br>
+        Un <b>caso de uso</b> para personalizar las prioridades:<br>
+        <br>
+        1. Permitir siempre contactos. <br>
+          &emsp; - Contactos(Tolerante), prioridad <font color="#ea86ff">12</font> <br>
+        2. Bloquear llamadas que no superan STIR, incluso si se repiten. <br>
+          &emsp; - STIR, prioridad <font color="#ea86ff">11</font> <br>
+        3. Permitir llamadas que se repiten. <br>
+          &emsp; - Llamada Repetida, prioridad <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

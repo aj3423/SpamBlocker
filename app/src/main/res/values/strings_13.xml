@@ -3,7 +3,7 @@
         Cleaning up history db, deleting records before timestamp: %s.
     </string>
     <string name="cleaning_up_spam_db">
-        Cleaning up spam db, deleting %s records before timestamp: %s".
+        Cleaning up spam db, deleting %s records before timestamp: %s\".
     </string>
     <string name="resolved_url">Resolved url: %s</string>
     <string name="time_cost">Time cost: %s milliseconds.</string>
@@ -115,8 +115,6 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>
-    <string name="username">Username</string>>
-    <string name="password">Password</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Swipe left</b></font> to delete it.<br>

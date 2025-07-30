@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Autoriser</string>
     <string name="block">Bloquer</string>
-    <string name="seconds">Secondes</string>
     <string name="seconds_short">Sec</string>
     <string name="within_seconds">En quelques secondes</string>
     <string name="sms_alert"><short>Alerte SMS</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">Le caractère générique `*` est utilisé sans point précédent, vouliez-vous dire `.*` ?</string>
     <string name="import_as">Importer comme</string>
     <string name="api_key">Clé API</string>
-    <string name="mms_support">Support MMS</string>
 </resources>

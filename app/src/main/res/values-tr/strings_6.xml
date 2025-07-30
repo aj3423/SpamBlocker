@@ -39,10 +39,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>JSON olarak Dışa Aktar</item>
-        <item>Sıkıştırılmış Olarak Dışa Aktar</item>
-    </string-array>
 
     <string name="language">Dil</string>
     <string name="help_language">
@@ -85,7 +81,6 @@
 
     <string name="about">Hakkında</string>
     <string name="version">Sürüm</string>
-    <string name="build_time">Derleme Zamanı (UTC)</string>
     <string name="source_code">Kaynak Kodu</string>
     <string name="dismiss">Kapat</string>
     <string name="warning_running_in_work_profile">
@@ -103,7 +98,6 @@
         ⚠️ RCS desteklenmiyor.
     </string>
     <string name="open_settings">Ayarları Aç</string>
-    <string name="ignore">Görmezden Gel</string>
     <string name="remove_db_number">Numarayı spam veritabanından sil</string>
     <string name="copy_number">Numarayı kopyala</string>
     <string name="add_num_to_regex_rule">Numarayı regex kuralına ekle</string>

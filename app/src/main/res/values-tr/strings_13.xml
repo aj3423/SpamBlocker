@@ -62,8 +62,6 @@
         3. Oluşturulan API anahtarını aşağıya girin.
         ]]>
     </string>
-    <string name="username">kullanıcı adı</string>
-    <string name="password">şifre</string>
     <string name="auto_detect_cc_permission">Ülke kodunu algılamak için READ_PHONE_STATE izni gereklidir.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

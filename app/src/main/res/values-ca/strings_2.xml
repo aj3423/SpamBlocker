@@ -29,40 +29,27 @@
     <string name="spoof">Trucada falsa</string>
     <string name="help_stir">
         <![CDATA[
-            L\'atestació STIR/SHAKEN requereix <b>Android 11+</b> i <b>suport de l\'operador</b>. <br>
-            <br>
-            Hi ha tres possibles resultats d\'atestació: <br>
-            <font color="#03DAC5"><b>Vàlida</b></font> <br>
-              &emsp; La trucada és molt probablement vàlida, no suplantada. <br>
-            <font color="#ffa500"><b>No verificada</b></font> <br>
-              &emsp; La trucada no pot ser validada, o l\'atestació STIR no és compatible. <br>
-            <font color="#fa7f71"><b>Suplantada</b></font> <br>
-              &emsp; És molt probable que sigui una trucada suplantada. <br>
-            <br>
-            <br>
-            <b>Opcions:</b><br>
-            <br>
-              - <b>Tolerant</b>: <br>
-                  &emsp; - Les trucades <font color="#03DAC5"><b>vàlides</b></font> seran permeses. <br>
-                  &emsp; - Les trucades <font color="#fa7f71"><b>suplantades</b></font> encara seran revisades per altres regles. <br>
-                  &emsp; - Quan <b>Incloure No Verificats</b> estigui marcat, les trucades <font color="#ffa500"><b>no verificades</b></font> també seran permeses. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritat Predeterminada: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Estricte</b></font>: <br>
-                  &emsp; - Les trucades <font color="#03DAC5"><b>vàlides</b></font> seran revisades per altres regles. <br>
-                  &emsp; - Les trucades <font color="#fa7f71"><b>suplantades</b></font> seran bloquejades. <br>
-                  &emsp; - Quan \"<b>Incloure No Verificats</b>\" estigui marcat, les trucades <font color="#ffa500"><b>no verificades</b></font> també seran bloquejades. <br>
-                  &emsp; <font color="#ea86ff"><b>Prioritat Predeterminada: 0</b></font> <br>
-            <br>
-            <br>
-            Un <b>cas d\'ús</b> per personalitzar les prioritats:<br>
-            <br>
-            1. Permetre sempre els contactes. <br>
-              &emsp; - Contactes(Tolerant), prioritat <font color="#ea86ff">12</font> <br>
-            2. Bloquejar les trucades que fallen STIR, encara que es repeteixin. <br>
-              &emsp; - STIR(Estricte), prioritat <font color="#ea86ff">11</font> <br>
-            3. Permetre les trucades que es repeteixen. <br>
-              &emsp; - Trucada Repetida, prioritat <font color="#ea86ff">10</font> <br>
+        Bloqueja les trucades que no superen l\'autenticació STIR/SHAKEN, indicant que és molt probable que siguin fraudulentes. <br>
+        <br>
+        L\'autenticació STIR/SHAKEN requereix <b>Android 11+</b> i <b>compatibilitat de l\'operador</b>. <br>
+        <br>
+        <b>Opcions:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Incloure no verificats</b></font> <br>
+        Quan està activat, les trucades no verificades també seran bloquejades. Significa que la trucada no es pot validar,
+          o que l\'operador o el teu dispositiu no és compatible amb l\'autenticació STIR. <br>
+        <b>Cas d\'ús</b>: <br>
+        &ensp; En un lloc on es fa complir l\'autenticació STIR, és probable que un número no verificat sigui spam. <br>
+        <br>
+        <font color="#ea86ff"><b>Prioritat per defecte: 0</b></font> <br>
+        Un <b>cas d\'ús</b> per personalitzar les prioritats:<br>
+        <br>
+        1. Permetre sempre els contactes. <br>
+          &emsp; - Contactes (Lleuger), prioritat <font color="#ea86ff">12</font> <br>
+        2. Bloqueja les trucades que fallen STIR, encara que es repeteixin. <br>
+          &emsp; - STIR, prioritat <font color="#ea86ff">11</font> <br>
+        3. Permetre les trucades que es repeteixen. <br>
+          &emsp; - Trucada repetida, prioritat <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

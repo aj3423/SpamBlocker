@@ -63,8 +63,6 @@
         3. Saisissez la clé API générée ci-dessous.
         ]]>
     </string>
-    <string name="username">nom d\'utilisateur</string>
-    <string name="password">mot de passe</string>
     <string name="auto_detect_cc_permission">L\'autorisation READ_PHONE_STATE est nécessaire pour détecter l\'indicatif pays.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

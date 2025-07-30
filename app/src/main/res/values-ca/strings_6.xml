@@ -42,10 +42,6 @@
     <string name="add_num_to_db"><translate>Afegeix el número a la base de dades de correu brossa</translate></string>
     <string name="mark_all_as_read"><translate>Marca-ho tot com a llegit</translate></string>
     <string name="remove_db_number"><translate>Suprimeix el número de la base de dades de correu brossa</translate></string>
-    <string-array name="export_type_list">
-        <item>Exporta com a Json</item>
-        <item>Exporta com a comprimit</item>
-    </string-array>
 
     <string name="language"><translate>Idioma</translate></string>
     <string name="help_language">
@@ -88,7 +84,6 @@
 
     <string name="about"><translate>Quant a</translate></string>
     <string name="version"><translate>Versió</translate></string>
-    <string name="build_time"><translate>Temps de construcció (UTC)</translate></string>
     <string name="source_code"><translate>Codi font</translate></string>
     <string name="dismiss"><translate>Descarta</translate></string>
     <string name="warning_running_in_work_profile">
@@ -107,5 +102,4 @@
         ⚠️ No s\'admet RCS.</translate>
     </string>
     <string name="open_settings"><translate>Obre la configuració</translate></string>
-    <string name="ignore"><translate>Ignora</translate></string>
 </resources>

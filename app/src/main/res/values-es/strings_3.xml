@@ -4,7 +4,7 @@
         Estas reglas se aplican al contenido del SMS.<br>
         <br>
         <font color="#00BFFF"><b> - Algunos patrones típicos</b></font>:<br>
-        &ensp; - Contiene "verificación": <font color="#03DAC5"><b>.*verificación.*</b></font><br>
+        &ensp; - Contiene \"verificación\": <font color="#03DAC5"><b>.*verificación.*</b></font><br>
         &ensp; - Contiene cualquiera de las palabras: <font color="#03DAC5"><b>.*(policía|hospital|verificación).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         Cuando <font color="#03DAC5"><b>Aprobado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes aprobados.<br>
         <br>
         Cuando <font color="#fa7f71"><b>Bloqueado</b></font> está marcado, esta regla se aplicará a las llamadas y mensajes bloqueados.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Ninguno</b>:<br>&emsp; Sin notificación en absoluto. <br>
-        <b>Sombra</b>:<br>&emsp; La sombra de notificación desplegable. <br>
-        <b>Barra de estado</b>:<br>&emsp; El pequeño icono en la barra superior. <br>
-        <b>Sonido</b>:<br>&emsp; El sonido de notificación predeterminado. <br>
-        <b>Heads-Up</b>:<br>&emsp; Aparecer una ventana flotante en la parte superior de la pantalla.
         ]]>
     </string>
     <string name="title_rule_testing">Prueba de reglas</string>

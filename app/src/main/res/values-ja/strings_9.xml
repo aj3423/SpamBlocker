@@ -7,9 +7,6 @@
     <string name="column_mapping">列マッピング</string>
     <string name="include_spam_db">スパムデータベースを含める</string>
     <string name="no_config_needed">設定不要</string>
-    <string name="success">成功</string>
-    <string name="failed">失敗</string>
-    <string name="running">実行中</string>
     <string name="optional">(オプション)</string>
 
     <string name="help_action_header">

@@ -29,40 +29,26 @@
     <string name="spoof">Spoof-Anruf</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN-Attestierung erfordert <b>Android 11+</b> und <b>Netzbetreiberunterstützung</b>. <br>
-            <br>
-            Es gibt drei mögliche Attestierungsergebnisse: <br>
-            <font color="#03DAC5"><b>Gültig</b></font> <br>
-              &emsp; Der Anruf ist sehr wahrscheinlich gültig, nicht gefälscht. <br>
-            <font color="#ffa500"><b>Nicht verifiziert</b></font> <br>
-              &emsp; Der Anruf kann nicht validiert werden, oder die STIR-Attestierung wird nicht unterstützt. <br>
-            <font color="#fa7f71"><b>Gefälscht</b></font> <br>
-              &emsp; Es handelt sich sehr wahrscheinlich um einen gefälschten Anruf. <br>
-            <br>
-            <br>
-            <b>Optionen:</b><br>
-            <br>
-              - <b>Nachsichtig</b>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Gültige</b></font> Anrufe werden erlaubt. <br>
-                  &emsp; - <font color="#fa7f71"><b>Gefälschte</b></font> Anrufe werden weiterhin von anderen Regeln überprüft. <br>
-                  &emsp; - Wenn <b>Nicht verifizierte einschließen</b> aktiviert ist, werden auch <font color="#ffa500"><b>nicht verifizierte</b></font> Anrufe erlaubt. <br>
-                  &emsp; <font color="#ea86ff"><b>Standardpriorität: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>Streng</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>Gültige</b></font> Anrufe werden von anderen Regeln überprüft. <br>
-                  &emsp; - <font color="#fa7f71"><b>Gefälschte</b></font> Anrufe werden blockiert. <br>
-                  &emsp; - Wenn \"<b>Nicht verifizierte einschließen</b>\" aktiviert ist, werden auch <font color="#ffa500"><b>nicht verifizierte</b></font> Anrufe blockiert. <br>
-                  &emsp; <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
-            <br>
-            <br>
-            Ein <b>Anwendungsfall</b> zum Anpassen der Prioritäten:<br>
-            <br>
-            1. Kontakte immer erlauben. <br>
-              &emsp; - Kontakte (Nachsichtig), Priorität <font color="#ea86ff">12</font> <br>
-            2. Anrufe blockieren, die bei STIR fehlschlagen, selbst wenn sie sich wiederholen. <br>
-              &emsp; - STIR (Streng), Priorität <font color="#ea86ff">11</font> <br>
-            3. Sich wiederholende Anrufe erlauben. <br>
-              &emsp; - Wiederholter Anruf, Priorität <font color="#ea86ff">10</font> <br>
+        Es blockiert Anrufe, die die STIR/SHAKEN-Bescheinigung nicht bestehen, was darauf hindeutet, dass sie sehr wahrscheinlich gefälscht sind. <br>
+        <br>
+        Die STIR/SHAKEN-Bescheinigung erfordert <b>Android 11+</b> und <b>Carrier-Unterstützung</b>. <br>
+        <br>
+        <b>Optionen:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Unverifizierte einschließen</b></font> <br>
+        Wenn aktiviert, werden auch unverifizierte Anrufe blockiert. Das bedeutet, dass der Anruf nicht validiert werden kann oder dass der Netzbetreiber oder Ihr Gerät die STIR-Bescheinigung nicht unterstützt. <br>
+        <b>Anwendungsfall</b>: <br>
+        &ensp; Für einen Ort, der die STIR-Bescheinigung erzwingt, ist eine unverifizierte Nummer wahrscheinlich Spam. <br>
+        <br>
+        <font color="#ea86ff"><b>Standardpriorität: 0</b></font> <br>
+        Ein <b>Anwendungsfall</b> zum Anpassen der Prioritäten:<br>
+        <br>
+        1. Kontakte immer zulassen. <br>
+          &emsp; - Kontakte (Nachsichtig), Priorität <font color="#ea86ff">12</font> <br>
+        2. STIR fehlgeschlagene Anrufe blockieren, auch wenn sie sich wiederholen. <br>
+          &emsp; - STIR, Priorität <font color="#ea86ff">11</font> <br>
+        3. Sich wiederholende Anrufe zulassen. <br>
+          &emsp; - Wiederholter Anruf, Priorität <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

@@ -7,9 +7,6 @@
     <string name="column_mapping">Pemetaan Kolom</string>
     <string name="include_spam_db">Sertakan Basis Data Spam</string>
     <string name="no_config_needed">Tidak perlu konfigurasi</string>
-    <string name="success">Sukses</string>
-    <string name="failed">Gagal</string>
-    <string name="running">Sedang berjalan</string>
     <string name="optional">(opsional)</string>
 
     <string name="help_action_header">

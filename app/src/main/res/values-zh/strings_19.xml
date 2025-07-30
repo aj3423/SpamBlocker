@@ -60,7 +60,6 @@
     <string name="sms_chat">短信聊天</string>
     <string name="call_channel">呼叫渠道</string>
     <string name="sms_channel">短信渠道</string>
-    <string name="missing_notification_channel">缺少通知渠道：%s</string>
     <string name="channel_id">渠道ID</string>
     <string name="help_channel_id">
         <![CDATA[

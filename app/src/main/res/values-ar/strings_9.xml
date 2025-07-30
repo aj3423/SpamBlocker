@@ -7,9 +7,6 @@
     <string name="column_mapping">تخطيط الأعمدة</string>
     <string name="include_spam_db">تضمين قاعدة بيانات الرسائل غير المرغوب فيها</string>
     <string name="no_config_needed">لا يلزم أي تكوين</string>
-    <string name="success">نجاح</string>
-    <string name="failed">فشل</string>
-    <string name="running">قيد التشغيل</string>
     <string name="optional">(اختياري)</string>
 
     <string name="help_action_header">

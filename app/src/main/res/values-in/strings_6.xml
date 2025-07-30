@@ -42,10 +42,6 @@
     <string name="add_num_to_db">Tambahkan nomor ke basis data spam</string>
     <string name="mark_all_as_read">Tandai semua telah dibaca</string>
     <string name="remove_db_number">Hapus nomor dari basis data spam</string>
-    <string-array name="export_type_list">
-        <item>Ekspor sebagai Json</item>
-        <item>Ekspor sebagai Terkompresi</item>
-    </string-array>
 
     <string name="language">Bahasa</string>
     <string name="help_language">
@@ -88,7 +84,6 @@
 
     <string name="about">Tentang</string>
     <string name="version">Versi</string>
-    <string name="build_time">Waktu Dibangun (UTC)</string>
     <string name="source_code">Kode Sumber</string>
     <string name="dismiss">Singkirkan</string>
     <string name="warning_running_in_work_profile">
@@ -106,5 +101,4 @@
         ⚠️ RCS tidak didukung.
     </string>
     <string name="open_settings">Buka Pengaturan</string>
-    <string name="ignore">Abaikan</string>
 </resources>

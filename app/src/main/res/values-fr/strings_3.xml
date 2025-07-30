@@ -4,7 +4,7 @@
         Ces règles s\'appliquent au contenu des SMS.<br>
         <br>
         <font color="#00BFFF"><b> - Quelques exemples de modèles</b></font>:<br>
-        &ensp; - Contient "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Contient \"verification\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - Contient l\'un des mots suivants: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         Lorsque <font color="#03DAC5"><b>Passed</b></font> est coché, cette règle s\'appliquera aux appels et messages passés.<br>
         <br>
         Lorsque <font color="#fa7f71"><b>Blocked</b></font> est coché, cette règle s\'appliquera aux appels et messages bloqués.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>None</b>:<br>&emsp; Aucune notification.<br>
-        <b>Shade</b>:<br>&emsp; Le panneau de notification déroulant. <br>
-        <b>StatusBar</b>:<br>&emsp; La petite icône dans la barre supérieure. <br>
-        <b>Sound</b>:<br>&emsp; Le son de notification par défaut. <br>
-        <b>Heads-Up</b>:<br>&emsp; Affiche une fenêtre flottante en haut de l\'écran.
         ]]>
     </string>
     <string name="title_rule_testing">Test des règles</string>

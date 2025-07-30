@@ -63,8 +63,6 @@
         3. Rellena la clave API generada a continuación.
         ]]>
     </string>
-    <string name="username">nombre de usuario</string>
-    <string name="password">contraseña</string>
     <string name="auto_detect_cc_permission">Se requiere el permiso READ_PHONE_STATE para detectar el código de país.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

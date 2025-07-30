@@ -42,10 +42,6 @@
     <string name="add_num_to_db">Добавить номер в базу спама</string>
     <string name="mark_all_as_read">Пометить все как прочитанные</string>
     <string name="remove_db_number">Удалить номер из базы спама</string>
-    <string-array name="export_type_list">
-        <item>Экспортировать как Json</item>
-        <item>Экспортировать как сжатый файл</item>
-    </string-array>
 
     <string name="language">Язык</string>
     <string name="help_language">
@@ -88,7 +84,6 @@
 
     <string name="about">О приложении</string>
     <string name="version">Версия</string>
-    <string name="build_time">Время сборки (UTC)</string>
     <string name="source_code">Исходный код</string>
     <string name="dismiss">Закрыть</string>
     <string name="warning_running_in_work_profile">
@@ -106,5 +101,4 @@
         ⚠️ RCS не поддерживается.
     </string>
     <string name="open_settings">Открыть настройки</string>
-    <string name="ignore">Игнорировать</string>
 </resources>

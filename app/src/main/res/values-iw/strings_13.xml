@@ -113,8 +113,6 @@
         ]]>
     </string>
     <string name="another_thread_is_cancelled">שרשור אחר בוטל.</string>
-    <string name="username">שם משתמש</string>
-    <string name="password">סיסמה</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>החלק שמאלה</b></font> כדי למחוק.<br>

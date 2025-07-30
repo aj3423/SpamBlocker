@@ -60,7 +60,6 @@
     <string name="sms_chat">SMS-чат</string>
     <string name="call_channel">Канал викликів</string>
     <string name="sms_channel">Канал SMS</string>
-    <string name="missing_notification_channel">Відсутній канал сповіщень: %s</string>
     <string name="channel_id">Ідентифікатор каналу</string>
     <string name="help_channel_id">
         <![CDATA[

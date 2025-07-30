@@ -39,10 +39,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>خروجی به صورت Json</item>
-        <item>خروجی به صورت فشرده</item>
-    </string-array>
 
     <string name="language">زبان</string>
     <string name="help_language">
@@ -85,7 +81,6 @@
 
     <string name="about">درباره</string>
     <string name="version">نسخه</string>
-    <string name="build_time">زمان ساخت (UTC)</string>
     <string name="source_code">کد منبع</string>
     <string name="dismiss">بستن</string>
     <string name="warning_running_in_work_profile">
@@ -103,7 +98,6 @@
         ⚠️ RCS پشتیبانی نمی‌شود.
     </string>
     <string name="open_settings">باز کردن تنظیمات</string>
-    <string name="ignore">نادیده گرفتن</string>
     <string name="remove_db_number">حذف شماره از پایگاه داده اسپم</string>
     <string name="copy_number">کپی شماره</string>
     <string name="add_num_to_regex_rule">افزودن شماره به قانون Regex</string>

@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">تحقق من تعليمات \"قواعد الأرقام\" للحصول على شرح مفصل.</string>
     <string name="invalid_number">رقم غير صالح</string>
     <string name="description">الوصف</string>
-    <string name="apply_to_call">تطبيق على المكالمة</string>
-    <string name="apply_to_sms">تطبيق على الرسالة النصية</string>
-    <string name="title_add_rule">قاعدة جديدة</string>
-    <string name="title_edit_rule">تعديل القاعدة</string>
     <string name="new_">جديد</string>
     <string name="delete">حذف</string>
     <string name="clear">مسح</string>
@@ -27,28 +23,22 @@
     <string name="priority">الأولوية</string>
     <string name="deleted_filter">(قاعدة محذوفة)</string>
     <string name="apply_to">تطبيق على</string>
-    <string name="Delete">حذف</string>
     <string name="undelete">إلغاء الحذف</string>
     <string name="passed_by_default">تم الاجتياز بشكل افتراضي</string>
-    <string name="from">من</string>
     <string name="copy">نسخ</string>
-    <string name="copied_to_clipboard">تم نسخ `%s` إلى الحافظة.</string>
     <string name="quick_copy">نسخ سريع</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
     <string name="ok">موافق</string>
-    <string name="cancel">إلغاء</string>
     <string name="miscellaneous">متفرقات</string>
     <string name="quick_settings">إعدادات سريعة</string>
     <string name="regex_settings">إعدادات التعبير النمطي</string>
     <string name="backup">نسخ احتياطي</string>
     <string name="import_">استيراد</string>
-    <string name="imported">تم الاستيراد</string>
     <string name="export">تصدير</string>
     <string name="config_text">نص التهيئة</string>
     <string name="imported_successfully">تم الاستيراد بنجاح</string>
     <string name="import_fail">فشل الاستيراد</string>
-    <string name="go_to_setting">اذهب إلى الإعدادات</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         هذه الميزة تتطلب إذنًا:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">مكالمة طوارئ</string>
-    <string name="label_contact_filter">تصفية جهات الاتصال</string>
     <string name="label_number_rules">قواعد الأرقام</string>
     <string name="number_rule">قاعدة رقم</string>
     <string name="label_content_rules">قواعد الرسائل</string>

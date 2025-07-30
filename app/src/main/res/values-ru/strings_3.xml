@@ -4,7 +4,7 @@
         Эти правила применяются к содержанию SMS-сообщений.<br>
         <br>
         <font color="#00BFFF"><b> - Некоторые типичные шаблоны</b></font>:<br>
-        &ensp; - Содержит "verification": <font color="#03DAC5"><b>.*verification.*</b></font><br>
+        &ensp; - Содержит \"verification\": <font color="#03DAC5"><b>.*verification.*</b></font><br>
         &ensp; - Содержит любое из слов: <font color="#03DAC5"><b>.*(police|hospital|verification).*</b></font>
         ]]>
     </string>
@@ -41,15 +41,6 @@
         Когда <font color="#03DAC5"><b>Пропущен</b></font> отмечен, это правило будет применяться к пропущенным вызовам и сообщениям.<br>
         <br>
         Когда <font color="#fa7f71"><b>Заблокирован</b></font> отмечен, это правило будет применяться к заблокированным вызовам и сообщениям.
-        ]]>
-    </string>
-    <string name="help_importance">
-        <![CDATA[
-        <b>Нет</b>:<br>&emsp; Никаких уведомлений. <br>
-        <b>Шторка</b>:<br>&emsp; Панель уведомлений. <br>
-        <b>Строка состояния</b>:<br>&emsp; Небольшой значок в верхней строке. <br>
-        <b>Звук</b>:<br>&emsp; Звук стандартного уведомления. <br>
-        <b>Всплывающее окно</b>:<br>&emsp; Всплывающее окно поверх экрана.
         ]]>
     </string>
     <string name="title_rule_testing">Тестирование правил</string>

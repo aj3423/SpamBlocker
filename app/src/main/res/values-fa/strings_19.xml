@@ -60,7 +60,6 @@
     <string name="sms_chat">چت پیامک</string>
     <string name="call_channel">کانال تماس</string>
     <string name="sms_channel">کانال پیامک</string>
-    <string name="missing_notification_channel">کانال اعلان از دست رفته: %s</string>
     <string name="channel_id">شناسه کانال</string>
     <string name="help_channel_id">
         <![CDATA[

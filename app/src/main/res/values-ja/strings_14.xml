@@ -67,7 +67,6 @@
     </string>
     <string name="allow">許可</string>
     <string name="block">ブロック</string>
-    <string name="seconds">秒</string>
     <string name="seconds_short">秒</string>
     <string name="within_seconds">以内</string>
     <string name="sms_alert"><short>SMS警告</short></string>
@@ -91,5 +90,4 @@
     <string name="waning_using_wildcard_as_regex">ワイルドカード `*` がドットの前に使用されています。`.*` の意図ですか？</string>
     <string name="import_as">インポート先</string>
     <string name="api_key">APIキー</string>
-    <string name="mms_support">MMSサポート</string>
 </resources>

@@ -68,7 +68,6 @@
     </string>
     <string name="allow">Permetre</string>
     <string name="block">Bloquejar</string>
-    <string name="seconds">Segons</string>
     <string name="seconds_short"><short>Seg</short></string>
     <string name="within_seconds">En segons</string>
     <string name="sms_alert"><short>Alerta SMS</short></string>
@@ -93,5 +92,4 @@
     <string name="waning_using_wildcard_as_regex">S\'utilitza el comodí `*` sense un punt anterior, vols dir `.*`?</string>
     <string name="import_as">Importa com a</string>
     <string name="api_key">Clau API</string>
-    <string name="mms_support">Suport MMS</string>
 </resources>

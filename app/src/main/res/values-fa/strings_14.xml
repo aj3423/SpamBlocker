@@ -68,7 +68,6 @@
     </string>
     <string name="allow">اجازه</string>
     <string name="block">مسدود کردن</string>
-    <string name="seconds">ثانیه</string>
     <string name="seconds_short">ث</string>
     <string name="within_seconds">در عرض ثانیه</string>
     <string name="sms_alert"><short>هشدار پیامکی</short></string>
@@ -92,5 +91,4 @@
     <string name="waning_using_wildcard_as_regex">کاراکتر وحشی `*` بدون نقطه قبل از آن استفاده شده است، آیا منظورتان `.*` است؟</string>
     <string name="import_as">وارد کردن به عنوان</string>
     <string name="api_key">کلید API</string>
-    <string name="mms_support">پشتیبانی از MMS</string>
 </resources>

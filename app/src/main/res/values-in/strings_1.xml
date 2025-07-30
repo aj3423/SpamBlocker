@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">Periksa bantuan `Peraturan Nomor` untuk penjelasan rinci.</string>
     <string name="invalid_number">Nomor tidak sah</string>
     <string name="description">Deskripsi</string>
-    <string name="apply_to_call">Terapkan ke Panggilan</string>
-    <string name="apply_to_sms">Terapkan ke SMS</string>
-    <string name="title_add_rule">Aturan baru</string>
-    <string name="title_edit_rule">Ubah Aturan</string>
     <string name="new_">Baru</string>
     <string name="delete">Hapus</string>
     <string name="clear">Bersihkan</string>
@@ -27,28 +23,22 @@
     <string name="priority">Prioritas</string>
     <string name="deleted_filter">(aturan dihapus)</string>
     <string name="apply_to">Terapkan ke</string>
-    <string name="Delete">Hapus</string>
     <string name="undelete">Batal Hapus</string>
     <string name="passed_by_default">Lolos secara default</string>
-    <string name="from">Dari</string>
     <string name="copy">Salin</string>
-    <string name="copied_to_clipboard">`%s` tersalin ke papan klip.</string>
     <string name="quick_copy">Salin Cepat</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="ok">OK</string>
-    <string name="cancel">Batalkan</string>
     <string name="miscellaneous">Lain-lain</string>
     <string name="quick_settings">Pengaturan Cepat</string>
     <string name="regex_settings">Pengaturan Regex</string>
     <string name="backup">Cadangkan</string>
     <string name="import_">Impor</string>
-    <string name="imported">Diimpor</string>
     <string name="export">Ekspor</string>
     <string name="config_text">Teks Konfigurasi</string>
     <string name="imported_successfully">Berhasil Diimpor</string>
     <string name="import_fail">Gagal Diimpor</string>
-    <string name="go_to_setting">Ke Pengaturan</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Fitur ini membutuhkan izin:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">Panggilan Darurat</string>
-    <string name="label_contact_filter">Saring Kontak</string>
     <string name="label_number_rules">Peraturan Nomor</string>
     <string name="number_rule">Aturan Nomor</string>
     <string name="label_content_rules">Peraturan Pesan</string>

@@ -12,10 +12,6 @@
     <string name="check_balloon_for_explanation">Проверьте справку по `Правилам для номеров` для подробного объяснения.</string>
     <string name="invalid_number">Неверный номер</string>
     <string name="description">Описание</string>
-    <string name="apply_to_call">Применить к звонку</string>
-    <string name="apply_to_sms">Применить к SMS</string>
-    <string name="title_add_rule">Новое правило</string>
-    <string name="title_edit_rule">Редактировать правило</string>
     <string name="new_">Новый</string>
     <string name="delete">Удалить</string>
     <string name="clear">Очистить</string>
@@ -27,28 +23,22 @@
     <string name="priority">Приоритет</string>
     <string name="deleted_filter">(удаленное правило)</string>
     <string name="apply_to">Применить к</string>
-    <string name="Delete">Удалить</string>
     <string name="undelete">Восстановить</string>
     <string name="passed_by_default">Пропущен по умолчанию</string>
-    <string name="from">От</string>
     <string name="copy">Копировать</string>
-    <string name="copied_to_clipboard">`%s` скопирован в буфер обмена.</string>
     <string name="quick_copy">Быстрое копирование</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="ok">OK</string>
-    <string name="cancel">Отмена</string>
     <string name="miscellaneous">Разное</string>
     <string name="quick_settings">Быстрые настройки</string>
     <string name="regex_settings">Настройки регулярных выражений</string>
     <string name="backup">Резерв. копия</string>
     <string name="import_">Импорт</string>
-    <string name="imported">Импортировано</string>
     <string name="export">Экспорт</string>
     <string name="config_text">Текст конфигурации</string>
     <string name="imported_successfully">Импортировано успешно</string>
     <string name="import_fail">Не удалось импортировать</string>
-    <string name="go_to_setting">Перейти к настройкам</string>
     <string name="prompt_go_to_permission_setting">
         <![CDATA[
         Для этой функции требуется разрешение:<br>
@@ -60,7 +50,6 @@
         ]]>
     </string>
     <string name="emergency_call">Экстренный вызов</string>
-    <string name="label_contact_filter">Фильтр контактов</string>
     <string name="label_number_rules">Правила для номеров</string>
     <string name="number_rule">Правило номера</string>
     <string name="label_content_rules">Правила для сообщений</string>

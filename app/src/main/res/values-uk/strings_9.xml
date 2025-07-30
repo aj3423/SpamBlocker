@@ -7,9 +7,6 @@
     <string name="column_mapping">Відповідність стовпців</string>
     <string name="include_spam_db">Включити базу даних спаму</string>
     <string name="no_config_needed">Налаштування не потрібне</string>
-    <string name="success">Вдало</string>
-    <string name="failed">Не вдалося</string>
-    <string name="running">Виконання</string>
     <string name="optional">(необов\'язково)</string>
 
     <string name="help_action_header">

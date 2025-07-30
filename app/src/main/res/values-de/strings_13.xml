@@ -63,8 +63,6 @@
         3. Tragen Sie den generierten API-Schlüssel unten ein.
         ]]>
     </string>
-    <string name="username">Benutzername</string>
-    <string name="password">Passwort</string>
     <string name="auto_detect_cc_permission">Die Berechtigung READ_PHONE_STATE wird benötigt, um die Landesvorwahl zu erkennen.</string>
     <string name="suggest_to_swipe">
         <![CDATA[

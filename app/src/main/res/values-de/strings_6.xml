@@ -39,10 +39,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>Als Json exportieren</item>
-        <item>Als Komprimiertes exportieren</item>
-    </string-array>
 
     <string name="language">Sprache</string>
     <string name="help_language">
@@ -85,7 +81,6 @@
 
     <string name="about">Über</string>
     <string name="version">Version</string>
-    <string name="build_time">Build-Zeit (UTC)</string>
     <string name="source_code">Quellcode</string>
     <string name="dismiss">Schließen</string>
     <string name="warning_running_in_work_profile">
@@ -103,7 +98,6 @@
         ⚠️ RCS wird nicht unterstützt.
     </string>
     <string name="open_settings">Einstellungen öffnen</string>
-    <string name="ignore">Ignorieren</string>
     <string name="remove_db_number">Nummer aus Spam-Datenbank löschen</string>
     <string name="copy_number">Nummer kopieren</string>
     <string name="add_num_to_regex_rule">Nummer zu Regex-Regel hinzufügen</string>

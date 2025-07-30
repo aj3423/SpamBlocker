@@ -39,10 +39,6 @@
     </string>
 
 
-    <string-array name="export_type_list">
-        <item>Експортувати як Json</item>
-        <item>Експортувати як стиснутий</item>
-    </string-array>
 
     <string name="language">Мова</string>
     <string name="help_language">
@@ -85,7 +81,6 @@
 
     <string name="about">Про</string>
     <string name="version">Версія</string>
-    <string name="build_time">Час збірки (UTC)</string>
     <string name="source_code">Вихідний код</string>
     <string name="dismiss">Відхилити</string>
     <string name="warning_running_in_work_profile">
@@ -101,7 +96,6 @@
         ⚠️ RCS не підтримується.</translate>
     </string>
     <string name="open_settings">Відкрити налаштування</string>
-    <string name="ignore">Ігнорувати</string>
     <string name="remove_db_number">Видалити номер з бази даних спаму</string>
     <string name="copy_number">Скопіювати номер</string>
     <string name="add_num_to_regex_rule">Додати номер до правила регулярного виразу</string>

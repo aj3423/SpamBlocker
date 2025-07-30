@@ -29,40 +29,26 @@
     <string name="spoof">なりすまし通話</string>
     <string name="help_stir">
         <![CDATA[
-            STIR/SHAKEN認証には<b>Android 11以降</b>と<b>通信事業者のサポート</b>が必要です。<br>
-            <br>
-            3つの認証結果があります。<br>
-            <font color="#03DAC5"><b>有効</b></font> <br>
-              &emsp; この通話は、なりすましではなく、非常に有効である可能性が高いです。<br>
-            <font color="#ffa500"><b>未確認</b></font> <br>
-              &emsp; この通話は検証できません、またはSTIR認証がサポートされていません。<br>
-            <font color="#fa7f71"><b>なりすまし</b></font> <br>
-              &emsp; なりすまし通話である可能性が非常に高いです。<br>
-            <br>
-            <br>
-            <b>オプション:</b><br>
-            <br>
-              - <b>寛大</b>: <br>
-                  &emsp; - <font color="#03DAC5"><b>有効</b></font>な通話は許可されます。<br>
-                  &emsp; - <font color="#fa7f71"><b>なりすまし</b></font>通話は、他のルールによってチェックされます。<br>
-                  &emsp; - <b>未確認を含める</b>がチェックされている場合、<font color="#ffa500"><b>未確認</b></font>の通話も許可されます。<br>
-                  &emsp; <font color="#ea86ff"><b>デフォルトの優先度: 10</b></font> <br>
-              <br>
-              - <font color="#fa7f71"><b>厳格</b></font>: <br>
-                  &emsp; - <font color="#03DAC5"><b>有効</b></font>な通話は、他のルールによってチェックされます。<br>
-                  &emsp; - <font color="#fa7f71"><b>なりすまし</b></font>通話はブロックされます。<br>
-                  &emsp; - 「<b>未確認を含める</b>」がチェックされている場合、<font color="#ffa500"><b>未確認</b></font>の通話もブロックされます。<br>
-                  &emsp; <font color="#ea86ff"><b>デフォルトの優先度: 0</b></font> <br>
-            <br>
-            <br>
-            優先度をカスタマイズする<b>使用例</b>:<br>
-            <br>
-            1. 常に連絡先を許可する。<br>
-              &emsp; - 連絡先(寛大)、優先度 <font color="#ea86ff">12</font> <br>
-            2. STIRに失敗する通話は、繰り返されてもブロックする。<br>
-              &emsp; - STIR(厳格)、優先度 <font color="#ea86ff">11</font> <br>
-            3. 繰り返される通話を許可する。<br>
-              &emsp; - 繰り返し通話、優先度 <font color="#ea86ff">10</font> <br>
+        STIR/SHAKEN認証に失敗した通話はブロックされ、それらはなりすましの可能性が高いことを示します。<br>
+        <br>
+        STIR/SHAKEN認証には<b>Android 11以降</b>と<b>通信事業者のサポート</b>が必要です。<br>
+        <br>
+        <b>オプション:</b> <br>
+        <br>
+        <font color="#00BFFF"><b>未検証を含める</b></font> <br>
+        有効にすると、未検証の通話もブロックされます。これは、通話が検証できないか、通信事業者またはお使いのデバイスがSTIR認証をサポートしていないことを意味します。<br>
+        <b>使用例</b>: <br>
+        &ensp; STIR認証を義務付けている場所では、未検証の電話番号は迷惑電話である可能性が高いです。<br>
+        <br>
+        <font color="#ea86ff"><b>デフォルトの優先度: 0</b></font> <br>
+        優先度をカスタマイズする<b>使用例</b>:<br>
+        <br>
+        1. 常に連絡先を許可します。<br>
+          &emsp; - 連絡先(寛容)、優先度 <font color="#ea86ff">12</font> <br>
+        2. 繰り返されてもSTIRに失敗した通話をブロックします。<br>
+          &emsp; - STIR、優先度 <font color="#ea86ff">11</font> <br>
+        3. 繰り返される通話を許可します。<br>
+          &emsp; - リピート通話、優先度 <font color="#ea86ff">10</font> <br>
         ]]>
     </string>
     <string name="failed_to_import_from_csv">

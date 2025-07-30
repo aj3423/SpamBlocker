@@ -5,6 +5,7 @@ import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.NotificationManager.IMPORTANCE_LOW
 import android.app.NotificationManager.IMPORTANCE_NONE
 import android.graphics.BitmapFactory
+import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
@@ -322,7 +323,7 @@ fun EditChannelDialog(
                         ) {
                             RowVCenterSpaced(6) {
                                 GreyButton(
-                                    if (sound.isEmpty())
+                                    if (sound.isEmpty() || sound == "content://settings/system/notification_sound")
                                         ctx.getString(R.string.default_)
                                     else
                                         soundName,
