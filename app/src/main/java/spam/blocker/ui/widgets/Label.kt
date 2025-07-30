@@ -70,9 +70,10 @@ fun DimGreyLabel(
 @Composable
 fun PriorityLabel(
     priority: Int,
+    color: Color = Priority
 ) {
     RowVCenter {
-        ResIcon(R.drawable.ic_priority, color = Priority, modifier = M.size(14.dp))
-        Text(text = "$priority", color = LightMagenta)
+        ResIcon(R.drawable.ic_priority, color = color, modifier = M.size(14.dp))
+        Text(text = "$priority", color = color)
     }
 }

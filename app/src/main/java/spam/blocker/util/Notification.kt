@@ -141,21 +141,28 @@ object Notification {
         val mgr = manager(ctx)
         ChannelTable.listAll(ctx).forEach { chTable ->
             val chSys = mgr.getNotificationChannel(chTable.channelId)
-            var soundChanged = false
-            var ledColorChanged = false
-            
-            if ((chSys.sound?.toString() ?: "") != chTable.sound) {
-                soundChanged = true
-            }
-            if (chSys.lightColor != chTable.ledColor) {
-                ledColorChanged = true
-            }
-            if (soundChanged || ledColorChanged) {
-                val chUpdated = chTable.apply {
-                    sound = (chSys.sound?.toString() ?: "")
-                    ledColor = chSys.lightColor
+            if (chSys != null) {
+                var soundChanged = false
+                var ledChanged = false
+                var ledColorChanged = false
+
+                if ((chSys.sound?.toString() ?: "") != chTable.sound) {
+                    soundChanged = true
                 }
-                ChannelTable.updateById(ctx, chUpdated.id, chUpdated)
+                if (chSys.shouldShowLights() != chTable.led) {
+                    ledChanged = true
+                }
+                if (chSys.lightColor != chTable.ledColor) {
+                    ledColorChanged = true
+                }
+                if (soundChanged || ledChanged || ledColorChanged) {
+                    val chUpdated = chTable.apply {
+                        sound = (chSys.sound?.toString() ?: "")
+                        led = chSys.shouldShowLights()
+                        ledColor = chSys.lightColor
+                    }
+                    ChannelTable.updateById(ctx, chUpdated.id, chUpdated)
+                }
             }
         }
     }

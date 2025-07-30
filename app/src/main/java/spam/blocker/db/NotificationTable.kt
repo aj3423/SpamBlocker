@@ -49,7 +49,7 @@ object Notification {
         var sound: String = "", // "" for default sound
         val icon: ByteArray? = null, // icon bytes, null == Auto choose call/sms icon
         val iconColor: Int? = null, // ARGB, Salmon for block, Unspecified for allowed. "" == Auto choose
-        val led: Boolean = false,
+        var led: Boolean = false,
         var ledColor: Int = SkyBlue.toArgb(),
     ) {
 

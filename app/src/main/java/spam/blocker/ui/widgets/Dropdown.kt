@@ -62,31 +62,33 @@ class LabelItem(
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        RowVCenterSpaced(10) {
+        RowVCenterSpaced(
+            space = 10,
+            modifier =  M
+                .combinedClickable(
+                    onClick = {
+                        onClick?.let {
+                            it(menuExpandedState)
+                        }
+                        if (dismissOnClick) {
+                            menuExpandedState.value = false
+                        }
+                    },
+                    onLongClick = {
+
+                        onLongClick?.let {
+                            it(menuExpandedState)
+                        }
+                    }
+                )
+        ) {
             icon?.let {
                 it()
             }
 
             GreyLabel(
                 text = label,
-                modifier = M
-                    .weight(1f)
-                    .combinedClickable(
-                        onClick = {
-                            onClick?.let {
-                                it(menuExpandedState)
-                            }
-                            if (dismissOnClick) {
-                                menuExpandedState.value = false
-                            }
-                        },
-                        onLongClick = {
-
-                            onLongClick?.let {
-                                it(menuExpandedState)
-                            }
-                        }
-                    ),
+                modifier = M.weight(1f),
                 fontWeight = if (selected) FontWeight.Bold else null,
             )
             tooltip?.let {

@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -38,6 +39,8 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.ColorPickerButton
+import spam.blocker.ui.widgets.ColorPickerPopup
 import spam.blocker.ui.widgets.FooterButton
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
@@ -219,6 +222,7 @@ fun EditChannelDialog(
                     val sysCh = manager(ctx).getNotificationChannel(chId)
                     if (sysCh != null) {
                         sound = sysCh.sound.toString()
+                        led = sysCh.shouldShowLights()
                         ledColor = sysCh.lightColor
                         importance = sysCh.importance
                     }
@@ -296,7 +300,7 @@ fun EditChannelDialog(
             }
 
             // Mute + Sound
-            AnimatedVisibleV(importance >= IMPORTANCE_HIGH) {
+            AnimatedVisibleV(importance >= IMPORTANCE_DEFAULT) {
                 Column {
                     // Mute + Sound
                     val soundTrigger = remember { mutableStateOf(false) }
@@ -384,17 +388,26 @@ fun EditChannelDialog(
             }
 
             // Icon Color
-            NumberInputBox(
-                intValue = iconColor,
-                allowEmpty = true,
-                onValueChange = { newValue, hasError ->
-                    if (!hasError) {
-                        iconColor = newValue
+
+            LabeledRow(
+                R.string.icon_color,
+                helpTooltip = Str(R.string.help_icon_color)
+            ) {
+                RowVCenterSpaced(4) {
+                    ColorPickerButton(
+                        color = iconColor,
+                        defaultText = Str(R.string.automatic),
+                    ) {
+                        iconColor = it
                     }
-                },
-                labelId = R.string.icon_color,
-                helpTooltipId = R.string.help_icon_color
-            )
+                    if (iconColor != null) {
+                        // Clear icon
+                        GreyButton(Str(R.string.clear)) {
+                            iconColor = null
+                        }
+                    }
+                }
+            }
 
             // LED
             LabeledRow(
@@ -407,24 +420,23 @@ fun EditChannelDialog(
 
             // LED Color
             AnimatedVisibleV(led) {
-                RowVCenterSpaced(6) {
-                    NumberInputBox(
-                        intValue = ledColor,
-                        allowEmpty = true,
-                        modifier = M.weight(1f),
-                        onValueChange = { newValue, hasError ->
-                            if (!hasError && newValue != null) {
-                                ledColor = newValue
-                            }
-                        },
-                        enabled = isCreatingNewChannel,
-                        labelId = R.string.led_color,
-                        helpTooltipId = R.string.help_led_color
-                    )
-                    if (!isCreatingNewChannel) {
-                        ResIcon(R.drawable.ic_note, modifier = M.clickable {
-                            openChannelSettings(ctx, chId)
-                        })
+                LabeledRow(
+                    R.string.led_color,
+                    helpTooltip = Str(R.string.help_led_color)
+                ) {
+                    RowVCenterSpaced(6) {
+                        ColorPickerButton(
+                            color = ledColor,
+                            enabled = isCreatingNewChannel,
+                        ) {
+                            ledColor = it
+                        }
+
+                        if (!isCreatingNewChannel) {
+                            ResIcon(R.drawable.ic_note, modifier = M.clickable {
+                                openChannelSettings(ctx, chId)
+                            })
+                        }
                     }
                 }
             }
