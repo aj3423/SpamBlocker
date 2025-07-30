@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
-import spam.blocker.db.Notification.CHANNEL_MEDIUM
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
 import spam.blocker.util.Notification.deleteAllChannels
@@ -372,7 +371,6 @@ class Db private constructor(
                     SET $COLUMN_CHANNEL_ID = CASE
                         WHEN $COLUMN_IMPORTANCE = 0 THEN '$CHANNEL_NONE'
                         WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_LOW'
-                        WHEN $COLUMN_IMPORTANCE = 3 THEN '$CHANNEL_MEDIUM'
                         ELSE '$CHANNEL_HIGH'
                     END
                 """.trimIndent())
@@ -381,7 +379,6 @@ class Db private constructor(
                     SET $COLUMN_CHANNEL_ID = CASE
                         WHEN $COLUMN_IMPORTANCE = 0 THEN '$CHANNEL_NONE'
                         WHEN $COLUMN_IMPORTANCE IN (1, 2) THEN '$CHANNEL_LOW'
-                        WHEN $COLUMN_IMPORTANCE = 3 THEN '$CHANNEL_MEDIUM'
                         ELSE '$CHANNEL_HIGH'
                     END
                 """.trimIndent())

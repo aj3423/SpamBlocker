@@ -23,6 +23,9 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">Doğrulanmamışı Dahil Et (*)</string>
+    <string name="unverified">Doğrulanmamış</string>
+    <string name="valid">Geçerli Arama</string>
     <string name="spoof">Sahte Arama</string>
     <string name="help_stir">
         <![CDATA[

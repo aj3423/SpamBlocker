@@ -23,6 +23,9 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">شامل کردن تایید نشده‌ها (*)</string>
+    <string name="unverified">تایید نشده</string>
+    <string name="valid">تماس معتبر</string>
     <string name="spoof">تماس جعلی</string>
     <string name="help_stir">
         <![CDATA[
