@@ -34,23 +34,23 @@
     <string name="allowed">Diizinkan</string>
     <string name="help_notification">
         <![CDATA[
-        Ada empat saluran notifikasi bawaan: <br>
+        Saluran notifikasi bawaan: <br>
         <br>
         <font color="#00BFFF"><b>Tidak Ada</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Tidak ada notifikasi sama sekali. <br>
         <br>
         <font color="#00BFFF"><b>Rendah</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Muncul di bilah status dan panel notifikasi. <br>
+        &ensp; Muncul di bilah status dan tirai notifikasi. <br>
         <br>
         <font color="#00BFFF"><b>Sedang</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Muncul di bilah status dan panel notifikasi dengan suara. <br>
+        &ensp; Muncul di bilah status dan tirai notifikasi dengan suara. <br>
         <br>
         <font color="#00BFFF"><b>Tinggi</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Muncul di bilah status, panel notifikasi, dan sebagai pop-up notifikasi mengambang dengan suara. <br>
+        &ensp; Muncul di bilah status, tirai notifikasi, dan sebagai pop-up heads-up dengan suara. <br>
         <br>
-        <font color="#00BFFF"><b>Tinggi Dibisukan</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Tinggi Senyap</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Mirip dengan <b>Tinggi</b> tetapi membisukan suara. <br>
-        &ensp; Ideal untuk obrolan SMS aktif di mana suara terus-menerus dapat mengganggu. <br>
+        &ensp; Ideal untuk obrolan SMS aktif di mana suara yang terus-menerus mungkin mengganggu. <br>
           Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS terbuka di latar depan. <br>
         ]]>
     </string>
@@ -68,32 +68,32 @@
         Setelah dibuat, ID tidak dapat diedit.
         ]]>
     </string>
-    <string name="channel_importance">Kepentingan</string>
+    <string name="channel_importance">Pentingnya</string>
     <string name="channel_group">Grup Saluran</string>
     <string name="help_channel_group">
         <![CDATA[
-        Jika dibiarkan kosong, notifikasi akan otomatis dikelompokkan menjadi tiga kategori:<br>
+        Jika dibiarkan kosong, notifikasi secara otomatis dikelompokkan menjadi tiga kategori:<br>
         <br>
         - Panggilan spam <br>
         - SMS spam <br>
-        - SMS Valid <br>
+        - SMS valid <br>
         <br>
         Jika grup ditentukan, mereka akan dikelompokkan secara terpisah.
         ]]>
     </string>
-    <string name="mute">Bisukan</string>
+    <string name="mute">Senyap</string>
     <string name="sound">Suara</string>
     <string name="help_sound">
         <![CDATA[
         Suara hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
+         setelah dibuat, itu hanya dapat dimodifikasi di pengaturan sistem. <br>
         <br>
         <b>Suara Kustom</b><br>
         Beberapa ponsel memungkinkan impor langsung nada dering kustom melalui aplikasi.
         Untuk yang lain, impor melalui pengaturan sistem lalu pilih di aplikasi. <br>
         ]]>
     </string>
-    <string name="default_">Bawaan</string>
+    <string name="default_">Default</string>
     <string name="select_notification_sound">Pilih suara notifikasi</string>
     <string name="unknown">Tidak Dikenal</string>
     <string name="icon_color">Warna Ikon</string>
@@ -102,21 +102,21 @@
         <![CDATA[
         Buat saluran notifikasi baru. <br>
         <br>
-        <font color="#03DAC5"><b>Ketuk lama</b></font> saluran notifikasi dalam daftar drop-down ini untuk mengeditnya.
+        <font color="#03DAC5"><b>Tekan lama</b></font> saluran notifikasi di daftar dropdown ini untuk mengeditnya.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Saluran ini saat ini digunakan oleh aturan berikut. <br>
+        Saluran ini sedang digunakan oleh aturan berikut. <br>
         <br>
         %s<br>
         <br>
-        Pastikan untuk memperbarui aturan setelah menghapus saluran ini. <br>
+        Pastikan untuk memperbaruinya setelah menghapus saluran ini. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        Saluran notifikasi akan dibisukan secara paksa, meskipun dikonfigurasi sebagai kepentingan tinggi.
+        Saluran notifikasi akan dibungkam secara paksa, meskipun dikonfigurasi sebagai kepentingan tinggi.
         ]]>
     </string>
     <string name="led">LED</string>
@@ -124,17 +124,17 @@
     <string name="help_led_color">
         <![CDATA[
         Warna cahaya hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
+         setelah dibuat, itu hanya dapat dimodifikasi di pengaturan sistem. <br>
         ]]>
     </string>
     <string name="icon">Ikon</string>
     <string name="automatic">Otomatis</string>
     <string name="medium">Sedang</string>
-    <string name="high_muted">Tinggi Dibisukan</string>
+    <string name="high_muted">Tinggi Senyap</string>
     <string name="help_channel_importance">
         <![CDATA[
-        Kepentingan hanya dapat diatur saat membuat saluran baru,
-         setelah dibuat, hanya dapat diubah di pengaturan sistem. <br>
+        Pentingnya hanya dapat diatur saat membuat saluran baru,
+         setelah dibuat, itu hanya dapat dimodifikasi di pengaturan sistem. <br>
         ]]>
     </string>
     <string name="tap_text_to_edit_color">Ketuk teks ARGB untuk mengeditnya secara manual.</string>

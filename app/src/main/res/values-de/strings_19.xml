@@ -31,26 +31,26 @@
         ]]>
     </string>
     <string name="blocked">Blockiert</string>
-    <string name="allowed">Erlaubt</string>
+    <string name="allowed">Zugelassen</string>
     <string name="help_notification">
         <![CDATA[
-        Es gibt vier integrierte Benachrichtigungskanäle: <br>
+        Die integrierten Benachrichtigungskanäle: <br>
         <br>
         <font color="#00BFFF"><b>Keine</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Keine Benachrichtigung überhaupt. <br>
+        &ensp; Keine Benachrichtigung.<br>
         <br>
         <font color="#00BFFF"><b>Niedrig</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsbereich. <br>
+        &ensp; Erscheint in der Statusleiste und der Benachrichtigungsleiste. <br>
         <br>
         <font color="#00BFFF"><b>Mittel</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsbereich mit Ton. <br>
+        &ensp; Erscheint in der Statusleiste und der Benachrichtigungsleiste mit Ton. <br>
         <br>
         <font color="#00BFFF"><b>Hoch</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Erscheint in der Statusleiste, im Benachrichtigungsbereich und als Heads-up-Pop-up mit Ton. <br>
+        &ensp; Erscheint in der Statusleiste, der Benachrichtigungsleiste und als Pop-up mit Ton. <br>
         <br>
-        <font color="#00BFFF"><b>Hoch (stumm)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Hoch (stummgeschaltet)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Es ähnelt <b>Hoch</b>, schaltet aber den Ton stumm. <br>
-        &ensp; Es ist ideal für aktive SMS-Chats, bei denen kontinuierliche Töne störend sein könnten. <br>
+        &ensp; Es ist ideal für aktive SMS-Chats, wo kontinuierliche Töne störend sein könnten. <br>
           Als aktiver Chat gilt es, wenn der Bildschirm entsperrt ist und die SMS-App im Vordergrund geöffnet ist. <br>
         ]]>
     </string>
@@ -65,7 +65,7 @@
         <![CDATA[
         Diese ID wird in den Systemeinstellungen als Benachrichtigungskanal angezeigt. <br>
         <br>
-        Einmal erstellt, kann die ID nicht mehr bearbeitet werden.
+        Einmal erstellt, kann die ID nicht bearbeitet werden.
         ]]>
     </string>
     <string name="channel_importance">Wichtigkeit</string>
@@ -78,7 +78,7 @@
         - Spam-SMS <br>
         - Gültige SMS <br>
         <br>
-        Wenn eine Gruppe angegeben ist, werden sie separat gruppiert.
+        Wenn eine Gruppe angegeben wird, werden sie separat gruppiert.
         ]]>
     </string>
     <string name="mute">Stummschalten</string>
@@ -89,8 +89,8 @@
          einmal erstellt, kann er nur in den Systemeinstellungen geändert werden. <br>
         <br>
         <b>Benutzerdefinierter Ton</b><br>
-        Einige Telefone erlauben den direkten Import benutzerdefinierter Klingeltöne über die App.
-        Bei anderen muss der Import über die Systemeinstellungen erfolgen und dann in der App ausgewählt werden. <br>
+        Einige Telefone ermöglichen den direkten Import benutzerdefinierter Klingeltöne über die App.
+        Bei anderen erfolgt der Import über die Systemeinstellungen und dann die Auswahl in der App. <br>
         ]]>
     </string>
     <string name="default_">Standard</string>
@@ -102,7 +102,7 @@
         <![CDATA[
         Einen neuen Benachrichtigungskanal erstellen. <br>
         <br>
-        <font color="#03DAC5"><b>Langes Tippen</b></font> einen Benachrichtigungskanal in dieser Dropdown-Liste, um ihn zu bearbeiten.
+        <font color="#03DAC5"><b>Langes Tippen</b></font> einen Benachrichtigungskanal in dieser Dropdown-Liste bearbeiten.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -111,7 +111,7 @@
         <br>
         %s<br>
         <br>
-        Stellen Sie sicher, dass Sie diese nach dem Löschen dieses Kanals aktualisieren. <br>
+        Stellen Sie sicher, dass Sie diese aktualisieren, nachdem Sie diesen Kanal gelöscht haben. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
@@ -130,7 +130,7 @@
     <string name="icon">Symbol</string>
     <string name="automatic">Automatisch</string>
     <string name="medium">Mittel</string>
-    <string name="high_muted">Hoch (stumm)</string>
+    <string name="high_muted">Hoch (stummgeschaltet)</string>
     <string name="help_channel_importance">
         <![CDATA[
         Die Wichtigkeit kann nur beim Erstellen eines neuen Kanals festgelegt werden;

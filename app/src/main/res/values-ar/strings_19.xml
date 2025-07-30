@@ -34,7 +34,7 @@
     <string name="allowed">مسموح به</string>
     <string name="help_notification">
         <![CDATA[
-        توجد أربع قنوات إشعارات مدمجة: <br>
+        قنوات الإشعارات المدمجة: <br>
         <br>
         <font color="#00BFFF"><b>لا شيء</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; لا توجد إشعارات على الإطلاق. <br>
@@ -45,38 +45,38 @@
         <font color="#00BFFF"><b>متوسط</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
         &ensp; يظهر في شريط الحالة ودرج الإشعارات مع صوت. <br>
         <br>
-        <font color="#00BFFF"><b>عالي</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكنافذة منبثقة مع صوت. <br>
+        <font color="#00BFFF"><b>مرتفع</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكإشعار منبثق مع صوت. <br>
         <br>
-        <font color="#00BFFF"><b>عالي (صامت)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; يشبه <b>عالي</b> ولكنه يكتم الصوت. <br>
-        &ensp; إنه مثالي لمحادثات الرسائل النصية النشطة حيث قد تكون الأصوات المستمرة مزعجة. <br>
-          تُعتبر المحادثة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل النصية مفتوحًا في المقدمة. <br>
+        <font color="#00BFFF"><b>مرتفع صامت</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; إنه مشابه لـ <b>مرتفع</b> ولكنه يكتم الصوت. <br>
+        &ensp; إنه مثالي لمحادثات الرسائل القصيرة النشطة حيث قد تكون الأصوات المستمرة مزعجة. <br>
+          تعتبر المحادثة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل القصيرة مفتوحًا في المقدمة. <br>
         ]]>
     </string>
     <string name="none">لا شيء</string>
     <string name="low">منخفض</string>
-    <string name="high">عالي</string>
-    <string name="sms_chat">دردشة الرسائل النصية</string>
+    <string name="high">مرتفع</string>
+    <string name="sms_chat">محادثة SMS</string>
     <string name="call_channel">قناة المكالمات</string>
-    <string name="sms_channel">قناة الرسائل النصية</string>
+    <string name="sms_channel">قناة الرسائل القصيرة</string>
     <string name="channel_id">معرف القناة</string>
     <string name="help_channel_id">
         <![CDATA[
-        سيظهر هذا المعرف في إعدادات النظام كقناة للإشعارات. <br>
+        سيظهر هذا المعرف في إعدادات النظام كقناة إشعار. <br>
         <br>
-        بمجرد إنشائه، لا يمكن تعديل المعرف.
+        بمجرد الإنشاء، لا يمكن تعديل المعرف.
         ]]>
     </string>
     <string name="channel_importance">الأهمية</string>
-    <string name="channel_group">مجموعة القنوات</string>
+    <string name="channel_group">مجموعة القناة</string>
     <string name="help_channel_group">
         <![CDATA[
         عند تركه فارغًا، يتم تجميع الإشعارات تلقائيًا في ثلاث فئات:<br>
         <br>
         - مكالمة مزعجة <br>
-        - رسالة نصية مزعجة <br>
-        - رسالة نصية صالحة <br>
+        - رسائل SMS مزعجة <br>
+        - رسائل SMS صالحة <br>
         <br>
         إذا تم تحديد مجموعة، فسيتم تجميعها بشكل منفصل.
         ]]>
@@ -85,12 +85,12 @@
     <string name="sound">الصوت</string>
     <string name="help_sound">
         <![CDATA[
-        لا يمكن تعيين الصوت إلا عند إنشاء قناة جديدة،
+        يمكن تعيين الصوت فقط عند إنشاء قناة جديدة،
          وبمجرد إنشائها، لا يمكن تعديله إلا في إعدادات النظام. <br>
         <br>
         <b>صوت مخصص</b><br>
-        تتيح بعض الهواتف استيراد نغمات رنين مخصصة مباشرة عبر التطبيق.
-        بالنسبة للآخرين، قم بالاستيراد عبر إعدادات النظام ثم حدده في التطبيق. <br>
+        تسمح بعض الهواتف بالاستيراد المباشر لنغمات الرنين المخصصة عبر التطبيق.
+        بالنسبة للبعض الآخر، قم بالاستيراد عبر إعدادات النظام ثم اختره في التطبيق. <br>
         ]]>
     </string>
     <string name="default_">افتراضي</string>
@@ -102,12 +102,12 @@
         <![CDATA[
         إنشاء قناة إشعار جديدة. <br>
         <br>
-        <font color="#03DAC5"><b>اضغط مطولاً</b></font> على قناة إشعار في هذه القائمة المنسدلة لتعديلها.
+        <font color="#03DAC5"><b>انقر مطولاً</b></font> على قناة إشعار في هذه القائمة المنسدلة لتعديلها.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        هذه القناة مستخدمة حاليًا بواسطة القواعد التالية. <br>
+        تُستخدم هذه القناة حاليًا بواسطة القواعد التالية. <br>
         <br>
         %s<br>
         <br>
@@ -116,24 +116,24 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        سيتم إسكات قناة الإشعارات بالقوة، حتى لو تم تكوينها بأهمية عالية.
+        سيتم إسكات قناة الإشعار بالقوة، حتى لو تم تكوينها على أنها ذات أهمية عالية.
         ]]>
     </string>
-    <string name="led">مؤشر LED</string>
-    <string name="led_color">لون مؤشر LED</string>
+    <string name="led">LED</string>
+    <string name="led_color">لون LED</string>
     <string name="help_led_color">
         <![CDATA[
-        لا يمكن تعيين لون الضوء إلا عند إنشاء قناة جديدة،
+        يمكن تعيين لون الضوء فقط عند إنشاء قناة جديدة،
          وبمجرد إنشائها، لا يمكن تعديله إلا في إعدادات النظام. <br>
         ]]>
     </string>
     <string name="icon">أيقونة</string>
     <string name="automatic">تلقائي</string>
     <string name="medium">متوسط</string>
-    <string name="high_muted">عالي (صامت)</string>
+    <string name="high_muted">مرتفع صامت</string>
     <string name="help_channel_importance">
         <![CDATA[
-        لا يمكن تعيين الأهمية إلا عند إنشاء قناة جديدة،
+        يمكن تعيين الأهمية فقط عند إنشاء قناة جديدة،
          وبمجرد إنشائها، لا يمكن تعديلها إلا في إعدادات النظام. <br>
         ]]>
     </string>

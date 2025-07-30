@@ -34,7 +34,7 @@
     <string name="allowed">Permitido</string>
     <string name="help_notification">
         <![CDATA[
-        Existem quatro canais de notificação embutidos: <br>
+        Os canais de notificação integrados: <br>
         <br>
         <font color="#00BFFF"><b>Nenhum</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Nenhuma notificação. <br>
@@ -46,12 +46,12 @@
         &ensp; Aparece na barra de status e na sombra de notificação com som. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece na barra de status, sombra de notificação e como pop-up de heads-up com som. <br>
+        &ensp; Aparece na barra de status, sombra de notificação e como pop-up de notificação flutuante com som. <br>
         <br>
-        <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; É semelhante a <b>Alta</b>, mas silencia o som. <br>
-        &ensp; É ideal para chats SMS ativos onde sons contínuos podem ser disruptivos. <br>
-          É considerado chat ativo quando a tela está desbloqueada e o aplicativo de SMS está aberto em primeiro plano. <br>
+        <font color="#00BFFF"><b>Alta Silenciosa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; É similar a <b>Alta</b>, mas silencia o som. <br>
+        &ensp; É ideal para conversas SMS ativas onde sons contínuos podem ser disruptivos. <br>
+          É considerada conversa ativa quando a tela está desbloqueada e o aplicativo de SMS está aberto em primeiro plano. <br>
         ]]>
     </string>
     <string name="none">Nenhum</string>
@@ -72,11 +72,11 @@
     <string name="channel_group">Grupo de Canal</string>
     <string name="help_channel_group">
         <![CDATA[
-        Quando deixado vazio, as notificações são automaticamente agrupadas em três categorias:<br>
+        Quando deixado em branco, as notificações são automaticamente agrupadas em três categorias:<br>
         <br>
         - Chamada de spam <br>
         - SMS de spam <br>
-        - SMS válido <br>
+        - SMS Válido <br>
         <br>
         Se um grupo for especificado, eles serão agrupados separadamente.
         ]]>
@@ -107,7 +107,7 @@
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Este canal está sendo usado atualmente pelas seguintes regras. <br>
+        Este canal está atualmente sendo usado pelas seguintes regras. <br>
         <br>
         %s<br>
         <br>
@@ -130,7 +130,7 @@
     <string name="icon">Ícone</string>
     <string name="automatic">Automático</string>
     <string name="medium">Média</string>
-    <string name="high_muted">Alta Silenciada</string>
+    <string name="high_muted">Alta Silenciosa</string>
     <string name="help_channel_importance">
         <![CDATA[
         A importância só pode ser definida ao criar um novo canal,

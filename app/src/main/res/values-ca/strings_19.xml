@@ -30,11 +30,11 @@
         &emsp; a: <font color="#888888">deixar buit</fonts> <br>
         ]]>
     </string>
-    <string name="blocked">Bloquejat</string>
+    <string name="blocked">Blocat</string>
     <string name="allowed">Permès</string>
     <string name="help_notification">
         <![CDATA[
-        Hi ha quatre canals de notificació integrats: <br>
+        Els canals de notificació integrats: <br>
         <br>
         <font color="#00BFFF"><b>Cap</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Cap notificació. <br>
@@ -43,24 +43,24 @@
         &ensp; Apareix a la barra d\'estat i a la pantalla de notificacions. <br>
         <br>
         <font color="#00BFFF"><b>Mitjana</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Apareix a la barra d\'estat i a la pantalla de notificacions amb un so. <br>
+        &ensp; Apareix a la barra d\'estat i a la pantalla de notificacions amb so. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Apareix a la barra d\'estat, a la pantalla de notificacions i com a finestra emergent amb so. <br>
         <br>
-        <font color="#00BFFF"><b>Alta silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Alta Silenciosa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; És similar a <b>Alta</b>, però silencia el so. <br>
-        &ensp; És ideal per a xats SMS actius on els sons continus podrien ser molestos. <br>
-          Es considera un xat actiu quan la pantalla està desbloquejada i l\'aplicació d\'SMS està oberta en primer pla. <br>
+        &ensp; És ideal per a xats de SMS actius on els sons continus podrien ser molestos. <br>
+          Es considera un xat actiu quan la pantalla està desbloquejada i l\'aplicació de SMS està oberta en primer pla. <br>
         ]]>
     </string>
     <string name="none">Cap</string>
     <string name="low">Baixa</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Xat SMS</string>
+    <string name="sms_chat">Xat de SMS</string>
     <string name="call_channel">Canal de trucades</string>
-    <string name="sms_channel">Canal d\'SMS</string>
-    <string name="channel_id">ID del canal</string>
+    <string name="sms_channel">Canal de SMS</string>
+    <string name="channel_id">ID de canal</string>
     <string name="help_channel_id">
         <![CDATA[
         Aquest ID apareixerà a la configuració del sistema com a canal de notificació. <br>
@@ -74,8 +74,8 @@
         <![CDATA[
         Quan es deixa buit, les notificacions s\'agrupen automàticament en tres categories:<br>
         <br>
-        - Trucada de spam <br>
-        - SMS de spam <br>
+        - Trucada spam <br>
+        - SMS spam <br>
         - SMS vàlids <br>
         <br>
         Si s\'especifica un grup, s\'agruparan per separat.
@@ -85,29 +85,29 @@
     <string name="sound">So</string>
     <string name="help_sound">
         <![CDATA[
-        El so només es pot configurar en crear un nou canal;
+        El so només es pot establir en crear un canal nou;
          un cop creat, només es pot modificar a la configuració del sistema. <br>
         <br>
         <b>So personalitzat</b><br>
         Alguns telèfons permeten la importació directa de tons de trucada personalitzats mitjançant l\'aplicació.
-        Per a d\'altres, importa\'l mitjançant la configuració del sistema i després selecciona\'l a l\'aplicació. <br>
+        Per a altres, importa a través de la configuració del sistema i després selecciona\'l a l\'aplicació. <br>
         ]]>
     </string>
-    <string name="default_">Per defecte</string>
-    <string name="select_notification_sound">Seleccionar so de notificació</string>
+    <string name="default_">Predeterminat</string>
+    <string name="select_notification_sound">Selecciona el so de notificació</string>
     <string name="unknown">Desconegut</string>
     <string name="icon_color">Color de la icona</string>
-    <string name="confirm_to_delete">Confirmar supressió?</string>
+    <string name="confirm_to_delete">Confirma per esborrar?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
-        Crea un nou canal de notificació. <br>
+        Crea un canal de notificació nou. <br>
         <br>
-        <font color="#03DAC5"><b>Mantén premut</b></font> un canal de notificació en aquesta llista desplegable per editar-lo.
+        <font color="#03DAC5"><b>Fes una pulsació llarga</b></font> sobre un canal de notificació en aquesta llista desplegable per editar-lo.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Aquest canal s\'està utilitzant actualment per les següents regles. <br>
+        Aquest canal és utilitzat actualment per les següents regles. <br>
         <br>
         %s<br>
         <br>
@@ -116,24 +116,24 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        El canal de notificacions serà silenciat per força, fins i tot si està configurat com a d\'alta importància.
+        El canal de notificació es silenciarà per força, fins i tot si està configurat com a alta importància.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">Color del LED</string>
     <string name="help_led_color">
         <![CDATA[
-        El color de la llum només es pot configurar en crear un nou canal;
+        El color de la llum només es pot establir en crear un canal nou;
          un cop creat, només es pot modificar a la configuració del sistema. <br>
         ]]>
     </string>
     <string name="icon">Icona</string>
     <string name="automatic">Automàtic</string>
     <string name="medium">Mitjana</string>
-    <string name="high_muted">Alta silenciada</string>
+    <string name="high_muted">Alta Silenciosa</string>
     <string name="help_channel_importance">
         <![CDATA[
-        La importància només es pot configurar en crear un nou canal;
+        La importància només es pot establir en crear un canal nou;
          un cop creat, només es pot modificar a la configuració del sistema. <br>
         ]]>
     </string>

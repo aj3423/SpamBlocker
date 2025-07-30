@@ -34,23 +34,23 @@
     <string name="allowed">Consentito</string>
     <string name="help_notification">
         <![CDATA[
-        Ci sono quattro canali di notifica predefiniti: <br>
+        I canali di notifica integrati: <br>
         <br>
         <font color="#00BFFF"><b>Nessuno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Nessuna notifica. <br>
+        &ensp; Nessuna notifica.<br>
         <br>
         <font color="#00BFFF"><b>Bassa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Appare nella barra di stato e nel pannello delle notifiche. <br>
+        &ensp; Compare nella barra di stato e nel pannello delle notifiche. <br>
         <br>
         <font color="#00BFFF"><b>Media</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Appare nella barra di stato e nel pannello delle notifiche con un suono. <br>
+        &ensp; Compare nella barra di stato e nel pannello delle notifiche con un suono. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Appare nella barra di stato, nel pannello delle notifiche e come pop-up heads-up con un suono. <br>
+        &ensp; Compare nella barra di stato, nel pannello delle notifiche e come pop-up heads-up con un suono. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenziata</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; È simile a <b>Alta</b> ma silenzia il suono. <br>
-        &ensp; È ideale per le chat SMS attive dove i suoni continui potrebbero essere fastidiosi. <br>
+        &ensp; È ideale per chat SMS attive dove i suoni continui potrebbero essere fastidiosi. <br>
           È considerata chat attiva quando lo schermo è sbloccato e l\'app SMS è aperta in primo piano. <br>
         ]]>
     </string>
@@ -58,7 +58,7 @@
     <string name="low">Bassa</string>
     <string name="high">Alta</string>
     <string name="sms_chat">Chat SMS</string>
-    <string name="call_channel">Canale Chiamata</string>
+    <string name="call_channel">Canale Chiamate</string>
     <string name="sms_channel">Canale SMS</string>
     <string name="channel_id">ID Canale</string>
     <string name="help_channel_id">
@@ -72,20 +72,20 @@
     <string name="channel_group">Gruppo Canale</string>
     <string name="help_channel_group">
         <![CDATA[
-        Se lasciato vuoto, le notifiche vengono automaticamente raggruppate in tre categorie:<br>
+        Se lasciato vuoto, le notifiche vengono raggruppate automaticamente in tre categorie:<br>
         <br>
-        - Chiamate spam <br>
+        - Chiamata spam <br>
         - SMS spam <br>
         - SMS validi <br>
         <br>
-        Se viene specificato un gruppo, verranno raggruppati separatamente.
+        Se viene specificato un gruppo, le notifiche verranno raggruppate separatamente.
         ]]>
     </string>
     <string name="mute">Silenzia</string>
     <string name="sound">Suono</string>
     <string name="help_sound">
         <![CDATA[
-        Il suono può essere impostato solo quando si crea un nuovo canale;
+        Il suono può essere impostato solo quando si crea un nuovo canale,
          una volta creato, può essere modificato solo nelle impostazioni di sistema. <br>
         <br>
         <b>Suono Personalizzato</b><br>
@@ -94,7 +94,7 @@
         ]]>
     </string>
     <string name="default_">Predefinito</string>
-    <string name="select_notification_sound">Seleziona suono di notifica</string>
+    <string name="select_notification_sound">Seleziona suono notifica</string>
     <string name="unknown">Sconosciuto</string>
     <string name="icon_color">Colore Icona</string>
     <string name="confirm_to_delete">Confermi l\'eliminazione?</string>
@@ -102,7 +102,7 @@
         <![CDATA[
         Crea un nuovo canale di notifica. <br>
         <br>
-        <font color="#03DAC5"><b>Tieni premuto</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
+        <font color="#03DAC5"><b>Tocca a lungo</b></font> un canale di notifica in questo elenco a discesa per modificarlo.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -133,7 +133,7 @@
     <string name="high_muted">Alta Silenziata</string>
     <string name="help_channel_importance">
         <![CDATA[
-        L\'importanza può essere impostata solo quando si crea un nuovo canale;
+        L\'importanza può essere impostata solo quando si crea un nuovo canale,
          una volta creato, può essere modificata solo nelle impostazioni di sistema. <br>
         ]]>
     </string>

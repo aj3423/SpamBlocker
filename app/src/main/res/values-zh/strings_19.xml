@@ -34,24 +34,24 @@
     <string name="allowed">已允许</string>
     <string name="help_notification">
         <![CDATA[
-        有四种内置通知渠道：<br>
+        内置通知渠道：<br>
         <br>
         <font color="#00BFFF"><b>无</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; 完全没有通知。<br>
+        &ensp; 不显示任何通知。<br>
         <br>
         <font color="#00BFFF"><b>低</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; 显示在状态栏和通知阴影中。<br>
         <br>
         <font color="#00BFFF"><b>中</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; 在状态栏和通知阴影中显示，并带有声音。<br>
+        &ensp; 在状态栏和通知阴影中显示并带有声音。<br>
         <br>
         <font color="#00BFFF"><b>高</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; 在状态栏、通知阴影中显示，并作为浮动通知弹出，带有声音。<br>
         <br>
         <font color="#00BFFF"><b>高（静音）</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; 类似于<b>高</b>，但静音。<br>
-        &ensp; 适用于活跃的短信聊天，连续的声音可能会造成干扰。<br>
-          当屏幕解锁且短信应用在前台打开时，被视为活跃聊天。<br>
+        &ensp; 它类似于<b>高</b>，但静音。<br>
+        &ensp; 它非常适合活跃的短信聊天，因为持续的声音可能会造成干扰。<br>
+          当屏幕解锁且短信应用在前台打开时，被认为是活跃聊天。<br>
         ]]>
     </string>
     <string name="none">无</string>
@@ -63,32 +63,34 @@
     <string name="channel_id">渠道ID</string>
     <string name="help_channel_id">
         <![CDATA[
-        此ID将作为通知渠道显示在系统设置中。<br>
+        此ID将在系统设置中显示为通知渠道。<br>
         <br>
-        一旦创建，ID不能编辑。
+        一旦创建，该ID无法编辑。
         ]]>
     </string>
     <string name="channel_importance">重要性</string>
-    <string name="channel_group">渠道组</string>
+    <string name="channel_group">渠道分组</string>
     <string name="help_channel_group">
         <![CDATA[
-        留空时，通知会自动分为三类：<br>
+        留空时，通知将自动分为三类：<br>
         <br>
-        - 骚扰电话 <br>
-        - 骚扰短信 <br>
+        - 垃圾来电 <br>
+        - 垃圾短信 <br>
         - 有效短信 <br>
         <br>
-        如果指定了组，它们将单独分组。
+        如果指定了分组，它们将单独分组。
         ]]>
     </string>
     <string name="mute">静音</string>
     <string name="sound">声音</string>
     <string name="help_sound">
         <![CDATA[
-        声音只能在新创建渠道时设置，一旦创建，只能在系统设置中修改。<br>
+        声音只能在新渠道创建时设置，
+         一旦创建，只能在系统设置中修改。<br>
         <br>
         <b>自定义声音</b><br>
-        部分手机允许通过应用直接导入自定义铃声。对于其他手机，请通过系统设置导入，然后在应用中选择。<br>
+        部分手机允许通过应用直接导入自定义铃声。
+        对于其他手机，请通过系统设置导入，然后在应用中选择。<br>
         ]]>
     </string>
     <string name="default_">默认</string>
@@ -100,7 +102,7 @@
         <![CDATA[
         创建新的通知渠道。<br>
         <br>
-        <font color="#03DAC5"><b>长按</b></font>此下拉列表中的通知渠道可对其进行编辑。
+        <font color="#03DAC5"><b>长按</b></font>此下拉列表中的通知渠道即可编辑。
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -109,19 +111,20 @@
         <br>
         %s<br>
         <br>
-        请务必在删除此渠道后更新这些规则。<br>
+        删除此渠道后请务必更新这些规则。<br>
         ]]>
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        即使通知渠道配置为高重要性，也会被强制静音。
+        通知渠道将被强制静音，即使其被配置为高重要性。
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">LED颜色</string>
     <string name="help_led_color">
         <![CDATA[
-        指示灯颜色只能在新创建渠道时设置，一旦创建，只能在系统设置中修改。<br>
+        灯光颜色只能在新渠道创建时设置，
+         一旦创建，只能在系统设置中修改。<br>
         ]]>
     </string>
     <string name="icon">图标</string>
@@ -130,8 +133,9 @@
     <string name="high_muted">高（静音）</string>
     <string name="help_channel_importance">
         <![CDATA[
-        重要性只能在新创建渠道时设置，一旦创建，只能在系统设置中修改。<br>
+        重要性只能在新渠道创建时设置，
+         一旦创建，只能在系统设置中修改。<br>
         ]]>
     </string>
-    <string name="tap_text_to_edit_color">轻点ARGB文本手动编辑颜色。</string>
+    <string name="tap_text_to_edit_color">点击ARGB文本可手动编辑。</string>
 </resources>

@@ -34,36 +34,36 @@
     <string name="allowed">Permitido</string>
     <string name="help_notification">
         <![CDATA[
-        Hay cuatro canales de notificación integrados: <br>
+        Los canales de notificación integrados: <br>
         <br>
         <font color="#00BFFF"><b>Ninguno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Ninguna notificación en absoluto. <br>
         <br>
         <font color="#00BFFF"><b>Baja</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Aparece en la barra de estado y en el panel de notificaciones. <br>
+        &ensp; Aparece en la barra de estado y en la sombra de notificaciones. <br>
         <br>
         <font color="#00BFFF"><b>Media</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Aparece en la barra de estado y en el panel de notificaciones con sonido. <br>
+        &ensp; Aparece en la barra de estado y en la sombra de notificaciones con sonido. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece en la barra de estado, en el panel de notificaciones y como ventana emergente de aviso con sonido. <br>
+        &ensp; Aparece en la barra de estado, sombra de notificaciones y como ventana emergente (heads-up) con sonido. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Es similar a <b>Alta</b> pero silencia el sonido. <br>
-        &ensp; Es ideal para chats SMS activos donde los sonidos continuos podrían ser molestos. <br>
+        &ensp; Es ideal para chats de SMS activos donde los sonidos continuos podrían ser disruptivos. <br>
           Se considera chat activo cuando la pantalla está desbloqueada y la aplicación de SMS está abierta en primer plano. <br>
         ]]>
     </string>
     <string name="none">Ninguno</string>
     <string name="low">Baja</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Chat SMS</string>
+    <string name="sms_chat">Chat de SMS</string>
     <string name="call_channel">Canal de Llamadas</string>
     <string name="sms_channel">Canal de SMS</string>
     <string name="channel_id">ID del Canal</string>
     <string name="help_channel_id">
         <![CDATA[
-        Este ID aparecerá en la configuración del sistema como el canal de notificación. <br>
+        Este ID aparecerá en la configuración del sistema como canal de notificación. <br>
         <br>
         Una vez creado, el ID no se puede editar.
         ]]>
@@ -72,11 +72,11 @@
     <string name="channel_group">Grupo de Canal</string>
     <string name="help_channel_group">
         <![CDATA[
-        Cuando se deja vacío, las notificaciones se agrupan automáticamente en tres categorías:<br>
+        Si se deja vacío, las notificaciones se agrupan automáticamente en tres categorías:<br>
         <br>
-        - Llamada spam <br>
-        - SMS spam <br>
-        - SMS válido <br>
+        - Llamada de spam <br>
+        - SMS de spam <br>
+        - SMS válidos <br>
         <br>
         Si se especifica un grupo, se agruparán por separado.
         ]]>
@@ -90,7 +90,7 @@
         <br>
         <b>Sonido Personalizado</b><br>
         Algunos teléfonos permiten la importación directa de tonos de llamada personalizados a través de la aplicación.
-        Para otros, importar a través de la configuración del sistema y luego seleccionarlo en la aplicación. <br>
+        Para otros, impórtelos a través de la configuración del sistema y luego selecciónelo en la aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>

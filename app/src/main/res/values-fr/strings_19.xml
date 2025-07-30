@@ -34,30 +34,30 @@
     <string name="allowed">Autorisé</string>
     <string name="help_notification">
         <![CDATA[
-        Il existe quatre canaux de notification intégrés : <br>
+        Les canaux de notification intégrés : <br>
         <br>
         <font color="#00BFFF"><b>Aucun</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Aucune notification du tout. <br>
         <br>
-        <font color="#00BFFF"><b>Faible</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Apparaît dans la barre d\'état et le panneau de notifications. <br>
+        <font color="#00BFFF"><b>Bas</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Apparaît dans la barre d\'état et le panneau de notification. <br>
         <br>
-        <font color="#00BFFF"><b>Moyenne</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Apparaît dans la barre d\'état et le panneau de notifications avec un son. <br>
+        <font color="#00BFFF"><b>Moyen</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Apparaît dans la barre d\'état et le panneau de notification avec un son. <br>
         <br>
-        <font color="#00BFFF"><b>Élevée</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Apparaît dans la barre d\'état, le panneau de notifications et comme pop-up flottant avec un son. <br>
+        <font color="#00BFFF"><b>Élevé</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Apparaît dans la barre d\'état, le panneau de notification et comme pop-up flottant avec un son. <br>
         <br>
-        <font color="#00BFFF"><b>Élevée (silencieux)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; C\'est similaire à <b>Élevée</b> mais coupe le son. <br>
-        &ensp; C\'est idéal pour les conversations par SMS actives où des sons continus pourraient être perturbateurs. <br>
+        <font color="#00BFFF"><b>Élevé Silencieux</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; C\'est similaire à <b>Élevé</b> mais coupe le son. <br>
+        &ensp; C\'est idéal pour les conversations SMS actives où les sons continus pourraient être perturbateurs. <br>
           C\'est considéré comme une conversation active lorsque l\'écran est déverrouillé et que l\'application SMS est ouverte au premier plan. <br>
         ]]>
     </string>
     <string name="none">Aucun</string>
-    <string name="low">Faible</string>
-    <string name="high">Élevée</string>
-    <string name="sms_chat">Conversation SMS</string>
+    <string name="low">Bas</string>
+    <string name="high">Élevé</string>
+    <string name="sms_chat">Chat SMS</string>
     <string name="call_channel">Canal d\'appel</string>
     <string name="sms_channel">Canal SMS</string>
     <string name="channel_id">ID du canal</string>
@@ -74,18 +74,18 @@
         <![CDATA[
         Lorsqu\'il est laissé vide, les notifications sont automatiquement regroupées en trois catégories :<br>
         <br>
-        - Appel spam <br>
-        - SMS spam <br>
+        - Appel indésirable <br>
+        - SMS indésirable <br>
         - SMS valide <br>
         <br>
-        Si un groupe est spécifié, ils seront regroupés séparément.
+        Si un groupe est spécifié, elles seront regroupées séparément.
         ]]>
     </string>
     <string name="mute">Muet</string>
     <string name="sound">Son</string>
     <string name="help_sound">
         <![CDATA[
-        Le son ne peut être défini qu\'lors de la création d\'un nouveau canal,
+        Le son ne peut être défini qu\' lors de la création d\'un nouveau canal,
          une fois créé, il ne peut être modifié que dans les paramètres système. <br>
         <br>
         <b>Son personnalisé</b><br>
@@ -94,7 +94,7 @@
         ]]>
     </string>
     <string name="default_">Par défaut</string>
-    <string name="select_notification_sound">Sélectionner un son de notification</string>
+    <string name="select_notification_sound">Sélectionner le son de notification</string>
     <string name="unknown">Inconnu</string>
     <string name="icon_color">Couleur de l\'icône</string>
     <string name="confirm_to_delete">Confirmer la suppression ?</string>
@@ -123,19 +123,19 @@
     <string name="led_color">Couleur de la LED</string>
     <string name="help_led_color">
         <![CDATA[
-        La couleur de la lumière ne peut être définie qu\'lors de la création d\'un nouveau canal,
+        La couleur de la lumière ne peut être définie qu\' lors de la création d\'un nouveau canal,
          une fois créé, elle ne peut être modifiée que dans les paramètres système. <br>
         ]]>
     </string>
     <string name="icon">Icône</string>
     <string name="automatic">Auto</string>
-    <string name="medium">Moyenne</string>
-    <string name="high_muted">Élevée (silencieux)</string>
+    <string name="medium">Moyen</string>
+    <string name="high_muted">Élevé Silencieux</string>
     <string name="help_channel_importance">
         <![CDATA[
-        L\'importance ne peut être définie qu\'lors de la création d\'un nouveau canal,
+        L\'importance ne peut être définie qu\' lors de la création d\'un nouveau canal,
          une fois créé, elle ne peut être modifiée que dans les paramètres système. <br>
         ]]>
     </string>
-    <string name="tap_text_to_edit_color">Appuyez sur le texte ARGB pour le modifier manuellement.</string>
+    <string name="tap_text_to_edit_color">Touchez le texte ARGB pour le modifier manuellement.</string>
 </resources>

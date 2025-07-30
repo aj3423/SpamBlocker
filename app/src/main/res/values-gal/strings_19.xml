@@ -34,9 +34,9 @@
     <string name="allowed">Permitido</string>
     <string name="help_notification">
         <![CDATA[
-        Existen catro canles de notificación incorporadas: <br>
+        As canles de notificación integradas: <br>
         <br>
-        <font color="#00BFFF"><b>Ningunha</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        <font color="#00BFFF"><b>Ningún</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Ningunha notificación en absoluto. <br>
         <br>
         <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
@@ -46,15 +46,15 @@
         &ensp; Aparece na barra de estado e na sombra de notificacións cun son. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente cun son. <br>
+        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente flotante cun son. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; É similar a <b>Alta</b> pero silencia o son. <br>
-        &ensp; É ideal para chats SMS activos onde os sons continuos poderían ser disruptivos. <br>
+        &ensp; É ideal para chats SMS activos onde os sons continuos poderían ser perturbadores. <br>
           Considérase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está aberta en primeiro plano. <br>
         ]]>
     </string>
-    <string name="none">Ningunha</string>
+    <string name="none">Ningún</string>
     <string name="low">Baixa</string>
     <string name="high">Alta</string>
     <string name="sms_chat">Chat SMS</string>
@@ -90,7 +90,7 @@
         <br>
         <b>Son Personalizado</b><br>
         Algúns teléfonos permiten a importación directa de tons de chamada personalizados a través da aplicación.
-        Para outros, importe a través da configuración do sistema e despois selecciónao na aplicación. <br>
+        Para outros, importe a través da configuración do sistema e despois selecciónelo na aplicación. <br>
         ]]>
     </string>
     <string name="default_">Predeterminado</string>
@@ -102,12 +102,12 @@
         <![CDATA[
         Crear unha nova canle de notificación. <br>
         <br>
-        <font color="#03DAC5"><b>Toca e mantén premido</b></font> unha canle de notificación nesta lista despregable para editala.
+        <font color="#03DAC5"><b>Preme longamente</b></font> nunha canle de notificación nesta lista despregable para editala.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Esta canle está sendo utilizada actualmente polas seguintes regras. <br>
+        Esta canle está sendo usada actualmente polas seguintes regras. <br>
         <br>
         %s<br>
         <br>
@@ -116,7 +116,7 @@
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        A canle de notificación silenciarase á forza, aínda que estea configurada con alta importancia.
+        A canle de notificación será silenciada á forza, aínda que estea configurada con alta importancia.
         ]]>
     </string>
     <string name="led">LED</string>
@@ -128,7 +128,7 @@
         ]]>
     </string>
     <string name="icon">Icona</string>
-    <string name="automatic">Automático</string>
+    <string name="automatic">Auto</string>
     <string name="medium">Media</string>
     <string name="high_muted">Alta Silenciada</string>
     <string name="help_channel_importance">

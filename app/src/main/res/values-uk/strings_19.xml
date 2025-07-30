@@ -34,38 +34,38 @@
     <string name="allowed">Дозволено</string>
     <string name="help_notification">
         <![CDATA[
-        Є чотири вбудовані канали сповіщень: <br>
+        Вбудовані канали сповіщень: <br>
         <br>
-        <font color="#00BFFF"><b>Жоден</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Жодних сповіщень. <br>
+        <font color="#00BFFF"><b>Жодного</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Жодних сповіщень.<br>
         <br>
-        <font color="#00BFFF"><b>Низький</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        <font color="#00BFFF"><b>Низька</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; З\'являється в рядку стану та шторці сповіщень. <br>
         <br>
-        <font color="#00BFFF"><b>Середній</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        <font color="#00BFFF"><b>Середня</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
         &ensp; З\'являється в рядку стану та шторці сповіщень зі звуком. <br>
         <br>
-        <font color="#00BFFF"><b>Високий</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; З\'являється в рядку стану, шторці сповіщень та як спливаюче повідомлення зі звуком. <br>
+        <font color="#00BFFF"><b>Висока</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; З\'являється в рядку стану, шторці сповіщень та як спливаюче вікно з попередженням зі звуком. <br>
         <br>
-        <font color="#00BFFF"><b>Високий (без звуку)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Схожий на <b>Високий</b>, але без звуку. <br>
-        &ensp; Ідеально підходить для активних SMS-чатів, де постійні звуки можуть заважати. <br>
-          Чат вважається активним, коли екран розблоковано, а програма SMS відкрита на передньому плані. <br>
+        <font color="#00BFFF"><b>Висока (без звуку)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Схоже на <b>Висока</b>, але без звуку. <br>
+        &ensp; Ідеально підходить для активних SMS-чатів, де безперервні звуки можуть заважати. <br>
+          Активним чатом вважається, коли екран розблокований, а SMS-додаток відкрито на передньому плані. <br>
         ]]>
     </string>
-    <string name="none">Жоден</string>
-    <string name="low">Низький</string>
-    <string name="high">Високий</string>
+    <string name="none">Жодного</string>
+    <string name="low">Низька</string>
+    <string name="high">Висока</string>
     <string name="sms_chat">SMS-чат</string>
     <string name="call_channel">Канал дзвінків</string>
     <string name="sms_channel">SMS-канал</string>
     <string name="channel_id">ID каналу</string>
     <string name="help_channel_id">
         <![CDATA[
-        Цей ID з\'явиться в системних налаштуваннях як канал сповіщень. <br>
+        Цей ID буде відображатися в системних налаштуваннях як канал сповіщень.<br>
         <br>
-        Після створення ID не можна редагувати.
+        Після створення ID не може бути змінений.
         ]]>
     </string>
     <string name="channel_importance">Важливість</string>
@@ -76,21 +76,21 @@
         <br>
         - Спам-дзвінок <br>
         - Спам-SMS <br>
-        - Дійсний SMS <br>
+        - Дійсні SMS <br>
         <br>
-        Якщо вказано групу, вони будуть згруповані окремо.
+        Якщо група вказана, вони будуть згруповані окремо.
         ]]>
     </string>
     <string name="mute">Вимкнути звук</string>
     <string name="sound">Звук</string>
     <string name="help_sound">
         <![CDATA[
-        Звук можна встановити лише під час створення нового каналу;
+        Звук може бути встановлений лише при створенні нового каналу;
          після створення його можна змінити лише в системних налаштуваннях. <br>
         <br>
         <b>Користувацький звук</b><br>
         Деякі телефони дозволяють прямий імпорт користувацьких мелодій через додаток.
-        Для інших – імпортуйте через системні налаштування, а потім виберіть його в додатку. <br>
+        Для інших — імпортуйте через системні налаштування, а потім виберіть у додатку. <br>
         ]]>
     </string>
     <string name="default_">За замовчуванням</string>
@@ -100,42 +100,42 @@
     <string name="confirm_to_delete">Підтвердити видалення?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
-        Створити новий канал сповіщень. <br>
+        Створити новий канал сповіщень.<br>
         <br>
-        <font color="#03DAC5"><b>Довге натискання</b></font> на канал сповіщень у цьому випадаючому списку дозволяє його редагувати.
+        <font color="#03DAC5"><b>Довге натискання</b></font> на канал сповіщень у цьому випадаючому списку, щоб відредагувати його.
         ]]>
     </string>
     <string name="warning_delete_channel">
         <![CDATA[
-        Цей канал наразі використовується наступними правилами. <br>
+        Цей канал наразі використовується такими правилами. <br>
         <br>
         %s<br>
         <br>
-        Обов\'язково оновіть їх після видалення цього каналу. <br>
+        Переконайтеся, що ви оновите їх після видалення цього каналу. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        Канал сповіщень буде примусово вимкнено, навіть якщо він налаштований як високоважливий.
+        Канал сповіщень буде примусово вимкнений, навіть якщо він налаштований як високої важливості.
         ]]>
     </string>
     <string name="led">LED</string>
     <string name="led_color">Колір LED</string>
     <string name="help_led_color">
         <![CDATA[
-        Колір світла можна встановити лише під час створення нового каналу;
+        Колір світла може бути встановлений лише при створенні нового каналу;
          після створення його можна змінити лише в системних налаштуваннях. <br>
         ]]>
     </string>
     <string name="icon">Значок</string>
     <string name="automatic">Авто</string>
-    <string name="medium">Середній</string>
-    <string name="high_muted">Високий (без звуку)</string>
+    <string name="medium">Середня</string>
+    <string name="high_muted">Висока (без звуку)</string>
     <string name="help_channel_importance">
         <![CDATA[
-        Важливість можна встановити лише під час створення нового каналу;
+        Важливість може бути встановлена лише при створенні нового каналу;
          після створення її можна змінити лише в системних налаштуваннях. <br>
         ]]>
     </string>
-    <string name="tap_text_to_edit_color">Натисніть на текст ARGB, щоб відредагувати його вручну.</string>
+    <string name="tap_text_to_edit_color">Натисніть текст ARGB, щоб відредагувати його вручну.</string>
 </resources>

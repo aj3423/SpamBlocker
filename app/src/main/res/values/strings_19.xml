@@ -32,7 +32,7 @@
     </string>
     <string name="help_notification">
         <![CDATA[
-        There are four built-in notification channels: <br>
+        The built-in notification channels: <br>
         <br>
         <font color="#00BFFF"><b>None</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; No notification at all. <br>

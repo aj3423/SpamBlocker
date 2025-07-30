@@ -34,54 +34,54 @@
     <string name="allowed">İzin Verildi</string>
     <string name="help_notification">
         <![CDATA[
-        Dört adet yerleşik bildirim kanalı bulunmaktadır: <br>
+        Yerleşik bildirim kanalları: <br>
         <br>
         <font color="#00BFFF"><b>Yok</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Hiç bildirim yok. <br>
+        &ensp; Hiçbir bildirim yok. <br>
         <br>
         <font color="#00BFFF"><b>Düşük</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; Durum çubuğunda ve bildirim gölgesinde görünür. <br>
         <br>
         <font color="#00BFFF"><b>Orta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Durum çubuğunda ve bildirim gölgesinde sesle birlikte görünür. <br>
+        &ensp; Durum çubuğunda ve bildirim gölgesinde sesli olarak görünür. <br>
         <br>
         <font color="#00BFFF"><b>Yüksek</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Durum çubuğunda, bildirim gölgesinde ve bildirim penceresi olarak sesle birlikte görünür. <br>
+        &ensp; Durum çubuğunda, bildirim gölgesinde ve sesli bir heads-up açılır penceresi olarak görünür. <br>
         <br>
         <font color="#00BFFF"><b>Yüksek (Sessiz)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; <b>Yüksek</b> ile benzerdir ancak sesi kapatır. <br>
+        &ensp; <b>Yüksek</b>\'e benzer ancak sesi kısar. <br>
         &ensp; Sürekli seslerin rahatsız edici olabileceği aktif SMS sohbetleri için idealdir. <br>
-          Ekranın kilidi açıkken ve SMS uygulaması ön planda açıkken aktif sohbet olarak kabul edilir. <br>
+          Ekranın kilidi açık ve SMS uygulaması ön planda açık olduğunda aktif sohbet olarak kabul edilir. <br>
         ]]>
     </string>
     <string name="none">Yok</string>
     <string name="low">Düşük</string>
     <string name="high">Yüksek</string>
     <string name="sms_chat">SMS Sohbeti</string>
-    <string name="call_channel">Arama Kanalı</string>
+    <string name="call_channel">Çağrı Kanalı</string>
     <string name="sms_channel">SMS Kanalı</string>
     <string name="channel_id">Kanal Kimliği</string>
     <string name="help_channel_id">
         <![CDATA[
-        Bu Kimlik, sistem ayarlarında bildirim kanalı olarak görünecektir. <br>
+        Bu kimlik, sistem ayarlarında bildirim kanalı olarak görünecektir. <br>
         <br>
-        Oluşturulduktan sonra, Kimlik düzenlenemez.
+        Oluşturulduktan sonra kimlik düzenlenemez.
         ]]>
     </string>
-    <string name="channel_importance">Önem</string>
+    <string name="channel_importance">Önem Derecesi</string>
     <string name="channel_group">Kanal Grubu</string>
     <string name="help_channel_group">
         <![CDATA[
         Boş bırakıldığında, bildirimler otomatik olarak üç kategoriye ayrılır:<br>
         <br>
-        - İstenmeyen arama <br>
-        - İstenmeyen SMS <br>
+        - Spam çağrı <br>
+        - Spam SMS <br>
         - Geçerli SMS <br>
         <br>
-        Bir grup belirtilirse, ayrı ayrı gruplandırılırlar.
+        Bir grup belirtilirse, ayrı ayrı gruplandırılacaklardır.
         ]]>
     </string>
-    <string name="mute">Sessiz</string>
+    <string name="mute">Sessize Al</string>
     <string name="sound">Ses</string>
     <string name="help_sound">
         <![CDATA[
@@ -90,19 +90,19 @@
         <br>
         <b>Özel Ses</b><br>
         Bazı telefonlar özel zil seslerinin uygulama aracılığıyla doğrudan içe aktarılmasına izin verir.
-        Diğerleri için, sistem ayarları aracılığıyla içe aktarın ve ardından uygulamada seçin. <br>
+        Diğerleri için sistem ayarları aracılığıyla içe aktarın ve ardından uygulamada seçin. <br>
         ]]>
     </string>
     <string name="default_">Varsayılan</string>
-    <string name="select_notification_sound">Bildirim sesini seçin</string>
-    <string name="unknown">Bilinmiyor</string>
+    <string name="select_notification_sound">Bildirim sesi seç</string>
+    <string name="unknown">Bilinmeyen</string>
     <string name="icon_color">Simge Rengi</string>
     <string name="confirm_to_delete">Silmeyi onayla?</string>
     <string name="help_create_notification_channel">
         <![CDATA[
         Yeni bir bildirim kanalı oluşturun. <br>
         <br>
-        Bu açılır listedeki bir bildirim kanalına düzenlemek için <font color="#03DAC5"><b>uzun basın</b></font>.
+        <font color="#03DAC5"><b>Uzun basın</b></font> bu açılır listedeki bir bildirim kanalını düzenlemek için.
         ]]>
     </string>
     <string name="warning_delete_channel">
@@ -111,12 +111,12 @@
         <br>
         %s<br>
         <br>
-        Bu kanalı sildikten sonra bunları güncellemeyi unutmayın. <br>
+        Bu kanalı sildikten sonra bunları güncellediğinizden emin olun. <br>
         ]]>
     </string>
     <string name="help_mute_channel">
         <![CDATA[
-        Bildirim kanalı, yüksek önemde yapılandırılmış olsa bile zorla susturulacaktır.
+        Bildirim kanalı, yüksek önemde yapılandırılmış olsa bile zorla sessize alınacaktır.
         ]]>
     </string>
     <string name="led">LED</string>
