@@ -2338,6 +2338,7 @@ class ReportNumber(
 
 // Continue or terminate the workflow according to ongoing calendar event.
 @Serializable
+@SerialName("CalendarEvent")
 class CalendarEvent(
     var enabled: Boolean = true,
     var eventTitle: String = "",
@@ -2446,6 +2447,7 @@ class CalendarEvent(
 
 // This will be triggered on receiving SMS messages
 @Serializable
+@SerialName("SmsEvent")
 class SmsEvent(
     var enabled: Boolean = true,
     var number: String = ".*",
@@ -2586,6 +2588,7 @@ class SmsEvent(
 
 // Workflows that contain this preprocessor will be executed before checking the number.
 @Serializable
+@SerialName("CallEvent")
 class CallEvent(
     var enabled : Boolean = true,
     var number: String = ".*",
@@ -2703,6 +2706,7 @@ class CallEvent(
 //  3377777777, the secondary number can be "1113377777777" (with an extra prefix 111),
 //  the prefix 111 needs to be removed.
 @Serializable
+@SerialName("ModifyNumber")
 class ModifyNumber(
     var from: String = "",
     var fromFlags: Int = Def.DefaultRegexFlags,
