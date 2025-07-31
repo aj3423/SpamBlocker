@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Veuillez d\'abord activer le filtrage des appels.</string>
+    <string name="enable_sms_screening_first">Veuillez d\'abord activer le filtrage des SMS.</string>
+    <string name="it_is_at_top">C\'est l\'option tout en haut.</string>
+</resources>

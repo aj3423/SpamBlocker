@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Lütfen önce çağrı engellemeyi etkinleştirin.</string>
+    <string name="enable_sms_screening_first">Lütfen önce SMS engellemeyi etkinleştirin.</string>
+    <string name="it_is_at_top">En üstteki seçenektir.</string>
+</resources>

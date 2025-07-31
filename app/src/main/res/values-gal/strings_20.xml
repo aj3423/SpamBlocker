@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Por favor, habilite primeiro a detección de chamadas.</string>
+    <string name="enable_sms_screening_first">Por favor, habilite primeiro a detección de SMS.</string>
+    <string name="it_is_at_top">É a opción superior.</string>
+</resources>

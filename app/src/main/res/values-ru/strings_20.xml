@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Пожалуйста, сначала включите отсев звонков.</string>
+    <string name="enable_sms_screening_first">Пожалуйста, сначала включите отсев SMS.</string>
+    <string name="it_is_at_top">Это верхняя опция.</string>
+</resources>

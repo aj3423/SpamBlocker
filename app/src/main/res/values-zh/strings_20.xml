@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">请先启用呼叫筛选。</string>
+    <string name="enable_sms_screening_first">请先启用短信筛选。</string>
+    <string name="it_is_at_top">这是最顶部的选项。</string>
+</resources>

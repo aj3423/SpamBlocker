@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">אנא הפעל סינון שיחות תחילה.</string>
+    <string name="enable_sms_screening_first">אנא הפעל סינון הודעות SMS תחילה.</string>
+    <string name="it_is_at_top">זו האפשרות העליונה ביותר.</string>
+</resources>

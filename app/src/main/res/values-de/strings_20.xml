@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Bitte aktivieren Sie zuerst die Anrufüberprüfung.</string>
+    <string name="enable_sms_screening_first">Bitte aktivieren Sie zuerst die SMS-Überprüfung.</string>
+    <string name="it_is_at_top">Es ist die oberste Option.</string>
+</resources>

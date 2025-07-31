@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">لطفاً ابتدا مسدودسازی تماس را فعال کنید.</string>
+    <string name="enable_sms_screening_first">لطفاً ابتدا مسدودسازی پیامک را فعال کنید.</string>
+    <string name="it_is_at_top">این گزینه بالاترین است.</string>
+</resources>

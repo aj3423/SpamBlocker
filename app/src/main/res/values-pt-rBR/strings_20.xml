@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Por favor, ative a triagem de chamadas primeiro.</string>
+    <string name="enable_sms_screening_first">Por favor, ative a triagem de SMS primeiro.</string>
+    <string name="it_is_at_top">É a opção superior.</string>
+</resources>

@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,6 +23,7 @@ import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.service.CallScreeningService
 import spam.blocker.service.SmsReceiver
+import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonQuestionMark
@@ -88,21 +91,49 @@ fun PopupTesting(
                 BalloonQuestionMark(Str(R.string.help_test_rules))
             }
         },
-        buttons = { // Test Button
+        buttons = {
 
+            val isForCall by remember {
+                derivedStateOf {
+                    vm.selectedType.intValue == 0
+                }
+            }
+
+            // "Please enable call/sms first"
+            val warningTrigger = remember { mutableStateOf(false) }
+            PopupDialog(
+                trigger = warningTrigger
+            ) {
+                Text(
+                    text = Str(
+                        if (isForCall)
+                            R.string.enable_call_screening_first
+                        else
+                            R.string.enable_sms_screening_first
+                    ),
+                    color = DarkOrange,
+                )
+                GreyLabel(Str(R.string.it_is_at_top))
+            }
+
+            // Test Button
             StrokeButton(label = Str(R.string.test), color = Teal200) {
+                // Prompt to "enable the call/sms option first"
+                if ((isForCall && !G.callEnabled.value) || (!isForCall && !G.smsEnabled.value)) {
+                    warningTrigger.value = true
+                    return@StrokeButton
+                }
+
                 clearPreviousResult()
                 logTrigger.value = true
 
                 val textLogger = JetpackTextLogger(logStr, C)
 
-                coroutine.launch {
-                    withContext(IO) {
-                        if (vm.selectedType.intValue == 0/* for call */)
-                            CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
-                        else
-                            SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
-                    }
+                coroutine.launch(IO) {
+                    if (isForCall)
+                        CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
+                    else
+                        SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
                 }
             }
         },

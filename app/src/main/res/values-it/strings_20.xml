@@ -1,0 +1,5 @@
+<resources>
+    <string name="enable_call_screening_first">Abilita prima lo screening delle chiamate.</string>
+    <string name="enable_sms_screening_first">Abilita prima lo screening degli SMS.</string>
+    <string name="it_is_at_top">È l\'opzione in alto.</string>
+</resources>
