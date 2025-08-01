@@ -1,0 +1,21 @@
+Please re-backup.
+
+Breaking change:
+- STIR Lenient mode is removed.
+  The new "Lenient" label means "don't block unverified call".
+
+New:
+- Customizable notification:
+  icon, color, sound, LED, grouping
+- Workflow trigger: "Call Event" 
+  Run a workflow on incoming call. 
+  Use case: remove number prefix for "1 SIM card dual numbers"
+
+Fix:
+- RepeatedCall/AnsweredNumber, crash that caused by "private" number.
+- It asks for wrong permissions after restoring.
+- History indicator ignores "for particular number".
+
+Improvement:
+- Workflow actions File Read/Write now support date tags, such as `{day_of_week}`.
+   Use case: Do a daily backup and only keep last 7 backups. 
