@@ -23,7 +23,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">כלול לא מאומתים (*)</string>
+    <string name="stir_include_unverified">כלול לא מאומתים</string>
     <string name="unverified">לא מאומת</string>
     <string name="valid">שיחה תקינה</string>
     <string name="spoof">שיחת התחזות</string>

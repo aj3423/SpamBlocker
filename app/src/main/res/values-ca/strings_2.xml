@@ -23,7 +23,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Inclou No Verificat (*)</string>
+    <string name="stir_include_unverified">Inclou No Verificat</string>
     <string name="unverified">No verificat</string>
     <string name="valid">Trucada vàlida</string>
     <string name="spoof">Trucada falsa</string>

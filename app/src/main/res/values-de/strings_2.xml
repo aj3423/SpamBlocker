@@ -23,7 +23,7 @@
         ]]>
     </string>
     <string name="stir_attestation">STIR</string>
-    <string name="stir_include_unverified">Unbestätigte einbeziehen (*)</string>
+    <string name="stir_include_unverified">Unbestätigte einbeziehen</string>
     <string name="unverified">Nicht überprüft</string>
     <string name="valid">Gültiger Anruf</string>
     <string name="spoof">Spoof-Anruf</string>
