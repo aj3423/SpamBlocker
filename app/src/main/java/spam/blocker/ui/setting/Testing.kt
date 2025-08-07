@@ -26,6 +26,7 @@ import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
@@ -158,7 +159,7 @@ fun PopupTesting(
                     },
                 )
                 // SMS content
-                if (vm.selectedType.intValue != Def.ForNumber) {
+                AnimatedVisibleV(vm.selectedType.intValue != Def.ForNumber) {
                     StrInputBox(
                         text = vm.sms.value,
                         label = { GreyLabel(Str(R.string.sms_content)) },

@@ -36,6 +36,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -241,11 +242,21 @@ fun NumberInputBox(
     helpTooltip: @Composable (() -> Unit)? = null,
 ) {
     // Code learned from the built-in BasicTextField.kt
-    var state by remember(intValue) {
+    var state by remember {
         mutableStateOf(
             TextFieldValue(text = intValue?.toString() ?: "")
         )
     }
+    LaunchedEffect(intValue) {
+        if (intValue?.toString() != state.text) {
+            state = TextFieldValue(
+                text = intValue?.toString() ?: "",
+                selection = TextRange(intValue?.toString()?.length ?: 0)
+            )
+        }
+    }
+
+
     // Last String value that either text field was recomposed with or updated in the onValueChange
     // callback. We keep track of it to prevent calling onValueChange(String) for same String when
     // CoreTextField's onValueChange is called multiple times without recomposition in between.
