@@ -2,4 +2,17 @@
     <string name="enable_call_screening_first">请先启用呼叫筛选。</string>
     <string name="enable_sms_screening_first">请先启用短信筛选。</string>
     <string name="it_is_at_top">这是最顶部的选项。</string>
+    <string name="category_mapping">类别映射</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        某些API返回数字作为结果，例如<b>1</b>代表<b>广告</b>，<b>2</b>代表<b>诈骗</b>。它们可以映射到人类可读的文本。
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"广告\",\n
+        \"2\": \"诈骗\",\n
+        …\n
+        }
+    </string>
 </resources>

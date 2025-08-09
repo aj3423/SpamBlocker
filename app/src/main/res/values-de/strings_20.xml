@@ -2,4 +2,17 @@
     <string name="enable_call_screening_first">Bitte aktivieren Sie zuerst die Anrufüberprüfung.</string>
     <string name="enable_sms_screening_first">Bitte aktivieren Sie zuerst die SMS-Überprüfung.</string>
     <string name="it_is_at_top">Es ist die oberste Option.</string>
+    <string name="category_mapping">Kategorienzuordnung</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Einige APIs geben Zahlen als Ergebnis zurück, wie <b>1</b> für <b>Werbung</b> und <b>2</b> für <b>Betrug</b>. Diese können menschenlesbaren Texten zugeordnet werden.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Werbung\",\n
+        \"2\": \"Betrug\",\n
+        …\n
+        }
+    </string>
 </resources>

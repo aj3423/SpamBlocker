@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Abilita prima lo screening delle chiamate.</string>
     <string name="enable_sms_screening_first">Abilita prima lo screening degli SMS.</string>
     <string name="it_is_at_top">È l\'opzione in alto.</string>
+    <string name="category_mapping">Mappatura Categorie</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Alcune API restituiscono un numero come risultato, come <b>1</b> per <b>Pubblicità</b> e <b>2</b> per <b>Truffa</b>.
+        Possono essere mappati in testi leggibili dall\'uomo.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Pubblicità\",\n
+        \"2\": \"Truffa\",\n
+        …\n
+        }
+    </string>
 </resources>

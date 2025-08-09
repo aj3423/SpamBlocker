@@ -2,4 +2,17 @@
     <string name="enable_call_screening_first">אנא הפעל סינון שיחות תחילה.</string>
     <string name="enable_sms_screening_first">אנא הפעל סינון הודעות SMS תחילה.</string>
     <string name="it_is_at_top">זו האפשרות העליונה ביותר.</string>
+    <string name="category_mapping">מיפוי קטגוריות</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        חלק מממשקי ה-API מחזירים מספר טלפון כתוצאה, לדוגמה <b>1</b> עבור <b>פרסום</b> ו-<b>2</b> עבור <b>הונאה</b>. ניתן למפות אותם לטקסטים קריאים לאדם.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"פרסום\",\n
+        \"2\": \"הונאה\",\n
+        …\n
+        }
+    </string>
 </resources>

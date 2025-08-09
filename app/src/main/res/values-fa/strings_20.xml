@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">لطفاً ابتدا مسدودسازی تماس را فعال کنید.</string>
     <string name="enable_sms_screening_first">لطفاً ابتدا مسدودسازی پیامک را فعال کنید.</string>
     <string name="it_is_at_top">این گزینه بالاترین است.</string>
+    <string name="category_mapping">نگاشت دسته‌بندی</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        برخی APIها عددی را به عنوان نتیجه برمی‌گردانند، مانند <b>1</b> برای <b>تبلیغات</b> و <b>2</b> برای <b>کلاهبرداری</b>.
+        آن‌ها می‌توانند به متون قابل فهم برای انسان نگاشت شوند.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"تبلیغات\",\n
+        \"2\": \"کلاهبرداری\",\n
+        …\n
+        }
+    </string>
 </resources>

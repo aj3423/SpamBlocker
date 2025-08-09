@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Si us plau, habilita primer el filtratge de trucades.</string>
     <string name="enable_sms_screening_first">Si us plau, habilita primer el filtratge de SMS.</string>
     <string name="it_is_at_top">És la primera opció.</string>
+    <string name="category_mapping">Mapeig de Categories</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Algunes API retornen un número de telèfon com a resultat, com ara <b>1</b> per a <b>Publicitat</b> i <b>2</b> per a <b>Estafa</b>.
+        Es poden mapejar a textos llegibles per humans.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Publicitat\",\n
+        \"2\": \"Estafa\",\n
+        …\n
+        }
+    </string>
 </resources>

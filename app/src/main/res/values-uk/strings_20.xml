@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Будь ласка, спочатку увімкніть фільтрацію викликів.</string>
     <string name="enable_sms_screening_first">Будь ласка, спочатку увімкніть фільтрацію SMS.</string>
     <string name="it_is_at_top">Це найперша опція.</string>
+    <string name="category_mapping">Відображення категорій</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Деякі API повертають число як результат, наприклад, <b>1</b> для <b>Реклами</b> та <b>2</b> для <b>Шахрайства</b>.
+        Їх можна відобразити у зрозумілих для людини текстах.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Реклама\",\n
+        \"2\": \"Шахрайство\",\n
+        …\n
+        }
+    </string>
 </resources>

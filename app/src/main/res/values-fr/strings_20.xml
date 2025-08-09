@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Veuillez d\'abord activer le filtrage des appels.</string>
     <string name="enable_sms_screening_first">Veuillez d\'abord activer le filtrage des SMS.</string>
     <string name="it_is_at_top">C\'est l\'option tout en haut.</string>
+    <string name="category_mapping">Mappage de catégories</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Certaines API renvoient un numéro de téléphone comme résultat, comme <b>1</b> pour <b>Publicité</b> et <b>2</b> pour <b>Arnaque</b>.
+        Ils peuvent être mappés à des textes lisibles par l\'homme.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Publicité\",\n
+        \"2\": \"Arnaque\",\n
+        …\n
+        }
+    </string>
 </resources>

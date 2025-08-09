@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Por favor, ative a triagem de chamadas primeiro.</string>
     <string name="enable_sms_screening_first">Por favor, ative a triagem de SMS primeiro.</string>
     <string name="it_is_at_top">É a opção superior.</string>
+    <string name="category_mapping">Mapeamento de Categoria</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Algumas APIs retornam o número como resultado, como <b>1</b> para <b>Publicidade</b> e <b>2</b> para <b>Golpe</b>.
+        Eles podem ser mapeados para textos legíveis por humanos.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Publicidade\",\n
+        \"2\": \"Golpe\",\n
+        …\n
+        }
+    </string>
 </resources>

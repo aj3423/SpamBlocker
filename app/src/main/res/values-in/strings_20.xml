@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Mohon aktifkan penyaringan panggilan terlebih dahulu.</string>
     <string name="enable_sms_screening_first">Mohon aktifkan penyaringan SMS terlebih dahulu.</string>
     <string name="it_is_at_top">Itu adalah opsi teratas.</string>
+    <string name="category_mapping">Pemetaan Kategori</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Beberapa API mengembalikan nomor telepon sebagai hasilnya, misalnya <b>1</b> untuk <b>Iklan</b> dan <b>2</b> untuk <b>Penipuan</b>.
+        Mereka dapat dipetakan ke teks yang mudah dibaca manusia.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Iklan\",\n
+        \"2\": \"Penipuan\",\n
+        …\n
+        }
+    </string>
 </resources>

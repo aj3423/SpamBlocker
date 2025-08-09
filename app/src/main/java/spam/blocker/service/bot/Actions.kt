@@ -1944,6 +1944,8 @@ class ParseQueryResult(
 
     var categorySig: String = "",
     var categoryFlags: Int = Def.DefaultRegexFlags,
+
+    var categoryMapping: String = "",
 ) : IPermissiveAction {
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -1979,6 +1981,7 @@ class ParseQueryResult(
         // 3. category
         if (determined) {
             if (categorySig.trim().isNotEmpty()) {
+                // 1. Get category
                 val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
                 category = categorySig.trim().toRegex(categoryOpts).findAll(html)
                     .map {
@@ -1989,6 +1992,12 @@ class ParseQueryResult(
                     }
                     .filterNot { it.isNullOrEmpty() }
                     .joinToString(" ")
+
+                // 2. Map category
+                if (categoryMapping.isNotEmpty()) {
+                    val map = JSONObject(categoryMapping).toMap()
+                    category = map.getOrDefault(category, category) as? String
+                }
             }
         }
 
@@ -2123,6 +2132,18 @@ class ParseQueryResult(
             onFlagsChange = {
                 reasonFlagsCopy.intValue = it
                 categoryFlags = it
+            }
+        )
+
+        var jsonStr by remember { mutableStateOf(categoryMapping) }
+        StrInputBox(
+            text = jsonStr,
+            label = { Text(Str(R.string.category_mapping)) },
+            leadingIconId = R.drawable.ic_category,
+            placeholder = { DimGreyLabel(Str(R.string.category_mapping_placeholder)) },
+            helpTooltip = Str(R.string.help_category_mapping),
+            onValueChange = { newVal ->
+                categoryMapping = newVal
             }
         )
     }

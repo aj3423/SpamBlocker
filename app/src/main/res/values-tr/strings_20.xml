@@ -2,4 +2,17 @@
     <string name="enable_call_screening_first">Lütfen önce çağrı engellemeyi etkinleştirin.</string>
     <string name="enable_sms_screening_first">Lütfen önce SMS engellemeyi etkinleştirin.</string>
     <string name="it_is_at_top">En üstteki seçenektir.</string>
+    <string name="category_mapping">Kategori Eşleştirme</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Bazı API\'ler, örneğin <b>Reklam</b> için <b>1</b> ve <b>Dolandırıcılık</b> için <b>2</b> gibi sonuçları numara olarak döndürür. Bunlar insan tarafından okunabilir metinlere eşlenebilir.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Reklam\",\n
+        \"2\": \"Dolandırıcılık\",\n
+        …\n
+        }
+    </string>
 </resources>

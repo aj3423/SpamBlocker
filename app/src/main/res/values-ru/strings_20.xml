@@ -2,4 +2,17 @@
     <string name="enable_call_screening_first">Пожалуйста, сначала включите отсев звонков.</string>
     <string name="enable_sms_screening_first">Пожалуйста, сначала включите отсев SMS.</string>
     <string name="it_is_at_top">Это верхняя опция.</string>
+    <string name="category_mapping">Сопоставление категорий</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Некоторые API возвращают число в качестве результата, например, <b>1</b> для <b>Рекламы</b> и <b>2</b> для <b>Мошенничества</b>. Их можно сопоставить с удобочитаемыми текстами.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Реклама\",\n
+        \"2\": \"Мошенничество\",\n
+        …\n
+        }
+    </string>
 </resources>

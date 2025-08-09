@@ -2,4 +2,18 @@
     <string name="enable_call_screening_first">Please enable call screening first.</string>
     <string name="enable_sms_screening_first">Please enable SMS screening first.</string>
     <string name="it_is_at_top">It\'s the topmost option.</string>
+    <string name="category_mapping">Category Mapping</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        Some APIs return number as the result, such as <b>1</b> for <b>Advertising</b> and <b>2</b> for <b>Scam</b>.
+        They can be mapped to human readable texts.
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"Advertising\",\n
+        \"2\": \"Scam\",\n
+        …\n
+        }
+    </string>
 </resources>
