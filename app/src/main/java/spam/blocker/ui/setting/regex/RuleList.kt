@@ -55,6 +55,7 @@ import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 
@@ -185,7 +186,9 @@ fun RuleList(
 
     // Refresh UI on global events, such as workflow action AddToRegexRule
     Events.regexRuleUpdated.Listen {
+        logi("event regexRuleUpdated triggered, reloading db for ${vm.forType}")
         vm.reloadDb(ctx)
+        logi("vm.reloadDb finished")
     }
 
     if (editRuleTrigger.value) {
@@ -194,12 +197,15 @@ fun RuleList(
             initRule = clickedRule.value,
             forType = forType,
             onSave = { updatedRule ->
+                logi("onSave 1")
                 // 1. update in db
                 val table = ruleTableForType(forType)
                 table.updateRuleById(ctx, updatedRule.id, updatedRule)
 
+                logi("onSave 2")
                 // 2. reload from db
                 vm.reloadDb(ctx)
+                logi("onSave 3")
             }
         )
     }

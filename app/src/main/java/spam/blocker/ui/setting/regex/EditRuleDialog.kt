@@ -79,6 +79,7 @@ import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.addFlag
 import spam.blocker.util.hasFlag
+import spam.blocker.util.logi
 import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
@@ -314,26 +315,30 @@ fun RuleEditDialog(
                         weekdays = schWeekdays
                     }.serializeToStr()
 
-                    onSave(
-                        newRegexRule(
-                            id,
-                            pattern,
-                            patternExtra,
-                            patternFlags.intValue,
-                            patternExtraFlags.intValue,
-                            description,
-                            priority,
-                            whiteOrBlack == 1,
-                            flags,
-                            channelId,
-                            schedule,
-                            blockType,
-                            blockTypeConfig,
-                        )
+                    val newRule = newRegexRule(
+                        id,
+                        pattern,
+                        patternExtra,
+                        patternFlags.intValue,
+                        patternExtraFlags.intValue,
+                        description,
+                        priority,
+                        whiteOrBlack == 1,
+                        flags,
+                        channelId,
+                        schedule,
+                        blockType,
+                        blockTypeConfig,
                     )
+                    logi("new rule: $newRule")
 
+                    onSave(newRule)
+
+                    logi("after onSave")
                     // fire event to update the UI
                     Events.regexRuleUpdated.fire()
+
+                    logi("event fired: regexRuleUpdated")
                 }
             )
         },

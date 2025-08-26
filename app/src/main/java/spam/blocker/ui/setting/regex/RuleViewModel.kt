@@ -9,6 +9,7 @@ import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.RuleTable
 import spam.blocker.def.Def
+import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 open class RuleViewModel(
@@ -29,6 +30,7 @@ open class RuleViewModel(
                 it.pattern.contains(filter) || it.description.contains(filter)
             }
         }
+        logi("loaded ${all.size} rules for type $forType")
         rules.addAll(all)
     }
 
