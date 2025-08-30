@@ -63,7 +63,10 @@ fun ActionCard(
             }
 
             RowVCenter {
-                BalloonQuestionMark(action.tooltip(ctx))
+                BalloonQuestionMark(
+                    tooltip = action.tooltip(ctx),
+//                    onLinkClick = action.onTooltipLinkClick(ctx),
+                )
 
                 // Reorder Icon
                 GreyIcon16(iconId = R.drawable.ic_reorder)

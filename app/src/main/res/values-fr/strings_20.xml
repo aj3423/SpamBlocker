@@ -16,4 +16,89 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Régulation des appels</string>
+    <string name="call_throttling_triggered">La régulation des appels est déclenchée</string>
+    <string name="count_limit">Limite de Compte</string>
+    <string name="duration_in_seconds">Durée (secondes)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    Ce qu\'il fait est de basculer le comportement par défaut de <b>autoriser par défaut</b> à <b>bloquer par défaut</b>
+      pendant une période, en utilisant une règle d\'expression régulière temporairement activée qui bloque tous les appels. <br>
+    <br>
+    Une configuration typique comprend : <br>
+    &ensp; - Une règle d\'expression régulière de numéro qui bloque les appels pour un numéro ou un groupe de contacts particulier, elle est désactivée et sera activée à la volée.<br>
+    &ensp; - Un flux de travail <b>Régulation des appels</b>. <br>
+    <br>
+    Cette configuration est disponible dans les préréglages de flux de travail. <br>
+    <br>
+    <b>Options :</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Durée</b></font> <br>
+    Les appels seront bloqués pendant cette période (en secondes). <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluant les Bloqués</b></font> <br>
+    Cette fonction sera activée après le blocage de tout appel. <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluant les Répondus</b></font> <br>
+    - <font color="#00BFFF"><b>Durée Minimale d\'Appel</b></font> <br>
+    Cette fonction sera activée après qu\'un appel a été répondu mais que la durée de l\'appel est trop courte, car un tel appel est également considéré comme un appel spam. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Après avoir bloqué un appel, bloquez également les appels suivants qui contournent toutes les règles pendant une période. <br>
+    <br>
+    <b>Cas d\'utilisation :</b> <br>
+    <font color="#888888"> &ensp; Certains spammeurs utilisent des numéros avec des préfixes communs, qui peuvent être bloqués avec des règles d\'expressions régulières.
+      Après le premier appel bloqué, ils passeront à des numéros aléatoires, effectuant des appels qui pourraient contourner toutes les règles. </font><br>
+    <br>
+    <font color="#ffa500"><b>Remarque :</b></font> <br>
+      Cela implique également le risque de bloquer un appel valide, c\'est un compromis.<br>
+    <br>
+    Ceci créera à la fois <b>une règle d\'expression régulière</b> et <b>un flux de travail</b>, consultez l\'info-bulle de l\'action interne <b>Régulation des appels</b> pour une explication détaillée.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Mettre en sourdine les notifications SMS consécutives du même numéro pendant une période. <br>
+    <br>
+    Une configuration typique comprend : <br>
+    &ensp; - Une règle d\'expression régulière de numéro qui bloque tous les SMS, elle est désactivée et sera activée à la volée.<br>
+    &ensp; - Un flux de travail <b>Régulation des SMS</b>. <br>
+    <br>
+    Cette configuration est disponible dans les préréglages de flux de travail. <br>
+    <br>
+    <b>Options :</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Durée</b></font> <br>
+    Les messages SMS seront bloqués pendant cette période (en secondes). <br>
+    <br>
+    - <font color="#00BFFF"><b>Limite de Compte</b></font> <br>
+    Autoriser les N premières notifications. <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluant les Répondus</b></font> <br>
+    - <font color="#00BFFF"><b>Durée Minimale d\'Appel</b></font> <br>
+    Si un appel répondu est trop court, il est également considéré comme un appel spam et activera cette fonction. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Mettre en sourdine les notifications SMS consécutives d\'un même numéro pendant une période. <br>
+    <br>
+    <b>Cas d\'utilisation :</b> <br>
+    <font color="#888888">Autoriser les trois premières notifications d\'un numéro et mettre en sourdine le reste dans la minute.</font> <br>
+    <br>
+    Ceci créera à la fois <b>une règle d\'expression régulière</b> et <b>un flux de travail</b>, consultez l\'info-bulle de l\'action interne <b>Régulation des SMS</b> pour une explication détaillée.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Incluant les Répondus</string>
+    <string name="including_blocked">Incluant les Bloqués</string>
+    <string name="minimal_call_duration">Durée Minimale d\'Appel</string>
+    <string name="seconds_template">%d secondes</string>
+    <string name="sms_throttling">Régulation des SMS</string>
+    <string name="sms_throttling_triggered">La régulation des SMS est déclenchée</string>
+    <string name="target_rule_desc">Description de la Règle Cible</string>
+    <string name="template_generated">Modèle généré.</string>
+    <string name="throttled_call">Appel régulé</string>
+    <string name="throttled_sms">SMS régulés</string>
 </resources>

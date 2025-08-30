@@ -16,4 +16,90 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Limitación de Chamadas</string>
+    <string name="call_throttling_triggered">A Limitación de Chamadas foi activada</string>
+    <string name="count_limit">Límite de Conteos</string>
+    <string name="duration_in_seconds">Duración (segundos)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    O que fai é cambiar o comportamento predeterminado de <b>permitir por defecto</b> a <b>bloquear por defecto</b>
+      durante un período, usando unha regra de expresión regular activada temporalmente que bloquea todas as chamadas. <br>
+    <br>
+    Unha configuración típica inclúe: <br>
+    &ensp; - Unha regra de expresión regular de número de teléfono que bloquea os SMS para un número de teléfono ou grupo de contactos particular, está deshabilitada e activarase sobre a marcha.<br>
+    &ensp; - Un fluxo de traballo de <b>Limitación de Chamadas</b>. <br>
+    <br>
+    Esta configuración está dispoñible nos predefinidos do fluxo de traballo. <br>
+    <br>
+    <b>Opcións:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Duración</b></font> <br>
+    As chamadas serán bloqueadas durante este período (en segundos). <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluíndo Bloqueadas</b></font> <br>
+    Esta función activarase despois de que calquera chamada sexa bloqueada. <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluíndo Respondidas</b></font> <br>
+    - <font color="#00BFFF"><b>Duración Mínima da Chamada</b></font> <br>
+    Esta función activarase despois de que unha chamada sexa respondida pero a duración da chamada sexa demasiado curta, xa que
+     esa chamada tamén se considera unha chamada spam. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Despois de bloquear unha chamada, tamén bloquear as chamadas posteriores que eviten todas as regras durante un período. <br>
+    <br>
+    <b>Caso de uso:</b> <br>
+    <font color="#888888"> &ensp; Algúns spammers usan números de teléfono con prefixos comúns, que poden ser bloqueados con regras de expresión regular.
+      Despois de que a primeira chamada sexa bloqueada, cambiarán a números de teléfono aleatorios, facendo chamadas que poden evitar todas as regras. </font><br>
+    <br>
+    <font color="#ffa500"><b>Nota:</b></font> <br>
+      Isto tamén implica o risco de bloquear unha chamada válida, é unha compensación.<br>
+    <br>
+    Isto creará tanto <b>unha regra de expresión regular</b> como <b>un fluxo de traballo</b>, consulta a información da ferramenta da acción interna <b>Limitación de Chamadas</b> para unha explicación detallada.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Silenciar as notificacións consecutivas de SMS do mesmo número de teléfono durante un período. <br>
+    <br>
+    Unha configuración típica inclúe: <br>
+    &ensp; - Unha regra de expresión regular de número de teléfono que bloquea todas as chamadas, está deshabilitada e activarase sobre a marcha.<br>
+    &ensp; - Un fluxo de traballo de <b>Limitación de SMS</b>. <br>
+    <br>
+    Esta configuración está dispoñible nos predefinidos do fluxo de traballo. <br>
+    <br>
+    <b>Opcións:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Duración</b></font> <br>
+    As mensaxes SMS serán bloqueadas durante este período (en segundos). <br>
+    <br>
+    - <font color="#00BFFF"><b>Límite de Conteos</b></font> <br>
+    Permitir as primeiras N notificacións. <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluíndo Respondidas</b></font> <br>
+    - <font color="#00BFFF"><b>Duración Mínima da Chamada</b></font> <br>
+    Se unha chamada respondida é demasiado curta, tamén se considera unha chamada spam e activará esta función. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Silenciar as notificacións consecutivas de SMS do mesmo número de teléfono durante un período. <br>
+    <br>
+    <b>Casos de uso:</b> <br>
+    <font color="#888888">Permitir as tres primeiras notificacións dun número de teléfono e silenciar o resto nun minuto.</font> <br>
+    <br>
+    Isto creará tanto <b>unha regra de expresión regular</b> como <b>un fluxo de traballo</b>, consulta a información da ferramenta da acción interna <b>Limitación de SMS</b> para unha explicación detallada.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Incluíndo Respondidas</string>
+    <string name="including_blocked">Incluíndo Bloqueadas</string>
+    <string name="minimal_call_duration">Duración Mínima da Chamada</string>
+    <string name="seconds_template">%d segundos</string>
+    <string name="sms_throttling">Limitación de SMS</string>
+    <string name="sms_throttling_triggered">A Limitación de SMS foi activada</string>
+    <string name="target_rule_desc">Descrición da Regra Obxectivo</string>
+    <string name="template_generated">Modelo Xerado.</string>
+    <string name="throttled_call">Chamada Limitada</string>
+    <string name="throttled_sms">SMS Limitado</string>
 </resources>

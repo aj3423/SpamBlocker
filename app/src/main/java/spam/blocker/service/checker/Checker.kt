@@ -26,9 +26,11 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
+import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.SmsEvent
+import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.executeAll
 import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
@@ -110,23 +112,40 @@ object Preprocessors {
             return null
         }
     }
-    // Collect all `Call Event` that defined in Workflow section.
-    fun call(ctx: Context): List<WorkflowRunner> {
+    // Collect all `Call Event`/`Call Throttling` that defined in Workflow section.
+    fun callSpecific(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val firstAction = it.actions.firstOrNull()
-                firstAction is CallEvent && firstAction.isActivated()
+
+                // Call Event
+                if (firstAction is CallEvent && firstAction.isActivated())
+                    return@filter true
+
+                // Call Throttling
+                if(firstAction is CallThrottling && firstAction.isActivated())
+                    return@filter true
+
+                return@filter false
             }
             .map {
                 WorkflowRunner(ctx, it)
             }
     }
     // Collect all `SMS Event` that defined in Workflow section.
-    fun sms(ctx: Context): List<WorkflowRunner> {
+    fun smsSpecific(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val firstAction = it.actions.firstOrNull()
-                firstAction is SmsEvent && firstAction.isActivated()
+                // SMS Event
+                if (firstAction is SmsEvent && firstAction.isActivated())
+                    return@filter true
+
+                // SMS Throttling
+                if (firstAction is SmsThrottling && firstAction.isActivated())
+                    return@filter true
+
+                return@filter false
             }
             .map {
                 WorkflowRunner(ctx, it)
@@ -161,7 +180,6 @@ object Preprocessors {
         }
         return ret
     }
-
 }
 class Checker { // for namespace only
 
@@ -1344,7 +1362,7 @@ class Checker { // for namespace only
 
             // Add all pre-processors
             checkers += Preprocessors.calendarEvent(ctx)
-            checkers += Preprocessors.call(ctx)
+            checkers += Preprocessors.callSpecific(ctx)
 
             return checkCallWithCheckers(
                 ctx, logger, rawNumber, callDetails, checkers)
@@ -1415,7 +1433,7 @@ class Checker { // for namespace only
 
             // Add all pre-processors
             checkers += Preprocessors.calendarEvent(ctx)
-            checkers += Preprocessors.sms(ctx)
+            checkers += Preprocessors.smsSpecific(ctx)
 
             return checkSmsWithCheckers(
                 ctx, logger, rawNumber, messageBody, checkers

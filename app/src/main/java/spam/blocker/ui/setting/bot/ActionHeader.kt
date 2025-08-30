@@ -149,7 +149,10 @@ fun ActionPresetCard(
             fontWeight = FontWeight.Bold,
         )
         // Tooltip
-        BalloonQuestionMark(tooltip = action.tooltip(ctx))
+        BalloonQuestionMark(
+            tooltip = action.tooltip(ctx),
+//            onLinkClick = action.onTooltipLinkClick(ctx),
+        )
     }
 }
 

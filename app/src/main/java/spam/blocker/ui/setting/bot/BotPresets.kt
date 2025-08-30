@@ -1,17 +1,25 @@
 package spam.blocker.ui.setting.bot
 
 import android.content.Context
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
+import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.RegexRule
 import spam.blocker.service.bot.BackupExport
+import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CleanupHistory
 import spam.blocker.service.bot.CleanupSpamDB
+import spam.blocker.service.bot.FindRules
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.ImportToSpamDB
+import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.ParseCSV
+import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
+import spam.blocker.util.Lambda1
 import java.time.DayOfWeek.FRIDAY
 import java.time.DayOfWeek.MONDAY
 import java.time.DayOfWeek.SATURDAY
@@ -22,6 +30,7 @@ import java.time.DayOfWeek.WEDNESDAY
 
 class BotPreset(
     val tooltipId: Int,
+    val onCreate: Lambda1<Context>? = null,
     val newInstance: (Context) -> Bot,
 )
 
@@ -43,6 +52,59 @@ val BotPresets = listOf(
                 ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
                 // no need to add ClearNumber here
                 ImportToSpamDB(),
+            )
+        )
+    },
+
+    // Call Throttling
+    BotPreset(
+        tooltipId = R.string.help_call_throttling_template,
+        onCreate = { ctx ->
+            // Add a regex rule
+            val ruleDesc = ctx.getString(R.string.throttled_call)
+            NumberRuleTable().addNewRule(ctx, RegexRule(
+                pattern = ".*",
+                description = ruleDesc,
+                flags = 0,
+            ))
+            G.NumberRuleVM.reloadDb(ctx)
+        },
+    ) { ctx ->
+        val ruleDesc = ctx.getString(R.string.throttled_call)
+        Bot(
+            desc = ctx.getString(R.string.call_throttling),
+            actions = listOf(
+                CallThrottling(
+                    includingBlocked = true,
+                    includingAnswered = true,
+                ),
+                FindRules(pattern = ruleDesc),
+                ModifyRules(config = "{\"flags\": 1}"),
+            )
+        )
+    },
+
+    // SMS Throttling
+    BotPreset(
+        tooltipId = R.string.help_sms_throttling_template,
+        onCreate = { ctx ->
+            // Add a regex rule
+            val ruleDesc = ctx.getString(R.string.throttled_sms)
+            NumberRuleTable().addNewRule(ctx, RegexRule(
+                pattern = ".*",
+                description = ruleDesc,
+                flags = 0,
+            ))
+            G.NumberRuleVM.reloadDb(ctx)
+        },
+    ) { ctx ->
+        val ruleDesc = ctx.getString(R.string.throttled_sms)
+        Bot(
+            desc = ctx.getString(R.string.sms_throttling),
+            actions = listOf(
+                SmsThrottling(targetRuleDesc = ruleDesc),
+                FindRules(pattern = ruleDesc),
+                ModifyRules(config = "{\"flags\": 2}"),
             )
         )
     },

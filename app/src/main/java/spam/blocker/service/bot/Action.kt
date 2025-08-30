@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Modifier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
@@ -20,13 +21,15 @@ import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
 //  - implement it in Actions.kt
-//  - add to  `botActions` / `apiActions`
+//  - add to  `botActions` or `apiActions`
 //  - add to  `botModule` in BotSerializersModule.kt
 
 val botActions = listOf(
     HttpDownload(),
-    SmsEvent(),
     CallEvent(),
+    SmsEvent(),
+    CallThrottling(),
+    SmsThrottling(),
     CalendarEvent(),
     ImportToSpamDB(),
     CleanupSpamDB(),
@@ -129,6 +132,7 @@ interface IAction {
 
     // Explains what this action does, used in balloon tooltip
     fun tooltip(ctx: Context): String
+//    fun onTooltipLinkClick(ctx: Context): Lambda1<String>? = null
 
     // For checking if two sibling actions are chainable
     fun inputParamType(): List<ParamType>
@@ -142,6 +146,14 @@ interface IAction {
     @Composable
     fun Options()
 }
+
+// Trigger types: OnCall/OnSMS/OnCalendarEvents/
+interface ITriggerAction : IAction {
+    @Composable
+    fun TriggerType(modifier: Modifier)
+    fun isActivated(): Boolean
+}
+
 
 // Actions that don't require any permission
 interface IPermissiveAction : IAction {

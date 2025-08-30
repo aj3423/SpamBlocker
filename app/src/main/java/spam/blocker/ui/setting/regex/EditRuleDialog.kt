@@ -54,6 +54,7 @@ import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.FlowRowSpaced
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -510,9 +511,9 @@ fun RuleEditDialog(
                         val icons = remember {
                             listOf<@Composable () -> Unit>(
                                 // list.map{} doesn't support returning @Composable...
-                                { GreyIcon16(iconId = R.drawable.ic_call_blocked) },
-                                { GreyIcon16(iconId = R.drawable.ic_call_miss) },
-                                { GreyIcon16(iconId = R.drawable.ic_hang) },
+                                { GreyIcon20(iconId = R.drawable.ic_call_blocked) },
+                                { GreyIcon20(iconId = R.drawable.ic_call_miss) },
+                                { GreyIcon20(iconId = R.drawable.ic_hang) },
                             )
                         }
                         val blockTypeLabels = remember {

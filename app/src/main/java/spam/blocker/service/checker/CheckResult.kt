@@ -70,7 +70,6 @@ import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.Notification.missingChannel
 import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
-import spam.blocker.util.logi
 import spam.blocker.util.spf
 
 
@@ -177,8 +176,6 @@ interface ICheckResult {
 
     // The default notification channel for default call/sms, when it's not overridden by per rule type
     fun getNotificationChannel(ctx: Context, showType: ShowType): Channel {
-
-        logi("showType: $showType")
 
         val spf = spf.Notification(ctx)
 

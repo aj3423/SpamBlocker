@@ -41,6 +41,8 @@ val botModule = SerializersModule {
         subclass(SmsEvent::class)
         subclass(CallEvent::class)
         subclass(ModifyNumber::class)
+        subclass(CallThrottling::class)
+        subclass(SmsThrottling::class)
     }
 }
 

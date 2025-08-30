@@ -24,6 +24,7 @@ import spam.blocker.ui.setting.quick.ChannelIcons
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -91,9 +92,9 @@ fun RuleCard(
                     if (forType == Def.ForNumber && rule.isBlacklist && rule.isForCall()) {
                         // [BlockType]
                         when (rule.blockType) {
-                            0 -> GreyIcon16( iconId = R.drawable.ic_call_blocked )
-                            1 -> GreyIcon16( iconId = R.drawable.ic_call_miss )
-                            2 -> GreyIcon16(iconId = R.drawable.ic_hang)
+                            0 -> GreyIcon20( iconId = R.drawable.ic_call_blocked )
+                            1 -> GreyIcon20( iconId = R.drawable.ic_call_miss )
+                            2 -> GreyIcon20(iconId = R.drawable.ic_hang)
                         }
                     }
                     // [Call, SMS]

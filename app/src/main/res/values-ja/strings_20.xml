@@ -15,4 +15,87 @@
         …\n
         }
     </string>
+    <string name="call_throttling">着信スロットリング</string>
+    <string name="call_throttling_triggered">着信スロットリングがトリガーされました</string>
+    <string name="count_limit">カウント制限</string>
+    <string name="duration_in_seconds">期間（秒）</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    これは、一時的に有効化されたすべての着信をブロックする正規表現ルールを使用して、一定期間、デフォルトの動作を<b>デフォルトで許可</b>から<b>デフォルトでブロック</b>に切り替えるものです。<br>
+    <br>
+    典型的な設定は次のとおりです: <br>
+    &ensp; - 特定の電話番号または連絡先グループのSMSをブロックする電話番号正規表現ルール。これは無効になっており、オンザフライで有効になります。<br>
+    &ensp; - <b>着信スロットリング</b>ワークフロー。<br>
+    <br>
+    この設定はワークフロープリセットで利用できます。<br>
+    <br>
+    <b>オプション:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>期間</b></font> <br>
+    この期間中（秒単位）は着信がブロックされます。<br>
+    <br>
+    - <font color="#00BFFF"><b>ブロック済みを含む</b></font> <br>
+    この機能は、いずれかの着信がブロックされた後に有効になります。<br>
+    <br>
+    - <font color="#00BFFF"><b>応答済みを含む</b></font> <br>
+    - <font color="#00BFFF"><b>最小通話時間</b></font> <br>
+    この機能は、着信に応答したが通話時間が短すぎる場合に有効になります。そのような着信も迷惑電話とみなされるためです。<br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    着信をブロックした後、一定期間、すべてのルールを回避する後続の着信もブロックします。<br>
+    <br>
+    <b>使用例:</b> <br>
+    <font color="#888888"> &ensp; 一部の迷惑電話業者は、一般的なプレフィックスを持つ電話番号を使用し、これらは正規表現ルールでブロックできます。最初の着信がブロックされた後、彼らはランダムな電話番号に切り替え、すべてのルールを回避する可能性のある着信をかけてきます。</font><br>
+    <br>
+    <font color="#ffa500"><b>注:</b></font> <br>
+      これは有効な着信をブロックするリスクも伴うため、トレードオフです。<br>
+    <br>
+    これにより、<b>正規表現ルール</b>と<b>ワークフロー</b>の両方が作成されます。詳細については、内部アクション<b>着信スロットリング</b>のツールチップを参照してください。<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    同じ電話番号からの連続するSMS通知を一定期間ミュートします。<br>
+    <br>
+    典型的な設定は次のとおりです: <br>
+    &ensp; - すべての着信をブロックする電話番号正規表現ルール。これは無効になっており、オンザフライで有効になります。<br>
+    &ensp; - <b>SMSスロットリング</b>ワークフロー。<br>
+    <br>
+    この設定はワークフロープリセットで利用できます。<br>
+    <br>
+    <b>オプション:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>期間</b></font> <br>
+    この期間中（秒単位）はSMSメッセージがブロックされます。<br>
+    <br>
+    - <font color="#00BFFF"><b>カウント制限</b></font> <br>
+    最初のN個の通知を許可します。<br>
+    <br>
+    - <font color="#00BFFF"><b>応答済みを含む</b></font> <br>
+    - <font color="#00BFFF"><b>最小通話時間</b></font> <br>
+    応答した着信が短すぎる場合、それは迷惑電話とみなされ、この機能が有効になります。<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    同じ電話番号からの連続するSMS通知を一定期間ミュートします。<br>
+    <br>
+    <b>使用例:</b> <br>
+    <font color="#888888">ある電話番号からの最初の3つの通知を許可し、1分以内に残りをミュートします。</font><br>
+    <br>
+    これにより、<b>正規表現ルール</b>と<b>ワークフロー</b>の両方が作成されます。詳細については、内部アクション<b>SMSスロットリング</b>のツールチップを参照してください。<br>
+    ]]>
+    </string>
+    <string name="including_answered">応答済みを含む</string>
+    <string name="including_blocked">ブロック済みを含む</string>
+    <string name="minimal_call_duration">最小通話時間</string>
+    <string name="seconds_template">%d 秒</string>
+    <string name="sms_throttling">SMSスロットリング</string>
+    <string name="sms_throttling_triggered">SMSスロットリングがトリガーされました</string>
+    <string name="target_rule_desc">ターゲットルール説明</string>
+    <string name="template_generated">テンプレートが生成されました。</string>
+    <string name="throttled_call">スロットリングされた着信</string>
+    <string name="throttled_sms">スロットリングされたSMS</string>
 </resources>

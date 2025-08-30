@@ -15,7 +15,7 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
-import spam.blocker.ui.widgets.GreyIcon16
+import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
@@ -61,9 +61,9 @@ fun BlockType() {
     val options = remember {
         val icons = listOf<@Composable () -> Unit>(
             // list.map{} doesn't support returning @Composable...
-            { GreyIcon16(iconId = R.drawable.ic_call_blocked) },
-            { GreyIcon16(iconId = R.drawable.ic_call_miss) },
-            { GreyIcon16(iconId = R.drawable.ic_hang) },
+            { GreyIcon20(iconId = R.drawable.ic_call_blocked) },
+            { GreyIcon20(iconId = R.drawable.ic_call_miss) },
+            { GreyIcon20(iconId = R.drawable.ic_hang) },
         )
         ctx.resources.getStringArray(R.array.block_type_list).mapIndexed { index, label ->
             LabelItem(

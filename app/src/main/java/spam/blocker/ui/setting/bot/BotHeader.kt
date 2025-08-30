@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.bot
 
+import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -20,6 +21,7 @@ import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
+import spam.blocker.util.Lambda1
 import java.util.UUID
 
 // The row:
@@ -31,10 +33,12 @@ fun BotHeader(
     val ctx = LocalContext.current
 
     val initialBotToEdit = remember { mutableStateOf(Bot()) }
-    val addTrigger = rememberSaveable { mutableStateOf(false) }
-    if (addTrigger.value) {
+    var onCreate = remember{ mutableStateOf<Lambda1<Context>?> (null) }
+
+    val editTrigger = rememberSaveable { mutableStateOf(false) }
+    if (editTrigger.value) {
         EditBotDialog(
-            trigger = addTrigger,
+            trigger = editTrigger,
             initial = initialBotToEdit.value,
             onDismiss = { G.botVM.reload(ctx) },
             onSave = { newBot ->
@@ -43,6 +47,9 @@ fun BotHeader(
 
                 // 2. reload UI
                 G.botVM.reload(ctx)
+
+                // 3. call onCreate
+                onCreate.value?.let { it(ctx) }
             }
         )
     }
@@ -71,7 +78,8 @@ fun BotHeader(
                 icon = { GreyIcon(R.drawable.ic_note) }
             ) {
                 initialBotToEdit.value = Bot()
-                addTrigger.value = true
+                onCreate.value = null
+                editTrigger.value = true
             },
             LabelItem(
                 label = ctx.getString(R.string.import_),
@@ -89,7 +97,8 @@ fun BotHeader(
             ) {
                 initialBotToEdit.value = bot
 
-                addTrigger.value = true
+                onCreate.value = preset.onCreate
+                editTrigger.value = true
             }
         }
         ret

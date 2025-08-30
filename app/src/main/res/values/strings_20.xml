@@ -16,4 +16,90 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Call Throttling</string>
+    <string name="call_throttling_triggered">Call Throttling is triggered</string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    After blocking a call, also block subsequent calls that bypass all rules for a period. <br>
+    <br>
+    <b>Use case:</b> <br>
+    <font color="#888888"> &ensp; Some spammers use numbers with common prefixes, which can be blocked with regex rules.
+      After the first call being blocked, they will switch to random numbers, making calls that may bypass all rules. </font><br>
+    <br>
+    <font color="#ffa500"><b>Note:</b></font> <br>
+      This also involves the risk of blocking a valid call, it\'s a trade-off.<br>
+    <br>
+    This will create both <b>a regex rule</b> and <b>a workflow</b>, see the tooltip of inner action <b>Call Throttling</b> for a detailed explanation.<br>
+    ]]>
+    </string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    What it does is switching the default behavior from <b>allow by default</b> to <b>block by default</b>
+      for a period, using a temporarily activated regex rule that blocks all calls. <br>
+    <br>
+    A typical setup includes: <br>
+    &ensp; - A number regex rule that blocks SMS for a particular number or contact group, it\'s disabled and will be activated on the fly.<br>
+    &ensp; - An <b>Call Throttling</b> workflow. <br>
+    <br>
+    This setup is available in the workflow presets. <br>
+    <br>
+    <b>Options:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Duration</b></font> <br>
+    Calls will be blocked during this period (in seconds). <br>
+    <br>
+    - <font color="#00BFFF"><b>Including Blocked</b></font> <br>
+    This feature will be activated after any call is blocked. <br>
+    <br>
+    - <font color="#00BFFF"><b>Including Answered</b></font> <br>
+    - <font color="#00BFFF"><b>Minimal Call Duration</b></font> <br>
+    This feature will be activated after a call is answered but the call duration is too short, as such
+     a call is also considered a spam call. <br>
+    ]]>
+    </string>
+    <string name="template_generated">Template Generated.</string>
+    <string name="throttled_sms">Throttled SMS</string>
+    <string name="throttled_call">Throttled Call</string>
+    <string name="including_blocked">Including Blocked</string>
+    <string name="including_answered">Including Answered</string>
+    <string name="minimal_call_duration">Minimal Call Duration</string>
+    <string name="duration_in_seconds">Duration (seconds)</string>
+    <string name="seconds_template">%d seconds</string>
+    <string name="sms_throttling">SMS Throttling</string>
+    <string name="sms_throttling_triggered">SMS Throttling is triggered</string>
+    <string name="count_limit">Count Limit</string>
+    <string name="target_rule_desc">Target Rule Description</string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Mute consecutive SMS notifications from a same number for a period. <br>
+    <br>
+    <b>Use cases:</b> <br>
+    <font color="#888888">Allow the first three notifications from a number and mute the rest within a minute.</font> <br>
+    <br>
+    This will create both <b>a regex rule</b> and <b>a workflow</b>, see the tooltip of inner action <b>SMS Throttling</b> for a detailed explanation.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Mute consecutive SMS notifications from the same number for a period. <br>
+    <br>
+    A typical setup includes: <br>
+    &ensp; - A number regex rule that blocks all calls, it\'s disabled and will be activated on the fly.<br>
+    &ensp; - An <b>SMS Throttling</b> workflow. <br>
+    <br>
+    This setup is available in the workflow presets. <br>
+    <br>
+    <b>Options:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Duration</b></font> <br>
+    SMS messages will be blocked during this period (in seconds). <br>
+    <br>
+    - <font color="#00BFFF"><b>Count Limit</b></font> <br>
+    Allow first N notifications. <br>
+    <br>
+    - <font color="#00BFFF"><b>Including Answered</b></font> <br>
+    - <font color="#00BFFF"><b>Minimal Call Duration</b></font> <br>
+    If an answered call is too short, it\'s also considered a spam call and will activate this feature. <br>
+    ]]>
+    </string>
 </resources>

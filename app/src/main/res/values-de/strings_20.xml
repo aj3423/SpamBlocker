@@ -15,4 +15,90 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Anrufdrosselung</string>
+    <string name="call_throttling_triggered">Anrufdrosselung ausgelöst</string>
+    <string name="count_limit">Anzahlbegrenzung</string>
+    <string name="duration_in_seconds">Dauer (Sekunden)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    Was es bewirkt, ist das Umschalten des Standardverhaltens von <b>standardmäßig erlauben</b> auf <b>standardmäßig blockieren</b>
+      für einen Zeitraum, indem eine temporär aktivierte Regex-Regel verwendet wird, die alle Anrufe blockiert. <br>
+    <br>
+    Eine typische Einrichtung umfasst: <br>
+    &ensp; - Eine Nummern-Regex-Regel, die SMS für eine bestimmte Telefonnummer oder Kontaktgruppe blockiert, sie ist deaktiviert und wird dynamisch aktiviert.<br>
+    &ensp; - Einen <b>Anrufdrosselungs</b>-Workflow. <br>
+    <br>
+    Diese Einrichtung ist in den Workflow-Voreinstellungen verfügbar. <br>
+    <br>
+    <b>Optionen:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Dauer</b></font> <br>
+    Anrufe werden während dieses Zeitraums (in Sekunden) blockiert. <br>
+    <br>
+    - <font color="#00BFFF"><b>Blockierte einschließen</b></font> <br>
+    Diese Funktion wird aktiviert, nachdem ein Anruf blockiert wurde. <br>
+    <br>
+    - <font color="#00BFFF"><b>Beantwortete einschließen</b></font> <br>
+    - <font color="#00BFFF"><b>Minimale Anrufdauer</b></font> <br>
+    Diese Funktion wird aktiviert, nachdem ein Anruf angenommen wurde, aber die Anrufdauer zu kurz ist, da ein solcher
+     Anruf auch als Spam-Anruf betrachtet wird. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Nach dem Blockieren eines Anrufs werden auch nachfolgende Anrufe, die alle Regeln umgehen, für einen bestimmten Zeitraum blockiert. <br>
+    <br>
+    <b>Anwendungsfall:</b> <br>
+    <font color="#888888"> &ensp; Einige Spammer verwenden Telefonnummern mit gängigen Präfixen, die mit Regex-Regeln blockiert werden können.
+      Nachdem der erste Anruf blockiert wurde, wechseln sie zu zufälligen Telefonnummern, wodurch Anrufe getätigt werden, die möglicherweise alle Regeln umgehen. </font><br>
+    <br>
+    <font color="#ffa500"><b>Hinweis:</b></font> <br>
+      Dies birgt auch das Risiko, einen gültigen Anruf zu blockieren, es ist ein Kompromiss.<br>
+    <br>
+    Dies erstellt sowohl <b>eine Regex-Regel</b> als auch <b>einen Workflow</b>. Eine detaillierte Erklärung finden Sie im Tooltip der inneren Aktion <b>Anrufdrosselung</b>.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Aufeinanderfolgende SMS-Benachrichtigungen von derselben Telefonnummer für einen bestimmten Zeitraum stummschalten. <br>
+    <br>
+    Eine typische Einrichtung umfasst: <br>
+    &ensp; - Eine Nummern-Regex-Regel, die alle Anrufe blockiert, sie ist deaktiviert und wird dynamisch aktiviert.<br>
+    &ensp; - Einen <b>SMS-Drosselungs</b>-Workflow. <br>
+    <br>
+    Diese Einrichtung ist in den Workflow-Voreinstellungen verfügbar. <br>
+    <br>
+    <b>Optionen:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Dauer</b></font> <br>
+    SMS-Nachrichten werden während dieses Zeitraums (in Sekunden) blockiert. <br>
+    <br>
+    - <font color="#00BFFF"><b>Anzahlbegrenzung</b></font> <br>
+    Erste N Benachrichtigungen zulassen. <br>
+    <br>
+    - <font color="#00BFFF"><b>Beantwortete einschließen</b></font> <br>
+    - <font color="#00BFFF"><b>Minimale Anrufdauer</b></font> <br>
+    Wenn ein angenommener Anruf zu kurz ist, wird er ebenfalls als Spam-Anruf betrachtet und aktiviert diese Funktion. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Aufeinanderfolgende SMS-Benachrichtigungen von derselben Telefonnummer für einen bestimmten Zeitraum stummschalten. <br>
+    <br>
+    <b>Anwendungsfälle:</b> <br>
+    <font color="#888888">Die ersten drei Benachrichtigungen von einer Telefonnummer erlauben und den Rest innerhalb einer Minute stummschalten.</font> <br>
+    <br>
+    Dies erstellt sowohl <b>eine Regex-Regel</b> als auch <b>einen Workflow</b>. Eine detaillierte Erklärung finden Sie im Tooltip der inneren Aktion <b>SMS-Drosselung</b>.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Beantwortete einschließen</string>
+    <string name="including_blocked">Blockierte einschließen</string>
+    <string name="minimal_call_duration">Minimale Anrufdauer</string>
+    <string name="seconds_template">%d Sekunden</string>
+    <string name="sms_throttling">SMS-Drosselung</string>
+    <string name="sms_throttling_triggered">SMS-Drosselung ausgelöst</string>
+    <string name="target_rule_desc">Zielregelbeschreibung</string>
+    <string name="template_generated">Vorlage generiert.</string>
+    <string name="throttled_call">Gedrosselter Anruf</string>
+    <string name="throttled_sms">Gedrosselte SMS</string>
 </resources>

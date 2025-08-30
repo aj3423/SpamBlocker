@@ -15,4 +15,87 @@
         …\n
         }
     </string>
+    <string name="call_throttling">通话节流</string>
+    <string name="call_throttling_triggered">通话节流已触发</string>
+    <string name="count_limit">计数限制</string>
+    <string name="duration_in_seconds">持续时间（秒）</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    其作用是将默认行为从<b>默认允许</b>切换到<b>默认阻止</b>一段时间，通过一个临时激活的正则表达式规则来阻止所有通话。<br>
+    <br>
+    典型设置包括: <br>
+    &ensp; - 一个号码正则表达式规则，用于阻止特定号码或联系人组的短信，该规则已禁用并将即时激活。<br>
+    &ensp; - 一个<b>通话节流</b>工作流。<br>
+    <br>
+    此设置在工作流预设中可用。<br>
+    <br>
+    <b>选项:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>持续时间</b></font> <br>
+    在此期间（以秒为单位）通话将被阻止。<br>
+    <br>
+    - <font color="#00BFFF"><b>包括已阻止</b></font> <br>
+    此功能将在任何通话被阻止后激活。<br>
+    <br>
+    - <font color="#00BFFF"><b>包括已接听</b></font> <br>
+    - <font color="#00BFFF"><b>最短通话时长</b></font> <br>
+    此功能将在通话接听但通话时长过短后激活，因为此类通话也被视为垃圾电话。<br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    在阻止一次通话后，在一段时间内也阻止所有绕过规则的后续通话。<br>
+    <br>
+    <b>用例:</b> <br>
+    <font color="#888888"> &ensp; 一些垃圾电话号码使用常见的号码前缀，可以通过正则表达式规则阻止。在第一次通话被阻止后，它们会切换到随机号码，拨打可能绕过所有规则的电话。</font><br>
+    <br>
+    <font color="#ffa500"><b>注意:</b></font> <br>
+      这也存在阻止有效通话的风险，这是一种权衡。<br>
+    <br>
+    这将同时创建<b>一个正则表达式规则</b>和<b>一个工作流</b>，有关详细说明，请参阅内部操作<b>通话节流</b>的提示。<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    在一段时间内，静音来自同一号码的连续短信通知。<br>
+    <br>
+    典型设置包括: <br>
+    &ensp; - 一个号码正则表达式规则，用于阻止所有通话，该规则已禁用并将即时激活。<br>
+    &ensp; - 一个<b>短信节流</b>工作流。<br>
+    <br>
+    此设置在工作流预设中可用。<br>
+    <br>
+    <b>选项:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>持续时间</b></font> <br>
+    在此期间（以秒为单位）短信将被阻止。<br>
+    <br>
+    - <font color="#00BFFF"><b>计数限制</b></font> <br>
+    允许前N条通知。<br>
+    <br>
+    - <font color="#00BFFF"><b>包括已接听</b></font> <br>
+    - <font color="#00BFFF"><b>最短通话时长</b></font> <br>
+    如果已接听的通话时长过短，它也被视为垃圾电话，并将激活此功能。<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    在一段时间内，静音来自同一号码的连续短信通知。<br>
+    <br>
+    <b>用例:</b> <br>
+    <font color="#888888">允许来自某个号码的前三条通知，并在一分钟内静音其余通知。</font> <br>
+    <br>
+    这将同时创建<b>一个正则表达式规则</b>和<b>一个工作流</b>，有关详细说明，请参阅内部操作<b>短信节流</b>的提示。<br>
+    ]]>
+    </string>
+    <string name="including_answered">包括已接听</string>
+    <string name="including_blocked">包括已阻止</string>
+    <string name="minimal_call_duration">最短通话时长</string>
+    <string name="seconds_template">%d 秒</string>
+    <string name="sms_throttling">短信节流</string>
+    <string name="sms_throttling_triggered">短信节流已触发</string>
+    <string name="target_rule_desc">目标规则描述</string>
+    <string name="template_generated">模板已生成。</string>
+    <string name="throttled_call">已节流通话</string>
+    <string name="throttled_sms">已节流短信</string>
 </resources>

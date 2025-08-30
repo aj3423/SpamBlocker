@@ -161,6 +161,20 @@ abstract class HistoryTable {
         return Db.getInstance(ctx).writableDatabase.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) == 1
     }
 
+    fun hasBlockedRecordsWithinSeconds(ctx: Context, durationSeconds: Int) : Boolean {
+        val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
+
+        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_TIME} > $xSecondsAgo AND ${Db.COLUMN_RESULT} BETWEEN 10 AND 99"
+
+        return _listRecordsByFilter(ctx, sql).isNotEmpty()
+    }
+    fun getRecordsWithinSeconds(ctx: Context, durationSeconds: Int) : List<HistoryRecord> {
+        val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
+
+        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_TIME} > $xSecondsAgo"
+
+        return _listRecordsByFilter(ctx, sql)
+    }
     fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
         val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
 

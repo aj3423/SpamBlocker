@@ -16,4 +16,90 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Limitació de trucades</string>
+    <string name="call_throttling_triggered">La limitació de trucades s\'ha activat</string>
+    <string name="count_limit">Límit de recompte</string>
+    <string name="duration_in_seconds">Durada (segons)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    El que fa és canviar el comportament predeterminat de <b>permetre per defecte</b> a <b>bloquejar per defecte</b>
+      durant un període, utilitzant una regla d\'expressions regulars activada temporalment que bloqueja totes les trucades. <br>
+    <br>
+    Una configuració típica inclou: <br>
+    &ensp; - Una regla d\'expressions regulars de número que bloqueja les trucades per a un número particular o grup de contactes, està deshabilitada i s\'activarà sobre la marxa.<br>
+    &ensp; - Un flux de treball de <b>Limitació de trucades</b>. <br>
+    <br>
+    Aquesta configuració està disponible en els preajustos de flux de treball. <br>
+    <br>
+    <b>Opcions:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Durada</b></font> <br>
+    Les trucades es bloquejaran durant aquest període (en segons). <br>
+    <br>
+    - <font color="#00BFFF"><b>Inclou les bloquejades</b></font> <br>
+    Aquesta funció s\'activarà després que es bloquegi qualsevol trucada. <br>
+    <br>
+    - <font color="#00BFFF"><b>Inclou les contestades</b></font> <br>
+    - <font color="#00BFFF"><b>Durada mínima de trucada</b></font> <br>
+    Aquesta funció s\'activarà després que una trucada sigui contestada però la durada de la trucada sigui massa curta, ja que
+     aquesta trucada també es considera una trucada spam. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Després de bloquejar una trucada, també bloqueja les trucades posteriors que eviten totes les regles durant un període. <br>
+    <br>
+    <b>Cas d\'ús:</b> <br>
+    <font color="#888888"> &ensp; Alguns spammers utilitzen números amb prefixos comuns, que es poden bloquejar amb regles d\'expressions regulars.
+      Després de bloquejar la primera trucada, canviaran a números aleatoris, fent trucades que poden evitar totes les regles. </font><br>
+    <br>
+    <font color="#ffa500"><b>Nota:</b></font> <br>
+      Això també implica el risc de bloquejar una trucada vàlida, és un compromís.<br>
+    <br>
+    Això crearà tant <b>una regla d\'expressions regulars</b> com <b>un flux de treball</b>, consulta la informació sobre eines de l\'acció interna <b>Limitació de trucades</b> per a una explicació detallada.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Silencia les notificacions SMS consecutives del mateix número durant un període. <br>
+    <br>
+    Una configuració típica inclou: <br>
+    &ensp; - Una regla d\'expressions regulars de número que bloqueja totes les trucades, està deshabilitada i s\'activarà sobre la marxa.<br>
+    &ensp; - Un flux de treball de <b>Limitació de SMS</b>. <br>
+    <br>
+    Aquesta configuració està disponible en els preajustos de flux de treball. <br>
+    <br>
+    <b>Opcions:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Durada</b></font> <br>
+    Els missatges SMS es bloquejaran durant aquest període (en segons). <br>
+    <br>
+    - <font color="#00BFFF"><b>Límit de recompte</b></font> <br>
+    Permet les primeres N notificacions. <br>
+    <br>
+    - <font color="#00BFFF"><b>Inclou les contestades</b></font> <br>
+    - <font color="#00BFFF"><b>Durada mínima de trucada</b></font> <br>
+    Si una trucada contestada és massa curta, també es considera una trucada spam i activarà aquesta funció. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Silencia les notificacions SMS consecutives del mateix número durant un període. <br>
+    <br>
+    <b>Casos d\'ús:</b> <br>
+    <font color="#888888">Permet les tres primeres notificacions d\'un número i silencia la resta en un minut.</font> <br>
+    <br>
+    Això crearà tant <b>una regla d\'expressions regulars</b> com <b>un flux de treball</b>, consulta la informació sobre eines de l\'acció interna <b>Limitació de SMS</b> per a una explicació detallada.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Inclou les contestades</string>
+    <string name="including_blocked">Inclou les bloquejades</string>
+    <string name="minimal_call_duration">Durada mínima de trucada</string>
+    <string name="seconds_template">%d segons</string>
+    <string name="sms_throttling">Limitació de SMS</string>
+    <string name="sms_throttling_triggered">La limitació de SMS s\'ha activat</string>
+    <string name="target_rule_desc">Descripció de la regla objectiu</string>
+    <string name="template_generated">Plantilla generada.</string>
+    <string name="throttled_call">Trucada limitada</string>
+    <string name="throttled_sms">SMS limitat</string>
 </resources>

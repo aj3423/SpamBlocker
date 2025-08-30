@@ -15,4 +15,90 @@
         …\n
         }
     </string>
+    <string name="call_throttling">ויסות שיחות</string>
+    <string name="call_throttling_triggered">ויסות שיחות הופעל</string>
+    <string name="count_limit">מגבלת ספירה</string>
+    <string name="duration_in_seconds">משך זמן (שניות)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    מה שהוא עושה זה לשנות את התנהגות ברירת המחדל מ<b>אפשרות כברירת מחדל</b> ל<b>חסימה כברירת מחדל</b>
+      למשך תקופה, באמצעות כלל ביטוי רגולרי מופעל זמנית שחוסם את כל השיחות. <br>
+    <br>
+    הגדרה טיפוסית כוללת: <br>
+    &ensp; - כלל ביטוי רגולרי למספר טלפון שחוסם הודעות SMS עבור מספר טלפון מסוים או קבוצת אנשי קשר, הוא מושבת ויופעל באופן מיידי.<br>
+    &ensp; - זרימת עבודה של <b>ויסות שיחות</b>. <br>
+    <br>
+    הגדרה זו זמינה בהגדרות הקבועות מראש של זרימת העבודה. <br>
+    <br>
+    <b>אפשרויות:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>משך זמן</b></font> <br>
+    שיחות ייחסמו במהלך תקופה זו (בשניות). <br>
+    <br>
+    - <font color="#00BFFF"><b>כולל חסומים</b></font> <br>
+    תכונה זו תופעל לאחר חסימת כל שיחה. <br>
+    <br>
+    - <font color="#00BFFF"><b>כולל נענו</b></font> <br>
+    - <font color="#00BFFF"><b>משך שיחה מינימלי</b></font> <br>
+    תכונה זו תופעל לאחר ששיחה נענתה אך משך השיחה קצר מדי, שכן
+     שיחה כזו נחשבת גם לשיחת ספאם (שיחת זבל). <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    לאחר חסימת שיחה, חסום גם שיחות עוקבות שעוקפות את כל הכללים למשך תקופה. <br>
+    <br>
+    <b>מקרה שימוש:</b> <br>
+    <font color="#888888"> &ensp; חלק מהספאמרים משתמשים במספרי טלפון עם קידומות נפוצות, אותם ניתן לחסום באמצעות כללי ביטוי רגולרי.
+      לאחר חסימת השיחה הראשונה, הם יעברו למספרי טלפון אקראיים, ויבצעו שיחות שעלולות לעקוף את כל הכללים. </font><br>
+    <br>
+    <font color="#ffa500"><b>הערה:</b></font> <br>
+      זה כרוך גם בסיכון של חסימת שיחה חוקית, זו פשרה.<br>
+    <br>
+    זה ייצור גם <b>כלל ביטוי רגולרי</b> וגם <b>זרימת עבודה</b>, ראה את הטיפ של הפעולה הפנימית <b>ויסות שיחות</b> להסבר מפורט.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    השתק התראות SMS עוקבות מאותו מספר טלפון למשך תקופה. <br>
+    <br>
+    הגדרה טיפוסית כוללת: <br>
+    &ensp; - כלל ביטוי רגולרי למספר טלפון שחוסם את כל השיחות, הוא מושבת ויופעל באופן מיידי.<br>
+    &ensp; - זרימת עבודה של <b>ויסות הודעות SMS</b>. <br>
+    <br>
+    הגדרה זו זמינה בהגדרות הקבועות מראש של זרימת העבודה. <br>
+    <br>
+    <b>אפשרויות:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>משך זמן</b></font> <br>
+    הודעות SMS ייחסמו במהלך תקופה זו (בשניות). <br>
+    <br>
+    - <font color="#00BFFF"><b>מגבלת ספירה</b></font> <br>
+    אפשר את N ההתראות הראשונות. <br>
+    <br>
+    - <font color="#00BFFF"><b>כולל נענו</b></font> <br>
+    - <font color="#00BFFF"><b>משך שיחה מינימלי</b></font> <br>
+    אם שיחה שנענתה קצרה מדי, היא נחשבת גם לשיחת ספאם (שיחת זבל) ותפעיל תכונה זו. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    השתק התראות SMS עוקבות מאותו מספר טלפון למשך תקופה. <br>
+    <br>
+    <b>מקרי שימוש:</b> <br>
+    <font color="#888888">אפשר את שלוש ההתראות הראשונות ממספר טלפון והשתק את השאר תוך דקה.</font> <br>
+    <br>
+    זה ייצור גם <b>כלל ביטוי רגולרי</b> וגם <b>זרימת עבודה</b>, ראה את הטיפ של הפעולה הפנימית <b>ויסות הודעות SMS</b> להסבר מפורט.<br>
+    ]]>
+    </string>
+    <string name="including_answered">כולל נענו</string>
+    <string name="including_blocked">כולל חסומים</string>
+    <string name="minimal_call_duration">משך שיחה מינימלי</string>
+    <string name="seconds_template">%d שניות</string>
+    <string name="sms_throttling">ויסות הודעות SMS</string>
+    <string name="sms_throttling_triggered">ויסות הודעות SMS הופעל</string>
+    <string name="target_rule_desc">תיאור כלל יעד</string>
+    <string name="template_generated">תבנית נוצרה.</string>
+    <string name="throttled_call">שיחה מווסתת</string>
+    <string name="throttled_sms">הודעת SMS מווסתת</string>
 </resources>

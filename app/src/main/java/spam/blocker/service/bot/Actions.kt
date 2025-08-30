@@ -1,5 +1,6 @@
 package spam.blocker.service.bot
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -80,6 +81,7 @@ import spam.blocker.util.AdbLogger
 import spam.blocker.util.Algorithm.compressString
 import spam.blocker.util.Algorithm.decompressToString
 import spam.blocker.util.CSVParser
+import spam.blocker.util.Contacts
 import spam.blocker.util.CountryCode
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
@@ -91,6 +93,7 @@ import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
 import spam.blocker.util.formatAnnotated
+import spam.blocker.util.hasFlag
 import spam.blocker.util.httpRequest
 import spam.blocker.util.logi
 import spam.blocker.util.regexMatches
@@ -604,6 +607,7 @@ class ReadFile(
         SummaryLabel("$dir/$filename")
     }
 
+    @SuppressLint("StringFormatInvalid")
     override fun tooltip(ctx: Context): String {
         return ctx.getString(R.string.help_action_read_file).format(
             ctx.getString(R.string.path_tags),
@@ -675,6 +679,7 @@ class WriteFile(
         SummaryLabel("$dir/$filename")
     }
 
+    @SuppressLint("StringFormatInvalid")
     override fun tooltip(ctx: Context): String {
         return ctx.getString(R.string.help_action_write_file).format(
             ctx.getString(R.string.path_tags),
@@ -1371,6 +1376,8 @@ class FindRules(
                     it is Checker.Content
             }.map {
                 (it as RegexRuleChecker).rule
+            }.filter {
+                pattern.regexMatches(it.description, flags)
             }
         }
 
@@ -1472,6 +1479,7 @@ class ModifyRules(
 
         val cCtx = aCtx.cCtx!!
 
+        // e.g.: {"flag": 2}
         val mapConfig = JSONObject(config).toMap()
 
         rulesMap.forEach { (forType, ruleList) ->
@@ -2364,15 +2372,15 @@ class CalendarEvent(
     var enabled: Boolean = true,
     var eventTitle: String = "",
     var eventTitleFlags: Int = Def.DefaultRegexFlags,
-) : IAction {
+) : ITriggerAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(PermissionWrapper(Permission.calendar))
     }
-    fun isActivated(): Boolean {
+    override fun isActivated(): Boolean {
         return enabled && Permission.calendar.isGranted
     }
     @Composable
-    fun TriggerType(modifier: Modifier) {
+    override fun TriggerType(modifier: Modifier) {
         RowVCenterSpaced(2, modifier = modifier) {
             GreyIcon18(R.drawable.ic_incoming)
             GreyIcon18(R.drawable.ic_calendar)
@@ -2475,7 +2483,7 @@ class SmsEvent(
     var numberFlags: Int = Def.DefaultRegexFlags,
     var content: String = ".*",
     var contentFlags: Int = Def.DefaultRegexFlags,
-) : IAction {
+) : ITriggerAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(
             PermissionWrapper(Permission.receiveSMS),
@@ -2484,7 +2492,7 @@ class SmsEvent(
     }
 
     @Composable
-    fun TriggerType(modifier: Modifier) {
+    override fun TriggerType(modifier: Modifier) {
         RowVCenterSpaced(2, modifier = modifier) {
             GreyIcon18(R.drawable.ic_sms)
             GreyLabel(
@@ -2493,7 +2501,7 @@ class SmsEvent(
             )
         }
     }
-    fun isActivated(): Boolean {
+    override fun isActivated(): Boolean {
         return enabled && Permission.receiveSMS.isGranted
     }
 
@@ -2614,14 +2622,14 @@ class CallEvent(
     var enabled : Boolean = true,
     var number: String = ".*",
     var numberFlags: Int = Def.DefaultRegexFlags,
-) : IAction {
+) : ITriggerAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return listOf(
             PermissionWrapper(Permission.callScreening),
         )
     }
     @Composable
-    fun TriggerType(modifier: Modifier) {
+    override fun TriggerType(modifier: Modifier) {
         RowVCenterSpaced(2, modifier = modifier) {
             GreyIcon18(R.drawable.ic_incoming)
             GreyLabel(
@@ -2630,7 +2638,7 @@ class CallEvent(
             )
         }
     }
-    fun isActivated(): Boolean {
+    override fun isActivated(): Boolean {
         return enabled && Permission.callScreening.isGranted
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -2805,6 +2813,351 @@ class ModifyNumber(
             label = { Text(Str(R.string.replace_to)) },
             onValueChange = {
                 to = it
+            }
+        )
+    }
+}
+
+
+@Serializable
+@SerialName("CallThrottling")
+class CallThrottling(
+    var enabled: Boolean = true,
+    var durationSec: Int = 30, // 30 seconds
+    var includingBlocked: Boolean = false,
+    var includingAnswered: Boolean = false,
+    var minCallDurationSec: Int = 15, // 15 seconds
+) : ITriggerAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(PermissionWrapper(Permission.callLog))
+    }
+    override fun isActivated(): Boolean {
+        return enabled && Permission.callLog.isGranted
+    }
+    @Composable
+    override fun TriggerType(modifier: Modifier) {
+        RowVCenterSpaced(6, modifier = modifier) {
+            GreyIcon18(R.drawable.ic_multi_call)
+
+            RowVCenterSpaced(2) {
+                if (includingAnswered) {
+                    GreyIcon16(R.drawable.ic_call)
+                }
+                if (includingBlocked) {
+                    GreyIcon16(R.drawable.ic_call_blocked)
+                }
+            }
+            GreyLabel(Str(R.string.seconds_template).format(durationSec))
+        }
+    }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (aCtx.cCtx?.rawNumber == null) {
+            aCtx.logger?.error(ctx.getString(R.string.use_global_testing_instead))
+            return false
+        }
+
+        if (!Permission.callLog.isGranted || !enabled)
+            return false
+
+        // Check real call history
+        val hasBlockedRealCalls = Util.recentCalls(
+            ctx,
+            withinMillis = durationSec.toLong() * 1000,
+            includingBlocked = includingBlocked,
+            includingAnswered = includingAnswered,
+            minCallDurationSec = minCallDurationSec,
+        ).isNotEmpty()
+
+
+        // Check testing calls in local db
+        var hasBlockedTestingCalls = aCtx.cCtx?.callDetails == null && // Is testing
+                includingBlocked &&
+                CallTable().hasBlockedRecordsWithinSeconds(ctx, durationSeconds = durationSec)
+
+        if (!hasBlockedRealCalls && !hasBlockedTestingCalls) {
+            return false // no recently blocked calls, nothing to do
+        }
+
+        aCtx.logger?.warn(ctx.getString(R.string.call_throttling_triggered))
+
+        // Throttling Event modifies rules temporarily.
+        aCtx.isInMemory = true
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.call_throttling)
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(8) {
+            // Green dot
+            if (enabled) {
+                GreenDot()
+            }
+            RowVCenterSpaced(2) {
+                if (includingAnswered) {
+                    GreyIcon18(R.drawable.ic_call)
+                }
+                if (includingBlocked) {
+                    GreyIcon18(R.drawable.ic_call_blocked)
+                }
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_call_throttling)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_multi_call)
+    }
+
+    @Composable
+    override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        // Enabled
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
+        // Duration
+        NumberInputBox(
+            intValue = durationSec,
+            label = { Text(Str(R.string.duration_in_seconds)) },
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    durationSec = newVal!!
+                }
+            }
+        )
+
+        // Include Blocked
+        // Must use a state, otherwise the switch doesn't change on click
+        var includeBlocked by remember { mutableStateOf(includingBlocked) }
+
+        LabeledRow(labelId = R.string.including_blocked) {
+            SwitchBox(includeBlocked) { on ->
+                includeBlocked = on
+                includingBlocked = on
+            }
+        }
+
+        // Include Answered
+        // Must use a state, otherwise the switch doesn't change on click
+        var includeAnswered by remember { mutableStateOf(includingAnswered) }
+
+        LabeledRow(labelId = R.string.including_answered) {
+            SwitchBox(includeAnswered) { on ->
+                includeAnswered = on
+                includingAnswered = on
+            }
+        }
+
+        // Minimal allowed call duration
+        AnimatedVisibleV(includeAnswered) {
+            NumberInputBox(
+                intValue = minCallDurationSec,
+                label = { Text(Str(R.string.minimal_call_duration)) },
+                onValueChange = { newVal, hasError ->
+                    if (!hasError) {
+                        minCallDurationSec = newVal!!
+                    }
+                }
+            )
+        }
+    }
+}
+
+
+@Serializable
+@SerialName("SmsThrottling")
+class SmsThrottling(
+    var enabled: Boolean = true,
+    var durationSec: Int = 60, // 60 seconds
+    var countLimit: Int = 3,
+    var targetRuleDesc: String = "",
+    var targetRuleDescFlags: Int = Def.DefaultRegexFlags,
+) : ITriggerAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf(PermissionWrapper(Permission.readSMS))
+    }
+    override fun isActivated(): Boolean {
+        return enabled && Permission.readSMS.isGranted
+    }
+    @Composable
+    override fun TriggerType(modifier: Modifier) {
+        RowVCenterSpaced(6, modifier = modifier) {
+            GreyIcon18(R.drawable.ic_multi_sms)
+
+            RowVCenterSpaced(4) {
+                GreyLabel("$countLimit/$durationSec")
+                GreyLabel(targetRuleDesc)
+            }
+        }
+    }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        if (aCtx.cCtx?.rawNumber == null || aCtx.cCtx?.smsContent == null) {
+            aCtx.logger?.error(ctx.getString(R.string.use_global_testing_instead))
+            return false
+        }
+
+        if (!Permission.readSMS.isGranted || !enabled)
+            return false
+
+        val rules = NumberRuleTable().findRuleByDesc(ctx, targetRuleDesc, targetRuleDescFlags)
+        if (rules.isEmpty())
+            return false
+        val rule = rules[0]
+
+        val forContact = rule.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+        val forContactGroup = rule.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+
+        val matches = fun(rawNumber: String) : Boolean {
+            return if (forContact) {
+                val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
+                contactInfo != null && rule.matches(contactInfo.name)
+            } else if (forContactGroup) {
+                Contacts.findGroupsContainNumber(ctx, rawNumber)
+                    .find { groupName ->
+                        rule.matches(groupName)
+                    } != null
+            } else {
+                rule.pattern.regexMatchesNumber(rawNumber, rule.patternFlags)
+            }
+        }
+
+        // Get from system SMS history
+        var smses = Util.getHistorySMSes(ctx, Def.DIRECTION_INCOMING, durationSec.toLong()*1000)
+            .filter { it.rawNumber == aCtx.rawNumber }
+            .map {it.rawNumber}
+
+        if (smses.isEmpty()) {
+            // Get from local db for testing
+            smses = SmsTable().getRecordsWithinSeconds(ctx, durationSec)
+                .filter { it.peer == aCtx.rawNumber }
+                .map { it.peer }
+            if (smses.isEmpty())
+                return false
+        }
+
+        val matchCount = smses.filter {
+            matches(it)
+        }.size
+
+        if (matchCount < countLimit) {
+            return false
+        }
+
+        aCtx.logger?.warn(ctx.getString(R.string.sms_throttling_triggered))
+
+        // Throttling Event modifies rules temporarily.
+        aCtx.isInMemory = true
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.sms_throttling)
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(8) {
+            // Green dot
+            if (enabled) {
+                GreenDot()
+            }
+            RowVCenterSpaced(2) {
+                GreyLabel("$countLimit/$durationSec")
+                GreyLabel(targetRuleDesc)
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_sms_throttling)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_multi_sms)
+    }
+
+    @Composable
+    override fun Options() {
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        // Enabled
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
+        // Duration
+        NumberInputBox(
+            intValue = durationSec,
+            label = { Text(Str(R.string.duration_in_seconds)) },
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    durationSec = newVal!!
+                }
+            }
+        )
+
+        // Count Limit
+        NumberInputBox(
+            intValue = countLimit,
+            label = { Text(Str(R.string.count_limit)) },
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    countLimit = newVal!!
+                }
+            }
+        )
+
+        // Target rule desc
+        val flagsState = remember { mutableIntStateOf(targetRuleDescFlags) }
+        RegexInputBox(
+            regexStr = targetRuleDesc,
+            label = { Text(Str(R.string.target_rule_desc)) },
+            regexFlags = flagsState,
+            onRegexStrChange = { newVal, hasError ->
+                if (!hasError) {
+                    targetRuleDesc = newVal
+                }
+            },
+            onFlagsChange = {
+                flagsState.intValue = it
+                targetRuleDescFlags = it
             }
         )
     }

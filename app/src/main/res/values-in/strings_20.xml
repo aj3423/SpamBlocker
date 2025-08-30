@@ -16,4 +16,89 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Pembatasan Panggilan</string>
+    <string name="call_throttling_triggered">Pembatasan Panggilan terpicu</string>
+    <string name="count_limit">Batas Jumlah</string>
+    <string name="duration_in_seconds">Durasi (detik)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    Yang dilakukannya adalah mengganti perilaku default dari <b>izinkan secara default</b> menjadi <b>blokir secara default</b>
+      untuk suatu periode, menggunakan aturan regex yang diaktifkan sementara yang memblokir semua panggilan. <br>
+    <br>
+    Pengaturan umum meliputi: <br>
+    &ensp; - Aturan regex nomor yang memblokir SMS untuk nomor atau grup kontak tertentu, dinonaktifkan dan akan diaktifkan secara otomatis.<br>
+    &ensp; - Alur kerja <b>Pembatasan Panggilan</b>. <br>
+    <br>
+    Pengaturan ini tersedia di preset alur kerja. <br>
+    <br>
+    <b>Opsi:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Durasi</b></font> <br>
+    Panggilan akan diblokir selama periode ini (dalam detik). <br>
+    <br>
+    - <font color="#00BFFF"><b>Termasuk yang Diblokir</b></font> <br>
+    Fitur ini akan diaktifkan setelah panggilan apa pun diblokir. <br>
+    <br>
+    - <font color="#00BFFF"><b>Termasuk yang Dijawab</b></font> <br>
+    - <font color="#00BFFF"><b>Durasi Panggilan Minimal</b></font> <br>
+    Fitur ini akan diaktifkan setelah panggilan dijawab tetapi durasi panggilan terlalu singkat, karena panggilan semacam itu juga dianggap sebagai panggilan spam. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Setelah memblokir panggilan, blokir juga panggilan berikutnya yang melewati semua aturan untuk suatu periode. <br>
+    <br>
+    <b>Kasus penggunaan:</b> <br>
+    <font color="#888888"> &ensp; Beberapa spam menggunakan nomor dengan awalan umum, yang dapat diblokir dengan aturan regex.
+      Setelah panggilan pertama diblokir, mereka akan beralih ke nomor acak, membuat panggilan yang mungkin melewati semua aturan. </font><br>
+    <br>
+    <font color="#ffa500"><b>Catatan:</b></font> <br>
+      Ini juga melibatkan risiko memblokir panggilan yang valid, ini adalah kompromi.<br>
+    <br>
+    Ini akan membuat baik <b>aturan regex</b> maupun <b>alur kerja</b>, lihat tooltip dari aksi internal <b>Pembatasan Panggilan</b> untuk penjelasan terperinci.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Bisukan notifikasi SMS berturut-turut dari nomor yang sama untuk suatu periode. <br>
+    <br>
+    Pengaturan umum meliputi: <br>
+    &ensp; - Aturan regex nomor yang memblokir semua panggilan, dinonaktifkan dan akan diaktifkan secara otomatis.<br>
+    &ensp; - Alur kerja <b>Pembatasan SMS</b>. <br>
+    <br>
+    Pengaturan ini tersedia di preset alur kerja. <br>
+    <br>
+    <b>Opsi:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Durasi</b></font> <br>
+    Pesan SMS akan diblokir selama periode ini (dalam detik). <br>
+    <br>
+    - <font color="#00BFFF"><b>Batas Jumlah</b></font> <br>
+    Izinkan N notifikasi pertama. <br>
+    <br>
+    - <font color="#00BFFF"><b>Termasuk yang Dijawab</b></font> <br>
+    - <font color="#00BFFF"><b>Durasi Panggilan Minimal</b></font> <br>
+    Jika panggilan yang dijawab terlalu singkat, itu juga dianggap sebagai panggilan spam dan akan mengaktifkan fitur ini. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Bisukan notifikasi SMS berturut-turut dari nomor yang sama untuk suatu periode. <br>
+    <br>
+    <b>Kasus penggunaan:</b> <br>
+    <font color="#888888">Izinkan tiga notifikasi pertama dari sebuah nomor dan bisukan sisanya dalam satu menit.</font> <br>
+    <br>
+    Ini akan membuat baik <b>aturan regex</b> maupun <b>alur kerja</b>, lihat tooltip dari aksi internal <b>Pembatasan SMS</b> untuk penjelasan terperinci.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Termasuk yang Dijawab</string>
+    <string name="including_blocked">Termasuk yang Diblokir</string>
+    <string name="minimal_call_duration">Durasi Panggilan Minimal</string>
+    <string name="seconds_template">%d detik</string>
+    <string name="sms_throttling">Pembatasan SMS</string>
+    <string name="sms_throttling_triggered">Pembatasan SMS terpicu</string>
+    <string name="target_rule_desc">Deskripsi Aturan Target</string>
+    <string name="template_generated">Templat Dihasilkan.</string>
+    <string name="throttled_call">Panggilan Dibatasi</string>
+    <string name="throttled_sms">SMS Dibatasi</string>
 </resources>

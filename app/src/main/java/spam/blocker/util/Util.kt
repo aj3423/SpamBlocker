@@ -749,9 +749,8 @@ object Util {
         val type: Int, // answered, missed, ...
         val duration: Long, // in seconds
     )
-    fun getHistoryCallsByNumber(
+    fun getHistoryCalls(
         ctx: Context,
-        phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
     ): List<CallInfo> {
@@ -787,28 +786,61 @@ object Util {
         )?.use {
             if (it.moveToFirst()) {
                 do {
-                    val calledNumber = it.getStringOrNull(0)
-                    if (calledNumber != null) {
-                        if (phoneNumber.isSame(calledNumber)) {
-                            ret += CallInfo(
-                                rawNumber = calledNumber,
-                                type = it.getInt(1),
-                                duration = it.getLong(2)
-                            )
-                        }
-                    }
+                    ret += CallInfo(
+                        rawNumber = it.getStringOrNull(0) ?: "",
+                        type = it.getInt(1),
+                        duration = it.getLong(2)
+                    )
                 } while (it.moveToNext())
             }
         }
         return ret
     }
-
-    fun countHistorySMSByNumber(
+    fun getHistoryCallsByNumber(
         ctx: Context,
         phoneNumber: PhoneNumber,
         direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
         withinMillis: Long
-    ): Int {
+    ): List<CallInfo> {
+        return getHistoryCalls(ctx, direction, withinMillis)
+            .filter {
+                phoneNumber.isSame(it.rawNumber)
+            }
+    }
+    fun recentCalls(
+        ctx: Context,
+        withinMillis: Long,
+
+        includingBlocked: Boolean,
+        includingAnswered: Boolean,
+        minCallDurationSec: Int,
+    ): List<CallInfo> {
+        return getHistoryCalls(ctx, Def.DIRECTION_INCOMING, withinMillis)
+            .filter {
+                when (it.type) {
+                    Calls.REJECTED_TYPE, Calls.BLOCKED_TYPE -> includingBlocked
+                    else -> {
+                        if (includingAnswered) {
+                            // > 0 means it's answered
+                            it.duration > 0 && it.duration < minCallDurationSec.toLong() * 1000
+                        } else {
+                            false
+                        }
+                    }
+                }
+            }
+    }
+
+    class SmsInfo(
+        val rawNumber: String,
+//        val type: Int, // sent, ...
+//        val content: String,
+    )
+    fun getHistorySMSes(
+        ctx: Context,
+        direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
+        withinMillis: Long
+    ): List<SmsInfo> {
         val selection = mutableListOf(
             "${Sms.DATE} >= ${Now.currentMillis() - withinMillis}"
         )
@@ -823,7 +855,7 @@ object Util {
             )
         }
 
-        var count = 0
+        val ret = mutableListOf<SmsInfo>()
         try {
             ctx.contentResolver.query(
                 Sms.CONTENT_URI,
@@ -834,16 +866,25 @@ object Util {
             )?.use {
                 if (it.moveToFirst()) {
                     do {
-                        val messagedNumber = it.getString(0)
-                        if (phoneNumber.isSame(messagedNumber)) {
-                            count++
-                        }
+                        val messagedNumber = it.getStringOrNull(0) ?: ""
+                        ret += SmsInfo(rawNumber = messagedNumber)
+
                     } while (it.moveToNext())
                 }
             }
         } catch (ignore: Exception) {
         }
-        return count
+        return ret
+    }
+    fun countHistorySMSByNumber(
+        ctx: Context,
+        phoneNumber: PhoneNumber,
+        direction: Int, // Def.DIRECTION_INCOMING, Def.DIRECTION_OUTGOING
+        withinMillis: Long
+    ): Int {
+        return getHistorySMSes(ctx, direction, withinMillis).filter {
+            phoneNumber.isSame(it.rawNumber)
+        }.size
     }
 
     fun ongoingCalendarEvents(ctx: Context) : List<String> {

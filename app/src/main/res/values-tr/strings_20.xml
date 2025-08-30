@@ -15,4 +15,89 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Çağrı Kısıtlama</string>
+    <string name="call_throttling_triggered">Çağrı Kısıtlama tetiklendi</string>
+    <string name="count_limit">Sayı Limiti</string>
+    <string name="duration_in_seconds">Süre (saniye)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    Yaptığı şey, varsayılan davranışı <b>varsayılan olarak izin ver</b>\'den <b>varsayılan olarak engelle</b>\'ye geçirmektir
+      belirli bir süre için, tüm aramaları engelleyen geçici olarak etkinleştirilmiş bir regex kuralı kullanarak. <br>
+    <br>
+    Tipik bir kurulum şunları içerir: <br>
+    &ensp; - Belirli bir telefon numarası veya kişi grubu için SMS\'leri engelleyen bir telefon numarası regex kuralı, devre dışıdır ve anında etkinleştirilecektir.<br>
+    &ensp; - Bir <b>Çağrı Kısıtlama</b> iş akışı. <br>
+    <br>
+    Bu kurulum, iş akışı hazır ayarlarında mevcuttur. <br>
+    <br>
+    <b>Seçenekler:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Süre</b></font> <br>
+    Aramalar bu süre boyunca (saniye cinsinden) engellenecektir. <br>
+    <br>
+    - <font color="#00BFFF"><b>Engellenenleri İçerir</b></font> <br>
+    Bu özellik, herhangi bir arama engellendikten sonra etkinleştirilecektir. <br>
+    <br>
+    - <font color="#00BFFF"><b>Cevaplananları İçerir</b></font> <br>
+    - <font color="#00BFFF"><b>Minimum Çağrı Süresi</b></font> <br>
+    Bu özellik, bir arama cevaplandıktan ancak arama süresi çok kısa olduğunda etkinleştirilecektir, zira böyle bir arama da spam çağrı olarak kabul edilir. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Bir aramayı engelledikten sonra, belirli bir süre boyunca tüm kuralları atlayan sonraki aramaları da engelleyin. <br>
+    <br>
+    <b>Kullanım senaryosu:</b> <br>
+    <font color="#888888"> &ensp; Bazı spam çağrı yapanlar, ortak ön ekli telefon numaraları kullanır ve bunlar regex kurallarıyla engellenebilir.
+      İlk arama engellendikten sonra, rastgele telefon numaralarına geçerek tüm kuralları atlayabilecek aramalar yaparlar. </font><br>
+    <br>
+    <font color="#ffa500"><b>Not:</b></font> <br>
+      Bu aynı zamanda geçerli bir aramayı engelleme riskini de içerir, bu bir takas durumudur.<br>
+    <br>
+    Bu hem <b>bir regex kuralı</b> hem de <b>bir iş akışı</b> oluşturacaktır, ayrıntılı açıklama için dahili eylem <b>Çağrı Kısıtlama</b>\'nın ipucuna bakın.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Aynı telefon numarasından gelen ardışık SMS bildirimlerini belirli bir süre için sessize alın. <br>
+    <br>
+    Tipik bir kurulum şunları içerir: <br>
+    &ensp; - Tüm aramaları engelleyen bir telefon numarası regex kuralı, devre dışıdır ve anında etkinleştirilecektir.<br>
+    &ensp; - Bir <b>SMS Kısıtlama</b> iş akışı. <br>
+    <br>
+    Bu kurulum, iş akışı hazır ayarlarında mevcuttur. <br>
+    <br>
+    <b>Seçenekler:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Süre</b></font> <br>
+    SMS mesajları bu süre boyunca (saniye cinsinden) engellenecektir. <br>
+    <br>
+    - <font color="#00BFFF"><b>Sayı Limiti</b></font> <br>
+    İlk N bildirime izin ver. <br>
+    <br>
+    - <font color="#00BFFF"><b>Cevaplananları İçerir</b></font> <br>
+    - <font color="#00BFFF"><b>Minimum Çağrı Süresi</b></font> <br>
+    Cevaplanan bir arama çok kısaysa, bu da bir spam çağrı olarak kabul edilir ve bu özelliği etkinleştirir. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Aynı telefon numarasından gelen ardışık SMS bildirimlerini belirli bir süre için sessize alın. <br>
+    <br>
+    <b>Kullanım senaryoları:</b> <br>
+    <font color="#888888">Bir telefon numarasından gelen ilk üç bildirime izin verin ve geri kalanını bir dakika içinde sessize alın.</font> <br>
+    <br>
+    Bu hem <b>bir regex kuralı</b> hem de <b>bir iş akışı</b> oluşturacaktır, ayrıntılı açıklama için dahili eylem <b>SMS Kısıtlama</b>\'nın ipucuna bakın.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Cevaplananları İçerir</string>
+    <string name="including_blocked">Engellenenleri İçerir</string>
+    <string name="minimal_call_duration">Minimum Çağrı Süresi</string>
+    <string name="seconds_template">%d saniye</string>
+    <string name="sms_throttling">SMS Kısıtlama</string>
+    <string name="sms_throttling_triggered">SMS Kısıtlama tetiklendi</string>
+    <string name="target_rule_desc">Hedef Kural Açıklaması</string>
+    <string name="template_generated">Şablon Oluşturuldu.</string>
+    <string name="throttled_call">Kısıtlanmış Çağrı</string>
+    <string name="throttled_sms">Kısıtlanmış SMS</string>
 </resources>

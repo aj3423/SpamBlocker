@@ -11,12 +11,10 @@ import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
 import spam.blocker.R
-import spam.blocker.service.bot.CalendarEvent
-import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
+import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.MyWorkManager
-import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.clone
 import spam.blocker.service.bot.defaultSchedules
 import spam.blocker.service.bot.parseActions
@@ -46,7 +44,7 @@ data class Bot(
     fun TriggerType(modifier: Modifier) {
         val ctx = LocalContext.current
 
-        // Scheduled
+        // Scheduled (in the future, Schedule will be migrated to ITriggerAction instead of an bot attribute)
         val isScheduled = enabled && schedule != null
         if (isScheduled) {
             GreyLabel(
@@ -56,12 +54,7 @@ data class Bot(
         } else {
             val firstAction = actions.firstOrNull()
 
-            // Calendar Event
-            if (firstAction is CalendarEvent) {
-                firstAction.TriggerType(modifier)
-            } else if (firstAction is SmsEvent) {
-                firstAction.TriggerType(modifier)
-            } else if (firstAction is CallEvent) {
+            if (firstAction is ITriggerAction) {
                 firstAction.TriggerType(modifier)
             } else {
                 // Manual
@@ -79,11 +72,7 @@ data class Bot(
             return true
 
         val firstAction = actions.firstOrNull()
-        if (firstAction is CalendarEvent) {
-            return firstAction.isActivated()
-        } else if (firstAction is SmsEvent) {
-            return firstAction.isActivated()
-        } else if (firstAction is CallEvent) {
+        if (firstAction is ITriggerAction) {
             return firstAction.isActivated()
         }
         return false // manually trigger

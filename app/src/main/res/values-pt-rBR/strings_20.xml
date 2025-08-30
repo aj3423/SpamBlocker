@@ -16,4 +16,90 @@
         …\n
         }
     </string>
+    <string name="call_throttling">Limitação de Chamadas</string>
+    <string name="call_throttling_triggered">Limitação de Chamadas ativada</string>
+    <string name="count_limit">Limite de Contagem</string>
+    <string name="duration_in_seconds">Duração (segundos)</string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    O que ele faz é mudar o comportamento padrão de <b>permitir por padrão</b> para <b>bloquear por padrão</b>
+      por um período, usando uma regra de regex ativada temporariamente que bloqueia todas as chamadas. <br>
+    <br>
+    Uma configuração típica inclui: <br>
+    &ensp; - Uma regra de regex de número de telefone que bloqueia SMS para um número de telefone ou grupo de contato específico, ela está desativada e será ativada instantaneamente.<br>
+    &ensp; - Um fluxo de trabalho de <b>Limitação de Chamadas</b>. <br>
+    <br>
+    Esta configuração está disponível nos predefinições de fluxo de trabalho. <br>
+    <br>
+    <b>Opções:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Duração</b></font> <br>
+    Chamadas serão bloqueadas durante este período (em segundos). <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluindo Bloqueadas</b></font> <br>
+    Este recurso será ativado após qualquer chamada ser bloqueada. <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluindo Atendidas</b></font> <br>
+    - <font color="#00BFFF"><b>Duração Mínima da Chamada</b></font> <br>
+    Este recurso será ativado depois que uma chamada for atendida, mas a duração da chamada for muito curta, pois tal
+     chamada também é considerada uma chamada de spam. <br>
+    ]]>
+    </string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    Após bloquear uma chamada, bloqueie também chamadas subsequentes que contornam todas as regras por um período. <br>
+    <br>
+    <b>Caso de uso:</b> <br>
+    <font color="#888888"> &ensp; Alguns spammers usam números de telefone com prefixos comuns, que podem ser bloqueados com regras de regex.
+      Após a primeira chamada ser bloqueada, eles mudarão para números de telefone aleatórios, fazendo chamadas que podem contornar todas as regras. </font><br>
+    <br>
+    <font color="#ffa500"><b>Nota:</b></font> <br>
+      Isso também envolve o risco de bloquear uma chamada válida, é um risco e benefício.<br>
+    <br>
+    Isso criará tanto <b>uma regra de regex</b> quanto <b>um fluxo de trabalho</b>, veja a dica de ferramenta da ação interna <b>Limitação de Chamadas</b> para uma explicação detalhada.<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    Silenciar notificações consecutivas de SMS do mesmo número de telefone por um período. <br>
+    <br>
+    Uma configuração típica inclui: <br>
+    &ensp; - Uma regra de regex de número de telefone que bloqueia todas as chamadas, ela está desativada e será ativada instantaneamente.<br>
+    &ensp; - Um fluxo de trabalho de <b>Limitação de SMS</b>. <br>
+    <br>
+    Esta configuração está disponível nos predefinições de fluxo de trabalho. <br>
+    <br>
+    <b>Opções:</b> <br>
+    <br>
+    - <font color="#00BFFF"><b>Duração</b></font> <br>
+    Mensagens SMS serão bloqueadas durante este período (em segundos). <br>
+    <br>
+    - <font color="#00BFFF"><b>Limite de Contagem</b></font> <br>
+    Permitir as primeiras N notificações. <br>
+    <br>
+    - <font color="#00BFFF"><b>Incluindo Atendidas</b></font> <br>
+    - <font color="#00BFFF"><b>Duração Mínima da Chamada</b></font> <br>
+    Se uma chamada atendida for muito curta, ela também é considerada uma chamada de spam e ativará este recurso. <br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    Silenciar notificações consecutivas de SMS de um mesmo número de telefone por um período. <br>
+    <br>
+    <b>Casos de uso:</b> <br>
+    <font color="#888888">Permitir as três primeiras notificações de um número de telefone e silenciar o restante dentro de um minuto.</font> <br>
+    <br>
+    Isso criará tanto <b>uma regra de regex</b> quanto <b>um fluxo de trabalho</b>, veja a dica de ferramenta da ação interna <b>Limitação de SMS</b> para uma explicação detalhada.<br>
+    ]]>
+    </string>
+    <string name="including_answered">Incluindo Atendidas</string>
+    <string name="including_blocked">Incluindo Bloqueadas</string>
+    <string name="minimal_call_duration">Duração Mínima da Chamada</string>
+    <string name="seconds_template">%d segundos</string>
+    <string name="sms_throttling">Limitação de SMS</string>
+    <string name="sms_throttling_triggered">Limitação de SMS ativada</string>
+    <string name="target_rule_desc">Descrição da Regra Alvo</string>
+    <string name="template_generated">Modelo Gerado.</string>
+    <string name="throttled_call">Chamada Limitada</string>
+    <string name="throttled_sms">SMS Limitados</string>
 </resources>

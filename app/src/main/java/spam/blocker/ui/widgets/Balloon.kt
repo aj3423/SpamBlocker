@@ -26,6 +26,7 @@ import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.util.Lambda1
 
 
 const val BalloonCornerRadius = 6
@@ -38,6 +39,7 @@ const val BalloonBorderWidthLight = 0.6
 fun BalloonWrapper(
     tooltip: String,
     offset: IntOffset? = null,
+    onLinkClick: Lambda1<String>? = null,
     body: @Composable (TooltipState) -> Unit,
 ) {
 
@@ -71,7 +73,8 @@ fun BalloonWrapper(
                             offsetX = 30,
                             persistent = true,
                             scrollBarColor = DarkOrange
-                        )
+                        ),
+                    onLinkClick = onLinkClick,
                 )
             }
         },
@@ -83,10 +86,11 @@ fun BalloonWrapper(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null) {
+fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null, onLinkClick: Lambda1<String>? = null) {
     BalloonWrapper(
         tooltip = tooltip,
         offset = offset,
+        onLinkClick = onLinkClick,
     ) { tooltipState ->
         val scope = rememberCoroutineScope()
         ResImage(
