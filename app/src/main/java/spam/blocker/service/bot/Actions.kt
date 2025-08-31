@@ -1499,6 +1499,11 @@ class ModifyRules(
 
                 val mapModified = mapOrigin + mapConfig // override with mapModify
 
+                logi("strOrigin: $strOrigin")
+                logi("mapOrigin: $mapOrigin")
+                logi("mapModified: $mapModified")
+
+
                 val newRule = PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
 
                 aCtx.logger?.debug(
@@ -2461,6 +2466,7 @@ class CalendarEvent(
             regexStr = eventTitle,
             label = { Text(Str(R.string.event_title)) },
             regexFlags = flags,
+            helpTooltipId = R.string.help_calendar_event_title,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     eventTitle = newVal

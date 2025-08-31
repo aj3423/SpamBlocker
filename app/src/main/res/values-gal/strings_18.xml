@@ -6,28 +6,11 @@
     <string name="rule_updated_temporarily">A regra de expresión regular %s modifícase temporalmente a: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporalmente as regras baseándose en eventos de calendario, os cambios aplícanse temporalmente sen alterar a configuración.<br>
+        Modificar temporalmente as regras regex baseándose en eventos do calendario, os cambios aplícanse temporalmente sen alterar a configuración. <br>
         <br>
-        Esta acción debe ser a primeira no fluxo de traballo, tal fluxo de traballo activarase automaticamente por unha chamada entrante.<br>
+        Tal fluxo de traballo activarase automaticamente por unha chamada entrante. <br>
         <br>
-        <b>Un caso de uso</b>:<br>
-        &ensp; <font color="#888888">Un traballador por quendas traballa na quenda de día de 7 AM a 10 AM durante dous días,
-          e despois na quenda de noite de 7 PM a 10 PM durante os dous días seguintes.<br>
-        &ensp; Algunhas regras deben ser desactivadas ou activadas durante o horario de traballo.</font><<br>
-        <br>
-        Unha configuración de exemplo:<br>
-        - <b>1</b>. Na aplicación de calendario, crea eventos de calendario <font color="#888888">traballo</font> para todas as horas de traballo.<br>
-        - <b>2</b>. Crea unha regra de expresión regular.<br>
-        &emsp; descrición: <font color="#888888">traballo</font><br>
-        - <b>3</b>. Crea un fluxo de traballo:<br>
-        &ensp; - <b>Evento de Calendario</b><br>
-         &emsp;&emsp; título do evento: <font color="#888888">traballo</font><br>
-        &ensp; - <b>Buscar Regras</b><br>
-         &emsp;&emsp; descrición: <font color="#888888">traballo</font><br>
-        &ensp; - <b>Modificar Regras</b><br>
-         &emsp;&emsp; configuración: <font color="#888888">{ \"flags\": 0 }</font> (isto desactivará a regra)<br>
-        <br>
-        &ensp; (Aquí admite múltiples <b>Buscar Regras</b> e <b>Modificar Regras</b>)<br>
+        Consulta o preaxuste do fluxo de traballo para o <b>caso de uso</b> e unha <b>configuración típica</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Evento de SMS</string>
@@ -86,4 +69,18 @@
     <string name="warning">Advertencia</string>
     <string name="calendar_event_is_triggered">Activouse o evento de calendario %s.</string>
     <string name="rule_updated">A regra Regex %s modificouse a: %s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        Modificar temporalmente as regras regex baseándose en eventos do calendario. <br>
+        <br>
+        <b>Caso de uso</b>:<br>
+        &ensp; <font color="#888888">Un traballador por quendas traballa na quenda de día durante dous días,
+          despois na quenda de noite os dous seguintes.<br>
+        &ensp; Algunhas regras necesitan ser desactivadas ou activadas durante os distintos horarios de traballo.</font><<br>
+        <br>
+        Isto creará tanto unha regra regex como un fluxo de traballo, a regra activarase sobre a marcha durante o evento do calendario específico. <br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">Isto debería coincidir co evento do calendario, que se pode crear na aplicación Calendario.</string>
+    <string name="working">Traballando</string>
 </resources>

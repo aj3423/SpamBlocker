@@ -6,27 +6,11 @@
     <string name="rule_updated_temporarily">正規表現ルール %s は一時的に %s に変更されました</string>
     <string name="help_calendar_event">
         <![CDATA[
-        カレンダーイベントに基づいてルールを一時的に変更します。変更は設定を変更することなく一時的に適用されます。<br>
+        カレンダーイベントに基づいて正規表現ルールを一時的に変更します。設定を変更することなく、変更は一時的に適用されます。<br>
         <br>
-        このアクションはワークフローの最初のものである必要があります。このようなワークフローは着信によって自動的にトリガーされます。<br>
+        このようなワークフローは、着信によって自動的にトリガーされます。<br>
         <br>
-        <b>ユースケース</b>:<br>
-        &ensp; <font color="#888888">シフト勤務者が、2日間は午前7時から午前10時までの日勤、その後2日間は午後7時から午後10時までの夜勤で働きます。<br>
-        &ensp; 勤務時間中は一部のルールを無効または有効にする必要があります。</font><<br>
-        <br>
-        設定例:<br>
-        - <b>1</b>. カレンダーアプリで、すべての勤務時間に対してカレンダーイベント <font color="#888888">work</font> を作成します。<br>
-        - <b>2</b>. 正規表現ルールを作成します。<br>
-        &emsp; 説明: <font color="#888888">working</font><br>
-        - <b>3</b>. ワークフローを作成します:<br>
-        &ensp; - <b>カレンダーイベント</b><br>
-         &emsp;&emsp; イベントタイトル: <font color="#888888">work</font><br>
-        &ensp; - <b>ルールを検索</b><br>
-         &emsp;&emsp; 説明: <font color="#888888">working</font><br>
-        &ensp; - <b>ルールを変更</b><br>
-         &emsp;&emsp; 設定: <font color="#888888">{ \"flags\": 0 }</font> (これによりルールが無効になります)<br>
-        <br>
-        &ensp; (ここでは複数の<b>ルールを検索</b>と<b>ルールを変更</b>をサポートしています)<br>
+        <b>ユースケース</b>と<b>典型的な設定</b>については、ワークフローのプリセットを確認してください。<br>
         ]]>
     </string>
     <string name="sms_event">SMSイベント</string>
@@ -85,4 +69,17 @@
     <string name="warning">警告</string>
     <string name="calendar_event_is_triggered">カレンダーイベント %s がトリガーされました。</string>
     <string name="rule_updated">正規表現ルール %s が %s に変更されました。</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        カレンダーイベントに基づいて正規表現ルールを一時的に変更します。<br>
+        <br>
+        <b>ユースケース</b>:<br>
+        &ensp; <font color="#888888">シフト制の作業員が2日間日勤、その後の2日間夜勤で働きます。<br>
+        &ensp; 勤務時間に応じて、一部のルールを無効または有効にする必要があります。</font><<br>
+        <br>
+        これにより正規表現ルールとワークフローの両方が作成され、特定のカレンダーイベント中にルールがその場で有効になります。<br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">これはカレンダーアプリで作成できるカレンダーイベントと一致する必要があります。</string>
+    <string name="working">勤務中</string>
 </resources>

@@ -6,32 +6,29 @@
     <string name="event_title">Event Title</string>
     <string name="rule_updated">Regex rule %s is modified to: %s</string>
     <string name="rule_updated_temporarily">Regex rule %s is temporarily modified to: %s</string>
-    <string name="help_calendar_event">
+    <string name="help_calendar_event_template">
         <![CDATA[
-        Temporarily modify rules based on calendar events, changes are applied temporarily without altering the configuration.<br>
+        Temporarily modify regex rules based on calendar events. <br>
         <br>
-        This action must be the first one in the workflow, such a workflow will be automatically triggered by an incoming call.<br>
+        <b>Use case</b>:<br>
+        &ensp; <font color="#888888">A shift worker works the day shift for two days,
+          then the night shift for the next two.<br>
+        &ensp; Some rules need to be disabled or enabled during the varying working hours.</font><<br>
         <br>
-        <b>A use case</b>:<br>
-        &ensp; <font color="#888888">A shift worker works the day shift from 7 AM to 10 AM for two days,
-          then the night shift from 7 PM to 10 PM for the next two days.<br>
-        &ensp; Some rules must be disabled or enabled during working hours.</font><<br>
-        <br>
-        A sample setup:<br>
-        - <b>1</b>. In the calendar app, create calendar events <font color="#888888">work</font> for all working hours.<br>
-        - <b>2</b>. Create a regex rule.<br>
-        &emsp; description: <font color="#888888">working</font><br>
-        - <b>3</b>. Create a workflow:<br>
-        &ensp; - <b>Calendar Event</b><br>
-         &emsp;&emsp; event title: <font color="#888888">work</font><br>
-        &ensp; - <b>Find Rules</b><br>
-         &emsp;&emsp; description: <font color="#888888">working</font><br>
-        &ensp; - <b>Modify Rules</b><br>
-         &emsp;&emsp; config: <font color="#888888">{ \"flags\": 0 }</font> (this will disable the rule)<br>
-        <br>
-        &ensp; (It supports multiple <b>Find Rules</b> and <b>Modify Rules</b> here)<br>
+        This will create both a regex rule and a workflow, the rule will be enabled on the fly during the specific calendar event. <br>
         ]]>
     </string>
+    <string name="help_calendar_event_title">This should match the calendar event, which can be created in the Calendar app.</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        Temporarily modify regex rules based on calendar events, changes are applied temporarily without altering the configuration. <br>
+        <br>
+        Such a workflow will be automatically triggered by an incoming call. <br>
+        <br>
+        Check the workflow preset for the <b>use case</b> and a <b>typical setup</b>. <br>
+        ]]>
+    </string>
+    <string name="working">Working</string>
     <string name="sms_event">SMS Event</string>
     <string name="help_sms_event">
         <![CDATA[

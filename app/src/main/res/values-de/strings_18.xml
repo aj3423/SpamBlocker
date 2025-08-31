@@ -6,28 +6,11 @@
     <string name="rule_updated_temporarily">Regex-Regel %s wird vorübergehend geändert zu: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Regeln basierend auf Kalenderereignissen temporär ändern, Änderungen werden vorübergehend angewendet, ohne die Konfiguration zu ändern.<br>
+        Regex-Regeln basierend auf Kalenderereignissen temporär ändern; Änderungen werden vorübergehend angewendet, ohne die Konfiguration zu verändern. <br>
         <br>
-        Diese Aktion muss die erste im Workflow sein, ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
+        Ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst. <br>
         <br>
-        <b>Ein Anwendungsfall</b>:<br>
-        &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage lang die Tagschicht von 7 Uhr morgens bis 10 Uhr morgens,
-          dann die nächsten zwei Tage die Nachtschicht von 19 Uhr abends bis 22 Uhr abends.<br>
-        &ensp; Einige Regeln müssen während der Arbeitszeiten deaktiviert oder aktiviert werden.</font><<br>
-        <br>
-        Ein Beispiel-Setup:<br>
-        - <b>1</b>. Erstellen Sie in der Kalender-App Kalenderereignisse <font color="#888888">Arbeit</font> für alle Arbeitszeiten.<br>
-        - <b>2</b>. Erstellen Sie eine Regex-Regel.<br>
-        &emsp; Beschreibung: <font color="#888888">Arbeit</font><br>
-        - <b>3</b>. Erstellen Sie einen Workflow:<br>
-        &ensp; - <b>Kalenderereignis</b><br>
-         &emsp;&emsp; Ereignistitel: <font color="#888888">Arbeit</font><br>
-        &ensp; - <b>Regeln finden</b><br>
-         &emsp;&emsp; Beschreibung: <font color="#888888">Arbeit</font><br>
-        &ensp; - <b>Regeln ändern</b><br>
-         &emsp;&emsp; Konfiguration: <font color="#888888">{ \"flags\": 0 }</font> (dies wird die Regel deaktivieren)<br>
-        <br>
-        &ensp; (Hier werden mehrere <b>Regeln finden</b> und <b>Regeln ändern</b> unterstützt)<br>
+        Prüfen Sie die Workflow-Voreinstellung für den <b>Anwendungsfall</b> und ein <b>typisches Setup</b>. <br>
         ]]>
     </string>
     <string name="sms_event">SMS-Ereignis</string>
@@ -86,4 +69,18 @@
     <string name="warning">Warnung</string>
     <string name="calendar_event_is_triggered">Kalenderereignis %s wird ausgelöst.</string>
     <string name="rule_updated">Regex-Regel %s wurde geändert in: %s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        Regex-Regeln basierend auf Kalenderereignissen temporär ändern. <br>
+        <br>
+        <b>Anwendungsfall</b>:<br>
+        &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage im Tagschicht,
+          dann die nächsten zwei in der Nachtschicht.<br>
+        &ensp; Einige Regeln müssen während der unterschiedlichen Arbeitszeiten deaktiviert oder aktiviert werden.</font><<br>
+        <br>
+        Dies erstellt sowohl eine Regex-Regel als auch einen Workflow; die Regel wird während des spezifischen Kalenderereignisses dynamisch aktiviert. <br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">Dies sollte dem Kalenderereignis entsprechen, das in der Kalender-App erstellt werden kann.</string>
+    <string name="working">Arbeitszeit</string>
 </resources>

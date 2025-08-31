@@ -6,28 +6,11 @@
     <string name="rule_updated_temporarily">Regex kuralı %s geçici olarak değiştirildi: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Takvim etkinliklerine göre kuralları geçici olarak değiştirir, değişiklikler yapılandırmayı bozmadan geçici olarak uygulanır.<br>
+        Takvim etkinliklerine göre regex kurallarını geçici olarak değiştirir, değişiklikler yapılandırma değiştirilmeden geçici olarak uygulanır. <br>
         <br>
-        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir arama tarafından otomatik olarak tetiklenecektir.<br>
+        Böyle bir iş akışı, gelen bir arama tarafından otomatik olarak tetiklenecektir. <br>
         <br>
-        <b>Bir kullanım durumu</b>:<br>
-        &ensp; <font color="#888888">Vardiyalı bir işçi iki gün boyunca sabah 7\'den sabah 10\'a kadar gündüz vardiyasında,
-          sonraki iki gün boyunca akşam 7\'den akşam 10\'a kadar gece vardiyasında çalışır.<br>
-        &ensp; Bazı kurallar çalışma saatleri içinde devre dışı bırakılmalı veya etkinleştirilmelidir.</font><<br>
-        <br>
-        Örnek bir kurulum:<br>
-        - <b>1</b>. Takvim uygulamasında, tüm çalışma saatleri için <font color="#888888">iş</font> takvim etkinlikleri oluşturun.<br>
-        - <b>2</b>. Bir regex kuralı oluşturun.<br>
-        &emsp; açıklama: <font color="#888888">çalışma</font><br>
-        - <b>3</b>. Bir iş akışı oluşturun:<br>
-        &ensp; - <b>Takvim Etkinliği</b><br>
-         &emsp;&emsp; etkinlik başlığı: <font color="#888888">iş</font><br>
-        &ensp; - <b>Kuralları Bul</b><br>
-         &emsp;&emsp; açıklama: <font color="#888888">çalışma</font><br>
-        &ensp; - <b>Kuralları Değiştir</b><br>
-         &emsp;&emsp; yapılandırma: <font color="#888888">{ \"flags\": 0 }</font> (bu kuralı devre dışı bırakacaktır)<br>
-        <br>
-        &ensp; (Burada birden çok <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> destekler)<br>
+        <b>Kullanım senaryosu</b> ve <b>tipik bir kurulum</b> için iş akışı ön ayarını kontrol edin. <br>
         ]]>
     </string>
     <string name="sms_event">SMS Etkinliği</string>
@@ -86,4 +69,18 @@
     <string name="warning">Uyarı</string>
     <string name="calendar_event_is_triggered">Takvim etkinliği %s tetiklendi.</string>
     <string name="rule_updated">Regex kuralı %s şu şekilde değiştirildi: %s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        Takvim etkinliklerine göre regex kurallarını geçici olarak değiştirin. <br>
+        <br>
+        <b>Kullanım senaryosu</b>:<br>
+        &ensp; <font color="#888888">Vardiyalı bir çalışan iki gün gündüz vardiyasında,
+          sonraki iki gün ise gece vardiyasında çalışır.<br>
+        &ensp; Bazı kuralların değişen çalışma saatlerinde devre dışı bırakılması veya etkinleştirilmesi gerekebilir.</font><<br>
+        <br>
+        Bu hem bir regex kuralı hem de bir iş akışı oluşturacaktır; kural belirli takvim etkinliği sırasında anında etkinleştirilecektir. <br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">Bu, Takvim uygulamasında oluşturulabilen takvim etkinliğiyle eşleşmelidir.</string>
+    <string name="working">Çalışıyor</string>
 </resources>

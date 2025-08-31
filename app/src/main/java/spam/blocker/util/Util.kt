@@ -400,7 +400,6 @@ object Util {
     fun flagsToRegexOptions(flags: Int): Set<RegexOption> {
         val opts = mutableSetOf<RegexOption>()
 
-        // the "Ignore Case" checking is for history compatibility, remove this after 2027-01-01
         if (!flags.hasFlag(Def.FLAG_REGEX_CASE_SENSITIVE)) {
             opts.add(RegexOption.IGNORE_CASE)
         }

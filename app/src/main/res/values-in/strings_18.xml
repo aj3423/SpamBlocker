@@ -6,28 +6,11 @@
     <string name="rule_updated_temporarily">Aturan Regex %s diubah sementara menjadi: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Mengubah aturan sementara berdasarkan acara kalender, perubahan diterapkan sementara tanpa mengubah konfigurasi.<br>
+        Mengubah aturan regex sementara berdasarkan acara kalender, perubahan diterapkan sementara tanpa mengubah konfigurasi. <br>
         <br>
-        Tindakan ini harus menjadi yang pertama dalam alur kerja, alur kerja tersebut akan secara otomatis dipicu oleh panggilan masuk.<br>
+        Alur kerja semacam ini akan secara otomatis dipicu oleh panggilan masuk. <br>
         <br>
-        <b>Studi kasus</b>:<br>
-        &ensp; <font color="#888888">Seorang pekerja shift bekerja shift pagi dari jam 7 pagi hingga 10 pagi selama dua hari,
-          kemudian shift malam dari jam 7 malam hingga 10 malam selama dua hari berikutnya.<br>
-        &ensp; Beberapa aturan harus dinonaktifkan atau diaktifkan selama jam kerja.</font><<br>
-        <br>
-        Contoh pengaturan:<br>
-        - <b>1</b>. Di aplikasi kalender, buat acara kalender <font color="#888888">kerja</font> untuk semua jam kerja.<br>
-        - <b>2</b>. Buat aturan regex.<br>
-        &emsp; deskripsi: <font color="#888888">bekerja</font><br>
-        - <b>3</b>. Buat alur kerja:<br>
-        &ensp; - <b>Acara Kalender</b><br>
-         &emsp;&emsp; judul acara: <font color="#888888">kerja</font><br>
-        &ensp; - <b>Temukan Aturan</b><br>
-         &emsp;&emsp; deskripsi: <font color="#888888">bekerja</font><br>
-        &ensp; - <b>Ubah Aturan</b><br>
-         &emsp;&emsp; konfigurasi: <font color="#888888">{ \"flags\": 0 }</font> (ini akan menonaktifkan aturan)<br>
-        <br>
-        &ensp; (Ini mendukung beberapa <b>Temukan Aturan</b> dan <b>Ubah Aturan</b> di sini)<br>
+        Periksa prasetel alur kerja untuk <b>contoh kasus</b> dan <b>pengaturan tipikal</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Acara SMS</string>
@@ -86,4 +69,18 @@
     <string name="warning">Peringatan</string>
     <string name="calendar_event_is_triggered">Acara kalender %s dipicu.</string>
     <string name="rule_updated">Aturan Regex %s diubah menjadi: %s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        Mengubah aturan regex sementara berdasarkan acara kalender. <br>
+        <br>
+        <b>Contoh kasus</b>:<br>
+        &ensp; <font color="#888888">Seorang pekerja shift bekerja shift pagi selama dua hari,
+          lalu shift malam selama dua hari berikutnya.<br>
+        &ensp; Beberapa aturan perlu dinonaktifkan atau diaktifkan selama jam kerja yang bervariasi.</font><<br>
+        <br>
+        Ini akan membuat aturan regex dan alur kerja, aturan akan diaktifkan secara otomatis selama acara kalender tertentu. <br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">Ini harus cocok dengan acara kalender, yang dapat dibuat di aplikasi Kalender.</string>
+    <string name="working">Bekerja</string>
 </resources>

@@ -6,27 +6,11 @@
     <string name="rule_updated_temporarily">正则表达式规则 %s 已临时修改为：%s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        根据日历事件临时修改规则，更改将临时应用而不会更改配置。<br>
+        根据日历事件临时修改正则表达式规则，更改将临时应用，不修改配置。<br>
         <br>
-        此操作必须是工作流程中的第一个，此类工作流程将在有来电时自动触发。<br>
+        此类工作流将由骚扰电话自动触发。<br>
         <br>
-        <b>一个用例</b>：<br>
-        &ensp; <font color="#888888">一名轮班工人连续两天上午 7 点到上午 10 点上白班，然后连续两天晚上 7 点到晚上 10 点上夜班。<br>
-        &ensp; 某些规则必须在工作时间禁用或启用。</font><<br>
-        <br>
-        一个示例设置：<br>
-        - <b>1</b>. 在日历应用中，为所有工作时间创建日历事件 <font color="#888888">工作</font>。<br>
-        - <b>2</b>. 创建一个正则表达式规则。<br>
-        &emsp; 描述：<font color="#888888">工作</font><br>
-        - <b>3</b>. 创建一个工作流程：<br>
-        &ensp; - <b>日历事件</b><br>
-         &emsp;&emsp; 事件标题：<font color="#888888">工作</font><br>
-        &ensp; - <b>查找规则</b><br>
-         &emsp;&emsp; 描述：<font color="#888888">工作</font><br>
-        &ensp; - <b>修改规则</b><br>
-         &emsp;&emsp; 配置：<font color="#888888">{ \"flags\": 0 }</font> (这将禁用该规则)<br>
-        <br>
-        &ensp; (此处支持多个<b>查找规则</b>和<b>修改规则</b>)<br>
+        检查工作流预设以了解<b>用例</b>和<b>典型设置</b>。<br>
         ]]>
     </string>
     <string name="sms_event">短信事件</string>
@@ -85,4 +69,18 @@
     <string name="warning">警告</string>
     <string name="calendar_event_is_triggered">日历事件 %s 已触发。</string>
     <string name="rule_updated">正则规则 %s 已修改为：%s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        根据日历事件临时修改正则表达式规则。<br>
+        <br>
+        <b>用例</b>:<br>
+        &ensp; <font color="#888888">轮班工人白班工作两天，
+          然后夜班工作两天。<br>
+        &ensp; 某些规则需要在不同的工作时间禁用或启用。</font><<br>
+        <br>
+        这将同时创建一条正则表达式规则和一个工作流，该规则将在特定的日历事件期间即时启用。<br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">这应与日历事件匹配，该事件可在日历应用中创建。</string>
+    <string name="working">工作</string>
 </resources>

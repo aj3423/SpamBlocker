@@ -7,6 +7,7 @@ import spam.blocker.db.Bot
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.service.bot.BackupExport
+import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CleanupHistory
 import spam.blocker.service.bot.CleanupSpamDB
@@ -105,6 +106,31 @@ val BotPresets = listOf(
                 SmsThrottling(targetRuleDesc = ruleDesc),
                 FindRules(pattern = ruleDesc),
                 ModifyRules(config = "{\"flags\": 2}"),
+            )
+        )
+    },
+
+    // Calendar Event
+    BotPreset(
+        tooltipId = R.string.help_calendar_event_template,
+        onCreate = { ctx ->
+            // Add a regex rule
+            val ruleDesc = ctx.getString(R.string.calendar_event)
+            NumberRuleTable().addNewRule(ctx, RegexRule(
+                pattern = ".*",
+                description = ruleDesc,
+                flags = 0, // disabled for call/sms
+            ))
+            G.NumberRuleVM.reloadDb(ctx)
+        },
+    ) { ctx ->
+        val ruleDesc = ctx.getString(R.string.calendar_event)
+        Bot(
+            desc = ctx.getString(R.string.calendar_event),
+            actions = listOf(
+                CalendarEvent(eventTitle = ctx.getString(R.string.working)),
+                FindRules(pattern = ruleDesc),
+                ModifyRules(config = "{\"flags\": 3}"),
             )
         )
     },

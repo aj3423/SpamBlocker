@@ -6,28 +6,11 @@
     <string name="rule_updated_temporarily">La regola Regex %s è temporaneamente modificata a: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporaneamente le regole in base agli eventi del calendario; le modifiche vengono applicate temporaneamente senza alterare la configurazione.<br>
+        Modifica temporaneamente le regole regex in base agli eventi del calendario, le modifiche vengono applicate temporaneamente senza alterare la configurazione. <br>
         <br>
-        Questa azione deve essere la prima nel flusso di lavoro; un tale flusso di lavoro verrà attivato automaticamente da una chiamata in arrivo.<br>
+        Un tale flusso di lavoro verrà attivato automaticamente da una chiamata in arrivo. <br>
         <br>
-        <b>Un caso d\'uso</b>:<br>
-        &ensp; <font color="#888888">Un lavoratore a turni lavora il turno diurno dalle 7:00 alle 10:00 per due giorni,
-          poi il turno notturno dalle 19:00 alle 22:00 per i due giorni successivi.<br>
-        &ensp; Alcune regole devono essere disabilitate o abilitate durante l\'orario di lavoro.</font><<br>
-        <br>
-        Una configurazione di esempio:<br>
-        - <b>1</b>. Nell\'app calendario, crea eventi calendario <font color="#888888">lavoro</font> per tutte le ore lavorative.<br>
-        - <b>2</b>. Crea una regola regex.<br>
-        &emsp; descrizione: <font color="#888888">lavorando</font><br>
-        - <b>3</b>. Crea un flusso di lavoro:<br>
-        &ensp; - <b>Evento Calendario</b><br>
-         &emsp;&emsp; titolo evento: <font color="#888888">lavoro</font><br>
-        &ensp; - <b>Trova Regole</b><br>
-         &emsp;&emsp; descrizione: <font color="#888888">lavorando</font><br>
-        &ensp; - <b>Modifica Regole</b><br>
-         &emsp;&emsp; config: <font color="#888888">{ \"flags\": 0 }</font> (questo disabiliterà la regola)<br>
-        <br>
-        &ensp; (Qui supporta più <b>Trova Regole</b> e <b>Modifica Regole</b>)<br>
+        Controlla il preset del flusso di lavoro per il <b>caso d\'uso</b> e una <b>configurazione tipica</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Evento SMS</string>
@@ -86,4 +69,18 @@
     <string name="warning">Avviso</string>
     <string name="calendar_event_is_triggered">L\'evento calendario %s è stato attivato.</string>
     <string name="rule_updated">La regola Regex %s è stata modificata in: %s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        Modifica temporaneamente le regole regex in base agli eventi del calendario. <br>
+        <br>
+        <b>Caso d\'uso</b>:<br>
+        &ensp; <font color="#888888">Un lavoratore a turni lavora il turno diurno per due giorni,
+          poi il turno notturno per i due successivi.<br>
+        &ensp; Alcune regole devono essere disattivate o attivate durante i diversi orari di lavoro.</font><<br>
+        <br>
+        Questo creerà sia una regola regex che un flusso di lavoro, la regola verrà abilitata al volo durante lo specifico evento del calendario. <br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">Questo dovrebbe corrispondere all\'evento del calendario, che può essere creato nell\'app Calendario.</string>
+    <string name="working">Lavoro</string>
 </resources>

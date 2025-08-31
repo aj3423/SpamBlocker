@@ -6,28 +6,11 @@
     <string name="rule_updated_temporarily">La regla de Regex %s ha estat modificada temporalment a: %s</string>
     <string name="help_calendar_event">
         <![CDATA[
-        Modifica temporalment les regles segons els esdeveniments del calendari, els canvis s\'apliquen temporalment sense alterar la configuració.<br>
+        Modifica temporalment les regles de regex basades en esdeveniments del calendari, els canvis s\'apliquen temporalment sense alterar la configuració. <br>
         <br>
-        Aquesta acció ha de ser la primera en el flux de treball, un flux de treball d\'aquest tipus s\'activarà automàticament per una trucada entrant.<br>
+        Aquest flux de treball s\'activarà automàticament amb una trucada entrant. <br>
         <br>
-        <b>Un cas d\'ús</b>:<br>
-        &ensp; <font color="#888888">Un treballador a torns treballa el torn de dia de 7 AM a 10 AM durant dos dies,
-          després el torn de nit de 7 PM a 10 PM durant els dos dies següents.<br>
-        &ensp; Algunes regles s\'han de desactivar o activar durant les hores de treball.</font><<br>
-        <br>
-        Una configuració d\'exemple:<br>
-        - <b>1</b>. A l\'aplicació del calendari, crea esdeveniments de calendari <font color="#888888">work</font> per a totes les hores de treball.<br>
-        - <b>2</b>. Crea una regla regex.<br>
-        &emsp; descripció: <font color="#888888">working</font><br>
-        - <b>3</b>. Crea un flux de treball:<br>
-        &ensp; - <b>Esdeveniment del calendari</b><br>
-         &emsp;&emsp; títol de l\'esdeveniment: <font color="#888888">work</font><br>
-        &ensp; - <b>Troba Regles</b><br>
-         &emsp;&emsp; descripció: <font color="#888888">working</font><br>
-        &ensp; - <b>Modifica Regles</b><br>
-         &emsp;&emsp; configuració: <font color="#888888">{ \"flags\": 0 }</font> (això desactivarà la regla)<br>
-        <br>
-        &ensp; (Admet diverses <b>Troba Regles</b> i <b>Modifica Regles</b> aquí)<br>
+        Consulta el preajust del flux de treball per al <b>cas d\'ús</b> i una <b>configuració típica</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Esdeveniment SMS</string>
@@ -86,4 +69,18 @@
     <string name="warning">Avís</string>
     <string name="calendar_event_is_triggered">L\'esdeveniment del calendari %s s\'ha activat.</string>
     <string name="rule_updated">La regla de regex %s s\'ha modificat a: %s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        Modifica temporalment les regles de regex basades en esdeveniments del calendari. <br>
+        <br>
+        <b>Cas d\'ús</b>:<br>
+        &ensp; <font color="#888888">Un treballador a torns fa el torn de dia durant dos dies,
+          després el torn de nit durant els dos següents.<br>
+        &ensp; Algunes regles han de ser deshabilitades o habilitades durant els horaris de treball variables.</font><<br>
+        <br>
+        Això crearà tant una regla de regex com un flux de treball, la regla s\'habilitarà sobre la marxa durant l\'esdeveniment del calendari específic. <br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">Això ha de coincidir amb l\'esdeveniment del calendari, que es pot crear a l\'aplicació Calendari.</string>
+    <string name="working">Treballant</string>
 </resources>
