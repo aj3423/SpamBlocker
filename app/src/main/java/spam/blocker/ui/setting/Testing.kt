@@ -68,6 +68,7 @@ fun PopupTesting(
     val logTrigger = rememberSaveable { mutableStateOf(false) }
     PopupDialog(
         trigger = logTrigger,
+        popupSize = PopupSize(percentage = 0.7f, minWidth = 320, maxWidth = 600),
     ) {
         Text(
             text = logStr.value,

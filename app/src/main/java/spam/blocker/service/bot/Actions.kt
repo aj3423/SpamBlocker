@@ -3046,21 +3046,25 @@ class SmsThrottling(
 
         // Get from system SMS history
         var smses = Util.getHistorySMSes(ctx, Def.DIRECTION_INCOMING, durationSec.toLong()*1000)
-            .filter { it.rawNumber == aCtx.rawNumber }
+            .filter {
+                matches(it.rawNumber) // by sender category
+                // it.rawNumber == aCtx.rawNumber // by sender
+            }
             .map {it.rawNumber}
 
         if (smses.isEmpty()) {
             // Get from local db for testing
             smses = SmsTable().getRecordsWithinSeconds(ctx, durationSec)
-                .filter { it.peer == aCtx.rawNumber }
+                .filter {
+                    matches(it.peer) // by sender category
+                    // it.peer == aCtx.rawNumber // by sender
+                }
                 .map { it.peer }
             if (smses.isEmpty())
                 return false
         }
 
-        val matchCount = smses.filter {
-            matches(it)
-        }.size
+        val matchCount = smses.size
 
         if (matchCount < countLimit) {
             return false
