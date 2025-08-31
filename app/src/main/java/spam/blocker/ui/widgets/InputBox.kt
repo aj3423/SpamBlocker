@@ -47,8 +47,7 @@ import androidx.compose.ui.unit.round
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.def.Def.FLAG_REGEX_DOT_MATCH_ALL
-import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CASE
+import spam.blocker.def.Def.FLAG_REGEX_CASE_SENSITIVE
 import spam.blocker.def.Def.FLAG_REGEX_OMIT_CC
 import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
@@ -580,13 +579,11 @@ fun RegexInputBox(
         maxLines = 10,
         trailingIcon = {
             val hasI =
-                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) }
-            val hasD =
-                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) }
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_CASE_SENSITIVE)) }
             val hasR =
-                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) }
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_RAW_NUMBER)) }
             val hasCC =
-                remember { mutableStateOf(regexFlags.intValue.hasFlag(Def.FLAG_REGEX_OMIT_CC)) }
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_OMIT_CC)) }
 
             // a fix for Tooltip+DropdownMenu
             val dropdownOffset = remember {
@@ -623,8 +620,8 @@ fun RegexInputBox(
                                     text = when (idx) {
                                         0 -> MAP_REGEX_FLAGS[FLAG_REGEX_RAW_NUMBER]!!
                                         1 -> MAP_REGEX_FLAGS[FLAG_REGEX_OMIT_CC]!!
-                                        2 -> MAP_REGEX_FLAGS[FLAG_REGEX_IGNORE_CASE]!!
-                                        else -> MAP_REGEX_FLAGS[FLAG_REGEX_DOT_MATCH_ALL]!!
+                                        else -> MAP_REGEX_FLAGS[FLAG_REGEX_CASE_SENSITIVE]!!
+//                                        else -> MAP_REGEX_FLAGS[FLAG_REGEX_DOT_MATCH_ALL]!!
                                     },
                                     color = Color.Magenta,
                                     modifier = M
@@ -636,23 +633,21 @@ fun RegexInputBox(
                             state = when (idx) {
                                 0 -> hasR
                                 1 -> hasCC
-                                2 -> hasI
-                                else -> hasD // 3
+                                else -> hasI // 2
+//                                else -> hasD // 3
                             },
                             onCheckChange = { checked ->
                                 when (idx) {
                                     0 -> hasR.value = checked
                                     1 -> hasCC.value = checked
                                     2 -> hasI.value = checked
-                                    3 -> hasD.value = checked
+//                                    3 -> hasD.value = checked
                                 }
                                 val newVal = regexFlags.intValue.setFlag(
                                     when (idx) {
-                                        0 -> Def.FLAG_REGEX_RAW_NUMBER
-                                        1 -> Def.FLAG_REGEX_OMIT_CC
-
-                                        2 -> Def.FLAG_REGEX_IGNORE_CASE
-                                        else -> Def.FLAG_REGEX_DOT_MATCH_ALL // 3
+                                        0 -> FLAG_REGEX_RAW_NUMBER
+                                        1 -> FLAG_REGEX_OMIT_CC
+                                        else -> FLAG_REGEX_CASE_SENSITIVE // 2
                                     },
                                     checked
                                 )

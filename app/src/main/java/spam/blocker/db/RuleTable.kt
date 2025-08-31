@@ -28,6 +28,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.JsonTransformingSerializer
+import kotlinx.serialization.json.int
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import org.json.JSONObject
@@ -35,6 +36,8 @@ import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
+import spam.blocker.def.Def.FLAG_REGEX_CASE_SENSITIVE
+import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CASE
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.Salmon
@@ -48,22 +51,25 @@ import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
 /*
-A deserializer that allows both format for history compatibility.
-    The old format:            flags: { value: 5 }
-    The new format in v2.0:    flags: 5
+For old backup files, set flag CaseSensitive if it's not found and IgnoreCase is set to 0
 
-Maybe this can be removed later(after 2026).
+(Remove this after 2027-01-01)
  */
 object CompatibleFlagSerializer : JsonTransformingSerializer<Int>(Int.serializer()) {
     override fun transformDeserialize(element: JsonElement): JsonElement {
-        return when (element) {
-            is JsonPrimitive -> element // Case where the value is a direct integer
-            is JsonObject -> {
-                element["value"] ?: throw SerializationException("Missing 'value' field")
-            }
+        val flags = element.jsonPrimitive.int
 
-            else -> throw SerializationException("Unexpected JSON format for Int")
+        // Check if FLAG_REGEX_IGNORE_CASE is NOT set
+        val ignoreCaseNotSet = (flags and FLAG_REGEX_IGNORE_CASE) == 0
+
+        // If the ignore case flag is not set, add the case sensitive flag
+        if (ignoreCaseNotSet) {
+            val upgradedFlags = flags or FLAG_REGEX_CASE_SENSITIVE
+            return JsonPrimitive(upgradedFlags)
         }
+
+        // If the condition is not met, return the original element
+        return element
     }
 }
 

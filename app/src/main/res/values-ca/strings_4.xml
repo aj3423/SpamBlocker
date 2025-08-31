@@ -11,46 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Aquests marcadors canvien el comportament de concordança de l\'expressió regular, estan configurats per a les regles noves per defecte. <br>
+            Aquestes banderes canvien el comportament de concordança de l\'expressió regular. <br>
             <br>
 
-            <font color="#00BFFF"><b>Número Bruta</b></font>: <br>
-            &ensp; Quan està activat, el número no s\'optimitzarà, <font color="#03DAC5"><b>+</b></font>
-            i <font color="#03DAC5"><b>els 0s inicials</b></font> romandran, útil per diferenciar els números nacionals.<br>
+            <font color="#00BFFF"><b>Número sense processar</b></font>: <br>
+            &ensp; Quan estigui activat, el número no s\'optimitzarà, el <font color="#03DAC5"><b>+</b></font>
+            i els <font color="#03DAC5"><b>zeros inicials</b></font> es mantindran, útil per diferenciar números nacionals.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ometre el codi de país</b></font>: <br>
-            &ensp; Quan està activat, el <font color="#fa7f71">+</font> inicial i el <font color="#fa7f71">codi de país</font>
+            <font color="#00BFFF"><b>Ometre codi de país</b></font>: <br>
+            &ensp; Quan estigui activat, el <font color="#fa7f71">+</font> inicial i el <font color="#fa7f71">codi de país</font>
              s\'eliminaran d\'un número internacional.<br>
             <br>
             Per exemple, tant <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> com
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> es convertiran en <font color="#03DAC5">12345</font>,
-            això us permet utilitzar expressions regulars més senzilles `123.*` en lloc de `(33|44)*123.*` per fer coincidir els números internacionals.<br>
+            això permet utilitzar expressions regulars més senzilles `123.*` en lloc de `(33|44)*123.*` per fer coincidir números internacionals.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ignorar la distinció entre majúscules i minúscules</b></font>:<br>
-            &ensp; Fa que la concordança de patrons no distingeixi entre majúscules i minúscules, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Distingeix majúscules i minúscules</b></font>:<br>
+            &ensp; Per defecte, la concordança de l\'expressió regular no distingeix majúscules i minúscules, <font color="#03DAC5"><b>a</b></font>
               coincidiria tant amb <font color="#03DAC5"><b>a</b></font> com amb <font color="#03DAC5"><b>A</b></font>. <br>
-            <br>
-
-            <font color="#00BFFF"><b>El punt coincideix amb tot</b></font>: <br>
-            &ensp; Quan està activat, <font color="#03DAC5"><b>.</b></font> també coincidirà amb caràcters de nova línia (<font color="#03DAC5"><b>\\n</b></font>),
-              això permet que el punt coincideixi en diverses línies. <br>
-            &ensp; Cas d\'ús: <br>
-            &emsp;   Coincideix amb el missatge SMS multilínea: <br>
-            &emsp;   <font color="#fa7f71">reclami el seu premi: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   amb la regla: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            &ensp; Activa-ho per fer-ho sensible a majúscules i minúscules. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Número Bruta</item>
-        <item>Ometre el codi de país</item>
-        <item>Ignorar la distinció entre majúscules i minúscules</item>
-        <item>El punt coincideix amb tot</item>
+        <item>Número sense processar</item>
+        <item>Ometre codi de país</item>
+        <item>Distingeix majúscules i minúscules</item>
     </string-array>
-    <string name="disable_number_optimization">Aquesta optimització es pot desactivar amb el indicador d\'expressió regular "Número Bruta".</string>
+    <string name="disable_number_optimization">Aquesta optimització es pot desactivar amb el indicador d\'expressió regular \"Número Bruta\".</string>
 </resources>

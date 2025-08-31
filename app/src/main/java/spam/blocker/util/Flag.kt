@@ -30,17 +30,11 @@ fun Int.removeFlag(f: Int): Int {
 //     if it's inverted: show when not set
 fun Int.toFlagStr(
     attrMap: Map<Int, String> = Def.MAP_REGEX_FLAGS,
-    inverse: List<Int> = Def.LIST_REGEX_FLAG_INVERSE,
 ): String {
     var ret = ""
     attrMap.forEach { (k, v) ->
-        if (inverse.contains(k)) {
-            if (!hasFlag(k))
-                ret += v
-        } else {
-            if (hasFlag(k))
-                ret += v
-        }
+        if (hasFlag(k))
+            ret += v
     }
     return ret
 }

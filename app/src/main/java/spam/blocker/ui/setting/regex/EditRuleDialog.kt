@@ -4,11 +4,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,12 +39,8 @@ import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
-import spam.blocker.def.Def.FLAG_REGEX_DOT_MATCH_ALL
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
-import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CASE
-import spam.blocker.def.Def.FLAG_REGEX_OMIT_CC
-import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.LaunchedEffectOnlyOnChange
 import spam.blocker.ui.M
@@ -133,8 +127,6 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                         },
                         color = Color.Magenta,
                         modifier = M.wrapContentSize()
-//                            .defaultMinSize(minWidth = 24.dp)
-//                            .wrapContentWidth(Alignment.CenterHorizontally),
                     )
                 },
                 dismissOnClick = index == 0,
@@ -142,8 +134,8 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                 when (index) {
                     0 -> { // Number Mode
                         regexFlags.intValue = regexFlags.intValue
-                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                            .removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
+                            .removeFlag(FLAG_REGEX_FOR_CONTACT)
                     }
 
                     1, 2 -> { // Contact Mode, Contact Group Mode
@@ -155,14 +147,14 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                                 when (index) {
                                     1 -> { // Contact Mode
                                         regexFlags.intValue = regexFlags.intValue
-                                            .addFlag(Def.FLAG_REGEX_FOR_CONTACT)
-                                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                                            .addFlag(FLAG_REGEX_FOR_CONTACT)
+                                            .removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
                                     }
 
                                     2 -> { // Contact Group Mode
                                         regexFlags.intValue = regexFlags.intValue
-                                            .removeFlag(Def.FLAG_REGEX_FOR_CONTACT)
-                                            .addFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                                            .removeFlag(FLAG_REGEX_FOR_CONTACT)
+                                            .addFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
                                     }
                                 }
                                 menuExpanded.value = false

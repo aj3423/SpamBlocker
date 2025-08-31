@@ -175,34 +175,29 @@ object Def {
 
 
     // regexFlags, max: 1 shl 30
-    const val FLAG_REGEX_IGNORE_CASE = 1 shl 0
+    const val FLAG_REGEX_IGNORE_CASE = 1 shl 0 // remove this after 2027-01-01, replaced by FLAG_REGEX_CASE_SENSITIVE
     const val FLAG_REGEX_MULTILINE = 1 shl 1
-    const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
+//    const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
     const val FLAG_REGEX_LITERAL = 1 shl 3
+    const val FLAG_REGEX_CASE_SENSITIVE = 1 shl 4
+
     const val FLAG_REGEX_RAW_NUMBER = 1 shl 10
     const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
     const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
     const val FLAG_REGEX_OMIT_CC = 1 shl 13
 
 
-    const val DefaultRegexFlags =  FLAG_REGEX_IGNORE_CASE or FLAG_REGEX_DOT_MATCH_ALL
+    const val DefaultRegexFlags =  0
 
     val MAP_REGEX_FLAGS = mapOf(
-        FLAG_REGEX_IGNORE_CASE to "I",
+        FLAG_REGEX_CASE_SENSITIVE to "I",
         FLAG_REGEX_MULTILINE to "m",
-        FLAG_REGEX_DOT_MATCH_ALL to "d",
+//        FLAG_REGEX_DOT_MATCH_ALL to "d",
         FLAG_REGEX_LITERAL to "l",
         FLAG_REGEX_RAW_NUMBER to "®", // r
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",
         FLAG_REGEX_OMIT_CC to "🌐",
-    )
-
-    // inverse means it won't show labels for these flags when they are set
-    // only show labels when they are not set
-    val LIST_REGEX_FLAG_INVERSE = listOf(
-        FLAG_REGEX_IGNORE_CASE,
-        FLAG_REGEX_DOT_MATCH_ALL
     )
 
 

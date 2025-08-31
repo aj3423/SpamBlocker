@@ -11,7 +11,7 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            These flags change the matching behavior of the regex, they are set for new rules by default. <br>
+            These flags change the matching behavior of the regex. <br>
             <br>
 
             <font color="#00BFFF"><b>Raw Number</b></font>: <br>
@@ -28,29 +28,16 @@
             this allows you to use simpler regex `123.*` instead of `(33|44)*123.*` to match international numbers.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ignore Case</b></font>:<br>
-            &ensp; It makes the pattern matching case-insensitive, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Case Sensitive</b></font>:<br>
+            &ensp; By default, the regex matching is case-insensitive, <font color="#03DAC5"><b>a</b></font>
               would match both <font color="#03DAC5"><b>a</b></font> and <font color="#03DAC5"><b>A</b></font>. <br>
-            <br>
-
-            <font color="#00BFFF"><b>Dot Match All</b></font>: <br>
-            &ensp; When enabled, <font color="#03DAC5"><b>.</b></font> will also match newline characters (<font color="#03DAC5"><b>\\n</b></font>),
-              this allows the dot to match across multiple lines. <br>
-            &ensp; Use case: <br>
-            &emsp;   Match multiline SMS message: <br>
-            &emsp;   <font color="#fa7f71">claim your prize: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   with rule: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            &ensp; Enable this to make it case-sensitive. <br>
         ]]>
     </string>
-
     <string-array name="regex_flags_list">
         <item>Raw Number</item>
         <item>Omit Country Code</item>
-        <item>Ignore Case</item>
-        <item>Dot Match All</item>
+        <item>Case Sensitive</item>
     </string-array>
     <string name="disable_number_optimization">This optimization can be disabled by the regex flag "Raw Number".</string>
 </resources>

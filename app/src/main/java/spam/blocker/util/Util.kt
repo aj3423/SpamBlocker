@@ -399,15 +399,16 @@ object Util {
 
     fun flagsToRegexOptions(flags: Int): Set<RegexOption> {
         val opts = mutableSetOf<RegexOption>()
-        if (flags.hasFlag(Def.FLAG_REGEX_IGNORE_CASE)) {
+
+        // the "Ignore Case" checking is for history compatibility, remove this after 2027-01-01
+        if (!flags.hasFlag(Def.FLAG_REGEX_CASE_SENSITIVE)) {
             opts.add(RegexOption.IGNORE_CASE)
         }
+
         if (flags.hasFlag(Def.FLAG_REGEX_MULTILINE)) {
             opts.add(RegexOption.MULTILINE)
         }
-        if (flags.hasFlag(Def.FLAG_REGEX_DOT_MATCH_ALL)) {
-            opts.add(RegexOption.DOT_MATCHES_ALL)
-        }
+
         if (flags.hasFlag(Def.FLAG_REGEX_LITERAL)) {
             opts.add(RegexOption.LITERAL)
         }

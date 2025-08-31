@@ -11,45 +11,29 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            これらのフラグは正規表現の一致動作を変更します。新しいルールにはデフォルトで設定されています。<br>
+            これらのフラグは、正規表現の一致動作を変更します。<br>
             <br>
 
-            <font color="#00BFFF"><b>電話番号をそのまま</b></font>:<br>
-            &ensp; 有効にすると、電話番号は最適化されず、<font color="#03DAC5"><b>+</b></font>
-            と<font color="#03DAC5"><b>先頭の0</b></font>が維持されます。国内番号の区別を行うのに役立ちます。<br>
+            <font color="#00BFFF"><b>生番号</b></font>:<br>
+            &ensp; 有効にすると、番号は最適化されず、<font color="#03DAC5"><b>+</b></font>と<font color="#03DAC5"><b>先頭の0</b></font>が保持されます。これは国内の番号を区別するのに役立ちます。<br>
             <br>
 
-            <font color="#00BFFF"><b>国番号の省略</b></font>:<br>
-            &ensp; 有効にすると、国際電話番号の先頭の<font color="#fa7f71">+</font>と<font color="#fa7f71">国番号</font>
-             が削除されます。<br>
+            <font color="#00BFFF"><b>国コードを省略</b></font>:<br>
+            &ensp; 有効にすると、国際番号から先頭の<font color="#fa7f71">+</font>と<font color="#fa7f71">国コード</font>が削除されます。<br>
             <br>
-            例えば、<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font>と
-            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font>はどちらも<font color="#03DAC5">12345</font>になり、
-            これにより、国際電話番号に一致させるために `(33|44)*123.*` ではなく、より簡単な正規表現 `123.*` を使用できます。<br>
+            例えば、<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font>と<font color="#fa7f71">+44</font><font color="#03DAC5">12345</font>の両方が<font color="#03DAC5">12345</font>になります。これにより、`123.*`のようなより単純な正規表現を`(33|44)*123.*`の代わりに国際番号に一致させることができます。<br>
             <br>
 
-            <font color="#00BFFF"><b>大文字小文字の無視</b></font>:<br>
-            &ensp; パターンマッチで大文字と小文字を区別しなくなります。<font color="#03DAC5"><b>a</b></font>
-              は<font color="#03DAC5"><b>a</b></font>と<font color="#03DAC5"><b>A</b></font>の両方に一致します。<br>
-            <br>
-
-            <font color="#00BFFF"><b>ドットによる改行文字の一致</b></font>:<br>
-            &ensp; 有効にすると、<font color="#03DAC5"><b>.</b></font>は改行文字(<font color="#03DAC5"><b>\\n</b></font>)にも一致します。これにより、ドットは複数行にわたって一致するようになります。<br>
-            &ensp; 使用例:<br>
-            &emsp;   複数行のSMSメッセージに一致させる:<br>
-            &emsp;   <font color="#fa7f71">賞品を受け取ってください: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   ルールを使用:<br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            <font color="#00BFFF"><b>大文字と小文字を区別</b></font>:<br>
+            &ensp; デフォルトでは、正規表現の一致は大文字と小文字を区別せず、<font color="#03DAC5"><b>a</b></font>は<font color="#03DAC5"><b>a</b></font>と<font color="#03DAC5"><b>A</b></font>の両方に一致します。<br>
+            &ensp; これを有効にすると、大文字と小文字を区別するようになります。<br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>電話番号をそのまま</item>
-        <item>国番号の省略</item>
-        <item>大文字小文字の無視</item>
-        <item>ドットによる改行文字の一致</item>
+        <item>生番号</item>
+        <item>国コードを省略</item>
+        <item>大文字と小文字を区別</item>
     </string-array>
     <string name="disable_number_optimization">この最適化は正規表現フラグ「生番号」で無効にできます。</string>
 </resources>

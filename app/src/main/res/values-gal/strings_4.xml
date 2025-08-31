@@ -11,46 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Estas marcas cambian o comportamento de coincidencia da expresión regular, están establecidas por defecto para as novas regras. <br>
+            Estas bandeiras cambian o comportamento de coincidencia das expresións regulares. <br>
             <br>
 
-            <font color="#00BFFF"><b>Número Bruto</b></font>: <br>
-            &ensp; Cando está activado, o número non se optimizará, <font color="#03DAC5"><b>+</b></font>
-            e <font color="#03DAC5"><b>ceros á esquerda</b></font> permanecerán, útil para diferenciar números nacionais.<br>
+            <font color="#00BFFF"><b>Número en bruto</b></font>: <br>
+            &ensp; Cando activado, o número de teléfono non se optimizará, <font color="#03DAC5"><b>+</b></font>
+            e <font color="#03DAC5"><b>ceros iniciais</b></font> permanecerán, útil para diferenciar números de teléfono nacionais.<br>
             <br>
 
             <font color="#00BFFF"><b>Omitir Código de País</b></font>: <br>
-            &ensp; Cando está activado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código de país</font>
-             eliminaranse dun número internacional.<br>
+            &ensp; Cando activado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código de país</font>
+             serán eliminados dun número de teléfono internacional.<br>
             <br>
             Por exemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> como
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> converteranse en <font color="#03DAC5">12345</font>,
-            isto permítelle usar unha expresión regular máis sinxela `123.*` en lugar de `(33|44)*123.*` para coincidir con números internacionais.<br>
+            isto permítelle usar expresións regulares máis sinxelas como `123.*` en lugar de `(33|44)*123.*` para coincidir con números de teléfono internacionais.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ignorar Maiúsculas/Minúsculas</b></font>:<br>
-            &ensp; Fai que a coincidencia de patróns non teña en conta as maiúsculas/minúsculas, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Distinción entre maiúsculas e minúsculas</b></font>:<br>
+            &ensp; Por defecto, a coincidencia de expresións regulares non distingue entre maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
               coincidiría tanto con <font color="#03DAC5"><b>a</b></font> como con <font color="#03DAC5"><b>A</b></font>. <br>
-            <br>
-
-            <font color="#00BFFF"><b>Punto Coincide con Todo</b></font>: <br>
-            &ensp; Cando está activado, <font color="#03DAC5"><b>.</b></font> tamén coincidirá con caracteres de nova liña (<font color="#03DAC5"><b>\\n</b></font>),
-              isto permite que o punto coincida con varias liñas. <br>
-            &ensp; Caso de uso: <br>
-            &emsp;   Coincidir con mensaxe SMS multilínea: <br>
-            &emsp;   <font color="#fa7f71">reclama o teu premio: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   con regra: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            &ensp; Activa isto para que distinga entre maiúsculas e minúsculas. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Número Bruto</item>
-        <item>Omitir código de país</item>
-        <item>Ignorar maiúsculas/minúsculas</item>
-        <item>Punto coincide con todo</item>
+        <item>Número en bruto</item>
+        <item>Omitir Código de País</item>
+        <item>Distinción entre maiúsculas e minúsculas</item>
     </string-array>
-    <string name="disable_number_optimization">Esta optimización pódese deshabilitar coa bandeira de regex "Número Crú".</string>
+    <string name="disable_number_optimization">Esta optimización pódese deshabilitar coa bandeira de regex \"Número Crú\".</string>
 </resources>

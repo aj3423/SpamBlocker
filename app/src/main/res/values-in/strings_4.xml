@@ -11,46 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Penanda ini mengubah perilaku pencocokan regex, mereka ditetapkan untuk aturan baru secara default. <br>
+            Flag ini mengubah perilaku pencocokan regex. <br>
             <br>
 
             <font color="#00BFFF"><b>Nomor Mentah</b></font>: <br>
-            &ensp; Bila diaktifkan, nomor tidak akan dioptimalkan, <font color="#03DAC5"><b>+</b></font>
-            dan <font color="#03DAC5"><b>bagian depan 0s</b></font> akan tetap, berguna untuk membedakan nomor domestik.<br>
+            &ensp; Saat diaktifkan, nomor tidak akan dioptimalkan, <font color="#03DAC5"><b>+</b></font>
+            dan <font color="#03DAC5"><b>angka 0 di awal</b></font> akan tetap ada, berguna untuk membedakan nomor domestik.<br>
             <br>
 
             <font color="#00BFFF"><b>Hilangkan Kode Negara</b></font>: <br>
-            &ensp; Bila diaktifkan, bagian depan <font color="#fa7f71">+</font> dan <font color="#fa7f71">kode negara</font>
+            &ensp; Saat diaktifkan, <font color="#fa7f71">+</font> di awal dan <font color="#fa7f71">kode negara</font>
              akan dihapus dari nomor internasional.<br>
             <br>
-            Misalnya, keduanya <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> dan
+            Misalnya, baik <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> maupun
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> akan menjadi <font color="#03DAC5">12345</font>,
-            ini memungkinkan Anda untuk menggunakan regex yang lebih sederhana `123.*` daripada `(33|44)*123.*` untuk menyesuaikan dengan angka internasional.<br>
+            ini memungkinkan Anda menggunakan regex `123.*` yang lebih sederhana alih-alih `(33|44)*123.*` untuk mencocokkan nomor internasional.<br>
             <br>
 
-            <font color="#00BFFF"><b>Pengabaian Kasus</b></font>:<br>
-            &ensp; Hal ini membuat pencocokan pola menjadi tidak peka huruf, <font color="#03DAC5"><b>a</b></font>
-              akan cocok dengan keduanya <font color="#03DAC5"><b>a</b></font> dan <font color="#03DAC5"><b>A</b></font>. <br>
-            <br>
-
-            <font color="#00BFFF"><b>Cocokkan Semua Titik</b></font>: <br>
-            &ensp; Ketika diaktifkan, <font color="#03DAC5"><b>.</b></font> juga akan cocok dengan karakter baris baru (<font color="#03DAC5"><b>\\n</b></font>),
-              ini memungkinkan titik untuk dicocokkan di beberapa garis. <br>
-            &ensp; Kasus penggunaan: <br>
-            &emsp;   Mencocokan pesan SMS dengan banyak baris: <br>
-            &emsp;   <font color="#fa7f71">klaim hadiah Anda: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   dengan aturan: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            <font color="#00BFFF"><b>Peka Huruf Besar-Kecil</b></font>:<br>
+            &ensp; Secara default, pencocokan regex tidak peka huruf besar-kecil, <font color="#03DAC5"><b>a</b></font>
+              akan cocok dengan <font color="#03DAC5"><b>a</b></font> maupun <font color="#03DAC5"><b>A</b></font>. <br>
+            &ensp; Aktifkan ini untuk membuatnya peka huruf besar-kecil. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
         <item>Nomor Mentah</item>
         <item>Hilangkan Kode Negara</item>
-        <item>Abaikan Kasus</item>
-        <item>Cocokkan Semua Titik</item>
+        <item>Peka Huruf Besar-Kecil</item>
     </string-array>
-    <string name="disable_number_optimization">Pengoptimalan ini dapat dinonaktifkan dengan tanda regex "Nomor Mentah".</string>
+    <string name="disable_number_optimization">Pengoptimalan ini dapat dinonaktifkan dengan tanda regex \"Nomor Mentah\".</string>
 </resources>

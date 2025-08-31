@@ -460,44 +460,22 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.type)
     }
 
-    // test regex flags IgnoreCase
+    // test regex flags CaseSensitive
     @Test
-    fun regex_flags_ignore_case() {
+    fun regex_flags_case_sensitive() {
         val msg = " Discount "
 
-        // should pass without this flag
-        add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS))
+        // should pass with this flag set
+        add_content_rule(build_rule(".*discount.*", "", 1, true, Def.FLAG_FOR_SMS,
+            patternFlags = Def.FLAG_REGEX_CASE_SENSITIVE))
         var r = Checker.checkSms(ctx, logger = null, B, msg)
         assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
 
-        // should block with this flag set
+        // should block without this flag
         add_content_rule(
             build_rule(
                 ".*discount.*", "", 1, true, Def.FLAG_FOR_SMS,
-                patternFlags = Def.FLAG_REGEX_IGNORE_CASE
-            )
-        )
-
-        r = Checker.checkSms(ctx, logger = null, B, msg)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_CONTENT, r.type)
-    }
-
-    // test regex flags DotMatchAll
-    @Test
-    fun regex_flags_dot_match_all() {
-        val msg = " http://\nabc.com "
-        val rule = ".*http.*com.*"
-
-        // should pass without this flag
-        add_content_rule(build_rule(rule, "", 1, true, Def.FLAG_FOR_SMS))
-        var r = Checker.checkSms(ctx, logger = null, B, msg)
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
-
-        // should block with this flag set
-        add_content_rule(
-            build_rule(
-                rule, "", 1, true, Def.FLAG_FOR_SMS,
-                patternFlags = Def.FLAG_REGEX_DOT_MATCH_ALL
+                patternFlags = 0
             )
         )
 

@@ -11,46 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Estas banderas cambian el comportamiento de coincidencia de la expresión regular, se establecen de forma predeterminada para las nuevas reglas. <br>
+            Estas banderas cambian el comportamiento de coincidencia de la expresión regular. <br>
             <br>
 
-            <font color="#00BFFF"><b>Número sin procesar</b></font>: <br>
-            &ensp; Cuando está habilitado, el número no se optimizará, <font color="#03DAC5"><b>+</b></font>
-            y <font color="#03DAC5"><b>los ceros iniciales</b></font> permanecerán, útil para diferenciar los números nacionales.<br>
+            <font color="#00BFFF"><b>Número en bruto</b></font>: <br>
+            &ensp; Cuando está activado, el número no será optimizado, el <font color="#03DAC5"><b>+</b></font>
+            y los <font color="#03DAC5"><b>ceros iniciales</b></font> se mantendrán, útil para diferenciar números nacionales.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omitir código de país</b></font>: <br>
-            &ensp; Cuando está habilitado, el <font color="#fa7f71">+</font> inicial y el <font color="#fa7f71">código de país</font>
+            <font color="#00BFFF"><b>Omitir Código de País</b></font>: <br>
+            &ensp; Cuando está activado, el <font color="#fa7f71">+</font> inicial y el <font color="#fa7f71">código de país</font>
              se eliminarán de un número internacional.<br>
             <br>
             Por ejemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> como
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> se convertirán en <font color="#03DAC5">12345</font>,
-            esto le permite usar expresiones regulares más simples `123.*` en lugar de `(33|44)*123.*` para coincidir con números internacionales.<br>
+            esto le permite usar una expresión regular más simple `123.*` en lugar de `(33|44)*123.*` para coincidir con números internacionales.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ignorar mayúsculas</b></font>:<br>
-            &ensp; Hace que la coincidencia de patrones no distinga entre mayúsculas y minúsculas, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Sensible a Mayúsculas</b></font>:<br>
+            &ensp; Por defecto, la coincidencia de la expresión regular no distingue mayúsculas y minúsculas, una <font color="#03DAC5"><b>a</b></font>
               coincidiría tanto con <font color="#03DAC5"><b>a</b></font> como con <font color="#03DAC5"><b>A</b></font>. <br>
-            <br>
-
-            <font color="#00BFFF"><b>Punto coincide con todo</b></font>: <br>
-            &ensp; Cuando está habilitado, <font color="#03DAC5"><b>.</b></font> también coincidirá con los caracteres de nueva línea (<font color="#03DAC5"><b>\\n</b></font>),
-              esto permite que el punto coincida en varias líneas. <br>
-            &ensp; Caso de uso: <br>
-            &emsp;   Coincidir con mensaje SMS multilínea: <br>
-            &emsp;   <font color="#fa7f71">reclama tu premio: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   con la regla: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            &ensp; Actívelo para que distinga mayúsculas y minúsculas. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Número sin formato</item>
-        <item>Omitir código de país</item>
-        <item>Ignorar mayúsculas/minúsculas</item>
-        <item>Punto coincide con todo</item>
+        <item>Número en bruto</item>
+        <item>Omitir Código de País</item>
+        <item>Sensible a Mayúsculas</item>
     </string-array>
-    <string name="disable_number_optimization">Esta optimización puede ser desactivada por la bandera regex "Número Bruto".</string>
+    <string name="disable_number_optimization">Esta optimización puede ser desactivada por la bandera regex \"Número Bruto\".</string>
 </resources>

@@ -20,7 +20,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 39
+        const val DB_VERSION = 40
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -105,7 +105,7 @@ class Db private constructor(
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        // number filters
+        // number rules / content rules / quick copy
         fun createPatternTable(tableName: String) {
             db.execSQL(
                 "CREATE TABLE IF NOT EXISTS $tableName (" +
@@ -394,6 +394,18 @@ class Db private constructor(
             // 6. Drop old column `importance`
             // Nope, just ignore it, there's no `DROP COLUMN` in sqlite.
 
+        }
+        // v4.16 changed regex flag IgnoreCase -> CaseSensitive
+        if ((newVersion >= 40) && (oldVersion < 40)) {
+            // number rules
+            db.execSQL("UPDATE $TABLE_NUMBER_RULE SET $COLUMN_PATTERN_FLAGS = $COLUMN_PATTERN_FLAGS | 16 WHERE ($COLUMN_PATTERN_FLAGS & 1) = 0;")
+            db.execSQL("UPDATE $TABLE_NUMBER_RULE SET $COLUMN_PATTERN_EXTRA_FLAGS = $COLUMN_PATTERN_EXTRA_FLAGS | 16 WHERE ($COLUMN_PATTERN_EXTRA_FLAGS & 1) = 0;")
+            // content rules
+            db.execSQL("UPDATE $TABLE_CONTENT_RULE SET $COLUMN_PATTERN_FLAGS = $COLUMN_PATTERN_FLAGS | 16 WHERE ($COLUMN_PATTERN_FLAGS & 1) = 0;")
+            db.execSQL("UPDATE $TABLE_CONTENT_RULE SET $COLUMN_PATTERN_EXTRA_FLAGS = $COLUMN_PATTERN_EXTRA_FLAGS | 16 WHERE ($COLUMN_PATTERN_EXTRA_FLAGS & 1) = 0;")
+            // quick copy
+            db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_PATTERN_FLAGS = $COLUMN_PATTERN_FLAGS | 16 WHERE ($COLUMN_PATTERN_FLAGS & 1) = 0;")
+            db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_PATTERN_EXTRA_FLAGS = $COLUMN_PATTERN_EXTRA_FLAGS | 16 WHERE ($COLUMN_PATTERN_EXTRA_FLAGS & 1) = 0;")
         }
     }
 }

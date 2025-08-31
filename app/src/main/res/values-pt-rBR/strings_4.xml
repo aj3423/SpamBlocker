@@ -11,46 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Esses sinalizadores alteram o comportamento de correspondência da expressão regular, eles são definidos por padrão para novas regras. <br>
+            Esses sinalizadores mudam o comportamento de correspondência da expressão regular. <br>
             <br>
 
             <font color="#00BFFF"><b>Número Bruto</b></font>: <br>
-            &ensp; Quando ativado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font>
-            e <font color="#03DAC5"><b>zeros à esquerda</b></font> permanecerão, útil para diferenciar números domésticos.<br>
+            &ensp; Quando ativado, o número de telefone não será otimizado, <font color="#03DAC5"><b>+</b></font>
+            e <font color="#03DAC5"><b>zeros iniciais</b></font> permanecerão, útil para diferenciar números de telefone domésticos.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omitir Código do País</b></font>: <br>
-            &ensp; Quando ativado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código do país</font>
-             serão removidos de um número internacional.<br>
+            <font color="#00BFFF"><b>Omitir Código de País</b></font>: <br>
+            &ensp; Quando ativado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código de país</font>
+             serão removidos de um número de telefone internacional.<br>
             <br>
             Por exemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> quanto
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> se tornarão <font color="#03DAC5">12345</font>,
-            isso permite que você use expressões regulares mais simples `123.*` em vez de `(33|44)*123.*` para corresponder a números internacionais.<br>
+            isso permite que você use uma regex mais simples `123.*` em vez de `(33|44)*123.*` para corresponder a números de telefone internacionais.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ignorar maiúsculas/minúsculas</b></font>:<br>
-            &ensp; Torna a correspondência de padrões insensível a maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
-              corresponderia a <font color="#03DAC5"><b>a</b></font> e <font color="#03DAC5"><b>A</b></font>. <br>
-            <br>
-
-            <font color="#00BFFF"><b>Ponto corresponde a todos</b></font>: <br>
-            &ensp; Quando ativado, <font color="#03DAC5"><b>.</b></font> também corresponderá a caracteres de nova linha (<font color="#03DAC5"><b>\\n</b></font>),
-              isso permite que o ponto corresponda a várias linhas. <br>
-            &ensp; Caso de uso: <br>
-            &emsp;   Corresponder a mensagem SMS multilinha: <br>
-            &emsp;   <font color="#fa7f71">receba seu prêmio: http://<br>
-            &emsp;   abc.com </font><br>
-            &emsp;   com a regra: <br>
-            &emsp;   <font color="#fa7f71"><b>*http.*com.*</b></font> <br>
-
+            <font color="#00BFFF"><b>Diferenciar Maiúsculas/Minúsculas</b></font>:<br>
+            &ensp; Por padrão, a correspondência de regex não diferencia maiúsculas/minúsculas, <font color="#03DAC5"><b>a</b></font>
+              corresponderia tanto a <font color="#03DAC5"><b>a</b></font> quanto a <font color="#03DAC5"><b>A</b></font>. <br>
+            &ensp; Ative isso para torná-lo sensível a maiúsculas/minúsculas. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
         <item>Número Bruto</item>
-        <item>Omitir Código do País</item>
-        <item>Ignorar maiúsculas/minúsculas</item>
-        <item>Ponto Corresponde a Todos</item>
+        <item>Omitir Código de País</item>
+        <item>Diferenciar Maiúsculas/Minúsculas</item>
     </string-array>
-    <string name="disable_number_optimization">Essa otimização pode ser desabilitada pela flag regex "Número Bruto".</string>
+    <string name="disable_number_optimization">Essa otimização pode ser desabilitada pela flag regex \"Número Bruto\".</string>
 </resources>
