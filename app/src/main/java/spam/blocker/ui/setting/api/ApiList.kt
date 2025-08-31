@@ -88,14 +88,14 @@ fun ApiList(vm: ApiViewModel) {
         // Export
         LabelItem(
             label = ctx.getString(R.string.export),
-            icon = { GreyIcon20(R.drawable.ic_backup_export) }
+            leadingIcon = { GreyIcon20(R.drawable.ic_backup_export) }
         ) {
             exportTrigger.value = true
         },
         // Priority
         LabelItem(
             label = ctx.getString(R.string.priority),
-            icon = { ResIcon(R.drawable.ic_priority, modifier = M.size(18.dp), color = LightMagenta) }
+            leadingIcon = { ResIcon(R.drawable.ic_priority, modifier = M.size(18.dp), color = LightMagenta) }
         ) {
             priorityTrigger.value = true
         }

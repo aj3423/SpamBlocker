@@ -53,7 +53,8 @@ class DividerItem(
 class LabelItem(
     val id: String = "",
     val label: String,
-    val icon: (@Composable () -> Unit)? = null,
+    val leadingIcon: (@Composable () -> Unit)? = null,
+    val trailingIcon: (@Composable () -> Unit)? = null,
     val tooltip: String? = null,
     val selected: Boolean = false,
     val dismissOnClick: Boolean = true,
@@ -82,15 +83,19 @@ class LabelItem(
                     }
                 )
         ) {
-            icon?.let {
+            leadingIcon?.let {
                 it()
             }
 
-            GreyLabel(
-                text = label,
-                modifier = M.weight(1f),
-                fontWeight = if (selected) FontWeight.Bold else null,
-            )
+            RowVCenterSpaced(10, modifier = M.weight(1f)) {
+                GreyLabel(
+                    text = label,
+                    modifier = M.weight(1f),
+                    fontWeight = if (selected) FontWeight.Bold else null,
+                )
+                trailingIcon?.let { it() }
+            }
+
             tooltip?.let {
                 BalloonQuestionMark(tooltip = tooltip)
             }
@@ -102,11 +107,23 @@ class LabelItem(
 class CheckItem(
     val state: MutableState<Boolean>,
     val label: String,
+    val trailingIcon: (@Composable ()->Unit)? = null,
     private val onCheckChange: Lambda1<Boolean>
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
-        CheckBox(label = { GreyLabel(label) }, checked = state.value, onCheckChange = onCheckChange)
+        CheckBox(
+            label = {
+                RowVCenterSpaced(2) {
+                    GreyLabel(label)
+                    trailingIcon?.let {
+                        it()
+                    }
+                }
+            },
+            checked = state.value,
+            onCheckChange = onCheckChange,
+        )
     }
 }
 

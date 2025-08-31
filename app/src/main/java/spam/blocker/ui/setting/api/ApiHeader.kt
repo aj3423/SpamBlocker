@@ -156,7 +156,7 @@ fun ApiHeader(
         val ret = mutableListOf(
             LabelItem(
                 label = ctx.getString(R.string.customize),
-                icon = { GreyIcon(R.drawable.ic_note) }
+                leadingIcon = { GreyIcon(R.drawable.ic_note) }
             ) {
                 initialApiToEdit.value = Api(
                     actions = if (vm.forType == Def.ForApiQuery)
@@ -168,7 +168,7 @@ fun ApiHeader(
             },
             LabelItem(
                 label = ctx.getString(R.string.import_),
-                icon = { GreyIcon(R.drawable.ic_backup_import) }
+                leadingIcon = { GreyIcon(R.drawable.ic_backup_import) }
             ) {
                 importTrigger.value = true
             },

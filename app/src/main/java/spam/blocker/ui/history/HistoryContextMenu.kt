@@ -72,7 +72,7 @@ fun HistoryContextMenuWrapper(
         labelIds.mapIndexed { menuIndex, labelId ->
             LabelItem(
                 label = ctx.getString(labelId),
-                icon = {
+                leadingIcon = {
                     GreyIcon20(
                         icons[menuIndex]
                     )

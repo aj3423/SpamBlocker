@@ -225,7 +225,7 @@ fun Spinner(
                 when (displayType) {
                     SpinnerType.Icon, SpinnerType.IconLabel -> {
                         {
-                            items[selected].icon?.let { it() }
+                            items[selected].leadingIcon?.let { it() }
                         }
                     }
                     else -> null

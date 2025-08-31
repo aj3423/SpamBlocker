@@ -269,7 +269,7 @@ fun EditChannelDialog(
                 ids.mapIndexed { index, impo ->
                     LabelItem(
                         label = names[index],
-                        icon = {
+                        leadingIcon = {
                             ChannelIcons(impo, false)
                         },
                     ) {
@@ -459,7 +459,7 @@ fun ChannelPicker(
             G.notificationChannels.mapIndexed { index, channel ->
                 LabelItem(
                     label = channel.displayName(ctx),
-                    icon = {
+                    leadingIcon = {
                         ChannelIcons(channel.importance, channel.mute)
                     },
                     onClick = {
@@ -474,7 +474,7 @@ fun ChannelPicker(
                     // Customize
                     LabelItem(
                         label = ctx.getString(R.string.customize),
-                        icon = { GreyIcon18(R.drawable.ic_note) },
+                        leadingIcon = { GreyIcon18(R.drawable.ic_note) },
                         dismissOnClick = false,
                         tooltip = ctx.getString(R.string.help_create_notification_channel)
                     ) {

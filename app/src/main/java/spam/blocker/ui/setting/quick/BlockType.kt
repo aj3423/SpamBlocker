@@ -68,7 +68,7 @@ fun BlockType() {
         ctx.resources.getStringArray(R.array.block_type_list).mapIndexed { index, label ->
             LabelItem(
                 label = label,
-                icon = icons[index],
+                leadingIcon = icons[index],
                 onClick = {
                     when (index) {
                         0, 1 -> { // Reject, Silence

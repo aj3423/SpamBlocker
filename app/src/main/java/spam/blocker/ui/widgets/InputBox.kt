@@ -47,6 +47,11 @@ import androidx.compose.ui.unit.round
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.def.Def.FLAG_REGEX_DOT_MATCH_ALL
+import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CASE
+import spam.blocker.def.Def.FLAG_REGEX_OMIT_CC
+import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
+import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.LightMagenta
@@ -613,6 +618,21 @@ fun RegexInputBox(
                     .mapIndexed { idx, label ->
                         CheckItem(
                             label = label,
+                            trailingIcon = {
+                                Text(
+                                    text = when (idx) {
+                                        0 -> MAP_REGEX_FLAGS[FLAG_REGEX_RAW_NUMBER]!!
+                                        1 -> MAP_REGEX_FLAGS[FLAG_REGEX_OMIT_CC]!!
+                                        2 -> MAP_REGEX_FLAGS[FLAG_REGEX_IGNORE_CASE]!!
+                                        else -> MAP_REGEX_FLAGS[FLAG_REGEX_DOT_MATCH_ALL]!!
+                                    },
+                                    color = Color.Magenta,
+                                    modifier = M
+                                        .defaultMinSize(minWidth = 24.dp)
+                                        .wrapContentWidth(Alignment.CenterHorizontally),
+                                )
+
+                            },
                             state = when (idx) {
                                 0 -> hasR
                                 1 -> hasCC

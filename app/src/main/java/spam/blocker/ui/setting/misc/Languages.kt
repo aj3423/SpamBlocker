@@ -68,7 +68,7 @@ fun Language() {
             LabelItem(
                 id = lang.code,
                 label = if (lang.emoji != null) "${lang.emoji}${if (lang.code.isEmpty()) "" else "  " + lang.code}" else lang.code,
-                icon = if (lang.iconId != null) {
+                leadingIcon = if (lang.iconId != null) {
                     { ResIcon(lang.iconId, modifier = M.size(20.dp), color = Color.Unspecified) }
                 } else null,
                 onClick = {

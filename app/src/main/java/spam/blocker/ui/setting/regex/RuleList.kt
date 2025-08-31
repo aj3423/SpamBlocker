@@ -288,7 +288,7 @@ fun RuleList(
                     4 -> label.format(vm.table.count(ctx)) // Delete All(%d) Rules
                     else -> label
                 },
-                icon = { GreyIcon20(icons[menuIndex]) }
+                leadingIcon = { GreyIcon20(icons[menuIndex]) }
             ) {
                 when (menuIndex) {
                     0 -> { // search rule
@@ -320,7 +320,7 @@ fun RuleList(
     contextMenuItems += DividerItem()
     contextMenuItems += LabelItem(
         label = Str(R.string.setting),
-        icon = { GreyIcon20(R.drawable.ic_settings) }
+        leadingIcon = { GreyIcon20(R.drawable.ic_settings) }
     ) {
         ruleSettingsTrigger.value = true
     }

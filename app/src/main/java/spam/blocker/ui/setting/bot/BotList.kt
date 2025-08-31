@@ -208,7 +208,7 @@ fun BotList() {
     labels.forEachIndexed { menuIndex, label ->
         contextMenuItems += LabelItem(
             label = label,
-            icon = { GreyIcon20(icons[menuIndex]) }
+            leadingIcon = { GreyIcon20(icons[menuIndex]) }
         ) {
             when (menuIndex) {
                 0 -> { logTrigger.value = true } // View log
