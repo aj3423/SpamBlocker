@@ -601,7 +601,7 @@ fun RuleEditDialog(
 
                     LabeledRow(
                         labelId = R.string.notification,
-                        helpTooltip = Str(R.string.help_notification),
+//                        helpTooltip = Str(R.string.help_notification),
                     ) {
                         ChannelPicker(
                             channelId

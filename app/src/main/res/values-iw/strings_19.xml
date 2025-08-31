@@ -39,24 +39,24 @@
         <font color="#00BFFF"><b>ללא</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; ללא התראה כלל. <br>
         <br>
-        <font color="#00BFFF"><b>נמוך</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; מופיע בשורת המצב ובצל ההתראות. <br>
+        <font color="#00BFFF"><b>נמוכה</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; מופיע בשורת המצב וילון ההתראות. <br>
         <br>
-        <font color="#00BFFF"><b>בינוני</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; מופיע בשורת המצב ובצל ההתראות עם צליל. <br>
+        <font color="#00BFFF"><b>בינונית</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; מופיע בשורת המצב וילון ההתראות עם צליל. <br>
         <br>
-        <font color="#00BFFF"><b>גבוה</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; מופיע בשורת המצב, בצל ההתראות, וכחלון קופץ עם צליל. <br>
+        <font color="#00BFFF"><b>גבוהה</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; מופיע בשורת המצב, וילון ההתראות, וכקופץ \"Heads-up\" עם צליל. <br>
         <br>
-        <font color="#00BFFF"><b>גבוה מושתק</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; זה דומה ל<b>גבוה</b> אך משתיק את הצליל. <br>
-        &ensp; זה אידיאלי לצ\'אטים פעילים של SMS שבהם צלילים מתמשכים עלולים להפריע. <br>
-          זה נחשב לצ\'אט פעיל כאשר המסך אינו נעול ואפליקציית ה-SMS פתוחה בקדמה. <br>
+        <font color="#00BFFF"><b>גבוהה מושתקת</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; דומה ל-<b>גבוהה</b> אך משתיק את הצליל. <br>
+        &ensp; אידיאלי עבור <font color="#03DAC5"><b>צ\'אט SMS</b></font> פעיל שבו צלילים מתמשכים עלולים להיות מעצבנים. <br>
+          זה נחשב <font color="#03DAC5"><b>צ\'אט SMS</b></font> פעיל כאשר המסך פתוח ואפליקציית ה-SMS פתוחה בחזית. <br>
         ]]>
     </string>
     <string name="none">ללא</string>
-    <string name="low">נמוך</string>
-    <string name="high">גבוה</string>
+    <string name="low">נמוכה</string>
+    <string name="high">גבוהה</string>
     <string name="sms_chat">צ\'אט SMS</string>
     <string name="call_channel">ערוץ שיחות</string>
     <string name="sms_channel">ערוץ SMS</string>
@@ -129,8 +129,8 @@
     </string>
     <string name="icon">אייקון</string>
     <string name="automatic">אוטומטי</string>
-    <string name="medium">בינוני</string>
-    <string name="high_muted">גבוה מושתק</string>
+    <string name="medium">בינונית</string>
+    <string name="high_muted">גבוהה מושתקת</string>
     <string name="help_channel_importance">
         <![CDATA[
         ניתן להגדיר את החשיבות רק בעת יצירת ערוץ חדש,

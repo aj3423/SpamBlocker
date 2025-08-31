@@ -40,18 +40,18 @@
         &ensp; Nessuna notifica.<br>
         <br>
         <font color="#00BFFF"><b>Bassa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Compare nella barra di stato e nel pannello delle notifiche. <br>
+        &ensp; Appare nella barra di stato e nell\'area notifiche. <br>
         <br>
         <font color="#00BFFF"><b>Media</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Compare nella barra di stato e nel pannello delle notifiche con un suono. <br>
+        &ensp; Appare nella barra di stato e nell\'area notifiche con un suono. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Compare nella barra di stato, nel pannello delle notifiche e come pop-up heads-up con un suono. <br>
+        &ensp; Appare nella barra di stato, nell\'area notifiche e come pop-up heads-up con un suono. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenziata</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; È simile a <b>Alta</b> ma silenzia il suono. <br>
-        &ensp; È ideale per chat SMS attive dove i suoni continui potrebbero essere fastidiosi. <br>
-          È considerata chat attiva quando lo schermo è sbloccato e l\'app SMS è aperta in primo piano. <br>
+        &ensp; È simile ad <b>Alta</b> ma silenzia il suono. <br>
+        &ensp; È ideale per la <font color="#03DAC5"><b>Chat SMS</b></font> attiva dove i suoni continui potrebbero essere fastidiosi. <br>
+          Viene considerata <font color="#03DAC5"><b>Chat SMS</b></font> attiva quando lo schermo è sbloccato e l\'app SMS è aperta in primo piano. <br>
         ]]>
     </string>
     <string name="none">Nessuno</string>

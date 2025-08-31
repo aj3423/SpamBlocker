@@ -37,21 +37,21 @@
         Die integrierten Benachrichtigungskanäle: <br>
         <br>
         <font color="#00BFFF"><b>Keine</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Keine Benachrichtigung.<br>
+        &ensp; Überhaupt keine Benachrichtigung. <br>
         <br>
         <font color="#00BFFF"><b>Niedrig</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Erscheint in der Statusleiste und der Benachrichtigungsleiste. <br>
+        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsbereich. <br>
         <br>
         <font color="#00BFFF"><b>Mittel</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Erscheint in der Statusleiste und der Benachrichtigungsleiste mit Ton. <br>
+        &ensp; Erscheint in der Statusleiste und im Benachrichtigungsbereich mit Ton. <br>
         <br>
         <font color="#00BFFF"><b>Hoch</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Erscheint in der Statusleiste, der Benachrichtigungsleiste und als Pop-up mit Ton. <br>
+        &ensp; Erscheint in der Statusleiste, im Benachrichtigungsbereich und als Heads-up-Pop-up mit Ton. <br>
         <br>
         <font color="#00BFFF"><b>Hoch (stummgeschaltet)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Es ähnelt <b>Hoch</b>, schaltet aber den Ton stumm. <br>
-        &ensp; Es ist ideal für aktive SMS-Chats, wo kontinuierliche Töne störend sein könnten. <br>
-          Als aktiver Chat gilt es, wenn der Bildschirm entsperrt ist und die SMS-App im Vordergrund geöffnet ist. <br>
+        &ensp; Es ist ähnlich wie <b>Hoch</b>, aber ohne Ton. <br>
+        &ensp; Es ist ideal für aktive <font color="#03DAC5"><b>SMS-Chats</b></font>, wo kontinuierliche Töne störend sein könnten. <br>
+          Als aktiver <font color="#03DAC5"><b>SMS-Chat</b></font> gilt es, wenn der Bildschirm entsperrt ist und die SMS-App im Vordergrund geöffnet ist. <br>
         ]]>
     </string>
     <string name="none">Keine</string>

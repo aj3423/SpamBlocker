@@ -37,26 +37,26 @@
         Встроенные каналы уведомлений: <br>
         <br>
         <font color="#00BFFF"><b>Нет</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Вообще никаких уведомлений. <br>
+        &ensp; Вообще без уведомлений. <br>
         <br>
-        <font color="#00BFFF"><b>Низкий</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        <font color="#00BFFF"><b>Низкая</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; Появляется в строке состояния и шторке уведомлений. <br>
         <br>
-        <font color="#00BFFF"><b>Средний</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        <font color="#00BFFF"><b>Средняя</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
         &ensp; Появляется в строке состояния и шторке уведомлений со звуком. <br>
         <br>
-        <font color="#00BFFF"><b>Высокий</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Появляется в строке состояния, шторке уведомлений и в виде всплывающего окна со звуком. <br>
+        <font color="#00BFFF"><b>Высокая</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Появляется в строке состояния, шторке уведомлений и в виде всплывающего окна с предпросмотром со звуком. <br>
         <br>
-        <font color="#00BFFF"><b>Высокий (без звука)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Аналогично <b>Высокому</b>, но без звука. <br>
-        &ensp; Идеально подходит для активных SMS-чатов, где постоянные звуки могут быть отвлекающими. <br>
-          Активным чат считается, когда экран разблокирован и приложение SMS открыто на переднем плане. <br>
+        <font color="#00BFFF"><b>Высокая (без звука)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Похоже на <b>Высокая</b>, но без звука. <br>
+        &ensp; Идеально подходит для активного <font color="#03DAC5"><b>SMS-чата</b></font>, где непрерывные звуки могут раздражать. <br>
+          Активным <font color="#03DAC5"><b>SMS-чатом</b></font> считается, когда экран разблокирован и приложение SMS открыто на переднем плане. <br>
         ]]>
     </string>
     <string name="none">Нет</string>
-    <string name="low">Низкий</string>
-    <string name="high">Высокий</string>
+    <string name="low">Низкая</string>
+    <string name="high">Высокая</string>
     <string name="sms_chat">SMS-чат</string>
     <string name="call_channel">Канал звонков</string>
     <string name="sms_channel">Канал SMS</string>
@@ -129,8 +129,8 @@
     </string>
     <string name="icon">Иконка</string>
     <string name="automatic">Авто</string>
-    <string name="medium">Средний</string>
-    <string name="high_muted">Высокий (без звука)</string>
+    <string name="medium">Средняя</string>
+    <string name="high_muted">Высокая (без звука)</string>
     <string name="help_channel_importance">
         <![CDATA[
         Важность можно установить только при создании нового канала;

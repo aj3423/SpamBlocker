@@ -36,8 +36,8 @@
         <![CDATA[
         قنوات الإشعارات المدمجة: <br>
         <br>
-        <font color="#00BFFF"><b>لا شيء</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; لا توجد إشعارات على الإطلاق. <br>
+        <font color="#00BFFF"><b>بلا</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; لا يوجد إشعار على الإطلاق. <br>
         <br>
         <font color="#00BFFF"><b>منخفض</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; يظهر في شريط الحالة ودرج الإشعارات. <br>
@@ -46,18 +46,18 @@
         &ensp; يظهر في شريط الحالة ودرج الإشعارات مع صوت. <br>
         <br>
         <font color="#00BFFF"><b>مرتفع</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكإشعار منبثق مع صوت. <br>
+        &ensp; يظهر في شريط الحالة، ودرج الإشعارات، وكنوافذة منبثقة عائمة مع صوت. <br>
         <br>
         <font color="#00BFFF"><b>مرتفع صامت</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; إنه مشابه لـ <b>مرتفع</b> ولكنه يكتم الصوت. <br>
-        &ensp; إنه مثالي لمحادثات الرسائل القصيرة النشطة حيث قد تكون الأصوات المستمرة مزعجة. <br>
-          تعتبر المحادثة نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل القصيرة مفتوحًا في المقدمة. <br>
+        &ensp; إنه مثالي لـ <font color="#03DAC5"><b>دردشة الرسائل القصيرة</b></font> النشطة حيث قد تكون الأصوات المستمرة مزعجة. <br>
+          تعتبر <font color="#03DAC5"><b>دردشة الرسائل القصيرة</b></font> نشطة عندما تكون الشاشة غير مقفلة وتطبيق الرسائل القصيرة مفتوحًا في المقدمة. <br>
         ]]>
     </string>
-    <string name="none">لا شيء</string>
+    <string name="none">بلا</string>
     <string name="low">منخفض</string>
     <string name="high">مرتفع</string>
-    <string name="sms_chat">محادثة SMS</string>
+    <string name="sms_chat">دردشة الرسائل القصيرة</string>
     <string name="call_channel">قناة المكالمات</string>
     <string name="sms_channel">قناة الرسائل القصيرة</string>
     <string name="channel_id">معرف القناة</string>

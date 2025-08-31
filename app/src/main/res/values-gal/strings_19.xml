@@ -36,7 +36,7 @@
         <![CDATA[
         As canles de notificación integradas: <br>
         <br>
-        <font color="#00BFFF"><b>Ningún</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        <font color="#00BFFF"><b>Ningunha</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Ningunha notificación en absoluto. <br>
         <br>
         <font color="#00BFFF"><b>Baixa</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
@@ -46,18 +46,18 @@
         &ensp; Aparece na barra de estado e na sombra de notificacións cun son. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente flotante cun son. <br>
+        &ensp; Aparece na barra de estado, na sombra de notificacións e como ventá emerxente cun son. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; É similar a <b>Alta</b> pero silencia o son. <br>
-        &ensp; É ideal para chats SMS activos onde os sons continuos poderían ser perturbadores. <br>
-          Considérase chat activo cando a pantalla está desbloqueada e a aplicación de SMS está aberta en primeiro plano. <br>
+        &ensp; É ideal para un <font color="#03DAC5"><b>Chat de SMS</b></font> activo onde os sons continuos poden ser molestos. <br>
+          Considérase <font color="#03DAC5"><b>Chat de SMS</b></font> activo cando a pantalla está desbloqueada e a aplicación de SMS está aberta en primeiro plano. <br>
         ]]>
     </string>
-    <string name="none">Ningún</string>
+    <string name="none">Ningunha</string>
     <string name="low">Baixa</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Chat SMS</string>
+    <string name="sms_chat">Chat de SMS</string>
     <string name="call_channel">Canle de Chamada</string>
     <string name="sms_channel">Canle de SMS</string>
     <string name="channel_id">ID da Canle</string>

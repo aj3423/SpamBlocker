@@ -188,7 +188,7 @@ object Def {
     const val DefaultRegexFlags =  FLAG_REGEX_IGNORE_CASE or FLAG_REGEX_DOT_MATCH_ALL
 
     val MAP_REGEX_FLAGS = mapOf(
-        FLAG_REGEX_IGNORE_CASE to "i",
+        FLAG_REGEX_IGNORE_CASE to "I",
         FLAG_REGEX_MULTILINE to "m",
         FLAG_REGEX_DOT_MATCH_ALL to "d",
         FLAG_REGEX_LITERAL to "l",

@@ -34,24 +34,24 @@
     <string name="allowed">已允许</string>
     <string name="help_notification">
         <![CDATA[
-        内置通知渠道：<br>
+        内置通知渠道： <br>
         <br>
         <font color="#00BFFF"><b>无</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; 不显示任何通知。<br>
+        &ensp; 完全没有通知。 <br>
         <br>
         <font color="#00BFFF"><b>低</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; 显示在状态栏和通知阴影中。<br>
+        &ensp; 出现在状态栏和通知阴影中。 <br>
         <br>
         <font color="#00BFFF"><b>中</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; 在状态栏和通知阴影中显示并带有声音。<br>
+        &ensp; 伴随声音出现在状态栏和通知阴影中。 <br>
         <br>
         <font color="#00BFFF"><b>高</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; 在状态栏、通知阴影中显示，并作为浮动通知弹出，带有声音。<br>
+        &ensp; 伴随声音出现在状态栏、通知阴影和浮动通知中。 <br>
         <br>
         <font color="#00BFFF"><b>高（静音）</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; 它类似于<b>高</b>，但静音。<br>
-        &ensp; 它非常适合活跃的短信聊天，因为持续的声音可能会造成干扰。<br>
-          当屏幕解锁且短信应用在前台打开时，被认为是活跃聊天。<br>
+        &ensp; 它类似于<b>高</b>，但静音。 <br>
+        &ensp; 它非常适合活跃的 <font color="#03DAC5"><b>短信聊天</b></font>，因为持续的声音可能会令人烦恼。 <br>
+          当屏幕解锁且短信应用在前台打开时，被视为活跃的 <font color="#03DAC5"><b>短信聊天</b></font>。 <br>
         ]]>
     </string>
     <string name="none">无</string>

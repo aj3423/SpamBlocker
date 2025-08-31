@@ -34,7 +34,7 @@
     <string name="allowed">許可済み</string>
     <string name="help_notification">
         <![CDATA[
-        組み込みの通知チャンネル: <br>
+        組み込みの通知チャンネル:<br>
         <br>
         <font color="#00BFFF"><b>なし</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; 通知は一切ありません。 <br>
@@ -49,9 +49,9 @@
         &ensp; ステータスバー、通知シェード、およびヘッドアップポップアップとしてサウンド付きで表示されます。 <br>
         <br>
         <font color="#00BFFF"><b>高 (ミュート)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; <b>高</b>に似ていますが、サウンドをミュートします。 <br>
-        &ensp; 継続的なサウンドが邪魔になる可能性のあるアクティブなSMSチャットに最適です。 <br>
-          画面がロック解除されており、SMSアプリがフォアグラウンドで開いている場合、アクティブなチャットとみなされます。 <br>
+        &ensp; <b>高</b> に似ていますが、サウンドをミュートします。 <br>
+        &ensp; 連続したサウンドが煩わしい場合がある、アクティブな <font color="#03DAC5"><b>SMSチャット</b></font> に最適です。 <br>
+          画面のロックが解除され、SMSアプリがフォアグラウンドで開かれている場合、アクティブな <font color="#03DAC5"><b>SMSチャット</b></font> と見なされます。 <br>
         ]]>
     </string>
     <string name="none">なし</string>

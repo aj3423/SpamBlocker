@@ -34,27 +34,27 @@
     <string name="allowed">İzin Verildi</string>
     <string name="help_notification">
         <![CDATA[
-        Yerleşik bildirim kanalları: <br>
+        Dahili bildirim kanalları: <br>
         <br>
-        <font color="#00BFFF"><b>Yok</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; Hiçbir bildirim yok. <br>
+        <font color="#00BFFF"><b>Hiçbiri</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; Hiç bildirim yok. <br>
         <br>
         <font color="#00BFFF"><b>Düşük</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
         &ensp; Durum çubuğunda ve bildirim gölgesinde görünür. <br>
         <br>
         <font color="#00BFFF"><b>Orta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Durum çubuğunda ve bildirim gölgesinde sesli olarak görünür. <br>
+        &ensp; Durum çubuğunda ve bildirim gölgesinde bir sesle görünür. <br>
         <br>
         <font color="#00BFFF"><b>Yüksek</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Durum çubuğunda, bildirim gölgesinde ve sesli bir heads-up açılır penceresi olarak görünür. <br>
+        &ensp; Durum çubuğunda, bildirim gölgesinde ve sesli bir baş üstü açılır pencere olarak görünür. <br>
         <br>
         <font color="#00BFFF"><b>Yüksek (Sessiz)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; <b>Yüksek</b>\'e benzer ancak sesi kısar. <br>
-        &ensp; Sürekli seslerin rahatsız edici olabileceği aktif SMS sohbetleri için idealdir. <br>
-          Ekranın kilidi açık ve SMS uygulaması ön planda açık olduğunda aktif sohbet olarak kabul edilir. <br>
+        &ensp; <b>Yüksek</b>\'e benzer ancak sesi kapatır. <br>
+        &ensp; Sürekli seslerin rahatsız edici olabileceği aktif <font color="#03DAC5"><b>SMS Sohbeti</b></font> için idealdir. <br>
+          Ekranın kilidi açık olduğunda ve SMS uygulaması ön planda açık olduğunda aktif <font color="#03DAC5"><b>SMS Sohbeti</b></font> olarak kabul edilir. <br>
         ]]>
     </string>
-    <string name="none">Yok</string>
+    <string name="none">Hiçbiri</string>
     <string name="low">Düşük</string>
     <string name="high">Yüksek</string>
     <string name="sms_chat">SMS Sohbeti</string>

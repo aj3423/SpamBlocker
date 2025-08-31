@@ -48,10 +48,10 @@
         <font color="#00BFFF"><b>Tinggi</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Muncul di bilah status, tirai notifikasi, dan sebagai pop-up heads-up dengan suara. <br>
         <br>
-        <font color="#00BFFF"><b>Tinggi Senyap</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        <font color="#00BFFF"><b>Tinggi Dibisukan</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Mirip dengan <b>Tinggi</b> tetapi membisukan suara. <br>
-        &ensp; Ideal untuk obrolan SMS aktif di mana suara yang terus-menerus mungkin mengganggu. <br>
-          Dianggap obrolan aktif ketika layar tidak terkunci dan aplikasi SMS terbuka di latar depan. <br>
+        &ensp; Ideal untuk <font color="#03DAC5"><b>Obrolan SMS</b></font> aktif di mana suara terus-menerus mungkin mengganggu. <br>
+          Dianggap <font color="#03DAC5"><b>Obrolan SMS</b></font> aktif saat layar tidak terkunci dan aplikasi SMS terbuka di latar depan. <br>
         ]]>
     </string>
     <string name="none">Tidak Ada</string>
@@ -130,7 +130,7 @@
     <string name="icon">Ikon</string>
     <string name="automatic">Otomatis</string>
     <string name="medium">Sedang</string>
-    <string name="high_muted">Tinggi Senyap</string>
+    <string name="high_muted">Tinggi Dibisukan</string>
     <string name="help_channel_importance">
         <![CDATA[
         Pentingnya hanya dapat diatur saat membuat saluran baru,

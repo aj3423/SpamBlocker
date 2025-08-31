@@ -37,26 +37,26 @@
         کانال‌های اعلان داخلی: <br>
         <br>
         <font color="#00BFFF"><b>هیچ‌کدام</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
-        &ensp; هیچ اعلانی وجود ندارد. <br>
+        &ensp; هیچ اعلانی نمایش داده نمی‌شود. <br>
         <br>
-        <font color="#00BFFF"><b>کم</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; در نوار وضعیت و کشوی اعلان ظاهر می‌شود. <br>
+        <font color="#00BFFF"><b>پایین</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; در نوار وضعیت و پنل اعلان ظاهر می‌شود. <br>
         <br>
         <font color="#00BFFF"><b>متوسط</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; در نوار وضعیت و کشوی اعلان با صدا ظاهر می‌شود. <br>
+        &ensp; در نوار وضعیت و پنل اعلان همراه با صدا ظاهر می‌شود. <br>
         <br>
-        <font color="#00BFFF"><b>زیاد</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; در نوار وضعیت، کشوی اعلان و به صورت پاپ‌آپ Heads-up با صدا ظاهر می‌شود. <br>
+        <font color="#00BFFF"><b>بالا</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; در نوار وضعیت، پنل اعلان، و به صورت پنجره بازشو (heads-up) همراه با صدا ظاهر می‌شود. <br>
         <br>
-        <font color="#00BFFF"><b>زیاد (بی‌صدا)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; مشابه <b>زیاد</b> است اما صدا را قطع می‌کند. <br>
-        &ensp; برای چت‌های پیامکی فعال که صداهای مداوم ممکن است مزاحم باشند، ایده‌آل است. <br>
-          زمانی که صفحه باز است و برنامه پیامک در پیش‌زمینه باز است، چت فعال محسوب می‌شود. <br>
+        <font color="#00BFFF"><b>بالا (بی‌صدا)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; مشابه <b>بالا</b> است اما صدا را قطع می‌کند. <br>
+        &ensp; ایده‌آل برای <font color="#03DAC5"><b>چت پیامکی</b></font> فعال است که در آن صداهای مداوم ممکن است آزاردهنده باشند. <br>
+          <font color="#03DAC5"><b>چت پیامکی</b></font> فعال زمانی در نظر گرفته می‌شود که صفحه باز است و برنامه پیامک در پیش‌زمینه باز باشد. <br>
         ]]>
     </string>
     <string name="none">هیچ‌کدام</string>
-    <string name="low">کم</string>
-    <string name="high">زیاد</string>
+    <string name="low">پایین</string>
+    <string name="high">بالا</string>
     <string name="sms_chat">چت پیامکی</string>
     <string name="call_channel">کانال تماس</string>
     <string name="sms_channel">کانال پیامک</string>
@@ -130,7 +130,7 @@
     <string name="icon">آیکون</string>
     <string name="automatic">خودکار</string>
     <string name="medium">متوسط</string>
-    <string name="high_muted">زیاد (بی‌صدا)</string>
+    <string name="high_muted">بالا (بی‌صدا)</string>
     <string name="help_channel_importance">
         <![CDATA[
         اهمیت فقط هنگام ایجاد یک کانال جدید قابل تنظیم است،

@@ -34,30 +34,30 @@
     <string name="allowed">Permitido</string>
     <string name="help_notification">
         <![CDATA[
-        Los canales de notificación integrados: <br>
+        Los canales de notificación incorporados: <br>
         <br>
         <font color="#00BFFF"><b>Ninguno</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Ninguna notificación en absoluto. <br>
         <br>
         <font color="#00BFFF"><b>Baja</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Aparece en la barra de estado y en la sombra de notificaciones. <br>
+        &ensp; Aparece en la barra de estado y en el panel de notificaciones. <br>
         <br>
         <font color="#00BFFF"><b>Media</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Aparece en la barra de estado y en la sombra de notificaciones con sonido. <br>
+        &ensp; Aparece en la barra de estado y en el panel de notificaciones con sonido. <br>
         <br>
         <font color="#00BFFF"><b>Alta</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Aparece en la barra de estado, sombra de notificaciones y como ventana emergente (heads-up) con sonido. <br>
+        &ensp; Aparece en la barra de estado, el panel de notificaciones y como una ventana emergente (heads-up) con sonido. <br>
         <br>
         <font color="#00BFFF"><b>Alta Silenciada</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; Es similar a <b>Alta</b> pero silencia el sonido. <br>
-        &ensp; Es ideal para chats de SMS activos donde los sonidos continuos podrían ser disruptivos. <br>
-          Se considera chat activo cuando la pantalla está desbloqueada y la aplicación de SMS está abierta en primer plano. <br>
+        &ensp; Es ideal para un <font color="#03DAC5"><b>Chat SMS</b></font> activo donde los sonidos continuos pueden ser molestos. <br>
+          Se considera un <font color="#03DAC5"><b>Chat SMS</b></font> activo cuando la pantalla está desbloqueada y la aplicación de SMS está abierta en primer plano. <br>
         ]]>
     </string>
     <string name="none">Ninguno</string>
     <string name="low">Baja</string>
     <string name="high">Alta</string>
-    <string name="sms_chat">Chat de SMS</string>
+    <string name="sms_chat">Chat SMS</string>
     <string name="call_channel">Canal de Llamadas</string>
     <string name="sms_channel">Canal de SMS</string>
     <string name="channel_id">ID del Canal</string>

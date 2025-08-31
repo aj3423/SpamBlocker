@@ -39,24 +39,24 @@
         <font color="#00BFFF"><b>Aucun</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
         &ensp; Aucune notification du tout. <br>
         <br>
-        <font color="#00BFFF"><b>Bas</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
-        &ensp; Apparaît dans la barre d\'état et le panneau de notification. <br>
+        <font color="#00BFFF"><b>Faible</b></font> &ensp; <img src=\'ic_statusbar_shade\'/>  <br>
+        &ensp; Apparaît dans la barre d\'état et le panneau de notifications. <br>
         <br>
-        <font color="#00BFFF"><b>Moyen</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
-        &ensp; Apparaît dans la barre d\'état et le panneau de notification avec un son. <br>
+        <font color="#00BFFF"><b>Moyenne</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; Apparaît dans la barre d\'état et le panneau de notifications avec un son. <br>
         <br>
-        <font color="#00BFFF"><b>Élevé</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; Apparaît dans la barre d\'état, le panneau de notification et comme pop-up flottant avec un son. <br>
+        <font color="#00BFFF"><b>Élevée</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; Apparaît dans la barre d\'état, le panneau de notifications, et comme pop-up flottant avec un son. <br>
         <br>
-        <font color="#00BFFF"><b>Élevé Silencieux</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
-        &ensp; C\'est similaire à <b>Élevé</b> mais coupe le son. <br>
-        &ensp; C\'est idéal pour les conversations SMS actives où les sons continus pourraient être perturbateurs. <br>
-          C\'est considéré comme une conversation active lorsque l\'écran est déverrouillé et que l\'application SMS est ouverte au premier plan. <br>
+        <font color="#00BFFF"><b>Élevée (silencieuse)</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; C\'est similaire à <b>Élevée</b> mais sans le son. <br>
+        &ensp; C\'est idéal pour un <font color="#03DAC5"><b>Chat SMS</b></font> actif où les sons continus peuvent être gênants. <br>
+          C\'est considéré comme un <font color="#03DAC5"><b>Chat SMS</b></font> actif lorsque l\'écran est déverrouillé et que l\'application SMS est ouverte au premier plan. <br>
         ]]>
     </string>
     <string name="none">Aucun</string>
-    <string name="low">Bas</string>
-    <string name="high">Élevé</string>
+    <string name="low">Faible</string>
+    <string name="high">Élevée</string>
     <string name="sms_chat">Chat SMS</string>
     <string name="call_channel">Canal d\'appel</string>
     <string name="sms_channel">Canal SMS</string>
@@ -129,8 +129,8 @@
     </string>
     <string name="icon">Icône</string>
     <string name="automatic">Auto</string>
-    <string name="medium">Moyen</string>
-    <string name="high_muted">Élevé Silencieux</string>
+    <string name="medium">Moyenne</string>
+    <string name="high_muted">Élevée (silencieuse)</string>
     <string name="help_channel_importance">
         <![CDATA[
         L\'importance ne peut être définie qu\' lors de la création d\'un nouveau canal,

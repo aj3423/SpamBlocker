@@ -48,8 +48,8 @@
         <br>
         <font color="#00BFFF"><b>High Muted</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
         &ensp; It\'s similar to <b>High</b> but mutes the sound. <br>
-        &ensp; It\'s ideal for active SMS chats where continuous sounds might be disruptive. <br>
-          It\'s considered active chat when the screen is unlocked and the SMS app is open in the foreground. <br>
+        &ensp; It\'s ideal for active <font color="#03DAC5"><b>SMS Chat</b></font> where continuous sounds might be annoying. <br>
+          It\'s considered active <font color="#03DAC5"><b>SMS Chat</b></font> when the screen is unlocked and the SMS app is open in the foreground. <br>
         ]]>
     </string>
     <string name="none">None</string>
