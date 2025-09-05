@@ -1499,11 +1499,6 @@ class ModifyRules(
 
                 val mapModified = mapOrigin + mapConfig // override with mapModify
 
-                logi("strOrigin: $strOrigin")
-                logi("mapOrigin: $mapOrigin")
-                logi("mapModified: $mapModified")
-
-
                 val newRule = PermissiveJson.decodeFromString<RegexRule>(JSONObject(mapModified).toString())
 
                 aCtx.logger?.debug(

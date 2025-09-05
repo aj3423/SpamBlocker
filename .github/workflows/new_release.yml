@@ -63,7 +63,7 @@
               app-release.apk
               app-release.without-internet-permission.apk
               debug.symbol.tar.gz
-            tag_name: "v4.15"
-            body_path: "${{ github.workspace }}/metadata/en-US/changelogs/415.txt"
+            tag_name: "v4.16"
+            body_path: "${{ github.workspace }}/metadata/en-US/changelogs/416.txt"
 
 

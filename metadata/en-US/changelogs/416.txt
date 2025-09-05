@@ -1,0 +1,20 @@
+New:
+- Workflow
+  - Call Throttling
+    - Block consecutive spam calls that bypass all rules.
+  - SMS Throttling  
+    - Allow first N SMS notifications and mute the rest for a period.
+
+Fix:
+- Priority inputbox typing issue
+- Workflow action "Find Rules" doesn't work in some cases
+
+Enhancements:
+- API query 
+  - Support mapping the result to human readable text, e.g.:
+      "1" -> "Fraud", "2" -> "Advertising"
+
+Changes:
+- Regex flags
+  - "Ignore Case" is changed to "Case Sensitive" (logic negated)
+  - "Dot Match All" is removed
