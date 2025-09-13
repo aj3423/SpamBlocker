@@ -81,11 +81,8 @@ object PushAlertTable {
 
     fun listAll(
         ctx: Context,
-        additionalSql: String? = null
     ): List<PushAlertRecord> {
         var sql = "SELECT * FROM $TABLE_PUSH_ALERT"
-
-        additionalSql?.let { sql += it }
 
         val ret: MutableList<PushAlertRecord> = mutableListOf()
 

@@ -65,7 +65,7 @@ fun HistoryList(
                             listOf()
                     }
 
-                    HistoryContextMenuWrapper(vm, index, indicators) { contextMenuExpanded ->
+                    HistoryContextMenuWrapper(vm, index) { contextMenuExpanded ->
                         // Swipe <---->
                         LeftDeleteSwipeWrapper(
                             right = SwipeInfo(

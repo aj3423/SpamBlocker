@@ -38,11 +38,19 @@ abstract class HistoryTable {
     abstract fun tableName(): String
 
     @SuppressLint("Range")
-    fun _listRecordsByFilter(ctx: Context, filterSql: String): List<HistoryRecord> {
+    fun _listRecordsByFilter(
+        ctx: Context,
+        whereClause: String? = null,
+        whereParams: Array<String>? = null,
+    ): List<HistoryRecord> {
 
         val ret: MutableList<HistoryRecord> = mutableListOf()
 
-        val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(filterSql, null)
+        var sql = "SELECT * FROM ${tableName()} "
+
+        whereClause?.let { sql += it }
+
+        val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(sql, whereParams)
 
         cursor.use {
             if (it.moveToFirst()) {
@@ -66,9 +74,9 @@ abstract class HistoryTable {
     }
 
     fun listRecords(ctx: Context): List<HistoryRecord> {
-        val sql = "SELECT * FROM ${tableName()} ORDER BY time DESC"
+        val additional = " ORDER BY time DESC"
 
-        return _listRecordsByFilter(ctx, sql)
+        return _listRecordsByFilter(ctx, additional)
     }
 
     fun addNewRecord(ctx: Context, r: HistoryRecord): Long {
@@ -164,16 +172,21 @@ abstract class HistoryTable {
     fun hasBlockedRecordsWithinSeconds(ctx: Context, durationSeconds: Int) : Boolean {
         val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
 
-        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_TIME} > $xSecondsAgo AND ${Db.COLUMN_RESULT} BETWEEN 10 AND 99"
+        val whereClause = " WHERE ${Db.COLUMN_TIME} > ? AND ${Db.COLUMN_RESULT} BETWEEN 10 AND 99"
 
-        return _listRecordsByFilter(ctx, sql).isNotEmpty()
+        return _listRecordsByFilter(ctx, whereClause, arrayOf(
+            xSecondsAgo.toString(),
+
+        )).isNotEmpty()
     }
     fun getRecordsWithinSeconds(ctx: Context, durationSeconds: Int) : List<HistoryRecord> {
         val xSecondsAgo = Now.currentMillis() - durationSeconds*1000
 
-        val sql = "SELECT * FROM ${tableName()} WHERE ${Db.COLUMN_TIME} > $xSecondsAgo"
-
-        return _listRecordsByFilter(ctx, sql)
+        return _listRecordsByFilter(
+            ctx,
+            " WHERE ${Db.COLUMN_TIME} > ?",
+            arrayOf(xSecondsAgo.toString()),
+        )
     }
     fun countRepeatedRecordsWithinSeconds(ctx: Context, phone: String, durationSeconds: Int) : Int {
         val xSecondsAgo = Now.currentMillis() - durationSeconds*1000

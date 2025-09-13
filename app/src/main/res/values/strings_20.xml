@@ -71,7 +71,7 @@
     <string name="target_rule_desc">Target Rule Description</string>
     <string name="help_sms_throttling_template">
     <![CDATA[
-    Mute consecutive SMS notifications from a same number for a period. <br>
+    Mute consecutive SMS notifications from the same number for a period. <br>
     <br>
     <b>Use cases:</b> <br>
     <font color="#888888">Allow the first three notifications from a number and mute the rest within a minute.</font> <br>

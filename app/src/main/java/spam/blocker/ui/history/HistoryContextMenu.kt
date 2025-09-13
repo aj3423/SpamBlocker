@@ -26,7 +26,6 @@ import spam.blocker.util.Util
 fun HistoryContextMenuWrapper(
     vm: HistoryViewModel,
     index: Int,
-    indicators: MutableState<Indicators>,
     content: @Composable (MutableState<Boolean>) -> Unit,
 ) {
     val ctx = LocalContext.current

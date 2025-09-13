@@ -1,10 +1,13 @@
 package spam.blocker.db
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
+import androidx.core.database.sqlite.transaction
 import kotlinx.serialization.Serializable
 import spam.blocker.db.Db.Companion.COLUMN_ID
 import spam.blocker.db.Db.Companion.COLUMN_PEER
@@ -12,6 +15,7 @@ import spam.blocker.db.Db.Companion.COLUMN_REASON
 import spam.blocker.db.Db.Companion.COLUMN_REASON_EXTRA
 import spam.blocker.db.Db.Companion.COLUMN_TIME
 import spam.blocker.db.Db.Companion.TABLE_SPAM
+import spam.blocker.util.loge
 
 enum class ImportDbReason {
     Manually,
@@ -42,34 +46,21 @@ object SpamTable {
     ): String? {
         val db = Db.getInstance(ctx).writableDatabase
 
-        db.beginTransaction()
-        return try {
-            for (number in numbers) {
-                val sqlStr =
-//                    if (Build.VERSION.SDK_INT > ANDROID_10) {
-//
-//                    "INSERT INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)" +
-//                            " VALUES ('${number.peer}', ${number.time}, ${number.importReason.ordinal}, '${number.importReasonExtra}')" +
-//                            " ON CONFLICT($COLUMN_PEER) DO UPDATE SET" +
-//                            " $COLUMN_TIME = ${number.time}, " +
-//                            " $COLUMN_REASON = ${number.importReason.ordinal}," +
-//                            " $COLUMN_REASON_EXTRA = '${number.importReasonExtra}'"
-//
-//                } else { // Android 10 doesn't support `ON CONFLICT`, use `INSERT OR REPLACE` instead
-                    "INSERT OR REPLACE INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)" +
-                    "VALUES ('${number.peer}', ${number.time}, ${number.importReason.ordinal}, '${number.importReasonExtra}')"
-//                }
-
-                db.execSQL(
-                    sqlStr
-                )
+        return db.transaction() {
+            try {
+                for (number in numbers) {
+                    insertWithOnConflict(TABLE_SPAM, null, ContentValues().apply {
+                        put(COLUMN_PEER, number.peer)
+                        put(COLUMN_TIME, number.time)
+                        put(COLUMN_REASON, number.importReason.ordinal)
+                        put(COLUMN_REASON_EXTRA, number.importReasonExtra)
+                    }, CONFLICT_REPLACE)
+                }
+                null
+            } catch (e: Exception) {
+                loge(e.toString())
+                e.toString()
             }
-            db.setTransactionSuccessful()
-            null
-        } catch (e: Exception) {
-            e.toString()
-        } finally {
-            db.endTransaction()
         }
     }
 
@@ -90,16 +81,17 @@ object SpamTable {
 
     fun listAll(
         ctx: Context,
-        additionalSql: String? = null
+        whereClause: String? = null,
+        whereParams: Array<String>? = null,
     ): List<SpamNumber> {
-        var sql = "SELECT * FROM $TABLE_SPAM"
+        var sql = "SELECT * FROM $TABLE_SPAM "
 
-        additionalSql?.let { sql += it }
+        whereClause?.let { sql += it }
 
         val ret: MutableList<SpamNumber> = mutableListOf()
 
         val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery(sql, null)
+        val cursor = db.rawQuery(sql, whereParams)
         cursor.use {
             if (it.moveToFirst()) {
                 do {
@@ -117,14 +109,16 @@ object SpamTable {
     ): List<SpamNumber> {
         return listAll(
             ctx,
-            additionalSql = " WHERE $COLUMN_PEER LIKE '%$pattern%' LIMIT $limit"
+            whereClause = " WHERE $COLUMN_PEER LIKE ? LIMIT ?",
+            whereParams = arrayOf("%$pattern%", limit.toString())
         )
     }
 
     fun findByNumber(ctx: Context, number: String): SpamNumber? {
         val records = listAll(
             ctx,
-            additionalSql = " WHERE $COLUMN_PEER = '$number'"
+            whereClause = " WHERE $COLUMN_PEER = ?",
+            whereParams = arrayOf(number)
         )
         return if (records.isEmpty()) {
             null
@@ -135,7 +129,7 @@ object SpamTable {
 
     fun count(ctx: Context): Int {
         val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery("SELECT COUNT(*) FROM ${Db.TABLE_SPAM}", null)
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM $TABLE_SPAM", null)
 
         return cursor.use {
             it.moveToFirst()
@@ -145,14 +139,14 @@ object SpamTable {
 
     fun clearAll(ctx: Context) {
         val db = Db.getInstance(ctx).writableDatabase
-        val sql = "DELETE FROM ${Db.TABLE_SPAM}"
+        val sql = "DELETE FROM $TABLE_SPAM"
         db.execSQL(sql)
     }
 
     fun deleteById(ctx: Context, id: Long): Int {
         val args = arrayOf(id.toString())
         val deletedCount = Db.getInstance(ctx).writableDatabase
-            .delete(Db.TABLE_SPAM, "${Db.COLUMN_ID} = ?", args)
+            .delete(TABLE_SPAM, "$COLUMN_ID = ?", args)
         return deletedCount
     }
 
@@ -160,7 +154,7 @@ object SpamTable {
     fun deleteBeforeTimestamp(ctx: Context, timestamp: Long): Int {
         val args = arrayOf(timestamp.toString())
         val deletedCount = Db.getInstance(ctx).writableDatabase
-            .delete(Db.TABLE_SPAM, "${Db.COLUMN_TIME} < ?", args)
+            .delete(TABLE_SPAM, "$COLUMN_TIME < ?", args)
         return deletedCount
     }
 }

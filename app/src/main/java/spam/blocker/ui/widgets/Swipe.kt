@@ -183,7 +183,7 @@ fun BgDelete(
             .fillMaxSize()
             .clip(RoundedCornerShape(6.dp))
             .background(color)
-            .padding(16.dp),
+            .padding(horizontal = 16.dp),
         contentAlignment = if (direction == StartToEnd) {
             Alignment.CenterStart
         } else {

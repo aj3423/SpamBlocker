@@ -183,16 +183,17 @@ object Notification {
 
         fun listAll(
             ctx: Context,
-            additionalSql: String? = null
+            whereClause: String? = null,
+            whereParams: Array<String>? = null,
         ): List<Channel> {
             var sql = "SELECT * FROM $TABLE_NOTIFICATION_CHANNEL"
 
-            additionalSql?.let { sql += it }
+            whereClause?.let { sql += it }
 
             val ret: MutableList<Channel> = mutableListOf()
 
             val db = Db.getInstance(ctx).readableDatabase
-            val cursor = db.rawQuery(sql, null)
+            val cursor = db.rawQuery(sql, whereParams)
             cursor.use {
                 if (it.moveToFirst()) {
                     do {
@@ -203,7 +204,7 @@ object Notification {
             }
         }
         fun findByChannelId(ctx: Context, channelId: String) : Channel? {
-            val found = listAll(ctx, " WHERE $COLUMN_CHANNEL_ID = '$channelId'")
+            val found = listAll(ctx, " WHERE $COLUMN_CHANNEL_ID = ?", arrayOf(channelId))
             return found.getOrNull(0)
         }
 
