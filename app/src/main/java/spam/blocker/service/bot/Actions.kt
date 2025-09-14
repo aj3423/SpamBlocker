@@ -1337,7 +1337,8 @@ class ConvertNumber(
             onFlagsChange = {
                 flagsState.intValue = it
                 flags = it
-            }
+            },
+            showNumberFlags = true
         )
         StrInputBox(
             label = { Text(Str(R.string.replace_to)) },
@@ -2718,6 +2719,7 @@ class CallEvent(
             leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
             regexFlags = flagsNumber,
             placeholder = { DimGreyLabel(".*") },
+            showNumberFlags = true,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     number = newVal
@@ -2799,6 +2801,7 @@ class ModifyNumber(
             regexStr = from,
             label = { Text(Str(R.string.replace_from)) },
             regexFlags = fromFlagsState,
+            showNumberFlags = true,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     from = newVal

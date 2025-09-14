@@ -505,6 +505,7 @@ fun RegexInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null, // it can be a clickable icon
+    showNumberFlags: Boolean = false, // enable 2 more flags
     helpTooltipId: Int? = null,
     testable: Boolean = false,
     showFlagsIcon: Boolean = true,
@@ -615,6 +616,11 @@ fun RegexInputBox(
                     .mapIndexed { idx, label ->
                         CheckItem(
                             label = label,
+                            enabled = when(idx) {
+                                0 -> showNumberFlags
+                                1 -> showNumberFlags
+                                else -> true
+                            },
                             trailingIcon = {
                                 Text(
                                     text = when (idx) {

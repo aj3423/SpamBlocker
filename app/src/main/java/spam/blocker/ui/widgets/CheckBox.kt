@@ -19,12 +19,14 @@ fun CheckBox(
     checked: Boolean,
     onCheckChange: Lambda1<Boolean>,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     label: (@Composable ()->Unit)? = null,
 ) {
     RowVCenterSpaced(
         space = 4,
         modifier = modifier
             .clickable(
+                enabled = enabled,
                 indication = ripple(color = MaterialTheme.colorScheme.primary),
                 interactionSource = remember { MutableInteractionSource() },
                 onClick = {
@@ -36,6 +38,7 @@ fun CheckBox(
         Checkbox(
             checked = checked,
             onCheckedChange = null,
+            enabled = enabled,
             colors = CheckboxDefaults.colors(
                 uncheckedColor = LocalPalette.current.textGrey,
             ),

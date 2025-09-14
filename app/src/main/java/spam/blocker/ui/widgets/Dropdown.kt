@@ -108,19 +108,25 @@ class CheckItem(
     val state: MutableState<Boolean>,
     val label: String,
     val trailingIcon: (@Composable ()->Unit)? = null,
+    val enabled: Boolean = true,
     private val onCheckChange: Lambda1<Boolean>
 ) : IMenuItem {
     @Composable
     override fun Compose(menuExpandedState: MutableState<Boolean>) {
+        val C = LocalPalette.current
         CheckBox(
             label = {
                 RowVCenterSpaced(2) {
-                    GreyLabel(label)
+                    GreyLabel(
+                        label,
+                        color = if (enabled) C.textGrey else C.disabled
+                    )
                     trailingIcon?.let {
                         it()
                     }
                 }
             },
+            enabled = enabled,
             checked = state.value,
             onCheckChange = onCheckChange,
         )

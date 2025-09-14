@@ -369,6 +369,7 @@ fun RuleEditDialog(
                     onFlagsChange = {
                         patternFlags.intValue = it
                     },
+                    showNumberFlags = forType == Def.ForNumber,
                     testable = true,
                     leadingIcon = if (forType == Def.ForNumber) {
                         { RegexLeadingDropdownIcon(patternFlags) }
@@ -391,6 +392,7 @@ fun RuleEditDialog(
                             label = { Text(Str(R.string.phone_number)) },
                             regexStr = patternExtra,
                             regexFlags = patternExtraFlags,
+                            showNumberFlags = true,
                             onRegexStrChange = { newValue, hasErr ->
                                 patternExtraError = hasErr
                                 patternExtra = newValue

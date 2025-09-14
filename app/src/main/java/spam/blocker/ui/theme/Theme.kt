@@ -48,7 +48,7 @@ val LightCustomColorsPalette = CustomColorsPalette(
 
     schedule = MayaBlue,
     enabled = Teal200,
-    disabled = ColdGrey,
+    disabled = LightGrey,
     pass = Emerald,
     block = Salmon,
     cardBorder = SwissCoffee,
