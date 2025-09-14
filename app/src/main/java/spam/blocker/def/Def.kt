@@ -178,7 +178,7 @@ object Def {
     const val FLAG_REGEX_IGNORE_CASE = 1 shl 0 // remove this after 2027-01-01, replaced by FLAG_REGEX_CASE_SENSITIVE
     const val FLAG_REGEX_MULTILINE = 1 shl 1
 //    const val FLAG_REGEX_DOT_MATCH_ALL = 1 shl 2
-    const val FLAG_REGEX_LITERAL = 1 shl 3
+//    const val FLAG_REGEX_LITERAL = 1 shl 3
     const val FLAG_REGEX_CASE_SENSITIVE = 1 shl 4
 
     const val FLAG_REGEX_RAW_NUMBER = 1 shl 10
@@ -193,7 +193,7 @@ object Def {
         FLAG_REGEX_CASE_SENSITIVE to "I",
         FLAG_REGEX_MULTILINE to "m",
 //        FLAG_REGEX_DOT_MATCH_ALL to "d",
-        FLAG_REGEX_LITERAL to "l",
+//        FLAG_REGEX_LITERAL to "l",
         FLAG_REGEX_RAW_NUMBER to "®", // r
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",

@@ -408,9 +408,11 @@ object Util {
             opts.add(RegexOption.MULTILINE)
         }
 
-        if (flags.hasFlag(Def.FLAG_REGEX_LITERAL)) {
-            opts.add(RegexOption.LITERAL)
-        }
+        opts.add(RegexOption.DOT_MATCHES_ALL)
+
+//        if (flags.hasFlag(Def.FLAG_REGEX_LITERAL)) {
+//            opts.add(RegexOption.LITERAL)
+//        }
         return opts
     }
 
