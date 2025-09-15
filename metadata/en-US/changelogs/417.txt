@@ -1,0 +1,5 @@
+Fixes:
+- Sql injection issue that caused by alpha numbers like `McDonald's`
+- Hang-up mode doesn't work with "private" numbers
+- Regression issue: DotMatchAll is removed but not enabled by default, causing regex to fail matching multiline SMS.
+- UI doesn't change after backup restore
