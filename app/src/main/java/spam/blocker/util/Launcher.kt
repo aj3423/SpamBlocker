@@ -2,6 +2,8 @@ package spam.blocker.util
 
 import android.content.Context
 import android.content.Intent
+import android.os.Process.killProcess
+import android.os.Process.myPid
 import android.provider.Telephony
 import androidx.core.net.toUri
 import spam.blocker.ui.main.MainActivity
@@ -42,15 +44,17 @@ object Launcher {
         ctx.startActivity(smsIntent)
     }
 
-    fun selfRestart(ctx: Context) {
-        val intent = Intent(ctx, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        ctx.startActivity(intent)
+    fun restartProcess(context: Context) {
+        val packageManager = context.packageManager
+        val intent = packageManager.getLaunchIntentForPackage(context.packageName)
+            ?: run {
+                return
+            }
 
-        // without killing itself, notifications will stop working after a backup restore
-//        if (ctx is Activity) {
-//            ctx.finish()
-//        }
-//        Runtime.getRuntime().exit(0)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        context.startActivity(intent)
+
+        // Immediately kill the process
+        killProcess(myPid())
     }
 }

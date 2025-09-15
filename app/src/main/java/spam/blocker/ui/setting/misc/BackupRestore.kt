@@ -157,8 +157,9 @@ fun ImportButton() {
                 }
             },
             onDismiss = {
-                if (succeeded)
-                    Launcher.selfRestart(ctx)
+                if (succeeded) {
+                    Launcher.restartProcess(ctx)
+                }
             }
         )
     }

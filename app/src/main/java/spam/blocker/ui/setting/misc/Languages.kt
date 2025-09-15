@@ -72,10 +72,10 @@ fun Language() {
                     { ResIcon(lang.iconId, modifier = M.size(20.dp), color = Color.Unspecified) }
                 } else null,
                 onClick = {
-                    val newLangCode = lang.code
-                    spf.setLanguage(newLangCode)
-                    currLangCode = newLangCode
-                    Launcher.selfRestart(ctx)
+                    spf.setLanguage(lang.code)
+                    spf.flush() // flush before restarting the process
+
+                    Launcher.restartProcess(ctx)
                 }
             )
         }
