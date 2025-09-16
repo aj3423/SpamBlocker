@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">Einstellungen schreiben</string>
+    <string name="ringtone">Klingelton</string>
+    <string name="call_to_test_ringtone">Führen Sie einen tatsächlichen Anruf durch, um den Klingelton zu testen.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        Passen Sie den Klingelton für eine Regex-Regel an. Anrufe, die von dieser Regel zugelassen werden, spielen den angegebenen Klingelton ab.<br>
+        <br>
+        Es kann den Klingelton auch stummschalten.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        Diese Funktion wird auf die Regex-Regel angewendet, die die gleiche Beschreibung hat. <br>
+        <br>
+        Wenn Sie dies beispielsweise auf die Regex-Regel <b>Arbeit</b> anwenden möchten,
+        geben Sie <b>Arbeit</b> in dieses Feld ein.
+    ]]>
+    </string>
+</resources>

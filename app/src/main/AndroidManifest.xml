@@ -42,6 +42,9 @@
     <!-- for workflow action: Calendar Event -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
 
+    <!-- for customizing ringtones -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <!-- for reporting bugs(dump adb log) -->
     <uses-permission android:name="android.permission.READ_LOGS" />
 

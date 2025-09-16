@@ -48,6 +48,7 @@ import spam.blocker.util.PermissionType.ReadSMS
 import spam.blocker.util.PermissionType.ReceiveMMS
 import spam.blocker.util.PermissionType.ReceiveSMS
 import spam.blocker.util.PermissionType.UsageStats
+import spam.blocker.util.PermissionType.WriteSettings
 
 object PermissionType {
     abstract class Basic {
@@ -90,6 +91,7 @@ object PermissionType {
     class PhoneState: Regular(Manifest.permission.READ_PHONE_STATE, R.string.perm_phone_state)
     class ReadSMS: Regular(Manifest.permission.READ_SMS, R.string.perm_read_sms)
     class Calendar: Regular(Manifest.permission.READ_CALENDAR, R.string.perm_read_calendar)
+
 
     open class FileAccess(name: String, descId: Int): Regular(name, descId) {
         override fun check(ctx: Context): Boolean {
@@ -184,6 +186,18 @@ object PermissionType {
             return notificationManager.isNotificationListenerAccessGranted(
                 ComponentName(ctx, NotificationListenerService::class.java)
             )
+        }
+    }
+    class WriteSettings(
+        override var descId: Int = R.string.perm_write_settings
+    ): LaunchByIntent() {
+        override fun launcherIntent(ctx: Context): Intent {
+            return Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS).apply {
+                data = "package:${ctx.packageName}".toUri()
+            }
+        }
+        override fun check(ctx: Context): Boolean {
+            return Settings.System.canWrite(ctx)
         }
     }
 //    class ExactAlarm: LaunchByIntent() {
@@ -303,6 +317,7 @@ object Permission {
     val phoneState = PhoneState()
     val readSMS = ReadSMS()
     val calendar = Calendar()
+    val writeSettings = WriteSettings()
     val notificationAccess = NotificationAccess()
     val usageStats = UsageStats()
     val batteryUnRestricted = BatteryUnRestricted()
@@ -320,6 +335,7 @@ object Permission {
             phoneState,
             readSMS,
             calendar,
+            writeSettings,
             notificationAccess,
             usageStats,
             batteryUnRestricted,

@@ -14,6 +14,7 @@ object Def {
     const val LAST_NUMBER_TO_BLOCK = "last_number_to_block"
     const val LAST_NUMBER_TO_BLOCK_DELAY = "last_number_to_block_delay"
     const val DEFAULT_HANG_UP_DELAY = 1 // second
+    const val RINGTONE = "ringtone"
 
     const val SETTING_THEME_TYPE = "theme_type"
     const val SETTING_CHANNEL_SPAM_CALL = "channel_spam_call"

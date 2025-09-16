@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">Modifier les paramètres</string>
+    <string name="ringtone">Sonnerie</string>
+    <string name="call_to_test_ringtone">Effectuez un véritable appel pour tester la sonnerie.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        Personnalisez la sonnerie pour une règle d\'expression régulière ; les appels autorisés par cette règle joueront la sonnerie spécifiée.<br>
+        <br>
+        Elle peut aussi couper la sonnerie.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        Cette fonctionnalité sera appliquée à la règle d\'expression régulière qui a la même description. <br>
+        <br>
+        Par exemple, si vous souhaitez l\'appliquer à la règle d\'expression régulière <b>Travail</b>,
+        tapez <b>Travail</b> dans ce champ.
+    ]]>
+    </string>
+</resources>

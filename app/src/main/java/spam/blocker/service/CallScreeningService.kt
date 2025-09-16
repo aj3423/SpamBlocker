@@ -11,9 +11,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.Events
+import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
 import spam.blocker.def.Def
+import spam.blocker.service.bot.ActionContext
+import spam.blocker.service.bot.Ringtone
+import spam.blocker.service.bot.executeAll
+import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.reportSpam
@@ -22,6 +27,8 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
+import spam.blocker.util.Permission
+import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import spam.blocker.util.spf
@@ -57,8 +64,11 @@ class CallScreeningService : CallScreeningService() {
         }
     }
 
-    private fun pass(details: Details) {
-        val builder = CallResponse.Builder()
+    private fun pass(details: Details, shouldMute: Boolean = false) {
+        val builder = CallResponse.Builder().apply {
+            if (shouldMute)
+                setSilenceCall(true)
+        }
         respondToCall(details, builder.build())
     }
 
@@ -142,8 +152,38 @@ class CallScreeningService : CallScreeningService() {
                 else -> reject(details)
             }
         } else {
-            pass(details)
+            val shouldMute = setRingtone(this, r)
+            pass(details, shouldMute)
         }
+    }
+
+    // Return value: should mute or not
+    //  true -> mute the ringtone
+    //  false -> play the ringtone
+    private fun setRingtone(ctx: Context, r: ICheckResult) : Boolean {
+        if (r !is ByRegexRule) // not blocked by regex rule, no need to check
+            return false
+
+        // 1. Get the workflow(s) that is linked to this regex rule
+        val bots = BotTable.listAll(ctx).filter {
+            it.actions.firstOrNull() is Ringtone
+        }
+        if (bots.isEmpty())
+            return false
+
+        // 2. Save the current ringtone to shared prefs
+        val current = RingtoneUtil.getCurrent(ctx)
+        spf.Temporary(ctx).setRingtone(current.toString())
+
+        // 3. Change the system default ringtone, it will be reset soon in CallStateReceiver
+        var shouldMute = false
+        bots.forEach {
+            val aCtx = ActionContext(lastOutput = r.rule!!.description)
+            it.actions.executeAll(ctx, aCtx)
+            shouldMute = aCtx.shouldMute
+        }
+
+        return shouldMute
     }
 
     private fun logToDb(ctx: Context, r: ICheckResult, rawNumber: String) {

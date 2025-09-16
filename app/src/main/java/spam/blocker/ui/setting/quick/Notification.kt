@@ -54,7 +54,6 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.ui.widgets.getRingtoneName
 import spam.blocker.ui.widgets.rememberFileReadChooser
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Notification
@@ -63,6 +62,7 @@ import spam.blocker.util.Notification.isBuiltInChannel
 import spam.blocker.util.Notification.manager
 import spam.blocker.util.Notification.openChannelSettings
 import spam.blocker.util.Notification.reloadChannels
+import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.spf
 import androidx.compose.foundation.Image as ComposeImage
 
@@ -119,7 +119,7 @@ fun EditChannelDialog(
     var group by remember { mutableStateOf(initChannel.group) }
     var mute by remember { mutableStateOf(initChannel.mute) }
     var sound by remember { mutableStateOf(initChannel.sound) }
-    var soundName by remember(sound) { mutableStateOf(getRingtoneName(ctx, sound.toUri())) }
+    var soundName by remember(sound) { mutableStateOf(RingtoneUtil.getName(ctx, sound.toUri())) }
     var icon by remember { mutableStateOf(initChannel.icon) }
     var iconColor by remember { mutableStateOf<Int?>(initChannel.iconColor) }
     var led by remember { mutableStateOf(initChannel.led) }

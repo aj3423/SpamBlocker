@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">Escribir axustes</string>
+    <string name="ringtone">Tono de chamada</string>
+    <string name="call_to_test_ringtone">Realiza unha chamada real para probar o ton de chamada.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        Personaliza o ton de chamada para unha regra de expresión regular; as chamadas permitidas por esta regra reproducirán o ton de chamada especificado.<br>
+        <br>
+        Tamén pode silenciar o ton de chamada.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        Esta característica aplicarase á regra de expresión regular que teña a mesma descrición. <br>
+        <br>
+        Por exemplo, se queres aplicala á regra de expresión regular <b>Traballo</b>,
+        escribe <b>Traballo</b> neste campo.
+    ]]>
+    </string>
+</resources>

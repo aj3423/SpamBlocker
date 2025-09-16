@@ -50,8 +50,10 @@ class CallStateReceiver : BroadcastReceiver() {
             when (state) {
                 // This is triggered when it starts ringing
                 TelephonyManager.EXTRA_STATE_RINGING -> {
-                    val currNumber = extractNumber(intent)
                     logi("RINGING")
+
+                    // 1. Blocked by "Answer+HangUp"?
+                    val currNumber = extractNumber(intent)
 
                     val block = shouldBlock(ctx, currNumber)
                     if (block)
@@ -60,8 +62,9 @@ class CallStateReceiver : BroadcastReceiver() {
 
                 // This is triggered when a call is answered(in call)
                 TelephonyManager.EXTRA_STATE_OFFHOOK -> {
-                    val currNumber = extractNumber(intent)
                     logi("IN CALL")
+
+                    val currNumber = extractNumber(intent)
 
                     val block = shouldBlock(ctx, currNumber)
 
@@ -77,8 +80,8 @@ class CallStateReceiver : BroadcastReceiver() {
 
                 // This is triggered when any call ends
                 TelephonyManager.EXTRA_STATE_IDLE -> {
-                    val currNumber = extractNumber(intent)
-                    logi("IDLE, num: $currNumber")
+//                    val currNumber = extractNumber(intent)
+                    logi("IDLE")
 
                     // When the call ends before the hang-up delay, kill the hang-up task,
                     //  to prevent killing any following calls by mistake.

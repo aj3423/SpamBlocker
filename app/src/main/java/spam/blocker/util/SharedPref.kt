@@ -83,6 +83,8 @@ class spf { // for namespace only
         fun setLastCallTime(timestamp: Long) { return writeLong(Def.LAST_CALLED_TIME, timestamp) }
         fun getHangUpDelay(): Int { return readInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, DEFAULT_HANG_UP_DELAY) }
         fun setHangUpDelay(seconds: Int) { return writeInt(Def.LAST_NUMBER_TO_BLOCK_DELAY, seconds) }
+        fun getRingtone(): String { return readString(Def.RINGTONE, "") }
+        fun setRingtone(ringtone: String) { writeString(Def.RINGTONE, ringtone) }
     }
     class Global(ctx: Context) : SharedPref(ctx) {
         fun isGloballyEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLED, false) }

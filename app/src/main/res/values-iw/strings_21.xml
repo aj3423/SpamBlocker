@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">כתוב הגדרות</string>
+    <string name="ringtone">צלצול</string>
+    <string name="call_to_test_ringtone">בצע שיחה בפועל כדי לבדוק את הצלצול.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        התאם אישית את הצלצול עבור כלל ביטוי רגולרי, שיחות המותרות על ידי כלל זה ינגנו את הצלצול שצוין.<br>
+        <br>
+        זה יכול גם להשתיק את הצלצול.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        תכונה זו תחול על כלל הביטוי הרגולרי בעל אותו תיאור. <br>
+        <br>
+        לדוגמה, אם ברצונך ליישם זאת על כלל הביטוי הרגולרי <b>Work</b>,
+        הקלד <b>Work</b> בשדה זה.
+    ]]>
+    </string>
+</resources>

@@ -1,18 +1,17 @@
 package spam.blocker.ui.widgets
 
-import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.media.RingtoneManager.TYPE_NOTIFICATION
 import android.media.RingtoneManager.TYPE_RINGTONE
 import android.net.Uri
-import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.R
+import spam.blocker.util.RingtoneUtil
 
 @Composable
 fun RingtonePicker(
@@ -28,7 +27,7 @@ fun RingtonePicker(
         if (result.resultCode == android.app.Activity.RESULT_OK) {
             val uri: Uri? = result.data?.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
             // Get the display name for the selected URI
-            val displayName = uri?.let { getRingtoneName(ctx, it) }
+            val displayName = uri?.let { RingtoneUtil.getName(ctx, it) }
             onRingtoneSelected(uri?.toString(), displayName)
         } else {
             onRingtoneSelected(null, null)
@@ -47,25 +46,3 @@ fun RingtonePicker(
     }
 }
 
-fun getRingtoneName(ctx: Context, uri: Uri): String {
-    return try {
-        ctx.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
-            if (cursor.moveToFirst()) {
-                val displayNameIndex = cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME)
-                val titleIndex = cursor.getColumnIndex(MediaStore.Audio.Media.TITLE)
-                // Prefer TITLE for system ringtones, fall back to DISPLAY_NAME
-                if (titleIndex >= 0 && !cursor.isNull(titleIndex)) {
-                    cursor.getString(titleIndex)
-                } else if (displayNameIndex >= 0 && !cursor.isNull(displayNameIndex)) {
-                    cursor.getString(displayNameIndex).removeSuffix(".wav")
-                } else {
-                    null
-                }
-            } else {
-                null
-            }
-        }
-    } catch (e: Exception) {
-        null
-    } ?: ctx.getString(R.string.unknown)
-}

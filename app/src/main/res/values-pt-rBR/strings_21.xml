@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">Modificar Configurações</string>
+    <string name="ringtone">Toque</string>
+    <string name="call_to_test_ringtone">Faça uma chamada real para testar o toque.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        Personalize o toque para uma regra de expressão regular; chamadas permitidas por esta regra tocarão o toque especificado.<br>
+        <br>
+        Também pode silenciar o toque.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        Este recurso será aplicado à regra de expressão regular que tiver a mesma descrição. <br>
+        <br>
+        Por exemplo, se você quiser aplicar isso à regra de expressão regular <b>Trabalho</b>,
+        digite <b>Trabalho</b> neste campo.
+    ]]>
+    </string>
+</resources>

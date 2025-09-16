@@ -1,0 +1,19 @@
+<resources>
+    <string name="perm_write_settings">写入设置</string>
+    <string name="ringtone">铃声</string>
+    <string name="call_to_test_ringtone">进行一次实际通话以测试铃声。</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        为正则表达式规则自定义铃声，此规则允许的呼叫将播放指定的铃声。<br>
+        <br>
+        它也可以将来电铃声静音。
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        此功能将应用于具有相同描述的正则表达式规则。<br>
+        <br>
+        例如，如果您想将其应用于正则表达式规则<b>Work</b>，请在此字段中输入<b>Work</b>。
+    ]]>
+    </string>
+</resources>

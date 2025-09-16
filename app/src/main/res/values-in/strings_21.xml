@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">Tulis Pengaturan</string>
+    <string name="ringtone">Nada Dering</string>
+    <string name="call_to_test_ringtone">Lakukan panggilan sungguhan untuk menguji nada dering.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        Sesuaikan nada dering untuk aturan regex, panggilan yang diizinkan oleh aturan ini akan memutar nada dering yang ditentukan.<br>
+        <br>
+        Ini juga dapat membisukan nada dering.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        Fitur ini akan diterapkan pada aturan regex yang memiliki deskripsi yang sama. <br>
+        <br>
+        Sebagai contoh, jika Anda ingin menerapkan ini pada aturan regex <b>Work</b>,
+        ketik <b>Work</b> di kolom ini.
+    ]]>
+    </string>
+</resources>

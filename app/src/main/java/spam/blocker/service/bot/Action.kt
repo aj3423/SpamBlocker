@@ -21,7 +21,7 @@ import spam.blocker.util.PermissionWrapper
 
 // When adding a new IAction type, follow all the steps:
 //  - implement it in Actions.kt
-//  - add to  `botActions` or `apiActions`
+//  - add to  `botActions` or `apiActions` below
 //  - add to  `botModule` in BotSerializersModule.kt
 
 val botActions = listOf(
@@ -31,6 +31,7 @@ val botActions = listOf(
     CallThrottling(),
     SmsThrottling(),
     CalendarEvent(),
+    Ringtone(),
     ImportToSpamDB(),
     CleanupSpamDB(),
     ImportAsRegexRule(),
@@ -111,6 +112,9 @@ data class ActionContext(
     // Changes happens in memory and won't persist to the configuration.
     var cCtx: CheckContext? = null,
     var isInMemory: Boolean = false,
+
+    // Should mute the ringtone for allowed call?
+    var shouldMute: Boolean = false,
 
 )
 

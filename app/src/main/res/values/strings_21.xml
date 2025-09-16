@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">Write Settings</string>
+    <string name="ringtone">Ringtone</string>
+    <string name="call_to_test_ringtone">Perform an actual call to test the ringtone.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        Customize the ringtone for a regex rule, calls permitted by this rule will play the specified ringtone.<br>
+        <br>
+        It can also mute the ringtone.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        This feature will be applied to the regex rule that has the same description. <br>
+        <br>
+        For example, if you want to apply this to the regex rule <b>Work</b>,
+        type <b>Work</b> in this field.
+    ]]>
+    </string>
+</resources>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="perm_write_settings">كتابة الإعدادات</string>
+    <string name="ringtone">نغمة الرنين</string>
+    <string name="call_to_test_ringtone">قم بإجراء مكالمة فعلية لاختبار نغمة الرنين.</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        تخصيص نغمة الرنين لقاعدة تعبير نمطي، ستشغل المكالمات المسموح بها بموجب هذه القاعدة نغمة الرنين المحددة.<br>
+        <br>
+        ويمكنها أيضاً كتم نغمة الرنين.
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        سيتم تطبيق هذه الميزة على قاعدة التعبير النمطي التي لها نفس الوصف. <br>
+        <br>
+        على سبيل المثال، إذا كنت ترغب في تطبيق هذا على قاعدة التعبير النمطي <b>Work</b>،
+        اكتب <b>Work</b> في هذا الحقل.
+    ]]>
+    </string>
+</resources>
