@@ -1,20 +1,32 @@
 <resources>
     <string name="perm_write_settings">Escriure configuració</string>
-    <string name="ringtone">Tono de trucada</string>
-    <string name="call_to_test_ringtone">Fes una trucada real per provar el to de trucada.</string>
+    <string name="set_to">Establir a</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Estableix el to de trucada per a una característica particular, o silencia-lo. <br>
+        <br>
+        Per exemple, per establir el to de trucada per a una regla regex: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Les trucades permeses per aquesta regla reproduiran el to de trucada especificat.<br>
+    ]]>
+    </string>
+    <string name="ringtone">To de trucada</string>
+    <string name="call_to_test_ringtone">Realitza una trucada real per provar el to de trucada.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personalitza el to de trucada per a una regla d\'expressió regular, les trucades permeses per aquesta regla reproduiran el to de trucada especificat.<br>
-        <br>
-        També pot silenciar el to de trucada.
+        Personalitza el to de trucada per a una característica particular; les trucades permeses per aquesta característica reproduiran el to de trucada especificat.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Aquesta funció s\'aplicarà a la regla d\'expressió regular que tingui la mateixa descripció. <br>
+        Aquesta característica s\'aplicarà a la regla regex que tingui la mateixa descripció. <br>
         <br>
-        Per exemple, si vols aplicar-ho a la regla d\'expressió regular <b>Work</b>,
-        escriu <b>Work</b> en aquest camp.
+        Per exemple, si vols aplicar això a la regla regex <b>Feina</b>,
+        escriu <b>Feina</b> en aquest camp.
     ]]>
     </string>
+    <string name="invalid_config">Configuració no vàlida</string>
 </resources>

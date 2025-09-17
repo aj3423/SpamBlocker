@@ -1,20 +1,32 @@
 <resources>
     <string name="perm_write_settings">Modifier les paramètres</string>
+    <string name="set_to">Définir sur</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Définir la sonnerie pour une fonctionnalité particulière, ou la mettre en sourdine. <br>
+        <br>
+        Par exemple, pour définir la sonnerie pour une règle d\'expression régulière : <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Les appels autorisés par cette règle joueront la sonnerie spécifiée.<br>
+    ]]>
+    </string>
     <string name="ringtone">Sonnerie</string>
     <string name="call_to_test_ringtone">Effectuez un véritable appel pour tester la sonnerie.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personnalisez la sonnerie pour une règle d\'expression régulière ; les appels autorisés par cette règle joueront la sonnerie spécifiée.<br>
-        <br>
-        Elle peut aussi couper la sonnerie.
+        Personnalisez la sonnerie pour une fonctionnalité particulière, les appels autorisés par cette fonctionnalité joueront la sonnerie spécifiée.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
         Cette fonctionnalité sera appliquée à la règle d\'expression régulière qui a la même description. <br>
         <br>
-        Par exemple, si vous souhaitez l\'appliquer à la règle d\'expression régulière <b>Travail</b>,
+        Par exemple, si vous voulez appliquer cela à la règle d\'expression régulière <b>Travail</b>,
         tapez <b>Travail</b> dans ce champ.
     ]]>
     </string>
+    <string name="invalid_config">Configuration invalide</string>
 </resources>

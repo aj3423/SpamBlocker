@@ -1,19 +1,32 @@
 <resources>
     <string name="perm_write_settings">設定の書き込み</string>
+    <string name="set_to">に設定</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        特定の機能の着信音を設定するか、ミュートにします。<br>
+        <br>
+        例えば、正規表現ルールに着信音を設定するには：<br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        このルールで許可された通話には、指定された着信音が鳴ります。<br>
+    ]]>
+    </string>
     <string name="ringtone">着信音</string>
-    <string name="call_to_test_ringtone">実際の通話で着信音をテストします。</string>
+    <string name="call_to_test_ringtone">着信音をテストするために実際に通話を行います。</string>
     <string name="help_ringtone">
     <![CDATA[
-        正規表現ルールごとに着信音をカスタマイズできます。このルールで許可された通話には、指定された着信音が鳴ります。<br>
-        <br>
-        着信音をミュートすることもできます。
+        特定の機能の着信音をカスタマイズします。その機能で許可された通話には、指定された着信音が鳴ります。
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
         この機能は、同じ説明を持つ正規表現ルールに適用されます。<br>
         <br>
-        例えば、この機能を正規表現ルール <b>Work</b> に適用したい場合は、このフィールドに <b>Work</b> と入力してください。
+        例えば、これを正規表現ルール<b>Work</b>に適用したい場合、
+        このフィールドに<b>Work</b>と入力してください。
     ]]>
     </string>
+    <string name="invalid_config">無効な設定</string>
 </resources>

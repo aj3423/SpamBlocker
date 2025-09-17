@@ -1,20 +1,32 @@
 <resources>
-    <string name="perm_write_settings">Tulis Pengaturan</string>
+    <string name="perm_write_settings">Ubah Pengaturan</string>
+    <string name="set_to">Atur ke</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Atur nada dering untuk fitur tertentu, atau bisukan. <br>
+        <br>
+        Misalnya, untuk mengatur nada dering untuk aturan regex: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Panggilan yang diizinkan oleh aturan ini akan memutar nada dering yang ditentukan.<br>
+    ]]>
+    </string>
     <string name="ringtone">Nada Dering</string>
     <string name="call_to_test_ringtone">Lakukan panggilan sungguhan untuk menguji nada dering.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Sesuaikan nada dering untuk aturan regex, panggilan yang diizinkan oleh aturan ini akan memutar nada dering yang ditentukan.<br>
-        <br>
-        Ini juga dapat membisukan nada dering.
+        Sesuaikan nada dering untuk fitur tertentu, panggilan yang diizinkan oleh fitur tersebut akan memutar nada dering yang ditentukan.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
         Fitur ini akan diterapkan pada aturan regex yang memiliki deskripsi yang sama. <br>
         <br>
-        Sebagai contoh, jika Anda ingin menerapkan ini pada aturan regex <b>Work</b>,
+        Misalnya, jika Anda ingin menerapkan ini pada aturan regex <b>Work</b>,
         ketik <b>Work</b> di kolom ini.
     ]]>
     </string>
+    <string name="invalid_config">Konfigurasi Tidak Valid</string>
 </resources>

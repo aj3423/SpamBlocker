@@ -1,12 +1,23 @@
 <resources>
     <string name="perm_write_settings">Write Settings</string>
+    <string name="set_to">Set To</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Set the ringtone for a particular feature, or mute it. <br>
+        <br>
+        For example, to set the ringtone for a regex rule: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Calls permitted by this rule will play the specified ringtone.<br>
+    ]]>
+    </string>
     <string name="ringtone">Ringtone</string>
     <string name="call_to_test_ringtone">Perform an actual call to test the ringtone.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Customize the ringtone for a regex rule, calls permitted by this rule will play the specified ringtone.<br>
-        <br>
-        It can also mute the ringtone.
+        Customize the ringtone for a particular feature, calls permitted by that feature will play the specified ringtone.
     ]]>
     </string>
     <string name="help_target_rule_desc">
@@ -17,4 +28,5 @@
         type <b>Work</b> in this field.
     ]]>
     </string>
+    <string name="invalid_config">Invalid Config</string>
 </resources>

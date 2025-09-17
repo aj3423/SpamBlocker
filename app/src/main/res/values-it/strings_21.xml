@@ -1,20 +1,32 @@
 <resources>
-    <string name="perm_write_settings">Modifica Impostazioni</string>
+    <string name="perm_write_settings">Scrivi impostazioni</string>
+    <string name="set_to">Imposta su</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Imposta la suoneria per una particolare funzione, o disattivala. <br>
+        <br>
+        Ad esempio, per impostare la suoneria per una regola regex: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Le chiamate consentite da questa regola riprodurranno la suoneria specificata.<br>
+    ]]>
+    </string>
     <string name="ringtone">Suoneria</string>
     <string name="call_to_test_ringtone">Effettua una chiamata reale per testare la suoneria.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personalizza la suoneria per una regola regex, le chiamate consentite da questa regola riprodurranno la suoneria specificata.<br>
-        <br>
-        Può anche silenziare la suoneria.
+        Personalizza la suoneria per una particolare funzione; le chiamate consentite da tale funzione riprodurranno la suoneria specificata.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
         Questa funzione verrà applicata alla regola regex che ha la stessa descrizione. <br>
         <br>
-        Ad esempio, se vuoi applicarla alla regola regex <b>Lavoro</b>,
+        Ad esempio, se desideri applicarla alla regola regex <b>Lavoro</b>,
         digita <b>Lavoro</b> in questo campo.
     ]]>
     </string>
+    <string name="invalid_config">Configurazione non valida</string>
 </resources>

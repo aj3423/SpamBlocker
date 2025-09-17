@@ -161,7 +161,7 @@ class CallScreeningService : CallScreeningService() {
     //  true -> mute the ringtone
     //  false -> play the ringtone
     private fun setRingtone(ctx: Context, r: ICheckResult) : Boolean {
-        if (r !is ByRegexRule) // not blocked by regex rule, no need to check
+        if (r.shouldBlock()) // not allowed call, no ringtone, no need to check
             return false
 
         // 1. Get the workflow(s) that is linked to this regex rule
@@ -178,7 +178,7 @@ class CallScreeningService : CallScreeningService() {
         // 3. Change the system default ringtone, it will be reset soon in CallStateReceiver
         var shouldMute = false
         bots.forEach {
-            val aCtx = ActionContext(lastOutput = r.rule!!.description)
+            val aCtx = ActionContext(lastOutput = r)
             it.actions.executeAll(ctx, aCtx)
             shouldMute = aCtx.shouldMute
         }

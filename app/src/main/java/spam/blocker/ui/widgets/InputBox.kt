@@ -371,7 +371,7 @@ fun StrInputBox(
     leadingIconId: Int? = null,
     helpTooltip: String? = null,
     enabled: Boolean = true,
-
+    supportingTextStr: String? = null,
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
 ) {
@@ -416,6 +416,7 @@ fun StrInputBox(
             { GreyIcon18(it) }
         },
         keyboardOptions = KeyboardOptions(),
+        supportingTextStr = supportingTextStr,
         trailingIcon = {
             RowVCenter {
                 if (lastText.isNotEmpty() && enabled) {

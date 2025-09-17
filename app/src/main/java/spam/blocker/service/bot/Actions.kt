@@ -48,8 +48,10 @@ import spam.blocker.db.listReportableAPIs
 import spam.blocker.db.reScheduleBot
 import spam.blocker.db.ruleTableForType
 import spam.blocker.def.Def
+import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.RegexRuleChecker
+import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
@@ -3179,13 +3181,19 @@ class SmsThrottling(
 }
 
 @Serializable
+class Features(
+    var regex: String?,
+    // var repeatedCall: Boolean?,
+    // ...
+)
+
+@Serializable
 @SerialName("Ringtone")
 class Ringtone(
     var enabled: Boolean = true, // always enabled, can't be disabled
     var mute: Boolean = false,
     var ringtoneUri: String? = null,
-    var targetRuleDesc: String = "",
-    var targetRuleDescFlags: Int = Def.DefaultRegexFlags,
+    var bindTo: String = "{ \"regex\": \"\" }",
 ) : ITriggerAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return if (mute) // mute doesn't write to system settings
@@ -3197,13 +3205,26 @@ class Ringtone(
         return enabled &&
                 if (mute) true else Permission.writeSettings.isGranted
     }
+    private fun labelBindTo(): String {
+        try {
+            val j = PermissiveJson.decodeFromString<Features>(bindTo)
+            if (j.regex != null) {
+                return j.regex!!
+            }
+//        if (j.repeatedCall != null) {
+//            return ctx.getString("repeated call")
+//        }
+        } catch (_: Exception) {
+        }
+        return ""
+    }
     @Composable
     override fun TriggerType(modifier: Modifier) {
         val ctx = LocalContext.current
 
         RowVCenterSpaced(6, modifier = modifier) {
             GreyIcon18(R.drawable.ic_music)
-            GreyLabel(targetRuleDesc)
+            GreyLabel(labelBindTo())
 
             if (mute) {
                 GreyIcon18(R.drawable.ic_bell_mute)
@@ -3224,13 +3245,30 @@ class Ringtone(
             return false
         }
 
-        // The call was just allowed by this regex
-        val allowedByRuleDesc = aCtx.lastOutput as? String ?: ""
-
-        if (!targetRuleDesc.regexMatches(allowedByRuleDesc, targetRuleDescFlags)) {
+        var j: Features
+        try {
+            j = PermissiveJson.decodeFromString<Features>(bindTo)
+        } catch (_: Exception) {
             return false
         }
 
+        val r = aCtx.lastOutput as? ICheckResult
+
+        var anyFeatureMatches = false
+
+        if (j.regex != null && r is ByRegexRule) {
+            // If the call was allowed by this regex
+            anyFeatureMatches = j.regex!!.regexMatches(r.rule!!.description, Def.DefaultRegexFlags)
+        }
+//        if (j.repeatedCall != null) { // change ringtone for other features
+//            anyFeatureMatches = ...
+//        }
+
+        // No feature matches, nothing to do.
+        if (!anyFeatureMatches)
+            return false
+
+        // Apply the ringtone if any feature matches
         if (!mute) {
             RingtoneUtil.setDefaultUri(ctx, (ringtoneUri ?: "").toUri())
 
@@ -3276,7 +3314,7 @@ class Ringtone(
             if (enabled) {
                 GreenDot()
             }
-            GreyLabel(targetRuleDesc)
+            GreyLabel(labelBindTo())
 
             if (mute) {
                 GreyIcon18(R.drawable.ic_bell_mute)
@@ -3308,21 +3346,28 @@ class Ringtone(
     override fun Options() {
         val ctx = LocalContext.current
 
-        // Target rule desc
-        val flagsState = remember { mutableIntStateOf(targetRuleDescFlags) }
-        RegexInputBox(
-            regexStr = targetRuleDesc,
-            label = { Text(Str(R.string.target_rule_desc)) },
-            regexFlags = flagsState,
-            helpTooltipId = R.string.help_target_rule_desc,
-            onRegexStrChange = { newVal, hasError ->
-                if (!hasError) {
-                    targetRuleDesc = newVal
-                }
-            },
-            onFlagsChange = {
-                flagsState.intValue = it
-                targetRuleDescFlags = it
+        var bindToState by remember { mutableStateOf(bindTo) }
+        var error by remember(bindToState) {
+            val label = labelBindTo()
+
+            mutableStateOf<String?>(
+                if (label.isEmpty())
+                    ctx.getString(R.string.invalid_config)
+                else
+                    null
+            )
+        }
+        // Target features
+        StrInputBox(
+            text = bindToState,
+            label = { Text(Str(R.string.set_to)) },
+            leadingIconId = R.drawable.ic_link,
+            placeholder = { DimGreyLabel("{\"regex\": \"rule_desc\"}") },
+            helpTooltip = Str(R.string.help_set_ringtone_to),
+            supportingTextStr = error,
+            onValueChange = {
+                bindTo = it
+                bindToState = it
             }
         )
 

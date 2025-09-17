@@ -1,19 +1,32 @@
 <resources>
     <string name="perm_write_settings">Ayarları Yaz</string>
+    <string name="set_to">Şuna Ayarla</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Belirli bir özellik için zil sesini ayarlayın veya sessize alın. <br>
+        <br>
+        Örneğin, bir regex kuralı için zil sesini ayarlamak için: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Bu kuralın izin verdiği aramalar belirtilen zil sesini çalacaktır.<br>
+    ]]>
+    </string>
     <string name="ringtone">Zil Sesi</string>
     <string name="call_to_test_ringtone">Zil sesini test etmek için gerçek bir arama yapın.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Bir düzenli ifade kuralı için zil sesini özelleştirin, bu kuralın izin verdiği aramalar belirtilen zil sesini çalacaktır.<br>
-        <br>
-        Ayrıca zil sesini sessize alabilir.
+        Belirli bir özellik için zil sesini özelleştirin, bu özelliğin izin verdiği aramalar belirtilen zil sesini çalacaktır.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Bu özellik, aynı açıklamaya sahip düzenli ifade kuralına uygulanacaktır. <br>
+        Bu özellik, aynı açıklamaya sahip regex kuralına uygulanacaktır. <br>
         <br>
-        Örneğin, bunu <b>İş</b> düzenli ifade kuralına uygulamak isterseniz, bu alana <b>İş</b> yazın.
+        Örneğin, bunu <b>İş</b> regex kuralına uygulamak isterseniz,
+        bu alana <b>İş</b> yazın.
     ]]>
     </string>
+    <string name="invalid_config">Geçersiz Yapılandırma</string>
 </resources>

@@ -1,20 +1,32 @@
 <resources>
     <string name="perm_write_settings">Escribir Ajustes</string>
+    <string name="set_to">Establecer en</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Establece el tono de llamada para una función particular, o siléncialo. <br>
+        <br>
+        Por ejemplo, para establecer el tono de llamada para una regla de expresión regular: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        Las llamadas permitidas por esta regla reproducirán el tono de llamada especificado.<br>
+    ]]>
+    </string>
     <string name="ringtone">Tono de llamada</string>
-    <string name="call_to_test_ringtone">Realizar una llamada real para probar el tono de llamada.</string>
+    <string name="call_to_test_ringtone">Realiza una llamada real para probar el tono de llamada.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personaliza el tono de llamada para una regla de expresión regular; las llamadas permitidas por esta regla reproducirán el tono de llamada especificado.<br>
-        <br>
-        También puede silenciar el tono de llamada.
+        Personaliza el tono de llamada para una función particular; las llamadas permitidas por esa función reproducirán el tono de llamada especificado.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
         Esta función se aplicará a la regla de expresión regular que tenga la misma descripción. <br>
         <br>
-        Por ejemplo, si deseas aplicar esto a la regla de expresión regular <b>Trabajo</b>,
-        escribe <b>Trabajo</b> en este campo.
+        Por ejemplo, si quieres aplicar esto a la regla de expresión regular <b>Work</b>,
+        escribe <b>Work</b> en este campo.
     ]]>
     </string>
+    <string name="invalid_config">Configuración no válida</string>
 </resources>

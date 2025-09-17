@@ -1,20 +1,32 @@
 <resources>
-    <string name="perm_write_settings">Modificar Configurações</string>
+    <string name="perm_write_settings">Gravar Configurações</string>
+    <string name="set_to">Definir Para</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        Defina o toque para um recurso específico, ou silencie-o. <br>
+        <br>
+        Por exemplo, para definir o toque para uma regra de expressão regular: <br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        As chamadas permitidas por esta regra tocarão o toque especificado.<br>
+    ]]>
+    </string>
     <string name="ringtone">Toque</string>
     <string name="call_to_test_ringtone">Faça uma chamada real para testar o toque.</string>
     <string name="help_ringtone">
     <![CDATA[
-        Personalize o toque para uma regra de expressão regular; chamadas permitidas por esta regra tocarão o toque especificado.<br>
-        <br>
-        Também pode silenciar o toque.
+        Personalize o toque para um recurso específico; as chamadas permitidas por esse recurso tocarão o toque especificado.
     ]]>
     </string>
     <string name="help_target_rule_desc">
     <![CDATA[
-        Este recurso será aplicado à regra de expressão regular que tiver a mesma descrição. <br>
+        Este recurso será aplicado à regra de expressão regular que possui a mesma descrição. <br>
         <br>
         Por exemplo, se você quiser aplicar isso à regra de expressão regular <b>Trabalho</b>,
         digite <b>Trabalho</b> neste campo.
     ]]>
     </string>
+    <string name="invalid_config">Configuração Inválida</string>
 </resources>
