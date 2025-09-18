@@ -29,4 +29,20 @@
     ]]>
     </string>
     <string name="invalid_config">Configuração Inválida</string>
+    <string name="custom">Personalizado</string>
+    <string name="quick_tile">Bloco Rápido</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Associe um fluxo de trabalho a um Bloco de Configurações Rápidas. Em uma chamada recebida, o fluxo de trabalho será executado se o bloco estiver ativo. <br>
+        <br>
+        Isso pode ser usado para modificar configurações rapidamente; as alterações ocorrerão temporariamente na memória e não persistirão na configuração. <br>
+        <br>
+        <b>Por exemplo:</b> <br>
+        Use um bloco para ativar/desativar uma regra regex, configurado assim: <br>
+        - Bloco Rápido <br>
+        - Encontrar Regras <br>
+        - Modificar Regras <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">O bloco rápido personalizado está ativo.</string>
 </resources>

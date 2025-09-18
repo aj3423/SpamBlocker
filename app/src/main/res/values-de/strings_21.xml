@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Ungültige Konfiguration</string>
+    <string name="custom">Benutzerdefiniert</string>
+    <string name="quick_tile">Schnelleinstellung</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Verknüpfen Sie einen Workflow mit einer Schnelleinstellungs-Kachel. Bei einem eingehenden Anruf wird der Workflow ausgeführt,
+         wenn die Kachel aktiv ist. <br>
+        <br>
+        Dies kann verwendet werden, um Einstellungen spontan zu ändern; Änderungen erfolgen temporär im Speicher und werden
+        nicht in der Konfiguration gespeichert. <br>
+        <br>
+        <b>Zum Beispiel:</b> <br>
+        Verwenden Sie eine Kachel, um eine Regex-Regel zu aktivieren/deaktivieren, eingerichtet wie folgt: <br>
+        - Schnelleinstellung <br>
+        - Regeln suchen <br>
+        - Regeln ändern <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">Benutzerdefinierte Schnelleinstellung ist aktiv.</string>
 </resources>

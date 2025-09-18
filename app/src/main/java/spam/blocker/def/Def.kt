@@ -85,6 +85,7 @@ object Def {
     const val SETTING_CONTENT_RULE_COLLAPSED = "content_rule_collapsed"
     const val SETTING_QUICK_COPY_RULE_COLLAPSED = "quick_copy_rule_collapsed"
     const val SETTING_BOT_LIST_COLLAPSED = "bot_list_collapsed"
+    const val SETTING_CUSTOM_TILE_ENABLED = "custom_tile_enabled"
     const val SETTING_API_QUERY_LIST_COLLAPSED = "api_query_list_collapsed"
     const val SETTING_API_QUERY_PRIORITY = "api_query_priority"
     const val SETTING_API_REPORT_LIST_COLLAPSED = "api_report_list_collapsed"

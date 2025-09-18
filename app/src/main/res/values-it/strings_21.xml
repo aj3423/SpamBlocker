@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Configurazione non valida</string>
+    <string name="custom">Personalizzato</string>
+    <string name="quick_tile">Riquadro rapido</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Associa un flusso di lavoro a un riquadro delle Impostazioni rapide. In caso di chiamata in arrivo, il flusso di lavoro verrà eseguito
+         se il riquadro è attivo. <br>
+        <br>
+        Questo può essere usato per modificare le impostazioni al volo; i cambiamenti avverranno temporaneamente in memoria e non verranno
+        salvati nella configurazione. <br>
+        <br>
+        <b>Per esempio:</b> <br>
+        Usa un riquadro per abilitare/disabilitare una regola regex, configura così: <br>
+        - Riquadro rapido <br>
+        - Trova Regole <br>
+        - Modifica Regole <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">Il riquadro rapido personalizzato è attivo.</string>
 </resources>

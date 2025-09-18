@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Konfigurasi Tidak Valid</string>
+    <string name="custom">Kustom</string>
+    <string name="quick_tile">Ubin Cepat</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Ikat alur kerja ke Ubin Pengaturan Cepat. Pada panggilan masuk, alur kerja akan dieksekusi
+         jika ubin aktif. <br>
+        <br>
+        Ini dapat digunakan untuk mengubah pengaturan dengan cepat, perubahan akan terjadi sementara di memori dan
+        tidak akan tersimpan dalam konfigurasi. <br>
+        <br>
+        <b>Contoh:</b> <br>
+        Gunakan ubin untuk mengaktifkan/menonaktifkan aturan ekspresi reguler, atur seperti: <br>
+        - Ubin Cepat <br>
+        - Temukan Aturan <br>
+        - Ubah Aturan <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">Ubin cepat kustom aktif.</string>
 </resources>

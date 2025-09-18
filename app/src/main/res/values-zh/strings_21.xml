@@ -29,4 +29,20 @@
     ]]>
     </string>
     <string name="invalid_config">无效配置</string>
+    <string name="custom">自定义</string>
+    <string name="quick_tile">快捷磁贴</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        将工作流绑定到快速设置磁贴。有来电时，如果磁贴处于活动状态，工作流将被执行。 <br>
+        <br>
+        这可用于即时修改设置，更改将暂时发生在内存中，并且不会持久保存到配置中。 <br>
+        <br>
+        <b>例如：</b> <br>
+        使用磁贴启用/禁用正则表达式规则，设置如下： <br>
+        - 快捷磁贴 <br>
+        - 查找规则 <br>
+        - 修改规则 <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">自定义快捷磁贴已激活。</string>
 </resources>

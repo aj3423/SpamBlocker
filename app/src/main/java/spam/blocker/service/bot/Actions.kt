@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -3407,5 +3408,82 @@ class Ringtone(
                 }
             }
         }
+    }
+}
+
+@Serializable
+@SerialName("QuickTile")
+class QuickTile(
+    val tileIndex : Int = 0,
+) : ITriggerAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf()
+    }
+    override fun isActivated(): Boolean {
+        return state().value
+    }
+    private fun state() : MutableState<Boolean> {
+        // Currently only 1 tile, always return this
+        return when (tileIndex) {
+//            0 -> G.dynamicTileEnabled
+            else -> G.dynamicTile0Enabled
+        }
+    }
+    @Composable
+    override fun TriggerType(modifier: Modifier) {
+        RowVCenterSpaced(6, modifier = modifier) {
+            // Green dot
+            GreyIcon18(R.drawable.ic_tile_custom)
+            if (tileIndex > 0) {
+                GreyLabel("[$tileIndex]")
+            }
+        }
+    }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val active = isActivated()
+        if (active) {
+            aCtx.logger?.warn(ctx.getString(R.string.quick_tile_is_active))
+            aCtx.isInMemory = true
+        }
+        return active
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.quick_tile)
+    }
+
+    @Composable
+    override fun Summary() {
+        RowVCenterSpaced(8) {
+            // Green dot
+            if (isActivated()) {
+                GreenDot()
+            }
+            if (tileIndex > 0) {
+                GreyLabel("[$tileIndex]")
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_quick_tile)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tile_custom)
+    }
+
+    @Composable
+    override fun Options() {
+        NoOptionNeeded()
     }
 }

@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Configuración no válida</string>
+    <string name="custom">Personalizado</string>
+    <string name="quick_tile">Mosaico Rápido</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Asocia un flujo de trabajo a un Mosaico de Ajustes Rápidos. En una llamada entrante, el flujo de trabajo se ejecutará
+         si el mosaico está activo. <br>
+        <br>
+        Esto se puede usar para modificar ajustes sobre la marcha; los cambios ocurrirán temporalmente en la memoria y no
+        persistirán en la configuración. <br>
+        <br>
+        <b>Por ejemplo:</b> <br>
+        Usa un mosaico para habilitar/deshabilitar una regla regex, configúralo así: <br>
+        - Mosaico Rápido <br>
+        - Buscar Reglas <br>
+        - Modificar Reglas <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">El mosaico rápido personalizado está activo.</string>
 </resources>

@@ -31,6 +31,7 @@ object G {
     val globallyEnabled : MutableState<Boolean> = mutableStateOf(false)
     val callEnabled : MutableState<Boolean> = mutableStateOf(false)
     val smsEnabled : MutableState<Boolean> = mutableStateOf(false)
+    val dynamicTile0Enabled : MutableState<Boolean> = mutableStateOf(false)
 
     val notificationChannels : SnapshotStateList<Channel> = mutableStateListOf()
     val themeType : MutableIntState  = mutableIntStateOf(0)
@@ -62,6 +63,12 @@ object G {
             callEnabled.value = spf.isCallEnabled() && Permission.callScreening.isGranted
             smsEnabled.value = spf.isSmsEnabled() && Permission.receiveSMS.isGranted
             themeType.intValue = spf.getThemeType()
+        }
+
+        // Workflow switches
+        run {
+            val spf = spf.BotOptions(ctx)
+            dynamicTile0Enabled.value = spf.isDynamicTileEnabled(0)
         }
 
         // History options

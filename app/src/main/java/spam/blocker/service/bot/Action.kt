@@ -32,6 +32,7 @@ val botActions = listOf(
     SmsThrottling(),
     CalendarEvent(),
     Ringtone(),
+    QuickTile(),
     ImportToSpamDB(),
     CleanupSpamDB(),
     ImportAsRegexRule(),

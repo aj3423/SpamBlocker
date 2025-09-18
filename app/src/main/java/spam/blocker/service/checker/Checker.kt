@@ -29,6 +29,7 @@ import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
+import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.executeAll
@@ -112,7 +113,7 @@ object Preprocessors {
             return null
         }
     }
-    // Collect all `Call Event`/`Call Throttling` that defined in Workflow section.
+    // Collect all call-related workflows.
     fun callSpecific(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
@@ -123,7 +124,11 @@ object Preprocessors {
                     return@filter true
 
                 // Call Throttling
-                if(firstAction is CallThrottling && firstAction.isActivated())
+                if (firstAction is CallThrottling && firstAction.isActivated())
+                    return@filter true
+
+                // Tile
+                if(firstAction is QuickTile && firstAction.isActivated())
                     return@filter true
 
                 return@filter false
@@ -132,7 +137,7 @@ object Preprocessors {
                 WorkflowRunner(ctx, it)
             }
     }
-    // Collect all `SMS Event` that defined in Workflow section.
+    // Collect all SMS-related workflows.
     fun smsSpecific(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {

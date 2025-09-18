@@ -87,6 +87,7 @@ It's not necessary to leave this app running in the background, you can kill the
 | READ_PHONE_STATE                                                                  | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
 | REQUEST_IGNORE_BATTERY_OPTIMIZATIONS                                              | For it to keep working after being swiped and killed                   |
 | NOTIFICATION_ACCESS                                                               | For feature: Push Alert (receiving notifications from other apps)      |
+| WRITE_SETTINGS                                                                    | For customizing call ringtone                                          | 
 | READ_LOG                                                                          | For reporting bugs with logcat messages                                |   
 
 # Privacy

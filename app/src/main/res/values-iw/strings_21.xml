@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">הגדרה לא חוקית</string>
+    <string name="custom">מותאם אישית</string>
+    <string name="quick_tile">אריח מהיר</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        קשר זרימת עבודה לאריח הגדרות מהירות. בשיחה נכנסת, זרימת העבודה תבוצע
+         אם האריח פעיל. <br>
+        <br>
+        ניתן להשתמש בזה כדי לשנות הגדרות באופן מיידי, שינויים יתרחשו באופן זמני בזיכרון ולא
+        יישמרו בתצורה. <br>
+        <br>
+        <b>לדוגמה:</b> <br>
+        השתמש באריח כדי להפעיל/להשבית כלל ביטוי רגולרי, הגדר כך: <br>
+        - אריח מהיר <br>
+        - מצא כללים <br>
+        - שנה כללים <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">אריח מהיר מותאם אישית פעיל.</string>
 </resources>

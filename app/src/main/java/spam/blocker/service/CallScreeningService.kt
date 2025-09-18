@@ -18,7 +18,6 @@ import spam.blocker.def.Def
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.executeAll
-import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.reportSpam
@@ -27,7 +26,6 @@ import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
-import spam.blocker.util.Permission
 import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.Util
 import spam.blocker.util.logi

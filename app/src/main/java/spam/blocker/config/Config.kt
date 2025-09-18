@@ -256,15 +256,18 @@ class EmergencySituation : IConfig {
 @Serializable
 class BotOptions : IConfig {
     var listCollapsed = false
+    var dynamicTile0Enabled = false
 
     override fun load(ctx: Context) {
         val spf = spf.BotOptions(ctx)
         listCollapsed = spf.isListCollapsed()
+        dynamicTile0Enabled = spf.isDynamicTileEnabled(0)
     }
 
     override fun apply(ctx: Context) {
         spf.BotOptions(ctx).apply {
             setListCollapsed(listCollapsed)
+            setDynamicTileEnabled(0, dynamicTile0Enabled)
         }
     }
 }

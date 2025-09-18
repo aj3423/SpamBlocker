@@ -29,4 +29,20 @@
     ]]>
     </string>
     <string name="invalid_config">Geçersiz Yapılandırma</string>
+    <string name="custom">Özel</string>
+    <string name="quick_tile">Hızlı Döşeme</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Bir iş akışını Hızlı Ayarlar Döşemesi\'ne bağlayın. Gelen bir aramada, döşeme aktifse iş akışı yürütülecektir. <br>
+        <br>
+        Bu, ayarları anında değiştirmek için kullanılabilir, değişiklikler geçici olarak bellekte gerçekleşecek ve yapılandırmaya kalıcı olarak kaydedilmeyecektir. <br>
+        <br>
+        <b>Örneğin:</b> <br>
+        Bir regex kuralını etkinleştirmek/devre dışı bırakmak için bir döşeme kullanın, kurulum şöyle: <br>
+        - Hızlı Döşeme <br>
+        - Kuralları Bul <br>
+        - Kuralları Değiştir <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">Özel hızlı döşeme etkin.</string>
 </resources>

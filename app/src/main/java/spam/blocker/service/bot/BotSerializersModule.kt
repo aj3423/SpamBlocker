@@ -44,6 +44,7 @@ val botModule = SerializersModule {
         subclass(CallThrottling::class)
         subclass(SmsThrottling::class)
         subclass(Ringtone::class)
+        subclass(QuickTile::class)
     }
 }
 

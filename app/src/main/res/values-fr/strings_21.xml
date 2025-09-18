@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Configuration invalide</string>
+    <string name="custom">Personnalisé</string>
+    <string name="quick_tile">Tuile rapide</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Lier un flux de travail à une Tuile de réglages rapides. Lors d\'un appel entrant, le flux de travail sera exécuté
+         si la tuile est active. <br>
+        <br>
+        Ceci peut être utilisé pour modifier les paramètres à la volée, les changements se produiront temporairement en mémoire et ne
+        persisteront pas dans la configuration. <br>
+        <br>
+        <b>Par exemple :</b> <br>
+        Utilisez une tuile pour activer/désactiver une règle d\'expression régulière, configuré comme : <br>
+        - Tuile rapide <br>
+        - Rechercher des règles <br>
+        - Modifier les règles <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">La tuile rapide personnalisée est active.</string>
 </resources>

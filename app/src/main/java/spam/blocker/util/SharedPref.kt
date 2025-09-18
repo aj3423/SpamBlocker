@@ -154,6 +154,8 @@ class spf { // for namespace only
     class BotOptions(ctx: Context) : SharedPref(ctx) {
         fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_BOT_LIST_COLLAPSED, false) }
         fun setListCollapsed(enabled: Boolean) { writeBoolean(Def.SETTING_BOT_LIST_COLLAPSED, enabled) }
+        fun isDynamicTileEnabled(tileIndex: Int): Boolean { return readBoolean("${Def.SETTING_CUSTOM_TILE_ENABLED}_$tileIndex", false) }
+        fun setDynamicTileEnabled(tileIndex: Int, enabled: Boolean) { writeBoolean("${Def.SETTING_CUSTOM_TILE_ENABLED}_$tileIndex", enabled) }
     }
     class ApiQueryOptions(ctx: Context) : SharedPref(ctx) {
         fun isListCollapsed(): Boolean { return readBoolean(Def.SETTING_API_QUERY_LIST_COLLAPSED, false) }

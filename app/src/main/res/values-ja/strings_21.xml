@@ -29,4 +29,20 @@
     ]]>
     </string>
     <string name="invalid_config">無効な設定</string>
+    <string name="custom">カスタム</string>
+    <string name="quick_tile">クイック設定タイル</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        クイック設定タイルにワークフローをバインドします。着信時に、タイルがアクティブであればワークフローが実行されます。<br>
+        <br>
+        これは、設定をその場で変更するために使用できます。変更は一時的にメモリ上で行われ、設定には保持されません。<br>
+        <br>
+        <b>例：</b><br>
+        タイルを使用して正規表現ルールを有効/無効にするには、次のように設定します：<br>
+        - クイック設定タイル<br>
+        - ルールの検索<br>
+        - ルールの変更<br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">カスタムクイック設定タイルがアクティブです。</string>
 </resources>

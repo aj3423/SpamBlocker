@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Configuració no vàlida</string>
+    <string name="custom">Personalitzat</string>
+    <string name="quick_tile">Rajola ràpida</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Vincula un flux de treball a una Rajola de Configuració Ràpida. En una trucada entrant, el flux de treball s\'executarà
+         si la rajola està activa. <br>
+        <br>
+        Això es pot utilitzar per modificar la configuració al moment; els canvis es faran temporalment a la memòria i no
+        es conservaran a la configuració. <br>
+        <br>
+        <b>Per exemple:</b> <br>
+        Utilitza una rajola per activar/desactivar una regla regex, configurat així: <br>
+        - Rajola ràpida <br>
+        - Trobar Regles <br>
+        - Modificar Regles <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">La rajola ràpida personalitzada està activa.</string>
 </resources>

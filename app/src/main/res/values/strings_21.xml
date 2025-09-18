@@ -29,4 +29,22 @@
     ]]>
     </string>
     <string name="invalid_config">Invalid Config</string>
+    <string name="custom">Custom</string>
+    <string name="quick_tile">Quick Tile</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        Bind a workflow to a Quick Settings Tile. On an incoming call, the workflow will be executed
+         if the tile is active. <br>
+        <br>
+        This can be used to modify settings on the fly, changes will happen temporarily in memory and will
+        not persist to the configuration. <br>
+        <br>
+        <b>For example:</b> <br>
+        Use a tile to enable/disable a regex rule, setup like: <br>
+        - Quick Tile <br>
+        - Find Rules <br>
+        - Modify Rules <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">Custom quick tile is active.</string>
 </resources>
