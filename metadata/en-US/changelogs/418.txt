@@ -1,0 +1,7 @@
+New:
+- Workflow
+  - "Ringtone": Customize ringtone for regex rules
+  - "Quick Tile": Toggle regex rules using a Quick Settings Tile
+
+Fixes:
+- Regex rules become case-sensitive after restored from backup.
