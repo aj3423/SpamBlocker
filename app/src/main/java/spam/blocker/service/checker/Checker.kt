@@ -57,6 +57,7 @@ import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
+import kotlin.collections.plusAssign
 
 class CheckContext(
     var rawNumber: String,
@@ -1313,6 +1314,11 @@ class Checker { // for namespace only
                 logger = logger,
                 checkers = checkers,
             )
+            // pre-process the checkers, temporarily modify rules
+            val preprocessors = Preprocessors.calendarEvent(ctx) +
+                    Preprocessors.callSpecific(ctx)
+            preprocessors.forEach { it.check(cCtx) }
+
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
                 it.priority()
@@ -1365,10 +1371,6 @@ class Checker { // for namespace only
                 it.toNumberChecker(ctx)
             }
 
-            // Add all pre-processors
-            checkers += Preprocessors.calendarEvent(ctx)
-            checkers += Preprocessors.callSpecific(ctx)
-
             return checkCallWithCheckers(
                 ctx, logger, rawNumber, callDetails, checkers)
         }
@@ -1386,6 +1388,11 @@ class Checker { // for namespace only
                 logger = logger,
                 checkers = checkers,
             )
+
+            // pre-process the checkers, temporarily modify rules
+            val preprocessors = Preprocessors.calendarEvent(ctx) +
+                    Preprocessors.smsSpecific(ctx)
+            preprocessors.forEach { it.check(cCtx) }
 
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
@@ -1435,10 +1442,6 @@ class Checker { // for namespace only
             checkers += contentFilters.map {
                 Content(ctx, it)
             }
-
-            // Add all pre-processors
-            checkers += Preprocessors.calendarEvent(ctx)
-            checkers += Preprocessors.smsSpecific(ctx)
 
             return checkSmsWithCheckers(
                 ctx, logger, rawNumber, messageBody, checkers
