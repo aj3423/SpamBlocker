@@ -40,5 +40,5 @@
         <item>Omettre le code pays</item>
         <item>Sensible à la casse</item>
     </string-array>
-    <string name="disable_number_optimization">Cette optimisation peut être désactivée par le drapeau regex « Numéro brut ». </string>
+    <string name="disable_number_optimization">Cette optimisation peut être désactivée en utilisant le drapeau d\'expression régulière \"Numéro Brut\", appuyez sur l\'icône du drapeau à droite pour l\'activer.</string>
 </resources>

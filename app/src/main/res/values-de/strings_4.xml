@@ -40,5 +40,5 @@
         <item>Ländercode weglassen</item>
         <item>Groß-/Kleinschreibung beachten</item>
     </string-array>
-    <string name="disable_number_optimization">Diese Optimierung kann durch den Regex-Flag \"Rohzahl\" deaktiviert werden.</string>
+    <string name="disable_number_optimization">Diese Optimierung kann mit dem Regex-Flag „Rohe Nummer“ deaktiviert werden. Tippen Sie auf das Flag-Symbol rechts, um es zu aktivieren.</string>
 </resources>

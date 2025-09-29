@@ -40,5 +40,5 @@
         <item>حذف کد کشور</item>
         <item>حساس به حروف کوچک و بزرگ</item>
     </string-array>
-    <string name="disable_number_optimization">این بهینه‌سازی می‌تواند توسط پرچم عبارت باقاعده \"شماره خام\" غیرفعال شود.</string>
+    <string name="disable_number_optimization">این بهینه‌سازی را می‌توان با استفاده از پرچم عبارت باقاعده \"شماره خام\" غیرفعال کرد، روی نماد پرچم در سمت راست ضربه بزنید تا آن را فعال کنید.</string>
 </resources>

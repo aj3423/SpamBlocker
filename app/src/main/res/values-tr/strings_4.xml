@@ -40,5 +40,5 @@
         <item>Ülke Kodunu Atla</item>
         <item>Büyük/Küçük Harf Duyarlı</item>
     </string-array>
-    <string name="disable_number_optimization">Bu optimizasyon, düzenli ifade bayrağı \'Ham Numara\' ile devre dışı bırakılabilir.</string>
+    <string name="disable_number_optimization">Bu optimizasyon, \"Ham Numara\" regex bayrağı kullanılarak devre dışı bırakılabilir, etkinleştirmek için sağdaki bayrak simgesine dokunun.</string>
 </resources>

@@ -40,5 +40,5 @@
         <item>Ometti Codice Paese</item>
         <item>Sensibile alle Maiuscole/Minuscole</item>
     </string-array>
-    <string name="disable_number_optimization">Questa ottimizzazione può essere disabilitata dal flag regex \"Numero grezzo\".</string>
+    <string name="disable_number_optimization">Questa ottimizzazione può essere disabilitata usando il flag dell\'espressione regolare \"Numero grezzo\", tocca l\'icona del flag a destra per abilitarla.</string>
 </resources>

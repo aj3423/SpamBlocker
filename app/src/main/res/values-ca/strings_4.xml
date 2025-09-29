@@ -40,5 +40,5 @@
         <item>Ometre codi de país</item>
         <item>Distingeix majúscules i minúscules</item>
     </string-array>
-    <string name="disable_number_optimization">Aquesta optimització es pot desactivar amb el indicador d\'expressió regular \"Número Bruta\".</string>
+    <string name="disable_number_optimization">Aquesta optimització es pot desactivar utilitzant la bandera d\'expressió regular \"Número sense processar\", toca la icona de la bandera a la dreta per activar-la.</string>
 </resources>

@@ -39,5 +39,5 @@
         <item>Omit Country Code</item>
         <item>Case Sensitive</item>
     </string-array>
-    <string name="disable_number_optimization">This optimization can be disabled by the regex flag "Raw Number".</string>
+    <string name="disable_number_optimization">This optimization can be disabled using the regex flag \"Raw Number\", tap the flag icon on the right to enable it.</string>
 </resources>

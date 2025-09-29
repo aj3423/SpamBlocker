@@ -35,5 +35,5 @@
         <item>国コードを省略</item>
         <item>大文字と小文字を区別</item>
     </string-array>
-    <string name="disable_number_optimization">この最適化は正規表現フラグ「生番号」で無効にできます。</string>
+    <string name="disable_number_optimization">この最適化は、正規表現フラグ「未加工の電話番号」を使用して無効にできます。右側のフラグアイコンをタップして有効にしてください。</string>
 </resources>

@@ -40,5 +40,5 @@
         <item>省略国家代码</item>
         <item>区分大小写</item>
     </string-array>
-    <string name="disable_number_optimization">可以通过正则表达式标志“原始号码”来禁用此优化。</string>
+    <string name="disable_number_optimization">可以使用正则表达式标志“原始号码”禁用此优化，点击右侧的旗帜图标即可启用。</string>
 </resources>

@@ -26,7 +26,7 @@ android {
         }
     }
     namespace = "spam.blocker"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "spam.blocker"

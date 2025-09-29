@@ -40,5 +40,5 @@
         <item>Hilangkan Kode Negara</item>
         <item>Peka Huruf Besar-Kecil</item>
     </string-array>
-    <string name="disable_number_optimization">Pengoptimalan ini dapat dinonaktifkan dengan tanda regex \"Nomor Mentah\".</string>
+    <string name="disable_number_optimization">Optimasi ini dapat dinonaktifkan menggunakan bendera regex \"Nomor Mentah\", ketuk ikon bendera di sebelah kanan untuk mengaktifkannya.</string>
 </resources>

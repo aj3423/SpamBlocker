@@ -82,7 +82,8 @@ class CSVParser(
                         currentState = CSVState.ReadingField
                     }
                     '"' -> currentState = CSVState.ReadingQuotedField
-                    '\n', '\r' -> {
+                    '\r' -> { /* do nothing, \r is completely ignored */ }
+                    '\n' -> {
                         currentRecord.add(currentField.toString())
                         currentField.clear()
                         records.add(currentRecord)
@@ -115,6 +116,9 @@ class CSVParser(
         }
 
         // Handle the last record if it's not empty
+        if (currentField.isNotEmpty()) {
+            currentRecord.add(currentField.toString())
+        }
         if (currentRecord.isNotEmpty()) {
             records.add(currentRecord)
         }

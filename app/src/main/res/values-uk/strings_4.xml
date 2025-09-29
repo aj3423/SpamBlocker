@@ -40,5 +40,5 @@
         <item>Пропустити код країни</item>
         <item>Чутливий до регістру</item>
     </string-array>
-    <string name="disable_number_optimization">Цю оптимізацію можна вимкнути за допомогою прапора Regex \"Сирий номер\".</string>
+    <string name="disable_number_optimization">Цю оптимізацію можна вимкнути за допомогою прапорця регулярних виразів \"Необроблений номер\", торкніться значка прапорця праворуч, щоб увімкнути його.</string>
 </resources>

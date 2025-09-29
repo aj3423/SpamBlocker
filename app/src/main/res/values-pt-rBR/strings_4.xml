@@ -40,5 +40,5 @@
         <item>Omitir Código de País</item>
         <item>Diferenciar Maiúsculas/Minúsculas</item>
     </string-array>
-    <string name="disable_number_optimization">Essa otimização pode ser desabilitada pela flag regex \"Número Bruto\".</string>
+    <string name="disable_number_optimization">Esta otimização pode ser desativada usando o sinalizador de regex \"Número Bruto\", toque no ícone da bandeira à direita para ativá-lo.</string>
 </resources>

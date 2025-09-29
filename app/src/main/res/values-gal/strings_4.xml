@@ -40,5 +40,5 @@
         <item>Omitir Código de País</item>
         <item>Distinción entre maiúsculas e minúsculas</item>
     </string-array>
-    <string name="disable_number_optimization">Esta optimización pódese deshabilitar coa bandeira de regex \"Número Crú\".</string>
+    <string name="disable_number_optimization">Esta optimización pode desactivarse usando a opción da regex \"Número Sen Formato\", toque a icona da bandeira á dereita para activala.</string>
 </resources>

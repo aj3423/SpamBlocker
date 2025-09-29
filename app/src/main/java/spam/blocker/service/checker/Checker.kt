@@ -87,9 +87,8 @@ fun RegexRule.toNumberChecker(
         Checker.Number(ctx, this)
 }
 
-// A pre-processor is simply a WorkflowRunner, it's also an `IChecker` and will be added to the
-//   checkers list. But they have higher priorities and will get executed before other checkers.
-// In this way, they can temporary modify other checkers, e.g.: disable a regex rule on the fly
+// A pre-processor is simply a WorkflowRunner, it will be processed before checkers are executed.
+// In this way, they can temporarily modify checkers, e.g.: disable a regex rule on the fly
 //   without modifying the configuration.
 object Preprocessors {
 

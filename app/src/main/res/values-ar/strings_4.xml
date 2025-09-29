@@ -40,5 +40,5 @@
         <item>حذف رمز الدولة</item>
         <item>حساس لحالة الأحرف</item>
     </string-array>
-    <string name="disable_number_optimization">يمكن تعطيل هذا التحسين بواسطة علامة التعبير النمطي \"رقم خام\".</string>
+    <string name="disable_number_optimization">يمكن تعطيل هذا التحسين باستخدام علامة التعبير النمطي (regex) \"الرقم الخام\"، اضغط على أيقونة العلم على اليمين لتمكينه.</string>
 </resources>

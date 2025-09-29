@@ -40,5 +40,5 @@
         <item>השמטת קידומת מדינה</item>
         <item>תלוי רישיות</item>
     </string-array>
-    <string name="disable_number_optimization">ניתן לבטל אופטימיזציה זו באמצעות דגל הביטוי הרגולרי \"מספר גולמי\".</string>
+    <string name="disable_number_optimization">ניתן לבטל אופטימיזציה זו באמצעות דגל ה-regex \"מספר גולמי\", הקש על סמל הדגל בצד ימין כדי להפעיל אותו.</string>
 </resources>
