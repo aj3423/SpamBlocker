@@ -45,4 +45,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">自定义快捷磁贴已激活。</string>
+    <string name="http_status_code_template">Http 状态码：%d</string>
 </resources>

@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">La tuile rapide personnalisée est active.</string>
+    <string name="http_status_code_template">Code d\'état Http : %d</string>
 </resources>

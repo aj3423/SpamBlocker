@@ -45,4 +45,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">カスタムクイック設定タイルがアクティブです。</string>
+    <string name="http_status_code_template">HTTPステータスコード: %d</string>
 </resources>

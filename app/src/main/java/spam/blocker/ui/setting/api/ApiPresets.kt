@@ -111,7 +111,8 @@ val authConfig_PhoneBlock = AuthConfig(
                     200 -> null
                     401 -> ctx.getString(R.string.invalid_auth_credentials)
                     else -> {
-                        result.exception ?: ""
+                        result.exception
+                            ?: ctx.getString(R.string.http_status_code_template).format(result.statusCode)
                     }
                 }
             }

@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Ubin cepat kustom aktif.</string>
+    <string name="http_status_code_template">Kode Status Http: %d</string>
 </resources>

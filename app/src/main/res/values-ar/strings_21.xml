@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">مربع الإعدادات السريعة المخصص نشط.</string>
+    <string name="http_status_code_template">رمز حالة HTTP: %d</string>
 </resources>

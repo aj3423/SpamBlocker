@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">La rajola ràpida personalitzada està activa.</string>
+    <string name="http_status_code_template">Codi d\'estat Http: %d</string>
 </resources>

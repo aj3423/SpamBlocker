@@ -45,4 +45,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">کاشی سریع سفارشی فعال است.</string>
+    <string name="http_status_code_template">کد وضعیت HTTP: %d</string>
 </resources>

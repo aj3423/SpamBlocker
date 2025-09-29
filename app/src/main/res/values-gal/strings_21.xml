@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">O mosaico rápido personalizado está activo.</string>
+    <string name="http_status_code_template">Código de estado Http: %d</string>
 </resources>

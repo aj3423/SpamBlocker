@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Benutzerdefinierte Schnelleinstellung ist aktiv.</string>
+    <string name="http_status_code_template">HTTP-Statuscode: %d</string>
 </resources>

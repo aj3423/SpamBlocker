@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Custom quick tile is active.</string>
+    <string name="http_status_code_template">Http Status Code: %d</string>
 </resources>

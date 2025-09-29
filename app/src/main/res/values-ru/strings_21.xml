@@ -46,4 +46,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Пользовательская быстрая плитка активна.</string>
+    <string name="http_status_code_template">Код состояния Http: %d</string>
 </resources>

@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">Il riquadro rapido personalizzato è attivo.</string>
+    <string name="http_status_code_template">Codice di stato Http: %d</string>
 </resources>

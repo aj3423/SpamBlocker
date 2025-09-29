@@ -47,4 +47,5 @@
     ]]>
     </string>
     <string name="quick_tile_is_active">אריח מהיר מותאם אישית פעיל.</string>
+    <string name="http_status_code_template">קוד מצב Http: %d</string>
 </resources>
