@@ -23,7 +23,6 @@ import spam.blocker.service.checker.ICheckResult
 import spam.blocker.service.reporting.reportSpam
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.util.Contacts
-import spam.blocker.util.CountryCode
 import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
@@ -31,22 +30,6 @@ import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import spam.blocker.util.spf
-
-fun fixTelcoBugs(rawNumber: String) : String {
-    // 1. Telco can use numbers like "+3301....", it starts with "+33" and followed by a domestic "0",
-    //   which is invalid. This fix removes the domestic 0 after "+cc".
-    // E.g:
-    //   +33012345  ->  +3312345
-    if (rawNumber.startsWith("+")) {
-        val clearedNumber = Util.clearNumber(rawNumber)
-        val (ok, cc, domestic) = CountryCode.parseCcDomestic(clearedNumber)
-        if (ok && domestic.startsWith("0")) {
-            return "+" + cc + Util.clearNumber(domestic)
-        }
-    }
-
-    return rawNumber
-}
 
 fun Details.getRawNumber(): String {
     var rawNumber = ""
@@ -63,7 +46,7 @@ fun Details.getRawNumber(): String {
             rawNumber = uri.schemeSpecificPart
         }
     }
-    return fixTelcoBugs(rawNumber)
+    return rawNumber
 }
 
 class CallScreeningService : CallScreeningService() {
@@ -140,11 +123,9 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun doScreenCall(details: Details) {
-        val rawNumber = details.getRawNumber()
-
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
-            updateOutgoingEmergencyTimestamp(this, rawNumber)
+            updateOutgoingEmergencyTimestamp(this, details.getRawNumber())
         }
 
         // Incoming
@@ -156,6 +137,7 @@ class CallScreeningService : CallScreeningService() {
             return
         }
 
+        val rawNumber = details.getRawNumber()
 
         val r = processCall(this, null, rawNumber, details)
 

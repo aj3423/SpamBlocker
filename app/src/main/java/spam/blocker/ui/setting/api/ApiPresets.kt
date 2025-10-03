@@ -95,7 +95,10 @@ val authConfig_PhoneBlock = AuthConfig(
         val apiKey = fieldValues[0]
 
         val result = httpRequest(
-            urlString = "https://phoneblock.net/phoneblock/api/test",
+            urlString = if (BuildConfig.DEBUG)
+                "https://phoneblock.net/pb-test/api/test"
+            else
+                "https://phoneblock.net/phoneblock/api/test",
             headersMap = mapOf("Authorization" to "{bearer_auth($apiKey)}".resolveBearerTag()),
             method = HTTP_GET,
         )
@@ -130,7 +133,10 @@ val ApiQueryPresets = listOf<ApiPreset>(
                         numberFilter = ".*",
                     ),
                     HttpDownload(
-                        url = "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}",
+                        url = if (BuildConfig.DEBUG)
+                            "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}"
+                        else
+                            "https://phoneblock.net/phoneblock/api/check?sha1={sha1(+{cc}{domestic})}",
                         header = "{bearer_auth({api_key})}",
                     ),
                     ParseQueryResult(
@@ -215,7 +221,10 @@ val ApiReportPresets = listOf<ApiPreset>(
                         )
                     ),
                     HttpDownload(
-                        url = "https://phoneblock.net/phoneblock/api/rate",
+                        url = if (BuildConfig.DEBUG)
+                            "https://phoneblock.net/pb-test/api/rate"
+                        else
+                            "https://phoneblock.net/phoneblock/api/rate",
                         header = "{bearer_auth({api_key})}",
                         method = HTTP_POST,
                         body = """
