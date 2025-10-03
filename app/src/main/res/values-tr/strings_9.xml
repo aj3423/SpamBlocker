@@ -23,10 +23,17 @@
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Spam telefon numaralarını şuradan indir.
+            İstenmeyen çağrı numaralarını şuradan indirin:
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Arama Yapma</no_translate> </a> her iş günü,
-             ve bunları spam veritabanına aktar.
+            <no_translate>FTC - Do Not Call</no_translate> </a> her iş günü
+             ve veritabanına aktarın. <br>
+            <br>
+            <font color="#ffa500"><b>Not:</b></font> <br>
+            <font color="#888888">&ensp; Veri seti genellikle her hafta içi Doğu saatiyle öğlen civarında güncellenir. Hafta sonu verileri
+            Pazartesi dosyasında ve tatil verileri bir sonraki iş günü yayınlanan dosyada yer alır. </font><br>
+            <br>
+            İş akışının saat 18:00\'e ayarlanmasının nedeni budur, çünkü veri setinin o zamana kadar mevcut olması beklenir. <br>
+            Test ederken 404 hatası görürseniz, bugünün verilerinin kendi sitelerinde yayınlanıp yayınlanmadığını onaylamak için yukarıdaki bağlantıyı kontrol edin.
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Spam veritabanından süresi dolmuş kayıtları sil.</string>

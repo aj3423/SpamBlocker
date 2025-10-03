@@ -25,8 +25,14 @@
         <![CDATA[
             הורד מספרי טלפון של ספאם מ-
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> בכל יום עבודה,
-             וייבא אותם למסד נתוני הספאם.
+            <no_translate>FTC - Do Not Call</no_translate> </a> בכל יום עבודה
+             וייבא למסד הנתונים. <br>
+            <br>
+            <font color="#ffa500"><b>הערה:</b></font> <br>
+            <font color="#888888">&ensp; ערכת הנתונים מתעדכנת בדרך כלל בכל יום חול בסביבות הצהריים לפי שעון מזרח ארה\"ב. נתוני סוף שבוע נכללים בקובץ של יום שני ונתוני חג נכללים בקובץ המתפרסם ביום העסקים הבא. </font><br>
+            <br>
+            זו הסיבה שזרימת העבודה מתוזמנת לשעה 18:00, שכן ערכת הנתונים צפויה להיות זמינה עד אז. <br>
+            אם אתה רואה שגיאת 404 בעת הבדיקה, בדוק את הקישור לעיל כדי לאשר האם הנתונים של היום פורסמו באתר שלהם.
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">מחק רשומות שפג תוקפן ממסד נתוני הספאם.</string>

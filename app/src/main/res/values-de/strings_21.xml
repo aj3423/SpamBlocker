@@ -48,4 +48,22 @@
     </string>
     <string name="quick_tile_is_active">Benutzerdefinierte Schnelleinstellung ist aktiv.</string>
     <string name="http_status_code_template">HTTP-Statuscode: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Passen Sie den Klingelton für eine Regex-Regel an; er spielt den angegebenen Klingelton ab, wenn der Anruf durch diese Regel erlaubt ist.
+    ]]>
+    </string>
+    <string name="remote_setup">Remote-Einrichtung</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Konfigurieren Sie die App für Senioren per Fernzugriff. <br>
+        <br>
+        <b>Funktionsweise:</b> <br>
+        Dieser Workflow lädt täglich automatisch eine Sicherungsdatei von einer angegebenen URL herunter und wendet sie an. <br>
+        Wenn Sie etwas remote aktualisieren möchten, laden Sie einfach eine neue Sicherungsdatei hoch; sie wird automatisch angewendet. <br>
+        <br>
+        <b>Tipp:</b> <br>
+        Sie können die Sicherungsdatei auf GitHub hosten.
+    ]]>
+    </string>
 </resources>

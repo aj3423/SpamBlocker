@@ -48,4 +48,23 @@
     </string>
     <string name="quick_tile_is_active">Il riquadro rapido personalizzato è attivo.</string>
     <string name="http_status_code_template">Codice di stato Http: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Personalizza la suoneria per una regola regex, riprodurrà la suoneria specificata quando la chiamata è
+        consentita da questa regola.
+    ]]>
+    </string>
+    <string name="remote_setup">Configurazione Remota</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Configura l\'app da remoto per gli anziani. <br>
+        <br>
+        <b>Come funziona:</b> <br>
+        Questo flusso di lavoro scarica e applica automaticamente un file di backup da un URL specificato ogni giorno. <br>
+        Quando vuoi aggiornare qualcosa da remoto, carica semplicemente un nuovo file di backup, verrà applicato automaticamente. <br>
+        <br>
+        <b>Suggerimento:</b> <br>
+        Puoi ospitare il file di backup su GitHub.
+    ]]>
+    </string>
 </resources>

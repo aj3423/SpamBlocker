@@ -48,4 +48,23 @@
     </string>
     <string name="quick_tile_is_active">Ubin cepat kustom aktif.</string>
     <string name="http_status_code_template">Kode Status Http: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Sesuaikan nada dering untuk aturan regex, ini akan memutar nada dering yang ditentukan saat panggilan
+        diizinkan oleh aturan ini.
+    ]]>
+    </string>
+    <string name="remote_setup">Pengaturan Jarak Jauh</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Mengonfigurasi aplikasi dari jarak jauh untuk lansia. <br>
+        <br>
+        <b>Cara kerjanya:</b> <br>
+        Alur kerja ini secara otomatis mengunduh dan menerapkan file cadangan dari URL yang ditentukan setiap hari. <br>
+        Ketika Anda ingin memperbarui sesuatu dari jarak jauh, cukup unggah file cadangan baru, itu akan diterapkan secara otomatis. <br>
+        <br>
+        <b>Tips:</b> <br>
+        Anda dapat meng-host file cadangan di GitHub.
+    ]]>
+    </string>
 </resources>

@@ -48,4 +48,22 @@
     </string>
     <string name="quick_tile_is_active">La rajola ràpida personalitzada està activa.</string>
     <string name="http_status_code_template">Codi d\'estat Http: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Personalitza el to de trucada per a una regla regex, reproduirà el to de trucada especificat quan la trucada sigui permesa per aquesta regla.
+    ]]>
+    </string>
+    <string name="remote_setup">Configuració Remota</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Configura remotament l\'aplicació per a gent gran. <br>
+        <br>
+        <b>Com funciona:</b> <br>
+        Aquest flux de treball descarrega i aplica automàticament un fitxer de còpia de seguretat des d\'una URL especificada cada dia. <br>
+        Quan vulguis actualitzar alguna cosa remotament, simplement puja un nou fitxer de còpia de seguretat, s\'aplicarà automàticament. <br>
+        <br>
+        <b>Consell:</b> <br>
+        Pots allotjar el fitxer de còpia de seguretat a GitHub.
+    ]]>
+    </string>
 </resources>

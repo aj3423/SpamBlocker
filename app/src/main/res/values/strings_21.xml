@@ -20,6 +20,12 @@
         Customize the ringtone for a particular feature, calls permitted by that feature will play the specified ringtone.
     ]]>
     </string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Customize the ringtone for a regex rule, it will play the specified ringtone when the call is
+        allowed by this rule.
+    ]]>
+    </string>
     <string name="help_target_rule_desc">
     <![CDATA[
         This feature will be applied to the regex rule that has the same description. <br>
@@ -48,4 +54,17 @@
     </string>
     <string name="quick_tile_is_active">Custom quick tile is active.</string>
     <string name="http_status_code_template">Http Status Code: %d</string>
+    <string name="remote_setup">Remote Setup</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Remotely configure the app for seniors. <br>
+        <br>
+        <b>How it works:</b> <br>
+        This workflow automatically downloads and applies a backup file from a specified URL every day. <br>
+        When you want to remote update something, simply upload a new backup file, it will be applied automatically. <br>
+        <br>
+        <b>Tip:</b> <br>
+        You can host the backup file on GitHub.
+    ]]>
+    </string>
 </resources>

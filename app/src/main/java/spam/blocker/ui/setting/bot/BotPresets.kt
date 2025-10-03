@@ -7,15 +7,18 @@ import spam.blocker.db.Bot
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.RegexRule
 import spam.blocker.service.bot.BackupExport
+import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CleanupHistory
 import spam.blocker.service.bot.CleanupSpamDB
+import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.FindRules
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.ParseCSV
+import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.Weekly
@@ -131,6 +134,35 @@ val BotPresets = listOf(
                 CalendarEvent(eventTitle = ctx.getString(R.string.working)),
                 FindRules(pattern = ruleDesc),
                 ModifyRules(config = "{\"flags\": 3}"),
+            )
+        )
+    },
+
+    // Ringtone <-> Regex Rule
+    BotPreset(
+        tooltipId = R.string.help_preset_ringtone,
+    ) { ctx ->
+        Bot(
+            desc = ctx.getString(R.string.ringtone),
+            actions = listOf(
+                Ringtone()
+            )
+        )
+    },
+
+    // Remote Setup
+    BotPreset(
+        tooltipId = R.string.help_remote_setup,
+    ) { ctx ->
+        Bot(
+            enabled = true,
+            schedule = Daily(
+                time = Time(0, 0)
+            ),
+            desc = ctx.getString(R.string.remote_setup),
+            actions = listOf(
+                HttpDownload(),
+                BackupImport(),
             )
         )
     },

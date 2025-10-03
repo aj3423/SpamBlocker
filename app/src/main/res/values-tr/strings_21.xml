@@ -46,4 +46,22 @@
     </string>
     <string name="quick_tile_is_active">Özel hızlı döşeme etkin.</string>
     <string name="http_status_code_template">Http Durum Kodu: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Bir regex kuralı için zil sesini özelleştirin, arama bu kural tarafından izin verildiğinde belirtilen zil sesini çalacaktır.
+    ]]>
+    </string>
+    <string name="remote_setup">Uzaktan Kurulum</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Uygulamayı yaşlılar için uzaktan yapılandırın. <br>
+        <br>
+        <b>Nasıl Çalışır:</b> <br>
+        Bu iş akışı, her gün belirtilen bir URL\'den bir yedekleme dosyasını otomatik olarak indirir ve uygular. <br>
+        Bir şeyi uzaktan güncellemek istediğinizde, yeni bir yedekleme dosyası yüklemeniz yeterlidir, otomatik olarak uygulanacaktır. <br>
+        <br>
+        <b>İpucu:</b> <br>
+        Yedekleme dosyasını GitHub\'da barındırabilirsiniz.
+    ]]>
+    </string>
 </resources>

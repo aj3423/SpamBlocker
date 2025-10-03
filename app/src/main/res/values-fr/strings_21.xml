@@ -48,4 +48,23 @@
     </string>
     <string name="quick_tile_is_active">La tuile rapide personnalisée est active.</string>
     <string name="http_status_code_template">Code d\'état Http : %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Personnalisez la sonnerie pour une règle d\'expression régulière, elle jouera la sonnerie spécifiée lorsque l\'appel est
+        autorisé par cette règle.
+    ]]>
+    </string>
+    <string name="remote_setup">Configuration à distance</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Configurez l\'application à distance pour les seniors. <br>
+        <br>
+        <b>Comment ça marche :</b> <br>
+        Ce flux de travail télécharge et applique automatiquement un fichier de sauvegarde depuis une URL spécifiée chaque jour. <br>
+        Lorsque vous souhaitez mettre à jour quelque chose à distance, téléchargez simplement un nouveau fichier de sauvegarde, il sera appliqué automatiquement. <br>
+        <br>
+        <b>Conseil :</b> <br>
+        Vous pouvez héberger le fichier de sauvegarde sur GitHub.
+    ]]>
+    </string>
 </resources>

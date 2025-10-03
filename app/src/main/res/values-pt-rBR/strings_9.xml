@@ -23,10 +23,17 @@
 
     <string name="help_bot_preset_dnc">
         <![CDATA[
-            Baixe os <translate>números de telefone de spam</translate> de
+            Baixe números de telefone de spam de
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> todos os dias úteis,
-             e importe-os para o banco de dados de <translate>spam</translate>.
+            <no_translate>FTC - Do Not Call</no_translate> </a> todos os dias úteis
+             e importe para o banco de dados. <br>
+            <br>
+            <font color="#ffa500"><b>Observação:</b></font> <br>
+            <font color="#888888">&ensp; O conjunto de dados é geralmente atualizado todos os dias úteis por volta do meio-dia, horário do leste. Dados de fim de semana
+            são incluídos no arquivo de segunda-feira e dados de feriados são incluídos no arquivo postado no próximo dia útil. </font><br>
+            <br>
+            É por isso que o fluxo de trabalho está agendado para as 18:00, pois o conjunto de dados deve estar disponível até então. <br>
+            Se você vir um erro 404 ao testar, verifique o link acima para confirmar se os dados de hoje foram lançados no site deles.
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Exclua os registros expirados do banco de dados de <translate>spam</translate>.</string>

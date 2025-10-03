@@ -25,8 +25,15 @@
         <![CDATA[
             Scarica i numeri di telefono spam da
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a> ogni giorno lavorativo,
-             e importali nel database spam.
+            <no_translate>FTC - Do Not Call</no_translate> </a> ogni giorno lavorativo
+             e importali nel database. <br>
+            <br>
+            <font color="#ffa500"><b>Nota:</b></font> <br>
+            <font color="#888888">&ensp; Il set di dati viene tipicamente aggiornato ogni giorno feriale verso mezzogiorno ora orientale. I dati del fine settimana
+            sono inclusi nel file del lunedì e i dati festivi sono inclusi nel file pubblicato il giorno lavorativo successivo. </font><br>
+            <br>
+            Questo è il motivo per cui il flusso di lavoro è programmato alle 18:00, poiché il set di dati dovrebbe essere disponibile entro quell\'ora. <br>
+            Se vedi un errore 404 durante il test, controlla il link sopra per confermare se i dati di oggi sono stati rilasciati sul loro sito.
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Elimina i record scaduti dal database spam.</string>

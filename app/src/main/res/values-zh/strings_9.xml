@@ -25,8 +25,15 @@
         <![CDATA[
             从
             <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
-            <no_translate>FTC - Do Not Call</no_translate> </a>
-            每天工作日下载垃圾电话号码，并将它们导入垃圾电话数据库。
+            <no_translate>FTC - Do Not Call</no_translate> </a> 每天工作日下载骚扰电话号码
+             并导入到数据库中。<br>
+            <br>
+            <font color="#ffa500"><b>注意:</b></font> <br>
+            <font color="#888888">&ensp; 数据集通常在每个工作日东部时间中午左右更新。周末数据
+            包含在周一的文件中，节假日数据包含在下一个工作日发布的文件中。</font><br>
+            <br>
+            这就是为什么工作流程安排在18:00执行，因为届时数据集预计已可用。<br>
+            如果在测试时看到404错误，请检查上述链接以确认今天的数据是否已在其网站上发布。
         ]]>
     </string>
     <string name="help_bot_preset_cleanup_spam_db">从垃圾电话数据库中删除过期记录。</string>

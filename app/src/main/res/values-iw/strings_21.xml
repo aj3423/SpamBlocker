@@ -48,4 +48,22 @@
     </string>
     <string name="quick_tile_is_active">אריח מהיר מותאם אישית פעיל.</string>
     <string name="http_status_code_template">קוד מצב Http: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        התאם אישית את הצלצול עבור כלל ביטוי רגולרי, הוא ינגן את הצלצול שצוין כאשר השיחה מותרת על ידי כלל זה.
+    ]]>
+    </string>
+    <string name="remote_setup">הגדרה מרחוק</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        הגדר את האפליקציה מרחוק עבור מבוגרים. <br>
+        <br>
+        <b>כיצד זה עובד:</b> <br>
+        זרימת עבודה זו מורידה ומחילת קובץ גיבוי מכתובת URL שצוינה באופן אוטומטי כל יום. <br>
+        כאשר ברצונך לעדכן משהו מרחוק, פשוט העלה קובץ גיבוי חדש, והוא יוחל אוטומטית. <br>
+        <br>
+        <b>טיפ:</b> <br>
+        ניתן לארח את קובץ הגיבוי ב-GitHub.
+    ]]>
+    </string>
 </resources>

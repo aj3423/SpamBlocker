@@ -46,4 +46,22 @@
     </string>
     <string name="quick_tile_is_active">自定义快捷磁贴已激活。</string>
     <string name="http_status_code_template">Http 状态码：%d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        自定义正则表达式规则的铃声，当呼叫被此规则允许时，将播放指定的铃声。
+    ]]>
+    </string>
+    <string name="remote_setup">远程设置</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        为老年人远程配置应用。<br>
+        <br>
+        <b>工作原理：</b><br>
+        此工作流每天自动从指定的URL下载并应用备份文件。<br>
+        当您想要远程更新某些内容时，只需上传一个新的备份文件，它将自动应用。<br>
+        <br>
+        <b>提示：</b><br>
+        您可以将备份文件托管在GitHub上。
+    ]]>
+    </string>
 </resources>

@@ -46,4 +46,23 @@
     </string>
     <string name="quick_tile_is_active">O bloco rápido personalizado está ativo.</string>
     <string name="http_status_code_template">Código de Status Http: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Personalize o toque para uma regra regex; ele tocará o toque especificado quando a chamada for
+        permitida por esta regra.
+    ]]>
+    </string>
+    <string name="remote_setup">Configuração Remota</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Configure o aplicativo remotamente para idosos. <br>
+        <br>
+        <b>Como funciona:</b> <br>
+        Este fluxo de trabalho baixa e aplica automaticamente um arquivo de backup de uma URL especificada todos os dias. <br>
+        Quando você quiser atualizar algo remotamente, basta fazer upload de um novo arquivo de backup; ele será aplicado automaticamente. <br>
+        <br>
+        <b>Dica:</b> <br>
+        Você pode hospedar o arquivo de backup no GitHub.
+    ]]>
+    </string>
 </resources>

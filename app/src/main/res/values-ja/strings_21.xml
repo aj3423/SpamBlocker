@@ -46,4 +46,22 @@
     </string>
     <string name="quick_tile_is_active">カスタムクイック設定タイルがアクティブです。</string>
     <string name="http_status_code_template">HTTPステータスコード: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        正規表現ルールの着信音をカスタマイズします。このルールで通話が許可された場合、指定された着信音が鳴ります。
+    ]]>
+    </string>
+    <string name="remote_setup">リモート設定</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        高齢者向けにアプリをリモートで設定します。<br>
+        <br>
+        <b>動作原理：</b> <br>
+        このワークフローは、指定されたURLから毎日バックアップファイルを自動的にダウンロードして適用します。<br>
+        何かをリモートで更新したい場合は、新しいバックアップファイルをアップロードするだけで、自動的に適用されます。<br>
+        <br>
+        <b>ヒント：</b> <br>
+        バックアップファイルはGitHubでホストできます。
+    ]]>
+    </string>
 </resources>

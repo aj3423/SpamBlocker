@@ -48,4 +48,22 @@
     </string>
     <string name="quick_tile_is_active">O mosaico rápido personalizado está activo.</string>
     <string name="http_status_code_template">Código de estado Http: %d</string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        Personaliza o ton de chamada para unha regra de expresión regular; reproducirá o ton de chamada especificado cando a chamada sexa permitida por esta regra.
+    ]]>
+    </string>
+    <string name="remote_setup">Configuración Remota</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        Configura a aplicación de forma remota para persoas maiores. <br>
+        <br>
+        <b>Como funciona:</b> <br>
+        Este fluxo de traballo descarga e aplica automaticamente un ficheiro de copia de seguridade dunha URL especificada todos os días. <br>
+        Cando queiras actualizar algo de forma remota, simplemente carga un novo ficheiro de copia de seguridade, aplicarase automaticamente. <br>
+        <br>
+        <b>Consello:</b> <br>
+        Podes aloxar o ficheiro de copia de seguridade en GitHub.
+    ]]>
+    </string>
 </resources>
