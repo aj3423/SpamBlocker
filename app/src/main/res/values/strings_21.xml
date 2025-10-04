@@ -67,4 +67,5 @@
         You can host the backup file on GitHub.
     ]]>
     </string>
+    <string name="replace_this">Replace this</string>
 </resources>

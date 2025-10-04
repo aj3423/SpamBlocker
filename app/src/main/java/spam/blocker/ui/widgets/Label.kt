@@ -22,8 +22,8 @@ fun GreyLabel(
     color: Color = LocalPalette.current.textGrey,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontWeight: FontWeight? = null,
-    maxLines: Int = Int.MAX_VALUE,
-    overflow: TextOverflow = TextOverflow.Clip,
+    maxLines: Int = 1,
+    overflow: TextOverflow = TextOverflow.Ellipsis,
 ) {
     Text(
         text = text,

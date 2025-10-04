@@ -64,4 +64,5 @@
         バックアップファイルはGitHubでホストできます。
     ]]>
     </string>
+    <string name="replace_this">これを置き換える</string>
 </resources>

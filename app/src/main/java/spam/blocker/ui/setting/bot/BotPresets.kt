@@ -26,8 +26,6 @@ import spam.blocker.service.bot.WriteFile
 import spam.blocker.util.Lambda1
 import java.time.DayOfWeek.FRIDAY
 import java.time.DayOfWeek.MONDAY
-import java.time.DayOfWeek.SATURDAY
-import java.time.DayOfWeek.SUNDAY
 import java.time.DayOfWeek.THURSDAY
 import java.time.DayOfWeek.TUESDAY
 import java.time.DayOfWeek.WEDNESDAY
@@ -145,7 +143,7 @@ val BotPresets = listOf(
         Bot(
             desc = ctx.getString(R.string.ringtone),
             actions = listOf(
-                Ringtone()
+                Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }")
             )
         )
     },
@@ -161,7 +159,7 @@ val BotPresets = listOf(
             ),
             desc = ctx.getString(R.string.remote_setup),
             actions = listOf(
-                HttpDownload(),
+                HttpDownload(url = ctx.getString(R.string.replace_this)),
                 BackupImport(),
             )
         )
@@ -174,10 +172,7 @@ val BotPresets = listOf(
         Bot(
             desc = ctx.getString(R.string.bot_preset_cleanup_spam_db),
             enabled = true,
-            schedule = Weekly(
-                weekdays = listOf(
-                    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
-                ),
+            schedule = Daily(
                 time = Time(0, 0)
             ),
             actions = listOf(
@@ -193,8 +188,7 @@ val BotPresets = listOf(
         Bot(
             desc = ctx.getString(R.string.bot_preset_cleanup_history),
             enabled = true,
-            schedule = Weekly(
-                weekdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY),
+            schedule = Daily(
                 time = Time(0, 0)
             ),
             actions = listOf(
