@@ -76,7 +76,7 @@
         <b>Caso de uso</b>:<br>
         &ensp; <font color="#888888">Um trabalhador de turno trabalha no turno diurno por dois dias,
           depois no turno noturno pelos próximos dois.<br>
-        &ensp; Algumas regras precisam ser desativadas ou ativadas durante os horários de trabalho variáveis.</font><<br>
+        &ensp; Algumas regras precisam ser desativadas ou ativadas durante os horários de trabalho variáveis.</font><br>
         <br>
         Isso criará uma regra de regex e um fluxo de trabalho, a regra será ativada instantaneamente durante o evento de calendário específico. <br>
         ]]>

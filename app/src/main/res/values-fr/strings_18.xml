@@ -76,7 +76,7 @@
         <b>Cas d\'utilisation</b>:<br>
         &ensp; <font color="#888888">Un travailleur posté travaille de jour pendant deux jours,
           puis de nuit pendant les deux suivants.<br>
-        &ensp; Certaines règles doivent être désactivées ou activées pendant les heures de travail variables.</font><<br>
+        &ensp; Certaines règles doivent être désactivées ou activées pendant les heures de travail variables.</font><br>
         <br>
         Cela créera à la fois une règle d\'expression régulière et un flux de travail, la règle sera activée à la volée pendant l\'événement de calendrier spécifique. <br>
         ]]>

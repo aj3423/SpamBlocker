@@ -76,7 +76,7 @@
         <b>Cas d\'ús</b>:<br>
         &ensp; <font color="#888888">Un treballador a torns fa el torn de dia durant dos dies,
           després el torn de nit durant els dos següents.<br>
-        &ensp; Algunes regles han de ser deshabilitades o habilitades durant els horaris de treball variables.</font><<br>
+        &ensp; Algunes regles han de ser deshabilitades o habilitades durant els horaris de treball variables.</font><br>
         <br>
         Això crearà tant una regla de regex com un flux de treball, la regla s\'habilitarà sobre la marxa durant l\'esdeveniment del calendari específic. <br>
         ]]>

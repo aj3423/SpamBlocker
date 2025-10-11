@@ -76,7 +76,7 @@
         <b>Caso de uso</b>:<br>
         &ensp; <font color="#888888">Un traballador por quendas traballa na quenda de día durante dous días,
           despois na quenda de noite os dous seguintes.<br>
-        &ensp; Algunhas regras necesitan ser desactivadas ou activadas durante os distintos horarios de traballo.</font><<br>
+        &ensp; Algunhas regras necesitan ser desactivadas ou activadas durante os distintos horarios de traballo.</font><br>
         <br>
         Isto creará tanto unha regra regex como un fluxo de traballo, a regra activarase sobre a marcha durante o evento do calendario específico. <br>
         ]]>
