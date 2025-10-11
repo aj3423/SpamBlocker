@@ -76,7 +76,7 @@
         <b>Contoh kasus</b>:<br>
         &ensp; <font color="#888888">Seorang pekerja shift bekerja shift pagi selama dua hari,
           lalu shift malam selama dua hari berikutnya.<br>
-        &ensp; Beberapa aturan perlu dinonaktifkan atau diaktifkan selama jam kerja yang bervariasi.</font><<br>
+        &ensp; Beberapa aturan perlu dinonaktifkan atau diaktifkan selama jam kerja yang bervariasi.</font><br>
         <br>
         Ini akan membuat aturan regex dan alur kerja, aturan akan diaktifkan secara otomatis selama acara kalender tertentu. <br>
         ]]>

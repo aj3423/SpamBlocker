@@ -76,7 +76,7 @@
         <b>Kullanım senaryosu</b>:<br>
         &ensp; <font color="#888888">Vardiyalı bir çalışan iki gün gündüz vardiyasında,
           sonraki iki gün ise gece vardiyasında çalışır.<br>
-        &ensp; Bazı kuralların değişen çalışma saatlerinde devre dışı bırakılması veya etkinleştirilmesi gerekebilir.</font><<br>
+        &ensp; Bazı kuralların değişen çalışma saatlerinde devre dışı bırakılması veya etkinleştirilmesi gerekebilir.</font><br>
         <br>
         Bu hem bir regex kuralı hem de bir iş akışı oluşturacaktır; kural belirli takvim etkinliği sırasında anında etkinleştirilecektir. <br>
         ]]>

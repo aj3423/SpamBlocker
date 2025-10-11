@@ -76,7 +76,7 @@
         <b>Caso de uso</b>:<br>
         &ensp; <font color="#888888">Un trabajador por turnos trabaja el turno de día durante dos días,
           luego el turno de noche durante los dos siguientes.<br>
-        &ensp; Algunas reglas necesitan ser deshabilitadas o habilitadas durante las horas de trabajo variables.</font><<br>
+        &ensp; Algunas reglas necesitan ser deshabilitadas o habilitadas durante las horas de trabajo variables.</font><br>
         <br>
         Esto creará tanto una regla regex como un flujo de trabajo; la regla se habilitará sobre la marcha durante el evento del calendario específico. <br>
         ]]>

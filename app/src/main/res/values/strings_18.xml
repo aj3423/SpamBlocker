@@ -13,7 +13,7 @@
         <b>Use case</b>:<br>
         &ensp; <font color="#888888">A shift worker works the day shift for two days,
           then the night shift for the next two.<br>
-        &ensp; Some rules need to be disabled or enabled during the varying working hours.</font><<br>
+        &ensp; Some rules need to be disabled or enabled during the varying working hours.</font><br>
         <br>
         This will create both a regex rule and a workflow, the rule will be enabled on the fly during the specific calendar event. <br>
         ]]>
