@@ -76,7 +76,7 @@
         <b>Anwendungsfall</b>:<br>
         &ensp; <font color="#888888">Ein Schichtarbeiter arbeitet zwei Tage im Tagschicht,
           dann die nächsten zwei in der Nachtschicht.<br>
-        &ensp; Einige Regeln müssen während der unterschiedlichen Arbeitszeiten deaktiviert oder aktiviert werden.</font><<br>
+        &ensp; Einige Regeln müssen während der unterschiedlichen Arbeitszeiten deaktiviert oder aktiviert werden.</font><br>
         <br>
         Dies erstellt sowohl eine Regex-Regel als auch einen Workflow; die Regel wird während des spezifischen Kalenderereignisses dynamisch aktiviert. <br>
         ]]>

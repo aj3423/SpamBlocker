@@ -76,7 +76,7 @@
         <b>Caso d\'uso</b>:<br>
         &ensp; <font color="#888888">Un lavoratore a turni lavora il turno diurno per due giorni,
           poi il turno notturno per i due successivi.<br>
-        &ensp; Alcune regole devono essere disattivate o attivate durante i diversi orari di lavoro.</font><<br>
+        &ensp; Alcune regole devono essere disattivate o attivate durante i diversi orari di lavoro.</font><br>
         <br>
         Questo creerà sia una regola regex che un flusso di lavoro, la regola verrà abilitata al volo durante lo specifico evento del calendario. <br>
         ]]>
