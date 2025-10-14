@@ -19,7 +19,6 @@ import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.SwipeToDismissBoxValue.EndToStart
 import androidx.compose.material3.SwipeToDismissBoxValue.Settled
 import androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
-import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -66,38 +66,35 @@ fun SwipeWrapper(
     var trigger by remember { mutableStateOf(false) }
     var triggeredDir by remember { mutableStateOf(Settled) }
 
-    // ref: https://stackoverflow.com/a/78960161/2219196
-    var state: SwipeToDismissBoxState? = null
-    state = rememberSwipeToDismissBoxState(
-        positionalThreshold = {
-            it * SwipeThresholdPercent
-        },
-        confirmValueChange = { dir ->
-            triggeredDir = dir
+    val density = LocalDensity.current
 
-            when (dir) {
-                EndToStart -> {
-                    if (state!!.progress > SwipeThresholdPercent) {
+    var state: SwipeToDismissBoxState? = null
+    state = remember {
+        SwipeToDismissBoxState(
+            density = density,
+            initialValue = Settled,
+            positionalThreshold = {
+                it * SwipeThresholdPercent
+            },
+            confirmValueChange = { dir ->
+                triggeredDir = dir
+
+                when (dir) {
+                    EndToStart -> {
                         trigger = true
                         left?.veto != true
-                    } else {
-                        false
                     }
-                }
 
-                StartToEnd -> {
-                    if (state!!.progress > SwipeThresholdPercent) {
+                    StartToEnd -> {
                         trigger = true
                         right?.veto != true
-                    } else {
-                        false
                     }
-                }
 
-                else -> false
+                    else -> true
+                }
             }
-        }
-    )
+        )
+    }
 
     LaunchedEffect(trigger) {
         if (trigger) {
@@ -170,13 +167,9 @@ fun BgDelete(
     direction: SwipeToDismissBoxValue = EndToStart,
 ) {
     val color = if (state.dismissDirection == direction) {
-        Salmon.copy(
-            alpha = if (state.progress >= SwipeThresholdPercent)
-                1.0f
-            else
-                (state.progress / SwipeThresholdPercent) * 0.7f
-        )
-    } else Color.Transparent
+        Salmon
+    } else
+        Color.Transparent
 
     Box(
         modifier = Modifier
@@ -204,13 +197,9 @@ fun BgLaunchApp(
     direction: SwipeToDismissBoxValue = StartToEnd,
 ) {
     val color = if (state.dismissDirection == direction) {
-        MayaBlue.copy(
-            alpha = if (state.progress >= SwipeThresholdPercent)
-                1.0f
-            else
-                (state.progress / SwipeThresholdPercent) * 0.7f
-        )
-    } else Color.Transparent
+        MayaBlue
+    } else
+        Color.Transparent
 
     Box(
         modifier = Modifier
