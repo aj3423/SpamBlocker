@@ -1,0 +1,45 @@
+<resources>
+    <string name="start_time">開始時間</string>
+    <string name="end_time">結束時間</string>
+    <string name="switch_mode">切換模式</string>
+    <string name="contact_group">聯絡人群組</string>
+    <string name="help_number_mode">
+        <![CDATA[
+        <font color="#00BFFF"><b>電話號碼</b></font>：<br>
+        &ensp; 預設模式，正規表示式會符合電話號碼。<br>
+        <br>
+        <font color="#00BFFF"><b>聯絡人</b></font>：<br>
+        &ensp; 正規表示式會符合來電號碼相關聯的聯絡人名稱。<br>
+        &ensp;  - 使用案例：<br>
+        &emsp; 使用正規表示式 `.*` 在週末封鎖所有非聯絡人。<br>
+        <br>
+        <font color="#00BFFF"><b>聯絡人群組</b></font>：<br>
+        &ensp; 正規表示式會符合來電號碼相關聯的聯絡人群組名稱，
+                 影響該群組中的所有聯絡人，因此您不需要個別新增，
+                 即使人員變動也不需要更新。<br>
+        &ensp;  - 使用案例：<br>
+        &emsp; 透過封鎖「工作」聯絡人群組在週末封鎖所有同事。
+        ]]>
+    </string>
+    <string name="text_too_long">文字太長，已停用編輯功能</string>
+    <string name="follow_system"><short>跟隨系統</short></string>
+    <string name="theme">佈景主題</string>
+    <string-array name="theme_list">
+        <item>淺色</item>
+        <item>深色</item>
+    </string-array>
+    <string-array name="rule_dropdown_menu">
+        <item>搜尋規則</item>
+        <item>複製規則</item>
+        <item>刪除規則</item>
+        <item>刪除重複規則</item>
+        <item>刪除所有（%d）規則</item>
+    </string-array>
+    <string name="confirm_delete_duplicated_rule">確定要刪除 %d 條重複的規則嗎？</string>
+    <string name="duration">持續時間</string>
+    <string name="help_recent_apps_individual_duration">
+        <![CDATA[
+        每個應用程式的個別持續時間，如果留空則會使用全域持續時間。
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,54 @@
+<resources>
+    <string name="help_number_rules">
+        <![CDATA[
+        這些規則適用於來電與簡訊的號碼。<br>
+        <br>
+        <h5><font color="#00BFFF"> - 範例</font></h5>
+        在 <a href="https://github.com/aj3423/SpamBlocker/wiki/Regex-Templates">Wiki 頁面</a>上有一些範例。<br>
+        <br>
+        <h5><font color="#00BFFF"> - 規則最佳化</font></h5>
+        為了簡化正規表示式，
+          檢查前會移除<font color="#fa7f71"><b>+</b></font>和<font color="#fa7f71"><b>前置零</b></font>，例如：<br>
+        &emsp; 以下所有格式：<br>
+        &emsp;&emsp; 123456789 &emsp;（一般號碼）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>+</b></font>123456789 &emsp;（帶有前置 <font color="#fa7f71"><b>+</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>0</b></font>123456789 &emsp;（帶有本地區域碼前置 <font color="#fa7f71"><b>0</b></font>）<br>
+        &emsp;&emsp; <font color="#fa7f71"><b>00</b></font>123456789 &emsp;（兩個 <font color="#fa7f71"><b>0</b></font>）<br>
+        &emsp; 它們<b>都</b>會被視為 123456789 並可以被 <font color="#03DAC5"><b>123.*</b></font> 符合<br>
+        可以使用「原始號碼」正規表示式標記將這項最佳化<b>停用</b>。<br>
+        <br>
+        <h5><font color="#00BFFF"> - 一些常見的規則</font></h5>
+        &ensp; - 任何號碼：<font color="#03DAC5"><b>.*</b></font>（正規表示式 .* 等同於其他應用程式中的萬用字元 *）<br>
+        &ensp; - 完全符合號碼：<font color="#03DAC5"><b>12345</b></font><br>
+        &ensp; - 以 400 開頭：<font color="#03DAC5"><b>400.*</b></font><br>
+        &ensp; - 以 123 結尾：<font color="#03DAC5"><b>.*123</b></font><br>
+        &ensp; - 7 位數字：<font color="#03DAC5"><b>.{7}</b></font><br>
+        &ensp; - 少於 5 位：<font color="#03DAC5"><b>.{0,4}</b></font><br>
+        &ensp; - 超過 10 位：<font color="#03DAC5"><b>.{11,}</b></font><br>
+        &ensp; - 未知/私人/空號碼：<font color="#03DAC5"><b>.{0}</b></font> 或 <font color="#03DAC5"><b>^$</b></font><br>
+        &ensp; - 符合任一規則：<font color="#03DAC5"><b>(12.*|.*89)</b></font><br>
+        &ensp; - 以 400 開頭，可能有或沒有前置國碼 11：<font color="#03DAC5"><b>(?:11)?400.*</b></font><br>
+        <br>
+        <h5><font color="#00BFFF"> - 介面相關</font></h5>
+        取消勾選核取方塊可停用規則，<font color="#fa7f71"><b>向左滑動可刪除</b></font>規則。<br>
+        <br>
+        清單會依優先順序遞減、描述遞增和規則遞增的順序<b>顯示</b>。<br>
+        <br>
+        <h5><font color="#00BFFF"> - 從 .csv 匯入規則</font></h5>
+        長按「新增」按鈕可從 .csv 檔案匯入號碼。<br>
+        <brg>
+        ]]>
+    </string>
+    <string name="import_csv_columns">
+        <![CDATA[
+         支援的欄位：<br>
+         - <no_translate><b>pattern</b></no_translate>：正規表示式（<b>必填</b>）<br>
+         - <no_translate><b>description</b></no_translate>：描述<br>
+         - <no_translate><b>priority</b></no_translate>：優先順序，預設值 1<br>
+         - <no_translate><b>flags</b></no_translate>：1（套用至通話），2（套用至簡訊），3（兩者），預設值 3<br>
+         - <no_translate><b>isBlacklist</b></no_translate>：黑名單或白名單。<no_translate>true</no_translate> 或 <no_translate>false</no_translate>，預設值 <no_translate>true</no_translate><br>
+         - <no_translate><b>blockType</b></no_translate>：封鎖類型。0~2 對應三種封鎖類型，預設值 0<br>
+         - <no_translate><b>importance</b></no_translate>：通知類型。0~4 對應五種通知類型，預設值 2<br>
+        ]]>
+    </string>
+</resources>

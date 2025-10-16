@@ -1,0 +1,79 @@
+<resources>
+    <string name="dialed_number"><short>已撥號碼</short></string>
+    <string name="find_apps">尋找應用程式</string>
+    <string name="confirm_delete_all_rule">確定要刪除所有規則嗎？</string>
+    <string name="notification">通知</string>
+    <string name="type">類型</string>
+    <string name="times">次數</string>
+    <plurals name="days">
+        <item quantity="other">%d 天</item>
+    </plurals>
+    <string name="min">分鐘</string>
+    <string name="within_minutes">指定分鐘內</string>
+    <string name="within_days">指定天數內</string>
+    <string name="phone_number">電話號碼</string>
+    <string name="phone_number_abbrev">號碼</string>
+    <string name="sms_content">簡訊內容</string>
+    <string name="regex_flags">正規表示式標記</string>
+    <string name="off_time"><short>休息時間</short></string>
+    <string name="schedule">排程</string>
+    <string name="workday">工作日</string>
+    <string name="weekend">週末</string>
+    <string name="entire_day">全天</string>
+    <string name="block_type">封鎖類型</string>
+    <string name="for_particular_number">指定號碼</string>
+    <string name="help_for_particular_number">啟用時，規則只在號碼和內容都符合時才會生效。</string>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>拒接</b></font>：<br>
+         與按下拒接按鈕效果相同。完全靜音運作，不會開啟鎖定螢幕。<br>
+        <br>
+        - <font color="#00BFFF"><b>靜音</b></font>：<br>
+         來電會在背景中靜音響鈴，讓來電者以為您不在而錯過電話。<br>
+        <br>
+         如果您遇到重複的騷擾電話，這也可能有幫助，因為它會延長通話時間，降低騷擾電話的效率，可能會讓他們不再打給您。<br>
+        <br>
+        - <font color="#00BFFF"><b>掛斷</b></font>：<br>
+        接聽並掛斷來電，避免進入語音信箱。<br>
+        <br>
+        <font color="#FFA500">注意</font> 鎖定螢幕可能會短暫開啟，
+        您也可能會聽到通話結束音（某些手機有選項可以關閉此音效）。<br>
+        <br>
+        - <b>延遲</b>：<br>
+        &emsp; 預設會在掛斷來電前延遲 1 秒，
+        避免因快速斷線而意外進入語音信箱。<br>
+        &emsp; 如果您想錄音，請安裝通話錄音應用程式並相應增加延遲時間。
+        ]]>
+    </string>
+    <string name="help_hang_up_delay">掛斷來電前的延遲時間（秒）。</string>
+    <string name="help_dialed">
+        <![CDATA[
+        允許已撥號碼的來電。<br>
+        <br>
+        <b>選項：</b><br>
+        <br>
+        <h6><font color="#00BFFF">- 指定天數內</font></h6>
+        會忽略 <font color="cyan">%s 天</font> 之前的通話紀錄。<br>
+        <br>
+        <h6><font color="#00BFFF">- 包含簡訊</font></h6>
+        啟用後，傳送給該號碼的簡訊也會列入判斷。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+    <string name="help_recent_apps">
+        <![CDATA[
+        如果清單中的任何應用程式最近被使用過，就會放行來電。<br>
+        <br>
+        典型的使用案例：<br>
+        &emsp; 您剛在 PizzaApp 點了披薩，不久後他們打電話通知您要退款，因為他們要打烊了。如果在此啟用了 PizzaApp，這通電話就會被放行。<br>
+        <br>
+        預設設定 <font color="03DAC5"><b>5 分鐘</b></font> 表示如果任何應用程式在 5 分鐘內被使用過，就會放行來電，
+        「使用過」指的是啟動、停用、最小化或關閉應用程式。<br>
+        <br>
+        僅適用於來電，<b>不適用</b>於簡訊。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+</resources>

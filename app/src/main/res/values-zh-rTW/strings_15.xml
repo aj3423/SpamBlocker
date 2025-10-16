@@ -1,0 +1,133 @@
+<resources>
+    <string name="api_preset_gemini">Gemini</string>
+    <string name="help_api_preset_gemini">
+        <![CDATA[
+        使用 Google Gemini AI 檢查簡訊內容，只需要 Google 帳號即可。
+        ]]>
+    </string>
+    <string name="gemini_api_key">Gemini API 金鑰</string>
+    <string name="help_api_preset_gemini_authorization">
+        <![CDATA[
+        1. 註冊並登入您的 Google 帳號：<br>
+         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+         <br>
+        2. 開啟 API 頁面：<br>
+         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        <br>
+        3. 按下「建立 API 金鑰」按鈕。<br>
+        <br>
+        4. 複製金鑰，然後填入下方。
+        ]]>
+    </string>
+    <string name="spam_sms_prompt_template">
+        將此簡訊分類為「政治」、「詐騙」、「問卷調查」或「行銷」。
+        如果都不符合，請回答「有效」，否則僅回答類別，不要回答其他內容。
+        簡訊內容為：
+        {sms}
+    </string>
+    <string name="spam_sms_negative_category"><translate>(政治|詐騙|問卷調查|行銷)</translate></string>
+    <string name="spam_sms_positive_category">有效</string>
+    <string name="last_log">最新記錄</string>
+    <string name="executed_at">執行時間：</string>
+    <string name="not_executed_yet">尚未執行</string>
+    <string name="show_indicator">顯示標記</string>
+    <string name="help_show_indicator">
+        <![CDATA[
+        在號碼前顯示圖示，表示它是否存在於騷擾號碼資料庫中，或是否有任何正規表示式規則符合它。<br>
+        <br>
+        如此一來，您便可以快速確認歷史紀錄是否被規則涵蓋，無需逐一測試。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        當有太多正規表示式規則時，這可能會影響效能。<br>
+        <br>
+        <b>範例：</b> <br>
+        <br>
+        <img src='ic_history_indicator_1'/> <br>
+        &ensp; - 第一個綠色數字圖示表示此號碼將被一條號碼規則允許。<br>
+        &ensp; - 第二個紅色簡訊圖示表示此簡訊內容將被一條內容規則封鎖。<br>
+        &ensp; - 第三個紅色資料庫圖示表示此號碼存在於騷擾號碼資料庫中。<br>
+        <br>
+        這些圖示是按<font color="#ea86ff"><b>優先順序</b></font>排列的，<b>第一個</b>圖示代表最終結果。該號碼規則有較高的優先順序，因此該簡訊最終會被允許。<br>
+        <br>
+        <img src='ic_history_indicator_2'/> <br>
+        &ensp; - 它將被一條內容規則允許。<br>
+        &ensp; - 它將被一條號碼規則封鎖。<br>
+        &ensp; - 它存在於騷擾號碼資料庫中。<br>
+        <br>
+        <b>第一個</b>圖示表示該訊息最終將被內容規則允許。<br>
+        <br>
+        <img src='ic_history_indicator_3'/> <br>
+        沒有號碼規則符合它，只有簡訊規則和資料庫。它將被一條簡訊規則封鎖。<br>
+        ]]>
+    </string>
+    <string name="enable_for_mms">啟用 MMS</string>
+    <string name="help_enable_for_mms">
+        <![CDATA[
+        MMS 訊息通常是垃圾訊息，除非您實際使用它們，否則不需要啟用。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        群組訊息是 MMS，而非 SMS。<br>
+        <br>
+        MMS 將被視為 SMS 處理，只會處理文字內容，
+        多媒體內容（如圖片和音訊）將被忽略。<br>
+        <br>
+        需要兩個權限：RECEIVE_MMS 和 READ_SMS
+        ]]>
+    </string>
+    <string name="unknown_error">未知錯誤。</string>
+    <string name="checking_auth_credential">正在檢查驗證憑證。</string>
+    <string name="sms_bomb"><short>簡訊轟炸</short></string>
+    <string name="help_sms_bomb">
+        <![CDATA[
+        防簡訊轟炸。<br>
+        <br>
+        防止大量、持續的簡訊轟炸，這些通常主要由
+          OTP（一次性密碼）驗證組成。<br>
+        <br>
+        例如這樣的簡訊：<br>
+        &ensp; <font color="#888888">您的 OTP 是：1234。</font><br>
+        &ensp; <font color="#888888">這是您的驗證碼：1234。</font><br>
+        &ensp; <font color="#888888">1234 是您的確認碼。</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 內容正規表示式</font></h5>
+        此功能只適用於符合此正規表示式的訊息，典型的正規表示式可能是：<br>
+        <font color="#fa7f71">.*(OTP|驗證碼|確認碼).*</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 間隔</font></h5>
+        如果在這個時間間隔內收到後續的 OTP 訊息，將被視為
+          轟炸攻擊的一部分並被封鎖。<br>
+        （預設：30 秒）<br>
+        <br>
+        這將封鎖除了第一條以外的所有轟炸訊息。<br>
+        <br>
+        <h5><font color="#00BFFF">- 鎖定螢幕保護</font></h5>
+        啟用此功能可在鎖定螢幕模式下封鎖所有轟炸，包括第一條。<br>
+        <br>
+        通常，當您在等待驗證碼時，螢幕應該已經解鎖。
+        當裝置處於鎖定螢幕模式時收到此類訊息，很可能是轟炸。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：20</b></font>
+        ]]>
+    </string>
+    <string name="lockscreen_protection"><short>鎖定螢幕保護</short></string>
+    <string name="help_history_logging">
+        <![CDATA[
+            停用時，歷史記錄不會記錄在本機資料庫中，也不會在此顯示。<br>
+            <br>
+            <font color="#00BFFF"><b>有效期限</b></font><br>
+            &emsp; 啟用時，歷史記錄將在 N 天後過期，過期的記錄將自動刪除。
+        ]]>
+    </string>
+    <string name="never_expire"><short>永不過期</short></string>
+    <string name="enable_history_logging">記錄</string>
+    <string name="rcs_message">RCS 訊息</string>
+    <string name="help_rcs_message">
+        <![CDATA[
+            不支援 RCS。<br>
+            <br>
+            雖然 RCS 是標準協定，但每個訊息應用程式的實作方式都不同。<br>
+            <br>
+            一個替代方案是切換到 SMS。
+        ]]>
+    </string>
+</resources>
