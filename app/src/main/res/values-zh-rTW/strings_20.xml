@@ -1,0 +1,102 @@
+<resources>
+    <string name="enable_call_screening_first">請先啟用電話篩選。</string>
+    <string name="enable_sms_screening_first">請先啟用簡訊篩選。</string>
+    <string name="it_is_at_top">它就在最上方。</string>
+    <string name="category_mapping">分類對應</string>
+    <string name="help_category_mapping">
+    <![CDATA[
+        部分 API 會以數字表示分類，例如 <b>1</b> 代表 <b>廣告</b>、<b>2</b> 代表 <b>詐騙</b>。
+        可將它們對應成易讀的文字。
+    ]]>
+    </string>
+    <string name="category_mapping_placeholder">
+        {\n
+        \"1\": \"廣告\",\n
+        \"2\": \"詐騙\",\n
+        …\n
+        }
+    </string>
+    <string name="call_throttling">來電節流</string>
+    <string name="call_throttling_triggered">已啟用來電節流</string>
+    <string name="help_call_throttling_template">
+    <![CDATA[
+    在封鎖來電後，於一段時間內將所有繞過規則的來電一併封鎖。<br>
+    <br>
+    <b>使用情境：</b><br>
+    <font color="#888888">&ensp; 某些騷擾電話會使用共同前置號碼，可藉由正規表示式封鎖。第一通被擋後，對方改用隨機號碼，可能繞過所有規則。</font><br>
+    <br>
+    <font color="#ffa500"><b>注意：</b></font><br>
+      可能會連帶封鎖正常來電，需要在安全性與方便性之間權衡。<br>
+    <br>
+    系統會同時建立<b>一條正規表示式規則</b>與<b>一個工作流程</b>，詳細行為請參考內部動作 <b>[來電節流]</b> 的提示說明。<br>
+    ]]>
+    </string>
+    <string name="help_call_throttling">
+    <![CDATA[
+    此功能會在一段時間內，把預設行為從<b>預設允許</b>改成<b>預設封鎖</b>，並啟用暫時性的正規表示式規則來封鎖所有來電。<br>
+    <br>
+    常見設定包含：<br>
+    &ensp; - 停用中的號碼正規表示式規則，會在需要時啟用來封鎖特定號碼或聯絡人群組。<br>
+    &ensp; - 一個 <b>[來電節流]</b> 工作流程。<br>
+    <br>
+    此組合已收錄在工作流程預設範本中。<br>
+    <br>
+    <b>選項：</b><br>
+    <br>
+    - <font color="#00BFFF"><b>[持續時間]</b></font><br>
+    在這段時間內封鎖來電（單位：秒）。<br>
+    <br>
+    - <font color="#00BFFF"><b>[包含已封鎖]</b></font><br>
+    只要任何來電被封鎖，就會啟用此功能。<br>
+    <br>
+    - <font color="#00BFFF"><b>[包含已接聽]</b></font><br>
+    - <font color="#00BFFF"><b>[最短通話時間]</b></font><br>
+    若接聽的通話時間過短，也會視為垃圾來電並啟用此功能。<br>
+    ]]>
+    </string>
+    <string name="template_generated">已建立範本。</string>
+    <string name="throttled_sms">節流簡訊</string>
+    <string name="throttled_call">節流來電</string>
+    <string name="including_blocked">包含已封鎖</string>
+    <string name="including_answered">包含已接聽</string>
+    <string name="minimal_call_duration">最短通話時間</string>
+    <string name="duration_in_seconds">持續時間（秒）</string>
+    <string name="seconds_template">%d 秒</string>
+    <string name="sms_throttling">簡訊節流</string>
+    <string name="sms_throttling_triggered">已啟用簡訊節流</string>
+    <string name="count_limit">次數上限</string>
+    <string name="target_rule_desc">目標規則描述</string>
+    <string name="help_sms_throttling_template">
+    <![CDATA[
+    在一段時間內靜音同一個號碼的連續簡訊通知。<br>
+    <br>
+    <b>使用情境：</b><br>
+    <font color="#888888">允許前 3 則通知，並在 1 分鐘內靜音其餘通知。</font><br>
+    <br>
+    系統會同時建立<b>一條正規表示式規則</b>與<b>一個工作流程</b>，詳細行為請參考內部動作 <b>[簡訊節流]</b> 的提示說明。<br>
+    ]]>
+    </string>
+    <string name="help_sms_throttling">
+    <![CDATA[
+    在一段時間內靜音同一個號碼的連續簡訊通知。<br>
+    <br>
+    常見設定包含：<br>
+    &ensp; - 停用中的號碼正規表示式規則，會在需要時啟用來封鎖所有來電。<br>
+    &ensp; - 一個 <b>[簡訊節流]</b> 工作流程。<br>
+    <br>
+    此組合已收錄在工作流程預設範本中。<br>
+    <br>
+    <b>選項：</b><br>
+    <br>
+    - <font color="#00BFFF"><b>[持續時間]</b></font><br>
+    簡訊會在這段時間內被靜音（單位：秒）。<br>
+    <br>
+    - <font color="#00BFFF"><b>[次數上限]</b></font><br>
+    允許前 N 次通知。<br>
+    <br>
+    - <font color="#00BFFF"><b>[包含已接聽]</b></font><br>
+    - <font color="#00BFFF"><b>[最短通話時間]</b></font><br>
+    若接聽的通話時間過短，也會視為垃圾來電並觸發此功能。<br>
+    ]]>
+    </string>
+</resources>

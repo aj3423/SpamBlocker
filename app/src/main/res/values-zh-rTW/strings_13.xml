@@ -1,0 +1,128 @@
+<resources>
+    <string name="cleaning_up_history_db">
+        正在清理歷史資料庫，刪除時間戳記 %s 之前的記錄。
+    </string>
+    <string name="cleaning_up_spam_db">
+        正在清理騷擾號碼資料庫，刪除 %s 筆時間戳記早於 %s 的記錄。
+    </string>
+    <string name="resolved_url">解析後的網址：%s</string>
+    <string name="time_cost">執行時間：%s 毫秒。</string>
+    <string name="parsed_n_rules">已解析 %s 條規則。</string>
+    <string name="add_n_numbers_to_spam_db">正在新增 %s 個號碼至騷擾號碼資料庫。</string>
+    <string name="nothing_to_import">號碼清單為空，無資料可匯入。</string>
+    <string name="importing_n_numbers">正在匯入 %s 個號碼為正規表示式規則。</string>
+    <string name="create_rule_with_numbers">正在建立包含 %s 個號碼的規則。</string>
+    <string name="replace_rule_with_desc">正在取代描述為：%s 的規則。</string>
+    <string name="rule_with_desc_not_found">找不到描述為 %s 的規則。</string>
+    <string name="merging_rule_with_desc">正在合併描述為：%s 的規則。</string>
+    <string name="regex_count_after_merge">合併前規則數：%s，合併後：%s。</string>
+    <string name="replace_number_from_to">將號碼從 %s 取代為 %s。</string>
+    <string name="find_rule_with_desc">找到 %s 條描述為 %s 的規則。</string>
+    <string name="modify_n_rules">正在修改 %s 條規則。</string>
+    <string name="number_not_match_filter">號碼 %s 不符合過濾規則 %s，略過。</string>
+    <string name="fail_detect_cc">無法偵測國碼。</string>
+    <string name="identified_as_spam">已識別為垃圾號碼，類別：%s。</string>
+    <string name="identified_as_valid">已識別為有效號碼，類別：%s。</string>
+    <string name="unidentified_number">未識別的號碼。</string>
+    <string name="auto_detect_cc_permission">需要 READ_PHONE_STATE 權限才能自動偵測國碼。</string>
+    <string name="number_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        &ensp; 國碼。<br>
+        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        &ensp; 本地號碼部分。<br>
+        - <font color="#00BFFF"><b>{number}</b></font><br>
+        &ensp; 完整號碼，包含國碼和本地號碼部分，不含前置 + 或 0。<br>
+        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        &ensp; 原始號碼，可能包含前置 + 或 0。<br>
+        ]]>
+    </string>
+    <string name="sms_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{sms}</b></font><br>
+        &ensp; 簡訊內容。<br>
+        ]]>
+    </string>
+    <string name="time_tags">
+        <![CDATA[
+         <font color="#00BFFF"><b>{year}</b></font><br>
+         <font color="#00BFFF"><b>{month}</b></font><br>
+         <font color="#00BFFF"><b>{day}</b></font><br>
+         <font color="#00BFFF"><b>{hour}</b></font><br>
+         <font color="#00BFFF"><b>{minute}</b></font><br>
+         <font color="#00BFFF"><b>{second}</b></font><br>
+        &ensp; 個位數會補零，例如：<br>
+        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; 變為 <br>
+        &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
+        <br>
+         <font color="#00BFFF"><b>{month_index}</b></font><br>
+         <font color="#00BFFF"><b>{day_index}</b></font><br>
+         <font color="#00BFFF"><b>{hour_index}</b></font><br>
+         <font color="#00BFFF"><b>{minute_index}</b></font><br>
+         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        &ensp; 這些值不會補零，例如：<br>
+        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; 變為 <br>
+        &emsp; <font color="#888888">1-2</font><br>
+        <br>
+         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
+         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
+        &ensp; 這些可用於模擬輪替排程，例如：<br>
+        &emsp; <font color="#888888">執行每日備份，只保留最近七個備份。</font> <br>
+        ]]>
+    </string>
+    <string name="help_http_url">
+        <![CDATA[
+        支援的標籤：<br>
+        <br>
+        %s
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="api_preset_phoneblock"><no_translate>PhoneBlock 🇩🇪 🌐</no_translate></string>
+    <string name="help_api_preset_phoneblock">
+        <![CDATA[
+        主要為德國 FRITZ!Box 設計，但也適用於任何其他國家的電話號碼。<br>
+        <br>
+        支援使用雜湊值而非號碼本身進行查詢，提供更好的隱私保護。<br>
+        <br>
+        網站：<a href="https://phoneblock.net">https://phoneblock.net</a><br>
+        <br>
+        API：<a href="https://phoneblock.net/phoneblock/api/">https://phoneblock.net/phoneblock/api/</a>
+        ]]>
+    </string>
+    <string name="help_api_preset_phoneblock_authorization">
+        <![CDATA[
+        1. 在 <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a> 註冊帳號<br>
+        <br>
+        2. 在設定頁面：<a href="https://phoneblock.net/phoneblock/settings">https://phoneblock.net/phoneblock/settings</a>，
+         按下「產生 API 金鑰」按鈕。<br>
+        <br>
+        3. 在下方填入產生的 API 金鑰。
+        ]]>
+    </string>
+    <string name="not_enough_time_left">
+        通話過濾時間限制為 5 秒，加上時間函式不精確的 %s 毫秒緩衝，
+        實際總時限為 %s 毫秒。
+        前面步驟已花費 %s 毫秒，剩餘時間不足，略過。
+    </string>
+    <string name="action_filter_query_result">過濾騷擾電話</string>
+    <string name="help_action_filter_query_result">
+        <![CDATA[
+        從上一步驟識別的垃圾號碼產生<u>號碼清單</u>，準備匯入資料庫。
+        ]]>
+    </string>
+    <string name="another_thread_is_cancelled">另一個執行緒已取消。</string>
+    <string name="suggest_to_swipe">
+        <![CDATA[
+        <font color="#03DAC5"><b>向左滑動</b></font>可刪除。<br>
+        <br>
+        本應用程式中大多數卡片式介面元素都支援滑動手勢，
+        某些還支援<font color="#03DAC5"><b>向右滑動</b></font>，例如歷史記錄。
+        ]]>
+    </string>
+    <string name="bug_number">如果這是有效號碼，請在 GitHub 上回報。</string>
+    <string name="skip_alpha_empty_number">略過含字母或空的號碼。</string>
+</resources>

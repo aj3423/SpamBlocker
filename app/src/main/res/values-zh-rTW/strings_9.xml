@@ -1,0 +1,96 @@
+<resources>
+    <string name="contact_rule">聯絡人規則</string>
+    <string name="directory">目錄</string>
+    <string name="filename">檔案名稱</string>
+    <string name="url">網址</string>
+    <string name="expiry_days">過期天數</string>
+    <string name="column_mapping">欄位對應</string>
+    <string name="include_spam_db">包含騷擾號碼資料庫</string>
+    <string name="no_config_needed">不需要設定</string>
+    <string name="optional">（選用）</string>
+
+    <string name="help_action_header">
+        <![CDATA[
+        - <font color="#03DAC5"><b>測試</b></font><br>
+        這些動作會立即執行，用於檢查是否已正確設定，
+        或者您只是想手動執行此工作流程。<br>
+        <br>
+        - <font color="#00BFFF"><b>新增</b></font><br>
+            建立新動作，可以串連多個動作以完成複雜的任務。<br>
+            各動作之間的綠色或紅色圓點表示它們是否可以串連。
+        ]]>
+    </string>
+
+    <string name="help_bot_preset_dnc">
+        <![CDATA[
+            每個工作日從
+            <a href="https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data">
+            <no_translate>FTC - Do Not Call</no_translate></a>
+            下載騷擾電話號碼並匯入資料庫。<br>
+            <br>
+            <font color="#ffa500"><b>注意：</b></font><br>
+            <font color="#888888">&ensp; 該資料集通常在每個工作日的東部時間中午左右更新。週末的資料會包含在週一的檔案中，假日的資料則包含在下一個工作日發布的檔案中。</font><br>
+            <br>
+            這就是為什麼工作流程會排程在 18:00 執行，因為預計屆時資料集已經可用。<br>
+            如果在測試時看到 404 錯誤，請檢查上面的連結以確認今天的資料是否已在其網站上發布。
+        ]]>
+    </string>
+    <string name="help_bot_preset_cleanup_spam_db">從騷擾號碼資料庫刪除過期的記錄。</string>
+    <string name="help_bot_preset_cleanup_history">刪除過期的通話/簡訊歷史記錄。</string>
+    <string name="help_bot_preset_auto_backup">備份所有設定。</string>
+    <string name="everyday">每天</string>
+    <string name="daily">每日</string>
+    <string name="weekly">每週</string>
+    <string name="periodically">定期</string>
+    <string name="time">時間</string>
+    <string name="workdays">工作日</string>
+
+    <string name="help_backup">
+        <![CDATA[
+        備份檔案格式為 gzip 壓縮的 JSON，您可以使用任何壓縮檔管理工具開啟和編輯。<br>
+        <br>
+        - <font color="#00BFFF"><b>包含騷擾號碼資料庫</b></font><br>
+        長按按鈕以匯出/匯入騷擾號碼資料庫。<br>
+        <br>
+        <font color="#ffa500">注意：</font><br>
+        &ensp; 在備份檔中包含騷擾號碼資料庫會大幅增加檔案大小，
+        由於資料庫會定期更新，這通常是不必要的，除非您想要複製到另一臺手機。<br>
+
+        ]]>
+    </string>
+    <string name="mode">模式</string>
+    <string-array name="regex_action_add_mode">
+        <item>建立</item>
+        <item>取代</item>
+        <item>合併</item>
+    </string-array>
+    <string name="help_regex_action_add_mode">
+        <![CDATA[
+        - <font color="#00BFFF"><b>建立</b></font><br>
+        &ensp; 永遠建立新的正規表示式規則。<br>
+        <br>
+        - <font color="#00BFFF"><b>取代</b></font><br>
+        &ensp; 會嘗試尋找具有相同<b>描述</b>的現有規則。<br>
+        &ensp;&ensp; - 如果找到，將會覆寫。<br>
+        &ensp;&ensp; - 如果找不到，將建立新規則，與<b>建立</b>模式相同。<br>
+        <br>
+        - <font color="#00BFFF"><b>合併</b></font><br>
+        &ensp;- 如果存在具有相同描述的規則，新號碼將會合併到該規則中，<br>
+         重複的號碼將自動移除。<br>
+        &ensp;- 如果不存在，將建立新規則，與<b>建立</b>模式相同。<br>
+        ]]>
+    </string>
+    <string name="action_enable_workflow">啟用工作流程</string>
+    <string name="help_action_enable_workflow">
+        <![CDATA[
+        啟用或停用此工作流程。使用案例可能是讓定期工作流程變成一次性執行。
+        ]]>
+    </string>
+    <string name="action_enable_app">啟用應用程式</string>
+    <string name="help_action_enable_app">
+        <![CDATA[
+        啟用或停用應用程式。使用案例可能是暫時停用並在幾小時後自動重新啟用。
+        ]]>
+    </string>
+
+</resources>

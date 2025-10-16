@@ -1,0 +1,185 @@
+<resources>
+    <string name="database">資料庫</string>
+    <string name="total">總計</string>
+    <string name="replace_from">原始值</string>
+    <string name="replace_to">取代為</string>
+    <string name="regex_pattern">正規表示式</string>
+
+    <string name="help_spam_db">
+        <![CDATA[
+        此資料庫中的號碼將被封鎖。<br>
+        <br>
+        您可以整合任何公開資料庫，甚至多個資料庫，也可以從本機檔案匯入號碼。<br>
+        <br>
+        請檢視下方「自動化」段落了解如何排程自動匯入任務。<br>
+        <br>
+        適用於通話和簡訊。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：0</b></font>
+        ]]>
+    </string>
+    <string name="help_spam_db_ttl">
+        <![CDATA[
+        資料庫中的騷擾號碼將在 N 天後過期，過期的紀錄將自動刪除。<br>
+        <br>
+        停用時，號碼永遠不會自動刪除。
+        ]]>
+    </string>
+    <string name="customize">自訂</string>
+    <string name="workflow">工作流程</string>
+    <string name="workflows">工作流程</string>
+    <string name="automation">自動化</string>
+    <string name="help_workflows">
+        <![CDATA[
+        工作流程可用於自動執行任務，可透過排程或事件觸發。<br>
+        <br>
+        有預設範本可供快速設定，您也可以從頭開始建立，或從其他使用者分享的 JSON 檔案匯入。<br>
+        <br>
+        <b>觸發器：</b><br>
+        <br>
+        <font color="#00BFFF"><b>排程</b></font><br>
+        在特定日期和時間觸發。<br>
+        <br>
+        使用案例：<br>
+        &ensp; - 每天自動備份並僅保留 7 天的備份。<br>
+        &ensp; - 每天從 FTC-DNC 拒接來電清單自動下載騷擾電話號碼。<br>
+        <br>
+        <font color="#00BFFF"><b>行事曆事件</b></font><br>
+        如果在特定行事曆事件期間接到電話，則觸發。<br>
+        <br>
+        使用案例：<br>
+        &ensp; - 在行事曆事件「工作」期間，暫時停用規則「靜音老闆」。<br>
+        <br>
+        <font color="#00BFFF"><b>來電事件</b></font><br>
+        在有來電時觸發。<br>
+        <br>
+        使用案例：<br>
+        &ensp; - 在篩選前從電話號碼中移除多餘的前導字元，
+          因為某些電信業者在單一 SIM 卡上支援雙號碼。<br>
+        <br>
+        <font color="#00BFFF"><b>簡訊事件</b></font><br>
+        在收到簡訊時觸發。<br>
+        <br>
+        使用案例：<br>
+        &ensp; - 在收到值班或非值班簡訊後切換某些規則。<br>
+        ]]>
+    </string>
+    <string name="manual">手動</string>
+    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
+    <string name="bot_preset_cleanup_spam_db">清理騷擾號碼資料庫</string>
+    <string name="bot_preset_cleanup_history">清理歷史記錄</string>
+    <string name="bot_preset_auto_backup">自動備份</string>
+    <string name="action_cleanup_history">清理歷史記錄</string>
+    <string name="action_http_request">HTTP 請求</string>
+    <string name="action_cleanup_spam_db">清理騷擾號碼資料庫</string>
+    <string name="action_backup_export">匯出備份</string>
+    <string name="action_backup_import">匯入備份</string>
+    <string name="action_read_file">讀取檔案</string>
+    <string name="action_write_file">寫入檔案</string>
+    <string name="action_parse_csv">解析 CSV</string>
+    <string name="action_parse_xml">解析 XML</string>
+    <string name="action_regex_extract">正規表示式擷取</string>
+    <string name="action_import_to_spam_db">匯入至騷擾號碼資料庫</string>
+    <string name="action_import_as_regex_rule">匯入為正規表示式規則</string>
+    <string name="action_convert_number">取代號碼</string>
+    <string name="action_find_rules">尋找規則</string>
+    <string name="action_modify_rules">修改規則</string>
+    <string name="action_modify_rules_placeholder">
+        JSON 字串，例如：\n
+        {\n
+        "flags": 0, // 停用規則\n
+        "priority": 100,\n
+        "blockType": 0\n
+        …\n
+        }\n
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        透過 HTTP 下載資料為<u>內容位元組</u>
+        ]]>
+    </string>
+    <string name="help_action_cleanup_spam_db">從騷擾號碼資料庫刪除過期的號碼。</string>
+    <string name="help_action_cleanup_history">刪除過期的歷史記錄。</string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        將目前設定匯出為<u>內容位元組</u>。
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        從<u>內容位元組</u>套用設定。
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        從檔案取得<u>內容位元組</u>。<br>
+        <br>
+        支援的 <font color="#03DAC5"><b>path</b></font> 標籤：<br>
+        <br>
+        %s<br>
+        <br>
+        支援的 <font color="#03DAC5"><b>filename</b></font> 標籤：<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        將<u>內容位元組</u>寫入檔案。<br>
+        <br>
+        支援的 <font color="#03DAC5"><b>path</b></font> 標籤：<br>
+        <br>
+        %s<br>
+        <br>
+        支援的 <font color="#03DAC5"><b>filename</b></font> 標籤：<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        將 CSV <u>內容位元組</u> 解析為 <u>號碼清單</u>。
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        使用 <b>xpath</b> 解析 XML <u>內容位元組</u> 並產生 <u>號碼清單</u>。
+        ]]>
+    </string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        使用正規表示式從 <u>內容位元組</u> 擷取 <u>號碼清單</u>。
+        ]]>
+    </string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        將 <u>號碼清單</u> 新增至騷擾號碼資料庫。
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        從 <u>號碼清單</u> 產生新的正規表示式規則。
+        ]]>
+    </string>
+    <string name="help_action_convert_number">
+        <![CDATA[
+        將 <u>號碼清單</u> 轉換為本應用程式使用的格式。<br>
+        <br>
+        例如，新增兩個取代動作：<br>
+        將 `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` 轉換為 `12345<font color="#03DAC5"><b>…</b></font>`：<br>
+        <br>
+        &ensp; - 將 `<font color="#fa7f71">(+)</font>` 取代為 ``<br>
+        &ensp; - 將 `<font color="#fa7f71">(#)</font>` 取代為 `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        尋找符合特定描述的 <u>規則清單</u>。
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        修改 <u>規則清單</u> 的一個或多個屬性。
+        ]]>
+    </string>
+</resources>

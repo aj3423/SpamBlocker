@@ -1,0 +1,66 @@
+<resources>
+    <string name="perm_write_settings">寫入設定</string>
+    <string name="set_to">設定為</string>
+    <string name="help_set_ringtone_to">
+    <![CDATA[
+        為特定功能指定鈴聲，或將其靜音。<br>
+        <br>
+        例如要為某個正規表示式規則設定鈴聲：<br><br>
+        <font color="#888888">
+        &emsp; { \"regex\": \"rule_desc\" }
+        </font>
+        <br><br>
+        符合該規則並被允許的來電會播放指定鈴聲。<br>
+    ]]>
+    </string>
+    <string name="ringtone">鈴聲</string>
+    <string name="call_to_test_ringtone">請實際撥打一通電話測試鈴聲。</string>
+    <string name="help_ringtone">
+    <![CDATA[
+        為特定功能自訂鈴聲，被允許的來電會播放指定鈴聲。
+    ]]>
+    </string>
+    <string name="help_preset_ringtone">
+    <![CDATA[
+        為正規表示式規則自訂鈴聲，當來電被此規則允許時，將會播放指定的鈴聲。
+    ]]>
+    </string>
+    <string name="help_target_rule_desc">
+    <![CDATA[
+        此設定會套用到描述相同的正規表示式規則。<br>
+        <br>
+        例如想套用到名稱為 <b>Work</b> 的規則，請在此欄位輸入 <b>Work</b>。<br>
+    ]]>
+    </string>
+    <string name="invalid_config">設定無效</string>
+    <string name="custom">自訂</string>
+    <string name="quick_tile">快速設定磁貼</string>
+    <string name="help_quick_tile">
+    <![CDATA[
+        將工作流程綁定到快速設定磁貼。當磁貼處於啟用狀態且有來電時，就會執行該工作流程。<br>
+        <br>
+        可用於即時調整設定，變更只在記憶體中生效，不會寫入設定檔。<br>
+        <br>
+        <b>範例：</b><br>
+        使用磁貼切換某條正規表示式規則：<br>
+        - [快速設定磁貼] <br>
+        - [尋找規則] <br>
+        - [修改規則] <br>
+    ]]>
+    </string>
+    <string name="quick_tile_is_active">自訂快速設定磁貼已啟用。</string>
+    <string name="http_status_code_template">HTTP 狀態碼：%d</string>
+    <string name="remote_setup">遠端設定</string>
+    <string name="help_remote_setup">
+    <![CDATA[
+        為長輩遠端設定應用程式。<br>
+        <br>
+        <b>運作方式：</b><br>
+        此工作流程會每天自動從指定的網址下載並套用備份檔案。<br>
+        當您想遠端更新時，只需上傳新的備份檔案，它就會自動被套用。<br>
+        <br>
+        <b>提示：</b><br>
+        您可以將備份檔案託管在 GitHub 上。
+    ]]>
+    </string>
+</resources>

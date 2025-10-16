@@ -1,0 +1,95 @@
+<resources>
+    <string name="report_number">回報號碼</string>
+    <string name="report_number_require_call_log_permission">
+        為了避免重複來電或回撥號碼被誤報，
+        回報號碼功能需要通話紀錄權限。
+    </string>
+    <string name="http_method">方法</string>
+    <string name="http_post_body">POST 內容</string>
+    <string name="help_http_post_body">
+        <![CDATA[
+        支援的標籤：<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="invalid_auth_credentials">請輸入有效的驗證資訊。</string>
+    <string name="delay">延遲</string>
+    <string name="exclude_services">排除服務</string>
+    <string name="help_exclude_bg_service">
+        <![CDATA[
+        某些應用程式會執行額外的前景服務，可在此新增服務名稱來排除它們。<br>
+        <br>
+        尋找服務名稱的方法：<br>
+        &emsp; 1. 在該應用程式中啟動服務。<br>
+        &emsp; 2. 所有已啟動的服務名稱都會顯示在此。<br>
+        &emsp; 3. 點選名稱即可新增。<br>
+        <br>
+        您可以新增多個名稱，以逗號分隔。
+        ]]>
+    </string>
+    <string name="running_services">執行中的服務</string>
+    <string-array name="spam_categories">
+        <item>有效號碼</item>
+        <item>詐騙</item>
+        <item>行銷</item>
+        <item>問卷調查</item>
+        <item>政治</item>
+        <item>其他騷擾類型</item>
+    </string-array>
+    <string name="action_category_config">類別設定</string>
+    <string name="help_action_category_config">
+        <![CDATA[
+        僅支援以下騷擾電話類別，API 回傳的任何其他類別都應對應到其中之一。<br>
+        <br>
+         - <font color="#03DAC5"><b>{valid}</b></font><br>
+        &ensp; 回報為有效號碼，非騷擾電話。<br>
+        <br>
+         - <font color="#fa7f71"><b>{fraud}</b></font><br>
+         - <font color="#fa7f71"><b>{marketing}</b></font><br>
+         - <font color="#fa7f71"><b>{survey}</b></font><br>
+         - <font color="#fa7f71"><b>{political}</b></font><br>
+        <br>
+         - <font color="#fa7f71"><b>{other}</b></font><br>
+        &ensp; 後備騷擾電話類型，當無法歸類於上述類別時使用。<br>
+        ]]>
+    </string>
+    <string name="missing_category">
+        類別 %s 尚未在動作 %s 中設定，請在 API 設定中補上（若 API 支援該類別）。
+    </string>
+    <string name="target_text">目標文字</string>
+    <string name="match_found">找到符合結果</string>
+    <string name="match_not_found">找不到符合結果</string>
+    <string name="help_test_regex">
+        <![CDATA[
+        這只是用來測試此正規表示式是否符合某個文字，不包含其他規則。<br>
+        如要測試所有規則，請改用右下角的浮動測試按鈕。
+        ]]>
+    </string>
+    <string name="allow">允許</string>
+    <string name="block">封鎖</string>
+    <string name="seconds_short">秒</string>
+    <string name="within_seconds">指定秒數內</string>
+    <string name="sms_alert"><short>簡訊提醒</short></string>
+    <string name="help_sms_alert">
+        <![CDATA[
+        某些服務會先傳送簡訊通知您接下來會接到電話，通常在一分鐘內。<br>
+        <br>
+        例如這樣的簡訊：<br>
+        &ensp; <font color="#888888">［某服務］我們正要致電通知您……，請放心接聽。</font><br>
+        <br>
+        這類訊息的正規表示式可以是：<br>
+        &ensp; <font color="#03DAC5"><b>.*請.*接聽.*</b></font><br>
+        <br>
+        預設設定 <font color="#03DAC5"><b>120 秒</b></font> 表示在收到此類訊息後的兩分鐘內，
+        所有來電都會放行。<br>
+        <br>
+        適用於一般簡訊和快閃簡訊（Class 0 簡訊）。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+    <string name="waning_using_wildcard_as_regex">使用萬用字元 `*` 時未加前置點號，您是否要使用 `.*`？</string>
+    <string name="import_as">匯入為</string>
+    <string name="api_key">API 金鑰</string>
+</resources>

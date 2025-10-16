@@ -1,0 +1,90 @@
+<resources>
+    <string name="emergency">緊急情況</string>
+    <string name="emergency_situation">緊急情況</string>
+    <string name="help_emergency_situation">
+        <![CDATA[
+        撥打緊急號碼後，在一段時間內允許所有來電。<br>
+        <br>
+        <h5><font color="#00BFFF">- 持續時間</font></h5>
+        預設設定 <font color="#03DAC5"><b>120 分鐘</b></font> 表示撥打緊急號碼後的 120 分鐘內將允許所有來電。<br>
+        <br>
+        <h5><font color="#00BFFF">- 檢查 STIR</font></h5>
+         - 停用時，將允許所有來電。<br>
+         - 啟用時，未獲 STIR 認證的來電將不被允許，僅允許「有效」和「未驗證」的來電。<br>
+        <br>
+        <h5><font color="#00BFFF">- 額外號碼</font></h5>
+        撥打此列表中的任何號碼也會觸發此功能。<br>
+        <br>
+        無需在此處明確新增 911 之類的號碼，因為 Android 為每個國家/地區內建了緊急號碼列表（例如：警察、消防、救護車）。<br>
+        <br>
+        使用逗號分隔號碼，例如：<br>
+        &ensp; <font color="#888888">111, 222, 3333</font><br>
+        <br>
+        <h5><font color="#00BFFF">- 重設</font></h5>
+        如果此功能是因錯誤或在測試期間觸發的，請按此按鈕重設。<br>
+        <br>
+        <h5><font color="#00BFFF">- 測試</font></h5>
+        模擬撥出電話以測試該號碼是否為緊急號碼。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：最高</b></font>
+        ]]>
+    </string>
+    <string name="reset">重設</string>
+    <string name="status">狀態</string>
+    <string name="inactive">停用</string>
+    <string name="confirm_reset">確認重設？</string>
+    <string name="check_stir_attestation">檢查 STIR (?)</string>
+    <string name="additional_numbers">額外號碼</string>
+    <string name="path_tags">
+        <![CDATA[
+        <font color="#00BFFF"><b>{sdcard}</b></font><br>
+        外部儲存目錄，等同於：<br>
+        <font color="#888888">/storage/emulated/0</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Download}</b></font><br>
+        等同於：<br>
+        <font color="#888888">{sdcard}/Download</font><br>
+        <br>
+        <font color="#00BFFF"><b>{Documents}</b></font><br>
+        等同於：<br>
+        <font color="#888888">{sdcard}/Documents</font>
+        ]]>
+    </string>
+    <string name="call_to_number">目標號碼</string>
+    <string name="call_to">撥打給</string>
+    <string name="push_alert">推播提醒</string>
+    <string name="help_push_alert">
+        <![CDATA[
+        收到特定通知後，在設定的時間內允許所有來電。<br>
+        <br>
+        典型使用案例：<br>
+        &ensp; 當收到如下通知時：<br>
+        &emsp; 標題：<font color="#888888"><translate>訂單更新：</translate></font><br>
+        &emsp; 內容：<font color="#888888"><translate>您的訂單已由外送員 …</translate></font><br>
+        &ensp; 外送員可能會打電話給您確認詳細資訊。<br>
+        <br>
+        <b>需要權限：</b> <br>
+        1. 電池最佳化（無限制或已最佳化）<br>
+        2. 通知存取權<br>
+        <br>
+        選項：<br>
+        <br>
+        <h6><font color="#00BFFF">- 應用程式</font></h6>
+        只會檢查來自此應用程式的通知。<br>
+        <br>
+        <h6><font color="#00BFFF">- 通知內容</font></h6>
+        此正規表示式將符合<b>通知標題和內文</b>。<br>
+        上述使用案例的範例：<br>
+        &emsp; <font color="#03DAC5"><translate>訂單更新.*已由外送員.*</translate></font><br>
+        <br>
+        <h6><font color="#00BFFF">- 持續時間</font></h6>
+        在此期間將允許來電，以分鐘為單位。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+    <string name="notification_content">通知內容</string>
+    <string name="app">應用程式</string>
+    <string name="choose">選擇</string>
+    <string name="usage_statistics">使用統計</string>
+</resources>
