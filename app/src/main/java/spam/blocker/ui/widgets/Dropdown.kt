@@ -6,7 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
@@ -141,6 +144,7 @@ fun DropdownWrapper(
 ) {
     val C = LocalPalette.current
 
+
     Box {
         val expanded = remember { mutableStateOf(false) }
 
@@ -166,7 +170,19 @@ fun DropdownMenuItems(
     items: List<IMenuItem>,
     expanded: MutableState<Boolean>,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+    val scrollState = rememberScrollState()
+
+    Column(
+        modifier = M
+            .heightIn(max = 500.dp) // Important for it to not crash (scroll unbounded issue)
+        .verticalScroll(scrollState)
+        .simpleVerticalScrollbar(
+            scrollState,
+            offsetX = -8,
+            persistent = true
+        ),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
         items.forEach { item ->
             RowVCenter(
                 modifier = M
