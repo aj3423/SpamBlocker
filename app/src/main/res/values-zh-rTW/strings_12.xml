@@ -1,0 +1,103 @@
+<resources>
+    <string name="help_instant_query">
+        <![CDATA[
+        即時在線上查詢來電號碼，會同時查詢多個 API 端點，並採用第一個收到的結果，忽略後續結果。<br>
+        <br>
+        只適用於來電，不適用於簡訊。<br>
+        <br>
+        此功能預設為最低優先順序，代表僅在來電符合所有其他規則後才會觸發。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：-1</b></font>
+        ]]>
+    </string>
+    <string name="instant_query">即時查詢</string>
+    <string name="query">查詢</string>
+    <string name="negative_identifier">負面識別</string>
+    <string name="hint_negative_identifier">
+        例如：(\"valid\":false)
+    </string>
+    <string name="help_negative_identifier">
+        如果在結果中找到此正規表示式，將被識別為垃圾號碼。
+    </string>
+    <string name="positive_identifier">正面識別</string>
+    <string name="hint_positive_identifier">
+        例如：(\"valid\":true)
+    </string>
+    <string name="help_positive_identifier">
+        <![CDATA[
+        如果在結果中找到此正規表示式，將被識別為非垃圾號碼，此為選用設定。<br>
+        <br>
+        通常這是<b>不必要的</b>，某些 API 提供者會將未知號碼識別為非垃圾號碼，
+        只有在 API 真的很準確時才使用此選項。
+        ]]>
+    </string>
+    <string name="category_identifier">類別識別</string>
+    <string name="hint_category_identifier">
+        例如：\"type\":\"(.+?)\"
+    </string>
+    <string name="help_category_identifier">
+        <![CDATA[
+        選用。<br>
+        一旦號碼被識別，此正規表示式將用於擷取其類別（電話行銷、釣魚等）。
+        ]]>
+    </string>
+    <string name="action_parse_query_result">解析結果</string>
+    <string name="help_action_parse_query_result">
+        <![CDATA[
+        解析查詢結果，如果結果包含特定的正規表示式，該號碼將被識別為垃圾號碼。<br>
+        <br>
+        可以使用額外的正規表示式來擷取騷擾電話類別（選用）。
+        ]]>
+    </string>
+    <string name="action_intercept_call">攔截來電</string>
+    <string name="help_action_intercept_call">
+        <![CDATA[
+        來電號碼將被攔截並解析為不同的標籤：<br>
+        <br>
+        %s
+        <br>
+        這些標籤將用於建立 HTTP 網址，例如：<br>
+        <br>
+        1. 對於國際號碼如 <b>+122222</b>，這兩種寫法是相同的：<br>
+        - https://test.com/number=<b>{number}</b><br>
+        - https://test.com/number=<b>{cc}{domestic}</b><br>
+        將被解析為：<br>
+        https://test.com/number=<b>122222</b><br>
+        <br>
+        2. 對於本地號碼如 <b>12345</b>，您需要在設定中提供國碼，
+        或讓應用程式自動偵測。<br>
+        ]]>
+    </string>
+    <string name="action_intercept_sms">攔截簡訊</string>
+    <string name="help_action_intercept_sms">
+        <![CDATA[
+        收到的簡訊將被攔截，內容將被解析為標籤 <b>{sms}</b>，
+        可以在 HTTP 請求中使用。
+        ]]>
+    </string>
+    <string name="query_api">查詢 API</string>
+    <string name="report_api">回報 API</string>
+    <string name="number_filter">號碼過濾</string>
+    <string name="help_number_filter">
+        <![CDATA[
+        某些 API 服務只支援國際號碼，而某些只支援本地號碼。<br>
+        <br>
+        此正規表示式會相應地過濾號碼，不符合此規則的來電號碼將略過檢查。<br>
+        <br>
+        - 只檢查<b>國際號碼</b>：<br>
+        &ensp; <font color="#03DAC5"><b>\\+.*</b></font><br>
+        <br>
+        - 只檢查<b>本地號碼</b>：<br>
+        &ensp; <font color="#03DAC5"><b>0{1,2}.*</b></font><br>
+        <br>
+        - 檢查<b>任何號碼</b>：<br>
+        &ensp; <font color="#03DAC5"><b>.*</b></font>
+        ]]>
+    </string>
+    <string name="checking_template">正在檢查：%s，優先順序：%s</string>
+    <string name="skip_for_testing">測試時略過。</string>
+    <string name="allowed_by">放行原因：%s</string>
+    <string name="blocked_by">封鎖原因：%s</string>
+    <string name="outside_time_schedule">不在排程時段內，略過。</string>
+    <string name="android_ver_lower_than_11">Android 版本低於 11，略過。</string>
+</resources>

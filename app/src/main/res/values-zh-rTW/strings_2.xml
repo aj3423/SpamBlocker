@@ -1,0 +1,59 @@
+<resources>
+    <string name="contacts">聯絡人</string>
+    <string name="non_contacts">非聯絡人</string>
+    <string name="lenient">寬鬆</string>
+    <string name="strict">嚴格</string>
+    <string name="help_contacts">
+        <![CDATA[
+        允許聯絡人的號碼。<br>
+        <br>
+        同時適用於通話與簡訊。<br>
+        <br>
+        <b>選項：</b><br>
+        <br>
+        - <b>寬鬆</b>：<br>
+            &emsp; 聯絡人的號碼會直接放行。<br>
+            &emsp; 非聯絡人的號碼會交由其他規則檢查。<br>
+            &emsp; <font color="#ea86ff"><b>預設優先順序：10</b></font><br>
+        <br>
+        - <font color="#fa7f71"><b>嚴格</b></font>：<br>
+            &emsp; 聯絡人的號碼會直接放行。<br>
+            &emsp; 非聯絡人的號碼會被<font color="#fa7f71"><b>封鎖</b></font>。<br>
+            &emsp; <font color="#ea86ff"><b>預設優先順序：0</b></font><br>
+        ]]>
+    </string>
+    <string name="stir_attestation">STIR</string>
+    <string name="stir_include_unverified">包含未驗證</string>
+    <string name="unverified">未驗證</string>
+    <string name="valid">有效來電</string>
+    <string name="spoof">偽造來電</string>
+    <string name="help_stir">
+        <![CDATA[
+        封鎖未獲 STIR/SHAKEN 認證的來電，這類來電很可能是冒名撥號。<br>
+        <br>
+        STIR/SHAKEN 認證需要 <b>Android 11+</b> 與 <b>電信業者支援</b>。<br>
+        <br>
+        <b>選項：</b><br>
+        <br>
+        <font color="#00BFFF"><b>包含未驗證</b></font><br>
+        啟用後會封鎖未驗證的來電，代表該通話無法驗證，或是業者／裝置尚未支援 STIR 認證。<br>
+        <b>使用情境</b>：<br>
+        &ensp; 在嚴格要求 STIR 認證的地區，未驗證的來電通常是騷擾電話。<br>
+        <br>
+        <font color="#ea86ff"><b>預設優先順序：0</b></font><br>
+        自訂優先順序範例：<br>
+        <br>
+        1. 永遠允許聯絡人：<br>
+          &emsp; 聯絡人（寬鬆），優先順序 <font color="#ea86ff">12</font><br>
+        2. 即使重複來電，只要 STIR 失敗就封鎖：<br>
+          &emsp; STIR，優先順序 <font color="#ea86ff">11</font><br>
+        3. 允許重複來電：<br>
+          &emsp; 重複來電，優先順序 <font color="#ea86ff">10</font><br>
+        ]]>
+    </string>
+    <string name="failed_to_import_from_csv">
+        <![CDATA[
+        CSV 檔案缺少必要欄位 <b>pattern</b>，請檢查 [號碼規則] 的提示氣泡以取得詳細說明。
+        ]]>
+    </string>
+</resources>

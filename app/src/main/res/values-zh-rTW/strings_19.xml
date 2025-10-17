@@ -1,0 +1,138 @@
+<resources>
+    <string name="call_event">來電事件</string>
+    <string name="call_event_is_triggered">來電事件 %s 已觸發。</string>
+    <string name="help_call_event">
+        <![CDATA[
+        在規則檢查前先預處理來電號碼，讓規則可以即時調整。<br>
+        <br>
+        此動作必須放在工作流程的第一步，該工作流程會在有來電時自動觸發。<br>
+        <br>
+        <font color="#00BFFF"><b>常見的工作流程：</b></font><br>
+        - <b>[來電事件]</b> <br>
+        - <b>[修改號碼]</b>
+        ]]>
+    </string>
+    <string name="action_modify_number">修改號碼</string>
+    <string name="modify_number_template">已將來電號碼 %s 轉換為 %s。</string>
+    <string name="help_action_modify_number">
+        <![CDATA[
+        在規則檢查前先修改來電號碼。<br>
+        <br>
+        <font color="#00BFFF"><b>使用情境</b>：</font><br>
+        &ensp; 部分電信商提供雙號服務，會在次要號碼前加上額外前置號碼。<br>
+        &ensp; 例如：3312345679 可能變成 <font color="#888888">123</font>3312345679。<br>
+        &ensp; 檢查前必須先移除前置號碼 <font color="#888888">123</font>。<br>
+        <br>
+        <font color="#00BFFF"><b>典型設定：</b></font><br>
+        - <b>[來電事件]</b> <br>
+        - <b>[取代號碼]</b> <br>
+        &emsp; from: <font color="#888888">^123</font> <br>
+        &emsp; to: <font color="#888888">保留空白</font>
+        ]]>
+    </string>
+    <string name="help_notification">
+        <![CDATA[
+        內建通知頻道：<br>
+        <br>
+        <font color="#00BFFF"><b>[無]</b></font> &ensp; <img src=\'ic_bell_mute\'/> <br>
+        &ensp; 不顯示任何通知。<br>
+        <br>
+        <font color="#00BFFF"><b>[低]</b></font> &ensp; <img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; 會在狀態列與通知面板顯示。<br>
+        <br>
+        <font color="#00BFFF"><b>[中]</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/> <br>
+        &ensp; 會在狀態列與通知面板顯示，並播放音效。<br>
+        <br>
+        <font color="#00BFFF"><b>[高]</b></font> &ensp; <img src=\'ic_bell_ringing\'/><img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; 會在狀態列、通知面板與浮出通知顯示，並播放音效。<br>
+        <br>
+        <font color="#00BFFF"><b>[高（靜音）]</b></font> &ensp; <img src=\'ic_statusbar_shade\'/><img src=\'ic_heads_up\'/> <br>
+        &ensp; 與 <b>高</b> 類似，但強制靜音。<br>
+        &ensp; 很適合持續進行的 <font color="#03DAC5"><b>簡訊聊天</b></font>，避免連續的音效造成干擾。<br>
+        &ensp; 系統偵測螢幕解鎖且簡訊 App 在前景時，就會視為正在進行 <font color="#03DAC5"><b>簡訊聊天</b></font>。<br>
+        ]]>
+    </string>
+    <string name="none">無</string>
+    <string name="low">低</string>
+    <string name="medium">中</string>
+    <string name="high">高</string>
+    <string name="high_muted">高（靜音）</string>
+    <string name="sms_chat">簡訊聊天</string>
+    <string name="blocked">封鎖</string>
+    <string name="allowed">允許</string>
+    <string name="call_channel">通話頻道</string>
+    <string name="sms_channel">簡訊頻道</string>
+    <string name="channel_id">頻道 ID</string>
+    <string name="help_channel_id">
+        <![CDATA[
+        此 ID 會在系統設定中顯示為通知頻道。<br>
+        <br>
+        建立後無法再修改。
+        ]]>
+    </string>
+    <string name="channel_importance">重要性</string>
+    <string name="help_channel_importance">
+        <![CDATA[
+        只能在建立新頻道時設定重要性，建立後只能到系統設定調整。<br>
+        ]]>
+    </string>
+    <string name="channel_group">頻道群組</string>
+    <string name="help_channel_group">
+        <![CDATA[
+        保留空白時，通知會自動分成三種類別：<br>
+        <br>
+        - 垃圾來電 <br>
+        - 垃圾簡訊 <br>
+        - 合法簡訊 <br>
+        <br>
+        如果指定群組，系統會依據群組分開顯示。<br>
+        ]]>
+    </string>
+    <string name="mute">靜音</string>
+    <string name="sound">音效</string>
+    <string name="help_sound">
+        <![CDATA[
+        只能在建立新頻道時指定音效，建立後只能到系統設定調整。<br>
+        <br>
+        <b>自訂音效</b><br>
+        部分手機允許透過 App 直接匯入自訂鈴聲。<br>
+        其餘裝置可先在系統設定匯入，再於 App 中選取。<br>
+        ]]>
+    </string>
+    <string name="default_">預設</string>
+    <string name="select_notification_sound">選擇通知音效</string>
+    <string name="unknown">未知</string>
+    <string name="icon_color">圖示顏色</string>
+    <string name="confirm_to_delete">確定要刪除嗎？</string>
+    <string name="help_create_notification_channel">
+        <![CDATA[
+        建立新的通知頻道。<br>
+        <br>
+        在此下拉清單長按通知頻道即可編輯。<br>
+        ]]>
+    </string>
+    <string name="warning_delete_channel">
+        <![CDATA[
+        目前下列規則正在使用此頻道。<br>
+        <br>
+        %s<br>
+        <br>
+        刪除頻道後請記得更新這些規則。<br>
+        ]]>
+    </string>
+    <string name="help_mute_channel">
+        <![CDATA[
+        會強制將此通知頻道靜音，即使設定為高重要性也會停用音效。
+        ]]>
+    </string>
+    <string name="led">LED</string>
+    <string name="led_color">LED 顏色</string>
+    <string name="help_led_color">
+        <![CDATA[
+        只能在建立新頻道時設定指示燈顏色，建立後只能到系統設定調整。<br>
+        ]]>
+    </string>
+    <string name="icon">圖示</string>
+    <string name="automatic">自動</string>
+    <string name="tap_text_to_edit_color">點選 ARGB 文字即可手動輸入顏色。</string>
+</resources>

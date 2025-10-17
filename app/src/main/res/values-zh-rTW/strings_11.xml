@@ -1,0 +1,66 @@
+<resources>
+    <string name="for_example">例如：</string>
+    <string name="yesterday_abbrev">昨天</string>
+    <string name="help_meeting_mode">
+        <![CDATA[
+        在線上視訊會議期間拒接來電。<br> <br>
+        會檢查所選應用程式是否正在執行<b>前景服務</b>，
+        這是視訊會議應用程式常用來保持連線的方式。<br>
+        <br>
+        適用於通話和簡訊。<br>
+        <br>
+        <font color="#ea86ff"><b>預設優先順序：20</b></font>
+        ]]>
+    </string>
+    <string name="in_meeting">會議模式</string>
+    <string name="search_number">搜尋號碼</string>
+    <string name="http_header">HTTP 標頭</string>
+    <string name="help_http_header">
+        <![CDATA[
+        每行一個屬性。<br>
+        ]]>
+    </string>
+    <string name="tags_supported">
+        <![CDATA[
+        支援的標籤：<br><br>
+        ]]>
+    </string>
+    <string name="auth_tags">
+        <![CDATA[
+        - <font color="#00BFFF"><b>{basic_auth(username:password)}</b></font><br>
+        &ensp; 用於需要 HTTP 基本驗證的 API。例如：<br>
+        &emsp; <font color="#888888">{basic_auth(111:222)}</font><br>
+        &ensp; 將被解析為：<br>
+        &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
+        ]]>
+    </string>
+    <string name="log_sms_content_to_db">記錄簡訊</string>
+    <string name="initial_row_count">初始列數</string>
+    <plurals name="rows">
+        <item quantity="other">%d 列</item>
+    </plurals>
+    <string name="label_max_none_scroll_items">捲動列表顯示門檻</string>
+    <string name="help_max_none_scroll_items">
+        <![CDATA[
+        清單中的筆數超過此數值時會出現捲動列。
+        ]]>
+    </string>
+    <string name="label_max_scroll_height">捲動高度</string>
+    <string name="help_max_scroll_height">
+        <![CDATA[
+        當出現捲動列時，此值代表清單高度佔螢幕的百分比。
+        ]]>
+    </string>
+    <string name="label_max_regex_lines">正規表示式最大行數</string>
+    <string name="help_max_regex_lines">
+        <![CDATA[
+        正規表示式文字的最大顯示行數，超過的文字將被截斷並顯示省略號。
+        ]]>
+    </string>
+    <string name="label_max_desc_lines">描述最大行數</string>
+    <string name="help_max_desc_lines">
+        <![CDATA[
+        描述文字的最大顯示行數，超過的文字將被截斷並顯示省略號。
+        ]]>
+    </string>
+</resources>

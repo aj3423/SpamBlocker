@@ -1,0 +1,106 @@
+<resources>
+    <string name="crash_title">
+        很抱歉，應用程式發生錯誤。\n\n
+        請複製以下內容並在 GitHub 上回報此問題，
+        回報前請移除任何敏感資訊。
+    </string>
+    <string-array name="weekdays_abbrev">
+        <item>週日</item>
+        <item>週一</item>
+        <item>週二</item>
+        <item>週三</item>
+        <item>週四</item>
+        <item>週五</item>
+        <item>週六</item>
+    </string-array>
+
+    <string-array name="block_type_list">
+        <item>拒接</item>
+        <item>靜音</item>
+        <item>掛斷</item>
+    </string-array>
+
+    <string name="show_passed">顯示已放行</string>
+    <string name="show_blocked">顯示已封鎖</string>
+
+    <string name="confirm_delete_all_records">確定要刪除所有記錄嗎？</string>
+    <string name="expiry">有效期限</string>
+    <string name="days">天</string>
+    <string name="help_log_sms_content">
+        <![CDATA[
+        啟用時，簡訊內容也會記錄在資料庫中並顯示在此清單中，停用時則不會記錄在資料庫中。<br>
+        <br>
+        - 啟用時：<br>
+        &emsp; <b>點選</b>可展開/摺疊完整訊息。<br>
+        <br>
+        - 停用時：<br>
+        &emsp; <b>點選</b>可在預設應用程式中開啟對話。
+        ]]>
+    </string>
+    <string name="copy_number">複製號碼</string>
+    <string name="add_num_to_regex_rule">將號碼新增至正規表示式規則</string>
+    <string name="add_num_to_db">將號碼新增至騷擾號碼資料庫</string>
+    <string name="mark_all_as_read">全部標示為已讀</string>
+    <string name="remove_db_number">從騷擾號碼資料庫刪除號碼</string>
+
+    <string name="language">語言</string>
+    <string name="help_language">
+        <![CDATA[
+            翻譯由 Google AI 完成，如需新增語言支援請在 GitHub 上提出議題。
+        ]]>
+    </string>
+    <string name="enabled_for_call">啟用通話功能</string>
+    <string name="enabled_for_sms">啟用簡訊功能</string>
+    <string name="repeated_call">重複來電</string>
+    <string name="help_repeated_call">
+        <![CDATA[
+        如果在一段時間內重複來電，就會放行該來電，這可能是重要來電而非騷擾電話。<br>
+        <br>
+        <b>選項：</b><br>
+        <br>
+        <h6><font color="#00BFFF">- 次數</font></h6>
+        預設設定 <font color="#03DAC5"><b>1 次 / 5 分鐘</b></font> 表示在 5 分鐘內的第二通來電將被允許。<br>
+        <br>
+        <h6><font color="#00BFFF">- 包含簡訊</font></h6>
+        啟用時，該號碼傳來的簡訊也會計入。<br>
+        <br>
+        僅適用於來電，<b>不適用</b>於簡訊。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+
+    <string name="help_globally_enabled">
+        <![CDATA[
+        全域開關，此應用程式只在開啟時運作，
+        當您在等待特定來電/簡訊時可以關閉。<br>
+        <br>
+        也可以從<font color="#6ed0ff"><b>下拉快速設定</b></font>中切換。<br>
+        <br>
+        對於簡訊，本應用程式將接管簡訊通知，請在系統設定中
+        <font color="#fa7f71"><b>關閉預設簡訊應用程式的通知權限</b></font>，
+        否則會出現重複通知。
+        本應用程式只過濾簡訊通知，垃圾簡訊仍會出現在預設簡訊應用程式中。
+        ]]>
+    </string>
+
+    <string name="about">關於</string>
+    <string name="version">版本</string>
+    <string name="source_code">原始碼</string>
+    <string name="dismiss">關閉</string>
+    <string name="warning_running_in_work_profile">
+        此應用程式在工作設定檔中可能無法正常運作，請改為安裝在主要設定檔中。
+    </string>
+    <string-array name="import_csv_type">
+        <item>將 CSV 匯入為單一規則</item>
+        <item>將 CSV 匯入為多個規則</item>
+    </string-array>
+    <string name="warning_double_sms">
+        本應用程式將接管所有簡訊通知，
+        但預設簡訊應用程式也會顯示簡訊通知。為避免重複通知，
+        請在系統設定中停用其通知權限。\n
+        \n
+        ⚠️ 不支援 RCS。
+    </string>
+    <string name="open_settings">開啟設定</string>
+</resources>

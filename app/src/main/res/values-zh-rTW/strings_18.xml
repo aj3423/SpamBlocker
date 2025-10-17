@@ -1,0 +1,85 @@
+<resources>
+    <string name="auto_copy">自動複製</string>
+    <string name="help_auto_copy">自動將內容複製到剪貼簿，不必在通知裡點選 [複製] 按鈕。</string>
+    <string name="calendar_event">行事曆事件</string>
+    <string name="calendar_event_is_triggered">行事曆事件 %s 已觸發。</string>
+    <string name="event_title">事件標題</string>
+    <string name="rule_updated">已將正規表示式規則 %s 修改為：%s</string>
+    <string name="rule_updated_temporarily">已暫時將正規表示式規則 %s 修改為：%s</string>
+    <string name="help_calendar_event_template">
+        <![CDATA[
+        依照行事曆事件暫時修改正規表示式規則。<br>
+        <br>
+        <b>使用情境</b>：<br>
+        &ensp; <font color="#888888">排班人員連續兩天白班，接著兩天夜班；<br>
+        &ensp; 需要依照不同工時啟用或停用部分規則。</font><br>
+        <br>
+        這會同時建立正規表示式規則與工作流程，該規則會在指定的行事曆事件期間即時啟用。<br>
+        ]]>
+    </string>
+    <string name="help_calendar_event_title">請輸入行事曆事件的名稱，需與行事曆 App 中建立的事件一致。</string>
+    <string name="help_calendar_event">
+        <![CDATA[
+        依照行事曆事件暫時調整正規表示式規則，變更只在記憶體中生效，不會改動設定檔。<br>
+        <br>
+        此工作流程會在接到來電時自動觸發。<br>
+        <br>
+        請參考工作流程預設範本了解<b>使用情境</b>與<b>常見設定</b>。<br>
+        ]]>
+    </string>
+    <string name="working">運作中</string>
+    <string name="sms_event">簡訊事件</string>
+    <string name="help_sms_event">
+        <![CDATA[
+        會在簡訊進入篩選前自動觸發。<br>
+        <br>
+        此動作必須放在工作流程的第一步。<br>
+        <br>
+        可以與 <b>[尋找規則]</b>、<b>[修改規則]</b> 等動作串聯。<br>
+        - 當簡訊號碼與內容符合條件時，工作流程會持續執行。<br>
+        - 否則工作流程會終止。<br>
+        ]]>
+    </string>
+    <string name="sms_event_triggered">簡訊事件 %s 已觸發。</string>
+    <string name="use_global_testing_instead">請改用全域測試。</string>
+    <string name="missing_permissions">下列權限先前已授予，但目前未啟用：</string>
+    <string name="grant_permissions">授予權限</string>
+    <string name="perm_call_screening">電話篩選</string>
+    <string name="perm_file_read">讀取檔案</string>
+    <string name="perm_file_write">寫入檔案</string>
+    <string name="perm_contacts">聯絡人</string>
+    <string name="perm_receive_sms">接收簡訊</string>
+    <string name="perm_receive_mms">接收 MMS</string>
+    <string name="perm_answer_calls">接聽來電</string>
+    <string name="perm_call_logs">通話紀錄</string>
+    <string name="perm_phone_state">電話狀態</string>
+    <string name="perm_read_sms">讀取簡訊</string>
+    <string name="perm_read_calendar">讀取行事曆</string>
+    <string name="perm_notification_access">通知存取權</string>
+    <string name="perm_usage_stats">使用情況統計</string>
+    <string name="perm_battery_unrestricted">電池用量不受限制</string>
+    <string name="include_sms">包含簡訊</string>
+    <string name="minimal_duration">最短持續時間</string>
+    <string name="answered_number"><short>已接來電號碼</short></string>
+    <string name="help_answered">
+        <![CDATA[
+        允許之前接聽過的來電。<br>
+        <br>
+        <h6><font color="#ffa500">警告</font></h6>
+        %s<br>
+        <br>
+        <b>選項：</b><br>
+        <br>
+        <h6><font color="#00BFFF">- [天數範圍]</font></h6>
+        會忽略 <font color="cyan">%d 天</font>之前的來電。<br>
+        <br>
+        <h6><font color="#00BFFF">- [最短通話時間]</font></h6>
+        會忽略通話時間少於 <font color="cyan">%d 秒</font>的通話。<br>
+        <br>
+        <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+    <string name="answered_warning">請勿為長者或較難辨識詐騙來電的人啟用此功能，以免讓詐騙電話重複撥入。</string>
+    <string name="acknowledged">已確認</string>
+    <string name="warning">警告</string>
+</resources>

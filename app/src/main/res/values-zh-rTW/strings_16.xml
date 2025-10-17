@@ -1,0 +1,54 @@
+<resources>
+    <string name="help_report_number">
+        <![CDATA[
+        這裡設定的 API 將用於自動回報和手動回報。<br>
+        <br>
+        <h4><font color="#00BFFF">- 隱私權</font></h4>
+        API 端點將會看到您的：<br>
+        <br>
+         &ensp; - IP 位址<br>
+         &ensp; - TLS 和 TCP 指紋（可能會透露您的 Android 版本）<br>
+         &ensp; - 回報的號碼（包含您的國碼）<br>
+        <br>
+        不會回報其他任何資訊。<br>
+        <br>
+        <h4><font color="#00BFFF">- 手動回報</font></h4>
+		如果這裡啟用了任何 API，點選通話紀錄中的號碼時會出現回報按鈕。<br>
+		<br>
+		號碼將回報給<b>所有</b> API。<br>
+		<br>
+        <h4><font color="#00BFFF">- 自動回報</font></h4>
+		<font color="#6ED0ff"><b>回報延遲</b></font><br>
+        當通話被封鎖時，會有一小時的緩衝時間才進行回報。
+        如果在此緩衝時間內由於重複來電或回撥而允許該號碼，
+        將視為非垃圾號碼並取消回報。<br>
+        <br>
+		<font color="#6ED0ff"><b>回報類型</b></font><br>
+		1. <font color="#fa7f71"><b>不會</b></font>回報：<br>
+        <br>
+        - <font color="#fa7f71">簡訊號碼或內容</font><br>
+        - <font color="#fa7f71">允許的號碼</font><br>
+        - <font color="#fa7f71">測試</font><br>
+        以及以下封鎖類型：<br>
+        - <font color="#fa7f71">聯絡人正規表示式</font><br>
+        - <font color="#fa7f71">聯絡人群組正規表示式</font><br>
+        - <font color="#fa7f71">騷擾號碼資料庫</font><br>
+        - <font color="#fa7f71">會議模式</font><br>
+        - <font color="#fa7f71">即時查詢</font>（以防止 API 端點的號碼洩漏給其他競爭對手）<br>
+        <br>
+		2. <font color="#03DAC5"><b>會</b></font>回報被以下功能封鎖的號碼：<br>
+        <br>
+        - <font color="#03DAC5">非聯絡人</font>（嚴格）<br>
+        - <font color="#03DAC5">STIR 驗證</font><br>
+        - <font color="#03DAC5">號碼正規表示式</font><br>
+        <br>
+		3. 特殊情況：<br>
+        <br>
+        - 當被<font color="#03DAC5">即時查詢</font>封鎖時，只會回報給<b>相同</b>的 API 以提高該號碼的評分。
+         例如，當被來自 check.com 的 API 查詢封鎖時，只會回報給 check.com，不會回報給 others.com。<br>
+		<br>
+        - 當被<font color="#03DAC5">騷擾號碼資料庫</font>封鎖，且該記錄最初是由即時 API 查詢新增時，
+         基於相同理由，只會回報給<b>相同</b>的 API。<br>
+        ]]>
+    </string>
+</resources>
