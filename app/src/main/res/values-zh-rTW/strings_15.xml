@@ -42,21 +42,21 @@
         <br>
         <b>範例：</b> <br>
         <br>
-        <img src='ic_history_indicator_1'/> <br>
+        <img src=\'ic_history_indicator_1\'/> <br>
         &ensp; - 第一個綠色數字圖示表示此號碼將被一條號碼規則允許。<br>
         &ensp; - 第二個紅色簡訊圖示表示此簡訊內容將被一條內容規則封鎖。<br>
         &ensp; - 第三個紅色資料庫圖示表示此號碼存在於騷擾號碼資料庫中。<br>
         <br>
         這些圖示是按<font color="#ea86ff"><b>優先順序</b></font>排列的，<b>第一個</b>圖示代表最終結果。該號碼規則有較高的優先順序，因此該簡訊最終會被允許。<br>
         <br>
-        <img src='ic_history_indicator_2'/> <br>
+        <img src=\'ic_history_indicator_2\'/> <br>
         &ensp; - 它將被一條內容規則允許。<br>
         &ensp; - 它將被一條號碼規則封鎖。<br>
         &ensp; - 它存在於騷擾號碼資料庫中。<br>
         <br>
         <b>第一個</b>圖示表示該訊息最終將被內容規則允許。<br>
         <br>
-        <img src='ic_history_indicator_3'/> <br>
+        <img src=\'ic_history_indicator_3\'/> <br>
         沒有號碼規則符合它，只有簡訊規則和資料庫。它將被一條簡訊規則封鎖。<br>
         ]]>
     </string>

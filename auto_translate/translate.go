@@ -35,7 +35,8 @@ var nameMap = map[string]string{
 	`ru`:     `Russian`,
 	`tr`:     `Turkish`,
 	`uk`:     `Ukrainian`,
-	`zh`:     `Chinese`,
+	`zh-rCN`: `Simplified Chinese`,
+	`zh-rTW`: `Traditional Chinese`,
 }
 
 // -------- flags

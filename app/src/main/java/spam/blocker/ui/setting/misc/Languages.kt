@@ -46,7 +46,9 @@ val languages = listOf(
     Lang("ru", "🇷🇺"),
     Lang("tr", "🇹🇷"),
     Lang("uk", "🇺🇦"),
-    Lang("zh", "🇨🇳"),
+    Lang("zh-rCN", "🇨🇳"),
+    Lang("zh-rTW", "🇹🇼"),
+
 )
 
 @Composable

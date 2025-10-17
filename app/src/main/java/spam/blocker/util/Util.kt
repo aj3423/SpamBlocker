@@ -500,7 +500,14 @@ object Util {
         else {
             if (languageCode.contains("-")) { // e.g.: pt-rBR
                 val parts = languageCode.split("-")
-                Locale(parts[0], parts[1])
+                val p0 = parts[0]
+                val p1 = parts[1]
+
+                if (p1.startsWith("r")) {
+                    Locale(p0, p1.substring(1)) // remove leading "r" from "rBR"
+                } else {
+                    Locale(p0, p1)
+                }
             } else {
                 Locale(languageCode)
             }
