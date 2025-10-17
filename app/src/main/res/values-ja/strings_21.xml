@@ -48,7 +48,12 @@
     <string name="http_status_code_template">HTTPステータスコード: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        正規表現ルールの着信音をカスタマイズします。このルールで通話が許可された場合、指定された着信音が鳴ります。
+        正規表現ルールに着信音をカスタマイズします。このルールによって許可された通話があった場合、指定された着信音が鳴ります。<br>
+        <br>
+        <b>使用例:<b> <br>
+        <font color="#888888">
+        &ensp; 特定の人物、連絡先グループ、または電話番号の範囲に対して異なる着信音を設定します。
+        </font>
     ]]>
     </string>
     <string name="remote_setup">リモート設定</string>

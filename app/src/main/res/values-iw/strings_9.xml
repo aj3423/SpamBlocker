@@ -37,7 +37,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">מחק רשומות שפג תוקפן ממסד נתוני הספאם.</string>
     <string name="help_bot_preset_cleanup_history">מחק רשומות היסטוריית שיחות/הודעות SMS שפג תוקפן.</string>
-    <string name="help_bot_preset_auto_backup">גבה את כל ההגדרות.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        הגדרות גיבוי אוטומטי. <br>
+        <br>
+        הוא תומך בלוח זמנים של סיבוב, לדוגמה: <br>
+        &ensp; <font color="#888888">שמור רק את שבעת הגיבויים היומיים האחרונים. </font>
+        ]]>
+    </string>
     <string name="everyday">כל יום</string>
     <string name="daily">יומי</string>
     <string name="weekly">שבועי</string>

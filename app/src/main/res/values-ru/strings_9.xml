@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Удалите устаревшие записи из базы данных спама.</string>
     <string name="help_bot_preset_cleanup_history">Удалите устаревшие записи звонков/SMS.</string>
-    <string name="help_bot_preset_auto_backup">Создайте резервную копию всех настроек.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Настройки авторезервного копирования. <br>
+        <br>
+        Поддерживает расписание ротации, например: <br>
+        &ensp; <font color="#888888">Хранить только последние семь ежедневных резервных копий. </font>
+        ]]>
+    </string>
     <string name="everyday">Ежедневно</string>
     <string name="daily">Ежедневно</string>
     <string name="weekly">Еженедельно</string>

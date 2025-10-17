@@ -50,8 +50,13 @@
     <string name="http_status_code_template">Code d\'état Http : %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Personnalisez la sonnerie pour une règle d\'expression régulière, elle jouera la sonnerie spécifiée lorsque l\'appel est
-        autorisé par cette règle.
+        Personnalisez la sonnerie pour une règle d\'expression régulière ; la sonnerie spécifiée sera jouée lorsque l\'appel est
+        autorisé par cette règle. <br>
+        <br>
+        <b>Cas d\'utilisation :<b> <br>
+        <font color="#888888">
+        &ensp; Définissez différentes sonneries pour des personnes particulières, des groupes de contacts ou des plages de numéros de téléphone.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Configuration à distance</string>

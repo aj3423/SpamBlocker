@@ -37,7 +37,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Delete expired records from the spam database.</string>
     <string name="help_bot_preset_cleanup_history">Delete expired history call/SMS records.</string>
-    <string name="help_bot_preset_auto_backup">Backup all settings.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Auto backup settings. <br>
+        <br>
+        It supports rotation schedule, for instance: <br>
+        &ensp; <font color="#888888">Only keep the last seven daily backups. </font>
+        ]]>
+    </string>
     <string name="everyday">Everyday</string>
     <string name="daily">Daily</string>
     <string name="weekly">Weekly</string>

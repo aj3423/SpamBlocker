@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Spam veritabanından süresi dolmuş kayıtları sil.</string>
     <string name="help_bot_preset_cleanup_history">Süresi dolmuş arama/SMS kayıtlarını sil.</string>
-    <string name="help_bot_preset_auto_backup">Tüm ayarları yedekle.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Otomatik yedekleme ayarları. <br>
+        <br>
+        Dönüşümlü zamanlamayı destekler, örneğin: <br>
+        &ensp; <font color="#888888">Sadece son yedi günlük yedeklemeyi saklayın. </font>
+        ]]>
+    </string>
     <string name="everyday">Her gün</string>
     <string name="daily">Günlük</string>
     <string name="weekly">Haftalık</string>

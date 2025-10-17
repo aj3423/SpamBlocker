@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Elimina los registros caducados de la base de datos de spam.</string>
     <string name="help_bot_preset_cleanup_history">Elimina los registros de llamadas/SMS históricos caducados.</string>
-    <string name="help_bot_preset_auto_backup">Realiza una copia de seguridad de todas las configuraciones.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Configuración de copia de seguridad automática. <br>
+        <br>
+        Soporta programación de rotación, por ejemplo: <br>
+        &ensp; <font color="#888888">Solo mantener las últimas siete copias de seguridad diarias. </font>
+        ]]>
+    </string>
     <string name="everyday">Todos los días</string>
     <string name="daily">Diario</string>
     <string name="weekly">Semanal</string>

@@ -50,8 +50,13 @@
     <string name="http_status_code_template">Código de estado Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Personaliza el tono de llamada para una regla de expresión regular; reproducirá el tono de llamada especificado cuando la llamada sea
-        permitida por esta regla.
+        Personaliza el tono de llamada para una regla de expresión regular, el tono de llamada especificado se reproducirá cuando la llamada sea
+        permitida por esta regla. <br>
+        <br>
+        <b>Caso de uso:<b> <br>
+        <font color="#888888">
+        &ensp; Establece tonos de llamada diferentes para personas específicas, grupos de contactos o rangos de números de teléfono.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Configuración Remota</string>

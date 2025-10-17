@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données de spam.</string>
     <string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'appels/SMS expirés.</string>
-    <string name="help_bot_preset_auto_backup">Sauvegarder tous les paramètres.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Paramètres de sauvegarde automatique. <br>
+        <br>
+        Il prend en charge un calendrier de rotation, par exemple : <br>
+        &ensp; <font color="#888888">Ne conserver que les sept dernières sauvegardes quotidiennes. </font>
+        ]]>
+    </string>
     <string name="everyday">Tous les jours</string>
     <string name="daily">Quotidien</string>
     <string name="weekly">Hebdomadaire</string>

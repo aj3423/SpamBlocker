@@ -37,7 +37,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">حذف السجلات منتهية الصلاحية من قاعدة بيانات الرسائل غير المرغوب فيها.</string>
     <string name="help_bot_preset_cleanup_history">حذف سجلات المكالمات/الرسائل النصية القصيرة منتهية الصلاحية.</string>
-    <string name="help_bot_preset_auto_backup">نسخ احتياطي لجميع الإعدادات.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        إعدادات النسخ الاحتياطي التلقائي. <br>
+        <br>
+        يدعم جدول التناوب، على سبيل المثال: <br>
+        &ensp; <font color="#888888">احتفظ فقط بآخر سبع نسخ احتياطية يومية. </font>
+        ]]>
+    </string>
     <string name="everyday">يوميا</string>
     <string name="daily">يومي</string>
     <string name="weekly">أسبوعي</string>

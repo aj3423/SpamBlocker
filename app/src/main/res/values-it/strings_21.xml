@@ -50,8 +50,13 @@
     <string name="http_status_code_template">Codice di stato Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Personalizza la suoneria per una regola regex, riprodurrà la suoneria specificata quando la chiamata è
-        consentita da questa regola.
+        Personalizza la suoneria per una regola regex; la suoneria specificata verrà riprodotta quando la chiamata è
+        consentita da questa regola. <br>
+        <br>
+        <b>Caso d\'uso:<b> <br>
+        <font color="#888888">
+        &ensp; Imposta suonerie diverse per persone specifiche, gruppi di contatti o intervalli di numeri di telefono.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Configurazione Remota</string>

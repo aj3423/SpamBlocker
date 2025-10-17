@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Elimina i record scaduti dal database spam.</string>
     <string name="help_bot_preset_cleanup_history">Elimina i record di chiamate/SMS scaduti.</string>
-    <string name="help_bot_preset_auto_backup">Esegui il backup di tutte le impostazioni.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Impostazioni di backup automatico. <br>
+        <br>
+        Supporta la pianificazione della rotazione, ad esempio: <br>
+        &ensp; <font color="#888888">Mantieni solo gli ultimi sette backup giornalieri. </font>
+        ]]>
+    </string>
     <string name="everyday">Ogni Giorno</string>
     <string name="daily">Giornaliero</string>
     <string name="weekly">Settimanale</string>

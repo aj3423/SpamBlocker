@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">从垃圾电话数据库中删除过期记录。</string>
     <string name="help_bot_preset_cleanup_history">删除过期的通话/短信记录。</string>
-    <string name="help_bot_preset_auto_backup">备份所有设置。</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        自动备份设置。<br>
+        <br>
+        它支持轮换计划，例如：<br>
+        &ensp; <font color="#888888">只保留最近七个每日备份。</font>
+        ]]>
+    </string>
     <string name="everyday">每天</string>
     <string name="daily">每天</string>
     <string name="weekly">每周</string>

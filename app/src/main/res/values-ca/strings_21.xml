@@ -50,7 +50,12 @@
     <string name="http_status_code_template">Codi d\'estat Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Personalitza el to de trucada per a una regla regex, reproduirà el to de trucada especificat quan la trucada sigui permesa per aquesta regla.
+        Personalitza el to de trucada per a una regla regex; el to de trucada especificat es reproduirà quan la trucada sigui permesa per aquesta regla. <br>
+        <br>
+        <b>Cas d\'ús:<b> <br>
+        <font color="#888888">
+        &ensp; Estableix diferents tons de trucada per a persones particulars, grups de contactes o rangs de números de telèfon.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Configuració Remota</string>

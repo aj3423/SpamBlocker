@@ -22,7 +22,12 @@
     </string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        為正規表示式規則自訂鈴聲，當來電被此規則允許時，將會播放指定的鈴聲。
+        為正則表達式規則自訂鈴聲，當來電被此規則允許時將播放指定的鈴聲。 <br>
+        <br>
+        <b>使用案例：<b> <br>
+        <font color="#888888">
+        &ensp; 為特定聯絡人、聯絡人群組或號碼範圍設定不同的鈴聲。
+        </font>
     ]]>
     </string>
     <string name="help_target_rule_desc">

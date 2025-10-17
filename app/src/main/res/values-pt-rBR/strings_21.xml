@@ -48,8 +48,13 @@
     <string name="http_status_code_template">Código de Status Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Personalize o toque para uma regra regex; ele tocará o toque especificado quando a chamada for
-        permitida por esta regra.
+        Personalize o toque para uma regra de expressão regular; o toque especificado será reproduzido quando a chamada for
+        permitida por esta regra. <br>
+        <br>
+        <b>Caso de uso:<b> <br>
+        <font color="#888888">
+        &ensp; Defina toques diferentes para pessoas específicas, grupos de contatos ou intervalos de números.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Configuração Remota</string>

@@ -10,8 +10,6 @@ import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallThrottling
-import spam.blocker.service.bot.CleanupHistory
-import spam.blocker.service.bot.CleanupSpamDB
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.FindRules
 import spam.blocker.service.bot.HttpDownload
@@ -57,6 +55,19 @@ val BotPresets = listOf(
             )
         )
     },
+
+    // Ringtone <-> Regex Rule
+    BotPreset(
+        tooltipId = R.string.help_preset_ringtone,
+    ) { ctx ->
+        Bot(
+            desc = ctx.getString(R.string.ringtone),
+            actions = listOf(
+                Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }")
+            )
+        )
+    },
+
 
     // Call Throttling
     BotPreset(
@@ -136,18 +147,6 @@ val BotPresets = listOf(
         )
     },
 
-    // Ringtone <-> Regex Rule
-    BotPreset(
-        tooltipId = R.string.help_preset_ringtone,
-    ) { ctx ->
-        Bot(
-            desc = ctx.getString(R.string.ringtone),
-            actions = listOf(
-                Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }")
-            )
-        )
-    },
-
     // Remote Setup
     BotPreset(
         tooltipId = R.string.help_remote_setup,
@@ -161,38 +160,6 @@ val BotPresets = listOf(
             actions = listOf(
                 HttpDownload(url = ctx.getString(R.string.replace_this)),
                 BackupImport(),
-            )
-        )
-    },
-
-    // Cleanup spam database at every midnight, deleting expired records that are older than 90 days.
-    BotPreset(
-        tooltipId = R.string.help_bot_preset_cleanup_spam_db,
-    ) { ctx ->
-        Bot(
-            desc = ctx.getString(R.string.bot_preset_cleanup_spam_db),
-            enabled = true,
-            schedule = Daily(
-                time = Time(0, 0)
-            ),
-            actions = listOf(
-                CleanupSpamDB(expiry = 90),
-            )
-        )
-    },
-
-    // Cleanup history records at every midnight, deleting expired records that are older than 30 days.
-    BotPreset(
-        tooltipId = R.string.help_bot_preset_cleanup_history,
-    ) { ctx ->
-        Bot(
-            desc = ctx.getString(R.string.bot_preset_cleanup_history),
-            enabled = true,
-            schedule = Daily(
-                time = Time(0, 0)
-            ),
-            actions = listOf(
-                CleanupHistory(expiry = 30),
             )
         )
     },

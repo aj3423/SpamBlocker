@@ -50,7 +50,13 @@
     <string name="http_status_code_template">HTTP-Statuscode: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Passen Sie den Klingelton für eine Regex-Regel an; er spielt den angegebenen Klingelton ab, wenn der Anruf durch diese Regel erlaubt ist.
+        Passen Sie den Klingelton für eine Regex-Regel an; der angegebene Klingelton wird abgespielt, wenn der Anruf durch diese Regel
+        erlaubt ist. <br>
+        <br>
+        <b>Anwendungsfall:<b> <br>
+        <font color="#888888">
+        &ensp; Legen Sie unterschiedliche Klingeltöne für bestimmte Personen, Kontaktgruppen oder Rufnummernbereiche fest.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Remote-Einrichtung</string>

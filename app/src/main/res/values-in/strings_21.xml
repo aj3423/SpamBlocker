@@ -50,8 +50,13 @@
     <string name="http_status_code_template">Kode Status Http: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Sesuaikan nada dering untuk aturan regex, ini akan memutar nada dering yang ditentukan saat panggilan
-        diizinkan oleh aturan ini.
+        Sesuaikan nada dering untuk aturan regex, nada dering yang ditentukan akan diputar saat panggilan
+        diizinkan oleh aturan ini. <br>
+        <br>
+        <b>Kasus penggunaan:<b> <br>
+        <font color="#888888">
+        &ensp; Atur nada dering berbeda untuk orang tertentu, grup kontak, atau rentang nomor telepon.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Pengaturan Jarak Jauh</string>

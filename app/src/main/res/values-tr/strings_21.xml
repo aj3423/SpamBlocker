@@ -48,7 +48,12 @@
     <string name="http_status_code_template">Http Durum Kodu: %d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Bir regex kuralı için zil sesini özelleştirin, arama bu kural tarafından izin verildiğinde belirtilen zil sesini çalacaktır.
+        Bir regex kuralı için zil sesini özelleştirin, arama bu kural tarafından izin verildiğinde belirtilen zil sesi çalacaktır. <br>
+        <br>
+        <b>Kullanım senaryosu:<b> <br>
+        <font color="#888888">
+        &ensp; Belirli kişiler, kişi grupları veya numara aralıkları için farklı zil sesleri ayarlayın.
+        </font>
     ]]>
     </string>
     <string name="remote_setup">Uzaktan Kurulum</string>

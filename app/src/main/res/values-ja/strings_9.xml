@@ -35,7 +35,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから期限切れのレコードを削除します。</string>
     <string name="help_bot_preset_cleanup_history">期限切れの通話/SMS履歴レコードを削除します。</string>
-    <string name="help_bot_preset_auto_backup">すべての設定をバックアップします。</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        自動バックアップ設定。<br>
+        <br>
+        ローテーションスケジュールをサポートしています。例:<br>
+        &ensp; <font color="#888888">直近7日間の日次バックアップのみを保持します。</font>
+        ]]>
+    </string>
     <string name="everyday">毎日</string>
     <string name="daily">毎日</string>
     <string name="weekly">毎週</string>

@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Suprimiu els registres caducats de la base de dades de correu brossa.</string>
     <string name="help_bot_preset_cleanup_history">Suprimiu els registres d\'historial de trucades/SMS caducats.</string>
-    <string name="help_bot_preset_auto_backup">Còpia de seguretat de tots els paràmetres.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Configuració de la còpia de seguretat automàtica. <br>
+        <br>
+        Admet una programació de rotació, per exemple: <br>
+        &ensp; <font color="#888888">Només conserva les últimes set còpies de seguretat diàries. </font>
+        ]]>
+    </string>
     <string name="everyday">Cada dia</string>
     <string name="daily">Diàriament</string>
     <string name="weekly">Setmanalment</string>

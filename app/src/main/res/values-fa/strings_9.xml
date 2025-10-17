@@ -36,7 +36,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">رکوردهای منقضی شده را از پایگاه داده اسپم حذف کنید.</string>
     <string name="help_bot_preset_cleanup_history">سابقه تماس/ پیامک های منقضی شده را حذف کنید.</string>
-    <string name="help_bot_preset_auto_backup">تمام تنظیمات را پشتیبان گیری کنید.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        تنظیمات پشتیبان‌گیری خودکار. <br>
+        <br>
+        این قابلیت از برنامه‌ریزی چرخشی پشتیبانی می‌کند، به عنوان مثال: <br>
+        &ensp; <font color="#888888">فقط هفت پشتیبان‌گیری روزانه آخر را نگه دارید. </font>
+        ]]>
+    </string>
     <string name="everyday">هر روز</string>
     <string name="daily">روزانه</string>
     <string name="weekly">هفتگی</string>

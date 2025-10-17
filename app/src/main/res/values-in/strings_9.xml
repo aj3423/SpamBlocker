@@ -38,7 +38,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">Hapus catatan kadaluarsa dari basis data spam.</string>
     <string name="help_bot_preset_cleanup_history">Hapus riwayat panggilan/SMS yang sudah kadaluarsa.</string>
-    <string name="help_bot_preset_auto_backup">Cadangkan semua pengaturan.</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        Pengaturan cadangan otomatis. <br>
+        <br>
+        Ini mendukung jadwal rotasi, contohnya: <br>
+        &ensp; <font color="#888888">Hanya simpan tujuh cadangan harian terakhir. </font>
+        ]]>
+    </string>
     <string name="everyday">Setiap hari</string>
     <string name="daily">Harian</string>
     <string name="weekly">Mingguan</string>

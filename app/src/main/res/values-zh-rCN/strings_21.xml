@@ -48,7 +48,12 @@
     <string name="http_status_code_template">Http 状态码：%d</string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        自定义正则表达式规则的铃声，当呼叫被此规则允许时，将播放指定的铃声。
+        自定义正则表达式规则的铃声，当呼叫被此规则允许时，将播放指定的铃声。 <br>
+        <br>
+        <b>使用场景:<b> <br>
+        <font color="#888888">
+        &ensp; 为特定联系人、联系人群组或电话号码范围设置不同的铃声。
+        </font>
     ]]>
     </string>
     <string name="remote_setup">远程设置</string>

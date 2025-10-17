@@ -22,8 +22,13 @@
     </string>
     <string name="help_preset_ringtone">
     <![CDATA[
-        Customize the ringtone for a regex rule, it will play the specified ringtone when the call is
-        allowed by this rule.
+        Customize the ringtone for a regex rule, the specified ringtone will play when the call is
+        allowed by this rule. <br>
+        <br>
+        <b>Use case:<b> <br>
+        <font color="#888888">
+        &ensp; Set different ringtones for particular people, contact groups, or number ranges.
+        </font>
     ]]>
     </string>
     <string name="help_target_rule_desc">

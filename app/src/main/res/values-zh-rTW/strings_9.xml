@@ -37,7 +37,14 @@
     </string>
     <string name="help_bot_preset_cleanup_spam_db">從騷擾號碼資料庫刪除過期的記錄。</string>
     <string name="help_bot_preset_cleanup_history">刪除過期的通話/簡訊歷史記錄。</string>
-    <string name="help_bot_preset_auto_backup">備份所有設定。</string>
+    <string name="help_bot_preset_auto_backup">
+        <![CDATA[
+        自動備份設定。<br>
+        <br>
+        它支援輪替排程，例如：<br>
+        &ensp; <font color="#888888">僅保留最近七次的每日備份。</font>
+        ]]>
+    </string>
     <string name="everyday">每天</string>
     <string name="daily">每日</string>
     <string name="weekly">每週</string>
