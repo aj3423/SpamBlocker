@@ -60,11 +60,11 @@
     </string>
     <string name="help_sms_throttling">
     <![CDATA[
-    Mettre en sourdine les notifications SMS consécutives du même numéro pendant une période. <br>
+    Couper le son des notifications SMS consécutives du même numéro pendant une période. <br>
     <br>
     Une configuration typique comprend : <br>
-    &ensp; - Une règle d\'expression régulière de numéro qui bloque tous les SMS, elle est désactivée et sera activée à la volée.<br>
-    &ensp; - Un flux de travail <b>Régulation des SMS</b>. <br>
+    &ensp; - Une règle d\'expression régulière de numéro qui bloque tous les numéros, elle est désactivée et sera activée à la volée.<br>
+    &ensp; - Un flux de travail de <b>Limitation des SMS</b>. <br>
     <br>
     Cette configuration est disponible dans les préréglages de flux de travail. <br>
     <br>
@@ -73,12 +73,12 @@
     - <font color="#00BFFF"><b>Durée</b></font> <br>
     Les messages SMS seront bloqués pendant cette période (en secondes). <br>
     <br>
-    - <font color="#00BFFF"><b>Limite de Compte</b></font> <br>
+    - <font color="#00BFFF"><b>Limite de messages</b></font> <br>
     Autoriser les N premières notifications. <br>
     <br>
-    - <font color="#00BFFF"><b>Incluant les Répondus</b></font> <br>
-    - <font color="#00BFFF"><b>Durée Minimale d\'Appel</b></font> <br>
-    Si un appel répondu est trop court, il est également considéré comme un appel spam et activera cette fonction. <br>
+    - <font color="#00BFFF"><b>Y compris les répondus</b></font> <br>
+    - <font color="#00BFFF"><b>Durée minimale de l\'appel</b></font> <br>
+    Si un appel répondu est trop court, il est également considéré comme un appel indésirable et activera cette fonctionnalité. <br>
     ]]>
     </string>
     <string name="help_sms_throttling_template">

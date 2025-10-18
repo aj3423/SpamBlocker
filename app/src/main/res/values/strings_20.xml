@@ -84,7 +84,7 @@
     Mute consecutive SMS notifications from the same number for a period. <br>
     <br>
     A typical setup includes: <br>
-    &ensp; - A number regex rule that blocks all calls, it\'s disabled and will be activated on the fly.<br>
+    &ensp; - A number regex rule that blocks all numbers, it\'s disabled and will be activated on the fly.<br>
     &ensp; - An <b>SMS Throttling</b> workflow. <br>
     <br>
     This setup is available in the workflow presets. <br>

@@ -61,10 +61,10 @@
     </string>
     <string name="help_sms_throttling">
     <![CDATA[
-    Disattiva le notifiche SMS consecutive dallo stesso numero per un certo periodo. <br>
+    Silenzia le notifiche SMS consecutive dallo stesso numero di telefono per un periodo. <br>
     <br>
     Una configurazione tipica include: <br>
-    &ensp; - Una regola regex per numeri che blocca tutte le chiamate, è disabilitata e verrà attivata al volo.<br>
+    &ensp; - Una regola regex per numeri di telefono che blocca tutti i numeri di telefono, è disabilitata e verrà attivata al volo.<br>
     &ensp; - Un flusso di lavoro di <b>Limitazione SMS</b>. <br>
     <br>
     Questa configurazione è disponibile nei preset del flusso di lavoro. <br>
@@ -77,9 +77,9 @@
     - <font color="#00BFFF"><b>Limite Conteggio</b></font> <br>
     Consenti le prime N notifiche. <br>
     <br>
-    - <font color="#00BFFF"><b>Inclusi i risposti</b></font> <br>
-    - <font color="#00BFFF"><b>Durata minima chiamata</b></font> <br>
-    Se una chiamata risposta è troppo breve, è considerata anche una chiamata spam e attiverà questa funzione. <br>
+    - <font color="#00BFFF"><b>Inclusi i Risposti</b></font> <br>
+    - <font color="#00BFFF"><b>Durata Minima Chiamata</b></font> <br>
+    Se una chiamata a cui si è risposto è troppo breve, è anche considerata una chiamata spam e attiverà questa funzione. <br>
     ]]>
     </string>
     <string name="help_sms_throttling_template">

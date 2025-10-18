@@ -61,13 +61,13 @@
     </string>
     <string name="help_sms_throttling">
     <![CDATA[
-    Silencia les notificacions SMS consecutives del mateix número durant un període. <br>
+    Silencia les notificacions consecutives d\'SMS del mateix número durant un període. <br>
     <br>
     Una configuració típica inclou: <br>
-    &ensp; - Una regla d\'expressions regulars de número que bloqueja totes les trucades, està deshabilitada i s\'activarà sobre la marxa.<br>
-    &ensp; - Un flux de treball de <b>Limitació de SMS</b>. <br>
+    &ensp; - Una regla d\'expressions regulars de números que bloqueja tots els números; està deshabilitada i s\'activarà al moment.<br>
+    &ensp; - Un flux de treball de <b>Limitació d\'SMS</b>. <br>
     <br>
-    Aquesta configuració està disponible en els preajustos de flux de treball. <br>
+    Aquesta configuració està disponible als preajusts de flux de treball. <br>
     <br>
     <b>Opcions:</b> <br>
     <br>
@@ -77,8 +77,8 @@
     - <font color="#00BFFF"><b>Límit de recompte</b></font> <br>
     Permet les primeres N notificacions. <br>
     <br>
-    - <font color="#00BFFF"><b>Inclou les contestades</b></font> <br>
-    - <font color="#00BFFF"><b>Durada mínima de trucada</b></font> <br>
+    - <font color="#00BFFF"><b>Inclòs el contestat</b></font> <br>
+    - <font color="#00BFFF"><b>Durada mínima de la trucada</b></font> <br>
     Si una trucada contestada és massa curta, també es considera una trucada spam i activarà aquesta funció. <br>
     ]]>
     </string>

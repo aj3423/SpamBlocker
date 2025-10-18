@@ -139,7 +139,7 @@ class CallScreeningService : CallScreeningService() {
 
         val rawNumber = details.getRawNumber()
 
-        val r = processCall(this, null, rawNumber, details)
+        val r = processCall(ctx = this, logger = null, rawNumber = rawNumber, callDetails = details)
 
         if (r.shouldBlock()) {
             val blockType = r.getBlockType(this) // reject / silence / answer+hangup
@@ -184,7 +184,7 @@ class CallScreeningService : CallScreeningService() {
         return shouldMute
     }
 
-    private fun logToDb(ctx: Context, r: ICheckResult, rawNumber: String) {
+    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String) {
         val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
         val recordId = if (isDbLogEnabled) {
             CallTable().addNewRecord(
@@ -237,8 +237,8 @@ class CallScreeningService : CallScreeningService() {
         // 0. check the number with all rules, get the result
         val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
 
-        // 1. log result to db
-        logToDb(ctx, r, rawNumber)
+        // 1. log result to history db
+        logToHistoryDb(ctx, r, rawNumber)
 
         if (r.shouldBlock()) {
             CoroutineScope(IO).launch {

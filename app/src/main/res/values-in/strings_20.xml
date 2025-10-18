@@ -60,13 +60,13 @@
     </string>
     <string name="help_sms_throttling">
     <![CDATA[
-    Bisukan notifikasi SMS berturut-turut dari nomor yang sama untuk suatu periode. <br>
+    Membisukan notifikasi SMS berturut-turut dari nomor yang sama untuk suatu periode. <br>
     <br>
     Pengaturan umum meliputi: <br>
-    &ensp; - Aturan regex nomor yang memblokir semua panggilan, dinonaktifkan dan akan diaktifkan secara otomatis.<br>
+    &ensp; - Aturan regex nomor yang memblokir semua nomor, ini dinonaktifkan dan akan diaktifkan secara otomatis.<br>
     &ensp; - Alur kerja <b>Pembatasan SMS</b>. <br>
     <br>
-    Pengaturan ini tersedia di preset alur kerja. <br>
+    Pengaturan ini tersedia dalam preset alur kerja. <br>
     <br>
     <b>Opsi:</b> <br>
     <br>

@@ -62,7 +62,7 @@ class MyWorker(
         actions.executeAll(ctx, aCtx)
 
         // The logger is now full filled with annotated string chunk, save it to db.
-        BotTable.setLastLogByWorkUUID(ctx, workTag, logger.serialize())
+        BotTable.setLastLog(ctx, workTag, logger.serialize())
     }
 
     private fun getWorkTag(): String {

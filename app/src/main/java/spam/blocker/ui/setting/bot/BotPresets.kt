@@ -36,7 +36,7 @@ class BotPreset(
 
 val BotPresets = listOf(
 
-    // FTC Do Not Call, update every Monday~Friday @ 18:00:00
+    // FTC Do Not Call, updated on Monday~Friday @ 18:00:00
     BotPreset(
         tooltipId = R.string.help_bot_preset_dnc,
     ) { ctx ->
@@ -68,6 +68,30 @@ val BotPresets = listOf(
         )
     },
 
+    // Calendar Event
+    BotPreset(
+        tooltipId = R.string.help_calendar_event_template,
+        onCreate = { ctx ->
+            // Add a regex rule
+            val ruleDesc = ctx.getString(R.string.calendar_event)
+            NumberRuleTable().addNewRule(ctx, RegexRule(
+                pattern = ".*",
+                description = ruleDesc,
+                flags = 0, // disabled for call/sms
+            ))
+            G.NumberRuleVM.reloadDb(ctx)
+        },
+    ) { ctx ->
+        val ruleDesc = ctx.getString(R.string.calendar_event)
+        Bot(
+            desc = ctx.getString(R.string.calendar_event),
+            actions = listOf(
+                CalendarEvent(eventTitle = ctx.getString(R.string.working)),
+                FindRules(pattern = ruleDesc),
+                ModifyRules(config = "{\"flags\": 3}"),
+            )
+        )
+    },
 
     // Call Throttling
     BotPreset(
@@ -118,31 +142,6 @@ val BotPresets = listOf(
                 SmsThrottling(targetRuleDesc = ruleDesc),
                 FindRules(pattern = ruleDesc),
                 ModifyRules(config = "{\"flags\": 2}"),
-            )
-        )
-    },
-
-    // Calendar Event
-    BotPreset(
-        tooltipId = R.string.help_calendar_event_template,
-        onCreate = { ctx ->
-            // Add a regex rule
-            val ruleDesc = ctx.getString(R.string.calendar_event)
-            NumberRuleTable().addNewRule(ctx, RegexRule(
-                pattern = ".*",
-                description = ruleDesc,
-                flags = 0, // disabled for call/sms
-            ))
-            G.NumberRuleVM.reloadDb(ctx)
-        },
-    ) { ctx ->
-        val ruleDesc = ctx.getString(R.string.calendar_event)
-        Bot(
-            desc = ctx.getString(R.string.calendar_event),
-            actions = listOf(
-                CalendarEvent(eventTitle = ctx.getString(R.string.working)),
-                FindRules(pattern = ruleDesc),
-                ModifyRules(config = "{\"flags\": 3}"),
             )
         )
     },

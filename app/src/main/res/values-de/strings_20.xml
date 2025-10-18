@@ -60,11 +60,11 @@
     </string>
     <string name="help_sms_throttling">
     <![CDATA[
-    Aufeinanderfolgende SMS-Benachrichtigungen von derselben Telefonnummer für einen bestimmten Zeitraum stummschalten. <br>
+    Unterdrückt aufeinanderfolgende SMS-Benachrichtigungen von derselben Telefonnummer für einen bestimmten Zeitraum. <br>
     <br>
     Eine typische Einrichtung umfasst: <br>
-    &ensp; - Eine Nummern-Regex-Regel, die alle Anrufe blockiert, sie ist deaktiviert und wird dynamisch aktiviert.<br>
-    &ensp; - Einen <b>SMS-Drosselungs</b>-Workflow. <br>
+    &ensp; - Eine Telefonnummern-Regex-Regel, die alle Telefonnummern blockiert, sie ist deaktiviert und wird bei Bedarf aktiviert.<br>
+    &ensp; - Einen <b>SMS-Drosselung</b>-Workflow. <br>
     <br>
     Diese Einrichtung ist in den Workflow-Voreinstellungen verfügbar. <br>
     <br>
@@ -73,12 +73,12 @@
     - <font color="#00BFFF"><b>Dauer</b></font> <br>
     SMS-Nachrichten werden während dieses Zeitraums (in Sekunden) blockiert. <br>
     <br>
-    - <font color="#00BFFF"><b>Anzahlbegrenzung</b></font> <br>
-    Erste N Benachrichtigungen zulassen. <br>
+    - <font color="#00BFFF"><b>Anzahl-Limit</b></font> <br>
+    Erlaubt die ersten N Benachrichtigungen. <br>
     <br>
     - <font color="#00BFFF"><b>Beantwortete einschließen</b></font> <br>
     - <font color="#00BFFF"><b>Minimale Anrufdauer</b></font> <br>
-    Wenn ein angenommener Anruf zu kurz ist, wird er ebenfalls als Spam-Anruf betrachtet und aktiviert diese Funktion. <br>
+    Wenn ein beantworteter Anruf zu kurz ist, wird er ebenfalls als Spam-Anruf betrachtet und aktiviert diese Funktion. <br>
     ]]>
     </string>
     <string name="help_sms_throttling_template">

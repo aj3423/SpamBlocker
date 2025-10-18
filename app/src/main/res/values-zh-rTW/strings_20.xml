@@ -78,25 +78,25 @@
     </string>
     <string name="help_sms_throttling">
     <![CDATA[
-    在一段時間內靜音同一個號碼的連續簡訊通知。<br>
+    在一段時間內，將來自同一電話號碼的連續簡訊通知靜音。<br>
     <br>
-    常見設定包含：<br>
-    &ensp; - 停用中的號碼正規表示式規則，會在需要時啟用來封鎖所有來電。<br>
-    &ensp; - 一個 <b>[簡訊節流]</b> 工作流程。<br>
+    典型的設定包括：<br>
+    &ensp; - 一個用於封鎖所有電話號碼的正規表達式規則，它預設是禁用的，但會即時啟動。<br>
+    &ensp; - 一個 <b>簡訊節流</b> 工作流程。<br>
     <br>
-    此組合已收錄在工作流程預設範本中。<br>
+    此設定可在工作流程預設中取得。<br>
     <br>
     <b>選項：</b><br>
     <br>
-    - <font color="#00BFFF"><b>[持續時間]</b></font><br>
-    簡訊會在這段時間內被靜音（單位：秒）。<br>
+    - <font color="#00BFFF"><b>持續時間</b></font><br>
+    簡訊將在此期間（秒）被封鎖。<br>
     <br>
-    - <font color="#00BFFF"><b>[次數上限]</b></font><br>
-    允許前 N 次通知。<br>
+    - <font color="#00BFFF"><b>計數限制</b></font><br>
+    允許前 N 個通知。<br>
     <br>
-    - <font color="#00BFFF"><b>[包含已接聽]</b></font><br>
-    - <font color="#00BFFF"><b>[最短通話時間]</b></font><br>
-    若接聽的通話時間過短，也會視為垃圾來電並觸發此功能。<br>
+    - <font color="#00BFFF"><b>包含已接聽</b></font><br>
+    - <font color="#00BFFF"><b>最短通話持續時間</b></font><br>
+    如果接聽的來電過短，它也被視為垃圾來電並將啟動此功能。<br>
     ]]>
     </string>
 </resources>

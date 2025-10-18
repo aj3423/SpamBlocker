@@ -44,6 +44,7 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Now
 import spam.blocker.util.Permission
 import spam.blocker.util.PhoneNumber
+import spam.blocker.util.SaveableLogger
 import spam.blocker.util.TimeSchedule
 import spam.blocker.util.Util
 import spam.blocker.util.Util.countHistorySMSByNumber
@@ -53,6 +54,7 @@ import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
+import spam.blocker.util.logi
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
@@ -102,19 +104,30 @@ object Preprocessors {
             return Int.MAX_VALUE - 1
         }
         override fun check(cCtx: CheckContext): ICheckResult? {
+            // cCtx.logger can be either:
+            //  - TextLogger: when testing
+            //  - null: on real call/sms
+            // When it's null, use a SaveableLogger to log the execution to database, for feature "Last Log"
+            val logger = cCtx.logger ?: SaveableLogger()
+            logi("logger: $logger")
+
             val aCtx = ActionContext(
-                logger = cCtx.logger,
+                logger = logger,
                 rawNumber = cCtx.rawNumber,
                 smsContent = cCtx.smsContent,
                 cCtx = cCtx,
             )
             bot.actions.executeAll(ctx, aCtx)
 
+            // Save for "Last Log"
+            if (logger is SaveableLogger) {
+                BotTable.setLastLog(ctx, bot.workUUID, logger.serialize())
+            }
             return null
         }
     }
     // Collect all call-related workflows.
-    fun callSpecific(ctx: Context): List<WorkflowRunner> {
+    fun callRelated(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val firstAction = it.actions.firstOrNull()
@@ -138,7 +151,7 @@ object Preprocessors {
             }
     }
     // Collect all SMS-related workflows.
-    fun smsSpecific(ctx: Context): List<WorkflowRunner> {
+    fun smsRelated(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val firstAction = it.actions.firstOrNull()
@@ -1315,7 +1328,7 @@ class Checker { // for namespace only
             )
             // pre-process the checkers, temporarily modify rules
             val preprocessors = Preprocessors.calendarEvent(ctx) +
-                    Preprocessors.callSpecific(ctx)
+                    Preprocessors.callRelated(ctx)
             preprocessors.forEach { it.check(cCtx) }
 
             // sort by priority desc
@@ -1390,7 +1403,7 @@ class Checker { // for namespace only
 
             // pre-process the checkers, temporarily modify rules
             val preprocessors = Preprocessors.calendarEvent(ctx) +
-                    Preprocessors.smsSpecific(ctx)
+                    Preprocessors.smsRelated(ctx)
             preprocessors.forEach { it.check(cCtx) }
 
             // sort by priority desc

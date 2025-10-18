@@ -183,7 +183,7 @@ object BotTable {
     }
 
     // Logging from scheduled workflows
-    fun setLastLogByWorkUUID(ctx: Context, workUUID: String, log: String): Boolean {
+    fun setLastLog(ctx: Context, workUUID: String, log: String): Boolean {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_LAST_LOG, log)
