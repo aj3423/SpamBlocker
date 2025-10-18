@@ -10,6 +10,7 @@ import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import spam.blocker.R
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
@@ -32,7 +33,9 @@ data class Bot(
     val actions: List<IAction> = listOf(),
     val enabled: Boolean = false,
     val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag
+    @Transient
     val lastLog: String = "",
+    @Transient
     val lastLogTime: Long = 0,
 ) {
 

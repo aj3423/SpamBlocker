@@ -109,7 +109,6 @@ object Preprocessors {
             //  - null: on real call/sms
             // When it's null, use a SaveableLogger to log the execution to database, for feature "Last Log"
             val logger = cCtx.logger ?: SaveableLogger()
-            logi("logger: $logger")
 
             val aCtx = ActionContext(
                 logger = logger,

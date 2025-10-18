@@ -164,3 +164,11 @@ fun String.resolveHttpAuthTag(): String {
         .resolveBasicAuthTag()
         .resolveBearerAuthTag()
 }
+
+fun String.resolveCustomTag(
+    mapping: Map<String, String>
+): String {
+    return this
+        .resolveBasicAuthTag()
+        .resolveBearerAuthTag()
+}
