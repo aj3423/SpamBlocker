@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.def.Def
 import spam.blocker.service.bot.botPrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
@@ -92,14 +93,18 @@ fun ApiList(vm: ApiViewModel) {
         ) {
             exportTrigger.value = true
         },
-        // Priority
-        LabelItem(
-            label = ctx.getString(R.string.priority),
-            leadingIcon = { ResIcon(R.drawable.ic_priority, modifier = M.size(18.dp), color = LightMagenta) }
-        ) {
-            priorityTrigger.value = true
-        }
     )
+    if (vm.forType == Def.ForApiQuery) {
+        contextMenuItems.add(
+            // Priority
+            LabelItem(
+                label = ctx.getString(R.string.priority),
+                leadingIcon = { ResIcon(R.drawable.ic_priority, modifier = M.size(18.dp), color = LightMagenta) }
+            ) {
+                priorityTrigger.value = true
+            }
+        )
+    }
 
     Column(
         modifier = M.nestedScroll(DisableNestedScrolling()),
@@ -131,6 +136,7 @@ fun ApiList(vm: ApiViewModel) {
                         )
                     ) {
                         ApiCard(
+                            vm.forType,
                             api,
                             modifier = M.combinedClickable(
                                 onClick = {

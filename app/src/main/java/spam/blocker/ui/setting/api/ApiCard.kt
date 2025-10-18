@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.db.Api
+import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.widgets.GreenDot
@@ -28,6 +29,7 @@ import spam.blocker.util.spf
 
 @Composable
 fun ApiCard(
+    forType: Int,
     api: Api,
     modifier: Modifier,
 ) {
@@ -59,15 +61,17 @@ fun ApiCard(
             }
 
             // [Priority]
-            RowVCenterSpaced(6) {
-                val priority = spf.ApiQueryOptions(ctx).getPriority()
-                ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))
-                Text(
-                    text = "$priority",
-                    color = LightMagenta,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                )
+            if (forType == Def.ForApiQuery) {
+                RowVCenterSpaced(6) {
+                    val priority = spf.ApiQueryOptions(ctx).getPriority()
+                    ResIcon(R.drawable.ic_priority, color = LightMagenta, modifier = M.size(18.dp).offset(6.dp))
+                    Text(
+                        text = "$priority",
+                        color = LightMagenta,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 14.sp,
+                    )
+                }
             }
 
             // action icons
