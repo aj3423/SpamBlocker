@@ -112,7 +112,7 @@
         צור <u>רשימת מספרים</u> המכילה את מספר הספאם שזוהה מהשלב הקודם, ומוכנה לייבוא למסד הנתונים.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">שרשור אחר בוטל.</string>
+    <string name="canceling_thread">מבטל תהליך.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>החלק שמאלה</b></font> כדי למחוק.<br>

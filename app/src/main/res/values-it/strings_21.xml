@@ -100,4 +100,8 @@
         Il nome del tag non dovrebbe iniziare con {, non è necessario aggiungere la parentesi graffa.
     ]]>
     </string>
+    <string name="retry">Riprova</string>
+    <string name="retry_attempt">Tentativo di nuovo (tentativo %s/%s)…</string>
+    <string name="retry_times">Tentativi</string>
+    <string name="retry_delay_millis">Ritardo tentativi (Millis)</string>
 </resources>

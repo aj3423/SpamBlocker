@@ -114,7 +114,7 @@
         Genera una <u>llista de números</u> que conté el número de correu brossa identificat al pas anterior i està a punt per ser importat a la base de dades.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Un altre fil s\'ha cancel·lat.</string>>
+    <string name="canceling_thread">Cancel·lant fil d\'execució.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Llisca cap a l\'esquerra</b></font> per suprimir-lo.<br>

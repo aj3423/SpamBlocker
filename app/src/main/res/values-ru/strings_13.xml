@@ -114,7 +114,7 @@
         Создать <u>список номеров</u>, содержащий спам-номера, определенные на предыдущем шаге, и готовые к импорту в базу данных.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Другой поток отменён.</string>
+    <string name="canceling_thread">Отмена потока.</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Смахните влево</b></font> для удаления.<br>

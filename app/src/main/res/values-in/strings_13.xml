@@ -114,7 +114,7 @@
         Hasilkan <u>daftar nomor</u> berisi nomor spam yang diidentifikasi dari langkah sebelumnya, dan siap untuk diimpor ke basis data.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Utas lain dibatalkan.</string>>
+    <string name="canceling_thread">Membatalkan thread.</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Geser ke kiri</b></font> untuk menghapusnya.<br>

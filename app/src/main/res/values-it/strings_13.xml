@@ -108,7 +108,7 @@
         Genera un <u>elenco di numeri</u> contenente il numero spam identificato dal passaggio precedente, pronto per essere importato nel database.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Un altro thread è stato annullato.</string>
+    <string name="canceling_thread">Annullamento del thread.</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Scorri a sinistra</b></font> per eliminarlo.<br>

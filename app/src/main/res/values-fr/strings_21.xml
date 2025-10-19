@@ -100,4 +100,8 @@
         Le nom de la balise ne doit pas commencer par {, il n\'est pas nécessaire d\'ajouter l\'accolade.
     ]]>
     </string>
+    <string name="retry">Réessayer</string>
+    <string name="retry_attempt">Nouvel essai (Tentative %s/%s)…</string>
+    <string name="retry_times">Nombre de tentatives</string>
+    <string name="retry_delay_millis">Délai de nouvelle tentative (ms)</string>
 </resources>

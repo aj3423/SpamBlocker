@@ -114,7 +114,7 @@
         أنشئ <u>قائمة أرقام</u> تحتوي على رقم الرسائل المزعجة الذي تم تحديده من الخطوة السابقة، وجاهز للاستيراد إلى قاعدة البيانات.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">تم إلغاء سلسلة رسائل أخرى.</string>>
+    <string name="canceling_thread">إلغاء الخيط.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>اسحب لليسار</b></font> لحذفه.<br>

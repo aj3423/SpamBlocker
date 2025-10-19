@@ -98,4 +98,8 @@
         O nome da tag não deve começar com {, não é necessário adicionar a chave.
     ]]>
     </string>
+    <string name="retry">Tentar Novamente</string>
+    <string name="retry_attempt">Tentando Novamente (Tentativa %s/%s)…</string>
+    <string name="retry_times">Número de Tentativas</string>
+    <string name="retry_delay_millis">Atraso da Tentativa (Millis)</string>
 </resources>

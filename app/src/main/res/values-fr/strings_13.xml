@@ -52,7 +52,7 @@
         Générer une <translate>liste de numéros</translate> contenant le numéro indésirable identifié à l\'étape précédente, et prêt à être importé dans la base de données.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Un autre thread est annulé.</string>
+    <string name="canceling_thread">Annulation du fil d\'exécution.</string>>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. Créez un compte sur <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>

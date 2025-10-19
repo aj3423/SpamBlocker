@@ -97,4 +97,8 @@
         نام برچسب نباید با { شروع شود، نیازی به اضافه کردن آکولاد نیست.
     ]]>
     </string>
+    <string name="retry">تلاش مجدد</string>
+    <string name="retry_attempt">تلاش مجدد (تلاش %s/%s)…</string>
+    <string name="retry_times">تعداد دفعات تلاش مجدد</string>
+    <string name="retry_delay_millis">تأخیر تلاش مجدد (میلی‌ثانیه)</string>
 </resources>

@@ -96,4 +96,8 @@
         标签名称不应以 { 开头，无需添加大括号。
     ]]>
     </string>
+    <string name="retry">重试</string>
+    <string name="retry_attempt">正在重试 (尝试 %s/%s)…</string>
+    <string name="retry_times">重试次数</string>
+    <string name="retry_delay_millis">重试延迟 (毫秒)</string>
 </resources>

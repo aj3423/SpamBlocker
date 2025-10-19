@@ -52,7 +52,7 @@
         生成一个包含从上一步识别的垃圾电话号码的<u>号码列表</u>，并准备导入数据库。
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">另一个线程已取消。</string>
+    <string name="canceling_thread">正在取消线程。</string>>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. 在<a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>注册账户<br>

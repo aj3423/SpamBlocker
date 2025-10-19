@@ -100,4 +100,8 @@
         Der Tag-Name sollte nicht mit { beginnen, die geschweifte Klammer muss nicht hinzugefügt werden.
     ]]>
     </string>
+    <string name="retry">Wiederholen</string>
+    <string name="retry_attempt">Wird wiederholt (Versuch %s/%s)…</string>
+    <string name="retry_times">Wiederholungen</string>
+    <string name="retry_delay_millis">Wiederholungsverzögerung (ms)</string>
 </resources>

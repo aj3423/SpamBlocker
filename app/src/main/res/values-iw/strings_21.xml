@@ -100,4 +100,8 @@
         שם התגית לא צריך להתחיל עם {, אין צורך להוסיף את הסוגריים המסולסלים.
     ]]>
     </string>
+    <string name="retry">נסה שוב</string>
+    <string name="retry_attempt">מנסה שוב (ניסיון %s/%s)...</string>
+    <string name="retry_times">מספר ניסיונות חוזרים</string>
+    <string name="retry_delay_millis">השהיית ניסיון חוזר (אלפיות שניה)</string>
 </resources>

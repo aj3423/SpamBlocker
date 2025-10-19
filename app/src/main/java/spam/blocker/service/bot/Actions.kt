@@ -204,8 +204,12 @@ open class HttpDownload(
     var url: String = "",
     var header: String = "",
     var body: String = "", // post body
-) : IPermissiveAction {
 
+    // retry
+    var enableRetry: Boolean = false,
+    var retryTimes: Int = 0,
+    var retryDelayMs: Int = 0,
+) : IPermissiveAction {
     /*
     Split the header string:
         ua: chrome\n
@@ -234,82 +238,105 @@ open class HttpDownload(
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val startTime = System.currentTimeMillis()
 
-        return try {
-            // 1. Url
-            val resolvedUrl = url
-                .resolveTimeTags()
-                .resolveNumberTag(
-                    cc = aCtx.cc,
-                    domestic = aCtx.domestic,
-                    fullNumber = aCtx.fullNumber,
-                    rawNumber = aCtx.rawNumber,
+        var retryAttempts = 0
+
+        do {
+
+            try {
+                val startTime = System.currentTimeMillis()
+
+                // 1. Url
+                val resolvedUrl = url
+                    .resolveTimeTags()
+                    .resolveNumberTag(
+                        cc = aCtx.cc,
+                        domestic = aCtx.domestic,
+                        fullNumber = aCtx.fullNumber,
+                        rawNumber = aCtx.rawNumber,
+                    )
+                    .replace(tagCategory, aCtx.realCategory ?: "")
+                    .resolveSHA1Tag()
+                    .resolveCustomTag(aCtx.customTags)
+                aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(DimGrey)))
+
+                // 2. Headers map
+                val headersMap = splitHeader(header, aCtx.customTags)
+                headersMap.forEach { (key, value) ->
+                    aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: %s -> %s".formatAnnotated(
+                        key.A(DimGrey), value.A(Teal200)
+                    ))
+                }
+
+                // 3. post body
+                val resolvedBody = body
+                    .resolveNumberTag(
+                        cc = aCtx.cc,
+                        domestic = aCtx.domestic,
+                        fullNumber = aCtx.fullNumber,
+                        rawNumber = aCtx.rawNumber,
+                    )
+                    .resolveSmsTag(aCtx.smsContent)
+                    .replace(tagCategory, aCtx.realCategory ?: "")
+                    .resolveCustomTag(aCtx.customTags)
+                if (method == HTTP_POST) {
+                    aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: %s".formatAnnotated(resolvedBody.A(DimGrey)))
+                }
+
+                // 4. Send request
+                val result = httpRequest(
+                    scope = aCtx.scope,
+                    urlString = resolvedUrl,
+                    headersMap = headersMap,
+                    method = method,
+                    postBody = resolvedBody,
                 )
-                .replace(tagCategory, aCtx.realCategory ?: "")
-                .resolveSHA1Tag()
-                .resolveCustomTag(aCtx.customTags)
-            aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(DimGrey)))
 
-            // 2. Headers map
-            val headersMap = splitHeader(header, aCtx.customTags)
-            headersMap.forEach { (key, value) ->
-                aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: %s -> %s".formatAnnotated(
-                    key.A(DimGrey), value.A(Teal200)
-                ))
-            }
-
-            // 3. post body
-            val resolvedBody = body
-                .resolveNumberTag(
-                    cc = aCtx.cc,
-                    domestic = aCtx.domestic,
-                    fullNumber = aCtx.fullNumber,
-                    rawNumber = aCtx.rawNumber,
+                aCtx.logger?.info(
+                    ctx.getString(R.string.time_cost)
+                        .format("${System.currentTimeMillis() - startTime}")
                 )
-                .resolveSmsTag(aCtx.smsContent)
-                .replace(tagCategory, aCtx.realCategory ?: "")
-                .resolveCustomTag(aCtx.customTags)
-            if (method == HTTP_POST) {
-                aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: %s".formatAnnotated(resolvedBody.A(DimGrey)))
+                if (result?.exception != null) {
+                    throw Exception(result.exception)
+                }
+
+                aCtx.lastOutput = result?.bytes
+
+                val echo = Util.truncate(String(result?.bytes ?: byteArrayOf()))
+                if (result?.statusCode == HttpURLConnection.HTTP_OK) {
+                    aCtx.logger?.success("HTTP: <${result.statusCode}>")
+                    aCtx.logger?.debug(echo)
+                    return true
+                } else {
+                    aCtx.logger?.error("HTTP <${result?.statusCode}>: $echo")
+                    return false
+                }
+            } catch (_: CancellationException) { // a winner is found, others are cancelled
+                aCtx.logger?.debug(ctx.getString(R.string.canceling_thread))
+                return false // no need to retry when canceled
+            } catch (e: Exception) {
+                aCtx.logger?.error("$e")
+
+                // Don't return here for it to retry
+            } finally {
+                // Save the url for following actions(ImportToSpamDb)
+                aCtx.httpUrl = url
             }
 
-            // 4. Send request
-            val result = httpRequest(
-                scope = aCtx.scope,
-                urlString = resolvedUrl,
-                headersMap = headersMap,
-                method = method,
-                postBody = resolvedBody,
-            )
+            if (!enableRetry)
+                break
 
-            aCtx.logger?.info(
-                ctx.getString(R.string.time_cost)
-                    .format("${System.currentTimeMillis() - startTime}")
-            )
+            retryAttempts ++
 
-            aCtx.lastOutput = result?.bytes
+            aCtx.logger?.warn(ctx.getString(R.string.retry_attempt).formatAnnotated(
+                "$retryAttempts".A(Teal200), "$retryTimes".A(Teal200)
+            ))
 
-            val echo = Util.truncate(String(result?.bytes ?: byteArrayOf()))
-            if (result?.statusCode == HttpURLConnection.HTTP_OK) {
-                aCtx.logger?.success("HTTP: <${result.statusCode}>")
-                aCtx.logger?.debug(echo)
-                true
-            } else {
-                aCtx.logger?.error("HTTP: <${result?.statusCode}>, $echo, ${result?.exception}")
-                false
-            }
+            Thread.sleep(retryDelayMs.toLong())
 
-        } catch (_: CancellationException) { // a winner is found, others are cancelled
-            aCtx.logger?.debug(ctx.getString(R.string.another_thread_is_cancelled))
-            false
-        } catch (e: Exception) {
-            aCtx.logger?.error("$e")
-            false
-        } finally {
-            // Save the url for following actions(ImportToSpamDb)
-            aCtx.httpUrl = url
-        }
+        } while (retryAttempts <= retryTimes)
+
+        return false
     }
 
     override fun label(ctx: Context): String {
@@ -343,54 +370,87 @@ open class HttpDownload(
 
     @Composable
     override fun Options() {
-
-        StrInputBox(
-            text = url,
-            label = { Text(Str(R.string.url)) },
-            leadingIconId = R.drawable.ic_link,
-            placeholder = { DimGreyLabel("https://...") },
-            helpTooltip = Str(R.string.help_http_url).format(
-                Str(R.string.number_tags),
-                Str(R.string.time_tags),
-            ),
-            onValueChange = { url = it }
-        )
-
-        StrInputBox(
-            text = header,
-            label = { Text(Str(R.string.http_header)) },
-            leadingIconId = R.drawable.ic_http_header,
-            onValueChange = { header = it },
-            helpTooltip = Str(R.string.help_http_header) + "<br>" + Str(R.string.tags_supported) + Str(
-                R.string.auth_tags
-            ),
-            placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
-        )
-
-        var selected by remember { mutableIntStateOf(method) }
-        val options = remember {
-            listOf("GET", "POST").mapIndexed { index, label ->
-                LabelItem(label = label) {
-                    method = index
-                    selected = index
-                }
-            }
-        }
-        LabeledRow(R.string.http_method) {
-            ComboBox(options, selected)
-        }
-
-        AnimatedVisibleV(selected == HTTP_POST) {
+        Column {
+            StrInputBox(
+                text = url,
+                label = { Text(Str(R.string.url)) },
+                leadingIconId = R.drawable.ic_link,
+                placeholder = { DimGreyLabel("https://...") },
+                helpTooltip = Str(R.string.help_http_url).format(
+                    Str(R.string.number_tags),
+                    Str(R.string.time_tags),
+                ),
+                onValueChange = { url = it }
+            )
 
             StrInputBox(
-                text = body,
-                label = { Text(Str(R.string.http_post_body)) },
-                leadingIconId = R.drawable.ic_post,
-                onValueChange = { body = it },
-                helpTooltip = Str(R.string.help_http_post_body).format(
-                    Str(R.string.number_tags) + "<br>" + Str(R.string.sms_tags)
+                text = header,
+                label = { Text(Str(R.string.http_header)) },
+                leadingIconId = R.drawable.ic_http_header,
+                onValueChange = { header = it },
+                helpTooltip = Str(R.string.help_http_header) + "<br>" + Str(R.string.tags_supported) + Str(
+                    R.string.auth_tags
                 ),
+                placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
             )
+
+            var selected by remember { mutableIntStateOf(method) }
+            val options = remember {
+                listOf("GET", "POST").mapIndexed { index, label ->
+                    LabelItem(label = label) {
+                        method = index
+                        selected = index
+                    }
+                }
+            }
+            LabeledRow(R.string.http_method) {
+                ComboBox(options, selected)
+            }
+
+            AnimatedVisibleV(selected == HTTP_POST) {
+
+                StrInputBox(
+                    text = body,
+                    label = { Text(Str(R.string.http_post_body)) },
+                    leadingIconId = R.drawable.ic_post,
+                    onValueChange = { body = it },
+                    helpTooltip = Str(R.string.help_http_post_body).format(
+                        Str(R.string.number_tags) + "<br>" + Str(R.string.sms_tags)
+                    ),
+                )
+            }
+
+            var retryState by remember { mutableStateOf(enableRetry) }
+
+            LabeledRow(labelId = R.string.retry) {
+                SwitchBox(retryState) { on ->
+                    enableRetry = on
+                    retryState = on
+                }
+            }
+
+            AnimatedVisibleV(retryState) {
+                Column {
+                    NumberInputBox(
+                        intValue = retryTimes,
+                        label = { Text(Str(R.string.retry_times)) },
+                        onValueChange = { newVal, hasError ->
+                            if (!hasError) {
+                                retryTimes = newVal!!
+                            }
+                        }
+                    )
+                    NumberInputBox(
+                        intValue = retryDelayMs,
+                        label = { Text(Str(R.string.retry_delay_millis)) },
+                        onValueChange = { newVal, hasError ->
+                            if (!hasError) {
+                                retryDelayMs = newVal!!
+                            }
+                        }
+                    )
+                }
+            }
         }
     }
 }

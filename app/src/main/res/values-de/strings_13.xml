@@ -52,7 +52,7 @@
         Generiert eine <u>Liste von Nummern</u>, die die aus dem vorherigen Schritt identifizierten Spam-Nummern enthält und für den Import in die Datenbank bereit ist.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Ein anderer Thread wurde abgebrochen.</string>
+    <string name="canceling_thread">Thread wird abgebrochen.</string>>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. Registrieren Sie ein Konto unter <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>

@@ -52,7 +52,7 @@
         Gera uma <translate>lista de números</translate> contendo os números de spam identificados na etapa anterior e prontos para serem importados para o banco de dados.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Outra thread foi cancelada.</string>
+    <string name="canceling_thread">Cancelando thread.</string>>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. Cadastre uma conta em <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>

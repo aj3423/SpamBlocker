@@ -99,4 +99,8 @@
         El nom de l\'etiqueta no hauria de començar amb {, no cal afegir el claudàtor.
     ]]>
     </string>
+    <string name="retry">Reintentar</string>
+    <string name="retry_attempt">Reintentant (intent %s/%s)…</string>
+    <string name="retry_times">Nombre de reintents</string>
+    <string name="retry_delay_millis">Retard de reintent (ms)</string>
 </resources>

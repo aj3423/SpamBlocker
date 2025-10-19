@@ -100,4 +100,8 @@
         يجب ألا يبدأ اسم الوسم بـ {، لا داعي لإضافة القوس المتعرج.
     ]]>
     </string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="retry_attempt">جاري إعادة المحاولة (المحاولة %s/%s)...</string>
+    <string name="retry_times">عدد مرات إعادة المحاولة</string>
+    <string name="retry_delay_millis">تأخير إعادة المحاولة (بالمللي ثانية)</string>
 </resources>

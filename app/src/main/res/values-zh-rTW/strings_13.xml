@@ -114,7 +114,7 @@
         從上一步驟識別的垃圾號碼產生<u>號碼清單</u>，準備匯入資料庫。
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">另一個執行緒已取消。</string>
+    <string name="canceling_thread">正在取消執行緒。說</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>向左滑動</b></font>可刪除。<br>

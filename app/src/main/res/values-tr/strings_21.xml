@@ -97,4 +97,8 @@
         Etiket adı { ile başlamamalıdır, süslü parantez eklemeye gerek yoktur.
     ]]>
     </string>
+    <string name="retry">Yeniden Dene</string>
+    <string name="retry_attempt">Yeniden deneniyor (Deneme %s/%s)…</string>
+    <string name="retry_times">Yeniden Deneme Sayısı</string>
+    <string name="retry_delay_millis">Yeniden Deneme Gecikmesi (Milisaniye)</string>
 </resources>

@@ -99,4 +99,8 @@
         Ім\'я тегу не повинно починатися з {, не потрібно додавати фігурні дужки.
     ]]>
     </string>
+    <string name="retry">Повторити</string>
+    <string name="retry_attempt">Повторна спроба (Спроба %s/%s)…</string>
+    <string name="retry_times">Кількість спроб</string>
+    <string name="retry_delay_millis">Затримка повтору (мілісекунди)</string>
 </resources>

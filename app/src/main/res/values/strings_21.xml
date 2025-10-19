@@ -100,5 +100,8 @@
         Tag name shouldn\'t start with {, no need to add the curly brace.
     ]]>
     </string>
-
+    <string name="retry">Retry</string>
+    <string name="retry_attempt">Retrying (Attempt %s/%s)…</string>
+    <string name="retry_times">Retry Times</string>
+    <string name="retry_delay_millis">Retry Delay (Millis)</string>
 </resources>

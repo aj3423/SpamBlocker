@@ -105,7 +105,7 @@
         ایجاد یک <u>لیست از شماره‌ها</u> شامل شماره‌های مزاحم شناسایی شده از مرحله قبل، و آماده برای وارد کردن به پایگاه داده.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">یک رشته دیگر لغو شده است.</string>
+    <string name="canceling_thread">در حال لغو رشته.</string>
     <string name="suggest_to_swipe">
         <![CDATA[
         برای حذف آن، <font color="#03DAC5"><b>به سمت چپ بکشید</b></font>.<br>

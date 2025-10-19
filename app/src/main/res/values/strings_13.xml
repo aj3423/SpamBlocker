@@ -114,7 +114,7 @@
         Generate a <u>list of numbers</u> containing the spam number identified from the previous step, and ready to be imported to the database.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Another thread is cancelled.</string>>
+    <string name="canceling_thread">Canceling thread.</string>>
     <string name="suggest_to_swipe">
         <![CDATA[
         <font color="#03DAC5"><b>Swipe left</b></font> to delete it.<br>

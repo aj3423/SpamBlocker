@@ -52,7 +52,7 @@
         Сгенерувати <u>список номерів</u>, що містять спам-номери, ідентифіковані на попередньому кроці, та готові до імпорту до бази даних.
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">Інший потік скасовано.</string>
+    <string name="canceling_thread">Скасування потоку.</string>>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. Зареєструйте обліковий запис на <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a><br>

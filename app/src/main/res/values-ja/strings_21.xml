@@ -97,4 +97,8 @@
         タグ名は「{」で始まってはいけません。波括弧を追加する必要はありません。
     ]]>
     </string>
+    <string name="retry">再試行</string>
+    <string name="retry_attempt">再試行中 (%s/%s回目)…</string>
+    <string name="retry_times">再試行回数</string>
+    <string name="retry_delay_millis">再試行遅延 (ミリ秒)</string>
 </resources>

@@ -52,7 +52,7 @@
         前の手順で特定されたスパム番号を含む<u>電話番号リスト</u>を生成し、データベースにインポートする準備をします。
         ]]>
     </string>
-    <string name="another_thread_is_cancelled">別のスレッドがキャンセルされました。</string>
+    <string name="canceling_thread">スレッドをキャンセルしています。</string>
     <string name="help_api_preset_phoneblock_authorization">
         <![CDATA[
         1. <a href="https://phoneblock.net/phoneblock/login">https://phoneblock.net/phoneblock/login</a>でアカウントを登録します。<br>

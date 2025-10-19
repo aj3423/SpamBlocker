@@ -100,4 +100,8 @@
         El nombre de la etiqueta no debe comenzar con {, no es necesario añadir las llaves.
     ]]>
     </string>
+    <string name="retry">Reintentar</string>
+    <string name="retry_attempt">Reintentando (Intento %s/%s)…</string>
+    <string name="retry_times">Número de Reintentos</string>
+    <string name="retry_delay_millis">Retraso de Reintento (Milisegundos)</string>
 </resources>
