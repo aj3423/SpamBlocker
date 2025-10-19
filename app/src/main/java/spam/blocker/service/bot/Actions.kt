@@ -328,12 +328,13 @@ open class HttpDownload(
 
             retryAttempts ++
 
-            aCtx.logger?.warn(ctx.getString(R.string.retry_attempt).formatAnnotated(
-                "$retryAttempts".A(Teal200), "$retryTimes".A(Teal200)
-            ))
+            if (retryAttempts <= retryTimes) {
+                aCtx.logger?.warn(ctx.getString(R.string.retry_attempt).formatAnnotated(
+                    "$retryAttempts".A(Teal200), "$retryTimes".A(Teal200)
+                ))
 
-            Thread.sleep(retryDelayMs.toLong())
-
+                Thread.sleep(retryDelayMs.toLong())
+            }
         } while (retryAttempts <= retryTimes)
 
         return false

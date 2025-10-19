@@ -15,11 +15,13 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import spam.blocker.ui.M
+import spam.blocker.ui.maxScreenHeight
 import spam.blocker.ui.screenWidthDp
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
@@ -81,6 +83,7 @@ fun PopupDialog(
 
             Card(
                 modifier = M
+                    .maxScreenHeight(0.9f)
                     .width(
                         popupSize?.calculate()?.dp ?: Dp.Unspecified
                     ),
