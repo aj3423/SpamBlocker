@@ -70,4 +70,31 @@
     ]]>
     </string>
     <string name="replace_this">これを置き換える</string>
+    <string name="generate_tag">タグ生成</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        前のステップからコンテンツを抽出し、後のステップで再利用できるようにカスタムタグに保存します。<br>
+        <br>
+        これは、複数ステップのウェブクエリに役立ちます。<br>
+        <br>
+        <b>オプション</b> <br>
+        <br>
+        <font color="#00BFFF"><b>解析タイプ</b></font> <br>
+        タグ値を解析します。正規表現とXPathをサポートしています。<br>
+        <br>
+        <font color="#00BFFF"><b>タグ名</b></font> <br>
+        生成するタグ名。<br>
+        例えば、タグ名が <font color="#03DAC5">my_token</font> の場合、
+         後のHTTPクエリで <font color="#03DAC5">{my_token}</font> を使用できます。<br>
+    ]]>
+    </string>
+    <string name="tag_name">タグ名</string>
+    <string name="parse_type">解析タイプ</string>
+    <string name="failed_to_parse_tag">タグの解析に失敗しました。</string>
+    <string name="tag_generated">カスタムタグ生成: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        タグ名は「{」で始まってはいけません。波括弧を追加する必要はありません。
+    ]]>
+    </string>
 </resources>

@@ -73,4 +73,31 @@
     ]]>
     </string>
     <string name="replace_this">Reemplazar esto</string>
+    <string name="generate_tag">Generar Etiqueta</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Extrae contenido del paso anterior y almacénalo en una etiqueta personalizada para reutilizarlo en pasos posteriores. <br>
+        <br>
+        Esto puede ser útil para consultas web de varios pasos. <br>
+        <br>
+        <b>Opciones</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Tipo de Análisis</b></font> <br>
+        Analiza el valor de la etiqueta, soporta expresiones regulares y xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nombre de la Etiqueta</b></font> <br>
+        El nombre de la etiqueta a generar. <br>
+        Por ejemplo, si el nombre de la etiqueta es <font color="#03DAC5">my_token</font>,
+         entonces puedes usar <font color="#03DAC5">{my_token}</font> en consultas HTTP posteriores. <br>
+    ]]>
+    </string>
+    <string name="tag_name">Nombre de la Etiqueta</string>
+    <string name="parse_type">Tipo de Análisis</string>
+    <string name="failed_to_parse_tag">Error al analizar la etiqueta.</string>
+    <string name="tag_generated">Etiqueta personalizada generada: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        El nombre de la etiqueta no debe comenzar con {, no es necesario añadir las llaves.
+    ]]>
+    </string>
 </resources>

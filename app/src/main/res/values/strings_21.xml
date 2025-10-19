@@ -73,4 +73,32 @@
     ]]>
     </string>
     <string name="replace_this">Replace this</string>
+    <string name="generate_tag">Generate Tag</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Extract content from the previous step and store it in a custom tag for reuse in subsequent steps. <br>
+        <br>
+        This can be helpful to multi-step web queries. <br>
+        <br>
+        <b>Options</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Parse Type</b></font> <br>
+        Parse the tag value, it supports regex and xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Tag Name</b></font> <br>
+        The tag name to generate. <br>
+        For example, if the tag name is <font color="#03DAC5">my_token</font>,
+         then you can use <font color="#03DAC5">{my_token}</font> in subsequent HTTP queries. <br>
+    ]]>
+    </string>
+    <string name="tag_name">Tag Name</string>
+    <string name="parse_type">Parse Type</string>
+    <string name="failed_to_parse_tag">Failed to parse tag.</string>
+    <string name="tag_generated">Custom tag generated: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        Tag name shouldn\'t start with {, no need to add the curly brace.
+    ]]>
+    </string>
+
 </resources>

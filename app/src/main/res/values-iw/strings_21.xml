@@ -73,4 +73,31 @@
     ]]>
     </string>
     <string name="replace_this">החלף זאת</string>
+    <string name="generate_tag">צור תגית</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        חלץ תוכן מהשלב הקודם ואחסן אותו בתגית מותאמת אישית לשימוש חוזר בשלבים הבאים. <br>
+        <br>
+        זה יכול להיות שימושי עבור שאילתות אינטרנט מרובות שלבים. <br>
+        <br>
+        <b>אפשרויות</b> <br>
+        <br>
+        <font color="#00BFFF"><b>סוג ניתוח</b></font> <br>
+        נתח את ערך התגית, הוא תומך בביטויים רגולריים וב-xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>שם תגית</b></font> <br>
+        שם התגית ליצירה. <br>
+        לדוגמה, אם שם התגית הוא <font color="#03DAC5">my_token</font>,
+         אז תוכל להשתמש ב- <font color="#03DAC5">{my_token}</font> בשאילתות HTTP עוקבות. <br>
+    ]]>
+    </string>
+    <string name="tag_name">שם תגית</string>
+    <string name="parse_type">סוג ניתוח</string>
+    <string name="failed_to_parse_tag">נכשל ניתוח התגית.</string>
+    <string name="tag_generated">תגית מותאמת אישית נוצרה: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        שם התגית לא צריך להתחיל עם {, אין צורך להוסיף את הסוגריים המסולסלים.
+    ]]>
+    </string>
 </resources>

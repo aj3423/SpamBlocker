@@ -70,4 +70,31 @@
     ]]>
     </string>
     <string name="replace_this">Bunu Değiştir</string>
+    <string name="generate_tag">Etiket Oluştur</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Önceki adımdan içeriği çıkarın ve sonraki adımlarda yeniden kullanım için özel bir etikette saklayın. <br>
+        <br>
+        Bu, çok adımlı web sorguları için yararlı olabilir. <br>
+        <br>
+        <b>Seçenekler</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Ayrıştırma Türü</b></font> <br>
+        Etiket değerini ayrıştırın, regex ve xpath\'i destekler. <br>
+        <br>
+        <font color="#00BFFF"><b>Etiket Adı</b></font> <br>
+        Oluşturulacak etiket adı. <br>
+        Örneğin, etiket adı <font color="#03DAC5">my_token</font> ise,
+         sonraki HTTP sorgularında <font color="#03DAC5">{my_token}</font> kullanabilirsiniz. <br>
+    ]]>
+    </string>
+    <string name="tag_name">Etiket Adı</string>
+    <string name="parse_type">Ayrıştırma Türü</string>
+    <string name="failed_to_parse_tag">Etiket ayrıştırılamadı.</string>
+    <string name="tag_generated">Özel etiket oluşturuldu: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        Etiket adı { ile başlamamalıdır, süslü parantez eklemeye gerek yoktur.
+    ]]>
+    </string>
 </resources>

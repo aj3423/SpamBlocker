@@ -73,4 +73,31 @@
     ]]>
     </string>
     <string name="replace_this">استبدل هذا</string>
+    <string name="generate_tag">إنشاء وسم</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        استخراج المحتوى من الخطوة السابقة وتخزينه في وسم مخصص لإعادة استخدامه في الخطوات اللاحقة. <br>
+        <br>
+        يمكن أن يكون هذا مفيدًا لاستعلامات الويب متعددة الخطوات. <br>
+        <br>
+        <b>الخيارات</b> <br>
+        <br>
+        <font color="#00BFFF"><b>نوع التحليل</b></font> <br>
+        تحليل قيمة الوسم، يدعم التعبيرات النمطية و XPath. <br>
+        <br>
+        <font color="#00BFFF"><b>اسم الوسم</b></font> <br>
+        اسم الوسم الذي سيتم إنشاؤه. <br>
+        على سبيل المثال، إذا كان اسم الوسم هو <font color="#03DAC5">my_token</font>،
+         فيمكنك استخدام <font color="#03DAC5">{my_token}</font> في استعلامات HTTP اللاحقة. <br>
+    ]]>
+    </string>
+    <string name="tag_name">اسم الوسم</string>
+    <string name="parse_type">نوع التحليل</string>
+    <string name="failed_to_parse_tag">فشل تحليل الوسم.</string>
+    <string name="tag_generated">تم إنشاء وسم مخصص: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        يجب ألا يبدأ اسم الوسم بـ {، لا داعي لإضافة القوس المتعرج.
+    ]]>
+    </string>
 </resources>

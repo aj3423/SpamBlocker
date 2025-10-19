@@ -68,4 +68,31 @@
         您可以將備份檔案託管在 GitHub 上。
     ]]>
     </string>
+    <string name="generate_tag">產生標籤</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        從上一步驟中提取內容並將其儲存在自訂標籤中，以便在後續步驟中重複使用。<br>
+        <br>
+        這對於多步驟的網頁查詢很有幫助。<br>
+        <br>
+        <b>選項</b> <br>
+        <br>
+        <font color="#00BFFF"><b>解析類型</b></font> <br>
+        解析標籤值，它支援正則表達式和 XPath。<br>
+        <br>
+        <font color="#00BFFF"><b>標籤名稱</b></font> <br>
+        要生成的標籤名稱。<br>
+        例如，如果標籤名稱是 <font color="#03DAC5">my_token</font>，
+         那麼您可以在後續的 HTTP 查詢中使用 <font color="#03DAC5">{my_token}</font>。<br>
+    ]]>
+    </string>
+    <string name="tag_name">標籤名稱</string>
+    <string name="parse_type">解析類型</string>
+    <string name="failed_to_parse_tag">解析標籤失敗。</string>
+    <string name="tag_generated">已產生自訂標籤：%s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        標籤名稱不應以 { 開頭，無需加上大括號。
+    ]]>
+    </string>
 </resources>

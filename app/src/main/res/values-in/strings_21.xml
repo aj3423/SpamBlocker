@@ -73,4 +73,31 @@
     ]]>
     </string>
     <string name="replace_this">Ganti ini</string>
+    <string name="generate_tag">Hasilkan Tag</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Ekstrak konten dari langkah sebelumnya dan simpan dalam tag kustom untuk digunakan kembali di langkah berikutnya. <br>
+        <br>
+        Ini dapat membantu untuk kueri web multi-langkah. <br>
+        <br>
+        <b>Opsi</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Tipe Penguraian</b></font> <br>
+        Uraikan nilai tag, ini mendukung regex dan xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nama Tag</b></font> <br>
+        Nama tag yang akan dihasilkan. <br>
+        Misalnya, jika nama tag adalah <font color="#03DAC5">my_token</font>,
+         maka Anda dapat menggunakan <font color="#03DAC5">{my_token}</font> dalam kueri HTTP berikutnya. <br>
+    ]]>
+    </string>
+    <string name="tag_name">Nama Tag</string>
+    <string name="parse_type">Tipe Penguraian</string>
+    <string name="failed_to_parse_tag">Gagal mengurai tag.</string>
+    <string name="tag_generated">Tag kustom dihasilkan: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        Nama tag tidak boleh dimulai dengan {, tidak perlu menambahkan tanda kurung kurawal.
+    ]]>
+    </string>
 </resources>

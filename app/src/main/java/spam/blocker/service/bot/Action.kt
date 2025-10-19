@@ -60,7 +60,8 @@ val apiActions = listOf(
     FilterSpamResult(),
     ConvertNumber(),
     ImportToSpamDB(),
-    CategoryConfig()
+    CategoryConfig(),
+    GenerateTag()
 )
 
 
@@ -73,6 +74,8 @@ enum class ParamType {
     InstantQueryResult,
 }
 
+// When a Bot is executed, all actions in the bot share the same ActionContext, it is used to
+//  store temporary values.
 data class ActionContext(
     val scope: CoroutineScope = CoroutineScope(IO),
 
@@ -118,6 +121,8 @@ data class ActionContext(
     // Should mute the ringtone for allowed call?
     var shouldMute: Boolean = false,
 
+    // for action `Generate Tag`
+    var customTags: MutableMap<String, String> = mutableMapOf(),
 )
 
 interface IAction {

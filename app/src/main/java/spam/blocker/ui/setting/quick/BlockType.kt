@@ -20,7 +20,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Permission
@@ -128,7 +128,7 @@ fun BlockType() {
                     }
                 }
 
-                Spinner(
+                ComboBox(
                     options,
                     selected.intValue,
                 )

@@ -7,7 +7,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.LabelItem
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.util.spf
 
 @Composable
@@ -35,7 +35,7 @@ fun Theme() {
     LabeledRow(
         R.string.theme,
         content = {
-            Spinner(
+            ComboBox(
                 options,
                 G.themeType.intValue,
             )

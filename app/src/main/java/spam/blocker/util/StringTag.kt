@@ -168,7 +168,9 @@ fun String.resolveHttpAuthTag(): String {
 fun String.resolveCustomTag(
     mapping: Map<String, String>
 ): String {
-    return this
-        .resolveBasicAuthTag()
-        .resolveBearerAuthTag()
+    var ret = this
+    mapping.forEach { (k, v) ->
+        ret = ret.replace("{$k}", v)
+    }
+    return ret
 }

@@ -49,7 +49,7 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RingtonePicker
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Section
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -282,7 +282,7 @@ fun EditChannelDialog(
                 helpTooltip = Str(R.string.help_channel_importance)
             ) {
                 RowVCenterSpaced(6) {
-                    Spinner(
+                    ComboBox(
                         items = importanceItems,
                         selected = ids.indexOf(importance),
                         enabled = isCreatingNewChannel,
@@ -488,7 +488,7 @@ fun ChannelPicker(
         editTrigger = editTrigger,
         initChannel = editingChannel ?: Channel(),
     )
-    Spinner(
+    ComboBox(
         items = items.value,
         selected = selectedIndex.value,
 

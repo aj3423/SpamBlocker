@@ -193,7 +193,7 @@ enum class SpinnerType {
 // Button with a small triangle sign at the bottom right,
 //  the label always follows the selected item
 @Composable
-fun Spinner(
+fun ComboBox(
     items: List<LabelItem>,
     selected: Int,
     modifier: Modifier = Modifier,
@@ -205,7 +205,7 @@ fun Spinner(
     },
     footerOffset: Pair<Int, Int> = Pair(-4, -4),
     footerSize: Int = 6,
-    footerIconId: Int = R.drawable.ic_spinner_arrow,
+    footerIconId: Int = R.drawable.ic_dropdown_footer,
     onLongClick: Lambda? = null,
 ) {
     DropdownWrapper(
@@ -260,7 +260,7 @@ fun MenuButton(
             modifier = modifier,
             footerOffset = Pair(-4, -4),
             footerSize = 6,
-            footerIconId = R.drawable.ic_spinner_arrow,
+            footerIconId = R.drawable.ic_dropdown_footer,
         ) {
             expanded.value = true
         }

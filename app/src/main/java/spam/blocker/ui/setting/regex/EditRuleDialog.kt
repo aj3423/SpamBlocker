@@ -70,7 +70,7 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -188,7 +188,7 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                 modifier = M.size(18.dp)
             )
             Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.ic_spinner_arrow),
+                imageVector = ImageVector.vectorResource(R.drawable.ic_dropdown_footer),
                 contentDescription = "",
                 tint = C.textGrey,
                 modifier = Modifier
@@ -584,7 +584,7 @@ fun RuleEditDialog(
                                     popupTrigger.value = true
                                 }
                             }
-                            Spinner(blockTypeLabels, blockType)
+                            ComboBox(blockTypeLabels, blockType)
                         }
                     }
                 }

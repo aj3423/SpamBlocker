@@ -9,15 +9,24 @@ import javax.xml.xpath.XPathFactory
 
 
 object Xml {
-    fun parse(
+    fun parseString(
         bytes: ByteArray,
-        expression: String,
+        xpathStr: String,
+    ): String {
+        val document = parseXml(bytes)
+        val xPath = XPathFactory.newInstance().newXPath()
+
+        return xPath.evaluate(xpathStr, document, XPathConstants.STRING) as String
+    }
+    fun parseRules(
+        bytes: ByteArray,
+        xpathStr: String,
     ): List<Map<String, String>> {
         val document = parseXml(bytes)
         val xPath = XPathFactory.newInstance().newXPath()
 
         val nodes =
-            xPath.evaluate(expression, document, XPathConstants.NODESET) as NodeList
+            xPath.evaluate(xpathStr, document, XPathConstants.NODESET) as NodeList
 
         val list = mutableListOf<Map<String, String>>()
 
@@ -30,6 +39,7 @@ object Xml {
         }
         return list
     }
+
 
     private fun parseXml(bytes: ByteArray): Document {
         val documentBuilderFactory = DocumentBuilderFactory.newInstance()

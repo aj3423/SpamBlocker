@@ -70,4 +70,30 @@
     ]]>
     </string>
     <string name="replace_this">替换此项</string>
+    <string name="generate_tag">生成标签</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        从上一步中提取内容并将其存储在自定义标签中，以便在后续步骤中重复使用。<br>
+        <br>
+        这有助于多步网络查询。<br>
+        <br>
+        <b>选项</b> <br>
+        <br>
+        <font color="#00BFFF"><b>解析类型</b></font> <br>
+        解析标签值，支持正则表达式和XPath。<br>
+        <br>
+        <font color="#00BFFF"><b>标签名称</b></font> <br>
+        要生成的标签名称。<br>
+        例如，如果标签名称是 <font color="#03DAC5">my_token</font>，那么您可以在后续HTTP查询中使用 <font color="#03DAC5">{my_token}</font>。<br>
+    ]]>
+    </string>
+    <string name="tag_name">标签名称</string>
+    <string name="parse_type">解析类型</string>
+    <string name="failed_to_parse_tag">解析标签失败。</string>
+    <string name="tag_generated">自定义标签已生成：%s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        标签名称不应以 { 开头，无需添加大括号。
+    ]]>
+    </string>
 </resources>

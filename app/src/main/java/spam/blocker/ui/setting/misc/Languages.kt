@@ -14,7 +14,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ResIcon
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.SpinnerType
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Launcher
@@ -94,7 +94,7 @@ fun Language() {
         R.string.language,
         helpTooltip = Str(R.string.help_language),
         content = {
-            Spinner(
+            ComboBox(
                 items,
                 selected,
                 displayType = SpinnerType.IconLabel

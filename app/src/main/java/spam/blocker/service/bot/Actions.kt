@@ -79,7 +79,7 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.RingtonePicker
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
@@ -109,6 +109,7 @@ import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.regexReplace
 import spam.blocker.util.resolveBase64Tag
+import spam.blocker.util.resolveCustomTag
 import spam.blocker.util.resolveHttpAuthTag
 import spam.blocker.util.resolveNumberTag
 import spam.blocker.util.resolvePathTags
@@ -217,11 +218,15 @@ open class HttpDownload(
             some_key => yyy,
         )
      */
-    private fun splitHeader(allHeadersStr: String): Map<String, String> {
+    private fun splitHeader(
+        allHeadersStr: String,
+        customTags: Map<String, String>
+    ): Map<String, String> {
         return allHeadersStr.lines().filter { it.trim().isNotEmpty() }.associate { line ->
             val resolved = line
                 .resolveHttpAuthTag()
                 .resolveBase64Tag()
+                .resolveCustomTag(customTags)
             val (key, value) = resolved.split(":").map { it.trim() }
             key to value
         }
@@ -243,12 +248,15 @@ open class HttpDownload(
                 )
                 .replace(tagCategory, aCtx.realCategory ?: "")
                 .resolveSHA1Tag()
-            aCtx.logger?.debug(ctx.getString(R.string.resolved_url).format(resolvedUrl))
+                .resolveCustomTag(aCtx.customTags)
+            aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(DimGrey)))
 
             // 2. Headers map
-            val headersMap = splitHeader(header)
+            val headersMap = splitHeader(header, aCtx.customTags)
             headersMap.forEach { (key, value) ->
-                aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: $key -> $value")
+                aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: %s -> %s".formatAnnotated(
+                    key.A(DimGrey), value.A(Teal200)
+                ))
             }
 
             // 3. post body
@@ -261,8 +269,9 @@ open class HttpDownload(
                 )
                 .resolveSmsTag(aCtx.smsContent)
                 .replace(tagCategory, aCtx.realCategory ?: "")
+                .resolveCustomTag(aCtx.customTags)
             if (method == HTTP_POST) {
-                aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: $resolvedBody")
+                aCtx.logger?.debug("${ctx.getString(R.string.http_post_body)}: %s".formatAnnotated(resolvedBody.A(DimGrey)))
             }
 
             // 4. Send request
@@ -368,7 +377,7 @@ open class HttpDownload(
             }
         }
         LabeledRow(R.string.http_method) {
-            Spinner(options, selected)
+            ComboBox(options, selected)
         }
 
         AnimatedVisibleV(selected == HTTP_POST) {
@@ -811,7 +820,7 @@ class ParseXML(
         val input = aCtx.lastOutput as ByteArray
 
         return try {
-            val rules = Xml.parse(bytes = input, xpath).map {
+            val rules = Xml.parseRules(bytes = input, xpath).map {
                 RegexRule.fromMap(it)
             }
 
@@ -878,7 +887,8 @@ class RegexExtract(
         return try {
             val opts = Util.flagsToRegexOptions(regexFlags)
 
-            val haystack = input.toString(Charsets.UTF_8)
+            val haystack = input.toString(Charsets.UTF_8) // identical to `String(input)`
+
             val all = pattern.toRegex(opts).findAll(haystack)
 
             val rules = all.map {
@@ -1215,7 +1225,7 @@ class ImportAsRegexRule(
                     Str(R.string.content_rule),
                     Str(R.string.quick_copy),
                 )
-                Spinner(
+                ComboBox(
                     items = items.mapIndexed { index, label ->
                         LabelItem(
                             label = label,
@@ -1249,7 +1259,7 @@ class ImportAsRegexRule(
                 }
 
                 val items = ctx.resources.getStringArray(R.array.regex_action_add_mode)
-                Spinner(
+                ComboBox(
                     items = items.mapIndexed { index, label ->
                         LabelItem(
                             label = label,
@@ -3485,5 +3495,157 @@ class QuickTile(
     @Composable
     override fun Options() {
         NoOptionNeeded()
+    }
+}
+
+
+@Serializable
+@SerialName("GenerateTag")
+class GenerateTag(
+    var tagName: String = "",
+
+    var parseType: Int = 0, // 0: regex, 1: xpath, 2: json path (in the future)
+
+    // Regex
+    var regex: String = "",
+    var regexFlags: Int = Def.DefaultRegexFlags,
+
+    // XPath
+    var xpath: String = "",
+
+    // Json path
+//    var jsonPath: String = "",
+) : IPermissiveAction {
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        val input = aCtx.lastOutput as ByteArray
+
+        val text = input.toString(Charsets.UTF_8)
+
+        var tagValue: String? = null
+        try {
+            when(parseType) {
+                0 -> { // regex
+                    val opts = Util.flagsToRegexOptions(regexFlags)
+                    val reg = regex.toRegex(opts)
+                    tagValue = Util.extractString(reg, text)
+                }
+                1 -> { // xpath
+                    tagValue = Xml.parseString(input, xpath)
+                }
+            }
+
+            aCtx.customTags[tagName] = tagValue ?: ""
+
+            aCtx.logger?.info(ctx.getString(R.string.tag_generated)
+                .formatAnnotated(
+                    tagName.A(DimGrey),
+                    (tagValue ?: "").A(Teal200),
+                )
+            )
+        } catch (e: Exception) {
+            aCtx.logger?.error(ctx.getString(R.string.failed_to_parse_tag))
+            aCtx.logger?.error(e.message ?: "")
+        }
+
+        return true
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.generate_tag)
+    }
+
+    @Composable
+    override fun Summary() {
+        when(parseType) {
+            0 -> {
+                SummaryLabel("{${tagName}} = RegEx: $regex")
+            }
+            1 -> {
+                SummaryLabel("{${tagName}} = XPath: $xpath")
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_generate_tag)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.ByteArray)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None, ParamType.ByteArray)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tag)
+    }
+
+    @Composable
+    override fun Options() {
+        Column {
+            // Tag Name
+            var tagNameState by remember { mutableStateOf(tagName) }
+            StrInputBox(
+                text = tagNameState,
+                label = { Text(Str(R.string.tag_name)) },
+                leadingIconId = R.drawable.ic_tag,
+                onValueChange = {
+                    tagName = it
+                    tagNameState = it
+                },
+                supportingTextStr = if (tagNameState.trim().startsWith("{")) {
+                    Str(R.string.invalid_tag_name)
+                } else null
+            )
+            // Parse Type
+            var selectedParseType by remember { mutableIntStateOf(parseType) }
+            val options = remember {
+                listOf("RegEx", "XPath").mapIndexed { index, label ->
+                    LabelItem(label = label) {
+                        parseType = index
+                        selectedParseType = index
+                    }
+                }
+            }
+            LabeledRow(R.string.parse_type) {
+                ComboBox(options, selectedParseType)
+            }
+
+            // Regex / XPath
+            when (selectedParseType) {
+                0 -> {
+                    val flags = remember { mutableIntStateOf(regexFlags) }
+                    RegexInputBox(
+                        regexStr = regex,
+                        label = { Text(Str(R.string.regex_pattern)) },
+                        regexFlags = flags,
+                        leadingIcon = { GreyIcon(R.drawable.ic_regex) },
+                        placeholder = { DimGreyLabel("code: (\\d+)") },
+                        onRegexStrChange = { newVal, hasError ->
+                            if (!hasError) {
+                                regex = newVal
+                            }
+                        },
+                        onFlagsChange = {
+                            flags.intValue = it
+                            regexFlags = it
+                        }
+                    )
+                }
+                1 -> {
+                    StrInputBox(
+                        text = xpath,
+                        label = { Text("XPath") },
+                        leadingIconId = R.drawable.ic_xpath,
+                        onValueChange = {
+                            xpath = it
+                        },
+                    )
+                }
+            }
+        }
     }
 }

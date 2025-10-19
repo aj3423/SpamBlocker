@@ -34,7 +34,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.Section
-import spam.blocker.ui.widgets.Spinner
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -141,7 +141,7 @@ fun EditBotDialog(
                                     val selected = defaultSchedules.indexOfFirst {
                                         it::class == schedule.value!!::class
                                     }
-                                    Spinner(items = items, selected = selected)
+                                    ComboBox(items = items, selected = selected)
                                 }
 
                                 val triggerConfigSchedule = rememberSaveable { mutableStateOf(false) }

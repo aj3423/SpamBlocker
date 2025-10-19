@@ -72,4 +72,31 @@
     ]]>
     </string>
     <string name="replace_this">Заменить это</string>
+    <string name="generate_tag">Сгенерировать тег</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Извлеките содержимое из предыдущего шага и сохраните его в пользовательском теге для повторного использования в последующих шагах. <br>
+        <br>
+        Это может быть полезно для многошаговых веб-запросов. <br>
+        <br>
+        <b>Опции</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Тип парсинга</b></font> <br>
+        Парсит значение тега, поддерживает регулярные выражения и xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Имя тега</b></font> <br>
+        Имя генерируемого тега. <br>
+        Например, если имя тега — <font color="#03DAC5">my_token</font>,
+         то вы можете использовать <font color="#03DAC5">{my_token}</font> в последующих HTTP-запросах. <br>
+    ]]>
+    </string>
+    <string name="tag_name">Имя тега</string>
+    <string name="parse_type">Тип парсинга</string>
+    <string name="failed_to_parse_tag">Не удалось разобрать тег.</string>
+    <string name="tag_generated">Пользовательский тег сгенерирован: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        Имя тега не должно начинаться с {, не нужно добавлять фигурную скобку.
+    ]]>
+    </string>
 </resources>

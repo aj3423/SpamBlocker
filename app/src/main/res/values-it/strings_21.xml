@@ -73,4 +73,31 @@
     ]]>
     </string>
     <string name="replace_this">Sostituisci questo</string>
+    <string name="generate_tag">Genera tag</string>
+    <string name="help_generate_tag">
+    <![CDATA[
+        Estrae il contenuto dal passaggio precedente e lo memorizza in un tag personalizzato per il riutilizzo nei passaggi successivi. <br>
+        <br>
+        Questo può essere utile per query web a più passaggi. <br>
+        <br>
+        <b>Opzioni</b> <br>
+        <br>
+        <font color="#00BFFF"><b>Tipo di analisi</b></font> <br>
+        Analizza il valore del tag, supporta regex e xpath. <br>
+        <br>
+        <font color="#00BFFF"><b>Nome tag</b></font> <br>
+        Il nome del tag da generare. <br>
+        Ad esempio, se il nome del tag è <font color="#03DAC5">my_token</font>,
+         allora puoi usare <font color="#03DAC5">{my_token}</font> nelle query HTTP successive. <br>
+    ]]>
+    </string>
+    <string name="tag_name">Nome tag</string>
+    <string name="parse_type">Tipo di analisi</string>
+    <string name="failed_to_parse_tag">Impossibile analizzare il tag.</string>
+    <string name="tag_generated">Tag personalizzato generato: %s = %s</string>
+    <string name="invalid_tag_name">
+    <![CDATA[
+        Il nome del tag non dovrebbe iniziare con {, non è necessario aggiungere la parentesi graffa.
+    ]]>
+    </string>
 </resources>
