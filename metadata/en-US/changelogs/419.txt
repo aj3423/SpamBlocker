@@ -1,0 +1,15 @@
+Fixes:
+- Workflow
+    - CSV parser doesn't work with Windows line ending "\r\n"
+    - Crash when removing the last workflow action
+    - ModifyRules can't change rule priority
+- Report Number
+    - Remove the priority for ReportApi, it shouldn't have priority.
+
+Enhancements:
+- Workflow
+    - Http retry
+    - Support customizing tags, useful for multi-step web queries.
+
+Language Support:
+- zh-rTW (thanks to @PeterDaveHello)

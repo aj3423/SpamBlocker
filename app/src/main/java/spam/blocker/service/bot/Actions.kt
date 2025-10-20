@@ -311,7 +311,8 @@ open class HttpDownload(
                     aCtx.logger?.error("HTTP <${result?.statusCode}>: $echo")
                     return false
                 }
-            } catch (_: CancellationException) { // a winner is found, others are cancelled
+            } catch (_: CancellationException) {
+                // For API query, when a winner is found, others will be cancelled
                 aCtx.logger?.debug(ctx.getString(R.string.canceling_thread))
                 return false // no need to retry when canceled
             } catch (e: Exception) {
