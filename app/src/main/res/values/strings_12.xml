@@ -5,8 +5,6 @@
         <br>
         Multiple API endpoints will be queried simultaneously, with the first result received being used and all later results ignored. <br>
         <br>
-        It only applies to calls, not to SMS messages.<br>
-        <br>
         It has the lowest priority by default, meaning it will only be triggered when the call passes all other rules.<br>
         <br>
         <font color="#ea86ff"><b>Default Priority: -1</b></font>

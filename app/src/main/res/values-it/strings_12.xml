@@ -5,8 +5,6 @@
         <br>
         Verranno interrogati simultaneamente più endpoint API, utilizzando il primo risultato ricevuto e ignorando tutti i risultati successivi. <br>
         <br>
-        Si applica solo alle chiamate, non ai messaggi SMS.<br>
-        <br>
         Ha la priorità più bassa per impostazione predefinita, il che significa che verrà attivato solo quando la chiamata supera tutte le altre regole.<br>
         <br>
         <font color="#ea86ff"><b>Priorità predefinita: -1</b></font>

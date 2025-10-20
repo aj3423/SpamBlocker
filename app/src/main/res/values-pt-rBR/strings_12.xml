@@ -5,8 +5,6 @@
         <br>
         Múltiplos endpoints de API serão consultados simultaneamente, com o primeiro resultado recebido sendo usado e todos os resultados posteriores ignorados. <br>
         <br>
-        Aplica-se apenas a chamadas, não a mensagens SMS.<br>
-        <br>
         Por padrão, tem a prioridade mais baixa, o que significa que só será acionado quando a chamada passar por todas as outras regras.<br>
         <br>
         <font color="#ea86ff"><b>Prioridade Padrão: -1</b></font>

@@ -5,8 +5,6 @@
         <br>
         Plusieurs points d\'accès API seront interrogés simultanément, le premier résultat reçu étant utilisé et tous les résultats ultérieurs ignorés. <br>
         <br>
-        Cela s\'applique uniquement aux appels, pas aux messages SMS.<br>
-        <br>
         Il a la priorité la plus basse par défaut, ce qui signifie qu\'il ne sera déclenché que lorsque l\'appel passe toutes les autres règles.<br>
         <br>
         <font color="#ea86ff"><b>Priorité par défaut : -1</b></font>

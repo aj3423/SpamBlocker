@@ -5,8 +5,6 @@
         <br>
         Mehrere API-Endpunkte werden gleichzeitig abgefragt, wobei das erste erhaltene Ergebnis verwendet und alle späteren Ergebnisse ignoriert werden. <br>
         <br>
-        Es gilt nur für Anrufe, nicht für SMS-Nachrichten.<br>
-        <br>
         Es hat standardmäßig die niedrigste Priorität, was bedeutet, dass es nur ausgelöst wird, wenn der Anruf alle anderen Regeln erfüllt.<br>
         <br>
         <font color="#ea86ff"><b>Standardpriorität: -1</b></font>

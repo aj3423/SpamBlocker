@@ -5,8 +5,6 @@
         <br>
         Se consultarán múltiples puntos finales de API simultáneamente, utilizándose el primer resultado recibido y omitiéndose todos los resultados posteriores. <br>
         <br>
-        Solo se aplica a las llamadas, no a los mensajes SMS.<br>
-        <br>
         Tiene la prioridad más baja por defecto, lo que significa que solo se activará cuando la llamada pase todas las demás reglas.<br>
         <br>
         <font color="#ea86ff"><b>Prioridad Predeterminada: -1</b></font>

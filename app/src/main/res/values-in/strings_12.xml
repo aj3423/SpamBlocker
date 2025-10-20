@@ -5,8 +5,6 @@
         <br>
         Beberapa titik akhir API akan dikueri secara bersamaan, dengan hasil pertama yang diterima digunakan dan semua hasil berikutnya diabaikan. <br>
         <br>
-        Ini hanya berlaku untuk panggilan, bukan untuk pesan SMS.<br>
-        <br>
         Prioritasnya paling rendah secara default, yang berarti hanya akan dipicu ketika panggilan melewati semua aturan lainnya.<br>
         <br>
         <font color="#ea86ff"><b>Prioritas Default: -1</b></font>
