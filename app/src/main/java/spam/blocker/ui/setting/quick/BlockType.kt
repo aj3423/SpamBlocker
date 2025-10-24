@@ -15,12 +15,12 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Permission
@@ -28,7 +28,7 @@ import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 @Composable
-fun ConfigAnswerAndHangUp(
+fun ConfigHangUp(
     trigger: MutableState<Boolean>,
     delay: MutableIntState,
 ) {
@@ -111,14 +111,14 @@ fun BlockType() {
 
                 if (selected.intValue == Def.BLOCK_TYPE_ANSWER_AND_HANGUP) {
                     val delay = remember {
-                        mutableIntStateOf(spf.getConfig().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY)
+                        mutableIntStateOf(spf.getDelay().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY)
                     }
                     LaunchedEffect(delay.intValue) {
-                        spf.setConfig(delay.intValue.toString())
+                        spf.setDelay(delay.intValue.toString())
                     }
 
                     val popupTrigger = rememberSaveable { mutableStateOf(false) }
-                    ConfigAnswerAndHangUp(popupTrigger, delay)
+                    ConfigHangUp(popupTrigger, delay)
 
                     StrokeButton(
                         label = "${delay.intValue} ${Str(R.string.seconds_short)}",

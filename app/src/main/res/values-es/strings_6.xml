@@ -14,11 +14,6 @@
         <item>Sáb</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Rechazar</item>
-        <item>Silenciar</item>
-        <item>Colgar</item>
-    </string-array>
 
     <string name="show_passed">Mostrar aprobados</string>
     <string name="show_blocked">Mostrar bloqueados</string>

@@ -23,28 +23,6 @@
     <string name="block_type">封鎖類型</string>
     <string name="for_particular_number">指定號碼</string>
     <string name="help_for_particular_number">啟用時，規則只在號碼和內容都符合時才會生效。</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>拒接</b></font>：<br>
-         與按下拒接按鈕效果相同。完全靜音運作，不會開啟鎖定螢幕。<br>
-        <br>
-        - <font color="#00BFFF"><b>靜音</b></font>：<br>
-         來電會在背景中靜音響鈴，讓來電者以為您不在而錯過電話。<br>
-        <br>
-         如果您遇到重複的騷擾電話，這也可能有幫助，因為它會延長通話時間，降低騷擾電話的效率，可能會讓他們不再打給您。<br>
-        <br>
-        - <font color="#00BFFF"><b>掛斷</b></font>：<br>
-        接聽並掛斷來電，避免進入語音信箱。<br>
-        <br>
-        <font color="#FFA500">注意</font> 鎖定螢幕可能會短暫開啟，
-        您也可能會聽到通話結束音（某些手機有選項可以關閉此音效）。<br>
-        <br>
-        - <b>延遲</b>：<br>
-        &emsp; 預設會在掛斷來電前延遲 1 秒，
-        避免因快速斷線而意外進入語音信箱。<br>
-        &emsp; 如果您想錄音，請安裝通話錄音應用程式並相應增加延遲時間。
-        ]]>
-    </string>
     <string name="help_hang_up_delay">掛斷來電前的延遲時間（秒）。</string>
     <string name="help_dialed">
         <![CDATA[
@@ -74,6 +52,36 @@
         僅適用於來電，<b>不適用</b>於簡訊。<br>
         <br>
         <font color="#ea86ff"><b>優先順序：10</b></font>
+        ]]>
+    </string>
+    <string-array name="block_type_list">
+        <item>拒絕</item>
+        <item>靜音</item>
+        <item>掛斷</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>拒絕</b></font>： <br>
+         與按下拒絕按鈕相同。它會完全靜音運作，鎖定螢幕不會亮起。<br>
+        <br>
+        - <font color="#00BFFF"><b>靜音</b></font>： <br>
+         它會在背景靜音響鈴，讓來電者感覺您無法接聽電話並錯過了通話。 <br>
+        <br>
+         如果您遇到重複的垃圾電話，這也可能有所幫助，它會延長通話時間，降低垃圾電話者的效率，潛在地阻止他們再次致電給您。<br>
+        <br>
+        - <font color="#00BFFF"><b>掛斷</b></font>： <br>
+        接聽並掛斷電話，以防止其轉到語音信箱。 <br>
+        <br>
+        當正在通話時收到垃圾電話，它將切換到「拒絕」
+         以避免掛斷正在進行的通話。 <br>
+        <br>
+        <font color="#FFA500">注意</font> 鎖定螢幕可能會短暫亮起，
+        您也可能會聽到通話結束音（有些手機提供靜音此聲音的選項）。 <br>
+        <br>
+        - <b>延遲</b>： <br>
+        &emsp; 預設情況下，電話掛斷前有 1 秒的延遲，
+        旨在防止因快速斷線而導致電話意外轉到語音信箱。<br>
+        &emsp; 如果您想錄製通話，請安裝通話錄音應用程式並相應地增加延遲時間。
         ]]>
     </string>
 </resources>

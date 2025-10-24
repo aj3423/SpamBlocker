@@ -14,11 +14,6 @@
         <item>Cmt</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Reddet</item>
-        <item>Sessize Al</item>
-        <item>Kapat</item>
-    </string-array>
 
     <string name="show_passed">Geçenleri göster</string>
     <string name="show_blocked">Engellenenleri göster</string>

@@ -27,28 +27,6 @@
     <string name="block_type">Block Type</string>
     <string name="for_particular_number">For number</string>
     <string name="help_for_particular_number">When enabled, the rule only applies when both number and content match.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Reject</b></font>: <br>
-         Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silence</b></font>: <br>
-         It will ring silently in the background, giving the impression to the caller that you were unavailable and missed the call. <br>
-        <br>
-         It may also help if you are experiencing repeated spam calls, it will extend the call duration, making it less efficient for spammers, potentially discouraging them from calling you again.<br>
-        <br>
-        - <font color="#00BFFF"><b>Hang Up</b></font>: <br>
-        Answer and hang up the call to prevent it from going to voicemail. <br>
-        <br>
-        <font color="#FFA500">Note</font> The lockscreen can be turned on for a short while,
-        you might also hear a call end tone(some phones offer an option to mute this sound). <br>
-        <br>
-        - The <b>delay</b>: <br>
-        &emsp; By default, there is a 1-second delay before the call is hung up,
-        to prevent calls from accidentally going to voicemail due to rapid disconnection.<br>
-        &emsp; If you want to record calls, install a call recording app and increase the delay accordingly.
-        ]]>
-    </string>
     <string name="help_hang_up_delay">The delay before the call is hung up(in seconds).</string>
     <string name="help_dialed">
         <![CDATA[
@@ -78,6 +56,36 @@
         Only applies to calls, <b>not</b> to text messages. <br>
         <br>
         <font color="#ea86ff"><b>Priority: 10</b></font>
+        ]]>
+    </string>
+    <string-array name="block_type_list">
+        <item>Reject</item>
+        <item>Silence</item>
+        <item>Hang Up</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Reject</b></font>: <br>
+         Same as pressing the decline button. It works completely silently, lockscreen won\'t be turned on.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silence</b></font>: <br>
+         It will ring silently in the background, giving the impression to the caller that you were unavailable and missed the call. <br>
+        <br>
+         It may also help if you are experiencing repeated spam calls, it will extend the call duration, making it less efficient for spammers, potentially discouraging them from calling you again.<br>
+        <br>
+        - <font color="#00BFFF"><b>Hang Up</b></font>: <br>
+        Answer and hang up the call to prevent it from going to voicemail. <br>
+        <br>
+        When the spam call is received during an ongoing call, it will switch to \"Reject\"
+         to avoid hanging up the ongoing call. <br>
+        <br>
+        <font color="#FFA500">Note</font> The lockscreen can be turned on for a short while,
+        you might also hear a call end tone(some phones offer an option to mute this sound). <br>
+        <br>
+        - The <b>delay</b>: <br>
+        &emsp; By default, there is a 1-second delay before the call is hung up,
+        to prevent calls from accidentally going to voicemail due to rapid disconnection.<br>
+        &emsp; If you want to record calls, install a call recording app and increase the delay accordingly.
         ]]>
     </string>
 </resources>

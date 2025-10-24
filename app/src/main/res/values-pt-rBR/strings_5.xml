@@ -29,28 +29,6 @@
     <string name="block_type">Tipo de Bloqueio</string>
     <string name="for_particular_number">Para o número</string>
     <string name="help_for_particular_number">Quando habilitado, a regra só se aplica quando o número e o conteúdo correspondem.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
-         Igual a pressionar o botão de recusar. Funciona completamente em silêncio, a tela de bloqueio não será ativada.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-         Toca silenciosamente em segundo plano, dando a impressão ao chamador de que você estava indisponível e perdeu a chamada. <br>
-        <br>
-         Também pode ajudar se você estiver recebendo chamadas de spam repetidas, pois estenderá a duração da chamada, tornando-a menos eficiente para spammers, potencialmente desencorajando-os a ligar novamente.<br>
-        <br>
-        - <font color="#00BFFF"><b>Desligar</b></font>: <br>
-        Atende e desliga a chamada para impedir que ela vá para o correio de voz. <br>
-        <br>
-        <font color="#FFA500">Nota</font> A tela de bloqueio pode ser ativada por um curto período,
-        você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar esse som). <br>
-        <br>
-        - O <b>atraso</b>: <br>
-        &emsp; Por padrão, há um atraso de 1 segundo antes de a chamada ser desligada,
-        para evitar que as chamadas vão acidentalmente para o correio de voz devido à desconexão rápida.<br>
-        &emsp; Se você quiser gravar chamadas, instale um aplicativo de gravação de chamadas e aumente o atraso de acordo.
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         Permitir chamadas de números discados anteriormente.<br>
@@ -82,4 +60,34 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">O atraso antes que a chamada seja desligada.</string>
+    <string-array name="block_type_list">
+        <item>Rejeitar</item>
+        <item>Silenciar</item>
+        <item>Desligar</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rejeitar</b></font>: <br>
+         O mesmo que pressionar o botão de recusar. Funciona de forma completamente silenciosa, a tela de bloqueio não será ativada.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+         Tocará silenciosamente em segundo plano, dando a impressão ao chamador de que você estava indisponível e perdeu a chamada. <br>
+        <br>
+         Também pode ajudar se você estiver recebendo chamadas de spam repetidas; isso estenderá a duração da chamada, tornando-a menos eficiente para os spammers, potencialmente desencorajando-os a ligar novamente.<br>
+        <br>
+        - <font color="#00BFFF"><b>Desligar</b></font>: <br>
+        Atender e desligar a chamada para evitar que vá para o correio de voz. <br>
+        <br>
+        Quando a chamada de spam é recebida durante uma chamada em curso, ela mudará para \"Rejeitar\"
+         para evitar desligar a chamada em curso. <br>
+        <br>
+        <font color="#FFA500">Nota</font> A tela de bloqueio pode ser ativada por um curto período,
+        você também pode ouvir um tom de fim de chamada (alguns telefones oferecem uma opção para silenciar esse som). <br>
+        <br>
+        - O <b>atraso</b>: <br>
+        &emsp; Por padrão, há um atraso de 1 segundo antes que a chamada seja desligada,
+        para evitar que as chamadas vão acidentalmente para o correio de voz devido à desconexão rápida.<br>
+        &emsp; Se você deseja gravar chamadas, instale um aplicativo de gravação de chamadas e aumente o atraso de acordo.
+        ]]>
+    </string>
 </resources>

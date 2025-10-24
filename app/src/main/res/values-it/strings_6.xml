@@ -14,11 +14,6 @@
         <item>Sab</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Rifiuta</item>
-        <item>Silenzio</item>
-        <item>Chiudi</item>
-    </string-array>
 
     <string name="show_passed">Mostra Chiamate Perse</string>
     <string name="show_blocked">Mostra Bloccate</string>

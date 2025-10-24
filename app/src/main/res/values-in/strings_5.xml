@@ -29,28 +29,6 @@
     <string name="block_type">Jenis Blokir</string>
     <string name="for_particular_number">Untuk nomor</string>
     <string name="help_for_particular_number">Apabila diaktifkan, aturan ini hanya berlaku apabila nomor dan isinya cocok.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Tolak</b></font>: <br>
-         Sama seperti menekan tombol tolak. Ini bekerja sepenuhnya tanpa suara, layar kunci tidak akan dinyalakan.<br>
-        <br>
-        - <font color="#00BFFF"><b>Hening</b></font>: <br>
-         Ini akan berdering tanpa suara di latar belakang, memberikan kesan kepada penelepon bahwa Anda sedang tidak tersedia dan tidak menjawab panggilan. <br>
-        <br>
-         Ini juga dapat membantu jika Anda mengalami panggilan spam berulang kali, ini akan memperpanjang durasi panggilan, sehingga kurang efisien bagi para spammer, yang berpotensi membuat mereka enggan untuk menghubungi Anda lagi.<br>
-        <br>
-        - <font color="#00BFFF"><b>Tutup</b></font>: <br>
-        Jawab dan tutup panggilan agar tidak masuk ke pesan suara. <br>
-        <br>
-        <font color="#FFA500">Catatan</font> Layar kunci dapat dinyalakan untuk sementara waktu,
-        Anda mungkin juga akan mendengar nada akhir panggilan (beberapa telepon menawarkan opsi untuk mematikan suara ini). <br>
-        <br>
-        - <b>Penundaan</b>: <br>
-        &emsp; Secara default, ada penundaan 1 detik sebelum panggilan ditutup,
-        untuk mencegah panggilan masuk ke pesan suara secara tidak sengaja karena terputus dengan cepat.<br>
-        &emsp; Jika Anda ingin merekam panggilan, pasang aplikasi perekaman panggilan dan tingkatkan penundaan yang sesuai.
-        ]]>
-    </string>
     <string name="help_hang_up_delay">Penundaan sebelum panggilan ditutup (dalam detik).</string>
     <string name="help_dialed">
         <![CDATA[
@@ -80,6 +58,36 @@
         Hanya berlaku untuk panggilan, <b>tidak</b> untuk pesan teks <br>
         <br>
         <font color="#ea86ff"><b>Prioritas: 10</b></font>
+        ]]>
+    </string>
+    <string-array name="block_type_list">
+        <item>Tolak</item>
+        <item>Senyap</item>
+        <item>Tutup Panggilan</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Tolak</b></font>: <br>
+         Sama seperti menekan tombol tolak. Ini bekerja sepenuhnya secara senyap, layar kunci tidak akan menyala.<br>
+        <br>
+        - <font color="#00BFFF"><b>Senyap</b></font>: <br>
+         Panggilan akan berdering secara senyap di latar belakang, memberikan kesan kepada penelepon bahwa Anda tidak tersedia dan melewatkan panggilan tersebut. <br>
+        <br>
+         Ini juga dapat membantu jika Anda mengalami panggilan spam berulang, karena akan memperpanjang durasi panggilan, menjadikannya kurang efisien bagi spammer, dan berpotensi membuat mereka enggan menelepon Anda lagi.<br>
+        <br>
+        - <font color="#00BFFF"><b>Tutup Panggilan</b></font>: <br>
+        Jawab dan tutup panggilan untuk mencegahnya masuk ke pesan suara. <br>
+        <br>
+        Ketika panggilan spam diterima saat ada panggilan yang sedang berlangsung, ini akan beralih ke \"Tolak\"
+         untuk menghindari menutup panggilan yang sedang berlangsung. <br>
+        <br>
+        <font color="#FFA500">Catatan</font> Layar kunci mungkin menyala sebentar,
+        Anda mungkin juga mendengar nada akhir panggilan (beberapa ponsel menawarkan opsi untuk membisukan suara ini). <br>
+        <br>
+        - <b>Penundaan</b>: <br>
+        &emsp; Secara default, ada penundaan 1 detik sebelum panggilan ditutup,
+        untuk mencegah panggilan secara tidak sengaja masuk ke pesan suara karena pemutusan yang cepat.<br>
+        &emsp; Jika Anda ingin merekam panggilan, instal aplikasi perekam panggilan dan tingkatkan penundaan sesuai kebutuhan.
         ]]>
     </string>
 </resources>

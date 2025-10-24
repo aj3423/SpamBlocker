@@ -14,11 +14,6 @@
         <item>Сб</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Відхилити</item>
-        <item>Заглушити</item>
-        <item>Завершити</item>
-    </string-array>
 
     <string name="show_passed">Показати пройдені</string>
     <string name="show_blocked">Показати заблоковані</string>

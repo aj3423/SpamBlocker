@@ -944,4 +944,14 @@ object Util {
         }
         return ongoingEvents
     }
+
+    fun isInCall(ctx: Context): Boolean {
+        if (!Permission.phoneState.isGranted) {
+            return false
+        }
+
+        val manager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+
+        return manager.callState == TelephonyManager.CALL_STATE_OFFHOOK
+    }
 }

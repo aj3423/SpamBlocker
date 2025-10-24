@@ -14,11 +14,6 @@
         <item>Sabtu</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Tolak</item>
-        <item>Hening</item>
-        <item>Tutup</item>
-    </string-array>
 
     <string name="show_passed">Tampilkan yang Lolos</string>
     <string name="show_blocked">Tampilkan yang Diblokir</string>

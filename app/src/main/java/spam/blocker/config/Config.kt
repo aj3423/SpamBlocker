@@ -450,13 +450,13 @@ class BlockType : IConfig {
     override fun load(ctx: Context) {
         val spf = spf.BlockType(ctx)
         type = spf.getType()
-        config = spf.getConfig()
+        config = spf.getDelay()
     }
 
     override fun apply(ctx: Context) {
         val spf = spf.BlockType(ctx)
         spf.setType(type)
-        spf.setConfig(config)
+        spf.setDelay(config)
     }
 }
 

@@ -93,12 +93,19 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun answerThenHangUp(rawNumber: String, r: ICheckResult, details: Details) {
-        val now = System.currentTimeMillis()
-
         val ctx = this
 
+        // If a call is ongoing, don't hang-up, Reject instead
+        if (Util.isInCall(ctx)) {
+            // "Reject" or "Silence" makes no difference here, it just keeps ringing on the peer.
+            reject(details)
+            return
+        }
+
+        val now = System.currentTimeMillis()
+
         // save 'number/current time/hang up delay' to shared pref, they will be read soon in CallStateReceiver
-        spf.Temporary(this).apply {
+        spf.Temporary(ctx).apply {
             setLastCallToBlock(Util.clearNumber(rawNumber))
             setLastCallTime(now)
             setHangUpDelay(r.hangUpDelay(ctx))

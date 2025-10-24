@@ -51,7 +51,7 @@ object Def {
     const val SETTING_ANSWERED_IN_X_DAY = "answered_in_x_day"
     const val SETTING_ANSWERED_WARNING_ACKNOWLEDGED = "answered_warning_acknowledged"
     const val SETTING_BLOCK_TYPE = "block_type"
-    const val SETTING_BLOCK_TYPE_CONFIG = "block_type_config"
+    const val SETTING_BLOCK_TYPE_DELAY = "block_type_config" // old name
     const val SETTING_ENABLE_OFF_TIME = "off_time"
     const val SETTING_OFF_TIME_START_HOUR = "off_time_start_hour"
     const val SETTING_OFF_TIME_START_MIN = "off_time_start_min"

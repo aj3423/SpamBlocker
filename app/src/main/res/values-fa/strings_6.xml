@@ -14,11 +14,6 @@
         <item>شنبه</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>رد تماس</item>
-        <item>بی صدا</item>
-        <item>قطع تماس</item>
-    </string-array>
 
     <string name="show_passed">نمایش تماس‌های عبوری</string>
     <string name="show_blocked">نمایش تماس‌های مسدود شده</string>

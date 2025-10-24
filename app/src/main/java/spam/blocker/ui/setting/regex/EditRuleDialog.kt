@@ -48,7 +48,7 @@ import spam.blocker.ui.rememberSaveableMutableStateListOf
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.SettingRow
 import spam.blocker.ui.setting.quick.ChannelPicker
-import spam.blocker.ui.setting.quick.ConfigAnswerAndHangUp
+import spam.blocker.ui.setting.quick.ConfigHangUp
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
@@ -575,7 +575,7 @@ fun RuleEditDialog(
                                 }
 
                                 val popupTrigger = rememberSaveable { mutableStateOf(false) }
-                                ConfigAnswerAndHangUp(popupTrigger, delay)
+                                ConfigHangUp(popupTrigger, delay)
 
                                 StrokeButton(
                                     label = "${delay.intValue} ${Str(R.string.seconds_short)}",

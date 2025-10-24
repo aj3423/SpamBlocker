@@ -268,8 +268,8 @@ class spf { // for namespace only
     class BlockType(ctx: Context) : SharedPref(ctx) {
         fun setType(type: Int) { writeInt(Def.SETTING_BLOCK_TYPE, type) }
         fun getType(): Int { return readInt(Def.SETTING_BLOCK_TYPE, Def.DEF_BLOCK_TYPE) }
-        fun setConfig(config: String) { writeString(Def.SETTING_BLOCK_TYPE_CONFIG, config) }
-        fun getConfig(): String { return readString(Def.SETTING_BLOCK_TYPE_CONFIG, "") }
+        fun setDelay(config: String) { writeString(Def.SETTING_BLOCK_TYPE_DELAY, config) }
+        fun getDelay(): String { return readString(Def.SETTING_BLOCK_TYPE_DELAY, "") }
     }
 
     class Notification(ctx: Context) : SharedPref(ctx) {

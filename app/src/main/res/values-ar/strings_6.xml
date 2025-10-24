@@ -14,11 +14,6 @@
         <item>السبت</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>رفض</item>
-        <item>صمت</item>
-        <item>قطع الاتصال</item>
-    </string-array>
 
     <string name="show_passed">إظهار المكالمات المارة</string>
     <string name="show_blocked">إظهار المكالمات المحظورة</string>

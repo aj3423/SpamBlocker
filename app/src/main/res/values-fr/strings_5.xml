@@ -29,28 +29,6 @@
     <string name="block_type">Type de blocage</string>
     <string name="for_particular_number">Pour le numéro</string>
     <string name="help_for_particular_number">Lorsque cette option est activée, la règle s’applique uniquement lorsque le numéro et le contenu correspondent.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Rejeter</b></font>: <br>
-         Identique à appuyer sur le bouton de refus. Cela fonctionne en silence, l\'écran de verrouillage ne s\'allumera pas.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silencieux</b></font>: <br>
-         Il sonnera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous étiez indisponible et avez manqué l\'appel. <br>
-        <br>
-         Cela peut également être utile si vous recevez des appels indésirables répétés, cela prolongera la durée de l\'appel, le rendant moins efficace pour les spammeurs, ce qui pourrait les dissuader de vous appeler à nouveau.<br>
-        <br>
-        - <font color="#00BFFF"><b>Raccrocher</b></font>: <br>
-        Répondre et raccrocher pour empêcher l\'appel d\'aller en messagerie vocale. <br>
-        <br>
-        <font color="#FFA500">Remarque</font> L\'écran de verrouillage peut s\'allumer pendant un court instant,
-        vous pourriez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour couper ce son). <br>
-        <br>
-        - Le <b>retard</b> : <br>
-        &emsp; Par défaut, il y a un délai d\'une seconde avant que l\'appel ne soit raccroché,
-        pour éviter que les appels n\'aillent accidentellement en messagerie vocale en raison d\'une déconnexion rapide.<br>
-        &emsp; Si vous souhaitez enregistrer des appels, installez une application d\'enregistrement d\'appels et augmentez le délai en conséquence.
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         Autoriser les appels provenant de numéros précédemment composés.<br>
@@ -82,4 +60,34 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">Le délai avant que l\'appel ne soit raccroché.</string>
+    <string-array name="block_type_list">
+        <item>Rejeter</item>
+        <item>Mettre en silence</item>
+        <item>Raccrocher</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rejeter</b></font> : <br>
+         Équivalent à appuyer sur le bouton de refus. Fonctionne en toute discrétion, l\'écran de verrouillage ne s\'allumera pas.<br>
+        <br>
+        - <font color="#00BFFF"><b>Mettre en silence</b></font> : <br>
+         L\'appel sonnera silencieusement en arrière-plan, donnant l\'impression à l\'appelant que vous étiez indisponible et avez manqué l\'appel. <br>
+        <br>
+         Cela peut également aider si vous recevez des appels de spam répétés ; cela prolongera la durée de l\'appel, le rendant moins efficace pour les spammeurs, les décourageant potentiellement de vous rappeler.<br>
+        <br>
+        - <font color="#00BFFF"><b>Raccrocher</b></font> : <br>
+        Répondre puis raccrocher l\'appel pour l\'empêcher d\'aller à la messagerie vocale. <br>
+        <br>
+        Lorsqu\'un appel de spam est reçu pendant un appel en cours, le système passera en mode \"Rejeter\"
+         pour éviter de raccrocher l\'appel en cours. <br>
+        <br>
+        <font color="#FFA500">Note</font> L\'écran de verrouillage peut s\'allumer brièvement,
+        vous pourriez également entendre une tonalité de fin d\'appel (certains téléphones offrent une option pour désactiver ce son). <br>
+        <br>
+        - Le <b>délai</b> : <br>
+        &emsp; Par défaut, il y a un délai de 1 seconde avant que l\'appel ne soit raccroché,
+        pour éviter que les appels n\'aillent accidentellement à la messagerie vocale en raison d\'une déconnexion rapide.<br>
+        &emsp; Si vous souhaitez enregistrer des appels, installez une application d\'enregistrement d\'appels et augmentez le délai en conséquence.
+        ]]>
+    </string>
 </resources>

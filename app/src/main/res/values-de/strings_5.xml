@@ -29,28 +29,6 @@
     <string name="block_type">Block-Typ</string>
     <string name="for_particular_number">Für Nummer</string>
     <string name="help_for_particular_number">Wenn aktiviert, gilt die Regel nur, wenn sowohl Nummer als auch Inhalt übereinstimmen.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Ablehnen</b></font>: <br>
-         Entspricht dem Drücken der Ablehntaste. Funktioniert völlig lautlos, der Sperrbildschirm wird nicht aktiviert.<br>
-        <br>
-        - <font color="#00BFFF"><b>Stummschalten</b></font>: <br>
-         Es klingelt leise im Hintergrund und erweckt beim Anrufer den Eindruck, dass Sie nicht erreichbar waren und den Anruf verpasst haben. <br>
-        <br>
-         Dies kann auch hilfreich sein, wenn Sie wiederholt Spam-Anrufe erhalten. Es verlängert die Anrufdauer, was Spammer weniger effizient macht und sie möglicherweise davon abhält, Sie erneut anzurufen.<br>
-        <br>
-        - <font color="#00BFFF"><b>Auflegen</b></font>: <br>
-        Anruf annehmen und auflegen, um zu verhindern, dass er auf die Mailbox geht. <br>
-        <br>
-        <font color="#FFA500">Hinweis</font> Der Sperrbildschirm kann kurzzeitig aktiviert werden,
-        es kann auch ein Anrufabbruchton zu hören sein (einige Telefone bieten eine Option zum Stummschalten dieses Tons). <br>
-        <br>
-        - Die <b>Verzögerung</b>: <br>
-        &emsp; Standardmäßig gibt es eine 1-Sekunden-Verzögerung, bevor der Anruf aufgelegt wird,
-        um zu verhindern, dass Anrufe aufgrund einer schnellen Trennung versehentlich auf die Mailbox gehen.<br>
-        &emsp; Wenn Sie Anrufe aufnehmen möchten, installieren Sie eine Anrufaufzeichnungs-App und erhöhen Sie die Verzögerung entsprechend.
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         Anrufe von zuvor gewählten Nummern zulassen.<br>
@@ -82,4 +60,34 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">Die Verzögerung, bevor der Anruf beendet wird.</string>
+    <string-array name="block_type_list">
+        <item>Ablehnen</item>
+        <item>Stummschalten</item>
+        <item>Auflegen</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Ablehnen</b></font>: <br>
+         Wie das Drücken der Ablehnen-Taste. Funktioniert völlig geräuschlos, der Sperrbildschirm wird nicht eingeschaltet.<br>
+        <br>
+        - <font color="#00BFFF"><b>Stummschalten</b></font>: <br>
+         Es klingelt im Hintergrund lautlos, wodurch der Anrufer den Eindruck erhält, dass Sie nicht erreichbar waren und den Anruf verpasst haben. <br>
+        <br>
+         Es kann auch helfen, wenn Sie wiederholt Spam-Anrufe erhalten, da es die Anrufdauer verlängert und es für Spammer weniger effizient macht, was sie möglicherweise davon abhält, Sie erneut anzurufen.<br>
+        <br>
+        - <font color="#00BFFF"><b>Auflegen</b></font>: <br>
+        Den Anruf annehmen und sofort auflegen, um zu verhindern, dass er auf die Mailbox weitergeleitet wird. <br>
+        <br>
+        Wird ein Spam-Anruf während eines laufenden Gesprächs empfangen, wird auf „Ablehnen“ umgeschaltet,
+         um zu vermeiden, das laufende Gespräch zu beenden. <br>
+        <br>
+        <font color="#FFA500">Hinweis</font> Der Sperrbildschirm kann kurz eingeschaltet werden,
+        Sie könnten auch einen Anrufbeendigungston hören (einige Telefone bieten eine Option, diesen Ton stummzuschalten). <br>
+        <br>
+        - Die <b>Verzögerung</b>: <br>
+        &emsp; Standardmäßig gibt es eine Verzögerung von 1 Sekunde, bevor der Anruf aufgelegt wird,
+        um zu verhindern, dass Anrufe aufgrund schneller Trennung versehentlich auf die Mailbox gehen.<br>
+        &emsp; Wenn Sie Anrufe aufzeichnen möchten, installieren Sie eine Anrufaufzeichnungs-App und erhöhen Sie die Verzögerung entsprechend.
+        ]]>
+    </string>
 </resources>

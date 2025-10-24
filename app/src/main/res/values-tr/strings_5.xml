@@ -29,27 +29,6 @@
     <string name="block_type">Blok Türü</string>
     <string name="for_particular_number">Numara için</string>
     <string name="help_for_particular_number">Açık olduğunda, kural yalnızca hem numara hem de içerik eşleştiğinde uygulanır.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Reddet</b></font>: <br>
-         Reddet düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
-        <br>
-        - <font color="#00BFFF"><b>Sessize Al</b></font>: <br>
-         Arka planda sessizce çalar, arayana müsait olmadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
-        <br>
-         Tekrarlayan istenmeyen aramalar yaşıyorsanız da yardımcı olabilir, arama süresini uzatarak spam gönderenler için daha az verimli hale getirir ve sizi tekrar aramaktan caydırabilir.<br>
-        <br>
-        - <font color="#00BFFF"><b>Kapat</b></font>: <br>
-        Aramayı yanıtlayın ve sesli mesaj kutusuna gitmesini önlemek için kapatın. <br>
-        <br>
-        <font color="#FFA500">Not</font> Kilit ekranı kısa bir süre için açılabilir,
-        ayrıca arama sonu sesi duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar). <br>
-        <br>
-        - <b>Gecikme</b>: <br>
-        &emsp; Varsayılan olarak, hızlı bağlantı kesilmesi nedeniyle aramaların yanlışlıkla sesli mesaj kutusuna gitmesini önlemek için arama kapatılmadan önce 1 saniyelik bir gecikme vardır.<br>
-        &emsp; Aramaları kaydetmek istiyorsanız, bir arama kaydı uygulaması yükleyin ve gecikmeyi buna göre artırın.
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         Daha önce aranan numaralardan gelen çağrılara izin ver.<br>
@@ -81,4 +60,32 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">Arama kapatılmadan önceki gecikme.</string>
+    <string-array name="block_type_list">
+        <item>Reddet</item>
+        <item>Sessize Al</item>
+        <item>Kapat</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Reddet</b></font>: <br>
+         Reddetme düğmesine basmakla aynıdır. Tamamen sessiz çalışır, kilit ekranı açılmaz.<br>
+        <br>
+        - <font color="#00BFFF"><b>Sessize Al</b></font>: <br>
+         Arka planda sessizce çalarak arayana ulaşılamadığınız ve aramayı kaçırdığınız izlenimini verir. <br>
+        <br>
+         Tekrarlayan spam aramalar yaşıyorsanız da yardımcı olabilir; arama süresini uzatarak spam gönderenler için daha az verimli hale getirir ve potansiyel olarak sizi tekrar aramamalarını sağlar.<br>
+        <br>
+        - <font color="#00BFFF"><b>Kapat</b></font>: <br>
+        Aramanın sesli mesaja gitmesini önlemek için aramayı yanıtlar ve kapatır. <br>
+        <br>
+        Devam eden bir arama sırasında spam araması alındığında, devam eden aramayı kapatmamak için \"Reddet\" seçeneğine geçilir. <br>
+        <br>
+        <font color="#FFA500">Not</font> Kilit ekranı kısa bir süre açılabilir,
+        ayrıca bir arama bitiş tonu duyabilirsiniz (bazı telefonlar bu sesi kapatma seçeneği sunar). <br>
+        <br>
+        - <b>Gecikme</b>: <br>
+        &emsp; Varsayılan olarak, hızlı bağlantı kesintisi nedeniyle aramaların yanlışlıkla sesli mesaja gitmesini önlemek için arama kapatılmadan önce 1 saniyelik bir gecikme vardır.<br>
+        &emsp; Aramaları kaydetmek isterseniz, bir arama kayıt uygulaması yükleyin ve gecikmeyi buna göre artırın.
+        ]]>
+    </string>
 </resources>

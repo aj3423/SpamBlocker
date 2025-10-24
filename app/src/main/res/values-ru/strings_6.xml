@@ -14,11 +14,6 @@
         <item>Сб</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Отклонить</item>
-        <item>Без звука</item>
-        <item>Сбросить</item>
-    </string-array>
 
     <string name="show_passed">Показать пропущенные</string>
     <string name="show_blocked">Показать заблокированные</string>

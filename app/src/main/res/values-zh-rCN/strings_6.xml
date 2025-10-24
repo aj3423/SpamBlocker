@@ -14,11 +14,6 @@
         <item>周六</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>拒绝</item>
-        <item>静音</item>
-        <item>挂断</item>
-    </string-array>
 
     <string name="show_passed">显示通过</string>
     <string name="show_blocked">显示拦截</string>

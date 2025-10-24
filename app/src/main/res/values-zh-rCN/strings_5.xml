@@ -29,28 +29,6 @@
     <string name="block_type">阻止类型</string>
     <string name="for_particular_number">针对号码</string>
     <string name="help_for_particular_number">启用后，规则仅在号码和内容匹配时才适用。</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>拒绝</b></font>: <br>
-         与按下拒绝按钮相同。它完全静默运行，不会打开锁屏。<br>
-        <br>
-        - <font color="#00BFFF"><b>静音</b></font>: <br>
-         它会在后台静音响铃，给呼叫者留下您无法接听电话的印象。<br>
-        <br>
-         如果您遇到反复拨打的骚扰电话，这也有帮助，它会延长通话时间，降低骚扰电话的效率，可能会阻止他们再次拨打您的电话。<br>
-        <br>
-        - <font color="#00BFFF"><b>挂断</b></font>: <br>
-        接听并挂断电话以防止其进入语音信箱。<br>
-        <br>
-        <font color="#FFA500">注意</font> 锁屏可能会短暂打开，
-        您也可能会听到电话结束音（某些手机提供静音此声音的选项）。<br>
-        <br>
-        - <b>延迟</b>: <br>
-        &emsp; 默认情况下，挂断电话前会延迟 1 秒，
-        以防止由于快速断开连接而意外将电话转到语音信箱。<br>
-        &emsp; 如果您想录制电话，请安装电话录音应用程序并相应地增加延迟。
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         允许接听之前拨打过的号码的电话。<br>
@@ -82,4 +60,34 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">挂断电话前的延迟。</string>
+    <string-array name="block_type_list">
+        <item>拒接</item>
+        <item>静音</item>
+        <item>挂断</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>拒接</b></font>: <br>
+         与按下拒绝按钮相同。它完全静默工作，不会点亮锁屏。<br>
+        <br>
+        - <font color="#00BFFF"><b>静音</b></font>: <br>
+         它会在后台静默响铃，给来电者一种您不在或错过了电话的印象。<br>
+        <br>
+         如果您正在遭受重复的垃圾电话（spam calls），它可能也会有所帮助，它会延长通话时长，降低垃圾电话（spammers）的效率，从而可能阻止他们再次呼叫您。<br>
+        <br>
+        - <font color="#00BFFF"><b>挂断</b></font>: <br>
+        接听并挂断电话，以防止其转到语音信箱。<br>
+        <br>
+        当正在进行通话时收到垃圾电话（spam call）时，它将切换到“拒接”
+         以避免挂断正在进行的通话。<br>
+        <br>
+        <font color="#FFA500">注意</font> 锁屏可能会短暂点亮，
+        您也可能会听到通话结束音（有些手机提供静音此声音的选项）。<br>
+        <br>
+        - <b>延迟</b>: <br>
+        &emsp; 默认情况下，在挂断电话前有1秒的延迟，
+        以防止因快速断开而导致电话意外转到语音信箱。<br>
+        &emsp; 如果您想录音通话，请安装一个通话录音应用并相应地增加延迟。
+        ]]>
+    </string>
 </resources>

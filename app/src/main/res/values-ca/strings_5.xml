@@ -29,28 +29,6 @@
     <string name="block_type">Tipus de bloqueig</string>
     <string name="for_particular_number">Per al número</string>
     <string name="help_for_particular_number">Quan està activat, la regla només s\'aplica quan coincideixen el número i el contingut.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Rebutjar</b></font>: <br>
-         Igual que prémer el botó de declinar. Funciona completament en silenci, el bloqueig de pantalla no s\'activarà.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-         Sonarà en silenci en segon pla, donant la impressió a la persona que truca que no està disponible i ha perdut la trucada. <br>
-        <br>
-         També pot ajudar si experimenta trucades de correu brossa repetides, allargarà la durada de la trucada, fent-la menys eficient per als remitents de correu brossa, cosa que podria desanimar-los a tornar-vos a trucar.<br>
-        <br>
-        - <font color="#00BFFF"><b>Penjar</b></font>: <br>
-        Contesta i penja la trucada per evitar que vagi al correu de veu. <br>
-        <br>
-        <font color="#FFA500">Nota</font> El bloqueig de pantalla es pot activar durant un temps breu,
-        també és possible que sentiu un to de final de trucada (alguns telèfons ofereixen una opció per silenciar aquest so). <br>
-        <br>
-        - El <b>retard</b>: <br>
-        &emsp; Per defecte, hi ha un retard d\'1 segon abans que la trucada es pengi,
-        per evitar que les trucades vagin accidentalment al correu de veu a causa d\'una desconnexió ràpida.<br>
-        &emsp; Si voleu gravar trucades, instal·leu una aplicació de gravació de trucades i augmenteu el retard en conseqüència.
-        ]]>
-    </string>
     <string name="help_hang_up_delay">El retard abans que es pengi la trucada (en segons).</string>
     <string name="help_dialed">
         <![CDATA[
@@ -80,6 +58,36 @@
         Només s\'aplica a les trucades, <b>no</b> als missatges de text. <br>
         <br>
         <font color="#ea86ff"><b>Prioritat: 10</b></font>
+        ]]>
+    </string>
+    <string-array name="block_type_list">
+        <item>Rebutjar</item>
+        <item>Silenciar</item>
+        <item>Penjar</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rebutjar</b></font>: <br>
+         Igual que prémer el botó de rebutjar. Funciona completament en silenci, la pantalla de bloqueig no s\'encendrà.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+         Sonarà en silenci en segon pla, donant la impressió a la persona que truca que no estaves disponible i vas perdre la trucada. <br>
+        <br>
+         També pot ajudar si estàs experimentant trucades de spam repetides; allargarà la durada de la trucada, fent-la menys eficient per als spammers, podent desincentivar-los de tornar a trucar-te.<br>
+        <br>
+        - <font color="#00BFFF"><b>Penjar</b></font>: <br>
+        Respondre i penjar la trucada per evitar que vagi al contestador. <br>
+        <br>
+        Quan es rep la trucada de spam durant una trucada en curs, canviarà a \"Rebutjar\"
+         per evitar penjar la trucada en curs. <br>
+        <br>
+        <font color="#FFA500">Nota</font> La pantalla de bloqueig es pot encendre durant un curt període de temps,
+        també podries sentir un to de finalització de trucada (alguns telèfons ofereixen una opció per silenciar aquest so). <br>
+        <br>
+        - El <b>retard</b>: <br>
+        &emsp; Per defecte, hi ha un retard d\'1 segon abans de penjar la trucada,
+        per evitar que les trucades vagin accidentalment al contestador a causa d\'una desconnexió ràpida.<br>
+        &emsp; Si vols gravar trucades, instal·la una aplicació de gravació de trucades i augmenta el retard en conseqüència.
         ]]>
     </string>
 </resources>

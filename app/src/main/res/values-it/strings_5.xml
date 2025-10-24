@@ -29,28 +29,6 @@
     <string name="block_type">Tipo di blocco</string>
     <string name="for_particular_number">Per numero</string>
     <string name="help_for_particular_number">Se abilitato, la regola si applica solo quando corrispondono sia il numero che il contenuto.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Rifiuta</b></font>: <br>
-         Stesso risultato del tasto rifiuta. Funziona completamente in silenzio, lo schermo di blocco non si accenderà.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silenzio</b></font>: <br>
-         Suonerà silenziosamente in background, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
-        <br>
-         Può anche aiutare se si ricevono ripetute chiamate spam, prolungherà la durata della chiamata, rendendola meno efficiente per gli spammer, potenzialmente scoraggiandoli dal chiamarvi di nuovo.<br>
-        <br>
-        - <font color="#00BFFF"><b>Riaggancia</b></font>: <br>
-        Rispondi e riaggancia la chiamata per impedirle di andare alla segreteria telefonica. <br>
-        <br>
-        <font color="#FFA500">Nota</font> Lo schermo di blocco potrebbe accendersi per un breve periodo,
-        potresti anche sentire un tono di fine chiamata (alcuni telefoni offrono un\'opzione per disattivare questo suono). <br>
-        <br>
-        - Il <b>ritardo</b>: <br>
-        &emsp; Di default, c\'è un ritardo di 1 secondo prima che la chiamata venga riagganciata,
-        per evitare che le chiamate vadano accidentalmente alla segreteria telefonica a causa di una disconnessione rapida.<br>
-        &emsp; Se si desidera registrare le chiamate, installare un\'app di registrazione delle chiamate e aumentare il ritardo di conseguenza.
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         Consenti chiamate da numeri precedentemente composti.<br>
@@ -82,4 +60,34 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">Il ritardo prima che la chiamata venga riagganciata.</string>
+    <string-array name="block_type_list">
+        <item>Rifiuta</item>
+        <item>Silenzia</item>
+        <item>Riaggancia</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rifiuta</b></font>: <br>
+         Come premere il tasto di rifiuto. Funziona in modo completamente silenzioso, la schermata di blocco non si attiverà.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenzia</b></font>: <br>
+         Squillerà silenziosamente in sottofondo, dando l\'impressione al chiamante che eri non disponibile e hai perso la chiamata. <br>
+        <br>
+         Potrebbe anche essere utile se stai ricevendo ripetute chiamate spam; prolungherà la durata della chiamata, rendendola meno efficiente per gli spammer, scoraggiandoli potenzialmente dal richiamarti.<br>
+        <br>
+        - <font color="#00BFFF"><b>Riaggancia</b></font>: <br>
+        Rispondi e riaggancia la chiamata per evitare che vada alla segreteria telefonica. <br>
+        <br>
+        Quando la chiamata spam viene ricevuta durante una chiamata in corso, passerà a \"Rifiuta\"
+         per evitare di riagganciare la chiamata in corso. <br>
+        <br>
+        <font color="#FFA500">Nota</font> La schermata di blocco potrebbe attivarsi per un breve periodo,
+        potresti anche sentire un tono di fine chiamata (alcuni telefoni offrono un\'opzione per silenziare questo suono). <br>
+        <br>
+        - Il <b>ritardo</b>: <br>
+        &emsp; Per impostazione predefinita, c\'è un ritardo di 1 secondo prima che la chiamata venga riagganciata,
+        per evitare che le chiamate vadano accidentalmente alla segreteria telefonica a causa di una disconnessione rapida.<br>
+        &emsp; Se desideri registrare le chiamate, installa un\'app di registrazione chiamate e aumenta il ritardo di conseguenza.
+        ]]>
+    </string>
 </resources>

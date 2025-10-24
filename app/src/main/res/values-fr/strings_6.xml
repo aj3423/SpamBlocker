@@ -14,11 +14,6 @@
         <item>Sam</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Rejeter</item>
-        <item>Silencieux</item>
-        <item>Raccrocher</item>
-    </string-array>
 
     <string name="show_passed">Afficher les appels autorisés</string>
     <string name="show_blocked">Afficher les appels bloqués</string>

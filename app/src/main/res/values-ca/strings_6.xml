@@ -14,11 +14,6 @@
         <item>Ds</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Rebutjar</item>
-        <item>Silenciar</item>
-        <item>Penjar</item>
-    </string-array>
 
     <string name="show_passed"><translate>Mostra els superats</translate></string>
     <string name="show_blocked"><translate>Mostra els bloquejats</translate></string>

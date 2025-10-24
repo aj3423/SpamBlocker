@@ -161,7 +161,7 @@ interface ICheckResult {
 
     // For "Answer + Hang up", returns the delay before "Hang Up"
     fun hangUpDelay(ctx: Context): Int {
-        return spf.BlockType(ctx).getConfig().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
+        return spf.BlockType(ctx).getDelay().toIntOrNull() ?: DEFAULT_HANG_UP_DELAY
     }
 
     // Prepare the content to be saved in database, as the `HistoryTable.reason` column

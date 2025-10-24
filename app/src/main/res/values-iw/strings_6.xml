@@ -14,11 +14,6 @@
         <item>שבת</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>דחייה</item>
-        <item>השתקה</item>
-        <item>ניתוק</item>
-    </string-array>
 
     <string name="show_passed">הצג עברו</string>
     <string name="show_blocked">הצג חסומים</string>

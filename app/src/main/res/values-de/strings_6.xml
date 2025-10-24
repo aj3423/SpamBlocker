@@ -14,11 +14,6 @@
         <item>Sa</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>Ablehnen</item>
-        <item>Stummschalten</item>
-        <item>Auflegen</item>
-    </string-array>
 
     <string name="show_passed">Zeige durchgelassene</string>
     <string name="show_blocked">Zeige blockierte</string>

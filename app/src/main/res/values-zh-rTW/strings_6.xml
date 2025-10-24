@@ -14,11 +14,6 @@
         <item>週六</item>
     </string-array>
 
-    <string-array name="block_type_list">
-        <item>拒接</item>
-        <item>靜音</item>
-        <item>掛斷</item>
-    </string-array>
 
     <string name="show_passed">顯示已放行</string>
     <string name="show_blocked">顯示已封鎖</string>

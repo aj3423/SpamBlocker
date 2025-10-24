@@ -29,28 +29,6 @@
     <string name="block_type">Tipo de Bloqueo</string>
     <string name="for_particular_number">Para el número</string>
     <string name="help_for_particular_number">Cuando está habilitado, la regla solo se aplica cuando coinciden tanto el número como el contenido.</string>
-    <string name="help_block_type">
-        <![CDATA[
-        - <font color="#00BFFF"><b>Rechazar</b></font>: <br>
-         Igual que presionar el botón de rechazar. Funciona completamente en silencio, la pantalla de bloqueo no se activará.<br>
-        <br>
-        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
-         Sonará silenciosamente en segundo plano, dando la impresión al llamante de que no estaba disponible y perdió la llamada. <br>
-        <br>
-         También puede ayudar si experimenta llamadas spam repetidas, extenderá la duración de la llamada, lo que la hará menos eficiente para los spammers, lo que podría desalentarlos de volver a llamarlo.<br>
-        <br>
-        - <font color="#00BFFF"><b>Colgar</b></font>: <br>
-        Contestar y colgar la llamada para evitar que vaya al correo de voz. <br>
-        <br>
-        <font color="#FFA500">Nota</font> La pantalla de bloqueo puede activarse por un breve periodo,
-        también puede oír un tono de fin de llamada (algunos teléfonos ofrecen la opción de silenciar este sonido). <br>
-        <br>
-        - El <b>retraso</b>: <br>
-        &emsp; De forma predeterminada, hay un retraso de 1 segundo antes de que se cuelgue la llamada,
-        para evitar que las llamadas vayan accidentalmente al correo de voz debido a una desconexión rápida.<br>
-        &emsp; Si desea grabar llamadas, instale una aplicación de grabación de llamadas y aumente el retraso en consecuencia.
-        ]]>
-    </string>
     <string name="help_dialed">
         <![CDATA[
         Permitir llamadas de números previamente marcados.<br>
@@ -82,4 +60,34 @@
         ]]>
     </string>
     <string name="help_hang_up_delay">El retraso antes de colgar la llamada.</string>
+    <string-array name="block_type_list">
+        <item>Rechazar</item>
+        <item>Silenciar</item>
+        <item>Colgar</item>
+    </string-array>
+    <string name="help_block_type">
+        <![CDATA[
+        - <font color="#00BFFF"><b>Rechazar</b></font>: <br>
+         Igual que pulsar el botón de rechazar. Funciona de forma completamente silenciosa, la pantalla de bloqueo no se encenderá.<br>
+        <br>
+        - <font color="#00BFFF"><b>Silenciar</b></font>: <br>
+         Sonará en silencio en segundo plano, dando la impresión al llamante de que no estaba disponible y perdió la llamada. <br>
+        <br>
+         También puede ayudar si está experimentando llamadas de spam repetidas, extenderá la duración de la llamada, haciéndola menos eficiente para los spammers, lo que podría desanimarlos a volver a llamarle.<br>
+        <br>
+        - <font color="#00BFFF"><b>Colgar</b></font>: <br>
+        Responder y colgar la llamada para evitar que vaya al buzón de voz. <br>
+        <br>
+        Cuando se recibe la llamada de spam durante una llamada en curso, cambiará a \"Rechazar\"
+         para evitar colgar la llamada en curso. <br>
+        <br>
+        <font color="#FFA500">Nota</font> La pantalla de bloqueo puede encenderse por un corto tiempo,
+        también podría escuchar un tono de finalización de llamada (algunos teléfonos ofrecen la opción de silenciar este sonido). <br>
+        <br>
+        - El <b>retraso</b>: <br>
+        &emsp; Por defecto, hay un retraso de 1 segundo antes de que se cuelgue la llamada,
+        para evitar que las llamadas vayan accidentalmente al buzón de voz debido a una desconexión rápida.<br>
+        &emsp; Si desea grabar llamadas, instale una aplicación de grabación de llamadas y aumente el retraso en consecuencia.
+        ]]>
+    </string>
 </resources>
