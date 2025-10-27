@@ -83,4 +83,5 @@
     </string>
     <string name="help_calendar_event_title">זה אמור להתאים לאירוע היומן, שניתן ליצור באפליקציית היומן.</string>
     <string name="working">פעיל</string>
+    <string name="calendar_event_is_not_active">אירוע ביומן %s אינו פעיל.</string>
 </resources>

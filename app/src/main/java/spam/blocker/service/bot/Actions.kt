@@ -2487,6 +2487,13 @@ class CalendarEvent(
                         eventTitle.A(Teal200)
                     )
             )
+        } else {
+            aCtx.logger?.debug(
+                ctx.getString(R.string.calendar_event_is_not_active)
+                    .formatAnnotated(
+                        eventTitle.A(Teal200)
+                    )
+            )
         }
         // Calendar Events modifies rules temporarily.
         aCtx.isInMemory = true

@@ -83,4 +83,5 @@
     </string>
     <string name="help_calendar_event_title">这应与日历事件匹配，该事件可在日历应用中创建。</string>
     <string name="working">工作</string>
+    <string name="calendar_event_is_not_active">日历事件 %s 未激活。</string>
 </resources>

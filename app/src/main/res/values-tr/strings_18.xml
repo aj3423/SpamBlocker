@@ -83,4 +83,5 @@
     </string>
     <string name="help_calendar_event_title">Bu, Takvim uygulamasında oluşturulabilen takvim etkinliğiyle eşleşmelidir.</string>
     <string name="working">Çalışıyor</string>
+    <string name="calendar_event_is_not_active">Takvim etkinliği %s aktif değil.</string>
 </resources>

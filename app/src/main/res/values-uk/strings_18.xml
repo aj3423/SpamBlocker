@@ -83,4 +83,5 @@
     </string>
     <string name="help_calendar_event_title">Це має відповідати події календаря, яку можна створити у програмі Календар.</string>
     <string name="working">Робота</string>
+    <string name="calendar_event_is_not_active">Подія календаря %s не активна.</string>
 </resources>

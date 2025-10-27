@@ -82,4 +82,5 @@
     <string name="answered_warning">請勿為長者或較難辨識詐騙來電的人啟用此功能，以免讓詐騙電話重複撥入。</string>
     <string name="acknowledged">已確認</string>
     <string name="warning">警告</string>
+    <string name="calendar_event_is_not_active">日曆事件 %s 未啟用。</string>
 </resources>
