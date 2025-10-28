@@ -101,4 +101,19 @@
     <string name="retry_attempt">Yeniden deneniyor (Deneme %s/%s)…</string>
     <string name="retry_times">Yeniden Deneme Sayısı</string>
     <string name="retry_delay_millis">Yeniden Deneme Gecikmesi (Milisaniye)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Günlük</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> İlk</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        <no_translate>FTC - Do Not Call</no_translate> kaydının bir <a href="%s">anlık görüntüsünden</a> son 90 gündeki spam numaralarını indirin. <br>
+        <br>
+        Bu sadece ilk kurulum için kullanılmalıdır, günlük güncellemeler için bunun yerine \"Günlük\" iş akışını kullanın. <br>
+        <br>
+        Numaralar içe aktarıldığında bu iş akışını silebilirsiniz.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Gerekli %s sütunu eksik. Numara sütunu için %s başlığını kullanabilir veya mevcut bir
+        başlığı \"CSV Ayrıştırma\" bölümünde %s ile eşleştirebilirsiniz.
+    </string>
 </resources>

@@ -62,6 +62,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Pink80
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreenDot
 import spam.blocker.ui.widgets.GreyButton
@@ -79,7 +80,6 @@ import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.RingtonePicker
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.SummaryLabel
@@ -813,11 +813,24 @@ class ParseCSV(
         val input = aCtx.lastOutput as ByteArray
 
         return try {
+            // 1. Parse the csv to a `Csv` object that contains `header` and `rows`
             val csv = CSVParser(
                 PushbackReader(BufferedReader(InputStreamReader(ByteArrayInputStream(input)))),
                 JSONObject(columnMapping).toStringMap(),
             ).parse()
 
+            // 2. Check if the headers contains required column `pattern`
+            val colPattern = "pattern"
+            if (!csv.headers.contains(colPattern)) {
+                aCtx.logger?.error(
+                    ctx.getString(R.string.csv_missing_column).formatAnnotated(
+                        colPattern.A(Teal200), colPattern.A(Teal200), colPattern.A(Teal200)
+                    )
+                )
+                return false
+            }
+
+            // 3. Map `Csv.rows` to `RegexRule`s
             val rules = csv.rows.map { row ->
                 RegexRule.fromMap(csv.headers.zip(row).toMap())
             }

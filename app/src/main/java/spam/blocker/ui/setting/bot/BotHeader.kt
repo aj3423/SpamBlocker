@@ -93,7 +93,7 @@ fun BotHeader(
             val bot = preset.newInstance(ctx)
             LabelItem(
                 label = bot.desc,
-                tooltip = ctx.getString(preset.tooltipId)
+                tooltip = preset.tooltip(ctx)
             ) {
                 initialBotToEdit.value = bot
 

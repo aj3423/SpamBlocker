@@ -17,18 +17,14 @@ import androidx.core.database.getStringOrNull
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
-import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonDecoder
-import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.JsonTransformingSerializer
-import kotlinx.serialization.json.int
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import org.json.JSONObject
@@ -36,8 +32,6 @@ import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
-import spam.blocker.def.Def.FLAG_REGEX_CASE_SENSITIVE
-import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CASE
 import spam.blocker.ui.theme.CustomColorsPalette
 import spam.blocker.ui.theme.DodgeBlue
 import spam.blocker.ui.theme.Salmon

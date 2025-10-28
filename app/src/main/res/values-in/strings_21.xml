@@ -104,4 +104,18 @@
     <string name="retry_attempt">Mencoba lagi (Percobaan %s/%s)…</string>
     <string name="retry_times">Jumlah Percobaan</string>
     <string name="retry_delay_millis">Jeda Percobaan (Millis)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Harian</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Awal</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        Unduh nomor telepon spam dari 90 hari terakhir dari <a href="%s">cuplikan</a> registri <no_translate>FTC - Do Not Call</no_translate>. <br>
+        <br>
+        Ini hanya boleh digunakan untuk pengaturan awal, untuk pembaruan harian, gunakan alur kerja \"Harian\" sebagai gantinya. <br>
+        <br>
+        Anda dapat menghapus alur kerja ini setelah nomor-nomor telepon diimpor.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Kolom yang wajib diisi %s tidak ada. Anda dapat menggunakan header %s untuk kolom nomor telepon, atau memetakan header yang ada ke %s di \"Parse CSV\".
+    </string>
 </resources>

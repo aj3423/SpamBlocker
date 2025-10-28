@@ -104,4 +104,19 @@
     <string name="retry_attempt">Retrying (Attempt %s/%s)…</string>
     <string name="retry_times">Retry Times</string>
     <string name="retry_delay_millis">Retry Delay (Millis)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Daily</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Initial</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        Download spam numbers from the last 90 days from a <a href="%s">snapshot</a> of the <no_translate>FTC - Do Not Call</no_translate> registry. <br>
+        <br>
+        This should only be used for initial setup, for daily updates, use the \"Daily\" workflow instead. <br>
+        <br>
+        You can delete this workflow once the numbers are imported.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Missing required column %s. You can use header %s for the number column, or map an existing
+        header to %s in \"Parse CSV\".
+    </string>
 </resources>

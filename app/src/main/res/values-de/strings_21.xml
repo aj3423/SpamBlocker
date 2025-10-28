@@ -104,4 +104,19 @@
     <string name="retry_attempt">Wird wiederholt (Versuch %s/%s)…</string>
     <string name="retry_times">Wiederholungen</string>
     <string name="retry_delay_millis">Wiederholungsverzögerung (ms)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Täglich</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Initial</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        Laden Sie Rufnummern von Spam-Anrufen der letzten 90 Tage von einem <a href="%s">Snapshot</a> des <no_translate>FTC - Do Not Call</no_translate>-Registers herunter. <br>
+        <br>
+        Dies sollte nur für die Ersteinrichtung verwendet werden. Für tägliche Updates verwenden Sie stattdessen den Workflow \"Täglich\". <br>
+        <br>
+        Sie können diesen Workflow löschen, sobald die Rufnummern importiert wurden.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Erforderliche Spalte %s fehlt. Sie können den Header %s für die Rufnummernspalte verwenden oder einen vorhandenen
+        Header in \"CSV analysieren\" auf %s abbilden.
+    </string>
 </resources>

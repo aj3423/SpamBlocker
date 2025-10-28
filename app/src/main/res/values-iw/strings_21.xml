@@ -104,4 +104,19 @@
     <string name="retry_attempt">מנסה שוב (ניסיון %s/%s)...</string>
     <string name="retry_times">מספר ניסיונות חוזרים</string>
     <string name="retry_delay_millis">השהיית ניסיון חוזר (אלפיות שניה)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> יומי</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> ראשוני</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        הורד מספרי טלפון של שיחות ספאם מ-90 הימים האחרונים מ- <a href="%s">צילום</a> של רישום ה- <no_translate>FTC - Do Not Call</no_translate>. <br>
+        <br>
+        יש להשתמש בזה רק להגדרה ראשונית, לעדכונים יומיים, השתמש בזרימת העבודה \"יומי\" במקום. <br>
+        <br>
+        אתה יכול למחוק זרימת עבודה זו לאחר יבוא מספרי הטלפון.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        חסרה עמודה נדרשת %s. תוכל להשתמש בכותרת %s עבור עמודת מספרי הטלפון, או למפות כותרת קיימת
+        ל- %s ב\"ניתוח CSV\".
+    </string>
 </resources>

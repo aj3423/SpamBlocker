@@ -104,4 +104,18 @@
     <string name="retry_attempt">Nouvel essai (Tentative %s/%s)…</string>
     <string name="retry_times">Nombre de tentatives</string>
     <string name="retry_delay_millis">Délai de nouvelle tentative (ms)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Quotidien</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Initial</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        Téléchargez les numéros de téléphone spam des 90 derniers jours à partir d\'un <a href="%s">instantané</a> du registre <no_translate>FTC - Do Not Call</no_translate>. <br>
+        <br>
+        Ceci ne doit être utilisé que pour la configuration initiale, pour les mises à jour quotidiennes, utilisez plutôt le flux de travail \"Quotidien\". <br>
+        <br>
+        Vous pouvez supprimer ce flux de travail une fois que les numéros de téléphone sont importés.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Colonne requise %s manquante. Vous pouvez utiliser l\'en-tête %s pour la colonne des numéros de téléphone, ou mapper un en-tête existant à %s dans \"Analyser le CSV\".
+    </string>
 </resources>

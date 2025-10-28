@@ -65,7 +65,6 @@
     </string>
     <string name="manual">手動</string>
 
-    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db"><translate>スパムデータベースクリーンアップ</translate></string>
     <string name="bot_preset_cleanup_history"><translate>履歴クリーンアップ</translate></string>
     <string name="bot_preset_auto_backup">自動バックアップ</string>

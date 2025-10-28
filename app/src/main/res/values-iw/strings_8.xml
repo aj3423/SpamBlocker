@@ -66,7 +66,6 @@
     </string>
     <string name="manual">ידני</string>
 
-    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">ניקוי מסד נתוני ספאם</string>
     <string name="bot_preset_cleanup_history">ניקוי היסטוריה</string>
     <string name="bot_preset_auto_backup">גיבוי אוטומטי</string>

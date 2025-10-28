@@ -103,4 +103,18 @@
     <string name="retry_attempt">Reintentant (intent %s/%s)…</string>
     <string name="retry_times">Nombre de reintents</string>
     <string name="retry_delay_millis">Retard de reintent (ms)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Diari</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Inicial</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        Descarrega números de telèfon spam dels últims 90 dies d\'una <a href="%s">instantània</a> del registre <no_translate>FTC - Do Not Call</no_translate>. <br>
+        <br>
+        Això només s\'ha d\'utilitzar per a la configuració inicial; per a les actualitzacions diàries, utilitza el flux de treball \"Diari\" en lloc d\'aquest. <br>
+        <br>
+        Pots eliminar aquest flux de treball un cop s\'hagin importat els números de telèfon.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Falta la columna obligatòria %s. Pots utilitzar la capçalera %s per a la columna de números de telèfon, o assignar una capçalera existent a %s a \"Analitzar CSV\".
+    </string>
 </resources>

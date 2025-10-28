@@ -104,4 +104,19 @@
     <string name="retry_attempt">جاري إعادة المحاولة (المحاولة %s/%s)...</string>
     <string name="retry_times">عدد مرات إعادة المحاولة</string>
     <string name="retry_delay_millis">تأخير إعادة المحاولة (بالمللي ثانية)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> يوميًا</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> أولي</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        قم بتنزيل أرقام مكالمات البريد العشوائي (spam) من آخر 90 يومًا من <a href="%s">لقطة</a> لسجل <no_translate>FTC - Do Not Call</no_translate>. <br>
+        <br>
+        يجب استخدام هذا للإعداد الأولي فقط، للتحديثات اليومية، استخدم سير عمل \"يومي\" بدلاً من ذلك. <br>
+        <br>
+        يمكنك حذف سير العمل هذا بمجرد استيراد أرقام الهواتف.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        العمود المطلوب %s مفقود. يمكنك استخدام الرأس %s لعمود رقم الهاتف، أو تعيين رأس موجود
+        إلى %s في \"تحليل CSV\".
+    </string>
 </resources>

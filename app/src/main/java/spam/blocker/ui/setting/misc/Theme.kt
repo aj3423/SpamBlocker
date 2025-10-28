@@ -6,8 +6,8 @@ import androidx.compose.ui.platform.LocalContext
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.ui.setting.LabeledRow
-import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ComboBox
+import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.util.spf
 
 @Composable

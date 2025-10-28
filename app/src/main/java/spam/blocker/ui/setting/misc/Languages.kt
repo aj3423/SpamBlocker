@@ -12,9 +12,9 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ResIcon
-import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.SpinnerType
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Launcher

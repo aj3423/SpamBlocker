@@ -104,4 +104,18 @@
     <string name="retry_attempt">Reintentando (Intento %s/%s)…</string>
     <string name="retry_times">Veces a Reintentar</string>
     <string name="retry_delay_millis">Atraso de Reintento (Milisegundos)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> Diario</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> Inicial</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        Descargar números de spam dos últimos 90 días dunha <a href="%s">instantánea</a> do rexistro <no_translate>FTC - Do Not Call</no_translate>. <br>
+        <br>
+        Isto só debe usarse para a configuración inicial; para actualizacións diarias, use o fluxo de traballo \"Diario\" no seu lugar. <br>
+        <br>
+        Podes eliminar este fluxo de traballo unha vez que os números sexan importados.
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        Falta a columna requirida %s. Podes usar o cabeceiro %s para a columna do número, ou mapear un cabeceiro existente a %s en \"Analizar CSV\".
+    </string>
 </resources>

@@ -54,12 +54,10 @@ import spam.blocker.util.Util.listRunningForegroundServiceNames
 import spam.blocker.util.Util.listUsedAppWithinXSecond
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.hasFlag
-import spam.blocker.util.logi
 import spam.blocker.util.race
 import spam.blocker.util.regexMatches
 import spam.blocker.util.regexMatchesNumber
 import spam.blocker.util.spf
-import kotlin.collections.plusAssign
 
 class CheckContext(
     var rawNumber: String,

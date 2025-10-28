@@ -65,7 +65,6 @@
         ]]>
     </string>
     <string name="manual">手動</string>
-    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">清理騷擾號碼資料庫</string>
     <string name="bot_preset_cleanup_history">清理歷史記錄</string>
     <string name="bot_preset_auto_backup">自動備份</string>
@@ -87,9 +86,9 @@
     <string name="action_modify_rules_placeholder">
         JSON 字串，例如：\n
         {\n
-        "flags": 0, // 停用規則\n
-        "priority": 100,\n
-        "blockType": 0\n
+        \"flags\": 0, // 停用規則\n
+        \"priority\": 100,\n
+        \"blockType\": 0\n
         …\n
         }\n
     </string>

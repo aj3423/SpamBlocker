@@ -66,7 +66,6 @@
     </string>
     <string name="manual">دستی</string>
 
-    <string name="bot_preset_dnc"><no_translate>FTC - Do Not Call 🇺🇸</no_translate></string>
     <string name="bot_preset_cleanup_spam_db">پاک‌سازی پایگاه داده مزاحمین</string>
     <string name="bot_preset_cleanup_history">پاک‌سازی تاریخچه</string>
     <string name="bot_preset_auto_backup">پشتیبان‌گیری خودکار</string>

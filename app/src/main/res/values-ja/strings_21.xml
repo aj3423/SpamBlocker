@@ -101,4 +101,18 @@
     <string name="retry_attempt">再試行中 (%s/%s回目)…</string>
     <string name="retry_times">再試行回数</string>
     <string name="retry_delay_millis">再試行遅延 (ミリ秒)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> 毎日</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> 初期</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        <no_translate>FTC - Do Not Call</no_translate>登録の<a href="%s">スナップショット</a>から、過去90日間の迷惑電話番号をダウンロードします。<br>
+        <br>
+        これは初期設定のみに使用してください。毎日の更新には「毎日」ワークフローを使用してください。<br>
+        <br>
+        番号がインポートされたら、このワークフローを削除できます。
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        必須カラム %s が見つかりません。「Parse CSV」で、ヘッダー %s を電話番号カラムとして使用するか、既存のヘッダーを %s にマッピングできます。
+    </string>
 </resources>

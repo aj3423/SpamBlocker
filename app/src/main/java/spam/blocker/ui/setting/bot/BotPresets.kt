@@ -29,19 +29,41 @@ import java.time.DayOfWeek.TUESDAY
 import java.time.DayOfWeek.WEDNESDAY
 
 class BotPreset(
-    val tooltipId: Int,
+    val tooltip: (Context)->String,
     val onCreate: Lambda1<Context>? = null,
     val newInstance: (Context) -> Bot,
 )
 
+
 val BotPresets = listOf(
+
+    // FTC Do Not Call, initial database
+    BotPreset(
+        tooltip = {
+            it.getString(R.string.help_bot_preset_dnc_initial)
+                .format(
+                    "https://github.com/aj3423/DNC_snapshot"
+                )
+        },
+    ) { ctx ->
+        Bot(
+            desc = ctx.getString(R.string.bot_preset_dnc_initial),
+            enabled = false,
+            actions = listOf(
+                HttpDownload(url = "https://raw.githubusercontent.com/aj3423/DNC_snapshot/refs/heads/master/90days.csv"),
+                ParseCSV(),
+                // no need to add ClearNumber here
+                ImportToSpamDB(),
+            )
+        )
+    },
 
     // FTC Do Not Call, updated on Monday~Friday @ 18:00:00
     BotPreset(
-        tooltipId = R.string.help_bot_preset_dnc,
+        tooltip = { it.getString(R.string.help_bot_preset_dnc) },
     ) { ctx ->
         Bot(
-            desc = ctx.getString(R.string.bot_preset_dnc),
+            desc = ctx.getString(R.string.bot_preset_dnc_daily),
             enabled = true,
             schedule = Weekly(
                 weekdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY),
@@ -58,7 +80,7 @@ val BotPresets = listOf(
 
     // Ringtone <-> Regex Rule
     BotPreset(
-        tooltipId = R.string.help_preset_ringtone,
+        tooltip = { it.getString(R.string.help_preset_ringtone) },
     ) { ctx ->
         Bot(
             desc = ctx.getString(R.string.ringtone),
@@ -70,7 +92,7 @@ val BotPresets = listOf(
 
     // Calendar Event
     BotPreset(
-        tooltipId = R.string.help_calendar_event_template,
+        tooltip = { it.getString(R.string.help_calendar_event_template) },
         onCreate = { ctx ->
             // Add a regex rule
             val ruleDesc = ctx.getString(R.string.calendar_event)
@@ -95,7 +117,7 @@ val BotPresets = listOf(
 
     // Call Throttling
     BotPreset(
-        tooltipId = R.string.help_call_throttling_template,
+        tooltip = { it.getString(R.string.help_call_throttling_template) },
         onCreate = { ctx ->
             // Add a regex rule
             val ruleDesc = ctx.getString(R.string.throttled_call)
@@ -123,7 +145,7 @@ val BotPresets = listOf(
 
     // SMS Throttling
     BotPreset(
-        tooltipId = R.string.help_sms_throttling_template,
+        tooltip = { it.getString(R.string.help_sms_throttling_template) },
         onCreate = { ctx ->
             // Add a regex rule
             val ruleDesc = ctx.getString(R.string.throttled_sms)
@@ -148,7 +170,7 @@ val BotPresets = listOf(
 
     // Remote Setup
     BotPreset(
-        tooltipId = R.string.help_remote_setup,
+        tooltip = { it.getString(R.string.help_remote_setup) },
     ) { ctx ->
         Bot(
             enabled = true,
@@ -165,7 +187,7 @@ val BotPresets = listOf(
 
     // Auto Backup on Monday midnight
     BotPreset(
-        tooltipId = R.string.help_bot_preset_auto_backup,
+        tooltip = { it.getString(R.string.help_bot_preset_auto_backup) },
     ) { ctx ->
         Bot(
             desc = ctx.getString(R.string.bot_preset_auto_backup),

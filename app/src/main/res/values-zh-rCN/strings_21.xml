@@ -100,4 +100,18 @@
     <string name="retry_attempt">正在重试 (尝试 %s/%s)…</string>
     <string name="retry_times">重试次数</string>
     <string name="retry_delay_millis">重试延迟 (毫秒)</string>
+    <string name="bot_preset_dnc_daily"><no_translate>🇺🇸 FTC-DNC</no_translate> 每日</string>
+    <string name="bot_preset_dnc_initial"><no_translate>🇺🇸 FTC-DNC</no_translate> 初始</string>
+    <string name="help_bot_preset_dnc_initial">
+    <![CDATA[
+        从 <a href="%s">快照</a> 中下载过去 90 天的垃圾电话号码，此快照来自 <no_translate>FTC - Do Not Call</no_translate> 注册表。 <br>
+        <br>
+        这仅应用于初始设置，对于每日更新，请改用“每日”工作流程。 <br>
+        <br>
+        导入电话号码后，您可以删除此工作流程。
+    ]]>
+    </string>
+    <string name="csv_missing_column">
+        缺少必需的列 %s。您可以将标头 %s 用作电话号码列，或者在“解析 CSV”中将现有标头映射到 %s。
+    </string>
 </resources>
