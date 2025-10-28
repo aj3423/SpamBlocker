@@ -76,6 +76,8 @@ object SpamTable {
                     stmt.execute() // No return value for multi-row
                     stmt.close()
                 }
+                db.setTransactionSuccessful()
+
                 null
             } catch (e: Exception) {
                 loge(e.toString())
