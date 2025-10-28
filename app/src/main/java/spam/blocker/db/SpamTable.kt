@@ -40,28 +40,56 @@ data class SpamNumber(
 
 object SpamTable {
 
+    // Returns error string, return null for success
     fun addAll(
         ctx: Context,
         numbers: List<SpamNumber>,
     ): String? {
         val db = Db.getInstance(ctx).writableDatabase
-
-        return db.transaction() {
-            try {
-                for (number in numbers) {
-                    insertWithOnConflict(TABLE_SPAM, null, ContentValues().apply {
-                        put(COLUMN_PEER, number.peer)
-                        put(COLUMN_TIME, number.time)
-                        put(COLUMN_REASON, number.importReason.ordinal)
-                        put(COLUMN_REASON_EXTRA, number.importReasonExtra)
-                    }, CONFLICT_REPLACE)
+        db.beginTransaction() // Use beginTransaction() for manual control; endTransaction() below
+        val stmt = db.compileStatement(
+            "INSERT OR REPLACE INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA) VALUES (?, ?, ?, ?)"
+        )
+        return try {
+            for (number in numbers) {
+                // Bind parameters (order matches ? placeholders)
+                stmt.bindString(1, number.peer)
+                stmt.bindLong(2, number.time)
+                stmt.bindLong(3, number.importReason.ordinal.toLong())
+                if (number.importReasonExtra != null) {
+                    stmt.bindString(4, number.importReasonExtra)
+                } else {
+                    stmt.bindNull(4)
                 }
-                null
-            } catch (e: Exception) {
-                loge(e.toString())
-                e.toString()
+
+                stmt.executeInsert() // Returns row ID; ignore if not needed
+                stmt.clearBindings() // Reset for next iteration
             }
+            db.setTransactionSuccessful()
+            null // Success
+        } catch (e: Exception) {
+            loge(e.toString())
+            e.toString()
+        } finally {
+            db.endTransaction()
+            stmt.close()
         }
+//        return db.transaction() {
+//            try {
+//                for (number in numbers) {
+//                    insertWithOnConflict(TABLE_SPAM, null, ContentValues().apply {
+//                        put(COLUMN_PEER, number.peer)
+//                        put(COLUMN_TIME, number.time)
+//                        put(COLUMN_REASON, number.importReason.ordinal)
+//                        put(COLUMN_REASON_EXTRA, number.importReasonExtra)
+//                    }, CONFLICT_REPLACE)
+//                }
+//                null
+//            } catch (e: Exception) {
+//                loge(e.toString())
+//                e.toString()
+//            }
+//        }
     }
 
     fun add(ctx: Context, rawNumber: String) {
