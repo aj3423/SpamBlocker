@@ -1,10 +1,8 @@
 package spam.blocker.db
 
 import android.annotation.SuppressLint
-import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import androidx.core.database.sqlite.transaction
@@ -46,50 +44,44 @@ object SpamTable {
         numbers: List<SpamNumber>,
     ): String? {
         val db = Db.getInstance(ctx).writableDatabase
-        db.beginTransaction() // Use beginTransaction() for manual control; endTransaction() below
-        val stmt = db.compileStatement(
-            "INSERT OR REPLACE INTO $TABLE_SPAM ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA) VALUES (?, ?, ?, ?)"
-        )
-        return try {
-            for (number in numbers) {
-                // Bind parameters (order matches ? placeholders)
-                stmt.bindString(1, number.peer)
-                stmt.bindLong(2, number.time)
-                stmt.bindLong(3, number.importReason.ordinal.toLong())
-                if (number.importReasonExtra != null) {
-                    stmt.bindString(4, number.importReasonExtra)
-                } else {
-                    stmt.bindNull(4)
-                }
 
-                stmt.executeInsert() // Returns row ID; ignore if not needed
-                stmt.clearBindings() // Reset for next iteration
+        // Tested with 200k numbers in debug mode.
+        // - Batch insertion: 3 seconds
+        // - Single insertion: 9 seconds
+        db.transaction() {
+            return try {
+                val batchSize = 1000 // Tune: 500-2000 based on memory
+                numbers.chunked(batchSize).forEach { batch ->
+                    // Build placeholders: (?, ?, ?, ?) repeated for batch size
+                    val placeholders = (1..batch.size).joinToString(", ") { "(?, ?, ?, ?)" }
+                    val stmt = compileStatement(
+                        """
+                            INSERT OR REPLACE INTO $TABLE_SPAM 
+                            ($COLUMN_PEER, $COLUMN_TIME, $COLUMN_REASON, $COLUMN_REASON_EXTRA)
+                            VALUES $placeholders
+                        """.trimIndent()
+                    )
+
+                    // Bind all params in sequence (4 per row)
+                    batch.forEachIndexed { index, number ->
+                        val base = index * 4 + 1 // 1-based indexing
+                        stmt.bindString(base, number.peer)
+                        stmt.bindLong(base + 1, number.time)
+                        stmt.bindLong(base + 2, number.importReason.ordinal.toLong())
+                        // Nullable handling
+                        number.importReasonExtra?.let { stmt.bindString(base + 3, it) }
+                            ?: stmt.bindNull(base + 3)
+                    }
+
+                    stmt.execute() // No return value for multi-row
+                    stmt.close()
+                }
+                null
+            } catch (e: Exception) {
+                loge(e.toString())
+                e.toString()
             }
-            db.setTransactionSuccessful()
-            null // Success
-        } catch (e: Exception) {
-            loge(e.toString())
-            e.toString()
-        } finally {
-            db.endTransaction()
-            stmt.close()
         }
-//        return db.transaction() {
-//            try {
-//                for (number in numbers) {
-//                    insertWithOnConflict(TABLE_SPAM, null, ContentValues().apply {
-//                        put(COLUMN_PEER, number.peer)
-//                        put(COLUMN_TIME, number.time)
-//                        put(COLUMN_REASON, number.importReason.ordinal)
-//                        put(COLUMN_REASON_EXTRA, number.importReasonExtra)
-//                    }, CONFLICT_REPLACE)
-//                }
-//                null
-//            } catch (e: Exception) {
-//                loge(e.toString())
-//                e.toString()
-//            }
-//        }
     }
 
     fun add(ctx: Context, rawNumber: String) {

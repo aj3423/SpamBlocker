@@ -1071,6 +1071,7 @@ class ImportToSpamDB(
             Events.spamDbUpdated.fire()
 
             if (errorStr == null) {
+                aCtx.logger?.success(ctx.getString(R.string.imported_successfully))
                 true
             } else {
                 aCtx.logger?.error(errorStr)
