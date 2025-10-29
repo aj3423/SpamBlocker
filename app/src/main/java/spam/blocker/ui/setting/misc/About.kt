@@ -13,7 +13,6 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.rememberFileWriteChooser
-import spam.blocker.util.Algorithm.compressString
 
 const val repo = "https://github.com/aj3423/SpamBlocker"
 
@@ -48,8 +47,8 @@ fun About() {
                 popupTrigger.value = true
             },
             onLongClick = {
-                val fn = "SpamBlocker.log.gz"
-                val content = compressString(Logcat.collect())
+                val fn = "SpamBlocker.log"
+                val content = Logcat.collect().toByteArray()
 
                 fileWriter.popup(
                     filename = fn,
