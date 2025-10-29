@@ -119,4 +119,8 @@
         Erforderliche Spalte %s fehlt. Sie können den Header %s für die Rufnummernspalte verwenden oder einen vorhandenen
         Header in \"CSV analysieren\" auf %s abbilden.
     </string>
+    <string name="enable_reporting_number">Meldung aktivieren</string>
+    <string name="help_enable_reporting_number">
+        Diese API unterstützt auch das Melden von Telefonnummern. Aktivieren Sie dies, um auch den Melde-Workflow zu generieren.
+    </string>
 </resources>

@@ -115,4 +115,8 @@
     <string name="csv_missing_column">
         ستون مورد نیاز %s وجود ندارد. می‌توانید از سربرگ %s برای ستون شماره تلفن استفاده کنید، یا یک سربرگ موجود را در \"تجزیه CSV\" به %s نگاشت کنید.
     </string>
+    <string name="enable_reporting_number">فعال کردن گزارش‌دهی</string>
+    <string name="help_enable_reporting_number">
+        این API از گزارش شماره‌ها نیز پشتیبانی می‌کند، این را فعال کنید تا جریان کاری گزارش‌دهی نیز تولید شود.
+    </string>
 </resources>

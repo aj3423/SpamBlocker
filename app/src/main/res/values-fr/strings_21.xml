@@ -118,4 +118,8 @@
     <string name="csv_missing_column">
         Colonne requise %s manquante. Vous pouvez utiliser l\'en-tête %s pour la colonne des numéros de téléphone, ou mapper un en-tête existant à %s dans \"Analyser le CSV\".
     </string>
+    <string name="enable_reporting_number">Activer le signalement</string>
+    <string name="help_enable_reporting_number">
+        Cette API prend également en charge le signalement des numéros de téléphone, activez ceci pour générer également le flux de travail de signalement.
+    </string>
 </resources>

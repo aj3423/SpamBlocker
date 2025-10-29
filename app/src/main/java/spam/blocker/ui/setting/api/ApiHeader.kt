@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.api
 
+import android.content.Context
 import androidx.compose.foundation.clickable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Api
 import spam.blocker.def.Def
@@ -34,7 +36,8 @@ import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
-import spam.blocker.util.Lambda
+import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.Lambda2
 
 // This dialog makes it easier for user to input API_KEY rather than manually editing
 //  the tags in http url/header.
@@ -43,7 +46,8 @@ fun ApiAuthConfigDialog(
     trigger: MutableState<Boolean>,
     authConfig: AuthConfig,
     api: Api,
-    onOk: Lambda,
+    showReportOption: Boolean,
+    onOk: Lambda2<Boolean, List<FormField>?>, // <EnableReport, FormFields>
 ) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
@@ -51,15 +55,16 @@ fun ApiAuthConfigDialog(
     // All attributes
     val formFields = remember {
         authConfig.formLabels.map {
-            FormField(ctx.getString(it))
+            FormField(label = ctx.getString(it))
         }
     }
+    var enableReport by remember { mutableStateOf(false) }
 
     var errStr by remember { mutableStateOf<String?>(null) }
-    val resultTrigger = remember { mutableStateOf(false) }
+    val validatePopupTrigger = remember { mutableStateOf(false) }
 
     PopupDialog(
-        trigger = resultTrigger,
+        trigger = validatePopupTrigger,
     ) {
         Text(
             text = errStr ?: Str(R.string.checking_auth_credential),
@@ -72,7 +77,7 @@ fun ApiAuthConfigDialog(
         buttons = {
             // OK button
             StrokeButton(label = Str(R.string.ok), color = Teal200) {
-                resultTrigger.value = true
+                validatePopupTrigger.value = true
 
                 CoroutineScope(IO).launch {
                     authConfig.validator(
@@ -80,11 +85,11 @@ fun ApiAuthConfigDialog(
                     ) { err ->
                         errStr = err
                         if (err == null) { // valid
-                            resultTrigger.value = false
+                            validatePopupTrigger.value = false
                             // Replace the api_key in the http request.
                             authConfig.preProcessor(api.actions, formFields.map { it.value })
                             trigger.value = false
-                            onOk()
+                            onOk(enableReport, formFields)
                         }
                     }
                 }
@@ -98,6 +103,18 @@ fun ApiAuthConfigDialog(
         formFields.forEach {
             FormInputField(it)
         }
+
+        if (showReportOption) {
+            LabeledRow(
+                R.string.enable_reporting_number,
+                helpTooltip = Str(R.string.help_enable_reporting_number),
+                content = {
+                    SwitchBox(enableReport) {
+                        enableReport = it
+                    }
+                }
+            )
+        }
     }
 }
 
@@ -108,18 +125,31 @@ fun ApiHeader(
 ) {
     val ctx = LocalContext.current
 
-    var initialApiToEdit = remember { mutableStateOf(Api()) }
+    var tappedPreset = remember { mutableStateOf<ApiPreset?>(null) }
+    var initialApi = remember { mutableStateOf(Api()) }
+
+    fun addApiToDB(ctx: Context, newApi: Api) {
+        // 1. add to db
+        vm.table.addNewRecord(ctx, newApi)
+
+        // 2. reload UI
+        vm.reloadDb(ctx)
+    }
+    fun addReportingApiToDB(ctx: Context, newApi: Api) {
+        val vm = G.apiReportVM
+        // 1. add to db
+        vm.table.addNewRecord(ctx, newApi)
+
+        // 2. reload UI
+        vm.reloadDb(ctx)
+    }
     val addTrigger = rememberSaveable { mutableStateOf(false) }
     if (addTrigger.value) {
         EditApiDialog(
             trigger = addTrigger,
-            initial = initialApiToEdit.value,
+            initial = initialApi.value,
             onSave = { newApi ->
-                // 1. add to db
-                vm.table.addNewRecord(ctx, newApi)
-
-                // 2. reload UI
-                vm.reloadDb(ctx)
+                addApiToDB(ctx, newApi)
             }
         )
     }
@@ -140,15 +170,21 @@ fun ApiHeader(
         }
     }
 
-    var currentPreset = remember { mutableStateOf<ApiPreset?>(null) }
     val authFormTrigger = remember { mutableStateOf(false) }
     if (authFormTrigger.value) {
         ApiAuthConfigDialog(
             trigger = authFormTrigger,
-            authConfig = currentPreset.value!!.newAuthConfig()!!,
-            api = initialApiToEdit.value,
-        ) {
-            addTrigger.value = true
+            authConfig = tappedPreset.value!!.newAuthConfig()!!,
+            api = initialApi.value,
+            showReportOption = tappedPreset.value!!.newReportApi != null
+        ) { enableReport, formFields ->
+            addApiToDB(ctx, initialApi.value)
+            if (enableReport) {
+                var reportingApi = tappedPreset.value!!.newReportApi!!(ctx)
+                val authConfig = tappedPreset.value!!.newAuthConfig()!!
+                authConfig.preProcessor(reportingApi.actions, formFields!!.map { it.value })
+                addReportingApiToDB(ctx, reportingApi)
+            }
         }
     }
 
@@ -158,7 +194,7 @@ fun ApiHeader(
                 label = ctx.getString(R.string.customize),
                 leadingIcon = { GreyIcon(R.drawable.ic_note) }
             ) {
-                initialApiToEdit.value = Api(
+                initialApi.value = Api(
                     actions = if (vm.forType == Def.ForApiQuery)
                         defApiQueryActions
                     else
@@ -174,21 +210,23 @@ fun ApiHeader(
             },
             DividerItem(),
         )
+
+        // Api Presets: PhoneBlock, Gemini, ...
         ret += presets.map { preset ->
             val desc = preset.newApi(ctx).desc
             LabelItem(
                 label = desc,
                 tooltip = ctx.getString(preset.tooltipId)
             ) {
-                currentPreset.value = preset
-                initialApiToEdit.value = preset.newApi(ctx)
+                tappedPreset.value = preset
+                initialApi.value = preset.newApi(ctx)
 
-                // If the preset doesn't require authorization, such as API_KEY/username/password,
-                //  show a dialog for configuring it.
+                // If the preset requires authorization, such as API_KEY/username/password,
+                //  show a dialog asking for it.
                 // Otherwise, create the actions directly.
                 val authConfig = preset.newAuthConfig()
                 if (authConfig == null) {
-                    addTrigger.value = true
+                    addApiToDB(ctx, preset.newApi(ctx))
                 } else {
                     // If it requires authorization, show a config dialog
                     authFormTrigger.value = true

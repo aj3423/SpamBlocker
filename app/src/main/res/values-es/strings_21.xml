@@ -118,4 +118,8 @@
     <string name="csv_missing_column">
         Falta la columna requerida %s. Puedes usar el encabezado %s para la columna de números, o mapear un encabezado existente a %s en \"Analizar CSV\".
     </string>
+    <string name="enable_reporting_number">Habilitar informes</string>
+    <string name="help_enable_reporting_number">
+        Esta API también admite la denuncia de números de teléfono; habilítala para generar también el flujo de trabajo de denuncia.
+    </string>
 </resources>

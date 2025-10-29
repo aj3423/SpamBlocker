@@ -117,4 +117,8 @@
     <string name="csv_missing_column">
         Falta la columna obligatòria %s. Pots utilitzar la capçalera %s per a la columna de números de telèfon, o assignar una capçalera existent a %s a \"Analitzar CSV\".
     </string>
+    <string name="enable_reporting_number">Activar informes</string>
+    <string name="help_enable_reporting_number">
+        Aquesta API també admet la notificació de números de telèfon, activa-ho per generar també el flux de treball d\'informes.
+    </string>
 </resources>

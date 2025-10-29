@@ -116,4 +116,8 @@
         Gerekli %s sütunu eksik. Numara sütunu için %s başlığını kullanabilir veya mevcut bir
         başlığı \"CSV Ayrıştırma\" bölümünde %s ile eşleştirebilirsiniz.
     </string>
+    <string name="enable_reporting_number">Raporlamayı Etkinleştir</string>
+    <string name="help_enable_reporting_number">
+        Bu API aynı zamanda telefon numarası raporlamayı da destekler, raporlama iş akışını da oluşturmak için bunu etkinleştirin.
+    </string>
 </resources>

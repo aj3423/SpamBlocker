@@ -1044,6 +1044,10 @@ class ImportToSpamDB(
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
         val rules = aCtx.lastOutput as List<*> // it's actually `List<RegexRule>`
 
+        if (rules.isEmpty()) {
+            return true
+        }
+
         return try {
             val now = System.currentTimeMillis()
 
@@ -1058,12 +1062,10 @@ class ImportToSpamDB(
                 )
             }
 
-            if (numbers.isNotEmpty()) {
-                aCtx.logger?.debug(
-                    ctx.getString(R.string.add_n_numbers_to_spam_db)
-                        .format("${numbers.size}")
-                )
-            }
+            aCtx.logger?.debug(
+                ctx.getString(R.string.add_n_numbers_to_spam_db)
+                    .format("${numbers.size}")
+            )
 
             val errorStr = SpamTable.addAll(ctx, numbers)
 

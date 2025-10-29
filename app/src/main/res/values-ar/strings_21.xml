@@ -119,4 +119,8 @@
         العمود المطلوب %s مفقود. يمكنك استخدام الرأس %s لعمود رقم الهاتف، أو تعيين رأس موجود
         إلى %s في \"تحليل CSV\".
     </string>
+    <string name="enable_reporting_number">تمكين الإبلاغ</string>
+    <string name="help_enable_reporting_number">
+        تدعم واجهة برمجة التطبيقات هذه أيضًا الإبلاغ عن الأرقام، قم بتمكين هذا لتوليد سير عمل الإبلاغ أيضًا.
+    </string>
 </resources>

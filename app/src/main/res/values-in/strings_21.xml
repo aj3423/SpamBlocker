@@ -118,4 +118,8 @@
     <string name="csv_missing_column">
         Kolom yang wajib diisi %s tidak ada. Anda dapat menggunakan header %s untuk kolom nomor telepon, atau memetakan header yang ada ke %s di \"Parse CSV\".
     </string>
+    <string name="enable_reporting_number">Aktifkan Pelaporan</string>
+    <string name="help_enable_reporting_number">
+        API ini juga mendukung pelaporan nomor telepon, aktifkan ini untuk juga menghasilkan alur kerja pelaporan.
+    </string>
 </resources>

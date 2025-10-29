@@ -113,4 +113,8 @@
     <string name="csv_missing_column">
         缺少必需的欄位 %s。您可以使用標頭 %s 作為電話號碼欄位，或在「解析 CSV」中將現有標頭映射到 %s。
     </string>
+    <string name="enable_reporting_number">啟用回報</string>
+    <string name="help_enable_reporting_number">
+        此 API 也支援回報電話號碼，啟用此選項以同時產生回報工作流程。
+    </string>
 </resources>

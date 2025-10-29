@@ -118,4 +118,8 @@
     <string name="csv_missing_column">
         Falta a columna requirida %s. Podes usar o cabeceiro %s para a columna do número, ou mapear un cabeceiro existente a %s en \"Analizar CSV\".
     </string>
+    <string name="enable_reporting_number">Activar Informes</string>
+    <string name="help_enable_reporting_number">
+        Esta API tamén admite informar números, activa isto para xerar tamén o fluxo de traballo de informes.
+    </string>
 </resources>

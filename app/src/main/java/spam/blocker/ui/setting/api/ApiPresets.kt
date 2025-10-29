@@ -31,6 +31,7 @@ data class AuthConfig(
     //  fill the {api_token} in HttpDownload.header with user input credentials
     val preProcessor: Lambda2<List<IAction>, List<String>>,
     // For validating if the user has input the correct auth credentials.
+    // Params: ctx, fieldValues, callback(errStr)
     val validator: Lambda3<Context, List<String>, Lambda1<String?>>,
 )
 
@@ -64,6 +65,9 @@ data class ApiPreset(
     // Show a dialog for inputting authorization information(API_TOKEN/Username/Password).
     val newAuthConfig: () -> AuthConfig?,
     val newApi: (Context) -> Api,
+    // A query API can have a corresponding report API, e.g. PhoneBlock
+    // When creating the query API, also create the report API, to avoid repeatedly filling the API key.
+    val newReportApi: ((Context) -> Api)? = null,
 )
 
 val defApiQueryActions = listOf(
@@ -149,6 +153,9 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     ),
                 )
             )
+        },
+        newReportApi = { ctx ->
+            ApiReportPresets[0].newApi(ctx)
         }
     ),
     // Google Gemini

@@ -115,4 +115,8 @@
     <string name="csv_missing_column">
         必須カラム %s が見つかりません。「Parse CSV」で、ヘッダー %s を電話番号カラムとして使用するか、既存のヘッダーを %s にマッピングできます。
     </string>
+    <string name="enable_reporting_number">報告を有効にする</string>
+    <string name="help_enable_reporting_number">
+        このAPIは電話番号の報告もサポートしており、これを有効にすると報告ワークフローも生成されます。
+    </string>
 </resources>

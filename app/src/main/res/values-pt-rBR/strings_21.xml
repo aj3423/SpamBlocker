@@ -116,4 +116,8 @@
     <string name="csv_missing_column">
         Coluna obrigatória %s ausente. Você pode usar o cabeçalho %s para a coluna de números de telefone, ou mapear um cabeçalho existente para %s em \"Analisar CSV\".
     </string>
+    <string name="enable_reporting_number">Habilitar Relatórios</string>
+    <string name="help_enable_reporting_number">
+        Esta API também suporta relatar números, habilite isso para também gerar o fluxo de trabalho de relatório.
+    </string>
 </resources>

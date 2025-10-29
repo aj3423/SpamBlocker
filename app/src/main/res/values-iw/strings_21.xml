@@ -119,4 +119,8 @@
         חסרה עמודה נדרשת %s. תוכל להשתמש בכותרת %s עבור עמודת מספרי הטלפון, או למפות כותרת קיימת
         ל- %s ב\"ניתוח CSV\".
     </string>
+    <string name="enable_reporting_number">אפשר דיווח</string>
+    <string name="help_enable_reporting_number">
+        API זה תומך גם בדיווח על מספרי טלפון, הפעל זאת כדי ליצור גם את זרימת העבודה של הדיווח.
+    </string>
 </resources>

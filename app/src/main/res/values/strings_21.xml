@@ -119,4 +119,8 @@
         Missing required column %s. You can use header %s for the number column, or map an existing
         header to %s in \"Parse CSV\".
     </string>
+    <string name="enable_reporting_number">Enable Reporting</string>
+    <string name="help_enable_reporting_number">
+        This API also supports reporting numbers, enable this to also generate the reporting workflow.
+    </string>
 </resources>
