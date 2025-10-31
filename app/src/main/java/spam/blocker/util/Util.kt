@@ -25,6 +25,9 @@ import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
 import androidx.core.database.getStringOrNull
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.json.JSONArray
 import org.json.JSONObject
@@ -543,14 +546,18 @@ object Util {
     }
 
     fun readDataFromUri(ctx: Context, uri: Uri): ByteArray? {
-        return try {
-            // TODO: use coroutine to avoid accessing network on main thread
-            // For importing backups directly from cloud files.
-            ctx.contentResolver.openInputStream(uri)?.use { inputStream ->
-                inputStream.buffered().readBytes()
+        return runBlocking {
+            withContext(IO) {
+                try {
+                    // Use coroutine to avoid accessing network on main thread,
+                    //   for importing backup directly from cloud file.
+                    ctx.contentResolver.openInputStream(uri)?.use { inputStream ->
+                        inputStream.buffered().readBytes()
+                    }
+                } catch (_: IOException) {
+                    null
+                }
             }
-        } catch (_: IOException) {
-            null
         }
     }
 
