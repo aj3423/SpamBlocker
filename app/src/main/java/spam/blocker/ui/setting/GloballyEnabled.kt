@@ -75,7 +75,7 @@ fun GloballyEnabled() {
             },
         ) {
             RowVCenter {
-                GreyLabel(ctx.getString(R.string.warning_double_sms))
+                GreyLabel(ctx.getString(R.string.warning_double_sms), maxLines = 20)
 
                 BalloonQuestionMark(ctx.getString(R.string.help_rcs_message))
             }

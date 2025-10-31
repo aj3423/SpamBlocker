@@ -35,6 +35,7 @@ import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
@@ -205,7 +206,7 @@ class MainActivity : ComponentActivity() {
             PopupDialog(
                 trigger = trigger,
                 content = {
-                    GreyLabel(Str(R.string.warning_running_in_work_profile))
+                    GreyText(Str(R.string.warning_running_in_work_profile))
                 },
                 icon = { ResIcon(R.drawable.ic_warning, color = Color.Unspecified) },
                 buttons = {

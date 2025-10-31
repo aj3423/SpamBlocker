@@ -28,6 +28,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
@@ -114,7 +115,7 @@ fun PopupTesting(
                     ),
                     color = DarkOrange,
                 )
-                GreyLabel(Str(R.string.it_is_at_top))
+                GreyText(Str(R.string.it_is_at_top))
             }
 
             // Test Button

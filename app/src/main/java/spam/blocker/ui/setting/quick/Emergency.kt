@@ -33,6 +33,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.PopupDialog
@@ -77,7 +78,7 @@ fun EmergencySituation() {
             }
         }
     ) {
-        GreyLabel(Str(R.string.confirm_reset))
+        GreyText(Str(R.string.confirm_reset))
     }
 
     // Test popup

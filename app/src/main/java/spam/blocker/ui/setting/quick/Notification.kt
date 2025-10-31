@@ -43,6 +43,7 @@ import spam.blocker.ui.widgets.FooterButton
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.PopupDialog
@@ -169,7 +170,7 @@ fun EditChannelDialog(
                             .format(usedByRules.joinToString ("<br>")))
                     }
 
-                    GreyLabel(Str(R.string.confirm_to_delete))
+                    GreyText(Str(R.string.confirm_to_delete))
                 }
                 StrokeButton(
                     label = Str(R.string.delete),

@@ -15,6 +15,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Priority
 
+// Single line label
 @Composable
 fun GreyLabel(
     text: String,
@@ -23,6 +24,27 @@ fun GreyLabel(
     fontSize: TextUnit = TextUnit.Unspecified,
     fontWeight: FontWeight? = null,
     maxLines: Int = 1,
+    overflow: TextOverflow = TextOverflow.Ellipsis,
+) {
+    Text(
+        text = text,
+        modifier = modifier,
+        color = color,
+        fontSize = fontSize,
+        fontWeight = fontWeight,
+        maxLines = maxLines,
+        overflow = overflow,
+    )
+}
+// Multi line
+@Composable
+fun GreyText(
+    text: String,
+    modifier: Modifier = Modifier,
+    color: Color = LocalPalette.current.textGrey,
+    fontSize: TextUnit = TextUnit.Unspecified,
+    fontWeight: FontWeight? = null,
+    maxLines: Int = 20,
     overflow: TextOverflow = TextOverflow.Ellipsis,
 ) {
     Text(
