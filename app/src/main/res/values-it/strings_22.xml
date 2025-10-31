@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">Segnalazione automatica</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    Segnala automaticamente il numero se è bloccato per i seguenti motivi: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">Non contatti</font> (Modalità rigorosa contatti) <br>
+    &ensp; - Attestazione <font color="#fa7f71">STIR/SHAKEN</font> <br>
+    &ensp; - <font color="#fa7f71">Regex numero</font> <br>
+    <br>
+    Questo non influirà sulla segnalazione manuale, disabilita tutte queste opzioni per disattivare completamente la segnalazione automatica.
+    ]]>
+    </string>
+</resources>

@@ -17,6 +17,7 @@ import spam.blocker.config.Configs
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.DropdownWrapper
@@ -95,6 +96,8 @@ fun ImportButton() {
     fileReader.Compose()
 
     var succeeded by remember { mutableStateOf(false) }
+    var errorStr by remember { mutableStateOf("") }
+
     val resultTrigger = rememberSaveable { mutableStateOf(false) }
     var prevPermissions by remember { mutableStateOf("") }
 
@@ -118,6 +121,10 @@ fun ImportButton() {
                     color = LocalPalette.current.textGrey,
                     fontWeight = FontWeight.SemiBold,
                 )
+                if (!succeeded) {
+                    Text(errorStr, color = Salmon)
+                }
+
                 if (succeeded && prevPermissions.isNotEmpty()) {
 
                     val prevNames = prevPermissions
@@ -184,8 +191,9 @@ fun ImportButton() {
                 Events.configImported.fire()
             }
 
-            fun onDecodeFail() {
+            fun onDecodeFail(err: String) {
                 succeeded = false
+                errorStr = err
                 resultTrigger.value = true
             }
 
@@ -204,7 +212,7 @@ fun ImportButton() {
                         val jsonStr = String(raw)
                         onDecodeSuccess(jsonStr)
                     } catch (e: Exception) {
-                        onDecodeFail()
+                        onDecodeFail(e.message ?: "")
                     }
                 }
             }

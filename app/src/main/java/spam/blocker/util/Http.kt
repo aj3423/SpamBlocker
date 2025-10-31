@@ -16,7 +16,7 @@ import java.net.URL
 
 data class HttpResult(
     val statusCode: Int? = null,
-    val bytes: ByteArray? = null,
+    val echo: ByteArray? = null,
     val exception: String? = null,
 )
 
@@ -57,21 +57,22 @@ fun asyncHttpRequest(
                 wr.flush()
             }
 
-            if (conn.responseCode == HttpURLConnection.HTTP_OK) {
-                val bytes = conn.inputStream.use { it.readBytes() }
-                channel.send(
-                    HttpResult(
-                        statusCode = conn.responseCode,
-                        bytes = bytes,
-                    )
-                )
-            } else {
-                channel.send(
-                    HttpResult(
-                        statusCode = conn.responseCode,
-                    )
-                )
+            val echo = try { // 200
+                conn.inputStream.use { it.readBytes() } // this throws FileNotFound when status code == 40x
+            } catch (_: Exception) { // 40x read form errorStream instead
+                try {
+                    conn.errorStream.use { it.readBytes() }
+                } catch (_: Exception) {
+                    null
+                }
             }
+
+            channel.send(
+                HttpResult(
+                    statusCode = conn.responseCode,
+                    echo = echo,
+                )
+            )
         } catch (e: Exception) {
             channel.send(
                 HttpResult(

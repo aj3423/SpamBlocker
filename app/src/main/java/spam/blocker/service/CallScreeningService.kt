@@ -20,7 +20,7 @@ import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.ICheckResult
-import spam.blocker.service.reporting.reportSpam
+import spam.blocker.service.reporting.autoReportSpam
 import spam.blocker.ui.NotificationTrampolineActivity
 import spam.blocker.util.Contacts
 import spam.blocker.util.ILogger
@@ -254,7 +254,7 @@ class CallScreeningService : CallScreeningService() {
                 showSpamNotification(ctx, r, rawNumber)
 
                 // 3. Report spam number
-                reportSpam(ctx, r, rawNumber, isTesting = callDetails == null)
+                autoReportSpam(ctx, r, rawNumber, isTesting = callDetails == null)
             }
         }
 

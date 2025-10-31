@@ -544,6 +544,8 @@ object Util {
 
     fun readDataFromUri(ctx: Context, uri: Uri): ByteArray? {
         return try {
+            // TODO: use coroutine to avoid accessing network on main thread
+            // For importing backups directly from cloud files.
             ctx.contentResolver.openInputStream(uri)?.use { inputStream ->
                 inputStream.buffered().readBytes()
             }

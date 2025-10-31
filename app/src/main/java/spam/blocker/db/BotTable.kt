@@ -31,7 +31,7 @@ data class Bot(
     val desc: String = "",
     val schedule: ISchedule? = defaultSchedules[0].clone(), // nullable for historical compatible
     val actions: List<IAction> = listOf(),
-    val enabled: Boolean = false,
+    val enabled: Boolean = true,
     val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag
     @Transient
     val lastLog: String = "",

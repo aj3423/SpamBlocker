@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">Otomatik Rapor</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    Numara aşağıdaki nedenlerden dolayı engellenirse otomatik olarak raporla: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">Kişilerde Olmayanlar</font> (Kişiler Katı modu) <br>
+    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> onayı <br>
+    &ensp; - <font color="#fa7f71">Numara Regex</font> <br>
+    <br>
+    Bu durum manuel raporlamayı etkilemez, otomatik raporlamayı tamamen kapatmak için tüm bu seçenekleri devre dışı bırakın.
+    ]]>
+    </string>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">Automatischer Bericht</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    Die Nummer wird automatisch gemeldet, wenn sie aus folgenden Gründen blockiert wurde: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">Nicht-Kontakte</font> (Strenger Kontakte-Modus) <br>
+    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font>-Bestätigung <br>
+    &ensp; - <font color="#fa7f71">Nummern-Regex</font> <br>
+    <br>
+    Dies hat keinen Einfluss auf manuelle Meldungen. Deaktiviere alle diese Optionen, um die automatische Meldung vollständig zu deaktivieren.
+    ]]>
+    </string>
+</resources>

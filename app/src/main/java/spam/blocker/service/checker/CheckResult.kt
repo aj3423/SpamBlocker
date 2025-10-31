@@ -461,8 +461,7 @@ class ByRegexRule(
         val summary = ruleSummary(ctx)
 
         return when (type) {
-            RESULT_ALLOWED_BY_NUMBER -> ctx.getString(R.string.whitelist) + ": $summary"
-            RESULT_BLOCKED_BY_NUMBER -> ctx.getString(R.string.blacklist) + ": $summary"
+            RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> ctx.getString(R.string.regex_pattern) + ": $summary"
             RESULT_ALLOWED_BY_CONTACT_GROUP, RESULT_BLOCKED_BY_CONTACT_GROUP -> {
                 ctx.getString(R.string.contact_group) + ": $summary"
             }

@@ -20,7 +20,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 40
+        const val DB_VERSION = 41
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -78,6 +78,7 @@ class Db private constructor(
         // ---- api table ----
         const val TABLE_API_QUERY = "api_query"
         const val TABLE_API_REPORT = "api_report"
+        const val COLUMN_AUTO_REPORT_TYPES = "auto_report_types"
 
         // ---- call table ----
         const val TABLE_CALL = "call"
@@ -190,7 +191,8 @@ class Db private constructor(
                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_DESC TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
-                    "$COLUMN_ENABLED INTEGER" +
+                    "$COLUMN_ENABLED INTEGER, " +
+                    "$COLUMN_AUTO_REPORT_TYPES INTEGER" +
                     ")"
         )
         // bot
@@ -406,6 +408,11 @@ class Db private constructor(
             // quick copy
             db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_PATTERN_FLAGS = $COLUMN_PATTERN_FLAGS | 16 WHERE ($COLUMN_PATTERN_FLAGS & 1) = 0;")
             db.execSQL("UPDATE $TABLE_QUICK_COPY_RULE SET $COLUMN_PATTERN_EXTRA_FLAGS = $COLUMN_PATTERN_EXTRA_FLAGS | 16 WHERE ($COLUMN_PATTERN_EXTRA_FLAGS & 1) = 0;")
+        }
+
+        // v4.20 added auto-report category option
+        if ((newVersion >= 41) && (oldVersion < 41)) {
+            addColumnIfNotExist(db, TABLE_API_REPORT, COLUMN_AUTO_REPORT_TYPES, "INTEGER")
         }
     }
 }

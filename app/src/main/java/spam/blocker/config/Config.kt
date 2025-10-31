@@ -5,7 +5,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import spam.blocker.G
-import spam.blocker.db.Api
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.ContentRuleTable
@@ -14,12 +13,14 @@ import spam.blocker.db.Notification.ChannelTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
+import spam.blocker.db.QueryApi
 import spam.blocker.db.QuickCopyRuleTable
 import spam.blocker.db.RegexRule
+import spam.blocker.db.ReportApi
 import spam.blocker.db.RuleTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
-import spam.blocker.service.bot.botJson
+import spam.blocker.util.InterfaceJson
 import spam.blocker.util.Notification.createChannel
 import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Permission
@@ -607,13 +608,13 @@ class QuickCopyRules : PatternRules() {
 
 @Serializable
 class ApiQuery : IConfig {
-    val apis = mutableListOf<Api>()
+    val apis = mutableListOf<QueryApi>()
     var listCollapsed = false
     var priority = -1
 
     override fun load(ctx: Context) {
         apis.clear()
-        apis.addAll(G.apiQueryVM.table.listAll(ctx))
+        apis.addAll(G.apiQueryVM.table.listAll(ctx).map { it as QueryApi })
         val spf = spf.ApiQueryOptions(ctx)
         listCollapsed = spf.isListCollapsed()
         priority = spf.getPriority()
@@ -633,12 +634,12 @@ class ApiQuery : IConfig {
 }
 @Serializable
 class ApiReport : IConfig {
-    val apis = mutableListOf<Api>()
+    val apis = mutableListOf<ReportApi>()
     var listCollapsed = false
 
     override fun load(ctx: Context) {
         apis.clear()
-        apis.addAll(G.apiReportVM.table.listAll(ctx))
+        apis.addAll(G.apiReportVM.table.listAll(ctx).map { it as ReportApi })
         listCollapsed = spf.ApiReportOptions(ctx).isListCollapsed()
     }
 
@@ -783,12 +784,12 @@ class Configs {
     }
 
     fun toJsonString(): String {
-        return botJson.encodeToString(this)
+        return InterfaceJson.encodeToString(this)
     }
 
     companion object {
         fun createFromJson(jsonStr: String) : Configs {
-            val newCfg = botJson.decodeFromString<Configs>(jsonStr)
+            val newCfg = InterfaceJson.decodeFromString<Configs>(jsonStr)
             return newCfg
         }
     }

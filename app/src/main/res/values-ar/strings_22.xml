@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">الإبلاغ التلقائي</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    يتم الإبلاغ تلقائيًا عن الرقم إذا تم حظره للأسباب التالية: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">أرقام ليست ضمن جهات الاتصال</font> (وضع جهات الاتصال الصارم) <br>
+    &ensp; - <font color="#fa7f71">مصادقة STIR/SHAKEN</font> <br>
+    &ensp; - <font color="#fa7f71">نمط الرقم</font> <br>
+    <br>
+    لن يؤثر هذا على الإبلاغ اليدوي، قم بتعطيل جميع هذه الخيارات لإيقاف الإبلاغ التلقائي بالكامل.
+    ]]>
+    </string>
+</resources>

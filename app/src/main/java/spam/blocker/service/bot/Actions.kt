@@ -202,6 +202,9 @@ const val HTTP_POST = 1
 open class HttpDownload(
     var method: Int = HTTP_GET,
     var url: String = "",
+    // one attribute a line, e.g.:
+    //   User-Agent: SpamBlocker/1.0
+    //   Content-Type: application/json
     var header: String = "",
     var body: String = "", // post body
 
@@ -260,11 +263,11 @@ open class HttpDownload(
                     .resolveCustomTag(aCtx.customTags)
                 aCtx.logger?.debug(ctx.getString(R.string.resolved_url).formatAnnotated(resolvedUrl.A(DimGrey)))
 
-                // 2. Headers map
+                // 2. Headers
                 val headersMap = splitHeader(header, aCtx.customTags)
                 headersMap.forEach { (key, value) ->
                     aCtx.logger?.debug("${ctx.getString(R.string.http_header)}: %s -> %s".formatAnnotated(
-                        key.A(DimGrey), value.A(Teal200)
+                        key.A(DimGrey), value.A(DimGrey)
                     ))
                 }
 
@@ -300,9 +303,9 @@ open class HttpDownload(
                     throw Exception(result.exception)
                 }
 
-                aCtx.lastOutput = result?.bytes
+                aCtx.lastOutput = result?.echo
 
-                val echo = Util.truncate(String(result?.bytes ?: byteArrayOf()))
+                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()))
                 if (result?.statusCode == HttpURLConnection.HTTP_OK) {
                     aCtx.logger?.success("HTTP: <${result.statusCode}>")
                     aCtx.logger?.debug(echo)
@@ -2398,9 +2401,10 @@ class CategoryConfig(
 // (For internal app usage only.)
 @Serializable
 @SerialName("ReportNumber")
-class ReportNumber(
+class ScheduledAutoReportNumber(
     val rawNumber: String,
     val asTagCategory: String,
+    val blockReason: Int?,
     val domainFilter: List<String>? = null // only report to APIs that matches these domains
 ) : IAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
@@ -2413,7 +2417,9 @@ class ReportNumber(
     }
 
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter)
+        val apis = listReportableAPIs(
+            ctx = ctx, rawNumber = rawNumber, domainFilter = domainFilter, blockReason = blockReason
+        )
 
         // Report
         val scope = CoroutineScope(IO)

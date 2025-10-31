@@ -1,54 +1,54 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        APIs configuradas aqui serão usadas tanto para denúncias automáticas quanto manuais.<br>
+        As APIs configuradas aqui serão usadas tanto para relatórios automáticos quanto manuais.<br>
         <br>
-        <h4><font color="#00BFFF">- Privacidade</font></h4>
-        Os endpoints da API verão seu(sua):<br>
+        <h6><font color="#00BFFF">- Privacidade</font></h6>
+        Os pontos de extremidade da API verão seu(sua):<br>
         <br>
          &ensp; - Endereço IP<br>
          &ensp; - Impressões digitais TLS e TCP (que podem revelar sua versão do Android)<br>
-         &ensp; - O número de telefone denunciado (incluindo seu código de país)<br>
+         &ensp; - O número de telefone relatado (incluindo seu código de país)<br>
         <br>
-        Nada mais será denunciado.<br>
+        Nada mais será relatado.<br>
         <br>
-        <h4><font color="#00BFFF">- Denúncia manual</font></h4>
-		Se alguma API estiver ativada aqui, toque em um número de telefone no histórico de chamadas, e haverá um botão de denúncia.<br>
+        <h6><font color="#00BFFF">- Relatórios manuais</font></h6>
+		Se alguma API estiver ativada aqui, toque em um número de telefone no histórico de chamadas, e um botão de relatório aparecerá.<br>
 		<br>
-		O número de telefone será denunciado a <b>todas</b> as APIs.<br>
+		O número de telefone será relatado a <b>todas</b> as APIs.<br>
 		<br>
-        <h4><font color="#00BFFF">- Denúncia automática</font></h4>
-		<font color="#6ED0ff"><b>Atraso na denúncia</b></font><br>
-        Quando uma chamada é bloqueada, haverá um período de uma hora antes que seja denunciada.
-        Se o número de telefone for permitido posteriormente devido a repetições ou se você ligar de volta dentro desse período,
-        ele será considerado um número de telefone não-spam e a denúncia será cancelada.<br>
+        <h6><font color="#00BFFF">- Relatórios automáticos</font></h6>
+		<font color="#6ED0ff"><b>Atraso no relatório</b></font><br>
+        Quando uma chamada é bloqueada, haverá um período de uma hora antes de ser relatada.
+        Se o número de telefone for permitido posteriormente devido a repetições ou se for discado novamente dentro desse período,
+        ele será considerado um número de telefone não-spam e o relatório será cancelado.<br>
         <br>
-		<font color="#6ED0ff"><b>Tipo de denúncia</b></font><br>
-		1. Ele <font color="#fa7f71"><b>não</b></font> denunciará:<br>
+		<font color="#6ED0ff"><b>Tipo de relatório</b></font><br>
+		1. Ele <font color="#fa7f71"><b>não</b></font> irá relatar:<br>
         <br>
         - <font color="#fa7f71">Números de SMS ou conteúdo</font><br>
         - <font color="#fa7f71">Números de telefone permitidos</font><br>
-        - <font color="#fa7f71">Testes</font><br>
+        - <font color="#fa7f71">Teste</font><br>
         E os seguintes tipos bloqueados:<br>
         - <font color="#fa7f71">Regex de Contato</font><br>
-        - <font color="#fa7f71">Regex de Grupo de Contato</font><br>
+        - <font color="#fa7f71">Regex de Grupo de Contatos</font><br>
         - <font color="#fa7f71">Banco de Dados</font><br>
         - <font color="#fa7f71">Modo Reunião</font><br>
-        - <font color="#fa7f71">Consulta Instantânea</font> (para evitar que o número de telefone do endpoint da API seja vazado para outros concorrentes)<br>
+        - <font color="#fa7f71">Consulta Instantânea</font> (para evitar que o número de telefone do ponto de extremidade da API seja vazado para outros concorrentes)<br>
         <br>
-		2. Ele <font color="#03DAC5"><b>denunciará</b></font> números de telefone bloqueados por:<br>
+		2. Ele <font color="#03DAC5"><b>irá</b></font> relatar números de telefone bloqueados por:<br>
         <br>
-        - <font color="#03DAC5">Não-Contato</font>(Restrito)<br>
+        - <font color="#03DAC5">Não-Contato</font>(Estrito)<br>
         - <font color="#03DAC5">Atestado STIR</font><br>
         - <font color="#03DAC5">Regex de Número de Telefone</font><br>
         <br>
-		3. Casos de exceção:<br>
-        <br>
-        - Quando bloqueado por <font color="#03DAC5">Consulta Instantânea</font>, o número de telefone será denunciado de volta à <b>mesma</b> API para aumentar a pontuação de avaliação do número de telefone.
-         Por exemplo, quando bloqueado por consulta de API de check.com, ele denunciará apenas para check.com, não para others.com. <br>
+		3. Uma exceção:<br>
 		<br>
-        -  Quando bloqueado por <font color="#03DAC5">Banco de Dados</font> e o registro foi originalmente adicionado por uma consulta de API instantânea,
-         ele será denunciado apenas à <b>mesma</b> API pela mesma razão mencionada acima.<br>
+        Quando for bloqueado pelo <font color="#03DAC5">Banco de Dados</font> e o número de telefone foi originalmente adicionado por consulta de API,
+         ele será relatado de volta a essa API para aumentar a pontuação de classificação. <br>
+        <br>
+         Por exemplo, se o número de telefone foi adicionado por
+          uma consulta de API de <u>check.com</u>, ele só será relatado a <u>check.com</u>, não a <u>others.com</u>. <br>
         ]]>
     </string>
 </resources>

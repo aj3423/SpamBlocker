@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">自動檢舉</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    如果號碼因以下原因被封鎖，將自動檢舉：<br>
+    <br>
+    &ensp; - <font color="#fa7f71">非聯絡人</font> (聯絡人嚴格模式)<br>
+    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> 認證<br>
+    &ensp; - <font color="#fa7f71">號碼正規表達式</font><br>
+    <br>
+    這不會影響手動檢舉，停用所有這些選項以完全關閉自動檢舉功能。
+    ]]>
+    </string>
+</resources>

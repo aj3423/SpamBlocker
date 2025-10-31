@@ -14,7 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
-import spam.blocker.db.Api
+import spam.blocker.db.IApi
+import spam.blocker.db.ReportApi
 import spam.blocker.def.Def
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LightMagenta
@@ -30,7 +31,7 @@ import spam.blocker.util.spf
 @Composable
 fun ApiCard(
     forType: Int,
-    api: Api,
+    api: IApi,
     modifier: Modifier,
 ) {
     val ctx = LocalContext.current
@@ -47,6 +48,7 @@ fun ApiCard(
             Column(
                 modifier = M.weight(1f)
             ) {
+
                 RowVCenterSpaced(8) {
                     // Green dot
                     if (api.enabled) {
@@ -56,8 +58,11 @@ fun ApiCard(
                     // Desc
                     GreyLabel(text = api.summary(), fontWeight = FontWeight.SemiBold)
                 }
-                // first action summary
-//                api.actions.firstOrNull()?.Summary()
+
+                // Auto report types icons
+                if (api is ReportApi) {
+                    AutoReportIcons(api.autoReportTypes)
+                }
             }
 
             // [Priority]

@@ -18,11 +18,12 @@ import spam.blocker.service.checker.CheckContext
 import spam.blocker.util.ILogger
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
+import spam.blocker.util.InterfaceJson
 
 // When adding a new IAction type, follow all the steps:
 //  - implement it in Actions.kt
 //  - add to  `botActions` or `apiActions` below
-//  - add to  `botModule` in BotSerializersModule.kt
+//  - add to  `botModule` in SerializersModule.kt
 
 val botActions = listOf(
     HttpDownload(),
@@ -213,15 +214,15 @@ fun IAction.clone(): IAction {
 }
 
 fun IAction.serialize(): String {
-    return botJson.encodeToString(PolymorphicSerializer(IAction::class), this)
+    return InterfaceJson.encodeToString(PolymorphicSerializer(IAction::class), this)
 }
 
 fun String.parseAction(): IAction {
-    return botJson.decodeFromString(PolymorphicSerializer(IAction::class), this)
+    return InterfaceJson.decodeFromString(PolymorphicSerializer(IAction::class), this)
 }
 
 fun List<IAction>.serialize(): String {
-    return botJson.encodeToString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
+    return InterfaceJson.encodeToString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
 }
 
 fun String.parseActions(): List<IAction> {
@@ -229,7 +230,7 @@ fun String.parseActions(): List<IAction> {
         return listOf()
 
     return try {
-        botJson.decodeFromString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
+        InterfaceJson.decodeFromString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
     } catch (_: Exception) {
         listOf()
     }

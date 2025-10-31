@@ -3,9 +3,11 @@ package spam.blocker.ui.setting.api
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import spam.blocker.db.Api
+import spam.blocker.db.IApi
 import spam.blocker.db.ApiTable
 import spam.blocker.db.Db
+import spam.blocker.db.QueryApiTable
+import spam.blocker.db.ReportApiTable
 import spam.blocker.def.Def
 import spam.blocker.util.spf
 
@@ -13,7 +15,7 @@ open class ApiViewModel(
     val table: ApiTable,
     val forType: Int,
 ) {
-    val apis = mutableStateListOf<Api>()
+    val apis = mutableStateListOf<IApi>()
     val listCollapsed = mutableStateOf(false)
 
 
@@ -43,5 +45,5 @@ open class ApiViewModel(
     }
 }
 
-class ApiQueryViewModel : ApiViewModel(ApiTable(Db.TABLE_API_QUERY), Def.ForApiQuery)
-class ApiReportViewModel : ApiViewModel(ApiTable(Db.TABLE_API_REPORT), Def.ForApiReport)
+class ApiQueryViewModel : ApiViewModel(QueryApiTable(), Def.ForApiQuery)
+class ApiReportViewModel : ApiViewModel(ReportApiTable(), Def.ForApiReport)

@@ -21,7 +21,7 @@ import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.service.bot.botPrettyJson
+import spam.blocker.util.InterfacePrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.theme.LightMagenta
@@ -67,7 +67,7 @@ fun ApiList(vm: ApiViewModel) {
     if (exportTrigger.value) {
         ConfigExportDialog(
             trigger = exportTrigger,
-            initialText = botPrettyJson.encodeToString(vm.apis[clickedIndex]),
+            initialText = InterfacePrettyJson.encodeToString(vm.apis[clickedIndex]),
         )
     }
 

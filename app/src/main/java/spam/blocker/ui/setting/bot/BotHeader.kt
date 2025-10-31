@@ -11,7 +11,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
-import spam.blocker.service.bot.botJson
+import spam.blocker.util.InterfaceJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.SkyBlue
@@ -59,7 +59,7 @@ fun BotHeader(
         ConfigImportDialog(
             trigger = importTrigger,
         ) { configJson ->
-            val newBot = botJson.decodeFromString<Bot>(configJson).copy(
+            val newBot = InterfaceJson.decodeFromString<Bot>(configJson).copy(
                 id = 0,
                 workUUID = UUID.randomUUID().toString(),
             )

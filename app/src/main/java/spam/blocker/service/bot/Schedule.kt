@@ -20,6 +20,7 @@ import spam.blocker.ui.widgets.HourMinInput
 import spam.blocker.ui.widgets.RowCenter
 import spam.blocker.ui.widgets.WeekdayPicker2
 import spam.blocker.util.LocalDateTimeMockk
+import spam.blocker.util.InterfaceJson
 import java.time.DayOfWeek
 import java.time.DayOfWeek.FRIDAY
 import java.time.DayOfWeek.MONDAY
@@ -35,7 +36,7 @@ import java.time.temporal.TemporalAdjusters
 // When adding a new ISchedule type, follow all the steps:
 //  - implement it
 //  - add to `defaultSchedules`
-//  - add to  `botModule` in BotSerializersModule.kt
+//  - add to  `botModule` in SerializersModule.kt
 
 // The default values for all ISchedule
 val defaultSchedules = listOf (
@@ -85,7 +86,7 @@ fun ISchedule.clone(): ISchedule {
 
 // Serialize self to json string
 fun ISchedule.serialize(): String {
-    return botJson.encodeToString(PolymorphicSerializer(ISchedule::class), this)
+    return InterfaceJson.encodeToString(PolymorphicSerializer(ISchedule::class), this)
 }
 
 // Generate a *concrete* ISchedule from json string.
@@ -94,7 +95,7 @@ fun String.parseSchedule(): ISchedule? {
         return null
 
     return try {
-        botJson.decodeFromString(PolymorphicSerializer(ISchedule::class), this)
+        InterfaceJson.decodeFromString(PolymorphicSerializer(ISchedule::class), this)
     } catch (_: Exception) {
         null
     }

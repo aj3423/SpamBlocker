@@ -16,9 +16,11 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.Api
+import spam.blocker.db.IApi
+import spam.blocker.db.QueryApi
+import spam.blocker.db.ReportApi
 import spam.blocker.def.Def
-import spam.blocker.service.bot.botJson
+import spam.blocker.util.InterfaceJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
@@ -45,7 +47,7 @@ import spam.blocker.util.Lambda2
 fun ApiAuthConfigDialog(
     trigger: MutableState<Boolean>,
     authConfig: AuthConfig,
-    api: Api,
+    api: IApi,
     showReportOption: Boolean,
     onOk: Lambda2<Boolean, List<FormField>?>, // <EnableReport, FormFields>
 ) {
@@ -126,16 +128,17 @@ fun ApiHeader(
     val ctx = LocalContext.current
 
     var tappedPreset = remember { mutableStateOf<ApiPreset?>(null) }
-    var initialApi = remember { mutableStateOf(Api()) }
+    var initialApi = remember { mutableStateOf<IApi?>(null) }
 
-    fun addApiToDB(ctx: Context, newApi: Api) {
+    fun addApiToDB(ctx: Context, newApi: IApi) {
         // 1. add to db
         vm.table.addNewRecord(ctx, newApi)
 
         // 2. reload UI
         vm.reloadDb(ctx)
     }
-    fun addReportingApiToDB(ctx: Context, newApi: Api) {
+    // When creating PhoneBlock QueryApi, also create its ReportApi
+    fun addReportingApiToDB(ctx: Context, newApi: IApi) {
         val vm = G.apiReportVM
         // 1. add to db
         vm.table.addNewRecord(ctx, newApi)
@@ -147,7 +150,7 @@ fun ApiHeader(
     if (addTrigger.value) {
         EditApiDialog(
             trigger = addTrigger,
-            initial = initialApi.value,
+            initial = initialApi.value!!,
             onSave = { newApi ->
                 addApiToDB(ctx, newApi)
             }
@@ -159,9 +162,11 @@ fun ApiHeader(
         ConfigImportDialog(
             trigger = importTrigger,
         ) { configJson ->
-            val newApi = botJson.decodeFromString<Api>(configJson).copy(
-                id = 0,
-            )
+            val newApi = if (vm.forType == Def.ForApiQuery) {
+                InterfaceJson.decodeFromString<QueryApi>(configJson).copy(id = 0)
+            } else {
+                InterfaceJson.decodeFromString<ReportApi>(configJson).copy(id = 0)
+            }
 
             // 1. add to db
             vm.table.addNewRecord(ctx, newApi)
@@ -175,10 +180,10 @@ fun ApiHeader(
         ApiAuthConfigDialog(
             trigger = authFormTrigger,
             authConfig = tappedPreset.value!!.newAuthConfig()!!,
-            api = initialApi.value,
+            api = initialApi.value!!,
             showReportOption = tappedPreset.value!!.newReportApi != null
         ) { enableReport, formFields ->
-            addApiToDB(ctx, initialApi.value)
+            addApiToDB(ctx, initialApi.value!!)
             if (enableReport) {
                 var reportingApi = tappedPreset.value!!.newReportApi!!(ctx)
                 val authConfig = tappedPreset.value!!.newAuthConfig()!!
@@ -194,12 +199,12 @@ fun ApiHeader(
                 label = ctx.getString(R.string.customize),
                 leadingIcon = { GreyIcon(R.drawable.ic_note) }
             ) {
-                initialApi.value = Api(
-                    actions = if (vm.forType == Def.ForApiQuery)
-                        defApiQueryActions
-                    else
-                        defApiReportActions
-                )
+                initialApi.value = if(vm.forType == Def.ForApiQuery) {
+                    QueryApi(actions = defApiQueryActions)
+                } else {
+                    ReportApi(actions = defApiReportActions)
+                }
+
                 addTrigger.value = true
             },
             LabelItem(

@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">דיווח אוטומטי</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    דווח אוטומטית על המספר אם הוא נחסם מהסיבות הבאות: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">לא אנשי קשר</font> (מצב קפדני של אנשי קשר) <br>
+    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> אימות <br>
+    &ensp; - <font color="#fa7f71">ביטוי רגולרי למספר</font> <br>
+    <br>
+    זה לא ישפיע על דיווח ידני, בטל אפשרויות אלה כדי לכבות לחלוטין את הדיווח האוטומטי.
+    ]]>
+    </string>
+</resources>

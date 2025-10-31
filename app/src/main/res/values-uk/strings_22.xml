@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">Автозвіт</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    Автоматично повідомляти про номер, якщо його заблоковано з таких причин: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">Не-контакти</font> (Суворий режим для контактів) <br>
+    &ensp; - <font color="#fa7f71">Атестація STIR/SHAKEN</font> <br>
+    &ensp; - <font color="#fa7f71">Регулярний вираз номера</font> <br>
+    <br>
+    Це не вплине на ручне повідомлення, вимкніть усі ці опції, щоб повністю вимкнути автоматичне повідомлення.
+    ]]>
+    </string>
+</resources>

@@ -3,52 +3,52 @@
         <![CDATA[
         Les API configurées ici seront utilisées pour le signalement automatique et le signalement manuel.<br>
         <br>
-        <h4><font color="#00BFFF">- Confidentialité</font></h4>
-        Les points de terminaison de l\'API verront vos :<br>
+        <h6><font color="#00BFFF">- Confidentialité</font></h6>
+        Les points d\'accès de l\'API verront votre :<br>
         <br>
-         &ensp; - adresse IP<br>
-         &ensp; - empreintes TLS et TCP (qui peuvent révéler votre version d\'Android)<br>
-         &ensp; - Le numéro signalé (y compris votre indicatif de pays)<br>
+         &ensp; - Adresse IP<br>
+         &ensp; - Empreintes TLS et TCP (ce qui peut révéler votre version d\'Android)<br>
+         &ensp; - Le numéro de téléphone signalé (incluant votre indicatif de pays)<br>
         <br>
         Rien d\'autre ne sera signalé.<br>
         <br>
-        <h4><font color="#00BFFF">- Signalement manuel</font></h4>
-		Si une API est activée ici, appuyez sur un numéro dans l\'historique des appels, un bouton de signalement apparaîtra.<br>
+        <h6><font color="#00BFFF">- Signalement manuel</font></h6>
+		Si une API est activée ici, touchez un numéro de téléphone dans l\'historique des appels, il y aura un bouton de signalement.<br>
 		<br>
-		Le numéro sera signalé à <b>toutes</b> les API.<br>
+		Le numéro de téléphone sera signalé à <b>toutes</b> les API.<br>
 		<br>
-        <h4><font color="#00BFFF">- Signalement automatique</font></h4>
+        <h6><font color="#00BFFF">- Signalement automatique</font></h6>
 		<font color="#6ED0ff"><b>Délai de signalement</b></font><br>
         Lorsqu\'un appel est bloqué, il y aura un délai d\'une heure avant qu\'il ne soit signalé.
-        Si le numéro est autorisé plus tard en raison de répétitions ou s\'il est rappelé dans ce délai,
-        il est considéré comme un numéro non indésirable et le signalement sera annulé.<br>
+        Si le numéro de téléphone est autorisé plus tard en raison de répétitions ou d\'un rappel dans ce délai,
+        il est considéré comme un numéro de téléphone non-spam et le signalement sera annulé.<br>
         <br>
 		<font color="#6ED0ff"><b>Type de signalement</b></font><br>
 		1. Il <font color="#fa7f71"><b>ne signalera pas</b></font> :<br>
         <br>
         - <font color="#fa7f71">Numéros ou contenu de SMS</font><br>
-        - <font color="#fa7f71">Numéros autorisés</font><br>
+        - <font color="#fa7f71">Numéros de téléphone autorisés</font><br>
         - <font color="#fa7f71">Tests</font><br>
-        Et les types bloqués suivants :<br>
+        Et les types de blocage suivants :<br>
         - <font color="#fa7f71">Regex de contact</font><br>
         - <font color="#fa7f71">Regex de groupe de contacts</font><br>
         - <font color="#fa7f71">Base de données</font><br>
         - <font color="#fa7f71">Mode réunion</font><br>
-        - <font color="#fa7f71">Requête instantanée</font> (pour éviter que le numéro du point de terminaison de l\'API ne soit divulgué à d\'autres concurrents)<br>
+        - <font color="#fa7f71">Requête instantanée</font> (pour éviter que le numéro de téléphone du point d\'accès de l\'API ne soit divulgué à d\'autres concurrents)<br>
         <br>
-		2. Il <font color="#03DAC5"><b>signalera</b></font> les numéros bloqués par :<br>
+		2. Il <font color="#03DAC5"><b>signalera</b></font> les numéros de téléphone bloqués par :<br>
         <br>
-        - <font color="#03DAC5">Non-contact</font> (Strict)<br>
+        - <font color="#03DAC5">Non-contact</font>(Strict)<br>
         - <font color="#03DAC5">Attestation STIR</font><br>
-        - <font color="#03DAC5">Regex de numéro</font><br>
+        - <font color="#03DAC5">Regex de numéro de téléphone</font><br>
         <br>
-		3. Cas d\'exception :<br>
-        <br>
-        - Lorsqu\'il est bloqué par une <font color="#03DAC5">Requête instantanée</font>, il sera signalé à la <b>même</b> API pour augmenter le score de réputation du numéro.
-         Par exemple, lorsqu\'il est bloqué par une requête API de check.com, il ne sera signalé qu\'à check.com, pas à others.com. <br>
+		3. Une exception :<br>
 		<br>
-        -  Lorsqu\'il est bloqué par la <font color="#03DAC5">Base de données</font> et que l\'enregistrement a été initialement ajouté par une requête API instantanée,
-         il ne sera signalé qu\'à la <b>même</b> API pour la même raison que ci-dessus.<br>
+        Lorsqu\'il est bloqué par <font color="#03DAC5">Base de données</font> et que le numéro de téléphone a été ajouté initialement par une requête API,
+         il sera signalé à cette API pour augmenter son score d\'évaluation. <br>
+        <br>
+         Par exemple, si le numéro de téléphone a été ajouté par
+          une requête API de <u>check.com</u>, il ne sera signalé qu\'à <u>check.com</u>, et non à <u>others.com</u>. <br>
         ]]>
     </string>
 </resources>

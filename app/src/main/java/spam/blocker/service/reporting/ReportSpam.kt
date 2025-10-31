@@ -7,10 +7,10 @@ import kotlinx.coroutines.launch
 import spam.blocker.BuildConfig
 import spam.blocker.G
 import spam.blocker.db.ImportDbReason
+import spam.blocker.db.ReportApi
 import spam.blocker.db.SpamTable
 import spam.blocker.db.listReportableAPIs
 import spam.blocker.def.Def
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
@@ -18,11 +18,10 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.Delay
 import spam.blocker.service.bot.MyWorkManager
-import spam.blocker.service.bot.ReportNumber
+import spam.blocker.service.bot.ScheduledAutoReportNumber
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.executeAll
 import spam.blocker.service.bot.serialize
-import spam.blocker.service.checker.ByApiQuery
 import spam.blocker.service.checker.BySpamDb
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.setting.api.tagOther
@@ -30,7 +29,7 @@ import spam.blocker.util.AdbLogger
 import spam.blocker.util.Permission
 import java.util.UUID
 
-fun reportSpam(
+fun autoReportSpam(
     ctx: Context,
     r: ICheckResult,
     rawNumber: String,
@@ -46,10 +45,10 @@ fun reportSpam(
 private fun shouldReportImmediately(
     r: ICheckResult,
 ) : Boolean {
-    return r.type in listOf(RESULT_BLOCKED_BY_API_QUERY, RESULT_BLOCKED_BY_SPAM_DB)
+    return r.type == RESULT_BLOCKED_BY_SPAM_DB
 }
 
-//  Report immediately if it's blocked by API or SPAM db that originally blocked by API
+//  Report immediately if it's blocked by db and the number is originally blocked by API
 private fun reportImmediately(
     ctx: Context,
     r: ICheckResult,
@@ -57,9 +56,6 @@ private fun reportImmediately(
 ) {
     // 0. if blocked by API or spam db that originally blocked by API
     val domain: String? = when(r.type) {
-        RESULT_BLOCKED_BY_API_QUERY -> {
-            (r as ByApiQuery).detail.apiDomain
-        }
         RESULT_BLOCKED_BY_SPAM_DB -> {
             // Only report if it originally blocked by API query, such as:
             //   ApiQuery -> block -> AddToSpamDb
@@ -77,7 +73,7 @@ private fun reportImmediately(
     if (domain != null) {
         val scope = CoroutineScope(IO)
         val apis = listReportableAPIs(
-            ctx, rawNumber = rawNumber, domainFilter = listOf(domain)
+            ctx, rawNumber = rawNumber, domainFilter = listOf(domain), blockReason = r.type, isDbApi = true
         )
         apis.forEach { api ->
             scope.launch {
@@ -101,7 +97,9 @@ private fun scheduleReporting(
     isTesting: Boolean,
 ) {
     // 1. Skip if no reporting api is enabled
-    val anyApiEnabled = G.apiReportVM.table.listAll(ctx).any { it.enabled }
+    val anyApiEnabled = G.apiReportVM.table.listAll(ctx).any {
+        it.enabled && (it as ReportApi).enabledForBlockReason(r.type)
+    }
     if (!anyApiEnabled)
         return
 
@@ -110,7 +108,6 @@ private fun scheduleReporting(
         RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR, RESULT_BLOCKED_BY_NUMBER -> true
         else -> false
     }
-
     if (!isBlockedByLocalFilter)
         return
 
@@ -132,9 +129,10 @@ private fun scheduleReporting(
                     Time(hour = Def.NUMBER_REPORTING_BUFFER_HOURS.toInt()) // release: 1 hour
             ).serialize(),
             actionsConfig = listOf(
-                ReportNumber(
+                ScheduledAutoReportNumber(
                     rawNumber = rawNumber,
                     asTagCategory = tagOther,
+                    blockReason = r.type
                 )
             ).serialize(),
             workTag = UUID.randomUUID().toString(),

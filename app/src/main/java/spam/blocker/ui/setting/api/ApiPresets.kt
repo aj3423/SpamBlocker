@@ -3,8 +3,10 @@ package spam.blocker.ui.setting.api
 import android.content.Context
 import spam.blocker.BuildConfig
 import spam.blocker.R
-import spam.blocker.db.Api
+import spam.blocker.db.IApi
 import spam.blocker.db.ImportDbReason
+import spam.blocker.db.QueryApi
+import spam.blocker.db.ReportApi
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.FilterSpamResult
 import spam.blocker.service.bot.HTTP_GET
@@ -64,10 +66,10 @@ data class ApiPreset(
     val tooltipId: Int,
     // Show a dialog for inputting authorization information(API_TOKEN/Username/Password).
     val newAuthConfig: () -> AuthConfig?,
-    val newApi: (Context) -> Api,
+    val newApi: (Context) -> IApi,
     // A query API can have a corresponding report API, e.g. PhoneBlock
     // When creating the query API, also create the report API, to avoid repeatedly filling the API key.
-    val newReportApi: ((Context) -> Api)? = null,
+    val newReportApi: ((Context) -> IApi)? = null,
 )
 
 val defApiQueryActions = listOf(
@@ -129,7 +131,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
         tooltipId = R.string.help_api_preset_phoneblock,
         newAuthConfig = { authConfig_PhoneBlock.copy() },
         newApi = { ctx ->
-            Api(
+            QueryApi(
                 desc = ctx.getString(R.string.api_preset_phoneblock),
                 enabled = true,
                 actions = listOf(
@@ -181,7 +183,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
             )
         },
         newApi = { ctx ->
-            Api(
+            QueryApi(
                 desc = ctx.getString(R.string.api_preset_gemini),
                 enabled = true,
                 actions = listOf(
@@ -210,7 +212,7 @@ val ApiReportPresets = listOf<ApiPreset>(
         tooltipId = R.string.help_api_preset_phoneblock,
         newAuthConfig = { authConfig_PhoneBlock.copy() },
         newApi = { ctx ->
-            Api(
+            ReportApi(
                 desc = ctx.getString(R.string.api_preset_phoneblock),
                 enabled = true,
                 actions = listOf(

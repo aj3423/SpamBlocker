@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">Informe Automático</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    Informar automaticamente o número se está bloqueado polas seguintes razóns: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">Non-Contactos</font> (Modo Estrito de Contactos) <br>
+    &ensp; - <font color="#fa7f71">Certificación STIR/SHAKEN</font> <br>
+    &ensp; - <font color="#fa7f71">Regex de Números</font> <br>
+    <br>
+    Isto non afectará aos informes manuais; desactiva todas estas opcións para desactivar completamente o informe automático.
+    ]]>
+    </string>
+</resources>

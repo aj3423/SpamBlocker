@@ -3,52 +3,52 @@
         <![CDATA[
         Les API configurades aquí s\'utilitzaran tant per a l\'informe automàtic com per a l\'informe manual.<br>
         <br>
-        <h4><font color="#00BFFF">- Privadesa</font></h4>
-        Els punts finals de l\'API veuran el vostre/la vostra:<br>
+        <h6><font color="#00BFFF">- Privadesa</font></h6>
+        Els punts finals de l\'API veuran la vostra:<br>
         <br>
          &ensp; - Adreça IP<br>
          &ensp; - Empremtes digitals TLS i TCP (que poden revelar la vostra versió d\'Android)<br>
-         &ensp; - El número de telèfon informat (inclòs el vostre codi de país)<br>
+         &ensp; - El número informat (incloent el codi del vostre país)<br>
         <br>
-        Res més serà informat.<br>
+        No s\'informarà de res més.<br>
         <br>
-        <h4><font color="#00BFFF">- Informe manual</font></h4>
-		Si alguna API està habilitada aquí, toqueu un número de telèfon a l\'historial de trucades, i hi haurà un botó d\'informe.<br>
+        <h6><font color="#00BFFF">- Informe manual</font></h6>
+		Si s\'activa alguna API aquí, toqueu un número a l\'historial de trucades i apareixerà un botó d\'informe.<br>
 		<br>
-		El número de telèfon serà informat a <b>totes</b> les API.<br>
+		El número s\'informarà a <b>totes</b> les API.<br>
 		<br>
-        <h4><font color="#00BFFF">- Informe automàtic</font></h4>
+        <h6><font color="#00BFFF">- Informe automàtic</font></h6>
 		<font color="#6ED0ff"><b>Retard de l\'informe</b></font><br>
-        Quan es bloqueja una trucada, hi haurà un marge de temps d\'una hora abans que s\'informi.
-        Si el número de telèfon es permet més tard a causa de repeticions o si es torna a marcar dins d\'aquest marge de temps,
-        es considera un número de telèfon no spam i l\'informe es cancel·larà.<br>
+        Quan es bloqueja una trucada, hi haurà un període d\'una hora abans que s\'informi.
+        Si el número es permet més tard a causa de repeticions o si es torna a marcar dins d\'aquest període,
+        es considera un número no spam i l\'informe es cancel·larà.<br>
         <br>
 		<font color="#6ED0ff"><b>Tipus d\'informe</b></font><br>
-		1. <font color="#fa7f71"><b>No</b></font> informarà:<br>
+		1. <font color="#fa7f71"><b>No</b></font> s\'informarà de:<br>
         <br>
-        - <font color="#fa7f71">Números de telèfon o contingut de SMS</font><br>
-        - <font color="#fa7f71">Números de telèfon permesos</font><br>
+        - <font color="#fa7f71">Números o contingut SMS</font><br>
+        - <font color="#fa7f71">Números permesos</font><br>
         - <font color="#fa7f71">Proves</font><br>
         I els següents tipus bloquejats:<br>
         - <font color="#fa7f71">Regex de contacte</font><br>
         - <font color="#fa7f71">Regex de grup de contactes</font><br>
         - <font color="#fa7f71">Base de dades</font><br>
         - <font color="#fa7f71">Mode reunió</font><br>
-        - <font color="#fa7f71">Consulta instantània</font> (per evitar que el número de telèfon del punt final de l\'API es filtri a altres competidors)<br>
+        - <font color="#fa7f71">Consulta instantània</font> (per evitar que el número del punt final de l\'API es filtri a altres competidors)<br>
         <br>
-		2. <font color="#03DAC5"><b>Sí</b></font> informarà els números de telèfon bloquejats per:<br>
+		2. <font color="#03DAC5"><b>Sí</b></font> que informarà dels números bloquejats per:<br>
         <br>
-        - <font color="#03DAC5">No-Contacte</font>(Estricte)<br>
+        - <font color="#03DAC5">No-contacte</font>(Estricte)<br>
         - <font color="#03DAC5">Atestació STIR</font><br>
-        - <font color="#03DAC5">Regex de número de telèfon</font><br>
+        - <font color="#03DAC5">Regex de número</font><br>
         <br>
-		3. Casos d\'excepció:<br>
-        <br>
-        - Quan es bloqueja per <font color="#03DAC5">Consulta instantània</font>, s\'informarà a la <b>mateixa</b> API per augmentar la puntuació de valoració del número de telèfon.
-         Per exemple, quan es bloqueja per consulta d\'API de check.com, només s\'informarà a check.com, no a others.com. <br>
+		3. Una excepció:<br>
 		<br>
-        -  Quan es bloqueja per <font color="#03DAC5">Base de dades</font> i el registre es va afegir originalment per una consulta d\'API instantània,
-         només s\'informarà a la <b>mateixa</b> API per la mateixa raó que l\'anterior.<br>
+        Quan és bloquejat per <font color="#03DAC5">Base de dades</font> i el número va ser afegit originalment per una consulta d\'API,
+         s\'informarà de nou a aquesta API per augmentar la puntuació de valoració. <br>
+        <br>
+         Per exemple, si el número va ser afegit per
+          una consulta d\'API de <u>check.com</u>, només s\'informarà a <u>check.com</u>, no a <u>others.com</u>. <br>
         ]]>
     </string>
 </resources>

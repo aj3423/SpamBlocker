@@ -1,54 +1,54 @@
 <resources>
     <string name="help_report_number">
         <![CDATA[
-        As APIs configuradas aquí usaranse tanto para a notificación automática como para a manual.<br>
+        As APIs configuradas aquí utilizaranse tanto para o informe automático como para o informe manual.<br>
         <br>
-        <h4><font color="#00BFFF">- Privacidade</font></h4>
+        <h6><font color="#00BFFF">- Privacidade</font></h6>
         Os puntos finais da API verán o teu:<br>
         <br>
          &ensp; - Enderezo IP<br>
          &ensp; - Pegadas dixitais TLS e TCP (que poden revelar a túa versión de Android)<br>
-         &ensp; - O number denunciado (incluíndo o teu código de país)<br>
+         &ensp; - O número de teléfono informado (incluíndo o teu código de país)<br>
         <br>
-        Non se notificará nada máis.<br>
+        Nada máis será informado.<br>
         <br>
-        <h4><font color="#00BFFF">- Notificación manual</font></h4>
-		Se algunha API está habilitada aquí, toca un number no historial de chamadas e aparecerá un botón de notificación.<br>
+        <h6><font color="#00BFFF">- Informe manual</font></h6>
+		Se algunha API está activada aquí, toca un número de teléfono no historial de chamadas, haberá un botón de informe.<br>
 		<br>
-		O number será notificado a <b>todas</b> as APIs.<br>
+		O número de teléfono será informado a <b>todas</b> as APIs.<br>
 		<br>
-        <h4><font color="#00BFFF">- Notificación automática</font></h4>
-		<font color="#6ED0ff"><b>Atraso na notificación</b></font><br>
-        Cando unha chamada é bloqueada, haberá un tempo de espera dunha hora antes de que sexa notificada.
-        Se o number é permitido máis tarde debido a chamadas repetidas ou volve ser marcado dentro deste tempo de espera,
-        considérase un number non-spam e a notificación será cancelada.<br>
+        <h6><font color="#00BFFF">- Informe automático</font></h6>
+		<font color="#6ED0ff"><b>Atraso do informe</b></font><br>
+        Cando unha chamada é bloqueada, haberá un tempo de espera dunha hora antes de que se informe.
+        Se o número de teléfono se permite máis tarde debido a repeticións ou se volve chamar dentro deste tempo de espera,
+        considérase un número de teléfono non-spam e o informe será cancelado.<br>
         <br>
-		<font color="#6ED0ff"><b>Tipo de notificación</b></font><br>
-		1. <font color="#fa7f71"><b>Non</b></font> notificará:<br>
+		<font color="#6ED0ff"><b>Tipo de informe</b></font><br>
+		1. <font color="#fa7f71"><b>Non</b></font> informará de:<br>
         <br>
-        - <font color="#fa7f71">SMS numbers ou contido</font><br>
-        - <font color="#fa7f71">numbers permitidos</font><br>
+        - <font color="#fa7f71">Números de teléfono ou contido de SMS</font><br>
+        - <font color="#fa7f71">Números de teléfono permitidos</font><br>
         - <font color="#fa7f71">Probas</font><br>
         E os seguintes tipos bloqueados:<br>
-        - <font color="#fa7f71">Regex de Contacto</font><br>
-        - <font color="#fa7f71">Regex de Grupo de Contactos</font><br>
-        - <font color="#fa7f71">Base de Datos</font><br>
-        - <font color="#fa7f71">Modo Reunión</font><br>
-        - <font color="#fa7f71">Consulta Instantánea</font> (para evitar que o number do punto final da API se filtre a outros competidores)<br>
+        - <font color="#fa7f71">Regex de contacto</font><br>
+        - <font color="#fa7f71">Regex de grupo de contactos</font><br>
+        - <font color="#fa7f71">Base de datos</font><br>
+        - <font color="#fa7f71">Modo reunión</font><br>
+        - <font color="#fa7f71">Consulta instantánea</font> (para evitar que o número de teléfono do punto final da API se filtre a outros competidores)<br>
         <br>
-		2. <font color="#03DAC5"><b>Si</b></font> notificará os numbers bloqueados por:<br>
+		2. <font color="#03DAC5"><b>Si</b></font> informará de números de teléfono bloqueados por:<br>
         <br>
         - <font color="#03DAC5">Non-Contacto</font>(Estrito)<br>
         - <font color="#03DAC5">Atestación STIR</font><br>
-        - <font color="#03DAC5">Regex de number</font><br>
+        - <font color="#03DAC5">Regex de número de teléfono</font><br>
         <br>
-		3. Casos de excepción:<br>
-        <br>
-        - Cando é bloqueado por <font color="#03DAC5">Consulta Instantánea</font>, será notificado de volta á <b>mesma</b> API para aumentar a puntuación de valoración do number.
-         Por exemplo, cando é bloqueado por unha consulta da API de check.com, só o notificará a check.com, non a others.com. <br>
+		3. Unha excepción:<br>
 		<br>
-        - Cando é bloqueado por <font color="#03DAC5">Base de Datos</font> e o rexistro foi engadido orixinalmente por unha consulta instantánea da API,
-         só será notificado á <b>mesma</b> API pola mesma razón que a anterior.<br>
+        Cando é bloqueado por <font color="#03DAC5">Base de datos</font> e o número de teléfono foi engadido orixinalmente por unha consulta API,
+         informarase de volta a esa API para aumentar a puntuación de valoración. <br>
+        <br>
+         Por exemplo, se o número de teléfono foi engadido por
+          unha consulta API de <u>check.com</u>, só se informará a <u>check.com</u>, non a <u>others.com</u>. <br>
         ]]>
     </string>
 </resources>

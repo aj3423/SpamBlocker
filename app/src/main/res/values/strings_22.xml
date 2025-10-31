@@ -1,0 +1,14 @@
+<resources>
+    <string name="auto_report">Auto Report</string>
+    <string name="help_auto_report_type">
+    <![CDATA[
+    Auto report the number if it\'s blocked by following reasons: <br>
+    <br>
+    &ensp; - <font color="#fa7f71">Non-Contacts</font> (Contacts Strict mode) <br>
+    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> attestation <br>
+    &ensp; - <font color="#fa7f71">Number Regex</font> <br>
+    <br>
+    This won\'t impact manual reporting, disable all these options to fully turn off auto-reporting.
+    ]]>
+    </string>
+</resources>

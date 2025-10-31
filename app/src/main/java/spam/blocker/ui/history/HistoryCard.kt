@@ -93,7 +93,7 @@ fun ReportSpamDialog(
                 ) {
                     reportResult.value = buildAnnotatedString {  } // clear prev result
 
-                    val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true)
+                    val apis = listReportableAPIs(ctx = ctx, rawNumber = rawNumber, domainFilter = null, isManualReport = true, blockReason = null)
                     apis.forEach { api ->
                         scope.launch {
                             withContext(IO) {

@@ -34,7 +34,7 @@ import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.reScheduleBot
 import spam.blocker.service.bot.MyWorkManager
-import spam.blocker.service.bot.botPrettyJson
+import spam.blocker.util.InterfacePrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.theme.LocalPalette
@@ -186,7 +186,7 @@ fun BotList() {
     if (exportTrigger.value) {
         ConfigExportDialog(
             trigger = exportTrigger,
-            initialText = botPrettyJson.encodeToString(vm.bots[clickedIndex]),
+            initialText = InterfacePrettyJson.encodeToString(vm.bots[clickedIndex]),
         )
     }
 

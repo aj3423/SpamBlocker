@@ -3,52 +3,52 @@
         <![CDATA[
         Burada yapılandırılan API\'ler hem otomatik raporlama hem de manuel raporlama için kullanılacaktır.<br>
         <br>
-        <h4><font color="#00BFFF">- Gizlilik</font></h4>
+        <h6><font color="#00BFFF">- Gizlilik</font></h6>
         API uç noktaları şunları görecektir:<br>
         <br>
          &ensp; - IP adresi<br>
          &ensp; - TLS ve TCP parmak izleri (Android sürümünüzü ortaya çıkarabilir)<br>
-         &ensp; - Raporlanan numara (ülke kodunuz dahil)<br>
+         &ensp; - Bildirilen numara (ülke kodunuz dahil)<br>
         <br>
-        Başka hiçbir şey raporlanmayacaktır.<br>
+        Başka hiçbir şey rapor edilmeyecektir.<br>
         <br>
-        <h4><font color="#00BFFF">- Manuel raporlama</font></h4>
-		Burada herhangi bir API etkinse, çağrı geçmişindeki bir numaraya dokunun, bir raporlama düğmesi olacaktır.<br>
+        <h6><font color="#00BFFF">- Manuel raporlama</font></h6>
+		Burada herhangi bir API etkinleştirilirse, arama geçmişinde bir numaraya dokunduğunuzda, bir raporlama düğmesi olacaktır.<br>
 		<br>
-		Numara <b>tüm</b> API\'lere raporlanacaktır.<br>
+		Numara <b>tüm</b> API\'lere bildirilecektir.<br>
 		<br>
-        <h4><font color="#00BFFF">- Otomatik raporlama</font></h4>
+        <h6><font color="#00BFFF">- Otomatik raporlama</font></h6>
 		<font color="#6ED0ff"><b>Raporlama gecikmesi</b></font><br>
-        Bir çağrı engellendiğinde, raporlanmadan önce bir saatlik bir zaman arabelleği olacaktır.
-        Eğer numara bu zaman arabelleği içinde tekrarlar nedeniyle veya geri aranarak daha sonra izin verilirse,
-        spam olmayan bir numara olarak kabul edilir ve raporlama iptal edilir.<br>
+        Bir çağrı engellendiğinde, raporlanmadan önce bir saatlik bir zaman aralığı olacaktır.
+        Bu zaman aralığında numara tekrarlamalar nedeniyle daha sonra izin verilirse veya geri aranırsa,
+        istenmeyen çağrı numarası olarak kabul edilmez ve raporlama iptal edilir.<br>
         <br>
-		<font color="#6ED0ff"><b>Raporlama türü</b></font><br>
+		<font color="#6ED0ff"><b>Rapor türü</b></font><br>
 		1. Şunları <font color="#fa7f71"><b>raporlamaz</b></font>:<br>
         <br>
         - <font color="#fa7f71">SMS numaraları veya içeriği</font><br>
         - <font color="#fa7f71">İzin verilen numaralar</font><br>
-        - <font color="#fa7f71">Test</font><br>
+        - <font color="#fa7f71">Test etme</font><br>
         Ve aşağıdaki engellenen türler:<br>
         - <font color="#fa7f71">Kişi Regex</font><br>
         - <font color="#fa7f71">Kişi Grubu Regex</font><br>
         - <font color="#fa7f71">Veritabanı</font><br>
         - <font color="#fa7f71">Toplantı Modu</font><br>
-        - <font color="#fa7f71">Anlık Sorgu</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
+        - <font color="#fa7f71">Anında Sorgulama</font> (API uç noktasının numarasının diğer rakiplere sızmasını önlemek için)<br>
         <br>
 		2. Şunlar tarafından engellenen numaraları <font color="#03DAC5"><b>raporlar</b></font>:<br>
         <br>
         - <font color="#03DAC5">Kişi Olmayan</font>(Katı)<br>
-        - <font color="#03DAC5">STIR Doğrulama</font><br>
+        - <font color="#03DAC5">STIR Onayı</font><br>
         - <font color="#03DAC5">Numara Regex</font><br>
         <br>
-		3. İstisna durumlar:<br>
-        <br>
-        - <font color="#03DAC5">Anlık Sorgu</font> tarafından engellendiğinde, numaranın derecelendirme puanını artırmak için <b>aynı</b> API\'ye geri raporlanacaktır.
-         Örneğin, check.com\'dan gelen API sorgusu tarafından engellendiğinde, yalnızca check.com\'a raporlanır, others.com\'a değil. <br>
+		3. Bir istisna:<br>
 		<br>
-        -  <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve kayıt başlangıçta anlık bir API sorgusuyla eklendiğinde,
-         yukarıdaki aynı nedenden dolayı yalnızca <b>aynı</b> API\'ye raporlanacaktır.<br>
+        <font color="#03DAC5">Veritabanı</font> tarafından engellendiğinde ve numara orijinal olarak API sorgusuyla eklendiğinde,
+         derecelendirme puanını artırmak için o API\'ye geri rapor edilecektir. <br>
+        <br>
+         Örneğin, numara
+          <u>check.com</u> adresinden bir API sorgusuyla eklendiyse, yalnızca <u>check.com</u>\'a rapor eder, <u>others.com</u>\'a değil. <br>
         ]]>
     </string>
 </resources>
