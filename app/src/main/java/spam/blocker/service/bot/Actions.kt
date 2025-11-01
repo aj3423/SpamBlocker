@@ -3332,7 +3332,7 @@ class Ringtone(
                 GreyIcon18(R.drawable.ic_bell_mute)
             } else {
                 val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
-                GreyLabel(RingtoneUtil.getName(ctx, uri), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                GreyLabel(RingtoneUtil.getName(ctx, uri))
             }
         }
     }
@@ -3422,7 +3422,7 @@ class Ringtone(
                 GreyIcon18(R.drawable.ic_bell_mute)
             } else {
                 val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
-                GreyLabel(RingtoneUtil.getName(ctx, uri), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                GreyLabel(RingtoneUtil.getName(ctx, uri))
             }
         }
     }

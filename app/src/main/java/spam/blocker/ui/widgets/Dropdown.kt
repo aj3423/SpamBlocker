@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.MutableState
@@ -120,7 +121,7 @@ class CheckItem(
         CheckBox(
             label = {
                 RowVCenterSpaced(2) {
-                    GreyLabel(
+                    Text(
                         label,
                         color = if (enabled) C.textGrey else C.disabled
                     )

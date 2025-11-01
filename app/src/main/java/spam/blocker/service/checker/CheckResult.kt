@@ -62,6 +62,7 @@ import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
@@ -105,11 +106,10 @@ interface ICheckResult {
     // This will be rendered in the history items as the reason.(2nd row)
     @Composable
     fun ResultReason(expanded: Boolean) {
-        GreyLabel(
+        GreyText(
             text = resultReasonStr(LocalContext.current),
             fontSize = 16.sp,
             maxLines = if (expanded) 3 else 1,
-            overflow = TextOverflow.Ellipsis,
         )
     }
 

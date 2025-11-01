@@ -20,7 +20,6 @@ import spam.blocker.ui.theme.Priority
 fun GreyLabel(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = LocalPalette.current.textGrey,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontWeight: FontWeight? = null,
     maxLines: Int = 1,
@@ -29,7 +28,7 @@ fun GreyLabel(
     Text(
         text = text,
         modifier = modifier,
-        color = color,
+        color = LocalPalette.current.textGrey,
         fontSize = fontSize,
         fontWeight = fontWeight,
         maxLines = maxLines,
@@ -41,7 +40,6 @@ fun GreyLabel(
 fun GreyText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = LocalPalette.current.textGrey,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontWeight: FontWeight? = null,
     maxLines: Int = 20,
@@ -50,7 +48,7 @@ fun GreyText(
     Text(
         text = text,
         modifier = modifier,
-        color = color,
+        color = LocalPalette.current.textGrey,
         fontSize = fontSize,
         fontWeight = fontWeight,
         maxLines = maxLines,
