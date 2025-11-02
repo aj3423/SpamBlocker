@@ -1,0 +1,11 @@
+Fix:
+- Backup import crashes with cloud files
+- "Hang Up" mode
+  Automatically switch to "Reject" mode to avoid ending ongoing calls
+
+Enhancements:
+- Workflow:
+  - New preset: FTC-DNC initial database (90-day historical data)
+- Report Number
+  - When creating QueryApi, also create the corresponding ReportApi
+  - Options for disabling auto reporting for NonContact/STIR/Regex
