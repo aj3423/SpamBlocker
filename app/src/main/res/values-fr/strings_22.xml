@@ -2,13 +2,13 @@
     <string name="auto_report">Rapport automatique</string>
     <string name="help_auto_report_type">
     <![CDATA[
-    Signaler automatiquement le numéro s\'il est bloqué pour les raisons suivantes : <br>
+    Rapporter automatiquement le numéro s\'il est bloqué pour les raisons suivantes : <br>
     <br>
-    &ensp; - <font color="#fa7f71">Non-contacts</font> (Mode Contacts Strict) <br>
+    &ensp; - <font color="#fa7f71">Hors contacts</font> (Mode strict des contacts) <br>
     &ensp; - <font color="#fa7f71">Attestation STIR/SHAKEN</font> <br>
-    &ensp; - <font color="#fa7f71">Regex du numéro</font> <br>
+    &ensp; - <font color="#fa7f71">Regex de numéro</font> <br>
     <br>
-    Cela n\'affectera pas les signalements manuels ; désactivez toutes ces options pour désactiver complètement le signalement automatique.
+    Cela n\'a pas d\'impact sur les rapports manuels.
     ]]>
     </string>
 </resources>

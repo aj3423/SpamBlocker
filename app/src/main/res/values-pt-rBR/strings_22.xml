@@ -1,14 +1,14 @@
 <resources>
-    <string name="auto_report">Relatório Automático</string>
+    <string name="auto_report">Denúncia Automática</string>
     <string name="help_auto_report_type">
     <![CDATA[
-    Reportar automaticamente o número se ele for bloqueado pelos seguintes motivos: <br>
+    Denunciar automaticamente o número se ele for bloqueado pelos seguintes motivos: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Não Contatos</font> (Modo Rígido de Contatos) <br>
+    &ensp; - <font color="#fa7f71">Não-Contatos</font> (Modo Estrito de Contatos) <br>
     &ensp; - <font color="#fa7f71">Atestado STIR/SHAKEN</font> <br>
     &ensp; - <font color="#fa7f71">Regex do Número</font> <br>
     <br>
-    Isso não afetará os relatórios manuais; desative todas essas opções para desativar completamente o relatório automático.
+    Isso não afeta a denúncia manual.
     ]]>
     </string>
 </resources>

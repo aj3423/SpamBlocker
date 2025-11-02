@@ -2,13 +2,13 @@
     <string name="auto_report">گزارش خودکار</string>
     <string name="help_auto_report_type">
     <![CDATA[
-    شماره را به طور خودکار گزارش کنید اگر به دلایل زیر مسدود شده باشد: <br>
+    اگر شماره به دلایل زیر مسدود شود، به صورت خودکار گزارش شود: <br>
     <br>
-    &ensp; - <font color="#fa7f71">غیرمخاطبین</font> (حالت سختگیرانه مخاطبین) <br>
-    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> تصدیق <br>
-    &ensp; - <font color="#fa7f71">عبارت باقاعده شماره</font> <br>
+    &ensp; - <font color="#fa7f71">شماره‌های ناشناس</font> (حالت سختگیرانه مخاطبین) <br>
+    &ensp; - <font color="#fa7f71">تأییدیه STIR/SHAKEN</font> <br>
+    &ensp; - <font color="#fa7f71">عبارت باقاعده شماره تلفن</font> <br>
     <br>
-    این روی گزارش‌دهی دستی تأثیری نخواهد داشت، تمام این گزینه‌ها را غیرفعال کنید تا گزارش‌دهی خودکار را به طور کامل خاموش کنید.
+    این بر گزارش‌دهی دستی تأثیری ندارد.
     ]]>
     </string>
 </resources>

@@ -2,13 +2,13 @@
     <string name="auto_report">Lapor Otomatis</string>
     <string name="help_auto_report_type">
     <![CDATA[
-    Lapor otomatis nomor tersebut jika diblokir karena alasan berikut: <br>
+    Lapor otomatis nomor jika diblokir karena alasan berikut: <br>
     <br>
-    &ensp; - <font color="#fa7f71">Bukan Kontak</font> (Mode Ketat Kontak) <br>
-    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> atestasi <br>
+    &ensp; - <font color="#fa7f71">Bukan Kontak</font> (mode Ketat Kontak) <br>
+    &ensp; - <font color="#fa7f71">Atetasi STIR/SHAKEN</font> <br>
     &ensp; - <font color="#fa7f71">Regex Nomor</font> <br>
     <br>
-    Ini tidak akan memengaruhi pelaporan manual, nonaktifkan semua opsi ini untuk sepenuhnya mematikan pelaporan otomatis.
+    Ini tidak memengaruhi pelaporan manual.
     ]]>
     </string>
 </resources>

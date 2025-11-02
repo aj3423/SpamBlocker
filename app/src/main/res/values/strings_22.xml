@@ -8,7 +8,7 @@
     &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> attestation <br>
     &ensp; - <font color="#fa7f71">Number Regex</font> <br>
     <br>
-    This won\'t impact manual reporting, disable all these options to fully turn off auto-reporting.
+    This doesn\'t impact manual reporting.
     ]]>
     </string>
 </resources>

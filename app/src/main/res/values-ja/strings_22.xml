@@ -1,14 +1,14 @@
 <resources>
-    <string name="auto_report">自動レポート</string>
+    <string name="auto_report">自動報告</string>
     <string name="help_auto_report_type">
     <![CDATA[
-    以下の理由で番号がブロックされた場合に、自動でその番号を報告します。<br>
+    電話番号が以下の理由でブロックされた場合、自動的に報告します。<br>
     <br>
-    &ensp; - <font color="#fa7f71">非連絡先</font> (連絡先厳格モード) <br>
-    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font>認証 <br>
-    &ensp; - <font color="#fa7f71">番号正規表現</font> <br>
+    &ensp; - <font color="#fa7f71">非連絡先</font> (連絡先厳格モード)<br>
+    &ensp; - <font color="#fa7f71">STIR/SHAKEN</font> 証明<br>
+    &ensp; - <font color="#fa7f71">電話番号の正規表現</font><br>
     <br>
-    これは手動報告には影響しません。自動報告を完全にオフにするには、これらのオプションをすべて無効にしてください。
+    これは手動報告には影響しません。
     ]]>
     </string>
 </resources>
