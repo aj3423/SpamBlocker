@@ -77,94 +77,10 @@
     <string name="action_backup_import">Importación de copia de seguridad</string>
     <string name="action_read_file">Leer archivo</string>
     <string name="action_write_file">Escribir archivo</string>
-    <string name="action_parse_csv">Analizar CSV</string>
-    <string name="action_parse_xml">Analizar XML</string>
-    <string name="action_regex_extract">Extraer Regex</string>
     <string name="action_import_to_spam_db">Importar a la base de datos de spam</string>
-    <string name="action_import_as_regex_rule">Importar como regla Regex</string>
-    <string name="action_convert_number">Reemplazar número</string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        Descargar datos HTTP como <u>bytes de contenido</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Eliminar los números caducados de la base de datos de spam.</string>
     <string name="help_action_cleanup_history">Eliminar los registros de historial caducados.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Exportar la configuración actual a <u>bytes de contenido</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        Aplicar la configuración desde <u>bytes de contenido</u>.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Obtener los <u>bytes de contenido</u> de un archivo. <br>
-        <br>
-        Etiquetas de <font color="#03DAC5"><b>ruta</b></font> admitidas: <br>
-        <br>
-        %s <br>
-        <br>
-        Etiquetas de <font color="#03DAC5"><b>nombre de archivo</b></font> admitidas: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        Escribir <u>bytes de contenido</u> en un archivo. <br>
-        <br>
-        Etiquetas de <font color="#03DAC5"><b>ruta</b></font> admitidas: <br>
-        <br>
-        %s <br>
-        <br>
-        Etiquetas de <font color="#03DAC5"><b>nombre de archivo</b></font> admitidas: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        Analizar los <u>bytes de contenido</u> csv en una <u>lista de números</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        Analizar los <u>bytes de contenido</u> xml utilizando <b>xpath</b> y generar una <u>lista de números.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Extraer una <u>lista de números</u> de los <u>bytes de contenido</u> utilizando regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Añadir una <u>lista de números</u> a la base de datos de spam.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Generar una nueva regla regex a partir de una <u>lista de números</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        Convertir la <u>lista de números</u> al formato que utiliza esta aplicación.<br>
-        <br>
-        Por ejemplo, añadir dos acciones para reemplazar:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - Reemplazar `<font color="#fa7f71">(+)</font>` por ``<br>
-        &ensp; - Reemplazar `<font color="#fa7f71">(#)</font>` por `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="action_find_rules">Buscar reglas</string>
-    <string name="action_modify_rules">Modificar reglas</string>
     <string name="action_modify_rules_placeholder">
         Una cadena JSON, por ejemplo:\n
         {\n
@@ -173,15 +89,5 @@
         \"blockType\": 0\n
         …\n
         }\n
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Encontrar una <u>lista de reglas</u> que coincidan con una descripción específica.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        Cambiar uno o varios atributos para una <u>lista de reglas</u>.
-        ]]>
     </string>
 </resources>

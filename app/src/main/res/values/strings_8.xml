@@ -75,14 +75,7 @@
     <string name="action_backup_import">Backup Import</string>
     <string name="action_read_file">Read File</string>
     <string name="action_write_file">Write File</string>
-    <string name="action_parse_csv">Parse CSV</string>
-    <string name="action_parse_xml">Parse XML</string>
-    <string name="action_regex_extract">Regex Extract</string>
     <string name="action_import_to_spam_db">Import to Spam Database</string>
-    <string name="action_import_as_regex_rule">Import as Regex Rule</string>
-    <string name="action_convert_number">Replace Number</string>
-    <string name="action_find_rules">Find Rules</string>
-    <string name="action_modify_rules">Modify Rules</string>
     <string name="action_modify_rules_placeholder">
         A json string, for example:\n
         {\n
@@ -93,93 +86,6 @@
         }\n
     </string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        HTTP download data as <u>content bytes</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Delete expired numbers from spam database.</string>
     <string name="help_action_cleanup_history">Delete expired history records.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Export the current settings to <u>content bytes</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        Apply settings from <u>content bytes</u>.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Get the <u>content bytes</u> from a file. <br>
-        <br>
-        Supported <font color="#03DAC5"><b>path</b></font> tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Supported <font color="#03DAC5"><b>filename</b></font> tags: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        Write <u>content bytes</u> to a file. <br>
-        <br>
-        Supported <font color="#03DAC5"><b>path</b></font> tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Supported <font color="#03DAC5"><b>filename</b></font> tags: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        Parse csv <u>content bytes</u> to a <u>list of numbers</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        Parse xml <u>content bytes</u> using <b>xpath</b> and generate a <u>list of numbers.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Extract a <u>list of numbers</u> from <u>content bytes</u> using regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Add a <u>list of numbers</u> to the spam database.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Generate a new regex rule from a <u>list of numbers</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        Convert the <u>list of numbers</u> to the format this app uses.<br>
-        <br>
-        For example, add two actions to change:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` to `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - Replace `<font color="#fa7f71">(+)</font>` with ``<br>
-        &ensp; - Replace `<font color="#fa7f71">(#)</font>` with `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Find a <u>list of rules</u> that match a specific description.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        Change one or multiple attributes for a <u>list of rules</u>.
-        ]]>
-    </string>
 </resources>

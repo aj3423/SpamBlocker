@@ -77,94 +77,10 @@
     <string name="action_backup_import">Sicherung importieren</string>
     <string name="action_read_file">Datei lesen</string>
     <string name="action_write_file">Datei schreiben</string>
-    <string name="action_parse_csv">CSV-Datei analysieren</string>
-    <string name="action_parse_xml">XML-Datei analysieren</string>
-    <string name="action_regex_extract">Regex-Extraktion</string>
     <string name="action_import_to_spam_db">In die Spam-Datenbank importieren</string>
-    <string name="action_import_as_regex_rule">Als Regex-Regel importieren</string>
-    <string name="action_convert_number">Telefonnummer ersetzen</string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        HTTP-Daten als <u>Inhaltsbytes</u> herunterladen
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Abgelaufene Telefonnummern aus der Spam-Datenbank löschen.</string>
     <string name="help_action_cleanup_history">Abgelaufene Verlaufseinträge löschen.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Exportieren Sie die aktuellen Einstellungen als <u>Inhaltsbytes</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        Einstellungen aus <u>Inhaltsbytes</u> anwenden.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Die <u>Inhaltsbytes</u> aus einer Datei abrufen. <br>
-        <br>
-        Unterstützte <font color="#03DAC5"><b>Pfad</b></font>-Tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Unterstützte <font color="#03DAC5"><b>Dateinamen</b></font>-Tags: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        <u>Inhaltsbytes</u> in eine Datei schreiben. <br>
-        <br>
-        Unterstützte <font color="#03DAC5"><b>Pfad</b></font>-Tags: <br>
-        <br>
-        %s <br>
-        <br>
-        Unterstützte <font color="#03DAC5"><b>Dateinamen</b></font>-Tags: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        Analysieren Sie CSV-<u>Inhaltsbytes</u> in eine <u>Liste von Telefonnummern</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        Analysieren Sie XML-<u>Inhaltsbytes</u> mit <b>xpath</b> und generieren Sie eine <u>Liste von Telefonnummern.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Extrahieren Sie eine <u>Liste von Telefonnummern</u> aus <u>Inhaltsbytes</u> mit Regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Fügen Sie eine <u>Liste von Telefonnummern</u> zur Spam-Datenbank hinzu.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Erstellen Sie eine neue Regex-Regel aus einer <u>Liste von Telefonnummern</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        Konvertieren Sie die <u>Liste von Telefonnummern</u> in das Format, das diese App verwendet.<br>
-        <br>
-        Fügen Sie beispielsweise zwei Aktionen hinzu, um zu ersetzen:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` zu `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - Ersetzen Sie `<font color="#fa7f71">(+)</font>` durch ``<br>
-        &ensp; - Ersetzen Sie `<font color="#fa7f71">(#)</font>` durch `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="action_find_rules">Regeln finden</string>
-    <string name="action_modify_rules">Regeln ändern</string>
     <string name="action_modify_rules_placeholder">
         Ein JSON-String, zum Beispiel:\n
         {\n
@@ -173,15 +89,5 @@
         \"blockType\": 0\n
         …\n
         }
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Eine <u>Liste von Regeln</u> finden, die mit einer bestimmten Beschreibung übereinstimmen.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        Ändere ein oder mehrere Attribute für eine <u>Liste von Regeln</u>.
-        ]]>
     </string>
 </resources>

@@ -11,4 +11,125 @@
     Esto no afecta la denuncia manual.
     ]]>
     </string>
+    <string name="action_parse_csv">Analizar CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Analiza bytes de datos CSV a una lista de números de teléfono. <br>
+        <br>
+        La columna que contiene los números de teléfono <b>debe</b> llamarse <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        Para archivos CSV de terceros con nombres de encabezado diferentes, mapea a
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> usando el <b>Mapeo de Columnas</b>. <br>
+        <br>
+        Por ejemplo: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Nota</b></font> <br>
+        Para analizar archivos de texto plano sin encabezados de columna, usa <b>Extraer con Regex</b> en su lugar.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Analiza bytes de datos XML usando <font color="#00BFFF">xpath</font> y genera una lista de números de teléfono.
+        ]]>
+    </string>
+    <string name="action_parse_xml">Analizar XML</string>
+    <string name="action_regex_extract">Extraer con Regex</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Busca un patrón regex en el texto, encuentra todas las ocurrencias y genera una lista de números de teléfono. <br>
+        <br>
+        Esto también se puede usar para analizar archivos de texto plano con un número de teléfono por línea. <br>
+        <br>
+        Por ejemplo, analiza el texto: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        con regex: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Envía una solicitud HTTP y recupera la respuesta como bytes de datos.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Exporta la configuración actual como bytes de datos.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Aplica la configuración desde bytes de datos.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Lee bytes de datos de un archivo. <br>
+        <br>
+        Etiquetas de <font color="#03DAC5">ruta</font> admitidas: <br>
+        <br>
+        %s <br>
+        <br>
+        Etiquetas de <font color="#03DAC5">nombre de archivo</font> admitidas: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Escribe bytes de datos en un archivo. <br>
+        <br>
+        Etiquetas de <font color="#03DAC5"><b>ruta</b></font> admitidas: <br>
+        <br>
+        %s <br>
+        <br>
+        Etiquetas de <font color="#03DAC5"><b>nombre de archivo</b></font> admitidas: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Buscar Reglas</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Encuentra todas las reglas regex que coincidan con la descripción específica.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Cambia uno o varios atributos para una lista de reglas.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Modificar Reglas</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Añade una lista de números de teléfono a la base de datos de llamadas spam.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Genera una nueva regla regex a partir de una lista de números de teléfono.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Normaliza patrones numéricos de fuentes de terceros a formato regex. <br>
+        <br>
+        Por ejemplo, para mapear <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        a <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        Añade dos acciones de <b>Reemplazar Número</b>: <br>
+        &ensp; - Reemplaza `<font color="#fa7f71">(+)</font>` con ``<br>
+        &ensp; - Reemplaza `<font color="#fa7f71">(#)</font>` con `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Reemplazar Número</string>
+    <string name="action_import_as_regex_rule">Importar como Regla Regex</string>
 </resources>

@@ -77,14 +77,7 @@
     <string name="action_backup_import">Impor Cadangan</string>
     <string name="action_read_file">Baca Berkas </string>
     <string name="action_write_file">Tulis Berkas</string>
-    <string name="action_parse_csv">Urai CSV</string>
-    <string name="action_parse_xml">Urai XML</string>
-    <string name="action_regex_extract">Ekstrak Regex</string>
     <string name="action_import_to_spam_db">Impor ke Basis Data Spam</string>
-    <string name="action_import_as_regex_rule">Impor sebagai Aturan Regex</string>
-    <string name="action_convert_number">Ganti Nomor</string>
-    <string name="action_find_rules">Temukan Aturan</string>
-    <string name="action_modify_rules">Modifikasi Aturan</string>
     <string name="action_modify_rules_placeholder">
         Sebuah string JSON, contoh:\n
         {\n
@@ -95,93 +88,6 @@
         }\n
     </string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        Data unduh HTTP sebagai <u>byte isi</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Hapus nomor kedaluwarsa dari basis data spam.</string>
     <string name="help_action_cleanup_history">Hapus catatan riwayat kadaluwarsa </string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Ekspor pengaturan saat ini ke <u>byte isi</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        Terapkan pengaturan dari <u>byte isi</u>.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Dapatkan <u>byte konten</u> dari berkas. <br>
-        <br>
-        Tag <font color="#03DAC5"><b>jalur</b></font> yang didukung: <br>
-        <br>
-        %s <br>
-        <br>
-        Tag <font color="#03DAC5"><b>nama berkas</b></font> yang didukung: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        Tulis <u>byte konten</u> ke berkas. <br>
-        <br>
-        Tag <font color="#03DAC5"><b>jalur</b></font> yang didukung: <br>
-        <br>
-        %s <br>
-        <br>
-        Tag <font color="#03DAC5"><b>nama berkas</b></font> yang didukung: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        Urai <u>byte isi</u> csv ke <u>daftar nomor</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        Urai <u>bye isi</u> xml menggunakan <b>xpath</b> dan hasilkan <u>daftar nomor.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Ekstrak <u>daftar nomor</u> dari <u>byte isi</u> menggunakan regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Tambahkan <u>daftar nomor</u> ke basis data spam.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Hasilkan aturan regex baru dari <u>daftar nomor</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        Konversi <u>daftar nomor</u> ke format yang digunakan aplikasi ini.<br>
-        <br>
-        Misalnya, tambahkan dua tindakan untuk mengganti:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` ke `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - Ganti `<font color="#fa7f71">(+)</font>` ke ``<br>
-        &ensp; - Ganti `<font color="#fa7f71">(#)</font>` ke `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Temukan <u>daftar aturan</u> yang sesuai dengan deskripsi tertentu.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        Ubah satu atau beberapa atribut untuk <u>daftar aturan</u>.
-        ]]>
-    </string>
 </resources>

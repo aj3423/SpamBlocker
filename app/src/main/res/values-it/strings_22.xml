@@ -11,4 +11,125 @@
     Questo non influisce sulla segnalazione manuale.
     ]]>
     </string>
+    <string name="action_parse_csv">Analizza CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Analizza i byte di dati CSV in un elenco di numeri. <br>
+        <br>
+        La colonna contenente i numeri <b>deve</b> essere denominata <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        Per i file CSV di terze parti con nomi di intestazione diversi, mappali a
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> utilizzando il <b>Mapping colonne</b>. <br>
+        <br>
+        Ad esempio: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Nota</b></font> <br>
+        Per l\'analisi di file di testo semplice senza intestazioni di colonna, usa invece <b>Estrai Regex</b>.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Analizza i byte di dati XML utilizzando <font color="#00BFFF">xpath</font> e genera un elenco di numeri.
+        ]]>
+    </string>
+    <string name="action_parse_xml">Analizza XML</string>
+    <string name="action_regex_extract">Estrai Regex</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Cerca un pattern regex nel testo, trova tutte le occorrenze e genera un elenco di numeri. <br>
+        <br>
+        Questo può essere usato anche per analizzare file di testo semplice con un numero per riga. <br>
+        <br>
+        Ad esempio, analizza il testo: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        con regex: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Invia una richiesta HTTP e recupera la risposta come byte di dati.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Esporta le impostazioni attuali come byte di dati.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Applica le impostazioni dai byte di dati.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Leggi i byte di dati da un file. <br>
+        <br>
+        Tag <font color="#03DAC5">percorso</font> supportati: <br>
+        <br>
+        %s <br>
+        <br>
+        Tag <font color="#03DAC5">nome file</font> supportati: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Scrivi i byte di dati su un file. <br>
+        <br>
+        Tag <font color="#03DAC5"><b>percorso</b></font> supportati: <br>
+        <br>
+        %s <br>
+        <br>
+        Tag <font color="#03DAC5"><b>nome file</b></font> supportati: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Trova Regole</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Trova tutte le regole regex che corrispondono alla descrizione specifica.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Cambia uno o più attributi per un elenco di regole.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Modifica Regole</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Aggiungi un elenco di numeri al database degli spam.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Genera una nuova regola regex da un elenco di numeri.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Normalizza i pattern numerici da fonti di terze parti al formato regex. <br>
+        <br>
+        Ad esempio, per mappare <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        a <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        Aggiungi due azioni <b>Sostituisci Numero</b>: <br>
+        &ensp; - Sostituisci `<font color="#fa7f71">(+)</font>` con ``<br>
+        &ensp; - Sostituisci `<font color="#fa7f71">(#)</font>` con `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Sostituisci Numero</string>
+    <string name="action_import_as_regex_rule">Importa come Regola Regex</string>
 </resources>

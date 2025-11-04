@@ -15,7 +15,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import com.google.i18n.phonenumbers.PhoneNumberUtil
@@ -1390,7 +1389,7 @@ class ConvertNumber(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_convert_number)
+        return ctx.getString(R.string.action_replace_number)
     }
 
     @Composable
@@ -1399,7 +1398,7 @@ class ConvertNumber(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_convert_number)
+        return ctx.getString(R.string.help_action_replace_number)
     }
 
     override fun inputParamType(): List<ParamType> {

@@ -11,4 +11,125 @@
     这不影响手动举报。
     ]]>
     </string>
+    <string name="action_parse_csv">解析CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        将CSV数据字节解析为号码列表。 <br>
+        <br>
+        包含号码的列<b>必须</b>命名为 <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>。 <br>
+        <br>
+        对于列头名称不同的第三方CSV文件，使用<b>列映射</b>将其映射到
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>。 <br>
+        <br>
+        例如： <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>注意</b></font> <br>
+        对于没有列标题的纯文本文件解析，请改用<b>正则表达式提取</b>。
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        使用<font color="#00BFFF">xpath</font>解析XML数据字节并生成号码列表。
+        ]]>
+    </string>
+    <string name="action_parse_xml">解析XML</string>
+    <string name="action_regex_extract">正则表达式提取</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        在文本中搜索正则表达式模式，查找所有匹配项并生成号码列表。 <br>
+        <br>
+        这也可用于解析每行一个号码的纯文本文件。 <br>
+        <br>
+        例如，解析文本： <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        使用正则表达式： <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        发送HTTP请求并以数据字节形式检索响应。
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        将当前设置导出为数据字节。
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        从数据字节应用设置。
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        从文件读取数据字节。 <br>
+        <br>
+        支持的<font color="#03DAC5">路径</font>标签： <br>
+        <br>
+        %s <br>
+        <br>
+        支持的<font color="#03DAC5">文件名</font>标签： <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        将数据字节写入文件。 <br>
+        <br>
+        支持的<font color="#03DAC5"><b>路径</b></font>标签： <br>
+        <br>
+        %s <br>
+        <br>
+        支持的<font color="#03DAC5"><b>文件名</b></font>标签： <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">查找规则</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        查找所有匹配特定描述的正则表达式规则。
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        更改规则列表的一个或多个属性。
+        ]]>
+    </string>
+    <string name="action_modify_rules">修改规则</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        将号码列表添加到骚扰电话数据库。
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        从号码列表生成新的正则表达式规则。
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        将第三方来源的数字模式规范化为正则表达式格式。 <br>
+        <br>
+        例如，要将 <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        映射到 <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        添加两个<b>替换号码</b>操作： <br>
+        &ensp; - 将`<font color="#fa7f71">(+)</font>`替换为``<br>
+        &ensp; - 将`<font color="#fa7f71">(#)</font>`替换为`<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">替换号码</string>
+    <string name="action_import_as_regex_rule">导入为正则表达式规则</string>
 </resources>

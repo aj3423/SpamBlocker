@@ -77,94 +77,10 @@
     <string name="action_backup_import">Importation de sauvegarde</string>
     <string name="action_read_file">Lire le fichier</string>
     <string name="action_write_file">Écrire dans le fichier</string>
-    <string name="action_parse_csv">Analyser le CSV</string>
-    <string name="action_parse_xml">Analyser le XML</string>
-    <string name="action_regex_extract">Extraction Regex</string>
     <string name="action_import_to_spam_db">Importer dans la base de données de spam</string>
-    <string name="action_import_as_regex_rule">Importer comme règle Regex</string>
-    <string name="action_convert_number">Remplacer le numéro</string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        Télécharger les données HTTP en tant qu\'<u>octets de contenu</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Supprimer les numéros expirés de la base de données de spam.</string>
     <string name="help_action_cleanup_history">Supprimer les enregistrements d\'historique expirés.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Exporter les paramètres actuels en <u>octets de contenu</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        Appliquer les paramètres à partir d\'<u>octets de contenu</u>.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Obtenir les <u>octets de contenu</u> d\'un fichier. <br>
-        <br>
-        Balises <font color="#03DAC5"><b>chemin</b></font> prises en charge : <br>
-        <br>
-        %s <br>
-        <br>
-        Balises <font color="#03DAC5"><b>nom de fichier</b></font> prises en charge : <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        Écrire des <u>octets de contenu</u> dans un fichier. <br>
-        <br>
-        Balises <font color="#03DAC5"><b>chemin</b></font> prises en charge : <br>
-        <br>
-        %s <br>
-        <br>
-        Balises <font color="#03DAC5"><b>nom de fichier</b></font> prises en charge : <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        Analyser les <u>octets de contenu</u> csv en une <u>liste de numéros</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        Analyser les <u>octets de contenu</u> xml à l\'aide de <b>xpath</b> et générer une <u>liste de numéros.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Extraire une <u>liste de numéros</u> à partir d\'<u>octets de contenu</u> à l\'aide de regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Ajouter une <u>liste de numéros</u> à la base de données de spam.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Générer une nouvelle règle regex à partir d\'une <u>liste de numéros</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        Convertir la <u>liste de numéros</u> au format utilisé par cette application.<br>
-        <br>
-        Par exemple, ajouter deux actions pour remplacer :<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` par `12345<font color="#03DAC5"><b>…</b></font>` :<br>
-        <br>
-        &ensp; - Remplacer `<font color="#fa7f71">(+)</font>` par ``<br>
-        &ensp; - Remplacer `<font color="#fa7f71">(#)</font>` par `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="action_find_rules">Rechercher des règles</string>
-    <string name="action_modify_rules">Modifier les règles</string>
     <string name="action_modify_rules_placeholder">
         Une chaîne json, par exemple :\n
         {\n
@@ -173,15 +89,5 @@
         \"blockType\": 0\n
         …\n
         }\n
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Trouver une <u>liste de règles</u> qui correspondent à une description spécifique.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        Modifier un ou plusieurs attributs pour une <u>liste de règles</u>.
-        ]]>
     </string>
 </resources>

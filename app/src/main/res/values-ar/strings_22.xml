@@ -11,4 +11,125 @@
     هذا لا يؤثر على الإبلاغ اليدوي.
     ]]>
     </string>
+    <string name="action_parse_csv">تحليل CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        تحليل بايتات بيانات CSV إلى قائمة أرقام. <br>
+        <br>
+        يجب أن يكون العمود الذي يحتوي على الأرقام <b>مسمى</b> <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        لملفات CSV من جهات خارجية ذات أسماء رؤوس مختلفة، قم بتعيينها إلى
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> باستخدام <b>تعيين الأعمدة</b>. <br>
+        <br>
+        على سبيل المثال: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>ملاحظة</b></font> <br>
+        لتحليل ملفات النص العادي بدون رؤوس أعمدة، استخدم <b>استخراج تعبير منتظم</b> بدلاً من ذلك.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        تحليل بايتات بيانات XML باستخدام <font color="#00BFFF">xpath</font> وتوليد قائمة أرقام.
+        ]]>
+    </string>
+    <string name="action_parse_xml">تحليل XML</string>
+    <string name="action_regex_extract">استخراج تعبير منتظم</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        البحث عن نمط تعبير منتظم في النص، وإيجاد جميع التكرارات وتوليد قائمة أرقام. <br>
+        <br>
+        يمكن استخدام هذا أيضًا لتحليل ملفات النص العادي التي تحتوي على رقم واحد لكل سطر. <br>
+        <br>
+        على سبيل المثال، تحليل النص: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        باستخدام التعبير المنتظم: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        إرسال طلب HTTP واسترداد الاستجابة كبايتات بيانات.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        تصدير الإعدادات الحالية كبايتات بيانات.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        تطبيق الإعدادات من بايتات البيانات.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        قراءة بايتات البيانات من ملف. <br>
+        <br>
+        علامات <font color="#03DAC5">المسار</font> المدعومة: <br>
+        <br>
+        %s <br>
+        <br>
+        علامات <font color="#03DAC5">اسم الملف</font> المدعومة: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        كتابة بايتات البيانات إلى ملف. <br>
+        <br>
+        علامات <font color="#03DAC5"><b>المسار</b></font> المدعومة: <br>
+        <br>
+        %s <br>
+        <br>
+        علامات <font color="#03DAC5"><b>اسم الملف</b></font> المدعومة: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">البحث عن قواعد</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        البحث عن جميع قواعد التعبير المنتظم التي تتطابق مع الوصف المحدد.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        تغيير سمة واحدة أو أكثر لقائمة من القواعد.
+        ]]>
+    </string>
+    <string name="action_modify_rules">تعديل القواعد</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        إضافة قائمة أرقام إلى قاعدة بيانات المكالمات المزعجة.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        توليد قاعدة تعبير منتظم جديدة من قائمة أرقام.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        تطبيع الأنماط الرقمية من مصادر خارجية إلى تنسيق التعبير المنتظم. <br>
+        <br>
+        على سبيل المثال، لتعيين <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        إلى <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        أضف عمليتين لـ <b>استبدال الرقم</b>: <br>
+        &ensp; - استبدل `<font color="#fa7f71">(+)</font>` بـ ``<br>
+        &ensp; - استبدل `<font color="#fa7f71">(#)</font>` بـ `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">استبدال الرقم</string>
+    <string name="action_import_as_regex_rule">استيراد كقاعدة تعبير نمطي</string>
 </resources>

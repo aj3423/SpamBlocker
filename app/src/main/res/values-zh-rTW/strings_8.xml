@@ -75,14 +75,7 @@
     <string name="action_backup_import">匯入備份</string>
     <string name="action_read_file">讀取檔案</string>
     <string name="action_write_file">寫入檔案</string>
-    <string name="action_parse_csv">解析 CSV</string>
-    <string name="action_parse_xml">解析 XML</string>
-    <string name="action_regex_extract">正規表示式擷取</string>
     <string name="action_import_to_spam_db">匯入至騷擾號碼資料庫</string>
-    <string name="action_import_as_regex_rule">匯入為正規表示式規則</string>
-    <string name="action_convert_number">取代號碼</string>
-    <string name="action_find_rules">尋找規則</string>
-    <string name="action_modify_rules">修改規則</string>
     <string name="action_modify_rules_placeholder">
         JSON 字串，例如：\n
         {\n
@@ -92,93 +85,6 @@
         …\n
         }\n
     </string>
-    <string name="help_action_http_download">
-        <![CDATA[
-        透過 HTTP 下載資料為<u>內容位元組</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">從騷擾號碼資料庫刪除過期的號碼。</string>
     <string name="help_action_cleanup_history">刪除過期的歷史記錄。</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        將目前設定匯出為<u>內容位元組</u>。
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        從<u>內容位元組</u>套用設定。
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        從檔案取得<u>內容位元組</u>。<br>
-        <br>
-        支援的 <font color="#03DAC5"><b>path</b></font> 標籤：<br>
-        <br>
-        %s<br>
-        <br>
-        支援的 <font color="#03DAC5"><b>filename</b></font> 標籤：<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        將<u>內容位元組</u>寫入檔案。<br>
-        <br>
-        支援的 <font color="#03DAC5"><b>path</b></font> 標籤：<br>
-        <br>
-        %s<br>
-        <br>
-        支援的 <font color="#03DAC5"><b>filename</b></font> 標籤：<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        將 CSV <u>內容位元組</u> 解析為 <u>號碼清單</u>。
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        使用 <b>xpath</b> 解析 XML <u>內容位元組</u> 並產生 <u>號碼清單</u>。
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        使用正規表示式從 <u>內容位元組</u> 擷取 <u>號碼清單</u>。
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        將 <u>號碼清單</u> 新增至騷擾號碼資料庫。
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        從 <u>號碼清單</u> 產生新的正規表示式規則。
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        將 <u>號碼清單</u> 轉換為本應用程式使用的格式。<br>
-        <br>
-        例如，新增兩個取代動作：<br>
-        將 `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` 轉換為 `12345<font color="#03DAC5"><b>…</b></font>`：<br>
-        <br>
-        &ensp; - 將 `<font color="#fa7f71">(+)</font>` 取代為 ``<br>
-        &ensp; - 將 `<font color="#fa7f71">(#)</font>` 取代為 `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        尋找符合特定描述的 <u>規則清單</u>。
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        修改 <u>規則清單</u> 的一個或多個屬性。
-        ]]>
-    </string>
 </resources>

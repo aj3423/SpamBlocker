@@ -26,7 +26,6 @@ import spam.blocker.util.InterfaceJson
 //  - add to  `botModule` in SerializersModule.kt
 
 val botActions = listOf(
-    HttpDownload(),
     CallEvent(),
     SmsEvent(),
     CallThrottling(),
@@ -34,9 +33,11 @@ val botActions = listOf(
     CalendarEvent(),
     Ringtone(),
     QuickTile(),
+    HttpDownload(),
+    ImportAsRegexRule(),
     ImportToSpamDB(),
     CleanupSpamDB(),
-    ImportAsRegexRule(),
+    CleanupHistory(),
     FindRules(),
     ModifyRules(),
     ModifyNumber(),
@@ -46,7 +47,6 @@ val botActions = listOf(
     ParseXML(),
     RegexExtract(),
     ConvertNumber(),
-    CleanupHistory(),
     BackupExport(),
     BackupImport(),
     EnableWorkflow(),

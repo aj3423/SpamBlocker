@@ -11,4 +11,125 @@
     Это не влияет на ручную отчетность.
     ]]>
     </string>
+    <string name="action_parse_csv">Разобрать CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Разобрать байты данных CSV в список номеров. <br>
+        <br>
+        Столбец, содержащий номера, <b>должен</b> быть назван <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        Для сторонних CSV-файлов с другими названиями заголовков сопоставьте их с
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> используя <b>Сопоставление столбцов</b>. <br>
+        <br>
+        Например: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Примечание</b></font> <br>
+        Для разбора простых текстовых файлов без заголовков столбцов используйте вместо этого <b>Извлечение по регулярному выражению</b>.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Разобрать байты данных XML, используя <font color="#00BFFF">xpath</font>, и сгенерировать список номеров.
+        ]]>
+    </string>
+    <string name="action_parse_xml">Разобрать XML</string>
+    <string name="action_regex_extract">Извлечение по регулярному выражению</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Искать шаблон регулярного выражения в тексте, находить все вхождения и генерировать список номеров. <br>
+        <br>
+        Это также можно использовать для разбора простых текстовых файлов с одним номером на строку. <br>
+        <br>
+        Например, разобрать текст: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        с регулярным выражением: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Отправить HTTP-запрос и получить ответ в виде байтов данных.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Экспортировать текущие настройки в виде байтов данных.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Применить настройки из байтов данных.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Читать байты данных из файла. <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5">пути</font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5">имени файла</font>: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Записать байты данных в файл. <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5"><b>пути</b></font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Поддерживаемые теги <font color="#03DAC5"><b>имени файла</b></font>: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Найти правила</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Найти все правила регулярных выражений, соответствующие заданному описанию.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Изменить один или несколько атрибутов для списка правил.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Изменить правила</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Добавить список номеров в базу данных спама.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Сгенерировать новое правило регулярного выражения из списка номеров.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Нормализовать числовые шаблоны из сторонних источников в формат регулярных выражений. <br>
+        <br>
+        Например, чтобы сопоставить <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        с <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        Добавьте два действия <b>Заменить номер</b>: <br>
+        &ensp; - Заменить `<font color="#fa7f71">(+)</font>` на ``<br>
+        &ensp; - Заменить `<font color="#fa7f71">(#)</font>` на `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Заменить номер</string>
+    <string name="action_import_as_regex_rule">Импортировать в правило Regex</string>
 </resources>

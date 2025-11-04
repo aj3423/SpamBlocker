@@ -11,4 +11,125 @@
     Це не впливає на ручне повідомлення.
     ]]>
     </string>
+    <string name="action_parse_csv">Аналізувати CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Розбирає байти даних CSV у список номерів. <br>
+        <br>
+        Стовпець, що містить номери, <b>повинен</b> називатися <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        Для сторонніх CSV-файлів з іншими назвами заголовків зіставте їх з
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> за допомогою <b>Зіставлення стовпців</b>. <br>
+        <br>
+        Наприклад: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Примітка</b></font> <br>
+        Для розбору простих текстових файлів без заголовків стовпців використовуйте <b>Витягнути за регулярним виразом</b>.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Розбирає байти даних XML за допомогою <font color="#00BFFF">xpath</font> та генерує список номерів.
+        ]]>
+    </string>
+    <string name="action_parse_xml">Аналізувати XML</string>
+    <string name="action_regex_extract">Витягнути за регулярним виразом</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Шукає шаблон регулярного виразу в тексті, знаходить усі входження та генерує список номерів. <br>
+        <br>
+        Це також можна використовувати для розбору простих текстових файлів з одним номером на рядок. <br>
+        <br>
+        Наприклад, розбір тексту: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        з регулярним виразом: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Надсилає HTTP-запит та отримує відповідь як байти даних.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Експортує поточні налаштування як байти даних.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Застосовує налаштування з байтів даних.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Зчитує байти даних з файлу. <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5">шляху</font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5">імені файлу</font>: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Записує байти даних у файл. <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5"><b>шляху</b></font>: <br>
+        <br>
+        %s <br>
+        <br>
+        Підтримувані теги <font color="#03DAC5"><b>імені файлу</b></font>: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Знайти правила</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Знаходить усі правила регулярних виразів, що відповідають певному опису.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Змінює один або кілька атрибутів для списку правил.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Змінити правила</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Додає список номерів до бази даних спаму.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Генерує нове правило регулярного виразу зі списку номерів.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Нормалізує числові шаблони зі сторонніх джерел у формат регулярного виразу. <br>
+        <br>
+        Наприклад, щоб зіставити <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        з <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        Додайте дві дії <b>Замінити номер</b>: <br>
+        &ensp; - Замінити `<font color="#fa7f71">(+)</font>` на ``<br>
+        &ensp; - Замінити `<font color="#fa7f71">(#)</font>` на `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Замінити номер</string>
+    <string name="action_import_as_regex_rule">Імпортувати як правило Regex</string>
 </resources>

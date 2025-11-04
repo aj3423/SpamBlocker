@@ -76,94 +76,10 @@
     <string name="action_backup_import">Yedekleme İçe Aktarımı</string>
     <string name="action_read_file">Dosyayı Oku</string>
     <string name="action_write_file">Dosyayı Yaz</string>
-    <string name="action_parse_csv">CSV Ayrıştır</string>
-    <string name="action_parse_xml">XML Ayrıştır</string>
-    <string name="action_regex_extract">Düzenli İfade Çıkar</string>
     <string name="action_import_to_spam_db">Spam Veritabanına İçe Aktar</string>
-    <string name="action_import_as_regex_rule">Düzenli İfade Kuralı Olarak İçe Aktar</string>
-    <string name="action_convert_number">Numarayı Değiştir</string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        HTTP verilerini <u>içerik baytları</u> olarak indir
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Spam veritabanından süresi dolmuş numaraları sil.</string>
     <string name="help_action_cleanup_history">Süresi dolmuş geçmiş kayıtlarını sil.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Mevcut ayarları <u>içerik baytlarına</u> dışarı aktar.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        <u>İçerik baytlar</u> ayarlarını uygula.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Bir dosyadan <u>içerik baytlarını</u> al. <br>
-        <br>
-        Desteklenen <font color="#03DAC5"><b>yol</b></font> etiketleri: <br>
-        <br>
-        %s <br>
-        <br>
-        Desteklenen <font color="#03DAC5"><b>dosya adı</b></font> etiketleri: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        <u>İçerik baytlarını</u> bir dosyaya yaz. <br>
-        <br>
-        Desteklenen <font color="#03DAC5"><b>yol</b></font> etiketleri: <br>
-        <br>
-        %s <br>
-        <br>
-        Desteklenen <font color="#03DAC5"><b>dosya adı</b></font> etiketleri: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        csv <u>içerik baytlarını</u> bir <u>numara listesine</u> ayrıştır.
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        xml <u>içerik baytların</u> <b>xpath</b> kullanarak ayrıştır ve bir<u>numara listesi</u> oluştur.
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Girdi <u>içerik baytlarından</u> bu düzenli ifadeyi kullanarak <u>numara listesi</u> çıkar.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Spam veritabanına bir <u>numara listesi</u> ekle.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Bir <u>numara listesinden</u>  yeni bir düzenli ifade kuralı oluştur.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        <u>Numara listesini</u> bu uygulamanın kullandığı formata dönüştür.<br>
-        <br>
-        Örneğin, değiştirmek için iki eylem ekle:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` a/e `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - Değiştir `<font color="#fa7f71">(+)</font>` a/e ``<br>
-        &ensp; - Değiştir `<font color="#fa7f71">(#)</font>` a/e `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="action_find_rules">Kuralları Bul</string>
-    <string name="action_modify_rules">Kuralları Değiştir</string>
     <string name="action_modify_rules_placeholder">
         Bir JSON dizesi, örneğin:\n
         {\n
@@ -172,15 +88,5 @@
         \"blockType\": 0\n
         …\n
         }\n
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Belirli bir açıklamayla eşleşen <u>kural listesini</u> bulun.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        <u>Kural listesinin</u> bir veya birden çok özniteliğini değiştirin.
-        ]]>
     </string>
 </resources>

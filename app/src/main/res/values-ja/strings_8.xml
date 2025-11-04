@@ -76,94 +76,10 @@
     <string name="action_backup_import">バックアップインポート</string>
     <string name="action_read_file">ファイルの読み込み</string>
     <string name="action_write_file">ファイルへの書き込み</string>
-    <string name="action_parse_csv">CSVの解析</string>
-    <string name="action_parse_xml">XMLの解析</string>
-    <string name="action_regex_extract">正規表現による抽出</string>
     <string name="action_import_to_spam_db"><translate>スパムデータベースへのインポート</translate></string>
-    <string name="action_import_as_regex_rule"><translate>正規表現ルールとしてインポート</translate></string>
-    <string name="action_convert_number"><translate>番号の置換</translate></string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        HTTPデータ(<u>バイト列</u>)のダウンロード
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db"><translate>スパムデータベースから期限切れの番号を削除します。</translate></string>
     <string name="help_action_cleanup_history"><translate>期限切れの履歴レコードを削除します。</translate></string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        現在の設定を<u>コンテンツバイト</u>にエクスポートします。
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        <u>コンテンツバイト</u>から設定を適用します。
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        ファイルから<u>コンテンツバイト</u>を取得します。<br>
-        <br>
-        サポートされている<font color="#03DAC5"><b>パス</b></font>タグ：<br>
-        <br>
-        %s <br>
-        <br>
-        サポートされている<font color="#03DAC5"><b>ファイル名</b></font>タグ：<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        <u>コンテンツバイト</u>をファイルに書き込みます。<br>
-        <br>
-        サポートされている<font color="#03DAC5"><b>パス</b></font>タグ：<br>
-        <br>
-        %s <br>
-        <br>
-        サポートされている<font color="#03DAC5"><b>ファイル名</b></font>タグ：<br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        csv <u>コンテンツバイト</u>を<u><translate>番号</translate>のリスト</u>に解析します
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        <b>xpath</b>を使用してxml <u>コンテンツバイト</u>を解析し、<u><translate>番号</translate>のリスト</u>を生成します。
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        正規表現を使用して、<u>コンテンツバイト</u>から<u><translate>番号</translate>のリスト</u>を抽出します。
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        <u><translate>番号</translate>のリスト</u>を<translate>スパムデータベース</translate>に追加します。
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        <u><translate>番号</translate>のリスト</u>から新しい正規表現ルールを生成します。
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        <u><translate>番号</translate>のリスト</u>をこのアプリで使用される形式に変換します。<br>
-        <br>
-        たとえば、置換するために2つのアクションを追加します。<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` を `12345<font color="#03DAC5"><b>…</b></font>` に:<br>
-        <br>
-        &ensp; - `<font color="#fa7f71">(+)</font>` を `` に置換<br>
-        &ensp; - `<font color="#fa7f71">(#)</font>` を `<font color="#03DAC5"><b>.</b></font>` に置換<br>
-        ]]>
-    </string>
-    <string name="action_find_rules">ルールの検索</string>
-    <string name="action_modify_rules">ルールの変更</string>
     <string name="action_modify_rules_placeholder">
         JSON文字列の例:\n
         {\n
@@ -172,15 +88,5 @@
         \"blockType\": 0\n
         …\n
         }\n
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        特定の説明に一致する<u>ルールのリスト</u>を検索します。
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        <u>ルールのリスト</u>の1つまたは複数の属性を変更します。
-        ]]>
     </string>
 </resources>

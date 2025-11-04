@@ -11,4 +11,125 @@
     این بر گزارش‌دهی دستی تأثیری ندارد.
     ]]>
     </string>
+    <string name="action_parse_csv">تجزیه CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        بایت‌های داده CSV را به لیستی از شماره‌ها تجزیه کنید. <br>
+        <br>
+        ستون حاوی شماره‌ها <b>باید</b> <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> نام‌گذاری شود. <br>
+        <br>
+        برای فایل‌های CSV شخص ثالث با نام‌های سربرگ متفاوت، آنها را با استفاده از <b>نگاشت ستون</b> به
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> نگاشت کنید. <br>
+        <br>
+        برای مثال: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>توجه</b></font> <br>
+        برای تجزیه فایل‌های متنی ساده بدون سربرگ ستون، به جای آن از <b>استخراج عبارت باقاعده</b> استفاده کنید.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        بایت‌های داده XML را با استفاده از <font color="#00BFFF">xpath</font> تجزیه کرده و لیستی از شماره‌ها تولید کنید.
+        ]]>
+    </string>
+    <string name="action_parse_xml">تجزیه XML</string>
+    <string name="action_regex_extract">استخراج عبارت باقاعده</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        یک الگوی عبارت باقاعده را در متن جستجو کنید، تمام رخدادها را بیابید و لیستی از شماره‌ها تولید کنید. <br>
+        <br>
+        این قابلیت همچنین می‌تواند برای تجزیه فایل‌های متنی ساده با یک شماره در هر خط استفاده شود. <br>
+        <br>
+        برای مثال، تجزیه متن: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        با عبارت باقاعده: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        یک درخواست HTTP ارسال کنید و پاسخ را به صورت بایت‌های داده دریافت کنید.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        تنظیمات فعلی را به صورت بایت‌های داده صادر کنید.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        تنظیمات را از بایت‌های داده اعمال کنید.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        بایت‌های داده را از یک فایل بخوانید. <br>
+        <br>
+        تگ‌های <font color="#03DAC5">مسیر</font> پشتیبانی شده: <br>
+        <br>
+        %s <br>
+        <br>
+        تگ‌های <font color="#03DAC5">نام فایل</font> پشتیبانی شده: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        بایت‌های داده را در یک فایل بنویسید. <br>
+        <br>
+        تگ‌های <font color="#03DAC5"><b>مسیر</b></font> پشتیبانی شده: <br>
+        <br>
+        %s <br>
+        <br>
+        تگ‌های <font color="#03DAC5"><b>نام فایل</b></font> پشتیبانی شده: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">یافتن قوانین</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        تمام قوانین عبارت باقاعده را که با توضیحات مشخص مطابقت دارند، پیدا کنید.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        یک یا چند ویژگی را برای لیستی از قوانین تغییر دهید.
+        ]]>
+    </string>
+    <string name="action_modify_rules">ویرایش قوانین</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        لیستی از شماره‌ها را به پایگاه داده اسپم اضافه کنید.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        یک قانون عبارت باقاعده جدید از لیستی از شماره‌ها ایجاد کنید.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        الگوهای عددی را از منابع شخص ثالث به فرمت عبارت باقاعده نرمال‌سازی کنید. <br>
+        <br>
+        برای مثال، برای نگاشت <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        به <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        دو عمل <b>جایگزینی شماره</b> اضافه کنید: <br>
+        &ensp; - جایگزینی `<font color="#fa7f71">(+)</font>` با ``<br>
+        &ensp; - جایگزینی `<font color="#fa7f71">(#)</font>` با `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">جایگزینی شماره</string>
+    <string name="action_import_as_regex_rule">وارد کردن به قانون عبارت منظم</string>
 </resources>

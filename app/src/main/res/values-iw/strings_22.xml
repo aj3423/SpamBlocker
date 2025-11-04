@@ -11,4 +11,125 @@
     זה לא משפיע על דיווח ידני.
     ]]>
     </string>
+    <string name="action_parse_csv">ניתוח CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        נתח נתוני CSV לרשימת מספרים. <br>
+        <br>
+        העמודה המכילה את המספרים <b>חייבת</b> להיקרא <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        עבור קבצי CSV מצד שלישי עם שמות כותרות שונים, מפה אותם ל-
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> באמצעות ה<b>מיפוי עמודות</b>. <br>
+        <br>
+        לדוגמה: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>הערה</b></font> <br>
+        לניתוח קבצי טקסט רגילים ללא כותרות עמודות, השתמש ב-<b>חילוץ ביטוי רגולרי</b> במקום.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        נתח בייטים של נתוני XML באמצעות <font color="#00BFFF">xpath</font> וצור רשימת מספרים.
+        ]]>
+    </string>
+    <string name="action_parse_xml">ניתוח XML</string>
+    <string name="action_regex_extract">חילוץ ביטוי רגולרי</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        חפש תבנית ביטוי רגולרי בטקסט, מצא את כל המופעים וצור רשימת מספרים. <br>
+        <br>
+        זה יכול לשמש גם לניתוח קבצי טקסט רגילים עם מספר אחד בכל שורה. <br>
+        <br>
+        לדוגמה, נתח טקסט: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        עם ביטוי רגולרי: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        שלח בקשת HTTP ואחזר את התגובה כבייטים של נתונים.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        ייצא את ההגדרות הנוכחיות כבייטים של נתונים.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        החל הגדרות מבייטים של נתונים.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        קרא בייטים של נתונים מקובץ. <br>
+        <br>
+        תגי <font color="#03DAC5">נתיב</font> נתמכים: <br>
+        <br>
+        %s <br>
+        <br>
+        תגי <font color="#03DAC5">שם קובץ</font> נתמכים: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        כתוב בייטים של נתונים לקובץ. <br>
+        <br>
+        תגי <font color="#03DAC5"><b>נתיב</b></font> נתמכים: <br>
+        <br>
+        %s <br>
+        <br>
+        תגי <font color="#03DAC5"><b>שם קובץ</b></font> נתמכים: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">מצא כללים</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        מצא את כל כללי הביטויים הרגולריים התואמים את התיאור הספציפי.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        שנה מאפיין אחד או יותר עבור רשימת כללים.
+        ]]>
+    </string>
+    <string name="action_modify_rules">שנה כללים</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        הוסף רשימת מספרים למסד נתוני הספאם.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        צור כלל ביטוי רגולרי חדש מרשימת מספרים.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        נרמל תבניות מספריות ממקורות צד שלישי לפורמט ביטוי רגולרי. <br>
+        <br>
+        לדוגמה, כדי למפות <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        ל- <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        הוסף שתי פעולות <b>החלף מספר</b>: <br>
+        &ensp; - החלף `<font color="#fa7f71">(+)</font>` ב-``<br>
+        &ensp; - החלף `<font color="#fa7f71">(#)</font>` ב-`<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">החלף מספר</string>
+    <string name="action_import_as_regex_rule">ייבא ככלל ביטוי רגולרי</string>
 </resources>

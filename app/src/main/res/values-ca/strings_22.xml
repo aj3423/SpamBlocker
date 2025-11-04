@@ -11,4 +11,125 @@
     Això no afecta la denúncia manual.
     ]]>
     </string>
+    <string name="action_parse_csv">Analitzar CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Analitzeu bytes de dades csv a una llista de números. <br>
+        <br>
+        La columna que conté els números <b>ha de</b> anomenar-se <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        Per a fitxers csv de tercers amb noms de capçalera diferents, mapegeu-los a
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> utilitzant el <b>Mapatge de Columnes</b>. <br>
+        <br>
+        Per exemple: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Nota</b></font> <br>
+        Per analitzar fitxers de text pla sense capçaleres de columna, utilitzeu <b>Extreure amb Regex</b> en lloc d\'aquest.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Analitzeu bytes de dades xml utilitzant <font color="#00BFFF">xpath</font> i genereu una llista de números.
+        ]]>
+    </string>
+    <string name="action_parse_xml">Analitzar XML</string>
+    <string name="action_regex_extract">Extreure amb Regex</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Cerqueu un patró regex en el text, trobeu totes les ocurrències i genereu una llista de números. <br>
+        <br>
+        Això també es pot utilitzar per analitzar fitxers de text pla amb un número per línia. <br>
+        <br>
+        Per exemple, analitzeu el text: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        amb regex: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Envieu una sol·licitud HTTP i recupereu la resposta com a bytes de dades.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Exporteu la configuració actual com a bytes de dades.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Apliqueu la configuració des de bytes de dades.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Llegiu bytes de dades d\'un fitxer. <br>
+        <br>
+        Etiquetes de <font color="#03DAC5">ruta</font> admeses: <br>
+        <br>
+        %s <br>
+        <br>
+        Etiquetes de <font color="#03DAC5">nom de fitxer</font> admeses: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Escriviu bytes de dades a un fitxer. <br>
+        <br>
+        Etiquetes de <font color="#03DAC5"><b>ruta</b></font> admeses: <br>
+        <br>
+        %s <br>
+        <br>
+        Etiquetes de <font color="#03DAC5"><b>nom de fitxer</b></font> admeses: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Cercar Regles</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Trobeu totes les regles regex que coincideixen amb la descripció específica.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Canvieu un o diversos atributs per a una llista de regles.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Modificar Regles</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Afegiu una llista de números a la base de dades de trucades spam.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Genereu una nova regla regex a partir d\'una llista de números.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Normalitzeu patrons numèrics de fonts de tercers al format regex. <br>
+        <br>
+        Per exemple, per mapejar <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        a <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        Afegiu dues accions de <b>Substituir Número</b>: <br>
+        &ensp; - Substituïu `<font color="#fa7f71">(+)</font>` per ``<br>
+        &ensp; - Substituïu `<font color="#fa7f71">(#)</font>` per `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Substituir Número</string>
+    <string name="action_import_as_regex_rule">Importa a Regla Regex</string>
 </resources>

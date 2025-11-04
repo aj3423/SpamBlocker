@@ -11,4 +11,125 @@
     Bu, manuel raporlamayı etkilemez.
     ]]>
     </string>
+    <string name="action_parse_csv">CSV Ayrıştır</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        CSV veri baytlarını bir telefon numaraları listesine ayrıştır. <br>
+        <br>
+        Telefon numaralarını içeren sütun <b>mutlaka</b> <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> olarak adlandırılmalıdır. <br>
+        <br>
+        Farklı başlık adlarına sahip üçüncü taraf CSV dosyaları için, bunları <b>Sütun Eşleme</b> kullanarak
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> ile eşleyin. <br>
+        <br>
+        Örneğin: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Not</b></font> <br>
+        Sütun başlıkları olmayan düz metin dosyalarını ayrıştırmak için bunun yerine <b>Regex Çıkart</b>\'ı kullanın.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        XML veri baytlarını <font color="#00BFFF">xpath</font> kullanarak ayrıştırın ve bir telefon numaraları listesi oluşturun.
+        ]]>
+    </string>
+    <string name="action_parse_xml">XML Ayrıştır</string>
+    <string name="action_regex_extract">Regex Çıkart</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Metinde bir regex deseni arayın, tüm geçişleri bulun ve bir telefon numaraları listesi oluşturun. <br>
+        <br>
+        Bu, her satırda bir numara bulunan düz metin dosyalarını ayrıştırmak için de kullanılabilir. <br>
+        <br>
+        Örneğin, metni ayrıştırın: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        regex ile: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Bir HTTP isteği gönderin ve yanıtı veri baytları olarak alın.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Mevcut ayarları veri baytları olarak dışa aktarın.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Ayarları veri baytlarından uygulayın.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Bir dosyadan veri baytları okuyun. <br>
+        <br>
+        Desteklenen <font color="#03DAC5">yol</font> etiketleri: <br>
+        <br>
+        %s <br>
+        <br>
+        Desteklenen <font color="#03DAC5">dosya adı</font> etiketleri: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Veri baytlarını bir dosyaya yazın. <br>
+        <br>
+        Desteklenen <font color="#03DAC5"><b>yol</b></font> etiketleri: <br>
+        <br>
+        %s <br>
+        <br>
+        Desteklenen <font color="#03DAC5"><b>dosya adı</b></font> etiketleri: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Kuralları Bul</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Belirli açıklamaya uyan tüm regex kurallarını bulun.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Bir kurallar listesi için bir veya birden fazla niteliği değiştirin.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Kuralları Değiştir</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        İstenmeyen arama veritabanına bir telefon numaraları listesi ekleyin.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Bir telefon numaraları listesinden yeni bir regex kuralı oluşturun.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Üçüncü taraf kaynaklardan gelen sayısal desenleri regex formatına normalleştirin. <br>
+        <br>
+        Örneğin, eşlemek için <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        şuna <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        İki <b>Numarayı Değiştir</b> eylemi ekleyin: <br>
+        &ensp; - `<font color="#fa7f71">(+)</font>`\'ı `` ile değiştirin<br>
+        &ensp; - `<font color="#fa7f71">(#)</font>`\'i `<font color="#03DAC5"><b>.</b></font>` ile değiştirin<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Numarayı Değiştir</string>
+    <string name="action_import_as_regex_rule">Regex Kuralına Aktar</string>
 </resources>

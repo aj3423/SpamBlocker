@@ -11,4 +11,125 @@
     這不影響手動回報。
     ]]>
     </string>
+    <string name="action_parse_csv">解析 CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        將 CSV 資料位元組解析為電話號碼列表。 <br>
+        <br>
+        包含電話號碼的欄位<b>必須</b>命名為 <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>。 <br>
+        <br>
+        對於具有不同標頭名稱的第三方 CSV 檔案，請使用<b>欄位映射</b>將其映射到
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>。 <br>
+        <br>
+        例如： <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>注意</b></font> <br>
+        對於解析沒有欄位標頭的純文字檔案，請改用<b>正規表達式擷取</b>。
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        使用 <font color="#00BFFF">xpath</font> 解析 XML 資料位元組並產生電話號碼列表。
+        ]]>
+    </string>
+    <string name="action_parse_xml">解析 XML</string>
+    <string name="action_regex_extract">正規表達式擷取</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        在文字中搜尋正規表達式模式，找到所有出現的內容並產生電話號碼列表。 <br>
+        <br>
+        這也可以用於解析每行一個電話號碼的純文字檔案。 <br>
+        <br>
+        例如，解析文字： <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        使用正規表達式： <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        傳送 HTTP 請求並將回應作為資料位元組擷取。
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        將目前設定匯出為資料位元組。
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        從資料位元組套用設定。
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        從檔案讀取資料位元組。 <br>
+        <br>
+        支援的 <font color="#03DAC5">路徑</font> 標籤： <br>
+        <br>
+        %s <br>
+        <br>
+        支援的 <font color="#03DAC5">檔案名稱</font> 標籤： <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        將資料位元組寫入檔案。 <br>
+        <br>
+        支援的 <font color="#03DAC5"><b>路徑</b></font> 標籤： <br>
+        <br>
+        %s <br>
+        <br>
+        支援的 <font color="#03DAC5"><b>檔案名稱</b></font> 標籤： <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">尋找規則</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        尋找所有符合特定描述的正規表達式規則。
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        更改規則列表的一個或多個屬性。
+        ]]>
+    </string>
+    <string name="action_modify_rules">修改規則</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        將電話號碼列表新增到騷擾電話資料庫。
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        從電話號碼列表產生新的正規表達式規則。
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        將第三方來源的數字模式正規化為正規表達式格式。 <br>
+        <br>
+        例如，將 <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        映射到 <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        新增兩個<b>取代電話號碼</b>動作： <br>
+        &ensp; - 將 `<font color="#fa7f71">(+)</font>` 取代為 ``<br>
+        &ensp; - 將 `<font color="#fa7f71">(#)</font>` 取代為 `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">取代電話號碼</string>
+    <string name="action_import_as_regex_rule">匯入為正則表達式規則</string>
 </resources>

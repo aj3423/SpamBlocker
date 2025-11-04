@@ -11,4 +11,125 @@
     Ini tidak memengaruhi pelaporan manual.
     ]]>
     </string>
+    <string name="action_parse_csv">Urai CSV</string>
+    <string name="help_action_parse_csv">
+        <![CDATA[
+        Mengurai byte data CSV ke dalam daftar nomor telepon. <br>
+        <br>
+        Kolom yang berisi nomor telepon <b>harus</b> dinamai <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font>. <br>
+        <br>
+        Untuk file CSV pihak ketiga dengan nama header yang berbeda, petakan ke
+        <font color="#00BFFF"><b><no_translate>pattern</no_translate></b></font> menggunakan <b>Pemetaan Kolom</b>. <br>
+        <br>
+        Contoh: <br>
+        <no_translate>
+          &ensp; <font color="#888888">{ \"number_column_header\": \"pattern\" }</font>
+        </no_translate> <br>
+        <br>
+        <font color="#ffa500"><b>Catatan</b></font> <br>
+        Untuk mengurai file teks biasa tanpa header kolom, gunakan <b>Ekstrak Regex</b> sebagai gantinya.
+        ]]>
+    </string>
+    <string name="help_action_parse_xml">
+        <![CDATA[
+        Mengurai byte data XML menggunakan <font color="#00BFFF">xpath</font> dan menghasilkan daftar nomor telepon.
+        ]]>
+    </string>
+    <string name="action_parse_xml">Urai XML</string>
+    <string name="action_regex_extract">Ekstrak Regex</string>
+    <string name="help_action_regex_extract">
+        <![CDATA[
+        Mencari pola regex dalam teks, menemukan semua kejadian, dan menghasilkan daftar nomor telepon. <br>
+        <br>
+        Ini juga dapat digunakan untuk mengurai file teks biasa dengan satu nomor telepon per baris. <br>
+        <br>
+        Contoh, mengurai teks: <br>
+          <font color="#888888">
+            &ensp; 111<br>
+            &ensp; 222<br>
+            &ensp; 333<br>
+          </font>
+        dengan regex: <br>
+          &ensp; <font color="#888888">(\\d+)</font>
+        ]]>
+    </string>
+    <string name="help_action_http_download">
+        <![CDATA[
+        Kirim permintaan HTTP dan ambil respons sebagai byte data.
+        ]]>
+    </string>
+    <string name="help_action_backup_export">
+        <![CDATA[
+        Ekspor pengaturan saat ini sebagai byte data.
+        ]]>
+    </string>
+    <string name="help_action_backup_import">
+        <![CDATA[
+        Terapkan pengaturan dari byte data.
+        ]]>
+    </string>
+    <string name="help_action_read_file">
+        <![CDATA[
+        Membaca byte data dari file. <br>
+        <br>
+        Tag <font color="#03DAC5">jalur</font> yang didukung: <br>
+        <br>
+        %s <br>
+        <br>
+        Tag <font color="#03DAC5">nama file</font> yang didukung: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_action_write_file">
+        <![CDATA[
+        Menulis byte data ke file. <br>
+        <br>
+        Tag <font color="#03DAC5"><b>jalur</b></font> yang didukung: <br>
+        <br>
+        %s <br>
+        <br>
+        Tag <font color="#03DAC5"><b>nama file</b></font> yang didukung: <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="action_find_rules">Temukan Aturan</string>
+    <string name="help_action_find_rules">
+        <![CDATA[
+        Menemukan semua aturan regex yang cocok dengan deskripsi tertentu.
+        ]]>
+    </string>
+    <string name="help_action_modify_rules">
+        <![CDATA[
+        Mengubah satu atau beberapa atribut untuk daftar aturan.
+        ]]>
+    </string>
+    <string name="action_modify_rules">Ubah Aturan</string>
+    <string name="help_action_import_to_spam_db">
+        <![CDATA[
+        Menambahkan daftar nomor telepon ke database panggilan spam.
+        ]]>
+    </string>
+    <string name="help_action_import_as_regex_rule">
+        <![CDATA[
+        Menghasilkan aturan regex baru dari daftar nomor telepon.
+        ]]>
+    </string>
+    <string name="help_action_replace_number">
+        <![CDATA[
+        Normalisasi pola numerik dari sumber pihak ketiga ke format regex. <br>
+        <br>
+        Contoh, untuk memetakan <br>
+         &ensp; <font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font> <br>
+        ke <br>
+         &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
+        <br>
+        Tambahkan dua tindakan <b>Ganti Nomor Telepon</b>: <br>
+        &ensp; - Ganti `<font color="#fa7f71">(+)</font>` dengan ``<br>
+        &ensp; - Ganti `<font color="#fa7f71">(#)</font>` dengan `<font color="#03DAC5"><b>.</b></font>`<br>
+        ]]>
+    </string>
+    <string name="action_replace_number">Ganti Nomor Telepon</string>
+    <string name="action_import_as_regex_rule">Impor ke Aturan Regex</string>
 </resources>

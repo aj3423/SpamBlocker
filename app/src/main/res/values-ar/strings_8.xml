@@ -77,14 +77,7 @@
     <string name="action_backup_import">استيراد النسخ الاحتياطي</string>
     <string name="action_read_file">قراءة ملف</string>
     <string name="action_write_file">كتابة ملف</string>
-    <string name="action_parse_csv">تحليل CSV</string>
-    <string name="action_parse_xml">تحليل XML</string>
-    <string name="action_regex_extract">استخراج Regex</string>
     <string name="action_import_to_spam_db">استيراد إلى قاعدة بيانات الرسائل غير المرغوب فيها</string>
-    <string name="action_import_as_regex_rule">الاستيراد كقاعدة Regex</string>
-    <string name="action_convert_number">استبدال الرقم</string>
-    <string name="action_find_rules">البحث عن القواعد</string>
-    <string name="action_modify_rules">تعديل القواعد</string>
     <string name="action_modify_rules_placeholder">
         سلسلة JSON، على سبيل المثال:\n
         {\n
@@ -95,93 +88,6 @@
         }\n
     </string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        تنزيل بيانات HTTP كـ <u>وحدات بايت للمحتوى</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">حذف الأرقام منتهية الصلاحية من قاعدة بيانات الرسائل غير المرغوب فيها.</string>
     <string name="help_action_cleanup_history">حذف سجلات السجل منتهية الصلاحية.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        تصدير الإعدادات الحالية إلى <u>وحدات بايت للمحتوى</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        تطبيق الإعدادات من <u>وحدات بايت للمحتوى</u>.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        الحصول على <u>بايتات المحتوى</u> من ملف. <br>
-        <br>
-        علامات <font color="#03DAC5"><b>المسار</b></font> المدعومة: <br>
-        <br>
-        %s <br>
-        <br>
-        علامات <font color="#03DAC5"><b>اسم الملف</b></font> المدعومة: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        كتابة <u>بايتات المحتوى</u> إلى ملف. <br>
-        <br>
-        علامات <font color="#03DAC5"><b>المسار</b></font> المدعومة: <br>
-        <br>
-        %s <br>
-        <br>
-        علامات <font color="#03DAC5"><b>اسم الملف</b></font> المدعومة: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        تحليل <u>وحدات بايت محتوى</u> CSV إلى <u>قائمة أرقام</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        تحليل <u>وحدات بايت محتوى</u> xml باستخدام <b>xpath</b> وإنشاء <u>قائمة أرقام.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        استخراج <u>قائمة أرقام</u> من <u>وحدات بايت للمحتوى</u> باستخدام regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        إضافة <u>قائمة أرقام</u> إلى قاعدة بيانات الرسائل غير المرغوب فيها.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        إنشاء قاعدة regex جديدة من <u>قائمة أرقام</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        تحويل <u>قائمة الأرقام</u> إلى التنسيق الذي يستخدمه هذا التطبيق.<br>
-        <br>
-        على سبيل المثال، أضف إجراءين للاستبدال:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` إلى `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - استبدال `<font color="#fa7f71">(+)</font>` إلى ``<br>
-        &ensp; - استبدال `<font color="#fa7f71">(#)</font>` إلى `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        ابحث عن <u>قائمة بالقواعد</u> التي تطابق وصفًا محددًا.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        تغيير واحد أو أكثر من السمات لـ <u>قائمة القواعد</u>.
-        ]]>
-    </string>
 </resources>

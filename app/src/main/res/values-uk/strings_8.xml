@@ -77,94 +77,10 @@
     <string name="action_backup_import">Імпорт резервної копії</string>
     <string name="action_read_file">Зчитати файл</string>
     <string name="action_write_file">Записати файл</string>
-    <string name="action_parse_csv">Розбір CSV</string>
-    <string name="action_parse_xml">Розбір XML</string>
-    <string name="action_regex_extract">Витягти за допомогою RegEx</string>
     <string name="action_import_to_spam_db">Імпорт до спам-бази даних</string>
-    <string name="action_import_as_regex_rule">Імпорт як правило RegEx</string>
-    <string name="action_convert_number">Замінити номер</string>
 
-    <string name="help_action_http_download">
-        <![CDATA[
-        Завантажити дані HTTP як <u>байти вмісту</u>
-        ]]>
-    </string>
     <string name="help_action_cleanup_spam_db">Видалити застарілі номери зі спам-бази даних.</string>
     <string name="help_action_cleanup_history">Видалити застарілі записи історії.</string>
-    <string name="help_action_backup_export">
-        <![CDATA[
-        Експортувати поточні налаштування як <u>байти вмісту</u>.
-        ]]>
-    </string>
-    <string name="help_action_backup_import">
-        <![CDATA[
-        Застосувати налаштування з <u>байтів вмісту</u>.
-        ]]>
-    </string>
-    <string name="help_action_read_file">
-        <![CDATA[
-        Отримати <u>байти вмісту</u> з файлу. <br>
-        <br>
-        Підтримувані теги <font color="#03DAC5"><b>шляху</b></font>: <br>
-        <br>
-        %s <br>
-        <br>
-        Підтримувані теги <font color="#03DAC5"><b>імені файлу</b></font>: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_write_file">
-        <![CDATA[
-        Записати <u>байти вмісту</u> у файл. <br>
-        <br>
-        Підтримувані теги <font color="#03DAC5"><b>шляху</b></font>: <br>
-        <br>
-        %s <br>
-        <br>
-        Підтримувані теги <font color="#03DAC5"><b>імені файлу</b></font>: <br>
-        <br>
-        %s
-        ]]>
-    </string>
-    <string name="help_action_parse_csv">
-        <![CDATA[
-        Розпарсити байти вмісту csv на <u>список номерів</u>
-        ]]>
-    </string>
-    <string name="help_action_parse_xml">
-        <![CDATA[
-        Розпарсити байти вмісту xml за допомогою <b>xpath</b> і згенерувати <u>список номерів.</u>
-        ]]>
-    </string>
-    <string name="help_action_regex_extract">
-        <![CDATA[
-        Витягти <u>список номерів</u> з <u>байтів вмісту</u> за допомогою regex.
-        ]]>
-    </string>
-    <string name="help_action_import_to_spam_db">
-        <![CDATA[
-        Додати <u>список номерів</u> до спам-бази даних.
-        ]]>
-    </string>
-    <string name="help_action_import_as_regex_rule">
-        <![CDATA[
-        Згенерувати нове правило regex з <u>списку номерів</u>.
-        ]]>
-    </string>
-    <string name="help_action_convert_number">
-        <![CDATA[
-        Перетворити <u>список номерів</u> у формат, який використовує цей додаток.<br>
-        <br>
-        Наприклад, додайте два дії для заміни:<br>
-        `<font color="#fa7f71">+</font>12345<font color="#fa7f71">####</font>` на `12345<font color="#03DAC5"><b>…</b></font>`:<br>
-        <br>
-        &ensp; - Замінити `<font color="#fa7f71">(+)</font>` на ``<br>
-        &ensp; - Замінити `<font color="#fa7f71">(#)</font>` на `<font color="#03DAC5"><b>.</b></font>`<br>
-        ]]>
-    </string>
-    <string name="action_find_rules">Знайти правила</string>
-    <string name="action_modify_rules">Змінити правила</string>
     <string name="action_modify_rules_placeholder">
         Рядок JSON, наприклад:\n
         {\n
@@ -173,15 +89,5 @@
         \"blockType\": 0\n
         …\n
         }\n
-    </string>
-    <string name="help_action_find_rules">
-        <![CDATA[
-        Знайти <u>список правил</u>, які відповідають певному опису.
-        ]]>
-    </string>
-    <string name="help_action_modify_rules">
-        <![CDATA[
-        Змінити один або декілька атрибутів для <u>списку правил</u>.
-        ]]>
     </string>
 </resources>
