@@ -126,7 +126,7 @@
          &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
         <br>
         הוסף שתי פעולות <b>החלף מספר</b>: <br>
-        &ensp; - החלף `<font color="#fa7f71">(+)</font>` ב-``<br>
+        &ensp; - החלף `<font color="#fa7f71">(\\+)</font>` ב-``<br>
         &ensp; - החלף `<font color="#fa7f71">(#)</font>` ב-`<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>

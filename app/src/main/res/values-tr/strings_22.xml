@@ -126,7 +126,7 @@
          &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
         <br>
         İki <b>Numarayı Değiştir</b> eylemi ekleyin: <br>
-        &ensp; - `<font color="#fa7f71">(+)</font>`\'ı `` ile değiştirin<br>
+        &ensp; - `<font color="#fa7f71">(\\+)</font>`\'ı `` ile değiştirin<br>
         &ensp; - `<font color="#fa7f71">(#)</font>`\'i `<font color="#03DAC5"><b>.</b></font>` ile değiştirin<br>
         ]]>
     </string>

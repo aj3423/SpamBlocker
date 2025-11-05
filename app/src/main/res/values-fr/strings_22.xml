@@ -126,7 +126,7 @@
          &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
         <br>
         Ajoutez deux actions <b>Remplacer le numéro</b> : <br>
-        &ensp; - Remplacez `<font color="#fa7f71">(+)</font>` par ``<br>
+        &ensp; - Remplacez `<font color="#fa7f71">(\\+)</font>` par ``<br>
         &ensp; - Remplacez `<font color="#fa7f71">(#)</font>` par `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>

@@ -126,7 +126,7 @@
          &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
         <br>
         2つの<b>電話番号の置換</b>アクションを追加します：<br>
-        &ensp; - 「<font color="#fa7f71">(+)</font>」を「」で置き換えます<br>
+        &ensp; - 「<font color="#fa7f71">(\\+)</font>」を「」で置き換えます<br>
         &ensp; - 「<font color="#fa7f71">(#)</font>」を「<font color="#03DAC5"><b>.</b></font>」で置き換えます<br>
         ]]>
     </string>

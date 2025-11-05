@@ -126,7 +126,7 @@
          &ensp; 12345<font color="#03DAC5"><b>....</b></font><br>
         <br>
         Tambahkan dua tindakan <b>Ganti Nomor Telepon</b>: <br>
-        &ensp; - Ganti `<font color="#fa7f71">(+)</font>` dengan ``<br>
+        &ensp; - Ganti `<font color="#fa7f71">(\\+)</font>` dengan ``<br>
         &ensp; - Ganti `<font color="#fa7f71">(#)</font>` dengan `<font color="#03DAC5"><b>.</b></font>`<br>
         ]]>
     </string>
