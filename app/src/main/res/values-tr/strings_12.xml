@@ -35,8 +35,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        İsteğe bağlı. <br>
-        Bir numara tanımlandıktan sonra, bu regex kategorisini (telepazarlama, kimlik avı vb.) çıkarmak için kullanılır.
+        Sorgu sonucundan <font color="#00BFFF">kategoriyi</font> ve <font color="#00BFFF">yorumları</font>
+         çıkarın ve bildirim ile geçmiş günlüğünde gösterin. (isteğe bağlı)<br>
+        <br>
+        Örneğin, bu sorgu sonucu için: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Yalnızca <font color="#00BFFF">kategoriyi</font> çıkarın: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Hem <font color="#00BFFF">kategoriyi</font> hem de <font color="#00BFFF">yorumları</font> çıkarın: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Sonucu Ayrıştır</string>

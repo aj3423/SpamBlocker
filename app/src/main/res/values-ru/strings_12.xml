@@ -37,8 +37,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Необязательно. <br>
-        После идентификации номера это регулярное выражение будет использоваться для извлечения его категории (телемаркетинг, фишинг и т.д.).
+        Извлекает <font color="#00BFFF">категорию</font> и <font color="#00BFFF">комментарии</font>
+         из результата запроса и отображает их в уведомлении и журнале истории. (необязательно)<br>
+        <br>
+        Например, для этого результата запроса: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Извлечь только <font color="#00BFFF">категорию</font>: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Извлечь как <font color="#00BFFF">категорию</font>, так и <font color="#00BFFF">комментарии</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Обработать результат</string>

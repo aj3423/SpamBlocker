@@ -2089,7 +2089,12 @@ class ParseQueryResult(
         // 3. category
         if (determined) {
             if (categorySig.trim().isNotEmpty()) {
-                // 1. Get category
+                val mapping = if (categoryMapping.isNotEmpty()) {
+                    JSONObject(categoryMapping).toMap()
+                } else {
+                    mapOf()
+                }
+
                 val categoryOpts = Util.flagsToRegexOptions(categoryFlags)
                 category = categorySig.trim().toRegex(categoryOpts).findAll(html)
                     .map {
@@ -2099,13 +2104,12 @@ class ParseQueryResult(
                             .firstOrNull()?.value
                     }
                     .filterNot { it.isNullOrEmpty() }
-                    .joinToString(" ")
-
-                // 2. Map category
-                if (categoryMapping.isNotEmpty()) {
-                    val map = JSONObject(categoryMapping).toMap()
-                    category = map.getOrDefault(category, category) as? String
-                }
+                    .map {
+                        // Map "1", "2" to human readable "Fraud", "Political" if it's configured
+                        //  in the CategoryMapping, otherwise keep it as is.
+                        mapping.getOrDefault(it, it) as String
+                    }
+                    .joinToString(" | ")
             }
         }
 

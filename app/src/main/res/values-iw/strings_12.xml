@@ -37,8 +37,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        אופציונלי. <br>
-        ברגע שמספר מזוהה, Regex זה ישמש לחילוץ הקטגוריה שלו (שיווק טלפוני, פישינג וכו\').
+        חלץ את ה<font color="#00BFFF">קטגוריה</font> ואת ה<font color="#00BFFF">הערות</font>
+         מתוצאת השאילתה והצג אותם בהתראה ובלוג ההיסטוריה. (אופציונלי)<br>
+        <br>
+        לדוגמה, עבור תוצאת שאילתה זו: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - חלץ את ה<font color="#00BFFF">קטגוריה</font> בלבד: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - חלץ גם את ה<font color="#00BFFF">קטגוריה</font> וגם את ה<font color="#00BFFF">הערות</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">ניתוח תוצאה</string>

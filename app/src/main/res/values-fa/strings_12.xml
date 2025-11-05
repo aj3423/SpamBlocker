@@ -36,8 +36,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        اختیاری.<br>
-        پس از شناسایی یک شماره، از این عبارت باقاعده برای استخراج دسته‌بندی آن (بازاریابی تلفنی، فیشینگ و غیره) استفاده می‌شود.
+        <font color="#00BFFF">دسته</font> و <font color="#00BFFF">نظرات</font> را
+         از نتیجه بررسی استخراج کرده و در اعلان و تاریخچه نمایش می‌دهد. (اختیاری)<br>
+        <br>
+        برای مثال، برای این نتیجه بررسی: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - فقط <font color="#00BFFF">دسته</font> را استخراج کنید: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - هم <font color="#00BFFF">دسته</font> و هم <font color="#00BFFF">نظرات</font> را استخراج کنید: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">تجزیه نتیجه</string>

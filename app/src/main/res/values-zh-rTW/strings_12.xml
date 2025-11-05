@@ -35,8 +35,22 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        選用。<br>
-        一旦號碼被識別，此正規表示式將用於擷取其類別（電話行銷、釣魚等）。
+        從查詢結果中提取<font color="#00BFFF">類別</font>和<font color="#00BFFF">備註</font>，並將其顯示在通知和歷史記錄中。(可選)<br>
+        <br>
+        例如，對於此查詢結果： <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - 僅提取<font color="#00BFFF">類別</font>： <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - 提取<font color="#00BFFF">類別</font>和<font color="#00BFFF">備註</font>： <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">解析結果</string>

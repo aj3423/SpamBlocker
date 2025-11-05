@@ -37,8 +37,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        <translate>اختياري.</translate> <br>
-        <translate>بمجرد تحديد الرقم، سيتم استخدام regex هذا لاستخراج فئته (التسويق عبر الهاتف، الاحتيال، إلخ).</translate>
+        استخرج <font color="#00BFFF">الفئة</font> و<font color="#00BFFF">التعليقات</font>
+         من نتيجة الاستعلام واعرضها في الإشعارات وسجل التاريخ. (اختياري)<br>
+        <br>
+        على سبيل المثال، لنتيجة الاستعلام هذه: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - استخرج <font color="#00BFFF">الفئة</font> فقط: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - استخرج كلاً من <font color="#00BFFF">الفئة</font> و<font color="#00BFFF">التعليقات</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result"><translate>تحليل النتيجة</translate></string>

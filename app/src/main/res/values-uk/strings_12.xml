@@ -36,8 +36,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Додатково. <br>
-        Після ідентифікації номера цей регулярний вираз буде використано для вилучення його категорії (телемаркетинг, фішинг тощо).
+        Витягнути <font color="#00BFFF">категорію</font> та <font color="#00BFFF">коментарі</font>
+         з результату запиту та відобразити їх у сповіщенні та журналі історії. (необов\'язково)<br>
+        <br>
+        Наприклад, для цього результату запиту: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Витягнути лише <font color="#00BFFF">категорію</font>: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Витягнути як <font color="#00BFFF">категорію</font>, так і <font color="#00BFFF">коментарі</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Розбір результату</string>

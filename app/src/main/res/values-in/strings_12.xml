@@ -37,8 +37,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Opsional. <br>
-        Setelah nomor diidentifikasi, regex ini akan digunakan untuk mengekstrak kategorinya (telemarketing, memancing, dll).
+        Ekstrak <font color="#00BFFF">kategori</font> dan <font color="#00BFFF">komentar</font>
+         dari hasil kueri dan tampilkan dalam notifikasi serta log riwayat. (opsional)<br>
+        <br>
+        Contoh, untuk hasil kueri ini: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Ekstrak <font color="#00BFFF">kategori</font> saja: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Ekstrak <font color="#00BFFF">kategori</font> dan <font color="#00BFFF">komentar</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Urai Hasil</string>

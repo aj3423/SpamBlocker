@@ -37,8 +37,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Opcional. <br>
-        Un cop s\'ha identificat un número, aquesta expressió regular s\'utilitzarà per extreure la seva categoria (telemàrqueting, pesca, etc.).
+        Extreu la <font color="#00BFFF">categoria</font> i els <font color="#00BFFF">comentaris</font>
+         del resultat de la consulta i els mostra a la notificació i al registre d\'historial. (opcional)<br>
+        <br>
+        Per exemple, per a aquest resultat de consulta: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Extreu només la <font color="#00BFFF">categoria</font>: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Extreu tant la <font color="#00BFFF">categoria</font> com els <font color="#00BFFF">comentaris</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result"><translate>Analitzar el resultat</translate></string>

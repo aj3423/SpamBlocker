@@ -37,8 +37,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Optional. <br>
-        Once a number is identified, this regex will be used to extract its category(telemarketing, fishing, etc).
+        Extract the <font color="#00BFFF">category</font> and <font color="#00BFFF">comments</font>
+         from the query result and display them in the notification and history log. (optional)<br>
+        <br>
+        For example, for this query result: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Extract the <font color="#00BFFF">category</font> only: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Extract both the <font color="#00BFFF">category</font> and the <font color="#00BFFF">comments</font>: <br>
+        &ensp; <font color="#888888">(?:"type":"(.+?)"|"comments":"(.+?)")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Parse Result</string>

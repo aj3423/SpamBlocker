@@ -36,8 +36,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Opcional.<br>
-        Assim que um número for identificado, esta expressão regular será usada para extrair sua categoria (telemarketing, phishing, etc.).
+        Extraia a <font color="#00BFFF">categoria</font> e os <font color="#00BFFF">comentários</font>
+         do resultado da consulta e exiba-os na notificação e no histórico. (opcional)<br>
+        <br>
+        Por exemplo, para este resultado da consulta: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Extrair apenas a <font color="#00BFFF">categoria</font>: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Extrair tanto a <font color="#00BFFF">categoria</font> quanto os <font color="#00BFFF">comentários</font>: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analisar Resultado</string>

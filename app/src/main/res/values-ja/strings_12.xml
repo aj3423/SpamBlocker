@@ -35,8 +35,22 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        任意。<br>
-        番号が識別されると、この正規表現を使用してそのカテゴリ（テレマーケティング、フィッシングなど）が抽出されます。
+        照会結果から<font color="#00BFFF">カテゴリ</font>と<font color="#00BFFF">コメント</font>を抽出し、通知と履歴ログに表示します。(オプション)<br>
+        <br>
+        例として、この照会結果の場合: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - <font color="#00BFFF">カテゴリ</font>のみを抽出: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - <font color="#00BFFF">カテゴリ</font>と<font color="#00BFFF">コメント</font>の両方を抽出: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">結果を解析</string>

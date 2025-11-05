@@ -35,8 +35,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Facultatif.<br>
-        Une fois qu’un numéro est identifié, ce regex sera utilisé pour extraire sa catégorie (télémarketing, hameçonnage, etc.).
+        Extrayez la <font color="#00BFFF">catégorie</font> et les <font color="#00BFFF">commentaires</font>
+         du résultat de la requête et affichez-les dans la notification et le journal d\'historique. (facultatif)<br>
+        <br>
+        Par exemple, pour ce résultat de requête : <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Extrayez uniquement la <font color="#00BFFF">catégorie</font> : <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Extrayez à la fois la <font color="#00BFFF">catégorie</font> et les <font color="#00BFFF">commentaires</font> : <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Analyser le résultat</string>

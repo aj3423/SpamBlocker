@@ -35,8 +35,23 @@
     </string>
     <string name="help_category_identifier">
         <![CDATA[
-        Optional. <br>
-        Sobald eine Nummer identifiziert wurde, wird dieser Regex verwendet, um ihre Kategorie (Telemarketing, Phishing usw.) zu extrahieren.
+        Extrahieren Sie die <font color="#00BFFF">Kategorie</font> und <font color="#00BFFF">Kommentare</font>
+         aus dem Abfrageergebnis und zeigen Sie diese in der Benachrichtigung und dem Verlaufsprotokoll an. (optional)<br>
+        <br>
+        Zum Beispiel für dieses Abfrageergebnis: <br>
+        <font color="#888888">
+        { <br>
+          &ensp; \"type\": \"MARKETING\", <br>
+          &ensp; \"comments\": \"Better call Saul\", <br>
+          &ensp;  … <br>
+        } <br>
+        </font>
+        <br>
+        - Nur die <font color="#00BFFF">Kategorie</font> extrahieren: <br>
+        &ensp; <font color="#888888">\"type\": \"(.+?)\"</font> <br>
+        <br>
+        - Sowohl die <font color="#00BFFF">Kategorie</font> als auch die <font color="#00BFFF">Kommentare</font> extrahieren: <br>
+        &ensp; <font color="#888888">(?:\"type\":\"(.+?)\"|\"comments\":\"(.+?)\")</font><br>
         ]]>
     </string>
     <string name="action_parse_query_result">Ergebnis parsen</string>
