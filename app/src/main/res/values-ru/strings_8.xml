@@ -3,7 +3,7 @@
     <string name="total">Всего</string>
     <string name="replace_from">От</string>
     <string name="replace_to">До</string>
-    <string name="regex_pattern">Регекс</string>
+    <string name="regex_pattern">Рег. выражение</string>
 
     <string name="help_spam_db">
         <![CDATA[
