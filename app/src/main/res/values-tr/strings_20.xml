@@ -28,8 +28,6 @@
     &ensp; - Belirli bir telefon numarası veya kişi grubu için SMS\'leri engelleyen bir telefon numarası regex kuralı, devre dışıdır ve anında etkinleştirilecektir.<br>
     &ensp; - Bir <b>Çağrı Kısıtlama</b> iş akışı. <br>
     <br>
-    Bu kurulum, iş akışı hazır ayarlarında mevcuttur. <br>
-    <br>
     <b>Seçenekler:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Süre</b></font> <br>
@@ -64,8 +62,6 @@
     Tipik bir kurulum şunları içerir: <br>
     &ensp; - Tüm numaraları engelleyen bir numara regex kuralı; bu kural devre dışıdır ve anında etkinleştirilecektir.<br>
     &ensp; - Bir <b>SMS Kısıtlama</b> iş akışı. <br>
-    <br>
-    Bu kurulum, iş akışı ön ayarlarında mevcuttur. <br>
     <br>
     <b>Seçenekler:</b> <br>
     <br>

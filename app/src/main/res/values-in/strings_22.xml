@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">Ganti Nomor Telepon</string>
     <string name="action_import_as_regex_rule">Impor ke Aturan Regex</string>
+    <string name="duration_in_minutes">Durasi (menit)</string>
 </resources>

@@ -29,8 +29,6 @@
     &ensp; - Una regla regex de número que bloquea SMS para un número o grupo de contactos particular, está deshabilitada y se activará sobre la marcha.<br>
     &ensp; - Un flujo de trabajo de <b>Limitación de Llamadas</b>. <br>
     <br>
-    Esta configuración está disponible en los preajustes de flujo de trabajo. <br>
-    <br>
     <b>Opciones:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Duración</b></font> <br>
@@ -66,8 +64,6 @@
     Una configuración típica incluye: <br>
     &ensp; - Una regla de expresiones regulares de número de teléfono que bloquea todos los números de teléfono, está deshabilitada y se activará sobre la marcha.<br>
     &ensp; - Un flujo de trabajo de <b>Limitación de SMS</b>. <br>
-    <br>
-    Esta configuración está disponible en los preajustes de flujo de trabajo. <br>
     <br>
     <b>Opciones:</b> <br>
     <br>

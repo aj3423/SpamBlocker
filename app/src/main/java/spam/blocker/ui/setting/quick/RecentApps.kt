@@ -266,29 +266,26 @@ fun RecentApps() {
                     PopupDialog(
                         trigger = popupTrigger1,
                         content = {
-                            LabeledRow(
-                                labelId = R.string.duration,
-                                helpTooltip = Str(R.string.help_recent_apps_individual_duration)
-                            ) {
-                                NumberInputBox(
-                                    intValue = recentAppInfo.duration,
-                                    allowEmpty = true,
-                                    labelId = R.string.min,
-                                    leadingIconId = R.drawable.ic_duration,
-                                    onValueChange = { newValue, hasError ->
-                                        val pkgName = recentAppInfo.pkgName
+                            NumberInputBox(
+                                intValue = recentAppInfo.duration,
+                                allowEmpty = true,
+                                labelId = R.string.duration_in_minutes,
+                                leadingIconId = R.drawable.ic_duration,
+                                helpTooltipId = R.string.help_recent_apps_individual_duration,
+                                onValueChange = { newValue, hasError ->
+                                    val pkgName = recentAppInfo.pkgName
 
-                                        val i =
-                                            enabledAppInfos.indexOfFirst { it.pkgName == pkgName }
+                                    val i =
+                                        enabledAppInfos.indexOfFirst { it.pkgName == pkgName }
 
-                                        // 1. update gui
-                                        enabledAppInfos[i] =
-                                            RecentAppInfo(pkgName, newValue)
+                                    // 1. update gui
+                                    enabledAppInfos[i] =
+                                        RecentAppInfo(pkgName, newValue)
 
-                                        // 2. save to SharedPref
-                                        spf.setList(enabledAppInfos)
-                                    })
-                            }
+                                    // 2. save to SharedPref
+                                    spf.setList(enabledAppInfos)
+                                }
+                            )
                         }
                     )
                 }

@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">取代電話號碼</string>
     <string name="action_import_as_regex_rule">匯入為正則表達式規則</string>
+    <string name="duration_in_minutes">持續時間 (分鐘)</string>
 </resources>

@@ -29,8 +29,6 @@
     &ensp; - Aturan regex nomor yang memblokir SMS untuk nomor atau grup kontak tertentu, dinonaktifkan dan akan diaktifkan secara otomatis.<br>
     &ensp; - Alur kerja <b>Pembatasan Panggilan</b>. <br>
     <br>
-    Pengaturan ini tersedia di preset alur kerja. <br>
-    <br>
     <b>Opsi:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Durasi</b></font> <br>
@@ -65,8 +63,6 @@
     Pengaturan umum meliputi: <br>
     &ensp; - Aturan regex nomor yang memblokir semua nomor, ini dinonaktifkan dan akan diaktifkan secara otomatis.<br>
     &ensp; - Alur kerja <b>Pembatasan SMS</b>. <br>
-    <br>
-    Pengaturan ini tersedia dalam preset alur kerja. <br>
     <br>
     <b>Opsi:</b> <br>
     <br>

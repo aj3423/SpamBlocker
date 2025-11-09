@@ -29,8 +29,6 @@
     &ensp; - Unha regra de expresión regular de número de teléfono que bloquea os SMS para un número de teléfono ou grupo de contactos particular, está deshabilitada e activarase sobre a marcha.<br>
     &ensp; - Un fluxo de traballo de <b>Limitación de Chamadas</b>. <br>
     <br>
-    Esta configuración está dispoñible nos predefinidos do fluxo de traballo. <br>
-    <br>
     <b>Opcións:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Duración</b></font> <br>
@@ -66,8 +64,6 @@
     Unha configuración típica inclúe: <br>
     &ensp; - Unha regra de expresións regulares de número que bloquea todos os números, está desactivada e activarase sobre a marcha.<br>
     &ensp; - Un fluxo de traballo de <b>Limitación de SMS</b>. <br>
-    <br>
-    Esta configuración está dispoñible nos predefinidos do fluxo de traballo. <br>
     <br>
     <b>Opcións:</b> <br>
     <br>

@@ -29,8 +29,6 @@
     &ensp; - Uma regra de regex de número de telefone que bloqueia SMS para um número de telefone ou grupo de contato específico, ela está desativada e será ativada instantaneamente.<br>
     &ensp; - Um fluxo de trabalho de <b>Limitação de Chamadas</b>. <br>
     <br>
-    Esta configuração está disponível nos predefinições de fluxo de trabalho. <br>
-    <br>
     <b>Opções:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Duração</b></font> <br>
@@ -66,8 +64,6 @@
     Uma configuração típica inclui: <br>
     &ensp; - Uma regra de regex de número de telefone que bloqueia todos os números de telefone, ela está desativada e será ativada instantaneamente.<br>
     &ensp; - Um fluxo de trabalho de <b>Controle de SMS</b>. <br>
-    <br>
-    Esta configuração está disponível nas predefinições de fluxo de trabalho. <br>
     <br>
     <b>Opções:</b> <br>
     <br>

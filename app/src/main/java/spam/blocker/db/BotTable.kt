@@ -35,10 +35,13 @@ import java.util.UUID
 data class Bot(
     val id: Long = 0,
     val desc: String = "",
-    val schedule: ISchedule? = defaultSchedules[0].clone(), // nullable for historical reason
     val actions: List<IAction> = listOf(),
+
+    // For schedule only
     val enabled: Boolean = false, // Scheduled or not, disabled by default because most workflows are not scheduled.
+    val schedule: ISchedule? = defaultSchedules[0].clone(), // nullable for historical reason
     val workUUID: String = UUID.randomUUID().toString(), // the schedule UUID tag
+
     @Transient
     val lastLog: String = "",
     @Transient

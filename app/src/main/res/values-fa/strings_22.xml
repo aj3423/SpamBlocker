@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">جایگزینی شماره</string>
     <string name="action_import_as_regex_rule">وارد کردن به قانون عبارت منظم</string>
+    <string name="duration_in_minutes">مدت زمان (دقیقه)</string>
 </resources>

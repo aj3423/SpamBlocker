@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">替换号码</string>
     <string name="action_import_as_regex_rule">导入为正则表达式规则</string>
+    <string name="duration_in_minutes">持续时间（分钟）</string>
 </resources>

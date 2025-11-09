@@ -29,8 +29,6 @@
     &ensp; - Una regla d\'expressions regulars de número que bloqueja les trucades per a un número particular o grup de contactes, està deshabilitada i s\'activarà sobre la marxa.<br>
     &ensp; - Un flux de treball de <b>Limitació de trucades</b>. <br>
     <br>
-    Aquesta configuració està disponible en els preajustos de flux de treball. <br>
-    <br>
     <b>Opcions:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Durada</b></font> <br>
@@ -66,8 +64,6 @@
     Una configuració típica inclou: <br>
     &ensp; - Una regla d\'expressions regulars de números que bloqueja tots els números; està deshabilitada i s\'activarà al moment.<br>
     &ensp; - Un flux de treball de <b>Limitació d\'SMS</b>. <br>
-    <br>
-    Aquesta configuració està disponible als preajusts de flux de treball. <br>
     <br>
     <b>Opcions:</b> <br>
     <br>

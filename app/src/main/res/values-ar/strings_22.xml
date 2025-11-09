@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">استبدال الرقم</string>
     <string name="action_import_as_regex_rule">استيراد كقاعدة تعبير نمطي</string>
+    <string name="duration_in_minutes">المدة (بالدقائق)</string>
 </resources>

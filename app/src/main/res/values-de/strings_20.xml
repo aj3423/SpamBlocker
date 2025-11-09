@@ -28,8 +28,6 @@
     &ensp; - Eine Nummern-Regex-Regel, die SMS für eine bestimmte Telefonnummer oder Kontaktgruppe blockiert, sie ist deaktiviert und wird dynamisch aktiviert.<br>
     &ensp; - Einen <b>Anrufdrosselungs</b>-Workflow. <br>
     <br>
-    Diese Einrichtung ist in den Workflow-Voreinstellungen verfügbar. <br>
-    <br>
     <b>Optionen:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Dauer</b></font> <br>
@@ -65,8 +63,6 @@
     Eine typische Einrichtung umfasst: <br>
     &ensp; - Eine Telefonnummern-Regex-Regel, die alle Telefonnummern blockiert, sie ist deaktiviert und wird bei Bedarf aktiviert.<br>
     &ensp; - Einen <b>SMS-Drosselung</b>-Workflow. <br>
-    <br>
-    Diese Einrichtung ist in den Workflow-Voreinstellungen verfügbar. <br>
     <br>
     <b>Optionen:</b> <br>
     <br>

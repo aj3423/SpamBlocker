@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">電話番号の置換</string>
     <string name="action_import_as_regex_rule">正規表現ルールとしてインポート</string>
+    <string name="duration_in_minutes">期間 (分)</string>
 </resources>

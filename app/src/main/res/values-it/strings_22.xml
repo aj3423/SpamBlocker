@@ -132,4 +132,5 @@
     </string>
     <string name="action_replace_number">Sostituisci Numero</string>
     <string name="action_import_as_regex_rule">Importa come Regola Regex</string>
+    <string name="duration_in_minutes">Durata (minuti)</string>
 </resources>

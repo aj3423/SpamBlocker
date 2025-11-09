@@ -112,7 +112,7 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
         val iconIds = listOf(
             R.drawable.ic_number_sign,
             R.drawable.ic_contact_square,
-            R.drawable.ic_contacts_square,
+            R.drawable.ic_contact_group,
         )
         items += labelIds.mapIndexed { index, labelId ->
             LabelItem(
@@ -181,7 +181,7 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                 iconId = if (forContact) {
                     R.drawable.ic_contact_square
                 } else if (forContactGroup) {
-                    R.drawable.ic_contacts_square
+                    R.drawable.ic_contact_group
                 } else {
                     R.drawable.ic_number_sign
                 },

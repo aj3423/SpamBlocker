@@ -58,7 +58,7 @@ class App : Application() {
 
         startActivity(intent)
 
-        // Kill the process
+        // Suicide
         android.os.Process.killProcess(android.os.Process.myPid())
         exitProcess(1)
     }

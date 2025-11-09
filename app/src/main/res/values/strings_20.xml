@@ -41,8 +41,6 @@
     &ensp; - A number regex rule that blocks SMS for a particular number or contact group, it\'s disabled and will be activated on the fly.<br>
     &ensp; - An <b>Call Throttling</b> workflow. <br>
     <br>
-    This setup is available in the workflow presets. <br>
-    <br>
     <b>Options:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Duration</b></font> <br>
@@ -86,8 +84,6 @@
     A typical setup includes: <br>
     &ensp; - A number regex rule that blocks all numbers, it\'s disabled and will be activated on the fly.<br>
     &ensp; - An <b>SMS Throttling</b> workflow. <br>
-    <br>
-    This setup is available in the workflow presets. <br>
     <br>
     <b>Options:</b> <br>
     <br>

@@ -29,8 +29,6 @@
     &ensp; - Una regola regex per numeri che blocca gli SMS per un numero o gruppo di contatti particolare, è disabilitata e verrà attivata al volo.<br>
     &ensp; - Un flusso di lavoro di <b>Limitazione Chiamate</b>. <br>
     <br>
-    Questa configurazione è disponibile nei preset del flusso di lavoro. <br>
-    <br>
     <b>Opzioni:</b> <br>
     <br>
     - <font color="#00BFFF"><b>Durata</b></font> <br>
@@ -66,8 +64,6 @@
     Una configurazione tipica include: <br>
     &ensp; - Una regola regex per numeri di telefono che blocca tutti i numeri di telefono, è disabilitata e verrà attivata al volo.<br>
     &ensp; - Un flusso di lavoro di <b>Limitazione SMS</b>. <br>
-    <br>
-    Questa configurazione è disponibile nei preset del flusso di lavoro. <br>
     <br>
     <b>Opzioni:</b> <br>
     <br>
