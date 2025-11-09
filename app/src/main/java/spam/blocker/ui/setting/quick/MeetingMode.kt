@@ -177,7 +177,7 @@ fun MeetingMode() {
 
                 if (appInfo.exclusions.isEmpty()) {
                     GreyIcon16(
-                        iconId = R.drawable.ic_exclude,
+                        iconId = R.drawable.ic_settings,
                         modifier = M
                             .clickable {
                                 appInfoTrigger.value = true

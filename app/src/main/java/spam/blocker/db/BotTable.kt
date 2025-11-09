@@ -24,23 +24,26 @@ import spam.blocker.service.bot.serialize
 import spam.blocker.ui.widgets.GreyLabel
 import java.util.UUID
 
-// The name "Workflow" is too long, so it's named "Bot" instead.
+/*
+  The word "Workflow" is too long, so this class is called "Bot".
+
+  TODO: refactor:
+   Remove fields `enabled`, `schedule`, `workUUID` and add field `trigger`, as now there are more
+     different triggers like "CalendarEvent", "Call", etc. `schedule` is just one of them.
+*/
 @Serializable
 data class Bot(
     val id: Long = 0,
     val desc: String = "",
-    val schedule: ISchedule? = defaultSchedules[0].clone(), // nullable for historical compatible
+    val schedule: ISchedule? = defaultSchedules[0].clone(), // nullable for historical reason
     val actions: List<IAction> = listOf(),
-    val enabled: Boolean = true,
-    val workUUID: String = UUID.randomUUID().toString(), // it's the schedule tag
+    val enabled: Boolean = false, // Scheduled or not, disabled by default because most workflows are not scheduled.
+    val workUUID: String = UUID.randomUUID().toString(), // the schedule UUID tag
     @Transient
     val lastLog: String = "",
     @Transient
     val lastLogTime: Long = 0,
 ) {
-
-    // TODO: refactor this .. later
-
     // This is displayed as the summary(the second row) in a bot card.
     // types: Scheduled / Manual / CalendarEvent / SmsEvent / CallEvent
     @Composable
