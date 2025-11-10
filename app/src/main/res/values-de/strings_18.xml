@@ -9,18 +9,16 @@
         Regex-Regeln basierend auf Kalenderereignissen temporär ändern; Änderungen werden vorübergehend angewendet, ohne die Konfiguration zu verändern. <br>
         <br>
         Ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst. <br>
-        <br>
-        Prüfen Sie die Workflow-Voreinstellung für den <b>Anwendungsfall</b> und ein <b>typisches Setup</b>. <br>
         ]]>
     </string>
     <string name="sms_event">SMS-Ereignis</string>
     <string name="help_sms_event">
         <![CDATA[
-        Dies wird automatisch bei eingehenden SMS-Nachrichten ausgelöst, bevor sie überprüft werden.<br>
+        Dies wird bei eingehenden SMS-Nachrichten automatisch ausgelöst, bevor diese überprüft werden.<br>
         <br>
-        Dies kann mit anderen Aktionen wie <b>Regeln finden</b> und <b>Regeln ändern</b> verkettet werden.<br>
-        - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Arbeitsablauf weiter ausgeführt.<br>
-        - Andernfalls wird der Arbeitsablauf beendet.<br>
+        So funktioniert es: <br>
+        - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Workflow ausgeführt.<br>
+        - Andernfalls wird der Workflow beendet.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">SMS-Ereignis %s wurde ausgelöst.</string>

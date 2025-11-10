@@ -9,8 +9,6 @@
         Modifica temporalmente las reglas regex basándose en eventos del calendario; los cambios se aplican temporalmente sin alterar la configuración. <br>
         <br>
         Dicho flujo de trabajo se activará automáticamente por una llamada entrante. <br>
-        <br>
-        Consulta el preajuste del flujo de trabajo para el <b>caso de uso</b> y una <b>configuración típica</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Evento de SMS</string>
@@ -18,9 +16,9 @@
         <![CDATA[
         Esto se activará automáticamente con los mensajes SMS entrantes antes de que sean filtrados.<br>
         <br>
-        Esto se puede encadenar con otras acciones como <b>Buscar Reglas</b> y <b>Modificar Reglas</b>.<br>
-        - Si el número de SMS y el contenido coinciden, el flujo de trabajo continuará ejecutándose.<br>
-        - De lo contrario, el flujo de trabajo terminará.<br>
+        Cómo funciona: <br>
+        - Si el número SMS y el contenido coinciden, el flujo de trabajo se ejecutará.<br>
+        - De lo contrario, el flujo de trabajo finalizará.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">El evento de SMS %s se ha activado.</string>

@@ -9,18 +9,16 @@
         Modificar temporalmente as regras regex baseándose en eventos do calendario, os cambios aplícanse temporalmente sen alterar a configuración. <br>
         <br>
         Tal fluxo de traballo activarase automaticamente por unha chamada entrante. <br>
-        <br>
-        Consulta o preaxuste do fluxo de traballo para o <b>caso de uso</b> e unha <b>configuración típica</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Evento de SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Isto activarase automaticamente en mensaxes SMS entrantes antes de que sexan filtradas.<br>
+        Isto activarase automaticamente nas mensaxes SMS entrantes antes de que sexan filtradas.<br>
         <br>
-        Isto pódese encadear con outras accións como <b>Buscar Regras</b> e <b>Modificar Regras</b>.<br>
-        - Se o número de SMS e o contido coinciden, o fluxo de traballo seguirá executándose.<br>
-        - En caso contrario, o fluxo de traballo finalizará.<br>
+        Como funciona: <br>
+        - Se o número SMS e o contido coinciden, o fluxo de traballo executarase.<br>
+        - Se non, o fluxo de traballo rematará.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">O evento de SMS %s activouse.</string>

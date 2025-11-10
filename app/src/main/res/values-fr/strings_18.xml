@@ -9,17 +9,15 @@
         Modifie temporairement les règles d\'expression régulière en fonction des événements de calendrier, les modifications sont appliquées temporairement sans altérer la configuration. <br>
         <br>
         Un tel flux de travail sera automatiquement déclenché par un appel entrant. <br>
-        <br>
-        Vérifiez le préréglage du flux de travail pour le <b>cas d\'utilisation</b> et une <b>configuration typique</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Événement SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Ceci sera automatiquement déclenché lors de la réception de messages SMS avant qu\'ils ne soient filtrés.<br>
+        Ceci sera automatiquement déclenché lors des messages SMS entrants avant qu\'ils ne soient filtrés.<br>
         <br>
-        Ceci peut être enchaîné avec d\'autres actions comme <b>Trouver les règles</b> et <b>Modifier les règles</b>.<br>
-        - Si le numéro de téléphone SMS et le contenu correspondent, le flux de travail continuera à s\'exécuter.<br>
+        Comment ça marche : <br>
+        - Si le numéro et le contenu du SMS correspondent, le flux de travail sera exécuté.<br>
         - Sinon, le flux de travail se terminera.<br>
         ]]>
     </string>

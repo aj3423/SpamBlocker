@@ -9,8 +9,6 @@
         Takvim etkinliklerine göre regex kurallarını geçici olarak değiştirir, değişiklikler yapılandırma değiştirilmeden geçici olarak uygulanır. <br>
         <br>
         Böyle bir iş akışı, gelen bir arama tarafından otomatik olarak tetiklenecektir. <br>
-        <br>
-        <b>Kullanım senaryosu</b> ve <b>tipik bir kurulum</b> için iş akışı ön ayarını kontrol edin. <br>
         ]]>
     </string>
     <string name="sms_event">SMS Etkinliği</string>
@@ -18,9 +16,9 @@
         <![CDATA[
         Bu, gelen SMS mesajları taranmadan önce otomatik olarak tetiklenecektir.<br>
         <br>
-        Bu, <b>Kuralları Bul</b> ve <b>Kuralları Değiştir</b> gibi diğer eylemlerle zincirlenebilir.<br>
-        - SMS numarası ve içeriği eşleşirse, iş akışı yürütülmeye devam edecektir.<br>
-        - Aksi takdirde, iş akışı sonlandırılacaktır.<br>
+        Nasıl çalışır: <br>
+        - SMS numarası ve içeriği eşleşirse, iş akışı yürütülür.<br>
+        - Aksi takdirde, iş akışı sonlandırılır.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">SMS etkinliği %s tetiklendi.</string>

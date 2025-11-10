@@ -21,21 +21,17 @@
     <string name="help_calendar_event">
         <![CDATA[
         依照行事曆事件暫時調整正規表示式規則，變更只在記憶體中生效，不會改動設定檔。<br>
-        <br>
-        請參考工作流程預設範本了解<b>使用情境</b>與<b>常見設定</b>。<br>
         ]]>
     </string>
     <string name="working">運作中</string>
     <string name="sms_event">簡訊事件</string>
     <string name="help_sms_event">
         <![CDATA[
-        會在簡訊進入篩選前自動觸發。<br>
+        這將在收到簡訊（過濾前）時自動觸發。<br>
         <br>
-        此動作必須放在工作流程的第一步。<br>
-        <br>
-        可以與 <b>[尋找規則]</b>、<b>[修改規則]</b> 等動作串聯。<br>
-        - 當簡訊號碼與內容符合條件時，工作流程會持續執行。<br>
-        - 否則工作流程會終止。<br>
+        運作方式：<br>
+        - 如果簡訊號碼和內容匹配，工作流程將會執行。<br>
+        - 否則，工作流程將終止。<br>
         ]]>
     </string>
     <string name="sms_event_triggered">簡訊事件 %s 已觸發。</string>

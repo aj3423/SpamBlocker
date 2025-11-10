@@ -9,18 +9,16 @@
         Mengubah aturan regex sementara berdasarkan acara kalender, perubahan diterapkan sementara tanpa mengubah konfigurasi. <br>
         <br>
         Alur kerja semacam ini akan secara otomatis dipicu oleh panggilan masuk. <br>
-        <br>
-        Periksa prasetel alur kerja untuk <b>contoh kasus</b> dan <b>pengaturan tipikal</b>. <br>
         ]]>
     </string>
     <string name="sms_event">Acara SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Ini akan otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
+        Ini akan secara otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
         <br>
-        Ini dapat digabungkan dengan tindakan lain seperti <b>Cari Aturan</b> dan <b>Ubah Aturan</b>.<br>
-        - Jika nomor SMS dan konten cocok, alur kerja akan terus berjalan.<br>
-        - Jika tidak, alur kerja akan berakhir.<br>
+        Cara kerjanya: <br>
+        - Jika nomor SMS dan konten cocok, alur kerja akan dieksekusi.<br>
+        - Jika tidak, alur kerja akan berhenti.<br>
         ]]>
     </string>
     <string name="sms_event_triggered">Acara SMS %s terpicu.</string>
