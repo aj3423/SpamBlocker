@@ -136,4 +136,14 @@
     <string name="help_trigger_manual">Tocca il pulsante Test per eseguire manualmente questo flusso di lavoro.</string>
     <string name="help_trigger_schedule">Automatizza l\'esecuzione delle attività in base a pianificazioni temporizzate.</string>
     <string name="trigger">Attivatore</string>
+    <string name="delay_in_seconds">Ritardo (secondi)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Questa funzione cambia temporaneamente la suoneria predefinita del sistema prima che inizi a squillare e
+         poi la ripristina dopo <font color="cyan">%d secondi</font>, momento in cui lo squillo dovrebbe essere iniziato. <br>
+        <br>
+        Alcuni telefoni offrono funzioni come <b>Vibra prima poi Squilla</b> che possono ritardare lo squillo di, diciamo, 6 secondi.
+         In tal caso, aumenta di conseguenza questo ritardo.
+        ]]>
+    </string>
 </resources>

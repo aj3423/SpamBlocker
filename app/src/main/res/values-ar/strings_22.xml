@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">اضغط على زر الاختبار لتشغيل سير العمل هذا يدويًا.</string>
     <string name="help_trigger_schedule">أتمتة تشغيل المهام بناءً على جداول زمنية.</string>
     <string name="trigger">المشغل</string>
+    <string name="delay_in_seconds">تأخير (ثواني)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        تقوم هذه الميزة بتغيير نغمة الرنين الافتراضية للنظام مؤقتًا قبل بدء الرنين ثم إعادتها بعد <font color="cyan">%d ثانية</font>، وهو الوقت الذي يُتوقع أن يكون الرنين قد بدأ فيه. <br>
+        <br>
+        توفر بعض الهواتف ميزات مثل <b>اهتزاز أولاً ثم رنين</b> والتي قد تؤخر الرنين بمقدار 6 ثوانٍ على سبيل المثال. في هذه الحالة، قم بزيادة هذا التأخير وفقًا لذلك.
+        ]]>
+    </string>
 </resources>

@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">點擊「測試」按鈕以手動執行此工作流程。</string>
     <string name="help_trigger_schedule">根據時間排程自動執行任務。</string>
     <string name="trigger">觸發</string>
+    <string name="delay_in_seconds">延遲 (秒)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        此功能會在響鈴開始前暫時更改系統預設鈴聲，然後在 <font color="cyan">%d 秒</font> 後恢復，屆時預計響鈴已開始。 <br>
+        <br>
+        有些手機提供諸如<b>先震動後響鈴</b>的功能，這可能會將響鈴延遲，例如 6 秒。在這種情況下，請相應增加此延遲。
+        ]]>
+    </string>
 </resources>

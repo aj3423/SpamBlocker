@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">Appuyez sur le bouton Test pour exécuter manuellement ce flux de travail.</string>
     <string name="help_trigger_schedule">Automatisez l\'exécution des tâches selon des planifications basées sur le temps.</string>
     <string name="trigger">Déclencheur</string>
+    <string name="delay_in_seconds">Délai (secondes)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Cette fonctionnalité modifie temporairement la sonnerie système par défaut avant que la sonnerie ne commence, puis la rétablit après <font color="cyan">%d secondes</font>, moment auquel la sonnerie est censée avoir débuté. <br>
+        <br>
+        Certains téléphones offrent des fonctionnalités comme <b>Vibrer d\'abord, puis sonner</b> qui peuvent retarder la sonnerie de, par exemple, 6 secondes. Dans ce cas, augmentez ce délai en conséquence.
+        ]]>
+    </string>
 </resources>

@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">Toca o botón Probar para executar manualmente este fluxo de traballo.</string>
     <string name="help_trigger_schedule">Automatizar a execución de tarefas en horarios programados.</string>
     <string name="trigger">Activador</string>
+    <string name="delay_in_seconds">Atraso (segundos)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Esta función cambia temporalmente o ton de chamada predeterminado do sistema antes de que comece a soar e despois revérteo despois de <font color="cyan">%d segundos</font>, momento no que se espera que xa comezase a soar. <br>
+        <br>
+        Algúns teléfonos ofrecen funcións como <b>Vibrar Primeiro e despois Soar</b> que poden atrasar o ton de chamada, por exemplo, 6 segundos. Nese caso, aumenta este atraso en consecuencia.
+        ]]>
+    </string>
 </resources>

@@ -136,4 +136,13 @@
     <string name="help_trigger_manual">Bu iş akışını manuel olarak çalıştırmak için Test düğmesine dokunun.</string>
     <string name="help_trigger_schedule">Görev çalıştırmalarını zamana dayalı programlarda otomatikleştirin.</string>
     <string name="trigger">Tetikleyici</string>
+    <string name="delay_in_seconds">Gecikme (saniye)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Bu özellik, çalma başlamadan önce sistemin varsayılan zil sesini geçici olarak değiştirir ve çalmanın başlaması beklenen süreden sonra <font color="cyan">%d saniye</font> sonra eski haline getirir. <br>
+        <br>
+        Bazı telefonlar, çalmayı örneğin 6 saniye erteleyebilen <b>Önce Titre Sonra Çal</b> gibi özellikler sunar.
+         Bu durumda, bu gecikmeyi buna göre artırın.
+        ]]>
+    </string>
 </resources>

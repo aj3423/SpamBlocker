@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">Toca el botó Prova per executar manualment aquest flux de treball.</string>
     <string name="help_trigger_schedule">Automatitza l\'execució de tasques segons horaris definits.</string>
     <string name="trigger">Activador</string>
+    <string name="delay_in_seconds">Retard (segons)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Aquesta funció canvia temporalment el to de trucada predeterminat del sistema abans que comenci a sonar i el torna a restablir després de <font color="cyan">%d segons</font>, moment en què s\'espera que hagi començat la trucada. <br>
+        <br>
+        Alguns telèfons ofereixen funcions com <b>Vibrar primer i després sonar</b> que poden endarrerir la trucada, per exemple, 6 segons. En aquest cas, augmenta aquest retard en conseqüència.
+        ]]>
+    </string>
 </resources>

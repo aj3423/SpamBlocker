@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">הקש על כפתור הבדיקה כדי להפעיל זרימת עבודה זו ידנית.</string>
     <string name="help_trigger_schedule">הפוך הרצת משימות לאוטומטית בלוחות זמנים מבוססי זמן.</string>
     <string name="trigger">הפעל</string>
+    <string name="delay_in_seconds">השהיה (שניות)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        תכונה זו משנה באופן זמני את צלצול ברירת המחדל של המערכת לפני תחילת הצלצול ומחזירה אותו לאחר <font color="cyan">%d שניות</font>, כשעד אז הצלצול צפוי להתחיל. <br>
+        <br>
+        טלפונים מסוימים מציעים תכונות כמו <b>רטט תחילה ואז צלצול</b> שעשויות לדחות את הצלצול, למשל, ב-6 שניות. במקרה כזה, הגדל את ההשהיה הזו בהתאם.
+        ]]>
+    </string>
 </resources>

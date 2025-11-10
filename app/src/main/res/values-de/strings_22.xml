@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">Tippe auf die Schaltfläche \"Test\", um diesen Workflow manuell auszuführen.</string>
     <string name="help_trigger_schedule">Automatisiere Aufgabenläufe nach zeitgesteuerten Zeitplänen.</string>
     <string name="trigger">Auslöser</string>
+    <string name="delay_in_seconds">Verzögerung (Sekunden)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Diese Funktion ändert den System-Standardklingelton vorübergehend, bevor das Klingeln beginnt, und setzt ihn nach <font color="cyan">%d Sekunden</font> zurück, zu welchem Zeitpunkt das Klingeln voraussichtlich begonnen haben wird. <br>
+        <br>
+        Einige Telefone bieten Funktionen wie <b>Zuerst vibrieren, dann klingeln</b>, die das Klingeln um, sagen wir, 6 Sekunden verzögern können. Erhöhen Sie in diesem Fall diese Verzögerung entsprechend.
+        ]]>
+    </string>
 </resources>

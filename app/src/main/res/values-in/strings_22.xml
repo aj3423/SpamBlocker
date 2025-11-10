@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">Ketuk tombol Uji untuk menjalankan alur kerja ini secara manual.</string>
     <string name="help_trigger_schedule">Otomatisasi jalannya tugas pada jadwal berbasis waktu.</string>
     <string name="trigger">Pemicu</string>
+    <string name="delay_in_seconds">Penundaan (detik)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Fitur ini mengubah nada dering default sistem sementara sebelum dering dimulai dan kemudian mengembalikannya setelah <font color="cyan">%d detik</font>, pada saat itu dering diharapkan sudah dimulai. <br>
+        <br>
+        Beberapa ponsel menawarkan fitur seperti <b>Getar Dulu Lalu Dering</b> yang mungkin menunda dering selama, misalnya, 6 detik. Dalam kasus tersebut, tingkatkan penundaan ini sesuai.
+        ]]>
+    </string>
 </resources>

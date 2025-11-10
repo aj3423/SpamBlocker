@@ -136,4 +136,12 @@
     <string name="help_trigger_manual">点击测试按钮手动运行此工作流。</string>
     <string name="help_trigger_schedule">根据时间驱动的计划自动化任务运行。</string>
     <string name="trigger">触发器</string>
+    <string name="delay_in_seconds">延迟（秒）</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        此功能在铃声响起前暂时更改系统默认铃声，并在 <font color="cyan">%d 秒</font> 后恢复，届时铃声预计已响起。 <br>
+        <br>
+        某些手机提供诸如<b>先振动后响铃</b>之类的功能，这可能会将响铃推迟例如 6 秒。在这种情况下，请相应地增加此延迟。
+        ]]>
+    </string>
 </resources>

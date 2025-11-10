@@ -136,4 +136,14 @@
     <string name="help_trigger_manual">Toca el botón Probar para ejecutar manualmente este flujo de trabajo.</string>
     <string name="help_trigger_schedule">Automatiza la ejecución de tareas según programaciones basadas en el tiempo.</string>
     <string name="trigger">Activador</string>
+    <string name="delay_in_seconds">Retraso (segundos)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        Esta característica cambia temporalmente el tono de llamada predeterminado del sistema antes de que comience a sonar y
+         luego lo revierte después de <font color="cyan">%d segundos</font>, momento en el cual se espera que la llamada haya comenzado. <br>
+        <br>
+        Algunos teléfonos ofrecen características como <b>Vibrar Primero y Luego Sonar</b> que pueden posponer el timbre, digamos, por 6 segundos.
+         En ese caso, aumente este retraso en consecuencia.
+        ]]>
+    </string>
 </resources>
