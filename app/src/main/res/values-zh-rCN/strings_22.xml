@@ -133,4 +133,7 @@
     <string name="action_replace_number">替换号码</string>
     <string name="action_import_as_regex_rule">导入为正则表达式规则</string>
     <string name="duration_in_minutes">持续时间（分钟）</string>
+    <string name="help_trigger_manual">点击测试按钮手动运行此工作流。</string>
+    <string name="help_trigger_schedule">根据时间驱动的计划自动化任务运行。</string>
+    <string name="trigger">触发器</string>
 </resources>

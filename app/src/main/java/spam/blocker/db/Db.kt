@@ -449,7 +449,19 @@ class Db private constructor(
 
                 db.update(TABLE_BOT, cv, "$COLUMN_ID = ${it.id}", null)
             }
-            // 2. Convert all bots, move their first TriggerAction to trigger.
+            // 2. Migrate all `Manual` bots that aren't enabled and are not any of CallEvent/SmsEvent/...
+            BotTable.listAllOldBot(ctx, db).filter {
+                val act = it.actions.firstOrNull()
+                !it.enabled &&
+                        act !is CallEvent && act !is SmsEvent && act !is CalendarEvent &&
+                        act !is CallThrottling && act !is SmsThrottling && act !is Ringtone && act !is QuickTile
+            }.forEach {
+                val cv = ContentValues()
+                cv.put(COLUMN_TRIGGER, Manual().serialize())
+                db.update(TABLE_BOT, cv, "$COLUMN_ID = ${it.id}", null)
+            }
+
+            // 3. Convert all bots, move their first TriggerAction to trigger.
             BotTable.listAllOldBot(ctx, db).filter {
                 val act = it.actions.firstOrNull()
                 act is CallEvent || act is SmsEvent || act is CalendarEvent || act is CallThrottling ||

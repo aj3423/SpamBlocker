@@ -61,7 +61,11 @@ data class Bot(
     val lastLog: String = "",
     @Transient
     val lastLogTime: Long = 0,
-)
+) {
+    fun triggerAndActions(): List<IAction> {
+        return listOf<IAction>(trigger) + actions
+    }
+}
 
 
 // It returns the new workUUID if it's enabled
@@ -70,16 +74,17 @@ fun reScheduleBot(ctx: Context, bot: Bot) {
     if (bot.trigger !is Schedule)
         return
 
-    val schedule = bot.trigger
+    val trigger = bot.trigger
+    val schedule = trigger.schedule
 
     // 1. Stop previous schedule
-    MyWorkManager.cancelByTag(ctx, schedule.workUUID)
+    MyWorkManager.cancelByTag(ctx, trigger.workUUID)
 
     // 2. Start new schedule
-    if (schedule.enabled) {
+    if (trigger.enabled) {
         MyWorkManager.schedule(
             ctx, schedule.serialize(), bot.actions.serialize(),
-            workTag = schedule.workUUID
+            workTag = trigger.workUUID
         )
     }
 }
@@ -222,7 +227,7 @@ object BotTable {
     }
 
     fun findById(ctx: Context, id: Long) : Bot? {
-        val found = listAll(ctx, "${Db.COLUMN_ID} = $id")
+        val found = listAll(ctx, "WHERE ${Db.COLUMN_ID} = $id")
         return if (found.isEmpty())
             null
         else

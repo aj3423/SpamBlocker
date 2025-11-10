@@ -133,4 +133,7 @@
     <string name="action_replace_number">جایگزینی شماره</string>
     <string name="action_import_as_regex_rule">وارد کردن به قانون عبارت منظم</string>
     <string name="duration_in_minutes">مدت زمان (دقیقه)</string>
+    <string name="help_trigger_manual">روی دکمه تست ضربه بزنید تا این گردش کار را به صورت دستی اجرا کنید.</string>
+    <string name="help_trigger_schedule">اجرای وظایف را بر اساس برنامه‌های زمان‌بندی شده خودکار کنید.</string>
+    <string name="trigger">راه انداز</string>
 </resources>

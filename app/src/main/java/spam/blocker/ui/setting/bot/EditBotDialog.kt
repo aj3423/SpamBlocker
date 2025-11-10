@@ -20,6 +20,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.reScheduleBot
+import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.allChainable
 import spam.blocker.service.bot.botTriggers
@@ -75,8 +76,10 @@ fun EditBotDialog(
                 color = if (anyError) C.disabled else Teal200,
                 enabled = !anyError,
                 onClick = {
-                    // Gather all required permissions for all actions
-                    val requiredPermissions = actions.map { it.requiredPermissions(ctx) }.flatten()
+                    // Gather all required permissions for "trigger + all actions"
+                    val requiredPermissions = (actions + trigger.value).map {
+                        it.requiredPermissions(ctx)
+                    }.flatten()
 
                     G.permissionChain.ask(ctx, requiredPermissions) { isGranted ->
                         if (isGranted) {

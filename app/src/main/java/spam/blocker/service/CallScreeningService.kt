@@ -171,7 +171,7 @@ class CallScreeningService : CallScreeningService() {
 
         // 1. Get the workflow(s) that is linked to this regex rule
         val bots = BotTable.listAll(ctx).filter {
-            it.actions.firstOrNull() is Ringtone
+            it.trigger is Ringtone
         }
         if (bots.isEmpty())
             return false
@@ -184,7 +184,7 @@ class CallScreeningService : CallScreeningService() {
         var shouldMute = false
         bots.forEach {
             val aCtx = ActionContext(lastOutput = r)
-            it.actions.executeAll(ctx, aCtx)
+            listOf(it.trigger).executeAll(ctx, aCtx)
             shouldMute = aCtx.shouldMute
         }
 

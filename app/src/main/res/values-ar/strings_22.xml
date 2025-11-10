@@ -133,4 +133,7 @@
     <string name="action_replace_number">استبدال الرقم</string>
     <string name="action_import_as_regex_rule">استيراد كقاعدة تعبير نمطي</string>
     <string name="duration_in_minutes">المدة (بالدقائق)</string>
+    <string name="help_trigger_manual">اضغط على زر الاختبار لتشغيل سير العمل هذا يدويًا.</string>
+    <string name="help_trigger_schedule">أتمتة تشغيل المهام بناءً على جداول زمنية.</string>
+    <string name="trigger">المشغل</string>
 </resources>

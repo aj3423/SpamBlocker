@@ -2552,7 +2552,7 @@ data class Schedule(
         return listOf()
     }
     override fun isActivated(): Boolean {
-        return enabled
+        return enabled && schedule.isValid()
     }
     @Composable
     override fun TriggerType(modifier: Modifier) {
@@ -3595,9 +3595,9 @@ class Ringtone(
         if (!mute) {
             RingtoneUtil.setDefaultUri(ctx, (ringtoneUri ?: "").toUri())
 
-            // Reset the ringtone after 2 seconds, it should've already started ringing.
+            // Reset the ringtone after 5 seconds, the ringing should've already started.
             CoroutineScope(IO).launch {
-                delay(2000)
+                delay(5000)
                 resetRingtone(ctx)
             }
         }

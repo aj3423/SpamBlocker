@@ -133,4 +133,7 @@
     <string name="action_replace_number">החלף מספר</string>
     <string name="action_import_as_regex_rule">ייבא ככלל ביטוי רגולרי</string>
     <string name="duration_in_minutes">משך זמן (דקות)</string>
+    <string name="help_trigger_manual">הקש על כפתור הבדיקה כדי להפעיל זרימת עבודה זו ידנית.</string>
+    <string name="help_trigger_schedule">הפוך הרצת משימות לאוטומטית בלוחות זמנים מבוססי זמן.</string>
+    <string name="trigger">הפעל</string>
 </resources>

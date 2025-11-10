@@ -133,4 +133,7 @@
     <string name="action_replace_number">Substituír número</string>
     <string name="action_import_as_regex_rule">Importar a Regra Regex</string>
     <string name="duration_in_minutes">Duración (minutos)</string>
+    <string name="help_trigger_manual">Toca o botón Probar para executar manualmente este fluxo de traballo.</string>
+    <string name="help_trigger_schedule">Automatizar a execución de tarefas en horarios programados.</string>
+    <string name="trigger">Activador</string>
 </resources>

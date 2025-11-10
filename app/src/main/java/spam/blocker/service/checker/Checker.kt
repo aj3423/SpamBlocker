@@ -27,6 +27,7 @@ import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
+import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.QuickTile
@@ -114,7 +115,7 @@ object Preprocessors {
                 smsContent = cCtx.smsContent,
                 cCtx = cCtx,
             )
-            bot.actions.executeAll(ctx, aCtx)
+            bot.triggerAndActions().executeAll(ctx, aCtx)
 
             // Save for "Last Log"
             if (logger is SaveableLogger) {
@@ -127,21 +128,17 @@ object Preprocessors {
     fun callRelated(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
-                val firstAction = it.actions.firstOrNull()
+                val trigger = it.trigger
 
-                // Call Event
-                if (firstAction is CallEvent && firstAction.isActivated())
-                    return@filter true
+                // Is activated ?
+                if (!trigger.isActivated())
+                    return@filter false
 
-                // Call Throttling
-                if (firstAction is CallThrottling && firstAction.isActivated())
-                    return@filter true
-
-                // Tile
-                if(firstAction is QuickTile && firstAction.isActivated())
-                    return@filter true
-
-                return@filter false
+                // Type of these classes ?
+                return@filter when(trigger) {
+                    is CallEvent, is CallThrottling, is QuickTile -> true
+                    else -> false
+                }
             }
             .map {
                 WorkflowRunner(ctx, it)
@@ -151,14 +148,17 @@ object Preprocessors {
     fun smsRelated(ctx: Context): List<WorkflowRunner> {
         return BotTable.listAll(ctx)
             .filter {
-                val firstAction = it.actions.firstOrNull()
-                // SMS Event
-                if (firstAction is SmsEvent && firstAction.isActivated())
-                    return@filter true
+                val trigger = it.trigger
 
-                // SMS Throttling
-                if (firstAction is SmsThrottling && firstAction.isActivated())
-                    return@filter true
+                // Is activated ?
+                if (!trigger.isActivated())
+                    return@filter false
+
+                // Type of these classes ?
+                return@filter when(trigger) {
+                    is SmsEvent, is SmsThrottling -> true
+                    else -> false
+                }
 
                 return@filter false
             }
@@ -170,8 +170,7 @@ object Preprocessors {
     // Collect all `Calendar Event` that defined in Workflow section.
     fun calendarEvent(ctx: Context): List<WorkflowRunner> {
         val bots = BotTable.listAll(ctx).filter {
-            val firstAction = it.actions.firstOrNull()
-            firstAction is CalendarEvent && firstAction.isActivated()
+            it.trigger is CalendarEvent && it.trigger.isActivated()
         }
         if (bots.isEmpty()) // No calendar workflow enabled
             return listOf()
@@ -186,7 +185,7 @@ object Preprocessors {
             ret += bots
                 // only keep bots that match this eventTitle
                 .filter {
-                    val ce = it.actions[0] as CalendarEvent
+                    val ce = it.trigger as CalendarEvent
                     ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
                 }
                 .map {

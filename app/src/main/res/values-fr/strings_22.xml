@@ -133,4 +133,7 @@
     <string name="action_replace_number">Remplacer le numéro</string>
     <string name="action_import_as_regex_rule">Importer en tant que règle Regex</string>
     <string name="duration_in_minutes">Durée (minutes)</string>
+    <string name="help_trigger_manual">Appuyez sur le bouton Test pour exécuter manuellement ce flux de travail.</string>
+    <string name="help_trigger_schedule">Automatisez l\'exécution des tâches selon des planifications basées sur le temps.</string>
+    <string name="trigger">Déclencheur</string>
 </resources>

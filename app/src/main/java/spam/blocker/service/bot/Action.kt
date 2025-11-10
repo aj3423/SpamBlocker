@@ -179,7 +179,11 @@ fun ITriggerAction.serialize(): String {
 
 // Generate a *concrete* ITriggerAction from json string.
 fun String.parseTrigger(): ITriggerAction {
+//    return try {
     return InterfaceJson.decodeFromString(PolymorphicSerializer(ITriggerAction::class), this)
+//    } catch(_: Exception) {
+//        Manual()
+//    }
 }
 val triggerSaver = Saver<MutableState<ITriggerAction>, String>(
     save = { it.value.serialize() },

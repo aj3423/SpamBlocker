@@ -133,4 +133,7 @@
     <string name="action_replace_number">取代電話號碼</string>
     <string name="action_import_as_regex_rule">匯入為正則表達式規則</string>
     <string name="duration_in_minutes">持續時間 (分鐘)</string>
+    <string name="help_trigger_manual">點擊「測試」按鈕以手動執行此工作流程。</string>
+    <string name="help_trigger_schedule">根據時間排程自動執行任務。</string>
+    <string name="trigger">觸發</string>
 </resources>

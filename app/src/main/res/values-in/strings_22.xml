@@ -133,4 +133,7 @@
     <string name="action_replace_number">Ganti Nomor Telepon</string>
     <string name="action_import_as_regex_rule">Impor ke Aturan Regex</string>
     <string name="duration_in_minutes">Durasi (menit)</string>
+    <string name="help_trigger_manual">Ketuk tombol Uji untuk menjalankan alur kerja ini secara manual.</string>
+    <string name="help_trigger_schedule">Otomatisasi jalannya tugas pada jadwal berbasis waktu.</string>
+    <string name="trigger">Pemicu</string>
 </resources>

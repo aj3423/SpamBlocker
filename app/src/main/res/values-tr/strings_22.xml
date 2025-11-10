@@ -133,4 +133,7 @@
     <string name="action_replace_number">Numarayı Değiştir</string>
     <string name="action_import_as_regex_rule">Regex Kuralına Aktar</string>
     <string name="duration_in_minutes">Süre (dakika)</string>
+    <string name="help_trigger_manual">Bu iş akışını manuel olarak çalıştırmak için Test düğmesine dokunun.</string>
+    <string name="help_trigger_schedule">Görev çalıştırmalarını zamana dayalı programlarda otomatikleştirin.</string>
+    <string name="trigger">Tetikleyici</string>
 </resources>
