@@ -30,7 +30,7 @@ import spam.blocker.service.bot.serialize
 import spam.blocker.util.InterfaceJson
 
 
-// This is for migrating from v4.20 -> v4.21 only
+// This is only for migrating from v4.20 -> v4.21
 //  (remove this after 2027-01-01)
 @Serializable
 data class OldBot(
@@ -61,6 +61,8 @@ data class Bot(
     @Transient
     val lastLogTime: Long = 0,
 ) {
+    // The `trigger` is also an IAction, insert it at the beginning of all actions to execute them in order.
+    //  So if the trigger fails, the workflow will be stopped and further actions will not be executed.
     fun triggerAndActions(): List<IAction> {
         return listOf<IAction>(trigger) + actions
     }

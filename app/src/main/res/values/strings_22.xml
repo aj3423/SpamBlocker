@@ -137,4 +137,14 @@
     <string name="help_trigger_manual">Tap the Test button to manually run this workflow.</string>
     <string name="help_trigger_schedule">Automate task runs on time-driven schedules.</string>
     <string name="trigger">Trigger</string>
+    <string name="delay_in_seconds">Delay (seconds)</string>
+    <string name="help_ringtone_delay">
+        <![CDATA[
+        This feature temporarily changes the system default ringtone before ringing begins and
+         then reverts it after <font color="cyan">%d seconds</font>, by which time the ringing is expected to have begun. <br>
+        <br>
+        Some phones offer features like <b>Vibrate First Then Ring</b> which may defer the ringing by, say, 6 seconds.
+         In that case, increase this delay accordingly.
+        ]]>
+    </string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -62,6 +63,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Pink80
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
+import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.DimGreyLabel
 import spam.blocker.ui.widgets.GreenDot
@@ -1744,7 +1746,7 @@ class EnableWorkflow(
         // 2. reSchedule
         reScheduleBot(ctx, newBot)
 
-        // 3. fire event
+        // 3. fire event to update UI
         Events.botUpdated.fire()
 
         return true
@@ -3150,7 +3152,7 @@ class ModifyNumber(
 class CallThrottling(
     var enabled: Boolean = true,
     var durationSec: Int = 30, // 30 seconds
-    var includingBlocked: Boolean = false,
+    var includingBlocked: Boolean = true,
     var includingAnswered: Boolean = false,
     var minCallDurationSec: Int = 15, // 15 seconds
 ) : ITriggerAction {
@@ -3233,6 +3235,7 @@ class CallThrottling(
                 if (includingBlocked) {
                     GreyIcon18(R.drawable.ic_call_blocked)
                 }
+                GreyLabel("$durationSec ${Str(R.string.seconds_short)}")
             }
         }
     }
@@ -3514,6 +3517,7 @@ class Ringtone(
     var mute: Boolean = false,
     var ringtoneUri: String? = null,
     var bindTo: String = "{ \"regex\": \"\" }",
+    var delaySec: Int = 5
 ) : ITriggerAction {
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
         return if (mute) // mute doesn't write to system settings
@@ -3592,9 +3596,9 @@ class Ringtone(
         if (!mute) {
             RingtoneUtil.setDefaultUri(ctx, (ringtoneUri ?: "").toUri())
 
-            // Reset the ringtone after 5 seconds, the ringing should've already started.
+            // Reset the ringtone after N seconds, the ringing should've already started.
             CoroutineScope(IO).launch {
-                delay(5000)
+                delay(delaySec.toLong() * 1000)
                 resetRingtone(ctx)
             }
         }
@@ -3733,6 +3737,25 @@ class Ringtone(
                 }
             }
         }
+
+        // Delay
+        // Balloon text
+        val tooltipText by remember {
+            derivedStateOf {
+                ctx.getString(R.string.help_ringtone_delay)
+                    .format(delaySec)
+            }
+        }
+        NumberInputBox(
+            intValue = delaySec,
+            label = { Text(Str(R.string.delay_in_seconds)) },
+            helpTooltip = { BalloonQuestionMark(tooltipText) },
+            onValueChange = { newVal, hasError ->
+                if (!hasError) {
+                    delaySec = newVal!!
+                }
+            }
+        )
     }
 }
 

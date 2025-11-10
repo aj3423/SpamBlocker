@@ -183,7 +183,7 @@ val BotPresets = listOf(
                 )
             ),
             actions = listOf(
-                HttpDownload(),
+                HttpDownload(url = ctx.getString(R.string.replace_this)),
                 BackupImport(),
             )
         )
