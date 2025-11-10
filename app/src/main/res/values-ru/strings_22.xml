@@ -131,7 +131,7 @@
         ]]>
     </string>
     <string name="action_replace_number">Заменить номер</string>
-    <string name="action_import_as_regex_rule">Импортировать в правило Regex</string>
+    <string name="action_import_as_regex_rule">Импортировать как правило регулярного выражения</string>
     <string name="duration_in_minutes">Продолжительность (минуты)</string>
     <string name="help_trigger_manual">Нажмите кнопку «Тест», чтобы вручную запустить этот рабочий процесс.</string>
     <string name="help_trigger_schedule">Автоматизируйте выполнение задач по расписанию.</string>
