@@ -1,6 +1,8 @@
 package spam.blocker.ui
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -73,5 +75,12 @@ fun <T>LaunchedEffectOnlyOnChange(
             onChange()
         }
         previousFlag = flag
+    }
+}
+
+@Composable
+fun SizedBox(size: Int, content: @Composable ()->Unit) {
+    Box(modifier = M.size(size.dp)) {
+        content()
     }
 }

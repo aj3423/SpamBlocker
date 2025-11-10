@@ -134,4 +134,7 @@
         ]]>
     </string>
     <string name="duration_in_minutes">Duration (minutes)</string>
+    <string name="help_trigger_manual">Tap the Test button to manually run this workflow.</string>
+    <string name="help_trigger_schedule">Automate task runs on time-driven schedules.</string>
+    <string name="trigger">Trigger</string>
 </resources>

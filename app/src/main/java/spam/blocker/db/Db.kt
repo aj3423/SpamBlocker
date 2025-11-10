@@ -1,26 +1,42 @@
 package spam.blocker.db
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import kotlinx.serialization.Transient
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_MEDIUM
 import spam.blocker.db.Notification.CHANNEL_NONE
 import spam.blocker.def.Def
+import spam.blocker.service.bot.CalendarEvent
+import spam.blocker.service.bot.CallEvent
+import spam.blocker.service.bot.CallThrottling
+import spam.blocker.service.bot.IAction
+import spam.blocker.service.bot.ITriggerAction
+import spam.blocker.service.bot.Manual
+import spam.blocker.service.bot.QuickTile
+import spam.blocker.service.bot.Ringtone
+import spam.blocker.service.bot.Schedule
+import spam.blocker.service.bot.SmsEvent
+import spam.blocker.service.bot.SmsThrottling
+import spam.blocker.service.bot.serialize
 import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Notification.ensureBuiltInChannels
 import spam.blocker.util.Notification.isChannelDisabled
 import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.logi
 import spam.blocker.util.spf
+import kotlin.Long
+import kotlin.String
 
 class Db private constructor(
     val ctx: Context
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 41
+        const val DB_VERSION = 42
         const val DB_NAME = "spam_blocker.db"
 
         // ---- filter table ----
@@ -41,6 +57,8 @@ class Db private constructor(
         const val COLUMN_SCHEDULE = "schedule"
         const val COLUMN_BLOCK_TYPE = "block_type"
         const val COLUMN_BLOCK_TYPE_CONFIG = "block_type_config"
+        const val COLUMN_ENABLED = "enabled"
+
 
         // ---- notification channel table ----
         const val TABLE_NOTIFICATION_CHANNEL = "notification_channel"
@@ -66,10 +84,8 @@ class Db private constructor(
 
         // ---- bot table ----
         const val TABLE_BOT = "bot"
-//        const val COLUMN_DESC
-//        const val COLUMN_SCHEDULE
+        const val COLUMN_TRIGGER = "trigger"
         const val COLUMN_ACTIONS = "actions"
-        const val COLUMN_ENABLED = "enabled"
         const val COLUMN_WORK_UUID = "work_uuid"
         const val COLUMN_LAST_LOG = "last_log"
         const val COLUMN_LAST_LOG_TIME = "last_log_time"
@@ -200,10 +216,9 @@ class Db private constructor(
             "CREATE TABLE IF NOT EXISTS $TABLE_BOT (" +
                     "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_DESC TEXT, " +
-                    "$COLUMN_SCHEDULE TEXT, " +
+                    "$COLUMN_TRIGGER TEXT, " +
                     "$COLUMN_ACTIONS TEXT, " +
                     "$COLUMN_ENABLED INTEGER, " +
-                    "$COLUMN_WORK_UUID TEXT UNIQUE, " +
                     "$COLUMN_LAST_LOG TEXT, " +
                     "$COLUMN_LAST_LOG_TIME INTEGER " +
                     ")"
@@ -297,7 +312,7 @@ class Db private constructor(
         // v3.1 uses Bot.taskUUID as tag, it may have null value in v3.0.
         // Set all bots' taskUUID to random uuid string
         if ((newVersion >= 29) && (oldVersion < 29)) {
-            db.execSQL("UPDATE $TABLE_BOT SET $COLUMN_WORK_UUID = REPLACE(HEX(RANDOMBLOB(16)), '-', '') WHERE $COLUMN_WORK_UUID IS NULL;")
+            db.execSQL("UPDATE $TABLE_BOT SET work_uuid = REPLACE(HEX(RANDOMBLOB(16)), '-', '') WHERE work_uuid IS NULL;")
         }
         // v4.0 introduced:
         // 1. api
@@ -413,6 +428,42 @@ class Db private constructor(
         // v4.20 added auto-report category option
         if ((newVersion >= 41) && (oldVersion < 41)) {
             addColumnIfNotExist(db, TABLE_API_REPORT, COLUMN_AUTO_REPORT_TYPES, "INTEGER")
+        }
+
+        // v4.21 refactor workflow, "schedule" became "trigger"
+        if ((newVersion >= 42) && (oldVersion < 42)) {
+            // 0. Add column `trigger`
+            addColumnIfNotExist(db, TABLE_BOT, COLUMN_TRIGGER, "TEXT")
+
+            // 1. Migrate "enabled/schedule/workUUID" to `trigger` Schedule
+            BotTable.listAllOldBot(ctx, db).filter {
+                it.enabled
+            }.forEach {
+                // Fill `trigger`
+                val cv = ContentValues()
+                cv.put(COLUMN_TRIGGER, Schedule(
+                    enabled = it.enabled,
+                    schedule = it.schedule!!,
+                    workUUID = it.workUUID,
+                ).serialize())
+
+                db.update(TABLE_BOT, cv, "$COLUMN_ID = ${it.id}", null)
+            }
+            // 2. Convert all bots, move their first TriggerAction to trigger.
+            BotTable.listAllOldBot(ctx, db).filter {
+                val act = it.actions.firstOrNull()
+                act is CallEvent || act is SmsEvent || act is CalendarEvent || act is CallThrottling ||
+                        act is SmsThrottling || act is Ringtone || act is QuickTile
+            }.forEach {
+                // 3. Move first action to trigger
+                val firstAction = it.actions[0]
+
+                val cv = ContentValues()
+                cv.put(COLUMN_TRIGGER, firstAction.serialize())
+                cv.put(COLUMN_ACTIONS, it.actions.drop(1).serialize())
+
+                db.update(TABLE_BOT, cv, "$COLUMN_ID = ${it.id}", null)
+            }
         }
     }
 }

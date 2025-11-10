@@ -11,7 +11,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,7 +32,9 @@ import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.reScheduleBot
+import spam.blocker.db.rememberSaveableBotState
 import spam.blocker.service.bot.MyWorkManager
+import spam.blocker.service.bot.Schedule
 import spam.blocker.util.InterfacePrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
@@ -79,9 +80,11 @@ fun CountdownMenuItem(bot: Bot) {
     }
 
     LaunchedEffect(true) {
-        MyWorkManager.getWorkInfoByTag(ctx, bot.workUUID)?.let {
-            nextTick = it.nextScheduleTimeMillis
-            refreshLabel()
+        if (bot.trigger is Schedule) {
+            MyWorkManager.getWorkInfoByTag(ctx, bot.trigger.workUUID)?.let {
+                nextTick = it.nextScheduleTimeMillis
+                refreshLabel()
+            }
         }
     }
 
@@ -151,18 +154,24 @@ fun BotList() {
         vm.reload(ctx)
     }
 
-    var clickedIndex by rememberSaveable { mutableIntStateOf(-1) }
+    var clickedBot by rememberSaveableBotState(Bot())
 
     // Edit
     val editTrigger = rememberSaveable { mutableStateOf(false) }
     if (editTrigger.value) {
         EditBotDialog(
-            trigger = editTrigger,
-            initial = vm.bots[clickedIndex],
+            popupTrigger = editTrigger,
+            initial = clickedBot,
             onDismiss = { vm.reload(ctx) },
             onSave = { updatedBot ->
                 // 1. update in db
-                BotTable.updateById(ctx, updatedBot.id, updatedBot)
+                BotTable.updateById(
+                    ctx,
+                    updatedBot.id,
+                    trigger = updatedBot.trigger,
+                    actions = updatedBot.actions,
+                    desc = updatedBot.desc
+                )
 
                 // 2. reload UI
                 vm.reload(ctx)
@@ -173,7 +182,7 @@ fun BotList() {
     // View Log
     val logTrigger = rememberSaveable { mutableStateOf(false) }
     if (logTrigger.value) {
-        val log = BotTable.getLastLog(ctx, vm.bots[clickedIndex].workUUID)!!
+        val log = BotTable.getLastLog(ctx, clickedBot.id)!!
         BotLog(
             trigger = logTrigger,
             logJson = log.first,
@@ -186,14 +195,14 @@ fun BotList() {
     if (exportTrigger.value) {
         ConfigExportDialog(
             trigger = exportTrigger,
-            initialText = InterfacePrettyJson.encodeToString(vm.bots[clickedIndex]),
+            initialText = InterfacePrettyJson.encodeToString(clickedBot),
         )
     }
 
     val contextMenuItems = mutableListOf<IMenuItem>()
     // countdown timer for scheduled bot
-    if (clickedIndex >= 0 && clickedIndex < vm.bots.size && vm.bots[clickedIndex].enabled) {
-        contextMenuItems += CustomItem { CountdownMenuItem(bot = vm.bots[clickedIndex]) }
+    if ((clickedBot.trigger as? Schedule)?.enabled == true) {
+        contextMenuItems += CustomItem { CountdownMenuItem(bot = clickedBot) }
         contextMenuItems += DividerItem()
     }
 
@@ -233,8 +242,9 @@ fun BotList() {
                                 // 2. remove from UI
                                 vm.bots.removeAt(index)
                                 // 3. Stop previous schedule
-                                MyWorkManager.cancelByTag(ctx, bot.workUUID)
-
+                                if (bot.trigger is Schedule) {
+                                    MyWorkManager.cancelByTag(ctx, bot.trigger.workUUID)
+                                }
                                 // 4. show snackbar
                                 SnackBar.show(
                                     coroutineScope,
@@ -246,7 +256,9 @@ fun BotList() {
                                     // 2. add to UI
                                     vm.bots.add(index, bot)
                                     // 3. re-schedule
-                                    reScheduleBot(ctx, bot)
+                                    if (bot.trigger is Schedule) {
+                                        reScheduleBot(ctx, bot)
+                                    }
                                 }
                             }
                         )
@@ -255,11 +267,11 @@ fun BotList() {
                             bot,
                             modifier = M.combinedClickable(
                                 onClick = {
-                                    clickedIndex = index
+                                    clickedBot = bot
                                     editTrigger.value = true
                                 },
                                 onLongClick = {
-                                    clickedIndex = index
+                                    clickedBot = bot
                                     contextMenuExpanded.value = true
                                 }
                             )

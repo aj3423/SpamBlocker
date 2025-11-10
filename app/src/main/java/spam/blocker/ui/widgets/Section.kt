@@ -22,7 +22,7 @@ import spam.blocker.ui.theme.SwissCoffee
 
 @Composable
 fun Section(
-    title: String,
+    title: String?,
     horizontalPadding : Int = 0,
     bgColor: Color = MaterialTheme.colorScheme.background,
     content: @Composable ()->Unit,
@@ -42,21 +42,21 @@ fun Section(
         }
 
         // the section title
-        Box(
-            modifier = M
-                .wrapContentWidth()
-                .offset(20.dp, (-8).dp)
-                .background(bgColor)
-        ) {
-            Text(
-                text = title,
-                fontSize = 13.sp,
-                color = SwissCoffee,
-                lineHeight = 13.sp,
-                modifier = Modifier.padding(10.dp, 0.dp),
-            )
+        if (title != null) {
+            Box(
+                modifier = M
+                    .wrapContentWidth()
+                    .offset(20.dp, (-8).dp)
+                    .background(bgColor)
+            ) {
+                Text(
+                    text = title,
+                    fontSize = 13.sp,
+                    color = SwissCoffee,
+                    lineHeight = 13.sp,
+                    modifier = Modifier.padding(10.dp, 0.dp),
+                )
+            }
         }
-
-
     }
 }

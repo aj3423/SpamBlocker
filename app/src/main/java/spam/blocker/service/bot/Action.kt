@@ -2,7 +2,9 @@ package spam.blocker.service.bot
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
@@ -22,10 +24,12 @@ import spam.blocker.util.InterfaceJson
 
 // When adding a new IAction type, follow all the steps:
 //  - implement it in Actions.kt
-//  - add to  `botActions` or `apiActions` below
+//  - add to  `botTriggers` / `botActions` / `apiActions` below
 //  - add to  `botModule` in SerializersModule.kt
 
-val botActions = listOf(
+val botTriggers = listOf(
+    Manual(),
+    Schedule(),
     CallEvent(),
     SmsEvent(),
     CallThrottling(),
@@ -33,6 +37,8 @@ val botActions = listOf(
     CalendarEvent(),
     Ringtone(),
     QuickTile(),
+)
+val botActions = listOf(
     HttpDownload(),
     ImportAsRegexRule(),
     ImportToSpamDB(),
@@ -140,7 +146,7 @@ interface IAction {
 
     // A brief string showing current settings
     @Composable
-    fun Summary()
+    fun Summary(showIcon: Boolean)
 
     // Explains what this action does, used in balloon tooltip
     fun tooltip(ctx: Context): String
@@ -166,6 +172,26 @@ interface ITriggerAction : IAction {
     fun isActivated(): Boolean
 }
 
+// Serialize self to json string
+fun ITriggerAction.serialize(): String {
+    return InterfaceJson.encodeToString(PolymorphicSerializer(ITriggerAction::class), this)
+}
+
+// Generate a *concrete* ITriggerAction from json string.
+fun String.parseTrigger(): ITriggerAction {
+    return InterfaceJson.decodeFromString(PolymorphicSerializer(ITriggerAction::class), this)
+}
+val triggerSaver = Saver<MutableState<ITriggerAction>, String>(
+    save = { it.value.serialize() },
+    restore = { mutableStateOf(it.parseTrigger()) }
+)
+
+@Composable
+fun rememberSaveableTriggerState(trigger: ITriggerAction): MutableState<ITriggerAction> {
+    return rememberSaveable(saver = triggerSaver) {
+        mutableStateOf(trigger)
+    }
+}
 
 // Actions that don't require any permission
 interface IPermissiveAction : IAction {

@@ -11,6 +11,7 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
+import spam.blocker.service.bot.Schedule
 import spam.blocker.util.InterfaceJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
@@ -38,7 +39,7 @@ fun BotHeader(
     val editTrigger = rememberSaveable { mutableStateOf(false) }
     if (editTrigger.value) {
         EditBotDialog(
-            trigger = editTrigger,
+            popupTrigger = editTrigger,
             initial = initialBotToEdit.value,
             onDismiss = { G.botVM.reload(ctx) },
             onSave = { newBot ->
@@ -59,9 +60,13 @@ fun BotHeader(
         ConfigImportDialog(
             trigger = importTrigger,
         ) { configJson ->
-            val newBot = InterfaceJson.decodeFromString<Bot>(configJson).copy(
-                id = 0,
-                workUUID = UUID.randomUUID().toString(),
+            val bot = InterfaceJson.decodeFromString<Bot>(configJson)
+            // clear `workUUID` from imported bot
+            val newBot = bot.copy(
+                trigger = if(bot.trigger is Schedule)
+                    bot.trigger.copy(workUUID = UUID.randomUUID().toString())
+                else
+                    bot.trigger,
             )
 
             // 1. add to db

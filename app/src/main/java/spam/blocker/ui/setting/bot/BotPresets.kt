@@ -14,9 +14,11 @@ import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.FindRules
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.ImportToSpamDB
+import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.ParseCSV
 import spam.blocker.service.bot.Ringtone
+import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Time
 import spam.blocker.service.bot.Weekly
@@ -48,7 +50,7 @@ val BotPresets = listOf(
     ) { ctx ->
         Bot(
             desc = ctx.getString(R.string.bot_preset_dnc_initial),
-            enabled = false,
+            trigger = Manual(),
             actions = listOf(
                 HttpDownload(url = "https://raw.githubusercontent.com/aj3423/DNC_snapshot/refs/heads/master/90days.csv"),
                 ParseCSV(),
@@ -64,10 +66,12 @@ val BotPresets = listOf(
     ) { ctx ->
         Bot(
             desc = ctx.getString(R.string.bot_preset_dnc_daily),
-            enabled = true,
-            schedule = Weekly(
-                weekdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY),
-                time = Time(18, 0)
+            trigger = Schedule(
+                enabled = true,
+                schedule = Weekly(
+                    weekdays = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY),
+                    time = Time(18, 0)
+                ),
             ),
             actions = listOf(
                 HttpDownload(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
@@ -84,9 +88,7 @@ val BotPresets = listOf(
     ) { ctx ->
         Bot(
             desc = ctx.getString(R.string.ringtone),
-            actions = listOf(
-                Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }")
-            )
+            trigger = Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }"),
         )
     },
 
@@ -107,8 +109,8 @@ val BotPresets = listOf(
         val ruleDesc = ctx.getString(R.string.calendar_event)
         Bot(
             desc = ctx.getString(R.string.calendar_event),
+            trigger = CalendarEvent(eventTitle = ctx.getString(R.string.working)),
             actions = listOf(
-                CalendarEvent(eventTitle = ctx.getString(R.string.working)),
                 FindRules(pattern = ruleDesc),
                 ModifyRules(config = "{\"flags\": 3}"),
             )
@@ -132,11 +134,11 @@ val BotPresets = listOf(
         val ruleDesc = ctx.getString(R.string.throttled_call)
         Bot(
             desc = ctx.getString(R.string.call_throttling),
+            trigger = CallThrottling(
+                includingBlocked = true,
+                includingAnswered = true,
+            ),
             actions = listOf(
-                CallThrottling(
-                    includingBlocked = true,
-                    includingAnswered = true,
-                ),
                 FindRules(pattern = ruleDesc),
                 ModifyRules(config = "{\"flags\": 1}"),
             )
@@ -160,8 +162,8 @@ val BotPresets = listOf(
         val ruleDesc = ctx.getString(R.string.throttled_sms)
         Bot(
             desc = ctx.getString(R.string.sms_throttling),
+            trigger = SmsThrottling(targetRuleDesc = ruleDesc),
             actions = listOf(
-                SmsThrottling(targetRuleDesc = ruleDesc),
                 FindRules(pattern = ruleDesc),
                 ModifyRules(config = "{\"flags\": 2}"),
             )
@@ -173,11 +175,13 @@ val BotPresets = listOf(
         tooltip = { it.getString(R.string.help_remote_setup) },
     ) { ctx ->
         Bot(
-            enabled = true,
-            schedule = Daily(
-                time = Time(0, 0)
-            ),
             desc = ctx.getString(R.string.remote_setup),
+            trigger = Schedule(
+                enabled = true,
+                schedule = Daily(
+                    time = Time(0, 0)
+                )
+            ),
             actions = listOf(
                 HttpDownload(url = ctx.getString(R.string.replace_this)),
                 BackupImport(),
@@ -191,10 +195,12 @@ val BotPresets = listOf(
     ) { ctx ->
         Bot(
             desc = ctx.getString(R.string.bot_preset_auto_backup),
-            enabled = true,
-            schedule = Weekly(
-                weekdays = listOf(MONDAY),
-                time = Time(0, 0)
+            trigger = Schedule(
+                enabled = true,
+                schedule = Weekly(
+                    weekdays = listOf(MONDAY),
+                    time = Time(0, 0)
+                ),
             ),
             actions = listOf(
                 BackupExport(),

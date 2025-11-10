@@ -26,10 +26,12 @@ import spam.blocker.service.bot.GenerateTag
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
+import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.ImportAsRegexRule
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
+import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.ModifyNumber
 import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.ParseCSV
@@ -41,12 +43,25 @@ import spam.blocker.service.bot.ReadFile
 import spam.blocker.service.bot.RegexExtract
 import spam.blocker.service.bot.ScheduledAutoReportNumber
 import spam.blocker.service.bot.Ringtone
+import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.SmsEvent
 import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
 
 val myModule = SerializersModule {
+    // also add to below polymorphic(IAction:class)
+    polymorphic(ITriggerAction::class) {
+        subclass(Manual::class)
+        subclass(Schedule::class)
+        subclass(CallEvent::class)
+        subclass(SmsEvent::class)
+        subclass(CalendarEvent::class)
+        subclass(CallThrottling::class)
+        subclass(SmsThrottling::class)
+        subclass(Ringtone::class)
+        subclass(QuickTile::class)
+    }
     polymorphic(ISchedule::class) {
         subclass(Daily::class)
         subclass(Weekly::class)
@@ -54,6 +69,18 @@ val myModule = SerializersModule {
         subclass(Delay::class)
     }
     polymorphic(IAction::class) {
+        // Triggers
+        // also add to above polymorphic(ITriggerAction:class)
+        subclass(Manual::class)
+        subclass(Schedule::class)
+        subclass(CallEvent::class)
+        subclass(SmsEvent::class)
+        subclass(CalendarEvent::class)
+        subclass(CallThrottling::class)
+        subclass(SmsThrottling::class)
+        subclass(Ringtone::class)
+        subclass(QuickTile::class)
+
         subclass(CleanupHistory::class)
         subclass(HttpDownload::class)
         subclass(CleanupSpamDB::class)
@@ -77,14 +104,7 @@ val myModule = SerializersModule {
         subclass(InterceptSms::class)
         subclass(ScheduledAutoReportNumber::class)
         subclass(CategoryConfig::class)
-        subclass(CalendarEvent::class)
-        subclass(SmsEvent::class)
-        subclass(CallEvent::class)
         subclass(ModifyNumber::class)
-        subclass(CallThrottling::class)
-        subclass(SmsThrottling::class)
-        subclass(Ringtone::class)
-        subclass(QuickTile::class)
         subclass(GenerateTag::class)
     }
     polymorphic(IApi::class) {

@@ -2,8 +2,10 @@ package spam.blocker.service.bot
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -53,6 +55,7 @@ import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.Checker.RegexRuleChecker
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.M
+import spam.blocker.ui.SizedBox
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.setting.api.tagCategory
 import spam.blocker.ui.theme.DimGrey
@@ -72,6 +75,7 @@ import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
+import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
@@ -123,6 +127,7 @@ import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
 import java.net.HttpURLConnection
+import java.util.UUID
 
 @Composable
 fun NoOptionNeeded() {
@@ -156,7 +161,7 @@ class CleanupHistory(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
         val nDays = ctx.resources.getQuantityString(R.plurals.days, expiry, expiry)
         SummaryLabel(ctx.getString(R.string.expiry) + ": $nDays")
@@ -348,7 +353,7 @@ open class HttpDownload(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         RowVCenterSpaced(4) {
             GreyIcon20(R.drawable.ic_link)
             SummaryLabel(" $url")
@@ -369,7 +374,7 @@ open class HttpDownload(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_http)
+        GreyIcon(R.drawable.ic_http)
     }
 
     @Composable
@@ -488,7 +493,7 @@ class CleanupSpamDB(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         val nDays = ctx.resources.getQuantityString(R.plurals.days, expiry, expiry)
@@ -509,7 +514,7 @@ class CleanupSpamDB(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_db_delete)
+        GreyIcon(R.drawable.ic_db_delete)
     }
 
     @Composable
@@ -549,7 +554,7 @@ class BackupExport(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         val yes = ctx.getString(R.string.yes)
@@ -571,7 +576,7 @@ class BackupExport(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_backup_export)
+        GreyIcon(R.drawable.ic_backup_export)
     }
 
     @Composable
@@ -617,7 +622,7 @@ class BackupImport(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         val yes = ctx.getString(R.string.yes)
@@ -639,7 +644,7 @@ class BackupImport(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_backup_import)
+        GreyIcon(R.drawable.ic_backup_import)
     }
 
     @Composable
@@ -685,7 +690,7 @@ class ReadFile(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel("$dir/$filename")
     }
 
@@ -707,7 +712,7 @@ class ReadFile(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_file_read)
+        GreyIcon(R.drawable.ic_file_read)
     }
 
     @Composable
@@ -757,7 +762,7 @@ class WriteFile(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel("$dir/$filename")
     }
 
@@ -779,7 +784,7 @@ class WriteFile(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_file_write)
+        GreyIcon(R.drawable.ic_file_write)
     }
 
     @Composable
@@ -851,7 +856,7 @@ class ParseCSV(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel(columnMapping)
     }
 
@@ -869,7 +874,7 @@ class ParseCSV(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_csv)
+        GreyIcon(R.drawable.ic_csv)
     }
 
     @Composable
@@ -916,7 +921,7 @@ class ParseXML(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel("XPath: $xpath")
     }
 
@@ -934,7 +939,7 @@ class ParseXML(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_xml)
+        GreyIcon(R.drawable.ic_xml)
     }
 
     @Composable
@@ -987,7 +992,7 @@ class RegexExtract(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         val label = ctx.getString(R.string.regex_pattern)
@@ -1008,7 +1013,7 @@ class RegexExtract(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_regex_capture)
+        GreyIcon(R.drawable.ic_regex_capture)
     }
 
     @Composable
@@ -1092,7 +1097,7 @@ class ImportToSpamDB(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1109,7 +1114,7 @@ class ImportToSpamDB(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_db_add)
+        GreyIcon(R.drawable.ic_db_add)
     }
 
     @Composable
@@ -1258,7 +1263,7 @@ class ImportAsRegexRule(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel(description)
     }
 
@@ -1276,7 +1281,7 @@ class ImportAsRegexRule(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_regex)
+        GreyIcon(R.drawable.ic_regex)
     }
 
     @Composable
@@ -1393,7 +1398,7 @@ class ConvertNumber(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel("$from -> $to")
     }
 
@@ -1411,7 +1416,7 @@ class ConvertNumber(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_replace)
+        GreyIcon(R.drawable.ic_replace)
     }
 
     @Composable
@@ -1514,7 +1519,7 @@ class FindRules(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         SummaryLabel(pattern)
@@ -1534,7 +1539,7 @@ class FindRules(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_find)
+        GreyIcon(R.drawable.ic_find)
     }
 
     @Composable
@@ -1668,7 +1673,7 @@ class ModifyRules(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         SummaryLabel(config)
     }
 
@@ -1686,7 +1691,7 @@ class ModifyRules(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_replace)
+        GreyIcon(R.drawable.ic_replace)
     }
 
     @Composable
@@ -1723,20 +1728,26 @@ class EnableWorkflow(
             return true
         }
 
-        val bot = BotTable
-            .findByWorkUuid(ctx, workTag)
-            ?.copy(enabled = enable)
+        val bot = BotTable.findByWorkUuid(ctx, workTag) // bot is guaranteed to be `Schedule`
 
-        if (bot != null) {
-            // 1. enable/disable bot
-            BotTable.updateById(ctx, bot.id, bot)
+        if (bot == null)
+            return true
 
-            // 2. reSchedule
-            reScheduleBot(ctx, bot)
+        if (bot.trigger !is Schedule)
+            return true
 
-            // 3. fire event
-            Events.botUpdated.fire()
-        }
+        val newBot = bot.copy(
+            trigger = bot.trigger.copy(enabled = enable)
+        )
+
+        // 1. enable/disable bot
+        BotTable.updateById(ctx, newBot.id, trigger = newBot.trigger)
+
+        // 2. reSchedule
+        reScheduleBot(ctx, newBot)
+
+        // 3. fire event
+        Events.botUpdated.fire()
 
         return true
     }
@@ -1746,7 +1757,7 @@ class EnableWorkflow(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         SummaryLabel("${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}")
@@ -1766,7 +1777,7 @@ class EnableWorkflow(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_workflow)
+        GreyIcon(R.drawable.ic_workflow)
     }
 
     @Composable
@@ -1807,7 +1818,7 @@ class EnableApp(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
         SummaryLabel("${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}")
@@ -1827,7 +1838,7 @@ class EnableApp(
 
     @Composable
     override fun Icon() {
-        GreyIcon(iconId = R.drawable.ic_toggle)
+        GreyIcon(R.drawable.ic_toggle)
     }
 
     @Composable
@@ -1938,7 +1949,7 @@ class InterceptCall(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         RowVCenterSpaced(4) {
             GreyIcon20(R.drawable.ic_filter)
             SummaryLabel(numberFilter)
@@ -2003,7 +2014,7 @@ class InterceptSms(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2148,7 +2159,7 @@ class ParseQueryResult(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         RowVCenterSpaced(4) {
             if (negativeSig.isNotEmpty()) {
                 RowVCenter {
@@ -2286,7 +2297,7 @@ class FilterSpamResult() : IPermissiveAction {
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2350,7 +2361,7 @@ class CategoryConfig(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2448,7 +2459,7 @@ class ScheduledAutoReportNumber(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
     }
 
     override fun tooltip(ctx: Context): String {
@@ -2469,6 +2480,192 @@ class ScheduledAutoReportNumber(
 
     @Composable
     override fun Options() {
+    }
+}
+
+
+// Continue or terminate the workflow according to ongoing calendar event.
+@Serializable
+@SerialName("Manual")
+class Manual() : ITriggerAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf()
+    }
+    override fun isActivated(): Boolean {
+        return false
+    }
+    @Composable
+    override fun TriggerType(modifier: Modifier) {
+        GreyLabel(Str(R.string.manual))
+    }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        return true // do nothing
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.manual)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(2) {
+            if (showIcon) {
+                Icon()
+            }
+            SummaryLabel(Str(R.string.manual))
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_trigger_manual)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_tap)
+    }
+
+    @Composable
+    override fun Options() {
+        NoOptionNeeded()
+    }
+}
+
+
+// Continue or terminate the workflow according to ongoing calendar event.
+@Serializable
+@SerialName("Schedule")
+data class Schedule(
+    var enabled: Boolean = true,
+    var schedule: ISchedule = defaultSchedules[0].clone(), // nullable for historical reason
+    var workUUID: String = UUID.randomUUID().toString(), // the schedule UUID tag
+) : ITriggerAction {
+    override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
+        return listOf()
+    }
+    override fun isActivated(): Boolean {
+        return enabled
+    }
+    @Composable
+    override fun TriggerType(modifier: Modifier) {
+        GreyLabel(Str(R.string.schedule))
+    }
+    override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
+        return true // do nothing
+    }
+
+    override fun label(ctx: Context): String {
+        return ctx.getString(R.string.schedule)
+    }
+
+    @Composable
+    override fun Summary(showIcon: Boolean) {
+        val ctx = LocalContext.current
+        RowVCenterSpaced(6) {
+            // Green dot
+            if (enabled) {
+                GreenDot()
+            }
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) {
+                        Icon()
+                    }
+                }
+                SummaryLabel(schedule.summary(ctx))
+            }
+        }
+    }
+
+    override fun tooltip(ctx: Context): String {
+        return ctx.getString(R.string.help_trigger_schedule)
+    }
+
+    override fun inputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    override fun outputParamType(): List<ParamType> {
+        return listOf(ParamType.None)
+    }
+
+    @Composable
+    override fun Icon() {
+        GreyIcon(R.drawable.ic_duration)
+    }
+
+    @Composable
+    private fun EditScheduleDialog(
+        trigger: MutableState<Boolean>,
+        schedule: MutableState<ISchedule?>,
+    ) {
+        if (!trigger.value) {
+            return
+        }
+        PopupDialog(
+            trigger = trigger,
+            onDismiss = {
+                // set to itself to refresh the UI
+                val clone = schedule.value!!.serialize().parseSchedule()
+                schedule.value = clone
+            }
+        ) {
+            schedule.value!!.Options()
+        }
+    }
+
+    @Composable
+    override fun Options() {
+        val ctx = LocalContext.current
+
+        // Must use a state, otherwise the switch doesn't change on click
+        var enabledState by remember { mutableStateOf(enabled) }
+
+        LabeledRow(labelId = R.string.enable) {
+            SwitchBox(enabledState) { on ->
+                enabled = on
+                enabledState = on
+            }
+        }
+
+        val scheduleState = rememberSaveableScheduleState(schedule)
+
+        AnimatedVisibleV(enabledState) {
+            Column {
+                LabeledRow(R.string.type) {
+                    val items = defaultSchedules.map {
+                        LabelItem(
+                            label = it.label(ctx),
+                            leadingIcon = { GreyIcon16(it.iconId()) }
+                        ) { menuExpanded ->
+                            scheduleState.value = it
+                            schedule = it
+                            menuExpanded.value = false
+                        }
+                    }
+                    val selected = defaultSchedules.indexOfFirst {
+                        it::class == scheduleState.value!!::class
+                    }
+                    ComboBox(items = items, selected = selected)
+                }
+
+                val triggerConfigSchedule = rememberSaveable { mutableStateOf(false) }
+                EditScheduleDialog(trigger = triggerConfigSchedule, scheduleState)
+                LabeledRow(R.string.time) {
+                    GreyButton(label = scheduleState.value!!.summary(ctx)) {
+                        triggerConfigSchedule.value = true
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -2531,13 +2728,18 @@ class CalendarEvent(
     }
 
     @Composable
-    override fun Summary() {
-        RowVCenterSpaced(8) {
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
                 GreenDot()
             }
-            SummaryLabel(eventTitle)
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
+                SummaryLabel(eventTitle)
+            }
         }
     }
 
@@ -2655,13 +2857,18 @@ class SmsEvent(
     }
 
     @Composable
-    override fun Summary() {
-        RowVCenterSpaced(8) {
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
                 GreenDot()
             }
-            SummaryLabel("$content <- $number")
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
+                SummaryLabel("$content <- $number")
+            }
         }
     }
 
@@ -2786,13 +2993,18 @@ class CallEvent(
     }
 
     @Composable
-    override fun Summary() {
-        RowVCenterSpaced(8) {
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
                 GreenDot()
             }
-            SummaryLabel(number)
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
+                SummaryLabel(number)
+            }
         }
     }
 
@@ -2884,7 +3096,7 @@ class ModifyNumber(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         RowVCenterSpaced(8) {
             SummaryLabel("$from -> $to")
         }
@@ -3008,13 +3220,16 @@ class CallThrottling(
     }
 
     @Composable
-    override fun Summary() {
-        RowVCenterSpaced(8) {
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
                 GreenDot()
             }
-            RowVCenterSpaced(2) {
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
                 if (includingAnswered) {
                     GreyIcon18(R.drawable.ic_call)
                 }
@@ -3200,13 +3415,16 @@ class SmsThrottling(
     }
 
     @Composable
-    override fun Summary() {
-        RowVCenterSpaced(8) {
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
                 GreenDot()
             }
-            RowVCenterSpaced(2) {
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
                 GreyLabel("$countLimit/$durationSec")
                 GreyLabel(targetRuleDesc)
             }
@@ -3411,21 +3629,27 @@ class Ringtone(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
-        RowVCenterSpaced(8) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (enabled) {
                 GreenDot()
             }
-            GreyLabel(labelBindTo())
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
 
-            if (mute) {
-                GreyIcon18(R.drawable.ic_bell_mute)
-            } else {
-                val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
-                GreyLabel(RingtoneUtil.getName(ctx, uri))
+                GreyLabel(labelBindTo())
+
+                if (mute) {
+                    GreyIcon18(R.drawable.ic_bell_mute)
+                } else {
+                    val uri = ringtoneUri?.toUri() ?: RingtoneUtil.getCurrent(ctx)
+                    GreyLabel(RingtoneUtil.getName(ctx, uri))
+                }
             }
         }
     }
@@ -3557,14 +3781,19 @@ class QuickTile(
     }
 
     @Composable
-    override fun Summary() {
-        RowVCenterSpaced(8) {
+    override fun Summary(showIcon: Boolean) {
+        RowVCenterSpaced(6) {
             // Green dot
             if (isActivated()) {
                 GreenDot()
             }
-            if (tileIndex > 0) {
-                GreyLabel("[$tileIndex]")
+            RowVCenterSpaced(4) {
+                if (showIcon) {
+                    SizedBox(18) { Icon() }
+                }
+                if (tileIndex > 0) {
+                    GreyLabel("[$tileIndex]")
+                }
             }
         }
     }
@@ -3649,7 +3878,7 @@ class GenerateTag(
     }
 
     @Composable
-    override fun Summary() {
+    override fun Summary(showIcon: Boolean) {
         when(parseType) {
             0 -> {
                 SummaryLabel("{${tagName}} = RegEx: $regex")

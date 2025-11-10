@@ -180,7 +180,7 @@ class CallScreeningService : CallScreeningService() {
         val current = RingtoneUtil.getCurrent(ctx)
         spf.Temporary(ctx).setRingtone(current.toString())
 
-        // 3. Change the system default ringtone, it will be reset soon in CallStateReceiver
+        // 3. Change the system default ringtone, it will be reset after 2 seconds
         var shouldMute = false
         bots.forEach {
             val aCtx = ActionContext(lastOutput = r)

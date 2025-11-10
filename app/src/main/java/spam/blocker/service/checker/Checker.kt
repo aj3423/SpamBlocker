@@ -118,7 +118,7 @@ object Preprocessors {
 
             // Save for "Last Log"
             if (logger is SaveableLogger) {
-                BotTable.setLastLog(ctx, bot.workUUID, logger.serialize())
+                BotTable.setLastLog(ctx, bot.id, logger.serialize())
             }
             return null
         }

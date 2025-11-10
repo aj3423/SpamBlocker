@@ -3,6 +3,7 @@ package spam.blocker.ui.setting.bot
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,6 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import spam.blocker.db.Bot
+import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.GreenDot
@@ -25,9 +27,6 @@ fun BotCard(
     bot: Bot,
     modifier: Modifier,
 ) {
-    val ctx = LocalContext.current
-    val C = LocalPalette.current
-
     OutlineCard(
         containerBg = MaterialTheme.colorScheme.background
     ) {
@@ -43,23 +42,8 @@ fun BotCard(
                 // desc
                 GreyLabel(text = bot.desc, fontWeight = FontWeight.SemiBold)
 
-                // schedule
-                RowVCenter {
-                    // Green active dot
-                    if (bot.isActivated(ctx)) {
-                        RowVCenterSpaced(8) {
-                            // Green dot
-                            GreenDot()
-
-                            // Schedule icon
-                            if (bot.enabled && bot.schedule != null)
-                                GreyIcon16(bot.schedule.iconId())
-                        }
-                    }
-
-                    // Trigger type:  Scheduled / Manual / CalendarEvent
-                    bot.TriggerType(M.padding(start = 10.dp))
-                }
+                // trigger summary
+                bot.trigger.Summary(showIcon = true)
             }
 
             // action icons

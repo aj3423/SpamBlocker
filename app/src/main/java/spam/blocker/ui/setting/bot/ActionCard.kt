@@ -59,7 +59,7 @@ fun ActionCard(
                 )
 
                 // Summary
-                action.Summary()
+                action.Summary(showIcon = false)
             }
 
             RowVCenter {

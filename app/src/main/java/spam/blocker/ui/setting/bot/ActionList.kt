@@ -55,7 +55,9 @@ fun ActionList(
     var clickedIndex by rememberSaveable { mutableIntStateOf(0) }
 
     if (editTrigger.value) {
-        EditActionDialog(trigger = editTrigger, actions = actions, index = clickedIndex)
+        EditActionDialog(trigger = editTrigger, initial = actions[clickedIndex]) { newAction ->
+            actions[clickedIndex] = newAction
+        }
     }
 
     ReorderableColumn(
