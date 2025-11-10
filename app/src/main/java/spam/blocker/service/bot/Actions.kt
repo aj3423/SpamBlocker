@@ -2,10 +2,8 @@ package spam.blocker.service.bot
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -1997,7 +1995,6 @@ class InterceptCall(
 }
 
 
-// This action must be the first action of the workflow.
 @Serializable
 @SerialName("InterceptSms")
 class InterceptSms(

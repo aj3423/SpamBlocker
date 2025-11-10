@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">O evento de chamada %s foi acionado.</string>
     <string name="help_call_event">
         <![CDATA[
-        Pré-processa o número de telefone de entrada antes que ele seja verificado pelas regras, tornando possível modificar as regras em tempo real.<br>
+        Pré-processa o número de telefone recebido antes que ele seja verificado pelas regras, tornando possível modificar as regras em tempo real.<br>
         <br>
-        Esta ação deve ser a primeira no fluxo de trabalho; tal fluxo de trabalho será automaticamente acionado por uma chamada de entrada.<br>
+        Esse fluxo de trabalho será acionado automaticamente por uma chamada recebida.<br>
         <br>
-        <font color="#00BFFF"><b>Uma configuração típica de fluxo de trabalho:</b></font><br>
+        <font color="#00BFFF"><b>Uma configuração de fluxo de trabalho típica:</b></font><br>
         - <b>Evento de Chamada</b> <br>
-        - <b>Modificar Número</b> <br>
+        - <b>Modificar Número</b>
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

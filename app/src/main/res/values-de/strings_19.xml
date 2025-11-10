@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">Anrufereignis %s wird ausgelöst.</string>
     <string name="help_call_event">
         <![CDATA[
-        Verarbeiten Sie die eingehende Nummer vorab, bevor sie von den Regeln überprüft wird, was es ermöglicht, Regeln spontan zu ändern.<br>
+        Verarbeitet die eingehende Nummer, bevor sie von den Regeln überprüft wird, was es ermöglicht, Regeln spontan zu ändern.<br>
         <br>
-        Diese Aktion muss die erste im Workflow sein; ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
+        Ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
         <br>
         <font color="#00BFFF"><b>Ein typischer Workflow-Aufbau:</b></font><br>
         - <b>Anrufereignis</b> <br>
-        - <b>Nummer ändern</b> <br>
+        - <b>Nummer ändern</b>
         ]]>
     </string>
     <string name="action_modify_number">Nummer ändern</string>

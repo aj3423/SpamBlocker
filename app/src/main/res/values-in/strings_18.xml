@@ -18,8 +18,6 @@
         <![CDATA[
         Ini akan otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
         <br>
-        Tindakan ini harus menjadi yang pertama dalam alur kerja.<br>
-        <br>
         Ini dapat digabungkan dengan tindakan lain seperti <b>Cari Aturan</b> dan <b>Ubah Aturan</b>.<br>
         - Jika nomor SMS dan konten cocok, alur kerja akan terus berjalan.<br>
         - Jika tidak, alur kerja akan berakhir.<br>

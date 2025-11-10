@@ -61,7 +61,6 @@ import spam.blocker.ui.history.ReportSpamDialog
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.DimGreyLabel
-import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str

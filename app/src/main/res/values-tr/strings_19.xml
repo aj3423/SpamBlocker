@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">Çağrı olayı %s tetiklendi.</string>
     <string name="help_call_event">
         <![CDATA[
-        Gelen telefon numarasını kurallar tarafından kontrol edilmeden önce ön işleme tabi tutar, böylece kuralları anında değiştirmek mümkün olur.<br>
+        Gelen numara kurallar tarafından kontrol edilmeden önce ön işlemden geçirilir, bu da kuralları anında değiştirmeyi mümkün kılar.<br>
         <br>
-        Bu eylem iş akışındaki ilk eylem olmalıdır, böyle bir iş akışı gelen bir çağrı tarafından otomatik olarak tetiklenecektir.<br>
+        Böyle bir iş akışı, gelen bir arama tarafından otomatik olarak tetiklenecektir.<br>
         <br>
         <font color="#00BFFF"><b>Tipik bir iş akışı kurulumu:</b></font><br>
         - <b>Çağrı Olayı</b> <br>
-        - <b>Numarayı Düzenle</b> <br>
+        - <b>Numarayı Değiştir</b>
         ]]>
     </string>
     <string name="action_modify_number">Numarayı Düzenle</string>

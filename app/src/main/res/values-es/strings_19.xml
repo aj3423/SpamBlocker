@@ -5,11 +5,11 @@
         <![CDATA[
         Preprocesa el número entrante antes de que sea verificado por las reglas, permitiendo modificar las reglas sobre la marcha.<br>
         <br>
-        Esta acción debe ser la primera en el flujo de trabajo; dicho flujo de trabajo se activará automáticamente con una llamada entrante.<br>
+        Tal flujo de trabajo se activará automáticamente con una llamada entrante.<br>
         <br>
-        <font color="#00BFFF"><b>Configuración típica de un flujo de trabajo:</b></font><br>
+        <font color="#00BFFF"><b>Una configuración de flujo de trabajo típica:</b></font><br>
         - <b>Evento de Llamada</b> <br>
-        - <b>Modificar Número</b> <br>
+        - <b>Modificar Número</b>
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

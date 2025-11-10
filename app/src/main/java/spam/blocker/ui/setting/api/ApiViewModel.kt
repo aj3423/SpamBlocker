@@ -3,9 +3,8 @@ package spam.blocker.ui.setting.api
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import spam.blocker.db.IApi
 import spam.blocker.db.ApiTable
-import spam.blocker.db.Db
+import spam.blocker.db.IApi
 import spam.blocker.db.QueryApiTable
 import spam.blocker.db.ReportApiTable
 import spam.blocker.def.Def

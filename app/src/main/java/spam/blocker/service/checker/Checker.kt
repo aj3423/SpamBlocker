@@ -27,7 +27,6 @@ import spam.blocker.service.bot.ActionContext
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
-import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.InterceptCall
 import spam.blocker.service.bot.InterceptSms
 import spam.blocker.service.bot.QuickTile

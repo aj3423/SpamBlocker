@@ -5,7 +5,7 @@
         <![CDATA[
         Preprocess the incoming number before it\'s checked by the rules, making it possible to modify rules on the fly.<br>
         <br>
-        This action must be the first one in the workflow, such a workflow will be automatically triggered by an incoming call.<br>
+        Such a workflow will be automatically triggered by an incoming call.<br>
         <br>
         <font color="#00BFFF"><b>A typical workflow setup:</b></font><br>
         - <b>Call Event</b> <br>

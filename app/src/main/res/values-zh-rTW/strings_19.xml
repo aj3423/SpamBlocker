@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">來電事件 %s 已觸發。</string>
     <string name="help_call_event">
         <![CDATA[
-        在規則檢查前先預處理來電號碼，讓規則可以即時調整。<br>
+        在規則檢查之前預處理來電號碼，使其能夠即時修改規則。<br>
         <br>
-        此動作必須放在工作流程的第一步，該工作流程會在有來電時自動觸發。<br>
+        這樣的工作流程將在有來電時自動觸發。<br>
         <br>
-        <font color="#00BFFF"><b>常見的工作流程：</b></font><br>
-        - <b>[來電事件]</b> <br>
-        - <b>[修改號碼]</b>
+        <font color="#00BFFF"><b>典型的工作流程設定：</b></font><br>
+        - <b>通話事件</b> <br>
+        - <b>修改號碼</b>
         ]]>
     </string>
     <string name="action_modify_number">修改號碼</string>

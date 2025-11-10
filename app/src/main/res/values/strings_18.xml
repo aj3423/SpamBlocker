@@ -35,8 +35,6 @@
         <![CDATA[
         This will be automatically triggered on incoming SMS messages before they are screened.<br>
         <br>
-        This action must be the first one in the workflow.<br>
-        <br>
         This can be chained with other actions like <b>Find Rules</b> and <b>Modify Rules</b>.<br>
         - If the SMS number and content match, the workflow will keep executing.<br>
         - Otherwise, the workflow will terminate.<br>

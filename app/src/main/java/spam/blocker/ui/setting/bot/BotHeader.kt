@@ -12,7 +12,6 @@ import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.service.bot.Schedule
-import spam.blocker.util.InterfaceJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.SkyBlue
@@ -22,6 +21,7 @@ import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
+import spam.blocker.util.InterfaceJson
 import spam.blocker.util.Lambda1
 import java.util.UUID
 

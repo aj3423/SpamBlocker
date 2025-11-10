@@ -21,7 +21,6 @@ import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.util.InterfacePrettyJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.regex.DisableNestedScrolling
 import spam.blocker.ui.theme.LightMagenta
@@ -36,6 +35,7 @@ import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
+import spam.blocker.util.InterfacePrettyJson
 import spam.blocker.util.spf
 
 

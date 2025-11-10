@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">Peristiwa panggilan %s dipicu.</string>
     <string name="help_call_event">
         <![CDATA[
-        Pra-proses nomor telepon masuk sebelum diperiksa oleh aturan, sehingga memungkinkan untuk memodifikasi aturan dengan cepat.<br>
+        Memproses nomor masuk sebelum diperiksa oleh aturan, memungkinkan modifikasi aturan secara langsung.<br>
         <br>
-        Tindakan ini harus menjadi yang pertama dalam alur kerja, alur kerja semacam itu akan secara otomatis dipicu oleh panggilan masuk.<br>
+        Alur kerja seperti ini akan otomatis dipicu oleh panggilan masuk.<br>
         <br>
         <font color="#00BFFF"><b>Pengaturan alur kerja umum:</b></font><br>
         - <b>Peristiwa Panggilan</b> <br>
-        - <b>Modifikasi Nomor Telepon</b> <br>
+        - <b>Modifikasi Nomor</b>
         ]]>
     </string>
     <string name="action_modify_number">Modifikasi Nomor Telepon</string>

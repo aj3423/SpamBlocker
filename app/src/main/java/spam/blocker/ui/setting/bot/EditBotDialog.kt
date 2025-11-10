@@ -20,7 +20,6 @@ import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.reScheduleBot
-import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.allChainable
 import spam.blocker.service.bot.botTriggers
@@ -41,7 +40,6 @@ import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
-import spam.blocker.util.logi
 
 
 @Composable

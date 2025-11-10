@@ -12,7 +12,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
-import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import kotlinx.serialization.encodeToString
@@ -28,7 +27,6 @@ import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.parseSchedule
 import spam.blocker.service.bot.parseTrigger
 import spam.blocker.service.bot.serialize
-import spam.blocker.service.bot.triggerSaver
 import spam.blocker.util.InterfaceJson
 
 
@@ -48,6 +46,7 @@ data class OldBot(
     @Transient
     val lastLogTime: Long = 0,
 )
+
 
 // The word "Workflow" is too long, so it's called "Bot".
 @Serializable

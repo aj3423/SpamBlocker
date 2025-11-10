@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">L\'esdeveniment de trucada %s s\'ha activat.</string>
     <string name="help_call_event">
         <![CDATA[
-        Preprocessa el número de trucada entrant abans que sigui comprovat per les regles, fent possible modificar les regles al moment.<br>
+        Preprocessa el número entrant abans que sigui revisat per les regles, fent possible modificar les regles al moment.<br>
         <br>
-        Aquesta acció ha de ser la primera del flux de treball; un flux de treball com aquest s\'activarà automàticament amb una trucada entrant.<br>
+        Aquest flux de treball s\'activarà automàticament per una trucada entrant.<br>
         <br>
-        <font color="#00BFFF"><b>Configuració típica d\'un flux de treball:</b></font><br>
-        - <b>Esdeveniment de Trucada</b> <br>
-        - <b>Modificar Número</b> <br>
+        <font color="#00BFFF"><b>Una configuració de flux de treball típica:</b></font><br>
+        - <b>Esdeveniment de trucada</b> <br>
+        - <b>Modificar número</b>
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

@@ -34,7 +34,6 @@ import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.MayaBlue
 import spam.blocker.ui.widgets.BottomBar
 import spam.blocker.ui.widgets.BottomBarViewModel
-import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.PopupDialog

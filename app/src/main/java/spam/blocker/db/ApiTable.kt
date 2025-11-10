@@ -23,7 +23,6 @@ import spam.blocker.util.Util.domainFromUrl
 import spam.blocker.util.Util.getHistoryCallsByNumber
 import spam.blocker.util.hasFlag
 import spam.blocker.util.logi
-import kotlin.collections.plusAssign
 
 object AutoReportTypes {
     const val NonContact = 1 shl 0

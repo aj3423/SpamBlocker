@@ -20,7 +20,6 @@ import spam.blocker.db.IApi
 import spam.blocker.db.QueryApi
 import spam.blocker.db.ReportApi
 import spam.blocker.def.Def
-import spam.blocker.util.InterfaceJson
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
@@ -39,6 +38,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.InterfaceJson
 import spam.blocker.util.Lambda2
 
 // This dialog makes it easier for user to input API_KEY rather than manually editing

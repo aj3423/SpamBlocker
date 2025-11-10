@@ -18,8 +18,6 @@
         <![CDATA[
         Questo verrà attivato automaticamente sui messaggi SMS in arrivo prima che vengano esaminati.<br>
         <br>
-        Questa azione deve essere la prima nel flusso di lavoro.<br>
-        <br>
         Questo può essere concatenato con altre azioni come <b>Trova Regole</b> e <b>Modifica Regole</b>.<br>
         - Se il numero SMS e il contenuto corrispondono, il flusso di lavoro continuerà l\'esecuzione.<br>
         - Altrimenti, il flusso di lavoro terminerà.<br>

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseAction
 import spam.blocker.service.bot.serialize

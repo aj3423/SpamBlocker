@@ -18,8 +18,6 @@
         <![CDATA[
         Esto se activará automáticamente con los mensajes SMS entrantes antes de que sean filtrados.<br>
         <br>
-        Esta acción debe ser la primera en el flujo de trabajo.<br>
-        <br>
         Esto se puede encadenar con otras acciones como <b>Buscar Reglas</b> y <b>Modificar Reglas</b>.<br>
         - Si el número de SMS y el contenido coinciden, el flujo de trabajo continuará ejecutándose.<br>
         - De lo contrario, el flujo de trabajo terminará.<br>

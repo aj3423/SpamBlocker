@@ -3,13 +3,13 @@
     <string name="call_event_is_triggered">L\'événement d\'appel %s est déclenché.</string>
     <string name="help_call_event">
         <![CDATA[
-        Traiter le numéro d\'appel entrant avant qu\'il ne soit vérifié par les règles, rendant possible la modification des règles à la volée.<br>
+        Prétraite le numéro entrant avant qu\'il ne soit vérifié par les règles, permettant de modifier les règles à la volée.<br>
         <br>
-        Cette action doit être la première du flux de travail, un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
+        Un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
         <br>
-        <font color="#00BFFF"><b>Configuration typique du flux de travail :</b></font><br>
+        <font color="#00BFFF"><b>Une configuration de flux de travail typique :</b></font><br>
         - <b>Événement d\'appel</b> <br>
-        - <b>Modifier le numéro</b> <br>
+        - <b>Modifier le numéro</b>
         ]]>
     </string>
     <string name="action_modify_number">Modifier le numéro</string>

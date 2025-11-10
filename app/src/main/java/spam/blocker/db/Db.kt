@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import kotlinx.serialization.Transient
 import spam.blocker.db.Notification.CHANNEL_HIGH
 import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.Notification.CHANNEL_MEDIUM
@@ -13,8 +12,6 @@ import spam.blocker.def.Def
 import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
-import spam.blocker.service.bot.IAction
-import spam.blocker.service.bot.ITriggerAction
 import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.Ringtone
@@ -28,8 +25,6 @@ import spam.blocker.util.Notification.isChannelDisabled
 import spam.blocker.util.Util.isFreshInstall
 import spam.blocker.util.logi
 import spam.blocker.util.spf
-import kotlin.Long
-import kotlin.String
 
 class Db private constructor(
     val ctx: Context

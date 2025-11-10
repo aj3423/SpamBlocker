@@ -19,10 +19,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.AutoReportTypes
 import spam.blocker.db.IApi
 import spam.blocker.db.QueryApi
 import spam.blocker.db.ReportApi
-import spam.blocker.db.AutoReportTypes
 import spam.blocker.service.bot.allChainable
 import spam.blocker.service.bot.apiActions
 import spam.blocker.service.bot.rememberSaveableActionList

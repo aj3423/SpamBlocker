@@ -18,8 +18,6 @@
         <![CDATA[
         Dies wird automatisch bei eingehenden SMS-Nachrichten ausgelöst, bevor sie überprüft werden.<br>
         <br>
-        Diese Aktion muss die erste im Arbeitsablauf sein.<br>
-        <br>
         Dies kann mit anderen Aktionen wie <b>Regeln finden</b> und <b>Regeln ändern</b> verkettet werden.<br>
         - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Arbeitsablauf weiter ausgeführt.<br>
         - Andernfalls wird der Arbeitsablauf beendet.<br>

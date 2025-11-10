@@ -44,32 +44,6 @@ import spam.blocker.util.regexMatches
 import spam.blocker.util.setFlag
 import spam.blocker.util.toFlagStr
 
-/*
-For old backup files, set flag CaseSensitive if it's not found and IgnoreCase is set to 0
-
-(Remove this after 2027-01-01)
-
-** Update 2025-09-18**
-There is no way to upgrade this, just ignore.
-Previous (<4.15) case sensitive setting will be ignored after restoring from backup.
- */
-//object CompatibleFlagSerializer : JsonTransformingSerializer<Int>(Int.serializer()) {
-//    override fun transformDeserialize(element: JsonElement): JsonElement {
-//        val flags = element.jsonPrimitive.int
-//
-//        // Check if FLAG_REGEX_IGNORE_CASE is NOT set
-//        val ignoreCaseNotSet = (flags and FLAG_REGEX_IGNORE_CASE) == 0
-//
-//        // If the ignore case flag is not set, add the case sensitive flag
-//        if (ignoreCaseNotSet) {
-//            val upgradedFlags = flags or FLAG_REGEX_CASE_SENSITIVE
-//            return JsonPrimitive(upgradedFlags)
-//        }
-//
-//        // If the condition is not met, return the original element
-//        return element
-//    }
-//}
 
 // v4.15 changed `importance`(Int) to `channel`(String), use this class for history compatibility
 // (Remove this after 2027-01-01)
