@@ -19,7 +19,7 @@
             and <font color="#03DAC5"><b>leading 0s</b></font> will remain, useful for differentiating domestic numbers.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omit Country Code</b></font>: <br>
+            <font color="#00BFFF"><b>Ignore Country Code</b></font>: <br>
             &ensp; When enabled, the leading <font color="#fa7f71">+</font> and the <font color="#fa7f71">country code</font>
              will be removed from an international number.<br>
             <br>
@@ -36,7 +36,7 @@
     </string>
     <string-array name="regex_flags_list">
         <item>Raw Number</item>
-        <item>Omit Country Code</item>
+        <item>Ignore Country Code</item>
         <item>Case Sensitive</item>
     </string-array>
     <string name="disable_number_optimization">This optimization can be disabled using the regex flag \"Raw Number\", tap the flag icon on the right to enable it.</string>

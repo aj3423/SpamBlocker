@@ -11,33 +11,33 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Esses sinalizadores mudam o comportamento de correspondência da expressão regular. <br>
+            Esses sinalizadores alteram o comportamento de correspondência da regex. <br>
             <br>
 
             <font color="#00BFFF"><b>Número Bruto</b></font>: <br>
-            &ensp; Quando ativado, o número de telefone não será otimizado, <font color="#03DAC5"><b>+</b></font>
-            e <font color="#03DAC5"><b>zeros iniciais</b></font> permanecerão, útil para diferenciar números de telefone domésticos.<br>
+            &ensp; Quando ativado, o número não será otimizado, <font color="#03DAC5"><b>+</b></font>
+            e <font color="#03DAC5"><b>zeros à esquerda</b></font> permanecerão, útil para diferenciar números domésticos.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omitir Código de País</b></font>: <br>
-            &ensp; Quando ativado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código de país</font>
-             serão removidos de um número de telefone internacional.<br>
+            <font color="#00BFFF"><b>Ignorar Código do País</b></font>: <br>
+            &ensp; Quando ativado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código do país</font>
+             serão removidos de um número internacional.<br>
             <br>
             Por exemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> quanto
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> se tornarão <font color="#03DAC5">12345</font>,
-            isso permite que você use uma regex mais simples `123.*` em vez de `(33|44)*123.*` para corresponder a números de telefone internacionais.<br>
+            isso permite que você use uma regex mais simples `123.*` em vez de `(33|44)*123.*` para corresponder a números internacionais.<br>
             <br>
 
             <font color="#00BFFF"><b>Diferenciar Maiúsculas/Minúsculas</b></font>:<br>
-            &ensp; Por padrão, a correspondência de regex não diferencia maiúsculas/minúsculas, <font color="#03DAC5"><b>a</b></font>
+            &ensp; Por padrão, a correspondência de regex não diferencia maiúsculas de minúsculas, <font color="#03DAC5"><b>a</b></font>
               corresponderia tanto a <font color="#03DAC5"><b>a</b></font> quanto a <font color="#03DAC5"><b>A</b></font>. <br>
-            &ensp; Ative isso para torná-lo sensível a maiúsculas/minúsculas. <br>
+            &ensp; Ative isto para diferenciar maiúsculas/minúsculas. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
         <item>Número Bruto</item>
-        <item>Omitir Código de País</item>
+        <item>Ignorar Código do País</item>
         <item>Diferenciar Maiúsculas/Minúsculas</item>
     </string-array>
     <string name="disable_number_optimization">Esta otimização pode ser desativada usando o sinalizador de regex \"Número Bruto\", toque no ícone da bandeira à direita para ativá-lo.</string>

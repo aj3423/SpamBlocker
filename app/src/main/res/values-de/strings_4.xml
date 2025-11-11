@@ -11,33 +11,33 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Diese Flags ändern das Abgleichverhalten des Regex. <br>
+            Diese Flags ändern das Übereinstimmungsverhalten des Regex. <br>
             <br>
 
             <font color="#00BFFF"><b>Rohe Nummer</b></font>: <br>
             &ensp; Wenn aktiviert, wird die Nummer nicht optimiert, <font color="#03DAC5"><b>+</b></font>
-            und <font color="#03DAC5"><b>führende Nullen</b></font> bleiben erhalten, nützlich zur Unterscheidung inländischer Nummern.<br>
+            und <font color="#03DAC5"><b>führende Nullen</b></font> bleiben erhalten, nützlich zur Unterscheidung nationaler Nummern.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ländercode weglassen</b></font>: <br>
-            &ensp; Wenn aktiviert, werden das führende <font color="#fa7f71">+</font> und der <font color="#fa7f71">Ländercode</font>
+            <font color="#00BFFF"><b>Ländervorwahl ignorieren</b></font>: <br>
+            &ensp; Wenn aktiviert, werden das führende <font color="#fa7f71">+</font> und die <font color="#fa7f71">Ländervorwahl</font>
              von einer internationalen Nummer entfernt.<br>
             <br>
             Zum Beispiel werden sowohl <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> als auch
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> zu <font color="#03DAC5">12345</font>,
-            dies ermöglicht Ihnen die Verwendung eines einfacheren Regex `123.*` anstelle von `(33|44)*123.*`, um internationale Nummern abzugleichen.<br>
+            dies ermöglicht die Verwendung eines einfacheren Regex `123.*` anstelle von `(33|44)*123.*`, um internationale Nummern abzugleichen.<br>
             <br>
 
             <font color="#00BFFF"><b>Groß-/Kleinschreibung beachten</b></font>:<br>
-            &ensp; Standardmäßig ist der Regex-Abgleich nicht zwischen Groß- und Kleinschreibung empfindlich, <font color="#03DAC5"><b>a</b></font>
-              würde sowohl auf <font color="#03DAC5"><b>a</b></font> als auch auf <font color="#03DAC5"><b>A</b></font> zutreffen. <br>
+            &ensp; Standardmäßig ist der Regex-Abgleich nicht zwischen Groß- und Kleinschreibung zu unterscheiden, <font color="#03DAC5"><b>a</b></font>
+              würde sowohl auf <font color="#03DAC5"><b>a</b></font> als auch auf <font color="#03DAC5"><b>A</b></font> passen. <br>
             &ensp; Aktivieren Sie dies, um die Groß-/Kleinschreibung zu beachten. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
         <item>Rohe Nummer</item>
-        <item>Ländercode weglassen</item>
+        <item>Ländervorwahl ignorieren</item>
         <item>Groß-/Kleinschreibung beachten</item>
     </string-array>
     <string name="disable_number_optimization">Diese Optimierung kann mit dem Regex-Flag „Rohe Nummer“ deaktiviert werden. Tippen Sie auf das Flag-Symbol rechts, um es zu aktivieren.</string>

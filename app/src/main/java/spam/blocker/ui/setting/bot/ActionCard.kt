@@ -26,6 +26,7 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 fun ActionCard(
     action: IAction,
     modifier: Modifier,
+    showDragIndicator: Boolean = true
 ) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
@@ -69,7 +70,9 @@ fun ActionCard(
                 )
 
                 // Reorder Icon
-                GreyIcon16(iconId = R.drawable.ic_reorder)
+                if (showDragIndicator) {
+                    GreyIcon16(iconId = R.drawable.ic_reorder)
+                }
             }
         }
     }

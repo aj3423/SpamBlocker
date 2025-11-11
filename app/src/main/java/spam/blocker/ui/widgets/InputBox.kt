@@ -48,7 +48,7 @@ import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.def.Def
 import spam.blocker.def.Def.FLAG_REGEX_CASE_SENSITIVE
-import spam.blocker.def.Def.FLAG_REGEX_OMIT_CC
+import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CC
 import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.M
@@ -585,7 +585,7 @@ fun RegexInputBox(
             val hasR =
                 remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_RAW_NUMBER)) }
             val hasCC =
-                remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_OMIT_CC)) }
+                remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_IGNORE_CC)) }
 
             // a fix for Tooltip+DropdownMenu
             val dropdownOffset = remember {
@@ -626,7 +626,7 @@ fun RegexInputBox(
                                 Text(
                                     text = when (idx) {
                                         0 -> MAP_REGEX_FLAGS[FLAG_REGEX_RAW_NUMBER]!!
-                                        1 -> MAP_REGEX_FLAGS[FLAG_REGEX_OMIT_CC]!!
+                                        1 -> MAP_REGEX_FLAGS[FLAG_REGEX_IGNORE_CC]!!
                                         else -> MAP_REGEX_FLAGS[FLAG_REGEX_CASE_SENSITIVE]!!
 //                                        else -> MAP_REGEX_FLAGS[FLAG_REGEX_DOT_MATCH_ALL]!!
                                     },
@@ -653,7 +653,7 @@ fun RegexInputBox(
                                 val newVal = regexFlags.intValue.setFlag(
                                     when (idx) {
                                         0 -> FLAG_REGEX_RAW_NUMBER
-                                        1 -> FLAG_REGEX_OMIT_CC
+                                        1 -> FLAG_REGEX_IGNORE_CC
                                         else -> FLAG_REGEX_CASE_SENSITIVE // 2
                                     },
                                     checked

@@ -11,33 +11,33 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            تغير هذه العلامات سلوك مطابقة التعبير النمطي. <br>
+            تغير هذه العلامات سلوك مطابقة التعبير النمطي (regex). <br>
             <br>
 
             <font color="#00BFFF"><b>الرقم الخام</b></font>: <br>
-            &ensp; عند التمكين، لن يتم تحسين الرقم، وستبقى <font color="#03DAC5"><b>+</b></font>
-            و<font color="#03DAC5"><b>الأصفار البادئة</b></font>، وهو مفيد للتمييز بين الأرقام المحلية. <br>
+            &ensp; عند التمكين، لن يتم تحسين الرقم، وستظل <font color="#03DAC5"><b>+</b></font>
+            و <font color="#03DAC5"><b>الأصفار البادئة</b></font> موجودة، وهو مفيد للتمييز بين الأرقام المحلية.<br>
             <br>
 
-            <font color="#00BFFF"><b>حذف رمز الدولة</b></font>: <br>
-            &ensp; عند التمكين، سيتم إزالة <font color="#fa7f71">+</font> البادئة و<font color="#fa7f71">رمز الدولة</font>
-             من الرقم الدولي. <br>
+            <font color="#00BFFF"><b>تجاهل رمز الدولة</b></font>: <br>
+            &ensp; عند التمكين، ستتم إزالة <font color="#fa7f71">+</font> البادئة و <font color="#fa7f71">رمز الدولة</font>
+             من الرقم الدولي.<br>
             <br>
             على سبيل المثال، سيصبح كل من <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> و
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> <font color="#03DAC5">12345</font>،
-            وهذا يسمح لك باستخدام تعبير نمطي أبسط `123.*` بدلاً من `(33|44)*123.*` لمطابقة الأرقام الدولية. <br>
+            وهذا يسمح لك باستخدام تعبير نمطي أبسط `123.*` بدلاً من `(33|44)*123.*` لمطابقة الأرقام الدولية.<br>
             <br>
 
             <font color="#00BFFF"><b>حساس لحالة الأحرف</b></font>:<br>
-            &ensp; بشكل افتراضي، مطابقة التعبير النمطي غير حساسة لحالة الأحرف، <font color="#03DAC5"><b>a</b></font>
-              ستطابق كلاً من <font color="#03DAC5"><b>a</b></font> و<font color="#03DAC5"><b>A</b></font>. <br>
-            &ensp; قم بتمكين هذا لجعله حساسًا لحالة الأحرف. <br>
+            &ensp; افتراضيًا، مطابقة التعبير النمطي لا تميز بين حالة الأحرف، حيث تتطابق <font color="#03DAC5"><b>a</b></font>
+              مع كل من <font color="#03DAC5"><b>a</b></font> و <font color="#03DAC5"><b>A</b></font>. <br>
+            &ensp; قم بتمكين هذا لجعلها حساسة لحالة الأحرف. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
         <item>الرقم الخام</item>
-        <item>حذف رمز الدولة</item>
+        <item>تجاهل رمز الدولة</item>
         <item>حساس لحالة الأحرف</item>
     </string-array>
     <string name="disable_number_optimization">يمكن تعطيل هذا التحسين باستخدام علامة التعبير النمطي (regex) \"الرقم الخام\"، اضغط على أيقونة العلم على اليمين لتمكينه.</string>

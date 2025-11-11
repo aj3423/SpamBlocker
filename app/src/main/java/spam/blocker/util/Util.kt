@@ -91,11 +91,11 @@ val PermissivePrettyJson =  Json {
     ignoreUnknownKeys = true
 }
 
-// For matching phone number only, it handles all regex flags like: RawMode/OmitCC
+// For matching phone number only, it handles all regex flags like: RawMode/IgnoreCC
 fun String.regexMatchesNumber(rawNumber: String, regexFlags: Int): Boolean {
     val toMatch = if(regexFlags.hasFlag(Def.FLAG_REGEX_RAW_NUMBER)) {
         rawNumber
-    } else if (regexFlags.hasFlag(Def.FLAG_REGEX_OMIT_CC)) {
+    } else if (regexFlags.hasFlag(Def.FLAG_REGEX_IGNORE_CC)) {
         val intn = Util.parseInternationalNumber(rawNumber) // it returns Pair<CC, Phone>?
         if (intn != null) {
             intn.second

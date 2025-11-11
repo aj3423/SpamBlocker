@@ -86,7 +86,6 @@ enum class ParamType {
 data class ActionContext(
     val scope: CoroutineScope = CoroutineScope(IO),
 
-    // the error reason when it fails
     var logger: ILogger? = null,
 
     // the output of the previous action

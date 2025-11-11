@@ -186,7 +186,7 @@ object Def {
     const val FLAG_REGEX_RAW_NUMBER = 1 shl 10
     const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
     const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
-    const val FLAG_REGEX_OMIT_CC = 1 shl 13
+    const val FLAG_REGEX_IGNORE_CC = 1 shl 13
 
 
     const val DefaultRegexFlags =  0
@@ -199,7 +199,7 @@ object Def {
         FLAG_REGEX_RAW_NUMBER to "®", // r
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",
-        FLAG_REGEX_OMIT_CC to "🌐",
+        FLAG_REGEX_IGNORE_CC to "🌐",
     )
 
 

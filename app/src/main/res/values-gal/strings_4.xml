@@ -11,34 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Estas bandeiras cambian o comportamento de coincidencia das expresións regulares. <br>
+            Estas bandeiras cambian o comportamento de coincidencia da expresión regular. <br>
             <br>
 
-            <font color="#00BFFF"><b>Número en bruto</b></font>: <br>
-            &ensp; Cando activado, o número de teléfono non se optimizará, <font color="#03DAC5"><b>+</b></font>
-            e <font color="#03DAC5"><b>ceros iniciais</b></font> permanecerán, útil para diferenciar números de teléfono nacionais.<br>
+            <font color="#00BFFF"><b>Número sen formato</b></font>: <br>
+            &ensp; Cando está activado, o número non se optimizará, o <font color="#03DAC5"><b>+</b></font>
+            e os <font color="#03DAC5"><b>ceros iniciais</b></font> permanecerán, útil para diferenciar números domésticos.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omitir Código de País</b></font>: <br>
-            &ensp; Cando activado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código de país</font>
-             serán eliminados dun número de teléfono internacional.<br>
+            <font color="#00BFFF"><b>Ignorar Código de País</b></font>: <br>
+            &ensp; Cando está activado, o <font color="#fa7f71">+</font> inicial e o <font color="#fa7f71">código de país</font>
+             serán eliminados dun número internacional.<br>
             <br>
             Por exemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> como
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> converteranse en <font color="#03DAC5">12345</font>,
-            isto permítelle usar expresións regulares máis sinxelas como `123.*` en lugar de `(33|44)*123.*` para coincidir con números de teléfono internacionais.<br>
+            isto permite usar unha expresión regular máis sinxela `123.*` en lugar de `(33|44)*123.*` para coincidir con números internacionais.<br>
             <br>
 
-            <font color="#00BFFF"><b>Distinción entre maiúsculas e minúsculas</b></font>:<br>
-            &ensp; Por defecto, a coincidencia de expresións regulares non distingue entre maiúsculas e minúsculas, <font color="#03DAC5"><b>a</b></font>
-              coincidiría tanto con <font color="#03DAC5"><b>a</b></font> como con <font color="#03DAC5"><b>A</b></font>. <br>
-            &ensp; Activa isto para que distinga entre maiúsculas e minúsculas. <br>
+            <font color="#00BFFF"><b>Sensible ás Maiúsculas/Minúsculas</b></font>:<br>
+            &ensp; Por defecto, a coincidencia da expresión regular non distingue maiúsculas/minúsculas, unha <font color="#03DAC5"><b>a</b></font>
+              coincidiría tanto con <font color="#03DAC5"><b>a</b></font> coma con <font color="#03DAC5"><b>A</b></font>. <br>
+            &ensp; Activa isto para que sexa sensible ás maiúsculas/minúsculas. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Número en bruto</item>
-        <item>Omitir Código de País</item>
-        <item>Distinción entre maiúsculas e minúsculas</item>
+        <item>Número sen formato</item>
+        <item>Ignorar Código de País</item>
+        <item>Sensible ás Maiúsculas/Minúsculas</item>
     </string-array>
     <string name="disable_number_optimization">Esta optimización pode desactivarse usando a opción da regex \"Número Sen Formato\", toque a icona da bandeira á dereita para activala.</string>
 </resources>

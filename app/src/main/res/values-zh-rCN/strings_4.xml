@@ -11,33 +11,33 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            这些标记改变正则表达式的匹配行为。<br>
+            这些标志更改正则表达式的匹配行为。 <br>
             <br>
 
-            <font color="#00BFFF"><b>原始号码</b></font>:<br>
-            &ensp; 启用后，号码将不被优化，<font color="#03DAC5"><b>+</b></font>
-            和<font color="#03DAC5"><b>前导0</b></font>将保留，有助于区分国内号码。<br>
+            <font color="#00BFFF"><b>原始号码</b></font>: <br>
+            &ensp; 启用后，号码将不会被优化，<font color="#03DAC5"><b>+</b></font>
+            和 <font color="#03DAC5"><b>前导 0</b></font> 将保留，这有助于区分国内号码。<br>
             <br>
 
-            <font color="#00BFFF"><b>省略国家代码</b></font>:<br>
-            &ensp; 启用后，国际号码中的前导<font color="#fa7f71">+</font>和<font color="#fa7f71">国家代码</font>
+            <font color="#00BFFF"><b>忽略国家代码</b></font>: <br>
+            &ensp; 启用后，国际号码中的 <font color="#fa7f71">+</font> 和 <font color="#fa7f71">国家代码</font>
              将被移除。<br>
             <br>
-            例如，<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font>和
-            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font>都将变为<font color="#03DAC5">12345</font>，
-            这允许您使用更简单的正则表达式`123.*`而不是`(33|44)*123.*`来匹配国际号码。<br>
+            例如，<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> 和
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> 都将变为 <font color="#03DAC5">12345</font>，
+            这允许您使用更简单的正则表达式 `123.*` 而不是 `(33|44)*123.*` 来匹配国际号码。<br>
             <br>
 
             <font color="#00BFFF"><b>区分大小写</b></font>:<br>
-            &ensp; 默认情况下，正则表达式匹配不区分大小写，<font color="#03DAC5"><b>a</b></font>
-              将同时匹配<font color="#03DAC5"><b>a</b></font>和<font color="#03DAC5"><b>A</b></font>。<br>
-            &ensp; 启用此项以使其区分大小写。<br>
+            &ensp; 默认情况下，正则表达式匹配是不区分大小写的，<font color="#03DAC5"><b>a</b></font>
+              会匹配 <font color="#03DAC5"><b>a</b></font> 和 <font color="#03DAC5"><b>A</b></font>。 <br>
+            &ensp; 启用此选项使其区分大小写。 <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
         <item>原始号码</item>
-        <item>省略国家代码</item>
+        <item>忽略国家代码</item>
         <item>区分大小写</item>
     </string-array>
     <string name="disable_number_optimization">可以使用正则表达式标志“原始号码”禁用此优化，点击右侧的旗帜图标即可启用。</string>

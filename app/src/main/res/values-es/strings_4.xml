@@ -11,34 +11,34 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Estas banderas cambian el comportamiento de coincidencia de la expresión regular. <br>
+            Estas banderas cambian el comportamiento de coincidencia de la regex. <br>
             <br>
 
-            <font color="#00BFFF"><b>Número en bruto</b></font>: <br>
-            &ensp; Cuando está activado, el número no será optimizado, el <font color="#03DAC5"><b>+</b></font>
-            y los <font color="#03DAC5"><b>ceros iniciales</b></font> se mantendrán, útil para diferenciar números nacionales.<br>
+            <font color="#00BFFF"><b>Número sin procesar</b></font>: <br>
+            &ensp; Cuando está habilitado, el número no se optimizará, <font color="#03DAC5"><b>+</b></font>
+            y los <font color="#03DAC5"><b>ceros iniciales</b></font> permanecerán, útil para diferenciar números domésticos.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omitir Código de País</b></font>: <br>
-            &ensp; Cuando está activado, el <font color="#fa7f71">+</font> inicial y el <font color="#fa7f71">código de país</font>
+            <font color="#00BFFF"><b>Ignorar Código de País</b></font>: <br>
+            &ensp; Cuando está habilitado, el <font color="#fa7f71">+</font> inicial y el <font color="#fa7f71">código de país</font>
              se eliminarán de un número internacional.<br>
             <br>
             Por ejemplo, tanto <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> como
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> se convertirán en <font color="#03DAC5">12345</font>,
-            esto le permite usar una expresión regular más simple `123.*` en lugar de `(33|44)*123.*` para coincidir con números internacionales.<br>
+            esto le permite usar una regex más simple `123.*` en lugar de `(33|44)*123.*` para coincidir con números internacionales.<br>
             <br>
 
-            <font color="#00BFFF"><b>Sensible a Mayúsculas</b></font>:<br>
-            &ensp; Por defecto, la coincidencia de la expresión regular no distingue mayúsculas y minúsculas, una <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Sensible a Mayúsculas y Minúsculas</b></font>:<br>
+            &ensp; Por defecto, la coincidencia de regex no distingue mayúsculas y minúsculas, <font color="#03DAC5"><b>a</b></font>
               coincidiría tanto con <font color="#03DAC5"><b>a</b></font> como con <font color="#03DAC5"><b>A</b></font>. <br>
-            &ensp; Actívelo para que distinga mayúsculas y minúsculas. <br>
+            &ensp; Habilite esto para que distinga mayúsculas y minúsculas. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Número en bruto</item>
-        <item>Omitir Código de País</item>
-        <item>Sensible a Mayúsculas</item>
+        <item>Número sin procesar</item>
+        <item>Ignorar Código de País</item>
+        <item>Sensible a Mayúsculas y Minúsculas</item>
     </string-array>
     <string name="disable_number_optimization">Esta optimización se puede deshabilitar usando la bandera de expresión regular \"Número sin procesar\", toque el icono de la bandera a la derecha para habilitarla.</string>
 </resources>

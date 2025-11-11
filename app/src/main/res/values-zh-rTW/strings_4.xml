@@ -11,28 +11,32 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            這些標記會改變正規表示式的比對行為。<br>
+            這些標誌改變了正規表達式的匹配行為。<br>
             <br>
+
             <font color="#00BFFF"><b>原始號碼</b></font>：<br>
-            &ensp; 啟用時，號碼不會被最佳化，<font color="#03DAC5"><b>+</b></font>
-            和<font color="#03DAC5"><b>前置零</b></font>將被保留，適合用於區分本地號碼。<br>
+            &ensp; 啟用後，號碼將不會被優化，<font color="#03DAC5"><b>+</b></font>
+            和 <font color="#03DAC5"><b>開頭的 0</b></font> 將保留，有助於區分國內號碼。<br>
             <br>
-            <font color="#00BFFF"><b>省略國碼</b></font>：<br>
-            &ensp; 啟用時，將移除國際號碼開頭的<font color="#fa7f71">+</font>和<font color="#fa7f71">國碼</font>。<br>
+
+            <font color="#00BFFF"><b>忽略國碼</b></font>：<br>
+            &ensp; 啟用後，國際號碼開頭的 <font color="#fa7f71">+</font> 和 <font color="#fa7f71">國碼</font>
+             將被移除。<br>
             <br>
             例如，<font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> 和
-            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> 都會變成 <font color="#03DAC5">12345</font>，
-            這讓您可以使用較簡單的正規表示式 `123.*` 而不是 `(33|44)*123.*` 來符合國際號碼。<br>
+            <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> 都將變成 <font color="#03DAC5">12345</font>，
+            這讓您可以使用更簡單的正規表達式 `123.*` 來匹配國際號碼，而不是 `(33|44)*123.*`。<br>
             <br>
+
             <font color="#00BFFF"><b>區分大小寫</b></font>：<br>
-            &ensp; 預設情況下，正規表示式比對不區分大小寫，<font color="#03DAC5"><b>a</b></font>
-              同時會符合 <font color="#03DAC5"><b>a</b></font> 與 <font color="#03DAC5"><b>A</b></font>。<br>
-            &ensp; 啟用此標記即可改為區分大小寫。<br>
+            &ensp; 預設情況下，正規表達式匹配不區分大小寫，<font color="#03DAC5"><b>a</b></font>
+              會同時匹配 <font color="#03DAC5"><b>a</b></font> 和 <font color="#03DAC5"><b>A</b></font>。<br>
+            &ensp; 啟用此選項可使其區分大小寫。<br>
         ]]>
     </string>
     <string-array name="regex_flags_list">
         <item>原始號碼</item>
-        <item>省略國碼</item>
+        <item>忽略國碼</item>
         <item>區分大小寫</item>
     </string-array>
     <string name="disable_number_optimization">可以透過「原始號碼」規則標記停用此最佳化，點選右側的標記圖示即可啟用。</string>

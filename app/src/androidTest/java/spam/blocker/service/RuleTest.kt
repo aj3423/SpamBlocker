@@ -502,14 +502,14 @@ class RuleTest {
         assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER, r.type)
     }
 
-    // regex flags OmitCC
+    // regex flags IgnoreCC
     @Test
-    fun regex_flags_omit_cc() {
+    fun regex_flags_ignore_cc() {
         val internationalNumber = "+3312345"
 
         add_number_rule(
             build_rule("123.*", "", 2, true, Def.FLAG_FOR_CALL,
-                patternFlags = Def.FLAG_REGEX_OMIT_CC)
+                patternFlags = Def.FLAG_REGEX_IGNORE_CC)
         )
 
         // should pass by default

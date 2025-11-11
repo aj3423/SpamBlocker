@@ -11,33 +11,33 @@
 
     <string name="help_regex_flags">
         <![CDATA[
-            Questi flag modificano il comportamento di corrispondenza delle espressioni regolari. <br>
+            Questi flag cambiano il comportamento di corrispondenza dell\'espressione regolare. <br>
             <br>
 
-            <font color="#00BFFF"><b>Numero Originale</b></font>: <br>
+            <font color="#00BFFF"><b>Numero Raw</b></font>: <br>
             &ensp; Quando abilitato, il numero non verrà ottimizzato, <font color="#03DAC5"><b>+</b></font>
-            e <font color="#03DAC5"><b>gli zeri iniziali</b></font> rimarranno, utile per differenziare i numeri nazionali.<br>
+            e gli <font color="#03DAC5"><b>zeri iniziali</b></font> rimarranno, utile per differenziare i numeri nazionali.<br>
             <br>
 
-            <font color="#00BFFF"><b>Ometti Codice Paese</b></font>: <br>
-            &ensp; Quando abilitato, il <font color="#fa7f71">+</font> iniziale e il <font color="#fa7f71">codice paese</font>
+            <font color="#00BFFF"><b>Ignora Prefisso Internazionale</b></font>: <br>
+            &ensp; Quando abilitato, il <font color="#fa7f71">+</font> iniziale e il <font color="#fa7f71">prefisso internazionale</font>
              verranno rimossi da un numero internazionale.<br>
             <br>
             Ad esempio, sia <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> che
             <font color="#fa7f71">+44</font><font color="#03DAC5">12345</font> diventeranno <font color="#03DAC5">12345</font>,
-            questo ti permette di usare una regex più semplice `123.*` invece di `(33|44)*123.*` per trovare corrispondenze con numeri internazionali.<br>
+            questo ti permette di usare una regex più semplice `123.*` invece di `(33|44)*123.*` per abbinare numeri internazionali.<br>
             <br>
 
             <font color="#00BFFF"><b>Sensibile alle Maiuscole/Minuscole</b></font>:<br>
-            &ensp; Per impostazione predefinita, la corrispondenza delle espressioni regolari è insensibile alle maiuscole/minuscole, <font color="#03DAC5"><b>a</b></font>
+            &ensp; Per impostazione predefinita, la corrispondenza regex è insensibile alle maiuscole/minuscole, <font color="#03DAC5"><b>a</b></font>
               corrisponderebbe sia ad <font color="#03DAC5"><b>a</b></font> che ad <font color="#03DAC5"><b>A</b></font>. <br>
             &ensp; Abilita questa opzione per renderla sensibile alle maiuscole/minuscole. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Numero Originale</item>
-        <item>Ometti Codice Paese</item>
+        <item>Numero Raw</item>
+        <item>Ignora Prefisso Internazionale</item>
         <item>Sensibile alle Maiuscole/Minuscole</item>
     </string-array>
     <string name="disable_number_optimization">Questa ottimizzazione può essere disabilitata usando il flag dell\'espressione regolare \"Numero grezzo\", tocca l\'icona del flag a destra per abilitarla.</string>

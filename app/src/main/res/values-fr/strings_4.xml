@@ -14,13 +14,13 @@
             Ces drapeaux modifient le comportement de correspondance de l\'expression régulière. <br>
             <br>
 
-            <font color="#00BFFF"><b>Numéro Brut</b></font> : <br>
-            &ensp; Lorsqu\'activé, le numéro ne sera pas optimisé, <font color="#03DAC5"><b>+</b></font>
-            et les <font color="#03DAC5"><b>zéros en tête</b></font> resteront, utile pour différencier les numéros nationaux.<br>
+            <font color="#00BFFF"><b>Numéro brut</b></font> : <br>
+            &ensp; Lorsque activé, le numéro de téléphone ne sera pas optimisé, le <font color="#03DAC5"><b>+</b></font>
+            et les <font color="#03DAC5"><b>zéros initiaux</b></font> seront conservés, utile pour différencier les numéros de téléphone nationaux.<br>
             <br>
 
-            <font color="#00BFFF"><b>Omettre le code pays</b></font> : <br>
-            &ensp; Lorsqu\'activé, le <font color="#fa7f71">+</font> initial et le <font color="#fa7f71">code pays</font>
+            <font color="#00BFFF"><b>Ignorer l\'indicatif du pays</b></font> : <br>
+            &ensp; Lorsque activé, le <font color="#fa7f71">+</font> initial et l\'<font color="#fa7f71">indicatif du pays</font>
              seront supprimés d\'un numéro international.<br>
             <br>
             Par exemple, <font color="#fa7f71">+33</font><font color="#03DAC5">12345</font> et
@@ -28,16 +28,16 @@
             ce qui vous permet d\'utiliser une expression régulière plus simple `123.*` au lieu de `(33|44)*123.*` pour faire correspondre les numéros internationaux.<br>
             <br>
 
-            <font color="#00BFFF"><b>Sensible à la casse</b></font> :<br>
-            &ensp; Par défaut, la correspondance d\'expressions régulières est insensible à la casse, <font color="#03DAC5"><b>a</b></font>
+            <font color="#00BFFF"><b>Sensible à la casse</b></font>:<br>
+            &ensp; Par défaut, la correspondance de l\'expression régulière est insensible à la casse, <font color="#03DAC5"><b>a</b></font>
               correspondrait à la fois à <font color="#03DAC5"><b>a</b></font> et à <font color="#03DAC5"><b>A</b></font>. <br>
             &ensp; Activez ceci pour la rendre sensible à la casse. <br>
         ]]>
     </string>
 
     <string-array name="regex_flags_list">
-        <item>Numéro Brut</item>
-        <item>Omettre le code pays</item>
+        <item>Numéro brut</item>
+        <item>Ignorer l\'indicatif du pays</item>
         <item>Sensible à la casse</item>
     </string-array>
     <string name="disable_number_optimization">Cette optimisation peut être désactivée en utilisant le drapeau d\'expression régulière \"Numéro Brut\", appuyez sur l\'icône du drapeau à droite pour l\'activer.</string>

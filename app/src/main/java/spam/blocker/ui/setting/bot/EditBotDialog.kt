@@ -29,6 +29,7 @@ import spam.blocker.service.bot.rememberSaveableTriggerState
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
+import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
@@ -112,12 +113,12 @@ fun EditBotDialog(
 
                 // Trigger
                 Section(
-                    title = null,
+                    title = Str(R.string.trigger),
                     bgColor = C.dialogBg
                 ) {
                     Column {
                         // Trigger Type
-                        LabeledRow(R.string.trigger) {
+                        LabeledRow(null) {
                             val triggerItems = remember {
                                 botTriggers.mapIndexed { i, trig ->
                                     LabelItem(
@@ -131,6 +132,7 @@ fun EditBotDialog(
                             }
                             MenuButton(
                                 label = Str(R.string.choose),
+                                color = SkyBlue,
                                 items = triggerItems,
                             )
                         }
@@ -144,14 +146,15 @@ fun EditBotDialog(
                             action = trigger.value,
                             modifier = M.clickable {
                                 editTrigger.value = true
-                            }
+                            },
+                            showDragIndicator = false
                         )
                     }
                 }
 
                 // Actions
                 Section(
-                    title = Str(R.string.workflow),
+                    title = Str(R.string.workflow_actions),
                     bgColor = C.dialogBg
                 ) {
                     Column(modifier = M.fillMaxWidth()) {
