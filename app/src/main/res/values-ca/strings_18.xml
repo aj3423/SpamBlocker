@@ -14,11 +14,16 @@
     <string name="sms_event">Esdeveniment SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        S\'activarà automàticament en els missatges SMS entrants abans que siguin filtrats.<br>
+        Això s\'activarà automàticament en rebre missatges SMS entrants abans que siguin filtrats.<br>
         <br>
         Com funciona: <br>
-        - Si el número i el contingut de l\'SMS coincideixen, el flux de treball s\'executarà.<br>
-        - En cas contrari, el flux de treball finalitzarà.<br>
+        - Si el número de SMS i el contingut coincideixen, el flux de treball s\'executarà.<br>
+        - Altrament, el flux de treball finalitzarà.<br>
+        <br>
+        Cas d\'ús: <br>
+        <font color="#888888">
+        &ensp; Alternar algunes regles després de rebre SMS de guàrdia o fora de guàrdia. <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">L\'esdeveniment SMS %s s\'ha activat.</string>

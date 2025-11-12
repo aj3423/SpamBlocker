@@ -19,6 +19,11 @@
         工作原理: <br>
         - 如果短信号码和内容匹配，工作流将执行。<br>
         - 否则，工作流将终止。<br>
+        <br>
+        用例: <br>
+        <font color="#888888">
+        &ensp; 在收到值班或非值班短信后切换某些规则。<br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">短信事件 %s 已触发。</string>

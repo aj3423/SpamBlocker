@@ -14,11 +14,16 @@
     <string name="sms_event">Evento SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Questo verrà attivato automaticamente sui messaggi SMS in arrivo prima che vengano filtrati.<br>
+        Questo verrà attivato automaticamente sui messaggi SMS in arrivo prima che vengano esaminati.<br>
         <br>
         Come funziona: <br>
-        - Se il numero e il contenuto dell\'SMS corrispondono, il flusso di lavoro verrà eseguito.<br>
+        - Se il numero SMS e il contenuto corrispondono, il flusso di lavoro verrà eseguito.<br>
         - Altrimenti, il flusso di lavoro terminerà.<br>
+        <br>
+        Caso d\'uso: <br>
+        <font color="#888888">
+        &ensp; Attiva/disattiva alcune regole dopo aver ricevuto SMS di reperibilità o non reperibilità. <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">L\'evento SMS %s è stato attivato.</string>

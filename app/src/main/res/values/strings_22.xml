@@ -134,8 +134,21 @@
         ]]>
     </string>
     <string name="duration_in_minutes">Duration (minutes)</string>
-    <string name="help_trigger_manual">Tap the Test button to manually run this workflow.</string>
-    <string name="help_trigger_schedule">Automate task runs on time-driven schedules.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        Tap the <font color="cyan">Test</font> button to manually run this workflow.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        Automate task runs on time-driven schedules. <br>
+        <br>
+        Use cases: <br>
+        &ensp; - <font color="#888888">Download spam numbers from the FTC-DNC registry everyday.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">Auto backup everyday and only keep the last 7 backups.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">Trigger</string>
     <string name="delay_in_seconds">Delay (seconds)</string>
     <string name="help_ringtone_delay">

@@ -133,8 +133,21 @@
     <string name="action_replace_number">Numarayı Değiştir</string>
     <string name="action_import_as_regex_rule">Regex Kuralına Aktar</string>
     <string name="duration_in_minutes">Süre (dakika)</string>
-    <string name="help_trigger_manual">Bu iş akışını manuel olarak çalıştırmak için Test düğmesine dokunun.</string>
-    <string name="help_trigger_schedule">Görev çalıştırmalarını zamana dayalı programlarda otomatikleştirin.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        <font color="cyan">Test</font> düğmesine dokunarak bu iş akışını manuel olarak çalıştırın.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        Görev çalışmalarını zamana bağlı programlarla otomatikleştirin. <br>
+        <br>
+        Kullanım senaryoları: <br>
+        &ensp; - <font color="#888888">Her gün FTC-DNC kaydından istenmeyen (spam) numaraları indirin.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">Her gün otomatik yedekleme yapın ve yalnızca son 7 yedeği saklayın.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">Tetikleyici</string>
     <string name="delay_in_seconds">Gecikme (saniye)</string>
     <string name="help_ringtone_delay">

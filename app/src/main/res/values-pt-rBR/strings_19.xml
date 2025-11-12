@@ -3,13 +3,19 @@
     <string name="call_event_is_triggered">O evento de chamada %s foi acionado.</string>
     <string name="help_call_event">
         <![CDATA[
-        Pré-processa o número de telefone recebido antes que ele seja verificado pelas regras, tornando possível modificar as regras em tempo real.<br>
+        Pré-processa o número de telefone recebido antes de ser verificado pelas regras, tornando possível modificar as regras em tempo real.<br>
         <br>
-        Esse fluxo de trabalho será acionado automaticamente por uma chamada recebida.<br>
+        Tal fluxo de trabalho será acionado automaticamente por uma chamada recebida.<br>
         <br>
-        <font color="#00BFFF"><b>Uma configuração de fluxo de trabalho típica:</b></font><br>
-        - <b>Evento de Chamada</b> <br>
-        - <b>Modificar Número</b>
+        Caso de uso: <br>
+        <font color="#888888">
+          &ensp; Remover caracteres extras do início do número de telefone antes da triagem,
+          pois algumas operadoras suportam números duplos em um único cartão SIM. <br>
+        </font>
+        <br>
+        Uma configuração típica:<br>
+        - Evento de Chamada <br>
+        - Modificar Número
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

@@ -1,15 +1,21 @@
 <resources>
     <string name="call_event">來電事件</string>
-    <string name="call_event_is_triggered">來電事件 %s 已觸發。</string>
+    <string name="call_event_is_triggered">來電事件 %s 已被觸發。</string>
     <string name="help_call_event">
         <![CDATA[
-        在規則檢查之前預處理來電號碼，使其能夠即時修改規則。<br>
+        在來電號碼被規則檢查之前進行預處理，以便能夠即時修改規則。<br>
         <br>
-        這樣的工作流程將在有來電時自動觸發。<br>
+        此工作流程將在有來電時自動觸發。<br>
         <br>
-        <font color="#00BFFF"><b>典型的工作流程設定：</b></font><br>
-        - <b>通話事件</b> <br>
-        - <b>修改號碼</b>
+        使用案例：<br>
+        <font color="#888888">
+          &ensp; 在篩選之前從電話號碼中移除額外的開頭字元，
+          因為某些電信業者支援單一 SIM 卡雙號碼。<br>
+        </font>
+        <br>
+        典型設定：<br>
+        - 來電事件<br>
+        - 修改號碼
         ]]>
     </string>
     <string name="action_modify_number">修改號碼</string>

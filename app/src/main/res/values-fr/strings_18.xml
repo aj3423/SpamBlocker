@@ -14,11 +14,16 @@
     <string name="sms_event">Événement SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Ceci sera automatiquement déclenché lors des messages SMS entrants avant qu\'ils ne soient filtrés.<br>
+        Cela sera automatiquement déclenché sur les messages SMS entrants avant qu\'ils ne soient filtrés.<br>
         <br>
         Comment ça marche : <br>
-        - Si le numéro et le contenu du SMS correspondent, le flux de travail sera exécuté.<br>
+        - Si le numéro SMS et le contenu correspondent, le flux de travail sera exécuté.<br>
         - Sinon, le flux de travail se terminera.<br>
+        <br>
+        Cas d\'utilisation : <br>
+        <font color="#888888">
+        &ensp; Basculer certaines règles après avoir reçu des SMS de garde ou de fin de garde. <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">L\'événement SMS %s est déclenché.</string>

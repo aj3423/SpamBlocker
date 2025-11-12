@@ -133,8 +133,21 @@
     <string name="action_replace_number">החלף מספר</string>
     <string name="action_import_as_regex_rule">ייבא ככלל ביטוי רגולרי</string>
     <string name="duration_in_minutes">משך זמן (דקות)</string>
-    <string name="help_trigger_manual">הקש על כפתור הבדיקה כדי להפעיל זרימת עבודה זו ידנית.</string>
-    <string name="help_trigger_schedule">הפוך הרצת משימות לאוטומטית בלוחות זמנים מבוססי זמן.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        הקש על כפתור <font color="cyan">בדיקה</font> כדי להפעיל זרימת עבודה זו ידנית.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        אוטומט הרצת משימות לפי לוחות זמנים מבוססי זמן. <br>
+        <br>
+        מקרי שימוש: <br>
+        &ensp; - <font color="#888888">הורד מספרי ספאם מרישום FTC-DNC כל יום.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">גיבוי אוטומטי כל יום ושמור רק את 7 הגיבויים האחרונים.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">הפעל</string>
     <string name="delay_in_seconds">השהיה (שניות)</string>
     <string name="help_ringtone_delay">

@@ -133,8 +133,21 @@
     <string name="action_replace_number">جایگزینی شماره</string>
     <string name="action_import_as_regex_rule">وارد کردن به قانون عبارت منظم</string>
     <string name="duration_in_minutes">مدت زمان (دقیقه)</string>
-    <string name="help_trigger_manual">روی دکمه تست ضربه بزنید تا این گردش کار را به صورت دستی اجرا کنید.</string>
-    <string name="help_trigger_schedule">اجرای وظایف را بر اساس برنامه‌های زمان‌بندی شده خودکار کنید.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        برای اجرای دستی این گردش کار، روی دکمه <font color="cyan">تست</font> ضربه بزنید.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        اجرای وظایف را بر اساس برنامه‌های زمانی خودکار کنید. <br>
+        <br>
+        موارد استفاده: <br>
+        &ensp; - <font color="#888888">هر روز شماره‌های اسپم را از ثبت‌نام FTC-DNC دانلود کنید.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">هر روز به صورت خودکار پشتیبان‌گیری کنید و فقط ۷ پشتیبان آخر را نگه دارید.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">راه انداز</string>
     <string name="delay_in_seconds">تأخیر (ثانیه)</string>
     <string name="help_ringtone_delay">

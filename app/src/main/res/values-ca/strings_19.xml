@@ -1,15 +1,21 @@
 <resources>
-    <string name="call_event">Esdeveniment de Trucada</string>
+    <string name="call_event">Esdeveniment de trucada</string>
     <string name="call_event_is_triggered">L\'esdeveniment de trucada %s s\'ha activat.</string>
     <string name="help_call_event">
         <![CDATA[
-        Preprocessa el número entrant abans que sigui revisat per les regles, fent possible modificar les regles al moment.<br>
+        Preprocessa el número entrant abans que sigui verificat per les regles, fent possible modificar les regles al moment.<br>
         <br>
-        Aquest flux de treball s\'activarà automàticament per una trucada entrant.<br>
+        Aquest flux de treball s\'activarà automàticament amb una trucada entrant.<br>
         <br>
-        <font color="#00BFFF"><b>Una configuració de flux de treball típica:</b></font><br>
-        - <b>Esdeveniment de trucada</b> <br>
-        - <b>Modificar número</b>
+        Cas d\'ús: <br>
+        <font color="#888888">
+          &ensp; Eliminar caràcters addicionals del número de telèfon abans de la detecció,
+          ja que alguns operadors admeten números duals en una sola targeta SIM. <br>
+        </font>
+        <br>
+        Una configuració típica:<br>
+        - Esdeveniment de trucada <br>
+        - Modificar número
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

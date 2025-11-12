@@ -34,34 +34,6 @@
         Els fluxos de treball es poden utilitzar per executar tasques automàticament, es poden activar per programació o esdeveniments. <br>
         <br>
         Hi ha preajustos per a una configuració ràpida, també pots crear-ho des de zero o importar-ho d\'un JSON compartit per altres usuaris.<br>
-        <br>
-        <b>Disparadors:</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Programació</b></font> <br>
-        S\'activa en una data i hora específiques. <br>
-        <br>
-        Cas d\'ús: <br>
-        &ensp; - Còpia de seguretat automàtica cada dia i només mantenir les còpies de seguretat durant 7 dies. <br>
-        &ensp; - Descàrrega automàtica de números spam del registre FTC-DNC cada dia. <br>
-        <br>
-        <font color="#00BFFF"><b>Esdeveniment de calendari</b></font> <br>
-        S\'activa si es rep una trucada durant esdeveniments de calendari específics. <br>
-        <br>
-        Cas d\'ús: <br>
-        &ensp; - Durant l\'esdeveniment de calendari \"feina\", desactiva temporalment la regla \"silenciar cap\". <br>
-        <br>
-        <font color="#00BFFF"><b>Esdeveniment de trucada</b></font> <br>
-        S\'activa en rebre una trucada entrant. <br>
-        <br>
-        Cas d\'ús: <br>
-        &ensp; - Elimina caràcters inicials addicionals del número de telèfon abans del cribratge,
-          ja que alguns operadors admeten números duals en una sola targeta SIM. <br>
-        <br>
-        <font color="#00BFFF"><b>Esdeveniment SMS</b></font> <br>
-        S\'activa en rebre un SMS entrant. <br>
-        <br>
-        Cas d\'ús: <br>
-        &ensp; - Activa/desactiva algunes regles després de rebre SMS de guàrdia o fora de guàrdia. <br>
         ]]>
     </string>
     <string name="manual">Manual</string>

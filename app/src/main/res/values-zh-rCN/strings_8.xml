@@ -34,34 +34,6 @@
         工作流可用于自动运行任务，可通过计划或事件触发。 <br>
         <br>
         有预设可供快速设置，您也可以从头开始构建，或从其他用户共享的 JSON 文件导入。<br>
-        <br>
-        <b>触发器：</b> <br>
-        <br>
-        <font color="#00BFFF"><b>计划</b></font> <br>
-        在特定日期和时间触发。 <br>
-        <br>
-        用例： <br>
-        &ensp; - 每天自动备份并仅保留 7 天的备份。 <br>
-        &ensp; - 每天从 FTC-DNC 注册表自动下载垃圾电话号码。 <br>
-        <br>
-        <font color="#00BFFF"><b>日历事件</b></font> <br>
-        如果在特定日历事件期间接到电话，则触发。 <br>
-        <br>
-        用例： <br>
-        &ensp; - 在日历事件“工作”期间，暂时禁用规则“静音老板”。 <br>
-        <br>
-        <font color="#00BFFF"><b>呼叫事件</b></font> <br>
-        在有来电时触发。 <br>
-        <br>
-        用例： <br>
-        &ensp; - 在筛选前从电话号码中删除多余的前导字符，
-          因为某些运营商在单个 SIM 卡上支持双号码。 <br>
-        <br>
-        <font color="#00BFFF"><b>短信事件</b></font> <br>
-        在收到短信时触发。 <br>
-        <br>
-        用例： <br>
-        &ensp; - 在收到值班或非值班短信后切换某些规则。 <br>
         ]]>
     </string>
     <string name="manual">手动</string>

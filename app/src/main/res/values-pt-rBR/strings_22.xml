@@ -133,8 +133,21 @@
     <string name="action_replace_number">Substituir Número</string>
     <string name="action_import_as_regex_rule">Importar para Regra Regex</string>
     <string name="duration_in_minutes">Duração (minutos)</string>
-    <string name="help_trigger_manual">Toque no botão Testar para executar manualmente este fluxo de trabalho.</string>
-    <string name="help_trigger_schedule">Automatize a execução de tarefas em programações baseadas em tempo.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        Toque no botão <font color="cyan">Testar</font> para executar manualmente este fluxo de trabalho.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        Automatiza a execução de tarefas em programações baseadas em tempo. <br>
+        <br>
+        Casos de uso: <br>
+        &ensp; - <font color="#888888">Baixar números de spam do registro FTC-DNC todos os dias.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">Backup automático todos os dias e manter apenas os últimos 7 backups.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">Gatilho</string>
     <string name="delay_in_seconds">Atraso (segundos)</string>
     <string name="help_ringtone_delay">

@@ -14,11 +14,16 @@
     <string name="sms_event">SMSイベント</string>
     <string name="help_sms_event">
         <![CDATA[
-        これは、受信SMSメッセージがスクリーニングされる前に自動的にトリガーされます。<br>
+        これは、着信SMSメッセージがスクリーニングされる前に自動的にトリガーされます。<br>
         <br>
-        動作方法: <br>
-        - SMSの電話番号と内容が一致する場合、ワークフローが実行されます。<br>
+        動作の仕組み:<br>
+        - SMS番号と内容が一致する場合、ワークフローが実行されます。<br>
         - それ以外の場合、ワークフローは終了します。<br>
+        <br>
+        使用例:<br>
+        <font color="#888888">
+        &ensp; オンコールまたはオフコールのSMSを受信した後、一部のルールを切り替えます。<br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">SMSイベント %s がトリガーされました。</string>

@@ -31,37 +31,9 @@
     <string name="automation">Automation</string>
     <string name="help_workflows">
         <![CDATA[
-        Workflows can be used to run tasks automatically, it can be triggered by schedule or events. <br>
+        Workflows can be used to run tasks automatically, they can be triggered by schedule or events. <br>
         <br>
         There are presets for a quick setup, you can also build it from scratch, or import from a json that shared from other users.<br>
-        <br>
-        <b>Triggers:</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Schedule</b></font> <br>
-        Triggered at specific date and time. <br>
-        <br>
-        Use case: <br>
-        &ensp; - Auto backup everyday and only keep backups for 7 days. <br>
-        &ensp; - Auto download spam numbers from the FTC-DNC registry everyday. <br>
-        <br>
-        <font color="#00BFFF"><b>Calendar Event</b></font> <br>
-        Triggered if a call is received during specific calendar events. <br>
-        <br>
-        Use case: <br>
-        &ensp; - During the calendar event \"work\", temporarily disable rule \"mute boss\". <br>
-        <br>
-        <font color="#00BFFF"><b>Call Event</b></font> <br>
-        Triggered upon an incoming call. <br>
-        <br>
-        Use case: <br>
-        &ensp; - Remove extra leading characters from the phone number before screening,
-          as some carriers support dual numbers on a single SIM card. <br>
-        <br>
-        <font color="#00BFFF"><b>SMS Event</b></font> <br>
-        Triggered upon an incoming sms. <br>
-        <br>
-        Use case: <br>
-        &ensp; - Toggle some rules after receiving on-call or off-call SMS. <br>
         ]]>
     </string>
     <string name="manual">Manual</string>

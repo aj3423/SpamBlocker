@@ -1,15 +1,21 @@
 <resources>
     <string name="call_event">Evento de Chamada</string>
-    <string name="call_event_is_triggered">O evento de chamada %s foi desencadeado.</string>
+    <string name="call_event_is_triggered">O evento de chamada %s foi activado.</string>
     <string name="help_call_event">
         <![CDATA[
-        Preprocesar o número entrante antes de que sexa verificado polas regras, permitindo modificar as regras ao instante.<br>
+        Preprocesa o número entrante antes de que sexa comprobado polas regras, posibilitando modificar as regras sobre a marcha.<br>
         <br>
-        Tal fluxo de traballo activarase automaticamente cunha chamada entrante.<br>
+        Este fluxo de traballo activarase automaticamente cunha chamada entrante.<br>
         <br>
-        <font color="#00BFFF"><b>Unha configuración de fluxo de traballo típica:</b></font><br>
-        - <b>Evento de Chamada</b> <br>
-        - <b>Modificar Número</b>
+        Caso de uso: <br>
+        <font color="#888888">
+          &ensp; Eliminar caracteres iniciais extra do número de teléfono antes da filtrado,
+          xa que algunhas operadoras admiten números duais nunha única tarxeta SIM. <br>
+        </font>
+        <br>
+        Unha configuración típica:<br>
+        - Evento de Chamada <br>
+        - Modificar Número
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

@@ -34,34 +34,6 @@
         I flussi di lavoro possono essere utilizzati per eseguire attività automaticamente, possono essere attivati da una pianificazione o da eventi. <br>
         <br>
         Ci sono preimpostazioni per una configurazione rapida, puoi anche crearli da zero, o importarli da un JSON condiviso da altri utenti.<br>
-        <br>
-        <b>Trigger:</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Pianificazione</b></font> <br>
-        Attivato a data e ora specifiche. <br>
-        <br>
-        Caso d\'uso: <br>
-        &ensp; - Backup automatico ogni giorno e mantenimento dei backup per soli 7 giorni. <br>
-        &ensp; - Download automatico dei numeri spam dal registro <no_translate>FTC-DNC</no_translate> ogni giorno. <br>
-        <br>
-        <font color="#00BFFF"><b>Evento Calendario</b></font> <br>
-        Attivato se una chiamata viene ricevuta durante specifici eventi del calendario. <br>
-        <br>
-        Caso d\'uso: <br>
-        &ensp; - Durante l\'evento del calendario \"lavoro\", disabilita temporaneamente la regola \"silenzia capo\". <br>
-        <br>
-        <font color="#00BFFF"><b>Evento Chiamata</b></font> <br>
-        Attivato alla ricezione di una chiamata in arrivo. <br>
-        <br>
-        Caso d\'uso: <br>
-        &ensp; - Rimuovi i caratteri iniziali extra dal numero di telefono prima dello screening,
-          poiché alcuni operatori supportano doppi numeri su una singola SIM. <br>
-        <br>
-        <font color="#00BFFF"><b>Evento SMS</b></font> <br>
-        Attivato alla ricezione di un SMS in arrivo. <br>
-        <br>
-        Caso d\'uso: <br>
-        &ensp; - Attiva/disattiva alcune regole dopo aver ricevuto SMS di inizio o fine reperibilità. <br>
         ]]>
     </string>
     <string name="manual">Manuale</string>

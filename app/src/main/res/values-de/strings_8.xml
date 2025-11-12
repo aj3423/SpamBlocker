@@ -34,34 +34,6 @@
         Workflows können verwendet werden, um Aufgaben automatisch auszuführen, sie können durch Zeitpläne oder Ereignisse ausgelöst werden. <br>
         <br>
         Es gibt Voreinstellungen für eine schnelle Einrichtung, Sie können sie auch von Grund auf neu erstellen oder aus einem JSON importieren, das von anderen Benutzern geteilt wurde.<br>
-        <br>
-        <b>Auslöser:</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Zeitplan</b></font> <br>
-        Wird zu einem bestimmten Datum und einer bestimmten Uhrzeit ausgelöst. <br>
-        <br>
-        Anwendungsfall: <br>
-        &ensp; - Täglich automatische Sicherung und Speicherung der Sicherungen für nur 7 Tage. <br>
-        &ensp; - Täglicher automatischer Download von Spam-Nummern aus dem FTC-DNC-Register. <br>
-        <br>
-        <font color="#00BFFF"><b>Kalenderereignis</b></font> <br>
-        Wird ausgelöst, wenn ein Anruf während bestimmter Kalenderereignisse eingeht. <br>
-        <br>
-        Anwendungsfall: <br>
-        &ensp; - Während des Kalenderereignisses „Arbeit“ die Regel „Chef stumm schalten“ vorübergehend deaktivieren. <br>
-        <br>
-        <font color="#00BFFF"><b>Anrufereignis</b></font> <br>
-        Wird bei einem eingehenden Anruf ausgelöst. <br>
-        <br>
-        Anwendungsfall: <br>
-        &ensp; - Zusätzliche führende Zeichen aus der Telefonnummer vor der Überprüfung entfernen,
-          da einige Anbieter Dual-Nummern auf einer einzigen SIM-Karte unterstützen. <br>
-        <br>
-        <font color="#00BFFF"><b>SMS-Ereignis</b></font> <br>
-        Wird bei einer eingehenden SMS ausgelöst. <br>
-        <br>
-        Anwendungsfall: <br>
-        &ensp; - Einige Regeln nach Erhalt von Bereitschafts- oder Nicht-Bereitschafts-SMS umschalten. <br>
         ]]>
     </string>
     <string name="manual">Manuell</string>

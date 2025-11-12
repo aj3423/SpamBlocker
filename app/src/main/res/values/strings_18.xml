@@ -36,6 +36,11 @@
         How it works: <br>
         - If the SMS number and content match, the workflow will get executed.<br>
         - Otherwise, the workflow will terminate.<br>
+        <br>
+        Use case: <br>
+        <font color="#888888">
+        &ensp; Toggle some rules after receiving on-call or off-call SMS. <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">SMS event %s is triggered.</string>

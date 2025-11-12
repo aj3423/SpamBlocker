@@ -34,34 +34,6 @@
         Alur kerja dapat digunakan untuk menjalankan tugas secara otomatis, dapat dipicu oleh jadwal atau peristiwa. <br>
         <br>
         Terdapat preset untuk pengaturan cepat, Anda juga dapat membuatnya dari awal, atau mengimpor dari json yang dibagikan dari pengguna lain.<br>
-        <br>
-        <b>Pemicu:</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Jadwal</b></font> <br>
-        Dipicu pada tanggal dan waktu tertentu. <br>
-        <br>
-        Kasus penggunaan: <br>
-        &ensp; - Pencadangan otomatis setiap hari dan hanya menyimpan cadangan selama 7 hari. <br>
-        &ensp; - Unduh otomatis nomor spam dari registri FTC-DNC setiap hari. <br>
-        <br>
-        <font color="#00BFFF"><b>Acara Kalender</b></font> <br>
-        Dipicu jika panggilan diterima selama acara kalender tertentu. <br>
-        <br>
-        Kasus penggunaan: <br>
-        &ensp; - Selama acara kalender \"kerja\", nonaktifkan sementara aturan \"bisukan atasan\". <br>
-        <br>
-        <font color="#00BFFF"><b>Acara Panggilan</b></font> <br>
-        Dipicu saat ada panggilan masuk. <br>
-        <br>
-        Kasus penggunaan: <br>
-        &ensp; - Hapus karakter awal ekstra dari nomor telepon sebelum penyaringan,
-          karena beberapa operator mendukung nomor ganda pada satu kartu SIM. <br>
-        <br>
-        <font color="#00BFFF"><b>Acara SMS</b></font> <br>
-        Dipicu saat ada SMS masuk. <br>
-        <br>
-        Kasus penggunaan: <br>
-        &ensp; - Alihkan beberapa aturan setelah menerima SMS on-call atau off-call. <br>
         ]]>
     </string>
     <string name="manual">Manual</string>

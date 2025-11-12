@@ -133,8 +133,21 @@
     <string name="action_replace_number">取代電話號碼</string>
     <string name="action_import_as_regex_rule">匯入為正則表達式規則</string>
     <string name="duration_in_minutes">持續時間 (分鐘)</string>
-    <string name="help_trigger_manual">點擊「測試」按鈕以手動執行此工作流程。</string>
-    <string name="help_trigger_schedule">根據時間排程自動執行任務。</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        點擊 <font color="cyan">測試</font> 按鈕以手動運行此工作流程。
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        根據時間驅動的排程自動執行任務。 <br>
+        <br>
+        使用案例： <br>
+        &ensp; - <font color="#888888">每天從 FTC-DNC 註冊表下載垃圾電話號碼。</font> <br>
+        <br>
+        &ensp; - <font color="#888888">每天自動備份，並且只保留最後 7 個備份。</font> <br>
+        ]]>
+    </string>
     <string name="trigger">觸發</string>
     <string name="delay_in_seconds">延遲 (秒)</string>
     <string name="help_ringtone_delay">

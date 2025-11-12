@@ -34,34 +34,6 @@
         Les flux de travail peuvent être utilisés pour exécuter des tâches automatiquement, ils peuvent être déclenchés par une planification ou des événements. <br>
         <br>
         Il existe des préréglages pour une configuration rapide, vous pouvez également le construire à partir de zéro, ou importer à partir d\'un fichier JSON partagé par d\'autres utilisateurs.<br>
-        <br>
-        <b>Déclencheurs :</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Planification</b></font> <br>
-        Déclenché à une date et une heure spécifiques. <br>
-        <br>
-        Cas d\'utilisation : <br>
-        &ensp; - Sauvegarde automatique quotidienne et ne conserve les sauvegardes que pendant 7 jours. <br>
-        &ensp; - Téléchargement automatique quotidien des numéros de spam du registre FTC-DNC. <br>
-        <br>
-        <font color="#00BFFF"><b>Événement Calendrier</b></font> <br>
-        Déclenché si un appel est reçu pendant des événements de calendrier spécifiques. <br>
-        <br>
-        Cas d\'utilisation : <br>
-        &ensp; - Pendant l\'événement calendrier « travail », désactiver temporairement la règle « couper le patron ». <br>
-        <br>
-        <font color="#00BFFF"><b>Événement d\'Appel</b></font> <br>
-        Déclenché lors d\'un appel entrant. <br>
-        <br>
-        Cas d\'utilisation : <br>
-        &ensp; - Supprimer les caractères de début supplémentaires du numéro de téléphone avant le filtrage,
-          car certains opérateurs prennent en charge les numéros doubles sur une seule carte SIM. <br>
-        <br>
-        <font color="#00BFFF"><b>Événement SMS</b></font> <br>
-        Déclenché lors d\'un SMS entrant. <br>
-        <br>
-        Cas d\'utilisation : <br>
-        &ensp; - Activer/désactiver certaines règles après avoir reçu des SMS de garde ou hors garde. <br>
         ]]>
     </string>
     <string name="manual">Manuel</string>

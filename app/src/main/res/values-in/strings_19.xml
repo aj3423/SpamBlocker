@@ -1,15 +1,21 @@
 <resources>
     <string name="call_event">Peristiwa Panggilan</string>
-    <string name="call_event_is_triggered">Peristiwa panggilan %s dipicu.</string>
+    <string name="call_event_is_triggered">Peristiwa panggilan %s telah dipicu.</string>
     <string name="help_call_event">
         <![CDATA[
-        Memproses nomor masuk sebelum diperiksa oleh aturan, memungkinkan modifikasi aturan secara langsung.<br>
+        Memproses nomor masuk sebelum diperiksa oleh aturan, memungkinkan untuk mengubah aturan dengan cepat.<br>
         <br>
-        Alur kerja seperti ini akan otomatis dipicu oleh panggilan masuk.<br>
+        Alur kerja semacam itu akan secara otomatis dipicu oleh panggilan masuk.<br>
         <br>
-        <font color="#00BFFF"><b>Pengaturan alur kerja umum:</b></font><br>
-        - <b>Peristiwa Panggilan</b> <br>
-        - <b>Modifikasi Nomor</b>
+        Contoh kasus: <br>
+        <font color="#888888">
+          &ensp; Hapus karakter awalan ekstra dari nomor telepon sebelum penyaringan,
+          karena beberapa operator mendukung nomor ganda pada satu kartu SIM. <br>
+        </font>
+        <br>
+        Pengaturan umum:<br>
+        - Peristiwa Panggilan <br>
+        - Ubah Nomor
         ]]>
     </string>
     <string name="action_modify_number">Modifikasi Nomor Telepon</string>

@@ -34,33 +34,6 @@
         İş akışları görevleri otomatik olarak çalıştırmak için kullanılabilir, zamanlamaya veya olaylara göre tetiklenebilir. <br>
         <br>
         Hızlı kurulum için hazır ayarlar mevcuttur, ayrıca sıfırdan oluşturabilir veya diğer kullanıcılar tarafından paylaşılan bir JSON\'dan içe aktarabilirsiniz.<br>
-        <br>
-        <b>Tetikleyiciler:</b> <br>
-        <br>
-        <font color="#00BFFF"><b>Zamanlama</b></font> <br>
-        Belirli bir tarih ve saatte tetiklenir. <br>
-        <br>
-        Kullanım örnekleri: <br>
-        &ensp; - Her gün otomatik yedekleme yapın ve yedekleri sadece 7 gün saklayın. <br>
-        &ensp; - Her gün FTC-DNC kaydından spam telefon numaralarını otomatik indirin. <br>
-        <br>
-        <font color="#00BFFF"><b>Takvim Olayı</b></font> <br>
-        Belirli takvim olayları sırasında bir arama alındığında tetiklenir. <br>
-        <br>
-        Kullanım örnekleri: <br>
-        &ensp; - \"İş\" takvim olayı sırasında \"patronu sustur\" kuralını geçici olarak devre dışı bırakın. <br>
-        <br>
-        <font color="#00BFFF"><b>Arama Olayı</b></font> <br>
-        Gelen bir arama üzerine tetiklenir. <br>
-        <br>
-        Kullanım örnekleri: <br>
-        &ensp; - Bazı operatörler tek bir SIM kartta çift telefon numarasını desteklediğinden, engellemeden önce telefon numarasındaki fazladan baştaki karakterleri kaldırın. <br>
-        <br>
-        <font color="#00BFFF"><b>SMS Olayı</b></font> <br>
-        Gelen bir SMS üzerine tetiklenir. <br>
-        <br>
-        Kullanım örnekleri: <br>
-        &ensp; - Görevde veya görev dışı SMS aldıktan sonra bazı kuralları değiştirin. <br>
         ]]>
     </string>
     <string name="manual">Kılavuz</string>

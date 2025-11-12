@@ -133,8 +133,21 @@
     <string name="action_replace_number">Ganti Nomor Telepon</string>
     <string name="action_import_as_regex_rule">Impor ke Aturan Regex</string>
     <string name="duration_in_minutes">Durasi (menit)</string>
-    <string name="help_trigger_manual">Ketuk tombol Uji untuk menjalankan alur kerja ini secara manual.</string>
-    <string name="help_trigger_schedule">Otomatisasi jalannya tugas pada jadwal berbasis waktu.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        Ketuk tombol <font color="cyan">Uji</font> untuk menjalankan alur kerja ini secara manual.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        Otomatiskan menjalankan tugas sesuai jadwal berbasis waktu. <br>
+        <br>
+        Kasus penggunaan: <br>
+        &ensp; - <font color="#888888">Unduh nomor spam dari registri FTC-DNC setiap hari.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">Cadangkan otomatis setiap hari dan hanya simpan 7 cadangan terakhir.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">Pemicu</string>
     <string name="delay_in_seconds">Penundaan (detik)</string>
     <string name="help_ringtone_delay">

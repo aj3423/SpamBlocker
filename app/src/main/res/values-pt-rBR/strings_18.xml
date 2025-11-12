@@ -17,11 +17,16 @@
         Isso será acionado automaticamente em mensagens SMS recebidas antes que sejam rastreadas.<br>
         <br>
         Como funciona: <br>
-        - Se o número de telefone do SMS e o conteúdo corresponderem, o fluxo de trabalho será executado.<br>
+        - Se o número de SMS e o conteúdo corresponderem, o fluxo de trabalho será executado.<br>
         - Caso contrário, o fluxo de trabalho será encerrado.<br>
+        <br>
+        Caso de uso: <br>
+        <font color="#888888">
+        &ensp; Alternar algumas regras após receber SMS de plantão ou fora de plantão. <br>
+        </font>
         ]]>
     </string>
-    <string name="sms_event_triggered">O evento de SMS %s foi acionado.</string>
+    <string name="sms_event_triggered">Evento de SMS %s foi acionado.</string>
     <string name="use_global_testing_instead">Use o teste global em vez disso.</string>
     <string name="missing_permissions">As seguintes permissões foram concedidas anteriormente, mas estão atualmente ausentes:</string>
     <string name="grant_permissions">Conceder Permissões</string>

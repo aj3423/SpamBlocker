@@ -14,14 +14,19 @@
     <string name="sms_event">אירוע SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        זה יופעל אוטומטית על הודעות SMS נכנסות לפני שהן מסוננות.<br>
+        זה יופעל אוטומטית בהודעות SMS נכנסות לפני שהן מסוננות.<br>
         <br>
         איך זה עובד: <br>
-        - אם מספר טלפון ה-SMS והתוכן תואמים, זרימת העבודה תבוצע.<br>
-        - אחרת, זרימת העבודה תסתיים.<br>
+        - אם מספר ה-SMS והתוכן תואמים, זרימת העבודה תבוצע.<br>
+        - אחרת, זרימת העבודה תופסק.<br>
+        <br>
+        מקרה שימוש: <br>
+        <font color="#888888">
+        &ensp; הפעל/השבת כללים מסוימים לאחר קבלת SMS של כוננות או יציאה מכוננות. <br>
+        </font>
         ]]>
     </string>
-    <string name="sms_event_triggered">אירוע SMS %s הופעל.</string>
+    <string name="sms_event_triggered">אירוע ה-SMS %s הופעל.</string>
     <string name="use_global_testing_instead">השתמש בבדיקה הגלובלית במקום זאת.</string>
     <string name="missing_permissions">ההרשאות הבאות ניתנו בעבר אך חסרות כעת:</string>
     <string name="grant_permissions">הענק הרשאות</string>

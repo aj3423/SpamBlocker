@@ -14,14 +14,19 @@
     <string name="sms_event">Evento de SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Isto activarase automaticamente nas mensaxes SMS entrantes antes de que sexan filtradas.<br>
+        Isto activarase automaticamente coas mensaxes SMS entrantes antes de que sexan filtradas.<br>
         <br>
         Como funciona: <br>
-        - Se o número SMS e o contido coinciden, o fluxo de traballo executarase.<br>
-        - Se non, o fluxo de traballo rematará.<br>
+        - Se o número de SMS e o contido coinciden, o fluxo de traballo executarase.<br>
+        - En caso contrario, o fluxo de traballo rematará.<br>
+        <br>
+        Caso de uso: <br>
+        <font color="#888888">
+        &ensp; Activar/desactivar algunhas regras despois de recibir SMS de garda ou fóra de garda. <br>
+        </font>
         ]]>
     </string>
-    <string name="sms_event_triggered">O evento de SMS %s activouse.</string>
+    <string name="sms_event_triggered">O evento SMS %s activouse.</string>
     <string name="use_global_testing_instead">Usa as probas globais no seu lugar.</string>
     <string name="missing_permissions">Os seguintes permisos foron concedidos previamente pero están actualmente ausentes:</string>
     <string name="grant_permissions">Conceder Permisos</string>

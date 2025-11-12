@@ -133,8 +133,21 @@
     <string name="action_replace_number">استبدال الرقم</string>
     <string name="action_import_as_regex_rule">استيراد كقاعدة تعبير نمطي</string>
     <string name="duration_in_minutes">المدة (بالدقائق)</string>
-    <string name="help_trigger_manual">اضغط على زر الاختبار لتشغيل سير العمل هذا يدويًا.</string>
-    <string name="help_trigger_schedule">أتمتة تشغيل المهام بناءً على جداول زمنية.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        اضغط على زر <font color="cyan">الاختبار</font> لتشغيل سير العمل هذا يدويًا.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        أتمتة تشغيل المهام في جداول زمنية محددة. <br>
+        <br>
+        حالات الاستخدام: <br>
+        &ensp; - <font color="#888888">تنزيل أرقام المكالمات المزعجة من سجل FTC-DNC يوميًا.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">النسخ الاحتياطي التلقائي يوميًا والاحتفاظ بآخر 7 نسخ احتياطية فقط.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">المشغل</string>
     <string name="delay_in_seconds">تأخير (ثواني)</string>
     <string name="help_ringtone_delay">

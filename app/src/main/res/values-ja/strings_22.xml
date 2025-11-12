@@ -133,8 +133,21 @@
     <string name="action_replace_number">電話番号の置換</string>
     <string name="action_import_as_regex_rule">正規表現ルールとしてインポート</string>
     <string name="duration_in_minutes">期間 (分)</string>
-    <string name="help_trigger_manual">テストボタンをタップして、このワークフローを手動で実行します。</string>
-    <string name="help_trigger_schedule">時間指定スケジュールでタスクの実行を自動化します。</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        <font color="cyan">テスト</font>ボタンをタップして、このワークフローを手動で実行します。
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        時間指定スケジュールでタスクの実行を自動化します。<br>
+        <br>
+        ユースケース:<br>
+        &ensp; - <font color="#888888">毎日、FTC-DNCレジストリから迷惑電話番号をダウンロードします。</font><br>
+        <br>
+        &ensp; - <font color="#888888">毎日自動バックアップを行い、過去7つのバックアップのみを保持します。</font><br>
+        ]]>
+    </string>
     <string name="trigger">トリガー</string>
     <string name="delay_in_seconds">遅延（秒）</string>
     <string name="help_ringtone_delay">

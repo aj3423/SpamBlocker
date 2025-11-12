@@ -5,11 +5,17 @@
         <![CDATA[
         Preprocesa el número entrante antes de que sea verificado por las reglas, permitiendo modificar las reglas sobre la marcha.<br>
         <br>
-        Tal flujo de trabajo se activará automáticamente con una llamada entrante.<br>
+        Este flujo de trabajo se activará automáticamente con una llamada entrante.<br>
         <br>
-        <font color="#00BFFF"><b>Una configuración de flujo de trabajo típica:</b></font><br>
-        - <b>Evento de Llamada</b> <br>
-        - <b>Modificar Número</b>
+        Caso de uso: <br>
+        <font color="#888888">
+          &ensp; Eliminar caracteres iniciales adicionales del número de teléfono antes de la detección,
+          ya que algunos operadores admiten números duales en una sola tarjeta SIM. <br>
+        </font>
+        <br>
+        Una configuración típica:<br>
+        - Evento de Llamada <br>
+        - Modificar Número
         ]]>
     </string>
     <string name="action_modify_number">Modificar Número</string>

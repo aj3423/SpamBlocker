@@ -7,9 +7,15 @@
         <br>
         Ein solcher Workflow wird automatisch durch einen eingehenden Anruf ausgelöst.<br>
         <br>
-        <font color="#00BFFF"><b>Ein typischer Workflow-Aufbau:</b></font><br>
-        - <b>Anrufereignis</b> <br>
-        - <b>Nummer ändern</b>
+        Anwendungsfall: <br>
+        <font color="#888888">
+          &ensp; Entfernt zusätzliche führende Zeichen aus der Telefonnummer vor der Überprüfung,
+          da einige Anbieter Dual-Nummern auf einer einzigen SIM-Karte unterstützen. <br>
+        </font>
+        <br>
+        Eine typische Einrichtung:<br>
+        - Anrufereignis <br>
+        - Nummer ändern
         ]]>
     </string>
     <string name="action_modify_number">Nummer ändern</string>

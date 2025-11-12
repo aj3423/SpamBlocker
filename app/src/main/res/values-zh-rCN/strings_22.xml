@@ -133,8 +133,21 @@
     <string name="action_replace_number">替换号码</string>
     <string name="action_import_as_regex_rule">导入为正则表达式规则</string>
     <string name="duration_in_minutes">持续时间（分钟）</string>
-    <string name="help_trigger_manual">点击测试按钮手动运行此工作流。</string>
-    <string name="help_trigger_schedule">根据时间驱动的计划自动化任务运行。</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        轻触<font color="cyan">测试</font>按钮以手动运行此工作流程。
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        自动按时间表运行任务。 <br>
+        <br>
+        用例： <br>
+        &ensp; - <font color="#888888">每天从FTC-DNC注册表下载骚扰电话号码。</font> <br>
+        <br>
+        &ensp; - <font color="#888888">每天自动备份并仅保留最近7个备份。</font> <br>
+        ]]>
+    </string>
     <string name="trigger">触发器</string>
     <string name="delay_in_seconds">延迟（秒）</string>
     <string name="help_ringtone_delay">

@@ -18,7 +18,12 @@
         <br>
         Nasıl çalışır: <br>
         - SMS numarası ve içeriği eşleşirse, iş akışı yürütülür.<br>
-        - Aksi takdirde, iş akışı sonlandırılır.<br>
+        - Aksi takdirde, iş akışı sonlanır.<br>
+        <br>
+        Kullanım senaryosu: <br>
+        <font color="#888888">
+        &ensp; Nöbet veya nöbet dışı SMS aldıktan sonra bazı kuralları açıp kapatın. <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">SMS etkinliği %s tetiklendi.</string>

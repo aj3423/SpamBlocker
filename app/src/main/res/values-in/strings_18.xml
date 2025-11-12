@@ -14,14 +14,19 @@
     <string name="sms_event">Acara SMS</string>
     <string name="help_sms_event">
         <![CDATA[
-        Ini akan secara otomatis terpicu pada pesan SMS masuk sebelum disaring.<br>
+        Ini akan dipicu secara otomatis pada pesan SMS masuk sebelum disaring.<br>
         <br>
         Cara kerjanya: <br>
         - Jika nomor SMS dan konten cocok, alur kerja akan dieksekusi.<br>
-        - Jika tidak, alur kerja akan berhenti.<br>
+        - Jika tidak, alur kerja akan dihentikan.<br>
+        <br>
+        Kasus penggunaan: <br>
+        <font color="#888888">
+        &ensp; Mengalihkan beberapa aturan setelah menerima SMS panggilan siaga atau non-siaga. <br>
+        </font>
         ]]>
     </string>
-    <string name="sms_event_triggered">Acara SMS %s terpicu.</string>
+    <string name="sms_event_triggered">Acara SMS %s dipicu.</string>
     <string name="use_global_testing_instead">Gunakan pengujian global saja.</string>
     <string name="missing_permissions">Izin berikut sebelumnya telah diberikan namun saat ini hilang:</string>
     <string name="grant_permissions">Berikan Izin</string>

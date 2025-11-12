@@ -133,8 +133,21 @@
     <string name="action_replace_number">Заменить номер</string>
     <string name="action_import_as_regex_rule">Импортировать как правило регулярного выражения</string>
     <string name="duration_in_minutes">Продолжительность (минуты)</string>
-    <string name="help_trigger_manual">Нажмите кнопку «Тест», чтобы вручную запустить этот рабочий процесс.</string>
-    <string name="help_trigger_schedule">Автоматизируйте выполнение задач по расписанию.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        Нажмите кнопку <font color="cyan">Тест</font>, чтобы вручную запустить этот рабочий процесс.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        Автоматизируйте выполнение задач по расписанию. <br>
+        <br>
+        Варианты использования: <br>
+        &ensp; - <font color="#888888">Ежедневно загружайте номера спам-звонков из реестра FTC-DNC.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">Ежедневное автоматическое резервное копирование и хранение только последних 7 копий.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">Триггер</string>
     <string name="delay_in_seconds">Задержка (секунды)</string>
     <string name="help_ringtone_delay">

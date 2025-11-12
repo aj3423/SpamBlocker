@@ -27,11 +27,16 @@
     <string name="sms_event">簡訊事件</string>
     <string name="help_sms_event">
         <![CDATA[
-        這將在收到簡訊（過濾前）時自動觸發。<br>
+        這將在簡訊被篩選之前自動觸發。<br>
         <br>
-        運作方式：<br>
+        運作方式： <br>
         - 如果簡訊號碼和內容匹配，工作流程將會執行。<br>
         - 否則，工作流程將終止。<br>
+        <br>
+        使用案例： <br>
+        <font color="#888888">
+        &ensp; 在收到值班或下班簡訊後切換某些規則。 <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">簡訊事件 %s 已觸發。</string>

@@ -7,9 +7,15 @@
         <br>
         Such a workflow will be automatically triggered by an incoming call.<br>
         <br>
-        <font color="#00BFFF"><b>A typical workflow setup:</b></font><br>
-        - <b>Call Event</b> <br>
-        - <b>Modify Number</b>
+        Use case: <br>
+        <font color="#888888">
+          &ensp; Remove extra leading characters from the phone number before screening,
+          as some carriers support dual numbers on a single SIM card. <br>
+        </font>
+        <br>
+        A typical setup:<br>
+        - Call Event <br>
+        - Modify Number
         ]]>
     </string>
     <string name="action_modify_number">Modify Number</string>

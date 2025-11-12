@@ -14,14 +14,19 @@
     <string name="sms_event">SMS-Ereignis</string>
     <string name="help_sms_event">
         <![CDATA[
-        Dies wird bei eingehenden SMS-Nachrichten automatisch ausgelöst, bevor diese überprüft werden.<br>
+        Dies wird automatisch bei eingehenden SMS-Nachrichten ausgelöst, bevor diese überprüft werden.<br>
         <br>
-        So funktioniert es: <br>
+        Funktionsweise: <br>
         - Wenn die SMS-Telefonnummer und der Inhalt übereinstimmen, wird der Workflow ausgeführt.<br>
         - Andernfalls wird der Workflow beendet.<br>
+        <br>
+        Anwendungsfall: <br>
+        <font color="#888888">
+        &ensp; Einige Regeln nach Erhalt von Bereitschafts- oder Nicht-Bereitschafts-SMS umschalten. <br>
+        </font>
         ]]>
     </string>
-    <string name="sms_event_triggered">SMS-Ereignis %s wurde ausgelöst.</string>
+    <string name="sms_event_triggered">SMS-Ereignis %s wird ausgelöst.</string>
     <string name="use_global_testing_instead">Verwenden Sie stattdessen die globale Testfunktion.</string>
     <string name="missing_permissions">Folgende Berechtigungen wurden zuvor erteilt, fehlen aber derzeit:</string>
     <string name="grant_permissions">Berechtigungen erteilen</string>

@@ -7,9 +7,15 @@
         <br>
         Un tel flux de travail sera automatiquement déclenché par un appel entrant.<br>
         <br>
-        <font color="#00BFFF"><b>Une configuration de flux de travail typique :</b></font><br>
-        - <b>Événement d\'appel</b> <br>
-        - <b>Modifier le numéro</b>
+        Cas d\'utilisation : <br>
+        <font color="#888888">
+          &ensp; Supprimer les caractères supplémentaires en tête du numéro de téléphone avant le filtrage,
+          car certains opérateurs prennent en charge les numéros doubles sur une seule carte SIM. <br>
+        </font>
+        <br>
+        Une configuration typique :<br>
+        - Événement d\'appel <br>
+        - Modifier le numéro
         ]]>
     </string>
     <string name="action_modify_number">Modifier le numéro</string>

@@ -17,8 +17,13 @@
         Esto se activará automáticamente con los mensajes SMS entrantes antes de que sean filtrados.<br>
         <br>
         Cómo funciona: <br>
-        - Si el número SMS y el contenido coinciden, el flujo de trabajo se ejecutará.<br>
+        - Si el número de SMS y el contenido coinciden, el flujo de trabajo se ejecutará.<br>
         - De lo contrario, el flujo de trabajo finalizará.<br>
+        <br>
+        Caso de uso: <br>
+        <font color="#888888">
+        &ensp; Alternar algunas reglas después de recibir SMS de guardia o fuera de guardia. <br>
+        </font>
         ]]>
     </string>
     <string name="sms_event_triggered">El evento de SMS %s se ha activado.</string>

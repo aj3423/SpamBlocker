@@ -133,8 +133,21 @@
     <string name="action_replace_number">Remplacer le numéro</string>
     <string name="action_import_as_regex_rule">Importer en tant que règle Regex</string>
     <string name="duration_in_minutes">Durée (minutes)</string>
-    <string name="help_trigger_manual">Appuyez sur le bouton Test pour exécuter manuellement ce flux de travail.</string>
-    <string name="help_trigger_schedule">Automatisez l\'exécution des tâches selon des planifications basées sur le temps.</string>
+    <string name="help_trigger_manual">
+        <![CDATA[
+        Appuyez sur le bouton <font color="cyan">Test</font> pour exécuter manuellement ce flux de travail.
+        ]]>
+    </string>
+    <string name="help_trigger_schedule">
+        <![CDATA[
+        Automatisez l\'exécution des tâches selon des plannings basés sur le temps. <br>
+        <br>
+        Cas d\'utilisation : <br>
+        &ensp; - <font color="#888888">Téléchargez quotidiennement les numéros de spam depuis le registre FTC-DNC.</font> <br>
+        <br>
+        &ensp; - <font color="#888888">Sauvegarde automatique quotidienne et ne conserve que les 7 dernières sauvegardes.</font> <br>
+        ]]>
+    </string>
     <string name="trigger">Déclencheur</string>
     <string name="delay_in_seconds">Délai (secondes)</string>
     <string name="help_ringtone_delay">
