@@ -1,0 +1,7 @@
+Breaking change:
+- Workflow triggers refactored
+  Current settings will be upgraded automatically. Old backups are now incompatible(just workflow part). 
+  Re-backup if necessary, ignore if you don't use workflow.
+
+Fix:
+- Workflow "Ringtone" doesn't work when "Vibrate First Then Ring" is enabled.
