@@ -35,7 +35,7 @@ import spam.blocker.ui.widgets.PriorityBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
-import spam.blocker.util.InterfacePrettyJson
+import spam.blocker.util.BotPrettyJson
 import spam.blocker.util.spf
 
 
@@ -67,7 +67,7 @@ fun ApiList(vm: ApiViewModel) {
     if (exportTrigger.value) {
         ConfigExportDialog(
             trigger = exportTrigger,
-            initialText = InterfacePrettyJson.encodeToString(vm.apis[clickedIndex]),
+            initialText = BotPrettyJson.encodeToString(vm.apis[clickedIndex]),
         )
     }
 

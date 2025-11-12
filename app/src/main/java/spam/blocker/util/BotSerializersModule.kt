@@ -49,7 +49,7 @@ import spam.blocker.service.bot.SmsThrottling
 import spam.blocker.service.bot.Weekly
 import spam.blocker.service.bot.WriteFile
 
-val myModule = SerializersModule {
+val botModule = SerializersModule {
     // also add to below polymorphic(IAction:class)
     polymorphic(ITriggerAction::class) {
         subclass(Manual::class)
@@ -114,17 +114,17 @@ val myModule = SerializersModule {
 }
 
 // A json serializer that supports all interfaces(IAction, IApi, ...) in this app
-val InterfaceJson =  Json {
-    this.serializersModule = myModule
+val BotJson =  Json {
+    this.serializersModule = botModule
     encodeDefaults = true
     classDiscriminator = "type"
     ignoreUnknownKeys = true
 }
 
-val InterfacePrettyJson =  Json {
+val BotPrettyJson =  Json {
     prettyPrint = true
 
-    this.serializersModule = myModule
+    this.serializersModule = botModule
     encodeDefaults = true
     classDiscriminator = "type"
     ignoreUnknownKeys = true

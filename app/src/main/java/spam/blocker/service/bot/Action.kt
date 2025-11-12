@@ -18,7 +18,7 @@ import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import spam.blocker.service.checker.CheckContext
 import spam.blocker.util.ILogger
-import spam.blocker.util.InterfaceJson
+import spam.blocker.util.BotJson
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 
@@ -173,13 +173,13 @@ interface ITriggerAction : IAction {
 
 // Serialize self to json string
 fun ITriggerAction.serialize(): String {
-    return InterfaceJson.encodeToString(PolymorphicSerializer(ITriggerAction::class), this)
+    return BotJson.encodeToString(PolymorphicSerializer(ITriggerAction::class), this)
 }
 
 // Generate a *concrete* ITriggerAction from json string.
 fun String.parseTrigger(): ITriggerAction {
 //    return try {
-    return InterfaceJson.decodeFromString(PolymorphicSerializer(ITriggerAction::class), this)
+    return BotJson.decodeFromString(PolymorphicSerializer(ITriggerAction::class), this)
 //    } catch(_: Exception) {
 //        Manual()
 //    }
@@ -243,15 +243,15 @@ fun IAction.clone(): IAction {
 }
 
 fun IAction.serialize(): String {
-    return InterfaceJson.encodeToString(PolymorphicSerializer(IAction::class), this)
+    return BotJson.encodeToString(PolymorphicSerializer(IAction::class), this)
 }
 
 fun String.parseAction(): IAction {
-    return InterfaceJson.decodeFromString(PolymorphicSerializer(IAction::class), this)
+    return BotJson.decodeFromString(PolymorphicSerializer(IAction::class), this)
 }
 
 fun List<IAction>.serialize(): String {
-    return InterfaceJson.encodeToString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
+    return BotJson.encodeToString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
 }
 
 fun String.parseActions(): List<IAction> {
@@ -259,7 +259,7 @@ fun String.parseActions(): List<IAction> {
         return listOf()
 
     return try {
-        InterfaceJson.decodeFromString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
+        BotJson.decodeFromString(ListSerializer(PolymorphicSerializer(IAction::class)), this)
     } catch (_: Exception) {
         listOf()
     }

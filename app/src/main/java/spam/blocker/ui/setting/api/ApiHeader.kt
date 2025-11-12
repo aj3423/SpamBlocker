@@ -38,7 +38,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
-import spam.blocker.util.InterfaceJson
+import spam.blocker.util.BotJson
 import spam.blocker.util.Lambda2
 
 // This dialog makes it easier for user to input API_KEY rather than manually editing
@@ -163,9 +163,9 @@ fun ApiHeader(
             trigger = importTrigger,
         ) { configJson ->
             val newApi = if (vm.forType == Def.ForApiQuery) {
-                InterfaceJson.decodeFromString<QueryApi>(configJson).copy(id = 0)
+                BotJson.decodeFromString<QueryApi>(configJson).copy(id = 0)
             } else {
-                InterfaceJson.decodeFromString<ReportApi>(configJson).copy(id = 0)
+                BotJson.decodeFromString<ReportApi>(configJson).copy(id = 0)
             }
 
             // 1. add to db

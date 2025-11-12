@@ -20,7 +20,7 @@ import spam.blocker.db.ReportApi
 import spam.blocker.db.RuleTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
-import spam.blocker.util.InterfaceJson
+import spam.blocker.util.BotJson
 import spam.blocker.util.Notification.createChannel
 import spam.blocker.util.Notification.deleteAllChannels
 import spam.blocker.util.Permission
@@ -784,12 +784,12 @@ class Configs {
     }
 
     fun toJsonString(): String {
-        return InterfaceJson.encodeToString(this)
+        return BotJson.encodeToString(this)
     }
 
     companion object {
         fun createFromJson(jsonStr: String) : Configs {
-            val newCfg = InterfaceJson.decodeFromString<Configs>(jsonStr)
+            val newCfg = BotJson.decodeFromString<Configs>(jsonStr)
             return newCfg
         }
     }

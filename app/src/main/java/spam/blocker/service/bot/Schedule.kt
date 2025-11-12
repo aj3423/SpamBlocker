@@ -19,7 +19,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.widgets.HourMinInput
 import spam.blocker.ui.widgets.RowCenter
 import spam.blocker.ui.widgets.WeekdayPicker2
-import spam.blocker.util.InterfaceJson
+import spam.blocker.util.BotJson
 import spam.blocker.util.LocalDateTimeMockk
 import java.time.DayOfWeek
 import java.time.DayOfWeek.FRIDAY
@@ -86,7 +86,7 @@ fun ISchedule.clone(): ISchedule {
 
 // Serialize self to json string
 fun ISchedule.serialize(): String {
-    return InterfaceJson.encodeToString(PolymorphicSerializer(ISchedule::class), this)
+    return BotJson.encodeToString(PolymorphicSerializer(ISchedule::class), this)
 }
 
 // Generate a *concrete* ISchedule from json string.
@@ -95,7 +95,7 @@ fun String.parseSchedule(): ISchedule? {
         return null
 
     return try {
-        InterfaceJson.decodeFromString(PolymorphicSerializer(ISchedule::class), this)
+        BotJson.decodeFromString(PolymorphicSerializer(ISchedule::class), this)
     } catch (_: Exception) {
         null
     }

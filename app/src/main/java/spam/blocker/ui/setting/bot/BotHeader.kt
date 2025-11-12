@@ -21,7 +21,7 @@ import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
 import spam.blocker.ui.widgets.Str
-import spam.blocker.util.InterfaceJson
+import spam.blocker.util.BotJson
 import spam.blocker.util.Lambda1
 import java.util.UUID
 
@@ -60,7 +60,7 @@ fun BotHeader(
         ConfigImportDialog(
             trigger = importTrigger,
         ) { configJson ->
-            val bot = InterfaceJson.decodeFromString<Bot>(configJson)
+            val bot = BotJson.decodeFromString<Bot>(configJson)
             // clear `workUUID` from imported bot
             val newBot = bot.copy(
                 trigger = if(bot.trigger is Schedule)
