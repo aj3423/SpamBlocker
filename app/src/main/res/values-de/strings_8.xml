@@ -66,21 +66,19 @@
     </string>
     <string name="manual">Manuell</string>
 
-    <string name="bot_preset_cleanup_spam_db">Spam-Datenbank bereinigen</string>
-    <string name="bot_preset_cleanup_history">Verlauf bereinigen</string>
     <string name="bot_preset_auto_backup">Automatische Sicherung</string>
 
-    <string name="action_cleanup_history">Verlauf bereinigen</string>
+    <string name="action_prune_history_record">Verlauf bereinigen</string>
     <string name="action_http_request">HTTP-Anfrage</string>
-    <string name="action_cleanup_spam_db">Spam-Datenbank bereinigen</string>
+    <string name="action_prune_database">Datenbank bereinigen</string>
     <string name="action_backup_export">Sicherung exportieren</string>
     <string name="action_backup_import">Sicherung importieren</string>
     <string name="action_read_file">Datei lesen</string>
     <string name="action_write_file">Datei schreiben</string>
     <string name="action_import_to_spam_db">In die Spam-Datenbank importieren</string>
 
-    <string name="help_action_cleanup_spam_db">Abgelaufene Telefonnummern aus der Spam-Datenbank löschen.</string>
-    <string name="help_action_cleanup_history">Abgelaufene Verlaufseinträge löschen.</string>
+    <string name="help_action_prune_database">Abgelaufene Telefonnummern aus der Spam-Datenbank löschen.</string>
+    <string name="help_action_prune_history_records">Abgelaufene Verlaufseinträge löschen.</string>
     <string name="action_modify_rules_placeholder">
         Ein JSON-String, zum Beispiel:\n
         {\n

@@ -65,12 +65,10 @@
         ]]>
     </string>
     <string name="manual">Manual</string>
-    <string name="bot_preset_cleanup_spam_db">Spam Database Cleanup</string>
-    <string name="bot_preset_cleanup_history">History Cleanup</string>
     <string name="bot_preset_auto_backup">Auto Backup</string>
-    <string name="action_cleanup_history">Clean up History</string>
+    <string name="action_prune_history_record">Prune History</string>
     <string name="action_http_request">HTTP Request</string>
-    <string name="action_cleanup_spam_db">Cleanup Spam Database</string>
+    <string name="action_prune_database">Prune Database</string>
     <string name="action_backup_export">Backup Export</string>
     <string name="action_backup_import">Backup Import</string>
     <string name="action_read_file">Read File</string>
@@ -86,6 +84,6 @@
         }\n
     </string>
 
-    <string name="help_action_cleanup_spam_db">Delete expired numbers from spam database.</string>
-    <string name="help_action_cleanup_history">Delete expired history records.</string>
+    <string name="help_action_prune_database">Delete expired numbers from spam database.</string>
+    <string name="help_action_prune_history_records">Delete expired history records.</string>
 </resources>

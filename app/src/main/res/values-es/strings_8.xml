@@ -66,21 +66,19 @@
     </string>
     <string name="manual">Manual</string>
 
-    <string name="bot_preset_cleanup_spam_db">Limpieza de la base de datos de spam</string>
-    <string name="bot_preset_cleanup_history">Limpieza del historial</string>
     <string name="bot_preset_auto_backup">Copia de seguridad automática</string>
 
-    <string name="action_cleanup_history">Limpiar historial</string>
+    <string name="action_prune_history_record">Limpiar historial</string>
     <string name="action_http_request">Solicitud HTTP</string>
-    <string name="action_cleanup_spam_db">Limpiar base de datos de spam</string>
+    <string name="action_prune_database">Limpiar base de datos</string>
     <string name="action_backup_export">Exportación de copia de seguridad</string>
     <string name="action_backup_import">Importación de copia de seguridad</string>
     <string name="action_read_file">Leer archivo</string>
     <string name="action_write_file">Escribir archivo</string>
     <string name="action_import_to_spam_db">Importar a la base de datos de spam</string>
 
-    <string name="help_action_cleanup_spam_db">Eliminar los números caducados de la base de datos de spam.</string>
-    <string name="help_action_cleanup_history">Eliminar los registros de historial caducados.</string>
+    <string name="help_action_prune_database">Eliminar los números caducados de la base de datos de spam.</string>
+    <string name="help_action_prune_history_records">Eliminar los registros de historial caducados.</string>
     <string name="action_modify_rules_placeholder">
         Una cadena JSON, por ejemplo:\n
         {\n

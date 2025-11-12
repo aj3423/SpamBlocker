@@ -36,8 +36,6 @@
             Si vous voyez une erreur 404 lors du test, vérifiez le lien ci-dessus pour confirmer si les données du jour ont été publiées sur leur site.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Supprimer les enregistrements expirés de la base de données de spam.</string>
-    <string name="help_bot_preset_cleanup_history">Supprimer les enregistrements d\'appels/SMS expirés.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Paramètres de sauvegarde automatique. <br>

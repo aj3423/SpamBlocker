@@ -15,7 +15,7 @@
         <br>
         <font color="#00BFFF"><b>Contact Group</b></font>:<br>
         &ensp; The regex will match the contact group name associated with the incoming number,
-                 impacting all the contacts in that group, so you don\'t need to add them individually,
+                 impacting all contacts in that group, so you don\'t need to add them individually,
                  and no need to update it even when there are personnel changes.<br>
         &ensp;  - A use case:<br>
         &emsp; Block all coworkers at weekend by blocking the contact group \"work\".

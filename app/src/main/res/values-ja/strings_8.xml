@@ -65,21 +65,19 @@
     </string>
     <string name="manual">手動</string>
 
-    <string name="bot_preset_cleanup_spam_db"><translate>スパムデータベースクリーンアップ</translate></string>
-    <string name="bot_preset_cleanup_history"><translate>履歴クリーンアップ</translate></string>
     <string name="bot_preset_auto_backup">自動バックアップ</string>
 
-    <string name="action_cleanup_history"><translate>履歴をクリーンアップ</translate></string>
+    <string name="action_prune_history_record">履歴を整理</string>
     <string name="action_http_request">HTTPリクエスト</string>
-    <string name="action_cleanup_spam_db"><translate>スパムデータベースをクリーンアップ</translate></string>
+    <string name="action_prune_database">データベースを整理</string>
     <string name="action_backup_export">バックアップエクスポート</string>
     <string name="action_backup_import">バックアップインポート</string>
     <string name="action_read_file">ファイルの読み込み</string>
     <string name="action_write_file">ファイルへの書き込み</string>
     <string name="action_import_to_spam_db"><translate>スパムデータベースへのインポート</translate></string>
 
-    <string name="help_action_cleanup_spam_db"><translate>スパムデータベースから期限切れの番号を削除します。</translate></string>
-    <string name="help_action_cleanup_history"><translate>期限切れの履歴レコードを削除します。</translate></string>
+    <string name="help_action_prune_database"><translate>スパムデータベースから期限切れの番号を削除します。</translate></string>
+    <string name="help_action_prune_history_records"><translate>期限切れの履歴レコードを削除します。</translate></string>
     <string name="action_modify_rules_placeholder">
         JSON文字列の例:\n
         {\n

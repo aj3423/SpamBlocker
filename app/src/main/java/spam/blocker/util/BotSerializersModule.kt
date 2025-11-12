@@ -13,8 +13,8 @@ import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
-import spam.blocker.service.bot.CleanupHistory
-import spam.blocker.service.bot.CleanupSpamDB
+import spam.blocker.service.bot.PruneHistory
+import spam.blocker.service.bot.PruneDatabase
 import spam.blocker.service.bot.ConvertNumber
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.Delay
@@ -81,9 +81,9 @@ val myModule = SerializersModule {
         subclass(Ringtone::class)
         subclass(QuickTile::class)
 
-        subclass(CleanupHistory::class)
+        subclass(PruneHistory::class)
         subclass(HttpDownload::class)
-        subclass(CleanupSpamDB::class)
+        subclass(PruneDatabase::class)
         subclass(BackupExport::class)
         subclass(BackupImport::class)
         subclass(ReadFile::class)

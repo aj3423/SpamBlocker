@@ -65,12 +65,10 @@
         ]]>
     </string>
     <string name="manual">手動</string>
-    <string name="bot_preset_cleanup_spam_db">清理騷擾號碼資料庫</string>
-    <string name="bot_preset_cleanup_history">清理歷史記錄</string>
     <string name="bot_preset_auto_backup">自動備份</string>
-    <string name="action_cleanup_history">清理歷史記錄</string>
+    <string name="action_prune_history_record">清除歷史記錄</string>
     <string name="action_http_request">HTTP 請求</string>
-    <string name="action_cleanup_spam_db">清理騷擾號碼資料庫</string>
+    <string name="action_prune_database">清除資料庫</string>
     <string name="action_backup_export">匯出備份</string>
     <string name="action_backup_import">匯入備份</string>
     <string name="action_read_file">讀取檔案</string>
@@ -85,6 +83,6 @@
         …\n
         }\n
     </string>
-    <string name="help_action_cleanup_spam_db">從騷擾號碼資料庫刪除過期的號碼。</string>
-    <string name="help_action_cleanup_history">刪除過期的歷史記錄。</string>
+    <string name="help_action_prune_database">從騷擾號碼資料庫刪除過期的號碼。</string>
+    <string name="help_action_prune_history_records">刪除過期的歷史記錄。</string>
 </resources>

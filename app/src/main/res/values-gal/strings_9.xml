@@ -35,8 +35,6 @@
             Se ves un erro 404 ao facer a proba, comproba a ligazón anterior para confirmar se os datos de hoxe foron publicados no seu sitio.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Eliminar rexistros caducados da base de datos de spam.</string>
-    <string name="help_bot_preset_cleanup_history">Eliminar rexistros de chamadas/SMS de historial caducados.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Configuración da copia de seguridade automática. <br>

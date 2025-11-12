@@ -66,21 +66,19 @@
     </string>
     <string name="manual">Вручну</string>
 
-    <string name="bot_preset_cleanup_spam_db">Очистка бази даних спаму</string>
-    <string name="bot_preset_cleanup_history">Очистка історії</string>
     <string name="bot_preset_auto_backup">Автоматичне резервне копіювання</string>
 
-    <string name="action_cleanup_history">Очистити історію</string>
+    <string name="action_prune_history_record">Очистити історію</string>
     <string name="action_http_request">HTTP запит</string>
-    <string name="action_cleanup_spam_db">Очистити спам-базу даних</string>
+    <string name="action_prune_database">Очистити базу даних</string>
     <string name="action_backup_export">Експорт резервної копії</string>
     <string name="action_backup_import">Імпорт резервної копії</string>
     <string name="action_read_file">Зчитати файл</string>
     <string name="action_write_file">Записати файл</string>
     <string name="action_import_to_spam_db">Імпорт до спам-бази даних</string>
 
-    <string name="help_action_cleanup_spam_db">Видалити застарілі номери зі спам-бази даних.</string>
-    <string name="help_action_cleanup_history">Видалити застарілі записи історії.</string>
+    <string name="help_action_prune_database">Видалити застарілі номери зі спам-бази даних.</string>
+    <string name="help_action_prune_history_records">Видалити застарілі записи історії.</string>
     <string name="action_modify_rules_placeholder">
         Рядок JSON, наприклад:\n
         {\n

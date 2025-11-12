@@ -35,8 +35,6 @@
             إذا رأيت خطأ 404 عند الاختبار، فتحقق من الرابط أعلاه لتأكيد ما إذا كانت بيانات اليوم قد نُشرت على موقعهم.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">حذف السجلات منتهية الصلاحية من قاعدة بيانات الرسائل غير المرغوب فيها.</string>
-    <string name="help_bot_preset_cleanup_history">حذف سجلات المكالمات/الرسائل النصية القصيرة منتهية الصلاحية.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         إعدادات النسخ الاحتياطي التلقائي. <br>

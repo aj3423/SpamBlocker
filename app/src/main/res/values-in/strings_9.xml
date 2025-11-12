@@ -36,8 +36,6 @@
             Jika Anda melihat kesalahan 404 saat menguji, periksa tautan di atas untuk memastikan apakah data hari ini telah dirilis di situs mereka.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Hapus catatan kadaluarsa dari basis data spam.</string>
-    <string name="help_bot_preset_cleanup_history">Hapus riwayat panggilan/SMS yang sudah kadaluarsa.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Pengaturan cadangan otomatis. <br>

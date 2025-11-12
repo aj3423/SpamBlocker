@@ -34,8 +34,6 @@
             اگر هنگام آزمایش خطای 404 مشاهده کردید، لینک بالا را بررسی کنید تا تأیید کنید که آیا داده‌های امروز در سایت آنها منتشر شده است یا خیر.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">رکوردهای منقضی شده را از پایگاه داده اسپم حذف کنید.</string>
-    <string name="help_bot_preset_cleanup_history">سابقه تماس/ پیامک های منقضی شده را حذف کنید.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         تنظیمات پشتیبان‌گیری خودکار. <br>

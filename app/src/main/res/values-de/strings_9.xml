@@ -36,8 +36,6 @@
             Wenn Sie beim Testen einen 404-Fehler sehen, überprüfen Sie den obigen Link, um zu bestätigen, ob die heutigen Daten auf deren Website veröffentlicht wurden.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Abgelaufene Einträge aus der Spam-Datenbank löschen.</string>
-    <string name="help_bot_preset_cleanup_history">Abgelaufene Anruf-/SMS-Verlaufsdatensätze löschen.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Einstellungen automatisch sichern. <br>

@@ -36,8 +36,6 @@
             Si veus un error 404 en provar, comprova l\'enllaç anterior per confirmar si les dades d\'avui s\'han publicat al seu lloc.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Suprimiu els registres caducats de la base de dades de correu brossa.</string>
-    <string name="help_bot_preset_cleanup_history">Suprimiu els registres d\'historial de trucades/SMS caducats.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Configuració de la còpia de seguretat automàtica. <br>

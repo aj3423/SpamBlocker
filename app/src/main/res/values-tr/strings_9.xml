@@ -36,8 +36,6 @@
             Test ederken 404 hatası görürseniz, bugünün verilerinin kendi sitelerinde yayınlanıp yayınlanmadığını onaylamak için yukarıdaki bağlantıyı kontrol edin.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Spam veritabanından süresi dolmuş kayıtları sil.</string>
-    <string name="help_bot_preset_cleanup_history">Süresi dolmuş arama/SMS kayıtlarını sil.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Otomatik yedekleme ayarları. <br>

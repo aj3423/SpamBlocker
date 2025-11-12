@@ -33,8 +33,6 @@
             テスト時に404エラーが表示された場合は、上記のリンクを確認し、今日のデータがサイトで公開されているか確認してください。
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">スパムデータベースから期限切れのレコードを削除します。</string>
-    <string name="help_bot_preset_cleanup_history">期限切れの通話/SMS履歴レコードを削除します。</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         自動バックアップ設定。<br>

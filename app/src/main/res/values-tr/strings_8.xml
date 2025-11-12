@@ -65,21 +65,19 @@
     </string>
     <string name="manual">Kılavuz</string>
 
-    <string name="bot_preset_cleanup_spam_db">Spam Veritabanı Temizliği</string>
-    <string name="bot_preset_cleanup_history">Geçmiş Temizliği</string>
     <string name="bot_preset_auto_backup">Otomatik Yedekleme</string>
 
-    <string name="action_cleanup_history">Geçmişi Temizle</string>
+    <string name="action_prune_history_record">Geçmişi Temizle</string>
     <string name="action_http_request">HTTP İsteği</string>
-    <string name="action_cleanup_spam_db">Spam Veritabanını Temizle</string>
+    <string name="action_prune_database">Veritabanını Temizle</string>
     <string name="action_backup_export">Yedekleme Dışa Aktarımı</string>
     <string name="action_backup_import">Yedekleme İçe Aktarımı</string>
     <string name="action_read_file">Dosyayı Oku</string>
     <string name="action_write_file">Dosyayı Yaz</string>
     <string name="action_import_to_spam_db">Spam Veritabanına İçe Aktar</string>
 
-    <string name="help_action_cleanup_spam_db">Spam veritabanından süresi dolmuş numaraları sil.</string>
-    <string name="help_action_cleanup_history">Süresi dolmuş geçmiş kayıtlarını sil.</string>
+    <string name="help_action_prune_database">Spam veritabanından süresi dolmuş numaraları sil.</string>
+    <string name="help_action_prune_history_records">Süresi dolmuş geçmiş kayıtlarını sil.</string>
     <string name="action_modify_rules_placeholder">
         Bir JSON dizesi, örneğin:\n
         {\n

@@ -27,7 +27,7 @@ import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
-import spam.blocker.service.bot.CleanupSpamDB
+import spam.blocker.service.bot.PruneDatabase
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.serialize
@@ -72,7 +72,7 @@ fun reScheduleSpamDBCleanup(ctx: Context) {
         MyWorkManager.schedule(
             ctx,
             scheduleConfig = Daily().serialize(),
-            actionsConfig = listOf(CleanupSpamDB(ttl)).serialize(),
+            actionsConfig = listOf(PruneDatabase(ttl)).serialize(),
             workTag = SPAM_DB_CLEANUP_WORK_TAG
         )
     }

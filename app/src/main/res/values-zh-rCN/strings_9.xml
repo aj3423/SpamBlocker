@@ -36,8 +36,6 @@
             如果在测试时看到404错误，请检查上述链接以确认今天的数据是否已在其网站上发布。
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">从垃圾电话数据库中删除过期记录。</string>
-    <string name="help_bot_preset_cleanup_history">删除过期的通话/短信记录。</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         自动备份设置。<br>

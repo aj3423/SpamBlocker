@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
-import spam.blocker.service.bot.CleanupHistory
+import spam.blocker.service.bot.PruneHistory
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
 import spam.blocker.service.bot.serialize
@@ -52,7 +52,7 @@ fun reScheduleHistoryCleanup(ctx: Context) {
         MyWorkManager.schedule(
             ctx,
             scheduleConfig = Daily().serialize(),
-            actionsConfig = listOf(CleanupHistory(ttl)).serialize(),
+            actionsConfig = listOf(PruneHistory(ttl)).serialize(),
             workTag = HISTORY_CLEANUP_WORK_TAG
         )
     }

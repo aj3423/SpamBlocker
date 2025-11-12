@@ -36,8 +36,6 @@
             Если вы видите ошибку 404 при тестировании, проверьте указанную выше ссылку, чтобы убедиться, что сегодняшние данные были опубликованы на их сайте.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Удалите устаревшие записи из базы данных спама.</string>
-    <string name="help_bot_preset_cleanup_history">Удалите устаревшие записи звонков/SMS.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Настройки авторезервного копирования. <br>

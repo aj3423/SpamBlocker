@@ -36,8 +36,6 @@
             Se você vir um erro 404 ao testar, verifique o link acima para confirmar se os dados de hoje foram lançados no site deles.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Exclua os registros expirados do banco de dados de <translate>spam</translate>.</string>
-    <string name="help_bot_preset_cleanup_history">Exclua os registros de histórico de chamadas/SMS expirados.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Configurações de backup automático. <br>

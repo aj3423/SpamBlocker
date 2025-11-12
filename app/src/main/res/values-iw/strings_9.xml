@@ -35,8 +35,6 @@
             אם אתה רואה שגיאת 404 בעת הבדיקה, בדוק את הקישור לעיל כדי לאשר האם הנתונים של היום פורסמו באתר שלהם.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">מחק רשומות שפג תוקפן ממסד נתוני הספאם.</string>
-    <string name="help_bot_preset_cleanup_history">מחק רשומות היסטוריית שיחות/הודעות SMS שפג תוקפן.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         הגדרות גיבוי אוטומטי. <br>

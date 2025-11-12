@@ -66,13 +66,11 @@
     </string>
     <string name="manual">Manual</string>
 
-    <string name="bot_preset_cleanup_spam_db">Neteja de la base de dades de correu brossa</string>
-    <string name="bot_preset_cleanup_history">Neteja de l\'historial</string>
     <string name="bot_preset_auto_backup">Còpia de seguretat automàtica</string>
 
-    <string name="action_cleanup_history">Netejar l\'historial</string>
+    <string name="action_prune_history_record">Netejar Historial</string>
     <string name="action_http_request">Sol·licitud HTTP</string>
-    <string name="action_cleanup_spam_db">Netejar la base de dades de correu brossa</string>
+    <string name="action_prune_database">Netejar Base de Dades</string>
     <string name="action_backup_export">Exportació de còpia de seguretat</string>
     <string name="action_backup_import">Importació de còpia de seguretat</string>
     <string name="action_read_file">Llegir fitxer</string>
@@ -88,6 +86,6 @@
         }\n
     </string>
 
-    <string name="help_action_cleanup_spam_db">Elimina els números caducats de la base de dades de correu brossa.</string>
-    <string name="help_action_cleanup_history">Elimina els registres d\'historial caducats.</string>
+    <string name="help_action_prune_database">Elimina els números caducats de la base de dades de correu brossa.</string>
+    <string name="help_action_prune_history_records">Elimina els registres d\'historial caducats.</string>
 </resources>

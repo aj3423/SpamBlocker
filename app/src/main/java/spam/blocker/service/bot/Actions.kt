@@ -115,7 +115,7 @@ fun NoOptionNeeded() {
 
 @Serializable
 @SerialName("CleanupHistory")
-class CleanupHistory(
+class PruneHistory(
     var expiry: Int = 90 // days
 ) : IPermissiveAction {
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
@@ -136,7 +136,7 @@ class CleanupHistory(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_cleanup_history)
+        return ctx.getString(R.string.action_prune_history_record)
     }
 
     @Composable
@@ -147,7 +147,7 @@ class CleanupHistory(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_cleanup_history)
+        return ctx.getString(R.string.help_action_prune_history_records)
     }
 
     override fun inputParamType(): List<ParamType> {
@@ -446,7 +446,7 @@ open class HttpDownload(
 
 @Serializable
 @SerialName("CleanupSpamDB")
-class CleanupSpamDB(
+class PruneDatabase(
     var expiry: Int = 1 // days
 ) : IPermissiveAction {
 
@@ -468,7 +468,7 @@ class CleanupSpamDB(
     }
 
     override fun label(ctx: Context): String {
-        return ctx.getString(R.string.action_cleanup_spam_db)
+        return ctx.getString(R.string.action_prune_database)
     }
 
     @Composable
@@ -480,7 +480,7 @@ class CleanupSpamDB(
     }
 
     override fun tooltip(ctx: Context): String {
-        return ctx.getString(R.string.help_action_cleanup_spam_db)
+        return ctx.getString(R.string.help_action_prune_database)
     }
 
     override fun inputParamType(): List<ParamType> {

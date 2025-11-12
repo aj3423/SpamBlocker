@@ -35,8 +35,6 @@
             If you see a 404 error when testing, check the above link to confirm whether today\'s data has been released on their site.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Delete expired records from the spam database.</string>
-    <string name="help_bot_preset_cleanup_history">Delete expired history call/SMS records.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Auto backup settings. <br>

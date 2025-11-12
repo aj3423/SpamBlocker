@@ -36,8 +36,6 @@
             Se vedi un errore 404 durante il test, controlla il link sopra per confermare se i dati di oggi sono stati rilasciati sul loro sito.
         ]]>
     </string>
-    <string name="help_bot_preset_cleanup_spam_db">Elimina i record scaduti dal database spam.</string>
-    <string name="help_bot_preset_cleanup_history">Elimina i record di chiamate/SMS scaduti.</string>
     <string name="help_bot_preset_auto_backup">
         <![CDATA[
         Impostazioni di backup automatico. <br>
