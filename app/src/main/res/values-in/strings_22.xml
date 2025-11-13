@@ -97,15 +97,34 @@
     <string name="action_find_rules">Temukan Aturan</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Menemukan semua aturan regex yang cocok dengan deskripsi tertentu.
+        Temukan satu atau beberapa aturan regex yang cocok dengan deskripsi tertentu.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Mengubah satu atau beberapa atribut untuk daftar aturan.
+        Modifikasi atribut dari satu atau lebih aturan. <br>
+        <br>
+        Tergantung pada jenis pemicu alur kerja, aturan dapat dimodifikasi secara permanen atau sementara. <br>
+        <br>
+        Atribut yang dapat dimodifikasi: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; Regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; Deskripsi <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; Prioritas <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Blokir, <no_translate>false</no_translate>: izinkan <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Berlaku untuk: <br>
+        &ensp; 1: panggilan, 2: SMS, 3: keduanya, 0: nonaktifkan <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; String ID saluran notifikasi<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: tolak, 1: senyap, 2: tutup telepon
         ]]>
     </string>
-    <string name="action_modify_rules">Ubah Aturan</string>
+    <string name="action_modify_rules">Modifikasi Aturan</string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
         Menambahkan daftar nomor telepon ke database panggilan spam.

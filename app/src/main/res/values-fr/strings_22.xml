@@ -94,18 +94,37 @@
         %s
         ]]>
     </string>
-    <string name="action_find_rules">Trouver les règles</string>
+    <string name="action_find_rules">Trouver des Règles</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Trouve toutes les règles regex qui correspondent à la description spécifique.
+        Trouve une ou plusieurs règles regex qui correspondent à une description particulière.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Modifier un ou plusieurs attributs pour une liste de règles.
+        Modifie les attributs d\'une ou plusieurs règles. <br>
+        <br>
+        Selon le type de déclencheur de flux de travail, les règles peuvent être modifiées de manière permanente ou temporaire. <br>
+        <br>
+        Attributs modifiables : <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; La regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; La description <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; La priorité <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate> : Bloquer, <no_translate>false</no_translate> : autoriser <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Appliquer à : <br>
+        &ensp; 1 : appel, 2 : SMS, 3 : les deux, 0 : désactiver <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; L\'ID de la chaîne de notification<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0 : rejeter, 1 : silencieux, 2 : raccrocher
         ]]>
     </string>
-    <string name="action_modify_rules">Modifier les règles</string>
+    <string name="action_modify_rules">Modifier les Règles</string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
         Ajouter une liste de numéros à la base de données de spams.

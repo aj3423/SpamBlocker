@@ -17,8 +17,8 @@ import kotlinx.coroutines.yield
 import kotlinx.serialization.PolymorphicSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import spam.blocker.service.checker.CheckContext
-import spam.blocker.util.ILogger
 import spam.blocker.util.BotJson
+import spam.blocker.util.ILogger
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
 

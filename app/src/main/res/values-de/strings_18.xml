@@ -84,5 +84,4 @@
     </string>
     <string name="help_calendar_event_title">Dies sollte dem Kalenderereignis entsprechen, das in der Kalender-App erstellt werden kann.</string>
     <string name="working">Arbeitszeit</string>
-    <string name="calendar_event_is_not_active">Kalenderereignis %s ist nicht aktiv.</string>
 </resources>

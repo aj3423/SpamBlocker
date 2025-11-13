@@ -84,5 +84,4 @@
     </string>
     <string name="help_calendar_event_title">Ini harus cocok dengan acara kalender, yang dapat dibuat di aplikasi Kalender.</string>
     <string name="working">Bekerja</string>
-    <string name="calendar_event_is_not_active">Acara kalender %s tidak aktif.</string>
 </resources>

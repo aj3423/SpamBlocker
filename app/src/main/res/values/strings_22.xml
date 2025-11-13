@@ -96,17 +96,36 @@
         ]]>
     </string>
     <string name="action_find_rules">Find Rules</string>
+    <string name="action_modify_rules">Modify Rules</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Find all regex rules that match the specific description.
+        Find one or multiple regex rules that match a particular description.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Change one or multiple attributes for a list of rules.
+        Modify the attributes of one or more rules. <br>
+        <br>
+        Depending on the workflow trigger type, rules can be modified permanently or temporarily. <br>
+        <br>
+        Modifiable attributes: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; The regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; The description <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; The priority <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Block, <no_translate>false</no_translate>: allow <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Apply to: <br>
+        &ensp; 1: call, 2: SMS, 3: both, 0: disable <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; The notification channel id string<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: reject, 1: silence, 2: hang-up
         ]]>
     </string>
-    <string name="action_modify_rules">Modify Rules</string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
         Add a list of numbers to the spam database.

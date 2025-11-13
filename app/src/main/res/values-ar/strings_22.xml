@@ -94,15 +94,34 @@
         %s
         ]]>
     </string>
-    <string name="action_find_rules">البحث عن قواعد</string>
+    <string name="action_find_rules">البحث عن القواعد</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        البحث عن جميع قواعد التعبير المنتظم التي تتطابق مع الوصف المحدد.
+        البحث عن قاعدة أو قواعد تعبيرات عادية متعددة تتطابق مع وصف معين.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        تغيير سمة واحدة أو أكثر لقائمة من القواعد.
+        تعديل سمات قاعدة واحدة أو أكثر. <br>
+        <br>
+        اعتمادًا على نوع تشغيل سير العمل، يمكن تعديل القواعد بشكل دائم أو مؤقت. <br>
+        <br>
+        السمات القابلة للتعديل: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; التعبير العادي <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; الوصف <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; الأولوية <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: حظر، <no_translate>false</no_translate>: سماح <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; تطبيق على: <br>
+        &ensp; 1: مكالمة، 2: رسالة نصية، 3: كلاهما، 0: تعطيل <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; سلسلة معرف قناة الإشعارات<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: رفض، 1: صامت، 2: إنهاء المكالمة
         ]]>
     </string>
     <string name="action_modify_rules">تعديل القواعد</string>

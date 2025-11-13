@@ -13,8 +13,6 @@ import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallEvent
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.CategoryConfig
-import spam.blocker.service.bot.PruneHistory
-import spam.blocker.service.bot.PruneDatabase
 import spam.blocker.service.bot.ConvertNumber
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.Delay
@@ -38,6 +36,8 @@ import spam.blocker.service.bot.ParseCSV
 import spam.blocker.service.bot.ParseQueryResult
 import spam.blocker.service.bot.ParseXML
 import spam.blocker.service.bot.Periodically
+import spam.blocker.service.bot.PruneDatabase
+import spam.blocker.service.bot.PruneHistory
 import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.ReadFile
 import spam.blocker.service.bot.RegexExtract

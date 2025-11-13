@@ -23,8 +23,7 @@ import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.IChecker
-import spam.blocker.service.checker.Preprocessors
-import spam.blocker.service.checker.toNumberChecker
+import spam.blocker.service.checker.toChecker
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.widgets.ResIcon
@@ -95,8 +94,8 @@ fun IndicatorsWrapper(
     fun loadNumberCheckers(): List<IChecker> {
         return if (showIndicator) {
             NumberRuleTable().listAll(ctx).map {
-                it.toNumberChecker(ctx)
-            } + Preprocessors.calendarEvent(ctx)
+                it.toChecker(ctx)
+            }
         } else listOf()
     }
 
@@ -104,7 +103,7 @@ fun IndicatorsWrapper(
         return if (showIndicator && vm.forType == Def.ForSms) {
             ContentRuleTable().listAll(ctx).map {
                 Checker.Content(ctx, it)
-            } + Preprocessors.calendarEvent(ctx)
+            }
         } else listOf()
     }
 

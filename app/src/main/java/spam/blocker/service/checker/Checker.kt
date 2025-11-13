@@ -74,7 +74,7 @@ interface IChecker {
     fun check(cCtx: CheckContext): ICheckResult?
 }
 
-fun RegexRule.toNumberChecker(
+fun RegexRule.toChecker(
     ctx: Context,
 ): IChecker {
     val forContact = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
@@ -87,23 +87,23 @@ fun RegexRule.toNumberChecker(
         Checker.Number(ctx, this)
 }
 
-// A pre-processor is simply a WorkflowRunner, it will be processed before checkers are executed.
-// In this way, they can temporarily modify checkers, e.g.: disable a regex rule on the fly
-//   without modifying the configuration.
-object Preprocessors {
+// Before the call/SMS is checked by the rules, run all related workflows first.
+// Workflows with triggers like `Call Event`, `Calendar Event` will be executed on incoming call,
+//   and `SMS Event` on SMS.
+object Preprocessors { // for namespace only
 
-    // Run a workflow.
-    open class WorkflowRunner(
+    // Execute a workflow
+    open class BotRunner(
         val ctx: Context,
         val bot: Bot,
     ) : IChecker {
         override fun priority(): Int {
-            // To make sure it's executed before all other rules.
+            // To make sure it's executed before rules. (but after emergency, which is MAX_VALUE)
             return Int.MAX_VALUE - 1
         }
         override fun check(cCtx: CheckContext): ICheckResult? {
             // cCtx.logger can be either:
-            //  - TextLogger: when testing
+            //  - TextLogger: when testing, which prints logs on the dialog
             //  - null: on real call/sms
             // When it's null, use a SaveableLogger to log the execution to database, for feature "Last Log"
             val logger = cCtx.logger ?: SaveableLogger()
@@ -114,6 +114,7 @@ object Preprocessors {
                 smsContent = cCtx.smsContent,
                 cCtx = cCtx,
             )
+            // Run Trigger + Actions
             bot.triggerAndActions().executeAll(ctx, aCtx)
 
             // Save for "Last Log"
@@ -124,7 +125,7 @@ object Preprocessors {
         }
     }
     // Collect all call-related workflows.
-    fun callRelated(ctx: Context): List<WorkflowRunner> {
+    fun callTriggers(ctx: Context): List<BotRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val trigger = it.trigger
@@ -135,16 +136,16 @@ object Preprocessors {
 
                 // Type of these classes ?
                 return@filter when(trigger) {
-                    is CallEvent, is CallThrottling, is QuickTile -> true
+                    is CallEvent, is CallThrottling, is QuickTile, is CalendarEvent -> true
                     else -> false
                 }
             }
             .map {
-                WorkflowRunner(ctx, it)
+                BotRunner(ctx, it)
             }
     }
     // Collect all SMS-related workflows.
-    fun smsRelated(ctx: Context): List<WorkflowRunner> {
+    fun smsTriggers(ctx: Context): List<BotRunner> {
         return BotTable.listAll(ctx)
             .filter {
                 val trigger = it.trigger
@@ -155,43 +156,15 @@ object Preprocessors {
 
                 // Type of these classes ?
                 return@filter when(trigger) {
-                    is SmsEvent, is SmsThrottling -> true
+                    is SmsEvent, is SmsThrottling, is CalendarEvent -> true
                     else -> false
                 }
 
                 return@filter false
             }
             .map {
-                WorkflowRunner(ctx, it)
+                BotRunner(ctx, it)
             }
-    }
-
-    // Collect all `Calendar Event` that defined in Workflow section.
-    fun calendarEvent(ctx: Context): List<WorkflowRunner> {
-        val bots = BotTable.listAll(ctx).filter {
-            it.trigger is CalendarEvent && it.trigger.isActivated()
-        }
-        if (bots.isEmpty()) // No calendar workflow enabled
-            return listOf()
-
-        val ongoingEvents = Util.ongoingCalendarEvents(ctx)
-        if (ongoingEvents.isEmpty()) // No calendar event currently occurring
-            return listOf()
-
-        var ret = mutableListOf<WorkflowRunner>()
-
-        ongoingEvents.forEach { eventTitle ->
-            ret += bots
-                // only keep bots that match this eventTitle
-                .filter {
-                    val ce = it.trigger as CalendarEvent
-                    ce.eventTitle.regexMatches(eventTitle, ce.eventTitleFlags)
-                }
-                .map {
-                    WorkflowRunner(ctx, it)
-                }
-        }
-        return ret
     }
 }
 class Checker { // for namespace only
@@ -1322,9 +1295,8 @@ class Checker { // for namespace only
                 checkers = checkers,
             )
             // pre-process the checkers, temporarily modify rules
-            val preprocessors = Preprocessors.calendarEvent(ctx) +
-                    Preprocessors.callRelated(ctx)
-            preprocessors.forEach { it.check(cCtx) }
+            Preprocessors.callTriggers(ctx)
+                .forEach { it.check(cCtx) }
 
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
@@ -1375,7 +1347,7 @@ class Checker { // for namespace only
             // Add number rules to checkers
             val rules = NumberRuleTable().listAll(ctx)
             checkers += rules.map {
-                it.toNumberChecker(ctx)
+                it.toChecker(ctx)
             }
 
             return checkCallWithCheckers(
@@ -1397,9 +1369,8 @@ class Checker { // for namespace only
             )
 
             // pre-process the checkers, temporarily modify rules
-            val preprocessors = Preprocessors.calendarEvent(ctx) +
-                    Preprocessors.smsRelated(ctx)
-            preprocessors.forEach { it.check(cCtx) }
+            Preprocessors.smsTriggers(ctx)
+                .forEach { it.check(cCtx) }
 
             // sort by priority desc
             val sortedCheckers = checkers.sortedByDescending {
@@ -1441,7 +1412,7 @@ class Checker { // for namespace only
             //  add number rules to checkers
             val numberRules = NumberRuleTable().listAll(ctx)
             checkers += numberRules.map {
-                it.toNumberChecker(ctx)
+                it.toChecker(ctx)
             }
 
             //  add sms content rules to checkers

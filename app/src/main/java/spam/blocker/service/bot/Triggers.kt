@@ -29,16 +29,6 @@ import spam.blocker.db.CallTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
-import spam.blocker.service.bot.ActionContext
-import spam.blocker.service.bot.ISchedule
-import spam.blocker.service.bot.ITriggerAction
-import spam.blocker.service.bot.NoOptionNeeded
-import spam.blocker.service.bot.ParamType
-import spam.blocker.service.bot.clone
-import spam.blocker.service.bot.defaultSchedules
-import spam.blocker.service.bot.parseSchedule
-import spam.blocker.service.bot.rememberSaveableScheduleState
-import spam.blocker.service.bot.serialize
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.ICheckResult
 import spam.blocker.ui.M
@@ -291,7 +281,7 @@ class CalendarEvent(
         }
     }
     override fun execute(ctx: Context, aCtx: ActionContext): Boolean {
-        if (!Permission.calendar.isGranted || !enabled)
+        if (!isActivated())
             return false
 
         val ongoingEvents = Util.ongoingCalendarEvents(ctx)
@@ -301,13 +291,6 @@ class CalendarEvent(
         if (triggered) {
             aCtx.logger?.warn(
                 ctx.getString(R.string.calendar_event_is_triggered)
-                    .formatAnnotated(
-                        eventTitle.A(Teal200)
-                    )
-            )
-        } else {
-            aCtx.logger?.debug(
-                ctx.getString(R.string.calendar_event_is_not_active)
                     .formatAnnotated(
                         eventTitle.A(Teal200)
                     )

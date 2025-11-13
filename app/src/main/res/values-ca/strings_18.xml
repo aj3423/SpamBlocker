@@ -84,5 +84,4 @@
     </string>
     <string name="help_calendar_event_title">Això ha de coincidir amb l\'esdeveniment del calendari, que es pot crear a l\'aplicació Calendari.</string>
     <string name="working">Treballant</string>
-    <string name="calendar_event_is_not_active">L\'esdeveniment del calendari %s no està actiu.</string>
 </resources>

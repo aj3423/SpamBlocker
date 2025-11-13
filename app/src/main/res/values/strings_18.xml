@@ -3,7 +3,6 @@
     <string name="help_auto_copy">Automatically copy the content to the clipboard without needing to tap the \"Copy\" button in the notification.</string>
     <string name="calendar_event">Calendar Event</string>
     <string name="calendar_event_is_triggered">Calendar event %s is triggered.</string>
-    <string name="calendar_event_is_not_active">Calendar event %s is not active.</string>
     <string name="event_title">Event Title</string>
     <string name="rule_updated">Regex rule %s is modified to: %s</string>
     <string name="rule_updated_temporarily">Regex rule %s is temporarily modified to: %s</string>

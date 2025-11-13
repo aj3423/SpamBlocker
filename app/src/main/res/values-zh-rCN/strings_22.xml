@@ -97,12 +97,31 @@
     <string name="action_find_rules">查找规则</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        查找所有匹配特定描述的正则表达式规则。
+        查找一个或多个匹配特定描述的正则表达式规则。
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        更改规则列表的一个或多个属性。
+        修改一个或多个规则的属性。 <br>
+        <br>
+        根据工作流程触发器类型，规则可以永久或临时修改。 <br>
+        <br>
+        可修改属性： <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; 正则表达式 <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; 描述 <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; 优先级 <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: 阻止, <no_translate>false</no_translate>: 允许 <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; 适用于: <br>
+        &ensp; 1: 电话, 2: 短信, 3: 两者, 0: 禁用 <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; 通知渠道 ID 字符串<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: 拒接, 1: 静音, 2: 挂断
         ]]>
     </string>
     <string name="action_modify_rules">修改规则</string>

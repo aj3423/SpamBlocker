@@ -27,9 +27,9 @@ import spam.blocker.Events
 import spam.blocker.R
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
-import spam.blocker.service.bot.PruneDatabase
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.MyWorkManager
+import spam.blocker.service.bot.PruneDatabase
 import spam.blocker.service.bot.serialize
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow

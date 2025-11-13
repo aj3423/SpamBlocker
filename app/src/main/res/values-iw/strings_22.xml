@@ -97,12 +97,31 @@
     <string name="action_find_rules">מצא כללים</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        מצא את כל כללי הביטויים הרגולריים התואמים את התיאור הספציפי.
+        מצא כלל ביטוי רגולרי אחד או יותר התואמים לתיאור מסוים.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        שנה מאפיין אחד או יותר עבור רשימת כללים.
+        שנה את התכונות של כלל אחד או יותר. <br>
+        <br>
+        בהתאם לסוג מפעיל התהליך, ניתן לשנות כללים באופן קבוע או זמני. <br>
+        <br>
+        תכונות שניתנות לשינוי: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; הביטוי הרגולרי <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; התיאור <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; העדיפות <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: חסום, <no_translate>false</no_translate>: אפשר <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; החל על: <br>
+        &ensp; 1: שיחה, 2: SMS, 3: שניהם, 0: השבת <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; מחרוזת מזהה ערוץ ההתראות<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: דחה, 1: השתק, 2: נתק
         ]]>
     </string>
     <string name="action_modify_rules">שנה כללים</string>

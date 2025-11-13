@@ -83,5 +83,4 @@
     </string>
     <string name="help_calendar_event_title">يجب أن يطابق هذا حدث التقويم، والذي يمكن إنشاؤه في تطبيق التقويم.</string>
     <string name="working">قيد العمل</string>
-    <string name="calendar_event_is_not_active">حدث التقويم %s غير نشط.</string>
 </resources>

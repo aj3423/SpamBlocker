@@ -97,15 +97,34 @@
     <string name="action_find_rules">یافتن قوانین</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        تمام قوانین عبارت باقاعده را که با توضیحات مشخص مطابقت دارند، پیدا کنید.
+        یک یا چند قانون عبارت منظم را پیدا می‌کند که با یک توضیح خاص مطابقت دارند.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        یک یا چند ویژگی را برای لیستی از قوانین تغییر دهید.
+        ویژگی‌های یک یا چند قانون را تغییر می‌دهد. <br>
+        <br>
+        بسته به نوع ماشه گردش کار، قوانین می‌توانند به طور دائم یا موقت تغییر یابند. <br>
+        <br>
+        ویژگی‌های قابل تغییر: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; عبارت منظم <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; توضیحات <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; اولویت <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: مسدود کردن، <no_translate>false</no_translate>: اجازه دادن <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; اعمال شود بر: <br>
+        &ensp; 1: تماس، 2: پیامک، 3: هر دو، 0: غیرفعال <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; رشته شناسه کانال اعلان<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: رد کردن، 1: بی‌صدا کردن، 2: قطع تماس
         ]]>
     </string>
-    <string name="action_modify_rules">ویرایش قوانین</string>
+    <string name="action_modify_rules">تغییر قوانین</string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
         لیستی از شماره‌ها را به پایگاه داده اسپم اضافه کنید.

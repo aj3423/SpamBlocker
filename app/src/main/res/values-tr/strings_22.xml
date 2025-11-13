@@ -97,12 +97,31 @@
     <string name="action_find_rules">Kuralları Bul</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Belirli açıklamaya uyan tüm regex kurallarını bulun.
+        Belirli bir açıklamaya uyan bir veya birden çok regex kuralını bul.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Bir kurallar listesi için bir veya birden fazla niteliği değiştirin.
+        Bir veya birden fazla kuralın niteliklerini değiştir. <br>
+        <br>
+        İş akışı tetikleyici türüne bağlı olarak, kurallar kalıcı veya geçici olarak değiştirilebilir. <br>
+        <br>
+        Değiştirilebilir nitelikler: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; Regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; Açıklama <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; Öncelik <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Engelle, <no_translate>false</no_translate>: İzin ver <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Uygulanacak yer: <br>
+        &ensp; 1: çağrı, 2: SMS, 3: her ikisi, 0: devre dışı bırak <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; Bildirim kanalı kimliği dizesi<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: reddet, 1: sessize al, 2: kapat
         ]]>
     </string>
     <string name="action_modify_rules">Kuralları Değiştir</string>

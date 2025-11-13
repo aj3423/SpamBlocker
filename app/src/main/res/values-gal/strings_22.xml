@@ -94,18 +94,37 @@
         %s
         ]]>
     </string>
-    <string name="action_find_rules">Atopar regras</string>
+    <string name="action_find_rules">Buscar Regras</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Atopar todas as regras de regex que coincidan coa descrición específica.
+        Busca unha ou varias regras regex que coincidan cunha descrición particular.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Cambiar un ou varios atributos para unha lista de regras.
+        Modifica os atributos dunha ou varias regras. <br>
+        <br>
+        Dependendo do tipo de disparador do fluxo de traballo, as regras pódense modificar de forma permanente ou temporal. <br>
+        <br>
+        Atributos modificables: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; O regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; A descrición <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; A prioridade <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Bloquear, <no_translate>false</no_translate>: permitir <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Aplicar a: <br>
+        &ensp; 1: chamada, 2: SMS, 3: ambos, 0: desactivar <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; O identificador de cadea da canle de notificación<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: rexeitar, 1: silenciar, 2: colgar
         ]]>
     </string>
-    <string name="action_modify_rules">Modificar regras</string>
+    <string name="action_modify_rules">Modificar Regras</string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
         Engadir unha lista de números á base de datos de spam.

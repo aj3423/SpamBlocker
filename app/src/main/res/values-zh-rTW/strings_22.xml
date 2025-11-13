@@ -97,12 +97,31 @@
     <string name="action_find_rules">尋找規則</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        尋找所有符合特定描述的正規表達式規則。
+        尋找一個或多個符合特定描述的正規表達式規則。
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        更改規則列表的一個或多個屬性。
+        修改一或多個規則的屬性。 <br>
+        <br>
+        根據工作流程觸發類型，規則可以永久或暫時修改。 <br>
+        <br>
+        可修改的屬性： <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; 正規表達式 <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; 描述 <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; 優先順序 <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>：封鎖，<no_translate>false</no_translate>：允許 <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; 適用於： <br>
+        &ensp; 1：來電，2：簡訊，3：兩者，0：停用 <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; 通知頻道 ID 字串<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0：拒絕，1：靜音，2：掛斷
         ]]>
     </string>
     <string name="action_modify_rules">修改規則</string>

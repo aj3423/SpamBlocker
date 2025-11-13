@@ -94,18 +94,37 @@
         %s
         ]]>
     </string>
-    <string name="action_find_rules">Cercar Regles</string>
+    <string name="action_find_rules">Cerca regles</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Trobeu totes les regles regex que coincideixen amb la descripció específica.
+        Cerca una o diverses regles regex que coincideixin amb una descripció particular.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Canvieu un o diversos atributs per a una llista de regles.
+        Modifica els atributs d\'una o més regles. <br>
+        <br>
+        Depenent del tipus de disparador del flux de treball, les regles es poden modificar de manera permanent o temporal. <br>
+        <br>
+        Atributs modificables: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; L\'expressió regular <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; La descripció <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; La prioritat <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Bloqueja, <no_translate>false</no_translate>: permet <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Aplica a: <br>
+        &ensp; 1: trucada, 2: SMS, 3: tots dos, 0: desactiva <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; La cadena d\'ID del canal de notificació<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: rebutja, 1: silencia, 2: penja
         ]]>
     </string>
-    <string name="action_modify_rules">Modificar Regles</string>
+    <string name="action_modify_rules">Modifica regles</string>
     <string name="help_action_import_to_spam_db">
         <![CDATA[
         Afegiu una llista de números a la base de dades de trucades spam.

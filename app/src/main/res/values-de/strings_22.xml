@@ -97,12 +97,31 @@
     <string name="action_find_rules">Regeln finden</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Findet alle Regex-Regeln, die der spezifischen Beschreibung entsprechen.
+        Suchen Sie eine oder mehrere Regex-Regeln, die einer bestimmten Beschreibung entsprechen.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Ändert ein oder mehrere Attribute für eine Liste von Regeln.
+        Ändern Sie die Attribute einer oder mehrerer Regeln. <br>
+        <br>
+        Abhängig vom Workflow-Auslösertyp können Regeln dauerhaft oder temporär geändert werden. <br>
+        <br>
+        Modifizierbare Attribute: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; Der Regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; Die Beschreibung <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; Die Priorität <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Blockieren, <no_translate>false</no_translate>: erlauben <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Anwenden auf: <br>
+        &ensp; 1: Anruf, 2: SMS, 3: beides, 0: deaktivieren <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; Die ID-Zeichenfolge des Benachrichtigungskanals<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: ablehnen, 1: stummschalten, 2: auflegen
         ]]>
     </string>
     <string name="action_modify_rules">Regeln ändern</string>

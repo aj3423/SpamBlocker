@@ -84,5 +84,4 @@
     </string>
     <string name="help_calendar_event_title">Esto debe coincidir con el evento del calendario, que puede crearse en la aplicación Calendario.</string>
     <string name="working">Trabajando</string>
-    <string name="calendar_event_is_not_active">El evento de calendario %s no está activo.</string>
 </resources>

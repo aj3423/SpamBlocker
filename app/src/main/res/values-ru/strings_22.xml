@@ -97,12 +97,31 @@
     <string name="action_find_rules">Найти правила</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Найти все правила регулярных выражений, соответствующие заданному описанию.
+        Найти одно или несколько правил регулярных выражений, соответствующих определенному описанию.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Изменить один или несколько атрибутов для списка правил.
+        Изменить атрибуты одного или нескольких правил. <br>
+        <br>
+        В зависимости от типа запуска рабочего процесса, правила могут быть изменены постоянно или временно. <br>
+        <br>
+        Изменяемые атрибуты: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; Регулярное выражение <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; Описание <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; Приоритет <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Блокировать, <no_translate>false</no_translate>: разрешить <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Применить к: <br>
+        &ensp; 1: звонок, 2: SMS, 3: оба, 0: отключить <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; Строка идентификатора канала уведомлений<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: отклонить, 1: без звука, 2: сбросить
         ]]>
     </string>
     <string name="action_modify_rules">Изменить правила</string>

@@ -83,5 +83,4 @@
     </string>
     <string name="help_calendar_event_title">これはカレンダーアプリで作成できるカレンダーイベントと一致する必要があります。</string>
     <string name="working">勤務中</string>
-    <string name="calendar_event_is_not_active">カレンダーイベント %s はアクティブではありません。</string>
 </resources>

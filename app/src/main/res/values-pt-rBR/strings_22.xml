@@ -97,12 +97,31 @@
     <string name="action_find_rules">Encontrar Regras</string>
     <string name="help_action_find_rules">
         <![CDATA[
-        Encontrar todas as regras regex que correspondem à descrição específica.
+        Encontre uma ou múltiplas regras regex que correspondam a uma descrição específica.
         ]]>
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Alterar um ou vários atributos para uma lista de regras.
+        Modifique os atributos de uma ou mais regras. <br>
+        <br>
+        Dependendo do tipo de gatilho do fluxo de trabalho, as regras podem ser modificadas permanentemente ou temporariamente. <br>
+        <br>
+        Atributos modificáveis: <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; O regex <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; A descrição <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; A prioridade <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: Bloquear, <no_translate>false</no_translate>: permitir <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; Aplicar a: <br>
+        &ensp; 1: chamada, 2: SMS, 3: ambos, 0: desativar <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; A string de ID do canal de notificação<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: rejeitar, 1: silenciar, 2: desligar
         ]]>
     </string>
     <string name="action_modify_rules">Modificar Regras</string>
