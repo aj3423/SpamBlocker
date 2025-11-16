@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">اقدامات</string>
+    <string name="work_state_template">وضعیت: %s</string>
+    <string name="stop_reason_template">دلیل توقف: %s</string>
 </resources>

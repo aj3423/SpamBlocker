@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">Eylemler</string>
+    <string name="work_state_template">Durum: %s</string>
+    <string name="stop_reason_template">Durdurma Nedeni: %s</string>
 </resources>

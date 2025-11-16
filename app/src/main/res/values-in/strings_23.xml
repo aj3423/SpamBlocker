@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">Tindakan</string>
+    <string name="work_state_template">Status: %s</string>
+    <string name="stop_reason_template">Alasan Berhenti: %s</string>
 </resources>

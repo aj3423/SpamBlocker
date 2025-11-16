@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">Actions</string>
+    <string name="work_state_template">State: %s</string>
+    <string name="stop_reason_template">Stop Reason: %s</string>
 </resources>

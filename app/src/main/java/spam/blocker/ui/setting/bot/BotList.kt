@@ -11,6 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,6 +22,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import androidx.work.WorkInfo
+import androidx.work.WorkInfo.Companion.STOP_REASON_NOT_STOPPED
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -61,6 +64,8 @@ import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.formatAnnotated
 import java.time.Duration
 import java.time.Instant
+import androidx.work.WorkInfo.State.ENQUEUED
+import androidx.work.WorkInfo.State.RUNNING
 
 
 @Composable
@@ -69,20 +74,40 @@ fun CountdownMenuItem(bot: Bot) {
     val coroutineScope = rememberCoroutineScope()
 
     var nextTick by remember { mutableLongStateOf(0) }
+    // BLOCKED,CANCELLED,ENQUEUED,FAILED,RUNNING,SUCCEEDED
+    var state by remember { mutableStateOf<WorkInfo.State>(ENQUEUED) }
+    // https://developer.android.com/reference/androidx/work/WorkInfo#STOP_REASON_NOT_STOPPED()
+    var stopReason by remember { mutableIntStateOf(STOP_REASON_NOT_STOPPED) }
 
-    var label by remember { mutableStateOf("" ) }
+    var label by remember { mutableStateOf("") }
 
     fun refreshLabel() {
-        label = Util.durationString(
-            ctx,
-            Duration.between(Instant.now(), Instant.ofEpochMilli(nextTick))
-        )
+        label = when (state) { // Show countdown if it's still running
+            ENQUEUED, RUNNING -> {
+                Util.durationString(
+                    ctx,
+                    Duration.between(Instant.now(), Instant.ofEpochMilli(nextTick))
+                )
+            }
+
+            else -> { // It's stopped, show the state/stopReason for debugging purpose.
+                val stateStr = ctx.getString(R.string.work_state_template)
+                    .format("$state")
+                val stopReasonStr = ctx.getString(R.string.stop_reason_template)
+                    .format("$stopReason")
+
+                "$stateStr | $stopReasonStr"
+            }
+        }
     }
 
     LaunchedEffect(true) {
         if (bot.trigger is Schedule) {
             MyWorkManager.getWorkInfoByTag(ctx, bot.trigger.workUUID)?.let {
                 nextTick = it.nextScheduleTimeMillis
+                state = it.state
+                stopReason = it.stopReason
+
                 refreshLabel()
             }
         }

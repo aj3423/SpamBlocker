@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">操作</string>
+    <string name="work_state_template">状态：%s</string>
+    <string name="stop_reason_template">停止原因：%s</string>
 </resources>

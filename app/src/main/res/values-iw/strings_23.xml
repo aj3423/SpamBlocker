@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">פעולות</string>
+    <string name="work_state_template">מצב: %s</string>
+    <string name="stop_reason_template">סיבת עצירה: %s</string>
 </resources>

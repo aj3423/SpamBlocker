@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">Acciones</string>
+    <string name="work_state_template">Estado: %s</string>
+    <string name="stop_reason_template">Motivo de la parada: %s</string>
 </resources>

@@ -1,3 +1,5 @@
 <resources>
     <string name="workflow_actions">アクション</string>
+    <string name="work_state_template">状態: %s</string>
+    <string name="stop_reason_template">停止理由: %s</string>
 </resources>
