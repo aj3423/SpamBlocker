@@ -3,6 +3,7 @@ package spam.blocker.service.bot
 import android.content.Context
 import android.os.Build
 import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
@@ -110,9 +111,16 @@ object MyWorkManager {
 
     fun getWorkInfoByTag(ctx: Context, tag: String): WorkInfo? {
         val workManager = WorkManager.getInstance(ctx)
-        return workManager.getWorkInfosByTag(tag).get().firstOrNull {
-            !it.state.isFinished
-        }
+
+        val infos = workManager.getWorkInfosByTag(tag).get()
+            .filter {
+                // Cancelled/Succeeded tasks have this value
+                it.nextScheduleTimeMillis != 0x7fffffffffffffff
+            }
+            .sortedBy {
+                it.nextScheduleTimeMillis
+            }
+        return infos.lastOrNull()
     }
 
     // Schedule a recurring task
@@ -153,7 +161,8 @@ object MyWorkManager {
         } else {
             logi("schedule task <${workTag}> after: ${delay.toMillis()} milliseconds")
         }
-        WorkManager.getInstance(ctx).enqueue(nextWorkRequest)
+        WorkManager.getInstance(ctx).enqueueUniqueWork(
+            workTag, ExistingWorkPolicy.REPLACE, nextWorkRequest)
 
         return true
     }

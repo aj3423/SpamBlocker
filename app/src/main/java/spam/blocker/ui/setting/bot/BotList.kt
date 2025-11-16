@@ -24,6 +24,7 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.work.WorkInfo
 import androidx.work.WorkInfo.Companion.STOP_REASON_NOT_STOPPED
+import androidx.work.WorkInfo.State.ENQUEUED
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -64,8 +65,6 @@ import spam.blocker.util.applyAnnotatedMarkups
 import spam.blocker.util.formatAnnotated
 import java.time.Duration
 import java.time.Instant
-import androidx.work.WorkInfo.State.ENQUEUED
-import androidx.work.WorkInfo.State.RUNNING
 
 
 @Composable
@@ -74,6 +73,8 @@ fun CountdownMenuItem(bot: Bot) {
     val coroutineScope = rememberCoroutineScope()
 
     var nextTick by remember { mutableLongStateOf(0) }
+
+    var isFinished by remember { mutableStateOf(false) }
     // BLOCKED,CANCELLED,ENQUEUED,FAILED,RUNNING,SUCCEEDED
     var state by remember { mutableStateOf<WorkInfo.State>(ENQUEUED) }
     // https://developer.android.com/reference/androidx/work/WorkInfo#STOP_REASON_NOT_STOPPED()
@@ -82,22 +83,18 @@ fun CountdownMenuItem(bot: Bot) {
     var label by remember { mutableStateOf("") }
 
     fun refreshLabel() {
-        label = when (state) { // Show countdown if it's still running
-            ENQUEUED, RUNNING -> {
-                Util.durationString(
-                    ctx,
-                    Duration.between(Instant.now(), Instant.ofEpochMilli(nextTick))
-                )
-            }
+        label = if (isFinished) { // Show stop reason
+            val stateStr = ctx.getString(R.string.work_state_template)
+                .format("$state")
+            val stopReasonStr = ctx.getString(R.string.stop_reason_template)
+                .format("$stopReason")
 
-            else -> { // It's stopped, show the state/stopReason for debugging purpose.
-                val stateStr = ctx.getString(R.string.work_state_template)
-                    .format("$state")
-                val stopReasonStr = ctx.getString(R.string.stop_reason_template)
-                    .format("$stopReason")
-
-                "$stateStr | $stopReasonStr"
-            }
+            "$stateStr\n$stopReasonStr"
+        } else { // Show countdown if it's still running
+            Util.durationString(
+                ctx,
+                Duration.between(Instant.now(), Instant.ofEpochMilli(nextTick))
+            )
         }
     }
 
@@ -105,6 +102,8 @@ fun CountdownMenuItem(bot: Bot) {
         if (bot.trigger is Schedule) {
             MyWorkManager.getWorkInfoByTag(ctx, bot.trigger.workUUID)?.let {
                 nextTick = it.nextScheduleTimeMillis
+
+                isFinished = it.state.isFinished
                 state = it.state
                 stopReason = it.stopReason
 
@@ -130,7 +129,7 @@ fun CountdownMenuItem(bot: Bot) {
     RowVCenterSpaced(10) {
         GreyIcon20(R.drawable.ic_hourglass)
 
-        GreyLabel(text = label, modifier = M.weight(1f))
+        GreyLabel(text = label, modifier = M.weight(1f), maxLines = 3)
     }
 }
 
