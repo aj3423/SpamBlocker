@@ -3,6 +3,7 @@ package spam.blocker.db
 import android.annotation.SuppressLint
 import android.content.Context
 import android.database.Cursor
+import android.os.Build
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
 import androidx.core.database.sqlite.transaction
@@ -13,6 +14,7 @@ import spam.blocker.db.Db.Companion.COLUMN_REASON
 import spam.blocker.db.Db.Companion.COLUMN_REASON_EXTRA
 import spam.blocker.db.Db.Companion.COLUMN_TIME
 import spam.blocker.db.Db.Companion.TABLE_SPAM
+import spam.blocker.def.Def.ANDROID_10
 import spam.blocker.util.loge
 
 enum class ImportDbReason {
@@ -50,7 +52,11 @@ object SpamTable {
         // - Single insertion: 9 seconds
         db.transaction() {
             return try {
-                val batchSize = 1000 // Tune: 500-2000 based on memory
+                val batchSize = when(Build.VERSION.SDK_INT) {
+                    ANDROID_10 -> 240 // 250 on android 10 would cause "Too many SQL variables"
+                    else -> 1000
+                }
+
                 numbers.chunked(batchSize).forEach { batch ->
                     // Build placeholders: (?, ?, ?, ?) repeated for batch size
                     val placeholders = (1..batch.size).joinToString(", ") { "(?, ?, ?, ?)" }
