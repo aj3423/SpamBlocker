@@ -32,38 +32,36 @@ Table of Contents
    * [Donate](#donate)
 
 # Screenshot
-| Call / SMS  | Report spam  | Setting  | Notification  |
-|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/7f03d0a0-d12e-4e1b-a064-2412fc1cee8e" width="200"> | <img src="https://github.com/user-attachments/assets/d4ca58f9-72fd-48c3-8406-bb92ce958a79" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/a86fff09-d30b-428e-866c-0f07b874d479" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/633e0e24-5ba0-44d7-90ec-09324081d37b" width="200"> |
+| History | Settings | Notification |
+|----|----|----|
+| <img src="https://github.com/user-attachments/assets/d4ca58f9-72fd-48c3-8406-bb92ce958a79" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/a86fff09-d30b-428e-866c-0f07b874d479" width="200"> | <img src="https://github.com/aj3423/SpamBlocker/assets/4710875/633e0e24-5ba0-44d7-90ec-09324081d37b" width="200"> |
 
 # How it works
-It works without replacing your default call/SMS app.
+It works without replacing your call/SMS app.
  - For call: <br>
- &ensp; It's the Caller ID app 
+ &ensp; It's the Caller ID app.
  - For SMS: <br>
- &ensp; It takes over the SMS notifications, it only filters the notifications, the spam messages will still be present in the SMS app.
-   > 💡 Please turn off the notification permission of the default SMS app in system settings, otherwise there will be double SMS notifications.
+ &ensp; It takes over SMS notifications but only filters them, spam messages will still appear in the SMS app.
 
-It's not necessary to leave this app running in the background, you can kill the process after it's configured, if it doesn't work, please refer to [this](https://github.com/aj3423/SpamBlocker/issues/100).
+You can kill the app after setup, it's unnecessary to keep it running in the background.
 
 # Features:
 
 | Filter                        | It checks |
 |-------------------------------|----------|
-| Contacts                      | Whether from a contact |
-| Contact Group                 | Whether it's a member of some contact group |
-| STIR/SHAKEN                   | STIR/SHAKEN attestation |
-| Repeated                      | Whether it's been calling repeatedly|
-| Dialed                        | Whether you have dialed the number  |
+| Contacts                      | From a contact? |
+| STIR/SHAKEN                   | Fails STIR/SHAKEN attestation? |
+| Repeated                      | Multiple calls from the same number in a short while? |
+| Dialed                        | Have you dialed the number? |
 | Push Alert                    | Allow calls after receiving notifications from other apps, e.g.: "Your order has been taken by driver ...", the driver may then contact you. | 
 | SMS Alert                     | Allow calls after receiving SMS messages like: "[From ...] We are calling to inform ..., please feel free to answer." | 
 | Recent Apps                   | Allow calls if some apps have been used recently.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund. |
 | Meeting Mode                  | Decline calls during online video meetings. |
 | Off Time                      | A time period that always allows calls, usually no spams at night. |
-| Spam Database                 | If it matches any spam number in the database. Any public downloadable spam databases can be integrated, such as the [DNC](https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data). |
+| Spam Database                 | If it exists in the spam database. Any public downloadable spam databases can be integrated, such as the [DNC](https://www.ftc.gov/policy-notices/open-government/data-sets/do-not-call-data). |
 | Instant Query                 | Check the incoming number online in real time, querying multiple API endpoints simultaneously, such as the [PhoneBlock](https://phoneblock.net/). |
 | Report Spam                   | Automatically or manually report the number to build our crowd-sourced databases, protecting others and yourself.  |
-| Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates) for examples.<br><br>Some typical patterns:<br> - Any number: `.*` (the regex `.*` is equivalent to the wildcard `*` in other apps) <br> - Unknown/Private/Empty number (it's actually empty text): `.{0}` or `^$`<br> - Exact number: `12345` <br> - Start with 400: `400.*` <br> - End with 123: `.*123` <br> - 7 digits: `.{7}` <br> - Shorter than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Contain word "verification": `.*verification.*` <br> - Contain any of the words: `.*(police\|hospital\|verification).*` <br> - Start with 400, with leading country code 11 or not: `(?:11)?400.*` <br>- Extract verification code from SMS message: `code.*?(\d+)` |
+| Regex<br>(regular expression) | Check the [Wiki](https://github.com/aj3423/SpamBlocker/wiki/Regex-Workflow-Templates) for examples.<br><br>Some typical patterns:<br> - Any number: `.*` (the regex `.*` is equivalent to the wildcard `*` in other apps) <br> - Unknown/Private/Empty number (it's actually empty text): `.{0}` or `^$`<br> - Exact number: `12345` <br> - Start with 789: `789.*` <br> - End with 123: `.*123` <br> - 7 digits: `.{7}` <br> - Shorter than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Contain word "verification": `.*verification.*` <br> - Contain any of the words: `.*(police\|hospital\|verification).*` <br> - Start with 789, with leading country code 11 or not: `(?:11)?789.*` <br>- Extract verification code from SMS message: `code.*?(\d+)` |
 
 
 # Limitations 
@@ -77,12 +75,12 @@ It's not necessary to leave this app running in the background, you can kill the
 | Permission (all optional)                                                         | Why                                                                    |
 |-----------------------------------------------------------------------------------|------------------------------------------------------------------------|
 | INTERNET                                                                          | For database downloading / instant query / number reporting            | 
-| MANAGE_EXTERNAL_STORAGE (Android 11+)<br>READ/WRITE_EXTERNAL_STORAGE (Android 10) | For file access from automated workflow                                | 
+| MANAGE_EXTERNAL_STORAGE (Android 11+)<br>READ/WRITE_EXTERNAL_STORAGE (Android 10) | For file access via automated workflow                                 | 
 | ANSWER_PHONE_CALLS                                                                | Reject, answer and hang-up calls                                       |
 | POST_NOTIFICATIONS                                                                | Show notifications                                                     |
-| READ_CONTACTS                                                                     | For matching contacts                                                  |
+| READ_CONTACTS                                                                     | Match contacts                                                         |
 | RECEIVE_SMS / RECEIVE_MMS                                                         | For SMS notification screening                                         |
-| READ_CALL_LOG<br>READ_SMS                                                         | For allowing repeated call                                             |
+| READ_CALL_LOG<br>READ_SMS                                                         | For allowing repeated calls                                            |
 | PACKAGE_USAGE_STATS                                                               | For feature: Recent Apps (check whether an app has been used recently) |
 | READ_PHONE_STATE                                                                  | For BlockMode: Answer+Hang-up (monitor ringing state)                  |
 | REQUEST_IGNORE_BATTERY_OPTIMIZATIONS                                              | For it to keep working after being swiped and killed                   |
@@ -105,8 +103,7 @@ It's not necessary to leave this app running in the background, you can kill the
 
    Nothing else.
 
-   You can also [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147) if
-   you want, or download the offline apk from the release page.
+   You can also [disable the internet access](https://github.com/aj3423/SpamBlocker/issues/147) , or download the offline apk from the release page.
  - No communication with other apps
  - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
  - Apk signing signature:
@@ -117,18 +114,19 @@ It's not necessary to leave this app running in the background, you can kill the
 Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRIVACY%20POLICY.md)
 
 # Support
- - Most problems have already been discussed in the issue list, please search first.
- - There's also a [matrix channel](https://matrix.to/#/#spam-blocker:matrix.org)
+ - Most problems are already covered in the issue list, please search first.
+ - There's a [matrix channel](https://matrix.to/#/#spam-blocker:matrix.org).
 
 # FAQ
  - [Security warning from Google Play when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
- - [How does the "Priority" work, how to always block a particular number regardless of any other rules](https://github.com/aj3423/SpamBlocker/issues/166)
- - [It stopped working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
+ - [How the "Priority" works](https://github.com/aj3423/SpamBlocker/issues/166)
+ - [It stops working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
  - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
 
 # Language support
 
 Languages are translated using Gemini AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), fire an issue for requesting a new language support.
+PRs for corrections are welcome.
 
 # Contributing
  - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)
