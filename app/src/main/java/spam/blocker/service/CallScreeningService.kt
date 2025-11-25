@@ -46,7 +46,12 @@ fun Details.getRawNumber(): String {
             rawNumber = uri.schemeSpecificPart
         }
     }
-    return rawNumber
+    val displayName = this.callerDisplayName
+
+    return if (displayName == null)
+        rawNumber
+    else
+        "$displayName|$rawNumber"
 }
 
 class CallScreeningService : CallScreeningService() {
