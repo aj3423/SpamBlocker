@@ -7,6 +7,7 @@ import android.telecom.Call.Details
 import android.telecom.CallScreeningService
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
+import androidx.core.net.toUri
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -46,7 +47,27 @@ fun Details.getRawNumber(): String {
             rawNumber = uri.schemeSpecificPart
         }
     }
-    val displayName = this.callerDisplayName
+
+    /*
+       The rawNumber can be either of:
+        - tel:6505551212
+        - tel:%2B16505551212   (+16505551212)
+        - "ООО Легалтэк: ИТ"<tel:+79626916382>
+     */
+    var displayName = this.callerDisplayName
+    if (displayName.isNullOrEmpty()) {
+        if (rawNumber.contains("tel:")) { // e.g.: "ООО Легалтэк: ИТ"<tel:+79626916382>
+            // Manually parse `displayName` and `rawNumber`
+            val pattern = Regex("""^(.+?)<tel:(\+?\d+)>$""")
+            val uri = handle.toString()
+            val match = pattern.find(uri.trim())
+            if (match != null) {
+                val (name, tel) = match.destructured
+                displayName = name.removeSurrounding("\"")
+                rawNumber = Uri.decode(tel) // %2B16505551212   (+16505551212)
+            }
+        }
+    }
 
     return if (displayName == null)
         rawNumber
