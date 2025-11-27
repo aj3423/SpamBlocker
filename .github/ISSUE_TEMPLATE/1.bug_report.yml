@@ -3,14 +3,21 @@ description: Report an issue
 labels: [bug]
 body:
 
+  - type: checkboxes
+    attributes:
+      label: "Please search first"
+      options:
+        - label: "I have searched and there are no duplicates"
+          required: true
+          
   - type: input
     id: SpamBlocker-version
     attributes:
       label: SpamBlocker version
       description: |
-        You can find the version in **About** section.
+        You can find the version in the **About** dialog.
       placeholder: |
-        Example: 3.2
+        Example: 4.21
     validations:
       required: false
 
