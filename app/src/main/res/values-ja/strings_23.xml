@@ -2,4 +2,27 @@
     <string name="workflow_actions">アクション</string>
     <string name="work_state_template">状態: %s</string>
     <string name="stop_reason_template">停止理由: %s</string>
+    <string name="any">不問</string>
+    <string name="sim_card">SIMカード</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        このルールをすべてのSIMに適用するか、選択したSIMにのみ適用します。<br>
+        <br>
+        SIMカードを1枚しか使用していない場合や、複数のSIMを区別する必要がない場合は、変更する必要はありません。<br>
+        <br>
+        Android 12以降が必要です。
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        SIMカードを1枚しか使用していない場合や、複数のSIMを区別する必要がない場合は、変更する必要はありません。<br>
+        <br>
+        「不問」に設定されている場合、すべてのルールがチェックされ、ルールごとのSIM設定はすべて無視されます。<br>
+        SIMが選択されている場合、通話/SMSは選択されたSIMでシミュレートされます。<br>
+        <br>
+        Android 12以降が必要です。
+        ]]>
+    </string>
+    <string name="missing_permission">%sの権限が必要ですが、付与されていません。</string>
 </resources>

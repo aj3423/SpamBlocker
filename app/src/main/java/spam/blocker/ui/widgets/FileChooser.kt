@@ -2,6 +2,7 @@ package spam.blocker.ui.widgets
 
 import android.app.Activity
 import android.content.Intent
+import android.provider.DocumentsContract
 import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.ActivityResult
@@ -16,6 +17,12 @@ import spam.blocker.util.Util.getFilename
 import spam.blocker.util.Util.readDataFromUri
 import spam.blocker.util.Util.writeDataToUri
 
+
+// Force the initial dir to solve the "ghost file" issue.
+private val downloadsUri = DocumentsContract.buildDocumentUri(
+    "com.android.externalstorage.documents",
+    "primary:Download"
+)
 
 // Show file choose dialog, and write data to the selected file
 class FileWriteChooser {
@@ -55,6 +62,7 @@ class FileWriteChooser {
             type = "*/*"
             putExtra(Intent.EXTRA_TITLE, filename)
             putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("application/octet-stream", "application/gzip"))
+            putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
         }
         launcher.launch(intent)
     }
@@ -104,6 +112,7 @@ class FileReadChooser {
             mimeTypes?.let {
                 putExtra(Intent.EXTRA_MIME_TYPES, it)
             }
+            putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsUri)
         }
         launcher.launch(intent)
     }

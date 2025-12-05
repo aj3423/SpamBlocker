@@ -2,4 +2,27 @@
     <string name="workflow_actions">操作</string>
     <string name="work_state_template">状态：%s</string>
     <string name="stop_reason_template">停止原因：%s</string>
+    <string name="any">任意</string>
+    <string name="sim_card">SIM 卡</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        将此规则应用于所有 SIM 卡或仅应用于选定的 SIM 卡。<br>
+        <br>
+        如果您只使用一张 SIM 卡，或者不需要区分多张 SIM 卡，则无需更改此设置。<br>
+        <br>
+        需要 Android 12+。
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        如果您只使用一张 SIM 卡，或者不需要区分多张 SIM 卡，则无需更改此设置。<br>
+        <br>
+        当设置为“任意”时，所有规则都将被检查，所有按规则的 SIM 设置都将被忽略。<br>
+        当选择一张 SIM 卡时，呼叫/短信将在选定的 SIM 卡上模拟。<br>
+        <br>
+        需要 Android 12+。
+        ]]>
+    </string>
+    <string name="missing_permission">%s 权限是必需的，但尚未授予。</string>
 </resources>

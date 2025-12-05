@@ -2,4 +2,27 @@
     <string name="workflow_actions">Aktionen</string>
     <string name="work_state_template">Status: %s</string>
     <string name="stop_reason_template">Stoppgrund: %s</string>
+    <string name="any">Beliebig</string>
+    <string name="sim_card">SIM-Karte</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Wende diese Regel auf alle SIMs oder nur auf die ausgewählte SIM an. <br>
+        <br>
+        Dies muss nicht geändert werden, wenn Sie nur eine SIM-Karte verwenden oder nicht zwischen mehreren SIMs unterscheiden müssen. <br>
+        <br>
+        Erfordert Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Dies muss nicht geändert werden, wenn Sie nur eine SIM-Karte verwenden oder nicht zwischen mehreren SIMs unterscheiden müssen. <br>
+        <br>
+        Wenn auf \"Beliebig\" eingestellt, werden alle Regeln überprüft, und alle SIM-Einstellungen pro Regel werden ignoriert. <br>
+        Wenn eine SIM ausgewählt ist, wird der Anruf/die SMS auf der ausgewählten SIM simuliert. <br>
+        <br>
+        Erfordert Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">Die %s Berechtigung ist erforderlich, wurde aber nicht erteilt.</string>
 </resources>

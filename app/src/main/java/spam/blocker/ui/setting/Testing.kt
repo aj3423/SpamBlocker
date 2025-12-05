@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting
 
+import android.os.Build
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
@@ -34,6 +35,7 @@ import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RadioGroup
 import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.SimPicker
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -44,6 +46,7 @@ class TestingViewModel {
     val selectedType = mutableIntStateOf(0)
     val phone = mutableStateOf("")
     val sms = mutableStateOf("")
+    val simSlot = mutableStateOf<Int?>(null)
 }
 
 
@@ -133,9 +136,9 @@ fun PopupTesting(
 
                 coroutine.launch(IO) {
                     if (isForCall)
-                        CallScreeningService().processCall(ctx, textLogger, vm.phone.value)
+                        CallScreeningService().processCall(ctx, textLogger, vm.phone.value, simSlot = vm.simSlot.value)
                     else
-                        SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value)
+                        SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value)
                 }
             }
         },
@@ -149,6 +152,16 @@ fun PopupTesting(
                         vm.selectedType.intValue = newSel
                     }
                 }
+
+                // SIM
+                LabeledRow(
+                    labelId = R.string.sim_card,
+                    color = if(Build.VERSION.SDK_INT < 12) C.disabled else null,
+                    helpTooltip = Str(R.string.help_test_sim_card)
+                ) {
+                    SimPicker(vm.simSlot)
+                }
+
                 // Phone number
                 StrInputBox(
                     text = vm.phone.value,

@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 import spam.blocker.G
 import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.HttpDownload
 import spam.blocker.service.bot.IAction
@@ -79,7 +79,7 @@ data class ReportApi(
         return when (blockReason) {
             RESULT_BLOCKED_BY_NON_CONTACT -> autoReportTypes.hasFlag(AutoReportTypes.NonContact) // Contacts(Strict)
             RESULT_BLOCKED_BY_STIR -> autoReportTypes.hasFlag(AutoReportTypes.STIR) // STIR
-            RESULT_BLOCKED_BY_NUMBER -> autoReportTypes.hasFlag(AutoReportTypes.NumberRegex) // Number regex
+            RESULT_BLOCKED_BY_NUMBER_RULE -> autoReportTypes.hasFlag(AutoReportTypes.NumberRegex) // Number regex
             else -> false
         }
     }

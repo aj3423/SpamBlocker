@@ -2,4 +2,27 @@
     <string name="workflow_actions">Accions</string>
     <string name="work_state_template">Estat: %s</string>
     <string name="stop_reason_template">Motiu d\'aturada: %s</string>
+    <string name="any">Qualsevol</string>
+    <string name="sim_card">Targeta SIM</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Aplica aquesta regla a totes les SIM o només a la SIM seleccionada. <br>
+        <br>
+        No cal canviar això si només utilitzes una targeta SIM o no necessites distingir entre diverses SIM. <br>
+        <br>
+        Requereix Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        No cal canviar això si només utilitzes una targeta SIM o no necessites distingir entre diverses SIM. <br>
+        <br>
+        Quan s\'estableix com a \"Qualsevol\", es comprovaran totes les regles, i totes les configuracions de SIM per regla seran ignorades. <br>
+        Quan se selecciona una SIM, la trucada/SMS se simularà a la SIM seleccionada. <br>
+        <br>
+        Requereix Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">El permís %s és necessari però no s\'ha concedit.</string>
 </resources>

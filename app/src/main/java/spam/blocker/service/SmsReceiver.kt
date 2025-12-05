@@ -24,6 +24,24 @@ import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
 
+fun getSimSlotFromSmsIntent(ctx: Context, intent: Intent?) : Int? {
+    // https://stackoverflow.com/questions/35968766/how-to-figure-out-which-sim-received-sms-in-dual-sim-android-device
+    try {
+        val bundle = intent?.extras
+
+        var slot: Int? = null
+        listOf("slot", "simSlot", "simId", "slot_id", "simnum", "phone", "slotId", "slotIdx", "android.telephony.extra.SLOT_INDEX")
+            .first {
+                slot = bundle?.getInt(it, -1)
+                slot != -1
+            }
+
+        return slot
+    } catch (e: SecurityException) { // when permission not granted
+        return null
+    }
+}
+
 open class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
@@ -43,18 +61,21 @@ open class SmsReceiver : BroadcastReceiver() {
         val messageBody = messages.fold("") { acc, it -> acc + it.messageBody }
         val rawNumber = messages[0].originatingAddress!!
 
-        processSms(ctx, logger = null, rawNumber, messageBody)
+        val simSlot = getSimSlotFromSmsIntent(ctx, intent)
+
+        processSms(ctx, logger = null, rawNumber, messageBody, simSlot)
     }
 
     fun processSms(
         ctx: Context,
         logger: ILogger?,
         rawNumber: String,
-        messageBody: String
+        messageBody: String,
+        simSlot: Int?,
     ): ICheckResult {
         logi("process Sms")
 
-        val r = Checker.checkSms(ctx, logger, rawNumber, messageBody)
+        val r = Checker.checkSms(ctx, logger, rawNumber, messageBody, simSlot)
 
         run {
             // 1. log to history db

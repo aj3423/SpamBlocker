@@ -14,8 +14,6 @@ import spam.blocker.db.Db.Companion.COLUMN_REASON
 import spam.blocker.db.Db.Companion.COLUMN_REASON_EXTRA
 import spam.blocker.db.Db.Companion.COLUMN_TIME
 import spam.blocker.db.Db.Companion.TABLE_SPAM
-import spam.blocker.def.Def.ANDROID_10
-import spam.blocker.def.Def.ANDROID_11
 import spam.blocker.def.Def.ANDROID_14
 import spam.blocker.util.loge
 

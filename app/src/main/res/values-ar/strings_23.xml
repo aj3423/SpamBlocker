@@ -2,4 +2,27 @@
     <string name="workflow_actions">إجراءات</string>
     <string name="work_state_template">الحالة: %s</string>
     <string name="stop_reason_template">سبب الإيقاف: %s</string>
+    <string name="any">أي</string>
+    <string name="sim_card">بطاقة SIM</string>
+    <string name="sim_slot_template">شريحة SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        تطبيق هذه القاعدة على جميع بطاقات SIM أو على بطاقة SIM المختارة فقط. <br>
+        <br>
+        لا حاجة لتغيير هذا إذا كنت تستخدم بطاقة SIM واحدة فقط أو لا تحتاج إلى التمييز بين بطاقات SIM المتعددة. <br>
+        <br>
+        يتطلب أندرويد 12 أو أحدث.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        لا حاجة لتغيير هذا إذا كنت تستخدم بطاقة SIM واحدة فقط أو لا تحتاج إلى التمييز بين بطاقات SIM المتعددة. <br>
+        <br>
+        عند التعيين على \"أي\"، سيتم فحص جميع القواعد، وسيتم تجاهل جميع إعدادات بطاقة SIM لكل قاعدة. <br>
+        عند اختيار بطاقة SIM، سيتم محاكاة المكالمة/الرسالة النصية على بطاقة SIM المختارة. <br>
+        <br>
+        يتطلب أندرويد 12 أو أحدث.
+        ]]>
+    </string>
+    <string name="missing_permission">إذن %s مطلوب ولكنه غير ممنوح.</string>
 </resources>

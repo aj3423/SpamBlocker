@@ -2,4 +2,27 @@
     <string name="workflow_actions">Tindakan</string>
     <string name="work_state_template">Status: %s</string>
     <string name="stop_reason_template">Alasan Berhenti: %s</string>
+    <string name="any">Apapun</string>
+    <string name="sim_card">Kartu SIM</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Terapkan aturan ini ke semua SIM atau hanya ke SIM yang dipilih. <br>
+        <br>
+        Tidak perlu mengubah ini jika Anda hanya menggunakan satu kartu SIM atau tidak perlu membedakan antara beberapa SIM. <br>
+        <br>
+        Membutuhkan Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Tidak perlu mengubah ini jika Anda hanya menggunakan satu kartu SIM atau tidak perlu membedakan antara beberapa SIM. <br>
+        <br>
+        Saat diatur sebagai \"Apapun\", semua aturan akan diperiksa, semua pengaturan SIM per-aturan akan diabaikan. <br>
+        Saat SIM dipilih, panggilan/SMS akan disimulasikan pada SIM yang dipilih. <br>
+        <br>
+        Membutuhkan Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">Izin %s diperlukan tetapi belum diberikan.</string>
 </resources>

@@ -2,4 +2,27 @@
     <string name="workflow_actions">Eylemler</string>
     <string name="work_state_template">Durum: %s</string>
     <string name="stop_reason_template">Durdurma Nedeni: %s</string>
+    <string name="any">Herhangi</string>
+    <string name="sim_card">SIM Kart</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Bu kuralı tüm SIM\'lere veya yalnızca seçilen SIM\'e uygulayın. <br>
+        <br>
+        Yalnızca tek bir SIM kart kullanıyorsanız veya birden fazla SIM arasında ayrım yapmanız gerekmiyorsa bunu değiştirmenize gerek yoktur. <br>
+        <br>
+        Android 12+ gerektirir.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Yalnızca tek bir SIM kart kullanıyorsanız veya birden fazla SIM arasında ayrım yapmanız gerekmiyorsa bunu değiştirmenize gerek yoktur. <br>
+        <br>
+        \"Herhangi\" olarak ayarlandığında, tüm kurallar kontrol edilecek, kural başına SIM ayarları göz ardı edilecektir. <br>
+        Bir SIM seçildiğinde, çağrı/SMS seçilen SIM üzerinde simüle edilecektir. <br>
+        <br>
+        Android 12+ gerektirir.
+        ]]>
+    </string>
+    <string name="missing_permission">%s izni gereklidir ancak verilmemiştir.</string>
 </resources>

@@ -126,16 +126,16 @@ object Def {
 
     // allowed (1~9, 100+)
     const val RESULT_ALLOWED_BY_DEFAULT = 1
-    const val RESULT_ALLOWED_BY_NUMBER = 2
+    const val RESULT_ALLOWED_BY_NUMBER_RULE = 2
     const val RESULT_ALLOWED_BY_CONTACT = 3
     const val RESULT_ALLOWED_BY_RECENT_APP = 4
     const val RESULT_ALLOWED_BY_REPEATED = 5
-    const val RESULT_ALLOWED_BY_CONTENT = 6
+    const val RESULT_ALLOWED_BY_CONTENT_RULE = 6
     const val RESULT_ALLOWED_BY_DIALED = 7
     const val RESULT_ALLOWED_BY_OFF_TIME = 8
     const val RESULT_ALLOWED_BY_EMERGENCY_CALL = 9
     const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
-    const val RESULT_ALLOWED_BY_CONTACT_GROUP = 101
+    const val RESULT_ALLOWED_BY_CONTACT_GROUP_RULE = 101
     const val RESULT_ALLOWED_BY_CONTACT_REGEX = 102
     const val RESULT_ALLOWED_BY_API_QUERY = 103
     const val RESULT_ALLOWED_BY_SMS_ALERT = 104
@@ -146,11 +146,11 @@ object Def {
 
 
     // blocked (10~99)
-    const val RESULT_BLOCKED_BY_NUMBER = 10
-    const val RESULT_BLOCKED_BY_CONTENT = 11
+    const val RESULT_BLOCKED_BY_NUMBER_RULE = 10
+    const val RESULT_BLOCKED_BY_CONTENT_RULE = 11
     const val RESULT_BLOCKED_BY_NON_CONTACT = 12
     const val RESULT_BLOCKED_BY_STIR = 13
-    const val RESULT_BLOCKED_BY_CONTACT_GROUP = 14
+    const val RESULT_BLOCKED_BY_CONTACT_GROUP_RULE = 14
     const val RESULT_BLOCKED_BY_CONTACT_REGEX = 15
     const val RESULT_BLOCKED_BY_SPAM_DB = 16
     const val RESULT_BLOCKED_BY_MEETING_MODE = 17

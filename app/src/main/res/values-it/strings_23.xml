@@ -2,4 +2,27 @@
     <string name="workflow_actions">Azioni</string>
     <string name="work_state_template">Stato: %s</string>
     <string name="stop_reason_template">Motivo interruzione: %s</string>
+    <string name="any">Qualsiasi</string>
+    <string name="sim_card">Scheda SIM</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Applica questa regola a tutte le SIM o solo alla SIM selezionata. <br>
+        <br>
+        Non è necessario modificarlo se utilizzi una sola scheda SIM o non hai bisogno di distinguere tra più SIM. <br>
+        <br>
+        Richiede Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Non è necessario modificarlo se utilizzi una sola scheda SIM o non hai bisogno di distinguere tra più SIM. <br>
+        <br>
+        Quando impostato su \"Qualsiasi\", tutte le regole verranno controllate e tutte le impostazioni SIM per regola verranno ignorate. <br>
+        Quando viene selezionata una SIM, la chiamata/SMS verrà simulata sulla SIM selezionata. <br>
+        <br>
+        Richiede Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">L\'autorizzazione %s è richiesta ma non concessa.</string>
 </resources>

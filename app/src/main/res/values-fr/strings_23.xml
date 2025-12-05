@@ -2,4 +2,27 @@
     <string name="workflow_actions">Actions</string>
     <string name="work_state_template">État : %s</string>
     <string name="stop_reason_template">Motif d\'arrêt : %s</string>
+    <string name="any">N\'importe quelle</string>
+    <string name="sim_card">Carte SIM</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Appliquez cette règle à toutes les cartes SIM ou seulement à la carte SIM sélectionnée. <br>
+        <br>
+        Pas besoin de modifier ceci si vous n\'utilisez qu\'une seule carte SIM ou si vous n\'avez pas besoin de faire de distinction entre plusieurs cartes SIM. <br>
+        <br>
+        Nécessite Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Pas besoin de modifier ceci si vous n\'utilisez qu\'une seule carte SIM ou si vous n\'avez pas besoin de faire de distinction entre plusieurs cartes SIM. <br>
+        <br>
+        Lorsque réglé sur \"N\'importe quelle\", toutes les règles seront vérifiées, tous les paramètres de carte SIM par règle seront ignorés. <br>
+        Lorsqu\'une carte SIM est sélectionnée, l\'appel/SMS sera simulé sur la carte SIM sélectionnée. <br>
+        <br>
+        Nécessite Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">L\'autorisation %s est requise mais n\'a pas été accordée.</string>
 </resources>

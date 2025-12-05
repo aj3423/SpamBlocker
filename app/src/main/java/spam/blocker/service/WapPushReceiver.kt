@@ -26,12 +26,7 @@ class WapPushReceiver : SmsReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
         logi("Received WapPush")
-        CoroutineScope(IO).launch { // Do it in a coroutine to not block the process
-            process(ctx, intent)
-        }
-    }
 
-    private fun process(ctx: Context, intent: Intent) {
         val spf = spf.Global(ctx)
         if (!spf.isGloballyEnabled() || !spf.isSmsEnabled() || !spf.isMmsEnabled()) {
             return
@@ -41,6 +36,12 @@ class WapPushReceiver : SmsReceiver() {
         if (action != WAP_PUSH_RECEIVED_ACTION)
             return
 
+        CoroutineScope(IO).launch { // Do it in a coroutine to not block the process
+            process(ctx, intent)
+        }
+    }
+
+    private fun process(ctx: Context, intent: Intent) {
         // doc: https://developer.android.com/reference/kotlin/android/provider/Telephony.Sms.Intents#wap_push_received_action
 
         // extras contain:
@@ -70,20 +71,21 @@ class WapPushReceiver : SmsReceiver() {
         // query SMS/MMS log by transactionId, it looks like: "MCP0001oP9g0",
         //  not some simple integer like in the `intent.extras`,
         val transactionId = String(pdu.transactionId)
+        val contentLocation = String(pdu.contentLocation)
 
         // This notification only indicates there is an MMS message, Android will send another
         // request to download the actual MMS media(Text, Image, ...). At this moment, the media
         // doesn't exist in the database yet, check it every 1 second.
         for (i in 1..20) { // retry for 20 sec
-//            logi("trying: $i")
-
             Thread.sleep(1000)
 
-            val map = retrieveMediaMap(ctx, transactionId)
+            val map = retrieveMediaMap(ctx, transactionId, contentLocation)
 
             if (map != null) {
                 val messageBody = map.getOrDefault(MimeTypes.TEXT_PLAIN, "")
-                processSms(ctx, logger = null, rawNumber, messageBody)
+                val simSlot = getSimSlotFromSmsIntent(ctx, intent)
+
+                processSms(ctx, logger = null, rawNumber, messageBody, simSlot)
 
                 break
             }
@@ -91,7 +93,7 @@ class WapPushReceiver : SmsReceiver() {
     }
 
     @SuppressLint("Range")
-    private fun retrieveMediaMap(ctx: Context, transactionId: String) : Map<String, String>? {
+    fun retrieveMediaMap(ctx: Context, transactionId: String, contentLocation: String) : Map<String, String>? {
         val contentResolver = ctx.contentResolver
 
         // The actual database location:
@@ -99,19 +101,36 @@ class WapPushReceiver : SmsReceiver() {
         val mmsUri = Uri.parse("content://mms/")
         val partUri = Uri.parse("content://mms/part")
 
-        // Query the MMS table to get the message with the specific transaction ID
-        val mmsCursor = contentResolver.query(
+        // Query the MMS table to find the pdu record with `tr_id == transactionId`
+        var mmsCursor = contentResolver.query(
             mmsUri,
             arrayOf("_id"),
             "tr_id='$transactionId'", // selection
             null,
             null
         )
+        // This works for most SMS apps, the transaction id should look like: "MFRS6NNDSAA".
+        // But "Google Messages" wraps it with protobuf, e.g.: "proto:xxxxxxxx..."
+        //  so querying by tr_id won't work for Google Messages
+        val isFound = mmsCursor?.use { cursor ->
+            cursor.moveToFirst()        // returns false if cursor is empty
+        } ?: false
 
-        mmsCursor?.use {
-            if (it.moveToFirst()) {
-                // Get the ID of the MMS message
-                val mmsId = it.getLongOrNull(0)
+        // If not found, query again by "content location"
+        if (!isFound) {
+            mmsCursor = contentResolver.query(
+                mmsUri,
+                arrayOf("_id"),
+                "ct_l='$contentLocation'", // selection: "content location"
+                null,
+                null
+            )
+        }
+
+        mmsCursor?.use { mmsIt ->
+            if (mmsIt.moveToFirst()) {
+                // Get the _id of pdu record
+                val mmsId = mmsIt.getLongOrNull(0)
 
                 val partCursor = contentResolver.query(
                     partUri,
@@ -120,13 +139,13 @@ class WapPushReceiver : SmsReceiver() {
                     null,
                     null
                 )
-                partCursor?.use {
+                partCursor?.use { partIt ->
                     // When it goes here, the pda content should've been downloaded
-                    var map = mutableMapOf<String, String>()
+                    val map = mutableMapOf<String, String>()
 
-                    while (it.moveToNext()) {
-                        val mime = it.getStringOrNull(0) ?: ""
-                        val text = it.getStringOrNull(1) ?: ""
+                    while (partIt.moveToNext()) {
+                        val mime = partIt.getStringOrNull(0) ?: ""
+                        val text = partIt.getStringOrNull(1) ?: ""
 
                         map[mime] = text
                     }

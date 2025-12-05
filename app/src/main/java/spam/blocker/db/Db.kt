@@ -31,10 +31,10 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 42
+        const val DB_VERSION = 43 // The db version follows the app version code
         const val DB_NAME = "spam_blocker.db"
 
-        // ---- filter table ----
+        // ---- regex rule table ----
         const val TABLE_NUMBER_RULE = "number_filter"
         const val TABLE_CONTENT_RULE = "content_filter"
         const val TABLE_QUICK_COPY_RULE = "quick_copy"
@@ -53,7 +53,7 @@ class Db private constructor(
         const val COLUMN_BLOCK_TYPE = "block_type"
         const val COLUMN_BLOCK_TYPE_CONFIG = "block_type_config"
         const val COLUMN_ENABLED = "enabled"
-
+        const val COLUMN_SIM_SLOT = "sim_slot"
 
         // ---- notification channel table ----
         const val TABLE_NOTIFICATION_CHANNEL = "notification_channel"
@@ -118,7 +118,7 @@ class Db private constructor(
 
     override fun onCreate(db: SQLiteDatabase) {
         // number rules / content rules / quick copy
-        fun createPatternTable(tableName: String) {
+        fun createRegexRuleTable(tableName: String) {
             db.execSQL(
                 "CREATE TABLE IF NOT EXISTS $tableName (" +
                         "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -133,13 +133,14 @@ class Db private constructor(
                         "$COLUMN_CHANNEL_ID TEXT DEFAULT ${Def.DEF_SPAM_CHANNEL}, " +
                         "$COLUMN_SCHEDULE TEXT DEFAULT '', " +
                         "$COLUMN_BLOCK_TYPE INTEGER DEFAULT ${Def.DEF_BLOCK_TYPE}, " +
-                        "$COLUMN_BLOCK_TYPE_CONFIG TEXT DEFAULT '' " +
+                        "$COLUMN_BLOCK_TYPE_CONFIG TEXT DEFAULT '', " +
+                        "$COLUMN_SIM_SLOT INTEGER" +
                         ")"
             )
         }
-        createPatternTable(TABLE_NUMBER_RULE)
-        createPatternTable(TABLE_CONTENT_RULE)
-        createPatternTable(TABLE_QUICK_COPY_RULE)
+        createRegexRuleTable(TABLE_NUMBER_RULE)
+        createRegexRuleTable(TABLE_CONTENT_RULE)
+        createRegexRuleTable(TABLE_QUICK_COPY_RULE)
 
         // notification channel database
         db.execSQL(
@@ -471,6 +472,13 @@ class Db private constructor(
 
                 db.update(TABLE_BOT, cv, "$COLUMN_ID = ${it.id}", null)
             }
+        }
+
+        // v4.22 added multi-SIM support
+        if ((newVersion >= 43) && (oldVersion < 43)) {
+            addColumnIfNotExist(db, TABLE_NUMBER_RULE, COLUMN_SIM_SLOT, "INTEGER")
+            addColumnIfNotExist(db, TABLE_CONTENT_RULE, COLUMN_SIM_SLOT, "INTEGER")
+            addColumnIfNotExist(db, TABLE_QUICK_COPY_RULE, COLUMN_SIM_SLOT, "INTEGER")
         }
     }
 }

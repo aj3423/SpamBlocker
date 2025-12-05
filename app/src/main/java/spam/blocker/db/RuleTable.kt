@@ -103,6 +103,8 @@ data class RegexRule(
     var schedule: String = "",
     var blockType: Int = Def.DEF_BLOCK_TYPE,
     var blockTypeConfig: String = "", // for block type "Answer+HangUp"
+
+    var simSlot: Int? = null,
 ) {
 
     fun summary(): String {
@@ -249,6 +251,7 @@ fun newRegexRule(
     schedule: String,
     blockType: Int,
     blockTypeConfig: String,
+    simSlot: Int?,
 ): RegexRule {
     return RegexRule(
         id = id,
@@ -264,6 +267,7 @@ fun newRegexRule(
         schedule = schedule,
         blockType = blockType,
         blockTypeConfig = blockTypeConfig,
+        simSlot = simSlot,
     )
 }
 
@@ -307,8 +311,8 @@ abstract class RuleTable {
                 ?: Def.DEF_BLOCK_TYPE,
             blockTypeConfig = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_BLOCK_TYPE_CONFIG))
                 ?: "",
-
-            )
+            simSlot = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_SIM_SLOT)),
+        )
     }
 
     @SuppressLint("Range")
@@ -425,6 +429,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
+        cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
 
         return db.insert(tableName(), null, cv)
     }
@@ -445,6 +450,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
+        cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
 
         db.insert(tableName(), null, cv)
     }
@@ -464,6 +470,7 @@ abstract class RuleTable {
         cv.put(Db.COLUMN_SCHEDULE, f.schedule)
         cv.put(Db.COLUMN_BLOCK_TYPE, f.blockType)
         cv.put(Db.COLUMN_BLOCK_TYPE_CONFIG, f.blockTypeConfig)
+        cv.put(Db.COLUMN_SIM_SLOT, f.simSlot)
 
         return db.update(tableName(), cv, "${Db.COLUMN_ID} = $id", null) >= 0
     }

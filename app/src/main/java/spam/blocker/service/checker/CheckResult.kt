@@ -31,14 +31,14 @@ import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_ANSWERED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DEFAULT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_DIALED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_CALL
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_EMERGENCY_SITUATION
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_OFF_TIME
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_PUSH_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_RECENT_APP
@@ -46,12 +46,12 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_REPEATED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_MEETING_MODE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SMS_BOMB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
@@ -460,8 +460,8 @@ class ByRegexRule(
         val summary = ruleSummary(ctx)
 
         return when (type) {
-            RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> ctx.getString(R.string.regex_pattern) + ": $summary"
-            RESULT_ALLOWED_BY_CONTACT_GROUP, RESULT_BLOCKED_BY_CONTACT_GROUP -> {
+            RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE -> ctx.getString(R.string.regex_pattern) + ": $summary"
+            RESULT_ALLOWED_BY_CONTACT_GROUP_RULE, RESULT_BLOCKED_BY_CONTACT_GROUP_RULE -> {
                 ctx.getString(R.string.contact_group) + ": $summary"
             }
 
@@ -469,7 +469,7 @@ class ByRegexRule(
                 ctx.getString(R.string.contact_rule) + ": $summary"
             }
 
-            RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
+            RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
                 ctx.getString(R.string.content) + ": $summary"
             }
 
@@ -553,14 +553,14 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
             ByApiQuery(result, extraInfo)
         }
 
-        RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER,
-        RESULT_ALLOWED_BY_CONTACT_GROUP, RESULT_BLOCKED_BY_CONTACT_GROUP,
+        RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE,
+        RESULT_ALLOWED_BY_CONTACT_GROUP_RULE, RESULT_BLOCKED_BY_CONTACT_GROUP_RULE,
         RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX -> {
             val rule = NumberRuleTable().findRuleById(ctx, reason.toLong())
             ByRegexRule(result, rule)
         }
 
-        RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
+        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
             val rule = ContentRuleTable().findRuleById(ctx, reason.toLong())
             ByRegexRule(result, rule)
         }

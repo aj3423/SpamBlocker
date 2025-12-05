@@ -2,4 +2,27 @@
     <string name="workflow_actions">Дії</string>
     <string name="work_state_template">Стан: %s</string>
     <string name="stop_reason_template">Причина зупинки: %s</string>
+    <string name="any">Будь-яка</string>
+    <string name="sim_card">SIM-карта</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Застосувати це правило до всіх SIM-карт або лише до вибраної SIM-карти. <br>
+        <br>
+        Не потрібно змінювати це, якщо ви використовуєте лише одну SIM-карту або не потрібно розрізняти кілька SIM-карт. <br>
+        <br>
+        Потрібен Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Не потрібно змінювати це, якщо ви використовуєте лише одну SIM-карту або не потрібно розрізняти кілька SIM-карт. <br>
+        <br>
+        Якщо встановлено «Будь-яка», будуть перевірені всі правила, а всі налаштування SIM-карти для кожного правила будуть ігноруватися. <br>
+        Коли вибрано SIM-карту, дзвінок/SMS буде симульовано на вибраній SIM-карті. <br>
+        <br>
+        Потрібен Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">Дозвіл %s потрібен, але не надано.</string>
 </resources>

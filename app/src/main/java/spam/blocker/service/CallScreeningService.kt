@@ -27,6 +27,7 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.RingtoneUtil
+import spam.blocker.util.SimCard
 import spam.blocker.util.Util
 import spam.blocker.util.logi
 import spam.blocker.util.spf
@@ -121,6 +122,14 @@ class CallScreeningService : CallScreeningService() {
 
     override fun onScreenCall(details: Details) {
         logi("onScreenCall() invoked by Android")
+
+        val slot0 = SimCard.isSimSlotRinging(this, 0)
+        val slot1 = SimCard.isSimSlotRinging(this, 1)
+        val slot2 = SimCard.isSimSlotRinging(this, 2)
+
+        logi("slot 0: $slot0,  1: $slot1,  2: $slot2")
+
+
         // With this coroutine, this function returns immediately without blocking the whole process.
         //   So other services will get executed simultaneously.
         //   Feature "Push Alert" relies on this, see "NotificationListenerService.kt" for details.
@@ -146,7 +155,10 @@ class CallScreeningService : CallScreeningService() {
 
         val rawNumber = details.getRawNumber()
 
-        val r = processCall(ctx = this, logger = null, rawNumber = rawNumber, callDetails = details)
+        val ringingSimSlot = SimCard.getRingingSimSlot(this)
+        val r = processCall(
+            ctx = this, logger = null, rawNumber = rawNumber, callDetails = details, simSlot = ringingSimSlot,
+        )
 
         if (r.shouldBlock()) {
             val blockType = r.getBlockType(this) // reject / silence / answer+hangup
@@ -238,11 +250,12 @@ class CallScreeningService : CallScreeningService() {
         logger: ILogger?, // for showing detailed steps to logcat or for testing purpose
         rawNumber: String,
         callDetails: Details? = null, // it's null when testing
+        simSlot: Int?,
     ): ICheckResult {
         logi("Process incoming call")
 
         // 0. check the number with all rules, get the result
-        val r = Checker.checkCall(ctx, logger, rawNumber, callDetails)
+        val r = Checker.checkCall(ctx, logger, rawNumber, callDetails, simSlot)
 
         // 1. log result to history db
         logToHistoryDb(ctx, r, rawNumber)

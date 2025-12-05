@@ -2,4 +2,27 @@
     <string name="workflow_actions">Accións</string>
     <string name="work_state_template">Estado: %s</string>
     <string name="stop_reason_template">Motivo da parada: %s</string>
+    <string name="any">Calquera</string>
+    <string name="sim_card">Tarxeta SIM</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Aplica esta regra a todas as SIM ou só á SIM seleccionada. <br>
+        <br>
+        Non é necesario cambiar isto se só usas unha tarxeta SIM ou non necesitas distinguir entre varias SIM. <br>
+        <br>
+        Require Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Non é necesario cambiar isto se só usas unha tarxeta SIM ou non necesitas distinguir entre varias SIM. <br>
+        <br>
+        Cando se establece como \"Calquera\", comprobaranse todas as regras, e ignoraranse todas as configuracións de SIM por regra. <br>
+        Cando se selecciona unha SIM, a chamada/SMS simularase na SIM seleccionada. <br>
+        <br>
+        Require Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">O permiso %s é necesario pero non concedido.</string>
 </resources>

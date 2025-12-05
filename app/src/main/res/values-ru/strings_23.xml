@@ -2,4 +2,27 @@
     <string name="workflow_actions">Действия</string>
     <string name="work_state_template">Состояние: %s</string>
     <string name="stop_reason_template">Причина остановки: %s</string>
+    <string name="any">Любой</string>
+    <string name="sim_card">SIM-карта</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Примените это правило ко всем SIM-картам или только к выбранной SIM-карте. <br>
+        <br>
+        Не нужно менять это, если вы используете только одну SIM-карту или не видите необходимости различать несколько SIM-карт. <br>
+        <br>
+        Требуется Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        Не нужно менять это, если вы используете только одну SIM-карту или не видите необходимости различать несколько SIM-карт. <br>
+        <br>
+        Если установлено «Любой», будут проверены все правила, и все настройки SIM-карты для каждого правила будут проигнорированы. <br>
+        Если выбрана SIM-карта, вызов/SMS будет смоделирован на выбранной SIM-карте. <br>
+        <br>
+        Требуется Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">Разрешение %s требуется, но не предоставлено.</string>
 </resources>

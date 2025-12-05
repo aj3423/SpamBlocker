@@ -15,10 +15,10 @@ import spam.blocker.db.ContentRuleTable
 import spam.blocker.db.NumberRuleTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
@@ -48,19 +48,19 @@ fun IndicatorIcons(indicators: Indicators) {
                     ResIcon(R.drawable.ic_db_delete, modifier = M.size(16.dp), color = C.block)
                 }
 
-                RESULT_ALLOWED_BY_NUMBER -> {
+                RESULT_ALLOWED_BY_NUMBER_RULE -> {
                     ResIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp), color = C.pass)
                 }
 
-                RESULT_BLOCKED_BY_NUMBER -> {
+                RESULT_BLOCKED_BY_NUMBER_RULE -> {
                     ResIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp), color = C.block)
                 }
 
-                RESULT_ALLOWED_BY_CONTENT -> {
+                RESULT_ALLOWED_BY_CONTENT_RULE -> {
                     ResIcon(R.drawable.ic_sms_pass, modifier = M.size(14.dp), color = C.pass)
                 }
 
-                RESULT_BLOCKED_BY_CONTENT -> {
+                RESULT_BLOCKED_BY_CONTENT_RULE -> {
                     ResIcon(R.drawable.ic_sms_blocked, modifier = M.size(14.dp), color = C.block)
                 }
             }
@@ -139,11 +139,12 @@ fun IndicatorsWrapper(
                         logger = null,
                         rawNumber = number,
                         checkers = numberCheckers,
+                        simSlot = null
                     )
                     val resultType = checkResult.type
 
                     when (resultType) {
-                        RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> {
+                        RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE -> {
                             add(
                                 Indicator(
                                     type = resultType,
@@ -164,11 +165,12 @@ fun IndicatorsWrapper(
                         rawNumber = number,
                         messageBody = smsContent ?: "",
                         checkers = numberCheckers,
+                        simSlot = null
                     )
                     val resultType = checkResult.type
 
                     when (resultType) {
-                        RESULT_ALLOWED_BY_NUMBER, RESULT_BLOCKED_BY_NUMBER -> {
+                        RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE -> {
                             add(
                                 Indicator(
                                     type = resultType,
@@ -187,11 +189,12 @@ fun IndicatorsWrapper(
                         rawNumber = number,
                         messageBody = smsContent ?: "",
                         checkers = contentCheckers,
+                        simSlot = null,
                     )
                     val resultType = checkResult.type
 
                     when (checkResult.type) {
-                        RESULT_ALLOWED_BY_CONTENT, RESULT_BLOCKED_BY_CONTENT -> {
+                        RESULT_ALLOWED_BY_CONTENT_RULE, RESULT_BLOCKED_BY_CONTENT_RULE -> {
                             add(
                                 Indicator(
                                     type = resultType,

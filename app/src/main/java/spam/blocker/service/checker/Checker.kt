@@ -37,6 +37,7 @@ import spam.blocker.ui.theme.Emerald
 import spam.blocker.ui.theme.LightMagenta
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.theme.Teal200
 import spam.blocker.util.A
 import spam.blocker.util.Clipboard
 import spam.blocker.util.Contacts
@@ -62,6 +63,7 @@ import spam.blocker.util.spf
 class CheckContext(
     var rawNumber: String,
     val callDetails: Call.Details? = null,
+    val simSlot: Int?, // on which SIM slot is the call ringing on
     val smsContent: String? = null,
     val logger: ILogger? = null,
     val startTimeMillis: Long = System.currentTimeMillis(),
@@ -869,10 +871,9 @@ class Checker { // for namespace only
         }
         override fun check(cCtx: CheckContext): ICheckResult? {
             throw Exception("unimplemented RegexRuleChecker.check()")
-            return null
         }
 
-        fun ifEnabled(cCtx: CheckContext): Boolean {
+        open fun isEnabled(cCtx: CheckContext): Boolean {
             // 0. check if the rule is enabled (has FLAG_FOR_CALL for call, or FLAG_FOR_SMS for sms)
             val isForSMS = cCtx.smsContent != null
             if (!rule.flags.hasFlag(if (isForSMS) Def.FLAG_FOR_SMS else Def.FLAG_FOR_CALL)) {
@@ -883,6 +884,18 @@ class Checker { // for namespace only
                 cCtx.logger?.debug(ctx.getString(R.string.outside_time_schedule))
                 return false
             }
+
+            // 2. check sim slot
+            if (rule.simSlot != null && cCtx.simSlot != null) { // null == doesn't care, no need to check
+                if (!Permission.phoneState.isGranted) {
+                    cCtx.logger?.warn(ctx.getString(R.string.missing_permission).formatAnnotated(
+                        Permission.phoneState.name.A(Teal200)
+                    ))
+                } else if (rule.simSlot != cCtx.simSlot) {
+                    return false
+                }
+            }
+
             return true
         }
     }
@@ -896,7 +909,7 @@ class Checker { // for namespace only
             val rawNumber = cCtx.rawNumber
             val logger = cCtx.logger
 
-            if (!ifEnabled(cCtx)) {
+            if (!isEnabled(cCtx)) {
                 return null
             }
 
@@ -925,7 +938,7 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_NUMBER else Def.RESULT_ALLOWED_BY_NUMBER,
+                    type = if (block) Def.RESULT_BLOCKED_BY_NUMBER_RULE else Def.RESULT_ALLOWED_BY_NUMBER_RULE,
                     rule = rule,
                 )
             }
@@ -947,7 +960,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            if (!ifEnabled(cCtx)) {
+            if (!isEnabled(cCtx)) {
                 return null
             }
 
@@ -1000,7 +1013,7 @@ class Checker { // for namespace only
                 return null
             }
 
-            if (!ifEnabled(cCtx)) {
+            if (!isEnabled(cCtx)) {
                 return null
             }
 
@@ -1033,7 +1046,7 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP else Def.RESULT_ALLOWED_BY_CONTACT_GROUP,
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP_RULE else Def.RESULT_ALLOWED_BY_CONTACT_GROUP_RULE,
                     rule = rule,
                 )
             }
@@ -1058,7 +1071,7 @@ class Checker { // for namespace only
             val smsContent = cCtx.smsContent!!
             val logger = cCtx.logger
 
-            if (!ifEnabled(cCtx)) {
+            if (!isEnabled(cCtx)) {
                 return null
             }
 
@@ -1114,7 +1127,7 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_CONTENT else Def.RESULT_ALLOWED_BY_CONTENT,
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTENT_RULE else Def.RESULT_ALLOWED_BY_CONTENT_RULE,
                     rule = rule,
                 )
             }
@@ -1285,6 +1298,7 @@ class Checker { // for namespace only
             ctx: Context,
             logger: ILogger?,
             rawNumber: String,
+            simSlot: Int?,
             callDetails: Call.Details? = null,
             checkers: List<IChecker>,
         ): ICheckResult {
@@ -1293,6 +1307,7 @@ class Checker { // for namespace only
                 callDetails = callDetails,
                 logger = logger,
                 checkers = checkers,
+                simSlot = simSlot,
             )
             // pre-process the checkers, temporarily modify rules
             Preprocessors.callTriggers(ctx)
@@ -1324,7 +1339,8 @@ class Checker { // for namespace only
             ctx: Context,
             logger: ILogger?,
             rawNumber: String,
-            callDetails: Call.Details? = null
+            callDetails: Call.Details? = null,
+            simSlot: Int? = null,
         ): ICheckResult {
 
             val checkers = arrayListOf(
@@ -1351,7 +1367,7 @@ class Checker { // for namespace only
             }
 
             return checkCallWithCheckers(
-                ctx, logger, rawNumber, callDetails, checkers)
+                ctx, logger, rawNumber, simSlot, callDetails, checkers)
         }
 
         fun checkSmsWithCheckers(
@@ -1359,6 +1375,7 @@ class Checker { // for namespace only
             logger: ILogger?,
             rawNumber: String,
             messageBody: String,
+            simSlot: Int?,
             checkers: List<IChecker>,
         ): ICheckResult {
             val cCtx = CheckContext(
@@ -1366,6 +1383,7 @@ class Checker { // for namespace only
                 smsContent = messageBody,
                 logger = logger,
                 checkers = checkers,
+                simSlot = simSlot,
             )
 
             // pre-process the checkers, temporarily modify rules
@@ -1398,7 +1416,8 @@ class Checker { // for namespace only
             ctx: Context,
             logger: ILogger?,
             rawNumber: String,
-            messageBody: String
+            messageBody: String,
+            simSlot: Int?,
         ): ICheckResult {
             val checkers = arrayListOf<IChecker>(
                 Contact(ctx),
@@ -1422,7 +1441,7 @@ class Checker { // for namespace only
             }
 
             return checkSmsWithCheckers(
-                ctx, logger, rawNumber, messageBody, checkers
+                ctx, logger, rawNumber, messageBody, simSlot, checkers
             )
         }
 

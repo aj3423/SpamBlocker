@@ -2,4 +2,27 @@
     <string name="workflow_actions">Actions</string>
     <string name="work_state_template">State: %s</string>
     <string name="stop_reason_template">Stop Reason: %s</string>
+    <string name="any">Any</string>
+    <string name="sim_card">SIM Card</string>
+    <string name="sim_slot_template">SIM %s</string>
+    <string name="help_sim_card">
+        <![CDATA[
+        Apply this rule to all SIMs or only to the selected SIM. <br>
+        <br>
+        No need to change this if you only use one SIM card or don\'t need to distinguish between multiple SIMs. <br>
+        <br>
+        Requires Android 12+.
+        ]]>
+    </string>
+    <string name="help_test_sim_card">
+        <![CDATA[
+        No need to change this if you only use one SIM card or don\'t need to distinguish between multiple SIMs. <br>
+        <br>
+        When set as \"Any\", all rules will be checked, all per-rule SIM settings will be ignored. <br>
+        When a SIM is selected, the call/SMS will be simulated on the selected SIM. <br>
+        <br>
+        Requires Android 12+.
+        ]]>
+    </string>
+    <string name="missing_permission">The %s permission is required but not granted.</string>
 </resources>

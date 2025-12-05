@@ -1,5 +1,5 @@
 [versions]
-agp = "8.9.3"
+agp = "8.13.1"
 espressoCore = "3.7.0"
 junitVersion = "1.3.0"
 kotlin = "2.0.0"

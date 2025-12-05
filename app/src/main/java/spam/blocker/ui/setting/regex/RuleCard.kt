@@ -28,6 +28,7 @@ import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.SimCard
 import spam.blocker.util.hasFlag
 import spam.blocker.util.spf
 
@@ -47,22 +48,28 @@ fun RuleCard(
         ) {
             // Regex and Description
             Column(
-                M
-                    .weight(1f)
-                    .padding(end = 4.dp), verticalArrangement = Arrangement.Center) {
-                // Regex
-                Text(
-                    text = rule.colorfulRegexStr(
-                        ctx = LocalContext.current,
-                        forType = forType,
-                        palette = C,
-                    ),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp,
-                    modifier = M.padding(top = 2.dp),
-                    maxLines = spf.getMaxRegexRows(),
-                    overflow = TextOverflow.Ellipsis
-                )
+                M.weight(1f).padding(end = 4.dp),
+                verticalArrangement = Arrangement.Center
+            ) {
+                RowVCenterSpaced(2) {
+                    if (rule.simSlot != null) {
+                        SimCard(rule.simSlot!!)
+                    }
+                    // Regex
+                    Text(
+                        text = rule.colorfulRegexStr(
+                            ctx = LocalContext.current,
+                            forType = forType,
+                            palette = C,
+                        ),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        modifier = M.padding(top = 2.dp),
+                        maxLines = spf.getMaxRegexRows(),
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+
                 // Description
                 if (rule.description.isNotEmpty()) {
                     Text(

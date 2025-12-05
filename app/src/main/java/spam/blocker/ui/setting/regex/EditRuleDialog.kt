@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.regex
 
+import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -71,6 +72,7 @@ import spam.blocker.ui.widgets.RadioItem
 import spam.blocker.ui.widgets.RegexInputBox
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.SimPicker
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
@@ -287,6 +289,9 @@ fun RuleEditDialog(
     // NotificationType
     var channelId by rememberSaveable { mutableStateOf(initRule.channel) }
 
+    // SIM card
+    val simSlot = rememberSaveable { mutableStateOf(initRule.simSlot) }
+
     // Schedule
     val sch = remember { TimeSchedule.parseFromStr(initRule.schedule) }
     var schEnabled by rememberSaveable { mutableStateOf(sch.enabled) }
@@ -345,6 +350,7 @@ fun RuleEditDialog(
                             schedule,
                             blockType,
                             blockTypeConfig,
+                            simSlot.value,
                         )
                     )
 
@@ -661,6 +667,17 @@ fun RuleEditDialog(
                         SettingRow {
                             WeekdayPicker1(selectedDays = schWeekdays)
                         }
+                    }
+                }
+
+                // SIM
+                if (forType != Def.ForQuickCopy) {
+                    LabeledRow(
+                        labelId = R.string.sim_card,
+                        color = if(Build.VERSION.SDK_INT < 12) C.disabled else null,
+                        helpTooltip = Str(R.string.help_sim_card)
+                    ) {
+                        SimPicker(simSlot)
                     }
                 }
             }
