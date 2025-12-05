@@ -296,13 +296,9 @@ func walk_lang_xmls(lang string, operation func(string) error) {
 
 			wg.Add(1)
 			pool.Submit(func() {
-				e := Retry(5, func(attempt int) error {
+				Retry(5, func(attempt int) error {
 					return operation(fi.Name())
 				})
-
-				if e != nil {
-					color.HiWhite("translate failed: %s, error: %s", color.HiRedString(fi.Name()), e.Error())
-				}
 
 				wg.Done()
 			})
