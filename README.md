@@ -43,7 +43,7 @@ It works without replacing your call/SMS app.
  - For SMS: <br>
  &ensp; It takes over SMS notifications but only filters them, spam messages will still appear in the SMS app.
 
-You can kill the app after setup, it's unnecessary to keep it running in the background.
+You can kill the app after setup, it doesn’t need to stay running in the background.
 
 # Features:
 
