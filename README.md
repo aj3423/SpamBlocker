@@ -22,10 +22,10 @@ Table of Contents
    * [How it works](#how-it-works)
    * [Features](#features)
    * [Limitations](#limitations)
+   * [FAQ](#faq)
    * [Permissions](#permissions)
    * [Privacy](#privacy)
    * [Support](#support)
-   * [FAQ](#faq)
    * [Language Support](#language-support)
    * [Contributing](#contributing)
    * [Some ideas](#some-ideas)
@@ -68,6 +68,13 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
 - Auto clear SMS: [No plan](https://github.com/aj3423/SpamBlocker/issues/274)
 - Local AI support: [Future plan, not yet ready](https://github.com/aj3423/SpamBlocker/issues/267#issuecomment-2632229803)
 - RCS support: [No plan](https://github.com/aj3423/SpamBlocker/issues/308#issuecomment-2692269430)
+- Android 9- support: [No plan](https://github.com/aj3423/SpamBlocker/issues/38)
+
+# FAQ
+ - [Security warning from Google Play when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
+ - [How the "Priority" works](https://github.com/aj3423/SpamBlocker/issues/166)
+ - [It stops working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
+
 
 # Permissions 
 
@@ -116,11 +123,6 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
  - Most problems are already covered in the issue list, please search first.
  - There's a [matrix channel](https://matrix.to/#/#spam-blocker:matrix.org).
 
-# FAQ
- - [Security warning from Google Play when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
- - [How the "Priority" works](https://github.com/aj3423/SpamBlocker/issues/166)
- - [It stops working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
- - [Android 9- support](https://github.com/aj3423/SpamBlocker/issues/38)
 
 # Language support
 
