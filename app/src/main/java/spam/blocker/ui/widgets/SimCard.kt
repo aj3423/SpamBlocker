@@ -36,7 +36,7 @@ fun SimCardIcon(
     Box(
         modifier = modifier.wrapContentSize()
     ) {
-        val color = Color(("$slotIndex dummy salt ...........").hashCode().toLong() or 0xff808080)
+        val color = Color(("$slotIndex dummy salt....").hashCode().toLong() or 0xff202020)
         ResIcon(
             iconId = R.drawable.ic_sim_card,
             color = color,
