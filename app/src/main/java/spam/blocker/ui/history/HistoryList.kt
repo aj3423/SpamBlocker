@@ -27,6 +27,7 @@ import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Launcher
+import spam.blocker.util.SimCard
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -39,6 +40,9 @@ fun HistoryList(
 
     val coroutineScope = rememberCoroutineScope()
 
+    val simCount = remember {
+        SimCard.listSimCards(ctx).size
+    }
     LaunchedEffect(G.showHistoryPassed.value, G.showHistoryBlocked.value) {
         vm.reload(ctx)
     }
@@ -111,6 +115,7 @@ fun HistoryList(
                                 forType = vm.forType,
                                 record = record,
                                 indicators = indicators.value,
+                                simCount = simCount,
                                 modifier = M.combinedClickable(
                                     onClick = {
                                         if (!record.read) {

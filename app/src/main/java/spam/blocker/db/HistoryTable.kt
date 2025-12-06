@@ -19,6 +19,8 @@ data class HistoryRecord(
     //  e.g.: pkgName for RecentApps, or API server echo for API query
     val reason: String = "",
 
+    val simSlot: Int? = null,
+
     // Generic extra information that not limited to any particular `result` type
     //  e.g. SMS content
     val extraInfo: String? = null,
@@ -61,6 +63,7 @@ abstract class HistoryTable {
                         time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME)),
                         result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                         reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
+                        simSlot = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_SIM_SLOT)),
                         read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
                         extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
                         expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
@@ -86,6 +89,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_TIME, r.time)
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
+        cv.put(Db.COLUMN_SIM_SLOT, r.simSlot)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
@@ -100,6 +104,7 @@ abstract class HistoryTable {
         cv.put(Db.COLUMN_TIME, r.time)
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
+        cv.put(Db.COLUMN_SIM_SLOT, r.simSlot)
         cv.put(Db.COLUMN_READ, if (r.read) 1 else 0)
         cv.put(Db.COLUMN_EXTRA_INFO, r.extraInfo)
         cv.put(Db.COLUMN_EXPANDED, if(r.expanded) 1 else 0)
@@ -130,28 +135,10 @@ abstract class HistoryTable {
     }
     @SuppressLint("Range")
     fun findRecordById(ctx: Context, id: Long): HistoryRecord? {
-        val sql = "SELECT * FROM ${tableName()} WHERE id = $id"
+        val whereClause = " WHERE id = $id"
 
-        val cursor = Db.getInstance(ctx).readableDatabase.rawQuery(sql, null)
-
-        cursor.use {
-            if (it.moveToFirst()) {
-                val rec = HistoryRecord(
-                    id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
-                    peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER)),
-                    time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME)),
-                    result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
-                    reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
-                    read = it.getInt(it.getColumnIndex(Db.COLUMN_READ)) == 1,
-                    extraInfo = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_EXTRA_INFO)),
-                    expanded = it.getIntOrNull(it.getColumnIndex(Db.COLUMN_EXPANDED)) == 1,
-                )
-
-                return rec
-            } else {
-                return null
-            }
-        }
+        return _listRecordsByFilter(ctx, whereClause)
+            .firstOrNull()
     }
     fun markAsRead(ctx: Context, id: Long): Boolean {
         val cv = ContentValues()

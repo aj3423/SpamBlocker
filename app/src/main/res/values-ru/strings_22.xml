@@ -104,7 +104,7 @@
         <![CDATA[
         Изменить атрибуты одного или нескольких правил. <br>
         <br>
-        В зависимости от типа запуска рабочего процесса, правила могут быть изменены постоянно или временно. <br>
+        В зависимости от типа триггера рабочего процесса правила могут быть изменены постоянно или временно. <br>
         <br>
         Изменяемые атрибуты: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
@@ -119,9 +119,11 @@
         &ensp; Применить к: <br>
         &ensp; 1: звонок, 2: SMS, 3: оба, 0: отключить <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
-        &ensp; Строка идентификатора канала уведомлений<br>
+        &ensp; Строка ID канала уведомлений<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: отклонить, 1: без звука, 2: сбросить
+        &ensp; 0: отклонить, 1: бесшумно, 2: отбой <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Или <no_translate>null</no_translate> для любой SIM-карты.
         ]]>
     </string>
     <string name="action_modify_rules">Изменить правила</string>

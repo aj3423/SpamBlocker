@@ -112,16 +112,18 @@
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
         &ensp; 描述 <br>
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
-        &ensp; 優先順序 <br>
+        &ensp; 優先級 <br>
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
         &ensp; <no_translate>true</no_translate>：封鎖，<no_translate>false</no_translate>：允許 <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
-        &ensp; 適用於： <br>
-        &ensp; 1：來電，2：簡訊，3：兩者，0：停用 <br>
+        &ensp; 套用於： <br>
+        &ensp; 1：通話，2：簡訊，3：兩者，0：停用 <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; 通知頻道 ID 字串<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0：拒絕，1：靜音，2：掛斷
+        &ensp; 0：拒絕，1：靜音，2：掛斷 <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0、1、2… 或 <no_translate>null</no_translate> 表示任何 SIM 卡。
         ]]>
     </string>
     <string name="action_modify_rules">修改規則</string>

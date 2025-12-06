@@ -102,11 +102,11 @@
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Bir veya birden fazla kuralın niteliklerini değiştir. <br>
+        Bir veya daha fazla kuralın özelliklerini değiştirin. <br>
         <br>
         İş akışı tetikleyici türüne bağlı olarak, kurallar kalıcı veya geçici olarak değiştirilebilir. <br>
         <br>
-        Değiştirilebilir nitelikler: <br>
+        Değiştirilebilir özellikler: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
         &ensp; Regex <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
@@ -116,12 +116,14 @@
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
         &ensp; <no_translate>true</no_translate>: Engelle, <no_translate>false</no_translate>: İzin ver <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
-        &ensp; Uygulanacak yer: <br>
-        &ensp; 1: çağrı, 2: SMS, 3: her ikisi, 0: devre dışı bırak <br>
+        &ensp; Uygula: <br>
+        &ensp; 1: arama, 2: SMS, 3: her ikisi, 0: devre dışı bırak <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; Bildirim kanalı kimliği dizesi<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: reddet, 1: sessize al, 2: kapat
+        &ensp; 0: reddet, 1: sessize al, 2: kapat <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Veya herhangi bir SIM için <no_translate>null</no_translate>.
         ]]>
     </string>
     <string name="action_modify_rules">Kuralları Değiştir</string>

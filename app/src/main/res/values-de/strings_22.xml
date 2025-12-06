@@ -104,7 +104,7 @@
         <![CDATA[
         Ändern Sie die Attribute einer oder mehrerer Regeln. <br>
         <br>
-        Abhängig vom Workflow-Auslösertyp können Regeln dauerhaft oder temporär geändert werden. <br>
+        Abhängig vom Workflow-Trigger-Typ können Regeln dauerhaft oder temporär geändert werden. <br>
         <br>
         Modifizierbare Attribute: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
@@ -117,11 +117,13 @@
         &ensp; <no_translate>true</no_translate>: Blockieren, <no_translate>false</no_translate>: erlauben <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
         &ensp; Anwenden auf: <br>
-        &ensp; 1: Anruf, 2: SMS, 3: beides, 0: deaktivieren <br>
+        &ensp; 1: Anruf, 2: SMS, 3: beide, 0: deaktivieren <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; Die ID-Zeichenfolge des Benachrichtigungskanals<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: ablehnen, 1: stummschalten, 2: auflegen
+        &ensp; 0: ablehnen, 1: stummschalten, 2: auflegen <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Oder <no_translate>null</no_translate> für jede SIM.
         ]]>
     </string>
     <string name="action_modify_rules">Regeln ändern</string>

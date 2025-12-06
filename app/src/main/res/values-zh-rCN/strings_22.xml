@@ -104,7 +104,7 @@
         <![CDATA[
         修改一个或多个规则的属性。 <br>
         <br>
-        根据工作流程触发器类型，规则可以永久或临时修改。 <br>
+        根据工作流程触发类型，规则可以永久或临时修改。 <br>
         <br>
         可修改属性： <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
@@ -116,12 +116,14 @@
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
         &ensp; <no_translate>true</no_translate>: 阻止, <no_translate>false</no_translate>: 允许 <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
-        &ensp; 适用于: <br>
-        &ensp; 1: 电话, 2: 短信, 3: 两者, 0: 禁用 <br>
+        &ensp; 适用于： <br>
+        &ensp; 1: 来电, 2: 短信, 3: 两者, 0: 禁用 <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; 通知渠道 ID 字符串<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: 拒接, 1: 静音, 2: 挂断
+        &ensp; 0: 拒接, 1: 静音, 2: 挂断 <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… 或 <no_translate>null</no_translate> 表示任意 SIM 卡。
         ]]>
     </string>
     <string name="action_modify_rules">修改规则</string>

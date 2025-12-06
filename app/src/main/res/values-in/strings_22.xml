@@ -102,26 +102,28 @@
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Modifikasi atribut dari satu atau lebih aturan. <br>
+        Ubah atribut satu atau lebih aturan. <br>
         <br>
         Tergantung pada jenis pemicu alur kerja, aturan dapat dimodifikasi secara permanen atau sementara. <br>
         <br>
         Atribut yang dapat dimodifikasi: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
-        &ensp; Regex <br>
+        &ensp; Regexnya <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
-        &ensp; Deskripsi <br>
+        &ensp; Deskripsinya <br>
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
-        &ensp; Prioritas <br>
+        &ensp; Prioritasnya <br>
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
         &ensp; <no_translate>true</no_translate>: Blokir, <no_translate>false</no_translate>: izinkan <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
-        &ensp; Berlaku untuk: <br>
+        &ensp; Terapkan ke: <br>
         &ensp; 1: panggilan, 2: SMS, 3: keduanya, 0: nonaktifkan <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; String ID saluran notifikasi<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: tolak, 1: senyap, 2: tutup telepon
+        &ensp; 0: tolak, 1: diamkan, 2: tutup telepon <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Atau <no_translate>null</no_translate> untuk SIM apa pun.
         ]]>
     </string>
     <string name="action_modify_rules">Modifikasi Aturan</string>

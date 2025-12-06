@@ -81,19 +81,19 @@ open class SmsReceiver : BroadcastReceiver() {
             // 1. log to history db
             val spf = spf.HistoryOptions(ctx)
             val isLogEnabled = spf.isLoggingEnabled()
-            val recordId = if (isLogEnabled)
-                SmsTable().addNewRecord(
+            if (isLogEnabled) {
+                val recordId = SmsTable().addNewRecord(
                     ctx, HistoryRecord(
                         peer = rawNumber,
                         time = System.currentTimeMillis(),
                         result = r.type,
                         reason = r.reasonToDb(),
+                        simSlot = simSlot,
                         extraInfo = if (spf.isLogSmsContentEnabled()) messageBody else null,
                     )
-                ) else 0
+                )
 
-            // 2. broadcast new sms to add a new item in history page
-            if (isLogEnabled) {
+                // 2. broadcast new sms to add a new item in history page
                 Events.onNewSMS.fire(recordId)
             }
         }

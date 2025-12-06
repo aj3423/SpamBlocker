@@ -102,13 +102,13 @@
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Modifica os atributos dunha ou varias regras. <br>
+        Modificar os atributos dunha ou máis regras. <br>
         <br>
         Dependendo do tipo de disparador do fluxo de traballo, as regras pódense modificar de forma permanente ou temporal. <br>
         <br>
         Atributos modificables: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
-        &ensp; O regex <br>
+        &ensp; A regex <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
         &ensp; A descrición <br>
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
@@ -117,11 +117,13 @@
         &ensp; <no_translate>true</no_translate>: Bloquear, <no_translate>false</no_translate>: permitir <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
         &ensp; Aplicar a: <br>
-        &ensp; 1: chamada, 2: SMS, 3: ambos, 0: desactivar <br>
+        &ensp; 1: chamada, 2: SMS, 3: ambos, 0: deshabilitar <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
-        &ensp; O identificador de cadea da canle de notificación<br>
+        &ensp; A cadea de ID da canle de notificación<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: rexeitar, 1: silenciar, 2: colgar
+        &ensp; 0: rexeitar, 1: silenciar, 2: colgar <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Ou <no_translate>null</no_translate> para calquera SIM.
         ]]>
     </string>
     <string name="action_modify_rules">Modificar Regras</string>

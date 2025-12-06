@@ -102,26 +102,28 @@
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        1つまたは複数のルールの属性を修正します。<br>
+        1つまたは複数のルールの属性を変更します。 <br>
         <br>
-        ワークフローのトリガータイプに応じて、ルールは永続的または一時的に修正できます。<br>
+        ワークフローのトリガータイプに応じて、ルールは永続的または一時的に変更できます。 <br>
         <br>
-        修正可能な属性：<br>
-        - <font color="#888888"><no_translate>pattern</no_translate></font><br>
-        &ensp; 正規表現<br>
-        - <font color="#888888"><no_translate>description</no_translate></font><br>
-        &ensp; 説明<br>
-        - <font color="#888888"><no_translate>priority</no_translate></font><br>
-        &ensp; 優先度<br>
-        - <font color="#888888"><no_translate>isBlacklist</no_translate></font><br>
-        &ensp; <no_translate>true</no_translate>: ブロック, <no_translate>false</no_translate>: 許可<br>
-        - <font color="#888888"><no_translate>flags</no_translate></font><br>
-        &ensp; 適用対象：<br>
-        &ensp; 1: 通話, 2: SMS, 3: 両方, 0: 無効<br>
-        - <font color="#888888"><no_translate>channel</no_translate></font><br>
-        &ensp; 通知チャネルID文字列<br>
-        - <font color="#888888"><no_translate>blockType</no_translate></font><br>
-        &ensp; 0: 拒否, 1: サイレンス, 2: 切断
+        変更可能な属性： <br>
+        - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
+        &ensp; 正規表現 <br>
+        - <font color="#888888"><no_translate>description</no_translate></font> <br>
+        &ensp; 説明 <br>
+        - <font color="#888888"><no_translate>priority</no_translate></font> <br>
+        &ensp; 優先度 <br>
+        - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
+        &ensp; <no_translate>true</no_translate>: ブロック, <no_translate>false</no_translate>: 許可 <br>
+        - <font color="#888888"><no_translate>flags</no_translate></font> <br>
+        &ensp; 適用対象： <br>
+        &ensp; 1: 通話, 2: SMS, 3: 両方, 0: 無効 <br>
+        - <font color="#888888"><no_translate>channel</no_translate></font> <br>
+        &ensp; 通知チャンネルID文字列<br>
+        - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
+        &ensp; 0: 拒否, 1: サイレンス, 2: 切断 <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… または任意のSIMの場合は<no_translate>null</no_translate>。
         ]]>
     </string>
     <string name="action_modify_rules">ルールを修正</string>

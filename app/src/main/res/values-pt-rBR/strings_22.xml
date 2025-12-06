@@ -121,7 +121,9 @@
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; A string de ID do canal de notificação<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: rejeitar, 1: silenciar, 2: desligar
+        &ensp; 0: rejeitar, 1: silenciar, 2: desligar <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Ou <no_translate>null</no_translate> para qualquer SIM.
         ]]>
     </string>
     <string name="action_modify_rules">Modificar Regras</string>

@@ -123,7 +123,9 @@
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; The notification channel id string<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: reject, 1: silence, 2: hang-up
+        &ensp; 0: reject, 1: silence, 2: hang-up <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Or <no_translate>null</no_translate> for any SIM.
         ]]>
     </string>
     <string name="help_action_import_to_spam_db">

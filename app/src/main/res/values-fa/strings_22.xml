@@ -102,13 +102,13 @@
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        ویژگی‌های یک یا چند قانون را تغییر می‌دهد. <br>
+        ویژگی‌های یک یا چند قانون را اصلاح می‌کند. <br>
         <br>
-        بسته به نوع ماشه گردش کار، قوانین می‌توانند به طور دائم یا موقت تغییر یابند. <br>
+        بسته به نوع راه‌انداز گردش کار، قوانین می‌توانند به طور دائمی یا موقت اصلاح شوند. <br>
         <br>
-        ویژگی‌های قابل تغییر: <br>
+        ویژگی‌های قابل اصلاح: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
-        &ensp; عبارت منظم <br>
+        &ensp; عبارت باقاعده <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
         &ensp; توضیحات <br>
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
@@ -116,12 +116,14 @@
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
         &ensp; <no_translate>true</no_translate>: مسدود کردن، <no_translate>false</no_translate>: اجازه دادن <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
-        &ensp; اعمال شود بر: <br>
+        &ensp; اعمال به: <br>
         &ensp; 1: تماس، 2: پیامک، 3: هر دو، 0: غیرفعال <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; رشته شناسه کانال اعلان<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: رد کردن، 1: بی‌صدا کردن، 2: قطع تماس
+        &ensp; 0: رد کردن، 1: بی‌صدا کردن، 2: قطع کردن <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… یا <no_translate>null</no_translate> برای هر سیم کارت.
         ]]>
     </string>
     <string name="action_modify_rules">تغییر قوانین</string>

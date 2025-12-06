@@ -104,24 +104,26 @@
         <![CDATA[
         تعديل سمات قاعدة واحدة أو أكثر. <br>
         <br>
-        اعتمادًا على نوع تشغيل سير العمل، يمكن تعديل القواعد بشكل دائم أو مؤقت. <br>
+        اعتمادًا على نوع مشغل سير العمل، يمكن تعديل القواعد بشكل دائم أو مؤقت. <br>
         <br>
         السمات القابلة للتعديل: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
-        &ensp; التعبير العادي <br>
+        &ensp; التعبير النمطي <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
         &ensp; الوصف <br>
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
         &ensp; الأولوية <br>
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
-        &ensp; <no_translate>true</no_translate>: حظر، <no_translate>false</no_translate>: سماح <br>
+        &ensp; <no_translate>true</no_translate>: حظر, <no_translate>false</no_translate>: سماح <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
-        &ensp; تطبيق على: <br>
-        &ensp; 1: مكالمة، 2: رسالة نصية، 3: كلاهما، 0: تعطيل <br>
+        &ensp; تنطبق على: <br>
+        &ensp; 1: مكالمة, 2: رسالة نصية (SMS), 3: كلاهما, 0: تعطيل <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; سلسلة معرف قناة الإشعارات<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: رفض، 1: صامت، 2: إنهاء المكالمة
+        &ensp; 0: رفض, 1: صامت, 2: إنهاء المكالمة <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… أو <no_translate>null</no_translate> لأي شريحة SIM.
         ]]>
     </string>
     <string name="action_modify_rules">تعديل القواعد</string>

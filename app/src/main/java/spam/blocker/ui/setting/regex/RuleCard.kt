@@ -28,7 +28,7 @@ import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.OutlineCard
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.RowVCenterSpaced
-import spam.blocker.ui.widgets.SimCard
+import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.util.hasFlag
 import spam.blocker.util.spf
 
@@ -53,7 +53,7 @@ fun RuleCard(
             ) {
                 RowVCenterSpaced(2) {
                     if (rule.simSlot != null) {
-                        SimCard(rule.simSlot!!)
+                        SimCardIcon(rule.simSlot!!)
                     }
                     // Regex
                     Text(

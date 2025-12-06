@@ -106,7 +106,7 @@
         <br>
         Залежно від типу тригера робочого процесу, правила можуть бути змінені назавжди або тимчасово. <br>
         <br>
-        Атрибути, що можна змінювати: <br>
+        Атрибути, що можна змінити: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
         &ensp; Регулярний вираз <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
@@ -114,14 +114,16 @@
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
         &ensp; Пріоритет <br>
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
-        &ensp; <no_translate>true</no_translate>: Block, <no_translate>false</no_translate>: allow <br>
+        &ensp; <no_translate>true</no_translate>: Блокувати, <no_translate>false</no_translate>: дозволити <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
         &ensp; Застосувати до: <br>
         &ensp; 1: дзвінок, 2: SMS, 3: обидва, 0: вимкнути <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; Рядок ідентифікатора каналу сповіщень<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: відхилити, 1: беззвучний, 2: скинути
+        &ensp; 0: відхилити, 1: заглушити, 2: покласти слухавку <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Або <no_translate>null</no_translate> для будь-якої SIM-карти.
         ]]>
     </string>
     <string name="action_modify_rules">Змінити правила</string>

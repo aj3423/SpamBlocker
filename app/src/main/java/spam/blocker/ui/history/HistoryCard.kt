@@ -48,6 +48,7 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.SimCardIcon
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.Contacts
 import spam.blocker.util.JetpackTextLogger
@@ -124,6 +125,7 @@ fun HistoryCard(
     forType: Int,
     record: HistoryRecord,
     indicators: Indicators,
+    simCount: Int,
     modifier: Modifier,
 ) {
     val C = LocalPalette.current
@@ -158,7 +160,7 @@ fun HistoryCard(
             Column(
                 modifier = M.weight(1f)
             ) {
-                RowVCenterSpaced(4) {
+                RowVCenterSpaced(2) {
                     // Db/Rule existence indicators
                     if(indicators.isNotEmpty())
                         IndicatorIcons(indicators)
@@ -185,16 +187,27 @@ fun HistoryCard(
                     .heightIn(min = ItemHeight.dp)
                     .align(Alignment.Top)
             ) {
-                // time
-                Text(
-                    text = Util.formatTime(ctx, record.time),
-                    fontSize = 14.sp,
-                    modifier = M
-                        .padding(end = 8.dp)
-                        .align(Alignment.Center),
-                    color = C.textGrey,
-                    textAlign = TextAlign.Center,
-                )
+                Column(
+                    M.padding(end = 8.dp)
+                        .align(Alignment.Center)
+                ) {
+                    // time
+                    Text(
+                        text = Util.formatTime(ctx, record.time),
+                        fontSize = 14.sp,
+                        color = C.textGrey,
+                        textAlign = TextAlign.Center,
+                    )
+
+                    // SIM slot icon
+                    if (simCount >= 2 && record.simSlot != null) {
+                        SimCardIcon(
+                            record.simSlot,
+                            modifier = M.align(Alignment.CenterHorizontally)
+                        )
+                    }
+                }
+
 
                 // Unread red dot
                 if (!record.read) {

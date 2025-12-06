@@ -77,6 +77,10 @@ fun PopupDialog(
                 usePlatformDefaultWidth = popupSize == null,
             )
         ) {
+            // Disable the dialog background dim effect.
+            // Enable this when taking screenshots..
+//            (LocalView.current.parent as DialogWindowProvider).window.setDimAmount(0.0f)
+
             val C = LocalPalette.current
             val scrollState = rememberScrollState()
 

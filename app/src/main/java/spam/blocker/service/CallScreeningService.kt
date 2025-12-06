@@ -203,23 +203,22 @@ class CallScreeningService : CallScreeningService() {
         return shouldMute
     }
 
-    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String) {
+    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, simSlot: Int?) {
         val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
-        val recordId = if (isDbLogEnabled) {
-            CallTable().addNewRecord(
-                ctx, HistoryRecord(
-                    peer = rawNumber,
-                    time = System.currentTimeMillis(),
-                    result = r.type,
-                    reason = r.reasonToDb(),
-                )
-            )
-        } else 0
+        if (!isDbLogEnabled)
+            return
 
+        val recordId = CallTable().addNewRecord(
+            ctx, HistoryRecord(
+                peer = rawNumber,
+                time = System.currentTimeMillis(),
+                result = r.type,
+                reason = r.reasonToDb(),
+                simSlot = simSlot,
+            )
+        )
         // broadcast the call to add a new item in history page
-        if (isDbLogEnabled) {
-            Events.onNewCall.fire(recordId)
-        }
+        Events.onNewCall.fire(recordId)
     }
 
     private fun showSpamNotification(ctx: Context, r: ICheckResult, rawNumber: String) {
@@ -258,7 +257,7 @@ class CallScreeningService : CallScreeningService() {
         val r = Checker.checkCall(ctx, logger, rawNumber, callDetails, simSlot)
 
         // 1. log result to history db
-        logToHistoryDb(ctx, r, rawNumber)
+        logToHistoryDb(ctx, r, rawNumber, simSlot)
 
         if (r.shouldBlock()) {
             CoroutineScope(IO).launch {

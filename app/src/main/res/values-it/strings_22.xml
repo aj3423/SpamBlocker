@@ -104,7 +104,7 @@
         <![CDATA[
         Modifica gli attributi di una o più regole. <br>
         <br>
-        A seconda del tipo di trigger del flusso di lavoro, le regole possono essere modificate permanentemente o temporaneamente. <br>
+        A seconda del tipo di attivatore del flusso di lavoro, le regole possono essere modificate in modo permanente o temporaneo. <br>
         <br>
         Attributi modificabili: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
@@ -114,14 +114,16 @@
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
         &ensp; La priorità <br>
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
-        &ensp; <no_translate>true</no_translate>: blocca, <no_translate>false</no_translate>: consenti <br>
+        &ensp; <no_translate>true</no_translate>: Blocca, <no_translate>false</no_translate>: consenti <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
         &ensp; Applica a: <br>
         &ensp; 1: chiamata, 2: SMS, 3: entrambi, 0: disabilita <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
         &ensp; La stringa ID del canale di notifica<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: rifiuta, 1: silenzia, 2: riaggancia
+        &ensp; 0: rifiuta, 1: silenzia, 2: riaggancia <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… O <no_translate>null</no_translate> per qualsiasi SIM.
         ]]>
     </string>
     <string name="action_modify_rules">Modifica Regole</string>

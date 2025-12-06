@@ -102,7 +102,7 @@
     </string>
     <string name="help_action_modify_rules">
         <![CDATA[
-        Modifie les attributs d\'une ou plusieurs règles. <br>
+        Modifiez les attributs d\'une ou plusieurs règles. <br>
         <br>
         Selon le type de déclencheur de flux de travail, les règles peuvent être modifiées de manière permanente ou temporaire. <br>
         <br>
@@ -119,9 +119,11 @@
         &ensp; Appliquer à : <br>
         &ensp; 1 : appel, 2 : SMS, 3 : les deux, 0 : désactiver <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
-        &ensp; L\'ID de la chaîne de notification<br>
+        &ensp; La chaîne d\'ID du canal de notification<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0 : rejeter, 1 : silencieux, 2 : raccrocher
+        &ensp; 0 : rejeter, 1 : couper le son, 2 : raccrocher <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… Ou <no_translate>null</no_translate> pour n\'importe quelle SIM.
         ]]>
     </string>
     <string name="action_modify_rules">Modifier les Règles</string>

@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -28,9 +29,12 @@ import spam.blocker.util.SimCard
 
 
 @Composable
-fun SimCard(slotIndex: Int) {
+fun SimCardIcon(
+    slotIndex: Int,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = M.wrapContentSize()
+        modifier = modifier.wrapContentSize()
     ) {
         val color = Color(("$slotIndex dummy salt ...........").hashCode().toLong() or 0xff808080)
         ResIcon(
@@ -56,8 +60,10 @@ fun SimPicker(
     val ctx = LocalContext.current
 
     RowVCenterSpaced(8) {
-        val allCards = remember { SimCard.listSimCards(ctx) }
-        var selected by remember(simSlot.value) {
+        var allCards by remember { mutableStateOf(SimCard.listSimCards(ctx)) }
+        var simRefreshed by remember { mutableStateOf(true) }
+
+        var selected by remember(simSlot.value, simRefreshed) {
             mutableIntStateOf(
                 if (simSlot.value == null) {
                     0
@@ -67,7 +73,7 @@ fun SimPicker(
                 }
             )
         }
-        val menuItems = remember {
+        val menuItems = remember(simRefreshed) {
             val ret = mutableListOf<LabelItem>()
 
             // 1. "Any", it doesn't require Permission.phoneState
@@ -79,7 +85,7 @@ fun SimPicker(
             // 2. all SIM slots
             ret += allCards.map { sim ->
                 LabelItem(
-                    leadingIcon = { SimCard(sim.slotIndex) },
+                    leadingIcon = { SimCardIcon(sim.slotIndex) },
                     label = ctx.getString(R.string.sim_slot_template).format("${sim.slotIndex}")
                 ) {
                     G.permissionChain.ask(
@@ -98,6 +104,18 @@ fun SimPicker(
             items = menuItems,
             selected = selected,
             enabled = Build.VERSION.SDK_INT >= ANDROID_12,
+            expander = { dropdownExpanded ->
+                G.permissionChain.ask(
+                    ctx,
+                    listOf(PermissionWrapper(Permission.phoneState))
+                ) { granted ->
+                    if (granted) {
+                        allCards = SimCard.listSimCards(ctx)
+                        simRefreshed = !simRefreshed
+                        dropdownExpanded.value = true
+                    }
+                }
+            }
         )
     }
 }

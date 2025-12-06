@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 43 // The db version follows the app version code
+        const val DB_VERSION = 44
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -104,7 +104,6 @@ class Db private constructor(
         const val COLUMN_READ = "read" // Boolean
         const val COLUMN_EXTRA_INFO = "extra_info" // text
         const val COLUMN_EXPANDED = "expanded" // Boolean
-
 
         @Volatile
         private var instance: Db? = null
@@ -228,6 +227,7 @@ class Db private constructor(
                         "$COLUMN_PEER TEXT, " +
                         "$COLUMN_TIME INTEGER, " +
                         "$COLUMN_RESULT INTEGER, " +
+                        "$COLUMN_SIM_SLOT INTEGER, " +
                         "$COLUMN_REASON LONG, " +
                         "$COLUMN_READ INTEGER, " +
                         "$COLUMN_EXTRA_INFO TEXT, " +
@@ -479,6 +479,10 @@ class Db private constructor(
             addColumnIfNotExist(db, TABLE_NUMBER_RULE, COLUMN_SIM_SLOT, "INTEGER")
             addColumnIfNotExist(db, TABLE_CONTENT_RULE, COLUMN_SIM_SLOT, "INTEGER")
             addColumnIfNotExist(db, TABLE_QUICK_COPY_RULE, COLUMN_SIM_SLOT, "INTEGER")
+        }
+        if ((newVersion >= 44) && (oldVersion < 44)) {
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_SIM_SLOT, "INTEGER")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_SIM_SLOT, "INTEGER")
         }
     }
 }

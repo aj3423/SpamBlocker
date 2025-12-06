@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,6 +29,7 @@ import spam.blocker.ui.M
 import spam.blocker.ui.theme.DarkOrange
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.util.Lambda
+import spam.blocker.util.Lambda1
 import spam.blocker.util.Util.inRange
 
 const val BUTTON_CORNER_RADIUS = 4
@@ -207,6 +209,7 @@ fun ComboBox(
     footerSize: Int = 6,
     footerIconId: Int = R.drawable.ic_dropdown_footer,
     onLongClick: Lambda? = null,
+    expander: Lambda1<MutableState<Boolean>> = { it.value = true },
 ) {
     DropdownWrapper(
         items = items,
@@ -238,7 +241,7 @@ fun ComboBox(
             footerSize = footerSize,
             footerIconId = footerIconId,
         ) {
-            expanded.value = true
+            expander(expanded)
         }
     }
 }

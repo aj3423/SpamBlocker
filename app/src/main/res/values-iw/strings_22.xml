@@ -104,9 +104,9 @@
         <![CDATA[
         שנה את התכונות של כלל אחד או יותר. <br>
         <br>
-        בהתאם לסוג מפעיל התהליך, ניתן לשנות כללים באופן קבוע או זמני. <br>
+        בהתאם לסוג מפעיל זרימת העבודה, ניתן לשנות כללים באופן קבוע או זמני. <br>
         <br>
-        תכונות שניתנות לשינוי: <br>
+        תכונות ניתנות לשינוי: <br>
         - <font color="#888888"><no_translate>pattern</no_translate></font> <br>
         &ensp; הביטוי הרגולרי <br>
         - <font color="#888888"><no_translate>description</no_translate></font> <br>
@@ -114,14 +114,16 @@
         - <font color="#888888"><no_translate>priority</no_translate></font> <br>
         &ensp; העדיפות <br>
         - <font color="#888888"><no_translate>isBlacklist</no_translate></font> <br>
-        &ensp; <no_translate>true</no_translate>: חסום, <no_translate>false</no_translate>: אפשר <br>
+        &ensp; <no_translate>true</no_translate>: חסימה, <no_translate>false</no_translate>: אפשור <br>
         - <font color="#888888"><no_translate>flags</no_translate></font> <br>
         &ensp; החל על: <br>
-        &ensp; 1: שיחה, 2: SMS, 3: שניהם, 0: השבת <br>
+        &ensp; 1: שיחה, 2: SMS, 3: שניהם, 0: השבתה <br>
         - <font color="#888888"><no_translate>channel</no_translate></font> <br>
-        &ensp; מחרוזת מזהה ערוץ ההתראות<br>
+        &ensp; מחרוזת מזהה ערוץ ההתראה<br>
         - <font color="#888888"><no_translate>blockType</no_translate></font> <br>
-        &ensp; 0: דחה, 1: השתק, 2: נתק
+        &ensp; 0: דחייה, 1: השתקה, 2: ניתוק <br>
+        - <font color="#888888"><no_translate>simSlot</no_translate></font> <br>
+        &ensp; 0, 1, 2… או <no_translate>null</no_translate> עבור כל SIM.
         ]]>
     </string>
     <string name="action_modify_rules">שנה כללים</string>
