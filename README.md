@@ -34,8 +34,7 @@ Table of Contents
 # Screenshot
 | History | Settings | Notification |
 |----|----|----|
-| <img src="https://github.com/user-attachments/assets/d9ec16ba-c89c-4137-a9d0-7933305b6790" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/17a927a3-7d18-486b-b43e-943e22fc55b7" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/70cb5537-1b29-49e8-be0e-47d362ae3ebc" width="200" height="400"> |
-
+| <img src="https://github.com/user-attachments/assets/abfac64c-83e8-445b-b92a-8826e87156ed" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/17a927a3-7d18-486b-b43e-943e22fc55b7" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/70cb5537-1b29-49e8-be0e-47d362ae3ebc" width="200" height="400"> |
 
 # How it works
 It works without replacing your call/SMS app.
