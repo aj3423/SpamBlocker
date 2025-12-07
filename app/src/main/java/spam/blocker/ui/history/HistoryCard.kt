@@ -131,8 +131,8 @@ fun HistoryCard(
     val C = LocalPalette.current
     val ctx = LocalContext.current
     OutlineCard(modifier = M.animateContentSize() ) {
-        RowVCenter(
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        RowVCenterSpaced(
+            space = 2,
             modifier = modifier.padding(8.dp)
         ) {
             // 1. avatar
@@ -158,7 +158,7 @@ fun HistoryCard(
 
             // 2. Db exist indicator / Number / BlockReason / SMS Content
             Column(
-                modifier = M.weight(1f)
+                modifier = M.padding(start = 4.dp).weight(1f)
             ) {
                 RowVCenterSpaced(2) {
                     // Db/Rule existence indicators
@@ -181,16 +181,24 @@ fun HistoryCard(
                 r.ExpandedContent(forType, record)
             }
 
-            // 3. Time / Unread Indicator
+            // 3. SIM / Time / Unread Indicator
             Box(
                 modifier = M
                     .heightIn(min = ItemHeight.dp)
                     .align(Alignment.Top)
             ) {
-                Column(
-                    M.padding(end = 8.dp)
+                RowVCenterSpaced(
+                    space = 2,
+                    modifier = M.padding(end = 8.dp)
                         .align(Alignment.Center)
                 ) {
+                    // SIM slot icon
+                    if (simCount >= 2 && record.simSlot != null) {
+                        SimCardIcon(
+                            record.simSlot,
+                        )
+                    }
+
                     // time
                     Text(
                         text = Util.formatTime(ctx, record.time),
@@ -198,14 +206,6 @@ fun HistoryCard(
                         color = C.textGrey,
                         textAlign = TextAlign.Center,
                     )
-
-                    // SIM slot icon
-                    if (simCount >= 2 && record.simSlot != null) {
-                        SimCardIcon(
-                            record.simSlot,
-                            modifier = M.align(Alignment.CenterHorizontally)
-                        )
-                    }
                 }
 
 
