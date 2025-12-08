@@ -3,10 +3,11 @@ package spam.blocker.service
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import android.database.Cursor
 import android.provider.Telephony.Sms.Intents.WAP_PUSH_RECEIVED_ACTION
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
+import androidx.core.net.toUri
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -22,6 +23,11 @@ object MimeTypes {
     const val TEXT_PLAIN = "text/plain"
 }
 
+fun Cursor.found() : Boolean {
+    return this.use { cursor ->
+        cursor.moveToFirst()        // returns false if cursor is empty
+    }
+}
 class WapPushReceiver : SmsReceiver() {
 
     override fun onReceive(ctx: Context, intent: Intent) {
@@ -72,6 +78,7 @@ class WapPushReceiver : SmsReceiver() {
         //  not some simple integer like in the `intent.extras`,
         val transactionId = String(pdu.transactionId)
         val contentLocation = String(pdu.contentLocation)
+//        logi("tr_id: $transactionId, ct_l: $contentLocation")
 
         // This notification only indicates there is an MMS message, Android will send another
         // request to download the actual MMS media(Text, Image, ...). At this moment, the media
@@ -96,10 +103,10 @@ class WapPushReceiver : SmsReceiver() {
     fun retrieveMediaMap(ctx: Context, transactionId: String, contentLocation: String) : Map<String, String>? {
         val contentResolver = ctx.contentResolver
 
-        // The actual database location:
+        // The MMS database location:
         //   /data/data/com.android.providers.telephony/databases/mmssms.db
-        val mmsUri = Uri.parse("content://mms/")
-        val partUri = Uri.parse("content://mms/part")
+        val mmsUri = "content://mms/".toUri()
+        val partUri = "content://mms/part".toUri()
 
         // Query the MMS table to find the pdu record with `tr_id == transactionId`
         var mmsCursor = contentResolver.query(
@@ -109,15 +116,16 @@ class WapPushReceiver : SmsReceiver() {
             null,
             null
         )
-        // This works for most SMS apps, the transaction id should look like: "MFRS6NNDSAA".
-        // But "Google Messages" wraps it with protobuf, e.g.: "proto:xxxxxxxx..."
-        //  so querying by tr_id won't work for Google Messages
-        val isFound = mmsCursor?.use { cursor ->
-            cursor.moveToFirst()        // returns false if cursor is empty
-        } ?: false
+        // Matching by `tr_id` works for most SMS apps, but there are exceptions:
+        //  - "Google Messages"
+        //    - `tr_id` is wrapped and logged as protobuf, e.g.: "proto:xxxxxxxx..."
+        //    - `ct_l` works
+        //  - "Textra" (this app enforces the notification permission)
+        //    - `tr_id` is logged as "Txtr313" which isn't the raw transaction id
+        //    - `ct_l` is empty, the contentLocation is saved in the `m_id` column
 
         // If not found, query again by "content location"
-        if (!isFound) {
+        if (mmsCursor?.found() != true) {
             mmsCursor = contentResolver.query(
                 mmsUri,
                 arrayOf("_id"),
