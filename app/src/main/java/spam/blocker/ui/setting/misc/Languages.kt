@@ -15,7 +15,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ResIcon
-import spam.blocker.ui.widgets.SpinnerType
+import spam.blocker.ui.widgets.ComboDisplayType
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Launcher
 import spam.blocker.util.spf
@@ -97,7 +97,7 @@ fun Language() {
             ComboBox(
                 items,
                 selected,
-                displayType = SpinnerType.IconLabel
+                displayType = ComboDisplayType.IconLabel
             )
         }
     )

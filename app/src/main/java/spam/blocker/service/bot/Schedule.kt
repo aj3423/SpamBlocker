@@ -53,7 +53,7 @@ interface ISchedule {
     fun isValid(): Boolean
     fun nextOccurrence(): Duration?
 
-    // A displaying label for the selecting spinner
+    // A displaying label
     fun label(ctx: Context): String
 
     // A brief summary for all the current configurations, like: "Everyday 12:00"

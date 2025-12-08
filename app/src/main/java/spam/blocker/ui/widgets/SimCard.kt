@@ -104,6 +104,7 @@ fun SimPicker(
             items = menuItems,
             selected = selected,
             enabled = Build.VERSION.SDK_INT >= ANDROID_12,
+            displayType = ComboDisplayType.IconLabel,
             expander = { dropdownExpanded ->
                 G.permissionChain.ask(
                     ctx,

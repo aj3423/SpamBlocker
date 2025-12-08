@@ -188,7 +188,8 @@ fun LongPressButton(
     )
 }
 
-enum class SpinnerType {
+// Show icon only, label only, or both
+enum class ComboDisplayType {
     Label, Icon, IconLabel,
 }
 
@@ -200,7 +201,7 @@ fun ComboBox(
     selected: Int,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    displayType: SpinnerType = SpinnerType.Label, // show label/icon/both
+    displayType: ComboDisplayType = ComboDisplayType.Label, // show label/icon/both
     color: Color = LocalPalette.current.textGrey,
     warning: (@Composable () -> Unit)? = {
         ResIcon(R.drawable.ic_question, color = DarkOrange, modifier = M.size(18.dp))
@@ -219,14 +220,14 @@ fun ComboBox(
                 null
             else
                 when (displayType) {
-                    SpinnerType.Label, SpinnerType.IconLabel -> items[selected].label
+                    ComboDisplayType.Label, ComboDisplayType.IconLabel -> items[selected].label
                     else -> null
                 },
             icon = if (!inRange(selected, items))
                 warning
             else
                 when (displayType) {
-                    SpinnerType.Icon, SpinnerType.IconLabel -> {
+                    ComboDisplayType.Icon, ComboDisplayType.IconLabel -> {
                         {
                             items[selected].leadingIcon?.let { it() }
                         }
