@@ -73,43 +73,45 @@ fun ActionList(
     ) { index, action, isDragging ->
 
         key(action.hashCode()) {
-            LeftDeleteSwipeWrapper(
-                left = SwipeInfo(
-                    onSwipe = {
-                        // 1. remove from list
-                        actions.removeAt(index)
+            ReorderableItem {
+                LeftDeleteSwipeWrapper(
+                    left = SwipeInfo(
+                        onSwipe = {
+                            // 1. remove from list
+                            actions.removeAt(index)
 
-                        // 2. snackbar shows behind popup, it's a bit complex to implement the Undelete here..
-                    }
-                )
-            ) {
-                ActionCard(
-                    action = action,
-                    modifier = M
-                        .drawBehind {
-                            // Draw a green/red line above/below each action card to
-                            //  indicate whether it's chainable to the previous/next sibling.
-                            if (!isDragging) {
-                                val prev: IAction? = if (index == 0) null else actions[index - 1]
-                                val prevChainable = isPreviousChainable(action, prev)
-                                if (prevChainable != null)
-                                    link(if (prevChainable) Color.Green else Color.Red, true)
-
-                                val next: IAction? =
-                                    if (index >= actions.size - 1) null else actions[index + 1]
-                                val nextChainable = isNextChainable(action, next)
-                                if (nextChainable != null)
-                                    link(if (nextChainable) Color.Green else Color.Red, false)
-                            }
+                            // 2. snackbar shows behind popup, it's a bit complex to implement the Undelete here..
                         }
-                        .draggableHandle() // make the card draggable
-                        .combinedClickable(
-                            onClick = {
-                                clickedIndex = index
-                                editTrigger.value = true
+                    )
+                ) {
+                    ActionCard(
+                        action = action,
+                        modifier = M
+                            .drawBehind {
+                                // Draw a green/red line above/below each action card to
+                                //  indicate whether it's chainable to the previous/next sibling.
+                                if (!isDragging) {
+                                    val prev: IAction? = if (index == 0) null else actions[index - 1]
+                                    val prevChainable = isPreviousChainable(action, prev)
+                                    if (prevChainable != null)
+                                        link(if (prevChainable) Color.Green else Color.Red, true)
+
+                                    val next: IAction? =
+                                        if (index >= actions.size - 1) null else actions[index + 1]
+                                    val nextChainable = isNextChainable(action, next)
+                                    if (nextChainable != null)
+                                        link(if (nextChainable) Color.Green else Color.Red, false)
+                                }
                             }
-                        )
-                )
+                            .draggableHandle() // make the card draggable
+                            .combinedClickable(
+                                onClick = {
+                                    clickedIndex = index
+                                    editTrigger.value = true
+                                }
+                            )
+                    )
+                }
             }
         }
     }
