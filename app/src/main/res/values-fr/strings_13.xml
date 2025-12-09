@@ -75,43 +75,55 @@
     <string name="bug_number">S\'il s\'agit d\'un numéro valide, veuillez le signaler sur github.</string>
     <string name="number_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
-        &ensp; L\'indicatif pays.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{cc}</no_translate></b></font><br>
+        &ensp; Le code pays.<br>
+        - <font color="#00BFFF"><b><no_translate>{domestic}</no_translate></b></font><br>
         &ensp; La partie nationale.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Le numéro complet, incluant l\'indicatif pays et la partie nationale, sans + ou 0 en tête.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; Le numéro d\'origine pouvant contenir + ou 0 en tête.<br>
+        - <font color="#00BFFF"><b><no_translate>{number}</no_translate></b></font><br>
+        &ensp; Le numéro complet, incluant le code pays et la partie nationale, sans + ni 0 en tête.<br>
+        - <font color="#00BFFF"><b><no_translate>{origin_number}</no_translate></b></font><br>
+        &ensp; Le numéro d\'origine qui peut contenir des + ou des 0 en tête.<br>
         ]]>
     </string>
     <string name="time_tags">
         <![CDATA[
-         <font color="#00BFFF"><b>{year}</b></font><br>
-         <font color="#00BFFF"><b>{month}</b></font><br>
-         <font color="#00BFFF"><b>{day}</b></font><br>
-         <font color="#00BFFF"><b>{hour}</b></font><br>
-         <font color="#00BFFF"><b>{minute}</b></font><br>
-         <font color="#00BFFF"><b>{second}</b></font><br>
-        &ensp; Les nombres à un chiffre seront complétés par un zéro initial, ex : <br>
-        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        <font color="#00BFFF"><b><no_translate>
+          {year}<br>
+          {month}<br>
+          {day}<br>
+          {hour}<br>
+          {minute}<br>
+          {second}<br>
+        </no_translate></b></font>
+        &ensp; Les nombres à un chiffre seront complétés par un zéro en tête, par exemple : <br>
+        &emsp; <font color="#888888"><no_translate>{year}-{month}-{day} {hour}:{minute}:{second}</no_translate></font> <br>
         &emsp; devient <br>
         &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
         <br>
-         <font color="#00BFFF"><b>{month_index}</b></font><br>
-         <font color="#00BFFF"><b>{day_index}</b></font><br>
-         <font color="#00BFFF"><b>{hour_index}</b></font><br>
-         <font color="#00BFFF"><b>{minute_index}</b></font><br>
-         <font color="#00BFFF"><b>{second_index}</b></font><br>
-        &ensp; Ces valeurs ne seront pas complétées, ex : <br>
-        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        <font color="#00BFFF"><b><no_translate>
+          {month_index} <br>
+          {day_index} <br>
+          {hour_index} <br>
+          {minute_index} <br>
+          {second_index} <br>
+        </no_translate></b></font>
+        &ensp; Ces valeurs ne seront pas complétées, par exemple : <br>
+        &emsp; <font color="#888888"><no_translate>{month_index}-{day_index}</no_translate></font> <br>
         &emsp; devient <br>
         &emsp; <font color="#888888">1-2</font><br>
         <br>
-         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
-         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
-        &ensp; Ceux-ci peuvent être utilisés pour simuler un horaire de rotation, par exemple : <br>
+        <font color="#00BFFF"><b><no_translate>
+          {day_of_week} <br>
+          {day_of_week_index} <br>
+        </no_translate></b></font>
+        &ensp; Celles-ci peuvent être utilisées pour simuler un calendrier de rotation, par exemple : <br>
         &emsp; <font color="#888888">Effectuer des sauvegardes quotidiennes et ne conserver que les sept sauvegardes les plus récentes.</font> <br>
+        <br>
+        <font color="#ffa500"><b>Remarque :</b></font><br>
+         Ces balises temporelles prennent en charge les opérations arithmétiques simples, telles que
+          <font color="#00BFFF"><b><no_translate>{day-1}</no_translate></b></font>
+         et
+          <font color="#00BFFF"><b><no_translate>{hour+2}</no_translate></b></font>.
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Ignorer les numéros alphabétiques ou vides.</string>

@@ -27,13 +27,13 @@
     <string name="auto_detect_cc_permission">إذن READ_PHONE_STATE مطلوب لاكتشاف رمز البلد.</string>
     <string name="number_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{cc}</no_translate></b></font><br>
         &ensp; رمز البلد.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{domestic}</no_translate></b></font><br>
         &ensp; الجزء المحلي.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{number}</no_translate></b></font><br>
         &ensp; الرقم الكامل، بما في ذلك رمز البلد والجزء المحلي، بدون علامة + أو أصفار بادئة.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{origin_number}</no_translate></b></font><br>
         &ensp; الرقم الأصلي الذي يمكن أن يحتوي على علامة + أو أصفار بادئة.<br>
         ]]>
     </string>
@@ -45,31 +45,43 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-         <font color="#00BFFF"><b>{year}</b></font><br>
-         <font color="#00BFFF"><b>{month}</b></font><br>
-         <font color="#00BFFF"><b>{day}</b></font><br>
-         <font color="#00BFFF"><b>{hour}</b></font><br>
-         <font color="#00BFFF"><b>{minute}</b></font><br>
-         <font color="#00BFFF"><b>{second}</b></font><br>
-        &ensp; سيتم حشو الأرقام المكونة من رقم واحد بصفر بادئ، مثال: <br>
-        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
-        &emsp; يصبح <br>
+        <font color="#00BFFF"><b><no_translate>
+          {year}<br>
+          {month}<br>
+          {day}<br>
+          {hour}<br>
+          {minute}<br>
+          {second}<br>
+        </no_translate></b></font>
+        &ensp; سيتم حشو الرقم المكون من خانة واحدة بصفر بادئ، على سبيل المثال: <br>
+        &emsp; <font color="#888888"><no_translate>{year}-{month}-{day} {hour}:{minute}:{second}</no_translate></font> <br>
+        &emsp; ليصبح <br>
         &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
         <br>
-         <font color="#00BFFF"><b>{month_index}</b></font><br>
-         <font color="#00BFFF"><b>{day_index}</b></font><br>
-         <font color="#00BFFF"><b>{hour_index}</b></font><br>
-         <font color="#00BFFF"><b>{minute_index}</b></font><br>
-         <font color="#00BFFF"><b>{second_index}</b></font><br>
-        &ensp; هذه القيم لن يتم حشوها، مثال: <br>
-        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
-        &emsp; يصبح <br>
+        <font color="#00BFFF"><b><no_translate>
+          {month_index} <br>
+          {day_index} <br>
+          {hour_index} <br>
+          {minute_index} <br>
+          {second_index} <br>
+        </no_translate></b></font>
+        &ensp; لن يتم حشو هذه القيم، على سبيل المثال: <br>
+        &emsp; <font color="#888888"><no_translate>{month_index}-{day_index}</no_translate></font> <br>
+        &emsp; ليصبح <br>
         &emsp; <font color="#888888">1-2</font><br>
         <br>
-         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
-         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
-        &ensp; يمكن استخدام هذه القيم لمحاكاة جدول تدوير، على سبيل المثال: <br>
-        &emsp; <font color="#888888">إجراء نسخ احتياطية يومية والاحتفاظ بأحدث سبعة نسخ احتياطية فقط.</font> <br>
+        <font color="#00BFFF"><b><no_translate>
+          {day_of_week} <br>
+          {day_of_week_index} <br>
+        </no_translate></b></font>
+        &ensp; يمكن استخدام هذه لمحاكاة جدول تدوير، على سبيل المثال: <br>
+        &emsp; <font color="#888888">إجراء نسخ احتياطي يومي والاحتفاظ بأحدث سبع نسخ احتياطية فقط.</font><br>
+        <br>
+        <font color="#ffa500"><b>ملاحظة:</b></font><br>
+         تدعم علامات الوقت هذه عمليات حسابية بسيطة، مثل
+          <font color="#00BFFF"><b><no_translate>{day-1}</no_translate></b></font>
+         و
+          <font color="#00BFFF"><b><no_translate>{hour+2}</no_translate></b></font>.
         ]]>
     </string>
     <string name="help_http_url">

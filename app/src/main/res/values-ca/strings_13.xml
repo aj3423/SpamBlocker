@@ -27,14 +27,14 @@
     <string name="auto_detect_cc_permission">Es requereix el permís READ_PHONE_STATE per detectar el codi de país.</string>
     <string name="number_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{cc}</no_translate></b></font><br>
         &ensp; El codi de país.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
-        &ensp; La part nacional.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; El número complet, incloent-hi tant el codi de país com la part nacional, sense el + o 0 inicial.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; El número d\'origen que pot contenir + o 0 inicial. <br>
+        - <font color="#00BFFF"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &ensp; La part domèstica.<br>
+        - <font color="#00BFFF"><b><no_translate>{number}</no_translate></b></font><br>
+        &ensp; El número complet, incloent tant el codi de país com la part domèstica, sense \'+\' o \'0\'s inicials.<br>
+        - <font color="#00BFFF"><b><no_translate>{origin_number}</no_translate></b></font><br>
+        &ensp; El número original que pot contenir \'+\' o \'0\'s inicials.<br>
         ]]>
     </string>
     <string name="sms_tags">
@@ -45,31 +45,43 @@
     </string>
     <string name="time_tags">
         <![CDATA[
-         <font color="#00BFFF"><b>{year}</b></font><br>
-         <font color="#00BFFF"><b>{month}</b></font><br>
-         <font color="#00BFFF"><b>{day}</b></font><br>
-         <font color="#00BFFF"><b>{hour}</b></font><br>
-         <font color="#00BFFF"><b>{minute}</b></font><br>
-         <font color="#00BFFF"><b>{second}</b></font><br>
-        &ensp; Els números d\'un sol dígit s\'emplenaran amb un zero inicial, per exemple: <br>
-        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
-        &emsp; esdevé <br>
+        <font color="#00BFFF"><b><no_translate>
+          {year}<br>
+          {month}<br>
+          {day}<br>
+          {hour}<br>
+          {minute}<br>
+          {second}<br>
+        </no_translate></b></font>
+        &ensp; Els números d\'un sol dígit s\'ompliran amb un zero al principi, p. ex.: <br>
+        &emsp; <font color="#888888"><no_translate>{year}-{month}-{day} {hour}:{minute}:{second}</no_translate></font> <br>
+        &emsp; es converteix en <br>
         &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
         <br>
-         <font color="#00BFFF"><b>{month_index}</b></font><br>
-         <font color="#00BFFF"><b>{day_index}</b></font><br>
-         <font color="#00BFFF"><b>{hour_index}</b></font><br>
-         <font color="#00BFFF"><b>{minute_index}</b></font><br>
-         <font color="#00BFFF"><b>{second_index}</b></font><br>
-        &ensp; Aquests valors no s\'emplenaran, per exemple: <br>
-        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
-        &emsp; esdevé <br>
+        <font color="#00BFFF"><b><no_translate>
+          {month_index} <br>
+          {day_index} <br>
+          {hour_index} <br>
+          {minute_index} <br>
+          {second_index} <br>
+        </no_translate></b></font>
+        &ensp; Aquests valors no s\'ompliran, p. ex.: <br>
+        &emsp; <font color="#888888"><no_translate>{month_index}-{day_index}</no_translate></font> <br>
+        &emsp; es converteix en <br>
         &emsp; <font color="#888888">1-2</font><br>
         <br>
-         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
-         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
-        &ensp; Aquests es poden utilitzar per simular un calendari de rotació, per exemple: <br>
-        &emsp; <font color="#888888">Realitzar còpies de seguretat diàries i només conservar les set còpies de seguretat més recents.</font> <br>
+        <font color="#00BFFF"><b><no_translate>
+          {day_of_week} <br>
+          {day_of_week_index} <br>
+        </no_translate></b></font>
+        &ensp; Aquests es poden utilitzar per simular un programa de rotació, per exemple: <br>
+        &emsp; <font color="#888888">Realitza còpies de seguretat diàries i conserva només les set còpies de seguretat més recents.</font> <br>
+        <br>
+        <font color="#ffa500"><b>Nota:</b></font><br>
+         Aquestes etiquetes de temps admeten operacions aritmètiques simples, com ara
+          <font color="#00BFFF"><b><no_translate>{day-1}</no_translate></b></font>
+         i
+          <font color="#00BFFF"><b><no_translate>{hour+2}</no_translate></b></font>.
         ]]>
     </string>
     <string name="help_http_url">

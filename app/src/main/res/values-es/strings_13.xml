@@ -75,43 +75,55 @@
     <string name="bug_number">Si este es un número válido, por favor repórtalo en github.</string>
     <string name="number_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{cc}</no_translate></b></font><br>
         &ensp; El código de país.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
-        &ensp; La parte nacional.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; El número completo, incluyendo el código de país y la parte nacional, sin + o 0s al principio.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; El número de origen que puede contener + o 0s al principio.<br>
+        - <font color="#00BFFF"><b><no_translate>{domestic}</no_translate></b></font><br>
+        &ensp; La parte doméstica.<br>
+        - <font color="#00BFFF"><b><no_translate>{number}</no_translate></b></font><br>
+        &ensp; El número completo, incluyendo el código de país y la parte doméstica, sin el + inicial ni ceros.<br>
+        - <font color="#00BFFF"><b><no_translate>{origin_number}</no_translate></b></font><br>
+        &ensp; El número original que puede contener + o ceros iniciales.<br>
         ]]>
     </string>
     <string name="time_tags">
         <![CDATA[
-         <font color="#00BFFF"><b>{year}</b></font><br>
-         <font color="#00BFFF"><b>{month}</b></font><br>
-         <font color="#00BFFF"><b>{day}</b></font><br>
-         <font color="#00BFFF"><b>{hour}</b></font><br>
-         <font color="#00BFFF"><b>{minute}</b></font><br>
-         <font color="#00BFFF"><b>{second}</b></font><br>
+        <font color="#00BFFF"><b><no_translate>
+          {year}<br>
+          {month}<br>
+          {day}<br>
+          {hour}<br>
+          {minute}<br>
+          {second}<br>
+        </no_translate></b></font>
         &ensp; Los números de un solo dígito se rellenarán con un cero inicial, ej.: <br>
-        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        &emsp; <font color="#888888"><no_translate>{year}-{month}-{day} {hour}:{minute}:{second}</no_translate></font> <br>
         &emsp; se convierte en <br>
         &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
         <br>
-         <font color="#00BFFF"><b>{month_index}</b></font><br>
-         <font color="#00BFFF"><b>{day_index}</b></font><br>
-         <font color="#00BFFF"><b>{hour_index}</b></font><br>
-         <font color="#00BFFF"><b>{minute_index}</b></font><br>
-         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        <font color="#00BFFF"><b><no_translate>
+          {month_index} <br>
+          {day_index} <br>
+          {hour_index} <br>
+          {minute_index} <br>
+          {second_index} <br>
+        </no_translate></b></font>
         &ensp; Estos valores no se rellenarán, ej.: <br>
-        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; <font color="#888888"><no_translate>{month_index}-{day_index}</no_translate></font> <br>
         &emsp; se convierte en <br>
         &emsp; <font color="#888888">1-2</font><br>
         <br>
-         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
-         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
-        &ensp; Estos pueden usarse para simular una programación de rotación, por ejemplo: <br>
-        &emsp; <font color="#888888">Realizar copias de seguridad diarias y conservar solo las siete más recientes.</font> <br>
+        <font color="#00BFFF"><b><no_translate>
+          {day_of_week} <br>
+          {day_of_week_index} <br>
+        </no_translate></b></font>
+        &ensp; Se pueden usar para simular un programa de rotación, por ejemplo: <br>
+        &emsp; <font color="#888888">Realizar copias de seguridad diarias y conservar solo las siete copias de seguridad más recientes.</font> <br>
+        <br>
+        <font color="#ffa500"><b>Nota:</b></font><br>
+         Estas etiquetas de tiempo admiten operaciones aritméticas simples, como
+          <font color="#00BFFF"><b><no_translate>{day-1}</no_translate></b></font>
+         y
+          <font color="#00BFFF"><b><no_translate>{hour+2}</no_translate></b></font>.
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Omitir número alfabético o vacío.</string>

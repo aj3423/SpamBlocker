@@ -75,43 +75,55 @@
     <string name="bug_number">Якщо це дійсний номер, будь ласка, повідомте про це на github.</string>
     <string name="number_tags">
         <![CDATA[
-        - <font color="#00BFFF"><b>{cc}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{cc}</no_translate></b></font><br>
         &ensp; Код країни.<br>
-        - <font color="#00BFFF"><b>{domestic}</b></font><br>
+        - <font color="#00BFFF"><b><no_translate>{domestic}</no_translate></b></font><br>
         &ensp; Внутрішній номер.<br>
-        - <font color="#00BFFF"><b>{number}</b></font><br>
-        &ensp; Повний номер, включаючи код країни та внутрішній номер, без провідних + або 0.<br>
-        - <font color="#00BFFF"><b>{origin_number}</b></font><br>
-        &ensp; Оригінальний номер, який може містити провідні + або 0.<br>
+        - <font color="#00BFFF"><b><no_translate>{number}</no_translate></b></font><br>
+        &ensp; Повний номер, включаючи код країни та внутрішній номер, без початкових + або 0.<br>
+        - <font color="#00BFFF"><b><no_translate>{origin_number}</no_translate></b></font><br>
+        &ensp; Вихідний номер, який може містити початкові + або 0.<br>
         ]]>
     </string>
     <string name="time_tags">
         <![CDATA[
-         <font color="#00BFFF"><b>{year}</b></font><br>
-         <font color="#00BFFF"><b>{month}</b></font><br>
-         <font color="#00BFFF"><b>{day}</b></font><br>
-         <font color="#00BFFF"><b>{hour}</b></font><br>
-         <font color="#00BFFF"><b>{minute}</b></font><br>
-         <font color="#00BFFF"><b>{second}</b></font><br>
-        &ensp; Однозначне число буде доповнено нулем на початку, наприклад: <br>
-        &emsp; <font color="#888888">{year}-{month}-{day} {hour}:{minute}:{second}</font> <br>
+        <font color="#00BFFF"><b><no_translate>
+          {year}<br>
+          {month}<br>
+          {day}<br>
+          {hour}<br>
+          {minute}<br>
+          {second}<br>
+        </no_translate></b></font>
+        &ensp; Однозначні числа будуть доповнені нулем попереду, наприклад: <br>
+        &emsp; <font color="#888888"><no_translate>{year}-{month}-{day} {hour}:{minute}:{second}</no_translate></font> <br>
         &emsp; стає <br>
         &emsp; <font color="#888888">2020-01-22 03:44:05</font><br>
         <br>
-         <font color="#00BFFF"><b>{month_index}</b></font><br>
-         <font color="#00BFFF"><b>{day_index}</b></font><br>
-         <font color="#00BFFF"><b>{hour_index}</b></font><br>
-         <font color="#00BFFF"><b>{minute_index}</b></font><br>
-         <font color="#00BFFF"><b>{second_index}</b></font><br>
+        <font color="#00BFFF"><b><no_translate>
+          {month_index} <br>
+          {day_index} <br>
+          {hour_index} <br>
+          {minute_index} <br>
+          {second_index} <br>
+        </no_translate></b></font>
         &ensp; Ці значення не будуть доповнені, наприклад: <br>
-        &emsp; <font color="#888888">{month_index}-{day_index}</font> <br>
+        &emsp; <font color="#888888"><no_translate>{month_index}-{day_index}</no_translate></font> <br>
         &emsp; стає <br>
         &emsp; <font color="#888888">1-2</font><br>
         <br>
-         <font color="#00BFFF"><b>{day_of_week}</b></font><br>
-         <font color="#00BFFF"><b>{day_of_week_index}</b></font><br>
-        &ensp; Їх можна використовувати для симуляції циклічного розкладу, наприклад: <br>
+        <font color="#00BFFF"><b><no_translate>
+          {day_of_week} <br>
+          {day_of_week_index} <br>
+        </no_translate></b></font>
+        &ensp; Їх можна використовувати для симуляції циклу ротації, наприклад: <br>
         &emsp; <font color="#888888">Виконуйте щоденні резервні копії та зберігайте лише сім найновіших.</font> <br>
+        <br>
+        <font color="#ffa500"><b>Примітка:</b></font><br>
+         Ці мітки часу підтримують прості арифметичні операції, такі як
+          <font color="#00BFFF"><b><no_translate>{day-1}</no_translate></b></font>
+         та
+          <font color="#00BFFF"><b><no_translate>{hour+2}</no_translate></b></font>.
         ]]>
     </string>
     <string name="skip_alpha_empty_number">Пропускаємо альфа- або пустий номер.</string>

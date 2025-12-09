@@ -706,6 +706,7 @@ class ReadFile(
             StrInputBox(
                 text = filename,
                 label = { Text(Str(R.string.filename)) },
+                helpTooltip = Str(R.string.tags_supported) + Str(R.string.time_tags),
                 onValueChange = { filename = it }
             )
         }
@@ -778,6 +779,7 @@ class WriteFile(
             StrInputBox(
                 text = filename,
                 label = { Text(Str(R.string.filename)) },
+                helpTooltip = Str(R.string.tags_supported) + Str(R.string.time_tags),
                 onValueChange = { filename = it }
             )
         }

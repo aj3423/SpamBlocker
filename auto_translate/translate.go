@@ -185,7 +185,7 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		return "", nil
 	}
 
-	GeminiToken := os.Getenv("GeminiToken")
+	GeminiToken := os.Getenv("GEMINI_API_KEY")
 
 	var use_short string
 	if short || abbrev {
