@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">Die %s Berechtigung ist erforderlich, wurde aber nicht erteilt.</string>
+    <string name="copy_verification_code_regex">Code.*?(\\d+)</string>
+    <string name="foreign_number">Ausländische Nummer</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Erlaube SMS, die \"Bestätigungscode\" oder \"Validierungscode\" enthalten.
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extrahiere die Ziffern nach dem Wort \"Code\". <br>
+        <br>
+        Dieses Regex muss nicht sehr streng sein, da die Nachricht bereits durch die SMS-Regeln gefiltert wurde.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Blockiere alle internationalen Anrufe, außer denen aus deinem eigenen Land, mit dem Regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>.
+          Anrufe, die diese Regel passieren, werden nicht sofort zugelassen, sie werden von anderen Regeln überprüft. <br>
+        <br>
+        <font color="#ffa500">Ändere</font> <b>39</b> zu deiner Landesvorwahl. <br>
+        <br>
+        Regex-Aufschlüsselung: <br>
+        &ensp; - Das <b>Raw Number</b>-Regex-Flag behält das führende <b>+</b> bei, andernfalls wird es vor der Überprüfung entfernt. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> stimmt mit jeder Nummer überein, die mit <b>+</b> beginnt und nicht von <b>39</b> gefolgt wird (ausländische Nummern).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Auch bekannt als <b>Unbekannte Nummer</b> oder <b>Leere Nummer</b>, es sind leere Zeichenfolgen, die
+         durch eine der folgenden Optionen abgeglichen werden können: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; ein <font color="#fa7f71">leeres</font> Regex-Feld. <br>
+        <br>
+        Die <font color="#ea86ff">Priorität</font> ist auf <font color="#ea86ff">20</font> eingestellt, um andere Funktionen wie <b>Wiederholter Anruf</b> zu überschreiben,
+        sodass sie immer blockiert werden, selbst wenn sie sich wiederholen.
+        ]]>
+    </string>
+    <string name="verification_code">Bestätigungscode</string>
+    <string name="verification_code_regex">.*(Verifizierung|Validierung).*Code.*</string>
+    <string name="private_number">Private Nummer</string>
 </resources>

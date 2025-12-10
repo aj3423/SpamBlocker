@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">El permiso %s es necesario pero no está concedido.</string>
+    <string name="copy_verification_code_regex">código.*?(\\d+)</string>
+    <string name="foreign_number">Número Extranjero</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Permite SMS que contengan \"código de verificación\" o \"código de validación\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extrae los dígitos después de la palabra \"código\". <br>
+        <br>
+        Esta regex no necesita ser muy estricta ya que el mensaje ya ha sido filtrado por las reglas de SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Bloquea todas las llamadas internacionales excepto las de tu propio país con la regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          las llamadas que pasen esta regla no serán permitidas inmediatamente, serán verificadas por otras reglas. <br>
+        <br>
+        <font color="#ffa500">Cambia</font> <b>39</b> por el código de tu país. <br>
+        <br>
+        Desglose de la Regex: <br>
+        &ensp; - La bandera de regex <b>Número Crudo</b> preserva el <b>+</b> inicial, de lo contrario, se eliminará antes de la verificación. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> coincide con cualquier número que comience con <b>+</b> y no vaya seguido de <b>39</b> (números extranjeros).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        También conocido como <b>Número Desconocido</b> o <b>Número Vacío</b>, son cadenas vacías que
+         pueden ser igualadas por cualquiera de: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; un campo de regex <font color="#fa7f71">en blanco</font>. <br>
+        <br>
+        La <font color="#ea86ff">prioridad</font> se establece en <font color="#ea86ff">20</font> para anular otras funciones como <b>Llamada Repetida</b>,
+        de modo que siempre se bloquean incluso si se repiten.
+        ]]>
+    </string>
+    <string name="verification_code">Código de Verificación</string>
+    <string name="verification_code_regex">.*(verificación|validación).*código.*</string>
+    <string name="private_number">Número Privado</string>
 </resources>

@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">Дозвіл %s потрібен, але не надано.</string>
+    <string name="copy_verification_code_regex">код.*?(\\d+)</string>
+    <string name="foreign_number">Іноземний номер</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Дозволити SMS, що містять \"код підтвердження\" або \"код валідації\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Витягти цифри після слова \"код\". <br>
+        <br>
+        Цей регулярний вираз не повинен бути дуже суворим, оскільки повідомлення вже відфільтровано правилами SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Блокувати всі міжнародні дзвінки, крім тих, що надходять з вашої країни, за допомогою регулярного виразу <font color="#fa7f71"><b>\\+(?!39).*</b></font>.
+          Дзвінки, що проходять це правило, не будуть негайно дозволені, вони перевірятимуться іншими правилами. <br>
+        <br>
+        <font color="#ffa500">Змініть</font> <b>39</b> на код вашої країни. <br>
+        <br>
+        Розшифровка регулярного виразу: <br>
+        &ensp; - Прапор регулярного виразу <b>Raw Number</b> зберігає початковий <b>+</b>, інакше він буде видалений перед перевіркою. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> відповідає будь-якому номеру, що починається з <b>+</b>, за яким не йде <b>39</b> (іноземні номери).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Також відомі як <b>Невідомий номер</b> або <b>Порожній номер</b>, це порожні рядки, які
+         можуть бути зіставлені одним із: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; a <font color="#fa7f71">blank</font> regex field. <br>
+        <br>
+        <font color="#ea86ff">Пріоритет</font> встановлено на <font color="#ea86ff">20</font> для перевизначення інших функцій, таких як <b>Повторний дзвінок</b>,
+        тому вони завжди блокуються, навіть якщо повторюються.
+        ]]>
+    </string>
+    <string name="verification_code">Код підтвердження</string>
+    <string name="verification_code_regex">.*(перевірка|валідація).*код.*</string>
+    <string name="private_number">Приватний номер</string>
 </resources>

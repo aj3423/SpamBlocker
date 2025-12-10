@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">%s 权限是必需的，但尚未授予。</string>
+    <string name="copy_verification_code_regex">码.*?(\\d+)</string>
+    <string name="foreign_number">国际号码</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        允许包含“验证码”或“确认码”的短信。
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        提取“码”字后面的数字。<br>
+        <br>
+        由于消息已通过短信规则过滤，此正则表达式不需要非常严格。
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        使用正则表达式 <font color="#fa7f71"><b>\\+(?!39).*</b></font> 阻止所有来自您本国以外的国际电话。通过此规则的电话不会立即被放行，它们将由其他规则检查。<br>
+        <br>
+        <font color="#ffa500">将</font> <b>39</b> 更改为您的国家/地区代码。<br>
+        <br>
+        正则表达式解析：<br>
+        &ensp; - <b>原始号码</b> 正则表达式标志保留开头的 <b>+</b>，否则，它将在检查前被删除。<br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> 匹配任何以 <b>+</b> 开头且后面不跟 <b>39</b> 的号码（国际号码）。
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        也称为 <b>未知号码</b> 或 <b>空号码</b>，它们是可以通过以下任一方式匹配的空字符串： <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; 一个 <font color="#fa7f71">空白</font> 正则表达式字段。<br>
+        <br>
+        <font color="#ea86ff">优先级</font> 设置为 <font color="#ea86ff">20</font> 以覆盖 <b>重复来电</b> 等其他功能，因此即使重复也会始终被阻止。
+        ]]>
+    </string>
+    <string name="verification_code">验证码</string>
+    <string name="verification_code_regex">.*(验证|确认|校验).*码.*</string>
+    <string name="private_number">私人号码</string>
 </resources>

@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">The %s permission is required but not granted.</string>
+    <string name="private_number">Private Number</string>
+    <string name="help_private_number">
+        <![CDATA[
+        Also known as <b>Unknown Number</b> or <b>Empty Number</b>, they are empty strings that
+         can be matched by either of: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; a <font color="#fa7f71">blank</font> regex field. <br>
+        <br>
+        The <font color="#ea86ff">priority</font> is set to <font color="#ea86ff">20</font> to override other features like <b>Repeated Call</b>,
+        so they are always blocked even if they repeat.
+        ]]>
+    </string>
+    <string name="foreign_number">Foreign Number</string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Block all international calls except those from your own country with regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          calls pass this rule will not be immediately allowed, they will be checked by other rules. <br>
+        <br>
+        <font color="#ffa500">Change</font> <b>39</b> to your country code. <br>
+        <br>
+        Regex breakdown: <br>
+        &ensp; - The <b>Raw Number</b> regex flag preserves the leading <b>+</b>, otherwise, it will be removed before checking. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> matches any number starting with <b>+</b> that is not followed by <b>39</b> (foreign numbers).
+        ]]>
+    </string>
+    <string name="verification_code">Verification Code</string>
+    <string name="verification_code_regex"><translate>.*(verification|validation).*code.*</translate></string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Allow SMS containing \"verification code\" or \"validation code\".
+        ]]>
+    </string>
+    <string name="copy_verification_code_regex"><translate>code.*?(\\d+)</translate></string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extract the digits after the word \"code\". <br>
+        <br>
+        This regex doesn\'t need to be very strict since the message has already been filtered by the SMS rules.
+        ]]>
+    </string>
 </resources>

@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">مجوز %s مورد نیاز است اما اعطا نشده است.</string>
+    <string name="copy_verification_code_regex">کد.*?(\\d+)</string>
+    <string name="foreign_number">شماره خارجی</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        اجازه دادن به پیامک‌های حاوی «کد تأیید» یا «کد اعتبارسنجی».
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        ارقام پس از کلمه «کد» را استخراج کنید. <br>
+        <br>
+        این regex نیازی به سخت‌گیری زیاد ندارد زیرا پیام قبلاً توسط قوانین پیامک فیلتر شده است.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        مسدود کردن تمام تماس‌های بین‌المللی به جز تماس‌های کشور خودتان با regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>، تماس‌هایی که از این قانون عبور کنند بلافاصله مجاز نخواهند بود، بلکه توسط قوانین دیگر بررسی می‌شوند. <br>
+        <br>
+        <b>۳۹</b> را به کد کشور خود <font color="#ffa500">تغییر دهید</font>. <br>
+        <br>
+        توضیح Regex: <br>
+        &ensp; - پرچم regex <b>شماره خام</b> (Raw Number) علامت <b>+</b> ابتدایی را حفظ می‌کند، در غیر این صورت قبل از بررسی حذف خواهد شد. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> با هر شماره‌ای که با <b>+</b> شروع می‌شود و به دنبال آن <b>۳۹</b> (شماره‌های خارجی) نمی‌آید، مطابقت دارد.
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        که با عنوان <b>شماره ناشناس</b> یا <b>شماره خالی</b> نیز شناخته می‌شوند، رشته‌های خالی هستند که می‌توانند با یکی از موارد زیر مطابقت داده شوند: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; یک فیلد regex <font color="#fa7f71">خالی</font>. <br>
+        <br>
+        <font color="#ea86ff">اولویت</font> روی <font color="#ea86ff">۲۰</font> تنظیم شده است تا ویژگی‌های دیگری مانند <b>تماس تکراری</b> را نادیده بگیرد، بنابراین همیشه مسدود می‌شوند حتی اگر تکرار شوند.
+        ]]>
+    </string>
+    <string name="verification_code">کد تأیید</string>
+    <string name="verification_code_regex">.*(تایید|اعتبارسنجی).*کد.*</string>
+    <string name="private_number">شماره خصوصی</string>
 </resources>

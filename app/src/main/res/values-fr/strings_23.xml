@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">L\'autorisation %s est requise mais n\'a pas été accordée.</string>
+    <string name="copy_verification_code_regex">code.*?(\\d+)</string>
+    <string name="foreign_number">Numéro étranger</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Autoriser les SMS contenant \"code de vérification\" ou \"code de validation\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extraire les chiffres après le mot \"code\". <br>
+        <br>
+        Cette expression régulière n\'a pas besoin d\'être très stricte puisque le message a déjà été filtré par les règles SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Bloquez tous les appels internationaux sauf ceux de votre propre pays avec l\'expression régulière <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          les appels passant cette règle ne seront pas immédiatement autorisés, ils seront vérifiés par d\'autres règles. <br>
+        <br>
+        <font color="#ffa500">Changez</font> <b>39</b> par votre code de pays. <br>
+        <br>
+        Analyse de l\'expression régulière : <br>
+        &ensp; - Le drapeau d\'expression régulière <b>Numéro Brut</b> conserve le <b>+</b> initial, sinon, il sera supprimé avant la vérification. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> correspond à tout numéro commençant par <b>+</b> qui n\'est pas suivi de <b>39</b> (numéros étrangers).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Également connu sous le nom de <b>Numéro Inconnu</b> ou <b>Numéro Vide</b>, ce sont des chaînes vides qui
+         peuvent être mises en correspondance par l\'un des éléments suivants : <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; un champ d\'expression régulière <font color="#fa7f71">vide</font>. <br>
+        <br>
+        La <font color="#ea86ff">priorité</font> est définie sur <font color="#ea86ff">20</font> pour remplacer d\'autres fonctionnalités comme l\'<b>Appel Répété</b>,
+        de sorte qu\'ils sont toujours bloqués même s\'ils se répètent.
+        ]]>
+    </string>
+    <string name="verification_code">Code de vérification</string>
+    <string name="verification_code_regex">.*(vérification|validation).*code.*</string>
+    <string name="private_number">Numéro privé</string>
 </resources>

@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">El permís %s és necessari però no s\'ha concedit.</string>
+    <string name="copy_verification_code_regex">codi.*?(\\d+)</string>
+    <string name="foreign_number">Número Estranger</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Permet SMS que continguin \"codi de verificació\" o \"codi de validació\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extreu els dígits després de la paraula \"codi\". <br>
+        <br>
+        Aquesta expressió regular no cal que sigui molt estricta, ja que el missatge ja ha estat filtrat per les regles d\'SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Bloqueja totes les trucades internacionals excepte les del teu propi país amb l\'expressió regular <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          les trucades que passin aquesta regla no seran permeses immediatament, es comprovaran amb altres regles. <br>
+        <br>
+        <font color="#ffa500">Canvia</font> <b>39</b> pel teu codi de país. <br>
+        <br>
+        Desglossament de l\'expressió regular: <br>
+        &ensp; - L\'indicador de regex <b>Número brut</b> preserva el <b>+</b> inicial, en cas contrari, s\'eliminarà abans de comprovar-ho. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> coincideix amb qualsevol número que comenci amb <b>+</b> que no estigui seguit de <b>39</b> (números estrangers).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        També coneguts com a <b>Número desconegut</b> o <b>Número buit</b>, són cadenes buides que
+         es poden coincidir amb qualsevol de les següents: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; un camp de regex <font color="#fa7f71">buit</font>. <br>
+        <br>
+        La <font color="#ea86ff">prioritat</font> s\'estableix a <font color="#ea86ff">20</font> per anul·lar altres funcions com la <b>Trucada repetida</b>,
+        de manera que sempre es bloquegen encara que es repeteixin.
+        ]]>
+    </string>
+    <string name="verification_code">Codi de Verificació</string>
+    <string name="verification_code_regex">.*(verificació|validació).*codi.*</string>
+    <string name="private_number">Número Privat</string>
 </resources>

@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">A permissão %s é necessária, mas não foi concedida.</string>
+    <string name="copy_verification_code_regex">código.*?(\\d+)</string>
+    <string name="foreign_number">Número Estrangeiro</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Permitir SMS que contenham \"código de verificação\" ou \"código de validação\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extrair os dígitos após a palavra \"código\". <br>
+        <br>
+        Esta regex não precisa ser muito rigorosa, pois a mensagem já foi filtrada pelas regras de SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Bloqueie todas as chamadas internacionais, exceto as do seu próprio país, com a regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>.
+          As chamadas que passarem por esta regra não serão permitidas imediatamente, serão verificadas por outras regras. <br>
+        <br>
+        <font color="#ffa500">Mude</font> <b>39</b> para o código do seu país. <br>
+        <br>
+        Análise da Regex: <br>
+        &ensp; - A flag de regex <b>Número Bruto</b> preserva o <b>+</b> inicial; caso contrário, ele será removido antes da verificação. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> corresponde a qualquer número que comece com <b>+</b> e não seja seguido por <b>39</b> (números estrangeiros).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Também conhecidos como <b>Número Desconhecido</b> ou <b>Número Vazio</b>, são strings vazias que
+         podem ser correspondidas por qualquer um de: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; um campo de regex <font color="#fa7f71">em branco</font>. <br>
+        <br>
+        A <font color="#ea86ff">prioridade</font> é definida como <font color="#ea86ff">20</font> para substituir outras funcionalidades como <b>Chamada Repetida</b>,
+        para que sejam sempre bloqueados mesmo que se repitam.
+        ]]>
+    </string>
+    <string name="verification_code">Código de Verificação</string>
+    <string name="verification_code_regex">.*(verificação|validação).*código.*</string>
+    <string name="private_number">Número Privado</string>
 </resources>

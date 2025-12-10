@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">需要 %s 權限，但尚未授予。</string>
+    <string name="copy_verification_code_regex">碼.*?(\d+)</string>
+    <string name="foreign_number">國外號碼</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        允許包含「驗證碼」或「確認碼」的簡訊。
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        提取「碼」字後的數字。<br>
+        <br>
+        由於簡訊已經過簡訊規則的過濾，因此此正規表達式不需要非常嚴格。
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        封鎖所有國際來電，除了來自您所在國家/地區的電話，使用正規表達式 <font color="#fa7f71"><b>\\+(?!39).*</b></font>，通過此規則的來電不會立即允許，它們將由其他規則檢查。<br>
+        <br>
+        <font color="#ffa500">將</font> <b>39</b> 更改為您國家/地區的國碼。<br>
+        <br>
+        正規表達式解析：<br>
+        &ensp; - <b>原始號碼</b>正規表達式旗標會保留開頭的 <b>+</b>，否則它將在檢查前被移除。<br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> 匹配任何以 <b>+</b> 開頭且不跟隨 <b>39</b> 的號碼（國外號碼）。
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        也稱為<b>未知號碼</b>或<b>空號碼</b>，它們是可以使用以下任一方式匹配的空字串：<br>
+        &ensp; <font color="#fa7f71">.{0}</font> <br>
+        &ensp; <font color="#fa7f71">^$</font> <br>
+        &ensp; 一個 <font color="#fa7f71">空白</font> 正規表達式欄位。<br>
+        <br>
+        <font color="#ea86ff">優先級</font>設定為 <font color="#ea86ff">20</font>，以覆蓋其他功能，例如<b>重複來電</b>，因此即使重複，它們也始終會被封鎖。
+        ]]>
+    </string>
+    <string name="verification_code">驗證碼</string>
+    <string name="verification_code_regex">.*(驗證|確認).*碼.*</string>
+    <string name="private_number">私人號碼</string>
 </resources>

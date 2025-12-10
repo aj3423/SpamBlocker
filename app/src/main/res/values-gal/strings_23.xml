@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">O permiso %s é necesario pero non concedido.</string>
+    <string name="copy_verification_code_regex">código.*?(\\d+)</string>
+    <string name="foreign_number">Número estranxeiro</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Permitir SMS que conteñan \"código de verificación\" ou \"código de validación\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Extraer os díxitos despois da palabra \"código\". <br>
+        <br>
+        Esta expresión regular non necesita ser moi estrita xa que a mensaxe xa foi filtrada polas regras de SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Bloquea todas as chamadas internacionais excepto as do teu propio país coa expresión regular <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          as chamadas que superen esta regra non se permitirán inmediatamente, serán verificadas por outras regras. <br>
+        <br>
+        <font color="#ffa500">Cambia</font> <b>39</b> polo código do teu país. <br>
+        <br>
+        Desglose da expresión regular: <br>
+        &ensp; - O indicador de expresión regular <b>Número en bruto</b> conserva o <b>+</b> inicial, se non, eliminarase antes de verificar. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> coincide con calquera número que comece con <b>+</b> e que non vaia seguido de <b>39</b> (números estranxeiros).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Tamén coñecido como <b>Número Descoñecido</b> ou <b>Número Baleiro</b>, son cadeas baleiras que
+         poden ser coincidentes con calquera de: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; un campo de expresión regular <font color="#fa7f71">baleiro</font>. <br>
+        <br>
+        A <font color="#ea86ff">prioridade</font> establécese en <font color="#ea86ff">20</font> para anular outras funcións como <b>Chamada Repetida</b>,
+        polo que sempre se bloquean aínda que se repitan.
+        ]]>
+    </string>
+    <string name="verification_code">Código de verificación</string>
+    <string name="verification_code_regex">.*(verificación|validación).*código.*</string>
+    <string name="private_number">Número privado</string>
 </resources>

@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">Izin %s diperlukan tetapi belum diberikan.</string>
+    <string name="copy_verification_code_regex">kode.*?(\\d+)</string>
+    <string name="foreign_number">Nomor Asing</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Izinkan SMS yang berisi \"kode verifikasi\" atau \"kode validasi\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Ekstrak digit setelah kata \"kode\". <br>
+        <br>
+        Regex ini tidak perlu terlalu ketat karena pesan telah difilter oleh aturan SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Blokir semua panggilan internasional kecuali dari negara Anda sendiri dengan regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          panggilan yang melewati aturan ini tidak akan langsung diizinkan, mereka akan diperiksa oleh aturan lain. <br>
+        <br>
+        <font color="#ffa500">Ubah</font> <b>39</b> ke kode negara Anda. <br>
+        <br>
+        Rincian Regex: <br>
+        &ensp; - Flag regex <b>Nomor Mentah</b> mempertahankan awalan <b>+</b>, jika tidak, itu akan dihapus sebelum diperiksa. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> mencocokkan nomor apa pun yang dimulai dengan <b>+</b> yang tidak diikuti oleh <b>39</b> (nomor asing).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Juga dikenal sebagai <b>Nomor Tidak Dikenal</b> atau <b>Nomor Kosong</b>, ini adalah string kosong yang
+         dapat dicocokkan oleh salah satu dari: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; bidang regex <font color="#fa7f71">kosong</font>. <br>
+        <br>
+        <font color="#ea86ff">Prioritas</font> diatur ke <font color="#ea86ff">20</font> untuk menimpa fitur lain seperti <b>Panggilan Berulang</b>,
+        sehingga selalu diblokir meskipun berulang.
+        ]]>
+    </string>
+    <string name="verification_code">Kode Verifikasi</string>
+    <string name="verification_code_regex">.*(verifikasi|validasi).*kode.*</string>
+    <string name="private_number">Nomor Pribadi</string>
 </resources>

@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">%sの権限が必要ですが、付与されていません。</string>
+    <string name="copy_verification_code_regex">コード.*?(\\d+)</string>
+    <string name="foreign_number">海外からの電話番号</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        「認証コード」または「検証コード」を含むSMSを許可します。
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        「コード」という単語の後の数字を抽出します。<br>
+        <br>
+        この正規表現は、メッセージがSMSルールによってすでにフィルタリングされているため、それほど厳密である必要はありません。
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        正規表現 <font color="#fa7f71"><b>\\+(?!39).*</b></font> を使用して、自国からの国際電話以外のすべての国際電話をブロックします。このルールを通過した通話はすぐに許可されるわけではなく、他のルールによってチェックされます。<br>
+        <br>
+        <b>39</b> をあなたの国コードに<font color="#ffa500">変更</font>してください。<br>
+        <br>
+        正規表現の内訳：<br>
+        &ensp; - <b>生の電話番号</b>の正規表現フラグは先頭の <b>+</b> を保持します。保持しない場合、チェックする前に削除されます。<br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> は、<b>+</b> で始まり <b>39</b> が続かない任意の電話番号（海外の電話番号）に一致します。
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        <b>不明な電話番号</b>または<b>空の電話番号</b>とも呼ばれ、以下のいずれかで一致させることができる空の文字列です：<br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; <font color="#fa7f71">空の</font>正規表現フィールド。<br>
+        <br>
+        <font color="#ea86ff">優先度</font>は<b>繰り返し着信</b>などの他の機能を上書きするために<font color="#ea86ff">20</font>に設定されており、繰り返し着信した場合でも常にブロックされます。
+        ]]>
+    </string>
+    <string name="verification_code">認証コード</string>
+    <string name="verification_code_regex">.*(認証|検証).*コード.*</string>
+    <string name="private_number">非通知番号</string>
 </resources>

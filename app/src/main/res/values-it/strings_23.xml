@@ -25,4 +25,45 @@
         ]]>
     </string>
     <string name="missing_permission">L\'autorizzazione %s è richiesta ma non concessa.</string>
+    <string name="copy_verification_code_regex">codice.*?(\\d+)</string>
+    <string name="foreign_number">Numero Straniero</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        Consenti SMS contenenti \"codice di verifica\" o \"codice di validazione\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        Estrai le cifre dopo la parola \"codice\". <br>
+        <br>
+        Questa regex non deve essere molto stretta poiché il messaggio è già stato filtrato dalle regole SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Blocca tutte le chiamate internazionali tranne quelle dal tuo paese con la regex <font color="#fa7f71"><b>\\+(?!39).*</b></font>,
+          le chiamate che superano questa regola non saranno immediatamente consentite, verranno controllate da altre regole. <br>
+        <br>
+        <font color="#ffa500">Cambia</font> <b>39</b> con il prefisso del tuo paese. <br>
+        <br>
+        Analisi Regex: <br>
+        &ensp; - Il flag regex <b>Numero Originale</b> conserva il <b>+</b> iniziale, altrimenti verrà rimosso prima del controllo. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> corrisponde a qualsiasi numero che inizia con <b>+</b> non seguito da <b>39</b> (numeri stranieri).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        Conosciuti anche come <b>Numero Sconosciuto</b> o <b>Numero Vuoto</b>, sono stringhe vuote che
+         possono essere abbinate da uno dei seguenti: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; un campo regex <font color="#fa7f71">vuoto</font>. <br>
+        <br>
+        La <font color="#ea86ff">priorità</font> è impostata su <font color="#ea86ff">20</font> per sovrascrivere altre funzioni come <b>Chiamata Ripetuta</b>,
+        in modo che siano sempre bloccati anche se si ripetono.
+        ]]>
+    </string>
+    <string name="verification_code">Codice di Verifica</string>
+    <string name="verification_code_regex">.*(verifica|validazione).*codice.*</string>
+    <string name="private_number">Numero Privato</string>
 </resources>

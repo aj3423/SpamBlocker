@@ -1,6 +1,8 @@
 package spam.blocker.ui.setting.regex
 
+import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -10,7 +12,9 @@ import spam.blocker.db.RegexRule
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.widgets.DropdownWrapper
+import spam.blocker.ui.widgets.FileReadChooser
 import spam.blocker.ui.widgets.HtmlText
+import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.LongPressButton
 import spam.blocker.ui.widgets.PopupDialog
@@ -25,30 +29,14 @@ import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
 
-@Composable
-fun ImportRuleButton(
+fun importRuleItems(
+    ctx: Context,
     vm: RuleViewModel,
-    onClick: Lambda,
-) {
-    val ctx = LocalContext.current
-
-    val fileReader = rememberFileReadChooser()
-    fileReader.Compose()
-
-    val warningTrigger = rememberSaveable { mutableStateOf(false) }
-    if (warningTrigger.value) {
-        PopupDialog(
-            trigger = warningTrigger,
-            content = {
-                HtmlText(html = ctx.getString(R.string.failed_to_import_from_csv))
-            },
-            icon = { ResIcon(R.drawable.ic_fail_red, color = Salmon) },
-        )
-    }
-
-
-    val importRuleItems = remember {
-        ctx.resources.getStringArray(R.array.import_csv_type).mapIndexed { menuItemIndex, label ->
+    fileReader: FileReadChooser,
+    warningTrigger: MutableState<Boolean>,
+): List<IMenuItem> {
+    return ctx.resources.getStringArray(R.array.import_csv_type)
+        .mapIndexed { menuItemIndex, label ->
 
             LabelItem(
                 label = label,
@@ -84,7 +72,7 @@ fun ImportRuleButton(
                                         Util.clearNumber(it.pattern)
                                     }.filter {
                                         it.isNotEmpty()
-                                    }.joinToString ( separator = "|" )
+                                    }.joinToString(separator = "|")
 
                                     val rule = RegexRule().apply {
                                         pattern = "($joined)"
@@ -103,6 +91,7 @@ fun ImportRuleButton(
                                 add(white, false)
                                 add(black, true)
                             }
+
                             1 -> { // import as multi rules
                                 // 1. add to db
                                 allRules.forEach {
@@ -117,15 +106,6 @@ fun ImportRuleButton(
                 }
             )
         }
-    }
-    DropdownWrapper(items = importRuleItems) { expanded ->
-        LongPressButton(
-            label = Str(R.string.new_),
-            color = SkyBlue,
-            onClick = onClick,
-            onLongClick = {
-                expanded.value = true
-            },
-        )
-    }
+
+
 }

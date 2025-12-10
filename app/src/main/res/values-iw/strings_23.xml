@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">הרשאת ה-%s נדרשת אך לא ניתנה.</string>
+    <string name="copy_verification_code_regex">קוד.*?(\\d+)</string>
+    <string name="foreign_number">מספר זר</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        אפשר הודעות SMS המכילות \"קוד אימות\" או \"קוד תיקוף\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        חלץ את הספרות שאחרי המילה \"קוד\". <br>
+        <br>
+        ביטוי רגולרי זה לא צריך להיות מחמיר במיוחד מכיוון שההודעה כבר סוננה על ידי כללי ה-SMS.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        חסום את כל השיחות הבינלאומיות למעט אלו ממדינתך באמצעות ביטוי רגולרי <font color="#fa7f71"><b>\\+(?!39).*</b></font>, שיחות שעוברות כלל זה לא יאושרו מיד, הן ייבדקו על ידי כללים אחרים. <br>
+        <br>
+        <font color="#ffa500">שנה</font> את <b>39</b> לקידומת המדינה שלך. <br>
+        <br>
+        פירוט הביטוי הרגולרי: <br>
+        &ensp; - דגל הביטוי הרגולרי <b>Raw Number</b> שומר על ה-<b>+</b> המוביל, אחרת, הוא יוסר לפני הבדיקה. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> תואם כל מספר שמתחיל ב-<b>+</b> שלאחריו לא מופיע <b>39</b> (מספרים זרים).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        ידוע גם כ<b>מספר לא ידוע</b> או <b>מספר ריק</b>, אלו מחרוזות ריקות שניתן להתאים על ידי אחת מהאפשרויות הבאות: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; שדה ביטוי רגולרי <font color="#fa7f71">ריק</font>. <br>
+        <br>
+        <font color="#ea86ff">העדיפות</font> מוגדרת ל-<font color="#ea86ff">20</font> כדי לעקוף תכונות אחרות כמו <b>שיחה חוזרת</b>, כך שהן תמיד נחסמות גם אם הן חוזרות.
+        ]]>
+    </string>
+    <string name="verification_code">קוד אימות</string>
+    <string name="verification_code_regex">.*(אימות|תיקוף).*קוד.*</string>
+    <string name="private_number">מספר פרטי</string>
 </resources>

@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">إذن %s مطلوب ولكنه غير ممنوح.</string>
+    <string name="copy_verification_code_regex">رمز.*?(\\d+)</string>
+    <string name="foreign_number">رقم أجنبي</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        السماح بالرسائل النصية التي تحتوي على \"رمز التحقق\" أو \"رمز المصادقة\".
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        استخراج الأرقام بعد كلمة \"رمز\". <br>
+        <br>
+        لا يحتاج هذا التعبير العادي أن يكون صارمًا جدًا بما أن الرسالة قد تمت تصفيتها بالفعل بواسطة قواعد الرسائل النصية.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        حظر جميع المكالمات الدولية باستثناء تلك من بلدك باستخدام التعبير العادي <font color="#fa7f71"><b>\\+(?!39).*</b></font>، المكالمات التي تمر بهذه القاعدة لن يُسمح بها على الفور، بل سيتم فحصها بواسطة قواعد أخرى. <br>
+        <br>
+        <font color="#ffa500">غيّر</font> <b>39</b> إلى رمز بلدك. <br>
+        <br>
+        شرح التعبير العادي: <br>
+        &ensp; - علامة التعبير العادي <b>الرقم الأصلي</b> تحافظ على علامة <b>+</b> البادئة، وإلا فسيتم إزالتها قبل الفحص. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font> يطابق أي رقم يبدأ بـ <b>+</b> لا يليه <b>39</b> (أرقام أجنبية).
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        معروف أيضًا باسم <b>رقم مجهول</b> أو <b>رقم فارغ</b>، وهي سلاسل فارغة يمكن مطابقتها بأي مما يلي: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; حقل تعبير عادي <font color="#fa7f71">فارغ</font>. <br>
+        <br>
+        تم تعيين <font color="#ea86ff">الأولوية</font> على <font color="#ea86ff">20</font> لتجاوز الميزات الأخرى مثل <b>المكالمة المتكررة</b>، لذلك يتم حظرها دائمًا حتى لو تكررت.
+        ]]>
+    </string>
+    <string name="verification_code">رمز التحقق</string>
+    <string name="verification_code_regex">.*(تحقق|مصادقة).*رمز.*</string>
+    <string name="private_number">رقم خاص</string>
 </resources>

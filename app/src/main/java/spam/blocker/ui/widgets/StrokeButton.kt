@@ -271,3 +271,33 @@ fun MenuButton(
     }
 }
 
+
+// Same as MenuButton but shows different menus for short/long tap.
+@Composable
+fun MenuButton(
+    label: String,
+    items: List<IMenuItem>,
+    longTapItems: List<IMenuItem>,
+    modifier: Modifier = Modifier,
+    footerIconId: Int = R.drawable.ic_time_slot,
+    color: Color = LocalPalette.current.textGrey,
+) {
+    DropdownWrapper(items = items) { expandedForTap ->
+        DropdownWrapper(items = longTapItems) { expandedForLongTap ->
+            FooterButton(
+                label = label,
+                color = color,
+                modifier = modifier,
+                footerOffset = Pair(-3, -3),
+                footerSize = 9,
+                footerIconId = footerIconId,
+                onClick = {
+                    expandedForTap.value = true
+                },
+                onLongClick = {
+                    expandedForLongTap.value = true
+                }
+            )
+        }
+    }
+}

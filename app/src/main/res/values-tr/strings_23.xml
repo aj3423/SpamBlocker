@@ -25,4 +25,42 @@
         ]]>
     </string>
     <string name="missing_permission">%s izni gereklidir ancak verilmemiştir.</string>
+    <string name="copy_verification_code_regex">kodu.*?(\\d+)</string>
+    <string name="foreign_number">Yabancı Numara</string>
+    <string name="help_allow_verification_code">
+        <![CDATA[
+        \"Doğrulama kodu\" veya \"onaylama kodu\" içeren SMS\'lere izin ver.
+        ]]>
+    </string>
+    <string name="help_copy_verification_code">
+        <![CDATA[
+        \"Kodu\" kelimesinden sonraki rakamları çıkarın. <br>
+        <br>
+        Mesaj SMS kuralları tarafından zaten filtrelendiği için bu regex\'in çok katı olmasına gerek yoktur.
+        ]]>
+    </string>
+    <string name="help_foreign_number">
+        <![CDATA[
+        Kendi ülkeniz dışındaki tüm uluslararası aramaları <font color="#fa7f71"><b>\\+(?!39).*</b></font> regex\'i ile engelleyin, bu kuralı geçen aramalar hemen izin verilmeyecek, diğer kurallar tarafından kontrol edilecektir. <br>
+        <br>
+        <b>39</b>\'u kendi ülke kodunuzla <font color="#ffa500">değiştirin</font>. <br>
+        <br>
+        Regex ayrıştırması: <br>
+        &ensp; - <b>Ham Numara</b> regex bayrağı baştaki <b>+</b> işaretini korur, aksi takdirde kontrol edilmeden önce kaldırılır. <br>
+        &ensp; - <font color="#fa7f71"><b>\\+(?!39)</b></font>, <b>+</b> ile başlayan ve <b>39</b> tarafından takip edilmeyen herhangi bir numarayı (yabancı numaraları) eşleştirir.
+        ]]>
+    </string>
+    <string name="help_private_number">
+        <![CDATA[
+        <b>Bilinmeyen Numara</b> veya <b>Boş Numara</b> olarak da bilinirler, bunlar aşağıdaki şekillerden herhangi biriyle eşleşebilen boş dizelerdir: <br>
+         &ensp; <font color="#fa7f71">.{0}</font> <br>
+         &ensp; <font color="#fa7f71">^$</font> <br>
+         &ensp; boş bir <font color="#fa7f71">regex</font> alanı. <br>
+        <br>
+        <font color="#ea86ff">Öncelik</font>, <b>Tekrarlanan Arama</b> gibi diğer özellikleri geçersiz kılmak için <font color="#ea86ff">20</font> olarak ayarlanmıştır, böylece tekrar etseler bile her zaman engellenirler.
+        ]]>
+    </string>
+    <string name="verification_code">Doğrulama Kodu</string>
+    <string name="verification_code_regex">.*(doğrulama|onaylama).*kodu.*</string>
+    <string name="private_number">Gizli Numara</string>
 </resources>
