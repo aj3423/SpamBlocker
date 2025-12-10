@@ -352,6 +352,9 @@ fun PushAlertList() {
                 LeftDeleteSwipeWrapper(
                     left = SwipeInfo(
                         onSwipe = {
+                            val index = vm.records.indexOfFirst { it.id == rec.id }
+                            val rec = vm.records[index]
+
                             // 1. delete from db
                             vm.table.deleteById(ctx, rec.id)
                             // 2. remove from UI

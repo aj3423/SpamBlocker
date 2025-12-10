@@ -73,46 +73,46 @@ fun ActionList(
     ) { index, action, isDragging ->
 
         key(action.hashCode()) {
-            ReorderableItem {
-                LeftDeleteSwipeWrapper(
-                    left = SwipeInfo(
-                        onSwipe = {
-                            // 1. remove from list
-                            actions.removeAt(index)
+//            ReorderableItem { // required by reorderable v3.0.0
+            LeftDeleteSwipeWrapper(
+                left = SwipeInfo(
+                    onSwipe = {
+                        // 1. remove from list
+                        actions.remove(action)
 
-                            // 2. snackbar shows behind popup, it's a bit complex to implement the Undelete here..
-                        }
-                    )
-                ) {
-                    ActionCard(
-                        action = action,
-                        modifier = M
-                            .drawBehind {
-                                // Draw a green/red line above/below each action card to
-                                //  indicate whether it's chainable to the previous/next sibling.
-                                if (!isDragging) {
-                                    val prev: IAction? = if (index == 0) null else actions[index - 1]
-                                    val prevChainable = isPreviousChainable(action, prev)
-                                    if (prevChainable != null)
-                                        link(if (prevChainable) Color.Green else Color.Red, true)
+                        // 2. snackbar shows behind popup, don't know how to fix, no "Undelete" here..
+                    }
+                )
+            ) {
+                ActionCard(
+                    action = action,
+                    modifier = M
+                        .drawBehind {
+                            // Draw a green/red line above/below each action card to
+                            //  indicate whether it's chainable to the previous/next sibling.
+                            if (!isDragging) {
+                                val prev: IAction? = if (index == 0) null else actions[index - 1]
+                                val prevChainable = isPreviousChainable(action, prev)
+                                if (prevChainable != null)
+                                    link(if (prevChainable) Color.Green else Color.Red, true)
 
-                                    val next: IAction? =
-                                        if (index >= actions.size - 1) null else actions[index + 1]
-                                    val nextChainable = isNextChainable(action, next)
-                                    if (nextChainable != null)
-                                        link(if (nextChainable) Color.Green else Color.Red, false)
-                                }
+                                val next: IAction? =
+                                    if (index >= actions.size - 1) null else actions[index + 1]
+                                val nextChainable = isNextChainable(action, next)
+                                if (nextChainable != null)
+                                    link(if (nextChainable) Color.Green else Color.Red, false)
                             }
-                            .draggableHandle() // make the card draggable
-                            .combinedClickable(
-                                onClick = {
-                                    clickedIndex = index
-                                    editTrigger.value = true
-                                }
-                            )
-                    )
-                }
+                        }
+                        .draggableHandle() // make it reorderable
+                        .combinedClickable(
+                            onClick = {
+                                clickedIndex = index
+                                editTrigger.value = true
+                            }
+                        )
+                )
             }
+//            }
         }
     }
 }

@@ -76,6 +76,9 @@ fun HistoryList(
                                 veto = true,
                                 background = { state -> BgLaunchApp(state, StartToEnd) },
                                 onSwipe = {
+                                    val index = vm.records.indexOfFirst { it.id == record.id  }
+                                    val record = vm.records[index]
+
                                     // Navigate to the default app, open the conversation to this number.
                                     if (!record.read) {
                                         // 1. update db
@@ -91,10 +94,11 @@ fun HistoryList(
                             ),
                             left = SwipeInfo(
                                 onSwipe = {
-                                    val recToDel = vm.records[index]
+                                    val index = vm.records.indexOfFirst { it.id == record.id  }
+                                    val rec = vm.records[index]
 
                                     // 1. delete from db
-                                    vm.table.delById(ctx, recToDel.id)
+                                    vm.table.delById(ctx, rec.id)
 
                                     // 2. remove from ArrayList
                                     vm.records.removeAt(index)
@@ -102,11 +106,11 @@ fun HistoryList(
                                     // 3. show snackbar
                                     SnackBar.show(
                                         coroutineScope,
-                                        recToDel.peer,
+                                        rec.peer,
                                         ctx.getString(R.string.undelete),
                                     ) {
-                                        vm.table.addRecordWithId(ctx, recToDel)
-                                        vm.records.add(index, recToDel)
+                                        vm.table.addRecordWithId(ctx, rec)
+                                        vm.records.add(index, rec)
                                     }
                                 },
                             )

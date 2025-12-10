@@ -29,7 +29,6 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.encodeToString
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
@@ -261,6 +260,9 @@ fun BotList() {
                     LeftDeleteSwipeWrapper(
                         left = SwipeInfo(
                             onSwipe = {
+                                val index = vm.bots.indexOfFirst { it.id == bot.id }
+                                val bot = vm.bots[index]
+
                                 // 1. delete from db
                                 BotTable.deleteById(ctx, bot.id)
                                 // 2. remove from UI

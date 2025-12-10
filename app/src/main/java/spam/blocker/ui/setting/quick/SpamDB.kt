@@ -222,11 +222,13 @@ fun SpamDB() {
                 }
             )
 
-            listState.forEachIndexed { index, num ->
+            listState.forEach { num ->
                 key(num.id) {
                     LeftDeleteSwipeWrapper(
                         left = SwipeInfo(
                             onSwipe = {
+                                val index = listState.indexOfFirst { it.id == num.id }
+
                                 // 1. delete from db
                                 SpamTable.deleteById(ctx, num.id)
                                 // 2. remove from UI

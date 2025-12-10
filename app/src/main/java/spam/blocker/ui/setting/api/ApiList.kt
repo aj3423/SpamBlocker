@@ -17,7 +17,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -117,6 +116,9 @@ fun ApiList(vm: ApiViewModel) {
                     LeftDeleteSwipeWrapper(
                         left = SwipeInfo(
                             onSwipe = {
+                                val index = vm.apis.indexOfFirst { it.id == api.id }
+                                val api = vm.apis[index]
+
                                 // 1. delete from db
                                 vm.table.deleteById(ctx, api.id)
                                 // 2. remove from UI

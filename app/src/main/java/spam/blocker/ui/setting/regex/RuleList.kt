@@ -348,9 +348,9 @@ fun RuleList(
                 itemsIndexed(
                     items = vm.rules,
                     key = { _, it -> it.id }
-                ) { i, _ ->
+                ) { i, rule ->
                     RuleItem(
-                        coroutine, forType, i, vm.rules,
+                        coroutine, forType, rule, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems
                     )
                 }
@@ -364,7 +364,7 @@ fun RuleList(
             vm.rules.forEachIndexed { i, rule ->
                 key(rule.id) {
                     RuleItem(
-                        coroutine, forType, i, vm.rules,
+                        coroutine, forType, rule, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems
                     )
                 }
@@ -380,6 +380,7 @@ fun RuleList(
 fun RuleItem(
     coroutineScope: CoroutineScope,
     forType: Int,
+    rule: RegexRule,
     ruleIndex: Int,
     ruleList: SnapshotStateList<RegexRule>,
     clickedRuleState: MutableState<RegexRule>,
@@ -393,14 +394,16 @@ fun RuleItem(
         LeftDeleteSwipeWrapper(
             left = SwipeInfo(
                 onSwipe = {
-                    val ruleToDel = ruleList[ruleIndex]
+                    val index = ruleList.indexOfFirst { it.id == rule.id  }
+                    val ruleToDel = ruleList[index]
+
                     val table = ruleTableForType(forType)
 
                     // 1. delete from db
                     table.deleteById(ctx, ruleToDel.id)
 
                     // 2. remove from ArrayList
-                    ruleList.removeAt(ruleIndex)
+                    ruleList.removeAt(index)
 
                     // 3. show snackbar
                     SnackBar.show(
@@ -409,13 +412,13 @@ fun RuleItem(
                         ctx.getString(R.string.undelete),
                     ) {
                         table.addRuleWithId(ctx, ruleToDel)
-                        ruleList.add(ruleIndex, ruleToDel)
+                        ruleList.add(index, ruleToDel)
                     }
                 }
             )
         ) {
             RuleCard(
-                rule = ruleList[ruleIndex],
+                rule = rule,
                 forType = forType,
                 modifier = M
                     .combinedClickable(
