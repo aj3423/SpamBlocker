@@ -74,7 +74,7 @@ fun HistoryList(
                         LeftDeleteSwipeWrapper(
                             right = SwipeInfo(
                                 veto = true,
-                                background = { state -> BgLaunchApp(state, StartToEnd) },
+                                background = { BgLaunchApp(StartToEnd) },
                                 onSwipe = {
                                     val index = vm.records.indexOfFirst { it.id == record.id  }
                                     val record = vm.records[index]

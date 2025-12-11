@@ -1,13 +1,11 @@
 [versions]
-agp = "8.13.1"
+agp = "8.13.2"
 espressoCore = "3.7.0"
 junitVersion = "1.3.0"
 kotlin = "2.2.21"
 activityCompose = "1.12.1"
 
-# Do NOT upgrade until this is fixed: https://issuetracker.google.com/issues/367660226
-#  see: Swipe.AnchoredDraggable.kt.bak
-composeBom = "2025.09.00"
+composeBom = "2025.12.00" # dangerous, breaks things all the time
 
 # Do NOT upgrade to 3.0.0 until this is fixed: https://github.com/Calvin-LL/Reorderable/issues/111
 reorderable = "2.3.3"

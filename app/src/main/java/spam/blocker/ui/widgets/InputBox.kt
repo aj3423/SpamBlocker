@@ -43,7 +43,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.round
 import androidx.compose.ui.unit.sp
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -604,10 +603,7 @@ fun RegexInputBox(
                             modifier = M.padding(horizontal = 10.dp)
                         ) {
                             GreyLabel(Str(R.string.regex_flags))
-                            BalloonQuestionMark(
-                                tooltip = Str(R.string.help_regex_flags),
-                                dropdownOffset.value.round()
-                            )
+                            BalloonQuestionMark(Str(R.string.help_regex_flags))
                         }
                     },
                     DividerItem(thickness = 1),

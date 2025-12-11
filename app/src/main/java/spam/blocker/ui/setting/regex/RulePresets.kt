@@ -1,12 +1,10 @@
 package spam.blocker.ui.setting.regex
 
 import android.content.Context
-import androidx.compose.runtime.Composable
 import spam.blocker.R
 import spam.blocker.db.Notification
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
-import spam.blocker.ui.widgets.GreyText
 
 
 class RulePreset(

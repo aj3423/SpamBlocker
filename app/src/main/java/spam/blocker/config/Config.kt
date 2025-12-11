@@ -3,7 +3,6 @@ package spam.blocker.config
 import android.content.Context
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
 import spam.blocker.G
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable

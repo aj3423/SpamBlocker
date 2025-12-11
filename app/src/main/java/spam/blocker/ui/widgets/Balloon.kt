@@ -17,7 +17,6 @@ import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import spam.blocker.R
@@ -38,7 +37,6 @@ const val BalloonBorderWidthLight = 0.6
 @Composable
 fun BalloonWrapper(
     tooltip: String,
-    offset: IntOffset? = null,
     onLinkClick: Lambda1<String>? = null,
     body: @Composable (TooltipState) -> Unit,
 ) {
@@ -46,11 +44,7 @@ fun BalloonWrapper(
     val tooltipState = rememberTooltipState(isPersistent = true)
 
     TooltipBox(
-        positionProvider = if (offset == null) {
-            TooltipDefaults.rememberRichTooltipPositionProvider()
-        } else {
-            rememberPositionProvider(userOffset = offset)
-        },
+        positionProvider = TooltipDefaults.rememberRichTooltipPositionProvider(),
         tooltip = {
             RichTooltip(
                 shape = RoundedCornerShape(BalloonCornerRadius.dp),
@@ -86,10 +80,9 @@ fun BalloonWrapper(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BalloonQuestionMark(tooltip: String, offset: IntOffset? = null, onLinkClick: Lambda1<String>? = null) {
+fun BalloonQuestionMark(tooltip: String, onLinkClick: Lambda1<String>? = null) {
     BalloonWrapper(
         tooltip = tooltip,
-        offset = offset,
         onLinkClick = onLinkClick,
     ) { tooltipState ->
         val scope = rememberCoroutineScope()
