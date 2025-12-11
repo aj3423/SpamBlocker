@@ -57,7 +57,7 @@ import kotlin.math.roundToInt
 
 // TODO: wait for https://issuetracker.google.com/issues/367660226 to be fixed and change fling settings accordingly.
 
-const val AnimationDuration = 300
+const val AnimationDuration = 200
 
 private const val SwipeDistanceDp = 110
 
@@ -199,31 +199,41 @@ fun LeftDeleteSwipeWrapper(
 
     val scope = rememberCoroutineScope()
 
-    // When deletion is confirmed, animate the card(content+background) to the left
-    AnimatedVisibility(
-        visible = !isDeleted,
-        exit = shrinkHorizontally(
-            animationSpec = tween(durationMillis = AnimationDuration),
-            shrinkTowards = Alignment.Start
-        )
-    ) {
-        SwipeWrapper(
-            left = left?.copy(
-                onSwipe = {
-                    isDeleted = true
-                    scope.launch {
-                        delay(AnimationDuration.toLong())
-                        left.onSwipe()
-                    }
-                },
-                background = left.background ?: { BgDelete(EndToStart) }
-            ),
-            right = right,
-            content = {
+    // Animate content+backgrounds to the left when the deletion is confirmed
+    SwipeWrapper(
+        left = left?.copy(
+            onSwipe = {
+                isDeleted = true
+                scope.launch {
+                    delay(AnimationDuration.toLong())
+                    left.onSwipe()
+                }
+            },
+            background = {
+                AnimatedVisibility(
+                    visible = !isDeleted,
+                    exit = shrinkHorizontally(
+                        animationSpec = tween(durationMillis = AnimationDuration),
+                        shrinkTowards = Alignment.Start
+                    )
+                ) {
+                    BgDelete(EndToStart)
+                }
+            }
+        ),
+        right = right,
+        content = {
+            AnimatedVisibility(
+                visible = !isDeleted,
+                exit = shrinkHorizontally(
+                    animationSpec = tween(durationMillis = AnimationDuration),
+                    shrinkTowards = Alignment.Start
+                )
+            ) {
                 content()
             }
-        )
-    }
+        }
+    )
 }
 
 
