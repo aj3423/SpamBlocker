@@ -30,7 +30,7 @@
     <string name="last_log">Son Günlük</string>
     <string name="executed_at">Çalıştırıldı:</string>
     <string name="not_executed_yet">Henüz çalıştırılmadı</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Numaranın spam veritabanında olup olmadığını veya eşleşen bir regex kuralı olup olmadığını belirtmek için numaranın önünde simgeleri gösterin. <br>
         <br>
@@ -59,7 +59,7 @@
         Hiçbir numara kuralı eşleşmiyor, sadece SMS kuralı ve veritabanı. Ve bir SMS kuralı tarafından engellenecek.<br>
         ]]>
     </string>
-    <string name="show_indicator">Bayrakları Göster</string>
+    <string name="rule_indicator">Kural Göstergesi</string>
     <string name="enable_for_mms">MMS için Etkinleştir</string>
     <string name="help_enable_for_mms">
         <![CDATA[

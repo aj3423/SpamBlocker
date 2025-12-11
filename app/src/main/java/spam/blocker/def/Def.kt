@@ -72,6 +72,7 @@ object Def {
     const val SETTING_HISTORY_LOGGING_ENABLED = "history_logging_enabled"
     const val SETTING_HISTORY_EXPIRY_ENABLED = "history_expiry_enabled"
     const val SETTING_SHOW_INDICATOR = "show_indicator"
+    const val SETTING_FORCE_SHOW_SIM = "force_show_sim"
     const val SETTING_HISTORY_TTL = "history_ttl" // for history compatibility only
     const val SETTING_HISTORY_TTL_DAYS = "history_ttl_days"
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"

@@ -66,4 +66,17 @@
     <string name="verification_code">Codi de Verificació</string>
     <string name="verification_code_regex">.*(verificació|validació).*codi.*</string>
     <string name="private_number">Número Privat</string>
+    <string name="always">Sempre</string>
+    <string name="sim_icon">Icona SIM</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Requereix el permís \"Estat del telèfon\". <br>
+        <br>
+        <b>Automàtic</b> <br>
+        &ensp; Només mostra les icones de la SIM quan s\'utilitzen diverses targetes SIM. <br>
+        <br>
+        <b>Sempre</b> <br>
+        &ensp; Sempre mostra les icones de la SIM.
+        ]]>
+    </string>
 </resources>

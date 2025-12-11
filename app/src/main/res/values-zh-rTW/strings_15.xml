@@ -30,8 +30,8 @@
     <string name="last_log">最新記錄</string>
     <string name="executed_at">執行時間：</string>
     <string name="not_executed_yet">尚未執行</string>
-    <string name="show_indicator">顯示標記</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">規則指示器</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         在號碼前顯示圖示，表示它是否存在於騷擾號碼資料庫中，或是否有任何正規表示式規則符合它。<br>
         <br>

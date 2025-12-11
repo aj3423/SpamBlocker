@@ -23,10 +23,12 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
+import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
@@ -34,6 +36,8 @@ import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
+import spam.blocker.util.Permission
+import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.spf
 
 
@@ -67,10 +71,6 @@ fun HistoryFabs(
 ) {
     val ctx = LocalContext.current
     val spf = spf.HistoryOptions(ctx)
-
-    var showPassed by rememberSaveable { mutableStateOf(spf.getShowPassed()) }
-    var showBlocked by rememberSaveable { mutableStateOf(spf.getShowBlocked()) }
-    var showIndicator by rememberSaveable { mutableStateOf(spf.getShowIndicator()) }
 
     var loggingEnabled by remember { mutableStateOf(spf.isLoggingEnabled()) }
     var expiryEnabled by remember { mutableStateOf(spf.isExpiryEnabled()) }
@@ -174,15 +174,13 @@ fun HistoryFabs(
             }
             HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
             LabeledRow(labelId = R.string.show_passed) {
-                SwitchBox(checked = showPassed, onCheckedChange = { isOn ->
-                    showPassed = isOn
+                SwitchBox(checked = G.showHistoryPassed.value, onCheckedChange = { isOn ->
                     spf.setShowPassed(isOn)
                     G.showHistoryPassed.value = isOn
                 })
             }
             LabeledRow(labelId = R.string.show_blocked) {
-                SwitchBox(checked = showBlocked, onCheckedChange = { isOn ->
-                    showBlocked = isOn
+                SwitchBox(checked = G.showHistoryBlocked.value, onCheckedChange = { isOn ->
                     spf.setShowBlocked(isOn)
                     G.showHistoryBlocked.value = isOn
                 })
@@ -190,14 +188,52 @@ fun HistoryFabs(
             HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
 
             LabeledRow(
-                labelId = R.string.show_indicator,
-                helpTooltip = Str(R.string.help_show_indicator),
+                labelId = R.string.rule_indicator,
+                helpTooltip = Str(R.string.help_show_rule_indicator),
             ) {
-                SwitchBox(checked = showIndicator, onCheckedChange = { isOn ->
-                    showIndicator = isOn
+                SwitchBox(checked = G.showHistoryIndicator.value, onCheckedChange = { isOn ->
                     spf.setShowIndicator(isOn)
-                    G.showHistoryIndicator.value = showIndicator
+                    G.showHistoryIndicator.value = isOn
                 })
+            }
+
+            LabeledRow(
+                labelId = R.string.sim_icon,
+                helpTooltip = Str(R.string.help_show_sim_icon),
+            ) {
+                val items = remember {
+                    listOf(R.string.automatic, R.string.always)
+                        .mapIndexed { idx, strId ->
+                            LabelItem(label = ctx.getString(strId)) {
+                                when (idx) {
+                                    0 -> {
+                                        spf.setForceShowSim(false)
+                                        G.forceShowSIM.value = false
+                                    }
+                                    1 -> {
+                                        G.permissionChain.ask(
+                                            ctx,
+                                            listOf(PermissionWrapper(Permission.phoneState))
+                                        ) { granted ->
+                                            if (granted) {
+                                                spf.setForceShowSim(true)
+                                                G.forceShowSIM.value = true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                }
+                var selected by remember(G.forceShowSIM.value) {
+                    mutableIntStateOf(
+                        if (G.forceShowSIM.value) 1 else 0
+                    )
+                }
+                ComboBox(
+                    items = items,
+                    selected = selected,
+                )
             }
         })
 

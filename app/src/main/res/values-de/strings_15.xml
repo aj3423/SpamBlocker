@@ -30,7 +30,7 @@
     <string name="last_log">Letztes Protokoll</string>
     <string name="executed_at">Ausgeführt am:</string>
     <string name="not_executed_yet">Noch nicht ausgeführt</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Symbole vor der Telefonnummer anzeigen, um anzuzeigen, ob sie in der Spam-Datenbank vorhanden ist oder ob eine Regex-Regel zutrifft. <br>
         <br>
@@ -61,7 +61,7 @@
         Keine Telefonnummern-Regel passt, nur SMS-Regel und Datenbank. Und sie wird durch eine SMS-Regel blockiert.<br>
         ]]>
     </string>
-    <string name="show_indicator"><short>Zeige Flags</short></string>
+    <string name="rule_indicator">Regelindikator</string>
     <string name="enable_for_mms">Für MMS aktivieren</string>
     <string name="help_enable_for_mms">
         <![CDATA[

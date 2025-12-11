@@ -66,4 +66,17 @@
         This regex doesn\'t need to be very strict since the message has already been filtered by the SMS rules.
         ]]>
     </string>
+    <string name="always">Always</string>
+    <string name="sim_icon">SIM Icon</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Requires the \"Phone State\" permission. <br>
+        <br>
+        <b>Auto</b> <br>
+        &ensp; Only show SIM icons when multiple SIM cards are in use. <br>
+        <br>
+        <b>Always</b> <br>
+        &ensp; Always show SIM icons.
+        ]]>
+    </string>
 </resources>

@@ -175,6 +175,8 @@ class spf { // for namespace only
         fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
         fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, false) }
         fun setShowIndicator(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_INDICATOR, enabled) }
+        fun getForceShowSim(): Boolean { return readBoolean(Def.SETTING_FORCE_SHOW_SIM, false) }
+        fun setForceShowSim(enabled: Boolean) { writeBoolean(Def.SETTING_FORCE_SHOW_SIM, enabled) }
 
         fun isLoggingEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, getTTLOld() != 0) }
         fun setLoggingEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, enabled) }

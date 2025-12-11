@@ -66,4 +66,17 @@
     <string name="verification_code">Kode Verifikasi</string>
     <string name="verification_code_regex">.*(verifikasi|validasi).*kode.*</string>
     <string name="private_number">Nomor Pribadi</string>
+    <string name="always">Selalu</string>
+    <string name="sim_icon">Ikon SIM</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Membutuhkan izin \"Status Telepon\". <br>
+        <br>
+        <b>Otomatis</b> <br>
+        &ensp; Hanya tampilkan ikon SIM saat beberapa kartu SIM digunakan. <br>
+        <br>
+        <b>Selalu</b> <br>
+        &ensp; Selalu tampilkan ikon SIM.
+        ]]>
+    </string>
 </resources>

@@ -63,4 +63,17 @@
     <string name="verification_code">رمز التحقق</string>
     <string name="verification_code_regex">.*(تحقق|مصادقة).*رمز.*</string>
     <string name="private_number">رقم خاص</string>
+    <string name="always">دائمًا</string>
+    <string name="sim_icon">أيقونة SIM</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        يتطلب إذن \"حالة الهاتف\". <br>
+        <br>
+        <b>تلقائي</b> <br>
+        &ensp; إظهار أيقونات SIM فقط عند استخدام بطاقات SIM متعددة. <br>
+        <br>
+        <b>دائمًا</b> <br>
+        &ensp; إظهار أيقونات SIM دائمًا.
+        ]]>
+    </string>
 </resources>

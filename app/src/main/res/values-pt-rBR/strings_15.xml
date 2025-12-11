@@ -30,7 +30,7 @@
     <string name="last_log">Último Registro</string>
     <string name="executed_at">Executado em:</string>
     <string name="not_executed_yet">Ainda não executado</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Mostre ícones antes do número para indicar se ele existe no banco de dados de spam ou se há alguma regra de expressão regular que o corresponda. <br>
         <br>
@@ -61,7 +61,7 @@
         Nenhuma regra de número o corresponde, apenas regra de SMS e banco de dados. E será bloqueado por uma regra de SMS.<br>
         ]]>
     </string>
-    <string name="show_indicator">Mostrar Sinalizadores</string>
+    <string name="rule_indicator">Indicador de Regra</string>
     <string name="enable_for_mms">Habilitar para MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[

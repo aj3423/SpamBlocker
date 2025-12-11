@@ -66,4 +66,17 @@
     <string name="verification_code">Код подтверждения</string>
     <string name="verification_code_regex">.*(проверка|верификация).*код.*</string>
     <string name="private_number">Частный номер</string>
+    <string name="always">Всегда</string>
+    <string name="sim_icon">Значок SIM-карты</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Требуется разрешение \"Состояние телефона\". <br>
+        <br>
+        <b>Авто</b> <br>
+        &ensp; Показывать значки SIM-карт только при использовании нескольких SIM-карт. <br>
+        <br>
+        <b>Всегда</b> <br>
+        &ensp; Всегда показывать значки SIM-карт.
+        ]]>
+    </string>
 </resources>

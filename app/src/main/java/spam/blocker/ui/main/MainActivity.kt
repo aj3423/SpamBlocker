@@ -15,10 +15,12 @@ import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
@@ -117,10 +119,6 @@ class MainActivity : ComponentActivity() {
             )
         )
 
-        // Load all records to show unread indicators in the bottom bar.
-        G.callVM.reload(ctx)
-        G.smsVM.reload(ctx)
-
         setContent {
             val isDarkTheme = when (G.themeType.intValue) {
                 1 -> false
@@ -145,6 +143,14 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun Main() {
+        val ctx = LocalContext.current
+
+        // Load all records to show unread badge in the bottom bar.
+        LaunchedEffect(G.showHistoryPassed.value, G.showHistoryBlocked.value) {
+            G.callVM.reload(ctx)
+            G.smsVM.reload(ctx)
+        }
+
         // An extra surface to make the top-status-bar and bottom-system-bar
         //   to be the same color as the app background.
         Surface(modifier = M.fillMaxSize()) {

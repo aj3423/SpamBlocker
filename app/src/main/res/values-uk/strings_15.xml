@@ -30,7 +30,7 @@
     <string name="last_log">Останній лог</string>
     <string name="executed_at">Виконано о:</string>
     <string name="not_executed_yet">Ще не виконано</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Показувати іконки перед номером, щоб вказати, чи він існує в базі даних спаму або чи є якесь регулярне виразне правило, що йому відповідає. <br>
         <br>
@@ -61,7 +61,7 @@
         Жодне правило для номера не відповідає йому, лише правило SMS та база даних. І воно буде заблоковано правилом SMS.<br>
         ]]>
     </string>
-    <string name="show_indicator">Показувати позначки</string>
+    <string name="rule_indicator">Індикатор правила</string>
     <string name="enable_for_mms">Увімкнути для MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[

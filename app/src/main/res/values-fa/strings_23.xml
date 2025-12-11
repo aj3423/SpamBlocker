@@ -63,4 +63,17 @@
     <string name="verification_code">کد تأیید</string>
     <string name="verification_code_regex">.*(تایید|اعتبارسنجی).*کد.*</string>
     <string name="private_number">شماره خصوصی</string>
+    <string name="always">همیشه</string>
+    <string name="sim_icon">آیکون سیم‌کارت</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        نیاز به مجوز \"وضعیت تلفن\" دارد. <br>
+        <br>
+        <b>خودکار</b> <br>
+        &ensp; فقط زمانی آیکون‌های سیم‌کارت را نمایش دهید که چندین سیم‌کارت در حال استفاده هستند. <br>
+        <br>
+        <b>همیشه</b> <br>
+        &ensp; همیشه آیکون‌های سیم‌کارت را نمایش دهید.
+        ]]>
+    </string>
 </resources>

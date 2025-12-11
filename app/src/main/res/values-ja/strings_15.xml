@@ -30,7 +30,7 @@
     <string name="last_log">最終ログ</string>
     <string name="executed_at">実行日時：</string>
     <string name="not_executed_yet">まだ実行されていません</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         迷惑電話データベースに存在するか、または一致する正規表現ルールがあるかを示すために、電話番号の前にアイコンを表示します。<br>
         <br>
@@ -60,7 +60,7 @@
         電話番号ルールは一致せず、SMSルールとデータベースのみが一致します。そしてSMSルールによってブロックされます。<br>
         ]]>
     </string>
-    <string name="show_indicator">フラグを表示</string>
+    <string name="rule_indicator">ルールインジケーター</string>
     <string name="enable_for_mms">MMSを有効にする</string>
     <string name="help_enable_for_mms">
         <![CDATA[

@@ -63,4 +63,17 @@
     <string name="verification_code">验证码</string>
     <string name="verification_code_regex">.*(验证|确认|校验).*码.*</string>
     <string name="private_number">私人号码</string>
+    <string name="always">始终</string>
+    <string name="sim_icon">SIM 图标</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        需要“电话状态”权限。 <br>
+        <br>
+        <b>自动</b> <br>
+        &ensp; 仅在使用多张 SIM 卡时显示 SIM 图标。 <br>
+        <br>
+        <b>始终</b> <br>
+        &ensp; 始终显示 SIM 图标。
+        ]]>
+    </string>
 </resources>

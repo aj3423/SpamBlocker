@@ -30,6 +30,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.HistoryRecord
 import spam.blocker.db.listReportableAPIs
@@ -191,7 +192,7 @@ fun HistoryCard(
                         .align(Alignment.Center)
                 ) {
                     // SIM slot icon
-                    if (simCount >= 2 && record.simSlot != null) {
+                    if ((simCount >= 2 || G.forceShowSIM.value) && record.simSlot != null) {
                         SimCardIcon(
                             record.simSlot,
                         )

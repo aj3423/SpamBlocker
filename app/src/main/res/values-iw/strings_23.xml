@@ -63,4 +63,17 @@
     <string name="verification_code">קוד אימות</string>
     <string name="verification_code_regex">.*(אימות|תיקוף).*קוד.*</string>
     <string name="private_number">מספר פרטי</string>
+    <string name="always">תמיד</string>
+    <string name="sim_icon">אייקון SIM</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        דורש את הרשאת \"מצב טלפון\". <br>
+        <br>
+        <b>אוטומטי</b> <br>
+        &ensp; הצג אייקוני SIM רק כאשר נעשה שימוש במספר כרטיסי SIM. <br>
+        <br>
+        <b>תמיד</b> <br>
+        &ensp; הצג תמיד אייקוני SIM.
+        ]]>
+    </string>
 </resources>

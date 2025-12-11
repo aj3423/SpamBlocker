@@ -63,4 +63,17 @@
     <string name="verification_code">驗證碼</string>
     <string name="verification_code_regex">.*(驗證|確認).*碼.*</string>
     <string name="private_number">私人號碼</string>
+    <string name="always">總是</string>
+    <string name="sim_icon">SIM 卡圖示</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        需要「電話狀態」權限。<br>
+        <br>
+        <b>自動</b> <br>
+        &ensp; 僅在多張 SIM 卡使用時顯示 SIM 卡圖示。<br>
+        <br>
+        <b>總是</b> <br>
+        &ensp; 總是顯示 SIM 卡圖示。
+        ]]>
+    </string>
 </resources>

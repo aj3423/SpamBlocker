@@ -30,8 +30,8 @@
     <string name="last_log">Последний лог</string>
     <string name="executed_at">Выполнено в:</string>
     <string name="not_executed_yet">Ещё не выполнялось</string>
-    <string name="show_indicator">Показывать флаги</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">Индикатор правила</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Показывать значки перед номером, чтобы указать, существует ли он в базе данных спам-номеров или есть ли какое-либо правило регулярного выражения, которое ему соответствует. <br>
         <br>

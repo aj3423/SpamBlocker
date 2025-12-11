@@ -73,6 +73,7 @@ class HistoryOptions : IConfig {
     var showPassed = true
     var showBlocked = true
     var showIndicator = false
+    var forceShowSim = false
     var loggingEnabled = true
     var expiryEnabled = true
     var ttl = -1
@@ -84,6 +85,7 @@ class HistoryOptions : IConfig {
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
         showIndicator = spf.getShowIndicator()
+        forceShowSim = spf.getForceShowSim()
         loggingEnabled = spf.isLoggingEnabled()
         expiryEnabled = spf.isExpiryEnabled()
         ttl = spf.getTTL()
@@ -96,6 +98,7 @@ class HistoryOptions : IConfig {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
             setShowIndicator(showIndicator)
+            setForceShowSim(forceShowSim)
             setLoggingEnabled(loggingEnabled)
             setExpiryEnabled(expiryEnabled)
             setTTL(ttl)

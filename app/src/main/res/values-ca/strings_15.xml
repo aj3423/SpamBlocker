@@ -30,8 +30,8 @@
     <string name="last_log">Últim registre</string>
     <string name="executed_at">Executat a:</string>
     <string name="not_executed_yet">Encara no s\'ha executat</string>
-    <string name="show_indicator">Mostra els indicadors</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">Indicador de regla</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Mostra icones abans del número per indicar si existeix a la base de dades de correu brossa o si hi ha alguna regla de regex que hi coincideixi. <br>
         <br>

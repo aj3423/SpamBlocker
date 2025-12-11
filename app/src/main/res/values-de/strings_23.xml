@@ -66,4 +66,17 @@
     <string name="verification_code">Bestätigungscode</string>
     <string name="verification_code_regex">.*(Verifizierung|Validierung).*Code.*</string>
     <string name="private_number">Private Nummer</string>
+    <string name="always">Immer</string>
+    <string name="sim_icon">SIM-Symbol</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Erfordert die Berechtigung \"Telefonstatus\". <br>
+        <br>
+        <b>Auto</b> <br>
+        &ensp; Zeigt SIM-Symbole nur an, wenn mehrere SIM-Karten verwendet werden. <br>
+        <br>
+        <b>Immer</b> <br>
+        &ensp; Zeigt immer SIM-Symbole an.
+        ]]>
+    </string>
 </resources>

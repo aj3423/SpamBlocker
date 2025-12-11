@@ -30,8 +30,8 @@
     <string name="last_log">آخر سجل</string>
     <string name="executed_at">تم التنفيذ في:</string>
     <string name="not_executed_yet">لم يتم تنفيذه بعد</string>
-    <string name="show_indicator">إظهار العلامات</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">مؤشر القاعدة</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         إظهار الأيقونات قبل الرقم للإشارة إلى ما إذا كان موجودًا في قاعدة بيانات الرسائل غير المرغوب فيها أو إذا كان هناك أي قاعدة تعبير نمطي (regex) تطابقه. <br>
         <br>

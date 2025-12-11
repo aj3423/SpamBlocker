@@ -43,9 +43,6 @@ fun HistoryList(
     val simCount = remember {
         SimCard.listSimCards(ctx).size
     }
-    LaunchedEffect(G.showHistoryPassed.value, G.showHistoryBlocked.value) {
-        vm.reload(ctx)
-    }
 
     // Just a short alias, that G.xxx it too long
     var showIndicator by remember(G.showHistoryIndicator.value) {

@@ -36,6 +36,7 @@ object G {
     val notificationChannels : SnapshotStateList<Channel> = mutableStateListOf()
     val themeType : MutableIntState  = mutableIntStateOf(0)
     val showHistoryIndicator : MutableState<Boolean> = mutableStateOf(false)
+    val forceShowSIM : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryPassed : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryBlocked : MutableState<Boolean> = mutableStateOf(false)
 
@@ -75,6 +76,7 @@ object G {
         run {
             val spf = spf.HistoryOptions(ctx)
             showHistoryIndicator.value = spf.getShowIndicator()
+            forceShowSIM.value = spf.getForceShowSim()
             showHistoryPassed.value = spf.getShowPassed()
             showHistoryBlocked.value = spf.getShowBlocked()
         }

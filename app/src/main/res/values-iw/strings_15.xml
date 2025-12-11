@@ -30,8 +30,8 @@
     <string name="last_log">יומן אחרון</string>
     <string name="executed_at">בוצע ב:</string>
     <string name="not_executed_yet">טרם בוצע</string>
-    <string name="show_indicator">הצג דגלים</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">מחוון חוק</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         הצג אייקונים לפני המספר כדי לציין אם הוא קיים במסד הנתונים של הספאם או אם יש כלל ביטוי רגולרי שתואם אותו. <br>
         <br>

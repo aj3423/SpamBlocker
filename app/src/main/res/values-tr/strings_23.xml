@@ -63,4 +63,17 @@
     <string name="verification_code">Doğrulama Kodu</string>
     <string name="verification_code_regex">.*(doğrulama|onaylama).*kodu.*</string>
     <string name="private_number">Gizli Numara</string>
+    <string name="always">Her zaman</string>
+    <string name="sim_icon">SIM Simgesi</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        \"Telefon Durumu\" izni gerektirir. <br>
+        <br>
+        <b>Otomatik</b> <br>
+        &ensp; Yalnızca birden fazla SIM kart kullanıldığında SIM simgelerini göster. <br>
+        <br>
+        <b>Her zaman</b> <br>
+        &ensp; Her zaman SIM simgelerini göster.
+        ]]>
+    </string>
 </resources>

@@ -30,7 +30,7 @@
     <string name="last_log">Dernier journal</string>
     <string name="executed_at">Exécuté le :</string>
     <string name="not_executed_yet">Pas encore exécuté</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Affichez des icônes avant le numéro de téléphone pour indiquer s\'il existe dans la base de données des numéros indésirables ou s\'il y a une règle d\'expression régulière qui le correspond. <br>
         <br>
@@ -60,7 +60,7 @@
         Aucune règle de numéro ne le correspond, seulement une règle SMS et la base de données. Et il sera bloqué par une règle SMS.<br>
         ]]>
     </string>
-    <string name="show_indicator">Afficher les drapeaux</string>
+    <string name="rule_indicator">Indicateur de règle</string>
     <string name="enable_for_mms">Activer pour les MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[

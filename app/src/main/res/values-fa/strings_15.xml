@@ -30,7 +30,7 @@
     <string name="last_log">آخرین لاگ</string>
     <string name="executed_at">اجرا شده در:</string>
     <string name="not_executed_yet">هنوز اجرا نشده</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         نمایش آیکون‌ها قبل از شماره (تلفن) برای نشان دادن اینکه آیا آن در پایگاه داده اسپم (تماس‌های ناخواسته) وجود دارد یا هیچ قانون Regex (عبارت باقاعده) با آن مطابقت دارد. <br>
         <br>
@@ -59,7 +59,7 @@
         هیچ قانون شماره (تلفن) با آن مطابقت ندارد، فقط قانون پیامک و پایگاه داده. و توسط یک قانون پیامک مسدود خواهد شد.<br>
         ]]>
     </string>
-    <string name="show_indicator">نمایش پرچم ها</string>
+    <string name="rule_indicator">نشانگر قانون</string>
     <string name="enable_for_mms">فعال کردن برای MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[

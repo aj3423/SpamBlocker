@@ -30,7 +30,7 @@
     <string name="last_log">最近日志</string>
     <string name="executed_at">执行于：</string>
     <string name="not_executed_yet">尚未执行</string>
-    <string name="help_show_indicator">
+    <string name="help_show_rule_indicator">
         <![CDATA[
         在电话号码前显示图标，以指示它是否存在于垃圾号码数据库中，或者是否有任何正则表达式规则与之匹配。<br>
         <br>
@@ -61,7 +61,7 @@
         没有号码规则匹配，只有短信规则和数据库。它将被短信规则拦截。<br>
         ]]>
     </string>
-    <string name="show_indicator">显示标记</string>
+    <string name="rule_indicator">规则指示器</string>
     <string name="enable_for_mms">启用 MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[

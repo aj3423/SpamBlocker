@@ -30,8 +30,8 @@
     <string name="last_log">Last Log</string>
     <string name="executed_at">Executed at:</string>
     <string name="not_executed_yet">Not executed yet</string>
-    <string name="show_indicator">Show Flags</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">Rule Indicator</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Show icons before the number to indicate whether it exists in the spam database or is there any regex rule that matches it. <br>
         <br>

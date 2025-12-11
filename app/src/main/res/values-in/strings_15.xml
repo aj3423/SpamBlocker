@@ -30,8 +30,8 @@
     <string name="last_log">Catatan Terakhir</string>
     <string name="executed_at">Dijalankan pada:</string>
     <string name="not_executed_yet">Belum dijalankan</string>
-    <string name="show_indicator">Tampilkan Tanda</string>
-    <string name="help_show_indicator">
+    <string name="rule_indicator">Indikator Aturan</string>
+    <string name="help_show_rule_indicator">
         <![CDATA[
         Tampilkan ikon sebelum nomor untuk menunjukkan apakah nomor tersebut ada di database spam atau ada aturan regex yang cocok dengannya. <br>
         <br>

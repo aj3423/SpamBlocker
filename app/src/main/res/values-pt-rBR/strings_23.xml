@@ -66,4 +66,17 @@
     <string name="verification_code">Código de Verificação</string>
     <string name="verification_code_regex">.*(verificação|validação).*código.*</string>
     <string name="private_number">Número Privado</string>
+    <string name="always">Sempre</string>
+    <string name="sim_icon">Ícone do SIM</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Requer a permissão \"Estado do Telefone\". <br>
+        <br>
+        <b>Automático</b> <br>
+        &ensp; Mostrar ícones do SIM apenas quando vários cartões SIM estão em uso. <br>
+        <br>
+        <b>Sempre</b> <br>
+        &ensp; Sempre mostrar ícones do SIM.
+        ]]>
+    </string>
 </resources>

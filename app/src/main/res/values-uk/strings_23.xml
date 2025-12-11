@@ -66,4 +66,17 @@
     <string name="verification_code">Код підтвердження</string>
     <string name="verification_code_regex">.*(перевірка|валідація).*код.*</string>
     <string name="private_number">Приватний номер</string>
+    <string name="always">Завжди</string>
+    <string name="sim_icon">Іконка SIM-карти</string>
+    <string name="help_show_sim_icon">
+        <![CDATA[
+        Потрібен дозвіл \"Стан телефону\". <br>
+        <br>
+        <b>Автоматично</b> <br>
+        &ensp; Показувати іконки SIM-карт лише тоді, коли використовується кілька SIM-карт. <br>
+        <br>
+        <b>Завжди</b> <br>
+        &ensp; Завжди показувати іконки SIM-карт.
+        ]]>
+    </string>
 </resources>
