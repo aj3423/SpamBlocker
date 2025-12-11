@@ -1,0 +1,14 @@
+New:
+- Multi SIM support (Android 12+)
+  - New regex option: "SIM Card"
+  Use case: block everything on SIM 1 and use only its data
+
+Fixes:
+- Workflow FTC-Initial doesn't work on Android 10/11
+- MMS doesn't work with Google Messages being the SMS app
+- File picker shows ghost files that can't be imported
+
+Improvements:
+- Regex presets
+- Time tags with arithmetic operations, such as `{day-1}`
+  Use case: download last 3 days' numbers from FTC-DNC 
