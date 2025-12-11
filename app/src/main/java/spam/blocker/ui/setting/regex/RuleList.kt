@@ -327,9 +327,9 @@ fun RuleList(
 
     // Nested scrollable Column/LazyColumn is forbidden in jetpack compose, to workaround this:
     // when < 10 rules:
-    //   show as normal Column
+    //   show as normal Column (dynamic height)
     // else
-    //   show as LazyColumn
+    //   show as LazyColumn (Fixed height)
     val useLazy = vm.rules.size > spf.getMaxNoneScrollRows()
     if (useLazy) { // LazyColumn
         val lazyState = rememberLazyListState()

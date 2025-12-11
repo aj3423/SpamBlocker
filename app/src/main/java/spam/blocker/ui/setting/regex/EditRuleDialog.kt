@@ -39,6 +39,7 @@ import spam.blocker.db.Notification.CHANNEL_LOW
 import spam.blocker.db.RegexRule
 import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
@@ -634,6 +635,17 @@ fun RuleEditDialog(
                     }
                 }
 
+                // SIM
+                if (forType != Def.ForQuickCopy) {
+                    LabeledRow(
+                        labelId = R.string.sim_card,
+                        color = if(Build.VERSION.SDK_INT < ANDROID_12) C.disabled else null,
+                        helpTooltip = Str(R.string.help_sim_card)
+                    ) {
+                        SimPicker(simSlot)
+                    }
+                }
+
                 // Schedule
                 if (forType != Def.ForQuickCopy) {
                     val popupTrigger = rememberSaveable { mutableStateOf(false) }
@@ -667,17 +679,6 @@ fun RuleEditDialog(
                         SettingRow {
                             WeekdayPicker1(selectedDays = schWeekdays)
                         }
-                    }
-                }
-
-                // SIM
-                if (forType != Def.ForQuickCopy) {
-                    LabeledRow(
-                        labelId = R.string.sim_card,
-                        color = if(Build.VERSION.SDK_INT < 12) C.disabled else null,
-                        helpTooltip = Str(R.string.help_sim_card)
-                    ) {
-                        SimPicker(simSlot)
                     }
                 }
             }
