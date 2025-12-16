@@ -18,6 +18,7 @@ import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Launcher
+import spam.blocker.util.Util
 import spam.blocker.util.spf
 
 // list of language codes: https://github.com/championswimmer/android-locales
@@ -76,10 +77,7 @@ fun Language() {
                 onClick = {
                     spf.setLanguage(lang.code)
                     spf.flush() // flush before restarting the process
-
-                    Thread.sleep(200)
-
-                    Launcher.restartProcess(ctx)
+                    Util.setLocale(ctx, lang.code)
                 }
             )
         }

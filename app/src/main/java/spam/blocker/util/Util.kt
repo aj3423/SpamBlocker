@@ -3,6 +3,7 @@ package spam.blocker.util
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.KeyguardManager
+import android.app.LocaleManager
 import android.app.usage.UsageEvents
 import android.app.usage.UsageStatsManager
 import android.content.Context
@@ -14,6 +15,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
+import android.os.LocaleList
 import android.os.PowerManager
 import android.os.UserManager
 import android.provider.CalendarContract
@@ -24,7 +26,9 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.database.getStringOrNull
+import androidx.core.os.LocaleListCompat
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -498,31 +502,16 @@ object Util {
         return telephonyManager.isEmergencyNumber(rawNumber)
     }
     fun setLocale(ctx: Context, languageCode: String) {
-        val locale = if (languageCode == "")
-            Locale.getDefault()
-        else {
-            if (languageCode.contains("-")) { // e.g.: pt-rBR
-                val parts = languageCode.split("-")
-                val p0 = parts[0]
-                val p1 = parts[1]
+        // Convert pt-rBR -> pt-BR, which is the format used by Android API.
+        val normalizedCode = languageCode.replace("-r", "-")
 
-                if (p1.startsWith("r")) {
-                    Locale(p0, p1.substring(1)) // remove leading "r" from "rBR"
-                } else {
-                    Locale(p0, p1)
-                }
-            } else {
-                Locale(languageCode)
-            }
+        val localeListCompat = LocaleListCompat.forLanguageTags(normalizedCode)
+        AppCompatDelegate.setApplicationLocales(localeListCompat)
+
+        if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {  // Android 13+
+            val localeList = LocaleList.forLanguageTags(normalizedCode)
+            ctx.getSystemService(LocaleManager::class.java)?.applicationLocales = localeList
         }
-
-        Locale.setDefault(locale)
-
-        val resources = ctx.resources
-        val configuration = resources.configuration
-        configuration.setLocale(locale)
-
-        resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 
     fun isRunningInWorkProfile(ctx: Context): Boolean {
