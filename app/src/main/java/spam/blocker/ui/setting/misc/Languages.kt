@@ -77,6 +77,8 @@ fun Language() {
                     spf.setLanguage(lang.code)
                     spf.flush() // flush before restarting the process
 
+                    Thread.sleep(200)
+
                     Launcher.restartProcess(ctx)
                 }
             )
