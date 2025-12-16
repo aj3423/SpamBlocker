@@ -76,7 +76,6 @@ fun Language() {
                 } else null,
                 onClick = {
                     spf.setLanguage(lang.code)
-                    spf.flush() // flush before restarting the process
                     Util.setLocale(ctx, lang.code)
                 }
             )
