@@ -92,7 +92,6 @@ dependencies {
     implementation(libs.compose.activity) // for ComponentActivity
     implementation(libs.compose.material3) // for components like Scaffold, Surface
     implementation(libs.compose.ui)
-    implementation(libs.androidx.appcompat)
 
     // testing
     testImplementation(libs.junit.jupiter)

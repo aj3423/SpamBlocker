@@ -26,9 +26,7 @@ import android.provider.Telephony
 import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.database.getStringOrNull
-import androidx.core.os.LocaleListCompat
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -37,6 +35,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ANDROID_13
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -502,16 +501,42 @@ object Util {
         return telephonyManager.isEmergencyNumber(rawNumber)
     }
     fun setLocale(ctx: Context, languageCode: String) {
-        // Convert pt-rBR -> pt-BR, which is the format used by Android API.
-        val normalizedCode = languageCode.replace("-r", "-")
-
-        val localeListCompat = LocaleListCompat.forLanguageTags(normalizedCode)
-        AppCompatDelegate.setApplicationLocales(localeListCompat)
-
-        if (Build.VERSION.SDK_INT >= Def.ANDROID_13) {  // Android 13+
+        if (Build.VERSION.SDK_INT >= ANDROID_13) {
+            // Convert pt-rBR -> pt-BR, which is the format used by Android API.
+            val normalizedCode = languageCode.replace("-r", "-")
             val localeList = LocaleList.forLanguageTags(normalizedCode)
             ctx.getSystemService(LocaleManager::class.java)?.applicationLocales = localeList
+        } else {
+            setLocale_Android_12(ctx, languageCode)
         }
+    }
+
+    // `updateConfiguration` only works on app start
+    // Do NOT use `AppCompatDelegate.setApplicationLocales()`, that library costs 400k bytes.
+    private fun setLocale_Android_12(ctx: Context, languageCode: String) {
+        val locale = if (languageCode == "")
+            Locale.getDefault()
+        else {
+            if (languageCode.contains("-")) { // e.g.: pt-rBR
+                val parts = languageCode.split("-")
+                val p0 = parts[0]
+                val p1 = parts[1]
+                if (p1.startsWith("r")) {
+                    Locale(p0, p1.substring(1)) // remove leading "r" from "rBR"
+                } else {
+                    Locale(p0, p1)
+                }
+            } else {
+                Locale(languageCode)
+            }
+        }
+        Locale.setDefault(locale)
+
+        val resources = ctx.resources
+        val configuration = resources.configuration
+        configuration.setLocale(locale)
+
+        resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 
     fun isRunningInWorkProfile(ctx: Context): Boolean {

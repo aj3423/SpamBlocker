@@ -1,5 +1,6 @@
 package spam.blocker.ui.setting.misc
 
+import android.os.Build
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
+import spam.blocker.def.Def.ANDROID_13
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.widgets.ComboBox
@@ -76,7 +78,14 @@ fun Language() {
                 } else null,
                 onClick = {
                     spf.setLanguage(lang.code)
-                    Util.setLocale(ctx, lang.code)
+
+                    if (Build.VERSION.SDK_INT >= ANDROID_13) {
+                        Util.setLocale(ctx, lang.code)
+                    } else {
+                        spf.flush() // flush before restarting the process
+                        Thread.sleep(300)
+                        Launcher.restartProcess(ctx)
+                    }
                 }
             )
         }

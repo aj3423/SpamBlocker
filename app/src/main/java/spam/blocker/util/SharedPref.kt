@@ -56,6 +56,14 @@ class spf { // for namespace only
             }
         }
 
+        // Write nothing, wait for all async operations to complete.
+        // Use this before restarting the app process.
+        fun flush() {
+            // Simulate flush by calling commit() on a new editor
+            prefs.edit(commit = true) {
+            }
+        }
+
         fun clear() {
             prefs.edit() {
                 clear()
