@@ -85,8 +85,6 @@
         סינון שיחות ו-SMS צריך להיות מופעל בנפרד למטה, והם פועלים רק כאשר זה מופעל.
         ]]>
     </string>
-    <string name="call_screening">הפעל לשיחות</string>
-    <string name="sms_screening">הפעל להודעות</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">סינון</string>

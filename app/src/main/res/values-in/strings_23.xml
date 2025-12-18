@@ -88,8 +88,6 @@
         Penyaringan panggilan dan SMS juga perlu diaktifkan secara terpisah di bawah, keduanya hanya berfungsi saat ini diaktifkan.
         ]]>
     </string>
-    <string name="call_screening">Aktifkan untuk Panggilan</string>
-    <string name="sms_screening">Aktifkan untuk SMS</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Penyaringan</string>

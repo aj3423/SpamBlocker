@@ -88,8 +88,6 @@
         El filtratge de trucades i SMS també s\'ha d\'activar per separat a continuació, només funcionen quan aquest està activat.
         ]]>
     </string>
-    <string name="call_screening"><translate>Activa per a trucades</translate></string>
-    <string name="sms_screening"><translate>Activa per a SMS</translate></string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtratge</string>

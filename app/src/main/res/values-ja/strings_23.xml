@@ -85,8 +85,6 @@
         通話とSMSのスクリーニングも以下で個別に有効にする必要があります。これらは、この機能が有効になっている場合にのみ機能します。
         ]]>
     </string>
-    <string name="call_screening">通話に有効にする</string>
-    <string name="sms_screening">SMSに有効にする</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">スクリーニング</string>

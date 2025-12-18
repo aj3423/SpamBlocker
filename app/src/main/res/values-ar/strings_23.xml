@@ -85,8 +85,6 @@
         يحتاج فحص المكالمات والرسائل النصية إلى تمكينه بشكل منفصل أدناه، ويعملان فقط عند تمكين هذا الخيار.
         ]]>
     </string>
-    <string name="call_screening">تمكين للمكالمات</string>
-    <string name="sms_screening">تمكين للرسائل القصيرة</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">الفحص</string>

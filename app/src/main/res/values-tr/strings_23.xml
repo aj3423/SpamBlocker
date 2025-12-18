@@ -85,8 +85,6 @@
         Arama ve SMS taraması da aşağıda ayrı ayrı etkinleştirilmelidir, bunlar yalnızca bu etkinleştirildiğinde çalışır.
         ]]>
     </string>
-    <string name="call_screening">Arama için Etkinleştir</string>
-    <string name="sms_screening">SMS için Etkinleştir</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Tarama</string>

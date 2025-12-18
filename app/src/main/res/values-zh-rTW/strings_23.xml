@@ -85,8 +85,6 @@
         通話和簡訊篩選也需要在下方單獨啟用，它們只有在此功能啟用時才有效。
         ]]>
     </string>
-    <string name="call_screening">啟用通話功能</string>
-    <string name="sms_screening">啟用簡訊功能</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">篩選</string>

@@ -88,8 +88,6 @@
         Le filtrage des appels et des SMS doit également être activé séparément ci-dessous, ils ne fonctionnent que lorsque ceci est activé.
         ]]>
     </string>
-    <string name="call_screening">Activer pour les appels</string>
-    <string name="sms_screening">Activer pour les SMS</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtrage</string>

@@ -85,8 +85,6 @@
         غربالگری تماس و پیامک نیز باید جداگانه در پایین فعال شود؛ آن‌ها فقط زمانی کار می‌کنند که این مورد فعال باشد.
         ]]>
     </string>
-    <string name="call_screening">فعال برای تماس</string>
-    <string name="sms_screening">فعال برای پیامک</string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">غربالگری</string>
