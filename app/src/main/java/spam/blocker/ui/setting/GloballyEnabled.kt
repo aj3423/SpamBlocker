@@ -1,15 +1,16 @@
 package spam.blocker.ui.setting
 
 import android.os.Build
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -31,6 +32,7 @@ import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
 import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
@@ -46,7 +48,19 @@ fun GloballyEnabled() {
     val C = LocalPalette.current
     val spf = spf.Global(ctx)
 
-
+    var collapsed by remember { mutableStateOf(spf.isCollapsed()) }
+    fun expand() {
+        collapsed = false
+        spf.setCollapsed(false)
+    }
+    fun collapse() {
+        collapsed = true
+        spf.setCollapsed(true)
+    }
+    fun toggleCollapse() {
+        collapsed = !collapsed
+        spf.setCollapsed(collapsed)
+    }
     fun checkMmsState(): Boolean {
         return G.smsEnabled.value
                 && spf.isMmsEnabled()
@@ -96,120 +110,140 @@ fun GloballyEnabled() {
         onPauseOrDispose { }
     }
 
-    val popupTrigger = rememberSaveable { mutableStateOf(false) }
-
-    PopupDialog(
-        trigger = popupTrigger,
-        content = {
-            Column {
-                LabeledRow(labelId = R.string.enabled_for_call) {
-                    SwitchBox(checked = G.callEnabled.value, onCheckedChange = { isTurningOn ->
-                        if (isTurningOn) {
-                            G.permissionChain.ask(
-                                ctx,
-                                listOf(
-                                    PermissionWrapper(Permission.callScreening),
-                                )
-                            ) { granted ->
-                                if (granted) {
-                                    spf.setCallEnabled(true)
-                                    G.callEnabled.value = true
+    Section(
+        title = Str(R.string.screening),
+        horizontalPadding = 8
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(0.dp),
+        ) {
+            LabeledRow(
+                R.string.enable,
+                helpTooltip = Str(R.string.help_screening),
+                isCollapsed = collapsed,
+                toggleCollapse = {
+                    toggleCollapse()
+                },
+                content = {
+                    if (G.globallyEnabled.value) {
+                        Button(
+                            content = {
+                                RowVCenterSpaced(4) {
+                                    ResImage(
+                                        R.drawable.ic_call,
+                                        if (G.callEnabled.value) C.enabled else C.disabled,
+                                        M.size(20.dp)
+                                    )
+                                    ResImage(
+                                        R.drawable.ic_sms,
+                                        if (G.smsEnabled.value) C.enabled else C.disabled,
+                                        M.size(20.dp)
+                                    )
                                 }
                             }
-                        } else {
-                            spf.setCallEnabled(false)
-                            G.callEnabled.value = false
+                        ) {
+                            toggleCollapse()
                         }
-                    })
-                }
-
-                LabeledRow(labelId = R.string.enabled_for_sms) {
-                    SwitchBox(checked = G.smsEnabled.value, onCheckedChange = { isTurningOn ->
-                        if (isTurningOn) {
-                            G.permissionChain.ask(
-                                ctx,
-                                listOf(
-                                    PermissionWrapper(Permission.receiveSMS),
-                                    // isOptional because some might prefer "Optimized" than "Unrestricted"
-                                    PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
-                                )
-                            ) { granted ->
-                                if (granted) {
-                                    spf.setSmsEnabled(true)
-                                    G.smsEnabled.value = true
-                                }
+                    }
+                    SwitchBox(G.globallyEnabled.value) { enabled ->
+                        spf.setGloballyEnabled(enabled)
+                        G.globallyEnabled.value = enabled
+                        if (enabled) {
+                            if (!G.callEnabled.value && !G.smsEnabled.value) {
+                                expand()
                             }
                         } else {
-                            spf.setSmsEnabled(false)
-                            G.smsEnabled.value = false
+                            collapse()
                         }
-                    })
+                    }
                 }
-
-                AnimatedVisibleV(G.smsEnabled.value) {
+            )
+            AnimatedVisibleV (!collapsed) {
+                Column(modifier = M.padding(start = 16.dp)) {
                     LabeledRow(
-                        labelId = R.string.enable_for_mms,
-                        helpTooltip = Str(R.string.help_enable_for_mms),
+                        labelId = R.string.call,
                     ) {
-                        SwitchBox(checked = mmsEnabled, onCheckedChange = { isTurningOn ->
+                        SwitchBox(checked = G.callEnabled.value, onCheckedChange = { isTurningOn ->
                             if (isTurningOn) {
                                 G.permissionChain.ask(
                                     ctx,
                                     listOf(
-                                        PermissionWrapper(Permission.receiveMMS),
-                                        PermissionWrapper(Permission.readSMS),
-                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
-                                        )
+                                        PermissionWrapper(Permission.callScreening),
+                                    )
                                 ) { granted ->
                                     if (granted) {
-                                        spf.setMmsEnabled(true)
-                                        mmsEnabled = checkMmsState()
+                                        spf.setCallEnabled(true)
+                                        G.callEnabled.value = true
                                     }
                                 }
                             } else {
-                                spf.setMmsEnabled(false)
-                                mmsEnabled = checkMmsState()
+                                spf.setCallEnabled(false)
+                                G.callEnabled.value = false
                             }
                         })
                     }
-                }
-                LabeledRow(
-                    labelId = R.string.rcs_message,
-                    helpTooltip = Str(R.string.help_rcs_message),
-                    color = C.disabled,
-                ) {}
-            }
-        })
 
-    LabeledRow(
-        R.string.enable,
-        paddingHorizontal = 22,
-        helpTooltip = Str(R.string.help_globally_enabled),
-        content = {
-            if (G.globallyEnabled.value) {
-                Button(
-                    content = {
-                        RowVCenterSpaced(4) {
-                            ResImage(
-                                R.drawable.ic_call,
-                                if (G.callEnabled.value) C.enabled else C.disabled,
-                                M.size(20.dp)
-                            )
-                            ResImage(
-                                R.drawable.ic_sms,
-                                if (G.smsEnabled.value) C.enabled else C.disabled,
-                                M.size(20.dp)
-                            )
+                    LabeledRow(
+                        labelId = R.string.sms,
+                        helpTooltip = Str(R.string.help_enable_for_sms)
+                    ) {
+                        SwitchBox(checked = G.smsEnabled.value, onCheckedChange = { isTurningOn ->
+                            if (isTurningOn) {
+                                G.permissionChain.ask(
+                                    ctx,
+                                    listOf(
+                                        PermissionWrapper(Permission.receiveSMS),
+                                        // isOptional because some might prefer "Optimized" than "Unrestricted"
+                                        PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+                                    )
+                                ) { granted ->
+                                    if (granted) {
+                                        spf.setSmsEnabled(true)
+                                        G.smsEnabled.value = true
+                                    }
+                                }
+                            } else {
+                                spf.setSmsEnabled(false)
+                                G.smsEnabled.value = false
+                            }
+                        })
+                    }
+
+                    AnimatedVisibleV(G.smsEnabled.value) {
+                        LabeledRow(
+                            labelId = R.string.mms,
+                            helpTooltip = Str(R.string.help_enable_for_mms),
+                        ) {
+                            SwitchBox(checked = mmsEnabled, onCheckedChange = { isTurningOn ->
+                                if (isTurningOn) {
+                                    G.permissionChain.ask(
+                                        ctx,
+                                        listOf(
+                                            PermissionWrapper(Permission.receiveMMS),
+                                            PermissionWrapper(Permission.readSMS),
+                                            PermissionWrapper(Permission.batteryUnRestricted, isOptional = true),
+                                        )
+                                    ) { granted ->
+                                        if (granted) {
+                                            spf.setMmsEnabled(true)
+                                            mmsEnabled = checkMmsState()
+                                        }
+                                    }
+                                } else {
+                                    spf.setMmsEnabled(false)
+                                    mmsEnabled = checkMmsState()
+                                }
+                            })
                         }
                     }
-                ) {
-                    popupTrigger.value = true
+                    LabeledRow(
+                        labelId = R.string.rcs,
+                        helpTooltip = Str(R.string.help_rcs_message),
+                        color = C.disabled,
+                    ) {}
                 }
             }
-            SwitchBox(G.globallyEnabled.value) { enabled ->
-                spf.setGloballyEnabled(enabled)
-                G.globallyEnabled.value = enabled
-            }
         }
-    )
+    }
+
 }

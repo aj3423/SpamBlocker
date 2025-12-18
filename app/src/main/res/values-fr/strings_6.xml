@@ -41,8 +41,6 @@
             Les traductions sont réalisées par Google AI, signalez un problème sur github pour ajouter une nouvelle prise en charge de la langue.
         ]]>
     </string>
-    <string name="enabled_for_call">Activer pour les appels</string>
-    <string name="enabled_for_sms">Activer pour les SMS</string>
     <string name="repeated_call">Appel répété</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -60,19 +58,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        Le commutateur global, cette application ne fonctionne que lorsque celui-ci est activé,
-        désactivez-le lorsque vous attendez un appel/message particulier. <br>
-        <br>
-        Il peut également être activé/désactivé à partir des <font color="#6ed0ff"><b>Paramètres rapides déroulants</b></font>.<br>
-        <br>
-        Pour les SMS, cette application prendra en charge les notifications SMS, veuillez
-        <font color="#fa7f71"><b>désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système,
-        sinon il y aura des notifications doubles.
-        Elle ne filtre que les notifications SMS, les SMS indésirables seront toujours présents dans l\'application SMS par défaut.
-        ]]>
-    </string>
 
     <string name="about">À propos</string>
     <string name="version">Version</string>

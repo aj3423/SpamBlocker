@@ -41,8 +41,6 @@
             Çeviriler Google AI tarafından yapılmaktadır, yeni bir dil desteği eklemek için GitHub\'da bir sorun açın.
         ]]>
     </string>
-    <string name="enabled_for_call">Arama için Etkinleştir</string>
-    <string name="enabled_for_sms">SMS için Etkinleştir</string>
     <string name="repeated_call">Tekrarlanan Arama</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -60,19 +58,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        Küresel anahtar, uygulama yalnızca bu açık olduğunda çalışır.
-        Belirli bir arama/mesaj beklerken kapatın. <br>
-        <br>
-        Ayrıca <font color="#6ed0ff"><b>Açılır Hızlı Ayarlar</b></font>.<br>dan da kapaılabilir.
-        <br>
-        SMS için, bu uygulama SMS bildirimlerini devralacaktır, lütfen
-        sistem ayarlarından <font color="#fa7f71"><b>Varsayılan SMS uygulamasının bildirim iznini kapatın</b></font>,
-        aksi takdirde çift bildirim olacaktır.
-        Sadece SMS bildirimlerini filtreler, spam SMS mesajları varsayılan SMS uygulamasında hâlâ mevcut olacaktır.
-        ]]>
-    </string>
 
     <string name="about">Hakkında</string>
     <string name="version">Sürüm</string>

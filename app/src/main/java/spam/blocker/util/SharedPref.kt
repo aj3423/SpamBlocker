@@ -89,6 +89,8 @@ class spf { // for namespace only
     class Global(ctx: Context) : SharedPref(ctx) {
         fun isGloballyEnabled(): Boolean { return readBoolean(Def.SETTING_ENABLED, false) }
         fun setGloballyEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_ENABLED, enabled) }
+        fun isCollapsed(): Boolean { return readBoolean(Def.SETTING_GLOBAL_ENABLED_COLLAPSED, true) }
+        fun setCollapsed(collapsed: Boolean) { writeBoolean(Def.SETTING_GLOBAL_ENABLED_COLLAPSED, collapsed) }
         fun toggleGloballyEnabled() { writeBoolean(Def.SETTING_ENABLED, !isGloballyEnabled()) }
         fun isCallEnabled(): Boolean { return readBoolean(Def.SETTING_CALL_ENABLED, false) }
         fun setCallEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_CALL_ENABLED, enabled) }

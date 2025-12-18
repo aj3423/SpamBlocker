@@ -79,4 +79,27 @@
         &ensp; Mostra sempre le icone SIM.
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        Questo interruttore serve per disabilitare rapidamente l\'app, utile quando si attende una chiamata o un messaggio particolare. <br>
+        <br>
+        Puoi anche attivarla/disattivarla dalle <font color="#6ed0ff"><b>Impostazioni Rapide a tendina</b></font>. <br>
+        <br>
+        Il filtro chiamate e SMS deve essere abilitato separatamente qui sotto, funziona solo quando questo è abilitato.
+        ]]>
+    </string>
+    <string name="call_screening">Abilita per chiamata</string>
+    <string name="sms_screening">Abilita per SMS</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">Filtro</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Per gli SMS, questa app gestisce le notifiche SMS, filtra solo le notifiche SMS, i messaggi SMS di spam
+         saranno comunque presenti nell\'app SMS. <br>
+        <br>
+        Si prega di <font color="#fa7f71"><b>disattivare l\'autorizzazione alle notifiche dell\'app SMS predefinita</b></font> nelle impostazioni di sistema,
+        altrimenti ci saranno doppie notifiche.
+        ]]>
+    </string>
 </resources>

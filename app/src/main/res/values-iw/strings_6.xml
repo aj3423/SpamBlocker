@@ -44,8 +44,6 @@
             התרגומים בוצעו על ידי Google AI, פתח בעיה ב-GitHub לבקשת תמיכה בשפה חדשה.
         ]]>
     </string>
-    <string name="enabled_for_call">הפעל לשיחות</string>
-    <string name="enabled_for_sms">הפעל להודעות</string>
     <string name="repeated_call">שיחה חוזרת</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -63,19 +61,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        המתג הגלובלי, האפליקציה הזו פועלת רק כשהוא מופעל,
-        כבה אותו כשאתה ממתין לשיחה/הודעה ספציפית. <br>
-        <br>
-        ניתן להפעיל/לבטל אותו גם מה<font color="#6ed0ff"><b>הגדרות מהירות בתפריט הנפתח</b></font>.<br>
-        <br>
-        עבור הודעות, אפליקציה זו תיקח אחריות על התראות ה-SMS, אנא
-        <font color="#fa7f71"><b>כבה את הרשאת ההתראות של אפליקציית ה-SMS ברירת המחדל</b></font> בהגדרות המערכת,
-        אחרת יהיו התראות כפולות.
-        היא מסננת רק התראות SMS, הודעות ספאם SMS עדיין יהיו נוכחות באפליקציית ה-SMS ברירת המחדל.
-        ]]>
-    </string>
 
     <string name="about">אודות</string>
     <string name="version">גרסה</string>

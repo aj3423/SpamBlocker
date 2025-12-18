@@ -60,7 +60,6 @@
         لا توجد قاعدة رقم تطابقها، فقط قاعدة SMS وقاعدة البيانات. وسيتم حظرها بواسطة قاعدة SMS.<br>
         ]]>
     </string>
-    <string name="enable_for_mms">تمكين لـ MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         عادة ما تكون رسائل MMS غير مرغوب فيها، ولا داعي لتمكينها ما لم تستخدمها بالفعل.<br>
@@ -120,7 +119,6 @@
     </string>
     <string name="never_expire">لا تنتهي صلاحيته أبدًا</string>
     <string name="enable_history_logging">تسجيل</string>
-    <string name="rcs_message">رسالة RCS</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS غير مدعوم.<br>

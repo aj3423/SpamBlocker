@@ -60,7 +60,6 @@
         ]]>
     </string>
     <string name="rule_indicator">نشانگر قانون</string>
-    <string name="enable_for_mms">فعال کردن برای MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         پیام های MMS معمولاً هرزنامه هستند، نیازی به فعال بودن نیست مگر اینکه واقعاً از آنها استفاده کنید.<br>
@@ -118,7 +117,6 @@
     </string>
     <string name="enable_history_logging"><short>ثبت</short></string>
     <string name="never_expire"><short>هرگز منقضی نشو</short></string>
-    <string name="rcs_message">پیام RCS</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS پشتیبانی نمی شود.<br>

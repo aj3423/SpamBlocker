@@ -61,7 +61,6 @@
         ]]>
     </string>
     <string name="rule_indicator">ルールインジケーター</string>
-    <string name="enable_for_mms">MMSを有効にする</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         MMSメッセージは通常スパムです。実際に使用しない限り、有効にする必要はありません。<br>
@@ -119,7 +118,6 @@
     </string>
     <string name="enable_history_logging"><translate>ログ</translate></string>
     <string name="never_expire"><short>期限なし</short></string>
-    <string name="rcs_message">RCSメッセージ</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCSはサポートされていません。<br>

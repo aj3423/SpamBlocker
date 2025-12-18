@@ -62,7 +62,6 @@
         ]]>
     </string>
     <string name="rule_indicator">规则指示器</string>
-    <string name="enable_for_mms">启用 MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         彩信通常是垃圾信息，除非您实际使用它们，否则没有必要启用。<br>
@@ -121,7 +120,6 @@
     </string>
     <string name="enable_history_logging">记录</string>
     <string name="never_expire"><short>永不过期</short></string>
-    <string name="rcs_message">RCS 消息</string>
     <string name="help_rcs_message">
         <![CDATA[
             不支持 RCS。<br>

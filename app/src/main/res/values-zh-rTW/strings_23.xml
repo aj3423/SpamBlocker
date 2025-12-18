@@ -76,4 +76,25 @@
         &ensp; 總是顯示 SIM 卡圖示。
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        此開關用於快速停用應用程式，當您正在等待特定來電或訊息時非常有用。<br>
+        <br>
+        您也可以從<font color="#6ed0ff"><b>下拉式快速設定</b></font>中切換它。<br>
+        <br>
+        通話和簡訊篩選也需要在下方單獨啟用，它們只有在此功能啟用時才有效。
+        ]]>
+    </string>
+    <string name="call_screening">啟用通話功能</string>
+    <string name="sms_screening">啟用簡訊功能</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">篩選</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        對於簡訊，此應用程式會接管簡訊通知，它只會過濾簡訊通知，垃圾簡訊仍會存在於簡訊應用程式中。<br>
+        <br>
+        請在系統設定中<font color="#fa7f71"><b>關閉預設簡訊應用程式的通知權限</b></font>，否則會出現雙重通知。
+        ]]>
+    </string>
 </resources>

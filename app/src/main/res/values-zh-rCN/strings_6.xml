@@ -41,8 +41,6 @@
             翻译由 Google AI 完成，请在 github 上提交问题以添加新的语言支持。
         ]]>
     </string>
-    <string name="enabled_for_call">启用电话</string>
-    <string name="enabled_for_sms">启用短信</string>
     <string name="repeated_call">重复呼叫</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -60,19 +58,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        全局开关，此应用程序仅在打开此开关时才有效，
-        当您正在等待某些特定电话/消息时关闭它。 <br>
-        <br>
-        它也可以从 <font color="#6ed0ff"><b>下拉快速设置</b></font> 中切换。 <br>
-        <br>
-        对于短信，此应用程序将接管短信通知，请
-        <font color="#fa7f71"><b>关闭默认短信应用程序的通知权限</b></font> 在系统设置中，
-        否则将有双重通知。
-        它只过滤短信通知，垃圾短信仍然存在于默认短信应用程序中。
-        ]]>
-    </string>
 
     <string name="about">关于</string>
     <string name="version">版本</string>

@@ -60,7 +60,6 @@
         ]]>
     </string>
     <string name="rule_indicator">Kural Göstergesi</string>
-    <string name="enable_for_mms">MMS için Etkinleştir</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         MMS mesajları genellikle spam\'dir, gerçekten kullanmadığınız sürece etkinleştirilmesi gereksizdir.<br>
@@ -118,7 +117,6 @@
     </string>
     <string name="enable_history_logging">Kaydet</string>
     <string name="never_expire"><short>Asla Sona Ermez</short></string>
-    <string name="rcs_message">RCS Mesajı</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS desteklenmiyor.<br>

@@ -41,8 +41,6 @@
             Übersetzungen erfolgen durch Google AI, melden Sie ein Problem auf Github, um eine neue Sprachunterstützung hinzuzufügen.
         ]]>
     </string>
-    <string name="enabled_for_call">Für Anruf aktivieren</string>
-    <string name="enabled_for_sms">Für SMS aktivieren</string>
     <string name="repeated_call">Wiederholter Anruf</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -60,19 +58,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        Der globale Schalter, diese App funktioniert nur, wenn dieser aktiviert ist,
-        schalten Sie ihn aus, wenn Sie auf einen bestimmten Anruf/eine bestimmte Nachricht warten. <br>
-        <br>
-        Er kann auch über die <font color="#6ed0ff"><b>Dropdown-Schnell-Einstellungen</b></font> umgeschaltet werden.<br>
-        <br>
-        Für SMS übernimmt diese App die SMS-Benachrichtigungen, bitte
-        <font color="#fa7f71"><b>deaktivieren Sie die Benachrichtigungserlaubnis der Standard-SMS-App</b></font> in den Systemeinstellungen,
-        sonst gibt es doppelte Benachrichtigungen.
-        Sie filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten sind weiterhin in der Standard-SMS-App vorhanden.
-        ]]>
-    </string>
 
     <string name="about">Über</string>
     <string name="version">Version</string>

@@ -79,4 +79,25 @@
         &ensp; Always show SIM icons.
         ]]>
     </string>
+    <string name="screening">Screening</string>
+    <string name="help_screening">
+        <![CDATA[
+        This switch is for quickly disabling the app, useful when you\'re awaiting a particular call or message. <br>
+        <br>
+        You can also toggle it from the <font color="#6ed0ff"><b>Dropdown Quick Settings</b></font>. <br>
+        <br>
+        Call and SMS screening also need to be enabled separately below, they only work when this is enabled.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        For SMS, this app takes over the SMS notifications, it only filters SMS notifications, spam SMS
+         messages will still be present in the SMS app. <br>
+        <br>
+        Please <font color="#fa7f71"><b>turn off the notification permission of the default SMS app</b></font> in system settings,
+        otherwise there will be double notifications.
+        ]]>
+    </string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
 </resources>

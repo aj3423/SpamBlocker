@@ -44,8 +44,6 @@
             تتم الترجمات بواسطة Google AI، أرسل مشكلة على github لإضافة دعم لغة جديدة.
         ]]>
     </string>
-    <string name="enabled_for_call">تمكين للمكالمات</string>
-    <string name="enabled_for_sms">تمكين للرسائل القصيرة</string>
     <string name="repeated_call">مكالمة متكررة</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -63,19 +61,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        المفتاح العام، لا يعمل هذا التطبيق إلا عند تشغيله،
-        أطفئه عندما تكون في انتظار مكالمة/رسالة معينة. <br>
-        <br>
-        يمكن أيضًا تبديله من <font color="#6ed0ff"><b>الإعدادات السريعة في القائمة المنسدلة</b></font>.<br>
-        <br>
-        بالنسبة للرسائل القصيرة، سيتولى هذا التطبيق إشعارات الرسائل القصيرة، يرجى
-        <font color="#fa7f71"><b>إيقاف تشغيل إذن الإشعارات لتطبيق الرسائل القصيرة الافتراضي</b></font> في إعدادات النظام،
-        وإلا سيكون هناك إشعارات مزدوجة.
-        يقوم فقط بتصفية إشعارات الرسائل القصيرة، وستظل رسائل SMS غير المرغوب فيها موجودة في تطبيق SMS الافتراضي.
-        ]]>
-    </string>
 
     <string name="about">حول</string>
     <string name="version">الإصدار</string>

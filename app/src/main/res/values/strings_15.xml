@@ -14,14 +14,14 @@
         2. Open the API page:<br>
          <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
         <br>
-        3. Press the "Create API key" button.<br>
+        3. Press the \"Create API key\" button.<br>
         <br>
         4. Copy the key, then fill it in below.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
         Categorize this SMS message as Political, Fraud, Survey, or Marketing.
-        If none applies, answer "Valid", otherwise, answer the category only, don\'t answer anything else.
+        If none applies, answer \"Valid\", otherwise, answer the category only, don\'t answer anything else.
         The SMS message is:
         {sms}
     </string>
@@ -61,7 +61,6 @@
         No number rule matches it, only SMS rule and database. And it will be blocked by an SMS rule.<br>
         ]]>
     </string>
-    <string name="enable_for_mms">Enable for MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         MMS messages are usually spam, it\'s unnecessary to be enabled unless you actually use them.<br>
@@ -121,7 +120,6 @@
     </string>
     <string name="never_expire"><short>Never Expire</short></string>
     <string name="enable_history_logging">Log</string>
-    <string name="rcs_message">RCS Message</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS is not supported.<br>

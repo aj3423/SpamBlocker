@@ -76,4 +76,27 @@
         &ensp; הצג תמיד אייקוני SIM.
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        מתג זה נועד להשבתה מהירה של האפליקציה, שימושי כאשר אתה ממתין לשיחה או הודעה מסוימת. <br>
+        <br>
+        ניתן גם להחליף אותו מתוך <font color="#6ed0ff"><b>הגדרות מהירות נפתחות</b></font>. <br>
+        <br>
+        סינון שיחות ו-SMS צריך להיות מופעל בנפרד למטה, והם פועלים רק כאשר זה מופעל.
+        ]]>
+    </string>
+    <string name="call_screening">הפעל לשיחות</string>
+    <string name="sms_screening">הפעל להודעות</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">סינון</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        עבור SMS, אפליקציה זו משתלטת על התראות ה-SMS, היא מסננת רק התראות SMS, הודעות SMS ספאם
+         עדיין יהיו נוכחות באפליקציית ה-SMS. <br>
+        <br>
+        אנא <font color="#fa7f71"><b>כבה את הרשאת ההתראות של אפליקציית ה-SMS המוגדרת כברירת מחדל</b></font> בהגדרות המערכת,
+        אחרת יהיו התראות כפולות.
+        ]]>
+    </string>
 </resources>

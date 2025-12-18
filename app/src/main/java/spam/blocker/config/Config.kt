@@ -39,6 +39,7 @@ interface IConfig {
 @Serializable
 class Global : IConfig {
     var enabled = false
+    var collapsed = false
     var callEnabled = false
     var smsEnabled = false
     var mmsEnabled = false
@@ -49,6 +50,7 @@ class Global : IConfig {
     override fun load(ctx: Context) {
         val spf = spf.Global(ctx)
         enabled = spf.isGloballyEnabled()
+        collapsed = spf.isCollapsed()
         callEnabled = spf.isCallEnabled()
         smsEnabled = spf.isSmsEnabled()
         mmsEnabled = spf.isMmsEnabled()
@@ -59,6 +61,7 @@ class Global : IConfig {
     override fun apply(ctx: Context) {
         spf.Global(ctx).apply {
             setGloballyEnabled(enabled)
+            setCollapsed(collapsed)
             setCallEnabled(callEnabled)
             setSmsEnabled(smsEnabled)
             setMmsEnabled(mmsEnabled)

@@ -76,4 +76,26 @@
         &ensp; 始终显示 SIM 图标。
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        此开关用于快速禁用应用，当您正在等待特定电话或消息时非常有用。 <br>
+        <br>
+        您也可以从<font color="#6ed0ff"><b>下拉快速设置</b></font>中切换它。 <br>
+        <br>
+        通话和短信筛选也需要在下方单独启用，它们仅在此功能启用时才有效。
+        ]]>
+    </string>
+    <string name="call_screening">启用电话</string>
+    <string name="sms_screening">启用短信</string>
+    <string name="mms">彩信</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">筛选</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        对于短信，此应用将接管短信通知，它只过滤短信通知，垃圾短信消息仍将存在于短信应用中。 <br>
+        <br>
+        请在系统设置中<font color="#fa7f71"><b>关闭默认短信应用的通知权限</b></font>，
+        否则会出现双重通知。
+        ]]>
+    </string>
 </resources>

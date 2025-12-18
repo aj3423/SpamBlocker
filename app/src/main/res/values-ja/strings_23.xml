@@ -76,4 +76,25 @@
         &ensp; 常にSIMアイコンを表示します。
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        このスイッチは、特定の通話やメッセージを待っているときに、アプリを素早く無効にするのに便利です。<br>
+        <br>
+        <font color="#6ed0ff"><b>ドロップダウン クイック設定</b></font>からも切り替えることができます。<br>
+        <br>
+        通話とSMSのスクリーニングも以下で個別に有効にする必要があります。これらは、この機能が有効になっている場合にのみ機能します。
+        ]]>
+    </string>
+    <string name="call_screening">通話に有効にする</string>
+    <string name="sms_screening">SMSに有効にする</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">スクリーニング</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        SMSの場合、このアプリはSMS通知を引き継ぎ、SMS通知のみをフィルタリングします。迷惑SMSメッセージはSMSアプリに引き続き表示されます。<br>
+        <br>
+        システム設定で<font color="#fa7f71"><b>デフォルトのSMSアプリの通知権限をオフにしてください</b></font>。そうしないと、通知が二重に表示されます。
+        ]]>
+    </string>
 </resources>

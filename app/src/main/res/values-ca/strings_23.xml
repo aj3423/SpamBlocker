@@ -79,4 +79,27 @@
         &ensp; Sempre mostra les icones de la SIM.
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        Aquest interruptor serveix per deshabilitar ràpidament l\'aplicació, útil quan esperes una trucada o un missatge en particular. <br>
+        <br>
+        També pots activar-lo/desactivar-lo des de la <font color="#6ed0ff"><b>Configuració ràpida desplegable</b></font>. <br>
+        <br>
+        El filtratge de trucades i SMS també s\'ha d\'activar per separat a continuació, només funcionen quan aquest està activat.
+        ]]>
+    </string>
+    <string name="call_screening"><translate>Activa per a trucades</translate></string>
+    <string name="sms_screening"><translate>Activa per a SMS</translate></string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">Filtratge</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Per als SMS, aquesta aplicació assumeix les notificacions d\'SMS, només filtra les notificacions d\'SMS, els missatges SMS brossa (spam)
+         seguiran presents a l\'aplicació d\'SMS. <br>
+        <br>
+        Si us plau, <font color="#fa7f71"><b>desactiva el permís de notificació de l\'aplicació d\'SMS predeterminada</b></font> a la configuració del sistema,
+        en cas contrari hi haurà dobles notificacions.
+        ]]>
+    </string>
 </resources>

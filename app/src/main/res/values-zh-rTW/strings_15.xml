@@ -60,7 +60,6 @@
         沒有號碼規則符合它，只有簡訊規則和資料庫。它將被一條簡訊規則封鎖。<br>
         ]]>
     </string>
-    <string name="enable_for_mms">啟用 MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         MMS 訊息通常是垃圾訊息，除非您實際使用它們，否則不需要啟用。<br>
@@ -120,7 +119,6 @@
     </string>
     <string name="never_expire"><short>永不過期</short></string>
     <string name="enable_history_logging">記錄</string>
-    <string name="rcs_message">RCS 訊息</string>
     <string name="help_rcs_message">
         <![CDATA[
             不支援 RCS。<br>

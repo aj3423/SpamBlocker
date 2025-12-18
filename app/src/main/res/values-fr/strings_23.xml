@@ -79,4 +79,27 @@
         &ensp; Toujours afficher les icônes SIM.
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        Cet interrupteur permet de désactiver rapidement l\'application, utile lorsque vous attendez un appel ou un message particulier. <br>
+        <br>
+        Vous pouvez également l\'activer/le désactiver depuis les <font color="#6ed0ff"><b>Paramètres rapides déroulants</b></font>. <br>
+        <br>
+        Le filtrage des appels et des SMS doit également être activé séparément ci-dessous, ils ne fonctionnent que lorsque ceci est activé.
+        ]]>
+    </string>
+    <string name="call_screening">Activer pour les appels</string>
+    <string name="sms_screening">Activer pour les SMS</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">Filtrage</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Pour les SMS, cette application prend en charge les notifications SMS, elle ne filtre que les notifications SMS, les messages SMS indésirables
+         resteront présents dans l\'application SMS. <br>
+        <br>
+        Veuillez <font color="#fa7f71"><b>désactiver l\'autorisation de notification de l\'application SMS par défaut</b></font> dans les paramètres système,
+        sinon il y aura des doubles notifications.
+        ]]>
+    </string>
 </resources>

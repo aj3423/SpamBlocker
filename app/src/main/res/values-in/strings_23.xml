@@ -79,4 +79,27 @@
         &ensp; Selalu tampilkan ikon SIM.
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        Sakelar ini untuk menonaktifkan aplikasi dengan cepat, berguna saat Anda sedang menunggu panggilan atau pesan tertentu. <br>
+        <br>
+        Anda juga dapat mengalihkannya dari <font color="#6ed0ff"><b>Pengaturan Cepat Dropdown</b></font>. <br>
+        <br>
+        Penyaringan panggilan dan SMS juga perlu diaktifkan secara terpisah di bawah, keduanya hanya berfungsi saat ini diaktifkan.
+        ]]>
+    </string>
+    <string name="call_screening">Aktifkan untuk Panggilan</string>
+    <string name="sms_screening">Aktifkan untuk SMS</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">Penyaringan</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Untuk SMS, aplikasi ini mengambil alih notifikasi SMS, hanya menyaring notifikasi SMS, pesan SMS spam
+         akan tetap ada di aplikasi SMS. <br>
+        <br>
+        Harap <font color="#fa7f71"><b>matikan izin notifikasi aplikasi SMS default</b></font> di pengaturan sistem,
+        jika tidak akan ada notifikasi ganda.
+        ]]>
+    </string>
 </resources>

@@ -61,7 +61,6 @@
         Cap regla de número hi coincideix, només la regla de SMS i la base de dades. I serà bloquejat per una regla de SMS.<br>
         ]]>
     </string>
-    <string name="enable_for_mms">Activa per a MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         Els missatges MMS solen ser correu brossa, no cal activar-los tret que els facis servir realment.<br>
@@ -121,7 +120,6 @@
     </string>
     <string name="never_expire"><short>No caduca mai</short></string>
     <string name="enable_history_logging">Registre</string>
-    <string name="rcs_message">Missatge RCS</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS no és compatible.<br>

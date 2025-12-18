@@ -61,7 +61,6 @@
         אף כלל מספרים לא תואם אותו, רק כלל SMS ומסד נתונים. והוא ייחסם על ידי כלל SMS.<br>
         ]]>
     </string>
-    <string name="enable_for_mms">הפעל עבור MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         הודעות MMS הן בדרך כלל ספאם, אין צורך להפעיל אותן אלא אם כן אתה באמת משתמש בהן.<br>
@@ -121,7 +120,6 @@
     </string>
     <string name="never_expire">לעולם לא יפוג</string>
     <string name="enable_history_logging">יומן</string>
-    <string name="rcs_message">הודעת RCS</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS אינו נתמך.<br>

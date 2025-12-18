@@ -44,8 +44,6 @@
             Les traduccions les fa Google AI, planteja un problema a github per afegir un nou suport d\'idioma.
         ]]>
     </string>
-    <string name="enabled_for_call"><translate>Activa per a trucades</translate></string>
-    <string name="enabled_for_sms"><translate>Activa per a SMS</translate></string>
     <string name="repeated_call"><translate>Trucada repetida</translate></string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -63,19 +61,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        L\'interruptor global, aquesta aplicació només funciona quan està activat,
-        desactiva\'l quan estiguis esperant alguna trucada/missatge en particular. <br>
-        <br>
-        També es pot activar des de la <font color="#6ed0ff"><b>Configuració ràpida desplegable</b></font>.<br>
-        <br>
-        Per als SMS, aquesta aplicació es farà càrrec de les notificacions SMS, si us plau
-        <font color="#fa7f71"><b>desactiva el permís de notificació de l\'aplicació SMS predeterminada</b></font> a la configuració del sistema,
-        en cas contrari, hi haurà notificacions dobles.
-        Només filtra les notificacions SMS, els missatges SMS brossa encara estaran presents a l\'aplicació SMS predeterminada.
-        ]]>
-    </string>
 
     <string name="about"><translate>Quant a</translate></string>
     <string name="version"><translate>Versió</translate></string>

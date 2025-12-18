@@ -79,4 +79,27 @@
         &ensp; Zeigt immer SIM-Symbole an.
         ]]>
     </string>
+    <string name="help_screening">
+        <![CDATA[
+        Dieser Schalter dient zum schnellen Deaktivieren der App, nützlich, wenn du einen bestimmten Anruf oder eine Nachricht erwartest. <br>
+        <br>
+        Du kannst ihn auch über die <font color="#6ed0ff"><b>Schnelleinstellungen im Dropdown-Menü</b></font> umschalten. <br>
+        <br>
+        Anruf- und SMS-Filterung müssen auch unten separat aktiviert werden, sie funktionieren nur, wenn dies aktiviert ist.
+        ]]>
+    </string>
+    <string name="call_screening">Für Anruf aktivieren</string>
+    <string name="sms_screening">Für SMS aktivieren</string>
+    <string name="mms">MMS</string>
+    <string name="rcs">RCS</string>
+    <string name="screening">Filterung</string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Für SMS übernimmt diese App die SMS-Benachrichtigungen, sie filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten
+         werden weiterhin in der SMS-App vorhanden sein. <br>
+        <br>
+        Bitte <font color="#fa7f71"><b>schalte die Benachrichtigungsberechtigung der Standard-SMS-App</b></font> in den Systemeinstellungen aus,
+        da es sonst zu doppelten Benachrichtigungen kommt.
+        ]]>
+    </string>
 </resources>

@@ -43,8 +43,6 @@
             新しい言語のサポートを追加するには、githubに問題を報告してください。
         ]]>
     </string>
-    <string name="enabled_for_call">通話に有効にする</string>
-    <string name="enabled_for_sms">SMSに有効にする</string>
     <string name="repeated_call">繰り返し通話</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -62,21 +60,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        グローバルスイッチ。\n
-        このアプリは、このスイッチがオンになっている場合にのみ機能します。\n
-        特定の通話/メッセージを待っている場合は、オフにしてください。<br>
-        <br>
-        <font color="#6ed0ff"><b>ドロップダウンクイック設定</b></font>から切り替えることもできます。<br>
-        <br>
-        SMSの場合、このアプリはSMS通知をオーバーライドします。\n
-        システム設定で、デフォルトのSMSアプリの通知権限を<font color="#fa7f71"><b>オフ</b></font>にしてください。\n
-        そうしないと、通知が二重に表示されます。\n
-        SMS通知のみをフィルタリングします。\n
-        スパムSMSメッセージは、デフォルトのSMSアプリに表示されたままになります。
-        ]]>
-    </string>
 
     <string name="about">このアプリについて</string>
     <string name="version">バージョン</string>

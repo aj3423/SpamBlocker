@@ -44,8 +44,6 @@
             Terjemahan dilakukan oleh Google AI, sampaikan masalah di github untuk menambahkan dukungan bahasa baru.
         ]]>
     </string>
-    <string name="enabled_for_call">Aktifkan untuk Panggilan</string>
-    <string name="enabled_for_sms">Aktifkan untuk SMS</string>
     <string name="repeated_call">Panggilan Berulang</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -63,19 +61,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        Tombol global, aplikasi ini hanya berfungsi apabila tombol ini diaktifkan,
-        matikan ketika Anda sedang menunggu panggilan/pesan tertentu. <br>
-        <br>
-        Ini juga dapat diubah dari menu <font color="#6ed0ff"><b>Dropdown Pengaturan Cepat</b></font>.<br>
-        <br>
-        Untuk SMS, aplikasi ini akan mengambil alih notifikasi SMS, mohon
-        <font color="#fa7f71"><b>mematikan izin notifikasi dari aplikasi SMS default</b></font> di pengaturan sistem,
-        jika tidak, akan ada notifikasi ganda.
-        Ini hanya menyaring notifikasi SMS, pesan SMS spam akan tetap ada di aplikasi SMS default.
-        ]]>
-    </string>
 
     <string name="about">Tentang</string>
     <string name="version">Versi</string>

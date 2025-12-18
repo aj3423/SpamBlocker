@@ -44,8 +44,6 @@
             翻譯由 Google AI 完成，如需新增語言支援請在 GitHub 上提出議題。
         ]]>
     </string>
-    <string name="enabled_for_call">啟用通話功能</string>
-    <string name="enabled_for_sms">啟用簡訊功能</string>
     <string name="repeated_call">重複來電</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -65,19 +63,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        全域開關，此應用程式只在開啟時運作，
-        當您在等待特定來電/簡訊時可以關閉。<br>
-        <br>
-        也可以從<font color="#6ed0ff"><b>下拉快速設定</b></font>中切換。<br>
-        <br>
-        對於簡訊，本應用程式將接管簡訊通知，請在系統設定中
-        <font color="#fa7f71"><b>關閉預設簡訊應用程式的通知權限</b></font>，
-        否則會出現重複通知。
-        本應用程式只過濾簡訊通知，垃圾簡訊仍會出現在預設簡訊應用程式中。
-        ]]>
-    </string>
 
     <string name="about">關於</string>
     <string name="version">版本</string>

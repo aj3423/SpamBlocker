@@ -41,8 +41,6 @@
             As traduções são feitas pelo Google AI, abra um problema no github para adicionar suporte a um novo idioma.
         ]]>
     </string>
-    <string name="enabled_for_call">Habilitar para Chamada</string>
-    <string name="enabled_for_sms">Habilitar para SMS</string>
     <string name="repeated_call">Chamada Repetida</string>
     <string name="help_repeated_call">
         <![CDATA[
@@ -60,19 +58,6 @@
         ]]>
     </string>
 
-    <string name="help_globally_enabled">
-        <![CDATA[
-        O interruptor global, este aplicativo só funciona quando esta opção está ativada,
-        desligue-o quando estiver esperando por alguma chamada/mensagem específica. <br>
-        <br>
-        Também pode ser ativado/desativado no <font color="#6ed0ff"><b>Dropdown Quick Settings</b></font>.<br>
-        <br>
-        Para SMS, este aplicativo assumirá as notificações de SMS, por favor
-        <font color="#fa7f71"><b>desative a permissão de notificação do aplicativo SMS padrão</b></font> nas configurações do sistema,
-        caso contrário, haverá notificações duplicadas.
-        Ele apenas filtra notificações de SMS, mensagens de SMS de spam ainda estarão presentes no aplicativo SMS padrão.
-        ]]>
-    </string>
 
     <string name="about">Sobre</string>
     <string name="version">Versão</string>

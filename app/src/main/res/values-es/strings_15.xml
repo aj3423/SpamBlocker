@@ -61,7 +61,6 @@
         ]]>
     </string>
     <string name="rule_indicator">Indicador de Regla</string>
-    <string name="enable_for_mms">Habilitar para MMS</string>
     <string name="help_enable_for_mms">
         <![CDATA[
         Los mensajes MMS suelen ser spam, no es necesario habilitarlos a menos que realmente los uses.<br>
@@ -121,7 +120,6 @@
     </string>
     <string name="enable_history_logging">Registrar</string>
     <string name="never_expire"><short>Nunca caduca</short></string>
-    <string name="rcs_message">Mensaje RCS</string>
     <string name="help_rcs_message">
         <![CDATA[
             RCS no es compatible.<br>
