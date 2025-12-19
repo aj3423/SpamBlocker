@@ -139,6 +139,13 @@ fun GloballyEnabled() {
                                         if (G.smsEnabled.value) C.enabled else C.disabled,
                                         M.size(20.dp)
                                     )
+                                    if (G.smsEnabled.value) {
+                                        ResImage(
+                                            R.drawable.ic_mms,
+                                            if (mmsEnabled) C.enabled else C.disabled,
+                                            M.size(20.dp)
+                                        )
+                                    }
                                 }
                             }
                         ) {
