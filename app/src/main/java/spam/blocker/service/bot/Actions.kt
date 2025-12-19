@@ -1862,10 +1862,10 @@ class InterceptCall(
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 
         // Skip alpha/empty numbers, such as: Microsoft and ""
-        if (rawNumber.isEmpty() || isAlphaNumber(rawNumber)) {
-            aCtx.logger?.warn(ctx.getString(R.string.skip_alpha_empty_number))
-            return false
-        }
+//        if (rawNumber.isEmpty()) {
+//            aCtx.logger?.warn(ctx.getString(R.string.skip_alpha_empty_number))
+//            return false
+//        }
 
         val matchesFilter = numberFilter.toRegex().matches(rawNumber)
         if (!matchesFilter) {
