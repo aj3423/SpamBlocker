@@ -30,6 +30,7 @@ import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.SimCard
 import spam.blocker.util.Util
 import spam.blocker.util.Util.fixAmpersandNumber
+import spam.blocker.util.Util.isAmpersandNumber
 import spam.blocker.util.logi
 import spam.blocker.util.spf
 
@@ -51,8 +52,11 @@ fun Details.getRawNumber(): String {
 
     // Fix numbers like "111&222" -> "111222" (remove the '&')
     // see: https://github.com/aj3423/SpamBlocker/issues/488
-    val fixed = fixAmpersandNumber(rawNumber)
-    return fixed
+    return if (isAmpersandNumber(rawNumber)) {
+        fixAmpersandNumber(rawNumber)
+    } else {
+        rawNumber
+    }
 }
 
 class CallScreeningService : CallScreeningService() {

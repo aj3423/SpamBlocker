@@ -209,15 +209,19 @@ fun LeftDeleteSwipeWrapper(
                     left.onSwipe()
                 }
             },
-            background = {
-                AnimatedVisibility(
-                    visible = !isDeleted,
-                    exit = shrinkHorizontally(
-                        animationSpec = tween(durationMillis = AnimationDuration),
-                        shrinkTowards = Alignment.Start
-                    )
-                ) {
-                    BgDelete(EndToStart)
+            background = if (left.background != null) {
+                left.background
+            } else {
+                {
+                    AnimatedVisibility(
+                        visible = !isDeleted,
+                        exit = shrinkHorizontally(
+                            animationSpec = tween(durationMillis = AnimationDuration),
+                            shrinkTowards = Alignment.Start
+                        )
+                    ) {
+                        BgDelete(EndToStart)
+                    }
                 }
             }
         ),

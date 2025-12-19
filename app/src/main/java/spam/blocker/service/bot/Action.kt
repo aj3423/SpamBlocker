@@ -322,7 +322,8 @@ fun List<IAction>.executeAll(
             self.any {
                 val succeeded = try {
                     it.execute(ctx, aCtx)
-                } catch (_: Exception) {
+                } catch (e: Exception) {
+                    aCtx.logger?.error(e.toString())
                     false
                 }
 
