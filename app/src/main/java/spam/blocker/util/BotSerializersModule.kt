@@ -21,7 +21,7 @@ import spam.blocker.service.bot.EnableWorkflow
 import spam.blocker.service.bot.FilterSpamResult
 import spam.blocker.service.bot.FindRules
 import spam.blocker.service.bot.GenerateTag
-import spam.blocker.service.bot.HttpDownload
+import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ISchedule
 import spam.blocker.service.bot.ITriggerAction
@@ -82,7 +82,7 @@ val botModule = SerializersModule {
         subclass(QuickTile::class)
 
         subclass(PruneHistory::class)
-        subclass(HttpDownload::class)
+        subclass(HttpRequest::class)
         subclass(PruneDatabase::class)
         subclass(BackupExport::class)
         subclass(BackupImport::class)

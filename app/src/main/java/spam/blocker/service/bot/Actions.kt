@@ -181,7 +181,7 @@ const val HTTP_POST = 1
 
 @Serializable
 @SerialName("HttpDownload")
-open class HttpDownload(
+open class HttpRequest(
     var method: Int = HTTP_GET,
     var url: String = "",
     // one attribute a line, e.g.:

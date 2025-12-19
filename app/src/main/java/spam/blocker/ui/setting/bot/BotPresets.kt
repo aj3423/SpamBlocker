@@ -12,7 +12,7 @@ import spam.blocker.service.bot.CalendarEvent
 import spam.blocker.service.bot.CallThrottling
 import spam.blocker.service.bot.Daily
 import spam.blocker.service.bot.FindRules
-import spam.blocker.service.bot.HttpDownload
+import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.ModifyRules
@@ -52,7 +52,7 @@ val BotPresets = listOf(
             desc = ctx.getString(R.string.bot_preset_dnc_initial),
             trigger = Manual(),
             actions = listOf(
-                HttpDownload(url = "https://raw.githubusercontent.com/aj3423/DNC_snapshot/refs/heads/master/90days.csv"),
+                HttpRequest(url = "https://raw.githubusercontent.com/aj3423/DNC_snapshot/refs/heads/master/90days.csv"),
                 ParseCSV(),
                 // no need to add ClearNumber here
                 ImportToSpamDB(),
@@ -74,7 +74,7 @@ val BotPresets = listOf(
                 ),
             ),
             actions = listOf(
-                HttpDownload(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
+                HttpRequest(url = "https://www.ftc.gov/sites/default/files/DNC_Complaint_Numbers_{year}-{month}-{day}.csv"),
                 ParseCSV(columnMapping = "{'Company_Phone_Number': 'pattern'}"),
                 // no need to add ClearNumber here
                 ImportToSpamDB(),
@@ -183,7 +183,7 @@ val BotPresets = listOf(
                 )
             ),
             actions = listOf(
-                HttpDownload(url = ctx.getString(R.string.replace_this)),
+                HttpRequest(url = ctx.getString(R.string.replace_this)),
                 BackupImport(),
             )
         )

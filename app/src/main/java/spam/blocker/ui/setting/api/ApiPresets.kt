@@ -11,7 +11,7 @@ import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.FilterSpamResult
 import spam.blocker.service.bot.HTTP_GET
 import spam.blocker.service.bot.HTTP_POST
-import spam.blocker.service.bot.HttpDownload
+import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.InterceptCall
@@ -64,6 +64,7 @@ fun spamCategoryNamesMap(ctx: Context): Map<String, String> {
 
 data class ApiPreset(
     val tooltipId: Int,
+    val leadingIconId: Int? = null,
     // Show a dialog for inputting authorization information(API_TOKEN/Username/Password).
     val newAuthConfig: () -> AuthConfig?,
     val newApi: (Context) -> IApi,
@@ -74,14 +75,14 @@ data class ApiPreset(
 
 val defApiQueryActions = listOf(
     InterceptCall(),
-    HttpDownload(),
+    HttpRequest(),
     ParseQueryResult(),
     FilterSpamResult(),
     ImportToSpamDB()
 )
 val defApiReportActions = listOf(
     InterceptCall(),
-    HttpDownload(),
+    HttpRequest(),
 )
 
 val authConfig_PhoneBlock = AuthConfig(
@@ -91,8 +92,8 @@ val authConfig_PhoneBlock = AuthConfig(
     tooltipId = R.string.help_api_preset_phoneblock_authorization,
     preProcessor = { actions, formValues ->
         // replace the tags in HttpDownload.header
-        actions.find { it is HttpDownload }?.let {
-            val http = it as HttpDownload
+        actions.find { it is HttpRequest }?.let {
+            val http = it as HttpRequest
             http.header = http.header
                 .replace("{api_key}", formValues[0])
         }
@@ -129,6 +130,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
     // PhoneBlock
     ApiPreset(
         tooltipId = R.string.help_api_preset_phoneblock,
+        leadingIconId = R.drawable.ic_call,
         newAuthConfig = { authConfig_PhoneBlock.copy() },
         newApi = { ctx ->
             QueryApi(
@@ -138,7 +140,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                     InterceptCall(
                         numberFilter = ".*",
                     ),
-                    HttpDownload(
+                    HttpRequest(
                         url = if (BuildConfig.DEBUG)
                             "https://phoneblock.net/pb-test/api/check?sha1={sha1(+{cc}{domestic})}"
                         else
@@ -163,6 +165,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
     // Google Gemini
     ApiPreset(
         tooltipId = R.string.help_api_preset_gemini,
+        leadingIconId = R.drawable.ic_sms,
         newAuthConfig = {
             AuthConfig(
                 formLabels = listOf(
@@ -171,8 +174,8 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 tooltipId = R.string.help_api_preset_gemini_authorization,
                 preProcessor = { actions, formValues ->
                     // replace the tags in HttpDownload.header
-                    actions.find { it is HttpDownload }?.let {
-                        val http = it as HttpDownload
+                    actions.find { it is HttpRequest }?.let {
+                        val http = it as HttpRequest
                         http.url = http.url
                             .replace("{api_key}", formValues[0])
                     }
@@ -188,7 +191,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 enabled = true,
                 actions = listOf(
                     InterceptSms(),
-                    HttpDownload(
+                    HttpRequest(
                         url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
                         header = "Content-Type: application/json",
                         method = HTTP_POST,
@@ -229,7 +232,7 @@ val ApiReportPresets = listOf<ApiPreset>(
                             tagFraud to "G_FRAUD",
                         )
                     ),
-                    HttpDownload(
+                    HttpRequest(
                         url = if (BuildConfig.DEBUG)
                             "https://phoneblock.net/pb-test/api/rate"
                         else

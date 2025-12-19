@@ -13,7 +13,7 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
-import spam.blocker.service.bot.HttpDownload
+import spam.blocker.service.bot.HttpRequest
 import spam.blocker.service.bot.IAction
 import spam.blocker.service.bot.parseActions
 import spam.blocker.service.bot.serialize
@@ -51,10 +51,10 @@ abstract class IApi() {
         return domainFromUrl(url())
     }
     fun url(): String? {
-        val httpAction = actions.find { it is HttpDownload }
+        val httpAction = actions.find { it is HttpRequest }
         if (httpAction == null)
             return null
-        return (httpAction as HttpDownload).url
+        return (httpAction as HttpRequest).url
     }
 }
 
@@ -135,7 +135,7 @@ fun listReportableAPIs(
     var apis = G.apiReportVM.table.listAll(ctx)
         .filter { it.enabled }
         .filter { // it must contain 1 and only 1 HttpDownload
-            val https = it.actions.filter { it is HttpDownload }
+            val https = it.actions.filter { it is HttpRequest }
             https.isNotEmpty()
         }
 
@@ -151,8 +151,8 @@ fun listReportableAPIs(
     // 4. Remove duplicated APIs that have same domain name
     //  (user might have added multiple instances)
     apis = apis.distinctBy {
-        val http = it.actions.find { it is HttpDownload }
-        val url = (http as HttpDownload).url
+        val http = it.actions.find { it is HttpRequest }
+        val url = (http as HttpRequest).url
         val domain = domainFromUrl(url)
         domain
     }
@@ -160,8 +160,8 @@ fun listReportableAPIs(
     // 5. Remove api that doesn't match the domain filter
     if (domainFilter != null) {
         apis = apis.filter {
-            val http = it.actions.find { it is HttpDownload }
-            val url = (http as HttpDownload).url
+            val http = it.actions.find { it is HttpRequest }
+            val url = (http as HttpRequest).url
             val domain = domainFromUrl(url)
             domainFilter.contains(domain)
         }

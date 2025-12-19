@@ -31,6 +31,7 @@ import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.FormField
 import spam.blocker.ui.widgets.FormInputField
 import spam.blocker.ui.widgets.GreyIcon
+import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.MenuButton
@@ -221,7 +222,8 @@ fun ApiHeader(
             val desc = preset.newApi(ctx).desc
             LabelItem(
                 label = desc,
-                tooltip = ctx.getString(preset.tooltipId)
+                tooltip = ctx.getString(preset.tooltipId),
+                leadingIcon = preset.leadingIconId?.let{ iconId-> { GreyIcon16(iconId) } }
             ) {
                 tappedPreset.value = preset
                 initialApi.value = preset.newApi(ctx)

@@ -39,7 +39,7 @@ val botTriggers = listOf(
     QuickTile(),
 )
 val botActions = listOf(
-    HttpDownload(),
+    HttpRequest(),
     ReadFile(),
     WriteFile(),
     ParseCSV(),
@@ -62,7 +62,7 @@ val botActions = listOf(
 val apiActions = listOf(
     InterceptCall(),
     InterceptSms(),
-    HttpDownload(),
+    HttpRequest(),
     ParseQueryResult(),
     FilterSpamResult(),
     ConvertNumber(),
