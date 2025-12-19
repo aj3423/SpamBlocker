@@ -275,6 +275,13 @@ object Util {
             .replace("(", "")
             .replace(")", "")
     }
+    fun isAmpersandNumber(rawNumber: String): Boolean {
+        val regex = Regex("""^\d+&\d+$""")
+        return regex.matches(rawNumber)
+    }
+    fun fixAmpersandNumber(rawNumber: String): String {
+        return rawNumber.replace("&", "")
+    }
 
     fun extractString(regex: Regex, haystack: String): String? {
         /*
