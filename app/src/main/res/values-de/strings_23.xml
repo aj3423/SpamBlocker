@@ -100,4 +100,37 @@
         da es sonst zu doppelten Benachrichtigungen kommt.
         ]]>
     </string>
+    <string name="toggled_by_tile">Umschaltbar per Kachel</string>
+    <string name="custom_tile">Benutzerdefinierte Kachel</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Regeln schnell über die Schnelleinstellungs-Kachel umschalten. Während die globale Kachel die gesamte App umschaltet,<br>
+         betrifft diese benutzerdefinierte Kachel nur bestimmte Regeln. <br>
+        <br>
+        Dieses Setup umfasst sowohl eine Regex-Regel als auch einen Workflow. Wenn die Kachel ist: <br>
+        &ensp; - <font color="#03DAC5"><b>An</b></font> <br>
+        &emsp;  Dieser Workflow wird ausgeführt, bevor Anrufe gefiltert werden, er aktiviert die Regex-Regel. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Aus</b></font> <br>
+        &emsp;  Dieser Workflow wird niemals ausgeführt, die Regel wird niemals funktionieren. <br>
+        <br>
+        Kurz gesagt, <b>wenn die Kachel an ist, ist die Regel an, und umgekehrt</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Nur %s SIM-Karte wurde erkannt.</string>
+    <string name="requires_min_android_ver">Erfordert Android %s oder höher.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Erlaube Kontakte auf SIM 2 und blockiere alles andere. <br>
+        <br>
+        Erfordert Android 12+. <br>
+        <br>
+        Dies wird zwei Regeln für SIM 2 hinzufügen: <br>
+        &ensp; - Kontakte zulassen, <font color="#ea86ff">Priorität 12</font>. <br>
+        &ensp; - Alles andere blockieren, <font color="#ea86ff">Priorität 11</font>.
+        Dies überschreibt Einstellungen wie Wiederholter Anruf, sodass diese immer blockiert werden, auch wenn sie sich wiederholen.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">SIM 2 Nicht-Kontakte</string>
+    <string name="sim_2_contacts">SIM 2 Kontakte</string>
 </resources>

@@ -17,6 +17,7 @@ import spam.blocker.service.bot.ImportToSpamDB
 import spam.blocker.service.bot.Manual
 import spam.blocker.service.bot.ModifyRules
 import spam.blocker.service.bot.ParseCSV
+import spam.blocker.service.bot.QuickTile
 import spam.blocker.service.bot.Ringtone
 import spam.blocker.service.bot.Schedule
 import spam.blocker.service.bot.SmsThrottling
@@ -89,6 +90,30 @@ val BotPresets = listOf(
         Bot(
             desc = ctx.getString(R.string.ringtone),
             trigger = Ringtone(bindTo = "{ \"regex\": \"${ctx.getString(R.string.replace_this)}\" }"),
+        )
+    },
+
+    // Tile Switch
+    BotPreset(
+        tooltip = { it.getString(R.string.help_custom_tile) },
+        onCreate = { ctx ->
+            // Add a regex rule
+            NumberRuleTable().addNewRule(ctx, RegexRule(
+                pattern = ".*",
+                description = ctx.getString(R.string.toggled_by_tile),
+                flags = 0, // disabled for call/sms
+                priority = 100,
+            ))
+            G.NumberRuleVM.reloadDb(ctx)
+        },
+    ) { ctx ->
+        Bot(
+            desc = ctx.getString(R.string.custom_tile),
+            trigger = QuickTile(),
+            actions = listOf(
+                FindRules(pattern = ctx.getString(R.string.toggled_by_tile)),
+                ModifyRules(config = "{\"flags\": 3}"),
+            )
         )
     },
 

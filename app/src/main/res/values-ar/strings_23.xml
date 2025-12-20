@@ -97,4 +97,35 @@
         وإلا ستكون هناك إشعارات مزدوجة.
         ]]>
     </string>
+    <string name="toggled_by_tile">تم التبديل بواسطة المربع</string>
+    <string name="custom_tile">مربع مخصص</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        تبديل القواعد بسرعة باستخدام مربع الإعدادات السريعة. بينما يقوم المربع العام بتبديل التطبيق بأكمله، يؤثر هذا المربع المخصص على قواعد محددة فقط. <br>
+        <br>
+        يتضمن هذا الإعداد كلاً من قاعدة تعبير عادي وسير عمل. عندما يكون المربع: <br>
+        &ensp; - <font color="#03DAC5"><b>مفعل</b></font> <br>
+        &emsp; سيتم تنفيذ سير العمل هذا قبل فحص المكالمات، وسيقوم بتمكين قاعدة التعبير العادي. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>معطل</b></font> <br>
+        &emsp; لن يتم تشغيل سير العمل هذا أبدًا، ولن تعمل القاعدة أبدًا. <br>
+        <br>
+        باختصار، <b>عندما يكون المربع مفعلاً، تكون القاعدة مفعلة، والعكس صحيح</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">تم اكتشاف %s بطاقة SIM فقط.</string>
+    <string name="requires_min_android_ver">يتطلب أندرويد %s أو أعلى.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        السماح بجهات الاتصال على SIM 2 وحظر كل شيء آخر. <br>
+        <br>
+        يتطلب أندرويد 12 أو أعلى. <br>
+        <br>
+        سيضيف هذا قاعدتين لـ SIM 2: <br>
+        &ensp; - السماح بجهات الاتصال، <font color="#ea86ff">الأولوية 12</font>. <br>
+        &ensp; - حظر كل شيء آخر، <font color="#ea86ff">الأولوية 11</font>. هذا يتجاوز إعدادات مثل المكالمة المتكررة، لذلك سيتم حظرها دائمًا حتى لو تكررت.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">غير جهات اتصال SIM 2</string>
+    <string name="sim_2_contacts">جهات اتصال SIM 2</string>
 </resources>

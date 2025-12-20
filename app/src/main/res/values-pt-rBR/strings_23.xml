@@ -100,4 +100,37 @@
         caso contrário, haverá notificações duplicadas.
         ]]>
     </string>
+    <string name="toggled_by_tile">Alternado pelo Bloco</string>
+    <string name="custom_tile">Bloco Personalizado</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Alterne rapidamente as regras usando o Bloco de Configurações Rápidas. Enquanto o bloco global alterna todo o aplicativo,
+         este bloco personalizado afeta apenas regras específicas. <br>
+        <br>
+        Esta configuração envolve uma regra regex e um fluxo de trabalho. Quando o bloco está: <br>
+        &ensp; - <font color="#03DAC5"><b>Ligado</b></font> <br>
+        &emsp;  Este fluxo de trabalho será executado antes que as chamadas sejam triadas, ele ativará a regra regex. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Desligado</b></font> <br>
+        &emsp;  Este fluxo de trabalho nunca será executado, a regra nunca funcionará. <br>
+        <br>
+        Em resumo, <b>quando o bloco está ligado, a regra está ligada, e vice-versa</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Apenas %s cartão SIM foi detectado.</string>
+    <string name="requires_min_android_ver">Requer Android %s ou superior.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Permitir contatos no SIM 2 e bloquear todo o resto. <br>
+        <br>
+        Requer Android 12+. <br>
+        <br>
+        Isso adicionará duas regras para o SIM 2: <br>
+        &ensp; - Permitir contatos, <font color="#ea86ff">prioridade 12</font>. <br>
+        &ensp; - Bloquear todo o resto, <font color="#ea86ff">prioridade 11</font>.
+        Isso substitui configurações como Chamada Repetida, então eles serão sempre bloqueados mesmo se repetirem.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">Não-Contatos do SIM 2</string>
+    <string name="sim_2_contacts">Contatos do SIM 2</string>
 </resources>

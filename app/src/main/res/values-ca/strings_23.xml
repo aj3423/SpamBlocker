@@ -100,4 +100,37 @@
         en cas contrari hi haurà dobles notificacions.
         ]]>
     </string>
+    <string name="toggled_by_tile">Activat/desactivat per la rajola</string>
+    <string name="custom_tile">Rajola personalitzada</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Activa o desactiva ràpidament les regles utilitzant la rajola de Configuració Ràpida. Mentre la rajola global activa/desactiva tota l\'aplicació,
+         aquesta rajola personalitzada només afecta regles específiques. <br>
+        <br>
+        Aquesta configuració implica tant una regla de regex com un flux de treball. Quan la rajola està: <br>
+        &ensp; - <font color="#03DAC5"><b>Activada</b></font> <br>
+        &emsp;  Aquest flux de treball s\'executarà abans que es filtrin les trucades, habilitarà la regla de regex. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Desactivada</b></font> <br>
+        &emsp;  Aquest flux de treball mai s\'executarà, la regla mai funcionarà. <br>
+        <br>
+        En resum, <b>quan la rajola està activada, la regla està activada, i viceversa</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Només s\'ha detectat %s targeta SIM.</string>
+    <string name="requires_min_android_ver">Requereix Android %s o superior.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Permet els contactes de la SIM 2 i bloqueja tota la resta. <br>
+        <br>
+        Requereix Android 12+. <br>
+        <br>
+        Això afegirà dues regles per a la SIM 2: <br>
+        &ensp; - Permetre contactes, <font color="#ea86ff">prioritat 12</font>. <br>
+        &ensp; - Bloquejar tota la resta, <font color="#ea86ff">prioritat 11</font>.
+        Això anul·la configuracions com Trucada Repetida, de manera que sempre es bloquejaran encara que es repeteixin.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">No-contactes de la SIM 2</string>
+    <string name="sim_2_contacts">Contactes de la SIM 2</string>
 </resources>

@@ -95,4 +95,36 @@
         請在系統設定中<font color="#fa7f71"><b>關閉預設簡訊應用程式的通知權限</b></font>，否則會出現雙重通知。
         ]]>
     </string>
+    <string name="toggled_by_tile">透過快捷磚切換</string>
+    <string name="custom_tile">自訂快捷磚</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        使用快速設定快捷磚快速切換規則。全域快捷磚切換整個應用程式，而此自訂快捷磚僅影響特定規則。<br>
+        <br>
+        此設定涉及正規表達式規則和工作流程。當快捷磚處於：<br>
+        &ensp; - <font color="#03DAC5"><b>開啟</b></font> <br>
+        &emsp;  此工作流程將在通話篩選前執行，它將啟用正規表達式規則。<br>
+        <br>
+        &ensp; - <font color="#888888"><b>關閉</b></font> <br>
+        &emsp;  此工作流程將永不執行，規則將永不生效。<br>
+        <br>
+        簡而言之，<b>當快捷磚開啟時，規則開啟；反之亦然</b>。
+        ]]>
+    </string>
+    <string name="detected_sim_count">僅偵測到 %s 張 SIM 卡。</string>
+    <string name="requires_min_android_ver">需要 Android %s 或更高版本。</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        允許 SIM 2 上的聯絡人，並阻擋其他所有來電。<br>
+        <br>
+        需要 Android 12 或更高版本。<br>
+        <br>
+        這將為 SIM 2 添加兩條規則：<br>
+        &ensp; - 允許聯絡人，<font color="#ea86ff">優先級 12</font>。<br>
+        &ensp; - 阻擋其他所有來電，<font color="#ea86ff">優先級 11</font>。
+        這將覆蓋重複來電等設定，因此即使重複，它們也將始終被阻擋。
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">SIM 2 非聯絡人</string>
+    <string name="sim_2_contacts">SIM 2 聯絡人</string>
 </resources>

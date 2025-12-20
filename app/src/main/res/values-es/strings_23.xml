@@ -100,4 +100,37 @@
         de lo contrario habrá notificaciones duplicadas.
         ]]>
     </string>
+    <string name="toggled_by_tile">Activado por el mosaico</string>
+    <string name="custom_tile">Mosaico Personalizado</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Activa/desactiva rápidamente las reglas usando el Mosaico de Ajustes Rápidos. Mientras que el mosaico global activa/desactiva toda la aplicación,
+         este mosaico personalizado afecta solo a reglas específicas. <br>
+        <br>
+        Esta configuración involucra tanto una regla de expresión regular como un flujo de trabajo. Cuando el mosaico está: <br>
+        &ensp; - <font color="#03DAC5"><b>Activado</b></font> <br>
+        &emsp; Este flujo de trabajo se ejecutará antes de que se filtren las llamadas, habilitará la regla de expresión regular. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Desactivado</b></font> <br>
+        &emsp; Este flujo de trabajo nunca se ejecutará, la regla nunca funcionará. <br>
+        <br>
+        En resumen, <b>cuando el mosaico está activado, la regla está activada, y viceversa</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Solo se detecta %s tarjeta SIM.</string>
+    <string name="requires_min_android_ver">Requiere Android %s o superior.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Permitir contactos en la SIM 2 y bloquear todo lo demás. <br>
+        <br>
+        Requiere Android 12+. <br>
+        <br>
+        Esto añadirá dos reglas para la SIM 2: <br>
+        &ensp; - Permitir contactos, <font color="#ea86ff">prioridad 12</font>. <br>
+        &ensp; - Bloquear todo lo demás, <font color="#ea86ff">prioridad 11</font>.
+        Esto anula configuraciones como Llamada Repetida, por lo que siempre serán bloqueadas incluso si se repiten.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">No Contactos de SIM 2</string>
+    <string name="sim_2_contacts">Contactos de SIM 2</string>
 </resources>

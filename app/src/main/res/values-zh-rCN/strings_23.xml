@@ -96,4 +96,35 @@
         否则会出现双重通知。
         ]]>
     </string>
+    <string name="toggled_by_tile">通过快捷开关切换</string>
+    <string name="custom_tile">自定义快捷开关</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        使用快速设置快捷开关快速切换规则。全局快捷开关切换整个应用程序，而此自定义快捷开关仅影响特定规则。<br>
+        <br>
+        此设置涉及正则表达式规则和工作流。当快捷开关为：<br>
+        &ensp; - <font color="#03DAC5"><b>开启</b></font> <br>
+        &emsp;  此工作流将在筛选来电之前执行，它将启用正则表达式规则。<br>
+        <br>
+        &ensp; - <font color="#888888"><b>关闭</b></font> <br>
+        &emsp;  此工作流将永远不会运行，规则将永远不会生效。<br>
+        <br>
+        简而言之，<b>当快捷开关开启时，规则开启；反之亦然</b>。
+        ]]>
+    </string>
+    <string name="detected_sim_count">仅检测到 %s 张 SIM 卡。</string>
+    <string name="requires_min_android_ver">需要安卓 %s 或更高版本。</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        允许 SIM 2 上的联系人，并阻止其他所有内容。 <br>
+        <br>
+        需要安卓 12 及更高版本。 <br>
+        <br>
+        这将为 SIM 2 添加两条规则： <br>
+        &ensp; - 允许联系人，<font color="#ea86ff">优先级 12</font>。 <br>
+        &ensp; - 阻止其他所有内容，<font color="#ea86ff">优先级 11</font>。这将覆盖重复呼叫等设置，因此即使重复呼叫也始终会被阻止。
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">SIM 2 非联系人</string>
+    <string name="sim_2_contacts">SIM 2 联系人</string>
 </resources>

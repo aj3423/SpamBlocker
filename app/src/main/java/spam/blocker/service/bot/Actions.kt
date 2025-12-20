@@ -83,7 +83,6 @@ import spam.blocker.util.PermissiveJson
 import spam.blocker.util.PermissivePrettyJson
 import spam.blocker.util.Util
 import spam.blocker.util.Util.domainFromUrl
-import spam.blocker.util.Util.isAlphaNumber
 import spam.blocker.util.Xml
 import spam.blocker.util.formatAnnotated
 import spam.blocker.util.httpRequest

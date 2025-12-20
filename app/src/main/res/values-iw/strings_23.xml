@@ -97,4 +97,36 @@
         אחרת יהיו התראות כפולות.
         ]]>
     </string>
+    <string name="toggled_by_tile">הופעל על ידי אריח</string>
+    <string name="custom_tile">אריח מותאם אישית</string>
+    <string name="help_custom_tile">
+        <![CDATA[
+        החלף במהירות כללים באמצעות אריח ההגדרות המהירות. בעוד שהאריח הגלובלי מפעיל/מכבה את כל האפליקציה,
+         אריח מותאם אישית זה משפיע רק על כללים ספציפיים. <br>
+        <br>
+        הגדרה זו כוללת גם כלל ביטוי רגולרי וגם זרימת עבודה. כאשר האריח הוא: <br>
+        &ensp; - <font color="#03DAC5"><b>מופעל</b></font> <br>
+        &emsp;  זרימת עבודה זו תתבצע לפני סינון שיחות, היא תאפשר את כלל הביטוי הרגולרי. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>כבוי</b></font> <br>
+        &emsp;  זרימת עבודה זו לעולם לא תפעל, הכלל לעולם לא יעבוד. <br>
+        <br>
+        בקיצור, <b>כאשר האריח מופעל, הכלל מופעל, ולהיפך</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">זוהו רק %s כרטיסי SIM.</string>
+    <string name="requires_min_android_ver">דורש אנדרואיד %s ומעלה.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        אפשר אנשי קשר ב-SIM 2 וחסום כל דבר אחר. <br>
+        <br>
+        דורש אנדרואיד 12 ומעלה. <br>
+        <br>
+        זה יוסיף שני כללים עבור SIM 2: <br>
+        &ensp; - אפשר אנשי קשר, <font color="#ea86ff">עדיפות 12</font>. <br>
+        &ensp; - חסום כל דבר אחר, <font color="#ea86ff">עדיפות 11</font>. זה עוקף הגדרות כמו שיחה חוזרת, כך שהן תמיד ייחסמו גם אם הן חוזרות.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">לא אנשי קשר של SIM 2</string>
+    <string name="sim_2_contacts">אנשי קשר של SIM 2</string>
 </resources>

@@ -100,4 +100,37 @@
         jika tidak akan ada notifikasi ganda.
         ]]>
     </string>
+    <string name="toggled_by_tile">Diaktifkan oleh Tile</string>
+    <string name="custom_tile">Tile Kustom</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Mengaktifkan/menonaktifkan aturan dengan cepat menggunakan Tile Pengaturan Cepat. Sementara tile global mengaktifkan/menonaktifkan seluruh aplikasi,
+         tile kustom ini hanya memengaruhi aturan tertentu. <br>
+        <br>
+        Pengaturan ini melibatkan aturan regex dan alur kerja. Saat tile: <br>
+        &ensp; - <font color="#03DAC5"><b>Aktif</b></font> <br>
+        &emsp;  Alur kerja ini akan dieksekusi sebelum panggilan disaring, ini akan mengaktifkan aturan regex. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Mati</b></font> <br>
+        &emsp;  Alur kerja ini tidak akan pernah berjalan, aturan tidak akan pernah berfungsi. <br>
+        <br>
+        Singkatnya, <b>saat tile aktif, aturan aktif, dan sebaliknya</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Hanya %s kartu SIM yang terdeteksi.</string>
+    <string name="requires_min_android_ver">Membutuhkan Android %s atau lebih tinggi.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Izinkan kontak di SIM 2 dan blokir yang lainnya. <br>
+        <br>
+        Membutuhkan Android 12+. <br>
+        <br>
+        Ini akan menambahkan dua aturan untuk SIM 2: <br>
+        &ensp; - Izinkan kontak, <font color="#ea86ff">prioritas 12</font>. <br>
+        &ensp; - Blokir yang lainnya, <font color="#ea86ff">prioritas 11</font>.
+        Ini mengesampingkan pengaturan seperti Panggilan Berulang, sehingga mereka akan selalu diblokir meskipun berulang.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">Non-Kontak SIM 2</string>
+    <string name="sim_2_contacts">Kontak SIM 2</string>
 </resources>

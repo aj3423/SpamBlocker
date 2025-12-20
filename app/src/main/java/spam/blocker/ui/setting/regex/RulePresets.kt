@@ -2,7 +2,6 @@ package spam.blocker.ui.setting.regex
 
 import android.content.Context
 import android.os.Build
-import androidx.compose.runtime.MutableState
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Notification

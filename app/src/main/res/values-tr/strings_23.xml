@@ -95,4 +95,35 @@
         Lütfen sistem ayarlarında <font color="#fa7f71"><b>varsayılan SMS uygulamasının bildirim iznini kapatın</b></font>, aksi takdirde çift bildirim olacaktır.
         ]]>
     </string>
+    <string name="toggled_by_tile">Kutucukla Değiştirildi</string>
+    <string name="custom_tile">Özel Kutucuk</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Hızlı Ayarlar Kutucuğu\'nu kullanarak kuralları hızla değiştirin. Genel kutucuk tüm uygulamayı değiştirirken, bu özel kutucuk yalnızca belirli kuralları etkiler. <br>
+        <br>
+        Bu kurulum hem bir regex kuralı hem de bir iş akışı içerir. Kutucuk: <br>
+        &ensp; - <font color="#03DAC5"><b>Açık</b></font> <br>
+        &emsp;  Bu iş akışı aramalar filtrelenmeden önce yürütülecek, regex kuralını etkinleştirecektir. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Kapalı</b></font> <br>
+        &emsp;  Bu iş akışı asla çalışmayacak, kural asla işlemeyecektir. <br>
+        <br>
+        Kısacası, <b>kutucuk açıkken kural açıktır ve bunun tersi de geçerlidir</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Yalnızca %s SIM kartı algılandı.</string>
+    <string name="requires_min_android_ver">Android %s veya üzeri gerektirir.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        SIM 2\'deki kişilere izin verin ve diğer her şeyi engelleyin. <br>
+        <br>
+        Android 12 veya üzeri gerektirir. <br>
+        <br>
+        Bu, SIM 2 için iki kural ekleyecektir: <br>
+        &ensp; - Kişilere izin ver, <font color="#ea86ff">öncelik 12</font>. <br>
+        &ensp; - Diğer her şeyi engelle, <font color="#ea86ff">öncelik 11</font>. Bu, Tekrarlanan Arama gibi ayarları geçersiz kılar, böylece tekrar etseler bile her zaman engellenirler.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">SIM 2 Kişi Olmayanlar</string>
+    <string name="sim_2_contacts">SIM 2 Kişileri</string>
 </resources>

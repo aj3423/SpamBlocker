@@ -95,4 +95,35 @@
         システム設定で<font color="#fa7f71"><b>デフォルトのSMSアプリの通知権限をオフにしてください</b></font>。そうしないと、通知が二重に表示されます。
         ]]>
     </string>
+    <string name="toggled_by_tile">タイルによって切り替えられました</string>
+    <string name="custom_tile">カスタムタイル</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        クイック設定タイルを使用してルールをすばやく切り替えます。グローバルタイルがアプリ全体を切り替えるのに対し、このカスタムタイルは特定のルールのみに影響します。<br>
+        <br>
+        この設定には、正規表現ルールとワークフローの両方が含まれます。タイルが次の状態の場合:<br>
+        &ensp; - <font color="#03DAC5"><b>オン</b></font><br>
+        &emsp;  このワークフローは、通話がスクリーニングされる前に実行され、正規表現ルールを有効にします。<br>
+        <br>
+        &ensp; - <font color="#888888"><b>オフ</b></font><br>
+        &emsp;  このワークフローは決して実行されず、ルールは決して機能しません。<br>
+        <br>
+        つまり、<b>タイルがオンの場合、ルールはオンになり、その逆もまた同様です</b>。
+        ]]>
+    </string>
+    <string name="detected_sim_count">SIMカードは%s枚しか検出されていません。</string>
+    <string name="requires_min_android_ver">Android %s以降が必要です。</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        SIM 2の連絡先を許可し、それ以外をすべてブロックします。<br>
+        <br>
+        Android 12以降が必要です。<br>
+        <br>
+        これにより、SIM 2に2つのルールが追加されます。<br>
+        &ensp; - 連絡先を許可、<font color="#ea86ff">優先度 12</font>。<br>
+        &ensp; - その他すべてをブロック、<font color="#ea86ff">優先度 11</font>。これにより、繰り返し着信などの設定が上書きされ、繰り返されても常にブロックされます。
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">SIM 2の連絡先以外</string>
+    <string name="sim_2_contacts">SIM 2の連絡先</string>
 </resources>

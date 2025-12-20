@@ -116,4 +116,21 @@
     </string>
     <string name="requires_min_android_ver">Requires Android %s or higher.</string>
     <string name="detected_sim_count">Only %s SIM card is detected.</string>
+    <string name="toggled_by_tile">Toggled by Tile</string>
+    <string name="custom_tile">Custom Tile</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Quickly toggle rules using the Quick Settings Tile. While the global tile toggles the entire app,
+         this custom tile affects only specific rules. <br>
+        <br>
+        This setup involves both a regex rule and a workflow. When the tile is: <br>
+        &ensp; - <font color="#03DAC5"><b>On</b></font> <br>
+        &emsp;  This workflow will be executed before calls are screened, it will enable the regex rule. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Off</b></font> <br>
+        &emsp;  This workflow will never run, the rule will never work. <br>
+        <br>
+        In short, <b>when the tile is on, the rule is on, and vice versa</b>.
+        ]]>
+    </string>
 </resources>

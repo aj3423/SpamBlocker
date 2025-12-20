@@ -100,4 +100,36 @@
         sinon il y aura des doubles notifications.
         ]]>
     </string>
+    <string name="toggled_by_tile">Activé/désactivé par la tuile</string>
+    <string name="custom_tile">Tuile personnalisée</string>>
+    <string name="help_custom_tile">
+        <![CDATA[
+        Activez/désactivez rapidement les règles à l\'aide de la tuile de paramètres rapides. Alors que la tuile globale active/désactive toute l\'application, cette tuile personnalisée n\'affecte que des règles spécifiques. <br>
+        <br>
+        Cette configuration implique à la fois une règle regex et un flux de travail. Lorsque la tuile est : <br>
+        &ensp; - <font color="#03DAC5"><b>Activée</b></font> <br>
+        &emsp;  Ce flux de travail sera exécuté avant le filtrage des appels, il activera la règle regex. <br>
+        <br>
+        &ensp; - <font color="#888888"><b>Désactivée</b></font> <br>
+        &emsp;  Ce flux de travail ne s\'exécutera jamais, la règle ne fonctionnera jamais. <br>
+        <br>
+        En bref, <b>lorsque la tuile est activée, la règle est activée, et vice versa</b>.
+        ]]>
+    </string>
+    <string name="detected_sim_count">Seule %s carte SIM est détectée.</string>
+    <string name="requires_min_android_ver">Nécessite Android %s ou supérieur.</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Autoriser les contacts sur la SIM 2 et bloquer tout le reste. <br>
+        <br>
+        Nécessite Android 12 ou supérieur. <br>
+        <br>
+        Ceci ajoutera deux règles pour la SIM 2 : <br>
+        &ensp; - Autoriser les contacts, <font color="#ea86ff">priorité 12</font>. <br>
+        &ensp; - Bloquer tout le reste, <font color="#ea86ff">priorité 11</font>.
+        Cela remplace les paramètres comme Appel répété, ils seront donc toujours bloqués même s\'ils se répètent.
+        ]]>
+    </string>
+    <string name="sim_2_non_contacts">Non-contacts SIM 2</string>
+    <string name="sim_2_contacts">Contacts SIM 2</string>
 </resources>
