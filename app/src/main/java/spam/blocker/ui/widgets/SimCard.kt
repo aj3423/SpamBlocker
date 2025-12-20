@@ -44,7 +44,7 @@ fun SimCardIcon(
         )
 
         Text(
-            text = "$slotIndex",
+            text = "${slotIndex+1}",
             color = color,
             fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
@@ -86,7 +86,7 @@ fun SimPicker(
             ret += allCards.map { sim ->
                 LabelItem(
                     leadingIcon = { SimCardIcon(sim.slotIndex) },
-                    label = ctx.getString(R.string.sim_slot_template).format("${sim.slotIndex}")
+                    label = ctx.getString(R.string.sim_slot_template).format("${sim.slotIndex + 1}")
                 ) {
                     G.permissionChain.ask(
                         ctx,
