@@ -7,6 +7,7 @@ import spam.blocker.R
 import spam.blocker.db.Notification
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Permission
@@ -63,7 +64,7 @@ val RegexRulePresets = mapOf(
             },
             preCheck = { ctx, onSuccess, onFail ->
                 // 1. check Android version
-                if (Build.VERSION.SDK_INT < 12) {
+                if (Build.VERSION.SDK_INT < ANDROID_12) {
                     onFail(ctx.getString(R.string.requires_min_android_ver).format("12"))
                     return@RulePreset
                 }
