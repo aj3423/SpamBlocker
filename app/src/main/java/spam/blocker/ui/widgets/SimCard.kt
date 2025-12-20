@@ -25,7 +25,7 @@ import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.ui.M
 import spam.blocker.util.Permission
 import spam.blocker.util.PermissionWrapper
-import spam.blocker.util.SimCard
+import spam.blocker.util.SimUtils
 
 
 @Composable
@@ -60,7 +60,7 @@ fun SimPicker(
     val ctx = LocalContext.current
 
     RowVCenterSpaced(8) {
-        var allCards by remember { mutableStateOf(SimCard.listSimCards(ctx)) }
+        var allCards by remember { mutableStateOf(SimUtils.listSimCards(ctx)) }
         var simRefreshed by remember { mutableStateOf(true) }
 
         var selected by remember(simSlot.value, simRefreshed) {
@@ -111,7 +111,7 @@ fun SimPicker(
                     listOf(PermissionWrapper(Permission.phoneState))
                 ) { granted ->
                     if (granted) {
-                        allCards = SimCard.listSimCards(ctx)
+                        allCards = SimUtils.listSimCards(ctx)
                         simRefreshed = !simRefreshed
                         dropdownExpanded.value = true
                     }

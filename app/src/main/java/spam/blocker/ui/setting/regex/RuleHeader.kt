@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.regex
 
 import androidx.compose.foundation.clickable
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,6 +26,8 @@ import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.rememberFileReadChooser
+import spam.blocker.util.Lambda
+import spam.blocker.util.Lambda1
 
 @Composable
 fun RuleHeader(
@@ -60,6 +63,15 @@ fun RuleHeader(
         )
     }
 
+    val errTrigger = remember { mutableStateOf(false) }
+    var errStr by remember { mutableStateOf("") }
+    PopupDialog(errTrigger) {
+        Text(
+            text = errStr,
+            color = Salmon
+        )
+    }
+
     val shortClickItems = remember {
         val ret = mutableListOf(
             LabelItem(
@@ -76,8 +88,20 @@ fun RuleHeader(
                 label = preset.label(ctx),
                 tooltip = preset.tooltip(ctx)
             ) {
-                initRule = preset.newInstance(ctx)
-                addRuleTrigger.value = true
+                val onSuccess: Lambda = {
+                    val newRules = preset.newInstance(ctx)
+                    // 1. add to db
+                    newRules.forEach {
+                        vm.table.addNewRule(ctx, it)
+                    }
+                    // 2. reload from db
+                    vm.reloadDb(ctx)
+                }
+                val onFail: Lambda1<String> = { err ->
+                    errStr = err
+                    errTrigger.value = true
+                }
+                preset.preCheck(ctx, onSuccess, onFail)
             }
         }
         ret

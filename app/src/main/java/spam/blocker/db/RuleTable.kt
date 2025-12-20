@@ -98,7 +98,7 @@ data class RegexRule(
     var flags: Int = Def.FLAG_FOR_SMS or Def.FLAG_FOR_CALL, // it applies to SMS or Call or both
 
     @Serializable(with = CompatibleChannelSerializer::class)
-    var channel: String = Def.DEF_SPAM_CHANNEL, // notification channel
+    var channel: String = if(isBlacklist) Def.DEF_SPAM_CHANNEL else CHANNEL_HIGH, // notification channel
 
     var schedule: String = "",
     var blockType: Int = Def.DEF_BLOCK_TYPE,

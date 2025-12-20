@@ -5,6 +5,7 @@ import android.os.Build
 import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
 import androidx.core.content.getSystemService
+import spam.blocker.def.Def.ANDROID_11
 import spam.blocker.def.Def.ANDROID_12
 
 
@@ -14,7 +15,15 @@ data class SimInfo(
 )
 
 
-object SimCard {
+object SimUtils {
+    fun simCount(ctx: Context): Int {
+        if (Build.VERSION.SDK_INT < ANDROID_12) {
+            return 0
+        }
+        val telephony = ctx.getSystemService<TelephonyManager>()!!
+        return telephony.activeModemCount
+    }
+
     fun listSimCards(ctx: Context): List<SimInfo> {
         if (Build.VERSION.SDK_INT < ANDROID_12)
             return listOf()

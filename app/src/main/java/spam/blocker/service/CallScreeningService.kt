@@ -27,7 +27,7 @@ import spam.blocker.util.ILogger
 import spam.blocker.util.Notification
 import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.RingtoneUtil
-import spam.blocker.util.SimCard
+import spam.blocker.util.SimUtils
 import spam.blocker.util.Util
 import spam.blocker.util.Util.fixAmpersandNumber
 import spam.blocker.util.Util.isAmpersandNumber
@@ -132,9 +132,9 @@ class CallScreeningService : CallScreeningService() {
     override fun onScreenCall(details: Details) {
         logi("onScreenCall() invoked by Android")
 
-        val slot0 = SimCard.isSimSlotRinging(this, 0)
-        val slot1 = SimCard.isSimSlotRinging(this, 1)
-        val slot2 = SimCard.isSimSlotRinging(this, 2)
+        val slot0 = SimUtils.isSimSlotRinging(this, 0)
+        val slot1 = SimUtils.isSimSlotRinging(this, 1)
+        val slot2 = SimUtils.isSimSlotRinging(this, 2)
 
         logi("slot 0: $slot0,  1: $slot1,  2: $slot2")
 
@@ -164,7 +164,7 @@ class CallScreeningService : CallScreeningService() {
 
         val rawNumber = details.getRawNumber()
 
-        val ringingSimSlot = SimCard.getRingingSimSlot(this)
+        val ringingSimSlot = SimUtils.getRingingSimSlot(this)
         val r = processCall(
             ctx = this, logger = null, rawNumber = rawNumber, callDetails = details, simSlot = ringingSimSlot,
         )

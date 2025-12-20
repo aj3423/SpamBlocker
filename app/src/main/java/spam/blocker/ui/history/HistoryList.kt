@@ -27,7 +27,7 @@ import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
 import spam.blocker.ui.widgets.SnackBar
 import spam.blocker.ui.widgets.SwipeInfo
 import spam.blocker.util.Launcher
-import spam.blocker.util.SimCard
+import spam.blocker.util.SimUtils
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -41,7 +41,7 @@ fun HistoryList(
     val coroutineScope = rememberCoroutineScope()
 
     val simCount = remember {
-        SimCard.listSimCards(ctx).size
+        SimUtils.listSimCards(ctx).size
     }
 
     // Just a short alias, that G.xxx it too long

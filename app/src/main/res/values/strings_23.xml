@@ -100,4 +100,20 @@
     </string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
+    <string name="sim_2_contacts">SIM 2 Contacts</string>
+    <string name="sim_2_non_contacts">SIM 2 Non-Contacts</string>
+    <string name="help_sim_2_contacts">
+        <![CDATA[
+        Allow contacts on SIM 2 and block everything else. <br>
+        <br>
+        Requires Android 12+. <br>
+        <br>
+        This will add two rules for SIM 2: <br>
+        &ensp; - Allow contacts, <font color="#ea86ff">priority 12</font>. <br>
+        &ensp; - Block everything else, <font color="#ea86ff">priority 11</font>.
+        This overrides settings like RepeatedCall, so they\'ll always be blocked even if they repeat.
+        ]]>
+    </string>
+    <string name="requires_min_android_ver">Requires Android %s or higher.</string>
+    <string name="detected_sim_count">Only %s SIM card is detected.</string>
 </resources>
