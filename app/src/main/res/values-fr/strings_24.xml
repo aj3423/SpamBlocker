@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Assurez-vous de <font color="#fa7f71"><b>désactiver les notifications de l\'application SMS</b></font> dans les paramètres système
+         pour éviter les doubles notifications. <br>
+        <br>
+        Si l\'application SMS impose une autorisation de notification, vous pouvez la laisser accordée
+         et désactiver plutôt tous les <b>canaux de notification</b>.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Pour les SMS, cette application gère les notifications SMS, elle ne fait que les filtrer, les messages indésirables
+         seront toujours présents dans l\'application SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

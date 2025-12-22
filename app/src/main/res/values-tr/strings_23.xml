@@ -88,13 +88,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Tarama</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        SMS için bu uygulama SMS bildirimlerini devralır, yalnızca SMS bildirimlerini filtreler, spam SMS mesajları SMS uygulamasında mevcut olmaya devam edecektir. <br>
-        <br>
-        Lütfen sistem ayarlarında <font color="#fa7f71"><b>varsayılan SMS uygulamasının bildirim iznini kapatın</b></font>, aksi takdirde çift bildirim olacaktır.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Kutucukla Değiştirildi</string>
     <string name="custom_tile">Özel Kutucuk</string>>
     <string name="help_custom_tile">

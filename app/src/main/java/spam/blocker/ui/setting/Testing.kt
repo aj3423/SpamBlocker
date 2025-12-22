@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
+import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.service.CallScreeningService
 import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.theme.DarkOrange
@@ -156,7 +157,7 @@ fun PopupTesting(
                 // SIM
                 LabeledRow(
                     labelId = R.string.sim_card,
-                    color = if(Build.VERSION.SDK_INT < 12) C.disabled else null,
+                    color = if(Build.VERSION.SDK_INT < ANDROID_12) C.disabled else null,
                     helpTooltip = Str(R.string.help_test_sim_card)
                 ) {
                     SimPicker(vm.simSlot)

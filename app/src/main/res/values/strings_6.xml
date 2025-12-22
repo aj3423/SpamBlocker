@@ -73,13 +73,5 @@
         <item>Import .csv as a single rule</item>
         <item>Import .csv as multiple rules</item>
     </string-array>
-    <string name="warning_double_sms">
-        This app will take over all SMS notifications,
-        but the default SMS app will also show SMS notifications. To prevent double notifications,
-        please disable its notification permission in the
-        system settings.\n
-        \n
-        ⚠️ RCS is not supported.
-    </string>
     <string name="open_settings">Open Settings</string>
 </resources>

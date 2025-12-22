@@ -88,13 +88,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">スクリーニング</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        SMSの場合、このアプリはSMS通知を引き継ぎ、SMS通知のみをフィルタリングします。迷惑SMSメッセージはSMSアプリに引き続き表示されます。<br>
-        <br>
-        システム設定で<font color="#fa7f71"><b>デフォルトのSMSアプリの通知権限をオフにしてください</b></font>。そうしないと、通知が二重に表示されます。
-        ]]>
-    </string>
     <string name="toggled_by_tile">タイルによって切り替えられました</string>
     <string name="custom_tile">カスタムタイル</string>>
     <string name="help_custom_tile">

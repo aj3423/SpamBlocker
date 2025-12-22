@@ -89,15 +89,6 @@
         Call and SMS screening also need to be enabled separately below, they only work when this is enabled.
         ]]>
     </string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        For SMS, this app takes over the SMS notifications, it only filters SMS notifications, spam SMS
-         messages will still be present in the SMS app. <br>
-        <br>
-        Please <font color="#fa7f71"><b>turn off the notification permission of the default SMS app</b></font> in system settings,
-        otherwise there will be double notifications.
-        ]]>
-    </string>
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="sim_2_contacts">SIM 2 Contacts</string>

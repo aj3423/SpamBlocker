@@ -70,13 +70,6 @@
         <item>Importiere .csv als einzelne Regel</item>
         <item>Importiere .csv als mehrere Regeln</item>
     </string-array>
-    <string name="warning_double_sms">
-        Diese App übernimmt alle SMS-Benachrichtigungen,
-        aber die Standard-SMS-App zeigt auch SMS-Benachrichtigungen an. Um doppelte Benachrichtigungen zu verhindern,
-        deaktivieren Sie bitte die Benachrichtigungsberechtigung in den Systemeinstellungen.\n
-        \n
-        ⚠️ RCS wird nicht unterstützt.
-    </string>
     <string name="open_settings">Einstellungen öffnen</string>
     <string name="remove_db_number">Nummer aus Spam-Datenbank löschen</string>
     <string name="copy_number">Nummer kopieren</string>

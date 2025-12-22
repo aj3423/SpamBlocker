@@ -70,13 +70,6 @@
         <item>.csv\'yi tek bir kural olarak içe aktar</item>
         <item>.csv\'yi birden fazla kural olarak içe aktar</item>
     </string-array>
-    <string name="warning_double_sms">
-        Bu uygulama tüm SMS bildirimlerini devralacak,
-        ancak varsayılan SMS uygulaması da SMS bildirimlerini gösterecektir. Çift bildirimleri önlemek için,
-        lütfen sistem ayarlarında bildirim iznini devre dışı bırakın.\n
-        \n
-        ⚠️ RCS desteklenmiyor.
-    </string>
     <string name="open_settings">Ayarları Aç</string>
     <string name="remove_db_number">Numarayı spam veritabanından sil</string>
     <string name="copy_number">Numarayı kopyala</string>

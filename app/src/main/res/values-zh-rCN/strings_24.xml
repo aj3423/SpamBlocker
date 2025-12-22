@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        确保在系统设置中<font color="#fa7f71"><b>关闭短信应用的通知</b></font>
+         以避免双重通知。<br>
+        <br>
+        如果短信应用强制要求通知权限，您可以保持授予该权限
+         并改为关闭所有<b>通知渠道</b>。
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        对于短信，本应用会接管短信通知，它只会对其进行过滤，垃圾短信
+         仍会出现在短信应用中。<br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

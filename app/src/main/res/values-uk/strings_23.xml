@@ -91,15 +91,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Фільтрація</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        Для SMS ця програма перебирає на себе сповіщення SMS, вона фільтрує лише сповіщення SMS, спам SMS
-         повідомлення все одно будуть присутні в програмі SMS. <br>
-        <br>
-        Будь ласка, <font color="#fa7f71"><b>вимкніть дозвіл на сповіщення для програми SMS за замовчуванням</b></font> у системних налаштуваннях,
-        інакше будуть подвійні сповіщення.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Переключено плиткою</string>
     <string name="custom_tile">Користувацька плитка</string>>
     <string name="help_custom_tile">

@@ -91,15 +91,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Penyaringan</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        Untuk SMS, aplikasi ini mengambil alih notifikasi SMS, hanya menyaring notifikasi SMS, pesan SMS spam
-         akan tetap ada di aplikasi SMS. <br>
-        <br>
-        Harap <font color="#fa7f71"><b>matikan izin notifikasi aplikasi SMS default</b></font> di pengaturan sistem,
-        jika tidak akan ada notifikasi ganda.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Diaktifkan oleh Tile</string>
     <string name="custom_tile">Tile Kustom</string>>
     <string name="help_custom_tile">

@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Make sure to <font color="#fa7f71"><b>turn off the SMS app\'s notification</b></font> in system settings
+         to avoid double notifications. <br>
+        <br>
+        If the SMS app enforces notification permission, you can keep it granted
+         and turn off all <b>notification channels</b> instead.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        For SMS, this app takes over SMS notifications, it only filters them, spam messages
+         will still be present in the SMS app. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

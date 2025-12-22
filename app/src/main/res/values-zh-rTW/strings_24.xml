@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        務必在系統設定中<font color="#fa7f71"><b>關閉簡訊應用程式的通知</b></font>，
+ 以避免重複通知。<br>
+<br>
+如果簡訊應用程式強制要求通知權限，您可以保持授予該權限，
+ 但改為關閉所有<b>通知管道</b>。
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        對於簡訊，此應用程式會接管簡訊通知，它只會過濾這些訊息，垃圾訊息
+ 仍會出現在簡訊應用程式中。<br>
+<br>
+%s
+        ]]>
+    </string>
+</resources>

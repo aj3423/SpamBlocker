@@ -70,11 +70,6 @@
         <item>Імпорт .csv як одне правило</item>
         <item>Імпорт .csv як кілька правил</item>
     </string-array>
-    <string name="warning_double_sms">
-        <translate>Ця програма перейме всі сповіщення SMS, але стандартна програма SMS також відображатиме сповіщення SMS. Щоб запобігти подвійним сповіщенням, вимкніть дозвіл на сповіщення в системних налаштуваннях.\n
-        \n
-        ⚠️ RCS не підтримується.</translate>
-    </string>
     <string name="open_settings">Відкрити налаштування</string>
     <string name="remove_db_number">Видалити номер з бази даних спаму</string>
     <string name="copy_number">Скопіювати номер</string>

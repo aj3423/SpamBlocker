@@ -91,15 +91,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtratge</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        Per als SMS, aquesta aplicació assumeix les notificacions d\'SMS, només filtra les notificacions d\'SMS, els missatges SMS brossa (spam)
-         seguiran presents a l\'aplicació d\'SMS. <br>
-        <br>
-        Si us plau, <font color="#fa7f71"><b>desactiva el permís de notificació de l\'aplicació d\'SMS predeterminada</b></font> a la configuració del sistema,
-        en cas contrari hi haurà dobles notificacions.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Activat/desactivat per la rajola</string>
     <string name="custom_tile">Rajola personalitzada</string>>
     <string name="help_custom_tile">

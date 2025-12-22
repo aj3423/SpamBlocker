@@ -91,15 +91,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filtrado</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        Para SMS, esta aplicación se encarga de las notificaciones de SMS, solo filtra las notificaciones de SMS; los mensajes SMS spam
-         seguirán estando presentes en la aplicación de SMS. <br>
-        <br>
-        Por favor, <font color="#fa7f71"><b>desactiva el permiso de notificación de la aplicación de SMS predeterminada</b></font> en la configuración del sistema,
-        de lo contrario habrá notificaciones duplicadas.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Activado por el mosaico</string>
     <string name="custom_tile">Mosaico Personalizado</string>>
     <string name="help_custom_tile">

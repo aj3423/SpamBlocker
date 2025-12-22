@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Assegura\'t de <font color="#fa7f71"><b>desactivar les notificacions de l\'aplicació de SMS</b></font> a la configuració del sistema
+         per evitar notificacions duplicades. <br>
+        <br>
+        Si l\'aplicació de SMS exigeix permís de notificació, pots mantenir-lo concedit
+         i desactivar tots els <b>canals de notificació</b> en el seu lloc.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Per als SMS, aquesta aplicació gestiona les notificacions de SMS, només els filtra, els missatges de spam
+         continuaran estant presents a l\'aplicació de SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

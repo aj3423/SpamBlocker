@@ -88,15 +88,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">الفحص</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        بالنسبة للرسائل النصية، يتولى هذا التطبيق إشعارات الرسائل النصية، ويقوم فقط بتصفية إشعارات الرسائل النصية، وستظل رسائل الرسائل النصية غير المرغوب فيها
-         موجودة في تطبيق الرسائل النصية. <br>
-        <br>
-        يرجى <font color="#fa7f71"><b>إيقاف إذن الإشعارات لتطبيق الرسائل النصية الافتراضي</b></font> في إعدادات النظام،
-        وإلا ستكون هناك إشعارات مزدوجة.
-        ]]>
-    </string>
     <string name="toggled_by_tile">تم التبديل بواسطة المربع</string>
     <string name="custom_tile">مربع مخصص</string>>
     <string name="help_custom_tile">

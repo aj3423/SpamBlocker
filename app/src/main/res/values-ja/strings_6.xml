@@ -73,13 +73,6 @@
         <item>.csvを1つのルールとしてインポート</item>
         <item>.csvを複数のルールとしてインポート</item>
     </string-array>
-    <string name="warning_double_sms">
-        このアプリはすべてのSMS通知を引き継ぎますが、
-        デフォルトのSMSアプリもSMS通知を表示します。通知の重複を防ぐために、
-        システム設定で通知権限を無効にしてください。\n
-        \n
-        ⚠️ RCSはサポートされていません。
-    </string>
     <string name="open_settings">設定を開く</string>
     <string name="remove_db_number">迷惑電話データベースから番号を削除</string>
     <string name="copy_number">番号をコピー</string>

@@ -88,13 +88,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">篩選</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        對於簡訊，此應用程式會接管簡訊通知，它只會過濾簡訊通知，垃圾簡訊仍會存在於簡訊應用程式中。<br>
-        <br>
-        請在系統設定中<font color="#fa7f71"><b>關閉預設簡訊應用程式的通知權限</b></font>，否則會出現雙重通知。
-        ]]>
-    </string>
     <string name="toggled_by_tile">透過快捷磚切換</string>
     <string name="custom_tile">自訂快捷磚</string>>
     <string name="help_custom_tile">

@@ -1,0 +1,16 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        重複通知を避けるため、システム設定で<font color="#fa7f71"><b>SMSアプリの通知をオフ</b></font>にしてください。<br>
+        <br>
+        SMSアプリが通知権限を強制する場合でも、権限は許可したまま、代わりにすべての<b>通知チャンネル</b>をオフにすることができます。
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        SMSの場合、このアプリはSMS通知を引き継ぎ、フィルタリングのみを行います。迷惑メッセージはSMSアプリ内に残ります。<br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

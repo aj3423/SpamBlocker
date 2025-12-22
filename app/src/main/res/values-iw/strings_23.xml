@@ -88,15 +88,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">סינון</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        עבור SMS, אפליקציה זו משתלטת על התראות ה-SMS, היא מסננת רק התראות SMS, הודעות SMS ספאם
-         עדיין יהיו נוכחות באפליקציית ה-SMS. <br>
-        <br>
-        אנא <font color="#fa7f71"><b>כבה את הרשאת ההתראות של אפליקציית ה-SMS המוגדרת כברירת מחדל</b></font> בהגדרות המערכת,
-        אחרת יהיו התראות כפולות.
-        ]]>
-    </string>
     <string name="toggled_by_tile">הופעל על ידי אריח</string>
     <string name="custom_tile">אריח מותאם אישית</string>
     <string name="help_custom_tile">

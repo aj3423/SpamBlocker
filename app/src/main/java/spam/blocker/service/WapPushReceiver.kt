@@ -3,7 +3,6 @@ package spam.blocker.service
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.provider.Telephony.Sms.Intents.WAP_PUSH_RECEIVED_ACTION
 import androidx.core.database.getLongOrNull
 import androidx.core.database.getStringOrNull
@@ -23,12 +22,12 @@ object MimeTypes {
     const val TEXT_PLAIN = "text/plain"
 }
 
-fun Cursor.found() : Boolean {
-    return this.use { cursor ->
-        cursor.moveToFirst()        // returns false if cursor is empty
-    }
-}
+
 class WapPushReceiver : SmsReceiver() {
+    // The MMS database location:
+    //   /data/data/com.android.providers.telephony/databases/mmssms.db
+    val mmsUri = "content://mms/".toUri()
+    val partUri = "content://mms/part".toUri()
 
     override fun onReceive(ctx: Context, intent: Intent) {
         logi("Received WapPush")
@@ -99,68 +98,73 @@ class WapPushReceiver : SmsReceiver() {
         }
     }
 
+
     @SuppressLint("Range")
-    fun retrieveMediaMap(ctx: Context, transactionId: String, contentLocation: String) : Map<String, String>? {
-        val contentResolver = ctx.contentResolver
-
-        // The MMS database location:
-        //   /data/data/com.android.providers.telephony/databases/mmssms.db
-        val mmsUri = "content://mms/".toUri()
-        val partUri = "content://mms/part".toUri()
-
-        // Query the MMS table to find the pdu record with `tr_id == transactionId`
-        var mmsCursor = contentResolver.query(
-            mmsUri,
-            arrayOf("_id"),
-            "tr_id='$transactionId'", // selection
-            null,
-            null
-        )
+    fun retrieveMediaMap(
+        ctx: Context,
+        transactionId: String,
+        contentLocation: String
+    ): Map<String, String>? {
         // Matching by `tr_id` works for most SMS apps, but there are exceptions:
         //  - "Google Messages"
-        //    - `tr_id` is wrapped and logged as protobuf, e.g.: "proto:xxxxxxxx..."
+        //    - `tr_id` is wrapped with protobuf, e.g.: "proto:xxxxxxxx..."
         //    - `ct_l` works
-        //  - "Textra" (this app enforces the notification permission)
+        //  - "Textra"
         //    - `tr_id` is logged as "Txtr313" which isn't the raw transaction id
         //    - `ct_l` is empty, the contentLocation is saved in the `m_id` column
 
-        // If not found, query again by "content location"
-        if (mmsCursor?.found() != true) {
-            mmsCursor = contentResolver.query(
-                mmsUri,
-                arrayOf("_id"),
-                "ct_l='$contentLocation'", // selection: "content location"
-                null,
-                null
-            )
+        val mmsId = findMmsId(ctx, "tr_id", transactionId) // Most SMS apps
+            ?: findMmsId(ctx, "ct_l", contentLocation) // for GoogleMessages
+            ?: findMmsId(ctx, "m_id", contentLocation) // for app Textra
+
+        return if (mmsId != null) {
+            queryPartTable(ctx, mmsId)
+        } else {
+            null
         }
+    }
 
-        mmsCursor?.use { mmsIt ->
-            if (mmsIt.moveToFirst()) {
-                // Get the _id of pdu record
-                val mmsId = mmsIt.getLongOrNull(0)
+    // Query the MMS table to find the pdu record with `tr_id == transactionId`, or `m_id == transactionId`
+    private fun findMmsId(ctx: Context, colName: String, colValue: String): Long? {
+        val contentResolver = ctx.contentResolver
 
-                val partCursor = contentResolver.query(
-                    partUri,
-                    arrayOf("ct", "text"),
-                    "mid=$mmsId", // selection
-                    null,
-                    null
-                )
-                partCursor?.use { partIt ->
-                    // When it goes here, the pda content should've been downloaded
-                    val map = mutableMapOf<String, String>()
+        val mmsCursor = contentResolver.query(
+            mmsUri,
+            arrayOf("_id"),
+            "$colName='$colValue'", // selection
+            null,
+            null
+        )
 
-                    while (partIt.moveToNext()) {
-                        val mime = partIt.getStringOrNull(0) ?: ""
-                        val text = partIt.getStringOrNull(1) ?: ""
-
-                        map[mime] = text
-                    }
-                    return map
-                }
+        return mmsCursor?.use { mmsIt ->
+            // The `_id` of the pdu record
+            if (mmsIt.moveToNext()) {
+                mmsIt.getLongOrNull(0)
+            } else {
+                null
             }
         }
-        return null
+    }
+
+    private fun queryPartTable(ctx: Context, mmsId: Long): Map<String, String>? {
+        val partCursor = ctx.contentResolver.query(
+            partUri,
+            arrayOf("ct", "text"),
+            "mid=$mmsId", // selection
+            null,
+            null
+        )
+        // When it goes here, the pda content should've been downloaded
+        val map = mutableMapOf<String, String>()
+
+        partCursor?.use { partIt ->
+            while (partIt.moveToNext()) {
+                val mime = partIt.getStringOrNull(0) ?: ""
+                val text = partIt.getStringOrNull(1) ?: ""
+
+                map[mime] = text
+            }
+        }
+        return map.ifEmpty { null }
     }
 }

@@ -73,12 +73,5 @@
         <item>Impor .csv sebagai aturan tunggal</item>
         <item>Impor .csv sebagai banyak aturan</item>
     </string-array>
-    <string name="warning_double_sms">
-        Aplikasi ini akan mengambil alih semua notifikasi SMS,
-        tetapi aplikasi SMS default juga akan menampilkan notifikasi SMS. Untuk mencegah notifikasi ganda,
-        silakan nonaktifkan izin notifikasinya di pengaturan sistem.\n
-        \n
-        ⚠️ RCS tidak didukung.
-    </string>
     <string name="open_settings">Buka Pengaturan</string>
 </resources>

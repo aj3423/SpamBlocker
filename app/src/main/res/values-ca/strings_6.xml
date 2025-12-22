@@ -73,13 +73,5 @@
         <item>Importa .csv com a una única regla</item>
         <item>Importa .csv com a múltiples regles</item>
     </string-array>
-    <string name="warning_double_sms">
-        <translate>Aquesta aplicació es farà càrrec de totes les notificacions SMS,
-        però l\'aplicació SMS predeterminada també mostrarà les notificacions SMS. Per evitar notificacions dobles,
-        desactiva el seu permís de notificació a la
-        configuració del sistema.\n
-        \n
-        ⚠️ No s\'admet RCS.</translate>
-    </string>
     <string name="open_settings"><translate>Obre la configuració</translate></string>
 </resources>

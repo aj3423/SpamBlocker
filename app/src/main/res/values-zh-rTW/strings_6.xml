@@ -75,12 +75,5 @@
         <item>將 CSV 匯入為單一規則</item>
         <item>將 CSV 匯入為多個規則</item>
     </string-array>
-    <string name="warning_double_sms">
-        本應用程式將接管所有簡訊通知，
-        但預設簡訊應用程式也會顯示簡訊通知。為避免重複通知，
-        請在系統設定中停用其通知權限。\n
-        \n
-        ⚠️ 不支援 RCS。
-    </string>
     <string name="open_settings">開啟設定</string>
 </resources>

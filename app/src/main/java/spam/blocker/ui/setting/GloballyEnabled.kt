@@ -27,6 +27,7 @@ import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
@@ -88,11 +89,7 @@ fun GloballyEnabled() {
                 }
             },
         ) {
-            RowVCenter {
-                GreyLabel(ctx.getString(R.string.warning_double_sms), maxLines = 20)
-
-                BalloonQuestionMark(ctx.getString(R.string.help_rcs_message))
-            }
+            HtmlText(ctx.getString(R.string.warning_double_sms))
         }
     }
     // Show warnings `onResume`
@@ -192,7 +189,7 @@ fun GloballyEnabled() {
 
                     LabeledRow(
                         labelId = R.string.sms,
-                        helpTooltip = Str(R.string.help_enable_for_sms)
+                        helpTooltip = Str(R.string.help_enable_for_sms).format(Str(R.string.warning_double_sms))
                     ) {
                         SwitchBox(checked = G.smsEnabled.value, onCheckedChange = { isTurningOn ->
                             if (isTurningOn) {

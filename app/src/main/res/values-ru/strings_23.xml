@@ -91,15 +91,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Фильтрация</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        Для SMS это приложение перехватывает уведомления SMS, оно фильтрует только уведомления SMS, спам-SMS
-         сообщения все равно будут присутствовать в приложении SMS. <br>
-        <br>
-        Пожалуйста, <font color="#fa7f71"><b>отключите разрешение на уведомления для стандартного SMS-приложения</b></font> в системных настройках,
-        иначе будут двойные уведомления.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Переключено плиткой</string>
     <string name="custom_tile">Пользовательская плитка</string>>
     <string name="help_custom_tile">

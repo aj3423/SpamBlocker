@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Assicurati di <font color="#fa7f71"><b>disattivare le notifiche dell\'app SMS</b></font> nelle impostazioni di sistema
+         per evitare doppie notifiche. <br>
+        <br>
+        Se l\'app SMS impone l\'autorizzazione alle notifiche, puoi mantenerla concessa
+         e disattivare invece tutti i <b>canali di notifica</b>.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Per gli SMS, questa app gestisce le notifiche SMS, le filtra soltanto, i messaggi spam
+         saranno comunque presenti nell\'app SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

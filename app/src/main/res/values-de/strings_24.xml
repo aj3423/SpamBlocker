@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Stellen Sie sicher, dass Sie <font color="#fa7f71"><b>die Benachrichtigungen der SMS-App</b></font> in den Systemeinstellungen deaktivieren,
+         um doppelte Benachrichtigungen zu vermeiden. <br>
+        <br>
+        Wenn die SMS-App eine Benachrichtigungsberechtigung erzwingt, können Sie diese gewährt lassen
+         und stattdessen alle <b>Benachrichtigungskanäle</b> deaktivieren.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Für SMS übernimmt diese App die SMS-Benachrichtigungen, sie filtert sie nur, Spam-Nachrichten
+         werden weiterhin in der SMS-App vorhanden sein. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

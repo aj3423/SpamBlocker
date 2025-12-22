@@ -88,14 +88,6 @@
     <string name="mms">彩信</string>
     <string name="rcs">RCS</string>
     <string name="screening">筛选</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        对于短信，此应用将接管短信通知，它只过滤短信通知，垃圾短信消息仍将存在于短信应用中。 <br>
-        <br>
-        请在系统设置中<font color="#fa7f71"><b>关闭默认短信应用的通知权限</b></font>，
-        否则会出现双重通知。
-        ]]>
-    </string>
     <string name="toggled_by_tile">通过快捷开关切换</string>
     <string name="custom_tile">自定义快捷开关</string>>
     <string name="help_custom_tile">

@@ -88,13 +88,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">غربالگری</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        برای پیامک، این برنامه کنترل اعلان‌های پیامک را بر عهده می‌گیرد، و فقط اعلان‌های پیامک را فیلتر می‌کند. پیامک‌های هرزنامه (اسپم) همچنان در برنامه پیامک اصلی شما موجود خواهند بود. <br>
-        <br>
-        لطفاً <font color="#fa7f71"><b>مجوز اعلان برنامه پیامک پیش‌فرض را</b></font> در تنظیمات سیستم <font color="#fa7f71"><b>خاموش کنید</b></font>، در غیر این صورت اعلان‌های دوگانه خواهید داشت.
-        ]]>
-    </string>
     <string name="toggled_by_tile">روشن/خاموش شده توسط کاشی</string>
     <string name="custom_tile">کاشی سفارشی</string>
     <string name="help_custom_tile">

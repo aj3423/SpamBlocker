@@ -73,12 +73,5 @@
         <item>ייבא קובץ .csv כחוק יחיד</item>
         <item>ייבא קובץ .csv כמספר חוקים</item>
     </string-array>
-    <string name="warning_double_sms">
-        אפליקציה זו תיקח אחריות על כל התראות ה-SMS,
-        אך אפליקציית ה-SMS המוגדרת כברירת מחדל גם תציג התראות SMS. כדי למנוע התראות כפולות,
-        אנא השבת את הרשאת ההתראות שלה בהגדרות המערכת.\n
-        \n
-        ⚠️ RCS אינו נתמך.
-    </string>
     <string name="open_settings">פתח הגדרות</string>
 </resources>

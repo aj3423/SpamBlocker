@@ -91,15 +91,6 @@
     <string name="mms">MMS</string>
     <string name="rcs">RCS</string>
     <string name="screening">Filterung</string>
-    <string name="help_enable_for_sms">
-        <![CDATA[
-        Für SMS übernimmt diese App die SMS-Benachrichtigungen, sie filtert nur SMS-Benachrichtigungen, Spam-SMS-Nachrichten
-         werden weiterhin in der SMS-App vorhanden sein. <br>
-        <br>
-        Bitte <font color="#fa7f71"><b>schalte die Benachrichtigungsberechtigung der Standard-SMS-App</b></font> in den Systemeinstellungen aus,
-        da es sonst zu doppelten Benachrichtigungen kommt.
-        ]]>
-    </string>
     <string name="toggled_by_tile">Umschaltbar per Kachel</string>
     <string name="custom_tile">Benutzerdefinierte Kachel</string>>
     <string name="help_custom_tile">

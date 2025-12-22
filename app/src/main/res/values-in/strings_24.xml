@@ -1,0 +1,19 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Pastikan untuk <font color="#fa7f71"><b>mematikan notifikasi aplikasi SMS</b></font> di pengaturan sistem
+         untuk menghindari notifikasi ganda. <br>
+        <br>
+        Jika aplikasi SMS memberlakukan izin notifikasi, Anda dapat tetap memberikannya
+         dan mematikan semua <b>saluran notifikasi</b> sebagai gantinya.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        Untuk SMS, aplikasi ini mengambil alih notifikasi SMS, aplikasi ini hanya menyaringnya, pesan spam
+         akan tetap ada di aplikasi SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>

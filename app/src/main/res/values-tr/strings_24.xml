@@ -1,0 +1,16 @@
+<resources>
+    <string name="warning_double_sms">
+        <![CDATA[
+        Çift bildirimleri önlemek için sistem ayarlarında <font color="#fa7f71"><b>SMS uygulamasının bildirimini kapattığınızdan</b></font> emin olun. <br>
+        <br>
+        SMS uygulaması bildirim izni zorluyorsa, izni açık bırakabilir ve bunun yerine tüm <b>bildirim kanallarını</b> kapatabilirsiniz.
+        ]]>
+    </string>
+    <string name="help_enable_for_sms">
+        <![CDATA[
+        SMS için bu uygulama SMS bildirimlerini devralır, sadece filtreler; spam mesajlar SMS uygulamasında hala bulunacaktır. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+</resources>
