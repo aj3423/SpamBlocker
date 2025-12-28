@@ -42,4 +42,14 @@
         עבור מדינות האוכפות CNAP מאומת KYC, שיחות שיש להן שם מתקשר הן ככל הנראה חוקיות.
         ]]>
     </string>
+    <string name="forwarded_call">שיחה מועברת</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        חסום את כל השיחות המועברות. <br>
+        <br>
+        בתיעוד היסטוריית השיחות, שיחות מועברות מופיעות כמספרים משורשרים המחוברים באמצעות \"&\". <br>
+        <br>
+        לדוגמה: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

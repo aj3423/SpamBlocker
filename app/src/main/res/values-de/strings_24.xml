@@ -43,4 +43,14 @@
         Für Länder, die KYC-verifizierte CNAP erzwingen, sind Anrufe mit einem Anrufernamen wahrscheinlich gültig.
         ]]>
     </string>
+    <string name="forwarded_call">Weitergeleiteter Anruf</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Alle weitergeleiteten Anrufe blockieren. <br>
+        <br>
+        Im Anrufverlauf erscheinen weitergeleitete Anrufe als verkettete Telefonnummern, die durch „&“ verbunden sind. <br>
+        <br>
+        Zum Beispiel: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

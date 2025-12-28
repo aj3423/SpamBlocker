@@ -39,4 +39,14 @@
         KYC-doğrulamalı CNAP uygulayan ülkeler için, arayan adı olan aramalar muhtemelen geçerlidir.
         ]]>
     </string>
+    <string name="forwarded_call">Yönlendirilen Çağrı</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Tüm yönlendirilen aramaları engelle. <br>
+        <br>
+        Çağrı geçmişi kaydında, yönlendirilen aramalar \"&\" ile birleştirilmiş ardışık telefon numaraları olarak görünür. <br>
+        <br>
+        Örneğin: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

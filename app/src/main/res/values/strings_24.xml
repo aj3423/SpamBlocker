@@ -43,4 +43,14 @@
         For countries that enforce KYC-verified CNAP, calls that have a caller name are likely valid.
         ]]>
     </string>
+    <string name="forwarded_call">Forwarded Call</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Block all forwarded calls. <br>
+        <br>
+        In the call history log, forwarded calls appear as concatenated numbers joined by \"&\". <br>
+        <br>
+        For example: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

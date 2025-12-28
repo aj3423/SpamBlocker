@@ -43,4 +43,14 @@
         Per i paesi che impongono CNAP verificato KYC, le chiamate con un nome chiamante sono probabilmente valide.
         ]]>
     </string>
+    <string name="forwarded_call">Chiamata Inoltrata</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Blocca tutte le chiamate inoltrate. <br>
+        <br>
+        Nel registro della cronologia delle chiamate, le chiamate inoltrate appaiono come numeri concatenati uniti da \"&\". <br>
+        <br>
+        Ad esempio: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

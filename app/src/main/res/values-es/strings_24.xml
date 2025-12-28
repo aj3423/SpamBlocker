@@ -43,4 +43,14 @@
         Para los países que aplican el CNAP verificado por KYC, las llamadas que tienen un nombre de quien llama son probablemente válidas.
         ]]>
     </string>
+    <string name="forwarded_call">Llamada Desviada</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Bloquear todas las llamadas desviadas. <br>
+        <br>
+        En el registro del historial de llamadas, las llamadas desviadas aparecen como números concatenados unidos por \"&\". <br>
+        <br>
+        Por ejemplo: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

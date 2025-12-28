@@ -29,8 +29,6 @@ import spam.blocker.util.Notification.ShowType
 import spam.blocker.util.RingtoneUtil
 import spam.blocker.util.SimUtils
 import spam.blocker.util.Util
-import spam.blocker.util.Util.fixAmpersandNumber
-import spam.blocker.util.Util.isAmpersandNumber
 import spam.blocker.util.logi
 import spam.blocker.util.spf
 
@@ -50,13 +48,7 @@ fun Details.getRawNumber(): String {
         }
     }
 
-    // Fix numbers like "111&222" -> "111222" (remove the '&')
-    // see: https://github.com/aj3423/SpamBlocker/issues/488
-    return if (isAmpersandNumber(rawNumber)) {
-        fixAmpersandNumber(rawNumber)
-    } else {
-        rawNumber
-    }
+    return rawNumber
 }
 
 class CallScreeningService : CallScreeningService() {

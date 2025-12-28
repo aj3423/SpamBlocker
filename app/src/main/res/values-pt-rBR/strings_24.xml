@@ -41,4 +41,14 @@
         Para países que aplicam CNAP verificado por KYC, chamadas que possuem um nome de chamador são provavelmente válidas.
         ]]>
     </string>
+    <string name="forwarded_call">Chamada Encaminhada</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Bloquear todas as chamadas encaminhadas. <br>
+        <br>
+        No registro de histórico de chamadas, chamadas encaminhadas aparecem como números de telefone concatenados unidos por \"&\". <br>
+        <br>
+        Por exemplo: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

@@ -41,4 +41,14 @@
         Pour les pays qui appliquent le CNAP vérifié par KYC, les appels qui ont un nom d\'appelant sont probablement valides.
         ]]>
     </string>
+    <string name="forwarded_call">Appel transféré</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Bloquer tous les appels transférés. <br>
+        <br>
+        Dans le journal de l\'historique des appels, les appels transférés apparaissent comme des numéros concaténés liés par un \"&\". <br>
+        <br>
+        Par exemple : <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

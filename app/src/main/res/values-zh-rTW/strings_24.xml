@@ -41,4 +41,14 @@
         對於強制執行KYC驗證CNAP的國家/地區，具有來電者名稱的來電很可能是有效的。
         ]]>
     </string>
+    <string name="forwarded_call">轉接來電</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        阻擋所有轉接來電。<br>
+        <br>
+        在通話記錄中，轉接來電會顯示為由「&」連接的串聯電話號碼。<br>
+        <br>
+        例如：<font color="#888888">111<b>&</b>222</font>。
+        ]]>
+    </string>
 </resources>

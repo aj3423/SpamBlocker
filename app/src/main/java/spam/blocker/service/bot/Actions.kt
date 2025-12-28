@@ -1900,7 +1900,7 @@ class InterceptCall(
             // Check the part xxxxxxxx, if it's still a valid number for cc==33,
             //   then the xxxxxxxx is the domestic part.
             // Otherwise, the entire 33xxxxxxxx is a domestic number
-            if (clearedNumber.startsWith(cc.toString())) {
+            if (clearedNumber.startsWith(cc.toString()) && !Util.isAmpersandNumber(clearedNumber)) {
                 val rest = clearedNumber.substring(cc.toString().length)
                 val pnUtil = PhoneNumberUtil.getInstance()
                 val n = Phonenumber.PhoneNumber().apply {

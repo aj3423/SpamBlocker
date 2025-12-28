@@ -38,4 +38,14 @@
         KYC認証済みのCNAPを義務付けている国では、発信者名がある通話は有効である可能性が高いです。
         ]]>
     </string>
+    <string name="forwarded_call">転送された通話</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        すべての転送された通話をブロックします。<br>
+        <br>
+        通話履歴ログでは、転送された通話は「&」で連結された結合番号として表示されます。<br>
+        <br>
+        例: <font color="#888888">111<b>&</b>222</font>。
+        ]]>
+    </string>
 </resources>

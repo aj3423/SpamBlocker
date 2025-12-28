@@ -41,4 +41,14 @@
         对于强制执行KYC验证CNAP的国家/地区，带有来电者姓名的电话很可能是有效的。
         ]]>
     </string>
+    <string name="forwarded_call">呼叫转移</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        阻止所有呼叫转移。<br>
+        <br>
+        在通话记录中，呼叫转移会显示为通过“&”连接的号码。<br>
+        <br>
+        例如：<font color="#888888">111<b>&</b>222</font>。
+        ]]>
+    </string>
 </resources>

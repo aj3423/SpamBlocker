@@ -41,4 +41,14 @@
         Per a països que apliquen el CNAP verificat per KYC, les trucades que tenen un nom de trucador són probablement vàlides.
         ]]>
     </string>
+    <string name="forwarded_call">Trucada Reenviada</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Bloqueja totes les trucades reenviades. <br>
+        <br>
+        Al registre de l\'historial de trucades, les trucades reenviades apareixen com a números concatenats units per \"&\". <br>
+        <br>
+        Per exemple: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

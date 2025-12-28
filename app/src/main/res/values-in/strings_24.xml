@@ -43,4 +43,14 @@
         Untuk negara yang memberlakukan CNAP terverifikasi KYC, panggilan yang memiliki nama penelepon kemungkinan besar valid.
         ]]>
     </string>
+    <string name="forwarded_call">Panggilan Diteruskan</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Blokir semua panggilan yang diteruskan. <br>
+        <br>
+        Dalam log riwayat panggilan, panggilan yang diteruskan muncul sebagai nomor yang digabungkan dengan \"&\". <br>
+        <br>
+        Contoh: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>

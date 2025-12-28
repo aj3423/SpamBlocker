@@ -43,4 +43,14 @@
         Para os países que aplican CNAP verificado por KYC, é probable que as chamadas que teñan un nome de chamador sexan válidas.
         ]]>
     </string>
+    <string name="forwarded_call">Chamada reenviada</string>
+    <string name="help_regex_preset_forwarded_call">
+        <![CDATA[
+        Bloquear todas as chamadas reenviadas. <br>
+        <br>
+        No rexistro do historial de chamadas, as chamadas reenviadas aparecen como números concatenados unidos por \"&\". <br>
+        <br>
+        Por exemplo: <font color="#888888">111<b>&</b>222</font>.
+        ]]>
+    </string>
 </resources>
