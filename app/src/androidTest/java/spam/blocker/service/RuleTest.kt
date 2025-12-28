@@ -598,4 +598,24 @@ class RuleTest {
         r = Checker.checkSms(ctx, logger = null, B, random_sms, simSlot = null)
         assertEquals("should block 4", Def.RESULT_BLOCKED_BY_CONTENT_RULE, r.type)
     }
+
+    // CNAP rule (Caller Display Name)
+    @Test
+    fun cnap_rule() {
+        // block by display name "block"
+        add_number_rule(
+            build_rule("block", "", 99, isBlacklist = true, Def.FLAG_FOR_CALL, patternFlags = Def.FLAG_REGEX_FOR_CNAP)
+        )
+
+        var r = Checker.checkCall(ctx, logger = null, rawNumber = "", cnap = "block")
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_CNAP_RULE, r.type)
+
+        // wrong CNAP
+        r = Checker.checkCall(ctx, logger = null, rawNumber = "", cnap = "nah")
+        assertEquals("should pass by default", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
+
+        // empty CNAP
+        r = Checker.checkCall(ctx, logger = null, rawNumber = "", cnap = null)
+        assertEquals("should pass by default", Def.RESULT_ALLOWED_BY_DEFAULT, r.type)
+    }
 }

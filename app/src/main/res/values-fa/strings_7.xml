@@ -3,24 +3,6 @@
     <string name="end_time">زمان پایان</string>
     <string name="switch_mode">حالت سوئیچ</string>
     <string name="contact_group">گروه مخاطبین</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>شماره تلفن</b></font>:<br>
-        &ensp; حالت پیش فرض، عبارت باقاعده با شماره تلفن مطابقت خواهد داشت.<br>
-        <br>
-        <font color="#00BFFF"><b>مخاطبین</b></font>:<br>
-        &ensp; عبارت باقاعده با نام مخاطب مرتبط با شماره ورودی مطابقت خواهد داشت.<br>
-        &ensp;  - یک مورد استفاده:<br>
-        &emsp; مسدود کردن تمام غیر مخاطبین در آخر هفته با عبارت باقاعده `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>گروه مخاطبین</b></font>:<br>
-        &ensp; عبارت باقاعده با نام گروه مخاطب مرتبط با شماره ورودی مطابقت خواهد داشت،
-                 که بر همه مخاطبین آن گروه تاثیر می‌گذارد، بنابراین نیازی به اضافه کردن آن‌ها به صورت جداگانه نیست،
-                 و حتی در صورت تغییرات پرسنلی نیازی به به‌روزرسانی آن نیست.<br>
-        &ensp;  - یک مورد استفاده:<br>
-        &emsp; مسدود کردن تمام همکاران در آخر هفته با مسدود کردن گروه مخاطبین "کار".
-        ]]>
-    </string>
     <string name="text_too_long">متن بیش از حد طولانی است، ویرایش غیرفعال است</string>
     <string name="follow_system"><short>دنبال سیستم</short></string>
     <string name="theme">تم</string>
@@ -40,6 +22,30 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         مدت زمان جداگانه برای هر برنامه، در صورت خالی گذاشتن، به مدت زمان کلی برمی گردد.
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>شماره تلفن</b></font>:<br>
+        &ensp; حالت پیش‌فرض، regex با شماره تلفن مطابقت داده می‌شود.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>مخاطبین</b></font>:<br>
+        &ensp; regex با نام مخاطب مرتبط با شماره ورودی مطابقت داده می‌شود.<br>
+        &ensp;  - مورد استفاده:<br>
+        &emsp; <font color="#888888">مسدود کردن تمام تماس‌های غیرمخاطب در آخر هفته با regex `.*`. </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>گروه مخاطبین</b></font>:<br>
+        &ensp; regex با نام گروه مخاطبین مرتبط با شماره ورودی مطابقت داده می‌شود و بر تمام مخاطبین آن گروه تأثیر می‌گذارد،
+                 بنابراین نیازی به افزودن آنها به صورت جداگانه نیست
+                 و حتی با تغییرات پرسنلی نیز نیازی به به‌روزرسانی آن نیست.<br>
+        &ensp;  - مورد استفاده:<br>
+        &emsp; <font color="#888888">مسدود کردن تمام همکاران در آخر هفته با مسدود کردن گروه مخاطبین \"کار\". </font> <br>
         ]]>
     </string>
 </resources>

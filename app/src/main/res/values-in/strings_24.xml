@@ -16,4 +16,31 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Nama Penelepon</b></font>:<br>
+        &ensp; Regex akan cocok dengan nama tampilan penelepon (CNAP). <br>
+        <br>
+        Dalam log riwayat panggilan, nama penelepon akan muncul setelah nomor telepon dalam tanda kurung jika ada, seperti: <br>
+        &ensp; <font color="#888888">12345 (Nama Tampilan)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Nama Penelepon</string>
+    <string name="caller_name_rule">Aturan Nama Penelepon</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        Untuk SMS, aplikasi ini mengambil alih notifikasi SMS, hanya menyaringnya, pesan spam
+         akan tetap ada di aplikasi SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Izinkan panggilan yang memiliki informasi <b>CNAP (Caller Name Presentation)</b>, yang merupakan fitur telekomunikasi yang
+         menampilkan nama terdaftar penelepon (bersama dengan nomor telepon) di layar ponsel penerima selama panggilan masuk. <br>
+        <br>
+        Untuk negara yang memberlakukan CNAP terverifikasi KYC, panggilan yang memiliki nama penelepon kemungkinan besar valid.
+        ]]>
+    </string>
 </resources>

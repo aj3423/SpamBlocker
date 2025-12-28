@@ -16,4 +16,31 @@
         %s
         ]]>
     </string>
+    <string name="caller_name">Caller Name</string>
+    <string name="caller_name_rule">Caller Name Rule</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        For SMS, this app takes over SMS notifications, it only filters them, spam messages
+         will still be present in the SMS app. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Caller Name</b></font>:<br>
+        &ensp; The regex will match against the caller display name(CNAP). <br>
+        <br>
+        In the call history log, the caller name will appear after the phone number in parentheses if it exists, like: <br>
+        &ensp; <font color="#888888">12345 (Display Name)</font>
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Allow calls that have <b>CNAP(Caller Name Presentation)</b> information, which is a telecom feature that
+         displays the caller\'s registered name (along with the phone number) on the recipient\'s phone screen during an incoming call. <br>
+        <br>
+        For countries that enforce KYC-verified CNAP, calls that have a caller name are likely valid.
+        ]]>
+    </string>
 </resources>

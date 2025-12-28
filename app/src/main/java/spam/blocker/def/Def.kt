@@ -144,6 +144,8 @@ object Def {
     const val RESULT_ALLOWED_BY_EMERGENCY_SITUATION = 105
     const val RESULT_ALLOWED_BY_PUSH_ALERT = 106
     const val RESULT_ALLOWED_BY_ANSWERED = 107
+    const val RESULT_ALLOWED_BY_CNAP_RULE = 108
+
 
 
 
@@ -158,6 +160,8 @@ object Def {
     const val RESULT_BLOCKED_BY_MEETING_MODE = 17
     const val RESULT_BLOCKED_BY_API_QUERY = 18
     const val RESULT_BLOCKED_BY_SMS_BOMB = 19
+    const val RESULT_BLOCKED_BY_CNAP_RULE = 20
+
 
 
     fun isBlocked(result: Int): Boolean {
@@ -189,6 +193,8 @@ object Def {
     const val FLAG_REGEX_FOR_CONTACT_GROUP = 1 shl 11
     const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
     const val FLAG_REGEX_IGNORE_CC = 1 shl 13
+    const val FLAG_REGEX_FOR_CNAP = 1 shl 14
+
 
 
     const val DefaultRegexFlags =  0
@@ -202,6 +208,7 @@ object Def {
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",
         FLAG_REGEX_IGNORE_CC to "🌐",
+        FLAG_REGEX_FOR_CNAP to "☑"
     )
 
 

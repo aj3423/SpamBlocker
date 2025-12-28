@@ -16,4 +16,31 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Nome do Chamador</b></font>:<br>
+        &ensp; A expresión regular coincidirá co nome de visualización do chamador (CNAP). <br>
+        <br>
+        No rexistro do historial de chamadas, o nome do chamador aparecerá despois do número de teléfono entre parénteses se existe, como: <br>
+        &ensp; <font color="#888888">12345 (Nome de Visualización)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Nome do Chamador</string>
+    <string name="caller_name_rule">Regra do Nome do Chamador</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        Para os SMS, esta aplicación asume as notificacións de SMS, só as filtra, as mensaxes de spam
+         seguirán estando presentes na aplicación de SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Permitir chamadas que teñan información de <b>CNAP (Presentación do Nome do Chamador)</b>, que é unha función de telecomunicacións que
+         mostra o nome rexistrado do chamador (xunto co número de teléfono) na pantalla do teléfono do destinatario durante unha chamada entrante. <br>
+        <br>
+        Para os países que aplican CNAP verificado por KYC, é probable que as chamadas que teñan un nome de chamador sexan válidas.
+        ]]>
+    </string>
 </resources>

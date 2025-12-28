@@ -29,6 +29,7 @@ import spam.blocker.def.Def
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_ANSWERED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_API_QUERY
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_RULE
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
@@ -45,6 +46,7 @@ import spam.blocker.def.Def.RESULT_ALLOWED_BY_REPEATED
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_SMS_ALERT
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_STIR
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_API_QUERY
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_RULE
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
@@ -472,7 +474,11 @@ class ByRegexRule(
                 ctx.getString(R.string.content) + ": $summary"
             }
 
-            else -> "bug"
+            RESULT_ALLOWED_BY_CNAP_RULE, RESULT_BLOCKED_BY_CNAP_RULE -> {
+                ctx.getString(R.string.caller_name_rule) + ": $summary"
+            }
+
+            else -> "bug, please report"
         }
     }
 }
@@ -554,7 +560,8 @@ fun parseCheckResultFromDb(ctx: Context, result: Int, reason: String): ICheckRes
 
         RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE,
         RESULT_ALLOWED_BY_CONTACT_GROUP_RULE, RESULT_BLOCKED_BY_CONTACT_GROUP_RULE,
-        RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX -> {
+        RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX,
+        RESULT_ALLOWED_BY_CNAP_RULE, RESULT_BLOCKED_BY_CNAP_RULE -> {
             val rule = NumberRuleTable().findRuleById(ctx, reason.toLong())
             ByRegexRule(result, rule)
         }

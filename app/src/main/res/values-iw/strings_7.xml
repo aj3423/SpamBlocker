@@ -3,24 +3,6 @@
     <string name="end_time">שעת סיום</string>
     <string name="switch_mode">החלף מצב</string>
     <string name="contact_group">קבוצת אנשי קשר</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>מספר טלפון</b></font>:<br>
-        &ensp; מצב ברירת המחדל, הביטוי הרגולרי יתאים למספר הטלפון.<br>
-        <br>
-        <font color="#00BFFF"><b>אנשי קשר</b></font>:<br>
-        &ensp; הביטוי הרגולרי יתאים לשם איש הקשר המשויך למספר הנכנס.<br>
-        &ensp;  - מקרה שימוש:<br>
-        &emsp; חסום את כל מי שאינו איש קשר בסוף השבוע באמצעות ביטוי רגולרי `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>קבוצת אנשי קשר</b></font>:<br>
-        &ensp; הביטוי הרגולרי יתאים לשם קבוצת אנשי הקשר המשויך למספר הנכנס,
-                 וישפיע על כל אנשי הקשר בקבוצה זו, כך שאין צורך להוסיף אותם בנפרד,
-                 ואין צורך לעדכן גם כאשר יש שינויים בצוות.<br>
-        &ensp;  - מקרה שימוש:<br>
-        &emsp; חסום את כל העמיתים לעבודה בסוף השבוע על ידי חסימת קבוצת אנשי הקשר "עבודה".
-        ]]>
-    </string>
     <string name="text_too_long">טקסט ארוך מדי, העריכה מושבתת</string>
     <string name="follow_system"><short>מערכת</short></string>
     <string name="theme">ערכת נושא</string>
@@ -40,6 +22,30 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         משך זמן פרטני לכל אפליקציה, כשריק, יחזור למשך הזמן הגלובלי.
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>מספר טלפון</b></font>:<br>
+        &ensp; מצב ברירת המחדל, הביטוי הרגולרי יתאים למספר הטלפון.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>אנשי קשר</b></font>:<br>
+        &ensp; הביטוי הרגולרי יתאים לשם איש הקשר המשויך למספר הנכנס.<br>
+        &ensp;  - מקרה שימוש:<br>
+        &emsp; <font color="#888888">חסום את כל מי שאינו איש קשר בסוף השבוע באמצעות הביטוי הרגולרי `.*`.</font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>קבוצת אנשי קשר</b></font>:<br>
+        &ensp; הביטוי הרגולרי יתאים לשם קבוצת אנשי הקשר המשויכת למספר הנכנס,
+                 וישפיע על כל אנשי הקשר בקבוצה זו, כך שאינך צריך להוסיף אותם בנפרד,
+                 ואין צורך לעדכן אותו גם כאשר יש שינויים בכוח אדם.<br>
+        &ensp;  - מקרה שימוש:<br>
+        &emsp; <font color="#888888">חסום את כל העמיתים לעבודה בסוף השבוע על ידי חסימת קבוצת אנשי הקשר \"עבודה\".</font> <br>
         ]]>
     </string>
 </resources>

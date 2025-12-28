@@ -61,7 +61,7 @@ fun HistoryList(
 
                     LaunchedEffect(record.id, showIndicator, forceRefreshIndicators) {
                         indicators.value = if (showIndicator)
-                            indicatorChecker(record.peer, record.extraInfo, record.simSlot)
+                            indicatorChecker(record.peer, record.cnap, record.extraInfo, record.simSlot)
                         else
                             listOf()
                     }

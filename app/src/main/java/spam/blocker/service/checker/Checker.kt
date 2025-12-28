@@ -62,6 +62,7 @@ import spam.blocker.util.spf
 
 class CheckContext(
     var rawNumber: String,
+    var cnap: String? = null,
     val callDetails: Call.Details? = null,
     val simSlot: Int?, // on which SIM slot is the call ringing on
     val smsContent: String? = null,
@@ -81,10 +82,13 @@ fun RegexRule.toChecker(
 ): IChecker {
     val forContact = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
     val forContactGroup = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+    val forCNAP = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CNAP)
     return if (forContact)
         Checker.RegexContact(ctx, this)
     else if (forContactGroup)
         Checker.ContactGroup(ctx, this)
+    else if (forCNAP)
+        Checker.CNAP(ctx, this)
     else
         Checker.Number(ctx, this)
 }
@@ -947,6 +951,56 @@ class Checker { // for namespace only
         }
     }
 
+    // Check if a number rule matches the caller display name
+    class CNAP(
+        ctx: Context,
+        rule: RegexRule,
+    ) : RegexRuleChecker(ctx, rule) {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            val cnap = cCtx.cnap
+            val logger = cCtx.logger
+
+            if (!isEnabled(cCtx)) {
+                return null
+            }
+
+            logger?.debug(
+                (ctx.getString(R.string.checking_template)+ ": %s")
+                    .formatAnnotated(
+                        ctx.getString(R.string.caller_name_rule).A(SkyBlue),
+                        priority().toString().A(LightMagenta),
+                        rule.summary().A(if (rule.isBlacklist) Salmon else Emerald),
+                    )
+            )
+            if (cnap == null) {
+                return null
+            }
+
+            // 2. check regex
+            if (rule.pattern.regexMatchesNumber(cnap, rule.patternFlags)) {
+                val block = rule.isBlacklist
+
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.caller_name_rule)) + ": ${rule.summary()}"
+                    )
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.caller_name_rule)) + ": ${rule.summary()}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_CNAP_RULE else Def.RESULT_ALLOWED_BY_CNAP_RULE,
+                    rule = rule,
+                )
+            }
+
+            return null
+        }
+    }
+
     // The regex flag `Contact`, it matches the contact name instead of the phone number
     class RegexContact(
         ctx: Context,
@@ -1298,12 +1352,14 @@ class Checker { // for namespace only
             ctx: Context,
             logger: ILogger?,
             rawNumber: String,
+            cnap: String?,
             simSlot: Int?,
             callDetails: Call.Details? = null,
             checkers: List<IChecker>,
         ): ICheckResult {
             val cCtx = CheckContext(
                 rawNumber = rawNumber,
+                cnap = cnap,
                 callDetails = callDetails,
                 logger = logger,
                 checkers = checkers,
@@ -1339,6 +1395,7 @@ class Checker { // for namespace only
             ctx: Context,
             logger: ILogger?,
             rawNumber: String,
+            cnap: String?,
             callDetails: Call.Details? = null,
             simSlot: Int? = null,
         ): ICheckResult {
@@ -1367,7 +1424,7 @@ class Checker { // for namespace only
             }
 
             return checkCallWithCheckers(
-                ctx, logger, rawNumber, simSlot, callDetails, checkers)
+                ctx, logger, rawNumber, cnap, simSlot, callDetails, checkers)
         }
 
         fun checkSmsWithCheckers(

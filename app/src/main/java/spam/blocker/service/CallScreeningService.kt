@@ -132,16 +132,9 @@ class CallScreeningService : CallScreeningService() {
     override fun onScreenCall(details: Details) {
         logi("onScreenCall() invoked by Android")
 
-        val slot0 = SimUtils.isSimSlotRinging(this, 0)
-        val slot1 = SimUtils.isSimSlotRinging(this, 1)
-        val slot2 = SimUtils.isSimSlotRinging(this, 2)
-
-        logi("slot 0: $slot0,  1: $slot1,  2: $slot2")
-
-
         // With this coroutine, this function returns immediately without blocking the whole process.
-        //   So other services will get executed simultaneously.
-        //   Feature "Push Alert" relies on this, see "NotificationListenerService.kt" for details.
+        // So in doze mode, other services will be woken up and get executed simultaneously.
+        // Feature "Push Alert" relies on this, see "NotificationListenerService.kt" for details.
         CoroutineScope(IO).launch {
             doScreenCall(details)
         }
@@ -163,10 +156,11 @@ class CallScreeningService : CallScreeningService() {
         }
 
         val rawNumber = details.getRawNumber()
-
         val ringingSimSlot = SimUtils.getRingingSimSlot(this)
+        val cnap = details.callerDisplayName
+
         val r = processCall(
-            ctx = this, logger = null, rawNumber = rawNumber, callDetails = details, simSlot = ringingSimSlot,
+            ctx = this, logger = null, rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot,
         )
 
         if (r.shouldBlock()) {
@@ -190,7 +184,7 @@ class CallScreeningService : CallScreeningService() {
         if (r.shouldBlock()) // not allowed call, no ringtone, no need to check
             return false
 
-        // 1. Get the workflow(s) that is linked to this regex rule
+        // 1. Get all workflows that are linked to this regex rule
         val bots = BotTable.listAll(ctx).filter {
             it.trigger is Ringtone
         }
@@ -212,7 +206,7 @@ class CallScreeningService : CallScreeningService() {
         return shouldMute
     }
 
-    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, simSlot: Int?) {
+    private fun logToHistoryDb(ctx: Context, r: ICheckResult, rawNumber: String, cnap: String?, simSlot: Int?) {
         val isDbLogEnabled = spf.HistoryOptions(ctx).isLoggingEnabled()
         if (!isDbLogEnabled)
             return
@@ -220,6 +214,7 @@ class CallScreeningService : CallScreeningService() {
         val recordId = CallTable().addNewRecord(
             ctx, HistoryRecord(
                 peer = rawNumber,
+                cnap = cnap,
                 time = System.currentTimeMillis(),
                 result = r.type,
                 reason = r.reasonToDb(),
@@ -257,16 +252,17 @@ class CallScreeningService : CallScreeningService() {
         ctx: Context,
         logger: ILogger?, // for showing detailed steps to logcat or for testing purpose
         rawNumber: String,
-        callDetails: Details? = null, // it's null when testing
+        cnap: String?,
+        callDetails: Details?, // it's null when testing
         simSlot: Int?,
     ): ICheckResult {
         logi("Process incoming call")
 
         // 0. check the number with all rules, get the result
-        val r = Checker.checkCall(ctx, logger, rawNumber, callDetails, simSlot)
+        val r = Checker.checkCall(ctx, logger, rawNumber, cnap, callDetails, simSlot)
 
         // 1. log result to history db
-        logToHistoryDb(ctx, r, rawNumber, simSlot)
+        logToHistoryDb(ctx, r, rawNumber, cnap, simSlot)
 
         if (r.shouldBlock()) {
             CoroutineScope(IO).launch {

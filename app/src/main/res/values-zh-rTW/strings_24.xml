@@ -16,4 +16,29 @@
 %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>來電者名稱</b></font>:<br>
+        &ensp; 正規表示式將針對來電者顯示名稱(CNAP)進行比對。 <br>
+        <br>
+        在通話記錄中，如果存在，來電者名稱將會出現在電話號碼之後的括號中，例如: <br>
+        &ensp; <font color="#888888">12345 (顯示名稱)</font>
+        ]]>
+    </string>
+    <string name="caller_name">來電者名稱</string>
+    <string name="caller_name_rule">來電者名稱規則</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        對於簡訊，此應用程式會接管簡訊通知，它只會過濾這些通知，垃圾訊息仍將存在於簡訊應用程式中。 <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        允許具有<b>CNAP(Caller Name Presentation - 來電者名稱呈現)</b>資訊的來電，這是一種電信功能，可在來電時，在接收者的手機螢幕上顯示來電者的註冊名稱（連同電話號碼）。 <br>
+        <br>
+        對於強制執行KYC驗證CNAP的國家/地區，具有來電者名稱的來電很可能是有效的。
+        ]]>
+    </string>
 </resources>

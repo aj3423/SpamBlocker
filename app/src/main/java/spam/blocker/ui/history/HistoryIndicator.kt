@@ -77,7 +77,7 @@ fun IndicatorIcons(indicators: Indicators) {
 fun IndicatorsWrapper(
     vm: HistoryViewModel,
     content: @Composable (
-            (number: String, smsContent: String?, simSlot: Int?) -> Indicators,
+            (number: String, cnap: String?, smsContent: String?, simSlot: Int?) -> Indicators,
             Boolean,
     ) -> Unit,
 ) {
@@ -120,7 +120,7 @@ fun IndicatorsWrapper(
         onRefresh = !onRefresh // refresh all records
     }
 
-    fun check(number: String, smsContent: String?, simSlot: Int?): Indicators {
+    fun check(number: String, cnap: String?, smsContent: String?, simSlot: Int?): Indicators {
         return buildList {
             // 1. Number exist in spam db?
             run {
@@ -138,6 +138,7 @@ fun IndicatorsWrapper(
                         ctx = ctx,
                         logger = null,
                         rawNumber = number,
+                        cnap = cnap,
                         checkers = numberCheckers,
                         simSlot = simSlot
                     )

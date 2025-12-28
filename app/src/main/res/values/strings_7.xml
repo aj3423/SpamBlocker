@@ -3,22 +3,28 @@
     <string name="end_time">End Time</string>
     <string name="switch_mode">Switch Mode</string>
     <string name="contact_group">Contact Group</string>
-    <string name="help_number_mode">
+    <string name="help_regex_mode_phone_number">
         <![CDATA[
         <font color="#00BFFF"><b>Phone Number</b></font>:<br>
-        &ensp; The default mode, the regex will match the phone number.<br>
-        <br>
+        &ensp; The default mode, the regex will match against the phone number.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
         <font color="#00BFFF"><b>Contacts</b></font>:<br>
-        &ensp; The regex will match the contact name associated with the incoming number.<br>
-        &ensp;  - A use case:<br>
-        &emsp; Block all non-contacts at weekend with regex `.*`.<br>
-        <br>
+        &ensp; The regex will match against the contact name associated with the incoming number.<br>
+        &ensp;  - Use case:<br>
+        &emsp; <font color="#888888">Block all non-contacts at weekend with regex `.*`. </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
         <font color="#00BFFF"><b>Contact Group</b></font>:<br>
-        &ensp; The regex will match the contact group name associated with the incoming number,
+        &ensp; The regex will match against the contact group name associated with the incoming number,
                  impacting all contacts in that group, so you don\'t need to add them individually,
                  and no need to update it even when there are personnel changes.<br>
-        &ensp;  - A use case:<br>
-        &emsp; Block all coworkers at weekend by blocking the contact group \"work\".
+        &ensp;  - Use case:<br>
+        &emsp; <font color="#888888">Block all coworkers at weekend by blocking the contact group \"work\". </font> <br>
         ]]>
     </string>
     <string name="text_too_long">Text too long, editing is disabled</string>

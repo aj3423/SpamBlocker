@@ -31,7 +31,7 @@ class Db private constructor(
 ) : SQLiteOpenHelper(ctx, DB_NAME, null, DB_VERSION) {
 
     companion object {
-        const val DB_VERSION = 44
+        const val DB_VERSION = 45
         const val DB_NAME = "spam_blocker.db"
 
         // ---- regex rule table ----
@@ -98,6 +98,7 @@ class Db private constructor(
 
         // ---- history table ----
         const val COLUMN_PEER = "peer" // peer number
+        const val COLUMN_CNAP = "cnap" // caller display name
         const val COLUMN_TIME = "time"
         const val COLUMN_RESULT = "result" // Int, as RESULT_... below
         const val COLUMN_REASON = "reason" // Long, by which filter id is this blocked/whitelisted
@@ -225,6 +226,7 @@ class Db private constructor(
                 "CREATE TABLE IF NOT EXISTS $tableName (" +
                         "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "$COLUMN_PEER TEXT, " +
+                        "$COLUMN_CNAP TEXT, " +
                         "$COLUMN_TIME INTEGER, " +
                         "$COLUMN_RESULT INTEGER, " +
                         "$COLUMN_SIM_SLOT INTEGER, " +
@@ -483,6 +485,12 @@ class Db private constructor(
         if ((newVersion >= 44) && (oldVersion < 44)) {
             addColumnIfNotExist(db, TABLE_CALL, COLUMN_SIM_SLOT, "INTEGER")
             addColumnIfNotExist(db, TABLE_SMS, COLUMN_SIM_SLOT, "INTEGER")
+        }
+
+        // v5.1 added CNAP
+        if ((newVersion >= 45) && (oldVersion < 45)) {
+            addColumnIfNotExist(db, TABLE_CALL, COLUMN_CNAP, "TEXT")
+            addColumnIfNotExist(db, TABLE_SMS, COLUMN_CNAP, "TEXT")
         }
     }
 }

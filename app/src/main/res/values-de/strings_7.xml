@@ -3,24 +3,6 @@
     <string name="end_time">Endzeit</string>
     <string name="switch_mode">Modus wechseln</string>
     <string name="contact_group">Kontaktgruppe</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>Telefonnummer</b></font>:<br>
-        &ensp; Der Standardmodus, der reguläre Ausdruck stimmt mit der Telefonnummer überein.<br>
-        <br>
-        <font color="#00BFFF"><b>Kontakte</b></font>:<br>
-        &ensp; Der reguläre Ausdruck stimmt mit dem Kontaktnamen überein, der der eingehenden Nummer zugeordnet ist.<br>
-        &ensp;  - Ein Anwendungsfall:<br>
-        &emsp; Blockieren aller Nicht-Kontakte am Wochenende mit dem regulären Ausdruck `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>Kontaktgruppe</b></font>:<br>
-        &ensp; Der reguläre Ausdruck stimmt mit dem Namen der Kontaktgruppe überein, die der eingehenden Nummer zugeordnet ist,
-                 und wirkt sich auf alle Kontakte in dieser Gruppe aus, sodass Sie sie nicht einzeln hinzufügen müssen,
-                 und keine Aktualisierung erforderlich ist, selbst bei Personalwechsel.<br>
-        &ensp;  - Ein Anwendungsfall:<br>
-        &emsp; Blockieren aller Kollegen am Wochenende, indem die Kontaktgruppe "Arbeit" blockiert wird.
-        ]]>
-    </string>
     <string name="text_too_long">Text zu lang, Bearbeitung ist deaktiviert</string>
     <string name="follow_system"><short>System folgen</short></string>
     <string name="theme">Thema</string>
@@ -40,6 +22,28 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         Individuelle Dauer für jede App. Wenn leer, wird die globale Dauer verwendet.
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>Telefonnummer</b></font>:<br>
+        &ensp; Der Standardmodus, der Regex wird mit der Telefonnummer abgeglichen.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>Kontakte</b></font>:<br>
+        &ensp; Der Regex wird mit dem Kontaktnamen abgeglichen, der der eingehenden Nummer zugeordnet ist.<br>
+        &ensp;  - Anwendungsfall:<br>
+        &emsp; <font color="#888888">Alle Nicht-Kontakte am Wochenende mit Regex `.*` blockieren. </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>Kontaktgruppe</b></font>:<br>
+        &ensp; Der Regex wird mit dem Namen der Kontaktgruppe abgeglichen, der der eingehenden Nummer zugeordnet ist, wodurch alle Kontakte in dieser Gruppe betroffen sind, sodass Sie sie nicht einzeln hinzufügen müssen und es auch bei Personaländerungen nicht aktualisiert werden muss.<br>
+        &ensp;  - Anwendungsfall:<br>
+        &emsp; <font color="#888888">Alle Kollegen am Wochenende blockieren, indem die Kontaktgruppe \"Arbeit\" blockiert wird. </font> <br>
         ]]>
     </string>
 </resources>

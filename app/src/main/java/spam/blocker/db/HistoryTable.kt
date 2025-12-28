@@ -12,6 +12,8 @@ data class HistoryRecord(
     val id: Long = 0,
 
     val peer: String = "",
+    val cnap: String? = null,
+
     val time: Long = 0,
 
     val result: Int = 0, // e.g.: RESULT_ALLOWED_BY_RECENT_APPS
@@ -60,6 +62,7 @@ abstract class HistoryTable {
                     val rec = HistoryRecord(
                         id = it.getLong(it.getColumnIndex(Db.COLUMN_ID)),
                         peer = it.getString(it.getColumnIndex(Db.COLUMN_PEER)),
+                        cnap = it.getStringOrNull(it.getColumnIndex(Db.COLUMN_CNAP)),
                         time = it.getLong(it.getColumnIndex(Db.COLUMN_TIME)),
                         result = it.getInt(it.getColumnIndex(Db.COLUMN_RESULT)),
                         reason = it.getString(it.getColumnIndex(Db.COLUMN_REASON)),
@@ -86,6 +89,7 @@ abstract class HistoryTable {
         val db = Db.getInstance(ctx).writableDatabase
         val cv = ContentValues()
         cv.put(Db.COLUMN_PEER, r.peer)
+        cv.put(Db.COLUMN_CNAP, r.cnap)
         cv.put(Db.COLUMN_TIME, r.time)
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)
@@ -101,6 +105,7 @@ abstract class HistoryTable {
         val cv = ContentValues()
         cv.put(Db.COLUMN_ID, r.id)
         cv.put(Db.COLUMN_PEER, r.peer)
+        cv.put(Db.COLUMN_CNAP, r.cnap)
         cv.put(Db.COLUMN_TIME, r.time)
         cv.put(Db.COLUMN_RESULT, r.result)
         cv.put(Db.COLUMN_REASON, r.reason)

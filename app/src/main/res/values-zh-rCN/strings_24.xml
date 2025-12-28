@@ -16,4 +16,29 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>来电者姓名</b></font>:<br>
+        &ensp; 正则表达式将与来电显示名称(CNAP)进行匹配。<br>
+        <br>
+        在通话历史记录中，如果存在，来电者姓名将显示在电话号码后的括号中，例如：<br>
+        &ensp; <font color="#888888">12345 (显示名称)</font>
+        ]]>
+    </string>
+    <string name="caller_name">来电者姓名</string>
+    <string name="caller_name_rule">来电者姓名规则</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        对于短信，此应用会接管短信通知，它只会过滤这些通知，垃圾短信仍会存在于短信应用中。<br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        允许带有<b>CNAP（来电名称显示）</b>信息的电话，这是一项电信功能，可在来电时将呼叫者的注册姓名（连同电话号码）显示在接收方的手机屏幕上。<br>
+        <br>
+        对于强制执行KYC验证CNAP的国家/地区，带有来电者姓名的电话很可能是有效的。
+        ]]>
+    </string>
 </resources>

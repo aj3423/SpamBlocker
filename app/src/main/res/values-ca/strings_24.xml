@@ -16,4 +16,29 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Nom del Trucador</b></font>:<br>
+        &ensp; L\'expressió regular coincidirà amb el nom de visualització del trucador (CNAP). <br>
+        <br>
+        Al registre de l\'historial de trucades, el nom del trucador apareixerà després del número de telèfon entre parèntesis si existeix, com ara: <br>
+        &ensp; <font color="#888888">12345 (Nom de Visualització)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Nom del Trucador</string>
+    <string name="caller_name_rule">Regla de Nom del Trucador</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        Per als SMS, aquesta aplicació gestiona les notificacions de SMS, només les filtra, els missatges de spam seguiran presents a l\'aplicació de SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Permet trucades que tinguin informació de <b>CNAP (Presentació del Nom del Trucador)</b>, que és una funció de telecomunicacions que mostra el nom registrat del trucador (juntament amb el número de telèfon) a la pantalla del telèfon del receptor durant una trucada entrant. <br>
+        <br>
+        Per a països que apliquen el CNAP verificat per KYC, les trucades que tenen un nom de trucador són probablement vàlides.
+        ]]>
+    </string>
 </resources>

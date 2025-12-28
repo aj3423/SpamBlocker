@@ -3,24 +3,6 @@
     <string name="end_time">Hora de finalització</string>
     <string name="switch_mode">Canvia el mode</string>
     <string name="contact_group">Grup de contactes</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>Número de telèfon</b></font>:<br>
-        &ensp; El mode per defecte, l\'expressió regular coincidirà amb el número de telèfon.<br>
-        <br>
-        <font color="#00BFFF"><b>Contactes</b></font>:<br>
-        &ensp; L\'expressió regular coincidirà amb el nom del contacte associat al número entrant.<br>
-        &ensp;  - Un cas d\'ús:<br>
-        &emsp; Bloqueja tots els no contactes al cap de setmana amb l\'expressió regular `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>Grup de contactes</b></font>:<br>
-        &ensp; L\'expressió regular coincidirà amb el nom del grup de contactes associat al número entrant,
-                 afectant tots els contactes d\'aquest grup, de manera que no cal afegir-los individualment,
-                 i no cal actualitzar-lo ni tan sols quan hi hagi canvis de personal.<br>
-        &ensp;  - Un cas d\'ús:<br>
-        &emsp; Bloqueja tots els companys de feina al cap de setmana bloquejant el grup de contactes "feina".
-        ]]>
-    </string>
     <string name="text_too_long">El text és massa llarg, l\'edició està desactivada</string>
     <string name="follow_system"><short>Sistema</short></string>
     <string name="theme">Tema</string>
@@ -40,6 +22,30 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         Durada individual per a cada aplicació; si es deixa buit, tornarà a la durada global.
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>Número de telèfon</b></font>:<br>
+        &ensp; El mode per defecte, l\'expressió regular coincidirà amb el número de telèfon.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>Contactes</b></font>:<br>
+        &ensp; L\'expressió regular coincidirà amb el nom del contacte associat al número entrant.<br>
+        &ensp;  - Cas d\'ús:<br>
+        &emsp; <font color="#888888">Bloqueja tots els no-contactes el cap de setmana amb l\'expressió regular `.*`. </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>Grup de contactes</b></font>:<br>
+        &ensp; L\'expressió regular coincidirà amb el nom del grup de contactes associat al número entrant,
+                 afectant tots els contactes d\'aquest grup, de manera que no cal que els afegiu individualment,
+                 i no cal actualitzar-lo fins i tot quan hi hagi canvis de personal.<br>
+        &ensp;  - Cas d\'ús:<br>
+        &emsp; <font color="#888888">Bloqueja tots els companys de feina el cap de setmana bloquejant el grup de contactes \"Feina\". </font> <br>
         ]]>
     </string>
 </resources>

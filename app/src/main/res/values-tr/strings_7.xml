@@ -3,24 +3,6 @@
     <string name="end_time">Bitiş Zamanı</string>
     <string name="switch_mode">Modu Değiştir</string>
     <string name="contact_group">İletişim Grubu</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>Telefon Numarasır</b></font>:<br>
-        &ensp; Varsayılan modda, düzenli ifade telefon numarasını eşleştirecektir.<br>
-        <br>
-        <font color="#00BFFF"><b>Kişiler</b></font>:<br>
-        &ensp; Düzenli ifade, gelen numarayla ilişkili iletişim adını eşleştirecektir.<br>
-        &ensp;  - Bir kullanım durumu:<br>
-        &emsp; Hafta sonu tüm iletişim dışı numaraları düzenli ifade ile engelle `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>İletişim Grubu</b></font>:<br>
-        &ensp; Düzenli ifade, gelen numarayla ilişkili iletişim grubu adını eşleştirecektir,
-                 Bu gruptaki tüm iletişimleri etkileyerek, onları tek tek eklemenize gerek kalmaz,
-                 ve personel değişiklikleri olsa bile güncellemenize gerek kalmaz.<br>
-        &ensp;  - Bir kullanım durumu:<br>
-        &emsp; Hafta sonu iletişim grubunu engelleyerek tüm iş arkadaşlarını engelle "iş".
-        ]]>
-    </string>
     <string name="text_too_long">Metin çok uzun, düzenleme devre dışı</string>
     <string name="follow_system">Sistemi Takip Et</string>
     <string name="theme">Tema</string>
@@ -40,6 +22,30 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         Her uygulama için kişisel süre; boş bırakıldığında, genel süreye dönecektir.
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>Telefon Numarası</b></font>:<br>
+        &ensp; Varsayılan moddur, regex telefon numarasıyla eşleşecektir.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>Kişiler</b></font>:<br>
+        &ensp; Regex, gelen numarayla ilişkili kişi adıyla eşleşecektir.<br>
+        &ensp;  - Kullanım durumu:<br>
+        &emsp; <font color="#888888">Hafta sonu tüm rehber dışı numaraları `.*` regex\'iyle engelle. </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>Kişi Grubu</b></font>:<br>
+        &ensp; Regex, gelen numarayla ilişkili kişi grubu adıyla eşleşecektir,
+                 bu gruptaki tüm kişileri etkiler, böylece onları tek tek eklemenize gerek kalmaz,
+                 ve personel değişiklikleri olduğunda bile güncellemene gerek olmaz.<br>
+        &ensp;  - Kullanım durumu:<br>
+        &emsp; <font color="#888888">Hafta sonu \"iş\" kişi grubunu engelleyerek tüm iş arkadaşlarını engelle. </font> <br>
         ]]>
     </string>
 </resources>

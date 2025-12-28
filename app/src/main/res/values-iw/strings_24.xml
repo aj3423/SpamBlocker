@@ -16,4 +16,30 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>שם מתקשר</b></font>:<br>
+        &ensp; הביטוי הרגולרי יותאם לשם התצוגה של המתקשר (CNAP). <br>
+        <br>
+        ביומן היסטוריית השיחות, שם המתקשר יופיע אחרי מספר הטלפון בסוגריים אם קיים, כך: <br>
+        &ensp; <font color="#888888">12345 (שם תצוגה)</font>
+        ]]>
+    </string>
+    <string name="caller_name">שם מתקשר</string>
+    <string name="caller_name_rule">כלל שם מתקשר</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        עבור SMS, אפליקציה זו משתלטת על התראות ה-SMS, היא רק מסננת אותן, הודעות ספאם
+         עדיין יהיו נוכחות באפליקציית ה-SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        אפשר שיחות שיש להן מידע <b>CNAP (Caller Name Presentation)</b>, שהיא תכונה טלקומוניקטיבית המציגה את השם הרשום של המתקשר (יחד עם מספר הטלפון) על מסך הטלפון של הנמען במהלך שיחה נכנסת. <br>
+        <br>
+        עבור מדינות האוכפות CNAP מאומת KYC, שיחות שיש להן שם מתקשר הן ככל הנראה חוקיות.
+        ]]>
+    </string>
 </resources>

@@ -41,6 +41,7 @@ import spam.blocker.db.newRegexRule
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
@@ -90,33 +91,52 @@ import spam.blocker.util.hasFlag
 import spam.blocker.util.removeFlag
 import spam.blocker.util.setFlag
 
+fun Int.clearAllRegexFlags(): Int {
+    return this.removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
+        .removeFlag(FLAG_REGEX_FOR_CONTACT)
+        .removeFlag(FLAG_REGEX_FOR_CNAP)
+}
+
 @Composable
-fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
+fun RegexLeadingDropdownIcon(
+    forType: Int,
+    regexFlags: MutableIntState,
+) {
     val ctx = LocalContext.current
     val C = LocalPalette.current
 
-    val dropdownOffset = remember {
-        mutableStateOf(Offset.Zero)
-    }
-
     val dropdownItems = remember(Unit) {
+        val modeIds = mutableListOf(
+            R.string.help_regex_mode_phone_number,
+            R.string.help_regex_mode_contact,
+            R.string.help_regex_mode_contact_group,
+        )
+        if (forType == Def.ForNumber) {
+            modeIds += R.string.help_regex_mode_caller_name
+        }
         val items: MutableList<IMenuItem> = mutableListOf(
             LabelItem(
                 label = ctx.getString(R.string.switch_mode),
-                tooltip = ctx.getString(R.string.help_number_mode)
+                tooltip = modeIds.joinToString("<br>") { ctx.getString(it) }
             ),
             DividerItem(thickness = 1),
         )
-        val labelIds = listOf(
+        val labelIds = mutableListOf(
             R.string.phone_number,
             R.string.contacts,
             R.string.contact_group,
         )
-        val iconIds = listOf(
+        if (forType == Def.ForNumber) {
+            labelIds += R.string.caller_name
+        }
+        val iconIds = mutableListOf(
             R.drawable.ic_number_sign,
             R.drawable.ic_contact_square,
             R.drawable.ic_contact_group,
         )
+        if (forType == Def.ForNumber) {
+            iconIds += R.drawable.ic_id_card
+        }
         items += labelIds.mapIndexed { index, labelId ->
             LabelItem(
                 label = ctx.getString(labelId),
@@ -126,19 +146,18 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                         text = when (index) {
                             1 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CONTACT]!!
                             2 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CONTACT_GROUP]!!
+                            3 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CNAP]!!
                             else -> ""
                         },
                         color = Color.Magenta,
                         modifier = M.wrapContentSize()
                     )
                 },
-                dismissOnClick = index == 0,
+                dismissOnClick = index == 0 || index == 3,
             ) { menuExpanded ->
                 when (index) {
                     0 -> { // Number Mode
-                        regexFlags.intValue = regexFlags.intValue
-                            .removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
-                            .removeFlag(FLAG_REGEX_FOR_CONTACT)
+                        regexFlags.intValue = regexFlags.intValue.clearAllRegexFlags()
                     }
 
                     1, 2 -> { // Contact Mode, Contact Group Mode
@@ -150,19 +169,24 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                                 when (index) {
                                     1 -> { // Contact Mode
                                         regexFlags.intValue = regexFlags.intValue
+                                            .clearAllRegexFlags()
                                             .addFlag(FLAG_REGEX_FOR_CONTACT)
-                                            .removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
                                     }
 
                                     2 -> { // Contact Group Mode
                                         regexFlags.intValue = regexFlags.intValue
-                                            .removeFlag(FLAG_REGEX_FOR_CONTACT)
+                                            .clearAllRegexFlags()
                                             .addFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
                                     }
                                 }
                                 menuExpanded.value = false
                             }
                         }
+                    }
+                    3 -> {
+                        regexFlags.intValue = regexFlags.intValue
+                            .clearAllRegexFlags()
+                            .addFlag(FLAG_REGEX_FOR_CNAP)
                     }
                 }
             }
@@ -172,12 +196,10 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
 
     DropdownWrapper(
         items = dropdownItems,
-        modifier = M.onGloballyPositioned {
-            dropdownOffset.value = it.positionOnScreen()
-        }
     ) { expanded ->
-        val forContactGroup = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-        val forContact = regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+        val forContactGroup = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
+        val forContact = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT)
+        val forCNAP = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CNAP)
 
         Box {
             ResIcon(
@@ -185,6 +207,8 @@ fun RegexLeadingDropdownIcon(regexFlags: MutableIntState) {
                     R.drawable.ic_contact_square
                 } else if (forContactGroup) {
                     R.drawable.ic_contact_group
+                } else if (forCNAP) {
+                    R.drawable.ic_id_card
                 } else {
                     R.drawable.ic_number_sign
                 },
@@ -213,10 +237,12 @@ fun RegexFieldLabel(
         Str(
             when (forType) {
                 Def.ForNumber -> {
-                    if (flags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP))
+                    if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT_GROUP))
                         R.string.contact_group
-                    else if (flags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT))
+                    else if (flags.hasFlag(FLAG_REGEX_FOR_CONTACT))
                         R.string.contacts
+                    else if (flags.hasFlag(FLAG_REGEX_FOR_CNAP))
+                        R.string.caller_name
                     else
                         R.string.phone_number
                 }
@@ -379,7 +405,7 @@ fun RuleEditDialog(
                     showNumberFlags = forType == Def.ForNumber,
                     testable = true,
                     leadingIcon = if (forType == Def.ForNumber) {
-                        { RegexLeadingDropdownIcon(patternFlags) }
+                        { RegexLeadingDropdownIcon(Def.ForNumber, patternFlags) }
                     } else {
                         { ResIcon(iconId = R.drawable.ic_open_msg, modifier = M.size(18.dp)) }
                     }
@@ -396,7 +422,7 @@ fun RuleEditDialog(
 
                     AnimatedVisibleV(visible = forParticular) {
                         RegexInputBox(
-                            label = { Text(Str(R.string.phone_number)) },
+                            label = { RegexFieldLabel(forType = Def.ForNumber, flags = patternExtraFlags.intValue) },
                             regexStr = patternExtra,
                             regexFlags = patternExtraFlags,
                             showNumberFlags = true,
@@ -407,7 +433,7 @@ fun RuleEditDialog(
                             onFlagsChange = {
                                 patternExtraFlags.intValue = it
                             },
-                            leadingIcon = { RegexLeadingDropdownIcon(patternExtraFlags) }
+                            leadingIcon = { RegexLeadingDropdownIcon(Def.ForSms, patternExtraFlags) }
                         )
                     }
                 }

@@ -16,4 +16,31 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Nome del chiamante</b></font>:<br>
+        &ensp; L\'espressione regolare corrisponderà al nome visualizzato del chiamante (CNAP). <br>
+        <br>
+        Nel registro della cronologia delle chiamate, il nome del chiamante apparirà dopo il numero di telefono tra parentesi, se esiste, come: <br>
+        &ensp; <font color="#888888">12345 (Nome visualizzato)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Nome del chiamante</string>
+    <string name="caller_name_rule">Regola nome chiamante</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        Per gli SMS, questa app gestisce le notifiche SMS, le filtra solamente, i messaggi spam
+         saranno comunque presenti nell\'app SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Consente chiamate che hanno informazioni <b>CNAP (Caller Name Presentation)</b>, che è una funzionalità di telecomunicazione che
+         visualizza il nome registrato del chiamante (insieme al numero di telefono) sullo schermo del telefono del destinatario durante una chiamata in arrivo. <br>
+        <br>
+        Per i paesi che impongono CNAP verificato KYC, le chiamate con un nome chiamante sono probabilmente valide.
+        ]]>
+    </string>
 </resources>

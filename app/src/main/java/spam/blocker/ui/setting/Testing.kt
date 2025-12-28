@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
@@ -20,8 +21,12 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
+import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.Db
+import spam.blocker.db.NumberRuleTable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
+import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.service.CallScreeningService
 import spam.blocker.service.SmsReceiver
 import spam.blocker.ui.theme.DarkOrange
@@ -46,6 +51,7 @@ import spam.blocker.util.JetpackTextLogger
 class TestingViewModel {
     val selectedType = mutableIntStateOf(0)
     val phone = mutableStateOf("")
+    val callerName = mutableStateOf("")
     val sms = mutableStateOf("")
     val simSlot = mutableStateOf<Int?>(null)
 }
@@ -137,7 +143,10 @@ fun PopupTesting(
 
                 coroutine.launch(IO) {
                     if (isForCall)
-                        CallScreeningService().processCall(ctx, textLogger, vm.phone.value, simSlot = vm.simSlot.value)
+                        CallScreeningService().processCall(
+                            ctx, logger = textLogger, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
+                            callDetails = null, cnap = vm.callerName.value.ifEmpty { null }
+                        )
                     else
                         SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value)
                 }
@@ -173,6 +182,33 @@ fun PopupTesting(
                         clearPreviousResult()
                     },
                 )
+
+                // Only show the Caller Name field when there's at least 1 CNAP rule configured
+                var hasCnapRule by remember(G.NumberRuleVM.rules, G.ContentRuleVM.rules) {
+                    // either `patterFlags` or `patternExtraFlags` has flag CNAP
+                    val foundNumberRule = NumberRuleTable().findByFilter(ctx,
+                        " WHERE (${Db.COLUMN_PATTERN_FLAGS} & ${FLAG_REGEX_FOR_CNAP}) = $FLAG_REGEX_FOR_CNAP LIMIT 1"
+                    ).isNotEmpty()
+
+                    val foundContentRule = ContentRuleTable().findByFilter(ctx,
+                        " WHERE (${Db.COLUMN_PATTERN_EXTRA_FLAGS} & ${FLAG_REGEX_FOR_CNAP}) = $FLAG_REGEX_FOR_CNAP LIMIT 1"
+                    ).isNotEmpty()
+
+                    mutableStateOf(foundNumberRule || foundContentRule)
+                }
+
+                // Caller Name
+                AnimatedVisibleV(vm.selectedType.intValue == Def.ForNumber && hasCnapRule) {
+                    StrInputBox(
+                        text = vm.callerName.value,
+                        label = { GreyLabel(Str(R.string.caller_name)) },
+                        leadingIconId = R.drawable.ic_id_card,
+                        onValueChange = {
+                            vm.callerName.value = it
+                            clearPreviousResult()
+                        },
+                    )
+                }
                 // SMS content
                 AnimatedVisibleV(vm.selectedType.intValue != Def.ForNumber) {
                     StrInputBox(

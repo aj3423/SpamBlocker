@@ -3,24 +3,6 @@
     <string name="end_time">Ora di fine</string>
     <string name="switch_mode">Modalità di commutazione</string>
     <string name="contact_group">Gruppo di contatti</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>Numero di Telefono</b></font>:<br>
-        &ensp; Modalità predefinita, l\'espressione regolare corrisponderà al numero di telefono.<br>
-        <br>
-        <font color="#00BFFF"><b>Contatti</b></font>:<br>
-        &ensp; L\'espressione regolare corrisponderà al nome del contatto associato al numero in arrivo.<br>
-        &ensp;  - Un esempio d\'uso:<br>
-        &emsp; Blocca tutti i non contatti nel fine settimana con l\'espressione regolare `.*`.<br>
-        <br>
-        <font color="#00BFFF"><b>Gruppo di Contatti</b></font>:<br>
-        &ensp; L\'espressione regolare corrisponderà al nome del gruppo di contatti associato al numero in arrivo,
-                 influenzando tutti i contatti di quel gruppo, quindi non è necessario aggiungerli individualmente,
-                 e non è necessario aggiornarlo nemmeno in caso di cambi di personale.<br>
-        &ensp;  - Un esempio d\'uso:<br>
-        &emsp; Blocca tutti i colleghi nel fine settimana bloccando il gruppo di contatti "lavoro".
-        ]]>
-    </string>
     <string name="text_too_long">Testo troppo lungo, la modifica è disabilitata</string>
     <string name="follow_system"><short>Segui Sistema</short></string>
     <string name="theme">Tema</string>
@@ -40,6 +22,30 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         Durata individuale per ogni app, se lasciata vuota, si ripiegherà sulla durata globale.
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>Numero di telefono</b></font>:<br>
+        &ensp; La modalità predefinita, l\'espressione regolare corrisponderà al numero di telefono.<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>Contatti</b></font>:<br>
+        &ensp; L\'espressione regolare corrisponderà al nome del contatto associato al numero in arrivo.<br>
+        &ensp;  - Caso d\'uso:<br>
+        &emsp; <font color="#888888">Blocca tutti i non contatti nel fine settimana con l\'espressione regolare `.*`. </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>Gruppo di contatti</b></font>:<br>
+        &ensp; L\'espressione regolare corrisponderà al nome del gruppo di contatti associato al numero in arrivo,
+                 influenzando tutti i contatti di quel gruppo, quindi non sarà necessario aggiungerli individualmente,
+                 e non sarà necessario aggiornarlo anche in caso di modifiche del personale.<br>
+        &ensp;  - Caso d\'uso:<br>
+        &emsp; <font color="#888888">Blocca tutti i colleghi nel fine settimana bloccando il gruppo di contatti \"lavoro\". </font> <br>
         ]]>
     </string>
 </resources>

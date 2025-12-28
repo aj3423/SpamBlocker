@@ -165,8 +165,13 @@ fun HistoryCard(
                         IndicatorIcons(indicators)
 
                     // Number
+                    var t = contact?.name ?: record.peer
+                    // Display Name (CNAP)
+                    if (!record.cnap.isNullOrEmpty()) {
+                        t += " (${record.cnap})"
+                    }
                     Text(
-                        text = contact?.name ?: record.peer,
+                        text = t,
                         color = if (record.isBlocked()) C.block else C.pass,
                         fontSize = 18.sp
                     )

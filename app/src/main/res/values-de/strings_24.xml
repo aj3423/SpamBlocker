@@ -16,4 +16,31 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Anrufername</b></font>:<br>
+        &ensp; Der Regex wird mit dem angezeigten Anrufernamen (CNAP) abgeglichen. <br>
+        <br>
+        Im Anrufverlaufsprotokoll erscheint der Anrufername, falls vorhanden, nach der Telefonnummer in Klammern, zum Beispiel: <br>
+        &ensp; <font color="#888888">12345 (Anzeigename)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Anrufername</string>
+    <string name="caller_name_rule">Regel für Anrufernamen</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        Für SMS übernimmt diese App die SMS-Benachrichtigungen, sie filtert diese nur, Spam-Nachrichten
+         sind weiterhin in der SMS-App vorhanden. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Erlaube Anrufe, die <b>CNAP-Informationen (Anrufernamenanzeige)</b> haben, was eine Telekommunikationsfunktion ist, die
+         den registrierten Namen des Anrufers (zusammen mit der Telefonnummer) während eines eingehenden Anrufs auf dem Telefonbildschirm des Empfängers anzeigt. <br>
+        <br>
+        Für Länder, die KYC-verifizierte CNAP erzwingen, sind Anrufe mit einem Anrufernamen wahrscheinlich gültig.
+        ]]>
+    </string>
 </resources>

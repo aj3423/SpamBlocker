@@ -13,4 +13,30 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Arayan Adı</b></font>:<br>
+        &ensp; Regex, arayanın görünen adıyla (CNAP) eşleşecektir. <br>
+        <br>
+        Çağrı geçmişi kaydında, arayan adı varsa telefon numarasından sonra parantez içinde görünecektir, örneğin: <br>
+        &ensp; <font color="#888888">12345 (Görünen Ad)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Arayan Adı</string>
+    <string name="caller_name_rule">Arayan Adı Kuralı</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        SMS için bu uygulama SMS bildirimlerini devralır, sadece filtreler, istenmeyen mesajlar
+         SMS uygulamasında hala mevcut olacaktır. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Gelen bir arama sırasında arayanın kayıtlı adını (telefon numarasıyla birlikte) alıcının telefon ekranında gösteren bir telekom özelliği olan <b>CNAP (Arayan Adı Gösterimi)</b> bilgisine sahip aramalara izin verin. <br>
+        <br>
+        KYC-doğrulamalı CNAP uygulayan ülkeler için, arayan adı olan aramalar muhtemelen geçerlidir.
+        ]]>
+    </string>
 </resources>

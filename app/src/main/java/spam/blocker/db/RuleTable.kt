@@ -316,11 +316,14 @@ abstract class RuleTable {
     }
 
     @SuppressLint("Range")
-    private fun listByFilter(ctx: Context, filterSql: String): List<RegexRule> {
+    fun findByFilter(ctx: Context, filterSql: String): List<RegexRule> {
+
+        val sql = "SELECT * FROM ${tableName()} $filterSql"
+
         val ret: MutableList<RegexRule> = mutableListOf()
 
         val db = Db.getInstance(ctx).readableDatabase
-        val cursor = db.rawQuery(filterSql, null)
+        val cursor = db.rawQuery(sql, null)
         cursor.use {
             if (it.moveToFirst()) {
                 do {
@@ -365,9 +368,9 @@ abstract class RuleTable {
         ctx: Context,
     ): List<RegexRule> {
         val sql =
-            "SELECT * FROM ${tableName()} ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
+            " ORDER BY ${Db.COLUMN_PRIORITY} DESC, ${Db.COLUMN_DESC} ASC, ${Db.COLUMN_PATTERN} ASC"
 
-        return listByFilter(ctx, sql)
+        return findByFilter(ctx, sql)
     }
 
 

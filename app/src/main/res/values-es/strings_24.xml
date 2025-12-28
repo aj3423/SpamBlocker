@@ -16,4 +16,31 @@
         %s
         ]]>
     </string>
+    <string name="help_regex_mode_caller_name">
+        <![CDATA[
+        <font color="#00BFFF"><b>Nombre de quien llama</b></font>:<br>
+        &ensp; La expresión regular coincidirá con el nombre de visualización del llamante (CNAP). <br>
+        <br>
+        En el registro del historial de llamadas, el nombre de quien llama aparecerá después del número de teléfono entre paréntesis si existe, como: <br>
+        &ensp; <font color="#888888">12345 (Nombre de visualización)</font>
+        ]]>
+    </string>
+    <string name="caller_name">Nombre de quien llama</string>
+    <string name="caller_name_rule">Regla del nombre de quien llama</string>
+    <string name="help_caller_name">
+        <![CDATA[
+        Para SMS, esta aplicación se encarga de las notificaciones de SMS, solo las filtra, los mensajes de spam
+         seguirán estando presentes en la aplicación de SMS. <br>
+        <br>
+        %s
+        ]]>
+    </string>
+    <string name="help_regex_preset_caller_name">
+        <![CDATA[
+        Permitir llamadas que tienen información de <b>CNAP (Presentación del Nombre del Llamante)</b>, que es una característica de telecomunicaciones que
+         muestra el nombre registrado del llamante (junto con el número de teléfono) en la pantalla del teléfono del destinatario durante una llamada entrante. <br>
+        <br>
+        Para los países que aplican el CNAP verificado por KYC, las llamadas que tienen un nombre de quien llama son probablemente válidas.
+        ]]>
+    </string>
 </resources>

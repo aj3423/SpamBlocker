@@ -3,24 +3,6 @@
     <string name="end_time">終了時間</string>
     <string name="switch_mode">モード切り替え</string>
     <string name="contact_group">連絡先グループ</string>
-    <string name="help_number_mode">
-        <![CDATA[
-        <font color="#00BFFF"><b>電話番号</b></font>:<br>
-        &ensp; デフォルトモードでは、正規表現は電話番号と一致します。<br>
-        <br>
-        <font color="#00BFFF"><b>連絡先</b></font>:<br>
-        &ensp; 正規表現は、着信番号に関連付けられた連絡先名と一致します。<br>
-        &ensp;  - ユースケース:<br>
-        &emsp; 週末に連絡先以外のすべてを正規表現`.*`でブロックします。<br>
-        <br>
-        <font color="#00BFFF"><b>連絡先グループ</b></font>:<br>
-        &ensp; 正規表現は、着信番号に関連付けられた連絡先グループ名と一致します。
-                 これにより、そのグループのすべての連絡先に影響が及ぶため、個別に追加する必要がなく、
-                 人事異動があっても更新する必要はありません。<br>
-        &ensp;  - ユースケース:<br>
-        &emsp; 連絡先グループ「仕事」をブロックすることで、週末にすべての同僚をブロックします。
-        ]]>
-    </string>
     <string name="text_too_long">テキストが長すぎるため、編集は無効になっています</string>
     <string name="follow_system"><short>システムに従う</short></string>
     <string name="theme">テーマ</string>
@@ -40,6 +22,30 @@
     <string name="help_recent_apps_individual_duration">
         <![CDATA[
         各アプリの個別の期間。空欄の場合、グローバル期間に戻ります。
+        ]]>
+    </string>
+    <string name="help_regex_mode_phone_number">
+        <![CDATA[
+        <font color="#00BFFF"><b>電話番号</b></font>:<br>
+        &ensp; デフォルトモードでは、正規表現は電話番号に対してマッチします。<br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact">
+        <![CDATA[
+        <font color="#00BFFF"><b>連絡先</b></font>:<br>
+        &ensp; 正規表現は、着信番号に関連付けられた連絡先名に対してマッチします。<br>
+        &ensp;  - ユースケース:<br>
+        &emsp; <font color="#888888">週末に正規表現`.*`ですべての非連絡先をブロックします。 </font><br>
+        ]]>
+    </string>
+    <string name="help_regex_mode_contact_group">
+        <![CDATA[
+        <font color="#00BFFF"><b>連絡先グループ</b></font>:<br>
+        &ensp; 正規表現は、着信番号に関連付けられた連絡先グループ名に対してマッチし、
+                 そのグループ内のすべての連絡先に影響を与えます。そのため、個別に連絡先を追加する必要がなく、
+                 人事異動があっても更新する必要がありません。<br>
+        &ensp;  - ユースケース:<br>
+        &emsp; <font color="#888888">週末に連絡先グループ「work」をブロックすることで、すべての同僚をブロックします。 </font> <br>
         ]]>
     </string>
 </resources>
