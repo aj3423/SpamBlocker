@@ -28,12 +28,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionOnScreen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextRange
@@ -586,11 +583,6 @@ fun RegexInputBox(
             val hasCC =
                 remember { mutableStateOf(regexFlags.intValue.hasFlag(FLAG_REGEX_IGNORE_CC)) }
 
-            // a fix for Tooltip+DropdownMenu
-            val dropdownOffset = remember {
-                mutableStateOf(Offset.Zero)
-            }
-
             // Validate the regex on flags change, it should disappear for `+123` when RawMode is turned on.
             LaunchedEffect(regexFlags.intValue) {
                 errorStr = validateError()
@@ -680,10 +672,6 @@ fun RegexInputBox(
                 if (showFlagsIcon) {
                     DropdownWrapper(
                         items = dropdownItems,
-                        modifier = M
-                            .onGloballyPositioned {
-                                dropdownOffset.value = it.positionOnScreen()
-                            }
                     ) { expanded ->
 
                         val imdlc = regexFlags.intValue.toFlagStr()

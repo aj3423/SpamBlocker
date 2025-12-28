@@ -24,14 +24,11 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
-import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.Button
-import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.ResIcon
 import spam.blocker.ui.widgets.ResImage
-import spam.blocker.ui.widgets.RowVCenter
 import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
