@@ -41,14 +41,47 @@
         对于强制执行KYC验证CNAP的国家/地区，带有来电者姓名的电话很可能是有效的。
         ]]>
     </string>
-    <string name="forwarded_call">呼叫转移</string>
+    <string name="forwarded_call">转接呼叫</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        阻止所有呼叫转移。<br>
+        阻止转接呼叫，它们通常是垃圾呼叫。<br>
         <br>
-        在通话记录中，呼叫转移会显示为通过“&”连接的号码。<br>
-        <br>
-        例如：<font color="#888888">111<b>&</b>222</font>。
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        这是<b>运营商特有的</b>，一些运营商将转接呼叫格式化为由“&”连接的两个号码，
+         例如<font color="#888888">222&111</font>。<br>
+        <br>
+        在这种格式中:<br>
+        &ensp; - 第一部分（<font color="#888888">222</font>）通常是转接号码。<br>
+        &ensp; - 第二部分（<font color="#888888">111</font>）是原始号码。<br>
+        <br>
+        也可能有<font color="#888888">333&111</font>和<font color="#888888">444&111</font>，
+         其中原始号码保持不变，而转接号码发生变化。
+        ]]>
+    </string>
+    <string name="raw">原始格式</string>
+    <string name="original">原始号码</string>
+    <string name="forwarding">转接号码</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        如果通话记录中没有看到包含“&”字符的号码，则无需更改此设置。<br>
+        <br>
+        %s <br>
+        <br>
+        <b>选项</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>原始格式</b></font> <br>
+        查询/报告原始形式的号码(<font color="#888888">222&111</font>)，如果API支持此格式。<br>
+        <br>
+        <font color="#00BFFF"><b>原始号码</b></font> <br>
+        查询/报告原始号码(<font color="#888888">111</font>)，这是针对不支持原始格式API的变通方法。<br>
+        <br>
+        <font color="#00BFFF"><b>转接号码</b></font> <br>
+        查询/报告转接号码(<font color="#888888">222</font>)。<br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">此转接号码已修改为%s。</string>
 </resources>

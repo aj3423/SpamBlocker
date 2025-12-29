@@ -46,11 +46,42 @@
     <string name="forwarded_call">Panggilan Diteruskan</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Blokir semua panggilan yang diteruskan. <br>
+        Blokir panggilan yang diteruskan, biasanya itu adalah spam. <br>
         <br>
-        Dalam log riwayat panggilan, panggilan yang diteruskan muncul sebagai nomor yang digabungkan dengan \"&\". <br>
-        <br>
-        Contoh: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Ini <b>spesifik operator</b>, beberapa operator memformat panggilan yang diteruskan sebagai dua nomor yang digabungkan dengan \"&\", seperti <font color="#888888">222&111</font>. <br>
+        <br>
+        Dalam format ini: <br>
+        &ensp; - Bagian pertama (<font color="#888888">222</font>) biasanya adalah nomor penerus. <br>
+        &ensp; - Bagian kedua (<font color="#888888">111</font>) adalah nomor asli. <br>
+        <br>
+        Mungkin juga ada <font color="#888888">333&111</font> dan <font color="#888888">444&111</font>, di mana nomor asal tetap sama dan nomor penerus berubah.
+        ]]>
+    </string>
+    <string name="raw">Mentah</string>
+    <string name="original">Asli</string>
+    <string name="forwarding">Meneruskan</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Tidak perlu mengubah ini jika Anda tidak melihat nomor yang mengandung karakter \"&\" di log riwayat panggilan. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Opsi</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Mentah</b></font> <br>
+        Kueri/laporkan nomor mentah (<font color="#888888">222&111</font>), jika API mendukung format ini. <br>
+        <br>
+        <font color="#00BFFF"><b>Asli</b></font> <br>
+        Kueri/laporkan nomor asli (<font color="#888888">111</font>), ini adalah solusi untuk API yang tidak mendukung format mentah. <br>
+        <br>
+        <font color="#00BFFF"><b>Meneruskan</b></font> <br>
+        Kueri/laporkan nomor penerusan (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Nomor yang diteruskan ini telah diubah menjadi %s.</string>
 </resources>

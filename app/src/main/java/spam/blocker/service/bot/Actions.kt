@@ -141,7 +141,7 @@ class PruneHistory(
     override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
         val nDays = ctx.resources.getQuantityString(R.plurals.days, expiry, expiry)
-        SummaryLabel(ctx.getString(R.string.expiry) + ": $nDays")
+        SummaryLabel(Str(R.string.expiry) + ": $nDays")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -474,7 +474,7 @@ class PruneDatabase(
         val ctx = LocalContext.current
 
         val nDays = ctx.resources.getQuantityString(R.plurals.days, expiry, expiry)
-        SummaryLabel(ctx.getString(R.string.expiry) + ": $nDays")
+        SummaryLabel(Str(R.string.expiry) + ": $nDays")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -534,9 +534,9 @@ class BackupExport(
     override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
-        val yes = ctx.getString(R.string.yes)
-        val no = ctx.getString(R.string.no)
-        SummaryLabel(ctx.getString(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
+        val yes = Str(R.string.yes)
+        val no = Str(R.string.no)
+        SummaryLabel(Str(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -602,9 +602,9 @@ class BackupImport(
     override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
-        val yes = ctx.getString(R.string.yes)
-        val no = ctx.getString(R.string.no)
-        SummaryLabel(ctx.getString(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
+        val yes = Str(R.string.yes)
+        val no = Str(R.string.no)
+        SummaryLabel(Str(R.string.include_spam_db) + ": ${if (includeSpamDB) yes else no}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -974,7 +974,7 @@ class RegexExtract(
     override fun Summary(showIcon: Boolean) {
         val ctx = LocalContext.current
 
-        val label = ctx.getString(R.string.regex_pattern)
+        val label = Str(R.string.regex_pattern)
         SummaryLabel("$label: $pattern")
     }
 
@@ -1737,9 +1737,7 @@ class EnableWorkflow(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
-
-        SummaryLabel("${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}")
+        SummaryLabel("${Str(R.string.enable)}: ${Str(if (enable) R.string.yes else R.string.no)}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1798,9 +1796,7 @@ class EnableApp(
 
     @Composable
     override fun Summary(showIcon: Boolean) {
-        val ctx = LocalContext.current
-
-        SummaryLabel("${ctx.getString(R.string.enable)}: ${ctx.getString(if (enable) R.string.yes else R.string.no)}")
+        SummaryLabel("${Str(R.string.enable)}: ${Str(if (enable) R.string.yes else R.string.no)}")
     }
 
     override fun tooltip(ctx: Context): String {
@@ -1834,6 +1830,12 @@ class EnableApp(
     }
 }
 
+object ForwardType {
+    const val Full = 0
+    const val Original = 1
+    const val Forwarding = 2
+}
+
 // For "API Query" only, not for Workflows.
 // This action parses the incoming number and fill the ActionContext with cc/domestic/number,
 //  which can be used in following actions like HttpRequest.
@@ -1844,6 +1846,7 @@ class EnableApp(
 @SerialName("ParseIncomingNumber")
 class InterceptCall(
     var numberFilter: String = ".*",
+    var forwardType: Int = ForwardType.Full,
 ) : IAction {
 
     override fun requiredPermissions(ctx: Context): List<PermissionWrapper> {
@@ -1860,12 +1863,6 @@ class InterceptCall(
         val rawNumber = aCtx.rawNumber!!
         aCtx.logger?.debug("${label(ctx)}: $rawNumber")
 
-        // Skip alpha/empty numbers, such as: Microsoft and ""
-//        if (rawNumber.isEmpty()) {
-//            aCtx.logger?.warn(ctx.getString(R.string.skip_alpha_empty_number))
-//            return false
-//        }
-
         val matchesFilter = numberFilter.toRegex().matches(rawNumber)
         if (!matchesFilter) {
             aCtx.logger?.debug(
@@ -1875,7 +1872,29 @@ class InterceptCall(
             return false
         }
 
-        val clearedNumber = Util.clearNumber(rawNumber)
+        var clearedNumber = Util.clearNumber(rawNumber)
+
+        // Handle forwarded number like "111&222"
+        if (Util.isAmpersandNumber(clearedNumber)) {
+            when (forwardType) {
+                ForwardType.Full -> {}
+                ForwardType.Forwarding -> {
+                    clearedNumber = clearedNumber.split("&").first() // keep "111"
+                }
+                ForwardType.Original -> {
+                    clearedNumber = clearedNumber.split("&").last() // keep "222"
+                }
+            }
+            // Show some log
+            when (forwardType) {
+                ForwardType.Forwarding, ForwardType.Original -> {
+                    aCtx.logger?.warn(
+                        ctx.getString(R.string.forwarded_number_modified_to)
+                            .formatAnnotated(clearedNumber.A(DimGrey))
+                    )
+                }
+            }
+        }
 
         if (rawNumber.startsWith("+")) {
             aCtx.fullNumber = clearedNumber
@@ -1956,6 +1975,8 @@ class InterceptCall(
 
     @Composable
     override fun Options() {
+        val ctx = LocalContext.current
+
         val dummyFlags = remember { mutableIntStateOf(Def.FLAG_REGEX_RAW_NUMBER) }
         RegexInputBox(
             regexStr = numberFilter,
@@ -1972,6 +1993,29 @@ class InterceptCall(
             },
             onFlagsChange = { }
         )
+
+        // Forward Type
+        var selectedForwardType by remember { mutableIntStateOf(forwardType) }
+        val options = remember {
+            listOf(
+                R.string.raw,
+                R.string.original,
+                R.string.forwarding,
+            ).mapIndexed { index, labelId ->
+                LabelItem(label = ctx.getString(labelId)) {
+                    forwardType = index
+                    selectedForwardType = index
+                }
+            }
+        }
+        LabeledRow(
+            R.string.forwarding,
+            helpTooltip = Str(R.string.help_truncate_forwarded_number).format(
+                Str(R.string.explanation_forwarded_call)
+            )
+        ) {
+            ComboBox(options, selectedForwardType)
+        }
     }
 }
 

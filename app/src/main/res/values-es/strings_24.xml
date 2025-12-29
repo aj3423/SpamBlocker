@@ -46,11 +46,44 @@
     <string name="forwarded_call">Llamada Desviada</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Bloquear todas las llamadas desviadas. <br>
+        Bloquear llamadas desviadas, suelen ser spam. <br>
         <br>
-        En el registro del historial de llamadas, las llamadas desviadas aparecen como números concatenados unidos por \"&\". <br>
-        <br>
-        Por ejemplo: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Esto es <b>específico del operador</b>; algunos operadores formatean las llamadas desviadas como dos números concatenados con un \"&\",
+         como <font color="#888888">222&111</font>. <br>
+        <br>
+        En este formato: <br>
+        &ensp; - La primera parte (<font color="#888888">222</font>) es típicamente el número de desvío. <br>
+        &ensp; - La segunda parte (<font color="#888888">111</font>) es el número original. <br>
+        <br>
+        También podría haber <font color="#888888">333&111</font> y <font color="#888888">444&111</font>,
+         donde el número de origen permanece igual y el número de desvío cambia.
+        ]]>
+    </string>
+    <string name="raw">Bruto</string>
+    <string name="original">Original</string>
+    <string name="forwarding">Desvío</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        No es necesario cambiar esto si no ves números que contengan el carácter \"&\" en el registro del historial de llamadas. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Opciones</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Bruto</b></font> <br>
+        Consultar/informar el número bruto (<font color="#888888">222&111</font>), si la API soporta este formato. <br>
+        <br>
+        <font color="#00BFFF"><b>Original</b></font> <br>
+        Consultar/informar el número original (<font color="#888888">111</font>), esto es una solución temporal para APIs que no soportan el formato bruto. <br>
+        <br>
+        <font color="#00BFFF"><b>Desvío</b></font> <br>
+        Consultar/informar el número de desvío (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Este número desviado ha sido modificado a %s.</string>
 </resources>

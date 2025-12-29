@@ -43,11 +43,44 @@
     <string name="forwarded_call">مكالمة محولة</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        حظر جميع المكالمات المحولة. <br>
+        حظر المكالمات المحولة، عادةً ما تكون اقتحامية. <br>
         <br>
-        في سجل المكالمات، تظهر المكالمات المحولة كأرقام متسلسلة مرتبطة بعلامة \"&\". <br>
-        <br>
-        على سبيل المثال: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        هذا <b>خاص بالناقل</b>، بعض شركات الاتصالات تقوم بتنسيق المكالمات المحولة كرقمين متسلسلين بعلامة \"&\"،
+         مثل <font color="#888888">222&111</font>. <br>
+        <br>
+        في هذا التنسيق: <br>
+        &ensp; - الجزء الأول (<font color="#888888">222</font>) هو عادةً رقم التحويل. <br>
+        &ensp; - الجزء الثاني (<font color="#888888">111</font>) هو الرقم الأصلي. <br>
+        <br>
+        قد يكون هناك أيضًا <font color="#888888">333&111</font> و <font color="#888888">444&111</font>،
+         حيث يبقى الرقم الأصلي كما هو ويتغير رقم التحويل.
+        ]]>
+    </string>
+    <string name="raw">خام</string>
+    <string name="original">أصلي</string>
+    <string name="forwarding">تحويل</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        لا داعي لتغيير هذا إذا لم ترَ أرقامًا تحتوي على الحرف \"&\" في سجل تاريخ المكالمات. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>الخيارات</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>خام</b></font> <br>
+        الاستعلام عن/الإبلاغ عن الرقم الخام (<font color="#888888">222&111</font>)، إذا كانت واجهة برمجة التطبيقات تدعم هذا التنسيق. <br>
+        <br>
+        <font color="#00BFFF"><b>أصلي</b></font> <br>
+        الاستعلام عن/الإبلاغ عن الرقم الأصلي (<font color="#888888">111</font>)، هذا حل بديل لواجهات برمجة التطبيقات التي لا تدعم التنسيق الخام. <br>
+        <br>
+        <font color="#00BFFF"><b>تحويل</b></font> <br>
+        الاستعلام عن/الإبلاغ عن رقم التحويل (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">تم تعديل هذا الرقم المحوّل إلى %s.</string>
 </resources>

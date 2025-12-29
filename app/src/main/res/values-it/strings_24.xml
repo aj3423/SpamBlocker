@@ -46,11 +46,44 @@
     <string name="forwarded_call">Chiamata Inoltrata</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Blocca tutte le chiamate inoltrate. <br>
+        Blocca le chiamate inoltrate, di solito sono spam. <br>
         <br>
-        Nel registro della cronologia delle chiamate, le chiamate inoltrate appaiono come numeri concatenati uniti da \"&\". <br>
-        <br>
-        Ad esempio: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Questo è <b>specifico dell\'operatore</b>, alcuni operatori formattano le chiamate inoltrate come due numeri concatenati con una \"&\",
+         come <font color="#888888">222&111</font>. <br>
+        <br>
+        In questo formato: <br>
+        &ensp; - La prima parte (<font color="#888888">222</font>) è tipicamente il numero di inoltro. <br>
+        &ensp; - La seconda parte (<font color="#888888">111</font>) è il numero originale. <br>
+        <br>
+        Potrebbero esserci anche <font color="#888888">333&111</font> e <font color="#888888">444&111</font>,
+         dove il numero di origine rimane lo stesso e il numero di inoltro cambia.
+        ]]>
+    </string>
+    <string name="raw">Raw</string>
+    <string name="original">Originale</string>
+    <string name="forwarding">Inoltro</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Non è necessario cambiarlo se non vedi numeri contenenti il carattere \"&\" nel registro della cronologia delle chiamate. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Opzioni</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Raw</b></font> <br>
+        Interroga/segnala il numero raw (<font color="#888888">222&111</font>), se l\'API supporta questo formato. <br>
+        <br>
+        <font color="#00BFFF"><b>Originale</b></font> <br>
+        Interroga/segnala il numero originale (<font color="#888888">111</font>), questo è un workaround per le API che non supportano il formato raw. <br>
+        <br>
+        <font color="#00BFFF"><b>Inoltro</b></font> <br>
+        Interroga/segnala il numero di inoltro (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Questo numero inoltrato è stato modificato in %s.</string>
 </resources>

@@ -42,11 +42,42 @@
     <string name="forwarded_call">Yönlendirilen Çağrı</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Tüm yönlendirilen aramaları engelle. <br>
+        Yönlendirilen çağrıları engelleyin, bunlar genellikle istenmeyen (spam) çağrılardır. <br>
         <br>
-        Çağrı geçmişi kaydında, yönlendirilen aramalar \"&\" ile birleştirilmiş ardışık telefon numaraları olarak görünür. <br>
-        <br>
-        Örneğin: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Bu <b>operatöre özeldir</b>, bazı operatörler yönlendirilen çağrıları <font color="#888888">222&111</font> gibi \"&\" ile birleştirilmiş iki numara olarak biçimlendirir. <br>
+        <br>
+        Bu biçimde: <br>
+        &ensp; - İlk kısım (<font color="#888888">222</font>) genellikle yönlendiren numaradır. <br>
+        &ensp; - İkinci kısım (<font color="#888888">111</font>) orijinal numaradır. <br>
+        <br>
+        Ayrıca <font color="#888888">333&111</font> ve <font color="#888888">444&111</font> de olabilir, burada orijinal numara aynı kalır ve yönlendiren numara değişir.
+        ]]>
+    </string>
+    <string name="raw">Ham</string>
+    <string name="original">Orijinal</string>
+    <string name="forwarding">Yönlendirme</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Çağrı geçmişi kaydında \"&\" karakteri içeren numaralar görmüyorsanız bunu değiştirmenize gerek yok. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Seçenekler</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Ham</b></font> <br>
+        API bu biçimi destekliyorsa ham numarayı (<font color="#888888">222&111</font>) sorgulayın/bildirin. <br>
+        <br>
+        <font color="#00BFFF"><b>Orijinal</b></font> <br>
+        Orijinal numarayı (<font color="#888888">111</font>) sorgulayın/bildirin, bu, ham biçimi desteklemeyen API\'ler için bir çözümdür. <br>
+        <br>
+        <font color="#00BFFF"><b>Yönlendirme</b></font> <br>
+        Yönlendirme numarasını (<font color="#888888">222</font>) sorgulayın/bildirin. <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Bu yönlendirilen numara %s olarak değiştirildi.</string>
 </resources>

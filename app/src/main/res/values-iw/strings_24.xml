@@ -45,11 +45,44 @@
     <string name="forwarded_call">שיחה מועברת</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        חסום את כל השיחות המועברות. <br>
+        חסום שיחות מועברות, הן בדרך כלל ספאם. <br>
         <br>
-        בתיעוד היסטוריית השיחות, שיחות מועברות מופיעות כמספרים משורשרים המחוברים באמצעות \"&\". <br>
-        <br>
-        לדוגמה: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        זהו <b>ספציפי למפעיל</b>, חלק מהמפעילים מעצבים שיחות מועברות כשני מספרים מחוברים באמצעות סימן \'&\',
+         כגון <font color="#888888">222&111</font>. <br>
+        <br>
+        בפורמט זה: <br>
+        &ensp; - החלק הראשון (<font color="#888888">222</font>) הוא בדרך כלל מספר ההעברה. <br>
+        &ensp; - החלק השני (<font color="#888888">111</font>) הוא המספר המקורי. <br>
+        <br>
+        יכולים להיות גם <font color="#888888">333&111</font> ו-<font color="#888888">444&111</font>,
+         כאשר מספר המקור נשאר זהה ומספר ההעברה משתנה.
+        ]]>
+    </string>
+    <string name="raw">גלם</string>
+    <string name="original">מקורי</string>
+    <string name="forwarding">מעביר</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        אין צורך לשנות זאת אם אינך רואה מספרים המכילים את התו \'&\' ביומן היסטוריית השיחות. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>אפשרויות</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>גלם</b></font> <br>
+        שאילתה/דיווח על המספר הגולמי (<font color="#888888">222&111</font>), אם ה-API תומך בפורמט זה. <br>
+        <br>
+        <font color="#00BFFF"><b>מקורי</b></font> <br>
+        שאילתה/דיווח על המספר המקורי (<font color="#888888">111</font>), זהו פתרון עוקף עבור ממשקי API שאינם תומכים בפורמט הגולמי. <br>
+        <br>
+        <font color="#00BFFF"><b>מעביר</b></font> <br>
+        שאילתה/דיווח על המספר המעביר (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">מספר טלפון מועבר זה שונה ל-%s.</string>
 </resources>

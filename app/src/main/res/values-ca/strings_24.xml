@@ -41,14 +41,47 @@
         Per a països que apliquen el CNAP verificat per KYC, les trucades que tenen un nom de trucador són probablement vàlides.
         ]]>
     </string>
-    <string name="forwarded_call">Trucada Reenviada</string>
+    <string name="forwarded_call">Trucada desviada</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Bloqueja totes les trucades reenviades. <br>
+        Bloqueja les trucades desviades, solen ser spam. <br>
         <br>
-        Al registre de l\'historial de trucades, les trucades reenviades apareixen com a números concatenats units per \"&\". <br>
-        <br>
-        Per exemple: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Això és <b>específic de l\'operador</b>, alguns operadors formaten les trucades desviades com dos números concatenats amb un \"&\",
+         com ara <font color="#888888">222&111</font>. <br>
+        <br>
+        En aquest format: <br>
+        &ensp; - La primera part (<font color="#888888">222</font>) és normalment el número de desviació. <br>
+        &ensp; - La segona part (<font color="#888888">111</font>) és el número original. <br>
+        <br>
+        També podria haver-hi <font color="#888888">333&111</font> i <font color="#888888">444&111</font>,
+         on el número d\'origen es manté igual i el número de desviació canvia.
+        ]]>
+    </string>
+    <string name="raw">Cru</string>
+    <string name="original">Original</string>
+    <string name="forwarding">Desviació</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        No cal canviar això si no veieu números que continguin el caràcter \"&\" al registre de l\'historial de trucades. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Opcions</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Cru</b></font> <br>
+        Consulta/informa el número cru (<font color="#888888">222&111</font>), si l\'API admet aquest format. <br>
+        <br>
+        <font color="#00BFFF"><b>Original</b></font> <br>
+        Consulta/informa el número original (<font color="#888888">111</font>), això és una solució alternativa per a les API que no admeten el format cru. <br>
+        <br>
+        <font color="#00BFFF"><b>Desviació</b></font> <br>
+        Consulta/informa el número de desviació (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Aquest número desviat s\'ha modificat a %s.</string>
 </resources>

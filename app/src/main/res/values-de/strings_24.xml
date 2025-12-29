@@ -46,11 +46,44 @@
     <string name="forwarded_call">Weitergeleiteter Anruf</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Alle weitergeleiteten Anrufe blockieren. <br>
+        Blockiert weitergeleitete Anrufe, diese sind normalerweise Spam. <br>
         <br>
-        Im Anrufverlauf erscheinen weitergeleitete Anrufe als verkettete Telefonnummern, die durch „&“ verbunden sind. <br>
-        <br>
-        Zum Beispiel: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Dies ist <b>netzbetreiberspezifisch</b>; einige Netzbetreiber formatieren weitergeleitete Anrufe als zwei Nummern, die mit einem „&“ verkettet sind,
+         z. B. <font color="#888888">222&111</font>. <br>
+        <br>
+        In diesem Format: <br>
+        &ensp; - Der erste Teil (<font color="#888888">222</font>) ist typischerweise die Weiterleitungsnummer. <br>
+        &ensp; - Der zweite Teil (<font color="#888888">111</font>) ist die ursprüngliche Nummer. <br>
+        <br>
+        Es könnte auch <font color="#888888">333&111</font> und <font color="#888888">444&111</font> geben,
+         wobei die Ursprungsnummer gleich bleibt und die Weiterleitungsnummer sich ändert.
+        ]]>
+    </string>
+    <string name="raw">Roh</string>
+    <string name="original">Original</string>
+    <string name="forwarding">Weiterleitung</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Dies muss nicht geändert werden, wenn Sie im Anrufverlauf keine Nummern sehen, die das Zeichen „&“ enthalten. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Optionen</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Roh</b></font> <br>
+        Abfrage/Meldung der Rohdaten-Nummer (<font color="#888888">222&111</font>), falls die API dieses Format unterstützt. <br>
+        <br>
+        <font color="#00BFFF"><b>Original</b></font> <br>
+        Abfrage/Meldung der ursprünglichen Nummer (<font color="#888888">111</font>), dies ist eine Problemumgehung für APIs, die das Rohdatenformat nicht unterstützen. <br>
+        <br>
+        <font color="#00BFFF"><b>Weiterleitung</b></font> <br>
+        Abfrage/Meldung der Weiterleitungsnummer (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Diese weitergeleitete Nummer wurde auf %s geändert.</string>
 </resources>

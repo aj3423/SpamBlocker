@@ -44,11 +44,44 @@
     <string name="forwarded_call">Chamada Encaminhada</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Bloquear todas as chamadas encaminhadas. <br>
+        Bloquear chamadas encaminhadas, elas geralmente são spam. <br>
         <br>
-        No registro de histórico de chamadas, chamadas encaminhadas aparecem como números de telefone concatenados unidos por \"&\". <br>
-        <br>
-        Por exemplo: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Isso é <b>específico da operadora</b>, algumas operadoras formatam chamadas encaminhadas como dois números concatenados com um \"&\",
+         como <font color="#888888">222&111</font>. <br>
+        <br>
+        Neste formato: <br>
+        &ensp; - A primeira parte (<font color="#888888">222</font>) é tipicamente o número de encaminhamento. <br>
+        &ensp; - A segunda parte (<font color="#888888">111</font>) é o número original. <br>
+        <br>
+        Também pode haver <font color="#888888">333&111</font> e <font color="#888888">444&111</font>,
+         onde o número de origem permanece o mesmo e o número de encaminhamento muda.
+        ]]>
+    </string>
+    <string name="raw">Bruto</string>
+    <string name="original">Original</string>
+    <string name="forwarding">Encaminhamento</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Não há necessidade de alterar isso se você não vir números contendo o caractere \"&\" no registro de histórico de chamadas. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Opções</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Bruto</b></font> <br>
+        Consultar/relatar o número bruto (<font color="#888888">222&111</font>), se a API suportar este formato. <br>
+        <br>
+        <font color="#00BFFF"><b>Original</b></font> <br>
+        Consultar/relatar o número original (<font color="#888888">111</font>), esta é uma solução alternativa para APIs que não suportam o formato bruto. <br>
+        <br>
+        <font color="#00BFFF"><b>Encaminhamento</b></font> <br>
+        Consultar/relatar o número de encaminhamento (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Este número encaminhado foi modificado para %s.</string>
 </resources>

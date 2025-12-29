@@ -134,7 +134,7 @@ fun listReportableAPIs(
     // 2. List all enabled APIs
     var apis = G.apiReportVM.table.listAll(ctx)
         .filter { it.enabled }
-        .filter { // it must contain 1 and only 1 HttpDownload
+        .filter { // it must contain at least 1 HttpRequest
             val https = it.actions.filter { it is HttpRequest }
             https.isNotEmpty()
         }

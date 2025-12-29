@@ -44,11 +44,44 @@
     <string name="forwarded_call">Appel transféré</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Bloquer tous les appels transférés. <br>
+        Bloquer les appels transférés, ils sont généralement du spam. <br>
         <br>
-        Dans le journal de l\'historique des appels, les appels transférés apparaissent comme des numéros concaténés liés par un \"&\". <br>
-        <br>
-        Par exemple : <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        C\'est <b>spécifique à l\'opérateur</b>, certains opérateurs formatent les appels transférés comme deux numéros concaténés avec un \"&\",
+         tels que <font color="#888888">222&111</font>. <br>
+        <br>
+        Dans ce format : <br>
+        &ensp; - La première partie (<font color="#888888">222</font>) est typiquement le numéro de transfert. <br>
+        &ensp; - La deuxième partie (<font color="#888888">111</font>) est le numéro original. <br>
+        <br>
+        Il pourrait également y avoir <font color="#888888">333&111</font> et <font color="#888888">444&111</font>,
+         où le numéro d\'origine reste le même et le numéro de transfert change.
+        ]]>
+    </string>
+    <string name="raw">Brut</string>
+    <string name="original">Original</string>
+    <string name="forwarding">Transfert</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Pas besoin de changer cela si vous ne voyez pas de numéros contenant le caractère \"&\" dans le journal de l\'historique des appels. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Options</b> : <br>
+        <br>
+        <font color="#00BFFF"><b>Brut</b></font> <br>
+        Interroger/rapporter le numéro brut (<font color="#888888">222&111</font>), si l\'API supporte ce format. <br>
+        <br>
+        <font color="#00BFFF"><b>Original</b></font> <br>
+        Interroger/rapporter le numéro original (<font color="#888888">111</font>), c\'est une solution de contournement pour les API qui ne supportent pas le format brut. <br>
+        <br>
+        <font color="#00BFFF"><b>Transfert</b></font> <br>
+        Interroger/rapporter le numéro de transfert (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Ce numéro transféré a été modifié en %s.</string>
 </resources>

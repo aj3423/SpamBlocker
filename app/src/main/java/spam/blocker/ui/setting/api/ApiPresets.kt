@@ -9,6 +9,7 @@ import spam.blocker.db.QueryApi
 import spam.blocker.db.ReportApi
 import spam.blocker.service.bot.CategoryConfig
 import spam.blocker.service.bot.FilterSpamResult
+import spam.blocker.service.bot.ForwardType
 import spam.blocker.service.bot.HTTP_GET
 import spam.blocker.service.bot.HTTP_POST
 import spam.blocker.service.bot.HttpRequest
@@ -139,6 +140,7 @@ val ApiQueryPresets = listOf<ApiPreset>(
                 actions = listOf(
                     InterceptCall(
                         numberFilter = ".*",
+                        forwardType = ForwardType.Original,
                     ),
                     HttpRequest(
                         url = if (BuildConfig.DEBUG)
@@ -221,6 +223,7 @@ val ApiReportPresets = listOf<ApiPreset>(
                 actions = listOf(
                     InterceptCall(
                         numberFilter = ".*",
+                        forwardType = ForwardType.Original,
                     ),
                     CategoryConfig(
                         map = mapOf(

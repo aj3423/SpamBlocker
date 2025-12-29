@@ -46,11 +46,44 @@
     <string name="forwarded_call">Forwarded Call</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Block all forwarded calls. <br>
+        Block forwarded calls, they are usually spam. <br>
         <br>
-        In the call history log, forwarded calls appear as concatenated numbers joined by \"&\". <br>
-        <br>
-        For example: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        This is <b>carrier specific</b>, some carriers format forwarded calls as two numbers concatenated with an \"&\",
+         such as <font color="#888888">222&111</font>. <br>
+        <br>
+        In this format: <br>
+        &ensp; - The first part (<font color="#888888">222</font>) is typically the forwarding number. <br>
+        &ensp; - The second part (<font color="#888888">111</font>) is the original number. <br>
+        <br>
+        There could also be <font color="#888888">333&111</font> and <font color="#888888">444&111</font>,
+         where the origin number remains the same and the forwarding number changes.
+        ]]>
+    </string>
+    <string name="raw">Raw</string>
+    <string name="original">Original</string>
+    <string name="forwarding">Forwarding</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        No need to change this if you don\'t see numbers containing the \"&\" character in the call history log. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Options</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Raw</b></font> <br>
+        Query/report the raw number(<font color="#888888">222&111</font>), if the API supports this format. <br>
+        <br>
+        <font color="#00BFFF"><b>Original</b></font> <br>
+        Query/report the original number(<font color="#888888">111</font>), this is a workaround for APIs that don\'t support the raw format. <br>
+        <br>
+        <font color="#00BFFF"><b>Forwarding</b></font> <br>
+        Query/report the forwarding number(<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">This forwarded number has been modified to %s.</string>
 </resources>

@@ -109,7 +109,9 @@ val RegexRulePresets = mapOf(
         RulePreset(
             label = { it.getString(R.string.forwarded_call) },
             tooltip = {
-                it.getString(R.string.help_regex_preset_forwarded_call)
+                it.getString(R.string.help_regex_preset_forwarded_call).format(
+                    it.getString(R.string.explanation_forwarded_call)
+                )
             },
         ) { ctx ->
             listOf(

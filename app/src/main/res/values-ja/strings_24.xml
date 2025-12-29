@@ -41,11 +41,42 @@
     <string name="forwarded_call">転送された通話</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        すべての転送された通話をブロックします。<br>
+        転送された通話をブロックします。これらは通常迷惑電話です。<br>
         <br>
-        通話履歴ログでは、転送された通話は「&」で連結された結合番号として表示されます。<br>
-        <br>
-        例: <font color="#888888">111<b>&</b>222</font>。
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        これは<b>キャリア固有</b>です。一部のキャリアでは、転送された通話を「&」で連結された2つの電話番号としてフォーマットします。例: <font color="#888888">222&111</font>。<br>
+        <br>
+        この形式では:<br>
+        &ensp; - 最初の部分（<font color="#888888">222</font>）は通常、転送元の電話番号です。<br>
+        &ensp; - 2番目の部分（<font color="#888888">111</font>）は元の電話番号です。<br>
+        <br>
+        また、<font color="#888888">333&111</font>や<font color="#888888">444&111</font>のように、元の電話番号は同じままで転送元の電話番号が変わる場合もあります。
+        ]]>
+    </string>
+    <string name="raw">生データ</string>
+    <string name="original">元の電話番号</string>
+    <string name="forwarding">転送元</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        通話履歴ログに「&」文字を含む電話番号が表示されない場合、これを変更する必要はありません。<br>
+        <br>
+        %s<br>
+        <br>
+        <b>オプション</b>:<br>
+        <br>
+        <font color="#00BFFF"><b>生データ</b></font><br>
+        APIがこの形式をサポートしている場合、生の電話番号（<font color="#888888">222&111</font>）を照会/報告します。<br>
+        <br>
+        <font color="#00BFFF"><b>元の電話番号</b></font><br>
+        元の電話番号（<font color="#888888">111</font>）を照会/報告します。これは、生の形式をサポートしないAPIの回避策です。<br>
+        <br>
+        <font color="#00BFFF"><b>転送元</b></font><br>
+        転送元の電話番号（<font color="#888888">222</font>）を照会/報告します。<br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">この転送された電話番号は%sに修正されました。</string>
 </resources>

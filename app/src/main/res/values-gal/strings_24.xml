@@ -43,14 +43,45 @@
         Para os países que aplican CNAP verificado por KYC, é probable que as chamadas que teñan un nome de chamador sexan válidas.
         ]]>
     </string>
-    <string name="forwarded_call">Chamada reenviada</string>
+    <string name="forwarded_call">Chamada Reenviada</string>
     <string name="help_regex_preset_forwarded_call">
         <![CDATA[
-        Bloquear todas as chamadas reenviadas. <br>
+        Bloquear chamadas reenviadas, adoitan ser spam. <br>
         <br>
-        No rexistro do historial de chamadas, as chamadas reenviadas aparecen como números concatenados unidos por \"&\". <br>
-        <br>
-        Por exemplo: <font color="#888888">111<b>&</b>222</font>.
+        %s
         ]]>
     </string>
+    <string name="explanation_forwarded_call">
+        <![CDATA[
+        Isto é <b>específico do operador</b>; algúns operadores formatan as chamadas reenviadas como dous números concatenados cun \"&amp;\", como <font color="#888888">222&111</font>. <br>
+        <br>
+        Neste formato: <br>
+        &ensp; - A primeira parte (<font color="#888888">222</font>) é tipicamente o número de reenvío. <br>
+        &ensp; - A segunda parte (<font color="#888888">111</font>) é o número orixinal. <br>
+        <br>
+        Tamén podería haber <font color="#888888">333&111</font> e <font color="#888888">444&111</font>, onde o número de orixe permanece o mesmo e o número de reenvío cambia.
+        ]]>
+    </string>
+    <string name="raw">Sen procesar</string>
+    <string name="original">Orixinal</string>
+    <string name="forwarding">Reenvío</string>
+    <string name="help_truncate_forwarded_number">
+        <![CDATA[
+        Non é necesario cambiar isto se non ves números que conteñan o carácter \"&amp;\" no rexistro do historial de chamadas. <br>
+        <br>
+        %s <br>
+        <br>
+        <b>Opcións</b>: <br>
+        <br>
+        <font color="#00BFFF"><b>Sen procesar</b></font> <br>
+        Consultar/informar o número sen procesar (<font color="#888888">222&111</font>), se a API admite este formato. <br>
+        <br>
+        <font color="#00BFFF"><b>Orixinal</b></font> <br>
+        Consultar/informar o número orixinal (<font color="#888888">111</font>), isto é unha solución alternativa para APIs que non admiten o formato sen procesar. <br>
+        <br>
+        <font color="#00BFFF"><b>Reenvío</b></font> <br>
+        Consultar/informar o número de reenvío (<font color="#888888">222</font>). <br>
+        ]]>
+    </string>
+    <string name="forwarded_number_modified_to">Este número reenviado foi modificado a %s.</string>
 </resources>
