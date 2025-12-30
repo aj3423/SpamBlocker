@@ -10,13 +10,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import spam.blocker.R
 import spam.blocker.ui.M
-import spam.blocker.ui.setting.regex.RuleViewModel
 import spam.blocker.util.Lambda
 
 // A search box at the top of a list of records, e.g., history records and regex rules
@@ -31,7 +28,7 @@ fun SearchBox(
         var textFieldLoaded by remember { mutableStateOf(false) }
 
         StrInputBox(
-            text = "",
+            text = filter.value,
             leadingIconId = R.drawable.ic_filter,
             onValueChange = {
                 filter.value = it

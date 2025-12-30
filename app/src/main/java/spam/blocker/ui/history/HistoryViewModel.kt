@@ -35,14 +35,9 @@ open class HistoryViewModel(
             val filtered = if(!searchEnabled.value) {
                 true
             } else {
-                when(forType) {
-                    Def.ForNumber -> { // Call
-                        it.peer.contains(filter.value)
-                    }
-                    else -> { // SMS
-                        it.peer.contains(filter.value) || it.extraInfo?.contains(filter.value) == true
-                    }
-                }
+                it.peer.contains(filter.value, ignoreCase = true) // number
+                        || it.extraInfo?.contains(filter.value, ignoreCase = true) == true // SMS content
+                        || it.reason.contains(filter.value, ignoreCase = true) // API query result
             }
 
             show && filtered

@@ -1,7 +1,6 @@
 package spam.blocker.ui.setting
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
@@ -22,7 +21,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -57,7 +55,6 @@ import spam.blocker.ui.setting.regex.PushAlertList
 import spam.blocker.ui.setting.regex.PushAlertViewModel
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
-import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.setting.regex.RuleViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
@@ -71,6 +68,7 @@ import spam.blocker.ui.widgets.FabWrapper
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 import spam.blocker.util.Lambda

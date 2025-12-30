@@ -63,7 +63,7 @@
               app-release.apk
               app-release.without-internet-permission.apk
               debug.symbol.tar.gz
-            tag_name: "v5.0"
-            body_path: "${{ github.workspace }}/metadata/en-US/changelogs/500.txt"
+            tag_name: "v5.1"
+            body_path: "${{ github.workspace }}/metadata/en-US/changelogs/501.txt"
 
 

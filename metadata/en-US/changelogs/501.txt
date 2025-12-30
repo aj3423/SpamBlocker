@@ -1,0 +1,24 @@
+New:
+- Regex mode: CNAP(Caller Name Presentation)
+  - Use case: 
+    - For countries that enforce KYC-verified CNAP, calls have a display name are likely valid.
+  - Call log now shows caller name if it exists, e.g., 12345 (Some Name)
+
+Fixes:
+- MMS doesn't work with Textra being the SMS app
+- Language switching fails randomly (~20% chance on some devices)
+
+Enhancements:
+- Filter history logs by keyword
+- Use SIM 1/2 instead of 0/1 
+- Tap the balloon tooltip to dismiss it
+- New regex presets:
+  - Caller Name
+    - Allow calls with CNAP information
+  - Forwarded Call
+    - Block forwarded calls like "111&222"
+  - SIM 2 Contacts
+    - Allow contacts on SIM 2 and block all others
+- New workflow preset:
+  - Custom Tile
+    - Temporarily toggle rules using the Quick Tile
