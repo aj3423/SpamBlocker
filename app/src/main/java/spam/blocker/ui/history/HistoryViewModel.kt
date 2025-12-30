@@ -31,8 +31,6 @@ open class HistoryViewModel(
         val showPassed = spf.getShowPassed()
         val showBlocked = spf.getShowBlocked()
 
-        val contactsCache = ContactsCache(ctx)
-
         records.addAll(table.listRecords(ctx).filter {
             val show = (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
 
@@ -42,7 +40,7 @@ open class HistoryViewModel(
                 it.peer.contains(filter.value, ignoreCase = true) // number
                         || it.extraInfo?.contains(filter.value, ignoreCase = true) == true // SMS content
                         || it.reason.contains(filter.value, ignoreCase = true) // API query result
-                        || contactsCache.findContactByRawNumber(it.peer)?.name?.contains(filter.value, ignoreCase = true) == true // Contact name
+                        || Contacts.cache.findContactByRawNumber(ctx, it.peer)?.name?.contains(filter.value, ignoreCase = true) == true // Contact name
             }
 
             show && filtered

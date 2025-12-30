@@ -34,17 +34,23 @@ data class ContactInfo(
 }
 
 
-class ContactsCache(val ctx: Context) {
+class ContactsCache {
     private val cache = mutableMapOf<String, ContactInfo?>()
 
-    fun findContactByRawNumber(rawNumber: String): ContactInfo? {
-        return cache.getOrPut(rawNumber) {
-            Contacts.findContactByRawNumber(ctx, rawNumber)
+    fun findContactByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
+        return if (cache.containsKey(rawNumber))  {
+            cache[rawNumber]
+        } else {
+            val result = Contacts.findContactByRawNumber(ctx, rawNumber)
+            cache[rawNumber] = result  // store even if null
+            result
         }
     }
 }
 
 object Contacts {
+    val cache = ContactsCache()
+
     fun findContactByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
         if (!Permission.contacts.isGranted) {
             return null
