@@ -84,4 +84,5 @@
         ]]>
     </string>
     <string name="forwarded_number_modified_to">Nomor yang diteruskan ini telah diubah menjadi %s.</string>
+    <string name="filter">Filter</string>
 </resources>

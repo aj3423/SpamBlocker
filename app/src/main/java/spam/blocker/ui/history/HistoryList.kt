@@ -54,7 +54,6 @@ fun HistoryList(
             LazyColumn(
                 state = lazyState,
                 verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)
             ) {
                 itemsIndexed(items = vm.records, key = { _, it -> it.id }) { index, record ->
                     val indicators = remember { mutableStateOf(listOf<Indicator>()) }

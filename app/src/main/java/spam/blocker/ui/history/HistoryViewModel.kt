@@ -2,6 +2,7 @@ package spam.blocker.ui.history
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import spam.blocker.db.CallTable
 import spam.blocker.db.HistoryRecord
@@ -18,6 +19,8 @@ open class HistoryViewModel(
     val table: HistoryTable,
 ) : ViewModel() {
     val records = mutableStateListOf<HistoryRecord>()
+    val searchEnabled = mutableStateOf(false)
+    val filter = mutableStateOf("")
 
     fun reload(ctx: Context) {
         records.clear()
@@ -27,7 +30,22 @@ open class HistoryViewModel(
         val showBlocked = spf.getShowBlocked()
 
         records.addAll(table.listRecords(ctx).filter {
-            (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
+            val show = (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
+
+            val filtered = if(!searchEnabled.value) {
+                true
+            } else {
+                when(forType) {
+                    Def.ForNumber -> { // Call
+                        it.peer.contains(filter.value)
+                    }
+                    else -> { // SMS
+                        it.peer.contains(filter.value) || it.extraInfo?.contains(filter.value) == true
+                    }
+                }
+            }
+
+            show && filtered
         })
     }
 }

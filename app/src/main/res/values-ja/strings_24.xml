@@ -79,4 +79,5 @@
         ]]>
     </string>
     <string name="forwarded_number_modified_to">この転送された電話番号は%sに修正されました。</string>
+    <string name="filter">フィルター</string>
 </resources>

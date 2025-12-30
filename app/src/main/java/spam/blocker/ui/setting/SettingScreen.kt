@@ -57,7 +57,7 @@ import spam.blocker.ui.setting.regex.PushAlertList
 import spam.blocker.ui.setting.regex.PushAlertViewModel
 import spam.blocker.ui.setting.regex.RuleHeader
 import spam.blocker.ui.setting.regex.RuleList
-import spam.blocker.ui.setting.regex.RuleSearchBox
+import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.setting.regex.RuleViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
@@ -122,23 +122,11 @@ fun SettingScreen() {
         }
     ) {
 
-        val focusManager = LocalFocusManager.current
-
         NormalColumnScrollbar(state = scrollState) {
             Column(
                 modifier = M
                     .verticalScroll(scrollState)
                     .padding(top = 8.dp)
-
-                    // For hiding the RuleSearchBox when clicking around
-                    .clickable(
-                        // Disable the clicking ripple effect
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null
-                    ) {
-                        // The RuleSearchBox will be hidden when it loses focus
-                        focusManager.clearFocus(true)
-                    }
             ) {
                 // global
                 GloballyEnabled()
@@ -181,7 +169,9 @@ fun SettingScreen() {
                                 RuleHeader(vm)
                                 AnimatedVisibleV(!vm.listCollapsed.value) {
                                     Column {
-                                        RuleSearchBox(vm)
+                                        SearchBox(vm.searchEnabled, vm.filter) {
+                                            vm.reloadDb(ctx)
+                                        }
                                         RuleList(vm)
                                     }
                                 }

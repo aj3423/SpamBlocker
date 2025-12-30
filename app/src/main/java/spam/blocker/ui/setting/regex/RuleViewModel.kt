@@ -18,15 +18,14 @@ open class RuleViewModel(
     val rules = mutableStateListOf<RegexRule>()
     val searchEnabled = mutableStateOf(false)
     val listCollapsed = mutableStateOf(false)
-
-    var filter = ""
+    val filter = mutableStateOf("")
 
     fun reloadDb(ctx: Context) {
         rules.clear()
         var all = table.listAll(ctx)
-        if (filter.isNotEmpty()) {
+        if (filter.value.isNotEmpty()) {
             all = all.filter {
-                it.pattern.contains(filter) || it.description.contains(filter)
+                it.pattern.contains(filter.value) || it.description.contains(filter.value)
             }
         }
         rules.addAll(all)

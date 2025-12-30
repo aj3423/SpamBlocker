@@ -55,6 +55,7 @@ fun HistoryContextMenuWrapper(
             R.drawable.ic_regex,
             if (numberInDb) R.drawable.ic_db_delete else R.drawable.ic_db_add,
             R.drawable.ic_check_circle,
+            R.drawable.ic_filter,
         )
     }
     val labelIds = remember(numberInDb) {
@@ -63,6 +64,7 @@ fun HistoryContextMenuWrapper(
             R.string.add_num_to_regex_rule,
             if (numberInDb) R.string.remove_db_number else R.string.add_num_to_db,
             R.string.mark_all_as_read,
+            R.string.filter,
         )
     }
 
@@ -104,6 +106,10 @@ fun HistoryContextMenuWrapper(
                     3 -> { // mark all as read
                         vm.table.markAllAsRead(ctx)
                         vm.reload(ctx)
+                    }
+
+                    4 -> { // filter records
+                        vm.searchEnabled.value = true
                     }
                 }
             }

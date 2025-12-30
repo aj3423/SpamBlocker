@@ -80,4 +80,5 @@
         ]]>
     </string>
     <string name="forwarded_number_modified_to">Bu yönlendirilen numara %s olarak değiştirildi.</string>
+    <string name="filter">Filtre</string>
 </resources>

@@ -29,10 +29,10 @@
     <string name="help_private_number">
         <![CDATA[
         Also known as <b>Unknown Number</b> or <b>Empty Number</b>, they are empty strings that
-         can be matched by either of: <br>
+         can be matched by any of: <br>
          &ensp; <font color="#fa7f71">.{0}</font> <br>
          &ensp; <font color="#fa7f71">^$</font> <br>
-         &ensp; a <font color="#fa7f71">blank</font> regex field. <br>
+         &ensp; A <font color="#fa7f71">blank</font> regex field. <br>
         <br>
         The <font color="#ea86ff">priority</font> is set to <font color="#ea86ff">20</font> to override other features like <b>Repeated Call</b>,
         so they are always blocked even if they repeat.

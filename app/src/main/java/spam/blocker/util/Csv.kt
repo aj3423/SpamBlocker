@@ -57,7 +57,7 @@ class CSVParser(
         return sb.toString()
     }
 
-    // The delimiter can be either of: , ; |
+    // The delimiter can be any of: , ; |
     private fun detectSeparator(headerLine: String) : Char {
         val delimiters = setOf(',', ';', '|')
         return headerLine.firstOrNull { it in delimiters } ?: ','

@@ -12,7 +12,7 @@
         <![CDATA[
         A quick way to copy content from SMS messages or phone numbers, making it easy to grab verification codes or incoming numbers.<br>
         <br>
-        When it matches, a button like <font color="#00BFFF"><b>Copy: 123456</b></font> would appear in the notification.<br>
+        When it matches, a button like <font color="#00BFFF"><b>Copy: 123456</b></font> will appear in the notification.<br>
         <br>
         A sample rule for extracting verification codes:<br>
         &emsp; Using capturing group:<br>

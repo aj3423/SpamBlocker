@@ -38,7 +38,7 @@ import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.BalloonQuestionMark
 import spam.blocker.ui.widgets.ComboBox
-import spam.blocker.ui.widgets.DimGreyLabel
+import spam.blocker.ui.widgets.DimGreyText
 import spam.blocker.ui.widgets.GreenDot
 import spam.blocker.ui.widgets.GreyButton
 import spam.blocker.ui.widgets.GreyIcon
@@ -485,7 +485,7 @@ class SmsEvent(
             regexStr = number,
             label = { Text(Str(R.string.phone_number)) },
             regexFlags = flagsNumber,
-            placeholder = { DimGreyLabel(".*") },
+            placeholder = { DimGreyText(".*") },
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     number = newVal
@@ -501,7 +501,7 @@ class SmsEvent(
             regexStr = content,
             label = { Text(Str(R.string.sms_content)) },
             regexFlags = flagsContent,
-            placeholder = { DimGreyLabel(".*") },
+            placeholder = { DimGreyText(".*") },
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
                     content = newVal
@@ -622,7 +622,7 @@ class CallEvent(
             label = { Text(Str(R.string.phone_number)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
             regexFlags = flagsNumber,
-            placeholder = { DimGreyLabel(".*") },
+            placeholder = { DimGreyText(".*") },
             showNumberFlags = true,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
@@ -1184,7 +1184,7 @@ class Ringtone(
             text = bindToState,
             label = { Text(Str(R.string.set_to)) },
             leadingIconId = R.drawable.ic_link,
-            placeholder = { DimGreyLabel("{\"regex\": \"rule_desc\"}") },
+            placeholder = { DimGreyText("{\"regex\": \"rule_desc\"}") },
             helpTooltip = Str(R.string.help_set_ringtone_to),
             supportingTextStr = error,
             onValueChange = {

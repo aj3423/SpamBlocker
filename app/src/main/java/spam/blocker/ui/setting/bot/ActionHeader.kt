@@ -33,7 +33,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.BalloonQuestionMark
-import spam.blocker.ui.widgets.DimGreyLabel
+import spam.blocker.ui.widgets.DimGreyText
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.RowVCenterSpaced
@@ -111,7 +111,7 @@ fun TestActionButton(
         StrInputBox(
             text = if(forCall) G.testingVM.phone.value else G.testingVM.sms.value,
             label = { GreyLabel(Str(if (forCall) R.string.phone_number else R.string.sms_content))},
-            placeholder = { DimGreyLabel(if (forCall) "+12223334444" else "") },
+            placeholder = { DimGreyText(if (forCall) "+12223334444" else "") },
             onValueChange = {
                 if (forCall)
                     G.testingVM.phone.value = it

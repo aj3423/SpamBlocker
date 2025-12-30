@@ -85,4 +85,5 @@
         ]]>
     </string>
     <string name="forwarded_number_modified_to">מספר טלפון מועבר זה שונה ל-%s.</string>
+    <string name="filter">סינון</string>
 </resources>

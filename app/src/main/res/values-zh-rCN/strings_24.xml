@@ -84,4 +84,5 @@
         ]]>
     </string>
     <string name="forwarded_number_modified_to">此转接号码已修改为%s。</string>
+    <string name="filter">过滤</string>
 </resources>

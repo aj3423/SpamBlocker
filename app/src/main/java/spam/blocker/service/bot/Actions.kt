@@ -52,12 +52,12 @@ import spam.blocker.ui.theme.Pink80
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
-import spam.blocker.ui.widgets.DimGreyLabel
+import spam.blocker.ui.widgets.DimGreyText
 import spam.blocker.ui.widgets.GreyIcon
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyIcon20
-import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LabelItem
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PriorityBox
@@ -108,7 +108,7 @@ import java.net.HttpURLConnection
 
 @Composable
 fun NoOptionNeeded() {
-    GreyLabel(text = Str(R.string.no_config_needed))
+    GreyText(text = Str(R.string.no_config_needed))
 }
 
 @Serializable
@@ -361,7 +361,7 @@ open class HttpRequest(
                 text = url,
                 label = { Text(Str(R.string.url)) },
                 leadingIconId = R.drawable.ic_link,
-                placeholder = { DimGreyLabel("https://...") },
+                placeholder = { DimGreyText("https://...") },
                 helpTooltip = Str(R.string.help_http_url).format(
                     Str(R.string.number_tags),
                     Str(R.string.time_tags),
@@ -377,7 +377,7 @@ open class HttpRequest(
                 helpTooltip = Str(R.string.help_http_header) + "<br>" + Str(R.string.tags_supported) + Str(
                     R.string.auth_tags
                 ),
-                placeholder = { DimGreyLabel("apikey: ABC\nAuth: key\n…") }
+                placeholder = { DimGreyText("apikey: ABC\nAuth: key\n…") }
             )
 
             var selected by remember { mutableIntStateOf(method) }
@@ -1405,7 +1405,7 @@ class ConvertNumber(
         RegexInputBox(
             label = { Text(Str(R.string.replace_from)) },
             placeholder = {
-                DimGreyLabel(
+                DimGreyText(
                     Str(R.string.regex_pattern) + "\n"
                             + Str(R.string.for_example) + " " + "(\"|-)"
                 )
@@ -1527,7 +1527,7 @@ class FindRules(
         RegexInputBox(
             label = { Text(Str(R.string.description)) },
             placeholder = {
-                DimGreyLabel(
+                DimGreyText(
                     Str(R.string.regex_pattern) + "\n"
                             + Str(R.string.for_example) + "\n"
                             + ".*"
@@ -1677,7 +1677,7 @@ class ModifyRules(
     override fun Options() {
         StrInputBox(
             label = { Text(Str(R.string.config_text)) },
-            placeholder = { DimGreyLabel(Str(R.string.action_modify_rules_placeholder)) },
+            placeholder = { DimGreyText(Str(R.string.action_modify_rules_placeholder)) },
             text = config,
             onValueChange = {
                 config = it
@@ -1983,7 +1983,7 @@ class InterceptCall(
             label = { Text(Str(R.string.number_filter)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_filter) },
             helpTooltipId = R.string.help_number_filter,
-            placeholder = { DimGreyLabel(".*") },
+            placeholder = { DimGreyText(".*") },
             regexFlags = dummyFlags,
             showFlagsIcon = false,
             onRegexStrChange = { newVal, hasError ->
@@ -2231,7 +2231,7 @@ class ParseQueryResult(
             label = { Text(Str(R.string.negative_identifier)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_no) },
             helpTooltipId = R.string.help_negative_identifier,
-            placeholder = { DimGreyLabel(Str(R.string.hint_negative_identifier)) },
+            placeholder = { DimGreyText(Str(R.string.hint_negative_identifier)) },
             regexFlags = negativeFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
@@ -2249,7 +2249,7 @@ class ParseQueryResult(
             label = { Text(Str(R.string.positive_identifier)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_yes) },
             helpTooltipId = R.string.help_positive_identifier,
-            placeholder = { DimGreyLabel(Str(R.string.hint_positive_identifier)) },
+            placeholder = { DimGreyText(Str(R.string.hint_positive_identifier)) },
             regexFlags = positiveFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
@@ -2267,7 +2267,7 @@ class ParseQueryResult(
             label = { Text(Str(R.string.category_identifier)) },
             leadingIcon = { GreyIcon18(R.drawable.ic_category) },
             helpTooltipId = R.string.help_category_identifier,
-            placeholder = { DimGreyLabel(Str(R.string.hint_category_identifier)) },
+            placeholder = { DimGreyText(Str(R.string.hint_category_identifier)) },
             regexFlags = reasonFlagsCopy,
             onRegexStrChange = { newVal, hasError ->
                 if (!hasError) {
@@ -2285,7 +2285,7 @@ class ParseQueryResult(
             text = jsonStr,
             label = { Text(Str(R.string.category_mapping)) },
             leadingIconId = R.drawable.ic_category,
-            placeholder = { DimGreyLabel(Str(R.string.category_mapping_placeholder)) },
+            placeholder = { DimGreyText(Str(R.string.category_mapping_placeholder)) },
             helpTooltip = Str(R.string.help_category_mapping),
             onValueChange = { newVal ->
                 categoryMapping = newVal
@@ -2411,7 +2411,7 @@ class CategoryConfig(
             label = { Text(Str(R.string.action_category_config)) },
             leadingIconId = R.drawable.ic_category,
             placeholder = {
-                DimGreyLabel(
+                DimGreyText(
                     """
                 {
                   "{marketing}": "gym",
@@ -2719,7 +2719,7 @@ class GenerateTag(
                         label = { Text(Str(R.string.regex_pattern)) },
                         regexFlags = flags,
                         leadingIcon = { GreyIcon(R.drawable.ic_regex) },
-                        placeholder = { DimGreyLabel("code: (\\d+)") },
+                        placeholder = { DimGreyText("code: (\\d+)") },
                         onRegexStrChange = { newVal, hasError ->
                             if (!hasError) {
                                 regex = newVal

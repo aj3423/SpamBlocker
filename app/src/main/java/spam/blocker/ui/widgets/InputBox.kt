@@ -55,6 +55,7 @@ import spam.blocker.ui.theme.Orange
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
 import spam.blocker.ui.theme.Teal200
+import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 import spam.blocker.util.Lambda2
 import spam.blocker.util.Util
@@ -370,6 +371,8 @@ fun StrInputBox(
     supportingTextStr: String? = null,
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
+    alwaysShowClear: Boolean = false,
+    onClear: Lambda = {},
 ) {
     // Code learned from the built-in BasicTextField.kt
     var state by remember {
@@ -415,13 +418,14 @@ fun StrInputBox(
         supportingTextStr = supportingTextStr,
         trailingIcon = {
             RowVCenter {
-                if (lastText.isNotEmpty() && enabled) {
+                if (alwaysShowClear || (lastText.isNotEmpty() && enabled)) {
                     GreyIcon16(
                         R.drawable.ic_clear,
                         modifier = M.clickable{
                             state = TextFieldValue()
                             lastText = ""
                             onValueChange("")
+                            onClear()
                         }
                     )
                 }

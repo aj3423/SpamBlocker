@@ -70,7 +70,7 @@ fun SummaryLabel(
 
 // Used as input placeholder
 @Composable
-fun DimGreyLabel(
+fun DimGreyText(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = LocalPalette.current.textGrey.copy(alpha = 0.6f),

@@ -31,7 +31,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.Teal200
 import spam.blocker.ui.widgets.AnimatedVisibleV
-import spam.blocker.ui.widgets.DimGreyLabel
+import spam.blocker.ui.widgets.DimGreyText
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.OutlineCard
@@ -96,7 +96,7 @@ fun EmergencySituation() {
         StrInputBox(
             text = callToNumber,
             label = { Text(Str(R.string.call_to_number)) },
-            placeholder = { DimGreyLabel("911") },
+            placeholder = { DimGreyText("911") },
             leadingIconId = R.drawable.ic_dial_pad,
             onValueChange = { callToNumber = it }
         )
@@ -163,7 +163,7 @@ fun EmergencySituation() {
                 StrInputBox(
                     text = extraNumbers,
                     label = { Text(Str(R.string.additional_numbers)) },
-                    placeholder = { DimGreyLabel("000, 123, ...") },
+                    placeholder = { DimGreyText("000, 123, ...") },
                     leadingIconId = R.drawable.ic_number_sign,
                     onValueChange = {
                         extraNumbers = it

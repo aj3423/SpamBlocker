@@ -44,6 +44,7 @@ import spam.blocker.ui.widgets.DividerItem
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.GreyLabel
+import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.HtmlText
 import spam.blocker.ui.widgets.IMenuItem
 import spam.blocker.ui.widgets.LabelItem
@@ -235,7 +236,7 @@ fun RuleList(
                 duplicatedRules.clear()
                 duplicatedRules.addAll(vm.table.listDuplicated(ctx))
 
-                GreyLabel(
+                GreyText(
                     text = Str(R.string.confirm_delete_duplicated_rule).format(duplicatedRules.size),
                     fontSize = 18.sp
                 )
