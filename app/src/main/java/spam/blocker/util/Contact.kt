@@ -34,6 +34,16 @@ data class ContactInfo(
 }
 
 
+class ContactsCache(val ctx: Context) {
+    private val cache = mutableMapOf<String, ContactInfo?>()
+
+    fun findContactByRawNumber(rawNumber: String): ContactInfo? {
+        return cache.getOrPut(rawNumber) {
+            Contacts.findContactByRawNumber(ctx, rawNumber)
+        }
+    }
+}
+
 object Contacts {
     fun findContactByRawNumber(ctx: Context, rawNumber: String): ContactInfo? {
         if (!Permission.contacts.isGranted) {

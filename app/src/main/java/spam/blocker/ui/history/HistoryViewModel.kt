@@ -9,6 +9,8 @@ import spam.blocker.db.HistoryRecord
 import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
+import spam.blocker.util.Contacts
+import spam.blocker.util.ContactsCache
 import spam.blocker.util.spf
 
 /*
@@ -29,6 +31,8 @@ open class HistoryViewModel(
         val showPassed = spf.getShowPassed()
         val showBlocked = spf.getShowBlocked()
 
+        val contactsCache = ContactsCache(ctx)
+
         records.addAll(table.listRecords(ctx).filter {
             val show = (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
 
@@ -38,6 +42,7 @@ open class HistoryViewModel(
                 it.peer.contains(filter.value, ignoreCase = true) // number
                         || it.extraInfo?.contains(filter.value, ignoreCase = true) == true // SMS content
                         || it.reason.contains(filter.value, ignoreCase = true) // API query result
+                        || contactsCache.findContactByRawNumber(it.peer)?.name?.contains(filter.value, ignoreCase = true) == true // Contact name
             }
 
             show && filtered
