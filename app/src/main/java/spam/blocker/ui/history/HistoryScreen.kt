@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.ui.M
 import spam.blocker.ui.widgets.FabWrapper
 import spam.blocker.ui.widgets.SearchBox
+import spam.blocker.util.Debouncer
 
 
 @Composable
@@ -41,8 +42,12 @@ fun HistoryScreen(
         }
     ) {
         Column(modifier = M.padding(8.dp, 8.dp, 8.dp, 2.dp)) {
+            // Use a Debouncer here as there could be LOTS of history records.
+            val debouncer = Debouncer()
             SearchBox(vm.searchEnabled, vm.filter) {
-                vm.reload(ctx)
+                debouncer.debounce {
+                    vm.reload(ctx)
+                }
             }
             HistoryList(
                 lazyState = listState,
