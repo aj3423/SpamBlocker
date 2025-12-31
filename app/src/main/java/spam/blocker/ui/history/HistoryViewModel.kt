@@ -10,7 +10,7 @@ import spam.blocker.db.HistoryTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.util.Contacts
-import spam.blocker.util.ContactsCache
+import spam.blocker.util.regexMatches
 import spam.blocker.util.spf
 
 /*
@@ -31,16 +31,21 @@ open class HistoryViewModel(
         val showPassed = spf.getShowPassed()
         val showBlocked = spf.getShowBlocked()
 
+        // Fuzzy search
+        // `aaa bbb` -> `.*aaa.*bbb.*`
+        val filterRegex = filter.value.replace(" ", ".*").let { ".*$it.*" }
+
         records.addAll(table.listRecords(ctx).filter {
+            // 1. show or not
             val show = (showPassed && it.isNotBlocked()) || (showBlocked && it.isBlocked())
 
+            // 2. fuzzy filter by keywords
             val filtered = if(!searchEnabled.value) {
                 true
             } else {
-                it.peer.contains(filter.value, ignoreCase = true) // number
-                        || it.extraInfo?.contains(filter.value, ignoreCase = true) == true // SMS content
-                        || it.reason.contains(filter.value, ignoreCase = true) // API query result
-                        || Contacts.cache.findContactByRawNumber(ctx, it.peer)?.name?.contains(filter.value, ignoreCase = true) == true // Contact name
+                val contactName = Contacts.cache.findContactByRawNumber(ctx, it.peer)?.name ?: ""
+                val allText = it.peer + contactName + (it.extraInfo ?: "") + it.reason
+                filterRegex.regexMatches(allText, Def.DefaultRegexFlags)
             }
 
             show && filtered
