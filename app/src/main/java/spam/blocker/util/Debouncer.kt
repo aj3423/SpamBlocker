@@ -5,6 +5,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /*
     Usage:
@@ -15,17 +17,20 @@ import kotlinx.coroutines.launch
             searchRepository.search(query)
         }
  */
-class Debouncer(
+class LockedDebouncer(
     private val scope: CoroutineScope = CoroutineScope(IO),
     private val waitMs: Long = 500L
 ) {
     private var job: Job? = null
+    private val mutex = Mutex()  // Protects the action execution
 
     fun debounce(action: suspend () -> Unit) {
         job?.cancel()
         job = scope.launch {
             delay(waitMs)
-            action()
+            mutex.withLock {
+                action()
+            }
         }
     }
 
