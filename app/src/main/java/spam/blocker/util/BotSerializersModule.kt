@@ -108,8 +108,8 @@ val botModule = SerializersModule {
         subclass(GenerateTag::class)
     }
     polymorphic(IApi::class) {
-        subclass(QueryApi::class)
-        subclass(ReportApi::class)
+        subclass(QueryApi::class, QueryApi.serializer())
+        subclass(ReportApi::class, ReportApi.serializer())
     }
 }
 

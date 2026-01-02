@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.provider.CallLog.Calls
 import androidx.core.database.getIntOrNull
 import androidx.core.database.getStringOrNull
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import spam.blocker.G
 import spam.blocker.def.Def
@@ -59,6 +60,7 @@ abstract class IApi() {
 }
 
 @Serializable
+@SerialName("QueryApi")
 data class QueryApi(
     override val id: Long = 0,
     override val desc: String = "",
@@ -67,6 +69,7 @@ data class QueryApi(
 ) : IApi()
 
 @Serializable
+@SerialName("ReportApi")
 data class ReportApi(
     override val id: Long = 0,
     override val desc: String = "",
