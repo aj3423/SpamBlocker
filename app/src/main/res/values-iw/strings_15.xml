@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        בדוק את תוכן ה-SMS באמצעות Google Gemini AI, זה דורש רק חשבון גוגל.
+        בדוק את תוכן ה-SMS באמצעות <b>Groq AI</b>, זה דורש רק חשבון דוא\"ל.
         ]]>
     </string>
-    <string name="gemini_api_key">מפתח API של Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. הירשם והיכנס לחשבון Google שלך: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. הירשם והתחבר: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
-        2. פתח את דף ה-API:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        2. פתח את עמוד ה-API:<br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. לחץ על כפתור \"צור מפתח API\".<br>
+        3. לחץ על הכפתור <translate>\"צור מפתח API\"</translate>.<br>
         <br>
-        4. העתק את המפתח, ולאחר מכן מלא אותו למטה.
+        4. העתק את המפתח, ואז מלא אותו למטה.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

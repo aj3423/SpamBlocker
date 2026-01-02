@@ -217,7 +217,7 @@ fun ApiHeader(
             DividerItem(),
         )
 
-        // Api Presets: PhoneBlock, Gemini, ...
+        // Api Presets: PhoneBlock, Groq, ...
         ret += presets.map { preset ->
             val desc = preset.newApi(ctx).desc
             LabelItem(

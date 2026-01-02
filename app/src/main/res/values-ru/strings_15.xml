@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        Проверка содержания SMS с помощью Google Gemini AI, требуется только учётная запись Google.
+        Проверьте содержимое SMS с помощью <b>Groq AI</b>, для этого требуется только адрес электронной почты.
         ]]>
     </string>
-    <string name="gemini_api_key">Ключ API Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. Зарегистрируйтесь и войдите в свою учётную запись Google: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. Зарегистрируйтесь и войдите: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
         2. Откройте страницу API:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. Нажмите кнопку «Создать ключ API».<br>
+        3. Нажмите кнопку <translate>«Создать API-ключ»</translate>.<br>
         <br>
-        4. Скопируйте ключ и вставьте его ниже.
+        4. Скопируйте ключ, затем вставьте его ниже.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

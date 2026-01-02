@@ -286,10 +286,10 @@ open class HttpRequest(
 
                 aCtx.lastOutput = result?.echo
 
-                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()))
+                val echo = Util.truncate(String(result?.echo ?: byteArrayOf()), limit = 1000)
                 if (result?.statusCode == HttpURLConnection.HTTP_OK) {
                     aCtx.logger?.success("HTTP: <${result.statusCode}>")
-                    aCtx.logger?.debug(echo)
+                    aCtx.logger?.debug("%s".formatAnnotated(echo.A(DimGrey)))
                     return true
                 } else {
                     aCtx.logger?.error("HTTP <${result?.statusCode}>: $echo")

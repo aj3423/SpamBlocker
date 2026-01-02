@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"errors"
 	"flag"
 	"fmt"
@@ -14,9 +13,7 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	"github.com/google/generative-ai-go/genai"
 	"github.com/panjf2000/ants/v2"
-	"google.golang.org/api/option"
 )
 
 var nameMap = map[string]string{
@@ -53,6 +50,8 @@ var move string
 var to string
 
 var only string
+
+var prune bool
 
 var short bool
 
@@ -185,74 +184,35 @@ func translate_text(lang string, content_to_translate string) (string, error) {
 		return "", nil
 	}
 
-	GeminiToken := os.Getenv("GEMINI_API_KEY")
-
 	var use_short string
 	if short || abbrev {
-		use_short = "Use extreme short translation. "
+		use_short = "Use extreme short translation. \n"
 		if abbrev {
-			use_short += "Use abbreviation if possible. "
+			use_short += "Use abbreviation if possible. \n"
 		}
 	} else {
-		use_short = "If the content contains tags <short> and </short>, always translate the text in between with extreme short translations. "
+		use_short = "If the content contains tags <short> and </short>, always translate the text in between with extreme short translations. \n"
 	}
-	prompt_template := "Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls. " +
-		"The word 'number' means phone number, 'spam' means spam calls, don't translate it to spam email. " +
-		"If the content contains tags <translate> and </translate>, always translate the text in between. " +
-		"If the content contains tags <no_translate> and </no_translate>, keep it as it is. " +
-		`Don't remove the \n. ` +
+	prompt_template := "Translate the following xml content to language \"%s\"(\"%s\"), it's about an app that blocks spam calls.\n " +
+		"The word 'number' means phone number, 'spam' means spam calls or spam SMS, don't translate it into spam email.\n" +
+		"If the content contains tags <translate> and </translate>, always translate the text in between.\n" +
+		"If the content contains tags <no_translate> and </no_translate>, keep it as it is.\n" +
+		"Don't remove the \"\\n\". \n" +
 		use_short +
 		"Show me the raw result only:\n" +
-		"%s"
-	if verb {
-		color.HiMagenta(prompt_template)
-	}
+		"%s\n\n"
 	prompt := fmt.Sprintf(
 		prompt_template, lang, nameMap[lang], content_to_translate)
 
-	ctx := context.Background()
-
-	client, err := genai.NewClient(ctx, option.WithAPIKey(GeminiToken))
-	if err != nil {
-		return "", err
-	}
-	defer client.Close()
-
-	model := client.GenerativeModel("gemini-2.5-flash")
-
-	// max is 8192 for gemini-v1.5-flash (8192 by default)
-	// but actually it's only 2048...
-	// model.SetMaxOutputTokens(8192)
-
-	resp, err := model.GenerateContent(ctx, genai.Text(prompt))
-	if err != nil {
-		return "", err
+	if verb {
+		color.HiMagenta(prompt)
 	}
 
-	fmt.Println("  - ",
-		"TotalTokenCount", resp.UsageMetadata.TotalTokenCount,
-		"PromptTokenCount", resp.UsageMetadata.PromptTokenCount,
-		"CandidatesTokenCount", resp.UsageMetadata.CandidatesTokenCount,
-	)
-	fmt.Println()
-
-	if resp.UsageMetadata.CandidatesTokenCount >= 2048 {
-		color.HiYellow("CandidatesTokenCount reached 2048, preferably < 1800, split the xml")
+	// ret, e := ollama("gemma3:4b", prompt)
+	ret, e := ollama("gemma3:12b", prompt)
+	if e != nil {
+		return "", e
 	}
-
-	sb := &strings.Builder{}
-
-	for _, c := range resp.Candidates {
-		if c.Content == nil {
-			fmt.Println(c)
-			return "", errors.New("no c.Content returned")
-		}
-		for _, p := range c.Content.Parts {
-			fmt.Fprintf(sb, "%v", p)
-		}
-	}
-
-	ret := sb.String()
 
 	// color.HiMagenta(ret)
 	// skip the first line: <?xml version="1.0" encoding="utf-8"?>
@@ -321,8 +281,33 @@ func remove_lines(slice []string, start, end int) []string {
 }
 
 func translate_1_xml(lang string, xml_fn string) error {
-	english := read_xml(ENGLISH, xml_fn)
+	v_only := strings.Split(only, ",")
+
 	fmt.Printf("translating: %s -> %s\n", xml_fn, lang)
+
+	english := read_xml(ENGLISH, xml_fn)
+	if prune {
+		if only == "" {
+			panic("-prune must be used with -only")
+		}
+		english_lines := split_lines(english)
+		pruned_lines := []string{}
+		for _, tag := range v_only {
+			found, start, end, _ := extract_tag(english_lines, tag)
+			if !found {
+				panic("tag " + tag + " not found")
+			}
+			pruned_lines = append(pruned_lines, english_lines[start:end]...)
+		}
+		// add the first line <resource>
+		pruned_lines = append([]string{english_lines[0]}, pruned_lines...)
+		// add the last line </resource>
+		pruned_lines = append(pruned_lines, english_lines[len(english_lines)-1])
+
+		english = strings.Join(pruned_lines, "\n")
+
+	}
+
 	translated, e := translate_text(lang, english)
 
 	if IsRetryable(e) {
@@ -333,14 +318,13 @@ func translate_1_xml(lang string, xml_fn string) error {
 		if only == "" { // replace entire xml
 			write_xml(lang, xml_fn, translated)
 		} else { // only replace the specific tag
-			v_only := strings.Split(only, ",")
-			for _, target := range v_only {
+			for _, tag := range v_only {
 				origin_lines := split_lines(read_xml(lang, xml_fn))
 				translated_lines := split_lines(translated)
-				found1, start1, end1, _ := extract_tag(origin_lines, target)
-				found2, _, _, matched_translated_lines := extract_tag(translated_lines, target)
+				found1, start1, end1, _ := extract_tag(origin_lines, tag)
+				found2, _, _, matched_translated_lines := extract_tag(translated_lines, tag)
 				if !found2 {
-					panic(fmt.Sprintf("tag: <%s> not found in translated result: <%s>, xml: <%s>", target, lang, xml_fn))
+					panic(fmt.Sprintf("tag: <%s> not found in translated result: <%s>, xml: <%s>", tag, lang, xml_fn))
 				}
 
 				// if tag already exists in xml, replace it, otherwise, append as last tag.
@@ -487,7 +471,8 @@ func setup() {
 	flag.BoolVar(&abbrev, "abbrev", false, "force abberv, usually used together with -only")
 	flag.BoolVar(&verb, "verb", false, "show prompt")
 	flag.StringVar(&only, "only", "", "-only tag")
-	flag.IntVar(&thread, "thread", 2, "")
+	flag.BoolVar(&prune, "prune", false, "Before translating, removes all tags except those in -only. Faster, but may lose context.")
+	flag.IntVar(&thread, "thread", 1, "")
 	flag.StringVar(&new_file, "new_file", "", "")
 	flag.Parse()
 

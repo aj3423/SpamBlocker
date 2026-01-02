@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        با استفاده از هوش مصنوعی Gemini گوگل، محتوای پیامک را بررسی کنید. فقط به یک حساب گوگل نیاز دارید.
+        محتوای پیامک را با استفاده از <b">هوش مصنوعی Groq</b></b، بررسی کنید، فقط به یک حساب ایمیل نیاز دارد.
         ]]>
     </string>
-    <string name="gemini_api_key">کلید API Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. در حساب گوگل خود ثبت نام و وارد شوید: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. ثبت نام و ورود به سیستم: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
         2. صفحه API را باز کنید:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. دکمه \"ایجاد کلید API\" را فشار دهید.<br>
+        3. دکمه <translate>\"ایجاد کلید API\"</translate> را فشار دهید.<br>
         <br>
-        4. کلید را کپی کرده و در پایین وارد کنید.
+        4. کلید را کپی کنید، سپس آن را در زیر وارد کنید.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

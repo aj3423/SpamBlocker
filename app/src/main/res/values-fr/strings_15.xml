@@ -1,20 +1,19 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        Vérifiez le contenu des SMS à l\'aide de l\'IA Google Gemini. Un compte Google est requis.
+        Vérifiez le contenu des SMS en utilisant <b>Groq AI</b>, cela nécessite uniquement une adresse e-mail.
         ]]>
     </string>
-    <string name="gemini_api_key">Clé API Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. Créez un compte Google et connectez-vous : <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. Enregistrez-vous et connectez-vous: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
-        2. Ouvrez la page de l\'API : <br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        2. Ouvrez la page API:<br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. Appuyez sur le bouton « Créer une clé API ».<br>
+        3. Appuyez sur le bouton <translate>\"Créer une clé API\"</translate>.<br>
         <br>
         4. Copiez la clé, puis renseignez-la ci-dessous.
         ]]>

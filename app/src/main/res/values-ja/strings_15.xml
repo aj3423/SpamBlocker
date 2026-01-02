@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        Google Gemini AIを使用してSMSの内容をチェックします。Googleアカウントのみが必要です。
+        <b>Groq AI</b>を使ってSMSの内容を確認します。メールアドレスのアカウントのみが必要です。
         ]]>
     </string>
-    <string name="gemini_api_key">Gemini APIキー</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. Googleアカウントに登録してログインします：<br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. 登録とログイン：<br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
-        2. APIページを開きます：<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        2. APIページを開く：<br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. 「APIキーを作成」ボタンを押します。<br>
+        3. <translate>\"Create API key\"</translate>ボタンを押します。<br>
         <br>
-        4. キーをコピーして、下記に入力してください。
+        4. キーをコピーし、下に貼り付けます。
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

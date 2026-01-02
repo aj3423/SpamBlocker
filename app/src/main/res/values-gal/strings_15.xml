@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        Comproba o contido dos SMS usando a IA Google Gemini, só precisa dunha conta de Google.
+        <b>Comproba o contido das mensaxes SMS con Groq AI</b>, só require unha conta de correo electrónico.
         ]]>
     </string>
-    <string name="gemini_api_key">Clave da API Gemini</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. Rexístrate e inicia sesión na túa conta de Google: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. Rexistra e inicia sesión: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
         2. Abre a páxina da API:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. Preme o botón \"Crear clave API\".<br>
+        3. Preme o botón <translate>“Crear clave API”</translate>.<br>
         <br>
-        4. Copia a clave e, a continuación, enchédea a continuación.
+        4. Copia a clave e preenchérnola a continuación.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

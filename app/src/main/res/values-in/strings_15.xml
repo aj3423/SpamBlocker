@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        Periksa konten SMS menggunakan Google Gemini AI, hanya membutuhkan akun Google.
+        Periksa isi SMS menggunakan <b>Groq AI</b>, hanya memerlukan akun email.
         ]]>
     </string>
-    <string name="gemini_api_key">Gemini API Key</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. Daftar dan masuk ke akun Google Anda: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. Daftar dan masuk: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
         2. Buka halaman API:<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. Tekan tombol \"Buat Kunci API\" .<br>
+        3. Tekan tombol <translate>“Buat Kunci API”</translate>.<br>
         <br>
-        4. Salin kunci tersebut, kemudian isikan di bawah ini.
+        4. Salin kuncinya, lalu isi di bawah ini.
         ]]>
     </string>
     <string name="spam_sms_prompt_template">

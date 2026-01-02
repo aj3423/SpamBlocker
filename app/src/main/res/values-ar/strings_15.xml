@@ -1,20 +1,19 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        تحقق من محتوى الرسائل النصية باستخدام Google Gemini AI، يتطلب فقط حساب Google.
+        تحقق من محتوى الرسائل النصية باستخدام <b >Groq AI</b>، يتطلب فقط حساب بريد إلكتروني.
         ]]>
     </string>
-    <string name="gemini_api_key">مفتاح Gemini API</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. سجل الدخول إلى حسابك في Google أو أنشئ حسابًا: <br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. التسجيل وتسجيل الدخول: <br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
-        2. افتح صفحة API: <br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+        2. افتح صفحة API:<br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. اضغط على زر \"إنشاء مفتاح API\".<br>
+        3. اضغط على الزر <translate>\"إنشاء مفتاح API\"</translate>.<br>
         <br>
         4. انسخ المفتاح، ثم املأه أدناه.
         ]]>

@@ -23,7 +23,6 @@ import spam.blocker.util.Lambda2
 import spam.blocker.util.Lambda3
 import spam.blocker.util.escape
 import spam.blocker.util.httpRequest
-import spam.blocker.util.resolveBearerTag
 
 
 data class AuthConfig(
@@ -107,7 +106,7 @@ val authConfig_PhoneBlock = AuthConfig(
                 "https://phoneblock.net/pb-test/api/test"
             else
                 "https://phoneblock.net/phoneblock/api/test",
-            headersMap = mapOf("Authorization" to "{bearer_auth($apiKey)}".resolveBearerTag()),
+            headersMap = mapOf("Authorization" to "Bearer $apiKey"),
             method = HTTP_GET,
         )
 
@@ -164,21 +163,21 @@ val ApiQueryPresets = listOf<ApiPreset>(
             ApiReportPresets[0].newApi(ctx)
         }
     ),
-    // Google Gemini
+    // Groq
     ApiPreset(
-        tooltipId = R.string.help_api_preset_gemini,
+        tooltipId = R.string.help_api_preset_groq,
         leadingIconId = R.drawable.ic_sms,
         newAuthConfig = {
             AuthConfig(
                 formLabels = listOf(
-                    R.string.gemini_api_key,
+                    R.string.api_key,
                 ),
-                tooltipId = R.string.help_api_preset_gemini_authorization,
+                tooltipId = R.string.help_api_preset_groq_authorization,
                 preProcessor = { actions, formValues ->
                     // replace the tags in HttpDownload.header
                     actions.find { it is HttpRequest }?.let {
                         val http = it as HttpRequest
-                        http.url = http.url
+                        http.header = http.header
                             .replace("{api_key}", formValues[0])
                     }
                 },
@@ -189,21 +188,40 @@ val ApiQueryPresets = listOf<ApiPreset>(
         },
         newApi = { ctx ->
             QueryApi(
-                desc = ctx.getString(R.string.api_preset_gemini),
+                desc = ctx.getString(R.string.api_preset_groq),
                 enabled = true,
                 actions = listOf(
                     InterceptSms(),
                     HttpRequest(
-                        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}",
-                        header = "Content-Type: application/json",
+                        url = "https://api.groq.com/openai/v1/chat/completions",
+                        header = """
+                            Content-Type: application/json
+                            Authorization: Bearer {api_key}
+                        """.trimIndent(),
                         method = HTTP_POST,
-                        body = "{\n  \"contents\": [{\n    \"parts\":[{\n\t  \"text\": \"%s\"\n\n\t}]\n  }]\n}"
+                        body = """
+                            {
+                             "model": "openai/gpt-oss-120b",
+                             "temperature": 1,
+                             "max_completion_tokens": 8192,
+                             "top_p": 1,
+                             "stream": false,
+                             "reasoning_effort": "medium",
+                             "stop": null,
+                             "messages": [
+                               {
+                            	 "role": "user",
+                            	 "content": "%s"
+                               }
+                             ]
+                            }
+                        """.trimIndent()
                             .format(ctx.getString(R.string.spam_sms_prompt_template).escape())
                     ),
                     ParseQueryResult(
                         negativeSig = ctx.getString(R.string.spam_sms_negative_category),
                         positiveSig = ctx.getString(R.string.spam_sms_positive_category),
-                        categorySig = "\"text\": \"(.*?)..\"",
+                        categorySig = "\"content\":\"(.*?)\"",
                     ),
                 )
             )

@@ -1,22 +1,21 @@
 <resources>
-    <string name="api_preset_gemini">Gemini</string>
-    <string name="help_api_preset_gemini">
+    <string name="api_preset_groq">Groq</string>
+    <string name="help_api_preset_groq">
         <![CDATA[
-        使用 Google Gemini AI 檢查簡訊內容，只需要 Google 帳號即可。
+        使用 <b>Groq AI</b> 檢測簡訊內容，僅需一個電子郵件帳號。
         ]]>
     </string>
-    <string name="gemini_api_key">Gemini API 金鑰</string>
-    <string name="help_api_preset_gemini_authorization">
+    <string name="help_api_preset_groq_authorization">
         <![CDATA[
-        1. 註冊並登入您的 Google 帳號：<br>
-         <a href="https://accounts.google.com/">https://accounts.google.com/</a><br>
+        1. 註冊登入：<br>
+         <a href="https://console.groq.com/login">https://console.groq.com/login</a><br>
          <br>
         2. 開啟 API 頁面：<br>
-         <a href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a><br>
+         <a href="https://console.groq.com/keys">https://console.groq.com/keys</a><br>
         <br>
-        3. 按下「建立 API 金鑰」按鈕。<br>
+        3. 點擊 <translate>「建立 API 金鑰」</translate> 按鈕。<br>
         <br>
-        4. 複製金鑰，然後填入下方。
+        4. 複製金鑰，然後填寫在下方。
         ]]>
     </string>
     <string name="spam_sms_prompt_template">
