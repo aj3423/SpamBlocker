@@ -480,11 +480,14 @@ object Util {
         }
     }
 
-    fun openSettingForDefaultSmsApp(ctx: Context) {
+    fun openDefaultSmsAppNotificationSetting(ctx: Context) {
         try {
             val defSmsPkg = Telephony.Sms.getDefaultSmsPackage(ctx)
-            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-            intent.data = Uri.fromParts("package", defSmsPkg, null)
+
+            val intent = Intent().apply {
+                action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+                putExtra(Settings.EXTRA_APP_PACKAGE, defSmsPkg)
+            }
             ctx.startActivity(intent)
         } catch (e: Exception) {
             loge("exception in openSettingForDefaultSmsApp: $e")

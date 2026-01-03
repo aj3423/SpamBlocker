@@ -82,7 +82,7 @@ fun GloballyEnabled() {
                 Spacer(modifier = M.width(10.dp))
                 StrokeButton(label = Str(R.string.open_settings), color = Teal200) {
                     doubleSmsWarningTrigger.value = false
-                    Util.openSettingForDefaultSmsApp(ctx)
+                    Util.openDefaultSmsAppNotificationSetting(ctx)
                 }
             },
         ) {
