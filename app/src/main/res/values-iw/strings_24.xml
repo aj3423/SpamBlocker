@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">שם מתקשר</string>
     <string name="caller_name_rule">כלל שם מתקשר</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        עבור SMS, אפליקציה זו משתלטת על התראות ה-SMS, היא רק מסננת אותן, הודעות ספאם
-         עדיין יהיו נוכחות באפליקציית ה-SMS. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         אפשר שיחות שיש להן מידע <b>CNAP (Caller Name Presentation)</b>, שהיא תכונה טלקומוניקטיבית המציגה את השם הרשום של המתקשר (יחד עם מספר הטלפון) על מסך הטלפון של הנמען במהלך שיחה נכנסת. <br>

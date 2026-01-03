@@ -80,6 +80,7 @@ fun ApiAuthConfigDialog(
         buttons = {
             // OK button
             StrokeButton(label = Str(R.string.ok), color = Teal200) {
+                errStr = null // clear previous error
                 validatePopupTrigger.value = true
 
                 CoroutineScope(IO).launch {

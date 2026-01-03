@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Ім\'я абонента</string>
     <string name="caller_name_rule">Правило імені абонента</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        Для SMS ця програма перебирає сповіщення SMS, вона лише їх фільтрує, спам-повідомлення
-         все ще будуть присутні в програмі SMS. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         Дозволяти дзвінки, що мають інформацію <b>CNAP (Caller Name Presentation)</b>, що є телекомунікаційною функцією, яка

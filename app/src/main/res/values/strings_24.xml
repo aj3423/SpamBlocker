@@ -18,14 +18,6 @@
     </string>
     <string name="caller_name">Caller Name</string>
     <string name="caller_name_rule">Caller Name Rule</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        For SMS, this app takes over SMS notifications, it only filters them, spam messages
-         will still be present in the SMS app. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_mode_caller_name">
         <![CDATA[
         <font color="#00BFFF"><b>Caller Name</b></font>:<br>

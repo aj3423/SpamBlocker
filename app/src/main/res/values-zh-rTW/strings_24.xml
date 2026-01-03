@@ -27,13 +27,6 @@
     </string>
     <string name="caller_name">來電者名稱</string>
     <string name="caller_name_rule">來電者名稱規則</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        對於簡訊，此應用程式會接管簡訊通知，它只會過濾這些通知，垃圾訊息仍將存在於簡訊應用程式中。 <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         允許具有<b>CNAP(Caller Name Presentation - 來電者名稱呈現)</b>資訊的來電，這是一種電信功能，可在來電時，在接收者的手機螢幕上顯示來電者的註冊名稱（連同電話號碼）。 <br>

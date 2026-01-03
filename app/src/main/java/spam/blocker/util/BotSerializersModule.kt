@@ -108,6 +108,7 @@ val botModule = SerializersModule {
         subclass(GenerateTag::class)
     }
     polymorphic(IApi::class) {
+        // the second param is only for being compatible with old serialized data `spam.blocker.db.QueryApi`
         subclass(QueryApi::class, QueryApi.serializer())
         subclass(ReportApi::class, ReportApi.serializer())
     }

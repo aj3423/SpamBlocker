@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Имя звонящего</string>
     <string name="caller_name_rule">Правило для имени звонящего</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        Для SMS это приложение перехватывает уведомления SMS, оно лишь фильтрует их, спам-сообщения
-         по-прежнему будут присутствовать в приложении SMS. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         Разрешить звонки, которые содержат информацию <b>CNAP (Представление имени звонящего)</b>, что является телекоммуникационной функцией, которая

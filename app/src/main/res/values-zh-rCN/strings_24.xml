@@ -27,13 +27,6 @@
     </string>
     <string name="caller_name">来电者姓名</string>
     <string name="caller_name_rule">来电者姓名规则</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        对于短信，此应用会接管短信通知，它只会过滤这些通知，垃圾短信仍会存在于短信应用中。<br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         允许带有<b>CNAP（来电名称显示）</b>信息的电话，这是一项电信功能，可在来电时将呼叫者的注册姓名（连同电话号码）显示在接收方的手机屏幕上。<br>

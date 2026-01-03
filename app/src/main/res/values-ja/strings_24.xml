@@ -24,13 +24,6 @@
     </string>
     <string name="caller_name">発信者名</string>
     <string name="caller_name_rule">発信者名ルール</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        SMSの場合、このアプリはSMS通知を引き継ぎ、フィルタリングのみを行います。迷惑メッセージはSMSアプリに残ります。<br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         <b>CNAP（Caller Name Presentation）</b>情報を持つ通話を許可します。これは、着信時に発信者の登録名（電話番号とともに）を受信者の電話画面に表示する通信機能です。<br>

@@ -24,14 +24,6 @@
     </string>
     <string name="caller_name">Arayan Adı</string>
     <string name="caller_name_rule">Arayan Adı Kuralı</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        SMS için bu uygulama SMS bildirimlerini devralır, sadece filtreler, istenmeyen mesajlar
-         SMS uygulamasında hala mevcut olacaktır. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         Gelen bir arama sırasında arayanın kayıtlı adını (telefon numarasıyla birlikte) alıcının telefon ekranında gösteren bir telekom özelliği olan <b>CNAP (Arayan Adı Gösterimi)</b> bilgisine sahip aramalara izin verin. <br>

@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Anrufername</string>
     <string name="caller_name_rule">Regel für Anrufernamen</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        Für SMS übernimmt diese App die SMS-Benachrichtigungen, sie filtert diese nur, Spam-Nachrichten
-         sind weiterhin in der SMS-App vorhanden. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         Erlaube Anrufe, die <b>CNAP-Informationen (Anrufernamenanzeige)</b> haben, was eine Telekommunikationsfunktion ist, die

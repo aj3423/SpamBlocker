@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Nama Penelepon</string>
     <string name="caller_name_rule">Aturan Nama Penelepon</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        Untuk SMS, aplikasi ini mengambil alih notifikasi SMS, hanya menyaringnya, pesan spam
-         akan tetap ada di aplikasi SMS. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         Izinkan panggilan yang memiliki informasi <b>CNAP (Caller Name Presentation)</b>, yang merupakan fitur telekomunikasi yang

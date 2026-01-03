@@ -27,14 +27,6 @@
     </string>
     <string name="caller_name">Nome do Chamador</string>
     <string name="caller_name_rule">Regra do Nome do Chamador</string>
-    <string name="help_caller_name">
-        <![CDATA[
-        Para os SMS, esta aplicación asume as notificacións de SMS, só as filtra, as mensaxes de spam
-         seguirán estando presentes na aplicación de SMS. <br>
-        <br>
-        %s
-        ]]>
-    </string>
     <string name="help_regex_preset_caller_name">
         <![CDATA[
         Permitir chamadas que teñan información de <b>CNAP (Presentación do Nome do Chamador)</b>, que é unha función de telecomunicacións que
