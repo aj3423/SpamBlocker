@@ -41,7 +41,7 @@
     <string name="language">Язык</string>
     <string name="help_language">
         <![CDATA[
-            Перевод осуществляется с помощью Google AI, сообщите о проблеме на github для добавления поддержки нового языка.
+            Переводы генерируются с помощью ИИ, исправления приветствуются.
         ]]>
     </string>
     <string name="repeated_call">Повторный звонок</string>

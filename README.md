@@ -126,8 +126,7 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
 
 # Language support
 
-Languages are translated using AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), fire an issue for requesting a new language support.
-PRs for corrections are welcome.
+Languages are translated using AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), PRs for corrections are welcome.
 
 # Contributing
  - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)

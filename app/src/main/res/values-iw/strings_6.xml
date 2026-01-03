@@ -41,7 +41,7 @@
     <string name="language">שפה</string>
     <string name="help_language">
         <![CDATA[
-            התרגומים בוצעו על ידי Google AI, פתח בעיה ב-GitHub לבקשת תמיכה בשפה חדשה.
+            ההתרגומים נוצרו באמצעות בינה מלאכותית, תיקונים מתקבלים בברכה.
         ]]>
     </string>
     <string name="repeated_call">שיחה חוזרת</string>

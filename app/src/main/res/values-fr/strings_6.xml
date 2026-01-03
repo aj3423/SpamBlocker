@@ -38,7 +38,7 @@
     <string name="language">Langue</string>
     <string name="help_language">
         <![CDATA[
-            Les traductions sont réalisées par Google AI, signalez un problème sur github pour ajouter une nouvelle prise en charge de la langue.
+            Les traductions sont générées par l\'IA, les corrections sont les bienvenues.
         ]]>
     </string>
     <string name="repeated_call">Appel répété</string>

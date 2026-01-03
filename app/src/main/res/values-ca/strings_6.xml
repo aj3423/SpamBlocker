@@ -41,7 +41,7 @@
     <string name="language"><translate>Idioma</translate></string>
     <string name="help_language">
         <![CDATA[
-            Les traduccions les fa Google AI, planteja un problema a github per afegir un nou suport d\'idioma.
+            Les traduccions es generen amb IA, les correccions són benvingudes.
         ]]>
     </string>
     <string name="repeated_call"><translate>Trucada repetida</translate></string>

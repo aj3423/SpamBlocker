@@ -41,7 +41,7 @@
     <string name="language">語言</string>
     <string name="help_language">
         <![CDATA[
-            翻譯由 Google AI 完成，如需新增語言支援請在 GitHub 上提出議題。
+            使用 AI 生成的翻譯，歡迎指正。
         ]]>
     </string>
     <string name="repeated_call">重複來電</string>

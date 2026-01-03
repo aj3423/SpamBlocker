@@ -41,7 +41,7 @@
     <string name="language">اللغة</string>
     <string name="help_language">
         <![CDATA[
-            تتم الترجمات بواسطة Google AI، أرسل مشكلة على github لإضافة دعم لغة جديدة.
+            يتم إنشاء الترجمات باستخدام الذكاء الاصطناعي، والترحيب بالتصحيحات.
         ]]>
     </string>
     <string name="repeated_call">مكالمة متكررة</string>

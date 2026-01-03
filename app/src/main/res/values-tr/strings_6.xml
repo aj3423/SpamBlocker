@@ -38,7 +38,7 @@
     <string name="language">Dil</string>
     <string name="help_language">
         <![CDATA[
-            Çeviriler Google AI tarafından yapılmaktadır, yeni bir dil desteği eklemek için GitHub\'da bir sorun açın.
+            Çeviriler AI kullanılarak üretilir, düzeltmeler hoş karşılanır.
         ]]>
     </string>
     <string name="repeated_call">Tekrarlanan Arama</string>

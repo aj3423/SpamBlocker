@@ -41,7 +41,7 @@
     <string name="language">Bahasa</string>
     <string name="help_language">
         <![CDATA[
-            Terjemahan dilakukan oleh Google AI, sampaikan masalah di github untuk menambahkan dukungan bahasa baru.
+            Terjemahan dihasilkan menggunakan AI, koreksi dipersilakan.
         ]]>
     </string>
     <string name="repeated_call">Panggilan Berulang</string>
