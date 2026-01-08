@@ -18,7 +18,7 @@ Android Call/SMS blocker. (Android 10+)
 
 Table of Contents
 =================
-   * [Screenshot](#screenshot)
+   * [Screenshots](#screenshots)
    * [How it works](#how-it-works)
    * [Features](#features)
    * [Limitations](#limitations)
@@ -31,7 +31,7 @@ Table of Contents
    * [Some ideas](#some-ideas)
    * [Donate](#donate)
 
-# Screenshot
+# Screenshots
 | History | Settings | Notification |
 |----|----|----|
 | <img src="https://github.com/user-attachments/assets/abfac64c-83e8-445b-b92a-8826e87156ed" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/17a927a3-7d18-486b-b43e-943e22fc55b7" width="200" height="400"> | <img src="https://github.com/user-attachments/assets/70cb5537-1b29-49e8-be0e-47d362ae3ebc" width="200" height="400"> |
@@ -126,7 +126,7 @@ Full [Privacy Policy](https://github.com/aj3423/SpamBlocker/blob/master/Docs/PRI
 
 # Language support
 
-Languages are translated using AI([golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go)), PRs for corrections are welcome.
+Languages are translated using AI with [this golang script](https://github.com/aj3423/SpamBlocker/blob/master/auto_translate/translate.go), PRs for corrections are welcome.
 
 # Contributing
  - [Contributing Guidelines](https://github.com/aj3423/SpamBlocker/blob/master/Docs/CONTRIBUTING.md)
