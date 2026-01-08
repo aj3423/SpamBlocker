@@ -133,6 +133,8 @@ class CallScreeningService : CallScreeningService() {
     }
 
     private fun doScreenCall(details: Details) {
+        logi("doScreenCall")
+
         // Outgoing
         if (details.callDirection == Details.DIRECTION_OUTGOING) {
             updateOutgoingEmergencyTimestamp(this, details.getRawNumber())
@@ -154,9 +156,14 @@ class CallScreeningService : CallScreeningService() {
         val r = processCall(
             ctx = this, logger = null, rawNumber = rawNumber, cnap = cnap, callDetails = details, simSlot = ringingSimSlot,
         )
+        logi("processCall: $r")
 
         if (r.shouldBlock()) {
+            logi("should block")
+
             val blockType = r.getBlockType(this) // reject / silence / answer+hangup
+
+            logi("block type: $blockType")
 
             when (blockType) {
                 Def.BLOCK_TYPE_SILENCE -> silence(details)
@@ -164,9 +171,12 @@ class CallScreeningService : CallScreeningService() {
                 else -> reject(details)
             }
         } else {
+            logi("should allow")
+
             val shouldMute = setRingtone(this, r)
             pass(details, shouldMute)
         }
+        logi("all done")
     }
 
     // Return value: should mute or not
