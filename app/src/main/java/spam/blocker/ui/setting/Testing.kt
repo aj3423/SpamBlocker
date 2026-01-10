@@ -21,9 +21,9 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.Db
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.def.Def
 import spam.blocker.def.Def.ANDROID_12
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
@@ -46,6 +46,7 @@ import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrInputBox
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.util.JetpackTextLogger
+import spam.blocker.util.Util
 
 
 class TestingViewModel {
@@ -73,7 +74,7 @@ fun PopupTesting(
         )
     }
 
-    var logStr = remember { mutableStateOf(buildAnnotatedString {}) }
+    val logStr = remember { mutableStateOf(buildAnnotatedString {}) }
 
     // Log output dialog
     val logTrigger = rememberSaveable { mutableStateOf(false) }
@@ -172,6 +173,10 @@ fun PopupTesting(
                     SimPicker(vm.simSlot)
                 }
 
+                val geoLocation = remember(vm.phone.value) {
+                    Util.numberGeoLocation(ctx, vm.phone.value)
+                }
+
                 // Phone number
                 StrInputBox(
                     text = vm.phone.value,
@@ -181,16 +186,23 @@ fun PopupTesting(
                         vm.phone.value = it
                         clearPreviousResult()
                     },
+                    supportingTextStr = geoLocation?.let {
+                        // Geo Location
+                        Str(R.string.label_value_pair).format(
+                            Str(R.string.geo_location), geoLocation
+                        )
+                    },
+                    supportingTextColor = C.textGrey,
                 )
 
                 // Only show the Caller Name field when there's at least 1 CNAP rule configured
                 var hasCnapRule by remember(G.NumberRuleVM.rules, G.ContentRuleVM.rules) {
-                    // either `patterFlags` or `patternExtraFlags` has flag CNAP
-                    val foundNumberRule = NumberRuleTable().findByFilter(ctx,
+                    // either `patterFlags` or `patternExtraFlags` has CNAP flag
+                    val foundNumberRule = NumberRegexTable().findByFilter(ctx,
                         " WHERE (${Db.COLUMN_PATTERN_FLAGS} & ${FLAG_REGEX_FOR_CNAP}) = $FLAG_REGEX_FOR_CNAP LIMIT 1"
                     ).isNotEmpty()
 
-                    val foundContentRule = ContentRuleTable().findByFilter(ctx,
+                    val foundContentRule = ContentRegexTable().findByFilter(ctx,
                         " WHERE (${Db.COLUMN_PATTERN_EXTRA_FLAGS} & ${FLAG_REGEX_FOR_CNAP}) = $FLAG_REGEX_FOR_CNAP LIMIT 1"
                     ).isNotEmpty()
 

@@ -14,10 +14,6 @@
         <item>Sat</item>
     </string-array>
 
-
-    <string name="show_passed">Show Passed</string>
-    <string name="show_blocked">Show Blocked</string>
-
     <string name="confirm_delete_all_records">Confirm to delete all Records?</string>
     <string name="expiry">Expiry</string>
     <string name="days">Days</string>

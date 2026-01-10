@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Afficher les appels autorisés</string>
-    <string name="show_blocked">Afficher les appels bloqués</string>
 
     <string name="confirm_delete_all_records">Confirmer la suppression de tous les enregistrements ?</string>
     <string name="expiry">Expiration</string>

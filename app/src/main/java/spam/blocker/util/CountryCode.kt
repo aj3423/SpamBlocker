@@ -27,7 +27,7 @@ object CountryCode {
     }
 
 
-    private fun detectNetworkCountry(ctx: Context): String? {
+    private fun networkAlpha2(ctx: Context): String? {
         return try {
             val telephonyManager = ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             telephonyManager.networkCountryIso.uppercase()
@@ -35,7 +35,7 @@ object CountryCode {
             null
         }
     }
-    private fun detectLocaleCountry(context: Context): String? {
+    fun localeAlpha2(context: Context): String? {
         return try {
             context.resources.configuration.locales[0].country.uppercase()
         } catch (_: Exception) {
@@ -43,14 +43,16 @@ object CountryCode {
         }
     }
 
+    fun alpha2(ctx: Context) : String {
+        return networkAlpha2(ctx) ?: localeAlpha2(ctx) ?: "ZZ"
+    }
+
     fun current(ctx: Context): Int? {
 
-        val cc = detectNetworkCountry(ctx)
-            ?: detectLocaleCountry(ctx)
-            ?: ""
+        val XX = alpha2(ctx) // "US"
 
         // https://countrycode.org/
-        return when (cc) {
+        return when (XX) {
             "AF", "AFG" -> 93                 //  Afghanistan
             "AL", "ALB" -> 355                //  Albania
             "DZ", "DZA" -> 213                //  Algeria

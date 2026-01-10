@@ -22,7 +22,7 @@
         &ensp; La expresión regular coincidirá con el nombre de visualización del llamante (CNAP). <br>
         <br>
         En el registro del historial de llamadas, el nombre de quien llama aparecerá después del número de teléfono entre paréntesis si existe, como: <br>
-        &ensp; <font color="#888888">12345 (Nombre de visualización)</font>
+        &ensp; <font color="#888888">12345 (Nombre de visualización)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Nombre de quien llama</string>
@@ -79,4 +79,36 @@
     </string>
     <string name="forwarded_number_modified_to">Este número desviado ha sido modificado a %s.</string>
     <string name="filter">Filtro</string>
+    <string name="geo_location">Ubicación geográfica</string>
+    <string name="geo_location_rule">Regla de ubicación geográfica</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Ubicación geográfica</b></font>:<br>
+        &ensp; La expresión regular coincidirá con la ubicación geográfica del número. <br>
+        <br>
+        &ensp; Esto se basa en la biblioteca de Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         una biblioteca offline que brinda información geográfica para números de teléfono. <br>
+        <br>
+        &ensp; Si observas algún problema con la precisión de la base de datos, puedes
+        <a href="https://groups.google.com/g/libphonenumber-discuss">abrir una discusión</a>
+        o
+        <a href="https://issuetracker.google.com/issues/new?component=192347">informar un problema</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Mostrar/Ocultar</string>
+    <string name="allowed_records">Registros permitidos</string>
+    <string name="blocked_records">Registros bloqueados</string>
+    <string name="local_number">Número local</string>
+    <string name="non_local_number">Número no local</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Permitir llamadas locales de la misma región y bloquear las demás. <br>
+        <br>
+        Reemplaza el marcador ___ con tu región real. <br>
+        <br>
+        La sintaxis <font color="#fa7f71">(?!___$).*</font> significa: <br>
+        &ensp; Coincidir cualquier texto que no sea <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

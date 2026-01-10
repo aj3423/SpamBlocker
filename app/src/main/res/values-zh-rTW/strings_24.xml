@@ -22,7 +22,7 @@
         &ensp; 正規表示式將針對來電者顯示名稱(CNAP)進行比對。 <br>
         <br>
         在通話記錄中，如果存在，來電者名稱將會出現在電話號碼之後的括號中，例如: <br>
-        &ensp; <font color="#888888">12345 (顯示名稱)</font>
+        &ensp; <font color="#888888">12345 (顯示名稱)</font> <br>
         ]]>
     </string>
     <string name="caller_name">來電者名稱</string>
@@ -76,4 +76,36 @@
     </string>
     <string name="forwarded_number_modified_to">此轉接號碼已修改為 %s。</string>
     <string name="filter">篩選</string>
+    <string name="geo_location">地理位置</string>
+    <string name="geo_location_rule">地理位置規則</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>地理位置</b></font>:<br>
+        &ensp; 此正則表達式將對電話號碼的地理位置進行匹配。 <br>
+        <br>
+        &ensp; 這依賴於 Google 的函式庫 <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         一個離線函式庫，可提供電話號碼的地理資訊。 <br>
+        <br>
+        &ensp; 如果您發現資料庫的準確性有任何問題，您可以
+        <a href="https://groups.google.com/g/libphonenumber-discuss">開啟討論</a>
+        或
+        <a href="https://issuetracker.google.com/issues/new?component=192347">回報問題</a>。
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">顯示/隱藏</string>
+    <string name="allowed_records">允許的記錄</string>
+    <string name="blocked_records">已封鎖的記錄</string>
+    <string name="local_number">本地號碼</string>
+    <string name="non_local_number">非本地號碼</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        允許同一區域的本機號碼，並阻止其他號碼。 <br>
+        <br>
+        將 ___ 佔位符替換為您實際的區域。 <br>
+        <br>
+        語法 <font color="#fa7f71">(?!___$).*</font> 表示： <br>
+        &ensp; 匹配任何不是 <font color="#fa7f71">___</font> 的文字。
+        ]]>
+    </string>
 </resources>

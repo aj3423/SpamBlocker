@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Mostrar Pasados</string>
-    <string name="show_blocked">Mostrar Bloqueados</string>
 
     <string name="confirm_delete_all_records">Confirmar eliminar todos os rexistros?</string>
     <string name="expiry">Caducidade</string>

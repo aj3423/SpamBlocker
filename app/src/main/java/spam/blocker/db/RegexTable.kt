@@ -272,7 +272,7 @@ fun newRegexRule(
 }
 
 
-abstract class RuleTable {
+abstract class RegexTable {
 
     abstract fun tableName(): String
 
@@ -499,28 +499,28 @@ abstract class RuleTable {
     }
 }
 
-open class NumberRuleTable : RuleTable() {
+open class NumberRegexTable : RegexTable() {
     override fun tableName(): String {
         return Db.TABLE_NUMBER_RULE
     }
 }
 
-open class ContentRuleTable : RuleTable() {
+open class ContentRegexTable : RegexTable() {
     override fun tableName(): String {
         return Db.TABLE_CONTENT_RULE
     }
 }
 
-open class QuickCopyRuleTable : RuleTable() {
+open class QuickCopyRegexTable : RegexTable() {
     override fun tableName(): String {
         return Db.TABLE_QUICK_COPY_RULE
     }
 }
 
-fun ruleTableForType(forType: Int): RuleTable {
+fun ruleTableForType(forType: Int): RegexTable {
     return when (forType) {
-        Def.ForNumber -> NumberRuleTable()
-        Def.ForSms -> ContentRuleTable()
-        else -> QuickCopyRuleTable()
+        Def.ForNumber -> NumberRegexTable()
+        Def.ForSms -> ContentRegexTable()
+        else -> QuickCopyRegexTable()
     }
 }

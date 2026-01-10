@@ -18,7 +18,6 @@
         Satır başına bir özellik.
         ]]>
     </string>
-    <string name="log_sms_content_to_db">SMS Kaydet</string>
     <string name="initial_row_count">Başlangıç Satır Sayısı</string>
     <plurals name="rows">
         <item quantity="one">%d Satır</item>

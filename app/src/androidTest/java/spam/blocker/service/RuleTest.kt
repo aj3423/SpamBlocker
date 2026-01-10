@@ -9,8 +9,8 @@ import junit.framework.TestCase.assertEquals
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import spam.blocker.db.ContentRuleTable
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.ContentRegexTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.def.Def
 import spam.blocker.service.checker.Checker
@@ -39,8 +39,8 @@ class RuleTest {
         clearAllMocks()
 
         spf.SharedPref(ctx).clear()
-        NumberRuleTable().clearAll(ctx)
-        ContentRuleTable().clearAll(ctx)
+        NumberRegexTable().clearAll(ctx)
+        ContentRegexTable().clearAll(ctx)
     }
 
     @After
@@ -74,11 +74,11 @@ class RuleTest {
     }
 
     fun add_number_rule(r: RegexRule) {
-        NumberRuleTable().addNewRule(ctx, r)
+        NumberRegexTable().addNewRule(ctx, r)
     }
 
     fun add_content_rule(r: RegexRule) {
-        ContentRuleTable().addNewRule(ctx, r)
+        ContentRegexTable().addNewRule(ctx, r)
     }
 
 
@@ -174,7 +174,7 @@ class RuleTest {
         assertEquals(Def.RESULT_ALLOWED_BY_CONTACT, Checker.checkCall(ctx, logger = null, A).type)
 
         // non-contact: block
-        assertEquals(Def.RESULT_BLOCKED_BY_NUMBER_RULE, Checker.checkCall(ctx, logger = null, B).type)
+        assertEquals(Def.RESULT_BLOCKED_BY_NUMBER_REGEX, Checker.checkCall(ctx, logger = null, B).type)
     }
 
     // Non Contact -> block
@@ -221,7 +221,7 @@ class RuleTest {
         // should always fail when no history records
         for (i in 1..3) {
             val r = Checker.checkCall(ctx, logger = null, B)
-            assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+            assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
         }
 
         // add two calls
@@ -229,7 +229,7 @@ class RuleTest {
 
         // should still fail, 2<4
         val r2 = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r2.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r2.type)
 
         // add two sms
         mock_sms(B, Def.DIRECTION_INCOMING, 2, twoMinAgo)
@@ -240,7 +240,7 @@ class RuleTest {
         // should block again after 10 minutes
         mock_advance_time_by_minutes(10)
         val r4 = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r4.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r4.type)
     }
 
     // testing dialed
@@ -268,7 +268,7 @@ class RuleTest {
         // should always fail when no history records
         for (i in 1..3) {
             val r = Checker.checkCall(ctx, logger = null, B)
-            assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+            assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
         }
 
         // add a call
@@ -290,7 +290,7 @@ class RuleTest {
         // should block again after 10 days
         mock_advance_time_by_minutes(10 * 24 * 60)
         val r4 = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r4.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r4.type)
     }
 
     private fun mock_recent_app(pkgs: List<String>, expire: Long) {
@@ -325,7 +325,7 @@ class RuleTest {
 
         // should block
         r = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
 
     }
 
@@ -342,7 +342,7 @@ class RuleTest {
 
         // should block
         var r = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
 
         // set off-time to (1:00, 2:00)
         val spf = spf.OffTime(ctx).apply {
@@ -366,7 +366,7 @@ class RuleTest {
 
         // should block
         r = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
 
 
         // ---- test start > end (over night) ----
@@ -403,7 +403,7 @@ class RuleTest {
         // should block, Monday 01:20
         mock_current_time_millis(getTimestampInMilliseconds(2, 1, 20))
         var r = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
 
         // should pass, Thursday
         mock_current_time_millis(getTimestampInMilliseconds(3, 1, 20))
@@ -427,11 +427,11 @@ class RuleTest {
 
         // A should pass
         var r = Checker.checkCall(ctx, logger = null, A)
-        assertEquals("should pass", Def.RESULT_ALLOWED_BY_NUMBER_RULE, r.type)
+        assertEquals("should pass", Def.RESULT_ALLOWED_BY_NUMBER_REGEX, r.type)
 
         // B should block
         r = Checker.checkCall(ctx, logger = null, B)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
     }
 
     // test incoming number like "Microsoft"
@@ -444,7 +444,7 @@ class RuleTest {
 
         //  should block
         val r = Checker.checkCall(ctx, logger = null, Microsoft)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
     }
 
     // block all msg contain "discount"
@@ -506,7 +506,7 @@ class RuleTest {
 
         //  should block for leading 0
         r = Checker.checkCall(ctx, logger = null, domesticNumber)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
     }
 
     // regex flags IgnoreCC
@@ -529,7 +529,7 @@ class RuleTest {
 
         //  should block for leading 0
         r = Checker.checkCall(ctx, logger = null, internationalNumber)
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
     }
 
     // Multi SIM number rule
@@ -549,20 +549,20 @@ class RuleTest {
         val number_123 = "123"
         // call from 123(sim 0) should pass (by rule 1)
         var r = Checker.checkCall(ctx, logger = null, number_123, simSlot = 0)
-        assertEquals("should pass 1", Def.RESULT_ALLOWED_BY_NUMBER_RULE, r.type)
+        assertEquals("should pass 1", Def.RESULT_ALLOWED_BY_NUMBER_REGEX, r.type)
 
         // call from 123(sim 1) should be blocked (by rule 2)
         r = Checker.checkCall(ctx, logger = null, number_123, simSlot = 1)
-        assertEquals("should block 2", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block 2", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
 
         // call from 123(null simSlot) should be allowed by rule 1, simSlot==null for people only use 1 sim card
         r = Checker.checkCall(ctx, logger = null, number_123, simSlot = null)
-        assertEquals("should block 3", Def.RESULT_ALLOWED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block 3", Def.RESULT_ALLOWED_BY_NUMBER_REGEX, r.type)
 
         // call from random number(null simSlot) should be blocked by rule 2, simSlot==null for people only use 1 sim card
         val random_number = "random_number"
         r = Checker.checkCall(ctx, logger = null, random_number, simSlot = null)
-        assertEquals("should block 4", Def.RESULT_BLOCKED_BY_NUMBER_RULE, r.type)
+        assertEquals("should block 4", Def.RESULT_BLOCKED_BY_NUMBER_REGEX, r.type)
     }
 
     // Multi SIM content rule
@@ -608,7 +608,7 @@ class RuleTest {
         )
 
         var r = Checker.checkCall(ctx, logger = null, rawNumber = "", cnap = "block")
-        assertEquals("should block", Def.RESULT_BLOCKED_BY_CNAP_RULE, r.type)
+        assertEquals("should block", Def.RESULT_BLOCKED_BY_CNAP_REGEX, r.type)
 
         // wrong CNAP
         r = Checker.checkCall(ctx, logger = null, rawNumber = "", cnap = "nah")

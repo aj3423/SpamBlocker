@@ -19,7 +19,6 @@
         每行一个属性。
         ]]>
     </string>
-    <string name="log_sms_content_to_db">记录短信</string>
     <string name="initial_row_count">初始行数</string>
     <plurals name="rows">
         <item quantity="one">%d 行</item>

@@ -34,7 +34,6 @@
         &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Registra SMS</string>
     <string name="initial_row_count">Recompte de files inicial</string>
     <plurals name="rows">
         <item quantity="one">%d Fila</item>

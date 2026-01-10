@@ -26,7 +26,7 @@ import kotlinx.serialization.Serializable
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.CallTable
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.SmsTable
 import spam.blocker.def.Def
 import spam.blocker.service.checker.ByRegexRule
@@ -845,7 +845,7 @@ class SmsThrottling(
         if (!isActivated())
             return false
 
-        val rules = NumberRuleTable().findRuleByDesc(ctx, targetRuleDesc, targetRuleDescFlags)
+        val rules = NumberRegexTable().findRuleByDesc(ctx, targetRuleDesc, targetRuleDescFlags)
         if (rules.isEmpty())
             return false
         val rule = rules[0]

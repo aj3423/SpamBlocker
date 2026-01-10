@@ -19,7 +19,7 @@
         &ensp; Regex, arayanın görünen adıyla (CNAP) eşleşecektir. <br>
         <br>
         Çağrı geçmişi kaydında, arayan adı varsa telefon numarasından sonra parantez içinde görünecektir, örneğin: <br>
-        &ensp; <font color="#888888">12345 (Görünen Ad)</font>
+        &ensp; <font color="#888888">12345 (Görünen Ad)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Arayan Adı</string>
@@ -73,4 +73,36 @@
     </string>
     <string name="forwarded_number_modified_to">Bu yönlendirilen numara %s olarak değiştirildi.</string>
     <string name="filter">Filtre</string>
+    <string name="geo_location">Coğrafi Konum</string>
+    <string name="geo_location_rule">Coğrafi Konum Kuralı</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Coğrafi Konum</b></font>:<br>
+        &ensp; Regex, numaranın coğrafi konumuyla eşleşecektir. <br>
+        <br>
+        &ensp; Bu, Google\'ın <a href="https://github.com/google/libphonenumber">libphonenumber</a> kütüphanesine dayanır,
+         telefon numaraları için coğrafi bilgi sağlayan çevrim dışı bir kütüphane. <br>
+        <br>
+        &ensp; Veritabanı doğruluğunda herhangi bir sorun fark ederseniz,
+        <a href="https://groups.google.com/g/libphonenumber-discuss">bir tartışma açabilir</a>
+        ya da
+        <a href="https://issuetracker.google.com/issues/new?component=192347">bir sorun bildirebilirsiniz</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Göster/Gizle</string>
+    <string name="allowed_records">İzin Verilen Kayıtlar</string>
+    <string name="blocked_records">Engellenen Kayıtlar</string>
+    <string name="local_number">Yerel Numara</string>
+    <string name="non_local_number">Yerel Olmayan Numara</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Aynı bölgeden gelen yerel aramaları izin ver ve diğerlerini engelle. <br>
+        <br>
+        ___ yer tutucusunu gerçek bölgenizle değiştirin. <br>
+        <br>
+        Sözdizimi <font color="#fa7f71">(?!___$).*</font> şu anlama gelir: <br>
+        &ensp; <font color="#fa7f71">___</font> olmayan herhangi bir metni eşleştir.
+        ]]>
+    </string>
 </resources>

@@ -24,7 +24,7 @@
         &ensp; The regex will match against the caller display name(CNAP). <br>
         <br>
         In the call history log, the caller name will appear after the phone number in parentheses if it exists, like: <br>
-        &ensp; <font color="#888888">12345 (Display Name)</font>
+        &ensp; <font color="#888888">12345 (Display Name)</font> <br>
         ]]>
     </string>
     <string name="help_regex_preset_caller_name">
@@ -79,4 +79,36 @@
     </string>
     <string name="forwarded_number_modified_to">This forwarded number has been modified to %s.</string>
     <string name="filter">Filter</string>
+    <string name="geo_location">Geo Location</string>
+    <string name="geo_location_rule">Geo Location Rule</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Geo Location</b></font>:<br>
+        &ensp; The regex will match against the number\'s geo location. <br>
+        <br>
+        &ensp; This relies on Google\'s library <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         an offline library that provides geographical information for phone numbers. <br>
+        <br>
+        &ensp; If you notice any problems with the database accuracy, you can
+        <a href="https://groups.google.com/g/libphonenumber-discuss">open a discussion</a>
+        or
+        <a href="https://issuetracker.google.com/issues/new?component=192347">report an issue</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Show/Hide</string>
+    <string name="allowed_records">Allowed Records</string>
+    <string name="blocked_records">Blocked Records</string>
+    <string name="local_number">Local Number</string>
+    <string name="non_local_number">Non-local Number</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Allow local calls from the same region and block others. <br>
+        <br>
+        Replace the ___ placeholder with your actual region. <br>
+        <br>
+        The syntax <font color="#fa7f71">(?!___$).*</font> means: <br>
+        &ensp; Match any text that is not <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

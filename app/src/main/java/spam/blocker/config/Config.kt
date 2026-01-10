@@ -6,17 +6,17 @@ import kotlinx.serialization.Serializable
 import spam.blocker.G
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
-import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.PushAlertRecord
 import spam.blocker.db.PushAlertTable
 import spam.blocker.db.QueryApi
-import spam.blocker.db.QuickCopyRuleTable
+import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
+import spam.blocker.db.RegexTable
 import spam.blocker.db.ReportApi
-import spam.blocker.db.RuleTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
 import spam.blocker.util.BotJson
@@ -76,6 +76,7 @@ class HistoryOptions : IConfig {
     var showPassed = true
     var showBlocked = true
     var showIndicator = false
+    var showGeoLocation = false
     var forceShowSim = false
     var loggingEnabled = true
     var expiryEnabled = true
@@ -88,6 +89,7 @@ class HistoryOptions : IConfig {
         showPassed = spf.getShowPassed()
         showBlocked = spf.getShowBlocked()
         showIndicator = spf.getShowIndicator()
+        showGeoLocation = spf.getShowGeoLocation()
         forceShowSim = spf.getForceShowSim()
         loggingEnabled = spf.isLoggingEnabled()
         expiryEnabled = spf.isExpiryEnabled()
@@ -101,6 +103,7 @@ class HistoryOptions : IConfig {
             setShowPassed(showPassed)
             setShowBlocked(showBlocked)
             setShowIndicator(showIndicator)
+            setShowGeoLocation(showGeoLocation)
             setForceShowSim(forceShowSim)
             setLoggingEnabled(loggingEnabled)
             setExpiryEnabled(expiryEnabled)
@@ -575,7 +578,7 @@ class MeetingMode : IConfig {
 abstract class PatternRules : IConfig {
     val rules = mutableListOf<RegexRule>()
 
-    abstract fun table(): RuleTable
+    abstract fun table(): RegexTable
     override fun load(ctx: Context) {
         rules.clear()
         rules.addAll(table().listAll(ctx))
@@ -592,22 +595,22 @@ abstract class PatternRules : IConfig {
 
 @Serializable
 class NumberRules : PatternRules() {
-    override fun table(): RuleTable {
-        return NumberRuleTable()
+    override fun table(): RegexTable {
+        return NumberRegexTable()
     }
 }
 
 @Serializable
 class ContentRules : PatternRules() {
-    override fun table(): RuleTable {
-        return ContentRuleTable()
+    override fun table(): RegexTable {
+        return ContentRegexTable()
     }
 }
 
 @Serializable
 class QuickCopyRules : PatternRules() {
-    override fun table(): RuleTable {
-        return QuickCopyRuleTable()
+    override fun table(): RegexTable {
+        return QuickCopyRegexTable()
     }
 }
 

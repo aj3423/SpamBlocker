@@ -22,7 +22,7 @@
         &ensp; عبارت منظم با نام نمایشی تماس‌گیرنده (CNAP) مطابقت داده می‌شود. <br>
         <br>
         در گزارش تاریخچه تماس، نام تماس‌گیرنده در صورت وجود، پس از شماره تلفن در پرانتز ظاهر می‌شود، مانند: <br>
-        &ensp; <font color="#888888">12345 (نام نمایشی)</font>
+        &ensp; <font color="#888888">12345 (نام نمایشی)</font> <br>
         ]]>
     </string>
     <string name="caller_name">نام تماس‌گیرنده</string>
@@ -78,4 +78,35 @@
     </string>
     <string name="forwarded_number_modified_to">این شماره دایورت‌شده به %s تغییر یافته است.</string>
     <string name="filter">فیلتر</string>
+    <string name="geo_location">موقعیت جغرافیایی</string>
+    <string name="geo_location_rule">قانون موقعیت جغرافیایی</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>موقعیت جغرافیایی</b></font>:<br>
+        &ensp; عبارت منظم با موقعیت جغرافیایی شماره مطابقت می‌کند. <br>
+        <br>
+        &ensp; این بر کتابخانهٔ گوگل <a href="https://github.com/google/libphonenumber">libphonenumber</a> وابسته است، کتابخانه‌ای آفلاین که اطلاعات جغرافیایی شماره‌های تلفن را فراهم می‌کند. <br>
+        <br>
+        &ensp; اگر مشکلی در دقت پایگاه داده مشاهده کردید، می‌توانید
+        <a href="https://groups.google.com/g/libphonenumber-discuss">یک بحث باز کنید</a>
+        یا
+        <a href="https://issuetracker.google.com/issues/new?component=192347">یک مشکل گزارش دهید</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">نمایش/مخفی</string>
+    <string name="allowed_records">رکوردهای مجاز</string>
+    <string name="blocked_records">رکوردهای مسدود شده</string>
+    <string name="local_number">شماره محلی</string>
+    <string name="non_local_number">شماره غیرمحلی</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        اجازه بدهید تماس‌های محلی از همان منطقه و تماس‌های دیگر را مسدود کنید. <br>
+        <br>
+        جای‌گیر ___ را با منطقهٔ واقعی خود جایگزین کنید. <br>
+        <br>
+        نحو <font color="#fa7f71">(?!___$).*</font> به معنای: <br>
+        &ensp; هر متنی که <font color="#fa7f71">___</font> نیست را مطابقت می‌دهد.
+        ]]>
+    </string>
 </resources>

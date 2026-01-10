@@ -27,6 +27,8 @@ import android.provider.Telephony.Sms
 import android.telephony.TelephonyManager
 import androidx.annotation.RequiresApi
 import androidx.core.database.getStringOrNull
+import com.google.i18n.phonenumbers.PhoneNumberUtil
+import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -502,6 +504,28 @@ object Util {
             true
         } catch (_: Exception) {
             false
+        }
+    }
+
+    // Get the geo-location from the number, using libphonenumber's geo database
+    fun numberGeoLocation(ctx: Context, rawNumber: String) : String? {
+        if (!Permission.phoneState.isGranted) {
+            return null
+        }
+        return try {
+            val phoneUtil = PhoneNumberUtil.getInstance()
+            val geocoder = PhoneNumberOfflineGeocoder.getInstance()
+
+            val ccAlpha2 = CountryCode.localeAlpha2(ctx) // "US"
+            val phoneNumber = phoneUtil.parse(rawNumber, ccAlpha2)
+
+            if (!phoneUtil.isValidNumber(phoneNumber)) {
+                return null
+            }
+            val location = geocoder.getDescriptionForNumber(phoneNumber, Locale.getDefault())
+            location
+        } catch (_: Exception) {
+            null
         }
     }
 

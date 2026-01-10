@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">显示通过</string>
-    <string name="show_blocked">显示拦截</string>
 
     <string name="confirm_delete_all_records">确认要删除所有记录吗？</string>
     <string name="expiry">过期</string>

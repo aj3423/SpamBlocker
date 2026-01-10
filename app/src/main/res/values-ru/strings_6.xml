@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Показать пропущенные</string>
-    <string name="show_blocked">Показать заблокированные</string>
 
     <string name="confirm_delete_all_records">Подтвердить удаление всех записей?</string>
     <string name="expiry">Срок действия</string>

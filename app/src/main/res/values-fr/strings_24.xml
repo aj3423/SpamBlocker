@@ -22,7 +22,7 @@
         &ensp; L\'expression régulière correspondra au nom d\'affichage de l\'appelant (CNAP). <br>
         <br>
         Dans le journal de l\'historique des appels, le nom de l\'appelant apparaîtra après le numéro de téléphone entre parenthèses s\'il existe, comme : <br>
-        &ensp; <font color="#888888">12345 (Nom d\'affichage)</font>
+        &ensp; <font color="#888888">12345 (Nom d\'affichage)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Nom de l\'appelant</string>
@@ -78,4 +78,36 @@
     </string>
     <string name="forwarded_number_modified_to">Ce numéro transféré a été modifié en %s.</string>
     <string name="filter">Filtrer</string>
+    <string name="geo_location">Géolocalisation</string>
+    <string name="geo_location_rule">Règle de géolocalisation</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Géolocalisation</b></font>:<br>
+        &ensp; L\'expression régulière correspondra à la géolocalisation du numéro. <br>
+        <br>
+        &ensp; Cela repose sur la bibliothèque de Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         une bibliothèque hors ligne qui fournit des informations géographiques pour les numéros de téléphone. <br>
+        <br>
+        &ensp; Si vous remarquez des problèmes d\'exactitude de la base de données, vous pouvez
+        <a href="https://groups.google.com/g/libphonenumber-discuss">ouvrir une discussion</a>
+        ou
+        <a href="https://issuetracker.google.com/issues/new?component=192347">signaler un problème</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s : %s</string>
+    <string name="show_hide">Afficher/Masquer</string>
+    <string name="allowed_records">Enregistrements autorisés</string>
+    <string name="blocked_records">Enregistrements bloqués</string>
+    <string name="local_number">Numéro local</string>
+    <string name="non_local_number">Numéro non local</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Autoriser les appels locaux de la même région et bloquer les autres. <br>
+        <br>
+        Remplacez le texte ___ par votre région réelle. <br>
+        <br>
+        La syntaxe <font color="#fa7f71">(?!___$).*</font> signifie : <br>
+        &ensp; Correspond à tout texte qui n\'est pas <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

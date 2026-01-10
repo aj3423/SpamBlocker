@@ -26,10 +26,10 @@ import androidx.core.net.toUri
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.Notification.Channel
 import spam.blocker.db.Notification.ChannelTable
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.DarkOrange
@@ -154,7 +154,7 @@ fun EditChannelDialog(
                     }
                 ) {
                     // Show a warning: this channel is currently used by following rules...
-                    val usedByRules = (NumberRuleTable().listAll(ctx) + ContentRuleTable().listAll(ctx))
+                    val usedByRules = (NumberRegexTable().listAll(ctx) + ContentRegexTable().listAll(ctx))
                         .filter { it.channel == chId }
                         .map { ctx.getString(R.string.regex_pattern) + " " + it.summary() }
                         .toMutableList()

@@ -115,6 +115,7 @@ private val DarkColorScheme = darkColorScheme(
     surfaceTint = White, // this affects pop menu bg
     surface = Black111111, // systembar
 
+    // For debugging which color is which
 //    onPrimary               = Color.Red,
 //    primaryContainer        = Color.Red,
 //    onPrimaryContainer      = Color.Red,
@@ -170,7 +171,7 @@ fun AppTheme(
     ) {
         MaterialTheme(
             typography = Typography,
-            colorScheme = colorScheme, // the MaterialTheme still uses the "normal" palette
+            colorScheme = colorScheme,
             content = content,
         )
     }

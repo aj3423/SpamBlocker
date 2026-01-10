@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">إظهار المكالمات المارة</string>
-    <string name="show_blocked">إظهار المكالمات المحظورة</string>
 
     <string name="confirm_delete_all_records">هل أنت متأكد من حذف جميع السجلات؟</string>
     <string name="expiry">انتهاء الصلاحية</string>

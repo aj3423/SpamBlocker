@@ -19,7 +19,6 @@
         Un attribut par ligne.
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Journaliser les SMS</string>
     <string name="initial_row_count">Nombre de lignes initial</string>
     <plurals name="rows">
         <item quantity="one">%d Ligne</item>

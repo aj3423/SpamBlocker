@@ -22,7 +22,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,6 +42,7 @@ import spam.blocker.service.checker.parseCheckResultFromDb
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid
+import spam.blocker.ui.theme.DimGrey
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.FlowRowSpaced
@@ -175,6 +178,26 @@ fun HistoryCard(
                         color = if (record.isBlocked()) C.block else C.pass,
                         fontSize = 18.sp
                     )
+
+                    // Geo Location
+                    if (G.showHistoryGeoLocation.value) {
+                        val loc = Util.numberGeoLocation(ctx, record.peer)
+                        loc?.let {
+                            Text(
+                                text = loc,
+                                style = TextStyle(
+                                    fontSize = 12.sp,
+                                    color = DimGrey,
+                                    lineHeight = 16.sp,           // ← this is the one you want to control
+                                    lineHeightStyle = LineHeightStyle(
+                                        alignment = LineHeightStyle.Alignment.Center,   // or Proportional
+                                        trim = LineHeightStyle.Trim.Both
+                                    )
+                                ),
+                                modifier = M.padding(start = 6.dp)
+                            )
+                        }
+                    }
                 }
 
                 // Reason Summary

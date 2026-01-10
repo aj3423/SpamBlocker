@@ -22,7 +22,7 @@
         &ensp; L\'expressió regular coincidirà amb el nom de visualització del trucador (CNAP). <br>
         <br>
         Al registre de l\'historial de trucades, el nom del trucador apareixerà després del número de telèfon entre parèntesis si existeix, com ara: <br>
-        &ensp; <font color="#888888">12345 (Nom de Visualització)</font>
+        &ensp; <font color="#888888">12345 (Nom de Visualització)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Nom del Trucador</string>
@@ -78,4 +78,36 @@
     </string>
     <string name="forwarded_number_modified_to">Aquest número desviat s\'ha modificat a %s.</string>
     <string name="filter">Filtre</string>
+    <string name="geo_location">Ubicació geogràfica</string>
+    <string name="geo_location_rule">Regla d\'ubicació geogràfica</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Ubicació geogràfica</b></font>:<br>
+        &ensp; L\'expressió regular coincidirà amb l\'ubicació geogràfica del número. <br>
+        <br>
+        &ensp; Això es basa en la biblioteca de Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         una biblioteca offline que proporciona informació geogràfica per a números de telèfon. <br>
+        <br>
+        &ensp; Si observeu problemes amb la precisió de la base de dades, podeu
+        <a href="https://groups.google.com/g/libphonenumber-discuss">obrir una discussió</a>
+        o
+        <a href="https://issuetracker.google.com/issues/new?component=192347">informar d\'un problema</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Mostra/Amaga</string>
+    <string name="allowed_records">Registres permesos</string>
+    <string name="blocked_records">Registres bloquejats</string>
+    <string name="local_number">Número local</string>
+    <string name="non_local_number">Número no local</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Permet trucades locals de la mateixa regió i bloqueja les altres. <br>
+        <br>
+        Substitueix el marcador ___ amb la teva regió real. <br>
+        <br>
+        La sintaxi <font color="#fa7f71">(?!___$).*</font> significa: <br>
+        &ensp; Coincideix qualsevol text que no sigui <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

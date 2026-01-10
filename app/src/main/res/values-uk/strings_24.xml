@@ -22,7 +22,7 @@
         &ensp; Регулярний вираз буде порівнюватися з відображуваним ім\'ям абонента (CNAP). <br>
         <br>
         У журналі історії викликів ім\'я абонента з\'явиться після номера телефону в дужках, якщо воно існує, наприклад: <br>
-        &ensp; <font color="#888888">12345 (Відображуване ім\'я)</font>
+        &ensp; <font color="#888888">12345 (Відображуване ім\'я)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Ім\'я абонента</string>
@@ -79,4 +79,36 @@
     </string>
     <string name="forwarded_number_modified_to">Цей переадресований номер було змінено на %s.</string>
     <string name="filter">Фільтр</string>
+    <string name="geo_location">Гео-локація</string>
+    <string name="geo_location_rule">Правило гео-локації</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Geo Location</b></font>:<br>
+        &ensp; Регулярний вираз буде порівнювати гео‑локацію номера. <br>
+        <br>
+        &ensp; Це спирається на бібліотеку Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         офлайн‑бібліотеку, яка надає географічну інформацію про телефонні номери. <br>
+        <br>
+        &ensp; Якщо ви помітили проблеми з точністю бази даних, ви можете
+        <a href="https://groups.google.com/g/libphonenumber-discuss">відкрити обговорення</a>
+        або
+        <a href="https://issuetracker.google.com/issues/new?component=192347">повідомити про проблему</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Показати/Сховати</string>
+    <string name="allowed_records">Дозволені записи</string>
+    <string name="blocked_records">Заблоковані записи</string>
+    <string name="local_number">Місцевий номер</string>
+    <string name="non_local_number">Не місцевий номер</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Дозволяти місцеві дзвінки з того ж регіону та блокувати інші. <br>
+        <br>
+        Замініть заповнювач ___ вашою фактичною областю. <br>
+        <br>
+        Синтаксис <font color="#fa7f71">(?!___$).*</font> означає: <br>
+        &ensp; Знайти будь-який текст, який не є <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

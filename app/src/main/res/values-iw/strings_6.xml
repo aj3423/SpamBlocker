@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">הצג עברו</string>
-    <string name="show_blocked">הצג חסומים</string>
 
     <string name="confirm_delete_all_records">האם לאשר מחיקת כל הרשומות?</string>
     <string name="expiry">תפוגה</string>

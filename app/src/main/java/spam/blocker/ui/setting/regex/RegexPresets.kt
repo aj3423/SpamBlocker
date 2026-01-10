@@ -15,7 +15,7 @@ import spam.blocker.util.PermissionWrapper
 import spam.blocker.util.SimUtils
 
 
-class RulePreset(
+class RegexPreset(
     val label: (Context) -> String,
     val tooltip: (Context) -> String,
     // Check permission, Android version, SIM count, etc..
@@ -24,9 +24,9 @@ class RulePreset(
 )
 
 
-val RegexRulePresets = mapOf(
+val RegexPresets = mapOf(
     Def.ForNumber to listOf(
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.private_number) },
             tooltip = {
                 it.getString(R.string.help_private_number)
@@ -41,7 +41,7 @@ val RegexRulePresets = mapOf(
                 )
             )
         },
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.foreign_number) },
             tooltip = {
                 it.getString(R.string.help_foreign_number)
@@ -57,7 +57,7 @@ val RegexRulePresets = mapOf(
                 )
             )
         },
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.sim_2_contacts) },
             tooltip = {
                 it.getString(R.string.help_sim_2_contacts)
@@ -66,13 +66,13 @@ val RegexRulePresets = mapOf(
                 // 1. check Android version
                 if (Build.VERSION.SDK_INT < ANDROID_12) {
                     onFail(ctx.getString(R.string.requires_min_android_ver).format("12"))
-                    return@RulePreset
+                    return@RegexPreset
                 }
                 // 2. check sim count, must > 1
                 val simCount = SimUtils.simCount(ctx)
                 if (simCount < 2) {
                     onFail(ctx.getString(R.string.detected_sim_count).format("$simCount"))
-                    return@RulePreset
+                    return@RegexPreset
                 }
                 // 3. check permission: contacts+phoneState
                 G.permissionChain.ask(
@@ -106,7 +106,7 @@ val RegexRulePresets = mapOf(
                 )
             )
         },
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.forwarded_call) },
             tooltip = {
                 it.getString(R.string.help_regex_preset_forwarded_call).format(
@@ -124,7 +124,7 @@ val RegexRulePresets = mapOf(
                 )
             )
         },
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.caller_name) },
             tooltip = {
                 it.getString(R.string.help_regex_preset_caller_name)
@@ -141,9 +141,40 @@ val RegexRulePresets = mapOf(
                 )
             )
         },
+
+        RegexPreset(
+            label = { it.getString(R.string.local_number) },
+            tooltip = {
+                it.getString(R.string.help_regex_preset_local_number)
+            },
+            preCheck = { ctx, onSuccess, onFail ->
+                G.permissionChain.ask(
+                    ctx,
+                    listOf(
+                        PermissionWrapper(Permission.phoneState),
+                    )
+                ) { granted ->
+                    if (granted) {
+                        onSuccess()
+                    }
+                }
+            }
+        ) { ctx ->
+            listOf(
+                RegexRule(
+                    pattern = "(?!___$).*",
+                    description = ctx.getString(R.string.non_local_number),
+                    priority = 0,
+                    isBlacklist = true,
+                    flags = Def.FLAG_FOR_CALL or Def.FLAG_FOR_SMS,
+                    patternFlags = Def.FLAG_REGEX_FOR_GEO_LOCATION,
+                )
+            )
+        },
     ),
+
     Def.ForSms to listOf(
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.verification_code) },
             tooltip = {
                 it.getString(R.string.help_allow_verification_code)
@@ -161,7 +192,7 @@ val RegexRulePresets = mapOf(
         },
     ),
     Def.ForQuickCopy to listOf(
-        RulePreset(
+        RegexPreset(
             label = { it.getString(R.string.verification_code) },
             tooltip = {
                 it.getString(R.string.help_copy_verification_code)

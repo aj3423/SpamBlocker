@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Mostrar aprobados</string>
-    <string name="show_blocked">Mostrar bloqueados</string>
 
     <string name="confirm_delete_all_records">¿Confirmar para eliminar todos los registros?</string>
     <string name="expiry">Caducidad</string>

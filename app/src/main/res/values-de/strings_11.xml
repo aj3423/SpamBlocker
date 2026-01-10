@@ -19,7 +19,6 @@
         Ein Attribut pro Zeile.
         ]]>
     </string>
-    <string name="log_sms_content_to_db">SMS protokollieren</string>
     <string name="initial_row_count">Anfangszeilenanzahl</string>
     <plurals name="rows">
         <item quantity="one">%d Zeile</item>

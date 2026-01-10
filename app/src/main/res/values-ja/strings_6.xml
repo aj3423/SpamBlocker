@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">通過したものを表示</string>
-    <string name="show_blocked">ブロックされたものを表示</string>
 
     <string name="confirm_delete_all_records">すべてのレコードを削除してもよろしいですか？</string>
     <string name="expiry">有効期限</string>

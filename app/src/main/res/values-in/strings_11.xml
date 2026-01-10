@@ -34,7 +34,6 @@
         &emsp; <font color="#888888">Autentikasi: Dasar MTExOjIyMg== </font><br>
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Mencatat SMS</string>
     <string name="initial_row_count">Jumlah Baris Awal</string>
     <plurals name="rows">
         <item quantity="one">%d Baris</item>

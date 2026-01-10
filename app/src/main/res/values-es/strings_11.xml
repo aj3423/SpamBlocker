@@ -19,7 +19,6 @@
         Un atributo por línea.
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Registrar SMS</string>
     <string name="initial_row_count">Conteo Inicial de Filas</string>
     <plurals name="rows">
         <item quantity="one">%d Fila</item>

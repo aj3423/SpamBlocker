@@ -73,8 +73,8 @@ object Def {
     const val SETTING_HISTORY_LOGGING_ENABLED = "history_logging_enabled"
     const val SETTING_HISTORY_EXPIRY_ENABLED = "history_expiry_enabled"
     const val SETTING_SHOW_INDICATOR = "show_indicator"
+    const val SETTING_SHOW_GEO_LOCATION = "show_geo_location"
     const val SETTING_FORCE_SHOW_SIM = "force_show_sim"
-    const val SETTING_HISTORY_TTL = "history_ttl" // for history compatibility only
     const val SETTING_HISTORY_TTL_DAYS = "history_ttl_days"
     const val SETTING_LOG_SMS_CONTENT = "log_sms_content"
     const val SETTING_INITIAL_SMS_ROW_COUNT = "initial_sms_row_count"
@@ -128,7 +128,7 @@ object Def {
 
     // allowed (1~9, 100+)
     const val RESULT_ALLOWED_BY_DEFAULT = 1
-    const val RESULT_ALLOWED_BY_NUMBER_RULE = 2
+    const val RESULT_ALLOWED_BY_NUMBER_REGEX = 2
     const val RESULT_ALLOWED_BY_CONTACT = 3
     const val RESULT_ALLOWED_BY_RECENT_APP = 4
     const val RESULT_ALLOWED_BY_REPEATED = 5
@@ -137,31 +137,31 @@ object Def {
     const val RESULT_ALLOWED_BY_OFF_TIME = 8
     const val RESULT_ALLOWED_BY_EMERGENCY_CALL = 9
     const val RESULT_ALLOWED_BY_STIR = 100 // not expected to have that many features...
-    const val RESULT_ALLOWED_BY_CONTACT_GROUP_RULE = 101
+    const val RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX = 101
     const val RESULT_ALLOWED_BY_CONTACT_REGEX = 102
     const val RESULT_ALLOWED_BY_API_QUERY = 103
     const val RESULT_ALLOWED_BY_SMS_ALERT = 104
     const val RESULT_ALLOWED_BY_EMERGENCY_SITUATION = 105
     const val RESULT_ALLOWED_BY_PUSH_ALERT = 106
     const val RESULT_ALLOWED_BY_ANSWERED = 107
-    const val RESULT_ALLOWED_BY_CNAP_RULE = 108
-
+    const val RESULT_ALLOWED_BY_CNAP_REGEX = 108
+    const val RESULT_ALLOWED_BY_GEO_LOCATION_REGEX = 109
 
 
 
     // blocked (10~99)
-    const val RESULT_BLOCKED_BY_NUMBER_RULE = 10
+    const val RESULT_BLOCKED_BY_NUMBER_REGEX = 10
     const val RESULT_BLOCKED_BY_CONTENT_RULE = 11
     const val RESULT_BLOCKED_BY_NON_CONTACT = 12
     const val RESULT_BLOCKED_BY_STIR = 13
-    const val RESULT_BLOCKED_BY_CONTACT_GROUP_RULE = 14
+    const val RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX = 14
     const val RESULT_BLOCKED_BY_CONTACT_REGEX = 15
     const val RESULT_BLOCKED_BY_SPAM_DB = 16
     const val RESULT_BLOCKED_BY_MEETING_MODE = 17
     const val RESULT_BLOCKED_BY_API_QUERY = 18
     const val RESULT_BLOCKED_BY_SMS_BOMB = 19
-    const val RESULT_BLOCKED_BY_CNAP_RULE = 20
-
+    const val RESULT_BLOCKED_BY_CNAP_REGEX = 20
+    const val RESULT_BLOCKED_BY_GEO_LOCATION_REGEX = 21
 
 
     fun isBlocked(result: Int): Boolean {
@@ -194,6 +194,7 @@ object Def {
     const val FLAG_REGEX_FOR_CONTACT = 1 shl 12
     const val FLAG_REGEX_IGNORE_CC = 1 shl 13
     const val FLAG_REGEX_FOR_CNAP = 1 shl 14
+    const val FLAG_REGEX_FOR_GEO_LOCATION = 1 shl 15
 
 
 
@@ -208,7 +209,8 @@ object Def {
         FLAG_REGEX_FOR_CONTACT_GROUP to "g",
         FLAG_REGEX_FOR_CONTACT to "c",
         FLAG_REGEX_IGNORE_CC to "🌐",
-        FLAG_REGEX_FOR_CNAP to "☑"
+        FLAG_REGEX_FOR_CNAP to "☑",
+        FLAG_REGEX_FOR_GEO_LOCATION to "⚲"
     )
 
 

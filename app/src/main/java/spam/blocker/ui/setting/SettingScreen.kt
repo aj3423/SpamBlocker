@@ -53,9 +53,9 @@ import spam.blocker.ui.setting.quick.Stir
 import spam.blocker.ui.setting.regex.PushAlertHeader
 import spam.blocker.ui.setting.regex.PushAlertList
 import spam.blocker.ui.setting.regex.PushAlertViewModel
-import spam.blocker.ui.setting.regex.RuleHeader
-import spam.blocker.ui.setting.regex.RuleList
-import spam.blocker.ui.setting.regex.RuleViewModel
+import spam.blocker.ui.setting.regex.RegexHeader
+import spam.blocker.ui.setting.regex.RegexList
+import spam.blocker.ui.setting.regex.RegexViewModel
 import spam.blocker.ui.setting.regex.SmsAlert
 import spam.blocker.ui.setting.regex.SmsBomb
 import spam.blocker.ui.theme.SkyBlue
@@ -157,20 +157,20 @@ fun SettingScreen() {
                     ) {
                         Column {
                             // NumberRule / ContentRule / QuickCopy
-                            listOf<RuleViewModel>(
+                            listOf<RegexViewModel>(
                                 G.NumberRuleVM,
                                 G.ContentRuleVM,
                                 G.QuickCopyRuleVM,
                             ).forEach { vm ->
                                 LaunchedEffect(true) { vm.reloadDbAndOptions(ctx) }
 
-                                RuleHeader(vm)
+                                RegexHeader(vm)
                                 AnimatedVisibleV(!vm.listCollapsed.value) {
                                     Column {
                                         SearchBox(vm.searchEnabled, vm.filter) {
                                             vm.reloadDb(ctx)
                                         }
-                                        RuleList(vm)
+                                        RegexList(vm)
                                     }
                                 }
                             }

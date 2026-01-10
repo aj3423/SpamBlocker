@@ -11,15 +11,24 @@ import androidx.compose.ui.unit.dp
 import spam.blocker.Events
 import spam.blocker.G
 import spam.blocker.R
-import spam.blocker.db.ContentRuleTable
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.ContentRegexTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.SpamTable
 import spam.blocker.def.Def
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CNAP_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_ALLOWED_BY_CONTENT_RULE
-import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_RULE
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX
+import spam.blocker.def.Def.RESULT_ALLOWED_BY_NUMBER_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CNAP_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTACT_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_CONTENT_RULE
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
+import spam.blocker.def.Def.isBlocked
 import spam.blocker.service.checker.ByRegexRule
 import spam.blocker.service.checker.Checker
 import spam.blocker.service.checker.IChecker
@@ -48,12 +57,20 @@ fun IndicatorIcons(indicators: Indicators) {
                     ResIcon(R.drawable.ic_db_delete, modifier = M.size(16.dp), color = C.block)
                 }
 
-                RESULT_ALLOWED_BY_NUMBER_RULE -> {
-                    ResIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp), color = C.pass)
+                RESULT_ALLOWED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_NUMBER_REGEX -> {
+                    ResIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.block else C.pass)
                 }
-
-                RESULT_BLOCKED_BY_NUMBER_RULE -> {
-                    ResIcon(R.drawable.ic_number_sign, modifier = M.size(16.dp), color = C.block)
+                RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX -> {
+                    ResIcon(R.drawable.ic_contact_square, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.block else C.pass)
+                }
+                RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX -> {
+                    ResIcon(R.drawable.ic_contact_group, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.block else C.pass)
+                }
+                RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX -> {
+                    ResIcon(R.drawable.ic_id_card, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.block else C.pass)
+                }
+                RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX -> {
+                    ResIcon(R.drawable.ic_location, modifier = M.size(16.dp), color = if(isBlocked(it.type)) C.block else C.pass)
                 }
 
                 RESULT_ALLOWED_BY_CONTENT_RULE -> {
@@ -93,7 +110,7 @@ fun IndicatorsWrapper(
     // load from tables and generate ICheckers
     fun loadNumberCheckers(): List<IChecker> {
         return if (showIndicator) {
-            NumberRuleTable().listAll(ctx).map {
+            NumberRegexTable().listAll(ctx).map {
                 it.toChecker(ctx)
             }
         } else listOf()
@@ -101,7 +118,7 @@ fun IndicatorsWrapper(
 
     fun loadContentCheckers(): List<IChecker> {
         return if (showIndicator && vm.forType == Def.ForSms) {
-            ContentRuleTable().listAll(ctx).map {
+            ContentRegexTable().listAll(ctx).map {
                 Checker.Content(ctx, it)
             }
         } else listOf()
@@ -145,15 +162,20 @@ fun IndicatorsWrapper(
                     val resultType = checkResult.type
 
                     when (resultType) {
-                        RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE -> {
-                            add(
-                                Indicator(
-                                    type = resultType,
-                                    priority = (checkResult as ByRegexRule).rule?.priority
-                                        ?: -1, // -1: rule deleted
+                        RESULT_ALLOWED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_NUMBER_REGEX,
+                        RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX,
+                        RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX,
+                        RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
+                        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
+                             -> {
+                                add(
+                                    Indicator(
+                                        type = resultType,
+                                        priority = (checkResult as ByRegexRule).rule?.priority
+                                            ?: -1, // -1: rule deleted
+                                    )
                                 )
-                            )
-                        }
+                             }
                     }
                 }
             } else { // in SMS Tab
@@ -171,15 +193,20 @@ fun IndicatorsWrapper(
                     val resultType = checkResult.type
 
                     when (resultType) {
-                        RESULT_ALLOWED_BY_NUMBER_RULE, RESULT_BLOCKED_BY_NUMBER_RULE -> {
-                            add(
-                                Indicator(
-                                    type = resultType,
-                                    priority = (checkResult as ByRegexRule).rule?.priority
-                                        ?: -1, // -1: rule deleted
+                        RESULT_ALLOWED_BY_NUMBER_REGEX, RESULT_BLOCKED_BY_NUMBER_REGEX,
+                        RESULT_ALLOWED_BY_CONTACT_REGEX, RESULT_BLOCKED_BY_CONTACT_REGEX,
+                        RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX, RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX,
+                        RESULT_ALLOWED_BY_CNAP_REGEX, RESULT_BLOCKED_BY_CNAP_REGEX,
+                        RESULT_ALLOWED_BY_GEO_LOCATION_REGEX, RESULT_BLOCKED_BY_GEO_LOCATION_REGEX
+                            -> {
+                                add(
+                                    Indicator(
+                                        type = resultType,
+                                        priority = (checkResult as ByRegexRule).rule?.priority
+                                            ?: -1, // -1: rule deleted
+                                    )
                                 )
-                            )
-                        }
+                            }
                     }
                 }
                 // 3. Check if the SMS matches any Content Rule?

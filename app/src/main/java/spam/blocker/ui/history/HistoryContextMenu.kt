@@ -10,11 +10,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import spam.blocker.Events
 import spam.blocker.R
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.SpamTable
 import spam.blocker.db.defaultRegexRuleByType
 import spam.blocker.def.Def
-import spam.blocker.ui.setting.regex.RuleEditDialog
+import spam.blocker.ui.setting.regex.EditRegexDialog
 import spam.blocker.ui.widgets.DropdownWrapper
 import spam.blocker.ui.widgets.GreyIcon20
 import spam.blocker.ui.widgets.LabelItem
@@ -34,14 +34,14 @@ fun HistoryContextMenuWrapper(
     // Add number to rule
     val addToNumberRuleTrigger = rememberSaveable { mutableStateOf(false) }
     if (addToNumberRuleTrigger.value) {
-        RuleEditDialog(
+        EditRegexDialog(
             trigger = addToNumberRuleTrigger,
             initRule = defaultRegexRuleByType(Def.ForNumber).apply {
                 pattern = Util.clearNumber(record.peer)
             },
             forType = Def.ForNumber,
             onSave = { newRule ->
-                NumberRuleTable().addNewRule(ctx, newRule)
+                NumberRegexTable().addNewRule(ctx, newRule)
             }
         )
     }

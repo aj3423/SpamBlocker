@@ -33,7 +33,6 @@
         &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
         ]]>
     </string>
-    <string name="log_sms_content_to_db">ثبت پیامک</string>
     <string name="initial_row_count">تعداد سطر اولیه</string>
     <plurals name="rows">
         <item quantity="one">%d سطر</item>

@@ -22,7 +22,7 @@
         &ensp; A regex corresponderá ao nome de exibição do chamador (CNAP). <br>
         <br>
         No registro do histórico de chamadas, o nome do chamador aparecerá após o número de telefone entre parênteses, se existir, como: <br>
-        &ensp; <font color="#888888">12345 (Nome de Exibição)</font>
+        &ensp; <font color="#888888">12345 (Nome de Exibição)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Nome do Chamador</string>
@@ -78,4 +78,36 @@
     </string>
     <string name="forwarded_number_modified_to">Este número encaminhado foi modificado para %s.</string>
     <string name="filter">Filtro</string>
+    <string name="geo_location">Localização Geográfica</string>
+    <string name="geo_location_rule">Regra de Localização Geográfica</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Localização Geográfica</b></font>:<br>
+        &ensp; A expressão regular corresponderá à localização geográfica do número. <br>
+        <br>
+        &ensp; Isso depende da biblioteca do Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         uma biblioteca offline que fornece informações geográficas para números de telefone. <br>
+        <br>
+        &ensp; Se notar algum problema na precisão do banco de dados, você pode
+        <a href="https://groups.google.com/g/libphonenumber-discuss">abrir uma discussão</a>
+        ou
+        <a href="https://issuetracker.google.com/issues/new?component=192347">relatar um problema</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Mostrar/Ocultar</string>
+    <string name="allowed_records">Registros Permitidos</string>
+    <string name="blocked_records">Registros Bloqueados</string>
+    <string name="local_number">Número Local</string>
+    <string name="non_local_number">Número Não Local</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Permitir chamadas locais da mesma região e bloquear as demais. <br>
+        <br>
+        Substitua o placeholder ___ pela sua região real. <br>
+        <br>
+        A sintaxe <font color="#fa7f71">(?!___$).*</font> significa: <br>
+        &ensp; Correspondência a qualquer texto que não seja <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

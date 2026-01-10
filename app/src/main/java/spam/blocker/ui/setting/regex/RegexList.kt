@@ -75,9 +75,9 @@ class DisableNestedScrolling : NestedScrollConnection {
 }
 
 @Composable
-fun RuleSettingsPopup(
+fun RegexSettingsPopup(
     trigger: MutableState<Boolean>,
-    vm: RuleViewModel,
+    vm: RegexViewModel,
 ) {
     val ctx = LocalContext.current
     var dirty by rememberSaveable { mutableStateOf(false) }
@@ -170,8 +170,8 @@ fun RuleSettingsPopup(
 }
 
 @Composable
-fun RuleList(
-    vm: RuleViewModel,
+fun RegexList(
+    vm: RegexViewModel,
 ) {
     val forType = vm.forType
     val ctx = LocalContext.current
@@ -179,7 +179,7 @@ fun RuleList(
     val coroutine = rememberCoroutineScope()
 
     val ruleSettingsTrigger = rememberSaveable { mutableStateOf(false) }
-    RuleSettingsPopup(trigger = ruleSettingsTrigger, vm = vm)
+    RegexSettingsPopup(trigger = ruleSettingsTrigger, vm = vm)
 
     val editRuleTrigger = rememberSaveable { mutableStateOf(false) }
     val clickedRule = remember { mutableStateOf(RegexRule()) }
@@ -190,7 +190,7 @@ fun RuleList(
     }
 
     if (editRuleTrigger.value) {
-        RuleEditDialog(
+        EditRegexDialog(
             trigger = editRuleTrigger,
             initRule = clickedRule.value,
             forType = forType,
@@ -243,7 +243,7 @@ fun RuleList(
 
                 LazyColumn(modifier = M.maxScreenHeight(0.5f)) {
                     items(duplicatedRules, key = { it.id }) {
-                        RuleCard(rule = it, forType = forType)
+                        RegexCard(rule = it, forType = forType)
                     }
                 }
             }
@@ -350,7 +350,7 @@ fun RuleList(
                     items = vm.rules,
                     key = { _, it -> it.id }
                 ) { i, rule ->
-                    RuleItem(
+                    RegexItem(
                         coroutine, forType, rule, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems
                     )
@@ -364,7 +364,7 @@ fun RuleList(
         ) {
             vm.rules.forEachIndexed { i, rule ->
                 key(rule.id) {
-                    RuleItem(
+                    RegexItem(
                         coroutine, forType, rule, i, vm.rules,
                         clickedRule, editRuleTrigger, contextMenuItems
                     )
@@ -378,7 +378,7 @@ fun RuleList(
 // A wrapper for RuleCard to make it swipeable and clickable(short and long)
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun RuleItem(
+fun RegexItem(
     coroutineScope: CoroutineScope,
     forType: Int,
     rule: RegexRule,
@@ -418,7 +418,7 @@ fun RuleItem(
                 }
             )
         ) {
-            RuleCard(
+            RegexCard(
                 rule = rule,
                 forType = forType,
                 modifier = M

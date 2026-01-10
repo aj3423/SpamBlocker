@@ -22,7 +22,7 @@
         &ensp; Der Regex wird mit dem angezeigten Anrufernamen (CNAP) abgeglichen. <br>
         <br>
         Im Anrufverlaufsprotokoll erscheint der Anrufername, falls vorhanden, nach der Telefonnummer in Klammern, zum Beispiel: <br>
-        &ensp; <font color="#888888">12345 (Anzeigename)</font>
+        &ensp; <font color="#888888">12345 (Anzeigename)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Anrufername</string>
@@ -79,4 +79,36 @@
     </string>
     <string name="forwarded_number_modified_to">Diese weitergeleitete Nummer wurde auf %s geändert.</string>
     <string name="filter">Filter</string>
+    <string name="geo_location">Geo-Standort</string>
+    <string name="geo_location_rule">Regel für Geo-Standort</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Geo-Standort</b></font>:<br>
+        &ensp; Der reguläre Ausdruck stimmt mit dem Geo-Standort der Nummer überein. <br>
+        <br>
+        &ensp; Dies beruht auf Googles Bibliothek <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         einer Offline‑Bibliothek, die geografische Informationen für Telefonnummern bereitstellt. <br>
+        <br>
+        &ensp; Wenn Ihnen Ungenauigkeiten in der Datenbank auffallen, können Sie
+        <a href="https://groups.google.com/g/libphonenumber-discuss">eine Diskussion öffnen</a>
+        oder
+        <a href="https://issuetracker.google.com/issues/new?component=192347">ein Problem melden</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Anzeigen/Verbergen</string>
+    <string name="allowed_records">Zulässige Einträge</string>
+    <string name="blocked_records">Blockierte Einträge</string>
+    <string name="local_number">Lokale Nummer</string>
+    <string name="non_local_number">Nichtlokale Nummer</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Erlaube lokale Anrufe aus derselben Region und blockiere andere. <br>
+        <br>
+        Ersetze den ___-Platzhalter durch deine tatsächliche Region. <br>
+        <br>
+        Die Syntax <font color="#fa7f71">(?!___$).*</font> bedeutet: <br>
+        &ensp; Jeden Text, der nicht <font color="#fa7f71">___</font> ist, finden.
+        ]]>
+    </string>
 </resources>

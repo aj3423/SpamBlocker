@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Mostra Chiamate Perse</string>
-    <string name="show_blocked">Mostra Bloccate</string>
 
     <string name="confirm_delete_all_records">Confermi di voler eliminare tutte le registrazioni?</string>
     <string name="expiry">Scadenza</string>

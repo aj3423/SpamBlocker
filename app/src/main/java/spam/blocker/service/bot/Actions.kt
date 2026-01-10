@@ -28,12 +28,12 @@ import spam.blocker.R
 import spam.blocker.config.Configs
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
-import spam.blocker.db.ContentRuleTable
+import spam.blocker.db.ContentRegexTable
 import spam.blocker.db.ImportDbReason
-import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.QuickCopyRuleTable
+import spam.blocker.db.NumberRegexTable
+import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
-import spam.blocker.db.RuleTable
+import spam.blocker.db.RegexTable
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamNumber
 import spam.blocker.db.SpamTable
@@ -1155,11 +1155,11 @@ class ImportAsRegexRule(
         }
     }
 
-    private fun getTable(): RuleTable {
+    private fun getTable(): RegexTable {
         return when (importAs) {
-            Def.ForNumber -> NumberRuleTable()
-            Def.ForSms -> ContentRuleTable()
-            else -> QuickCopyRuleTable()
+            Def.ForNumber -> NumberRegexTable()
+            Def.ForSms -> ContentRegexTable()
+            else -> QuickCopyRegexTable()
         }
     }
 

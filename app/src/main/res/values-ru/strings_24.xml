@@ -22,7 +22,7 @@
         &ensp; Регулярное выражение будет применяться к отображаемому имени звонящего (CNAP). <br>
         <br>
         В журнале истории вызовов имя звонящего будет отображаться после номера телефона в скобках, если оно существует, например: <br>
-        &ensp; <font color="#888888">12345 (Отображаемое имя)</font>
+        &ensp; <font color="#888888">12345 (Отображаемое имя)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Имя звонящего</string>
@@ -79,4 +79,36 @@
     </string>
     <string name="forwarded_number_modified_to">Этот переадресованный номер был изменен на %s.</string>
     <string name="filter">Фильтр</string>
+    <string name="geo_location">Геолокация</string>
+    <string name="geo_location_rule">Правило геолокации</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Геолокация</b></font>:<br>
+        &ensp; Регулярное выражение будет сопоставлять геолокацию номера. <br>
+        <br>
+        &ensp; Это использует библиотеку Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         автономную библиотеку, предоставляющую географическую информацию о номерах телефонов. <br>
+        <br>
+        &ensp; Если вы заметили проблемы с точностью базы данных, вы можете
+        <a href="https://groups.google.com/g/libphonenumber-discuss">открыть обсуждение</a>
+        или
+        <a href="https://issuetracker.google.com/issues/new?component=192347">сообщить о проблеме</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Показать/Скрыть</string>
+    <string name="allowed_records">Разрешённые записи</string>
+    <string name="blocked_records">Заблокированные записи</string>
+    <string name="local_number">Локальный номер</string>
+    <string name="non_local_number">Нелокальный номер</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Разрешить локальные вызовы из того же региона и блокировать остальные. <br>
+        <br>
+        Замените заполнитель ___ вашим фактическим регионом. <br>
+        <br>
+        Синтаксис <font color="#fa7f71">(?!___$).*</font> означает: <br>
+        &ensp; Совпадение любого текста, который не является <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

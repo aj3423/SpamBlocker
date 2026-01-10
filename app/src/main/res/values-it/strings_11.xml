@@ -20,7 +20,6 @@
         Un attributo per riga.
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Registra SMS</string>
     <string name="initial_row_count">Numero Righe Iniziali</string>
     <plurals name="rows">
         <item quantity="one">%d Riga</item>

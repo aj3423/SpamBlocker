@@ -30,8 +30,8 @@ import spam.blocker.util.Lambda
 import spam.blocker.util.Lambda1
 
 @Composable
-fun RuleHeader(
-    vm: RuleViewModel,
+fun RegexHeader(
+    vm: RegexViewModel,
 ) {
     val ctx = LocalContext.current
     val forType = vm.forType
@@ -49,7 +49,7 @@ fun RuleHeader(
     val addRuleTrigger = rememberSaveable { mutableStateOf(false) }
 
     if (addRuleTrigger.value) {
-        RuleEditDialog(
+        EditRegexDialog(
             trigger = addRuleTrigger,
             initRule = initRule ?: defaultRegexRuleByType(forType),
             forType = forType,
@@ -83,7 +83,7 @@ fun RuleHeader(
             },
             DividerItem(),
         )
-        ret += RegexRulePresets.getValue(forType).map { preset ->
+        ret += RegexPresets.getValue(forType).map { preset ->
             LabelItem(
                 label = preset.label(ctx),
                 tooltip = preset.tooltip(ctx)
@@ -120,7 +120,7 @@ fun RuleHeader(
         )
     }
     val longClickItems = remember {
-        importRuleItems(ctx, vm, fileReader, warningTrigger)
+        importCsvItems(ctx, vm, fileReader, warningTrigger)
     }
 
     val helpTooltip = remember {

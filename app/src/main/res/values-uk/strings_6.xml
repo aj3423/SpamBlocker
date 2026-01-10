@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Показати пройдені</string>
-    <string name="show_blocked">Показати заблоковані</string>
 
     <string name="confirm_delete_all_records">Підтвердити видалення всіх записів?</string>
     <string name="expiry">Термін дії</string>

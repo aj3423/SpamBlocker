@@ -53,6 +53,8 @@ var only string
 
 var prune bool
 
+var manual bool
+
 var short bool
 
 var abbrev bool
@@ -350,6 +352,10 @@ func translate_1_xml(lang string, xml_fn string) error {
 
 func lang_translator(target_lang string) func(string) error {
 	return func(xml_fn string) error {
+		if manual {
+			color.Yellow("hit enter to translate")
+			fmt.Scanln()
+		}
 
 		e := translate_1_xml(target_lang, xml_fn)
 
@@ -470,7 +476,8 @@ func setup() {
 	flag.BoolVar(&verb, "verb", false, "show prompt")
 	flag.StringVar(&only, "only", "", "-only tag")
 	flag.BoolVar(&prune, "prune", false, "Before translating, removes all tags except those in -only. Faster, but may lose context.")
-	flag.IntVar(&thread, "thread", 2, "")
+	flag.BoolVar(&manual, "manual", true, "need to hit Enter to start translating for each language")
+	flag.IntVar(&thread, "thread", 1, "")
 	flag.StringVar(&new_file, "new_file", "", "")
 	flag.Parse()
 

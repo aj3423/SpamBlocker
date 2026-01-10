@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed"><translate>Mostra els superats</translate></string>
-    <string name="show_blocked"><translate>Mostra els bloquejats</translate></string>
 
     <string name="confirm_delete_all_records"><translate>Confirma que vols suprimir tots els registres?</translate></string>
     <string name="expiry"><translate>Caducitat</translate></string>

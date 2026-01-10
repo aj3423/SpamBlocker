@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Zeige durchgelassene</string>
-    <string name="show_blocked">Zeige blockierte</string>
 
     <string name="confirm_delete_all_records">Bestätigen Sie, dass Sie alle Datensätze löschen möchten?</string>
     <string name="expiry">Ablauf</string>

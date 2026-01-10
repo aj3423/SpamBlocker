@@ -4,7 +4,7 @@ import android.content.Context
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.db.Bot
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.service.bot.BackupExport
 import spam.blocker.service.bot.BackupImport
@@ -98,7 +98,7 @@ val BotPresets = listOf(
         tooltip = { it.getString(R.string.help_custom_tile) },
         onCreate = { ctx ->
             // Add a regex rule
-            NumberRuleTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNewRule(ctx, RegexRule(
                 pattern = ".*",
                 description = ctx.getString(R.string.toggled_by_tile),
                 flags = 0, // disabled for call/sms
@@ -123,7 +123,7 @@ val BotPresets = listOf(
         onCreate = { ctx ->
             // Add a regex rule
             val ruleDesc = ctx.getString(R.string.calendar_event)
-            NumberRuleTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNewRule(ctx, RegexRule(
                 pattern = ".*",
                 description = ruleDesc,
                 flags = 0, // disabled for call/sms
@@ -148,7 +148,7 @@ val BotPresets = listOf(
         onCreate = { ctx ->
             // Add a regex rule
             val ruleDesc = ctx.getString(R.string.throttled_call)
-            NumberRuleTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNewRule(ctx, RegexRule(
                 pattern = ".*",
                 description = ruleDesc,
                 flags = 0,
@@ -176,7 +176,7 @@ val BotPresets = listOf(
         onCreate = { ctx ->
             // Add a regex rule
             val ruleDesc = ctx.getString(R.string.throttled_sms)
-            NumberRuleTable().addNewRule(ctx, RegexRule(
+            NumberRegexTable().addNewRule(ctx, RegexRule(
                 pattern = ".*",
                 description = ruleDesc,
                 flags = 0,

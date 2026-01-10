@@ -33,7 +33,7 @@ import spam.blocker.util.hasFlag
 import spam.blocker.util.spf
 
 @Composable
-fun RuleCard(
+fun RegexCard(
     rule: RegexRule,
     forType: Int,
     modifier: Modifier = Modifier,

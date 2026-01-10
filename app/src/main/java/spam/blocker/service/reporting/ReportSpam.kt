@@ -12,7 +12,7 @@ import spam.blocker.db.SpamTable
 import spam.blocker.db.listReportableAPIs
 import spam.blocker.def.Def
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_NON_CONTACT
-import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_RULE
+import spam.blocker.def.Def.RESULT_BLOCKED_BY_NUMBER_REGEX
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_SPAM_DB
 import spam.blocker.def.Def.RESULT_BLOCKED_BY_STIR
 import spam.blocker.service.bot.ActionContext
@@ -105,7 +105,7 @@ private fun scheduleReporting(
 
     // 2. Skip if it isn't blocked by local filters
     val isBlockedByLocalFilter = when(r.type) {
-        RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR, RESULT_BLOCKED_BY_NUMBER_RULE -> true
+        RESULT_BLOCKED_BY_NON_CONTACT, RESULT_BLOCKED_BY_STIR, RESULT_BLOCKED_BY_NUMBER_REGEX -> true
         else -> false
     }
     if (!isBlockedByLocalFilter)

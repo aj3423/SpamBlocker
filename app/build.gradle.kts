@@ -81,7 +81,11 @@ dependencies {
     // third-party
     implementation(libs.lazycolumnscrollbar) // for scroll bar
     implementation(libs.reorderable) // for reordering Action items with drag & drop
+
+    // google
     implementation(libs.libphonenumber) // for checking whether 33123 and +33123 are the same number
+    implementation(libs.geocoder) // geo database from libphonenumber
+//    implementation(libs.carrier) // carrier database from libphonenumber
 
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization
@@ -94,7 +98,6 @@ dependencies {
     implementation(libs.compose.ui)
 
     // testing
-    testImplementation(libs.junit.jupiter)
     testImplementation(libs.junit.jupiter)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -74,6 +74,7 @@ You can kill the app after setup, it doesn’t need to stay running in the backg
  - [Security warning from Google Play when installing this app](https://github.com/aj3423/SpamBlocker/issues/108)
  - [How the "Priority" works](https://github.com/aj3423/SpamBlocker/issues/166)
  - [It stops working after being killed](https://github.com/aj3423/SpamBlocker/issues/100)
+ - [Android 16+ always shows a "missed call" notification for silenced calls](https://issuetracker.google.com/issues/474398435)
 
 
 # Permissions 

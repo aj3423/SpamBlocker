@@ -14,9 +14,9 @@ import java.io.ByteArrayInputStream
 import java.io.InputStreamReader
 import java.io.PushbackReader
 
-fun importRuleItems(
+fun importCsvItems(
     ctx: Context,
-    vm: RuleViewModel,
+    vm: RegexViewModel,
     fileReader: FileReadChooser,
     warningTrigger: MutableState<Boolean>,
 ): List<IMenuItem> {
@@ -91,6 +91,4 @@ fun importRuleItems(
                 }
             )
         }
-
-
 }

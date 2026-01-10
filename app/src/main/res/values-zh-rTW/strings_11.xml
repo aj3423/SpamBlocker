@@ -34,7 +34,6 @@
         &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
         ]]>
     </string>
-    <string name="log_sms_content_to_db">記錄簡訊</string>
     <string name="initial_row_count">初始列數</string>
     <plurals name="rows">
         <item quantity="other">%d 列</item>

@@ -95,6 +95,7 @@ private fun InputBox(
     prefix: @Composable (() -> Unit)? = null,
     suffix: @Composable (() -> Unit)? = null,
     supportingTextStr: String? = null,
+    supportingTextColor: Color = Salmon,
     warnings: SnapshotStateList<String> = mutableStateListOf<String>(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -221,7 +222,7 @@ private fun InputBox(
         if (supportingTextStr != null) {
             Text(
                 text = supportingTextStr,
-                color = Salmon,
+                color = supportingTextColor,
                 fontSize = 14.sp,
                 lineHeight = 14.sp,
                 modifier = M.padding(4.dp),
@@ -369,6 +370,7 @@ fun StrInputBox(
     helpTooltip: String? = null,
     enabled: Boolean = true,
     supportingTextStr: String? = null,
+    supportingTextColor: Color = Salmon,
     singleLine: Boolean = false,
     maxLines: Int = if (singleLine) 1 else 10,
     alwaysShowClear: Boolean = false,
@@ -416,6 +418,7 @@ fun StrInputBox(
         },
         keyboardOptions = KeyboardOptions(),
         supportingTextStr = supportingTextStr,
+        supportingTextColor = supportingTextColor,
         trailingIcon = {
             RowVCenter {
                 if (alwaysShowClear || (lastText.isNotEmpty() && enabled)) {

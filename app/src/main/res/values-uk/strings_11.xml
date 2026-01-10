@@ -19,7 +19,6 @@
         Один атрибут на рядок.
         ]]>
     </string>
-    <string name="log_sms_content_to_db">Логувати SMS</string>
     <string name="initial_row_count">Початкова кількість рядків</string>
     <plurals name="rows">
         <item quantity="one">%d Рядок</item>

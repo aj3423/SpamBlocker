@@ -19,7 +19,7 @@
         &ensp; 正規表現は発信者の表示名（CNAP）と一致します。<br>
         <br>
         通話履歴ログでは、発信者名が存在する場合、電話番号の後にかっこで囲まれて表示されます。例:<br>
-        &ensp; <font color="#888888">12345 (表示名)</font>
+        &ensp; <font color="#888888">12345 (表示名)</font> <br>
         ]]>
     </string>
     <string name="caller_name">発信者名</string>
@@ -73,4 +73,32 @@
     </string>
     <string name="forwarded_number_modified_to">この転送された電話番号は%sに修正されました。</string>
     <string name="filter">フィルター</string>
+    <string name="geo_location">ジオロケーション</string>
+    <string name="geo_location_rule">ジオロケーション規則</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>ジオロケーション</b></font>:<br>
+        &ensp; 正規表現は電話番号のジオロケーションに一致します。 <br>
+        <br>
+        &ensp; これは Google のライブラリ <a href="https://github.com/google/libphonenumber">libphonenumber</a> に依存しており、電話番号の地理情報を提供するオフラインライブラリです。 <br>
+        <br>
+        &ensp; データベースの精度に問題がある場合は、<a href="https://groups.google.com/g/libphonenumber-discuss">ディスカッションを開く</a>か<a href="https://issuetracker.google.com/issues/new?component=192347">問題を報告する</a>ことができます。
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">表示/非表示</string>
+    <string name="allowed_records">許可されたレコード</string>
+    <string name="blocked_records">ブロックされたレコード</string>
+    <string name="local_number">ローカル番号</string>
+    <string name="non_local_number">非ローカル番号</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        同じ地域からのローカル電話を許可し、その他をブロックします。 <br>
+        <br>
+        ___ プレースホルダーを実際の地域に置き換えてください。 <br>
+        <br>
+        構文 <font color="#fa7f71">(?!___$).*</font> は次を意味します: <br>
+        &ensp; <font color="#fa7f71">___</font> ではない任意のテキストにマッチします。
+        ]]>
+    </string>
 </resources>

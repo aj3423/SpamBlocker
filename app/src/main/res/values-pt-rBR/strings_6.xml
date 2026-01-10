@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Mostrar Liberados</string>
-    <string name="show_blocked">Mostrar Bloqueados</string>
 
     <string name="confirm_delete_all_records">Confirmar a exclusão de todos os registros?</string>
     <string name="expiry">Expiração</string>

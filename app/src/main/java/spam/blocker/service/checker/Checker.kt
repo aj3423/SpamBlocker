@@ -14,10 +14,10 @@ import spam.blocker.R
 import spam.blocker.db.Bot
 import spam.blocker.db.BotTable
 import spam.blocker.db.CallTable
-import spam.blocker.db.ContentRuleTable
-import spam.blocker.db.NumberRuleTable
+import spam.blocker.db.ContentRegexTable
+import spam.blocker.db.NumberRegexTable
 import spam.blocker.db.PushAlertTable
-import spam.blocker.db.QuickCopyRuleTable
+import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
 import spam.blocker.db.SmsTable
 import spam.blocker.db.SpamTable
@@ -83,12 +83,15 @@ fun RegexRule.toChecker(
     val forContact = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
     val forContactGroup = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
     val forCNAP = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_CNAP)
+    val forGeo = this.patternFlags.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
     return if (forContact)
         Checker.RegexContact(ctx, this)
     else if (forContactGroup)
         Checker.ContactGroup(ctx, this)
     else if (forCNAP)
         Checker.CNAP(ctx, this)
+    else if (forGeo)
+        Checker.GeoLocation(ctx, this)
     else
         Checker.Number(ctx, this)
 }
@@ -938,7 +941,7 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_NUMBER_RULE else Def.RESULT_ALLOWED_BY_NUMBER_RULE,
+                    type = if (block) Def.RESULT_BLOCKED_BY_NUMBER_REGEX else Def.RESULT_ALLOWED_BY_NUMBER_REGEX,
                     rule = rule,
                 )
             }
@@ -947,7 +950,7 @@ class Checker { // for namespace only
         }
     }
 
-    // Check if a number rule matches the caller display name
+    // Check if the regex matches the caller display name
     class CNAP(
         ctx: Context,
         rule: RegexRule,
@@ -988,7 +991,58 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_CNAP_RULE else Def.RESULT_ALLOWED_BY_CNAP_RULE,
+                    type = if (block) Def.RESULT_BLOCKED_BY_CNAP_REGEX else Def.RESULT_ALLOWED_BY_CNAP_REGEX,
+                    rule = rule,
+                )
+            }
+
+            return null
+        }
+    }
+
+    // Check if the regex matches the geo location of the incoming number
+    class GeoLocation(
+        ctx: Context,
+        rule: RegexRule,
+    ) : RegexRuleChecker(ctx, rule) {
+        override fun check(cCtx: CheckContext): ICheckResult? {
+            if (!Permission.phoneState.isGranted) {
+                return null
+            }
+            if (!isEnabled(cCtx)) {
+                return null
+            }
+
+            val logger = cCtx.logger
+
+            logger?.debug(
+                (ctx.getString(R.string.checking_template)+ ": %s")
+                    .formatAnnotated(
+                        ctx.getString(R.string.geo_location_rule).A(SkyBlue),
+                        priority().toString().A(LightMagenta),
+                        rule.summary().A(if (rule.isBlacklist) Salmon else Emerald),
+                    )
+            )
+
+            val location = Util.numberGeoLocation(ctx, cCtx.rawNumber) ?: ""
+
+            // check regex
+            if (rule.pattern.regexMatchesNumber(location, rule.patternFlags)) {
+                val block = rule.isBlacklist
+
+                if (block)
+                    logger?.error(
+                        ctx.getString(R.string.blocked_by)
+                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.summary()}"
+                    )
+                else
+                    logger?.success(
+                        ctx.getString(R.string.allowed_by)
+                            .format(ctx.getString(R.string.geo_location_rule)) + ": ${rule.summary()}"
+                    )
+
+                return ByRegexRule(
+                    type = if (block) Def.RESULT_BLOCKED_BY_GEO_LOCATION_REGEX else Def.RESULT_ALLOWED_BY_GEO_LOCATION_REGEX,
                     rule = rule,
                 )
             }
@@ -1096,7 +1150,7 @@ class Checker { // for namespace only
                     )
 
                 return ByRegexRule(
-                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP_RULE else Def.RESULT_ALLOWED_BY_CONTACT_GROUP_RULE,
+                    type = if (block) Def.RESULT_BLOCKED_BY_CONTACT_GROUP_REGEX else Def.RESULT_ALLOWED_BY_CONTACT_GROUP_REGEX,
                     rule = rule,
                 )
             }
@@ -1414,7 +1468,7 @@ class Checker { // for namespace only
             )
 
             // Add number rules to checkers
-            val rules = NumberRuleTable().listAll(ctx)
+            val rules = NumberRegexTable().listAll(ctx)
             checkers += rules.map {
                 it.toChecker(ctx)
             }
@@ -1482,13 +1536,13 @@ class Checker { // for namespace only
             )
 
             //  add number rules to checkers
-            val numberRules = NumberRuleTable().listAll(ctx)
+            val numberRules = NumberRegexTable().listAll(ctx)
             checkers += numberRules.map {
                 it.toChecker(ctx)
             }
 
             //  add sms content rules to checkers
-            val contentFilters = ContentRuleTable().listAll(ctx)
+            val contentFilters = ContentRegexTable().listAll(ctx)
             checkers += contentFilters.map {
                 Content(ctx, it)
             }
@@ -1506,7 +1560,7 @@ class Checker { // for namespace only
             isBlocked: Boolean,
         ): List<String> {
 
-            return QuickCopyRuleTable().listAll(ctx).filter {
+            return QuickCopyRegexTable().listAll(ctx).filter {
                 val c1 = it.flags.hasFlag(if (isCall) Def.FLAG_FOR_CALL else Def.FLAG_FOR_SMS)
                 val c2 =
                     it.flags.hasFlag(if (isBlocked) Def.FLAG_FOR_BLOCKED else Def.FLAG_FOR_PASSED)

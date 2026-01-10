@@ -177,16 +177,16 @@ class spf { // for namespace only
         fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
         fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, false) }
         fun setShowIndicator(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_INDICATOR, enabled) }
+        fun getShowGeoLocation(): Boolean { return readBoolean(Def.SETTING_SHOW_GEO_LOCATION, false) }
+        fun setShowGeoLocation(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_GEO_LOCATION, enabled) }
         fun getForceShowSim(): Boolean { return readBoolean(Def.SETTING_FORCE_SHOW_SIM, false) }
         fun setForceShowSim(enabled: Boolean) { writeBoolean(Def.SETTING_FORCE_SHOW_SIM, enabled) }
 
-        fun isLoggingEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, getTTLOld() != 0) }
+        fun isLoggingEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, true) }
         fun setLoggingEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_LOGGING_ENABLED, enabled) }
-        fun isExpiryEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, getTTLOld() != -1) }
+        fun isExpiryEnabled(): Boolean { return readBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, false) }
         fun setExpiryEnabled(enabled: Boolean) { writeBoolean(Def.SETTING_HISTORY_EXPIRY_ENABLED, enabled) }
-        fun getTTLOld(): Int { return readInt(Def.SETTING_HISTORY_TTL, -1) } // -1: never expire, 0: disable logging. For history compatibility
-//        fun setTTLOld(days: Int) { writeInt(Def.SETTING_HISTORY_TTL, days) }
-        fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL_DAYS, if(getTTLOld() > 0) { getTTLOld() } else { 14 }) } // 14 days
+        fun getTTL(): Int { return readInt(Def.SETTING_HISTORY_TTL_DAYS, 14) } // 14 days
         fun setTTL(days: Int) { writeInt(Def.SETTING_HISTORY_TTL_DAYS, days) }
 
         fun isLogSmsContentEnabled(): Boolean { return readBoolean(Def.SETTING_LOG_SMS_CONTENT, false) }

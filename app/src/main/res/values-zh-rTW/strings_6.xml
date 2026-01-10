@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">顯示已放行</string>
-    <string name="show_blocked">顯示已封鎖</string>
 
     <string name="confirm_delete_all_records">確定要刪除所有記錄嗎？</string>
     <string name="expiry">有效期限</string>

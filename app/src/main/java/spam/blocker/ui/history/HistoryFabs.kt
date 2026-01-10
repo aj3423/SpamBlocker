@@ -1,7 +1,7 @@
 package spam.blocker.ui.history
 
 import android.content.Context
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -11,7 +11,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import spam.blocker.G
 import spam.blocker.R
 import spam.blocker.def.Def
@@ -23,6 +22,7 @@ import spam.blocker.ui.setting.LabeledRow
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.theme.SkyBlue
+import spam.blocker.ui.widgets.AnimatedVisibleV
 import spam.blocker.ui.widgets.ComboBox
 import spam.blocker.ui.widgets.Fab
 import spam.blocker.ui.widgets.GreyButton
@@ -33,6 +33,7 @@ import spam.blocker.ui.widgets.NumberInputBox
 import spam.blocker.ui.widgets.PopupDialog
 import spam.blocker.ui.widgets.PopupSize
 import spam.blocker.ui.widgets.RowVCenterSpaced
+import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
 import spam.blocker.ui.widgets.StrokeButton
 import spam.blocker.ui.widgets.SwitchBox
@@ -69,6 +70,7 @@ fun HistoryFabs(
     visible: Boolean,
     vm: HistoryViewModel,
 ) {
+    val C = LocalPalette.current
     val ctx = LocalContext.current
     val spf = spf.HistoryOptions(ctx)
 
@@ -85,157 +87,192 @@ fun HistoryFabs(
         popupSize = PopupSize(percentage = 0.8f, minWidth = 340, maxWidth = 500),
         content = {
             // Logging enabled / TTL
-            LabeledRow(
-                labelId = R.string.enable_history_logging,
-                helpTooltip = Str(R.string.help_history_logging)
+            Section(
+                Str(R.string.enable_history_logging),
+                bgColor = C.dialogBg
             ) {
-                if (loggingEnabled) {
-                    val trigger = remember { mutableStateOf(false) }
-                    PopupDialog(
-                        trigger = trigger,
-                        onDismiss = {
-                            reScheduleHistoryCleanup(ctx)
-                        }
+                Column {
+                    LabeledRow(
+                        labelId = R.string.enable,
+                        helpTooltip = Str(R.string.help_history_logging)
                     ) {
-                        // Expiry Enabled
-                        LabeledRow(R.string.expiry) {
-                            SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
-                                spf.setExpiryEnabled(isOn)
-                                expiryEnabled = isOn
+                        // Enabled
+                        SwitchBox(checked = loggingEnabled, onCheckedChange = { isOn ->
+                            spf.setLoggingEnabled(isOn)
+                            loggingEnabled = isOn
+
+                            reScheduleHistoryCleanup(ctx)
+                        })
+                    }
+
+                    // Log SMS Content
+                    AnimatedVisibleV(loggingEnabled && vm.forType == Def.ForSms) {
+                        LabeledRow(
+                            labelId = R.string.sms_content,
+                            helpTooltip = Str(R.string.help_log_sms_content)
+                        ) {
+                            val trigger = remember { mutableStateOf(false) }
+                            PopupDialog(trigger = trigger) {
+                                NumberInputBox(
+                                    label = { GreyLabel(Str(R.string.initial_row_count)) },
+                                    intValue = rows,
+                                    onValueChange = { newVal, hasError ->
+                                        if (!hasError) {
+                                            rows = newVal
+                                            spf.setInitialSmsRowCount(rows!!)
+                                            vm.reload(ctx)
+                                        }
+                                    }
+                                )
+                            }
+                            if (logSmsContent) {
+                                val nRows = ctx.resources.getQuantityString(R.plurals.rows, rows!!, rows)
+
+                                GreyButton(label = nRows) { trigger.value = true }
+                            }
+                            SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
+                                logSmsContent = isOn
+                                spf.setLogSmsContentEnabled(isOn)
+                                vm.reload(ctx)
                             })
                         }
-
-                        // Expiry days
-                        if (expiryEnabled) {
-                            NumberInputBox(
-                                intValue = ttl,
-                                onValueChange = { newValue, hasError ->
-                                    if (!hasError) {
-                                        ttl = newValue!!
-                                        spf.setTTL(newValue)
-                                    }
-                                },
-                                labelId = R.string.days,
-                                leadingIconId = R.drawable.ic_recycle_bin,
-                            )
-                        }
                     }
 
-                    // Button
-                    GreyButton(
-                        label = if (expiryEnabled) {
-                            ctx.resources.getQuantityString(R.plurals.days, ttl, ttl)
-                        } else {
-                            Str(R.string.never_expire)
-                        }
-                    ) { trigger.value = true }
-                }
-
-                // Enabled
-                SwitchBox(checked = loggingEnabled, onCheckedChange = { isOn ->
-                    spf.setLoggingEnabled(isOn)
-                    loggingEnabled = isOn
-
-                    reScheduleHistoryCleanup(ctx)
-                })
-            }
-
-            // Log SMS Content
-            if (vm.forType == Def.ForSms) {
-                LabeledRow(
-                    labelId = R.string.log_sms_content_to_db,
-                    helpTooltip = Str(R.string.help_log_sms_content)
-                ) {
-                    val trigger = remember { mutableStateOf(false) }
-                    PopupDialog(trigger = trigger) {
-                        NumberInputBox(
-                            label = { GreyLabel(Str(R.string.initial_row_count)) },
-                            intValue = rows,
-                            onValueChange = { newVal, hasError ->
-                                if (!hasError) {
-                                    rows = newVal
-                                    spf.setInitialSmsRowCount(rows!!)
-                                    vm.reload(ctx)
-                                }
+                    // Expiry
+                    AnimatedVisibleV(loggingEnabled) {
+                        val trigger = remember { mutableStateOf(false) }
+                        PopupDialog(
+                            trigger = trigger,
+                            onDismiss = {
+                                reScheduleHistoryCleanup(ctx)
                             }
-                        )
-                    }
-                    if (logSmsContent) {
-                        val nRows = ctx.resources.getQuantityString(R.plurals.rows, rows!!, rows)
+                        ) {
+                            // Expiry Enabled
+                            LabeledRow(R.string.expiry) {
+                                SwitchBox(checked = expiryEnabled, onCheckedChange = { isOn ->
+                                    spf.setExpiryEnabled(isOn)
+                                    expiryEnabled = isOn
+                                })
+                            }
 
-                        GreyButton(label = nRows) { trigger.value = true }
+                            // Expiry days
+                            if (expiryEnabled) {
+                                NumberInputBox(
+                                    intValue = ttl,
+                                    onValueChange = { newValue, hasError ->
+                                        if (!hasError) {
+                                            ttl = newValue!!
+                                            spf.setTTL(newValue)
+                                        }
+                                    },
+                                    labelId = R.string.days,
+                                    leadingIconId = R.drawable.ic_recycle_bin,
+                                )
+                            }
+                        }
+
+                        LabeledRow(
+                            labelId = R.string.expiry,
+                            helpTooltip = Str(R.string.help_log_sms_content)
+                        ) {
+                            GreyButton(
+                                label = if (expiryEnabled) {
+                                    ctx.resources.getQuantityString(R.plurals.days, ttl, ttl)
+                                } else {
+                                    Str(R.string.never_expire)
+                                }
+                            ) {
+                                trigger.value = true
+                            }
+                        }
                     }
-                    SwitchBox(checked = logSmsContent, onCheckedChange = { isOn ->
-                        logSmsContent = isOn
-                        spf.setLogSmsContentEnabled(isOn)
-                        vm.reload(ctx)
-                    })
                 }
             }
-            HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
-            LabeledRow(labelId = R.string.show_passed) {
-                SwitchBox(checked = G.showHistoryPassed.value, onCheckedChange = { isOn ->
-                    spf.setShowPassed(isOn)
-                    G.showHistoryPassed.value = isOn
-                })
-            }
-            LabeledRow(labelId = R.string.show_blocked) {
-                SwitchBox(checked = G.showHistoryBlocked.value, onCheckedChange = { isOn ->
-                    spf.setShowBlocked(isOn)
-                    G.showHistoryBlocked.value = isOn
-                })
-            }
-            HorizontalDivider(thickness = 1.dp, color = LocalPalette.current.disabled)
 
-            LabeledRow(
-                labelId = R.string.rule_indicator,
-                helpTooltip = Str(R.string.help_show_rule_indicator),
+            Section(
+                Str(R.string.show_hide),
+                bgColor = C.dialogBg
             ) {
-                SwitchBox(checked = G.showHistoryIndicator.value, onCheckedChange = { isOn ->
-                    spf.setShowIndicator(isOn)
-                    G.showHistoryIndicator.value = isOn
-                })
-            }
+                Column {
+                    // Allowed
+                    LabeledRow(labelId = R.string.allowed_records) {
+                        SwitchBox(checked = G.showHistoryPassed.value, onCheckedChange = { isOn ->
+                            spf.setShowPassed(isOn)
+                            G.showHistoryPassed.value = isOn
+                        })
+                    }
+                    // Blocked
+                    LabeledRow(labelId = R.string.blocked_records) {
+                        SwitchBox(checked = G.showHistoryBlocked.value, onCheckedChange = { isOn ->
+                            spf.setShowBlocked(isOn)
+                            G.showHistoryBlocked.value = isOn
+                        })
+                    }
 
-            LabeledRow(
-                labelId = R.string.sim_icon,
-                helpTooltip = Str(R.string.help_show_sim_icon),
-            ) {
-                val items = remember {
-                    listOf(R.string.automatic, R.string.always)
-                        .mapIndexed { idx, strId ->
-                            LabelItem(label = ctx.getString(strId)) {
-                                when (idx) {
-                                    0 -> {
-                                        spf.setForceShowSim(false)
-                                        G.forceShowSIM.value = false
-                                    }
-                                    1 -> {
-                                        G.permissionChain.ask(
-                                            ctx,
-                                            listOf(PermissionWrapper(Permission.phoneState))
-                                        ) { granted ->
-                                            if (granted) {
-                                                spf.setForceShowSim(true)
-                                                G.forceShowSIM.value = true
+                    // Rule Indicator
+                    LabeledRow(
+                        labelId = R.string.rule_indicator,
+                        helpTooltip = Str(R.string.help_show_rule_indicator),
+                    ) {
+                        SwitchBox(checked = G.showHistoryIndicator.value, onCheckedChange = { isOn ->
+                            spf.setShowIndicator(isOn)
+                            G.showHistoryIndicator.value = isOn
+                        })
+                    }
+
+                    // SIM slot
+                    LabeledRow(
+                        labelId = R.string.sim_icon,
+                        helpTooltip = Str(R.string.help_show_sim_icon),
+                    ) {
+                        val items = remember {
+                            listOf(R.string.automatic, R.string.always)
+                                .mapIndexed { idx, strId ->
+                                    LabelItem(label = ctx.getString(strId)) {
+                                        when (idx) {
+                                            0 -> {
+                                                spf.setForceShowSim(false)
+                                                G.forceShowSIM.value = false
+                                            }
+                                            1 -> {
+                                                G.permissionChain.ask(
+                                                    ctx,
+                                                    listOf(PermissionWrapper(Permission.phoneState))
+                                                ) { granted ->
+                                                    if (granted) {
+                                                        spf.setForceShowSim(true)
+                                                        G.forceShowSIM.value = true
+                                                    }
+                                                }
                                             }
                                         }
                                     }
                                 }
-                            }
                         }
+                        var selected by remember(G.forceShowSIM.value) {
+                            mutableIntStateOf(
+                                if (G.forceShowSIM.value) 1 else 0
+                            )
+                        }
+                        ComboBox(
+                            items = items,
+                            selected = selected,
+                        )
+                    }
+
+                    // Geo Location
+                    LabeledRow(
+                        labelId = R.string.geo_location,
+                    ) {
+                        SwitchBox(checked = G.showHistoryGeoLocation.value, onCheckedChange = { isOn ->
+                            spf.setShowGeoLocation(isOn)
+                            G.showHistoryGeoLocation.value = isOn
+                        })
+                    }
                 }
-                var selected by remember(G.forceShowSIM.value) {
-                    mutableIntStateOf(
-                        if (G.forceShowSIM.value) 1 else 0
-                    )
-                }
-                ComboBox(
-                    items = items,
-                    selected = selected,
-                )
             }
-        })
+        }
+    )
 
     RowVCenterSpaced(space = 8, modifier = modifier) {
         Fab(

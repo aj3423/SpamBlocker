@@ -3,16 +3,16 @@ package spam.blocker.ui.setting.regex
 import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import spam.blocker.db.ContentRuleTable
-import spam.blocker.db.NumberRuleTable
-import spam.blocker.db.QuickCopyRuleTable
+import spam.blocker.db.ContentRegexTable
+import spam.blocker.db.NumberRegexTable
+import spam.blocker.db.QuickCopyRegexTable
 import spam.blocker.db.RegexRule
-import spam.blocker.db.RuleTable
+import spam.blocker.db.RegexTable
 import spam.blocker.def.Def
 import spam.blocker.util.spf
 
-open class RuleViewModel(
-    val table: RuleTable,
+open class RegexViewModel(
+    val table: RegexTable,
     val forType: Int,
 ) {
     val rules = mutableStateListOf<RegexRule>()
@@ -61,6 +61,6 @@ open class RuleViewModel(
     }
 }
 
-class NumberRuleViewModel : RuleViewModel(NumberRuleTable(), Def.ForNumber)
-class ContentRuleViewModel : RuleViewModel(ContentRuleTable(), Def.ForSms)
-class QuickCopyRuleViewModel : RuleViewModel(QuickCopyRuleTable(), Def.ForQuickCopy)
+class NumberRegexViewModel : RegexViewModel(NumberRegexTable(), Def.ForNumber)
+class ContentRegexViewModel : RegexViewModel(ContentRegexTable(), Def.ForSms)
+class QuickCopyRegexViewModel : RegexViewModel(QuickCopyRegexTable(), Def.ForQuickCopy)

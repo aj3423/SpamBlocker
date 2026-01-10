@@ -37,7 +37,6 @@
         </translate>
         ]]>
     </string>
-    <string name="log_sms_content_to_db"><translate>تسجيل الرسائل القصيرة</translate></string>
     <string name="initial_row_count"><translate>عدد الصفوف الأولي</translate></string>
     <plurals name="rows">
         <item quantity="one"><translate>%d صف</translate></item>

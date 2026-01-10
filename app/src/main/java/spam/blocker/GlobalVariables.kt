@@ -17,9 +17,9 @@ import spam.blocker.ui.setting.api.ApiQueryViewModel
 import spam.blocker.ui.setting.api.ApiReportViewModel
 import spam.blocker.ui.setting.api.ApiViewModel
 import spam.blocker.ui.setting.bot.BotViewModel
-import spam.blocker.ui.setting.regex.ContentRuleViewModel
-import spam.blocker.ui.setting.regex.NumberRuleViewModel
-import spam.blocker.ui.setting.regex.QuickCopyRuleViewModel
+import spam.blocker.ui.setting.regex.ContentRegexViewModel
+import spam.blocker.ui.setting.regex.NumberRegexViewModel
+import spam.blocker.ui.setting.regex.QuickCopyRegexViewModel
 import spam.blocker.ui.widgets.BottomBarViewModel
 import spam.blocker.util.Notification.syncSystemChannels
 import spam.blocker.util.Permission
@@ -36,6 +36,7 @@ object G {
     val notificationChannels : SnapshotStateList<Channel> = mutableStateListOf()
     val themeType : MutableIntState  = mutableIntStateOf(0)
     val showHistoryIndicator : MutableState<Boolean> = mutableStateOf(false)
+    val showHistoryGeoLocation : MutableState<Boolean> = mutableStateOf(false)
     val forceShowSIM : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryPassed : MutableState<Boolean> = mutableStateOf(false)
     val showHistoryBlocked : MutableState<Boolean> = mutableStateOf(false)
@@ -43,9 +44,9 @@ object G {
     val callVM : CallViewModel = CallViewModel()
     val smsVM : SmsViewModel = SmsViewModel()
 
-    val NumberRuleVM : NumberRuleViewModel = NumberRuleViewModel()
-    val ContentRuleVM : ContentRuleViewModel = ContentRuleViewModel()
-    val QuickCopyRuleVM : QuickCopyRuleViewModel = QuickCopyRuleViewModel()
+    val NumberRuleVM : NumberRegexViewModel = NumberRegexViewModel()
+    val ContentRuleVM : ContentRegexViewModel = ContentRegexViewModel()
+    val QuickCopyRuleVM : QuickCopyRegexViewModel = QuickCopyRegexViewModel()
     val botVM : BotViewModel = BotViewModel()
     val apiQueryVM : ApiViewModel = ApiQueryViewModel()
     val apiReportVM : ApiViewModel = ApiReportViewModel()
@@ -76,6 +77,7 @@ object G {
         run {
             val spf = spf.HistoryOptions(ctx)
             showHistoryIndicator.value = spf.getShowIndicator()
+            showHistoryGeoLocation.value = spf.getShowGeoLocation()
             forceShowSIM.value = spf.getForceShowSim()
             showHistoryPassed.value = spf.getShowPassed()
             showHistoryBlocked.value = spf.getShowBlocked()

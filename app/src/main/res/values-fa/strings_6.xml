@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">نمایش تماس‌های عبوری</string>
-    <string name="show_blocked">نمایش تماس‌های مسدود شده</string>
 
     <string name="confirm_delete_all_records">آیا از حذف همه سوابق مطمئن هستید؟</string>
     <string name="expiry">انقضا</string>

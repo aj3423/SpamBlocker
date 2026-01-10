@@ -22,7 +22,7 @@
         &ensp; הביטוי הרגולרי יותאם לשם התצוגה של המתקשר (CNAP). <br>
         <br>
         ביומן היסטוריית השיחות, שם המתקשר יופיע אחרי מספר הטלפון בסוגריים אם קיים, כך: <br>
-        &ensp; <font color="#888888">12345 (שם תצוגה)</font>
+        &ensp; <font color="#888888">12345 (שם תצוגה)</font> <br>
         ]]>
     </string>
     <string name="caller_name">שם מתקשר</string>
@@ -78,4 +78,36 @@
     </string>
     <string name="forwarded_number_modified_to">מספר טלפון מועבר זה שונה ל-%s.</string>
     <string name="filter">סינון</string>
+    <string name="geo_location">מיקום גאוגרפי</string>
+    <string name="geo_location_rule">כלל מיקום גאוגרפי</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>מיקום גאוגרפי</b></font>:<br>
+        &ensp; הביטוי הרגולרי יתאים למיקום הגאוגרפי של המספר. <br>
+        <br>
+        &ensp; זה מסתמך על הספרייה של Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         ספרייה מקוונת שמספקת מידע גאוגרפי עבור מספרי טלפון. <br>
+        <br>
+        &ensp; אם אתה מבחין בבעיות בדיוק מסד הנתונים, אתה יכול
+        <a href="https://groups.google.com/g/libphonenumber-discuss">לפתוח דיון</a>
+        או
+        <a href="https://issuetracker.google.com/issues/new?component=192347">לדווח על תקלה</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">הצג/הסתר</string>
+    <string name="allowed_records">רשומות מורשות</string>
+    <string name="blocked_records">רשומות חסומות</string>
+    <string name="local_number">מספר מקומי</string>
+    <string name="non_local_number">מספר לא מקומי</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        אפשר שיחות מקומיות מאותה האזור וחסום אחרות. <br>
+        <br>
+        החלף את ממלא המקום ___ באיזורך האמיתי. <br>
+        <br>
+        התחביר <font color="#fa7f71">(?!___$).*</font> אומר: <br>
+        &ensp; התאם כל טקסט שאינו <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

@@ -34,7 +34,6 @@
         &emsp; <font color="#888888">Authorization: Basic MTExOjIyMg== </font><br>
         ]]>
     </string>
-    <string name="log_sms_content_to_db">תיעוד SMS</string>
     <string name="initial_row_count">מספר שורות התחלתי</string>
     <plurals name="rows">
         <item quantity="one">%d שורה</item>

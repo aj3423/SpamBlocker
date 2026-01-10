@@ -19,7 +19,7 @@
         &ensp; سيتطابق التعبير النمطي مع اسم عرض المتصل (CNAP). <br>
         <br>
         في سجل المكالمات، سيظهر اسم المتصل بعد رقم الهاتف بين قوسين إذا كان موجودًا، مثل: <br>
-        &ensp; <font color="#888888">12345 (اسم العرض)</font>
+        &ensp; <font color="#888888">12345 (اسم العرض)</font> <br>
         ]]>
     </string>
     <string name="caller_name">اسم المتصل</string>
@@ -76,4 +76,36 @@
     </string>
     <string name="forwarded_number_modified_to">تم تعديل هذا الرقم المحوّل إلى %s.</string>
     <string name="filter">تصفية</string>
+    <string name="geo_location">الموقع الجغرافي</string>
+    <string name="geo_location_rule">قاعدة الموقع الجغرافي</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>الموقع الجغرافي</b></font>:<br>
+        &ensp; سيطابق regex الموقع الجغرافي للـ number. <br>
+        <br>
+        &ensp; يعتمد هذا على مكتبة Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         مكتبة غير متصلة بالإنترنت توفر معلومات جغرافية للـ أرقام الهواتف. <br>
+        <br>
+        &ensp; إذا لاحظت أي مشاكل في دقة قاعدة البيانات، يمكنك
+        <a href="https://groups.google.com/g/libphonenumber-discuss">فتح نقاش</a>
+        أو
+        <a href="https://issuetracker.google.com/issues/new?component=192347">الإبلاغ عن مشكلة</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">عرض/إخفاء</string>
+    <string name="allowed_records">السجلات المسموح بها</string>
+    <string name="blocked_records">السجلات المحظورة</string>
+    <string name="local_number">رقم محلي</string>
+    <string name="non_local_number">رقم غير محلي</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        السماح بالمكالمات المحلية من نفس المنطقة وحظر الأخرى. <br>
+        <br>
+        استبدل العنصر النائب ___ بمنطقتك الفعلية. <br>
+        <br>
+        الصيغة <font color="#fa7f71">(?!___$).*</font> تعني: <br>
+        &ensp; مطابقة أي نص ليس <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>

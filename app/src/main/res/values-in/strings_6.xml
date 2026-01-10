@@ -15,8 +15,6 @@
     </string-array>
 
 
-    <string name="show_passed">Tampilkan yang Lolos</string>
-    <string name="show_blocked">Tampilkan yang Diblokir</string>
 
     <string name="confirm_delete_all_records">Konfirmasi untuk menghapus semua Rekaman?</string>
     <string name="expiry">Kadaluwarsa</string>

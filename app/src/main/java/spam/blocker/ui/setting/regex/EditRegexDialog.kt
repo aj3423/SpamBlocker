@@ -41,6 +41,7 @@ import spam.blocker.def.Def.DEFAULT_HANG_UP_DELAY
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CNAP
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT
 import spam.blocker.def.Def.FLAG_REGEX_FOR_CONTACT_GROUP
+import spam.blocker.def.Def.FLAG_REGEX_FOR_GEO_LOCATION
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
 import spam.blocker.ui.LaunchedEffectOnlyOnChange
 import spam.blocker.ui.M
@@ -92,6 +93,7 @@ fun Int.clearAllRegexFlags(): Int {
     return this.removeFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
         .removeFlag(FLAG_REGEX_FOR_CONTACT)
         .removeFlag(FLAG_REGEX_FOR_CNAP)
+        .removeFlag(FLAG_REGEX_FOR_GEO_LOCATION)
 }
 
 @Composable
@@ -110,6 +112,7 @@ fun RegexLeadingDropdownIcon(
         )
         if (forType == Def.ForNumber) {
             modeIds += R.string.help_regex_mode_caller_name
+            modeIds += R.string.help_regex_mode_geo_location
         }
         val items: MutableList<IMenuItem> = mutableListOf(
             LabelItem(
@@ -125,6 +128,7 @@ fun RegexLeadingDropdownIcon(
         )
         if (forType == Def.ForNumber) {
             labelIds += R.string.caller_name
+            labelIds += R.string.geo_location
         }
         val iconIds = mutableListOf(
             R.drawable.ic_number_sign,
@@ -133,6 +137,7 @@ fun RegexLeadingDropdownIcon(
         )
         if (forType == Def.ForNumber) {
             iconIds += R.drawable.ic_id_card
+            iconIds += R.drawable.ic_location
         }
         items += labelIds.mapIndexed { index, labelId ->
             LabelItem(
@@ -144,13 +149,14 @@ fun RegexLeadingDropdownIcon(
                             1 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CONTACT]!!
                             2 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CONTACT_GROUP]!!
                             3 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CNAP]!!
+                            4 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_GEO_LOCATION]!!
                             else -> ""
                         },
                         color = Color.Magenta,
                         modifier = M.wrapContentSize()
                     )
                 },
-                dismissOnClick = index == 0 || index == 3,
+                dismissOnClick = index != 1 && index != 2
             ) { menuExpanded ->
                 when (index) {
                     0 -> { // Number Mode
@@ -180,10 +186,15 @@ fun RegexLeadingDropdownIcon(
                             }
                         }
                     }
-                    3 -> {
+                    3 -> { // CNAP
                         regexFlags.intValue = regexFlags.intValue
                             .clearAllRegexFlags()
                             .addFlag(FLAG_REGEX_FOR_CNAP)
+                    }
+                    4 -> { // Geo Location
+                        regexFlags.intValue = regexFlags.intValue
+                            .clearAllRegexFlags()
+                            .addFlag(FLAG_REGEX_FOR_GEO_LOCATION)
                     }
                 }
             }
@@ -197,6 +208,7 @@ fun RegexLeadingDropdownIcon(
         val forContactGroup = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT_GROUP)
         val forContact = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CONTACT)
         val forCNAP = regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_CNAP)
+        val forGeoLocation= regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION)
 
         Box {
             ResIcon(
@@ -206,6 +218,8 @@ fun RegexLeadingDropdownIcon(
                     R.drawable.ic_contact_group
                 } else if (forCNAP) {
                     R.drawable.ic_id_card
+                } else if (forGeoLocation) {
+                    R.drawable.ic_location
                 } else {
                     R.drawable.ic_number_sign
                 },
@@ -240,6 +254,8 @@ fun RegexFieldLabel(
                         R.string.contacts
                     else if (flags.hasFlag(FLAG_REGEX_FOR_CNAP))
                         R.string.caller_name
+                    else if (flags.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION))
+                        R.string.geo_location
                     else
                         R.string.phone_number
                 }
@@ -253,7 +269,7 @@ fun RegexFieldLabel(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun RuleEditDialog(
+fun EditRegexDialog(
     trigger: MutableState<Boolean>,
     forType: Int,
     onSave: Lambda1<RegexRule>,

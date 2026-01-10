@@ -22,7 +22,7 @@
         &ensp; Regex akan cocok dengan nama tampilan penelepon (CNAP). <br>
         <br>
         Dalam log riwayat panggilan, nama penelepon akan muncul setelah nomor telepon dalam tanda kurung jika ada, seperti: <br>
-        &ensp; <font color="#888888">12345 (Nama Tampilan)</font>
+        &ensp; <font color="#888888">12345 (Nama Tampilan)</font> <br>
         ]]>
     </string>
     <string name="caller_name">Nama Penelepon</string>
@@ -77,4 +77,36 @@
     </string>
     <string name="forwarded_number_modified_to">Nomor yang diteruskan ini telah diubah menjadi %s.</string>
     <string name="filter">Filter</string>
+    <string name="geo_location">Lokasi Geo</string>
+    <string name="geo_location_rule">Aturan Lokasi Geo</string>
+    <string name="help_regex_mode_geo_location">
+        <![CDATA[
+        <font color="#00BFFF"><b>Lokasi Geo</b></font>:<br>
+        &ensp; Regex akan mencocokkan lokasi geo nomor. <br>
+        <br>
+        &ensp; Ini bergantung pada pustaka Google <a href="https://github.com/google/libphonenumber">libphonenumber</a>,
+         sebuah pustaka offline yang menyediakan informasi geografis untuk nomor telepon. <br>
+        <br>
+        &ensp; Jika Anda menemukan masalah dengan akurasi basis data, Anda dapat
+        <a href="https://groups.google.com/g/libphonenumber-discuss">membuka diskusi</a>
+        atau
+        <a href="https://issuetracker.google.com/issues/new?component=192347">melaporkan masalah</a>.
+        ]]>
+    </string>
+    <string name="label_value_pair">%s: %s</string>
+    <string name="show_hide">Tampilkan/Sembunyikan</string>
+    <string name="allowed_records">Catatan Diizinkan</string>
+    <string name="blocked_records">Catatan Diblokir</string>
+    <string name="local_number">Nomor Lokal</string>
+    <string name="non_local_number">Nomor Non-lokal</string>
+    <string name="help_regex_preset_local_number">
+        <![CDATA[
+        Izinkan panggilan lokal dari wilayah yang sama dan blokir yang lain. <br>
+        <br>
+        Ganti placeholder ___ dengan wilayah Anda yang sebenarnya. <br>
+        <br>
+        Sintaks <font color="#fa7f71">(?!___$).*</font> berarti: <br>
+        &ensp; Cocokkan teks apa pun yang bukan <font color="#fa7f71">___</font>.
+        ]]>
+    </string>
 </resources>
