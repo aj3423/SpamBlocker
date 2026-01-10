@@ -91,7 +91,7 @@
         &ensp; 如果您发现数据库准确性有任何问题，您可以
         <a href="https://groups.google.com/g/libphonenumber-discuss">打开讨论</a>
         或
-        <a href="https://issuetracker.google.com/issues/new?component=192347">报告问题</a>。
+        <a href="https://issuetracker.google.com/issues/new?component=192347">报告问题</a>。 <br>
         ]]>
     </string>
     <string name="label_value_pair">%s：%s</string>

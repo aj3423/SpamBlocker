@@ -92,7 +92,7 @@
         &ensp; Se noti problemi con l\'accuratezza del database, puoi
         <a href="https://groups.google.com/g/libphonenumber-discuss">aprire una discussione</a>
         o
-        <a href="https://issuetracker.google.com/issues/new?component=192347">segnalare un problema</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">segnalare un problema</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

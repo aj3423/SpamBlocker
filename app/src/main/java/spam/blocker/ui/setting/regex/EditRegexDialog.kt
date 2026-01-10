@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import spam.blocker.Events
 import spam.blocker.G
@@ -97,6 +98,16 @@ fun Int.clearAllRegexFlags(): Int {
 }
 
 @Composable
+fun RegexModeIcon(mode: Int) {
+    Text(
+        MAP_REGEX_FLAGS[mode]!!,
+        color = Color.Magenta,
+        modifier = M.widthIn(16.dp),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
 fun RegexLeadingDropdownIcon(
     forType: Int,
     regexFlags: MutableIntState,
@@ -105,19 +116,19 @@ fun RegexLeadingDropdownIcon(
     val C = LocalPalette.current
 
     val dropdownItems = remember(Unit) {
-        val modeIds = mutableListOf(
+        val tooltipIds = mutableListOf(
             R.string.help_regex_mode_phone_number,
             R.string.help_regex_mode_contact,
             R.string.help_regex_mode_contact_group,
+            R.string.help_regex_mode_geo_location,
         )
         if (forType == Def.ForNumber) {
-            modeIds += R.string.help_regex_mode_caller_name
-            modeIds += R.string.help_regex_mode_geo_location
+            tooltipIds += R.string.help_regex_mode_caller_name
         }
         val items: MutableList<IMenuItem> = mutableListOf(
             LabelItem(
                 label = ctx.getString(R.string.switch_mode),
-                tooltip = modeIds.joinToString("<br>") { ctx.getString(it) }
+                tooltip = tooltipIds.joinToString("<br>") { ctx.getString(it) }
             ),
             DividerItem(thickness = 1),
         )
@@ -125,37 +136,24 @@ fun RegexLeadingDropdownIcon(
             R.string.phone_number,
             R.string.contacts,
             R.string.contact_group,
+            R.string.geo_location,
         )
         if (forType == Def.ForNumber) {
             labelIds += R.string.caller_name
-            labelIds += R.string.geo_location
         }
-        val iconIds = mutableListOf(
-            R.drawable.ic_number_sign,
-            R.drawable.ic_contact_square,
-            R.drawable.ic_contact_group,
+        val iconIds = mutableListOf<@Composable ()-> Unit>(
+            { GreyIcon16(R.drawable.ic_number_sign) },
+            { RegexModeIcon(FLAG_REGEX_FOR_CONTACT) },
+            { RegexModeIcon(FLAG_REGEX_FOR_CONTACT_GROUP) },
+            { RegexModeIcon(FLAG_REGEX_FOR_GEO_LOCATION) },
         )
         if (forType == Def.ForNumber) {
-            iconIds += R.drawable.ic_id_card
-            iconIds += R.drawable.ic_location
+            iconIds += { RegexModeIcon(FLAG_REGEX_FOR_CNAP)}
         }
         items += labelIds.mapIndexed { index, labelId ->
             LabelItem(
                 label = ctx.getString(labelId),
-                leadingIcon = { GreyIcon16(iconIds[index]) },
-                trailingIcon = {
-                    Text(
-                        text = when (index) {
-                            1 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CONTACT]!!
-                            2 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CONTACT_GROUP]!!
-                            3 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_CNAP]!!
-                            4 -> MAP_REGEX_FLAGS[FLAG_REGEX_FOR_GEO_LOCATION]!!
-                            else -> ""
-                        },
-                        color = Color.Magenta,
-                        modifier = M.wrapContentSize()
-                    )
-                },
+                leadingIcon = iconIds[index],
                 dismissOnClick = index != 1 && index != 2
             ) { menuExpanded ->
                 when (index) {
@@ -186,15 +184,15 @@ fun RegexLeadingDropdownIcon(
                             }
                         }
                     }
-                    3 -> { // CNAP
-                        regexFlags.intValue = regexFlags.intValue
-                            .clearAllRegexFlags()
-                            .addFlag(FLAG_REGEX_FOR_CNAP)
-                    }
-                    4 -> { // Geo Location
+                    3 -> { // Geo Location
                         regexFlags.intValue = regexFlags.intValue
                             .clearAllRegexFlags()
                             .addFlag(FLAG_REGEX_FOR_GEO_LOCATION)
+                    }
+                    4 -> { // CNAP
+                        regexFlags.intValue = regexFlags.intValue
+                            .clearAllRegexFlags()
+                            .addFlag(FLAG_REGEX_FOR_CNAP)
                     }
                 }
             }
@@ -211,20 +209,21 @@ fun RegexLeadingDropdownIcon(
         val forGeoLocation= regexFlags.intValue.hasFlag(FLAG_REGEX_FOR_GEO_LOCATION)
 
         Box {
-            ResIcon(
-                iconId = if (forContact) {
-                    R.drawable.ic_contact_square
-                } else if (forContactGroup) {
-                    R.drawable.ic_contact_group
-                } else if (forCNAP) {
-                    R.drawable.ic_id_card
-                } else if (forGeoLocation) {
-                    R.drawable.ic_location
-                } else {
-                    R.drawable.ic_number_sign
-                },
-                modifier = M.size(18.dp)
-            )
+            if (forContact) {
+                RegexModeIcon(FLAG_REGEX_FOR_CONTACT)
+            } else if (forContactGroup) {
+                RegexModeIcon(FLAG_REGEX_FOR_CONTACT_GROUP)
+            } else if (forCNAP) {
+                RegexModeIcon(FLAG_REGEX_FOR_CNAP)
+            } else if (forGeoLocation) {
+                RegexModeIcon(FLAG_REGEX_FOR_GEO_LOCATION)
+            } else {
+                ResIcon(
+                    iconId = R.drawable.ic_number_sign,
+                    modifier = M.size(16.dp)
+                )
+            }
+
             Icon(
                 imageVector = ImageVector.vectorResource(R.drawable.ic_dropdown_footer),
                 contentDescription = "",

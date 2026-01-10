@@ -82,7 +82,7 @@
         <br>
         &ensp; これは Google のライブラリ <a href="https://github.com/google/libphonenumber">libphonenumber</a> に依存しており、電話番号の地理情報を提供するオフラインライブラリです。 <br>
         <br>
-        &ensp; データベースの精度に問題がある場合は、<a href="https://groups.google.com/g/libphonenumber-discuss">ディスカッションを開く</a>か<a href="https://issuetracker.google.com/issues/new?component=192347">問題を報告する</a>ことができます。
+        &ensp; データベースの精度に問題がある場合は、<a href="https://groups.google.com/g/libphonenumber-discuss">ディスカッションを開く</a>か<a href="https://issuetracker.google.com/issues/new?component=192347">問題を報告する</a>ことができます。 <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

@@ -90,7 +90,7 @@
         &ensp; اگر مشکلی در دقت پایگاه داده مشاهده کردید، می‌توانید
         <a href="https://groups.google.com/g/libphonenumber-discuss">یک بحث باز کنید</a>
         یا
-        <a href="https://issuetracker.google.com/issues/new?component=192347">یک مشکل گزارش دهید</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">یک مشکل گزارش دهید</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

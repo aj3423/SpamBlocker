@@ -91,7 +91,7 @@
         &ensp; Si observeu problemes amb la precisió de la base de dades, podeu
         <a href="https://groups.google.com/g/libphonenumber-discuss">obrir una discussió</a>
         o
-        <a href="https://issuetracker.google.com/issues/new?component=192347">informar d\'un problema</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">informar d\'un problema</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

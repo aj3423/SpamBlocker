@@ -1196,11 +1196,11 @@ class Checker { // for namespace only
                     return true
                 }
 
-                val forContactGroup =
-                    rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
-
-                val forContact =
-                    rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                val forContactGroup = rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP)
+                val forContact = rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                // SMSes don't have CNAP
+//                val forCNAP =
+                val forGeoLocation = rule.patternExtraFlags.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
 
                 return if (forContactGroup) {
                     Contacts.findGroupsContainNumber(ctx, rawNumber)
@@ -1210,6 +1210,9 @@ class Checker { // for namespace only
                 } else if (forContact) {
                     val contactInfo = Contacts.findContactByRawNumber(ctx, rawNumber)
                     contactInfo != null && rule.extraMatches(contactInfo.name)
+                } else if (forGeoLocation) {
+                    val location = Util.numberGeoLocation(ctx, cCtx.rawNumber) ?: ""
+                    rule.extraMatches(location)
                 } else {
                     // regular number
                     rule.patternExtra.regexMatchesNumber(rawNumber, rule.patternExtraFlags)

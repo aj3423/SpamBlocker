@@ -22,12 +22,9 @@ fun Int.removeFlag(f: Int): Int {
     return setFlag(f, false)
 }
 
-// Generate string "imdlc" from flags
+// Generate string "r" / "i" / "c" from flags
 // params:
 //   attrMap - mapOf(IgnoreCase -> "i", DotMatchAll -> "d", ...)
-//   inverse - invert the showing behavior of some flags,
-//     by default it's: show when set
-//     if it's inverted: show when not set
 fun Int.toFlagStr(
     attrMap: Map<Int, String> = Def.MAP_REGEX_FLAGS,
 ): String {

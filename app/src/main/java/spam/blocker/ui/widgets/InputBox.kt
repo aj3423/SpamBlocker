@@ -47,6 +47,7 @@ import spam.blocker.def.Def.FLAG_REGEX_CASE_SENSITIVE
 import spam.blocker.def.Def.FLAG_REGEX_IGNORE_CC
 import spam.blocker.def.Def.FLAG_REGEX_RAW_NUMBER
 import spam.blocker.def.Def.MAP_REGEX_FLAGS
+import spam.blocker.def.Def.REGEX_FLAGS_RIC
 import spam.blocker.ui.M
 import spam.blocker.ui.theme.ColdGrey
 import spam.blocker.ui.theme.LightMagenta
@@ -533,7 +534,9 @@ fun RegexInputBox(
             lastText,
             regexFlags.intValue.hasFlag(Def.FLAG_REGEX_RAW_NUMBER) ||
                     regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT_GROUP) ||
-                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT)
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CONTACT) ||
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_CNAP) ||
+                    regexFlags.intValue.hasFlag(Def.FLAG_REGEX_FOR_GEO_LOCATION)
         )
     }
 
@@ -623,7 +626,6 @@ fun RegexInputBox(
                                         0 -> MAP_REGEX_FLAGS[FLAG_REGEX_RAW_NUMBER]!!
                                         1 -> MAP_REGEX_FLAGS[FLAG_REGEX_IGNORE_CC]!!
                                         else -> MAP_REGEX_FLAGS[FLAG_REGEX_CASE_SENSITIVE]!!
-//                                        else -> MAP_REGEX_FLAGS[FLAG_REGEX_DOT_MATCH_ALL]!!
                                     },
                                     color = Color.Magenta,
                                     modifier = M
@@ -636,14 +638,12 @@ fun RegexInputBox(
                                 0 -> hasR
                                 1 -> hasCC
                                 else -> hasI // 2
-//                                else -> hasD // 3
                             },
                             onCheckChange = { checked ->
                                 when (idx) {
                                     0 -> hasR.value = checked
                                     1 -> hasCC.value = checked
                                     2 -> hasI.value = checked
-//                                    3 -> hasD.value = checked
                                 }
                                 val newVal = regexFlags.intValue.setFlag(
                                     when (idx) {
@@ -681,19 +681,19 @@ fun RegexInputBox(
                         items = dropdownItems,
                     ) { expanded ->
 
-                        val imdlc = regexFlags.intValue.toFlagStr()
+                        val ric = (regexFlags.intValue and REGEX_FLAGS_RIC).toFlagStr() // ric: Raw-number, Ignore-country-code, Case-sensitive
                         val clickableModifier = M
                             .clickable {
                                 expanded.value = true
                             }
-                        if (imdlc == "") {
+                        if (ric == "") {
                             GreyIcon(
                                 modifier = clickableModifier,
                                 iconId = R.drawable.ic_flags,
                             )
                         } else {
                             Text(
-                                text = imdlc,
+                                text = ric,
                                 color = Color.Magenta,
                                 modifier = clickableModifier
                                     .defaultMinSize(minWidth = 24.dp)

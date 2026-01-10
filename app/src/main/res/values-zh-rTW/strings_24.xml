@@ -89,7 +89,7 @@
         &ensp; 如果您發現資料庫的準確性有任何問題，您可以
         <a href="https://groups.google.com/g/libphonenumber-discuss">開啟討論</a>
         或
-        <a href="https://issuetracker.google.com/issues/new?component=192347">回報問題</a>。
+        <a href="https://issuetracker.google.com/issues/new?component=192347">回報問題</a>。 <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

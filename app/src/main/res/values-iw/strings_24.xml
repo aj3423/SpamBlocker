@@ -91,7 +91,7 @@
         &ensp; אם אתה מבחין בבעיות בדיוק מסד הנתונים, אתה יכול
         <a href="https://groups.google.com/g/libphonenumber-discuss">לפתוח דיון</a>
         או
-        <a href="https://issuetracker.google.com/issues/new?component=192347">לדווח על תקלה</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">לדווח על תקלה</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

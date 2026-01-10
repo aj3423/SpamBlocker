@@ -89,7 +89,7 @@
         &ensp; إذا لاحظت أي مشاكل في دقة قاعدة البيانات، يمكنك
         <a href="https://groups.google.com/g/libphonenumber-discuss">فتح نقاش</a>
         أو
-        <a href="https://issuetracker.google.com/issues/new?component=192347">الإبلاغ عن مشكلة</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">الإبلاغ عن مشكلة</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

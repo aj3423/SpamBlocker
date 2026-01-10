@@ -90,7 +90,7 @@
         &ensp; Jika Anda menemukan masalah dengan akurasi basis data, Anda dapat
         <a href="https://groups.google.com/g/libphonenumber-discuss">membuka diskusi</a>
         atau
-        <a href="https://issuetracker.google.com/issues/new?component=192347">melaporkan masalah</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">melaporkan masalah</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>

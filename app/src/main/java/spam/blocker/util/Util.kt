@@ -418,15 +418,9 @@ object Util {
             opts.add(RegexOption.IGNORE_CASE)
         }
 
-        if (flags.hasFlag(Def.FLAG_REGEX_MULTILINE)) {
-            opts.add(RegexOption.MULTILINE)
-        }
-
+        opts.add(RegexOption.MULTILINE)
         opts.add(RegexOption.DOT_MATCHES_ALL)
 
-//        if (flags.hasFlag(Def.FLAG_REGEX_LITERAL)) {
-//            opts.add(RegexOption.LITERAL)
-//        }
         return opts
     }
 

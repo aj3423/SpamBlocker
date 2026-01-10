@@ -86,7 +86,7 @@
         &ensp; Veritabanı doğruluğunda herhangi bir sorun fark ederseniz,
         <a href="https://groups.google.com/g/libphonenumber-discuss">bir tartışma açabilir</a>
         ya da
-        <a href="https://issuetracker.google.com/issues/new?component=192347">bir sorun bildirebilirsiniz</a>.
+        <a href="https://issuetracker.google.com/issues/new?component=192347">bir sorun bildirebilirsiniz</a>. <br>
         ]]>
     </string>
     <string name="label_value_pair">%s: %s</string>
