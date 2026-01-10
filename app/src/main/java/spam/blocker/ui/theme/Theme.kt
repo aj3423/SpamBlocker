@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 @Immutable
 data class CustomColorsPalette(
     val textGrey: Color = Color.Unspecified,
+    val textDimGrey: Color = Color.Unspecified,
     val textGreen: Color = Color.Unspecified,
     val schedule: Color = Color.Unspecified,
     val enabled: Color = Color.Unspecified,
@@ -44,6 +45,7 @@ data class CustomColorsPalette(
 
 val LightCustomColorsPalette = CustomColorsPalette(
     textGrey = ColdGrey,
+    textDimGrey = ColdGrey,
     textGreen = Emerald,
 
     schedule = MayaBlue,
@@ -70,6 +72,7 @@ val LightCustomColorsPalette = CustomColorsPalette(
 
 val DarkCustomColorsPalette = CustomColorsPalette(
     textGrey = SilverGrey,
+    textDimGrey = DimGrey,
     textGreen = LightGreen,
 
     schedule = MayaBlue,

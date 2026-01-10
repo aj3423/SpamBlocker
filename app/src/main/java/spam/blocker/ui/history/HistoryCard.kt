@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -42,7 +43,6 @@ import spam.blocker.service.checker.parseCheckResultFromDb
 import spam.blocker.ui.M
 import spam.blocker.ui.setting.api.spamCategoryNamesMap
 import spam.blocker.ui.setting.api.tagValid
-import spam.blocker.ui.theme.DimGrey
 import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.FlowRowSpaced
@@ -187,14 +187,11 @@ fun HistoryCard(
                                 text = loc,
                                 style = TextStyle(
                                     fontSize = 12.sp,
-                                    color = DimGrey,
-                                    lineHeight = 16.sp,           // ← this is the one you want to control
-                                    lineHeightStyle = LineHeightStyle(
-                                        alignment = LineHeightStyle.Alignment.Center,   // or Proportional
-                                        trim = LineHeightStyle.Trim.Both
-                                    )
+                                    color = C.textDimGrey,
+                                    lineHeight = 14.sp,
+                                    fontWeight = FontWeight.W500,
                                 ),
-                                modifier = M.padding(start = 6.dp)
+                                modifier = M.padding(start = 4.dp)
                             )
                         }
                     }
