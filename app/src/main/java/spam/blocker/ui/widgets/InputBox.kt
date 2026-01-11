@@ -422,7 +422,19 @@ fun StrInputBox(
         supportingTextStr = supportingTextStr,
         supportingTextColor = supportingTextColor,
         trailingIcon = {
-            RowVCenter {
+            // Trailing icons
+            // This is an ugly workaround for adding 10.dp paddingEnd to the last icon
+            //  when there are more than 1 icons. Because when there are more than 1 icons,
+            //  the paddingEnd becomes 0, no idea why.
+            var iconCount = 0
+
+            if (alwaysShowClear || (lastText.isNotEmpty() && enabled)) iconCount++
+            if (trailingIcon != null) iconCount++
+            if (helpTooltip != null) iconCount++
+
+            val paddingEnd = if (iconCount > 1) 15 else 0
+
+            RowVCenterSpaced(4, modifier = M.padding(end = paddingEnd.dp)) {
                 if (alwaysShowClear || (lastText.isNotEmpty() && enabled)) {
                     GreyIcon16(
                         R.drawable.ic_clear,

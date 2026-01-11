@@ -68,6 +68,7 @@ import spam.blocker.ui.widgets.FabWrapper
 import spam.blocker.ui.widgets.GreyIcon16
 import spam.blocker.ui.widgets.NormalColumnScrollbar
 import spam.blocker.ui.widgets.RowVCenter
+import spam.blocker.ui.widgets.RowVCenterSpaced
 import spam.blocker.ui.widgets.SearchBox
 import spam.blocker.ui.widgets.Section
 import spam.blocker.ui.widgets.Str
@@ -324,7 +325,8 @@ fun LabeledRow(
             }
             .padding(horizontal = paddingHorizontal.dp),
     ) {
-        RowVCenter(
+        RowVCenterSpaced(
+            space = 2,
             modifier = M.wrapContentWidth()
         ) {
             // label

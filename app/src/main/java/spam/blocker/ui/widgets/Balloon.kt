@@ -3,8 +3,11 @@ package spam.blocker.ui.widgets
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -83,20 +86,19 @@ fun BalloonWrapper(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BalloonQuestionMark(tooltip: String) {
+fun BalloonQuestionMark(tooltip: String, size: Int = 18) {
     BalloonWrapper(
         tooltip = tooltip,
     ) { tooltipState ->
         val scope = rememberCoroutineScope()
         ResImage(
             R.drawable.ic_question, ColdGrey, M
-                .size(30.dp)
+                .width(size.dp)
                 .clickable { // put before `.padding` for larger clicking area
                     scope.launch {
                         tooltipState.show()
                     }
                 }
-                .padding(horizontal = 6.dp)
         )
     }
 }

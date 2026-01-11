@@ -63,7 +63,7 @@ fun ActionCard(
                 action.Summary(showIcon = false)
             }
 
-            RowVCenter {
+            RowVCenterSpaced(2) {
                 BalloonQuestionMark(
                     tooltip = action.tooltip(ctx),
 //                    onLinkClick = action.onTooltipLinkClick(ctx),
