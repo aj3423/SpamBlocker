@@ -242,16 +242,16 @@ class CallScreeningService : CallScreeningService() {
 
     fun processCall(
         ctx: Context,
-        logger: ILogger?, // for showing detailed steps to logcat or for testing purpose
         rawNumber: String,
         cnap: String?,
         callDetails: Details?, // it's null when testing
         simSlot: Int?,
+        logger: ILogger? = null, // for showing detailed steps to logcat or for testing purpose
     ): ICheckResult {
         logi("Process incoming call")
 
         // 0. check the number with all rules, get the result
-        val r = Checker.checkCall(ctx, logger, rawNumber, cnap, callDetails, simSlot)
+        val r = Checker.checkCall(ctx, rawNumber, cnap, callDetails, simSlot, logger)
 
         // 1. log result to history db
         logToHistoryDb(ctx, r, rawNumber, cnap, simSlot)

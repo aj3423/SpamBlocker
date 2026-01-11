@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.regex
 
 import android.os.Build
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -288,6 +289,12 @@ fun EditRegexDialog(
     var pattern by rememberSaveable { mutableStateOf(initRule.pattern) }
     val patternFlags = rememberSaveable { mutableIntStateOf(initRule.patternFlags) }
     var patternError by rememberSaveable { mutableStateOf(false) }
+    val forCNAP by rememberSaveable(patternFlags.intValue) {
+        mutableStateOf(
+            forType == Def.ForNumber &&
+                    patternFlags.intValue.hasFlag(FLAG_REGEX_FOR_CNAP)
+        )
+    }
 
     // For particular number
     var forParticular by rememberSaveable { mutableStateOf(initRule.patternExtra != "") }
@@ -494,10 +501,11 @@ fun EditRegexDialog(
                                 onCheckChange = { applyToCall = it },
                             )
                         }
-                        CheckBox(
-                            checked = applyToSms,
-                            label = { GreyLabel(Str(R.string.sms)) },
-                            onCheckChange = { applyToSms = it })
+                        AnimatedVisibility(!forCNAP) {
+                            CheckBox(checked = applyToSms,
+                                label = { GreyLabel(Str(R.string.sms)) },
+                                onCheckChange = { applyToSms = it })
+                        }
                     }
                 }
 
@@ -638,9 +646,9 @@ fun EditRegexDialog(
                 AnimatedVisibleV(
                     visible = when (forType) {
                         Def.ForNumber -> {
-                            if (whiteOrBlack == 0) {
-                                applyToSms
-                            } else {
+                            if (whiteOrBlack == 0) { // allow
+                                !forCNAP && applyToSms
+                            } else { // block
                                 true
                             }
                         }

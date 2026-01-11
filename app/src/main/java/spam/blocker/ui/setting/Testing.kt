@@ -145,11 +145,13 @@ fun PopupTesting(
                 coroutine.launch(IO) {
                     if (isForCall)
                         CallScreeningService().processCall(
-                            ctx, logger = textLogger, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
-                            callDetails = null, cnap = vm.callerName.value.ifEmpty { null }
+                            ctx, rawNumber = vm.phone.value, simSlot = vm.simSlot.value,
+                            callDetails = null, cnap = vm.callerName.value.ifEmpty { null },
+                            logger = textLogger,
                         )
                     else
-                        SmsReceiver().processSms(ctx, textLogger, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value)
+                        SmsReceiver().processSms(
+                            ctx, vm.phone.value, vm.sms.value, simSlot = vm.simSlot.value, logger = textLogger)
                 }
             }
         },

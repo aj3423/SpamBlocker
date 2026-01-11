@@ -63,19 +63,19 @@ open class SmsReceiver : BroadcastReceiver() {
 
         val simSlot = getSimSlotFromSmsIntent(ctx, intent)
 
-        processSms(ctx, logger = null, rawNumber, messageBody, simSlot)
+        processSms(ctx, rawNumber, messageBody, simSlot)
     }
 
     fun processSms(
         ctx: Context,
-        logger: ILogger?,
         rawNumber: String,
         messageBody: String,
         simSlot: Int?,
+        logger: ILogger? = null,
     ): ICheckResult {
         logi("process Sms")
 
-        val r = Checker.checkSms(ctx, logger, rawNumber, messageBody, simSlot)
+        val r = Checker.checkSms(ctx, rawNumber, messageBody, simSlot, logger)
 
         run {
             // 1. log to history db

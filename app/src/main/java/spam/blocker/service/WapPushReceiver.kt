@@ -91,7 +91,7 @@ class WapPushReceiver : SmsReceiver() {
                 val messageBody = map.getOrDefault(MimeTypes.TEXT_PLAIN, "")
                 val simSlot = getSimSlotFromSmsIntent(ctx, intent)
 
-                processSms(ctx, logger = null, rawNumber, messageBody, simSlot)
+                processSms(ctx, rawNumber, messageBody, simSlot)
 
                 break
             }

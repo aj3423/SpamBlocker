@@ -1446,11 +1446,11 @@ class Checker { // for namespace only
 
         fun checkCall(
             ctx: Context,
-            logger: ILogger?,
             rawNumber: String,
-            cnap: String?,
+            cnap: String? = null,
             callDetails: Call.Details? = null,
             simSlot: Int? = null,
+            logger: ILogger? = null,
         ): ICheckResult {
 
             val checkers = arrayListOf(
@@ -1524,10 +1524,10 @@ class Checker { // for namespace only
         }
         fun checkSms(
             ctx: Context,
-            logger: ILogger?,
             rawNumber: String,
             messageBody: String,
-            simSlot: Int?,
+            simSlot: Int? = null,
+            logger: ILogger? = null,
         ): ICheckResult {
             val checkers = arrayListOf<IChecker>(
                 Contact(ctx),
@@ -1558,7 +1558,8 @@ class Checker { // for namespace only
         // It returns a list<String>, all the Strings will be shown as Buttons in the notification.
         fun checkQuickCopy(
             ctx: Context,
-            rawNumber: String, messageBody: String?,
+            rawNumber: String,
+            messageBody: String?,
             isCall: Boolean, // is this called from incoming call or message.
             isBlocked: Boolean,
         ): List<String> {
