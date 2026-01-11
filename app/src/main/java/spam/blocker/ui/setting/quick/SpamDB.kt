@@ -1,6 +1,7 @@
 package spam.blocker.ui.setting.quick
 
 import android.content.Context
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -37,6 +38,7 @@ import spam.blocker.ui.theme.LocalPalette
 import spam.blocker.ui.theme.Salmon
 import spam.blocker.ui.widgets.Button
 import spam.blocker.ui.widgets.GreyButton
+import spam.blocker.ui.widgets.GreyIcon18
 import spam.blocker.ui.widgets.GreyLabel
 import spam.blocker.ui.widgets.GreyText
 import spam.blocker.ui.widgets.LeftDeleteSwipeWrapper
@@ -56,6 +58,8 @@ import spam.blocker.util.Util
 import spam.blocker.util.spf
 import java.text.NumberFormat
 
+
+private const val MAX_LIST_SIZE = 100
 
 private const val SPAM_DB_CLEANUP_WORK_TAG = "spam_db_cleanup_work_tag"
 
@@ -218,7 +222,13 @@ fun SpamDB() {
                 onValueChange = {
                     keyword = it
                     listState.clear()
-                    listState.addAll(SpamTable.search(ctx, keyword, 20))
+                    listState.addAll(SpamTable.search(ctx, keyword, MAX_LIST_SIZE))
+                },
+                trailingIcon = {
+                    GreyIcon18(R.drawable.ic_refresh, modifier = M.clickable {
+                        listState.clear()
+                        listState.addAll(SpamTable.search(ctx, keyword, MAX_LIST_SIZE))
+                    })
                 }
             )
 

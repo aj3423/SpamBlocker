@@ -368,6 +368,7 @@ fun StrInputBox(
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
     leadingIconId: Int? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
     helpTooltip: String? = null,
     enabled: Boolean = true,
     supportingTextStr: String? = null,
@@ -433,6 +434,8 @@ fun StrInputBox(
                         }
                     )
                 }
+
+                trailingIcon?.let { it() }
 
                 helpTooltip?.let {
                     BalloonQuestionMark(it)

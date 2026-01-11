@@ -137,7 +137,7 @@ object SpamTable {
     ): List<SpamNumber> {
         return listAll(
             ctx,
-            whereClause = " WHERE $COLUMN_PEER LIKE ? LIMIT ?",
+            whereClause = " WHERE $COLUMN_PEER LIKE ? ORDER BY $COLUMN_TIME DESC LIMIT ?",
             whereParams = arrayOf("%$pattern%", limit.toString())
         )
     }
