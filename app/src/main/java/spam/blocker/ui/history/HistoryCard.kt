@@ -2,10 +2,12 @@ package spam.blocker.ui.history
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -162,23 +164,24 @@ fun HistoryCard(
             Column(
                 modifier = M.padding(start = 4.dp).weight(1f)
             ) {
-                RowVCenterSpaced(2) {
-                    // Db/Rule existence indicators
-                    if(indicators.isNotEmpty())
-                        IndicatorIcons(indicators)
+                FlowRowSpaced(2, vSpace = 0) {
+                    RowVCenterSpaced(2) {
+                        // Db/Rule existence indicators
+                        if(indicators.isNotEmpty())
+                            IndicatorIcons(indicators)
 
-                    // Number
-                    var t = contact?.name ?: record.peer
-                    // Display Name (CNAP)
-                    if (!record.cnap.isNullOrEmpty()) {
-                        t += " (${record.cnap})"
+                        // Number
+                        var t = contact?.name ?: record.peer
+                        // Display Name (CNAP)
+                        if (!record.cnap.isNullOrEmpty()) {
+                            t += " (${record.cnap})"
+                        }
+                        Text(
+                            text = t,
+                            color = if (record.isBlocked()) C.block else C.pass,
+                            fontSize = 18.sp
+                        )
                     }
-                    Text(
-                        text = t,
-                        color = if (record.isBlocked()) C.block else C.pass,
-                        fontSize = 18.sp
-                    )
-
                     // Geo Location
                     if (G.showHistoryGeoLocation.value) {
                         val loc = Util.numberGeoLocation(ctx, record.peer)
@@ -191,11 +194,12 @@ fun HistoryCard(
                                     lineHeight = 14.sp,
                                     fontWeight = FontWeight.W500,
                                 ),
-                                modifier = M.padding(start = 4.dp)
+                                modifier = M.padding(start = 4.dp).fillMaxHeight(),
                             )
                         }
                     }
                 }
+
 
                 // Reason Summary
                 val r = parseCheckResultFromDb(ctx, record.result, record.reason)

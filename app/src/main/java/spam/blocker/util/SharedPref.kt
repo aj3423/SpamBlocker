@@ -177,7 +177,7 @@ class spf { // for namespace only
         fun setShowBlocked(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_BLOCKED, enabled) }
         fun getShowIndicator(): Boolean { return readBoolean(Def.SETTING_SHOW_INDICATOR, false) }
         fun setShowIndicator(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_INDICATOR, enabled) }
-        fun getShowGeoLocation(): Boolean { return readBoolean(Def.SETTING_SHOW_GEO_LOCATION, false) }
+        fun getShowGeoLocation(): Boolean { return readBoolean(Def.SETTING_SHOW_GEO_LOCATION, true) }
         fun setShowGeoLocation(enabled: Boolean) { writeBoolean(Def.SETTING_SHOW_GEO_LOCATION, enabled) }
         fun getForceShowSim(): Boolean { return readBoolean(Def.SETTING_FORCE_SHOW_SIM, false) }
         fun setForceShowSim(enabled: Boolean) { writeBoolean(Def.SETTING_FORCE_SHOW_SIM, enabled) }

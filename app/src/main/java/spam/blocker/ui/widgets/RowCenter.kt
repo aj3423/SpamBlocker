@@ -54,7 +54,8 @@ fun FlowRowSpaced(
     FlowRow(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(space.dp),
-        verticalArrangement = Arrangement.spacedBy(vSpace.dp)
+        verticalArrangement = Arrangement.spacedBy(vSpace.dp),
+        itemVerticalAlignment = Alignment.CenterVertically
     ) {
         content()
     }
